@@ -26,8 +26,6 @@ Microsoft Entra ID users added to the cluster are going to be in addition to nat
 
 ## Prerequisites
 
-Users need to be allowed to sign in to the Microsoft Entra ID tenant. These steps should be performed **once** for the Microsoft Entra ID *tenant* that is going to be used for authentication on Azure Cosmos DB for MongoDB vCore clusters.
-
 1. [An Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md)
 1. [A Microsoft Entra ID tenant](/entra/identity-platform/quickstart-create-new-tenant)  
 
@@ -106,28 +104,6 @@ The command opens a browser window to the Microsoft Entra ID authentication page
 
 The user account name you use to authenticate (for example, user@tenant.onmicrosoft.com) is the one the access token will be generated for in the next step.
 
-### Retrieve the Microsoft Entra ID access token
-
-Use the Azure CLI to acquire an access token for the Microsoft Entra ID authenticated user to access Azure Cosmos for MongoDB. Here's an example:
-
-```azurecli-interactive
-az account get-access-token --resource-type arm
-```
-
-After authentication is successful, Microsoft Entra ID returns an access token for current Azure subscription:
-
-```json
-{
-  "accessToken": "[TOKEN]",
-  "expiresOn": "[expiration_date_and_time]",
-  "subscription": "[subscription_id]",
-  "tenant": "[tenant_id]",
-  "tokenType": "Bearer"
-}
-```
-
-The TOKEN is a Base64 string. It encodes all the information about the authenticated user and is associated with the Azure Cosmos DB for MongoDB vCore service. The token is valid for at least 5 minutes with the maximum of 90 minutes. The **expiresOn** defines actual token expiration time.
-
 ### Connection string for OIDC authentication using Microsoft Entra ID access token
 
 Use the following connection string to connect to an Azure Cosmos DB for MonogDB vCore cluster using OIDC authentication:
@@ -135,6 +111,147 @@ Use the following connection string to connect to an Azure Cosmos DB for MonogDB
 ```mongodb
 mongodb+srv://<cluster-name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
 ```
+
+### .NET code samples
+
+The following C# code illustrates how to create a MongoDB OIDC client and connect to an Azure Cosmos DB for MongoDB vCore cluster. 
+
+```csharp
+// Azure Cosmos DB for MongoDB connection string for Entra ID authentication via OIDC
+			string conn = "mongodb+srv://[cluster-name].global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000";
+
+            MongoClient? client = null;
+            try
+            {
+				// Call to create an OIDC MongoDB client instance
+                client = CreateOidcClient(conn, connPoolSize: 1, enableDriverLogging: false, appName: null);
+				// Basic read/write test using OIDC client connection
+                QuickTestAsync(client).GetAwaiter().GetResult();                
+            }
+            catch (Exception? ex)
+            {
+                while (ex != null)
+                {
+                    Log.Error($"{ex.Message} ({ex.GetType().FullName})");
+                    Log.Error(ex.StackTrace ?? string.Empty);
+                    ex = ex.InnerException;
+                }
+            }
+            finally
+            {
+                client?.Dispose();
+            }
+        }
+		
+
+		// Optional: Sample read/write operations
+        private static async Task QuickTestAsync(MongoClient client)
+        {
+            // Setting database and collection to write to and read from
+			IMongoDatabase database = client.GetDatabase("test");
+            IMongoCollection<BsonDocument> collection = database.GetCollection<BsonDocument>("test");
+
+            collection.InsertOne(new BsonDocument { { "_id", 1 } });
+            Console.WriteLine("Inserted 1 document.");
+
+            FilterDefinition<BsonDocument> filter = new BsonDocument { { "_id", 1 } };
+            using (IAsyncCursor<BsonDocument> cursor = await collection.FindAsync(filter))
+            {
+                foreach (BsonDocument doc in cursor.ToEnumerable())
+                {
+                    Console.WriteLine(doc);
+                }
+            }
+        }
+		
+		// MongoDB OIDC client instantiation
+        internal static MongoClient CreateOidcClient(string conn, int connPoolSize, bool enableDriverLogging, string appName)
+        {
+            MongoClientSettings clientSettings = MongoClientSettings.FromConnectionString(conn);
+            clientSettings.Credential = MongoCredential.CreateOidcCredential(new EntraIdCallbackForUser());
+            clientSettings.MinConnectionPoolSize = connPoolSize;
+            clientSettings.MaxConnectionPoolSize = connPoolSize;
+
+            if (!string.IsNullOrWhiteSpace(appName))
+            {
+                clientSettings.ApplicationName = appName;
+            }
+
+            if (enableDriverLogging)
+            {
+                clientSettings.ClusterConfigurator = cb => new MongoClientCommandLogger().RegisterClusterBuilder(cb, useMongoDefaultTrace: false);
+            }
+
+            clientSettings.Freeze();
+            return new MongoClient(clientSettings);
+        }
+
+    internal class EntraIdCallbackForUser : IOidcCallback
+    {
+		// This is Azure Entra ID tenant where Entra ID users added to the cluster are hosted. 
+        private const string TenantId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+
+        // Azure Cosmos DB for MongoDB vCore audience claim
+        private static readonly string[] Scopes = { "https://ossrdbms-aad.database.windows.net/.default" };
+
+        public EntraIdCallbackForUser()
+        {
+        }
+
+        public OidcAccessToken GetOidcAccessToken(
+            OidcCallbackParameters parameters,
+            CancellationToken cancellationToken)
+        {
+            DefaultAzureCredential credential = new DefaultAzureCredential(includeInteractiveCredentials: true);
+            AccessToken accessToken = credential.GetToken(new TokenRequestContext(Scopes, TenantId));
+
+            TimeSpan expiresIn = accessToken.ExpiresOn - DateTimeOffset.UtcNow;
+            return new OidcAccessToken(accessToken.Token, expiresIn);
+        }
+
+        public async Task<OidcAccessToken> GetOidcAccessTokenAsync(
+            OidcCallbackParameters parameters,
+            CancellationToken cancellationToken)
+        {
+            DefaultAzureCredential credential = new DefaultAzureCredential(includeInteractiveCredentials: true);
+            AccessToken accessToken = await credential.GetTokenAsync(new TokenRequestContext(Scopes, TenantId));
+
+            TimeSpan expiresIn = accessToken.ExpiresOn - DateTimeOffset.UtcNow;
+            return new OidcAccessToken(accessToken.Token, expiresIn);
+        }
+
+        internal static Tuple<string, string> GetToken()
+        {
+            DefaultAzureCredential credential = new DefaultAzureCredential(includeInteractiveCredentials: true);
+            AccessToken accessToken = credential.GetToken(new TokenRequestContext(Scopes, TenantId));
+            Console.WriteLine($"{accessToken.TokenType}: Expires on {accessToken.ExpiresOn}; Refresh on {accessToken.RefreshOn}");
+
+            JwtSecurityToken securityToken = new JwtSecurityTokenHandler().ReadJwtToken(accessToken.Token);
+            //Console.WriteLine();
+            //Console.WriteLine(JsonConvert.SerializeObject(securityToken));
+
+            // audience claims
+            Console.WriteLine();
+            foreach (string claim in securityToken.Audiences)
+            {
+                Console.WriteLine(claim);
+            }
+
+            // expiration
+            Console.WriteLine(securityToken.ValidTo.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ"));
+
+            // oid
+            string entraOid = securityToken.Payload["oid"].ToString() ?? string.Empty;
+            Console.WriteLine(entraOid);
+
+            // kid
+            Console.WriteLine(securityToken.Header.Kid);
+
+            return new Tuple<string, string>(entraOid, accessToken.Token);
+        }
+    }
+```
+
 
 ## Preview limitations
 
