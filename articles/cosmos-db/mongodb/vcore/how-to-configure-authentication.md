@@ -227,8 +227,6 @@ The following C# code illustrates how to create a MongoDB OIDC client and connec
             Console.WriteLine($"{accessToken.TokenType}: Expires on {accessToken.ExpiresOn}; Refresh on {accessToken.RefreshOn}");
 
             JwtSecurityToken securityToken = new JwtSecurityTokenHandler().ReadJwtToken(accessToken.Token);
-            //Console.WriteLine();
-            //Console.WriteLine(JsonConvert.SerializeObject(securityToken));
 
             // audience claims
             Console.WriteLine();
