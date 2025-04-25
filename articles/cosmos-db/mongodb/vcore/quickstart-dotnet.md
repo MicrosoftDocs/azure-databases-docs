@@ -1,21 +1,21 @@
 ---
-title: Quickstart - .NET
+title: Quickstart - .NET driver
 titleSuffix: Azure Cosmos DB for MongoDB (vCore)
-description: Deploy a .NET web application that uses the client library for .NET to interact with Azure Cosmos DB for MongoDB (vCore) data in this quickstart.
+description: Deploy a .NET web application that uses the official MongoDB driver for .NET to interact with Azure Cosmos DB for MongoDB (vCore) data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 04/08/2025
+ms.date: 04/25/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
   - ✅ MongoDB (vCore)
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB (vCore).
 ---
 
-# Quickstart: Use Azure Cosmos DB for MongoDB (vCore) with .NET
+# Quickstart: Use Azure Cosmos DB for MongoDB (vCore) with MongoDB driver for .NET
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
 
@@ -57,7 +57,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
     azd up
     ```
 
-1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately ten minutes**.
+1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
 
 1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
 
@@ -67,7 +67,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
       (✓) Done: Deploying service web
     - Endpoint: <https://[container-app-sub-domain].azurecontainerapps.io>
     
-    SUCCESS: Your application was provisioned and deployed to Azure in 10 minutes 0 seconds.
+    SUCCESS: Your application was provisioned and deployed to Azure in 5 minutes 0 seconds.
     ```
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
@@ -76,7 +76,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 ### Install the client library
 
-The client library is available through NuGet, as the `MongoDB.Driver` package. For Entra authentication, you will use the `Azure.Identity` package
+The client library is available through NuGet, as the `MongoDB.Driver` package. For Microsoft Entra authentication, use the `Azure.Identity` package from the Azure SDK for .NET.
 
 1. Open a terminal and navigate to the `/src/web` folder.
 
@@ -90,17 +90,31 @@ The client library is available through NuGet, as the `MongoDB.Driver` package. 
     dotnet add package MongoDB.Driver
     ```
 
-1. Open and review the **src/api/Microsoft.Learn.AzureCosmosDBMongoDBQuickstart.Api.csproj** file to validate that the `MongoDB.Driver` entry exists.
+1. If not already installed, install the `Azure.Identity` package.
+
+    ```bash
+    dotnet add package Azure.Identity
+    ```
+
+1. Open and review the **src/api/Microsoft.Learn.AzureCosmosDBMongoDBQuickstart.Api.csproj** file to validate that both package entries exist.
 
 ### Import libraries
 
 Import the following namespaces into your application code:
 
-- `Azure.Identity`
-- `MongoDB.Driver`
+| | Package | Source |
+| --- | --- | --- |
+| **`Azure.Core`** | `Azure.Identity` | Azure SDK for .NET |
+| **`Azure.Identity`** | `Azure.Identity` | Azure SDK for .NET |
+| **`MongoDB.Driver`** | `MongoDB.Driver` | Official MongoDB driver for .NET |
+| **`MongoDB.Driver.Authentication.Oidc`** | `MongoDB.Driver` | Official MongoDB driver for .NET |
 
 ```csharp
+using Azure.Core;
+using Azure.Identity;
+
 using MongoDB.Driver;
+using MongoDB.Driver.Authentication.Oidc;
 ```
 
 ## Object model
