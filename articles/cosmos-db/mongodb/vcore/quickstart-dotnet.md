@@ -133,28 +133,80 @@ using MongoDB.Driver.Authentication.Oidc;
 - [Create a document](#create-a-document)
 - [Get a document](#read-a-document)
 - [Query documents](#query-documents)
+- [Delete a document](#delete-a-document)
 
 The sample code in the template uses a database named `cosmicworks` and collection named `products`. The `products` collection contains details such as name, category, quantity, and a unique identifier for each product. The collection uses the `/category` property as a shard key.
 
 ### Authenticate the client
 
-TODO
+While Microsoft Entra authentication for Azure Cosmos DB for MongoDB vCore can use well known `TokenCredential` types, you must implement a custom token handler. This sample implementation can be used to create a `MongoClient` with support for standard Microsoft Entra authentication of many identity types.
 
-```csharp
+1. First, create a new class in a separate file that implements `IOidcCallback` interface.
 
-```
+    ```csharp
+    using Azure.Core;
+    using MongoDB.Driver.Authentication.Oidc;
+    
+    internal sealed class AzureIdentityTokenHandler(
+        TokenCredential credential,
+        string tenantId
+    ) : IOidcCallback
+    {
+        private readonly string[] scopes = ["https://ossrdbms-aad.database.windows.net/.default"];
+    
+        public OidcAccessToken GetOidcAccessToken(OidcCallbackParameters parameters, CancellationToken cancellationToken)
+        {
+            AccessToken token = credential.GetToken(
+                new TokenRequestContext(scopes, tenantId: tenantId),
+                cancellationToken
+            );
+    
+            return new OidcAccessToken(token.Token, token.ExpiresOn - DateTimeOffset.UtcNow);
+        }
+    
+        public async Task<OidcAccessToken> GetOidcAccessTokenAsync(OidcCallbackParameters parameters, CancellationToken cancellationToken)
+        {
+            AccessToken token = await credential.GetTokenAsync(
+                new TokenRequestContext(scopes, parentRequestId: null, tenantId: tenantId),
+                cancellationToken
+            );
+    
+            return new OidcAccessToken(token.Token, token.ExpiresOn - DateTimeOffset.UtcNow);
+        }
+    }
+    ```
 
-TODO
+1. Create a new instance of your custom handler class passing in a new instance of the `DefaultAzureCredential` type and your **tenant ID**.
 
-```csharp
+    ```csharp
+    DefaultAzureCredential credential = new();
 
-```
+    string tenantId = "<microsoft-entra-tenant-id>";
+    
+    AzureIdentityTokenHandler tokenHandler = new(credential, tenantId);
+    ```
 
-TODO
+1. Build an instance of `MongUrl` using the endpoint and scheme for your recently deployed Azure Cosmos DB for MongoDB vCore instance.
 
-```csharp
+    ```csharp
+    string accountName = "<azure-cosmos-db-mongodb-vcore-account-name>";
+    
+    MongoUrl url = MongoUrl.Create($"mongodb+srv://{accountName}.global.mongocluster.cosmos.azure.com/");
+    ```
 
-```
+1. Configure your `MongoClient` instance using known best practice configuration options for Azure Cosmos DB for MongoDB vCore and the custom `IOidcCallback` implementation.
+
+    ```csharp
+    MongoClientSettings settings = MongoClientSettings.FromUrl(url);
+    
+    settings.UseTls = true;
+    settings.RetryWrites = false;
+    settings.MaxConnectionIdleTime = TimeSpan.FromMinutes(2);
+    settings.Credential = MongoCredential.CreateOidcCredential(tokenHandler);
+    settings.Freeze();
+    
+    MongoClient client = new(settings);
+    ```
 
 ### Get a database
 
@@ -185,7 +237,7 @@ public record Product(
 
 ### Create a document
 
-Create a document in the collection using `collection.ReplaceOneAsync<>` with the generic `Product` type parameter. This method "upserts" the item effectively replacing the item if it already exists.
+Create a document in the collection using `collection.ReplaceOneAsync<>` with the generic `Product` type parameter. This method "upserts" the document effectively replacing it if it already exists in the collection.
 
 ```csharp
 Product document = new(
@@ -198,7 +250,7 @@ Product document = new(
 );
 
 await collection.ReplaceOneAsync<Product>(
-    d => d.id == document.id,
+    doc => doc.id == document.id,
     document,
     new ReplaceOptions { IsUpsert = true }
 );
@@ -206,37 +258,37 @@ await collection.ReplaceOneAsync<Product>(
 
 ### Read a document
 
-Perform a point read operation by using both the unique identifier (`id`) and shard key fields. Use `collection.FindAsync<>` with the generic `Product` type parameter to efficiently retrieve the specific item.
+Perform a read operation by using both the unique identifier (`id`) for the documents. Use `collection.FindAsync<>` with the generic `Product` type parameter to efficiently retrieve the specific document.
 
 ```csharp
-IAsyncCursor<Product> documents = await collection.FindAsync<Product>(
-    d => d.id == "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" && d.category == "gear-surf-surfboards"
-);
-
-Product? document = await documents.SingleOrDefaultAsync();
+Product? document = await collection.Find(
+    doc => doc.id == "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+).SingleOrDefaultAsync();
 ```
 
 ### Query documents
 
-Perform a query over multiple items in a container using `collection.AsQueryable()` and language-integrated query (LINQ). This query finds all items within a specified category (shard key).
+Perform a query over multiple documents in a container using `collection.AsQueryable()` and language-integrated query (LINQ). This query finds all documents within a specified category (shard key).
 
 ```csharp
-IQueryable<Product> documents = collection.AsQueryable().Where(
-    d => d.category == "gear-surf-surfboards"
-);
+List<Product> documents = await collection.Find(
+    filter: doc => doc.category == "gear-surf-surfboards"
+).ToListAsync();
 
-foreach (Product document in await documents.ToListAsync())
+foreach (Product document in documents)
 {
-    // Do something with each item
+    // Do something with each document
 }
 ```
 
 ### Delete a document
 
-TODO
+Delete a document by sending a filter for the unique identifier of the document. Use `collection.DeleteOneAsync<>` to asynchronously remove the document from the collection.
 
 ```csharp
-
+await collection.DeleteOneAsync(
+    doc => doc.id == "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+);
 ```
 
 ### Explore your data
