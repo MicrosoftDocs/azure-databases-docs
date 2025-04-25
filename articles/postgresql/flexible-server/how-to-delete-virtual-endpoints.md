@@ -54,7 +54,12 @@ az postgres flexible-server virtual-endpoint delete \
   --server-name <server> \
   --name <virtual_endpoints_base_name>
 ```
+---
 
 ## Related content
 
 - [Read replicas](concepts-read-replicas.md).
+- [Create virtual endpoints](how-to-create-virtual-endpoints.md).
+- [Update virtual endpoints](how-to-update-virtual-endpoints.md).
+- [Show virtual endpoints](how-to-show-virtual-endpoints.md).
+- [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md).

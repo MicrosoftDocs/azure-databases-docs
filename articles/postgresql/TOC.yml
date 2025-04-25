@@ -459,11 +459,11 @@
       items:
       - name: Power management
         items:
-        - name: Start a server
+        - name: Start compute of a server
           href: flexible-server/how-to-start-server.md
-        - name: Stop a server
+        - name: Stop compute of a server
           href: flexible-server/how-to-stop-server.md
-        - name: Restart a server
+        - name: Restart PostgreSQL engine
           href: flexible-server/how-to-restart-server.md
       - name: Configure high availability
         href: flexible-server/how-to-configure-high-availability.md
@@ -567,7 +567,7 @@
         href: flexible-server/how-to-auto-grow-storage.md
       - name: Read replicas
         items:
-        - name: Create read replica
+        - name: Create a read replica
           href: flexible-server/how-to-create-read-replica.md
         - name: Create virtual endpoints
           href: flexible-server/how-to-create-virtual-endpoints.md
@@ -577,11 +577,11 @@
           href: flexible-server/how-to-show-virtual-endpoints.md
         - name: Delete virtual endpoints
           href: flexible-server/how-to-delete-virtual-endpoints.md
-        - name: Switch over replica to primary
+        - name: Switch over read replica to primary
           href: flexible-server/how-to-switch-over-replica-to-primary.md
-        - name: Promote replica to standalone server
+        - name: Promote read replica to standalone server
           href: flexible-server/how-to-promote-replica-to-standalone.md
-        - name: Delete read replica
+        - name: Delete a read replica
           href: flexible-server/how-to-delete-read-replica.md
     - name: Backup and restore
       items:

@@ -59,7 +59,11 @@
     - name: Why use for AI apps?
       href: ../gen-ai/why-cosmos-ai.md
     - name: Use vector search
-      href: vector-search.md
+      items:
+        - name: Vector indexing and search
+          href: vector-search.md
+        - name: Sharded DiskANN for focused search
+          href: ../gen-ai/sharded-diskann.md
     - name: Enable full-text search
       href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
@@ -491,12 +495,12 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Async Java sample with change feed
           href: how-to-java-change-feed.md
-    - name: Materialized views (preview)
+    - name: Global secondary indexes (preview)
       items:
         - name: Overview
-          href: materialized-views.md
-        - name: Configure materialized views (preview)
-          href: how-to-configure-materialized-views.md
+          href: global-secondary-indexes.md
+        - name: Configure global secondary indexes (preview)
+          href: how-to-configure-global-secondary-indexes.md
     - name: Index and query geospatial data
       displayName: geospatial, geojson, spatial, index, query, geography, geometry
       href: how-to-geospatial-index-query.md
