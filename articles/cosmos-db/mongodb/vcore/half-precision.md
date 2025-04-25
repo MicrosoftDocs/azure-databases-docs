@@ -48,9 +48,9 @@ db.runCommand({
 });
 ```
 
-### Searching a Half-Precision Vector Index
+## Improving Search with Oversampling
 
-When querying a vector index that utilizes half-precision compression, you can use the `"oversampling"` parameter within the `$search` aggregation stage. This parameter helps to mitigate any potential loss of precision introduced by the 16-bit representation.
+When querying a vector index that utilizes half-precision compression, you can use the `oversampling` parameter within the `$search` aggregation stage. This parameter helps to mitigate any potential loss of precision introduced by the 16-bit representation.
 
 The `oversampling` factor, allows you to retrieve more potential nearest neighbors from the half-precision index than the final number of results you want (`k`). These candidates are then compared using the original full-precision vectors to ensure higher accuracy in the final ranked results. 
 
@@ -79,7 +79,6 @@ db.collection.aggregate([
 
 > [!NOTE]
 > The `oversampling` factor must be a **double** with a minimum value of `1.0`. This factor is only relevant for vector indexes created with `"compression": "half"`.
-
 ## Next step
 
 > [!div class="nextstepaction"]
