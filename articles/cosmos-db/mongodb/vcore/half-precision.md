@@ -28,7 +28,7 @@ Half-precision vector indexing allows you to store and index vector embeddings u
 
 ## Creating a Half-Precision Vector Index
 
-When defining a vector index for your collection, you can enable half-precision compression by specifying the `"compression": "half"` option within the `cosmosSearchOptions`.
+When defining a [vector index](./vector-search.md#create-a-vector-index) for your collection, you can enable half-precision compression by specifying the `"compression": "half"` option within the `cosmosSearchOptions`.
 
 ```javascript
 db.runCommand({
@@ -52,7 +52,7 @@ db.runCommand({
 
 When querying a vector index that utilizes half-precision compression, you can use the `"oversampling"` parameter within the `$search` aggregation stage. This parameter helps to mitigate any potential loss of precision introduced by the 16-bit representation.
 
-The `oversampling` factor, always a **double**, allows you to retrieve more potential nearest neighbors from the half-precision index than the final number of results you want (`k`). These candidates are then compared using the original full-precision vectors to ensure higher accuracy in the final ranked results. 
+The `oversampling` factor, allows you to retrieve more potential nearest neighbors from the half-precision index than the final number of results you want (`k`). These candidates are then compared using the original full-precision vectors to ensure higher accuracy in the final ranked results. 
 
 For instance, if you set `k` to 10 and `oversampling` to 1.5, the system will fetch 15 candidate vectors from the half-precision index and then rank the top 10 based on their full-precision values.
 
@@ -65,7 +65,7 @@ db.your_vector_collection_name.aggregate([
         "path": "your_vector_field_name",
         "k": number_of_results_to_return,
         "efSearch": your_efSearch_value,
-        "oversampling": <double> // e.g., 1.5, 2.0
+        "oversampling": <double>
       }
     }
   },
@@ -79,7 +79,7 @@ db.your_vector_collection_name.aggregate([
 ```
 
 > [!NOTE]
-> The `oversampling` factor must be a decimal value (double) with a minimum value of `1.0`. This setting is only relevant for vector indexes created with `"compression": "half"`.
+> The `oversampling` factor must be a **double** with a minimum value of `1.0`. This factor is only relevant for vector indexes created with `"compression": "half"`.
 
 ## Next step
 
