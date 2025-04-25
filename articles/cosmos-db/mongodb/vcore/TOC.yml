@@ -37,6 +37,8 @@
           href: tutorial-nodejs-web-app.md
 - name: Concepts
   items:
+    - name: Entra authentication
+      href: entra-authentication.md
     - name: Vector database
       href: vector-search.md
     - name: Real-time custom content generation
@@ -119,6 +121,8 @@
   items:
     - name: Visual Studio Code extension
       href: ../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=CBDMongovCore&context=/azure/cosmos-db/mongodb/vcore/context/context
+    - name: Create a console app with Microsoft Entra ID authentication
+      href: how-to-authenticate-console-app.md
     - name: Use community tools
       items:
         - name: Connect using Studio 3T

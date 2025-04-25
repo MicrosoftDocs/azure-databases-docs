@@ -60,7 +60,7 @@ Additionally, one or more nonadministrative Microsoft Entra ID users can be adde
 
 ## Next steps
 
-- Develop a [console app with Microsoft Entra authentication](how-to-configure-authentication.md)
+- Develop a [console app with Microsoft Entra authentication](how-to-authenticate-console-app.md)
 - Deploy a [Microsoft Entra-enabled web application template](quickstart-dotnet.md)
 - Review [Microsoft Entra ID fundamentals](/entra/fundamentals/whatis)
 - Review [Open ID Connect (OIDC) support in Microsoft Entra ID](/entra/architecture/auth-oidc)
