@@ -25,9 +25,29 @@ In this guide, you build a console application to connect to an existing Azure C
 This guide uses the open-source `MongoDB.Driver` library from NuGet.
 
 :::zone-end
+
 :::zone pivot="programming-language-ts"
+
+This guide uses the open-source `mongodb` package from npm.
+
 :::zone-end
+
 :::zone pivot="programming-language-python"
+
+This guide uses the open-souce `pymongo` package from PyPI.
+
+:::zone-end
+
+:::zone pivot="programming-language-java
+
+:::zone-end
+
+:::zone pivot="programming-language-go
+
+:::zone-end
+
+:::zone pivot="programming-language-rust
+
 :::zone-end
 
 After authenticating, you can use this library to interact with Azure Cosmos DB for MongoDB vCore using the same methods and classes you would typically use to interact with any other MongoDB or DocumentDB instance.
@@ -247,29 +267,171 @@ Next, create a new console application project and import the necessary librarie
 
 :::zone pivot="programming-language-ts"
 
-TODO
+1. TODO
 
-```bash
-npm install @azure/identity
-```
+    ```bash
 
-```bash
-npm install mongodb
-```
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+    
+1. TODO
+
+    ```bash
+    npm install @azure/identity
+    ```
+    
+1. TODO
+    
+    ```bash
+    npm install mongodb
+    ```
 
 :::zone-end
 
 :::zone pivot="programming-language-python"
 
-TODO
+1. TODO
 
-```bash
-pip install azure.identity
-```
+    ```bash
 
-```bash
-pip install pymongo
-```
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+    
+1. TODO
+
+    ```bash
+    pip install azure.identity
+    ```
+    
+1. TODO
+    
+    ```bash
+    pip install pymongo
+    ```
+
+:::zone-end
+
+:::zone pivot="programming-language-java
+
+1. TODO
+
+    ```bash
+
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+    
+1. TODO
+
+    ```bash
+    
+    ```
+    
+1. TODO
+    
+    ```bash
+    
+    ```
+
+:::zone-end
+
+:::zone pivot="programming-language-go
+
+1. TODO
+
+    ```bash
+
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+    
+1. TODO
+
+    ```bash
+    
+    ```
+    
+1. TODO
+    
+    ```bash
+    
+    ```
+
+:::zone-end
+
+:::zone pivot="programming-language-rust
+
+1. TODO
+
+    ```bash
+
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+
+1. TODO
+
+    ```bash
+
+    ```
+    
+1. TODO
+
+    ```bash
+    
+    ```
+    
+1. TODO
+    
+    ```bash
+    
+    ```
 
 :::zone-end
 
@@ -381,84 +543,216 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 :::zone pivot="programming-language-ts"
 
-TODO
+1. TODO
 
-```typescript
-import { AccessToken, DefaultAzureCredential, TokenCredential } from '@azure/identity';
-import { Collection, Db, Filter, FindCursor, MongoClient, OIDCCallbackParams, OIDCResponse, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
+    ```typescript
+    import { AccessToken, DefaultAzureCredential, TokenCredential } from '@azure/identity';
+    import { Collection, Db, Filter, FindCursor, MongoClient, OIDCCallbackParams, OIDCResponse, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
+    ```
 
-const AzureIdentityTokenCallback = async (params: OIDCCallbackParams, credential: TokenCredential): Promise<OIDCResponse> => {
-    const tokenResponse: AccessToken | null = await credential.getToken(['https://ossrdbms-aad.database.windows.net/.default']);
-    return {
-        accessToken: tokenResponse?.token || '',
-        expiresInSeconds: (tokenResponse?.expiresOnTimestamp || 0) - Math.floor(Date.now() / 1000)
+1. TODO
+
+    ```typescript
+    const AzureIdentityTokenCallback = async (params: OIDCCallbackParams, credential: TokenCredential): Promise<OIDCResponse> => {
+        const tokenResponse: AccessToken | null = await credential.getToken(['https://ossrdbms-aad.database.windows.net/.default']);
+        return {
+            accessToken: tokenResponse?.token || '',
+            expiresInSeconds: (tokenResponse?.expiresOnTimestamp || 0) - Math.floor(Date.now() / 1000)
+        };
     };
-};
+    ```
 
-const accountName: string = '<azure-cosmos-db-mongodb-vcore-account-name>';
+1. TODO
 
-const credential: TokenCredential = new DefaultAzureCredential();
+    ```typescript
+    const accountName: string = '<azure-cosmos-db-mongodb-vcore-account-name>';
+    ```
 
-const client = new MongoClient(
-    `mongodb+srv://${accountName}.global.mongocluster.cosmos.azure.com/`, {
-    connectTimeoutMS: 120000,
-    tls: true,
-    retryWrites: true,
-    authMechanism: 'MONGODB-OIDC',
-    authMechanismProperties: {
-        OIDC_CALLBACK: (params: OIDCCallbackParams) => AzureIdentityTokenCallback(params, credential),
-        ALLOWED_HOSTS: ['*.azure.com']
+1. TODO
+
+    ```typescript
+    const credential: TokenCredential = new DefaultAzureCredential();
+    ```
+
+1. TODO
+
+    ```typescript
+    const client = new MongoClient(
+        `mongodb+srv://${accountName}.global.mongocluster.cosmos.azure.com/`, {
+        connectTimeoutMS: 120000,
+        tls: true,
+        retryWrites: true,
+        authMechanism: 'MONGODB-OIDC',
+        authMechanismProperties: {
+            OIDC_CALLBACK: (params: OIDCCallbackParams) => AzureIdentityTokenCallback(params, credential),
+            ALLOWED_HOSTS: ['*.azure.com']
+        }
     }
-}
-);
-
-console.log('Client created');
-```
+    );
+    
+    console.log('Client created');
+    ```
 
 :::zone-end
 
 :::zone pivot="programming-language-python"
 
-TODO
+1. TODO
 
-```python
-from azure.identity import DefaultAzureCredential
-from pymongo import MongoClient
-from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackResult
+    ```python
+    from azure.identity import DefaultAzureCredential
+    from pymongo import MongoClient
+    from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackResult
+    ```
 
+1. TODO
 
-class AzureIdentityTokenCallback(OIDCCallback):
-    def __init__(self, credential):
-        self.credential = credential
+    ```python
+    class AzureIdentityTokenCallback(OIDCCallback):
+        def __init__(self, credential):
+            self.credential = credential
+    
+        def fetch(self, context: OIDCCallbackContext) -> OIDCCallbackResult:
+            token = self.credential.get_token(
+                "https://ossrdbms-aad.database.windows.net/.default").token
+            return OIDCCallbackResult(access_token=token)
+    ```
 
-    def fetch(self, context: OIDCCallbackContext) -> OIDCCallbackResult:
-        token = self.credential.get_token(
-            "https://ossrdbms-aad.database.windows.net/.default").token
-        return OIDCCallbackResult(access_token=token)
+1. TODO
 
+    ```python
+    accountName = "<azure-cosmos-db-mongodb-vcore-account-name>"
+    ```
 
-accountName = "<azure-cosmos-db-mongodb-vcore-account-name>"
+1. TODO
 
-credential = DefaultAzureCredential()
-authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
+    ```python
+    credential = DefaultAzureCredential()
+    authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
+    ```
 
-client = MongoClient(
-    f"mongodb+srv://{accountName}.global.mongocluster.cosmos.azure.com/",
-    connectTimeoutMS=120000,
-    tls=True,
-    retryWrites=True,
-    authMechanism="MONGODB-OIDC",
-    authMechanismProperties=authProperties
-)
+1. TODO
 
-print("Client created")
-```
+    ```python
+    client = MongoClient(
+        f"mongodb+srv://{accountName}.global.mongocluster.cosmos.azure.com/",
+        connectTimeoutMS=120000,
+        tls=True,
+        retryWrites=True,
+        authMechanism="MONGODB-OIDC",
+        authMechanismProperties=authProperties
+    )
+    
+    print("Client created")
+    ```
+
+:::zone-end
+
+:::zone pivot="programming-language-java
+
+1. TODO
+
+    ```java
+    
+    ```
+
+1. TODO
+
+    ```java
+    
+    ```
+
+1. TODO
+
+    ```java
+    
+    ```
+
+1. TODO
+
+    ```java
+    
+    ```
+
+1. TODO
+
+    ```java
+    
+    ```
+
+:::zone-end
+
+:::zone pivot="programming-language-go
+
+1. TODO
+
+    ```go
+    
+    ```
+
+1. TODO
+
+    ```go
+    
+    ```
+
+1. TODO
+
+    ```go
+    
+    ```
+
+1. TODO
+
+    ```go
+    
+    ```
+
+1. TODO
+
+    ```go
+    
+    ```
+
+:::zone-end
+
+:::zone pivot="programming-language-rust
+
+1. TODO
+
+    ```rust
+    
+    ```
+
+1. TODO
+
+    ```rust
+    
+    ```
+
+1. TODO
+
+    ```rust
+    
+    ```
+
+1. TODO
+
+    ```rust
+    
+    ```
+
+1. TODO
+
+    ```rust
+    
+    ```
 
 :::zone-end
 
 ## Perform common operations
 
-Finally, use the official `MongoDB.Driver` library to perform common tasks with databases, collections, and documents. Here, you use the same classes and methods you would use to interact with MongoDB or DocumentDB to manage your collections and items.
+Finally, use the official library to perform common tasks with databases, collections, and documents. Here, you use the same classes and methods you would use to interact with MongoDB or DocumentDB to manage your collections and items.
 
 :::zone pivot="programming-language-csharp"
 
@@ -596,123 +890,263 @@ Finally, use the official `MongoDB.Driver` library to perform common tasks with 
 
 :::zone pivot="programming-language-ts"
 
-TODO
+1. TODO
 
-```typescript
+    ```typescript
+    interface Product {
+        _id: string;
+        category: string;
+        name: string;
+        quantity: number;
+        price: number;
+        clearance: boolean;
+    }
+    ```
 
+1. TODO
 
-const database: Db = client.db('<database-name>');
+    ```typescript
+    const database: Db = client.db('<database-name>');
+    
+    console.log('Database pointer created');
+    ```
 
-console.log('Database pointer created');
+1. TODO
 
-const collection: Collection<Product> = database.collection<Product>('<collection-name>');
+    ```typescript
+    const collection: Collection<Product> = database.collection<Product>('<collection-name>');
+    
+    console.log('Collection pointer created');
+    ```
 
-console.log('Collection pointer created');
+1. TODO
 
-var document: Product = {
-    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
-    category: 'gear-surf-surfboards',
-    name: 'Yamba Surfboard',
-    quantity: 12,
-    price: 850.00,
-    clearance: false
-};
+    ```typescript
+    var document: Product = {
+        _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+        category: 'gear-surf-surfboards',
+        name: 'Yamba Surfboard',
+        quantity: 12,
+        price: 850.00,
+        clearance: false
+    };
+    
+    var query: Filter<Product> = {
+        _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'
+    };
+    var payload: UpdateFilter<Product> = {
+        $set: document
+    };
+    var options: UpdateOptions = {
+        upsert: true
+    };
+    var response: UpdateResult<Product> = await collection.updateOne(query, payload, options);
+    
+    if (response.acknowledged) {
+        console.log(`Documents upserted count:\t${response.matchedCount}`);
+    }
+    ```
 
-var query: Filter<Product> = {
-    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'
-};
-var payload: UpdateFilter<Product> = {
-    $set: document
-};
-var options: UpdateOptions = {
-    upsert: true
-};
-var response: UpdateResult<Product> = await collection.updateOne(query, payload, options);
+1. TODO
 
-if (response.acknowledged) {
-    console.log(`Documents upserted count:\t${response.matchedCount}`);
-}
+    ```typescript
+    var query: Filter<Product> = {
+        _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+        category: 'gear-surf-surfboards'
+    };
+    
+    var response: WithId<Product> | null = await collection.findOne(query);
+    
+    var read_item: Product = response as Product;
+    
+    console.log(`Read document _id:\t${read_item._id}`);
+    ```
 
-var query: Filter<Product> = {
-    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
-    category: 'gear-surf-surfboards'
-};
+1. TODO
 
-var response: WithId<Product> | null = await collection.findOne(query);
+    ```typescript
+    var query: Filter<Product> = {
+        category: 'gear-surf-surfboards'
+    };
+    
+    var response: FindCursor<WithId<Product>> = await collection.find(query);
+    
+    for await (const document of response) {
+        console.log(`Found document:\t${JSON.stringify(document)}`);
+    }
+    ```
 
-var read_item: Product = response as Product;
+1. TODO
 
-console.log(`Read document _id:\t${read_item._id}`);
-
-var query: Filter<Product> = {
-    category: 'gear-surf-surfboards'
-};
-
-var response: FindCursor<WithId<Product>> = await collection.find(query);
-
-for await (const document of response) {
-    console.log(`Found document:\t${JSON.stringify(document)}`);
-}
-
-await client.close();
-
-interface Product {
-    _id: string;
-    category: string;
-    name: string;
-    quantity: number;
-    price: number;
-    clearance: boolean;
-}
-```
+    ```typescript
+    await client.close();
+    ```
 
 :::zone-end
 
 :::zone pivot="programming-language-python"
 
-TODO
+1. TODO
 
-```python
-database = client.get_database("<database-name>")
+    ```python
+    database = client.get_database("<database-name>")
+    
+    print("Database pointer created")
+    ```
 
-print("Database pointer created")
+1. TODO
 
-collection = database.get_collection("<container-name>")
+    ```python
+    collection = database.get_collection("<container-name>")
+    
+    print("Collection pointer created")
+    ```
 
-print("Collection pointer created")
+1. TODO
 
-new_document = {
-    "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
-    "category": "gear-surf-surfboards",
-    "name": "Yamba Surfboard",
-    "quantity": 12,
-    "price": 850.00,
-    "clearance": False,
-}
+    ```python
+    new_document = {
+        "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        "category": "gear-surf-surfboards",
+        "name": "Yamba Surfboard",
+        "quantity": 12,
+        "price": 850.00,
+        "clearance": False,
+    }
+    
+    filter = {
+        "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    }
+    payload = {
+        "$set": new_document
+    }
+    result = collection.update_one(filter, payload, upsert=True)
+    ```
 
-filter = {
-    "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
-}
-payload = {
-    "$set": new_document
-}
-result = collection.update_one(filter, payload, upsert=True)
+1. TODO
 
-filter = {
-    "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
-    "category": "gear-surf-surfboards"
-}
-existing_document = collection.find_one(filter)
-print(f"Read document _id:\t{existing_document['_id']}")
+    ```python
+    filter = {
+        "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        "category": "gear-surf-surfboards"
+    }
+    existing_document = collection.find_one(filter)
+    print(f"Read document _id:\t{existing_document['_id']}")
+    ```
 
-filter = {
-    "category": "gear-surf-surfboards"
-}
-matched_documents = collection.find(filter)
+1. TODO
 
-for document in matched_documents:
-    print(f"Found document:\t{document}")
-```
+    ```python
+    filter = {
+        "category": "gear-surf-surfboards"
+    }
+    matched_documents = collection.find(filter)
+    
+    for document in matched_documents:
+        print(f"Found document:\t{document}")
+    ```
+
+:::zone-end
+
+:::zone pivot="programming-language-java
+
+1. TODO
+
+    ```java
+    
+    ```
+
+1. TODO
+
+    ```java
+    
+    ```
+
+1. TODO
+
+    ```java
+    
+    ```
+
+1. TODO
+
+    ```java
+    
+    ```
+
+1. TODO
+
+    ```java
+    
+    ```
+
+:::zone-end
+
+:::zone pivot="programming-language-go
+
+1. TODO
+
+    ```go
+    
+    ```
+
+1. TODO
+
+    ```go
+    
+    ```
+
+1. TODO
+
+    ```go
+    
+    ```
+
+1. TODO
+
+    ```go
+    
+    ```
+
+1. TODO
+
+    ```go
+    
+    ```
+
+:::zone-end
+
+:::zone pivot="programming-language-rust
+
+1. TODO
+
+    ```rust
+    
+    ```
+
+1. TODO
+
+    ```rust
+    
+    ```
+
+1. TODO
+
+    ```rust
+    
+    ```
+
+1. TODO
+
+    ```rust
+    
+    ```
+
+1. TODO
+
+    ```rust
+    
+    ```
 
 :::zone-end
 
@@ -725,7 +1159,33 @@ for document in matched_documents:
 - [.NET web application template](quickstart-dotnet.md)
 
 :::zone-end
+
 :::zone pivot="programming-language-ts"
+
+- [TODO](about:blank)
+
 :::zone-end
+
 :::zone pivot="programming-language-python"
+
+- [TODO](about:blank)
+
+:::zone-end
+
+:::zone pivot="programming-language-java"
+
+- [TODO](about:blank)
+
+:::zone-end
+
+:::zone pivot="programming-language-go"
+
+- [TODO](about:blank)
+
+:::zone-end
+
+:::zone pivot="programming-language-rust"
+
+- [TODO](about:blank)
+
 :::zone-end

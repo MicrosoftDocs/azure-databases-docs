@@ -158,6 +158,12 @@ groups:
   - id: programming-language-csharp
     title: C#
   - id: programming-language-ts
-    title: TypeScript
+    title: JavaScript/TypeScript
   - id: programming-language-python
     title: Python
+  - id: programming-language-java
+    title: java
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-rust
+    title: Rust
