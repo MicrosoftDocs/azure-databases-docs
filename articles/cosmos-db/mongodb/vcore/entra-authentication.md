@@ -9,7 +9,6 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
 ms.date: 04/25/2025
-ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)
 ---
