@@ -40,9 +40,13 @@ This guide uses the open-souce `pymongo` package from PyPI.
 
 :::zone pivot="programming-language-java"
 
+This guide uses the open-source `mongodb-driver-sync` library from Maven.
+
 :::zone-end
 
 :::zone pivot="programming-language-go"
+
+This guide uses the open-source `go.mongodb.org/mongo-driver/v2/mongo` package from Go.
 
 :::zone-end
 
@@ -60,14 +64,28 @@ After authenticating, you can use this library to interact with Azure Cosmos DB 
 - Latest version of [.NET](/dotnet).
 
 :::zone-end
+
 :::zone pivot="programming-language-ts"
 
 - Latest version of [TypeScript](https://www.typescriptlang.org).
 
 :::zone-end
+
 :::zone pivot="programming-language-python"
 
 - Latest version of [Python](https://www.python.org).
+
+:::zone-end
+
+:::zone pivot="programming-language-java"
+
+- Latest version of [Java](/java/openjdk).
+
+:::zone-end
+
+:::zone pivot="programming-language-Go"
+
+- Latest version of [Go](https://go.dev/).
 
 :::zone-end
 
