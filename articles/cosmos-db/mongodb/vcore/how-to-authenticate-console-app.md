@@ -46,10 +46,6 @@ This guide uses the open-souce `pymongo` package from PyPI.
 
 :::zone-end
 
-:::zone pivot="programming-language-rust"
-
-:::zone-end
-
 After authenticating, you can use this library to interact with Azure Cosmos DB for MongoDB vCore using the same methods and classes you would typically use to interact with any other MongoDB or DocumentDB instance.
 
 ## Prerequisites
@@ -387,40 +383,6 @@ Next, create a new console application project and import the necessary librarie
 
     ```bash
     go get -u  go.mongodb.org/mongo-driver/v2/mongo
-    ```
-
-1. TODO
-
-    ```bash
-
-    ```
-    
-1. TODO
-
-    ```bash
-    
-    ```
-    
-1. TODO
-    
-    ```bash
-    
-    ```
-
-:::zone-end
-
-:::zone pivot="programming-language-rust"
-
-1. TODO
-
-    ```bash
-
-    ```
-
-1. TODO
-
-    ```bash
-
     ```
 
 1. TODO
@@ -838,40 +800,6 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 			panic(err)
 		}
 	}()
-    ```
-
-:::zone-end
-
-:::zone pivot="programming-language-rust"
-
-1. TODO
-
-    ```rust
-    
-    ```
-
-1. TODO
-
-    ```rust
-    
-    ```
-
-1. TODO
-
-    ```rust
-    
-    ```
-
-1. TODO
-
-    ```rust
-    
-    ```
-
-1. TODO
-
-    ```rust
-    
     ```
 
 :::zone-end
@@ -1334,40 +1262,6 @@ Finally, use the official library to perform common tasks with databases, collec
 
 :::zone-end
 
-:::zone pivot="programming-language-rust"
-
-1. TODO
-
-    ```rust
-    
-    ```
-
-1. TODO
-
-    ```rust
-    
-    ```
-
-1. TODO
-
-    ```rust
-    
-    ```
-
-1. TODO
-
-    ```rust
-    
-    ```
-
-1. TODO
-
-    ```rust
-    
-    ```
-
-:::zone-end
-
 ## Related content
 
 - [Microsoft Entra authentication overview](entra-authentication.md)
@@ -1397,12 +1291,6 @@ Finally, use the official library to perform common tasks with databases, collec
 :::zone-end
 
 :::zone pivot="programming-language-go"
-
-- [TODO](about:blank)
-
-:::zone-end
-
-:::zone pivot="programming-language-rust"
 
 - [TODO](about:blank)
 

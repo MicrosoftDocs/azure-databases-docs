@@ -165,5 +165,3 @@ groups:
     title: Java
   - id: programming-language-go
     title: Go
-  - id: programming-language-rust
-    title: Rust
