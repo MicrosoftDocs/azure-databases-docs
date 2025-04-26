@@ -244,9 +244,33 @@ Next, create a new console application project and import the necessary librarie
     ```
 
 :::zone-end
+
 :::zone pivot="programming-language-ts"
+
+TODO
+
+```bash
+npm install @azure/identity
+```
+
+```bash
+npm install mongodb
+```
+
 :::zone-end
+
 :::zone pivot="programming-language-python"
+
+TODO
+
+```bash
+pip install azure.identity
+```
+
+```bash
+pip install pymongo
+```
+
 :::zone-end
 
 ## Connect to the cluster
@@ -354,18 +378,80 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     ```
     
 :::zone-end
+
 :::zone pivot="programming-language-ts"
+
+TODO
+
+```typescript
+import { AccessToken, DefaultAzureCredential, TokenCredential } from '@azure/identity';
+import { Collection, Db, Filter, FindCursor, MongoClient, OIDCCallbackParams, OIDCResponse, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
+
+const AzureIdentityTokenCallback = async (params: OIDCCallbackParams, credential: TokenCredential): Promise<OIDCResponse> => {
+    const tokenResponse: AccessToken | null = await credential.getToken(['https://ossrdbms-aad.database.windows.net/.default']);
+    return {
+        accessToken: tokenResponse?.token || '',
+        expiresInSeconds: (tokenResponse?.expiresOnTimestamp || 0) - Math.floor(Date.now() / 1000)
+    };
+};
+
+const accountName: string = '<azure-cosmos-db-mongodb-vcore-account-name>';
+
+const credential: TokenCredential = new DefaultAzureCredential();
+
+const client = new MongoClient(
+    `mongodb+srv://${accountName}.global.mongocluster.cosmos.azure.com/`, {
+    connectTimeoutMS: 120000,
+    tls: true,
+    retryWrites: true,
+    authMechanism: 'MONGODB-OIDC',
+    authMechanismProperties: {
+        OIDC_CALLBACK: (params: OIDCCallbackParams) => AzureIdentityTokenCallback(params, credential),
+        ALLOWED_HOSTS: ['*.azure.com']
+    }
+}
+);
+
+console.log('Client created');
+```
+
 :::zone-end
+
 :::zone pivot="programming-language-python"
 
 TODO
 
-```bash
-pip install azure.identity
-```
+```python
+from azure.identity import DefaultAzureCredential
+from pymongo import MongoClient
+from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackResult
 
-```bash
-pip install pymongo
+
+class AzureIdentityTokenCallback(OIDCCallback):
+    def __init__(self, credential):
+        self.credential = credential
+
+    def fetch(self, context: OIDCCallbackContext) -> OIDCCallbackResult:
+        token = self.credential.get_token(
+            "https://ossrdbms-aad.database.windows.net/.default").token
+        return OIDCCallbackResult(access_token=token)
+
+
+accountName = "<azure-cosmos-db-mongodb-vcore-account-name>"
+
+credential = DefaultAzureCredential()
+authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
+
+client = MongoClient(
+    f"mongodb+srv://{accountName}.global.mongocluster.cosmos.azure.com/",
+    connectTimeoutMS=120000,
+    tls=True,
+    retryWrites=True,
+    authMechanism="MONGODB-OIDC",
+    authMechanismProperties=authProperties
+)
+
+print("Client created")
 ```
 
 :::zone-end
@@ -507,44 +593,86 @@ Finally, use the official `MongoDB.Driver` library to perform common tasks with 
     ```
 
 :::zone-end
+
 :::zone pivot="programming-language-ts"
+
+TODO
+
+```typescript
+
+
+const database: Db = client.db('<database-name>');
+
+console.log('Database pointer created');
+
+const collection: Collection<Product> = database.collection<Product>('<collection-name>');
+
+console.log('Collection pointer created');
+
+var document: Product = {
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    category: 'gear-surf-surfboards',
+    name: 'Yamba Surfboard',
+    quantity: 12,
+    price: 850.00,
+    clearance: false
+};
+
+var query: Filter<Product> = {
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'
+};
+var payload: UpdateFilter<Product> = {
+    $set: document
+};
+var options: UpdateOptions = {
+    upsert: true
+};
+var response: UpdateResult<Product> = await collection.updateOne(query, payload, options);
+
+if (response.acknowledged) {
+    console.log(`Documents upserted count:\t${response.matchedCount}`);
+}
+
+var query: Filter<Product> = {
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    category: 'gear-surf-surfboards'
+};
+
+var response: WithId<Product> | null = await collection.findOne(query);
+
+var read_item: Product = response as Product;
+
+console.log(`Read document _id:\t${read_item._id}`);
+
+var query: Filter<Product> = {
+    category: 'gear-surf-surfboards'
+};
+
+var response: FindCursor<WithId<Product>> = await collection.find(query);
+
+for await (const document of response) {
+    console.log(`Found document:\t${JSON.stringify(document)}`);
+}
+
+await client.close();
+
+interface Product {
+    _id: string;
+    category: string;
+    name: string;
+    quantity: number;
+    price: number;
+    clearance: boolean;
+}
+```
+
 :::zone-end
+
 :::zone pivot="programming-language-python"
 
 TODO
 
 ```python
-from azure.identity import DefaultAzureCredential
-from pymongo import MongoClient
-from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackResult
-
-
-class AzureIdentityTokenCallback(OIDCCallback):
-    def __init__(self, credential):
-        self.credential = credential
-
-    def fetch(self, context: OIDCCallbackContext) -> OIDCCallbackResult:
-        token = self.credential.get_token(
-            "https://ossrdbms-aad.database.windows.net/.default").token
-        return OIDCCallbackResult(access_token=token)
-
-
-accountName = "<azure-cosmos-db-mongodb-vcore-account-name>"
-
-credential = DefaultAzureCredential()
-authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
-
-client = MongoClient(
-    f"mongodb+srv://{accountName}.global.mongocluster.cosmos.azure.com/",
-    connectTimeoutMS=120000,
-    tls=True,
-    retryWrites=True,
-    authMechanism="MONGODB-OIDC",
-    authMechanismProperties=authProperties
-)
-
-print("Client created")
-
 database = client.get_database("<database-name>")
 
 print("Database pointer created")
