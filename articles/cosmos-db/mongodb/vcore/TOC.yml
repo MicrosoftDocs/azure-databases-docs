@@ -123,6 +123,18 @@
       href: ../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=CBDMongovCore&context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: Create a console app with Microsoft Entra ID authentication
       href: how-to-authenticate-console-app.md
+    - name: Build a console app
+      items:
+        - name: .NET
+          href: how-to-build-dotnet-console-app.md
+        - name: Python
+          href: how-to-build-python-console-app.md
+        - name: Node.js
+          href: how-to-build-nodejs-console-app.md
+        - name: Java
+          href: how-to-build-java-console-app.md
+        - name: Go
+          href: how-to-build-go-console-app.md
     - name: Use community tools
       items:
         - name: Connect using Studio 3T
