@@ -648,7 +648,7 @@
       - name: Migrate from Single Server
         href: migrate/migration-service/tutorial-migration-service-single-to-flexible.md
       - name: Automigration of Azure Database for PostgreSQL - Single Server to Flexible Server
-        href: migrate/automigration-single-to-flexible-postgresql.md
+        href: migrate/automigration-single-to-flexible-postgresql.md 
       - name: Automigrations of Azure Database for PostgreSQL - Single Server with Private End Point
         href: migrate/automigration-private-end-point.md
     - name: Tutorials for migrating from PostgreSQL
