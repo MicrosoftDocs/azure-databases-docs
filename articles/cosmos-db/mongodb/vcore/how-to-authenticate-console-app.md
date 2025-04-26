@@ -7,7 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 04/25/2025
+ms.date: 04/28/2025
 ms.custom: devx-track-js, devx-track-python, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: programming-languages-set-documentdb
 ai-usage: ai-assisted
