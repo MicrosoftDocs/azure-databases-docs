@@ -27,7 +27,7 @@ The next section will have a step-by-step in how to manually create a copy activ
 - An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server)
 - A Microsoft Fabric Data Factory [Data pipeline](/fabric/data-factory/pipeline-landing-page)
 
-### Create a Copy Data Activity via Azure portal
+### Create a Copy Data Activity via Fabric portal
 
 1. In Microsoft Fabric, select your workspace and switch to **Data factory** and, select the **New item** button, and select **Data pipeline** and provide a name in the **New pipeline" popup to create a Data pipeline
 
