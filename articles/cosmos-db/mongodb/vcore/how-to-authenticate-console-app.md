@@ -661,13 +661,62 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. TODO
 
     ```java
+    import java.util.concurrent.TimeUnit;
     
+    import org.bson.Document;
+    import org.bson.conversions.Bson;
+    
+    import com.azure.core.credential.TokenCredential;
+    import com.azure.core.credential.TokenRequestContext;
+    import com.azure.identity.DefaultAzureCredentialBuilder;
+    import com.mongodb.MongoClientSettings;
+    import com.mongodb.MongoCredential;
+    import com.mongodb.MongoCredential.OidcCallbackContext;
+    import com.mongodb.MongoCredential.OidcCallbackResult;
+    import com.mongodb.client.MongoClient;
+    import com.mongodb.client.MongoClients;
+    import com.mongodb.client.MongoCollection;
+    import com.mongodb.client.MongoDatabase;
+    import com.mongodb.client.model.Filters;
+    import com.mongodb.client.model.ReplaceOptions;
+    import com.mongodb.client.result.UpdateResult;
     ```
 
 1. TODO
 
     ```java
-    
+    TokenCredential credential = new DefaultAzureCredentialBuilder().build();
+
+    MongoCredential.OidcCallback oidcCallback = new MongoCredential.OidcCallback() {
+        @Override
+        public OidcCallbackResult onRequest(OidcCallbackContext context) {
+            TokenRequestContext tokenRequestContext = new TokenRequestContext()
+                    .addScopes("https://ossrdbms-aad.database.windows.net/.default");
+            String token = credential.getTokenSync(tokenRequestContext).getToken();
+            return new OidcCallbackResult(token);
+        }
+    };
+
+    MongoCredential mongoCredential = MongoCredential.createOidcCredential(null)
+            .withMechanismProperty("OIDC_CALLBACK", oidcCallback);
+
+    String accountName = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
+    String host = accountName + ".global.mongocluster.cosmos.azure.com";
+
+    MongoClientSettings settings = MongoClientSettings.builder()
+            .applyToClusterSettings(builder -> builder
+                    .srvHost(host))
+            .applyToSocketSettings(builder -> builder
+                    .connectTimeout(2, TimeUnit.MINUTES))
+            .applyToSslSettings(builder -> builder
+                    .enabled(true))
+            .retryWrites(true)
+            .credential(mongoCredential)
+            .build();
+
+    MongoClient client = MongoClients.create(settings);
+
+    System.out.println("Client created");
     ```
 
 1. TODO
@@ -1061,7 +1110,44 @@ Finally, use the official library to perform common tasks with databases, collec
 1. TODO
 
     ```java
-    
+    MongoDatabase database = client.getDatabase("<database-name>");
+
+    System.out.println("Database pointer created");
+
+    MongoCollection<Document> collection = database.getCollection("<collection-name>");
+
+    System.out.println("Collection pointer created");
+
+    Document document = new Document()
+            .append("_id", "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb")
+            .append("category", "gear-surf-surfboards")
+            .append("name", "Yamba Surfboard")
+            .append("quantity", 12)
+            .append("price", 850.00)
+            .append("clearance", false);
+
+    Bson match = Filters.eq("_id", "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb");
+
+    ReplaceOptions options = new ReplaceOptions().upsert(true);
+    UpdateResult result = collection.replaceOne(match, document, options);
+
+    System.out.println("Document upserted with _id:\\t" + result.getUpsertedId().asString().getValue());
+
+    Bson filter = Filters.eq("_id", "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb");
+
+    collection.find(filter).forEach(doc -> {
+        System.out.println("Read document _id:\\t" + doc.toJson());
+    });
+
+    Bson query = Filters.eq("category", "gear-surf-surfboards");
+
+    collection.find(query).forEach(doc -> {
+        System.out.println("Found document:\\t" + doc.toJson());
+    });
+
+    client.close();
+
+    System.out.println("Client closed");
     ```
 
 1. TODO
