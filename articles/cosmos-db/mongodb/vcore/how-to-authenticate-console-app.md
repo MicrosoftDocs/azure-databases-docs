@@ -357,6 +357,17 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 :::zone pivot="programming-language-ts"
 :::zone-end
 :::zone pivot="programming-language-python"
+
+TODO
+
+```bash
+pip install azure.identity
+```
+
+```bash
+pip install pymongo
+```
+
 :::zone-end
 
 ## Perform common operations
@@ -499,6 +510,82 @@ Finally, use the official `MongoDB.Driver` library to perform common tasks with 
 :::zone pivot="programming-language-ts"
 :::zone-end
 :::zone pivot="programming-language-python"
+
+TODO
+
+```python
+from azure.identity import DefaultAzureCredential
+from pymongo import MongoClient
+from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackResult
+
+
+class AzureIdentityTokenCallback(OIDCCallback):
+    def __init__(self, credential):
+        self.credential = credential
+
+    def fetch(self, context: OIDCCallbackContext) -> OIDCCallbackResult:
+        token = self.credential.get_token(
+            "https://ossrdbms-aad.database.windows.net/.default").token
+        return OIDCCallbackResult(access_token=token)
+
+
+accountName = "<azure-cosmos-db-mongodb-vcore-account-name>"
+
+credential = DefaultAzureCredential()
+authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
+
+client = MongoClient(
+    f"mongodb+srv://{accountName}.global.mongocluster.cosmos.azure.com/",
+    connectTimeoutMS=120000,
+    tls=True,
+    retryWrites=True,
+    authMechanism="MONGODB-OIDC",
+    authMechanismProperties=authProperties
+)
+
+print("Client created")
+
+database = client.get_database("<database-name>")
+
+print("Database pointer created")
+
+collection = database.get_collection("<container-name>")
+
+print("Collection pointer created")
+
+new_document = {
+    "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    "category": "gear-surf-surfboards",
+    "name": "Yamba Surfboard",
+    "quantity": 12,
+    "price": 850.00,
+    "clearance": False,
+}
+
+filter = {
+    "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+}
+payload = {
+    "$set": new_document
+}
+result = collection.update_one(filter, payload, upsert=True)
+
+filter = {
+    "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    "category": "gear-surf-surfboards"
+}
+existing_document = collection.find_one(filter)
+print(f"Read document _id:\t{existing_document['_id']}")
+
+filter = {
+    "category": "gear-surf-surfboards"
+}
+matched_documents = collection.find(filter)
+
+for document in matched_documents:
+    print(f"Found document:\t{document}")
+```
+
 :::zone-end
 
 ## Related content
