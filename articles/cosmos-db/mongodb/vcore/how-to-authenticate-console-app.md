@@ -83,7 +83,7 @@ After authenticating, you can use this library to interact with Azure Cosmos DB 
 
 :::zone-end
 
-:::zone pivot="programming-language-Go"
+:::zone pivot="programming-language-go"
 
 - Latest version of [Go](https://go.dev/).
 
