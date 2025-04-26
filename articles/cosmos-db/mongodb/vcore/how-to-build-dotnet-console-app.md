@@ -1,7 +1,7 @@
 ---
 title: Build a .NET console app
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Connect to an Azure Cosmos DB for MongoDB (vCore) cluster by using a console application in your preferred developer language.
+description: Connect to an Azure Cosmos DB for MongoDB (vCore) cluster by using a .NET console application in your preferred developer language.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
