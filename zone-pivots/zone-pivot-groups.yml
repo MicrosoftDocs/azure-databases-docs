@@ -162,7 +162,7 @@ groups:
   - id: programming-language-python
     title: Python
   - id: programming-language-java
-    title: java
+    title: Java
   - id: programming-language-go
     title: Go
   - id: programming-language-rust
