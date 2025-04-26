@@ -38,15 +38,15 @@ This guide uses the open-souce `pymongo` package from PyPI.
 
 :::zone-end
 
-:::zone pivot="programming-language-java
+:::zone pivot="programming-language-java"
 
 :::zone-end
 
-:::zone pivot="programming-language-go
+:::zone pivot="programming-language-go"
 
 :::zone-end
 
-:::zone pivot="programming-language-rust
+:::zone pivot="programming-language-rust"
 
 :::zone-end
 
@@ -333,7 +333,7 @@ Next, create a new console application project and import the necessary librarie
 
 :::zone-end
 
-:::zone pivot="programming-language-java
+:::zone pivot="programming-language-java"
 
 1. TODO
 
@@ -375,7 +375,7 @@ Next, create a new console application project and import the necessary librarie
 
 :::zone-end
 
-:::zone pivot="programming-language-go
+:::zone pivot="programming-language-go"
 
 1. TODO
 
@@ -409,7 +409,7 @@ Next, create a new console application project and import the necessary librarie
 
 :::zone-end
 
-:::zone pivot="programming-language-rust
+:::zone pivot="programming-language-rust"
 
 1. TODO
 
@@ -656,7 +656,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 :::zone-end
 
-:::zone pivot="programming-language-java
+:::zone pivot="programming-language-java"
 
 1. TODO
 
@@ -739,7 +739,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 :::zone-end
 
-:::zone pivot="programming-language-go
+:::zone pivot="programming-language-go"
 
 1. TODO
 
@@ -773,7 +773,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 :::zone-end
 
-:::zone pivot="programming-language-rust
+:::zone pivot="programming-language-rust"
 
 1. TODO
 
@@ -1105,7 +1105,7 @@ Finally, use the official library to perform common tasks with databases, collec
 
 :::zone-end
 
-:::zone pivot="programming-language-java
+:::zone pivot="programming-language-java"
 
 1. TODO
 
@@ -1176,7 +1176,7 @@ Finally, use the official library to perform common tasks with databases, collec
 
 :::zone-end
 
-:::zone pivot="programming-language-go
+:::zone pivot="programming-language-go"
 
 1. TODO
 
@@ -1210,7 +1210,7 @@ Finally, use the official library to perform common tasks with databases, collec
 
 :::zone-end
 
-:::zone pivot="programming-language-rust
+:::zone pivot="programming-language-rust"
 
 1. TODO
 
