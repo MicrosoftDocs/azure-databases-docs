@@ -380,13 +380,13 @@ Next, create a new console application project and import the necessary librarie
 1. TODO
 
     ```bash
-
+    go get -u github.com/Azure/azure-sdk-for-go/sdk/azidentity
     ```
 
 1. TODO
 
     ```bash
-
+    go get -u  go.mongodb.org/mongo-driver/v2/mongo
     ```
 
 1. TODO
@@ -744,31 +744,100 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. TODO
 
     ```go
+    import (
+    	"context"
+    	"crypto/tls"
+    	"encoding/json"
+    	"fmt"
+    	"time"
     
+    	"github.com/Azure/azure-sdk-for-go/sdk/azcore/policy"
+    	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+    
+    	"go.mongodb.org/mongo-driver/v2/bson"
+    	"go.mongodb.org/mongo-driver/v2/mongo"
+    	"go.mongodb.org/mongo-driver/v2/mongo/options"
+    )
     ```
 
 1. TODO
 
     ```go
-    
+	ctx := context.Background()
     ```
 
 1. TODO
 
     ```go
-    
+	credential, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		panic(err)
+	}
     ```
 
 1. TODO
 
     ```go
-    
+	azureIdentityTokenCallback := func(_ context.Context,
+		_ *options.OIDCArgs) (*options.OIDCCredential, error) {
+		accessToken, err := credential.GetToken(ctx, policy.TokenRequestOptions{
+			Scopes: []string{"https://ossrdbms-aad.database.windows.net/.default"},
+		})
+		if err != nil {
+			return nil, err
+		}
+		return &options.OIDCCredential{
+			AccessToken: accessToken.Token,
+		}, nil
+	}
     ```
 
 1. TODO
 
     ```go
-    
+	accountName := "<azure-cosmos-db-mongodb-vcore-account-name>"
+	uri := fmt.Sprintf("mongodb+srv://%s.global.mongocluster.cosmos.azure.com/", accountName)
+    ```
+
+1. TODO
+
+    ```go
+	auth := options.Credential{
+		AuthMechanism:       "MONGODB-OIDC",
+		OIDCMachineCallback: azureIdentityTokenCallback,
+	}
+    ```
+
+1. TODO
+
+    ```go
+	clientOptions := options.Client().
+		ApplyURI(uri).
+		SetConnectTimeout(2 * time.Minute).
+		SetRetryWrites(true).
+		SetTLSConfig(&tls.Config{}).
+		SetAuth(auth)
+    ```
+
+1. TODO
+
+    ```go
+	client, err := mongo.Connect(clientOptions)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Client created")
+    ```
+
+1. TODO
+
+    ```go
+	defer func() {
+		if err = client.Disconnect(ctx); err != nil {
+			panic(err)
+		}
+	}()
     ```
 
 :::zone-end
@@ -1181,31 +1250,86 @@ Finally, use the official library to perform common tasks with databases, collec
 1. TODO
 
     ```go
-    
+	database := client.Database("cosmicworks")
+
+	fmt.Println("Database pointer created")
     ```
 
 1. TODO
 
     ```go
-    
+	collection := database.Collection("products")
+
+	fmt.Println("Collection pointer created")
     ```
 
 1. TODO
 
     ```go
-    
+	opts := options.Replace().SetUpsert(true)
+	upsertFilter := bson.D{{Key: "_id", Value: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"}}
+	priceDecimal, err := bson.ParseDecimal128("850.00")
+	if err != nil {
+		panic(err)
+	}
+	document := Product{
+		ID:        "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+		Category:  "gear-surf-surfboards",
+		Name:      "Yamba Surfboard",
+		Quantity:  12,
+		Price:     priceDecimal,
+		Clearance: false}
+
+	result, err := collection.ReplaceOne(ctx, upsertFilter, document, opts)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("Documents upserted count:\t%d\n", result.UpsertedCount)
     ```
 
 1. TODO
 
     ```go
-    
+	readFilter := bson.D{{Key: "_id", Value: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"}, {Key: "category", Value: "gear-surf-surfboards"}}
+	var target Product
+	err = collection.FindOne(ctx, readFilter).Decode(&target)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("Read document name:\t%s\n", target.Name)
     ```
 
 1. TODO
 
     ```go
-    
+	queryFilter := bson.D{{Key: "category", Value: "gear-surf-surfboards"}}
+	cursor, err := collection.Find(ctx, queryFilter)
+	if err != nil {
+		panic(err)
+	}
+    ```
+
+1. TODO
+
+    ```go
+	var products []Product
+	if err = cursor.All(ctx, &products); err != nil {
+		panic(err)
+	}
+    ```
+
+1. TODO
+
+    ```go
+	for _, product := range products {
+		json, err := json.Marshal(product)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Printf("Found document:\t%s\n", string(json))
+	}
     ```
 
 :::zone-end
