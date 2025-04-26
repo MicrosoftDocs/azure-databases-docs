@@ -355,14 +355,22 @@ Next, create a new console application project and import the necessary librarie
     
 1. TODO
 
-    ```bash
-    
+    ```xml
+    <dependency>
+        <groupId>com.azure</groupId>
+        <artifactId>azure-identity</artifactId>
+        <version>1.15.4</version>
+    </dependency>
     ```
     
 1. TODO
     
-    ```bash
-    
+    ```xml
+    <dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongodb-driver-sync</artifactId>
+        <version>5.4.0</version>
+    </dependency>
     ```
 
 :::zone-end
