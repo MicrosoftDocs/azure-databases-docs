@@ -22,6 +22,7 @@ appliesto:
 In this guide, you build a console application to connect to an existing Azure Cosmos DB for MongoDB vCore cluster. This guide covers the required steps to configure the cluster for Microsoft Entra authentication and then to connect to the same cluster using the identity that you're currently signed-in with.
 
 This guide uses the open-source `go.mongodb.org/mongo-driver/v2/mongo` package from Go.
+
 After authenticating, you can use this library to interact with Azure Cosmos DB for MongoDB vCore using the same methods and classes you would typically use to interact with any other MongoDB or DocumentDB instance.
 
 ## Prerequisites
