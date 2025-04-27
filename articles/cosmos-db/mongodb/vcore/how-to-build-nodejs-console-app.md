@@ -10,6 +10,7 @@ ms.topic: how-to
 ms.date: 04/28/2025
 ms.custom: devx-track-js
 ai-usage: ai-generated
+zone_pivot_groups: azure-devlang-nodejs
 appliesto:
   - ✅ MongoDB (vCore)
 # Customer Intent: As a database owner, I want to use Mongo Shell to connect to and query my database and collections.
@@ -73,6 +74,16 @@ Next, create a new console application project and import the necessary librarie
 
 Now, use the `Azure.Identity` library to get a `TokenCredential` to use to connect to your cluster. The official MongoDB driver has a special interface that must be implemented to obtain tokens from Microsoft Entra for use when connecting to the cluster.
 
+::: zone pivot="programming-language-js"
+
+```javascript
+
+```
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
+
 1. TODO
 
     ```typescript
@@ -123,9 +134,21 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     console.log('Client created');
     ```
 
+:::zone-end
+
 ## Perform common operations
 
 Finally, use the official library to perform common tasks with databases, collections, and documents. Here, you use the same classes and methods you would use to interact with MongoDB or DocumentDB to manage your collections and items.
+
+::: zone pivot="programming-language-js"
+
+```javascript
+
+```
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
 
 1. TODO
 
@@ -218,6 +241,8 @@ Finally, use the official library to perform common tasks with databases, collec
     ```typescript
     await client.close();
     ```
+
+:::zone-end
 
 ## Related content
 
