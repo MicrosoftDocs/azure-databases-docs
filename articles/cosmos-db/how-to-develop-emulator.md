@@ -1000,11 +1000,11 @@ Use the [Apache Cassandra Node.js driver](cassandra/manage-data-nodejs.md) to us
 
     :::code language="javascript" source="~/cosmos-db-apache-cassandra-javascript-samples/601-emulator/app.js" id="imports":::
 
-1. Use [`PlainTextAuthProvider`](https://docs.datastax.com/en/developer/nodejs-driver/4.6/api/module.auth/class.PlainTextAuthProvider/) to create a new object for the emulator's credentials. Use [`Client`](https://docs.datastax.com/en/developer/nodejs-driver/4.6/api/class.Client/) to connect to the emulator using the credentials.
+1. Use [`PlainTextAuthProvider`](https://docs.datastax.com/en/developer/nodejs-driver/4.6/api/module.auth/class.PlainTextAuthProvider/) to create a new object for the emulator's credentials. Use [`Client`](https://docs.datastax.com/en/developer/nodejs-driver/4.6/api/class.Client/index.html) to connect to the emulator using the credentials.
 
     :::code language="javascript" source="~/cosmos-db-apache-cassandra-javascript-samples/601-emulator/app.js" highlight="2-3" id="client":::
 
-1. Use [`execute`](https://docs.datastax.com/en/developer/nodejs-driver/4.6/api/class.Client/#execute) to run a command server-side to create a **keyspace** and **table**.
+1. Use [`execute`](https://docs.datastax.com/en/developer/nodejs-driver/4.6/api/class.Client/index.html#execute) to run a command server-side to create a **keyspace** and **table**.
 
     :::code language="javascript" source="~/cosmos-db-apache-cassandra-javascript-samples/601-emulator/app.js" highlight="1,5" id="resources":::
 
