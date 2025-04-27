@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 04/28/2025
 ms.custom: devx-track-js
-ai-usage: ai-generated
+ai-usage: ai-assisted
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
   - ✅ MongoDB (vCore)

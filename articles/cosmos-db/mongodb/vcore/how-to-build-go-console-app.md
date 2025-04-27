@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 04/28/2025
 ms.custom: devx-track-go
-ai-usage: ai-generated
+ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)
 # Customer Intent: As a database owner, I want to use Mongo Shell to connect to and query my database and collections.
