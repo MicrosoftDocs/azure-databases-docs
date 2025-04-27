@@ -17,12 +17,12 @@
       href: faq.yml
 - name: Quickstarts
   items:
-    - name: Develop app - Node.js
-      href: quickstart-nodejs.md
-    - name: Develop app - Python
-      href: quickstart-python.md
     - name: Develop app - .NET
       href: quickstart-dotnet.md
+    - name: Develop app - Python
+      href: quickstart-python.md
+    - name: Develop app - Node.js
+      href: quickstart-nodejs.md
     - name: Create resources - Azure portal
       href: quickstart-portal.md
     - name: Create resources - Bicep template
