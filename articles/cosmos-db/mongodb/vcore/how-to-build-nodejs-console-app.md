@@ -18,7 +18,7 @@ appliesto:
 
 # Build a Node.js console app with Azure Cosmos DB for MongoDB vCore
 
-[!INCLUDE[Developer console app selector](includes/build-console-app-dev-selector.md)]
+[!INCLUDE[Developer console app selector](includes/selector-build-console-app-dev.md)]
 
 [!INCLUDE[Console app introduction](includes/console-app-introduction.md)]
 
