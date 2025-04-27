@@ -17,6 +17,8 @@ appliesto:
 
 # Build a .NET console app with Azure Cosmos DB for MongoDB vCore
 
+[!INCLUDE[Developer console app selector](includes/build-console-app-dev-selector.md)]
+
 In this guide, you build a console application to connect to an existing Azure Cosmos DB for MongoDB vCore cluster. This guide covers the required steps to configure the cluster for Microsoft Entra authentication and then to connect to the same cluster using the identity that you're currently signed-in with.
 
 This guide uses the open-source `MongoDB.Driver` library from NuGet.
@@ -150,10 +152,10 @@ First, get the unique identifier for your currently signed-in identity. Then, us
     ```
 
     > [!NOTE]
-    > For example, if your parent account is named `example-account` and your principal ID was `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`, the name of the resource would be:
+    > For example, if your parent resource is named `example-cluster` and your principal ID was `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`, the name of the resource would be:
     >
     > ```json
-    > "example-account/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+    > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
     > ```
     >
 
@@ -270,9 +272,9 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. Create a string variable with the name of your existing cluster. Then, use that variable to create a new instance of type `MongoUrl` using `MongoUrl.Create`
 
     ```csharp
-    string accountName = "<azure-cosmos-db-mongodb-vcore-account-name>";
+    string clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
     
-    MongoUrl url = MongoUrl.Create($"mongodb+srv://{accountName}.global.mongocluster.cosmos.azure.com/");
+    MongoUrl url = MongoUrl.Create($"mongodb+srv://{clusterName}.global.mongocluster.cosmos.azure.com/");
     ```
 
 1. Configure a new `MongoSettings` instance using the `MongoUrl` created in the previous steps and the standard best practice configuration for Azure Cosmos DB for MongoDB vCore.

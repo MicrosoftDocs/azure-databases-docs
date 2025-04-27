@@ -19,7 +19,7 @@ appliesto:
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application using .NET. Azure Cosmos DB for MongoDB is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using .NET.
+In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB vCore application using .NET. Azure Cosmos DB for MongoDB is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using .NET.
 
 [Library source code](https://github.com/mongodb/mongo-csharp-driver) | [Package (NuGet)](https://www.nuget.org/packages/MongoDB.Driver) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -33,7 +33,7 @@ If you don't have an Azure account, create a [free account](https://azure.micros
 
 ## Initialize the project
 
-Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB vCore cluster and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
 1. Open a terminal in an empty directory.
 
@@ -51,7 +51,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. During initialization, configure a unique environment name.
 
-1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
+1. Deploy the Azure Cosmos DB cluster using `azd up`. The Bicep templates also deploy a sample web application.
 
     ```azurecli
     azd up
@@ -122,8 +122,8 @@ using MongoDB.Driver.Authentication.Oidc;
 | Name | Description |
 | --- | --- |
 | `MongoClient` | Type used to connect to MongoDB. |
-| `Database` | Represents a database in the account. |
-| `Collection` | Represents a collection within a database in the account. |
+| `Database` | Represents a database on the cluster. |
+| `Collection` | Represents a collection within a database on the cluster. |
 
 ## Code examples
 
@@ -186,12 +186,12 @@ While Microsoft Entra authentication for Azure Cosmos DB for MongoDB vCore can u
     AzureIdentityTokenHandler tokenHandler = new(credential, tenantId);
     ```
 
-1. Build an instance of `MongUrl` using the endpoint and scheme for your recently deployed Azure Cosmos DB for MongoDB vCore instance.
+1. Build an instance of `MongoUrl` using the endpoint and scheme for your recently deployed Azure Cosmos DB for MongoDB vCore instance.
 
     ```csharp
-    string accountName = "<azure-cosmos-db-mongodb-vcore-account-name>";
+    string clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
     
-    MongoUrl url = MongoUrl.Create($"mongodb+srv://{accountName}.global.mongocluster.cosmos.azure.com/");
+    MongoUrl url = MongoUrl.Create($"mongodb+srv://{clusterName}.global.mongocluster.cosmos.azure.com/");
     ```
 
 1. Configure your `MongoClient` instance using known best practice configuration options for Azure Cosmos DB for MongoDB vCore and the custom `IOidcCallback` implementation.

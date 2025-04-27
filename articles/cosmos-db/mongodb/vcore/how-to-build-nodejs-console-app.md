@@ -17,6 +17,8 @@ appliesto:
 
 # Build a Node.js console app with Azure Cosmos DB for MongoDB vCore
 
+[!INCLUDE[Developer console app selector](includes/build-console-app-dev-selector.md)]
+
 In this guide, you build a console application to connect to an existing Azure Cosmos DB for MongoDB vCore cluster. This guide covers the required steps to configure the cluster for Microsoft Entra authentication and then to connect to the same cluster using the identity that you're currently signed-in with.
 
 This guide uses the open-source `mongodb` package from npm.
@@ -150,10 +152,10 @@ First, get the unique identifier for your currently signed-in identity. Then, us
     ```
 
     > [!NOTE]
-    > For example, if your parent account is named `example-account` and your principal ID was `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`, the name of the resource would be:
+    > For example, if your parent resource is named `example-cluster` and your principal ID was `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`, the name of the resource would be:
     >
     > ```json
-    > "example-account/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+    > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
     > ```
     >
 
@@ -248,7 +250,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. TODO
 
     ```typescript
-    const accountName: string = '<azure-cosmos-db-mongodb-vcore-account-name>';
+    const clusterName: string = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
     ```
 
 1. TODO
@@ -261,7 +263,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
     ```typescript
     const client = new MongoClient(
-        `mongodb+srv://${accountName}.global.mongocluster.cosmos.azure.com/`, {
+        `mongodb+srv://${clusterName}.global.mongocluster.cosmos.azure.com/`, {
         connectTimeoutMS: 120000,
         tls: true,
         retryWrites: true,

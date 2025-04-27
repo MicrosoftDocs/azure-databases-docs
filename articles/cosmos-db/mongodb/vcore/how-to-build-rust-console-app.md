@@ -1,27 +1,27 @@
 ---
-title: Build a Python console app
+title: Build a Rust console app
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Connect to an Azure Cosmos DB for MongoDB (vCore) cluster by using a Python console application in your preferred developer language.
+description: Connect to an Azure Cosmos DB for MongoDB (vCore) cluster by using a Rust console application in your preferred developer language.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 04/28/2025
-ms.custom: devx-track-python
+ms.custom: devx-track-rust
 ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)
 # Customer Intent: As a database owner, I want to use Mongo Shell to connect to and query my database and collections.
 ---
 
-# Build a Python console app with Azure Cosmos DB for MongoDB vCore
+# Build a Rust console app with Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[Developer console app selector](includes/build-console-app-dev-selector.md)]
 
-In this guide, you build a console application to connect to an existing Azure Cosmos DB for MongoDB vCore cluster. This guide covers the required steps to configure the cluster for Microsoft Entra authentication and then to connect to the same cluster using the identity that you're currently signed-in with.
+In this guide, you build a Rust console application to connect to an existing Azure Cosmos DB for MongoDB vCore cluster. This guide covers the required steps to configure the cluster for Microsoft Entra authentication and then to connect to the same cluster using the identity that you're currently signed-in with.
 
-This guide uses the open-souce `pymongo` package from PyPI.
+This guide uses the open-souce `mongodb` crate from Rust.
 
 After authenticating, you can use this library to interact with Azure Cosmos DB for MongoDB vCore using the same methods and classes you would typically use to interact with any other MongoDB or DocumentDB instance.
 
@@ -40,9 +40,9 @@ First, get the unique identifier for your currently signed-in identity. Then, us
 
     ```azurecli-interactive
     az ad signed-in-user show
-    ```    
+    ```
 
-1. The command outputs a JSON response containing various fields. 
+1. The command outputs a JSON response containing various fields.
 
     ```json
     {
@@ -95,7 +95,7 @@ First, get the unique identifier for your currently signed-in identity. Then, us
         ]
       }
     }
-    ```    
+    ```
 
 1. Then, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes`.
 
@@ -107,7 +107,7 @@ First, get the unique identifier for your currently signed-in identity. Then, us
         --properties @properties.json \
         --latest-include-preview
     ```
-    
+
 1. Validate that the configuration was successful by using `az resource show` again and observing the `properties.authConfig` property.
 
     ```azurecli-interactive
@@ -163,9 +163,9 @@ First, get the unique identifier for your currently signed-in identity. Then, us
 
     ```azurecli-interactive
     az account show
-    ```    
+    ```
 
-1. The command outputs a JSON response containing various fields. 
+1. The command outputs a JSON response containing various fields.
 
     ```json
     {
@@ -197,31 +197,19 @@ Next, create a new console application project and import the necessary librarie
 1. TODO
 
     ```bash
-
+    cargo add azure_core
     ```
 
 1. TODO
 
     ```bash
-
+    cargo add azure_identity
     ```
 
 1. TODO
 
     ```bash
-
-    ```
-    
-1. TODO
-
-    ```bash
-    pip install azure.identity
-    ```
-    
-1. TODO
-    
-    ```bash
-    pip install pymongo
+    cargo add mongodb
     ```
 
 ## Connect to the cluster
@@ -230,51 +218,69 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 1. TODO
 
-    ```python
-    from azure.identity import DefaultAzureCredential
-    from pymongo import MongoClient
-    from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackResult
+    ```rust
+    use azure_core::credentials::TokenCredential;
+    use azure_identity::DefaultAzureCredential;
+    use futures::{FutureExt, TryStreamExt};
+    use mongodb::{
+        Client,
+        bson::doc,
+        options::{
+            AuthMechanism, ClientOptions, Credential,
+            oidc::{self, IdpServerResponse},
+        },
+    };
+    use serde::{Deserialize, Serialize};
     ```
 
 1. TODO
 
-    ```python
-    class AzureIdentityTokenCallback(OIDCCallback):
-        def __init__(self, credential):
-            self.credential = credential
+    ```rust
+    #[tokio::main]
+    async fn main() -> Result<(), Box<dyn std::error::Error>> {
+        let credential = DefaultAzureCredential::new()?;
     
-        def fetch(self, context: OIDCCallbackContext) -> OIDCCallbackResult:
-            token = self.credential.get_token(
-                "https://ossrdbms-aad.database.windows.net/.default").token
-            return OIDCCallbackResult(access_token=token)
-    ```
-
-1. TODO
-
-    ```python
-    clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>"
-    ```
-
-1. TODO
-
-    ```python
-    credential = DefaultAzureCredential()
-    authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
-    ```
-
-1. TODO
-
-    ```python
-    client = MongoClient(
-        f"mongodb+srv://{clusterName}.global.mongocluster.cosmos.azure.com/",
-        connectTimeoutMS=120000,
-        tls=True,
-        retryWrites=True,
-        authMechanism="MONGODB-OIDC",
-        authMechanismProperties=authProperties
-    )
+        let azure_identity_token_credential = Credential::builder()
+            .mechanism(AuthMechanism::MongoDbOidc)
+            .oidc_callback(oidc::Callback::machine(move |_| {
+                let azure_credential = credential.clone();
+                async move {
+                    let access_token = azure_credential
+                        .get_token(&["https://ossrdbms-aad.database.windows.net/.default"])
+                        .await
+                        .map_err(|e| {
+                            mongodb::error::Error::custom(format!("Azure token error: {}", e))
+                        })?;
+                    Ok(IdpServerResponse::builder()
+                        .access_token(access_token.token.secret().to_owned())
+                        .build())
+                }
+                .boxed()
+            }))
+            .build()
+            .into();
     
-    print("Client created")
+        let cluster_name = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
+    
+        let uri = format!(
+            "mongodb+srv://{}.global.mongocluster.cosmos.azure.com/",
+            cluster_name
+        );
+    
+        let mut client_options = ClientOptions::parse(uri).await?;
+    
+        client_options.connect_timeout = Some(std::time::Duration::from_secs(120));
+        client_options.tls = Some(mongodb::options::Tls::Enabled(Default::default()));
+        client_options.retry_writes = Some(true);
+    
+        client_options.credential = Some(azure_identity_token_credential);
+    
+        let client = Client::with_options(client_options)?;
+    
+        println!("Client created");
+
+        Ok(())
+    }
     ```
 
 ## Perform common operations
@@ -283,62 +289,77 @@ Finally, use the official library to perform common tasks with databases, collec
 
 1. TODO
 
-    ```python
-    database = client.get_database("<database-name>")
-    
-    print("Database pointer created")
+    ```rust
+    #[derive(Serialize, Deserialize, Debug)]
+    struct Product {
+        _id: String,
+        category: String,
+        name: String,
+        quantity: i32,
+        price: f64,
+        clearance: bool,
+    }
     ```
 
 1. TODO
 
-    ```python
-    collection = database.get_collection("<container-name>")
-    
-    print("Collection pointer created")
+    ```rust
+    let database = client.database("<database-name>");
+
+    println!("Database pointer created");
     ```
 
 1. TODO
 
-    ```python
-    new_document = {
-        "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
-        "category": "gear-surf-surfboards",
-        "name": "Yamba Surfboard",
-        "quantity": 12,
-        "price": 850.00,
-        "clearance": False,
-    }
-    
-    filter = {
-        "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
-    }
-    payload = {
-        "$set": new_document
-    }
-    result = collection.update_one(filter, payload, upsert=True)
+    ```rust
+    let collection = database.collection::<Product>("<collection-name>");
+
+    println!("Collection pointer created");
     ```
 
 1. TODO
 
-    ```python
-    filter = {
-        "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
-        "category": "gear-surf-surfboards"
-    }
-    existing_document = collection.find_one(filter)
-    print(f"Read document _id:\t{existing_document['_id']}")
+    ```rust
+    let document = Product {
+        _id: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb".to_string(),
+        category: "gear-surf-surfboards".to_string(),
+        name: "Yamba Surfboard".to_string(),
+        quantity: 12,
+        price: 850.00,
+        clearance: false,
+    };
+
+    let response = collection
+        .update_one(
+            doc! { "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" },
+            doc! { "$set": mongodb::bson::to_document(&document)? },
+        )
+        .upsert(true)
+        .await?;
+
+    println!("Documents upserted count:\t{}", response.modified_count);
     ```
 
 1. TODO
 
-    ```python
-    filter = {
-        "category": "gear-surf-surfboards"
+    ```rust
+    let document = collection
+        .find_one(doc! { "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" })
+        .await?;
+
+    println!("Read document _id:\t{:#?}", document.unwrap()._id);
+    ```
+
+1. TODO
+
+    ```rust
+    let filter = doc! { "category": "gear-surf-surfboards" };
+
+    let mut cursor = collection.find(filter).await?;
+
+    while let Some(document) = cursor.try_next().await? {
+        println!("Found document:\t{:#?}", document);
     }
-    matched_documents = collection.find(filter)
-    
-    for document in matched_documents:
-        print(f"Found document:\t{document}")
     ```
 
 ## Related content
