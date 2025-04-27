@@ -150,18 +150,3 @@ groups:
     title: TypeScript
   - id: programming-language-js
     title: JavaScript
-# Owner sidandrews
-- id: programming-languages-set-documentdb
-  title: Programming languages
-  prompt: Choose a programming language
-  pivots:
-  - id: programming-language-csharp
-    title: C#
-  - id: programming-language-ts
-    title: JavaScript/TypeScript
-  - id: programming-language-python
-    title: Python
-  - id: programming-language-java
-    title: Java
-  - id: programming-language-go
-    title: Go
