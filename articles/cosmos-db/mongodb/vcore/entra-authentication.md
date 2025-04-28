@@ -15,8 +15,7 @@ appliesto:
 
 # Microsoft Entra ID authentication with Azure Cosmos DB for MongoDB vCore
 
-> [!IMPORTANT]
-> Microsoft Entra ID authentication in Azure Cosmos DB for MongoDB vCore is currently in preview. This preview version is provided without a service level agreement, and it isn't recommended for production workloads. Some features are unsupported or have limited capabilities.
+[!INCLUDE[Notice - Entra Authentication preview](includes/notice-entra-authentication-preview.md)]
 
 Azure Cosmos DB for MongoDB vCore supports integration with Microsoft Entra ID and native DocumentDB authentication. Each Azure Cosmos DB for MongoDB vCore cluster is created with native DocumentDB authentication enabled and one built-in administrative user.
 

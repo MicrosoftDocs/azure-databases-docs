@@ -4,6 +4,7 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Connect to an Azure Cosmos DB for MongoDB (vCore) cluster by using a Rust console application in your preferred developer language.
 author: seesharprun
 ms.author: sidandrews
+ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
@@ -12,12 +13,14 @@ ms.custom: devx-track-rust
 ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)
-# Customer Intent: As a database owner, I want to use Mongo Shell to connect to and query my database and collections.
+# Customer Intent: As a database developer, I want to build a Rust console application to quickly and securely connect to and query my database and collections.
 ---
 
 # Build a Rust console app with Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[Developer console app selector](includes/selector-build-console-app-dev.md)]
+
+[!INCLUDE[Notice - Entra Authentication preview](includes/notice-entra-authentication-preview.md)]
 
 In this guide, you create a Rust console application to connect to an Azure Cosmos DB for MongoDB vCore cluster. The guide covers setting up your development environment, using the `azure_identity` crate from the Azure SDK for Rust to authenticate, and managing documents within the database.
 
@@ -32,10 +35,6 @@ In this guide, you create a Rust console application to connect to an Azure Cosm
     - To enable Microsoft Entra authentication, [review the configuration guide](how-to-configure-entra-authentication.md).
 
 - Latest version of [Python](https://www.python.org).
-
-## Grant your identity access
-
-[!INCLUDE[Console app identity access](includes/console-app-identity-access.md)]
 
 ## Configure your console application
 

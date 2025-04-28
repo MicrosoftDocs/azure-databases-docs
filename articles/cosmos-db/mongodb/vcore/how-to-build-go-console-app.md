@@ -4,6 +4,7 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Connect to an Azure Cosmos DB for MongoDB (vCore) cluster by using a Go console application in your preferred developer language.
 author: seesharprun
 ms.author: sidandrews
+ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
@@ -12,12 +13,14 @@ ms.custom: devx-track-go
 ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)
-# Customer Intent: As a database owner, I want to use Mongo Shell to connect to and query my database and collections.
+# Customer Intent: As a database developer, I want to build a Go console application to quickly and securely connect to and query my database and collections.
 ---
 
 # Build a Go console app with Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[Developer console app selector](includes/selector-build-console-app-dev.md)]
+
+[!INCLUDE[Notice - Entra Authentication preview](includes/notice-entra-authentication-preview.md)]
 
 This guide explains how to build a Go console application to connect to an Azure Cosmos DB for MongoDB vCore cluster. You set up your development environment, use the `azidentity` package from the Azure SDK for Go to authenticate, and perform common operations on documents in the database.
 

@@ -4,6 +4,7 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Connect to an Azure Cosmos DB for MongoDB (vCore) cluster by using a Python console application in your preferred developer language.
 author: seesharprun
 ms.author: sidandrews
+ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
@@ -12,12 +13,14 @@ ms.custom: devx-track-python
 ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)
-# Customer Intent: As a database owner, I want to use Mongo Shell to connect to and query my database and collections.
+# Customer Intent: As a database developer, I want to build a Python console application to quickly and securely connect to and query my database and collections.
 ---
 
 # Build a Python console app with Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[Developer console app selector](includes/selector-build-console-app-dev.md)]
+
+[!INCLUDE[Notice - Entra Authentication preview](includes/notice-entra-authentication-preview.md)]
 
 This guide walks you through building a Python console application to connect to an Azure Cosmos DB for MongoDB vCore cluster. You configure your development environment, authenticate using the `azure.identity` package from the Azure SDK for Python, and perform operations such as creating, querying, and updating documents.
 
