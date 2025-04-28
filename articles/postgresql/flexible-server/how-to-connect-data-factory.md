@@ -49,7 +49,7 @@ You can create a linked service using the Azure Data Factory UI or programmatica
     :::image type="content" source="media/how-to-connect-data-factory/new-linked-service-synapse.png" alt-text="Screenshot of Create a new linked service with Azure Synapse UI." lightbox="media/how-to-connect-data-factory/new-linked-service-synapse.png":::
     
 
-1. From the linked services page, create a new linked service by selecting **+ New**. This opens a window with a list of all Azure Data Factory connectors. Search for **Azure Database for PostgreSQL**, select it, and then select **Continue**.
+1. From the linked services page, create a new linked service by selecting **+ New**. It opens a window with a list of all Azure Data Factory connectors. Search for **Azure Database for PostgreSQL**, select it, and then select **Continue**.
 
     :::image type="content" source="media/how-to-connect-data-factory/linked-service-search.png" alt-text="Screenshot of Searching for 'Azure Database for PostgreSQL' in new linked service field." lightbox="media/how-to-connect-data-factory/linked-service-search.png":::
 
@@ -89,7 +89,7 @@ There are four supported methods for authentication: basic authentication, servi
 
 ##### Service principal authentication
 
-Following the steps below requires setting up a linked service in Azure Data Factory or Synapse Analytics to connect to your Azure Database for PostgreSQL. This process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
+Following the service principal authentication setup steps requires setting up a linked service in Azure Data Factory or Synapse Analytics to connect to your Azure Database for PostgreSQL. The process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
 
 1. [Register a Microsoft Entra app and create a service principal](/entra/identity-platform/howto-create-service-principal-portal).
 
@@ -155,11 +155,11 @@ Following the steps below requires setting up a linked service in Azure Data Fac
 
 Using System-assigned managed identity as the authentication type in the linked service in Azure Data Factory or Synapse Analytics to connect to your Azure Database for PostgreSQL requires the following steps. The process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
 
-1. In your Azure database for PostgreSQL resource under **Security**
-1. Select **Identity**
-1. Make sure that **System assigned managed identity** is **On**
- 
-    :::image type="content" source="media/how-to-connect-data-factory/system-managed-identity-configuration.png" alt-text="Screenshot of the system assigned managed identity configuration in the Azure database for PostgreSQL server resource." lightbox="media/how-to-connect-data-factory/system-managed-identity-configuration.png":::
+1. In your Azure Database for PostgreSQL resource under **Security**
+    1. Select **Identity**
+    1. Make sure that **System assigned managed identity** is **On**
+    
+        :::image type="content" source="media/how-to-connect-data-factory/system-managed-identity-configuration.png" alt-text="Screenshot of the system assigned managed identity configuration in the Azure database for PostgreSQL server resource." lightbox="media/how-to-connect-data-factory/system-managed-identity-configuration.png":::
 
 1. In your Azure Data Factory resource,
     1. Select **Settings** and then **Managed Identities**
@@ -167,6 +167,14 @@ Using System-assigned managed identity as the authentication type in the linked 
 
         :::image type="content" source="media/how-to-connect-data-factory/data-factory-system-identity-configuration.png" alt-text="Screenshot of the system assigned managed identity configuration in the Azure Data Factory resource." lightbox="media/how-to-connect-data-factory/data-factory-system-identity-configuration.png":::
 
+
+1.  In your Azure Database for PostgreSQL resource under **Security**
+    1. Select **Authentication**
+    1. Select either **Microsoft Entra authentication only** or **PostgreSQL and Microsoft Entra authentication** Authentication method.
+    1. Select **+ Add Microsoft Entra administrators**
+    1. Add the system-assigned managed identity for the Azure Data Factory resource as one of the **Microsoft Entra Administrators** 
+        
+        :::image type="content" source="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png" alt-text="Screenshot of adding the Azure Data Factory system assigned managed identity configuration in the Azure Data Factory resource." lightbox="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png":::
 
 1. In the Linked Service of the Azure Data Factory, select **System-assigned managed identity** as the Authentication type.
 
