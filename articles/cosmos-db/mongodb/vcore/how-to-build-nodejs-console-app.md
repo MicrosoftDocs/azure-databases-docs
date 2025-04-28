@@ -41,31 +41,34 @@ This guide helps you build a Node.js console application to connect to an Azure 
 
 Next, create a new console application project and import the necessary libraries to authenticate to your cluster.
 
-1. TODO
+1. Create a new directory for your project and initialize it with npm:
 
     ```bash
-
+    mkdir cosmos-mongodb-app
+    cd cosmos-mongodb-app
+    npm init -y
     ```
 
-1. TODO
+1. Set up TypeScript in your project:
 
     ```bash
-
+    npm install typescript ts-node @types/node --save-dev
+    npx tsc --init
     ```
 
-1. TODO
+1. Create the main TypeScript file for your application:
 
     ```bash
-
+    touch app.ts
     ```
     
-1. TODO
+1. Install the Azure Identity library for authentication:
 
     ```bash
     npm install @azure/identity
     ```
     
-1. TODO
+1. Install the official MongoDB driver:
     
     ```bash
     npm install mongodb
@@ -85,14 +88,14 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 ::: zone pivot="programming-language-ts"
 
-1. TODO
+1. Import the necessary modules at the top of your TypeScript file:
 
     ```typescript
     import { AccessToken, DefaultAzureCredential, TokenCredential } from '@azure/identity';
     import { Collection, Db, Filter, FindCursor, MongoClient, OIDCCallbackParams, OIDCResponse, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
     ```
 
-1. TODO
+1. Create a token callback function that will obtain tokens from Azure Identity when required:
 
     ```typescript
     const AzureIdentityTokenCallback = async (params: OIDCCallbackParams, credential: TokenCredential): Promise<OIDCResponse> => {
@@ -104,19 +107,19 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     };
     ```
 
-1. TODO
+1. Set your cluster name variable to connect to your Azure Cosmos DB for MongoDB vCore cluster:
 
     ```typescript
     const clusterName: string = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
     ```
 
-1. TODO
+1. Create an instance of DefaultAzureCredential to handle authentication:
 
     ```typescript
     const credential: TokenCredential = new DefaultAzureCredential();
     ```
 
-1. TODO
+1. Create the MongoDB client with OIDC authentication configured:
 
     ```typescript
     const client = new MongoClient(
@@ -151,7 +154,7 @@ Finally, use the official library to perform common tasks with databases, collec
 
 ::: zone pivot="programming-language-ts"
 
-1. TODO
+1. Define an interface to represent your product documents:
 
     ```typescript
     interface Product {
@@ -164,7 +167,7 @@ Finally, use the official library to perform common tasks with databases, collec
     }
     ```
 
-1. TODO
+1. Get a reference to your database by name:
 
     ```typescript
     const database: Db = client.db('<database-name>');
@@ -172,7 +175,7 @@ Finally, use the official library to perform common tasks with databases, collec
     console.log('Database pointer created');
     ```
 
-1. TODO
+1. Get a reference to your collection:
 
     ```typescript
     const collection: Collection<Product> = database.collection<Product>('<collection-name>');
@@ -180,7 +183,7 @@ Finally, use the official library to perform common tasks with databases, collec
     console.log('Collection pointer created');
     ```
 
-1. TODO
+1. Create a document and upsert it into the collection:
 
     ```typescript
     var document: Product = {
@@ -208,7 +211,7 @@ Finally, use the official library to perform common tasks with databases, collec
     }
     ```
 
-1. TODO
+1. Read a specific document from the collection:
 
     ```typescript
     var query: Filter<Product> = {
@@ -223,7 +226,7 @@ Finally, use the official library to perform common tasks with databases, collec
     console.log(`Read document _id:\t${read_item._id}`);
     ```
 
-1. TODO
+1. Query for multiple documents matching a filter:
 
     ```typescript
     var query: Filter<Product> = {
@@ -237,7 +240,7 @@ Finally, use the official library to perform common tasks with databases, collec
     }
     ```
 
-1. TODO
+1. Close the MongoDB client connection when done:
 
     ```typescript
     await client.close();

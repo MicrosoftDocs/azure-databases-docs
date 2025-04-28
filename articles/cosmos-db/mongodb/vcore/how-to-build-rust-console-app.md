@@ -40,29 +40,44 @@ In this guide, you create a Rust console application to connect to an Azure Cosm
 
 Next, create a new console application project and import the necessary libraries to authenticate to your cluster.
 
-1. TODO
+1. Create a new Rust project using Cargo:
+
+    ```bash
+    cargo new cosmos-mongodb-app
+    cd cosmos-mongodb-app
+    ```
+
+1. Add the Azure Core crate to your dependencies:
 
     ```bash
     cargo add azure_core
     ```
 
-1. TODO
+1. Add the Azure Identity crate for authentication:
 
     ```bash
     cargo add azure_identity
     ```
-
-1. TODO
+    
+1. Add the MongoDB driver crate to interact with your cluster:
 
     ```bash
     cargo add mongodb
+    ```
+    
+1. For async operations, also add these supporting crates:
+   
+    ```bash
+    cargo add tokio --features full
+    cargo add futures
+    cargo add serde --features derive
     ```
 
 ## Connect to the cluster
 
 Now, use the `Azure.Identity` library to get a `TokenCredential` to use to connect to your cluster. The official MongoDB driver has a special interface that must be implemented to obtain tokens from Microsoft Entra for use when connecting to the cluster.
 
-1. TODO
+1. Open your main.rs file and import the necessary crates and modules:
 
     ```rust
     use azure_core::credentials::TokenCredential;
@@ -79,7 +94,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     use serde::{Deserialize, Serialize};
     ```
 
-1. TODO
+1. Create the main async function with the necessary error handling:
 
     ```rust
     #[tokio::main]
@@ -133,7 +148,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 Finally, use the official library to perform common tasks with databases, collections, and documents. Here, you use the same classes and methods you would use to interact with MongoDB or DocumentDB to manage your collections and items.
 
-1. TODO
+1. Create a Rust struct to represent your product documents with Serde serialization support:
 
     ```rust
     #[derive(Serialize, Deserialize, Debug)]
@@ -147,7 +162,7 @@ Finally, use the official library to perform common tasks with databases, collec
     }
     ```
 
-1. TODO
+1. Get a reference to your database by name:
 
     ```rust
     let database = client.database("<database-name>");
@@ -155,7 +170,7 @@ Finally, use the official library to perform common tasks with databases, collec
     println!("Database pointer created");
     ```
 
-1. TODO
+1. Get a reference to your collection:
 
     ```rust
     let collection = database.collection::<Product>("<collection-name>");
@@ -163,7 +178,7 @@ Finally, use the official library to perform common tasks with databases, collec
     println!("Collection pointer created");
     ```
 
-1. TODO
+1. Create a document and upsert it into the collection:
 
     ```rust
     let document = Product {
@@ -186,7 +201,7 @@ Finally, use the official library to perform common tasks with databases, collec
     println!("Documents upserted count:\t{}", response.modified_count);
     ```
 
-1. TODO
+1. Read a specific document from the collection:
 
     ```rust
     let document = collection
@@ -196,7 +211,7 @@ Finally, use the official library to perform common tasks with databases, collec
     println!("Read document _id:\t{:#?}", document.unwrap()._id);
     ```
 
-1. TODO
+1. Query for multiple documents matching a filter:
 
     ```rust
     let filter = doc! { "category": "gear-surf-surfboards" };
@@ -211,4 +226,4 @@ Finally, use the official library to perform common tasks with databases, collec
 ## Related content
 
 - [Microsoft Entra authentication overview](entra-authentication.md)
-- [TODO](about:blank)
+- [MongoDB Rust driver documentation](https://docs.mongodb.com/drivers/rust/)

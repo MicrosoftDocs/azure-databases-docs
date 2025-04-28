@@ -40,25 +40,26 @@ In this guide, you develop a Java console application to connect to an Azure Cos
 
 Next, create a new console application project and import the necessary libraries to authenticate to your cluster.
 
-1. TODO
+1. Create a new Maven project using your favorite IDE or the Maven command-line tools:
 
     ```bash
-
+    mvn archetype:generate -DgroupId=com.cosmicworks -DartifactId=mongodb-console-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-1. TODO
+1. Navigate to your project directory:
 
     ```bash
-
+    cd mongodb-console-app
     ```
 
-1. TODO
+1. Create a new Main class in the appropriate package directory:
 
     ```bash
-
+    mkdir -p src/main/java/com/cosmicworks
+    touch src/main/java/com/cosmicworks/App.java
     ```
     
-1. TODO
+1. Add the Azure Identity dependency to your pom.xml file:
 
     ```xml
     <dependency>
@@ -68,7 +69,7 @@ Next, create a new console application project and import the necessary librarie
     </dependency>
     ```
     
-1. TODO
+1. Add the MongoDB Java driver dependency to your pom.xml file:
     
     ```xml
     <dependency>
@@ -82,7 +83,7 @@ Next, create a new console application project and import the necessary librarie
 
 Now, use the `Azure.Identity` library to get a `TokenCredential` to use to connect to your cluster. The official MongoDB driver has a special interface that must be implemented to obtain tokens from Microsoft Entra for use when connecting to the cluster.
 
-1. TODO
+1. Start by importing the required classes at the top of your Java file:
 
     ```java
     import java.util.concurrent.TimeUnit;
@@ -106,7 +107,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     import com.mongodb.client.result.UpdateResult;
     ```
 
-1. TODO
+1. In your main method, create a DefaultAzureCredential and set up the OIDC callback to fetch tokens:
 
     ```java
     TokenCredential credential = new DefaultAzureCredentialBuilder().build();
@@ -143,29 +144,48 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     System.out.println("Client created");
     ```
 
-1. TODO
+1. Create a Product class to represent your documents:
 
     ```java
-    
+    public class Product {
+        private String _id;
+        private String category;
+        private String name;
+        private int quantity;
+        private double price;
+        private boolean clearance;
+        
+        // Getters and setters
+    }
     ```
 
-1. TODO
+1. Make sure to handle exceptions properly with try-catch blocks:
 
     ```java
-    
+    try {
+        // Your MongoDB operations here
+    } catch (Exception e) {
+        System.err.println("An error occurred: " + e.getMessage());
+        e.printStackTrace();
+    }
     ```
 
-1. TODO
+1. Don't forget to close your client connection when you're done:
 
     ```java
-    
+    finally {
+        if (client != null) {
+            client.close();
+            System.out.println("Client closed");
+        }
+    }
     ```
 
 ## Perform common operations
 
 Finally, use the official library to perform common tasks with databases, collections, and documents. Here, you use the same classes and methods you would use to interact with MongoDB or DocumentDB to manage your collections and items.
 
-1. TODO
+1. Get references to your database and collection:
 
     ```java
     MongoDatabase database = client.getDatabase("<database-name>");
@@ -208,28 +228,37 @@ Finally, use the official library to perform common tasks with databases, collec
     System.out.println("Client closed");
     ```
 
-1. TODO
+1. You can also create, update, or delete multiple documents in a single operation:
 
     ```java
-    
+    List<Document> documents = new ArrayList<>();
+    // Add documents to the list
+    collection.insertMany(documents);
     ```
 
-1. TODO
+1. To update multiple documents matching a specific criterion:
 
     ```java
-    
+    Bson filter = Filters.eq("category", "gear-surf-surfboards");
+    Bson update = new Document("$set", new Document("clearance", true));
+    collection.updateMany(filter, update);
     ```
 
-1. TODO
+1. For deleting documents that match a specific condition:
 
     ```java
-    
+    Bson filter = Filters.eq("clearance", true);
+    collection.deleteMany(filter);
     ```
 
-1. TODO
+1. You can also perform aggregation operations:
 
     ```java
-    
+    List<Bson> pipeline = Arrays.asList(
+        Aggregates.match(Filters.eq("category", "gear-surf-surfboards")),
+        Aggregates.group("$category", Accumulators.sum("total", 1))
+    );
+    collection.aggregate(pipeline).forEach(doc -> System.out.println(doc.toJson()));
     ```
 
 ## Related content

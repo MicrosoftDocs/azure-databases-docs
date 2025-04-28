@@ -40,31 +40,37 @@ This guide walks you through building a Python console application to connect to
 
 Next, create a new console application project and import the necessary libraries to authenticate to your cluster.
 
-1. TODO
+1. Create a new directory for your project and set up a virtual environment:
 
     ```bash
-
+    mkdir cosmos-mongodb-app
+    cd cosmos-mongodb-app
+    python -m venv .venv
     ```
 
-1. TODO
+1. Activate the virtual environment:
 
     ```bash
-
+    # On Windows
+    .venv\Scripts\activate
+    
+    # On macOS/Linux
+    source .venv/bin/activate
     ```
 
-1. TODO
+1. Create a new Python file for your application:
 
     ```bash
-
+    touch app.py
     ```
     
-1. TODO
+1. Install the Azure Identity library for Azure authentication:
 
     ```bash
     pip install azure.identity
     ```
     
-1. TODO
+1. Install the official MongoDB driver for Python:
     
     ```bash
     pip install pymongo
@@ -74,7 +80,7 @@ Next, create a new console application project and import the necessary librarie
 
 Now, use the `Azure.Identity` library to get a `TokenCredential` to use to connect to your cluster. The official MongoDB driver has a special interface that must be implemented to obtain tokens from Microsoft Entra for use when connecting to the cluster.
 
-1. TODO
+1. Import the necessary modules at the top of your Python file:
 
     ```python
     from azure.identity import DefaultAzureCredential
@@ -82,7 +88,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackResult
     ```
 
-1. TODO
+1. Create a custom class that implements the MongoDB OIDC callback interface:
 
     ```python
     class AzureIdentityTokenCallback(OIDCCallback):
@@ -95,20 +101,20 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
             return OIDCCallbackResult(access_token=token)
     ```
 
-1. TODO
+1. Set your cluster name variable:
 
     ```python
     clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>"
     ```
 
-1. TODO
+1. Create an instance of DefaultAzureCredential and set up the authentication properties:
 
     ```python
     credential = DefaultAzureCredential()
     authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
     ```
 
-1. TODO
+1. Create a MongoDB client configured with Microsoft Entra authentication:
 
     ```python
     client = MongoClient(
@@ -127,7 +133,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 Finally, use the official library to perform common tasks with databases, collections, and documents. Here, you use the same classes and methods you would use to interact with MongoDB or DocumentDB to manage your collections and items.
 
-1. TODO
+1. Get a reference to your database:
 
     ```python
     database = client.get_database("<database-name>")
@@ -135,7 +141,7 @@ Finally, use the official library to perform common tasks with databases, collec
     print("Database pointer created")
     ```
 
-1. TODO
+1. Get a reference to your collection:
 
     ```python
     collection = database.get_collection("<container-name>")
@@ -143,7 +149,7 @@ Finally, use the official library to perform common tasks with databases, collec
     print("Collection pointer created")
     ```
 
-1. TODO
+1. Create a document and upsert it into the collection:
 
     ```python
     new_document = {
@@ -164,7 +170,7 @@ Finally, use the official library to perform common tasks with databases, collec
     result = collection.update_one(filter, payload, upsert=True)
     ```
 
-1. TODO
+1. Read a specific document from the collection:
 
     ```python
     filter = {
@@ -175,7 +181,7 @@ Finally, use the official library to perform common tasks with databases, collec
     print(f"Read document _id:\t{existing_document['_id']}")
     ```
 
-1. TODO
+1. Query for multiple documents matching a filter:
 
     ```python
     filter = {
@@ -190,4 +196,4 @@ Finally, use the official library to perform common tasks with databases, collec
 ## Related content
 
 - [Microsoft Entra authentication overview](entra-authentication.md)
-- [TODO](about:blank)
+- [MongoDB Python driver documentation](https://pymongo.readthedocs.io/)
