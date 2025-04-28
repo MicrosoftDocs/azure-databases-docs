@@ -22,7 +22,7 @@ Half-precision vector indexing allows you to store and index vector embeddings u
 
 ## Key Benefits
 
-- **Increased Dimensionality Support:** With half-precision, you can now index vectors with up to **4,000 dimensions**. 
+- **Increased Dimensionality Support:** With half-precision, you can now index vectors with up to **4,000 dimensions** (an increase from the previous limit of 2,000). 
 - **Reduced Storage Footprint:** Storing vectors in a 16-bit format significantly decreases the amount of storage required compared to full-precision vectors. This can lead to considerable cost savings, especially for large-scale vector databases.
 - **Configurable Performance vs. Precision:** To fine-tune your search results, we provide an **oversampling** parameter during query execution. This allows you to control the trade-off between retrieval speed and the potential impact of reduced precision.
 
