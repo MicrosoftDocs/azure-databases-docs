@@ -10,7 +10,6 @@ ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 04/28/2025
 ms.custom: devx-track-rust
-ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)
 # Customer Intent: As a database developer, I want to build a Rust console application to quickly and securely connect to and query my database and collections.

@@ -37,8 +37,6 @@
           href: tutorial-nodejs-web-app.md
 - name: Concepts
   items:
-    - name: Entra authentication
-      href: entra-authentication.md
     - name: Vector database
       href: vector-search.md
     - name: Real-time custom content generation
@@ -107,6 +105,8 @@
       items: 
         - name: Security overview
           href: security.md
+        - name: Entra authentication
+          href: entra-authentication.md
         - name: Data encryption
           href: database-encryption-at-rest.md
 - name: Migrate data
@@ -135,8 +135,6 @@
           href: how-to-build-go-console-app.md
         - name: Rust
           href: how-to-build-rust-console-app.md
-    - name: Configure Entra authentication
-      href: how-to-configure-entra-authentication.md
     - name: Use community tools
       items:
         - name: Connect using Studio 3T
@@ -189,6 +187,8 @@
         href: how-to-monitor-diagnostics-logs.md
     - name: Security and data access
       items:
+      - name: Configure Entra authentication
+        href: how-to-configure-entra-authentication.md
       - name: Manage private access
         href: how-to-private-link.md
       - name: Manage public access
