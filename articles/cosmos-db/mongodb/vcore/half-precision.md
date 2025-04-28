@@ -28,7 +28,7 @@ Half-precision vector indexing allows you to store and index vector embeddings u
 
 ## Creating a Half-Precision Vector Index
 
-When defining a [vector index](./vector-search.md#diskann-preview) for your collection, you can enable half-precision compression by specifying the `"compression": "half"` option within the `cosmosSearchOptions`.
+When defining a [vector index](./vector-search.md#perform-vector-similarity-search) for your collection, you can enable half-precision compression by specifying the `"compression": "half"` option within the `cosmosSearchOptions`.
 
 ```javascript
 db.runCommand({
