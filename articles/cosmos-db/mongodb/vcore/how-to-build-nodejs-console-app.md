@@ -20,9 +20,7 @@ appliesto:
 
 [!INCLUDE[Developer console app selector](includes/selector-build-console-app-dev.md)]
 
-[!INCLUDE[Console app introduction](includes/console-app-introduction.md)]
-
-This guide uses the open-source `mongodb` package from npm.
+This guide helps you build a Node.js console application to connect to an Azure Cosmos DB for MongoDB vCore cluster. You prepare your development environment, use the `@azure/identity` package from the Azure SDK for JavaScript to authenticate, and perform common operations on documents in the database.
 
 ## Prerequisites
 
@@ -30,11 +28,11 @@ This guide uses the open-source `mongodb` package from npm.
 
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
+- Microsoft Entra authentication configured for the cluster with your identity granted `dbOwner` role.
+
+    - To enable Microsoft Entra authentication, [review the configuration guide](how-to-configure-entra-authentication.md).
+
 - Latest version of [TypeScript](https://www.typescriptlang.org).
-
-## Grant your identity access
-
-[!INCLUDE[Console app identity access](includes/console-app-identity-access.md)]
 
 ## Configure your console application
 

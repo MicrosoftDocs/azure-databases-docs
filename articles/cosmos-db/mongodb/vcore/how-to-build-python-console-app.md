@@ -19,9 +19,7 @@ appliesto:
 
 [!INCLUDE[Developer console app selector](includes/selector-build-console-app-dev.md)]
 
-[!INCLUDE[Console app introduction](includes/console-app-introduction.md)]
-
-This guide uses the open-souce `pymongo` package from PyPI.
+This guide walks you through building a Python console application to connect to an Azure Cosmos DB for MongoDB vCore cluster. You configure your development environment, authenticate using the `azure.identity` package from the Azure SDK for Python, and perform operations such as creating, querying, and updating documents.
 
 ## Prerequisites
 
@@ -29,11 +27,11 @@ This guide uses the open-souce `pymongo` package from PyPI.
 
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
+- Microsoft Entra authentication configured for the cluster with your identity granted `dbOwner` role.
+
+    - To enable Microsoft Entra authentication, [review the configuration guide](how-to-configure-entra-authentication.md).
+
 - Latest version of [Python](https://www.python.org).
-
-## Grant your identity access
-
-[!INCLUDE[Console app identity access](includes/console-app-identity-access.md)]
 
 ## Configure your console application
 

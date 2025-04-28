@@ -19,9 +19,7 @@ appliesto:
 
 [!INCLUDE[Developer console app selector](includes/selector-build-console-app-dev.md)]
 
-[!INCLUDE[Console app introduction](includes/console-app-introduction.md)]
-
-This guide uses the open-source `go.mongodb.org/mongo-driver/v2/mongo` package from Go.
+This guide explains how to build a Go console application to connect to an Azure Cosmos DB for MongoDB vCore cluster. You set up your development environment, use the `azidentity` package from the Azure SDK for Go to authenticate, and perform common operations on documents in the database.
 
 ## Prerequisites
 
@@ -29,11 +27,11 @@ This guide uses the open-source `go.mongodb.org/mongo-driver/v2/mongo` package f
 
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
+- Microsoft Entra authentication configured for the cluster with your identity granted `dbOwner` role.
+
+    - To enable Microsoft Entra authentication, [review the configuration guide](how-to-configure-entra-authentication.md).
+
 - Latest version of [Go](https://go.dev/).
-
-## Grant your identity access
-
-[!INCLUDE[Console app identity access](includes/console-app-identity-access.md)]
 
 ## Configure your console application
 
