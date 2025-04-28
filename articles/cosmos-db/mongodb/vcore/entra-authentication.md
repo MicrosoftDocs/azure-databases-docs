@@ -56,6 +56,14 @@ Additionally, one or more nonadministrative Microsoft Entra ID users can be adde
 
 - Azure Cosmos DB for PostgreSQL matches access tokens to the database role using the user’s unique Microsoft Entra ID user ID, as opposed to using the username. If a Microsoft Entra ID user is deleted and a new user is created with the same name, Azure Cosmos DB for PostgreSQL considers that a different user. Therefore, if a user is deleted from Microsoft Entra ID and a new user is added with the same name the new user would be unable to connect with the existing role.
 
+## Limitations
+
+The Microsoft Entra authentication feature has these current limitations:
+
+- This feature isn't supported on replica clusters.
+
+- This feature isn't supported on restored clusters.
+
 ## Next steps
 
 - Develop a [console app with Microsoft Entra authentication](how-to-build-dotnet-console-app.md)
