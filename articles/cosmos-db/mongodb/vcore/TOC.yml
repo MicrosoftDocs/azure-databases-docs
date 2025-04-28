@@ -135,6 +135,8 @@
           href: how-to-build-go-console-app.md
         - name: Rust
           href: how-to-build-rust-console-app.md
+    - name: Configure Entra authentication
+      href: how-to-configure-entra-authentication.md
     - name: Use community tools
       items:
         - name: Connect using Studio 3T
