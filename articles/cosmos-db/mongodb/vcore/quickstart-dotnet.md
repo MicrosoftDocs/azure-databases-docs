@@ -1,6 +1,6 @@
 ---
 title: Quickstart - .NET driver
-titleSuffix: Azure Cosmos DB for MongoDB (vCore)
+titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Deploy a .NET web application that uses the official MongoDB driver for .NET to interact with Azure Cosmos DB for MongoDB (vCore) data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
@@ -8,18 +8,18 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 04/25/2025
+ms.date: 04/28/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
   - ✅ MongoDB (vCore)
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB (vCore).
 ---
 
-# Quickstart: Use Azure Cosmos DB for MongoDB (vCore) with MongoDB driver for .NET
+# Quickstart: Use Azure Cosmos DB for MongoDB vCore with MongoDB driver for .NET
 
 [!INCLUDE[Developer Quickstart selector](includes/selector-dev-quickstart.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB vCore application using .NET. Azure Cosmos DB for MongoDB is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using .NET.
+In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB vCore application using .NET. Azure Cosmos DB for MongoDB vCore is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using .NET.
 
 [Library source code](https://github.com/mongodb/mongo-csharp-driver) | [Package (NuGet)](https://www.nuget.org/packages/MongoDB.Driver) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -49,7 +49,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB vCo
 
 1. During initialization, configure a unique environment name.
 
-1. Deploy the Azure Cosmos DB cluster using `azd up`. The Bicep templates also deploy a sample web application.
+1. Deploy the cluster using `azd up`. The Bicep templates also deploy a sample web application.
 
     ```azurecli
     azd up
