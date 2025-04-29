@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: release-notes
-ms.date: 09/17/2024
+ms.date: 04/30/2025
 
 #Customer intent: As a database administrator, I want to review the release notes, so I can understand what new features are released for the service.
 ---
@@ -16,7 +16,52 @@ ms.date: 09/17/2024
 
 This article contains release notes for the API for MongoDB vCore. These release notes are composed of feature release dates, and feature updates.
 
-## Latest release: October 14, 2024
+## Latest release: March 23, 2025
+
+### Engine Enhancements_0323
+
+- Added support for [exact search](enn-vector-search.md) in vector search queries.
+- Enabled joining between PostgreSQL and DocumentDB tables. ???
+- Introduced support for the currentOp command.
+- Added support for the listDatabases command.
+- Enabled collation support with comparison operators ($expr, $in, $cmp, $eq, $ne, $lt, $lte, $gt, $gte).
+- Extended collation support to aggregation stages: $project, $redact, $set, $addFields, $replaceRoot.
+- Introduced collation support with set operators in aggregation ($setEquals, $setUnion, $setIntersection, $setDifference,
+  $setIsSubset).
+- Enabled default support for unique index truncation using a new operator class.
+- Added support for top-level aggregate command let variables in the $geoNear stage.
+- Backend command support for statement timeout is now available. ???
+- Introduced support for the $toUUID aggregation operator. ???
+- Implemented full functionality for the $dateFromString operator.
+- Extended $getField operator to accept expressions resolving to a string for the field parameter.
+
+## Previous releases
+
+### February 12, 2025
+
+#### Engine Enhancements_0212
+
+- Introduced open-source build of pg_documentdb targeting PostgreSQL 17.
+- Added support for pushing $graphLookup recursive CTE JOIN filters to the index, improving query efficiency.
+- Enabled support for the following aggregation stages and commands: currentOp, collStats, dbStats, and indexStats.
+- Improved $lookup performance by allowing $unwind to be inlined when preserveNullAndEmptyArrays is enabled.
+- Optimized aggregation by skipping document loading when the $group expression is a constant.
+
+#### Infrastructure Enhancements_0212
+
+- GAed [Auto-scale SKU](autoscale.md).
+- Change stream support for Kafka Debezium connector & Pymongo driver. (Preview)
+- Enabled [Promotion for Geo-Replica](cross-region-replication.md#replica-cluster-promotion).
+- Expanded regional availability
+  - Switzerland West
+  - Jio India West
+
+### January 23, 2025
+
+- We've open sourced the engine behind Azure CosmosDB for MongoDB vCore!
+Check it out here: [DocumentDB](https://github.com/microsoft/documentdb/blob/main/README.md)
+
+### October 14, 2024
 
 - Index builds to run in background by default.
 - Support for more options with $setWindowFields.
@@ -31,19 +76,17 @@ This article contains release notes for the API for MongoDB vCore. These release
     - $top, $topN, $bottom, $bottomN, $first, $firstN, $last, $lastN, $maxN, $minN.
   - $max.
   - $min.
-- Support added for aggregation operator.
+- Support added for aggregation operators.
   - $toHashedIndexKey.
-- Support added for aggregation stage.
+- Support added for aggregation stages.
   - $fill.
-- Support for `wallTime` with ChangeStreams.
+- Added support for `wallTime` with ChangeStreams.
 
-## Previous releases
-
-### Latest release: September 16, 2024
+### September 16, 2024
 
 - Gated Preview for [ChangeStream](change-streams.md).
-- Gated preview for Runtime support of Collation with $find / $aggregate queries.
-- Large Index keys enabled as default option for indexing.
+- Gated Preview for Runtime support of Collation with $find / $aggregate queries.
+- [Large Index keys](how-to-create-indexes.md#enable-large-index-keys-by-default) enabled as default option for indexing.
 - Added support for $DbRef with additional fields $ref/$id/$db, with limitation of the option with `elemMatch`.
 - Support added for trigonometric aggregation operators.
 - Support for more options with $setWindowFields.

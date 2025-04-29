@@ -117,9 +117,9 @@ When a createIndex operation is in progress, the response looks like:
 ```
 
 ## Enable Large Index Keys by default
-Even if the documents do not contain keys that have a large number of characters or the documents do not contain multiple levels of nesting, specifying large index keys ensures these scenarios are covered.
+Even if the documents do not contain keys that have a large number of characters or the documents do not contain multiple levels of nesting, specifying large index keys ensures these scenarios are covered. Now the large index key is the default behavior of the engine.
 
-Consider this sampe to enable large index keys on the 'large_index_coll' collection in the 'cosmicworks' database.
+Consider this sample to enable large index keys on the 'large_index_coll' collection in the 'cosmicworks' database.
 
 ```javascript
 use cosmicworks;
