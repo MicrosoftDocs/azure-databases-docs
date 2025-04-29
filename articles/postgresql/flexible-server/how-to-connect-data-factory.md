@@ -217,7 +217,7 @@ Using User-assigned managed identity as the authentication type in the linked se
 
 1. In the Linked Service  of the Azure Data Factory, select **User-assigned managed identity**  as the **Authentication type**
 
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-system-managed-identity.png" alt-text="Screenshot of the user assigned managed identity selected under the authentication type in the linked service." lightbox="media/how-to-connect-data-factory/authentication-system-managed-identity.png":::
+    :::image type="content" source="media/how-to-connect-data-factory/authentication-user-assigned-managed-identity.png" alt-text="Screenshot of the user assigned managed identity selected under the authentication type in the linked service." lightbox="media/how-to-connect-data-factory/authentication-user-assigned-managed-identity.png":::
 
 1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**.
 
