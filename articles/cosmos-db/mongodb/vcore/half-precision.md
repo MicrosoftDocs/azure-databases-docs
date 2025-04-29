@@ -54,7 +54,7 @@ When querying a vector index that utilizes half-precision compression, you can u
 
 The `oversampling` factor, allows you to retrieve more potential nearest neighbors from the half-precision index than the final number of results you want (`k`). These candidates are then compared using the original full-precision vectors to ensure higher accuracy in the final ranked results. 
 
-For instance, if you set `k` to 10 and `oversampling` to 1.5, the system will fetch 15 candidate vectors from the half-precision index and then rank the top 10 based on their full-precision values.
+For instance, to get the top 10 (`k`=10) most similar vectors, a good **best practice** might be to set `oversampling` to a value like **1.5** or **2.0**. With `"oversampling": 1.5`, the system would first get 15 candidates from the half-precision index and then refine the top 10 using the full-precision data.
 
 ```javascript
 db.collection.aggregate([
