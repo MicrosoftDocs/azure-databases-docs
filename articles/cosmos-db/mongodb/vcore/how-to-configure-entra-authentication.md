@@ -27,8 +27,6 @@ In this article, you learn how to configure Microsoft Entra authentication for a
 
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
-- [Mongo Shell](https://mongodb.com/try/download/shell) command-line interface.
-
 ## Get signed-in identity metadata
 
 First, get the unique identifier for your currently signed-in identity.
