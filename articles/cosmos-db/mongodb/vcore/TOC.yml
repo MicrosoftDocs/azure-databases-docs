@@ -49,6 +49,8 @@
       href: burstable-tier.md
     - name: Open source
       href: oss.md
+    - name: Full-text search
+      href: full-text-search.md
     - name: Integrated vector database
       items:
         - name: Integrated vector database overview
@@ -61,6 +63,8 @@
           href: rag.md
     - name: MongoDB compatibility and feature support
       href: compatibility-and-feature-support.md
+    - name: Managed service compatibility
+      href: managed-service-compatibility.md
     - name: Support for Geospatial Queries
       href: geospatial-support.md
     - name: Availability and disaster recovery (DR)

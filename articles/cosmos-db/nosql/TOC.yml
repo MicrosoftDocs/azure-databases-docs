@@ -56,8 +56,14 @@
           href: quickstart-terraform.md
 - name: Build AI Applications
   items:
+    - name: Why use for AI apps?
+      href: ../gen-ai/why-cosmos-ai.md
     - name: Use vector search
-      href: vector-search.md
+      items:
+        - name: Vector indexing and search
+          href: vector-search.md
+        - name: Sharded DiskANN for focused search
+          href: ../gen-ai/sharded-diskann.md
     - name: Enable full-text search
       href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
@@ -95,27 +101,16 @@
 - name: Create secure solutions
   items:
     - name: Security
-      href: ../security.yml?context=/azure/cosmos-db/nosql/context/context
-    - name: Developer security guide
-      items:
-        - name: Overview
-          displayName: overview, summary, introduction, get started
-          href: security/index.md
-        - name: Core terminology
-          displayName: terms
-          href: security/glossary.md
-        - name: Get signed-in identity
-          href: security/how-to-get-signed-in-identity.md
-        - name: Create managed identities
-          displayName: principals
-          href: security/how-to-create-managed-identities.md
-        - name: Disable key-based authentication
-          displayName: key, ropc, connection string
-          href: security/how-to-disable-key-based-authentication.md
-        - name: Grant control plane access
-          href: security/how-to-grant-control-plane-role-based-access.md
-        - name: Grant data plane access
-          href: security/how-to-grant-data-plane-role-based-access.md
+      href: security.md
+    - name: Disable key-based authentication
+      displayName: key, ropc, connection string
+      href: how-to-disable-key-based-authentication.md
+    - name: Grant control plane role-based access
+      href: how-to-grant-control-plane-access.md
+    - name: Grant data plane role-based access
+      href: how-to-grant-data-plane-access.md
+    - name: Glossary
+      href: security-glossary.md
     - name: Network security
       items:
         - name: Configure IP firewall
@@ -166,20 +161,18 @@
       href: defender-for-cosmos-db.md
     - name: Reference
       items:
-        - name: Control plane
+        - name: Control plane actions
           displayName: example, permissions, rbac, role, definition
-          items:
-            - name: Actions
-              href: /azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/nosql/context/context#microsoftdocumentdb
-            - name: Built-in roles
-              href: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/nosql/context/context#databases
-        - name: Data plane
+          href: /azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/nosql/context/context#microsoftdocumentdb
+        - name: Control plane built-in roles
+          displayName: example, permissions, rbac, role, definition
+          href: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/nosql/context/context#databases
+        - name: Data plane actions
           displayName: example, permissions, rbac, role, definition, dataActions
-          items:
-            - name: Actions
-              href: security/reference-data-plane-actions.md
-            - name: Built-in roles
-              href: security/reference-data-plane-roles.md
+          href: reference-data-plane-security.md#built-in-actions
+        - name: Data plane built-in roles
+          displayName: example, permissions, rbac, role, definition, dataActions
+          href: reference-data-plane-security.md#built-in-roles
         - name: Well Architected Framework security guidance
           href: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/nosql/context/context#security
         - name: Security baseline
@@ -502,12 +495,12 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Async Java sample with change feed
           href: how-to-java-change-feed.md
-    - name: Materialized views (preview)
+    - name: Global secondary indexes (preview)
       items:
         - name: Overview
-          href: materialized-views.md
-        - name: Configure materialized views (preview)
-          href: how-to-configure-materialized-views.md
+          href: global-secondary-indexes.md
+        - name: Configure global secondary indexes (preview)
+          href: how-to-configure-global-secondary-indexes.md
     - name: Index and query geospatial data
       displayName: geospatial, geojson, spatial, index, query, geography, geometry
       href: how-to-geospatial-index-query.md
@@ -529,6 +522,8 @@
               href: kafka-connector-source-v2.md
             - name: Kafka Connect V2 - Sink
               href: kafka-connector-sink-v2.md
+            - name: Migration guide
+              href: how-to-migrate-from-kafka-connector-v1-to-v2.md
         - name: Spark Connector
           items:
             - name: Spark 3.x online transaction processing (OLTP) connector
@@ -772,6 +767,11 @@
               href: ../synapse-link-power-bi.md?context=/azure/cosmos-db/nosql/context/context
             - name: Use Qlik Sense
               href: ../visualize-qlik-sense.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Reverse extract, transform, & load (ETL)
+              href: reverse-extract-transform-load.md
+            - name: Use Databricks for reverse ETL
+              displayName: Python, Scala, Spark, Databricks, Azure Cosmos DB
+              href: tutorial-reverse-extract-transform-load.md
             - name: Connect using Spark
               displayName: Python, Scala, Spark, Java, Databricks
               href: tutorial-spark-connector.md

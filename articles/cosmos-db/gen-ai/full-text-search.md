@@ -201,7 +201,7 @@ In this example, we want to obtain the first 10 results where "mountain" and "bi
 ```sql
 SELECT TOP 10 *
 FROM c
-ORDER BY RANK FullTextScore(c.text, ["bicycle", "mountain"])
+ORDER BY RANK FullTextScore(c.text, "bicycle", "mountain")
 ```
 
 > [!IMPORTANT]
