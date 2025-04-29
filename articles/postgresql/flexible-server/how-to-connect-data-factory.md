@@ -174,7 +174,7 @@ Using System-assigned managed identity as the authentication type in the linked 
     1. Select **+ Add Microsoft Entra administrators**
     1. Add the system-assigned managed identity for the Azure Data Factory resource as one of the **Microsoft Entra Administrators** 
         
-        :::image type="content" source="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png" alt-text="Screenshot of adding the Azure Data Factory system assigned managed identity configuration in the Azure Data Factory resource." lightbox="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png":::
+        :::image type="content" source="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png" alt-text="Screenshot of adding the Azure Data Factory system assigned managed identity configuration in the Azure Database for PostgreSQL resource." lightbox="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png":::
 
 1. In the Linked Service of the Azure Data Factory, select **System-assigned managed identity** as the Authentication type.
 
