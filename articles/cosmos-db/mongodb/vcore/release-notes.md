@@ -22,16 +22,16 @@ This article contains release notes for the API for MongoDB vCore. These release
 
 - Added support for [exact search](enn-vector-search.md) in vector search queries.
 - Added support for the listDatabases command.
-- Enabled collation support with comparison operators ($expr, $in, $cmp, $eq, $ne, $lt, $lte, $gt, $gte).
-- Extended collation support to aggregation stages: $project, $redact, $set, $addFields, $replaceRoot.
-- Introduced collation support with set operators in aggregation ($setEquals, $setUnion, $setIntersection, $setDifference,
-  $setIsSubset).
-- Enabled default support for unique index truncation using a new operator class.
 - Added support for top-level aggregate command let variables in the $geoNear stage.
-- Backend command support for statement timeout is now available.
+- Backend command support for statement time-out is now available.
 - Introduced support for the $toUUID aggregation operator.
 - Implemented full functionality for the $dateFromString operator.
 - Extended $getField operator to accept expressions resolving to a string for the field parameter.
+- Extended collation support to aggregation stages: $project, $ redact, $set, $addFields, $replaceRoot.
+- Enabled collation support with comparison operators ($expr, $ in, $cmp, $eq, $ne, $lt, $lte, $gt, $gte).
+- Enabled default support for unique index truncation using a new operator class.
+- Introduced collation support with set operators in aggregation ($setEquals, $setUnion, $setIntersection, $setDifference,
+  $setIsSubset).
 
 ## Previous releases
 
@@ -47,7 +47,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 
 #### Infrastructure Enhancements_0212
 
-- GAed [Auto-scale SKU](autoscale.md).
+- GAed [Autoscale SKU](autoscale.md).
 - [Change stream](change-streams.md) support for Kafka Debezium connector & Pymongo driver. (Preview)
 - Enabled [Promotion for Geo-Replica](cross-region-replication.md#replica-cluster-promotion).
 - Expanded regional availability
@@ -56,7 +56,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 
 ### January 23, 2025
 
-- We've open sourced the engine behind Azure CosmosDB for MongoDB vCore!
+- We open sourced the engine behind Azure Cosmos DB for MongoDB vCore!
 Check it out here: [DocumentDB](https://github.com/microsoft/documentdb/blob/main/README.md)
 
 ### October 14, 2024
@@ -83,7 +83,7 @@ Check it out here: [DocumentDB](https://github.com/microsoft/documentdb/blob/mai
 ### September 16, 2024
 
 - Gated Preview for [ChangeStream](change-streams.md).
-- Gated Preview for Runtime support of Collation with $find / $aggregate queries.
+- Gated Preview for Runtime support of Collation with $find / $ aggregate queries.
 - [Large Index keys](how-to-create-indexes.md#enable-large-index-keys-by-default) enabled as default option for indexing.
 - Added support for $DbRef with additional fields $ref/$id/$db, with limitation of the option with `elemMatch`.
 - Support added for trigonometric aggregation operators.
@@ -101,8 +101,8 @@ Check it out here: [DocumentDB](https://github.com/microsoft/documentdb/blob/mai
   - $find.
   - $aggregate.
 - Support for $merge aggregation stage with following.
-  - whenMatched : "replace" / "keepExisting" / "merge" / "fail".
-  - whenNotMatched : "insert" / "discard" / "fail".
+  - whenMatched: "replace" / "keepExisting" / "merge" / "fail".
+  - whenNotMatched: "insert" / "discard" / "fail".
 
 ### August 05, 2024
 
@@ -120,7 +120,7 @@ Check it out here: [DocumentDB](https://github.com/microsoft/documentdb/blob/mai
 - Support for aggregation stage
   - $bucket.
   - $vectorSearch.
-  - $setWindowFields (Only with $sum window accumulator).
+  - $setWindowFields (Only with $ sum window accumulator).
 - Geospatial query operators
   - $minDistance.
   - $maxDistance.
@@ -146,13 +146,13 @@ Check it out here: [DocumentDB](https://github.com/microsoft/documentdb/blob/mai
 ### May 06, 2024
 
 - Query operator enhancements.
-  - $geoNear aggregation. This can be enabled through Flag - `Geospatial support for vCore "MongoDB for CosmosDB"`  (Preview feature)
+  - $geoNear aggregation. Aggregation stage can be enabled through Flag - `Geospatial support for vCore "MongoDB for CosmosDB"`  (Preview feature)
   
   - Support for accumulators
     - $push.
     - $addToSet.
     - $tsSecond/$tsIncrement.
-    - $map/$reduce.
+    - $map/$ reduce.
   - Support for date expressions
     - $dateAdd.
     - $dateSubtract.
