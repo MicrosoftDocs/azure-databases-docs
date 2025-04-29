@@ -21,8 +21,6 @@ This article contains release notes for the API for MongoDB vCore. These release
 ### Engine Enhancements_0323
 
 - Added support for [exact search](enn-vector-search.md) in vector search queries.
-- Enabled joining between PostgreSQL and DocumentDB tables. ???
-- Introduced support for the currentOp command.
 - Added support for the listDatabases command.
 - Enabled collation support with comparison operators ($expr, $in, $cmp, $eq, $ne, $lt, $lte, $gt, $gte).
 - Extended collation support to aggregation stages: $project, $redact, $set, $addFields, $replaceRoot.
@@ -30,8 +28,8 @@ This article contains release notes for the API for MongoDB vCore. These release
   $setIsSubset).
 - Enabled default support for unique index truncation using a new operator class.
 - Added support for top-level aggregate command let variables in the $geoNear stage.
-- Backend command support for statement timeout is now available. ???
-- Introduced support for the $toUUID aggregation operator. ???
+- Backend command support for statement timeout is now available.
+- Introduced support for the $toUUID aggregation operator.
 - Implemented full functionality for the $dateFromString operator.
 - Extended $getField operator to accept expressions resolving to a string for the field parameter.
 
@@ -50,7 +48,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 #### Infrastructure Enhancements_0212
 
 - GAed [Auto-scale SKU](autoscale.md).
-- Change stream support for Kafka Debezium connector & Pymongo driver. (Preview)
+- [Change stream](change-streams.md) support for Kafka Debezium connector & Pymongo driver. (Preview)
 - Enabled [Promotion for Geo-Replica](cross-region-replication.md#replica-cluster-promotion).
 - Expanded regional availability
   - Switzerland West
