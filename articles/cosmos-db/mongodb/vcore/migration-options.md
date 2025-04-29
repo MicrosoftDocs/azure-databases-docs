@@ -56,7 +56,6 @@ The [MongoDB migration extension for Azure Data Studio](/azure-data-studio/exten
 
 > [!IMPORTANT]
 > This tool doesn't support the following scenarios:
-
 > - Migrations where either the source or target account is enabled with Private Endpoint.
 > - Migrations where the firewalls of the source or target account cannot accept a wide IP range. This tool requires you to allow connections from global Azure datacenters to both the source and target accounts. For more information, see the [global Azure IP address ranges](/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
 
