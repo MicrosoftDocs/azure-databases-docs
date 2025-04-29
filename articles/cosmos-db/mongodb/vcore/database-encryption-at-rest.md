@@ -43,7 +43,7 @@ There's no extra cost.
 
 ### Can I encrypt my data with customer managed keys (CMK)?
 
-This feature is coming to the service later. Please reach out to Microsoft Support for access to a private preview as soon as it's available.
+This feature is coming to the service later. Reach out to Microsoft Support for access to a preview as soon as it's available.
 
 ### How often are encryption keys rotated?
 
