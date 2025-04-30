@@ -33,6 +33,10 @@ These backup files cannot be exported. The backups can only be used for restore 
 Backups on Flexible Servers are snapshot-based. The first snapshot backup is scheduled immediately after a server is created. Snapshot backups are taken daily once. Transaction log backups occur every five minutes.
 If a scheduled backup fails, our backup service tries every 20 minutes to take a backup until a successful backup is taken. These backup failures might occur due to heavy transactional production loads on the server instance.
 
+Backup frequency can be increased to enable more frequent automated daily backups. This is especially useful when large transactions are expected, as it helps reduce the restore time in case of failure. You can adjust this by setting the __“Backup Interval”__ field in the __“Compute + Storage”__ section under __Settings__. The default interval is 24 hours, but it can be changed to 12 or 6 hours. Backup retention is governed by the retention period configured at the server level.
+
+The feature is currently offered in preview and available only in __West Central US__ and __East Asia__.
+
 > [!NOTE]  
 > - If the server experiences a high transaction load, resulting in larger and faster-growing binlog files, then the backup service will perform multiple backups per day to ensure reliable and quicker restoration using these backups.
 > - For 5.7 servers, long-running/Large transactions can prevent global instance level lock acquisition which is required for successful daily backup. In such scenarios, daily backups can fail. To resolve this, either terminate the long-running transaction OR restart the server. To ensure smoother operations, it's recommended to upgrade your MySQL 5.7 servers to version 8.0 using a [major version upgrade](how-to-upgrade.md).
