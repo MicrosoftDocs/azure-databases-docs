@@ -40,32 +40,32 @@ In this guide, you create a Rust console application to connect to an Azure Cosm
 
 Next, create a new console application project and import the necessary libraries to authenticate to your cluster.
 
-1. Create a new Rust project using Cargo:
+1. Create a new Rust project using `cargo new`.
 
     ```bash
     cargo new cosmos-mongodb-app
     cd cosmos-mongodb-app
     ```
 
-1. Add the Azure Core crate to your dependencies:
+1. Add the `azure_core` crate to your dependencies.
 
     ```bash
     cargo add azure_core
     ```
 
-1. Add the Azure Identity crate for authentication:
+1. Add the `azure_identity` crate for authentication.
 
     ```bash
     cargo add azure_identity
     ```
     
-1. Add the MongoDB driver crate to interact with your cluster:
+1. Add the `mongodb` driver crate to interact with your cluster.
 
     ```bash
     cargo add mongodb
     ```
     
-1. For async operations, also add these supporting crates:
+1. For async operations, also add the supporting `tokio`, `futures`, and `serde` crates.
    
     ```bash
     cargo add tokio --features full
@@ -77,7 +77,7 @@ Next, create a new console application project and import the necessary librarie
 
 Now, use the `Azure.Identity` library to get a `TokenCredential` to use to connect to your cluster. The official MongoDB driver has a special interface that must be implemented to obtain tokens from Microsoft Entra for use when connecting to the cluster.
 
-1. Open your main.rs file and import the necessary crates and modules:
+1. Open your **main.rs** file and import the necessary crates and modules.
 
     ```rust
     use azure_core::credentials::TokenCredential;
@@ -94,61 +94,82 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     use serde::{Deserialize, Serialize};
     ```
 
-1. Create the main async function with the necessary error handling:
+1. Create the main async function with the necessary error handling.
 
     ```rust
     #[tokio::main]
     async fn main() -> Result<(), Box<dyn std::error::Error>> {
-        let credential = DefaultAzureCredential::new()?;
-    
-        let azure_identity_token_credential = Credential::builder()
-            .mechanism(AuthMechanism::MongoDbOidc)
-            .oidc_callback(oidc::Callback::machine(move |_| {
-                let azure_credential = credential.clone();
-                async move {
-                    let access_token = azure_credential
-                        .get_token(&["https://ossrdbms-aad.database.windows.net/.default"])
-                        .await
-                        .map_err(|e| {
-                            mongodb::error::Error::custom(format!("Azure token error: {}", e))
-                        })?;
-                    Ok(IdpServerResponse::builder()
-                        .access_token(access_token.token.secret().to_owned())
-                        .build())
-                }
-                .boxed()
-            }))
-            .build()
-            .into();
-    
-        let cluster_name = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
-    
-        let uri = format!(
-            "mongodb+srv://{}.global.mongocluster.cosmos.azure.com/",
-            cluster_name
-        );
-    
-        let mut client_options = ClientOptions::parse(uri).await?;
-    
-        client_options.connect_timeout = Some(std::time::Duration::from_secs(120));
-        client_options.tls = Some(mongodb::options::Tls::Enabled(Default::default()));
-        client_options.retry_writes = Some(true);
-    
-        client_options.credential = Some(azure_identity_token_credential);
-    
-        let client = Client::with_options(client_options)?;
-    
-        println!("Client created");
 
         Ok(())
     }
+    ```
+
+1. Create a new instance of struct `azure_identity::DefaultAzureCredential`.
+
+    ```rust
+    let credential = DefaultAzureCredential::new()?;
+    ```
+
+1. Create a credential callback to handle token requests from the MongoDB client.
+
+    ```rust
+    let azure_identity_token_credential = Credential::builder()
+        .mechanism(AuthMechanism::MongoDbOidc)
+        .oidc_callback(oidc::Callback::machine(move |_| {
+            let azure_credential = credential.clone();
+            async move {
+                let access_token = azure_credential
+                    .get_token(&["https://ossrdbms-aad.database.windows.net/.default"])
+                    .await
+                    .map_err(|e| {
+                        mongodb::error::Error::custom(format!("Azure token error: {}", e))
+                    })?;
+                Ok(IdpServerResponse::builder()
+                    .access_token(access_token.token.secret().to_owned())
+                    .build())
+            }
+            .boxed()
+        }))
+        .build()
+        .into();
+    ```
+
+1. Define a uniform resource indicator (URI) from your cluster using its name, scheme, and the global endpoint.
+
+    ```rust
+    let cluster_name = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
+
+    let uri = format!(
+        "mongodb+srv://{}.global.mongocluster.cosmos.azure.com/",
+        cluster_name
+    );
+    ```
+
+1. Construct a `mongodb::ClientOptions` instance using best practices configuration, your URI, and the credential callback.
+
+    ```rust
+    let mut client_options = ClientOptions::parse(uri).await?;
+
+    client_options.connect_timeout = Some(std::time::Duration::from_secs(120));
+    client_options.tls = Some(mongodb::options::Tls::Enabled(Default::default()));
+    client_options.retry_writes = Some(true);
+
+    client_options.credential = Some(azure_identity_token_credential);
+    ```
+
+1. Create a new instance of `mongodb::Client` using the constructed settings.
+
+    ```rust
+    let client = Client::with_options(client_options)?;
+
+    println!("Client created");
     ```
 
 ## Perform common operations
 
 Finally, use the official library to perform common tasks with databases, collections, and documents. Here, you use the same classes and methods you would use to interact with MongoDB or DocumentDB to manage your collections and items.
 
-1. Create a Rust struct to represent your product documents with `serde` serialization support:
+1. Create a Rust struct to represent your `Product` documents with `serde` serialization support.
 
     ```rust
     #[derive(Serialize, Deserialize, Debug)]
@@ -162,7 +183,7 @@ Finally, use the official library to perform common tasks with databases, collec
     }
     ```
 
-1. Get a reference to your database by name:
+1. Get a reference to your database by name.
 
     ```rust
     let database = client.database("<database-name>");
@@ -170,7 +191,7 @@ Finally, use the official library to perform common tasks with databases, collec
     println!("Database pointer created");
     ```
 
-1. Get a reference to your collection:
+1. Get a reference to your collection.
 
     ```rust
     let collection = database.collection::<Product>("<collection-name>");
@@ -178,7 +199,7 @@ Finally, use the official library to perform common tasks with databases, collec
     println!("Collection pointer created");
     ```
 
-1. Create a document and upsert it into the collection:
+1. Create a document using `collection.update_one` and **upsert** it into the collection.
 
     ```rust
     let document = Product {
@@ -201,7 +222,7 @@ Finally, use the official library to perform common tasks with databases, collec
     println!("Documents upserted count:\t{}", response.modified_count);
     ```
 
-1. Read a specific document from the collection:
+1. Read a specific document from the collection using `collection.find_one` and a filter.
 
     ```rust
     let document = collection
@@ -211,7 +232,7 @@ Finally, use the official library to perform common tasks with databases, collec
     println!("Read document _id:\t{:#?}", document.unwrap()._id);
     ```
 
-1. Query for multiple documents matching a filter:
+1. Query for multiple documents matching a filter using `collection.find`.
 
     ```rust
     let filter = doc! { "category": "gear-surf-surfboards" };
@@ -226,4 +247,4 @@ Finally, use the official library to perform common tasks with databases, collec
 ## Related content
 
 - [Microsoft Entra authentication overview](entra-authentication.md)
-- [MongoDB Rust driver documentation](https://docs.mongodb.com/drivers/rust/)
+- [Microsoft Entra configuration for cluster](how-to-configure-entra-authentication.md)

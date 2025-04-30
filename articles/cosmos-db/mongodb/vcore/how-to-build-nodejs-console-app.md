@@ -41,7 +41,7 @@ This guide helps you build a Node.js console application to connect to an Azure 
 
 Next, create a new console application project and import the necessary libraries to authenticate to your cluster.
 
-1. Create a new directory for your project and initialize it with npm:
+1. Create a new directory for your project and initialize it with `npm init`.
 
     ```bash
     mkdir cosmos-mongodb-app
@@ -49,26 +49,26 @@ Next, create a new console application project and import the necessary librarie
     npm init -y
     ```
 
-1. Set up TypeScript in your project:
+1. Set up TypeScript in your project.
 
     ```bash
     npm install typescript ts-node @types/node --save-dev
     npx tsc --init
     ```
 
-1. Create the main TypeScript file for your application:
+1. Create the main **app.ts** TypeScript file for your application.
 
     ```bash
     touch app.ts
     ```
     
-1. Install the Azure Identity library for authentication:
+1. Install the `@azure/identity` library for authentication.
 
     ```bash
     npm install @azure/identity
     ```
     
-1. Install the official MongoDB driver:
+1. Install the `mongodb` library.
     
     ```bash
     npm install mongodb
@@ -80,22 +80,48 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 ::: zone pivot="programming-language-js"
 
-```javascript
+1. Import the necessary modules at the top of your TypeScript file.
 
-```
+    ```javascript
+    TODO
+    ```
+
+1. Create a token callback function that obtains tokens from the `TokenCredential` instance when required.
+
+    ```javascript
+    TODO
+    ```
+
+1. Set your cluster name variable to connect to your Azure Cosmos DB for MongoDB vCore cluster.
+
+    ```javascript
+    TODO
+    ```
+
+1. Create an instance of `DefaultAzureCredential`.
+
+    ```javascript
+    TODO
+    ```
+
+1. Create a MongoDB client configured with OpenID Connect (OIDC) authentication.
+
+    ```javascript
+    TODO
+    ```
 
 :::zone-end
 
 ::: zone pivot="programming-language-ts"
 
-1. Import the necessary modules at the top of your TypeScript file:
+1. Import the necessary modules at the top of your TypeScript file.
 
     ```typescript
     import { AccessToken, DefaultAzureCredential, TokenCredential } from '@azure/identity';
     import { Collection, Db, Filter, FindCursor, MongoClient, OIDCCallbackParams, OIDCResponse, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
     ```
 
-1. Create a token callback function that obtains tokens from Azure Identity when required:
+1. Create a token callback function that obtains tokens from the `TokenCredential` instance when required.
 
     ```typescript
     const AzureIdentityTokenCallback = async (params: OIDCCallbackParams, credential: TokenCredential): Promise<OIDCResponse> => {
@@ -107,19 +133,19 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     };
     ```
 
-1. Set your cluster name variable to connect to your Azure Cosmos DB for MongoDB vCore cluster:
+1. Set your cluster name variable to connect to your Azure Cosmos DB for MongoDB vCore cluster.
 
     ```typescript
     const clusterName: string = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
     ```
 
-1. Create an instance of `DefaultAzureCredential`:
+1. Create an instance of `DefaultAzureCredential`.
 
     ```typescript
     const credential: TokenCredential = new DefaultAzureCredential();
     ```
 
-1. Create a MongoDB client configured with OpenID Connect (OIDC) authentication:
+1. Create a MongoDB client configured with OpenID Connect (OIDC) authentication.
 
     ```typescript
     const client = new MongoClient(
@@ -146,15 +172,69 @@ Finally, use the official library to perform common tasks with databases, collec
 
 ::: zone pivot="programming-language-js"
 
-```javascript
+1. Get a reference to your database by name.
 
-```
+    ```javascript
+    TODO
+    ```
+
+1. Get a reference to your collection.
+
+    ```javascript
+    TODO
+    ```
+
+1. Define an interface to represent your product documents.
+
+    ```javascript
+    TODO
+    ```
+
+1. Create a document using `collection.updateOne` and **upsert** it into the collection.
+
+    ```javascript
+    TODO
+    ```
+
+1. Use `collection.findOne` to get a specific document from the collection.
+
+    ```javascript
+    TODO
+    ```
+
+1. Query for multiple documents matching a filter using `collection.find`.
+
+    ```javascript
+    TODO
+    ```
+
+1. Close the MongoDB client connection when done.
+
+    ```javascript
+    TODO
+    ```
 
 :::zone-end
 
 ::: zone pivot="programming-language-ts"
 
-1. Define an interface to represent your product documents:
+1. Get a reference to your database by name.
+
+    ```typescript
+    const database: Db = client.db('<database-name>');
+    
+    console.log('Database pointer created');
+    ```
+
+1. Get a reference to your collection.
+
+    ```typescript
+    const collection: Collection<Product> = database.collection<Product>('<collection-name>');
+    
+    console.log('Collection pointer created');
+    ```
+
+1. Define an interface to represent your product documents.
 
     ```typescript
     interface Product {
@@ -167,23 +247,7 @@ Finally, use the official library to perform common tasks with databases, collec
     }
     ```
 
-1. Get a reference to your database by name:
-
-    ```typescript
-    const database: Db = client.db('<database-name>');
-    
-    console.log('Database pointer created');
-    ```
-
-1. Get a reference to your collection:
-
-    ```typescript
-    const collection: Collection<Product> = database.collection<Product>('<collection-name>');
-    
-    console.log('Collection pointer created');
-    ```
-
-1. Create a document and upsert it into the collection:
+1. Create a document using `collection.updateOne` and **upsert** it into the collection.
 
     ```typescript
     var document: Product = {
@@ -211,7 +275,7 @@ Finally, use the official library to perform common tasks with databases, collec
     }
     ```
 
-1. Read a specific document from the collection:
+1. Use `collection.findOne` to get a specific document from the collection.
 
     ```typescript
     var query: Filter<Product> = {
@@ -226,7 +290,7 @@ Finally, use the official library to perform common tasks with databases, collec
     console.log(`Read document _id:\t${read_item._id}`);
     ```
 
-1. Query for multiple documents matching a filter:
+1. Query for multiple documents matching a filter using `collection.find`.
 
     ```typescript
     var query: Filter<Product> = {
@@ -240,7 +304,7 @@ Finally, use the official library to perform common tasks with databases, collec
     }
     ```
 
-1. Close the MongoDB client connection when done:
+1. Close the MongoDB client connection when done.
 
     ```typescript
     await client.close();
@@ -251,4 +315,5 @@ Finally, use the official library to perform common tasks with databases, collec
 ## Related content
 
 - [Microsoft Entra authentication overview](entra-authentication.md)
-- [TODO](about:blank)
+- [Node.js web application template](quickstart-nodejs.md)
+- [Microsoft Entra configuration for cluster](how-to-configure-entra-authentication.md)

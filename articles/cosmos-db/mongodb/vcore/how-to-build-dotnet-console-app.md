@@ -337,3 +337,4 @@ Finally, use the official library to perform common tasks with databases, collec
 
 - [Microsoft Entra authentication overview](entra-authentication.md)
 - [.NET web application template](quickstart-dotnet.md)
+- [Microsoft Entra configuration for cluster](how-to-configure-entra-authentication.md)

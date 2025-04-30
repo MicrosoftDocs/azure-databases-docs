@@ -40,48 +40,35 @@ This guide explains how to build a Go console application to connect to an Azure
 
 Next, create a new console application project and import the necessary libraries to authenticate to your cluster.
 
-1. Create a new Go module for your project using the `go mod init` command:
+1. Create a new Go module for your project using the `go mod init` command.
 
     ```bash
     go mod init cosmicworks
     ```
 
-1. Install the Azure Identity SDK for Go to handle authentication with Microsoft Entra ID:
+1. Install the `azidentity` package to handle authentication with Microsoft Entra ID.
 
     ```bash
     go get -u github.com/Azure/azure-sdk-for-go/sdk/azidentity
     ```
 
-1. Install the MongoDB Go driver to connect to and interact with your MongoDB vCore cluster:
+1. Install the `mongo` package interact with your MongoDB vCore cluster.
 
     ```bash
     go get -u  go.mongodb.org/mongo-driver/v2/mongo
     ```
     
-1. Create a new file named `main.go` in your project directory:
+1. Create a new file named `main.go` in your project directory.
 
     ```bash
     touch main.go
-    ```
-    
-1. Define a Product struct to represent your document structure. Open the `main.go` file and add this structure:
-    
-    ```bash
-    type Product struct {
-        ID        string `bson:"_id"`
-        Category  string `bson:"category"`
-        Name      string `bson:"name"`
-        Quantity  int    `bson:"quantity"`
-        Price     decimal128.Decimal128 `bson:"price"`
-        Clearance bool   `bson:"clearance"`
-    }
     ```
 
 ## Connect to the cluster
 
 Now, use the `Azure.Identity` library to get a `TokenCredential` to use to connect to your cluster. The official MongoDB driver has a special interface that must be implemented to obtain tokens from Microsoft Entra for use when connecting to the cluster.
 
-1. Start by importing the required packages at the top of your `main.go` file:
+1. Start by importing the required packages at the top of your `main.go` file.
 
     ```go
     import (
@@ -100,13 +87,13 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     )
     ```
 
-1. Create a background context that is used throughout your application:
+1. Create a background context that is used throughout your application.
 
     ```go
 	ctx := context.Background()
     ```
 
-1. Create the default Azure credential that is used to authenticate with Microsoft Entra:
+1. Create an instance of `DefaultAzureCredential` that is used to authenticate with Microsoft Entra ID.
 
     ```go
 	credential, err := azidentity.NewDefaultAzureCredential(nil)
@@ -115,7 +102,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 	}
     ```
 
-1. Create a callback function that obtains access tokens when the MongoDB driver needs to authenticate:
+1. Create a callback function that obtains access tokens when the MongoDB driver needs to authenticate.
 
     ```go
 	azureIdentityTokenCallback := func(_ context.Context,
@@ -132,14 +119,14 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 	}
     ```
 
-1. Set your cluster name and construct the connection URI:
+1. Set your cluster name and construct the connection URI.
 
     ```go
 	clusterName := "<azure-cosmos-db-mongodb-vcore-cluster-name>"
 	uri := fmt.Sprintf("mongodb+srv://%s.global.mongocluster.cosmos.azure.com/", clusterName)
     ```
 
-1. Configure the authentication credentials for the MongoDB client:
+1. Configure the authentication credentials for the MongoDB client.
 
     ```go
 	auth := options.Credential{
@@ -148,7 +135,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 	}
     ```
 
-1. Set up the client options with connection parameters, transport layer security (TLS) configuration, and authentication:
+1. Set up the client options with connection parameters, transport layer security (TLS) configuration, and authentication.
 
     ```go
 	clientOptions := options.Client().
@@ -159,7 +146,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 		SetAuth(auth)
     ```
 
-1. Create a MongoDB client instance using the configured options:
+1. Create a MongoDB client instance using the configured options.
 
     ```go
 	client, err := mongo.Connect(clientOptions)
@@ -170,7 +157,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 	fmt.Println("Client created")
     ```
 
-1. Add a defer statement to ensure the client is properly disconnected when your application exits:
+1. Add a defer statement to ensure the client is properly disconnected when your application exits.
 
     ```go
 	defer func() {
@@ -184,23 +171,36 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 Finally, use the official library to perform common tasks with databases, collections, and documents. Here, you use the same classes and methods you would use to interact with MongoDB or DocumentDB to manage your collections and items.
 
-1. Access your database by name:
+1. Get a reference to your database by name.
 
     ```go
-	database := client.Database("cosmicworks")
+	database := client.Database("<database-name>")
 
 	fmt.Println("Database pointer created")
     ```
 
-1. Get a reference to your collection within the database:
+1. Get a reference to your collection within the database.
 
     ```go
-	collection := database.Collection("products")
+	collection := database.Collection("<collection-name>")
 
 	fmt.Println("Collection pointer created")
     ```
 
-1. Create or update a document using an upsert operation:
+1. Define a Product struct to represent your document structure.
+    
+    ```bash
+    type Product struct {
+        ID        string `bson:"_id"`
+        Category  string `bson:"category"`
+        Name      string `bson:"name"`
+        Quantity  int    `bson:"quantity"`
+        Price     decimal128.Decimal128 `bson:"price"`
+        Clearance bool   `bson:"clearance"`
+    }
+    ```
+
+1. Create or update a document using the `collection.ReplaceOne` operation configured for **upsert**.
 
     ```go
 	opts := options.Replace().SetUpsert(true)
@@ -225,7 +225,7 @@ Finally, use the official library to perform common tasks with databases, collec
 	fmt.Printf("Documents upserted count:\t%d\n", result.UpsertedCount)
     ```
 
-1. Read a specific document by ID and category:
+1. Read a specific document using `collection.FindOne` and a filter with `_id` and `category`.
 
     ```go
 	readFilter := bson.D{{Key: "_id", Value: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"}, {Key: "category", Value: "gear-surf-surfboards"}}
@@ -238,7 +238,7 @@ Finally, use the official library to perform common tasks with databases, collec
 	fmt.Printf("Read document name:\t%s\n", target.Name)
     ```
 
-1. Query for multiple documents matching a specific category:
+1. Query for multiple documents matching a specific `category` using `collection.Find`.
 
     ```go
 	queryFilter := bson.D{{Key: "category", Value: "gear-surf-surfboards"}}
@@ -248,7 +248,7 @@ Finally, use the official library to perform common tasks with databases, collec
 	}
     ```
 
-1. Retrieve all matching documents from the cursor:
+1. Retrieve all matching documents from the cursor.
 
     ```go
 	var products []Product
@@ -257,7 +257,7 @@ Finally, use the official library to perform common tasks with databases, collec
 	}
     ```
 
-1. Iterate through and display all the products found in the query:
+1. Iterate through and display all the products found in the query.
 
     ```go
 	for _, product := range products {
@@ -272,4 +272,4 @@ Finally, use the official library to perform common tasks with databases, collec
 ## Related content
 
 - [Microsoft Entra authentication overview](entra-authentication.md)
-- [TODO](about:blank)
+- [Microsoft Entra configuration for cluster](how-to-configure-entra-authentication.md)

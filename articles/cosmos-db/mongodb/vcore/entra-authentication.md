@@ -65,7 +65,7 @@ Additionally, one or more nonadministrative Microsoft Entra ID users can be adde
 
 [!INCLUDE[Section - Entra authentication limitations](includes/section-entra-authentication-limitations.md)]
 
-## Next steps
+## Related content
 
 - Develop a [console app with Microsoft Entra authentication](how-to-build-dotnet-console-app.md)
 - Deploy a [Microsoft Entra-enabled web application template](quickstart-dotnet.md)
