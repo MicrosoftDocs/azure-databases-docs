@@ -19,6 +19,16 @@ This article summarizes new releases and features in the Azure Database for MySQ
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we remove it from this article.
 
+## May 2025
+
+### Configure backup interval for the automated backups – Private Preview
+
+Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. The feature is currently available in limited regions, namely – **West Central US** and **East Asia**. [Learn more](./concepts-backup-restore#backup-frequency)
+
+### Enable auto-scale of IOPS for faster restore and replica provisioning
+
+Azure Database for MySQL now supports ability to enable auto-scaling of IOPS for both the source and target server during restore operation and replica provisioning workflow. This enhancement helps accelerate restore and replica provisioning process by temporarily boosting IOPS to meet the performance demands of these operations. Once provisioning is complete, you can disable the auto-scale IOPS setting if desired. [Learn more](./how-to-restore-server-portal.md).
+
 ## March 2025
 
 ### New Built-in Stored Procedures for Plugin Management and Undo Log Cleanup
