@@ -206,9 +206,11 @@ filter = {
     "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "category": "gear-surf-surfboards"
 }
+
 payload = {
     "$set": new_document
 }
+
 result = collection.update_one(filter, payload, upsert=True);
 ```
 
@@ -221,6 +223,7 @@ filter = {
     "_id": "bbbbbbbb-1111-2222-3333-cccccccccccc",
     "category": "gear-surf-surfboards"
 }
+
 existing_document = collection.find_one(filter)
 ```
 
@@ -244,7 +247,11 @@ for document in matched_documents:
 Delete a document by sending a filter for the unique identifier of the document. Use `delete_one` to remove the document from the collection.
 
 ```python
-TODO
+filter = {
+    '_id': id
+}
+
+result = collection.delete_one(filter)
 ```
 
 ## Explore your data
