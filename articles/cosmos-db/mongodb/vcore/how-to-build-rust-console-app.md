@@ -148,7 +148,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 Finally, use the official library to perform common tasks with databases, collections, and documents. Here, you use the same classes and methods you would use to interact with MongoDB or DocumentDB to manage your collections and items.
 
-1. Create a Rust struct to represent your product documents with Serde serialization support:
+1. Create a Rust struct to represent your product documents with `serde` serialization support:
 
     ```rust
     #[derive(Serialize, Deserialize, Debug)]

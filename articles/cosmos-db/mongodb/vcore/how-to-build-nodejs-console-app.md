@@ -95,7 +95,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     import { Collection, Db, Filter, FindCursor, MongoClient, OIDCCallbackParams, OIDCResponse, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
     ```
 
-1. Create a token callback function that will obtain tokens from Azure Identity when required:
+1. Create a token callback function that obtains tokens from Azure Identity when required:
 
     ```typescript
     const AzureIdentityTokenCallback = async (params: OIDCCallbackParams, credential: TokenCredential): Promise<OIDCResponse> => {
@@ -113,13 +113,13 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     const clusterName: string = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
     ```
 
-1. Create an instance of DefaultAzureCredential to handle authentication:
+1. Create an instance of `DefaultAzureCredential`:
 
     ```typescript
     const credential: TokenCredential = new DefaultAzureCredential();
     ```
 
-1. Create the MongoDB client with OIDC authentication configured:
+1. Create a MongoDB client configured with OpenID Connect (OIDC) authentication:
 
     ```typescript
     const client = new MongoClient(

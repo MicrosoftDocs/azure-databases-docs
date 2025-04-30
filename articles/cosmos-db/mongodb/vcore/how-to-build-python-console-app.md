@@ -88,7 +88,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackResult
     ```
 
-1. Create a custom class that implements the MongoDB OIDC callback interface:
+1. Create a custom class that implements the MongoDB OpenID Connect (OIDC) callback interface:
 
     ```python
     class AzureIdentityTokenCallback(OIDCCallback):

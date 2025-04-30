@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 04/28/2025
+ms.date: 04/30/2025
 ms.custom: devx-track-java
 ai-usage: ai-assisted
 appliesto:
@@ -107,7 +107,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     import com.mongodb.client.result.UpdateResult;
     ```
 
-1. In your main method, create a DefaultAzureCredential and set up the OIDC callback to fetch tokens:
+1. In your main method, create a DefaultAzureCredential and set up the OpenID Connect (OIDC) callback to fetch tokens:
 
     ```java
     TokenCredential credential = new DefaultAzureCredentialBuilder().build();
@@ -159,7 +159,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     }
     ```
 
-1. Make sure to handle exceptions properly with try-catch blocks:
+1. Handle exceptions properly with try-catch blocks:
 
     ```java
     try {
@@ -170,7 +170,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     }
     ```
 
-1. Don't forget to close your client connection when you're done:
+1. Close your client connection when you're done:
 
     ```java
     finally {

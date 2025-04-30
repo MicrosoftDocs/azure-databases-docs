@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 04/28/2025
+ms.date: 04/30/2025
 ms.custom: devx-track-go
 ai-usage: ai-assisted
 appliesto:
@@ -100,13 +100,13 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
     )
     ```
 
-1. Create a background context that will be used throughout your application:
+1. Create a background context that is used throughout your application:
 
     ```go
 	ctx := context.Background()
     ```
 
-1. Create the default Azure credential that will be used to authenticate with Microsoft Entra:
+1. Create the default Azure credential that is used to authenticate with Microsoft Entra:
 
     ```go
 	credential, err := azidentity.NewDefaultAzureCredential(nil)
@@ -115,7 +115,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 	}
     ```
 
-1. Create a callback function that will obtain access tokens when the MongoDB driver needs to authenticate:
+1. Create a callback function that obtains access tokens when the MongoDB driver needs to authenticate:
 
     ```go
 	azureIdentityTokenCallback := func(_ context.Context,
@@ -148,7 +148,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 	}
     ```
 
-1. Set up the client options with connection parameters, TLS configuration, and authentication:
+1. Set up the client options with connection parameters, transport layer security (TLS) configuration, and authentication:
 
     ```go
 	clientOptions := options.Client().
