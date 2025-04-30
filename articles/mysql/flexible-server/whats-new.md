@@ -23,7 +23,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 ### Configure backup interval for the automated backups – Private Preview
 
-Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. The feature is currently available in limited regions, namely – **West Central US** and **East Asia**. [Learn more](./concepts-backup-restore#backup-frequency)
+Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. The feature is currently available in limited regions, namely – **West Central US** and **East Asia**. [Learn more](./concepts-backup-restore.md#backup-frequency)
 
 ### Enable auto-scale of IOPS for faster restore and replica provisioning
 
