@@ -44,6 +44,10 @@ A read replica server can be created using the following steps:
 
    :::image type="content" source="media/how-to-read-replicas-portal/select-cross-region.png" alt-text="Screenshot of selecting a cross region":::
 
+1. You will now have the capability to enable auto-scaling of IOPS for both the source and target server during replica creation. This option is available only if the source server does not already have auto-scaling of IOPS enabled. Temporarily boosting IOPS helps accelerate the replica provisioning process. After provisioning is complete, you may choose to disable auto-scaling if no longer needed.
+
+In the replica create workflow, you will see a check-box option **Faster Provisioning**. Select this option to ensure, auto-scaling of IOPS if leveraged for a faster and reliable replica provisioning.
+
 1. Select **OK** to confirm the creation of the replica.
 
 Once the replica server has been created, it can be viewed from the **Replication** page.
