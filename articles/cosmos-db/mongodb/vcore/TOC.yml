@@ -57,6 +57,8 @@
           href: vector-search.md
         - name: Exact Nearest Neighbor (ENN) Vector Search
           href: enn-vector-search.md
+        - name: Half-Precision Vector Indexing
+          href: half-precision.md
         - name: Open-source vector databases
           href: vector-search-ai.md
         - name: RAG with Langchain & OpenAI

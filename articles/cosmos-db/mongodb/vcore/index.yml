@@ -39,6 +39,8 @@ landingContent:
             url: full-text-search.md
           - text: Exact Nearest Neighbor (ENN) Vector Search 
             url: enn-vector-search.md
+          - text: Half-Precision Vector Indexing
+            url: half-precision.md
           - text: Open-source vector database
             url: vector-search-ai.md
           - text: RAG 
