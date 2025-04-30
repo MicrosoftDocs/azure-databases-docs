@@ -14,9 +14,9 @@ appliesto:
   - ✅ MongoDB vCore
 ---
 
-# Half-Precision Vector Indexing in Azure Cosmos DB for MongoDB (vCore)
+# Half-Precision vector indexing in Azure Cosmos DB for MongoDB (vCore)
 
-## What is Half-Precision Vector Indexing?
+## What is Half-Precision vector indexing?
 
 Half-precision vector indexing allows you to store and index vector embeddings using 16-bit floating-point numbers instead of the standard 32-bit floats. This optimization leads to substantial reductions in both memory usage and storage costs, making it more feasible to work with larger datasets and higher-dimensional vectors. Furthermore, by optimizing data density, it can contribute to improved query performance in many vector search scenarios.
 
@@ -26,7 +26,7 @@ Half-precision vector indexing allows you to store and index vector embeddings u
 - **Reduced Storage Footprint:** Storing vectors in a 16-bit format significantly decreases the amount of storage required compared to full-precision vectors. This can lead to considerable cost savings, especially for large-scale vector databases.
 - **Configurable Performance vs. Precision:** To fine-tune your search results, we provide an **oversampling** parameter during query execution. This allows you to control the trade-off between retrieval speed and the potential impact of reduced precision.
 
-## Creating a Half-Precision Vector Index
+## Creating a Half-Precision vector index
 
 When defining a [vector index](./vector-search.md#perform-vector-similarity-search) for your collection, you can enable half-precision compression by specifying the `"compression": "half"` option within the `cosmosSearchOptions`.
 
@@ -48,7 +48,7 @@ db.runCommand({
 });
 ```
 
-## Improving Search with Oversampling
+## Improving search with Oversampling
 
 When querying a vector index that utilizes half-precision compression, you can use the `oversampling` parameter within the `$search` aggregation stage. This parameter helps to mitigate any potential loss of precision introduced by the 16-bit representation.
 
