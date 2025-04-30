@@ -58,6 +58,12 @@ sections:
           We recommended taking advantage of Azure Cosmos DB's native dynamic scaling capability to manage RU/s for your resource. However, if needed, you should use the Normalized RU Consumption metric in Azure Monitor to make programmatic scaling decisions. 
           The [Normalized RU Consumption metric](monitor-normalized-request-units.md) is a metric between 0% to 100% that is used to help measure the utilization of the autoscale max RU/s or manual provisioned throughput on a database or container. It is the most accurate way to determine whether scale-up or scale-down is possible. Other approaches, like using the ReadThroughputAsync() call in the Azure Cosmos DB SDKs to get the ProvisionedThroughput, or using ProvisionedThroughput in Azure Monitor are not recommended and will lead to inaccurate results. These metrics represent billed throughput with a delay and shouldn't be used for scaling decisions.
       - question: |
+          How to interpret ProvisionedThroughput in dynamic autoscale and autoscale?
+        answer: |
+          Azure monitor ProvisionedThroughput metric and the sdk API metric Container.ReadThroughputAsync().Resource.Throughput reflect the aggregated highest RU/s scaled to per hour across each partition and region in dynamic autoscale.
+
+          Azure monitor ProvisionedThroughput metric and the sdk API metric Container.ReadThroughputAsync().Resource.Throughput  reflect the RU/s of the hottest partition, uniformly applied across all partitions and regions, aggregated per hour in autoscale.
+      - question: |
           What happens to databases or containers that were created in the earlier autopilot tier model?
         answer: |
           Resources that were created in the earlier tier model are automatically supported in the new autoscale custom maximum RU/s model. The upper bound of the tier becomes the new maximum RU/s, which results in the same scale range. 
