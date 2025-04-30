@@ -244,27 +244,16 @@ for document in matched_documents:
 Delete a document by sending a filter for the unique identifier of the document. Use `delete_one` to remove the document from the collection.
 
 ```python
-
+TODO
 ```
 
-### Explore your data
+## Explore your data
 
-Use the Visual Studio Code extension for Azure Cosmos DB to explore your MongoDB data. You can perform core database operations including, but not limited to:
-
-- Performing queries using a scrapbook or the query editor
-- Modifying, updating, creating, and deleting documents
-- Importing bulk data from other sources
-- Managing databases and collections
-
-For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB data](../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
+[!INCLUDE[Section - Visual Studio Code extension exploration](includes/section-vscode-extension-explore.md)]
 
 ## Clean up resources
 
-When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
-
-```azurecli
-azd down --force --purge
-```
+[!INCLUDE[Section - Quickstart clean up](includes/section-quickstart-clean-up.md)]
 
 ## Related content
 

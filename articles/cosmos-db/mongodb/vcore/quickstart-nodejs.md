@@ -243,19 +243,19 @@ While Microsoft Entra authentication for Azure Cosmos DB for MongoDB vCore can u
 1. First, define a callback named `AzureIdentityTokenCallback` that takes in parameters and a token credential and then asynchronously returns a response.
 
     ```javascript
-
+    TODO
     ```
 
 1. Define variables for your cluster name and token credential.
 
     ```javascript
-
+    TODO
     ```
 
 1. Build an instance of `MongoClient` using your cluster name, and the known best practice configuration options for Azure Cosmos DB for MongoDB vCore. Also, configure your custom authentication mechanism.
 
     ```javascript
-
+    TODO
     ```
 
 ::: zone-end
@@ -449,7 +449,7 @@ Delete a document by sending a filter for the unique identifier of the document.
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-
+TODO
 ```
 
 ::: zone-end
@@ -457,29 +457,18 @@ Delete a document by sending a filter for the unique identifier of the document.
 ::: zone pivot="programming-language-js"
 
 ```javascript
-
+TODO
 ```
 
 ::: zone-end
 
-### Explore your data
+## Explore your data
 
-Use the Visual Studio Code extension for Azure Cosmos DB to explore your MongoDB data. You can perform core database operations including, but not limited to:
-
-- Performing queries using a scrapbook or the query editor
-- Modifying, updating, creating, and deleting documents
-- Importing bulk data from other sources
-- Managing databases and collections
-
-For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB data](../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
+[!INCLUDE[Section - Visual Studio Code extension exploration](includes/section-vscode-extension-explore.md)]
 
 ## Clean up resources
 
-When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
-
-```azurecli
-azd down --force --purge
-```
+[!INCLUDE[Section - Quickstart clean up](includes/section-quickstart-clean-up.md)]
 
 ## Related content
 
