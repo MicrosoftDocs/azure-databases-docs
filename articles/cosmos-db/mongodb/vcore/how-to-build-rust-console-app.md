@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 04/28/2025
+ms.date: 04/30/2025
 ms.custom: devx-track-rust
 ai-usage: ai-assisted
 appliesto:

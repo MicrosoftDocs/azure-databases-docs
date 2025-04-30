@@ -105,7 +105,7 @@
       items: 
         - name: Security overview
           href: security.md
-        - name: Entra authentication
+        - name: Microsoft Entra ID authentication
           href: entra-authentication.md
         - name: Data encryption
           href: database-encryption-at-rest.md
