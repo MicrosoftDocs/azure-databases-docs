@@ -1,5 +1,5 @@
 ---
-title: Priority-based execution
+title: Priority-based execution (preview)
 titleSuffix: Azure Cosmos DB
 description: Learn how to use Priority-based execution in Azure Cosmos DB.
 author: richagaur
@@ -10,7 +10,7 @@ ms.topic: conceptual
 ms.date: 11/15/2023
 ---
 
-# Priority-based execution in Azure Cosmos DB
+# Priority-based execution in Azure Cosmos DB (preview)
 
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
