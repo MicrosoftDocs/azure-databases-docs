@@ -153,6 +153,12 @@ Follow these steps to restore your Azure Database for MySQL - Flexible Server in
 
 1. A notification is shown that the restore operation has been initiated.
 
+## Auto- scale of IOPS for faster restore
+
+You will now have the capability to enable auto-scaling of IOPS for both the source and target server during restore operation. This option is available only if the source server does not already have auto-scaling of IOPS enabled. Temporarily boosting IOPS helps accelerate the restore process by meeting its increased performance demands. After provisioning is complete, you may choose to disable auto-scaling if no longer needed.
+
+In the restore workflow, you will see a check-box option __Fast Restore__. Select this option to ensure, auto-scaling of IOPS if leveraged for a faster and reliable restore operation.
+
 ## Perform post-restore tasks
 
 After the restore is completed, you should perform the following tasks to get your users and applications back up and running:
