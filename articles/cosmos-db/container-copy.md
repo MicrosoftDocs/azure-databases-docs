@@ -251,6 +251,16 @@ Currently, container copy is supported in the following regions:
 
     In this case, both documents now share the same partition key (`/employeeName`) and `id` combination (`"employeeName": "John Doe", "id": "101"`), which causes a conflict. This conflict results in an insertion error. To avoid such issues, ensure that the new partition key and `id` combinations are unique across all documents in the destination container.
 
+* Error - Partition key reached maximum size of 20 GB
+
+    When modifying partition keys during data copy to the destination container, ensure that the new partition key remains within the logical partition key size limit of 20 GB. If this limit is exceeded, the job will fail with the following error:
+
+    ```output
+    "code": "403",
+    "message": "Response status code does not indicate success: Forbidden (403); Substatus: 1014; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: (Message: {"Errors":["Partition key reached maximum size of 20 GB. Learn more: https://aka.ms/CosmosDB/sql/errors/full-pk"]"
+    ```
+
+
 * Error - Owner resource doesn't exist.
 
     If the job creation fails and displays the error *Owner resource doesn't exist* (error code 404), either the target container hasn't been created yet or the container name that's used to create the job doesn't match an actual container name.
