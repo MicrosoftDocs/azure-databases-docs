@@ -19,7 +19,7 @@ appliesto:
 
 [!INCLUDE[Notice - Entra authentication preview](includes/notice-entra-authentication-preview.md)]
 
-In this article, you learn how to configure Microsoft Entra authentication for an Azure Cosmos DB for MongoDB vCore. Microsoft Entra authentication enables secure and seamless access to your database by using your organization's existing identities. This guide goes through the steps to set up authentication, register users or service principals, and validate the configuration.
+In this article, you learn how to configure Microsoft Entra ID authentication for an Azure Cosmos DB for MongoDB vCore. The steps in this guide configure an existing Azure Cosmos DB for MongoDB vCore cluster to use Microsoft Entra ID authentication with your human identity (currently signed-in account). Microsoft Entra ID authentication enables secure and seamless access to your database by using your organization's existing identities. This guide goes through the steps to set up authentication, register users or service principals, and validate the configuration.
 
 ## Prerequisites
 
@@ -213,19 +213,105 @@ The `tls` setting must also be enabled. The remaining recommended settings are b
 ### [Node.js](#tab/nodejs)
 
 ```typescript
+const AzureIdentityTokenCallback = async (params: OIDCCallbackParams, credential: TokenCredential): Promise<OIDCResponse> => {
+    const tokenResponse: AccessToken | null = await credential.getToken(['https://ossrdbms-aad.database.windows.net/.default']);
+    return {
+        accessToken: tokenResponse?.token || '',
+        expiresInSeconds: (tokenResponse?.expiresOnTimestamp || 0) - Math.floor(Date.now() / 1000)
+    };
+};
 
+const clusterName: string = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
+
+const credential: TokenCredential = new DefaultAzureCredential();
+
+const client = new MongoClient(
+    `mongodb+srv://${clusterName}.global.mongocluster.cosmos.azure.com/`, {
+    connectTimeoutMS: 120000,
+    tls: true,
+    retryWrites: true,
+    authMechanism: 'MONGODB-OIDC',
+    authMechanismProperties: {
+        OIDC_CALLBACK: (params: OIDCCallbackParams) => AzureIdentityTokenCallback(params, credential),
+        ALLOWED_HOSTS: ['*.azure.com']
+    }
+}
+);
 ```
 
 ### [Python](#tab/python)
 
 ```python
+class AzureIdentityTokenCallback(OIDCCallback):
+    def __init__(self, credential):
+        self.credential = credential
 
+    def fetch(self, context: OIDCCallbackContext) -> OIDCCallbackResult:
+        token = self.credential.get_token(
+            "https://ossrdbms-aad.database.windows.net/.default").token
+        return OIDCCallbackResult(access_token=token)
+
+clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>"
+
+credential = DefaultAzureCredential()
+authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
+
+client = MongoClient(
+    f"mongodb+srv://{clusterName}.global.mongocluster.cosmos.azure.com/",
+    connectTimeoutMS=120000,
+    tls=True,
+    retryWrites=True,
+    authMechanism="MONGODB-OIDC",
+    authMechanismProperties=authProperties
+)
 ```
 
 ### [C#](#tab/csharp)
 
 ```csharp
+string tenantId = "<microsoft-entra-tenant-id>";
+string clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
 
+DefaultAzureCredential credential = new();
+AzureIdentityTokenHandler tokenHandler = new(credential, tenantId);
+
+MongoUrl url = MongoUrl.Create($"mongodb+srv://{clusterName}.global.mongocluster.cosmos.azure.com/");
+MongoClientSettings settings = MongoClientSettings.FromUrl(url);
+settings.UseTls = true;
+settings.RetryWrites = false;
+settings.MaxConnectionIdleTime = TimeSpan.FromMinutes(2);
+settings.Credential = MongoCredential.CreateOidcCredential(tokenHandler);
+settings.Freeze();
+
+MongoClient client = new(settings);
+
+internal sealed class AzureIdentityTokenHandler(
+    TokenCredential credential,
+    string tenantId
+) : IOidcCallback
+{
+    private readonly string[] scopes = ["https://ossrdbms-aad.database.windows.net/.default"];
+
+    public OidcAccessToken GetOidcAccessToken(OidcCallbackParameters parameters, CancellationToken cancellationToken)
+    {
+        AccessToken token = credential.GetToken(
+            new TokenRequestContext(scopes, tenantId: tenantId),
+            cancellationToken
+        );
+
+        return new OidcAccessToken(token.Token, token.ExpiresOn - DateTimeOffset.UtcNow);
+    }
+
+    public async Task<OidcAccessToken> GetOidcAccessTokenAsync(OidcCallbackParameters parameters, CancellationToken cancellationToken)
+    {
+        AccessToken token = await credential.GetTokenAsync(
+            new TokenRequestContext(scopes, parentRequestId: null, tenantId: tenantId),
+            cancellationToken
+        );
+
+        return new OidcAccessToken(token.Token, token.ExpiresOn - DateTimeOffset.UtcNow);
+    }
+}
 ```
 
 ---
