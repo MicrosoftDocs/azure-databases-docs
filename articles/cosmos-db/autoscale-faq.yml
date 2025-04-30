@@ -49,6 +49,9 @@ sections:
           // Run this command to see the enablement or disablement status:
           az cosmosdb show --name '<cosmos-account-name>' --resource-group '<resource-group-name>'
           ```
+      - question: Can normalized RU/s consumption be 100 percent even if Provisioned Throughput or Autoscaled RU metrics do not scale to the maximum RU/s?
+        answer: |
+          Yes. For more information, see [Monitor normalized RU/s](monitor-normalized-request-units.md#normalized-ru-consumption-and-autoscale).
       - question: |     
           What metric should be used to determine whether the autoscale max RU/s or manual provisioned RU/s can be scaled up or down programatically?
         answer: |
@@ -251,11 +254,6 @@ sections:
           
           Learn how to [interpret and debug code 429 rate limiting errors](sql/troubleshoot-request-rate-too-large.md).
 
-      - question: Can normalized RU/s consumption be 100 percent if autoscale doesn't scale to the maximum RU/s?
-        answer: |
-          Yes. For more information, see [Monitor normalized RU/s](monitor-normalized-request-units.md#normalized-ru-consumption-and-autoscale).
-
-          
 additionalContent: |
 
   ## Next steps
