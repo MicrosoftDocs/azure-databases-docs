@@ -60,9 +60,12 @@ You can use any of the MongoDB drivers or tools such as mongosh to perform these
 
 ### Authenticate and perform operations via Mongosh
 
+Authenticate using built-in administrative account created during cluster provisionign. Only this built-in administrative account has user management privileges (userAdmin) on the cluster.
+
 ```powershell
 mongosh "mongodb+srv://<UserName>:<Password>@<ClusterName>?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
+
  > [!TIP]
 >  You can get native connection string for the cluster in the Azure portal on the 'Connection strings' page.
 
@@ -148,7 +151,7 @@ db.runCommand(
 - The `Roleinfo` command isn't supported in preview. Alternatively you can use `usersInfo`.
 - Assigning roles to specific databases or collections isn't supported.
 - Cluster restore operation may not work when secondary users preview is enabled on the cluster. 
-    - To perform cluster restore, remove **EnableReadOnlyUser** value from the**previewFeatures** properties.
+    - To perform cluster restore, remove **EnableReadOnlyUser** value from the**previewFeatures** properties. You can re-enable preview once restore is completed. Removing preview from the cluster doesn't impact secondary users that were created on the cluster, only ability to perform user management operations.
 
 ## Next steps
 
