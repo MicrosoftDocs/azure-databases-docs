@@ -51,10 +51,10 @@ One administrative user with all privileges is created on the Azure Cosmos DB fo
 
 In addition, Azure Cosmos DB for MongoDB vCore supports role-based access control (RBAC) for secondary users with read-only or read-write privileges. This capability allows administrators to assign roles that grant access to secondary users for essential read operations while protecting primary data integrity.
 
-Users are created and granted privileges at the cluster level for all databases on that cluster. The **readWriteAnyDatabase** and **clusterAdmin** roles together grant full read-write permissions on the cluster, including privileges for database management and databse operations. The **readAnyDatabase** role is used to grant read-only permissions on the cluster.
+Users are created and granted privileges at the cluster level for all databases on that cluster. The **readWriteAnyDatabase** and **clusterAdmin** roles together grant full read-write permissions on the cluster, including privileges for database management and database operations. The **readAnyDatabase** role is used to grant read-only permissions on the cluster.
 
  > [!NOTE]
->  Only full read-write users with database management and databse operations privileges are supported. You can't assign **readWriteAnyDatabase** and **clusterAdmin** roles separately.
+>  Only full read-write users with database management and database operations privileges are supported. You can't assign **readWriteAnyDatabase** and **clusterAdmin** roles separately.
 
 You can use any of the MongoDB drivers or tools such as mongosh to perform these operations.
 
