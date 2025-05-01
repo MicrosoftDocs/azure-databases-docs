@@ -28,7 +28,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application u
 
 [!INCLUDE[Prerequisites - Developer Quickstart](includes/prereq-dev-quickstart.md)]
 
-- Node.js 23 or newer
+- Node.js 22 or newer
 
 ## Initialize the project
 

@@ -35,7 +35,7 @@ This guide helps you build a Node.js console application to connect to an Azure 
 
     - To enable Microsoft Entra authentication, [review the configuration guide](how-to-configure-entra-authentication.md).
 
-- Latest version of [Node](https://nodejs.org)
+- Latest long-term support (LTS) version of [Node](https://nodejs.org)
 
 ::: zone pivot="programming-language-js"
 :::zone-end
