@@ -30,7 +30,7 @@ Enable secondary native user management on the cluster for all native user manag
 
 # [Azure CLI](#tab/cli)
 ```Bash
-    az resource patch --ids "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDB/mongoClusters/{ClusterName}" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"EnableReadOnlyUser\"]}"
+az resource patch --ids "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDB/mongoClusters/{ClusterName}" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"EnableReadOnlyUser\"]}"
 ```
 
 # [ARM template](#tab/arm)
@@ -40,21 +40,21 @@ Enable secondary native user management on the cluster for all native user manag
                 "EnableReadOnlyUser"
             ]
         }
-
 ```
+---
 
 When secondary user management is disabled, all secondary user operations on the cluster are disabled, but all secondary users created on the cluster can still be used for database access. If you need to remove all secondary users, use [the delete operation](#delete-user).
 
 ## Supported commands and examples
 
-One administrative user with all privileges is created on the Azure Cosmos DB for MonogDB vCore cluster during cluster provisioning. This administrative user can perform all operations on the cluster and cannot be deleted.
+One administrative user with all privileges is created on the Azure Cosmos DB for MonogDB vCore cluster during cluster provisioning. This administrative user can perform all operations on the cluster and can't be deleted.
 
 In addition, Azure Cosmos DB for MongoDB vCore supports role-based access control (RBAC) for secondary users with read-only or read-write privileges. This capability allows administrators to assign roles that grant access to secondary users for essential read operations while protecting primary data integrity.
 
-Users are created and granted privileges at the cluster level for all databases on that cluster. The **readWriteAnyDatabase** and **clusterAdmin** roles together grant full read-write permissions on the cluster, while the **readAnyDatabase** role is used to grant read-only permissions on the cluster.
+Users are created and granted privileges at the cluster level for all databases on that cluster. The **readWriteAnyDatabase** and **clusterAdmin** roles together grant full read-write permissions on the cluster, including privileges for database management and databse operations. The **readAnyDatabase** role is used to grant read-only permissions on the cluster.
 
  > [!NOTE]
->  Only full read-write users are supported. You can't assign **readWriteAnyDatabase** and **clusterAdmin** roles separately. 
+>  Only full read-write users with database management and databse operations privileges are supported. You can't assign **readWriteAnyDatabase** and **clusterAdmin** roles separately.
 
 You can use any of the MongoDB drivers or tools such as mongosh to perform these operations.
 
@@ -147,3 +147,8 @@ db.runCommand(
 -  The `Updateuser` command now only supports password updates and can't modify other object fields.
 -  The `Roleinfo` command isn't supported in preview. Alternatively you can use `usersInfo`.
 -  Assigning roles to specific databases or collections isn't supported.
+
+## Next steps
+
+- Learn about [security in Azure Cosmos DB for MongoDB vCore](./security.md)
+
