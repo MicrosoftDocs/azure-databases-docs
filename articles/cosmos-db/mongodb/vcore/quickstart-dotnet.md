@@ -10,7 +10,6 @@ ms.devlang: csharp
 ms.topic: quickstart-sdk
 ms.date: 05/02/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
-ROBOTS: NOINDEX,NOFOLLOW
 appliesto:
   - ✅ MongoDB (vCore)
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB (vCore).

@@ -10,7 +10,6 @@ ms.devlang: typescript
 ms.topic: quickstart-sdk
 ms.date: 05/02/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli
-ROBOTS: NOINDEX,NOFOLLOW
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
   - ✅ MongoDB (vCore)
