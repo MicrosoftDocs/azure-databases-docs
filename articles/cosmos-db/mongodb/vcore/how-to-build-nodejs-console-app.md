@@ -254,7 +254,7 @@ Finally, use the official library to perform common tasks with databases, collec
         category: 'gear-surf-surfboards'
     };
 
-    var documents = await collection.find(filter);
+    var documents = collection.find(filter);
     
     for await (const document of documents) {
         console.log(`Found document:\t${JSON.stringify(document)}`);
@@ -350,7 +350,7 @@ Finally, use the official library to perform common tasks with databases, collec
         category: 'gear-surf-surfboards'
     };
     
-    var response: FindCursor<WithId<Product>> = await collection.find(query);
+    var response: FindCursor<WithId<Product>> = collection.find(query);
     
     for await (const document of response) {
         console.log(`Found document:\t${JSON.stringify(document)}`);

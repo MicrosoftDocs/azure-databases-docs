@@ -437,7 +437,7 @@ var query: Filter<Product> = {
     category: 'gear-surf-surfboards' 
 };
 
-var response: FindCursor<WithId<Product>> = await collection.find(query);
+var response: FindCursor<WithId<Product>> = collection.find(query);
 ```
 
 ```typescript
@@ -455,7 +455,7 @@ var query = {
     category: 'gear-surf-surfboards' 
 };
 
-var response = await collection.find(query);
+var response = collection.find(query);
 ```
 
 ```javascript

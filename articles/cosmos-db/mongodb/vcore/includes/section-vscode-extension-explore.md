@@ -12,4 +12,4 @@ Use the Visual Studio Code extension for Azure Cosmos DB to explore your MongoDB
 - Importing bulk data from other sources
 - Managing databases and collections
 
-For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB vCore data](../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB vCore data](../../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
