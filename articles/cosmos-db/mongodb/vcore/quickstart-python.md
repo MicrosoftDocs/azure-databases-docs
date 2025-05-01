@@ -49,6 +49,12 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB vCo
 
 1. During initialization, configure a unique environment name.
 
+1. Set the `MONGODB_DEPLOYMENT_TYPE` Azure Developer CLI variable to `vcore`.
+
+    ```azurecli
+    azd env set "MONGODB_DEPLOYMENT_TYPE" "vcore"
+    ```
+
 1. Deploy the cluster using `azd up`. The Bicep templates also deploy a sample web application.
 
     ```azurecli
