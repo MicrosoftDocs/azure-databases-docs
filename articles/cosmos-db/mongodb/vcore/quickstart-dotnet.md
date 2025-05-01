@@ -10,6 +10,7 @@ ms.devlang: csharp
 ms.topic: quickstart-sdk
 ms.date: 05/02/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
+ROBOTS: NOINDEX,NOFOLLOW
 appliesto:
   - ✅ MongoDB (vCore)
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB (vCore).
@@ -44,7 +45,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB vCo
 1. Use `azd init` to initialize the project.
 
     ```azurecli
-    azd init --template cosmos-db-mongodb-vcore-dotnet-quickstart
+    azd init --template cosmos-db-mongodb-dotnet-quickstart
     ```
 
 1. During initialization, configure a unique environment name.
@@ -137,74 +138,13 @@ The sample code in the template uses a database named `cosmicworks` and collecti
 
 ### Authenticate the client
 
-While Microsoft Entra authentication for Azure Cosmos DB for MongoDB vCore can use well known `TokenCredential` types, you must implement a custom token handler. This sample implementation can be used to create a `MongoClient` with support for standard Microsoft Entra authentication of many identity types.
+This sample creates a new instance of the `MongoClient` type.
 
-1. First, create a new class in a separate file that implements `IOidcCallback` interface.
-
-    ```csharp
-    using Azure.Core;
-    using MongoDB.Driver.Authentication.Oidc;
+```csharp
+string credential = "<azure-cosmos-db-mongodb-vcore-credential>";
     
-    internal sealed class AzureIdentityTokenHandler(
-        TokenCredential credential,
-        string tenantId
-    ) : IOidcCallback
-    {
-        private readonly string[] scopes = ["https://ossrdbms-aad.database.windows.net/.default"];
-    
-        public OidcAccessToken GetOidcAccessToken(OidcCallbackParameters parameters, CancellationToken cancellationToken)
-        {
-            AccessToken token = credential.GetToken(
-                new TokenRequestContext(scopes, tenantId: tenantId),
-                cancellationToken
-            );
-    
-            return new OidcAccessToken(token.Token, token.ExpiresOn - DateTimeOffset.UtcNow);
-        }
-    
-        public async Task<OidcAccessToken> GetOidcAccessTokenAsync(OidcCallbackParameters parameters, CancellationToken cancellationToken)
-        {
-            AccessToken token = await credential.GetTokenAsync(
-                new TokenRequestContext(scopes, parentRequestId: null, tenantId: tenantId),
-                cancellationToken
-            );
-    
-            return new OidcAccessToken(token.Token, token.ExpiresOn - DateTimeOffset.UtcNow);
-        }
-    }
-    ```
-
-1. Create a new instance of your custom handler class passing in a new instance of the `DefaultAzureCredential` type and your **tenant ID**.
-
-    ```csharp
-    DefaultAzureCredential credential = new();
-
-    string tenantId = "<microsoft-entra-tenant-id>";
-    
-    AzureIdentityTokenHandler tokenHandler = new(credential, tenantId);
-    ```
-
-1. Build an instance of `MongoUrl` using the endpoint and scheme for your recently deployed Azure Cosmos DB for MongoDB vCore instance.
-
-    ```csharp
-    string clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
-    
-    MongoUrl url = MongoUrl.Create($"mongodb+srv://{clusterName}.global.mongocluster.cosmos.azure.com/");
-    ```
-
-1. Configure your `MongoClient` instance using known best practice configuration options for Azure Cosmos DB for MongoDB vCore and the custom `IOidcCallback` implementation.
-
-    ```csharp
-    MongoClientSettings settings = MongoClientSettings.FromUrl(url);
-    
-    settings.UseTls = true;
-    settings.RetryWrites = false;
-    settings.MaxConnectionIdleTime = TimeSpan.FromMinutes(2);
-    settings.Credential = MongoCredential.CreateOidcCredential(tokenHandler);
-    settings.Freeze();
-    
-    MongoClient client = new(settings);
-    ```
+MongoClient client = new(credential);
+```
 
 ### Get a database
 

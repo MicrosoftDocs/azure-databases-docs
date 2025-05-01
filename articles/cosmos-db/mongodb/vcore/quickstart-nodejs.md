@@ -10,6 +10,7 @@ ms.devlang: typescript
 ms.topic: quickstart-sdk
 ms.date: 05/02/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli
+ROBOTS: NOINDEX,NOFOLLOW
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
   - ✅ MongoDB (vCore)
@@ -45,7 +46,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB vCo
 1. Use `azd init` to initialize the project.
 
     ```azurecli
-    azd init --template cosmos-db-mongodb-vcore-nodejs-quickstart
+    azd init --template cosmos-db-mongodb-nodejs-quickstart
     ```
 
 1. During initialization, configure a unique environment name.
@@ -195,92 +196,25 @@ The sample code in the template uses a database named `cosmicworks` and collecti
 
 ### Authenticate the client
 
-While Microsoft Entra authentication for Azure Cosmos DB for MongoDB vCore can use well known `TokenCredential` types, you must implement a custom token handler. This sample implementation can be used to create a `MongoClient` with support for standard Microsoft Entra authentication of many identity types.
+This sample creates a new instance of the `MongoClient` type.
 
 ::: zone pivot="programming-language-ts"
 
-1. First, define a callback named `AzureIdentityTokenCallback` that takes in `OIDCCallbackParams` and `TokenCredential` and then asynchronously returns a `OIDCResponse`.
+```typescript
+const credential: string = '<azure-cosmos-db-mongodb-vcore-credential>';
 
-    ```typescript
-    const AzureIdentityTokenCallback = async (params: OIDCCallbackParams, credential: TokenCredential): Promise<OIDCResponse> => {
-        const tokenResponse: AccessToken | null = await credential.getToken(['https://ossrdbms-aad.database.windows.net/.default']);
-        return {
-            accessToken: tokenResponse?.token || '',
-            expiresInSeconds: (tokenResponse?.expiresOnTimestamp || 0) - Math.floor(Date.now() / 1000)
-        };
-    };
-    ```
-
-1. Define variables for your cluster name and token credential.
-
-    ```typescript
-    const clusterName: string = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
-
-    const credential: TokenCredential = new DefaultAzureCredential();
-    ```
-
-1. Build an instance of `MongoClient` using your cluster name, and the known best practice configuration options for Azure Cosmos DB for MongoDB vCore. Also, configure your custom authentication mechanism.
-
-    ```typescript
-    const client = new MongoClient(
-        `mongodb+srv://${clusterName}.global.mongocluster.cosmos.azure.com/`, {
-        connectTimeoutMS: 120000,
-        tls: true,
-        retryWrites: true,
-        authMechanism: 'MONGODB-OIDC',
-        authMechanismProperties: {
-                OIDC_CALLBACK: (params: OIDCCallbackParams) => AzureIdentityTokenCallback(params, credential),
-                ALLOWED_HOSTS: ['*.azure.com']
-            }
-        }
-    );
-    ```
+const client = new MongoClient(credential);
+```
 
 ::: zone-end
 
 ::: zone pivot="programming-language-js"
 
-1. First, define a callback named `azureIdentityTokenCallback` that takes in parameters and a token credential and then asynchronously returns a response.
+```javascript
+const credential = '<azure-cosmos-db-mongodb-vcore-credential>';
 
-    ```javascript
-    const azureIdentityTokenCallback = async (_, credential) => {
-        const tokenResponse = await credential.getToken(['https://ossrdbms-aad.database.windows.net/.default']);
-    
-        if (!tokenResponse || !tokenResponse.token) {
-            throw new Error('Failed to retrieve a valid access token.');
-        }
-    
-        return {
-            accessToken: tokenResponse.token,
-            expiresInSeconds: Math.floor((tokenResponse.expiresOnTimestamp - Date.now()) / 1000),
-        };
-    };
-    ```
-
-1. Define variables for your cluster name and token credential.
-
-    ```javascript
-    const clusterName = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
-    
-    const credential = new DefaultAzureCredential();
-    ```
-
-1. Build an instance of `MongoClient` using your cluster name, and the known best practice configuration options for Azure Cosmos DB for MongoDB vCore. Also, configure your custom authentication mechanism.
-
-    ```javascript
-    client = new MongoClient(`mongodb+srv://${clusterName}.global.mongocluster.cosmos.azure.com/`, {
-        connectTimeoutMS: 120000,
-        tls: true,
-        retryWrites: true,
-        authMechanism: 'MONGODB-OIDC',
-        authMechanismProperties: {
-            OIDC_CALLBACK: (params) => azureIdentityTokenCallback(params, credential),
-            ALLOWED_HOSTS: ['*.azure.com']
-        }
-    });
-
-    await client.connect();
-    ```
+const client = new MongoClient(credential);
+```
 
 ::: zone-end
 
