@@ -177,7 +177,7 @@ Finally, use the official library to perform common tasks with databases, collec
     ```
 
 
-1. Create a `Product` class to represent your documents.
+1. Represent your documents using a `Product` class.
 
     ```java
     public class Product {
