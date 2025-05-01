@@ -149,5 +149,6 @@ One or more incompatible SQL modes can cause many different errors. Following is
 
 ## Related content
 
-- [Tutorial: Migrate Azure Database for MySQL - Single Server to Flexible Server online using DMS via the Azure portal](tutorial-mysql-azure-single-to-flex-online-portal.md)
+- [Tutorial: Migrate MySQL to Azure Database for MySQL online using DMS](tutorial-mysql-azure-external-to-flex-online-portal.md)
 - [Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS](tutorial-mysql-azure-mysql-offline-portal.md)
+- [Tutorial: Migrate MySQL to Azure Database for MySQL online by copying physical files](tutorial-mysql-azure-external-online-portal-physical.md)
