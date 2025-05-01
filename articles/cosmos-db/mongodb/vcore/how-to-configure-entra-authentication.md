@@ -62,7 +62,6 @@ First, get the unique identifier for your currently signed-in identity.
 
 When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is configured for native authentication by default. Use the Azure CLI to configure your existing cluster to support Microsoft Entra authentication. Then, configure the cluster to map a user to your signed-in identity.
 
-
 1. Now, get the `authConfig` property from your existing cluster using `az resource show`.
 
     ```azurecli-interactive
@@ -84,19 +83,6 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
     }
     ```
 
-1. Create a new JSON file named *properties.json*. In the file, define the new value for the `authConfig` property.
-
-    ```json
-    {
-      "authConfig": {
-        "allowedModes": [
-          "MicrosoftEntraID",
-          "NativeAuth"
-        ]
-      }
-    }
-    ```
-
 1. Then, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes`.
 
     ```azurecli-interactive
@@ -104,9 +90,26 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
         --resource-group "<resource-group-name>" \
         --name "<azure-cosmos-db-mongodb-vcore-cluster-name>" \
         --resource-type "Microsoft.DocumentDB/mongoClusters" \
-        --properties @properties.json \
+        --properties '{"authConfig":{"allowedModes":["MicrosoftEntraID","NativeAuth"]}}' \
         --latest-include-preview
     ```
+
+    > [!NOTE]
+    > If you prefer to use the Azure REST API directly or with `az rest`, use this request:
+    >
+    > ```http
+    > PUT https://<cluster-region>.management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DocumentDB/mongoClusters/{cluster-name}?api-version=2025-04-01-preview
+    >
+    > {
+    >   "authConfig": {
+    >     "allowedModes": [
+    >       "MicrosoftEntraID",
+    >       "NativeAuth"
+    >     ]
+    >   }
+    > }
+    > ```
+    >
 
 1. Validate that the configuration was successful by using `az resource show` again and observing the entire cluster's configuration which includes `properties.authConfig`.
 
@@ -135,28 +138,6 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
     }
     ```
 
-1. Now, create a new JSON file named *user.json*. In this file, define a user to register for Microsoft Entra authentication.
-
-    ```json
-    {
-      "identityProvider": {
-        "type": "MicrosoftEntraID",
-        "properties": {
-          "principalType": "User"
-        }
-      },
-      "roles": [
-        {
-          "db": "admin",
-          "role": "dbOwner"
-        }
-      ]
-    }
-    ```
-
-    > [!TIP]
-    > If you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
-
 1. Use `az resource create` to create a new resource of type `Microsoft.DocumentDB/mongoClusters/users`. Compose the name of the resource by concatenating the **name of the parent cluster** and the **principal ID** of your identity.
 
     ```azurecli-interactive
@@ -175,6 +156,33 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
     > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
     > ```
     >
+    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
+    >
+    > Finally, if you prefer to use the Azure REST API directly or with `az rest`, use this request:
+    >
+    > ```http
+    > POST https://<cluster-region>.management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DocumentDB/mongoClusters/{cluster-name}/users/{identity-principal-id}?api-version=2025-04-01-preview
+    >
+    > {
+    >   "location": "{cluster_region}",
+    >   "properties": {
+    >     "identityProvider": {
+    >       "type": "MicrosoftEntraID",
+    >       "properties": {
+    >         "principalType": "User"
+    >       }
+    >     },
+    >     "roles": [
+    >       {
+    >         "db": "admin",
+    >         "role": "dbOwner"
+    >       }
+    >     ]
+    >   }
+    > }
+    > ```
+    >
+    
 
 > [!NOTE]
 > Microsoft Entra ID users added to the cluster are going to be in addition to native DocumentDB users defined on the same cluster. An Azure Cosmos DB for MongoDB vCore cluster is created with at least one built-in native DocumentDB user. You can add more native DocumentDB users after cluster provisioning is completed.
