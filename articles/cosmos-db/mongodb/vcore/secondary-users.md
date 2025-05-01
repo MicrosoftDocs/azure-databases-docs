@@ -43,7 +43,11 @@ az resource patch --ids "/subscriptions/{SubscriptionId}/resourceGroups/{Resourc
 ```
 ---
 
-When secondary user management is disabled, all secondary user operations on the cluster are disabled, but all secondary users created on the cluster can still be used for database access. If you need to remove all secondary users, use [the delete operation](#delete-user).
+### Disabling secondary users
+
+If you need to remove all secondary users on the cluster, use [the delete operation](#delete-user).
+
+To disable secondary user *management operations* on the cluster, remove **EnableReadOnlyUser** value from the**previewFeatures** cluster property. When secondary user management is disabled, all secondary user operations on the cluster such as create user are disabled, but all secondary users created on the cluster can still be used for database access.
 
 ## Supported commands and examples
 
