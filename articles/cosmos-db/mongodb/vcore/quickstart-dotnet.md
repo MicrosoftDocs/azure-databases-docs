@@ -44,7 +44,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB vCo
 1. Use `azd init` to initialize the project.
 
     ```azurecli
-    azd init --template documentdb-dotnet-quickstart
+    azd init --template cosmos-db-mongodb-vcore-dotnet-quickstart
     ```
 
 1. During initialization, configure a unique environment name.
