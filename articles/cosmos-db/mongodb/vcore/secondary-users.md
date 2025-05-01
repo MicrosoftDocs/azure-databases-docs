@@ -143,12 +143,13 @@ db.runCommand(
 
 ## Limitations
 
--  You can create up to 10 users/roles per cluster. If you have a requirement to add more users, please open a [support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request).
--  The `Updateuser` command now only supports password updates and can't modify other object fields.
--  The `Roleinfo` command isn't supported in preview. Alternatively you can use `usersInfo`.
--  Assigning roles to specific databases or collections isn't supported.
+- You can create up to 10 users/roles per cluster.
+- The `Updateuser` command now only supports password updates and can't modify other object fields.
+- The `Roleinfo` command isn't supported in preview. Alternatively you can use `usersInfo`.
+- Assigning roles to specific databases or collections isn't supported.
+- Cluster restore operation may not work when secondary users preview is enabled on the cluster. 
+    - To perform cluster restore, remove **EnableReadOnlyUser** value from the**previewFeatures** properties.
 
 ## Next steps
 
 - Learn about [security in Azure Cosmos DB for MongoDB vCore](./security.md)
-
