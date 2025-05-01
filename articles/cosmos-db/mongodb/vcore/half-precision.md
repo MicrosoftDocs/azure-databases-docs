@@ -38,7 +38,7 @@ db.runCommand({
       "key": { "<vector_field_name>": "cosmosSearch" },
       "name": "<index_name>",
       "cosmosSearchOptions": {
-        "kind": "vector-diskann", // vector-hnsw, vector-ivf
+        "kind": "vector-hnsw", // vector-ivf
         "similarity": "cos",
         "dimensions": integer_value, // max 4000
         "compression": "half"
