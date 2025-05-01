@@ -29,7 +29,7 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
 Enable secondary native user management on the cluster for all native user management operations, such as creating and deleting users. You can enable or disable this feature using an ARM template or via [Azure CLI](/cli/azure/get-started-with-azure-cli).
 
 # [Azure CLI](#tab/cli)
-```Bash
+```azurecli-interactive
 az resource patch --ids "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDB/mongoClusters/{ClusterName}" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"EnableReadOnlyUser\"]}"
 ```
 
@@ -63,7 +63,7 @@ You can use any of the MongoDB drivers or tools such as mongosh to perform these
 ```powershell
 mongosh "mongodb+srv://<UserName>:<Password>@<ClusterName>?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
- > [!NOTE]
+ > [!TIP]
 >  You can get native connection string for the cluster in the Azure portal on the 'Connection strings' page.
 
 ### Create a user
