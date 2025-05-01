@@ -62,8 +62,6 @@ First, get the unique identifier for your currently signed-in identity.
 
 When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is configured for native authentication by default. Use the Azure CLI to configure your existing cluster to support Microsoft Entra authentication. Then, configure the cluster to map a user to your signed-in identity.
 
-> [!TIP]
-> These same steps can be followed to configure Microsoft Entra authentication for a managed identity, workload identity, application identity, or service principal.
 
 1. Now, get the `authConfig` property from your existing cluster using `az resource show`.
 
