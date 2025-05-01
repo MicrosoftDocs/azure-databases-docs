@@ -1,14 +1,14 @@
 ---
-title: Quickstart - Node.js
-titleSuffix: Azure Cosmos DB for MongoDB (vCore)
-description: Deploy a .NET web application that uses the client library for Node.js to interact with Azure Cosmos DB for MongoDB (vCore) data in this quickstart.
+title: Quickstart - Node.js driver
+titleSuffix: Azure Cosmos DB for MongoDB vCore
+description: Deploy a Node.js web application that uses the client library for JavaScript to interact with Azure Cosmos DB for MongoDB (vCore) data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 04/08/2025
+ms.date: 05/02/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
@@ -16,25 +16,23 @@ appliesto:
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for MongoDB (vCore).
 ---
 
-# Quickstart: Use Azure Cosmos DB for MongoDB (vCore) with Node.js
+# Quickstart: Use Azure Cosmos DB for MongoDB vCore with MongoDB driver for Node.js
 
-[!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
+[!INCLUDE[Developer Quickstart selector](includes/selector-dev-quickstart.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application using Python. Azure Cosmos DB for MongoDB is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using Python.
+In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application using Node.js. Azure Cosmos DB for MongoDB vCore is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using Node.js.
 
 [Library source code](https://github.com/mongodb/node-mongodb-native) | [Package (npm)](https://www.npmjs.com/package/mongodb) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-- Azure Developer CLI
-- Docker Desktop
-- Node.js 22 or newer
+[!INCLUDE[Prerequisites - Developer Quickstart](includes/prereq-dev-quickstart.md)]
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- Node.js 22 or newer
 
 ## Initialize the project
 
-Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB vCore cluster and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
 1. Open a terminal in an empty directory.
 
@@ -58,7 +56,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
     azd env set "MONGODB_DEPLOYMENT_TYPE" "vcore"
     ```
 
-1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
+1. Deploy the cluster using `azd up`. The Bicep templates also deploy a sample web application.
 
     ```azurecli
     azd up
@@ -109,7 +107,13 @@ The client library is available through npm, as the `mongodb` package.
     npm install --save mongodb
     ```
 
-1. Open and review the **src/ts/package.json** file to validate that the `mongodb` entry exists.
+1. If not already installed, install the `@azure/identity` package using `npm install`.
+
+    ```bash
+    npm install --save @azure/identity
+    ```
+
+1. Open and review the **src/ts/package.json** file to validate that both package entries exist.
 
 ::: zone-end
 
@@ -127,7 +131,13 @@ The client library is available through npm, as the `mongodb` package.
     npm install --save mongodb
     ```
 
-1. Open and review the **src/js/package.json** file to validate that the `mongodb` entry exists.
+1. If not already installed, install the `@azure/identity` package using `npm install`.
+
+    ```bash
+    npm install --save @azure/identity
+    ```
+
+1. Open and review the **src/js/package.json** file to validate that both package entries exist.
 
 ::: zone-end
 
@@ -135,9 +145,17 @@ The client library is available through npm, as the `mongodb` package.
 
 ::: zone pivot="programming-language-js"
 
-Import the `MongoClient` type into your application code.
+Import the following namespaces into your application code:
+
+| | Package | Source |
+| --- | --- | --- |
+| **`TokenCredential`** | `@azure/identity` | Azure SDK for JavaScript |
+| **`DefaultAzureCredential`** | `@azure/identity` | Azure SDK for JavaScript |
+| **`MongoClient`** | `mongodb` | Official MongoDB driver for Node.js |
 
 ```javascript
+import { DefaultAzureCredential, TokenCredential } from '@azure/identity';
+
 import { MongoClient } from 'mongodb';
 ```
 
@@ -145,10 +163,19 @@ import { MongoClient } from 'mongodb';
 
 ::: zone pivot="programming-language-js"
 
-Import all required types into your application code.
+Import all required types into your application code including, but not limited to:
+
+| | Package | Source |
+| --- | --- | --- |
+| **`TokenCredential`** | `@azure/identity` | Azure SDK for JavaScript |
+| **`DefaultAzureCredential`** | `@azure/identity` | Azure SDK for JavaScript |
+| **`MongoClient`** | `mongodb` | Official MongoDB driver for Node.js |
+
 
 ```typescript
-import { Collection, Db, Filter, FindCursor, MongoClient, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
+import { AccessToken, DefaultAzureCredential, TokenCredential } from '@azure/identity';
+
+import { Collection, Db, Filter, FindCursor, MongoClient, OIDCCallbackParams, OIDCResponse, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
 ```
 
 :::zone-end
@@ -158,8 +185,8 @@ import { Collection, Db, Filter, FindCursor, MongoClient, UpdateFilter, UpdateOp
 | Name | Description |
 | --- | --- |
 | [`MongoClient`](https://www.mongodb.com/docs/drivers/node/current/quick-start/connect-to-mongodb/) | Type used to connect to MongoDB. |
-| `Database` | Represents a database in the account. |
-| `Collection` | Represents a collection within a database in the account. |
+| `Database` | Represents a database in the cluster. |
+| `Collection` | Represents a collection within a database in the cluster. |
 
 ## Code examples
 
@@ -179,9 +206,9 @@ This sample creates a new instance of the `MongoClient` type.
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-const connectionString = "<azure-cosmos-db-for-mongodb-connection-string>";
+const credential: string = '<azure-cosmos-db-mongodb-vcore-credential>';
 
-const client = new MongoClient(connectionString);
+const client = new MongoClient(credential);
 ```
 
 ::: zone-end
@@ -189,9 +216,9 @@ const client = new MongoClient(connectionString);
 ::: zone pivot="programming-language-js"
 
 ```javascript
-const connectionString = "<azure-cosmos-db-for-mongodb-connection-string>";
+const credential = '<azure-cosmos-db-mongodb-vcore-credential>';
 
-const client = new MongoClient(connectionString);
+const client = new MongoClient(credential);
 ```
 
 ::: zone-end
@@ -349,7 +376,7 @@ var query: Filter<Product> = {
     category: 'gear-surf-surfboards' 
 };
 
-var response: FindCursor<WithId<Product>> = await collection.find(query);
+var response: FindCursor<WithId<Product>> = collection.find(query);
 ```
 
 ```typescript
@@ -367,7 +394,7 @@ var query = {
     category: 'gear-surf-surfboards' 
 };
 
-var response = await collection.find(query);
+var response = collection.find(query);
 ```
 
 ```javascript
@@ -378,24 +405,41 @@ for await (const item of response) {
 
 ::: zone-end
 
-### Explore your data
+### Delete a document
 
-Use the Visual Studio Code extension for Azure Cosmos DB to explore your MongoDB data. You can perform core database operations including, but not limited to:
+Delete a document by sending a filter for the unique identifier of the document. Use `collection.deleteOne<>` to asynchronously remove the document from the collection.
 
-- Performing queries using a scrapbook or the query editor
-- Modifying, updating, creating, and deleting documents
-- Importing bulk data from other sources
-- Managing databases and collections
+::: zone pivot="programming-language-ts"
 
-For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB data](../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
+```typescript
+var filter: Filter<Product> = { 
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'
+};
+
+await collection.deleteOne(filter);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-js"
+
+```javascript
+const filter = {
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'
+};
+
+await collection.deleteOne(filter);
+```
+
+::: zone-end
+
+## Explore your data
+
+[!INCLUDE[Section - Visual Studio Code extension exploration](includes/section-vscode-extension-explore.md)]
 
 ## Clean up resources
 
-When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
-
-```azurecli
-azd down --force --purge
-```
+[!INCLUDE[Section - Quickstart clean up](includes/section-quickstart-clean-up.md)]
 
 ## Related content
 
