@@ -22,7 +22,7 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
 
 ## Prerequisites
 
-1. [An Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md)
+- [An Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md)
 
 ## Configuring secondary users 
 
