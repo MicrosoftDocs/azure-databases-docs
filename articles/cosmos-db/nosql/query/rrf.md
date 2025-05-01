@@ -38,7 +38,7 @@ This is an example of Hybrid Search (vector similarity search + BM25 full text s
 ```nosql
 SELECT TOP 10 *
 FROM c
-ORDER BY RANK RRF(FullTextScore(c.text, ["keyword"]), VectorDistance(c.vector, [1,2,3]))
+ORDER BY RANK RRF(FullTextScore(c.text, "keyword"), VectorDistance(c.vector, [1,2,3]))
 ```
 
 This example shows fusion with two `FullTextScore` functions
@@ -46,7 +46,7 @@ This example shows fusion with two `FullTextScore` functions
 ```nosql
 SELECT TOP 10 *
 FROM c
-ORDER BY RANK RRF(FullTextScore(c.text, ["keyword1"]), FullTextScore(c.text, ["keyword2"])
+ORDER BY RANK RRF(FullTextScore(c.text, "keyword1"), FullTextScore(c.text, "keyword2")
 ```
 
 This example shows fusion with two `VectorDistance` functions
