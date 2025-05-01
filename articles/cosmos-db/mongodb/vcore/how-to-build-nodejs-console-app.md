@@ -89,34 +89,57 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 
 ::: zone pivot="programming-language-js"
 
-1. Import the necessary modules at the top of your TypeScript file.
+1. Import the necessary modules at the top of your JavaScript file.
 
     ```javascript
-    TODO
+    import { MongoClient } from 'mongodb';
+    import { DefaultAzureCredential } from '@azure/identity';
     ```
 
 1. Create a token callback function that obtains tokens from the `TokenCredential` instance when required.
 
     ```javascript
-    TODO
+    const azureIdentityTokenCallback = async (_, credential) => {
+        const tokenResponse = await credential.getToken(['https://ossrdbms-aad.database.windows.net/.default']);
+    
+        if (!tokenResponse || !tokenResponse.token) {
+            throw new Error('Failed to retrieve a valid access token.');
+        }
+    
+        return {
+            accessToken: tokenResponse.token,
+            expiresInSeconds: Math.floor((tokenResponse.expiresOnTimestamp - Date.now()) / 1000),
+        };
+    };
     ```
 
 1. Set your cluster name variable to connect to your Azure Cosmos DB for MongoDB vCore cluster.
 
     ```javascript
-    TODO
+    const clusterName = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
     ```
 
 1. Create an instance of `DefaultAzureCredential`.
 
     ```javascript
-    TODO
+    const credential = new DefaultAzureCredential();
     ```
 
 1. Create a MongoDB client configured with OpenID Connect (OIDC) authentication.
 
     ```javascript
-    TODO
+    client = new MongoClient(`mongodb+srv://${clusterName}.global.mongocluster.cosmos.azure.com/`, {
+        connectTimeoutMS: 120000,
+        tls: true,
+        retryWrites: true,
+        authMechanism: 'MONGODB-OIDC',
+        authMechanismProperties: {
+            OIDC_CALLBACK: (params) => azureIdentityTokenCallback(params, credential),
+            ALLOWED_HOSTS: ['*.azure.com']
+        }
+    });
+    
+    console.log('Client created');
     ```
 
 :::zone-end
@@ -167,8 +190,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
             OIDC_CALLBACK: (params: OIDCCallbackParams) => AzureIdentityTokenCallback(params, credential),
             ALLOWED_HOSTS: ['*.azure.com']
         }
-    }
-    );
+    });
     
     console.log('Client created');
     ```
@@ -184,43 +206,65 @@ Finally, use the official library to perform common tasks with databases, collec
 1. Get a reference to your database by name.
 
     ```javascript
-    TODO
+    const databaseName = process.env.SETTINGS__DATABASENAME ?? 'cosmicworks';
+    
+    console.log('Database pointer created');
     ```
 
 1. Get a reference to your collection.
 
     ```javascript
-    TODO
-    ```
-
-1. Define an interface to represent your product documents.
-
-    ```javascript
-    TODO
+    const collectionName = process.env.SETTINGS__COLLECTIONNAME ?? 'products';
+    
+    console.log('Collection pointer created');
     ```
 
 1. Create a document using `collection.updateOne` and **upsert** it into the collection.
 
     ```javascript
-    TODO
+    const filter = { _id: request.params._id };
+    const payload = {
+        $set: document
+    };
+    const options = {
+        upsert: true
+    };
+
+    var response = await collection.updateOne(filter, payload, options);
+    
+    if (response.acknowledged) {
+        console.log(`Documents upserted count:\t${response.matchedCount}`);
+    }
     ```
 
 1. Use `collection.findOne` to get a specific document from the collection.
 
     ```javascript
-    TODO
+    const filter = { _id: request.params.id };
+
+    var document = await collection.findOne(filter, options);
+    
+    console.log(`Read document _id:\t${document._id}`);
     ```
 
 1. Query for multiple documents matching a filter using `collection.find`.
 
     ```javascript
-    TODO
+    var filter = {
+        category: 'gear-surf-surfboards'
+    };
+
+    var documents = await collection.find(filter);
+    
+    for await (const document of documents) {
+        console.log(`Found document:\t${JSON.stringify(document)}`);
+    }
     ```
 
 1. Close the MongoDB client connection when done.
 
     ```javascript
-    TODO
+    await client.close();
     ```
 
 :::zone-end

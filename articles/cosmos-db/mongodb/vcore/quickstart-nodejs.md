@@ -240,22 +240,46 @@ While Microsoft Entra authentication for Azure Cosmos DB for MongoDB vCore can u
 
 ::: zone pivot="programming-language-js"
 
-1. First, define a callback named `AzureIdentityTokenCallback` that takes in parameters and a token credential and then asynchronously returns a response.
+1. First, define a callback named `azureIdentityTokenCallback` that takes in parameters and a token credential and then asynchronously returns a response.
 
     ```javascript
-    TODO
+    const azureIdentityTokenCallback = async (_, credential) => {
+        const tokenResponse = await credential.getToken(['https://ossrdbms-aad.database.windows.net/.default']);
+    
+        if (!tokenResponse || !tokenResponse.token) {
+            throw new Error('Failed to retrieve a valid access token.');
+        }
+    
+        return {
+            accessToken: tokenResponse.token,
+            expiresInSeconds: Math.floor((tokenResponse.expiresOnTimestamp - Date.now()) / 1000),
+        };
+    };
     ```
 
 1. Define variables for your cluster name and token credential.
 
     ```javascript
-    TODO
+    const clusterName = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
+    
+    const credential = new DefaultAzureCredential();
     ```
 
 1. Build an instance of `MongoClient` using your cluster name, and the known best practice configuration options for Azure Cosmos DB for MongoDB vCore. Also, configure your custom authentication mechanism.
 
     ```javascript
-    TODO
+    client = new MongoClient(`mongodb+srv://${clusterName}.global.mongocluster.cosmos.azure.com/`, {
+        connectTimeoutMS: 120000,
+        tls: true,
+        retryWrites: true,
+        authMechanism: 'MONGODB-OIDC',
+        authMechanismProperties: {
+            OIDC_CALLBACK: (params) => azureIdentityTokenCallback(params, credential),
+            ALLOWED_HOSTS: ['*.azure.com']
+        }
+    });
+
+    await client.connect();
     ```
 
 ::: zone-end
@@ -449,7 +473,11 @@ Delete a document by sending a filter for the unique identifier of the document.
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-TODO
+var filter: Filter<Product> = { 
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'
+};
+
+await collection.deleteOne(filter);
 ```
 
 ::: zone-end
@@ -457,7 +485,11 @@ TODO
 ::: zone pivot="programming-language-js"
 
 ```javascript
-TODO
+const filter = {
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'
+};
+
+await collection.deleteOne(filter);
 ```
 
 ::: zone-end
