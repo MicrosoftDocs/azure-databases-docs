@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 04/30/2025
+ms.date: 05/02/2025
 ms.custom: devx-track-rust
 appliesto:
   - ✅ MongoDB (vCore)

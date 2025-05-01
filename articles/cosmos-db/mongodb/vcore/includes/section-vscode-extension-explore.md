@@ -2,7 +2,7 @@
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: include
-ms.date: 04/30/2025
+ms.date: 05/02/2025
 ---
 
 Use the Visual Studio Code extension for Azure Cosmos DB to explore your MongoDB vCore data. You can perform core database operations including, but not limited to:
