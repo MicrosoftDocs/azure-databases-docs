@@ -10,6 +10,7 @@ ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 05/02/2025
 ms.custom: devx-track-rust
+ROBOTS: NOINDEX,NOFOLLOW
 ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)

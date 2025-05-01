@@ -10,6 +10,7 @@ ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 05/02/2025
 ms.custom: devx-track-js
+ROBOTS: NOINDEX,NOFOLLOW
 ai-usage: ai-assisted
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
