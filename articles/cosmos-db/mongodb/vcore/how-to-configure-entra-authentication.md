@@ -304,8 +304,6 @@ internal sealed class AzureIdentityTokenHandler(
 
 ---
 
-For more information about connection uniform resource indicators (URIs), see [MongoDB manual](https://www.mongodb.com/docs/manual/reference/connection-string/#standard-connection-string-format).
-
 ## Limitations
 
 [!INCLUDE[Section - Entra authentication limitations](includes/section-entra-authentication-limitations.md)]
