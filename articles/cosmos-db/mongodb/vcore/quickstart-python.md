@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 05/02/2025
+ms.date: 05/03/2025
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 appliesto:
   - ✅ MongoDB (vCore)
@@ -44,16 +44,10 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB vCo
 1. Use `azd init` to initialize the project.
 
     ```azurecli
-    azd init --template cosmos-db-mongodb-python-quickstart
+    azd init --template cosmos-db-mongodb-vcore-python-quickstart
     ```
 
 1. During initialization, configure a unique environment name.
-
-1. Set the `MONGODB_DEPLOYMENT_TYPE` Azure Developer CLI variable to `vcore`.
-
-    ```azurecli
-    azd env set "MONGODB_DEPLOYMENT_TYPE" "vcore"
-    ```
 
 1. Deploy the cluster using `azd up`. The Bicep templates also deploy a sample web application.
 
@@ -141,13 +135,43 @@ The sample code in the template uses a database named `cosmicworks` and collecti
 
 ### Authenticate the client
 
-This sample creates a new instance of the `MongoClient` type.
+While Microsoft Entra authentication for Azure Cosmos DB for MongoDB vCore can use well known `TokenCredential` types, you must implement a custom token handler. This sample implementation can be used to create a `MongoClient` with support for standard Microsoft Entra authentication of many identity types.
 
-```python
-credential = "<azure-cosmos-db-mongodb-vcore-credential>"
+1. First, define a class named `AzureIdentityTokenCallback` that defines a `fetch` function taking in the `OIDCCallbackContext` parameter and returning a `OIDCCallbackResult`.
 
-client = MongoClient(credential)
-```
+    ```python
+    class AzureIdentityTokenCallback(OIDCCallback):
+        def __init__(self, credential):
+            self.credential = credential
+    
+        def fetch(self, context: OIDCCallbackContext) -> OIDCCallbackResult:
+            token = self.credential.get_token(
+                "https://ossrdbms-aad.database.windows.net/.default").token
+            return OIDCCallbackResult(access_token=token)
+    ```
+
+1. Use your custom handler class passing in a new instance of the `DefaultAzureCredential` type
+
+    ```python
+    credential = DefaultAzureCredential()
+    
+    authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
+    ```
+
+1. Build an instance of `MongoClient` using your cluster name, and the known best practice configuration options for Azure Cosmos DB for MongoDB vCore. Also, configure your custom authentication mechanism.
+
+    ```python
+    clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>"
+
+    client = MongoClient(
+        f"mongodb+srv://{clusterName}.global.mongocluster.cosmos.azure.com/",
+        connectTimeoutMS=120000,
+        tls=True,
+        retryWrites=True,
+        authMechanism="MONGODB-OIDC",
+        authMechanismProperties=authProperties
+    )
+    ```
 
 ### Get a database
 
