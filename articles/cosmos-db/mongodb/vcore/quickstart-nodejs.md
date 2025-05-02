@@ -184,7 +184,7 @@ import { Collection, Db, Filter, FindCursor, MongoClient, OIDCCallbackParams, OI
 
 | Name | Description |
 | --- | --- |
-| [`MongoClient`](https://www.mongodb.com/docs/drivers/node/current/quick-start/connect-to-mongodb/) | Type used to connect to MongoDB. |
+| MongoClient | Type used to connect to MongoDB. |
 | `Database` | Represents a database in the cluster. |
 | `Collection` | Represents a collection within a database in the cluster. |
 
