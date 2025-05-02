@@ -4,7 +4,7 @@ description: Learn about recent updates to Azure Database for MySQL.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: vamehta, maghan
-ms.date: 04/22/2025
+ms.date: 05/02/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview

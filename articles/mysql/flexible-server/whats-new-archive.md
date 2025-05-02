@@ -1,10 +1,10 @@
 ---
 title: "Azure Database for MySQL: A Look Back at Recent Features"
-description: Learn about recent updates to Azure Database for MySQL.
+description: Archive list of features released for Azure Database for MySQL.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: vamehta, maghan
-ms.date: 11/27/2024
+ms.date: 05/02/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -662,5 +662,6 @@ If you have questions about or suggestions for working with Azure Database for M
 ## Related content
 
 - [Azure Database for MySQL pricing](https://azure.microsoft.com/pricing/details/mysql/server/)
+- [What's new in Azure Database for MySQL?](whats-new.md)
 - [Azure Database for MySQL documentation](../index.yml)
 - [Troubleshoot errors](how-to-troubleshoot-common-errors.md)
