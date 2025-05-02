@@ -16,6 +16,8 @@ ms.topic: overview
 
 This article summarizes new releases and features in the Azure Database for MySQL service.
 
+For previously released features, visit [Azure Database for MySQL: Previous released features](whats-new-archive.md).
+
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we remove it from this article.
 
@@ -55,7 +57,7 @@ You now benefit from the highest level of availability against infrastructure fa
 
 ### Accelerated Logs enabled for all new business critical servers
 
-Accelerated Logs, a feature that significantly enhances the performance of Azure Database for MySQL Flexible Server instances, is now enabled by default for all new Business-Critical servers. Accelerated Logs offers a dynamic solution designed for high throughput needs, reducing latency with no extra cost. Existing Business Critical servers can also enable Accelerated Logs through the Azure portal. [Accelerated logs feature in Azure Database for MySQL ](concepts-accelerated-logs.md).
+Accelerated Logs, a feature that significantly enhances the performance of Azure Database for MySQL flexible server instances, is now enabled by default for all new Business-Critical servers. Accelerated Logs offers a dynamic solution designed for high throughput needs, reducing latency with no extra cost. Existing Business Critical servers can also enable Accelerated Logs through the Azure portal. [Accelerated logs feature in Azure Database for MySQL ](concepts-accelerated-logs.md).
 
 ## November 2024
 
@@ -71,7 +73,7 @@ Azure Database for MySQL now supports MySQL 9.1 Innovation version, introduces e
 
 **New B1s Servers are unavailable**
 
-To ensure performance and reliability in light of ongoing security improvements, the creation of new B1s servers will be limited starting 11/1/2024. We recommend exploring alternative SKUs designed to better support your needs while maintaining high service reliability. Thank you for your understanding as we work to improve your experience.
+To ensure performance and reliability in light of ongoing security improvements, the creation of new B1s servers will be limited starting November 1st 2024. We recommend exploring alternative SKUs designed to better support your needs while maintaining high service reliability. Thank you for your understanding as we work to improve your experience.
 
 **What does this mean for you?**
 
@@ -89,13 +91,15 @@ To ensure performance and reliability in light of ongoing security improvements,
 
 ## September 2024
 
-- **Azure Database for MySQL Flexible Server Flexible Maintenance is now Generally Available**
+- **Azure Database for MySQL Flexible Maintenance is now Generally Available**
 
-  Azure Database for MySQL Flexible Server has officially released the Flexible Maintenance feature to General Availability (GA). With this feature, users can now reschedule maintenance activities via the Azure CLI, providing enhanced control and flexibility. The reschedule window has also been expanded to cover all available maintenance dates within the same region and same round of maintenance, instead of being limited to the 14-day window around the instance's originally scheduled date.[Learn more](./concepts-maintenance.md#maintenance-reschedule)
+  Azure Database for MySQL has officially released the Flexible Maintenance feature to General Availability (GA). With this feature, users can now reschedule maintenance activities via the Azure CLI, providing enhanced control and flexibility. The reschedule window has also been expanded to cover all available maintenance dates within the same region and same round of maintenance, instead of being limited to the 14-day window around the instance's originally scheduled date.
+
+To learn more, visit [Scheduled maintenance](./concepts-maintenance.md#maintenance-reschedule).
 
 ## August 2024
 
-- **Azure Database for MySQL Flexible Server now supports up to 8 TB in a single data file!**
+- **Azure Database for MySQL flexibls server now supports up to 8 TB in a single data file!**
 
   Azure Database for MySQL now supports single InnoDB data files up to **8 TB** in size, enabling users to store larger datasets within a single file. This enhancement reduces the need for data partitioning and streamlines database management, making it easier to handle substantial volumes of data using the InnoDB storage engine. [Learn more.](./concepts-server-parameters.md#innodb_file_per_table)
 
@@ -110,7 +114,7 @@ To ensure performance and reliability in light of ongoing security improvements,
   - Available Memory Bytes (deprecated)
   - MySQL Lock Row Lock Waits (deprecated)
 
-  These metrics will no longer be supported and will be removed from the monitoring by the end of August 2024. We recommend updating your monitoring and alerting configurations to exclude these metrics and use alternative metrics that provide similar insights. For more information and guidance on alternative metrics, please refer to [azure monitoring documentation](concepts-monitoring.md)
+  These metrics are no longer supported and are removed from the monitoring by the end of August 2024. We recommend updating your monitoring and alerting configurations to exclude these metrics and use alternative metrics that provide similar insights. 
 
 ## July 2024
 
@@ -190,5 +194,6 @@ If you have questions about or suggestions for working with Azure Database for M
 ## Related content
 
 - [Azure Database for MySQL pricing](https://azure.microsoft.com/pricing/details/mysql/server/)
-- [public documentation](index.yml)
-- [troubleshooting common migration errors](../howto-troubleshoot-common-errors.md)
+- [Azure Database for MySQL documentation](../index.yml)
+- [Troubleshoot errors](how-to-troubleshoot-common-errors.md)
+- [Azure Database for MySQL: Previous released features](whats-new-archive.md)

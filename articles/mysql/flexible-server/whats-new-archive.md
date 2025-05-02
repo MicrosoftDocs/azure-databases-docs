@@ -1,5 +1,5 @@
 ---
-title: "What's New"
+title: "Azure Database for MySQL: A Look Back at Recent Features"
 description: Learn about recent updates to Azure Database for MySQL.
 author: SudheeshGH
 ms.author: sunaray
@@ -14,13 +14,13 @@ ms.custom:
   - ignite-2024
 ---
 
-# Previous released features
+# Azure Database for MySQL: Previous released features
 
 [What is Azure Database for MySQL - Flexible Server?](overview.md) is a deployment mode designed to provide more granular control and flexibility over database management functions and configuration settings than the Azure Database for MySQL single server deployment mode. The service currently supports the community versions of MySQL 5.7 and 8.0.
 
 This article summarizes past releases and features in the Azure Database for MySQL service.
 
-For the latest features, see [What's new in Azure Database for MySQL](whats-new.md).
+For the latest features, visit [What's new in Azure Database for MySQL](whats-new.md).
 
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
@@ -175,7 +175,7 @@ For the latest features, see [What's new in Azure Database for MySQL](whats-new.
 
 - **Minor version upgrade for Azure Database for MySQL to 8.0.31**
 
-  After this month's deployment, Azure Database for MySQL Flexible Server 8.0 will be running on minor version 8.0.31*, to learn more about changes coming in this minor version [visit Changes in MySQL 8.0.31 (2022-10-11, General Availability)](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-31.html)
+  After this month's deployment, Azure Database for MySQL Flexible Server 8.0 will be running on minor version 8.0.31*, to learn more about changes coming in this minor version [visit Changes in MySQL 8.0.31 (General Availability)](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-31.html)
 
 - **Known issues**
 
@@ -321,16 +321,16 @@ Learn more about [Boost Azure MySQL Business Critical Flexible Server performanc
     We're announcing the addition of new Burstable compute instances to support customers' autoscaling compute requirements from 1 vCore up to 20 vCores. learn more about [Compute Option for Azure Database for MySQL Flexible Server](./concepts-compute-storage.md).
 
 - **Known issues**
-  - The Reserved instances (RI) feature in Azure Database for MySQL Flexible Server isn't working properly for the Business Critical service tier after rebranding from the Memory Optimized service tier. Specifically, instance reservation has stopped working, and we're working to fix the issue.
+  - The Reserved instances (RI) feature in Azure Database for MySQL Flexible Server isn't working properly for the Business Critical service tier after restructuring from the Memory Optimized service tier. Specifically, instance reservation has stopped working, and we're working to fix the issue.
   - Private DNS integration details aren't displayed on a few Azure Database for MySQL Database Flexible Server instances that have enabled HA. This issue doesn't impact the server's availability or name resolution. We're working on a permanent fix to resolve the issue, and it will be available in the next deployment. Meanwhile, suppose you want to view the Private DNS Zone details. In that case, you can either search under [Quickstart: Create an Azure private DNS zone using the Azure portal](/azure/dns/private-dns-getstarted-portal) in the Azure portal or you can perform a [manual failover](concepts-high-availability.md#planned-forced-failover) of the HA enabled Azure Database for MySQL Flexible Server instance and refresh the Azure portal.
 
 ## April 2022
 
 - **Minor version upgrade for Azure Database for MySQL Flexible Server to 8.0.28**
-    Azure Database for MySQL Flexible Server 8.0 now is running on minor version 8.0.28. To learn more about changes coming in this minor version, see [Changes in MySQL 8.0.28 (2022-01-18, General Availability)](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-28.html).
+    Azure Database for MySQL Flexible Server 8.0 now is running on minor version 8.0.28. To learn more about changes coming in this minor version, see [Changes in MySQL 8.0.28 (General Availability)](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-28.html).
 
 - **Minor version upgrade for Azure Database for MySQL Flexible Server to 5.7.37**
-    Azure Database for MySQL Flexible Server 5.7 is now running on minor version 5.7.37. To learn more about changes coming in this minor version, see [Changes in MySQL 5.7.37 (2022-01-18, General Availability](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-37.html).
+    Azure Database for MySQL Flexible Server 5.7 is now running on minor version 5.7.37. To learn more about changes coming in this minor version, see [Changes in MySQL 5.7.37 (General Availability](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-37.html).
 
     > [!NOTE]  
     > Some regions are still running older minor versions of Azure Database for MySQL Flexible Server and will be patched by end of April 2022.
@@ -389,7 +389,7 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Fastest restore points**
 
-  With the fastest restore point option, you can restore an Azure Database for MySQL Flexible Server instance in the fastest time possible on a given day within the server's retention period. This restore operation restores the full snapshot backup without requiring restore or recovery of logs. With fastest restore point, customers will see three options while performing point in time restores from Azure portal viz latest restore point, custom restore point and fastest restore point. [Learn more](concepts-backup-restore.md#point-in-time-restore).
+  With the fastest restore point option, you can restore an Azure Database for MySQL Flexible Server instance in the fastest time possible on a given day within the server's retention period. This restore operation restores the full snapshot backup without requiring restore or recovery of logs. With fastest restore point, customers see three options while performing point in time restores from Azure portal latest restore point, custom restore point, and fastest restore point. [Learn more](concepts-backup-restore.md#point-in-time-restore).
 
 - **FAQ in the Azure portal**
 
@@ -661,6 +661,6 @@ If you have questions about or suggestions for working with Azure Database for M
 
 ## Related content
 
-- [Azure Database for MySQL Flexible Server pricing](https://azure.microsoft.com/pricing/details/mysql/server/)
-- [public documentation](index.yml)
-- [troubleshooting common migration errors](../howto-troubleshoot-common-errors.md)
+- [Azure Database for MySQL pricing](https://azure.microsoft.com/pricing/details/mysql/server/)
+- [Azure Database for MySQL documentation](../index.yml)
+- [Troubleshoot errors](how-to-troubleshoot-common-errors.md)
