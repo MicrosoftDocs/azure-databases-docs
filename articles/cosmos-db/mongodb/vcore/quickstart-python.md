@@ -118,7 +118,7 @@ from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackRes
 
 | Name | Description |
 | --- | --- |
-| [`MongoClient`](https://www.mongodb.com/docs/languages/python/pymongo-driver/current/get-started/connect-to-mongodb/) | Type used to connect to MongoDB. |
+| MongoClient | Type used to connect to MongoDB. |
 | `Database` | Represents a database in the cluster. |
 | `Collection` | Represents a collection within a database in the cluster. |
 
