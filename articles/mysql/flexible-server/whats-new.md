@@ -21,13 +21,12 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 ## May 2025
 
-### Configure backup interval for the automated backups – Private Preview
+### Enable Auto-Scale of IOPS for faster restore and replica provisions
 
-Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. The feature is currently available in limited regions, namely – **West Central US** and **East Asia**. [Learn more](./concepts-backup-restore.md#backup-frequency)
+Azure Database for MySQL now supports the ability to enable [auto-scaling of IOPS](https://techcommunity.microsoft.com/blog/adformysql/autoscale-iops-for-azure-database-for-mysql---flexible-server---general-availabi/3884602) for both the source server and target server during the restore operation and replica provisioning workflow. This enhancement helps accelerate the restore and replica provisioning process by temporarily boosting IOPS to meet the performance demands of these operations. Once provisioning is complete, you can disable the auto-scale IOPS setting if desired. [Learn more](./how-to-restore-server-portal.md).
 
-### Enable auto-scale of IOPS for faster restore and replica provisioning
 
-Azure Database for MySQL now supports ability to enable [auto-scaling of IOPS](https://techcommunity.microsoft.com/blog/adformysql/autoscale-iops-for-azure-database-for-mysql---flexible-server---general-availabi/3884602) for both the source and target server during restore operation and replica provisioning workflow. This enhancement helps accelerate restore and replica provisioning process by temporarily boosting IOPS to meet the performance demands of these operations. Once provisioning is complete, you can disable the auto-scale IOPS setting if desired. [Learn more](./how-to-restore-server-portal.md).
+Azure Database for MySQL now supports the ability to enable https://techcommunity.microsoft.com/blog/adformysql/autoscale-iops-for-azure-database-for-mysql---flexible-server---general-availabi/3884602 for both the source and target servers during restore operations and replica provisioning workflows. This enhancement helps accelerate the restore and replica provisioning process by temporarily boosting IOPS to meet the performance demands of these operations. Once provisioning is complete, you can disable the auto-scale IOPS setting if desired. ./how-to-restore-server-portal.md
 
 ## March 2025
 
