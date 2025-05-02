@@ -146,7 +146,7 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
         --resource-group "<resource-group-name>" \
         --name "<azure-cosmos-db-mongodb-vcore-cluster-name>/users/<principal-id>" \
         --resource-type "Microsoft.DocumentDB/mongoClusters/users" \
-        --properties @user.json \
+        --properties '{"identityProvider":{"type":"MicrosoftEntraID","properties":{"principalType":"User"}},"roles":[{"db":"admin","role":"dbOwner"}]}' \
         --latest-include-preview
     ```
 
