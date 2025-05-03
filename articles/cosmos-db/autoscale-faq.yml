@@ -64,7 +64,7 @@ sections:
 
           In dynamic autoscale, Azure monitor Provisioned Throughput metric and the various SDK API metrics listed below reflect the aggregated highest RU/s scaled to per hour across each partition and region.
 
-          In autoscale, Azure monitor Provisioned Throughput metric and the various SDK API metrics listed below reflect the RU/s of the hottest partition, uniformly applied across all partitions and regions, aggregated per hour.
+          In autoscale, Azure monitor Provisioned Throughput metric and the various SDK API metrics listed below reflect the RU/s of the most active partition, uniformly applied across all partitions and regions, aggregated per hour.
 
           | SDK Type | Provisioned Throughput Represented by |
           | --- | ----- |
