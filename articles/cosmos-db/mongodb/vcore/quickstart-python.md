@@ -1,39 +1,37 @@
 ---
-title: Quickstart - Python
-titleSuffix: Azure Cosmos DB for MongoDB (vCore)
-description: Deploy a .NET web application that uses the client library for Python to interact with Azure Cosmos DB for MongoDB (vCore) data in this quickstart.
+title: Quickstart - Python driver
+titleSuffix: Azure Cosmos DB for MongoDB vCore
+description: Deploy a Python web application that uses the client library for Python to interact with Azure Cosmos DB for MongoDB (vCore) data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 04/08/2025
+ms.date: 05/03/2025
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 appliesto:
   - ✅ MongoDB (vCore)
 # CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for MongoDB (vCore).
 ---
 
-# Quickstart: Use Azure Cosmos DB for MongoDB (vCore) with Python
+# Quickstart: Use Azure Cosmos DB for MongoDB vCore with MongoDB driver for Python
 
-[!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
+[!INCLUDE[Developer Quickstart selector](includes/selector-dev-quickstart.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application using Python. Azure Cosmos DB for MongoDB is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using Python.
+In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application using Python. Azure Cosmos DB for MongoDB vCore is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using Python.
 
 [Library source code](https://github.com/mongodb/mongo-python-driver) | [Package (PyPI)](https://pypi.org/project/pymongo/) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-- Azure Developer CLI
-- Docker Desktop
-- Python 3.12
+[!INCLUDE[Prerequisites - Developer Quickstart](includes/prereq-dev-quickstart.md)]
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- Python 3.12
 
 ## Initialize the project
 
-Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB vCore cluster and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
 1. Open a terminal in an empty directory.
 
@@ -46,18 +44,12 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 1. Use `azd init` to initialize the project.
 
     ```azurecli
-    azd init --template cosmos-db-mongodb-python-quickstart
+    azd init --template cosmos-db-mongodb-vcore-python-quickstart
     ```
 
 1. During initialization, configure a unique environment name.
 
-1. Set the `MONGODB_DEPLOYMENT_TYPE` Azure Developer CLI variable to `vcore`.
-
-    ```azurecli
-    azd env set "MONGODB_DEPLOYMENT_TYPE" "vcore"
-    ```
-
-1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
+1. Deploy the cluster using `azd up`. The Bicep templates also deploy a sample web application.
 
     ```azurecli
     azd up
@@ -96,23 +88,39 @@ The client library is available through PyPi, as the `pymongo` package.
     pip install pymongo
     ```
 
-1. Open and review the **src/requirements.txt** file to validate that the `pymongo` entry exists.
+1. If not already installed, install the `azure.identity` package using `pip install`.
+
+    ```bash
+    pip install azure.identity
+    ```
+
+1. Open and review the **src/requirements.txt** file to validate that both package entries exist.
 
 ### Import libraries
+Import the following namespaces into your application code:
 
-Import the `MongoClient` type into your application code.
+| | Package | Source |
+| --- | --- | --- |
+| **`DefaultAzureCredential`** | `azure.identity` | Azure SDK for Python |
+| **`MongoClient`** | `pymongo` | Official MongoDB driver for Python |
+| **`OIDCCallback`** | `pymongo` | Official MongoDB driver for Python |
+| **`OIDCCallbackContext`** | `pymongo` | Official MongoDB driver for Python |
+| **`OIDCCallbackResult`** | `pymongo` | Official MongoDB driver for Python |
 
 ```python
+from azure.identity import DefaultAzureCredential
+
 from pymongo import MongoClient
+from pymongo.auth_oidc import OIDCCallback, OIDCCallbackContext, OIDCCallbackResult
 ```
 
 ## Object model
 
 | Name | Description |
 | --- | --- |
-| [`MongoClient`](https://www.mongodb.com/docs/languages/python/pymongo-driver/current/get-started/connect-to-mongodb/) | Type used to connect to MongoDB. |
-| `Database` | Represents a database in the account. |
-| `Collection` | Represents a collection within a database in the account. |
+| MongoClient | Type used to connect to MongoDB. |
+| `Database` | Represents a database in the cluster. |
+| `Collection` | Represents a collection within a database in the cluster. |
 
 ## Code examples
 
@@ -127,13 +135,43 @@ The sample code in the template uses a database named `cosmicworks` and collecti
 
 ### Authenticate the client
 
-This sample creates a new instance of the `MongoClient` type.
+While Microsoft Entra authentication for Azure Cosmos DB for MongoDB vCore can use well known `TokenCredential` types, you must implement a custom token handler. This sample implementation can be used to create a `MongoClient` with support for standard Microsoft Entra authentication of many identity types.
 
-```python
-connection_string = "<azure-cosmos-db-for-mongodb-connection-string>"
+1. First, define a class named `AzureIdentityTokenCallback` that defines a `fetch` function taking in the `OIDCCallbackContext` parameter and returning a `OIDCCallbackResult`.
 
-client = MongoClient(connection_string)
-```
+    ```python
+    class AzureIdentityTokenCallback(OIDCCallback):
+        def __init__(self, credential):
+            self.credential = credential
+    
+        def fetch(self, context: OIDCCallbackContext) -> OIDCCallbackResult:
+            token = self.credential.get_token(
+                "https://ossrdbms-aad.database.windows.net/.default").token
+            return OIDCCallbackResult(access_token=token)
+    ```
+
+1. Use your custom handler class passing in a new instance of the `DefaultAzureCredential` type
+
+    ```python
+    credential = DefaultAzureCredential()
+    
+    authProperties = {"OIDC_CALLBACK": AzureIdentityTokenCallback(credential)}
+    ```
+
+1. Build an instance of `MongoClient` using your cluster name, and the known best practice configuration options for Azure Cosmos DB for MongoDB vCore. Also, configure your custom authentication mechanism.
+
+    ```python
+    clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>"
+
+    client = MongoClient(
+        f"mongodb+srv://{clusterName}.global.mongocluster.cosmos.azure.com/",
+        connectTimeoutMS=120000,
+        tls=True,
+        retryWrites=True,
+        authMechanism="MONGODB-OIDC",
+        authMechanismProperties=authProperties
+    )
+    ```
 
 ### Get a database
 
@@ -168,9 +206,11 @@ filter = {
     "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "category": "gear-surf-surfboards"
 }
+
 payload = {
     "$set": new_document
 }
+
 result = collection.update_one(filter, payload, upsert=True);
 ```
 
@@ -183,6 +223,7 @@ filter = {
     "_id": "bbbbbbbb-1111-2222-3333-cccccccccccc",
     "category": "gear-surf-surfboards"
 }
+
 existing_document = collection.find_one(filter)
 ```
 
@@ -201,24 +242,25 @@ for document in matched_documents:
     # Do something with each item
 ```
 
-### Explore your data
+### Delete a document
 
-Use the Visual Studio Code extension for Azure Cosmos DB to explore your MongoDB data. You can perform core database operations including, but not limited to:
+Delete a document by sending a filter for the unique identifier of the document. Use `delete_one` to remove the document from the collection.
 
-- Performing queries using a scrapbook or the query editor
-- Modifying, updating, creating, and deleting documents
-- Importing bulk data from other sources
-- Managing databases and collections
+```python
+filter = {
+    '_id': id
+}
 
-For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB data](../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
+result = collection.delete_one(filter)
+```
+
+## Explore your data
+
+[!INCLUDE[Section - Visual Studio Code extension exploration](includes/section-vscode-extension-explore.md)]
 
 ## Clean up resources
 
-When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
-
-```azurecli
-azd down --force --purge
-```
+[!INCLUDE[Section - Quickstart clean up](includes/section-quickstart-clean-up.md)]
 
 ## Related content
 
