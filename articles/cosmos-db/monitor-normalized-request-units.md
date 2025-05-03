@@ -69,15 +69,11 @@ Simultaneously, Partition 2 spikes to 8,000 RU/s, then drops to 1,000 RU/s for t
 
 This is how metrics will behave:
 
-Normalized RU Consumption (which shows the maximum usage over the interval across all partitions) will show 100% utilization, because Partition 1 hit its maximum.
+Normalized RU Consumption (which shows the maximum usage over the interval across all partitions) will show 100% utilization, because Partition 1 hit its maximum for 1-second.
 
-However, [Provisioned Throughput and Autoscaled RU metrics](provision-throughput-autoscale.md#monitoring-metrics) do not scale up to maximum RU/s just because of a 1-second spike. It is calculated based on 5-second averaging to be cost effective. Over the 5-second period:
+However, [Provisioned Throughput and Autoscaled RU metrics](provision-throughput-autoscale.md#monitoring-metrics) do not scale up to maximum RU/s just because of a 1-second spike. It scales based on 5-second interval to be cost effective. So for the above example, partition 1 and partition 2 RU consumption will not reach 10,000 RU/s based on the 5 second interval.
 
-Partition 1's RU consumption: (10,000 + 1,000×4) ÷ 5 = 2,800 RU/s
-
-Partition 2's RU Consumption: (8,000 + 1,000×4) ÷ 5 = 2,400 RU/s
-
-As a result, even though autoscale didn't scale to the maximum, you were still able to use the total RU/s available. To verify your RU/s consumption, you can use the opt-in feature Diagnostic Logs to query for the overall RU/s consumption at a per second level across all partition key ranges.
+As a result, even though autoscale didn't scale to the maximum, you were still able to use the total RU/s available for that spiky second. To verify your RU/s consumption, you can use the opt-in feature Diagnostic Logs to query for the overall RU/s consumption at a per second level across all partition key ranges.
 
 ```kusto
 CDBPartitionKeyRUConsumption
