@@ -11,12 +11,12 @@ ms.date: 03/03/2022
 # How to monitor normalized RU/s for an Azure Cosmos DB container or an account
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-Azure Monitor for Azure Cosmos DB provides a metrics view to monitor your account and create dashboards. The Azure Cosmos DB metrics are collected by default, this feature doesn't require you to enable or configure anything explicitly.
+Azure Monitor for Azure Cosmos DB provides a metrics view to monitor your account and create dashboards. The Azure Cosmos DB metrics are collected by default. This feature doesn't require you to enable or configure anything explicitly.
 
 ## Metric Definition
-The **Normalized RU Consumption** metric is a metric between 0% to 100% that is used to help measure the utilization of provisioned throughput on a database or container. The metric is emitted at 1 minute intervals and is defined as the maximum RU/s utilization across all partition key ranges in the time interval. Each partition key range maps to one physical partition and is assigned to hold data for a range of possible hash values. In general, the higher the Normalized RU percentage, the more you've utilized your provisioned throughput. The metric can also be used to view the utilization of individual partition key ranges on a database or container.
+The **Normalized RU Consumption** metric is a metric between 0% to 100% that is used to help measure the utilization of provisioned throughput on a database or container. The metric is emitted at 1-minute intervals and is defined as the maximum RU/s utilization across all partition key ranges in the time interval. Each partition key range maps to one physical partition and is assigned to hold data for a range of possible hash values. In general, the higher the Normalized RU percentage, the more you've utilized your provisioned throughput. The metric can also be used to view the utilization of individual partition key ranges on a database or container.
 
-For example, suppose you have a container where you set [autoscale max throughput](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and you have two partition key ranges (physical partitions) *P1* and *P2*. Because Azure Cosmos DB distributes the provisioned throughput equally across all the partition key ranges, *P1* and *P2* each can scale between 1000 - 10,000 RU/s. Suppose in a 1 minute interval, in a given second, *P1* consumed 6000 request units and *P2* consumed 8000 request units. The normalized RU consumption of P1 is 60% and 80% for *P2*. The overall normalized RU consumption of the entire container is MAX(60%, 80%) = 80%.
+For example, suppose you have a container where you set [autoscale max throughput](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and you have two partition key ranges (physical partitions) *P1* and *P2*. Because Azure Cosmos DB distributes the provisioned throughput equally across all the partition key ranges, *P1* and *P2* each can scale between 1000 - 10,000 RU/s. Suppose in a 1-minute interval, in a given second, *P1* consumed 6000 request units and *P2* consumed 8000 request units. The normalized RU consumption of P1 is 60% and 80% for *P2*. The overall normalized RU consumption of the entire container is MAX(60%, 80%) = 80%.
 
 If you're interested in seeing the request unit consumption at a per second interval, along with operation type, you can use the opt-in feature [Diagnostic Logs](monitor-resource-logs.md) and query the **PartitionKeyRUConsumption** table. To get a high-level overview of the operations and status code your application is performing on the Azure Cosmos DB resource, you can use the built-in Azure Monitor **Total Requests** (API for NoSQL), **Mongo Requests**, **Gremlin Requests**, or **Cassandra Requests** metric. Later you can filter on these requests by the 429 status code and split them by **Operation Type**.
 
@@ -28,12 +28,12 @@ This doesn't necessarily mean there's a problem with your resource. By default,
 
 In general, for a production workload, if you see between 1-5% of requests with 429s, and your end to end latency is acceptable, this is a healthy sign that the RU/s are being fully utilized. In this case, the normalized RU consumption metric reaching 100% only means that in a given second, at least one partition key range used all its provisioned throughput. This is acceptable because the overall rate of 429s is still low. No further action is required.
 
-To determine what percent of your requests to your database or container resulted in 429s, from your Azure Cosmos DB account blade, navigate to **Insights** > **Requests** > **Total Requests by Status Code**. Filter to a specific database and container. For API for Gremlin, use the **Gremlin Requests** metric.
+To determine what percent of your requests to your database or container resulted in 429s, from your Azure Cosmos DB account, navigate to **Insights** > **Requests** > **Total Requests by Status Code**. Filter to a specific database and container. For API for Gremlin, use the **Gremlin Requests** metric.
 :::image type="content" source="nosql/media/troubleshoot-request-rate-too-large/insights-429-requests.png" alt-text="Total Requests by Status Code chart that shows number of 429 and 2xx requests.":::
 
 If the normalized RU consumption metric is consistently 100% across multiple partition key ranges and the rate of 429s is greater than 5%, it's recommended to increase the throughput. You can find out which operations are heavy and what their peak usage is by using the [Azure monitor metrics and Azure monitor diagnostic logs](nosql/troubleshoot-request-rate-too-large.md#step-3-determine-what-requests-are-returning-429-responses). Follow the [best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md).
 
-It isn't always the case that you'll see a 429 rate limiting error just because the normalized RU has reached 100%. That's because the normalized RU is a single value that represents the max usage over all partition key ranges. One partition key range may be busy but the other partition key ranges can serve requests without issues. For example, a single operation such as a stored procedure that consumes all the RU/s on a partition key range will lead to a short spike in the normalized RU consumption metric. In such cases, there won't be any immediate rate limiting errors if the overall request rate is low or requests are made to other partitions on different partition key ranges.
+It isn't always the case that you see a 429 rate limiting error just because the normalized RU reached 100%. That's because the normalized RU is a single value that represents the max usage over all partition key ranges. One partition key range may be busy but the other partition key ranges can serve requests without issues. For example, a single operation such as a stored procedure that consumes all the RU/s on a partition key range will lead to a short spike in the normalized RU consumption metric. In such cases, there won't be any immediate rate limiting errors if the overall request rate is low or requests are made to other partitions on different partition key ranges.
 
 Learn more about how to [interpret and debug 429 rate limiting errors](nosql/troubleshoot-request-rate-too-large.md).
 
@@ -44,24 +44,36 @@ The normalized RU consumption metric can be used to monitor if your workload has
 
 To verify if there's a hot partition, navigate to **Insights** > **Throughput** > **Normalized RU Consumption (%) By PartitionKeyRangeID**. Filter to a specific database and container.
 
-Each PartitionKeyRangeId maps to one physical partition. If there's one PartitionKeyRangeId that has significantly higher normalized RU consumption than others (for example, one is consistently at 100%, but others are at 30% or less), this can be a sign of a hot partition.
+Each PartitionKeyRangeId maps to one physical partition. If there's one PartitionKeyRangeId that has higher normalized RU consumption than others (for example, one is consistently at 100%, but others are at 30% or less), this can be a sign of a hot partition.
 
 :::image type="content" source="nosql/media/troubleshoot-request-rate-too-large/split-norm-utilization-by-pkrange-hot-partition.png" alt-text="Normalized RU Consumption by PartitionKeyRangeId chart with a hot partition.":::
 
-To identify the logical partitions that are consuming the most RU/s, as well as recommended solutions, see the article [Diagnose and troubleshoot Azure Cosmos DB request rate too large (429) exceptions](nosql/troubleshoot-request-rate-too-large.md#how-to-identify-the-hot-partition).
+To identify the logical partitions that are consuming the most RU/s, and recommended solutions, see the article [Diagnose and troubleshoot Azure Cosmos DB request rate too large (429) exceptions](nosql/troubleshoot-request-rate-too-large.md#how-to-identify-the-hot-partition).
 
 ## Normalized RU Consumption and autoscale
 
-The normalized RU consumption metric will show as 100% if at least 1 partition key range uses all its allocated RU/s in any given second in the time interval. One common question that arises is, why is normalized RU consumption at 100%, but Azure Cosmos DB didn't scale the RU/s to the maximum throughput with autoscale?
+The normalized RU consumption metric shows as 100% if at least 1 partition key range uses all its allocated RU/s in any given second in the time interval. One common question that arises is, why is normalized RU consumption at 100%, but Azure Cosmos DB didn't scale the RU/s to the maximum throughput with autoscale?
 
 > [!NOTE]
 > The information below describes the current implementation of autoscale and may be subject to change in the future.
 
 When you use autoscale, Azure Cosmos DB only scales the RU/s to the maximum throughput when the normalized RU consumption is 100% for a sustained, continuous period of time in a 5 second interval. This is done to ensure the scaling logic is cost friendly to the user, as it ensures that single, momentary spikes to not lead to unnecessary scaling and higher cost. When there are momentary spikes, the system typically scales up to a value higher than the previously scaled to RU/s, but lower than the max RU/s. 
 
-For example, suppose you have a container with autoscale max throughput of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and 2 partition key ranges. Each partition key range can scale between 1000 - 10,000 RU/s. Because autoscale provisions all required resources upfront, you can use up to 20,000 RU/s at any time. Let's say you have an intermittent spike of traffic, where for a single second, the usage of one of the partition key ranges is 10,000 RU/s. For subsequent seconds, the usage goes back down to 1000 RU/s. Because normalized RU consumption metric shows the highest utilization in the time period across all partitions, it will show 100%. However, because the utilization was only 100% for 1 second, autoscale won't automatically scale to the max.
+For example, suppose you have a container with autoscale max throughput of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and 2 partition key ranges. Each partition key range can scale between 1000 - 10,000 RU/s. Because autoscale provisions all required resources upfront, you can use up to 20,000 RU/s at any time. 
 
-As a result, even though autoscale didn't scale to the maximum, you were still able to use the total RU/s available. To verify your RU/s consumption, you can use the opt-in feature Diagnostic Logs to query for the overall RU/s consumption at a per second level across all partition key ranges.
+Now let’s say you have an intermittent spike of traffic as below:
+
+For 1 second, Partition 1 spikes to 10,000 RU/s, then drops to 1,000 RU/s for the next 4 seconds.
+
+Simultaneously, Partition 2 spikes to 8,000 RU/s, then drops to 1,000 RU/s for the next 4 seconds.
+
+This is how metrics will behave:
+
+Normalized RU Consumption (which shows the maximum usage over the interval across all partitions) will show 100% utilization, because Partition 1 hit its maximum for 1-second.
+
+However, [Provisioned Throughput and Autoscaled RU metrics](provision-throughput-autoscale.md#monitoring-metrics) do not scale up to maximum RU/s just because of a 1-second spike. It scales based on 5-second interval to be cost effective. So for the above example, partition 1 and partition 2 RU consumption will not reach 10,000 RU/s based on the 5 second interval.
+
+As a result, even though autoscale didn't scale to the maximum, you were still able to use the total RU/s available for that spiky second. To verify your RU/s consumption, you can use the opt-in feature Diagnostic Logs to query for the overall RU/s consumption at a per second level across all partition key ranges.
 
 ```kusto
 CDBPartitionKeyRUConsumption
