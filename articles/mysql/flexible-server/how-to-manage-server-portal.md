@@ -50,7 +50,7 @@ You can change the administrator role's password using the Azure portal.
 1. Select **Save** to save the new password.
 
 > [!Important]
-> Resetting server admin password will automatically reset the server admin privileges to default. Consider resetting your server admin password if you accidentally revoked one or more of the server admin privileges.
+> Resetting server admin password automatically reset the server admin privileges to default. Consider resetting your server admin password if you accidentally revoked one or more of the server admin privileges.
 
 
 ## Delete a server
