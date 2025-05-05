@@ -115,7 +115,7 @@ Therefore, monitoring the replication lag and replication slots status is crucia
 
 We recommend setting alert rules for storage used or storage percentage, and for replication lags, when they exceed certain thresholds so that you can proactively act, increase the storage size, and delete lagging read replicas. For example, you can set an alert if the storage percentage exceeds 80% usage, and if the replica lag is higher than 5 minutes. The [Transaction Log Storage Used](concepts-monitoring.md#default-metrics) metric shows you if the WAL files accumulation is the main reason of the excessive storage usage.
 
-#### Moniotring metrics
+#### Monitoring metrics
 
 Azure Database for PostgreSQL flexible server provides following metrics for monitoring replication. 
 
