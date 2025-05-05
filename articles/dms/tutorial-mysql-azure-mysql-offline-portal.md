@@ -2,8 +2,8 @@
 title: "Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS"
 titleSuffix: "Azure Database Migration Service"
 description: "Learn to perform an offline migration from MySQL on-premises to Azure Database for MySQL by using Azure Database Migration Service."
-author: skondapalli11
-ms.author: skondapalli11
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: arthiaga, randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
