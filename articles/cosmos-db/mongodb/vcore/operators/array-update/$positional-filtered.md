@@ -28,13 +28,17 @@ The $[identifier] array update operator in Azure Cosmos DB for MongoDB vCore is 
 ```
 
 ## Parameters
-<update operator>: The update operator to be applied (e.g., $set, $inc, etc.).
-<array field>: The field containing the array to be updated.
-<identifier>: A placeholder used in the arrayFilters to match specific elements within the array.
-<value>: The value to be set or updated.
-arrayFilters: An array of filter conditions used to identify the elements to be updated within the array.
-<field>: The specific field within the array elements to be checked.
-<condition>: The condition that the array elements must meet to be updated.
+
+| Parameter           | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| `<update operator>` | The update operator to be applied (e.g., `$set`, `$inc`, etc.).             |
+| `<array field>`     | The field containing the array to be updated.                               |
+| `<identifier>`      | A placeholder used in `arrayFilters` to match specific elements in the array.|
+| `<value>`           | The value to be set or updated.                                             |
+| `arrayFilters`      | An array of filter conditions to identify which elements to update.         |
+| `<field>`           | The specific field within array elements to be checked.                     |
+| `<condition>`       | The condition that array elements must meet to be updated.                  |
+
 
 ## Example(s)
 

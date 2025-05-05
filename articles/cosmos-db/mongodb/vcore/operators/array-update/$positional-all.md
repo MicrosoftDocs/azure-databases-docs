@@ -27,10 +27,14 @@ db.collection.update(
 )
 ```
 
-## Parameters 
-<query>: The selection criteria for the documents to update.
-<arrayField>: The field containing the array to update.
-<value>: The value to set for each matching element in the array.
+## Parameters
+
+| Parameter      | Description                                                  |
+|----------------|--------------------------------------------------------------|
+| `<query>`      | The selection criteria for the documents to update.          |
+| `<arrayField>` | The field containing the array to update.                    |
+| `<value>`      | The value to set for each matching element in the array.     |
+
 
 ## Example(s)
 ### Example 1: Updating Discount Percentages
