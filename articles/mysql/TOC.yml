@@ -20,7 +20,7 @@
     items:
       - name: What's new?
         href: flexible-server/whats-new.md
-      - name: Previous features?
+      - name: Previous features
         href: flexible-server/whats-new-archive.md
       - name: Release notes
         items:
