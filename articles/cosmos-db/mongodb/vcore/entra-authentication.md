@@ -8,8 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 05/02/2025
-ROBOTS: NOINDEX,NOFOLLOW
+ms.date: 05/03/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
