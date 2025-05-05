@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Configure and access logs in Azure Database for PostgreSQL - Flexible Server
+# Configure and access logs in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -106,8 +106,6 @@ AzureDiagnostics
 | where Category =='PostgreSQLFlexDatabaseXacts'
 | where TimeGenerated > ago(1d) 
 ```
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

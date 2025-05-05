@@ -1,10 +1,10 @@
 ---
-title: Premigration error codes in the migration service.
+title: "Premigration Error Codes in the Migration Service."
 description: Error codes for troubleshooting and resolving issues during the migration process in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: error-reference
@@ -12,13 +12,13 @@ ms.custom:
   - troubleshooting
 ---
 
-#  Known errors in the migration service for Azure Database for PostgreSQL
+# Known errors in the migration service for Azure Database for PostgreSQL
 
 This article contains error message numbers and their description for premigration validation.
 
 The following tables provide a comprehensive list of error codes for the migration service feature in Azure Database for PostgreSQL. These error codes help you troubleshoot and resolve issues during the migration process. Each error code has an error message and other details that provide further context and guidance for resolving the issue.
 
-## Connection timeouts
+## Connection time-outs
 
 ### Symptoms
 
@@ -31,24 +31,73 @@ Migration failures often manifest through error messages that indicate connectiv
 
 ### Cause
 
-The underlying cause for these symptoms is a `connection timeout`. This occurs when the server or the client expects to receive data within a certain time frame, but no data is sent or received, leading the connection to time out. The specific reasons for a connection timeout can vary, but common factors include network congestion, misconfigured network settings, or overly aggressive timeout settings.
+The underlying cause for these symptoms is a `connection timeout`. This generally occurs when the server or the client expects to receive data within a certain time frame, but no data is sent or received, leading the connection to time out. The specific reasons for a connection time-out can vary, but common factors include network congestion, misconfigured network settings, or overly aggressive time-out settings.
 
-In the context of migration service in Azure Database for PostgreSQL, a connection timeout between the source and the migration service or between the migration service and the target can interrupt the data transfer process, resulting in the symptoms described above.
+In the context of migration service in Azure Database for PostgreSQL, a connection time-out between the source and the migration service or between the migration service and the target can interrupt the data transfer process, resulting in the symptoms described above.
 
 ### Resolution
 
-- To address the connection timeout issues, adjust the TCP parameters on both the source and target servers as follows:
+- To address the connection time-out issues, adjust the TCP parameters on both the source and target servers as follows:
 
     - `tcp_keepalives_idle=10`
     - `tcp_keepalives_interval=10`
     - `tcp_keepalives_count=60`
 
-These settings help maintain the connection by sending keepalive probes to prevent timeouts due to inactivity. Importantly, modifying these TCP parameters doesn't require a restart of the source or target PostgreSQL instances. Changes can be applied dynamically, allowing for a seamless continuation of service without interrupting the database operations.
+These settings help maintain the connection by sending keepalive probes to prevent time-outs due to inactivity. Importantly, modifying these TCP parameters doesn't require a restart of the source or target PostgreSQL instances. Changes can be applied dynamically, allowing for a seamless continuation of service without interrupting the database operations.
+
+## Connection Terminated Due to Idle-in-Transaction time-out
+
+### Symptoms
+- The Migration service encounters a connection termination message.
+- Logs display the error: `terminating connection due to idle-in-transaction timeout`.
+
+### Cause
+
+This error occurs when a database connection remains idle within a transaction for longer than the value specified in the `idle_in_transaction_timeout` parameter. PostgreSQL automatically terminates such connections to avoid resource locking issues.
+
+### Resolution
+
+- Set the `idle_in_transaction_timeout` parameter to `0` to disable the time-out during the migration process.
+- Example command to apply this setting:
+```azurecli-interactive
+ALTER SYSTEM SET idle_in_transaction_timeout = 0;
+```
+- Ensure to reset this parameter to its original value after the migration to maintain database performance and prevent prolonged idle connections.
+
+## Shared Memory Exhaustion
+
+### Symptoms
+The migration process halts unexpectedly. Logs display the error: `out of shared memory`.
+
+### Cause
+
+This error indicates that PostgreSQL has exhausted the shared memory allocated for locks. It typically occurs when the migration process involves many locks beyond the current setting of the max_locks_per_transaction parameter.
+
+### Resolution
+
+- Increase the value of the `max_locks_per_transaction` parameter to accommodate the another locks required during the migration process.
+- Example command to modify this setting: `ALTER SYSTEM SET max_locks_per_transaction = <<>>;`
+- Ensure that, `max_locks_per_transaction * max_connections > Number of tables + Number of indexes`
+- If the issue persists, consider increasing the shared_buffers parameter to ensure sufficient shared memory is available for lock management.
+
+## Use of CREATE TYPE
+
+### Symptoms
+The migration process halts unexpectedly. Logs display the error: `pg_restore: error: could not execute query: ERROR:  must be superuser to create a base type `.
+
+### Cause
+
+To create a new base type, you must be a superuser (This restriction is made because an erroneous type definition could confuse or even crash the server).
+
+### Resolution
+
+- Custom base type has to be deleted and/or replaced by a recognized base type.
+- More details [here](https://www.postgresql.org/docs/current/sql-createtype.html).
 
 ## Migration error codes
 
 | Error Code | Error message | Resolution |
-| --- | --- | --- | 
+| --- | --- | --- |
 | 603000 | Connection failed. Connection to the server `{serverName}` was unsuccessful. Ensure that the source server is reachable from the target or runtime server. | Refer to [Network guide](how-to-network-setup-migration-service.md) for debugging connectivity issues. |
 | 603001 | SSL Configuration Error. The server `{serverName}` doesn't support SSL. Check SSL settings. Set SSL mode to *prefer* and retry the migration. | Refer to [Network guide](how-to-network-setup-migration-service.md) for debugging connectivity issues. |
 | 603100 | Authentication failed. The password for server `{serverName}` is incorrect. Enter the correct password and retry the migration. | N/A |
@@ -61,7 +110,7 @@ These settings help maintain the connection by sending keepalive probes to preve
 | 603107 | GUC Settings Error. Source server WAL level parameter is set to `{0}`. Set GUC parameter WAL level to be 'logical'. | N/A |
 | 603108 | Extensions allowlist required. Extensions `{0}` couldn't be installed on the target server because they're not allowlisted. Allowlist the extensions and retry the migration. | Set the allowlist by following the steps mentioned in [PostgreSQL extensions](https://aka.ms/allowlist-extensions). |
 | 603109 | Shared preload libraries configuration error. Add allowlisted extensions `{0}` to 'shared_preload_libraries' on the target server and retry the migration. | Set the shared preload libraries by following the steps mentioned in [PostgreSQL extensions](https://aka.ms/allowlist-extensions). This requires a server restart. |
-| 603110 | Insufficient privileges. Migration user lacks necessary permissions for database access. Ensure that the migration user is owner of source databases and has both read and write privileges and retry the migration.| N/A |
+| 603110 | Insufficient privileges. Migration user lacks necessary permissions for database access. Ensure that the migration user is owner of source databases and has both read and write privileges and retry the migration. | N/A |
 | 603111 | Target database cleanup failed. Unable to terminate active connections on the target database during the premigration phase. Grant pg_signal_backend role to migration user and retry the migration. | Add pg_signal_backend role to migration user using the command 'GRANT pg_signal_backend to <migration_user>' |
 | 603112 | GUC settings error. Failed to set default_transaction_read_only GUC parameter to off. Ensure that user write access is properly set and retry the migration. | Set 'default_transaction_read_only' to OFF on source server via Azure portal or through psql command(for example, ALTER SYSTEM SET default_transaction_read_only = off). |
 | 603113 | Cutover failure. Cutover can't be initiated for database '{dbName}' as the migration has already been with the status Completed/Failed/Canceled. | N/A |
@@ -80,7 +129,7 @@ These settings help maintain the connection by sending keepalive probes to preve
 | 603408 | Unsupported Extensions. Target server version 16 doesn't support `{0}` extensions. Migrate to version 15 or lower, then upgrade once the extensions are supported. | N/A |
 | 603409 | User-defined casts present. Source database `{0}` contains user-defined casts that can't be migrated to the target server. | N/A |
 | 603410 | System table permission error. Users have access to system tables like pg_authid and pg_shadow that can't be migrated to the target. Revoke these permissions and retry the migration. | Validating the default permissions granted to `pg_catalog` tables/views (such as `pg_authid` and `pg_shadow`) is essential. However, these permissions can't be assigned to the target. Specifically, User `{1}` possesses `{2}` permissions, while User `{3}` holds `{4}` permissions. For a workaround, visit [User, Roles, and Permissions](https://aka.ms/troubleshooting-user-roles-permission-ownerships-issues) |
-| 603413 | Unsupported language(s). The migration service does not support the migration of databases with `{0}` language(s) on the target server. Remove the language(s) and its implemented function(s). | N/A |
+| 603413 | Unsupported language(s). The migration service does not support the migration of databases with `{0}` language(s) on the target server. Remove the language(s) and its implemented function(s). | The target server does not support the unsupported languages. Try disabling or removing the respective language on the source server before migrating to the target server. |
 | 603700 | Target database cleanup failed. Unable to terminate active connections on the target database during the pre-migration/post-migration phase. | N/A |
 | 603701 | Internal server error. Failed to create roles on the target server. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603702 | Internal server error. Failed to dump roles from source server. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
@@ -88,14 +137,12 @@ These settings help maintain the connection by sending keepalive probes to preve
 | 603704 | Internal server error. Failed to make all source roles a member of target migration user. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603705 | Internal server error. Failed to restore grants/revokes. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603706 | Internal server error. Failed to clean up the target server migration user. Your target migration user can be part of multiple roles. Remove all unnecessary roles from target server migration user and retry the migration. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
-| 603707 | Internal server error. Failed to grant azure_pg_admin to the source server admin user. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis.|
+| 603707 | Internal server error. Failed to grant azure_pg_admin to the source server admin user. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603708 | Internal server error. Failed to alter the owner of public schema to azure_pg_admin in database '{dbName}'. Change the owner of public schema to azure_pg_admin manually and retry the migration. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603709 | Migration setup failed. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 
-
 ## Related content
 
-- [Troubleshoot the migration service for Azure Database for PostgreSQL](how-to-network-setup-migration-service.md))
+- [Troubleshoot the migration service for Azure Database for PostgreSQL](how-to-network-setup-migration-service.md)
 - [Best practices for seamless migration into Azure Database for PostgreSQL](best-practices-migration-service-postgresql.md)
-- [Networking](how-to-network-setup-migration-service.md)
 - [Known issues and limitations](concepts-known-issues-migration-service.md)

@@ -1,6 +1,6 @@
 ---
-title: Import and Export Data Using azure_storage Extension in Azure Database for PostgreSQL - Flexible Server
-description: Learn about the azure_storage extension in Azure Database for PostgreSQL - Flexible Server
+title: Import and Export Data Using azure_storage Extension in Azure Database for PostgreSQL flexible server
+description: Learn about the azure_storage extension in Azure Database for PostgreSQL flexible server
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server
+# Import and export data using Azure Storage in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -55,8 +55,6 @@ Azure Blob Storage can provide following benefits:
 - It communicates with other Azure services and partner applications. It's a versatile solution for a wide range of use cases, such as backup and disaster recovery, archiving, and data analysis.
 - It's a cost-effective solution for managing and storing massive amounts of data in the cloud, whether the organization is a small business or a large enterprise. You pay only for the storage that you need.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Import and export data using azure_storage extension in Azure Database for PostgreSQL - Flexible Server](how-to-use-pg-azure-storage.md).
+- [Import and export data using azure_storage extension in Azure Database for PostgreSQL flexible server](how-to-use-pg-azure-storage.md).

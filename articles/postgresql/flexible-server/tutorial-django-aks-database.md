@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Deploy Django on AKS cluster by using Azure CLI"
-description: Learn how to quickly build and deploy Django  on AKS with Azure Database for PostgreSQL - Flexible Server.
+description: Learn how to quickly build and deploy Django  on AKS with Azure Database for PostgreSQL flexible server.
 author: agapovm
 ms.author: maximagapov
 ms.reviewer: maghan
@@ -13,7 +13,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Tutorial: Deploy Django app on AKS with Azure Database for PostgreSQL - Flexible Server
+# Tutorial: Deploy Django app on AKS with Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -383,12 +383,10 @@ az group delete --name django-project --yes --no-wait
 > [!NOTE]
 > When you delete the cluster, the Microsoft Entra service principal used by the AKS cluster isn't removed. For steps on how to remove the service principal, see [AKS service principal considerations and deletion](/azure/aks/kubernetes-service-principal#other-considerations). If you used a managed identity, the identity is managed by the platform and doesn't require removal.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Access Kubernetes resources using the Azure portal](/azure/aks/kubernetes-portal) for your AKS cluster.
 - [Automated deployments for Azure Kubernetes Service](/azure/aks/automated-deployments).
 - [Scale applications in Azure Kubernetes Service](/azure/aks/tutorial-kubernetes-scale).
-- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
-- [Configure server parameters in Azure Database for PostgreSQL - Flexible Server](how-to-configure-server-parameters.md).
+- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).
+- [Configure server parameters in Azure Database for PostgreSQL flexible server](how-to-configure-server-parameters.md).

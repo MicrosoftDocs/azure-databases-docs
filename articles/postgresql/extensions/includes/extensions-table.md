@@ -2,11 +2,12 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 12/05/2024
+ms.date: 04/14/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
 ## address_standardizer
 
@@ -14,15 +15,13 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## address_standardizer_data_us
 
@@ -30,15 +29,13 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## age
 
@@ -70,8 +67,6 @@ ms.custom: automatically generated
 | 12 | 1.2 |
 | 11 | 1.1 |
 
-
-
 ## anon
 
 [anon](https://postgresql-anonymizer.readthedocs.io/en/stable) (Preview) provides data anonymization tools.
@@ -85,6 +80,22 @@ ms.custom: automatically generated
 | 13 | 1.3.2 <sup>*</sup> |
 | 12 | 1.3.2 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
+
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
+## auto_explain
+
+[auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | N/A <sup>*</sup> |
+| 16 | N/A <sup>*</sup> |
+| 15 | N/A <sup>*</sup> |
+| 14 | N/A <sup>*</sup> |
+| 13 | N/A <sup>*</sup> |
+| 12 | N/A <sup>*</sup> |
+| 11 | N/A <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
@@ -102,15 +113,13 @@ ms.custom: automatically generated
 | 12 | 1.1.0 |
 | 11 | N/A |
 
-
-
 ## azure_storage
 
 [azure_storage](../../flexible-server/concepts-storage-extension.md) provides Azure Storage integration for PostgreSQL.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | N/A |
+| 17 | 1.5 |
 | 16 | 1.5 <sup>*</sup> |
 | 15 | 1.5 <sup>*</sup> |
 | 14 | 1.5 <sup>*</sup> |
@@ -134,8 +143,6 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## btree_gin
 
 [btree_gin](https://www.postgresql.org/docs/current/btree-gin.html) provides support for indexing common datatypes in GIN.
@@ -149,8 +156,6 @@ ms.custom: automatically generated
 | 13 | 1.3 |
 | 12 | 1.3 |
 | 11 | 1.3 |
-
-
 
 ## btree_gist
 
@@ -166,8 +171,6 @@ ms.custom: automatically generated
 | 12 | 1.5 |
 | 11 | 1.5 |
 
-
-
 ## citext
 
 [citext](https://www.postgresql.org/docs/current/citext.html) is a data type for case-insensitive character strings.
@@ -182,8 +185,6 @@ ms.custom: automatically generated
 | 12 | 1.6 |
 | 11 | 1.5 |
 
-
-
 ## cube
 
 [cube](https://www.postgresql.org/docs/current/cube.html) is a data type for multidimensional cubes.
@@ -197,8 +198,6 @@ ms.custom: automatically generated
 | 13 | 1.4 |
 | 12 | 1.4 |
 | 11 | 1.4 |
-
-
 
 ## dblink
 
@@ -215,8 +214,7 @@ ms.custom: automatically generated
 | 11 | 1.2 |
 
 > [!NOTE]
-> Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in Flexible Server.
-
+> Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in flexible server.
 
 ## dict_int
 
@@ -232,8 +230,6 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## dict_xsyn
 
 [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing.
@@ -248,23 +244,19 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## earthdistance
 
 [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.1 |
-| 16 | 1.1 |
+| 17 | 1.2 |
+| 16 | 1.2 |
 | 15 | 1.1 |
 | 14 | 1.1 |
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## fuzzystrmatch
 
@@ -280,7 +272,19 @@ ms.custom: automatically generated
 | 12 | 1.1 |
 | 11 | 1.1 |
 
+## hll
 
+[hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | N/A |
+| 16 | 2.18 |
+| 15 | 2.18 |
+| 14 | 2.18 |
+| 13 | 2.18 |
+| 12 | 2.18 |
+| 11 | N/A |
 
 ## hstore
 
@@ -296,23 +300,19 @@ ms.custom: automatically generated
 | 12 | 1.6 |
 | 11 | 1.5 |
 
-
-
 ## hypopg
 
 [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.4.0 |
+| 17 | 1.4.1 |
 | 16 | 1.4.0 |
 | 15 | 1.4.0 |
 | 14 | 1.4.0 |
 | 13 | 1.4.0 |
 | 12 | 1.4.0 |
 | 11 | 1.4.0 |
-
-
 
 ## intagg
 
@@ -328,8 +328,6 @@ ms.custom: automatically generated
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## intarray
 
 [intarray](https://www.postgresql.org/docs/current/intarray.html) provides functions, operators, and index support for 1-D arrays of integers.
@@ -343,8 +341,6 @@ ms.custom: automatically generated
 | 13 | 1.3 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## isn
 
@@ -360,11 +356,9 @@ ms.custom: automatically generated
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-
-
 ## lo
 
-[lo](https://www.postgresql.org/docs/current/lo.html) provides data types for international product numbering standards.
+[lo](https://www.postgresql.org/docs/current/lo.html) provides support for managing Large Objects (also called LOs or BLOBs). This includes a data type lo and a trigger lo_manage.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
@@ -375,8 +369,6 @@ ms.custom: automatically generated
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## login_hook
 
@@ -392,8 +384,6 @@ ms.custom: automatically generated
 | 12 | 1.4 |
 | 11 | 1.4 |
 
-
-
 ## ltree
 
 [ltree](https://www.postgresql.org/docs/current/ltree.html) is a data type for hierarchical tree-like structures.
@@ -407,8 +397,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## oracle_fdw
 
@@ -424,8 +412,6 @@ ms.custom: automatically generated
 | 12 | 1.2 |
 | 11 | N/A |
 
-
-
 ## orafce
 
 [orafce](https://github.com/orafce/orafce) provides functions and operators that emulate a subset of functions and packages from the Oracle RDBMS.
@@ -440,8 +426,6 @@ ms.custom: automatically generated
 | 12 | 3.18 |
 | 11 | 3.7 |
 
-
-
 ## pageinspect
 
 [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) inspects the contents of database pages at a low level.
@@ -455,8 +439,6 @@ ms.custom: automatically generated
 | 13 | 1.8 |
 | 12 | 1.7 |
 | 11 | 1.7 |
-
-
 
 ## pgaudit
 
@@ -489,8 +471,7 @@ ms.custom: automatically generated
 | 11 | 1.3 |
 
 > [!NOTE]
-> Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.
-
+> Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server.
 
 ## pg_cron
 
@@ -508,8 +489,7 @@ ms.custom: automatically generated
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Flexible Server.
-
+> Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server.
 
 ## pgcrypto
 
@@ -525,7 +505,19 @@ ms.custom: automatically generated
 | 12 | 1.3 |
 | 11 | 1.3 |
 
+## pg_diskann
 
+[pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 0.6.2 |
+| 16 | 0.6.2 |
+| 15 | 0.6.2 |
+| 14 | 0.6.2 |
+| 13 | N/A |
+| 12 | N/A |
+| 11 | N/A |
 
 ## pg_failover_slots
 
@@ -533,7 +525,7 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | N/A |
+| 17 | 1.0.1 <sup>*</sup> |
 | 16 | 1.0.1 <sup>*</sup> |
 | 15 | 1.0.1 <sup>*</sup> |
 | 14 | 1.0.1 <sup>*</sup> |
@@ -543,8 +535,7 @@ ms.custom: automatically generated
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.
-
+> Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server.
 
 ## pg_freespacemap
 
@@ -559,8 +550,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## pg_hint_plan
 
@@ -578,8 +567,7 @@ ms.custom: automatically generated
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.
-
+> Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
 
 ## pglogical
 
@@ -613,6 +601,22 @@ ms.custom: automatically generated
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
+## pg_partman_bgw
+
+[pg_partman_bgw](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 5.0.1 <sup>*</sup> |
+| 16 | 5.0.1 <sup>*</sup> |
+| 15 | 4.7.1 <sup>*</sup> |
+| 14 | 4.6.1 <sup>*</sup> |
+| 13 | 4.5.0 <sup>*</sup> |
+| 12 | 4.5.0 <sup>*</sup> |
+| 11 | 4.5.0 <sup>*</sup> |
+
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## pg_prewarm
 
 [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data.
@@ -629,8 +633,7 @@ ms.custom: automatically generated
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.
-
+> Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in flexible server.
 
 ## pg_repack
 
@@ -638,17 +641,16 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.4.7 |
-| 16 | 1.4.7 |
-| 15 | 1.4.7 |
-| 14 | 1.4.7 |
-| 13 | 1.4.7 |
+| 17 | 1.5.1 |
+| 16 | 1.5.1 |
+| 15 | 1.5.1 |
+| 14 | 1.5.1 |
+| 13 | 1.5.1 |
 | 12 | 1.4.7 |
 | 11 | 1.4.7 |
 
 > [!NOTE]
-> Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in Flexible Server.
-
+> Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in flexible server.
 
 ## pgrouting
 
@@ -664,8 +666,6 @@ ms.custom: automatically generated
 | 12 | 3.3.0 |
 | 11 | 3.3.0 |
 
-
-
 ## pgrowlocks
 
 [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information.
@@ -679,8 +679,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## pg_squeeze
 
@@ -714,8 +712,7 @@ ms.custom: automatically generated
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Flexible Server.
-
+> Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in flexible server.
 
 ## pgstattuple
 
@@ -732,8 +729,7 @@ ms.custom: automatically generated
 | 11 | 1.5 |
 
 > [!NOTE]
-> Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in Flexible Server.
-
+> Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in flexible server.
 
 ## pg_trgm
 
@@ -749,8 +745,6 @@ ms.custom: automatically generated
 | 12 | 1.4 |
 | 11 | 1.4 |
 
-
-
 ## pg_visibility
 
 [pg_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) examines the visibility map and page-level visibility info.
@@ -764,24 +758,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
-
-## plpgsql
-
-[plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language.
-
-| PostgreSQL version | Extension version |
-| --- | --- |
-| 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
-
-
 
 ## plv8
 
@@ -797,23 +773,19 @@ ms.custom: automatically generated
 | 12 | 3.0.0 |
 | 11 | 3.0.0 |
 
-
-
 ## postgis
 
 [postgis](https://www.postgis.net/) geometry and geography spatial types and functions.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgis_raster
 
@@ -821,15 +793,13 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgis_sfcgal
 
@@ -837,15 +807,13 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgis_tiger_geocoder
 
@@ -853,15 +821,13 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgis_topology
 
@@ -869,15 +835,13 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgres_fdw
 
@@ -894,8 +858,7 @@ ms.custom: automatically generated
 | 11 | 1.0 |
 
 > [!NOTE]
-> Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in Flexible Server.
-
+> Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in flexible server.
 
 ## postgres_protobuf
 
@@ -911,8 +874,6 @@ ms.custom: automatically generated
 | 12 | 0.2 |
 | 11 | N/A |
 
-
-
 ## semver
 
 [semver](https://pgxn.org/dist/semver/doc/semver.html) provides a semantic version data type.
@@ -926,8 +887,6 @@ ms.custom: automatically generated
 | 13 | 0.32.0 |
 | 12 | 0.32.0 |
 | 11 | 0.32.0 |
-
-
 
 ## session_variable
 
@@ -943,8 +902,6 @@ ms.custom: automatically generated
 | 12 | 3.3 |
 | 11 | 3.3 |
 
-
-
 ## sslinfo
 
 [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates.
@@ -958,8 +915,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## tablefunc
 
@@ -975,7 +930,19 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
+## tdigest
 
+[tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 1.4.2 |
+| 16 | 1.4.2 |
+| 15 | 1.4.2 |
+| 14 | 1.4.2 |
+| 13 | 1.4.2 |
+| 12 | 1.4.2 |
+| 11 | N/A |
 
 ## tds_fdw
 
@@ -991,15 +958,13 @@ ms.custom: automatically generated
 | 12 | 2.0.3 |
 | 11 | 2.0.3 |
 
-
-
 ## timescaledb
 
 [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | N/A |
+| 17 | 2.17.2 <sup>*</sup> |
 | 16 | 2.13.0 <sup>*</sup> |
 | 15 | 2.10.0 <sup>*</sup> |
 | 14 | 2.10.0 <sup>*</sup> |
@@ -1008,6 +973,20 @@ ms.custom: automatically generated
 | 11 | 1.7.4 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
+## topn
+
+[topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 2.7.0 |
+| 16 | 2.7.0 |
+| 15 | 2.7.0 |
+| 14 | 2.7.0 |
+| 13 | 2.7.0 |
+| 12 | N/A |
+| 11 | N/A |
 
 ## tsm_system_rows
 
@@ -1023,8 +1002,6 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## tsm_system_time
 
 [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit.
@@ -1038,8 +1015,6 @@ ms.custom: automatically generated
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
-
 
 ## unaccent
 
@@ -1055,8 +1030,6 @@ ms.custom: automatically generated
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## uuid-ossp
 
 [uuid-ossp](https://www.postgresql.org/docs/current/uuid-ossp.html) generates universally unique identifiers (UUIDs).
@@ -1071,21 +1044,33 @@ ms.custom: automatically generated
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## vector
 
 [vector](https://github.com/pgvector/pgvector) is a vector data type and `ivfflat` and `hnsw` access methods.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 0.7.0 |
-| 16 | 0.7.0 |
-| 15 | 0.7.0 |
-| 14 | 0.7.0 |
-| 13 | 0.7.0 |
+| 17 | 0.8.0 |
+| 16 | 0.8.0 |
+| 15 | 0.8.0 |
+| 14 | 0.8.0 |
+| 13 | 0.8.0 |
 | 12 | 0.7.0 |
 | 11 | 0.5.1 |
 
+## wal2json
 
+[wal2json](https://github.com/eulerto/wal2json) is an output plugin for logical decoding. It means that the plugin have access to tuples produced by INSERT and UPDATE. Also, UPDATE/DELETE old row versions can be accessed depending on the configured replica identity.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 2.6 <sup>*</sup> |
+| 16 | 2.4 <sup>*</sup> |
+| 15 | 2.4 <sup>*</sup> |
+| 14 | 2.2 <sup>*</sup> |
+| 13 | 2.2 <sup>*</sup> |
+| 12 | 2.2 <sup>*</sup> |
+| 11 | 2.2 <sup>*</sup> |
+
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 

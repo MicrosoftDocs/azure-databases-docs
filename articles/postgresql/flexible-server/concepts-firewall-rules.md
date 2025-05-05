@@ -1,6 +1,6 @@
 ---
 title: Firewall rules
-description: This article describes how to use firewall rules to connect to Azure Database for PostgreSQL - Flexible Server with the public networking deployment option.
+description: This article describes how to use firewall rules to connect to Azure Database for PostgreSQL flexible server with the public networking deployment option.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Firewall rules in Azure Database for PostgreSQL - Flexible Server
+# Firewall rules in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -74,8 +74,6 @@ Consider the following possibilities when access to an Azure Database for Postgr
 
 * **Firewall rules aren't available for IPv6 format**: The firewall rules must be in IPv4 format. If you specify firewall rules in IPv6 format, you'll get a validation error.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Create and manage firewall rules for Azure Database for PostgreSQL - Flexible Server](how-to-manage-firewall-portal.md).
+- [Create and manage firewall rules for Azure Database for PostgreSQL flexible server](how-to-manage-firewall-portal.md).

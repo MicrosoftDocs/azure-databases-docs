@@ -1,15 +1,18 @@
 ---
-title: "Tutorial: Migrate offline from Amazon RDS for PostgreSQL using the migration service with the Azure portal and Azure CLI"
+title: "Tutorial: Migrate Offline From Amazon RDS for PostgreSQL Using the Migration Service With the Azure Portal and Azure CLI"
 description: "Learn to migrate offline seamlessly from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurecli
+ms.collection:
+ - migration
+ - aws-to-azure
 # customer intent: As a developer, I want to learn how to migrate from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
 ---
 
@@ -38,7 +41,7 @@ You can migrate by using the Azure portal or the Azure CLI.
 
 #### [Portal](#tab/portal)
 
-The Azure portal provides a simple and intuitive wizard-based experience that guides you through migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL - Flexible Server and take advantage of its powerful features and scalability.
+The Azure portal provides a simple and intuitive wizard-based experience that guides you through migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL flexible server and take advantage of its powerful features and scalability.
 
 To migrate with the Azure portal, you first configure the migration task, connect to the source and target, and then perform the migration.
 
@@ -86,11 +89,11 @@ To learn more about the premigration validation, visit [premigration](concepts-p
 
 Select the **Next: Connect to source** button.
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/01-portal-offline-setup-aws.png" alt-text="Screenshot of the Setup Migration page to get started.":::
+:::image type="content" source="media/tutorial-migration-service-aws-offline/01-portal-offline-setup-aws.png" alt-text="Screenshot of the Setup Migration page to get started." lightbox="media/tutorial-migration-service-aws-offline/01-portal-offline-setup-aws.png":::
 
 #### Select Runtime Server
 
-The migration Runtime Server is a specialized feature within the migration service, designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL - Flexible Server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
+The migration Runtime Server is a specialized feature within the migration service, designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
 For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
 
@@ -117,7 +120,7 @@ The **select migration target** tab displays metadata for the Flexible Server ta
 
 - **Admin username** - Admin username of the target PostgreSQL server
 - **Password** - Password of the target PostgreSQL server
-- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone. 
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test Connection** - Performs the connectivity test between target and source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the source and verify the target's username/password. Test connection takes a few minutes to establish a connection between the target and source
 
 After the successful test connection, select the **Next: Select Database(s) for Migration**
@@ -197,7 +200,7 @@ Some possible migration states:
 | --- | --- |
 | **Failed** | Validation has failed. |
 | **Succeeded** | Validation is successful. |
-| **Warning** | Validation is in warning. | 
+| **Warning** | Validation is in warning. |
 
 ### Cancel the migration
 
@@ -232,7 +235,7 @@ To begin the migration, you need to create a JSON file with the migration detail
                 "SourceServerPassword": "<<Source Password>>",
                 "TargetServerPassword": "<<Target Password>>"
             },
-			"targetServerUserName": "<<Target username>>"
+            "targetServerUserName": "<<Target username>>"
         },
         "DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
         "OverwriteDBsInTarget": "true",
@@ -289,5 +292,4 @@ After migration, you can perform the following tasks:
 
 - [Migrate online from Amazon RDS for PostgreSQL](tutorial-migration-service-aws-online.md)
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)

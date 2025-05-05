@@ -1,12 +1,12 @@
 ---
-title: "Migration service - Premigration validations"
+title: "Migration Service - Premigration Validations"
 description: Learn about premigration validations to identify issues before you run a migration to Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Premigration validations for the migrations service in Azure Database for PostgreSQL
@@ -17,7 +17,7 @@ Premigration validation is a set of rules that involves assessing and verifying 
 
 ## How do you use the premigration validation feature?
 
-To use premigration validation when you migrate to Azure Database for PostgreSQL - Flexible Server, you have two migration options:
+To use premigration validation when you migrate to Azure Database for PostgreSQL flexible server, you have two migration options:
 
 - Use the Azure portal during setup.
 - Specify the `--migration-option` parameter in the Azure CLI when you create a migration.
@@ -32,7 +32,7 @@ Here's how to do it in both methods.
 
 1. On the **Setup** page, choose the migration option that includes validation. Select **Validate** or **Validate and Migrate**.
 
-    :::image type="content" source="media\concepts-premigration-migration-service\premigration-option.png" alt-text="Screenshot that shows the premigration option to start migration." lightbox="media\concepts-premigration-migration-service\premigration-option.png":::
+    :::image type="content" source="media/concepts-premigration-migration-service/premigration-option.png" alt-text="Screenshot that shows the premigration option to start migration." lightbox="media/concepts-premigration-migration-service/premigration-option.png":::
 
 ### Use the Azure CLI
 

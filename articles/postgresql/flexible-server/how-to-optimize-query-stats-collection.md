@@ -1,6 +1,6 @@
 ---
 title: Optimize query stats collection
-description: This article describes how you can optimize query stats collection on Azure Database for PostgreSQL - Flexible Server.
+description: This article describes how you can optimize query stats collection on Azure Database for PostgreSQL flexible server.
 author: assaff
 ms.author: assaff
 ms.date: 06/21/2024
@@ -9,7 +9,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Optimize query statistics collection on Azure Database for PostgreSQL - Flexible Server
+# Optimize query statistics collection on Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -32,8 +32,6 @@ To set **pg_stat_statements.track** = `TOP`
 ## Use the Query Store
 
 Using the [Query Store](concepts-query-store.md) feature in Azure Database for PostgreSQL flexible server offers a different way to monitor query execution statistics. To prevent performance overhead, it is recommended to utilize only one mechanism, either the pg_stat_statements extension or the Query Store.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

@@ -31,7 +31,7 @@ Azure Cosmos DB supports two indexing modes:
 > [!NOTE]
 > Azure Cosmos DB also supports a Lazy indexing mode. Lazy indexing performs updates to the index at a much lower priority level when the engine is not doing any other work. This can result in **inconsistent or incomplete** query results. If you plan to query an Azure Cosmos DB container, you should not select lazy indexing. New containers cannot select lazy indexing. You can request an exemption by contacting cosmosdbindexing@microsoft.com (except if you are using an Azure Cosmos DB account in [serverless](serverless.md) mode which doesn't support lazy indexing).
 
-By default, indexing policy is set to `automatic`. It's achieved by setting the `automatic` property in the indexing policy to `true`. Setting this property to `true` allows Azure Cosmos DB to automatically index items as they're written.
+
 
 ## Index size
 
@@ -40,6 +40,11 @@ In Azure Cosmos DB, the total consumed storage is the combination of both the Da
 * The index size depends on the indexing policy. If all the properties are indexed, then the index size can be larger than the data size.
 * When data is deleted, indexes are compacted on a near continuous basis. However, for small data deletions, you might not immediately observe a decrease in index size.
 * The Index size can temporarily grow when physical partitions split. The index space is released after the partition split is completed.
+
+> [!NOTE]
+>  - The partition key (unless it is also "/id") is not indexed and should be included in the index.
+- The system properties id and _ts will always be indexed when the cosmos account indexing mode is Consistent
+- The system properties id and _ts are not included in the container policy’s indexed paths description. This is by design because these system properties are indexed by default and this behavior cannot be disabled.
 
 ## Including and excluding property paths
 
@@ -72,6 +77,8 @@ Taking the same example again:
 - the path to anything under `headquarters` is `/headquarters/*`
 
 For example, we could include the `/headquarters/employees/?` path. This path would ensure that we index the `employees` property but wouldn't index extra nested JSON within this property.
+
+ 
 
 ## Include/exclude strategy
 

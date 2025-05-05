@@ -1,6 +1,6 @@
 ---
 title: Connectivity using SCRAM
-description: Instructions and information on how to configure and connect using SCRAM in Azure Database for PostgreSQL - Flexible Server.
+description: Instructions and information on how to configure and connect using SCRAM in Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# SCRAM authentication in Azure Database for PostgreSQL - Flexible Server
+# SCRAM authentication in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -43,7 +43,7 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 
 1. Verify the password encryption.
 
-    ```SQL
+    ```sql
     postgres=> show password_encryption;
      password_encryption
     ---------------------
@@ -53,7 +53,7 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 
 1. You can then update the password for users.
 
-    ```SQL
+    ```sql
     postgres=> \password myDemoUser
     Enter new password:
     Enter it again:
@@ -62,7 +62,7 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 
 1. You can verify user authentication types using `azure_roles_authtype()` function.
 
-    ``` SQL
+    ```sql
     postgres=> SELECT * from azure_roles_authtype();
             rolename          | authtype
     ---------------------------+-----------
@@ -88,10 +88,8 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 > [!NOTE]  
 > SCRAM authentication is also supported when connected to the built-in managed [PgBouncer](concepts-pgbouncer.md). Above tutorial is valid for setting up connectivity using SCRAM authentication via built-in PgBouncer feature.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
-- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
-- [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md#firewall-rules).
+- [Create and manage Azure Database for PostgreSQL flexible server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
+- [Networking in Azure Database for PostgreSQL flexible server](concepts-networking-private.md).
+- [Firewall rules in Azure Database for PostgreSQL flexible server](concepts-networking-public.md#firewall-rules).

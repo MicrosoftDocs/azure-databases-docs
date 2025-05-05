@@ -17,9 +17,6 @@ appliesto:
 
 Azure Cosmos DB for NoSQL now supports a powerful hybrid search capability that combines Vector Search with Full Text Search scoring (BM25) using the Reciprocal Rank Fusion (RRF) function.
 
-> [!NOTE]
-> Full Text & Hybrid Search is in early preview and may not be available in all regions at this time.
-
 ## What is hybrid search?
 
 Hybrid search leverages the strengths of both vector-based and traditional keyword-based search methods to deliver more relevant and accurate search results. Hybrid search is easy to do in Azure Cosmos DB for NoSQL due to the ability to store both metadata and vectors within the same document.
@@ -117,7 +114,7 @@ Hybrid search queries can be executed by leveraging the [`RRF`](../nosql/query/r
 ```sql
 SELECT TOP @k *
 FROM c
-ORDER BY RANK RRF(VectorDistance(c.vector, @queryVector), FullTextScore(c.content, [@searchTerm1, @searchTerm2, ...]))
+ORDER BY RANK RRF(VectorDistance(c.vector, @queryVector), FullTextScore(c.content, @searchTerm1, @searchTerm2, ...))
 ```
 
 Suppose you have a document that has vector embeddings stored in each document in the property `c.vector` and text data contained in the property c.text. To get the 10 most relevant documents using Hybrid search, the query can be written as:
@@ -125,7 +122,7 @@ Suppose you have a document that has vector embeddings stored in each document i
 ```sql
 SELECT TOP 10 * 
 FROM c
-ORDER BY RANK RRF(VectorDistance(c.vector, [1,2,3]), FullTextScore(c.text, ["text", "to", "search", "goes" ,"here])
+ORDER BY RANK RRF(VectorDistance(c.vector, [1,2,3]), FullTextScore(c.text, "text", "to", "search", "goes" ,"here")
 ```
 
 ## Related content

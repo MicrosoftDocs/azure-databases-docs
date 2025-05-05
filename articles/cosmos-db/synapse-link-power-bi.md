@@ -1,11 +1,11 @@
 ---
 title: Power BI and serverless SQL pool to analyze Azure Cosmos DB data with Synapse Link
 description: Learn how to build a serverless SQL pool database and views over Synapse Link for Azure Cosmos DB, query the Azure Cosmos DB containers and then build a model with Power BI over those views.
-author: Rodrigossz
+author: jilmal
+ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 09/29/2022
-ms.author: rosouz
 ms.custom: synapse-cosmos-db
 ---
 
@@ -76,6 +76,18 @@ AS q1
 ```
 
 Make sure to insert your Azure Cosmos DB region and the primary key in the previous SQL script. All the characters in the region name should be in lower case without spaces. Unlike the other parameters of the `OPENROWSET` command, the container name parameter should be specified without quotes around it.
+
+#### Using Managed Identity
+
+```sql
+-- Create view for RetailSales container
+CREATE VIEW  RetailSales
+AS  
+SELECT  *
+FROM OPENROWSET (
+    'CosmosDB', N'account=<Your Azure Cosmos DB account name>;database=<Your Azure Cosmos DB database name>;region=<Your Azure Cosmos DB Region>;authtype=ManagedIdentity',RetailSales)
+AS q1
+```
 
 ### StoreDemographics view:
 

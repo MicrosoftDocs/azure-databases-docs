@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting guides - Azure portal
-description: Learn how to use troubleshooting guides for Azure Database for PostgreSQL - Flexible Server from the Azure portal.
+description: Learn how to use troubleshooting guides for Azure Database for PostgreSQL flexible server from the Azure portal.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Use the troubleshooting guides in Azure Database for PostgreSQL - Flexible Server
+# Use the troubleshooting guides in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -22,7 +22,7 @@ To effectively troubleshoot a specific issue, you need to make sure that you hav
 Each troubleshooting guide requires a specific set of data, which is sourced from three separate features: [Diagnostic settings](how-to-configure-and-access-logs.md), [Query Store](concepts-query-store.md), and [Enhanced metrics](concepts-monitoring.md#enabling-enhanced-metrics).
 All troubleshooting guides require logs to be sent to a Log Analytics workspace, but the specific category of logs to be captured may vary depending on the particular guide. 
 
-Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
+Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
 
 Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](how-to-configure-server-parameters.md) or [Azure CLI](how-to-configure-server-parameters.md).
 
@@ -85,14 +85,12 @@ SELECT '24776'::regrole;
 
 :::image type="content" source="./media/how-to-troubleshooting-guides/retrieve-username.png" alt-text="Screenshot of retrieving the Username.":::
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server](how-to-enable-intelligent-performance-portal.md).
-- [Troubleshooting guides for Azure Database for PostgreSQL - Flexible Server](concepts-troubleshooting-guides.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
-- [Best practices for uploading data in bulk in Azure Database for PostgreSQL - Flexible Server](how-to-bulk-load-data.md).
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
-- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).
+- [Configure intelligent tuning for Azure Database for PostgreSQL flexible server](how-to-enable-intelligent-performance-portal.md).
+- [Troubleshooting guides for Azure Database for PostgreSQL flexible server](concepts-troubleshooting-guides.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md).
+- [Best practices for uploading data in bulk in Azure Database for PostgreSQL flexible server](how-to-bulk-load-data.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
+- [Query Performance Insight in Azure Database for PostgreSQL flexible server](concepts-query-performance-insight.md).

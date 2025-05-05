@@ -1,6 +1,6 @@
 ---
 title: Manage server - Azure portal
-description: Learn how to manage an Azure Database for PostgreSQL - Flexible Server instance from the Azure portal.
+description: Learn how to manage an Azure Database for PostgreSQL flexible server instance from the Azure portal.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - mvc
 ---
 
-# Manage Azure Database for PostgreSQL - Flexible Server using the Azure portal
+# Manage Azure Database for PostgreSQL flexible server using the Azure portal
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -68,9 +68,7 @@ You can delete your server if you no longer need it.
 
 3. Select **Delete**.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
-- [Monitor metrics in Azure Database for PostgreSQL - Flexible Server](concepts-monitoring.md).
+- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).
+- [Monitor metrics in Azure Database for PostgreSQL flexible server](concepts-monitoring.md).

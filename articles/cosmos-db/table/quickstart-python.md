@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 04/08/2025
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -93,6 +93,15 @@ The client library is available through PyPi, as the `azure-data-tables` package
 
 1. Open and review the **src/requirements.txt** file to validate that the `azure-data-tables` entry exists.
 
+### Import libraries
+
+Import the `DefaultAzureCredential` and `TableServiceClient` types into your application code.
+
+```python
+from azure.data.tables import TableServiceClient
+from azure.identity import DefaultAzureCredential
+```
+
 ## Object model
 
 | Name | Description |
@@ -165,7 +174,9 @@ After you insert an entity, you can also run a query to get all entities that ma
 
 ```python
 category = "gear-surf-surfboards"
-filter = f"PartitionKey eq '{category}'"
+# Ensure the value is OData-compliant by escaping single quotes
+safe_category = category.replace("'", "''")
+filter = f"PartitionKey eq '{safe_category}'"
 entities = table.query_entities(query_filter=filter)
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: Logical replication and logical decoding
-description: Learn about using logical replication and logical decoding in Azure Database for PostgreSQL - Flexible Server.
+description: Learn about using logical replication and logical decoding in Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Logical replication and logical decoding in Azure Database for PostgreSQL - Flexible Server
+# Logical replication and logical decoding in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -338,12 +338,10 @@ SELECT * FROM pg_replication_slots;
 > [!IMPORTANT]  
 > You must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the WAL files accumulate in the primary, filling up the storage. Suppose the storage threshold exceeds a certain threshold, and the logical replication slot isn't in use (due to a nonavailable subscriber). In that case, the Azure Database for PostgreSQL flexible server instance automatically drops that unused logical replication slot. That action releases accumulated WAL files and avoids your server becoming unavailable due to storage getting filled situation.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-firewall-rules.md).
-- [Public access and private endpoints in Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md).
-- [Virtual network integration in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
+- [Firewall rules in Azure Database for PostgreSQL flexible server](concepts-firewall-rules.md).
+- [Public access and private endpoints in Azure Database for PostgreSQL flexible server](concepts-networking-public.md).
+- [Virtual network integration in Azure Database for PostgreSQL flexible server](concepts-networking-private.md).
 - [How to use extensions](../extensions/how-to-allow-extensions.md).
-- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).

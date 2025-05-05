@@ -1,13 +1,13 @@
 ---
 title: Connections and Authentication / SSL server parameters
-description: Connections and Authentication / SSL server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Connections and Authentication / SSL server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 12/05/2024
+ms.date: 01/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: include
+ms.topic: concept-article
 ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
 ---

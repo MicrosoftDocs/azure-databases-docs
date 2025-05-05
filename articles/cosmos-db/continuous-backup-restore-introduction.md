@@ -91,6 +91,36 @@ However, there could be scenarios where you don't know the exact time of acciden
 
 Azure Cosmos DB allows you to isolate and restrict the restore permissions for continuous backup account to a specific role or a principal. To learn more, see the [Permissions](continuous-backup-restore-permissions.md) article.
 
+## Understanding Multi-region write account restore 
+
+Writes that are performed on the [hub](multi-region-writes.md#hub-region) region  are immediately confirmed and backed up asynchronously within 100 seconds. In multi-write accounts, any mutations performed on the satellite region are sent to hub region for confirmation. The hub region checks to see if any [conflict resolution](conflict-resolution-policies.md#conflict-resolution-policies) is needed, assigns a [conflict-resolution timestamp](multi-region-writes.md#understanding-timestamps)  after resolving the conflicts and sends back the document to satellite region. The satellite region only backs up the documents after the confirmation is received from the hub.  
+In short, the restore process only restores the documents confirmed by the hub region by the restore point of time.  
+
+What happens for restore for multi region write account? 
+
+- The mutations that are yet to be confirmed by the restore timestamp are not restored. 
+- The collections with custom conflict resolution policy are reset to last writer wins based on timestamp. 
+
+> [!NOTE]
+> Restoring from satellite region is slower compared to restore in [hub](multi-region-writes.md#hub-region) region for multi-region account to resolve local [tentative writes](multi-region-writes.md#hub-region) as confirmed or take an action to roll them back.
+
+More information about understanding timestamps in a multi write enable account can be found [here](multi-region-writes.md#understanding-timestamps).
+
+Example scenario below:
+Given a multi-write region account with two regions East US and West US, out of which East US is the hub region, consider the following sequence of events: 
+
+T1: Client writes a document Doc1 to East US. (Since East US is the hub region, the write is immediately confirmed)  
+
+T2: Client writes a document Doc2 to West US  
+
+T3: West US sends Doc2 to East US for confirmation  
+
+T4: East US received Doc2, confirms the document and sends of Doc2 back to West US 
+
+T5: West US received confirmed Doc2 
+
+In this scenario, if the restore timestamp provided is T3 for hub region as source, only Doc1 will get restored. Doc2 has not been confirmed by hub by T3. Only if the restore timestamp is more than T4, the doc2 will get restored as restore at T4 in satellite contains only doc1 since doc2 is not confirmed yet.
+
 ## <a id="continuous-backup-pricing"></a>Pricing
 
 Azure Cosmos DB account with continuous 30-day backup has an extra monthly charge to *store the backup*. Both the 30-day and 7-day tier of continuous back incur charges to *restore your data*. The restore cost is added every time the restore operation is initiated. If you configure an account with continuous backup but don't restore the data, only backup storage cost is included in your bill.
@@ -137,8 +167,6 @@ Currently the point in time restore functionality has the following limitations:
 
 * Azure Cosmos DB APIs for SQL, MongoDB, Gremlin, and Table supported for continuous backup. API for Cassandra isn't supported now.
 
-* `Multi region write` accounts aren't supported. 
-
 * Synapse Link for database accounts using continuous backup mode is GA. The opposite situation, continuous backup mode for Synapse Link enabled accounts, is in public preview. Currently, customers that disabled Synapse Link from containers can't migrate to continuous backup. And analytical store isn't included in backups. For more information about backup and analytical store, see [analytical store backup](analytical-store-introduction.md#backup).
 
 * The restored account is created in the same region where your source account exists. You can't restore an account into a region where the source account didn't exist.
@@ -165,3 +193,6 @@ Currently the point in time restore functionality has the following limitations:
 * [Migrate to an account from periodic backup to continuous backup](migrate-continuous-backup.md).
 * [Manage permissions](continuous-backup-restore-permissions.md) required to restore data with continuous backup mode.
 * [Resource model of continuous backup mode](continuous-backup-restore-resource-model.md)
+* [Understanding Multi-region write account](multi-region-writes.md)
+* [Understanding timestamps in Cosmos DB](multi-region-writes.md#understanding-timestamps)
+* [Understanding how Cosmos Db works behind the scenes](global-dist-under-the-hood.md)

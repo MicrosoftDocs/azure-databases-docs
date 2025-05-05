@@ -14,7 +14,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Optimize performance when using pgvector in Azure Database for PostgreSQL - Flexible Server
+# Optimize performance when using pgvector in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -26,8 +26,6 @@ For more on the extension itself, see [basics of `pgvector`](how-to-use-pgvector
 
 [!INCLUDE [Performance](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-performance.md)]
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Generate vector embeddings with Azure OpenAI on Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-openai.md).
+- [Generate vector embeddings with Azure OpenAI on Azure Database for PostgreSQL flexible server](generative-ai-azure-openai.md).

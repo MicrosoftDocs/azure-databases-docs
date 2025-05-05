@@ -1,15 +1,18 @@
 ---
-title: "Tutorial: Migrate online from Amazon RDS for PostgreSQL using the migration service with the Azure portal and Azure CLI"
+title: "Tutorial: Migrate Online From Amazon RDS for PostgreSQL Using the Migration Service With the Azure Portal and Azure CLI"
 description: "Learn to migrate online seamlessly from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurecli
+ms.collection:
+ - migration
+ - aws-to-azure
 # customer intent: As a developer, I want to learn how to migrate from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
 ---
 
@@ -39,7 +42,7 @@ You can migrate by using the Azure portal or the Azure CLI.
 
 #### [Portal](#tab/portal)
 
-The Azure portal provides a simple and intuitive wizard-based experience that guides you through migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL - Flexible Server and take advantage of its powerful features and scalability.
+The Azure portal provides a simple and intuitive wizard-based experience that guides you through migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL flexible server and take advantage of its powerful features and scalability.
 
 To migrate with the Azure portal, you first configure the migration task, connect to the source and target, and then perform the migration.
 
@@ -53,11 +56,11 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
 1. In the Flexible Server's Overview tab, on the left menu, scroll down to Migration and select it.
 
-    :::image type="content" source="media/tutorial-migration-service-aws-online/migration-portal-select.png" alt-text="Screenshot of the Migration selection." lightbox="media/tutorial-migration-service-aws-online/migration-portal-select.png":::
+    :::image type="content" source="media/tutorial-migration-service-aws-online/migration-portal-select.png" alt-text="Screenshot showing the Migration selection option in the Azure portal." lightbox="media/tutorial-migration-service-aws-online/migration-portal-select.png":::
 
-1. Select the **Create** button to migrate from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL - Flexible Server. If this is your first time using the migration service, an empty grid appears with a prompt to begin your first migration.
+1. Select the **Create** button to migrate from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL flexible server. If this is your first time using the migration service, an empty grid appears with a prompt to begin your first migration.
 
-    :::image type="content" source="media/tutorial-migration-service-aws-online/portal-online-create-migration.png" alt-text="Screenshot of creating a migration." lightbox="media/tutorial-migration-service-aws-online/portal-online-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-aws-online/portal-online-create-migration.png" alt-text="Screenshot showing the creation of a migration from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL." lightbox="media/tutorial-migration-service-aws-online/portal-online-create-migration.png":::
 
     If you've already created migrations to your Azure Database for PostgreSQL target, the grid contains information about attempted migrations.
 
@@ -67,7 +70,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
 The first tab is the **Setup** tab, where the user needs to provide migration details like migration name source type to initiate the migrations.
 
-:::image type="content" source="media/tutorial-migration-service-aws-online/01-portal-online-setup-aws.png" alt-text="Screenshot of the Setup migration in the Azure portal." lightbox="media/tutorial-migration-service-aws-online/01-portal-online-setup-aws.png":::
+:::image type="content" source="media/tutorial-migration-service-aws-online/01-portal-online-setup-aws.png" alt-text="Screenshot showing the Setup migration tab in the Azure portal." lightbox="media/tutorial-migration-service-aws-online/01-portal-online-setup-aws.png":::
 
 - **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same Flexible Server target can have the same name.
 
@@ -75,9 +78,9 @@ The first tab is the **Setup** tab, where the user needs to provide migration de
 
 - **Migration Option** allows you to perform validations before triggering a migration. You can pick any of the following options:
 
-     - **Validate** - Checks your server and database readiness for migration to the target.
-     - **Migrate** - Skips validations and starts migrations.
-     - **Validate and Migrate**—Performs validation before triggering a migration. The migration is triggered only if there are no validation failures.
+    - **Validate** - Checks your server and database readiness for migration to the target.
+    - **Migrate** - Skips validations and starts migrations.
+    - **Validate and Migrate**—Performs validation before triggering a migration. The migration is triggered only if there are no validation failures.
 
 Choosing the **Validate** or **Validate and Migrate** option is always a good practice when performing premigration validations before running the migration. To learn more about the premigration validation, refer to this [documentation](concepts-premigration-migration-service.md).
 
@@ -87,7 +90,7 @@ Select the **Next: Connect to the Source** button.
 
 #### Select Runtime Server
 
-The migration Runtime Server is a specialized feature within the migration service, designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL - Flexible Server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
+The migration Runtime Server is a specialized feature within the migration service, designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
 For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
 
@@ -97,7 +100,7 @@ For more information about the Runtime Server, visit the [Migration Runtime Serv
 
 The **Connect to Source** tab prompts you to provide details related to the Source selected in the **Setup Tab**, which is the Source of the databases.
 
-:::image type="content" source="media/tutorial-migration-service-aws-online/03-portal-online-connect-source-aws.png" alt-text="Screenshot of Connectsourcemigration." lightbox="media/tutorial-migration-service-aws-online/03-portal-online-connect-source-aws.png":::
+:::image type="content" source="media/tutorial-migration-service-aws-online/03-portal-online-connect-source-aws.png" alt-text="Screenshot showing how to connect to the source migration." lightbox="media/tutorial-migration-service-aws-online/03-portal-online-connect-source-aws.png":::
 
 - **Server Name** - Provide the Hostname or the IP address of the source PostgreSQL instance
 - **Port** - Port number of the Source server
@@ -116,7 +119,7 @@ The **select migration target** tab displays metadata for the Flexible Server ta
 
 - **Admin username** - Admin username of the target PostgreSQL server
 - **Password** - Password of the target PostgreSQL server
-- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test Connection** - Performs the connectivity test between the target and Source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the Source and verify the username/password for the target. Test connection takes a few minutes to establish a connection between the target and the source.
 
 After the successful test connection, select the **Next: Select Database(s) for Migration**
@@ -125,7 +128,7 @@ After the successful test connection, select the **Next: Select Database(s) for 
 
 Under this tab, a list of user databases is inside the source server selected in the setup tab. You can select and migrate up to eight databases in a single migration attempt. If there are more than eight user databases, the migration process is repeated between the source and target servers for the next set of databases.
 
-:::image type="content" source="media/tutorial-migration-service-aws-online/05-portal-online-select-database-migration-aws.png" alt-text="Screenshot of FetchDBmigration.":::
+:::image type="content" source="media/tutorial-migration-service-aws-online/05-portal-online-select-database-migration-aws.png" alt-text="Screenshot showing how to select databases for migration in the Azure portal.":::
 
 After selecting the databases, select the **Next: Summary**
 
@@ -187,7 +190,7 @@ Some possible migration states:
 | --- | --- |
 | **Failed** | Validation has failed. |
 | **Succeeded** | Validation is successful. |
-| **Warning** | Validation is in warning. | 
+| **Warning** | Validation is in warning. |
 
 #### Cutover
 
@@ -197,7 +200,7 @@ Before initiating cutover, it's important to ensure that:
 
 - Writes to the Source are stopped - `Latency` value is 0 or close to 0. The `Latency` information can be obtained from the migration details screen as shown below:
 
-    :::image type="content" source="media/tutorial-migration-service-aws-online/aws-cutover-migration.png" alt-text="Screenshot of Cutover migration." lightbox="media/tutorial-migration-service-aws-online/aws-cutover-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-aws-online/aws-cutover-migration.png" alt-text="Screenshot of Cutover migration." lightbox="media/tutorial-migration-service-aws-online/aws-cutover-migration.png":::
 
 - `latency` value decreases to 0 or close to 0
 
@@ -231,20 +234,20 @@ To begin the migration, you need to create a JSON file with the migration detail
 
 ```bash
 {
-	"properties": {
-		"SourceDBServerResourceId": "<<source hostname or IP address>>:<<port>>@<<username>>",
-		"SecretParameters": {
-			"AdminCredentials": {
-				"SourceServerPassword": "<<Source Password>>",
-				"TargetServerPassword": "<<Target Password>>"
-			},
-			"targetServerUserName": "<<Target username>>"
-		},
-		"DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
-		"OverwriteDBsInTarget": "true",
-		"sourceType": "AWS_RDS",
-		"sslMode": "Require"
-	}
+    "properties": {
+        "SourceDBServerResourceId": "<<source hostname or IP address>>:<<port>>@<<username>>",
+        "SecretParameters": {
+            "AdminCredentials": {
+                "SourceServerPassword": "<<Source Password>>",
+                "TargetServerPassword": "<<Target Password>>"
+            },
+            "targetServerUserName": "<<Target username>>"
+        },
+        "DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
+        "OverwriteDBsInTarget": "true",
+        "sourceType": "AWS_RDS",
+        "sslMode": "Require"
+    }
 }
 ```
 
@@ -304,5 +307,4 @@ After migration, you can perform the following tasks:
 
 - [Migrate offline from Amazon RDS for PostgreSQL](tutorial-migration-service-aws-offline.md)
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)

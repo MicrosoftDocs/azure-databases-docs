@@ -1,13 +1,28 @@
-- name: MongoDB (vCore) documentation
+- name: Azure Cosmos DB for MongoDB (vCore) documentation
   href: index.yml
 - name: Overview
+  expanded: true
   items:
     - name: What is Azure Cosmos DB for MongoDB (vCore)?
       href: introduction.md
+    - name: What is Azure Cosmos DB for MongoDB?
+      href: ../introduction.md?context=/azure/cosmos-db/mongodb/vcore/context/context
+    - name: Your MongoDB app reimagined
+      href: ../reimagined.md?context=/azure/cosmos-db/mongodb/vcore/context/context
+    - name: Choose your model
+      href: ../choose-model.md?context=/azure/cosmos-db/mongodb/vcore/context/context
+    - name: Comparing MongoDB Atlas
+      href: ../cosmos-db-vs-mongodb-atlas.md?context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: FAQ
       href: faq.yml
 - name: Quickstarts
   items:
+    - name: Develop app - .NET
+      href: quickstart-dotnet.md
+    - name: Develop app - Python
+      href: quickstart-python.md
+    - name: Develop app - Node.js
+      href: quickstart-nodejs.md
     - name: Create resources - Azure portal
       href: quickstart-portal.md
     - name: Create resources - Bicep template
@@ -22,22 +37,36 @@
           href: tutorial-nodejs-web-app.md
 - name: Concepts
   items:
-    - name: Autoscale
-      href: autoscale.md
+    - name: Vector database
+      href: vector-search.md
+    - name: Real-time custom content generation
+      href: ai-advertisement-generation.md
     - name: Free tier
       href: free-tier.md
-    - name: Multicloud Solution
+    - name: Multicloud solution
       href: multi-cloud.md
+    - name: Burstable tier
+      href: burstable-tier.md
+    - name: Open source
+      href: oss.md
+    - name: Full-text search
+      href: full-text-search.md
     - name: Integrated vector database
       items:
         - name: Integrated vector database overview
           href: vector-search.md
+        - name: Exact Nearest Neighbor (ENN) Vector Search
+          href: enn-vector-search.md
+        - name: Half-Precision Vector Indexing
+          href: half-precision.md
         - name: Open-source vector databases
           href: vector-search-ai.md
         - name: RAG with Langchain & OpenAI
           href: rag.md
     - name: MongoDB compatibility and feature support
       href: compatibility-and-feature-support.md
+    - name: Managed service compatibility
+      href: managed-service-compatibility.md
     - name: Support for Geospatial Queries
       href: geospatial-support.md
     - name: Availability and disaster recovery (DR)
@@ -48,8 +77,10 @@
           href: cross-region-replication.md
         - name: HA and DR - Behind the scenes
           href: availability-disaster-recovery-under-hood.md
+        - name: Best practices for HA and DR
+          href: high-availability-replication-best-practices.md
         - name: Reliability
-          href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
+          href: /azure/reliability/reliability-cosmos-mongodb?context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: Scalability
       items: 
        - name: Scalability overview
@@ -58,6 +89,8 @@
          href: partitioning.md
        - name: Compute and storage
          href: compute-storage.md 
+       - name: Autoscale
+         href: autoscale.md
        - name: Burstable tier
          href: burstable-tier.md
     - name: Indexing
@@ -74,18 +107,37 @@
       items: 
         - name: Security overview
           href: security.md
+        - name: Microsoft Entra ID authentication
+          href: entra-authentication.md
         - name: Data encryption
           href: database-encryption-at-rest.md
 - name: Migrate data
   items:
     - name: Premigration assessment
       href: how-to-assess-plan-migration-readiness.md
+    - name: Online migration tools
+      href: migration-options.md#web-app-utility-online
     - name: Native tools
       href: how-to-migrate-native-tools.md
-    - name: Azure Data Studio
-      href: /azure-data-studio/extensions/database-migration-for-mongo-extension 
+    
 - name: How to
   items:
+    - name: Visual Studio Code extension
+      href: ../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=CBDMongovCore&context=/azure/cosmos-db/mongodb/vcore/context/context
+    - name: Build a console app
+      items:
+        - name: .NET
+          href: how-to-build-dotnet-console-app.md
+        - name: Python
+          href: how-to-build-python-console-app.md
+        - name: Node.js
+          href: how-to-build-nodejs-console-app.md
+        - name: Java
+          href: how-to-build-java-console-app.md
+        - name: Go
+          href: how-to-build-go-console-app.md
+        - name: Rust
+          href: how-to-build-rust-console-app.md
     - name: Use community tools
       items:
         - name: Connect using Studio 3T
@@ -93,7 +145,7 @@
         - name: Connect using MongoDB Shell
           href: how-to-connect-mongo-shell.md
         - name: Connect using Visual Studio Code
-          href: ../../visual-studio-code-extension.md?pivots=api-mongodb      
+          href: ../../visual-studio-code-extension.md?pivots=api-mongodb&context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: Develop applications
       items:
         - name: Create transactions
@@ -112,12 +164,14 @@
           href: how-to-create-wildcard-indexes.md
         - name: Search and query text
           href: how-to-create-text-index.md
-    - name: Scale cluster
-      href: how-to-scale-cluster.md
-    - name: Upgrade cluster
-      href: how-to-upgrade-cluster.md
-    - name: Restore cluster
-      href: how-to-restore-cluster.md
+    - name: Manage cluster
+      items:
+      - name: Scale cluster
+        href: how-to-scale-cluster.md
+      - name: Upgrade cluster
+        href: how-to-upgrade-cluster.md
+      - name: Restore cluster
+        href: how-to-restore-cluster.md
     - name: Replication
       items:
       - name: Manage replication
@@ -130,14 +184,32 @@
       items:
       - name: Monitor metrics
         href: monitor-metrics.md
+      - name: Create and manage alerts
+        href: how-to-manage-alerts.md
       - name: Monitor diagnostics logs
         href: how-to-monitor-diagnostics-logs.md
-    - name: Use Azure Private Link
-      href: how-to-private-link.md
-    - name: Create secondary users
-      href: secondary-users.md
+    - name: Security and data access
+      items:
+      - name: Configure Entra authentication
+        href: how-to-configure-entra-authentication.md
+      - name: Manage private access
+        href: how-to-private-link.md
+      - name: Manage public access
+        href: how-to-public-access.md
+      - name: Create secondary users
+        href: secondary-users.md
 - name: Reference
   items:
+    - name: Azure CLI
+      href: /cli/azure/cosmosdb/mongocluster
+    - name: Java
+      href: /java/api/overview/azure/resourcemanager-mongocluster-readme
+    - name: .NET
+      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster
+    - name: Node.js
+      href: /javascript/api/overview/azure/mongo-cluster
+    - name: Python
+      href: /python/api/overview/azure/mongo-cluster
     - name: Commands
       href: commands/toc.yml
     - name: Operators
@@ -151,9 +223,9 @@
 - name: Samples
   items:
     - name: Solution accelerators
-      href: ../../solutions.md?pivots=api-mongodb
+      href: ../../solutions.md?pivots=api-mongodb&context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: AI agent
-      href: ../../ai-agents.md
+      href: ../../ai-agents.md?context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: AI-enhanced advertisement generation
       href: ai-advertisement-generation.md
       

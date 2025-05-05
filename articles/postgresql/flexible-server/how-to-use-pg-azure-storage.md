@@ -1,6 +1,6 @@
 ---
-title: Copy data with azure_storage extension in Azure Database for PostgreSQL - Flexible Server
-description: Learn how to use the azure_storage extension in Azure Database for PostgreSQL - Flexible Server to import and export data
+title: Copy data with azure_storage extension in Azure Database for PostgreSQL flexible server
+description: Learn how to use the azure_storage extension in Azure Database for PostgreSQL flexible server to import and export data
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,15 +12,15 @@ ms.custom:
   - ignite-2024
 ---
 
-# Import and export data using azure_storage extension in Azure Database for PostgreSQL - Flexible Server
+# Import and export data using azure_storage extension in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The [azure_storage](concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an instance of Azure Database for PostgreSQL Flexible Server.
+The [azure_storage](concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an Azure Database for PostgreSQL flexible server.
 
 Examples of data export and import using this extension can be found in the [Examples](#examples) section of this article.
 
-To use the `azure_storage` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions), [load its library](../extensions/how-to-allow-extensions.md#load-libraries), and [create the extension](../extensions/how-to-allow-extensions.md#create-extensions). 
+To use the `azure_storage` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions), [load its library](../extensions/how-to-load-libraries.md), and [create the extension](../extensions/how-to-create-extensions.md). 
 
 ## Overview of the procedure
 
@@ -36,14 +36,26 @@ To use the `azure_storage` extension on your Azure Database for PostgreSQL flexi
 Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
 :::image type="content" source="media/how-to-use-pg-azure-storage/save-and-restart-shared-preload-libraries-portal.png" alt-text="Screenshot of dialog that pops up when changing shared_preload_libraries, to save and restart." lightbox="media/how-to-use-pg-azure-storage/save-and-restart-shared-preload-libraries-portal.png":::
 
-# [Azure CLI](#tab/cli-01)
+# [CLI](#tab/cli-01)
 
-```azurecli
-az postgres flexible-server parameter set --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name shared_preload_libraries --source user-override --value azure_storage,$(az postgres flexible-server parameter show --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name shared_preload_libraries --query value --output tsv)
+```azurecli-interactive
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> 
+  --server-name <server> 
+  --name shared_preload_libraries \
+  --source user-override \
+  --value azure_storage,$(az postgres flexible-server parameter show \
+                            --resource-group <resource_group> \
+                            --server-name <server> \
+                            --name shared_preload_libraries \
+                            --query value \
+                            --output tsv)
 ```
 Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
-```azurecli
-az postgres flexible-server restart --resource-group <flexible_server_resource_group> --name <flexible_server_name>
+```azurecli-interactive
+az postgres flexible-server restart \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
 # [REST API](#tab/rest-01)
@@ -60,10 +72,20 @@ Because the `shared_preload_libraries` is static, the server must be restarted f
 
 :::image type="content" source="media/how-to-use-pg-azure-storage/azure-extensions-portal.png" alt-text="Screenshot of selecting azure_storage in azure.extensions in server parameters." lightbox="media/how-to-use-pg-azure-storage/azure-extensions-portal.png":::
 
-# [Azure CLI](#tab/cli-02)
+# [CLI](#tab/cli-02)
 
-```azurecli
-az postgres flexible-server parameter set --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name azure.extensions --source user-override --value azure_storage,$(az postgres flexible-server parameter show --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name azure.extensions --query value --output tsv)
+```azurecli-interactive
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name azure.extensions \
+  --source user-override \
+  --value azure_storage,$(az postgres flexible-server parameter show \
+                            --resource-group <resource_group> 
+                            --server-name <server> \
+                            --name azure.extensions \
+                            --query value \
+                            --output tsv)
 ```
 
 # [REST API](#tab/rest-02)
@@ -99,10 +121,13 @@ The `azure_storage_admin` role is, by default, granted to the `azure_pg_admin` r
 
 :::image type="content" source="media/how-to-use-pg-azure-storage/enable-system-assigned-managed-identity-portal.png" alt-text="Screenshot of enabling System Assigned Managed Identity." lightbox="media/how-to-use-pg-azure-storage/enable-system-assigned-managed-identity-portal.png":::
 
-# [Azure CLI](#tab/cli-03)
+# [CLI](#tab/cli-03)
 
-```azurecli
-az rest --method patch --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<flexible_server_resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<flexible_server_name>?api-version=2024-08-01 --body '{"identity":{"type":"SystemAssigned"}}'
+```azurecli-interactive
+az rest \
+  --method patch \
+  --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<flexible_server_resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<flexible_server_name>?api-version=2024-08-01 \
+  --body '{"identity":{"type":"SystemAssigned"}}'
 ```              
 
 # [REST API](#tab/rest-03)
@@ -111,7 +136,7 @@ Using the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update)
 
 ---
 
-2. [Restart the instance of Azure Database for PostgreSQL Flexible Server](how-to-restart-server-portal.md), after enabling a system assigned managed identity on it.
+2. [Restart the instance of Azure Database for PostgreSQL Flexible Server](how-to-restart-server.md), after enabling a system assigned managed identity on it.
 3. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure Database for PostgreSQL Flexible Server.
 
 ### To use authorization with Shared Key
@@ -122,10 +147,13 @@ Using the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update)
 
 :::image type="content" source="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png" alt-text="Screenshot of confirming that Allow storage account key access is enabled." lightbox="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png":::
 
-# [Azure CLI](#tab/cli-04)
+# [CLI](#tab/cli-04)
 
-```azurecli
-az storage account update --resource-group <storage_account_resource_group> --name <account_name> --allow-shared-key-access true
+```azurecli-interactive
+az storage account update \
+  --resource-group <storage_account_resource_group> \
+  --name <account_name> \
+  --allow-shared-key-access true
 ```
 
 # [REST API](#tab/rest-04)
@@ -140,10 +168,14 @@ Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) R
 
 :::image type="content" source="media/how-to-use-pg-azure-storage/copy-access-key-portal.png" alt-text="Screenshot of copying storage account access key." lightbox="media/how-to-use-pg-azure-storage/copy-access-key-portal.png":::
 
-# [Azure CLI](#tab/cli-05)
+# [CLI](#tab/cli-05)
 
-```azurecli
-az storage account keys list --resource-group <storage_account_resource_group> --account-name <account_name> --query [0].value -o tsv
+```azurecli-interactive
+az storage account keys list \
+  --resource-group <storage_account_resource_group> \
+  --account-name <account_name> \
+  --query [0].value \
+  --output tsv
 ```
 
 # [REST API](#tab/rest-05)
@@ -452,7 +484,7 @@ The URI for a container is similar to:
 
 ### azure_storage.blob_get
 
-Function that allows importing data. It downloads one or more files from a blob container in an Azure Storage account. Then it translates the contents into rows, which can be consumed and processed with SQL language constructs. This function adds support to filter and manipulate the data fetched from the blob container before importing it.
+Function that allows importing data. It downloads a file from a blob container in an Azure Storage account. Then it translates the contents into rows, which can be consumed and processed with SQL language constructs. This function adds support to filter and manipulate the data fetched from the blob container before importing it.
 
 > [!NOTE]  
 > Before trying to access the container for the referred storage account, this function checks if the names of the storage account and container passed as arguments are valid according to the naming validation rules imposed on Azure storage accounts. If either of them is invalid, an error is raised.
@@ -789,7 +821,11 @@ When executing any of the functions that interact with Azure Storage (`azure_sto
 
 ### ERROR: azure_storage: internal error while connecting
 
-When the System Assigned Managed Identity is not enabled in the instance of Flexible Server.
+When the instance of flexible server cannot reach the target storage account. That could happen in the following cases:
+- The storage account doesn't exist.
+- Networking configuration doesn't allow traffic originated from the instance of flexible server to reach the storage account. For example, when the instance of flexible server is deployed with public access networking, and the storage account is only accessible via private endpoints.
+
+When the System Assigned Managed Identity is not enabled in the instance of flexible server.
 
 ### ERROR: azure_storage: storage credentials invalid format
 
@@ -805,7 +841,7 @@ You must meet the following prerequisites before you can run the following examp
 
 1. Create an Azure Storage account.
    To create an Azure Storage account, if you don't have one already, customize the values of `<resource_group>`, `<location>`, `<account_name>`, and `<container_name>`, and run the following Azure CLI command:
-   ```azurecli
+   ```azurecli-interactive
    resource_group=<resource_group>
    location=<location>
    storage_account=<account_name>
@@ -815,19 +851,19 @@ You must meet the following prerequisites before you can run the following examp
    ```
 1. Create a blob container.
    To create the blob container, run the following Azure CLI:
-   ```azurecli
+   ```azurecli-interactive
    az storage container create --account-name $storage_account --name $blob_container -o tsv
    ```
 1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [azure_storage.account_add](#azure_storageaccount_add) in a subsequent step.
    To fetch the first of the two access keys, run the following Azure CLI command:
-   ```azurecli
+   ```azurecli-interactive
    access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].value)
    echo "Following is the value of your access key:"
    echo $access_key
    ```
 1. Download the file with the data set that is used during the examples, and upload it to your blob container.
    To download the file with the data set, run the following Azure CLI command:
-   ```azurecli   
+   ```azurecli-interactive   
    mkdir --parents azure_storage_examples
    cd azure_storage_examples
    curl -O https://examples.citusdata.com/tutorial/events.csv
@@ -840,7 +876,7 @@ You must meet the following prerequisites before you can run the following examp
    ```
 
 > [!NOTE]  
-> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on on the reference to that storage account by using [azure_storage.account_user_add](#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
+> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on the reference to that storage account by using [azure_storage.account_user_add](#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
 
 ### Create table in which data is loaded
 
@@ -1158,9 +1194,7 @@ The following example shows the export of data from a table called `events`, to 
    WITH (FORMAT 'csv', header);
    ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server](concepts-storage-extension.md).
-- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).
+- [Import and export data using Azure Storage in Azure Database for PostgreSQL flexible server](concepts-storage-extension.md).
+- [Extensions and modules](../extensions/concepts-extensions.md).

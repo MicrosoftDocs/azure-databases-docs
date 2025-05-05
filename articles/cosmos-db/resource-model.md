@@ -29,7 +29,7 @@ For replicating your data and throughput across multiple Azure regions, you can 
 
 ## Elements in an Azure Cosmos DB account
 
-Currently, you can create a maximum of 50 Azure Cosmos DB accounts under an Azure subscription. You can increase this limit by making a support request.
+Currently, you can create a maximum of 250 Azure Cosmos DB accounts under an Azure subscription. You can increase this limit by making a support request.
 
 You can manage a virtually unlimited amount of data and provisioned throughput by using a single Azure Cosmos DB account. To manage your data and provisioned throughput, you create one or more databases within your account and then create one or more containers to store your data.
 

@@ -1,10 +1,10 @@
 ---
 title: "Quickstart: Connect with GitHub Actions"
-description: Use Azure Database for PostgreSQL - Flexible Server from a GitHub Actions workflow.
+description: Use Azure Database for PostgreSQL flexible server from a GitHub Actions workflow.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 02/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -14,7 +14,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Quickstart: Use GitHub Actions to connect to Azure Database for PostgreSQL - Flexible Server
+# Quickstart: Use GitHub Actions to connect to Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -27,7 +27,7 @@ You need:
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - A GitHub repository with sample data (`data.sql`). If you don't have a GitHub account, [sign up for free](https://github.com/join).
 - An Azure Database for PostgreSQL flexible server instance.
-- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
 
 ## Workflow file overview
 
@@ -78,27 +78,6 @@ You use the connection string as a GitHub secret.
 
 1. Rename your workflow `PostgreSQL for GitHub Actions` and add the checkout and sign in actions. These actions check out your site code and authenticate with Azure using the GitHub secret(s) you created earlier.
 
-    # [Service principal](#tab/userlevel)
-
-    ```yaml
-    name: PostgreSQL for GitHub Actions
-
-    on:
-    push:
-        branches: [ main ]
-    pull_request:
-        branches: [ main ]
-
-    jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-        - uses: azure/login@v1
-        with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
-    ```
-
     # [OpenID Connect](#tab/openid)
 
     ```yaml
@@ -115,13 +94,33 @@ You use the connection string as a GitHub secret.
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v1
-        - uses: azure/login@v1
+        - uses: azure/login@v2
         with:
             client-id: ${{ secrets.AZURE_CLIENT_ID }}
             tenant-id: ${{ secrets.AZURE_TENANT_ID }}
             subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     ```
 
+    # [Service principal](#tab/userlevel)
+
+    ```yaml
+    name: PostgreSQL for GitHub Actions
+
+    on:
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
+
+    jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v1
+        - uses: azure/login@v2
+        with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+    ```
     ---
 
 1. Use the Azure PostgreSQL Deploy action to connect to your Azure Database for PostgreSQL flexible server instance. Replace `POSTGRESQL_SERVER_NAME` with the name of your server. You should have an Azure Database for PostgreSQL flexible server data file named `data.sql` at the root level of your repository.
@@ -136,39 +135,6 @@ You use the connection string as a GitHub secret.
 
 1. Complete your workflow by adding an action to sign out of Azure. Here's the completed workflow. The file appears in the `.github/workflows` folder of your repository.
 
-    # [Service principal](#tab/userlevel)
-
-    ```yaml
-   name: PostgreSQL for GitHub Actions
-
-    on:
-    push:
-        branches: [ main ]
-    pull_request:
-        branches: [ main ]
-
-
-    jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-        - uses: azure/login@v1
-        with:
-            client-id: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - uses: azure/postgresql@v1
-      with:
-        server-name: POSTGRESQL_SERVER_NAME
-        connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
-        plsql-file: './data.sql'
-
-        # Azure logout
-    - name: logout
-      run: |
-         az logout
-    ```
-
     # [OpenID Connect](#tab/openid)
 
     ```yaml
@@ -186,11 +152,44 @@ You use the connection string as a GitHub secret.
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v1
-        - uses: azure/login@v1
+        - uses: azure/login@v2
         with:
             client-id: ${{ secrets.AZURE_CLIENT_ID }}
             tenant-id: ${{ secrets.AZURE_TENANT_ID }}
             subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - uses: azure/postgresql@v1
+      with:
+        server-name: POSTGRESQL_SERVER_NAME
+        connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
+        plsql-file: './data.sql'
+
+        # Azure logout
+    - name: logout
+      run: |
+         az logout
+    ```
+
+    # [Service principal](#tab/userlevel)
+
+    ```yaml
+   name: PostgreSQL for GitHub Actions
+
+    on:
+    push:
+        branches: [ main ]
+    pull_request:
+        branches: [ main ]
+
+
+    jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v1
+        - uses: azure/login@v2
+        with:
+            client-id: ${{ secrets.AZURE_CREDENTIALS }}
 
     - uses: azure/postgresql@v1
       with:
@@ -217,8 +216,6 @@ You use the connection string as a GitHub secret.
 ## Clean up resources
 
 When your Azure Database for PostgreSQL flexible server database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

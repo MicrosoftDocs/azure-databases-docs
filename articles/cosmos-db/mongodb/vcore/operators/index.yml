@@ -93,6 +93,18 @@ landingContent:
         links:
           - text: $eq
             url: comparison-query/$eq.md
+  - title: Data expression
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $dateadd
+            url: data-expression/$dateadd.md
+          - text: $datediff
+            url: data-expression/$datediff.md
+          - text: $datefromparts
+            url: data-expression/$datefromparts.md
+          - text: $datefromstring
+            url: data-expression/$datefromstring.md
   - title: Evaluation query
     linkLists:
       - linkListType: reference

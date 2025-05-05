@@ -1,20 +1,21 @@
 ---
-title: "Quickstart: Create an instance of Elastic Cluster in Azure Database for PostgreSQL - Flexible Server"
-description: Quickstart guide to creating an instance of Elastic Cluster in Azure Database for PostgreSQL / Flexible Server.
+title: "Quickstart: Create elastic clusters with portal"
+description: Quickstart guide to creating an instance of elastic cluster in Azure Database for PostgreSQL / Flexible Server.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 12/17/2024
+ms.date: 02/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
+#Customer intent: As a system administrator, I want to deploy an elastic cluster using the portal.
 ---
 
-# Quickstart: Create an instance of Elastic Cluster in Azure Database for PostgreSQL - Flexible Server
+# Quickstart: Create an instance of elastic cluster in Azure Database for PostgreSQL flexible server (preview)
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Azure Database for PostgreSQL flexible server with Elastic Cluster is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. This Quickstart covers how to create an Elastic Cluster instance using the Azure portal.
+Azure Database for PostgreSQL flexible server with elastic cluster is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. This Quickstart covers how to create an elastic cluster instance using the Azure portal.
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
@@ -24,7 +25,7 @@ Open your web browser and go to the [portal](https://portal.azure.com/). Enter y
 
 ## Create an Azure Database for PostgreSQL server
 
-An Elastic Cluster, like a flexible server instance is created with a configured set of [compute and storage resources](concepts-compute.md). The server is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md) equally apply to Elastic Cluster. This section outlines the changes in the process.
+An elastic cluster, like a flexible server instance are created with a configured set of [compute and storage resources](concepts-compute.md). The cluster is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md) equally apply to elastic clusters. This section outlines the changes in the process.
 
 To create an Azure Database for PostgreSQL flexible server instance, take the following steps:
 
@@ -38,7 +39,7 @@ To create an Azure Database for PostgreSQL flexible server instance, take the fo
 
 1. Provide a desired node count and configure desired compute size.
 
-    :::image type="content" source="./media/quickstart-create-elastic-cluster-portal/3-elastic-clusters-configure-server.png" alt-text="Screenshot of Compute + storage configuration with Elastic Clusters. Elastic cluster is selected. Node count input box has a value of 4. Compute tier and size options are visible.":::
+    :::image type="content" source="./media/quickstart-create-elastic-cluster-portal/3-elastic-clusters-configure-server.png" alt-text="Screenshot of Compute + storage configuration with elastic clusters. Elastic cluster is selected. Node count input box has a value of 4. Compute tier and size options are visible.":::
 
 1. Save changes and verify your choices on the main configuration page.
 
@@ -53,11 +54,11 @@ To create an Azure Database for PostgreSQL flexible server instance, take the fo
    By default, a **postgres** database is created under your server. The [postgres](https://www.postgresql.org/docs/current/static/app-initdb.html) database is a default database meant for users, utilities, and applications. (The other default database is **azure_maintenance**. Its function is to separate the managed service processes from user actions. You can't access this database.)
 
     > [!NOTE]
-    > Connections to your Azure Database for PostgreSQL flexible server instance communicate over port 5432. When you try to connect from within a corporate network, outbound traffic over port 5432 might not be allowed by your network's firewall. If so, you can't connect to your server unless your IT department opens port 5432. Elastic Clusters also use port 7432 for load balanced connections across the cluster nodes and may need to be allow listed in a similar way by your IT department.
+    > Connections to your Azure Database for PostgreSQL flexible server instance communicate over port 5432. When you try to connect from within a corporate network, outbound traffic over port 5432 might not be allowed by your network's firewall. If so, you can't connect to your server unless your IT department opens port 5432. Elastic clusters also use port 7432 for load balanced connections across the cluster nodes and might need to be allow listed in a similar way by your IT department.
 
 ## Get the connection information
 
-When you create your Azure Database for Elastic Cluster instance, a default database named **postgres** is created. To connect to your database server, you need your full server name and admin login credentials. You noted those values earlier in the Quickstart article. If you didn't, you can easily find the server name and login information on the server **Overview** page in the portal.
+When you create your elastic cluster instance, a default database named **postgres** is created. To connect to your database server, you need your full server name and admin login credentials. You noted those values earlier in the Quickstart article. If you didn't, you can easily find the server name and login information on the server **Overview** page in the portal.
 
 Open your server's **Overview** page. Make a note of the **Server name** and the **Server admin login name**. Hover your cursor over each field, and the copy symbol appears to the right of the text. Select the copy symbol as needed to copy the values.
 
@@ -120,7 +121,7 @@ There are many applications you can use to connect to your Azure Database for Po
 
 1. Type `\q`, and then select the Enter key to quit psql.
 
-You connected to the Elastic Cluster via psql, and you created a blank schema and made it distributed.
+You connected to the elastic cluster via psql, and you created a blank schema and made it distributed.
 
 ## Clean up resources
 
@@ -145,7 +146,5 @@ To delete only the newly created server:
 
 1. Confirm the name of the server you want to delete, and view the databases under it that are affected. Enter your server name in the text box, and select **Delete**.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
-- [Design multitenant database with Elastic Cluster](tutorial-multitenant-database.md).
+- [Design multitenant database with elastic clusters](tutorial-multitenant-database.md).

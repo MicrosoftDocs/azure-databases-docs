@@ -1,6 +1,6 @@
 ---
 title: Identify slow running query
-description: Troubleshooting guide for identifying slow running queries in Azure Database for PostgreSQL - Flexible Server.
+description: Troubleshooting guide for identifying slow running queries in Azure Database for PostgreSQL flexible server.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
-# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL - Flexible Server
+# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -24,7 +24,7 @@ In this article, you can learn:
 
 1. Enable troubleshooting guides by following the steps described in [use troubleshooting guides](how-to-troubleshooting-guides.md).
 
-2. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-allow-extensions.md#load-libraries) the extension.
+2. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-load-libraries.md) the extension.
 
 3. After the `auto_explain` extension is configured, change the following [server parameters](concepts-server-parameters.md), which control the behavior of the extension:
 
@@ -122,7 +122,7 @@ Output: c_id, c_w_id, c_balance
 The query ran for ~2.5 minutes, as shown in troubleshooting guide. The `duration` value of 150692.864 ms from the execution plan output fetched confirms it. Use the output of EXPLAIN ANALYZE to troubleshoot further and tune the query.
 
 > [!NOTE]  
-> Observer that the query ran 22 times during the interval, and the logs shown contain oneof  such entries captured during the interval.
+> Observe that the query ran 22 times during the interval, and the logs shown contain such entries captured during the interval.
 
 ## Identify slow-running query in a stored procedure
 
@@ -210,12 +210,10 @@ Finalize Aggregate (cost=180185.84..180185.85 rows=1 width=4) (actual time=10387
 > [!NOTE]  
 > For demonstration purposes the EXPLAIN ANALYZE output of only a few queries used in the procedure are shown. The idea is one can gather EXPLAIN ANALYZE output of all queries from the logs, and identify the slowest of those and try to tune them.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
-- [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
-- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL flexible server](how-to-high-memory-utilization.md).
+- [Server parameters in Azure Database for PostgreSQL flexible server](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).

@@ -1,6 +1,6 @@
 ---
 title: Use an Azure free account to try for free
-description: Guidance on how to deploy an Azure Database for PostgreSQL - Flexible Server instance for free using an Azure Free Account.
+description: Guidance on how to deploy an Azure Database for PostgreSQL flexible server instance for free using an Azure Free Account.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - template-how-to
 ---
 
-# Use an Azure free account to try Azure Database for PostgreSQL - Flexible Server for free
+# Use an Azure free account to try Azure Database for PostgreSQL flexible server for free
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -102,7 +102,7 @@ To complete this tutorial, you need:
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/review-create-postgresql.png" alt-text="Screenshot that shows the Review + create blade." lightbox="media/how-to-deploy-on-azure-free-account/review-create-postgresql.png":::
 
     > [!IMPORTANT]  
-    > While creating the Azure Database for PostgreSQL flexible server instance from your Azure free account, you still see an **Estimated cost per month** in the **Compute + Storage : Cost Summary** blade and **Review + Create** tab. But, as long as you are using your Azure free account, and your free service usage is within monthly limits (to view usage information, refer [**Monitor and track free services usage**](#monitor-and-track-free-services-usage) section below), you won't be charged for the service. We're currently working to improve the **Cost Summary** experience for free services.
+    > When creating the Azure Database for PostgreSQL flexible server instance using your Azure free account, you will see an **Estimated cost per month** in the **Compute + Storage: Cost Summary** blade and the **Review + Create** tab. However, as long as you stay within the monthly limits of your Azure free account (refer to the [**Monitor and track free services usage**](#monitor-and-track-free-services-usage) section below for usage information). There is no charge for the service. We are currently working to improve the **Cost Summary** experience for free services.
 
 1. Select **Create** to provision the server.
 
@@ -168,8 +168,6 @@ Alternatively, if you don't expect to need these resources in the future, you ca
     1. In the confirmation dialog box, type the name of your resource group, and then select **Delete**.
 
 - To delete the Azure Database for PostgreSQL flexible server instance, on the **Overview** page for the server, select **Delete**.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

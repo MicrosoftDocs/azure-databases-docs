@@ -39,7 +39,10 @@ Supported parameters for the optional `obj_expr`
 | --- | --- | 
 | **`distanceFunction`** | The metric used to compute distance/similarity. |
 | **`dataType`** | The data type of the vectors. `float32`, `int8`, `uint8` values. Default value is `float32`. |
-| **`searchListSizeMultiplier`** | An integer specifying the size of the search list when conducting a vector search.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=5, Max=100. |
+| **`searchListSizeMultiplier`** | An integer specifying the size of the search list when conducting a vector search on the DiskANN index.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=10, Max=100. |
+| **`quantizedVectorListMultiplier`** | An integer specifying the size of the search list when conducting a vector search on the quantizedFlat index.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=5, Max=100. |
+
+
 
 Supported metrics for `distanceFunction` are:
 
@@ -56,7 +59,7 @@ Returns a numeric expression that enumerates the similarity score between two ex
 This first example shows a top 10 vector search query with only the required arguments. One property is projected, along with the score returned by `VectorDistance`. Then, we user an `ORDER BY` clause to sort `VectorDistance` scores in order from most similar to least.
 
 ```nosql
-SELECT TOP 10 s.name, VectorDistance(c.vector1, <query_vector>)
+SELECT TOP 10 c.name, VectorDistance(c.vector1, <query_vector>)
 FROM c
 ORDER BY VectorDistance(c.vector1, <query_vector>)
 ```
@@ -64,7 +67,7 @@ ORDER BY VectorDistance(c.vector1, <query_vector>)
 This next example also includes optional arguments for `VectorDistance`
 
 ```nosql
-SELECT TOP 10 s.name, VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32'})
+SELECT TOP 10 c.name, VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32'})
 FROM c
 ORDER BY VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32'})
 ```

@@ -1,5 +1,5 @@
 ---
-title: Security and compliance certifications in Azure Database for PostgreSQL - Flexible Server
+title: Security and compliance certifications in Azure Database for PostgreSQL flexible server
 description: Learn about compliance in the Flexible Server deployment option for Azure Database for PostgreSQL.
 author: techlake
 ms.author: hganten
@@ -14,7 +14,7 @@ ms.custom:
 ms.devlang: python
 ---
 
-# Security and compliance certifications in Azure Database for PostgreSQL - Flexible Server
+# Security and compliance certifications in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -58,8 +58,6 @@ Azure Database for PostgreSQL flexible server has achieved a comprehensive set o
 > | SOC 2 Type 2         | Public and private companies, government entities, and nonprofits |
 > | SEC 17a-4            | Financial |
 > | Spanish DPA            | Public and private companies, government entities, and nonprofits |
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

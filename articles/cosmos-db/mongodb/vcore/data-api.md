@@ -12,7 +12,7 @@
 
 # Data API for Azure Cosmos DB for MongoDB vCore (Preview)
 
-The Data API for Azure Cosmos DB for MongoDB vCore is an https interface that allows developers to access and interact with their MongoDB vCore data without needing a database driver. It simplifies data operations by enabling CRUD and aggregation operations through HTTP requests. This API is ideal for web applications, providing secure and scalable access to MongoDB vCore databases.  
+The Data API for Azure Cosmos DB for MongoDB vCore is an https interface that allows developers to access and interact with their MongoDB vCore data without needing a database driver. It simplifies data operations by enabling control plane and aggregation operations through HTTP requests. This API is ideal for web applications, providing secure and scalable access to MongoDB vCore databases.  
  
 
 ## Enabling Data API on MongoDB vCore
@@ -121,5 +121,4 @@ curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action
 
 - Data API works on newly created MongoDB vCore cluster.
 - Data API doesn't support access using reusable access token.
-- Only support aggregate and few other list control plane actions.
-
+- Only supports data plane aggregation and limited control plane actions.

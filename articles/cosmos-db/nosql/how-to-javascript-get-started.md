@@ -17,7 +17,7 @@ ms.custom: cosmos-db-dev-journey, devx-track-azurepowershell, devx-track-js, dev
 
 This article shows you how to connect to Azure Cosmos DB for NoSQL using the JavaScript SDK. Once connected, you can perform operations on databases, containers, and items.
 
-[Package (npm)](https://www.npmjs.com/package/@azure/cosmos) | [Samples](samples-nodejs.md) | [API reference](/javascript/api/@azure/cosmos) | [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/cosmosdb/cosmos) | [Give Feedback](https://github.com/Azure/azure-sdk-for-js/issues)
+[Package (npm)](https://www.npmjs.com/package/@azure/cosmos) | [API reference](/javascript/api/@azure/cosmos) | [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/cosmosdb/cosmos) | [Give Feedback](https://github.com/Azure/azure-sdk-for-js/issues)
 
 ## Prerequisites
 
@@ -128,7 +128,6 @@ The following guides show you how to use each of these classes to build your app
 ## See also
 
 - [npm package](https://www.npmjs.com/package/@azure/cosmos)
-- [Samples](samples-nodejs.md)
 - [API reference](/javascript/api/@azure/cosmos/)
 - [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/cosmosdb/cosmos)
 - [Give Feedback](https://github.com/Azure/azure-sdk-for-js/issues)

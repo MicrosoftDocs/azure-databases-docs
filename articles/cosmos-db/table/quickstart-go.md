@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 04/08/2025
 ms.custom: devx-track-go, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -92,6 +92,17 @@ The client library is available through Go, as the `aztables` package.
     ```
 
 1. Open and review the **src/go.mod** file to validate that the `github.com/Azure/azure-sdk-for-go/sdk/data/aztables` entry exists.
+
+### Import libraries
+
+Import the `github.com/Azure/azure-sdk-for-go/sdk/azidentity` and `github.com/Azure/azure-sdk-for-go/sdk/data/aztables` packages into your application code.
+
+```go
+import (
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
+)
+```
 
 ## Object model
 
@@ -195,7 +206,10 @@ if err != nil {
 After you insert an entity, you can also run a query to get all entities that match a specific filter by using `NewListEntitiesPager` along with a string filter.
 
 ```go
-filter := "PartitionKey eq 'gear-surf-surfboards'"
+category := "gear-surf-surfboards"
+// Ensure the value is OData-compliant by escaping single quotes
+safeCategory := strings.ReplaceAll(category, "'", "''")
+filter := fmt.Sprintf("PartitionKey eq '%s'", safeCategory)
 
 options := &aztables.ListEntitiesOptions{
     Filter: &filter,

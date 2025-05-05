@@ -1,10 +1,10 @@
 ---
 title: "Quickstart: Create with Bicep"
-description: In this Quickstart, learn how to create an Azure Database for PostgreSQL - Flexible Server instance by using Bicep.
+description: In this Quickstart, learn how to create an Azure Database for PostgreSQL flexible server instance by using Bicep.
 author: mumian
 ms.author: jgao
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 02/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -12,13 +12,13 @@ ms.custom:
   - devx-track-bicep
 ---
 
-# Quickstart: Use a Bicep file to create an Azure Database for PostgreSQL - Flexible Server instance
+# Quickstart: Use a Bicep file to create an Azure Database for PostgreSQL flexible server instance
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-In this quickstart, you learn how to use a Bicep file to create an Azure Database for PostgreSQL flexible server instance.
+In this quickstart, you learn how to use a Bicep file to create an Azure Database for PostgreSQL Flexible Server instance.
 
-Azure Database for PostgreSQL flexible server is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud. You can use Bicep to provision an Azure Database for PostgreSQL flexible server instance to deploy multiple servers or multiple databases on a server.
+Azure Database for PostgreSQL Flexible Server is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud. You can use Bicep to provision an Azure Database for PostgreSQL Flexible Server instance to deploy multiple servers or multiple databases on a server.
 
 [!INCLUDE [About Bicep](~/reusable-content/ce-skilling/azure/includes/resource-manager-quickstart-bicep-introduction.md)]
 
@@ -28,7 +28,7 @@ An Azure account with an active subscription. [Create one for free](https://azur
 
 ## Review the Bicep
 
-An Azure Database for PostgreSQL flexible server instance is the parent resource for one or more databases within a region. It provides the scope for management policies that apply to its databases: login, firewall, users, roles, and configurations.
+An Azure Database for PostgreSQL Flexible Server instance is the parent resource for one or more databases within a region. It provides the scope for management policies that apply to its databases: login, firewall, users, roles, and configurations.
 
 Create a _main.bicep_ file and copy the following Bicep into it.
 
@@ -89,14 +89,14 @@ Use Azure CLI or Azure PowerShell to deploy the Bicep file.
 
 # [CLI](#tab/CLI)
 
-```azurecli
+```azurecli-interactive
 az group create --name exampleRG --location centralus
 az deployment group create --resource-group exampleRG --template-file main.bicep
 ```
 
 # [PowerShell](#tab/PowerShell)
 
-```azurepowershell
+```azurepowershell-interactive
 New-AzResourceGroup -Name "exampleRG" -Location "centralus"
 New-AzResourceGroupDeployment -ResourceGroupName exampleRG  -TemplateFile "./main.bicep"
 ```
@@ -105,9 +105,9 @@ New-AzResourceGroupDeployment -ResourceGroupName exampleRG  -TemplateFile "./mai
 
 You're prompted to enter these values:
 
-- **serverName**: enter a unique name that identifies your Azure Database for PostgreSQL flexible server instance. For example, `mydemoserver-pg`. The domain name `postgres.database.azure.com` is appended to the server name you provide. The server can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain at least 3 through 63 characters.
+- **serverName**: enter a unique name that identifies your Azure Database for PostgreSQL Flexible Server instance. For example, `mydemoserver-pg`. The domain name `postgres.database.azure.com` is appended to the server name you provide. The server can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain at least 3 through 63 characters.
 - **administratorLogin**: enter your own login account to use when you connect to the server. For example, `myadmin`. The admin login name can't be `azure_superuser`, `azure_pg_admin`, `admin`, `administrator`, `root`, `guest`, or `public`. It can't start with `pg_`.
-- **administratorLoginPassword**: enter a new password for the server admin account. It must contain between 8 and 128 characters. Your password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and non-alphanumeric characters (!, $, #, %, etc.).
+- **administratorLoginPassword**: enter a new password for the server admin account. It must contain between 8 and 128 characters. Your password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 
 ## Review deployed resources
 
@@ -115,13 +115,13 @@ Use the Azure portal, Azure CLI, or Azure PowerShell to validate the deployment 
 
 # [CLI](#tab/CLI)
 
-```azurecli
+```azurecli-interactive
 az resource list --resource-group exampleRG
 ```
 
 # [PowerShell](#tab/PowerShell)
 
-```azurepowershell
+```azurepowershell-interactive
 Get-AzResource -ResourceGroupName exampleRG
 ```
 
@@ -135,20 +135,18 @@ To delete the resource group:
 
 # [CLI](#tab/CLI)
 
-```azurecli
+```azurecli-interactive
 az group delete --name exampleRG
 ```
 
 # [PowerShell](#tab/PowerShell)
 
-```azurepowershell
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name exampleRG
 ```
 
 ---
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Connect and query overview for Azure Database for PostgreSQL - Flexible Server](how-to-connect-query-guide.md).
+- [Connect and query overview for Azure Database for PostgreSQL flexible server](how-to-connect-query-guide.md).
