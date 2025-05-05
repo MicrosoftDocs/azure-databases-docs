@@ -31,7 +31,12 @@ These backup files cannot be exported. The backups can only be used for restore 
 ## Backup frequency
 
 Backups on Flexible Servers are snapshot-based. The first snapshot backup is scheduled immediately after a server is created. Snapshot backups are taken daily once. Transaction log backups occur every five minutes.
+
 If a scheduled backup fails, our backup service tries every 20 minutes to take a backup until a successful backup is taken. These backup failures might occur due to heavy transactional production loads on the server instance.
+
+To enhance the frequency of automated daily backups, you can increase the backup interval. This adjustment is particularly beneficial when anticipating large transactions, as it significantly reduces restore time in the event of a failure. To modify the backup interval, navigate to the **Settings > Compute + Storage** section and set the **Backup Interval** field accordingly. While the default interval is set to 24 hours, it can be adjusted to either 12 or 6 hours. The retention of these backups is determined by the retention period configured at the server level.
+
+Currently, this feature is in preview and is limited to the **West Central US** and **East Asia** regions.
 
 > [!NOTE]  
 > - If the server experiences a high transaction load, resulting in larger and faster-growing binlog files, then the backup service will perform multiple backups per day to ensure reliable and quicker restoration using these backups.

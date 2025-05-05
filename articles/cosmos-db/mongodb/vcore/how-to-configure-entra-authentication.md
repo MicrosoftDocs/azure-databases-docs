@@ -8,9 +8,8 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/02/2025
+ms.date: 05/03/2025
 ms.custom: devx-track-rust
-ROBOTS: NOINDEX,NOFOLLOW
 appliesto:
   - ✅ MongoDB (vCore)
 # Customer Intent: As a database developer, I want to build a Rust console application to quickly and securely connect to and query my database and collections.
