@@ -1,7 +1,7 @@
 ---
 title: "Tutorial: Migrate from MySQL to Azure Database for MySQL Online Using DMS Physical Migration via the Azure Portal"
 description: Learn to perform an online physical migration from MySQL to Azure Database for MySQL by using Azure DMS.
-author: skondapalli
+author: saikondapalli11
 ms.author: skondapalli
 ms.reviewer: randolphwest, maghan
 ms.date: 02/27/2025
