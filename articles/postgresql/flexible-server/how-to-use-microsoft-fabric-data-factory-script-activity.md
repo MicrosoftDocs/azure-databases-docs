@@ -31,9 +31,11 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
 ## Creating a script activity
 
-1. In Microsoft Fabric, select your workspace and switch to **Data factory** and, select the **New item** button, and select **Data pipeline** and provide a name in the **New pipeline" popup to create a Data pipeline
+1. In Microsoft Fabric, select your workspace, switch to **Data factory** and select the **New item** button. Search and select the **Data pipeline** tile in the **New item** sidebar displayed
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png" alt-text="Screenshot that shows where to select new pipeline." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png":::
+
+1. Provide a name in the **New pipeline** popup and select the **Create** button to create a Data pipeline
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/new-pipeline-name.png" alt-text="Screenshot showing the dialog to give the new pipeline a name." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/new-pipeline-name.png":::
 
@@ -42,7 +44,7 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png" alt-text="Screenshot that shows where to select Scripty Activity" lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png":::
 
-   1. At the **General tab**, give your script activity a name.
+1.  With the Script activity selected on the data pipeline canvas, in the **General tab**, give your script activity a name.
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png" alt-text="Screenshot that shows box to provide a name to the script activity." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png":::
 
@@ -52,9 +54,9 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
 1. Select either the **Query** or **NonQuery** option depending on your script.
 
-   The script activity supports both query and nonquery statements.
-
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png" alt-text="Screenshot that shows highlights Query and non Query radio buttons" lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png":::
+
+   The script activity supports both query and nonquery statements.
 
    ### [Query](#tab/query)
 
@@ -132,13 +134,15 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
 ### Creating multiple scripts inside one Script Activity
 
-You have the option of having multiple queries in one script activity by clicking on the `+` sign next to **Script** to add a new script input.
+You have the option of having multiple queries in one script activity by selecting `+` button multiples times next to **Script** to add a new script input
 
 :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/plus-script.png" alt-text="Screenshot that shows an example of creating a new script input box." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/plus-script.png":::
 
+Select `+` button two times to add two new script inputs
+
 :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/multi-script.png" alt-text="Screenshot that shows how to add a new script block input box." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/multi-script.png":::
 
-You have the option of deleting query input boxes clicking on the delete icon sign next to **Script** to delete an existing script input.
+You have the option of deleting query input boxes selecting on the delete icon next to **Script** to delete an existing script input.
 
 :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/delete-script-activity.png" alt-text="Screenshot that shows how to delete a script block." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/delete-script-activity.png":::
 
@@ -433,4 +437,4 @@ For activity output logging, expand the **Advanced** section and check **Enable 
 
 - [Learn more about Script activity in Microsoft Fabric Data Factory](/fabric/data-factory/script-activity).
 - [Learn more about Azure Database for PostgreSQL Data Pipeline Connector in Microsoft Fabric Data Factory](/fabric/data-factory/connector-azure-database-for-postgresql-overview).
-- [Learn more about Copy activity in Microsoft Fabric Data Factory Data Pipeline to work with Azure Database for PostgreSQL flexible server](how-to-use-microsoft-fabric-data-factory-copy-activity.md).
+- [Learn more about Copy activity to work with Azure Database for PostgreSQL flexible server in Microsoft Fabric Data Factory Data Pipeline](how-to-use-microsoft-fabric-data-factory-copy-activity.md).

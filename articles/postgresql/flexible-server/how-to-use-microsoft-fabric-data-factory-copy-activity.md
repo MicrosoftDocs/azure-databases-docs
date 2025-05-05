@@ -29,25 +29,29 @@ The next section will have a step-by-step in how to manually create a copy activ
 
 ### Create a Copy Data Activity via Azure portal
 
-1. In Microsoft Fabric, select your workspace and switch to **Data factory** and, select the **New item** button, and select **Data pipeline** and provide a name in the **New pipeline" popup to create a Data pipeline
+1. In Microsoft Fabric, select your workspace, switch to **Data factory** and select the **New item** button. Search and select the **Data pipeline** tile in the **New item** sidebar displayed
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png" alt-text="Screenshot that shows where to select new pipeline." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png":::
+
+1. Provide a name in the **New pipeline** popup and select the **Create** button to create a Data pipeline
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/new-pipeline-name.png" alt-text="Screenshot showing the dialog to give the new pipeline a name." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/new-pipeline-name.png":::
 
 
-1. Select  **Activities** menu and select **Copy data** and **Add to canvas** from the drop-down menu displayed
+1. Select  **Activities** menu, select **Copy data**, and **Add to canvas** from the drop-down menu displayed
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png" alt-text="Screenshot that shows where to select Copy data" lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png":::
 
-1. At the **General tab**, give a name to your pipeline
+1. With the Copy activity selected on the data pipeline canvas, in the **General tab**, give a name to your activity
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png" alt-text="Screenshot that shows where to give a name to the pipeline at the general tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png":::
 
 
-1. At the **Source tab**, select or create a **Source dataset**. In this specific example, we selected an Azure Database for PostgreSQL table
+1. At the **Source tab**, select or create a **Source dataset**
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-dataset.png" alt-text="Screenshot that shows where to select or create a source dataset at the source tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-dataset.png":::
+
+1. In this specific example, we selected an Azure Database for PostgreSQL table
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/source-datasource-selected.png" alt-text="Screenshot that shows a source dataset selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/source-datasource-selected.png":::
 
@@ -98,4 +102,4 @@ There are three acceptable ways to use the **Key Columns**:
 
 - [Learn more about Copy Activity in Microsoft Fabric Data Factory Data Pipeline](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity).
 - [Learn more about Azure Database for PostgreSQL Data Pipeline Connector in Microsoft Fabric Data Factory](/fabric/data-factory/connector-azure-database-for-postgresql-overview).
-- [Learn more about Script Activity in Microsoft Fabric Data Factory Data Pipeline to work with Azure Database for PostgreSQL flexible server](how-to-use-microsoft-fabric-data-factory-script-activity.md).
+- [Learn more about Script Activity to work with Azure Database for PostgreSQL flexible server in Microsoft Fabric Data Factory Data Pipeline ](how-to-use-microsoft-fabric-data-factory-script-activity.md).
