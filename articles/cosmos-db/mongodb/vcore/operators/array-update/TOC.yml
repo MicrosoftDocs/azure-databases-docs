@@ -6,6 +6,10 @@
   href: $position.md
 - name: $pop
   href: $pop.md
+- name: $positional
+  href: $positional.md
+- name: $positional-all
+  href: $positional-all.md
 - name: $pull
   href: $pull.md
 - name: $pullAll
