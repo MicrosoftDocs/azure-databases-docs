@@ -159,6 +159,8 @@ You now have the capability to enable auto-scaling of IOPS for both the source a
 
 In the restore workflow, you see a checkbox option labeled Fast Restore. Select this option to leverage auto-scaling of IOPS for a faster and more reliable restore operation.
 
+    :::image type="content" source="media/how-to-restore-server-portal/fast-restore.png" alt-text="Screenshot of autoscale iops for restore." lightbox="media/how-to-restore-server-portal/fast-restore.png":::
+
 ## Perform post-restore tasks
 
 After the restore is completed, you should perform the following tasks to get your users and applications back up and running:
