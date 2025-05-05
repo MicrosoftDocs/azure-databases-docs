@@ -82,4 +82,4 @@ ms.custom:
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
 | [uuid-ossp](https://www.postgresql.org/docs/current/uuid-ossp.html) generates universally unique identifiers (UUIDs). | 1.1 | |
 | [vector](https://github.com/pgvector/pgvector) is a vector data type and `ivfflat` and `hnsw` access methods. | 0.7.0 | |
-| [wal2json](https://github.com/eulerto/wal2json) is an output plugin for logical decoding. It means that the plugin have access to tuples produced by INSERT and UPDATE. Also, UPDATE/DELETE old row versions can be accessed depending on the configured replica identity. | 2.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [wal2json](https://github.com/eulerto/wal2json) is an output plugin for logical decoding. It means that the plugin has access to tuples produced by INSERT and UPDATE. Also, UPDATE/DELETE old row versions can be accessed depending on the configured replica identity. | 2.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
