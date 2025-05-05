@@ -31,8 +31,6 @@ Azure Database for MySQL now supports the ability to enable [auto-scaling of IOP
 
 Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. The feature is currently available in limited regions, namely – West Central US and East Asia. Learn more about the feature [here](./concepts-backup-restore.md#backup-frequency).
 
-
-
 ## March 2025
 
 ### New Built-in Stored Procedures for Plugin Management and Undo Log Cleanup

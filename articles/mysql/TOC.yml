@@ -20,6 +20,8 @@
     items:
       - name: What's new?
         href: flexible-server/whats-new.md
+      - name: Previous features?
+        href: flexible-server/whats-new-archive.md
       - name: Release notes
         items:
           - name: March 2025
