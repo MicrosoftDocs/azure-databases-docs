@@ -6,7 +6,7 @@ author: jcodella
 ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 03/10/2025
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
@@ -17,8 +17,10 @@ appliesto:
 
 Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature in preview, designed to enhance the search capabilities of your applications.
 
-> [!NOTE]
-> Full Text & Hybrid Search is in early preview and may not be available in all regions at this time.
+## Prerequisites
+
+- Azure Cosmos DB for NoSQL account
+- [Vector search](vector-search-overview.md) feature enabled
 
 ## What is full text search?
 
@@ -34,9 +36,6 @@ Full Text Search is ideal for a variety of scenarios, including:
 - **Multi-Agent AI apps**: Enable multiple AI agents to collaboratively search and analyze vast amounts of text data, providing comprehensive and nuanced insights.
 
 ## How to use full text search
-
-> [!NOTE]
-> Full Text & Hybrid Search (preview) may not be available in all regions at this time.
 
 1. Enable the "Full Text & Hybrid Search for NoSQL" preview feature.
 2. Configure a container with a full text policy and full text index.
@@ -202,7 +201,7 @@ In this example, we want to obtain the first 10 results where "mountain" and "bi
 ```sql
 SELECT TOP 10 *
 FROM c
-ORDER BY RANK FullTextScore(c.text, ["bicycle", "mountain"])
+ORDER BY RANK FullTextScore(c.text, "bicycle", "mountain")
 ```
 
 > [!IMPORTANT]

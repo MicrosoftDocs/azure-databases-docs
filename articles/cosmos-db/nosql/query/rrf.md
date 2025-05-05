@@ -28,8 +28,8 @@ RRF(<function1>, <function2, ...>)
 
 | | Description |
 | --- | --- |
-| **`property_path`** | The property path to search. |
-| **`array_expr`** | A nonempty array of string literals. |
+| **`function1`** | A scoring function such as VectorDistance or FullTextScore. |
+| **`function2`** | A scoring function such as VectorDistance or FullTextScore. |
 
 ## Examples
 
@@ -38,7 +38,7 @@ This is an example of Hybrid Search (vector similarity search + BM25 full text s
 ```nosql
 SELECT TOP 10 *
 FROM c
-ORDER BY RANK RRF(FullTextScore(c.text, ["keyword"]), VectorDistance(c.vector, [1,2,3]))
+ORDER BY RANK RRF(FullTextScore(c.text, "keyword"), VectorDistance(c.vector, [1,2,3]))
 ```
 
 This example shows fusion with two `FullTextScore` functions
@@ -46,7 +46,7 @@ This example shows fusion with two `FullTextScore` functions
 ```nosql
 SELECT TOP 10 *
 FROM c
-ORDER BY RANK RRF(FullTextScore(c.text, ["keyword1"]), FullTextScore(c.text, ["keyword2"])
+ORDER BY RANK RRF(FullTextScore(c.text, "keyword1"), FullTextScore(c.text, "keyword2")
 ```
 
 This example shows fusion with two `VectorDistance` functions
@@ -54,7 +54,7 @@ This example shows fusion with two `VectorDistance` functions
 ```nosql
 SELECT TOP 5 *
 FROM c
-ORDER BY RANK RRF(VectorDistance(c.vector1, [1,2,3]),VectorDistance(c.vector2, [2,2,4,4]))
+ORDER BY RANK RRF(VectorDistance(c.vector1, [1,2,3]),VectorDistance(c.vector2, [2,2,4]))
 ```
 
 
@@ -63,8 +63,9 @@ ORDER BY RANK RRF(VectorDistance(c.vector1, [1,2,3]),VectorDistance(c.vector2, [
 - This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
 - Hybrid Search also requires enrollment in [Azure Cosmos DB NoSQL Vector Search](../vector-search.md).
 - This function requires a [Full Text Index](../../index-policy.md).
-- This function can only be used in an `ORDER BY RANK` clause.
+- This function can only be used in an `ORDER BY RANK` clause, and can't be combined with `ORDER BY` on other property paths.
 - This function can’t be part of a projection (for example, `SELECT FullTextScore(c.text, "keyword") AS Score FROM c` is invalid.
+  
 
 ## Related content
 

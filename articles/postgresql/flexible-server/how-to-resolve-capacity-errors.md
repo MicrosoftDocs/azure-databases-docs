@@ -90,7 +90,7 @@ To register your subscription in the Azure portal, follow these steps:
 
    :::image type="content" source="./media/how-to-resolve-capacity-errors/register-postgresql-resource-provider.png" alt-text="Screenshot of Register PostgreSQL Resource Provider.":::
 
-# [Azure CLI](#tab/bash)
+# [CLI](#tab/bash)
 
 To register your subscription using [the Azure CLI](/cli/azure/install-azure-cli), run this cmdlet:
 

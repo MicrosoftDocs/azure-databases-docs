@@ -4,12 +4,15 @@ description: "Learn to migrate offline seamlessly from Google Cloud SQL for Post
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurecli
+ms.collection:
+ - migration
+ - gcp-to-azure
 # customer intent: As a developer, I want to learn how to migrate from Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
 ---
 
@@ -38,7 +41,7 @@ You can migrate by using the Azure portal or the Azure CLI.
 
 #### [Portal](#tab/portal)
 
-The Azure portal provides a simple and intuitive wizard-based experience that guides you through migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL - Flexible Server and take advantage of its powerful features and scalability.
+The Azure portal provides a simple and intuitive wizard-based experience that guides you through migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL flexible server and take advantage of its powerful features and scalability.
 
 To migrate with the Azure portal, you first configure the migration task, connect to the source and target, and then perform the migration.
 
@@ -90,7 +93,7 @@ Select the **Next: Connect to source** button.
 
 #### Select Runtime Server
 
-The migration Runtime Server is a specialized feature within the migration service, designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL - Flexible Server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
+The migration Runtime Server is a specialized feature within the migration service, designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
 For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
 
@@ -289,5 +292,4 @@ After migration, you can perform the following tasks:
 
 - [Migrate online from Google Cloud SQL for PostgreSQL](tutorial-migration-service-cloud-sql-online.md)
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)

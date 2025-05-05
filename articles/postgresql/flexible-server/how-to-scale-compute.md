@@ -1,14 +1,14 @@
 ---
 title: Scale compute
-description: Learn how to scale compute in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes how to scale the compute of an Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 01/21/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to scale the compute used by my Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to scale the compute of an Azure Database for PostgreSQL flexible server.
 ---
 
 # Scale compute
@@ -21,7 +21,7 @@ You're allowed to change your compute between the burstable, general purpose, an
 
 When you request a scaling operation of the compute used by your Azure Database for PostgreSQL flexible server, your server undergoes a restart and so leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, see [near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
 
-## Scale compute
+## Steps to scale compute
 
 ### [Portal](#tab/portal-scale-compute)
 
@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-compute/compute-tier.png" alt-text="Screenshot showing where to select a different compute tier." lightbox="./media/how-to-scale-compute/compute-tier.png":::
 
-4. If the region of your server supports Intel and AMD processors, you can use the **Compute Processor** radio button to filter the options listed in the **Compute size** drop-down to only hardware produced by the manufacturer selected.
+4. If the region of your server supports Intel and AMD processors, you can use the **Compute processor** radio button to filter the options listed in the **Compute size** drop-down to only hardware produced by the manufacturer selected.
 
     :::image type="content" source="./media/how-to-scale-compute/compute-processor.png" alt-text="Screenshot showing where to select a different compute processor manufacturer." lightbox="./media/how-to-scale-compute/compute-processor.png":::
 
@@ -65,7 +65,11 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your compute via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --tier <tier> --sku-name <sku_name>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --tier <tier> \
+  --sku-name <sku_name>
 ```
 
 > [!NOTE]
@@ -84,7 +88,5 @@ Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify
 ## Related content
 
 - [Compute options](concepts-compute.md).
-- [Storage options](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).
 - [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)
-- [Scale storage](how-to-scale-storage.md)

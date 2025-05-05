@@ -1,19 +1,19 @@
 ---
 title: Scaling resources
-description: This article describes the resource scaling in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes the resource scaling in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 01/16/2025
+ms.date: 02/14/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Scaling resources in Azure Database for PostgreSQL - Flexible Server
+# Scaling resources in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Azure Database for PostgreSQL - Flexible Server supports both vertical and horizontal scaling options.
+Azure Database for PostgreSQL flexible server supports both vertical and horizontal scaling options.
 
 ## Vertical scaling
 
@@ -48,7 +48,7 @@ The overall time it takes to restart your server depends on the crash recovery p
 
 If your application is sensitive to loss of in-flight transactions that might occur during compute scaling, we recommend implementing a transaction [retry pattern](../single-server/concepts-connectivity.md#handling-transient-errors).
 
-Scaling the storage doesn't require a server restart in most cases. For more information, see [storage options in Azure Database for PostgreSQL - Flexible Server](concepts-scaling-resources.md).
+Scaling the storage doesn't require a server restart in most cases. For more information, see [storage options in Azure Database for PostgreSQL flexible server](concepts-scaling-resources.md).
 
 Backup retention period changes are an online operation.
 
@@ -84,7 +84,8 @@ For horizontally scaled configurations, consisting of a primary server and one o
 - Near-zero downtime scaling doesn't work if a [virtual network-injected server](concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses in the delegated subnet. If you have a standalone server, one extra IP address is necessary. For an instance with high-availability enabled, two extra IP addresses are required.
 - Logical replication slots aren't preserved during a near-zero downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling the pg_failover_slots extension in an instance of flexible server](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
 - Near-zero downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you're using unlogged tables for any of your data will lose all the data in those tables after the near-zero downtime scaling.
+- Near-zero downtime scaling is currently not supported for High Availability (HA) enabled servers.
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).

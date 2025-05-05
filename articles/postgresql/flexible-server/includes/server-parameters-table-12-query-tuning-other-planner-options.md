@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -118,8 +118,8 @@ ms.custom: automatically generated
 | Description | Controls the planner's selection of custom or generic plan. |
 | Data type | enumeration |
 | Default value | `auto` |
-| Allowed values | `auto` |
-| Parameter type | read-only |
+| Allowed values | `auto,force_generic_plan,force_custom_plan` |
+| Parameter type | dynamic |
 | Documentation | [plan_cache_mode](https://www.postgresql.org/docs/12/runtime-config-query.html#id-1.6.6.10.5.2.9.1.3) |
 
 

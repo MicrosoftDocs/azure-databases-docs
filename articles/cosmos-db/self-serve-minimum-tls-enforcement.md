@@ -2,8 +2,8 @@
 title: Self-serve minimum tls version enforcement in Azure Cosmos DB
 titleSuffix: Azure Cosmos DB
 description: Learn how to self-serve minimum TLS version enforcement for your Azure Cosmos DB account to improve your security posture.
-author: dileepraotv-github
-ms.author: turao
+author: sudhanshukhera
+ms.author: skhera
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 01/18/2023
@@ -19,19 +19,19 @@ This article discusses how to enforce a minimum version of the TLS protocol for 
 
 Because of the multitenant nature of Cosmos DB, the service is required to meet the access and security needs of every user. To achieve this, **Cosmos DB enforces minimum TLS protocols at the application layer**, and not lower layers in the network stack where TLS operates. This enforcement occurs on any authenticated request to a specific database account, according to the settings set on that account by the customer.
 
-The **minimum service-wide accepted version is TLS 1.0**. This selection can be changed on a per account basis, as discussed in the following section. 
+The **minimum service-wide accepted version is TLS 1.2**. This selection can be changed on a per account basis, as discussed in the following section. 
 
 ## How to set the minimum TLS version for my Cosmos DB database account
 
-Starting with the [2022-11-15 API version of the Azure Cosmos DB Resource Provider API](), a new property is exposed for every Cosmos DB database account, called `minimalTlsVersion`. It accepts one of the following values:
-- `Tls` for setting the minimum version to TLS 1.0.
-- `Tls11` for setting the minimum version to TLS 1.1.
-- `Tls12` for setting the minimum version to TLS 1.2.
+Starting with the [2022-11-15 API version of the Azure Cosmos DB Resource Provider API](), a new property is exposed for every Cosmos DB database account, called `minimalTlsVersion`. It accepts the following value:
+- `Tls12` for setting the minimum version to TLS 1.2
 
 The **default value for new accounts is `Tls12`**.
 
 > [!IMPORTANT]
 > **Starting August 31, 2025, all Cosmos DB database accounts must use Transport Layer Security (TLS) 1.2 or higher**, as [support for TLS 1.0 and 1.1 will be discontinued](https://azure.microsoft.com/updates?id=update-retirement-tls1-0-tls1-1-versions-azure-services).
+>
+> Effective **March 31, 2025 support for TLS 1.3** will be enabled for Azure Cosmos DB.
 
 ### Set Minimal TLS Protocol in Azure Cosmos DB using the Portal 
 
@@ -41,7 +41,7 @@ This self-serve feature is available in the Portal while creating and editing an
 
 - **Cassandra:** TLS 1.2
 
-- **Table, SQL and Graph:** TLS 1.0, TLS 1.1 and TLS 1.2
+- **Table, SQL and Graph:** TLS 1.2
 
   
 
@@ -102,19 +102,8 @@ az cosmosdb update -n $dbName -g $rg --minimal-tls-version $minimalTlsVersion
 To set using Azure PowerShell, use the command:
 
 ```azurepowershell-interactive
-$minimalTlsVersion = 'Tls12'
-$patchParameters = @{
-  ResourceGroupName = 'myresourcegroup'
-  Name = 'mycosmosdbaccount'
-  ResourceProviderName = 'Microsoft.DocumentDB'
-  ResourceType = 'databaseaccounts'
-  ApiVersion = '2022-11-15'
-  Payload = "{ 'properties': {
-      'minimalTlsVersion': '$minimalTlsVersion'
-  } }"
-  Method = 'PATCH'
-}
-Invoke-AzRestMethod @patchParameters
+$minimalTlsVersion = "Tls12"
+Update-AzCosmosDBAccount -ResourceGroupName myresourcegroup -Name mycosmosdbaccount -MinimalTlsVersion $minimalTlsVersion
 ```
 
 ### Set via ARM template
@@ -154,10 +143,26 @@ To set this property using an ARM template, update your existing template or exp
 
 ### For new accounts
 
-You can create accounts with the `minimalTlsVersion` property set by using the ARM template above, or by changing the PATCH method to a PUT on either Azure CLI or Azure PowerShell. Make sure to include the other properties for your account.
+You can create accounts with the `minimalTlsVersion` property set by using the ARM template above, or by using Azure CLI or Azure PowerShell, run the command:
 
-> [!IMPORTANT]
-> If the account exists and the `minimalTlsVersion` property is omitted in a PUT request, then the property will reset to its default value, starting with the 2022-11-15 API version.
+```azurecli-interactive
+az cosmosdb create --name <CosmosDBAccountName> \
+  --resource-group <ResourceGroupName> \
+  --kind GlobalDocumentDB \
+  --locations regionName=<Region> \
+  --minimal-tls-version "Tls12"
+```
+
+```azurepowershell-interactive
+New-AzCosmosDBAccount `
+  -ResourceGroupName "<YourResourceGroupName>" `
+  -Name "<YourCosmosDBAccountName>" `
+  -Location "<AzureRegion>" `
+  -Kind GlobalDocumentDB `
+  -EnableAutomaticFailover $true `
+  -MinimalTlsVersion "Tls12"
+```
+
 
 ## How to verify minimum TLS version enforcement
 
@@ -181,14 +186,9 @@ az rest --uri "/subscriptions/$subId/resourceGroups/$rg/providers/Microsoft.Docu
 To get the current value of the property using Azure PowerShell, run the command:
 
 ```azurepowershell-interactive
-$getParameters = @{
-  ResourceGroupName = 'myresourcegroup'
-  Name = 'mycosmosdbaccount'
-  ResourceProviderName = 'Microsoft.DocumentDB'
-  ResourceType = 'databaseaccounts'
-  ApiVersion = '2022-11-15'
-  Method = 'GET'
-}
-Invoke-AzRestMethod @getParameters
+Get-AzCosmosDBAccount -ResourceGroupName myresourcegroup -Name mycosmosdbaccount
 ```
 
+## Related content
+- [Prepare for upcoming TLS 1.3 support for Azure Cosmos DB](./tls-support.md)
+- [Moving to TLS 1.2 for Azure Cosmos DB](https://aka.ms/tls12)

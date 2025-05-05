@@ -81,7 +81,7 @@ python3 client_configurator.py --subscription-id <subcriptionId> --cluster-resou
 
 * Inside the `/etc/cassandra/` folder, run `sudo ./install_certs.sh`.
     * Ensure that the script is executable by running `sudo chmod +x install_certs.sh`.
-    * The script installs and point Cassandra towards the new certs needed to connect to the Azure Managed Instance cluster.
+    * The script installs and points Cassandra towards the new certs needed to connect to the Azure Managed Instance cluster.
     * It then prompts user to restart Cassandra.
         :::image type="content" source="./media/configure-hybrid-cluster/script-result.png" alt-text="Screenshot of the result of running the script.":::
 

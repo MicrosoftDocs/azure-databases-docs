@@ -1,23 +1,23 @@
 ---
-title: Stop a server
-description: This article describes how to stop an instance of Azure Database for PostgreSQL flexible server.
+title: Stop compute of a server
+description: This article describes how to stop the compute of an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 01/04/2025
+ms.date: 04/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to stop an Azure Database for PostgreSQL flexible server instance, so that I can manage my server efficiently.
+#customer intent: As a user, I want to learn how to stop the compute of an Azure Database for PostgreSQL flexible server.
 ---
 
-# Stop a server
+# Stop compute of a server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to stop an Azure Database for PostgreSQL flexible server instance.
+This article provides step-by-step instructions to stop the compute of an Azure Database for PostgreSQL flexible server instance.
 
-## Stop a started server
+## Steps to stop a server
 
 ### [Portal](#tab/portal-stop-server)
 
@@ -29,7 +29,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-stop-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-stop-server/overview.png":::
 
-3. The status of the server must be **Available**, for the **Stop** button to appear on the toolbar.
+3. The status of the server must be **Ready**, for the **Stop** button to appear on the toolbar.
 
     :::image type="content" source="./media/how-to-stop-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-stop-server/server-status.png":::
 
@@ -59,15 +59,18 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-stop-server)
 
-You can stop a started server via the [az postgres flexible-server stop](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-stop) command.
+You can stop the compute of a started server via the [az postgres flexible-server stop](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-stop) command.
 
 ```azurecli-interactive
-az postgres flexible-server stop --resource-group <resource_group> --name <server>
+az postgres flexible-server stop \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
-If you attempt to stop a server which isn't in `Available` state, you receive an error like this:
+If you attempt to stop the compute of a server which isn't in `Ready` state, you receive an error like this:
 
 ```output
+Server will be automatically started after 7 days if you do not perform a manual start operation
 (ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = <non_started_server_state>
 Code: ServerIsNotReady
 Message: Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = <non_started_server_state>
@@ -81,9 +84,6 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 
 ## Related content
 
-- [Start an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
-- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
-- [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
-- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).
-- [Configure high availability in an Azure Database for PostgreSQL flexible server](how-to-configure-high-availability.md).
+- [Start compute of a server](how-to-start-server.md).
+- [Restart PostgreSQL engine](how-to-restart-server.md).
+- [Configure high availability](how-to-configure-high-availability.md).

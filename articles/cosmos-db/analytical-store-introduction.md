@@ -1,8 +1,8 @@
 ---
 title: What is Azure Cosmos DB analytical store?
 description: Learn about Azure Cosmos DB transactional (row-based) and analytical(column-based) store. Benefits of analytical store, performance impact for large-scale workloads, and auto sync of data from transactional store to analytical store.
-author: Rodrigossz
-ms.author: rosouz
+author: jilmal
+ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2024

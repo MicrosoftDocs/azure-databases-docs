@@ -186,7 +186,7 @@ While the service attempts to make the server read-only, all new write transacti
 
 To get the server out of read-only mode, you should increase the provisioned storage on the server. This can be done using the Azure portal or Azure CLI. Once increased, the server is ready to accept write transactions again.
 
-We recommended that you <!--turn on storage auto-grow or to--> set up an alert to notify you when your server storage is approaching the threshold so you can avoid getting into the read-only state. For more information, see the documentation on alert documentation [how to set up an alert](how-to-alert-on-metric.md).
+We recommended that you turn on **storage auto-grow** or to set up an alert to notify you when your server storage is approaching the threshold so you can avoid getting into the read-only state. For more information, see the documentation on alert documentation [how to set up an alert](how-to-alert-on-metric.md).
 
 ### Storage autogrow
 
@@ -197,7 +197,7 @@ For example, if you have provisioned 1,000 GB of storage, and the actual utiliza
 Remember that storage, once autoscaled up, can't be scaled down.
 
 > [!NOTE]  
-> Storage autogrow is enabled by default for a high-availability configured server and can not be disabled.
+> Storage autogrow is enabled by default for a [high-availability](./concepts-high-availability.md) configured server and [accelerated logs](./concepts-accelerated-logs.md) enabled servers and can not be disabled.
 
 ## IOPS
 
@@ -215,7 +215,9 @@ Azure Database for MySQL Flexible Server offers pre-provisioned IOPS, allowing y
 
 ## Autoscale IOPS
 
-The cornerstone of Azure Database for MySQL Flexible Server is its ability to achieve the best performance for tier 1 workloads. This can be improved by enabling the server to automatically scale its database servers' performance (IO) seamlessly depending on the workload needs. This opt-in feature enables users to scale IOPS on demand without having to pre-provision a certain amount of IO per second. With the Autoscale IOPS featured enabled, you can now enjoy worry-free IO management in Azure Database for MySQL Flexible Server because the server scales IOPs up or down automatically depending on workload needs. AutoScale IOPS automatically scales up to the ‘Max Supported IOPS’ for each service tier and compute size, as specified in the [service tiers documentation](#service-tiers-size-and-server-types). This ensures optimal performance without the need for manual scaling efforts
+
+The cornerstone of Azure Database for MySQL Flexible Server is its ability to achieve the best performance for tier 1 workloads. This can be improved by enabling the server to automatically scale its database servers' performance (IO) seamlessly depending on the workload needs. This opt-in feature enables users to scale IOPS on demand without having to pre-provision a certain amount of IO per second. With the Autoscale IOPS featured enabled, you can now enjoy worry-free IO management in Azure Database for MySQL Flexible Server because the server scales IOPs up or down automatically depending on workload needs. AutoScale IOPS automatically scales up to the 'Max Supported IOPS' for each service tier and compute size, as specified in the [service tiers documentation](#service-tiers-size-and-server-types). This ensures optimal performance without the need for manual scaling efforts
+
 
 With Autoscale IOPS, you pay only for the IO the server uses and no longer need to provision and pay for resources they aren't fully using, saving time and money. In addition, mission-critical Tier-1 applications can achieve consistent performance by making additional IO available to the workload anytime. Autoscale IOPS eliminates the administration required to provide the best performance at the least cost for Azure Database for MySQL Flexible Server customers.
 
@@ -253,5 +255,5 @@ If you would like to optimize server cost, you can consider the following tips:
 
 ## Related content
 
-- [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md)
-- [Limitations in Azure Database for MySQL - Flexible Server](concepts-limitations.md)
+- [Create an Azure Database for MySQL Flexible Server instance in the portal](quickstart-create-server-portal.md)
+- [Service limitations](concepts-limitations.md)

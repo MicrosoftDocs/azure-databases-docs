@@ -2,29 +2,12 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
-### allow_alter_system
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Enable/Disable allow alter system command. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | [allow_alter_system](https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-ALLOW-ALTER-SYSTEM) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
 ### auto_explain.log_analyze
 
 | Attribute | Value |
@@ -246,6 +229,125 @@ ms.custom: automatically generated
 
 
 
+### azure_cdc.change_batch_buffer_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum buffer size (in MB) for change batch. Per table, up to this much data is buffered before written to local disk. |
+| Data type | integer |
+| Default value | `16` |
+| Allowed values | `1-100` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.change_batch_export_timeout
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum idle time (in seconds) between change batch messages. When exceeded, we mark the current batch as complete. |
+| Data type | integer |
+| Default value | `30` |
+| Allowed values | `10-60` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.max_fabric_mirrors
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of parallel fabric mirrors that can be run at the same time. |
+| Data type | integer |
+| Default value | `3` |
+| Allowed values | `1-6` |
+| Parameter type | static |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.max_snapshot_workers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of snapshot workers. |
+| Data type | integer |
+| Default value | `3` |
+| Allowed values | `0-100` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.parquet_compression
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Sets the compression algorithm to use for parquet files |
+| Data type | enumeration |
+| Default value | `zstd` |
+| Allowed values | `uncompressed,snappy,gzip,zstd` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.snapshot_buffer_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum size (in MB) of the initial snapshot buffer. Per table, up to this much data is buffered before sent to Fabric. Keep in mind that azure_cdc.snapshot_buffer_size*azure_cdc.max_snapshot_workers is the total memory buffer used during initial snapshot. |
+| Data type | integer |
+| Default value | `1000` |
+| Allowed values | `10-4000` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.snapshot_export_timeout
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum time (in minutes) to export initial snapshot. On exceed, we restart. |
+| Data type | integer |
+| Default value | `180` |
+| Allowed values | `0-1440` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### azure.enable_temp_tablespaces_on_local_ssd
 
 | Attribute | Value |
@@ -271,9 +373,162 @@ ms.custom: automatically generated
 | Description | Specifies which extensions are allowed to be created in the server. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrowlocks,pgstattuple,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.fabric_mirror_enabled
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Specifies the flag indicating if mirroring is enabled on server. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [azure.fabric_mirror_enabled](https://go.microsoft.com/fwlink/?linkid=2285682) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_copy_with_binary
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will enable the use of the binary format for copying data during migration. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_copy_with_binary](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_analyze
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the analyze phase (`vacuumdb --analyze-only`) during the migration. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_analyze](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_extensions
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the migration of extensions. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_extensions](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_large_objects
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the migration of large objects such as BLOBs. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_large_objects](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_role_user
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will exclude user roles from the migration process. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [azure.migration_skip_role_user](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_table_split_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set, this parameter specifies the size at which tables will be partitioned during migration. |
+| Data type | integer |
+| Default value | `20480` |
+| Allowed values | `1-204800` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_table_split_size](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.service_principal_id
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | A unique identifier for a service principal in Azure, used to grant permissions and access to resources within a tenant. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.service_principal_tenant_id
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | A unique identifier for the tenant in which a service principal is created, ensuring the necessary permissions and access to resources within that tenant. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -342,23 +597,6 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### commit_timestamp_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of memory to use to cache the contents of pg_commit_ts. Unit is 8kb. |
-| Data type | integer |
-| Default value | `1024` |
-| Allowed values | `1024` |
-| Parameter type | read-only |
-| Documentation | [commit_timestamp_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-COMMIT_TIMESTAMP_BUFFERS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -546,23 +784,6 @@ ms.custom: automatically generated
 | Allowed values | `0-5000` |
 | Parameter type | static |
 | Documentation | [cron.max_running_jobs](https://github.com/citusdata/pg_cron) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### event_triggers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Enable/Disable event triggers for debugging purpose. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | [event_triggers](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-EVENT-TRIGGERS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -801,57 +1022,6 @@ ms.custom: automatically generated
 | Allowed values | `1-7` |
 | Parameter type | dynamic |
 | Documentation | [logfiles.retention_days](https://go.microsoft.com/fwlink/?linkid=2274270) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### multixact_member_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_multixact/members. Unit is 8kb. |
-| Data type | integer |
-| Default value | `32` |
-| Allowed values | `32` |
-| Parameter type | read-only |
-| Documentation | [multixact_member_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MUTIXACT_MEMBER_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### multixact_offset_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_multixact/offsets. Unit is 8kb. |
-| Data type | integer |
-| Default value | `16` |
-| Allowed values | `16` |
-| Parameter type | read-only |
-| Documentation | [multixact_offset_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MULTIXACT_OFFSET_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### notify_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_notify. Unit is 8kb. |
-| Data type | integer |
-| Default value | `16` |
-| Allowed values | `16` |
-| Parameter type | read-only |
-| Documentation | [notify_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-NOTIFY_BUFFERS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -1453,40 +1623,6 @@ ms.custom: automatically generated
 
 
 
-### serializable_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_serial. Unit is 8kb. |
-| Data type | integer |
-| Default value | `32` |
-| Allowed values | `32` |
-| Parameter type | read-only |
-| Documentation | [serializable_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SERIALIZABLE_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### subtransaction_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_subtrans. Unit is 8kb. |
-| Data type | integer |
-| Default value | `1024` |
-| Allowed values | `1024` |
-| Parameter type | read-only |
-| Documentation | [subtransaction_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SUBTRANSACTION_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
 ### sync_replication_slots
 
 | Attribute | Value |
@@ -1498,40 +1634,6 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [sync_replication_slots](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-SYNC-REPLICATION-SLOTS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### transaction_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_xact. Unit is 8kb. |
-| Data type | integer |
-| Default value | `1024` |
-| Allowed values | `1024` |
-| Parameter type | read-only |
-| Documentation | [transaction_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-TRANSACTION_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### transaction_timeout
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Sets the maximum allowed duration (in milliseconds) of any transcation in a session. 0 turns this off. |
-| Data type | integer |
-| Default value | `0` |
-| Allowed values | `0-2147483647` |
-| Parameter type | dynamic |
-| Documentation | [transaction_timeout](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TRANSACTION-TIMEOUT) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

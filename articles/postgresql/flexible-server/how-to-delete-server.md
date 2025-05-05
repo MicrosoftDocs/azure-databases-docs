@@ -45,15 +45,23 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-delete-server/accept-conditions.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/accept-conditions.png":::
 
-8. Select **Delete** to proceed with the immediate deletion of the server.
+8. If the server has private endpoints configured, you also have to check the **I acknowledge that the deletion of the server doesn't delete any private endpoints associated with this server. After the server is deleted, make sure that you delete these private endpoints.** box, so that the **Delete** button is enabled.
+
+    :::image type="content" source="./media/how-to-delete-server/accept-conditions-private-endpoints.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server when there are private endpoints." lightbox="./media/how-to-delete-server/accept-conditions-private-endpoints.png":::
+
+9. If the server is VNET integrated, you also have to check the **I acknowledge that the deletion of the server doesn't delete the virtual network in which the server is integrated. After the server is deleted, consider if you should also delete the virtual network.** box, so that the **Delete** button is enabled.
+
+    :::image type="content" source="./media/how-to-delete-server/accept-conditions-vnet-integration.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server when it's VNET integrated." lightbox="./media/how-to-delete-server/accept-conditions-vnet-integration.png":::
+
+10. Select **Delete** to proceed with the immediate deletion of the server.
 
     :::image type="content" source="./media/how-to-delete-server/delete.png" alt-text="Screenshot showing the location of the Delete button to initiate the deletion of the server." lightbox="./media/how-to-delete-server/delete.png":::
 
-6. A notification informs you that the server is being deleted.
+11. A notification informs you that the server is being deleted.
 
     :::image type="content" source="./media/how-to-delete-server/notification-deleting-server.png" alt-text="Screenshot showing a server that's being deleted." lightbox="./media/how-to-delete-server/notification-deleting-server.png":::
 
-7. When the process completes, a notification informs you that the server was successfully deleted.
+12. When the process completes, a notification informs you that the server was successfully deleted.
 
     :::image type="content" source="./media/how-to-delete-server/notification-deleted-server.png" alt-text="Screenshot showing a server that was successfully deleted." lightbox="./media/how-to-delete-server/notification-deleted-server.png":::
 
@@ -62,7 +70,9 @@ Using the [Azure portal](https://portal.azure.com/):
 You can delete a server via the [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-delete) command.
 
 ```azurecli-interactive
-az postgres flexible-server delete --resource-group <resource_group> --name <server>
+az postgres flexible-server delete \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
 If you run the previous command, it requires you to explicitly confirm, responding with a `y` (yes):
@@ -74,15 +84,18 @@ Are you sure you want to delete the server '<server>' in resource group '<resour
 If you want to run the command without needing the user interaction, you can add the `--yes` parameter like this:
 
 ```azurecli-interactive
-az postgres flexible-server delete --resource-group <resource_group> --name <server> --yes
+az postgres flexible-server delete \
+  --resource-group <resource_group> \
+  --name <server> \
+  --yes
 ```
 
 ---
 
 ## Related content
 
-- [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
-- [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
-- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
-- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).
+- [Start a server](how-to-start-server.md).
+- [Stop a server](how-to-stop-server.md).
+- [Restart a server](how-to-restart-server.md).
+- [Reset administrator password](how-to-reset-admin-password.md).
+- [Configure storage autogrow](how-to-auto-grow-storage.md).

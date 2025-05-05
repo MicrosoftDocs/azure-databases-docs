@@ -1,6 +1,6 @@
 ---
 title: Overview of business continuity
-description: Learn about the concepts of business continuity with Azure Database for PostgreSQL - Flexible Server.
+description: Learn about the concepts of business continuity with Azure Database for PostgreSQL flexible server.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Overview of business continuity with Azure Database for PostgreSQL - Flexible Server
+# Overview of business continuity with Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -42,6 +42,7 @@ The following table compares RTO and RPO in a **typical workload** scenario:
 | Point in Time Restore from backup | Any restore point within the retention period <br/> RTO - Varies <br/>RPO < 5 min| Any restore point within the retention period <br/> RTO - Varies <br/>RPO < 5 min | Any restore point within the retention period <br/> RTO - Varies <br/>RPO < 5 min |
 | Geo-restore from geo-replicated backups | RTO - Varies <br/>RPO < 1 h  | RTO - Varies <br/>RPO < 1 h | RTO - Varies <br/>RPO < 1 h |
 | Read replicas | RTO - Minutes* <br/>RPO < 5 min* | RTO - Minutes* <br/>RPO < 5 min*| RTO - Minutes* <br/>RPO < 5 min*|
+| High Availability | Not Applicable | RTO - 0 <br/> RPO < 120 secs*| RTO - 0 <br/> RPO < 120 secs*|
 
 \* RTO and RPO **can be much higher** in some cases depending on various factors including latency between sites, the amount of data to be transmitted, and importantly primary database write workload. 
 
@@ -104,13 +105,16 @@ Below are some unplanned failure scenarios and the recovery process.
 ### Configure your database after recovery from regional failure
 
 * If you are using geo-restore or geo-replica to recover from an outage, you must make sure that the connectivity to the new server is properly configured so that the normal application function can be resumed. You can follow the [Post-restore tasks](concepts-backup-restore.md#geo-redundant-backup-and-restore).
-* If you've previously set up a diagnostic setting on the original server, make sure to do the same on the target server if necessary as explained in [Configure and Access Logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
-* Setup telemetry alerts, you need to make sure your existing alert rule settings are updated to map to the new server. For more information about alert rules, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL - Flexible Server](how-to-alert-on-metrics.md).
+* If you've previously set up a diagnostic setting on the original server, make sure to do the same on the target server if necessary as explained in [Configure and Access Logs in Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md).
+* Setup telemetry alerts, you need to make sure your existing alert rule settings are updated to map to the new server. For more information about alert rules, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL flexible server](how-to-alert-on-metrics.md).
 
 > [!IMPORTANT]
-> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure database - Azure Database for PostgreSQL - Flexible Server](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
+> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure database - Azure Database for PostgreSQL flexible server](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
 
 ## Related content
 
-- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server.md).
+- [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Restore to latest restore point](how-to-restore-latest-restore-point.md).
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
+- [Restore to full backup (fast restore)](how-to-restore-full-backup.md).
+- [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).

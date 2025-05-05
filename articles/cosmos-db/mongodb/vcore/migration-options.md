@@ -19,31 +19,57 @@ Migrations can be done in two ways:
 
 - Offline Migration: A snapshot based bulk copy from source to target. New data added/updated/deleted on the source after the snapshot isn't copied to the target. The application downtime required depends on the time taken for the bulk copy activity to complete.
 
-- Online Migration: Apart from the bulk data copy activity done in the offline migration, a change stream monitors all additions/updates/deletes. After the bulk data copy is completed, the data in the change stream is copied to the target to ensure that all updates made during the migration process are also transferred to the target. The application downtime required is minimal.
+- Online Migration: Apart from the bulk data copy activity done in the offline migration, a change stream monitors all additions/updates/deletes. After the bulk data copy is completed, the data in the change stream is copied to the target. This process ensures that all updates made during the migration process are also transferred to the target. The application downtime required is minimal.
 
-## Azure Data Studio (Online)
+## Premigration Assessment
 
-The [MongoDB migration extension for Azure Data Studio](/azure-data-studio/extensions/database-migration-for-mongo-extension) is the preferred tool in migrating your MongoDB workloads to the vCore-based Azure Cosmos DB for MongoDB.
-
-The migration process has two phases:
-
-- **Premigration assessment** - An evaluation of your current MongoDB data estate to determine if there are any incompatibilities.
-- **Migration** - The migration operation using services managed by Azure.
-
-### Premigration assessment
-
-Assessment involves finding out whether you're using the [features and syntax that are supported](./compatibility.md). The purpose of this stage is to identify any incompatibilities or warnings that exist in the current MongoDB solution. You should resolve the issues found in the assessment results before moving on with the migration process.
+Use the [MongoDB migration extension for Azure Data Studio](/azure-data-studio/extensions/database-migration-for-mongo-extension) to perform a compatibility assessment. The purpose of this stage is to identify any incompatibilities or warnings that exist in the current MongoDB solution. You should resolve the issues found in the assessment results before moving on with the migration process.
 
 > [!TIP]
 > We recommend you review the [supported features and syntax](./compatibility.md) in detail and perform a proof-of-concept prior to the actual migration.
 
-### Migration
+## Migration
 
-Use the graphical user interface to manage the entire migration process from start to finish. The migration is launched in Azure Data Studio but runs in the cloud on Azure-managed resources.
+The tools discussed in this article assist you in migrating your MongoDB workloads from the following sources:
 
-## Native MongoDB tools (Offline)
+- MongoDB Virtual Machine
+- MongoDB Atlas
+- AWS DocumentDB
 
-You can use the native MongoDB tools such as *mongodump/mongorestore*, *mongoexport/mongoimport* to migrate datasets offline (without replicating live changes) to vCore-based Azure Cosmos DB for MongoDB offering.
+### Web App Utility (Online)
+
+Streamline your migration to Azure Cosmos DB for MongoDB (vCore-based) with [MongoMigrationwebBasedUtility](https://github.com/AzureCosmosDB/MongoMigrationwebBasedUtility) a tool designed for efficiency, reliability, and ease of use. The repository offers detailed, step-by-step instructions for migrating your workloads. This tool offers a seamless experience for both online and offline data migrations. The process is user-friendly, requiring only the source and target details to be provided. It enables you to effortlessly migrate your MongoDB collections while maintaining control, security, and scalability, unlocking the full potential of Azure Cosmos DB.
+
+Key features include:
+
+- Supports private deployment within your virtual network for enhanced security
+- Automatic resume capabilities if there's connection loss or transient errors
+- User-friendly interface
+- Access to C# source code on GitHub
+
+The tool supports flexible deployment options and operates independently without dependencies on other Azure resources. Additionally, it offers scalable performance with customizable Azure Web App pricing plans. 
+
+
+### Azure Data Studio (Online)
+
+The [MongoDB migration extension for Azure Data Studio](/azure-data-studio/extensions/database-migration-for-mongo-extension) is a straightforward and zero cost tool designed to help you migrate your MongoDB workloads to the vCore-based Azure Cosmos DB for MongoDB. 
+
+> [!IMPORTANT]
+> This tool doesn't support the following scenarios:
+> - Migrations where either the source or target account is enabled with Private Endpoint.
+> - Migrations where the firewalls of the source or target account cannot accept a wide IP range. This tool requires you to allow connections from global Azure datacenters to both the source and target accounts. For more information, see the [global Azure IP address ranges](/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
+
+
+This tool has two phases:
+
+- **Premigration assessment** - An evaluation of your current MongoDB data estate to determine if there are any incompatibilities.
+- **Migration** - The migration operation using services managed by Azure.
+
+With the graphical user interface, you can oversee the entire premigration assessment and migration process from start to finish, or you can choose to perform just the premigration assessment. While the migration is initiated in Azure Data Studio, it actually runs in the cloud on Azure-managed resources.
+
+### Native MongoDB tools (Offline)
+
+You can also use the native MongoDB tools such as *mongodump/mongorestore*, *mongoexport/mongoimport* to migrate datasets offline (without replicating live changes) to vCore-based Azure Cosmos DB for MongoDB offering.
 
 | Scenario | MongoDB native tool |
 | --- | --- |
@@ -61,16 +87,9 @@ You can use the native MongoDB tools such as *mongodump/mongorestore*, *mongoexp
 > [!NOTE]
 > The MongoDB native tools can move data only as fast as the host hardware allows.
 
-## Data migration using Azure Databricks (Offline/Online)
+### Data migration using Azure Databricks (Online)
 
-Migrating using Azure Databricks offers full control of the migration rate and data transformation. This method can also support large datasets that are in TBs in size. The spark migration utility operates as a job within Databricks.
-
-
-This tool supports the following MongoDB sources:
-- MongoDB VM
-- MongoDB Atlas
-- AWS DocumentDB 
-- Azure Cosmos DB MongoDB RU (Offline only)
+In certain special cases, you may need greater control and higher throughput during migration. Using Azure Databricks for migration provides full control over the migration rate. This method is also capable of handling large datasets that are terabytes in size. The Spark migration utility functions as a job within Databricks.
 
 [Sign up  for Azure Cosmos DB for MongoDB Spark Migration](https://forms.office.com/r/cLSRNugFSp) to gain access to the Spark Migration Tool GitHub repository. The repository offers detailed, step-by-step instructions for migrating your workloads from various Mongo sources to vCore-based Azure Cosmos DB for MongoDB.
 

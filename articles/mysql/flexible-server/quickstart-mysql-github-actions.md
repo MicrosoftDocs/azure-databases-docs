@@ -4,7 +4,7 @@ description: Use Azure Database for MySQL - Flexible Server from a GitHub Action
 author: juliakm
 ms.author: jukullam
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 02/10/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -29,8 +29,8 @@ You'll need:
     > [!IMPORTANT]  
     > This quickstart assumes that you have cloned a GitHub repository to your computer so that you can add the associated IP address to a firewall rule, if necessary.
 
-- An Azure Database for MySQL flexible server instance.
-  - [Quickstart: Create an Azure Database for MySQL flexible server instance in the Azure portal](../single-server/quickstart-create-mysql-server-database-using-azure-portal.md)
+- An Azure Database for MySQL Flexible Server instance.
+  - [Quickstart: Create an Azure Database for MySQL Flexible Server instance in the Azure portal](../single-server/quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## Workflow file overview
 
@@ -82,6 +82,29 @@ You'll use the connection string as a GitHub secret.
 
 1. Rename your workflow `MySQL for GitHub Actions` and add the checkout and login actions. These actions check out your site code and authenticate with Azure using the `AZURE_CREDENTIALS` GitHub secret you created earlier.
 
+    # [OpenID Connect](#tab/openid)
+
+    ```powershell
+    name: MySQL for GitHub Actions
+
+    on:
+        push:
+            branches: [ main ]
+        pull_request:
+            branches: [ main ]
+
+    jobs:
+        build:
+            runs-on: windows-latest
+            steps:
+            - uses: actions/checkout@v1
+            - uses: azure/login@v2
+                with:
+                  client-id: ${{ secrets.AZURE_CLIENT_ID }}
+                  tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+                  subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    ```
+
     # [Service principal](#tab/userlevel)
 
     ```powershell
@@ -103,29 +126,6 @@ You'll use the connection string as a GitHub secret.
                     creds: ${{ secrets.AZURE_CREDENTIALS }}
       ```
 
-    # [OpenID Connect](#tab/openid)
-
-    ```powershell
-    name: MySQL for GitHub Actions
-
-    on:
-        push:
-            branches: [ main ]
-        pull_request:
-            branches: [ main ]
-
-    jobs:
-        build:
-            runs-on: windows-latest
-            steps:
-            - uses: actions/checkout@v1
-            - uses: azure/login@v1
-                with:
-                  client-id: ${{ secrets.AZURE_CLIENT_ID }}
-                  tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-                  subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-    ```
-
     ___
 
 1. Use the Azure MySQL Deploy action to connect to your MySQL instance. Replace `MYSQL_SERVER_NAME` with the name of your server. You should have a MySQL data file named `data.sql` at the root level of your repository.
@@ -139,6 +139,38 @@ You'll use the connection string as a GitHub secret.
     ```
 
 1. Complete your workflow by adding an action to sign out of Azure. Here's the completed workflow. The file appears in the `.github/workflows` folder of your repository.
+
+    # [OpenID Connect](#tab/openid)
+
+    ```azurecli
+    name: MySQL for GitHub Actions
+
+    on:
+      push:
+          branches: [ main ]
+      pull_request:
+          branches: [ main ]
+    jobs:
+        build:
+            runs-on: windows-latest
+            steps:
+              - uses: actions/checkout@v1
+              - uses: azure/login@v2
+                with:
+                  client-id: ${{ secrets.AZURE_CLIENT_ID }}
+                  tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+                  subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+              - uses: azure/mysql@v1
+                with:
+                  server-name: MYSQL_SERVER_NAME
+                  connection-string: ${{ secrets.AZURE_MYSQL_CONNECTION_STRING }}
+                  sql-file: './data.sql'
+
+                # Azure logout
+              - name: logout
+                run: |
+                  az logout
+    ```
 
     # [Service principal](#tab/userlevel)
 
@@ -155,41 +187,10 @@ You'll use the connection string as a GitHub secret.
             runs-on: windows-latest
             steps:
               - uses: actions/checkout@v1
-              - uses: azure/login@v1
+              - uses: azure/login@v2
                 with:
                   creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-              - uses: azure/mysql@v1
-                with:
-                  server-name: MYSQL_SERVER_NAME
-                  connection-string: ${{ secrets.AZURE_MYSQL_CONNECTION_STRING }}
-                  sql-file: './data.sql'
-
-                # Azure logout
-              - name: logout
-                run: |
-                  az logout
-    ```
-    # [OpenID Connect](#tab/openid)
-
-    ```azurecli
-    name: MySQL for GitHub Actions
-
-    on:
-      push:
-          branches: [ main ]
-      pull_request:
-          branches: [ main ]
-    jobs:
-        build:
-            runs-on: windows-latest
-            steps:
-              - uses: actions/checkout@v1
-              - uses: azure/login@v1
-                with:
-                  client-id: ${{ secrets.AZURE_CLIENT_ID }}
-                  tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-                  subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
               - uses: azure/mysql@v1
                 with:
                   server-name: MYSQL_SERVER_NAME
@@ -213,7 +214,7 @@ You'll use the connection string as a GitHub secret.
 
 ## Clean up resources
 
-When your Azure Database for MySQL flexible server database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
+When your Azure Database for MySQL Flexible Server database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
 
 ## Next step
 

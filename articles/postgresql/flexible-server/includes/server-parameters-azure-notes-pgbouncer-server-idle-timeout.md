@@ -1,6 +1,6 @@
 ---
 title: pgbouncer.enabled server_idle_timeout parameter
-description: pgbouncer.server_idle_timeout server parameter for Azure Database for PostgreSQL - Flexible Server.
+description: pgbouncer.server_idle_timeout server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include

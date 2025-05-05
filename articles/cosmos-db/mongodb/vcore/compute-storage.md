@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2024
 ms.topic: conceptual
-ms.date: 01/11/2025
+ms.date: 02/10/2025
 ---
 
 # Compute and storage configurations for Azure Cosmos DB for MongoDB vCore clusters
@@ -28,6 +28,8 @@ selected number of vCores.
 
 | Cluster tier | vCores        | One shard, GiB RAM |
 |--------------|-------------- |--------------------|
+| M10          | 1 (burstable) | 2                  |
+| M20          | 2 (burstable) | 4                  |
 | M25          | 2 (burstable) | 8                  |
 | M30          | 2             | 8                  |
 | M40          | 4             | 16                 |

@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 04/08/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -19,7 +19,7 @@ appliesto:
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for .NET. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for .NET.
+In this quickstart, you deploy a basic Azure Cosmos DB for NoSQL application using the Azure SDK for .NET. Azure Cosmos DB for NoSQL is a schemaless data store allowing applications to store unstructured data in the cloud. Query data in your containers and perform common operations on individual items using the Azure SDK for .NET.
 
 [API reference documentation](/dotnet/api/microsoft.azure.cosmos) | [Library source code](https://github.com/Azure/azure-cosmos-dotnet-v3) | [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -33,7 +33,7 @@ If you don't have an Azure account, create a [free account](https://azure.micros
 
 ## Initialize the project
 
-Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for NoSQL account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
 1. Open a terminal in an empty directory.
 
@@ -97,6 +97,16 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
     ```
 
 1. Open and review the **src/web/Cosmos.Samples.NoSQL.Quickstart.Web.csproj** file to validate that the `Microsoft.Azure.Cosmos` and `Azure.Identity` entries both exist.
+
+### Import libraries
+
+Import the `Azure.Identity` and `Microsoft.Azure.Cosmos` namespaces into your application code.
+
+```csharp
+using Azure.Identity;
+
+using Microsoft.Azure.Cosmos;
+```
 
 ## Object model
 
@@ -224,6 +234,17 @@ while (feed.HasMoreResults)
 }
 ```
 
+### Explore your data
+
+Use the Visual Studio Code extension for Azure Cosmos DB to explore your NoSQL data. You can perform core database operations including, but not limited to:
+
+- Performing queries using a scrapbook or the query editor
+- Modifying, updating, creating, and deleting items
+- Importing bulk data from other sources
+- Managing databases and containers
+
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](../visual-studio-code-extension.md?pivots=api-nosql).
+
 ## Clean up resources
 
 When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
@@ -238,3 +259,4 @@ azd down
 - [Python Quickstart](quickstart-python.md)
 - [Java Quickstart](quickstart-java.md)
 - [Go Quickstart](quickstart-go.md)
+- [Rust Quickstart](quickstart-go.md)

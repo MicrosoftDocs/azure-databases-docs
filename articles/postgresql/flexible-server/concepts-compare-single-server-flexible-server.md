@@ -1,6 +1,6 @@
 ---
 title: Compare deployment options
-description: Detailed comparison of features and capabilities between Azure Database for PostgreSQL - Single Server and Azure Database for PostgreSQL - Flexible Server.
+description: Detailed comparison of features and capabilities between Azure Database for PostgreSQL - Single Server and Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -10,19 +10,21 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Comparison chart: Azure Database for PostgreSQL - Flexible Server vs. Single Server
+# Comparison chart: Azure Database for PostgreSQL flexible server vs. Single Server
 
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]## Overview
+[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 
-Azure Database for PostgreSQL flexible server is the next generation managed PostgreSQL service in Azure. It provides maximum flexibility over your database, built-in cost-optimizations, and offers several improvements over Azure Database for PostgreSQL single server.
+## Overview
+
+Azure Database for PostgreSQL Flexible Server is the next generation managed PostgreSQL service in Azure. It provides maximum flexibility over your database, built-in cost-optimizations, and offers several improvements over Azure Database for PostgreSQL single server.
 
 >[!NOTE]
-> For all your new deployments, we recommend using Azure Database for PostgreSQL flexible server. However, you should consider your own requirements against the comparison table below.
+> For all your new deployments, we recommend using Azure Database for PostgreSQL Flexible Server. However, you should consider your own requirements against the comparison table below.
 
 ## Comparison table
-The following table provides a list of high-level features and capabilities comparisons between Azure Database for PostgreSQL single server and Azure Database for PostgreSQL flexible server. 
+The following table provides a list of high-level features and capabilities comparisons between Azure Database for PostgreSQL single server and Azure Database for PostgreSQL Flexible Server. 
 
-| **Feature / Capability** | **Azure Database for PostgreSQL single server** | **Azure Database for PostgreSQL flexible server** |
+| **Feature / Capability** | **Azure Database for PostgreSQL single server** | **Azure Database for PostgreSQL Flexible Server** |
 | ---- | ---- | ---- |
 | **General**  | | |
 | General availability | GA since 2018 | GA since 2021|
@@ -128,7 +130,7 @@ The following table provides a list of high-level features and capabilities comp
 
 ## Related content
 
-- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
-- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Compute options in Azure Database for PostgreSQL flexible server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL flexible server](concepts-storage.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server](concepts-supported-versions.md).
+- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).

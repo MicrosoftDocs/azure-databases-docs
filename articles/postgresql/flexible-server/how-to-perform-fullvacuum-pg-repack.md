@@ -4,13 +4,13 @@ description: Perform full vacuum using pg_Repack extension.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
-ms.date: 12/11/2024
+ms.date: 04/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Full vacuum using pg_repack in Azure Database for PostgreSQL - Flexible Server
+# Full vacuum using pg_repack in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -49,13 +49,13 @@ During these steps, `pg_repack` only holds an exclusive access lock for a short 
 
 ### Prerequisites
 
-1. Configure the `pg_repack` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [creating](../extensions/how-to-allow-extensions.md#create-extensions) the extension.
+1. Configure the `pg_repack` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [creating](../extensions/how-to-create-extensions.md) the extension.
 
 ### Build pg_repack client application
 
 The use of this extension requires a client application which you can build and install on an instance of Ubuntu.
 
-To install version 1.4.7 of `pg_repack`, run the following bash script on an Ubuntu machine.
+To install version 1.5.1 of `pg_repack`, run the following bash script on an Ubuntu machine.
 
 ```bash
 # Create the file repository configuration
@@ -66,12 +66,12 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 sudo apt-get update
 # Install required packages to build the code
 sudo apt-get install -y postgresql-server-dev-14 unzip make gcc libssl-dev liblz4-dev zlib1g-dev libreadline-dev libzstd-dev
-# Download compressed version of build tree for version 1.4.7 of pg_repack
-wget 'https://api.pgxn.org/dist/pg_repack/1.4.7/pg_repack-1.4.7.zip'
+# Download compressed version of build tree for version 1.5.1 of pg_repack
+wget 'https://api.pgxn.org/dist/pg_repack/1.5.1/pg_repack-1.5.1.zip'
 # Uncompress build tree
-unzip pg_repack-1.4.7.zip
+unzip pg_repack-1.5.1.zip
 # Set current directory to where build tree was uncompressed
-cd pg_repack-1.4.7
+cd pg_repack-1.5.1
 # Build code
 sudo make
 # Copy resulting binaries to /usr/local/bin
@@ -134,4 +134,4 @@ On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/maste
 
 ## Related content
 
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).

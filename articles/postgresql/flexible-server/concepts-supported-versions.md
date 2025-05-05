@@ -1,6 +1,6 @@
 ---
 title: Supported versions of PostgreSQL
-description: Describes the supported major and minor versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server.
+description: Describes the supported major and minor versions of PostgreSQL in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -12,11 +12,11 @@ ms.custom:
   - ignite-2023
 ---
 
-# Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server
+# Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Azure Database for PostgreSQL - Flexible Server currently supports the following major versions.
+Azure Database for PostgreSQL flexible server currently supports the following major versions.
 
 ## PostgreSQL version 17 (preview)
 
@@ -68,4 +68,4 @@ When we identify a defect with PostgreSQL engine, we take immediate action to mi
 
 ## Related content
 
-- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).
+- [Allow extensions](../extensions/how-to-allow-extensions.md).

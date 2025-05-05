@@ -97,7 +97,7 @@ Dynamic scaling is enabled by default for all Azure Cosmos DB accounts created a
     :::image type="content" source="media/autoscale-per-partition-region/enable-feature.png" lightbox="media/autoscale-per-partition-region/enable-feature.png" alt-text="Screenshot of the 'Dynamic Scaling (Per Region and Per Partition Autoscale)' feature in the Azure portal.":::
 
     > [!IMPORTANT]
-    > The feature is enabled at the account level, so all autoscale containers and shared throughput databases within the account will automatically have this capability applied. Enabling this feature does not affect resources in the account that are using manual throughput. Manual resources will need to be changed to autoscale to take advantage of dynamic scaling. Enabling this feature has zero downtime or performance impact. This feature is not applicable for serverless accounts. 
+    > The feature is enabled at the account level, so all autoscale containers and autoscale shared throughput databases within the account will automatically have this capability applied. Enabling this feature does not affect resources in the account that are using manual throughput. Manual resources will need to be changed to autoscale to take advantage of dynamic scaling. Enabling this feature has zero downtime or performance impact. This feature is not applicable for serverless accounts. This feature is supported on all clouds.
 
 ## Monitoring Metrics
 
@@ -108,6 +108,9 @@ You can use the following metrics to monitor autoscale and dynamic scaling:
 | Provisioned Throughput | Shows the aggregated highest RU/s scaled to across the hour, and represents the total RU/s scaled to for the hour. | You can use the `Provisioned Throughput` metric to see the RU/s you're billed for in each hour. With autoscale, you're billed based on the most active partition for each hour and the same is applied to all partitions and regions. With dynamic autoscale, you're billed for the aggregated highest RU/s scaled to in each hour at each partition and region level.|
 | Normalized RU Consumption | This metric represents the ratio of consumed RU/s to provisioned RU/s at each partition and region level. |Use this metric to determine if the autoscale maximum throughput is under or over-provisioned. <br/><br/> If the metric value is consistently 100% and your application is seeing rate-limiting (429 error code), then you might need more RU/s. In contrast, if this metric value is low and there's no rate-limiting, then there might be room to optimize and scale-down the RU/s. Learn how to [interpret and debug code 429 rate limiting errors](sql/troubleshoot-request-rate-too-large.md). <br/><br/> The `Normalized RU Consumption` metric reflects the RU/s consumed in secondary region due to write replication traffic from the primary, in addition to any read traffic on the secondary. |
 | Autoscaled RU | Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts. | Use this metric to see how partitions in each region scale independently based on their usage. <br/><br/> Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts) - `Autoscaled RU` to analyze how the new autoscaling is applied across partitions and regions. Filter to your desired database account and container, then filter or split by the Physical PartitionID metric. This metric shows all partitions across their various regions. |
+
+> [!IMPORTANT]
+>It is recommended to use Azure Cosmos DB's native dynamic scaling capability to manage your capacity. However, if needed, the [Normalized RU Consumption metric](monitor-normalized-request-units.md) in Azure Monitor can be used to make programmatic scaling decisions. Other approaches, like using the ReadThroughputAsync() call in the Azure Cosmos DB SDKs to get the ProvisionedThroughput, or using ProvisionedThroughput in Azure Monitor are not recommended and will lead to inaccurate results. These metrics represent billed throughput with a delay and shouldn't be used for scaling decisions.
 
 ## Comparison – containers configured with manual vs autoscale throughput
 For more detail, see this [documentation](how-to-choose-offer.md) on how to choose between standard (manual) and autoscale throughput.  
@@ -122,7 +125,7 @@ For more detail, see this [documentation](how-to-choose-offer.md) on how to choo
 
 ## Migrate standard provisioned throughput to autoscale
 
-Users that want to migrate a large number of resources from standard provisioned throughput to autoscale can use an Azure CLI script to migrate every throughput resource in an Azure subscription to autoscale. For more information, see, [Convert to Autoscale](./scripts/cli/common/convert-to-autoscale.md).
+Users that want to migrate a large number of resources from standard provisioned throughput to autoscale can use an Azure CLI script to migrate every throughput resource in an Azure subscription to autoscale.
 
 ## Next steps
 

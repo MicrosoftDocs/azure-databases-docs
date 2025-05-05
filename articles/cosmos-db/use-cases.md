@@ -17,7 +17,7 @@ This article provides an overview of several common use cases for Azure Cosmos D
 >
 > [!VIDEO https://aka.ms/docs.essential-use-cases]
 
-After reading this article, you'll be able to answer the following questions: 
+After reading this article, you'll be able to answer the following questions:
 
 * What are the common use cases for Azure Cosmos DB?
 * What are the benefits of using Azure Cosmos DB for retail applications?
@@ -28,13 +28,13 @@ After reading this article, you'll be able to answer the following questions:
 
 [Azure Cosmos DB](../cosmos-db/introduction.md) is the Azure solution for a fast NoSQL database, with open APIs for any scale. The service is designed to allow customers to elastically (and independently) scale throughput and storage across any number of geographical regions. Azure Cosmos DB is the first globally distributed database service in the market today to offer comprehensive [service level agreements](https://azure.microsoft.com/support/legal/sla/cosmos-db/) encompassing throughput, latency, availability, and consistency.
 
-Azure Cosmos DB is a global distributed, multi-model database that is used in a wide range of applications and use cases. It is a good choice for any [serverless](https://azure.com/serverless) application that needs low order-of-millisecond response times, and needs to scale rapidly and globally. It supports multiple data models (key-value, documents, graphs and columnar) and many Azure Cosmos DB APIs for data access including [API for MongoDB](mongodb/introduction.md), [API for NoSQL](introduction.md), [API for Gremlin](gremlin/introduction.md), and [API for Table](table/introduction.md) natively, and in an extensible manner. 
+Azure Cosmos DB is a global distributed, multi-model database that is used in a wide range of applications and use cases. It is a good choice for any [serverless](https://azure.com/serverless) application that needs low order-of-millisecond response times, and needs to scale rapidly and globally. It supports multiple data models (key-value, documents, graphs and columnar) and many Azure Cosmos DB APIs for data access including [API for MongoDB](mongodb/introduction.md), [API for NoSQL](introduction.md), [API for Gremlin](gremlin/introduction.md), and [API for Table](table/introduction.md) natively, and in an extensible manner.
 
 The following are some attributes of Azure Cosmos DB that make it well-suited for high-performance applications with global ambition.
 
 * Azure Cosmos DB natively partitions your data for high availability and scalability. Azure Cosmos DB offers 99.99% guarantees for availability, throughput, low latency, and consistency on all single-region accounts and all multi-region accounts with relaxed consistency, and 99.999% read availability on all multi-region database accounts.
 * Azure Cosmos DB has SSD backed storage with low-latency order-of-millisecond response times.
-* Azure Cosmos DB's support for consistency levels like eventual, consistent prefix, session, and bounded-staleness allows for full flexibility and low cost-to-performance ratio. No database service offers as much flexibility as Azure Cosmos DB in levels consistency. 
+* Azure Cosmos DB's support for consistency levels like eventual, consistent prefix, session, and bounded-staleness allows for full flexibility and low cost-to-performance ratio. No database service offers as much flexibility as Azure Cosmos DB in levels consistency.
 * Azure Cosmos DB has a flexible data-friendly pricing model that meters storage and throughput independently.
 * Azure Cosmos DB's reserved throughput model allows you to think in terms of number of reads/writes instead of CPU/memory/IOPs of the underlying hardware.
 * Azure Cosmos DB's design lets you scale to massive request volumes in the order of trillions of requests per day.
@@ -43,7 +43,7 @@ These attributes are beneficial in web, mobile, gaming, and IoT applications tha
 
 ## IoT and telematics
 
-IoT use cases commonly share some patterns in how they ingest, process, and store data.  First, these systems need to ingest bursts of data from device sensors of various locales. Next, these systems process and analyze streaming data to derive real-time insights. The data is then archived to cold storage for batch analytics. Microsoft Azure offers rich services that can be applied for IoT use cases including Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification Hub, Azure Machine Learning, Azure HDInsight, and Power BI. 
+IoT use cases commonly share some patterns in how they ingest, process, and store data.  First, these systems need to ingest bursts of data from device sensors of various locales. Next, these systems process and analyze streaming data to derive real-time insights. The data is then archived to cold storage for batch analytics. Microsoft Azure offers rich services that can be applied for IoT use cases including Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification Hub, Azure Machine Learning, Azure HDInsight, and Power BI.
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="Azure Cosmos DB IoT reference architecture" border="false":::
 
@@ -51,7 +51,7 @@ Bursts of data can be ingested by Azure Event Hubs as it offers high throughput 
 
 For a sample IoT solution using Azure Cosmos DB, Event Hubs and Apache Storm, see the [hdinsight-storm-examples repository on GitHub](https://github.com/hdinsight/hdinsight-storm-examples/).
 
-For more information on Azure offerings for IoT, see [Create the Internet of Your Things](https://www.microsoft.com/en-us/internet-of-things). 
+For more information on Azure offerings for IoT, see [Create the Internet of Your Things](https://www.microsoft.com/en-us/internet-of-things).
 
 ## Retail and marketing
 Azure Cosmos DB is used extensively in Microsoft's own e-commerce platforms, that run the Windows Store and XBox Live. It is also used in the retail industry for storing catalog data and for event sourcing in order processing pipelines.
@@ -82,7 +82,7 @@ Azure Cosmos DB is used by games like The Walking Dead: No Man's Land by [Next G
 :::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB gaming reference architecture" border="false":::
 
 ## Web and mobile applications
-Azure Cosmos DB is commonly used within web and mobile applications, and is well suited for modeling social interactions, integrating with third-party services, and for building rich personalized experiences. The Azure Cosmos DB SDKs can be used build rich iOS and Android applications using the popular [Xamarin framework](mobile-apps-with-xamarin.md).  
+Azure Cosmos DB is commonly used within web and mobile applications, and is well suited for modeling social interactions, integrating with third-party services, and for building rich personalized experiences. The Azure Cosmos DB SDKs can be used build rich iOS and Android applications using [.NET Multi-platform App UI (.NET MAUI)](/dotnet/maui).
 
 ### Social Applications
 A common use case for Azure Cosmos DB is to store and query user generated content (UGC) for web, mobile, and social media applications. Some examples of UGC are chat sessions, tweets, blog posts, ratings, and comments. Often, the UGC in social media applications is a blend of free form text, properties, tags, and relationships that are not bounded by rigid structure. Content such as chats, comments, and posts can be stored in Azure Cosmos DB without requiring transformations or complex object to relational mapping layers.  Data properties can be added or modified easily to match requirements as developers iterate over the application code, thus promoting rapid development.  
@@ -94,7 +94,7 @@ Many of the social applications run at global scale and can exhibit unpredictabl
 :::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Diagram that shows the Azure Cosmos DB web app reference architecture." border="false":::
 
 ### Personalization
-Nowadays, modern applications come with complex views and experiences. These are typically dynamic, catering to user preferences or moods and branding needs. Hence, applications need to be able to retrieve personalized settings effectively to render UI elements and experiences quickly. 
+Nowadays, modern applications come with complex views and experiences. These are typically dynamic, catering to user preferences or moods and branding needs. Hence, applications need to be able to retrieve personalized settings effectively to render UI elements and experiences quickly.
 
 JSON, a format supported by Azure Cosmos DB, is an effective format to represent UI layout data as it is not only lightweight, but also can be easily interpreted by JavaScript. Azure Cosmos DB offers tunable consistency levels that allow fast reads with low latency writes. Hence, storing UI layout data including personalized settings as JSON documents in Azure Cosmos DB is an effective means to get this data across the wire.
 

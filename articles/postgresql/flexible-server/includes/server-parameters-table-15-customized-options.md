@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/26/2025
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -229,6 +229,125 @@ ms.custom: automatically generated
 
 
 
+### azure_cdc.change_batch_buffer_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum buffer size (in MB) for change batch. Per table, up to this much data is buffered before written to local disk. |
+| Data type | integer |
+| Default value | `16` |
+| Allowed values | `1-100` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.change_batch_export_timeout
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum idle time (in seconds) between change batch messages. When exceeded, we mark the current batch as complete. |
+| Data type | integer |
+| Default value | `30` |
+| Allowed values | `10-60` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.max_fabric_mirrors
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of parallel fabric mirrors that can be run at the same time. |
+| Data type | integer |
+| Default value | `3` |
+| Allowed values | `1-6` |
+| Parameter type | static |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.max_snapshot_workers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of snapshot workers. |
+| Data type | integer |
+| Default value | `3` |
+| Allowed values | `0-100` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.parquet_compression
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Sets the compression algorithm to use for parquet files |
+| Data type | enumeration |
+| Default value | `zstd` |
+| Allowed values | `uncompressed,snappy,gzip,zstd` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.snapshot_buffer_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum size (in MB) of the initial snapshot buffer. Per table, up to this much data is buffered before sent to Fabric. Keep in mind that azure_cdc.snapshot_buffer_size*azure_cdc.max_snapshot_workers is the total memory buffer used during initial snapshot. |
+| Data type | integer |
+| Default value | `1000` |
+| Allowed values | `10-4000` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure_cdc.snapshot_export_timeout
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum time (in minutes) to export initial snapshot. On exceed, we restart. |
+| Data type | integer |
+| Default value | `180` |
+| Allowed values | `0-1440` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### azure.enable_temp_tablespaces_on_local_ssd
 
 | Attribute | Value |
@@ -254,9 +373,162 @@ ms.custom: automatically generated
 | Description | Specifies which extensions are allowed to be created in the server. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.fabric_mirror_enabled
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Specifies the flag indicating if mirroring is enabled on server. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_copy_with_binary
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will enable the use of the binary format for copying data during migration. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_copy_with_binary](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_analyze
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the analyze phase (`vacuumdb --analyze-only`) during the migration. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_analyze](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_extensions
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the migration of extensions. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_extensions](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_large_objects
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the migration of large objects such as BLOBs. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_large_objects](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_role_user
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will exclude user roles from the migration process. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_role_user](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_table_split_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set, this parameter specifies the size at which tables will be partitioned during migration. |
+| Data type | integer |
+| Default value | `20480` |
+| Allowed values | `1-204800` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_table_split_size](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.service_principal_id
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | A unique identifier for a service principal in Azure, used to grant permissions and access to resources within a tenant. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.service_principal_tenant_id
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | A unique identifier for the tenant in which a service principal is created, ensuring the necessary permissions and access to resources within that tenant. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

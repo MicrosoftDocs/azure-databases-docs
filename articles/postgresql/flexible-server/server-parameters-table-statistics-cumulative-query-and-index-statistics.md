@@ -1,13 +1,13 @@
 ---
 title: Statistics / Cumulative Query and Index Statistics server parameters
-description: Statistics / Cumulative Query and Index Statistics server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Statistics / Cumulative Query and Index Statistics server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: include
+ms.topic: concept-article
 ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
 ---

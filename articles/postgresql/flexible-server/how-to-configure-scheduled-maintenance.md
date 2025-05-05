@@ -1,23 +1,23 @@
 ---
-title: Configure scheduled maintenance
-description: Learn how to configure scheduled maintenance settings for an Azure Database for PostgreSQL flexible server.
+title: Schedule maintenance
+description: This article describes how to schedule maintenance of an Azure Database for PostgreSQL flexible server.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 01/08/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to configure the scheduled maintenance settings associated to my Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to schedule maintenance of an Azure Database for PostgreSQL flexible server.
 ---
 
-# Configure scheduled maintenance
+# Schedule maintenance
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
  
 You can specify scheduled maintenance options for each Azure Database for PostgreSQL flexible server in your Azure subscription. Options include the type of scheduled maintenance and notification settings for upcoming and finished maintenance events.
 
-## Specify scheduled maintenance options
+## Steps to schedule maintenance
 
 ### [Portal](#tab/portal-maintenance-settings)
 
@@ -60,19 +60,28 @@ You can configure the maintenance schedule settings via the [az postgres flexibl
 To configure system managed schedule, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --maintenance-window Disabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --maintenance-window Disabled
 ```
 
 To configure custom schedule, for a one hour window starting on Wednesdays at 2:29PM (UTC), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --maintenance-window Wed:14:29
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --maintenance-window Wed:14:29
 ```
 
 To configure custom schedule, for a one hour window starting on Saturdays at midnight (UTC), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --maintenance-window Wed
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --maintenance-window Wed
 ```
 
 ---
@@ -82,10 +91,9 @@ az postgres flexible-server update --resource-group <resource_group> --name <ser
 You can use Azure Service Health to [view notifications](/azure/service-health/service-notifications) about upcoming and performed scheduled maintenance on your Azure Database for PostgreSQL flexible server instance.
 
 You can also [set up](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
- 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [Scheduled maintenance in Azure Database for PostgreSQL - Flexible Server](concepts-maintenance.md).
-- [Azure Service Health](/azure/service-health/overview).
+- [Download PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
+- [Create alerts on metrics using portal](how-to-alert-on-metrics.md).
+- [Configure and access logs](how-to-configure-and-access-logs.md)

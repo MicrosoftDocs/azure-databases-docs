@@ -1,23 +1,23 @@
 ---
-title: Start a server
-description: This article describes how to start an Azure Database for PostgreSQL flexible server.
+title: Start compute of a server
+description: This article describes how to start the compute of an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 01/04/2025
+ms.date: 04/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to start an Azure Database for PostgreSQL flexible server, so that I can manage my server efficiently.
+#customer intent: As a user, I want to learn how to start the compute of an Azure Database for PostgreSQL flexible server.
 ---
 
-# Start a server
+# Start compute of a server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to start an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to start the compute of an Azure Database for PostgreSQL flexible server.
 
-## Start a stopped server
+## Steps to start compute of a server
 
 ### [Portal](#tab/portal-start-server)
 
@@ -49,19 +49,21 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-start-server/started-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful start operation." lightbox="./media/how-to-start-server/started-server-notification.png":::
 
-7. Also, the status of the server changes to **Available**.
+7. Also, the status of the server changes to **Ready**.
 
-    :::image type="content" source="./media/how-to-start-server/started-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Available." lightbox="./media/how-to-start-server/started-server-status.png":::
+    :::image type="content" source="./media/how-to-start-server/started-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Ready." lightbox="./media/how-to-start-server/started-server-status.png":::
 
 ### [CLI](#tab/cli-start-server)
 
-You can start a stopped server via the [az postgres flexible-server start](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-start) command.
+You can start the compute of a stopped server via the [az postgres flexible-server start](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-start) command.
 
 ```azurecli-interactive
-az postgres flexible-server start --resource-group <resource_group> --name <server>
+az postgres flexible-server start \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
-If you attempt to start a server which isn't in `Stopped` state, you receive an error like this:
+If you attempt to start the compute of a server which isn't in `Stopped` state, you receive an error like this:
 
 ```output
 (ServerIsNotStopped) Start Server can only be performed on Stopped servers. Seever Name = <server>, Current Server State = Updating
@@ -76,9 +78,6 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 
 ## Related content
 
-- [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
-- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
-- [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
-- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).
-- [Configure high availability in an Azure Database for PostgreSQL flexible server](how-to-configure-high-availability.md).
+- [Stop compute of a server](how-to-stop-server.md).
+- [Restart PostgreSQL engine](how-to-restart-server.md).
+- [Configure high availability](how-to-configure-high-availability.md).
