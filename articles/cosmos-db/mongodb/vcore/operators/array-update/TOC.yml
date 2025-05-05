@@ -2,8 +2,6 @@
   href: $addtoset.md
 - name: $each
   href: $each.md
-- name: $position
-  href: $position.md
 - name: $pop
   href: $pop.md
 - name: $ (update)
