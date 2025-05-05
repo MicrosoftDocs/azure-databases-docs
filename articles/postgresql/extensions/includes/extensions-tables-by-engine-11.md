@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/14/2025
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -35,7 +35,7 @@ ms.custom:
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
 | [intarray](https://www.postgresql.org/docs/current/intarray.html) provides functions, operators, and index support for 1-D arrays of integers. | 1.2 | |
 | [isn](https://www.postgresql.org/docs/current/isn.html) provides data types for international product numbering standards. | 1.2 | |
-| [lo](https://www.postgresql.org/docs/current/lo.html) provides support for managing Large Objects (also called LOs or BLOBs). This includes a data type lo and a trigger lo_manage.| 1.1 | |
+| [lo](https://www.postgresql.org/docs/current/lo.html) provides support for managing Large Objects (also called LOs or BLOBs). This includes a data type lo and a trigger lo_manage. | 1.1 | |
 | [login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time. | 1.4 | |
 | [ltree](https://www.postgresql.org/docs/current/ltree.html) is a data type for hierarchical tree-like structures. | 1.1 | |
 | [oracle_fdw](https://github.com/laurenz/oracle_fdw) is a foreign data wrapper for Oracle databases. | N/A | |
@@ -82,4 +82,4 @@ ms.custom:
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
 | [uuid-ossp](https://www.postgresql.org/docs/current/uuid-ossp.html) generates universally unique identifiers (UUIDs). | 1.1 | |
 | [vector](https://github.com/pgvector/pgvector) is a vector data type and `ivfflat` and `hnsw` access methods. | 0.5.1 | |
-| [wal2json](https://github.com/eulerto/wal2json) is an output plugin for logical decoding. It means that the plugin have access to tuples produced by INSERT and UPDATE. Also, UPDATE/DELETE old row versions can be accessed depending on the configured replica identity. | 2.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [wal2json](https://github.com/eulerto/wal2json) is an output plugin for logical decoding. It means that the plugin has access to tuples produced by INSERT and UPDATE. Also, UPDATE/DELETE old row versions can be accessed depending on the configured replica identity. | 2.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
