@@ -42,7 +42,7 @@ In this article, you learn how to create a script activity in Fabric Data Factor
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png" alt-text="Screenshot that shows where to select Scripty Activity" lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png":::
 
-1.  With the Script activity selected on the data pipeline canvas, in the **General tab**, give your script activity a name.
+1. With the Script activity selected on the data pipeline canvas, in the **General tab**, give your script activity a name.
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png" alt-text="Screenshot that shows box to provide a name to the script activity." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png":::
    
