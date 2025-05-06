@@ -72,7 +72,7 @@ These tools and resources help you follow along with this article and make the m
 
 ## Using read/write capabilities
 
-> [!NOTE]
+> [!NOTE]  
 > The GitHub Copilot Chat integration for PostgreSQL is a powerful tool that can make changes to your database. It is important to use this feature with caution, especially in staging and production environments. Always review the generated SQL code before executing it, and consider testing it in a safe environment first.
 
 1. Try a more advanced prompt.
@@ -130,12 +130,12 @@ Can you run some performance metrics on my database and tell me how it performs?
 
 My orders table has 10 million records, and queries on customer_id and order_date are slow. How can I optimize indexing, partitioning, and schema design for performance?
 ```
+
 ### App development
 
 Below are examples of prompts you can use to guide Copilot in addressing app development challenges.
 
 ```copilot-prompt
-
 Generate a FastAPI endpoint to fetch orders from the ecom.orders table with pagination.
 
 Generate an ETL pipeline script to clean and normalize the customer table data.
@@ -151,7 +151,6 @@ To ensure a smooth experience, clean up any temporary resources or configuration
 - Remove any test databases or tables created during the session.
 - Close any open connections to avoid unnecessary resource usage.
 
-
 ## Support and feedback
 
 For additional assistance or to report issues, use the built-in feedback tool in Visual Studio Code:
@@ -160,10 +159,14 @@ For additional assistance or to report issues, use the built-in feedback tool in
 
     :::image type="content" source="media/quickstart-vs-code-ghc/report-issue.png" alt-text="Screenshot of Visual Studio Code Help menu with the 'Report Issue' option highlighted for submitting feedback or problems." lightbox="media/quickstart-vs-code-ghc/report-issue.png":::
 
-- Or open the Command Palette with `Ctrl + Shift + P` and run:
+- Or open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Give Feedback`.
 
-    :::image type="content" source="./media/quickstart-use-vs-code-ghc/feedback-command-palette.png" alt-text="Screenshot of Visual Studio Code Command Palette with 'PGSQL: Give Feedback' command entered and highlighted." lightbox="./media/quickstart-use-vs-code-ghc/feedback-command-palette.png":::
+    :::image type="content" source="./media/quickstart-vs-code-ghc/feedback-command-palette.png" alt-text="Screenshot of Visual Studio Code Command Palette with 'PGSQL: Give Feedback' command entered and highlighted." lightbox="./media/quickstart-vs-code-ghc/feedback-command-palette.png":::
 
 ## Related content
 
-- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)`
+- [Azure Database for PostgreSQL documentation](overview.md)
+- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
+- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+- [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
+- [MSSQL extension for Visual Studio Code?](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code) 
