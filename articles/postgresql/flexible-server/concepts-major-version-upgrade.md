@@ -35,7 +35,7 @@ Here are some of the important considerations with in-place major version upgrad
 
 - During an in-place major version upgrade of a server which is enabled for high availability (HA), the service disables HA, performs the upgrade on the primary server, and then re-enables HA after the upgrade is complete.
 
-- Most extensions are automatically upgraded to later versions during an in-place major version upgrade, with [some exceptions](#limitations).
+- Most extensions are automatically upgraded to later versions during an in-place major version upgrade, with [some exceptions](#upgrade-considerations-and-limitations).
 
 - The process of an in-place major version upgrade for Azure Database for PostgreSQL flexible server automatically deploys the latest supported minor version.
 
