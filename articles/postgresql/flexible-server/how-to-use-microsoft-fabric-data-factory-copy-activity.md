@@ -47,7 +47,7 @@ The next section will have a step-by-step in how to manually create a copy activ
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png" alt-text="Screenshot that shows where to give a name to the pipeline at the general tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png":::
 
 
-1. At the **Source tab**, select or create a **Source dataset**
+1. At the **Source tab**, select or create a **Source dataset**. [Learn more about connecting to your data with the new modern get data experience for data pipelines](/fabric/data-factory/modern-get-data-experience-pipeline)
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-dataset.png" alt-text="Screenshot that shows where to select or create a source dataset at the source tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-dataset.png":::
 

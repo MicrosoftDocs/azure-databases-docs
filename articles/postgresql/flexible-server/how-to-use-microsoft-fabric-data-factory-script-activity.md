@@ -48,9 +48,9 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png" alt-text="Screenshot that shows box to provide a name to the script activity." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png":::
 
-1. Switch into the **Settings** tab and select your Azure Database for PostgreSQL linked service, or create a new one. Once added, to verify your connection is valid, select **Test connection**.
+1. Switch into the **Settings** tab and select your Azure Database for PostgreSQL connection, or create a new one using the **More** option. [Learn more about connecting to your data with the new modern get data experience for data pipelines](/fabric/data-factory/modern-get-data-experience-pipeline)
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-linked-service.png" alt-text="Screenshot that shows an example setting linked service." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-linked-service.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png" alt-text="Screenshot that shows an example setting for connection." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png":::
 
 1. Select either the **Query** or **NonQuery** option depending on your script.
 
@@ -68,30 +68,31 @@ In this article, you learn how to create a script activity in Azure Data Factory
    
    ```json
    {
-       "name": "Sample of select statement",
-       "type": "Script",
-       "dependsOn": [],
-       "policy": {
-           "timeout": "1.12:00:00",
-           "retry": 0,
-           "retryIntervalInSeconds": 30,
-           "secureOutput": false,
-           "secureInput": false
-       },
-       "userProperties": [],
-       "linkedServiceName": {
-           "referenceName": "AzurePostgreSQL",
-           "type": "LinkedServiceReference"
-       },
-       "typeProperties": {
-           "scripts": [
+      "name": "Sample of select statement",
+      "type": "Script",
+      "dependsOn": [],
+      "policy": {
+         "timeout": "0.12:00:00",
+         "retry": 0,
+         "retryIntervalInSeconds": 30,
+         "secureOutput": false,
+         "secureInput": false
+      },
+      "typeProperties": {
+         "scripts": [
                {
-                   "type": "Query",
-                   "text": "SELECT * FROM sample_table WHERE sample_int = 100; "
+                  "type": "Query",
+                  "text": {
+                     "value": "SELECT *  FROM sample_table WHERE sample_int =100",
+                     "type": "Expression"
+                  }
                }
-           ],
-           "scriptBlockExecutionTimeout": "02:00:00"
-       }
+         ],
+         "scriptBlockExecutionTimeout": "02:00:00"
+      },
+      "externalReferences": {
+         "connection": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
    }
    ```
 
@@ -105,30 +106,31 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
    ```json
    {
-       "name": "Sample of drop statements",
-       "type": "Script",
-       "dependsOn": [],
-       "policy": {
-           "timeout": "1.12:00:00",
-           "retry": 0,
-           "retryIntervalInSeconds": 30,
-           "secureOutput": false,
-           "secureInput": false
-       },
-       "userProperties": [],
-       "linkedServiceName": {
-           "referenceName": "AzurePostgreSQL1",
-           "type": "LinkedServiceReference"
-       },
-       "typeProperties": {
-           "scripts": [
+      "name": "Sample of drop statements",
+      "type": "Script",
+      "dependsOn": [],
+      "policy": {
+         "timeout": "0.12:00:00",
+         "retry": 0,
+         "retryIntervalInSeconds": 30,
+         "secureOutput": false,
+         "secureInput": false
+      },
+      "typeProperties": {
+         "scripts": [
                {
-                   "type": "NonQuery",
-                   "text": "DROP TABLE IF EXISTS sample_table; "
+                  "type": "NonQuery",
+                  "text": {
+                     "value": "DROP TABLE IF EXISTS sample_table",
+                     "type": "Expression"
+                  }
                }
-           ],
-           "scriptBlockExecutionTimeout": "02:00:00"
-       }
+         ],
+         "scriptBlockExecutionTimeout": "02:00:00"
+      },
+      "externalReferences": {
+         "connection": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
    }
    ``` 
 
@@ -150,34 +152,38 @@ Sample of a payload with two separate queries.
 
 ```json
 {
-      "name": "Sample of multiple select statements",
-      "type": "Script",
-      "dependsOn": [],
-      "policy": {
-         "timeout": "1.12:00:00",
-         "retry": 0,
-         "retryIntervalInSeconds": 30,
-         "secureOutput": false,
-         "secureInput": false
-      },
-      "userProperties": [],
-      "linkedServiceName": {
-         "referenceName": "AzurePostgreSQL1",
-         "type": "LinkedServiceReference"
-      },
-      "typeProperties": {
-         "scripts": [
+    "name": "Sample of multiple select statements",
+    "type": "Script",
+    "dependsOn": [],
+    "policy": {
+        "timeout": "0.12:00:00",
+        "retry": 0,
+        "retryIntervalInSeconds": 30,
+        "secureOutput": false,
+        "secureInput": false
+    },
+    "typeProperties": {
+        "scripts": [
             {
-                  "type": "Query",
-                  "text": "SELECT * FROM sample_table WHERE sample_int = 100; "
+                "type": "Query",
+                "text": {
+                    "value": "SELECT * FROM sample_table WHERE sample_int = 100;",
+                    "type": "Expression"
+                }
             },
             {
-                  "type": "Query",
-                  "text": "SELECT * FROM sample_table WHERE sample_int > 250; "
+                "type": "Query",
+                "text": {
+                    "value": "SELECT * FROM sample_table WHERE sample_int > 250;",
+                    "type": "Expression"
+                }
             }
-         ],
-         "scriptBlockExecutionTimeout": "02:00:00"
-      }
+        ],
+        "scriptBlockExecutionTimeout": "02:00:00"
+    },
+    "externalReferences": {
+        "connection": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
 }
 ```
 
@@ -199,66 +205,70 @@ The name set within the procedure for output is the name used within the **resul
 
 Sample result from the UI execution
 ```json
-
-"resultSetCount": 1,
-"recordsAffected": 0,
-"resultSets": [
-   {
-      "rowCount": 1,
-      "rows": [
-         {
-            "output1": 10,
-            "output2": "\"Hello World\""
-         }
-      ]
+{
+   "resultSetCount": 1,
+   "recordsAffected": 0,
+   "resultSets": [
+      {
+         "rowCount": 1,
+         "rows": [
+            {
+               "output1": 10,
+               "output2": "\"Hello World\""
+            }
+         ]
+      }
+   ],
+   "outputParameters": {
+      "output10": 10,
+      "output20": "\"Hello World\""
    }
-],
-"outputParameters": {
-   "output10": 10,
-   "output20": "\"Hello World\""
 }
-
 ```
 
 Payload sample for output parameter.
 
 ```json
-"scripts": [
-  {
-    "text": "CREATE OR REPLACE PROCEDURE swap_proc (input1 IN TEXT, input2 IN BIGINT, output1 OUT BIGINT, output2 OUT TEXT) LANGUAGE plpgsql AS $$ DECLARE BEGIN output2 := input1; output1 := input2; END $$",
-    "type": "NonQuery"
-  },
-  {
-    "text": "CALL swap_proc(@input1, @input2, null, null)",
-    "type": "Query",
-    "parameters": [
-      {
-        "name": "input1",
-        "type": "String",
-        "value": "Hello world",
-        "direction": "Input",
-        "size": 100
-      },
-      {
-        "name": "input2",
-        "type": "INT32",
-        "value": 1234,
-        "direction": "Input"
-      },
-      {
-        "name": "output1",
-        "type": "INT32",
-        "direction": "Output"
-      },
-      {
-        "name": "output2",
-        "type": "String",
-        "direction": "Output",
-        "size": 100
-      }
-    ]
-  }
-]
+{
+    "scripts": [
+        {
+            "type": "NonQuery",
+            "text": "CREATE OR REPLACE PROCEDURE swap_proc (input1 IN TEXT, input2 IN BIGINT, output1 OUT BIGINT, output2 OUT TEXT) LANGUAGE plpgsql AS $$ DECLARE BEGIN output2 := input1; output1 := input2; END $$ "
+        },
+        {
+            "parameters": [
+                {
+                    "name": "input1",
+                    "type": "String",
+                    "value": "Hello world",
+                    "direction": "Input"
+                },
+                {
+                    "name": "input2",
+                    "type": "Int32",
+                    "value": "1234",
+                    "direction": "Input"
+                },
+                {
+                    "name": "output1",
+                    "type": "Int32",
+                    "value": "",
+                    "direction": "Output"
+                },
+                {
+                    "name": "output2",
+                    "type": "String",
+                    "value": "",
+                    "direction": "Output",
+                    "size": 100
+                }
+            ],
+            "type": "Query",
+            "text": "CALL swap_proc(@input1, @input2, null, null)"
+        }
+    ],
+    "scriptBlockExecutionTimeout": "02:00:00"
+}
 ```
 
 #### Positional Parameters
@@ -267,88 +277,104 @@ Payload sample for output parameter.
 >  Multi-query statements using positional parameters aren't supported. You need to ensure that any queries with positional parameters are in separate script blocks within the same or different script activity.
 
 To use positional parameters, use a placeholder of `$<positional number>` in your query. Under parameters the `name` field must be left blank in the UI and specified as `null` in the payload.
-```json
-"scripts": [
-   {
-      "text": "SELECT * FROM customers WHERE first_name = $1 AND age = $2;",
-      "type": "Query",
-      "parameters": [
-        {
-          "name": null,
-          "type": "String",
-          "value": "John",
-          "direction": "Input",
-          "size": 256
-        },
-        {
-          "name": null,
-          "type": "INT32",
-          "value": 52,
-          "direction": "Input"
-        }
-      ]
-   }
-]
-```
 
 **Ex. Valid positional parameter example**
 
 :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/multiple-scripts-positional-parameters.png" alt-text="Screenshot that shows a valid positional parameter example." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/multiple-scripts-positional-parameters.png":::
 
 ```json
-"scripts": [
-   {
-      "text": "SELECT * FROM customers WHERE first_name = $1;",
-      "type": "Query",
-      "parameters": [
-        {
-          "name": null,
-          "type": "String",
-          "value": "John",
-          "direction": "Input",
-          "size": 256
-        }
-      ]
-   },
-   {
-      "text": "SELECT * FROM customers WHERE age = $2;",
-      "type": "Query",
-      "parameters": [
-        {
-          "name": null,
-          "type": "INT32",
-          "value": 52,
-          "direction": "Input"
-        }
-      ]
-   }
-]
+{
+    "name": "Sample for valid positional parameter",
+    "type": "Script",
+    "dependsOn": [],
+    "policy": {
+        "timeout": "0.12:00:00",
+        "retry": 0,
+        "retryIntervalInSeconds": 30,
+        "secureOutput": false,
+        "secureInput": false
+    },
+    "typeProperties": {
+        "scripts": [
+            {
+                "parameters": [
+                    {
+                        "type": "String",
+                        "value": "John",
+                        "direction": "Input"
+                    }
+                ],
+                "type": "Query",
+                "text": {
+                    "value": "SELECT * FROM customers WHERE first_name = $1",
+                    "type": "Expression"
+                }
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "Int32",
+                        "value": "52",
+                        "direction": "Input"
+                    }
+                ],
+                "type": "Query",
+                "text": {
+                    "value": "SELECT * FROM customers WHERE age = $2",
+                    "type": "Expression"
+                }
+            }
+        ],
+        "scriptBlockExecutionTimeout": "02:00:00"
+    },
+    "externalReferences": {
+        "connection": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+}
 ```
 
 **Ex. Invalid positional parameter example**
 
 ```json
-"scripts": [
-   {
-      "text": "SELECT * FROM customers WHERE first_name = $1; SELECT * FROM customers WHERE age = $2;",
-      "type": "Query",
-      "parameters": [
-        {
-          "name": null,
-          "type": "String",
-          "value": "John",
-          "direction": "Input",
-          "size": 256
-        },
-        {
-          "name": null,
-          "type": "INT32",
-          "value": 52,
-          "direction": "Input"
-        }
-      ]
-   }
-]
+{
+    "name": "Sample for invalid positional parameter",
+    "type": "Script",
+    "dependsOn": [],
+    "policy": {
+        "timeout": "0.12:00:00",
+        "retry": 0,
+        "retryIntervalInSeconds": 30,
+        "secureOutput": false,
+        "secureInput": false
+    },
+    "typeProperties": {
+        "scripts": [
+            {
+                "parameters": [
+                    {
+                        "type": "String",
+                        "value": "John",
+                        "direction": "Input"
+                    },
+                    {
+                        "type": "Int32",
+                        "value": "52",
+                        "direction": "Input"
+                    }
+                ],
+                "type": "Query",
+                "text": {
+                    "value": "SELECT * FROM customers WHERE first_name = $1; SELECT * FROM customers WHERE age = $2;",
+                    "type": "Expression"
+                }
+            }
+        ],
+        "scriptBlockExecutionTimeout": "02:00:00"
+    },
+    "externalReferences": {
+        "connection": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+}
 ```
 
 ### Advanced Settings
@@ -360,23 +386,21 @@ You can configure a time-out in minutes for each individual script block run. If
 :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-block-timeout.png" alt-text="Screenshot that shows an advanced setting in script activity to set script block execution time-out." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-block-timeout.png":::
 
 ```JSON
-   "typeProperties": {
-      "scripts": [
-         {
-               "type": "Query",
-               "text": "SELECT pg_sleep(40);"
-         },
-         {
-               "type": "Query",
-               "text": "SELECT pg_sleep(40);"
-         },
-         {
-               "type": "Query",
-               "text": "SELECT pg_sleep(40);"
-         }
-      ],
-      "scriptBlockExecutionTimeout": "00:01:00"
-   }
+    "typeProperties": {
+        "scripts": [
+            {
+                "type": "Query",
+                "text": {
+                    "value": "SELECT pg_sleep(75);",
+                    "type": "Expression"
+                }
+            }
+        ],
+        "scriptBlockExecutionTimeout": "00:01:00"
+    },
+    "externalReferences": {
+        "connection": "9b351899-a92f-4e00-bc48-200a2c287f4c"
+    }
 ```
 
 #### Logging
