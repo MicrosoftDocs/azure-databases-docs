@@ -33,9 +33,7 @@ Once connected to a PostgreSQL database, the extension enables Copilot to access
 
 2. Click the **Extensions** icon in VS Code, search for **GitHub Copilot**, and click **Install**.
 
-    !(./media/quickstart-use-vs-code-ghc/install-ghc.png)
-    
-    <!--:::image type="content" source="./media/quickstart-use-vs-code-ghc/install-ghc.png" alt-text="Screenshot of Visual Studio Code Extensions Marketplace showing GitHub Copilot and GitHub Copilot Chat with the Install buttons highlighted. The search bar contains the text 'GitHub Copilot'." lightbox="./media/quickstart-use-vs-code-ghc/install-ghc.png":::-->
+    :::image type="content" source="./media/quickstart-use-vs-code-ghc/install-ghc.png" alt-text="Screenshot of Visual Studio Code Extensions Marketplace showing GitHub Copilot and GitHub Copilot Chat with the Install buttons highlighted. The search bar contains the text 'GitHub Copilot'." lightbox="./media/quickstart-use-vs-code-ghc/install-ghc.png":::
 
 3. The GitHub Copilot Chat extension is automatically installed along with GitHub Copilot.
 
@@ -47,9 +45,7 @@ Once connected to a PostgreSQL database, the extension enables Copilot to access
 
 2. In VS Code, click the **Account** icon and choose **Sign in with GitHub to use GitHub Copilot**.
 
-    !(./media/quickstart-use-vs-code-ghc/sign-in-ghc.png)
-    
-    <!--:::image type="content" source="./media/quickstart-use-vs-code-ghc/sign-in-ghc.png" alt-text="Screenshot of Visual Studio Code with the Account icon selected and the option 'Sign in with GitHub to use GitHub Copilot' highlighted in the account menu." lightbox="./media/quickstart-use-vs-code-ghc/sign-in-ghc.png":::-->
+    :::image type="content" source="./media/quickstart-use-vs-code-ghc/sign-in-ghc.png" alt-text="Screenshot of Visual Studio Code with the Account icon selected and the option 'Sign in with GitHub to use GitHub Copilot' highlighted in the account menu." lightbox="./media/quickstart-use-vs-code-ghc/sign-in-ghc.png":::
 
 ## Step 3: Getting Started with GitHub Copilot for PostgreSQL
 
@@ -61,15 +57,11 @@ Once connected to a PostgreSQL database, the extension enables Copilot to access
 
     - `@pgsql tell me about the tables in the HR schema`
 
-        !(./media/quickstart-use-vs-code-ghc/pgsql-tell-me-about.png)
-        
-        <!--:::image type="content" source="./media/quickstart-use-vs-code-ghc/pgsql-tell-me-about.png" alt-text="Screenshot of GitHub Copilot Chat in VS Code with the user prompt '@pgsql tell me about the tables in the HR schema' typed in the chat input." lightbox="./media/quickstart-use-vs-code-ghc/pgsql-tell-me-about.png":::-->
+        :::image type="content" source="./media/quickstart-use-vs-code-ghc/pgsql-tell-me-about.png" alt-text="Screenshot of GitHub Copilot Chat in VS Code with the user prompt '@pgsql tell me about the tables in the HR schema' typed in the chat input." lightbox="./media/quickstart-use-vs-code-ghc/pgsql-tell-me-about.png":::
 
 4. Copilot will respond with a detailed description of your schema's tables.
 
-    !(./media/quickstart-use-vs-code-ghc/pgsql-hr-schema-response.png)
-        
-    <!--:::image type="content" source="./media/quickstart-use-vs-code-ghc/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database." lightbox="./media/quickstart-use-vs-code-ghc/pgsql-hr-schema-response.png":::-->
+    :::image type="content" source="./media/quickstart-use-vs-code-ghc/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database." lightbox="./media/quickstart-use-vs-code-ghc/pgsql-hr-schema-response.png":::
 
 ## Step 4: Using Read/Write Capabilities
 
@@ -81,9 +73,7 @@ Once connected to a PostgreSQL database, the extension enables Copilot to access
 
     - Copilot may respond with SQL suggestions and ask for permission to make changes.
 
-        !(./media/quickstart-use-vs-code-ghc/hr-schema-jsonb-confirm.png)
-        
-        <!--:::image type="content" source="./media/quickstart-use-vs-code-ghc/hr-schema-jsonb-confirm.png" alt-text="Screenshot of Copilot Chat displaying a generated SQL script to convert the employees table to JSONB, with detailed steps and optional index creation." lightbox="./media/quickstart-use-vs-code-ghc/hr-schema-jsonb-confirm.png":::-->
+        :::image type="content" source="./media/quickstart-use-vs-code-ghc/hr-schema-jsonb-confirm.png" alt-text="Screenshot of Copilot Chat displaying a generated SQL script to convert the employees table to JSONB, with detailed steps and optional index creation." lightbox="./media/quickstart-use-vs-code-ghc/hr-schema-jsonb-confirm.png":::
 
 2. To approve execution:
 
@@ -93,17 +83,13 @@ Once connected to a PostgreSQL database, the extension enables Copilot to access
 
     - `@pgsql Yes I confirm`
 
-        !(./media/quickstart-use-vs-code-ghc/hr-schema-after-jsonb.png)
-        
-        <!--:::image type="content" source="./media/quickstart-use-vs-code-ghc/hr-schema-after-jsonb.png" alt-text="Screenshot of GitHub Copilot Chat in VS Code showing confirmation and results of converting the hr.employees table to use a JSONB column." lightbox="./media/quickstart-use-vs-code-ghc/hr-schema-after-jsonb.png":::-->
+        :::image type="content" source="./media/quickstart-use-vs-code-ghc/hr-schema-after-jsonb.png" alt-text="Screenshot of GitHub Copilot Chat in VS Code showing confirmation and results of converting the hr.employees table to use a JSONB column." lightbox="./media/quickstart-use-vs-code-ghc/hr-schema-after-jsonb.png":::
 
 ## Step 5: Using Context Menu Options
 
 - In addition to right-clicking on a database, you can also select SQL code in the editor and right-click to access GitHub Copilot context menu options like **Explain Query**, **Rewrite Query**, or **Analyze Query Performance**.
 
-    !(./media/quickstart-use-vs-code-ghc/ghc-context-menus.png)
-        
-    <!--:::image type="content" source="./media/quickstart-use-vs-code-ghc/ghc-context-menus.png" alt-text="Screenshot of a PostgreSQL function opened in VS Code with a context menu expanded, showing GitHub Copilot options such as 'Explain Query' and 'Analyze Query Performance'." lightbox="./media/quickstart-use-vs-code-ghc/ghc-context-menus.png":::-->
+    :::image type="content" source="./media/quickstart-use-vs-code-ghc/ghc-context-menus.png" alt-text="Screenshot of a PostgreSQL function opened in VS Code with a context menu expanded, showing GitHub Copilot options such as 'Explain Query' and 'Analyze Query Performance'." lightbox="./media/quickstart-use-vs-code-ghc/ghc-context-menus.png":::
 
 ## Additional Ideas and Prompt Recipes
 
@@ -133,12 +119,8 @@ For bugs, feature requests, and issues please use the built-in feedback tool in 
 
 - In Visual Studio Code, go to **Help > Report Issue**
 
-    !(./media/quickstart-use-vs-code-ghc/report-issue.png)
-        
-    <!--:::image type="content" source="./media/quickstart-use-vs-code-ghc/report-issue.png" alt-text="Screenshot of VS Code Help menu with the 'Report Issue' option highlighted for submitting feedback or problems." lightbox="./media/quickstart-use-vs-code-ghc/report-issue.png":::-->
+    :::image type="content" source="./media/quickstart-use-vs-code-ghc/report-issue.png" alt-text="Screenshot of VS Code Help menu with the 'Report Issue' option highlighted for submitting feedback or problems." lightbox="./media/quickstart-use-vs-code-ghc/report-issue.png":::
 
 - Or open the Command Palette with `Ctrl + Shift + P` and run:
 
-    !(./media/quickstart-use-vs-code-ghc/feedback-command-palette.png)
-        
-    <!--:::image type="content" source="./media/quickstart-use-vs-code-ghc/feedback-command-palette.png" alt-text="Screenshot of VS Code Command Palette with 'PGSQL: Give Feedback' command entered and highlighted." lightbox="./media/quickstart-use-vs-code-ghc/feedback-command-palette.png":::-->
+    :::image type="content" source="./media/quickstart-use-vs-code-ghc/feedback-command-palette.png" alt-text="Screenshot of VS Code Command Palette with 'PGSQL: Give Feedback' command entered and highlighted." lightbox="./media/quickstart-use-vs-code-ghc/feedback-command-palette.png":::
