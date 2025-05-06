@@ -10,13 +10,13 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Using script activity in Data Factory and Synapse Analytics
+# Using script activity in Fabric Data Factory
 
 ## Overview
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-In this article, you learn how to create a script activity in Azure Data Factory to run custom PostgreSQL queries. Script activity allows users to execute various types of PostgreSQL commands, such as, Data Manipulation Language (DML) and Data Definition Language (DDL) directly in their pipelines. 
+In this article, you learn how to create a script activity in Fabric Data Factory to run custom PostgreSQL queries. Script activity allows users to execute various types of PostgreSQL commands, such as, Data Manipulation Language (DML) and Data Definition Language (DDL) directly in their pipelines. 
 
 **DML statements:** `INSERT`, `UPDATE`, `DELETE`, and `SELECT`
 
@@ -25,9 +25,7 @@ In this article, you learn how to create a script activity in Azure Data Factory
 ### Prerequisites
 
 - An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server)
-- (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
-- An Azure Data Factory Linked Service [connected to Azure Database for PostgreSQL](how-to-connect-to-data-factory-private-endpoint.md)
-
+- A Microsoft Fabric Data Factory [Data pipeline](/fabric/data-factory/pipeline-landing-page)
 
 ## Creating a script activity
 
@@ -47,7 +45,7 @@ In this article, you learn how to create a script activity in Azure Data Factory
 1.  With the Script activity selected on the data pipeline canvas, in the **General tab**, give your script activity a name.
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png" alt-text="Screenshot that shows box to provide a name to the script activity." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png":::
-
+   
 1. Switch into the **Settings** tab and select your Azure Database for PostgreSQL connection, or create a new one using the **More** option. [Learn more about connecting to your data with the new modern get data experience for data pipelines](/fabric/data-factory/modern-get-data-experience-pipeline)
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png" alt-text="Screenshot that shows an example setting for connection." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png":::
@@ -294,7 +292,7 @@ To use positional parameters, use a placeholder of `$<positional number>` in you
         "secureOutput": false,
         "secureInput": false
     },
-    "typeProperties": {
+   "typeProperties": {
         "scripts": [
             {
                 "parameters": [
@@ -302,16 +300,7 @@ To use positional parameters, use a placeholder of `$<positional number>` in you
                         "type": "String",
                         "value": "John",
                         "direction": "Input"
-                    }
-                ],
-                "type": "Query",
-                "text": {
-                    "value": "SELECT * FROM customers WHERE first_name = $1",
-                    "type": "Expression"
-                }
-            },
-            {
-                "parameters": [
+                    },
                     {
                         "type": "Int32",
                         "value": "52",
@@ -320,7 +309,7 @@ To use positional parameters, use a placeholder of `$<positional number>` in you
                 ],
                 "type": "Query",
                 "text": {
-                    "value": "SELECT * FROM customers WHERE age = $2",
+                    "value": "SELECT * FROM customers WHERE first_name = $1 and age = $2;",
                     "type": "Expression"
                 }
             }
