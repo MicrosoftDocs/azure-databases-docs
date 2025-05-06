@@ -12,9 +12,9 @@ ms.topic: conceptual
 
 # Why use Azure Confidential Computing preview?
 
-[Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to process and collaborate on sensitive data—such as personally identifiable information (PII) or protected health information (PHI)—with built-in protection against unauthorized access. By securing data in use through Trusted Execution Environments (TEEs), ACC allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
+[Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to process and collaborate on sensitive data—such as personal data or protected health information (PHI)—with built-in protection against unauthorized access. By securing data in use through Trusted Execution Environments (TEEs), ACC allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
 
-Industries with strict regulatory requirements—such as finance, healthcare, and the public sector—can migrate sensitive workloads from on-premises environments to the cloud with minimal code changes and without sacrificing performance by using Azure Confidential VMs.
+Industries with strict regulatory requirements—such as finance, healthcare, and the public sector—can migrate sensitive workloads from on-premises environments to the cloud with minimal code changes and without sacrificing performance by using Azure Confidential Virtual Machines (VMs).
 
 ## Architecture overview
 
@@ -37,8 +37,8 @@ Remote attestation is the process of validating that a TEE is secure and running
 1. The attestation service (verifier) validates:
 
    - The integrity of the certificate.
-   - That the issuer is trusted.
-   - That the TEE is not on a deny list.
+   - The issuer is trusted.
+   - The TEE isn't on a blocklist.
 1. If validation succeeds, the verifier issues an attestation token.
 1. The TEE presents the token to the secrets manager.
 1. The secrets manager validates the token against policy before releasing any secrets.
@@ -56,16 +56,16 @@ Confidential computing provides:
 
 - **Hardware root of trust** – Anchors TEE security in the processor's trusted hardware.
 - **Remote attestation** – Verifies workload integrity before allowing access to data.
-- **Trusted launch** – Ensures that VMs start with verified software and configurations.
+- **Trusted launch** – Ensures that Virtual Machines (VMs) starts with verified software and configurations.
 - **Memory isolation and encryption** – Secures in-memory data from unauthorized access.
-- **Secure key management** – Releases keys only to verified, attested environments.
+- **Secure key management** – Releases keys only to be verified, attested environments.
 
 ## Azure Database for PostgreSQL integration
 
-**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL**. Enable ACC by selecting a supported confidential VM SKU when creating a new server.
+**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL**. Enable ACC by selecting a supported confidential Virtual Machine (VM) SKU when creating a new server.
 
 > [!IMPORTANT]  
-> After the server is created, you can't Switch between confidential and non-confidential compute options.
+> After the server is created, you can't Switch between confidential and nonconfidential compute options.
 
 You can deploy Azure Database for PostgreSQL with ACC using any supported method:
 
