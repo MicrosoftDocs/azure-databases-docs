@@ -62,12 +62,12 @@ Confidential computing provides:
 
 ## Azure Database for PostgreSQL integration
 
-**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL – Flexible Server**. Enable ACC by selecting a supported confidential VM SKU when creating a new server.
+**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL**. Enable ACC by selecting a supported confidential VM SKU when creating a new server.
 
 > [!IMPORTANT]  
 > After the server is created, you can't Switch between confidential and non-confidential compute options.
 
-You can deploy PostgreSQL Flexible Server with ACC using any supported method:
+You can deploy Azure Database for PostgreSQL with ACC using any supported method:
 
 - Azure portal
 - Azure CLI
