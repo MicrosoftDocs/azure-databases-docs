@@ -103,7 +103,7 @@ landingContent:
           - text: Business continuity overview
             url: flexible-server/concepts-business-continuity.md
           - text: High availability
-            url: /azure/reliability/reliability-postgresql-flexible-server.md
+            url: /azure/reliability/reliability-postgresql-flexible-server
           - text: Back up and restore
             url: flexible-server/concepts-backup-restore.md
       - linkListType: how-to-guide
