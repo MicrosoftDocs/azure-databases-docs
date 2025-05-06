@@ -63,15 +63,15 @@ The next section will have a step-by-step instructions on how to create a Copy A
     
    #### [Copy Command](#tab/copy-command)
           
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/copy-command.png"alt-text="Screenshot that shows an example of copy command selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/copy-command.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/copy-command.png"alt-text="Screenshot that shows an example of Copy command selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/copy-command.png":::
 
    #### [Bulk Insert](#tab/bulk-insert)
       
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png"alt-text="Screenshot that shows of bulk insert selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png"alt-text="Screenshot that shows of Bulk insert selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png":::
 
    #### [Upsert](#tab/upsert)
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png"alt-text="Screenshot that shows an example in providing all key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png"alt-text="Screenshot that shows of Upsert selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png":::
    
 
 1. If a custom mapping is required, configure your mapping in the **Mapping tab**
