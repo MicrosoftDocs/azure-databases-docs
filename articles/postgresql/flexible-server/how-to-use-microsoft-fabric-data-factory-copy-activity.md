@@ -16,11 +16,11 @@ ms.topic: how-to
 
 ## Copy Activity
 
-With a Linked Service, you can connect to your instance of Azure Database for PostgreSQL flexible server and use it within Microsoft Fabric Data Factory activities.
+Copy activity in Data Factory  within Microsoft Fabric Data Factory can help you connect to your instance of Azure Database for PostgreSQL flexible server perform data movement and transformation activities.
 
 The Copy Activity supports **Copy Command**, **Bulk Insert** and **Upsert**. [Learn More about Copy Activity in Azure Database for PostgreSQL using Microsoft Fabric Data Factory](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity)
 
-The next section will have a step-by-step in how to manually create a copy activity and how to create a pipeline. 
+The next section will have a step-by-step in how to manually create a Copy activity and how to create a Data pipeline. 
 
 ### Prerequisites
 
@@ -47,17 +47,17 @@ The next section will have a step-by-step in how to manually create a copy activ
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png" alt-text="Screenshot that shows where to give a name to the pipeline at the general tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png":::
 
 
-1. At the **Source tab**, select or create a **Source dataset**. [Learn more about connecting to your data with the new modern get data experience for data pipelines](/fabric/data-factory/modern-get-data-experience-pipeline)
+1. At the **Source tab**, select or create a **Connection**. [Learn more](/fabric/data-factory/modern-get-data-experience-pipeline) about connecting to your data with the new modern get data experience for data pipelines
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-dataset.png" alt-text="Screenshot that shows where to select or create a source dataset at the source tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-dataset.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-connection.png" alt-text="Screenshot that shows where to select or create a source connection at the source tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-connection.png":::
 
 1. In this specific example, we selected an Azure Database for PostgreSQL table
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/source-datasource-selected.png" alt-text="Screenshot that shows a source dataset selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/source-datasource-selected.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/source-datasource-selected.png" alt-text="Screenshot that shows a source connection selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/source-datasource-selected.png":::
 
-1. At the **Sink tab**, select or create an Azure Database for PostgreSQL dataset as **Sink dataset**, and  choose the **Write method**. [Learn More about Azure Copy Activity and Write Method](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory)
+1. At the **Destination tab**, select or create an Azure Database for PostgreSQL **Connection**, and  choose the **Write method**.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-sink-datasource.png" alt-text="Screenshot that shows where to select or create a sink datasource at sink tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-sink-datasource.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-destination-datasource.png" alt-text="Screenshot that shows where to select or create a destination datasource at destination tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-destination-datasource.png":::
 
 1. Select between **Copy command**, **Bulk insert** and **Upsert** for the **Write method**  
     
@@ -70,18 +70,14 @@ The next section will have a step-by-step in how to manually create a copy activ
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png"alt-text="Screenshot that shows of bulk insert selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png":::
 
    #### [Upsert](#tab/upsert)
-       
-   You optionally can provide the key columns. In this example, **New** button was clicked and added the two primary key columns of this sink dataset
-      
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png"alt-text="Screenshot that shows an example in providing all key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png":::
+
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png"alt-text="Screenshot that shows an example in providing all key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png":::
    
 
 1. If a custom mapping is required, configure your mapping in the **Mapping tab**
 1. Validate your pipeline
 1. Select Debug, this runs the pipeline manually
-1. Set up a [trigger for your pipeline](/azure/data-factory/concepts-pipeline-execution-triggers)
-
-For the JSON payloads examples, go to [Azure Database for PostgreSQL as sink](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#azure-database-for-postgresql-as-sink)
+1. Set up a [trigger for your pipeline](/fabric/data-factory/pipeline-runs)
 
 ## Key Columns Behavior on Upsert
 
@@ -89,14 +85,15 @@ When upserting data using the Azure Database for PostgreSQL connector, you can s
 
 :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-optional-key-columns.png" alt-text="Screenshot that shows optional key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-optional-key-columns.png":::
 There are three acceptable ways to use the **Key Columns**:
-1. Select **New** and add all the primary key columns of the sink datasource table
+
+1. Do not select any **Key columns**. In this case, the connector finds the primary key columns and uses them as **Key columns**
+
+1. Select **New** and add all the primary key columns of the destination datasource table
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png" alt-text="Screenshot that shows an example with all key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png":::
 
-1. Select **New** and add one or more unique columns of the sink datasource table
-1. Leave the **Key columns** empty. In this case, the connector finds the primary key columns and uses them as **Key columns**
+1. Select **New** and add one or more unique columns of the destination datasource table
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/empty-key-columns.png" alt-text="Screenshot that shows an example with no key columns selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/empty-key-columns.png":::
 
 ## Related content
 
