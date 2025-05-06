@@ -5,21 +5,19 @@
 - name: distinct
   href: distinct.md
 - name: $addFields
-  href: aggregation-addFields.md 
+  href: addfields.md 
 - name: $collStats
-  href: aggregation-collStats.md
-- name: $count
-  href: aggregation-count.md
+  href: collstats.md
 - name: $skip
-  href: aggregation-skip.md
+  href: skip.md
 - name: $sort
-  href: aggregation-sort.md
+  href: sort.md
 - name: $sortByCount
-  href: aggregation-sortByCount.md
+  href: sortbycount.md
 - name: $unset
-  href: aggregation-unset.md
+  href: unset.md
 - name: $unwind
-  href: aggregation-unwind.md
+  href: unwind.md
 - name: set
   href: set.md
 - name: replacewith
