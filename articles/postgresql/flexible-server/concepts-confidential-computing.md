@@ -10,13 +10,13 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Why use Azure Confidential Computing?
+# Why use Azure Confidential Computing preview?
 
-[Azure Confidential Computing (ACC)](https://learn.microsoft.com/azure/confidential-computing/overview) enables organizations to process and collaborate on sensitive data—such as personally identifiable information (PII) or protected health information (PHI)—with built-in protection against unauthorized access. By securing data in use through Trusted Execution Environments (TEEs), ACC allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
+[Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to process and collaborate on sensitive data—such as personally identifiable information (PII) or protected health information (PHI)—with built-in protection against unauthorized access. By securing data in use through Trusted Execution Environments (TEEs), ACC allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
 
 Industries with strict regulatory requirements—such as finance, healthcare, and the public sector—can migrate sensitive workloads from on-premises environments to the cloud with minimal code changes and without sacrificing performance by using Azure Confidential VMs.
 
-# Architecture overview
+## Architecture overview
 
 :::image type="content" source="../media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing options." lightbox="../media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg":::
 
@@ -27,7 +27,7 @@ A **Trusted Execution Environment (TEE)*- is a hardware-based, isolated memory r
 
 **AMD SEV-SNP (Secure Encrypted Virtualization – Secure Nested Paging)*- provides full memory encryption and memory integrity validation to prevent attacks like memory remapping and replay. It supports lift-and-shift migrations of existing applications to Azure Confidential Computing without requiring code changes or affecting performance.
 
-## Remote attestation
+### Remote attestation
 
 Remote attestation is the process of validating that a TEE is secure and running verified code before granting it access to sensitive resources.
 
@@ -43,31 +43,31 @@ Remote attestation is the process of validating that a TEE is secure and running
 1. The TEE presents the token to the secrets manager.
 1. The secrets manager validates the token against policy before releasing any secrets.
 
-# Confidential Computing (Public Preview)
+## Confidential computing
 
-Azure already provides data protection at rest and in transit. Confidential computing adds protection for **data in use**, enabling secure processing in a hardware-based, attested TEE.
+Azure secures data at rest and in transit. Confidential computing adds protection for **data in use** through hardware-backed, attested TEEs.
 
-According to the [Confidential Computing Consortium (CCC)](https://confidentialcomputing.io/wp-content/uploads/sites/10/2023/03/CCC_outreach_whitepaper_updated_November_2022.pdf):
+The [Confidential Computing Consortium (CCC)](https://confidentialcomputing.io/wp-content/uploads/sites/10/2023/03/CCC_outreach_whitepaper_updated_November_2022.pdf) defines confidential computing as:
 
-> [!NOTE]
-> Confidential Computing protects data in use by performing computation in a hardware-based, attested Trusted Execution Environment (TEE).
+> [!NOTE]  
+> Confidential computing protects data in use by performing computation in a hardware-based, attested Trusted Execution Environment (TEE).
 
 Confidential computing provides:
 
-- **Hardware root-of-trust**: Anchors the TEE's security to trusted hardware.
-- **Remote attestation**: Validates the integrity of the environment before data access.
-- **Trusted launch**: Ensures that virtual machines boot using verified software.
-- **Memory isolation and encryption**: Prevents unauthorized access to data in memory.
-- **Secure key management**: Keys are released only to attested, authorized code.
+- **Hardware root of trust** – Anchors TEE security in the processor's trusted hardware.
+- **Remote attestation** – Verifies workload integrity before allowing access to data.
+- **Trusted launch** – Ensures that VMs start with verified software and configurations.
+- **Memory isolation and encryption** – Secures in-memory data from unauthorized access.
+- **Secure key management** – Releases keys only to verified, attested environments.
 
-# Use with Azure Database for PostgreSQL – Flexible Server
+## Azure Database for PostgreSQL integration
 
-**Azure Confidential Computing*- is available for **Azure Database for PostgreSQL – Flexible Server**. When creating a new server, you can enable ACC by selecting a supported confidential VM SKU.
+**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL – Flexible Server**. Enable ACC by selecting a supported confidential VM SKU when creating a new server.
 
 > [!IMPORTANT]  
-> After it's created, you can't change a server between ACC and non-ACC.
+> After the server is created, you can't Switch between confidential and non-confidential compute options.
 
-You can deploy using any method supported by PostgreSQL Flexible Server:
+You can deploy PostgreSQL Flexible Server with ACC using any supported method:
 
 - Azure portal
 - Azure CLI
@@ -79,7 +79,7 @@ You can deploy using any method supported by PostgreSQL Flexible Server:
 
     :::image type="content" source="../media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing deployment options.":::
 
-# Supported ACC SKUs
+## Supported ACC SKUs
 
 Select from the following SKUs based on your compute and I/O requirements:
 
@@ -98,5 +98,5 @@ Select from the following SKUs based on your compute and I/O requirements:
 
 ## Related content
 
-- [Azure confidential computing](https://learn.microsoft.com/en-us/azure/confidential-computing/trusted-execution-environment)
-- [Azure confidential VM options](https://learn.microsoft.com/en-us/azure/confidential-computing/virtual-machine-options)
+- [Azure confidential computing](/azure/confidential-computing/trusted-execution-environment)
+- [Azure confidential VM options](/azure/confidential-computing/virtual-machine-options)
