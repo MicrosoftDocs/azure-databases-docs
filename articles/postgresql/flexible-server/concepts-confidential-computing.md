@@ -35,7 +35,6 @@ Remote attestation is the process of validating that a TEE is secure and running
 
 1. The TEE submits a report that includes a cryptographic hash of the loaded code and environment configuration.
 1. The attestation service (verifier) validates:
-
    - The integrity of the certificate.
    - The issuer is trusted.
    - The TEE isn't on a blocklist.
@@ -56,16 +55,16 @@ Confidential computing provides:
 
 - **Hardware root of trust** – Anchors TEE security in the processor's trusted hardware.
 - **Remote attestation** – Verifies workload integrity before allowing access to data.
-- **Trusted launch** – Ensures that Virtual Machines (VMs) starts with verified software and configurations.
+- **Trusted launch** – Ensures that VMs start with verified software and configurations.
 - **Memory isolation and encryption** – Secures in-memory data from unauthorized access.
-- **Secure key management** – Releases keys only to be verified, attested environments.
+- **Secure key management** – Releases keys only to verified, attested environments.
 
 ## Azure Database for PostgreSQL integration
 
-**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL**. Enable ACC by selecting a supported confidential Virtual Machine (VM) SKU when creating a new server.
+**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL**. Enable ACC by selecting a supported confidential VM SKU when creating a new server.
 
 > [!IMPORTANT]  
-> After the server is created, you can't Switch between confidential and nonconfidential compute options.
+> After the server is created, you can't Switch between confidential and non-confidential compute options.
 
 You can deploy Azure Database for PostgreSQL with ACC using any supported method:
 
