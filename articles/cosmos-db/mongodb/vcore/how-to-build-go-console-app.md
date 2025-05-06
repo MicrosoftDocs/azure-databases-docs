@@ -8,9 +8,8 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/02/2025
+ms.date: 05/03/2025
 ms.custom: devx-track-go
-ROBOTS: NOINDEX,NOFOLLOW
 ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)
