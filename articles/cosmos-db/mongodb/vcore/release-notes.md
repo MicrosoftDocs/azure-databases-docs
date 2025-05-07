@@ -16,9 +16,26 @@ ms.date: 04/30/2025
 
 This article contains release notes for the API for MongoDB vCore. These release notes are composed of feature release dates, and feature updates.
 
-## Latest release: March 23, 2025
+## Latest release: May 05, 2025
 
-### Engine Enhancements_0323
+### Engine Enhancements_0505
+
+- Support collation with aggregation and find on sharded collections.
+- Fix list_databases for databases with size > 2 GB.
+- Support half-precision vector indexing, vectors can have up to 4,000 dimensions.
+- Support collation with $documents and $replaceWith stage of the aggregation pipeline.
+- [MongoDB vCore v8 released](quickstart-portal.md).
+  - Support $convert on binData to binData, string to binData and binData to string (except with format: auto).
+  - Added support for `$toUUID` to simplify string-to-UUID conversion.
+  - `$rank` and `$denseRank` now treat `null` and missing values the same while calculating rankings, aligning behavior with $sort.
+  - Pipeline Size Enforcement- Aggregation throws an error if the pipeline stage limit is exceeded.
+  - $getField now accepts any valid expression that resolves to a string, not just string constants.
+
+## Previous releases
+
+### March 23, 2025
+
+#### Engine Enhancements_0323
 
 - Added support for [exact search](enn-vector-search.md) in vector search queries.
 - Added support for the listDatabases command.
@@ -32,8 +49,6 @@ This article contains release notes for the API for MongoDB vCore. These release
 - Enabled default support for unique index truncation using a new operator class.
 - Introduced collation support with set operators in aggregation ($setEquals, $setUnion, $setIntersection, $setDifference,
   $setIsSubset).
-
-## Previous releases
 
 ### February 12, 2025
 
@@ -50,7 +65,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 - GAed [Autoscale SKU](autoscale.md).
 - [Change stream](change-streams.md) support for Kafka Debezium connector & Pymongo driver. (Preview)
 - Enabled [Promotion for Geo-Replica](cross-region-replication.md#replica-cluster-promotion).
-- Expanded regional availability
+- Expanded regional availability.
   - Switzerland West
   - Jio India West
 
