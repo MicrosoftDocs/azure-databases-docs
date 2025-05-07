@@ -57,16 +57,16 @@ Confidential computing provides:
 - **Remote attestation** – Verifies workload integrity before allowing access to data.
 - **Trusted launch** – Ensures that VMs start with verified software and configurations.
 - **Memory isolation and encryption** – Secures in-memory data from unauthorized access.
-- **Secure key management** – Releases keys only to verified, attested environments.
+- **Secure key management** – Releases keys only to be verified, attested environments.
 
 ## Azure Database for PostgreSQL integration
 
-**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL**. Enable ACC by selecting a supported confidential VM SKU when creating a new server.
+**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL**. Enable ACC by selecting a supported confidential virtual machine (VM) SKU when creating a new server.
 
 > [!IMPORTANT]  
-> After the server is created, you can't Switch between confidential and non-confidential compute options.
+> After the server is created, you can't Switch between confidential and nonconfidential compute options.
 
-You can deploy Azure Database for PostgreSQL with ACC using any supported method (e.g. Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc). 
+You can deploy Azure Database for PostgreSQL with ACC using any supported method (for example, Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc.). 
 
     :::image type="content" source="../media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing deployment options.":::
 
