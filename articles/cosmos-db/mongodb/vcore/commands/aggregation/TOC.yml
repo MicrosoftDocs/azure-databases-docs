@@ -4,6 +4,20 @@
   href: count.md
 - name: distinct
   href: distinct.md
+- name: $addFields
+  href: addfields.md 
+- name: $collStats
+  href: collstats.md
+- name: $skip
+  href: skip.md
+- name: $sort
+  href: sort.md
+- name: $sortByCount
+  href: sortbycount.md
+- name: $unset
+  href: unset.md
+- name: $unwind
+  href: unwind.md
 - name: set
   href: set.md
 - name: replacewith

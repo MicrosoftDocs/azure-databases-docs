@@ -38,6 +38,9 @@ To enhance the frequency of automated daily backups, you can increase the backup
 
 Currently, this feature is in preview and is limited to the **West Central US** and **East Asia** regions.
 
+  :::image type="content" source="media/concepts-backup-restore/configure-backup-interval.png" alt-text="Screenshot of modify backup frequency." lightbox="media/concepts-backup-restore/configure-backup-interval.png":::
+
+
 > [!NOTE]  
 > - If the server experiences a high transaction load, resulting in larger and faster-growing binlog files, then the backup service will perform multiple backups per day to ensure reliable and quicker restoration using these backups.
 > - For 5.7 servers, long-running/Large transactions can prevent global instance level lock acquisition which is required for successful daily backup. In such scenarios, daily backups can fail. To resolve this, either terminate the long-running transaction OR restart the server. To ensure smoother operations, it's recommended to upgrade your MySQL 5.7 servers to version 8.0 using a [major version upgrade](how-to-upgrade.md).
