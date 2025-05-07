@@ -66,15 +66,7 @@ Confidential computing provides:
 > [!IMPORTANT]  
 > After the server is created, you can't Switch between confidential and non-confidential compute options.
 
-You can deploy Azure Database for PostgreSQL with ACC using any supported method:
-
-- Azure portal
-- Azure CLI
-- ARM templates
-- Bicep
-- Terraform
-- Azure PowerShell
-- REST API
+You can deploy Azure Database for PostgreSQL with ACC using any supported method (e.g. Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc). 
 
     :::image type="content" source="../media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing deployment options.":::
 
