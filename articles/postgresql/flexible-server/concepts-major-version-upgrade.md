@@ -3,7 +3,7 @@ title: Major version upgrades in Azure Database for PostgreSQL flexible server
 description: Learn how to use Azure Database for PostgreSQL flexible server to do in-place major version upgrades of PostgreSQL on a server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 5/6/2025
+ms.date: 5/7/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -97,7 +97,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 In-place major version upgrades do not support all PostgreSQL extensions. The upgrade will fail during the precheck if unsupported extensions are found.
 - The following extensions are not supported across any PostgreSQL versions: `timescaledb`, `pgaudit`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`
 - The following extensions are not supported when the upgrade target is PostgreSQL 16 or higher: `pgrouting`
-- The following extensions are not supported when upgrading to PostgreSQL 17: `pgrouting`, `age`, `azure_ai`, `azure_storage`, `hll`, `pg_diskann`
+- The following extensions are not supported when upgrading to PostgreSQL 17: `pgrouting`, `age`, `azure_ai`, `hll`, `pg_diskann`
 
 These extensions must be removed from the **azure.extensions** server parameter prior to upgrade. If present, the upgrade will be blocked.
 
