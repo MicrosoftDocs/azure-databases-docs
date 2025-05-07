@@ -380,7 +380,7 @@
   - name: Developer Experience
     items:
     - name: Quickstart for PostgreSQL GitHub Copilot
-      href: flexible-server/quickstart-use-vs-code-ghc.md
+      href: flexible-server/quickstart-vs-code-ghc.md
   - name: Integrations
     items:
     - name: Manage Azure resources with automation tasks
