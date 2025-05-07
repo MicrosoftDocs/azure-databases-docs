@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Throughput buckets'
+title: 'Azure Cosmos DB: Throughput buckets (preview)'
 description: Learn how you can control throughput usage for different workloads by creating buckets in Azure Cosmos DB.
 author: richagaur
 ms.service: azure-cosmos-db
@@ -9,7 +9,7 @@ ms.author: richagaur
 ms.date: 03/31/2025
 ---
 
-# Throughput buckets in Azure Cosmos DB
+# Throughput buckets in Azure Cosmos DB (preview)
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
@@ -48,8 +48,6 @@ To set up throughput buckets in the Azure portal:
 
 To assign a request to a specific bucket, use RequestOptions in the SDK.
 
-#### [.NET SDK v3](#tab/net-v3)
-
 ```csharp
 using Microsoft.Azure.Cosmos;
 
@@ -79,8 +77,6 @@ ItemResponse<Product> updateResponse = await container.ReplaceItemAsync(
 ```
 
 To apply a throughput bucket to all requests from a client application, use ClientOptions in the SDK.
-
-#### [.NET SDK v3](#tab/net-v3-bulk)
 
 ```csharp
 using Microsoft.Azure.Cosmos;

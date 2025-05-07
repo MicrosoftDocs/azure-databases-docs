@@ -52,4 +52,4 @@ Finally, you can scope the assignment to a single container (table), the most gr
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Get signed in account's identity](how-to-get-signed-in-identity.md)
+> [Disable key-based authentication](how-to-disable-key-based-authentication.md)

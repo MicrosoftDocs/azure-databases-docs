@@ -1,8 +1,8 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 10/09/2024
-zone_pivot_groups: azure-interface-cli-powershell-bicep
+ms.date: 04/11/2025
+zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 ---
 
 Disabling key-based authorization prevents your account from being used without the more secure Microsoft Entra authentication method. This procedure is a step that should be performed on new accounts in secure workloads. Alternatively, perform this procedure on existing accounts being migrated to a secure workload pattern.
@@ -14,6 +14,10 @@ Disabling key-based authorization prevents your account from being used without 
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
 [!INCLUDE [Azure CLI prerequisites](~/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
+
+::: zone-end
+
+::: zone pivot="azure-interface-portal"
 
 ::: zone-end
 
@@ -97,5 +101,17 @@ $resource.Properties.DisableLocalAuth = $true
 
 $resource | Set-AzResource -Force
 ```
+
+::: zone-end
+
+::: zone pivot="azure-interface-portal"
+
+Use these steps to create a new Azure Cosmos DB for NoSQL account with key-based authentication disabled so that applications are required to only use Microsoft Entra authentication.
+
+1. When setting up a new Azure Cosmos DB for NoSQL account, navigate to the **Security** section of the account creation process. 
+
+1. Then, select **Disable** for the **Key-based authentication** option.
+
+    :::image source="media/disable-key-based-authentication/security-step-toggle.png" alt-text="Screenshot of the option to disable key-based authentication when creating a new account in the Azure portal.":::
 
 ::: zone-end

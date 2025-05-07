@@ -62,6 +62,7 @@ In some cases, you may wish to manually import the TLS/SS certificate from the e
 ## Related content
 
 - [Linux-based Azure Cosmos DB emulator (preview)](emulator-linux.md)
+- Download the [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator).
 
 ## Next step
 

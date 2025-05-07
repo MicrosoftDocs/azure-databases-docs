@@ -1,20 +1,22 @@
 ### YamlMime:Landing
-title:  Azure Database for PostgreSQL flexible server documentation
-summary: "Azure Database for PostgreSQL flexible server is a relational database service based on the open-source Postgres database engine. It's a fully managed database-as-a-service that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability."
 metadata:
-  description: "Azure Database for PostgreSQL flexible server is a relational database service in the Microsoft cloud that is built for developers based on the open-source PostgreSQL database engine."
+  title: Azure Database for PostgreSQL documentation landing page
+  description: "Azure Database for PostgreSQL is a relational database service in the Microsoft cloud that is built for developers based on the open-source PostgreSQL database engine."
   author: nachoalonsoportillo
   ms.author: ialonso
   ms.reviewer: maghan
   ms.date: 01/04/2025
   ms.service: azure-database-postgresql
   ms.topic: landing-page
+
+title:  Azure Database for PostgreSQL documentation
+summary: "Azure Database for PostgreSQL is a relational database service based on the open-source Postgres database engine. It's a fully managed database-as-a-service that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability."
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | whats-new
 
 landingContent:
 
 # Card 1
-  - title: Azure Database for PostgreSQL flexible server
+  - title: Azure Database for PostgreSQL
     linkLists:
       - linkListType: overview
         links:
@@ -99,9 +101,9 @@ landingContent:
       - linkListType: concept
         links:
           - text: Business continuity overview
-            url: concepts-business-continuity.md
+            url: flexible-server/concepts-business-continuity.md
           - text: High availability
-            url: concepts-high-availability.md
+            url: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
           - text: Back up and restore
             url: flexible-server/concepts-backup-restore.md
       - linkListType: how-to-guide
@@ -124,24 +126,18 @@ landingContent:
         links:
           - text: Enable firewall rules to connect
             url: flexible-server/concepts-firewall-rules.md
-          - text: Configure SSL for secure connections
-            url: single-server/concepts-ssl-connection-security.md
       - linkListType: quickstart
         links:
           - text: Connect using Python
             url: flexible-server/connect-python.md
-          - text: Connect using Node.js
-            url: single-server/connect-nodejs.md
           - text: Connect using Java
             url: flexible-server/connect-java.md
-          - text: Connect using Ruby
-            url: single-server/connect-ruby.md
           - text: Connect using PHP
-            url: single-server/connect-php.md
+            url: flexible-server/connect-php.md
           - text: Connect using .NET
             url: flexible-server/connect-csharp.md
           - text: Connect using Go
-            url: single-server/connect-go.md
+            url: flexible-server/connect-go.md
       - linkListType: tutorial
         links:
         - text: Connect Web App in virtual network
@@ -178,8 +174,6 @@ landingContent:
             url: /training/modules/create-azure-db-for-postgresql-server/
       - linkListType: deploy
         links:
-          - text: Azure CLI scripts for common tasks
-            url: single-server/sample-scripts-azure-cli.md
           - text: Azure Resource Manager templates
             url: /azure/templates/microsoft.dbforpostgresql/allversions
       - linkListType: reference
@@ -190,10 +184,7 @@ landingContent:
             url: /rest/api/postgresql/
           - text: Azure Resource Manager templates
             url: /azure/templates/microsoft.dbforpostgresql/allversions
-      - linkListType: get-started
-        links:
-          - text: Azure CLI scripts for common tasks
-            url: sample-scripts-azure-cli.md
+      
 # Card 10
   - title: Get training
     linkLists:

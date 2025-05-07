@@ -60,13 +60,21 @@ You can enable the capture of PostgreSQL server logs and major version upgrade l
 To enable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value on
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name logfiles.download_enable \
+  --value on
 ```
 
 To adjust the retention period for the logs that are captured for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name logfiles.retention_days --value <retention_period_in_days>
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name logfiles.retention_days \
+  --value <retention_period_in_days>
 ```
 
 Allowed values for server parameter `logfiles.retention_days` can be between 1 and 7 days. If you try to set it to a different value, you get this error:
@@ -119,7 +127,11 @@ You can disable the capture of PostgreSQL server logs and major version upgrade 
 To disable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value off
+az postgres flexible-server parameter \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name logfiles.download_enable \
+  --value off
 ```
 
 ---
@@ -155,25 +167,36 @@ You can list the captured PostgreSQL server logs and major version upgrade logs 
 To list all captured logs available for download, which were updated in the last 72 hours (default value), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server>
+az postgres flexible-server server-logs list \
+  --resource-group <resource_group> \
+  --server-name <server>
 ```
 
 To list all captured logs available for download, which were updated in the last 10 hours, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server> --file-last-written 10
+az postgres flexible-server server-logs list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --file-last-written 10
 ```
 
 To list all captured logs available for download, whose size is under 30 KiB, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server> --max-file-size 30
+az postgres flexible-server server-logs list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --max-file-size 30
 ```
 
 To list all captured logs available for download, whose name contains `01_07`, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server> --filename-contains 01_07
+az postgres flexible-server server-logs list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --filename-contains 01_07
 ```
 
 ---
@@ -209,13 +232,19 @@ You can download the captured PostgreSQL server logs and major version upgrade l
 To download one specific log, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs download --resource-group <resource_group> --server-name <server> --name <log_name>
+az postgres flexible-server server-logs download \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name <log_name>
 ```
 
 To download one specific log, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs download --resource-group <resource_group> --server-name <server> --name <log1_name log2_name ...logn_name>
+az postgres flexible-server server-logs download \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name <log1_name log2_name ...logn_name>
 ```
 
 > [!NOTE]

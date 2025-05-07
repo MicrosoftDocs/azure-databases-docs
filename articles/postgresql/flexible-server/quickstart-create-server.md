@@ -189,7 +189,28 @@ If you prefer to install and use Azure CLI locally, this quickstart requires ver
 2. Create an Azure Database for PostgreSQL flexible server instance, using the [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command.
 
     ```azurecli-interactive
-    az postgres flexible-server create --subscription <subscription> --resource-group <resource-group> --name <name> --location <region> --version <version> --zone <zone> --password-auth <password-auth> --admin-user <admin-user> --admin-password <admin-password> --tier <tier> --sku-name <sku-name> --storage-type <storage-type> --storage-size <storage-size> --performance-tier <performance-tier> --storage-auto-grow <storage-auto-grow> --high-availability <high-availability> --standby-zone <standby-zone> --backup-retention <backup-retention> --geo-redundant-backup <geo-redundant-backup> --public-access <public-access> --tags <tags>
+    az postgres flexible-server create \
+      --subscription <subscription> \
+      --resource-group <resource-group> \
+      --name <name> \
+      --location <region> \
+      --version <version> \
+      --zone <zone> \
+      --password-auth <password-auth> \
+      --admin-user <admin-user> \
+      --admin-password <admin-password> \
+      --tier <tier> \
+      --sku-name <sku-name> \
+      --storage-type <storage-type> \
+      --storage-size <storage-size> \
+      --performance-tier <performance-tier> \
+      --storage-auto-grow <storage-auto-grow> \
+      --high-availability <high-availability> \
+      --standby-zone <standby-zone> \
+      --backup-retention <backup-retention> \
+      --geo-redundant-backup <geo-redundant-backup> \
+      --public-access <public-access> \
+      --tags <tags>
     ```
 
 3. Use the following table to understand the meaning of each different parameter, and as guidance to provide values for each of them:
@@ -483,7 +504,11 @@ If you prefer to install and use Azure CLI locally, this quickstart requires ver
 1. Run the following command to retrieve the fully qualified name of the instance and the name of the administrator user:
 
     ```azurecliinteractive
-    az postgres flexible-server show --resource-group <resource-group> --name <server> --query "{serverName:fullyQualifiedDomainName, adminUser:administratorLogin}" --output table
+    az postgres flexible-server show \
+      --resource-group <resource-group> \
+      --name <server> \
+      --query "{serverName:fullyQualifiedDomainName, adminUser:administratorLogin}" \
+      --output table
     ```
 
 ---
@@ -600,7 +625,9 @@ az group delete --name <resource-group>
 To delete only the newly created server, execute the following command:
 
 ```azurecliinteractive
-az postgres flexible-server delete --resource-group <resource-group> --name <name>
+az postgres flexible-server delete \
+  --resource-group <resource-group> \
+  --name <name>
 ```
 
 ---

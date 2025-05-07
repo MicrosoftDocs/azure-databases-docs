@@ -465,8 +465,6 @@ This section describes the differences between creating applications in Azure Co
 
 These HBase's sample codes are based on those described in [HBase's official documentation](https://hbase.apache.org/book.html).
 
-The code for Azure Cosmos DB presented here is based on the [Azure Cosmos DB for NoSQL: Java SDK v4 examples](samples-java.md) documentation. You can access the full code example from the documentation.
-
 The mappings for code migration are shown here, but the HBase RowKeys and Azure Cosmos DB Partition Keys used in these examples aren't always well designed. Design according to the actual data model of the migration source.
 
 ### Establish connection

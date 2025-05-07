@@ -1,74 +1,71 @@
 ---
-title: Release notes for Azure DB for PostgreSQL flexible server
-description: Release notes for Azure DB for PostgreSQL flexible server, including feature additions, engine versions support, extensions, and other announcements.
+title: Release notes for Azure Database for PostgreSQL
+description: Release notes for Azure Database for PostgreSQL, including feature additions, engine versions support, extensions, and other announcements.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 3/25/2025
+ms.date: 5/7/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
 # customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL flexible server.
 ---
 
-# Release notes - Azure Database for PostgreSQL flexible server
+# Release notes - Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL flexible server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
+## Release: May 2025
+- General Availability of [On-demand backups](./concepts-backup-restore.md#on-demand-backups).
+
+## Release: April 2025
+- Public preview of [Fabric Mirroring](https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-mirroring-for-azure-database-for-postgresql-in-microsoft-fabric-for-p/4396750) for Azure Database for PostgreSQL flexible server.
+- Public preview of [Version-less Customer Managed Key](./concepts-data-encryption.md#versionless-customer-managed-keys-preview).
+- Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL flexible server.
+- General availability of New Zealand North region.
+
 ## Release: March 2025
-- Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup>
-- General Availability of [hll](../extensions/concepts-extensions-versions.md#hll) extension.
-- General Availability of [topn](../extensions/concepts-extensions-versions.md#topn) extension.
-- General Availability of [tdigest](../extensions/concepts-extensions-versions.md#tdigest) extension.
-    
+- General Availability of [Azure Data Factory and Azure Synapse 2.0 Connector](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#version-20).
+- General Availability of [hll](../extensions/concepts-extensions-versions.md#hll), [topn](../extensions/concepts-extensions-versions.md#topn) and [tdigest](../extensions/concepts-extensions-versions.md#tdigest) extension.  
+- Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup> 
 
 ## Release: February 2025
 - Support for new [minor versions](concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
 - Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server. 
 - Public preview of [enhanced connection and CPU monitoring metrics](concepts-monitoring.md#enhanced-metrics) (`TCP_connection_backlog`, `postmaster_process_cpu_usage`) is now available.
-- General availability of New Zealand North region.
 
 ## Release: January 2025
-
 - Public preview of [Elastic Clusters](./concepts-elastic-clusters.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: December 2024
-
 - General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#oracle_fdw) extension.
 - General Availability of [index tuning](concepts-index-tuning.md) on Azure Database for PostgreSQL flexible server.
 - General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL flexible server.
 - Public preview of [age](../extensions/concepts-extensions-versions.md#age) extension.
 - Public preview of [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL flexible server.
-- Public preview of [On-Demand Backups](concepts-backup-restore.md#on-demand-backups-preview).
 
 ## Release: November 2024
-
 - General availability of [High-Availability Health Status Monitoring](how-to-monitor-high-availability.md) for Azure Database for PostgreSQL flexible server.
 - [PostgreSQL 12](concepts-version-policy.md) will retire on November 14, 2024. Please upgrade to a supported version before retirement to ensure continued support and security.
 
 ## Release: October 2024
-
 - General Availability of [Task Automation](create-automation-tasks.md).
-- Preview of [Fabric Mirroring](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/mirroring-azure-database-for-postgresql-flexible-server-in/ba-p/4251876) for Azure Database for PostgreSQL flexible server.
+- Private Preview of [Fabric Mirroring](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/mirroring-azure-database-for-postgresql-flexible-server-in/ba-p/4251876) for Azure Database for PostgreSQL flexible server.
 
 ## Release: September 2024
-
 - Public preview of [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17-preview) for Azure Database for PostgreSQL flexible server.
 - Support for new [minor versions](concepts-supported-versions.md) 16.4, 15.8, 14.13, 13.16, and 12.20. <sup>$</sup>
 - Support for [Reserved pricing](concepts-reserved-pricing.md) for Intel and AMD V5 Skus for Azure Database for PostgreSQL flexible server.
 - Public preview of [postgresql_anonymizer (anon)](../extensions/concepts-extensions-versions.md#anon) extension.
-- Support for MD5 is disabled in favor of [SCRAM authentication](how-to-connect-scram.md) authentication for new PostgreSQL 14+ new server deployments.
 - Collation sort order might change due to an underlying `glibc` update from 2.27 to 2.35. See [PostgreSQL Wiki](https://wiki.postgresql.org/wiki/Locale_data_changes) for details.
 
 ## Release: Aug 2024
-
 - General availability of [Database Size Metrics](concepts-monitoring.md) for Azure Database for PostgreSQL flexible server.
 - General availability: [postgres_protobuf](../extensions/concepts-extensions-versions.md#postgres_protobuf) extension.
 
 ## Release: July 2024
-
 - General availability of [Major Version Upgrade Support for PostgreSQL 16](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL flexible server.
 - General availability of [Pgvector 0.7.0](../extensions/concepts-extensions-versions.md#vector) extension.
 - General availability support for [Storage-Autogrow with read replicas](concepts-read-replicas.md)
@@ -76,14 +73,12 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability support for [System Assigned Managed Identity](concepts-Identity.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: June 2024
-
 - Support for new [minor versions](concepts-supported-versions.md) 16.3, 15.7, 14.12, 13.15, and 12.19. <sup>$</sup>
 - General availability of [IOPS scaling](concepts-storage.md#iops-scaling) on Azure Database for PostgreSQL flexible server.
 - CMK support for LTR is in Public preview [long-term backup retention](concepts-backup-restore.md).
 - Support for [built-in Azure Policy definitions](concepts-security.md#azure-policy-support)
 
 ## Release: May 2024
-
 - General availability of Postgres [azure_ai](generative-ai-azure-overview.md) extension.
 - Public preview of [azure_local_ai](azure-local-ai.md) extension.
 - Public preview of [index tuning](concepts-index-tuning.md) on Azure Database for PostgreSQL flexible server.
@@ -94,13 +89,11 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [session_variable](../extensions/concepts-extensions-versions.md#session_variable).
 
 ## Release: April 2024
-
 - General availability of [virtual endpoints](concepts-read-replicas-virtual-endpoints.md) and [promote to primary server](concepts-read-replicas-promote.md) operation for [read replicas](concepts-read-replicas.md).
 - Support for new [minor versions](concepts-supported-versions.md) 16.2, 15.6, 14.11, 13.14, 12.18. <sup>$</sup>
 - Support for new [PgBouncer versions](concepts-pgbouncer.md) 1.22.1. <sup>$</sup>
 
 ## Release: March 2024
-
 - Public preview of [Major Version Upgrade Support for PostgreSQL 16](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL flexible server.
 - Public preview of [real-time language translations](generative-ai-azure-cognitive.md#language-translation) with azure_ai extension on Azure Database for PostgreSQL flexible server.
 - Public preview of [real-time machine learning predictions](generative-ai-azure-machine-learning.md) with azure_ai extension on Azure Database for PostgreSQL flexible server.
@@ -109,13 +102,11 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for PostgreSQL 16 changes with [BYPASSRLS](concepts-security.md#bypassing-row-level-security)
 
 ## Release: February 2024
-
 - Support for new [minor versions](concepts-supported-versions.md) 16.1, 15.5, 14.10, 13.13, 12.17, 11.22. <sup>$</sup>
 - General availability of [Major Version Upgrade logs](concepts-major-version-upgrade.md#major-version-upgrade-logs)
 - General availability of [private endpoints](concepts-networking-private-link.md).
 
 ## Release: January 2024
-
 - General availability of [Server logs](how-to-configure-server-logs.md), including Portal and CLI support.
 - General availability of UAE Central region.
 - General availability of Israel Central region.
@@ -340,7 +331,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 - Several bug fixes, stability, and performance improvements.
 
 > [!IMPORTANT]
-> **$** - New servers get these features automatically. Your existing servers will be automatically upgraded to the latest supported minor version and also new features are enabled during your server's future maintenance window.
+> **$** - New servers get these features automatically. Your existing servers will be automatically upgraded to the latest supported minor version and also new features are enabled during your server's future maintenance window. At this moment, there is no option to selectively stop to upgrade minor versions.
 
 ## Contacts
 

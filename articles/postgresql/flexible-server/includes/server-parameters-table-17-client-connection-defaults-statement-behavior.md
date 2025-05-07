@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -169,8 +169,8 @@ ms.custom: automatically generated
 | Description | Enable/Disable event triggers for debugging purpose. |
 | Data type | boolean |
 | Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
 | Documentation | [event_triggers](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-EVENT-TRIGGERS) |
 
 

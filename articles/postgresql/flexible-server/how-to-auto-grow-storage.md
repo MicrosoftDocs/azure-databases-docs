@@ -22,7 +22,9 @@ For servers with more than 1 TiB of provisioned storage, the storage autogrow me
 As an illustration, take a server with a storage capacity of 2 TiB (greater than 1 TiB). In this case, the autogrow limit is set at 64 GiB. This choice is made because 64 GiB is the smaller value when compared to 10% of 2 TiB, which is roughly 204.8 GiB. In contrast, for a server with a storage size of 128 GiB (less than 1 TiB), the autogrow feature activates when there's only 25.8 GiB of space left. This activation is based on the 20% threshold of the total allocated storage (128 GiB), which is smaller than 64 GiB. 
 
 > [!NOTE]  
-> Storage always doubles in size for premium disk SSD, and that doubles the storage cost. Only premium SSD V2 supports more granular disk size increase.
+> Azure Database for PostgreSQL flexible server only supports the storage autogrow feature on storage type Premium SSD.
+> Storage always doubles in size for premium disk SSD, and that doubles the storage cost.
+> Only premium SSD V2 supports more granular disk size increase.
 
 ## Steps to enable storage autogrow for existing servers
 
@@ -53,7 +55,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can enable storage autogrow in an existing server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-auto-grow enabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-auto-grow enabled
 ```
 ---
 
@@ -86,7 +91,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can enable storage autogrow in an existing server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command. 
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-auto-grow disabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-auto-grow disabled
 ```
 
 ---
@@ -110,7 +118,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can enable storage autogrow while provisioning a new server via the [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command.
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> --storage-auto-grow disabled ...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-auto-grow disabled ...
 ```
 
 > [!NOTE]

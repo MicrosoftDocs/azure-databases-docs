@@ -23,6 +23,9 @@ However, none of those two methods reveal the text of the queries for which the 
 
 Hence, if you need to read the text of the queries, you need to be granted permissions to connect to the database engine, so that you can execute queries to retrieve that information from two views available inside the `intelligent performance` of the `azure_sys` database.
 
+> [!NOTE]
+> Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, index tuning must be enabled.
+
 ## Steps to list index recommendations
 
 ### [Portal](#tab/portal-list-recommendations)
@@ -64,7 +67,10 @@ You can list index tuning recommendations produced by index tuning in an existin
 To list all CREATE INDEX recommendations, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning list-recommendations --resource-group <resource_group> --server-name <server> --recommendation-type createindex
+az postgres flexible-server index-tuning list-recommendations \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --recommendation-type createindex
 ```
 
 The command returns all information about the CREATE INDEX recommendations produced by index tuning, showing something similar to the following output:
@@ -130,7 +136,10 @@ The command returns all information about the CREATE INDEX recommendations produ
 To list all DROP INDEX recommendations, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning list-recommendations --resource-group <resource_group> --server-name <server> --recommendation-type dropindex
+az postgres flexible-server index-tuning list-recommendations \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --recommendation-type dropindex
 ```
 
 The command returns all information about the DROP INDEX recommendations produced by index tuning, showing something similar to the following output:
@@ -324,7 +333,10 @@ You can list index tuning recommendations produced by index tuning in an existin
 To list all CREATE INDEX recommendations, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning list-recommendations --resource-group <resource_group> --server-name <server> --query [].implementationDetails.script
+az postgres flexible-server index-tuning list-recommendations \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --query [].implementationDetails.script
 ```
 
 The command returns all the statements that must be run to implement all produced recommendations, showing something similar to the following output:

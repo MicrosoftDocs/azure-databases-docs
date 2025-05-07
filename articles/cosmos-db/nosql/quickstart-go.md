@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 02/26/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-go, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -97,6 +97,17 @@ The client library is available through Go, as the `azcosmos` package.
     ```
 
 1. Open and review the **src/go.mod** file to validate that the `github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos` and `github.com/Azure/azure-sdk-for-go/sdk/azidentity` entries both exist.
+
+### Import libraries
+
+Import the `github.com/Azure/azure-sdk-for-go/sdk/azidentity` and `github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos` packages into your application code.
+
+```go
+import (
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos"
+)
+```
 
 ## Object model
 

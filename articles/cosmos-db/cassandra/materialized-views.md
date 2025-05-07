@@ -2,8 +2,8 @@
 title: Materialized views (preview)
 titleSuffix: Azure Cosmos DB for Apache Cassandra
 description: This documentation is provided as a resource for participants in the preview of Azure Cosmos DB Cassandra API Materialized View.
-author: dileepraotv-github
-ms.author: turao
+author: TheovanKraay
+ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to

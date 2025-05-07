@@ -1,9 +1,12 @@
-- name: PostgreSQL documentation
+- name: Azure Cosmos DB for PostgreSQL documentation
   href: index.yml
-- name: What is Azure Cosmos DB for PostgreSQL?
-  href: introduction.md
-- name: Product updates
-  href: product-updates.md
+- name: Overview
+  expanded: true
+  items:
+  - name: What is Azure Cosmos DB for PostgreSQL?
+    href: introduction.md
+  - name: Product updates
+    href: product-updates.md
 - name: Quickstart
   items:
     - name: Create cluster
@@ -72,6 +75,8 @@
           displayName: tutorial, private
 - name: Concepts
   items:
+    - name: Distributed relational databases
+      href: ../distributed-relational.md
     - name: Clusters
       href: concepts-cluster.md
     - name: Sharding models
