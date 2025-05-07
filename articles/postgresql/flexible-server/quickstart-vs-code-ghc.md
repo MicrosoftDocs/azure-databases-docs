@@ -64,7 +64,7 @@ These tools and resources help you follow along with this article and make the m
     @pgsql tell me about the tables in the HR schema
     ```
 
-        :::image type="content" source="media/quickstart-vs-code-ghc/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+    :::image type="content" source="media/quickstart-vs-code-ghc/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 1. Copilot responds with a detailed description of your schema's tables.
 
@@ -90,14 +90,16 @@ These tools and resources help you follow along with this article and make the m
     ```copilot-prompt
     @pgsql Yes, please make the JSONB column for me
     ```
+
     - Then Copilot asks for confirmation:
 
         ```copilot-prompt
-        `@pgsql Yes, I confirm`
+        @pgsql Yes, I confirm
         ```
-            :::image type="content" source="media/quickstart-vs-code-ghc/hr-schema-after-jsonb.png" alt-text="Screenshot of GitHub Copilot Chat in Visual Studio Code showing confirmation and results of converting the hr.employees table to use a JSONB column." lightbox="media/quickstart-vs-code-ghc/hr-schema-after-jsonb.png":::
 
-## Step 5: Using context menu options
+        :::image type="content" source="media/quickstart-vs-code-ghc/hr-schema-after-jsonb.png" alt-text="Screenshot of GitHub Copilot Chat in Visual Studio Code showing confirmation and results of converting the hr.employees table to use a JSONB column." lightbox="media/quickstart-vs-code-ghc/hr-schema-after-jsonb.png":::
+
+## Using context menu options
 
 - In addition to right-clicking on a database, you can select SQL code in the editor and right-click to access GitHub Copilot context menu options like **Explain Query**, **Rewrite Query**, or **Analyze Query Performance**.
 
