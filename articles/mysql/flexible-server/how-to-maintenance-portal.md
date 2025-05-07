@@ -36,6 +36,8 @@ You can choose from the following maintenance policy types, depending on your wo
 
 Virtual Canary is intended for non-production workloads that want to validate updates early. Servers under this policy receive updates ahead of general availability and do **not** follow the standard update cadence — there’s no guaranteed 30-day interval and no 7-day advance notice.
 
+:::image type="content" source="media/how-to-maintenance-portal/virtual-canary.png" alt-text="Screenshot that high light virtual canary.":::
+
 Burstable SKU servers are enrolled in the Virtual Canary policy by default.
 
 ### System Managed Maintenance Window (SMW)
@@ -51,6 +53,8 @@ You can also assign the server to a **batch** (`Batch 1` or `Batch 2`) to help s
 - **Batch 1**: Maintenance occurs in the **first 7 days** of the regional maintenance window.
 - **Batch 2**: Maintenance occurs in the **second 7 days**.
 
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-batch.png" alt-text="Screenshot that showcase maintenance batch.":::
+
 > [!NOTE]  
 > The 7-day maintenance batches are **not aligned with calendar weeks** (e.g., starting on Sunday or Monday). Instead, the first 7-day period begins from the actual start date of the maintenance cycle in the server's region.
 
@@ -61,11 +65,16 @@ To change the timing of a **currently scheduled** maintenance, use the **Mainten
 
 The **Maintenance Status** section displays any currently scheduled or recently completed maintenance events for the server. Typically, one entry is shown at a time.
 
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-status.png" alt-text="Screenshot that showcase maintenance status.":::
+
 ### Reschedule
 
 If maintenance hasn't started yet, you can select a new date and time by choosing **Reschedule**. This helps you avoid conflicts with business operations or planned deployments.
 
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-reschedule.png" alt-text="Screenshot that showcase maintenance reschedule.":::
+
 The reschedule feature is only available for servers on **General Purpose** and **Business Critical** compute tiers. It’s not supported for **Burstable SKU** servers.
+
 
 #### Reschedule considerations and limitations
 
@@ -81,6 +90,10 @@ There's no limitation on how many times a maintenance event can be rescheduled. 
 ### Maintenance rollout progress view
 
 Each maintenance event includes a **Tracking ID**. Clicking this ID opens a detailed view of all servers in your subscription that are part of the same maintenance rollout. This gives you a consolidated overview across your fleet — no need to check each server individually or rely solely on email notifications.
+
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-trackingid.png" alt-text="Screenshot that showcase maintenance trackingid.":::
+
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-impacted-resource.png" alt-text="Screenshot that showcase impacted resource page.":::
 
 You can access the tracking ID view at any time, whether the maintenance is pending or already completed.
 
