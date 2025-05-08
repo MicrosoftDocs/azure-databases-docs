@@ -141,3 +141,11 @@ Foreign-key constraints:
     "fk_graph_oid" FOREIGN KEY (graph) REFERENCES ag_graph(graphid)
 Access method: heap
 ```
+
+## Related content
+
+- [Azure Database for PostgreSQL documentation](overview.md)
+- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
+- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+- [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
+- [MSSQL extension for Visual Studio Code?](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code)

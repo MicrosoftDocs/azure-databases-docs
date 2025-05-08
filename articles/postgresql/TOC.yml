@@ -75,10 +75,6 @@
         href: flexible-server/how-to-deploy-github-action.md
       - name: Azure Pipelines
         href: flexible-server/azure-pipelines-deploy-database-task.md
-    - name: Generative AI
-      items:
-      - name: VS Code extension with GitHub Copilot
-        href: flexible-server/quickstart-visual-studio-code-github-copilot-extension.md
   - name: Concepts
     items:
     - name: Servers
@@ -186,24 +182,11 @@
         - name: Optimize performance when using pgvector
           href: flexible-server/how-to-optimize-performance-pgvector.md
           displayName: vector databases
-      - name: Developer Experience
-        items:
-          - name: PostgreSQL extension for VS Code
-            href: flexible-server/devx-vscode-ext-overview.md
-          - name: Quickstart for PostgreSQL extension for VS Code
-            href: flexible-server/devx-vscode-ext-quickstart.md
-          
-      - name: Graph Database
-        items:
-          - name: Overview Apache AGE for PostgreSQL
-            href: flexible-server/generative-ai-age-overview.md
-          - name: Performance Best Practices for Apache AGE
-            href: flexible-server/generative-ai-age-perf.md
-      - name: Partitioning
-        items:
-        - name: Partitioning using pg_partman
-          href: flexible-server/how-to-use-pg-partman.md
-          displayName: pg_partman
+    - name: Partitioning
+      items:
+       - name: Partitioning using pg_partman
+         href: flexible-server/how-to-use-pg-partman.md
+         displayName: pg_partman
     - name: Server parameters
       items:
       - name: Overview
@@ -394,6 +377,20 @@
         href: flexible-server/generative-ai-recommendation-system.md
       - name: Integrate Azure AI capabilities
         href: flexible-server/how-to-integrate-azure-ai.md
+  - name: Developer Experience
+    items:
+       - name: PostgreSQL extension for VS Code
+         href: flexible-server/vscode-extension-overview.md
+       - name: Quickstart for PostgreSQL extension for VS Code
+         href: flexible-server/quickstart-vscode-extension.md
+       - name: Quickstart for PostgreSQL GitHub Copilot
+         href: flexible-server/quickstart-vscode-github-copilot-extension.md
+  - name: Graph Database
+    items:
+    - name: Overview Apache AGE for PostgreSQL
+      href: flexible-server/generative-ai-age-overview.md
+    - name: Performance Best Practices for Apache AGE
+      href: flexible-server/generative-ai-age-perf.md
   - name: Integrations
     items:
     - name: Manage Azure resources with automation tasks

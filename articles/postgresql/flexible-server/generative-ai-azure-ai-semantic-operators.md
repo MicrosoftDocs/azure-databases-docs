@@ -13,7 +13,7 @@ ms.custom:
 # customer intent: As a user, I want to understand what Semantic Operators are available in the azure_ai extension for Azure Database for PostgreSQL flexible server.
 ---
 
-# Overview of Semantic Operators in the Azure AI Extension
+# Overview of Semantic Operators in the Azure AI Extension (Preview)
 
 ## Introducing Advanced Generative AI Capabilities in Postgres SQL
 
@@ -90,3 +90,11 @@ SELECT azure_ai.rank(
   ]
 ) AS ranked_documents;
 ```
+
+## Related content
+
+- [Azure Database for PostgreSQL documentation](overview.md)
+- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
+- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+- [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
+- [MSSQL extension for Visual Studio Code?](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code)

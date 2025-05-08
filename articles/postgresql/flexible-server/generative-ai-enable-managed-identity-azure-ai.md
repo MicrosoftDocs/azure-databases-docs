@@ -1,5 +1,5 @@
 ---
-title: Enable SAMI for Azure AI Services with the Azure AI extension for PostgreSQL
+title: Enable Managed Identity for Azure AI Services with the Azure AI extension for PostgreSQL (Preview)
 description: Enable system assigned managed identity for Azure AI Services with the Azure AI extension for PostgreSQL .
 author: jojohnso-msft
 ms.author: jojohnso
@@ -13,7 +13,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for Azure Database for PostgreSQL flexible server.
 ---
 
-# Enable SAMI for Azure AI Services with azure_ai extension
+# Enable Managed Identity for Azure AI Services with azure_ai extension (Preview)
 
 ## How to enable Managed Identity with azure_ai for Azure Database for PostgreSQL
 
