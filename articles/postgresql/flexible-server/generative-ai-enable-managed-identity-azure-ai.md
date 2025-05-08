@@ -13,7 +13,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for Azure Database for PostgreSQL flexible server.
 ---
 
-# Enable Managed Identity for Azure AI Services with azure_ai extension (Preview)
+# Enable Managed Identity for Azure AI Services with azure_ai extension (Preview) 
 
 ## How to enable Managed Identity with azure_ai for Azure Database for PostgreSQL
 
