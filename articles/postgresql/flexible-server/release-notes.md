@@ -55,12 +55,12 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: November 2024
 
 - General availability of [High-Availability Health Status Monitoring](how-to-monitor-high-availability.md) for Azure Database for PostgreSQL flexible server.
-- [PostgreSQL 12](concepts-version-policy.md) will retire on November 14, 2024. Please upgrade to a supported version before retirement to ensure continued support and security.
+- [PostgreSQL 12](concepts-version-policy.md) will retire on November 14, 2024. Upgrade to a supported version before retirement to ensure continued support and security.
 
 ## Release: October 2024
 
 - General Availability of [Task Automation](create-automation-tasks.md).
-- Private Preview of [Fabric Mirroring](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/mirroring-azure-database-for-postgresql-flexible-server-in/ba-p/4251876) for Azure Database for PostgreSQL flexible server.
+- Preview of [Fabric Mirroring](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/mirroring-azure-database-for-postgresql-flexible-server-in/ba-p/4251876) for Azure Database for PostgreSQL flexible server.
 
 ## Release: September 2024
 
@@ -175,7 +175,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability of [Query Performance Insight](concepts-query-performance-insight.md) for Azure Database for PostgreSQL flexible server.
 - General availability of [Major Version Upgrade](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL flexible server.
 - General availability of [Restore a dropped server](how-to-restore-dropped-server.md) for Azure Database for PostgreSQL flexible server.
-- Public preview of [Storage auto-grow](concepts-storage.md) for Azure Database for PostgreSQL flexible server.
+- Public preview of [Storage autogrow](concepts-storage.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: May 2023
 
@@ -214,7 +214,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: December 2022
 
 - Support for [pg_hint_plan](../extensions/concepts-extensions-versions.md#pg_hint_plan) extension with new servers. <sup>$</sup>
-- General availability of [Customer Managed Key feature](concepts-data-encryption.md) with Azure Database for PostgreSQL flexible server in Canada East, Canada Central, Southeast Asia, Switzerland North, Switzerland West, Brazil South and East Asia Azure regions.
+- General availability of [Customer Managed Key feature](concepts-data-encryption.md) with Azure Database for PostgreSQL flexible server in Canada East, Canada Central, Southeast Asia, Switzerland North, Switzerland West, Brazil South, and East Asia Azure regions.
 
 ## Release: November 2022
 
@@ -349,7 +349,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 - Several bug fixes, stability, and performance improvements.
 
 > [!IMPORTANT]  
-> **$** - New servers get these features automatically. Your existing servers will be automatically upgraded to the latest supported minor version and also new features are enabled during your server's future maintenance window. At this moment, there is no option to selectively stop to upgrade minor versions.
+> **$** - New servers get these features automatically. Your existing servers will be automatically upgraded to the latest supported minor version and also new features are enabled during your server's future maintenance window. At this moment, there's no option to selectively stop to upgrade minor versions.
 
 ## Contacts
 
@@ -363,7 +363,7 @@ For any questions or suggestions you might have on Azure Database for PostgreSQL
 
 Q. Will the Azure Database for PostgreSQL flexible server replace the Azure Database for PostgreSQL single server, or Will it soon be retired?
 
-A. Yes. However, we'll continue to support Azure Database for PostgreSQL single server until **March 28, 2025**, and encourage you to adopt Azure Database for PostgreSQL flexible server, which has richer capabilities such as zone resilient HA, predictable performance, maximum control, custom maintenance window, cost optimization controls, and simplified developer experience suitable for your enterprise workloads. If we decide to retire any service, feature, API, or SKU, you'll receive advance notice, including a migration or transition path. Learn more about Microsoft Lifecycle policies [here](/lifecycle/faq/general-lifecycle).
+A. Yes. However, we'll continue to support Azure Database for PostgreSQL single server until **March 28, 2025**, and encourage you to adopt Azure Database for PostgreSQL flexible server, which has richer capabilities such as zone resilient HA, predictable performance, maximum control, custom maintenance window, cost optimization controls, and simplified developer experience suitable for your enterprise workloads. If we decide to retire any service, feature, API, or SKU, you receive advance notice, including a migration or transition path. Learn more about Microsoft Lifecycle policies [here](/lifecycle/faq/general-lifecycle).
 
 ## Related content
 
