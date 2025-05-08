@@ -1,5 +1,5 @@
 ---
-title: Set up Scheduled Maintenance in the Azure Portal
+title: Set up Scheduled Maintenance in the Azure portal
 description: Learn how to configure scheduled maintenance settings for Azure Database for MySQL - Flexible server from the Azure portal.
 author: xboxeer
 ms.author: yuzheng1
@@ -34,7 +34,7 @@ You can choose from the following maintenance policy types, depending on your wo
 
 ### Virtual Canary
 
-Virtual Canary is intended for non-production workloads that want to validate updates early. Servers under this policy receive updates ahead of general availability and do **not** follow the standard update cadence — there’s no guaranteed 30-day interval and no 7-day advance notice.
+Virtual Canary is intended for nonproduction workloads that want to validate updates early. Servers under this policy receive updates ahead of general availability and do **not** follow the standard update cadence—there’s no guaranteed 30-day interval and no 7-day advance notice.
 
 :::image type="content" source="media/how-to-maintenance-portal/virtual-canary.png" alt-text="Screenshot that high light virtual canary.":::
 
@@ -42,58 +42,58 @@ Burstable SKU servers are enrolled in the Virtual Canary policy by default.
 
 ### System Managed Maintenance Window (SMW)
 
-This is the default option for servers on **General Purpose** and **Business Critical** compute tiers. Maintenance is automatically scheduled on a random day and time, typically between **11:00 PM and 7:00 AM server local time**. This policy follows the standard maintenance behavior — updates occur no more than once every 30 days and are announced at least 7 days in advance.
+This maintenance policy is the default option for servers on **General Purpose** and **Business Critical** compute tiers. Maintenance is automatically scheduled on a random day and time, typically between **11:00 PM and 7:00 AM server local time**. This policy follows the standard maintenance behavior—updates occur no more than once every 30 days and are announced at least seven days in advance.
 
 ### Custom Managed Maintenance Window (CMW)
 
-Choose this option if you want to control when maintenance happens. CMW lets you define a preferred **day of the week** and **start time** (in a 60-minute UTC window). This is especially useful for production environments where update timing needs to align with change control policies.
+Choose this maintenance policy if you want to control when maintenance happens. CMW lets you define a preferred **day of the week** and **start time** (in a 60-minute UTC window). This is especially useful for production environments where update timing needs to align with change control policies.
 
 You can also assign the server to a **batch** (`Batch 1` or `Batch 2`) to help stagger maintenance across environments like TEST and PROD:
 
 - **Batch 1**: Maintenance occurs in the **first 7 days** of the regional maintenance window.
 - **Batch 2**: Maintenance occurs in the **second 7 days**.
 
-:::image type="content" source="media/how-to-maintenance-portal/maintenance-batch.png" alt-text="Screenshot that showcase maintenance batch.":::
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-batch.png" alt-text="Screenshot that showcases maintenance batch.":::
 
 > [!NOTE]  
-> The 7-day maintenance batches are **not aligned with calendar weeks** (e.g., starting on Sunday or Monday). Instead, the first 7-day period begins from the actual start date of the maintenance cycle in the server's region.
+> The 7-day maintenance batches are **not aligned with calendar weeks** (for example, starting on Sunday or Monday). Instead, the first 7-day period begins from the actual start date of the maintenance cycle in the server's region.
 
-Once CMW is configured, the new schedule will take effect in the **next regional maintenance cycle**.  
+Once CMW is configured, the new schedule takes effect in the **next regional maintenance cycle**.  
 To change the timing of a **currently scheduled** maintenance, use the **Maintenance Reschedule** feature.
 
 ## View and Manage Upcoming Maintenance
 
 The **Maintenance Status** section displays any currently scheduled or recently completed maintenance events for the server. Typically, one entry is shown at a time.
 
-:::image type="content" source="media/how-to-maintenance-portal/maintenance-status.png" alt-text="Screenshot that showcase maintenance status.":::
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-status.png" alt-text="Screenshot that showcases maintenance status.":::
 
 ### Reschedule
 
 If maintenance hasn't started yet, you can select a new date and time by choosing **Reschedule**. This helps you avoid conflicts with business operations or planned deployments.
 
-:::image type="content" source="media/how-to-maintenance-portal/maintenance-reschedule.png" alt-text="Screenshot that showcase maintenance reschedule.":::
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-reschedule.png" alt-text="Screenshot that showcases maintenance reschedule.":::
 
-The reschedule feature is only available for servers on **General Purpose** and **Business Critical** compute tiers. It’s not supported for **Burstable SKU** servers.
+The rescheduled feature is only available for servers on **General Purpose** and **Business Critical** compute tiers. It’s not supported for **Burstable SKU** servers.
 
 
 #### Reschedule considerations and limitations
 
 Be aware of the following points about the feature:
 
-- **Tier availability**: Maintenance rescheduling isn't available for the Burstable compute tier. This feature is intended for servers in the production environment, whereas the Burstable tier is designed for non-production purposes.
+- **Tier availability**: Maintenance rescheduling isn't available for the Burstable compute tier. This feature is intended for servers in the production environment, whereas the Burstable tier is designed for nonproduction purposes.
 - **Demand constraints**: Your rescheduled maintenance might be canceled if a high number of maintenance activities occur simultaneously in the same region.
 - **Lock-in period**: Rescheduling is unavailable 15 minutes before the initially scheduled maintenance time, to maintain the reliability of the service.
 - **Rescheduling throttle**: If too many servers in the same region are scheduled for maintenance during the same time, rescheduling requests might fail. If this failure occurs, you receive an error notification that advises you to choose an alternative time slot. Successfully rescheduled maintenance is unlikely to be canceled.
 
-There's no limitation on how many times a maintenance event can be rescheduled. As long as a maintenance event hasn't entered the **In preparation** state, you can always reschedule it to another time.
+There is no limitation on how many times a maintenance event can be rescheduled. As long as a maintenance event hasn't entered the **In preparation** state, you can always reschedule it to another time.
 
 ### Maintenance rollout progress view
 
-Each maintenance event includes a **Tracking ID**. Clicking this ID opens a detailed view of all servers in your subscription that are part of the same maintenance rollout. This gives you a consolidated overview across your fleet — no need to check each server individually or rely solely on email notifications.
+Each maintenance event includes a **Tracking ID**. Clicking this ID opens a detailed view of all servers in your subscription that are part of the same maintenance rollout. This gives you a consolidated overview across your fleet—no need to check each server individually or rely solely on email notifications.
 
-:::image type="content" source="media/how-to-maintenance-portal/maintenance-trackingid.png" alt-text="Screenshot that showcase maintenance trackingid.":::
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-trackingid.png" alt-text="Screenshot that showcases maintenance TrackingID.":::
 
-:::image type="content" source="media/how-to-maintenance-portal/maintenance-impacted-resource.png" alt-text="Screenshot that showcase impacted resource page.":::
+:::image type="content" source="media/how-to-maintenance-portal/maintenance-impacted-resource.png" alt-text="Screenshot that showcases impacted resource page.":::
 
 You can access the tracking ID view at any time, whether the maintenance is pending or already completed.
 
