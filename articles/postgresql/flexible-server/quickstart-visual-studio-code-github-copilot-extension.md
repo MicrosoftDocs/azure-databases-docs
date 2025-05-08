@@ -36,19 +36,15 @@ These tools and resources help you follow along with this article and make the m
 
 1. Select the **Extensions** icon in Visual Studio Code, search for **GitHub Copilot**, and select **Install**.
 
-    :::image type="content" source="media/quickstart-vs-code-ghc/install-ghc.png" alt-text="Screenshot of Visual Studio Code Extensions Marketplace showing GitHub Copilot and GitHub Copilot Chat with the Install buttons highlighted. The search bar contains the text 'GitHub Copilot'.":::
-
 1. The GitHub Copilot Chat extension is automatically installed along with GitHub Copilot.
 
-## Sign In to GitHub within Visual Studio Code
+## Sign in to GitHub in Visual Studio Code
 
 1. Ensure you have a GitHub account and an active GitHub Copilot subscription:
    - [Create GitHub account](https://www.github.com)
    - [Enable GitHub Copilot Subscription](https://github.com/settings/copilot)
 
 1. In Visual Studio Code, select the **Account** icon and choose **Sign in with GitHub to use GitHub Copilot**.
-
-    :::image type="content" source="media/quickstart-vs-code-ghc/sign-in-ghc.png" alt-text="Screenshot of Visual Studio Code with the Account icon selected and the option 'Sign in with GitHub to use GitHub Copilot' highlighted in the account menu.":::
 
 ## Getting started with GitHub Copilot for PostgreSQL
 
@@ -64,11 +60,11 @@ These tools and resources help you follow along with this article and make the m
     @pgsql tell me about the tables in the HR schema
     ```
 
-    :::image type="content" source="media/quickstart-vs-code-ghc/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 1. Copilot responds with a detailed description of your schema's tables.
 
-    :::image type="content" source="media/quickstart-vs-code-ghc/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 ## Using read/write capabilities
 
@@ -83,8 +79,6 @@ These tools and resources help you follow along with this article and make the m
 
     - Copilot might respond with SQL suggestions and ask permission to make changes.
 
-        :::image type="content" source="media/quickstart-vs-code-ghc/hr-schema-jsonb-confirm.png" alt-text="Screenshot of Copilot Chat displaying a generated SQL script to convert the employees table to JSONB, with detailed steps and optional index creation." lightbox="media/quickstart-vs-code-ghc/hr-schema-jsonb-confirm.png":::
-
 1. To approve execution:
 
     ```copilot-prompt
@@ -97,17 +91,13 @@ These tools and resources help you follow along with this article and make the m
         @pgsql Yes, I confirm
         ```
 
-        :::image type="content" source="media/quickstart-vs-code-ghc/hr-schema-after-jsonb.png" alt-text="Screenshot of GitHub Copilot Chat in Visual Studio Code showing confirmation and results of converting the hr.employees table to use a JSONB column." lightbox="media/quickstart-vs-code-ghc/hr-schema-after-jsonb.png":::
-
 ## Using context menu options
 
 - In addition to right-clicking on a database, you can select SQL code in the editor and right-click to access GitHub Copilot context menu options like **Explain Query**, **Rewrite Query**, or **Analyze Query Performance**.
 
-    :::image type="content" source="media/quickstart-vs-code-ghc/ghc-context-menus.png" alt-text="Screenshot of a PostgreSQL function opened in Visual Studio Code with a context menu expanded, showing GitHub Copilot options such as 'Explain Query' and 'Analyze Query Performance'." lightbox="media/quickstart-vs-code-ghc/ghc-context-menus.png":::
-
 ## Additional ideas and prompt recipes
 
-There are a nearly infinite prompts and things you can do with GitHub Copilot for PostgreSQL - the limit is only your imagination! To help jumpstart some ideas, here are some concept prompts you can try or modify to match your database context and development environment:
+There are many prompts and things you can do with GitHub Copilot for PostgreSQL - the limit is only your imagination! To help jumpstart some ideas, here are some concept prompts you can try or modify to match your database context and development environment:
 
 ### Query optimization
 
@@ -159,11 +149,11 @@ For additional assistance or to report issues, use the built-in feedback tool in
 
 - Go to **Help > Report Issue**
 
-    :::image type="content" source="media/quickstart-vs-code-ghc/report-issue.png" alt-text="Screenshot of Visual Studio Code Help menu with the 'Report Issue' option highlighted for submitting feedback or problems." lightbox="media/quickstart-vs-code-ghc/report-issue.png":::
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/report-issue.png" alt-text="Screenshot of Visual Studio Code Help menu with the 'Report Issue' option highlighted for submitting feedback or problems." lightbox="media/quickstart-visual-studio-code-github-copilot-extension/report-issue.png":::
 
 - Or open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Give Feedback`.
 
-    :::image type="content" source="./media/quickstart-vs-code-ghc/feedback-command-palette.png" alt-text="Screenshot of Visual Studio Code Command Palette with 'PGSQL: Give Feedback' command entered and highlighted." lightbox="./media/quickstart-vs-code-ghc/feedback-command-palette.png":::
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/feedback-command-palette.png" alt-text="Screenshot of Visual Studio Code Command Palette with 'PGSQL: Give Feedback' command entered and highlighted." lightbox="media/quickstart-visual-studio-code-github-copilot-extension/feedback-command-palette.png":::
 
 ## Related content
 
@@ -171,4 +161,4 @@ For additional assistance or to report issues, use the built-in feedback tool in
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
-- [MSSQL extension for Visual Studio Code?](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code) 
+- [MSSQL extension for Visual Studio Code?](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code)
