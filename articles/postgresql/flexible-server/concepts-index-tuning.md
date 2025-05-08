@@ -4,7 +4,7 @@ description: This article describes the index tuning feature available in an Azu
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/26/2025
+ms.date: 05/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -168,6 +168,10 @@ If you use the CLI commands `az postgres flexible-server index-tuning show-setti
 ## Limitations and supportability
 
 Following is the list of limitations and supportability scope for index tuning.
+
+### Automatic deletion of recommendations
+
+Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, index tuning must be enabled.
 
 ### Dependency on hypopg extension
 

@@ -90,19 +90,11 @@ COMMIT;
 > [!IMPORTANT]
 > Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disable using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. Notice that if the query involves other tables, the setting also discourages the use of sequential scans in all of them.
 
-## Scale efficiently with Quantization
+## Scale efficiently with Quantization (Preview)
 
 DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)
 
-To reduce the size of your index and fit more data into memory, you can utilize PQ:
-```sql
-CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann(embedding vector_cosine_ops) 
-WITH(
-    product_quantized=true, 
-    pq_param_num_chunks = 0, -- 0 means it is determined automatically
-    pq_param_training_samples = 0 -- 0 means it is determined automatically
-    );    
-```
+To get access the product quantization(PQ) feature, [please sign up for the preview](https://aka.ms/pg-diskann-form)
 
 ## Speed up index build
 There are a few ways we recommend to improve your index build times.

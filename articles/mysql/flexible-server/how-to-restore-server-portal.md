@@ -1,16 +1,16 @@
 ---
 title: Restore From Backup
-description: This article describes how to perform restore operations in Azure Database for MySQL - Flexible Server through the Azure portal.
+description: This article describes how to perform restore operations in Azure Database for MySQL flexible server through the Azure portal.
 author: code-sidd
 ms.author: sisawant
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 05/06/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Point-in-time restore in Azure Database for MySQL - Flexible Server with the Azure portal
+# Point-in-time restore in Azure Database for MySQL with the Azure portal
 
 This article provides step-by-step procedure to perform point-in-time recoveries in Azure Database for MySQL - Flexible Server using backups.
 
@@ -107,7 +107,8 @@ Follow these steps to restore your Azure Database for MySQL - Flexible Server in
 1. Provide a new server name in the **Name** field in the Server details section.
 
 1. When primary region is down, one can't create geo-redundant servers in the respective geo-paired region as storage can't be provisioned in the primary region. One must wait for the primary region to be up to provision geo-redundant servers in the geo-paired region. With the primary region down one can still geo-restore the source server to the geo-paired region by disabling the geo-redundancy option in the Compute + Storage Configure Server settings in the restore portal experience and restore as a locally redundant server to ensure business continuity.
-   :::image type="content" source="media/how-to-restore-server-portal/geo-restore-region-down-1.png" alt-text="Screenshot of Compute + Storage window." lightbox="media/how-to-restore-server-portal/geo-restore-region-down-1.png":::
+
+    :::image type="content" source="media/how-to-restore-server-portal/geo-restore-region-down-1.png" alt-text="Screenshot of Compute + Storage window." lightbox="media/how-to-restore-server-portal/geo-restore-region-down-1.png":::
 
    :::image type="content" source="media/how-to-restore-server-portal/geo-restore-region-down-2.png" alt-text="Screenshot of Disabling Geo-Redundancy." lightbox="media/how-to-restore-server-portal/geo-restore-region-down-2.png":::
 
@@ -117,7 +118,7 @@ Follow these steps to restore your Azure Database for MySQL - Flexible Server in
 
 1. A notification is shown that the restore operation has been initiated. This operation might take a few minutes.
 
-The new server created by geo restore has the same server admin sign-in name and password that was valid for the existing server at the time the restore was initiated. The password can be changed from the new server's Overview page. Additionally during a restore, **Networking** settings such as virtual network settings and firewall rules can be configured as described in the below section.
+    The new server created by geo restore has the same server admin sign-in name and password that was valid for the existing server at the time the restore was initiated. The password can be changed from the new server's Overview page. Additionally during a restore, **Networking** settings such as virtual network settings and firewall rules can be configured as described in the below section.
 
 ## Use restore to move a server from Public access to Private access
 
@@ -152,6 +153,12 @@ Follow these steps to restore your Azure Database for MySQL - Flexible Server in
 1. Select **Create** to provision the server. Provisioning can take a few minutes.
 
 1. A notification is shown that the restore operation has been initiated.
+
+## Auto-scale of IOPS for faster restore
+
+You now have the capability to enable auto-scaling of IOPS for both the source and target servers during restore operations. This option is available only if the source server does not already have auto-scaling of IOPS enabled. Temporarily boosting IOPS helps accelerate the restore process by meeting its increased performance demands. Once provisioning is complete, you may choose to disable auto-scaling if it is no longer needed. In the restore workflow, you see a checkbox option labeled Fast Restore. Select this option to leverage auto-scaling of IOPS for a faster and more reliable restore operation.
+
+:::image type="content" source="media/how-to-restore-server-portal/fast-restore.png" alt-text="Screenshot of autoscale iops for restore." lightbox="media/how-to-restore-server-portal/fast-restore.png":::
 
 ## Perform post-restore tasks
 

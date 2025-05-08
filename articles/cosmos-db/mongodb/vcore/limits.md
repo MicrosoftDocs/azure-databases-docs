@@ -79,7 +79,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 
 ### Collection limits
 -	Collections per cluster: 1,000
--	Unsharded collection size: 4 TiB
+-	Unsharded collection size: 32 TiB
 
 [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for the higher values support.
 
