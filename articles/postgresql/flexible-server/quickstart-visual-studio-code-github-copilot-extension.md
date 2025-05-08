@@ -16,7 +16,7 @@ ms.custom:
 
 # Quickstart: GitHub Copilot for PostgreSQL extension in Visual Studio Code preview
 
-The PostgreSQL extension for Visual Studio Code now includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Once connected to a PostgreSQL database, Copilot accesses contextual information from your live connection. This enables the `@pgsql` Copilot chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
+The PostgreSQL extension for Visual Studio Code now includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Copilot accesses contextual information from your live connection, once connected to a PostgreSQL database. This enables the `@pgsql` Copilot chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ These tools and resources help you follow along with this article and make the m
 
 ## Install the GitHub Copilot and GitHub Copilot Chat extensions
 
-1. If you do not already have the GitHub Copilot extension installed in Visual Studio Code:
+1. If you don't already have the GitHub Copilot extension installed in Visual Studio Code:
 
 1. Select the **Extensions** icon in Visual Studio Code, search for **GitHub Copilot**, and select **Install**.
 
@@ -60,16 +60,16 @@ These tools and resources help you follow along with this article and make the m
     @pgsql tell me about the tables in the HR schema
     ```
 
-    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response.":::
 
 1. Copilot responds with a detailed description of your schema's tables.
 
-    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns.":::
 
 ## Using read/write capabilities
 
 > [!NOTE]  
-> The GitHub Copilot Chat integration for PostgreSQL is a powerful tool that can make changes to your database. It is important to use this feature with caution, especially in staging and production environments. Always review the generated SQL code before executing it, and consider testing it in a safe environment first.
+> The GitHub Copilot Chat integration for PostgreSQL is a powerful tool that can make changes to your database. It's important to use this feature with caution, especially in staging and production environments. Always review the generated SQL code before executing it, and consider testing it in a safe environment first.
 
 1. Try a more advanced prompt.
 
