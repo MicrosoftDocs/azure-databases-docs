@@ -77,8 +77,8 @@
         href: flexible-server/azure-pipelines-deploy-database-task.md
     - name: Generative AI
       items:
-      - name: VS Code extension with Github Copilot
-        href: flexible-server/quickstart-vs-code-ghc.md
+      - name: VS Code extension with GitHub Copilot
+        href: flexible-server/quickstart-visual-studio-code-github-copilot-extension.md
   - name: Concepts
     items:
     - name: Servers
