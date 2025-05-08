@@ -220,7 +220,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: October 2022
 
 - Support for [Read Replica](concepts-read-replicas.md) feature in public preview.
-- Support for [Microsoft Entra authentication ](concepts-azure-ad-authentication.md) authentication in public preview.
+- Support for [Microsoft Entra authentication](concepts-azure-ad-authentication.md) authentication in public preview.
 - Support for [Customer managed keys](concepts-data-encryption.md) in public preview.
 - Published [Security and compliance certifications](concepts-compliance.md) for Azure Database for PostgreSQL flexible server.
 - Postgres 14 is now the default PostgreSQL version.

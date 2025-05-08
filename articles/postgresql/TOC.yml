@@ -158,6 +158,10 @@
           href: flexible-server/generative-ai-azure-cognitive.md
         - name: Azure Machine Learning Services
           href: flexible-server/generative-ai-azure-machine-learning.md
+        - name: Enable Managed Identity
+          href: flexible-server/generative-ai-enable-managed-identity-azure-ai.md
+        - name: Introducing Semantic Operators
+          href: flexible-server/generative-ai-azure-ai-semantic-operators.md
       - name: In-database Embeddings (azure_local_ai)
         items:
         - name: Overview  
@@ -178,6 +182,19 @@
         - name: Optimize performance when using pgvector
           href: flexible-server/how-to-optimize-performance-pgvector.md
           displayName: vector databases
+      - name: Developer Experience
+        items:
+          - name: PostgreSQL extension for VS Code
+            href: flexible-server/devx-vscode-ext-overview.md
+          - name: Quickstart for PostgreSQL extension for VS Code
+            href: flexible-server/devx-vscode-ext-quickstart.md
+          
+      - name: Graph Database
+        items:
+          - name: Overview Apache AGE for PostgreSQL
+            href: flexible-server/generative-ai-age-overview.md
+          - name: Performance Best Practices for Apache AGE
+            href: flexible-server/generative-ai-age-perf.md
       - name: Partitioning
         items:
         - name: Partitioning using pg_partman
