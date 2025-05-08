@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 05/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Why use Azure Confidential Computing preview?
