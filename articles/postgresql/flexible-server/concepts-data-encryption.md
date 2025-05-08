@@ -11,7 +11,7 @@ ms.topic: conceptual
 # customer intent: As a user, I want to learn how data is encrypted in my Azure Database for PostgreSQL flexible server, and what options do I have to bring my own encryption key.
 ---
 
-# Data encryption overview
+# Data encryption in Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
