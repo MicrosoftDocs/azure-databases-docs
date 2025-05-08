@@ -75,6 +75,12 @@ If maintenance hasn't started yet, you can select a new date and time by choosin
 
 The rescheduled feature is only available for servers on **General Purpose** and **Business Critical** compute tiers. It’s not supported for **Burstable SKU** servers.
 
+#### Reschedule to now
+
+You can click **Reschedule to now** to start the maintenance immediately. This is useful if you want to apply the update right away, or if you want a more precise control over when the maintenance occurs. **Reschedule to now** is available only if the server is in the **Scheduled** or **Rescheduled** state. Once you click **Reschedule to now**, the server enters the **In preparation** state. This means that the server is preparing for the maintenance event, and it will start the maintenance shortly after couple minutes.
+
+> [!NOTE]  
+> In certain cases, the **Reschedule to now** may hang for a while in the **In preparation** state. This is usually due to too many servers in the same region being scheduled for maintenance at the same time. If this happens, you can either wait for the server to finish preparing or raise a support ticket to get help.
 
 #### Reschedule considerations and limitations
 
