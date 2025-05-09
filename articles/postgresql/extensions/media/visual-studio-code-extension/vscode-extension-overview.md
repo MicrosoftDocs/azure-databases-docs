@@ -22,8 +22,8 @@ Currently in public preview, the PostgreSQL extension for Visual Studio Code is 
 You can install the PostgreSQL extension directly from the Extensions Marketplace in Visual Studio Code to get started. Follow these steps:
 
 1. Open the Extensions view in Visual Studio Code by selecting the Extensions icon in the Activity Bar or by using the "View: Extensions" command.
-1. Search for "PostgreSQL" in the Extensions Marketplace.
-1. Select the PostgreSQL extension and select "Install."
+1. Search for *PostgreSQL* in the Extensions Marketplace.
+1. Select the **PostgreSQL** extension and select **Install**.
 
 Once installed, an elephant icon appears to represent the PostgreSQL page in the Visual Studio Code sidebar.
 
