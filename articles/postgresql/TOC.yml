@@ -375,14 +375,14 @@
         href: flexible-server/generative-ai-recommendation-system.md
       - name: Integrate Azure AI capabilities
         href: flexible-server/how-to-integrate-azure-ai.md
-  - name: Developer Experience
+  - name: Developer experience
     items:
       - name: PostgreSQL extension for VS Code
-        href: extensions\visual-studio-code-extension\overview-vscode-extension.md
+        href: extensions\visual-studio-code-extension\overview.md
       - name: Quickstart for PostgreSQL extension for VS Code
-        href: extensions\visual-studio-code-extension\quickstart-vscode-extension.md
+        href: extensions\visual-studio-code-extension\quickstart-connect.md
       - name: Quickstart for PostgreSQL GitHub Copilot
-        href: extensions\visual-studio-code-extension\quickstart-vscode-extension-github-copilot.md
+        href: extensions\visual-studio-code-extension\quickstart-github-copilot.md
   - name: Graph Database
     items:
     - name: Overview Apache AGE for PostgreSQL

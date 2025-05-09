@@ -77,18 +77,18 @@ The PostgreSQL extension is compatible with the following operating systems:
 
 Including support for various Linux distributions such as Ubuntu, Fedora, and Red Hat Enterprise Linux.
 
-## Support and feedback
+## Feedback and support
 
-For bugs, feature requests, and issues, use Visual Studio Code's built-in feedback tool. Complete this via the VS Code Help menu or the PGSQL command palette.
+For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this via the VS Code Help menu or the PGSQL command palette.
 
 - Help menu
- - Go to **Help > Report Issue**
+    - Go to **Help > Report Issue**
 
 - Command palette
- - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
+    - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
 
 ## Related content
 
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview](quickstart-vscode-extension.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview](quickstart-vscode-extension-github-copilot.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview](quickstart-connect.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview](quickstart-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
