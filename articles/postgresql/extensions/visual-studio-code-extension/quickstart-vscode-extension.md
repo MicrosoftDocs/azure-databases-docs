@@ -47,13 +47,15 @@ Once installed, the PostgreSQL page, represented by an elephant icon, appears in
 Whether hosted locally or on a remote server, connecting to a PostgreSQL database is a fundamental step in managing and interacting with your data. This process involves providing the necessary connection details, such as the server address, port, and authentication credentials, to establish a secure link between your client application and the database. With the PostgreSQL extension for Visual Studio Code, you can seamlessly connect to your database and use powerful tools to query, manage, and explore your data efficiently.
 
 1. Select the elephant icon on the sidebar to open the PostgreSQL extension page.
+
 1. Select the **Add Connection** button.
+
 1. Enter your connection details manually or use the connection string format:
 
-  ```bash
-    psql -h <server>.postgres.database.azure.com -p 5432 -U
-  ```
-    
+    ```bash
+      psql -h <server>.postgres.database.azure.com -p 5432 -U
+    ```
+
 1. If using Azure, sign in to your Azure account and browse for the database instance. Filter by subscription, resource group, server, and database name.
 
 ### Authentication
