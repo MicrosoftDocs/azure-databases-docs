@@ -25,11 +25,11 @@ Before you begin, verify you have the proper tools and resources downloaded and 
 These tools and resources help you follow along with this article and make the most of the GitHub Copilot integration for the PostgreSQL extension in Visual Studio Code.
 
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your machine.
-- PostgreSQL database installed locally or hosted in the [cloud](quickstart-create-server.md).
+- PostgreSQL database installed locally or hosted in the [cloud](../../flexible-server/quickstart-create-server.md).
 - [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql) installed in Visual Studio Code.
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
-- [Azure account](how-to-deploy-on-azure-free-account.md) for connecting to cloud-hosted databases (optional).
+- [Azure account](../../flexible-server/how-to-deploy-on-azure-free-account.md) for connecting to cloud-hosted databases (optional).
 
 ## Install GitHub Copilot and GitHub Copilot Chat extensions
 
@@ -155,8 +155,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [Azure Database for PostgreSQL documentation](overview.md)
+- [What is the PostgreSQL extension for Visual Studio Code preview?](overview-vscode-extension.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview](quickstart-vscode-extension.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
-- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
-- [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
-- [MSSQL extension for Visual Studio Code?](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code)

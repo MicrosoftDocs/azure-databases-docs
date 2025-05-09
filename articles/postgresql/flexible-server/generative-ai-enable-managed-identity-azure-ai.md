@@ -1,5 +1,5 @@
 ---
-title: **Enable Managed Identity for Azure AI Services with the Azure AI Extension for PostgreSQL (Preview)**
+title: Enable Managed Identity for Azure AI Services with the Azure AI Extension for PostgreSQL
 description: Enable system assigned managed identity for Azure AI Services with the Azure AI extension for PostgreSQL.
 author: jojohnso-msft
 ms.author: jojohnso

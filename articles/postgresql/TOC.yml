@@ -380,11 +380,11 @@
   - name: Developer Experience
     items:
        - name: PostgreSQL extension for VS Code
-         href: flexible-server/vscode-extension-overview.md
+         href: flexible-server/overview-vscode-extension.md
        - name: Quickstart for PostgreSQL extension for VS Code
          href: flexible-server/quickstart-vscode-extension.md
        - name: Quickstart for PostgreSQL GitHub Copilot
-         href: flexible-server/quickstart-vscode-github-copilot-extension.md
+         href: flexible-server/quickstart-vscode-extension-github-copilot.md
   - name: Graph Database
     items:
     - name: Overview Apache AGE for PostgreSQL

@@ -1,8 +1,4 @@
 ---
-# Required metadata
-# For more information, see https://review.learn.microsoft.com/en-us/help/platform/learn-editor-add-metadata?branch=main
-# For valid values of ms.service, ms.prod, and ms.topic, see https://review.learn.microsoft.com/en-us/help/platform/metadata-taxonomies?branch=main
-
 title: Use azure_local_ai extension to generate vector embeddings in PostgreSQL with locally deployed LLM
 description: Generate text embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns with the azure_local_ai extension and locally deployed LLM.
 author: jojohnso-msft
