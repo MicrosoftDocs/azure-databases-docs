@@ -116,7 +116,7 @@ Write prompts like the example below to receive detailed insights and suggestion
 ```copilot-prompt
 @pgsql tell me about the tables in the HR schema
 ```
-To learn more, visit [Configure GitHub Copilot](quickstart-vscode-github-copilot-extension.md)
+To learn more, visit [Configure GitHub Copilot](quickstart-vscode-extension-github-copilot.md)
 
 ## Connect to an Azure Database for PostgreSQL Flexible Server instance with VS Code from the Azure portal
 

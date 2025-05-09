@@ -166,8 +166,6 @@
         items:
         - name: Overview  
           href: flexible-server/azure-local-ai.md
-        - name: How to enable and use
-          href: flexible-server/generative-ai-azure-local-ai.md
       - name: Vector indexing (pg_diskann)
         items:
         - name: Overview  
@@ -379,18 +377,12 @@
         href: flexible-server/how-to-integrate-azure-ai.md
   - name: Developer Experience
     items:
-     - name: Visual Studio Code extension
-        items:
-        - name: Overview
-          items: 
-          - name: PostgreSQL extension for VS Code
-            href: extensions\visual-studio-code-extension\overview-vscode-extension.md
-        - name: Quickstarts
-          items:
-          - name: Quickstart for PostgreSQL extension for VS Code
-            href: extensions\visual-studio-code-extension\quickstart-vscode-extension.md
-          - name: Quickstart for PostgreSQL GitHub Copilot
-            href: extensions\visual-studio-code-extension\quickstart-vscode-extension-github-copilot.md
+      - name: PostgreSQL extension for VS Code
+        href: extensions\visual-studio-code-extension\overview-vscode-extension.md
+      - name: Quickstart for PostgreSQL extension for VS Code
+        href: extensions\visual-studio-code-extension\quickstart-vscode-extension.md
+      - name: Quickstart for PostgreSQL GitHub Copilot
+        href: extensions\visual-studio-code-extension\quickstart-vscode-extension-github-copilot.md
   - name: Graph Database
     items:
     - name: Overview Apache AGE for PostgreSQL

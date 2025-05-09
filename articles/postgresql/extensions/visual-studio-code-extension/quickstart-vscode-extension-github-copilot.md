@@ -56,13 +56,13 @@ If prompted, select **Allow** to enable GitHub Copilot to access the database co
 
 When the Copilot chat interface opens, you can start asking questions using the `@pgsql` prefix to specify that you want to interact with the PostgreSQL database.
 
-    Try a prompt like:
+Try a prompt like:
 
-    ```copilot-prompt
-    @pgsql tell me about the tables in the HR schema
-    ```
+```copilot-prompt
+@pgsql tell me about the tables in the HR schema
+```
 
-    :::image type="content" source="media/quickstart-vscode-extension-github-copilot/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+:::image type="content" source="media/quickstart-vscode-extension-github-copilot/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 1. Copilot responds with a detailed description of your schema's tables.
 
@@ -71,25 +71,25 @@ When the Copilot chat interface opens, you can start asking questions using the 
 > [!NOTE]  
 > The GitHub Copilot Chat integration for PostgreSQL is a powerful tool that can make changes to your database. It's important to use this feature with caution, especially in staging and production environments. Always review the generated SQL code before executing it, and consider testing it in a safe environment first.
 
-1. Try a more advanced prompt.
+Try a more advanced prompt.
 
-    ```copilot-prompt
-    @pgsql convert the hr.employees table to use a JSONB column for the address field
-    ```
+  ```copilot-prompt
+  @pgsql convert the hr.employees table to use a JSONB column for the address field
+  ```
 
-    - Copilot might respond with SQL suggestions and ask permission to make changes.
+Copilot might respond with SQL suggestions and ask permission to make changes.
 
-1. To approve execution:
+To approve execution:
 
-    ```copilot-prompt
-    @pgsql Yes, please make the JSONB column for me
-    ```
+  ```copilot-prompt
+  @pgsql Yes, please make the JSONB column for me
+  ```
 
-    - Then Copilot asks for confirmation:
+Then Copilot asks for confirmation:
 
-        ```copilot-prompt
-        @pgsql Yes, I confirm
-        ```
+  ```copilot-prompt
+  @pgsql Yes, I confirm
+ ```
 
 ## Using context menu options
 
