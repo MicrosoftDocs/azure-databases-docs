@@ -27,7 +27,8 @@ These tools and resources help you follow along with this article and make the m
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your machine.
 - PostgreSQL database installed locally or hosted in the [cloud](quickstart-create-server.md).
 - [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql) installed in Visual Studio Code.
-- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) and the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
+- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+- [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
 - [Azure account](how-to-deploy-on-azure-free-account.md) for connecting to cloud-hosted databases (optional).
 
 ## Install GitHub Copilot and GitHub Copilot Chat extensions
@@ -146,11 +147,13 @@ To ensure a smooth experience, clean up any temporary resources or configuration
 
 ## Support and feedback
 
-For additional assistance or to report issues, use the built-in feedback tool in Visual Studio Code:
+For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this via the VS Code Help menu or the PGSQL command palette.
 
-- Go to **Help > Report Issue**
+- Help menu
+  - Go to **Help > Report Issue**
 
-- Or open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Give Feedback`.
+- Command Palette
+  - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
 
 ## Related content
 
