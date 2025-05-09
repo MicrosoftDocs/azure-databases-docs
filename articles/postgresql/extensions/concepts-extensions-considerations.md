@@ -48,14 +48,12 @@ The following list enumerates all the supported extensions that require specific
 - `postgres_fdw`
 - `pgstattuple`
  
- 
 ### AGE
 
 The Apache AGE extension is a graph extension for PostgreSQL supported by Azure Database for PostgreSQL flexible server. It provides graph database functionalities, open cypher query support, and the ability to execute complex queries on graph data stored in PostgreSQL. ['Apache AGE'](https://age.apache.org/) is an open-source project released under the Apache License 2.0. 
 
 #### Install AGE
-To use AGE, make sure that you ['allowlist'](https://learn.microsoft.com/azure/postgresql/extensions/how-to-allow-extensions) the extension, ['load its library'](https://learn.microsoft.com/azure/postgresql/extensions/how-to-load-libraries), and ['install the extension'](https://learn.microsoft.com/azure/postgresql/extensions/how-to-create-extensions) in the database on which you plan to use its functionality. 
-
+To use AGE, make sure that you ['allowlist'](/azure/postgresql/extensions/how-to-allow-extensions) the extension, ['load its library'](/azure/postgresql/extensions/how-to-load-libraries), and ['install the extension'](/azure/postgresql/extensions/how-to-create-extensions) in the database on which you plan to use its functionality. 
 
 ### dblink
 

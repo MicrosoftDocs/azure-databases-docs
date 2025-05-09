@@ -32,11 +32,11 @@ Each function operates via AI Foundry endpoints registered using the `azure_ai.s
 
 ## Understanding semantic operators
 
-Semantic Operators in the Azure AI extension are designed to simplify complex AI-driven tasks directly within your PostgreSQL database. By using these operators, users can seamlessly integrate generative AI capabilities into their SQL workflows, enabling advanced text generation, truth evaluation, entity extraction, and document ranking. Each operator is optimized for ease of use and flexibility, allowing developers to build intelligent applications with minimal effort.
+Semantic Operators in the Azure AI extension are designed to simplify complex AI-driven tasks directly within your PostgreSQL database. These operators allow users to seamlessly integrate generative AI capabilities into their SQL workflows, enabling advanced text generation, truth evaluation, entity extraction, and document ranking. Each operator is optimized for ease of use and flexibility, allowing developers to build intelligent applications with minimal effort.
 
 ### azure_ai.generate()
 
-This function uses LLMs to generate text or structured output and supports custom parameters such as prompts, JSON schema, model selection, temperature, timeout, and retry logic.
+This function uses LLMs to generate text or structured output and supports custom parameters such as prompts, JSON schema, model selection, temperature, time-out, and retry logic.
 
 Example usage:
 

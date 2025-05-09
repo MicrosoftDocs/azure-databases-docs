@@ -21,11 +21,11 @@ Apache AGE supported by Azure Database for PostgreSQL, provides support for adva
 
 ## Indexing in Apache AGE
 
-Indexing is pivotal for improving query performance, especially in graph databases. Below are the key recommendations to maximize the benefits of indexing.
+Indexing is pivotal for improving query performance, especially in graph databases. 
 
 ### Default behavior
 
-By default, Apache AGE does not create indexes for newly created graphs. This necessitates explicit creation of indexes based on the nature of your queries and dataset.
+By default, Apache AGE doesn't create indexes for newly created graphs. This necessitates explicit creation of indexes based on the nature of your queries and dataset.
 
 ### WHERE clause
 
@@ -90,7 +90,7 @@ Filter: (properties @> '{"Name": "Alice"}'::agtype)
 
 ## Common index types
 
-- **BTREE Index**: Effective for exact matches and range queries. Recommended for use with columns like id, start_id, and end_id in edge and vertex tables.
+- **BTREE Index**: Effective for exact matches and range queries. Recommended for use with columns like ID, start_id, and end_id in edge and vertex tables.
 - **GIN Index**: Useful for JSON fields, enabling efficient searches for key-value pairs in the properties column.
 
 Use the following commands to create indexes for vertex and edge tables:
@@ -102,7 +102,7 @@ Use the following commands to create indexes for vertex and edge tables:
   CREATE INDEX ON graph_name."VLABEL" USING GIN (properties);
   ```
     
-- Edge table:
+- Microsoft Edge table:
 
   ```sql
   CREATE INDEX ON graph_name."ELABEL" USING BTREE (id);
@@ -132,12 +132,12 @@ The EXPLAIN keyword reveals how queries utilize indexes. Not all queries automat
 
 Recent tests highlight the impact of indexing on query performance.
 
-### Indexed vs. non-indexed queries
+### Indexed vs. nonindexed queries
 
-This section discusses the performance differences between indexed and non-indexed queries.
+This section discusses the performance differences between indexed and nonindexed queries.
 
 - Sequential scans outperform index scans for queries retrieving entire tables.
-- Indexing significantly improves performance for join queries (e.g., relationship counts).
+- Indexing significantly improves performance for join queries (for example, relationship counts).
 
 ## Data loading best practices
 
@@ -202,7 +202,7 @@ As you can see, the graph_name and fields in the provided csv file is defined he
 
 ### Other data sources
 
-AGEFreighter supports other formats such as MultiCSV, Avro, Parquet, Azure Storage etc. which can be adapted based on data format requirements. You can get more information here: ['AGEFreighter PyPi'](https://pypi.org/project/agefreighter/)
+AGEFreighter supports other formats such as MultiCSV, Avro, Parquet, Azure Storage, etc. which can be adapted based on data format requirements. You can get more information here: ['AGEFreighter PyPi'](https://pypi.org/project/agefreighter/)
 
 ## Data loading performance benchmarks
 

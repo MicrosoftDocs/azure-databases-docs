@@ -89,8 +89,6 @@ For bugs, feature requests, and issues, use Visual Studio Code's built-in feedba
 
 ## Related content
 
-- [Azure Database for PostgreSQL documentation](overview.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview](quickstart-vscode-extension.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview](quickstart-vscode-extension-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
-- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
-- [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
-- [MSSQL extension for Visual Studio Code?](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code)

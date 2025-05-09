@@ -1,5 +1,5 @@
 ---
-title: **Enable Managed Identity for Azure AI Services with the Azure AI Extension for PostgreSQL (Preview)**
+title: Enable Managed Identity for Azure AI Services with the Azure AI Extension for PostgreSQL
 description: Enable system assigned managed identity for Azure AI Services with the Azure AI extension for PostgreSQL.
 author: jojohnso-msft
 ms.author: jojohnso
@@ -34,7 +34,7 @@ The Azure AI extension for Azure Database for PostgreSQL supports System Assigne
  - Select the **On** radio button for **System assigned managed identity**.
  - Select **Save** to enable the managed identity.
 
-To learn more about it, visit [Managed Identities](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+To learn more about it, visit [Managed Identities](/azure/active-directory/managed-identities-azure-resources/overview)
 
 ## Assign managed identities
 
@@ -46,7 +46,7 @@ To learn more about it, visit [Managed Identities](https://learn.microsoft.com/a
 1. Choose the subscription and the managed identity of your PostgreSQL server.
 1. Select **Save** to assign the role.
 
-To learn more, visit  ['Managed Identity with Azure AI Services'](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+To learn more, visit  ['Managed Identity with Azure AI Services'](/azure/active-directory/managed-identities-azure-resources/overview)
 
 ### Access Control (IAM) for Azure OpenAI
 
@@ -58,7 +58,7 @@ To learn more, visit  ['Managed Identity with Azure AI Services'](https://learn
 1. Choose the subscription and the managed identity of your PostgreSQL server.
 1. Select **Save** to assign the role.
 
-To learn more, visit [Managed Identity with Azure OpenAI'](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+To learn more, visit [Managed Identity with Azure OpenAI'](/azure/active-directory/managed-identities-azure-resources/overview)
 
 ### Access Control (IAM) for Azure Machine Learning
 
