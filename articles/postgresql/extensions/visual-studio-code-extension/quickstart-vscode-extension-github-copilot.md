@@ -62,7 +62,7 @@ These tools and resources help you follow along with this article and make the m
     @pgsql tell me about the tables in the HR schema
     ```
 
-    :::image type="content" source="media/vscode-github-copilot-extension-quickstart/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+    :::image type="content" source="media/quickstart-vscode-extension-github-copilot/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 1. Copilot responds with a detailed description of your schema's tables.
 
