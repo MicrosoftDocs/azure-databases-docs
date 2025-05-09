@@ -30,7 +30,7 @@ These tools and resources help you follow along with this article and make the m
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) and the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
 - [Azure account](how-to-deploy-on-azure-free-account.md) for connecting to cloud-hosted databases (optional).
 
-## Install the GitHub Copilot and GitHub Copilot Chat extensions
+## Install GitHub Copilot and GitHub Copilot Chat extensions
 
 1. If you don't already have the GitHub Copilot extension installed in Visual Studio Code:
 
