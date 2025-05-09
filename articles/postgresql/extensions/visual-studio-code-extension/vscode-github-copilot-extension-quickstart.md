@@ -66,8 +66,6 @@ These tools and resources help you follow along with this article and make the m
 
 1. Copilot responds with a detailed description of your schema's tables.
 
-    
-
 ## Using read/write capabilities
 
 > [!NOTE]  
@@ -152,7 +150,7 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 - Help menu
   - Go to **Help > Report Issue**
 
-- Command Palette
+- Command palette
   - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
 
 ## Related content

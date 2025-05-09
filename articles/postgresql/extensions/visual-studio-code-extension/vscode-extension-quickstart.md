@@ -40,8 +40,6 @@ To install the PostgreSQL extension:
 1. Search for "PostgreSQL" in the Extensions Marketplace.
 1. Select the PostgreSQL extension authored by Microsoft and select "Install."
 
-:::image type="content" source="media/vscode-extension-quickstart/install-ext-1.png" alt-text="Screenshot of PostgreSQL extension for VS Code showing the install screen.":::
-
 Once installed, the PostgreSQL page, represented by an elephant icon, appears in the Visual Studio Code sidebar.
 
 ## Add a connection to PostgreSQL
@@ -52,10 +50,10 @@ Whether hosted locally or on a remote server, connecting to a PostgreSQL databas
 1. Select the "+ Add Connection" button.
 1. Enter your connection details manually or use the connection string format:
 
-```plaintext
- psql -h <server>.postgres.database.azure.com -p 5432 -U
- ```
-
+  ```bash
+    psql -h <server>.postgres.database.azure.com -p 5432 -U
+  ```
+    
 1. If using Azure, sign in to your Azure account and browse for the database instance. Filter by subscription, resource group, server, and database name.
 
 ### Authentication
@@ -85,8 +83,6 @@ The Object Explorer provides a hierarchical view of your database objects:
   - Connect with PSQL to launch a psql terminal connection
 - Right-click on a table and select "Select Top 1000" to view its data. The query opens in the Query Editor, and the results appear in the Results Viewer tab.
 
-:::image type="content" source="media/vscode-extension-quickstart/new-query-2.png" alt-text="Screenshot of PostgreSQL extension for VS Code showing the option to launch a new query.":::
-
 ## Execute queries
 
 Use the Query Editor to draft and execute SQL queries:
@@ -115,8 +111,6 @@ The GitHub Copilot integration enhances your PostgreSQL development experience b
 1. Right-click on a database and choose "Chat with this database" to interact with Copilot.
 1. Write prompts like "@pgsql tell me about the tables in the HR schema" to receive detailed insights.
 
-:::image type="content" source="media/vscode-extension-quickstart/ghc-chat-7.png" alt-text="Screenshot of PostgreSQL extension for VS Code GitHub copilot chat.":::
-
 To learn more, visit [Configure GitHub Copilot](quickstart-vscode-github-copilot-extension.md)
 
 ## Connect to an Azure Database for PostgreSQL Flexible Server instance with VS Code from the Azure portal
@@ -126,7 +120,7 @@ To connect to an Azure Database for PostgreSQL flexible server instance using Vi
 - Sign in to the Azure portal and locate your Azure Database for PostgreSQL Flexible Server instance.
 - Go to the Overview page of your server instance.
 
-### Connect with Visual Studio Code
+### Connect with VS Code
 
 The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure Database for PostgreSQL Flexible Server. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
 
@@ -181,13 +175,14 @@ If you encounter issues during the connection process:
 
 ## Support and feedback
 
-For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this via the VS Code Help menu or the PGSQL command palette.
+
+For bugs, feature requests, and issues, use Visual Studio Code's built-in feedback tool. Complete this via the VS Code Help menu or the PGSQL command palette.
 
 - Help menu
-  - Go to **Help > Report Issue**
+ - Go to **Help > Report Issue**
 
-- Command Palette
-  - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
+- Command palette
+ - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
 
 ## Related content
 

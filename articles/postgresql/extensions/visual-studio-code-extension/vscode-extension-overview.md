@@ -84,7 +84,7 @@ For bugs, feature requests, and issues, use Visual Studio Code's built-in feedba
 - Help menu
  - Go to **Help > Report Issue**
 
-- Command Palette
+- Command palette
  - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
 
 ## Related content
