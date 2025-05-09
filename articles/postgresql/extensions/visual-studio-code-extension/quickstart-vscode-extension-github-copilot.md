@@ -50,11 +50,11 @@ These tools and resources help you follow along with this article and make the m
 
 ## Getting started with GitHub Copilot for PostgreSQL
 
-1. Right-click on a PostgreSQL databases and select **Chat with this database**.
+Right-click on a PostgreSQL databases and select **Chat with this database**.
 
-1. If prompted, select **Allow** to enable GitHub Copilot to access the database connection context.
+If prompted, select **Allow** to enable GitHub Copilot to access the database connection context.
 
-1. When the Copilot chat interface opens, you can start asking questions using the `@pgsql` prefix to specify that you want to interact with the PostgreSQL database.
+When the Copilot chat interface opens, you can start asking questions using the `@pgsql` prefix to specify that you want to interact with the PostgreSQL database.
 
     Try a prompt like:
 
