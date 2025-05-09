@@ -7,7 +7,9 @@ ms.reviewer: maghan
 ms.date: 05/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
 # customer intent: As a user, I want to understand what Semantic Operators are available in the azure_ai extension for Azure Database for PostgreSQL flexible server.

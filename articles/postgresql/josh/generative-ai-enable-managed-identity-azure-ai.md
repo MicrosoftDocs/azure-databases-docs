@@ -8,6 +8,8 @@ ms.date: 05/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
 # customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for Azure Database for PostgreSQL flexible server.

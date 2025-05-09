@@ -4,7 +4,7 @@ description: Learn how to use the GitHub Copilot integration in the PostgreSQL e
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
-ms.date: 05/08/2025
+ms.date: 05/19/2025
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.collection:
