@@ -4,7 +4,7 @@ description: Learn how to use the GitHub Copilot integration in the PostgreSQL e
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
-ms.date: 05/19/2025
+ms.date: 05/09/2025
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.collection:
@@ -62,11 +62,11 @@ These tools and resources help you follow along with this article and make the m
     @pgsql tell me about the tables in the HR schema
     ```
 
-    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+    :::image type="content" source="media/vscode-github-copilot-extension-quickstart/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 1. Copilot responds with a detailed description of your schema's tables.
 
-    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+    
 
 ## Using read/write capabilities
 
