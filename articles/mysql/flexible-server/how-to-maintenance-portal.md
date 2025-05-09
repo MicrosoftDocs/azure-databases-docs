@@ -13,6 +13,8 @@ ms.topic: how-to
 # Manage scheduled maintenance settings for Azure Database for MySQL - Flexible server
 
 You can specify maintenance options for each Azure Database for MySQL flexible server instance in your Azure subscription. Options include the maintenance schedule and notification settings for upcoming and finished maintenance events.
+> [!NOTE]
+> These new maintenance features are being rolled out progressively across Azure regions. If you do not see them immediately in the Azure Portal, please allow some time for full deployment. Availability may vary depending on your subscription and region.
 
 ## Prerequisites
 
@@ -93,7 +95,7 @@ Be aware of the following points about the feature:
 
 There is no limitation on how many times a maintenance event can be rescheduled. As long as a maintenance event hasn't entered the **In preparation** state, you can always reschedule it to another time.
 
-### Maintenance rollout progress view
+### Maintenance rollout progress view (Public Preview)
 
 Each maintenance event includes a **Tracking ID**. Clicking this ID opens a detailed view of all servers in your subscription that are part of the same maintenance rollout. This gives you a consolidated overview across your fleet—no need to check each server individually or rely solely on email notifications.
 
