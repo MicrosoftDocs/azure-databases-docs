@@ -14,7 +14,7 @@ ms.custom:
   - vs-code
 ---
 
-# Quickstart: GitHub Copilot for PostgreSQL extension in Visual Studio Code preview
+# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview
 
 The PostgreSQL extension for Visual Studio Code now includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Copilot accesses contextual information from your live connection, once connected to a PostgreSQL database. This enables the `@pgsql` Copilot chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
 
@@ -30,7 +30,7 @@ These tools and resources help you follow along with this article and make the m
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) and the [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
 - [Azure account](how-to-deploy-on-azure-free-account.md) for connecting to cloud-hosted databases (optional).
 
-## Install the GitHub Copilot and GitHub Copilot Chat extensions
+## Install GitHub Copilot and GitHub Copilot Chat extensions
 
 1. If you don't already have the GitHub Copilot extension installed in Visual Studio Code:
 
@@ -41,6 +41,7 @@ These tools and resources help you follow along with this article and make the m
 ## Sign in to GitHub in Visual Studio Code
 
 1. Ensure you have a GitHub account and an active GitHub Copilot subscription:
+
    - [Create GitHub account](https://www.github.com)
    - [Enable GitHub Copilot Subscription](https://github.com/settings/copilot)
 
@@ -60,11 +61,11 @@ These tools and resources help you follow along with this article and make the m
     @pgsql tell me about the tables in the HR schema
     ```
 
-    :::image type="content" source="media/quickstart-vscode-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response.":::
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 1. Copilot responds with a detailed description of your schema's tables.
 
-    :::image type="content" source="media/quickstart-vscode-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns.":::
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 ## Using read/write capabilities
 
@@ -101,7 +102,7 @@ There are many prompts and things you can do with GitHub Copilot for PostgreSQL 
 
 ### Query optimization
 
-Below are examples of prompts you can use to guide Copilot in addressing specific query optimization challenges, helping you achieve efficient and reliable database operations.
+Here are some prompts you can use to guide Copilot in addressing specific query optimization challenges, helping you achieve efficient and reliable database operations.
 
 ```copilot-prompt
 I'm working on optimizing my database for high-concurrency workloads. The table is called transactions with millions of records, and I'm experiencing deadlocks under a heavy load. Help me optimize my table schema and queries.
@@ -113,7 +114,7 @@ I'm getting this error: 'ERROR: column `orders.total_price` must appear in the G
 
 ### Performance optimization
 
-Below are examples of prompts you can use to guide Copilot in addressing specific performance optimization challenges, helping you achieve faster and more efficient database operations.
+Here are some prompts you can use to guide Copilot in addressing specific performance optimization challenges, helping you achieve faster and more efficient database operations.
 
 ```copilot-prompt
 Provide the Explain Plan for my most recent query, and please explain each step.
@@ -125,7 +126,7 @@ My orders table has 10 million records, and queries on customer_id and order_dat
 
 ### App development
 
-Below are examples of prompts you can use to guide Copilot in addressing app development challenges.
+Here are some prompts you can use to guide Copilot in addressing app development challenges.
 
 ```copilot-prompt
 Generate a FastAPI endpoint to fetch orders from the ecom.orders table with pagination.
@@ -149,11 +150,7 @@ For additional assistance or to report issues, use the built-in feedback tool in
 
 - Go to **Help > Report Issue**
 
-    :::image type="content" source="media/quickstart-vscode-github-copilot-extension/report-issue.png" alt-text="Screenshot of Visual Studio Code Help menu with the 'Report Issue' option highlighted for submitting feedback or problems." lightbox="media/quickstart-vscode-github-copilot-extension/report-issue.png":::
-
 - Or open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Give Feedback`.
-
-    :::image type="content" source="media/quickstart-vscode-github-copilot-extension/feedback-command-palette.png" alt-text="Screenshot of Visual Studio Code Command Palette with 'PGSQL: Give Feedback' command entered and highlighted." lightbox="media/quickstart-vscode-github-copilot-extension/feedback-command-palette.png":::
 
 ## Related content
 
