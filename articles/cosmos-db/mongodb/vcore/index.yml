@@ -137,7 +137,9 @@ landingContent:
             url: how-to-public-access.md
           - text: Enable private access
             url: how-to-private-link.md
-          - text: Manage secondary users
+          - text: Manage Entra ID authentication
+            url: how-to-configure-entra-authentication.md
+          - text: Manage secondary native users
             url: secondary-users.md
       - linkListType: concept
         links:
@@ -145,3 +147,5 @@ landingContent:
             url: security.md
           - text: Data encryption
             url: database-encryption-at-rest.md
+          - text: Microsoft Entra ID authentication
+            url: entra-authentication.md
