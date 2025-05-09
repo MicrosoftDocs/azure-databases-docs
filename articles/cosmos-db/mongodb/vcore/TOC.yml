@@ -45,8 +45,6 @@
       href: free-tier.md
     - name: Multicloud solution
       href: multi-cloud.md
-    - name: Burstable tier
-      href: burstable-tier.md
     - name: Open source
       href: oss.md
     - name: Full-text search
@@ -93,6 +91,14 @@
          href: autoscale.md
        - name: Burstable tier
          href: burstable-tier.md
+    - name: Security
+      items: 
+        - name: Security overview
+          href: security.md
+        - name: Microsoft Entra ID authentication
+          href: entra-authentication.md
+        - name: Data encryption
+          href: database-encryption-at-rest.md
     - name: Indexing
       href: indexing.md
     - name: Change Stream
@@ -103,14 +109,6 @@
       href: migration-options.md
     - name: Service limits
       href: limits.md
-    - name: Security
-      items: 
-        - name: Security overview
-          href: security.md
-        - name: Microsoft Entra ID authentication
-          href: entra-authentication.md
-        - name: Data encryption
-          href: database-encryption-at-rest.md
 - name: Migrate data
   items:
     - name: Premigration assessment
@@ -190,7 +188,7 @@
         href: how-to-monitor-diagnostics-logs.md
     - name: Security and data access
       items:
-      - name: Configure Entra authentication
+      - name: Configure Entra ID authentication
         href: how-to-configure-entra-authentication.md
       - name: Manage private access
         href: how-to-private-link.md
