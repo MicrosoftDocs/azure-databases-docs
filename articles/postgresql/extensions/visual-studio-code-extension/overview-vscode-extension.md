@@ -21,7 +21,7 @@ Currently in public preview, the PostgreSQL extension for Visual Studio Code is 
 
 You can install the PostgreSQL extension directly from the Extensions Marketplace in Visual Studio Code to get started. Follow these steps:
 
-1. Open the Extensions view in Visual Studio Code by selecting the Extensions icon in the Activity Bar or by using the "View: Extensions" command.
+1. Open the Extensions view in Visual Studio Code by selecting the Extensions icon in the Activity Bar or by using the **View: Extensions** command.
 1. Search for *PostgreSQL* in the Extensions Marketplace.
 1. Select the **PostgreSQL** extension and select **Install**.
 
@@ -65,7 +65,7 @@ The Results Viewer enables users to interact with query results through features
 
 ### GitHub Copilot integration
 
-This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like "@pgsql," developers can query their database, optimize schema, and even request Copilot to execute specific SQL operations. This feature enhances productivity by providing contextual guidance and actionable insights.
+This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, developers can query their database, optimize schema, and even request Copilot to execute specific SQL operations. This feature enhances productivity by providing contextual guidance and actionable insights.
 
 ## Supported operating systems
 
