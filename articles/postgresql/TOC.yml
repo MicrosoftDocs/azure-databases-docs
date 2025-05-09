@@ -378,17 +378,17 @@
   - name: Developer experience
     items:
       - name: PostgreSQL extension for VS Code
-        href: extensions\visual-studio-code-extension\overview.md
+        href: extensions\vs-code-extension\overview.md
       - name: Quickstart for PostgreSQL extension for VS Code
-        href: extensions\visual-studio-code-extension\quickstart-connect.md
+        href: extensions\vs-code-extension\quickstart-connect.md
       - name: Quickstart for PostgreSQL GitHub Copilot
-        href: extensions\visual-studio-code-extension\quickstart-github-copilot.md
+        href: extensions\vs-code-extension\quickstart-github-copilot.md
   - name: Graph Database
     items:
     - name: Overview Apache AGE for PostgreSQL
       href: flexible-server/generative-ai-age-overview.md
     - name: Performance Best Practices for Apache AGE
-      href: flexible-server/generative-ai-age-perf.md
+      href: flexible-server/generative-ai-age-performance.md
   - name: Integrations
     items:
     - name: Manage Azure resources with automation tasks
