@@ -4,7 +4,7 @@ description: Learn how to use the GitHub Copilot integration in the PostgreSQL e
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
-ms.date: 05/08/2025
+ms.date: 05/19/2025
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.collection:
@@ -14,7 +14,7 @@ ms.custom:
   - vs-code
 ---
 
-# Quickstart: GitHub Copilot for PostgreSQL extension in Visual Studio Code preview
+# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview
 
 The PostgreSQL extension for Visual Studio Code now includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Copilot accesses contextual information from your live connection, once connected to a PostgreSQL database. This enables the `@pgsql` Copilot chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
 
@@ -61,11 +61,11 @@ These tools and resources help you follow along with this article and make the m
     @pgsql tell me about the tables in the HR schema
     ```
 
-    
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 1. Copilot responds with a detailed description of your schema's tables.
 
-    
+    :::image type="content" source="media/quickstart-visual-studio-code-github-copilot-extension/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 ## Using read/write capabilities
 
