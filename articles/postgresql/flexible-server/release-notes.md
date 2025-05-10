@@ -55,7 +55,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: November 2024
 
 - General availability of [High-Availability Health Status Monitoring](how-to-monitor-high-availability.md) for Azure Database for PostgreSQL flexible server.
-- [PostgreSQL 12](concepts-version-policy.md) will retire on November 14, 2024. Upgrade to a supported version before retirement to ensure continued support and security.
+- [PostgreSQL 12](concepts-version-policy.md) retires on November 14, 2024. Upgrade to a supported version before retirement to ensure continued support and security.
 
 ## Release: October 2024
 
@@ -225,7 +225,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: October 2022
 
 - Support for [Read Replica](concepts-read-replicas.md) feature in public preview.
-- Support for [Microsoft Entra authentication ](concepts-azure-ad-authentication.md) authentication in public preview.
+- Support for [Microsoft Entra authentication](concepts-azure-ad-authentication.md) authentication in public preview.
 - Support for [Customer managed keys](concepts-data-encryption.md) in public preview.
 - Published [Security and compliance certifications](concepts-compliance.md) for Azure Database for PostgreSQL flexible server.
 - Postgres 14 is now the default PostgreSQL version.
@@ -240,7 +240,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for [PostgreSQL minor version](concepts-supported-versions.md) 14.4. <sup>$</sup>
 - Support for [new regions](overview.md#azure-regions) Qatar Central, Switzerland West, France South.
 
-<sup>**$**</sup> New PostgreSQL 14 servers are provisioned with version 14.4. Your existing PostgreSQL 14.3 servers will be upgraded to 14.4 in your server's future maintenance window.
+<sup>**$**</sup> New PostgreSQL 14 servers are provisioned with version 14.4. Your existing PostgreSQL 14.3 servers are upgraded to 14.4 in your server's future maintenance window.
 
 ## Release: July 2022
 
@@ -348,8 +348,8 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 - Several portal improvements, including the display of minor versions and summary of metrics on the overview page.
 - Several bug fixes, stability, and performance improvements.
 
-> [!IMPORTANT]  
-> **$** - New servers get these features automatically. Your existing servers will be automatically upgraded to the latest supported minor version and also new features are enabled during your server's future maintenance window. At this moment, there's no option to selectively stop to upgrade minor versions.
+> [!IMPORTANT]
+> **$** - New servers get these features automatically. Your existing servers automatically upgrade to the latest supported minor version and also new features are enabled during your server's future maintenance window. At this moment, there's no option to selectively stop to upgrade minor versions.
 
 ## Contacts
 
