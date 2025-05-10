@@ -53,7 +53,7 @@ These tools and resources help you follow along with this article and make the m
 
 Follow the steps to begin using GitHub Copilot with the PostgreSQL Visual Studio Code extension.
 
-1. Right-click on a PostgreSQL databases and select **Chat with this database**.
+1. Right-click on a PostgreSQL database and select **Chat with this database**.
 
 2. If prompted, select **Allow** to enable GitHub Copilot to access the database connection context.
 
