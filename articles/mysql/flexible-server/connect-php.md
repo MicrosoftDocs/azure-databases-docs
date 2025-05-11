@@ -83,9 +83,11 @@ die('Failed to connect to MySQL: '.mysqli_connect_error());
 Use the following code to connect and create a table by using **CREATE TABLE** SQL statement.
 
 The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code calls methods [mysqli_init](https://www.php.net/manual/en/mysqli.init.php) and [mysqli_real_connect](https://www.php.net/manual/en/mysqli.real-connect.php) to connect to MySQL. Then it calls method [mysqli_query](https://www.php.net/manual/en/mysqli.query.php) to run the query. Then it calls method [mysqli_close](https://www.php.net/manual/en/mysqli.close.php) to close the connection.
+In addition to the procedural style, you can also connect to Azure Database for MySQL using the object-oriented interface provided by the mysqli extension in PHP. 
 
 Replace the host, username, password, and db_name parameters with your own values.
 
+#### [Procedural](#tab/procedural-create-table)
 ```php
 <?php
 $host = 'mydemoserver.mysql.database.azure.com';
@@ -117,15 +119,52 @@ printf("Table created\n");
 mysqli_close($conn);
 ?>
 ```
+#### [Object oriented](#tab/object-oriented-create-table)
+```php
+<?php
+$host = 'mydemoserver.mysql.database.azure.com';
+$username = 'myadmin';
+$password = 'your_password';
+$db_name = 'your_database';
+
+//Establishes the connection
+$conn = mysqli_init();
+
+$conn = new mysqli($host, $username, $password, $db_name, 3306);
+
+if ($conn -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    exit();
+} else {
+    $query = "CREATE TABLE Products (
+        Id INT NOT NULL AUTO_INCREMENT,
+        ProductName VARCHAR(200) NOT NULL,
+        Color VARCHAR(50) NOT NULL,
+        Price DOUBLE NOT NULL,
+        PRIMARY KEY (Id)
+    )";
+
+    if ($conn->query($query) === TRUE) {
+        echo "Table created successfully. <br/>";
+    } else {
+        echo "Error creating table: " . $conn->error;
+    }
+}
+$stmt->close();
+$conn->close();
+?>
+```
 
 ## Insert data
 
 Use the following code to connect and insert data by using an **INSERT** SQL statement.
 
 The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared insert statement, then binds the parameters for each inserted column value using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
+In addition to the procedural style, you can also connect to Azure Database for MySQL using the object-oriented interface provided by the mysqli extension in PHP.
 
 Replace the host, username, password, and db_name parameters with your own values.
 
+#### [Procedural](#tab/procedural-insert)
 ```php
 <?php
 $host = 'mydemoserver.mysql.database.azure.com';
@@ -136,7 +175,7 @@ $db_name = 'your_database';
 //Establishes the connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {f
+if (mysqli_connect_errno($conn)) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 
@@ -156,12 +195,53 @@ mysqli_close($conn);
 ?>
 ```
 
+#### [Object oriented](#tab/object-oriented-insert)
+```php
+<?php
+$host = 'mydemoserver.mysql.database.azure.com';
+$username = 'myadmin';
+$password = 'your_password';
+$db_name = 'your_database';
+
+//Establishes the connection
+$conn = mysqli_init();
+
+$conn = new mysqli($host, $username, $password, $db_name, 3306);
+
+if ($conn -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    exit();
+} else {
+    echo "Connected to MySQL successfully.  <br/>";
+    $product_name = 'BrandNewProduct';
+    $product_color = 'Blue';
+    $product_price = 15.5;
+
+    $query="INSERT INTO Products (ProductName, Color, Price) VALUES (?, ?, ?)";
+    $stmt=$conn->prepare($query);
+
+	  $stmt->bind_param('ssd', $product_name, $product_color, $product_price);
+
+    if ($stmt->execute()) { 
+        echo "registration successful <br/>";
+        printf("Insert: Affected %d rows\n", $stmt->affected_rows);
+    } else {
+        echo "registration failed";
+    }
+}
+$stmt->close();
+$conn->close();
+?>
+```
+
 ## Read data
 
 Use the following code to connect and read the data by using a **SELECT** SQL statement. The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_query](https://www.php.net/manual/en/mysqli.query.php) perform the sql query and method [mysqli_fetch_assoc](https://www.php.net/manual/en/mysqli-result.fetch-assoc.php) to fetch the resulting rows.
+In addition to the procedural style, you can also connect to Azure Database for MySQL using the object-oriented interface provided by the mysqli extension in PHP.
 
 Replace the host, username, password, and db_name parameters with your own values.
 
+#### [Procedural](#tab/procedural-read)
 ```php
 <?php
 $host = 'mydemoserver.mysql.database.azure.com';
@@ -187,15 +267,50 @@ var_dump($row);
 mysqli_close($conn);
 ?>
 ```
+#### [Object oriented](#tab/object-oriented-read)
+```php
+<?php
+$host = 'mydemoserver.mysql.database.azure.com';
+$username = 'myadmin';
+$password = 'your_password';
+$db_name = 'your_database';
+
+//Establishes the connection
+$conn = mysqli_init();
+
+$conn = new mysqli($host, $username, $password, $db_name, 3306);
+
+if ($conn -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    exit();
+} else {
+    $query="SELECT * FROM Products";
+    $stmt = $conn->query($query);
+    
+    if ($stmt->num_rows > 0) {
+        // output data of each row
+        while($row = $stmt->fetch_assoc()) {
+            echo "id: " . $row["Id"]. " - ProductName: " . $row["ProductName"]. " -Color " . $row["Color"]. " -Price " . $row["Price"]. "<br>";
+        }
+    } else {
+        echo "0 results";
+    }
+}
+$stmt->close();
+$conn->close();
+?>
+```
 
 ## Update data
 
 Use the following code to connect and update the data by using an **UPDATE** SQL statement.
 
 The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared update statement, then binds the parameters for each updated column value using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
+In addition to the procedural style, you can also connect to Azure Database for MySQL using the object-oriented interface provided by the mysqli extension in PHP.
 
 Replace the host, username, password, and db_name parameters with your own values.
 
+#### [Procedural](#tab/procedural-update)
 ```php
 <?php
 $host = 'mydemoserver.mysql.database.azure.com';
@@ -225,15 +340,51 @@ mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
 ```
+#### [Object oriented](#tab/object-oriented-update)
+```php
+<?php
+$host = 'mydemoserver.mysql.database.azure.com';
+$username = 'myadmin';
+$password = 'your_password';
+$db_name = 'your_database';
+
+//Establishes the connection
+$conn = mysqli_init();
+
+$conn = new mysqli($host, $username, $password, $db_name, 3306);
+
+if ($conn -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    exit();
+} else {
+    $product_name = 'BrandNewProduct';
+    $new_product_price = 15.1;
+
+    $query="UPDATE Products SET Price = ? WHERE ProductName = ?";
+    $stmt=$conn->prepare($query);
+    $stmt->bind_param('ds', $new_product_price, $product_name);
+    if ($stmt->execute()) { 
+        echo "update successful <br/>";
+        printf("Updated: Affected %d rows\n", $stmt->affected_rows);
+    } else {
+        echo "registration failed";
+    }
+}
+$stmt->close();
+$conn->close();
+?>
+```
 
 ## Delete data
 
 Use the following code to connect and read the data by using a **DELETE** SQL statement.
 
 The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared delete statement, then binds the parameters for the where clause in the statement using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
+In addition to the procedural style, you can also connect to Azure Database for MySQL using the object-oriented interface provided by the mysqli extension in PHP.
 
 Replace the host, username, password, and db_name parameters with your own values.
 
+#### [Procedural](#tab/procedural-delete)
 ```php
 <?php
 $host = 'mydemoserver.mysql.database.azure.com';
@@ -259,6 +410,42 @@ mysqli_stmt_close($stmt);
 
 //Close the connection
 mysqli_close($conn);
+?>
+```
+
+#### [Object oriented](#tab/object-oriented-delete)
+```php
+<?php
+$host = 'mydemoserver.mysql.database.azure.com';
+$username = 'myadmin';
+$password = 'your_password';
+$db_name = 'your_database';
+
+//Establishes the connection
+$conn = mysqli_init();
+
+$conn = new mysqli($host, $username, $password, $db_name, 3306);
+
+if ($conn -> connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    exit();
+} else {
+    $product_name = 'BrandNewProduct';
+
+    $query = "DELETE FROM Products WHERE ProductName = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('s', $product_name);
+
+    if ($stmt->execute()) {
+        echo "Delete successful <br/>";
+        printf("Delete: Affected %d rows\n", $stmt->affected_rows);
+    } else {
+        echo "Delete failed";
+    }
+    
+}
+$stmt->close();
+$conn->close();
 ?>
 ```
 
