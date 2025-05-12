@@ -1,32 +1,31 @@
 ---
-  title: $mergeObjects object expression usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $mergeObjects operator is used to combine multiple documents into a single document.
-  author: avijitgupta
-  ms.author: avijitgupta
+  title: $mergeObjects
+  titleSuffix: Overview of the $mergeObjects expression in Azure Cosmos DB for MongoDB vCore
+  description: The $mergeObjects operator merges multiple documents into a single document
+  author: abinav2307
+  ms.author: abramees
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
-  ms.date: 11/01/2024
+  ms.topic: conceptual
+  ms.date: 05/12/2025
 ---
 
 # $mergeObjects as object expression operator
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$mergeObjects` operator is used to combine multiple documents into a single document. This operator is useful in aggregation pipelines when you need to merge fields from different documents or add another field to an existing document. The behavior of `$mergeObjects` is to overwrite fields in the target document with fields from the source document when there are conflicts.
+The `$mergeObjects` operator combines multiple documents into a single document. The mergeObjects operation is used in aggregation pipelines to merge fields from different documents or add one or more fields to an existing document. The operator overwrites fields in the target document with fields from the source document when conflicts occur.
 
 ## Syntax
 
-```javascript
-{ $mergeObjects: [ <document1>, <document2>, ... ] }
+```mongodb
+{ "$mergeObjects": [ <document1>, <document2>, ... ] }
 ```
 
 ## Parameters
-
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`document1, document2`** | These documents are targeted for merge. The documents can be specified as field paths, subdocuments, or constants. |
+| **`document1, document2`** | The documents to be merged. The documents can be specified as field paths, subdocuments, or constants. |
 
 ## Related content
 
