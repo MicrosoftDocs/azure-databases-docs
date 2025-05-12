@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Manage Azure Database for MySQL - Flexible Server using the Azure portal
 
-This article shows you how to manage your Azure Database for MySQL Flexible Server instances. Management tasks include compute and storage scaling, resetting the server administrator password, and deleting your server.
+This article shows how to manage your Azure Database for MySQL Flexible Server instances. Management tasks include compute and storage scaling, resetting the server administrator password, and deleting your server.
 
 ## Prerequisites
 
@@ -21,11 +21,11 @@ This article shows you how to manage your Azure Database for MySQL Flexible Serv
 
 ## Scale compute and storage
 
-After server creation you can scale between the various [pricing tiers](https://azure.microsoft.com/pricing/details/mysql/) as your needs change. You can also scale up or down your compute and memory by increasing or decreasing vCores.
+After server creation, you can scale between the various [pricing tiers](https://azure.microsoft.com/pricing/details/mysql/) as your needs change. You can also increase or decrease vCores to scale up or down your compute and memory.
 
-1. Select your Azure Database for MySQL Flexible Server instance in the Azure portal. Select **Compute + Storage**, located in the **Settings** section.
+1. In the Azure portal, select your Azure Database for MySQL Flexible Server instance. In the Settings section, select Compute + Storage.
 
-1. You can change the **Compute Tier**, **vCore**, **Storage** to scale up the server using higher compute tier or scale up within the same tier by increasing storage or vCores to a value you want.
+1. You can change the **Compute Tier**, **vCore**, and **Storage** to scale up the server using a higher compute tier or scale up within the same tier by increasing storage or vCores to a desired value.
 
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="media/how-to-manage-server-portal/scale-server.png" alt-text="Screenshot of scaling storage for Azure Database for MySQL Flexible Server." lightbox="media/how-to-manage-server-portal/scale-server.png":::
@@ -40,7 +40,7 @@ After server creation you can scale between the various [pricing tiers](https://
 
 You can change the administrator role's password using the Azure portal.
 
-1. Select your Azure Database for MySQL Flexible Server instance in the Azure portal. In the **Overview** window, select **Reset password**.
+1. In the Azure portal, select your Azure Database for MySQL Flexible Server instance. In the Overview window, select Reset password.
 
 1. Enter a new password and confirm the password. The textbox prompts you about password complexity requirements.
 
@@ -57,9 +57,9 @@ You can change the administrator role's password using the Azure portal.
 
 You can delete your server if you no longer need it.
 
-1. Select your Azure Database for MySQL Flexible Server instance in the Azure portal. In the Overview window, select **Delete**.
+1. In the Azure portal, select your Azure Database for MySQL Flexible Server instance. In the Overview window, select **Delete**.
 
-1. Type the name of the server into the input box to confirm that you want to delete the server.
+1. Type the server's name into the input box to confirm that you want to delete the server.
 
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="media/how-to-manage-server-portal/delete-server.png" alt-text="Screenshot of deleting the Azure Database for MySQL Flexible Server instance." lightbox="media/how-to-manage-server-portal/delete-server.png":::
