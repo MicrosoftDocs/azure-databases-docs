@@ -2,7 +2,7 @@
 title: Azure Confidential Computing
 description: This article describes the confidential computing options in Azure Database for PostgreSQL flexible server.
 author: danyal-bukhari
-ms.author: dabukhari 
+ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 05/19/2025
 ms.service: azure-database-postgresql
@@ -18,7 +18,7 @@ Industries with strict regulatory requirements—such as finance, healthcare, an
 
 ## Architecture
 
-:::image type="content" source="media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing options." lightbox="../media/media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg":::
+:::image type="content" source="media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing options." lightbox="media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg":::
 
 A **Trusted Execution Environment (TEE)*- is a hardware-based, isolated memory region within the CPU. Data processed inside the TEE is protected from access by the operating system, hypervisor, or other applications.
 
@@ -66,9 +66,9 @@ Confidential computing provides:
 > [!IMPORTANT]  
 > After the server is created, you can't Switch between confidential and nonconfidential compute options.
 
-You can deploy Azure Database for PostgreSQL with ACC using any supported method (for example, Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc.). 
+You can deploy Azure Database for PostgreSQL with ACC using any supported method (for example, Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc.).
 
-:::image type="content" source="media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing deployment options.":::
+:::image type="content" source="media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing deployment options." lightbox="media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg":::
 
 ## Supported ACC SKUs
 
