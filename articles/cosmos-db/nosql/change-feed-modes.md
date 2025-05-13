@@ -180,6 +180,9 @@ The response object is an array of items that represent each change. Different p
         "partitionKey": {
           "<Partition key property name>": "<Partition key property value>"
         }
+      },
+      "previous": {
+        <The version of the item at the time it was deleted. All the properties of your item will appear here.>
       }
     }
     ```
