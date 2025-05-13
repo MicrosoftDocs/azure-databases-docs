@@ -102,8 +102,15 @@ This article provides a list of known issues and troubleshooting steps associate
   RECONFIGURE;
   ```
 
+- **Message**: `Migration for Database <Database Name> failed with error 'Managed identity is not set up properly. Please verify and try again.'`
+
+- **Cause**: The managed identity associated with the target SQL Managed Instance does not have the required permissions/role to access the Azure Blob storage containing the backup files needed for migration.
+
+- **Recommendation**: Assign the '**Storage Blob Data Reader**' role on the Azure Blob Storage account to the managed identity associated with the target SQL Managed Instance. For more information, refer [blog](https://techcommunity.microsoft.com/blog/microsoftdatamigration/dms---support-for-managed-identity-for-azure-sql-managed-instance-migration/4411274).
+
+  
   > [!NOTE]  
-  > For more information on general troubleshooting steps for Azure SQL Managed Instance errors, see [Known issues with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/doc-changes-updates-known-issues)
+  > For more information on general troubleshooting steps for Azure SQL Managed Instance errors, see [Known issues with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/doc-changes-updates-known-issues).
 
 ## Error code: 2012 - TestConnectionFailed
 
