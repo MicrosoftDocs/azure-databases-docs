@@ -15,7 +15,7 @@ ms.custom:
 # customer intent: As a user, I want to understand what Semantic Operators are available in the azure_ai extension for Azure Database for PostgreSQL flexible server.
 ---
 
-# What are Semantic Operators in the Azure AI Extension preview?
+# Semantic operators in the Azure AI extension Preview
 
 The Azure AI extension introduces Semantic Operators, a groundbreaking feature integrating advanced Generative AI (GenAI) functionality directly into PostgreSQL SQL. With Azure OpenAI chat completion APIs, these operators allow users to explore innovative ways of building GenAI applications directly within their databases.
 
