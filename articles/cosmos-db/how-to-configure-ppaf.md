@@ -9,6 +9,15 @@ ms.date: 05/14/2025
 ---
 
 # How to Onboard and Adopt Per-Partition Automatic Failover (PPAF) for Azure Cosmos DB
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
+
+This article explains how to configure Per Partition Automatic Failover on your Azure Cosmos DB account.
+
+> [!IMPORTANT]
+> Per Partition Automatic Failover is in public preview.
+> This feature is provided without a service level agreement.
+> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 **Per-Partition Automatic Failover (PPAF)**  is a new Azure Cosmos DB feature (currently in **Public Preview**) that improves availability for single-write region accounts. Instead of failing over an entire database account during a regional outage, Cosmos DB can **automatically fail over at the *partition level***, preserving writes for unaffected partitions and minimizing downtime. This guide provides a comprehensive **how-to** for external users to onboard and adopt PPAF, including prerequisites, step-by-step setup, best practices, and troubleshooting tips.
 
