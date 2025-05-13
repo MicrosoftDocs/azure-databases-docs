@@ -4,10 +4,10 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 05/08/2025
+ms.date: 05/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: overview
+ms.topic: concept-article
 # customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL flexible server.
 ---
 
@@ -19,7 +19,14 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: May 2025
 
-- General Availability of [On-demand backups](./concepts-backup-restore.md#on-demand-backups).
+- General Availability
+    - [On-demand backups](./concepts-backup-restore.md#on-demand-backups).
+- Preview
+    - [Confidential Computing](concepts-confidential-computing.md)
+    - [Apache Age extension](generative-ai-age-overview.md)
+    - [Semantic operators](generative-ai-azure-ai-semantic-operators.md)
+    - [New PostgreSQL VS Code extension](../extensions/vs-code-extension/overview.md)
+    - [GitHub Copilot integration with new PostgreSQL VS Code extension](../extensions/vs-code-extension/quickstart-github-copilot.md)
 
 ## Release: April 2025
 

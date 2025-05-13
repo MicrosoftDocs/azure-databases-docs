@@ -1,5 +1,5 @@
 ---
-title: What Is the Apache AGE Extension?
+title: Apache AGE Extension
 description: Overview of Apache AGE and its capabilities in Azure Database for PostgreSQL.
 author: jojohnso-msft
 ms.author: jojohnso
@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 05/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: overview
+ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
@@ -15,7 +15,7 @@ ms.custom:
 # customer intent: As a user, I want to understand what the Apache AGE extension is and how to enable it in Azure Database for PostgreSQL flexible server.
 ---
 
-# What is the AGE extension with Azure Database for PostgreSQL?
+# AGE extension with Azure Database for PostgreSQL
 
 Apache AGE (a graph extension) is a powerful PostgreSQL extension designed to seamlessly integrate graph database functionalities into the PostgreSQL ecosystem. AGE enables users to store and query graph data efficiently and expressively by supporting the intuitive openCypher query language, when developed under the Apache Incubator project. It bridges the gap between relational and graph data, allowing developers to manage complex relationships and uncover insights that traditional databases might struggle to reveal.
 

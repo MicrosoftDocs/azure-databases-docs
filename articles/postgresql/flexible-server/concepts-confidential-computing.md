@@ -1,8 +1,8 @@
 ---
 title: Azure Confidential Computing
 description: This article describes the confidential computing options in Azure Database for PostgreSQL flexible server.
-author: cathzhao
-ms.author: cathzhao
+author: danyal-bukhari
+ms.author: dabukhari 
 ms.reviewer: maghan
 ms.date: 05/19/2025
 ms.service: azure-database-postgresql
@@ -10,15 +10,15 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Why use Azure Confidential Computing preview?
+# Why use Azure Confidential Computing with Azure Database for PostgreSQL Preview?
 
 [Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to process and collaborate on sensitive data—such as personal data or protected health information (PHI)—with built-in protection against unauthorized access. By securing data in use through Trusted Execution Environments (TEEs), ACC allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
 
 Industries with strict regulatory requirements—such as finance, healthcare, and the public sector—can migrate sensitive workloads from on-premises environments to the cloud with minimal code changes and without sacrificing performance by using Azure Confidential Virtual Machines (VMs).
 
-## Architecture overview
+## Architecture
 
-:::image type="content" source="../media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing options." lightbox="../media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg":::
+:::image type="content" source="media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing options." lightbox="../media/media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg":::
 
 A **Trusted Execution Environment (TEE)*- is a hardware-based, isolated memory region within the CPU. Data processed inside the TEE is protected from access by the operating system, hypervisor, or other applications.
 
@@ -68,7 +68,7 @@ Confidential computing provides:
 
 You can deploy Azure Database for PostgreSQL with ACC using any supported method (for example, Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc.). 
 
-:::image type="content" source="../media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing deployment options.":::
+:::image type="content" source="media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing deployment options.":::
 
 ## Supported ACC SKUs
 
