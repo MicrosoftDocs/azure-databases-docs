@@ -15,7 +15,7 @@ ms.custom: cosmos-db-video
 Azure Cosmos DB is available in two different capacity modes: [provisioned throughput](set-throughput.md) and [serverless](serverless.md). You can perform the exact same database operations in both modes, but the way you get billed for these operations is radically different. The following video explains the core differences between these modes and how they fit different types of workloads:
 
 >
-> [!VIDEO https://aka.ms/docs.throughput-offers]
+> [!VIDEO https://www.youtube.com/embed/XRBOy1F7eZw]
 
 ## Detailed comparison
 
