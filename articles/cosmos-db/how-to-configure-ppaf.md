@@ -19,19 +19,17 @@ This article explains how to configure Per Partition Automatic Failover on your 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-**Per-Partition Automatic Failover (PPAF)**  is a new Azure Cosmos DB feature (currently in **Public Preview**) that improves availability for single-write region accounts. Instead of failing over an entire database account during a regional outage, Cosmos DB can **automatically fail over at the *partition level***, preserving writes for unaffected partitions and minimizing downtime. This guide provides a comprehensive **how-to** for external users to onboard and adopt PPAF, including prerequisites, step-by-step setup, best practices, and troubleshooting tips.
-
-
+**Per-Partition Automatic Failover (PPAF)**  is a new Azure Cosmos DB feature (currently in **Public Preview**) that improves availability for single-write region accounts. Instead of failing over an entire database account during a regional outage, Cosmos DB can **automatically fail over at the *partition level***, preserving writes for unaffected partitions and minimizing downtime. This guide provides a **how-to** for users to onboard and adopt PPAF, including prerequisites and configuration steps.
 
 
 ## Prerequisites
 
 Before enabling PPAF, ensure your environment meets the following **prerequisites** and **requirements**:
 
-- **Azure Cosmos DB Account Type:** **Single-write region** account (one writable primary region) with **at least one** additional **read region** configured.
-- **Consistency Model:** In the current preview, **Strong**, **Session**, **Consistent Prefix**, or **Eventual** consistencies are also supported, but **Bounded Staleness** is not yet supported
+- **Multi-region account:** Single-write region account with **at least one** additional **read region** configured.
+- **Consistency Model:** In the current preview, **Strong**, **Session**, **Consistent Prefix**, or **Eventual** consistencies are also supported, but **Bounded Staleness** will be supported in the future.
 - **API Type:** The account must use the **Core (SQL) API** (NoSQL API).
-- **Azure Region:** The account should be in **Azure public cloud regions** (global Azure). Accounts in sovereign clouds are not eligible during preview.
+- **Azure Region:** The account should be in **Azure public cloud regions** (Global Azure). Accounts in sovereign clouds are not eligible during preview.
 - **SDK Version:** Your application must use a **latest supported Azure Cosmos DB SDK** that implements PPAF logic. Currently, the preview supports:
   - **.NET SDK v3** 
   - **Java SDK**
