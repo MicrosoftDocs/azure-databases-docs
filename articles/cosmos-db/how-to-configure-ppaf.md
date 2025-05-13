@@ -41,7 +41,7 @@ Before enabling PPAF, ensure your environment meets the following **prerequisite
 
 ## Register for Preview
 
-To enable this feature, register for the preview feature **Per Partition Automatic Failover Preview** in your subscription. For more information, see [register for an Azure Cosmos DB preview feature](../access-previews.md).
+To enable this feature, register for the preview feature **Per Partition Automatic Failover Preview** in your subscription. For more information, see [register for an Azure Cosmos DB preview feature](access-previews.md).
 
 ![Screenshot of the Azure Cosmos DB preview feature enablement for PPAF.](./media/how-to-configure-ppaf/ppaf-afec-enablement.png)
 
@@ -59,7 +59,7 @@ Configuring your application’s Cosmos DB SDK is **critical** so that it knows 
 With the account and client configured, it’s prudent to **test** that everything works as expected before a real outage occurs. Azure Cosmos DB provides a way to simulate partition failures in the preview for PPAF enabled accounts:
 
 - **Chaos Simulation (Preview):** Customers can now manage the fault via the Resource Provider REST API. Eventually the fault will also be exposed through the Azure Portal, Azure PowerShell and Azure CLI. For ease of use we are providing a PowerShell script for managing the fault.
-  - Download the script "EnableDisableChaosFault.ps1" for [github]([link](https://github.com/AzureCosmosDB/ppaf-samples/blob/main/ppaf-fault-script/EnableDisableChaosFault.ps1))
+  - Download the script [`EnableDisableChaosFault.ps1` at azurecosmosdb/ppaf-samples](https://github.com/AzureCosmosDB/ppaf-samples/blob/main/ppaf-fault-script/EnableDisableChaosFault.ps1)
   - Start PowerShell and login to your subscription using “az login”
   - Navigate to the folder with the PowerShell script and invoke the script with the required parameters as specified below to invoke the fault: 
     - It might take up to 15 minutes for the fault to become effective
