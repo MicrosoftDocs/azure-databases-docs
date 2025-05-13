@@ -41,7 +41,7 @@ Before enabling PPAF, ensure your environment meets the following **prerequisite
 
 ## Register for Preview
 
-To enable this feature, register for the preview feature **Per Partition Automatic Failover Preview** in your subscription. For more information, see [register for an Azure Cosmos DB preview feature](../access-previews.md).
+To enable this feature, register for the preview feature **Per Partition Automatic Failover Preview** in your subscription. For more information, see [register for an Azure Cosmos DB preview feature](access-previews.md).
 
 ![Screenshot of the Azure Cosmos DB preview feature enablement for PPAF.](./media/how-to-configure-ppaf/ppaf-afec-enablement.png)
 
