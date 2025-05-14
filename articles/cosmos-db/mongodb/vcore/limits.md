@@ -99,7 +99,7 @@ The following limitations can be overridden by upgrading to a paid tier
 - Transition from a paid tier account to a free tier accounts is not supported.
 
 ### M10/M20/M25 Limits
-The burstable SKUs—namely M10, M20, and M25—have the following limitations:
+M10, M20, and M25 have the following limitations:
 - Supports one shard only.
 - Designed for Dev/Test use cases; High Availability (HA) is not supported.
 - Supported disk sizes include 32GB, 64GB, and 128GB.
