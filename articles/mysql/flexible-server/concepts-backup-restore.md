@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Backup and restore in Azure Database for MySQL - Flexible Server
+# Backup and restore in Azure Database for MySQL
 
 Azure Database for MySQL Flexible Server automatically creates server backups and securely stores them in local redundant storage within the region. Backups can be used to restore your server to a point-in-time. Backup and restore are an essential part of any business continuity strategy because they protect your data from accidental corruption or deletion.
 
