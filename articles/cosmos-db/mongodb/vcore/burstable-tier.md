@@ -33,9 +33,10 @@ Provisioning a Burstable Tier is as straightforward as provisioning regular tier
 
 While the Burstable Cluster Tier offers unparalleled flexibility, it's crucial to be mindful of certain constraints:
 
-* Supported disk sizes include 32GB, 64GB, and 128GB. 
-* High availability (HA) is not supported.
-* Supports one shard only.
+- Supported disk sizes include 32GB, 64GB, and 128GB. 
+- High availability (HA) is not supported.
+- Supports one shard only.
+- Once scaled to an M30 SKU or higher, the cluster cannot be scaled back down.
 
 ## Next steps
 
