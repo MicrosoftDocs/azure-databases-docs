@@ -36,7 +36,7 @@ While the Burstable Cluster Tier offers unparalleled flexibility, it's crucial t
 - Supported disk sizes include 32GB, 64GB, and 128GB. 
 - High availability (HA) is not supported.
 - Supports one shard only.
-- Once scaled to an M30 SKU or higher, the cluster cannot be scaled back down.
+- Once a cluster is scaled to an M30 SKU or higher, it cannot be scaled back down to original tier(M10, M20 or M25).
 
 ## Next steps
 
