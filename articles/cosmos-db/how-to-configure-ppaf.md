@@ -19,7 +19,7 @@ This article explains how to configure Per Partition Automatic Failover on your 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-**Per-Partition Automatic Failover (PPAF)**  is a new Azure Cosmos DB feature (currently in **Public Preview**) that improves availability for single-write region accounts. Instead of failing over an entire database account during a regional outage, Cosmos DB can **automatically fail over at the *partition level***, preserving writes for unaffected partitions and minimizing downtime. 
+**Per-Partition Automatic Failover (PPAF)**  is a new Azure Cosmos DB feature (currently in **Public Preview**) that improves availability for single-write region accounts. Instead of failing over an entire database account during a regional outage, Cosmos DB can **automatically fail over at the *partition level***, thus minimizing downtime and faster RTO. 
 
 
 
@@ -42,8 +42,10 @@ Before enabling PPAF, ensure your environment meets the following **prerequisite
 
 To enable this feature, register for the preview feature **Per Partition Automatic Failover Preview** in your subscription. For more information, see [register for an Azure Cosmos DB preview feature](access-previews.md).
 
+Azure Cosmos DB team will review your request and enable the feature upon validation of prerequisites. You will receive an email once the feature is enabled. You can also reach out to [cosmosdbppafpreview@microsoft.com](mailto:cosmosdbppafpreview@microsoft.com) if you have any questions about the onboarding.
 
-You can also reach out to [cosmosdbppafpreview@microsoft.com](mailto:cosmosdbppafpreview@microsoft.com) if you have any questions about the onboarding.
+## PPAF Pricing
+PPAF is part of Business Critical Service Tier and is charged accordingly. For more information, see [Azure Cosmos DB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ## Configure Your Client SDK for PPAF
 
