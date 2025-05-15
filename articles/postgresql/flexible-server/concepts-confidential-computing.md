@@ -36,14 +36,16 @@ The SKUs supporting Azure Confidential Computing (ACC) for Azure Database for Po
 
 | SKU Name | Processor   | vCores | Memory (GiB) | Max IOPS   | Max I/O Bandwidth (MBps) |
 |----------|-------------|--------|--------------|------------|--------------------------|
-| Dcadsv5  | AMD SEV-SNP | 2-96   | 8-384        | 3750-80000 | 48-1200                  |
-| Dcedsv5  | Intel TDX   | 2-96   | 8-384        | 3750-80000 | 85-2600                  |
-| Ecadsv5  | AMD SEV-SNP | 2-96   | 16-672       | 3750-80000 | 48-1200                  |
-| Ecedsv5  | Intel TDX   | 2-128  | 16-1024      | 3750-80000 | 48-1200                  |
+| **Dcadsv5**  | AMD SEV-SNP | 2-96   | 8-384    | 3750-80000 | 48-1200                  |
+| **Dcedsv5**  | Intel TDX   | 2-96   | 8-384    | 3750-80000 | 85-2600                  |
+| **Ecadsv5**  | AMD SEV-SNP | 2-96   | 16-672   | 3750-80000 | 48-1200                  |
+| **Ecedsv5**  | Intel TDX   | 2-128  | 16-1024  | 3750-80000 | 48-1200                  |
 
-## Deployment using the Azure portal
+## Deployment
 
-You can deploy Azure Database for PostgreSQL with ACC using various methods, such as the Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc. Here's a guide to deploying using the Azure portal:
+You can deploy Azure Database for PostgreSQL with ACC using various methods, such as the Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc.
+
+For this example, we're using the Azure portal.
 
 1. Go to [Azure portal to deploy an Azure Database for PostgreSQL](https://ms.portal.azure.com/#create/Microsoft.PostgreSQLFlexibleServer).
 
@@ -57,11 +59,11 @@ You can deploy Azure Database for PostgreSQL with ACC using various methods, suc
 1. On the **Compute and Storage** tab,
    1. Select your Compute Tier and Compute Processor.
 
- :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-2.jpg" alt-text="Azure Confidential Computing portal deployment." lightbox="media/concepts-confidential-computing/confidential-compute-portal-2.jpg":::
+    :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-2.jpg" alt-text="Azure Confidential Computing portal deployment." lightbox="media/concepts-confidential-computing/confidential-compute-portal-2.jpg":::
 
 1. Select Compute Size and **select a confidential compute SKU** and the size based on your needs.
 
- :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-3.jpg" alt-text="Azure Confidential Computing portal deployment.":::
+    :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-3.jpg" alt-text="Azure Confidential Computing portal deployment.":::
 
 1. Deploy your server.
 
@@ -77,7 +79,9 @@ Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential
 | Secure key management                                                     | Yes                      | Yes                                   |
 | [Remote attestation](/azure/confidential-computing/attestation-solutions) | Yes                      | No                                    |
 
-## Limitations
+## Limitations and considerations
+
+Be sure to evaluate the limitations carefully before deploying in a production environment.
 
 - Confidential Computing is only available in the UAE North.
 - High Availability isn't supported for Confidential Compute SKUs.
