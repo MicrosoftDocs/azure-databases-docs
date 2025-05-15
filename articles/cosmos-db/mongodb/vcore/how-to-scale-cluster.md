@@ -7,12 +7,12 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 07/01/2024
+ms.date: 05/13/2025
+appliesto:
+  - ✅ MongoDB (vCore)
 ---
 
 # Scaling and configuring Your Azure Cosmos DB for MongoDB vCore cluster
-
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 Azure Cosmos DB for MongoDB vCore provides seamless scalability and high availability. This document serves as a quick guide for developers who want to learn how to scale and configure their clusters. Changes to the cluster are performed live without downtime.
 
@@ -74,6 +74,28 @@ You can enable or disable [high availability (HA)](./high-availability.md) to su
    :::image type="content" source="media/how-to-scale-cluster/configure-high-availability.png" alt-text="Screenshot of the high availability checkbox in the Scale page of a cluster.":::
 
 2. Select **Save** to persist your change.
+
+## Increase number of physical shards
+
+When database grows beyond capacity of a single physical shard cluster you can increase [storage size](#increase-disk-size) or add physical shards. After a new physical shard is added to the cluster, data needs to be moved to it by performing cluster rebalancing operation.
+
+1. To add physical shards, select new shard count from the list.
+
+   :::image type="content" source="media/how-to-scale-cluster/configure-add-shards.png" alt-text="Screenshot of the physical shard count drop-down list in the Scale page of a cluster.":::
+
+1. Select **Save** to persist your change.
+
+If you need more than 10 physical shards on your cluster, reach out to [our team](mailto:mongodb-feedback@microsoft.com).
+
+## Enable query from any node capability on multishard cluster
+
+When multishard cluster receives a query, it needs to be sent to one (or a few) physical shards. To improve overall cluster performance this query dispatching work can be distributed amongst nodes evenly. To enable such distribution enable *Query from any node' setting.
+
+1. To enable or disable **Query from any node**, toggle the checkbox.
+
+   :::image type="content" source="media/how-to-scale-cluster/configure-query-from-any-node.png" alt-text="Screenshot of the physical shard count drop-down list in the Scale page of a cluster.":::
+
+1. Select **Save** to persist your change.
 
 ## Next steps
 
