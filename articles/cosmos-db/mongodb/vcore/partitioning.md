@@ -44,7 +44,7 @@ This table shows a mapping of shard key values to logical partitions.
 ## Physical shards
 Physical shards are the underlying [machines and disks](./compute-storage.md) responsible for persisting the data and fulfilling database transactions. Unlike logical shards, the service manages physical shards under the covers.
 
-The number of physical shards are defined when a cluster is created and can be increased if database size grows over time. Single shard clusters have one physical shard (node) that is entirely responsible for the cluster's storage and database transactions. Multishard clusters distribute the data and transaction volume across the physical shards in the cluster. 
+The number of physical shards is defined when a cluster is created and can be increased if database size grows over time. Single shard clusters have one physical shard (node) that is entirely responsible for the cluster's storage and database transactions. Multishard clusters distribute the data and transaction volume across the physical shards in the cluster. 
 
 ### Mapping logical shards to physical shards
 When new logical shards are added, the cluster seamlessly updates the mapping of logical to physical shards. Similarly, the assignment of the address space to each physical shard is changed as new physical shards are added to the cluster after which, logical shards are rebalanced across the cluster.  
@@ -116,7 +116,7 @@ db.adminCommand({
 })
 ```
 
-While it is not ideal to change the shard key after the collection has grown significantly in storage volume, the reshardCollection command can be used to alter the shard key.
+While it isn't ideal to change the shard key after the collection has grown significantly in storage volume, the reshardCollection command can be used to alter the shard key.
 ```javascript
 use cosmicworks;
 sh.reshardCollection("cosmicworks.employee", {"lastName": "hashed"})
