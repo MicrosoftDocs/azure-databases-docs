@@ -4,7 +4,7 @@ description: This article describes the confidential computing options in Azure 
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 05/19/2025
+ms.date: 05/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -25,6 +25,7 @@ ms.topic: concept-article
 ## Processors
 
 **Azure Confidential Computing** is supported in **Azure Database for PostgreSQL** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. There are two processors to choose from:
+
 - AMD SEV-SNP
 - Intel TDX
 
@@ -34,12 +35,12 @@ ms.topic: concept-article
 
 The SKUs supporting Azure Confidential Computing (ACC) for Azure Database for PostgreSQL are:
 
-| SKU Name | Processor   | vCores | Memory (GiB) | Max IOPS   | Max I/O Bandwidth (MBps) |
-|----------|-------------|--------|--------------|------------|--------------------------|
-| **Dcadsv5**  | AMD SEV-SNP | 2-96   | 8-384    | 3750-80000 | 48-1200                  |
-| **Dcedsv5**  | Intel TDX   | 2-96   | 8-384    | 3750-80000 | 85-2600                  |
-| **Ecadsv5**  | AMD SEV-SNP | 2-96   | 16-672   | 3750-80000 | 48-1200                  |
-| **Ecedsv5**  | Intel TDX   | 2-128  | 16-1024  | 3750-80000 | 48-1200                  |
+| SKU Name | Processor | vCores | Memory (GiB) | Max IOPS | Max I/O Bandwidth (MBps) |
+| --- | --- | --- | --- | --- | --- |
+| **Dcadsv5** | AMD SEV-SNP | 2-96 | 8-384 | 3750-80000 | 48-1200 |
+| **Dcedsv5** | Intel TDX | 2-96 | 8-384 | 3750-80000 | 85-2600 |
+| **Ecadsv5** | AMD SEV-SNP | 2-96 | 16-672 | 3750-80000 | 48-1200 |
+| **Ecedsv5** | Intel TDX | 2-128 | 16-1024 | 3750-80000 | 48-1200 |
 
 ## Deployment
 
@@ -71,13 +72,13 @@ For this example, we're using the Azure portal.
 
 Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential Computing.
 
-| Feature                                                                   | Confidential Compute VMs | ACC for Azure Database for PostgreSQL |
-|---------------------------------------------------------------------------|--------------------------|---------------------------------------|
-| Hardware root of trust                                                    | Yes                      | Yes                                   |
-| Trusted launch                                                            | Yes                      | Yes                                   |
-| Memory isolation and encryption                                           | Yes                      | Yes                                   |
-| Secure key management                                                     | Yes                      | Yes                                   |
-| [Remote attestation](/azure/confidential-computing/attestation-solutions) | Yes                      | No                                    |
+| Feature | Confidential Compute VMs | ACC for Azure Database for PostgreSQL |
+| --- | --- | --- |
+| Hardware root of trust | Yes | Yes |
+| Trusted launch | Yes | Yes |
+| Memory isolation and encryption | Yes | Yes |
+| Secure key management | Yes | Yes |
+| [Remote attestation](/azure/confidential-computing/attestation-solutions) | Yes | No |
 
 ## Limitations and considerations
 
