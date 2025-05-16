@@ -10,82 +10,83 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Why use Azure Confidential Computing with Azure Database for PostgreSQL Preview?
+# Azure Confidential Computing for Azure Database for PostgreSQL (Preview)
 
-[Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to process and collaborate on sensitive data—such as personal data or protected health information (PHI)—with built-in protection against unauthorized access. By securing data in use through Trusted Execution Environments (TEEs), ACC allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
+[Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to securely process and collaborate on sensitive data, such as personal data or protected health information (PHI). ACC provides built-in protection against unauthorized access by securing data in use through Trusted Execution Environments (TEEs). This allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
 
-Industries with strict regulatory requirements—such as finance, healthcare, and the public sector—can migrate sensitive workloads from on-premises environments to the cloud with minimal code changes and without sacrificing performance by using Azure Confidential Virtual Machines (VMs).
+## Understanding the architecture
 
-## Architecture
-
-:::image type="content" source="media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing options." lightbox="media/concepts-confidential-computing/app-enclave-vs-virtual-machine.jpg":::
-
-A **Trusted Execution Environment (TEE)*- is a hardware-based, isolated memory region within the CPU. Data processed inside the TEE is protected from access by the operating system, hypervisor, or other applications.
+**Azure Database for PostgreSQL** supports Azure Confidential Computing through Trusted Execution Environments (TEEs), which are hardware-based, isolated memory regions within the CPU. Data processed inside the TEE is protected from access by the operating system, hypervisor, or other applications.
 
 - Code runs in plaintext within the TEE but remains encrypted outside the enclave.
-- Data is encrypted at rest, in transit, and in use.
+- Data is encrypted at rest, in transit, and use.
+- Protected from access by the OS, hypervisor, or other applications.
 
-**AMD SEV-SNP (Secure Encrypted Virtualization – Secure Nested Paging)*- provides full memory encryption and memory integrity validation to prevent attacks like memory remapping and replay. It supports lift-and-shift migrations of existing applications to Azure Confidential Computing without requiring code changes or affecting performance.
+## Processors
 
-### Remote attestation
+**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. There are two processors to choose from:
+- AMD SEV-SNP
+- Intel TDX
 
-Remote attestation is the process of validating that a TEE is secure and running verified code before granting it access to sensitive resources.
+:::image type="content" source="media/concepts-confidential-computing/processor.jpg" alt-text="Azure Confidential Computing options.":::
 
-**Attestation flow:**
+## Virtual machine SKUs
 
-1. The TEE submits a report that includes a cryptographic hash of the loaded code and environment configuration.
-1. The attestation service (verifier) validates:
-   - The integrity of the certificate.
-   - The issuer is trusted.
-   - The TEE isn't on a blocklist.
-1. If validation succeeds, the verifier issues an attestation token.
-1. The TEE presents the token to the secrets manager.
-1. The secrets manager validates the token against policy before releasing any secrets.
+The SKUs supporting Azure Confidential Computing (ACC) for Azure Database for PostgreSQL are:
 
-## Confidential computing
+| SKU Name | Processor   | vCores | Memory (GiB) | Max IOPS   | Max I/O Bandwidth (MBps) |
+|----------|-------------|--------|--------------|------------|--------------------------|
+| **Dcadsv5**  | AMD SEV-SNP | 2-96   | 8-384    | 3750-80000 | 48-1200                  |
+| **Dcedsv5**  | Intel TDX   | 2-96   | 8-384    | 3750-80000 | 85-2600                  |
+| **Ecadsv5**  | AMD SEV-SNP | 2-96   | 16-672   | 3750-80000 | 48-1200                  |
+| **Ecedsv5**  | Intel TDX   | 2-128  | 16-1024  | 3750-80000 | 48-1200                  |
 
-Azure secures data at rest and in transit. Confidential computing adds protection for **data in use** through hardware-backed, attested TEEs.
+## Deployment
 
-The [Confidential Computing Consortium (CCC)](https://confidentialcomputing.io/wp-content/uploads/sites/10/2023/03/CCC_outreach_whitepaper_updated_November_2022.pdf) defines confidential computing as:
+You can deploy Azure Database for PostgreSQL with ACC using various methods, such as the Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc.
 
-> [!NOTE]  
-> Confidential computing protects data in use by performing computation in a hardware-based, attested Trusted Execution Environment (TEE).
+For this example, we're using the Azure portal.
 
-Confidential computing provides:
+1. Go to [Azure portal to deploy an Azure Database for PostgreSQL](https://ms.portal.azure.com/#create/Microsoft.PostgreSQLFlexibleServer).
 
-- **Hardware root of trust** – Anchors TEE security in the processor's trusted hardware.
-- **Remote attestation** – Verifies workload integrity before allowing access to data.
-- **Trusted launch** – Ensures that VMs start with verified software and configurations.
-- **Memory isolation and encryption** – Secures in-memory data from unauthorized access.
-- **Secure key management** – Releases keys only to be verified, attested environments.
+1. On the **Basics** tab,
+   1. Enter your details.
+   1. Select **UAE North** as the region.
+   1. Select **Configure Server** under **Compute + Storage**.
 
-## Azure Database for PostgreSQL integration
+   :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-1.jpg" alt-text="Azure Confidential Computing portal deployment." lightbox="media/concepts-confidential-computing/confidential-compute-portal-1.jpg":::
 
-**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL**. Enable ACC by selecting a supported confidential virtual machine (VM) SKU when creating a new server.
+1. On the **Compute and Storage** tab,
+   1. Select your Compute Tier and Compute Processor.
 
-> [!IMPORTANT]  
-> After the server is created, you can't Switch between confidential and nonconfidential compute options.
+    :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-2.jpg" alt-text="Azure Confidential Computing portal deployment." lightbox="media/concepts-confidential-computing/confidential-compute-portal-2.jpg":::
 
-You can deploy Azure Database for PostgreSQL with ACC using any supported method (for example, Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc.).
+1. Select Compute Size and **select a confidential compute SKU** and the size based on your needs.
 
-:::image type="content" source="media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg" alt-text="Screenshot of the Azure portal showing Azure Confidential Computing deployment options." lightbox="media/concepts-confidential-computing/confidential-computing-general-purpose.jpeg":::
+    :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-3.jpg" alt-text="Azure Confidential Computing portal deployment.":::
 
-## Supported ACC SKUs
+1. Deploy your server.
 
-Select from the following SKUs based on your compute and I/O requirements:
+## Compare
 
-| **SKU Name*- | **vCores*- | **Memory (GiB)*- | **Max IOPS*- | **Max I/O Bandwidth (MBps)*- |
-| --- | --- | --- | --- | --- |
-| Standard_EC2ads_v5 | 2 | 16 | 3,750 | 48 |
-| Standard_DC4ads_v5 | 4 | 16 | 6,400 | 96 |
-| Standard_DC8ads_v5 | 8 | 32 | 12,800 | 192 |
-| Standard_DC16ads_v5 | 16 | 64 | 25,600 | 384 |
-| Standard_DC32ads_v5 | 32 | 128 | 51,200 | 768 |
-| Standard_DC48ads_v5 | 48 | 192 | 76,800 | 1,152 |
-| Standard_DC64ads_v5 | 64 | 256 | 80,000 | 1,200 |
-| Standard_DC96ads_v5 | 96 | 384 | 80,000 | 1,200 |
+Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential Computing.
 
-[!INCLUDE [pricing](includes/compute-storage-pricing.md)]
+| Feature                                                                   | Confidential Compute VMs | ACC for Azure Database for PostgreSQL |
+|---------------------------------------------------------------------------|--------------------------|---------------------------------------|
+| Hardware root of trust                                                    | Yes                      | Yes                                   |
+| Trusted launch                                                            | Yes                      | Yes                                   |
+| Memory isolation and encryption                                           | Yes                      | Yes                                   |
+| Secure key management                                                     | Yes                      | Yes                                   |
+| [Remote attestation](/azure/confidential-computing/attestation-solutions) | Yes                      | No                                    |
+
+## Limitations and considerations
+
+Be sure to evaluate the limitations carefully before deploying in a production environment.
+
+- Confidential Computing is only available in the UAE North.
+- High Availability isn't supported for Confidential Compute SKUs.
+- Point-in-time Restore (PITR) from nonconfidential compute SKUs to confidential ones isn't allowed.
+- Compute scaling operation between confidential and nonconfidential compute options.
 
 ## Related content
 
