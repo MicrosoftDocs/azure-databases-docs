@@ -101,9 +101,9 @@ landingContent:
       - linkListType: concept
         links:
           - text: Business continuity overview
-            url: concepts-business-continuity.md
+            url: flexible-server/concepts-business-continuity.md
           - text: High availability
-            url: concepts-high-availability.md
+            url: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
           - text: Back up and restore
             url: flexible-server/concepts-backup-restore.md
       - linkListType: how-to-guide
@@ -126,24 +126,18 @@ landingContent:
         links:
           - text: Enable firewall rules to connect
             url: flexible-server/concepts-firewall-rules.md
-          - text: Configure SSL for secure connections
-            url: single-server/concepts-ssl-connection-security.md
       - linkListType: quickstart
         links:
           - text: Connect using Python
             url: flexible-server/connect-python.md
-          - text: Connect using Node.js
-            url: single-server/connect-nodejs.md
           - text: Connect using Java
             url: flexible-server/connect-java.md
-          - text: Connect using Ruby
-            url: single-server/connect-ruby.md
           - text: Connect using PHP
-            url: single-server/connect-php.md
+            url: flexible-server/connect-php.md
           - text: Connect using .NET
             url: flexible-server/connect-csharp.md
           - text: Connect using Go
-            url: single-server/connect-go.md
+            url: flexible-server/connect-go.md
       - linkListType: tutorial
         links:
         - text: Connect Web App in virtual network
@@ -180,8 +174,6 @@ landingContent:
             url: /training/modules/create-azure-db-for-postgresql-server/
       - linkListType: deploy
         links:
-          - text: Azure CLI scripts for common tasks
-            url: single-server/sample-scripts-azure-cli.md
           - text: Azure Resource Manager templates
             url: /azure/templates/microsoft.dbforpostgresql/allversions
       - linkListType: reference
@@ -192,10 +184,7 @@ landingContent:
             url: /rest/api/postgresql/
           - text: Azure Resource Manager templates
             url: /azure/templates/microsoft.dbforpostgresql/allversions
-      - linkListType: get-started
-        links:
-          - text: Azure CLI scripts for common tasks
-            url: sample-scripts-azure-cli.md
+      
 # Card 10
   - title: Get training
     linkLists:
