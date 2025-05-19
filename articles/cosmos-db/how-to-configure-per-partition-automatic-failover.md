@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.date: 05/14/2025
 ---
 
-# How to Onboard and Adopt Per-Partition Automatic Failover (PPAF) for Azure Cosmos DB
+# How to onboard and adopt Per-Partition Automatic Failover (PPAF) for Azure Cosmos DB
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to configure Per Partition Automatic Failover on your Azure Cosmos DB account.
@@ -27,21 +27,19 @@ This article explains how to configure Per Partition Automatic Failover on your 
 Before enabling PPAF, ensure your environment meets the following **prerequisites**:
 
 - **Multi-region account:** Single-write region account with **at least one** other **read region** configured.
-- **Consistency Model:** In the current preview, **Strong**, **Session**, **Consistent Prefix**, or **Eventual** consistencies are also supported, but **Bounded Staleness** will be supported in the future.
+- **Consistency Model:** In the current preview, **Strong**, **Session**, **Consistent Prefix**, or **Eventual** consistencies are currently supported
 - **API Type:** The account must use the **Core (SQL) API** (NoSQL API).
 - **Azure Region:** The account should be in **Azure public cloud regions** (Global Azure). Accounts in sovereign clouds aren't eligible during preview.
 - **SDK Version:** Your application must use a **latest supported Azure Cosmos DB SDK** that implements PPAF logic. Currently, the preview supports:
   - **.NET SDK v3** : v 3.51.0 or later
   - **Java SDK**: v 4.70.0 or later
-  - Support for other languages is coming soon; check updated documentation as the feature matures.
-
 
 
 ## Register for Preview
 
 To enable this feature, register for the preview feature **Per Partition Automatic Failover Preview** in your subscription. For more information, see [register for an Azure Cosmos DB preview feature](access-previews.md).
 
-Azure Cosmos DB team reviews your request and enable the feature upon validation of prerequisites. You receive an email once the feature is enabled. You can also reach out to [cosmosdbppafpreview@microsoft.com](mailto:cosmosdbppafpreview@microsoft.com) if you have any questions about the onboarding.
+Azure Cosmos DB team reviews your request and enables the feature upon validation of prerequisites. You receive an email once the feature is enabled. You can also reach out to [cosmosdbppafpreview@microsoft.com](mailto:cosmosdbppafpreview@microsoft.com) if you have any questions about the onboarding.
 
 ## PPAF Pricing
 PPAF is part of Business Critical Service Tier and is charged accordingly. For more information, see [Azure Cosmos DB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
@@ -69,7 +67,7 @@ With the account and client configured, it’s prudent to **test** that everythi
 
 - **Application Testing:** Test critical transactions of your application during the failover.
 - **Metrics:** 
-  - You can verify the traffic in the Azure Portal Metrics for your account. Look at metrics like **Total Requests** broken down by region. You should see write operations occurring in a secondary region during the simulation, confirming the failover worked.
+  - You can verify the traffic in the Azure portal Metrics for your account. Look at metrics like **Total Requests** broken down by region. You should see write operations occurring in a secondary region during the simulation, confirming the failover worked.
   - We have introduced a new metric known as **PartitionWriteGlobalStatus** that shows the count of write partitions for a region at any given time. You can also use this metric to track how many partitions are failed over due to fault. 
 
 - **Disable the fault:**
