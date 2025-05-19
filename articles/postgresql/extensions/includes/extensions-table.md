@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 05/19/2025
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -23,8 +23,6 @@ ms.custom:
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## address_standardizer_data_us
 
 [address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example.
@@ -38,8 +36,6 @@ ms.custom:
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## age
 
@@ -70,8 +66,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.1 |
-
-
 
 ## anon
 
@@ -119,8 +113,6 @@ ms.custom:
 | 12 | 1.3.0 |
 | 11 | N/A |
 
-
-
 ## azure_storage
 
 [azure_storage](../../flexible-server/concepts-storage-extension.md) provides Azure Storage integration for PostgreSQL.
@@ -151,8 +143,6 @@ ms.custom:
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## btree_gin
 
 [btree_gin](https://www.postgresql.org/docs/current/btree-gin.html) provides support for indexing common datatypes in GIN.
@@ -166,8 +156,6 @@ ms.custom:
 | 13 | 1.3 |
 | 12 | 1.3 |
 | 11 | 1.3 |
-
-
 
 ## btree_gist
 
@@ -183,8 +171,6 @@ ms.custom:
 | 12 | 1.5 |
 | 11 | 1.5 |
 
-
-
 ## citext
 
 [citext](https://www.postgresql.org/docs/current/citext.html) is a data type for case-insensitive character strings.
@@ -199,8 +185,6 @@ ms.custom:
 | 12 | 1.6 |
 | 11 | 1.5 |
 
-
-
 ## cube
 
 [cube](https://www.postgresql.org/docs/current/cube.html) is a data type for multidimensional cubes.
@@ -214,8 +198,6 @@ ms.custom:
 | 13 | 1.4 |
 | 12 | 1.4 |
 | 11 | 1.4 |
-
-
 
 ## dblink
 
@@ -232,8 +214,7 @@ ms.custom:
 | 11 | 1.2 |
 
 > [!NOTE]
-> Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in Flexible Server.
-
+> Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in flexible server.
 
 ## dict_int
 
@@ -249,8 +230,6 @@ ms.custom:
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## dict_xsyn
 
 [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing.
@@ -264,8 +243,6 @@ ms.custom:
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
-
 
 ## earthdistance
 
@@ -281,8 +258,6 @@ ms.custom:
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## fuzzystrmatch
 
 [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings.
@@ -296,8 +271,6 @@ ms.custom:
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## hll
 
@@ -313,8 +286,6 @@ ms.custom:
 | 12 | 2.18 |
 | 11 | N/A |
 
-
-
 ## hstore
 
 [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs.
@@ -328,8 +299,6 @@ ms.custom:
 | 13 | 1.7 |
 | 12 | 1.6 |
 | 11 | 1.5 |
-
-
 
 ## hypopg
 
@@ -345,8 +314,6 @@ ms.custom:
 | 12 | 1.4.0 |
 | 11 | 1.4.0 |
 
-
-
 ## intagg
 
 [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator.
@@ -360,8 +327,6 @@ ms.custom:
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## intarray
 
@@ -377,8 +342,6 @@ ms.custom:
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-
-
 ## isn
 
 [isn](https://www.postgresql.org/docs/current/isn.html) provides data types for international product numbering standards.
@@ -392,8 +355,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## lo
 
@@ -409,8 +370,6 @@ ms.custom:
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## login_hook
 
 [login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time.
@@ -424,8 +383,6 @@ ms.custom:
 | 13 | 1.4 |
 | 12 | 1.4 |
 | 11 | 1.4 |
-
-
 
 ## ltree
 
@@ -441,8 +398,6 @@ ms.custom:
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## oracle_fdw
 
 [oracle_fdw](https://github.com/laurenz/oracle_fdw) is a foreign data wrapper for Oracle databases.
@@ -456,8 +411,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | N/A |
-
-
 
 ## orafce
 
@@ -473,8 +426,6 @@ ms.custom:
 | 12 | 3.18 |
 | 11 | 3.7 |
 
-
-
 ## pageinspect
 
 [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) inspects the contents of database pages at a low level.
@@ -488,8 +439,6 @@ ms.custom:
 | 13 | 1.8 |
 | 12 | 1.7 |
 | 11 | 1.7 |
-
-
 
 ## pgaudit
 
@@ -522,8 +471,7 @@ ms.custom:
 | 11 | 1.3 |
 
 > [!NOTE]
-> Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.
-
+> Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server.
 
 ## pg_cron
 
@@ -541,8 +489,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Flexible Server.
-
+> Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server.
 
 ## pgcrypto
 
@@ -558,8 +505,6 @@ ms.custom:
 | 12 | 1.3 |
 | 11 | 1.3 |
 
-
-
 ## pg_diskann
 
 [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
@@ -573,8 +518,6 @@ ms.custom:
 | 13 | N/A |
 | 12 | N/A |
 | 11 | N/A |
-
-
 
 ## pg_failover_slots
 
@@ -592,8 +535,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.
-
+> Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server.
 
 ## pg_freespacemap
 
@@ -608,8 +550,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## pg_hint_plan
 
@@ -627,8 +567,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.
-
+> Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
 
 ## pglogical
 
@@ -694,8 +633,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.
-
+> Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in flexible server.
 
 ## pg_repack
 
@@ -712,8 +650,7 @@ ms.custom:
 | 11 | 1.4.7 |
 
 > [!NOTE]
-> Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in Flexible Server.
-
+> Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in flexible server.
 
 ## pgrouting
 
@@ -729,8 +666,6 @@ ms.custom:
 | 12 | 3.3.0 |
 | 11 | 3.3.0 |
 
-
-
 ## pgrowlocks
 
 [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information.
@@ -744,8 +679,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## pg_squeeze
 
@@ -779,8 +712,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Flexible Server.
-
+> Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in flexible server.
 
 ## pgstattuple
 
@@ -797,8 +729,7 @@ ms.custom:
 | 11 | 1.5 |
 
 > [!NOTE]
-> Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in Flexible Server.
-
+> Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in flexible server.
 
 ## pg_trgm
 
@@ -814,8 +745,6 @@ ms.custom:
 | 12 | 1.4 |
 | 11 | 1.4 |
 
-
-
 ## pg_visibility
 
 [pg_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) examines the visibility map and page-level visibility info.
@@ -829,8 +758,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## plpgsql
 
@@ -846,8 +773,6 @@ ms.custom:
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## plv8
 
 [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language.
@@ -861,8 +786,6 @@ ms.custom:
 | 13 | 3.0.0 |
 | 12 | 3.0.0 |
 | 11 | 3.0.0 |
-
-
 
 ## postgis
 
@@ -878,8 +801,6 @@ ms.custom:
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## postgis_raster
 
 [postgis_raster](https://www.postgis.net) raster types and functions.
@@ -893,8 +814,6 @@ ms.custom:
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgis_sfcgal
 
@@ -910,8 +829,6 @@ ms.custom:
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## postgis_tiger_geocoder
 
 [postgis_tiger_geocoder](https://www.postgis.net) tiger geocoder and reverse geocoder.
@@ -926,8 +843,6 @@ ms.custom:
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## postgis_topology
 
 [postgis_topology](https://postgis.net/docs/Topology.html) spatial types and functions.
@@ -941,8 +856,6 @@ ms.custom:
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgres_fdw
 
@@ -959,8 +872,7 @@ ms.custom:
 | 11 | 1.0 |
 
 > [!NOTE]
-> Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in Flexible Server.
-
+> Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in flexible server.
 
 ## postgres_protobuf
 
@@ -976,8 +888,6 @@ ms.custom:
 | 12 | 0.2 |
 | 11 | N/A |
 
-
-
 ## semver
 
 [semver](https://pgxn.org/dist/semver/doc/semver.html) provides a semantic version data type.
@@ -991,8 +901,6 @@ ms.custom:
 | 13 | 0.32.0 |
 | 12 | 0.32.0 |
 | 11 | 0.32.0 |
-
-
 
 ## session_variable
 
@@ -1008,8 +916,6 @@ ms.custom:
 | 12 | 3.3 |
 | 11 | 3.3 |
 
-
-
 ## sslinfo
 
 [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates.
@@ -1023,8 +929,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## tablefunc
 
@@ -1040,8 +944,6 @@ ms.custom:
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## tdigest
 
 [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means.
@@ -1056,8 +958,6 @@ ms.custom:
 | 12 | 1.4.2 |
 | 11 | N/A |
 
-
-
 ## tds_fdw
 
 [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server).
@@ -1071,8 +971,6 @@ ms.custom:
 | 13 | 2.0.3 |
 | 12 | 2.0.3 |
 | 11 | 2.0.3 |
-
-
 
 ## timescaledb
 
@@ -1104,8 +1002,6 @@ ms.custom:
 | 12 | N/A |
 | 11 | N/A |
 
-
-
 ## tsm_system_rows
 
 [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit.
@@ -1119,8 +1015,6 @@ ms.custom:
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
-
 
 ## tsm_system_time
 
@@ -1136,8 +1030,6 @@ ms.custom:
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## unaccent
 
 [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents.
@@ -1151,8 +1043,6 @@ ms.custom:
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## uuid-ossp
 
@@ -1168,8 +1058,6 @@ ms.custom:
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## vector
 
 [vector](https://github.com/pgvector/pgvector) is a vector data type and `ivfflat` and `hnsw` access methods.
@@ -1183,8 +1071,6 @@ ms.custom:
 | 13 | 0.8.0 |
 | 12 | 0.7.0 |
 | 11 | 0.5.1 |
-
-
 
 ## wal2json
 
@@ -1201,4 +1087,3 @@ ms.custom:
 | 11 | 2.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-
