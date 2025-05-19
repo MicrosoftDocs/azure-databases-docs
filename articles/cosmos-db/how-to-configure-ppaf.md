@@ -52,7 +52,7 @@ PPAF is part of Business Critical Service Tier and is charged accordingly. For m
 Configuring your application’s Cosmos DB SDK is **critical** so that it knows to handle partition-level failovers. Without this, your client might not properly redirect writes during a partition failover.
 
 - **Upgrade SDK:** Ensure your app is running the **latest SDK version** that supports PPAF (as identified in prerequisites).
-- **Configure secondary region:** Ensure your Azure Cosmos DB account has atleast 1 secondary region. Use the following [guide](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-manage-database-account#add-remove-regions-from-your-database-account) to add a secondary region if needed.
+- **Configure secondary region:** Ensure your Azure Cosmos DB account has atleast 1 secondary region.
 
 ## Test the PPAF Setup (Simulate Fault)
 
