@@ -90,6 +90,12 @@ COMMIT;
 > [!IMPORTANT]
 > Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disable using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. Notice that if the query involves other tables, the setting also discourages the use of sequential scans in all of them.
 
+## Scale efficiently with Quantization (Preview)
+
+DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)
+
+To get access the product quantization(PQ) feature, [please sign up for the preview](https://aka.ms/pg-diskann-form)
+
 ## Speed up index build
 There are a few ways we recommend to improve your index build times.
 
@@ -157,12 +163,18 @@ When creating a `diskann` index, you can specify various parameters to control i
 
 - `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
 - `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
+- `product_quantized`: Enables product quantization (Defaults to true).
+- `pq_param_num_chunks`: Number of chunks for product quantization (Defaults to 0). 0 means it is determined automatically, based on embedding dimensions. It is recommended to use 1/3 of the original embedding dimensions.
+- `pq_param_training_samples`: Number of vectors to train the PQ pivot table on (Defaults to 0). 0 means it is determined automatically, based on table size.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
 WITH (
  max_neighbors = 48,
  l_value_ib = 100
+ product_quantized=true, 
+ pq_param_num_chunks = 0,
+ pq_param_training_samples = 0 
  );
 ```
 
@@ -218,13 +230,15 @@ WITH (
 | <1M | Index build | `l_value_ib` | 100 |
 | <1M | Index build | `max_neighbors` | 32 |
 | <1M | Query time | `diskann.l_value_is` | 100 |
-|  | | | |
+|  | | | |
 | 1M-50M | Index build | `l_value_ib` | 100 |
 | 1M-50M | Index build | `max_neighbors` | 64 |
+| 1M-50M | Index build | `product_quantized` | true |
 | 1M-50M | Query time | `diskann.l_value_is` | 100 |
-|  | | | |
+|  | | | |
 | >50M | Index build | `l_value_ib` | 100 |
 | >50M | Index build | `max_neighbors` | 96 |
+| >50M | Index build | `product_quantized` | true |
 | >50M | Query time | `diskann.l_value_is` | 100 |
 
 > [!NOTE]
