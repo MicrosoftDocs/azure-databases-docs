@@ -29,7 +29,7 @@ ms.topic: concept-article
 - AMD SEV-SNP
 - Intel TDX
 
-:::image type="content" source="media/concepts-confidential-computing/processor.jpg" alt-text="Screenshsot of Azure Confidential Computing options.":::
+:::image type="content" source="media/concepts-confidential-computing/processor.jpg" alt-text="Screenshot of Azure Confidential Computing options.":::
 
 ## Virtual machine SKUs
 
@@ -55,16 +55,16 @@ For this example, we're using the Azure portal.
    1. Select **UAE North** as the region.
    1. Select **Configure Server** under **Compute + Storage**.
 
-   :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-1.jpg" alt-text="Screenshsot of Azure Confidential Computing portal deployment basica page." lightbox="media/concepts-confidential-computing/confidential-compute-portal-1.jpg":::
+   :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-1.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment basics page." lightbox="media/concepts-confidential-computing/confidential-compute-portal-1.jpg":::
 
 1. On the **Compute and Storage** tab,
-   1. Select your Compute Tier and Compute Processor.
+   - Select your Compute Tier and Compute Processor.
 
-    :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-2.jpg" alt-text="Screenshsot of Azure Confidential Computing portal deployment compute and storage page." lightbox="media/concepts-confidential-computing/confidential-compute-portal-2.jpg":::
+    :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-2.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment compute and storage page." lightbox="media/concepts-confidential-computing/confidential-compute-portal-2.jpg":::
 
 1. Select Compute Size and **select a confidential compute SKU** and the size based on your needs.
 
-    :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-3.jpg" alt-text="Screenshsot of Azure Confidential Computing portal deployment list of compute sizes.":::
+    :::image type="content" source="media/concepts-confidential-computing/confidential-compute-portal-3.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment list of compute sizes.":::
 
 1. Deploy your server.
 
