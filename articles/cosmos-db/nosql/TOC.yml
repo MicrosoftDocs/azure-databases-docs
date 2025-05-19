@@ -72,8 +72,8 @@
       href: ../gen-ai/integrations.md?context=/azure/cosmos-db/nosql/context/context
     - name: Build a RAG chatbot
       href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
-    - name: Ingest and vectorize document files
-      href: ../gen-ai/document-ingestion.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Document Indexer
+      hredf: gen../-ai/document-indexer.md
     - name: Create a knowledge graph
       href: ../gen-ai/cosmos-ai-graph.md?context=/azure/cosmos-db/nosql/context/context
     - name: Author AI agents
@@ -544,6 +544,8 @@
               href: how-to-migrate-from-bulk-executor-library.md
             - name: Bulk executor - Java library
               href: bulk-executor-java.md
+            - name: Bulk executor - JavaScript library
+              href: bulk-executor-nodejs.md
             - name: Migrate from bulk executor to Java SDK
               href: how-to-migrate-from-bulk-executor-library-java.md
         - name: Migrate to newer SDKs
@@ -659,6 +661,8 @@
       href: query/toc.yml
 - name: Integrate with Azure services
   items:
+    - name: Document Indexer
+      hredf: gen../-ai/document-indexer.md
     - name: Integrate with Azure Kubernetes Service and Spring Boot
       href: tutorial-springboot-azure-kubernetes-service.md
     - name: Deploy app on Azure Kubernetes Service (AKS) cluster using Bicep
@@ -778,6 +782,25 @@
             - name: Kusto Query Language (KQL) transformations
               displayName: KQL, workspace, data
               href: ../tutorial-log-transformation.md?context=/azure/cosmos-db/nosql/context/context
+- name: Orchestrate multi-tenant solutions
+  items:
+    - name: Fleets
+      expanded: true
+      items:
+        - name: Fleets overview
+          href: fleet.md
+        - name: Create a fleet
+          href: how-to-create-fleet.md
+        - name: Fleet pools
+          href: fleet-pools.md
+        - name: Fleet analytics
+          href: fleet-analytics.md
+        - name: Enable fleet analytics
+          href: how-to-enable-fleet-analytics.md
+        - name: Fleet analytics schema reference
+          href: fleet-analytics-schema-reference.md
+        - name: Frequently asked questions
+          href: fleet-faq.yml
 - name: Migrate data
   items:
     - name: Desktop data migration tool
@@ -914,6 +937,8 @@
           items:
             - name: Monitor with diagnostic logs
               href: ../monitor-resource-logs.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Monitor with aggregated diagnostic logs
+              href: ../monitor-aggregated-logs.md?context=/azure/cosmos-db/nosql/context/context
             - name: Troubleshoot issues using basic queries
               href: ../monitor-logs-basic-queries.md?context=/azure/cosmos-db/nosql/context/context
             - name: Audit control plane logs

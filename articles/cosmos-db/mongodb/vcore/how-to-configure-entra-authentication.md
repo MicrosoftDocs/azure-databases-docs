@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/03/2025
+ms.date: 05/14/2025
 ms.custom: devx-track-rust
 appliesto:
   - ✅ MongoDB (vCore)
@@ -16,8 +16,6 @@ appliesto:
 ---
 
 # Configure Microsoft Entra ID authentication for an Azure Cosmos DB for MongoDB vCore cluster
-
-[!INCLUDE[Notice - Entra authentication preview](includes/notice-entra-authentication-preview.md)]
 
 In this article, you learn how to configure Microsoft Entra ID authentication for an Azure Cosmos DB for MongoDB vCore. The steps in this guide configure an existing Azure Cosmos DB for MongoDB vCore cluster to use Microsoft Entra ID authentication with your human identity (currently signed-in account). Microsoft Entra ID authentication enables secure and seamless access to your database by using your organization's existing identities. This guide goes through the steps to set up authentication, register users or service principals, and validate the configuration.
 
