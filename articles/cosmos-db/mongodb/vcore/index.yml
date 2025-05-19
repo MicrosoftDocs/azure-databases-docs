@@ -37,8 +37,12 @@ landingContent:
             url: vector-search.md
           - text: Full-text search
             url: full-text-search.md
+          - text: Hybrid Search
+            url: hybrid-search.md
           - text: Exact Nearest Neighbor (ENN) Vector Search 
             url: enn-vector-search.md
+          - text: Product Quantization
+            url: product-quantization.md
           - text: Half-Precision Vector Indexing
             url: half-precision.md
           - text: Open-source vector database
