@@ -1,7 +1,7 @@
 ---
 title: $stddevpop
 titleSuffix: Overview of the $stddevpop operator in Azure Cosmos DB for MongoDB vCore
-description: The $stddevpop operator in Azure Cosmos DB for MongoDB vCore updates or creates a new field with a specified value
+description: The $stddevpop operator in Azure Cosmos DB for MongoDB vCore calculates the standard deviation of the specified values
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
