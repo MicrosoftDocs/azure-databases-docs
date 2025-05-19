@@ -27,7 +27,7 @@ This article explains how to configure Per Partition Automatic Failover on your 
 Before enabling PPAF, ensure your environment meets the following **prerequisites**:
 
 - **Multi-region account:** Single-write region account with **at least one** other **read region** configured.
-- **Consistency Model:** In the current preview, **Strong**, **Session**, **Consistent Prefix**, or **Eventual** consistencies are currently supported
+- **Consistency Model:** In the current preview, **Strong**, **Session**, **Consistent Prefix**, or **Eventual** consistencies are currently supported.
 - **API Type:** The account must use the **Core (SQL) API** (NoSQL API).
 - **Azure Region:** The account should be in **Azure public cloud regions** (Global Azure). Accounts in sovereign clouds aren't eligible during preview.
 - **SDK Version:** Your application must use a **latest supported Azure Cosmos DB SDK** that implements PPAF logic. Currently, the preview supports:
@@ -56,11 +56,11 @@ Configuring your application’s Cosmos DB SDK is **critical** so that it knows 
 With the account and client configured, it’s prudent to **test** that everything works as expected before a real outage occurs. Azure Cosmos DB provides a way to simulate partition failures in the preview for PPAF enabled accounts:
 
 - **Chaos Simulation (Preview):** We're releasing a preview version of the fault management feature for PPAF via REST API. For ease of use, we're providing a PowerShell script for managing the fault.
-  - Download the script [`EnableDisableChaosFault.ps1` at azurecosmosdb/ppaf-samples](https://github.com/AzureCosmosDB/ppaf-samples/blob/main/ppaf-fault-script/EnableDisableChaosFault.ps1)
-  - Start PowerShell and login to your subscription using “az login”
+  - Download the script [`EnableDisableChaosFault.ps1` at azurecosmosdb/ppaf-samples](https://github.com/AzureCosmosDB/ppaf-samples/blob/main/ppaf-fault-script/EnableDisableChaosFault.ps1).
+  - Start PowerShell and login to your subscription using "az login."
   - Navigate to the folder with the PowerShell script and invoke the script with the required parameters to invoke the fault: 
-    - It might take up to 15 minutes for the fault to become effective
-    - The fault gets effective on 10% of total partition for the specified collection with a maximum of 10 partition and minimum 1 Partition
+    - It might take up to 15 minutes for the fault to become effective.
+    - The fault gets effective on 10% of total partition for the specified collection with a maximum of 10 partition and minimum 1 Partition.
     ``` powershell
     .\EnableDisableChaosFault.ps1 -FaultType "PerPartitionAutomaticFailover" -ResourceGroup "{ResourceGroupName}" -AccountName "{DatabaseAccountName}" -DatabaseName "{DatabaseName}" -ContainerName "{CollectionName}"  -SubscriptionId "{SubscriptionId}" -Region "{PreferredWriteRegion}" -Enable
     ```
@@ -72,7 +72,7 @@ With the account and client configured, it’s prudent to **test** that everythi
 
 - **Disable the fault:**
   - Navigate to the folder with the PowerShell script and invoke the script with the required parameters to invoke the fault: 
-    - It might take up to 15 minutes for the fault to be disabled
+    - It might take up to 15 minutes for the fault to be disabled.
     ```powershell 
     .\EnableDisableChaosFault.ps1 -FaultType "PerPartitionAutomaticFailover" -ResourceGroup "{ResourceGroupName}" -AccountName "{DatabaseAccountName}" -DatabaseName "{DatabaseName}" -ContainerName "{CollectionName}"  -SubscriptionId "{SubscriptionId}" -Region "{PreferredWriteRegion}" -Disable
     ```
