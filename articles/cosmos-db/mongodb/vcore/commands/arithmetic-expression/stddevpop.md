@@ -157,6 +157,41 @@ This query returns the following results:
 }
 ```
 
+### Example 2 - Calculate the standard deviation for a field with a single value
+
+```mongodb
+db.stores.aggregate([{"$match": {"company": "Fourth Coffee"} }, {"$group": {"_id": "$name", "stdDev": {"$stdDevPop": "$sales.totalSales"} } }])
+```
+
+This query groups the documents corresponding to 'Fourth Company' by store. Each store contains just a single document and only one distinct value for total sales. The query returns the following result, with a standard deviation of 0 as expected.
+
+```json
+[{
+    "_id": "Fourth Coffee | Outdoor Equipment Collection - Kochview",
+    "stdDev": 0
+},
+{
+    "_id": "Fourth Coffee | Grocery Hub - Brakusborough",
+    "stdDev": 0
+},
+{
+    "_id": "Fourth Coffee | Pet Supply Nook - Lake Armanimouth",
+    "stdDev": 0
+},
+{
+    "_id": "Fourth Coffee | Beauty Product Nook - Emmytown",
+    "stdDev": 0
+},
+{
+    "_id": "Fourth Coffee | Bed and Bath Closet - Legroston",
+    "stdDev": 0
+},
+{
+    "_id": "Fourth Coffee | Automotive Part Collection - Cassinport",
+    "stdDev": 0
+}]
+```
+
 ## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
