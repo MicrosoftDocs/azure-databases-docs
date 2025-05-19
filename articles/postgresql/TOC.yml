@@ -158,12 +158,14 @@
           href: flexible-server/generative-ai-azure-cognitive.md
         - name: Azure Machine Learning Services
           href: flexible-server/generative-ai-azure-machine-learning.md
+        - name: Enable Managed Identity
+          href: flexible-server/generative-ai-enable-managed-identity-azure-ai.md
+        - name: Introducing Semantic Operators
+          href: flexible-server/generative-ai-azure-ai-semantic-operators.md
       - name: In-database Embeddings (azure_local_ai)
         items:
         - name: Overview  
           href: flexible-server/azure-local-ai.md
-        - name: How to enable and use
-          href: flexible-server/generative-ai-azure-local-ai.md
       - name: Vector indexing (pg_diskann)
         items:
         - name: Overview  
@@ -178,11 +180,11 @@
         - name: Optimize performance when using pgvector
           href: flexible-server/how-to-optimize-performance-pgvector.md
           displayName: vector databases
-      - name: Partitioning
-        items:
-        - name: Partitioning using pg_partman
-          href: flexible-server/how-to-use-pg-partman.md
-          displayName: pg_partman
+    - name: Partitioning
+      items:
+       - name: Partitioning using pg_partman
+         href: flexible-server/how-to-use-pg-partman.md
+         displayName: pg_partman
     - name: Server parameters
       items:
       - name: Overview
@@ -373,7 +375,20 @@
         href: flexible-server/generative-ai-recommendation-system.md
       - name: Integrate Azure AI capabilities
         href: flexible-server/how-to-integrate-azure-ai.md
-
+  - name: Developer experience
+    items:
+      - name: PostgreSQL extension for VS Code
+        href: extensions\vs-code-extension\overview.md
+      - name: Quickstart for PostgreSQL extension for VS Code
+        href: extensions\vs-code-extension\quickstart-connect.md
+      - name: Quickstart for PostgreSQL GitHub Copilot
+        href: extensions\vs-code-extension\quickstart-github-copilot.md
+  - name: Graph Database
+    items:
+    - name: Overview Apache AGE for PostgreSQL
+      href: flexible-server/generative-ai-age-overview.md
+    - name: Performance Best Practices for Apache AGE
+      href: flexible-server/generative-ai-age-performance.md
   - name: Integrations
     items:
     - name: Manage Azure resources with automation tasks
@@ -629,6 +644,10 @@
           href: flexible-server/how-to-configure-managed-identities-user-assigned.md
       - name: Reset administrator password
         href: flexible-server/how-to-reset-admin-password.md
+      - name: Confidential computing
+        items:
+        - name: Overview
+          href: flexible-server/concepts-confidential-computing.md
     - name: Decommissioning and relocation
       items:
       - name: Delete a server
