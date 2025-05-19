@@ -38,22 +38,9 @@ Full Text Search is ideal for a variety of scenarios, including:
 
 ## How to use full text search
 
-1. Enable the "Full Text & Hybrid Search for NoSQL" feature.
-2. Configure a container with a full text policy and full text index.
-3. Insert your data with text properties.
-4. Run hybrid queries against the data.
-
-## Enable the full text and hybrid search for NoSQL feature
-
-Full text search, full text scoring, and hybrid search all require enabling the feature on your Azure Cosmos DB for NoSQL account before using. Follow the below steps to register:
-
-1. Navigate to your Azure Cosmos DB for NoSQL resource page.
-2. Select the "Features" pane under the "Settings" menu item.
-3. Select the "Full-Text & Hybrid Search for NoSQL API" feature.
-4. Read the description of the feature to confirm you want to enable it.
-5. Select "Enable" to turn on the vector indexing and search capability.
-
-:::image type="content" source="../nosql/media/full-text-search/full-text-search-feature.png" alt-text="Screenshot of full text and hybrid search feature in the Azure portal.":::
+1. Configure a container with a full text policy and full text index.
+2. Insert your data with text properties.
+3. Run hybrid queries against the data.
 
 ### Configure container policies and indexes for hybrid search
 
