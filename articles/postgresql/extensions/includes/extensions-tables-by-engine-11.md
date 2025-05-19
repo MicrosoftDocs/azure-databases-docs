@@ -61,6 +61,7 @@ ms.custom:
 | [pgstattuple](https://www.postgresql.org/docs/current/pgstattuple.html) shows tuple-level statistics. | 1.5 | Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in flexible server.<br />|
 | [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) provides text similarity measurement and index searching based on trigrams. | 1.4 | |
 | [pg_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) examines the visibility map and page-level visibility info. | 1.2 | |
+| [plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language. | 1.0 | |
 | [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language. | 3.0.0 | |
 | [postgis](https://www.postgis.net/) geometry and geography spatial types and functions. | 3.2.3 | |
 | [postgis_raster](https://www.postgis.net) raster types and functions. | 3.2.3 | |
