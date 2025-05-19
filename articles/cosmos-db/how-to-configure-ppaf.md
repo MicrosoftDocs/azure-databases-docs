@@ -47,7 +47,7 @@ Azure Cosmos DB team will review your request and enable the feature upon valida
 ## PPAF Pricing
 PPAF is part of Business Critical Service Tier and is charged accordingly. For more information, see [Azure Cosmos DB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-## Configure Your Client SDK for PPAF
+## Configure the application for PPAF
 
 Configuring your application’s Cosmos DB SDK is **critical** so that it knows to handle partition-level failovers. Without this, your client might not properly redirect writes during a partition failover.
 
