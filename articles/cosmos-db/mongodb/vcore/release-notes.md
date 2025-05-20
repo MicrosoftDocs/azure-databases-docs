@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: release-notes
-ms.date: 04/30/2025
+ms.date: 05/20/2025
 
 #Customer intent: As a database administrator, I want to review the release notes, so I can understand what new features are released for the service.
 ---
@@ -20,16 +20,16 @@ This article contains release notes for the API for MongoDB vCore. These release
 
 ### Engine Enhancements_0505
 
-- Support collation with aggregation and find on sharded collections.
-- Fix list_databases for databases with size > 2 GB.
-- Support half-precision vector indexing, vectors can have up to 4,000 dimensions.
-- Support collation with $documents and $replaceWith stage of the aggregation pipeline.
 - [MongoDB vCore v8 released](quickstart-portal.md).
   - Support $convert on binData to binData, string to binData and binData to string (except with format: auto).
   - Added support for `$toUUID` to simplify string-to-UUID conversion.
   - `$rank` and `$denseRank` now treat `null` and missing values the same while calculating rankings, aligning behavior with $sort.
   - Pipeline Size Enforcement- Aggregation throws an error if the pipeline stage limit is exceeded.
   - $getField now accepts any valid expression that resolves to a string, not just string constants.
+
+#### Infrastructure Enhancements_0520
+
+- [EntraID](entra-authentication.md) support (Preview).
 
 ## Previous releases
 
@@ -39,6 +39,10 @@ This article contains release notes for the API for MongoDB vCore. These release
 
 - Added support for [exact search](enn-vector-search.md) in vector search queries.
 - Added support for the listDatabases command.
+- Added support for type aggregation operator $toUUID.
+- Added support for Partial filter pushdown for $in predicates.
+- Added support for the $dateFromString operator with full functionality.
+- Extended syntax for $getField aggregation operator. Now the value of 'field' could be an expression that resolves to a string.
 - Added support for top-level aggregate command let variables in the $geoNear stage.
 - Backend command support for statement time-out is now available.
 - Introduced support for the $toUUID aggregation operator.
@@ -49,6 +53,12 @@ This article contains release notes for the API for MongoDB vCore. These release
 - Enabled default support for unique index truncation using a new operator class.
 - Introduced collation support with set operators in aggregation ($setEquals, $setUnion, $setIntersection, $setDifference,
   $setIsSubset).
+
+#### Infrastructure Enhancements_0212
+
+- Expanded regional availability.
+  - South India
+  - South Central US
 
 ### February 12, 2025
 
