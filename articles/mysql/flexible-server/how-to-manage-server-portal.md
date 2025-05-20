@@ -4,7 +4,7 @@ description: Learn how to manage Azure Database for MySQL - Flexible Server from
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 05/20/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
