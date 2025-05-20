@@ -10,6 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
+
 # Manage Azure Database for MySQL using the Azure portal
 
 This article shows how to manage your Azure Database for MySQL flexible server instances. Management tasks include compute and storage scaling, resetting the server administrator password, and deleting your server.
@@ -31,7 +32,7 @@ After server creation, you can scale between the various [pricing tiers](https:/
    > :::image type="content" source="media/how-to-manage-server-portal/scale-server.png" alt-text="Screenshot of scaling storage for Azure Database for MySQL." lightbox="media/how-to-manage-server-portal/scale-server.png":::
 
    > [!IMPORTANT]  
-      > - Storage cannot be scaled down.
+      > - Storage can't be scaled down.
       > - Scaling vCores causes a server restart.
 
 1. Select **OK** to save changes.
