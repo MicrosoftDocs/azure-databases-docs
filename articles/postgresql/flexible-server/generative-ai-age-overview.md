@@ -95,7 +95,7 @@ By following these steps, you ensure that your PostgreSQL instance is properly c
 ## Important tables in the ag_catalog schema
 
 - `ag_graph`
-- `ag__label`
+- `ag_label`
 
 ### ag_graph
 
