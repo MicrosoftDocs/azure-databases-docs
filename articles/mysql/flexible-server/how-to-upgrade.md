@@ -112,16 +112,13 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
     > [!NOTE]  
     > When using the 'Validate' feature to assess your database schema for compatibility with MySQL 8.0, please take note of the following considerations:
-    > - Table Locking During Validation
-    > The validation process involves locking tables in order to accurately inspect the entire schema. This can lead to query timeouts if the database is under heavy load.
+    > - Table Locking During Validation: The validation process involves locking tables in order to accurately inspect the entire schema. This can lead to query timeouts if the database is under heavy load.
     >
-    >  **Recommendation**: Avoid running validation during peak business hours or when the database is handling high traffic. Instead, schedule the validation during low-activity periods to reduce impact on operations.
-    > - Potential for Hanging Due to Large Result Sets
-    >In certain cases—particularly with complex databases containing a large number of objects—the validation result may become too large to be processed or displayed within the online workflow. This may result in the 'Validate' operation appearing to hang or remain in progress indefinitely.
+    >    **Recommendation**: Avoid running validation during peak business hours or when the database is handling high traffic. Instead, schedule the validation during low-activity periods to reduce impact on operations.
+    > - Potential for Hanging Due to Large Result Sets: In certain cases—particularly with complex databases containing a large number of objects—the validation result may become too large to be processed or displayed within the online workflow. This may result in the 'Validate' operation appearing to hang or remain in progress indefinitely.
     >
-    > **Recommendation**: If you encounter this issue, we suggest performing the validation locally using Oracle’s official client-side upgrade checker tool, such as the one included in MySQL Shell. This approach avoids platform-side result size limitations and provides a more detailed and reliable validation output.
-    > - Recommended Use Cases for Online Validation
-    >The online 'Validate' feature is designed for simple or moderately complex schemas. For large-scale production environments—such as those with thousands of tables, views, routines, or other schema objects—we strongly recommend using Oracle’s client-side upgrade checker tool to perform the compatibility check. This ensures that the full schema is analyzed comprehensively and avoids potential issues related to result size or validation timeouts.
+    >   **Recommendation**: If you encounter this issue, we suggest performing the validation locally using Oracle’s official client-side upgrade checker tool, such as the one included in MySQL Shell. This approach avoids platform-side result size limitations and provides a more detailed and reliable validation output.
+    > - Recommended Use Cases for Online Validation: The online 'Validate' feature is designed for simple or moderately complex schemas. For large-scale production environments—such as those with thousands of tables, views, routines, or other schema objects—we strongly recommend using Oracle’s client-side upgrade checker tool to perform the compatibility check. This ensures that the full schema is analyzed comprehensively and avoids potential issues related to result size or validation timeouts.
 
 1. In the **Upgrade** sidebar, in the **MySQL version to upgrade** text box, verify the major MySQL version you want to upgrade to, i.e., 8.0.
 
