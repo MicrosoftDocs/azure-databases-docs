@@ -52,7 +52,7 @@ In this example, the function counts the number of times the specified scalar fi
 
 :::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/count/result.json":::
 
-In this final example, the function is used to count every item within a contianer.
+In this final example, the function is used to count every item within a container.
 
 :::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/count-items/query.novalidate.sql" highlight="2":::
 

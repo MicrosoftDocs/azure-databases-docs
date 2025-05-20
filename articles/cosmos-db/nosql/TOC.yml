@@ -863,6 +863,8 @@
           href: /azure/operational-excellence/relocation-cosmos-db?context=/azure/cosmos-db/nosql/context/context
         - name: Prevent changes or deletion
           href: ../resource-locks.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Enable Per Partition Automatic Failover
+          href: ../how-to-configure-per-partition-automatic-failover.md
     - name: Back up and restore
       items:
         - name: Back up and restore introduction

@@ -14,7 +14,7 @@ appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ MongoDB vCore
-  - ✅ Cassanda
+  - ✅ Cassandra
   - ✅ Gremlin
   - ✅ Table
   - ✅ PostgreSQL
