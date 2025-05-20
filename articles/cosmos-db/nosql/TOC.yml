@@ -661,8 +661,8 @@
       href: query/toc.yml
 - name: Integrate with Azure services
   items:
-    - name: Document Indexer
-      hredf: gen../-ai/document-indexer.md
+    - name: Index documents for search
+      hredf: ../gen-ai/document-indexer.md
     - name: Integrate with Azure Kubernetes Service and Spring Boot
       href: tutorial-springboot-azure-kubernetes-service.md
     - name: Deploy app on Azure Kubernetes Service (AKS) cluster using Bicep
