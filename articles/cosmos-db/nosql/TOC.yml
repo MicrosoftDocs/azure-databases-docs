@@ -73,7 +73,7 @@
     - name: Build a RAG chatbot
       href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
     - name: Index documents for search
-      hredf: ../gen-ai/document-indexer.md
+      hredf: ../gen-ai/document-indexer.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create a knowledge graph
       href: ../gen-ai/cosmos-ai-graph.md?context=/azure/cosmos-db/nosql/context/context
     - name: Author AI agents
