@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 05/19/2025
+ms.date: 05/20/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -27,6 +27,7 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [Semantic operators](generative-ai-azure-ai-semantic-operators.md)
     - [New PostgreSQL VS Code extension](../extensions/vs-code-extension/overview.md)
     - [GitHub Copilot integration with new PostgreSQL VS Code extension](../extensions/vs-code-extension/quickstart-github-copilot.md)
+    - [Major Version Upgrade Support for PostgreSQL 17](concepts-major-version-upgrade.md)
 
 ## Release: April 2025
 
