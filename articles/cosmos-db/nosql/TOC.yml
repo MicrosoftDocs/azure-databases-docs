@@ -782,7 +782,7 @@
             - name: Kusto Query Language (KQL) transformations
               displayName: KQL, workspace, data
               href: ../tutorial-log-transformation.md?context=/azure/cosmos-db/nosql/context/context
-- name: Orchestrate multi-tenant solutions
+- name: Orchestrate multitenant solutions
   items:
     - name: Fleets
       expanded: true
@@ -1033,7 +1033,7 @@
           items:
             - name: Troubleshoot query performance
               href: troubleshoot-query-performance.md
-            - name: Troubleshoot service request time out
+            - name: Troubleshoot service request timeout
               href: troubleshoot-request-time-out.md
             - name: Troubleshoot request rate too large
               href: troubleshoot-request-rate-too-large.md
@@ -1055,7 +1055,7 @@
               href: troubleshoot-dotnet-sdk.md
             - name: Troubleshoot request header too large
               href: troubleshoot-dotnet-sdk-request-header-too-large.md
-            - name: Troubleshoot request time out
+            - name: Troubleshoot request timeout
               href: troubleshoot-dotnet-sdk-request-time-out.md
             - name: Troubleshoot slow requests
               href: troubleshoot-dotnet-sdk-slow-request.md
@@ -1065,7 +1065,7 @@
           items:
             - name: Troubleshoot Java SDK v4
               href: troubleshoot-java-sdk-v4.md
-            - name: Troubleshoot request time out
+            - name: Troubleshoot request timeout
               href: troubleshoot-java-sdk-request-time-out.md
             - name: Troubleshoot service unavailable
               href: troubleshoot-java-sdk-service-unavailable.md
