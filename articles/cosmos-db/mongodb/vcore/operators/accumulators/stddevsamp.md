@@ -10,7 +10,7 @@ ms.topic: conceptual
 ms.date: 05/20/2025
 ---
 
-# $stddevpop
+# $stddevsamp
 
 The `$stddevsamp` operator calculates the standard deviation by taking a specified sample of the values of a field. The standard deviation is calculated by taking a random sample of the specified size. If a precise standard deviation is needed, $stdDevPop must be used instead.
 
