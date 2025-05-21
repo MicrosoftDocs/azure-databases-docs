@@ -127,7 +127,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: February 2024
 
 - Support for new [minor versions](concepts-supported-versions.md) 16.1, 15.5, 14.10, 13.13, 12.17, 11.22. <sup>$</sup>
-- General availability of [Major Version Upgrade logs](concepts-major-version-upgrade.md#major-version-upgrade-logs)
+- General availability of [Major Version Upgrade logs](./concepts-major-version-upgrade.md#view-upgrade-logs)
 - General availability of [private endpoints](concepts-networking-private-link.md).
 
 ## Release: January 2024

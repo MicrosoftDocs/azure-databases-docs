@@ -314,10 +314,10 @@ To add vectors to your database's collection, you first need to create the [embe
 
 ```javascript
 db.exampleCollection.insertMany([
-  {name: "Eugenia Lopez", bio: "Eugenia is the CEO of AdvenureWorks.", vectorContent: [0.51, 0.12, 0.23]},
-  {name: "Cameron Baker", bio: "Cameron Baker CFO of AdvenureWorks.", vectorContent: [0.55, 0.89, 0.44]},
-  {name: "Jessie Irwin", bio: "Jessie Irwin is the former CEO of AdventureWorks and now the director of the Our Planet initiative.", vectorContent: [0.13, 0.92, 0.85]},
-  {name: "Rory Nguyen", bio: "Rory Nguyen is the founder of AdventureWorks and the president of the Our Planet initiative.", vectorContent: [0.91, 0.76, 0.83]},
+  {name: "Eugenia Lopez", bio: "Eugenia is the CEO of AdvenureWorks.", contentVector: [0.51, 0.12, 0.23]},
+  {name: "Cameron Baker", bio: "Cameron Baker CFO of AdvenureWorks.", contentVector: [0.55, 0.89, 0.44]},
+  {name: "Jessie Irwin", bio: "Jessie Irwin is the former CEO of AdventureWorks and now the director of the Our Planet initiative.", contentVector: [0.13, 0.92, 0.85]},
+  {name: "Rory Nguyen", bio: "Rory Nguyen is the founder of AdventureWorks and the president of the Our Planet initiative.", contentVector: [0.91, 0.76, 0.83]},
 ]);
 ```
 
@@ -331,7 +331,7 @@ db.exampleCollection.aggregate([
   {
     "$search": {
         "cosmosSearch": {
-            "vector": "queryVector",
+            "vector": queryVector,
             "path": "contentVector",
             "k": 2,
             "efSearch": 40
