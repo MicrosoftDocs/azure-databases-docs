@@ -58,7 +58,7 @@ You can access the upgrade logs through the UI for server logs. There, you can m
 - **Insightful diagnostics**: `PG_Upgrade_Logs` provides valuable insights into the upgrade process. It captures detailed information about the operations performed, and it highlights any errors or warnings that occur. This level of detail is instrumental in diagnosing and resolving problems that might arise during the upgrade, for a smoother transition.
 - **Streamlined troubleshooting**: With direct access to these logs, you can quickly identify and address potential upgrade obstacles, reduce downtime, and minimize the impact on your operations. The logs serve as a crucial troubleshooting tool by enabling more efficient and effective problem resolution.
 
-## Considerations for PostgreSQL upgrades
+## Upgrade Considerations and Limitations
 
 If a precheck operation fails during an in-place major version upgrade, the upgrade is blocked with a detailed error message. Below are the known limitations that can cause the upgrade to fail or behave unexpectedly:
 
