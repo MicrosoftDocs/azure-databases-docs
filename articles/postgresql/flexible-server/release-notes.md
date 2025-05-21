@@ -21,6 +21,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General Availability
     - [On-demand backups](./concepts-backup-restore.md#on-demand-backups).
+    - [Long-term backups](./concepts-backup-restore.md#long-term-retention)
 - Preview
     - [Confidential Computing](concepts-confidential-computing.md)
     - [Apache Age extension](generative-ai-age-overview.md)
