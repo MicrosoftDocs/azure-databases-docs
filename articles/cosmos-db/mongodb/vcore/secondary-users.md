@@ -8,6 +8,8 @@
   ms.subservice: mongodb-vcore
   ms.topic: conceptual
   ms.date: 04/29/2025
+  appliesto:
+  - ✅ MongoDB (vCore)
 ---
 
 # Read and read/write privileges with secondary users on Azure Cosmos DB for MongoDB vCore
@@ -148,15 +150,8 @@ db.runCommand(
 )
 ```
 
-## Limitations
-
-- You can create up to 10 users/roles per cluster.
-- The `Updateuser` command now only supports password updates and can't modify other object fields.
-- The `Roleinfo` command isn't supported in preview. Alternatively you can use `usersInfo`.
-- Assigning roles to specific databases or collections isn't supported.
-- Cluster restore operation may not work when secondary users preview is enabled on the cluster. 
-    - To perform cluster restore, remove **EnableReadOnlyUser** value from the**previewFeatures** properties. You can re-enable preview once restore is completed. Removing preview from the cluster doesn't impact secondary users that were created on the cluster, only ability to perform user management operations.
-
 ## Next steps
 
 - Learn about [security in Azure Cosmos DB for MongoDB vCore](./security.md)
+- Check [preview limitations](./limits.md#native-documentdb-secondary-users)
+- Learn about [Microsoft Entra ID in Azure Cosmos DB for MongoDB vCore](./entra-authentication.md)

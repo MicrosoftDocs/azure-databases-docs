@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/14/2025
+ms.date: 05/21/2025
 ms.custom: devx-track-rust
 appliesto:
   - ✅ MongoDB (vCore)
@@ -298,14 +298,10 @@ internal sealed class AzureIdentityTokenHandler(
     }
 }
 ```
-
 ---
-
-## Limitations
-
-[!INCLUDE[Section - Entra authentication limitations](includes/section-entra-authentication-limitations.md)]
 
 ## Related content
 
 - [Microsoft Entra authentication overview](entra-authentication.md)
+- Check [limitations of Microsoft Entra ID](./limits.md#authentication-and-access-control-rbac) in Azure Cosmos DB for MongoDB vCore
 - [Connect using a console application](how-to-build-dotnet-console-app.md)
