@@ -77,7 +77,7 @@ You can enable or disable [high availability (HA)](./high-availability.md) to su
 
 ## Increase the number of physical shards
 
-When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add additional [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards.
+When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards.
 
 1. To add physical shards, select new shard count from the list.
 
