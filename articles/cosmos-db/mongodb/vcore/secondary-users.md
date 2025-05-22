@@ -8,6 +8,8 @@
   ms.subservice: mongodb-vcore
   ms.topic: conceptual
   ms.date: 04/29/2025
+  appliesto:
+  - ✅ MongoDB (vCore)
 ---
 
 # Read and read/write privileges with secondary users on Azure Cosmos DB for MongoDB vCore
@@ -152,3 +154,4 @@ db.runCommand(
 
 - Learn about [security in Azure Cosmos DB for MongoDB vCore](./security.md)
 - Check [preview limitations](./limits.md#native-documentdb-secondary-users)
+- Learn about [Microsoft Entra ID in Azure Cosmos DB for MongoDB vCore](./entra-authentication.md)
