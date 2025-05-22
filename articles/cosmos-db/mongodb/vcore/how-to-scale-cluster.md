@@ -85,7 +85,7 @@ When a database grows beyond the capacity of a single physical shard cluster, yo
 
 1. Select **Save** to persist your change.
 
-If you need more than 10 physical shards on your cluster, [reach out to our team](mailto:mongodb-feedback@microsoft.com).
+If you need more than 10 physical shards on your cluster, open an [Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
 
 ## Enable 'Query from any node' capability on a multishard cluster
 

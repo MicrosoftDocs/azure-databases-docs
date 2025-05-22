@@ -96,17 +96,17 @@ The following limitations can be overridden by upgrading to a paid tier
 - Microsoft Entra ID (formerly known as Azure Active Directory (AAD)) not supported
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
-- Transition from a paid tier account to a free tier accounts is not supported.
+- Transition from a paid tier account to a free tier accounts isn't supported.
 
 ### M10/M20/M25 Limits
 M10, M20, and M25 have the following limitations:
 - Supports one shard only.
-- Designed for Dev/Test use cases; High Availability (HA) is not supported.
-- Supported disk sizes include 32GB, 64GB, and 128GB.
-- Once scaled to an M30 SKU or higher, the cluster cannot be scaled back down.
+- Designed for Dev/Test use cases; High Availability (HA) isn't supported.
+- Supported disk sizes include 32 GiB, 64 GiB, and 128 GiB.
+- Once scaled to an M30 SKU or higher, the cluster can't be scaled back down.
 
 ### Query from any node on multishard clusters
-When [query from any node](./how-to-scale-cluster.md#enable-query-from-any-node-capability-on-a-multishard-cluster) is enabled on a multishard cluster the following capabilities are not supported in preview:
+When [query from any node](./how-to-scale-cluster.md#enable-query-from-any-node-capability-on-a-multishard-cluster) is enabled on a multishard cluster the following capabilities aren't supported in preview:
 - On clusters with a replica: Global read-write connection string
     - Only self connection string is supported on clusters with a replica
 - Add node operation
