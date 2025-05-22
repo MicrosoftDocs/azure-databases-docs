@@ -105,12 +105,12 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.2.0 |
-| 16 | 1.2.0 |
-| 15 | 1.2.0 |
-| 14 | 1.2.0 |
-| 13 | 1.2.0 |
-| 12 | 1.2.0 |
+| 17 | 1.3.0 |
+| 16 | 1.3.0 |
+| 15 | 1.3.0 |
+| 14 | 1.3.0 |
+| 13 | 1.3.0 |
+| 12 | 1.3.0 |
 | 11 | N/A |
 
 ## azure_storage
@@ -731,7 +731,6 @@ ms.custom:
 > [!NOTE]
 > Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in flexible server.
 
-
 ## pg_trgm
 
 [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) provides text similarity measurement and index searching based on trigrams.
@@ -759,6 +758,20 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
+
+## plpgsql
+
+[plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 1.0 |
+| 16 | 1.0 |
+| 15 | 1.0 |
+| 14 | 1.0 |
+| 13 | 1.0 |
+| 12 | 1.0 |
+| 11 | 1.0 |
 
 ## plv8
 
@@ -969,7 +982,7 @@ ms.custom:
 | 16 | 2.15.3 <sup>*</sup> |
 | 15 | 2.15.3 <sup>*</sup> |
 | 14 | 2.15.3 <sup>*</sup> |
-| 13 | 2.10.0 <sup>*</sup> |
+| 13 | 2.15.3 <sup>*</sup> |
 | 12 | 2.10.0 <sup>*</sup> |
 | 11 | 1.7.4 <sup>*</sup> |
 

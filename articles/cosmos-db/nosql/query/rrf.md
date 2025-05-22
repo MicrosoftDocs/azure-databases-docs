@@ -21,7 +21,7 @@ This system function is used to combine two or more scores provided by other fun
 ## Syntax
 
 ```nosql
-RRF(<function1>, <function2, ...>)
+RRF(<function1>, <function2>, ..., <weights>)
 ```
 
 ## Arguments
@@ -30,6 +30,7 @@ RRF(<function1>, <function2, ...>)
 | --- | --- |
 | **`function1`** | A scoring function such as VectorDistance or FullTextScore. |
 | **`function2`** | A scoring function such as VectorDistance or FullTextScore. |
+| **`weights`** | An array of numbers defining an importance weight for each scoring function. |
 
 ## Examples
 
@@ -57,10 +58,12 @@ FROM c
 ORDER BY RANK RRF(VectorDistance(c.vector1, [1,2,3]),VectorDistance(c.vector2, [2,2,4]))
 ```
 
+This example shows fusion with two `VectorDistance` functions
+
 
 ## Remarks
 
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search feature](../../gen-ai/full-text-search.md).
 - Hybrid Search also requires enrollment in [Azure Cosmos DB NoSQL Vector Search](../vector-search.md).
 - This function requires a [Full Text Index](../../index-policy.md).
 - This function can only be used in an `ORDER BY RANK` clause, and can't be combined with `ORDER BY` on other property paths.

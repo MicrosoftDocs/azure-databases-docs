@@ -7,12 +7,12 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 07/01/2024
+ms.date: 05/13/2025
+appliesto:
+  - ✅ MongoDB (vCore)
 ---
 
 # Scaling and configuring Your Azure Cosmos DB for MongoDB vCore cluster
-
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 Azure Cosmos DB for MongoDB vCore provides seamless scalability and high availability. This document serves as a quick guide for developers who want to learn how to scale and configure their clusters. Changes to the cluster are performed live without downtime.
 
@@ -48,7 +48,7 @@ The cluster tier you select influences the amount of vCores and RAM assigned to 
     > [!NOTE]
     > This change is performed live to the cluster without downtime.
     >
-    > Upgrade or downgrade from burstable tiers to memory optimized tier isn't supported at the moment.
+    > Upgrade or downgrade from burstable tiers to regular compute tier isn't supported at the moment.
 
 2. Select **Save** to persist your change.
 
@@ -75,9 +75,31 @@ You can enable or disable [high availability (HA)](./high-availability.md) to su
 
 2. Select **Save** to persist your change.
 
+## Increase the number of physical shards
+
+When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add additional [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards.
+
+1. To add physical shards, select new shard count from the list.
+
+   :::image type="content" source="media/how-to-scale-cluster/configure-add-shards.png" alt-text="Screenshot of the physical shard count drop-down list in the Scale page of a cluster.":::
+
+1. Select **Save** to persist your change.
+
+If you need more than 10 physical shards on your cluster, open an [Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
+
+## Enable 'Query from any node' capability on a multishard cluster
+
+When a multi-shard cluster receives a query, it must be routed to one or more physical shards. To improve overall cluster performance, this query dispatching workload can be evenly distributed across all nodes. To enable this distribution, turn on the **Query from any node** setting.
+
+1. To enable or disable **Query from any node**, toggle the checkbox.
+
+   :::image type="content" source="media/how-to-scale-cluster/configure-query-from-any-node.png" alt-text="Screenshot of the query from any node checkbox in the Scale page of a cluster.":::
+
+1. Select **Save** to persist your change.
+
 ## Next steps
 
-In this guide, we've shown that scaling and configuring your Cosmos DB for MongoDB vCore cluster in the Azure portal is a straightforward process. The Azure portal includes the ability to adjust the cluster tier, increase storage size, and enable or disable high availability without any downtime.
+In this guide, we showed that scaling and configuring your Cosmos DB for MongoDB vCore cluster in the Azure portal is a straightforward process. The Azure portal includes the ability to adjust the cluster tier, increase storage size, enable or disable high availability, and add physical shards without any downtime.
 
 > [!div class="nextstepaction"]
 > [Restore an Azure Cosmos DB for MongoDB vCore cluster](how-to-restore-cluster.md)

@@ -98,6 +98,13 @@ The following limitations can be overridden by upgrading to a paid tier
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
 - Transition from a paid tier account to a free tier accounts is not supported.
 
+### M10/M20/M25 Limits
+M10, M20, and M25 have the following limitations:
+- Supports one shard only.
+- Designed for Dev/Test use cases; High Availability (HA) is not supported.
+- Supported disk sizes include 32GB, 64GB, and 128GB.
+- Once scaled to an M30 SKU or higher, the cluster cannot be scaled back down.
+
 ## Replication and HA (high availability) Limits
 
 ### Cross-Region Replication

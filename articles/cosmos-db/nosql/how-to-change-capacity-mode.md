@@ -1,5 +1,5 @@
 ---
-title: Change from serverless to provisioned throughput (preview)
+title: Change from serverless to provisioned throughput
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Review the steps on how to change the capacity mode of a serverless Azure Cosmos DB for NoSQL account to a provisioned capacity account.
 author: richagaur
@@ -7,11 +7,11 @@ ms.author: richagaur
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 05/08/2024
+ms.date: 05/08/2025
 #Customer Intent: As an administrator, I want to change the capacity mode, so that I can migrate from serverless to provisioned capacity.
 ---
  
-# Change from serverless to provisioned capacity mode in Azure Cosmos DB for NoSQL (preview)
+# Change from serverless to provisioned capacity mode in Azure Cosmos DB for NoSQL
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin](../includes/appliesto-nosql-mongodb-cassandra-gremlin.md)]
 
@@ -21,7 +21,7 @@ Azure Cosmos DB for NoSQL accounts in serverless capacity mode can be changed to
 You can also change the throughput or provisioning mode from manual to autoscale once the migration is complete.
 
 > [!WARNING]
-> This is an irreversible operation. Once migrated, the capacity mode can't be changed back to serverless.
+> Changing capacity mode from serverless to provisioned throughput is an irreversible operation. Once migrated, the capacity mode can't be changed back to serverless.
 
 ## Prerequisites
 

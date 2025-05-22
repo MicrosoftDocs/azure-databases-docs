@@ -17,7 +17,7 @@ ms.custom:
 | [amcheck](https://www.postgresql.org/docs/13/amcheck.html) provides functions for verifying relation integrity. | 1.2 | |
 | [anon](https://postgresql-anonymizer.readthedocs.io/en/stable) (Preview) provides data anonymization tools. | 1.3.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand | N/A <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
-| [azure_ai](../../flexible-server/generative-ai-azure-overview.md) provides Azure AI and ML Services integration for PostgreSQL. | 1.2.0 | |
+| [azure_ai](../../flexible-server/generative-ai-azure-overview.md) provides Azure AI and ML Services integration for PostgreSQL. | 1.3.0 | |
 | [azure_storage](../../flexible-server/concepts-storage-extension.md) provides Azure Storage integration for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [bloom](https://www.postgresql.org/docs/current/bloom.html) provides an index access method based on Bloom filters. | 1.0 | |
 | [btree_gin](https://www.postgresql.org/docs/current/btree-gin.html) provides support for indexing common datatypes in GIN. | 1.3 | |
@@ -61,6 +61,7 @@ ms.custom:
 | [pgstattuple](https://www.postgresql.org/docs/current/pgstattuple.html) shows tuple-level statistics. | 1.5 | Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in flexible server.<br />|
 | [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) provides text similarity measurement and index searching based on trigrams. | 1.5 | |
 | [pg_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) examines the visibility map and page-level visibility info. | 1.2 | |
+| [plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language. | 1.0 | |
 | [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language. | 3.0.0 | |
 | [postgis](https://www.postgis.net/) geometry and geography spatial types and functions. | 3.5.2 | |
 | [postgis_raster](https://www.postgis.net) raster types and functions. | 3.5.2 | |
@@ -75,7 +76,7 @@ ms.custom:
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
 | [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
-| [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.10.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.15.3 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | 2.7.0 | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
