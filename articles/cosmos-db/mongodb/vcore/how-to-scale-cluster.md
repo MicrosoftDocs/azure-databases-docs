@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/13/2025
+ms.date: 05/21/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -37,7 +37,7 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
    :::image type="content" source="media/how-to-scale-cluster/select-scale-option.png" lightbox="media/how-to-scale-cluster/select-scale-option.png" alt-text="Screenshot of the Scale option on the page for an Azure Cosmos DB for MongoDB vCore cluster.":::
 
-## Change the cluster tier
+## Scale compute and storage
 
 The cluster tier you select influences the amount of vCores and RAM assigned to your cluster. You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
 
@@ -85,9 +85,11 @@ When a database grows beyond the capacity of a single physical shard cluster, yo
 
 1. Select **Save** to persist your change.
 
-If you need more than 10 physical shards on your cluster, open an [Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
+If you need more than 10 physical shards on your cluster, [reach out to our team](mailto:mongodb-feedback@microsoft.com).
 
 ## Enable 'Query from any node' capability on a multishard cluster
+
+[!INCLUDE[Preview](includes/notice-query-from-any-node-preview.md)]
 
 When a multi-shard cluster receives a query, it must be routed to one or more physical shards. To improve overall cluster performance, this query dispatching workload can be evenly distributed across all nodes. To enable this distribution, turn on the **Query from any node** setting.
 
@@ -96,6 +98,8 @@ When a multi-shard cluster receives a query, it must be routed to one or more ph
    :::image type="content" source="media/how-to-scale-cluster/configure-query-from-any-node.png" alt-text="Screenshot of the query from any node checkbox in the Scale page of a cluster.":::
 
 1. Select **Save** to persist your change.
+
+See query from any node preview restrictions [here](./limits.md#query-from-any-node-on-multishard-clusters). 
 
 ## Next steps
 
