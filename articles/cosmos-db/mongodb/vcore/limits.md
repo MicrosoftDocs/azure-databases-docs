@@ -9,6 +9,8 @@ ms.custom:
   - ignite-2024
 ms.topic: conceptual
 ms.date: 05/21/2025
+appliesto:
+  - ✅ MongoDB (vCore)
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
@@ -86,7 +88,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 ### Secondary regions
 - Maximum: 1 secondary region. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more regions.
 
-### Free Tier Limits
+### Free Tier limits
 The following limitations can be overridden by upgrading to a paid tier
 - Maximum storage: 32 GiB.
 - Backup / Restore not supported (available in M25+)
@@ -98,7 +100,7 @@ The following limitations can be overridden by upgrading to a paid tier
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
 - Transition from a paid tier account to a free tier accounts isn't supported.
 
-### M10/M20/M25 Limits
+### M10/M20/M25 limits
 M10, M20, and M25 have the following limitations:
 - Supports one shard only.
 - Designed for Dev/Test use cases; High Availability (HA) isn't supported.
@@ -111,9 +113,9 @@ When [query from any node](./how-to-scale-cluster.md#enable-query-from-any-node-
     - Only self connection string is supported on clusters with a replica
 - Add node operation
 
-## Replication and HA (high availability) Limits
+## Replication and HA (high availability) limits
 
-### Cross-Region Replication
+### Cross-region replication
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
   - Storage and shard count
   - User accounts
@@ -121,6 +123,14 @@ When [query from any node](./how-to-scale-cluster.md#enable-query-from-any-node-
   - Point-in-time restore
   - High availability (HA)
 - Cross-region replication isn't available on clusters with burstable compute or Free tier clusters.
+
+## Authentication and access control (RBAC)
+The Microsoft Entra ID authentication feature has these current limitations:
+- This feature isn't supported on replica clusters.
+
+- This feature isn't supported on restored clusters.
+
+- This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
 
 ## Miscellaneous Limits
 

@@ -37,9 +37,9 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
    :::image type="content" source="media/how-to-scale-cluster/select-scale-option.png" lightbox="media/how-to-scale-cluster/select-scale-option.png" alt-text="Screenshot of the Scale option on the page for an Azure Cosmos DB for MongoDB vCore cluster.":::
 
-## Scale compute and storage
+## Scale cluster compute
 
-The cluster tier you select influences the amount of vCores and RAM assigned to your cluster. You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
+[The cluster tier](./compute-storage.md#compute-in-azure-cosmos-db-for-mongodb-vcore) you select influences the amount of vCores and RAM assigned to your cluster. You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
 
 1. To change the cluster tier, select the new tier from the drop-down menu.
 
@@ -54,7 +54,7 @@ The cluster tier you select influences the amount of vCores and RAM assigned to 
 
 ## Increase disk size
 
-You can increase the storage size to give your database more room to grow. For example, you can increase the storage from **128 GB** to **256 GB**.
+You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos-db-for-mongodb-vcore) to give your database more room to grow. For example, you can increase the storage from **128 GB** to **256 GB**.
 
 1. To increase the storage size, select the new size from the drop-down menu.
 
@@ -77,7 +77,7 @@ You can enable or disable [high availability (HA)](./high-availability.md) to su
 
 ## Increase the number of physical shards
 
-When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards.
+When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards. Each physical shard in a cluster always has the same [compute](#scale-cluster-compute) and [storage](#increase-disk-size) configuration.
 
 1. To add physical shards, select new shard count from the list.
 
