@@ -26,14 +26,11 @@ Azure Cosmos DB for MongoDB vCore provides seamless scalability and high availab
 
 To change the configuration of your cluster, use the **Scale** section of the Azure Cosmos DB for MongoDB vCore cluster page in the Azure portal. The portal includes real-time costs for these changes.
 
-> [!TIP]
-> For this guide, we recommend using the resource group name ``msdocs-cosmos-howto-rg``.
-
 1. Sign in to the [Azure portal](https://portal.azure.com).
 
 2. Navigate to the existing Azure Cosmos DB for MongoDB vCore cluster page.
 
-3. From the Azure Cosmos DB for MongoDB vCore cluster page, select the **Scale** navigation menu option.
+3. From the Azure Cosmos DB for MongoDB vCore cluster page, in the **Settings** section select the **Scale** navigation menu option.
 
    :::image type="content" source="media/how-to-scale-cluster/select-scale-option.png" lightbox="media/how-to-scale-cluster/select-scale-option.png" alt-text="Screenshot of the Scale option on the page for an Azure Cosmos DB for MongoDB vCore cluster.":::
 
