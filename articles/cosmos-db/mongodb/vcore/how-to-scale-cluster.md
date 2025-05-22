@@ -91,7 +91,7 @@ If you need more than 10 physical shards on your cluster, open an [Azure support
 
 [!INCLUDE[Preview](includes/notice-query-from-any-node-preview.md)]
 
-When a multi-shard cluster receives a query, it must be routed to one or more physical shards. To improve overall cluster performance, this query dispatching workload can be evenly distributed across all nodes. To enable this distribution, turn on the **Query from any node** setting.
+When a [multi-shard cluster](./partitioning.md#physical-shards) receives a query, it must be routed to one or more physical shards. To improve overall cluster performance, this query dispatching workload can be evenly distributed across all nodes. To enable this distribution, turn on the **Query from any node** setting.
 
 1. To enable or disable **Query from any node**, toggle the checkbox.
 
