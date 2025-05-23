@@ -146,7 +146,7 @@ SELECT VALUE
 FROM
     products p
 WHERE
-    p.name LIKE "%glove"
+    p.name LIKE "fruit%"
 ```
 
 Similarly, the wildcard at the start of the pattern indicates that you want to match values with the specified value as a prefix:
@@ -157,7 +157,7 @@ SELECT VALUE
 FROM
     products p
 WHERE
-    p.name LIKE "Road%"
+    p.name LIKE "%Road"
 ```
 
 The ``NOT`` keyword inverses the result of the ``LIKE`` keyword's expression evaluation. This example returns all items that do **not** match the ``LIKE`` expression.
