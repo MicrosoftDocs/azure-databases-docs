@@ -78,6 +78,7 @@ In-place major version upgrades do not support all PostgreSQL extensions. The up
 - The following extensions are not supported across any PostgreSQL versions: `timescaledb`, `pgaudit`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`
 - The following extensions are not supported when the upgrade target is PostgreSQL 16 or higher: `pgrouting`
 - The following extensions are not supported when upgrading to PostgreSQL 17: `pgrouting`, `age`, `azure_ai`, `hll`, `pg_diskann`
+- Extensions such as `pgaudit`, `pg_repack`, and `hypopg` do not support in-place upgrades and should be dropped before the upgrade and recreated after. These extensions are non-persistent and safe to reconfigure post-upgrade.
 
 These extensions must be removed from the **azure.extensions** server parameter prior to upgrade. If present, the upgrade will be blocked.
 
