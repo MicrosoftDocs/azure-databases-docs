@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/13/2025
+ms.date: 05/21/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -26,20 +26,17 @@ Azure Cosmos DB for MongoDB vCore provides seamless scalability and high availab
 
 To change the configuration of your cluster, use the **Scale** section of the Azure Cosmos DB for MongoDB vCore cluster page in the Azure portal. The portal includes real-time costs for these changes.
 
-> [!TIP]
-> For this guide, we recommend using the resource group name ``msdocs-cosmos-howto-rg``.
-
 1. Sign in to the [Azure portal](https://portal.azure.com).
 
 2. Navigate to the existing Azure Cosmos DB for MongoDB vCore cluster page.
 
-3. From the Azure Cosmos DB for MongoDB vCore cluster page, select the **Scale** navigation menu option.
+3. From the Azure Cosmos DB for MongoDB vCore cluster page, in the **Settings** section select the **Scale** navigation menu option.
 
    :::image type="content" source="media/how-to-scale-cluster/select-scale-option.png" lightbox="media/how-to-scale-cluster/select-scale-option.png" alt-text="Screenshot of the Scale option on the page for an Azure Cosmos DB for MongoDB vCore cluster.":::
 
-## Change the cluster tier
+## Scale cluster compute
 
-The cluster tier you select influences the amount of vCores and RAM assigned to your cluster. You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
+[The cluster tier](./compute-storage.md#compute-in-azure-cosmos-db-for-mongodb-vcore) you select influences the amount of vCores and RAM assigned to your cluster. You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
 
 1. To change the cluster tier, select the new tier from the drop-down menu.
 
@@ -54,7 +51,7 @@ The cluster tier you select influences the amount of vCores and RAM assigned to 
 
 ## Increase disk size
 
-You can increase the storage size to give your database more room to grow. For example, you can increase the storage from **128 GB** to **256 GB**.
+You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos-db-for-mongodb-vcore) to give your database more room to grow. For example, you can increase the storage from **128 GB** to **256 GB**.
 
 1. To increase the storage size, select the new size from the drop-down menu.
 
@@ -77,7 +74,7 @@ You can enable or disable [high availability (HA)](./high-availability.md) to su
 
 ## Increase the number of physical shards
 
-When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add additional [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards.
+When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards. Each physical shard in a cluster always has the same [compute](#scale-cluster-compute) and [storage](#increase-disk-size) configuration.
 
 1. To add physical shards, select new shard count from the list.
 
@@ -89,13 +86,17 @@ If you need more than 10 physical shards on your cluster, open an [Azure support
 
 ## Enable 'Query from any node' capability on a multishard cluster
 
-When a multi-shard cluster receives a query, it must be routed to one or more physical shards. To improve overall cluster performance, this query dispatching workload can be evenly distributed across all nodes. To enable this distribution, turn on the **Query from any node** setting.
+[!INCLUDE[Preview](includes/notice-query-from-any-node-preview.md)]
+
+When a [multi-shard cluster](./partitioning.md#physical-shards) receives a query, it must be routed to one or more physical shards. To improve overall cluster performance, this query dispatching workload can be evenly distributed across all nodes. To enable this distribution, turn on the **Query from any node** setting.
 
 1. To enable or disable **Query from any node**, toggle the checkbox.
 
    :::image type="content" source="media/how-to-scale-cluster/configure-query-from-any-node.png" alt-text="Screenshot of the query from any node checkbox in the Scale page of a cluster.":::
 
 1. Select **Save** to persist your change.
+
+See query from any node preview restrictions [here](./limits.md#query-from-any-node-on-multishard-clusters). 
 
 ## Next steps
 
