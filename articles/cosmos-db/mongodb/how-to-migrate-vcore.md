@@ -185,7 +185,7 @@ Once a job is submitted, you can monitor the status of the newly created job alo
     | --- | --- |
     | **Pause** | Temporarily pause a currently running job |
     | **Resume** | Resume a paused job |
-    | **Stop** | Stop a currently running job |
+    | **Cancel** | Permanently cancel a currently running job |
     | **Cutover** | Finalize the migration when the source and target are synced |
 
     > [!NOTE]
