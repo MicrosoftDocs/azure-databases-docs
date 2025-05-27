@@ -42,6 +42,15 @@ FROM c
 ORDER BY RANK RRF(FullTextScore(c.text, "keyword"), VectorDistance(c.vector, [1,2,3]))
 ```
 
+This example shows Hybrid Search where the FullTextScore is weighted twice as much as VectorDsitance.
+
+```nosql
+SELECT TOP 10 *
+FROM c
+ORDER BY RANK RRF(FullTextScore(c.text, "keyword"), VectorDistance(c.vector, [1,2,3]), [2,1])
+```
+
+
 This example shows fusion with two `FullTextScore` functions
 
 ```nosql

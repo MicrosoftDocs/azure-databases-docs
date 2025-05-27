@@ -13,7 +13,7 @@ ms.topic: include
 | Australia Central 2 * | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :x: |
 | Australia East | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Australia Southeast | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
-| Brazil South | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: |
+| Brazil South | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :x: |
 | Brazil Southeast * | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :x: |
 | Canada Central | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Canada East | :white_check_mark: (all SKUs) | :x: | :white_check_mark: | :white_check_mark: |
