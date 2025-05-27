@@ -93,7 +93,7 @@ landingContent:
             url: flexible-server/generative-ai-agents.md
           - text: Develop with LangChain 
             url: flexible-server/generative-ai-develop-with-langchain.md
-      - linkListType: concepts
+      - linkListType: concept
         links:
           - text: Generative AI overview
             url: flexible-server/generative-ai-overview.md
@@ -130,13 +130,13 @@ landingContent:
 # Card 5
   - title: Migrate to Azure Database for PostgreSQL
     linkLists:
-      - linkListType: Overview
+      - linkListType: overview
         links:
           - text: Migration Service overview
             url: migrate/migration-service/overview-migration-service-postgresql.md
           - text: Pre-Migration Validation
             url: migrate/migration-service/concepts-premigration-migration-service.md
-      - linkListType: tutorials
+      - linkListType: tutorial
         links:
           - text: Migrate from Azure Database for PostgreSQL - Single Server to Flexible Server
             url: migrate/migration-service/tutorial-migration-service-single-to-flexible.md        
