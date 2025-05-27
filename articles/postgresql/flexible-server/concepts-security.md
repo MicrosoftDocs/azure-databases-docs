@@ -4,7 +4,7 @@ description: Learn about security in the Flexible Server deployment option for A
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 12/03/2024
+ms.date: 4/23/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -194,7 +194,7 @@ More information can be found in [PostgreSQL release notes.](https://www.postgre
 ### PostgreSQL 16 changes with role based security
 
 In PostgreSQL database role can have many attributes that define its privileges.One such attribute is the [**CREATEROLE** attribute](https://www.postgresql.org/docs/current/role-attributes.html), which is important to PostgreSQL database management of users and roles. In PostgreSQL 16 significant changes were introduced to this attribute.
-In PostgreSQL 16, users with **CREATEROLE** attribute no longer have the ability to hand out membership in any role to anyone; instead, like other users, without this attribute, they can only hand out memberships in roles for which they possess **ADMIN OPTION**. Also, in PostgreSQL 16, the **CREATEROLE** attribute still allows a nonsuperuser the ability to provision new users, however they can only drop users that they themselves created. Attempts to drop users, which isn't create by user with **CREATEROLE** attribute, will result in an error.
+In PostgreSQL 16, users with **CREATEROLE** attribute no longer have the ability to hand out membership in any role to anyone; instead, like other users, without this attribute, they can only hand out memberships in roles for which they possess **ADMIN OPTION**. Also, in PostgreSQL 16, the **CREATEROLE** attribute still allows a nonsuperuser the ability to provision new users, however they can only drop users that they themselves created. Attempts to drop users, who were not created by a user with the **CREATEROLE** attribute, will result in an error.
 
 PostgreSQL 16 also introduced new and improved built-in roles. New *pg_use_reserved_connections* role in PostgreSQL 16 allows the use of connection slots reserved via reserved_connections.The *pg_create_subscription* role allows superusers to create subscriptions.
 

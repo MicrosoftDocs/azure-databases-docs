@@ -61,7 +61,11 @@ az postgres flexible-server virtual-endpoint update \
   --endpoint-type ReadWrite
   --members <replica>
 ```
+---
 
 ## Related content
 
 - [Read replicas](concepts-read-replicas.md).
+- [Show virtual endpoints](how-to-show-virtual-endpoints.md).
+- [Delete virtual endpoints](how-to-delete-virtual-endpoints.md).
+- [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md).

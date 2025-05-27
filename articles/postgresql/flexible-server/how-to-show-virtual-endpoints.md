@@ -46,7 +46,11 @@ az postgres flexible-server virtual-endpoint list \
   --resource-group <resource_group> \
   --server-name <server> \
 ```
+---
 
 ## Related content
 
 - [Read replicas](concepts-read-replicas.md).
+- [Update virtual endpoints](how-to-update-virtual-endpoints.md).
+- [Delete virtual endpoints](how-to-delete-virtual-endpoints.md).
+- [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md).

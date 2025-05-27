@@ -71,7 +71,12 @@ az postgres flexible-server replica promote \
   --promote-mode SwitchOver \
   --promote-option Forced
 ```
+---
 
 ## Related content
 
 - [Read replicas](concepts-read-replicas.md).
+- [Create virtual endpoints](how-to-create-virtual-endpoints.md).
+- [Update virtual endpoints](how-to-update-virtual-endpoints.md).
+- [Show virtual endpoints](how-to-show-virtual-endpoints.md).
+- [Promote read replica to standalone server](how-to-promote-replica-to-standalone.md).

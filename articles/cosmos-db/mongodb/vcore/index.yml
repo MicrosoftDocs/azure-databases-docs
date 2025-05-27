@@ -37,8 +37,14 @@ landingContent:
             url: vector-search.md
           - text: Full-text search
             url: full-text-search.md
+          - text: Hybrid Search
+            url: hybrid-search.md
           - text: Exact Nearest Neighbor (ENN) Vector Search 
             url: enn-vector-search.md
+          - text: Product Quantization
+            url: product-quantization.md
+          - text: Half-Precision Vector Indexing
+            url: half-precision.md
           - text: Open-source vector database
             url: vector-search-ai.md
           - text: RAG 
@@ -135,7 +141,9 @@ landingContent:
             url: how-to-public-access.md
           - text: Enable private access
             url: how-to-private-link.md
-          - text: Manage secondary users
+          - text: Manage Entra ID authentication
+            url: how-to-configure-entra-authentication.md
+          - text: Manage secondary native users
             url: secondary-users.md
       - linkListType: concept
         links:
@@ -143,3 +151,5 @@ landingContent:
             url: security.md
           - text: Data encryption
             url: database-encryption-at-rest.md
+          - text: Microsoft Entra ID authentication
+            url: entra-authentication.md

@@ -59,7 +59,11 @@
     - name: Why use for AI apps?
       href: ../gen-ai/why-cosmos-ai.md
     - name: Use vector search
-      href: vector-search.md
+      items:
+        - name: Vector indexing and search
+          href: vector-search.md
+        - name: Sharded DiskANN for focused search
+          href: ../gen-ai/sharded-diskann.md
     - name: Enable full-text search
       href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
@@ -68,8 +72,8 @@
       href: ../gen-ai/integrations.md?context=/azure/cosmos-db/nosql/context/context
     - name: Build a RAG chatbot
       href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
-    - name: Ingest and vectorize document files
-      href: ../gen-ai/document-ingestion.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Index documents for search
+      href: ../gen-ai/document-indexer.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create a knowledge graph
       href: ../gen-ai/cosmos-ai-graph.md?context=/azure/cosmos-db/nosql/context/context
     - name: Author AI agents
@@ -491,12 +495,12 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Async Java sample with change feed
           href: how-to-java-change-feed.md
-    - name: Materialized views (preview)
+    - name: Global secondary indexes (preview)
       items:
         - name: Overview
-          href: materialized-views.md
-        - name: Configure materialized views (preview)
-          href: how-to-configure-materialized-views.md
+          href: global-secondary-indexes.md
+        - name: Configure global secondary indexes (preview)
+          href: how-to-configure-global-secondary-indexes.md
     - name: Index and query geospatial data
       displayName: geospatial, geojson, spatial, index, query, geography, geometry
       href: how-to-geospatial-index-query.md
@@ -540,6 +544,8 @@
               href: how-to-migrate-from-bulk-executor-library.md
             - name: Bulk executor - Java library
               href: bulk-executor-java.md
+            - name: Bulk executor - JavaScript library
+              href: bulk-executor-nodejs.md
             - name: Migrate from bulk executor to Java SDK
               href: how-to-migrate-from-bulk-executor-library-java.md
         - name: Migrate to newer SDKs
@@ -655,6 +661,8 @@
       href: query/toc.yml
 - name: Integrate with Azure services
   items:
+    - name: Index documents for search
+      href: ../gen-ai/document-indexer.md
     - name: Integrate with Azure Kubernetes Service and Spring Boot
       href: tutorial-springboot-azure-kubernetes-service.md
     - name: Deploy app on Azure Kubernetes Service (AKS) cluster using Bicep
@@ -774,6 +782,25 @@
             - name: Kusto Query Language (KQL) transformations
               displayName: KQL, workspace, data
               href: ../tutorial-log-transformation.md?context=/azure/cosmos-db/nosql/context/context
+- name: Orchestrate multitenant solutions
+  items:
+    - name: Fleets
+      expanded: true
+      items:
+        - name: Fleets overview
+          href: fleet.md
+        - name: Create a fleet
+          href: how-to-create-fleet.md
+        - name: Fleet pools
+          href: fleet-pools.md
+        - name: Fleet analytics
+          href: fleet-analytics.md
+        - name: Enable fleet analytics
+          href: how-to-enable-fleet-analytics.md
+        - name: Fleet analytics schema reference
+          href: fleet-analytics-schema-reference.md
+        - name: Frequently asked questions
+          href: fleet-faq.yml
 - name: Migrate data
   items:
     - name: Desktop data migration tool
@@ -836,6 +863,8 @@
           href: /azure/operational-excellence/relocation-cosmos-db?context=/azure/cosmos-db/nosql/context/context
         - name: Prevent changes or deletion
           href: ../resource-locks.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Enable Per Partition Automatic Failover
+          href: ../how-to-configure-per-partition-automatic-failover.md
     - name: Back up and restore
       items:
         - name: Back up and restore introduction
@@ -910,6 +939,8 @@
           items:
             - name: Monitor with diagnostic logs
               href: ../monitor-resource-logs.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Monitor with aggregated diagnostic logs
+              href: ../monitor-aggregated-logs.md?context=/azure/cosmos-db/nosql/context/context
             - name: Troubleshoot issues using basic queries
               href: ../monitor-logs-basic-queries.md?context=/azure/cosmos-db/nosql/context/context
             - name: Audit control plane logs
@@ -1002,7 +1033,7 @@
           items:
             - name: Troubleshoot query performance
               href: troubleshoot-query-performance.md
-            - name: Troubleshoot service request time out
+            - name: Troubleshoot service request timeout
               href: troubleshoot-request-time-out.md
             - name: Troubleshoot request rate too large
               href: troubleshoot-request-rate-too-large.md
@@ -1024,7 +1055,7 @@
               href: troubleshoot-dotnet-sdk.md
             - name: Troubleshoot request header too large
               href: troubleshoot-dotnet-sdk-request-header-too-large.md
-            - name: Troubleshoot request time out
+            - name: Troubleshoot request timeout
               href: troubleshoot-dotnet-sdk-request-time-out.md
             - name: Troubleshoot slow requests
               href: troubleshoot-dotnet-sdk-slow-request.md
@@ -1034,7 +1065,7 @@
           items:
             - name: Troubleshoot Java SDK v4
               href: troubleshoot-java-sdk-v4.md
-            - name: Troubleshoot request time out
+            - name: Troubleshoot request timeout
               href: troubleshoot-java-sdk-request-time-out.md
             - name: Troubleshoot service unavailable
               href: troubleshoot-java-sdk-service-unavailable.md

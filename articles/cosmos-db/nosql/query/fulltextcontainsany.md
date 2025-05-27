@@ -39,12 +39,12 @@ Returns a boolean expression.
 
 ## Examples
 
-This example returns all documents that contain either "keyword1" or "keyword2" in the path `c.text`, projects the path, and returns only the TOP 10.
+This example returns all documents that contain either "search phrase" or "keyword" in the path `c.text`, projects the path, and returns only the TOP 10.
 
 ```nosql
 SELECT TOP 10 c.text
 FROM c
-WHERE FullTextContainsAny(c.text, "keywords1", "keywords2")
+WHERE FullTextContainsAny(c.text, "search phrase", "keyword")
 ```
 
 This example returns all documents that contain  "keyword1", "keyword2", or "keyword3" in the path `c.text`.
@@ -57,7 +57,7 @@ WHERE FullTextContainsAny(c.text, "keyword1", "keyword2", "keyword3")
 
 ## Remarks
 
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md)
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search feature](../../gen-ai/full-text-search.md)
 - This function benefits from a [Full Text Index](../../index-policy.md)
   
 ## Related content

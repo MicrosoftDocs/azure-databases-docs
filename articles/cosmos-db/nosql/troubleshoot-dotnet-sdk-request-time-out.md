@@ -32,9 +32,9 @@ The SDK has two distinct alternatives to control time out, each with a different
 
 ### Request level time out
 
-The `CosmosClientOptions.Requesttime out` (or `ConnectionPolicy.Requesttime out` for SDK v2) configuration allows you to set a time out for the network request after the request left the SDK and is on the network, until a response is received.
+The `ConnectionPolicy.RequestTimeout` (or `ConnectionPolicy.RequestTimeout` for SDK v2) configuration allows you to set a time out for the network request after the request left the SDK and is on the network, until a response is received.
 
-The `CosmosClientOptions.OpenTcpConnectiontime out` (or `ConnectionPolicy.OpenTcpConnectiontime out` for SDK v2) configuration allows you to set a time out for the time spent opening an initial connection. Once a connection is opened, subsequent requests use the connection.
+The `ConnectionPolicy.OpenTcpConnectionTimeout` (or `ConnectionPolicy.OpenTcpConnectionTimeout` for SDK v2) configuration allows you to set a time out for the time spent opening an initial connection. Once a connection is opened, subsequent requests use the connection.
 
 An operation started by a user can span multiple network requests, for example, retries. These two configurations are per-request, not end-to-end for an operation.
 

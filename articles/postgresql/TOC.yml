@@ -158,12 +158,14 @@
           href: flexible-server/generative-ai-azure-cognitive.md
         - name: Azure Machine Learning Services
           href: flexible-server/generative-ai-azure-machine-learning.md
+        - name: Enable Managed Identity
+          href: flexible-server/generative-ai-enable-managed-identity-azure-ai.md
+        - name: Introducing Semantic Operators
+          href: flexible-server/generative-ai-azure-ai-semantic-operators.md
       - name: In-database Embeddings (azure_local_ai)
         items:
         - name: Overview  
           href: flexible-server/azure-local-ai.md
-        - name: How to enable and use
-          href: flexible-server/generative-ai-azure-local-ai.md
       - name: Vector indexing (pg_diskann)
         items:
         - name: Overview  
@@ -178,11 +180,11 @@
         - name: Optimize performance when using pgvector
           href: flexible-server/how-to-optimize-performance-pgvector.md
           displayName: vector databases
-      - name: Partitioning
-        items:
-        - name: Partitioning using pg_partman
-          href: flexible-server/how-to-use-pg-partman.md
-          displayName: pg_partman
+    - name: Partitioning
+      items:
+       - name: Partitioning using pg_partman
+         href: flexible-server/how-to-use-pg-partman.md
+         displayName: pg_partman
     - name: Server parameters
       items:
       - name: Overview
@@ -373,7 +375,20 @@
         href: flexible-server/generative-ai-recommendation-system.md
       - name: Integrate Azure AI capabilities
         href: flexible-server/how-to-integrate-azure-ai.md
-
+  - name: Developer experience
+    items:
+      - name: PostgreSQL extension for VS Code
+        href: extensions\vs-code-extension\overview.md
+      - name: Quickstart for PostgreSQL extension for VS Code
+        href: extensions\vs-code-extension\quickstart-connect.md
+      - name: Quickstart for PostgreSQL GitHub Copilot
+        href: extensions\vs-code-extension\quickstart-github-copilot.md
+  - name: Graph Database
+    items:
+    - name: Overview Apache AGE for PostgreSQL
+      href: flexible-server/generative-ai-age-overview.md
+    - name: Performance Best Practices for Apache AGE
+      href: flexible-server/generative-ai-age-performance.md
   - name: Integrations
     items:
     - name: Manage Azure resources with automation tasks
@@ -459,11 +474,11 @@
       items:
       - name: Power management
         items:
-        - name: Start a server
+        - name: Start compute of a server
           href: flexible-server/how-to-start-server.md
-        - name: Stop a server
+        - name: Stop compute of a server
           href: flexible-server/how-to-stop-server.md
-        - name: Restart a server
+        - name: Restart PostgreSQL engine
           href: flexible-server/how-to-restart-server.md
       - name: Configure high availability
         href: flexible-server/how-to-configure-high-availability.md
@@ -567,7 +582,7 @@
         href: flexible-server/how-to-auto-grow-storage.md
       - name: Read replicas
         items:
-        - name: Create read replica
+        - name: Create a read replica
           href: flexible-server/how-to-create-read-replica.md
         - name: Create virtual endpoints
           href: flexible-server/how-to-create-virtual-endpoints.md
@@ -577,11 +592,11 @@
           href: flexible-server/how-to-show-virtual-endpoints.md
         - name: Delete virtual endpoints
           href: flexible-server/how-to-delete-virtual-endpoints.md
-        - name: Switch over replica to primary
+        - name: Switch over read replica to primary
           href: flexible-server/how-to-switch-over-replica-to-primary.md
-        - name: Promote replica to standalone server
+        - name: Promote read replica to standalone server
           href: flexible-server/how-to-promote-replica-to-standalone.md
-        - name: Delete read replica
+        - name: Delete a read replica
           href: flexible-server/how-to-delete-read-replica.md
     - name: Backup and restore
       items:
@@ -629,6 +644,10 @@
           href: flexible-server/how-to-configure-managed-identities-user-assigned.md
       - name: Reset administrator password
         href: flexible-server/how-to-reset-admin-password.md
+      - name: Confidential computing
+        items:
+        - name: Overview
+          href: flexible-server/concepts-confidential-computing.md
     - name: Decommissioning and relocation
       items:
       - name: Delete a server
@@ -648,7 +667,7 @@
       - name: Migrate from Single Server
         href: migrate/migration-service/tutorial-migration-service-single-to-flexible.md
       - name: Automigration of Azure Database for PostgreSQL - Single Server to Flexible Server
-        href: migrate/automigration-single-to-flexible-postgresql.md
+        href: migrate/automigration-single-to-flexible-postgresql.md 
       - name: Automigrations of Azure Database for PostgreSQL - Single Server with Private End Point
         href: migrate/automigration-private-end-point.md
     - name: Tutorials for migrating from PostgreSQL

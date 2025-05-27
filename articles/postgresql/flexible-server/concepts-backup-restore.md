@@ -180,7 +180,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow the instructions in [Create a read replica](how-to-create-read-replica.md).
  
-## On-demand Backups (preview)
+## On-demand Backups
 
 Azure Database for PostgreSQL Flexible Server automatically generates storage volume snapshots of your entire database instance, covering all databases, as part of its scheduled backups. Additionally, you can create an on-demand backup whenever needed which is ideal for scenarios such as preparing for a potentially risky operation or performing periodic refreshes outside the usual backup schedule.
 
@@ -194,15 +194,10 @@ On-demand backups can be taken in addition to scheduled automatic backups. These
 - On-demand backup feature is currently not supported with the SSDv2 storage tier.
 - You can take a maximum of 7 on-demand backups per flexible server, which are retained based upon the backup retention window. 
 
-#### Known Issues
-
-We are aware of an existing bug that allows taking on-demand backups on Replicas, even though Point-in-Time Restore (PITR) is not supported in this context. This issue will be addressed to ensure that on-demand backups can only be performed on the Primary server.
 
 ## Long-term retention
 
 Azure Backup and Azure Database for PostgreSQL Flexible Server services have built an enterprise-class long-term backup solution for Azure Database for PostgreSQL Flexible Server instances that retains backups for up to 10 years. You can use long-term retention (LTR) independently or in addition to the automated backup solution offered by Azure Database for PostgreSQL Flexible Server, which offers retention of up to 35 days. Automated backups are physical backups suited for operational recoveries, especially when you want to restore from the latest backups. Long-term backups help you with your compliance needs, are more granular, and are taken as logical backups using native pg_dump. In addition to long-term retention, the solution offers the following capabilities:
-
-Long-term retention is now generally available in East Asia, Central India, Southeast Asia, UK South, and UK West, with support for additional regions coming in the next few weeks.
 
 -	Customer-controlled scheduled and on-demand backups at the individual database level.
 -	Central monitoring of all operations and jobs.
@@ -217,7 +212,7 @@ Long-term retention is now generally available in East Asia, Central India, Sout
 - LTR restores are currently available only as 'Restore as Files' to storage accounts, with 'Restore as Server' capability planned for the future.
 - LTR backs up all databases in flexible server instances, and individual databases cannot be selected for LTR configuration.
 - LTR backup is not supported on replicas, it can be performed on primary servers.
-- The maximum supported database size for Long-Term Retention (LTR) backups is 1 TiB. While backups can be attempted on servers exceeding 1 TiB, these are not officially supported, and the success of LTR backups for such servers cannot be guaranteed.
+- The maximum supported database size for Long-Term Retention (LTR) backups is 1 TiB.
 - LTR backups can be scheduled weekly, monthly, or yearly. The daily backup schedule is currently unsupported.
 - LTR backups do not support tables containing a row with a BYTEA length exceeding 500 MB.
 - When restoring roles for Microsoft Entra users, ensure that Microsoft Entra authentication is enabled and that you are logged in as a Microsoft Entra Admin to create additional users. Attempting to create Entra roles as a regular user will result in errors.

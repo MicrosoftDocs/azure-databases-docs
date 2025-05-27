@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 04/14/2025
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -16,10 +16,10 @@ ms.custom:
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | 3.5.2 |
-| 16 | 3.3.3 |
-| 15 | 3.3.1 |
-| 14 | 3.2.3 |
-| 13 | 3.2.3 |
+| 16 | 3.5.2 |
+| 15 | 3.5.2 |
+| 14 | 3.5.2 |
+| 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
@@ -30,10 +30,10 @@ ms.custom:
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | 3.5.2 |
-| 16 | 3.3.3 |
-| 15 | 3.3.1 |
-| 14 | 3.2.3 |
-| 13 | 3.2.3 |
+| 16 | 3.5.2 |
+| 15 | 3.5.2 |
+| 14 | 3.5.2 |
+| 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
@@ -105,12 +105,12 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | N/A |
-| 16 | 1.1.0 |
-| 15 | 1.1.0 |
-| 14 | 1.1.0 |
-| 13 | 1.1.0 |
-| 12 | 1.1.0 |
+| 17 | 1.3.0 |
+| 16 | 1.3.0 |
+| 15 | 1.3.0 |
+| 14 | 1.3.0 |
+| 13 | 1.3.0 |
+| 12 | 1.3.0 |
 | 11 | N/A |
 
 ## azure_storage
@@ -119,12 +119,12 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.5 |
-| 16 | 1.5 <sup>*</sup> |
-| 15 | 1.5 <sup>*</sup> |
-| 14 | 1.5 <sup>*</sup> |
-| 13 | 1.5 <sup>*</sup> |
-| 12 | 1.5 <sup>*</sup> |
+| 17 | 1.6 |
+| 16 | 1.6 <sup>*</sup> |
+| 15 | 1.6 <sup>*</sup> |
+| 14 | 1.6 <sup>*</sup> |
+| 13 | 1.6 <sup>*</sup> |
+| 12 | 1.6 <sup>*</sup> |
 | 11 | N/A |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
@@ -278,7 +278,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | N/A |
+| 17 | 2.18 |
 | 16 | 2.18 |
 | 15 | 2.18 |
 | 14 | 2.18 |
@@ -511,10 +511,10 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 0.6.2 |
-| 16 | 0.6.2 |
-| 15 | 0.6.2 |
-| 14 | 0.6.2 |
+| 17 | 0.6.3 |
+| 16 | 0.6.3 |
+| 15 | 0.6.3 |
+| 14 | 0.6.3 |
 | 13 | N/A |
 | 12 | N/A |
 | 11 | N/A |
@@ -759,6 +759,20 @@ ms.custom:
 | 12 | 1.2 |
 | 11 | 1.2 |
 
+## plpgsql
+
+[plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 1.0 |
+| 16 | 1.0 |
+| 15 | 1.0 |
+| 14 | 1.0 |
+| 13 | 1.0 |
+| 12 | 1.0 |
+| 11 | 1.0 |
+
 ## plv8
 
 [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language.
@@ -780,10 +794,10 @@ ms.custom:
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | 3.5.2 |
-| 16 | 3.3.3 |
-| 15 | 3.3.1 |
-| 14 | 3.2.3 |
-| 13 | 3.2.3 |
+| 16 | 3.5.2 |
+| 15 | 3.5.2 |
+| 14 | 3.5.2 |
+| 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
@@ -794,10 +808,10 @@ ms.custom:
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | 3.5.2 |
-| 16 | 3.3.3 |
-| 15 | 3.3.1 |
-| 14 | 3.2.3 |
-| 13 | 3.2.3 |
+| 16 | 3.5.2 |
+| 15 | 3.5.2 |
+| 14 | 3.5.2 |
+| 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
@@ -808,10 +822,10 @@ ms.custom:
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | 3.5.2 |
-| 16 | 3.3.3 |
-| 15 | 3.3.1 |
-| 14 | 3.2.3 |
-| 13 | 3.2.3 |
+| 16 | 3.5.2 |
+| 15 | 3.5.2 |
+| 14 | 3.5.2 |
+| 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
@@ -822,10 +836,10 @@ ms.custom:
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | 3.5.2 |
-| 16 | 3.3.3 |
-| 15 | 3.3.1 |
-| 14 | 3.2.3 |
-| 13 | 3.2.3 |
+| 16 | 3.5.2 |
+| 15 | 3.5.2 |
+| 14 | 3.5.2 |
+| 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
@@ -836,10 +850,10 @@ ms.custom:
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | 3.5.2 |
-| 16 | 3.3.3 |
-| 15 | 3.3.1 |
-| 14 | 3.2.3 |
-| 13 | 3.2.3 |
+| 16 | 3.5.2 |
+| 15 | 3.5.2 |
+| 14 | 3.5.2 |
+| 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
@@ -965,10 +979,10 @@ ms.custom:
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | 2.17.2 <sup>*</sup> |
-| 16 | 2.13.0 <sup>*</sup> |
-| 15 | 2.10.0 <sup>*</sup> |
-| 14 | 2.10.0 <sup>*</sup> |
-| 13 | 2.10.0 <sup>*</sup> |
+| 16 | 2.15.3 <sup>*</sup> |
+| 15 | 2.15.3 <sup>*</sup> |
+| 14 | 2.15.3 <sup>*</sup> |
+| 13 | 2.15.3 <sup>*</sup> |
 | 12 | 2.10.0 <sup>*</sup> |
 | 11 | 1.7.4 <sup>*</sup> |
 
@@ -1060,7 +1074,7 @@ ms.custom:
 
 ## wal2json
 
-[wal2json](https://github.com/eulerto/wal2json) is an output plugin for logical decoding. It means that the plugin have access to tuples produced by INSERT and UPDATE. Also, UPDATE/DELETE old row versions can be accessed depending on the configured replica identity.
+[wal2json](https://github.com/eulerto/wal2json) is an output plugin for logical decoding. It means that the plugin has access to tuples produced by INSERT and UPDATE. Also, UPDATE/DELETE old row versions can be accessed depending on the configured replica identity.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
@@ -1073,4 +1087,3 @@ ms.custom:
 | 11 | 2.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-

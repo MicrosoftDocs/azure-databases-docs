@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Throughput buckets'
+title: 'Azure Cosmos DB: Throughput buckets (preview)'
 description: Learn how you can control throughput usage for different workloads by creating buckets in Azure Cosmos DB.
 author: richagaur
 ms.service: azure-cosmos-db
@@ -9,7 +9,7 @@ ms.author: richagaur
 ms.date: 03/31/2025
 ---
 
-# Throughput buckets in Azure Cosmos DB
+# Throughput buckets in Azure Cosmos DB (preview)
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
@@ -35,6 +35,10 @@ Throughput buckets help manage resource consumption for workloads sharing a Cosm
 > [!Note]
 > Requests not assigned to a bucket will consume throughput from the container without restrictions.
 
+### Getting started
+
+To enable Throughput buckets, navigate to **Preview features** in your Subscription page in Azure Portal and search for **Throughput Buckets** feature to register for preview. Once the registration is approved, you'll be able to create throughput buckets for your Cosmos DB containers.
+
 ### Configuring Throughput buckets
 
 To set up throughput buckets in the Azure portal:
@@ -43,6 +47,11 @@ To set up throughput buckets in the Azure portal:
 2. Locate the **Throughput Buckets** tab.
 3. Enable the desired throughput bucket by toggling it from "Inactive" to "Active."
 4. Set the desired maximum throughput percentage for enabled buckets (up to five buckets per container).
+
+### Minimum SDK version requirements
+
+- .NET >=  [3.50.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.50.0-preview.0)
+- Javascript >=[4.3.0](https://www.npmjs.com/package/@azure/cosmos/v/4.3.0)
 
 ### Using Throughput buckets in SDK requests
 

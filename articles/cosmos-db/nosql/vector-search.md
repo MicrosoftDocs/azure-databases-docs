@@ -75,7 +75,7 @@ Vector indexing and search in Azure Cosmos DB for NoSQL requires enabling on the
 Performing vector search with Azure Cosmos DB for NoSQL requires you to define a vector policy for the container. This provides essential information for the database engine to conduct efficient similarity search for vectors found in the container's documents. This also informs the vector indexing policy of necessary information, should you choose to specify one. The following information is included in the contained vector policy:
 
 - “path”: the property containing the vector (required).
-- “datatype”: the data type of the vector property (default Float32).  
+- “datatype”: the data type of the vector property. Supported types are `float32` (default), `int8`, and `uint8`.  
 - “dimensions”: The dimensionality or length of each vector in the path. All vectors in a path should have the same number of dimensions. (default 1536).
 - “distanceFunction”: The metric used to compute distance/similarity. Supported metrics are:
   - [cosine](https://en.wikipedia.org/wiki/Cosine_similarity), which has values from -1 (least similar) to +1 (most similar).

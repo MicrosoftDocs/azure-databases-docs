@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in Azure Database for Po
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 4/8/2025
+ms.date: 4/21/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -122,20 +122,23 @@ You can choose from the following categories of enhanced metrics:
 
 ##### Saturation
 
-|Display name|Metric ID|Unit|Description|Dimension|Default enabled|
-|---|---|---|---|---|---|
-|**Disk Bandwidth Consumed Percentage**|`disk_bandwidth_consumed_percentage`|Percent|Percentage of data disk bandwidth consumed per minute.|Doesn't apply|Yes |
-|**Disk IOPS Consumed Percentage** |`disk_iops_consumed_percentage` |Percent|Percentage of data disk I/Os consumed per minute. |Doesn't apply|Yes |
-|**Postmaster Process cpu usage (preview)**|`postmaster_process_cpu_usage_percent`|Percent|CPU utilization of Postmaster process. Not applicable for Burstable SKU.                                      |Doesn't apply|No             |
+| Display name                               | Metric ID                              | Unit    | Description                                                              | Dimension     | Default enabled |
+| ------------------------------------------ | -------------------------------------- | ------- | ------------------------------------------------------------------------ | ------------- | --------------- |
+| **Disk Bandwidth Consumed Percentage ^**   | `disk_bandwidth_consumed_percentage`   | Percent | Percentage of data disk bandwidth consumed per minute.                   | Doesn't apply | Yes             |
+| **Disk IOPS Consumed Percentage ^**        | `disk_iops_consumed_percentage`        | Percent | Percentage of data disk I/Os consumed per minute.                        | Doesn't apply | Yes             |
+| **Postmaster Process cpu usage (preview)** | `postmaster_process_cpu_usage_percent` | Percent | CPU utilization of Postmaster process. Not applicable for Burstable SKU. | Doesn't apply | No              |
+
+> [!Note]
+> Metrics marked with `^` are emitted every one minute but are processed and displayed in 5-minute batches. This results in up to a 5-minute delay in metric visibility. When creating alerts on these metrics, please account for this latency to ensure accurate and timely alerting.
 
 ##### Traffic
 
 |Display name                              |Metric ID                             |Unit   |Description                                                                                                   |Dimension    |Default enabled|
 |------------------------------------------|--------------------------------------|-------|--------------------------------------------------------------------------------------------------------------|-------------|---------------|
-|**Max Connections** ^                     |`max_connections`                     |Count  |Number of maximum connections.                                                                                |Doesn't apply|Yes            |
+|**Max Connections** **                    |`max_connections`                     |Count  |Number of maximum connections.                                                                                |Doesn't apply|Yes            |
 |**TCP Connection Backlog (preview)**      |`tcp_connection_backlog`              |Count  |Number of pending TCP connections waiting to be processed by the server.                                      |Doesn't apply|No             |
 
-^ **Max Connections** represents the configured value for the `max_connections` server parameter. This metric is polled every 30 minutes.
+** **Max Connections** represents the configured value for the `max_connections` server parameter. This metric is polled every 30 minutes.
 
 ##### Considerations for using enhanced metrics
 

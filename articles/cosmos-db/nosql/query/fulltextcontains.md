@@ -37,15 +37,15 @@ Returns a boolean expression.
 
 ## Examples
 
-This is a simple query returning 10 results that contain "keyword" in the `c.text` property. 
+This is a simple query returning 10 results that contain "search phrase" in the `c.text` property. 
 
 ```nosql
 SELECT TOP 10 *
 FROM c
-WHERE FullTextContains(c.text, "keyword")
+WHERE FullTextContains(c.text, "search phrase")
 ```
 
-This next example shows logical operators used for ensuring multiple keywords are included. 
+This next example shows logical operators used for ensuring multiple keywords or phrases are included. 
 
 ```nosql
 SELECT *
@@ -55,7 +55,7 @@ WHERE FullTextContains(c.text, "keyword1") AND  FullTextContains(c.text, "keywor
 
 ## Remarks
 
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md)
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search feature](../../gen-ai/full-text-search.md)
 - This function benefits from a [Full Text Index](../../index-policy.md)
 
 ## Related content

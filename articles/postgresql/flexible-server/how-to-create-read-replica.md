@@ -1,5 +1,5 @@
 ---
-title: Create read replica
+title: Create a read replica
 description: This article describes how to create a read replica of an Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Create read replica
+# Create a read replica
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -122,7 +122,7 @@ az postgres flexible-server replica create \
   --source-server <source_server> \
   --location <location>
 ```
-
+---
 <!--
 #### [REST API](#tab/restapi)
 
@@ -255,3 +255,7 @@ Here, you need to replace `{subscriptionId}`, `{resourceGroupName}`, and `{sourc
 ## Related content
 
 - [Read replicas](concepts-read-replicas.md).
+- [Create virtual endpoints](how-to-create-virtual-endpoints.md).
+- [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md).
+- [Promote read replica to standalone server](how-to-promote-replica-to-standalone.md).
+- [Delete a read replica](how-to-delete-read-replica.md).
