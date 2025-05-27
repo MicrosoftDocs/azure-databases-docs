@@ -24,7 +24,6 @@ landingContent:
         links:
           - text: Check out our blog
             url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
-        links:
           - text: Check out our release notes
             url: flexible-server/release-notes.md
       - linkListType: get-started
@@ -44,7 +43,7 @@ landingContent:
           - text: Stop/Start server
             url: flexible-server/how-to-stop-start-server-portal.md
           - text: Connect and query using Visual Studio Code
-            url: /extensions/vs-code-extension/overview
+            url: extensions/vs-code-extension/overview
 
   #Card 2        
   - title: Enterprise ready features
@@ -82,7 +81,7 @@ landingContent:
           - text: Build a Python CRUD app (Entra and Password-based authentication)
             url: flexible-server/connect-python.md
           - text: Deploy a Python app on Azure App Service
-            url: /azure/articles/app-service/tutorial-python-postgresql-app-flask.md
+            url:  azure/articles/app-service/tutorial-python-postgresql-app-flask.md
           - text: Deploy Django App with AKS
             url: flexible-server/tutorial-django-aks-database.md
           - text: Implement Semantic Search with pgvector and Azure OpenAI
