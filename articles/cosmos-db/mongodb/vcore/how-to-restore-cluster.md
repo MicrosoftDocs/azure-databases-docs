@@ -50,6 +50,7 @@ The restore process creates a new cluster with the same configuration in the sam
 
 > [!NOTE]
 > Cluster backups are stored for 35 days. If your cluster was created 35 days or more ago and you don't see the desired date in the restore date field, you might need to open a support request to restore the cluster to that point.
+> At this time restoring deleted clusters requires opening a support request.
 
 To create an Azure support request, follow these steps:
 
