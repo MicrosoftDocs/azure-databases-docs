@@ -81,12 +81,10 @@ The next section will have a step-by-step instructions on how to create a Copy A
 
 ## Key Columns Behavior on Upsert
 
-When upserting data using the Azure Database for PostgreSQL connector, you can specify optional fields called **Key Columns**.
+When upserting data using the Azure Database for PostgreSQL connector, you need to specify fields called **Key Columns**.
 
-:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-optional-key-columns.png" alt-text="Screenshot that shows optional key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-optional-key-columns.png":::
-There are three acceptable ways to use the **Key Columns**:
-
-1. Do not select any **Key columns**. In this case, the connector finds the primary key columns and uses them as **Key columns**
+:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-key-columns.png" alt-text="Screenshot that shows key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-key-columns.png":::
+There are two acceptable ways to use the **Key Columns**:
 
 1. Select **New** and add all the primary key columns of the destination datasource table
 
