@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 05/14/2025
+ms.date: 05/27/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -61,11 +61,12 @@ Additionally, one or more nonadministrative Microsoft Entra ID users can be adde
 
 ## Limitations
 
-[!INCLUDE[Section - Entra authentication limitations](includes/section-entra-authentication-limitations.md)]
+[!INCLUDE[Section - Entra ID authentication limitations](includes/section-entra-authentication-limitations.md)]
 
 ## Related content
 
-- Develop a [console app with Microsoft Entra authentication](how-to-build-dotnet-console-app.md)
+- Develop a [console app with Microsoft Entra ID authentication](how-to-build-dotnet-console-app.md)
 - Deploy a [Microsoft Entra-enabled web application template](quickstart-dotnet.md)
+- Lean [how to enable Microsoft Entra ID and manage Entra ID users on clusters](./how-to-configure-entra-authentication.md)
 - Review [Microsoft Entra ID fundamentals](/entra/fundamentals/whatis)
 - Review [Open ID Connect (OIDC) support in Microsoft Entra ID](/entra/architecture/auth-oidc)
