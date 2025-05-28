@@ -1,17 +1,17 @@
 ---
-title: Data encryption
+title: Data Encryption
 description: Learn how data encryption works in Azure Database for PostgreSQL flexible server.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 02/19/2025
+ms.date: 05/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
 # customer intent: As a user, I want to learn how data is encrypted in my Azure Database for PostgreSQL flexible server, and what options do I have to bring my own encryption key.
 ---
 
-# Data encryption overview
+# Data encryption in Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -51,7 +51,7 @@ Following is the list of requirements to configure data encryption for Azure Dat
 
 - Key Vault and Azure Database for PostgreSQL Flexible Server must belong to the same Microsoft Entra tenant. Cross-tenant Key Vault and server interactions aren't supported. Moving the Key Vault resource afterward requires you to reconfigure the data encryption.
 - We recommended you to set the **Days to retain deleted vaults** configuration for Key Vault to 90 days. If you configured an existing Key Vault instance with a lower number, it should still be valid. However, if you wish to modify this setting and increase the value, it's necessary to create a new Key Vault instance. Once an instance is created, it isn't possible to modify this setting.
-- Enable the soft-delete feature in Key Vault to help you with protecting from data loss, if a key or a Key Vault instance is accidentally deleted. Key Vault retains soft-deleted resources for 90 days unless the user recovers or purges them in the meantime. The recover and purge actions have their own permissions associated with a Key Vault an RBAC role or an access policy permission. The soft-delete feature is on by default. If you have some Key Vault which was deployed long time ago, it might still have soft-delete disabled. In that case, you can turn it on using Azure CLI.
+- Enable the soft-deleted feature in Key Vault to help you with protecting from data loss, if a key or a Key Vault instance is accidentally deleted. Key Vault retains soft-deleted resources for 90 days unless the user recovers or purges them in the meantime. The recover and purge actions have their own permissions associated with a Key Vault an RBAC role or an access policy permission. The soft-deleted feature is on by default. If you have some Key Vault which was deployed long time ago, it might still have soft-delete disabled. In that case, you can turn it on using Azure CLI.
 - Enable purge protection to enforce a mandatory retention period for deleted vaults and vault objects.
 - Grant the Azure Database for PostgreSQL flexible server's user assigned managed identity access to the key by:
   - **Preferred**: Azure Key Vault should be configured with [RBAC permission model](/azure/key-vault/general/rbac-guide) and the managed identity should be assigned the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) role.
@@ -72,7 +72,7 @@ When you're using a customer managed key for data encryption, follow these recom
 - Enable auditing and reporting on all encryption keys. Key Vault provides logs that are easy to inject into other security information and event management (SIEM) tools. Azure Monitor Logs is one example of a service that's already integrated.
 - Lock down Key Vault by selecting **Disable public access** and **Allow trusted Microsoft services to bypass this firewall**.
 
-> [!NOTE]
+> [!NOTE]  
 > After you select **Disable public access** and **Allow trusted Microsoft services to bypass this firewall**, you might get an error similar to the following when you try to use public access to administer Key Vault via the portal: "You have enabled the network access control. Only allowed networks have access to this key vault." This error doesn't preclude the ability to provide keys during customer managed key setup or fetch keys from Key Vault during server operations.
 
 - Keep a copy of the customer manged key in a secure place, or escrow it to the escrow service.
@@ -124,28 +124,28 @@ Some of the possible reasons why the server state might become **Inaccessible** 
 
 | Cause | Resolution |
 | --- | --- |
-| Any of the encryption keys pointed by the server had an expiry date and time configured, and that date and time is reached. | You must extend the expiry date of the key. Then you must wait for the service to revalidate the key and automatically transition the server state to **Ready**. Only when the server is back on **Ready** state you can rotate the key to a newer version or create a new key, and update the server so that it refers to that new version of the same key or to the new key.|
+| Any of the encryption keys pointed by the server had an expiry date and time configured, and that date and time is reached. | You must extend the expiry date of the key. Then you must wait for the service to revalidate the key and automatically transition the server state to **Ready**. Only when the server is back on **Ready** state you can rotate the key to a newer version or create a new key, and update the server so that it refers to that new version of the same key or to the new key. |
 | You rotate the key and forget to update the instance of Azure Database for PostgreSQL Flexible Server so that it points to the new version of the key. The old key, to which the server is pointing, expires and turns the server state into **Inaccessible**. | To avoid this situation, every time you rotate the key, make sure you also update the instance of your server to point to the new version. To do that, you can use the `az postgres flexible-server update`, following the example that describes ["Change key/identity for data encryption. Data encryption can't be enabled post server creation, this will only update the key/identity."](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update-examples). If you prefer to update it using the API, you can invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) endpoint of the service. |
 | You delete the Key Vault instance, the Azure Database for PostgreSQL flexible server instance can't access the key and moves to an **Inaccessible** state. | [Recover the Key Vault instance](/azure/key-vault/general/key-vault-recovery) and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. |
 | You delete, from Microsoft Entra ID, a [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that's used to retrieve any of the encryption keys stored in Key Vault. | [Recover the identity](/azure/active-directory/fundamentals/recover-from-deletions) and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. |
-| Your Key Vault permission model is configured to use role-based access control. You remove the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) RBAC role assignment from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys.  | Grant the RBAC role again to the [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. An alternative approach consists on granting the role on the Key Vault to a different [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities), and update the server so that it uses this other [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to access the key. |
-| Your Key Vault permission model is configured to use access policies. You revoke the **list**, **get**, **wrapKey**, or **unwrapKey** access policies from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys.  | Grant the RBAC role again to the managed identity and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. An alternative approach consists on granting the required access policies on the Key Vault to a different managed identity, and update the server so that it uses this other managed identity to access the key. |
+| Your Key Vault permission model is configured to use role-based access control. You remove the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) RBAC role assignment from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys. | Grant the RBAC role again to the [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. An alternative approach consists on granting the role on the Key Vault to a different [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities), and update the server so that it uses this other [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to access the key. |
+| Your Key Vault permission model is configured to use access policies. You revoke the **list**, **get**, **wrapKey**, or **unwrapKey** access policies from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys. | Grant the RBAC role again to the managed identity and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. An alternative approach consists on granting the required access policies on the Key Vault to a different managed identity, and update the server so that it uses this other managed identity to access the key. |
 | You set up overly restrictive Key Vault firewall rules, so that your Azure Database for PostgreSQL flexible server can't communicate with the Key Vault to retrieve your keys. | When you configure a Key Vault firewall, make sure that you select the option to allow [trusted Microsoft services](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services) so that your Azure Database for PostgreSQL flexible server can bypass the firewall. |
 
-> [!NOTE]
+> [!NOTE]  
 > When a key is disabled, deleted, expired, or not reachable, a server that has data encrypted with that key becomes **Inaccessible**, as stated earlier. The server state doesn't change to **Ready** again until it can revalidate the encryption keys.
->
+>  
 > Generally, a server becomes **Inaccessible** within 60 minutes after a key is disabled, deleted, expired, or not reachable. After the key becomes available, the server might take up to 60 minutes to become **Ready** again.
 
-### Recovering from managed identity deletion 
+### Recovering from managed identity deletion
 
 If the user assigned managed identity used to access the encryption key stored in Key Vault is deleted in Microsoft Entra ID, you should follow these steps to recover:
 1. Either [recover the identity](/azure/active-directory/fundamentals/recover-from-deletions) or create a new managed Entra ID identity.
-2. If you created a new identity, even if it has the exact same name it had before it was deleted, update the Azure Database for flexible server properties so that it knows it has to use this new identity to access the encryption key.
-3. Make sure this identity has proper permissions for operations on key in Azure Key Vault (AKV).
-4. Wait for around one hour until the server revalidates the key.
+1. If you created a new identity, even if it has the exact same name it had before it was deleted, update the Azure Database for flexible server properties so that it knows it has to use this new identity to access the encryption key.
+1. Make sure this identity has proper permissions for operations on key in Azure Key Vault (AKV).
+1. Wait for around one hour until the server revalidates the key.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Simply creating new Entra ID identity with the same name as deleted identity doesn't recover from managed identity deletion.
 
 ### Using data encryption with customer managed keys and geo-redundant business continuity features
@@ -156,19 +156,19 @@ Azure Database for PostgreSQL Flexible Server supports advanced [data recovery](
 - You can't use the same [user-managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to authenticate for the primary database's Key Vault instance and the Key Vault instance that holds the encryption key for geo-redundant backup. To maintain regional resiliency, we recommend that you create the user-managed identity in the same region as the geo-redundant backups.
 - If you set up a [read replica database](../flexible-server/concepts-read-replicas.md) to be encrypted with CMKs during creation, its encryption key needs to be in a Key Vault instance in the region where the read replica database resides. The [user-assigned identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to authenticate against this Key Vault instance needs to be created in the same region.
 
-### Versionless customer managed keys (preview)
+### Version-less customer managed keys
 
 Version-less keys simplify key rotation. Using [auto-rotation in Key Vault](/azure/key-vault/keys/how-to-configure-key-rotation) without version-less keys requires custom automation to detect the rotation and update the CMK in PostgreSQL with the new key version.
 
-The version-less keys feature covers auto and manual key rotation in Key Vault: After a new key version is available, the server will automatically use the new version of the key version for encrypting and decrypting data. 
+The version-less keys feature covers auto and manual key rotation in Key Vault: After a new key version is available, the server will automatically use the new version of the key version for encrypting and decrypting data.
 
-The API doesn't change for version-less keys. Instead of providing the entire key identifier URI, omit the version portion of the key identifier. This applies to the API, Azure CLI, ARM, and Bicep.
+The API doesn't change for version-less keys. Instead of providing the entire key identifier URI, omit the version portion of the key identifier. This applies to the API, Azure CLI, Azure Resource Manager (ARM), and Bicep.
 
 Azure portal has a checkbox to enable version-less. This flag changes the key URI entry to not require a version.
 
 ## Limitations
 
-These are the current limitations for configuring the customer managed key in an  Azure Database for PostgreSQL flexible server:
+These are the current limitations for configuring the customer managed key in an Azure Database for PostgreSQL flexible server:
 
 - You can configure customer managed key encryption only during creation of a new server, not as an update to an existing Azure Database for PostgreSQL flexible server instance. You can [restore a PITR backup to a new server with CMK encryption](concepts-backup-restore.md#point-in-time-recovery) instead.
 - After you configure customer managed key encryption, you can't revert back to system managed key. If you want to revert, you must [restore the server to a new one with data encryption configured with system managed key](concepts-backup-restore.md#point-in-time-recovery).
@@ -176,4 +176,4 @@ These are the current limitations for configuring the customer managed key in an
 
 ## Related content
 
-- [Configure data encryption](how-to-data-encryption.md).
+- [Configure data encryption](how-to-data-encryption.md)

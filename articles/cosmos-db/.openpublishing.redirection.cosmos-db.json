@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path_from_root": "/articles/cosmos-db/gen-ai/document-ingestion.md",
+      "redirect_url": "/articles/cosmos-db/gen-ai/document-indexer.md",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/mongodb/create.md",
       "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/create.sh",
       "redirect_document_id": false

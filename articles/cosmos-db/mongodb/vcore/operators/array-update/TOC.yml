@@ -2,10 +2,14 @@
   href: $addtoset.md
 - name: $each
   href: $each.md
-- name: $position
-  href: $position.md
 - name: $pop
   href: $pop.md
+- name: $ (update)
+  href: $positional.md
+- name: $[]
+  href: $positional-all.md
+- name: $[<identifier>]
+  href: $positional-filtered.md
 - name: $pull
   href: $pull.md
 - name: $pullAll

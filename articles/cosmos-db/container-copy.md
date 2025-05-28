@@ -23,7 +23,7 @@ You might need to copy data from your Azure Cosmos DB account if you want to ach
 * Update the [unique keys](unique-keys.md) for a container.
 * Rename a container or database.
 * Change capacity mode of an account from serverless to provisioned or vice-versa.
-* Adopt new features that are supported only for new containers, e.g. [Hierarchical partition keys](hierarchical-partition-keys.md).
+* Adopt new features that are supported only for new containers, for example, [Hierarchical partition keys](hierarchical-partition-keys.md).
 
 Copy jobs can be [created and managed by using Azure CLI commands](how-to-container-copy.md).
 
@@ -55,7 +55,7 @@ To get started with online container copy for Azure Cosmos DB for NoSQL API acco
 1. The platform allocates server-side compute instances for the destination Azure Cosmos DB account to run the container copy jobs.
 1. A single job is executed across all instances at any time.
 1. The online copy jobs utilize [all version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) to copy the data and replicate incremental changes from the source container to the destination container. 
-1. Once the job is completed, the platform de-allocates these instances after 15 minutes of inactivity.
+1. Once the job is completed, the platform deallocates these instances after 15 minutes of inactivity.
 
 ### [Offline copy](#tab/offline-copy)
 
@@ -80,7 +80,7 @@ Start using offline copy by following [how to create, monitor, and manage copy j
 1. A single job is executed across all instances at any time.
 1. The instances are shared by all the container copy jobs that are running within the same account.
 1. The offline copy jobs utilize [Latest version change feed mode](nosql/change-feed-modes.md?tabs=latest-version#latest-version-change-feed-mode) to copy the data and replicate incremental changes from the source container to the destination container.
-1. The platform might de-allocate the instances if they're idle for longer than 15 minutes.
+1. The platform might deallocate the instances if they're idle for longer than 15 minutes.
 
 ::: zone-end
 
@@ -107,7 +107,7 @@ You can perform offline collection copy jobs to copy data within the same Azure 
 1. A single job is executed across all instances at any time.
 1. The instances are shared by all the copy jobs that are running within the same account.
 1. The offline copy jobs utilize [Change streams](mongodb/change-streams.md?tabs=javascript) to copy the data and replicate incremental changes from the source collection to the destination collection.
-1. The platform might de-allocate the instances if they're idle for longer than 15 minutes.
+1. The platform might deallocate the instances if they're idle for longer than 15 minutes.
 
 ::: zone-end
 
@@ -117,7 +117,7 @@ You can perform offline table copy to copy data of one table to another table wi
 
 ## Copy a table's data 
 
-1. Create the target Azure Cosmos DB table by using the settings that you want to use (partition key, throughput granularity, request units and so on).
+1. Create the target Azure Cosmos DB table by using the settings that you want to use (partition key, throughput granularity, request units, and so on).
 1. Stop the operations on the source table by pausing the application instances or any clients that connect to it.
 1. [Create the copy job](how-to-container-copy.md).
 1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it's completed.
@@ -134,7 +134,7 @@ You can perform offline table copy to copy data of one table to another table wi
 1. A single job is executed across all instances at any time.
 1. The instances are shared by all the copy jobs that are running within the same account.
 1. The offline copy jobs utilize [Change feed](cassandra/change-feed.md) to copy the data and replicate incremental changes from the source table to the destination table.
-1. The platform might de-allocate the instances if they're idle for longer than 15 minutes.
+1. The platform might deallocate the instances if they're idle for longer than 15 minutes.
 
 ::: zone-end
 
@@ -212,6 +212,54 @@ Currently, container copy is supported in the following regions:
 
 
 ## Known and common issues
+
+* While using the Online container copy feature, if the `id` field is modified in the source container, the destination container stores two separate documents, each corresponding to the distinct `id` values. 
+
+* When changing partition keys during data copying to the destination container, ensure that the new partition key and `id` combinations are unique across the container. 
+
+    For example, consider the following scenario:
+
+    **Original Partition Key:** `/department`  
+    **Source Documents:**
+    ```json
+    {
+        "id": "101",
+        "employeeName": "John Doe",
+        "department": "HR"
+    },
+    {
+        "id": "101",
+        "employeeName": "John Doe",
+        "department": "Finance"
+    }
+    ```
+
+    **New Partition Key:** `/employeeName`  
+    **Resulting Documents in the Destination Container:**
+    ```json
+    {
+        "id": "101",
+        "employeeName": "John Doe",
+        "department": "HR"
+    },
+    {
+        "id": "101",
+        "employeeName": "John Doe",
+        "department": "Finance"
+    }
+    ```
+
+    In this case, both documents now share the same partition key (`/employeeName`) and `id` combination (`"employeeName": "John Doe", "id": "101"`), which causes a conflict. This conflict results in an insertion error. To avoid such issues, ensure that the new partition key and `id` combinations are unique across all documents in the destination container.
+
+* Error - Partition key reached maximum size of 20 GB
+
+    When modifying partition keys during data copy to the destination container, ensure that the new partition key remains within the logical partition key size limit of 20 GB. If this limit is exceeded, the job will fail with the following error:
+
+    ```output
+    "code": "403",
+    "message": "Response status code does not indicate success: Forbidden (403); Substatus: 1014; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: (Message: {"Errors":["Partition key reached maximum size of 20 GB. Learn more: https://aka.ms/CosmosDB/sql/errors/full-pk"]"
+    ```
+
 
 * Error - Owner resource doesn't exist.
 

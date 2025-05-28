@@ -14,7 +14,7 @@ ms.topic: overview
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides an overview and introduction to the core concepts of the Azure Database for PostgreSQL flexible server deployment model.
+This article provides an overview and introduction to the core concepts of Azure Database for PostgreSQL flexible server deployment model.
 Whether you're just starting out or looking to refresh your knowledge, this introductory video offers a comprehensive overview of Azure Database for PostgreSQL flexible server, helping you get acquainted with its key features and capabilities.
 
 > [!Video https://www.youtube.com/embed/NSEmJfUgNzE?si=8Ku9Z53PP455dICZ&amp;start=121]
@@ -57,13 +57,13 @@ Azure Database for PostgreSQL flexible server allows you to stop and start the s
 
 ## Enterprise-grade security
 
-Azure Database for PostgreSQL flexible server uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. Data are encrypted, including backups and temporary files created while running queries. The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system-managed (default). The Azure Database for PostgreSQL flexible server encrypts data in motion with default transport layer security (SSL/TLS) enforced by default. The service enforces and supports TLS version 1.2 only.
+Azure Database for PostgreSQL flexible server uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. Data are encrypted, including backups and temporary files created while running queries. The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system-managed (default). Azure Database for PostgreSQL flexible server encrypts data in motion with default transport layer security (SSL/TLS) enforced by default. The service enforces and supports TLS version 1.2 only.
 
 Azure Database for PostgreSQL flexible server instances allows full private access to the servers using Azure virtual network (VNet integration). Servers in the Azure virtual network can only be reached and connected through private IP addresses. With VNet integration, public access is denied, and servers can't be reached using public endpoints.
 
 ## Monitor and alerting
 
-The Azure Database for PostgreSQL flexible server has built-in performance monitoring and alerting features. All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. The service exposes host server metrics to monitor resource utilization and allows configuring slow query logs. Using these tools, you can quickly optimize your workloads and configure your server for the best performance.
+Azure Database for PostgreSQL flexible server has built-in performance monitoring and alerting features. All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. The service exposes host server metrics to monitor resource utilization and allows configuring slow query logs. Using these tools, you can quickly optimize your workloads and configure your server for the best performance.
 
 ## Built-in PgBouncer
 
@@ -79,7 +79,7 @@ $ New Zone-redundant high availability deployments are temporarily blocked in th
 
 $$ New server deployments are temporarily blocked in these regions. Already provisioned servers are fully supported.
 
-** Zone-redundant high availability can now be deployed when you provision new servers in these regions. Any existing servers deployed in AZ with *no preference* (which you can check on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, read these [special considerations](how-to-configure-high-availability.md#special-considerations).
+** Zone-redundant high availability can now be deployed when you provision new servers in these regions. Any existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, read these [special considerations](how-to-configure-high-availability.md#special-considerations).
 
 (*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. These regions are available only upon request by creating a new support request.
 
@@ -103,7 +103,7 @@ Refer to Microsoft's current policy [here](../../postgresql/flexible-server/conc
 
 ## Contacts
 
-If you have any questions or suggestions about the Azure Database for PostgreSQL flexible server, send an email to the [Azure Database for PostgreSQL team](mailto:AskAzurePostgreSQL@microsoft.com).
+If you have any questions or suggestions about Azure Database for PostgreSQL, send an email to the [Azure Database for PostgreSQL team](mailto:AskAzurePostgreSQL@microsoft.com).
 
 > [!NOTE]
 > This email address is for general inquiries and suggestions only. It is not a technical support alias.

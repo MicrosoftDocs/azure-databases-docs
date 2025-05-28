@@ -65,8 +65,8 @@ landingContent:
         links:
           - text: $each
             url: array-update/$each.md
-          - text: $position
-            url: array-update/$position.md
+          - text: $positional
+            url: array-update/$positional.md
           - text: $pullAll
             url: array-update/$pullall.md
           - text: $push

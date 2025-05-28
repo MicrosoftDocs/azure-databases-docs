@@ -23,6 +23,9 @@ However, none of those two methods reveal the text of the queries for which the 
 
 Hence, if you need to read the text of the queries, you need to be granted permissions to connect to the database engine, so that you can execute queries to retrieve that information from two views available inside the `intelligent performance` of the `azure_sys` database.
 
+> [!NOTE]
+> Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, index tuning must be enabled.
+
 ## Steps to list index recommendations
 
 ### [Portal](#tab/portal-list-recommendations)

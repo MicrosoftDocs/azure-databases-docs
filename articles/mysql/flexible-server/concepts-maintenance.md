@@ -110,7 +110,7 @@ The Azure Database for MySQL *near-zero-downtime maintenance* feature is a groun
 To achieve the optimal performance that this feature offers, note these conditions and limitations:
 
 - **Primary keys in all tables**: Ensuring that every table has a primary key is critical. A lack of primary keys can significantly increase replication lag and affect the downtime.
-- **Low workload during maintenance times**: Maintenance periods should coincide with times of low workload on the server to minimize downtime. We encourage you to use the [custom maintenance window](how-to-maintenance-portal.md#specify-maintenance-schedule-options) to schedule maintenance during off-peak hours.
+- **Low workload during maintenance times**: Maintenance periods should coincide with times of low workload on the server to minimize downtime. We encourage you to use the [custom maintenance window](how-to-maintenance-portal.md#custom-managed-maintenance-window-cmw) to schedule maintenance during off-peak hours.
 - **Downtime guarantees**: Although we strive to keep the maintenance downtime as low as possible, we don't guarantee that it will be less than 60 seconds in all circumstances. Various factors, such as high workload or specific server configurations, can increase downtime. In the worst-case scenario, downtime might be similar to that of a standalone server.
 
 <a id="maintenance-reschedule"></a>
