@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/21/2025
+ms.date: 05/27/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -83,20 +83,6 @@ When a database grows beyond the capacity of a single physical shard cluster, yo
 1. Select **Save** to persist your change.
 
 If you need more than 10 physical shards on your cluster, open an [Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
-
-## Enable 'Query from any node' capability on a multishard cluster
-
-[!INCLUDE[Preview](includes/notice-query-from-any-node-preview.md)]
-
-When a [multi-shard cluster](./partitioning.md#physical-shards) receives a query, it must be routed to one or more physical shards. To improve overall cluster performance, this query dispatching workload can be evenly distributed across all nodes. To enable this distribution, turn on the **Query from any node** setting.
-
-1. To enable or disable **Query from any node**, toggle the checkbox.
-
-   :::image type="content" source="media/how-to-scale-cluster/configure-query-from-any-node.png" alt-text="Screenshot of the query from any node checkbox in the Scale page of a cluster.":::
-
-1. Select **Save** to persist your change.
-
-See query from any node preview restrictions [here](./limits.md#query-from-any-node-on-multishard-clusters). 
 
 ## Next steps
 
