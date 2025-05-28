@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 6/24/2024
+ms.date: 5/28/2025
 ---
 
 # Indexing Best Practices in Azure Cosmos DB for MongoDB vCore
@@ -60,7 +60,7 @@ Consider the following document within the 'cosmicworks' database and 'employee'
 }
 ```
 
-Consider the following query to find all employees with last name 'Smith' with the organization for more than 5 years:
+Consider the following query to find all employees with last name 'Smith' with the organization for more than five years:
 ```javascript
 db.employee.find({"lastName": "Smith", "timeInOrgInYears": {"$gt": 5}})
 ```
@@ -138,7 +138,7 @@ db.runCommand(
 ## Prioritizing Index Builds over new Write Operations using the Blocking Option
 For scenarios in which the index should be created before data is loaded, the blocking option should be used to block incoming writes until the index build completes.
 
-Setting `{ "blocking": true }` is particularly useful in migration utilities where indexes are created on empty collections before data writes commence.
+Setting `{ "blocking": true }` is useful in migration utilities where indexes are created on empty collections before data writes commence.
 
 Consider an example of the blocking option for index creation on the 'employee' collection in the 'cosmicworks' database:
 
