@@ -695,6 +695,25 @@
       href: odbc-driver.md
     - name: Vercel
       href: ../vercel-integration.md?context=/azure/cosmos-db/nosql/context/context
+- name: Orchestrate multitenant solutions
+  items:
+    - name: Fleets
+      expanded: true
+      items:
+        - name: Fleets overview
+          href: fleet.md
+        - name: Create a fleet
+          href: how-to-create-fleet.md
+        - name: Fleet pools
+          href: fleet-pools.md
+        - name: Fleet analytics
+          href: fleet-analytics.md
+        - name: Enable fleet analytics
+          href: how-to-enable-fleet-analytics.md
+        - name: Fleet analytics schema reference
+          href: fleet-analytics-schema-reference.md
+        - name: Frequently asked questions
+          href: fleet-faq.yml
 - name: Migrate data
   items:
     - name: Desktop data migration tool
@@ -870,6 +889,7 @@
     - name: Optimize your Azure Cosmos DB costs
       href: ../optimize-costs.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Network bandwidth
+      href: ../network-bandwidth.md?context=/azure/cosmos-db/nosql/context/context
 - name: Analyze and gain insights
   items:
     - name: Analytics and BI overview
