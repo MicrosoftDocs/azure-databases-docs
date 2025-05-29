@@ -896,6 +896,8 @@
       href: ../analytics-and-business-intelligence-overview.md?context=/azure/cosmos-db/nosql/context/context
     - name: Analytics and BI use cases
       href: ../analytics-and-business-intelligence-use-cases.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Cosmos DB in Microsoft Fabric
+      href: /fabric/database/cosmos-db
     - name: Mirroring in Microsoft Fabric
       items:
         - name: Overview
