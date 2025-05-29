@@ -234,7 +234,8 @@ There are two methods of schema representation in the analytical store, valid fo
 The well-defined schema representation creates a simple tabular representation of the schema-agnostic data in the transactional store. The well-defined schema representation has the following considerations:
 
 * The first document defines the base schema and properties must always have the same type across all documents. The only exceptions are:
-  * From `NULL` to any other data type. The first non-null occurrence defines the column data type. Any document not following the first non-null datatype won't be represented in analytical store.
+  * For SQL serverless pools in Azure Synapse: From `NULL` to any other data type. The first non-null occurrence defines the column data type. Any document not following the first non-null datatype won't be represented in analytical store.
+  * For Spark pools and Azure Data Factory Change Data Capture in Azure Synapse: From `NULL` to `INT`. Evolution from null properties to data types other than INT is not supported for Spark pools and Azure Data Factory Change Data Capture in Azure Synapse. The first non-null value must be an integer, and any document with a different datatype won't be represented in analytical store.
   * From `float` to `integer`. All documents are represented in analytical store.
   * From `integer` to `float`. All documents are represented in analytical store. However, to read this data with Azure Synapse SQL serverless pools, you must use a WITH clause to convert the column to `varchar`. And after this initial conversion, it's possible to convert it again to a number. Please check the example below, where **num** initial value was an integer and the second one was a float.
 
