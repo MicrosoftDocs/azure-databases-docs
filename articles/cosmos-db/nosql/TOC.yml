@@ -72,8 +72,8 @@
       href: ../gen-ai/integrations.md?context=/azure/cosmos-db/nosql/context/context
     - name: Build a RAG chatbot
       href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
-    - name: Ingest and vectorize document files
-      href: ../gen-ai/document-ingestion.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Index documents for search
+      href: ../gen-ai/document-indexer.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create a knowledge graph
       href: ../gen-ai/cosmos-ai-graph.md?context=/azure/cosmos-db/nosql/context/context
     - name: Author AI agents
@@ -544,6 +544,8 @@
               href: how-to-migrate-from-bulk-executor-library.md
             - name: Bulk executor - Java library
               href: bulk-executor-java.md
+            - name: Bulk executor - JavaScript library
+              href: bulk-executor-nodejs.md
             - name: Migrate from bulk executor to Java SDK
               href: how-to-migrate-from-bulk-executor-library-java.md
         - name: Migrate to newer SDKs
@@ -659,6 +661,8 @@
       href: query/toc.yml
 - name: Integrate with Azure services
   items:
+    - name: Index documents for search
+      href: ../gen-ai/document-indexer.md
     - name: Integrate with Azure Kubernetes Service and Spring Boot
       href: tutorial-springboot-azure-kubernetes-service.md
     - name: Deploy app on Azure Kubernetes Service (AKS) cluster using Bicep
@@ -753,6 +757,8 @@
           href: /azure/operational-excellence/relocation-cosmos-db?context=/azure/cosmos-db/nosql/context/context
         - name: Prevent changes or deletion
           href: ../resource-locks.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Enable Per Partition Automatic Failover
+          href: ../how-to-configure-per-partition-automatic-failover.md
     - name: Back up and restore
       items:
         - name: Back up and restore introduction
@@ -827,6 +833,8 @@
           items:
             - name: Monitor with diagnostic logs
               href: ../monitor-resource-logs.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Monitor with aggregated diagnostic logs
+              href: ../monitor-aggregated-logs.md?context=/azure/cosmos-db/nosql/context/context
             - name: Troubleshoot issues using basic queries
               href: ../monitor-logs-basic-queries.md?context=/azure/cosmos-db/nosql/context/context
             - name: Audit control plane logs
@@ -1007,7 +1015,7 @@
           items:
             - name: Troubleshoot query performance
               href: troubleshoot-query-performance.md
-            - name: Troubleshoot service request time out
+            - name: Troubleshoot service request timeout
               href: troubleshoot-request-time-out.md
             - name: Troubleshoot request rate too large
               href: troubleshoot-request-rate-too-large.md
@@ -1029,7 +1037,7 @@
               href: troubleshoot-dotnet-sdk.md
             - name: Troubleshoot request header too large
               href: troubleshoot-dotnet-sdk-request-header-too-large.md
-            - name: Troubleshoot request time out
+            - name: Troubleshoot request timeout
               href: troubleshoot-dotnet-sdk-request-time-out.md
             - name: Troubleshoot slow requests
               href: troubleshoot-dotnet-sdk-slow-request.md
@@ -1039,7 +1047,7 @@
           items:
             - name: Troubleshoot Java SDK v4
               href: troubleshoot-java-sdk-v4.md
-            - name: Troubleshoot request time out
+            - name: Troubleshoot request timeout
               href: troubleshoot-java-sdk-request-time-out.md
             - name: Troubleshoot service unavailable
               href: troubleshoot-java-sdk-service-unavailable.md

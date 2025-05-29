@@ -98,6 +98,17 @@ groups:
   - id: postgresql-11
     title: PostgreSQL 11
 # Owner: sidandrews
+- id: azure-interface-portal-cli-bicep
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-portal
+    title: Azure portal
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-bicep
+    title: Bicep
+# Owner: sidandrews
 - id: azure-interface-portal-cli-powershell
   title: Azure interface
   prompt: Choose an Azure interface
@@ -150,3 +161,12 @@ groups:
     title: TypeScript
   - id: programming-language-js
     title: JavaScript
+# Owner: sidandrews
+- id: azure-fleet-storage
+  title: Fleet storage options
+  prompt: Choose a storage option for your fleet
+  pivots:
+  - id: fleet-storage-fabric
+    title: Microsoft Fabric
+  - id: fleet-storage-data-lake
+    title: Azure Data Lake Storage

@@ -15,7 +15,7 @@ ms.custom: cosmos-db-video
 Azure Cosmos DB is available in two different capacity modes: [provisioned throughput](set-throughput.md) and [serverless](serverless.md). You can perform the exact same database operations in both modes, but the way you get billed for these operations is radically different. The following video explains the core differences between these modes and how they fit different types of workloads:
 
 >
-> [!VIDEO https://aka.ms/docs.throughput-offers]
+> [!VIDEO https://www.youtube.com/embed/XRBOy1F7eZw]
 
 ## Detailed comparison
 
@@ -24,11 +24,10 @@ Azure Cosmos DB is available in two different capacity modes: [provisioned throu
 | Best suited for | Workloads with sustained traffic requiring predictable performance | Workloads with intermittent or unpredictable traffic and low average-to-peak traffic ratio |
 | How it works | For each of your containers, you configure some amount of provisioned throughput expressed in [Request Units (RUs)](request-units.md) per second. Every second, this quantity of Request Units is available for your database operations. Provisioned throughput can be updated manually or adjusted automatically with [autoscale](provision-throughput-autoscale.md). | You run your database operations against your containers without having to configure any previously provisioned capacity. |
 | Geo-distribution | Available (unlimited number of Azure regions) | Unavailable (serverless accounts can only run in a single Azure region) |
-| Maximum storage per container | Unlimited | 1 TB<sup>1</sup> |
 | Performance | < 10-ms latency for point-reads and writes covered by SLA | < 10-ms latency for point-reads and < 30 ms for writes covered by SLO |
 | Billing model | Billing is done on a per-hour basis for the RU/s provisioned, regardless of how many RUs were consumed. | Billing is done on a per-hour basis for the number of RUs consumed by your database operations. |
 
-<sup>1</sup> Serverless containers up to 1 TB is GA. Maximum RU/sec availability is dependent on data stored in the container. See, [Serverless Performance](serverless-performance.md)
+Maximum RU/sec availability is dependent on data stored in the container. See, [Serverless Performance](serverless-performance.md)
 
 ## Estimating your expected consumption
 

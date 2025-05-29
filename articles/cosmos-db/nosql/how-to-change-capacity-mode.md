@@ -1,5 +1,5 @@
 ---
-title: Change from serverless to provisioned throughput (preview)
+title: Change from serverless to provisioned throughput
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Review the steps on how to change the capacity mode of a serverless Azure Cosmos DB for NoSQL account to a provisioned capacity account.
 author: richagaur
@@ -7,21 +7,21 @@ ms.author: richagaur
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 05/08/2024
+ms.date: 05/08/2025
 #Customer Intent: As an administrator, I want to change the capacity mode, so that I can migrate from serverless to provisioned capacity.
 ---
  
-# Change from serverless to provisioned capacity mode in Azure Cosmos DB for NoSQL (preview)
+# Change from serverless to provisioned capacity mode in Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL, MongoDB, Cassandra](../includes/appliesto-nosql-mongodb-cassandra.md)]
+[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin](../includes/appliesto-nosql-mongodb-cassandra-gremlin.md)]
 
 Azure Cosmos DB for NoSQL accounts in serverless capacity mode can be changed to provisioned capacity mode. Changing from serverless to provisioned capacity mode converts all containers within the account to manual provisioned throughput containers in-place. The containers' throughput is determined according to the following formula: 
-            `Throughput(RU/s) = max(5000, number of partitions * 1000)`.
+            `Throughput(RU/s) = number of partitions * 5000`.
 
 You can also change the throughput or provisioning mode from manual to autoscale once the migration is complete.
 
 > [!WARNING]
-> This is an irreversible operation. Once migrated, the capacity mode can't be changed back to serverless.
+> Changing capacity mode from serverless to provisioned throughput is an irreversible operation. Once migrated, the capacity mode can't be changed back to serverless.
 
 ## Prerequisites
 
@@ -29,11 +29,6 @@ You can also change the throughput or provisioning mode from manual to autoscale
   - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
   - Alternatively, you can [try Azure Cosmos DB free](../try-free.md) before you commit.
-
-## Register for preview
-
-
-To enable this feature, register for the preview feature **Change capacity mode from serverless to provisioned throughput** in your subscription. For more information, see [register for an Azure Cosmos DB preview feature](../access-previews.md).
 
 ## Change capacity mode
 

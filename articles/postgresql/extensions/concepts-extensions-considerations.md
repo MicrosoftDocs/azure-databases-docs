@@ -37,6 +37,7 @@ Modules don't need to be [allowlisted](how-to-allow-extensions.md). That's an ex
 
 The following list enumerates all the supported extensions that require specific considerations when used in an Azure Database for PostgreSQL flexible server:
 
+- `AGE`
 - `dblink`
 - `pg_buffercache`
 - `pg_cron`
@@ -46,6 +47,13 @@ The following list enumerates all the supported extensions that require specific
 - `pg_stat_statements`
 - `postgres_fdw`
 - `pgstattuple`
+ 
+### AGE
+
+The Apache AGE extension is a graph extension for PostgreSQL supported by Azure Database for PostgreSQL flexible server. It provides graph database functionalities, open cypher query support, and the ability to execute complex queries on graph data stored in PostgreSQL. ['Apache AGE'](https://age.apache.org/) is an open-source project released under the Apache License 2.0. 
+
+#### Install AGE
+To use AGE, make sure that you ['allowlist'](/azure/postgresql/extensions/how-to-allow-extensions) the extension, ['load its library'](/azure/postgresql/extensions/how-to-load-libraries), and ['install the extension'](/azure/postgresql/extensions/how-to-create-extensions) in the database on which you plan to use its functionality. 
 
 ### dblink
 

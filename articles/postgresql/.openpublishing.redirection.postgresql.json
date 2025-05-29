@@ -2079,6 +2079,11 @@
             "source_path_from_root": "/articles/postgresql/migrate/whats-happening-to-postgresql-single-server.md",
             "redirect_url": "/azure/postgresql/index",
             "redirect_document_id": false
+        },
+        {   
+            "source_path_from_root": "/articles/postgresql/flexible-server/generative-ai-azure-local-ai.md",
+            "redirect_url": "/azure/postgresql/flexible-server/generative-ai-overview",
+            "redirect_document_id": false
         }
     ]
 }
