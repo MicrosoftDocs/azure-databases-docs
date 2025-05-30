@@ -62,6 +62,8 @@ The detailed specifications of the available server types are as follows for the
 | Standard_B16ms | 16 | 64 | 70.4 | 4300 | 10923 | 0 |
 | Standard_B20ms | 20 | 80 | 88 | 5000 | 13653 | 0 |
 
+Note: The burstable compute tier is designed for nonproduction workloads like development, staging, or testing environments and hence does not qualify for 24/7 support or root cause analysis (RCA) .
+
 #### General Purpose
 
 The detailed specifications of the available server types are as follows for the General Purpose service tier
