@@ -141,7 +141,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
 
 ## Connect to your cluster
 
-Azure Managed Instance for Apache Cassandra does not create nodes with public IP addresses. To connect to your new Cassandra cluster, you must create another resource inside the same virtual network. This resource can be an application, or a virtual machine (VM) with Apache's open-source query tool [CQLSH](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html) installed.
+Azure Managed Instance for Apache Cassandra does not create nodes with public IP addresses. To connect to your new Cassandra cluster, you must create another resource inside the same virtual network. This resource can be an application, or a virtual machine (VM) with Apache's open-source query tool [CQLSH](https://cassandra.apache.org/doc/stable/cassandra/managing/tools/cqlsh.html) installed.
 
 You can use a [Resource Manager template](https://azure.microsoft.com/resources/templates/vm-simple-linux/) to deploy an Ubuntu virtual machine.
 
