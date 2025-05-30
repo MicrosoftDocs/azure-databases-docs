@@ -182,7 +182,7 @@ Configuring client certificates is **optional**. A client application can connec
 
 **Certificates signed by a CA**: These can be issued by a self-signed CA or a public CA. For this setup, you need the root CA certificate (see [instructions on preparing SSL certificates](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLCertWithCA.html) for production) and all intermediary certificates (if applicable).
 
-To implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS), provide the certificates via Azure CLI. The following command uploads and applies your client certificates to the truststore for your Cassandra Managed Instance cluster (no need to modify `cassandra.yaml` settings). Once applied, the cluster will require Cassandra to verify certificates during client connections (see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/latest/cassandra/configuration/cass_yaml_file.html#client_encryption_options)).
+To implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS), provide the certificates via Azure CLI. The following command uploads and applies your client certificates to the truststore for your Cassandra Managed Instance cluster (no need to modify `cassandra.yaml` settings). Once applied, the cluster will require Cassandra to verify certificates during client connections (see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html)).
 
 
    ```azurecli-interactive

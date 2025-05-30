@@ -62,7 +62,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
 
    1. Certs signed by a CA. This can be a self-signed CA or even a public one. In this case we need the root CA certificate (refer to instructions on [preparing SSL certificates for production](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLCertWithCA.html)), and all intermediaries (if applicable).
 
-   Optionally, if you want to implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS) as well, you need to provide the certificates in the same format as when creating the hybrid cluster. See Azure CLI sample below - the certificates are provided in the `--client-certificates` parameter. This will upload and apply your client certificates to the truststore for your Cassandra Managed Instance cluster (i.e. you don't need to edit cassandra.yaml settings). Once applied, your cluster will require Cassandra to verify the certificates when a client connects (see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/latest/cassandra/configuration/cass_yaml_file.html#client_encryption_options)).
+   Optionally, if you want to implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS) as well, you need to provide the certificates in the same format as when creating the hybrid cluster. See Azure CLI sample below - the certificates are provided in the `--client-certificates` parameter. This will upload and apply your client certificates to the truststore for your Cassandra Managed Instance cluster (i.e. you don't need to edit cassandra.yaml settings). Once applied, your cluster will require Cassandra to verify the certificates when a client connects (see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html)).
 
    > [!NOTE]
    > The value of the `delegatedManagementSubnetId` variable you'll supply below is exactly the same as the value of `--scope` that you supplied in the command above:
@@ -258,7 +258,7 @@ The above instructions provide guidance for configuring a hybrid cluster. Howeve
 
 1. Run ALTER KEYSPACE for each keyspace, in the same manner as done earlier, but now removing your old data center(s).
 
-1. Run [nodetool decommission](https://cassandra.apache.org/doc/latest/cassandra/tools/nodetool/decommission.html) for each old data center node.
+1. Run [nodetool decommission](https://cassandra.apache.org/doc/latest/cassandra/managing/tools/nodetool/decommission.html) for each old data center node.
 
 1. Switch your application code back to quorum (if required/preferred).
 
