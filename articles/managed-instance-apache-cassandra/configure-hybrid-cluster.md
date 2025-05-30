@@ -93,8 +93,6 @@ python3 client_configurator.py --subscription-id <subcriptionId> --cluster-resou
 
 - From your Azure Managed Instance for Apache Cassandra, you can then select `AllKeyspaces` to change the replication settings in your Keyspace schema and start the migration process to Cassandra Managed Instance cluster.
 
-   :::image type="content" source="media/configure-hybrid-cluster/cluster-version.png" border="true" alt-text="Screenshot of selecting all key spaces." lightbox="media/configure-hybrid-cluster/cluster-version.png":::
-
 > [!TIP]  
 > Auto-Replicate setting should be enabled via an ARM template.
 > The ARM template should include:
