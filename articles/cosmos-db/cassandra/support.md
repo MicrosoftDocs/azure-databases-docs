@@ -12,7 +12,7 @@ ms.date: 09/14/2020
 # Apache Cassandra features supported by Azure Cosmos DB for Apache Cassandra 
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
-Azure Cosmos DB is Microsoft's globally distributed multi-model database service. You can communicate with the Azure Cosmos DB for Apache Cassandra through the Cassandra Query Language (CQL) Binary Protocol v4 [wire protocol](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) compliant open-source Cassandra client [drivers](https://cassandra.apache.org/doc/latest/cassandra/getting_started/drivers.html?highlight=driver). 
+Azure Cosmos DB is Microsoft's globally distributed multi-model database service. You can communicate with the Azure Cosmos DB for Apache Cassandra through the Cassandra Query Language (CQL) Binary Protocol v4 [wire protocol](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) compliant open-source Cassandra client [drivers](https://cassandra.apache.org/doc/stable/cassandra/getting-started/drivers.html). 
 
 By using the Azure Cosmos DB for Apache Cassandra, you can enjoy the benefits of the Apache Cassandra APIs and the enterprise capabilities that Azure Cosmos DB provides. The enterprise capabilities include [global distribution](../distribute-data-globally.md), [automatic scale out partitioning](partitioning.md), availability and latency guarantees, encryption at rest, backups, and much more.
 
@@ -22,7 +22,7 @@ The Azure Cosmos DB for Apache Cassandra is compatible with Cassandra Query Lang
 
 ## Azure Managed Instance for Apache Cassandra
 
-For some customers, adapting to API for Cassandra can be a challenge due to differences in behaviour and/or configuration, especially for lift-and-shift migrations. If a feature that is critical for your application is listed as not supported below, consider using [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md). This is a first-party Azure service for hosting and maintaining pure open-source Apache Cassandra clusters with 100% compatibility.
+For some customers, adapting to API for Cassandra can be a challenge due to differences in behavior and/or configuration, especially for lift-and-shift migrations. If a feature that is critical for your application is listed as not supported below, consider using [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md). This is a first-party Azure service for hosting and maintaining pure open-source Apache Cassandra clusters with 100% compatibility.
 
 ## Cassandra driver
 
@@ -86,7 +86,7 @@ Azure Cosmos DB for Apache Cassandra supports the following CQL functions:
 
 > [!NOTE] 
 > \* API for Cassandra supports token as a projection/selector, and only allows token(pk) on the left-hand side of a where clause. For example, `WHERE token(pk) > 1024` is supported, but `WHERE token(pk) > token(100)` is **not** supported.  
-> \*\* The `cast()` function is not nestable in API for Cassandra. For example, `SELECT cast(count as double) FROM myTable` is supported, but `SELECT avg(cast(count as double)) FROM myTable` is **not** supported.    
+> \*\* The `cast()` function isn't nestable in API for Cassandra. For example, `SELECT cast(count as double) FROM myTable` is supported, but `SELECT avg(cast(count as double)) FROM myTable` is **not** supported.    
 > \*\*\* Custom timestamps and TTL specified with the `USING` option are applied at a row level (and not per cell).
 
 
@@ -148,7 +148,7 @@ Azure Cosmos DB supports the following database commands on API for Cassandra ac
 | `COMPACT STORAGE` | N/A (PaaS service) |
 | `CREATE AGGREGATE` | No | 
 | `CREATE CUSTOM INDEX (SASI)` | No |
-| `CREATE INDEX` | Yes (including [named indexes](secondary-indexing.md) but full FROZEN collection is not supported) |
+| `CREATE INDEX` | Yes (including [named indexes](secondary-indexing.md) but full FROZEN collection isn't supported) |
 | `CREATE FUNCTION` | No |
 | `CREATE KEYSPACE` (replication settings ignored) | Yes |
 | `CREATE MATERIALIZED VIEW` | Yes |
@@ -207,7 +207,7 @@ Azure Cosmos DB supports the following database commands on API for Cassandra ac
 | `DESCRIBE` | Yes |
 | `cqlshExpand` | No |
 | `EXIT` | Yes |
-| `LOGIN` | N/A (CQL function `USER` is not supported, hence `LOGIN` is redundant) |
+| `LOGIN` | N/A (CQL function `USER` isn't supported, hence `LOGIN` is redundant) |
 | `PAGING` | Yes |
 | `SERIAL CONSISTENCY` * | N/A |
 | `SHOW` | Yes |
@@ -229,11 +229,11 @@ Azure Cosmos DB supports the following database commands on API for Cassandra ac
 
 ## API for Cassandra limits
 
-Azure Cosmos DB for Apache Cassandra does not have any limits on the size of data stored in a table. Hundreds of terabytes or Petabytes of data can be stored while ensuring partition key limits are honored. Similarly, every entity or row equivalent does not have any limits on the number of columns. However, the total size of the entity should not exceed 2 MB. The data per partition key cannot exceed 20 GB as in all other APIs.
+Azure Cosmos DB for Apache Cassandra doesn't have any limits on the size of data stored in a table. Hundreds of terabytes or Petabytes of data can be stored while ensuring partition key limits are honored. Similarly, every entity or row equivalent doesn't have any limits on the number of columns. However, the total size of the entity shouldn't exceed 2 MB. The data per partition key can't exceed 20 GB as in all other APIs.
 
 ## Tools 
 
-Azure Cosmos DB for Apache Cassandra is a managed service platform. The platform does not require any management overhead or utilities such as Garbage Collector, Java Virtual Machine(JVM), and nodetool to manage the cluster. Tools such as cqlsh that utilizes Binary CQLv4 compatibility are supported. 
+Azure Cosmos DB for Apache Cassandra is a managed service platform. The platform doesn't require any management overhead or utilities such as Garbage Collector, Java Virtual Machine(JVM), and node tool to manage the cluster. Tools such as cqlsh that utilizes Binary CQLv4 compatibility are supported. 
 
 * Azure portal's data explorer, metrics, log diagnostics, PowerShell, and CLI are other supported mechanisms to manage the account.
 
@@ -242,7 +242,7 @@ Azure Cosmos DB for Apache Cassandra is a managed service platform. The platform
 You can connect to the API for Cassandra in Azure Cosmos DB by using the CQLSH installed on a local machine. It comes with Apache Cassandra 3.11 and works out of the box by setting the environment variables. The following sections include the instructions to install, configure, and connect to API for Cassandra in Azure Cosmos DB, on Windows or Linux using CQLSH.
 
 > [!WARNING]
-> Connections to Azure Cosmos DB for Apache Cassandra will not work with DataStax Enterprise (DSE) or Cassandra 4.0 versions of CQLSH. Please ensure you use only v3.11 open source Apache Cassandra versions of CQLSH when connecting to API for Cassandra. 
+> Connections to Azure Cosmos DB for Apache Cassandra won't work with DataStax Enterprise (DSE) or Cassandra 4.0 versions of CQLSH. Ensure you use only v3.11 open source Apache Cassandra versions of CQLSH when connecting to API for Cassandra. 
 
 **Windows:**
 
@@ -302,7 +302,7 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 docker run -it --rm -e SSL_VALIDATE=false -e SSL_VERSION=TLSv1_2 cassandra:3.11 cqlsh <account_name>.cassandra.cosmos.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl
 ```
 
-All CRUD operations that are executed through a CQL v4 compatible SDK will return extra information about error and request units consumed. The DELETE and UPDATE commands should be handled with resource governance taken into consideration, to ensure the most efficient use of the provisioned throughput.
+All CRUD operations that are executed through a CQL v4 compatible SDK returns extra information about error and request units consumed. The DELETE and UPDATE commands should be handled with resource governance taken into consideration, to ensure the most efficient use of the provisioned throughput.
 
 * Note  gc_grace_seconds value must be zero if specified.
 
@@ -324,14 +324,14 @@ Azure Cosmos DB for Apache Cassandra provides choice of consistency for read ope
 
 ## Permission and role management
 
-Azure Cosmos DB supports Azure role-based access control (Azure RBAC) for provisioning, rotating keys, viewing metrics and read-write and read-only passwords/keys that can be obtained through the [Azure portal](https://portal.azure.com). Azure Cosmos DB does not support roles for CRUD activities.
+Azure Cosmos DB supports Azure role-based access control (Azure RBAC) for provisioning, rotating keys, viewing metrics and read-write and read-only passwords/keys that can be obtained through the [Azure portal](https://portal.azure.com). Azure Cosmos DB doesn't support roles for CRUD activities.
 
 ## Keyspace and Table options
 
 The options for region name, class, replication_factor, and datacenter in the "Create Keyspace" command are ignored currently. The system uses the underlying Azure Cosmos DB's [global distribution](../global-dist-under-the-hood.md) replication method to add the regions. If you need the cross-region presence of data, you can enable it at the account level with PowerShell, CLI, or portal, to learn more, see the [how to add regions](../how-to-manage-database-account.yml#add-remove-regions-from-your-database-account) article. Durable_writes can't be disabled because Azure Cosmos DB ensures every write is durable. In every region, Azure Cosmos DB replicates the data across the replica set that is made up of four replicas and this replica set [configuration](../global-dist-under-the-hood.md) can't be modified.
  
 All the options are ignored when creating the table, except gc_grace_seconds, which should be set to zero.
-The Keyspace and table have an extra option named "cosmosdb_provisioned_throughput" with a minimum value of 400 RU/s. The Keyspace throughput allows sharing throughput across multiple tables and it is useful for scenarios when all tables are not utilizing the provisioned throughput. Alter Table command allows changing the provisioned throughput across the regions. 
+The Keyspace and table have an extra option named "cosmosdb_provisioned_throughput" with a minimum value of 400 RU/s. The Keyspace throughput allows sharing throughput across multiple tables and it's useful for scenarios when all tables aren't utilizing the provisioned throughput. Alter Table command allows changing the provisioned throughput across the regions. 
 
 ```
 CREATE  KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'}   AND cosmosdb_provisioned_throughput=2000;  
@@ -346,8 +346,8 @@ API for Cassandra supports secondary indexes on all data types except frozen col
 
 ## Usage of Cassandra retry connection policy
 
-Azure Cosmos DB is a resource governed system. You can do a certain number of operations in a given second based on the request units consumed by the operations. If an application exceeds that limit in a given second,  requests are rate-limited and exceptions will be thrown. The API for Cassandra in Azure Cosmos DB translates these exceptions to overloaded errors on the Cassandra native protocol. To ensure that your application can intercept and retry requests in case of rate limitation, the [spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) and the [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) extensions are provided. See also Java code samples for [version 3](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) and [version 4](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4) Datastax drivers, when connecting to API for Cassandra in Azure Cosmos DB. If you use other SDKs to access API for Cassandra in Azure Cosmos DB, create a retry policy to retry on these exceptions. Alternatively, [enable server-side retries](prevent-rate-limiting-errors.md) for API for Cassandra. 
+Azure Cosmos DB is a resource governed system. You can do a certain number of operations in a given second based on the request units consumed by the operations. If an application exceeds that limit in a given second,  requests are rate-limited and exceptions are thrown. The API for Cassandra in Azure Cosmos DB translates these exceptions to overloaded errors on the Cassandra native protocol. To ensure that your application can intercept and retry requests if there is rate limitation, the [spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) and the [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) extensions are provided. See also Java code samples for [version 3](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) and [version 4](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4) Datastax drivers, when connecting to API for Cassandra in Azure Cosmos DB. If you use other SDKs to access API for Cassandra in Azure Cosmos DB, create a retry policy to retry on these exceptions. Alternatively, [enable server-side retries](prevent-rate-limiting-errors.md) for API for Cassandra. 
 
 ## Next steps
 
-- Get started with [creating a API for Cassandra account, database, and a table](create-account-java.md) by using a Java application
+- Get started with [creating an API for Cassandra account, database, and a table](create-account-java.md) by using a Java application
