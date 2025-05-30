@@ -16,7 +16,7 @@ ms.custom: devx-track-csharp, cosmos-db-video, devx-track-dotnet
 This tutorial shows how to build a .NET console application that optimizes provisioned throughput (RU/s) required to import data to Azure Cosmos DB. 
 
 >
-> [!VIDEO https://aka.ms/docs.learn-live-dotnet-bulk]
+> [!VIDEO https://www.youtube.com/embed/Qc5YO4EoYCA?si=miJpi4E66248EpV-]
 
 In this article, you'll read data from a sample data source and import it into an Azure Cosmos DB container.
 This tutorial uses [Version 3.0+](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) of the Azure Cosmos DB .NET SDK, which can be targeted to .NET Framework or .NET Core.
