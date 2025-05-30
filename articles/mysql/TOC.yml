@@ -448,7 +448,7 @@
   - name: Deployment templates
     href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=databases
+    href: https://azure.microsoft.com/en-us/updates?searchterms=databases
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/mysql/
   - name: Microsoft Q&A question page
@@ -460,11 +460,11 @@
     - name: How to video series
       items:
       - name: Learn product features and benefits
-        href: https://aka.ms/mysql-intro-vid
+        href: https://learn.microsoft.com/shows/mysql-developer-essentials-series/mysql-developer-essentials-season-1-episode-1-what-is-azure-database-for-mysql-flexible-server/
       - name: Migrate your MySQL app to Azure
-        href: https://aka.ms/mysql-migrate-vid
+        href: https://learn.microsoft.com/shows/mysql-developer-essentials-series/mysql-developer-essentials-season-1-episode-4-migrating-to-azure-database-for-mysql-flexible-server/
       - name: Build and deploy Web Apps
-        href: https://aka.ms/mysql-webapps-vid
+        href: https://learn.microsoft.com/shows/mysql-developer-essentials-series/mysql-developer-essentials-season-2-episode-1-building-web-applications-and-microservices-for-mysql-in-azure/
   - name: Request a feature
     href: https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0
   - name: Region availability
