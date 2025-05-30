@@ -10,24 +10,22 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Copy Activity in Microsoft Fabric Data Factory
+# Copy activity in Microsoft Fabric Data Factory
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-## Copy Activity
 
 Copy activity in Microsoft Fabric Data Factory can help you connect to your instance of Azure Database for PostgreSQL flexible server to perform data movement and transformation activities.
 
 The Copy Activity supports **Copy Command**, **Bulk Insert** and **Upsert**. [Learn More about Copy Activity in Azure Database for PostgreSQL using Microsoft Fabric Data Factory](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity)
 
-The next section will have a step-by-step instructions on how to create a Copy Activity. 
+The next section will have step-by-step instructions on how to create a Copy Activity. 
 
-### Prerequisites
+## Prerequisites
 
 - An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server)
 - A Microsoft Fabric Data Factory [Data pipeline](/fabric/data-factory/pipeline-landing-page)
 
-### Create a Copy Data Activity via Fabric portal
+## Create a Copy Data Activity via Fabric portal
 
 1. In Microsoft Fabric, select your workspace, switch to **Data factory** and select the **New item** button. Search and select the **Data pipeline** tile in the **New item** sidebar displayed
 
@@ -40,7 +38,7 @@ The next section will have a step-by-step instructions on how to create a Copy A
 
 1. Select  **Activities** menu, select **Copy data**, and **Add to canvas** from the drop-down menu displayed
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png" alt-text="Screenshot that shows where to select Copy data" lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png" alt-text="Screenshot that shows where to select Copy data." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png":::
 
 1. With the Copy activity selected on the data pipeline canvas, in the **General tab**, give a name to your activity
 
@@ -61,22 +59,22 @@ The next section will have a step-by-step instructions on how to create a Copy A
 
 1. Select between **Copy command**, **Bulk insert** and **Upsert** for the **Write method**  
     
-   #### [Copy Command](#tab/copy-command)
+   ### [Copy Command](#tab/copy-command)
           
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/copy-command.png"alt-text="Screenshot that shows an example of Copy command selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/copy-command.png":::
 
-   #### [Bulk Insert](#tab/bulk-insert)
+   ### [Bulk Insert](#tab/bulk-insert)
       
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png"alt-text="Screenshot that shows of Bulk insert selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png"alt-text="Screenshot that shows an example of Bulk insert selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/bulk-insert.png":::
 
-   #### [Upsert](#tab/upsert)
+   ### [Upsert](#tab/upsert)
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png"alt-text="Screenshot that shows of Upsert selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png":::
    
 
 1. If a custom mapping is required, configure your mapping in the **Mapping tab**
 1. Validate your pipeline
-1. Select Run button, this runs the pipeline manually
+1. Select Run button which runs the pipeline manually
 1. Set up a [trigger for your pipeline](/fabric/data-factory/pipeline-runs)
 
 ## Key Columns Behavior on Upsert
@@ -86,11 +84,11 @@ When upserting data using the Azure Database for PostgreSQL connector, you need 
 :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-key-columns.png" alt-text="Screenshot that shows key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-key-columns.png":::
 There are two acceptable ways to use the **Key Columns**:
 
-1. Select **New** and add all the primary key columns of the destination datasource table
+- Select **New** and add all the primary key columns of the destination datasource table
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png" alt-text="Screenshot that shows an example with all key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png":::
 
-1. Select **New** and add one or more unique columns of the destination datasource table
+- Select **New** and add one or more unique columns of the destination datasource table
 
 
 ## Related content

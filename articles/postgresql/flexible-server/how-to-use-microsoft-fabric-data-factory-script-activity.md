@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Using script activity in Fabric Data Factory
 
-## Overview
-
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 In this article, you learn how to create a script activity in Fabric Data Factory to run custom PostgreSQL queries. Script activity allows users to execute various types of PostgreSQL commands, such as, Data Manipulation Language (DML) and Data Definition Language (DDL) directly in their pipelines. 
@@ -22,7 +20,7 @@ In this article, you learn how to create a script activity in Fabric Data Factor
 
 **DDL statements:**`CREATE`, `ALTER`, and `DROP`
 
-### Prerequisites
+## Prerequisites
 
 - An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server)
 - A Microsoft Fabric Data Factory [Data pipeline](/fabric/data-factory/pipeline-landing-page)
@@ -40,7 +38,7 @@ In this article, you learn how to create a script activity in Fabric Data Factor
 
 1. Select  **Activities** menu and **Script** button from the menu options displayed
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png" alt-text="Screenshot that shows where to select Scripty Activity" lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png" alt-text="Screenshot that shows where to select Script Activity." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png":::
 
 1. With the Script activity selected on the data pipeline canvas, in the **General tab**, give your script activity a name.
 
@@ -52,7 +50,7 @@ In this article, you learn how to create a script activity in Fabric Data Factor
 
 1. Select either the **Query** or **NonQuery** option depending on your script.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png" alt-text="Screenshot that shows highlights Query and non Query radio buttons" lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png" alt-text="Screenshot that highlights Query and non Query radio buttons" lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png":::
 
    The script activity supports both query and nonquery statements.
 
@@ -368,11 +366,11 @@ To use positional parameters, use a placeholder of `$<positional number>` in you
 
 ### Advanced Settings
 
-#### Script block execution time out
+#### Script block execution time-out
 
-You can configure a time-out in minutes for each individual script block run. If any script block within your script activity exceeds the specified time-out, the entire activity fails.
+You can configure a timeout in minutes for each individual script block run. If any script block within your script activity exceeds the specified timeout, the entire activity fails.
 
-:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-block-timeout.png" alt-text="Screenshot that shows an advanced setting in script activity to set script block execution time-out." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-block-timeout.png":::
+:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-block-timeout.png" alt-text="Screenshot that shows an advanced setting in script activity to set script block execution timeout." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-block-timeout.png":::
 
 ```JSON
     "typeProperties": {
@@ -429,7 +427,7 @@ For external logging, drop down the "Advanced" tab then check **Enable logging**
 
 For activity output logging, expand the **Advanced** section and check **Enable logging** and **Activity output**. These options enable the logging in the activity output.
 
-:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/logging-activity-output.png" alt-text="Screenshots that show an activity output logging example." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/logging-activity-output.png":::
+:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/logging-activity-output.png" alt-text="Screenshot that shows an activity output logging example." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/logging-activity-output.png":::
 
 ```JSON
 "typeProperties": {
