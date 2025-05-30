@@ -1,10 +1,10 @@
 ---
 title: Major Version Upgrade
-description: Learn how to upgrade major version for an Azure Database for MySQL - Flexible Server instance.
+description: Learn how to upgrade major version for an Azure Database for MySQL flexible server instance.
 author: code-sidd
 ms.author: sisawant
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 05/29/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Major version upgrade in Azure Database for MySQL - Flexible Server
+# Major version upgrade in Azure Database for MySQL
 
 > [!NOTE]  
 > This article contains references to the term slave, a term that Microsoft no longer uses. When the term is removed from the software, we will remove it from this article.
@@ -30,9 +30,10 @@ This feature enables customers to perform in-place upgrades of their MySQL 5.7 s
 
 - Read Replicas with MySQL version 5.7 should be upgraded before Primary Server for replication to be compatible between different MySQL versions, read more on [Replication Compatibility between MySQL versions](https://dev.mysql.com/doc/mysql-replication-excerpt/8.0/en/replication-compatibility.html).
 - Before upgrading your production servers, it's now easier and more efficient with our built-in **Validate** feature in the Azure portal. This tool pre-checks your database schema's compatibility with MySQL 8.0, highlighting potential issues. While we offer this convenient option, we also **strongly recommend** you use the official Oracle [MySQL Upgrade checker tool](https://go.microsoft.com/fwlink/?linkid=2230525) to test your database schema compatibility and perform necessary regression test to verify application compatibility with features [removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals)/[deprecated](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-deprecations) in the new MySQL version.
-  > [!NOTE]  
-  > When you use Oracle's official tool to check schema compatibility, you might encounter some warnings indicating unexpected tokens in stored procedures, such as:
-  > `mysql.az_replication_change_master - at line 3,4255: unexpected token 'REPLICATION'`
+
+> [!NOTE]
+> When you use Oracle's official tool to check schema compatibility, you might encounter some warnings indicating unexpected tokens in stored procedures, such as:
+> `mysql.az_replication_change_master - at line 3,4255: unexpected token 'REPLICATION'`
   > `mysql.az_add_action_history - PROCEDURE uses obsolete NO_AUTO_CREATE_USER sql_mode`
   > You can safely ignore these warnings. They refer to built-in stored procedures prefixed with mysql., which are used to support Azure MySQL features. These warnings do not affect the functionality of your database.
 - Trigger [on-demand backup](how-to-trigger-on-demand-backup.md) before you perform a major version upgrade on your production server, which can be used to [rollback to version 5.7](how-to-restore-server-portal.md) from the full on-demand backup taken.
@@ -113,12 +114,12 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
     > [!NOTE]  
     > When using the 'Validate' feature to assess your database schema for compatibility with MySQL 8.0, please take note of the following considerations:
     > - Table Locking During Validation: The validation process involves locking tables in order to accurately inspect the entire schema. This can lead to query timeouts if the database is under heavy load.
-    >
-    >    **Recommendation**: Avoid running validation during peak business hours or when the database is handling high traffic. Instead, schedule the validation during low-activity periods to reduce impact on operations.
-    > - Potential for Hanging Due to Large Result Sets: In certain cases—particularly with complex databases containing a large number of objects—the validation result may become too large to be processed or displayed within the online workflow. This may result in the 'Validate' operation appearing to hang or remain in progress indefinitely.
-    >
-    >   **Recommendation**: If you encounter this issue, we suggest performing the validation locally using Oracle’s official client-side upgrade checker tool, such as the one included in MySQL Shell. This approach avoids platform-side result size limitations and provides a more detailed and reliable validation output.
-    > - Recommended Use Cases for Online Validation: The online 'Validate' feature is designed for simple or moderately complex schemas. For large-scale production environments—such as those with thousands of tables, views, routines, or other schema objects—we strongly recommend using Oracle’s client-side upgrade checker tool to perform the compatibility check. This ensures that the full schema is analyzed comprehensively and avoids potential issues related to result size or validation timeouts.
+    >  
+    > **Recommendation**: Avoid running validation during peak business hours or when the database is handling high traffic. Instead, schedule the validation during low-activity periods to reduce impact on operations.
+    > - Potential for Hanging Due to Large Result Sets: In certain cases—particularly with complex databases containing a large number of objects—the validation result might become too large to be processed or displayed within the online workflow. This might result in the 'Validate' operation appearing to hang or remain in progress indefinitely.
+    >  
+    > **Recommendation**: If you encounter this issue, we suggest performing the validation locally using Oracle's official client-side upgrade checker tool, such as the one included in MySQL Shell. This approach avoids platform-side result size limitations and provides a more detailed and reliable validation output.
+    > - Recommended Use Cases for Online Validation: The online 'Validate' feature is designed for simple or moderately complex schemas. For large-scale production environments—such as those with thousands of tables, views, routines, or other schema objects—we strongly recommend using Oracle's client-side upgrade checker tool to perform the compatibility check. This ensures that the full schema is analyzed comprehensively and avoids potential issues related to result size or validation timeouts.
 
 1. In the **Upgrade** sidebar, in the **MySQL version to upgrade** text box, verify the major MySQL version you want to upgrade to, i.e., 8.0.
 
