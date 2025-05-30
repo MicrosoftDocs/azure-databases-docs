@@ -115,7 +115,7 @@ Native integration between Azure Cosmos DB and Azure Functions is available in t
 * In Visual Studio, you can create the trigger using the [Azure Functions Tools](/azure/azure-functions/functions-develop-vs):
 
   >
-  >[!VIDEO https://aka.ms/docs.change-feed-azure-functions]
+  >[!VIDEO https://www.youtube.com/embed/cXztOak3iuk?si=eoxi-nDuLtcGeZtO]
 
 ## Why choose Azure Functions integration for serverless computing?
 
