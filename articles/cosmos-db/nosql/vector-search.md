@@ -34,7 +34,7 @@ This feature enhances the core capabilities of Azure Cosmos DB, making it more v
 
 <br>
 
-> [!VIDEO https://www.youtube.com/embed/I6uui4Xx_YA?si=KwV2TxVH4t3UqIJk]
+> [!VIDEO ff9df55b-e914-4fd6-ae44-e934a9f3ad6c]
 
 ## What is a vector store?
 
