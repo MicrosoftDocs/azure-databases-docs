@@ -26,9 +26,7 @@ Indexes should be created only for queryable fields. Wildcard indexing should be
 When a new document is inserted for the first time or an existing document is updated or deleted, each of the specified fields in the index is also updated. If the indexing policy contains a large number of fields (or all the fields in the document), more resources are consumed by the server in updating the corresponding indexes. When running at scale, only the queryable fields should be indexed while all remaining fields not used in query predicates should remain excluded from the index. 
 
 ## Indexing strategy for efficient data ingestion
-For large workload migrations into Azure Cosmos DB for MongoDB vCore, it's recommended to drop indexes before ingestion and recreate them afterward. This significantly reduces write overhead, minimizes resource consumption, and accelerates data ingestion performance. Maintaining indexes during bulk ingestion can slow down inserts, as each write operation must update all applicable indexes.
-
-In contrast, for new workloads or new collections, where query patterns are known, it's more efficient to define indexes upfront. This ensures optimal query performance from the start without needing to reindex later.
+For large workload migrations into Azure Cosmos DB for MongoDB vCore, it's recommended to create indexes after the data load for efficient execution. This significantly reduces write overhead, minimizes resource consumption, and accelerates data ingestion performance. Maintaining indexes during bulk ingestion can slow down inserts, as each write operation must update all applicable indexes.
 
 ## For multiple indexes created on historical data, issue nonblocking createIndex commands for each field
 It is not always possible to plan for all query patterns upfront, particularly as application requirements evolve. Changing application needs inevitably requires fields to be added to the index on a cluster with a large amount of historical data. 
