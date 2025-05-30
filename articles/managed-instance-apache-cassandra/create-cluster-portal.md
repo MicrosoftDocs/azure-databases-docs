@@ -3,7 +3,7 @@ title: Quickstart - Create Azure Managed Instance for Apache Cassandra Cluster f
 description: This quickstart shows how to create an Azure Managed Instance for Apache Cassandra cluster using the Azure portal.
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: maghan
+ms.reviewer: sidandrews
 ms.date: 05/30/2025
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: quickstart
