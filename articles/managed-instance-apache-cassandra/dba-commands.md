@@ -117,7 +117,7 @@ The `sstable-delete` command lets a user delete their sstables made before a cer
 Datetime argument must be formatted as shown above. You can also add --dry-run="" as an argument to see which files will be deleted.
 ## List of supported `sstable` commands
 
-For more information on each command, see https://cassandra.apache.org/doc/latest/cassandra/tools/sstable/index.html
+For more information on each command, see https://cassandra.apache.org/doc/latest/cassandra/managing/tools/sstable/index.html
 
 * `sstableverify`
 * `sstablescrub`
@@ -131,7 +131,7 @@ For more information on each command, see https://cassandra.apache.org/doc/lates
 
 ## List of supported `nodetool` commands
 
-For more information on each command, see https://cassandra.apache.org/doc/latest/cassandra/tools/nodetool/nodetool.html
+For more information on each command, see https://cassandra.apache.org/doc/latest/cassandra/troubleshooting/use_nodetool.html
 
 * `status`
 * `cleanup`
