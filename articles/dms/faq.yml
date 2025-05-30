@@ -134,7 +134,7 @@ sections:
         answer: |
           All customer data is encrypted at rest. Some metadata, including but not limited to logical server names and database names, as well as migration status and migration progress appear in service logs that isn't encrypted.
 
-          All data in transit is protected with TLS 1.2 encryption by default. Legacy clients requiring older versions of TLS, need the required versions enabled in the DMS (classic) portal page. For DMS the machine on which the Self-Hosted Integration Runtime is installed can be configured to allow required TLS settings to accommodate legacy clients. For more information on TLS configuration for SQL Server, see [KB3135244 - TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/help/3135244).
+          All data in transit is protected with TLS 1.2 encryption by default. Legacy clients requiring older versions of TLS, need the required versions enabled in the DMS (classic) portal page. For DMS the machine on which the Self-Hosted Integration Runtime is installed can be configured to allow required TLS settings to accommodate legacy clients. For more information on TLS configuration for SQL Server, see [KB3135244 - TLS 1.2 support for Microsoft SQL Server](/troubleshoot/sql/database-engine/connect/tls-1-2-support-microsoft-sql-server).
 
       - question: |
           Do all Azure services that underpin DMS and DMS (classic) use private endpoints?
@@ -149,7 +149,7 @@ sections:
       - question: |
           What type of encryption is used for data in transit?
         answer: |
-          All data in transit is encrypted with TLS 1.2 encryption by default. The DMS (classic) portal page allows older versions of TLS to be used for legacy clients. For DMS the machine on which the Self-Hosted Integration Runtime is installed, can be configured to allow management of TLS settings to accommodate legacy clients. For more information on TLS configuration for SQL Server, see [KB3135244 - TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/help/3135244).
+          All data in transit is encrypted with TLS 1.2 encryption by default. The DMS (classic) portal page allows older versions of TLS to be used for legacy clients. For DMS the machine on which the Self-Hosted Integration Runtime is installed, can be configured to allow management of TLS settings to accommodate legacy clients. For more information on TLS configuration for SQL Server, see [KB3135244 - TLS 1.2 support for Microsoft SQL Server](/troubleshoot/sql/database-engine/connect/tls-1-2-support-microsoft-sql-server).
 
       - question: |
           Is there any data that isn't protected by CMK, and what type of data? For instance, metadata, logs, and so on.
