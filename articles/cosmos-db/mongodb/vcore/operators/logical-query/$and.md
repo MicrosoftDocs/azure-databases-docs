@@ -30,7 +30,7 @@ The `$and` operator performs a logical AND operation on an array of expressions 
 
 ## Examples
 
-### Example 1: Basic AND Operation
+### Example 1: Basic AND operation
 
 Find stores with more than 10 full-time staff and more than 15 part-time staff:
 
@@ -43,7 +43,7 @@ db.stores.find({
 })
 ```
 
-### Example 2: Complex AND Operation
+### Example 2: Complex AND operation
 
 Find stores that have total sales over 100000 and have both "Game Controllers" and "Home Theater Projectors" in their sales categories:
 
@@ -57,7 +57,7 @@ db.stores.find({
 })
 ```
 
-### Example 3: Combining Multiple Conditions
+### Example 3: Combining multiple conditions
 
 Find stores that have promotional events in both June 2024 and September 2024 with discounts greater than 20%:
 
