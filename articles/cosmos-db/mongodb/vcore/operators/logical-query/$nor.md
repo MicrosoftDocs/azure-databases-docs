@@ -30,7 +30,7 @@ The `$nor` operator performs a logical NOR operation on an array of expressions 
 
 ## Examples
 
-### Example 1: Basic NOR Operation
+### Example 1: Basic NOR operation
 
 Find stores that neither have more than 15 full-time staff nor more than 20 part-time staff:
 
@@ -59,7 +59,7 @@ This produces the following output:
       }
 ```
 
-### Example 2: Complex NOR Operation
+### Example 2: Complex NOR operation
 
 Find stores that don't have any of these conditions: total sales over 100000, sales of "Digital Watches", or promotions in September 2024:
 
@@ -91,7 +91,7 @@ This produces the following output:
   }
 ```
 
-### Example 3: NOR with Multiple Field Conditions
+### Example 3: NOR with multiple field conditions
 
 Find stores that don't meet any of these location and staff criteria:
 
