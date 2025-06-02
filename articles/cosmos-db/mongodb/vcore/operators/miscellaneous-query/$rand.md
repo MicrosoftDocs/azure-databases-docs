@@ -10,7 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $rand (Misc. Query)
+# $rand (misc. query)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
