@@ -22,6 +22,8 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General Availability
     - [On-demand backups](./concepts-backup-restore.md#on-demand-backups).
     - [Long-term backups](./concepts-backup-restore.md#long-term-retention)
+    - [DiskANN Vector Indexing extension](how-to-use-pgdiskann.md)
+    - [Pgvector 0.8.0 extension](../extensions/concepts-extensions-versions.md#vector)
 - Preview
     - [Confidential Computing](concepts-confidential-computing.md)
     - [Apache Age extension](generative-ai-age-overview.md)
@@ -48,6 +50,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for new [minor versions](concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
 - Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server.
 - Public preview of [enhanced connection and CPU monitoring metrics](concepts-monitoring.md#enhanced-metrics) (`TCP_connection_backlog`, `postmaster_process_cpu_usage`) is now available.
+- Public preview of [DiskANN Vector Indexing](how-to-use-pgdiskann.md) is now available.
 
 ## Release: January 2025
 
