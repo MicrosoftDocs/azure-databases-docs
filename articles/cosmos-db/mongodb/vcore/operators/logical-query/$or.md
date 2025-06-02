@@ -30,7 +30,7 @@ The `$or` operator performs a logical OR operation on an array of expressions an
 
 ## Examples
 
-### Example 1: Basic OR Operation
+### Example 1: Basic OR operation
 
 Find stores that either have more than 15 full-time staff or more than 20 part-time staff:
 
@@ -89,7 +89,7 @@ Output:
 ```
 
 
-### Example 2: Complex OR Operation
+### Example 2: Complex OR operation
 
 Find stores that either have total sales over 100000 or have promotions with discounts greater than 20%:
 
@@ -129,7 +129,7 @@ Output:
       }..
 ```
 
-### Example 3: OR with Multiple Conditions and Arrays
+### Example 3: OR with multiple conditions and arrays
 
 Find stores that match any of these criteria: sell electronics, have high staff count, or have specific promotional events:
 
