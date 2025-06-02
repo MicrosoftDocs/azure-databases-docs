@@ -69,7 +69,7 @@ The next section will have step-by-step instructions on how to create a Copy Act
 
    ### [Upsert](#tab/upsert)
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png"alt-text="Screenshot that shows of Upsert selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png"     alt-text="Screenshot that shows an example of Upsert selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/upsert.png":::
    
 
 1. If a custom mapping is required, configure your mapping in the **Mapping tab**

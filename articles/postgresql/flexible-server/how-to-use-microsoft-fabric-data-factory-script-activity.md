@@ -50,7 +50,7 @@ In this article, you learn how to create a script activity in Fabric Data Factor
 
 1. Select either the **Query** or **NonQuery** option depending on your script.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png" alt-text="Screenshot that highlights Query and non Query radio buttons" lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png" alt-text="Screenshot that highlights Query and non Query radio buttons." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png":::
 
    The script activity supports both query and nonquery statements.
 
@@ -58,7 +58,7 @@ In this article, you learn how to create a script activity in Fabric Data Factor
 
    Query statements execute PostgreSQL statements that return results. Often `SELECT` statements. A Query statement returns records of data.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/query.png" alt-text="Screenshot that shows a sample of query script" lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/query.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/query.png" alt-text="Screenshot that shows a sample of query script." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/query.png":::
 
    Sample of a payload with a Query.
    
@@ -96,7 +96,7 @@ In this article, you learn how to create a script activity in Fabric Data Factor
 
    NonQuery statements execute PostgreSQL statements that don't return any results. Often `INSERT`, `UPDATE`, or `DELETE` statements. Returns the number of rows affected.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/non-query.png" alt-text="Screenshot that shows a sample of NonQuery script" lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/non-query.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/non-query.png" alt-text="Screenshot that shows a sample of NonQuery script." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/non-query.png":::
 
    Sample of a payload with a NonQuery.
 
