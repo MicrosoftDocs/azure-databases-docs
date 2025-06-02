@@ -55,6 +55,8 @@ To set up throughput buckets in the Azure portal:
 
 ### Using Throughput buckets in SDK requests
 
+### [.NET](#tab/dotnet)
+
 To assign a request to a specific bucket, use RequestOptions in the SDK.
 
 ```csharp
@@ -124,6 +126,39 @@ await Task.WhenAll(tasks);
 ItemResponse<Product> response = await container.ReadItemAsync<Product>(partitionKey: new PartitionKey("pkey1"), id: "id1");
 
 ```
+
+### [.Python](#tab/python)
+
+To apply a throughput bucket to all requests from a client application, use `throughput_bucket` option when creating `cosmos_client`.
+
+```python
+# Applies throughput bucket 1 to all requests from a client application
+HOST = "https://your-cosmos-db-account.documents.azure.com:443/"
+credential = DefaultAzureCredential()
+DATABASE_ID = "your-database-id"
+allRequestsClient = cosmos_client.CosmosClient(HOST, credential=credential, throughput_bucket=1)
+```
+
+To assign a request to a specific bucket, use `throughput_bucket` at the request level.
+
+```python
+# Applies throughput bucket 2 for read item requests
+client = cosmos_client.CosmosClient(HOST, credential=credential)
+database = client.get_database_client(DATABASE_ID)
+created_container = database.create_container(
+    str(uuid.uuid4()),
+    PartitionKey(path="/pk"))
+created_document = created_container.create_item(body={'id': '1' + str(uuid.uuid4()), 'pk': 'mypk'})
+
+created_container.read_item(
+     item=created_document['id'],
+     partition_key="mypk",
+     throughput_bucket=2)
+database.delete_container(created_container.id)
+
+```
+
+---
 
 > [!Note]
 > If bulk execution is enabled, a throughput bucket can't be assigned to an individual request using the RequestOptions.
