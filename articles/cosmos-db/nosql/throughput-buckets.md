@@ -127,7 +127,7 @@ ItemResponse<Product> response = await container.ReadItemAsync<Product>(partitio
 
 ```
 
-### [.Python](#tab/python)
+### [Python](#tab/python)
 
 To apply a throughput bucket to all requests from a client application, use `throughput_bucket` option when creating `cosmos_client`.
 
