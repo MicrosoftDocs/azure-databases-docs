@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 02/12/2025
 ---
 
-# $nor (Logical Query)
+# $nor (logical query)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
