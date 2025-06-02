@@ -1,0 +1,4 @@
+- name: $comment
+  href: $comment.md
+- name: $rand
+  href: $rand.md

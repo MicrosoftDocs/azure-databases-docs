@@ -21,6 +21,8 @@ landingContent:
             url: aggregation/$count.md
           - text: $facet
             url: aggregation/$facet.md
+          - text: $geonear
+            url: aggregation/$geonear.md
           - text: $lookup
             url: aggregation/$lookup.md
           - text: $match
@@ -48,7 +50,7 @@ landingContent:
           - text: $sortArray
             url: array-expression/$sortarray.md
           - text: $zip
-            url: array-expression/$zip.md
+            url: array-expression/$zip.md    
   - title: Array query
     linkLists:
       - linkListType: reference
@@ -123,6 +125,12 @@ landingContent:
         links:
           - text: $and
             url: logical-query/$and.md
+          - text: $nor
+            url: logical-query/$nor.md
+          - text: $not
+            url: logical-query/$not.md
+          - text: $or
+            url: logical-query/$or.md
   - title: Object expression
     linkLists:
       - linkListType: reference

@@ -2,6 +2,8 @@
   href: index.yml
 - name: Aggregation
   href: aggregation/toc.yml
+- name: Arithmetic expression
+  href: arithmetic-expression/TOC.yml
 - name: Array expression
   href: array-expression/toc.yml
 - name: Array query
@@ -22,6 +24,8 @@
   href: geospatial/toc.yml
 - name: Logical query
   href: logical-query/toc.yml
+- name: Miscellaneous query
+  href: miscellaneous-query/TOC.yml
 - name: Object expression
   href: object-expression/TOC.yml 
 - name: Projection
