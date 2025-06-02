@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$rand` operator generates a random float value between 0 and 1. This is useful for random sampling of documents or creating random values in aggregation pipelines.
+The `$rand` operator generates a random float value between 0 and 1. This is useful for random sampling of documents or creating random values in aggregation pipelines. 
 
 ## Syntax
 
@@ -63,8 +63,6 @@ This query adds a random value to each store document. When executed, it might r
   }
 ]
 ```
-
-Note: The random values will be different each time you run the query.
 
 ## Related content
 
