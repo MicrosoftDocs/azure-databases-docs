@@ -14,7 +14,7 @@ summary: "Azure Database for PostgreSQL is a fully managed, AI-ready relational 
 
 landingContent:
 #Card 1
-  - title: Beginners Guide to Azure Database for PostgreSQL
+  - title: Beginners guide to Azure Database for PostgreSQL
     linkLists:
       - linkListType: overview
         links:
@@ -40,10 +40,8 @@ landingContent:
         links:
           - text: Manage server
             url: flexible-server/how-to-manage-server-portal.md
-          - text: Stop/Start server
-            url: flexible-server/how-to-stop-start-server-portal.md
           - text: Connect and query using Visual Studio Code
-            url: extensions/vs-code-extension/overview
+            url: extensions/vs-code-extension/overview.md
 
   #Card 2        
   - title: Enterprise ready features
@@ -81,7 +79,7 @@ landingContent:
           - text: Build a Python CRUD app (Entra and Password-based authentication)
             url: flexible-server/connect-python.md
           - text: Deploy a Python app on Azure App Service
-            url:  azure/articles/app-service/tutorial-python-postgresql-app-flask.md
+            url:  /azure/articles/app-service/tutorial-python-postgresql-app-flask.md
           - text: Deploy Django App with AKS
             url: flexible-server/tutorial-django-aks-database.md
           - text: Implement Semantic Search with pgvector and Azure OpenAI
@@ -92,6 +90,8 @@ landingContent:
             url: flexible-server/generative-ai-agents.md
           - text: Develop with LangChain 
             url: flexible-server/generative-ai-develop-with-langchain.md
+          - text: Graph database using Apache AGE
+            url: flexible-server/generative-ai-age-overview.md
       - linkListType: concept
         links:
           - text: Generative AI overview
@@ -122,10 +122,17 @@ landingContent:
             url: flexible-server/concepts-extensions.md
           - text: Monitor
             url: flexible-server/concepts-monitoring.md
+          - text: Read replicas Overview
+            url: flexible-server/concepts-read-replicas.md
           - text: Intelligent tuning
             url: flexible-server/concepts-intelligent-tuning.md
           - text: Azure Advisor recommendations
-            url: flexible-server/concepts-azure-advisor-recommendations.md            
+            url: flexible-server/concepts-azure-advisor-recommendations.md   
+          - text: Scheduled maintenance
+            url: flexible-server/concepts-maintenance.md
+          - text: Fabric mirroring
+            url: flexible-server/concepts-fabric-mirroring.md
+            
 # Card 5
   - title: Migrate to Azure Database for PostgreSQL
     linkLists:
@@ -160,23 +167,34 @@ landingContent:
 
       
 #Card 6
-  - title: Reference 
+  - title: Additional Resources
     linkLists:
       - linkListType: concept
         links:
           - text: Connect with Azure CLI
             url: flexible-server/connect-azure-cli.md
-          - text: Connect with Java
-            url: flexible-server/connect-java.md
-          - text: Connect with .NET
-            url: flexible-server/connect-csharp.md
-          - text: Connect using Go
-            url: flexible-server/connect-go.md
+          - text: Connection libraries for App development
+            url: flexible-server/concepts-connection-libraries.md
           - text: Connect with Power-BI
             url: flexible-server/connect-with-power-bi-desktop.md          
-          - text: Connect with PHP
-            url: flexible-server/connect-php.md
           - text: Deploy with Terraform
-            url: azure/developer/terraform/deploy-postgresql-flexible-server-database.md
+            url: /azure/developer/terraform/deploy-postgresql-flexible-server-database.md
+          - text: Troubleshooting guides overview
+            url: flexible-server/how-to-troubleshooting-guides.md
+          - text: Quickstart guide for Bicep
+            url: flexible-server/quickstart-create-server-bicep.md
+          - text: Quickstart guide for Python
+            url: flexible-server/quickstart-create-server-python-sdk.md
+          - text: Overview of REST API
+            url: https://learn.microsoft.com/rest/api/postgresql/
+          - text: Pricing 
+            url: https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server
+          - text: Region Availability
+            url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region
+          - text: Customer success stories
+            url: https://www.microsoft.com/customers/search?q=Azure+database+for+postgresql
+          - text: Build your skills with Microsoft Learn
+            url: https://learn.microsoft.com/training/browse/?terms=Azure%20database%20for%20postgresql
+            
           
 
