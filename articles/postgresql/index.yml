@@ -178,7 +178,7 @@ landingContent:
           - text: Connect with Power-BI
             url: flexible-server/connect-with-power-bi-desktop.md          
           - text: Deploy with Terraform
-            url: /azure/developer/terraform/deploy-postgresql-flexible-server-database.md
+            url: /azure/developer/terraform/deploy-postgresql-flexible-server-database
           - text: Troubleshooting guides overview
             url: flexible-server/how-to-troubleshooting-guides.md
           - text: Quickstart guide for Bicep
