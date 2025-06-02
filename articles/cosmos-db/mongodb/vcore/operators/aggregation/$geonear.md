@@ -101,7 +101,7 @@ This produces the following output:
 
 ### Example 2: With Distance Limits and Optional Query
 
-Find stores within 30 Km of "Proseware Home Entertainment Hub" that have more than 10 full-time staff:
+Find stores within 30 KM of "Proseware Home Entertainment Hub" that have more than 10 full-time staff:
 
 ```javascript
 db.stores.aggregate([
