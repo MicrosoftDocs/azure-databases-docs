@@ -55,7 +55,7 @@ The syntax for the `$geoNear` operator is as follows:
 
 ## Examples
 
-### Example 1: Basic Distance Calculation
+### Example 1: Basic distance calculation
 
 Find all stores near the "VanArsdel Picture Frame Store" location, sorted by distance:
 
@@ -99,7 +99,7 @@ This produces the following output:
   }..
 ```
 
-### Example 2: With Distance Limits and Optional Query
+### Example 2: With distance limits and optional query
 
 Find stores within 30 KM of "Proseware Home Entertainment Hub" that have more than 10 full-time staff:
 
@@ -137,7 +137,7 @@ This produces the following output:
   }
 ```
 
-### Example 3: Including Location Data and Distance Multiplier
+### Example 3: Including location data and distance multiplier
 
 Find nearby stores with distance in kilometers and included location data:
 
