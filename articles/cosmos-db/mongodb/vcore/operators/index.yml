@@ -51,7 +51,7 @@ landingContent:
             url: array-expression/$sortarray.md
           - text: $zip
             url: array-expression/$zip.md
-    - title: Arithmetic expression
+  - title: Arithmetic expression
     linkLists:
       - linkListType: reference
         links:
