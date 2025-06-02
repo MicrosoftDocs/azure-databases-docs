@@ -21,7 +21,7 @@ ms.custom: automatically generated
 | Documentation | [max_replication_slots](https://www.postgresql.org/docs/12/runtime-config-replication.html#GUC-MAX-REPLICATION-SLOTS) |
 
 
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+[!INCLUDE [server-parameters-azure-notes-max-replication-slots](./server-parameters-azure-notes-max-replication-slots.md)]
 
 
 

@@ -70,8 +70,6 @@ You can move data from existing Cassandra workloads to Azure Cosmos DB by using 
 
 ### Migrate data by using the cqlsh COPY command
 
-Use the [CQL COPY command](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html#cqlshrc) to copy local data to the API for Cassandra account in Azure Cosmos DB.
-
 > [!WARNING]
 > Only use the CQL COPY to migrate small datasets. To move large datasets, [migrate data by using Spark](#migrate-data-by-using-spark).
 

@@ -77,7 +77,10 @@ There are many different ways to provision a dedicated gateway:
 - [Use Azure Cosmos DB's REST API](/rest/api/cosmos-db/)
 - [Azure CLI](/cli/azure/cosmosdb/service?view=azure-cli-latest&preserve-view=true#az-cosmosdb-service-create)
 - [ARM template](/azure/templates/microsoft.documentdb/databaseaccounts/services?tabs=bicep)
-    - Note: You can't deprovision a dedicated gateway using ARM templates
+    - You can't deprovision a dedicated gateway using ARM templates.
+
+> [!NOTE]
+> If you use private endpoints with your Azure Cosmos DB account, you need to configure a separate private endpoint for the dedicated gateway. Follow the steps to [create a private endpoint](./how-to-configure-private-endpoints.md) using the `SqlDedicated` target resource.
 
 ## Dedicated gateway in multi-region accounts
 

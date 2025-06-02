@@ -19,7 +19,7 @@ ms.custom: references_regions
 
 Azure Cosmos DB for MongoDB (vCore) now introduces a new SKU, the "Free Tier," enabling users to explore the platform without any financial commitments. The free tier lasts for the lifetime of your account, boasting command and feature parity with a regular Azure Cosmos DB for MongoDB (vCore) account.
 
-It makes it easy for you to get started, develop, test your applications, or even run small production workloads for free. With Free Tier, you get a dedicated MongoDB cluster with 32-GB storage, perfect for all of your learning & evaluation needs. Users can provision a single free DB server per supported Azure region for a given subscription. This feature is currently available in the South India region.
+It makes it easy for you to get started, develop, test your applications, or even run small production workloads for free. With Free Tier, you get a dedicated MongoDB cluster with 32-GB storage, perfect for all of your learning & evaluation needs. Users can provision a single free database server per subscription. This feature is currently available in limited set of regions only.
 
 
 ## Get started
@@ -48,14 +48,14 @@ specify your storage requirements, and you're all set. Rest assured, your data, 
 ## Restrictions
 
 * For a given subscription, only one free tier account is permissible.
-* Free tier is currently available in the South India region only.
-* High availability, Microsoft Entra ID (formerly known as Azure Active Directory (AAD)), Backup / Restore, HNSW vector indexes and Diagnostic Logging are not supported.
+* Free tier is currently available in the limited regions only.
+* High availability, Microsoft Entra ID (formerly known as Azure Active Directory), Backup / Restore, HNSW vector indexes, and Diagnostic Logging aren't supported.
 * Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
-* Transition from a paid tier account to a free tier accounts is not supported.
+* Transition from a paid tier account to a free tier accounts isn't supported.
 
 ## Next steps
 
-Having gained insights into the free tier of Azure Cosmos DB for MongoDB (vCore), it's time to embark on a journey to understand how to perform a migration assessment and successfully migrate your MongoDB to the Azure.
+Now that you’ve explored the free tier of Azure Cosmos DB for MongoDB (vCore), it’s time to dive into how to assess your migration and successfully move your MongoDB workload to Azure.
 
 > [!div class="nextstepaction"]
 > [Migration options for Azure Cosmos DB for MongoDB (vCore)](migration-options.md)

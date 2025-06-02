@@ -16,7 +16,7 @@ ms.date: 02/28/2023
 
 [Azure Cosmos DB](../introduction.md) is a fully managed NoSQL and relational database for modern app development.
 
-Azure Cosmos DB for Apache Cassandra can be used as the data store for apps written for [Apache Cassandra](https://cassandra.apache.org). This compatibility means that by using existing [Apache drivers](https://cassandra.apache.org/doc/latest/cassandra/getting_started/drivers.html?highlight=driver) compliant with CQLv4, your existing Cassandra application can now communicate with the API for Cassandra. In many cases, you can switch from using Apache Cassandra to using the API for Cassandra, by just changing a connection string. The API for Cassandra enables you to interact with data stored in Azure Cosmos DB using the Cassandra Query Language (CQL), Cassandra-based tools (like cqlsh) and Cassandra client drivers that you're already familiar with.
+Azure Cosmos DB for Apache Cassandra can be used as the data store for apps written for [Apache Cassandra](https://cassandra.apache.org). This compatibility means that by using existing [Apache drivers](https://cassandra.apache.org/doc/stable/cassandra/getting-started/drivers.html) compliant with CQLv4, your existing Cassandra application can now communicate with the API for Cassandra. In many cases, you can switch from using Apache Cassandra to using the API for Cassandra, by just changing a connection string. The API for Cassandra enables you to interact with data stored in Azure Cosmos DB using the Cassandra Query Language (CQL), Cassandra-based tools (like cqlsh), and Cassandra client drivers that you're already familiar with.
 
 > [!TIP]
 > Want to try the API for Cassandra with no commitment? Create an Azure Cosmos DB account using [Try Azure Cosmos DB](../try-free.md) for free.
@@ -46,11 +46,11 @@ The API for Cassandra has added benefits of being built on Azure Cosmos DB:
 
 ## Azure Managed Instance for Apache Cassandra
 
-For some customers, adapting to API for Cassandra can be a challenge due to differences in behaviour and/or configuration, especially for lift-and-shift migrations. [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md) is a first-party Azure service for hosting and maintaining pure open-source Apache Cassandra clusters with 100% compatibility.
+For some customers, adapting to API for Cassandra can be a challenge due to differences in behavior and/or configuration, especially for lift-and-shift migrations. [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md) is a first-party Azure service for hosting and maintaining pure open-source Apache Cassandra clusters with 100% compatibility.
 
 ## Next steps
 
-- Get started with [creating a API for Cassandra account, database, and a table](create-account-java.md) by using a Java application.
+- Get started with [creating an API for Cassandra account, database, and a table](create-account-java.md) by using a Java application.
 - [Load sample data to the API for Cassandra table](load-data-table.md) by using a Java application.
 - [Query data from the API for Cassandra account](query-data.md) by using a Java application.
 - Receive up to 63% discount on [Azure Cosmos DB prices with Reserved Capacity](../reserved-capacity.md).

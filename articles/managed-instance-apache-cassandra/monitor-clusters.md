@@ -177,7 +177,7 @@ Examples:
 
 ### Cassandra 4 and later
 
-In Cassandra 4 and later, you can configure your whitelist in the Cassandra configuration. For detailed guidance, see [Update Cassandra configuration](create-cluster-portal.md#update-cassandra-configuration). The available options are as follows (reference: [Cassandra documentation for audit logging](https://cassandra.apache.org/doc/stable/cassandra/operating/audit_logging.html)):
+In Cassandra 4 and later, you can configure your whitelist in the Cassandra configuration. For detailed guidance, see [Update Cassandra configuration](create-cluster-portal.md#update-cassandra-configuration). The available options are as follows (reference: [Cassandra documentation for audit logging](https://cassandra.apache.org/doc/stable/cassandra/managing/operating/auditlogging.html)):
 
 ```
 audit_logging_options:

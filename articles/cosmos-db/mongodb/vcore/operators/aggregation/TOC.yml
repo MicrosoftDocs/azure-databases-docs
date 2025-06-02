@@ -2,6 +2,8 @@
   href: $count.md
 - name: $facet
   href: $facet.md
+- name: $geonear
+  href: $geonear.md
 - name: $lookup
   href: $lookup.md
 - name: $match
