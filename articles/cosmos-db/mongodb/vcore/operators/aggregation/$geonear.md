@@ -44,7 +44,7 @@ The syntax for the `$geoNear` operator is as follows:
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | `near` | Object | The point from which to calculate distances |
-| `distanceField` | String | The field that will contain computed distance |
+| `distanceField` | String | The field that contains computed distance |
 | `maxDistance` | Number | Optional. Maximum distance in meters from point |
 | `minDistance` | Number | Optional. Minimum distance in meters from point |
 | `query` | Document | Optional query conditions |
