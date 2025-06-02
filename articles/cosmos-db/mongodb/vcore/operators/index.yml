@@ -21,8 +21,6 @@ landingContent:
             url: aggregation/$count.md
           - text: $facet
             url: aggregation/$facet.md
-          - text: $geonear
-            url: aggregation/$geonear.md
           - text: $lookup
             url: aggregation/$lookup.md
           - text: $match
