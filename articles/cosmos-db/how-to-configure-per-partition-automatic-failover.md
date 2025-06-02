@@ -6,6 +6,8 @@ ms.author: srane
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 05/14/2025
+ms.custom:
+  - build-2025
 ---
 
 # How to onboard and adopt Per-Partition Automatic Failover (PPAF) for Azure Cosmos DB

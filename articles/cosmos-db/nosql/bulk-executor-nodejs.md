@@ -9,7 +9,9 @@ ms.subservice: nosql
 ms.devlang: javascript
 ms.topic: how-to
 ms.date: 05/12/2025
-ms.custom: devx-track-javascript
+ms.custom:
+  - devx-track-javascript
+  - build-2025
 appliesto:
   - NoSQL
 ---

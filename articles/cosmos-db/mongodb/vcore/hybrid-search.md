@@ -9,6 +9,8 @@ ms.topic: how-to
 ms.date: 4/30/2025
 appliesto:
   - ✅ MongoDB vCore
+ms.custom:
+  - build-2025
 ---
 
 # Hybrid search in vCore-based Azure Cosmos DB for MongoDB

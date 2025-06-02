@@ -402,6 +402,12 @@
         href: flexible-server/how-to-connect-data-factory.md
       - name: Connect from Azure Data Factory via managed private endpoint
         href: flexible-server/how-to-connect-data-factory-private-endpoint.md
+    - name: Microsoft Fabric
+      items:
+      - name: Copy activity
+        href: flexible-server/how-to-use-microsoft-fabric-data-factory-copy-activity.md
+      - name: Script activity
+        href: flexible-server/how-to-use-microsoft-fabric-data-factory-script-activity.md
   - name: Troubleshooting
     items:  
     - name: Troubleshooting guides

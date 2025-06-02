@@ -10,6 +10,8 @@ ms.topic: conceptual
 ms.date: 05/29/2025
 appliesto:
   - ✅ MongoDB (vCore)
+ms.custom:
+  - build-2025
 ---
 
 # Burstable tiers on vCore-based Azure Cosmos DB for MongoDB

@@ -2,6 +2,8 @@
 ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 04/30/2025
+ms.custom:
+  - build-2025
 ---
 
 >[!IMPORTANT]

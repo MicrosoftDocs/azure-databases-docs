@@ -11,6 +11,8 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
+ms.custom:
+  - build-2025
 ---
 
 # Document Indexer for Azure Cosmos DB (preview)

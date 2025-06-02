@@ -8,6 +8,8 @@ ms.date: 05/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
+ms.custom:
+  - build-2025
 ---
 
 # Azure Confidential Computing for Azure Database for PostgreSQL (Preview)

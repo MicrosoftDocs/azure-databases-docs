@@ -12,6 +12,7 @@ ms.custom:
   - references_regions
   - ignite-2023
   - build-2024
+  - build-2025
 # customer intent: As a reader, I want to understand the concept of accelerated logs in Azure Database for MySQL - Flexible Server.
 ---
 
