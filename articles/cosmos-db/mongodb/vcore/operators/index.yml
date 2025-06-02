@@ -21,6 +21,8 @@ landingContent:
             url: aggregation/$count.md
           - text: $facet
             url: aggregation/$facet.md
+          - text: $geonear
+            url: aggregation/$geonear.md
           - text: $lookup
             url: aggregation/$lookup.md
           - text: $match
@@ -49,6 +51,28 @@ landingContent:
             url: array-expression/$sortarray.md
           - text: $zip
             url: array-expression/$zip.md
+    - title: Arithmetic expression
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $abs
+            url: arithmetic-expression/$abs.md
+          - text: $add.md
+            url: arithmetic-expression/$add.md
+          - text: $ceil
+            url: arithmetic-expression/$ceil.md
+          - text: $divide
+            url: arithmetic-expression/$divide.md
+          - text: $exp
+            url: arithmetic-expression/$exp.md
+          - text: $floor
+            url: arithmetic-expression/$floor.md
+          - text: $ln
+            url: arithmetic-expression/$ln.md
+          - text: $log
+            url: arithmetic-expression/$log.md
+          - text: $log10
+            url: arithmetic-expression/$log10.md       
   - title: Array query
     linkLists:
       - linkListType: reference
@@ -123,6 +147,20 @@ landingContent:
         links:
           - text: $and
             url: logical-query/$and.md
+          - text: $nor
+            url: logical-query/$nor.md
+          - text: $not
+            url: logical-query/$not.md
+          - text: $or
+            url: logical-query/$or.md
+  - title: Miscellaneous query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $comment
+            url: miscellaneous-query/$comment.md
+          - text: $rand
+            url: miscellaneous-query/$rand.md
   - title: Object expression
     linkLists:
       - linkListType: reference
