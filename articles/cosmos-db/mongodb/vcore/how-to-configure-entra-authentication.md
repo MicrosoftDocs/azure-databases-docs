@@ -9,7 +9,9 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 05/27/2025
-ms.custom: devx-track-rust
+ms.custom:
+  - devx-track-rust
+  - build-2025
 appliesto:
   - ✅ MongoDB (vCore)
 # Customer Intent: As a database developer, I want to build a Rust console application to quickly and securely connect to and query my database and collections.

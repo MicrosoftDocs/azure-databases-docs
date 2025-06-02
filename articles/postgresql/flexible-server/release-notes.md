@@ -8,6 +8,8 @@ ms.date: 05/20/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
+ms.custom:
+  - build-2025
 # customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL flexible server.
 ---
 

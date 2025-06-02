@@ -12,6 +12,8 @@ ai-usage: ai-assisted
 show_latex: true
 appliesto:
   - ✅ NoSQL
+ms.custom:
+  - build-2025
 ---
 
 # Pools for Azure Cosmos DB fleets (preview)

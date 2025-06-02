@@ -8,6 +8,8 @@ ms.date: 05/19/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
+ms.custom:
+  - build-2025
 ---
 
 # What's new in Azure Database for MySQL?

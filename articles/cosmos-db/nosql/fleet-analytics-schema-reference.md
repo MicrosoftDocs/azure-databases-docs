@@ -10,6 +10,8 @@ ms.topic: reference
 ms.date: 05/07/2025
 appliesto:
 - ✅ NoSQL
+ms.custom:
+  - build-2025
 ---
 
 # Fleet analytics schema reference (preview)

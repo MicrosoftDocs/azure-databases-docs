@@ -9,7 +9,9 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 05/14/2025
-ms.custom: devx-track-js
+ms.custom:
+  - devx-track-js
+  - build-2025
 ai-usage: ai-assisted
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:

@@ -12,6 +12,7 @@ metadata:
   ai-usage: ai-assisted
   appliesto:
     - ✅ NoSQL
+  ms.custom: build-2025
 title: Frequently asked questions about Azure Cosmos DB fleets
 sections:
   - name: General

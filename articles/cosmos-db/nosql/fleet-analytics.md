@@ -11,6 +11,8 @@ ms.date: 05/07/2025
 ai-usage: ai-assisted
 appliesto:
   - ✅ NoSQL
+ms.custom:
+  - build-2025
 ---
 
 # Fleet analytics in Azure Cosmos DB (preview)

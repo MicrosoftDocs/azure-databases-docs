@@ -8,6 +8,8 @@ ms.date: 05/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 # customer intent: As a user, I want to learn how data is encrypted in my Azure Database for PostgreSQL flexible server, and what options do I have to bring my own encryption key.
 ---
 
