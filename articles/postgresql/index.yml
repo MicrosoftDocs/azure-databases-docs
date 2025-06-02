@@ -79,7 +79,7 @@ landingContent:
           - text: Build a Python CRUD app (Entra and Password-based authentication)
             url: flexible-server/connect-python.md
           - text: Deploy a Python app on Azure App Service
-            url:  /azure/app-service/tutorial-python-postgresql-app-flask.md
+            url:  /azure/app-service/tutorial-python-postgresql-app-flask
           - text: Deploy Django App with AKS
             url: flexible-server/tutorial-django-aks-database.md
           - text: Implement Semantic Search with pgvector and Azure OpenAI
