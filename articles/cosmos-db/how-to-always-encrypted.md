@@ -7,6 +7,8 @@ ms.topic: how-to
 ms.date: 05/08/2025
 author: iriaosara
 ms.author: iriaosara
+ms.custom:
+  - build-2025
 ---
 
 # Use client-side encryption with Always Encrypted for Azure Cosmos DB

@@ -11,6 +11,8 @@ ms.topic: concept-article
 ms.date: 05/27/2025
 appliesto:
   - ✅ MongoDB (vCore)
+ms.custom:
+  - build-2025
 ---
 
 # Microsoft Entra ID authentication with Azure Cosmos DB for MongoDB vCore

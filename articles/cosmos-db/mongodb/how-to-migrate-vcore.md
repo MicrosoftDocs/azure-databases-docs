@@ -10,6 +10,8 @@ ms.topic: how-to
 ms.date: 05/08/2025
 appliesto:
   - MongoDB (RU)
+ms.custom:
+  - build-2025
 ---
 
 # Migrate from Azure Cosmos DB for MongoDB (RU) to Azure Cosmos DB for MongoDB (vCore)

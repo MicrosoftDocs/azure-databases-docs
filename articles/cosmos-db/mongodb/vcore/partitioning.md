@@ -10,6 +10,8 @@ ms.topic: conceptual
 ms.date: 5/13/2025
 appliesto:
   - ✅ MongoDB (vCore)
+ms.custom:
+  - build-2025
 ---
 
 # Sharding for horizontal scalability in Azure Cosmos DB for MongoDB vCore

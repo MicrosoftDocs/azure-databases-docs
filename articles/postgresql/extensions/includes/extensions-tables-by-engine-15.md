@@ -8,6 +8,7 @@ ms.subservice: flexible-server
 ms.topic: include
 ms.custom:
   - automatically generated
+  - build-2025
 ---
 | **Extension** | **Extension version** | **Notes** |
 | --- | --- | --- |

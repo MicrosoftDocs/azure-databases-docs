@@ -12,6 +12,8 @@ ai-usage: ai-assisted
 zone_pivot_groups: azure-fleet-storage
 appliesto:
   - ✅ NoSQL
+ms.custom:
+  - build-2025
 ---
 
 # Enable fleet analytics in Azure Cosmos DB (preview)
