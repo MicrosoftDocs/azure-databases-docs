@@ -52,6 +52,7 @@ To set up throughput buckets in the Azure portal:
 
 - .NET >=  [3.50.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.50.0-preview.0)
 - Javascript >=[4.3.0](https://www.npmjs.com/package/@azure/cosmos/v/4.3.0)
+- Python >=[4.11.0b1](https://pypi.org/project/azure-cosmos/4.11.0b1/)
 
 ### Using Throughput buckets in SDK requests
 
