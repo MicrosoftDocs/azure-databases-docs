@@ -30,7 +30,7 @@ The `$not` operator performs a logical NOT operation on a specified expression a
 
 ## Examples
 
-### Example 1: Basic NOT Operation
+### Example 1: Basic NOT operation
 
 Find stores that don't have exactly 5 full-time staff:
 
@@ -58,7 +58,7 @@ Output:
       }
 ```
 
-### Example 2: NOT with Regular Expression
+### Example 2: NOT with regular expression
 
 Find stores whose names don't start with "First Up":
 
@@ -155,7 +155,7 @@ Output:
     ]
   }
 ```
-### Example 3: Complex NOT Operation
+### Example 3: Complex NOT operation
 
 Find stores that don't have any promotional events with exactly 20% discount:
 
