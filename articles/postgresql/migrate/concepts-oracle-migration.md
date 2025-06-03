@@ -3,6 +3,7 @@ title: "Migrating Oracle to Azure Database for PostgreSQL"
 description: "This article discusses concepts regarding Oracle to Azure Database for PostgreSQL migrations."
 author: JaredMSFT
 ms.author: jaredmeade
+ms.comtributor: datasqlninja
 ms.reviewer: maghan
 ms.date: 01/24/2025
 ms.service: azure-database-postgresql
