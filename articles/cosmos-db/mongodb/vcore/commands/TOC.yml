@@ -1,5 +1,5 @@
 - name: Index
-  href: index.yml
+  href: index.md
 - name: Aggregation
   href: aggregation/toc.yml
 - name: Arithmetic Expression
