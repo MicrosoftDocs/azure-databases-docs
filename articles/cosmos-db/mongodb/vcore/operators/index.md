@@ -1,153 +1,120 @@
-### YamlMime:Landing
-
+---
 title: Azure Cosmos DB for MongoDB (vCore) commands
-summary: Review the details for various supported operators you can use with Azure Cosmos DB for MongoDB vCore.
+description: Review the details for various supported operators you can use with Azure Cosmos DB for MongoDB vCore.
+author: avijitgupta
+ms.author: avijitgupta
+ms.service: azure-cosmos-db
+ms.subservice: mongodb-vcore
+ms.topic: landing-page
+ms.date: 06/03/2025
+---
 
-metadata:
-  title: Azure Cosmos DB for MongoDB (vCore) commands
-  description: Review the details for various supported operators you can use with Azure Cosmos DB for MongoDB vCore.
-  author: avijitgupta
-  ms.author: avijitgupta
-  ms.service: azure-cosmos-db
-  ms.subservice: mongodb-vcore
-  ms.topic: landing-page
-  ms.date: 09/12/2024
-landingContent:
-  - title: Aggregation
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $count
-            url: aggregation/$count.md
-          - text: $facet
-            url: aggregation/$facet.md
-          - text: $geonear
-            url: aggregation/$geonear.md
-          - text: $lookup
-            url: aggregation/$lookup.md
-          - text: $match
-            url: aggregation/$match.md
-  - title: Array expression
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $arrayToObject
-            url: array-expression/$arraytoobject.md
-          - text: $concatArrays
-            url: array-expression/$concatarrays.md
-          - text: $filter
-            url: array-expression/$filter.md
-          - text: $indexOfArray
-            url: array-expression/$indexOfArray.md
-          - text: $map
-            url: array-expression/$map.md
-          - text: $reduce
-            url: array-expression/$reduce.md
-          - text: $reverseArray
-            url: array-expression/$reversearray.md
-          - text: $slice
-            url: array-expression/$slice.md
-          - text: $sortArray
-            url: array-expression/$sortarray.md
-          - text: $zip
-            url: array-expression/$zip.md    
-  - title: Array query
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $all
-            url: array-query/$all.md
-          - text: $elemMatch
-            url: array-query/$elemmatch.md
-          - text: $size
-            url: array-query/$size.md
-  - title: Array update
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $each
-            url: array-update/$each.md
-          - text: $positional
-            url: array-update/$positional.md
-          - text: $pullAll
-            url: array-update/$pullall.md
-          - text: $push
-            url: array-update/$push.md
-          - text: $slice
-            url: array-update/$slice.md
-          - text: $sort
-            url: array-update/$sort.md
-  - title: Bitwise query
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $bitsAllClear
-            url: bitwise-query/$bitsallclear.md
-          - text: $bitsAllSet
-            url: bitwise-query/$bitsallset.md
-          - text: $bitsAnyClear
-            url: bitwise-query/$bitsanyclear.md
-          - text: $bitsAnySet
-            url: bitwise-query/$bitsanyset.md
-  - title: Comparison query
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $eq
-            url: comparison-query/$eq.md
-  - title: Data expression
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $dateadd
-            url: data-expression/$dateadd.md
-          - text: $datediff
-            url: data-expression/$datediff.md
-          - text: $datefromparts
-            url: data-expression/$datefromparts.md
-          - text: $datefromstring
-            url: data-expression/$datefromstring.md
-  - title: Evaluation query
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $expr
-            url: evaluation-query/$expr.md
-  - title: Geospatial
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $geoIntersect
-            url: geospatial/$geointersects.md
-  - title: Logical query
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $and
-            url: logical-query/$and.md
-          - text: $nor
-            url: logical-query/$nor.md
-          - text: $not
-            url: logical-query/$not.md
-          - text: $or
-            url: logical-query/$or.md
-  - title: Object expression
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $mergeObjects
-            url: object-expression/$mergeobjects.md
-          - text: $objectToArray
-            url: object-expression/$objectToArray.md
-          - text: $setField
-            url: object-expression/$setField.md
-  - title: Projection
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $elemMatch
-            url: projection/$elemmatch.md
-          - text: $meta
-            url: projection/$meta.md
-          - text: $slice
-            url: projection/$slice.md
+## Aggregation
+
+| | Description |
+| --- | --- |
+| **[`$count`](aggregation/$count.md)** | The `$count` stage in the aggregation pipeline is used to count the number of documents that pass through the pipeline. |
+| **[`$facet`](aggregation/$facet.md)** | The `$facet` stage aggregation pipelines allow for multiple parallel aggregations to be executed within a single pipeline stage. |
+| **[`$geonear`](aggregation/$geonear.md)** | The `$geoNear` aggregation stage calculates distances between a specified point and the location field in each document, sorts the documents by distance, and can optionally limit results by distance. |
+| **[`$lookup`](aggregation/$lookup.md)** | The `$lookup` stage in the Aggregation Framework is used to perform left outer joins with other collections. |
+| **[`$match`](aggregation/$match.md)** | The `$match` stage in the aggregation pipeline is used to filter documents that match a specified condition. |
+
+## Array expression
+
+| | Description |
+| --- | --- |
+| **[`$arrayToObject`](array-expression/$arraytoobject.md)** | The `$arrayToObject` operator is used to convert an array into a single document. |
+| **[`$concatArrays`](array-expression/$concatarrays.md)** | The `$concatArrays` operator is used to combine multiple arrays into a single array. |
+| **[`$filter`](array-expression/$filter.md)** | The `$filter` operator is used to filter elements from an array based on a specified condition. |
+| **[`$indexOfArray`](array-expression/$indexOfArray.md)** | The `$indexOfArray` operator is used to search for an element in an array and return the index of the first occurrence of the element. |
+| **[`$map`](array-expression/$map.md)** | The `$map` operator in MongoDB is used to apply an expression to each element in an array and return an array with the applied results. |
+| **[`$reduce`](array-expression/$reduce.md)** | The `$reduce` operator is used to apply an expression to each element in an array and accumulate the results into a single value. |
+| **[`$reverseArray`](array-expression/$reversearray.md)** | The `$reverseArray` operator is used to reverse the order of elements in an array. |
+| **[`$slice`](array-expression/$slice.md)** | The `$slice` operator is used to return a subset of an array. |
+| **[`$sortArray`](array-expression/$sortarray.md)** | The `$sortArray` operator is used to sort the elements of an array. |
+| **[`$zip`](array-expression/$zip.md)** | The `$zip` operator is used to merge two or more arrays element-wise into a single array of arrays. |
+
+## Array query
+
+| | Description |
+| --- | --- |
+| **[`$all`](array-query/$all.md)** | The `$all` operator is used to select documents where the value of a field is an array that contains all the specified elements. |
+| **[`$elemMatch`](array-query/$elemmatch.md)** | The `$elemMatch` operator is used to match documents that contain an array field with at least one element that matches all the specified query criteria. |
+| **[`$size`](array-query/$size.md)** | The `$size` operator is used to query documents where an array field has a specified number of elements. |
+
+## Array update
+
+| | Description |
+| --- | --- |
+| **[`$each`](array-update/$each.md)** | The `$each` operator is used within an `$addToSet` or `$push` operation to add multiple elements to an array field in a single update operation. |
+| **[`$positional`](array-update/$positional.md)** | The `$position` is used to specify the position in the array where a new element should be inserted. |
+| **[`$pullAll`](array-update/$pullall.md)** | The `$pullAll` operator removes all instances of the specified values from an existing array. |
+| **[`$push`](array-update/$push.md)** | The `$push` operator appends a specified value to an array. |
+| **[`$slice`](array-update/$slice.md)** | The `$slice` operator limits the number of array elements that are returned or modified. |
+| **[`$sort`](array-update/$sort.md)** | The `$sort` operator sorts the elements of an array. |
+
+## Bitwise query
+
+| | Description |
+| --- | --- |
+| **[`$bitsAllClear`](bitwise-query/$bitsallclear.md)** | The `$bitsAllClear` operator is used to match documents where all the bit positions specified in a bitmask are clear (that is, 0). |
+| **[`$bitsAllSet`](bitwise-query/$bitsallset.md)** | The `$bitsAllSet` operator is used to match documents where all the bit positions specified in a bitmask are set (that is, 1). |
+| **[`$bitsAnyClear`](bitwise-query/$bitsanyclear.md)** | The `$bitsAnyClear` operator is used to match documents where any bit positions specified in a bitmask are clear (that is, 0). |
+| **[`$bitsAnySet`](bitwise-query/$bitsanyset.md)** | The `$bitsAnySet` operator is used to match documents where any bit positions specified in a bitmask are set (that is, 1). |
+
+## Comparison query
+
+| | Description |
+| --- | --- |
+| **[`$eq`](comparison-query/$eq.md)** | The `$eq` operator matches documents where the value of a field equals the specified value. |
+
+## Data expression
+
+| | Description |
+| --- | --- |
+| **[`$dateadd`](data-expression/$dateadd.md)** | The `$dateAdd` operator adds a specified number of time units to a date value. |
+| **[`$datediff`](data-expression/$datediff.md)** | The `$dateDiff` operator returns the difference between two dates. |
+| **[`$datefromparts`](data-expression/$datefromparts.md)** | The `$dateFromParts` operator constructs a date from the specified parts. |
+| **[`$datefromstring`](data-expression/$datefromstring.md)** | The `$dateFromString` operator converts a date/time string to a date object. |
+
+## Evaluation query
+
+| | Description |
+| --- | --- |
+| **[`$expr`](evaluation-query/$expr.md)** | The `$expr` operator allows the use of aggregation expressions within the query language. |
+
+## Geospatial
+
+| | Description |
+| --- | --- |
+| **[`$geoIntersect`](geospatial/$geointersects.md)** | The `$geoIntersects` operator selects documents whose geospatial data intersects with a specified GeoJSON object. |
+
+## Logical query
+
+| | Description |
+| --- | --- |
+| **[`$and`](logical-query/$and.md)** | The `$and` operator joins query clauses with a logical AND and returns all documents that match the conditions of both clauses. |
+| **[`$nor`](logical-query/$nor.md)** | The `$nor` operator performs a logical NOR operation on an array of one or more query expressions and selects the documents that fail all the query expressions in the array. |
+| **[`$not`](logical-query/$not.md)** | The `$not` operator inverts the effect of a query expression and returns documents that don't match the query expression. |
+| **[`$or`](logical-query/$or.md)** | The `$or` operator performs a logical OR operation on an array of two or more expressions and selects the documents that satisfy at least one of the expressions. |
+
+## Object expression
+
+| | Description |
+| --- | --- |
+| **[`$mergeObjects`](object-expression/$mergeobjects.md)** | The `$mergeObjects` operator combines multiple documents into a single document. |
+| **[`$objectToArray`](object-expression/$objectToArray.md)** | The `$objectToArray` operator converts a document (object) into an array of key-value pairs. |
+| **[`$setField`](object-expression/$setField.md)** | The `$setField` operator sets or updates the value of a field in a document. |
+
+## Projection
+
+| | Description |
+| --- | --- |
+| **[`$elemMatch`](projection/$elemmatch.md)** | The `$elemMatch` projection operator limits the contents of an array field from the query results to contain only those array elements that match the specified query condition. |
+| **[`$meta`](projection/$meta.md)** | The `$meta` projection operator returns metadata about the query, such as the text score. |
+| **[`$slice`](projection/$slice.md)** | The `$slice` projection operator limits the number of elements projected from an array field. |
+
+## Related content
+
+- [MongoDB commands](../commands/index.md)
+- [MongoDB compatibility](../compatibility.md)
