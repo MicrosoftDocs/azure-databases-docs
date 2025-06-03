@@ -189,9 +189,10 @@ To determine if your Single Server is selected for automigration, follow these s
 
 **Q. Does automigration support migration of Microsoft Entra authenticated roles?**
 
-**A**. Yes, automigration supports the migration of Microsoft Entra authenticated roles. After your server is automigrated to a Flexible Server, you must use the format **<entraid>@<servername>** as the username when logging in with your Entra ID. The simpler format **<entraid>** is currently unsupported.
+**A**. Yes, automigration supports the migration of Microsoft Entra authenticated roles. After your server is automigrated to a Flexible Server, you must use the format `entraid@servername` as the username when logging in with your Entra ID. The simpler format `entraid` is currently unsupported.
 
-Example:
+**Example**:
+
 If your Entra ID is **abc@xyz.com** and your server name is **server1**, the username for logging into the automigrated Flexible Server will be **abc@xyz.com@server1**. Attempting to log in using just **abc@xyz.com** as the username will not work.
 
 This is a known issue, and Microsoft is actively working on addressing it in future updates.
