@@ -1,6 +1,7 @@
 ---
-title: Azure Cosmos DB for MongoDB (vCore) commands
-description: Review the details for various supported operators you can use with Azure Cosmos DB for MongoDB vCore.
+title: Operators
+titleSuffix: Azure Cosmos DB for MongoDB (vCore)
+description: Review the details for various supported operators you can use with Azure Cosmos DB for MongoDB (vCore).
 author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
@@ -8,6 +9,10 @@ ms.subservice: mongodb-vcore
 ms.topic: landing-page
 ms.date: 06/03/2025
 ---
+
+# Azure Cosmos DB for MongoDB (vCore) operators
+
+This article contains details for various supported operators you can use with Azure Cosmos DB for MongoDB (vCore).
 
 ## Aggregation
 
