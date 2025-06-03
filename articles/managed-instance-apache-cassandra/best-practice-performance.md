@@ -4,7 +4,7 @@ description: Learn about best practices to ensure optimal performance from Azure
 author: IriaOsara
 ms.author: iriaosara
 ms.reviewer: sidandrews
-ms.date: 05/30/2025
+ms.date: 06/04/2025
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
 keywords: azure performance cassandra
@@ -18,15 +18,15 @@ Azure Managed Instance for Apache Cassandra is a fully managed service for pure 
 
 ### Replication factor, number of disks, number of nodes, and SKUs
 
-Because Azure supports *three* availability zones in most regions, and Cassandra Managed Instance maps availability zones to racks, we recommend choosing a partition key with high cardinality to avoid hot partitions. For the best level of reliability and fault tolerance, we highly recommend configuring a replication factor of 3. We also recommend specifying a multiple of the replication factor as the number of nodes, for example 3, 6, 9, etc.
+Azure supports *three* availability zones in most regions, and Azure Managed Instance for Apache Cassandra maps availability zones to racks. We recommend that you choose a partition key with high cardinality to avoid hot partitions. For the best level of reliability and fault tolerance, we highly recommend configuring a replication factor of 3. We also recommend specifying a multiple of the replication factor as the number of nodes, for example 3, 6, 9, etc.
 
-We use a RAID 0 over the number of disks you provision. So to get the optimal IOPS you need to check for the maximum IOPS on the SKU you have chosen together with the IOPS of a P30 disk. For example, the `Standard_DS14_v2` SKU supports 51,200 uncached IOPS, whereas a single P30 disk has a base performance of 5,000 IOPS. So, four disks would lead to 20,000 IOPS, which is well below the limits of the machine.
+We use a RAID 0 over the number of disks you provision. So to get the optimal IOPS you need to check for the maximum IOPS on the SKU you chose together with the IOPS of a P30 disk. For example, the `Standard_DS14_v2` SKU supports 51,200 uncached IOPS, whereas a single P30 disk has a base performance of 5,000 IOPS. So, four disks would lead to 20,000 IOPS, which is well below the limits of the machine.
 
 We strongly recommend extensive benchmarking of your workload against the SKU and number of disks. Benchmarking is especially important for SKUs with only eight cores. Our research shows that eight core CPUs only work for the least demanding workloads, and most workloads need a minimum of 16 cores to be performant.
 
 ## Analytical vs. Transactional workloads
 
-Transactional workloads typically need a data center optimized for low latency, while analytical workloads often use more complex queries, which take longer to execute. In most cases you would want separate data centers:
+Transactional workloads typically need a data center optimized for low latency, while analytical workloads often use more complex queries, which take longer to execute. In most cases, you would want separate data centers:
 
 - One optimized for low latency
 - One optimized for analytical workloads
@@ -76,14 +76,14 @@ Our default settings are already suitable for low latency workloads. To ensure b
 
 Like every database system, Cassandra works best if the CPU utilization is around 50% and never gets above 80%. You can view CPU metrics in the Metrics tab within Monitoring from the portal:
 
-   :::image type="content" source="media/best-practice-performance/metrics-cpu.png" border="true" alt-text="Screenshot of CPU metrics by idle usage." lightbox="media/best-practice-performance/metrics-cpu.png":::
+:::image type="content" source="media/best-practice-performance/metrics-cpu.png" border="true" alt-text="Screenshot of CPU metrics by idle usage." lightbox="media/best-practice-performance/metrics-cpu.png":::
 
-   > [!TIP]  
-   > For a realistic CPU view, add a filter and split the property by `Usage kind=usage_idle`. If this value is lower than 20%, you can apply splitting to obtain usage by all usage kinds.
+> [!TIP]  
+> For a realistic CPU view, add a filter and split the property by `Usage kind=usage_idle`. If this value is lower than 20%, you can apply splitting to obtain usage by all usage kinds.
 
-   :::image type="content" source="media/best-practice-performance/metrics-cpu-by-usage.png" border="true" alt-text="Screenshot of CPU metrics by usage kind." lightbox="media/best-practice-performance/metrics-cpu-by-usage.png":::
+:::image type="content" source="media/best-practice-performance/metrics-cpu-by-usage.png" border="true" alt-text="Screenshot of CPU metrics by usage kind." lightbox="media/best-practice-performance/metrics-cpu-by-usage.png":::
 
-If the CPU is permanently above 80% for most nodes the database becomes overloaded manifesting in multiple client timeouts. In this scenario, we recommend taking the following actions:
+If the CPU is permanently above 80% for most nodes, the database becomes overloaded manifesting in multiple client timeouts. In this scenario, we recommend taking the following actions:
 
 - vertically scale up to a SKU with more CPU cores (especially if the cores are only 8 or less).
 - horizontally scale by adding more nodes (as mentioned earlier, the number of nodes should be multiple of the replication factor).
@@ -91,7 +91,7 @@ If the CPU is permanently above 80% for most nodes the database becomes overload
 If the CPU is only high for a few nodes, but low for the others, it indicates a hot partition and needs further investigation.
 
 > [!NOTE]  
-> Changing SKU is supported via Azure Portal, Azure CLI, and ARM template deployment. You can deploy/edit ARM template, and replace SKU with one of the following.
+> Changing SKU is supported by using the Azure portal, Azure CLI, and ARM template deployment. You can deploy/edit ARM template, and replace SKU with one of the following.
 >  
 > - Standard_E8s_v4
 > - Standard_E16s_v4
@@ -113,35 +113,35 @@ If the CPU is only high for a few nodes, but low for the others, it indicates a 
 
 ### Disk performance
 
-The service runs on Azure P30 managed disks, which allow for "burst IOPS". Careful monitoring is required when it comes to disk related performance bottlenecks. In this case it's important to review the IOPS metrics:
+The service runs on Azure P30 managed disks, which allow for *burst IOPS*. Careful monitoring is required when it comes to disk related performance bottlenecks. In this case it's important to review the IOPS metrics:
 
-   :::image type="content" source="media/best-practice-performance/metrics-disk.png" border="true" alt-text="Screenshot of disk I/O metrics." lightbox="media/best-practice-performance/metrics-disk.png":::
+:::image type="content" source="media/best-practice-performance/metrics-disk.png" border="true" alt-text="Screenshot of disk I/O metrics." lightbox="media/best-practice-performance/metrics-disk.png":::
 
 If metrics show one or all of the following characteristics, it can indicate that you need to scale up.
 
 - Consistently higher than or equal to the base IOPS (remember to multiply 5,000 IOPS by the number of disks per node to get the number).
 - Consistently higher than or equal to the maximum IOPS allowed for the SKU for writes.
-- Your SKU supports cached storage (write-through-cache) and this number is smaller than the IOPS from the managed disks (this will be the upper limit for your read IOPS).
+- Your SKU supports cached storage (write-through-cache) and this number is smaller than the IOPS from the managed disks (this value is the upper limit for your read IOPS).
 
 If you only see the IOPS elevated for a few nodes, you might have a hot partition and need to review your data for a potential skew.
 
-If your IOPSs are lower than what is supported by the chosen SKU, but higher or equal to the disk IOPS, you can take the following actions:
+If your IOPSs are lower than what you SKU supports, but higher or equal to the disk IOPS, you can take the following actions:
 
 - Add more disks to increase performance. Increasing disks requires a support case to be raised.
-- [Scale up the data center(s)](create-cluster-portal.md#scale-a-datacenter) by adding more nodes.
+- [Scale up the data centers](create-cluster-portal.md#scale-a-datacenter) by adding more nodes.
 
 If your IOPS max out what your SKU supports, you can:
 
 - scale up to a different SKU supporting more IOPS.
-- [Scale up the data center(s)](create-cluster-portal.md#scale-a-datacenter) by adding more nodes.
+- [Scale up the data centers](create-cluster-portal.md#scale-a-datacenter) by adding more nodes.
 
 For more information, see [Virtual Machine and disk performance](/azure/virtual-machines/disks-performance).
 
 ### Network performance
 
-In most cases network performance is sufficient. However, if you're frequently streaming data (such as frequent horizontal scale-up/scale down) or there are huge ingress/egress data movements, this can become a problem. You might need to evaluate the network performance of your SKU. For example, the `Standard_DS14_v2` SKU supports 12,000 Mb/s, compare this to the byte-in/out in the metrics:
+In most cases, network performance is sufficient. However, if you're frequently streaming data (such as frequent horizontal scale-up/scale down) or there are huge ingress/egress data movements, this performance can become a problem. You might need to evaluate the network performance of your SKU. For example, the `Standard_DS14_v2` SKU supports 12,000 Mb/s. Compare this value to the byte-in/out in the metrics:
 
-   :::image type="content" source="media/best-practice-performance/metrics-network.png" border="true" alt-text="Screenshot of network metrics." lightbox="media/best-practice-performance/metrics-network.png":::
+:::image type="content" source="media/best-practice-performance/metrics-network.png" border="true" alt-text="Screenshot of network metrics." lightbox="media/best-practice-performance/metrics-network.png":::
 
 If you only see the network elevated for a few nodes, you might have a hot partition and need to review your data distribution and/or access patterns for a potential skew.
 
@@ -150,9 +150,9 @@ If you only see the network elevated for a few nodes, you might have a hot parti
 
 ### Too many connected clients
 
-Deployments should be planned and provisioned to support the maximum number of parallel requests required for the desired latency of an application. For a given deployment, introducing more load to the system above a minimum threshold increases overall latency. Monitor the number of connected clients to ensure this doesn't exceed tolerable limits.
+Deployments should be planned and provisioned to support the maximum number of parallel requests required for the desired latency of an application. For a given deployment, introducing more load to the system above a minimum threshold increases overall latency. Monitor the number of connected clients to ensure this situation doesn't exceed tolerable limits.
 
-   :::image type="content" source="media/best-practice-performance/metrics-connections.png" border="true" alt-text="Screenshot of connected client metrics." lightbox="media/best-practice-performance/metrics-connections.png":::
+:::image type="content" source="media/best-practice-performance/metrics-connections.png" border="true" alt-text="Screenshot of connected client metrics." lightbox="media/best-practice-performance/metrics-connections.png":::
 
 ### Disk space
 
@@ -172,7 +172,7 @@ Our default formula assigns half the VM's memory to the JVM with an upper limit 
 
 In most cases memory gets reclaimed effectively by the Java garbage collector, but especially if the CPU is often above 80% there aren't enough CPU cycles for the garbage collector left. So any CPU performance problems should be addresses before memory problems.
 
-If the CPU hovers below 70%, and the garbage collection isn't able to reclaim memory, you might need more JVM memory. This is especially the case if you're on a SKU with limited memory. In most cases, you need to review your queries and client settings and reduce `fetch_size` along with what is chosen in `limit` within your CQL query.
+If the CPU hovers below 70%, and the garbage collection isn't able to reclaim memory, you might need more JVM memory. More JVM memory might be necessary if you're on a SKU with limited memory. In most cases, you need to review your queries and client settings and reduce `fetch_size` along with what is chosen in `limit` within your CQL query.
 
 If you indeed need more memory, you can:
 
@@ -181,11 +181,11 @@ If you indeed need more memory, you can:
 
 ### Tombstones
 
-We run repairs every seven days with reaper, which removes rows whose TTL has expired (called "tombstone"). Some workloads have more frequent deletes and see warnings like `Read 96 live rows and 5035 tombstone cells for query SELECT ...; token <token> (see tombstone_warn_threshold)` in the Cassandra logs, or even errors indicating that a query couldn't be fulfilled due to excessive tombstones.
+We run repairs every seven days with reaper, which removes rows whose TTL expired (called "tombstone"). Some workloads delete more frequently and show warnings like `Read 96 live rows and 5035 tombstone cells for query SELECT ...; token <token> (see tombstone_warn_threshold)` in the Cassandra logs, or even errors indicating that a query couldn't be fulfilled due to excessive tombstones.
 
 A short term mitigation if queries don't get fulfilled is to increase the `tombstone_failure_threshold` in the [Cassandra config](create-cluster-portal.md#update-cassandra-configuration) from the default 100,000 to a higher value.
 
-In addition to this, we recommend reviewing the TTL on the keyspace and potentially run repairs daily to clear out more tombstones. If the TTLs are short, for example less than two days, and data flows in and gets deleted quickly, we recommend reviewing the [compaction strategy](https://cassandra.apache.org/doc/4.1/cassandra/operating/compaction/index.html#types-of-compaction) and favoring `Leveled Compaction Strategy`. In some cases, such actions might be an indication that a review of the data model is required.
+In addition, we recommend reviewing the TTL on the keyspace and potentially run repairs daily to clear out more tombstones. If the TTLs are short, for example less than two days, and data flows in and gets deleted quickly, we recommend reviewing the [compaction strategy](https://cassandra.apache.org/doc/4.1/cassandra/operating/compaction/index.html#types-of-compaction) and favoring `Leveled Compaction Strategy`. In some cases, such actions might be an indication that a review of the data model is required.
 
 ### Batch warnings
 
@@ -193,7 +193,7 @@ You might encounter this warning in the [CassandraLogs](monitor-clusters.md#crea
 
 `Batch for [<table>] is of size 6.740KiB, exceeding specified threshold of 5.000KiB by 1.740KiB.`
 
-In this case you should review your queries to stay below the recommended batch size. In rare cases and as a short term mitigation you can increase `batch_size_fail_threshold_in_kb` in the [Cassandra config](create-cluster-portal.md#update-cassandra-configuration) from the default of 50 to a higher value.
+In this case, you should review your queries to stay below the recommended batch size. In rare cases and as a short term mitigation you can increase `batch_size_fail_threshold_in_kb` in the [Cassandra config](create-cluster-portal.md#update-cassandra-configuration) from the default of 50 to a higher value.
 
 ## Large partition warning
 
@@ -201,22 +201,18 @@ You might encounter this warning in the [CassandraLogs](monitor-clusters.md#crea
 
 `Writing large partition <table> (105.426MiB) to sstable <file>`
 
-This indicates a problem in the data model. Here's a [stack overflow article](https://stackoverflow.com/questions/74024443/how-do-i-analyse-and-solve-writing-large-partition-warnings-in-cassandra) that goes into more detail. This can cause severe performance issues and needs to be addressed.
+This message indicates a problem in the data model. Here's a [stack overflow article](https://stackoverflow.com/questions/74024443/how-do-i-analyse-and-solve-writing-large-partition-warnings-in-cassandra) that goes into more detail. This problem can cause severe performance issues and needs to be addressed.
 
 ## Specialized optimizations
 
 ### Compression
 
-Cassandra allows the selection of an appropriate compression algorithm when a table is created The default is LZ4, which is excellent for throughput and CPU but consumes more space on disk. Using Zstd (Cassandra 4.0 and up) saves about ~12% space with  
+Cassandra allows the selection of an appropriate compression algorithm when a table is created. The default is LZ4, which is excellent for throughput and CPU but consumes more space on disk. Using Zstd (Cassandra 4.0 and up) saves about ~12% space with  
 minimal CPU overhead.
 
 ### Optimizing memtable heap space
 
-Our default is to use 1/4 of the JVM heap for [memtable_heap_space](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html)
-in the cassandra.yaml. For write oriented application and/or on SKUs with small memory
-this can lead to frequent flushing and fragmented sstables thus requiring more compaction.
-In such cases increasing, it to at least 4048 might be beneficial but requires careful benchmarking
-to make sure other operations (for example, reads) aren't affected.
+Our default is to use 1/4 of the JVM heap for [memtable_heap_space](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html) in the cassandra.yaml. For write oriented application and/or on SKUs with small memory this issue can lead to frequent flushing and fragmented sstables thus requiring more compaction. In such cases increasing, it to at least 4048 might be beneficial but requires careful benchmarking to make sure other operations (for example, reads) aren't affected.
 
 ## Next step
 
