@@ -1,54 +1,38 @@
-### YamlMime:Landing
-
+---
 title: Azure Cosmos DB for MongoDB (vCore) commands
-summary: Review the details for various supported commands you can use with Azure Cosmos DB for MongoDB vCore.
+description: Review the details for various supported commands you can use with Azure Cosmos DB for MongoDB vCore.
+author: avijitgupta
+ms.author: avijitgupta
+ms.service: azure-cosmos-db
+ms.subservice: mongodb-vcore
+ms.topic: landing-page
+ms.date: 06/03/2025
+---
 
-metadata:
-  title: Azure Cosmos DB for MongoDB (vCore) commands
-  description: Review the details for various supported commands you can use with Azure Cosmos DB for MongoDB vCore.
-  author: avijitgupta
-  ms.author: avijitgupta
-  ms.service: azure-cosmos-db
-  ms.subservice: mongodb-vcore
-  ms.topic: landing-page
-  ms.date: 09/12/2024
-landingContent:
-  - title: Aggregation
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: aggregate
-            url: aggregation/aggregate.md
-          - text: count
-            url: aggregation/count.md
-          - text: distinct
-            url: aggregation/distinct.md
-  - title: Arithmetic Expression
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: mod
-            url: arithmetic-expression/mod.md
-          - text: multiply
-            url: arithmetic-expression/multiply.md
-          - text: pow
-            url: arithmetic-expression/pow.md
-          - text: round
-            url: arithmetic-expression/round.md
-          - text: sqrt
-            url: arithmetic-expression/sqrt.md
-          - text: subtract
-            url: arithmetic-expression/subtract.md
-          - text: trunc
-            url: arithmetic-expression/trunc.md
-  - title: Query-and-Write
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: find
-            url: query-and-write/find.md
-          - text: findAndModify
-            url: query-and-write/findandmodify.md
-          - text: getMore
-            url: query-and-write/getMore.md
-  
+## Aggregation
+
+| | Description |
+|---|---|
+| **[`aggregate`](aggregation/aggregate.md)** | The `aggregate` command is used to process data records and return computed results. |
+| **[`count`](aggregation/count.md)** | The `count` command is used to count the number of documents in a collection that match a specified query. |
+| **[`distinct`](aggregation/distinct.md)** | The `distinct` command is used to find the unique values for a specified field across a single collection. |
+
+## Arithmetic Expression
+
+| | Description |
+|---|---|
+| **[`mod`](arithmetic-expression/mod.md)** | The `$mod` query operator in Azure Cosmos DB for MongoDB vCore is used to filter documents based on a modulus operation. |
+| **[`multiply`](arithmetic-expression/multiply.md)** | The `$multiply` operator in Azure Cosmos DB for MongoDB vCore calculates the product of numerical expressions. |
+| **[`pow`](arithmetic-expression/pow.md)** | The `$pow` operator raises a number to the specified exponent. |
+| **[`round`](arithmetic-expression/round.md)** | The `$round` operator rounds a number to a specified decimal place. |
+| **[`sqrt`](arithmetic-expression/sqrt.md)** | The `$sqrt` operator returns the square root of a number. |
+| **[`subtract`](arithmetic-expression/subtract.md)** | The `$subtract` operator subtracts two numbers and returns the result. |
+| **[`trunc`](arithmetic-expression/trunc.md)** | The `$trunc` operator truncates a number to a specified decimal place. |
+
+## Query and Write
+
+| | Description |
+|---|---|
+| **[`find`](query-and-write/find.md)** | The `find` command in Azure Cosmos DB for MongoDB (vCore) is used to query documents within a collection. |
+| **[`findAndModify`](query-and-write/findandmodify.md)** | The `findAndModify` command is used to atomically modify and return a single document. |
+| **[`getMore`](query-and-write/getMore.md)** | The `getMore` command is used to retrieve extra batches of documents from an existing cursor. |
