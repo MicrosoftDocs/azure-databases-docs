@@ -93,7 +93,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-server-customer-assigned-add-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity with which the server accesses the data encryption key." lightbox="media/how-to-data-encryption/create-server-customer-assigned-add-identity.png":::
 
-1. Select **Use version less key**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using version less keys, see [version less customer managed keys](concepts-data-encryption.md##cmk-key-version-updates).
+1. Select **Use automatic key version update**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using version less keys, see [automatic key version update](concepts-data-encryption.md##cmk-key-version-updates).
 
     :::image type="content" source="media/how-to-data-encryption/create-server-customer-assigned-version-less.png" alt-text="Screenshot that shows how to enable version less keys." lightbox="media/how-to-data-encryption/create-server-customer-assigned-version-less.png":::
 
@@ -120,7 +120,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-server-customer-assigned-key-key.png" alt-text="Screenshot that shows how to select the data encryption key." lightbox="media/how-to-data-encryption/create-server-customer-assigned-key-key.png":::
 
-1. If you didn't select **Use version less key**, you must also select a specific version of the key. To do that, expand **Version**, and select the identifier of the version of the key that you want to use for data encryption.
+1. If you didn't select **Use automatic key version update**, you must also select a specific version of the key. To do that, expand **Version**, and select the identifier of the version of the key that you want to use for data encryption.
 
     :::image type="content" source="media/how-to-data-encryption/create-server-customer-assigned-key-version.png" alt-text="Screenshot that shows how to select the version to use of the data encryption key." lightbox="media/how-to-data-encryption/create-server-customer-assigned-key-version.png":::
 
