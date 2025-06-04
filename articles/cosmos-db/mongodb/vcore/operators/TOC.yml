@@ -1,5 +1,5 @@
 - name: Index
-  href: index.yml
+  href: index.md
 - name: Aggregation
   href: aggregation/toc.yml
 - name: Arithmetic expression
@@ -16,8 +16,12 @@
   href: bitwise-update/toc.yml
 - name: Comparison query
   href: comparison-query/toc.yml
+- name: Conditional expression
+  href: conditional-expression/toc.yml
 - name: Data expression
   href: data-expression/TOC.yml
+- name: Data size
+  href: data-size/toc.yml
 - name: Evaluation query
   href: evaluation-query/toc.yml
 - name: Geospatial

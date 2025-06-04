@@ -1,5 +1,5 @@
 ---
-  title: $objectToArray (array expression operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $objectToArray (array expression) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $objectToArray operator is used to convert a document into an array of key-value pairs.
   author: sandeepsnairms
@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $objectToArray (array expression operator)
+# $objectToArray (array expression)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
