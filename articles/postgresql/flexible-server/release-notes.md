@@ -26,6 +26,7 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [Long-term backups](./concepts-backup-restore.md#long-term-retention)
     - [DiskANN Vector Indexing extension](how-to-use-pgdiskann.md)
     - [Pgvector 0.8.0 extension](../extensions/concepts-extensions-versions.md#vector)
+    - [Automatic key version updates](./concepts-data-encryption.md#cmk-key-version-updates)
 - Preview
     - [Confidential Computing](concepts-confidential-computing.md)
     - [Apache Age extension](generative-ai-age-overview.md)
@@ -37,7 +38,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: April 2025
 
 - Public preview of [Fabric Mirroring](https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-mirroring-for-azure-database-for-postgresql-in-microsoft-fabric-for-p/4396750) for Azure Database for PostgreSQL flexible server.
-- Public preview of [Version-less Customer Managed Key](./concepts-data-encryption.md#version-less-customer-managed-keys).
+- Public preview of [Automatic key version updates](./concepts-data-encryption.md#cmk-key-version-updates).
 - Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL flexible server.
 - General availability of New Zealand North region.
 
