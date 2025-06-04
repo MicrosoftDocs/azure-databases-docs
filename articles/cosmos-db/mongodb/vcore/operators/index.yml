@@ -13,26 +13,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/12/2024
 landingContent:
-- title: Accumulators
-  linkLists:
-    - linkListType: reference
-      links:
-        - text: $bottom
-          url: accumulators/$bottom.md
-        - text: $bottomN
-          url: accumulators/$bottomN.md
-        - text: $first
-          url: accumulators/$first.md
-        - text: $firstN
-          url: accumulators/$firstN.md
-        - text: $last
-          url: accumulators/$last.md
-        - text: $lastN
-          url: accumulators/$lastN.md
-        - text: $top
-          url: accumulators/$top.md
-        - text: $topN
-          url: accumulators/$topN.md
   - title: Aggregation
     linkLists:
       - linkListType: reference
@@ -127,14 +107,6 @@ landingContent:
             url: data-expression/$datefromparts.md
           - text: $datefromstring
             url: data-expression/$datefromstring.md
-  - title: Data size
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: $binarysize
-            url: data-size/$binarysize.md
-          - text: $bsonsize
-            url: data-size/$bsonsize.md
   - title: Evaluation query
     linkLists:
       - linkListType: reference
@@ -145,28 +117,8 @@ landingContent:
     linkLists:
       - linkListType: reference
         links:
-          - text: $box
-            url: geospatial/$box.md
-          - text: $center
-            url: geospatial/$center.md
-          - text: $centerSphere
-            url: geospatial/$centerSphere.md
-          - text: $geoIntersects
-            url: geospatial/$geoIntersects.md
-          - text: $geoWithin
-            url: geospatial/$geoWithin.md
-          - text: $geometry
-            url: geospatial/$geometry.md
-          - text: $maxDistance
-            url: geospatial/$maxDistance.md
-          - text: $minDistance
-            url: geospatial/$minDistance.md
-          - text: $near
-            url: geospatial/$near.md
-          - text: $nearSphere
-            url: geospatial/$nearSphere.md
-          - text: $polygon
-            url: geospatial/$polygon.md
+          - text: $geoIntersect
+            url: geospatial/$geointersects.md
   - title: Logical query
     linkLists:
       - linkListType: reference
