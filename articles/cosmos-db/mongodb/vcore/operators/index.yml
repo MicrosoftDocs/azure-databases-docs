@@ -117,8 +117,28 @@ landingContent:
     linkLists:
       - linkListType: reference
         links:
-          - text: $geoIntersect
-            url: geospatial/$geointersects.md
+          - text: $box.md
+            url: geospatial/$box.md
+          - text: $center.md
+            url: geospatial/$center.md
+          - text: $centerSphere.md
+            url: geospatial/$centerSphere.md
+          - text: $geoIntersects.md
+            url: geospatial/$geoIntersects.md
+          - text: $geoWithin.md
+            url: geospatial/$geoWithin.md
+          - text: $geometry.md
+            url: geospatial/$geometry.md
+          - text: $maxDistance.md
+            url: geospatial/$maxDistance.md
+          - text: $minDistance.md
+            url: geospatial/$minDistance.md
+          - text: $near.md
+            url: geospatial/$near.md
+          - text: $nearSphere.md
+            url: geospatial/$nearSphere.md
+          - text: $polygon.md
+            url: geospatial/$polygon.md
   - title: Logical query
     linkLists:
       - linkListType: reference
