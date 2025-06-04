@@ -772,7 +772,7 @@
   - name: Deployment templates
     href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=databases
+    href: https://azure.microsoft.com/updates?searchterms=databases
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/postgresql/
   - name: Microsoft Q&A question page
