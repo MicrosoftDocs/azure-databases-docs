@@ -98,7 +98,7 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Get top 3 selling categories per store
+### Example 1: Get top three selling categories per store
 
 Find the top three highest-selling categories for each store.
 
@@ -152,7 +152,7 @@ This produces output showing the top three selling categories for each store:
 ]
 ```
 
-### Example 2: Get top 2 recent promotion events
+### Example 2: Get top two recent promotion events
 
 Find the two most recent promotion events for each store based on start date.
 
@@ -182,7 +182,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will return the 2 most recent promotion events for each store:
+This returns the two most recent promotion events for each store:
 
 ```json
 [
@@ -216,7 +216,7 @@ This will return the 2 most recent promotion events for each store:
 ]
 ```
 
-### Example 3: Get top 5 highest discounts by category
+### Example 3: Get top five highest discounts by category
 
 Find the top five categories with the highest discount percentages across all promotion events for each store.
 
@@ -244,7 +244,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will show the top five categories with highest discount percentages for each store:
+This shows the top five categories with highest discount percentages for each store:
 
 ```json
 [
