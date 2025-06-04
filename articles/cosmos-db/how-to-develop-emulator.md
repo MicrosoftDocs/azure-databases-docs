@@ -91,7 +91,7 @@ To get started, get the Linux-variant of the container image from the [Microsoft
 1. Pull the `mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator` Linux container image using the `mongodb` tag from the container registry to the local Docker host.
 
     ```bash
-    docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:mongodb
+    docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
     ```
 
 1. Check to make sure that the emulator image is available on your local Docker host.
