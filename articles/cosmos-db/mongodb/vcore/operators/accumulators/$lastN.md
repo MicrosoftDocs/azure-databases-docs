@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$lastN` accumulator operator returns the last N values in a group of documents for a specified expression. It is useful when you need to retrieve multiple final values from a sorted collection rather than just the single last value.
+The `$lastN` accumulator operator returns the last N values in a group of documents for a specified expression. It's useful when you need to retrieve multiple final values from a sorted collection rather than just the single last value.
 
 ## Syntax
 
@@ -109,7 +109,7 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Get last 2 promotion events by date
+### Example 1: Get last two promotion events by date
 
 Retrieve the two most recent promotion events for each store.
 
@@ -171,7 +171,7 @@ This produces output showing the two most recent promotion events for each store
 ]
 ```
 
-### Example 2: Get top 3 selling categories
+### Example 2: Get top three selling categories
 
 Find the top three highest-selling categories for each store.
 
@@ -200,7 +200,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will return the top three categories with highest sales for each store:
+This returns the top three categories with highest sales for each store:
 
 ```json
 [
