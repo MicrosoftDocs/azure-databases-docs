@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$bottomN` operator returns the bottom N elements in a group according to a specified sort order. It is useful when you want to find the lowest-ranked N documents based on certain criteria within each group.
+The `$bottomN` operator returns the bottom N elements in a group according to a specified sort order. It's useful when you want to find the lowest-ranked N documents based on certain criteria within each group.
 
 ## Syntax
 
@@ -35,7 +35,7 @@ The syntax for the `$bottomN` operator is as follows:
 | | Description |
 | --- | --- |
 | **`n`** | An expression that specifies the number of bottom elements to return. Must be a positive integer. |
-| **`sortBy`** | Specifies the field(s) to sort by and the sort order. Use 1 for ascending order and -1 for descending order. |
+| **`sortBy`** | Specifies the fields to sort by and the sort order. Use 1 for ascending order and -1 for descending order. |
 | **`output`** | An expression that specifies the output for elements in the bottom of the sort order. |
 
 ## Example
@@ -76,7 +76,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Find Bottom 3 Stores by Total Sales
 
-Find the 3 stores with the lowest total sales.
+Find the three stores with the lowest total sales.
 
 ```javascript
 db.stores.aggregate([
@@ -99,7 +99,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce the following output:
+This produces the following output:
 
 ```json
 [
@@ -128,7 +128,7 @@ This will produce the following output:
 
 ### Example 2: Find Bottom 2 Categories per Store
 
-Find the 2 categories with the lowest sales in each store that has multiple categories.
+Find the two categories with the lowest sales in each store that has multiple categories.
 
 ```javascript
 db.stores.aggregate([
@@ -155,7 +155,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce output showing the bottom 2 categories for each store with multiple categories:
+This produces output showing the bottom two categories for each store with multiple categories:
 
 ```json
 [
