@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 06/03/2025
 ---
 
-# Why Mission-Critical MongoDB workloads run on Azure first-party services
+# Why mission-critical MongoDB workloads run on Azure first-party services
 
 ## Summary
 
 For regulated industries, large enterprises, and mission-critical workloads, choosing the right cloud service matters. Azure developed, services—operated, secured, and supported by Microsoft—offer a fundamentally different level of control, compliance, and integration than third-party vendor-managed offerings and ISV integrations. This distinction is essential when evaluating managed MongoDB services on Azure. All first-party Azure services can be found on in the [Azure products page](https://azure.microsoft.com/products). 
 
-## First-Party vs. Third-Party ISV integration: What’s the Difference?
+## First-party vs. third-party ISV integration: What’s the difference?
 
 Azure includes both **first-party** services (built and operated by Microsoft) and **third-party** services (published by ISVs such as MongoDB Inc.). These are fundamentally different in how they behave, integrate, and meet compliance expectations.
 
@@ -28,9 +28,9 @@ Azure includes both **first-party** services (built and operated by Microsoft) a
 | Data Residency & Control  | Full Microsoft control plane + Azure policy   | Vendor-controlled environment                  |
 | Network Integration       | Native Private Link, Entra ID (Management and Data), RBAC           | Limited/varies by vendor tier                  |
 
-## Why This Matters for Mission-Critical Applications
+## Why this matters for mission-critical applications
 
-### 1. **Security and Compliance**
+### 1. **Security and compliance**
 
 Mission-critical workloads demand full control over data and infrastructure. First-party services such as **Cosmos DB for MongoDB vCore** are built for [Microsoft’s extensive compliance portfolio](https://learn.microsoft.com/azure/compliance/), including:
 
@@ -41,7 +41,7 @@ Mission-critical workloads demand full control over data and infrastructure. Fir
 
 With third-party services such as MongoDB Atlas, **Microsoft is not responsible for the service’s compliance posture**- the vendor is.
 
-### 2. **Support and Escalation**
+### 2. **Support and escalation**
 
 When running a native service:
 
@@ -49,7 +49,7 @@ When running a native service:
 - No need to escalate across companies or manage vendor SLAs.
 - Microsoft support teams engage directly, with full telemetry and control.
 
-### 3. **Identity and Access Integration**
+### 3. **Identity and access integration**
 
 Cosmos DB for MongoDB vCore integrates natively with:
 
@@ -59,14 +59,14 @@ Cosmos DB for MongoDB vCore integrates natively with:
 
 This ensures centralized governance of who accesses what and how.
 
-### 4. **Cost, Billing, and SLA Simplicity**
+### 4. **Cost, billing, and SLA simplicity**
 
 - Full-stack SLA covering the entire product
 - No data transfer fees
 - No charges for Backups
 - No hidden support tiers doubling your cost
 
-## Cosmos DB for MongoDB vCore: Enterprise-Ready, Microsoft-Operated
+## Cosmos DB for MongoDB vCore: enterprise-ready, Microsoft-operated
 
 Azure Cosmos DB for MongoDB vCore is a first-party service delivering:
 
@@ -80,7 +80,7 @@ Azure Cosmos DB for MongoDB vCore is a first-party service delivering:
 
 When uptime, compliance, support, and control matter, **only a first-party Azure service provides the trust and guarantees needed**. Cosmos DB for MongoDB vCore is purpose-built by Microsoft for enterprise-grade, mission-critical workloads.
 
-## Next Steps
+## Next steps
 
 > [!div class="nextstepaction"]
 > [Get started with Azure Cosmos DB for MongoDB vCore](./quickstart-portal.md)
