@@ -5,31 +5,29 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 02/15/2022
+ms.date: 06/04/2025
 ---
 
 # Materialized views in Azure Managed Instance for Apache Cassandra
 
-Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, allowing maximum flexibility and control where needed. This article discusses how to enable materialized views. 
+Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, allowing maximum flexibility and control where needed. This article discusses how to enable materialized views.
 
 ## Materialized view support
-Materialized views are disabled by default, but users can enable them on their cluster. However, we discourage users of Azure Managed Instance for Apache Cassandra from using materialized views. They are experimental (see
-[Materialized Views marked experimental-Apache Mail Archives](https://lists.apache.org/thread/o5bk8xyxyl6k3sjf7kkblqw52gm5s9mp) and the [proposal to do so](https://www.mail-archive.com/dev@cassandra.apache.org/msg11516.html)). In particular:
 
-- The implementation of materialized views is distributed system design that
-  hasn’t been extensively modeled and simulated. There have been no formal
-  proofs about its properties.
-- There is no way to determine if a materialized view is out of sync with its
-  base table.
-- There is no upper bound on how long it takes for a materialized view to be
-  synced when there is a change to its base table.
-- If there is an error and a materialized view goes out of sync, the only way to
-  repair it is to drop the materialized view and recreate it. 
+Materialized views are disabled by default, but users can enable them on their cluster. However, we discourage users of Azure Managed Instance for Apache Cassandra from using materialized views. They're experimental. In particular:
 
-Microsoft cannot offer any SLA or support on issues with materialized views.
+- The implementation of materialized views is distributed system design that isn't extensively modeled and simulated. There are no formal proofs about its properties.
+- There's no way to determine if a materialized view is out of sync with its base table.
+- There's no upper bound on how long it takes for a materialized view to be synced when there's a change to its base table.
+- If there's an error and a materialized view goes out of sync, the only way to resolve the situation is to drop the materialized view and recreate it.
+
+For more information, see [Materialized Views marked experimental-Apache Mail Archives](https://lists.apache.org/thread/o5bk8xyxyl6k3sjf7kkblqw52gm5s9mp) and the [proposal to do so](https://www.mail-archive.com/dev@cassandra.apache.org/msg11516.html).
+
+Microsoft doesn't offer any SLA or support on issues with materialized views.
 
 ## Alternatives to materialized views
-Like most NoSQL stores, Apache Cassandra is not designed to have a normalized data model. If you need to update data in more than one place, your program should send all the necessary statements as part of a [BATCH](https://cassandra.apache.org/doc/latest/cassandra/reference/cql-commands/commands-toc.html). This has two advantages over materialized views:
+
+Like most NoSQL stores, Apache Cassandra isn't designed to have a normalized data model. If you need to update data in more than one place, your program should send all the necessary statements as part of a [BATCH](https://cassandra.apache.org/doc/latest/cassandra/reference/cql-commands/commands-toc.html). This approach has two advantages over materialized views:
 
 - BATCH guarantees that all statements in the batch are committed or none.
 - All the statements have the same quorum and commit semantics.
@@ -37,6 +35,7 @@ Like most NoSQL stores, Apache Cassandra is not designed to have a normalized da
 If your workload truly needs a normalized data model, consider a scalable relational store like Azure's [Hyperscale PostgreSQL](../postgresql/hyperscale/index.yml).
 
 ## How to enable materialized views
+
 You need to set `enable_materialized_views: true` in the `rawUserConfig` field of your Cassandra data center. To do so, use the following Azure CLI command to update each data center in your cluster:
 
 ```azurecli-interactive
@@ -49,13 +48,13 @@ clusterName='cassandra-hybrid-cluster'
 dataCenterName='dc1'
 az managed-cassandra datacenter update \
     --resource-group $resourceGroupName \
-	--cluster-name $clusterName \
-	--data-center-name $dataCenterName \
-	--base64-encoded-cassandra-yaml-fragment $ENCODED_FRAGMENT
+  --cluster-name $clusterName \
+  --data-center-name $dataCenterName \
+  --base64-encoded-cassandra-yaml-fragment $ENCODED_FRAGMENT
 ```
 
 ## Next steps
 
-* [Create a managed instance cluster from the Azure portal](create-cluster-portal.md)
-* [Deploy a Managed Apache Spark Cluster with Azure Databricks](deploy-cluster-databricks.md)
-* [Manage Azure Managed Instance for Apache Cassandra resources using Azure CLI](manage-resources-cli.md)
+- [Create a managed instance cluster from the Azure portal](create-cluster-portal.md)
+- [Deploy a Managed Apache Spark Cluster with Azure Databricks](deploy-cluster-databricks.md)
+- [Manage Azure Managed Instance for Apache Cassandra resources using Azure CLI](manage-resources-cli.md)

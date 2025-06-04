@@ -1,11 +1,12 @@
 ---
 title: How to enable LDAP authentication in Azure Managed Instance for Apache Cassandra
-description: Learn how to enable LDAP authentication in Azure Managed Instance for Apache Cassandra
+description: Learn how to enable LDAP authentication in Azure Managed Instance for Apache Cassandra in your clusters and data centers.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 05/23/2022
+ms.date: 06/04/2025
+#customer intent: As a database administrator, I want to set up LDAP authentication in Azure Managed Instance for Apache Cassandra.
 ---
 
 # How to enable LDAP authentication in Azure Managed Instance for Apache Cassandra
@@ -14,7 +15,7 @@ Azure Managed Instance for Apache Cassandra provides automated deployment and sc
 
 > [!IMPORTANT]
 > LDAP authentication is in public preview.
-> This feature is provided without a service level agreement, and it's not recommended for production workloads.
+> This feature is provided without a service level agreement. We don't recommend it for production workloads.
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Prerequisites
@@ -23,7 +24,7 @@ Azure Managed Instance for Apache Cassandra provides automated deployment and sc
 - An Azure Managed Instance for Apache Cassandra cluster. Review how to [create an Azure Managed Instance for Apache Cassandra cluster from the Azure portal](create-cluster-portal.md).
 
 ## Deploy an LDAP Server in Azure
-In this section, we'll walk through creating a simple LDAP server on a Virtual Machine in Azure. If you already have an LDAP server running, you can skip this section and review [how to enable LDAP authentication](ldap.md#enable-ldap-authentication). 
+In this section, you create a simple LDAP server on a Virtual Machine in Azure. If you already have an LDAP server running, you can skip this section and review [how to enable LDAP authentication](ldap.md#enable-ldap-authentication). 
 
 1. Deploy a Virtual Machine in Azure using Ubuntu Server 18.04 LTS. You can follow instructions [here](visualize-prometheus-grafana.md#deploy-an-ubuntu-server).
 
@@ -33,7 +34,7 @@ In this section, we'll walk through creating a simple LDAP server on a Virtual M
 
 1. Install Docker on the virtual machine. We recommend [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04) tutorial.
 
-1. In the home directory, copy and paste the following text and hit enter. This command will create a file containing a test LDAP user account.
+1. In the home directory, copy and paste the following text and hit enter. This command creates a file containing a test LDAP user account.
 
     ```shell
     mkdir ldap-user && cd ldap-user && cat >> user.ldif <<EOL
@@ -60,7 +61,7 @@ In this section, we'll walk through creating a simple LDAP server on a Virtual M
     cd ..
     ```
 
-1. Run the below command, replacing `<dnsname>` with the dns name you created for your LDAP server earlier. This command will deploy an LDAP server with TLS enabled to a Docker container, and will also copy the user file you created earlier to the container.  
+1. Run the following command. Replace `<dnsname>` with the dns name you created for your LDAP server earlier. This command deploys an LDAP server with TLS enabled to a Docker container and copies the user file you created earlier to the container.  
     
     ```shell
     sudo docker run --hostname <dnsname>.uksouth.cloudapp.azure.com --name <dnsname> -v $(pwd)/ldap-user:/container/service/slapd/assets/test --detach osixia/openldap:1.5.0
@@ -81,7 +82,7 @@ In this section, we'll walk through creating a simple LDAP server on a Virtual M
 
 1. Copy the `ldap.crt` file to [clouddrive](/azure/cloud-shell/persisting-shell-storage) in Azure CLI for use later. 
 
-1. Add the user to the ldap (replace `<dnsname>` with the dns name you created for your LDAP server):
+1. Add the user to the LDAP (replace `<dnsname>` with the dns name you created for your LDAP server):
 
     ```shell
     sudo docker container exec <dnsname> ldapadd -H ldap://<dnsname>.uksouth.cloudapp.azure.com -D "cn=admin,dc=example,dc=org" -w admin -f /container/service/slapd/assets/test/user.ldif
@@ -90,9 +91,9 @@ In this section, we'll walk through creating a simple LDAP server on a Virtual M
 ## Enable LDAP authentication
 
 > [!IMPORTANT]
-> If you skipped the above section because you already have an existing LDAP server, please ensure that it has server SSL certificates enabled. The `subject alternative name (dns name)` specified for the certificate must also match the domain of the server that LDAP is hosted on, or authentication will fail.  
+> If you skipped the previous section because you already have an LDAP server, be sure that it has server SSL certificates enabled. The `subject alternative name (dns name)` specified for the certificate must also match the domain of the server that LDAP is hosted on, or authentication fails.  
 
-1. Currently, LDAP authentication is a public preview feature. Run the below command to add the required Azure CLI extension:
+1. Currently, LDAP authentication is a public preview feature. Run the following command to add the required Azure CLI extension:
 
     ```azurecli-interactive
     az extension add --upgrade --name cosmosdb-preview
@@ -107,7 +108,7 @@ In this section, we'll walk through creating a simple LDAP server on a Virtual M
 1. Now set properties at the data center level. Replace `<resource group>` and `<cluster name>` with the appropriate values, and `<dnsname>` with the dns name you created for your LDAP server.
 
     > [!NOTE]
-    > The below command is based on the LDAP setup in the earlier section. If you skipped that section because you already have an existing LDAP server, provide the corresponding values for that server instead. Ensure you have uploaded a certificate file like `ldap.crt` to your [clouddrive](/azure/cloud-shell/persisting-shell-storage) in Azure CLI.
+    > The following command is based on the LDAP setup in the earlier section. If you skipped that section because you already have an existing LDAP server, provide the corresponding values for that server instead. Ensure that you uploaded a certificate file like `ldap.crt` to your [clouddrive](/azure/cloud-shell/persisting-shell-storage) in Azure CLI.
 
     ```azurecli-interactive
     ldap_search_base_distinguished_name='dc=example,dc=org'
@@ -119,7 +120,7 @@ In this section, we'll walk through creating a simple LDAP server on a Virtual M
     az managed-cassandra datacenter update -g `<resource group>` -c `<cluster name>` -d datacenter-1 --ldap-search-base-dn $ldap_search_base_distinguished_name --ldap-server-certs $ldap_server_certificates --ldap-server-hostname $ldap_server_hostname --ldap-service-user-dn $ldap_service_user_distinguished_name --ldap-svc-user-pwd $ldap_service_user_password
     ```
 
-1. Once this command has completed, you should be able to use [CQLSH](https://cassandra.apache.org/doc/stable/cassandra/managing/tools/cqlsh.html) (see below) or any Apache Cassandra open-source client driver to connect to your managed instance data center with the user added in the above step:
+1. After this command finishes, you should be able to use [CQLSH](https://cassandra.apache.org/doc/stable/cassandra/managing/tools/cqlsh.html) or any Apache Cassandra open-source client driver to connect to your managed instance data center with the user added in the previous step:
 
     ```shell
     export SSL_VALIDATE=false

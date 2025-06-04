@@ -1,19 +1,19 @@
 ---
 title: Live migrate data from Apache Cassandra to the Azure Cosmos DB for Apache Cassandra by using dual-write proxy and Apache Spark
-description: Learn how to live migrate data from an Apache Cassandra database to the Azure Cosmos DB for Apache Cassandra by using dual-write proxy and Apache Spark
+description: Learn how to live migrate data from an Apache Cassandra database to the Azure Cosmos DB for Apache Cassandra by using dual-write proxy and Apache Spark.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
-ms.date: 11/25/2021
+ms.date: 06/05/2025
 ---
 
 # Live migrate data from Apache Cassandra to the Azure Cosmos DB for Apache Cassandra by using dual-write proxy and Apache Spark
 
-API for Cassandra in Azure Cosmos DB has become a great choice for enterprise workloads running on Apache Cassandra for various reasons such as: 
+API for Cassandra in Azure Cosmos DB is a great choice for enterprise workloads running on Apache Cassandra for various reasons such as: 
 
-* **No overhead of managing and monitoring:** It eliminates the overhead of managing and monitoring a myriad of settings across OS, JVM, and yaml files and their interactions.
+* **No overhead of managing and monitoring:** It eliminates the overhead of managing and monitoring a myriad of settings across operating systems, Java virtual machines, and yaml files and their interactions.
 
 * **Significant cost savings:** You can save cost with Azure Cosmos DB, which includes the cost of VMs, bandwidth, and any applicable licenses. Additionally, you don’t have to manage the data centers, servers, SSD storage, networking, and electricity costs. 
 
@@ -37,7 +37,7 @@ The following image illustrates the pattern. The dual-write proxy is used to cap
 
 * Ensure you have network connectivity between your source cluster and target API for Cassandra endpoint.
 
-* Ensure that you've already migrated the keyspace/table scheme from your source Cassandra database to your target API for Cassandra account.
+* Ensure that you previously migrated the keyspace/table scheme from your source Cassandra database to your target API for Cassandra account.
 
     >[!IMPORTANT]
     > If you have a requirement to preserve Apache Cassandra `writetime` during migration, the following flags must be set when creating tables: 
@@ -65,7 +65,7 @@ The following image illustrates the pattern. The dual-write proxy is used to cap
 We recommend Azure Databricks. Use a runtime which supports Spark 3.0 or higher.
 
 >[!IMPORTANT]
-> You need to ensure that your Azure Databricks account has network connectivity with your source Apache Cassandra cluster. This may require virtual network injection. See article [here](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject) for more information.  
+> You need to ensure that your Azure Databricks account has network connectivity with your source Apache Cassandra cluster. This setup might require virtual network injection. For more information, see [Deploy Azure Databricks in your Azure virtual network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/databricks-runtime.png" alt-text="Screenshot that shows finding the Azure Databricks runtime version.":::
 
@@ -76,7 +76,7 @@ We recommend Azure Databricks. Use a runtime which supports Spark 3.0 or higher.
 You need to add the Apache Spark Cassandra Connector library to your cluster to connect to both native and Azure Cosmos DB Cassandra endpoints. In your cluster, select **Libraries** > **Install New** > **Maven**, and then add `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in Maven coordinates.
 
 > [!IMPORTANT]
-> If you have a requirement to preserve Apache Cassandra `writetime` for each row during the migration, we recommend using [this sample](https://github.com/Azure-Samples/cassandra-migrator). The dependency jar in this sample also contains the Spark connector, so you should install this instead of the connector assembly above. This sample is also useful if you want to perform a row comparison validation between source and target after historic data load is complete. See sections "[run the historical data load](migrate-data-dual-write-proxy.md#run-the-historical-data-load)" and "[validate the source and target](migrate-data-dual-write-proxy.md#validate-the-source-and-target)" below for more details. 
+> If you have a requirement to preserve Apache Cassandra `writetime` for each row during the migration, we recommend using [this sample](https://github.com/Azure-Samples/cassandra-migrator). The dependency jar in this sample also contains the Spark connector, so you should install this version instead of the connector assembly described previously. This sample is also useful if you want to perform a row comparison validation between source and target after historic data load is complete. For more information, see [run the historical data load](migrate-data-dual-write-proxy.md#run-the-historical-data-load) and [validate the source and target](migrate-data-dual-write-proxy.md#validate-the-source-and-target). 
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/databricks-search-packages.png" alt-text="Screenshot that shows searching for Maven packages in Azure Databricks.":::
 
@@ -139,13 +139,13 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> 
 
 ### Configure the credentials and port
 
-By default, the source credentials will be passed through from your client app. The proxy uses the credentials for making connections to the source and target clusters. As mentioned earlier, this process assumes that the source and target credentials are the same. It is necessary to specify a different username and password for the target API for Cassandra endpoint separately when starting the proxy:
+By default, your client app passes the source credentials. The proxy uses the credentials for making connections to the source and target clusters. As mentioned earlier, this process assumes that the source and target credentials are the same. It's necessary to specify a different username and password for the target API for Cassandra endpoint separately when starting the proxy:
 
 ```bash
 java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> --proxy-jks-file <path to JKS file> --proxy-jks-password <keystore password> --target-username <username> --target-password <password>
 ```
 
-The default source and target ports, when not specified, will be 9042. In this case, API for Cassandra runs on port `10350`, so you need to use `--source-port` or `--target-port` to specify port numbers: 
+The default source and target ports, when not specified, is 9042. In this case, API for Cassandra runs on port `10350`, so you need to use `--source-port` or `--target-port` to specify port numbers: 
 
 ```bash
 java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> --source-port 9042 --target-port 10350 --proxy-jks-file <path to JKS file> --proxy-jks-password <keystore password> --target-username <username> --target-password <password>
@@ -160,11 +160,11 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar <source-server> <destinati
 ```
 
 > [!WARNING]
-> Installing and running the proxy remotely on a separate machine (rather than running it on all nodes in your source Apache Cassandra cluster) will impact performance while the live migration occurs. While it works functionally, the client driver won't be able to open connections to all nodes within the cluster, and will rely on the single coordinator node (where the proxy is installed) to make connections.  
+> Installing and running the proxy remotely on a separate machine (rather than running it on all nodes in your source Apache Cassandra cluster) affects performance while the live migration occurs. While it works functionally, the client driver can't open connections to all nodes within the cluster. The client relies on the single coordinator node where the proxy is installed to make connections.  
 
 ### Allow zero application code changes
 
-By default, the proxy listens on port 29042. The application code must be changed to point to this port. However, you can change the port that the proxy listens on. You might do this if you want to eliminate application-level code changes by:
+By default, the proxy listens on port 29042. The application code must be changed to point to this port. However, you can change the port that the proxy listens on. You might make this change if you want to eliminate application-level code changes by:
 
 - Having the source Cassandra server run on a different port.
 - Having the proxy run on the standard Cassandra port 9042.
@@ -174,7 +174,7 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar source-server destination-
 ```
 
 > [!NOTE]
-> Installing the proxy on cluster nodes doesn't require restart of the nodes. However, if you have many application clients and prefer to have the proxy running on the standard Cassandra port 9042 in order to eliminate any application-level code changes, you need to change the [Apache Cassandra default port](https://cassandra.apache.org/doc/stable/cassandra/overview/faq/index.html). You then need to restart the nodes in your cluster, and configure the source port to be the new port that you defined for your source Cassandra cluster. 
+> Installing the proxy on cluster nodes doesn't require restart of the nodes. If you have many application clients and prefer to run the proxy on the standard Cassandra port 9042 in order to eliminate application-level code changes, change the [Apache Cassandra default port](https://cassandra.apache.org/doc/stable/cassandra/overview/faq/index.html). You then need to restart the nodes in your cluster, and configure the source port to be the new port that you defined for your source Cassandra cluster. 
 >
 > In the following example, we change the source Cassandra cluster to run on port 3074, and we start the cluster on port 9042:
 >
@@ -190,14 +190,14 @@ The proxy has functionality to force protocols, which might be necessary if the 
 java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar source-server destination-server --protocol-version 4 --cql-version 3.11
 ```
 
-After the dual-write proxy is running, you'll need to change the port on your application client and restart. (Or change the Cassandra port and restart the cluster if you've chosen that approach.) The proxy will then start forwarding writes to the target endpoint. You can learn about [monitoring and metrics](https://github.com/Azure-Samples/cassandra-proxy#monitoring) available in the proxy tool. 
+After the dual-write proxy is running, you'll need to change the port on your application client and restart. (Or change the Cassandra port and restart the cluster if you choose that approach.) The proxy stars forwarding writes to the target endpoint. You can learn about [monitoring and metrics](https://github.com/Azure-Samples/cassandra-proxy#monitoring) available in the proxy tool. 
 
 ## Run the historical data load
 
 To load the data, create a Scala notebook in your Azure Databricks account. Replace your source and target Cassandra configurations with the corresponding credentials, and replace the source and target keyspaces and tables. Add more variables for each table as required to the following sample, and then run. After your application starts sending requests to the dual-write proxy, you're ready to migrate historical data. 
 
 >[!IMPORTANT]
-> Before migrating the data, increase the container throughput to the amount required for your application to migrate quickly. Scaling the throughput before starting the migration helps you to migrate your data in less time. To help safeguard against rate-limiting during the historical data load, you may wish to enable server-side retries (SSR) in API for Cassandra. See our article [here](prevent-rate-limiting-errors.md) for more information, and instructions on how to enable SSR.
+> Before migrating the data, increase the container throughput to the amount required for your application to migrate quickly. Scaling the throughput before starting the migration helps you to migrate your data in less time. To help safeguard against rate-limiting during the historical data load, you might want to enable server-side retries (SSR) in API for Cassandra. For instructions on how to enable SSR and more information, see [Prevent rate-limiting errors for Azure Cosmos DB for Apache Cassandra operations](prevent-rate-limiting-errors.md).
 
 ```scala
 import com.datastax.spark.connector._
@@ -254,7 +254,7 @@ DFfromSourceCassandra
 ```
 
 > [!NOTE]
-> In the preceding Scala sample, you notice that `timestamp` is being set to the current time before reading all the data in the source table. Then, `writetime` is being set to this backdated time stamp. This ensures that records that are written from the historical data load to the target endpoint can't overwrite updates that come in with a later time stamp from the dual-write proxy while historical data is being read.
+> In the preceding Scala sample, you notice that `timestamp` is being set to the current time before reading all the data in the source table. Then, `writetime` is being set to this backdated time stamp. This approach ensures that records that are written from the historical data load to the target endpoint can't overwrite updates that come in with a later time stamp from the dual-write proxy while historical data is being read.
 
 > [!IMPORTANT]
 > If you need to preserve *exact* time stamps for any reason, you should take a historical data migration approach that preserves time stamps, such as [this sample](https://github.com/Azure-Samples/cassandra-migrator). The dependency jar in the sample also contains the Spark connector, so you don't need to install the Spark connector assembly mentioned in the earlier prerequisites - having both installed in your Spark cluster causes conflicts.
@@ -264,7 +264,7 @@ DFfromSourceCassandra
 After the historical data load is complete, your databases should be in sync and ready for cutover. However, we recommend that you validate the source and target to ensure they match before finally cutting over.
 
 > [!NOTE]
-> If you used the [Cassandra migrator](https://github.com/Azure-Samples/cassandra-migrator) sample mentioned above for preserving `writetime`, this includes the capability to [validate the migration](https://github.com/Azure-Samples/cassandra-migrator#validate-migration) by [comparing rows](https://github.com/Azure-Samples/cassandra-migrator/blob/main/build_files/src/main/scala/com/cassandra/migrator/validation/RowComparisonFailure.scala) in source and target based on certain tolerances. 
+> If you used the [Cassandra migrator](https://github.com/Azure-Samples/cassandra-migrator) sample mentioned previously for preserving `writetime`, this sample includes the capability to [validate the migration](https://github.com/Azure-Samples/cassandra-migrator#validate-migration) by [comparing rows](https://github.com/Azure-Samples/cassandra-migrator/blob/main/build_files/src/main/scala/com/cassandra/migrator/validation/RowComparisonFailure.scala) in source and target based on certain tolerances. 
 
 ## Next steps
 

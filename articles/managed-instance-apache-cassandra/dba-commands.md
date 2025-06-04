@@ -1,12 +1,13 @@
 ---
 title: How to run DBA commands for Azure Managed Instance for Apache Cassandra
-description: Learn how to run DBA commands 
+description: Learn how to run DBA commands when you need to use them manually in Azure Managed Instance for Apache Cassandra.
 author: TheovanKraay
 ms.service: azure-managed-instance-apache-cassandra
 ms.custom: devx-track-azurecli
 ms.topic: how-to
-ms.date: 03/02/2022
+ms.date: 06/04/2025
 ms.author: thvankra
+#customer intent: as a database administrator, I want to run DBA commands when necessary to manage Azure Managed Instance for Apache Cassandra. 
 ---
 
 # DBA commands for Azure Managed Instance for Apache Cassandra
@@ -14,19 +15,19 @@ ms.author: thvankra
 Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, allowing maximum flexibility and control where needed. This article describes how to run DBA commands manually when the need arises. 
 
 > [!IMPORTANT]
-> Nodetool and sstable commands are in public preview.
-> This feature is provided without a service level agreement, and it's not recommended for production workloads.
+> `Nodetool` and `sstable` commands are in public preview.
+> This feature is provided without a service level agreement. We don't recommend this feature for production workloads.
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## DBA command support
-Azure Managed Instance for Apache Cassandra allows you to run `nodetool` and `sstable` commands via Azure CLI, for routine DBA administration. Not all commands are supported and there are some limitations. For supported commands, see the sections below.
+
+Azure Managed Instance for Apache Cassandra allows you to run `nodetool` and `sstable` commands via Azure CLI, for routine DBA administration. Not all commands are supported and there are some limitations. For supported commands, see the following sections.
 
 >[!WARNING]
-> Some of these commands can destabilize the cassandra cluster and should only be run carefully and after being tested in non-production environments. Where possible a `--dry-run` option should be deployed first. Microsoft cannot offer any SLA or support on issues with running commands which alter the default database configuration and/or tables.
-
-
+> Some of these commands can destabilize the Cassandra cluster and should only be run carefully and after being tested in nonproduction environments. Where possible a `--dry-run` option should be deployed first. Microsoft can't offer any SLA or support on issues with running commands which alter the default database configuration and/or tables.
 
 ## How to run a `nodetool` command
+
 Azure Managed Instance for Apache Cassandra provides the following Azure CLI command to run DBA commands:
 
 ```azurecli-interactive
@@ -47,7 +48,7 @@ Here's an example of how to run a `nodetool` command with a flag, in this case t
     az managed-cassandra cluster invoke-command  --resource-group  <rg>   --cluster-name <cluster> --host <ip of data node> --command-name nodetool --arguments "compact"="" "-st"="65678794" 
 ```
 
-Both will return a json of the following form:
+Both return a json of the following form:
    
 ```json 
     {
@@ -56,7 +57,8 @@ Both will return a json of the following form:
         "exitCode": 0
     }
 ```
-In most cases you might only need the commandOutput or the exitCode. Here is an example for only getting the commandOutput:
+
+In most cases, you might only need the commandOutput or the exitCode. Here's an example for only getting the commandOutput:
 
 ```azurecli-interactive
     az managed-cassandra cluster invoke-command --query "commandOutput" --resource-group $resourceGroupName --cluster-name $clusterName --host $host --command-name nodetool --arguments getstreamthroughput=""
@@ -77,13 +79,17 @@ The `sstable` commands require read/write access to the Cassandra data directory
     "exitCode": 0
     }
 ```
+
 ## How to run other commands
+
 The `cassandra-reset-password` command lets a user change their password for the Cassandra user.
+
 ```azurecli-interactive
     az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name <cluster> --host <ip of data node> --command-name cassandra-reset-password --arguments password="<password>"
 ```
+
 > [!IMPORTANT]
-> The password is URL encoded (UTF-8) when it is passed into this command, meaning the following rules apply:
+> The password is URL encoded (UTF-8) in this command, meaning the following rules apply:
 > 
 > * `The alphanumeric characters "a" through "z", "A" through "Z" and "0" through "9" remain the same.`
 > * `The special characters ".", "-", "*", and "_" remain the same.`
@@ -93,11 +99,13 @@ The `cassandra-reset-password` command lets a user change their password for the
 > hexadecimal representation of the byte.`
 
 The `cassandra-reset-auth-replication` command lets a user change their schema for the Cassandra user. Separate the datacenter names by space.
+
 ```azurecli-interactive
     az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name <cluster> --host <ip of data node> --command-name cassandra-reset-auth-replication --arguments password="<datacenters>"
 ```
+
 > [!IMPORTANT]
-> The datacenters are URL encoded (UTF-8) when they are passed into this command, meaning the following rules apply:
+> The datacenters are URL encoded (UTF-8) when they're passed into this command, meaning the following rules apply:
 > 
 > * `The alphanumeric characters "a" through "z", "A" through "Z" and "0" through "9" remain the same.`
 > * `The special characters ".", "-", "*", and "_" remain the same.`
@@ -107,14 +115,19 @@ The `cassandra-reset-auth-replication` command lets a user change their schema f
 > hexadecimal representation of the byte.`
 
 The `sstable-tree` command lets a user see their sstables.
+
 ```azurecli-interactive
     az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name <cluster> --host <ip of data node> --command-name sstable-tree
 ```
+
 The `sstable-delete` command lets a user delete their sstables made before a certain time.
+
 ```azurecli-interactive
     az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name <cluster> --host <ip of data node> --command-name sstable-delete --arguments datetime="<YYYY-MM-DD hh:mm:ss>"
 ```
-Datetime argument must be formatted as shown above. You can also add --dry-run="" as an argument to see which files will be deleted.
+
+Datetime argument must be formatted as shown in the example. You can also add `--dry-run=""` as an argument to see which files the command deletes.
+
 ## List of supported `sstable` commands
 
 For more information on each command, see https://cassandra.apache.org/doc/latest/cassandra/managing/tools/sstable/index.html
@@ -131,7 +144,7 @@ For more information on each command, see https://cassandra.apache.org/doc/lates
 
 ## List of supported `nodetool` commands
 
-For more information on each command, see https://cassandra.apache.org/doc/latest/cassandra/troubleshooting/use_nodetool.html
+For more information on each command, see [Use Nodetool](https://cassandra.apache.org/doc/latest/cassandra/troubleshooting/use_nodetool.html).
 
 * `status`
 * `cleanup`
