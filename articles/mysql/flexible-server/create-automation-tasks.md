@@ -105,7 +105,7 @@ Here's a screenshot of the Scale automation task:
 
 ## On-demand backup server task
 
-You can schedule triggering of [on-demand backup](./concepts-backup-restore#on-demand-backup) of the server based on desired time schedule, providing enhanced flexibility for maintaining backups of business-critical data.You need to provide the following information when creating a task for initiating on-demand backup of Azure Database for MySQL Flexible Server. 
+You can schedule triggering of [on-demand backup](./concepts-backup-restore.md#on-demand-backup) of the server based on desired time schedule, providing enhanced flexibility for maintaining backups of business-critical data.You need to provide the following information when creating a task for initiating on-demand backup of Azure Database for MySQL Flexible Server. 
 
 You need to provide the following information when creating as task for backup:
 
