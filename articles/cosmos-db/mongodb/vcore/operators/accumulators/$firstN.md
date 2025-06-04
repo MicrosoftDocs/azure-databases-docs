@@ -94,9 +94,9 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Get First 3 Stores by Total Sales
+### Example 1: Get first 3 stores by total sales
 
-Get the first 3 stores when sorted by total sales in descending order.
+Get the first three stores when sorted by total sales in descending order.
 
 ```javascript
 db.stores.aggregate([
@@ -119,7 +119,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce the following output:
+This produces the following output:
 
 ```json
 [
@@ -146,9 +146,9 @@ This will produce the following output:
 ]
 ```
 
-### Example 2: Get First 2 Categories per Store
+### Example 2: Get first 2 categories per store
 
-Get the first 2 categories (by sales amount) for each store that has multiple categories.
+Get the first two categories (by sales amount) for each store that has multiple categories.
 
 ```javascript
 db.stores.aggregate([
@@ -175,7 +175,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce output showing the top 2 categories by sales for each store with multiple categories:
+This produces output showing the top two categories by sales for each store with multiple categories:
 
 ```json
 [
@@ -203,9 +203,9 @@ This will produce output showing the top 2 categories by sales for each store wi
 ]
 ```
 
-### Example 3: Get First 2 Promotion Events per Store
+### Example 3: Get first 2 promotion events per store
 
-Get the first 2 promotion events for each store based on chronological order.
+Get the first two promotion events for each store based on chronological order.
 
 ```javascript
 db.stores.aggregate([
