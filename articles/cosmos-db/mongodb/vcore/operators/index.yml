@@ -127,6 +127,14 @@ landingContent:
             url: data-expression/$datefromparts.md
           - text: $datefromstring
             url: data-expression/$datefromstring.md
+  - title: Data size
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $binarysize
+            url: data-size/$binarysize.md
+          - text: $bsonsize
+            url: data-size/$bsonsize.md
   - title: Evaluation query
     linkLists:
       - linkListType: reference
