@@ -43,7 +43,7 @@ Data encryption with **customer managed keys** for Azure Database for PostgreSQL
 - Data encryption based on customer managed keys doesn't negatively affect the performance of your workloads.
 - You can implement separation of duties between security officers, database administrators, and system administrators.
 
-## CMK Requirements
+## CMK requirements
 
 With **customer managed encryption key** you assume all the responsibility. Hence, you must deploy your own Azure Key Vault or Azure Key Vault HSM. You must generate or import your own key. You must grant required permissions on the Key Vault, so that your Azure Database for PostgreSQL flexible server can perform the necessary actions on the key. You have to take care of configuring all networking aspects of the Azure Key Vault in which the key is kept, so that your Azure Database for PostgreSQL flexible server can access the key. Auditing access to the key is also your responsibility. Finally, you're responsible for rotating the key and, when required, updating the configuration of your Azure Database for PostgreSQL flexible server so that it references the rotated version of the key.
 
@@ -69,19 +69,19 @@ Following is the list of requirements to configure data encryption for Azure Dat
 - The key must be in **Enabled** state.
 - If you're importing an existing key into Key Vault, provide it in the supported file formats (`.pfx`, `.byok`, or `.backup`).
 
-## CMK Key Version Updates
+## CMK key version updates
 
 CMK can be configured with manual key rotation and updates or with automatic key version updates after a manual or automatic key rotation in the Key Vault.
 
-For details see [Configure data encryption with customer managed key during server provisioning](./how-to-data-encryption?tabs=portal-system-managed-server-provisioning%2Ccli-customer-managed-server-provisioning%2Cportal-customer-managed-server-existing#configure-data-encryption-with-customer-managed-key-during-server-provisioning)
+For details see [Configure data encryption with customer managed key during server provisioning](how-to-data-encryption.md)
 
-### Manual Key Rotation and Updates
+### Manual key rotation and updates
 
 When you configure CMK with manual key updates, you must manually update the key version in the Azure Database for PostgreSQL flexible server after a manual or automatic key rotation in the Key Vault. The server will continue to use the old key version until you update it. You provision this mode by specifying a key URI including the version GUID in the URI. For example, `https://<keyvault-name>.vault.azure.net/keys/<key-name>/<key-version>`. Until recently this was the only option available.
 
 Whenever you manually rotate the key or AKV auto-rotates the key based on its rotation policy, you had to update the CMK property on your PostgreSQL instance. This approach proved to be error-prone work for the operators or required a custom script to handle the rotation, especially when using Key Vault's automatic rotation feature.
 
-### Automatic Key Version Updates
+### Automatic key version updates
 
 To enable automatic key version updates, use a version-less key URI. This eliminates the need to update the CMK’s version property in your PostgreSQL instance after a key rotation. PostgreSQL will automatically pick up the new key version and reencrypt the data encryption key. This is a huge simplification in your key lifecycle management, especially when combined with Key Vault auto-rotation.
 
@@ -105,7 +105,7 @@ When you're using a customer managed key for data encryption, follow these recom
 
 ## Special considerations
 
-### Accidental key access revocation from Key Vault
+### Accidental key access revocation from Azure Key Vault
 
 Someone with sufficient access rights to Key Vault, might accidentally disable server access to the key by:
 
@@ -139,7 +139,7 @@ Hardware security modules (HSMs) are tamper-resistant hardware devices that help
 
 Azure Key Vault Managed HSM is a fully managed, highly available, single-tenant, standards-compliant cloud service. You can use it to safeguard cryptographic keys for your cloud applications through [FIPS 140-3 validated HSMs](/azure/key-vault/keys/about-keys#compliance).
 
-When you're creating new Azure Database for PostgreSQL flexible server instances in the Azure portal with the customer managed key, you can choose **Azure Key Vault Managed HSM** as a key store, as an alternative to **Azure Key Vault**. The prerequisites, in terms of user-defined identity and permissions, are the same as with Azure Key Vault (as listed [earlier in this article](#requirements)). For more information on how to create a Managed HSM instance, its advantages and differences from a shared Key Vault-based certificate store, and how to import keys into Managed HSM, see [What is Azure Key Vault Managed HSM?](/azure/key-vault/managed-hsm/overview).
+When you're creating new Azure Database for PostgreSQL flexible server instances in the Azure portal with the customer managed key, you can choose **Azure Key Vault Managed HSM** as a key store, as an alternative to **Azure Key Vault**. The prerequisites, in terms of user-defined identity and permissions, are the same as with Azure Key Vault (as listed [earlier in this article](#cmk-requirements)). For more information on how to create a Managed HSM instance, its advantages and differences from a shared Key Vault-based certificate store, and how to import keys into Managed HSM, see [What is Azure Key Vault Managed HSM?](/azure/key-vault/managed-hsm/overview).
 
 ### Inaccessible customer managed key condition
 
