@@ -402,6 +402,12 @@
         href: flexible-server/how-to-connect-data-factory.md
       - name: Connect from Azure Data Factory via managed private endpoint
         href: flexible-server/how-to-connect-data-factory-private-endpoint.md
+    - name: Microsoft Fabric
+      items:
+      - name: Copy activity
+        href: flexible-server/how-to-use-microsoft-fabric-data-factory-copy-activity.md
+      - name: Script activity
+        href: flexible-server/how-to-use-microsoft-fabric-data-factory-script-activity.md
   - name: Troubleshooting
     items:  
     - name: Troubleshooting guides
@@ -766,7 +772,7 @@
   - name: Deployment templates
     href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=databases
+    href: https://azure.microsoft.com/updates?searchterms=databases
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/postgresql/
   - name: Microsoft Q&A question page

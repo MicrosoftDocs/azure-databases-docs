@@ -9,7 +9,10 @@ ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
 ms.date: 11/04/2024
-ms.custom: query-reference, ingite-2024
+ms.custom:
+  - query-reference
+  - ingite-2024
+  - build-2025
 ---
 
 # FullTextScore (NoSQL query)

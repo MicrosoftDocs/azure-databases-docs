@@ -10,6 +10,8 @@ ms.topic: how-to
 ms.date: 05/27/2025
 appliesto:
   - ✅ MongoDB (vCore)
+ms.custom:
+  - build-2025
 ---
 
 # Scaling and configuring Your Azure Cosmos DB for MongoDB vCore cluster

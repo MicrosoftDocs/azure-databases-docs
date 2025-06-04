@@ -10,6 +10,8 @@ ms.service: azure-database-migration-service
 ms.topic: troubleshooting
 ms.collection:
   - sql-migration-content
+ms.custom:
+  - build-2025
 ---
 
 # Known issues, limitations, and troubleshooting

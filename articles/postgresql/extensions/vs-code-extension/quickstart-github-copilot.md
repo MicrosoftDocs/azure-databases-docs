@@ -13,6 +13,7 @@ ai.usage: ai-assisted
 ms.custom:
   - copilot
   - vs-code
+  - build-2025
 ---
 
 # Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview

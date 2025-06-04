@@ -12,6 +12,8 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ MongoDB vCore
+ms.custom:
+  - build-2025
 ---
 
 # Product quantization for vector search in Azure Cosmos DB for MongoDB vCore

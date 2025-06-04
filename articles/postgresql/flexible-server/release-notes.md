@@ -8,6 +8,8 @@ ms.date: 05/20/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
+ms.custom:
+  - build-2025
 # customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL flexible server.
 ---
 
@@ -22,6 +24,8 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General Availability
     - [On-demand backups](./concepts-backup-restore.md#on-demand-backups).
     - [Long-term backups](./concepts-backup-restore.md#long-term-retention)
+    - [DiskANN Vector Indexing extension](how-to-use-pgdiskann.md)
+    - [Pgvector 0.8.0 extension](../extensions/concepts-extensions-versions.md#vector)
 - Preview
     - [Confidential Computing](concepts-confidential-computing.md)
     - [Apache Age extension](generative-ai-age-overview.md)
@@ -41,13 +45,14 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General Availability of [Azure Data Factory and Azure Synapse 2.0 Connector](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#version-20).
 - General Availability of [hll](../extensions/concepts-extensions-versions.md#hll), [topn](../extensions/concepts-extensions-versions.md#topn) and [tdigest](../extensions/concepts-extensions-versions.md#tdigest) extension.
-- Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup>
 
 ## Release: February 2025
 
-- Support for new [minor versions](concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
 - Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server.
 - Public preview of [enhanced connection and CPU monitoring metrics](concepts-monitoring.md#enhanced-metrics) (`TCP_connection_backlog`, `postmaster_process_cpu_usage`) is now available.
+- Public preview of [DiskANN Vector Indexing](how-to-use-pgdiskann.md) is now available.
 
 ## Release: January 2025
 
@@ -74,7 +79,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: September 2024
 
 - Public preview of [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17-preview) for Azure Database for PostgreSQL flexible server.
-- Support for new [minor versions](concepts-supported-versions.md) 16.4, 15.8, 14.13, 13.16, and 12.20. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 16.4, 15.8, 14.13, 13.16, and 12.20. <sup>$</sup>
 - Support for [Reserved pricing](concepts-reserved-pricing.md) for Intel and AMD V5 Skus for Azure Database for PostgreSQL flexible server.
 - Public preview of [postgresql_anonymizer (anon)](../extensions/concepts-extensions-versions.md#anon) extension.
 - Collation sort order might change due to an underlying `glibc` update from 2.27 to 2.35. See [PostgreSQL Wiki](https://wiki.postgresql.org/wiki/Locale_data_changes) for details.
@@ -94,7 +99,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: June 2024
 
-- Support for new [minor versions](concepts-supported-versions.md) 16.3, 15.7, 14.12, 13.15, and 12.19. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 16.3, 15.7, 14.12, 13.15, and 12.19. <sup>$</sup>
 - General availability of [IOPS scaling](concepts-storage.md#iops-scaling) on Azure Database for PostgreSQL flexible server.
 - CMK support for LTR is in Public preview [long-term backup retention](concepts-backup-restore.md).
 - Support for [built-in Azure Policy definitions](concepts-security.md#azure-policy-support)
@@ -113,7 +118,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: April 2024
 
 - General availability of [virtual endpoints](concepts-read-replicas-virtual-endpoints.md) and [promote to primary server](concepts-read-replicas-promote.md) operation for [read replicas](concepts-read-replicas.md).
-- Support for new [minor versions](concepts-supported-versions.md) 16.2, 15.6, 14.11, 13.14, 12.18. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 16.2, 15.6, 14.11, 13.14, 12.18. <sup>$</sup>
 - Support for new [PgBouncer versions](concepts-pgbouncer.md) 1.22.1. <sup>$</sup>
 
 ## Release: March 2024
@@ -127,7 +132,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: February 2024
 
-- Support for new [minor versions](concepts-supported-versions.md) 16.1, 15.5, 14.10, 13.13, 12.17, 11.22. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 16.1, 15.5, 14.10, 13.13, 12.17, 11.22. <sup>$</sup>
 - General availability of [Major Version Upgrade logs](./concepts-major-version-upgrade.md#view-upgrade-logs)
 - General availability of [private endpoints](concepts-networking-private-link.md).
 
@@ -160,7 +165,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: October 2023
 
-- Support for new [minor versions](concepts-supported-versions.md) 15.4, 14.9, 13.12, 12.16, 11.21. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 15.4, 14.9, 13.12, 12.16, 11.21. <sup>$</sup>
 - General availability of [Grafana Monitoring Dashboard](https://grafana.com/grafana/dashboards/19556-azure-azure-postgresql-flexible-server-monitoring/) for Azure Database for PostgreSQL flexible server.
 
 ## Release: September 2023
@@ -170,7 +175,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: August 2023
 
-- Support for [minor versions](concepts-supported-versions.md) 15.3, 14.8, 13.11, 12.15, 11.20. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 15.3, 14.8, 13.11, 12.15, 11.20. <sup>$</sup>
 - General availability of [Enhanced Metrics](concepts-monitoring.md#enhanced-metrics), [Autovacuum Metrics](concepts-monitoring.md#autovacuum-metrics), [PgBouncer Metrics](concepts-monitoring.md#pgbouncer-metrics) and [Database availability metric](concepts-monitoring.md#database-availability-metric) for Azure Database for PostgreSQL flexible server.
 
 ## Release: July 2023
@@ -180,7 +185,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: June 2023
 
-- Support for [minor versions](concepts-supported-versions.md) 15.2 (preview), 14.7, 13.10, 12.14, 11.19. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 15.2 (preview), 14.7, 13.10, 12.14, 11.19. <sup>$</sup>
 - General availability of [Query Performance Insight](concepts-query-performance-insight.md) for Azure Database for PostgreSQL flexible server.
 - General availability of [Major Version Upgrade](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL flexible server.
 - General availability of [Restore a dropped server](how-to-restore-dropped-server.md) for Azure Database for PostgreSQL flexible server.
@@ -213,7 +218,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for [semver](../extensions/concepts-extensions-versions.md#semver) extension with new servers. <sup>$</sup>
 - Public Preview of [Major Version Upgrade](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL flexible server.
 - Support for [Geo-redundant backup feature](concepts-backup-restore.md#geo-redundant-backup-and-restore) when using [Data encryption with customer managed key](concepts-data-encryption.md).
-- Support for [minor versions](concepts-supported-versions.md) 14.6, 13.9, 12.13, 11.18. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 14.6, 13.9, 12.13, 11.18. <sup>$</sup>
 
 ## Release: January 2023
 
@@ -228,7 +233,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: November 2022
 
 - Public preview of [Enhanced Metrics](concepts-monitoring.md#enhanced-metrics) for Azure Database for PostgreSQL flexible server.
-- Support for [minor versions](concepts-supported-versions.md) 14.5, 13.8, 12.12, 11.17. <sup>$</sup>
+- Support for latest [minor versions](concepts-supported-versions.md) 14.5, 13.8, 12.12, 11.17. <sup>$</sup>
 - General availability of Azure Database for PostgreSQL flexible server in China North 3 & China East 3 Regions.
 
 ## Release: October 2022
@@ -246,7 +251,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: August 2022
 
-- Support for [PostgreSQL minor version](concepts-supported-versions.md) 14.4. <sup>$</sup>
+- Support for latest [PostgreSQL minor version](concepts-supported-versions.md) 14.4. <sup>$</sup>
 - Support for [new regions](overview.md#azure-regions) Qatar Central, Switzerland West, France South.
 
 <sup>**$**</sup> New PostgreSQL 14 servers are provisioned with version 14.4. Your existing PostgreSQL 14.3 servers are upgraded to 14.4 in your server's future maintenance window.

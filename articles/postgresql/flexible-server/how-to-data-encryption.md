@@ -8,6 +8,8 @@ ms.date: 05/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom:
+  - build-2025
 ---
 
 # Configure data encryption in Azure Database for PostgreSQL

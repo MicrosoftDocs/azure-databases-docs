@@ -8,6 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 4/29/2025
+ms.custom:
+  - build-2025
 ---
 
 # How to configure Azure Cosmos DB for NoSQL global secondary indexes (preview)

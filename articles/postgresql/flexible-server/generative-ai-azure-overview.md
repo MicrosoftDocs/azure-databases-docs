@@ -12,6 +12,7 @@ ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - ignite-2023
   - build-2024
+  - build-2025
 ---
 
 # Azure AI extension in Azure Database for PostgreSQL

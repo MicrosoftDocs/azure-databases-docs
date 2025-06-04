@@ -9,6 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2023
   - ignite-2024
+  - build-2025
 ms.topic: concept-article
 ms.date: 12/03/2024
 ms.collection:
