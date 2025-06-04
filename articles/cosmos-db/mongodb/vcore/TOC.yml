@@ -50,7 +50,7 @@
     - name: Open source
       href: oss.md
     - name: First-party MongoDB service
-      href: first-party-azure-mongo.md
+      href: azure-mongo-first-party.md
     - name: Integrated vector database
       items:
         - name: Integrated vector database overview
