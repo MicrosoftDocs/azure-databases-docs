@@ -8,6 +8,14 @@
   href: $filter.md
 - name: $in
   href: $in.md
+- name: $indexOfArray
+  href: $indexofarray.md  
+- name: $isArray
+  href: $isarray.md
+- name: $objectToArray
+  href: $objecttoarray.md
+- name: $reverseArray
+  href: $reversearray.md
 - name: $map
   href: $map.md
 - name: $range

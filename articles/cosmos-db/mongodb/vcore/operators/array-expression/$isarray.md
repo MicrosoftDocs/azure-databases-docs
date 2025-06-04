@@ -1,5 +1,5 @@
 ---
-  title: $isArray (array expression operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $isArray (array expression) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $isArray operator is used to determine if a specified value is an array. 
   author: sandeepsnairms
@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $isArray (array expression operator)
+# $isArray (array expression)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
