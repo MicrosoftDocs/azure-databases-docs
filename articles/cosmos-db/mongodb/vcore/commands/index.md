@@ -6,8 +6,8 @@ author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 06/03/2025
+ms.date: 06/04/2025
+ai-usage: ai-assisted
 ---
 
 # Azure Cosmos DB for MongoDB (vCore) commands
