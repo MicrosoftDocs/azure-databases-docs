@@ -94,7 +94,7 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Get first 3 stores by total sales
+### Example 1: Get first three stores by total sales
 
 Get the first three stores when sorted by total sales in descending order.
 
@@ -146,7 +146,7 @@ This produces the following output:
 ]
 ```
 
-### Example 2: Get first 2 categories per store
+### Example 2: Get first two categories per store
 
 Get the first two categories (by sales amount) for each store that has multiple categories.
 
@@ -203,7 +203,7 @@ This produces output showing the top two categories by sales for each store with
 ]
 ```
 
-### Example 3: Get first 2 promotion events per store
+### Example 3: Get first two promotion events per store
 
 Get the first two promotion events for each store based on chronological order.
 
@@ -239,7 +239,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will return the first 2 promotion events chronologically for each store that has multiple events.
+This returns the first two promotion events chronologically for each store that has multiple events.
 
 ## Related content
 
