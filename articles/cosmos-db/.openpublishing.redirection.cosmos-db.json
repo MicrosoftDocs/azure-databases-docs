@@ -6564,16 +6564,6 @@
       "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access.md",
       "redirect_url": "/azure/cosmos-db/nosql/how-to-grant-data-plane-access",
       "redirect_document_id": true
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/index.yml",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands",
-      "redirect_document_id": true
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/index.yml",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators",
-      "redirect_document_id": true
     }
   ]
 }
