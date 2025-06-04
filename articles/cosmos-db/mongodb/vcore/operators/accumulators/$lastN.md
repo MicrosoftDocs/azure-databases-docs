@@ -109,7 +109,7 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Get Last 2 Promotion Events by Date
+### Example 1: Get last 2 promotion events by date
 
 Retrieve the two most recent promotion events for each store.
 
@@ -143,7 +143,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce output showing the two most recent promotion events for each store:
+This produces output showing the two most recent promotion events for each store:
 
 ```json
 [
@@ -171,9 +171,9 @@ This will produce output showing the two most recent promotion events for each s
 ]
 ```
 
-### Example 2: Get Top 3 Selling Categories
+### Example 2: Get top 3 selling categories
 
-Find the top 3 highest-selling categories for each store.
+Find the top three highest-selling categories for each store.
 
 ```javascript
 db.stores.aggregate([
@@ -200,7 +200,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will return the top 3 categories with highest sales for each store:
+This will return the top three categories with highest sales for each store:
 
 ```json
 [
