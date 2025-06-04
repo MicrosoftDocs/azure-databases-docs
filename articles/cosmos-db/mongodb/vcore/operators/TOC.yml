@@ -1,5 +1,7 @@
 - name: Index
   href: index.yml
+- name: Accumulators
+  href: accumulators/TOC.yml
 - name: Aggregation
   href: aggregation/toc.yml
 - name: Arithmetic expression
@@ -18,6 +20,8 @@
   href: comparison-query/toc.yml
 - name: Data expression
   href: data-expression/TOC.yml
+- name: Data size
+  href: data-size/TOC.yml
 - name: Evaluation query
   href: evaluation-query/toc.yml
 - name: Geospatial
