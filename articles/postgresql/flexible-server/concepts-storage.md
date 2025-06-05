@@ -54,11 +54,41 @@ All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of 
 > [!NOTE]  
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server.
 
+
+#### Premium SSD v2 - High Availability
+
+High availability is now supported for Azure Database for PostgreSQL flexible server deployments using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier.
+
+This capability is initially available in the following regions, with plans to expand support to additional regions in the near future
+
+
+## Enable Premium SSD v2 High Availability Preview
+
+High availability is a opt-in feature and can be enabled at subscription level using the below steps.
+
+1. In the *Search* bar, type *Preview features* and select it from the results.
+
+  :::image type="content" source="./media/concepts-storage/preview-feature.png" alt-text="Screenshot the preview page." lightbox="./media/concepts-storage/preview-feature.png":::
+
+2. Choose the *Subscription* where you want to enable the feature.
+
+  
+3. In the Filter by name field, search for *Premium SSD v2 High Availability*.
+ 
+   :::image type="content" source="./media/concepts-storage/SSdv2-registration.png" alt-text="Screenshot the SSD v2 registration page." lightbox="./media/concepts-storage/SSdv2-registration.png":::
+
+4.  Select the feature and click *Register*.
+ 
+5. Confirm that the State changes to *Registered*.
+
+  :::image type="content" source="./media/concepts-storage/registration-validation.png" alt-text="Screenshot the registration validation page." lightbox="./media/concepts-storage/registration-validation.png"":::
+
+
 #### Premium SSD v2 - Limitations during preview
 
-- [High availability](/azure/reliability/reliability-postgresql-flexible-server), [read replicas](concepts-read-replicas.md), [geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), or [storage autogrow](#limitations-and-considerations-of-storage-autogrow) features aren't supported for Premium SSD v2.
+- [Read replicas](concepts-read-replicas.md), [geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), or [storage autogrow](#limitations-and-considerations-of-storage-autogrow) features aren't supported for Premium SSD v2.
 
-- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one that is provisioned with a different storage type.
+- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new Sone that is provisioned with a different storage type.
 
 - Premium SSD V2 can only be enabled for newly created servers. Enabling Premium SSD V2 on existing servers isn't supported.
 
