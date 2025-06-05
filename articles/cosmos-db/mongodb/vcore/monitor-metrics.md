@@ -5,13 +5,13 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.author: khelanmodi
 author: KhelanModi
-ms.date: 07/02/2024
+ms.date: 06/02/2025
 ---
 
 # Explore Azure Monitor in vCore-based Azure Cosmos DB for MongoDB (vCore)
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-Azure Monitor for vCore-based Azure Cosmos DB for MongoDB provides a metrics view to monitor your account and create dashboards. The Azure Cosmos DB metrics are collected by default, however this feature is only accessible to M40 and above cluster tiers. The **CPU  percent** metric is used to get the consumption for different types of operations. Later you can analyze which operations used most of the committed memory. By default, the consumption data is aggregated at five-minute interval. However, you can change the aggregation unit by changing the time granularity option.
+Azure Monitor for vCore-based Azure Cosmos DB for MongoDB provides a metrics view to monitor your account and create dashboards. The Azure Cosmos DB metrics are collected by default. The **CPU  percent** metric is used to get the consumption for different types of operations. Later you can analyze which operations used most of the committed memory. By default, the consumption data is aggregated at five-minute interval. However, you can change the aggregation unit by changing the time granularity option.
 
 ## Introduction
 

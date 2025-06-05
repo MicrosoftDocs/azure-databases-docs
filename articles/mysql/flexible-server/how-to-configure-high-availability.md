@@ -23,9 +23,6 @@ High availability feature provisions physically separate primary and standby rep
 
 This page provides guidelines how you can enable or disable high availability. This operation doesn't change your other settings including VNET configuration, firewall settings, and backup retention. Similarly, disabling of high availability is an online operation and doesn't impact your application connectivity and operations.
 
-> [!IMPORTANT]  
-> Zone redundant high availability is available in a limited set of regions: Southeast Asia, WestUS 2, West Europe, and East US.
-
 ## Enable high availability during server creation
 
 This section provides details specifically for HA-related fields. You can follow these steps to deploy high availability while creating your Azure Database for MySQL Flexible Server instance.

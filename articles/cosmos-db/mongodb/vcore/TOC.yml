@@ -49,6 +49,8 @@
       href: multi-cloud.md
     - name: Open source
       href: oss.md
+    - name: First-party MongoDB service
+      href: azure-mongo-first-party.md
     - name: Integrated vector database
       items:
         - name: Data Retrieval
