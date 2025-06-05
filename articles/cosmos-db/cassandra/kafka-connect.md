@@ -5,8 +5,9 @@ author: theovankraay
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 06/06/2025
 ms.author: thvankra
+#customer intent: As a database administrator, I want to learn how to ingest data from Apache Kafka into Azure Cosmos DB for Apache Cassandra.
 ---
 
 # Ingest data from Apache Kafka into Azure Cosmos DB for Apache Cassandra using Kafka Connect
@@ -14,23 +15,21 @@ ms.author: thvankra
 
 Existing Cassandra applications can easily work with the [Azure Cosmos DB for Apache Cassandra](introduction.md) because of its [CQLv4 driver compatibility](https://cassandra.apache.org/doc/stable/cassandra/getting-started/drivers.html). You use this capability to integrate with streaming platforms such as [Apache Kafka](https://kafka.apache.org/) and bring data into Azure Cosmos DB.
 
-Data in Apache Kafka (topics) is only useful when consumed by other applications or ingested into other systems. It's possible to build a solution using the [Kafka Producer/Consumer](https://kafka.apache.org/documentation/#api) APIs [using a language and client SDK of your choice](https://cwiki.apache.org/confluence/display/KAFKA/Clients). Kafka Connect provides an alternative solution. It's a platform to stream data between Apache Kafka and other systems in a scalable and reliable manner. Since Kafka Connect supports off the shelf connectors which include Cassandra, you don't need to write custom code to integrate Kafka with Azure Cosmos DB for Apache Cassandra. 
+Data in Apache Kafka (topics) is only useful when consumed by other applications or ingested into other systems. It's possible to build a solution using the [Kafka Producer/Consumer](https://kafka.apache.org/documentation/#api) APIs [using a language and client SDK of your choice](https://cwiki.apache.org/confluence/display/KAFKA/Clients). Kafka Connect provides an alternative solution. It's a platform to stream data between Apache Kafka and other systems in a scalable and reliable manner. Since Kafka Connect supports off the shelf connectors, which include Cassandra, you don't need to write custom code to integrate Kafka with Azure Cosmos DB for Apache Cassandra. 
 
-This article uses the open-source [DataStax Apache Kafka connector](https://docs.datastax.com/en/kafka/doc/kafka/kafkaIntro.html) that works on top of Kafka Connect framework to ingest records from a Kafka topic into rows of one or more Cassandra tables. The example provides a reusable setup using Docker Compose. This example is convenient since it enables you to bootstrap all the required components locally with a single command. These components include Kafka, Zookeeper, Kafka Connect worker, and the sample data generator application.
+This article uses the open-source [DataStax Apache Kafka connector](https://docs.datastax.com/en/kafka/doc/kafka/kafkaIntro.html) that works on top of Kafka Connect framework to ingest records from a Kafka topic into rows of Cassandra tables. The example provides a reusable setup using Docker Compose. This example enables you to bootstrap all the required components locally with a single command. These components include Kafka, Zookeeper, Kafka Connect worker, and the sample data generator application.
 
-Here's a breakdown of the components and their service definitions - you can refer to the complete `docker-compose` file [in the GitHub repo](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/docker-compose.yaml).
+Here's a breakdown of the components and their service definitions. Refer to the complete `docker-compose` file [in the GitHub repo](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/docker-compose.yaml).
 
 - Kafka and Zookeeper use [debezium](https://hub.docker.com/r/debezium/kafka/) images.
-- To run as a Docker container, the DataStax Apache Kafka Connector is baked on top of an existing Docker image - [debezium/connect-base](https://github.com/debezium/docker-images/tree/master/connect-base/1.2). This image includes an installation of Kafka and its Kafka Connect libraries, thus making it convenient to add custom connectors. You can refer to the [Dockerfile](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/connector/Dockerfile).
-- The `data-generator` service seeds randomly generated (JSON) data into the `weather-data` Kafka topic. You can refer to the code and `Dockerfile` in [the GitHub repo](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/data-generator/)
+- To run as a Docker container, the DataStax Apache Kafka Connector is included on top of an existing Docker image: [debezium/connect-base](https://github.com/debezium/docker-images/tree/master/connect-base/1.2). This image includes an installation of Kafka and its Kafka Connect libraries, which makes it convenient to add custom connectors. Refer to the [Dockerfile](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/connector/Dockerfile).
+- The `data-generator` service seeds randomly generated (JSON) data into the `weather-data` Kafka topic. Refer to the code and `Dockerfile` in [the GitHub repo](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/data-generator/).
 
 ## Prerequisites
 
-* [Provision an Azure Cosmos DB for Apache Cassandra account](manage-data-dotnet.md#create-a-database-account)
-
-* [Use cqlsh for validation](support.md#cql-shell)
-
-* Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install)
+- [Provision an Azure Cosmos DB for Apache Cassandra account](manage-data-dotnet.md#create-a-database-account)
+- [Use cqlsh for validation](support.md#cql-shell)
+- Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install)
 
 ## Create Keyspace, tables and start the integration pipeline
 
@@ -71,12 +70,11 @@ docker-compose -p kafka-cosmos-cassandra ps
 
 The data generator application starts pumping data into the `weather-data` topic in Kafka. You can also do quick check to confirm. Peek into the Docker container running the Kafka connect worker:
 
-
 ```bash
 docker exec -it kafka-cosmos-cassandra_cassandra-connector_1 bash
 ```
 
-Once you drop into the container shell, just start the usual Kafka console consumer process and you should see weather data (in JSON format) flowing in.
+After you drop into the container shell, start the usual Kafka console consumer process. You should see weather data in JSON format flowing in.
 
 ```bash
 cd ../bin
@@ -85,7 +83,7 @@ cd ../bin
 
 ## Cassandra Sink connector setup
 
-Copy the JSON contents here to a file. Name it `cassandra-sink-config.json`. You need to update it as per your setup. The rest of this section provides guidance.
+Copy the JSON contents here to a file. Name it `cassandra-sink-config.json`. You need to update it per your setup. The rest of this section provides guidance.
 
 ```json
 {
@@ -122,17 +120,17 @@ Here's a summary of the attributes:
 
 **Basic connectivity**
 
-- `contactPoints`: enter the contact point for Azure Cosmos DB Cassandra
-- `loadBalancing.localDc`: enter the region for Azure Cosmos DB account, such as Southeast Asia
-- `auth.username`: enter the username
-- `auth.password`: enter the password
-- `port`: enter the port value (this value is `10350`, not `9042`. leave it as is)
+- `contactPoints`: Enter the contact point for Azure Cosmos DB Cassandra
+- `loadBalancing.localDc`: Enter the region for Azure Cosmos DB account, such as Southeast Asia
+- `auth.username`: Enter the username
+- `auth.password`: Enter the password
+- `port`: Enter the port value. This value is `10350`, not `9042`. leave it as is
 
 **SSL configuration**
 
 Azure Cosmos DB enforces secure connectivity over SSL and Kafka Connect connector supports SSL as well.
 
-- `ssl.keystore.path`: path to the JDK keystore in the container - `/etc/alternatives/jre/lib/security/cacerts/`
+- `ssl.keystore.path`: Path to the JDK keystore in the container - `/etc/alternatives/jre/lib/security/cacerts/`
 - `ssl.keystore.password`: JDK keystore (default) password
 - `ssl.hostnameValidation`: We turn own node hostname validation
 - `ssl.provider`: `JDK` is used as the SSL provider
@@ -140,8 +138,8 @@ Azure Cosmos DB enforces secure connectivity over SSL and Kafka Connect connecto
 **Generic parameters**
 
 - `key.converter`: We use the string converter `org.apache.kafka.connect.storage.StringConverter`
-- `value.converter`: since the data in Kafka topics is JSON, we make use of `org.apache.kafka.connect.json.JsonConverter`
-- `value.converter.schemas.enable`: Since our JSON payload doesn't have a schema associated with it (for the purposes of the demo app), we need to instruct Kafka Connect to not look for a schema by setting this attribute to `false`. Not doing so results in failures.
+- `value.converter`: Since the data in Kafka topics is JSON, we use `org.apache.kafka.connect.json.JsonConverter`
+- `value.converter.schemas.enable`: Since our JSON payload doesn't have a schema associated with it for the purposes of the demo app, we need to instruct Kafka Connect to not look for a schema by setting this attribute to `false`. Not doing so results in failures.
 
 ### Install the connector
 
@@ -153,15 +151,15 @@ curl -X POST -H "Content-Type: application/json" --data @cassandra-sink-config.j
 
 To check the status:
 
-```
+```shell
 curl http://localhost:8080/connectors/kafka-cosmosdb-sink/status
 ```
 
-If all goes well, the connector should start weaving its magic. It should authenticate to Azure Cosmos DB and start ingesting data from the Kafka topic (`weather-data`) into Cassandra tables - `weather.data_by_state` and `weather.data_by_station`
+If all goes well, the connector should start weaving its magic. It should authenticate to Azure Cosmos DB and start ingesting data from the Kafka topic (`weather-data`) into Cassandra tables: `weather.data_by_state` and `weather.data_by_station`.
 
 You can now query data in the tables. In the Azure portal, bring up the hosted CQL Shell for your Azure Cosmos DB account.
 
-:::image type="content" source="./media/kafka-connect/cqlsh.png" alt-text="Open CQLSH":::
+:::image type="content" source="./media/kafka-connect/cqlsh.png" alt-text="Screenshot shows the Azure portal with the Open Cassandra Shell option highlighted.":::
 
 ## Query data from Azure Cosmos DB
 
@@ -183,5 +181,5 @@ select * from weather.data_by_station where station_id IN ('station-2', 'station
 
 ## Next steps
 
-* [Provision throughput on containers and databases](../set-throughput.md) 
-* [Estimate RU/s using the Azure Cosmos DB capacity planner](../estimate-ru-with-capacity-planner.md) articles
+- [Provision throughput on containers and databases](../set-throughput.md) 
+- [Estimate RU/s using the Azure Cosmos DB capacity planner](../estimate-ru-with-capacity-planner.md)
