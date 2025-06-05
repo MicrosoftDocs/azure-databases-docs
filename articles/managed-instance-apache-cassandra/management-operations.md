@@ -12,7 +12,9 @@ ms.topic: overview
 
 # Management operations in Azure Managed Instance for Apache Cassandra
 
-Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, which allows maximum flexibility and control where needed. This article defines the management operations and features provided by the service. It also explains the separation of responsibilities between the Azure support team and customers when maintaining [hybrid](configure-hybrid-cluster.md) clusters.
+Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, which allows maximum flexibility and control where needed.
+
+This article defines the management operations and features provided by the service. It also explains the separation of responsibilities between the Azure support team and customers when maintaining [hybrid](configure-hybrid-cluster.md) clusters.
 
 ## Compaction
 

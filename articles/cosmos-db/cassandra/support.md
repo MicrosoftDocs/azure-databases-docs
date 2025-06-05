@@ -241,8 +241,8 @@ You can connect to the API for Cassandra in Azure Cosmos DB by using the CQLSH i
 
 **Windows:**
 
-1. Install [Python 3](https://www.python.org/downloads/windows/)
-1. Install PIP
+1. Install [Python 3](https://www.python.org/downloads/windows/).
+1. Install PIP.
 
    1. Before you install PIP, download the *get-pip.py* file.
    1. Launch a command prompt window, if it isn't already open. To do so, open the Windows search bar, type **cmd** and select the icon.
@@ -265,7 +265,7 @@ You can connect to the API for Cassandra in Azure Cosmos DB by using the CQLSH i
    ```bash
    pip3 install cqlsh==5.0.3
    ```
-1. Install [Python 2](https://www.python.org/downloads/windows/);
+1. Install [Python 2](https://www.python.org/downloads/windows/).
 1. Run the [CQLSH using the authentication mechanism](manage-data-cqlsh.md#update-your-connection-string).
 
 > [!NOTE]
