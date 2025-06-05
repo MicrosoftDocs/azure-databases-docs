@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
 
 title:  Azure Database for PostgreSQL documentation
-summary: "Azure Database for PostgreSQL is a fully managed, AI-ready relational database service built on the open-source Postgres engine, designed to support mission-critical workloads with predictable performance, robust security, high availability, and seamless scalability. It empowers developers to build intelligent, AI-powered applications through native support for vector embeddings and integration with Azure AI services."
+summary: "Azure Database for PostgreSQL is a fully managed, AI-ready Database-as-a-Service (DBaaS) offering built on the open-source PostgreSQL engine, designed to support mission-critical workloads with predictable performance, robust security, high availability, and seamless scalability. It empowers developers to build intelligent, AI-powered applications through native support for vector embeddings and integration with Azure AI services."
 
 landingContent:
 #Card 1
