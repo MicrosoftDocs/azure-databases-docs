@@ -6,7 +6,10 @@ author: jcocchi
 ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.custom: build-2023, devx-track-azurecli
+ms.custom:
+  - build-2023
+  - devx-track-azurecli
+  - build-2025
 ms.topic: conceptual
 ms.date: 05/08/2025
 appliesto:

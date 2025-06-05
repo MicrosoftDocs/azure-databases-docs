@@ -8,6 +8,8 @@ ms.date: 05/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom:
+  - build-2025
 ---
 
 # Configure data encryption in Azure Database for PostgreSQL
@@ -64,7 +66,7 @@ Using the [Azure portal](https://portal.azure.com/):
     > [!NOTE]  
     > Although it isn't required, to maintain regional resiliency, we recommend that you create the user managed identity in the same region as your server. And if your server has geo-backup redundancy enabled, we recommend that the second user managed identity, used to access the data encryption key for geo-redundant backups, is created in the [paired region](/azure/reliability/cross-region-replication-azure) of the server.
 
-1. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal) or [create one Managed HSM](/azure/key-vault/managed-hsm/quick-create-cli), if you don't have one key store created yet. Make sure that you meet the [requirements](concepts-data-encryption.md#requirements). Also, follow the [recommendations](concepts-data-encryption.md#recommendations) before you configure the key store, and before you create the key and assign the required permissions to the user assigned managed identity. If your server has geo-redundant backups enabled, you need to create a second key store. That second key store is used to keep the data encryption key with which your backups copied to the [paired region](/azure/reliability/cross-region-replication-azure) of the server are encrypted.
+1. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal) or [create one Managed HSM](/azure/key-vault/managed-hsm/quick-create-cli), if you don't have one key store created yet. Make sure that you meet the [requirements](concepts-data-encryption.md#cmk-requirements). Also, follow the [recommendations](concepts-data-encryption.md#recommendations) before you configure the key store, and before you create the key and assign the required permissions to the user assigned managed identity. If your server has geo-redundant backups enabled, you need to create a second key store. That second key store is used to keep the data encryption key with which your backups copied to the [paired region](/azure/reliability/cross-region-replication-azure) of the server are encrypted.
 
     > [!NOTE]  
     > The key store used to keep the data encryption key must be deployed in the same region as your server. And if your server has geo-backup redundancy enabled, the key store that keeps the data encryption key for geo-redundant backups must be created in the [paired region](/azure/reliability/cross-region-replication-azure) of the server.
@@ -91,9 +93,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-server-customer-assigned-add-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity with which the server accesses the data encryption key." lightbox="media/how-to-data-encryption/create-server-customer-assigned-add-identity.png":::
 
-1. Select **Use version less key**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using version less keys, see [version less customer managed keys](concepts-data-encryption.md#version-less-customer-managed-keys).
+1. Select **Use automatic key version update**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using automatic key version updates, see [automatic key version update](concepts-data-encryption.md#cmk-key-version-updates).
 
-    :::image type="content" source="media/how-to-data-encryption/create-server-customer-assigned-version-less.png" alt-text="Screenshot that shows how to enable version less keys." lightbox="media/how-to-data-encryption/create-server-customer-assigned-version-less.png":::
+    :::image type="content" source="media/how-to-data-encryption/create-server-customer-assigned-version-less.png" alt-text="Screenshot that shows how to enable automatic key version updates." lightbox="media/how-to-data-encryption/create-server-customer-assigned-version-less.png":::
 
 1. Select **Select a key**.
 
@@ -118,7 +120,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-server-customer-assigned-key-key.png" alt-text="Screenshot that shows how to select the data encryption key." lightbox="media/how-to-data-encryption/create-server-customer-assigned-key-key.png":::
 
-1. If you didn't select **Use version less key**, you must also select a specific version of the key. To do that, expand **Version**, and select the identifier of the version of the key that you want to use for data encryption.
+1. If you didn't select **Use automatic key version update**, you must also select a specific version of the key. To do that, expand **Version**, and select the identifier of the version of the key that you want to use for data encryption.
 
     :::image type="content" source="media/how-to-data-encryption/create-server-customer-assigned-key-version.png" alt-text="Screenshot that shows how to select the version to use of the data encryption key." lightbox="media/how-to-data-encryption/create-server-customer-assigned-key-version.png":::
 
@@ -173,7 +175,7 @@ The only point at which you can decide if you want to use a system managed key o
 For existing servers that were deployed with data encryption using a customer managed key, you're allowed to do several configuration changes. Things that can be changed are the references to the keys used for encryption, and references to the user assigned managed identities used by the service to access the keys kept in the key stores.
 
 You must update references that your Azure Database for PostgreSQL flexible server has to a key:
-- When the key stored in the key store is rotated, either manually or automatically, and your Azure Database for PostgreSQL flexible server is pointing to a specific version of the key. If you're pointing to a key, but not to a specific version of the key (that's when you have **Use version less key** enabled), then the service will take care of automatically reference the most current version of the key, whenever they key is manually or automatically rotated.
+- When the key stored in the key store is rotated, either manually or automatically, and your Azure Database for PostgreSQL flexible server is pointing to a specific version of the key. If you're pointing to a key, but not to a specific version of the key (that's when you have **Use automatic key version update** enabled), then the service will take care of automatically reference the most current version of the key, whenever they key is manually or automatically rotated.
 - When you want to use the same or a different key stored in a different key store.
 
 You must update the user assigned managed identities which are used by your Azure Database for PostgreSQL flexible server to access the encryption keys:
@@ -217,11 +219,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/existing-server-select-existing-managed-identity-details-add.png" alt-text="Screenshot that shows how to add the selected user assigned managed identity." lightbox="media/how-to-data-encryption/existing-server-select-existing-managed-identity-details-add.png":::
 
-1. Select **Use version less key**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using version less keys, see [version less customer managed keys](concepts-data-encryption.md#version-less-customer-managed-keys).
+1. Select **Use automatic key version update**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using automatic key version updates, see [automatic key version update](concepts-data-encryption.md##CMK key version updates).
 
-    :::image type="content" source="media/how-to-data-encryption/existing-server-version-less.png" alt-text="Screenshot that shows how to enable version less keys." lightbox="media/how-to-data-encryption/existing-server-version-less.png":::
+    :::image type="content" source="media/how-to-data-encryption/existing-server-version-less.png" alt-text="Screenshot that shows how to enable automatic key version updates." lightbox="media/how-to-data-encryption/existing-server-version-less.png":::
 
-1. If you rotate the key and don't have **Use version less key** enabled. Or if you want to use a different key, you must update your Azure Database for PostgreSQL flexible server, so that it points to the new key version or new key. To do that, you can copy the resource identifier of the key, and paste it in the **Key identifier** box.
+1. If you rotate the key and don't have **Use automatic key version update** enabled. Or if you want to use a different key, you must update your Azure Database for PostgreSQL flexible server, so that it points to the new key version or new key. To do that, you can copy the resource identifier of the key, and paste it in the **Key identifier** box.
 
     :::image type="content" source="media/how-to-data-encryption/existing-server-paste-key-identifier.png" alt-text="Screenshot that shows where to paste the resource identifier of the new key or new key version that the server must use for data encryption." lightbox="media/how-to-data-encryption/existing-server-paste-key-identifier.png":::
 
@@ -252,7 +254,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/existing-server-customer-assigned-key-key.png" alt-text="Screenshot that shows how to select the data encryption key." lightbox="media/how-to-data-encryption/existing-server-customer-assigned-key-key.png":::
 
-1. If you didn't select **Use version less key**, you must also select a specific version of the key. To do that, expand **Version**, and select the identifier of the version of the key that you want to use for data encryption.
+1. If you didn't select **Use automatic key version update**, you must also select a specific version of the key. To do that, expand **Version**, and select the identifier of the version of the key that you want to use for data encryption.
 
     :::image type="content" source="media/how-to-data-encryption/existing-server-customer-assigned-key-version.png" alt-text="Screenshot that shows how to select the version to use of the data encryption key." lightbox="media/how-to-data-encryption/existing-server-customer-assigned-key-version.png":::
 

@@ -12,6 +12,8 @@ ai-usage: ai-assisted
 zone_pivot_groups: azure-interface-portal-cli-bicep
 appliesto:
   - ✅ NoSQL
+ms.custom:
+  - build-2025
 ---
 
 # Create an Azure Cosmos DB fleet (preview)

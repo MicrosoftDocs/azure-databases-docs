@@ -8,6 +8,8 @@ ms.date: 03/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
+ms.custom:
+  - build-2025
 ---
 
 # Considerations with the use of extensions and modules
