@@ -1,5 +1,5 @@
 - name: Index
-  href: index.yml
+  href: index.md
 - name: Accumulators
   href: accumulators/TOC.yml
 - name: Aggregation
