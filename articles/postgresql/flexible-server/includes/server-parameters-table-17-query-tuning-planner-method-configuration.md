@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -101,8 +101,8 @@ ms.custom: automatically generated
 | Description | Enables the planner's use of incremental sort steps. |
 | Data type | boolean |
 | Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
 | Documentation | [enable_incremental_sort](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-INCREMENTAL-SORT) |
 
 
