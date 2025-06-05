@@ -1,10 +1,10 @@
 ---
 title: Management Operations in Azure Managed Instance for Apache Cassandra
-description: Learn about the management operations supported by Azure Managed Instance for Apache Cassandra. It also explains separation of responsibilities between the Azure support team and customers when maintaining standalone and hybrid clusters.
+description: Learn about management operations that Azure Managed Instance for Apache Cassandra supports and the responsibilities of the Azure support team and customers.
 author: TheovanKraay
 ms.author: thvankra
 ms.reviewer: sidandrews
-ms.date: 05/30/2025
+ms.date: 06/05/2025
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: overview
 ---
@@ -15,12 +15,12 @@ Azure Managed Instance for Apache Cassandra is a fully managed service for pure 
 
 ## Compaction
 
-- There are different [types of compaction](https://cassandra.apache.org/doc/stable/cassandra/managing/operating/compaction/overview.html). We currently perform a minor compaction via repair (see [Maintenance](#maintenance)). This performs a Merkle tree compaction, which is a special kind of compaction.
+- There are different [types of compaction](https://cassandra.apache.org/doc/stable/cassandra/managing/operating/compaction/overview.html). We currently perform a minor compaction via repair (see [Maintenance](#maintenance)). This operation performs a Merkle tree compaction, which is a special kind of compaction.
 - Depending on the [compaction strategy](https://cassandra.apache.org/doc/stable/cassandra/managing/operating/compaction/overview.html) that was set on the table using CQL (for example `WITH compaction = { 'class' : 'LeveledCompactionStrategy' }`), Cassandra automatically compacts when the table reaches a specific size. We recommend that you carefully select a compaction strategy for your workload, and don't do any manual compactions outside the strategy.
 
 ## Patching
 
-- Operating System-level patches are done automatically at 2-week cadence.
+- Operating System-level patches are done automatically at two week cadence.
 
 - Apache Cassandra software-level patches are done when security vulnerabilities are identified. The patching cadence might vary.
 
@@ -33,7 +33,7 @@ Azure Managed Instance for Apache Cassandra is a fully managed service for pure 
 
 ## Maintenance
 
-- The [Node tool repair](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/tools/toolsRepair.html) is automatically run by the service using [reaper](http://cassandra-reaper.io/). This tool is run once every week. You might wish to disable it if using your own service for a [hybrid deployment](configure-hybrid-cluster.md).
+- The service runs [Node tool repair](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/tools/toolsRepair.html) using [reaper](http://cassandra-reaper.io/). This tool is run once every week. You might wish to disable it if using your own service for a [hybrid deployment](configure-hybrid-cluster.md).
 
 - Node health monitoring consists of:
 
@@ -55,9 +55,8 @@ Our support benefits include:
 - In-house Java JDK/JVM engineering team support.
 - Linux Operating System support with software supply chain security.
 
-> [!IMPORTANT]  
-> We'll investigate and diagnose any issues reported via support case, and resolve or mitigate where possible.  
-> However, you're ultimately responsible for any Apache Cassandra configuration level usage which causes CPU, disk, or network problems.
+> [!IMPORTANT]
+> Microsoft investigates and diagnoses any issues reported by using support case. Support resolves or mitigates where possible. You're ultimately responsible for any Apache Cassandra configuration level usage which causes CPU, disk, or network problems.
 >  
 > Examples of such issues include:
 >  
@@ -67,11 +66,11 @@ Our support benefits include:
 > * Incorrect keyspace configuration settings.
 > * Poor data model or partition key strategy.
 >  
-> If we investigate a support case and discover that the root cause of the issue is at the Apache Cassandra configuration level (and not any underlying platform level aspects we maintain), we'll still provide recommendations and guidance on remediation, or mitigation (when possible), before closing the case.  
+> Microsoft might investigate a support case and discover that the cause of the issue is at the Apache Cassandra configuration level. Such an issue doesn't come from any underlying platform level aspects that Azure maintains. Support still provides recommendations and guidance on remediation, or mitigation when possible, before they close the case.
 >  
-> We recommend you [enable metrics](visualize-prometheus-grafana.md) and/or become familiar with our [Azure monitor integration](monitor-clusters.md) in order to prevent common application/configuration level issues in Apache Cassandra, such as the above.
+> We recommend you [enable metrics](visualize-prometheus-grafana.md) and/or become familiar with our [Azure monitor integration](monitor-clusters.md) in order to prevent common application/configuration level issues in Apache Cassandra, such as previously described.
 
-> [!WARNING]  
+> [!WARNING]
 > Azure Managed Instance for Apache Cassandra also lets's you run `nodetool` and `sstable` commands for routine DBA administration - see article [here](dba-commands.md). Some of these commands can destabilize the Cassandra cluster and should only be run carefully and after being tested in nonproduction environments. Where possible, a `--dry-run` option should be deployed first. Microsoft can't offer any SLA or support on issues with running commands which alter the default database configuration and/or tables.
 
 ## Backup and restore
@@ -82,21 +81,21 @@ Snapshot backups are enabled by default and taken every 24 hours. Backups are st
 
 To restore from an existing backup, file a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) in the Azure portal. When filing the support case, you need to:
 
-1. Provide the backup ID from portal for the backup you want to restore. This can be found in the portal:
+1. Provide the backup ID from portal for the backup you want to restore. You can find this ID in the Azure portal:
 
     :::image type="content" source="media/management-operations/backup.png" border="true" alt-text="Screenshot of backup schedule configuration page highlighting backup ID." lightbox="media/management-operations/backup.png":::
 
-1. Let us know if the source datacenter was deleted. This will be important to identify the correct backup account to restore from.
+1. Let us know if the source datacenter was deleted. This fact is important to identify the correct backup account to restore from.
 1. If restore of the whole cluster isn't required, provide the keyspace and table (if applicable) that needs to be restored.
 1. Advise whether you want the backup to be restored in the existing cluster, or in a new cluster.
-1. If you want to restore to a new cluster, you need to create the new cluster first. Ensure that the target cluster matches the source cluster in terms of the number of data centers, and that corresponding data center has the same number of nodes. You can also decide whether to keep the credentials (username/password) in the new target cluster, or allow restore to override username/password with what was originally created.
+1. If you want to restore to a new cluster, you need to create the new cluster first. Ensure that the target cluster matches the source cluster in terms of the number of data centers. Verify that the corresponding data center has the same number of nodes. You can also decide whether to keep the credentials in the new target cluster. Alternatively, allow restore to override the username and password with what was originally created.
 1. You can also decide whether to keep `system_auth` keyspace in the new target cluster or allow the restore to overwrite it with data from the backup. The `system_auth` keyspace in Cassandra contains authorization and internal authentication data, including roles, role permissions, and passwords. Our default restore process overwrites the `system_auth` keyspace.
 
 > [!NOTE]  
-> The time it takes to respond to a request to restore from backup will depend both on the severity of support case you raise (and its corresponding SLA for response time), and the amount of data to be restored. However, we don't provide an SLA for time to complete the restore, as this is very dependent on the volume of data being restored.
+> The time it takes to respond to a request to restore from backup depends on the severity of support case you raise and the SLA for response time, and the amount of data to restore. However, we don't provide an SLA for time to complete the restore, as this time is dependent on the volume of data being restored.
 
 > [!WARNING]  
-> Backups are intended for accidental deletion scenarios, and aren't geo-redundant. They're therefore not recommended for use as a disaster recovery (DR) strategy in case of a total regional outage. To safeguard against region-wide outages, we recommend a multi-region deployment. Take a look at our [quickstart for multi-region deployments](create-multi-region-cluster.md).
+> Backups are intended for accidental deletion scenarios, and aren't geo-redundant. They're therefore not recommended for use as a disaster recovery (DR) strategy for regional outage. To safeguard against region-wide outages, we recommend a multi-region deployment. Take a look at our [quickstart for multi-region deployments](create-multi-region-cluster.md).
 
 ## Security
 
@@ -113,7 +112,7 @@ For more information on security features, see our article [here](security.md).
 
 ## Hybrid support
 
-When a [hybrid](configure-hybrid-cluster.md) cluster is configured, automated reaper operations running in the service benefits the whole cluster. This includes data centers that aren't provisioned by the service. Outside this, it is your responsibility to maintain your on-premises or externally hosted data center.
+When a [hybrid](configure-hybrid-cluster.md) cluster is configured, automated reaper operations that run in the service benefit the whole cluster. This aspect includes data centers that aren't provisioned by the service. It is your responsibility to maintain your on-premises or externally hosted data center.
 
 ## Related content
 

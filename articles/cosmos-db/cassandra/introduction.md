@@ -1,5 +1,5 @@
 ---
-title: Introduction/Overview
+title: What is Azure Cosmos DB for Apache Cassandra?
 titleSuffix: Azure Cosmos DB for Apache Cassandra
 description: Use Azure Cosmos DB for Apache Cassandra to power existing and new applications with Cassandra drivers and CQL.
 author: TheovanKraay
@@ -7,7 +7,7 @@ ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: overview
-ms.date: 02/28/2023
+ms.date: 06/05/2025
 ---
 
 # What is Azure Cosmos DB for Apache Cassandra?
@@ -23,9 +23,9 @@ Azure Cosmos DB for Apache Cassandra can be used as the data store for apps writ
 
 ## API for Cassandra benefits
 
-The API for Cassandra has added benefits of being built on Azure Cosmos DB:
+The API for Cassandra also has the benefits of being built on Azure Cosmos DB:
 
-- **No operations management**: As a fully managed cloud service, API for Cassandra removes the overhead of managing and monitoring a myriad of settings across OS, JVM, and yaml files and their interactions. Azure Cosmos DB provides monitoring of throughput, latency, storage, availability, and configurable alerts.
+- **No operations management**: As a fully managed cloud service, API for Cassandra removes the overhead of managing and monitoring a myriad of settings across operating systems, Java virtual machines, JVM, and yaml files and their interactions. Azure Cosmos DB provides monitoring of throughput, latency, storage, availability, and configurable alerts.
 
 - **Open source standard**: Despite being a fully managed service, API for Cassandra still supports a large surface area of the native [Apache Cassandra wire protocol](support.md), allowing you to build applications on a widely used and cloud agnostic open source standard.
 

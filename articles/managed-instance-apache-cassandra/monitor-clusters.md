@@ -1,11 +1,11 @@
 ---
-title: Monitor Azure Managed Instance for Apache Cassandra by using Azure Monitor
+title: Monitor Azure Managed Instance for Apache Cassandra by Using Azure Monitor
 description: Learn how to use Azure Monitor to view metrics and diagnostic logs from Azure Managed Instance for Apache Cassandra.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 10/29/2021
+ms.date: 06/05/2025
 ms.custom: references_regions, devx-track-azurecli
 
 ---
@@ -142,7 +142,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 > [!NOTE]
 > This article contains references to the term *whitelist*, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
-By default, audit logging creates a record for every login attempt and CQL query. The result can be overwhelming and increase overhead. To manage this situation, you can use a whitelist to selectively include or exclude specific audit records.
+By default, audit logging creates a record for every sign-in attempt and CQL query. The result can be overwhelming and increase overhead. To manage this situation, you can use a whitelist to selectively include or exclude specific audit records.
 
 ### Cassandra 3.11
 

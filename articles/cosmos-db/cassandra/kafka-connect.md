@@ -1,6 +1,6 @@
 ---
 title: Integrate Apache Kafka and Azure Cosmos DB for Apache Cassandra using Kafka Connect
-description: Learn how to ingest data from Kafka to Azure Cosmos DB for Apache Cassandra using DataStax Apache Kafka Connector
+description: Learn how to ingest data from Kafka to Azure Cosmos DB for Apache Cassandra using DataStax Apache Kafka Connector.
 author: theovankraay
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
@@ -16,7 +16,7 @@ Existing Cassandra applications can easily work with the [Azure Cosmos DB for Ap
 
 Data in Apache Kafka (topics) is only useful when consumed by other applications or ingested into other systems. It's possible to build a solution using the [Kafka Producer/Consumer](https://kafka.apache.org/documentation/#api) APIs [using a language and client SDK of your choice](https://cwiki.apache.org/confluence/display/KAFKA/Clients). Kafka Connect provides an alternative solution. It's a platform to stream data between Apache Kafka and other systems in a scalable and reliable manner. Since Kafka Connect supports off the shelf connectors which include Cassandra, you don't need to write custom code to integrate Kafka with Azure Cosmos DB for Apache Cassandra. 
 
-In this article, we are using the open-source [DataStax Apache Kafka connector](https://docs.datastax.com/en/kafka/doc/kafka/kafkaIntro.html), that works on top of Kafka Connect framework to ingest records from a Kafka topic into rows of one or more Cassandra tables. The example provides a reusable setup using Docker Compose. This is convenient since it enables you to bootstrap all the required components locally with a single command. These components include Kafka, Zookeeper, Kafka Connect worker, and the sample data generator application.
+This article uses the open-source [DataStax Apache Kafka connector](https://docs.datastax.com/en/kafka/doc/kafka/kafkaIntro.html) that works on top of Kafka Connect framework to ingest records from a Kafka topic into rows of one or more Cassandra tables. The example provides a reusable setup using Docker Compose. This example is convenient since it enables you to bootstrap all the required components locally with a single command. These components include Kafka, Zookeeper, Kafka Connect worker, and the sample data generator application.
 
 Here's a breakdown of the components and their service definitions - you can refer to the complete `docker-compose` file [in the GitHub repo](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/docker-compose.yaml).
 
@@ -37,7 +37,7 @@ Here's a breakdown of the components and their service definitions - you can ref
 Using the Azure portal, create the Cassandra Keyspace and the tables required for the demo application.
 
 > [!NOTE]
-> Use the same Keyspace and table names as below
+> Use the same Keyspace and table names as used here.
 
 ```sql
 CREATE KEYSPACE weather WITH REPLICATION = {'class' : 'NetworkTopologyStrategy', 'datacenter1' : 1};
@@ -61,9 +61,9 @@ docker-compose --project-name kafka-cosmos-cassandra up --build
 ```
 
 > [!NOTE]
-> It might take a while to download and start the containers: this is just a one time process.
+> It might take a while to download and start the containers. This setup is just a one time process.
 
-To confirm whether all the containers have started:
+To confirm whether all the containers started:
 
 ```shell
 docker-compose -p kafka-cosmos-cassandra ps
@@ -85,7 +85,7 @@ cd ../bin
 
 ## Cassandra Sink connector setup
 
-Copy the JSON contents below to a file (you can name it `cassandra-sink-config.json`). You need to update it as per your setup and the rest of this section will provide guidance around this topic.
+Copy the JSON contents here to a file. Name it `cassandra-sink-config.json`. You need to update it as per your setup. The rest of this section provides guidance.
 
 ```json
 {
@@ -123,10 +123,10 @@ Here's a summary of the attributes:
 **Basic connectivity**
 
 - `contactPoints`: enter the contact point for Azure Cosmos DB Cassandra
-- `loadBalancing.localDc`: enter the region for Azure Cosmos DB account e.g. Southeast Asia
+- `loadBalancing.localDc`: enter the region for Azure Cosmos DB account, such as Southeast Asia
 - `auth.username`: enter the username
 - `auth.password`: enter the password
-- `port`: enter the port value (this is `10350`, not `9042`. leave it as is)
+- `port`: enter the port value (this value is `10350`, not `9042`. leave it as is)
 
 **SSL configuration**
 
@@ -159,7 +159,7 @@ curl http://localhost:8080/connectors/kafka-cosmosdb-sink/status
 
 If all goes well, the connector should start weaving its magic. It should authenticate to Azure Cosmos DB and start ingesting data from the Kafka topic (`weather-data`) into Cassandra tables - `weather.data_by_state` and `weather.data_by_station`
 
-You can now query data in the tables. Head over to the Azure portal, bring up the hosted CQL Shell for your Azure Cosmos DB account.
+You can now query data in the tables. In the Azure portal, bring up the hosted CQL Shell for your Azure Cosmos DB account.
 
 :::image type="content" source="./media/kafka-connect/cqlsh.png" alt-text="Open CQLSH":::
 
