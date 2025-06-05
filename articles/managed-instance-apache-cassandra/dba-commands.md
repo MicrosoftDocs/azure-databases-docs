@@ -130,8 +130,8 @@ az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name
 The `sstable-delete` command lets a user delete their sstables made before a certain time.
 
 ```azurecli-interactive
-az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name <cluster> 
-\  --host <ip of data node> --command-name sstable-delete --arguments datetime="<YYYY-MM-DD hh:mm:ss>"
+az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name <cluster> \
+  --host <ip of data node> --command-name sstable-delete --arguments datetime="<YYYY-MM-DD hh:mm:ss>"
 ```
 
 The `datetime` argument must be formatted as shown in the example. You can also add `--dry-run=""` as an argument to see which files the command deletes.

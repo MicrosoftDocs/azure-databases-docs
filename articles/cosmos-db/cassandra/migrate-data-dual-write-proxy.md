@@ -69,7 +69,9 @@ We recommend that you use Azure Databricks. Use a runtime which supports Spark 3
 Add the Apache Spark Cassandra Connector library to your cluster to connect to both native and Azure Cosmos DB Cassandra endpoints. In your cluster, select **Libraries** > **Install New** > **Maven**, and then add `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in Maven coordinates.
 
 > [!IMPORTANT]
-> If you have a requirement to preserve Apache Cassandra `writetime` for each row during the migration, we recommend using [this sample](https://github.com/Azure-Samples/cassandra-migrator). The dependency JAR in this sample also contains the Spark connector, so you should install this version instead of the connector assembly described previously. This sample is also useful if you want to perform a row comparison validation between source and target after historic data load is complete. For more information, see [Run the historical data load](migrate-data-dual-write-proxy.md#run-the-historical-data-load) and [Validate the source and target](migrate-data-dual-write-proxy.md#validate-the-source-and-target). 
+> If you have a requirement to preserve Apache Cassandra `writetime` for each row during the migration, we recommend using [this sample](https://github.com/Azure-Samples/cassandra-migrator). The dependency JAR in this sample also contains the Spark connector, so you should install this version instead of the connector assembly described previously.
+>
+> This sample is also useful if you want to perform a row comparison validation between source and target after historic data load is complete. For more information, see [Run the historical data load](migrate-data-dual-write-proxy.md#run-the-historical-data-load) and [Validate the source and target](migrate-data-dual-write-proxy.md#validate-the-source-and-target). 
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/databricks-search-packages.png" alt-text="Screenshot that shows searching for Maven packages in Azure Databricks.":::
 
@@ -124,7 +126,10 @@ keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass 
 You can also disable SSL for source or target endpoints if they don't implement SSL. Use the `--disable-source-tls` or `--disable-target-tls` flags:
 
 ```bash
-java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> --source-port 9042 --target-port 10350 --proxy-jks-file <path to JKS file> --proxy-jks-password <keystore password> --target-username <username> --target-password <password> --disable-source-tls true  --disable-target-tls true 
+java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> \
+  --source-port 9042 --target-port 10350 --proxy-jks-file <path to JKS file> \
+  --proxy-jks-password <keystore password> --target-username <username> \
+  --target-password <password> --disable-source-tls true  --disable-target-tls true 
 ```
 
 > [!NOTE]

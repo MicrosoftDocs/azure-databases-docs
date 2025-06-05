@@ -48,7 +48,7 @@ resourceGroupName='MyResourceGroup'
 clusterName='cassandra-hybrid-cluster'
 dataCenterName='dc1'
 az managed-cassandra datacenter update \
-    --resource-group $resourceGroupName \
+  --resource-group $resourceGroupName \
   --cluster-name $clusterName \
   --data-center-name $dataCenterName \
   --base64-encoded-cassandra-yaml-fragment $ENCODED_FRAGMENT
