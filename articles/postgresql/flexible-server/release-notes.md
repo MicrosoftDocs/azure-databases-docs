@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 05/20/2025
+ms.date: 06/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -18,6 +18,10 @@ ms.custom:
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL flexible server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
+
+## Release: June 2025
+
+- Support for latest [minor versions](concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
 
 ## Release: May 2025
 
@@ -255,8 +259,6 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for latest [PostgreSQL minor version](concepts-supported-versions.md) 14.4. <sup>$</sup>
 - Support for [new regions](overview.md#azure-regions) Qatar Central, Switzerland West, France South.
 
-<sup>**$**</sup> New PostgreSQL 14 servers are provisioned with version 14.4. Your existing PostgreSQL 14.3 servers are upgraded to 14.4 in your server's future maintenance window.
-
 ## Release: July 2022
 
 - Support for [Geo-redundant backup](concepts-backup-restore.md#geo-redundant-backup-and-restore) in [more regions](overview.md#azure-regions) - Australia East, Australia Southeast, Canada Central, Canada East, UK South, UK West, East US, West US, East Asia, Southeast Asia, North Central US, South Central US, and France Central.
@@ -364,7 +366,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 - Several bug fixes, stability, and performance improvements.
 
 > [!IMPORTANT]
-> **$** - New servers get these features automatically. Your existing servers automatically upgrade to the latest supported minor version and also new features are enabled during your server's future maintenance window. At this moment, there's no option to selectively stop to upgrade minor versions.
+> Features marked with a **$** are automatically available for newly created PostgreSQL servers. For existing servers, these updates will roll out during your next scheduled maintenance window.
 
 ## Contacts
 
