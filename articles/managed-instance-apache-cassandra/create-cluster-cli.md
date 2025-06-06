@@ -119,10 +119,10 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
    > - Standard_E20s_v5
    > - Standard_E32s_v5
    >
-   > By default `--availability-zone` is set to `false`. To enable availability zones, set it to `true`. Availability zones help increasing the availability of the service. For more details, review the full service-level agreement (SLA) details [here](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
+   > By default `--availability-zone` is set to `false`. To enable availability zones, set it to `true`. Availability zones help increasing the availability of the service. For more information, see [SLA for Online Services](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
-   > Availability zones are not supported in all Azure regions. Deployments fail if you select a region where Availability zones are not supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is subject to the availability of compute resources in all of the zones in the region selected. Deployments fail if the virtual machine size you choose is not available in the region selected.
+   > Availability zones are not supported in all Azure regions. Deployments fail if you select a region where Availability zones are not supported. For supported regions, see [Azure regions list](/azure/reliability/availability-zones-region-support). The successful deployment of availability zones is subject to the availability of compute resources in all of the zones in the region selected. Deployments fail if the virtual machine size you choose is not available in the region selected.
 
 1. Once the datacenter is created, you can run the [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-update) command to scale down or up your cluster. Change the value of `node-count` parameter to the desired value:
 
@@ -169,7 +169,7 @@ As with CQLSH, connecting from an application using one of the supported [Apache
 
 Disabling certificate verification is recommended because certificate verification does not work unless you map IP addresses of your cluster nodes to the appropriate domain. If you have an internal policy which mandates that you do SSL certificate verification for any application, you can facilitate by adding entries like `10.0.1.5 host1.managedcassandra.cosmos.azure.com` in your hosts file for each node. If taking this approach, you would also need to add new entries anytime you scale up nodes.
 
-For Java, we highly recommend enabling [speculative execution policy](https://docs.datastax.com/en/developer/java-driver/4.10/manual/core/speculative_execution/) where applications are sensitive to tail latency. You can find a demo illustrating how this works and how to enable the policy [here](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-speculative-execution).
+For Java, we highly recommend enabling [speculative execution policy](https://docs.datastax.com/en/developer/java-driver/4.10/manual/core/speculative_execution/) where applications are sensitive to tail latency. For a demo that illustrate how this works and how to enable the policy, see [Implementing speculative execution policy](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-speculative-execution).
 
 > [!NOTE]
 > Configuring certificates, rootCA, nodes, clients, or truststores is generally unnecessary for connecting to Azure Managed Instance for Apache Cassandra. SSL encryption uses the default truststore and the client's chosen runtime password (see sample code for [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started), and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started)). Certificates are trusted by default; if not, add them to the truststore.
@@ -198,7 +198,7 @@ To implement client-to-node certificate authentication or mutual Transport Layer
 
 ## Troubleshooting
 
-If you encounter an error when applying permissions to your Virtual Network using Azure CLI, such as *Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501'*, you can apply the same permission manually from the Azure portal. Learn how to do this [here](add-service-principal.md).
+If you encounter an error when applying permissions to your Virtual Network using Azure CLI, such as *Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501'*, you can apply the same permission manually from the Azure portal. For more information, see [Use the Azure portal to add Azure Cosmos DB service principal](add-service-principal.md).
 
 > [!NOTE]
 > The Azure Cosmos DB role assignment is used for deployment purposes only. Azure Managed Instanced for Apache Cassandra has no backend dependencies on Azure Cosmos DB.

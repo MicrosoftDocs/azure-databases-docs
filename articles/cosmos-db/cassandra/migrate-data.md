@@ -132,13 +132,13 @@ Use the following steps to migrate data to the API for Cassandra account with Sp
 
 1. Provision an [Azure Databricks cluster](spark-databricks.md) or an [Azure HDInsight cluster](spark-hdinsight.md). 
 
-1. Move data to the destination API for Cassandra endpoint. Refer to this [how-to guide](migrate-data-databricks.md) for migration with Azure Databricks.
+1. Move data to the destination API for Cassandra endpoint. For more information, see [Migrate data from Cassandra to an Azure Cosmos DB for Apache Cassandra account ](migrate-data-databricks.md).
 
 Migrating data by using Spark jobs is a recommended option if you have data residing in an existing cluster in Azure virtual machines or any other cloud. To do this, you must set up Spark as an intermediary for one-time or regular ingestion. You can accelerate this migration by using Azure ExpressRoute connectivity between your on-premises environment and Azure. 
 
 ### Live migration
 
-Where a zero-downtime migration from a native Apache Cassandra cluster is required, we recommend configuring dual-writes, and a separate bulk data load to migrate historical data. We've made implementing this pattern more straightforward by providing an open-source [dual-write proxy](https://github.com/Azure-Samples/cassandra-proxy) to allow for minimal application code changes. Take a look at our how-to article on [live migration using dual-write proxy and Apache Spark](migrate-data-dual-write-proxy.md) for more detail on implementing this pattern. 
+Where a zero-downtime migration from a native Apache Cassandra cluster is required, we recommend configuring dual-writes, and a separate bulk data load to migrate historical data. We've made implementing this pattern more straightforward by providing an open-source [dual-write proxy](https://github.com/Azure-Samples/cassandra-proxy) to allow for minimal application code changes. For more information, see [Live migrate data from Apache Cassandra to the Azure Cosmos DB for Apache Cassandra](migrate-data-dual-write-proxy.md).
 
 ## Clean up resources
 

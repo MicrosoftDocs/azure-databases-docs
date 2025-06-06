@@ -32,13 +32,13 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) and navigate to your Virtual Network resource.
 
-1. Open the **Subnets** tab and create a new subnet. To learn more about the fields in the **Added subnet** form, see the [Virtual Network](/azure/virtual-network/virtual-network-manage-subnet#add-a-subnet) article:
+1. Open the **Subnets** tab and create a new subnet. To learn more about the fields in the **Added subnet** form, see the [Add a subnet](/azure/virtual-network/virtual-network-manage-subnet#add-a-subnet).
 
    :::image type="content" source="media/configure-hybrid-cluster-cli/subnet.png" border="true" alt-text="Add a new subnet to your Virtual Network." lightbox="media/configure-hybrid-cluster-cli/subnet.png":::
     <!--  -->
 
    > [!NOTE]  
-   > The Deployment of an Azure Managed Instance for Apache Cassandra requires internet access. Deployment fails in environments where internet access is restricted. Make sure you aren't blocking access within your virtual network to the following vital Azure services that are necessary for Managed Cassandra to work properly. You can also find an extensive list of IP address and port dependencies [here](network-rules.md).
+   > The Deployment of an Azure Managed Instance for Apache Cassandra requires internet access. Deployment fails in environments where internet access is restricted. Make sure you aren't blocking access within your virtual network to the following vital Azure services that are necessary for Managed Cassandra to work properly. For a list of IP address and port dependencies, see [Required outbound network rules](network-rules.md).
    > - Azure Storage
    > - Azure KeyVault
    > - Azure Virtual Machine Scale Sets
@@ -60,7 +60,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
 
 1. Next, we configure resources for our hybrid cluster. Since you already have a cluster, the cluster name here will only be a logical resource to identify the name of your existing cluster. Make sure to use the name of your existing cluster when defining `clusterName` and `clusterNameOverride` variables in the following script.
 
-   You also need, at minimum, the seed nodes from your existing datacenter, and the gossip certificates required for node-to-node encryption. Azure Managed Instance for Apache Cassandra requires node-to-node encryption for communication between datacenters. If you don't have node-to-node encryption implemented in your existing cluster, you would need to implement it - see documentation [here](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLNodeToNode.html). You should supply the path to the location of the certificates. Each certificate should be in PEM format, for example, `-----BEGIN CERTIFICATE-----\n...PEM format 1...\n-----END CERTIFICATE-----`. In general, there are two ways of implementing certificates:
+   You also need, at minimum, the seed nodes from your existing datacenter, and the gossip certificates required for node-to-node encryption. Azure Managed Instance for Apache Cassandra requires node-to-node encryption for communication between datacenters. If you don't have node-to-node encryption implemented in your existing cluster, you would need to implement it. For more information, see [Node-to-node encryption](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLNodeToNode.html). You should supply the path to the location of the certificates. Each certificate should be in PEM format, for example, `-----BEGIN CERTIFICATE-----\n...PEM format 1...\n-----END CERTIFICATE-----`. In general, there are two ways of implementing certificates:
 
    1. Self signed certs. This means a private and public (no CA) certificate for each node - in this case we need all public certificates.
 
@@ -167,10 +167,10 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    > - Standard_D16s_v4
    > - Standard_D32s_v4
    >  
-   > Note also that `--availability-zone` is set to `false`. To enable availability zones, set this to `true`. Availability zones increase the availability SLA of the service. For more details, review the full SLA details [here](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
+   > Note also that `--availability-zone` is set to `false`. To enable availability zones, set this to `true`. Availability zones increase the availability SLA of the service. For more informatoin, see [SLA for Online Services](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]  
-   > Availability zones aren't supported in all regions. Deployments fail if you select a region where Availability zones aren't supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments might fail if the SKU you have selected, or capacity, isn't available across all zones.
+   > Availability zones aren't supported in all regions. Deployments fail if you select a region where Availability zones aren't supported. For supported regions, see [Azure regions list](/azure/reliability/availability-zones-region-support). The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments might fail if the SKU you have selected, or capacity, isn't available across all zones.
 
 1. Now that the new datacenter is created, run the show datacenter command to view its details:
 
@@ -276,7 +276,7 @@ The above instructions provide guidance for configuring a hybrid cluster. Howeve
 
 ## Troubleshooting
 
-If you encounter an error when applying permissions to your Virtual Network using Azure CLI, such as *Can't find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501'*, you can apply the same permission manually from the Azure portal. Learn how to do this [here](add-service-principal.md).
+If you encounter an error when applying permissions to your Virtual Network using Azure CLI, such as *Can't find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501'*, you can apply the same permission manually from the Azure portal. For more information, see [Use Azure portal to add Azure Cosmos DB service principal](add-service-principal.md).
 
 > [!NOTE]  
 > The Azure Cosmos DB role assignment is used for deployment purposes only. Azure Managed Instanced for Apache Cassandra has no backend dependencies on Azure Cosmos DB.
