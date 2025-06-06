@@ -18,7 +18,7 @@ Azure Managed Instance for Apache Cassandra provides metrics and diagnostic logg
 
 You can visualize metrics for Azure Managed Instance for Apache Cassandra in the Azure portal by going to your cluster resource and selecting **Metrics**. You can then choose from the available metrics and aggregations.
 
-:::image type="content" source="./media/azure-monitor/metrics.png" alt-text="Screenshot that shows the Metrics pane in the Azure portal.":::
+:::image type="content" source="./media/azure-monitor/metrics.png" alt-text="Screenshot that shows the Metrics pane in the Azure portal." lightbox="./media/azure-monitor/metrics.png":::
 
 ## Diagnostic settings in Azure
 
@@ -39,11 +39,11 @@ Platform metrics and activity logs are collected automatically. You must create 
 
 1. Go to your Azure Managed Instance for Apache Cassandra cluster resource.
 
-   :::image type="content" source="./media/azure-monitor/cluster.png" alt-text="Screenshot that shows selecting a cluster from a list of resources.":::
+   :::image type="content" source="./media/azure-monitor/cluster.png" alt-text="Screenshot that shows selecting a cluster from a list of resources." lightbox="./media/azure-monitor/cluster.png":::
 
 1. Select **Diagnostic settings** in the **Monitoring** section, and then select **Add diagnostic setting**.
 
-   :::image type="content" source="./media/azure-monitor/settings.png" alt-text="Screenshot that shows the pane for diagnostic settings and the button for adding a diagnostic setting.":::
+   :::image type="content" source="./media/azure-monitor/settings.png" alt-text="Screenshot that shows the pane for diagnostic settings and the button for adding a diagnostic setting." lightbox="./media/azure-monitor/settings.png":::
 
 1. On the **Diagnostic setting** pane, choose a name for your setting.
 
@@ -51,14 +51,14 @@ Platform metrics and activity logs are collected automatically. You must create 
 
 1. Under **Destination details**, choose your preferred destination for your logs. To send logs to a Log Analytics workspace, be sure to select **Resource specific** as the destination table.
 
-   :::image type="content" source="./media/azure-monitor/preferred-categories.png" alt-text="Screenshot that shows selections for a diagnostic setting.":::
+   :::image type="content" source="./media/azure-monitor/preferred-categories.png" alt-text="Screenshot that shows selections for a diagnostic setting." lightbox="./media/azure-monitor/preferred-categories.png":::
 
    > [!NOTE]
    > If you're sending logs to a Log Analytics workspace, they can take up to 20 minutes to appear. Until then, the resource-specific tables, shown under **Azure Managed Instance for Apache Cassandra**, aren't visible.  
 
 1. After you set up diagnostic logging and data is flowing, you can select **Logs** and query the available diagnostic logs by using Azure Data Explorer. For more information on Azure Monitor and Kusto Query Language, see [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview).
 
-   :::image type="content" source="./media/azure-monitor/query.png" alt-text="Screenshot that shows query logs.":::
+   :::image type="content" source="./media/azure-monitor/query.png" alt-text="Screenshot that shows query logs." lightbox="./media/azure-monitor/query.png":::
 
 ### <a id="create-setting-cli"></a> Create a diagnostic setting by using the Azure CLI
 

@@ -159,7 +159,7 @@ If all goes well, the connector should start weaving its magic. It should authen
 
 You can now query data in the tables. In the Azure portal, bring up the hosted CQL Shell for your Azure Cosmos DB account.
 
-:::image type="content" source="./media/kafka-connect/cqlsh.png" alt-text="Screenshot shows the Azure portal with the Open Cassandra Shell option highlighted.":::
+:::image type="content" source="./media/kafka-connect/cqlsh.png" alt-text="Screenshot shows the Azure portal with the Open Cassandra Shell option highlighted." lightbox="./media/kafka-connect/cqlsh.png":::
 
 ## Query data from Azure Cosmos DB
 

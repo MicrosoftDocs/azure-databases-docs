@@ -239,13 +239,13 @@ You can connect to the API for Cassandra in Azure Cosmos DB by using the CQLSH i
 > [!WARNING]
 > Connections to Azure Cosmos DB for Apache Cassandra don't work with DataStax Enterprise (DSE) or Cassandra 4.0 versions of CQLSH. Ensure that you use only v3.11 open source Apache Cassandra versions of CQLSH when connecting to API for Cassandra. 
 
-**Windows:**
+Windows:
 
 1. Install [Python 3](https://www.python.org/downloads/windows/).
 1. Install PIP.
 
    1. Before you install PIP, download the *get-pip.py* file.
-   1. Launch a command prompt window, if it isn't already open. To do so, open the Windows search bar, type **cmd** and select the icon.
+   1. Launch a command prompt window, if it isn't already open. To do so, open the Windows search bar, type *cmd* and select the icon.
    1. Then, run the following command to download the *get-pip.py* file:
 
    ```bash
@@ -271,7 +271,7 @@ You can connect to the API for Cassandra in Azure Cosmos DB by using the CQLSH i
 > [!NOTE]
 > You need to set the environment variables to point to  the Python 2 folder.
 
-**Install on Unix/Linux/Mac:**
+Install on Unix/Linux/Mac:
 
 ```bash
 # Install default-jre and default-jdk
@@ -290,7 +290,7 @@ sudo apt-get update
 sudo apt-get install cassandra=3.11.13
 ```
 
-**Connect with Unix/Linux/Mac:**
+Connect with Unix/Linux/Mac:
 
 ```bash
 # Export the SSL variables:
@@ -300,7 +300,9 @@ export SSL_VALIDATE=false
 # Connect to Azure Cosmos DB for Apache Cassandra:
 cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl --protocol-version=4
 ```
-**Connect with Docker:**
+
+Connect with Docker:
+
 ```bash
 docker run -it --rm -e SSL_VALIDATE=false -e SSL_VERSION=TLSv1_2 cassandra:3.11 cqlsh <account_name>.cassandra.cosmos.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> --ssl
 ```
