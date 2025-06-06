@@ -3,20 +3,20 @@
 - name: $center
   href: $center.md
 - name: $centerSphere
-  href: $centerSphere.md
+  href: $centersphere.md
 - name: $geoIntersects
   href: $geointersects.md
 - name: $geoWithin
-  href: $geoWithin.md
+  href: $geowithin.md
 - name: $geometry.
   href: $geometry.md
 - name: $maxDistance
-  href: $maxDistance.md
+  href: $maxdistance.md
 - name: $minDistance
-  href: $minDistance.md
+  href: $mindistance.md
 - name: $near
   href: $near.md
 - name: $nearSphere
-  href: $nearSphere.md
+  href: $nearsphere.md
 - name: $polygon
   href: $polygon.md
