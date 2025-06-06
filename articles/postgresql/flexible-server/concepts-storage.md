@@ -64,7 +64,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 #### Enable Premium SSD v2 High Availability Preview
 
-High availability is a opt-in feature and can be enabled at subscription level using the below steps.
+High availability is a opt-in feature and can be enabled at subscription level using the below steps. This is a preview feature and should be used only for development or test workloads. 
 
 1. In the **Search** bar, type **Preview features** and select it from the results.
 
