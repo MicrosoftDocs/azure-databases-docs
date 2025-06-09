@@ -116,7 +116,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce the following output:
+This produces the following output:
 
 ```json
 [
@@ -157,7 +157,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce the following output:
+This produces the following output:
 
 ```json
 [
