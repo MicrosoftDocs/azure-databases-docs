@@ -44,7 +44,7 @@ The syntax for the `$maxDistance` operator is as follows:
 
 ## Example
 
-Using the `stores` collection, let's find all stores within 10 Km of the "VanArsdel Picture Frame Store":
+Using the `stores` collection, let's find all stores within 10 KM of the "VanArsdel Picture Frame Store":
 
 ```javascript
 db.stores.find({
@@ -66,7 +66,7 @@ db.stores.find({
 
 This query returns stores like:
 - First Up Consultants Microphone Bazaar
-- Fabrikam Car Accessory Outlet and other stores within the 10 Km radius.
+- Fabrikam Car Accessory Outlet and other stores within the 10 KM radius.
 
 
 ## Related content
