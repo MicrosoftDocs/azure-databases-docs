@@ -77,7 +77,7 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Get First Store by Store Name Alphabetically
+### Example 1: Get first store by store name alphabetically
 
 Get the first store when sorted alphabetically by store name.
 
@@ -114,7 +114,7 @@ This will produce the following output:
 ]
 ```
 
-### Example 2: Get First Category by Sales Amount per Store
+### Example 2: Get first category by sales amount per store
 
 Get the first category (alphabetically) for each store along with store details.
 
@@ -160,7 +160,7 @@ This will produce output showing the first category alphabetically for each stor
 ]
 ```
 
-### Example 3: Get First Promotion Event per Store
+### Example 3: Get first promotion event per store
 
 Get the first promotion event for each store based on start date.
 

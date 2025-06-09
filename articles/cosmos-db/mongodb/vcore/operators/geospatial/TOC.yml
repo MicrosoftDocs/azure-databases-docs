@@ -1,2 +1,22 @@
+- name: $box
+  href: $box.md
+- name: $center
+  href: $center.md
+- name: $centerSphere
+  href: $centersphere.md
 - name: $geoIntersects
   href: $geointersects.md
+- name: $geoWithin
+  href: $geowithin.md
+- name: $geometry
+  href: $geometry.md
+- name: $maxDistance
+  href: $maxdistance.md
+- name: $minDistance
+  href: $mindistance.md
+- name: $near
+  href: $near.md
+- name: $nearSphere
+  href: $nearsphere.md
+- name: $polygon
+  href: $polygon.md
