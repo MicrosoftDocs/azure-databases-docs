@@ -1,7 +1,7 @@
 ---
   title: The `$allElementsTrue` operator returns true if all elements in an array evaluate to true (including empty array) else returns false.
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $elemMatch operator returns only the first element from an array.
+  description: The $allElementsTrue operator returns true if all elements in an array evaluate to true.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db

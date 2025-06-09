@@ -1,7 +1,7 @@
 - name: $allElementsTrue
   href: $allElementsTrue.md
-- name: $anyElementsTrue
-  href: $anyElementsTrue.md
+- name: $anyElementTrue
+  href: $anyElementTrue.md
 - name: $setDifference
   href: $setDifference.md
 - name: $setEquals
