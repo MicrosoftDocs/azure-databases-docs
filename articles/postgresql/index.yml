@@ -34,8 +34,6 @@ landingContent:
         links:
           - text: Create an Azure Database for PostgreSQL flexible server
             url: flexible-server/quickstart-create-server.md
-          - text: Create an Instance of Elastic cluster
-            url: flexible-server/quickstart-create-elastic-cluster-portal.md
       - linkListType: how-to-guide
         links:
           - text: Manage server
@@ -56,6 +54,8 @@ landingContent:
             url: flexible-server/concepts-backup-restore.md
           - text: Networking with Private Endpoint
             url: flexible-server/concepts-networking-private-link.md
+          - text: Create an Instance of Elastic cluster
+            url: flexible-server/quickstart-create-elastic-cluster-portal.md
       - linkListType: how-to-guide
         links:
           - text: Manage high availability
