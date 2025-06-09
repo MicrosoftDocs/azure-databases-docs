@@ -14,7 +14,7 @@ ms.date: 02/12/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$near` operator returns documents whose location field is near a specified point, sorted by distance. It requires a 2dsphere index and returns documents from nearest to farthest.
+The `$near` operator returns documents whose location field is near a specified point, sorted by distance. It requires a '2dsphere' index and returns documents from nearest to farthest.
 
 ## Syntax
 
@@ -44,7 +44,7 @@ The `$near` operator returns documents whose location field is near a specified 
 
 ## Examples
 
-Create the required 2dsphere index:
+Create the required '2dsphere' index:
 
 ```javascript
 db.stores.createIndex({ "location": "2dsphere" })
@@ -70,7 +70,7 @@ db.stores.find({
 ```
 
 ### Example 2: Using Maximum Distance
-Find stores within 10 Km of First Up Consultants Microphone Bazaar (-112.7858, -29.1866):
+Find stores within 10 KM of First Up Consultants Microphone Bazaar (-112.7858, -29.1866):
 
 ```javascript
 db.stores.find({
@@ -90,7 +90,7 @@ db.stores.find({
 ```
 
 ### Example 3: Using Both Min and Max Distance
-Find stores between 10 and 50 Kms from Wide World Importers (-82.5543, -65.105):
+Find stores between 10 and 50 KM from Wide World Importers (-82.5543, -65.105):
 
 ```javascript
 db.stores.aggregate([
@@ -101,8 +101,8 @@ db.stores.aggregate([
         coordinates: [-82.5543, -65.105]
       },
       distanceField: "distance",
-      minDistance: 10000,    // 10 Km in meters
-      maxDistance: 50000,    // 50 Km in meters,
+      minDistance: 10000,    // 10 KM in meters
+      maxDistance: 50000,    // 50 KM in meters,
       spherical: true
     }
   },
