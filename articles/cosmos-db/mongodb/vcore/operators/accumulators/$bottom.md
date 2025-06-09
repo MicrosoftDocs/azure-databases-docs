@@ -82,7 +82,7 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Find Store with Lowest Total Sales
+### Example 1: Find store with lowest total sales
 
 Find the store with the lowest total sales among all stores.
 
@@ -121,7 +121,7 @@ This will produce the following output:
 ]
 ```
 
-### Example 2: Find Lowest Performing Category per Store
+### Example 2: Find lowest performing category per store
 
 Find the category with the lowest sales in each store that has multiple categories.
 

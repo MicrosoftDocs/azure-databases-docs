@@ -99,7 +99,7 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Get Top Selling Category per Store
+### Example 1: Get top selling category per store
 
 Find the highest-selling category for each store.
 
@@ -144,7 +144,7 @@ This will produce output showing the top-selling category for each store:
 ]
 ```
 
-### Example 2: Get Highest Discount by Category
+### Example 2: Get highest discount by category
 
 Find the category with the highest discount percentage across all promotion events for each store.
 

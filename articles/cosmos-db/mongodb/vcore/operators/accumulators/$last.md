@@ -113,7 +113,7 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Get Last Promotion Event by Date
+### Example 1: Get last promotion event by date
 
 Get the most recent promotion event for each store by grouping stores and finding the last promotion event when sorted by date.
 
@@ -159,7 +159,7 @@ This will produce output showing the most recent promotion event for each store:
 ]
 ```
 
-### Example 2: Get Last Sales Category by Sales Amount
+### Example 2: Get last sales category by sales amount
 
 Find the highest-selling category (last when sorted by sales amount) for each store.
 
