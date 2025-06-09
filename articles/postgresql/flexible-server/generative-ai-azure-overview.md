@@ -1,5 +1,5 @@
 ---
-title: Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL.
+title: Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL
 description: Use vector indexes and OpenAI embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns.
 author: mulander
 ms.author: adamwolk
@@ -12,6 +12,7 @@ ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - ignite-2023
   - build-2024
+  - build-2025
 ---
 
 # Azure AI extension in Azure Database for PostgreSQL
@@ -30,7 +31,7 @@ Before you can enable `azure_ai` on your Azure Database for PostgreSQL flexible 
 Then you can install the extension, by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database you want the extension to be available in.
 
 ```sql
-CREATE EXTENSION azure_ai;
+CREATE EXTENSION IF NOT EXISTS azure_ai;
 ```
 
 > [!NOTE]

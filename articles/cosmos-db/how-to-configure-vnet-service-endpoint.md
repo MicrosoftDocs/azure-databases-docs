@@ -13,6 +13,9 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
+> [!NOTE]
+> Azure Cosmos DB account and the virtual network (VNET) must be within the same Microsoft Entra ID Tenant.
+
 You can configure the Azure Cosmos DB account to allow access only from a specific subnet of a virtual network (VNET). Enable [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) on a subnet within a virtual network to control access to Azure Cosmos DB. The traffic from that subnet is sent to Azure Cosmos DB with the identity of the subnet and Virtual Network. Once the Azure Cosmos DB service endpoint is enabled, you can limit access to the subnet by adding it to your Azure Cosmos DB account.
 
 By default, an Azure Cosmos DB account is accessible from any source if the request is accompanied by a valid authorization token. When you add one or more subnets within VNets, only requests originating from those subnets will get a valid response. Requests originating from any other source will receive a 403 (Forbidden) response.

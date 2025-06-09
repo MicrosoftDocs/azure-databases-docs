@@ -17,12 +17,12 @@
       href: faq.yml
 - name: Quickstarts
   items:
-    - name: Develop app - Node.js
-      href: quickstart-nodejs.md
-    - name: Develop app - Python
-      href: quickstart-python.md
     - name: Develop app - .NET
       href: quickstart-dotnet.md
+    - name: Develop app - Python
+      href: quickstart-python.md
+    - name: Develop app - Node.js
+      href: quickstart-nodejs.md
     - name: Create resources - Azure portal
       href: quickstart-portal.md
     - name: Create resources - Bicep template
@@ -35,32 +35,48 @@
       items:
         - name: Node.js
           href: tutorial-nodejs-web-app.md
+    - name: Build GenAI applications
+      items:
+        - name: Real-time custom content generation
+          href: ai-advertisement-generation.md
 - name: Concepts
   items:
     - name: Vector database
       href: vector-search.md
-    - name: Real-time custom content generation
-      href: ai-advertisement-generation.md
     - name: Free tier
       href: free-tier.md
     - name: Multicloud solution
       href: multi-cloud.md
-    - name: Burstable tier
-      href: burstable-tier.md
     - name: Open source
       href: oss.md
+    - name: First-party MongoDB service
+      href: azure-mongo-first-party.md
     - name: Integrated vector database
       items:
-        - name: Integrated vector database overview
-          href: vector-search.md
-        - name: Exact Nearest Neighbor (ENN) Vector Search
-          href: enn-vector-search.md
+        - name: Data Retrieval
+          items: 
+            - name: Vector Search
+              href: vector-search.md
+            - name: Full-text search
+              href: full-text-search.md
+            - name: Hybrid Search
+              href: hybrid-search.md
+            - name: Exact Nearest Neighbor (ENN) Vector Search
+              href: enn-vector-search.md
+            - name: RAG with Langchain & OpenAI
+              href: rag.md
+        - name: Vector Index Compression
+          items: 
+            - name: Product Quantization
+              href: product-quantization.md
+            - name: Half-Precision Vector Indexing
+              href: half-precision.md
         - name: Open-source vector databases
           href: vector-search-ai.md
-        - name: RAG with Langchain & OpenAI
-          href: rag.md
     - name: MongoDB compatibility and feature support
       href: compatibility-and-feature-support.md
+    - name: Managed service compatibility
+      href: managed-service-compatibility.md
     - name: Support for Geospatial Queries
       href: geospatial-support.md
     - name: Availability and disaster recovery (DR)
@@ -87,6 +103,14 @@
          href: autoscale.md
        - name: Burstable tier
          href: burstable-tier.md
+    - name: Security
+      items: 
+        - name: Security overview
+          href: security.md
+        - name: Microsoft Entra ID authentication
+          href: entra-authentication.md
+        - name: Data encryption
+          href: database-encryption-at-rest.md
     - name: Indexing
       href: indexing.md
     - name: Change Stream
@@ -97,24 +121,35 @@
       href: migration-options.md
     - name: Service limits
       href: limits.md
-    - name: Security
-      items: 
-        - name: Security overview
-          href: security.md
-        - name: Data encryption
-          href: database-encryption-at-rest.md
 - name: Migrate data
   items:
+    - name: Migrate from Azure Cosmos DB for Mongo (RU)
+      href: ../how-to-migrate-vcore.md?context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: Premigration assessment
       href: how-to-assess-plan-migration-readiness.md
+    - name: Online migration tools
+      href: migration-options.md#web-app-utility-online
     - name: Native tools
       href: how-to-migrate-native-tools.md
-    - name: Azure Data Studio
-      href: /azure-data-studio/extensions/database-migration-for-mongo-extension 
+    
 - name: How to
   items:
     - name: Visual Studio Code extension
       href: ../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=CBDMongovCore&context=/azure/cosmos-db/mongodb/vcore/context/context
+    - name: Build a console app
+      items:
+        - name: .NET
+          href: how-to-build-dotnet-console-app.md
+        - name: Python
+          href: how-to-build-python-console-app.md
+        - name: Node.js
+          href: how-to-build-nodejs-console-app.md
+        - name: Java
+          href: how-to-build-java-console-app.md
+        - name: Go
+          href: how-to-build-go-console-app.md
+        - name: Rust
+          href: how-to-build-rust-console-app.md
     - name: Use community tools
       items:
         - name: Connect using Studio 3T
@@ -167,6 +202,8 @@
         href: how-to-monitor-diagnostics-logs.md
     - name: Security and data access
       items:
+      - name: Configure Entra ID authentication
+        href: how-to-configure-entra-authentication.md
       - name: Manage private access
         href: how-to-private-link.md
       - name: Manage public access

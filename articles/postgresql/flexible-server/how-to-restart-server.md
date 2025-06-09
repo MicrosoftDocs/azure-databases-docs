@@ -1,23 +1,26 @@
 ---
-title: Restart a server
-description: This article describes how to restart an Azure Database for PostgreSQL flexible server.
+title: Restart PostgreSQL engine
+description: This article describes how to restart the PostgreSQL engine of an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 04/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to restart an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to restart the PostgreSQL engine of an Azure Database for PostgreSQL flexible server.
 ---
 
-# Restart a server
+# Restart PostgreSQL engine
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to restart an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to restart the PostgreSQL engine hosted by an Azure Database for PostgreSQL flexible server.
 
-## Steps to restart a server
+> [!IMPORTANT]
+> The restart of the PostgreSQL engine hosted in an Azure Database for PostgreSQL flexible server, doesn't restart the compute (virtual machine) which hosts it. It only restarts the database engine process.
+
+## Steps to restart PostgreSQL engine
 
 ### [Portal](#tab/portal-restart-server)
 
@@ -53,7 +56,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-restart-server)
 
-You can restart a started server via the [az postgres flexible-server restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
+You can restart the PostgreSQL engine hosted in a started server via the [az postgres flexible-server restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
 
 ```azurecli-interactive
 az postgres flexible-server restart \
@@ -61,10 +64,9 @@ az postgres flexible-server restart \
   --name <server>
 ```
 
-If you attempt to restart a server which isn't in `Ready` state, you receive an error like this:
+If you attempt to restart the PostgreSQL engine on a server which isn't in `Ready` state, you receive an error like this:
 
 ```output
-Server will be automatically started after 7 days if you do not perform a manual start operation
 (ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
 Code: ServerIsNotReady
 Message: Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
@@ -77,6 +79,6 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 
 ## Related content
 
-- [Stop a server](how-to-stop-server.md).
+- [Start compute of a server](how-to-start-server.md).
+- [Stop compute of a server](how-to-stop-server.md).
 - [Configure high availability](how-to-configure-high-availability.md).
-- [Download PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).

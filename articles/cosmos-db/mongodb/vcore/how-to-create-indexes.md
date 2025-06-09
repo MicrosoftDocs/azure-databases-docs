@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 6/24/2024
+ms.date: 5/28/2025
 ---
 
 # Indexing Best Practices in Azure Cosmos DB for MongoDB vCore
@@ -25,11 +25,8 @@ Indexes should be created only for queryable fields. Wildcard indexing should be
 
 When a new document is inserted for the first time or an existing document is updated or deleted, each of the specified fields in the index is also updated. If the indexing policy contains a large number of fields (or all the fields in the document), more resources are consumed by the server in updating the corresponding indexes. When running at scale, only the queryable fields should be indexed while all remaining fields not used in query predicates should remain excluded from the index. 
 
-## Create the necessary indexes before data ingestion
-For optimal performance, indexes should be created upfront before data is loaded. All document writes, updates and deletes will synchronously update the corresponding indices. If indexes are created after data is ingested, more server resources are consumed to index historical data. Depending on the size of the historical data, this operation is time consuming and impacts steady state read and write performance.
-
-> [!NOTE]
-> For scenarios where read patterns change and indexes need to be added, background indexing should be enabled, which can be done through a support ticket.
+## Indexing strategy for efficient data ingestion
+For large workload migrations into Azure Cosmos DB for MongoDB vCore, it's recommended to create indexes after the data load for efficient execution. This significantly reduces write overhead, minimizes resource consumption, and accelerates data ingestion performance. Maintaining indexes during bulk ingestion can slow down inserts, as each write operation must update all applicable indexes.
 
 ## For multiple indexes created on historical data, issue nonblocking createIndex commands for each field
 It is not always possible to plan for all query patterns upfront, particularly as application requirements evolve. Changing application needs inevitably requires fields to be added to the index on a cluster with a large amount of historical data. 
@@ -61,7 +58,7 @@ Consider the following document within the 'cosmicworks' database and 'employee'
 }
 ```
 
-Consider the following query to find all employees with last name 'Smith' with the organization for more than 5 years:
+Consider the following query to find all employees with last name 'Smith' with the organization for more than five years:
 ```javascript
 db.employee.find({"lastName": "Smith", "timeInOrgInYears": {"$gt": 5}})
 ```
@@ -117,9 +114,9 @@ When a createIndex operation is in progress, the response looks like:
 ```
 
 ## Enable Large Index Keys by default
-Even if the documents do not contain keys that have a large number of characters or the documents do not contain multiple levels of nesting, specifying large index keys ensures these scenarios are covered.
+Even if the documents do not contain keys that have a large number of characters or the documents do not contain multiple levels of nesting, specifying large index keys ensures these scenarios are covered. Now the large index key is the default behavior of the engine.
 
-Consider this sampe to enable large index keys on the 'large_index_coll' collection in the 'cosmicworks' database.
+Consider this sample to enable large index keys on the 'large_index_coll' collection in the 'cosmicworks' database.
 
 ```javascript
 use cosmicworks;
@@ -139,7 +136,7 @@ db.runCommand(
 ## Prioritizing Index Builds over new Write Operations using the Blocking Option
 For scenarios in which the index should be created before data is loaded, the blocking option should be used to block incoming writes until the index build completes.
 
-Setting `{ "blocking": true }` is particularly useful in migration utilities where indexes are created on empty collections before data writes commence.
+Setting `{ "blocking": true }` is useful in migration utilities where indexes are created on empty collections before data writes commence.
 
 Consider an example of the blocking option for index creation on the 'employee' collection in the 'cosmicworks' database:
 

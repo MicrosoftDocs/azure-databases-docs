@@ -1,18 +1,22 @@
 ---
-title: Azure Cosmos DB indexing policies
+title: Indexing policies
+titleSuffix: Azure Cosmos DB
 description:  Learn how to configure and change the default indexing policy for automatic indexing and greater performance in Azure Cosmos DB.
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 09/26/2024
-ms.custom: build-2024, ignite-2024
+ms.date: 05/08/2025
+ms.custom:
+  - build-2024
+  - ignite-2024
+  - build-2025
+appliesto:
+  - NoSQL
 ---
 
 # Indexing policies in Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In Azure Cosmos DB, every container has an indexing policy that dictates how the container's items should be indexed. The default indexing policy for newly created containers indexes every property of every item and enforces range indexes for any string or number. This allows you to get good query performance without having to think about indexing and index management upfront.
 
@@ -120,11 +124,11 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 
 - The path `/*` must be either an included path or excluded path.
 
-## Full text indexes
+## Full-text indexes
 > [!NOTE]
->  You must enable the [Full Text  & Hybrid Search for NoSQL API](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) preview feature to specify a full text index.
+>  You must enable the [Full Text & Hybrid Search for NoSQL API](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) feature to specify a full text index.
 
-**Full text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the text paths to be indexed. For example:
+**Full-text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the text paths to be indexed. For example:
 
 ```json
 {

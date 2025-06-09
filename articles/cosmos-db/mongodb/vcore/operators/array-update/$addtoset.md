@@ -1,24 +1,24 @@
 --- 
-title: $addToSet (array update) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Adds elements to an array only if they don't already exist in the array.
+title: $addToSet
+titleSuffix: Overview of the addToSet operation in Azure Cosmos DB for MongoDB vCore
+description: The addToSet operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 10/15/2024
+ms.date: 05/04/2025
 ---
 
 # $addToSet (array update)
 
-The `$addToSet` operator adds elements to an array only if they don't already exist in the array. This operator ensures that there are no duplicate items in the array.
+The `$addToSet` operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
 
 ## Syntax
 
-```javascript
+```mongodb
 {
-  $addToSet: { <field1>: <value1>, ... }
+  "$addToSet": { <field1>: <value1>, ... }
 }
 ```
 
@@ -31,7 +31,7 @@ The `$addToSet` operator adds elements to an array only if they don't already ex
 
 ## Example
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -96,10 +96,10 @@ Let's understand the usage with the following sample json.
 ### Example 1: Adding a new tag to the `tag` array
 
 
-```json
+```mongodb
 db.stores.update(
-  { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $addToSet: { tag: "#ShopLocal" } }
+  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
+  { "$addToSet": { "tag": "#ShopLocal" } }
 )
 ```
 
@@ -123,8 +123,8 @@ Add a new promotional event to the `promotionEvents` array, only if it doesn't a
 
 ```json
 db.stores.update(
-  { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $addToSet: { promotionEvents: {
+  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
+  { "$addToSet": { "promotionEvents": {
       "eventName": "Summer Sale",
       "promotionalDates": {
         "startDate": { "Year": 2024, "Month": 6, "Day": 1 },

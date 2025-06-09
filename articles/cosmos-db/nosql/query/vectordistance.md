@@ -9,7 +9,11 @@ ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
 ms.date: 08/22/2024
-ms.custom: query-reference, build-2024, ignite-2024
+ms.custom:
+  - query-reference
+  - build-2024
+  - ignite-2024
+  - build-2025
 ---
 
 # VectorDistance (NoSQL query)
@@ -31,7 +35,7 @@ VectorDistance(<vector_expr_1>, <vector_expr_2>, <bool_expr>, <obj_expr>)
 | **`vector_expr_1`** | An array of `float32` or smaller. |
 | **`vector_expr_2`** | An array of `float32` or smaller. |
 | **`bool_expr`** | An optional boolean specifying how the computed value is used in an ORDER BY expression. If `true`, then brute force is used. A value of `false` uses any index defined on the vector property, if it exists. Default value is `false`. |
-|**`obj_expr`**| An optional JSON formatted object literal used to specify options for the vector distance calculation. Valid items include `distanceFunction` and `dataType`, and `searchListSizeMultiplier`. |
+|**`obj_expr`**| An optional JSON formatted object literal used to specify options for the vector distance calculation. Valid items include `distanceFunction`, `dataType`, and `searchListSizeMultiplier`. |
 
 Supported parameters for the optional `obj_expr`
 
@@ -39,7 +43,10 @@ Supported parameters for the optional `obj_expr`
 | --- | --- | 
 | **`distanceFunction`** | The metric used to compute distance/similarity. |
 | **`dataType`** | The data type of the vectors. `float32`, `int8`, `uint8` values. Default value is `float32`. |
-| **`searchListSizeMultiplier`** | An integer specifying the size of the search list when conducting a vector search.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=5, Max=100. |
+| **`searchListSizeMultiplier`** | An integer specifying the size of the search list when conducting a vector search on the DiskANN index.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=10, Max=100. |
+| **`quantizedVectorListMultiplier`** | An integer specifying the size of the search list when conducting a vector search on the quantizedFlat index.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=5, Max=100. |
+
+
 
 Supported metrics for `distanceFunction` are:
 

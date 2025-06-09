@@ -4,7 +4,7 @@ description: The following extensions and modules, organized by version of Postg
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 03/10/2025
+ms.date: 06/04/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article

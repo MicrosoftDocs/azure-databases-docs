@@ -16,7 +16,7 @@ ms.custom: cosmos-db-video
 Azure Cosmos DB for MongoDB takes advantage of the core index-management capabilities of Azure Cosmos DB. This article focuses on how to add indexes using Azure Cosmos DB for MongoDB. Indexes are specialized data structures that make querying your data roughly an order of magnitude faster.
 
 >
-> [!VIDEO https://aka.ms/docs.mongo-indexing]
+> [!VIDEO https://www.youtube.com/embed/qHFVwvfqZMA?si=rq2EOJSH8qY_09br]
 
 ## Indexing for MongoDB server version 3.6 and higher
 
@@ -190,9 +190,6 @@ You can also create wildcard indexes using the Data Explorer in the Azure portal
 > If you are just starting development, we **strongly** recommend starting off with a wildcard index on all fields. This can simplify development and make it easier to optimize queries.
 
 Documents with many fields may have a high Request Unit (RU) charge for writes and updates. Therefore, if you have a write-heavy workload, you should opt to individually index paths as opposed to using wildcard indexes.
-
-> [!NOTE]
-> Support for unique index on existing collections with data is available in preview. This feature can be enabled for your database account by enabling the ['EnableUniqueIndexReIndex' capability](./how-to-configure-capabilities.md#available-capabilities).
 
 ### Limitations
 

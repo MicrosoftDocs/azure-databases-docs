@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path_from_root": "/articles/cosmos-db/gen-ai/document-ingestion.md",
+      "redirect_url": "/articles/cosmos-db/gen-ai/document-indexer.md",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/mongodb/create.md",
       "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/create.sh",
       "redirect_document_id": false
@@ -6346,6 +6351,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/nosql/materialized-views.md",
+      "redirect_url": "/azure/cosmos-db/nosql/global-secondary-indexes",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/how-to-configure-materialized-views.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-configure-global-secondary-indexes",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/nosql/security/context/context.json.yml",
       "redirect_url": "/azure/cosmos-db/nosql/context/context.json",
       "redirect_document_id": false
@@ -6494,6 +6509,61 @@
       "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/update-region.md",
       "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-update-region.ps1",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-create-managed-identities.md",
+      "redirect_url": "/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-get-signed-in-identity.md",
+      "redirect_url": "/cli/azure/ad/signed-in-user",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/how-to-create-managed-identities.md",
+      "redirect_url": "/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/how-to-get-signed-in-identity.md",
+      "redirect_url": "/cli/azure/ad/signed-in-user",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/index.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/glossary.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security-glossary",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/reference-data-plane-roles.md",
+      "redirect_url": "/azure/cosmos-db/nosql/reference-data-plane-security#built-in-roles",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/reference-data-plane-actions.md",
+      "redirect_url": "/azure/cosmos-db/nosql/reference-data-plane-security#built-in-actions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-disable-key-based-authentication.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-disable-key-based-authentication",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-grant-control-plane-role-based-access.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-grant-control-plane-access",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-grant-data-plane-access",
+      "redirect_document_id": true
     }
   ]
 }

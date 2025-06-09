@@ -141,7 +141,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
 
 ## Connect to your cluster
 
-Azure Managed Instance for Apache Cassandra does not create nodes with public IP addresses. To connect to your new Cassandra cluster, you must create another resource inside the same virtual network. This resource can be an application, or a virtual machine (VM) with Apache's open-source query tool [CQLSH](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html) installed.
+Azure Managed Instance for Apache Cassandra does not create nodes with public IP addresses. To connect to your new Cassandra cluster, you must create another resource inside the same virtual network. This resource can be an application, or a virtual machine (VM) with Apache's open-source query tool [CQLSH](https://cassandra.apache.org/doc/stable/cassandra/managing/tools/cqlsh.html) installed.
 
 You can use a [Resource Manager template](https://azure.microsoft.com/resources/templates/vm-simple-linux/) to deploy an Ubuntu virtual machine.
 
@@ -159,13 +159,13 @@ sudo apt install openjdk-8-jdk openjdk-8-jre
 ```
 Check which [versions of Cassandra are still supported](https://cassandra.apache.org/_/download.html) and pick the version you need. Stable versions are recommended.
 
-Install the Cassandra libraries in order to get CQLSH by following the official steps from the [Cassandra documentation](https://cassandra.apache.org/doc/stable/cassandra/getting_started/installing.html#installing-the-debian-packages)
+Install the Cassandra libraries in order to get CQLSH by following the official steps from the [Cassandra documentation](https://cassandra.apache.org/doc/stable/cassandra/managing/tools/cqlsh.html)
 
 Connect by simply using cqlsh, as described in the documentation.
 
 ### Connecting from an application
 
-As with CQLSH, connecting from an application using one of the supported [Apache Cassandra client drivers](https://cassandra.apache.org/doc/latest/cassandra/getting_started/drivers.html) requires SSL encryption to be enabled, and certification verification to be disabled. See samples for connecting to Azure Managed Instance for Apache Cassandra using [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started) and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started).
+As with CQLSH, connecting from an application using one of the supported [Apache Cassandra client drivers](https://cassandra.apache.org/doc/stable/cassandra/getting-started/drivers.html) requires SSL encryption to be enabled, and certification verification to be disabled. See samples for connecting to Azure Managed Instance for Apache Cassandra using [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started) and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started).
 
 Disabling certificate verification is recommended because certificate verification does not work unless you map IP addresses of your cluster nodes to the appropriate domain. If you have an internal policy which mandates that you do SSL certificate verification for any application, you can facilitate by adding entries like `10.0.1.5 host1.managedcassandra.cosmos.azure.com` in your hosts file for each node. If taking this approach, you would also need to add new entries anytime you scale up nodes.
 
@@ -182,7 +182,7 @@ Configuring client certificates is **optional**. A client application can connec
 
 **Certificates signed by a CA**: These can be issued by a self-signed CA or a public CA. For this setup, you need the root CA certificate (see [instructions on preparing SSL certificates](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLCertWithCA.html) for production) and all intermediary certificates (if applicable).
 
-To implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS), provide the certificates via Azure CLI. The following command uploads and applies your client certificates to the truststore for your Cassandra Managed Instance cluster (no need to modify `cassandra.yaml` settings). Once applied, the cluster will require Cassandra to verify certificates during client connections (see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/latest/cassandra/configuration/cass_yaml_file.html#client_encryption_options)).
+To implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS), provide the certificates via Azure CLI. The following command uploads and applies your client certificates to the truststore for your Cassandra Managed Instance cluster (no need to modify `cassandra.yaml` settings). Once applied, the cluster will require Cassandra to verify certificates during client connections (see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html)).
 
 
    ```azurecli-interactive

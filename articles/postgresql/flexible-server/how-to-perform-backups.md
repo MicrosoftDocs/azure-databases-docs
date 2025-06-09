@@ -1,5 +1,5 @@
 ---
-title: Perform on-demand backups (preview)
+title: Perform on-demand backups
 description: This article describes how to perform on-demand backups of an Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how can I performn on-demand backups of an Azure Database for PostgreSQL flexible server.
 ---
 
-# Perform on-demand backups (preview)
+# Perform on-demand backups
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -29,11 +29,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-on-demand-backup/backup-and-restore.png" alt-text="Screenshot showing the Backup and restore page." lightbox="./media/how-to-on-demand-backup/backup-and-restore.png":::
 
-3. Select **Backup (preview)**.
+3. Select **Backup**.
 
     :::image type="content" source="./media/how-to-on-demand-backup/backup-now.png" alt-text="Screenshot showing the Backup now button in the Backup and restore page." lightbox="./media/how-to-on-demand-backup/backup-now.png":::
 
-4.  In the **Backup (preview)** pane, the **Backup name** text box is prefilled with a unique name automatically generated for your backup. Feel free to change that name to any name of your preference.
+4.  In the **Backup** pane, the **Backup name** text box is prefilled with a unique name automatically generated for your backup. Feel free to change that name to any name of your preference.
 
     :::image type="content" source="./media/how-to-on-demand-backup/backup-name.png" alt-text="Screenshot showing the Take backup pane and highlighting the text box in which you have to provide the backup name." lightbox="./media/how-to-on-demand-backup/backup-name.png":::
 

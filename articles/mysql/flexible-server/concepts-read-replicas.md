@@ -48,8 +48,6 @@ You can create a read replica in a different region from your source server. Cro
 
 ## Create a replica
 
-If a source server has no existing replica servers, the source first restarts to prepare itself for replication.
-
 When you start the create replica workflow, a blank Azure Database for MySQL Flexible Server instance is created. The new server is filled with the data that was on the source server. The creation time depends on the amount of data on the source and the time since the last weekly full backup. The time can range from a few minutes to several hours.
 
 > [!NOTE]  
@@ -142,7 +140,7 @@ If GTID is enabled on a source server (`gtid_mode` = ON), newly created replicas
 | :- | :- |
 | Replica on server in Burstable Pricing Tier | Not supported |
 | Pricing | The cost of running the replica server is based on the region where the replica server is running |
-| Source server restart | When you create a replica for a source that has no existing replicas, the source will first restart to prepare itself for replication. Take this into consideration and perform these operations during an off-peak period |
+| Source server downtime/restart | No restart or downtime will be needed when creating read replica, this operation is an online operation |
 | New replicas | A read replica is created as a new Azure Database for MySQL Flexible Server instance. An existing server can't be made into a replica. You can't create a replica of another read replica. |
 | Replica configuration | A replica is created by using the same server configuration as the source. After a replica is created, several settings can be changed independently from the source server: compute generation, vCores, storage, and backup retention period. The compute tier can also be changed independently.<br /><br />**IMPORTANT** - Before a source server configuration is updated to new values, update the replica configuration to equal or greater values. This action ensures the replica can keep up with any changes made to the source.<br />Connectivity method and parameter settings are inherited from the source server to the replica when the replica is created. Afterwards, the replica's rules are independent. |
 | Stopped replicas | If you stop replication between a source server and a read replica, the stopped replica becomes a standalone server that accepts both reads and writes. The standalone server can't be made into a replica again. |

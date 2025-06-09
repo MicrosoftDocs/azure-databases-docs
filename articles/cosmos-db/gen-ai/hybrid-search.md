@@ -1,5 +1,5 @@
 ---
-title: Use hybrid search (preview)
+title: Use hybrid search
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Overview of hybrid search that combines vector search with full-text search scoring in Azure Cosmos DB for NoSQL.
 author: jcodella
@@ -11,11 +11,15 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
+ms.custom:
+  - build-2025
 ---
 
-# Hybrid search in Azure Cosmos DB for NoSQL (preview)
+# Hybrid search in Azure Cosmos DB for NoSQL
 
-Azure Cosmos DB for NoSQL now supports a powerful hybrid search capability that combines Vector Search with Full Text Search scoring (BM25) using the Reciprocal Rank Fusion (RRF) function.
+[!INCLUDE [Ongoing Deployment](../nosql/includes/deployment-ongoing.md)]
+
+Azure Cosmos DB for NoSQL now supports the hybrid search capability that combines Vector Search with Full Text Search scoring (BM25) using the Reciprocal Rank Fusion (RRF) function.
 
 ## What is hybrid search?
 
@@ -35,7 +39,6 @@ The results from vector search and full text search are then combined using the 
 ## How to use hybrid search
 
 1. Enable the [Vector Search in Azure Cosmos DB for NoSQL feature](../nosql/vector-search.md#enable-the-vector-indexing-and-search-feature).
-1. Enable the [Full Text & Hybrid Search for NoSQL preview feature](../gen-ai/full-text-search.md#enable-the-full-text-and-hybrid-search-for-nosql-preview-feature).
 1. Create a container with a vector policy, full text policy, vector index, and full text index.
 1. Insert your data with text and vector properties.
 1. Run hybrid queries against the data.
@@ -43,7 +46,7 @@ The results from vector search and full text search are then combined using the 
 ## Configure policies and indexes for hybrid search
 
 > [!IMPORTANT]
-> Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
+> Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection. Other indexes still remain mutable.
 
 ### A sample vector policy
 
@@ -114,7 +117,7 @@ Hybrid search queries can be executed by leveraging the [`RRF`](../nosql/query/r
 ```sql
 SELECT TOP @k *
 FROM c
-ORDER BY RANK RRF(VectorDistance(c.vector, @queryVector), FullTextScore(c.content, [@searchTerm1, @searchTerm2, ...]))
+ORDER BY RANK RRF(VectorDistance(c.vector, @queryVector), FullTextScore(c.content, @searchTerm1, @searchTerm2, ...))
 ```
 
 Suppose you have a document that has vector embeddings stored in each document in the property `c.vector` and text data contained in the property c.text. To get the 10 most relevant documents using Hybrid search, the query can be written as:
@@ -122,7 +125,16 @@ Suppose you have a document that has vector embeddings stored in each document i
 ```sql
 SELECT TOP 10 * 
 FROM c
-ORDER BY RANK RRF(VectorDistance(c.vector, [1,2,3]), FullTextScore(c.text, ["text", "to", "search", "goes" ,"here])
+ORDER BY RANK RRF(VectorDistance(c.vector, [1,2,3]), FullTextScore(c.text, "searchable", "text", "goes" ,"here"))
+```
+
+### Weighted hybrid search queries
+You can optionally specify an array of *weights* to affect how important each component score is in the `RRF` function. For example, if you have two component scores (`VectorDistance` and `FullTextScore`) and want to weight the vector search twice as important as the BM25 scoring, you can add the array of numbers `[2, 1]` as the last argument to `RRF` as shown here:
+
+```sql
+SELECT TOP 10 * 
+FROM c
+ORDER BY RANK RRF(VectorDistance(c.vector, [1,2,3]), FullTextScore(c.text, "searchable", "text", "goes" ,"here"), [2, 1])
 ```
 
 ## Related content

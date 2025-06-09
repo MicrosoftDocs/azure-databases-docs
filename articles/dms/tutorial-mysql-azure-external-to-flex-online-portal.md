@@ -2,10 +2,10 @@
 title: "Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS via the Azure portal"
 titleSuffix: "Azure Database Migration Service"
 description: "Learn to perform an online migration from MySQL to Azure Database for MySQL - Flexible Server by using Azure Database Migration Service."
-author: karlaescobar
-ms.author: karlaescobar
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan, randolphwest
-ms.date: 09/18/2024
+ms.date: 05/05/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
@@ -91,33 +91,16 @@ As you prepare for the migration, be sure to consider the following limitations.
 
 DMS supports cross-region, cross-resource group, and cross-subscription migrations, so you're free to select appropriate region, resource group and subscription for your target flexible server. Before you create your target flexible server, consider the following configuration guidance to help ensure faster data loads using DMS.
 
-- Select the compute size and compute tier for the target flexible server based on the source single server's pricing tier and VCores based on the detail in the following table.
+- Select the compute size and compute tier for the target flexible server based on the source MySQL server configuration.
 
-  | Single Server Pricing Tier | Single Server VCores | Flexible Server Compute Size | Flexible Server Compute Tier |
-  | --- | --- | :---: | :---: |
-  | Basic <sup>1</sup> | 1 | General Purpose | Standard_D16ds_v4 |
-  | Basic <sup>1</sup> | 2 | General Purpose | Standard_D16ds_v4 |
-  | General Purpose <sup>1</sup> | 4 | General Purpose | Standard_D16ds_v4 |
-  | General Purpose <sup>1</sup> | 8 | General Purpose | Standard_D16ds_v4 |
-  | General Purpose | 16 | General Purpose | Standard_D16ds_v4 |
-  | General Purpose | 32 | General Purpose | Standard_D32ds_v4 |
-  | General Purpose | 64 | General Purpose | Standard_D64ds_v4 |
-  | Memory Optimized | 4 | Business Critical | Standard_E4ds_v4 |
-  | Memory Optimized | 8 | Business Critical | Standard_E8ds_v4 |
-  | Memory Optimized | 16 | Business Critical | Standard_E16ds_v4 |
-  | Memory Optimized | 32 | Business Critical | Standard_E32ds_v4 |
+  <sup>1</sup> For the migration, as a best practice, select General Purpose 16 vCores compute or higher for the target flexible server for faster migrations. Scale back to the desired compute size for the target server after migration is complete.
 
-  <sup>1</sup> For the migration, select General Purpose 16 vCores compute for the target flexible server for faster migrations. Scale back to the desired compute size for the target server after migration is complete by following the compute size recommendation in the Performing post-migration activities section later in this article.
-
-- The MySQL version for the target flexible server must be greater than or equal to that of the source single server.
+- The MySQL version for the target flexible server must be greater than or equal to that of the source MySQL server.
 
 - Unless you need to deploy the target flexible server in a specific zone, set the value of the Availability Zone parameter to 'No preference'.
 
-- For network connectivity, on the Networking tab, if the source single server has private endpoints or private links configured, select Private Access; otherwise, select Public Access.
+- For network connectivity, on the Networking tab, select Private Access; otherwise, select Public Access configure the firewall rules to allow access to the target flexible server.
 
-- Copy all firewall rules from the source single server to the target flexible server.
-
-- Copy all the name/value tags from the single to flex server during creation itself.
 
 ## Create and configure the target flexible server
 
@@ -153,16 +136,10 @@ With these best practices in mind, create your target flexible server, and then 
       - innodb_io_capacity & innodb_io_capacity_max - Change to 9000 from the Server parameters in Azure portal to improve the IO utilization to optimize for migration speed.
       - innodb_write_io_threads - Change to 4 from the Server parameters in Azure portal to improve the speed of migration.
   - Configure the replicas on the target server to match those on the source server.
-  - Replicate the following server management features from the source single server to the target flexible server:
-    - Role assignments, Roles, Deny Assignments, classic administrators, Access Control (IAM)
-    - Locks (read-only and delete)
-    - Alerts
-    - Tasks
-    - Resource Health Alerts
 
 ## Set up DMS
 
-With your target flexible server deployed and configured, you next need to set up DMS to migrate your single server to a flexible server.
+With your target flexible server deployed and configured, you next need to set up DMS to migrate your source MySQL server to a flexible server.
 
 ### Register the resource provider
 
@@ -208,7 +185,7 @@ To register the Microsoft.DataMigration resource provider, perform the following
 
    :::image type="content" source="media/tutorial-azure-mysql-single-to-flex-online/8-configure-pricing-tier.png" alt-text="Screenshot of a Select Pricing tier.":::
 
-    Next, we need to specify the VNet that will provide the DMS instance with access to the source single server and the target flexible server.
+    Next, we need to specify the VNet that will provide the DMS instance with access to the target flexible server.
 
 1. On the **Create Migration Service** page, select **Next : Networking >>**.
 
@@ -218,9 +195,9 @@ To register the Microsoft.DataMigration resource provider, perform the following
 
    :::image type="content" source="media/tutorial-azure-mysql-single-to-flex-online/8-1-networking.png" alt-text="Screenshot of a Select Networking.":::
 
-   Your VNet must be configured with access to both the source single server and the target flexible server, so be sure to:
+   Your VNet must be configured with access to both the source MySQL server and the target flexible server, so be sure to:
 
-   - Create a server-level firewall rule or [configure VNet service endpoints](./../mysql/single-server/how-to-manage-vnet-using-portal.md) for both the source and target Azure Database for MySQL servers to allow the VNet for Azure Database Migration Service access to the source and target databases.
+   - Create a server-level firewall rule or configure networking for both the source MySQL server and target Azure Database for MySQL servers to allow the VNet for Azure Database Migration Service access to the source and target databases.
    - Ensure that your VNet Network Security Group (NSG) rules don't block the outbound port 443 of ServiceTag for ServiceBus, Storage, and Azure Monitor. For more information about VNet NSG traffic filtering, see [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 
    > [!NOTE]  
@@ -236,7 +213,7 @@ To register the Microsoft.DataMigration resource provider, perform the following
 
    :::image type="content" source="media/tutorial-azure-mysql-single-to-flex-online/9-1-go-to-resource.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-azure-mysql-single-to-flex-online/9-1-go-to-resource.png":::
 
-1. Identify the IP address of the DMS instance from the resource overview page and create a firewall rule for your source single server and target flexible server allow-listing the IP address of the DMS instance.
+1. Identify the IP address of the DMS instance from the resource overview page and create a firewall rule for your source MySQL server and target flexible server allow-listing the IP address of the DMS instance.
 
 ### Create a migration project
 
@@ -332,15 +309,7 @@ When the migration has finished, be sure to complete the following post-migratio
 
 - Perform sanity testing of the application against the target database to certify the migration.
 - Update the connection string to point to the new flexible server.
-- Delete the source single server after you have ensured application continuity.
-- If you scaled-up the target flexible server for faster migration, scale it back by selecting the compute size and compute tier for the flexible server based on the source single server's pricing tier and VCores, based on the detail in the following table.
-
-  | Single Server Pricing Tier | Single Server VCores | Flexible Server Compute Size | Flexible Server Compute Tier |
-  | --- | --- | :---: | :---: |
-  | Basic | 1 | Burstable | Standard_B1s |
-  | Basic | 2 | Burstable | Standard_B2s |
-  | General Purpose | 4 | General Purpose | Standard_D4ds_v4 |
-  | General Purpose | 8 | General Purpose | Standard_D8ds_v4 |
+- If you scaled-up the target flexible server for faster migration, scale it back by selecting the compute size and compute tier for the flexible server based on the source MySQL server configuration.
 
   - To clean up the DMS resources, perform the following steps:
 

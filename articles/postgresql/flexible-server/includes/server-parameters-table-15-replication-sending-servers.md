@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/26/2025
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -21,7 +21,7 @@ ms.custom: automatically generated
 | Documentation | [max_replication_slots](https://www.postgresql.org/docs/15/runtime-config-replication.html#GUC-MAX-REPLICATION-SLOTS) |
 
 
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+[!INCLUDE [server-parameters-azure-notes-max-replication-slots](./server-parameters-azure-notes-max-replication-slots.md)]
 
 
 

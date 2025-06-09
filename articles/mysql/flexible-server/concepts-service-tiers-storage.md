@@ -62,6 +62,8 @@ The detailed specifications of the available server types are as follows for the
 | Standard_B16ms | 16 | 64 | 70.4 | 4300 | 10923 | 0 |
 | Standard_B20ms | 20 | 80 | 88 | 5000 | 13653 | 0 |
 
+Note: The burstable compute tier is designed for nonproduction workloads like development, staging, or testing environments and hence does not qualify for 24/7 support or root cause analysis (RCA) .
+
 #### General Purpose
 
 The detailed specifications of the available server types are as follows for the General Purpose service tier
@@ -186,7 +188,7 @@ While the service attempts to make the server read-only, all new write transacti
 
 To get the server out of read-only mode, you should increase the provisioned storage on the server. This can be done using the Azure portal or Azure CLI. Once increased, the server is ready to accept write transactions again.
 
-We recommended that you <!--turn on storage auto-grow or to--> set up an alert to notify you when your server storage is approaching the threshold so you can avoid getting into the read-only state. For more information, see the documentation on alert documentation [how to set up an alert](how-to-alert-on-metric.md).
+We recommended that you turn on **storage auto-grow** or to set up an alert to notify you when your server storage is approaching the threshold so you can avoid getting into the read-only state. For more information, see the documentation on alert documentation [how to set up an alert](how-to-alert-on-metric.md).
 
 ### Storage autogrow
 

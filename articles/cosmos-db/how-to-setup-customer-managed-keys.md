@@ -58,6 +58,8 @@ If the **Microsoft.DocumentDB** resource provider isn't already registered, you 
 
 > [!IMPORTANT]
 > Your Azure Key Vault instance must be accessible through public network access or allow trusted Microsoft services to bypass its firewall. An instance that is exclusively accessible through [private endpoints](/azure/key-vault/general/private-link-service) cannot be used to host your customer-managed keys.
+> 
+> It is highly recommended that the created Azure Key Vault Resource has [data replication enabled](/azure/key-vault/general/disaster-recovery-guidance) in order to ensure continous availability during unexpected regional outtages.
 
 Using customer-managed keys with Azure Cosmos DB requires you to set two properties on the Azure Key Vault instance that you plan to use to host your encryption keys: **Soft Delete** and **Purge Protection**.
 
@@ -719,7 +721,8 @@ az cosmosdb update --resource-group MyResourceGroup --name MyAccountName --defau
 
 The following conditions are necessary to successfully perform a point-in-time restore:
 
-- The encryption key that you used at the time of the backup is required and must be available in Azure Key Vault. This requirement means that no revocation was made and the version of the key that was used at the time of the backup is still enabled.
+- Access to the customer-managed key must be available to the account's default identity. If the key has been rotated, the rotation process must be fully completed ([see guidelines](/azure/key-vault/keys/how-to-configure-key-rotation)), or the account must have access to both the old and new key versions.
+
 - You must ensure that the user-assigned managed identity originally used on the source account is still declared in the Key Vault access policy.
 
 > [!IMPORTANT]

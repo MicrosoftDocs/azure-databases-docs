@@ -6,7 +6,7 @@ metadata:
   ms.author: dech
   ms.service: azure-cosmos-db
   ms.topic: faq
-  ms.date: 09/26/2024
+  ms.date: 05/07/2025
 title: Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB
 summary: |
   [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
@@ -23,14 +23,15 @@ sections:
       - question: |          
           How can I enable dynamic autoscale on an account programatically?
         answer: |
-          You can use a [Resource Manager template with API version `2023-11-15-preview` or later preview version](/azure/templates/microsoft.documentdb/2023-11-15-preview/databaseaccounts) to set the property `enablePerRegionPerPartitionAutoscale` to true. You can see this property in the JSON view by using preview version 2023-11-15-preview or a later preview version.
+          You can use a [Resource Manager template with preview version `2023-11-15-preview` or later and stable version `2024-11-15` or later ](/azure/templates/microsoft.documentdb/2023-11-15-preview/databaseaccounts) to set the property `enablePerRegionPerPartitionAutoscale` to true.
+          You can use a [Resource Provider REST API version `2024-11-15` or later ](/rest/api/cosmos-db-resource-provider/database-accounts) to set `enablePerRegionPerPartitionAutoscale` to true.  
           You can also use the Azure CLI or PowerShell.
 
            #### [PowerShell](#tab/azure-powerShell)
 
           ```azurepowershell
-          // Add Azure Cosmos DB extension 2.0.6-preview for PowerShell
-          Install-Module -Name Az.CosmosDB -RequiredVersion 2.0.6-preview -AllowPrerelease -AllowClobber -Force
+          // Add Azure Cosmos DB extension 1.18.0 or later for PowerShell
+          Install-Module -Name Az.CosmosDB -RequiredVersion 1.18.0
 
           // update the account using this command to enable or disable the property
           Update-AzCosmosDBAccount -EnablePerRegionPerPartitionAutoscale $true -ResourceGroupName "<resource-group-name>" -Name "<cosmos-account-name>"
@@ -41,20 +42,37 @@ sections:
           #### [Azure CLI](#tab/azure-cli)
 
           ```azurecli
-          // Add Azure Cosmos DB extension for CLI
-          az extension add --name cosmosdb-preview --allow-preview true
-
+          // Check if the azure cli version is 2.71.0 or later
           // update the account using this command to enable or disable the property
           az cosmosdb update --enable-prpp-autoscale true --name '<cosmos-account-name>' --resource-group '<resource-group-name>'
 
           // Run this command to see the enablement or disablement status:
           az cosmosdb show --name '<cosmos-account-name>' --resource-group '<resource-group-name>'
           ```
+      - question: Can normalized RU/s consumption be 100 percent even if Provisioned Throughput or Autoscaled RU metrics do not scale to the maximum RU/s?
+        answer: |
+          Yes. For more information, see [Monitor normalized RU/s](monitor-normalized-request-units.md#normalized-ru-consumption-and-autoscale).
       - question: |     
           What metric should be used to determine whether the autoscale max RU/s or manual provisioned RU/s can be scaled up or down programatically?
         answer: |
           We recommended taking advantage of Azure Cosmos DB's native dynamic scaling capability to manage RU/s for your resource. However, if needed, you should use the Normalized RU Consumption metric in Azure Monitor to make programmatic scaling decisions. 
           The [Normalized RU Consumption metric](monitor-normalized-request-units.md) is a metric between 0% to 100% that is used to help measure the utilization of the autoscale max RU/s or manual provisioned throughput on a database or container. It is the most accurate way to determine whether scale-up or scale-down is possible. Other approaches, like using the ReadThroughputAsync() call in the Azure Cosmos DB SDKs to get the ProvisionedThroughput, or using ProvisionedThroughput in Azure Monitor are not recommended and will lead to inaccurate results. These metrics represent billed throughput with a delay and shouldn't be used for scaling decisions.
+      - question: |
+          How to interpret ProvisionedThroughput in dynamic autoscale and autoscale?
+        answer: |
+          You can use the Provisioned Throughput to see the RU/s you're billed for in each hour.
+
+          In dynamic autoscale, Azure monitor Provisioned Throughput metric and the various SDK API metrics listed below reflect the aggregated highest RU/s scaled to per hour across each partition and region.
+
+          In autoscale, Azure monitor Provisioned Throughput metric and the various SDK API metrics listed below reflect the RU/s of the most active partition, uniformly applied across all partitions and regions, aggregated per hour.
+
+          | SDK Type | Provisioned Throughput Represented by |
+          | --- | ----- |
+          | .NET V3  | [Container.ReadThroughputAsync()](https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet#microsoft-azure-cosmos-container-readthroughputasync) <br/><br/> [Container.ReadThroughputAsync(requestOptions).Resource.Throughput](https://learn.microsoft.com/en-us/dotnet/api/microsoft.azure.cosmos.throughputproperties.throughput?view=azure-dotnet#microsoft-azure-cosmos-throughputproperties-throughput) | 
+          | Java V4  | [cosmosContainer.readThroughput().getProperties().getManualThroughput()](https://learn.microsoft.com/java/api/com.azure.cosmos.models.throughputproperties?view=azure-java-stable#com-azure-cosmos-models-throughputproperties-getmanualthroughput) |
+          | Python   | [azure.cosmos.throughputproperties.offer_throughput](https://learn.microsoft.com/python/api/azure-cosmos/azure.cosmos.throughputproperties?view=azure-python) |
+          | Node JS  | [azure.cosmos.OfferDefinition.offerThroughput](https://learn.microsoft.com/javascript/api/%40azure/cosmos/offerdefinition?view=azure-node-latest#@azure-cosmos-offerdefinition-content)|
+
       - question: |
           What happens to databases or containers that were created in the earlier autopilot tier model?
         answer: |
@@ -120,7 +138,7 @@ sections:
       - question: |
           Can I enable autoscale on an existing database or container?
         answer: |
-          Yes. You can also switch between autoscale and standard (manual) provisioned throughput. Currently, for all APIs, you can use the [Azure portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), the [Azure CLI](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json), or [PowerShell](scripts/powerShell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json) to do these operations. By design, you can't use the Azure Cosmos DB client SDKs or an Azure Resource Manager template to migrate between manual provisioned throughput and autoscale. However, you can use client SDKs or an Azure Resource Manager template to create new autoscale resources and to change the maximum RU/s on an existing autoscale resource.
+          Yes. You can also switch between autoscale and standard (manual) provisioned throughput. Currently, for all APIs, you can use the [Azure portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), [Azure CLI](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json), [PowerShell](scripts/powerShell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json) or one of the Azure Management SDKs to do these operations. You can't use the Azure Cosmos DB client SDKs or an Azure Resource Manager template to migrate between manual provisioned throughput and autoscale. However, you can use client SDKs or an Azure Resource Manager template to create new autoscale resources and to change the maximum RU/s on an existing autoscale resource.
         
       - question: |
           How does the migration between autoscale and standard (manual) provisioned throughput work?
@@ -252,11 +270,6 @@ sections:
           
           Learn how to [interpret and debug code 429 rate limiting errors](sql/troubleshoot-request-rate-too-large.md).
 
-      - question: Can normalized RU/s consumption be 100 percent if autoscale doesn't scale to the maximum RU/s?
-        answer: |
-          Yes. For more information, see [Monitor normalized RU/s](monitor-normalized-request-units.md#normalized-ru-consumption-and-autoscale).
-
-          
 additionalContent: |
 
   ## Next steps

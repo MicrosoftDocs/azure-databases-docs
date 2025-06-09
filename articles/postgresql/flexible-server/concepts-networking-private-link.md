@@ -4,7 +4,7 @@ description: Learn about connectivity and networking options for Azure Database 
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
-ms.date: 04/08/2025
+ms.date: 04/18/2025
 ms.service: azure-database-postgresql
 ms.topic: conceptual
 ---
@@ -176,10 +176,6 @@ If you have DNS resolution issues when you use private endpoint-based networking
 - **Validate DNS resolution:** Check if the DNS server or service used by the private endpoint and the connected resources is functioning correctly. Ensure that the private endpoint's DNS settings are accurate. For more information on private endpoints and DNS zone settings, see [Azure private endpoint Private DNS zone values](/azure/private-link/private-endpoint-dns).
 - **Clear the DNS cache:** Clear the DNS cache on the private endpoint or client machine to ensure the latest DNS information is retrieved and to avoid inconsistent errors.
 - **Analyze DNS logs:** Review DNS logs for error messages or unusual patterns, such as DNS query failures, server errors, or timeouts. For more on DNS metrics, see [Azure DNS metrics and alerts](/azure/dns/dns-alerts-metrics).
-
-### Scaling
-
-You might experience connectivity loss via a private endpoint after scaling the compute or storage of your Azure Database for PostgreSQL flexible server. If this occurs, stop and then start the server instead of restarting it, as restarting doesn't have the same effect. Afterward, recreate the private endpoint to restore the database connection.
 
 ## Related content
 

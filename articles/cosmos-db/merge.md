@@ -6,11 +6,11 @@ ms.topic: conceptual
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
-ms.custom: devx-track-azurecli
-ms.date: 04/28/2023
+ms.custom:
+  - devx-track-azurecli
+  - build-2025
+ms.date: 05/08/2025
 ---
-
-
 
 # Merge partitions in Azure Cosmos DB (preview)
 
@@ -25,7 +25,7 @@ To get started using partition merge, navigate to the **Features** page in your 
 Before enabling the feature, verify that your Azure Cosmos DB account(s) meet all the [preview eligibility criteria](#preview-eligibility-criteria). Once you've enabled the feature, it takes 15-20 minutes to take effect.
 
 > [!CAUTION]
-> When merge is enabled on an account, only requests from .NET SDK version >= 3.27.0 or Java SDK >= 4.42.0 or Azure Cosmos DB Spark connector >= 4.18.0 will be allowed on the account, regardless of whether merges are ongoing or not. Requests from other SDKs (older .NET SDK, older Java SDK, any JavaScript SDK, any Python SDK, any Go SDK) or unsupported connectors (Azure Data Factory, Azure Search, Azure Functionsextension <= 3.x, Azure Stream Analytics, and others) will be blocked and fail. Ensure you have upgraded to a supported SDK version before enabling the feature. After the feature is enabled or disabled, it may take 15-20 minutes to fully propagate to the account. If you plan to disable the feature after you've completed using it, it may take 15-20 minutes before requests from SDKs and connectors that are not supported for merge are allowed.
+> When merge is enabled on an account, only requests from .NET SDK version >= 3.27.0 or Java SDK >= 4.42.0 or Azure Cosmos DB Spark connector >= 4.18.0 or JavaScript SDK >= 4.3 will be allowed on the account, regardless of whether merges are ongoing or not. Requests from other SDKs (older .NET SDK, older Java SDK, older JavaScript SDK, any Python SDK, any Go SDK) or unsupported connectors (Azure Data Factory, Azure Search, and Azure Functions extension <= 3.x) will be blocked and fail. Ensure you have upgraded to a supported SDK version before enabling the feature. After the feature is enabled or disabled, it may take 15-20 minutes to fully propagate to the account. If you plan to disable the feature after you've completed using it, it may take 15-20 minutes before requests from SDKs and connectors that are not supported for merge are allowed.
 
 :::image type="content" source="media/merge/merge-feature-blade.png" alt-text="Screenshot of Features pane and Partition merge feature.":::
 
@@ -260,16 +260,13 @@ To enroll in the preview, your Azure Cosmos DB account must meet all the followi
    - [Point-in-time restore](continuous-backup-restore-introduction.md)
    - [Customer-managed keys](how-to-setup-cmk.md)
    - [Analytical store](analytical-store-introduction.md)
-- If you're using API for NoSQL, your application must use the Azure Cosmos DB .NET v3 SDK (version 3.27.0 or higher) or Java v4 SDK (version 4.42.0 or higher). When merge preview is enabled on your account, the account doesn't accept requests sent from non .NET/Java SDKs or older .NET/Java SDK versions.
+- If you're using API for NoSQL, your application must use the Azure Cosmos DB .NET v3 SDK (version 3.27.0 or higher) or Java v4 SDK (version 4.42.0 or higher) OR JavaScript V4 SDK(version 4.3.0 or higher). When merge preview is enabled on your account, the account doesn't accept requests sent from non .NET/Java SDKs or older .NET/Java SDK versions.
   - There are no SDK or driver requirements to use the feature with API for MongoDB.
 - Your Azure Cosmos DB account doesn't use any currently unsupported connectors:
   - Azure Data Factory
-  - Azure Stream Analytics
-  - Logic Apps
   - Azure Functions extension <= 3.x (Azure Functions extension 4.0 and higher is supported)
-  - Azure Search
   - Azure Cosmos DB Spark connector < 4.18.0
-  - Any third party library or tool that has a dependency on an Azure Cosmos DB SDK that isn't .NET v3 SDK >= v3.27.0 or Java v4 SDK >= 4.42.0
+  - Any third party library or tool that has a dependency on an Azure Cosmos DB SDK that isn't .NET v3 SDK >= v3.27.0 or Java v4 SDK >= 4.42.0 or JavaScript v4 SDK >= 4.3.0
 
 ### Account resources and configuration
 
@@ -306,10 +303,7 @@ Support for other SDKs is planned for the future.
 If you enroll in the preview, the following connectors fail.
 
 - Azure Data Factory ¹
-- Azure Stream Analytics ¹
-- Logic Apps ¹
 - Azure Functions extension <= 3.x (Azure Functions extension 4.0 and higher is supported) ¹
-- Azure Search ¹
 - Azure Cosmos DB Spark connector < 4.18.0
 - Any third party library or tool that has a dependency on an Azure Cosmos DB SDK that isn't .NET v3 SDK >= v3.27.0 or Java v4 SDK >= 4.42.0
 

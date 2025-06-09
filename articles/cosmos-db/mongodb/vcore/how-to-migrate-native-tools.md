@@ -48,7 +48,7 @@ There are some high-level considerations when choosing the right MongoDB native 
 
 ## Perform the migration
 
-Migrate a collection from the source MongoDB instance to the target Azure Cosmos DB for MongoDB vCore account using your preferred native tool. For more information on selecting a tool, see [native MongoDB tools](migration-options.md#native-mongodb-tools-offline)
+Migrate a collection from the source MongoDB instance to the target Azure Cosmos DB for MongoDB vCore account using your preferred native tool. For more information on selecting a tool see [migration options](migration-options.md).
 
 > [!TIP]
 > If you simply have a small JSON file that you want to import into Azure Cosmos DB for MongoDB vCore, the *mongoimport* tool is a quick solution for ingesting the data.

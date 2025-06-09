@@ -75,5 +75,5 @@ In that case, this is the only viable option. After promoting the server, you'll
 - [Read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas.md).
 - [Promote read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-promote.md).
 - [Virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-virtual-endpoints.md).
-- [Create and manage read replicas in Azure Database for PostgreSQL flexible server](how-to-read-replicas-portal.md).
+- [Create a read replica](how-to-create-read-replica.md).
 - [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

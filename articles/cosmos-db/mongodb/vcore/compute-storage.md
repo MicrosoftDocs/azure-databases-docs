@@ -9,12 +9,12 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2024
 ms.topic: conceptual
-ms.date: 02/10/2025
+ms.date: 05/30/2025
+appliesto:
+  - ✅ MongoDB (vCore)
 ---
 
 # Compute and storage configurations for Azure Cosmos DB for MongoDB vCore clusters
-
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 Compute resources are provided as vCores, which represent the logical CPU of
 the underlying hardware. The storage size for provisioning refers to the

@@ -8,9 +8,11 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
+ms.custom:
+  - build-2025
 ---
 
-# Backup and restore in Azure Database for MySQL - Flexible Server
+# Backup and restore in Azure Database for MySQL
 
 Azure Database for MySQL Flexible Server automatically creates server backups and securely stores them in local redundant storage within the region. Backups can be used to restore your server to a point-in-time. Backup and restore are an essential part of any business continuity strategy because they protect your data from accidental corruption or deletion.
 
@@ -31,7 +33,15 @@ These backup files cannot be exported. The backups can only be used for restore 
 ## Backup frequency
 
 Backups on Flexible Servers are snapshot-based. The first snapshot backup is scheduled immediately after a server is created. Snapshot backups are taken daily once. Transaction log backups occur every five minutes.
+
 If a scheduled backup fails, our backup service tries every 20 minutes to take a backup until a successful backup is taken. These backup failures might occur due to heavy transactional production loads on the server instance.
+
+To enhance the frequency of automated daily backups, you can increase the backup interval. This adjustment is particularly beneficial when anticipating large transactions, as it significantly reduces restore time in the event of a failure. To modify the backup interval, navigate to the **Settings > Compute + Storage** section and set the **Backup Interval** field accordingly. While the default interval is set to 24 hours, it can be adjusted to either 12 or 6 hours. The retention of these backups is determined by the retention period configured at the server level.
+
+Currently, this feature is in preview and is limited to the **West Central US** and **East Asia** regions.
+
+  :::image type="content" source="media/concepts-backup-restore/configure-backup-interval.png" alt-text="Screenshot of modify backup frequency." lightbox="media/concepts-backup-restore/configure-backup-interval.png":::
+
 
 > [!NOTE]  
 > - If the server experiences a high transaction load, resulting in larger and faster-growing binlog files, then the backup service will perform multiple backups per day to ensure reliable and quicker restoration using these backups.

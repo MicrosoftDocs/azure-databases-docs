@@ -3,7 +3,7 @@
 - name: Overview
   expanded: true
   items:
-  - name: What is Azure Database for MySQL - Flexible Server?
+  - name: What is Azure Database for MySQL?
     href: flexible-server/overview.md
   - name: Select the right deployment type
     href: select-right-deployment-type.md
@@ -13,17 +13,19 @@
     href: flexible-server/concept-reserved-pricing.md
   - name: Version support policy
     href: concepts-version-policy.md
-  - name: What happened to Single Server?
-    href: migrate/whats-happening-to-mysql-single-server.md
-- name: Azure Database for MySQL - Flexible Server
+- name: Azure Database for MySQL
   items:
   - name: Overview
     expanded: true
     items:
       - name: What's new?
         href: flexible-server/whats-new.md
+      - name: Previous features
+        href: flexible-server/whats-new-archive.md
       - name: Release notes
         items:
+          - name: May 2025
+            href: flexible-server/release-notes/may-2025.md
           - name: March 2025
             href: flexible-server/release-notes/march-2025.md
           - name: February 2025
@@ -446,7 +448,7 @@
   - name: Deployment templates
     href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=databases
+    href: https://azure.microsoft.com/updates?searchterms=databases
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/mysql/
   - name: Microsoft Q&A question page

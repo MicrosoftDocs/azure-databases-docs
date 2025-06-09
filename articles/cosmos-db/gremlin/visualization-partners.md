@@ -107,7 +107,7 @@ With the Graphistry's GPU client/cloud technology, you can do interactive visual
 
 Graphlytic is a highly customizable web application for graph visualization and analysis. Users can interactively explore the graph, look for patterns with the Gremlin language, or use filters to find answers to any graph question. Graph rendering is done with the 'Cytoscape.js' library, which allows Graphlytic to render tens of thousands of nodes and hundreds of thousands of relationships at once.
 
-Graphlytic is compatible with Azure Cosmos DB and can be deployed to Azure in minutes. Graphlytic’s UI can be customized and extended in many ways, for instance the default [visualization configuration](https://graphlytic.biz/doc/latest/Visualization_Settings.html), [data schema](https://graphlytic.biz/doc/latest/Data_Schema.html), [style mappings](https://graphlytic.biz/doc/latest/Style_Mappers.html), [virtual properties](https://graphlytic.biz/doc/latest/Virtual_properties.html) in the visualization, or custom implemented [widgets](https://graphlytic.biz/doc/latest/Widgets.html) that can enhance the visualization features with bespoke reports or integrations.
+Graphlytic is compatible with Azure Cosmos DB and can be deployed to Azure in minutes. Graphlytic’s UI can be customized and extended in many ways, for instance the default [visualization configuration](https://graphlytic.com/doc/latest/Visualization_Settings.html), [data schema](https://graphlytic.com/doc/latest/Data_Schema.html), [style mappings](https://graphlytic.com/doc/latest/Style_Mappers.html), [virtual properties](https://graphlytic.com/doc/latest/Virtual_properties.html) in the visualization, or custom implemented [widgets](https://graphlytic.com/doc/latest/Widgets.html) that can enhance the visualization features with bespoke reports or integrations.
 
 The following are two example scenarios:
 
@@ -129,14 +129,14 @@ The basic idea behind Graphlytic is the fact that the human eye can simply disti
 
 ### Useful links
 
-* [Documentation](https://graphlytic.biz/doc/)
-* [Free Online Demo](https://graphlytic.biz/demo)
-* [Blog](https://graphlytic.biz/blog)
-* [REST API documentation](https://graphlytic.biz/doc/latest/REST_API.html)
-* [ETL job drivers & examples](https://graphlytic.biz/doc/latest/ETL_jobs.html)
-* [SMTP Email Server Integration](https://graphlytic.biz/doc/latest/SMTP_Email_Server_Connection.html)
-* [Geo Map Server Integration](https://graphlytic.biz/doc/latest/Geo_Map_Server_Integration.html)
-* [Single Sign-on Configuration](https://graphlytic.biz/doc/latest/Single_sign-on.html)
+* [Documentation](https://graphlytic.com/doc)
+* [Free Online Demo](https://graphlytic.com/demo)
+* [Blog](https://graphlytic.com/blog)
+* [REST API documentation](https://graphlytic.com/doc/latest/REST_API.html)
+* [ETL job drivers & examples](https://graphlytic.com/doc/latest/ETL_jobs.html)
+* [SMTP Email Server Integration](https://graphlytic.com/doc/latest/SMTP_Email_Server_Connection.html)
+* [Geo Map Server Integration](https://graphlytic.com/doc/latest/Geo_Map_Server_Integration.html)
+* [Single Sign-on Configuration](https://graphlytic.com/doc/latest/Single_sign-on.html)
 
 ## yWorks
 

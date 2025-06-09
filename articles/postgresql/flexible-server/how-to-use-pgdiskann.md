@@ -8,10 +8,12 @@ ms.date: 01/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom:
+  - build-2025
 # customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure Database for PostgreSQL flexible server.
 ---
 
-# Enable and use DiskANN extension (Preview)
+# Enable and use DiskANN extension
 
 DiskANN is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. Those characteristics make it a powerful tool for handling large volumes of data.
 
@@ -22,9 +24,6 @@ The `pg_diskann` extension adds support for using DiskANN for efficient vector i
 ## Enable pg_diskann
 
 To use the `pg_diskann` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions) at the instance level. Then you need to [create the extension](../extensions/how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
-
-> [!IMPORTANT]
-> This preview feature is only available for newly deployed Azure Database for PostgreSQL flexible server instances.
 
 Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and the run the following command:
  
@@ -90,8 +89,33 @@ COMMIT;
 > [!IMPORTANT]
 > Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disable using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. Notice that if the query involves other tables, the setting also discourages the use of sequential scans in all of them.
 
-## Speed up index build with parallelization
+## Scale efficiently with Quantization (Preview)
 
+DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)
+
+To get access the product quantization(PQ) feature, [please sign up for the preview](https://aka.ms/pg-diskann-form)
+
+## Speed up index build
+There are a few ways we recommend to improve your index build times.
+
+### Using more memory
+To speed up the creation of the index, you can increase the memory allocated on your Postgres instance for the index build. The memory usage can be specified through the [`maintenance_work_mem`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM) parameter. 
+
+```sql
+-- Set the parameters
+SET maintenance_work_mem = '8GB'; -- Depending on your resources
+```
+
+Then, `CREATE INDEX` command uses the specified work memory, depending on the available resources, to build the index.
+
+```sql
+CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
+```
+
+> [!TIP] 
+> You can scale up your memory resources during index build to improve indexing speed, then scale back down when indexing is complete.
+
+### Using parallelization
 To speed up the creation of the index, you can use parallel workers. The number of workers can be specified through the `parallel_workers` storage parameter of the [`CREATE TABLE`](https://www.postgresql.org/docs/current/sql-createtable.html#RELOPTION-PARALLEL-WORKERS) statement, when creating the table. And it can be adjusted later using the `SET` clause of the [`ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-DESC-SET-STORAGE-PARAMETER) statement.
 
 ```sql
@@ -138,12 +162,16 @@ When creating a `diskann` index, you can specify various parameters to control i
 
 - `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
 - `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
+- `pq_param_num_chunks`: Number of chunks for product quantization (Defaults to 0). 0 means it is determined automatically, based on embedding dimensions. It is recommended to use 1/3 of the original embedding dimensions.
+- `pq_param_training_samples`: Number of vectors to train the PQ pivot table on (Defaults to 0). 0 means it is determined automatically, based on table size.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
 WITH (
  max_neighbors = 48,
- l_value_ib = 100
+ l_value_ib = 100,
+ pq_param_num_chunks = 0,
+ pq_param_training_samples = 0
  );
 ```
 
@@ -199,11 +227,11 @@ WITH (
 | <1M | Index build | `l_value_ib` | 100 |
 | <1M | Index build | `max_neighbors` | 32 |
 | <1M | Query time | `diskann.l_value_is` | 100 |
-|  | | | |
+|  | | | |
 | 1M-50M | Index build | `l_value_ib` | 100 |
 | 1M-50M | Index build | `max_neighbors` | 64 |
 | 1M-50M | Query time | `diskann.l_value_is` | 100 |
-|  | | | |
+|  | | | |
 | >50M | Index build | `l_value_ib` | 100 |
 | >50M | Index build | `max_neighbors` | 96 |
 | >50M | Query time | `diskann.l_value_is` | 100 |
@@ -232,28 +260,39 @@ The vector type allows you to perform three types of searches on the stored vect
 
 ## Troubleshooting
 
+**Error: `assertion left == right failed left: 40 right: 0`**:
+- DiskANN GA version, **v0.6.x introduces breaking changes** in the index metadata format. Indexes created with **v0.5.x are not forward-compatible** with v0.6.x insert operations. Attempting to insert into a table with an outdated index will result in an error, even if the index appears valid.
+
+- When you encounter this error, **you can resolve by:**
+    - **Option 1:** Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
+    - **Option 2:** Rebuild the Index
+
+        ```sql
+        DROP INDEX your_index_name;
+        CREATE INDEX your_index_name ON your_table USING diskann(your_vector_column vector_cosine_ops);
+
+        ```
+
 **Error: `diskann index needs to be upgraded to version 2...`**:
 
-When you encounter this error, you can resolve by:
+- When you encounter this error, you can resolve by:
+    - **Option 1:** Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
+    - **Option 2:** Because `REINDEX` might take a long time, the extension also provides a user-defined function called `upgrade_diskann_index()`, which upgrades your index faster, when possible.
 
-- Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
+        To upgrade your index, run the following statement:
 
-- Because `REINDEX` might take a long time, the extension also provides a user-defined function called `upgrade_diskann_index()`, which upgrades your index faster, when possible.
+        ```sql
+        SELECT upgrade_diskann_index('demo_embedding_diskann_custom_idx');
+        ```
 
-    To upgrade your index, run the following statement:
+        To upgrade all diskann indexes in the database to the current version, run the following statement:
 
-    ```sql
-    SELECT upgrade_diskann_index('demo_embedding_diskann_custom_idx');
-    ```
-
-    To upgrade all diskann indexes in the database to the current version, run the following statement:
-
-    ```sql
-    SELECT upgrade_diskann_index(pg_class.oid)
-    FROM pg_class
-    JOIN pg_am ON (pg_class.relam = pg_am.oid)
-    WHERE pg_am.amname = 'diskann';
-    ```
+        ```sql
+        SELECT upgrade_diskann_index(pg_class.oid)
+        FROM pg_class
+        JOIN pg_am ON (pg_class.relam = pg_am.oid)
+        WHERE pg_am.amname = 'diskann';
+        ```
 
 ## Related content
 
