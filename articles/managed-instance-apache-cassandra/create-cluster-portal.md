@@ -63,8 +63,8 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    > - Microsoft Entra ID
    > - Azure Security
 
-   - **Auto Replicate** - Choose the form of autoreplication to use. For more information, see [Turnkey replication](#turnkey-replication).
-   - **Schedule Event Strategy** - The strategy use by the cluster for scheduled events.
+   - **Auto Replicate**. Choose the form of autoreplication to use. For more information, see [Turnkey replication](#turnkey-replication).
+   - **Schedule Event Strategy**. The strategy use by the cluster for scheduled events.
 
     > [!TIP]
     > - StopANY means stop any node when there's a scheduled event for the node.
@@ -74,9 +74,9 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
 
 1. Enter the following details:
 
-   - **Data center name** - Type a data center name in the text field.
-   - **Availability zone** - Check this box if you want availability zones to be enabled.
-   - **SKU Size** - Choose from the available virtual machine SKU sizes.
+   - **Data center name**. Type a data center name in the text field.
+   - **Availability zone**. Check this box if you want availability zones to be enabled.
+   - **SKU Size**. Choose from the available virtual machine SKU sizes.
 
    :::image type="content" source="media/create-cluster-portal/l-sku-sizes.png" border="true" alt-text="Screenshot of select a SKU Size." lightbox="media/create-cluster-portal/l-sku-sizes.png":::
 
@@ -88,8 +88,8 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    > This feature is provided without a service level agreement. We don't recommend it for production workloads.
    > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-   - **No. of disks** - Choose the number of p30 disks to be attached to each Cassandra node.
-   - **No. of nodes** - Choose the number of Cassandra nodes to deploy to this datacenter.
+   - **No. of disks**. Choose the number of p30 disks to be attached to each Cassandra node.
+   - **No. of nodes**. Choose the number of Cassandra nodes to deploy to this datacenter.
 
    :::image type="content" source="media/create-cluster-portal/create-datacenter-page.png" border="true" alt-text="Screenshot of the data center page where you can review the values." lightbox="media/create-cluster-portal/create-datacenter-page.png":::
 
@@ -115,7 +115,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
 
 ## Scale a datacenter
 
-Now that you deployed a cluster with a single data center, you can scale horizontally or vertically by highlighting the data center, and selecting the `Scale` button:
+Now that you deployed a cluster with a single data center, you can scale horizontally or vertically by highlighting the data center, and selecting the **Scale** button:
 
 :::image type="content" source="media/create-cluster-portal/datacenter-scale-1.png" border="true" alt-text="Screenshot of scaling datacenter nodes." lightbox="media/create-cluster-portal/datacenter-scale-1.png":::
 
@@ -306,7 +306,7 @@ For nonproduction environments, you can pause or deallocate resources in the clu
 
 ## Troubleshooting
 
-If you encounter an error when applying permissions to your virtual network using Azure CLI, you can apply the same permission manually from the Azure portal. An example of such an error is *Can't find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501'*. Learn how to do this [here](add-service-principal.md).
+If you encounter an error when applying permissions to your virtual network using Azure CLI, you can apply the same permission manually from the Azure portal. An example of such an error is *Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501'*. For more information, see [Use the Azure portal to add Azure Cosmos DB service principal](add-service-principal.md).
 
 > [!NOTE]  
 > The Azure Cosmos DB role assignment is used for deployment purposes only. Azure Managed Instanced for Apache Cassandra has no backend dependencies on Azure Cosmos DB.

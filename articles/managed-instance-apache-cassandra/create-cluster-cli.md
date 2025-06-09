@@ -92,7 +92,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
 1. Create a datacenter for the cluster, with three virtual machines using the following configuration:
 
    - VM Size: Standard E8s v5
-   - Datadisks: 4 P30 disks attached to each of the virtual machines deployed.
+   - Datadisks: 4 P30 disks attached to each of the virtual machines deployed
 
    - With all in place, use the [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-create) command:
 
@@ -187,7 +187,7 @@ Configuring client certificates is optional. A client application can connect to
 
 **Certificates signed by a CA**: Issued by a self-signed CA or a public CA. For this setup, you need the root CA certificate and all intermediary certificates, if applicable. For more information, see [Preparing SSL certificates for production](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLCertWithCA.html). 
 
-To implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS), provide the certificates by using Azure CLI. The following command uploads and applies your client certificates to the truststore for your Cassandra managed instance cluster. There's no need to modify `cassandra.yaml` settings. Once applied, the cluster requires Cassandra to verify certificates during client connections. See `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html)
+To implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS), provide the certificates by using Azure CLI. The following command uploads and applies your client certificates to the truststore for your Cassandra managed instance cluster. There's no need to modify `cassandra.yaml` settings. Once applied, the cluster requires Cassandra to verify certificates during client connections. See `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html).
 
 
    ```azurecli-interactive
