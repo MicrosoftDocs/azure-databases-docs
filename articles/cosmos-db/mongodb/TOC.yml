@@ -266,6 +266,8 @@
       href: ../security.yml
     - name: Considerations and guidance
       href: ../security-considerations.md
+    - name: Failover considerations for private endpoints
+      href: ../failover-considerations-for-private-endpoints.md
     - name: Well Architected Framework security guidance
       href: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/context/context#security
     - name: Security baseline
