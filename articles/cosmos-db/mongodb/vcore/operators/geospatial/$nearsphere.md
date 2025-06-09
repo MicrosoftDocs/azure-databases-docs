@@ -44,7 +44,7 @@ The `$nearSphere` operator returns documents with location fields near a specifi
 
 ## Examples
 
-Create the required 2dsphere index:
+Create the required '2dsphere' index:
 
 ```javascript
 db.stores.createIndex({ "location": "2dsphere" })
@@ -70,7 +70,7 @@ db.stores.find({
 ```
 
 ### Example 2: With Maximum Distance
-Find stores within 20 Kms of "Fabrikam Car Accessory Outlet" (-38.4071, -47.2548):
+Find stores within 20 KM of "Fabrikam Car Accessory Outlet" (-38.4071, -47.2548):
 
 ```javascript
 db.stores.find({
@@ -80,7 +80,7 @@ db.stores.find({
         type: "Point",
         coordinates: [-38.4071, -47.2548]
       },
-      $maxDistance: 20000  // 20 Kms in meters
+      $maxDistance: 20000  // 20 KM in meters
     }
   }
 }, {
@@ -101,8 +101,8 @@ db.stores.aggregate([
         coordinates: [65.3765, -44.8674]
       },
       distanceField: "sphericalDistance",
-      minDistance: 20000,     // 20 Kms in meters
-      maxDistance: 100000,    // 100 Kms in meters
+      minDistance: 20000,     // 20 KM in meters
+      maxDistance: 100000,    // 100 KM in meters
       spherical: true
     }
   },
