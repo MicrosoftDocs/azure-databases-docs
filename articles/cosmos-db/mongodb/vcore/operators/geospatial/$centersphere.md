@@ -65,12 +65,15 @@ This query will return stores like:
 }
 ```
 
-## Important Notes
+> [!Important]
 
-* The `$centerSphere` operator calculates distances using spherical geometry, making it more accurate for Earth-based calculations than `$center`.
-* The radius must be specified in radians.
-* Coordinates should be specified in the order: [longitude, latitude].
-* If the geographic buffer extends beyond a UTM zone or crosses the international dateline, the results may be inaccurate or unpredictable.
+> The `$centerSphere` operator calculates distances using spherical geometry, making it more accurate for Earth-based calculations than `$center`.
+> 
+> The radius must be specified in radians.
+> 
+> Coordinates should be specified in the order: [longitude, latitude].
+> 
+> If the geographic buffer extends beyond a UTM zone or crosses the international dateline, the results may be inaccurate or unpredictable.
 
 ## Example with Distance Conversion
 
