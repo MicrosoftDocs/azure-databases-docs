@@ -66,11 +66,12 @@ This query will return stores like:
 
 The query searches for stores within a 50-degree radius of the First Up Consultants Microphone Bazaar location, which could be useful for analyzing market coverage or planning delivery routes.
 
-## Important Notes
-
-* The `$center` operator works on a flat, Euclidean plane.
-* For more accurate Earth-like spherical calculations, use `$centerSphere` instead.
-* The radius is specified in the same units as the coordinate system being used.
+> [!Important]
+> The `$center` operator works on a flat, Euclidean plane.
+> 
+> For more accurate Earth-like spherical calculations, use `$centerSphere` instead.
+> 
+> The radius is specified in the same units as the coordinate system being used.
 
 ## Related content
 
