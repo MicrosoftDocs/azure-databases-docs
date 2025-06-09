@@ -21,9 +21,9 @@ For customers using private endpoints, additional configuration is required to e
 
 This architecture utilizes primary and secondary regions to support both active/active and active/passive for failover scenarios. Each region includes a network where the Azure Cosmos DB account and other workload solutions are deployed. The multi-region Azure Cosmos DB account has private endpoints in both regions to ensure seamless connectivity. This setup allows applications to connect to the nearest private endpoint, optimizing performance while maintaining resiliency during a failover event.
 
-![Example architecture for Azure Cosmos DB with private endpoints](/media/cosmos-db-failover-considerations-for-private-endpoints/example-architecture.png)
+![Example architecture for Azure Cosmos DB with private endpoints](media/failover-considerations-for-private-endpoints/example-architecture.png)
 
-The two private endpoints cannot use the same Private DNS Zone for the same endpoint. As a result, each region has its own Private DNS Zone. Each regional zone is attached to the hub network for that specific region. This design leverages the [DNS forwarder scenario ](https://learn.microsoft.com/azure/private-link/private-endpoint-dns-integration#virtual-network-and-on-premises-workloads-using-a-dns-forwarder)to provide resolution. As a result, regardless of the region of the virtual machine (VM) accessing the private endpoint, there is a local endpoint available to connect to Azure Cosmos DB. For connections originating from a data center, a VPN connection would be established to the hub network in the respective region. 
+The two private endpoints cannot use the same Private DNS Zone for the same endpoint. As a result, each region has its own Private DNS Zone. Each regional zone is attached to the hub network for that specific region. This design leverages the [DNS forwarder scenario](https://learn.microsoft.com/azure/private-link/private-endpoint-dns-integration#virtual-network-and-on-premises-workloads-using-a-dns-forwarder) to provide resolution. As a result, regardless of the region of the virtual machine (VM) accessing the private endpoint, there is a local endpoint available to connect to Azure Cosmos DB. For connections originating from a data center, a VPN connection would be established to the hub network in the respective region. 
 
 For DNS resolution, each data center would configure conditional forwarding to one of the two DNS resolver server sets, ensuring that it resolves to the nearest network location for optimal connectivity.
 
@@ -42,8 +42,9 @@ To ensure proper resolution, each region should have its own region-specific Pri
 ## Failover scenarios
 
 This topology supports the following scenarios, each with its own DNS failover considerations.
+
 | Scenario | Description | DNS Considerations |
-|-|-|-|
+|---|---|---|
 | [Scenario 1 – Azure Cosmos DB Failover](#scenario-1-azure-cosmos-db-failover) | A service interruption in the primary region requires Azure Cosmos DB to fail over to a secondary region.| No changes required |
 | [Scenario 2 - Other Services Failover](#scenario-2-other-services-failover) | A service interruption affects other services in the primary region, but Azure Cosmos DB does not need to be failed over. | If the outage impacts the DNS servers hosted in the primary region, then the conditional forwarders from on-premises need to be updated to the secondary region. |
 | [Scenario 3 - Whole Region Outage](#scenario-3-whole-region-outage) | A major service outage affects multiple services, requiring both Azure Cosmos DB and other services to fail over. | Conditional forwarders from on-premises DNS need to be updated to the secondary region. |
@@ -107,4 +108,4 @@ When the primary region is restored, application services can fail back if desir
 ## Related Content
 - [Azure Cosmos DB private endpoints overview](how-to-configure-private-endpoints.md)
 - [How to manage Azure Cosmos DB account failover](how-to-manage-database-account.yml)
-- [Azure Cosmos DB private endpoint DNS integration](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns-integration)
+- [Azure Cosmos DB private endpoint DNS integration](https://learn.microsoft.com/azure/private-link/private-endpoint-dns-integration)
