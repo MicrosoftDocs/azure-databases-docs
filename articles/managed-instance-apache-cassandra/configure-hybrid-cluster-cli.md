@@ -64,11 +64,13 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
 
    You also need, at minimum, the seed nodes from your existing datacenter, and the gossip certificates required for node-to-node encryption. Azure Managed Instance for Apache Cassandra requires node-to-node encryption for communication between datacenters. If you don't have node-to-node encryption implemented in your existing cluster,  implement it. For more information, see [Node-to-node encryption](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLNodeToNode.html). Supply the path to the location of the certificates. Each certificate should be in PEM format, for example, `-----BEGIN CERTIFICATE-----\n...PEM format 1...\n-----END CERTIFICATE-----`. In general, there are two ways of implementing certificates:
 
-   - Self signed certs. This approach means that a private and public (no CA) certificate for each node. In this case, you need all public certificates.
+   - Self signed certs. A private and public (no CA) certificate for each node. In this case, you need all public certificates.
 
    - Certs signed by a CA. This certificate can be a self-signed CA or even a public one. In this case, we need the root CA certificate and all intermediaries, if applicable. For more information, see [Preparing SSL certificates for production](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLCertWithCA.html).
 
-   Optionally, if you want to implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS) as well, provide the certificates in the same format as when creating the hybrid cluster. See Azure CLI sample later in this article. The certificates are provided in the `--client-certificates` parameter. This approach uploads and applies your client certificates to the truststore for your Cassandra managed instance cluster. That is, you don't need to edit *cassandra.yaml* settings. Once applied, your cluster requires Cassandra to verify the certificates when a client connects. See `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html).
+   Optionally, if you want to implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS) as well, provide the certificates in the same format as when creating the hybrid cluster. See Azure CLI sample later in this article. The certificates are provided in the `--client-certificates` parameter.
+
+   This approach uploads and applies your client certificates to the truststore for your Cassandra managed instance cluster. That is, you don't need to edit *cassandra.yaml* settings. Once applied, your cluster requires Cassandra to verify the certificates when a client connects. See `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html).
 
    > [!NOTE]  
    > The value of the `delegatedManagementSubnetId` variable you supply in this code is the same as the value of `--scope` that you supplied in an earlier command:
@@ -172,7 +174,9 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    > The value for `--availability-zone` is set to `false`. To enable availability zones, set this value to `true`. Availability zones increase the availability SLA of the service. For more information, see [SLA for Online Services](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
-   > Availability zones aren't supported in all regions. Deployments fail if you select a region where Availability zones aren't supported. For supported regions, see [Azure regions list](/azure/reliability/availability-zones-region-support). The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments might fail if the SKU you selected, or capacity, isn't available across all zones.
+   > Availability zones aren't supported in all regions. Deployments fail if you select a region where Availability zones aren't supported. For supported regions, see [Azure regions list](/azure/reliability/availability-zones-region-support).
+   >
+   > The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments might fail if the SKU you selected, or capacity, isn't available across all zones.
 
 1. Now that the new datacenter is created, run the show datacenter command to view its details:
 
@@ -191,7 +195,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
 
    :::image type="content" source="media/configure-hybrid-cluster-cli/show-datacenter.png" border="true" alt-text="Screenshot of how to get datacenter details." lightbox="media/configure-hybrid-cluster-cli/show-datacenter.png":::
 
-1. Add the new datacenter's seed nodes to your existing datacenter's [seed node configuration](https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/configuration/configCassandra_yaml.html#configCassandra_yaml__seed_provider) in the [cassandra.yaml](https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/configuration/configCassandra_yaml.html) file. And install the managed instance gossip certificates that you collected earlier to the trust store for each node in your existing cluster, using `keytool` command for each cert:
+1. Add the new datacenter's seed nodes to your existing datacenter's [seed node configuration](https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/configuration/configCassandra_yaml.html#configCassandra_yaml__seed_provider) in the [cassandra.yaml](https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/configuration/configCassandra_yaml.html) file. Install the managed instance gossip certificates that you collected earlier to the trust store for each node in your existing cluster, using `keytool` command for each cert:
 
    ```bash
    keytool -importcert -keystore generic-server-truststore.jks -alias CassandraMI -file cert1.pem -noprompt -keypass myPass -storepass truststorePass

@@ -94,9 +94,11 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    :::image type="content" source="media/create-cluster-portal/create-datacenter-page.png" border="true" alt-text="Screenshot of the data center page where you can review the values." lightbox="media/create-cluster-portal/create-datacenter-page.png":::
 
    > [!WARNING]  
-   > Availability zones aren't supported in all regions. Deployments fail if you select a region where availability zones aren't supported. For more information, see [Azure regions list](/azure/reliability/availability-zones-region-support). The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments might fail if the SKU you selected, or capacity, isn't available across all zones.
+   > Availability zones aren't supported in all regions. Deployments fail if you select a region where availability zones aren't supported. For more information, see [Azure regions list](/azure/reliability/availability-zones-region-support).
+   >
+   > The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments might fail if the SKU you selected, or capacity, isn't available across all zones.
 
-1. Next, select **Review + create** > **Create**
+1. Next, select **Review + create** > **Create**.
 
    > [!NOTE]  
    > It can take up to 15 minutes to create a cluster.
@@ -119,13 +121,13 @@ Now that you deployed a cluster with a single data center, you can scale horizon
 
 ### Horizontal scale
 
-To scale out or scale in on nodes, move the slider to the desired number, or just edit the value. When finished, hit `Scale`.
+To scale out or scale in on nodes, move the slider to the desired number, or just edit the value. When finished, select **Scale**.
 
 :::image type="content" source="media/create-cluster-portal/datacenter-scale-2.png" border="true" alt-text="Screenshot of selecting number of datacenter nodes." lightbox="media/create-cluster-portal/datacenter-scale-2.png":::
 
 ### Vertical scale
 
-To scale up or to scale down SKU size for your nodes, select from `Sku Size`. When finished, hit `Scale`.
+To scale up or to scale down SKU size for your nodes, select from **Sku Size**. When finished, select **Scale**.
 
 :::image type="content" source="media/create-cluster-portal/datacenter-scale-3.png" border="true" alt-text="Screenshot of selecting Sku Size." lightbox="media/create-cluster-portal/datacenter-scale-3.png":::
 
@@ -142,25 +144,25 @@ To scale up or to scale down SKU size for your nodes, select from `Sku Size`. Wh
 
    > [!WARNING]  
    > If you're adding a datacenter in a different region, you need to select a different virtual network. You also need to ensure that this virtual network has connectivity to the primary region's virtual network created previously. Also, make sure that any other virtual networks that are hosting datacenters within the managed instance cluster. For more information, see [Connect virtual networks with virtual network peering](/azure/virtual-network/tutorial-connect-virtual-networks-portal#peer-virtual-networks).
-
+   >
    > You also need to make sure that you applied the appropriate role to your virtual network before you attempt to deploy a managed instance cluster, using the following CLI command.
    >  
    > ```azurecli-interactive
    > az role assignment create \
-   > --assignee 00aa00aa-bb11-cc22-dd33-44ee44ee44ee \
-   > --role 11bb11bb-cc22-dd33-ee44-55ff55ff55ff \
+   > --assignee a232010e-820c-4083-83bb-3ace5fc29d0b \
+   > --role 4d97b98b-1d4f-4787-a291-c67834d212e7 \
    > --scope /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/virtualNetworks/<vnetName>
    > ```
 
 1. Fill in the appropriate fields:
 
-   * **Datacenter name** - From the dropdown list, select your Azure subscription.
-   * **Availability zone** - Select if you want availability zones to be enabled in this datacenter.
-   * **Location** - Location where your datacenter is deployed.
-   * **SKU Size** - Choose from the available virtual machine SKU sizes.
-   * **No. of disks** - Choose the number of p30 disks to be attached to each Cassandra node.
-   * **No. of nodes** - Choose the number of Cassandra nodes to deploy to this datacenter.
-   * **Virtual Network** - Select an exiting virtual network and subnet.
+   * **Datacenter name**. From the dropdown list, select your Azure subscription.
+   * **Availability zone**. Select if you want availability zones to be enabled in this datacenter.
+   * **Location**. Location where your datacenter is deployed.
+   * **SKU Size**. Choose from the available virtual machine SKU sizes.
+   * **No. of disks**. Choose the number of p30 disks to be attached to each Cassandra node.
+   * **No. of nodes**. Choose the number of Cassandra nodes to deploy to this datacenter.
+   * **Virtual Network**. Select an exiting virtual network and subnet.
 
    :::image type="content" source="media/create-cluster-portal/add-datacenter-2.png" border="true" alt-text="Screenshot fo the Add Data Center page." lightbox="media/create-cluster-portal/add-datacenter-2.png":::
 
@@ -264,13 +266,15 @@ You can conduct in-place major version upgrades directly from the portal or thro
 
 ### Turnkey replication
 
-Cassandra 5.0 introduces a streamlined approach for deploying multi-region clusters, offering enhanced convenience and efficiency. If you use turnkey replication functionality, setting up and managing multi-region clusters becomes more accessible, allowing for smoother integration and operation across distributed environments. This update significantly reduces the complexities traditionally associated with deploying and maintaining multiple region configurations, allowing users to use Cassandra's capabilities with greater ease and effectiveness.
+Cassandra 5.0 introduces a streamlined approach for deploying multi-region clusters, offering enhanced convenience and efficiency. If you use turnkey replication functionality, setting up and managing multi-region clusters becomes more accessible, allowing for smoother integration and operation across distributed environments.
+
+This update significantly reduces the complexities associated with deploying and maintaining multiple region configurations, allowing users to use Cassandra's capabilities with greater ease and effectiveness.
 
 :::image type="content" source="media/create-cluster-portal/auto-replicate.png" border="true" alt-text="Select referred option from the dropdown list." lightbox="media/create-cluster-portal/auto-replicate.png":::
 
 > [!TIP]  
 > - None: Auto replicate is set to none.
-> - SystemKeyspaces: Autoreplicate all system keyspaces (system_auth, system_traces, system_auth)
+> - SystemKeyspaces: Autoreplicate all system keyspaces (system_auth, system_traces, system_auth).
 > - AllKeyspaces: Autoreplicate all keyspaces and monitor if new keyspaces are created and then apply autoreplicate settings automatically.
 
 #### Autoreplication scenarios

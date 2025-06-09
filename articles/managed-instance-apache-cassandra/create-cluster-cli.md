@@ -28,7 +28,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
 
 ## <a id="create-cluster"></a>Create a managed instance cluster
 
-1. Sign in to the [Azure portal](https://portal.azure.com/)
+1. Sign in to the [Azure portal](https://portal.azure.com/).
 
 1. Set your subscription ID in Azure CLI:
 
@@ -91,10 +91,10 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
 
 1. Create a datacenter for the cluster, with three virtual machines using the following configuration:
 
- - VM Size: Standard E8s v5
- - Datadisks: 4 P30 disks attached to each of the virtual machines deployed.
+   - VM Size: Standard E8s v5
+   - Datadisks: 4 P30 disks attached to each of the virtual machines deployed.
 
- - With all in place, use the [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-create) command:
+   - With all in place, use the [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-create) command:
 
    ```azurecli-interactive
    dataCenterName='dc1'
@@ -125,7 +125,9 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
    > By default, `--availability-zone` is set to `false`. To enable availability zones, set it to `true`. Availability zones help increasing the availability of the service. For more information, see [SLA for Online Services](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
-   > Availability zones aren't supported in all Azure regions. Deployments fail if you select a region where Availability zones aren't supported. For supported regions, see [Azure regions list](/azure/reliability/availability-zones-region-support). The successful deployment of availability zones is subject to the availability of compute resources in all of the zones in the region selected. Deployments fail if the virtual machine size you choose isn't available in the region selected.
+   > Availability zones aren't supported in all Azure regions. Deployments fail if you select a region where Availability zones aren't supported. For supported regions, see [Azure regions list](/azure/reliability/availability-zones-region-support).
+   >
+   > The successful deployment of availability zones is subject to the availability of compute resources in all of the zones in the region selected. Deployments fail if the virtual machine size you choose isn't available in the region selected.
 
 1. Once the datacenter is created, you can run the [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-update) command to scale down or up your cluster. Change the value of `node-count` parameter to the desired value:
 
@@ -162,7 +164,7 @@ sudo apt install openjdk-8-jdk openjdk-8-jre
 ```
 Check which [versions of Cassandra are still supported](https://cassandra.apache.org/_/download.html) and pick the version you need. We recommend that you use a stable version.
 
-Install the Cassandra libraries in order to get CQLSH by following the official steps from the [Cassandra documentation](https://cassandra.apache.org/doc/stable/cassandra/managing/tools/cqlsh.html)
+Install the Cassandra libraries in order to get CQLSH by following the official steps from the [Cassandra documentation](https://cassandra.apache.org/doc/stable/cassandra/managing/tools/cqlsh.html).
 
 Connect by using cqlsh, as described in the documentation.
 

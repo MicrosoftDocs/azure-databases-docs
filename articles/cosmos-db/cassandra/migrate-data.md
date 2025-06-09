@@ -116,18 +116,19 @@ We recommend the following configuration (at minimum) for a collection at 20,000
 ###### Example commands
 
 - Copying data from API for Cassandra to local csv file
-```sql
-COPY standard1 (key, "C0", "C1", "C2", "C3", "C4") TO 'backup.csv' WITH PAGESIZE=100 AND MAXREQUESTS=1 ;
-```
+
+  ```sql
+  COPY standard1 (key, "C0", "C1", "C2", "C3", "C4") TO 'backup.csv' WITH PAGESIZE=100 AND MAXREQUESTS=1 ;
+  ```
 
 - Copying data from local csv file to API for Cassandra
-```sql
-COPY standard2 (key, "C0", "C1", "C2", "C3", "C4") FROM 'backup.csv' WITH CHUNKSIZE=100 AND INGESTRATE=100 AND MAXATTEMPTS=10;
-```
+
+  ```sql
+  COPY standard2 (key, "C0", "C1", "C2", "C3", "C4") FROM 'backup.csv' WITH CHUNKSIZE=100 AND INGESTRATE=100 AND MAXATTEMPTS=10;
+  ```
 
 >[!IMPORTANT]
 > Only the open-source Apache Cassandra version of CQLSH COPY is supported. Datastax Enterprise (DSE) versions of CQLSH might encounter errors. 
-
 
 ### Migrate data by using Spark 
 
@@ -135,7 +136,7 @@ Use the following steps to migrate data to the API for Cassandra account with Sp
 
 1. Provision an [Azure Databricks cluster](spark-databricks.md) or an [Azure HDInsight cluster](spark-hdinsight.md). 
 
-1. Move data to the destination API for Cassandra endpoint. For more information, see [Migrate data from Cassandra to an Azure Cosmos DB for Apache Cassandra account ](migrate-data-databricks.md).
+1. Move data to the destination API for Cassandra endpoint. For more information, see [Migrate data from Cassandra to an Azure Cosmos DB for Apache Cassandra account](migrate-data-databricks.md).
 
 Migrating data by using Spark jobs is a recommended option if you have data residing in an existing cluster in Azure virtual machines or any other cloud. Set up Spark as an intermediary for one-time or regular ingestion. You can accelerate this migration by using Azure ExpressRoute connectivity between your on-premises environment and Azure. 
 
@@ -147,7 +148,7 @@ If you need a zero-downtime migration from a native Apache Cassandra cluster, we
 
 When they're no longer needed, you can delete the resource group, the Azure Cosmos DB account, and all the related resources. To do so, select the resource group for the virtual machine, select **Delete**, and then confirm the name of the resource group to delete.
 
-## Next steps
+## Next step
 
 In this tutorial, you learned how to migrate your data to an API for Cassandra account in Azure Cosmos DB. You can now learn about other concepts in Azure Cosmos DB:
 
