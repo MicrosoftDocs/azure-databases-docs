@@ -8,7 +8,7 @@
   href: $geointersects.md
 - name: $geoWithin
   href: $geowithin.md
-- name: $geometry.
+- name: $geometry
   href: $geometry.md
 - name: $maxDistance
   href: $maxdistance.md
