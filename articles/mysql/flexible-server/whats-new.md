@@ -25,6 +25,10 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 ## May 2025
 
+### Configure backup interval for the automated backups (Preview)
+
+Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. The feature is currently available in limited regions, namely – West Central US and East Asia. Learn more about the feature [here](./concepts-backup-restore.md#backup-frequency).
+
 ### Enable Auto-Scale of IOPS for Faster Restore and Replica Provisions
 
 Azure Database for MySQL now supports the ability to enable [autoscaling of IOPS](https://techcommunity.microsoft.com/blog/adformysql/autoscale-iops-for-azure-database-for-mysql---flexible-server---general-availabi/3884602) for both the source and target servers during restore operations and replica provisioning workflows. This enhancement helps accelerate the restore and replica provisioning process by temporarily boosting IOPS to meet the performance demands of these operations. Once provisioning is complete, you can disable the autoscale IOPS setting.
