@@ -90,16 +90,16 @@ If you need more than 10 physical shards on your cluster, open an [Azure support
 
 After [a physical shard is added to a cluster](#increase-the-number-of-physical-shards), or if multishard cluster has [uneven storage usage](./how-to-manage-alerts.md) across its physical shards, data rebalancing redistributes data between shards without any downtime.
 
-1. Connect to the cluster via a management tool such as [Mongo shell](./how-to-connect-mongo-shell.md).
+To initiate data rebalancing, connect to the cluster using a management tool such as the [Mongo shell](./how-to-connect-mongo-shell.md).
 
-1. To start data rebalancing, use ```sh.startBalancer()``` command.
+1. Start the rebalancer with the ```sh.startBalancer()``` command.
 
-1. To check data rebalancing status, use ```sh.isBalancerRunning()``` command.
+1. Check the rebalancer status using ```sh.isBalancerRunning()```.
 
-1. To stop data rebalancing, use ```sh.stopBalancer()``` command.
+1. Stop the rebalancer with the ```sh.stopBalancer()``` command.
 
  > [!NOTE]
->  Depending on the size of data that needs to be moved between the physical shards, data rebalancing can take a longer time. There's no impact on the cluster availability or functionality as rebalancing operation is performed online without any interruptions.
+> The duration of the rebalancing process depends on the volume of data being moved between physical shards. The operation is performed online and does not impact cluster availability or functionality.
 
 ## Next steps
 
