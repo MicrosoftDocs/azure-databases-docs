@@ -88,22 +88,25 @@ If you need more than 10 physical shards on your cluster, open an [Azure support
 
 ### Rebalance data
 
-After [a physical shard is added to cluster](#increase-the-number-of-physical-shards) or if multishard cluster has [uneven use of storage](./how-to-manage-alerts.md) across its physical shards, data rebalancing would move data between physical shards without any downtime.
+After [a physical shard is added to a cluster](#increase-the-number-of-physical-shards), or if multishard cluster has [uneven storage usage](./how-to-manage-alerts.md) across its physical shards, data rebalancing redistributes data between shards without any downtime.
 
 1. Connect to the cluster via a management tool such as [Mongo shell](./how-to-connect-mongo-shell.md).
 
-1. To start data rebalancing use ```sh.startBalancer()``` command.
+1. To start data rebalancing, use ```sh.startBalancer()``` command.
 
-1. To check data rebalancing status use ```sh.isBalancerRunning()``` command.
+1. To check data rebalancing status, use ```sh.isBalancerRunning()``` command.
 
-1. To stop data rebalancing use ```sh.stopBalancer()``` command.
+1. To stop data rebalancing, use ```sh.stopBalancer()``` command.
 
  > [!NOTE]
->  Depending on the size of data that needs to be moved between the physical shards, data rebalancing can take a longer time. There's no impact on the cluster availability or functionality as reblancing operation is performed online without any interruptions.
+>  Depending on the size of data that needs to be moved between the physical shards, data rebalancing can take a longer time. There's no impact on the cluster availability or functionality as rebalancing operation is performed online without any interruptions.
 
 ## Next steps
 
 In this guide, we showed that scaling and configuring your Cosmos DB for MongoDB vCore cluster in the Azure portal is a straightforward process. The Azure portal includes the ability to adjust the cluster tier, increase storage size, enable or disable high availability, and add physical shards without any downtime.
+
+- [Compute and storage options](./compute-storage.md)
+- [Check out sharding fundamentals](./partitioning.md)
 
 > [!div class="nextstepaction"]
 > [Restore an Azure Cosmos DB for MongoDB vCore cluster](how-to-restore-cluster.md)
