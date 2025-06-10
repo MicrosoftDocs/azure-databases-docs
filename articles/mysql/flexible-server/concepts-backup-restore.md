@@ -38,7 +38,7 @@ If a scheduled backup fails, our backup service tries every 20 minutes to take a
 
 To enhance the frequency of automated daily backups, you can increase the backup interval. This adjustment is particularly beneficial when anticipating large transactions, as it significantly reduces restore time in the event of a failure. To modify the backup interval, navigate to the **Settings > Compute + Storage** section and set the **Backup Interval** field accordingly. While the default interval is set to 24 hours, it can be adjusted to either 12 or 6 hours. The retention of these backups is determined by the retention period configured at the server level.
 
-Currently, this feature is in preview and is limited to the **West Central US** and **East Asia** regions.
+Currently, this feature is in preview and is limited to the **East US**, **West Central US**, **Japan East** and **East Asia** regions.
 
   :::image type="content" source="media/concepts-backup-restore/configure-backup-interval.png" alt-text="Screenshot of modify backup frequency." lightbox="media/concepts-backup-restore/configure-backup-interval.png":::
 
