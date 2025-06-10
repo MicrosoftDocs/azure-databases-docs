@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/27/2025
+ms.date: 06/09/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ms.custom:
@@ -85,6 +85,21 @@ When a database grows beyond the capacity of a single physical shard cluster, yo
 1. Select **Save** to persist your change.
 
 If you need more than 10 physical shards on your cluster, open an [Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
+
+### Rebalance data
+
+After [a physical shard is added to cluster](#increase-the-number-of-physical-shards) or if multishard cluster has [uneven use of storage](./how-to-manage-alerts.md) across its physical shards, data rebalancing would move data between physical shards without any downtime.
+
+1. Connect to the cluster via a management tool such as [Mongo shell](./how-to-connect-mongo-shell.md).
+
+1. To start data rebalancing use ```sh.startBalancer()``` command.
+
+1. To check data rebalancing status use ```sh.isBalancerRunning()``` command.
+
+1. To stop data rebalancing use ```sh.stopBalancer()``` command.
+
+ > [!NOTE]
+>  Depending on the size of data that needs to be moved between the physical shards, data rebalancing can take a longer time. There's no impact on the cluster availability or functionality as reblancing operation is performed online without any interruptions.
 
 ## Next steps
 
