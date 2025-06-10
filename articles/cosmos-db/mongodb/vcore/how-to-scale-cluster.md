@@ -99,7 +99,7 @@ To initiate data rebalancing, connect to the cluster using a management tool suc
 1. Stop the rebalancer with the ```sh.stopBalancer()``` command.
 
  > [!NOTE]
-> The duration of the rebalancing process depends on the volume of data being moved between physical shards. The operation is performed online and does not impact cluster availability or functionality.
+> The duration of the rebalancing process depends on the volume of data being moved between physical shards. The operation is performed online and doesn't impact cluster availability or functionality.
 
 ## Next steps
 
