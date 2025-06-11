@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: conceptual
-  ms.date: 04/29/2025
+  ms.date: 06/08/2025
   appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -82,7 +82,6 @@ Creates a new user on the cluster where you run the command. The `createUser` co
 #### Data admin users 
 
 ```powershell
-use admin
 db.runCommand(
     {
         createUser:"yourUserName",
@@ -98,7 +97,6 @@ db.runCommand(
 #### Read-only users
 
 ```powershell
-use admin
 db.runCommand(
     {
         createUser:"yourUserName",
