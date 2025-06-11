@@ -53,9 +53,7 @@ First, you need to configure your source Azure Cosmos DB for MongoDB (RU) accoun
 
 1. Navigate to your existing key vault.
 
-1. Select the **Access Control (IAM)** option in the resource menu.
-
-1. Assign the **Key Vault Secret User** role to the principal ID (object ID) of the managed identity that you're using for your source account.
+1. If the Key Vault uses the **Role-Based Access Control (RBAC)** permission model, select the **Access Control (IAM)** option in the resource menu and assign the **Key Vault Secret User** role to the principal ID (object ID) of the managed identity used for your source account. Otherwise, use the **Access policies** option in the resource menu to create an access policy with **Get** and **List Secret** permissions, then assign it to the principal ID (object ID).
 
 1. Run the command to update your source account to use the preferred identity mechanism as the default identity.
     
