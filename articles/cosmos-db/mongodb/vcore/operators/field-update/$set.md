@@ -212,12 +212,15 @@ db.stores.updateMany(
 )
 ```
 
-> ## Important
+> [!Important]
 
-> - If the field specified in `$set` does not exist, it will be created.
-> - If the field already exists, its value will be replaced with the new value.
-> - The `$set` operator can be used with any valid BSON data types including objects, arrays, and primitive types.
-> - When using dot notation with arrays, you can use positional operators (`$`, `$[]`, `$[<identifier>]`) to target specific array elements.
+> If the field specified in `$set` does not exist, it will be created.
+> 
+> If the field already exists, its value will be replaced with the new value.
+> 
+> The `$set` operator can be used with any valid BSON data types including objects, arrays, and primitive types.
+> 
+> When using dot notation with arrays, you can use positional operators (`$`, `$[]`, `$[<identifier>]`) to target specific array elements.
 
 ## Related content
 
