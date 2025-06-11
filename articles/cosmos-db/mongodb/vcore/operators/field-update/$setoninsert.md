@@ -218,13 +218,17 @@ db.stores.updateOne(
 )
 ```
 
-## Important Notes
+> [!Important]
 
-- The `$setOnInsert` operator only takes effect during upsert operations (`{ upsert: true }`).
-- If the document exists, `$setOnInsert` fields are completely ignored.
-- `$setOnInsert` is commonly used with `$set` to handle both update and insert scenarios in a single operation.
-- You can combine `$setOnInsert` with other update operators like `$inc`, `$push`, etc.
-- The `$setOnInsert` operator is ideal for setting creation timestamps, default values, and initialization data.
+> The `$setOnInsert` operator only takes effect during upsert operations (`{ upsert: true }`).
+> 
+> If the document exists, `$setOnInsert` fields are completely ignored.
+> 
+> `$setOnInsert` is commonly used with `$set` to handle both update and insert scenarios in a single operation.
+> 
+> You can combine `$setOnInsert` with other update operators like `$inc`, `$push`, etc.
+> 
+> The `$setOnInsert` operator is ideal for setting creation timestamps, default values, and initialization data.
 
 ## Related content
 
