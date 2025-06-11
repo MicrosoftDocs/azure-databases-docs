@@ -88,9 +88,7 @@
     - name: Scaling resources
       href: flexible-server/concepts-scaling-resources.md
     - name: Confidential computing
-      items:
-      - name: Overview
-        href: flexible-server/concepts-confidential-computing.md
+      href: flexible-server/concepts-confidential-computing.md
     - name: Elastic clusters (preview)
       items:
       - name: Overview
