@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$maxN` operator returns the n largest values from an array. It is useful when you want to find the top performing items based on numerical values, such as the highest sales figures or largest discount percentages.
+The `$maxN` operator returns the n largest values from an array. It's useful when you want to find the top performing items based on numerical values, such as the highest sales figures or largest discount percentages.
 
 ## Syntax
 
@@ -105,7 +105,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Get top three sales values
 
-Suppose you want to find the top 3 sales values from all sales categories.
+Suppose you want to find the top three sales values from all sales categories.
 
 ```javascript
 db.stores.aggregate([
