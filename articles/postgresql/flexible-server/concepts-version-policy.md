@@ -12,7 +12,9 @@ ms.topic: conceptual
 
 # Azure Database for PostgreSQL flexible server versioning policy
 
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)][!INCLUDE [azure-database-for-postgresql-single-server-deprecation](../includes/azure-database-for-postgresql-single-server-deprecation.md)]
+[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
+
+[!INCLUDE [azure-database-for-postgresql-single-server-deprecation](../includes/azure-database-for-postgresql-single-server-deprecation.md)]
 
 This page describes the Azure Database for PostgreSQL flexible server versioning policy, and is applicable to these deployment modes:
 
