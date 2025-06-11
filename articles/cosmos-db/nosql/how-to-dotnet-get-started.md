@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 06/11/2025
 ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track-azurepowershell, devx-track-dotnet, devx-track-azurecli
 ---
 
