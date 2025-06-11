@@ -28,6 +28,8 @@
   href: data-size/TOC.yml
 - name: Evaluation query
   href: evaluation-query/toc.yml
+- name: Field update
+  href: field-update/toc.yml
 - name: Geospatial
   href: geospatial/toc.yml
 - name: Logical query
