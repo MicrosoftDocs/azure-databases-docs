@@ -87,8 +87,11 @@
       href: flexible-server/concepts-storage.md
     - name: Scaling resources
       href: flexible-server/concepts-scaling-resources.md
+    - name: Confidential computing
+      items:
+      - name: Overview
+        href: flexible-server/concepts-confidential-computing.md
     - name: Elastic clusters (preview)
-      displayName: scale-out, sharding
       items:
       - name: Overview
         href: flexible-server/concepts-elastic-clusters.md
@@ -650,10 +653,6 @@
           href: flexible-server/how-to-configure-managed-identities-user-assigned.md
       - name: Reset administrator password
         href: flexible-server/how-to-reset-admin-password.md
-      - name: Confidential computing
-        items:
-        - name: Overview
-          href: flexible-server/concepts-confidential-computing.md
     - name: Decommissioning and relocation
       items:
       - name: Delete a server
