@@ -252,14 +252,19 @@ db.stores.updateOne(
 )
 ```
 
-## Important Notes
+> [!Important]
 
-- If the field specified in `$unset` doesn't exist, the operation has no effect on that field.
-- The value specified in `$unset` is ignored; any value can be used, but convention is to use an empty string ("").
-- When used with array elements, `$unset` sets the array element to `null` rather than removing it entirely.
-- To completely remove array elements, use operators like `$pull` or `$pop` instead.
-- The `$unset` operator can't be used to remove the `_id` field.
-- Multiple fields can be unset in a single operation.
+> If the field specified in `$unset` doesn't exist, the operation has no effect on that field.
+> 
+> The value specified in `$unset` is ignored; any value can be used, but convention is to use an empty string ("").
+> 
+> When used with array elements, `$unset` sets the array element to `null` rather than removing it entirely.
+> 
+> To completely remove array elements, use operators like `$pull` or `$pop` instead.
+> 
+> The `$unset` operator can't be used to remove the `_id` field.
+> 
+> Multiple fields can be unset in a single operation.
 
 ## Related content
 
