@@ -5,7 +5,7 @@ author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2024
+ms.date: 06/11/2025
 ms.custom: devx-track-azurecli
 ---
 
@@ -644,9 +644,44 @@ Analytical store partitioning is completely independent of partitioning in�
 
 ## Security
 
-* **Authentication with the analytical store** is the same as the transactional store for a given database.
+* **Authentication with the analytical store** - Supported authentication methods vary based upon whether networking features are enabled.
 
-* **Network isolation using private endpoints** - You can control network access to the data in the transactional and analytical stores independently. Network isolation is done using separate managed private endpoints for each store, within managed virtual networks in Azure Synapse workspaces. To learn more, see how to [Configure private endpoints for analytical store](analytical-store-private-endpoints.md) article.
+  - *Key-based authentication*: This scenario is supported for all accounts in all scenarios, including those without Private Endpoints or VNet enabled. 
+  - *Service Principal or Managed-Identity*: Using Entra Id or managed-identity authentication is only supported for accounts which do **not** use Private Endpoints or enable Vnet access. To use this type of authentication, users must apply [data plane RBAC](./nosql/how-to-grant-data-plane-access.md) and create a new read only role with these data actions below.
+
+    1. Add a custom *MyAnalyticsReadOnlyRole* using PowerShell and map "readMetadata" and "readAnalytics" RBAC actions to the Role.
+
+    ```powershell
+    $resourceGroupName = "<myResourceGroup>"
+    $accountName = "<myCosmosAccount>"
+    New-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
+        -ResourceGroupName $resourceGroupName `
+        -Type CustomRole -RoleName 'MyAnalyticsReadOnlyRole' `
+        -DataAction @( `
+            'Microsoft.DocumentDB/databaseAccounts/readMetadata',
+            'Microsoft.DocumentDB/databaseAccounts/readAnalytics'
+            ) `
+        -AssignableScope "/"
+    ```
+  
+    2. List the role definitions for the account to get the new role definition id.
+    
+    ```powershell
+    $roleDefinitionId = Get-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
+    -ResourceGroupName $resourceGroupName
+    ```
+    3. Create the role assignment by assiging the new role to the *Synapse MSI Principal*.
+    
+    ```powershell
+    $synapsePrincipalId = "<Synapse MSI Principal>"
+    New-AzCosmosDBSqlRoleAssignment -AccountName $accountName `
+        -ResourceGroupName $resourceGroupName `
+        -RoleDefinitionId $readOnlyRoleDefinitionId `
+        -Scope "/" `
+        -PrincipalId $synapsePrincipalId
+    ```
+
+* **Network isolation using private endpoints** - You can control network access to the data in the transactional and analytical stores independently. Network isolation is done using separate managed private endpoints for each store, within managed virtual networks in Azure Synapse workspaces. To learn more, see how to [Configure private endpoints for analytical store](analytical-store-private-endpoints.md) article. **Note: you must use key-based authentication when enabling this. See previous section.**
 
 * **Data encryption at rest** - Your analytical store encryption is enabled by default.
 
