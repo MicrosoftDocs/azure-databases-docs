@@ -219,7 +219,7 @@ db.stores.updateOne(
 ```
 
 > [!Important]
-
+>
 > The `$setOnInsert` operator only takes effect during upsert operations (`{ upsert: true }`).
 > 
 > If the document exists, `$setOnInsert` fields are completely ignored.

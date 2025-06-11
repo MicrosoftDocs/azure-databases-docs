@@ -253,7 +253,7 @@ db.stores.updateOne(
 ```
 
 > [!Important]
-
+>
 > If the field specified in `$unset` doesn't exist, the operation has no effect on that field.
 > 
 > The value specified in `$unset` is ignored; any value can be used, but convention is to use an empty string ("").

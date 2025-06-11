@@ -213,7 +213,7 @@ db.stores.updateMany(
 ```
 
 > [!Important]
-
+>
 > If the field specified in `$set` does not exist, it will be created.
 > 
 > If the field already exists, its value will be replaced with the new value.

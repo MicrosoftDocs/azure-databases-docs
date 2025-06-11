@@ -118,7 +118,7 @@ db.stores.updateMany(
 ```
 
 > [!Important]
-
+>
 > If the field specified in `$rename` does not exist, the operation will have no effect on that field.
 > 
 > If the new field name already exists, the `$rename` operation will overwrite the existing field.
