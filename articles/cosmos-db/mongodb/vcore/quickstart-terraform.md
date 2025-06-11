@@ -8,7 +8,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: quickstart
-ms.date: 03/18/2024
+ms.date: 06/11/2025
 ms.custom: devx-track-terraform
 ---
 
