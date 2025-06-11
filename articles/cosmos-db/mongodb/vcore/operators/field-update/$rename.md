@@ -117,12 +117,15 @@ db.stores.updateMany(
 )
 ```
 
-## Important Notes
+> [!Important]
 
-- If the field specified in `$rename` does not exist, the operation will have no effect on that field.
-- If the new field name already exists, the `$rename` operation will overwrite the existing field.
-- The `$rename` operator cannot be used to rename array elements or fields within array elements.
-- Field names cannot be empty strings or contain null characters.
+> If the field specified in `$rename` does not exist, the operation will have no effect on that field.
+> 
+> If the new field name already exists, the `$rename` operation will overwrite the existing field.
+> 
+> The `$rename` operator cannot be used to rename array elements or fields within array elements.
+> 
+> Field names cannot be empty strings or contain null characters.
 
 ## Related content
 
