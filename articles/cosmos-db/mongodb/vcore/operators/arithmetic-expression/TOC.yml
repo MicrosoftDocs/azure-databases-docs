@@ -16,3 +16,17 @@
   href: $log.md
 - name: $log10
   href: $log10.md
+- name: $mod
+  href: $mod.md
+- name: $multiply
+  href: $multiply.md
+- name: $pow
+  href: $pow.md
+- name: $round
+  href: $round.md
+- name: $sqrt
+  href: $sqrt.md
+- name: $subtract
+  href: $subtract.md
+- name: $trunc
+  href: $trunc.md
