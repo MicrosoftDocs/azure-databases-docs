@@ -1,5 +1,5 @@
 ---
-  title: $setIntersection returns the common elements that appear in all input arrays.
+  title: $setIntersection (set expression)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $setIntersection operator returns the common elements that appear in all input arrays.
   author: avijitgupta
@@ -10,7 +10,7 @@
   ms.date: 06/09/2025
 ---
 
-# $setIntersection (array expression)
+# $setIntersection (set expression)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

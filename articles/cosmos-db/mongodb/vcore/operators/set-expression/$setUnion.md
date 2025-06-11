@@ -1,5 +1,5 @@
 ---
-  title: $setUnion returns an array containing all unique elements from the input arrays.
+  title: $setUnion (set expression)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $setUnion operator returns an array containing all unique elements from the input arrays.
   author: avijitgupta
@@ -10,7 +10,7 @@
   ms.date: 06/09/2025
 ---
 
-# $setUnion (array expression)
+# $setUnion (set expression)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

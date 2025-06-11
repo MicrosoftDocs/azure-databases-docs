@@ -1,5 +1,5 @@
 ---
-  title: $setEquals (set expression) operator returns `true` if two sets have the same distinct elements, regardless of order or duplicates.
+  title: $setEquals (set expression)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $setEquals operator returns true if two sets have the same distinct elements.
   author: avijitgupta

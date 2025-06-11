@@ -1,5 +1,5 @@
 ---
-  title: The `$allElementsTrue` operator returns true if all elements in an array evaluate to true (including empty array) else returns false.
+  title: $allElementsTrue (set expression)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $allElementsTrue operator returns true if all elements in an array evaluate to true.
   author: avijitgupta

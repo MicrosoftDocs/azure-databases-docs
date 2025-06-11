@@ -1,5 +1,5 @@
 ---
-  title: $setIsSubset returns a boolean value indicating whether the first array is a subset of the second array.
+  title: $setIsSubset (set expression)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $setIsSubset operator determines if the first array is a subset of the second array.
   author: avijitgupta
@@ -10,7 +10,7 @@
   ms.date: 06/09/2025
 ---
 
-# $setIsSubset (array expression)
+# $setIsSubset (set expression)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
