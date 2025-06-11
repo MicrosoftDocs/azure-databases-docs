@@ -103,7 +103,8 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    > [!NOTE]  
    > It can take up to 15 minutes to create a cluster.
 
-   :::image type="content" source="media/create-cluster-portal/review-create.png" border="true" alt-text="Scrrenshot shows the Review and create page for the cluster." lightbox="media/create-cluster-portal/review-create.png":::
+   :::image type="content" source="media/create-cluster-portal/review-create.png" border="true" alt-text="Screenshot shows the Review and create page for the cluster." lightbox="media/create-cluster-portal/review-create.png":::
+
 
 1. After the deployment finishes, check your resource group to see the newly created managed instance cluster:
 
@@ -164,14 +165,16 @@ To scale up or to scale down SKU size for your nodes, select from **Sku Size**. 
    * **No. of nodes**. Choose the number of Cassandra nodes to deploy to this datacenter.
    * **Virtual Network**. Select an exiting virtual network and subnet.
 
-   :::image type="content" source="media/create-cluster-portal/add-datacenter-2.png" border="true" alt-text="Screenshot fo the Add Data Center page." lightbox="media/create-cluster-portal/add-datacenter-2.png":::
+   :::image type="content" source="media/create-cluster-portal/add-datacenter-2.png" border="true" alt-text="Screenshot of the Add Data Center page." lightbox="media/create-cluster-portal/add-datacenter-2.png":::
+
 
    > [!WARNING]  
    > The Azure portal doesn't allow creation of a new virtual network when you add a datacenter. You need to choose an existing virtual network and you need to ensure there's connectivity between the target subnets where datacenters are deployed. You also need to apply the appropriate role to the virtual network to allow deployment, as described previously.
 
 1. When the datacenter is deployed, you should be able to view all datacenter information in the **Data Center** pane:
 
-   :::image type="content" source="media/create-cluster-portal/multi-datacenter.png" border="true" alt-text="Scrfeenshot shows the cluster resources." lightbox="media/create-cluster-portal/multi-datacenter.png":::
+   :::image type="content" source="media/create-cluster-portal/multi-datacenter.png" border="true" alt-text="Screenshot shows the cluster resources." lightbox="media/create-cluster-portal/multi-datacenter.png":::
+
 
 1. To ensure replication between data centers, connect to [cqlsh](#connecting-from-cqlsh) and use the following CQL query to update the replication strategy in each keyspace to include all datacenters across the cluster. System tables are updated automatically.
 

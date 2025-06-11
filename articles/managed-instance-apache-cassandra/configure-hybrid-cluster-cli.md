@@ -35,7 +35,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
 
 1. Open the **Subnets** tab and create a new subnet. To learn more about the fields in the **Added subnet** form, see [Add a subnet](/azure/virtual-network/virtual-network-manage-subnet#add-a-subnet).
 
-   :::image type="content" source="media/configure-hybrid-cluster-cli/subnet.png" border="true" alt-text="Screenshot shows the otpin to add a new subnet to your Virtual Network." lightbox="media/configure-hybrid-cluster-cli/subnet.png":::
+   :::image type="content" source="media/configure-hybrid-cluster-cli/subnet.png" border="true" alt-text="Screenshot shows the option to opt in and add a new subnet to your Virtual Network." lightbox="media/configure-hybrid-cluster-cli/subnet.png":::
     <!--  -->
 
    > [!NOTE]
