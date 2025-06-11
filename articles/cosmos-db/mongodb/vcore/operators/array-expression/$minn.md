@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$minN` operator returns the n smallest values from an array. It is useful when you want to find the lowest performing items based on numerical values, such as the smallest sales figures or lowest discount percentages.
+The `$minN` operator returns the n smallest values from an array. It's useful when you want to find the lowest performing items based on numerical values, such as the smallest sales figures or lowest discount percentages.
 
 ## Syntax
 
@@ -135,7 +135,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will return the three smallest discount percentages from the "Major Bargain Bash" promotion event.
+This returns the three smallest discount percentages from the "Major Bargain Bash" promotion event.
 
 ```json
 [
@@ -232,7 +232,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query returns the three stores with the overall lowest minimum sales values, helping identify locations that may need additional support or different product strategies.
+This query returns the three stores with the overall lowest minimum sales values, helping identify locations that may need more support or different product strategies.
 
 ```json
 [
