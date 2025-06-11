@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$unset` operator is used to remove specified fields from documents during update operations. This operator completely removes the field from the document, regardless of its current value. It is useful for cleaning up document schemas, removing deprecated fields, or eliminating unnecessary data from documents.
+The `$unset` operator is used to remove specified fields from documents during update operations. This operator completely removes the field from the document, regardless of its current value. It's useful for cleaning up document schemas, removing deprecated fields, or eliminating unnecessary data from documents.
 
 ## Syntax
 
@@ -174,7 +174,7 @@ db.stores.updateOne(
 )
 ```
 
-This will set the second element (index 1) of the salesByCategory array to `null`:
+This sets the second element (index 1) of the salesByCategory array to `null`:
 
 ```json
 {
@@ -254,11 +254,11 @@ db.stores.updateOne(
 
 ## Important Notes
 
-- If the field specified in `$unset` does not exist, the operation will have no effect on that field.
+- If the field specified in `$unset` doesn't exist, the operation has no effect on that field.
 - The value specified in `$unset` is ignored; any value can be used, but convention is to use an empty string ("").
 - When used with array elements, `$unset` sets the array element to `null` rather than removing it entirely.
 - To completely remove array elements, use operators like `$pull` or `$pop` instead.
-- The `$unset` operator cannot be used to remove the `_id` field.
+- The `$unset` operator can't be used to remove the `_id` field.
 - Multiple fields can be unset in a single operation.
 
 ## Related content
