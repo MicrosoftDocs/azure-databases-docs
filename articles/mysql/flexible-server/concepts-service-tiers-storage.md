@@ -80,10 +80,11 @@ The detailed specifications of the available server types are as follows for the
 | Standard_D16ds_v4 | 16 | 64 | 88 | 20000 | 10923 | 430 |
 | Standard_D32ads_v5 | 32 | 128 | 176 | 20000 | 21845 | 860 |
 | Standard_D32ds_v4 | 32 | 128 | 176 | 20000 | 21845 | 860 |
-| Standard_D48ads_v5 | 48 | 192 | 264 | 20000 | 32768 | 1290 |
-| Standard_D48ds_v4 | 48 | 192 | 264 | 20000 | 32768 | 1290 |
-| Standard_D64ads_v5 | 64 | 256 | 352 | 20000 | 43691 | 1720 |
-| Standard_D64ds_v4 | 64 | 256 | 352 | 20000 | 43691 | 1720 |
+| Standard_D48ads_v5 | 48 | 192 | 264 | 48000 | 32768 | 1290 |
+| Standard_D48ds_v4 | 48 | 192 | 264 | 48000 | 32768 | 1290 |
+| Standard_D64ads_v5 | 64 | 256 | 352 | 48000 | 43691 | 1720 |
+| Standard_D64ds_v4 | 64 | 256 | 352 | 48000 | 43691 | 1720 |
+| Standard_D96ds_v5 | 96 | 384 | 528 | 48000 | 65536 | 2580 |
 
 #### Business Critical
 
@@ -109,7 +110,7 @@ The detailed specifications of the available server types are as follows for the
 | Standard_E64ads_v5 | 64 | 504 | 693 | 64000 | 86016 | 1224 |
 | Standard_E64ds_v5 | 64 | 512 | 704 | 64000 | 87383 | 1208 |
 | Standard_E80ids_v4 | 80 | 504 | 693 | 72000 | 86016 | 1224 |
-| Standard_E96ds_v5 | 96 | 672 | 924 | 80000 | 100000 | 2004 |
+| Standard_E96ads_v5 | 96 | 672 | 924 | 80000 | 100000 | 2004 |
 
 **Default Zone-Resilience in Azure Database for MySQL – Flexible Server Business Critical Tier**: Starting mid-December 2024, all new servers provisioned in the Azure Database for MySQL – Flexible Server Business Critical tier will come with built-in zone-resilience—at no extra cost! This means your data and log files will automatically be stored on zone-redundant storage, ensuring rapid recovery from zonal outages. Even without High-Availability enabled, you'll benefit from seamless protection with zone-redundant backups. [Overview of business continuity with Azure Database for MySQL - Flexible Server](concepts-business-continuity.md).
 
