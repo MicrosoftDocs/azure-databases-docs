@@ -109,6 +109,9 @@ Remember that any Microsoft Entra role that is created in PostgreSQL must be dro
 DROP ROLE rolename;
 ```
 
+> [!NOTE]  
+> This method works until PostgreeSQL v15, after v16 DROP ROLE , superadmin role is requirment, contact Azure support for dropping roles
+
 ## Create a role using Microsoft Entra object identifier
 
 ```sql
