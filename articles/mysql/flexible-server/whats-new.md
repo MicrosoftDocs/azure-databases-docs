@@ -37,7 +37,7 @@ To learn more, visit [Point-in-time restore](how-to-restore-server-portal.md).
 
 ### High Availability with Dedicated Azure Standard Load Balancer (SLB) (preview)
 
-A dedicated standard load balancer (SLB) in Azure Database for MySQL for High Availability (HA) enabled servers is now available for public preview. This feature adds a dedicated standard load balancer to the HA configuration, enabling low-latency, high-throughput distribution of front-end traffic across backend servers. This enhancement improves failover performance and ensures more efficient handling of MySQL data traffic. This feature is automatically applied to all newly created HA servers if you want to enable an SLB for an existing HA server, [file a support ticket with Azure Support.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+A dedicated standard load balancer (SLB) in Azure Database for MySQL for High Availability (HA) enabled servers is now available for public preview. This feature adds a dedicated standard load balancer to the HA configuration, enabling low-latency, high-throughput distribution of front-end traffic across backend servers. This enhancement improves failover performance and ensures more efficient handling of MySQL data traffic. If you want to enable an SLB for your HA server, [file a support ticket with Azure Support.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## March 2025
 
