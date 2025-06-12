@@ -14,7 +14,7 @@ ms.collection:
 
 # Migrate SQL Server Integration Services packages to an Azure SQL Managed Instance
 
-[!INCLUDE Azure Database Migration Service (classic) - SQL scenarios retirement announcement]
+[!INCLUDE [deprecation-announcement-dms-classic-sql](includes/deprecation-announcement-dms-classic-sql.md)]
 
 If you use SQL Server Integration Services (SSIS) and want to migrate your SSIS projects/packages from the source SSISDB hosted by SQL Server to the destination SSISDB hosted by an Azure SQL Managed Instance, you can use Azure Database Migration Service.
 
