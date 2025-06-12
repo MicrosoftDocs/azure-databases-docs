@@ -60,7 +60,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/settings-query.png" alt-text="Screenshot that shows a sample of a query script." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/settings-query.png":::
 
-   Here's a sample of a payload with a query statement:
+   Here's a sample payload with a query statement:
 
    ```json
    {
@@ -92,7 +92,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
    }
    ```
 
-   ### [NonQuery](#tab/non-query)
+   ### [Nonquery](#tab/non-query)
 
    Nonquery statements execute PostgreSQL statements (often `INSERT`, `UPDATE`, or `DELETE` statements) that don't return any results. A nonquery statement returns the number of affected rows.
 
@@ -195,7 +195,7 @@ A script activity supports two types of script parameters:
 
 ### Named parameters (recommended)
 
-Named parameters have an `@` prefix on the name of the parameter. For named parameters as output parameters, set the value as `null` with the **Treat as null** box checked in the UI. Leave the payload blank or `null`. The value in the text should be `null`.
+For named parameters as output parameters, use the `@` prefix. Set the value as `null` with the **Treat as null** box checked on the UI, and leave the payload blank or `null`. The value in the text should be `null`.
 
 :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/output-parameter-example.png" alt-text="Screenshot that shows an output parameter example with checkboxes selected for treating the values as null." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/output-parameter-example.png":::
 

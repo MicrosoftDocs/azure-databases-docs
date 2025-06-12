@@ -53,7 +53,7 @@ This article has step-by-step instructions on how to create a copy activity.
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/source-datasource-selected.png" alt-text="Screenshot that shows a source connection selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/source-datasource-selected.png":::
 
-1. On the **Destination** tab, select or create an Azure Database for PostgreSQL connection, and then choose the write method.
+1. On the **Destination** tab, select or create an Azure Database for PostgreSQL connection.
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-destination-datasource.png" alt-text="Screenshot that shows where to select or create a destination data source on the Destination tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-destination-datasource.png":::
 
@@ -85,7 +85,7 @@ When you upsert data by using the Azure Database for PostgreSQL connector, you n
 
 :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-key-columns.png" alt-text="Screenshot that shows the area for key columns on the Destination tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-key-columns.png":::
 
-There are two acceptable ways to use the key columns:
+There are two acceptable ways to use key columns:
 
 - Select **New** and add all the primary key columns of the table for the destination data source.
 
