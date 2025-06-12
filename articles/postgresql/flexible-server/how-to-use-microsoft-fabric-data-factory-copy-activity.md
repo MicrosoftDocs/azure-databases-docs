@@ -16,7 +16,7 @@ ms.topic: how-to
 
 The copy activity in Microsoft Fabric Data Factory can help you connect to your Azure Database for PostgreSQL flexible server to perform data movement and transformation activities.
 
-The copy activity supports the *copy command*, *bulk insert*, and *upsert*. To learn more, see [Configure Azure Database for PostgreSQL in a copy activity](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity).
+The copy activity supports *copy command*, *bulk insert*, and *upsert* as write methods. To learn more, see [Configure Azure Database for PostgreSQL in a copy activity](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity).
 
 This article has step-by-step instructions on how to create a copy activity.
 
@@ -25,13 +25,13 @@ This article has step-by-step instructions on how to create a copy activity.
 - An Azure Database for PostgreSQL flexible server. To learn more, go to [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
-## Create a copy activity for data via the Fabric portal
+## Create a copy activity for data
 
 1. In Microsoft Fabric, select your workspace, switch to **Data factory**, and then select the **New item** button.
 
 1. On the **New item** pane, search for **pipeline** and select the **Data pipeline** tile.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png" alt-text="Screenshot that shows selections for creating a data pipeline." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png" alt-text="Screenshot that shows selections for starting the process of creating a data pipeline." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png":::
 
 1. In the **New pipeline** dialog, enter a name and then select the **Create** button to create a data pipeline.
 
@@ -41,11 +41,11 @@ This article has step-by-step instructions on how to create a copy activity.
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png" alt-text="Screenshot that shows selections for copying data and adding it to a canvas." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png":::
 
-1. With the copy activity selected on the data pipeline canvas, on the **General tab**, enter a name for your activity.
+1. With the copy activity selected on the data pipeline canvas, on the **General** tab, enter a name for the activity.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png" alt-text="Screenshot that shows where to enter a name for the pipeline on the General tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png" alt-text="Screenshot that shows where to enter a name for a copy activity on the General tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/give-a-name.png":::
 
-1. On the **Source** tab, select or create a connection. [Learn more](/fabric/data-factory/modern-get-data-experience-pipeline) about connecting to your data by using the modern get-data experience for data pipelines.
+1. On the **Source** tab, select or create a source connection. [Learn more about connecting to your data by using the modern get-data experience for data pipelines](/fabric/data-factory/modern-get-data-experience-pipeline).
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-connection.png" alt-text="Screenshot that shows where to select or create a source connection on the Source tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-source-connection.png":::
 
@@ -57,7 +57,7 @@ This article has step-by-step instructions on how to create a copy activity.
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-destination-datasource.png" alt-text="Screenshot that shows where to select or create a destination data source on the Destination tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/select-destination-datasource.png":::
 
-1. Select **Copy command**, **Bulk insert**, or **Upsert** for **Write method**.
+1. For **Write method**, select **Copy command**, **Bulk insert**, or **Upsert**.
 
    ### [Copy command](#tab/copy-command)
 
@@ -89,7 +89,7 @@ There are two acceptable ways to use the key columns:
 
 - Select **New** and add all the primary key columns of the table for the destination data source.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png" alt-text="Screenshot that shows an example with all key columns." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png":::
+   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png" alt-text="Screenshot that shows an example with all key columns for a destination data source." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/providing-all-key-columns.png":::
 
 - Select **New** and add one or more unique columns of the table for the destination data source.
 
