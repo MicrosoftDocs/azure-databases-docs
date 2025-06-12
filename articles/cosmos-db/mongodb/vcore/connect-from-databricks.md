@@ -3,7 +3,6 @@ title: Working with Azure Cosmos DB for MongoDB VCore from Azure Databricks
 description: This article is the main page for Azure Cosmos DB for MongoDB vCore integration from Azure Databricks.
 author: niklarin
 ms.author: nlarin
-ms.reviewer: maghan
 ms.date: 06/12/2025
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
@@ -36,8 +35,6 @@ You can follow instructions to [provision an Azure Databricks workspace](/azure/
 ## Add dependencies
 
 Add the MongoDB Connector for Spark library to your compute to connect to both native MongoDB and Azure Cosmos DB for MongoDB endpoints. In your compute, select **Libraries** > **Install New** > **Maven**, and then add `org.mongodb.spark:mongo-spark-connector_2.12:3.0.1` Maven coordinates.
-
-:::image type="content" source="../media/connect-from-databricks/databricks-cluster-dependencies.png" alt-text="Diagram of adding databricks compute dependencies.":::
 
 Select **Install**, and then restart the compute when installation is complete.
 
