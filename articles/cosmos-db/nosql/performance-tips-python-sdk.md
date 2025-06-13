@@ -72,7 +72,7 @@ PPCB is applicable in the following scenarios:
 
 Partitions transition through four states - **Healthy**, **Unhealthy Tentative**, **Unhealthy**, and **Healthy Tentative** - based on the success or failure of requests:
 
-1. **Failure Tracking:** The SDK monitors error rates (e.g., 5xx, 408) and consecutive failures per partition over a rolling one-minute window.
+1. **Failure Tracking:** The SDK monitors error rates (e.g., 5xx, 408) per partition over a one-minute window. Consecutive failures per partition are tracked indefinitely by the SDK.
 2. **Marking as Unavailable:** If a partition exceeds configured thresholds, it's marked as *Unhealthy Tentative* and excluded from routing for 1 minute.
 3. **Promotion to Unhealthy or Recovery:** If recovery attempts fail, the partition transitions to *Unhealthy*. After a backoff interval, a *Healthy Tentative* probe is made with a limited-time request to determine recovery.
 4. **Reinstatement:** If the tentative probe succeeds, the partition returns to *Healthy*. Otherwise, it remains *Unhealthy* until the next probe.
