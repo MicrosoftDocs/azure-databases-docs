@@ -1,4 +1,4 @@
-- name: $tsSeconds
-  href: $tsseconds.md
+- name: $tsSecond
+  href: $tssecond.md
 - name: $tsIncrement
   href: $tsincrement.md
