@@ -1,6 +1,6 @@
 ---
 title: Generative AI
-description: Generative AI with Azure Database for PostgreSQL flexible server.
+description: Learn about using generative AI with Azure Database for PostgreSQL.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
@@ -17,32 +17,33 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Generative AI (GenAI) refers to a class of Artificial Intelligence algorithms that can learn from existing multimedia content and produce new content. The produced content can be customized using techniques such as prompts and fine-tuning. GenAI algorithms apply specific Machine Learning models:
+Generative AI refers to a class of AI algorithms that can learn from existing multimedia content and produce new content. The produced content can be customized through techniques such as prompts and fine-tuning. Generative AI algorithms apply specific machine learning models:
 
-* Transformers and Recurrent Neural Networks (RNNs) for text generation.
-* Generative Adversarial Networks (GANs) for image generation.
-* Variational Autoencoders (VAEs) for image generation, etc.
+- Transformers and recurrent neural networks (RNNs) for text generation
+- Generative adversarial networks (GANs) and variational autoencoders (VAEs) for image generation.
 
-GenAI is used in image and music synthesis, healthcare, common tasks such as text autocompletion, text summarization and translation. GenAI techniques enable features on data such as clustering and segmentation, semantic search and recommendations, topic modeling, question answering and anomaly detection. 
+Generative AI is used in image and music synthesis and in healthcare, along with common tasks such as text autocompletion, text summarization, and translation. Generative AI techniques enable features on data such as clustering and segmentation, semantic search and recommendations, topic modeling, question answering, and anomaly detection.
 
+The following video demonstrates the use of generative AI with Azure Database for PostgreSQL and the [`pgvector` extension](how-to-use-pgvector.md), which can help you understand the concepts in this article:
 
 >[!Video https://www.youtube.com/embed/em0PKDGzzlQ?si=cT0VVzVv_2xV1Mi_]
 
 ## OpenAI
 
-OpenAI is an artificial intelligence (AI) research organization and technology company known for its pioneering work in the field of artificial intelligence and machine learning. Their mission is to ensure that artificial general intelligence (AGI), which refers to highly autonomous AI systems that can outperform humans in most economically valuable work, benefits all of humanity. OpenAI brought to market state-of-the-art generative models such as GPT-3, GPT-3.5 and GPT-4 (Generative Pretrained Transformer).
+OpenAI is an AI research organization and technology company known for its pioneering work in the field of artificial intelligence and machine learning. Their mission is to ensure that artificial general intelligence (AGI), which refers to highly autonomous AI systems that can outperform humans in most economically valuable work, benefits all of humanity. OpenAI brought to market state-of-the-art generative models such as GPT-3, GPT-3.5 and GPT-4 (Generative Pretrained Transformer).
 
-Azure OpenAI is Azure’s LLM service offering to help build GenAI applications using Azure. Azure OpenAI Service gives customers advanced language AI with OpenAI GPT-4, GPT-3, Codex, DALL-E, and Whisper models with the security and enterprise promise of Azure. Azure OpenAI co-develops the APIs with OpenAI, ensuring compatibility and a smooth transition from one to the other.
+Azure OpenAI is the Azure service offering to help build generative AI applications using Azure. Azure OpenAI Service gives customers advanced language AI with OpenAI GPT-4, GPT-3, Codex, DALL-E, and Whisper models with the security and enterprise promise of Azure. Azure OpenAI co-develops the APIs with OpenAI, ensuring compatibility and a smooth transition from one to the other.
 
 With Azure OpenAI, customers get the security capabilities of Microsoft Azure while running the same models as OpenAI. Azure OpenAI offers private networking, regional availability, and responsible AI content filtering.
 
-Learn more about [Azure OpenAI](/azure/ai-services/openai/overview).
+[Learn more about Azure OpenAI](/azure/ai-services/openai/overview).
 
-## Large Language Model (LLM)
+## Large language model
 
-A Large Language Model (LLM) is a type of AI model trained on massive amounts of text data to understand and generate human-like language. LLMs are typically based on deep learning architectures, such as Transformers, and they're known for their ability to perform a wide range of natural language understanding and generation tasks. OpenAI’s GPT, which powers ChatGPT, is an LLM.
+Azure OpenAI is an example of a large lanage model (LLM) service. An LLM is a type of AI model trained on massive amounts of text data to understand and generate human-like language. LLMs are typically based on deep learning architectures, such as Transformers, and they're known for their ability to perform a wide range of natural language understanding and generation tasks. OpenAI's GPT, which powers ChatGPT, is an LLM.
 
-Key characteristics and capabilities of Large Language Models include: 
+Key characteristics and capabilities of Large Language Models include:
+
 - Scale: Immense scale in terms of the number of parameters used in LLM architecture are characteristic for them. Models like GPT-3 (Generative Pretrained Transformer 3) contain from hundreds of millions to trillions of parameters, which allow them to capture complex patterns in language.
 - Pretraining: LLMs undergo pretraining on a large corpus of text data from the Internet, which enables them to learn grammar, syntax, semantics, and a broad range of knowledge about language and the world.
 - Fine-tuning: After pretraining, LLMs can be fine-tuned on specific tasks or domains with smaller, task-specific datasets. This fine-tuning process allows them to adapt to more specialized tasks, such as text classification, translation, summarization, and question-answering.
@@ -57,7 +58,6 @@ GPT-3: Released in June 2020, is a well-known model in the GPT series. It has 17
 GPT-3 is divided into various model sizes, ranging from the smallest (125M parameters) to the largest (175B parameters).
 
 GPT-4: Is the latest GPT model from OpenAI, has 1.76 trillion parameters.
-
 
 ## Vectors
 
@@ -93,9 +93,9 @@ Embeddings are a concept in machine learning and natural language processing (NL
 
 Common types of embeddings include:
 
-* word: In NLP, word embeddings represent words as vectors. Each word is mapped to a vector in a high-dimensional space, where words with similar meanings or contexts are located closer to each other. `Word2Vec` and `GloVe` are popular word embedding techniques.
-* document: These represent documents as vectors. `Doc2Vec` is popularly used to create document embeddings.
-* image: Images can be represented as embeddings to capture visual features, allowing for tasks like object recognition.
+- word: In NLP, word embeddings represent words as vectors. Each word is mapped to a vector in a high-dimensional space, where words with similar meanings or contexts are located closer to each other. `Word2Vec` and `GloVe` are popular word embedding techniques.
+- document: These represent documents as vectors. `Doc2Vec` is popularly used to create document embeddings.
+- image: Images can be represented as embeddings to capture visual features, allowing for tasks like object recognition.
 
 Embeddings are central to representing complex, high-dimensional data in a form easily processable by machine learning models. They can be trained on large datasets and then used as features for various tasks, and are used by LLMs.
 
@@ -106,41 +106,41 @@ PostgreSQL can gain the capabilities of [generating vector embeddings with Azure
 Generative AI has a wide range of applications across various domains and industries including tech, healthcare, entertainment, finance, manufacturing and more. Here are some common tasks that can be accomplished with generative AI:
 
 - [Semantic Search](generative-ai-semantic-search.md):
-    - GenAI enables semantic search on data rather than lexicographical search. The latter looks for exact matches to queries whereas semantic search finds content that satisfies the search query intent.
-- Chatbots and Virtual Assistants: 
-    - Develop chatbots that can engage in natural context-aware conversations, for example, to implement self-help for customers.
-- Recommendation Systems: 
-    - Improve recommendation algorithms by generating embeddings or representations of items or users.
+  - Generative AI enables semantic search on data rather than lexicographical search. The latter looks for exact matches to queries whereas semantic search finds content that satisfies the search query intent.
+- Chatbots and Virtual Assistants:
+  - Develop chatbots that can engage in natural context-aware conversations, for example, to implement self-help for customers.
+- Recommendation Systems:
+  - Improve recommendation algorithms by generating embeddings or representations of items or users.
 - Clustering and segmentation:
-    - GenAI-generated embeddings allow clustering algorithms to cluster data so that similar data is grouped together. This enables scenarios such as customer segmentation, which allows advertisers to target their customers differently based on their attributes.
+  - Generative AI-generated embeddings allow clustering algorithms to cluster data so that similar data is grouped together. This enables scenarios such as customer segmentation, which allows advertisers to target their customers differently based on their attributes.
 - Content Generation:
-    - Text Generation: Generate human-like text for applications like chatbots, novel/poetry creation, and natural language understanding.
-    - Image Generation: Create realistic images, artwork, or designs for graphics, entertainment, and advertising.
-    - Video Generation: Generate videos, animations, or video effects for films, gaming, and marketing.
-    - Music Generation.
+  - Text Generation: Generate human-like text for applications like chatbots, novel/poetry creation, and natural language understanding.
+  - Image Generation: Create realistic images, artwork, or designs for graphics, entertainment, and advertising.
+  - Video Generation: Generate videos, animations, or video effects for films, gaming, and marketing.
+  - Music Generation.
 - Translation:
-    - Translate text from one language to another.
+  - Translate text from one language to another.
 - Summarization:
-    - Summarize long articles or documents to extract key information.
+  - Summarize long articles or documents to extract key information.
 - Data Augmentation:
-    - Generate extra data samples to expand and improve training datasets for machine learning (ML) models.
+  - Generate extra data samples to expand and improve training datasets for machine learning (ML) models.
     - Create synthetic data for scenarios that are difficult or expensive to collect in the real world, such as medical imaging.
 - Drug Discovery:
-    - Generate molecular structures and predict potential drug candidates for pharmaceutical research.
+  - Generate molecular structures and predict potential drug candidates for pharmaceutical research.
 - Game Development:
-    - Create game content, including levels, characters, and textures. 
-    - Generate realistic in-game environments and landscapes.
-- Data Denoising and Completion: 
-    - Clean noisy data by generating clean data samples. 
-    - Fill in missing or incomplete data in datasets.
+  - Create game content, including levels, characters, and textures.
+  - Generate realistic in-game environments and landscapes.
+- Data Denoising and Completion:
+  - Clean noisy data by generating clean data samples.
+  - Fill in missing or incomplete data in datasets.
 
 ## Related content
 
-- [Integrate Azure Database for PostgreSQL flexible server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
-- [Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
-- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
-- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server](generative-ai-azure-openai.md).
-- [Azure AI extension in Azure Database for PostgreSQL flexible server](generative-ai-azure-overview.md).
-- [Recommendation System with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-recommendation-system.md).
-- [Semantic Search with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).
+- [Integrate Azure Database for PostgreSQL flexible server with Azure Cognitive Services](generative-ai-azure-cognitive.md)
+- [Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md)
+- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server](generative-ai-azure-openai.md)
+- [Azure AI extension in Azure Database for PostgreSQL flexible server](generative-ai-azure-overview.md)
+- [Recommendation System with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-recommendation-system.md)
+- [Semantic Search with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-semantic-search.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md)
