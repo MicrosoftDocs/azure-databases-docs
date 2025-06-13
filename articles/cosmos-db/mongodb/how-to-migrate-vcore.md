@@ -161,7 +161,8 @@ Use the **Select Collections** and **Confirm & Submit** sections to finalize you
 1. Review the job configuration and provide a unique job name.
 
     > [!IMPORTANT]
-    > The migration job doesn't transfer the indexes to the target collections. Before proceeding, use this sample [migration script](https://aka.ms/mongoruschemamigrationscript) to create the indexes on the target collections. Once the indexes are ready, select the checkbox.
+    > 1. The migration job doesn't transfer the indexes to the target collections. Before proceeding, use this sample [migration script](https://aka.ms/mongoruschemamigrationscript) to create the indexes on the target collections. Once the indexes are ready, select the checkbox.
+    > 2. The migration job doesn't support changing the shard key. If you need a different shard key, migrate the data as an unsharded collection. Once the migration is complete, shard the collection on target using the desired shard key.
 
 1. Select **Submit** to create and start the job.
 
