@@ -70,7 +70,7 @@ PPCB is applicable in the following scenarios:
 
 #### How it works
 
-Partitions transition through four states — **Healthy**, **Unhealthy Tentative**, **Unhealthy**, and **Healthy Tentative**—based on the success or failure of requests:
+Partitions transition through four states - **Healthy**, **Unhealthy Tentative**, **Unhealthy**, and **Healthy Tentative** - based on the success or failure of requests:
 
 1. **Failure Tracking:** The SDK monitors error rates (e.g., 5xx, 408) and consecutive failures per partition over a rolling one-minute window.
 2. **Marking as Unavailable:** If a partition exceeds configured thresholds, it's marked as *Unhealthy Tentative* and excluded from routing for 1 minute.
