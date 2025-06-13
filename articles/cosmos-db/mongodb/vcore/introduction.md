@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2023
 ms.topic: overview
-ms.date: 06/20/2024
+ms.date: 06/11/2025
 ---
 
 # What is Azure Cosmos DB for MongoDB (vCore architecture)?

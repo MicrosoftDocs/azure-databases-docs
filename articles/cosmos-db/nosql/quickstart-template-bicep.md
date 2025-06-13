@@ -7,7 +7,7 @@ tags: azure-resource-manager, bicep
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: quickstart
-ms.date: 04/18/2022
+ms.date: 06/11/2025
 ms.custom: subject-armqs, mode-arm, devx-track-bicep
 #Customer intent: As a database admin who is new to Azure, I want to use Azure Cosmos DB to store and manage my data.
 ---
