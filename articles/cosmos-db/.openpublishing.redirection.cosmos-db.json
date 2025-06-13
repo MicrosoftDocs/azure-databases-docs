@@ -6576,14 +6576,14 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$addfields.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/addfields.md",
       "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$addfields.md",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$collstats.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/collstats.md",
       "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$collstats.md",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/set.md",
@@ -6591,29 +6591,29 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$skip.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/skip.md",
       "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$skip.md",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$sort.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/sort.md",
       "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$sort.md",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$sortbycount.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/sortbycount.md",
       "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$sortbycount.md",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$unset.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/unset.md",
       "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$unset.md",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$unwind.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/unwind.md",
       "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$unwind.md",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/arithmetic-expression/mod.md",
