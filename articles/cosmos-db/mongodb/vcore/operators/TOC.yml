@@ -12,6 +12,8 @@
   href: array-query/toc.yml
 - name: Array update
   href: array-update/toc.yml
+- name: Bitwise operators
+  href: bitwise/toc.yml
 - name: Bitwise query
   href: bitwise-query/toc.yml
 - name: Bitwise update
@@ -26,6 +28,8 @@
   href: data-size/TOC.yml
 - name: Evaluation query
   href: evaluation-query/toc.yml
+- name: Field update
+  href: field-update/toc.yml
 - name: Geospatial
   href: geospatial/toc.yml
 - name: Logical query
@@ -38,3 +42,7 @@
   href: projection/toc.yml
 - name: Timestamp-expression
   href: timestamp-expression/TOC.yml
+- name: Set expression
+  href: set-expression/toc.yml
+- name: Variable expression
+  href: variable-expression/toc.yml

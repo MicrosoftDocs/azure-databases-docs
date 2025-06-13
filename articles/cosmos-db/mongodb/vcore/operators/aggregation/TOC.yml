@@ -6,6 +6,8 @@
   href: $count.md
 - name: $facet
   href: $facet.md
+- name: $fill
+  href: $fill.md
 - name: $geonear
   href: $geonear.md
 - name: $lookup

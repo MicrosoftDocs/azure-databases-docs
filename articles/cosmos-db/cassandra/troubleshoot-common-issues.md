@@ -5,10 +5,11 @@ author: TheovanKraay
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: troubleshooting
-ms.date: 03/02/2021
+ms.date: 06/09/2025
 ms.author: thvankra
 ms.devlang: java
 ms.custom: devx-track-extended-java
+#customer intent: As a developer, I want to troubleshoot issues with  Azure Managed Instance for Apache Cassandra and understand when to create a support request.
 ---
 
 # Troubleshoot common issues in the Azure Cosmos DB for Apache Cassandra
@@ -17,12 +18,12 @@ ms.custom: devx-track-extended-java
 
 The API for Cassandra in [Azure Cosmos DB](../introduction.md) is a compatibility layer that provides [wire protocol support](support.md) for the open-source Apache Cassandra database.
 
-This article describes common errors and solutions for applications that use the Azure Cosmos DB for Apache Cassandra. If your error isn't listed and you experience an error when you execute a [supported operation in Cassandra](support.md), but the error isn't present when using native Apache Cassandra, [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
+This article describes common errors and solutions for applications that use the Azure Cosmos DB for Apache Cassandra. If you experience an error that isn't listed when you run a [supported operation in Cassandra](support.md), but the error isn't present in native Apache Cassandra, [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
->[!NOTE]
->As a fully managed cloud-native service, Azure Cosmos DB provides [guarantees on availability, throughput, and consistency](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) for the API for Cassandra. The API for Cassandra also facilitates zero-maintenance platform operations and zero-downtime patching.
+> [!NOTE]
+> As a fully managed cloud-native service, Azure Cosmos DB provides [guarantees on availability, throughput, and consistency](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) for the API for Cassandra. The API for Cassandra also facilitates zero-maintenance platform operations and zero-downtime patching.
 >
->These guarantees aren't possible in previous implementations of Apache Cassandra, so many of the API for Cassandra back-end operations differ from Apache Cassandra. We recommend particular settings and approaches to help avoid common errors.
+> These guarantees aren't possible in previous implementations of Apache Cassandra, so many of the APIs for Cassandra back-end operations differ from Apache Cassandra. We recommend particular settings and approaches to help avoid common errors.
 
 ## NoNodeAvailableException
 
@@ -38,7 +39,7 @@ Common causes and solutions:
 
 You might see this error: "Cannot connect to any host, scheduling retry in 600000 milliseconds."
 
-This error might be caused by source network address translation (SNAT) exhaustion on the client side. Follow the steps at [SNAT for outbound connections](/azure/load-balancer/load-balancer-outbound-connections) to rule out this issue.
+Source network address translation (SNAT) exhaustion on the client side might cause this error. To rule out this issue, follow the steps at [SNAT for outbound connections](/azure/load-balancer/load-balancer-outbound-connections).
 
 The error might also be an idle timeout issue where the Azure load balancer has four minutes of idle timeout by default. See [Load balancer idle timeout](/azure/load-balancer/load-balancer-tcp-idle-timeout?tabs=tcp-reset-idle-portal). [Enable keep-alive for the Java driver](#enable-keep-alive-for-the-java-driver) and set the `keepAlive` interval on the operating system to less than four minutes.
 
@@ -48,7 +49,7 @@ See [troubleshoot NoHostAvailableException](troubleshoot-nohostavailable-excepti
 
 Requests are throttled because the total number of request units consumed is higher than the number of request units that you provisioned on the keyspace or table.
 
-Consider scaling the throughput assigned to a keyspace or table from the Azure portal (see [Elastically scale an Azure Cosmos DB for Apache Cassandra account](scale-account-throughput.md)) or implementing a retry policy.
+Consider scaling the throughput assigned to a keyspace or table from the Azure portal or implementing a retry policy. For more information, see [Elastically scale an Azure Cosmos DB for Apache Cassandra account](scale-account-throughput.md).
 
 For Java, see retry samples for the [v3.x driver](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) and the [v4.x driver](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4). See also [Azure Cosmos DB Cassandra Extensions for Java](https://github.com/Azure/azure-cosmos-cassandra-extensions).
 
@@ -56,7 +57,7 @@ For Java, see retry samples for the [v3.x driver](https://github.com/Azure-Sampl
 
 The system seems to be throttling requests even though enough throughput is provisioned for request volume or consumed request unit cost. There are two possible causes:
 
-- **Schema level operations**: The API for Cassandra implements a system throughput budget for schema-level operations (CREATE TABLE, ALTER TABLE, DROP TABLE). This budget should be enough for schema operations in a production system. However, if you have a high number of schema-level operations, you might exceed this limit.
+- **Schema level operations**: The API for Cassandra implements a system throughput budget for schema-level operations (CREATE TABLE, ALTER TABLE, DROP TABLE). This budget should be enough for schema operations in a production system. If you have a high number of schema-level operations, you might exceed this limit.
 
   Because the budget isn't user-controlled, consider lowering the number of schema operations that you run. If that action doesn't resolve the issue or it isn't feasible for your workload, [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
@@ -74,7 +75,7 @@ See the [documentation for the Java 4.x driver](https://docs.datastax.com/en/dev
 
 ## Error with load-balancing policy
 
-You might have implemented a load-balancing policy in v3.x of the Java DataStax driver, with code similar to:
+You might implement a load-balancing policy in v3.x of the Java DataStax driver, with code similar to:
 
 ```java
 cluster = Cluster.builder()

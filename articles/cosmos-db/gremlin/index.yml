@@ -11,7 +11,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: landing-page
-  ms.date: 02/21/2024
+  ms.date: 06/11/2025
 landingContent:
   - title: About API for Gremlin
     linkLists:
