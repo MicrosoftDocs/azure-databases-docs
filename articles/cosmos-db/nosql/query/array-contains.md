@@ -46,7 +46,7 @@ The following example illustrates how to check for specific values or objects in
 
 ## Remarks
 
-- This system function benefits from a [range index](../../index-policy.md#includeexclude-strategy).
+- This system function benefits from a [range index](https://learn.microsoft.com/en-us/azure/cosmos-db/index-overview?source=recommendations#range-index).
 
 ## Related content
 
