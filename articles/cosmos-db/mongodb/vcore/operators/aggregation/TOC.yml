@@ -24,6 +24,8 @@
   href: $skip.md
 - name: $sort
   href: $sort.md
+- name: $sortByCount
+  href: $sortbycount.md
 - name: $unset
   href: $unset.md
 - name: $unwind
