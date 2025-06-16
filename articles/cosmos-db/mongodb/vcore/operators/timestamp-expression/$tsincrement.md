@@ -1,5 +1,5 @@
 ---
-  title: The `$tsIncrement` operator returns the increment value from a timestamp.
+  title: $tsIncrement (variable expression)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $tsIncrement operator extracts the increment portion from a timestamp value.
   author: avijitgupta

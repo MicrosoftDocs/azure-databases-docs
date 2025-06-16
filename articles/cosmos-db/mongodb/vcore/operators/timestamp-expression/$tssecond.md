@@ -1,5 +1,5 @@
 ---
-  title: The `$tsSecond` operator returns the seconds value from a timestamp.
+  title: $tsSecond (variable expression)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $tsSecond operator extracts the seconds portion from a timestamp value.
   author: avijitgupta
