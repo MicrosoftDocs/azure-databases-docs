@@ -18,11 +18,13 @@
   href: bitwise-query/toc.yml
 - name: Bitwise update
   href: bitwise-update/toc.yml
+- name: Boolean expression
+  href: boolean-expression/toc.yml
 - name: Comparison query
   href: comparison-query/toc.yml
 - name: Conditional expression
   href: conditional-expression/toc.yml
-- name: Data expression
+- name: Date expression
   href: data-expression/TOC.yml
 - name: Data size
   href: data-size/TOC.yml
@@ -32,6 +34,8 @@
   href: field-update/toc.yml
 - name: Geospatial
   href: geospatial/toc.yml
+- name: Literal expression
+  href: literal-expression/toc.yml
 - name: Logical query
   href: logical-query/toc.yml
 - name: Miscellaneous query
