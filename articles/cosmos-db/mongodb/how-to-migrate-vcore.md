@@ -149,7 +149,7 @@ The **Update Target Firewall** section is used to make sure that the target Azur
 1. Select **Next**.
 
 > [!NOTE]
-> If network security is enabled on your Azure Key Vault, ensure the same [IP is added to the Azure Key Vault Firewall](/key-vault/general/network-security#key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips) as well.
+> If network security is enabled on your Azure Key Vault, ensure the same [IP is added to the Azure Key Vault Firewall](/azure/key-vault/general/network-security#key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips) as well.
 
 
 ## Configure and start job
