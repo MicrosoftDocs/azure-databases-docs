@@ -68,10 +68,10 @@ sections:
 
           | SDK Type | Provisioned Throughput Represented by |
           | --- | ----- |
-          | .NET V3  | [Container.ReadThroughputAsync()](https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet#microsoft-azure-cosmos-container-readthroughputasync) <br/><br/> [Container.ReadThroughputAsync(requestOptions).Resource.Throughput](https://learn.microsoft.com/en-us/dotnet/api/microsoft.azure.cosmos.throughputproperties.throughput?view=azure-dotnet#microsoft-azure-cosmos-throughputproperties-throughput) | 
-          | Java V4  | [cosmosContainer.readThroughput().getProperties().getManualThroughput()](https://learn.microsoft.com/java/api/com.azure.cosmos.models.throughputproperties?view=azure-java-stable#com-azure-cosmos-models-throughputproperties-getmanualthroughput) |
-          | Python   | [azure.cosmos.throughputproperties.offer_throughput](https://learn.microsoft.com/python/api/azure-cosmos/azure.cosmos.throughputproperties?view=azure-python) |
-          | Node JS  | [azure.cosmos.OfferDefinition.offerThroughput](https://learn.microsoft.com/javascript/api/%40azure/cosmos/offerdefinition?view=azure-node-latest#@azure-cosmos-offerdefinition-content)|
+          | .NET V3  | [Container.ReadThroughputAsync()](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet#microsoft-azure-cosmos-container-readthroughputasync) <br/><br/> [Container.ReadThroughputAsync(requestOptions).Resource.Throughput](/dotnet/api/microsoft.azure.cosmos.throughputproperties.throughput?view=azure-dotnet#microsoft-azure-cosmos-throughputproperties-throughput) | 
+          | Java V4  | [cosmosContainer.readThroughput().getProperties().getManualThroughput()](/java/api/com.azure.cosmos.models.throughputproperties?view=azure-java-stable#com-azure-cosmos-models-throughputproperties-getmanualthroughput) |
+          | Python   | [azure.cosmos.throughputproperties.offer_throughput](/python/api/azure-cosmos/azure.cosmos.throughputproperties?view=azure-python) |
+          | Node JS  | [azure.cosmos.OfferDefinition.offerThroughput](/javascript/api/%40azure/cosmos/offerdefinition?view=azure-node-latest#@azure-cosmos-offerdefinition-content)|
 
       - question: |
           What happens to databases or containers that were created in the earlier autopilot tier model?

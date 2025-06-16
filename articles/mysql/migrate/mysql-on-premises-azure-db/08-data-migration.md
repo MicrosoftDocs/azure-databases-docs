@@ -295,7 +295,7 @@ tRoot.crt.cer --skip-column-names -A -e"$line"
 }
 ```
 
-You can also create users in Azure Database for MySQL using PowerShell: /en-us/azure/mysql/howto-create-users
+You can also create users in Azure Database for MySQL using PowerShell: /azure/mysql/howto-create-users
 
 ## Execute migration
 
