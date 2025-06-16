@@ -75,7 +75,7 @@ High availability is an opt-in feature and can be enabled at subscription level 
 2. Use the **Filter by name** field, search for **Premium SSD v2 High Availability** and Select the **Subscription** 
 
  
-   :::image type="content" source="./media/concepts-storage/SSdv2-registration.png" alt-text="Screenshot the SSD v2 registration page." lightbox="./media/concepts-storage/SSdv2-registration.png":::
+   :::image type="content" source="./media/concepts-storage/ssdv2-registration.png" alt-text="Screenshot the SSD v2 registration page." lightbox="./media/concepts-storage/ssdv2-registration.png":::
 
 4.  Select the feature and click **Register**.
 
