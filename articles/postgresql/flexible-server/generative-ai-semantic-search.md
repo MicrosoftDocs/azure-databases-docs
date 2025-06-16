@@ -26,8 +26,8 @@ In this tutorial, you:
 
 > [!div class="checklist"]
 >
-> - Identify the search scenarios. Identify the data fields that will be involved in search.
-> - For every data field involved in search, create a corresponding vector field to store the embeddings of the value stored in the data field.
+> - Identify the search scenarios and the data fields that will be involved in a search.
+> - For every data field involved in a search, create a corresponding vector field to store the embeddings of the value stored in the data field.
 > - Generate embeddings for the data in the selected data fields and store the embeddings in their corresponding vector fields.
 > - Generate the embedding for any input search query.
 > - Search for the vector data field and list the nearest neighbors.
@@ -43,7 +43,7 @@ In this tutorial, you:
 
 ## Enable the azure_ai and pgvector extensions
 
-Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to [add them to your allowlist](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server, you need to [add them to your allowlist](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
 
 Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database where you want the extension to be available.
 
@@ -104,7 +104,7 @@ Set PGCLIENTENCODING=utf-8;
 export PGCLIENTENCODING=utf-8
 ```
 
-Import the data into the table that you created. Note that this dataset contains a header row:
+Import the data into the table that you created. Note that this dataset contains a header row.
 
 ```bash
 psql -d <database> -h <host> -U <user> -c "\copy recipes FROM <local recipe data file> DELIMITER ',' CSV HEADER"
@@ -207,5 +207,5 @@ And explore the results:
 - [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md)
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md)
-- [Recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md)
+- [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md)
 - [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md)

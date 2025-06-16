@@ -336,5 +336,5 @@ Learn more about how to set up tracing with the AI agent and Postgres in the [ad
 - [Using LangChain with Azure Database for PostgreSQL](generative-ai-develop-with-langchain.md)
 - [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md)
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
-- [Semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md)
+- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md)
 - [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md)

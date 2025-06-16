@@ -146,6 +146,6 @@ Generative AI has a wide range of applications across various domains and indust
 - [Integrate Azure Database for PostgreSQL with Azure Machine Learning](generative-ai-azure-machine-learning.md)
 - [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md)
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
-- [Recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md)
-- [Semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md)
+- [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md)
+- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md)
 - [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md)
