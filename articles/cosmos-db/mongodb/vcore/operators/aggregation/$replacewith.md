@@ -1,7 +1,7 @@
 ---
-title: $sample
-titleSuffix: Overview of the $sample operator in Azure Cosmos DB for MongoDB vCore
-description: The $sample operator in Azure Cosmos DB for MongoDB vCore returns a randomly selected number of documents
+title: $replaceWith
+titleSuffix: Overview of the $replaceWith operator in Azure Cosmos DB for MongoDB vCore
+description: The $replaceWith operator in Azure Cosmos DB for MongoDB vCore returns a document after replacing a document with the specified document
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -10,24 +10,26 @@ ms.topic: conceptual
 ms.date: 02/24/2025
 ---
 
-# $sample
-The `$sample` stage is used in aggregation pipelines to randomly select a specified number of documents from a collection. The `$sample` command is useful during testing, data analysis, and generating random subsets of data for machine learning.
+# $replaceWith
+
+The `$replaceWith` aggregation stage operator is used to replace the input document with the specified document. The `$replaceWith` operator transforms documents from one structure to another or replaces them entirely with new fields and values.
 
 ## Syntax
 
 ```mongodb
 {
-  "$sample": { "size": <number> }
+  "$replaceWith": <newDocument>
 }
 ```
 
-### Parameters
+## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`size`** | The number of documents to randomly select from the collection|
+| **`newDocument`** | The new document to replace the original document|
 
 ## Examples
+
 Consider this sample document from the stores collection in the StoreData database.
 
 ```json
@@ -140,24 +142,38 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1 - Randomly select five documents and project the corresponding document IDs
+### Example 1 - Return a document that replaces the contents of the original document with a subset of items
+
+First, match a specific document to replace by the _id field and replace the contents of the document with the specified fields.
 
 ```mongodb
-db.stores.aggregate([{"$sample": {"size": 5}}, {"$project": {"_id": 1}}])
+db.stores.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "sales": "$sales.totalSales" } }])
 ```
 
-This query returns the following results:
+This returns the following result:
 ```json
-[
-  { "_id": "f7ae8b40-0c66-4e80-9261-ab31bbabffb4" },
-  { "_id": "25350272-6797-4f98-91f8-fe79084755c7" },
-  { "_id": "c7fd1d22-1a29-4cb0-9155-1ad71d600c2b" },
-  { "_id": "e602b444-9519-42e3-a2e1-b5a3da5f6e64" },
-  { "_id": "189c239a-edca-434b-baae-aada3a27a2c5" }
-]
+{
+    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
+    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
+    "sales": 37015
+}
 ```
 
+### Example 2 - Return a document that replaces the contents of the original document after aggregating specified fields
+
+```mongodb
+db.stores.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "totalStaff": {"$add": ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]}}}])
+```
+
+This returns the following result:
+```json
+{
+    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
+    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
+    "totalStaff": 29
+}
+```
 ## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [count with vCore based Azure Cosmos DB for MongoDB](count.md)
+- [update with vCore based Azure Cosmos DB for MongoDB](../../commands/query-and-write/update.md)

@@ -1,5 +1,5 @@
 ---
-title: aggregation - $sort (Aggregation Pipeline Stage)
+title: $sort (aggregation pipeline stage)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $sort stage in the aggregation pipeline is used to order the documents in the pipeline by a specified field or fields.
 author: gahl-levy
@@ -10,8 +10,8 @@ ms.topic: reference
 ms.date: 08/27/2024
 ---
 
-# $sort (as Aggregation Pipeline stage)
-The $sort stage in the aggregation pipeline is used to order the documents in the pipeline by a specified field or fields. This is particularly useful when you need to present data in a specific order, such as sorting sales data by total sales or ordering events by their start dates.
+# $sort (as aggregation pipeline stage)
+The $sort stage in the aggregation pipeline is used to order the documents in the pipeline by a specified field or fields. This stage helps you sort data, like arranging sales by amount or events by date.
 
 ## Syntax
 The syntax for the $sort stage is as follows:
@@ -26,10 +26,10 @@ The syntax for the $sort stage is as follows:
 
 | | Description |
 | --- | --- |
-| **`field`** | The field by which to sort the documents. |
-| **`sort order`** | The order in which to sort the field. 1 for ascending order and -1 for descending order. |
+| **`field`** | The field to sort by |
+| **`sort order`** | The order in which we should sort the field. 1 for ascending order and -1 for descending order. |
 
-## Example(s)
+## Examples
 ### Example 1: Sorting by Total Sales in Descending Order
 To sort the sales categories by their total sales in descending order:
 
