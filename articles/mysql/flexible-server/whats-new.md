@@ -8,6 +8,8 @@ ms.date: 05/19/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
+ms.custom:
+  - build-2025
 ---
 
 # What's new in Azure Database for MySQL?
@@ -23,6 +25,10 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 ## May 2025
 
+### Configure backup interval for the automated backups (Preview)
+
+Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. The feature is currently available in limited regions, namely – West Central US and East Asia. Learn more about the feature [here](./concepts-backup-restore.md#backup-frequency).
+
 ### Enable Auto-Scale of IOPS for Faster Restore and Replica Provisions
 
 Azure Database for MySQL now supports the ability to enable [autoscaling of IOPS](https://techcommunity.microsoft.com/blog/adformysql/autoscale-iops-for-azure-database-for-mysql---flexible-server---general-availabi/3884602) for both the source and target servers during restore operations and replica provisioning workflows. This enhancement helps accelerate the restore and replica provisioning process by temporarily boosting IOPS to meet the performance demands of these operations. Once provisioning is complete, you can disable the autoscale IOPS setting.
@@ -31,7 +37,7 @@ To learn more, visit [Point-in-time restore](how-to-restore-server-portal.md).
 
 ### High Availability with Dedicated Azure Standard Load Balancer (SLB) (preview)
 
-A dedicated standard load balancer (SLB) in Azure Database for MySQL for High Availability (HA) enabled servers is now available for public preview. This feature adds a dedicated standard load balancer to the HA configuration, enabling low-latency, high-throughput distribution of front-end traffic across backend servers. This enhancement improves failover performance and ensures more efficient handling of MySQL data traffic. This feature is automatically applied to all newly created HA servers if you want to enable an SLB for an existing HA server, [file a support ticket with Azure Support.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+A dedicated standard load balancer (SLB) in Azure Database for MySQL for High Availability (HA) enabled servers is now available for public preview. This feature adds a dedicated standard load balancer to the HA configuration, enabling low-latency, high-throughput distribution of front-end traffic across backend servers. This enhancement improves failover performance and ensures more efficient handling of MySQL data traffic. If you want to enable an SLB for your HA server, [file a support ticket with Azure Support.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## March 2025
 

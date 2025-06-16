@@ -9,7 +9,10 @@ ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
 ms.date: 11/04/2024
-ms.custom: query-reference, ingite-2024
+ms.custom:
+  - query-reference
+  - ingite-2024
+  - build-2025
 ---
 
 # RRF (NoSQL query)
@@ -41,6 +44,15 @@ SELECT TOP 10 *
 FROM c
 ORDER BY RANK RRF(FullTextScore(c.text, "keyword"), VectorDistance(c.vector, [1,2,3]))
 ```
+
+This example shows Hybrid Search where the FullTextScore is weighted twice as much as VectorDsitance.
+
+```nosql
+SELECT TOP 10 *
+FROM c
+ORDER BY RANK RRF(FullTextScore(c.text, "keyword"), VectorDistance(c.vector, [1,2,3]), [2,1])
+```
+
 
 This example shows fusion with two `FullTextScore` functions
 

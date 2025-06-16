@@ -7,7 +7,7 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 11/17/2023
+ms.date: 06/11/2025
 # CustomerIntent: As a MongoDB user, I want to understand the various options available to migrate my data to vCore-based Azure Cosmos DB for MongoDB, so that I can make an informed decision about which option is best for my use case.
 ---
 

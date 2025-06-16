@@ -6,7 +6,9 @@ ms.topic: conceptual
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
-ms.custom: devx-track-azurecli
+ms.custom:
+  - devx-track-azurecli
+  - build-2025
 ms.date: 05/08/2025
 ---
 

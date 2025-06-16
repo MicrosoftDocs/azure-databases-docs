@@ -8,10 +8,12 @@ ms.date: 01/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom:
+  - build-2025
 # customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure Database for PostgreSQL flexible server.
 ---
 
-# Enable and use DiskANN extension (Preview)
+# Enable and use DiskANN extension
 
 DiskANN is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. Those characteristics make it a powerful tool for handling large volumes of data.
 
@@ -22,9 +24,6 @@ The `pg_diskann` extension adds support for using DiskANN for efficient vector i
 ## Enable pg_diskann
 
 To use the `pg_diskann` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions) at the instance level. Then you need to [create the extension](../extensions/how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
-
-> [!IMPORTANT]
-> This preview feature is only available for newly deployed Azure Database for PostgreSQL flexible server instances.
 
 Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and the run the following command:
  
@@ -163,7 +162,6 @@ When creating a `diskann` index, you can specify various parameters to control i
 
 - `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
 - `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
-- `product_quantized`: Enables product quantization (Defaults to true).
 - `pq_param_num_chunks`: Number of chunks for product quantization (Defaults to 0). 0 means it is determined automatically, based on embedding dimensions. It is recommended to use 1/3 of the original embedding dimensions.
 - `pq_param_training_samples`: Number of vectors to train the PQ pivot table on (Defaults to 0). 0 means it is determined automatically, based on table size.
 
@@ -171,10 +169,9 @@ When creating a `diskann` index, you can specify various parameters to control i
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
 WITH (
  max_neighbors = 48,
- l_value_ib = 100
- product_quantized=true, 
- pq_param_num_chunks = 0,
- pq_param_training_samples = 0 
+ l_value_ib = 100,
+ pq_param_num_chunks = 0,
+ pq_param_training_samples = 0
  );
 ```
 
@@ -233,12 +230,10 @@ WITH (
 |  | | | |
 | 1M-50M | Index build | `l_value_ib` | 100 |
 | 1M-50M | Index build | `max_neighbors` | 64 |
-| 1M-50M | Index build | `product_quantized` | true |
 | 1M-50M | Query time | `diskann.l_value_is` | 100 |
 |  | | | |
 | >50M | Index build | `l_value_ib` | 100 |
 | >50M | Index build | `max_neighbors` | 96 |
-| >50M | Index build | `product_quantized` | true |
 | >50M | Query time | `diskann.l_value_is` | 100 |
 
 > [!NOTE]
@@ -265,28 +260,39 @@ The vector type allows you to perform three types of searches on the stored vect
 
 ## Troubleshooting
 
+**Error: `assertion left == right failed left: 40 right: 0`**:
+- DiskANN GA version, **v0.6.x introduces breaking changes** in the index metadata format. Indexes created with **v0.5.x are not forward-compatible** with v0.6.x insert operations. Attempting to insert into a table with an outdated index will result in an error, even if the index appears valid.
+
+- When you encounter this error, **you can resolve by:**
+    - **Option 1:** Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
+    - **Option 2:** Rebuild the Index
+
+        ```sql
+        DROP INDEX your_index_name;
+        CREATE INDEX your_index_name ON your_table USING diskann(your_vector_column vector_cosine_ops);
+
+        ```
+
 **Error: `diskann index needs to be upgraded to version 2...`**:
 
-When you encounter this error, you can resolve by:
+- When you encounter this error, you can resolve by:
+    - **Option 1:** Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
+    - **Option 2:** Because `REINDEX` might take a long time, the extension also provides a user-defined function called `upgrade_diskann_index()`, which upgrades your index faster, when possible.
 
-- Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
+        To upgrade your index, run the following statement:
 
-- Because `REINDEX` might take a long time, the extension also provides a user-defined function called `upgrade_diskann_index()`, which upgrades your index faster, when possible.
+        ```sql
+        SELECT upgrade_diskann_index('demo_embedding_diskann_custom_idx');
+        ```
 
-    To upgrade your index, run the following statement:
+        To upgrade all diskann indexes in the database to the current version, run the following statement:
 
-    ```sql
-    SELECT upgrade_diskann_index('demo_embedding_diskann_custom_idx');
-    ```
-
-    To upgrade all diskann indexes in the database to the current version, run the following statement:
-
-    ```sql
-    SELECT upgrade_diskann_index(pg_class.oid)
-    FROM pg_class
-    JOIN pg_am ON (pg_class.relam = pg_am.oid)
-    WHERE pg_am.amname = 'diskann';
-    ```
+        ```sql
+        SELECT upgrade_diskann_index(pg_class.oid)
+        FROM pg_class
+        JOIN pg_am ON (pg_class.relam = pg_am.oid)
+        WHERE pg_am.amname = 'diskann';
+        ```
 
 ## Related content
 

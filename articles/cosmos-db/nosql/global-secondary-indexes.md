@@ -6,7 +6,10 @@ author: jcocchi
 ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.custom: build-2023, devx-track-azurecli
+ms.custom:
+  - build-2023
+  - devx-track-azurecli
+  - build-2025
 ms.topic: conceptual
 ms.date: 05/08/2025
 appliesto:
@@ -69,12 +72,7 @@ Change feed reads consume RUs from the source container, and writes to the globa
 
 ### Global secondary indexes in multi-region accounts
 
-For Azure Cosmos DB accounts with a single region, change feed reads from the source container and writes to the global secondary index container occur in that region. In a multi-region account with a single write region, change feed reads and global secondary index writes occur in the write region. In an account with multiple write regions, change feed reads and global secondary index writes occur in one of the write regions. 
-
-> [!IMPORTANT]
-> If there's a failover for your account, change feed reads and global secondary index writes occur in the new write region.
-> 
-> Manual failovers (change write region operation) are graceful operations, and indexes are guaranteed to be consistent with the source. However, [service managed failovers](/azure/reliability/reliability-cosmos-db-nosql#service-managed-failover) aren't guaranteed to be graceful and can result in inconsistencies between the source and index containers. In such cases, rebuilding the index containers by deleting and re-creating them is recommended. It's a best practice for index container names to be loosely coupled so they can be changed out for the new index container. Alternately, fall back to executing cross-partition queries on the source container until the index container is updated.
+For Azure Cosmos DB accounts with a single region, change feed reads from the source container and writes to the global secondary index container occur in that region. In a multi-region account with a single write region, change feed reads and global secondary index writes occur in the write region. In an account with multiple write regions, change feed reads and global secondary index writes occur in one of the write regions. If there's a failover for your account, change feed reads and global secondary index writes occur in the new write region.
 
 ## Querying global secondary indexes
 

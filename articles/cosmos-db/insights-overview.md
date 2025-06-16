@@ -7,7 +7,9 @@ ms.author: esarroyo
 ms.topic: concept-article
 ms.service: azure-cosmos-db
 ms.date: 05/07/2025
-ms.custom: subject-monitoring
+ms.custom:
+  - subject-monitoring
+  - build-2025
 appliesto:
   - ✅ NoSQL
 ---

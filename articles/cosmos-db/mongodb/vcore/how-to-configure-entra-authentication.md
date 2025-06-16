@@ -1,5 +1,5 @@
 ---
-title: Configure Microsoft Entra authentication
+title: Configure Microsoft Entra ID authentication
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Learn how to manage authentication and set up Microsoft Entra ID users for authentication on Azure Cosmos DB for MongoDB vCore clusters.
 author: seesharprun
@@ -8,8 +8,10 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/14/2025
-ms.custom: devx-track-rust
+ms.date: 06/08/2025
+ms.custom:
+  - devx-track-rust
+  - build-2025
 appliesto:
   - ✅ MongoDB (vCore)
 # Customer Intent: As a database developer, I want to build a Rust console application to quickly and securely connect to and query my database and collections.
@@ -58,7 +60,7 @@ First, get the unique identifier for your currently signed-in identity.
 
 ## Configure existing cluster for authentication
 
-When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is configured for native authentication by default. Use the Azure CLI to configure your existing cluster to support Microsoft Entra authentication. Then, configure the cluster to map a user to your signed-in identity.
+When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is configured for native authentication by default. Use the Azure CLI to configure your existing cluster to support Microsoft Entra ID authentication. Then, configure the cluster to map a user to your signed-in identity.
 
 1. Now, get the `authConfig` property from your existing cluster using `az resource show`.
 
@@ -71,7 +73,7 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
         --latest-include-preview
     ```
 
-1. Observe the output. If Microsoft Entra authentication isn't configured, the output includes only the `NativeAuth` value in the `allowedModes` array.
+1. Observe the output. If Microsoft Entra ID authentication isn't configured, the output includes only the `NativeAuth` value in the `allowedModes` array.
 
     ```output
     {
@@ -168,7 +170,7 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
 
 ## Connect to the cluster
 
-You can connect to the cluster using either a connection URI or a custom settings object from the driver for your preferred language. In either option, the **scheme** must be set to `mongodb+srv` to connect to the replica set. The **host** is at either the `*.global.mongocluster.cosmos.azure.com` or `*.mongocluster.cosmos.azure.com` domain depending on whether you're using the current cluster or global read-write endpoint. The `+srv` scheme and the `*.global.*` host ensures that your client is dynamically connected to the appropriate writable cluster in a multi-cluster configuration even if a region swap operation occurs. In a single-cluster configuration, you can use either host indiscriminately.
+You can connect to the cluster using either a connection URI or a custom settings object from the driver for your preferred language. In either option, the **scheme** must be set to `mongodb+srv` to connect to the cluster. The **host** is at either the `*.global.mongocluster.cosmos.azure.com` or `*.mongocluster.cosmos.azure.com` domain depending on whether you're using [the current cluster or global read-write endpoint](./how-to-cluster-replica.md#use-connection-strings). The `+srv` scheme and the `*.global.*` host ensures that your client is dynamically connected to the appropriate writable cluster in a multi-cluster configuration even if [a region swap operation occurs](./cross-region-replication.md#replica-cluster-promotion). In a single-cluster configuration, you can use either host indiscriminately.
 
 The `tls` setting must also be enabled. The remaining recommended settings are best practice configuration settings.
 
@@ -181,10 +183,12 @@ The `tls` setting must also be enabled. The remaining recommended settings are b
 | `retrywrites` | `false` |
 | `maxIdleTimeMS` | `120000` |
 
-### [Connection URI](#tab/connection-uri)
+### [Azure portal](#tab/connection-uri)
+
+On the cluster properties page in the Azure portal, under **Settings**, open **Connection strings**. The **Connection strings** page contains connection strings for the authentication methods enabled on the cluster. Microsoft Entra ID connection strings are in the **Microsoft Entra ID** section.
 
 - **Global**
-
+ 
     ```output
     mongodb+srv://<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
     ```
@@ -298,14 +302,10 @@ internal sealed class AzureIdentityTokenHandler(
     }
 }
 ```
-
 ---
-
-## Limitations
-
-[!INCLUDE[Section - Entra authentication limitations](includes/section-entra-authentication-limitations.md)]
 
 ## Related content
 
-- [Microsoft Entra authentication overview](entra-authentication.md)
+- [Microsoft Entra ID authentication in Azure Cosmos DB for MongoDB vCore overview](entra-authentication.md)
+- Check [limitations of Microsoft Entra ID](./limits.md#authentication-and-access-control-rbac) in Azure Cosmos DB for MongoDB vCore
 - [Connect using a console application](how-to-build-dotnet-console-app.md)

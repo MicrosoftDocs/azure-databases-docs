@@ -87,8 +87,9 @@
       href: flexible-server/concepts-storage.md
     - name: Scaling resources
       href: flexible-server/concepts-scaling-resources.md
+    - name: Confidential computing
+      href: flexible-server/concepts-confidential-computing.md
     - name: Elastic clusters (preview)
-      displayName: scale-out, sharding
       items:
       - name: Overview
         href: flexible-server/concepts-elastic-clusters.md
@@ -402,6 +403,12 @@
         href: flexible-server/how-to-connect-data-factory.md
       - name: Connect from Azure Data Factory via managed private endpoint
         href: flexible-server/how-to-connect-data-factory-private-endpoint.md
+    - name: Microsoft Fabric
+      items:
+      - name: Copy activity
+        href: flexible-server/how-to-use-microsoft-fabric-data-factory-copy-activity.md
+      - name: Script activity
+        href: flexible-server/how-to-use-microsoft-fabric-data-factory-script-activity.md
   - name: Troubleshooting
     items:  
     - name: Troubleshooting guides
@@ -644,10 +651,6 @@
           href: flexible-server/how-to-configure-managed-identities-user-assigned.md
       - name: Reset administrator password
         href: flexible-server/how-to-reset-admin-password.md
-      - name: Confidential computing
-        items:
-        - name: Overview
-          href: flexible-server/concepts-confidential-computing.md
     - name: Decommissioning and relocation
       items:
       - name: Delete a server
@@ -766,7 +769,7 @@
   - name: Deployment templates
     href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=databases
+    href: https://azure.microsoft.com/updates?searchterms=databases
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/postgresql/
   - name: Microsoft Q&A question page

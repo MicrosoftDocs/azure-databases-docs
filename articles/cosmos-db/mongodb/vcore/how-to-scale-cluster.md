@@ -7,9 +7,11 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/13/2025
+ms.date: 06/09/2025
 appliesto:
   - ✅ MongoDB (vCore)
+ms.custom:
+  - build-2025
 ---
 
 # Scaling and configuring Your Azure Cosmos DB for MongoDB vCore cluster
@@ -26,20 +28,17 @@ Azure Cosmos DB for MongoDB vCore provides seamless scalability and high availab
 
 To change the configuration of your cluster, use the **Scale** section of the Azure Cosmos DB for MongoDB vCore cluster page in the Azure portal. The portal includes real-time costs for these changes.
 
-> [!TIP]
-> For this guide, we recommend using the resource group name ``msdocs-cosmos-howto-rg``.
-
 1. Sign in to the [Azure portal](https://portal.azure.com).
 
 2. Navigate to the existing Azure Cosmos DB for MongoDB vCore cluster page.
 
-3. From the Azure Cosmos DB for MongoDB vCore cluster page, select the **Scale** navigation menu option.
+3. From the Azure Cosmos DB for MongoDB vCore cluster page, in the **Settings** section select the **Scale** navigation menu option.
 
    :::image type="content" source="media/how-to-scale-cluster/select-scale-option.png" lightbox="media/how-to-scale-cluster/select-scale-option.png" alt-text="Screenshot of the Scale option on the page for an Azure Cosmos DB for MongoDB vCore cluster.":::
 
-## Change the cluster tier
+## Scale cluster compute
 
-The cluster tier you select influences the amount of vCores and RAM assigned to your cluster. You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
+[The cluster tier](./compute-storage.md#compute-in-azure-cosmos-db-for-mongodb-vcore) you select influences the amount of vCores and RAM assigned to your cluster. You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
 
 1. To change the cluster tier, select the new tier from the drop-down menu.
 
@@ -54,7 +53,7 @@ The cluster tier you select influences the amount of vCores and RAM assigned to 
 
 ## Increase disk size
 
-You can increase the storage size to give your database more room to grow. For example, you can increase the storage from **128 GB** to **256 GB**.
+You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos-db-for-mongodb-vcore) to give your database more room to grow. For example, you can increase the storage from **128 GB** to **256 GB**.
 
 1. To increase the storage size, select the new size from the drop-down menu.
 
@@ -77,7 +76,7 @@ You can enable or disable [high availability (HA)](./high-availability.md) to su
 
 ## Increase the number of physical shards
 
-When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add additional [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards.
+When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards. Each physical shard in a cluster always has the same [compute](#scale-cluster-compute) and [storage](#increase-disk-size) configuration.
 
 1. To add physical shards, select new shard count from the list.
 
@@ -87,19 +86,27 @@ When a database grows beyond the capacity of a single physical shard cluster, yo
 
 If you need more than 10 physical shards on your cluster, open an [Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
 
-## Enable 'Query from any node' capability on a multishard cluster
+### Rebalance data
 
-When a multi-shard cluster receives a query, it must be routed to one or more physical shards. To improve overall cluster performance, this query dispatching workload can be evenly distributed across all nodes. To enable this distribution, turn on the **Query from any node** setting.
+After [a physical shard is added to a cluster](#increase-the-number-of-physical-shards), or if multishard cluster has [uneven storage usage](./how-to-manage-alerts.md) across its physical shards, data rebalancing redistributes data between shards without any downtime.
 
-1. To enable or disable **Query from any node**, toggle the checkbox.
+To initiate data rebalancing, connect to the cluster using a management tool such as the [Mongo shell](./how-to-connect-mongo-shell.md).
 
-   :::image type="content" source="media/how-to-scale-cluster/configure-query-from-any-node.png" alt-text="Screenshot of the query from any node checkbox in the Scale page of a cluster.":::
+1. Start the rebalancer with the ```sh.startBalancer()``` command.
 
-1. Select **Save** to persist your change.
+1. Check the rebalancer status using ```sh.isBalancerRunning()```.
+
+1. Stop the rebalancer with the ```sh.stopBalancer()``` command.
+
+ > [!NOTE]
+> The duration of the rebalancing process depends on the volume of data being moved between physical shards. The operation is performed online and doesn't impact cluster availability or functionality.
 
 ## Next steps
 
 In this guide, we showed that scaling and configuring your Cosmos DB for MongoDB vCore cluster in the Azure portal is a straightforward process. The Azure portal includes the ability to adjust the cluster tier, increase storage size, enable or disable high availability, and add physical shards without any downtime.
+
+- [Compute and storage options](./compute-storage.md)
+- [Check out sharding fundamentals](./partitioning.md)
 
 > [!div class="nextstepaction"]
 > [Restore an Azure Cosmos DB for MongoDB vCore cluster](how-to-restore-cluster.md)

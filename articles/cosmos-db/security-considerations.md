@@ -64,7 +64,7 @@ Azure Cosmos DB secures your database by default with many features built-in to 
 | Encryption at rest | All data stored in Azure Cosmos DB is encrypted at rest. Learn more in [Azure Cosmos DB encryption at rest](./database-encryption-at-rest.md). |
 | Patched servers | As a managed database, Azure Cosmos DB automatically patches and manages server on your behalf eliminating the need for manual maintenance tasks. |
 | Administrative accounts with strong passwords | It's impossible to have an administrative account with no password in Azure Cosmos DB. Security via TLS and HMAC secret-based authentication is baked in by default. |
-| Security and data protection certifications | For the most up-to-date list of certifications, see [Azure compliance](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) and the latest [Azure compliance document](https://www.scribd.com/document/725754983/Azure-Compliance-Offerings-March-2024) with all Azure certifications, including Azure Cosmos DB. |
+| Security and data protection certifications | For the most up-to-date list of certifications, see [Azure compliance](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) and the latest [Azure compliance document](https://download.microsoft.com/download/1/E/9/1E94186C-EACA-4632-8DDF-D546C8482073/AzureTrustedCloud-Compliance.pdf) with all Azure certifications, including Azure Cosmos DB. |
 
 ## Related content
 
