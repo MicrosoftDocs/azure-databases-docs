@@ -171,7 +171,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: October 2023
 
 - Support for latest [minor versions](concepts-supported-versions.md) 15.4, 14.9, 13.12, 12.16, 11.21. <sup>$</sup>
-- General availability of [Grafana Monitoring Dashboard](https://grafana.com/grafana/dashboards/19556-azure-azure-postgresql-flexible-server-monitoring/) for Azure Database for PostgreSQL flexible server.
+- General availability of [Grafana Monitoring Dashboard](https://grafana.com/grafana/dashboards/21177-azure-azure-postgresql-flexible-server-monitoring/) for Azure Database for PostgreSQL flexible server.
 
 ## Release: September 2023
 
