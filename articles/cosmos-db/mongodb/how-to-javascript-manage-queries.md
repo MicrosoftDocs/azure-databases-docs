@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: javascript
 ms.topic: how-to
-ms.date: 07/29/2022
+ms.date: 06/16/2025
 ms.custom: devx-track-js, devguide-js, cosmos-db-dev-journey
 ---
 
