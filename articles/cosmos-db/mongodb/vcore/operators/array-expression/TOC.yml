@@ -30,6 +30,8 @@
   href: $range.md
 - name: $reduce
   href: $reduce.md
+- name: $slice
+  href: $slice.md
 - name: $size
   href: $size.md
 - name: $sortArray
