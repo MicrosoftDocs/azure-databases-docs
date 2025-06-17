@@ -6,18 +6,26 @@
   href: $concatarrays.md
 - name: $filter
   href: $filter.md
+- name: $firstN
+  href: $firstn.md
 - name: $in
   href: $in.md
 - name: $indexOfArray
   href: $indexofarray.md  
 - name: $isArray
   href: $isarray.md
+- name: $lastn
+  href: $lastn.md
 - name: $objectToArray
   href: $objecttoarray.md
 - name: $reverseArray
   href: $reversearray.md
 - name: $map
   href: $map.md
+- name: $maxn
+  href: $maxn.md
+- name: $minn
+  href: $minn.md
 - name: $range
   href: $range.md
 - name: $reduce

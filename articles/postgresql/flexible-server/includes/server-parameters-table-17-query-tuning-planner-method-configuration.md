@@ -101,8 +101,8 @@ ms.custom: automatically generated
 | Description | Enables the planner's use of incremental sort steps. |
 | Data type | boolean |
 | Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
 | Documentation | [enable_incremental_sort](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-INCREMENTAL-SORT) |
 
 

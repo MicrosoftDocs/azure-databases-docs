@@ -75,7 +75,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 ### Extension Limitations
 
 In-place major version upgrades do not support all PostgreSQL extensions. The upgrade will fail during the precheck if unsupported extensions are found.
-- The following extensions are not supported across any PostgreSQL versions: `timescaledb`, `pgaudit`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`
+- The following extensions are not supported across any PostgreSQL versions: `timescaledb`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`
 - The following extensions are not supported when the upgrade target is PostgreSQL 16 or higher: `pgrouting`
 - The following extensions are not supported when upgrading to PostgreSQL 17: `pgrouting`, `age`, `azure_ai`, `hll`, `pg_diskann`
 - Extensions such as `pgaudit`, `pg_repack`, and `hypopg` do not support in-place upgrades and should be dropped before the upgrade and recreated after. These extensions are non-persistent and safe to reconfigure post-upgrade.
@@ -87,8 +87,14 @@ These extensions must be removed from the **azure.extensions** server parameter 
 If you're using PostGIS or any dependent extensions, you must configure the search_path server parameter to include:
 - Schemas related to PostGIS
 - Dependent extensions, including: `postgis`, `postgis_raster`, `postgis_sfcgal`, `postgis_tiger_geocoder`, `postgis_topology`, `address_standardizer`, `address_standardizer_data_us`, `fuzzystrmatch`
+- Failure to configure the search_path correctly can lead to upgrade failures or broken objects post-upgrade.
 
-Failure to configure the search_path correctly can lead to upgrade failures or broken objects post-upgrade.
+### Other upgrade considerations
+
+- Large objects (LOs): Databases with millions of large objects (stored in `pg_largeobject`) can cause upgrade failures due to high memory usage or log volume. Use [vacuumlo](https://www.postgresql.org/docs/current/vacuumlo.html) utility to clean up unused LOs, and consider scaling up your server before upgrade if many LOs are still in use.
+
+> [!WARNING]
+> Use caution with vacuumlo. `vacuumlo` identifies orphaned large objects based on conventional reference columns (oid, lo). If your application uses custom or indirect reference types, valid large objects may be mistakenly deleted. Additionally, `vacuumlo` may consume significant CPU, memory, and IOPS, especially in databases with millions of large objects. Run it during maintenance windows and test on non-prod first.
 
 ## Post upgrade
 

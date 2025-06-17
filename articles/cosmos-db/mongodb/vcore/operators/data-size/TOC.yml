@@ -1,4 +1,4 @@
-- name: $binarySize
+- name: $binarysize
   href: $binarysize.md
-- name: $bsonSize
+- name: $bsonsize
   href: $bsonsize.md

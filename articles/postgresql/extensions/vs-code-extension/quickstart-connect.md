@@ -27,7 +27,7 @@ These tools and resources help you follow along with this article and make the m
 
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your machine.
 - PostgreSQL database installed locally or hosted in the [cloud](../../flexible-server/quickstart-create-server.md).
-- [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql) installed in Visual Studio Code.
+- [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) installed in Visual Studio Code.
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
 - [Azure account](../../flexible-server/how-to-deploy-on-azure-free-account.md) for connecting to cloud-hosted databases (optional).

@@ -51,6 +51,48 @@ Limitations: accelerated networking must be supported on the VM OS, and can only
 
 Please see the [Windows](/azure/virtual-network/create-vm-accelerated-networking-powershell) and [Linux](/azure/virtual-network/create-vm-accelerated-networking-cli) instructions for more details.
 
+## High availability
+
+For general guidance on configuring high availability in Azure Cosmos DB, see [High availability in Azure Cosmos DB](/azure/reliability/reliability-cosmos-db-nosql). 
+
+In addition to a good foundational setup in the database platform, partition-level circuit breaker can be implemented in the Python SDK, which can help in outage scenarios. This feature provides advanced mechanisms availability challenges, going above and beyond the cross-region retry capabilities that are built into the SDK by default. This can significantly enhance the resilience and performance of your application, particularly under high-load or degraded conditions.
+
+### Partition-level circuit breaker
+
+The partition-level circuit breaker (PPCB) in the Python SDK improves availability and resilience by tracking the health of individual physical partitions and routing requests away from problematic ones. This feature is particularly useful for handling transient and terminal issues such as network problems, partition upgrades, or migrations.
+
+PPCB is applicable in the following scenarios:
+
+- Any consistency level
+- Operations with partition key (point reads/writes)
+- Single write region accounts with multiple read regions
+- Multiple write region accounts
+
+#### How it works
+
+Partitions transition through four states - **Healthy**, **Unhealthy Tentative**, **Unhealthy**, and **Healthy Tentative** - based on the success or failure of requests:
+
+1. **Failure Tracking:** The SDK monitors error rates (e.g., 5xx, 408) per partition over a one-minute window. Consecutive failures per partition are tracked indefinitely by the SDK.
+2. **Marking as Unavailable:** If a partition exceeds configured thresholds, it's marked as *Unhealthy Tentative* and excluded from routing for 1 minute.
+3. **Promotion to Unhealthy or Recovery:** If recovery attempts fail, the partition transitions to *Unhealthy*. After a backoff interval, a *Healthy Tentative* probe is made with a limited-time request to determine recovery.
+4. **Reinstatement:** If the tentative probe succeeds, the partition returns to *Healthy*. Otherwise, it remains *Unhealthy* until the next probe.
+
+This failover is managed internally by the SDK and ensures requests avoid known-problematic partitions until they're confirmed to be healthy again.
+
+#### Configuration via environment variables
+
+You can control the PPCB behavior using these environment variables:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `AZURE_COSMOS_ENABLE_CIRCUIT_BREAKER` | Enables/disables PPCB | `false` |
+| `AZURE_COSMOS_CONSECUTIVE_ERROR_COUNT_TOLERATED_FOR_READ` | Max consecutive read failures before marking a partition unavailable | `10` |
+| `AZURE_COSMOS_CONSECUTIVE_ERROR_COUNT_TOLERATED_FOR_WRITE` | Max consecutive write failures before marking a partition unavailable | `5` |
+| `AZURE_COSMOS_FAILURE_PERCENTAGE_TOLERATED` | Failure percentage threshold before marking a partition unavailable | `90` |
+
+> [!TIP]
+> Additional configuration options may be exposed in future releases for fine-tuning timeout durations and recovery backoff behavior.
+
 ## SDK usage
 * **Install the most recent SDK**
 

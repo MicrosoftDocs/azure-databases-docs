@@ -18,52 +18,48 @@ ms.custom:
 
 The article describes how you can resolve capacity errors when deploying or scaling Azure Database for PostgreSQL Flexible Server.
 
-
 > [!IMPORTANT]
 > For the list of regions that support Zone redundant high availability, please review the supported regions [here](overview.md#azure-regions). 
-
 
 ## Exceeded quota 
 
 If you encounter any of the following errors when attempting to deploy your Azure PostgreSQL Flexible Server resource, [submit a request to increase your quota](how-to-request-quota-increase.md).
 
-- `Operation could not be completed as it results in exceeding approved {0} Cores quota. Additional details - Current Limit: {1}, Current Usage: {2}, Additional Required: {3}, (Minimum) New Limit Required: {4}.Submit a request for Quota increase by specifying parameters listed in the ‘Details’ section for deployment to succeed.`
-
+- Operation could not be completed as it results in exceeding approved {0} Cores quota. Additional details - Current Limit: {1}, Current Usage: {2}, Additional Required: {3}, (Minimum) New Limit Required: {4}.Submit a request for Quota increase by specifying parameters listed in the ‘Details’ section for deployment to succeed.
 
 ## Subscription access
 
-Your subscription may not have access to create a server in the selected region if your subscription isn't registered with the PostgreSQL resource provider (RP).  
+Your subscription may not have access to create a server in the selected region if your subscription isn't registered with the PostgreSQL resource provider (RP).
 
 If you see any of the following errors, [Register your subscription with the PostgreSQL RP](#register-with-postgresql-rp)] to resolve it.
 
-- `Your subscription does not have access to create a server in the selected region.`
+- Your subscription does not have access to create a server in the selected region.
 
-- `Provisioning is restricted in this region. Please choose a different region. For exceptions to this rule please open a support request with issue type of 'Service and subscription limits' `
+- Provisioning is restricted in this region. Please choose a different region. For exceptions to this rule please open a support request with issue type of 'Service and subscription limits.
 
-- `Location 'region name' is not accepting creation of new Azure Database for PostgreSQL Flexible servers for the subscription 'subscription id' at this time`
-
+- Location `region name` is not accepting creation of new Azure Database for PostgreSQL Flexible servers for the subscription 'subscription id' at this time`
 
 ## Enable region 
 
 Your subscription may not have access to create a server in the selected region. To resolve this issue, file a  [request to access a region](how-to-request-quota-increase.md).
 
-If you see the following errors, file a support ticket to enable the specific region: 
-- `Subscription 'Subscription name' is not allowed to provision in 'region name`
--  `Subscriptions are restricted from provisioning in this region. Please choose a different region. For exceptions to this rule please open a support request with the Issue type of 'Service and subscription limits.`
+If you see the following errors, file a support ticket to enable the specific region:
 
-## Availability Zone 
+- Subscription name are not allowed to provision in `region name`.
+- Subscriptions are restricted from provisioning in this region. Please choose a different region. For exceptions to this rule please open a support request with the Issue type of 'Service and subscription limits.`
+
+## Availability zone 
 
 If you receive the following errors, select a different availability zone. 
 
-- `Availability zone '{ID}' is not available for subscription '{Sub ID}' in this region temporarily due to capacity constraints.`
-- `Multi-Zone HA is not supported in this region. Please choose a different region. For exceptions to this rule please open a support request with the Issue type of 'Service and subscription limits'.` 
-`See https://review.learn.microsoft.com/en-us/azure/postgresql/flexible-server/how-to-request-quota-increase for more details.`
+- Availability zone `{ID}` is not available for subscription `{Sub ID}` in this region temporarily due to capacity constraints.
+- Multi-Zone HA is not supported in this region. Choose a different region. For exceptions to this rule please open a support request with the Issue type of Service and subscription limits.
 
-## SKU Not Available 
+## SKU not available 
 
 If you encounter the following error, select a different SKU type. Availability of SKU may differ across regions, either the specific SKU isn't supported in the region or temporarily unavailable.
 
-`Specified SKU is not supported in this region. Please choose a different SKU.`
+Specified SKU is not supported in this region. Please choose a different SKU.
 
 ## Register with PostgreSQL RP
 
@@ -75,7 +71,6 @@ You can register your subscription using the Azure portal, [the Azure CLI](/cli/
 
 To register your subscription in the Azure portal, follow these steps: 
 
- 
 1. In Azure portal, select **More services.**
 
 1. Go to **Subscriptions** and select your subscription.
@@ -86,9 +81,7 @@ To register your subscription in the Azure portal, follow these steps:
 
 1. Select **Register**, **Re-register**, or **Unregister** for the **Microsoft.DBforPostgreSQL** provider, depending on your desired action.
 
-
-
-   :::image type="content" source="./media/how-to-resolve-capacity-errors/register-postgresql-resource-provider.png" alt-text="Screenshot of Register PostgreSQL Resource Provider.":::
+  :::image type="content" source="./media/how-to-resolve-capacity-errors/register-postgresql-resource-provider.png" alt-text="Screenshot of Register PostgreSQL Resource Provider.":::
 
 # [CLI](#tab/bash)
 
@@ -106,7 +99,6 @@ To register your subscription using [Azure PowerShell](/powershell/azure/install
 ```powershell-interactive
 # Register the PostgreSQL resource provider to your subscription
 Register-AzResourceProvider -ProviderNamespace Microsoft.DBforPostgreSQL
-
 ```
 
 ---
@@ -115,13 +107,38 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DBforPostgreSQL
 
 If you're still experiencing provisioning issues, open a **Region** access request under the support topic of Azure PostgreSQL Flexible Server and specify the vCores you want to utilize. 
 
-## Azure Program regions 
+## Azure program regions 
 
 Azure Program offerings (Azure Pass, Imagine, Azure for Students, MPN, BizSpark, BizSpark Plus, Microsoft for Startups / Sponsorship Offers, Microsoft Developer Network(MSDN) / Visual Studio Subscriptions) have access to a limited set of regions.
 
 If your subscription is part of above offerings and you require access to any of the listed regions, submit an access request. Alternatively, you may opt for an alternate region: 
 
-`Australia Central, Australia Central 2, Australia SouthEast, Brazil SouthEast, Canada East, China East, China North, China North 2, France South, Germany North, Japan West, Jio India Central, Jio India West, Korea South, Norway West, South Africa West, South India, Switzerland West, UAE Central, UK West, US DoD Central, US DoD East, US Gov Arizona, US Gov Texas, West Central US, West India.`
+- Australia Central
+- Australia Central 2
+- Australia SouthEast
+- Brazil SouthEast
+- Canada East
+- China East
+- China North
+- China North 2
+- France South
+- Germany North
+- Japan West
+- Jio India Central
+- Jio India West
+- Korea South
+- Norway West
+- South Africa West
+- South India
+- Switzerland West
+- UAE Central
+- UK West
+- US DoD Central
+- US DoD East
+- US Gov Arizona
+- US Gov Texas
+- West Central US
+- West India.
 
 Once you submit your request, it undergoes review. You then receive a response based on the information provided in the form.
 
