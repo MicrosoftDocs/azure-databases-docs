@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: javascript
 ms.topic: how-to
-ms.date: 07/29/2022
+ms.date: 06/16/2025
 ms.custom: devx-track-js, devguide-js, cosmos-db-dev-journey
 ---
 
@@ -150,13 +150,13 @@ The aggregations below use the [sample products collection](https://github.com/A
 
 Use the following [sample code](https://github.com/Azure-Samples/cosmos-db-mongodb-api-javascript-samples/blob/main/280-aggregation/average-price-in-each-product-subcategory.js) to report on average price in each product subcategory.
 
-:::code language="javascript" source="~/samples-cosmosdb-mongodb-javascript/280-aggregation/average-price-in-each-product-subcategory.js" id="aggregation_1" highlight="26, 43, 53, 56, 66":::
+:::code language="javascript" source="~/samples-cosmosdb-mongodb-javascript/280-aggregation/average-price-in-each-product-subcategory.js" id="aggregation_1" :::
 
 ### Example 2: Bike types with price range
 
 Use the following [sample code](https://github.com/Azure-Samples/cosmos-db-mongodb-api-javascript-samples/blob/main/280-aggregation/bike-types-and-price-ranges.js) to report on the `Bikes` subcategory.
 
-:::code language="javascript" source="~/samples-cosmosdb-mongodb-javascript/280-aggregation/bike-types-and-price-ranges.js" id="aggregation_1" highlight="23, 30, 38, 45, 68, 80, 85, 98":::
+:::code language="javascript" source="~/samples-cosmosdb-mongodb-javascript/280-aggregation/bike-types-and-price-ranges.js" id="aggregation_1" :::
 
 ## See also
 

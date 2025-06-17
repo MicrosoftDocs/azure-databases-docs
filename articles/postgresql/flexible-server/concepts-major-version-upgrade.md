@@ -93,6 +93,9 @@ If you're using PostGIS or any dependent extensions, you must configure the sear
 
 - Large objects (LOs): Databases with millions of large objects (stored in `pg_largeobject`) can cause upgrade failures due to high memory usage or log volume. Use [vacuumlo](https://www.postgresql.org/docs/current/vacuumlo.html) utility to clean up unused LOs, and consider scaling up your server before upgrade if many LOs are still in use.
 
+> [!WARNING]
+> Use caution with vacuumlo. `vacuumlo` identifies orphaned large objects based on conventional reference columns (oid, lo). If your application uses custom or indirect reference types, valid large objects may be mistakenly deleted. Additionally, `vacuumlo` may consume significant CPU, memory, and IOPS, especially in databases with millions of large objects. Run it during maintenance windows and test on non-prod first.
+
 ## Post upgrade
 
 After the major version upgrade is complete, we recommend running the `ANALYZE` command  in each database to refresh the [`pg_statistic`](https://www.postgresql.org/docs/current/catalog-pg-statistic.html) table. Missing or stale statistics can lead to bad query plans, which in turn might degrade performance and take up excessive memory.
