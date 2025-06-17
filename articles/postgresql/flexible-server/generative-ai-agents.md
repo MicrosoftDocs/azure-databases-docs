@@ -30,7 +30,7 @@ By connecting AI agents to databases like Azure Database for PostgreSQL, agents 
 
 ## Implementation of AI agents
 
-Implementing AI agents with Azure Database for PostgreSQL involves integrating advanced AI capabilities with robust database functionalities to create intelligent, context-aware systems. By using tools like vector search, embeddings, and Azure AI Foundry Agent Service, developers can build agents that are capable of understanding natural language queries, retrieving relevant data, and providing actionable insights.
+Implementing AI agents with Azure Database for PostgreSQL involves integrating advanced AI capabilities with robust database functionalities to create intelligent, context-aware systems. By using tools like vector search, embeddings, and Azure AI Foundry Agent Service, developers can build agents that understand natural language queries, retrieve relevant data, and provide actionable insights.
 
 The following sections outline the step-by-step process to set up, configure, and deploy AI agents. This process enables seamless interaction between AI models and your PostgreSQL database.
 

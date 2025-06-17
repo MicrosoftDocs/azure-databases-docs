@@ -14,7 +14,7 @@ ms.topic: how-to
 
 # Use LangChain with Azure Database for PostgreSQL
 
-Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/). This integration enables developers use advanced AI capabilities in their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases so that generative AI applications are easier to develop.
+Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/). This integration enables developers to use advanced AI capabilities in their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases so that generative AI applications are easier to develop.
 
 This article shows you how to use the integrated [vector database](how-to-use-pgvector.md) in Azure Database for PostgreSQL to store and manage documents in collections with LangChain. It also shows you how to create indices and perform vector search queries by using nearest-neighbor algorithms such as cosine distance, L2 distance (Euclidean distance), and inner product to locate documents close to the query vectors.
 
