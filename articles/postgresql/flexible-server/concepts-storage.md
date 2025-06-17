@@ -45,11 +45,11 @@ Premium SSD v2 offers up to 32 TiBs per region per subscription by default, but 
 
 #### Premium SSD v2 - IOPS
 
-Azure Database for PostgreSQL flexible server offers a baseline IOPS of 3000 for disks up to 399 GiB, and 12000 IOPS for disks over 400 GiB at no additional cost. To achieve 80,000 IOPS on a disk, it must be at least 160 GiB. Increasing IOPS beyond the free tier results in higher disk prices.
+Azure Database for PostgreSQL flexible server offers a baseline IOPS of 3000 for disks up to 399 GiB, and 12000 IOPS for disks over 400 GiB at no additional cost. To achieve 80,000 IOPS on a disk, it must be at least 160 GiB. Increasing IOPS beyond the free tier results in additional charges.
 
 #### Premium SSD v2 - Throughput
 
-Azure Database for PostgreSQL flexible server offers a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks over 400 GiB at no additional cost. Increasing throughput beyond free tier results in higher disk prices.
+Azure Database for PostgreSQL flexible server offers a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks over 400 GiB at no additional cost. Increasing throughput beyond the free tier results in additional charges.
 
 > [!NOTE]  
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server.
