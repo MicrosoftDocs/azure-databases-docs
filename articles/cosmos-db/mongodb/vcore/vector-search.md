@@ -7,15 +7,16 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
-  - ignite-2023
-  - ignite-2024
-  - build-2025
+- ignite-2023
+- ignite-2024
+- build-2025
+- sfi-ropc-blocked
 ms.topic: concept-article
 ms.date: 12/03/2024
 ms.collection:
-  - ce-skilling-ai-copilot
+- ce-skilling-ai-copilot
 appliesto:
-  - ✅ MongoDB vCore
+- ✅ MongoDB vCore
 ---
 
 # Vector store in Azure Cosmos DB for MongoDB vCore

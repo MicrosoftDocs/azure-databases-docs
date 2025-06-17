@@ -8,7 +8,7 @@ ms.subservice: mongodb
 ms.devlang: python
 ms.topic: how-to
 ms.date: 11/18/2022
-ms.custom: devx-track-python
+ms.custom: devx-track-python, sfi-ropc-blocked
 ---
 
 # Get started with Azure Cosmos DB for MongoDB and Python

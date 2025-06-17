@@ -8,7 +8,7 @@ ms.date: 11/17/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.devlang: csharp
-ms.custom: devx-track-azurecli, devx-track-csharp, devx-track-azurepowershell, devx-track-arm-template, devx-track-dotnet, sfi-image-nochange
+ms.custom: devx-track-azurecli, devx-track-csharp, devx-track-azurepowershell, devx-track-arm-template, devx-track-dotnet, sfi-image-nochange, sfi-ropc-blocked
 ---
 
 # Provision database, container or autoscale throughput on Azure Cosmos DB for MongoDB resources

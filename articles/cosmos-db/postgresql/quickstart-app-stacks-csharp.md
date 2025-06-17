@@ -8,6 +8,7 @@ ms.subservice: postgresql
 ms.topic: quickstart
 recommendations: false
 ms.date: 06/05/2023
+ms.custom: sfi-ropc-blocked
 ---
 
 # Use C# to connect and run SQL commands on Azure Cosmos DB for PostgreSQL

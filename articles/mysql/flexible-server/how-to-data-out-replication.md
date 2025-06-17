@@ -8,6 +8,7 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-ropc-nochange
 ---
 
 # How to configure Azure Database for MySQL - Flexible Server data-out replication

@@ -12,6 +12,7 @@ ms.custom:
 - devx-track-azurecli
 - has-azure-ad-ps-ref
 - sfi-image-nochange
+- sfi-ropc-nochange
 ---
 
 # Set up Microsoft Entra authentication for Azure Database for MySQL - Flexible Server

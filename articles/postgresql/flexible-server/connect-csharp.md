@@ -15,6 +15,7 @@ ms.custom:
 - mode-other
 - devx-track-dotnet
 - sfi-image-nochange
+- sfi-ropc-nochange
 ms.devlang: csharp
 ---
 

@@ -14,6 +14,7 @@ ms.custom:
 - build-2023
 - build-2023-dataai
 - sfi-image-nochange
+- sfi-ropc-nochange
 ---
 
 # Tutorial: Deploy a Spring Boot application on AKS cluster with Azure Database for MySQL - Flexible Server in a VNet

@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, sfi-ropc-blocked
 ---
 # Use Robo 3T with Azure Cosmos DB's API for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]

@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: tutorial
 ms.date: 08/28/2023
-ms.custom: devx-track-js, devx-track-azurecli, sfi-image-nochange
+ms.custom: devx-track-js, devx-track-azurecli, sfi-image-nochange, sfi-ropc-blocked
 # CustomerIntent: As a developer, I want to connect to Azure Cosmos DB for MongoDB (vCore) from my Node.js application, so I can build MERN stack applications.
 ---
 

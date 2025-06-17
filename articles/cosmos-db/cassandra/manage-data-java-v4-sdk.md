@@ -8,7 +8,7 @@ ms.subservice: apache-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.custom: devx-track-java, mode-api, devx-track-extended-java
+ms.custom: devx-track-java, mode-api, devx-track-extended-java, sfi-ropc-blocked
 ---
 
 # Quickstart: Build a Java app to manage Azure Cosmos DB for Apache Cassandra data (v4 Driver)

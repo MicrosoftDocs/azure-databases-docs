@@ -11,6 +11,7 @@ ms.custom:
 - mode-ui
 - ignite-2023
 - sfi-image-nochange
+- sfi-ropc-blocked
 #customer intent: As a developer, I want to create create Apache Cassandra clusters using Azure Managed Instance for Apache Cassandra by using the Azure portal.
 ---
 

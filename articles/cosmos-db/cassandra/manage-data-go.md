@@ -8,7 +8,7 @@ ms.subservice: apache-cassandra
 ms.devlang: golang
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.custom: mode-api, devx-track-go, sfi-image-nochange
+ms.custom: mode-api, devx-track-go, sfi-image-nochange, sfi-ropc-blocked
 ---
 
 # Quickstart: Build a Go app with the `gocql` client to manage Azure Cosmos DB for Apache Cassandra data

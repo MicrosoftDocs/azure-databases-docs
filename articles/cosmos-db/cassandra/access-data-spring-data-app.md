@@ -8,7 +8,7 @@ ms.subservice: apache-cassandra
 ms.devlang: java
 ms.topic: how-to
 ms.date: 07/17/2021
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, sfi-ropc-blocked
 ---
 
 # How to use Spring Data API for Apache Cassandra with Azure Cosmos DB for Apache Cassandra

@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 01/31/2023
-ms.custom: template-how-to-pattern, devx-track-azurecli, sfi-image-nochange
+ms.custom: template-how-to-pattern, devx-track-azurecli, sfi-image-nochange, sfi-ropc-blocked
 ---
 
 # Measure Azure Cosmos DB for NoSQL performance with a benchmarking framework

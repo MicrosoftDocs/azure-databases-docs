@@ -9,9 +9,10 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - github-actions-azure
-  - mode-other
-  - devx-track-azurecli
+- github-actions-azure
+- mode-other
+- devx-track-azurecli
+- sfi-ropc-blocked
 ---
 
 # Quickstart: Use GitHub Actions to connect to Azure Database for PostgreSQL flexible server
