@@ -57,7 +57,7 @@ The retirement details for MySQL major versions are listed in the following tabl
 | [MySQL 8.4](https://dev.mysql.com/doc/refman/8.4/introduction.html)|[Features](https://dev.mysql.com/doc/relnotes/mysql/8.4/en/)|July 1, 2025| April 30, 2032 | May 31, 2032 | June 1, 2032 | TBD |
 
 > [!NOTE]
-> For each deprecated Azure Database for MySQL version, the Azure standard support end date is typically set 1-2 months after the community deprecation date. This grace period provides customers with additional time to decide whether to upgrade to a newer version or to be enrolled in the paid Extended Support plan.
+> For each deprecated Azure Database for MySQL version, the Azure standard support end date is typically set 1 months after the community deprecation date. This grace period provides customers with additional time to decide whether to upgrade to a newer version or to be enrolled in the paid Extended Support plan.
 > For Azure Database for MySQL 5.7, the community end of life (EOL) was announced in October 2023. The standard support end date was originally planned for September 2025, but based on customer feedback, we have extended standard support for MySQL 5.7 until April 2026. Extended Support for MySQL 5.7 will begin in May 2026.
 > For details on what happens after standard support ends, including the Extended Support policy, see the next section.
 
@@ -71,6 +71,8 @@ During the Extended Support period, Microsoft prioritizes the service's availabi
 
 > [!NOTE]  
 > Extended Support is automatically applied and charged to servers running on legacy MySQL versions after standard support ends. To opt out of Extended Support and avoid charges, customers must upgrade to a supported major version. For more information or to provide feedback, please contact [Ask Azure DB For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
+> 
+> The pricing for Azure Database for MySQL Extended Support will be aligned with industry standards. We are currently finalizing the pricing details and will announce them at an appropriate time. Once available, customers will be able to view the specific charges for Azure MySQL Extended Support in the Azure Pricing Calculator.
 
 ### FAQs
 
