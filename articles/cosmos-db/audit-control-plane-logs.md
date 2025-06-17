@@ -6,6 +6,7 @@ author: StefArroyo
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 08/13/2021
+ms.custom: sfi-image-nochange
 ---
 
 # How to audit Azure Cosmos DB control plane operations

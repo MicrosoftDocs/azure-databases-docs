@@ -6,6 +6,7 @@ ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
+ms.custom: sfi-image-nochange
 ---
 # Going social with Azure Cosmos DB
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]

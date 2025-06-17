@@ -6,7 +6,7 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/21/2024
 ms.author: govindk
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, devx-track-arm-template
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, devx-track-arm-template, sfi-image-nochange
 ---
 
 # Restore an Azure Cosmos DB account that uses continuous backup mode

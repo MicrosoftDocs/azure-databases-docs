@@ -6,8 +6,7 @@ ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: conceptual
 ms.date: 10/29/2021
-ms.custom: references_regions, devx-track-azurecli
-
+ms.custom: references_regions, devx-track-azurecli, sfi-image-nochange
 ---
 
 # Customer-managed keys in Azure Managed Instance for Apache Cassandra

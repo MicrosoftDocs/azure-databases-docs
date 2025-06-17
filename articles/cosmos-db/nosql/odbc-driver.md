@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 03/16/2023
-ms.custom: kr2b-contr-experiment
+ms.custom: kr2b-contr-experiment, sfi-image-nochange
 ---
 
 # Use the Azure Cosmos DB ODBC driver to connect to BI and data analytics tools

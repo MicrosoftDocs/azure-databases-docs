@@ -5,7 +5,7 @@ description: Learn how to use Priority-based execution in Azure Cosmos DB.
 author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
-ms.custom: ignite-2023
+ms.custom: ignite-2023, sfi-image-nochange
 ms.topic: conceptual
 ms.date: 11/15/2023
 ---

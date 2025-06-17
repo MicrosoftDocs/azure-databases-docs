@@ -6,7 +6,7 @@ ms.author: IriaOsara
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 12/08/2023
-
+ms.custom: sfi-image-nochange
 ---
 
 # Run Jaeger with Azure Managed Instance for Apache Cassandra

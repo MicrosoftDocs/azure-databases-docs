@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: how-to
 ms.date: 06/06/2024
+ms.custom: sfi-image-nochange
 #Customer Intent: As a developer, I want to change my MongoDB version, so that I can use the features I need in my applications.
 ---
 

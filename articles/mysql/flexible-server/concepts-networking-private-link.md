@@ -8,6 +8,7 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
+ms.custom: sfi-image-nochange
 ---
 
 # Private Link for Azure Database for MySQL - Flexible Server

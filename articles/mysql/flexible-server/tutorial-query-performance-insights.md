@@ -9,7 +9,8 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
 ms.custom:
-  - devx-track-azurecli
+- devx-track-azurecli
+- sfi-image-nochange
 ---
 
 # Tutorial: Query Performance Insight for Azure Database for MySQL - Flexible Server

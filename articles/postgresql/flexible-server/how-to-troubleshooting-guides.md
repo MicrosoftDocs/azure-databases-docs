@@ -8,6 +8,7 @@ ms.date: 06/25/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Use the troubleshooting guides in Azure Database for PostgreSQL flexible server

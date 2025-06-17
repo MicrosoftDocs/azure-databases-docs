@@ -9,11 +9,12 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - devcenter
-  - devx-track-csharp
-  - mode-other
-  - devx-track-dotnet
+- mvc
+- devcenter
+- devx-track-csharp
+- mode-other
+- devx-track-dotnet
+- sfi-image-nochange
 ms.devlang: csharp
 ---
 

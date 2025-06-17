@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 01/30/2023
+ms.custom: sfi-image-nochange
 ---
 
 # How to ingest data by using Azure Stream Analytics in Azure Cosmos DB for PostgreSQL

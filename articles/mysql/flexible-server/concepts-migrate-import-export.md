@@ -8,6 +8,7 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Migrate your Azure Database for MySQL - Flexible Server database by using import and export
