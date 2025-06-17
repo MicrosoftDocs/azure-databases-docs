@@ -1,16 +1,16 @@
 ---
-  title: $toDate (date expression)
+  title: $toDate (type expression)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $toDate operator converts a value to a date.
+  description: The $toDate operator convert supported types (string, number, timestamp, etc.) to a proper Date object.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 06/16/2025
+  ms.date: 06/17/2025
 ---
 
-# $toDate (date expression)
+# $toDate (type expression)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
@@ -93,4 +93,4 @@ The query converts the timestamp field to a readable date format.
 
 ## Related content
 
-[!INCLUDE[Related content](../includes/related-content.md)]
+[!INCLUDE[Related content](../../includes/related-content.md)]
