@@ -203,7 +203,7 @@ replace_demo_item = {
 # The use of etags and if-match/if-none-match options allows users to run conditional replace operations
 # based on the etag value passed. When using if-match, the request will only succeed if the item's latest etag
 # matches the passed in value. For more on optimistic concurrency control, see the link below:
-# https://learn.microsoft.com/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency
+# /azure/cosmos-db/nosql/database-transactions-optimistic-concurrency
 replace_demo_item_if_match_operation = {
     "id": "68719519887",
     "category": "road-bikes",

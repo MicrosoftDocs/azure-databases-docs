@@ -17,7 +17,7 @@ ms.custom:
 
 DiskANN is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. Those characteristics make it a powerful tool for handling large volumes of data.
 
-To learn more about DiskANN, see [DiskANN: Vector Search for Web Scale Search and Recommendation](https://www.microsoft.com/en-us/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search/).
+To learn more about DiskANN, see [DiskANN: Vector Search for Web Scale Search and Recommendation](https://www.microsoft.com/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search/).
 
 The `pg_diskann` extension adds support for using DiskANN for efficient vector indexing and searching.
 
