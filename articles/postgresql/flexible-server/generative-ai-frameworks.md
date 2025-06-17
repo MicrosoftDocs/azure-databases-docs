@@ -16,6 +16,8 @@ ms.topic: concept-article
 
 Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages so that developers can use advanced AI capabilities within their applications. These orchestration packages can streamline the management and use of LLMs, embedding models, and databases in developing generative AI applications.
 
+## List of LLM orchestration packages
+
 | Integration tool | Description | Azure Database for PostgreSQL |
 | --- | --- | --- |
 | [Semantic Kernel](https://github.com/microsoft/semantic-kernel) | An open-source framework by Microsoft that combines AI agents with languages like C#, Python, and Java. It enables seamless orchestration of code and AI models. | [Python connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python) <br> [.NET connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-csharp) <br> [Java connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-java) |
