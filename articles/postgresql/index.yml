@@ -54,23 +54,23 @@ landingContent:
             url: flexible-server/concepts-backup-restore.md
           - text: Networking with Private Endpoint
             url: flexible-server/concepts-networking-private-link.md
-          - text: Create an Instance of Elastic cluster
-            url: flexible-server/quickstart-create-elastic-cluster-portal.md
+          - text: Storage concepts
+            url: flexible-server/concepts-storage.md
+          - text: Read replicas 
+            url: flexible-server/concepts-read-replicas.md
+          - text: Security concepts
+            url: flexible-server/concepts-security.md
       - linkListType: how-to-guide
         links:
           - text: Manage high availability
             url: flexible-server/how-to-configure-high-availability.md
-          - text: Restore to latest restore point
-            url: flexible-server/how-to-restore-latest-restore-point.md
           - text: Guide on scale compute
             url: flexible-server/how-to-scale-compute.md
-          - text: Restore to full backup (fast restore)
-            url: flexible-server/how-to-restore-full-backup.md
           - text: Restore to paired region (geo-restore)
             url: flexible-server/how-to-restore-paired-region.md
-          - text: Storage concepts
-            url: flexible-server/concepts-storage.md
-          
+          - text: Entra-id authentication guide
+            url: flexible-server/how-to-configure-sign-in-azure-ad-authentication.md
+                      
 # Card 3
   - title: Build apps and AI agents
     linkLists:
@@ -108,24 +108,24 @@ landingContent:
     linkLists:      
       - linkListType: concept
         links:
+          - text: Elastic Clusters 
+            url: flexible-server/quickstart-create-elastic-cluster-portal.md
           - text: Server parameters
             url: flexible-server/concepts-server-parameters.md
-          - text: Understand compute and storage
+          - text: Compute and storage
             url: flexible-server/concepts-compute-storage.md
-          - text: Security concepts
-            url: flexible-server/concepts-security.md
           - text: Identity and access management
             url: flexible-server/concepts-identity.md
           - text: Extensions
             url: flexible-server/concepts-extensions.md
           - text: Monitor
             url: flexible-server/concepts-monitoring.md
-          - text: Read replicas Overview
-            url: flexible-server/concepts-read-replicas.md 
           - text: Scheduled maintenance
             url: flexible-server/concepts-maintenance.md
           - text: Fabric mirroring
             url: flexible-server/concepts-fabric-mirroring.md
+          - text: Data Encryption
+            url: flexible-server/concepts-data-encryption.md
           - text: Overview of REST API
             url: https://learn.microsoft.com/rest/api/postgresql/
             
@@ -138,7 +138,7 @@ landingContent:
             url: migrate/migration-service/overview-migration-service-postgresql.md
           - text: Pre-Migration Validation
             url: migrate/migration-service/concepts-premigration-migration-service.md
-      - linkListType: tutorial
+      - linkListType: how-to-guide
         links:
           - text: Migrate from Azure Database for PostgreSQL - Single Server to Flexible Server
             url: migrate/migration-service/tutorial-migration-service-single-to-flexible.md        
