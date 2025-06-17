@@ -34,7 +34,7 @@ In certain scenarios, such as the need to deploy urgent security fixes or update
 
 <a id="locating-maintenance-details"></a>
 
-### Virtual Canary maintenance (preview)
+### Virtual Canary maintenance
 
 Virtual Canary is an experimental maintenance program that offers early access to updates. It enables customers to test workload compatibility with new Azure Database for MySQL versions and provide feedback on new features.
 

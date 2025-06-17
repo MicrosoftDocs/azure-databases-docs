@@ -11,10 +11,10 @@ ms.date: 08/27/2024
 ---
 
 # $skip (Aggregation Pipeline Stage)
-The $skip stage in the aggregation pipeline is used to skip a specified number of documents from the input and pass the remaining documents to the next stage in the pipeline. This is particularly useful for implementing pagination in queries and for controlling the subset of documents that subsequent stages in the pipeline operate on.
+The $skip stage in the aggregation pipeline is used to skip a specified number of documents from the input and pass the remaining documents to the next stage in the pipeline. The stage is useful for implementing pagination in queries and for controlling the subset of documents that subsequent stages in the pipeline operate on.
 
 ## Syntax
-The syntax for the $skip stage is straightforward. It accepts a single parameter which is the number of documents to skip.
+The syntax for the $skip stage is straightforward. It accepts a single parameter, which is the number of documents to skip.
 
 ```json
 {
@@ -28,7 +28,7 @@ The syntax for the $skip stage is straightforward. It accepts a single parameter
 | --- | --- |
 | **`number`** | The number of documents to skip before passing the remaining documents to the next stage. |
 
-## Example(s)
+## Examples
 ### Example 1: Skipping Documents in a Collection
 Suppose we have a collection named stores with documents representing various store details. To skip the first 2 documents and return the rest, you can use the following aggregation pipeline:
 
