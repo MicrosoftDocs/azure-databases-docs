@@ -1,6 +1,6 @@
 ---
 title: Use LangChain with Azure Database for PostgreSQL
-description: Integrate Azure Database for PostgreSQL with AI and LangChain, so that you can use advanced AI capabilities within your applications.
+description: Integrate Azure Database for PostgreSQL with AI and LangChain, so that you can use advanced AI capabilities in your applications.
 author: abeomor
 ms.author: abeomorogbe
 ms.date: 03/31/2025
@@ -14,9 +14,9 @@ ms.topic: how-to
 
 # Use LangChain with Azure Database for PostgreSQL
 
-Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/). This integration enables developers use advanced AI capabilities within their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases so that generative AI applications are easier to develop.
+Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/). This integration enables developers use advanced AI capabilities in their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases so that generative AI applications are easier to develop.
 
-This article shows you how to use the integrated [vector database](how-to-use-pgvector.md) in Azure Database for PostgreSQL to store and manage documents in collections with LangChain. It also shows how to create indices and perform vector search queries by using nearest-neighbor algorithms such as Cosine Distance, L2 (Euclidean distance), and IP (inner product) to locate documents close to the query vectors.
+This article shows you how to use the integrated [vector database](how-to-use-pgvector.md) in Azure Database for PostgreSQL to store and manage documents in collections with LangChain. It also shows you how to create indices and perform vector search queries by using nearest-neighbor algorithms such as cosine distance, L2 distance (Euclidean distance), and inner product to locate documents close to the query vectors.
 
 ## Vector support
 
@@ -31,13 +31,13 @@ You can use Azure Database for PostgreSQL to efficiently store and query million
 
 Azure Database for PostgreSQL supports password-based and [Microsoft Entra](concepts-azure-ad-authentication.md) (formerly Azure Active Directory) authentication.
 
-Microsoft Entra authentication allows you to use a Microsoft Entra identity to authenticate to your PostgreSQL server. The Microsoft Entra ID eliminates the need to manage separate usernames and passwords for your database users. It allows you to use the same security mechanisms that you use for other Azure services.
+Microsoft Entra authentication allows you to use Microsoft Entra ID to authenticate to your PostgreSQL server. Microsoft Entra ID eliminates the need to manage separate usernames and passwords for your database users. It allows you to use the same security mechanisms that you use for other Azure services.
 
-This article is set up to use either authentication method. You can configure whether or not to use Microsoft Entra authentication later in the article.
+In this article, you can use either authentication method.
 
 ## Setup
 
-Azure Database for PostgreSQL uses the open-source [LangChain Postgres support](https://python.langchain.com/docs/integrations/vectorstores/pgvector/) to connect to Azure Database for PostgreSQL. First download the partner package:
+Azure Database for PostgreSQL uses the open-source [LangChain Postgres support](https://python.langchain.com/docs/integrations/vectorstores/pgvector/) to connect to Azure Database for PostgreSQL. First, download the partner package:
 
 ```python
 %pip install -qU langchain_postgres
@@ -47,7 +47,7 @@ Azure Database for PostgreSQL uses the open-source [LangChain Postgres support](
 
 ### Enable pgvector on Azure Database for PostgreSQL
 
-For more information about the following setup tasks, see [enablement instructions](how-to-use-pgvector.md) for Azure Database for PostgreSQL.
+For information about enabling pgvector, see [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md).
 
 ### Set up credentials
 
@@ -97,19 +97,19 @@ embeddings = AzureOpenAIEmbeddings(
 
 ### Use Microsoft Entra authentication
 
-The following sections contain functions that set up LangChain to use Microsoft Entra authentication. It provides a function `get_token_and_username` that retrieves tokens for the Azure Database for PostgreSQL service using `DefaultAzureCredential` from the `azure.identity` library. It ensures the sqlalchemy engine has a valid token with which to create new connections. It also parses the token, which is a Java Web Token (JWT), to extract the username that is used to connect to the database.
+The following sections contain functions that set up LangChain to use Microsoft Entra authentication. The function `get_token_and_username` retrieves tokens for the Azure Database for PostgreSQL service by using `DefaultAzureCredential` from the `azure.identity` library. It ensures that the SQLAlchemy engine has a valid token with which to create new connections. It also parses the token, which is a Java Web Token (JWT), to extract the username that's used to connect to the database.
 
-The create_postgres_engine function creates a sqlalchemy `Engine` that dynamically sets the username and password based on the token fetched from the TokenManager. This `Engine` can be passed into the `connection` parameter of the `PGVector` LangChain VectorStore.
+The `create_postgres_engine` function creates a SQLAlchemy engine that dynamically sets the username and password based on the token fetched from the token manager. This engine can be passed into the `connection` parameter of the `PGVector` LangChain vector store.
 
 #### Sign in to Azure
 
-To sign in to Azure, ensure you have the [Azure CLI](/cli/azure/install-azure-cli) installed. You need to run the following command in your terminal:
+To sign in to Azure, ensure that you have the [Azure CLI](/cli/azure/install-azure-cli) installed. Run the following command in your terminal:
 
 ``` bash
 az login
 ```
 
-Once you sign in, the following code fetches the token.
+After you sign in, the following code fetches the token:
 
 ``` python
 import base64
@@ -136,7 +136,7 @@ def decode_jwt(token):
 
 
 def get_token_and_username():
-    """Fetches a token returns the username and token."""
+    """Fetches a token and returns the username and token."""
     # Fetch a new token and extract the username
     token = get_credential().get_token(
         "https://ossrdbms-aad.database.windows.net/.default"
@@ -159,7 +159,7 @@ def create_postgres_engine():
         database=os.environ["DBNAME"],
     )
 
-    # Create a sqlalchemy engine
+    # Create a SQLAlchemy engine
     engine = create_engine(db_url, echo=True)
 
     # Listen for the connection event to inject dynamic credentials
@@ -177,8 +177,7 @@ def create_postgres_engine():
 
 ### Use password authentication
 
-If not using Microsoft Entra authentication, the `get_connection_uri` provides a connection URI that pulls the username and password from environment
-variables.
+If you're not using Microsoft Entra authentication, `get_connection_uri` provides a connection URI that pulls the username and password from environment variables:
 
 ``` python
 import urllib.parse
@@ -192,8 +191,8 @@ def get_connection_uri():
     password = os.environ["DBPASSWORD"]
     sslmode = os.environ["SSLMODE"]
 
-    # Construct connection URI
-    # Use psycopg 3!
+    # Construct the connection URI
+    # Use Psycopg 3!
     db_uri = (
         f"postgresql+psycopg://{dbuser}:{password}@{dbhost}/{dbname}?sslmode={sslmode}"
     )
@@ -209,7 +208,7 @@ from langchain_postgres.vectorstores import PGVector
 
 collection_name = "my_docs"
 
-# The connection is either a sqlalchemy engine or a connection URI
+# The connection is either a SQLAlchemy engine or a connection URI
 connection = create_postgres_engine() if USE_ENTRA_AUTH else get_connection_uri()
 
 vector_store = PGVector(
@@ -224,7 +223,7 @@ vector_store = PGVector(
 
 ### Add items to the vector store
 
-Adding documents by ID over-writes any existing documents that match that ID.
+Adding documents by ID overwrites any existing documents that match that ID.
 
 ``` python
 docs = [
@@ -293,31 +292,31 @@ vector_store.delete(ids=["3"])
 
 ## Queries to the vector store
 
-When your vector store has been created and the relevant documents has been added, you can query the vector store in your chain or agent.
+After you create your vector store and add the relevant documents, you can query the vector store in your chain or agent.
 
 ### Filtering support
 
-The vector store supports a set of filters that can be applied against the metadata fields of the documents.
+The vector store supports a set of filters that can be applied against the metadata fields of the documents:
 
 | Operator | Meaning/Category                |
 | -------- | ------------------------------- |
-| $eq      | Equality (==)                   |
-| $ne      | Inequality (!=)                 |
-| $lt      | Less than (<)                   |
-| $lte     | Less than or equal (<=)         |
-| $gt      | Greater than (>)                |
-| $gte     | Greater than or equal (>=)      |
-| $in      | Special Cased (in)              |
-| $nin     | Special Cased (not in)          |
-| $between | Special Cased (between)         |
-| $like    | Text (like)                     |
-| $ilike   | Text (case-insensitive like)    |
-| $and     | Logical (and)                   |
-| $or      | Logical (or)                    |
+| `$eq`      | Equality (==)                   |
+| `$ne`      | Inequality (!=)                 |
+| `$lt`      | Less than (<)                   |
+| `$lte`     | Less than or equal (<=)         |
+| `$gt`      | Greater than (>)                |
+| `$gte`     | Greater than or equal (>=)      |
+| `$in`      | Special cased (in)              |
+| `$nin`     | Special cased (not in)          |
+| `$between` | Special cased (between)         |
+| `$like`    | Text (like)                     |
+| `$ilike`   | Text (case-insensitive like)    |
+| `$and`     | Logical (and)                   |
+| `$or`      | Logical (or)                    |
 
 ### Direct query
 
-Performing a simple similarity search can be done as follows:
+You can perform a simple similarity search as follows:
 
 ``` python
 results = vector_store.similarity_search(
@@ -334,7 +333,7 @@ for doc in results:
     * the library hosts a weekly story time for kids [{'id': 9, 'topic': 'reading', 'location': 'library'}]
 ```
 
-If you provide a dict with multiple fields, but no operators, the top level is interpreted as a logical **AND** filter
+If you provide a dictionary with multiple fields but no operators, the top level is interpreted as a logical `AND` filter:
 
 ``` python
 vector_store.similarity_search(
@@ -367,7 +366,7 @@ vector_store.similarity_search(
  Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
 ```
 
-If you want to execute a similarity search and receive the corresponding scores you can run:
+If you want to execute a similarity search and receive the corresponding scores, you can run:
 
 ``` python
 results = vector_store.similarity_search_with_score(query="cats", k=1)
@@ -379,11 +378,11 @@ for doc, score in results:
 * [SIM=0.528338] there are cats in the pond [{'id': 1, 'topic': 'animals', 'location': 'pond'}]
 ```
 
-For a full list of the different searches you can execute on a `PGVector` vector store, refer to the [API reference](https://python.langchain.com/api_reference/postgres/vectorstores/langchain_postgres.vectorstores.PGVector.html).
+For a full list of the searches that you can execute on a `PGVector` vector store, refer to the [API reference](https://python.langchain.com/api_reference/postgres/vectorstores/langchain_postgres.vectorstores.PGVector.html).
 
 ### Transformation into a retriever
 
-You can also transform the vector store into a retriever for easier usage in your chains.
+You can also transform the vector store into a retriever for easier usage in your chains:
 
 ``` python
 retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={"k": 1})
@@ -396,11 +395,11 @@ retriever.invoke("kitty")
 
 ## Current limitations
 
-- langchain_postgres works only with psycopg3. Update your connection strings from `postgresql+psycopg2://...` to `postgresql+psycopg://langchain:langchain@...`
-- The schema of the embedding store and collection has changed to make add_documents work correctly with user specified IDs.
-- One has to pass an explicit connection object now.
+- `langchain_postgres` works only with Psycopg 3 (`psycopg3`). Update your connection strings from `postgresql+psycopg2://...` to `postgresql+psycopg://langchain:langchain@...`.
+- The schema of the embedding store and collection changed to make `add_documents` work correctly with user specified IDs.
+- You have to pass an explicit connection object now.
 
-Currently, there is **no mechanism** that supports easy data migration on schema changes. So any schema changes in the vector store require the user to recreate the tables and readd the documents.
+Currently, no mechanism supports easy data migration on schema changes. Any schema changes in the vector store require you to re-create the tables and add the documents again.
 
 ## Related content
 
