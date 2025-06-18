@@ -34,6 +34,10 @@ If you have data residency requirements that require you to keep all your data i
 
 Azure Policy is a service that you can use to create, assign, and manage policies that apply rules to Azure resources. Azure Policy helps you to keep these resources compliant with your corporate standards and service level agreements. For more information, see how to use [Azure Policy](policy.md) to implement governance and controls for Azure Cosmos DB resources
 
+> [!IMPORTANT]
+> Azure Cloud Shell service is a non-regional service. 
+> It doesn't store any customer data, but when used through the Azure Portal may process shell commands and responses outside of the Geo for the sole purpose of providing the Shell experience inside the Portal.
+
 ## Next steps
 
 * Configure and manage periodic backup using [Azure portal](periodic-backup-restore-introduction.md)
