@@ -87,7 +87,7 @@ The meta-command output shows that the `azure_ai` extension creates three schema
 | `azure_openai` | Contains the UDFs that enable calling an Azure OpenAI endpoint. |
 | `azure_cognitive` | Provides UDFs and composite types related to integrating the database with Azure Cognitive Services. |
 
-The functions and types are all associated with one of the schemas. To review the functions defined in the `azure_ai` schema, use the `\df` meta-command. Specify the schema whose functions should be displayed. The `\x auto` commands before the `\df` command toggle the expanded display on and off automatically, to make the output from the command easier to view in Azure Cloud Shell.
+The functions and types are all associated with one of the schemas. To review the functions defined in the `azure_ai` schema, use the `\df` meta-command. Specify the schema whose functions should be displayed. The `\x auto` commands before the `\df` command turn the expanded display on and off automatically, to make the output from the command easier to view in Azure Cloud Shell.
 
 ```sql
 \x auto
@@ -197,7 +197,7 @@ The first argument is the `deployment_name` value, which was assigned when your 
 
 1. Go to your Azure OpenAI resource in the Azure portal.
 
-1. On the left menu, under **Resource Management** select **Model deployments** to open the Azure AI Foundry portal.
+1. On the left menu, under **Resource Management**, select **Model deployments** to open the Azure AI Foundry portal.
 
 1. In the Azure AI Foundry portal, select **Deployments**. On the **Deployments** pane, copy the **Deployment name** value that's associated with the `text-embedding-ada-002` model deployment.
 
@@ -216,7 +216,7 @@ Run the following query to view the embedding that's generated for the first rec
 SELECT bill_vector FROM bill_summaries LIMIT 1;
 ```
 
-Each embedding is a vector of floating point numbers. The distance between two embeddings in the vector space is correlated with semantic similarity between two inputs in the original format.
+Each embedding is a vector of floating-point numbers. The distance between two embeddings in the vector space is correlated with semantic similarity between two inputs in the original format.
 
 ### Perform a vector similarity search
 

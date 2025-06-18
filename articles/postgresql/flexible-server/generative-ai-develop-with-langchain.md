@@ -20,7 +20,7 @@ This article shows you how to use the integrated [vector database](how-to-use-pg
 
 ## Vector support
 
-You can use Azure Database for PostgreSQL to efficiently store and query millions of vector embeddings in PostgreSQL. It can help you scale your AI use cases from proof of concept to production. The service:
+You can use Azure Database for PostgreSQL to efficiently store and query millions of vector embeddings in PostgreSQL. The service can help you scale your AI use cases from proof of concept to production. It offers these benefits:
 
 - Provides a familiar SQL interface for querying vector embeddings and relational data.
 - Boosts `pgvector` with a faster and more precise similarity search across more than 100 million vectors by using the [DiskANN indexing algorithm](https://aka.ms/pg-diskann-docs).
@@ -47,11 +47,11 @@ Azure Database for PostgreSQL uses the open-source [LangChain Postgres support](
 
 ### Enable pgvector on Azure Database for PostgreSQL
 
-For information about enabling pgvector, see [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md).
+See [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md).
 
 ### Set up credentials
 
-You need your Azure Database for PostgreSQL [connection details](quickstart-create-server-portal.md#get-the-connection-information) and add them as environment variables in the following commands.
+You need to get your Azure Database for PostgreSQL [connection details](quickstart-create-server-portal.md#get-the-connection-information) and add them as environment variables.
 
 Set the `USE_ENTRA_AUTH` flag to `True` if you want to use Microsoft Entra authentication. If you're using Microsoft Entra authentication, you need to supply the only host and database names. If you're using password authentication, you also need to set the username and password.
 
@@ -97,7 +97,7 @@ embeddings = AzureOpenAIEmbeddings(
 
 ### Use Microsoft Entra authentication
 
-The following sections contain functions that set up LangChain to use Microsoft Entra authentication. The function `get_token_and_username` retrieves tokens for the Azure Database for PostgreSQL service by using `DefaultAzureCredential` from the `azure.identity` library. It ensures that the SQLAlchemy engine has a valid token with which to create new connections. It also parses the token, which is a Java Web Token (JWT), to extract the username that's used to connect to the database.
+The following sections contain functions that set up LangChain to use Microsoft Entra authentication. The function `get_token_and_username` retrieves tokens for the Azure Database for PostgreSQL service by using `DefaultAzureCredential` from the `azure.identity` library. It ensures that the SQLAlchemy engine has a valid token with which to create new connections. It also parses the token, which is a JSON Web Token (JWT), to extract the username that's used to connect to the database.
 
 The `create_postgres_engine` function creates a SQLAlchemy engine that dynamically sets the username and password based on the token fetched from the token manager. This engine can be passed into the `connection` parameter of the `PGVector` LangChain vector store.
 
@@ -398,13 +398,12 @@ retriever.invoke("kitty")
 - `langchain_postgres` works only with Psycopg 3 (`psycopg3`). Update your connection strings from `postgresql+psycopg2://...` to `postgresql+psycopg://langchain:langchain@...`.
 - The schema of the embedding store and collection changed to make `add_documents` work correctly with user specified IDs.
 - You have to pass an explicit connection object now.
-
-Currently, no mechanism supports easy data migration on schema changes. Any schema changes in the vector store require you to re-create the tables and add the documents again.
+- Currently, there is *no mechanism* that supports easy data migration on schema changes. Any schema changes in the vector store require you to re-create the tables and add the documents again.
 
 ## Related content
 
 - [LangChain PGVector reference](https://python.langchain.com/docs/integrations/vectorstores/pgvector/)
-- [Generative AI Frameworks and Azure Database for PostgreSQL](generative-ai-frameworks.md)
+- [Azure Database for PostgreSQL integrations for AI applications](generative-ai-frameworks.md)
 - [AI agents in Azure Database for PostgreSQL](generative-ai-agents.md)
 - [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md)
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md)

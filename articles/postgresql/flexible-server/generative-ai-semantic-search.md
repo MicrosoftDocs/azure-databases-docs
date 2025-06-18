@@ -32,7 +32,7 @@ In this tutorial, you:
 > - Generate the embedding for any input search query.
 > - Search for the vector data field and list the nearest neighbors.
 > - Run the results through appropriate relevance, ranking, and personalization models to produce the final ranking. In the absence of such models, rank the results in decreasing dot-product order.
-> - Monitor the model, results quality, and business metrics, such as click-through rate and dwell time. Incorporate feedback mechanisms to debug and improve the search stack from data quality, data freshness, and personalization to user experience.
+> - Monitor the model, results quality, and business metrics, such as click-through rate and dwell time. Incorporate feedback mechanisms to debug and improve the search stack, from data quality, data freshness, and personalization to user experience.
 
 ## Prerequisites
 
@@ -92,7 +92,7 @@ CREATE TABLE public.recipes(
 
 ## Import the data
 
-Set the following environment variable on the client window to set encoding to UTF-8. This step is necessary because this particular dataset uses the Windows-1252 encoding.
+Set the following environment variable on the client window to set encoding to UTF-8. This step is necessary because this particular dataset uses Windows-1252 encoding.
 
 ```cmd
 Rem on Windows

@@ -18,9 +18,9 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This hands-on tutorial shows you how to build a recommender application by using Azure Database for PostgreSQL and Azure OpenAI. Recommendations have applications in different domains. Service providers frequently tend to provide recommendations for products and services that they offer based on prior history and contextual information collected from the customer and environment.
+This hands-on tutorial shows you how to build a recommender application by using Azure Database for PostgreSQL and Azure OpenAI. Recommendations have applications in different domains. Service providers tend to provide recommendations for products and services that they offer based on prior history and contextual information collected from the customer and environment.
 
-There are various ways to model recommendation systems. This tutorial explores the simplest form: a recommendation based one product that corresponds to (for example) a prior purchase. This tutorial uses the recipe dataset that the [tutorial for semantic search](generative-ai-semantic-search.md) uses. The recommendation is for recipes based on a recipe that a customer liked or searched for in the past.
+There are various ways to model recommendation systems. This tutorial explores the simplest form: a recommendation based on a product that corresponds to (for example) a prior purchase. This tutorial uses the recipe dataset that the [tutorial for semantic search](generative-ai-semantic-search.md) uses. The recommendation is for recipes based on a recipe that a customer liked or searched for in the past.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ There are various ways to model recommendation systems. This tutorial explores t
 
 Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server, you need to [add them to your allowlist](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
 
-Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database where you want the extension to be available.
+Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. Repeat the command separately for every database where you want the extension to be available.
 
 ```sql
 CREATE EXTENSION azure_ai;
@@ -80,7 +80,7 @@ CREATE TABLE public.recipes(
 
 ## Import the data
 
-Set the following environment variable on the client window to set encoding to UTF-8. This step is necessary because this particular dataset uses the Windows-1252 encoding.
+Set the following environment variable on the client window to set encoding to UTF-8. This step is necessary because this particular dataset uses Windows-1252 encoding.
 
 ```cmd
 Rem on Windows

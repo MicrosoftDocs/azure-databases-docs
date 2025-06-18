@@ -24,7 +24,7 @@ Generative AI refers to a class of AI algorithms that can learn from existing mu
 
 Generative AI is used in image and music synthesis and in healthcare, along with common tasks such as text autocompletion, text summarization, and translation. Generative AI techniques enable features on data such as clustering and segmentation, semantic search and recommendations, topic modeling, question answering, and anomaly detection.
 
-The following video demonstrates the use of generative AI with Azure Database for PostgreSQL and the [`pgvector` extension](how-to-use-pgvector.md), which can help you understand the concepts in this article:
+The following video demonstrates the use of generative AI with Azure Database for PostgreSQL and the [`pgvector` extension](how-to-use-pgvector.md), which can help you understand the concepts in this article.
 
 >[!Video https://www.youtube.com/embed/em0PKDGzzlQ?si=cT0VVzVv_2xV1Mi_]
 
@@ -68,7 +68,7 @@ A vector is a mathematical concept that's used in linear algebra and geometry to
 
 Key attributes and operations of vectors include:
 
-- **Magnitude**: The length or size of a vector, often denoted as its norm, represents the magnitude of the data that it represents. It's a non-negative real number.
+- **Magnitude**: The length or size of a vector, often denoted as its norm, represents the magnitude of the data. It's a non-negative real number.
 - **Direction**: The direction indicates the orientation or angle of the quantity that it represents, in relation to a reference point or coordinate system.
 - **Components**: A vector can be decomposed into its components along different axes or dimensions. In a 2D Cartesian coordinate system, a vector can be represented as (*x*, *y*), where *x* and *y* are its components along the x-axis and y-axis, respectively. A vector in *n* dimensions is an *n*-tuple (`{x1, x2… xn}`).
 - **Addition and scalar multiplication**: Vectors can be added together to form new vectors, and they can be multiplied by scalars (real numbers).
@@ -83,7 +83,7 @@ Key characteristics of vector databases include:
 - **Vector storage**: Vector databases store data points as vectors with multiple dimensions. Each dimension represents a feature or attribute of the data point. These vectors can represent a wide range of data types, including numerical, categorical, and textual data.
 - **Efficient vector operations**: Vector databases are optimized for performing vector operations, such as vector addition, subtraction, dot products, and similarity calculations (for example, cosine similarity or Euclidean distance).
 - **Efficient search**: Efficient indexing mechanisms are crucial for quick retrieval of similar vectors. Vector databases use various indexing mechanisms to enable fast retrieval.
-- **Query languages**: Vector databases provide query languages and APIs that are tailored for vector operations and similarity search. These query languages allow users to express their search criteria efficiently.
+- **Query languages**: Vector databases provide query languages and APIs that are tailored for vector operations and similarity searches. These query languages allow users to express their search criteria efficiently.
 - **Similarity search**: Vector databases excel at similarity searches, which allow users to find data points that are similar to a provided query point. This characteristic is valuable in search and recommendation systems.
 - **Geospatial data handling**: Some vector databases are designed for geospatial data, so they're well suited for applications like location-based services, geographic information systems (GISs), and map-related tasks.
 - **Support for diverse data types**: Vector databases can store and manage various types of data, such as vectors, images, and text.
