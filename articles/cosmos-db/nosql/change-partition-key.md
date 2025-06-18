@@ -5,7 +5,7 @@ description: Change partition key in Azure Cosmos DB for NOSQL API.
 author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/03/2024
 ---
 

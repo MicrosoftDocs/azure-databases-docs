@@ -3,7 +3,7 @@ title: How to meet data residency requirements in Azure Cosmos DB
 description: learn how to meet data residency requirements in Azure Cosmos DB for your data and backups to remain in a single region.
 author: kanshiG
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: legal
 ms.date: 04/05/2021
 ms.author: govindk
 ---

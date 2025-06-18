@@ -6,7 +6,7 @@ author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/18/2024
 ms.custom: references_regions
 # CustomerIntent: As a PM, we wanted to offer our customers a feature that allows database adapts immediately to changing workloads, eliminating performance bottlenecks 

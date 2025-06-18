@@ -6,7 +6,7 @@ author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/09/2025
 appliesto:
   - ✅ MongoDB (vCore)

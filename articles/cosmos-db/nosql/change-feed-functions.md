@@ -6,7 +6,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: build-2023
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/10/2023
 ---
 

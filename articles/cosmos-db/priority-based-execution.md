@@ -6,7 +6,7 @@ author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
 ms.custom: ignite-2023, sfi-image-nochange
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/15/2023
 ---
 

@@ -3,7 +3,7 @@ title: How to choose between manual and autoscale on Azure Cosmos DB
 description: Learn how to choose between standard (manual) provisioned throughput and autoscale provisioned throughput for your workload.
 author: deborahc
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/26/2024
 ms.author: dech
 ---

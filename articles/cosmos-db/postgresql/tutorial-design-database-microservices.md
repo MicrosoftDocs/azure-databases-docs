@@ -5,7 +5,7 @@ ms.author: adamwolk
 author: mulander
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/30/2023
 ---
 

@@ -6,7 +6,7 @@ author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/07/2024
 ---
 
