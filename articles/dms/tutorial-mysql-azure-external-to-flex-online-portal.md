@@ -9,7 +9,8 @@ ms.date: 05/05/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS via the Azure portal

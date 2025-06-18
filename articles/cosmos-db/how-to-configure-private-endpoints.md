@@ -6,7 +6,7 @@ ms.author: jawelton
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 04/24/2023
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.custom: devx-track-azurecli, devx-track-azurepowershell, sfi-image-nochange
 ---
 
 # Configure Azure Private Link for an Azure Cosmos DB account

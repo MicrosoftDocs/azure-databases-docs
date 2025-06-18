@@ -8,6 +8,7 @@ ms.date: 12/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
+ms.custom: sfi-image-nochange
 ---
 # Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server
 

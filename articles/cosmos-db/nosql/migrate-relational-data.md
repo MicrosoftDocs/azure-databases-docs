@@ -8,8 +8,9 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
 ms.devlang: python
-# ms.devlang: python, scala
 ms.date: 02/27/2023
+ms.custom: sfi-image-nochange, sfi-ropc-blocked
+# ms.devlang: python, scala
 ---
 
 # Migrate one-to-few relational data into an Azure Cosmos DB for NoSQL account

@@ -8,6 +8,7 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: troubleshooting
+ms.custom: sfi-image-nochange
 ---
 
 # Troubleshoot query performance in Azure Database for MySQL - Flexible Server

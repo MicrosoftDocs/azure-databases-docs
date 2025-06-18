@@ -6,6 +6,7 @@ ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 04/18/2022
 ms.author: govindk
+ms.custom: sfi-image-nochange
 ---
 
 # Audit the point-in-time restore action for continuous backup mode in Azure Cosmos DB

@@ -8,6 +8,7 @@ ms.date: 02/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Restore a deleted Azure Database for MySQL

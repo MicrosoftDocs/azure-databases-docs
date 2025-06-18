@@ -8,6 +8,7 @@ ms.date: 09/29/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
+ms.custom: sfi-image-nochange
 ---
 
 # Query Performance Insight in Azure Database for PostgreSQL flexible server

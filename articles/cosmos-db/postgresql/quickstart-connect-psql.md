@@ -6,7 +6,7 @@ author: jonels-msft
 recommendations: false
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
-ms.custom: mvc, mode-ui
+ms.custom: mvc, mode-ui, sfi-ropc-blocked
 ms.topic: quickstart
 ms.date: 10/02/2023
 ---

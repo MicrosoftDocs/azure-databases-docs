@@ -8,9 +8,11 @@ ms.date: 06/09/2025
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.custom:
-  - mode-ui
-  - ignite-2023
-#customer intent: As a developer, I want to create create Apache Cassandra clusters using Azure Managed Instance for Apache Cassandra by using the Azure portal. 
+- mode-ui
+- ignite-2023
+- sfi-image-nochange
+- sfi-ropc-blocked
+#customer intent: As a developer, I want to create create Apache Cassandra clusters using Azure Managed Instance for Apache Cassandra by using the Azure portal.
 ---
 
 # Quickstart: Create an Azure Managed Instance for Apache Cassandra cluster from the Azure portal

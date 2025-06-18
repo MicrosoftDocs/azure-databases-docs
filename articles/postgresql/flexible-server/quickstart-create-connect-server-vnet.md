@@ -9,9 +9,10 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - mode-ui
-  - linux-related-content
+- mvc
+- mode-ui
+- linux-related-content
+- sfi-image-nochange
 ---
 
 # Connect Azure Database for PostgreSQL flexible server with the private access connectivity method

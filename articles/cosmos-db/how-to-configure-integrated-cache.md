@@ -7,6 +7,7 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 10/08/2024
 ms.author: jucocchi
+ms.custom: sfi-image-nochange
 ---
 
 # How to configure the Azure Cosmos DB integrated cache

@@ -9,9 +9,10 @@ ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 12/03/2024
 ms.collection:
-  - ce-skilling-ai-copilot
+- ce-skilling-ai-copilot
 appliesto:
-  - ✅ MongoDB vCore
+- ✅ MongoDB vCore
+ms.custom: sfi-ropc-blocked
 ---
 
 # Retrieval-augmented generation (RAG) with vCore-based Azure Cosmos DB for MongoDB

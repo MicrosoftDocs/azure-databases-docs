@@ -6,7 +6,7 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 08/25/2022
 ms.author: jawelton
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.custom: devx-track-azurecli, devx-track-azurepowershell, sfi-image-nochange
 ---
 
 # Configure access to Azure Cosmos DB from virtual networks (VNet)

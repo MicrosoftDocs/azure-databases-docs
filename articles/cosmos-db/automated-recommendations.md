@@ -6,6 +6,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2021
+ms.custom: sfi-image-nochange
 ---
 
 # Automated recommendations for Azure Cosmos DB

@@ -9,10 +9,11 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc,
-  - mode-api
-  - devx-track-go
-  - linux-related-content
+- mvc,
+- mode-api
+- devx-track-go
+- linux-related-content
+- sfi-ropc-nochange
 ms.devlang: golang
 ---
 

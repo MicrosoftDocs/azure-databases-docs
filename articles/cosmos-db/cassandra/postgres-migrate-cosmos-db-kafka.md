@@ -7,6 +7,7 @@ ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 04/02/2022
 ms.author: thvankra
+ms.custom: sfi-ropc-blocked
 ---
 
 # Migrate data from PostgreSQL to Azure Cosmos DB for Apache Cassandra account using Apache Kafka

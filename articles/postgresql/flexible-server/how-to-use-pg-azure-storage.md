@@ -9,7 +9,8 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: reference
 ms.custom:
-  - ignite-2024
+- ignite-2024
+- sfi-image-nochange
 ---
 
 # Import and export data using azure_storage extension in Azure Database for PostgreSQL flexible server

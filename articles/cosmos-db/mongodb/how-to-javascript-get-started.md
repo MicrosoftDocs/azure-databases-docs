@@ -8,7 +8,7 @@ ms.subservice: mongodb
 ms.devlang: javascript
 ms.topic: how-to
 ms.date: 06/16/2025
-ms.custom: devx-track-js, devguide-js, cosmos-db-dev-journey
+ms.custom: devx-track-js, devguide-js, cosmos-db-dev-journey, sfi-ropc-blocked
 ---
 
 # Get started with Azure Cosmos DB for MongoDB using JavaScript

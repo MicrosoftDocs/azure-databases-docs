@@ -9,11 +9,12 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - mode-api
-  - devx-track-python
-  - passwordless-python
-ms.devlang: python   
+- mvc
+- mode-api
+- devx-track-python
+- passwordless-python
+- sfi-ropc-blocked
+ms.devlang: python
 ---
 
 # Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL flexible server

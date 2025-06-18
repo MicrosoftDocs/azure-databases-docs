@@ -9,8 +9,9 @@ ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.custom:
-  - devx-track-extended-java
-  - devx-track-azurepowershell
+- devx-track-extended-java
+- devx-track-azurepowershell
+- sfi-image-nochange
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Data Migration with MySQL Workbench

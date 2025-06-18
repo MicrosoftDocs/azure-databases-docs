@@ -8,7 +8,7 @@ ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.devlang: spark-scala
-ms.custom: kr2b-contr-experiment
+ms.custom: kr2b-contr-experiment, sfi-ropc-blocked
 ---
 
 # Access Azure Cosmos DB for Apache Cassandra from Spark on YARN with HDInsight

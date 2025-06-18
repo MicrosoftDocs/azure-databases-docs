@@ -6,7 +6,8 @@ ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
-  - build-2024
+- build-2024
+- sfi-image-nochange
 ---
 
 You can migrate using the Azure portal.

@@ -9,7 +9,8 @@ ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: how-to
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 
 # Redeploy SSIS packages to Azure SQL Database with Azure Database Migration Service

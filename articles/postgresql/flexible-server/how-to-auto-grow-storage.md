@@ -8,6 +8,7 @@ ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 #customer intent: As a user, I want to learn how to configure storage autogrow in an Azure Database for PostgreSQL flexible server.
 ---
 

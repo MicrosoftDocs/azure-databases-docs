@@ -6,7 +6,7 @@ ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: thvankra
-ms.custom: devx-track-azurecli, seo-azure-cli, devx-track-arm-template
+ms.custom: devx-track-azurecli, seo-azure-cli, devx-track-arm-template, sfi-ropc-blocked
 keywords: azure resource manager cli
 ---
 

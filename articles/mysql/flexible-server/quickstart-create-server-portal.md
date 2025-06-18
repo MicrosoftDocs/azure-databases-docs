@@ -9,8 +9,9 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - mode-ui
+- mvc
+- mode-ui
+- sfi-image-nochange
 ---
 
 # Quickstart: Create an instance of Azure Database for MySQL with the Azure portal

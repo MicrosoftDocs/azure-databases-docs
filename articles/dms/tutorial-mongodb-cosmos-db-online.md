@@ -9,9 +9,10 @@ ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
 ms.custom:
-  - ignite-2023
+- ignite-2023
+- sfi-image-nochange
 ---
 
 # Tutorial: Migrate MongoDB to Azure Cosmos DB for MongoDB RU online using Azure Database Migration Service

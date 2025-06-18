@@ -7,6 +7,7 @@ ms.reviewer: sidandrews
 ms.date: 06/06/2025
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: overview
+ms.custom: sfi-image-nochange
 #customer intent: As a database administrator, I want to understand the management operations and features provided by Azure Managed Instance for Apache Cassandra.
 ---
 
