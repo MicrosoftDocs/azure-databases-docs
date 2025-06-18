@@ -9,7 +9,8 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ms.custom:
-  - ignite-2023
+- ignite-2023
+- sfi-ropc-nochange
 ---
 
 # Logical replication and logical decoding in Azure Database for PostgreSQL flexible server

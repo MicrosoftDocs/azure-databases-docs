@@ -8,6 +8,7 @@ ms.date: 09/18/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Restore a dropped Azure Database for PostgreSQL flexible server instance

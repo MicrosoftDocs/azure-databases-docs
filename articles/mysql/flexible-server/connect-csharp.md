@@ -9,10 +9,12 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - devx-track-csharp
-  - mode-other
-  - devx-track-dotnet
+- mvc
+- devx-track-csharp
+- mode-other
+- devx-track-dotnet
+- sfi-image-nochange
+- sfi-ropc-nochange
 ms.devlang: csharp
 ---
 

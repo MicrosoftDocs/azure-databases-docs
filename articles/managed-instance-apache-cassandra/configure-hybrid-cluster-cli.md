@@ -8,9 +8,10 @@ ms.date: 06/09/2025
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.custom:
-  - mode-other
-  - devx-track-azurecli
-  - ignite-2023
+- mode-other
+- devx-track-azurecli
+- ignite-2023
+- sfi-image-nochange
 ms.devlang: azurecli
 #customer intent: As a developer, I want to configure hybrid clusters using Azure Managed Instance for Apache Cassandra.
 ---

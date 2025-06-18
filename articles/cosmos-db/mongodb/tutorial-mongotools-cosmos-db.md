@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: tutorial
 ms.date: 08/26/2021
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Migrate MongoDB to Azure Cosmos DB's API for MongoDB offline using MongoDB native tools

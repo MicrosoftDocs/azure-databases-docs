@@ -7,7 +7,7 @@ ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 01/05/2023
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, sfi-image-nochange
 ms.devlang: azurecli
 ---
 

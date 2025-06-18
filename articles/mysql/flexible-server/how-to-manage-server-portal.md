@@ -8,6 +8,7 @@ ms.date: 05/20/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 

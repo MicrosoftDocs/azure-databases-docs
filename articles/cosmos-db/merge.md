@@ -7,8 +7,9 @@ author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.custom:
-  - devx-track-azurecli
-  - build-2025
+- devx-track-azurecli
+- build-2025
+- sfi-image-nochange
 ms.date: 05/08/2025
 ---
 

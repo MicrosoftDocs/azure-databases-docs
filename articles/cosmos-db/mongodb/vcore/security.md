@@ -7,7 +7,8 @@ ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
-  - ignite-2024
+- ignite-2024
+- sfi-image-nochange
 ms.topic: conceptual
 ms.date: 01/11/2025
 ---

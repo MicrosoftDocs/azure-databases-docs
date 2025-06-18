@@ -7,6 +7,7 @@ ms.subservice: nosql
 ms.date: 08/20/2021
 ms.author: dech
 ms.topic: troubleshooting
+ms.custom: sfi-image-nochange
 ---
 
 # Best practices for scaling provisioned throughput (RU/s) 

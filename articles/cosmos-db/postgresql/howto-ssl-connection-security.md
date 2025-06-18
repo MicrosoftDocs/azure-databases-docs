@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: conceptual
 ms.date: 06/05/2023
+ms.custom: sfi-ropc-blocked
 ---
 # Configure TLS in Azure Cosmos DB for PostgreSQL
 

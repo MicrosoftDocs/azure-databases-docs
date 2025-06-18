@@ -6,7 +6,7 @@ ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 06/09/2025
-ms.custom: mode-api, devx-track-azurecli
+ms.custom: mode-api, devx-track-azurecli, sfi-ropc-blocked
 ms.devlang: azurecli
 #customer intent: As a developer, I want to create clusters in Azure Managed Instance for Apache Cassandra by using the Azure CLI.
 ---

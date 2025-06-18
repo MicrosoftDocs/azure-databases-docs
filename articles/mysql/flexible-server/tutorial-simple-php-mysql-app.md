@@ -9,8 +9,9 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
 ms.custom:
-  - mvc
-  - devx-track-azurecli
+- mvc
+- devx-track-azurecli
+- sfi-ropc-nochange
 ms.devlang: php
 ---
 

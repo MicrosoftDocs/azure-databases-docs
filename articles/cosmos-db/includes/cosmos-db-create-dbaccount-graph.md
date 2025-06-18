@@ -1,7 +1,8 @@
 ---
- ms.service: azure-cosmos-db
- ms.topic: include
- ms.date: 08/23/2024
+ms.service: azure-cosmos-db
+ms.topic: include
+ms.date: 08/23/2024
+ms.custom: sfi-image-nochange
 ---
 
 1. In a new browser window, sign in to the [Azure portal](https://portal.azure.com/).

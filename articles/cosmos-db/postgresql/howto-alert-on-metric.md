@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 3/16/2020
+ms.custom: sfi-image-nochange
 ---
 
 # Use the Azure portal to set up alerts on metrics for Azure Cosmos DB for PostgreSQL

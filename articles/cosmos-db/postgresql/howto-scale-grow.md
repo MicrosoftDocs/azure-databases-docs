@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 06/05/2023
+ms.custom: sfi-image-nochange
 ---
 
 # Scale a cluster in Azure Cosmos DB for PostgreSQL
