@@ -6,7 +6,7 @@
   ms.author: sasinnat
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: conceptual
+  ms.topic: how-to
   ms.date: 06/08/2025
   appliesto:
   - ✅ MongoDB (vCore)

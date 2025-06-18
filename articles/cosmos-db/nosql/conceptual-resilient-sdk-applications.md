@@ -6,7 +6,7 @@ ms.service: azure-cosmos-db
 ms.date: 05/05/2022
 ms.author: maquaran
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: best-practice
 ---
 # Designing resilient applications with Azure Cosmos DB SDKs
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]

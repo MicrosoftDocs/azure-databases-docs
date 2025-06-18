@@ -5,7 +5,7 @@ ms.author: nlarin
 author: niklarin
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
-ms.topic: conceptual
+ms.topic: concept-articleticleticleticle
 ms.date: 3/22/2023
 ---
 # Start and stop compute on cluster nodes

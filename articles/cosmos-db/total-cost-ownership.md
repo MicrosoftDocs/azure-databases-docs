@@ -4,7 +4,7 @@ description: This article compares the total cost of ownership of Azure Cosmos D
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/26/2021
 ---
 

@@ -4,7 +4,7 @@ description: Learn how Azure Cosmos DB for MongoDB vCore provides encryption of 
 author: khelanmodi
 ms.author: khelanmodi
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/28/2025
 ---
 

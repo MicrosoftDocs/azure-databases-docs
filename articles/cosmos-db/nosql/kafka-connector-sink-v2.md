@@ -4,7 +4,7 @@ description: The Azure Cosmos DB Sink Connector v2 allows you to export data fro
 author: xinlian
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/03/2024
 ms.author: xinlian
 ---

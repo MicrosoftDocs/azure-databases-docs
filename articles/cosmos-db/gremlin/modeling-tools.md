@@ -4,7 +4,7 @@ description: This article describes various tools to  design the Graph data mode
 author: manishmsfte
 ms.author: mansha
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: partner-tools
 ms.date: 05/25/2021
 ---
 # Third-party data modeling tools for Azure Cosmos DB graph data

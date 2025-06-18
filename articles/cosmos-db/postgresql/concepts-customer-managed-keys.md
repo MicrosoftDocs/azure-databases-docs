@@ -5,7 +5,7 @@ ms.author: akashrao
 author: akashraokm
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
-ms.topic: conceptual
+ms.topic: concept-articleticle
 ms.date: 04/06/2023
 ---
 # Data encryption with customer-managed keys

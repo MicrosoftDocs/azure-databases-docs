@@ -4,7 +4,7 @@ description: Azure Cosmos DB source connector provides the capability to read da
 author: kushagrathapar
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/13/2022
 ms.author: kuthapar
 ---

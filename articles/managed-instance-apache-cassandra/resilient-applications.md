@@ -7,7 +7,7 @@ ms.author: thvankra
 ms.reviewer: sidandrews
 ms.date: 06/04/2025
 ms.service: azure-managed-instance-apache-cassandra
-ms.topic: conceptual
+ms.topic: best-practice
 keywords: azure high availability disaster recovery cassandra resiliency
 #customer intent: As a networking engineer, I want to understand how to plan high availablity and disaster recovery for Azure Managed Instance for Apache Cassandra.
 ---

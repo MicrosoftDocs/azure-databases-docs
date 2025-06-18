@@ -3,7 +3,7 @@ title: Understanding multi-region writes in Azure Cosmos DB
 description: This article describes how multi-region writes work in Azure Cosmos DB.
 author: TheovanKraay
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/12/2024
 ms.author: thvankra
 ---

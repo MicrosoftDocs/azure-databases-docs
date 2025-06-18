@@ -5,7 +5,7 @@ description: Use Azure Cosmos DB change feed to track changes, process events, a
 author: jcocchi
 ms.author: jucocchi
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/09/2023
 ms.custom: build-2023
 ---

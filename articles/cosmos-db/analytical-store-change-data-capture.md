@@ -5,7 +5,7 @@ description: Change data capture (CDC) in Azure Cosmos DB analytical store allow
 author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/28/2023
 ---
 

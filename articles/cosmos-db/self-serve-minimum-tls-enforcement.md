@@ -5,7 +5,7 @@ description: Learn how to self-serve minimum TLS version enforcement for your Az
 author: sudhanshukhera
 ms.author: skhera
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/18/2023
 ---
 

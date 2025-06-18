@@ -4,7 +4,7 @@ description:  Learn how to obtain and interpret the indexing metrics in Azure Co
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2021
 ms.author: mjbrown
 ---

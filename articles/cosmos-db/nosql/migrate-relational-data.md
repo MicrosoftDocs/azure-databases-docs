@@ -6,7 +6,7 @@ ms.author: thvankra
 author: TheovanKraay
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.devlang: python
 ms.date: 02/27/2023
 ms.custom: sfi-image-nochange, sfi-ropc-blocked
