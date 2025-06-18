@@ -4,7 +4,7 @@ description: This article describes the conflict categories and conflict resolut
 author: deborahc
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: copncept-article
+ms.topic: concept-article
 ms.date: 04/20/2020
 ms.author: dech
 ---

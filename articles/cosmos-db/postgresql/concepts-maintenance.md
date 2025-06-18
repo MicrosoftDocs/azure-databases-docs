@@ -5,7 +5,7 @@ ms.author: jonels
 author: jonels-msft
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
-ms.topic: concept-articleticle
+ms.topic: concept-article
 ms.date: 02/14/2022
 ---
 
