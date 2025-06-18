@@ -6,7 +6,7 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
+ms.topic: language-reference
 ms.date: 08/27/2024
 ---
 

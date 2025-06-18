@@ -6,7 +6,7 @@ author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
 ms.custom: build-2023
-ms.topic: conceptual
+ms.topic: best-practice
 ms.date: 12/01/2022
 ---
 

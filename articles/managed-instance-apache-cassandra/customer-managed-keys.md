@@ -4,7 +4,7 @@ description: Learn how to implement customer-managed keys in Azure Managed Insta
 author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2021
 ms.custom: references_regions, devx-track-azurecli, sfi-image-nochange, sfi-ropc-blocked
 ---

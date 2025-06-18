@@ -4,7 +4,7 @@ description: This article explains how to manage storage costs for the data stor
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: best-practice
 ms.date: 08/26/2021
 ms.custom: devx-track-csharp
 ---

@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: include
+ms.topic: language-reference
 ms.date: 09/12/2024
 ---
 

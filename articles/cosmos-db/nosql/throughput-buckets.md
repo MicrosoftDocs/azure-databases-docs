@@ -4,7 +4,7 @@ description: Learn how you can control throughput usage for different workloads 
 author: richagaur
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: richagaur
 ms.date: 03/31/2025
 ---

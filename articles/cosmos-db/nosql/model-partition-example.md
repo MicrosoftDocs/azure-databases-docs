@@ -6,7 +6,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2023
 ms.devlang: javascript
 ms.custom: sfi-image-nochange

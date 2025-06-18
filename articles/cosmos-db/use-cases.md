@@ -6,7 +6,7 @@ ms.author: mjbrown
 ms.reviewer: maghan
 ms.date: 05/30/2025
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: solution-overview
 ms.custom:
   - cosmos-db-video
 ---

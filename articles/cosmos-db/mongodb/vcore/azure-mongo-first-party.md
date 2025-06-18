@@ -5,7 +5,7 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: product-comparison
 ms.date: 06/03/2025
 ---
 

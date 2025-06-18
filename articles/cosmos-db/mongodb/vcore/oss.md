@@ -5,7 +5,7 @@ author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 02/07/2025
 ---
 

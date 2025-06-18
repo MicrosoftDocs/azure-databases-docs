@@ -2,7 +2,7 @@
 title: Merge partitions (preview)
 titleSuffix: Azure Cosmos DB
 description: Reduce the number of physical partitions used for your container with the merge capability in Azure Cosmos DB.
-ms.topic: conceptual
+ms.topic: concept-article
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db

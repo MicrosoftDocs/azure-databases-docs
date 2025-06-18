@@ -4,7 +4,7 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Time travel enables you to access Azure Cosmos DB data in the analytical store, precisely as it appeared at specific points in time.
 author: jilmal
 ms.author: jmaldonado
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.date: 11/28/2023

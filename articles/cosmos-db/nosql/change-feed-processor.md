@@ -6,7 +6,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/25/2024
 ms.custom: devx-track-csharp, build-2023
 ---

@@ -6,7 +6,7 @@ author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: product-comparison
 ms.date: 04/09/2024
 ---
 

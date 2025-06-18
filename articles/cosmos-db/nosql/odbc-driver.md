@@ -6,7 +6,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2023
 ms.custom: kr2b-contr-experiment, sfi-image-nochange, sfi-ropc-nochange
 ---
