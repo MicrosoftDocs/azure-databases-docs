@@ -1,7 +1,7 @@
 ---
 title: $[identifier] usage in Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: The $[] operator is used to update all elements in an array that match the query condition.
+description: The $[] operator is used to update all elements using a specific identifer in an array that match the query condition.
 author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
