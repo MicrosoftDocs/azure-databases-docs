@@ -72,6 +72,11 @@ This example demonstrates querying a nested field (`sales.monthly.total`) with t
 ]
 ```
 
+## Considerations
+
+- If fewer than two values are specified in the array for the $mod operator, an error is thrown by the server indicating not enough arguments were passed. 
+- If more than two values are specified in the array for the $mod operator, an error is thrown by the server indicating too many arguments were passed.
+
 ## Limitations
 
 - The `$mod` operator is applied to numerical fields only. Using it on non-numerical fields result in an error.

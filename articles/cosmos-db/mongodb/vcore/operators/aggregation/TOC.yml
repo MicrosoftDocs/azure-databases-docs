@@ -1,3 +1,5 @@
+- name: Type expression
+  href: type-expression/TOC.yml
 - name: $addFields
   href: $addfields.md
 - name: $collStats

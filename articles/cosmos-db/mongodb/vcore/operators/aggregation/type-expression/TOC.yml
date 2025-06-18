@@ -1,20 +1,22 @@
 - name: $convert
   href: $convert.md
-- name: $isnumber
+- name: $isNumber
   href: $isnumber.md
-- name: $tobool
+- name: $toBool
   href: $tobool.md
-- name: $todecimal
+- name: $toDecimal
   href: $todecimal.md
-- name: $todouble
+- name: $toDouble
   href: $todouble.md
-- name: $toint
+- name: $toInt
   href: $toint.md
-- name: $tolong
+- name: $toLong
   href: $tolong.md
-- name: $toobjectid
+- name: $toObjectid
   href: $toobjectid.md
-- name: $tostring
+- name: $toString
   href: $tostring.md
+- name: $toDate
+  href: $todate.md
 - name: $type
   href: $type.md
