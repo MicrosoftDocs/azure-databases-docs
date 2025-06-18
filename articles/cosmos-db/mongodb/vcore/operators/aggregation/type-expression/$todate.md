@@ -1,7 +1,7 @@
 ---
   title: $toDate (type expression)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $toDate operator convert supported types (string, number, timestamp, etc.) to a proper Date object.
+  description: The $toDate operator converts supported types (string, number, timestamp, etc.) to a proper Date object.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
