@@ -3,7 +3,7 @@ title: Monitor Azure Database for MySQL - Flexible Server
 description: Learn how to monitor Azure Database for MySQL - Flexible Server using Azure Monitor, including data collection, analysis, and alerting.
 ms.date: 01/27/2025
 ms.custom: horz-monitor
-ms.topic: conceptual
+ms.topic: how-to
 author: markingmyname
 ms.author: maghan
 ms.service: azure-database-mysql

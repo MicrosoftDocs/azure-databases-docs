@@ -9,7 +9,7 @@ ms.subservice: flexible-server
 ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-ms.topic: conceptual
+ms.topic: article
 ---
 # AI Agents in Azure Database for PostgreSQL
 Artificial Intelligence (AI) agents are transforming how applications interact with data by combining large language models (LLMs) with external tools and databases. Agents enable the automation of complex workflows, enhance information retrieval accuracy, and facilitate natural language interfaces to databases. This article explores how to create intelligent AI agents capable of searching and analyzing your data in Azure Database for PostgreSQL. We walk through setup, implementation, and testing using a legal research assistant as our example.

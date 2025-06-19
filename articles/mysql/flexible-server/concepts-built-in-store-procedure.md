@@ -3,7 +3,7 @@ title: Built-in Store Procedure in Azure Database for MySQL - Flexible Server
 description: Learn about the Built-in Store Procedure of Azure Database for MySQL - Flexible Server.
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: article
 author: xboxeer
 ms.author: yuzheng1
 ms.date: 03/10/2025 

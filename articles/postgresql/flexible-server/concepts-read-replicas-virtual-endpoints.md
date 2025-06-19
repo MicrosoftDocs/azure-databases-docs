@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 6/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: article
 ---
 
 # Virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server

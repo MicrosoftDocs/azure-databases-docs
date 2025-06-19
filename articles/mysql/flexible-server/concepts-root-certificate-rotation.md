@@ -7,7 +7,7 @@ ms.reviewer: talawren, maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
 

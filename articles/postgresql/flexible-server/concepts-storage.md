@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 01/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: article
 ---
 
 # Storage options in Azure Database for PostgreSQL flexible server

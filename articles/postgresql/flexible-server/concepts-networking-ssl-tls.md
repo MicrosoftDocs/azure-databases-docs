@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 05/02/2024
 ms.service: azure-database-postgresql
 ms.subservice:
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
 
