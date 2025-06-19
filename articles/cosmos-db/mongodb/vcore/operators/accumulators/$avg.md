@@ -3,7 +3,7 @@ title: $avg usage on Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Computes the average of numeric values for documents in a group, bucket, or window.
 author: sandeepsnairms
-ms.author: yoursandnair
+ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference

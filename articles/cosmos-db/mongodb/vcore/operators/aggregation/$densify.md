@@ -1,5 +1,5 @@
 ---
-title: $densify (as Aggregation Pipeline) usage on Azure Cosmos DB for MongoDB vCore
+title: $densify usage on Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Adds missing data points in a sequence of values within an array or collection.
 author: sandeepsnairms

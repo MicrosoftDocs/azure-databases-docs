@@ -1,4 +1,3 @@
-
 ---
 title: $documents usage on Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
