@@ -7,7 +7,7 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 09/06/2025
+ms.date: 06/09/2025
 ---
 
 # $densify (as Aggregation Pipeline) usage on Azure Cosmos DB for MongoDB vCore
@@ -44,7 +44,7 @@ The `$densify` stage in an aggregation pipeline is used to fill in missing data 
 
 ### Example 1: Densify a time-series dataset
 
-The following pipeline fills in missing days in the `promotionalDates.startDate` field for each `promotionEvents` entry:
+The following pipeline fills in missing days in the date field:
 
 ```javascript
 db.aggregate([
@@ -93,7 +93,7 @@ db.aggregate([
         field: "level",
         range: {
           step: 1,
-          bounds: [1, 5]  // ✅ valid format: ascending array
+          bounds: [1, 5] 
         }
       }
     }

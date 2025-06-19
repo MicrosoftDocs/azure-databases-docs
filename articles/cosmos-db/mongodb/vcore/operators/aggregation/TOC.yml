@@ -7,7 +7,7 @@
 - name: $count
   href: $count.md
 - name: $densify
-  href: $density.md
+  href: $densify.md
 - name: $documents
   href: $documents.md
 - name: $facet

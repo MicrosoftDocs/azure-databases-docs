@@ -7,7 +7,7 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 09/06/2025
+ms.date: 06/09/2025
 ---
 
 # $documents
