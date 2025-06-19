@@ -29,7 +29,7 @@ Analytical store is resident by default as it is stored in either locally redund
 
 ## Residency requirements for Azure Cloud Shell
 
-Azure Cloud Shell service is a non-regional service. It doesn't store any customer data, but when used through the Azure Portal may process shell commands and responses outside of the Geo for the sole purpose of providing the Shell experience inside the Portal.
+Azure Cloud Shell service is a non-regional service. It doesn't store any customer data, but when used through the Azure Portal may process shell commands and responses outside of the Geo for the sole purpose of providing the Shell experience inside the Portal. To learn more, see the [Azure Cloud Shell](https://aka.ms/cloudshell) article.
 
 ## Use Azure Policy to enforce the residency requirements
 
