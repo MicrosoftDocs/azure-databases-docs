@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 4/21/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Monitor metrics in Azure Database for PostgreSQL flexible server

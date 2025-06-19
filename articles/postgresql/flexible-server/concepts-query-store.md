@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
   - ignite-2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Query store
 

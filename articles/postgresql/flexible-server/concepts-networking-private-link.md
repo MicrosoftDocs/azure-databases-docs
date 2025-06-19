@@ -6,7 +6,7 @@ ms.author: guybo
 ms.reviewer: maghan
 ms.date: 04/18/2025
 ms.service: azure-database-postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Azure Database for PostgreSQL networking with Private Link
