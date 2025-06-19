@@ -61,9 +61,9 @@ az postgres flexible-server restart \
 
 # [REST API](#tab/rest-01)
 
-Using [Configurations - Put](/rest/api/postgresql/flexibleserver/configurations/put) REST API.
+Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
-Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect. For restarting the server, you can use the [Server - Restart](/rest/api/postgresql/flexibleserver/servers/restart) REST API.
+Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect. For restarting the server, you can use the [Server - Restart](/rest/api/postgresql/servers/restart) REST API.
 
 ---
 
@@ -91,7 +91,7 @@ az postgres flexible-server parameter set \
 
 # [REST API](#tab/rest-02)
 
-Using [Configurations - Put](/rest/api/postgresql/flexibleserver/configurations/put) REST API.
+Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 ---
 
@@ -133,7 +133,7 @@ az rest \
 
 # [REST API](#tab/rest-03)
 
-Using the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
+Using the [Servers - Update](/rest/api/postgresql/servers/update) REST API.
 
 ---
 
