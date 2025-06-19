@@ -6,6 +6,10 @@
   href: $collstats.md
 - name: $count
   href: $count.md
+- name: $densify
+  href: $density.md
+- name: $documents
+  href: $documents.md
 - name: $facet
   href: $facet.md
 - name: $fill
