@@ -49,7 +49,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-enable-system-assigned-existing)
 
-The [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command doesn't provide built-in support to enable and disable the system assigned managed identity yet. As a workaround, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
+The [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command doesn't provide built-in support to enable and disable the system assigned managed identity yet. As a workaround, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/servers/update) REST API.
 
 ```azurecli-interactive
 # Enable system assigned managed identity
