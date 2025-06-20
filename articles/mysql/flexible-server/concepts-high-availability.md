@@ -15,7 +15,7 @@ ai-usage: ai-assisted
 
 Azure Database for MySQL Flexible Server allows configuring high availability with automatic failover. The high availability solution is designed to ensure that committed data is never lost because of failures and that the database won't be a single point of failure in your software architecture. When high availability is configured, Flexible Server automatically provisions and manages a standby replica. You're billed for the provisioned compute and storage for both the primary and secondary replica. There are two high availability architectural models:
 
-- **Zone-redundant HA**. This option is preferred for complete isolation and redundancy of infrastructure across multiple availability zones. It provides the highest level of availability, but it requires you to configure application redundancy across zones. Zone-redundant HA is preferred when you want to achieve the highest level of availability against any infrastructure failure in the availability zone and when latency across the availability zone is acceptable. It can be enabled only when the server is created, except for new servers on the Business-Critical tier created in January 2025, where Zone-redundant HA configuration can be enabled after provisioning as well. Zone-redundant HA is available in a [subset of Azure regions](./overview.md#azure-regions) where the region supports multiple [availability zones](/azure/reliability/availability-zones-overview) and [zone-redundant Premium file shares](/azure/storage/common/storage-redundancy#zone-redundant-storage) are available.
+- **Zone-redundant HA**. This option is preferred for complete isolation and redundancy of infrastructure across multiple availability zones. It provides the highest level of availability, but it requires you to configure application redundancy across zones. Zone-redundant HA is preferred when you want to achieve the highest level of availability against any infrastructure failure in the availability zone and when latency across the availability zone is acceptable. It can be enabled only when the server is created. Zone-redundant HA is available in a [subset of Azure regions](./overview.md#azure-regions) where the region supports multiple [availability zones](/azure/reliability/availability-zones-overview) and [zone-redundant Premium file shares](/azure/storage/common/storage-redundancy#zone-redundant-storage) are available.
 
 - **Same-zone HA**. This option is preferred for infrastructure redundancy with lower network latency because the primary and standby servers will be in the same availability zone. It provides high availability without the need to configure application redundancy across zones. Same-zone HA is preferred when you want to achieve the highest level of availability within a single availability zone with the lowest network latency. Same-zone HA is available in all [Azure regions](./overview.md#azure-regions) where you can use Azure Database for MySQL Flexible Server.
 
@@ -131,7 +131,7 @@ You can also use the below metrics to monitor the health of the HA server.
 ## Limitations
 
 Here are some considerations to keep in mind when you use high availability:
-- Zone-redundant high availability can only be configured during server creation, except for servers on the Business-Critical tier created in January 2025, where this restriction does not apply.
+- Zone-redundant high availability can only be configured during server creation.
 
 - High availability isn't supported in the burstable compute tier.
 - Restarting the primary database server to pick up static parameter changes also restarts the standby replica.
@@ -192,7 +192,7 @@ Planned events like scaling of compute and minor version upgrades happen on the 
 You can do a [PITR](./concepts-backup-restore.md#point-in-time-restore) for an HA-enabled Azure Database for MySQL Flexible Server instance to a new Azure Database for MySQL Flexible Server instance that has HA disabled. If the source server was created with zone-redundant HA, you can enable zone-redundant HA or same-zone HA on the restored server later. If the source server was created with same-zone HA, you can enable only same-zone HA on the restored server.</br>
 
 - **Can I enable HA on a server after I create the server?**</br>
-Zone-redundant HA must be enabled during server creation. However, this limitation no longer applies to servers created on the Business-Critical tier starting in January 2025. You can enable same-zone HA after server creation, but ensure that the server parameters **enforce_gtid_consistency** and **gtid_mode** are set to **ON** before proceeding.</br>
+Zone-redundant HA must be enabled during server creation. You can enable same-zone HA after server creation, but ensure that the server parameters **enforce_gtid_consistency** and **gtid_mode** are set to **ON** before proceeding.</br>
 
 - **Can I disable HA for a server after I create it?** </br>
 You can disable HA on a server after you create it. Billing stops immediately. </br>
