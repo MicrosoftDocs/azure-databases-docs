@@ -1,6 +1,6 @@
 ---
-  title: $top (accumulator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $top
+  titleSuffix: Overview of the $top operator in Azure Cosmos DB for MongoDB vCore
   description: The $top accumulator operator returns the top element from a group based on a specified sort order.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,7 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $top (accumulator)
+# $top
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

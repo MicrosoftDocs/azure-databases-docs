@@ -1,6 +1,6 @@
 ---
-  title: $topN (accumulator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $topN
+  titleSuffix: Overview of the $topN operator in Azure Cosmos DB for MongoDB vCore
   description: The $topN accumulator operator returns the top N elements from a group based on a specified sort order.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,7 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $topN (accumulator)
+# $topN
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

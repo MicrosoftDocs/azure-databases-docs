@@ -155,10 +155,54 @@ This query would return the following document.
 ]
 ```
 
+Joining two collections (ratings and stores) using a variable from ratings.
 
-## Limitations
+```javascript
+db.ratings.aggregate([
+  {
+    $match: { rating: 5 }
+  },
+  {
+    $lookup: {
+      from: "stores",
+      let: { id: "$_id" },
+      pipeline: [
+        {
+          $match: {
+            $expr: { $eq: ["$_id", "$$id"] }
+          }
+        },
+        {
+          $project: { _id: 0, name: 1 }
+        }
+      ],
+      as: "storeInfo"
+    }
+  },
+  {
+    $unwind: "$storeInfo"
+  },
+  {
+    $project: {
+      _id: 1,
+      rating: 1,
+      "storeInfo.name": 1
+    }
+  }
+])
 
-- let isn't supported as part of pipeline
+```
+This query would return the following document.
+
+```json
+[
+  {
+    _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5',
+    rating: 5,
+    storeInfo: { name: 'Lakeshore Retail | DJ Equipment Stop - Port Cecile' }
+  }
+]
+```
 
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]
