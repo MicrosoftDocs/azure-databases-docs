@@ -25,7 +25,7 @@ This article has step-by-step instructions on how to create a copy activity.
 - An Azure Database for PostgreSQL flexible server. To learn more, go to [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
-## Create a copy activity for data
+## Create a copy activity
 
 1. In Microsoft Fabric, select your workspace, switch to **Data factory**, and then select the **New item** button.
 
@@ -37,7 +37,7 @@ This article has step-by-step instructions on how to create a copy activity.
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/new-pipeline-name.png" alt-text="Screenshot that shows the dialog for naming a new pipeline." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/new-pipeline-name.png":::
 
-1. On the **Activities** menu, select **Copy data** > **Add to canvas**.
+1. On the **Activities** menu, select **Copy data**, and then select **Add to canvas**.
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png" alt-text="Screenshot that shows selections for copying data and adding it to a canvas." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-copy-activity.png":::
 
