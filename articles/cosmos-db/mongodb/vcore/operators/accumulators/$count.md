@@ -1,6 +1,6 @@
 ---
-title: $count usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $count
+titleSuffix: Overview of the $count operator in Azure Cosmos DB for MongoDB vCore
 description: The `$count` accumulator is used to count the number of documents or groupings in a pipeline stage.
 author: sandeepsnairms
 ms.author: sandnair
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 01/05/2025
 ---
 
-# $count Usage on Azure Cosmos DB for MongoDB vCore
+# $count
 
 The `$count` operator is an accumulator used in aggregation pipelines to count the number of documents or groupings. It is commonly used in stages such as `$group`, `$bucket`, `$bucketAuto`, or `$setWindowFields`. This operator is useful for summarizing data or generating counts for specific groupings.
 

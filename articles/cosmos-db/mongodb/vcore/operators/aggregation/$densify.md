@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 06/09/2025
 ---
 
-# $densify (as Aggregation Pipeline) usage on Azure Cosmos DB for MongoDB vCore
+# $densify usage on Azure Cosmos DB for MongoDB vCore
 
 The `$densify` stage in an aggregation pipeline is used to fill in missing data points within a sequence of values. It helps in creating a more complete dataset by generating missing values based on a specified field, range, and step. This is particularly useful in scenarios like time-series data analysis, where gaps in data points need to be filled to ensure accurate analysis.
 

@@ -1,6 +1,6 @@
 ---
-title: $max usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $max
+titleSuffix: Overview of the $max operator in Azure Cosmos DB for MongoDB vCore
 description: The $max accumulator operator returns the maximum value from a set of input values.
 author: sandeepsnairms
 ms.author: sandnair
@@ -11,6 +11,7 @@ ms.date: 01/05/2025
 ---
 
 # $max
+
 The `$max` operator is an accumulator that returns the maximum value from a set of input values. It is commonly used in conjunction with aggregation stages such as `$group`, `$bucket`, `$bucketAuto`, or `$setWindowFields`. This operator is particularly useful for identifying the highest value in a dataset, such as maximum sales, maximum discounts, or other numerical comparisons.
 
 ## Syntax

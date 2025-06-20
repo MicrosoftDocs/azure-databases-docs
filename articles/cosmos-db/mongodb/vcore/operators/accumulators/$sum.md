@@ -1,6 +1,6 @@
 ---
-title: $sum accumulator operator 
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $sum
+titleSuffix: Overview of the $sum operator in Azure Cosmos DB for MongoDB vCore
 description: Aggregation operator to calculate the sum of numeric values.
 author: sandeepsnairms
 ms.author: sandnair

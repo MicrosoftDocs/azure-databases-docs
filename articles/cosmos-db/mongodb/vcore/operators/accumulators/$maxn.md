@@ -1,6 +1,6 @@
 ---
-title: $maxN usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $maxN
+titleSuffix: Overview of the $maxN operator in Azure Cosmos DB for MongoDB vCore
 description: Retrieves the top N values in an array or grouped data.
 author: sandeepsnairms
 ms.author: sandnair
@@ -11,6 +11,7 @@ ms.date: 01/05/2025
 ---
 
 # $maxN
+
 The `$maxN` accumulator is used to retrieve the top N maximum values from an array or grouped data. It is commonly used in aggregation pipelines to sort and filter data based on numerical or comparable fields.
 
 ## Syntax
