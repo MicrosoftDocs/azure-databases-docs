@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 09/24/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Enable private access in Azure Cosmos DB for PostgreSQL

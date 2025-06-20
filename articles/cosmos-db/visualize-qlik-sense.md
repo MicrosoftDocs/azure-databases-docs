@@ -7,6 +7,7 @@ author: gahl-levy
 ms.author: gahllevy
 ms.topic: how-to
 ms.date: 05/23/2019
+ms.custom: sfi-image-nochange
 ---
 
 # Connect Qlik Sense to Azure Cosmos DB and visualize your data

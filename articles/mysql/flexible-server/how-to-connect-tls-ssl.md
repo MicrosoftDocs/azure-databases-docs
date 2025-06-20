@@ -9,6 +9,7 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.devlang: csharp
+ms.custom: sfi-image-nochange
 ---
 
 # Connect to Azure Database for MySQL - Flexible Server with encrypted connections

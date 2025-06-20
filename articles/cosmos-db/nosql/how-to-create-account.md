@@ -8,6 +8,7 @@ ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: how-to
 ms.date: 06/08/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Create an Azure Cosmos DB for NoSQL account

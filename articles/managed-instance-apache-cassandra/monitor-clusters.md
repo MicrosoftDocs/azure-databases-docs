@@ -6,7 +6,7 @@ ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 06/06/2025
-ms.custom: references_regions, devx-track-azurecli
+ms.custom: references_regions, devx-track-azurecli, sfi-image-nochange
 #customer intent: As a database administrator, I want to monitor my Azure Managed Instance for Apache Cassandra by using the features of Azure Monitor.
 ---
 

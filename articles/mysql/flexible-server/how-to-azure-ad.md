@@ -9,8 +9,10 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
-  - devx-track-azurecli
-  - has-azure-ad-ps-ref
+- devx-track-azurecli
+- has-azure-ad-ps-ref
+- sfi-image-nochange
+- sfi-ropc-nochange
 ---
 
 # Set up Microsoft Entra authentication for Azure Database for MySQL - Flexible Server

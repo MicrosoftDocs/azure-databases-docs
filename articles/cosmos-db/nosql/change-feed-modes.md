@@ -5,7 +5,7 @@ author: jcocchi
 ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.custom: build-2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 4/8/2025
 ---
 # Change feed modes in Azure Cosmos DB

@@ -45,11 +45,11 @@ Premium SSD v2 offers up to 32 TiBs per region per subscription by default, but 
 
 #### Premium SSD v2 - IOPS
 
-All Premium SSD v2 disks have a baseline of 3,000 IOPS that is free of charge. After 6 GiB, the maximum IOPS a disk can have increases at a rate of 500 per GiB, up to 80,000 IOPS. So, a disk of 8 GiB can have up to 4,000 IOPS, and a disk of 10 GiB can have up to 5,000 IOPS. To be able to set 80,000 IOPS on a disk, that disk must have at least 160 GiBs. Increasing your IOPS beyond 3,000 increases the price of your disk.
+Azure Database for PostgreSQL flexible server offers a baseline IOPS of 3000 for disks up to 399 GiB, and 12000 IOPS for disks over 400 GiB at no additional cost. To achieve 80,000 IOPS on a disk, it must be at least 160 GiB. Increasing IOPS beyond the free tier results in additional charges.
 
 #### Premium SSD v2 - Throughput
 
-All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of charge. After 6 GiB, the maximum throughput that can be set increases by 0.25 MB/s per set IOPS. If a disk has 3,000 IOPS, the maximum throughput it can be set to is 750 MB/s. To raise the throughput for this disk beyond 750 MB/s, its IOPS must be increased. For example, if you increase the IOPS to 4,000, then the maximum throughput that can be set is 1,000. 1,200 MB/s is the maximum throughput supported for disks that have 5,000 IOPS or more. Increasing your throughput beyond 125 MB/s increases the price of your disk.
+Azure Database for PostgreSQL flexible server offers a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks over 400 GiB at no additional cost. Increasing throughput beyond the free tier results in additional charges.
 
 > [!NOTE]  
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server.
@@ -73,14 +73,14 @@ The storage that you provision is the amount of storage capacity available to yo
 | 64 GiB | Provisioned 240; up to 3,500 | First 3000 IOPS free can scale up to 34359 |
 | 128 GiB | Provisioned 500; up to 3,500 | First 3000 IOPS free can scale up to 68719 |
 | 256 GiB | Provisioned 1,100; up to 3,500 | First 3000 IOPS free can scale up to 80000 |
-| 512 GiB | Provisioned 2,300; up to 3,500 | First 3000 IOPS free can scale to 80000 |
-| 1 TiB | 5,000 | First 3000 IOPS free can scale up to 80000 |
-| 2 TiB | 7,500 | First 3000 IOPS free can scale up to 80000 |
-| 4 TiB | 7,500 | First 3000 IOPS free can scale up to 80000 |
-| 8 TiB | 16,000 | First 3000 IOPS free can scale up to 80000 |
-| 16 TiB | 18,000 | First 3000 IOPS free can scale up to 80000 |
-| 32 TiB | 20,000 | First 3000 IOPS free can scale up to 80000 |
-| 64 TiB | N/A | First 3000 IOPS free can scale up to 80000 |
+| 512 GiB | Provisioned 2,300; up to 3,500 | First 12000 IOPS free can scale to 80000 |
+| 1 TiB | 5,000 | First 12000 IOPS free can scale up to 80000 |
+| 2 TiB | 7,500 | First 12000 IOPS free can scale up to 80000 |
+| 4 TiB | 7,500 | First 12000 IOPS free can scale up to 80000 |
+| 8 TiB | 16,000 | First 12000 IOPS free can scale up to 80000 |
+| 16 TiB | 18,000 | First 12000 IOPS free can scale up to 80000 |
+| 32 TiB | 20,000 | First 12000 IOPS free can scale up to 80000 |
+| 64 TiB | N/A | First 12000 IOPS free can scale up to 80000 |
 
 The following table provides an overview of premium SSD v2 disk capacities and performance maximums to help you decide which want you should use.
 

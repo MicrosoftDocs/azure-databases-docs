@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 02/05/2024
+ms.custom: sfi-image-nochange
 # customer intent: As a database owner, I want to use Mongo Shell to connect to and query my database and collections.
 ---
 

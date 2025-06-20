@@ -4,7 +4,7 @@ description: This article explains how to optimize costs when issuing requests o
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: best-practice
 ms.date: 08/26/2021
 ---
 

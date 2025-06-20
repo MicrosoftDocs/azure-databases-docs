@@ -6,7 +6,7 @@ author: niklarin
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.custom: build-2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/28/2024
 ---
 # PostgreSQL extensions in Azure Cosmos DB for PostgreSQL

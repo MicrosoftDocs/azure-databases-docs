@@ -9,10 +9,12 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
 ms.custom:
-  - mvc
-  - devx-track-azurecli
-  - build-2023
-  - build-2023-dataai
+- mvc
+- devx-track-azurecli
+- build-2023
+- build-2023-dataai
+- sfi-image-nochange
+- sfi-ropc-nochange
 ---
 
 # Tutorial: Deploy a Spring Boot application on AKS cluster with Azure Database for MySQL - Flexible Server in a VNet

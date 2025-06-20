@@ -9,6 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.devlang: php
+ms.custom: sfi-ropc-nochange
 ---
 
 # Quickstart: Use PHP to connect and query data in Azure Database for PostgreSQL flexible server

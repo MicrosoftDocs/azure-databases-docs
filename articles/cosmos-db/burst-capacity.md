@@ -6,7 +6,7 @@ author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.custom: build-2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/23/2023
 ---
 

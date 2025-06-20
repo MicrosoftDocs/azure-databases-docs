@@ -5,7 +5,7 @@ description: Azure Synapse Link for Azure Cosmos DB lets you run near real time 
 author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/08/2024
 ms.custom: synapse-cosmos-db
 ---

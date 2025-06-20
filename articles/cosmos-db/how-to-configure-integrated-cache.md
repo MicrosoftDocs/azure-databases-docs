@@ -4,9 +4,10 @@ description: Learn how to configure the Azure Cosmos DB integrated cache
 author: jcocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/08/2024
 ms.author: jucocchi
+ms.custom: sfi-image-nochange
 ---
 
 # How to configure the Azure Cosmos DB integrated cache

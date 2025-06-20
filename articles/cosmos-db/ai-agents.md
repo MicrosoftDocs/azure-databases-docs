@@ -6,13 +6,14 @@ author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.custom:
-  - ignite-2024
+- ignite-2024
+- sfi-ropc-blocked
 ms.topic: concept-article
 ms.date: 12/03/2024
 ms.collection:
-  - ce-skilling-ai-copilot
+- ce-skilling-ai-copilot
 appliesto:
-  - ✅ NoSQL ✅ MongoDB vCore
+- ✅ NoSQL ✅ MongoDB vCore
 ---
 
 # AI agents in Azure Cosmos DB

@@ -1,16 +1,16 @@
 ---
-  title: $bottomN (accumulator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $bottomN
+  titleSuffix: Overview of the $tbottomN operator in Azure Cosmos DB for MongoDB vCore
   description: The $bottomN operator returns the bottom N elements in a group according to a specified sort order.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
+  ms.topic: language-reference
   ms.date: 02/12/2025
 ---
 
-# $bottomN (accumulator)
+# $bottomN
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

@@ -6,7 +6,7 @@ ms.author: mjbrown
 ms.reviewer: maghan
 ms.date: 05/30/2025
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: solution-overview
 ms.custom:
   - cosmos-db-video
 ---
@@ -54,7 +54,7 @@ Bursts of data can be ingested by Azure Event Hubs as it offers high throughput 
 
 For a sample IoT solution using Azure Cosmos DB, Event Hubs, and Apache Storm, see the [hdinsight-storm-examples repository on GitHub](https://github.com/hdinsight/hdinsight-storm-examples/).
 
-For more information on Azure offerings for IoT, see [Create the Internet of Your Things](https://www.microsoft.com/en-us/internet-of-things).
+For more information on Azure offerings for IoT, see [Create the Internet of Your Things](https://www.microsoft.com/internet-of-things).
 
 ## Retail and marketing
 

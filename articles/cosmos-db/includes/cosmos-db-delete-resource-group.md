@@ -2,6 +2,7 @@
 ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 08/23/2024
+ms.custom: sfi-image-nochange
 ---
 When you're done with your app and Azure Cosmos DB account, you can delete the Azure resources you created so you don't incur more charges. To delete the resources:
 

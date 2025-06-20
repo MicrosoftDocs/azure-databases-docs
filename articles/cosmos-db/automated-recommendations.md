@@ -4,8 +4,9 @@ description: Learn how to view customized performance, cost, security, and other
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: best-practice
 ms.date: 08/26/2021
+ms.custom: sfi-image-nochange
 ---
 
 # Automated recommendations for Azure Cosmos DB

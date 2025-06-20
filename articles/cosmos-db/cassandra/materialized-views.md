@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 11/17/2022
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, sfi-image-nochange
 ---
 
 # Materialized views in Azure Cosmos DB for Apache Cassandra (preview)

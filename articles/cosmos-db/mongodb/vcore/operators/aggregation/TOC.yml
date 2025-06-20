@@ -1,5 +1,15 @@
+- name: Type expression
+  href: type-expression/TOC.yml
+- name: $addFields
+  href: $addfields.md
+- name: $collStats
+  href: $collstats.md
 - name: $count
   href: $count.md
+- name: $densify
+  href: $densify.md
+- name: $documents
+  href: $documents.md
 - name: $facet
   href: $facet.md
 - name: $fill
@@ -10,3 +20,19 @@
   href: $lookup.md
 - name: $match
   href: $match.md
+- name: $replaceWith
+  href: $replacewith.md
+- name: $sample
+  href: $sample.md
+- name: $set
+  href: $set.md
+- name: $skip
+  href: $skip.md
+- name: $sort
+  href: $sort.md
+- name: $sortByCount
+  href: $sortbycount.md
+- name: $unset
+  href: $unset.md
+- name: $unwind
+  href: $unwind.md

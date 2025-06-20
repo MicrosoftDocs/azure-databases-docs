@@ -9,7 +9,8 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
-  - mvc
+- mvc
+- sfi-image-nochange
 ---
 
 # Manage Azure Database for PostgreSQL flexible server using the Azure portal

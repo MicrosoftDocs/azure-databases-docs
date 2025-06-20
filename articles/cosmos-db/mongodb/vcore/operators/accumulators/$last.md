@@ -1,16 +1,16 @@
 ---
-  title: $last (accumulator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $last
+  titleSuffix: Overview of the $last operator in Azure Cosmos DB for MongoDB vCore
   description: The $last accumulator operator returns the last value in a group of documents.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
+  ms.topic: language-reference
   ms.date: 02/12/2025
 ---
 
-# $last (accumulator)
+# $last
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

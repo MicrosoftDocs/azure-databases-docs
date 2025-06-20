@@ -8,10 +8,11 @@ ms.date: 09/04/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
-ms.custom: 
-  - mvc
-  - mode-api
-  - devx-track-go
+ms.custom:
+- mvc
+- mode-api
+- devx-track-go
+- sfi-ropc-blocked
 ms.devlang: golang
 ---
 

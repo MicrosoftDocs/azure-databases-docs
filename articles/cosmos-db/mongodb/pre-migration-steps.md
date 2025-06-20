@@ -6,7 +6,7 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.date: 04/20/2023
 ---
 

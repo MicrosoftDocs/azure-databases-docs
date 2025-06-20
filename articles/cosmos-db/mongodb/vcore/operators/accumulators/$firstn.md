@@ -1,16 +1,16 @@
 ---
-  title: $firstN (accumulator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $firstN
+  titleSuffix: Overview of the $firstN operator in Azure Cosmos DB for MongoDB vCore
   description: The $firstN operator returns the first N values in a group according to the group's sorting order.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
+  ms.topic: language-reference
   ms.date: 02/12/2025
 ---
 
-# $firstN (accumulator)
+# $firstN
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

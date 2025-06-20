@@ -8,6 +8,7 @@ ms.date: 12/26/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange, sfi-ropc-blocked
 ---
 
 # Use Microsoft Entra ID for authentication with Azure Database for PostgreSQL flexible server

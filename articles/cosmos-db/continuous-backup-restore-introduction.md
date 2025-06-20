@@ -3,7 +3,7 @@ title: Continuous backup with point in time restore feature in Azure Cosmos DB
 description: Azure Cosmos DB's point-in-time restore feature helps to recover data from an accidental write, delete operation, or to restore data into any region. Learn about pricing and current limitations.
 author: kanshiG
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/15/2024
 ms.author: govindk
 ms.custom: references_regions, cosmos-db-video, build-2023
