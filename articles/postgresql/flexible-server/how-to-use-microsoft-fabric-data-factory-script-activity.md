@@ -46,11 +46,11 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
 1. On the **Settings** tab, select your Azure Database for PostgreSQL connection, or create a new one by using the **More** option. [Learn more about connecting to your data by using the modern get-data experience for data pipelines](/fabric/data-factory/modern-get-data-experience-pipeline).
 
-   :::image type="content" source="/media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png" alt-text="Screenshot that shows an example setting for a connection." lightbox="/media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png":::
+   :::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png" alt-text="Screenshot that shows an example setting for a connection." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png":::
 
 1. Select either the **Query** or **NonQuery** option, depending on your script.
 
-   :::image type="content" source="/media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png" alt-text="Screenshot that highlights the query and nonquery options for a script." lightbox="/media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png":::
+   :::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png" alt-text="Screenshot that highlights the query and nonquery options for a script." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png":::
 
    The script activity supports both query and nonquery statements.
 
@@ -138,7 +138,7 @@ On the **Settings** tab, you can configure multiple queries in one script activi
 
 You can select the **+** button multiple times, depending on how many script inputs you want to create. For example, to add two new script inputs, select the **+** button two times.
 
-:::image type="content" source="/media/how-to-use-microsoft-fabric-data-factory-script-activity/multi-script.png" alt-text="Screenshot that shows how to add a second box for script input." lightbox="/media/how-to-use-microsoft-fabric-data-factory-script-activity/multi-script.png":::
+:::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/multi-script.png" alt-text="Screenshot that shows how to add a second box for script input." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/multi-script.png":::
 
 If you want to delete a query input box, select the **Delete** icon for that box.
 
@@ -197,7 +197,7 @@ A script activity supports two types of script parameters:
 
 For named parameters as output parameters, use the `@` prefix. Set the value as `null` with the **Treat as null** box checked on the UI, and leave the payload blank or `null`. The value in the text should be `null`.
 
-:::image type="content" source="/media/how-to-use-microsoft-fabric-data-factory-script-activity/output-parameter-example.png" alt-text="Screenshot that shows an output parameter example with checkboxes selected for treating the values as null." lightbox="/media/how-to-use-microsoft-fabric-data-factory-script-activity/output-parameter-example.png":::
+:::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/output-parameter-example.png" alt-text="Screenshot that shows an output parameter example with checkboxes selected for treating the values as null." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/output-parameter-example.png":::
 
 The name set within the procedure for output is the name used within the `resultSets` data output. The name set in the UI output row is used for the name of `outputParameters`.
 
@@ -279,7 +279,7 @@ To use positional parameters, use a placeholder of `$<positional number>` in you
 
 The following example shows a valid positional parameter.
 
-:::image type="content" source="/media/how-to-use-microsoft-fabric-data-factory-script-activity/multiple-scripts-positional-parameters.png" alt-text="Screenshot that shows an example of a valid positional parameter." lightbox="/media/how-to-use-microsoft-fabric-data-factory-script-activity/multiple-scripts-positional-parameters.png":::
+:::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/multiple-scripts-positional-parameters.png" alt-text="Screenshot that shows an example of a valid positional parameter." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/multiple-scripts-positional-parameters.png":::
 
 ```json
 {
