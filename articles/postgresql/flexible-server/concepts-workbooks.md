@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 12/09/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Monitor Azure Database for PostgreSQL flexible server by using Azure Monitor workbooks
