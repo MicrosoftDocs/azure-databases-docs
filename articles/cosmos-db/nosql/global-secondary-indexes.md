@@ -82,16 +82,15 @@ Because global secondary indexes can have a different partition key than source 
 
 ## Monitoring
 
-You can monitor the lag in building global secondary indexes through **Metrics** in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
+You can monitor the lag in building global secondary indexes through the **Global Secondary Index Catchup Gap In Minutes** metric in **Metrics** in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
-> [!NOTE]
-> The global secondary index metrics are prefixed with "MaterializedView", which is the former name of this feature. 
+:::image type="content" source="./media/global-secondary-indexes/global-secondary-index-catchup-gap.png" alt-text="Screenshot of the Global Secondary Index Catchup Gap In Minutes Metric in the Metrics page of the Azure portal." :::
 
 ### Troubleshooting common issues
 
 #### I want to understand the lag between my source container and index containers
 
-The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in source containers and global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then **Split by** and select **MaterializedViewName**, which is the global secondary index container name.
+The **Global Secondary Index Catchup Gap In Minutes** metric shows the maximum difference in minutes between data in source containers and global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then **Split by** and select **GlobalSecondaryIndexName**.
 
 #### I want to understand if my global secondary index containers have enough RUs
 
