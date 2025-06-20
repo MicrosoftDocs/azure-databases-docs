@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 02/06/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: article
 ---
 
 # Azure Database For MySQL Flexible Server February 2025 Version Release Notes

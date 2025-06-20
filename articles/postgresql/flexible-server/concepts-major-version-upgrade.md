@@ -6,7 +6,7 @@ ms.author: varundhawan
 ms.date: 6/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Major version upgrades in Azure Database for PostgreSQL flexible server
