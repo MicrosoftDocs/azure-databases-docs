@@ -39,12 +39,12 @@ The syntax for the `$changeStream` stage is as follows:
 | | Description |
 | --- | --- |
 | **`allChangesForCluster`** | Optional. Boolean. If true, returns changes for the entire cluster. Default is false. |
-| **`fullDocument`** | Optional. String. Determines what to return for update operations. Options: "default", "updateLookup", "whenAvailable", "required". |
-| **`fullDocumentBeforeChange`** | Optional. String. Returns the pre-image of the document. Options: "off", "whenAvailable", "required". |
+| **`fullDocument`** | Optional. String. Determines what to return for update operations. Options: 'default', 'updateLookup', 'whenAvailable', 'required'. |
+| **`fullDocumentBeforeChange`** | Optional. String. Returns the preimage of the document. Options: "off", "whenAvailable", "required". |
 | **`resumeAfter`** | Optional. Resume token to resume change stream after a specific event. |
 | **`startAfter`** | Optional. Resume token to start change stream after a specific event. |
-| **`startAtOperationTime`** | Optional. Timestamp to start change stream from a specific time. |
-| **`showExpandedEvents`** | Optional. Boolean. Include additional change stream events. Default is false. |
+| **`startAtOperationTime`** | Optional. timestamp for starting change stream from a specific time. |
+| **`showExpandedEvents`** | Optional. Boolean. Include another change stream events. Default is false. |
 
 ## Example
 
@@ -52,7 +52,7 @@ Let's understand the usage with the `stores` dataset for monitoring real-time ch
 
 ### Example 1: Monitor all changes in stores collection
 
-This example shows how to set up a change stream to monitor all changes in the stores collection.
+The example shows how to set up a change stream to monitor all changes in the stores collection.
 
 ```javascript
 db.stores.aggregate([
