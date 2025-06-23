@@ -7,7 +7,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/27/2024
+ms.date: 06/23/2025
 ---
 
 # $bucket (as Aggregation Pipeline Stages) usage on Azure Cosmos DB for MongoDB vCore
