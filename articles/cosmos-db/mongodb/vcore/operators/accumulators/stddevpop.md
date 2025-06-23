@@ -192,6 +192,93 @@ This query groups the documents corresponding to 'Fourth Company' by store. Each
 }]
 ```
 
+### Example 3 - Calculate the standard deviation for a field when using window operators. This query calculates the standard deviation of total sales for stores belonging to the "Boulder Innovations" company from the first to the current document in the result set.
+
+```mongodb
+db.stores.aggregate(
+[{
+      "$match": {
+          "company": {
+              "$in": [
+                  "Boulder Innovations"
+              ]
+          },
+        "$and": [
+            {
+                "lastUpdated": {
+                    "$gt": ISODate("2024-09-01T03:06:24.180Z")
+                }
+            },
+            {
+                "lastUpdated": {
+                    "$lt": ISODate("2024-09-30T03:55:17.557Z")
+                }
+            }
+        ]
+      }
+  },
+  {
+    "$setWindowFields": {
+        "partitionBy": "$company",
+        "sortBy": {
+            "lastUpdated": 1
+        },
+        "output": {
+            "stdDevPopTotalSales": {
+                "$stdDevPop": "$sales.totalSales",
+                "window": {
+                    "documents": [
+                        "unbounded",
+                        "current"
+                    ]
+                }
+            }
+        }
+    }
+  },
+  {
+    "$project": {
+        "company": 1,
+        "name": 1,
+        "sales.totalSales": 1,
+        "lastUpdated": 1,
+        "stdDevPopTotalSales": 1
+    }
+  }]
+)
+```
+
+The first three documents returned by this query are:
+
+```json
+{
+    "_id": "a639bcc2-a553-4365-8298-ad21b71fe225",
+    "name": "Boulder Innovations | Computer Variety - Lake Noemie",
+    "sales": {"totalSales": 18216},
+    "company": "Boulder Innovations",
+    "storeOpeningDate": ISODate('2024-09-02T01:05:22.107Z'),
+    "stdDevPopTotalSales": 0
+  },
+  {
+    "_id": "5c7932cb-b720-44a9-8b73-7e3cd95efc99",
+    "name": "Boulder Innovations | Home Decor Bazaar - Rutherfordchester",
+    "sales": {"totalSales": 20383},
+    "company": 'Boulder Innovations',
+    "storeOpeningDate": ISODate('2024-09-02T01:15:36.736Z'),
+    "stdDevPopTotalSales": 1083.5
+  },
+  {
+    "_id": "f54dfadb-bc62-42ff-912b-a281950019d6",
+    "name": "Boulder Innovations | Smart TV Depot - Lake Lonnyborough",
+    "sales": { "totalSales": 43648 },
+    "company": "Boulder Innovations",
+    "storeOpeningDate": ISODate('2024-09-02T01:28:42.683Z'),
+    "stdDevPopTotalSales": 11512.035914159098
+  }
+
+```
+
+
 ## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
