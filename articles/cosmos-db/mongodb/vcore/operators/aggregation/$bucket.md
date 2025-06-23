@@ -16,7 +16,7 @@ The `$bucket` stage in an aggregation pipeline groups input documents into bucke
 
 ## Syntax
 
-```json
+```javascript
 {
   $bucket: {
     groupBy: <expression>,
@@ -45,7 +45,7 @@ The `$bucket` stage in an aggregation pipeline groups input documents into bucke
 
 The following example categorizes the `fullSales` field into three buckets: `[0, 1000)`, `[1000, 5000)`, and `[5000, 10000)`. Documents that do not fall into these ranges are grouped into a default bucket.
 
-```json
+```javascript
 db.sales.aggregate([
   {
     $bucket: {
@@ -65,7 +65,7 @@ db.sales.aggregate([
 
 The following example groups the discount percentages in the `promotionEvents.discounts` array into buckets: `[0, 10)`, `[10, 20)`, and `[20, 30)`.
 
-```json
+```javascript
 db.promotionEvents.aggregate([
   {
     $unwind: "$discounts"
