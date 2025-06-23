@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/23/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -852,6 +852,23 @@ ms.custom: automatically generated
 | Allowed values | `1-7` |
 | Parameter type | dynamic |
 | Documentation | [logfiles.retention_days](https://go.microsoft.com/fwlink/?linkid=2274270) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgaadauth.enable_group_sync
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Enables synchronization of Entra ID group members. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
