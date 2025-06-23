@@ -122,7 +122,7 @@ import { CosmosClient } from '@azure/cosmos';
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 Import all required types into your application code.
 
@@ -172,7 +172,7 @@ const client = new CosmosClient({
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const credential: TokenCredential = new DefaultAzureCredential();
@@ -197,7 +197,7 @@ const database = client.database('cosmicworks');
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const database: Database = client.database('cosmicworks');
@@ -217,7 +217,7 @@ const container = database.container('products');
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const container: Container = database.container('products');
@@ -246,7 +246,7 @@ let response = await container.items.upsert(item);
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const item: Product = {
@@ -279,7 +279,7 @@ let read_item = response.resource;
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const id = 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb';
@@ -322,7 +322,7 @@ for (let item of response.resources) {
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const querySpec: SqlQuerySpec = {
