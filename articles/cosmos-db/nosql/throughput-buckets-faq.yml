@@ -6,7 +6,7 @@ metadata:
   author: richagaur
   ms.author: richagaur
   ms.service: azure-cosmos-db
-  ms.topic: conceptual
+  ms.topic: faq
   ms.date: 03/31/2025
 
 title: Frequently asked questions on throughput buckets in Azure Cosmos DB
