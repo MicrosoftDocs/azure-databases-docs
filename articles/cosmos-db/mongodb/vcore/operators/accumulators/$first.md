@@ -1,6 +1,6 @@
 ---
-  title: $first (accumulator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $first
+  titleSuffix: Overview of the $first operator in Azure Cosmos DB for MongoDB vCore
   description: The $first operator returns the first value in a group according to the group's sorting order.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,7 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $first (accumulator)
+# $first
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 01/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: article
+ms.topic: concept-article
 ---
 
 # Storage options in Azure Database for PostgreSQL flexible server
@@ -73,7 +73,7 @@ The storage that you provision is the amount of storage capacity available to yo
 | 64 GiB | Provisioned 240; up to 3,500 | First 3000 IOPS free can scale up to 34359 |
 | 128 GiB | Provisioned 500; up to 3,500 | First 3000 IOPS free can scale up to 68719 |
 | 256 GiB | Provisioned 1,100; up to 3,500 | First 3000 IOPS free can scale up to 80000 |
-| 512 GiB | Provisioned 2,300; up to 3,500 | First 1200 IOPS free can scale to 80000 |
+| 512 GiB | Provisioned 2,300; up to 3,500 | First 12000 IOPS free can scale to 80000 |
 | 1 TiB | 5,000 | First 12000 IOPS free can scale up to 80000 |
 | 2 TiB | 7,500 | First 12000 IOPS free can scale up to 80000 |
 | 4 TiB | 7,500 | First 12000 IOPS free can scale up to 80000 |

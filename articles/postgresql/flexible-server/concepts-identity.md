@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 01/12/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: article
+ms.topic: concept-article
 ms.custom: sfi-image-nochange
 #customer intent: As a user, I want to learn about how can I use the different types of managed identities in an Azure Database for PostgreSQL flexible server.
 ---

@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 05/17/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: article
+ms.topic: concept-article
 ---
 
 # Connection libraries for Azure Database for PostgreSQL flexible server

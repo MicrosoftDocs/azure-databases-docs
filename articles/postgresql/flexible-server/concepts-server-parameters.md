@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: article
+ms.topic: concept-article
 ---
 
 # Server parameters in Azure Database for PostgreSQL flexible server

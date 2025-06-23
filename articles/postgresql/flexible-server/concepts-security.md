@@ -4,10 +4,10 @@ description: Learn about security in the Flexible Server deployment option for A
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 4/23/2025
+ms.date: 6/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: article
+ms.topic: concept-article
 ms.custom:
   - mvc
   - mode-other
@@ -135,7 +135,9 @@ oid            | 24827
 ```
 
 > [!IMPORTANT]
-> Recently, the ability to create **[CAST commands](https://www.postgresql.org/docs/current/sql-createcast.html)** was enabled in Azure Database for PostgreSQL Flexible Server. To run the CREATE CAST statement, the user must be a member of the *azure_pg_admin* group. Please be aware that it is not currently possible to drop a CAST once it has been created. 
+> Recently, the ability to create **[CAST commands](https://www.postgresql.org/docs/current/sql-createcast.html)** was enabled in Azure Database for PostgreSQL flexible server. To run the CREATE CAST statement, the user must be a member of the *azure_pg_admin* group. Please be aware that it is not currently possible to drop a CAST once it has been created.
+>
+> Azure Database for PostgreSQL flexible server only supports CAST commands using the "WITH FUNCTION" and "WITH INOUT" options. The "WITHOUT FUNCTION" option is not supported.
 
 
 [Audit logging in Azure Database for PostgreSQL flexible server](concepts-audit.md) is also available with Azure Database for PostgreSQL flexible server to track activity in your databases.

@@ -7,7 +7,7 @@ ms.reviewer: hariramt, maghan
 ms.date: 03/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: article
+ms.topic: concept-article
 ms.custom: "Remove in June 2025"
 ---
 

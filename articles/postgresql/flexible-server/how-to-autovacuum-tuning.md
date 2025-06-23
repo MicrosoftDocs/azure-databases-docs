@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 12/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: article
+ms.topic: how-to
 ---
 
 # Autovacuum tuning in Azure Database for PostgreSQL flexible server
