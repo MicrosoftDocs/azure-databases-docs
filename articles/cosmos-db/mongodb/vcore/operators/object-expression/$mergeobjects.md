@@ -6,8 +6,8 @@
   ms.author: abramees
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: conceptual
-  ms.date: 05/12/2025
+  ms.topic: language-reference
+  ms.date: 11/01/2024
 ---
 
 # $mergeObjects as object expression operator
