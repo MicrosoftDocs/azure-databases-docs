@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 12/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: how-to
+ms.topic: troubleshooting-general
 ---
 
 # Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server
