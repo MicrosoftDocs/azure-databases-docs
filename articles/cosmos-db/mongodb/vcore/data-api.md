@@ -17,7 +17,7 @@ The Data API for Azure Cosmos DB for MongoDB vCore is an https interface that al
 
 ## Enabling Data API on MongoDB vCore
 
-You can enable or disable this feature using the Azure Portal, Azure CLI or an ARM template.
+You can enable or disable this feature using the Azure portal, Azure CLI or an ARM template.
 
 ### Steps to enable Data API on Azure portal
 
