@@ -1,10 +1,10 @@
 ---
-title: Best practices for pg_dump and pg_restore
+title: Best Practices for pg_dump and pg_restore
 description: This article discusses best practices for pg_dump and pg_restore in Azure Database for PostgreSQL flexible server.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 06/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: best-practice
@@ -48,16 +48,15 @@ select schemaname,relname,n_dead_tup,n_live_tup,round(n_dead_tup::float/n_live_t
 
 The `dead_pct` column in this query is the percentage of dead tuples when compared to live tuples. A high `dead_pct` value for a table might indicate that the table isn't being properly vacuumed. For more information, see [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
 
-
 For each table that you identify, you can perform a manual vacuum analysis by running the following:
 
 ```
-vacuum(analyze, verbose) <table_name> 
+vacuum(analyze, verbose) <table_name>
 ```
 
 ### Use a PITR server
 
-You can perform a pg_dump on an online or live server. It makes consistent backups even if the database is being used. It doesn't block other users from using the database. Consider the database size and other business or customer needs before you start the pg_dump process. Small databases might be good candidates for performing a pg_dump on the production server. 
+You can perform a pg_dump on an online or live server. It makes consistent backups even if the database is being used. It doesn't block other users from using the database. Consider the database size and other business or customer needs before you start the pg_dump process. Small databases might be good candidates for performing a pg_dump on the production server.
 
 For large databases, you could create a point-in-time recovery (PITR) server from the production server and perform the pg_dump process on the PITR server. Running pg_dump on a PITR would be a cold run process. The trade-off for this approach is that you wouldn't be concerned with extra CPU, memory, and IO utilization that comes with a pg_dump process that runs on an actual production server. You can run pg_dump on a PITR server and then drop the PITR server after the pg_dump process is completed.
 
@@ -65,7 +64,7 @@ For large databases, you could create a point-in-time recovery (PITR) server fro
 
 Use the following syntax for pg_dump:
 
-`pg_dump -h <hostname>  -U <username> -d <databasename> -Fd -j <Num of parallel jobs> -Z0 -f sampledb_dir_format`
+`pg_dump -h <hostname> -U <username> -d <databasename> -Fd -j <Num of parallel jobs> -Z0 -f sampledb_dir_format`
 
 ## Best practices for pg_restore
 
@@ -79,16 +78,16 @@ By using multiple concurrent jobs, you can reduce the time it takes to restore a
 
 If you're restoring data to a new server or non-production server, you can optimize the following server parameters prior to running pg_restore:
 
-`work_mem` = 32 MB   
-`max_wal_size` = 65536 (64 GB)     
-`checkpoint_timeout` = 3600 #60min     
-`maintenance_work_mem` = 2097151 (2 GB)   
-`autovacuum` = off   
-`wal_compression` = on   
+`work_mem` = 32 MB  
+`max_wal_size` = 65536 (64 GB)  
+`checkpoint_timeout` = 3600 #60min  
+`maintenance_work_mem` = 2097151 (2 GB)  
+`autovacuum` = off  
+`wal_compression` = on
 
 After the restore is completed, make sure that all these parameters are appropriately updated as per workload requirements.
 
-> [!NOTE]
+> [!NOTE]  
 > Follow the preceding recommendations only if there's enough memory and disk space. If you have a small server with 2, 4, or 8 vCores, set the parameters accordingly.
 
 ### Other considerations
@@ -100,29 +99,67 @@ After the restore is completed, make sure that all these parameters are appropri
 
 Use the following syntax for pg_restore:
 
-`pg_restore -h <hostname> -U <username> -d <db name> -Fd -j <NUM>  -C  <dump directory>`
+`pg_restore -h <hostname> -U <username> -d <db name> -Fd -j <NUM> -C <dump directory>`
 
-* `-Fd`: The directory format.   
-* `-j`: The number of jobs.   
-* `-C`: Begin the output with a command to create the database itself and then reconnect to it.     
+- `-Fd`: The directory format.
+- `-j`: The number of jobs.
+- `-C`: Begin the output with a command to create the database itself and then reconnect to it.
 
 Here's an example of how this syntax might appear:
 
-`pg_restore -h <hostname>  -U <username> -j <Num of parallel jobs> -Fd -C -d <databasename> sampledb_dir_format`
+`pg_restore -h <hostname> -U <username> -j <Num of parallel jobs> -Fd -C -d <databasename> sampledb_dir_format`
 
 ## Virtual machine considerations
 
-Create a virtual machine in the same region and availability zone, preferably where you have both your target and source servers. Or, at a minimum, create the virtual machine closer to the source server or a target server. We recommend that you use Azure Virtual Machines with a high-performance local SSD. 
+Create a virtual machine in the same region and availability zone, preferably where you have both your target and source servers. Or, at a minimum, create the virtual machine closer to the source server or a target server. We recommend that you use Azure Virtual Machines with a high-performance local SSD.
 
 For more information about the SKUs, see:
-* [Edv4 and Edsv4-series](/azure/virtual-machines/edv4-edsv4-series)   
-* [Ddv4 and Ddsv4-series](/azure/virtual-machines/ddv4-ddsv4-series)
+- [Edv4 and Edsv4-series](/azure/virtual-machines/edv4-edsv4-series)
+- [Ddv4 and Ddsv4-series](/azure/virtual-machines/ddv4-ddsv4-series)
+
+## Examples
+
+Here are some examples of how to use `pg_dump` and `pg_restore` with the best practices discussed above.
+
+### Using `pg_dump` with directory format and parallel jobs
+
+```bash
+pg_dump -h <server>.postgres.database.azure.com -U <username> -d <database> \
+  -Fd -j 4 -f /backups/mydb_dump_dir
+```
+
+**Explanation:**
+- `-Fd`: Dumps in directory format, which is required for parallel restore.
+- `-j 4`: Uses 4 parallel jobs to speed up the dump.
+- `-f`: Specifies the output directory.
+
+### Using `pg_dump` with no compression for performance
+
+```bash
+pg_dump -h <server>.postgres.database.azure.com -U <username> -d <database> \
+  -F c -Z 0 -f /backups/mydb_nocompress.dump
+```
+
+**Explanation:**
+- `-F c`: Custom format.
+- `-Z 0`: Disables compression to improve performance.
+
+### Using `pg_restore` with parallel obs
+
+```bash
+pg_restore -h <server>.postgres.database.azure.com -U <username> -d <target_database> \
+  -Fd -j 4 /backups/mydb_dump_dir
+```
+
+**Explanation:**
+- `-Fd`: Matches the directory format used in the dump.
+- `-j 4`: Uses 4 parallel jobs to speed up the restore.
 
 ## Related content
 
-- [Configure intelligent tuning for Azure Database for PostgreSQL flexible server](how-to-enable-intelligent-performance-portal.md).
-- [Troubleshooting guides for Azure Database for PostgreSQL flexible server](concepts-troubleshooting-guides.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md).
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
-- [Query Performance Insight in Azure Database for PostgreSQL flexible server](concepts-query-performance-insight.md).
+- [Configure intelligent tuning for Azure Database for PostgreSQL flexible server](how-to-enable-intelligent-performance-portal.md)
+- [Troubleshooting guides for Azure Database for PostgreSQL flexible server](concepts-troubleshooting-guides.md)
+- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md)
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md)
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md)
+- [Query Performance Insight in Azure Database for PostgreSQL flexible server](concepts-query-performance-insight.md)
