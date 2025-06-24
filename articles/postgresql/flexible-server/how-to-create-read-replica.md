@@ -126,7 +126,7 @@ az postgres flexible-server replica create \
 <!--
 #### [REST API](#tab/restapi)
 
-Initiate an `HTTP PUT` request by using the [servers create API](/rest/api/postgresql/flexibleserver/servers/create):
+Initiate an `HTTP PUT` request by using the [servers create API](/rest/api/postgresql/servers/create):
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{replicaserverName}?api-version=2022-12-01
@@ -144,7 +144,7 @@ Here, you need to replace `{subscriptionId}`, `{resourceGroupName}`, and `{repli
 }
 ```
 
-After the read replica is created, the properties of all servers, which are replicas of a primary replica can be obtained by initiating an `HTTP GET` request by using [replicas list by server API](/rest/api/postgresql/flexibleserver/replicas/list-by-server): 
+After the read replica is created, the properties of all servers, which are replicas of a primary replica can be obtained by initiating an `HTTP GET` request by using [replicas list by server API](/rest/api/postgresql/replicas/list-by-server): 
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForPostgreSql/flexibleServers/{sourceserverName}/replicas?api-version=2022-12-01

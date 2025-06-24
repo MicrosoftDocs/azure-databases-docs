@@ -8,7 +8,8 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
-  - ignite-2024
+- ignite-2024
+- sfi-image-nochange
 ms.topic: quickstart
 ms.date: 06/11/2025
 ---

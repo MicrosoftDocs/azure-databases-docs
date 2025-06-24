@@ -2,16 +2,10 @@
   href: find.md
 - name: insert
   href: insert.md
-- name: mod
-  href: mod.md
 - name: update
   href: update.md
 - name: delete
   href: delete.md
-- name: regex
-  href: regex.md
-- name: text
-  href: text.md
 - name: findAndModify
   href: findandmodify.md
 - name: getMore

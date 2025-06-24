@@ -3,6 +3,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: include
 ms.date: 08/23/2024
+ms.custom: sfi-image-nochange
 ---
 1. From the Azure Cosmos DB for NoSQL account page, select the **Connection String** navigation menu option.
 

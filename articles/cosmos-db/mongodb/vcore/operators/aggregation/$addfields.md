@@ -1,16 +1,16 @@
 ---
-title: $addFields (Aggregation Pipeline Stage)
+title: $addFields (aggregation)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $addFields stage in the aggregation pipeline is used to add new fields to documents.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
+ms.topic: language-reference
 ms.date: 08/27/2024
 ---
 
-# $addFields (Aggregation Pipeline Stage)
+# $addFields (aggregation)
 The $addFields stage in the aggregation pipeline is used to add new fields to documents. It can also be used to reset the values of existing fields. This stage is particularly useful when you need to create new fields based on existing data or modify existing fields within your documents.
 
 ## Syntax

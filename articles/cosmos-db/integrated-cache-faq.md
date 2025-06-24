@@ -4,7 +4,7 @@ description: Frequently asked questions about the Azure Cosmos DB integrated cac
 author: jcocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: faq
 ms.date: 08/29/2022
 ms.author: jucocchi
 ---

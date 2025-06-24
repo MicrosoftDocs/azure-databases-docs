@@ -7,11 +7,12 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
-  - ignite-2024
+- ignite-2024
+- sfi-image-nochange
 ms.topic: how-to
 ms.date: 12/03/2024
 appliesto:
-  - ✅ MongoDB vCore
+- ✅ MongoDB vCore
 ---
 
 # Create and use a cross-region cluster replica in Azure Cosmos DB for MongoDB vCore

@@ -8,6 +8,7 @@ ms.reviewer: maghan
 ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Network scenarios for the migration service in Azure Database for PostgreSQL

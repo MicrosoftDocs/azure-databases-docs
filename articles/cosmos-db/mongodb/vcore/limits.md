@@ -8,7 +8,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2024
   - build-2025
-ms.topic: conceptual
+ms.topic: limits-and-quotas
 ms.date: 05/21/2025
 appliesto:
   - ✅ MongoDB (vCore)

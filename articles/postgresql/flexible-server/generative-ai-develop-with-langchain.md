@@ -9,7 +9,7 @@ ms.subservice: flexible-server
 ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-ms.topic: how-to
+ms.topic: concept-article
 ---
 
 # Use LangChain with Azure Database for PostgreSQL

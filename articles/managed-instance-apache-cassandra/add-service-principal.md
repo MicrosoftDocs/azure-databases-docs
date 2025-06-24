@@ -6,6 +6,7 @@ ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: thvankra
+ms.custom: sfi-image-nochange
 ---
 
 # Use Azure portal to add Azure Cosmos DB service principal

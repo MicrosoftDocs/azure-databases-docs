@@ -8,6 +8,7 @@ ms.date: 09/18/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
+ms.custom: sfi-image-nochange
 ---
 
 # Quickstart: Import data from Azure Database for PostgreSQL flexible server in Power BI

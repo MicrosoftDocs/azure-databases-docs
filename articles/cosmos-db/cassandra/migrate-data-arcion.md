@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 04/04/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Migrate data from Cassandra to Azure Cosmos DB for Apache Cassandra account using Arcion

@@ -5,7 +5,7 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/03/2021
 ---
 

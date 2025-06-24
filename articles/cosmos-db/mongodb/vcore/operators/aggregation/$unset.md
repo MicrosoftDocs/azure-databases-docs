@@ -1,16 +1,16 @@
 ---
-title: $unset (as Aggregation Pipeline Stage)
+title: $unset (aggregation)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $unset stage in the aggregation pipeline is used to remove specified fields from documents.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
+ms.topic: language-reference
 ms.date: 08/27/2024
 ---
 
-# $unset (as Aggregation Pipeline Stage)
+# $unset (aggregation)
 The $unset stage the aggregation pipeline is used to remove specified fields from documents. This can be particularly useful when you need to exclude certain fields from the results of an aggregation query for reasons such as privacy, reducing payload size, or simply cleaning up the output.
 
 ## Syntax

@@ -2,6 +2,7 @@
 ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 08/23/2024
+ms.custom: sfi-image-nochange
 ---
 
 This quickstart will create a single Azure Cosmos DB account using the API for NoSQL.

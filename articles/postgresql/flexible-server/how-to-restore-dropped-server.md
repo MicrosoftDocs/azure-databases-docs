@@ -8,6 +8,7 @@ ms.date: 09/18/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Restore a dropped Azure Database for PostgreSQL flexible server instance
@@ -36,7 +37,7 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
 
 1. Select the **Delete PostgreSQL Server** event, then select the **JSON tab**. Copy the `resourceId` and `submissionTimestamp` attributes in JSON output. The resourceId is in the following format: `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ResourceGroup-name/providers/Microsoft.DBforPostgreSQL/flexibleServers/deletedserver`.
 
-1. Browse to the Azure Database for PostgreSQL flexible server [Create Server REST API Page](/rest/api/postgresql/flexibleserver/servers/create) and select the **Try It** tab highlighted in green. Sign in with your Azure account.
+1. Browse to the Azure Database for PostgreSQL flexible server [Create Server REST API Page](/rest/api/postgresql/servers/create) and select the **Try It** tab highlighted in green. Sign in with your Azure account.
 
   > [!IMPORTANT]  
   > Use this api-version **2024-08-01** rather than the default before running to enable this API function as expected as detailed in the following step.

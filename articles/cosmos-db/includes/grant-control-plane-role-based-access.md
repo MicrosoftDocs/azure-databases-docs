@@ -3,6 +3,7 @@ ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 03/18/2025
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+ms.custom: sfi-image-nochange, sfi-ropc-nochange
 ---
 
 ## Prerequisites

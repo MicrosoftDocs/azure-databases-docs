@@ -9,12 +9,13 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - devcenter
-  - devx-track-azurecli
-  - mode-api
-  - passwordless-java
-  - devx-track-extended-java
+- mvc
+- devcenter
+- devx-track-azurecli
+- mode-api
+- passwordless-java
+- devx-track-extended-java
+- sfi-ropc-nochange
 ms.devlang: java
 ---
 

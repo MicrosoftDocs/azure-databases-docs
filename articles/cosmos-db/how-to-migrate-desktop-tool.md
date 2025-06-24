@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 05/01/2023
+ms.custom: sfi-ropc-blocked
 # CustomerIntent: As a database owner, I want to use a tool to perform migration to Azure Cosmos DB so that I can streamline large and complex migrations.
 ---
 

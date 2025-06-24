@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 3/12/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Azure Database for PostgreSQL flexible server versioning policy

@@ -5,7 +5,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 12/04/2019
 ---
 

@@ -9,8 +9,9 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - mode-other
+- mvc
+- mode-other
+- sfi-image-nochange
 ---
 
 # Use MySQL Workbench with Azure Database for MySQL - Flexible Server

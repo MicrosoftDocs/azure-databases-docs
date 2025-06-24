@@ -9,9 +9,10 @@ ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 06/09/2025
 appliesto:
-  - ✅ MongoDB (vCore)
+- ✅ MongoDB (vCore)
 ms.custom:
-  - build-2025
+- build-2025
+- sfi-image-nochange
 ---
 
 # Scaling and configuring Your Azure Cosmos DB for MongoDB vCore cluster

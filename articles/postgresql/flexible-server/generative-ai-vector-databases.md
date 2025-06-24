@@ -9,7 +9,7 @@ ms.subservice: flexible-server
 ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Vector stores in Azure Database for PostgreSQL

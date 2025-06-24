@@ -4,7 +4,7 @@ description: The Azure Cosmos DB integrated cache is an in-memory cache that hel
 author: jcocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 7/19/2024
 ms.author: jucocchi
 ---

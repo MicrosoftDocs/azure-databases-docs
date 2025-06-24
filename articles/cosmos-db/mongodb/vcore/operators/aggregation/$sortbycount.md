@@ -1,16 +1,16 @@
 ---
-title: $sortByCount (Aggregation Pipeline Stage)
+title: $sortByCount (aggregation)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $sortByCount stage in the aggregation pipeline is used to group documents by a specified expression and then sort the count of documents in each group in descending order.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
+ms.topic: language-reference
 ms.date: 08/27/2024
 ---
 
-# $sortByCount (Aggregation Pipeline Stage)
+# $sortByCount (aggregation)
 The $sortByCount stage in the aggregation pipeline is used to group documents by a specified expression and then sort the count of documents in each group in descending order. The `$sortByCount` stage is useful for quickly identifying the most common values within a dataset.
 
 ## Syntax

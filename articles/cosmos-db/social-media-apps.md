@@ -3,9 +3,10 @@ title: 'Azure Cosmos DB design pattern: Social media apps'
 description: Learn about a design pattern for Social Networks by using the storage flexibility of Azure Cosmos DB and other Azure services.
 author: ealsur
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: solution-overview
 ms.date: 05/28/2019
 ms.author: maquaran
+ms.custom: sfi-image-nochange
 ---
 # Going social with Azure Cosmos DB
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
@@ -229,7 +230,7 @@ Now that I got you hooked, you’ll probably think you need some PhD in math sci
 
 To achieve any of these Machine Learning scenarios, you can use [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) to ingest the information from different sources. You can also use U-SQL to process the information and generate an output that can be processed by Azure Machine Learning.
 
-Another available option is to use [Azure AI services](https://www.microsoft.com/cognitive-services) to analyze your users content; not only can you understand them better (through analyzing what they write with [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), but you could also detect unwanted or mature content and act accordingly with [Computer Vision API](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/). Azure AI services include many out-of-the-box solutions that don't require any kind of Machine Learning knowledge to use.
+Another available option is to use [Azure AI services](https://www.microsoft.com/cognitive-services) to analyze your users content; not only can you understand them better (through analyzing what they write with [Text Analytics API](https://www.microsoft.com/cognitive-services/text-analytics-api)), but you could also detect unwanted or mature content and act accordingly with [Computer Vision API](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/). Azure AI services include many out-of-the-box solutions that don't require any kind of Machine Learning knowledge to use.
 
 ## A planet-scale social experience
 

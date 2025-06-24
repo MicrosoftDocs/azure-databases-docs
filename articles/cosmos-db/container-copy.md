@@ -5,7 +5,7 @@ description: Learn how to copy data from one container to another in Azure Cosmo
 author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2022
 ms.custom: references_regions, build-2023, ignite-2023, ignite-2024
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra

@@ -1,16 +1,16 @@
 ---
-title: $unwind (Aggregation Pipeline Stage)
+title: $unwind (aggregation)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $unwind stage in the aggregation framework is used to deconstruct an array field from the input documents to output a document for each element.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
+ms.topic: language-reference
 ms.date: 08/27/2024
 ---
 
-# $unwind (Aggregation Pipeline Stage)
+# $unwind (aggregation)
 The $unwind stage in the aggregation framework is used to deconstruct an array field from the input documents to output a document for each element. Each output document is a copy of the original but with the value of the array field replaced by a single element. This is particularly useful for normalizing data stored in arrays and for performing operations on each element of an array separately.
 
 ## Syntax

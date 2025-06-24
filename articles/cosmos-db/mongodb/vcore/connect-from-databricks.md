@@ -8,7 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.custom:
-  - devx-track-python
+- devx-track-python
+- sfi-ropc-blocked
 ---
 
 # Connect to Azure Cosmos DB for MongoDB vCore from Azure Databricks

@@ -1,16 +1,16 @@
 ---
-title: $sample
+title: $sample (aggregation)
 titleSuffix: Overview of the $sample operator in Azure Cosmos DB for MongoDB vCore
 description: The $sample operator in Azure Cosmos DB for MongoDB vCore returns a randomly selected number of documents
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: language-reference
 ms.date: 02/24/2025
 ---
 
-# $sample
+# $sample (aggregation)
 The `$sample` stage is used in aggregation pipelines to randomly select a specified number of documents from a collection. The `$sample` command is useful during testing, data analysis, and generating random subsets of data for machine learning.
 
 ## Syntax

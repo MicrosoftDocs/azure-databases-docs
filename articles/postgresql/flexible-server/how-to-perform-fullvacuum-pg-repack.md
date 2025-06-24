@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 04/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Full vacuum using pg_repack in Azure Database for PostgreSQL flexible server

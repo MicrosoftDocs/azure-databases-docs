@@ -62,4 +62,4 @@ Azure Database for PostgreSQL flexible server has achieved a comprehensive set o
 ## Related content
 
 - [Azure compliance](https://azure.microsoft.com/explore/trusted-cloud/compliance/).
-- [Managing compliance in the cloud (Microsoft Trust Center)](https://www.microsoft.com/en-us/trust-center/compliance/compliance-overview).
+- [Managing compliance in the cloud (Microsoft Trust Center)](https://www.microsoft.com/trust-center/compliance/compliance-overview).

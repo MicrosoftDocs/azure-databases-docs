@@ -6,7 +6,7 @@ author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
 ms.custom: build-2023, devx-track-arm-template
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/21/2024
 ---
 

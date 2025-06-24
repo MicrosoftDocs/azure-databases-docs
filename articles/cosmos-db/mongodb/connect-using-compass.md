@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
+ms.custom: sfi-image-nochange
 ---
 
 # Use MongoDB Compass to connect to Azure Cosmos DB's API for MongoDB

@@ -6,7 +6,7 @@ author: khelanmodi
 ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
+ms.topic: language-reference
 ms.date: 09/27/2024
 ---
 
@@ -71,6 +71,11 @@ This example demonstrates querying a nested field (`sales.monthly.total`) with t
   { "_id": 8, "sales": { "monthly": { "total": 9 } }, "category": "Clothing" }
 ]
 ```
+
+## Considerations
+
+- If fewer than two values are specified in the array for the $mod operator, an error is thrown by the server indicating not enough arguments were passed. 
+- If more than two values are specified in the array for the $mod operator, an error is thrown by the server indicating too many arguments were passed.
 
 ## Limitations
 

@@ -6,7 +6,7 @@ description: |
 author: meredithmooreux
 ms.author: merae
 ms.service: azure-cosmos-db
-ms.custom: references_regions
+ms.custom: references_regions, sfi-image-nochange
 ms.topic: overview
 ms.date: 09/19/2024
 ---

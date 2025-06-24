@@ -46,7 +46,7 @@ The following example illustrates how to check for specific values or objects in
 
 ## Remarks
 
-- This system function benefits from a [range index](../../index-policy.md#includeexclude-strategy).
+- This system function benefits from a [range index](../../index-overview.md#range-index).
 
 ## Related content
 

@@ -10,7 +10,8 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ms.collection: ce-skilling-ai-copilot
 ms.custom:
-  - ignite-2023
+- ignite-2023
+- sfi-ropc-nochange
 ---
 
 # Integrate Azure AI capabilities into Azure Database for PostgreSQL
