@@ -76,7 +76,7 @@ By using multiple concurrent jobs, you can reduce the time it takes to restore a
 
 ### Server parameters
 
-If you're restoring data to a new server or non-production server, you can optimize the following server parameters prior to running pg_restore:
+If you're restoring data to a new server or nonproduction server, you can optimize the following server parameters before running pg_restore:
 
 `work_mem` = 32 MB  
 `max_wal_size` = 65536 (64 GB)  
@@ -92,7 +92,7 @@ After the restore is completed, make sure that all these parameters are appropri
 
 ### Other considerations
 
-- Disable high availability (HA) prior to running pg_restore.
+- Disable high availability (HA) before running pg_restore.
 - Analyze all tables that are migrated after the restore is complete.
 
 ### Syntax for pg_restore
