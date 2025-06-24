@@ -1,5 +1,5 @@
 ---
-  title: $fill (aggregation pipeline stage) usage on Azure Cosmos DB for MongoDB vCore
+  title: $fill (aggregation)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $fill stage allows filling missing values in documents based on specified methods and criteria.
   author: suvishodcitus
@@ -10,7 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $fill (aggregation pipeline stage)
+# $fill (aggregation)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

@@ -12,7 +12,7 @@ ms.date: 01/05/2025
 
 # $sum
 
-The `$sum` operator is an aggregation operator used in MongoDB to calculate the sum of numeric values. It is commonly employed within aggregation pipelines, such as `$group`, `$bucket`, `$bucketAuto`, and `$setWindowFields`. It is a versatile operator that helps summarize data effectively in various use cases, such as calculating totals, averages, or other derived metrics.
+The `$sum` operator is an aggregation operator used to calculate the sum of numeric values. It is commonly employed within aggregation pipelines, such as `$group`, `$bucket`, `$bucketAuto`, and `$setWindowFields`. It is a versatile operator that helps summarize data effectively in various use cases, such as calculating totals, averages, or other derived metrics.
 
 ## Syntax
 

@@ -1,5 +1,5 @@
 ---
-title: $sort (aggregation pipeline stage)
+title: $sort (aggregation)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $sort stage in the aggregation pipeline is used to order the documents in the pipeline by a specified field or fields.
 author: gahl-levy
@@ -10,7 +10,7 @@ ms.topic: language-reference
 ms.date: 08/27/2024
 ---
 
-# $sort (as aggregation pipeline stage)
+# $sort (aggregation)
 The $sort stage in the aggregation pipeline is used to order the documents in the pipeline by a specified field or fields. This stage helps you sort data, like arranging sales by amount or events by date.
 
 ## Syntax
