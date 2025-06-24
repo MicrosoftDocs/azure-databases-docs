@@ -46,7 +46,7 @@ The retirement details for MySQL major versions are listed in the following tabl
 | [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | April 30, 2026 | June 1, 2026 |April 30, 2029|
 
 > [!NOTE]
-> For each deprecated Azure Database for MySQL version, Azure provide a one month grace period after the community deprecation date. This grace period provides customers with additional time to decide whether to upgrade to a newer version or to be enrolled in the paid Extend Support plan.
+> For each deprecated Azure Database for MySQL version, Azure provides a one-month grace period after the community deprecation date. This grace period provides customers with additional time to decide whether to upgrade to a newer version or to be enrolled in the paid Extend Support plan.
 > For Azure Database for MySQL 5.7, the community end of life (EOL) was announced in October 2023. The standard support end date was originally planned for September 2025, but based on customer feedback, we have extended standard support for MySQL 5.7 until March 2026. Extend Support for MySQL 5.7 will begin in April 2026.
 > For details on what happens after standard support ends, including the Extend Support policy, see the next section.
 
@@ -89,7 +89,7 @@ A: Yes, it's expected that there will be some downtime during the major version 
 
 __Q: Can I roll back to a previous major version after upgrading?__
 
-A: While it's not recommended to downgrade to a previous major version after upgrading, we acknowledge that there might be specific scenarios where this flexibility becomes necessary. To ensure a smooth upgrade process and alleviate any potential concerns, it's advised to adhere to best practices by performing a comprehensive [on-demand backup](flexible-server/how-to-trigger-on-demand-backup.md) before proceeding with the upgrade. This backup serves as a precautionary measure, allowing you to [restore your database](flexible-server/how-to-restore-server-portal.md) to its previous version on another new Azure Database for MySQL - Flexible Server if needed.
+A: While it's not recommended to downgrade to a previous major version after upgrading, we acknowledge that there might be specific scenarios where this flexibility becomes necessary. To ensure a smooth upgrade process and alleviate any potential concerns, it's advisable to adhere to best practices by performing a comprehensive [on-demand backup](flexible-server/how-to-trigger-on-demand-backup.md) before proceeding with the upgrade. This backup serves as a precautionary measure, allowing you to [restore your database](flexible-server/how-to-restore-server-portal.md) to its previous version on another new Azure Database for MySQL - Flexible Server if needed.
 
 __Q: What are the main advantages of upgrading to a newer major version?__
 
