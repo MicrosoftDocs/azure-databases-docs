@@ -23,7 +23,6 @@ Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature as gene
 ## Prerequisites
 
 - Azure Cosmos DB for NoSQL account
-- [Vector search](vector-search-overview.md) feature enabled
 
 ## What is full text search?
 
