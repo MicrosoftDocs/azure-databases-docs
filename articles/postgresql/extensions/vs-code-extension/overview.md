@@ -1,15 +1,16 @@
 ---
 title: What Is the PostgreSQL Extension for Visual Studio Code?
 description: Overview of the PostgreSQL extension for Visual Studio Code.
-author: jojohnso-msft
-ms.author: jojohnso
+author: swarathmika
+ms.author: skakivaya
 ms.reviewer: maghan
-ms.date: 05/19/2025
+ms.date: 06/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
 ms.custom:
   - build-2025
+ai-usage: ai-assisted
 # customer intent: As a user, I want to understand what the PostgreSQL extension for VS Code is and how I can use it with Azure Database for PostgreSQL flexible server.
 ---
 
@@ -76,6 +77,12 @@ The PostgreSQL extension is compatible with the following operating systems:
 - Linux
 
 Including support for various Linux distributions such as Ubuntu, Fedora, and Red Hat Enterprise Linux.
+
+## Limitations and considerations
+
+The PostgreSQL extension for Visual Studio Code is currently in preview, and there are some limitations and considerations to keep in mind:
+
+- ARM64 not currently supported
 
 ## Feedback and support
 
