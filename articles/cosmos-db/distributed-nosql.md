@@ -1,5 +1,5 @@
 ---
-title: Understand distributed NoSQL databases
+title: Understand Distributed NoSQL Databases
 titleSuffix: Azure Cosmos DB
 description: Learn about distributed NoSQL databases and how you can use them together with your cloud-native global-scale applications at with flexible data schemas.
 author: markjbrown
@@ -31,7 +31,9 @@ One of the challenges when maintaining a database system is that many database e
 
 ## Azure Cosmos DB
 
-With a distributed database that's also a NoSQL database, high transactional workloads suddenly became easier to build and manage. [Azure Cosmos DB](introduction.md) is a database platform that offers distributed data APIs in both NoSQL and relational variants. Specifically, many of the NoSQL APIs offer various consistency options that allow you to fine tune the level of consistency or availability that meets your real-world application requirements. Your database could be configured to offer high consistency with tradeoffs to speed and availability. Similarly, your database could be configured to offer the best performance with predictable tradeoffs to consistency and latency of your replicated data. Azure Cosmos DB automatically and dynamically distributes your data across local instances or globally. Azure Cosmos DB can also provide ACID guarantees and scale throughput to map to your application’s requirements.
+With a distributed database that's also a NoSQL database, high transactional workloads suddenly became easier to build and manage. [Azure Cosmos DB](introduction.md) is a database platform that offers distributed data APIs in both NoSQL and relational variants. Specifically, many of the NoSQL APIs offer various consistency options that allow you to fine tune the level of consistency or availability that meets your real-world application requirements.
+
+Your database could be configured to offer high consistency with tradeoffs to speed and availability. Similarly, your database could be configured to offer the best performance with predictable tradeoffs to consistency and latency of your replicated data. Azure Cosmos DB automatically and dynamically distributes your data across local instances or globally. Azure Cosmos DB can also provide ACID guarantees and scale throughput to map to your application’s requirements.
 
 ## Next steps
 

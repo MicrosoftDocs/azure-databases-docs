@@ -32,7 +32,7 @@ With Azure Cosmos DB, you can add or remove the regions associated with your acc
 
 * **Azure Government for Department of Defense (DoD)** is available in two regions in the United States to the US Department of Defense.
 
-:::image type="content" source="./media/distribute-data-globally/deployment-topology.png" alt-text="Diagram that shows the highly available deployment topology.":::
+:::image type="content" source="./media/distribute-data-globally/deployment-topology.png" alt-text="Diagram that shows the highly available deployment topology." lightbox="./media/distribute-data-globally/deployment-topology.png":::
 
 ## Key benefits of global distribution
 
