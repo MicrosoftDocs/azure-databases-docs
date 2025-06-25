@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 05/21/2025
+ms.date: 06/24/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -123,9 +123,8 @@ M10, M20, and M25 have the following limitations:
 
 ### Microsoft Entra ID authentication
 The Microsoft Entra ID authentication feature has these current limitations:
-- This feature isn't supported on replica clusters.
-- This feature isn't supported on restored clusters.
 - This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
+- This feature doesn't support Entra ID groups.
 
 ### Native DocumentDB secondary users
 
