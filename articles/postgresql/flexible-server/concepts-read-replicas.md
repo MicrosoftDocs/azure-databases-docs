@@ -66,8 +66,8 @@ In this setup, replication for each read replica is dependent on its source read
 Cascading read replica can help you to distribute read workloads thus reducing the load on the primary server. Deploying these read replicas in different region (cross region read replicas) can help you distribute your read traffic closer to users in different geographies.
 
 #### Key considertaions:
-1. You can create up to 5 read replicas per source read replica.
-2. We do not support failover for cascading read replica servers, and we support up to 2 levels of replication.
+1. You can create up to 5 read replicas per source read replica and we suppor up to 2 levels of replication.
+2. We do not support failover for read replica that have cascading read replicas added.
 
 ### Configuration management
 
