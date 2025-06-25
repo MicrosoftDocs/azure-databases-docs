@@ -56,6 +56,19 @@ To achieve a successful create operation, avoid making replicas during times of 
 
 Learn how to [Create a read replica](how-to-create-read-replica.md).
 
+## Create cascading read replicas
+
+We are supporting cascading read replicas feature in Public preview capacity. This allows you to add additional read replicas on top of an existing read replica, with the existing read replica acting as the source for the new one. 
+
+![screenshot](media/concepts-read-replica/cascadingreadreplica.png)
+
+In this setup, replication for each read replica is dependent on its source read replica. The first-level read replica asynchronously replicates data from the primary server, and the newly added read replica uses this first-level read replica to replicate data. For example, "Read-Replica 1" serves as the source for "Read-Replica 1.1" and replicates data from its source.
+Cascading read replica can help you to distribute read workloads thus reducing the load on the primary server. Deploying these read replicas in different region (cross region read replicas) can help you distribute your read traffic closer to users in different geographies.
+
+#### Key considertaions:
+1. You can create up to 5 read replicas per source read replica.
+2. We do not support failover for cascading read replica servers, and we support up to 2 levels of replication.
+
 ### Configuration management
 
 When setting up read replicas for Azure Database for PostgreSQL flexible server, it's essential to understand the server configurations that can be adjusted, the ones inherited from the primary, and any related limitations.
