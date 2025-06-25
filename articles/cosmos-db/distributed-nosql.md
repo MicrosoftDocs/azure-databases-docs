@@ -1,25 +1,25 @@
 ---
-title: Understanding distributed NoSQL databases
+title: Understand distributed NoSQL databases
 titleSuffix: Azure Cosmos DB
 description: Learn about distributed NoSQL databases and how you can use them together with your cloud-native global-scale applications at with flexible data schemas.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
-ms.date: 11/21/2021
+ms.date: 06/24/2025
 ---
 
-# Understanding distributed NoSQL databases
+# Understand distributed NoSQL databases
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB is a globally distributed database platform for both NoSQL and relational databases of any scale. This article explores distributed NoSQL databases in the context of Azure Cosmos DB’s various NoSQL API options.
 
-For more information about other data storage options in Azure, see [choosing the right data store in the Azure Architecture Center](/azure/architecture/guide/technology-choices/data-store-overview).
+For more information about other data storage options in Azure, see [Understand data store models](/azure/architecture/guide/technology-choices/data-store-overview).
 
 ## Challenges
 
-One of the challenges when maintaining a database system is that many database engines apply locks and latches to enforce strict [ACID semantics](https://en.wikipedia.org/wiki/ACID). This approach is beneficial in scenarios where databases require high consistency of the state of the data no matter how it’s accessed. While this approach promises high consistency, it makes heavy trade-offs with respect to concurrency, latency, and availability. This restriction is fundamentally an architectural restriction and will force any team with a high transactional workload to find workarounds like manually distributing, or sharding, data across many different databases or database nodes. These workarounds can be time consuming and challenging to implement.
+One of the challenges when maintaining a database system is that many database engines apply locks and latches to enforce strict [ACID semantics](https://en.wikipedia.org/wiki/ACID). This approach is beneficial in scenarios where databases require high consistency of the state of the data no matter how it’s accessed. While this approach promises high consistency, it makes heavy trade-offs with respect to concurrency, latency, and availability. This restriction is fundamentally an architectural restriction and forces any team with a high transactional workload to find workarounds like manually distributing, or sharding, data across many different databases or database nodes. These workarounds can be time consuming and challenging to implement.
 
 ## NoSQL databases
 
@@ -31,7 +31,7 @@ One of the challenges when maintaining a database system is that many database e
 
 ## Azure Cosmos DB
 
-With a distributed database that is also a NoSQL database, high transactional workloads suddenly became easier to build and manage. [Azure Cosmos DB](introduction.md) is a database platform that offers distributed data APIs in both NoSQL and relational variants. Specifically, many of the NoSQL APIs offer various consistency options that allow you to fine tune the level of consistency or availability that meets your real-world application requirements. Your database could be configured to offer high consistency with tradeoffs to speed and availability. Similarly, your database could be configured to offer the best performance with predictable tradeoffs to consistency and latency of your replicated data. Azure Cosmos DB will automatically and dynamically distribute your data across local instances or globally. Azure Cosmos DB can also provide ACID guarantees and scale throughput to map to your application’s requirements.
+With a distributed database that's also a NoSQL database, high transactional workloads suddenly became easier to build and manage. [Azure Cosmos DB](introduction.md) is a database platform that offers distributed data APIs in both NoSQL and relational variants. Specifically, many of the NoSQL APIs offer various consistency options that allow you to fine tune the level of consistency or availability that meets your real-world application requirements. Your database could be configured to offer high consistency with tradeoffs to speed and availability. Similarly, your database could be configured to offer the best performance with predictable tradeoffs to consistency and latency of your replicated data. Azure Cosmos DB automatically and dynamically distributes your data across local instances or globally. Azure Cosmos DB can also provide ACID guarantees and scale throughput to map to your application’s requirements.
 
 ## Next steps
 
@@ -40,7 +40,7 @@ With a distributed database that is also a NoSQL database, high transactional wo
 
 Want to get started with Azure Cosmos DB?
 
-- [Learn about the various APIs](choose-api.md)
+- [Choose an API in Azure Cosmos DB](choose-api.md)
 - [Get started with the API for NoSQL](nosql/quickstart-dotnet.md)
 - [Get started with the API for MongoDB](mongodb/quickstart-nodejs.md)
 - [Get started with the API for Apache Cassandra](cassandra/manage-data-java-v4-sdk.md)
