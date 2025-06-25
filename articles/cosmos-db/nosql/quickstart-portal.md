@@ -7,7 +7,8 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: quickstart
-ms.date: 09/18/2024
+ms.date: 06/11/2025
+ms.custom: sfi-image-nochange
 # CustomerIntent: As a cloud user, I want to create a new Azure Cosmos DB account, so that I can manage resources and data.
 ---
 

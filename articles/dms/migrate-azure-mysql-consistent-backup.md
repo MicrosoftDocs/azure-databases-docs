@@ -6,7 +6,7 @@ ms.author: karlaescobar
 ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - sql-migration-content
 ms.custom:

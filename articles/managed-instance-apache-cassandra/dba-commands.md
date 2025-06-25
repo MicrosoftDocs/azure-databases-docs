@@ -3,11 +3,11 @@ title: How to Run DBA Commands for Azure Managed Instance for Apache Cassandra
 description: Learn how to run DBA commands when you need to use them manually in Azure Managed Instance for Apache Cassandra.
 author: TheovanKraay
 ms.service: azure-managed-instance-apache-cassandra
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, sfi-ropc-blocked
 ms.topic: how-to
 ms.date: 06/05/2025
 ms.author: thvankra
-#customer intent: as a database administrator, I want to run DBA commands when necessary to manage Azure Managed Instance for Apache Cassandra. 
+#customer intent: as a database administrator, I want to run DBA commands when necessary to manage Azure Managed Instance for Apache Cassandra.
 ---
 
 # DBA commands for Azure Managed Instance for Apache Cassandra

@@ -37,7 +37,7 @@ To learn more, visit [Point-in-time restore](how-to-restore-server-portal.md).
 
 ### High Availability with Dedicated Azure Standard Load Balancer (SLB) (preview)
 
-A dedicated standard load balancer (SLB) in Azure Database for MySQL for High Availability (HA) enabled servers is now available for public preview. This feature adds a dedicated standard load balancer to the HA configuration, enabling low-latency, high-throughput distribution of front-end traffic across backend servers. This enhancement improves failover performance and ensures more efficient handling of MySQL data traffic. This feature is automatically applied to all newly created HA servers if you want to enable an SLB for an existing HA server, [file a support ticket with Azure Support.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+A dedicated standard load balancer (SLB) in Azure Database for MySQL for High Availability (HA) enabled servers is now available for public preview. This feature adds a dedicated standard load balancer to the HA configuration, enabling low-latency, high-throughput distribution of front-end traffic across backend servers. This enhancement improves failover performance and ensures more efficient handling of MySQL data traffic. If you want to enable an SLB for your HA server, [file a support ticket with Azure Support.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## March 2025
 
@@ -59,6 +59,9 @@ Refer to the [Built-in stored procedures in Azure Database for MySQL](./concepts
 
 The `caching_sha2_password` plugin is now exposed to customers by default. Customers can enable and configure it by setting the relevant **Server Parameters** in the Azure portal.
 
+### Default zone-resiliency for Business-Critical service tier (Rollback)
+In response to customer feedback requesting flexibility in choosing their deployment type, we’ve decided to reverse the change that made zone-resiliency the default for the Business-Critical service tier.
+
 ## February 2025
 
 ### Known Issues
@@ -74,6 +77,9 @@ The `caching_sha2_password` plugin is now exposed to customers by default. Custo
 ### Default zone-resiliency for Business-Critical service tier
 
 You now benefit from the highest level of availability against infrastructure failures within an availability zone at no extra cost for mission-critical workloads running on the Business-Critical service tier. Regardless of whether your flexible servers are enabled with High Availability (HA), your server data and log files are hosted in zone-redundant storage by default. While zone-redundant HA-enabled servers continue to benefit from a 99.99% uptime SLA from the built-in zonal redundancy and hot standby, non-HA servers can recover quickly from zonal outages using zone-redundant backups. This enhancement applies to all new servers provisioned in the Business-Critical service tier.
+
+> [!NOTE]
+> Based on customer feedback requesting the ability to choose their preferred deployment type, we’ve decided to roll back Default zone-resiliency for Business-Critical service tier. Now, for both Business Critical and General-Purpose servers, customers must select the High Availability (HA) mode either same-zone or zone-redundant at the time of server creation. This selection is final and cannot be modified later.
 
 ### Accelerated Logs enabled for all new Business Critical servers
 

@@ -4,8 +4,10 @@
   href: $each.md
 - name: $pop
   href: $pop.md
-- name: $ (update)
+- name: $position
   href: $positional.md
+- name: $ (update)
+  href: $.md
 - name: $[]
   href: $positional-all.md
 - name: $[<identifier>]

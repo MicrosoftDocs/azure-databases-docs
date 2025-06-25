@@ -5,7 +5,7 @@ ms.author: nlarin
 author: niklarin
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
-ms.custom: devx-track-extended-java
+ms.custom: devx-track-extended-java, sfi-ropc-blocked
 ms.topic: quickstart
 recommendations: false
 ms.date: 06/05/2023

@@ -1,16 +1,16 @@
 ---
-title: $geoNear (aggregation stage) usage on Azure Cosmos DB for MongoDB vCore
+title: $geoNear (aggregation)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $geoNear operator finds and sorts documents by their proximity to a geospatial point, returning distance information for each document.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
+ms.topic: language-reference
 ms.date: 02/12/2025
 ---
 
-# $geoNear (aggregation stage)
+# $geoNear (aggregation)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

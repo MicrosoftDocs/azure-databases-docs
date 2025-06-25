@@ -1,3 +1,8 @@
 - name: $expr
   href: $expr.md
-  
+- name: $mod
+  href: $mod.md
+- name: $regex
+  href: $regex.md
+- name: $text
+  href: $text.md

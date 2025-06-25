@@ -6,11 +6,12 @@ ms.author: adig
 ms.reviewer: maghan, randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
 ms.custom:
-  - references_regions
+- references_regions
+- sfi-image-nochange
 ---
 
 # MySQL to Azure Database for MySQL Data Migration - MySQL Replicate Changes

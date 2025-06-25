@@ -9,6 +9,7 @@ ms.service: azure-cosmos-db
 ms.devlang: csharp
 ms.topic: how-to
 ms.date: 02/03/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Store and use Azure Cosmos DB credentials with Azure Key Vault

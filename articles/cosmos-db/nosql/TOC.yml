@@ -26,10 +26,10 @@
           href: quickstart-python.md
         - name: Use with a JavaScript app
           displayName: Quickstart, Node.js, JavaScript, Express, AZD, Azure Developer CLI
-          href: quickstart-nodejs.md?pivots=programming-language-ts
-        - name: Use with a TypeScript app
-          displayName: Quickstart, Node.js, JavaScript, Express, AZD, Azure Developer CLI
           href: quickstart-nodejs.md?pivots=programming-language-js
+        - name: Use with a TypeScript app
+          displayName: Quickstart, Node.js, TypeScript, Express, AZD, Azure Developer CLI
+          href: quickstart-nodejs.md?pivots=programming-language-ts
         - name: Use with a Java app
           displayName: Quickstart, Spring, Spring Data, AZD, Azure Developer CLI
           href: quickstart-java.md

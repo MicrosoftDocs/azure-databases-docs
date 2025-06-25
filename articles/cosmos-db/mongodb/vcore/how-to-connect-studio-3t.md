@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 08/28/2023
+ms.custom: sfi-image-nochange
 # customer intent: As a database owner, I want to use Studio 3T so that I can connect to and query my collections.
 ---
 

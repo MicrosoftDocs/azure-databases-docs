@@ -7,6 +7,7 @@ ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/28/2023
+ms.custom: sfi-image-nochange
 ---
 
 # Get started with change data capture in the analytical store for Azure Cosmos DB

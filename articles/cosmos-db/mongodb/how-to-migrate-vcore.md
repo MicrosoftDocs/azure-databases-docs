@@ -53,9 +53,7 @@ First, you need to configure your source Azure Cosmos DB for MongoDB (RU) accoun
 
 1. Navigate to your existing key vault.
 
-1. Select the **Access Control (IAM)** option in the resource menu.
-
-1. Assign the **Key Vault Secret User** role to the principal ID (object ID) of the managed identity that you're using for your source account.
+1. If the Key Vault uses the **Role-Based Access Control (RBAC)** permission model, select the **Access Control (IAM)** option in the resource menu and assign the **Key Vault Secret User** role to the principal ID (object ID) of the managed identity used for your source account. Otherwise, use the **Access policies** option in the resource menu to create an access policy with **Get** and **List Secret** permissions, then assign it to the principal ID (object ID).
 
 1. Run the command to update your source account to use the preferred identity mechanism as the default identity.
     
@@ -150,6 +148,10 @@ The **Update Target Firewall** section is used to make sure that the target Azur
 
 1. Select **Next**.
 
+> [!NOTE]
+> If network security is enabled on your Azure Key Vault, ensure the same [IP is added to the Azure Key Vault Firewall](/azure/key-vault/general/network-security#key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips) as well.
+
+
 ## Configure and start job
 
 Use the **Select Collections** and **Confirm & Submit** sections to finalize your job's configuration.
@@ -163,7 +165,8 @@ Use the **Select Collections** and **Confirm & Submit** sections to finalize you
 1. Review the job configuration and provide a unique job name.
 
     > [!IMPORTANT]
-    > The migration job doesn't transfer the indexes to the target collections. Before proceeding, use this sample [migration script](https://aka.ms/mongoruschemamigrationscript) to create the indexes on the target collections. Once the indexes are ready, select the checkbox.
+    > 1. The migration job doesn't transfer the indexes to the target collections. Before proceeding, use this sample [migration script](https://aka.ms/mongoruschemamigrationscript) to create the indexes on the target collections. Once the indexes are ready, select the checkbox.
+    > 2. The migration job doesn't support changing the shard key. If you need a different shard key, migrate the data as an unsharded collection. Once the migration is complete, shard the collection on target using the desired shard key.
 
 1. Select **Submit** to create and start the job.
 

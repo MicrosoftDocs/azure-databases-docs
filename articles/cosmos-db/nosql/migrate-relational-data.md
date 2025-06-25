@@ -6,10 +6,11 @@ ms.author: thvankra
 author: TheovanKraay
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.devlang: python
-# ms.devlang: python, scala
 ms.date: 02/27/2023
+ms.custom: sfi-image-nochange, sfi-ropc-blocked
+# ms.devlang: python, scala
 ---
 
 # Migrate one-to-few relational data into an Azure Cosmos DB for NoSQL account
@@ -319,7 +320,7 @@ def writeOrder(orderid):
   df = spark.read.json(sc.parallelize([orderjsondata]))
   
   #write the dataframe (this will be a single order record with merged many-to-one order details) to Azure Cosmos DB db using spark the connector
-  #https://learn.microsoft.com/azure/cosmos-db/spark-connector
+  #/azure/cosmos-db/spark-connector
   df.write.format("com.microsoft.azure.cosmosdb.spark").mode("append").options(**writeConfig).save()
 ```
 

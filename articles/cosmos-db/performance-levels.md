@@ -4,7 +4,7 @@ description: Learn about the S1, S2, and S3 performance levels previously availa
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: retired
 ms.date: 06/04/2018
 ms.custom: devx-track-csharp
 ---

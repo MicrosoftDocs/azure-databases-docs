@@ -5,7 +5,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: language-reference
 ms.date: 05/28/2019
 ---
 # Azure Cosmos DB query cheat sheets

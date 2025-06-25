@@ -31,6 +31,7 @@ ms.topic: include
 | Germany North * | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
 | Germany West Central | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: |
 | Israel Central | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :x: |
+| Indonesia Central | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Italy North | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Japan East | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Japan West | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |

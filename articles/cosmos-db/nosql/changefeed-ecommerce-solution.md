@@ -8,7 +8,7 @@ ms.subservice: nosql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 03/24/2022
-ms.custom: devx-track-java, cosmos-db-video
+ms.custom: devx-track-java, cosmos-db-video, sfi-image-nochange
 ---
 
 # Use Azure Cosmos DB change feed to visualize real-time data analytics

@@ -9,9 +9,10 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
-  - devx-track-csharp
-  - devx-track-extended-java
-  - devx-track-python
+- devx-track-csharp
+- devx-track-extended-java
+- devx-track-python
+- sfi-ropc-nochange
 ---
 
 # Connect with managed identity to Azure Database for PostgreSQL flexible server

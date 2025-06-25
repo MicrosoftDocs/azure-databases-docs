@@ -5,9 +5,9 @@ description: Learn about subpartitioning in Azure Cosmos DB, how to use the feat
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/05/2023
-ms.custom: build-2023
+ms.custom: build-2023, sfi-image-nochange
 ---
 
 # Hierarchical partition keys in Azure Cosmos DB

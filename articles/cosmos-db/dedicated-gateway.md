@@ -5,7 +5,7 @@ author: jcocchi
 ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/08/2024
 ---
 

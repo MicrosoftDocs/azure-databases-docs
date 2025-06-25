@@ -423,6 +423,7 @@ ms.custom:
 | 12 | 1.4 |
 | 11 | 1.4 |
 
+<sup>*</sup> Enable corresponding libraries in the `session_preload_libraries` server parameter.
 
 
 ## ltree

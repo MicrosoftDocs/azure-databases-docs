@@ -9,7 +9,8 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
-  - template-how-to
+- template-how-to
+- sfi-image-nochange
 ---
 
 # Use an Azure free account to try Azure Database for MySQL - Flexible Server for free

@@ -8,7 +8,7 @@ ms.date: 11/17/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.devlang: csharp
-ms.custom: devx-track-azurecli, devx-track-csharp, devx-track-azurepowershell, devx-track-arm-template, devx-track-dotnet
+ms.custom: devx-track-azurecli, devx-track-csharp, devx-track-azurepowershell, devx-track-arm-template, devx-track-dotnet, sfi-image-nochange, sfi-ropc-blocked
 ---
 
 # Provision database, container or autoscale throughput on Azure Cosmos DB for MongoDB resources
@@ -53,7 +53,7 @@ mongoClient = new MongoClient(mongoClientSettings);
 mongoDatabase = mongoClient.GetDatabase("testdb");
 
 // Change the collection name, throughput value then update via MongoDB extension commands
-// https://learn.microsoft.com/azure/cosmos-db/mongodb-custom-commands#update-collection
+// /azure/cosmos-db/mongodb-custom-commands#update-collection
 
 var result = mongoDatabase.RunCommand<BsonDocument>(@"{customAction: ""UpdateCollection"", collection: ""testcollection"", offerThroughput: 400}");
 ```

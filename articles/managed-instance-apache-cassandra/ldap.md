@@ -6,6 +6,7 @@ ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 06/05/2025
+ms.custom: sfi-image-nochange, sfi-ropc-blocked
 #customer intent: As a database administrator, I want to set up LDAP authentication in Azure Managed Instance for Apache Cassandra.
 ---
 

@@ -1,16 +1,16 @@
 ---
-  title: $bottom (accumulator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $bottom
+  titleSuffix: Overview of the $bottom operator in Azure Cosmos DB for MongoDB vCore
   description: The $bottom operator returns the bottom elements in a group according to a specified sort order.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
+  ms.topic: language-reference
   ms.date: 02/12/2025
 ---
 
-# $bottom (accumulator)
+# $bottom
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

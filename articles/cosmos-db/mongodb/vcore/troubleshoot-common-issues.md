@@ -7,6 +7,7 @@ ms.topic: troubleshooting
 ms.date: 06/02/2025
 author: khelanmodi
 ms.author: khelanmodi
+ms.custom: sfi-image-nochange
 ---
 
 # Troubleshoot common issues in Azure Cosmos DB for MongoDB vCore

@@ -2,7 +2,5 @@
   href: index.md
 - name: Aggregation
   href: aggregation/toc.yml
-- name: Arithmetic Expression
-  href: arithmetic-expression/toc.yml
 - name: Query and Write
   href: query-and-write/toc.yml

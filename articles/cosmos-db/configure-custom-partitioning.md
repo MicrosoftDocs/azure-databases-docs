@@ -4,7 +4,7 @@ description: Learn how to trigger custom partitioning from Azure Synapse Spark n
 author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2023
 ---
 

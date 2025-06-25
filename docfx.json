@@ -111,7 +111,7 @@
       },
       "brand": "azure",
       "feedback_github_repo": "MicrosoftDocs/azure-docs",
-      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/133/azure",
+      "feedback_help_link_url": "/answers/tags/133/azure",
       "feedback_help_link_type": "get-help-at-qna",
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4",
       "feedback_system": "Standard",
@@ -145,12 +145,12 @@
         "articles/postgresql/**/*.md": "https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0"
       },
       "feedback_help_link_url": {
-        "articles/cosmos-db/**/*": "https://learn.microsoft.com/answers/tags/187/azure-cosmos-db/",
-        "articles/dms/**/*": "https://learn.microsoft.com/answers/tags/37/azure-database-migration/",
-        "articles/managed-instance-apache-cassandra/**/*": "https://learn.microsoft.com/answers/tags/187/azure-cosmos-db/",
-        "articles/mariadb/**/*": "https://learn.microsoft.com/answers/tags/56/azure-database-mariadb/",
-        "articles/mysql/**/*": "https://learn.microsoft.com/answers/tags/181/azure-database-mysql/",
-        "articles/postgresql/**/*": "https://learn.microsoft.com/answers/tags/214/azure-database-postgresql/"
+        "articles/cosmos-db/**/*": "/answers/tags/187/azure-cosmos-db/",
+        "articles/dms/**/*": "/answers/tags/37/azure-database-migration/",
+        "articles/managed-instance-apache-cassandra/**/*": "/answers/tags/187/azure-cosmos-db/",
+        "articles/mariadb/**/*": "/answers/tags/56/azure-database-mariadb/",
+        "articles/mysql/**/*": "/answers/tags/181/azure-database-mysql/",
+        "articles/postgresql/**/*": "/answers/tags/214/azure-database-postgresql/"
       },
       "feedback_help_link_type": {
         "**/*": "get-help-at-qna"

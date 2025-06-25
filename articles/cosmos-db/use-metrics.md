@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 04/14/2023
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, sfi-image-nochange
 ---
 
 # Monitor and debug with insights in Azure Cosmos DB

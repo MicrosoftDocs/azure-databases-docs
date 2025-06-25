@@ -5,7 +5,7 @@ description: Learn how to configure Azure Storage-based data redundancy for peri
 author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/21/2023
 ---
 
