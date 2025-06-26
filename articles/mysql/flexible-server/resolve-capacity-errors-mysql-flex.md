@@ -16,42 +16,63 @@ The article describes how you can resolve capacity errors when deploying or scal
 
 ## Exceeded quota
 
-If you encounter any of the following errors when attempting to deploy your Azure MySQL - Flexible Server resource, [submit a request to increase your quota](how-to-request-quota-increase.md).
+If you encounter any of the following errors when attempting to deploy your Azure MySQL - Flexible Server resource, [submit a request to increase your quota](how-to-request-quota-increase.md). For further information on quota concepts see the [Azure Quotas Documentation](/azure/quotas/).
 
-- `Operation could not be completed as it results in exceeding approved {0} Cores quota. Additional details - Current Limit: {1}, Current Usage: {2}, Additional Required: {3}, (Minimum) New Limit Required: {4}.Submit a request for Quota increase by specifying parameters listed in the 'Details' section for deployment to succeed.`
+- `Not enough quota to provision or update server for your subscription.`
 
 ## Subscription access
 
-Your subscription might not have access to create a server in the selected region if your subscription isn't registered with the MySQL resource provider (RP).
+Your subscription might not have access to create a server in the selected region if your subscription isn't registered with the MySQL resource provider (RP). 
 
-If you see any of the following errors, [Register your subscription with the MySQL RP](#register-with-mysql-rp) to resolve it.
+If you see the following error, [Register your subscription with the MySQL RP](#register-with-mysql-rp) to resolve it.
 
-- `Your subscription does not have access to create a server in the selected region.`
-
-- `Provisioning is restricted in this region. Please choose a different region. For exceptions to this rule please open a support request with issue type of 'Service and subscription limits'`
-
-- `Location 'region name' is not accepting creation of new Azure Database for MySQL - Flexible servers for the subscription 'subscription id' at this time`
+- `Provisioning in requested region is not supported. Your subscription might not have access to create a server in the selected region.`
 
 ## Enable region
 
-Your subscription might not have access to create a server in the selected region. To resolve this issue, [file a support request to access a region](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Your subscription might not have access to create a server in the selected region. 
 
-If you see the following errors, file a support ticket to enable the specific region:
-- `Subscription 'Subscription name' is not allowed to provision in 'region name`
+If you see the following errors, you may [file a support request](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to gain access to the selected region.
+
+- `Subscriptions are restricted from provisioning in this region. Please choose a different region. For exceptions to this rule please open a support request with Issue type of 'Service and subscription limits'.`
+
 -  `Subscriptions are restricted from provisioning in this region. Please choose a different region. For exceptions to this rule please open a support request with the Issue type of 'Service and subscription limits.`
 
 ## Availability Zone
 
-If you receive the following errors, select a different availability zone.
+If you see the following error, please select a different availability zone.
 
-- `Availability zone '{ID}' is not available for subscription '{Sub ID}' in this region temporarily due to capacity constraints.`
-- `Multi-Zone HA is not supported in this region. Please choose a different region. For exceptions to this rule please open a support request with the Issue type of 'Service and subscription limits'.`
+- `Specified Availability Zone not supported in this region.`
+
+If you cannot select a different availability zone, you may [file a support request](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) for additional assistance on gaining access to the specified availability zone.
 
 ## SKU Not Available
 
-If you encounter the following error, select a different SKU type. Availability of SKU might differ across regions, either the specific SKU isn't supported in the region or temporarily unavailable.
+If you see the following errors, please select a different SKU type. Availability of SKU might differ across regions, either the specific SKU isn't supported in the region or temporarily unavailable.
 
-`Specified SKU is not supported in this region. Please choose a different SKU.`
+- `Specified VM family not supported in this region.`
+
+- `Provisioning for specific server SKU is not supported. Select a different SKU type. Availability of SKU might differ across regions, either the specific SKU isn't supported in the region or is temporarily unavailable.`
+
+- `Provisioning for specific server SKU '{0}' is not supported. Select a different SKU type. Availability of SKU might differ across regions, either the specific SKU isn't supported in the region or is temporarily unavailable.`
+
+- `Specified SKU not supported in this region.`
+
+If you cannot choose another SKU, you may [file a support request](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to request SKU access. Please note that support requests are either approved or denied on a case-by-case basis considering that the SKU is supported and available via allowlisting in the requested region.
+
+## Regional Constraints
+
+If you see the following error, please try a different region.
+
+- `The region is restricted.`
+
+- `The region is out of capacity.`
+
+- `Provisioning is restricted in this region. Please choose a different region. For exceptions to this rule please open a support request with Issue type of 'Service and subscription limits'.`
+
+- `Subscriptions are restricted from provisioning in this region. Please choose a different region. For exceptions to this rule please open a support request with Issue type of 'Service and subscription limits'.`
+
+If you cannot choose a different region due to business continuity purposes, you may [file a support request](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to seek regional access to a constraint region. Please note that support requests are either approved or denied on a case-by-case basis and is not guaranteed to be granted regional access.
 
 ## Register with MySQL RP
 
