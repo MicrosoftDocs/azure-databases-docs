@@ -45,11 +45,6 @@ The retirement details for MySQL major versions are listed in the following tabl
 | [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | March 20, 2018 | October 31, 2023 | March 31, 2026 | April 1, 2026 |May 1, 2029 |
 | [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | April 30, 2026 | June 1, 2026 |April 30, 2029|
 
-> [!NOTE]
-> For each deprecated Azure Database for MySQL version, Azure provides a one-month grace period after the community deprecation date. This grace period provides customers with additional time to decide whether to upgrade to a newer version or to be enrolled in the paid Extended Support plan.
-> For Azure Database for MySQL 5.7, the community end of life (EOL) was announced in October 2023. The standard support end date was originally planned for September 2025, but based on customer feedback, we have extended standard support for MySQL 5.7 until March 2026. Extended Support for MySQL 5.7 will begin in April 2026.
-> For details on what happens after standard support ends, including the Extended Support policy, see the next section.
-
 ### What happens after standard support ends: Extended Support policy
 
 To provide customers with sufficient time to decide whether to upgrade or be enrolled in Extended Support, the Extended Support plan will officially begin in Spring 2026.
@@ -59,9 +54,7 @@ After the standard support end date, Azure Database for MySQL servers running on
 During the Extended Support period, Microsoft prioritizes the service's availability, reliability, and security. Essential modifications are implemented to ensure the service remains accessible and protected, but new features and minor version upgrades may not be guaranteed.
 
 > [!NOTE]
-> Extended Support is automatically applied and charged to servers running on legacy MySQL versions after standard support ends. To opt out of Extended Support and avoid charges, customers must upgrade to a supported major version. For more information or to provide feedback, please contact [Ask Azure DB For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
-> > Pricing will be available on the [pricing page](https://azure.microsoft.com/pricing/details/mysql/?cdn=disable) later this year.
-
+> Extended Support is automatically applied and charged to servers running on legacy MySQL versions after standard support ends. To opt out of Extended Support and avoid charges, customers must upgrade to a supported major version. For more information or to provide feedback, please contact [Ask Azure DB For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).> Pricing will be available on the [pricing page](https://azure.microsoft.com/pricing/details/mysql/?cdn=disable) later this year.
 ## Innovation release version support
 
 The MySQL Innovation Release versions are provided to enable access to the latest MySQL features and capabilities. Support for these versions includes core functionalities, but excludes advanced features such as High Availability (HA), replicas, and automated backups. Innovation Release support is limited to the most current version, with previous versions not retained to ensure users have access to the newest advancements. Each Innovation Release server has a 30-day lifecycle from the date of creation, after which it's automatically removed. No monthly maintenance updates are applied during the lifecycle of these versions.
