@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: PostgreSQL Extension for VS Code"
 description: Quickstart guide for the PostgreSQL extension for VS Code.
-author: jojohnso-msft
-ms.author: jojohnso
+author: swarathmika
+ms.author: skakivaya
 ms.reviewer: maghan
 ms.date: 05/19/2025
 ms.service: azure-database-postgresql

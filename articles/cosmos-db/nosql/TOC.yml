@@ -64,7 +64,7 @@
           href: vector-search.md
         - name: Sharded DiskANN for focused search
           href: ../gen-ai/sharded-diskann.md
-    - name: Enable full-text search
+    - name: Full text indexing and search
       href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
