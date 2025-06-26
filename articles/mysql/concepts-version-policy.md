@@ -42,7 +42,7 @@ The retirement details for MySQL major versions are listed in the following tabl
 
 | Version | What's New | Azure support start date | Community Retirement date |Azure Standard Support end date |Azure Extended Support start date | Azure Extended Support end date |
 | --- | --- | --- | --- | --- | --- | --- |
-| [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | March 20, 2018 | October 31, 2023 | March 31, 2026 | May 1, 2026 |May 1, 2029 |
+| [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | March 20, 2018 | October 31, 2023 | March 31, 2026 | April 1, 2026 |May 1, 2029 |
 | [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | April 30, 2026 | June 1, 2026 |April 30, 2029|
 
 > [!NOTE]
@@ -58,10 +58,9 @@ After the standard support end date, Azure Database for MySQL servers running on
 
 During the Extended Support period, Microsoft prioritizes the service's availability, reliability, and security. Essential modifications are implemented to ensure the service remains accessible and protected, but new features and minor version upgrades may not be guaranteed.
 
-> [!NOTE]  
+> [!NOTE]
 > Extended Support is automatically applied and charged to servers running on legacy MySQL versions after standard support ends. To opt out of Extended Support and avoid charges, customers must upgrade to a supported major version. For more information or to provide feedback, please contact [Ask Azure DB For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
-> 
-> Pricing for Azure Database for MySQL Extended Support will be aligned with industry standards. Pricing will be available on the [pricing page](https://azure.microsoft.com/pricing/details/mysql/?cdn=disable) later this year.
+> > Pricing will be available on the [pricing page](https://azure.microsoft.com/pricing/details/mysql/?cdn=disable) later this year.
 
 ## Innovation release version support
 
