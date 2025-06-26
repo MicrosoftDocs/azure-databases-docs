@@ -23,7 +23,7 @@ Azure Database for MySQL was developed from the [MySQL Community Edition](https:
 
 Azure Database for MySQL currently supports the following major and minor versions of MySQL:
 
-| Version | [Flexible Server?](flexible-server/overview.md)<br />Current minor version |Release status|
+| Version |Current minor version |Release status|
 | :--- | :--- |:--- |
 | MySQL Version 5.7 | [5.7.44](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-44.html) | GA |
 | MySQL Version 8.0 | [8.0.41](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-41.html) | GA |
@@ -78,9 +78,9 @@ __Q: What will happen if I don't upgrade my Azure Database for MySQL server to a
 
 A: If you don't upgrade your Azure Database for MySQL server to a supported major version before the Azure Extended Support start date, your server will be automatically enrolled in Extended Support and you'll be charged for this service. To avoid Extended Support charges, you must upgrade your server to a MySQL version that is still within standard support.
 
-__Q: What is the process for performing a major version upgrade on Azure Database for MySQL - Flexible Server?__
+__Q: What is the process for performing a major version upgrade on Azure Database for MySQL?__
 
-A: Azure Database for MySQL - Flexible Server enables you to carry out in-place major version upgrades using the Major Version Upgrade (MVU) feature. Consult the [Major version upgrade in Azure Database for MySQL - Flexible Server](flexible-server/how-to-upgrade.md) document for more detailed information.
+A: Azure Database for MySQL enables you to carry out in-place major version upgrades using the Major Version Upgrade (MVU) feature. Consult the [Major version upgrade in Azure Database for MySQL](flexible-server/how-to-upgrade.md) [Major version upgrade in Azure Database for MySQL](flexible-server/how-to-upgrade.md) document for more detailed information.
 
 __Q: Are there any expected downtime or performance impacts during a major version upgrade?__
 
@@ -88,7 +88,7 @@ A: Yes, it's expected that there will be some downtime during the major version 
 
 __Q: Can I roll back to a previous major version after upgrading?__
 
-A: While it's not recommended to downgrade to a previous major version after upgrading, we acknowledge that there might be specific scenarios where this flexibility becomes necessary. To ensure a smooth upgrade process and alleviate any potential concerns, it's advisable to adhere to best practices by performing a comprehensive [on-demand backup](flexible-server/how-to-trigger-on-demand-backup.md) before proceeding with the upgrade. This backup serves as a precautionary measure, allowing you to [restore your database](flexible-server/how-to-restore-server-portal.md) to its previous version on another new Azure Database for MySQL - Flexible Server if needed.
+A: While it's not recommended to downgrade to a previous major version after upgrading, we acknowledge that there might be specific scenarios where this flexibility becomes necessary. To ensure a smooth upgrade process and alleviate any potential concerns, it's advisable to adhere to best practices by performing a comprehensive [on-demand backup](flexible-server/how-to-trigger-on-demand-backup.md) before proceeding with the upgrade. This backup serves as a precautionary measure, allowing you to [restore your database](flexible-server/how-to-restore-server-portal.md) to its previous version on another new Azure Database for MySQL if needed.
 
 __Q: What are the main advantages of upgrading to a newer major version?__
 
