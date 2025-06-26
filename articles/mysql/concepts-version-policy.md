@@ -54,10 +54,14 @@ After the standard support end date, Azure Database for MySQL servers running on
 During the Extended Support period, Microsoft prioritizes the service's availability, reliability, and security. Essential modifications are implemented to ensure the service remains accessible and protected, but new features and minor version upgrades may not be guaranteed.
 
 > [!NOTE]
-> Extended Support is automatically applied and charged to servers running on legacy MySQL versions after standard support ends. To opt out of Extended Support and avoid charges, customers must upgrade to a supported major version. For more information or to provide feedback, please contact [Ask Azure DB For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).> Pricing will be available on the [pricing page](https://azure.microsoft.com/pricing/details/mysql/?cdn=disable) later this year.
+> Extended Support is automatically applied and charged to servers running on legacy MySQL versions after standard support ends. To opt out of Extended Support and avoid charges, customers must upgrade to a supported major version. For more information or to provide feedback, please contact [Ask Azure DB For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
+>
+> Pricing will be available on the [pricing page](https://azure.microsoft.com/pricing/details/mysql/?cdn=disable) later this year.
+
 ## Innovation release version support
 
 The MySQL Innovation Release versions are provided to enable access to the latest MySQL features and capabilities. Support for these versions includes core functionalities, but excludes advanced features such as High Availability (HA), replicas, and automated backups. Innovation Release support is limited to the most current version, with previous versions not retained to ensure users have access to the newest advancements. Each Innovation Release server has a 30-day lifecycle from the date of creation, after which it's automatically removed. No monthly maintenance updates are applied during the lifecycle of these versions.
+
 > [!NOTE]  
 > Innovation Release versions are intended for early access and experimentation. As such, they don't qualify for customer support cases, and no direct support assistance is provided. Users are encouraged to refer to documentation and community resources for troubleshooting and guidance.
 
