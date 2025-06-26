@@ -28,7 +28,8 @@ For more information on quota concepts, see the [Azure Quotas Documentation](/az
 ## Subscription access
 
 **Error message(s):**
-- Provisioning in requested region isn't supported.
+
+- The subscription is not registered to use namespace 'Microsoft.DBForMySQL'
 
 **Cause:**  
 Your subscription might not have access to create a server in the selected region if your subscription isn't registered with the MySQL resource provider (RP). 
@@ -76,11 +77,15 @@ If you see the following errors,
 **Error message(s):**
 - The region is restricted.
 - The region is out of capacity.
+- Provisioning in requested region isn't supported.
+
+- Provisioning in requested region is not supported. Your subscription might not have access to create a server in the selected region.
+
 - Provisioning is restricted in this region. Choose a different region. For exceptions to this rule,  open a support request with Issue type of 'Service and subscription limits'.
 - Subscriptions are restricted from provisioning in this region.  choose a different region. For exceptions to this rule,  open a support request with Issue type of 'Service and subscription limits'.
 
 **Resolution:**  
-Your subscription might not have access to create a server in the selected region.[Submit a support request](https://ms.portal.azure.com/#blade/Microsoft_ABlade). Requests are reviewed on a case-by-case basis.
+Your subscription might not have access to create a server in the selected region. [Submit a support request](https://ms.portal.azure.com/#blade/Microsoft_ABlade). Requests are reviewed on a case-by-case basis.
 
 ## Register the MySQL resource provider to your subscription
 
