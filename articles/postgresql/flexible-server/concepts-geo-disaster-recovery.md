@@ -1,15 +1,13 @@
 ---
 title: Geo-disaster recovery
 description: Learn about the concepts of Geo-disaster recovery with Azure Database for PostgreSQL flexible server.
-author: akashraokm
-ms.author: akashrao
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
-ms.custom:
-  - ignite-2023
 ---
 
 # Geo-disaster recovery in Azure Database for PostgreSQL flexible server
@@ -30,9 +28,8 @@ Both geo-replication with read replicas and geo-backup are solutions for geo-dis
 | <b> Can be in non-paired region                        | Yes                | No             |
 | <b> Supports read scale                                | Yes                | No             |
 | <b> Can be configured after the creation of the server | Yes                | No             |
-| <b> Restore to specific point in time                  | No                 | No            |
+| <b> Restore to specific point in time                  | No                 | No             |
 | <b> Capacity guaranteed                                | Yes                | No             |    
-
 
 ## Geo-redundant backup and restore
 
