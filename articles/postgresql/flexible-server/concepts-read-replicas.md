@@ -58,16 +58,18 @@ Learn how to [Create a read replica](how-to-create-read-replica.md).
 
 ## Create cascading read replicas
 
-We are supporting cascading read replicas feature in Public preview capacity. This allows you to add additional read replicas on top of an existing read replica, with the existing read replica acting as the source for the new one. 
+We are excited to announce the support for cascading read replicas in Public Preview. This feature allows the addition of new read replicas on top of an existing read replica, with the existing read replica acting as the source for the new one. 
 
 ![screenshot](media/concepts-read-replica/cascadingreadreplica.png)
 
-In this setup, replication for each read replica is dependent on its source read replica. The first-level read replica asynchronously replicates data from the primary server, and the newly added read replica uses this first-level read replica to replicate data. For example, "Read-Replica 1" serves as the source for "Read-Replica 1.1" and replicates data from its source.
-Cascading read replica can help you to distribute read workloads thus reducing the load on the primary server. Deploying these read replicas in different region (cross region read replicas) can help you distribute your read traffic closer to users in different geographies.
+In this setup, each read replica's replication is dependent on its source read replica. The first-level read replica asynchronously replicates data from the primary server, and the newly added read replica uses this first-level read replica to replicate data. For example, "Read-Replica 1" serves as the source for "Read-Replica 1.1" and replicates data from its source.
 
-#### Key considertaions:
-1. You can create up to 5 read replicas per source read replica and we suppor up to 2 levels of replication.
-2. We do not support failover for read replica that have cascading read replicas added.
+Cascading read replicas can help distribute read workloads, thereby reducing the load on the primary server. Additionally, deploying these read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies.
+
+#### Key considerations:
+1. Up to 5 read replicas can be created per source read replica, with support for up to 2 levels of replication.
+2. Failover and virtual endpoints are not supported for intermediate read replicas and cascading read replicas.
+3. Cascading read replicas are supported for PostgreSQL version 14 and above.
 
 ### Configuration management
 
