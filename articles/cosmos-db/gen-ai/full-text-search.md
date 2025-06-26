@@ -45,9 +45,11 @@ Full Text Search is ideal for a variety of scenarios, including:
 
 ### Configure container policies and indexes for hybrid search
 
-To use full text search capabilities, you'll first need to define two policies:
+To use full text search capabilities, you should first define two policies:
 - A container-level full text policy that defines what paths contain text for the new full text query system functions.
 - A full text index added to the indexing policy that enables efficient search.
+
+While it's possible to run full text search queries without these policies, they won't utilize the full-text index and can consume higher RUs and have longer execution times. It's strongly recommended to define full text container and index policies. 
 
 ### Full text policy
 
