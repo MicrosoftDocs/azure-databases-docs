@@ -109,7 +109,7 @@ procedureSection:
 
           :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/azure-cosmos-db-account-created-2.png" alt-text="Screenshot shows the Azure Cosmos DB account page." lightbox="~/reusable-content/ce-skilling/azure/media/cosmos-db/azure-cosmos-db-account-created-2.png":::
   - title: |
-      Add or remove regions from your database account
+      Add/remove regions from your database account
     summary: |
       > [!TIP]
       > When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes depends upon how much data is stored within the account. If an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation is paused and resumes automatically when the add/remove region operation is complete.
