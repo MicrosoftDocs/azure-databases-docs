@@ -95,7 +95,9 @@ A: Yes, there's some downtime during the major version upgrade process. The spec
 
 __Q: Can I roll back to a previous major version after upgrading?__
 
-A: While it's not recommended to downgrade to a previous major version after upgrading, we acknowledge that there might be specific scenarios where this flexibility becomes necessary. To ensure a smooth upgrade process and alleviate any potential concerns, it's advisable to adhere to best practices by performing a comprehensive on-demand backup (see [flexible-server/how-to-trigger-on-demand-backup.md]) before proceeding with the upgrade. This backup serves as a precautionary measure, allowing you to [restore your database](flexible-server/how-to-restore-server-portal.md) to its previous version on another new Azure Database for MySQL if needed.
+A: While it's not recommended to downgrade to a previous major version after upgrading, we acknowledge that there might be specific scenarios where this flexibility becomes necessary. To ensure a smooth upgrade process and alleviate any potential concerns, it's advisable to adhere to best practices by performing a comprehensive [on-demand backup](flexible-server/how-to-trigger-on-demand-backup.md), before proceeding with the upgrade.
+
+This backup serves as a precautionary measure, allowing you to [restore your database](flexible-server/how-to-restore-server-portal.md) to its previous version on another new Azure Database for MySQL if needed.
 
 __Q: What are the main advantages of upgrading to a newer major version?__
 
