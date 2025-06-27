@@ -22,6 +22,11 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 > [!NOTE]
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
+## June 2025
+
+### Auto Initialization of Time Zones
+
+Time zones are automatically loaded during server creation, removing the need for customers to manually execute the mysql.az_load_timezone stored procedure afterwards to load the time zone. For more information, refer to the server parameter details for [time_zone](concepts-server-parameters.md#time_zone)
 
 ## May 2025
 
