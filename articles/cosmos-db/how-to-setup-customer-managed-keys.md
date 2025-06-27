@@ -748,7 +748,7 @@ The identity metadata is bound with the source database account and restore work
 
 Steps to assign a new managed-identity:
 1. [Create a new user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity)
-1. [Grant Key Vault key access to this identity](#choosing-the-preferred-security-model)
+1. [Grant Key Vault key access to this identity](#choose-the-preferred-security-model)
 1. [Assign this new identity to your restored database account](/cli/azure/cosmosdb/identity#az-cosmosdb-identity-assign)
 
 ## Next step

@@ -683,7 +683,7 @@ The following situations and outcomes are possible when you use Private Link in 
 
 * If you don't configure any public traffic or service endpoint and you create private endpoints, then the Azure Cosmos DB account is accessible only through the private endpoints. If you don't configure public traffic or a service endpoint, after all approved private endpoints are rejected or deleted, the account is open to the entire network unless `PublicNetworkAccess` is set to *Disabled*.
 
-## Block public network access during account creation
+## Blocking public network access during account creation
 
 As described in the previous section, and unless specific firewall rules have been set, adding a private endpoint makes your Azure Cosmos DB account accessible through private endpoints only. This means that the Azure Cosmos DB account could be reached from public traffic after it's created and before a private endpoint gets added. To make sure that public network access is disabled even before the creation of private endpoints, you can set the `publicNetworkAccess` flag to *Disabled* during account creation. This flag takes precedence over any IP or virtual network rule. All public and virtual network traffic is blocked when the flag is set to *Disabled*, even if the source IP or virtual network is allowed in the firewall configuration.
 

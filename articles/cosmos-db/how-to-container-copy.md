@@ -52,7 +52,7 @@ $destinationContainer = ""
 >[!Note]
 > This step isn't required if you're copying data within the same Azure Cosmos DB account.
 
-While copying data from one account's container to another account's container, it's required to give read access of source container to destination account's identity to perform the copy operation. Follow these steps to assign requisite read permission to the destination account.
+While copying data from one account's container to another account's container, you need to give read access for source container to the destination account's identity. Follow these steps to assign the required read permission to the destination account.
 
 **Using system-managed identity**
 

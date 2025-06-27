@@ -39,7 +39,7 @@ The following sections describe how to configure a virtual network service endpo
 
 1. From the **All resources** pane, find the Azure Cosmos DB account that you want to secure.
 
-1. Select **Networking** from the settings menu
+1. Select **Networking** from the settings menu.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/networking-pane.png" alt-text="Screenshot of the networking menu option." lightbox="./media/how-to-configure-vnet-service-endpoint/networking-pane.png":::
 
@@ -47,7 +47,7 @@ The following sections describe how to configure a virtual network service endpo
 
 1. To grant access to an existing virtual network's subnet, under **Virtual networks**, select **Add existing Azure virtual network**.
 
-1. Select the **Subscription** from which you want to add an Azure virtual network. Select the Azure **Virtual networks** and **Subnets** that you want to provide access to your Azure Cosmos DB account. Next, select **Enable** to enable selected networks with service endpoints for "Microsoft.AzureCosmosDB". When it's complete, select **Add**.
+1. Select the **Subscription** from which you want to add an Azure virtual network. Select the Azure **Virtual networks** and **Subnets** that you want to provide access to your Azure Cosmos DB account. Next, select **Enable** to enable selected networks with service endpoints for `Microsoft.AzureCosmosDB`. When it's complete, select **Add**.
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Screenshot of the dialog to select an existing Azure Virtual Network and subnet with an Azure Cosmos DB service endpoint." lightbox="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png":::
 
