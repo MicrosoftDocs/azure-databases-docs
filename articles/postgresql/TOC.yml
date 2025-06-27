@@ -6,8 +6,6 @@
     href: flexible-server/service-overview.md
   - name: Self-hosted vs. managed service
     href: flexible-server/overview-postgres-choose-server-options.md
-  - name: Compare deployment options
-    href: flexible-server/concepts-compare-single-server-flexible-server.md
   - name: Versioning policy
     href: flexible-server/concepts-version-policy.md
     displayName: version, postgresql
