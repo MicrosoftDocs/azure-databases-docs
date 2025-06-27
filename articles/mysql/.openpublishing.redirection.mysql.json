@@ -1553,7 +1553,7 @@
       {
         "source_path_from_root": "/articles/mysql/flexible-server/resolve-capacity-errors-mysql-flex.md",
         "redirect_url": "/azure/mysql/flexible-server/resolve-capacity-errors",
-        "redirect_document_id": true
+        "redirect_document_id": false
       }
   ]
 }
