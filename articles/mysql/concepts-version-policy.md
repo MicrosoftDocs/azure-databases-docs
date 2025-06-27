@@ -45,7 +45,7 @@ The retirement details for MySQL major versions are listed in the following tabl
 | [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | March 20, 2018 | October 31, 2023 | March 31, 2026 | April 1, 2026 | May 1, 2029 |
 | [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | April 30, 2026 | June 1, 2026 | April 30, 2029 |
 
-### What happens after standard Support ends?
+### What happens after standard support ends?
 
 To provide customers with sufficient time to decide whether to upgrade or be enrolled in Extended Support, the Extended Support plan officially begins sometime early 2026.
 
@@ -68,6 +68,16 @@ The MySQL Innovation Release versions are provided to enable access to the lates
 ## Minor version support
 
 Azure Database for MySQL automatically performs minor version upgrades to the Azure-preferred version as part of periodic maintenance.
+
+## Retired MySQL engine versions not supported in Azure Database for MySQL
+
+The following restrictions apply only after the extended pport period has ended, and your server is still running a retired MySQL version:
+
+- No further security or support updates are provided for the retired version. Azure Database for MySQL can't patch the retired database engine for any bugs or security issues, and support for database engine-related issues are no longer be available. However, Azure continues performing periodic maintenance and patching for the host, OS, containers, and other service-related components.
+- You can't create new database servers for the retired version. However, you can perform point-in-time recoveries and create read replicas for your existing servers.
+New service capabilities developed by Azure Database for MySQL might only be available for supported database server versions.
+- Uptime S.L.A.s apply solely to Azure Database for MySQL service-related issues and not to any downtime caused by database engine-related bugs.
+- In the extreme event of a serious threat to the service caused by the MySQL database engine vulnerability identified in the retired database version, Azure might choose to stop the compute node of your database server from securing the service first. You're asked to upgrade the server before bringing it online. During the upgrade process, your data is always protected by automatic backups performed on the service, which can be used to restore it to an older version if desired.
 
 ## Frequently asked questions (FAQ)
 
@@ -102,16 +112,6 @@ A: If you have questions, get answers from community experts in [Microsoft Q&A](
 __Q: What happens to my data during the upgrade?__
 
 A: While your data remains unaffected during the upgrade process, it's highly advisable to create a backup before proceeding with the upgrade. This precautionary measure helps mitigate the risk of potential data loss due to any unforeseen complications.
-
-## Retired MySQL engine versions not supported in Azure Database for MySQL
-
-The following restrictions apply only after the extended pport period has ended, and your server is still running a retired MySQL version:
-
-- No further security or support updates are provided for the retired version. Azure Database for MySQL can't patch the retired database engine for any bugs or security issues, and support for database engine-related issues are no longer be available. However, Azure continues performing periodic maintenance and patching for the host, OS, containers, and other service-related components.
-- You can't create new database servers for the retired version. However, you can perform point-in-time recoveries and create read replicas for your existing servers.
-New service capabilities developed by Azure Database for MySQL might only be available for supported database server versions.
-- Uptime S.L.A.s apply solely to Azure Database for MySQL service-related issues and not to any downtime caused by database engine-related bugs.
-- In the extreme event of a serious threat to the service caused by the MySQL database engine vulnerability identified in the retired database version, Azure might choose to stop the compute node of your database server from securing the service first. You're asked to upgrade the server before bringing it online. During the upgrade process, your data is always protected by automatic backups performed on the service, which can be used to restore it to an older version if desired.
 
 ## Related content
 
