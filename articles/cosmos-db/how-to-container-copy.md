@@ -1,11 +1,11 @@
 ---
-title: Create and manage intra-account container copy jobs in Azure Cosmos DB
+title: Create and Manage Intra-account Container Copy Jobs
 description: Learn how to create, monitor, and manage container copy jobs within an Azure Cosmos DB account using CLI commands.
 author: richagaur
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli, build-2023, ignite-2023, ignite-2024
 ms.topic: how-to
-ms.date: 08/01/2022
+ms.date: 06/26/2025
 ms.author: richagaur
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra
 ---
@@ -18,12 +18,13 @@ This article describes how to create, monitor, and manage copy jobs using Azure 
 
 ## Prerequisites
 
-* You can use the portal [Cloud Shell](/azure/cloud-shell/quickstart?tabs=powershell) to run container copy commands. Alternately, you can run the commands locally; make sure you have [Azure CLI](/cli/azure/install-azure-cli) downloaded and installed on your machine.
+* You can use the portal [Cloud Shell](/azure/cloud-shell/quickstart?tabs=powershell) to run container copy commands. Alternately, you can run the commands locally. Make sure you have [Azure CLI](/cli/azure/install-azure-cli) installed on your machine.
 * Currently, container copy is only supported in [these regions](container-copy.md#supported-regions). Make sure your account's write region belongs to this list.
-* Install the Azure Cosmos DB preview extension which contains the container copy commands.
+* Install the Azure Cosmos DB preview extension, which contains the container copy commands.
     ```azurecli-interactive
     az extension add --name cosmosdb-preview
     ```
+
 ::: zone pivot="api-nosql"
 
 ### [Online container copy](#tab/online-copy)
@@ -49,69 +50,69 @@ $destinationContainer = ""
 ### Assign read permission
 
 >[!Note]
-> This step is not required if you're copying data within same Azure Cosmos DB account.
+> This step isn't required if you're copying data within the same Azure Cosmos DB account.
 
-While copying data from one account's container to another account's container, it is required to give read access of source container to destination account's identity to perform the copy operation. Follow the steps below to assign requisite read permission to destination account.
+While copying data from one account's container to another account's container, it's required to give read access of source container to destination account's identity to perform the copy operation. Follow these steps to assign requisite read permission to the destination account.
 
-**Using System managed identity**
+**Using system-managed identity**
 
-1. Set destination subscription context
+1. Set destination subscription context:
     ```azurecli-interactive
     az account set --subscription $destinationSubId
     ```
-2. Add system identity on destination account
+1. Add system identity on destination account:
     ```azurecli-interactive
     $identityOutput = az cosmosdb identity assign -n $destinationAccount -g $destinationAccountRG
     $principalId = ($identityOutput | ConvertFrom-Json).principalId
     ```
-3. Set default identity on destination account
+1. Set default identity on destination account:
     ```azurecli-interactive
     az cosmosdb update -n $destinationAccount -g $destinationAccountRG --default-identity="SystemAssignedIdentity"
     ```
-4. Set source subscription context
+1. Set source subscription context:
     ```azurecli-interactive
     az account set --subscription $sourceSubId
     ```
-5. Add role assignment on source account
+1. Add role assignment on source account:
     ```azurecli-interactive
     # Read-only access role
     $roleDefinitionId = "00000000-0000-0000-0000-000000000001" 
     az cosmosdb sql role assignment create --account-name $sourceAccount --resource-group $sourceAccountRG --role-definition-id $roleDefinitionId --scope "/" --principal-id $principalId
     ```
-6. Reset destination subscription context
+1. Reset destination subscription context:
     ```azurecli-interactive
     az account set --subscription $destinationSubId
     ```
 
-**Using User-assigned managed identity**
+**Using user-assigned managed identity**
 
-1. Assign User-assigned managed identity variable 
+1. Assign user-assigned managed identity variable:
     ```azurecli-interactive
     $userAssignedManagedIdentityResourceId = "<CompleteResourceIdOfUserAssignedManagedIdentity>"
     ```
-2. Set destination subscription context
+1. Set destination subscription context:
     ```azurecli-interactive
     az account set --subscription $destinationSubId
     ```
-3. Add user assigned managed identity on destination account
+1. Add user-assigned managed identity on destination account:
     ```azurecli-interactive
     $identityOutput = az cosmosdb identity assign -n $destinationAccount -g $destinationAccountRG --identities $userAssignedManagedIdentityResourceId
     $principalId = ($identityOutput | ConvertFrom-Json).userAssignedIdentities.$userAssignedManagedIdentityResourceId.principalId
     ```
-4. Set default identity on destination account
+1. Set default identity on destination account:
     ```azurecli-interactive
     az cosmosdb update -n $destinationAccount -g $destinationAccountRG --default-identity=UserAssignedIdentity=$userAssignedManagedIdentityResourceId
     ```
-5. Set source subscription context
+1. Set source subscription context:
     ```azurecli-interactive
     az account set --subscription $sourceSubId
     ```
-6. Add role assignment on source account
+1. Add role assignment on source account:
     ```azurecli-interactive
     $roleDefinitionId = "00000000-0000-0000-0000-000000000001"  # Read-only access role
     az cosmosdb sql role assignment create --account-name $sourceAccount --resource-group $sourceAccountRG --role-definition-id $roleDefinitionId --scope "/" --principal-id $principalId
     ```
-7. Reset destination subscription context
+1. Reset destination subscription context:
     ```azurecli-interactive
     az account set --subscription $destinationSubId
     ```
@@ -128,9 +129,10 @@ az cosmosdb copy create `
     --src-nosql database=$sourceDatabase container=$sourceContainer
     --mode Online
 ```
+
 ### Monitor progress 
 
-Monitor the progress using below command.
+Monitor the progress using this command:
 
 ```azurecli-interactive
 az cosmosdb copy show `
@@ -138,13 +140,14 @@ az cosmosdb copy show `
     --account-name $destinationAccount `
     --job-name $jobName
 ```
-1.	Total count – It represents the total number of changes (total document + any new changes) in the source container at any given time.
-2.	Processed count – It represents the total number of events coming from source container’s change feed that have been processed by the copy job.
+
+- **Total count** represents the total number of changes (total document + any new changes) in the source container at any given time.
+- **Processed count** represents the total number of events coming from source container’s change feed that were processed by the copy job.
 
 ### Complete copy job
 
 1. When the processed count becomes greater than or equal to the total count, turn off any updates on the source container and wait for 5-10 minutes to flush any remaining changes. 
-1. Run the completion API to finish the copy job and free compute resources, this will also write remaining changes (if any) to the destination container.
+1. Run the completion API to finish the copy job and free compute resources, this also writes the remaining changes (if any) to the destination container.
 
 ```azurecli-interactive
     az cosmosdb copy complete `
@@ -152,6 +155,7 @@ az cosmosdb copy show `
         --account-name $destinationAccount `
         --job-name $jobName
 ```
+
 1. Update the client applications to start using the new (destination) container if needed.
 
 ### [Offline container copy](#tab/offline-copy)
@@ -177,69 +181,69 @@ $destinationContainer = ""
 ### Assign read permission
 
 >[!Note]
-> This step is not required if you're copying data within same Azure Cosmos DB account.
+> This step isn't required if you're copying data within the same Azure Cosmos DB account.
 
-While copying data from one account's container to another account's container, it is required to give read access of source container to destination account's identity to perform the copy operation. Follow the steps below to assign requisite read permission to destination account.
+While copying data from one account's container to another account's container, it's required to give read access of source container to destination account's identity to perform the copy operation. Follow these steps to assign requisite read permission to the destination account.
 
-**Using System managed identity**
+**Using system-managed identity**
 
-1. Set destination subscription context
+1. Set destination subscription context:
     ```azurecli-interactive
     az account set --subscription $destinationSubId
     ```
-2. Add system identity on destination account
+1. Add system identity on destination account:
     ```azurecli-interactive
     $identityOutput = az cosmosdb identity assign -n $destinationAccount -g $destinationAccountRG
     $principalId = ($identityOutput | ConvertFrom-Json).principalId
     ```
-3. Set default identity on destination account
+1. Set default identity on destination account:
     ```azurecli-interactive
     az cosmosdb update -n $destinationAccount -g $destinationAccountRG --default-identity="SystemAssignedIdentity"
     ```
-4. Set source subscription context
+1. Set source subscription context:
     ```azurecli-interactive
     az account set --subscription $sourceSubId
     ```
-5. Add role assignment on source account
+1. Add role assignment on source account:
     ```azurecli-interactive
     # Read-only access role
     $roleDefinitionId = "00000000-0000-0000-0000-000000000001" 
     az cosmosdb sql role assignment create --account-name $sourceAccount --resource-group $sourceAccountRG --role-definition-id $roleDefinitionId --scope "/" --principal-id $principalId
     ```
-6. Reset destination subscription context
+1. Reset destination subscription context:
     ```azurecli-interactive
     az account set --subscription $destinationSubId
     ```
 
-**Using User-assigned managed identity**
+**Using user-assigned managed identity**
 
-1. Assign User-assigned managed identity variable 
+1. Assign user-assigned managed identity variable:
     ```azurecli-interactive
     $userAssignedManagedIdentityResourceId = "<CompleteResourceIdOfUserAssignedManagedIdentity>"
     ```
-2. Set destination subscription context
+1. Set destination subscription context:
     ```azurecli-interactive
     az account set --subscription $destinationSubId
     ```
-3. Add user assigned managed identity on destination account
+1. Add user-assigned managed identity on destination account:
     ```azurecli-interactive
     $identityOutput = az cosmosdb identity assign -n $destinationAccount -g $destinationAccountRG --identities $userAssignedManagedIdentityResourceId
     $principalId = ($identityOutput | ConvertFrom-Json).userAssignedIdentities.$userAssignedManagedIdentityResourceId.principalId
     ```
-4. Set default identity on destination account
+1. Set default identity on destination account:
     ```azurecli-interactive
     az cosmosdb update -n $destinationAccount -g $destinationAccountRG --default-identity=UserAssignedIdentity=$userAssignedManagedIdentityResourceId
     ```
-5. Set source subscription context
+1. Set source subscription context:
     ```azurecli-interactive
     az account set --subscription $sourceSubId
     ```
-6. Add role assignment on source account
+1. Add role assignment on source account:
     ```azurecli-interactive
     $roleDefinitionId = "00000000-0000-0000-0000-000000000001"  # Read-only access role
     az cosmosdb sql role assignment create --account-name $sourceAccount --resource-group $sourceAccountRG --role-definition-id $roleDefinitionId --scope "/" --principal-id $principalId
     ```
-7. Reset destination subscription context
+1. Reset destination subscription context:
     ```azurecli-interactive
     az account set --subscription $destinationSubId
     ```
@@ -255,6 +259,7 @@ az cosmosdb copy create `
     --dest-nosql database=$destinationDatabase container=$destinationContainer `
     --src-nosql database=$sourceDatabase container=$sourceContainer
 ```
+
 > [!NOTE]
 > `--job-name` should be unique for each job within an account.
 
@@ -368,7 +373,7 @@ az cosmosdb copy pause `
 
 ### Resume a copy job
 
-In order to resume an ongoing copy job, you can use the command:
+In order to resume an ongoing copy job, you can use this command:
 
 ```azurecli-interactive
 az cosmosdb copy resume `
@@ -379,7 +384,7 @@ az cosmosdb copy resume `
 
 ### Cancel a copy job
 
-In order to cancel an ongoing copy job, you can use the command:
+In order to cancel an ongoing copy job, you can use this command:
 
 ```azurecli-interactive
 az cosmosdb copy cancel `
@@ -389,8 +394,9 @@ az cosmosdb copy cancel `
 ```
 
 ## Get support for copy issues
-For issues related to a copy job, raise a **New Support Request** from the Azure portal. Set the **Problem Type** as 'Data Migration' and **Problem subtype** as 'Container copy'.
 
-## Next steps
+For issues related to a copy job, raise a **New Support Request** from the Azure portal. Set the **Problem Type** as *Data Migration* and **Problem subtype** as *Container copy*.
+
+## Next step
 
 - For more information about container copy jobs, see [Copy jobs](container-copy.md).
