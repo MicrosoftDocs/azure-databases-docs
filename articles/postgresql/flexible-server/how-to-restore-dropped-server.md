@@ -44,28 +44,28 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
 
 1. Provide the **resourceGroupName**, **serverName** (Target server name), **subscriptionId** properties, based on the resourceId attribute JSON value captured in the preceding step 3. The api-version property is prepopulated and can be left alone.
 
-1. Go to **Request Body** section and paste the following replacing the "Dropped server Location"(for example, CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "pointInTimeUTC", specify a value of "submissionTimestamp" plus **5 minutes** to ensure the command doesn't error out.
+1. Go to **Request Body** section and paste the following replacing the "Dropped server Location"(for example, CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "pointInTimeUTC", specify a value of "submissionTimestamp".
 
     ```json
       {
         "location": "Dropped Server Location",
         "properties":
         {
-          "pointInTimeUTC": "submissionTimestamp + 10 minutes",
+          "pointInTimeUTC": "submissionTimestamp",
           "createMode": "ReviveDropped",
           "sourceServerResourceId": "resourceId"
         }
       }
     ```
     
-    For example, if the submission timestamp is 2023-06-15T15:58:02Z, we recommend adding a minimum of 10 minutes to restore point in time 2023-06-15T16:05:02Z and ensure that you're changing three parameters (location,pointInTimeUTC,sourceServerResourceId) as per your restore requirements. 
+    Ensure that you're changing three parameters (location,pointInTimeUTC,sourceServerResourceId) as per your restore requirements. 
     
       ```json
           {
           "location": "WestUS",
           "properties":
           {
-            "pointInTimeUTC": "2023-06-15T16:08:02Z",
+            "pointInTimeUTC": "2023-06-15T06:08:02Z",
             "createMode": "ReviveDropped",
             "sourceServerResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup-Name/providers/Microsoft.DBforPostgreSQL/flexibleServers/SourceServer-Name"
           }
