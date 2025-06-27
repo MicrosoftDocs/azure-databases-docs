@@ -29,7 +29,7 @@ You must follow these steps to be able to use the Azure Storage extension:
 
 ## Identify the Azure Storage accounts
 
-Identify the Azure Storage accounts with which you want users of the extension to interact with, to import data from or export data to.
+Identify the Azure Storage accounts with which you want users of the extension to interact, to import data from or export data to.
 
 ## Choose type of authorization
 
@@ -59,6 +59,58 @@ az rest \
 # [REST API](#tab/rest-03)
 
 Using the [Servers - Update](/rest/api/postgresql/servers/update) REST API.
+
+---
+
+### To use authorization with Shared Key
+
+1. Confirm that storage account allows access to its key.
+2. Fetch one of the two access keys of the storage account.
+
+#### Confirm that storage account allows access to its key
+
+Your Azure Storage account must have **Allow storage account key access** enabled (that is, it can't have its [AllowSharedKeyAccess](/azure/storage/common/shared-key-authorization-prevent) property set to **false**).
+
+##### [Azure portal](#tab/portal-04)
+
+:::image type="content" source="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png" alt-text="Screenshot of confirming that Allow storage account key access is enabled." lightbox="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png":::
+
+##### [CLI](#tab/cli-04)
+
+```azurecli-interactive
+az storage account update \
+  --resource-group <storage_account_resource_group> \
+  --name <account_name> \
+  --allow-shared-key-access true
+```
+
+##### [REST API](#tab/rest-04)
+
+Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) REST API.
+
+---
+
+#### Confirm that storage account allows access to its key
+
+To pass it to the [azure_storage.account_add](#azure_storageaccount_add) function, [fetch either of the two access keys](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#view-account-access-keys) of the Azure Storage account
+
+##### [Azure portal](#tab/portal-05)
+
+:::image type="content" source="media/how-to-use-pg-azure-storage/copy-access-key-portal.png" alt-text="Screenshot of copying storage account access key." lightbox="media/how-to-use-pg-azure-storage/copy-access-key-portal.png":::
+
+##### [CLI](#tab/cli-05)
+
+```azurecli-interactive
+az storage account keys list \
+  --resource-group <storage_account_resource_group> \
+  --account-name <account_name> \
+  --query [0].value \
+  --output tsv
+```
+
+##### [REST API](#tab/rest-05)
+
+Using [Storage Accounts - List Keys](/rest/api/storagerp/storage-accounts/list-keys) REST API.
 
 ---
 
@@ -149,53 +201,6 @@ Users granted the `azure_storage_admin` role can interact with the `azure_storag
 * [azure_storage.account_user_remove](#azure_storageaccount_user_remove)
 
 The `azure_storage_admin` role is, by default, granted to the `azure_pg_admin` role.
-
-
-
-### To use authorization with Shared Key
-
-1. Your Azure Storage account must have **Allow storage account key access** enabled (that is, it can't have its [AllowSharedKeyAccess](/azure/storage/common/shared-key-authorization-prevent) property set to **false**).
-
-# [Azure portal](#tab/portal-04)
-
-:::image type="content" source="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png" alt-text="Screenshot of confirming that Allow storage account key access is enabled." lightbox="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png":::
-
-# [CLI](#tab/cli-04)
-
-```azurecli-interactive
-az storage account update \
-  --resource-group <storage_account_resource_group> \
-  --name <account_name> \
-  --allow-shared-key-access true
-```
-
-# [REST API](#tab/rest-04)
-
-Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) REST API.
-
----
-
-2. To pass it to the [azure_storage.account_add](#azure_storageaccount_add) function, [fetch either of the two access keys](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#view-account-access-keys) of the Azure Storage account.
-
-# [Azure portal](#tab/portal-05)
-
-:::image type="content" source="media/how-to-use-pg-azure-storage/copy-access-key-portal.png" alt-text="Screenshot of copying storage account access key." lightbox="media/how-to-use-pg-azure-storage/copy-access-key-portal.png":::
-
-# [CLI](#tab/cli-05)
-
-```azurecli-interactive
-az storage account keys list \
-  --resource-group <storage_account_resource_group> \
-  --account-name <account_name> \
-  --query [0].value \
-  --output tsv
-```
-
-# [REST API](#tab/rest-05)
-
-Using [Storage Accounts - List Keys](/rest/api/storagerp/storage-accounts/list-keys) REST API.
-
----
 
 ## Functions
 
