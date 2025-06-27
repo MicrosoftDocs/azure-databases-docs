@@ -7,49 +7,22 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: how-to
-  ms.date: 06/08/2025
+  ms.date: 06/25/2025
   appliesto:
   - ✅ MongoDB (vCore)
 ---
 
-# Read and read/write privileges with secondary users on Azure Cosmos DB for MongoDB vCore
+# Read and read/write privileges with secondary native users on Azure Cosmos DB for MongoDB vCore
 
-> [!IMPORTANT]
-> Secondary native users feature in Azure Cosmos DB for MongoDB vCore is currently in preview.
-> This preview version is provided without a service level agreement, and it isn't recommended
-> for production workloads. Certain features might not be supported or might have constrained
-> capabilities.
+Azure Cosmos DB for MongoDB vCore supports secondary native [DocumentDB](./oss.md) users with specialized read-write and read-only roles. This feature enables secondary users to access and modify data, making it easier to delegate responsibilities while enhancing data security. If you allow granular access control, teams can confidently extend data access to various stakeholders, such as developers and analysts, without compromising system integrity.
 
-Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized read-write roles. This feature enables secondary users to access and modify data, making it easier to delegate responsibilities while enhancing data security. If you allow granular access control, teams can confidently extend data access to various stakeholders, such as developers and analysts, without compromising system integrity.
+When a cluster is created, a built-in administrative native user account is automatically added. This account has full privileges, including user management capabilities. To create additional native users, you must log in using this built-in administrative account.
+
+If the cluster has [a replica](./cross-region-replication.md), all secondary native users are automatically replicated to the replica and can be used to access it. All native user management operations should be performed on the primary cluster.
 
 ## Prerequisites
 
 - [An Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md)
-
-## Configuring secondary users 
-
-Enable secondary native user management on the cluster for all native user management operations, such as creating and deleting users. You can enable or disable this feature using an ARM template or via [Azure CLI](/cli/azure/get-started-with-azure-cli).
-
-# [Azure CLI](#tab/cli)
-```azurecli-interactive
-az resource patch --ids "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDB/mongoClusters/{ClusterName}" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"EnableReadOnlyUser\"]}"
-```
-
-# [ARM template](#tab/arm)
-```PowerShell
-"previewFeatures": {
-            "value": [
-                "EnableReadOnlyUser"
-            ]
-        }
-```
----
-
-### Disabling secondary users
-
-If you need to remove all secondary users on the cluster, use [the delete operation](#delete-user).
-
-To disable secondary user *management operations* on the cluster, remove **EnableReadOnlyUser** value from the**previewFeatures** cluster property. When secondary user management is disabled, all secondary user operations on the cluster such as create user are disabled, but all secondary users created on the cluster can still be used for database access.
 
 ## Supported commands and examples
 
@@ -77,7 +50,7 @@ mongosh "mongodb+srv://<UserName>:<Password>@<ClusterName>?tls=true&authMechanis
 
 ### Create a user
 
-Creates a new user on the cluster where you run the command. The `createUser` command returns a duplicate user error if the user exists.
+Creates a new user on the cluster where you run the command. The `createUser` command returns a duplicate user error if the user already exists.
 
 #### Data admin users 
 
