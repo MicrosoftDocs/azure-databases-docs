@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 04/24/2025
+ms.date: 04/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -30,8 +30,8 @@ ms.topic: include
 | France South | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
 | Germany North * | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
 | Germany West Central | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: |
+| Indonesia Central | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Israel Central | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :x: |
-| Indonesia Central | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Italy North | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Japan East | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Japan West | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |

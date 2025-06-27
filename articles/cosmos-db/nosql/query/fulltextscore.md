@@ -32,8 +32,8 @@ FullTextScore(<property_path>, <string_expr1>, <string_expr2>, ... )
 | | Description |
 | --- | --- |
 | **`property_path`** | The property path to search. |
-| **`string_expr1`** | The first term to find. |
-| **`string_expr2`** | The second term to find. |
+| **`string_expr1`** | The first keyword or phrase to find. |
+| **`string_expr2`** | The second keyword or phrase to find. |
 
 
 ## Return types
@@ -47,7 +47,7 @@ This is a simple example showing how to use `FullTextScore` with `ORDER BY RANK`
 ```nosql
 SELECT TOP 10 c.text
 FROM c
-ORDER BY RANK FullTextScore(c.text, "keyword")
+ORDER BY RANK FullTextScore(c.text, "keywords or phrases here")
 ```
 
 This next example shows use of both `FullTextScore` in the `ORDER BY RANK` clause, and `FullTextContains` in the `WHERE` clause.
