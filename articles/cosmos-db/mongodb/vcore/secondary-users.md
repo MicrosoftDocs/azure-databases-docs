@@ -16,7 +16,7 @@
 
 Azure Cosmos DB for MongoDB vCore supports secondary native [DocumentDB](./oss.md) users with specialized read-write and read-only roles. This feature enables secondary users to access and modify data, making it easier to delegate responsibilities while enhancing data security. If you allow granular access control, teams can confidently extend data access to various stakeholders, such as developers and analysts, without compromising system integrity.
 
-When a cluster is created, a built-in administrative native user account is automatically added. This account has full privileges, including user management capabilities. To create additional native users, you must log in using this built-in administrative account.
+When a cluster is created, a built-in administrative native user account is automatically added. This account has full privileges, including user management capabilities. To create other native users, you must log in using this built-in administrative account.
 
 If the cluster has [a replica](./cross-region-replication.md), all secondary native users are automatically replicated to the replica and can be used to access it. All native user management operations should be performed on the primary cluster.
 
@@ -35,7 +35,7 @@ Users are created and granted privileges at the cluster level for all databases 
  > [!NOTE]
 >  Only full read-write users with database management and database operations privileges are supported. You can't assign **readWriteAnyDatabase** and **clusterAdmin** roles separately.
 
-You can use any of the MongoDB drivers or tools such as mongosh to perform these operations.
+You can use any of the MongoDB drivers or tools such as ```mongosh``` to perform these operations.
 
 ### Authenticate and perform operations via Mongosh
 
@@ -124,5 +124,5 @@ db.runCommand(
 ## Next steps
 
 - Learn about [security in Azure Cosmos DB for MongoDB vCore](./security.md)
-- Check [preview limitations](./limits.md#native-documentdb-secondary-users)
+- Check [limitations](./limits.md#native-documentdb-secondary-users)
 - Learn about [Microsoft Entra ID in Azure Cosmos DB for MongoDB vCore](./entra-authentication.md)
