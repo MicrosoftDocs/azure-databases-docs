@@ -27,7 +27,7 @@ Carry out up-front planning tasks and make critical decisions before migrating y
 ## Assess the compatibility and readiness of your resources for migration
 
 Before planning your migration, assess the state of your existing MongoDB resources to help plan for migration. 
-Use the ** Azure Cosmos DB for MongoDB Migration extension** in VS Code to assess the [compatibility and readiness](compatibility.md) of your workloads while planning the migration from MongoDB to Azure Cosmos DB for MongoDB vCore. The end-to-end assessment and find out the actions that you need to take to seamlessly run your workloads on Azure Cosmos DB. The assessment report presents findings at the account, database, and collection levels, each marked as Critical, Warning, or Informational based on severity to aid prioritization. The report includes:
+Use the **Azure Cosmos DB for MongoDB Migration extension** in VS Code to assess the [compatibility and readiness](compatibility.md) of your workloads while planning the migration from MongoDB to Azure Cosmos DB for MongoDB vCore. The end-to-end assessment and find out the actions that you need to take to seamlessly run your workloads on Azure Cosmos DB. The assessment report presents findings at the account, database, and collection levels, each marked as Critical, Warning, or Informational based on severity to aid prioritization. The report includes:
 
 - **Unsupported Features and Syntax**: It flags unsupported MongoDB features, commands, query syntax, and index types, with usage frequency to prioritize fixes.
 
@@ -49,13 +49,13 @@ Use the ** Azure Cosmos DB for MongoDB Migration extension** in VS Code to asses
 1. The assessment wizard guides you through three steps. In the **Start Validation** step, select **Run Validation** to verify credentials, prerequisites, and connectivity before proceeding.
 :::image source="media/how-to-migrate-vcore/start-validation.png" alt-text="Screenshot of the Start Validation step in the assessment wizard.":::
 
-> [!Important]
-> To perform an assessment, the connected MongoDB user must have the [readAnyDatabase](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readAnyDatabase) and [clusterMonitor](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-clusterMonitor) roles assigned on the source instance.
+    > [!Important]
+    > To perform an assessment, the connected MongoDB user must have the [readAnyDatabase](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readAnyDatabase) and [clusterMonitor](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-clusterMonitor) roles assigned on the source instance.
 
 6. In the **Fill in Assessment Details** step, provide the necessary inputs:
     :::image source="media/how-to-migrate-vcore/fill-assessment-details.png" alt-text="Screenshot of the Fill in Assessment Details step in the assessment wizard.":::
     - Enter a title in the **Assessment name** field.
-    - Select the target Azure Cosmos DB for MongoDB account from the **Offering** dropdown.
+    - Select **vCore** from the **Offering** dropdown.
     - Provide the path to MongoDB logs.
     > [!TIP]
     > While optional, specifying the logs path allows for more detailed findings at the collection level. If omitted, the tool relies on data from the `serverStatus` command, which only reflects feature usage since the last restart. Allow sufficient time to pass after the last server restart for an accurate workload assessment.
@@ -90,7 +90,7 @@ Use [`grantRolesToUser`](https://www.mongodb.com/docs/manual/reference/method/db
 
 The `serverStatus` command is used for feature compatibility assessments. However, this command doesn't provide database or collection names, which prevents the extension from reporting them.
 
-For more detailed assessment results, rerun the assessment and specify the folder containing MongoDB profiler logs in the **Log Folder Path** field.
+For more detailed assessment results, rerun the assessment and specify the folder containing MongoDB logs in the **Log Folder Path** field.
 
 #### How do I configure my source server firewall to prevent connectivity issues?
 
