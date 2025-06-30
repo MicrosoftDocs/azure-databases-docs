@@ -53,7 +53,7 @@ Discovery involves creating a comprehensive list of the existing resources (data
 
 Assessment involves finding out whether you're using the [features and syntax that are supported](./feature-support-42.md). It also includes making sure you're adhering to the [limits and quotas](../concepts-limits.md#per-account-limits). The aim of this stage is to create a list of incompatibilities and warnings, if any. After you have the assessment results, you can try to address the findings during rest of the migration planning.
 
-There are 3 ways to complete the pre-migration assessment, we recommend you to use the [Azure Cosmos DB Migration extension](#azure-cosmos-db-for-mongodb-migration-extension).
+There are 3 ways to complete the pre-migration assessment, we recommend you to use the [Azure Cosmos DB Migration extension](#azure-cosmos-db-migration-extension).
 
 ### Azure Cosmos DB Migration extension
 
@@ -83,7 +83,7 @@ Go through the spreadsheet and verify each collection against the [supported fea
 ### Database Migration Assistant utility (legacy) 
 
 > [!NOTE]
-> Database Migration Assistant is a legacy utility meant to assist you with the pre-migration steps. We recommend you to use the [Azure Cosmos DB Migration extension](#azure-cosmos-db-for-mongodb-migration-extension) for all pre-migration steps.
+> Database Migration Assistant is a legacy utility meant to assist you with the pre-migration steps. We recommend you to use the [Azure Cosmos DB Migration extension](#azure-cosmos-db-migration-extension) for all pre-migration steps.
 
 You may use the [Database Migration Assistant (DMA)](programmatic-database-migration-assistant-legacy.md) utility to assist you with pre-migration steps.
 
