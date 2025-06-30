@@ -27,7 +27,7 @@ Carry out up-front planning tasks and make critical decisions before migrating y
 ## Assess the compatibility and readiness of your resources for migration
 
 Before planning your migration, assess the state of your existing MongoDB resources to help plan for migration. 
-Use the **Azure Cosmos DB for MongoDB Migration extension** in VS Code to assess the [compatibility and readiness](compatibility.md) of your workloads while planning the migration from MongoDB to Azure Cosmos DB for MongoDB vCore. The end-to-end assessment and find out the actions that you need to take to seamlessly run your workloads on Azure Cosmos DB. The assessment report presents findings at the account, database, and collection levels, each marked as Critical, Warning, or Informational based on severity to aid prioritization. The report includes:
+Use the **Azure Cosmos DB Migration extension** in VS Code to assess the [compatibility and readiness](compatibility.md) of your workloads while planning the migration from MongoDB to Azure Cosmos DB for MongoDB vCore. The end-to-end assessment and find out the actions that you need to take to seamlessly run your workloads on Azure Cosmos DB. The assessment report presents findings at the account, database, and collection levels, each marked as Critical, Warning, or Informational based on severity to aid prioritization. The report includes:
 
 - **Unsupported Features and Syntax**: It flags unsupported MongoDB features, commands, query syntax, and index types, with usage frequency to prioritize fixes.
 
@@ -39,7 +39,7 @@ Use the **Azure Cosmos DB for MongoDB Migration extension** in VS Code to assess
 
 ### Run an Assessment
 
-1. To get started, install the **Azure Cosmos DB for MongoDB Migration** extension in VS Code. This will automatically install its prerequisite, the **DocumentDB for VS Code** extension.
+1. To get started, install the **Azure Cosmos DB Migration** extension in VS Code. This will automatically install its prerequisite, the **DocumentDB for VS Code** extension.
 2. Open the **DocumentDB for VS Code** extension. 
 1. Add the MongoDB server you want to assess for migration to the **Document DB Connections** list.
 1. Expand the selected connection, then Right-click and choose **Data Migration...**.
