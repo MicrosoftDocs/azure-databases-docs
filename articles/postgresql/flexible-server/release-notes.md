@@ -19,6 +19,9 @@ ms.custom:
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL flexible server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
+## Release: July 2025
+- General availability of [PostgreSQL 16](concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
+
 ## Release: June 2025
 
 - Support for latest [minor versions](concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
