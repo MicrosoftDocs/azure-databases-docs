@@ -164,6 +164,22 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
                                     'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Eventual)
 ```
 
+### [Go](#tab/go)
+
+Define consistency level at the request:
+
+```go
+container, _ := c.NewContainer("moviesdb", "movies")
+
+container.NewQueryItemsPager("select * from c", azcosmos.NewPartitionKey(), &azcosmos.QueryOptions{
+		ConsistencyLevel: azcosmos.ConsistencyLevelEventual.ToPtr(),
+})
+
+container.ReadItem(context.Background(), azcosmos.NewPartitionKeyString("Quentin Tarantino"), "Pulp Fiction", &azcosmos.ItemOptions{
+		ConsistencyLevel: azcosmos.ConsistencyLevelStrong.ToPtr(),
+})
+```
+
 ## Utilize session tokens
 
 One of the consistency levels in Azure Cosmos DB is *Session* consistency. This is the default level applied to Azure Cosmos DB accounts by default. When working with Session consistency, each new write request to Azure Cosmos DB is assigned a new SessionToken. The CosmosClient will use this token internally with each read/query request to ensure that the set consistency level is maintained.
@@ -283,6 +299,20 @@ options = {
     "sessionToken": session_token
 }
 item = client.ReadItem(doc_link, options)
+```
+
+### <a id="utilize-session-tokens-go"></a>Go SDK
+
+```go
+// Get the session token from the create item response
+resp, _ := container.CreateItem(context.Background(), azcosmos.NewPartitionKeyString("Quentin Tarantino"), movie, &azcosmos.ItemOptions{
+	ConsistencyLevel: azcosmos.ConsistencyLevelSession.ToPtr(),
+})
+
+// Use the session token to read the item
+container.ReadItem(context.Background(), azcosmos.NewPartitionKeyString("Quentin Tarantino"), movieId, &azcosmos.ItemOptions{
+	SessionToken: resp.SessionToken,
+})
 ```
 
 ## Monitor Probabilistically Bounded Staleness (PBS) metric

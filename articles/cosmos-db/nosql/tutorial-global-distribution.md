@@ -199,6 +199,16 @@ val sparkConnectorConfig = Map(
 )
 ```
 
+## Go SDK
+
+To enable multi-region in your application, use `PreferredRegions` in [ClientOptions](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ClientOptions):
+
+```go
+client, err := azcosmos.NewClient(endpoint, token, &azcosmos.ClientOptions{
+	PreferredRegions: []string{"West US", "Central US"},
+})
+```
+
 ## REST
 
 Once a database account has been made available in multiple regions, clients can query its availability by performing a GET request on this  URI `https://{databaseaccount}.documents.azure.com/`

@@ -198,6 +198,19 @@ container = database.create_container(
     )
 ```
 
+#### [Go](#tab/go)
+
+```go
+_, err = db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+	ID: "demo_container",
+	PartitionKeyDefinition: azcosmos.PartitionKeyDefinition{
+		Paths:   []string{"/TenantId", "/UserId", "/SessionId"},
+		Kind:    azcosmos.PartitionKeyKindMultiHash,
+		Version: 2,
+	},
+}, nil)
+```
+
 ---
 
 ### Azure Resource Manager templates

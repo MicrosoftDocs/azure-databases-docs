@@ -117,6 +117,27 @@ database.create_container(
 )
 ```
 
+### [Go](#tab/go)
+
+```go
+db, _ := c.NewDatabase("demo_db")
+
+pkDefinition := azcosmos.PartitionKeyDefinition{
+	Paths: []string{"/state"},
+	Kind:  azcosmos.PartitionKeyKindHash,
+}
+
+// Never expire by default
+ttl := int32(-1)
+
+db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+	ID:                     "demo_container",
+	PartitionKeyDefinition: pkDefinition,
+	DefaultTimeToLive:      &ttl,
+}, nil)
+```
+
+
 ---
 
 ## Set time to live on a container using an SDK

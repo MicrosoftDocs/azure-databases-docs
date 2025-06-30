@@ -123,6 +123,24 @@ lww_container = database.create_container(id=lww_container_id, partition_key=Par
     conflict_resolution_policy=lww_conflict_resolution_policy)
 ```
 
+### <a id="create-custom-conflict-resolution-policy-lww-go"></a>Go SDK
+
+```go
+db, _ := c.NewDatabase("demo_db")
+
+_, err = db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+	ID: "demo_container",
+	PartitionKeyDefinition: azcosmos.PartitionKeyDefinition{
+		Paths: []string{"/id"},
+		Kind:  azcosmos.PartitionKeyKindHash,
+	},
+	ConflictResolutionPolicy: &azcosmos.ConflictResolutionPolicy{
+		Mode:           azcosmos.ConflictResolutionModeLastWriteWins,
+		ResolutionPath: "/myCustomId",
+	},
+}, nil)
+```
+
 ## Create a custom conflict resolution policy using a stored procedure
 
 These samples show how to set up a container with a custom conflict resolution policy. This policy uses the logic in a stored procedure to resolve the conflict. If a stored procedure is designated to resolve conflicts, conflicts won't show up in the conflict feed unless there's an error in the designated stored procedure.

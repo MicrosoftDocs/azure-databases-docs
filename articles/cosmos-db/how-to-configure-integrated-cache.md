@@ -117,6 +117,13 @@ credential = DefaultAzureCredential()
 client = CosmosClient(endpoint, credential=credential)
 ```
 
+### [Go](#tab/go)
+
+```go
+endpoint = "<dedicated-gateway-endpoint>"
+client, _ := azcosmos.NewClient(endpoint, creds, nil)
+```
+
 ---
 
 ### Authenticate with connection strings
@@ -200,6 +207,18 @@ container.query_items(
     query=query,
     max_integrated_cache_staleness_in_ms=1800000
 )
+```
+
+### [Go](#tab/go)
+
+```go
+staleness := 18000 * time.Millisecond
+
+container.NewQueryItemsPager("select * from c", azcosmos.NewPartitionKey(), &azcosmos.QueryOptions{
+	DedicatedGatewayRequestOptions: &azcosmos.DedicatedGatewayRequestOptions{
+		MaxIntegratedCacheStaleness: &staleness,
+	},
+})
 ```
 
 ---

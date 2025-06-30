@@ -236,6 +236,40 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput));
 ```
 
+## Azure Cosmos DB Go SDK
+
+Create a database with manual throughput:
+
+```go
+// manual throughput properties
+db_throughput := azcosmos.NewManualThroughputProperties(400)
+
+_, err = client.CreateDatabase(context.Background(), azcosmos.DatabaseProperties{
+	ID: "demo_db",
+}, &azcosmos.CreateDatabaseOptions{
+	ThroughputProperties: &db_throughput,
+})
+```
+
+Create a container with autoscale throughput:
+
+```go
+pkDefinition := azcosmos.PartitionKeyDefinition{
+	Paths: []string{"/state"},
+	Kind:  azcosmos.PartitionKeyKindHash,
+}
+
+// autoscale throughput properties
+throughput := azcosmos.NewAutoscaleThroughputProperties(4000)
+
+db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+	ID:                     "demo_container",
+	PartitionKeyDefinition: pkDefinition,
+}, &azcosmos.CreateContainerOptions{
+	ThroughputProperties: &throughput,
+})
+```
+
 ---
 
 ## Azure Resource Manager
