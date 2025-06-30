@@ -22,6 +22,13 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 > [!NOTE]
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
+
+## July 2025
+
+### Configure backup interval for the automated backups
+
+Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. This new feature optimizes the process by introducing more frequent snapshots, thereby reducing the number of binlogs that need to be replayed for point-in-time restore and minimizing overall restore time. Learn more about the feature [here](./concepts-backup-restore.md#backup-frequency).
+
 ## June 2025
 
 ### Auto Initialization of Time Zones
