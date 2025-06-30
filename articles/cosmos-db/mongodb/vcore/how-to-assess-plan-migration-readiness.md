@@ -135,8 +135,6 @@ Begin with a cluster tier that aligns with your source database configurations. 
 ### Storage Tier
 Ensure your target account is provisioned with adequate storage to meet your data requirements during and after migration. Start by migrating a small dataset to assess storage consumption, then scale the estimate based on the total data size to determine the necessary storage allocation. Reserve extra space to accommodate incoming data and future growth.
 
-
-
 ## Next step
 
 > [!div class="nextstepaction"]
