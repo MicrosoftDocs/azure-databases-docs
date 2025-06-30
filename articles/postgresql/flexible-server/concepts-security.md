@@ -203,6 +203,12 @@ PostgreSQL 16 also introduced new and improved built-in roles. New *pg_use_reser
 > [!IMPORTANT]
 > Azure Database for PostgreSQL flexible server does not allow users to be granted *pg_write_all_data* attribute, which allows user to write all data (tables, views, sequences), as if having INSERT, UPDATE, and DELETE rights on those objects, and USAGE rights on all schemas, even without having it explicitly granted. As a workaround recommended to grant similar permissions on a more finite level per database and object. 
 
+### Improved control for *azure_pg_admin*
+
+Azure Database for PostgreSQL flexible server offers enhanced flexibility and control for the azure_pg_admin role across all PostgreSQL versions. With this update, azure_pg_admin members can manage and access objects owned by any non-restricted role, even if those roles are also members of azure_pg_admin. It becomes easier for administrative users retain consistent and comprehensive control over role and permission management, providing a seamless and reliable experience without requiring superuser access. 
+
+> [!NOTE]
+> A non-restricted role is defined as any role that is not a superuser (azure_su), does not begin with pg_, and is not named replication or azure_pg_admin
 
 ## Row level security
 
