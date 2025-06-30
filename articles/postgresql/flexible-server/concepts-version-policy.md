@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions in Az
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 3/12/2025
+ms.date: 6/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL flexible server supports the following database ve
 
 | Version | Azure Database for PostgreSQL single server | Azure Database for PostgreSQL flexible server |
 | ----- | :------: | :----: |
-| PostgreSQL 17 (preview) |   | X |
+| PostgreSQL 17 |   | X |
 | PostgreSQL 16 |   | X |
 | PostgreSQL 15 |   | X |
 | PostgreSQL 14 |   | X |
