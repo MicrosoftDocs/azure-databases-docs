@@ -96,4 +96,4 @@ With the graphical user interface, you can oversee the entire premigration asses
 ## Related content
 
 - Migrate data to vCore-based Azure Cosmos DB for MongoDB using [native MongoDB tools](how-to-migrate-native-tools.md).
-- Migrate data to vCore-based Azure Cosmos DB for MongoDB using the [MongoDB migration extension for Azure Data Studio](/azure-data-studio/extensions/database-migration-for-mongo-extension).
+- Migrate data to vCore-based Azure Cosmos DB for MongoDB using the [MongoMigrationwebBasedUtility](https://github.com/AzureCosmosDB/MongoMigrationwebBasedUtility).
