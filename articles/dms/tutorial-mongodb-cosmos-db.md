@@ -60,7 +60,7 @@ To complete this tutorial, you need to:
   This configuration is necessary because Azure Database Migration Service lacks internet connectivity.
 
 - Ensure that your network security group (NSG) rules for your virtual network don't block the following communication ports: 53, 443, 445, 9354, and 10000-20000. For more information, see [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-- Open your Windows firewall to allow Azure Database Migration Service to access the source MongoDB server, which by default is TCP port 27017.
+- Open your Windows Firewall to allow Azure Database Migration Service to access the source MongoDB server, which by default is TCP port 27017.
 - When you're using a firewall appliance in front of your source database, you might need to add firewall rules to allow Azure Database Migration Service to access the source database for migration.
 
 ## Configure the Server Side Retry feature
