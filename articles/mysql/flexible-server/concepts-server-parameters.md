@@ -208,7 +208,7 @@ You can set this parameter at the session level by using `init_connect`. For mor
 
 ### time_zone
 
-Upon initial deployment, an Azure Database for MySQL - Flexible Server instance includes system tables for time zone information, but these tables aren't populated. You can populate the time zone tables by calling the `mysql.az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench. You can also call the stored procedure and set the global or session-level time zones by using the [Azure portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or the [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter).
+You can populate the time zone tables with the latest time zone information by calling the `mysql.az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench and then set the global time zones by using the [Azure portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or the [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter). Time zones are automatically loaded during server creation, removing the need for customers to manually execute the `mysql.az_load_timezone` stored procedure afterwards to load the time zone.
 
 ### binlog_expire_logs_seconds
 
