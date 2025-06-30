@@ -29,10 +29,6 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. This new feature optimizes the process by introducing more frequent snapshots, thereby reducing the number of binlogs that need to be replayed for point-in-time restore and minimizing overall restore time. Learn more about the feature [here](./concepts-backup-restore.md#backup-frequency).
 
-### Auto Initialization of Time Zones
-
-Time zones are automatically loaded during server creation, removing the need for customers to manually execute the mysql.az_load_timezone stored procedure afterwards to load the time zone. For more information, refer to the server parameter details for [time_zone](concepts-server-parameters.md#time_zone)
-
 ## June 2025
 
 ### Auto Initialization of Time Zones
