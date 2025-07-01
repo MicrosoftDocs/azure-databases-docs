@@ -83,15 +83,11 @@ __Note__: Extended Support doesn't include new feature releases, performance enh
 
 __Eligible PostgreSQL Versions__
 
-|PostgreSQL Version|Azure Support  
-Start Date|Community Retirement  
-Date|Paid Extended  
-Support Starts (includes grace period)|Extended  
-Support Ends|
-| -------- | -------- | -------- | -------- | -------- |
-|11|24-Jul-19|9-Nov-25|1-Apr-26|31-Mar-29|
-|12|22-Sep-20|14-Nov-24|1-Apr-26|31-Mar-29|
-|13|25-May-21|13-Nov-25|1-Apr-26|31-Mar-29|
+| PostgreSQL Version | Azure Support Start Date | Community Retirement Date | Paid Extended Support Starts (includes grace period) | Extended Support Ends |
+|--------------------|-------------------------|--------------------------|-----------------------------------------------------|----------------------|
+| 11                 | 24-Jul-19               | 9-Nov-25                 | 1-Apr-26                                            | 31-Mar-29            |
+| 12                 | 22-Sep-20               | 14-Nov-24                | 1-Apr-26                                            | 31-Mar-29            |
+| 13                 | 25-May-21               | 13-Nov-25                | 1-Apr-26                                            | 31-Mar-29            |
 
  __Enrollment & Pricing__
  
@@ -144,11 +140,9 @@ _A: To minimize downtime:_
 - Apply pending maintenance before the upgrade.
 - Take a manual backup just before the upgrade to speed up snapshot creation.
 - Schedule upgrades during low-traffic periods.
-· Monitor replication lag and connections if using Blue/Green deployment.
-
- 
-
-__Q: Where can I track which of my servers are nearing EOL?__
+- Monitor replication lag and connections if using Blue/Green deployment.
+- 
+ __Q: Where can I track which of my servers are nearing EOL?__
 
 _A:_ Azure provides visibility through the Portal.
 
