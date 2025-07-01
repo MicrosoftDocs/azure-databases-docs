@@ -1,10 +1,10 @@
 ---
 title: Logical replication and logical decoding
 description: Learn about using logical replication and logical decoding in Azure Database for PostgreSQL flexible server.
-author: akashraokm
-ms.author: akashrao
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 06/30/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -117,11 +117,7 @@ Here's some sample code you can use to try out logical replication.
    ```
    You can add more rows to the publisher's table and view the changes on the subscriber.
 
-   If you're not able to see the data, enable the sign in privilege for `azure_pg_admin` and check the table content.
-
-   ```sql
-   ALTER ROLE azure_pg_admin login;
-   ```
+   If you're not able to see the data, switch to a user who is a member of the `azure_pg_admin` role and check the table content.
 
 Visit the PostgreSQL documentation to understand more about [logical replication](https://www.postgresql.org/docs/current/logical-replication.html).
 
