@@ -238,7 +238,9 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ## Azure Cosmos DB Go SDK
 
-Create a database with manual throughput:
+You can use [ThroughputProperties](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ThroughputProperties) on database and container resources.
+
+### Create a database with manual throughput
 
 ```go
 // manual throughput properties
@@ -251,7 +253,7 @@ _, err = client.CreateDatabase(context.Background(), azcosmos.DatabaseProperties
 })
 ```
 
-Create a container with autoscale throughput:
+### Create a container with autoscale throughput
 
 ```go
 pkDefinition := azcosmos.PartitionKeyDefinition{
@@ -269,8 +271,6 @@ db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
 	ThroughputProperties: &throughput,
 })
 ```
-
----
 
 ## Azure Resource Manager
 

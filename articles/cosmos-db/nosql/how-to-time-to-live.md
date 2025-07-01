@@ -117,7 +117,7 @@ database.create_container(
 )
 ```
 
-### [Go](#tab/go)
+### [Go SDK](#tab/go)
 
 ```go
 db, _ := c.NewDatabase("demo_db")
@@ -205,6 +205,21 @@ database.create_container(
     # Expire all documents after 90 days
     default_ttl=90 * 60 * 60 * 24
 )
+```
+
+### [Go SDK](#tab/go)
+
+```go
+db, _ := c.NewDatabase("demo_db")
+
+// Expire all documents after 90 days
+ttl := int32(90 * 24 * 60 * 60)
+
+db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+	ID:                     containerName,
+	PartitionKeyDefinition: pkDefinition,
+	DefaultTimeToLive:      &ttl,
+}, nil)
 ```
 
 ---
@@ -326,6 +341,22 @@ item = {
 container.create_item(body=item)
 ```
 
+### [Go SDK](#tab/go)
+
+```go
+custInfo := map[string]any{
+	"id":    "SO05",
+	"customerId": "CO18009186470",
+	// Expire sales order in 30 days using "ttl" property
+	"ttl": int32(60 * 60 * 24 * 30),
+}
+
+container, _ := db.NewContainer(containerName)
+
+item, err := json.Marshal(custInfo)
+container.CreateItem(context.Background(), azcosmos.NewPartitionKeyString("CO18009186470"), item, nil)
+```
+
 ---
 
 ## Reset time to live using an SDK
@@ -409,6 +440,22 @@ container.replace_item(
 )
 ```
 
+### [Go SDK](#tab/go)
+
+```go
+// Read the item
+resp, _ := container.ReadItem(context.Background(), azcosmos.NewPartitionKeyString("CO18009186470"), "SO05", nil)
+
+var order map[string]any
+json.Unmarshal(resp.Value, &order)
+
+// Update ttl to 2 hours
+order["ttl"] = int32(120 * 60)
+updatedOrder, err = json.Marshal(order)
+
+container.ReplaceItem(context.Background(), azcosmos.NewPartitionKeyString("CO18009186470"), "SO05", updatedOrder, nil)
+```
+
 ---
 
 ## Disable time to live using an SDK
@@ -458,6 +505,17 @@ database.replace_container(
     # Disable ttl at container-level
     default_ttl=None
 )
+```
+
+### [Go SDK](#tab/go)
+
+```go
+containerInfo, _ := container.Read(context.Background(), nil)
+props := containerInfo.ContainerProperties
+
+// Disable ttl at container-level
+props.DefaultTimeToLive = nil
+container.Replace(context.Background(), *props, nil)
 ```
 
 ---

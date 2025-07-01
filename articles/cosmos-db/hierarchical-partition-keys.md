@@ -198,7 +198,7 @@ container = database.create_container(
     )
 ```
 
-#### [Go](#tab/go)
+#### [Go SDK](#tab/go)
 
 ```go
 _, err = db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
@@ -439,6 +439,31 @@ item_definition = {'id': 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
 
 item = container.create_item(body=item_definition)
 ```
+
+##### [Go SDK](#tab/go)
+
+[NewPartitionKey](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#NewPartitionKey) exposes a builder-like API to construct a partition key value. The value is a [PartitionKey](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#PartitionKey) object that can be used to create items in the container.
+
+```go
+tenantId := "Microsoft"
+userId := "00aa00aa-bb11-cc22-dd33-44ee44ee44ee"
+sessionId := "0000-11-0000-1111"
+
+pk := azcosmos.NewPartitionKeyString(tenantId).AppendString(userId).AppendString(sessionId)
+
+data := map[string]any{
+	"id":        uuid.NewString(),
+	"TenantId":  tenantId,
+	"UserId":    userId,
+	"SessionId": sessionId,
+}
+
+container, _ := c.NewContainer(dbName, containerName)
+
+item, _ := json.Marshal(data)
+container.CreateItem(context.Background(), pk, item, nil)
+```
+
 ---
 
 ### Perform a key/value lookup (point read) of an item
@@ -504,6 +529,24 @@ const { resource: document } = await container.item(id, partitionKey).read();
 item_id = "f7da01b0-090b-41d2-8416-dacae09fbb4a"
 pk = ["Microsoft", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee", "0000-11-0000-1111"]
 container.read_item(item=item_id, partition_key=pk)
+```
+
+##### [Go SDK](#tab/go)
+
+```go
+itemId := "some item id"
+tenantId := "Microsoft"
+userId := "00aa00aa-bb11-cc22-dd33-44ee44ee44ee"
+sessionId := "0000-11-0000-1111"
+
+// Build the full partition key path
+pk := azcosmos.NewPartitionKeyString(tenantId).AppendString(userId).AppendString(sessionId)
+
+// Perform a point read
+item, err := container.ReadItem(context.Background(), pk, itemId, nil)
+
+var result map[string]any
+json.Unmarshal(item.Value, &result)
 ```
 ---
 
@@ -599,6 +642,40 @@ items = list(container.query_items(
         {"name": "@session_id", "value": pk[2]}
     ]
 ))
+```
+
+##### [Go SDK](#tab/go)
+
+```go
+tenantId := "Microsoft"
+userId := "00aa00aa-bb11-cc22-dd33-44ee44ee44ee"
+sessionId := "0000-11-0000-1111"
+
+// Build the full partition key path
+pk := azcosmos.NewPartitionKeyString(tenantId).AppendString(userId).AppendString(sessionId)
+
+query := "SELECT * FROM r WHERE r.TenantId=@tenant_id and r.UserId=@user_id and r.SessionId=@session_id"
+
+pager := container.NewQueryItemsPager(query, pk, &azcosmos.QueryOptions{
+	QueryParameters: []azcosmos.QueryParameter{
+		{
+			Name:  "@tenant_id",
+			Value: tenantId,
+		},
+		{
+			Name:  "@user_id",
+			Value: userId,
+		},
+		{
+			Name:  "@session_id",
+			Value: sessionId,
+		},
+	},
+})
+
+for pager.More() {
+    // Read the next page of results
+}
 ```
 
 ---

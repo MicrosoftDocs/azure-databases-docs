@@ -164,7 +164,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
                                     'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Eventual)
 ```
 
-### [Go](#tab/go)
+### <a id="override-default-consistency-go"></a>Go SDK
 
 Define consistency level at the request:
 
