@@ -101,7 +101,7 @@ Support Ends|
 
 ·       Grace Period: A one-month grace period applies. Billing begins on April 1, 2026.
 
-·       Pricing: Details are published on this [page](https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/?cdn=disable) before billing begins.
+·       Pricing: Details are published on this [page](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/?cdn=disable) before billing begins.
 
 __Why Use Extended Support?__
 
