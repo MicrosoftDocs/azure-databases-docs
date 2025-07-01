@@ -4,7 +4,7 @@ description: Learn about security in the Flexible Server deployment option for A
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 6/22/2025
+ms.date: 6/30/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
