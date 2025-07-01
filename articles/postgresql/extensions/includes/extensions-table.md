@@ -577,7 +577,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 17 | 1.0.1 <sup>*</sup> |
+| 17 | Not supported |
 | 16 | 1.0.1 <sup>*</sup> |
 | 15 | 1.0.1 <sup>*</sup> |
 | 14 | 1.0.1 <sup>*</sup> |
