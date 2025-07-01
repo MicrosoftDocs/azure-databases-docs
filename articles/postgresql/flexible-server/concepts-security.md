@@ -205,10 +205,7 @@ PostgreSQL 16 also introduced new and improved built-in roles. New *pg_use_reser
 
 ### Improved control for *azure_pg_admin*
 
-Azure Database for PostgreSQL flexible server offers enhanced flexibility and control for the azure_pg_admin role across all PostgreSQL versions. With this update, azure_pg_admin members can manage and access objects owned by any non-restricted role, even if those roles are also members of azure_pg_admin. It becomes easier for administrative users retain consistent and comprehensive control over role and permission management, providing a seamless and reliable experience without requiring superuser access. 
-
-> [!NOTE]
-> A non-restricted role is defined as any role that is not a superuser (azure_su), does not begin with pg_, and is not named replication or azure_pg_admin
+In PostgreSQL 16, a strict role hierarchy structure has been implemented for users with the CREATEROLE privilege, specifically related to grant roles. To improve administrative flexibility and address limitation introduced in PostgreSQL 16, Azure Database for PostgreSQL flexible server has enhanced the capabilities of the *azure_pg_admin* role across all PostgreSQL versions. With this update, members of the *azure_pg_admin* role can now manage roles and access objects owned by any non-restricted role, even if those roles are also members of *azure_pg_admin*. A non-restricted role is defined as any role that is not a superuser (azure_su), does not begin with pg_, and is not named replication or *azure_pg_admin*. This enhancement ensures that administrative users maintain consistent and comprehensive control over role and permission management, providing a seamless and reliable experience without requiring superuser access.
 
 ## Row level security
 
