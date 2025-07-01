@@ -71,7 +71,7 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
     ```
 
   > [!IMPORTANT]  
-  > There is a time limit of five days after the server was dropped. After five days, an error is expected since the backup file cannot be found.
+  > There's a time limit of five days after the server was dropped. After five days, an error is expected since the backup file cannot be found.
 
 1. If you see Response Code 201 or 202, the restore request is successfully submitted.
 

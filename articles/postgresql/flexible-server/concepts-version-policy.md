@@ -18,18 +18,18 @@ This page describes the Azure Database for PostgreSQL flexible server versioning
 
 Azure Database for PostgreSQL flexible server supports the following database versions.
 
-| Version | Azure Database for PostgreSQL flexible server |
-| --- | --- |
-| PostgreSQL 17 | Yes |
-| PostgreSQL 16 | Yes |
-| PostgreSQL 15 | Yes |
-| PostgreSQL 14 | Yes |
-| PostgreSQL 13 | Yes |
-| PostgreSQL 12 (retired)* | See [policy](#postgresql-12-support) |
-| PostgreSQL 11 | Yes |
-| *PostgreSQL 10 (retired)* | See [policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) | |
-| *PostgreSQL 9.6 (retired)* | See [policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) | |
-| *PostgreSQL 9.5 (retired)* | See [policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) | |
+| Version | Supported | Policy information |
+| --- | --- | --- |
+| PostgreSQL 17 | Yes | N/A |
+| PostgreSQL 16 | Yes | N/A |
+| PostgreSQL 15 | Yes | N/A |
+| PostgreSQL 14 | Yes | N/A |
+| PostgreSQL 13 | Yes | N/A |
+| PostgreSQL 12 | No (retired) | [Policy](#postgresql-12-support) |
+| PostgreSQL 11 | Yes | N/A |
+| PostgreSQL 10 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) |
+| PostgreSQL 9.6 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) |
+| PostgreSQL 9.5 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) |
 
 ## Major version
 
@@ -149,7 +149,7 @@ PostgreSQL 12 reached its end of life on **November 14, 2024**, in line with the
 ### Flexible server support
 
 - You can create and operate PostgreSQL 11 servers on Azure Database for PostgreSQL flexible Server, until November 9, 2025, when Azure stops supporting PostgreSQL 11.
-- From November 9, 2023 to November 9, 2025, while users can continue using and creating new instances of PostgreSQL 11 on the flexible server, they're subject to the [restrictions](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) of other retired PostgreSQL engines.
+- Starting November 9, 2023, to November 9, 2025, while users can continue using and creating new instances of PostgreSQL 11 on the flexible server, they are [restrictions](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) of other retired PostgreSQL engines.
 
 This extension of Postgres 11 support is part of Azure's commitment to providing a seamless migration path and ensuring continued functionality for users.
 
@@ -165,7 +165,7 @@ You might continue to run the retired version in Azure Database for PostgreSQL f
 - Uptime SLAs apply solely to Azure Database for PostgreSQL flexible server service-related issues and not to any downtime caused by database engine-related bugs.
 - In rare cases where a critical vulnerability in a retired PostgreSQL version poses a threat to the service, Azure might stop affected servers to protect the platform. In such case, you're notified to upgrade the server before bringing the server online.
 
-- New extensions introduced for Azure Database for PostgreSQL aren't supported on PostgreSQL versions that are retired by the community.
+- New extensions introduced for Azure Database for PostgreSQL – Flexible Server aren't supported on PostgreSQL versions that have been retired by the community.
 
 ## PostgreSQL version syntax
 
