@@ -94,32 +94,23 @@ Support Ends|
 |13|25-May-21|13-Nov-25|1-Apr-26|31-Mar-29|
 
  __Enrollment & Pricing__
-
-·       Automatic Enrollment: PostgreSQL servers running unsupported versions are automatically enrolled in Extended Support on March 1, 2026.
-
-·       Opt-Out Option: You can opt out at any time by upgrading to a supported version.
-
-·       Grace Period: A one-month grace period applies. Billing begins on April 1, 2026.
-
-·       Pricing: Details are published on this [page](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/?cdn=disable) before billing begins.
+ 
+- Automatic Enrollment: PostgreSQL servers running unsupported versions are automatically enrolled in Extended Support on March 1, 2026.
+- Opt-Out Option: You can opt out at any time by upgrading to a supported version.
+- Grace Period: A one-month grace period applies. Billing begins on April 1, 2026.
+- Pricing: Details are published on this [page](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/?cdn=disable) before billing begins.
 
 __Why Use Extended Support?__
 
 Extended Support is ideal for customers who: 
-
-·       Need more time to upgrade complex workloads.
-
-·       Require compliance and security coverage during upgrade planning.
-
-·       Depend on uninterrupted technical support for critical environments.
+- Need more time to upgrade complex workloads.
+- Require compliance and security coverage during upgrade planning.
+- Depend on uninterrupted technical support for critical environments.
 
 __Best Practices__
-
-·       Treat Extended Support as a temporary bridge, not a long-term solution.
-
-·       Begin upgrade planning well before the end-of-life (EOL) date.
-
-·       Consider upgrading to newer versions such as PostgreSQL 15 or 16 for improved performance and support.
+- Treat Extended Support as a temporary bridge, not a long-term solution.
+- Begin upgrade planning well before the end-of-life (EOL) date.
+- Consider upgrading to newer versions such as PostgreSQL 15 or 16 for improved performance and support.
 
 __FAQ__
 
@@ -150,14 +141,10 @@ _A: No. While Azure upgrades the database engine, noncore extensions (for exampl
 __Q: How can I reduce downtime during a major upgrade?__
 
 _A: To minimize downtime:_
-
-·       _Apply pending maintenance before the upgrade._
-
-·       _Take a manual backup just before the upgrade to speed up snapshot creation._
-
-·       _Schedule upgrades during low-traffic periods._
-
-·       _Monitor replication lag and connections if using Blue/Green deployment._
+- Apply pending maintenance before the upgrade.
+- Take a manual backup just before the upgrade to speed up snapshot creation.
+- Schedule upgrades during low-traffic periods.
+· Monitor replication lag and connections if using Blue/Green deployment.
 
  
 
