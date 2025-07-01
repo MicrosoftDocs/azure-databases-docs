@@ -141,7 +141,7 @@ _A: To minimize downtime:_
 - Take a manual backup just before the upgrade to speed up snapshot creation.
 - Schedule upgrades during low-traffic periods.
 - Monitor replication lag and connections if using Blue/Green deployment.
-- 
+ 
  __Q: Where can I track which of my servers are nearing EOL?__
 
 _A:_ Azure provides visibility through the Portal.
