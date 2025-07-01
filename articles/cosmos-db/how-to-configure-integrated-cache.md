@@ -160,6 +160,7 @@ Adjusting the `MaxIntegratedCacheStaleness` is supported in these versions of ea
 | **Java SDK v4** | *>= 4.34.0* |
 | **Node.js SDK** | *>=3.17.0* |
 | **Python SDK**  | *>=4.3.1* |
+| **Go SDK**      | *>=1.1.0* |
 
 ### [.NET](#tab/dotnet)
 

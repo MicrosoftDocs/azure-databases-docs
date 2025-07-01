@@ -236,6 +236,8 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput));
 ```
 
+---
+
 ## Azure Cosmos DB Go SDK
 
 You can use [ThroughputProperties](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ThroughputProperties) on database and container resources.
@@ -271,6 +273,8 @@ db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
 	ThroughputProperties: &throughput,
 })
 ```
+
+---
 
 ## Azure Resource Manager
 
