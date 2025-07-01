@@ -63,7 +63,111 @@ The table below provides the retirement details for PostgreSQL major versions. T
 | [PostgreSQL 9.5 (retired)](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/) | [Features](https://www.postgresql.org/docs/9.5/release-9-5.html) | 18-Apr-18                | 11-Feb-21               |
 | [PostgreSQL 9.6 (retired)](https://www.postgresql.org/about/news/postgresql-96-released-1703/)                              | [Features](https://wiki.postgresql.org/wiki/NewIn96)             | 18-Apr-18                | 11-Nov-21               |
 
-## PostgreSQL 11 support
+## Extended Support
+
+To help customers maintain secure and compliant workloads beyond community end-of-life (EOL), Azure is introducing Extended Support for Azure Database for PostgreSQL.
+
+Extended Support offers continued access to critical security updates and technical assistance, giving you time to plan and implement your upgrade strategy with confidence.
+
+__What is Extended Support?__
+
+Extended Support provides:
+
+- __Up to 3 additional years__ of support after standard support ends
+
+- __Security patches and critical bug fixes__
+
+- __Technical support via Azure Support channels__ (per your existing plan)
+
+__Note__: Extended Support does not include new feature releases, performance enhancements, or support for minor version upgrades.
+
+__Eligible PostgreSQL Versions__
+
+|PostgreSQL Version|Azure Support  
+Start Date|Community Retirement  
+Date|Paid Extended  
+Support Starts (includes 1-month grace period)|Extended  
+Support Ends|
+| -------- | -------- | -------- | -------- | -------- |
+|11|24-Jul-19|9-Nov-25|1-Apr-26|31-Mar-29|
+|12|22-Sep-20|14-Nov-24|1-Apr-26|31-Mar-29|
+|13|25-May-21|13-Nov-25|1-Apr-26|31-Mar-29|
+
+ __Enrollment & Pricing__
+
+- Automatic Enrollment: PostgreSQL servers running unsupported PG versions will automatically enter Extended Support on March 1, 2026.
+
+- You may opt out by upgrading to a supported version at any time.
+
+- A 1-month grace period will apply; billing starts April 1, 2026.
+
+- Pricing will be published ahead of the billing start date [here](https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/?cdn=disable).
+
+__Why Use Extended Support?__
+
+Extended Support is ideal for customers who:
+
+- Need more time to upgrade complex workloads
+
+- Require compliance and security assurance during upgrade planning
+
+- Depend on uninterrupted technical support for critical environments
+
+__Best Practices__
+
+- Use Extended Support as a bridge, not a long-term solution
+
+- Begin upgrade planning well before EOL
+
+- Consider newer versions like PostgreSQL 15 or 16 for optimal performance and support
+
+__Extended Support FAQs__
+
+__Q: What happens if I continue running an unsupported PostgreSQL version on Azure after its community EOL?__
+
+_A: Servers running on an unsupported PostgreSQL verson will be automatically enrolled in Extended Support one month after the community EOL (or on March 1, 2026 for versions 11, 12, and 13)._
+
+__Q: Can I continue using my PostgreSQL instance without Extended Support?__
+
+_A: Yes, but after the one-month grace period, you will be automatically enrolled into paid Extended Support unless you choose to upgrade to a supported version before the start of the billing period. During the grace period, you assume full operational risk, and Microsoft support will not guarantee resolution for issues on these instances._
+
+__Q: Will my applications break during a major version upgrade?__
+
+_A: While Azure provides Pre-Upgrade Validation Checks (PVC) to catch common issues (e.g., extension compatibility, parameter conflicts), customers are advised to test upgrades in non-production first. Azure is also investing in Blue/Green deployments for near-zero-downtime upgrades._
+
+__Q: How will I know if my server is in Extended Support?__
+
+_A: The Azure Postgres Portal and CLI will provide clear indicators if a server is enrolled in Extended Support. Customers will also receive billing itemization for Extended Support._
+
+__Q: Do I need to update Server Parameter Groups post major version upgrades?__
+
+_A: Yes. PostgreSQL major versions often introduce or deprecate configuration parameters. Customers should create a new Parameter Group for the target version and update memory or performance-related settings as needed._
+
+__Q: Are PostgreSQL extensions automatically upgraded during a major version upgrade?__
+
+_A: No. While Azure ensures the database engine is upgraded, non-core extensions (e.g., pgvector, timescaledb) require manual intervention. Customers must run ALTER EXTENSION ... UPDATE or recreate unsupported extensions after upgrade._
+
+__Q: How can I reduce downtime during a major upgrade?__
+
+_A: Customers are encouraged to:_
+
+- _Apply pending maintenance before scheduling the upgrade_
+
+- _Take a manual backup just before upgrade to speed up pre-upgrade snapshot_
+
+- _Choose maintenance windows during low-traffic hours_
+
+- _Monitor replication lag and connections if using Blue/Green deployment_
+
+ __Q: Where can I track which of my servers are nearing EOL?__
+
+_*A:*_ *Azure will provide visibility via the Portal.*
+
+__Q: What support options are available during the Extended Support phase?__
+
+_*A:*_ *Servers enrolled in Extended Support can continue to raise support cases for security-related issues only. No support is provided for feature requests, performance tuning, or general bug fixes on EOL versions*
+
+ PostgreSQL 11 support
 
 Azure is extending PostgreSQL 11 support for Azure Database for PostgreSQL flexible server. This extended support timeline is designed to provide more time for users to plan and [migrate from Azure Database for PostgreSQL single server to flexible server](../migrate/concepts-single-to-flexible.md) and to upgrade to higher PostgreSQL versions. The extended support timeline is designed to facilitate a smooth transition for users currently relying on PostgreSQL 11.
 
