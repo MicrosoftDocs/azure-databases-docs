@@ -1,8 +1,8 @@
 ---
 title: Networking Overview with Private Link Connectivity
 description: Learn about connectivity and networking options for Azure Database for PostgreSQL flexible server with Private Link.
-author: gbowerman
-ms.author: guybo
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 04/18/2025
 ms.service: azure-database-postgresql
@@ -176,6 +176,14 @@ If you have DNS resolution issues when you use private endpoint-based networking
 - **Validate DNS resolution:** Check if the DNS server or service used by the private endpoint and the connected resources is functioning correctly. Ensure that the private endpoint's DNS settings are accurate. For more information on private endpoints and DNS zone settings, see [Azure private endpoint Private DNS zone values](/azure/private-link/private-endpoint-dns).
 - **Clear the DNS cache:** Clear the DNS cache on the private endpoint or client machine to ensure the latest DNS information is retrieved and to avoid inconsistent errors.
 - **Analyze DNS logs:** Review DNS logs for error messages or unusual patterns, such as DNS query failures, server errors, or timeouts. For more on DNS metrics, see [Azure DNS metrics and alerts](/azure/dns/dns-alerts-metrics).
+
+## Limitations and connsiderations
+
+- Private endpoints can only be configured for servers created after the introduction of Private Link. Servers that use virtual network (VNet) integration are not eligible for private endpoint configuration.
+
+- The number of private endpoints is not limited by the database service itself but rather by Azure networking constraints—specifically, the number of private endpoints that can be injected into a given subnet within a VNet 3.
+
+- Virtual Machines can connect to the database through private endpoints, provided they are correctly configured within the same virtual network or have appropriate routing in place.
 
 ## Related content
 
