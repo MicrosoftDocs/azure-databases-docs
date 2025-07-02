@@ -175,7 +175,5 @@ additionalContent:
               url: cassandra/migrate-data-striim.md
             - text: Oracle Database to Azure Cosmos DB API for Cassandra using Arcion
               url: cassandra/oracle-migrate-cosmos-db-arcion.md
-            - text: Apache Cassandra to Azure Cosmos DB using Arcion
-              url: cassandra/migrate-data-arcion.md
             - text: Migrate hundreds of terabytes of data
               url: migrate.md

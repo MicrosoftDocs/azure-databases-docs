@@ -281,8 +281,6 @@
         href: adoption.md
       - name: Migrate to API for Apache Cassandra using Kafka Connect
         href: kafka-connect.md
-      - name: Migrate - Apache Cassandra to API for Apache Cassandra using Arcion
-        href: migrate-data-arcion.md
       - name: Migrate - Apache Cassandra to API for Apache Cassandra using dual-write proxy
         href: migrate-data-dual-write-proxy.md
       - name: Migrate - Apache Cassandra to API for Apache Cassandra using Databricks
