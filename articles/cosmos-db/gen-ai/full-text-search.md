@@ -16,8 +16,6 @@ ms.custom:
 
 # Full-text search in Azure Cosmos DB for NoSQL
 
-[!INCLUDE [Ongoing Deployment](../nosql/includes/deployment-ongoing.md)]
-
 Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature as generally available. This is designed to enhance the native search capabilities of your apps without needing an external search service for basic full-text search. 
 
 ## What is full text search?
