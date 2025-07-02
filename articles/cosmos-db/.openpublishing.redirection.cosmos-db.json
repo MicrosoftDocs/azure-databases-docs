@@ -2337,7 +2337,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/cassandra/migrate-data-blitzz.md",
-      "redirect_url": "/azure/cosmos-db/cassandra/migrate-data-arcion",
+      "redirect_url": "/azure/cosmos-db/cassandra",
       "redirect_document_id": true
     },
     {
