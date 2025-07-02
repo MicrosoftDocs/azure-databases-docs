@@ -258,27 +258,6 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB JavaScri
         .patch(operations);
     ```
 
-- Use conditional patch syntax based on filter predicate:
-
-    ```javascript
-    const filter = 'FROM products p WHERE p.used = false'
-
-    const operations =
-    [
-        { op: 'replace', path: '/price', value: 100.00 }
-    ];
-    
-    const { resource: updated } = await container
-        .item(
-            'e379aea5-63f5-4623-9a9b-4cd9b33b91d5', 
-            'road-bikes'
-        )
-        .patch(
-            body = operations,
-            options = filter
-        );
-    ```
-
 ## [Python (Preview)](#tab/python)
 
 Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python SDK](nosql/sdk-python.md) is available from version *4.4.0b2*. You can download it from the [pip Registry](https://pypi.org/project/azure-cosmos/4.4.0b2/).
