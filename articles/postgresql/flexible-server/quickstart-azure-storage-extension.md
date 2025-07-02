@@ -34,7 +34,7 @@ You must meet the following prerequisites before you can run the following examp
    ```azurecli-interactive
    az storage container create --account-name $storage_account --name $blob_container -o tsv
    ```
-1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [azure_storage.account_add](#azure_storageaccount_add) in a subsequent step.
+1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [azure_storage.account_add](./reference-azure-storage-extension.md#azure_storageaccount_add) in a subsequent step.
    To fetch the first of the two access keys, run the following Azure CLI command:
    ```azurecli-interactive
    access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].value)
@@ -56,7 +56,7 @@ You must meet the following prerequisites before you can run the following examp
    ```
 
 > [!NOTE]  
-> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on the reference to that storage account by using [azure_storage.account_user_add](#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
+> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on the reference to that storage account by using [azure_storage.account_user_add](./reference-azure-storage-extension.md#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](./reference-azure-storage-extension.md#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
 
 ### Create table in which data is loaded
 
@@ -115,7 +115,7 @@ SELECT * FROM azure_storage.account_user_add('<account_name>', '<regular_user>')
 
 ### List all the references to Azure storage accounts
 
-This example illustrates how to find out which Azure storage accounts the `azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
+This example illustrates how to find out which Azure storage accounts the `azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](./reference-azure-storage-extension.md#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
 
 ```sql
 SELECT * FROM azure_storage.account_list();
@@ -184,7 +184,7 @@ SELECT * FROM azure_storage.blob_get
 LIMIT 5;
 ```
 
-Alternatively, you can explicitly define the schema of the result using the `AS` clause after the [blob_get](#azure_storageblob_get) function.
+Alternatively, you can explicitly define the schema of the result using the `AS` clause after the [blob_get](./reference-azure-storage-extension.md#azure_storageblob_get) function.
 
 ```sql
 SELECT * FROM azure_storage.blob_get('<account_name>','<container_name>','events.csv.gz')
@@ -258,7 +258,7 @@ LIMIT 5;
 
 ### Read content from file with custom options (headers, column delimiters, escape characters)
 
-This example illustrates how you can use custom separators and escape characters, by passing the result of [options_copy](#azure_storageoptions_copy) to the `options` argument.
+This example illustrates how you can use custom separators and escape characters, by passing the result of [options_copy](./reference-azure-storage-extension.md#azure_storageoptions_copy) to the `options` argument.
 
 `<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -364,7 +364,7 @@ The following example shows the export of data from a table called `events`, to 
             );
     ```
 
-2. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY statement](#import-data-using-a-copy-statement) example to populate it with the contents of the sample data set.
+2. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY FROM statement](#import-data-using-a-copy-from-statement) example to populate it with the contents of the sample data set.
 
 3. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
 

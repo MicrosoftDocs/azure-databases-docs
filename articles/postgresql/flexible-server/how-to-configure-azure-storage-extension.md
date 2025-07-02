@@ -69,7 +69,7 @@ Using the [Servers - Update](/rest/api/postgresql/servers/update) REST API.
 ### To use authorization with Shared Key
 
 1. [Confirm that storage account allows access to its key](#confirm-that-storage-account-allows-access-to-its-key)
-2. [Fetch one of the two access keys of the storage account](#fe)
+2. [Fetch one of the two access keys of the storage account](#fetch-one-of-the-two-access-keys-of-the-storage-account)
 
 #### Confirm that storage account allows access to its key
 
@@ -212,7 +212,7 @@ Checkout the list of quickstart examples:
 - [Compute aggregations over the content of a blob](./quickstart-azure-storage-extension.md#compute-aggregations-over-the-content-of-a-blob)
 - [Import data using a COPY FROM statement](./quickstart-azure-storage-extension.md#import-data-using-a-copy-from-statement)
 - [Write content to a blob](./quickstart-azure-storage-extension.md#write-content-to-a-blob)
-- [Export data using a COPY TO statement](./quickstart-azure-storage-extension.md#import-data-using-a-copy-to-statement)
+- [Export data using a COPY TO statement](./quickstart-azure-storage-extension.md#export-data-using-a-copy-to-statement)
 
 In case you need to review all functions offered by the extension and all the details about each of them, review the full reference:
 
