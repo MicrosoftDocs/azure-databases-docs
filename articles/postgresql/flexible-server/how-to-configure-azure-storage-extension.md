@@ -23,8 +23,8 @@ You must follow these steps to be able to use the Azure Storage extension:
 1. [Choose type of authorization](#choose-type-of-authorization)
 1. [Load the extension's library](#load-the-extensions-library)
 1. [Allowlist the extension](#allowlist-the-extension)
-1. [Create the extension]()
-1. Use the SQL functions created by the extension to leverage the capabilities supported by the extension.
+1. [Create the extension](#create-the-extension)
+1. [Use the extension to import and export data](#use-the-extension-to-import-and-export-data)
 
 
 ## Identify the Azure Storage accounts
@@ -188,10 +188,47 @@ Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 ---
 
-5. Using the client of your preference (for example, psql, pgAdmin, etc.), connect to any database in your instance of Azure Database for PostgreSQL flexible server. To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
+## Create the extension
+
+Using the client of your preference (for example, [PostgreSQL for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), psql, pgAdmin, etc.), in your Azure Database for PostgreSQL flexible server, connect to the database in which you want to use the Azure Storage extension. To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
     ```sql
     CREATE EXTENSION azure_storage;
     ```
+
+## Use the extension to import and export data
+
+Now you're ready to add the storage accounts with which you want to interact (using the `azure_storage.account_add` function). Then you can import data stored in files in Azure Storage accounts, by using the `azure_storage.blob_get` function or the `COPY FROM` statement, or you can export data from PostgreSQL into files in an Azure Storage account, by using the `azure_storage.blob_put` function or the `COPY TO` statement.
+
+Checkout the list of quickstart examples:
+
+- List all blobs in a container.
+- List blobs with a specific blob name prefix.
+- Read content from a blob.
+- Read, filter, and modify content read from a blob.
+- Read content from file with custom options (headers, column delimiters, escape characters)
+- Compute aggregations over the content of a blob
+- Import data using a COPY FROM statement
+- Write content to a blob
+- Export data using a COPY TO statement
+
+And review the full reference of functions supported by the Azure Storage extension:
+- azure_storage.account_add
+- azure_storage.account_options_managed_identity
+- azure_storage.account_options_credentials
+- azure_storage.account_options
+- azure_storage.account_remove
+- azure_storage.account_user_add
+- azure_storage.account_user_remove
+- azure_storage.account_list
+- azure_storage.blob_list
+- azure_storage.blob_get
+- azure_storage.blob_put
+- azure_storage.options_csv_get
+- azure_storage.options_copy
+- azure_storage.options_tsv
+- azure_storage.options_binary
+
+
 6. Using the `azure_storage.account_*` functions, add references to Azure Storage accounts that you want to let PostgreSQL users or roles access with the `azure_storage` extension. Those references include the name of the Azure Storage account being referenced, and the authentication type to use when interacting with the Azure Storage account. Depending on the authentication type selected you might need to also provide some other parameters, like the Azure Storage account access key or the SAS token.
 
 > [!IMPORTANT]
