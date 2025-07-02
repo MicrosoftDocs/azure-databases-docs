@@ -106,45 +106,53 @@ Best Practices
 
 ### Frequently asked questions (FAQs)
 
-Q: What happens if I continue running an unsupported PostgreSQL version on Azure after its community end of support?
+**Q: What happens if I continue running an unsupported PostgreSQL version on Azure after its community end of support?**
+
 A: Your server is automatically enrolled in Extended Support one month after the community end of support date (or on March 1, 2026, for versions 11, 12, and 13).
 
-Q: Can I continue using my PostgreSQL instance without Extended Support?
+**Q: Can I continue using my PostgreSQL instance without Extended Support?**
+
 A: Yes, but after the grace period, you're automatically enrolled in paid Extended Support unless you upgrade to a supported version. During the grace period, you assume full operational risk, and Microsoft support can't guarantee issue resolution.
 
-Q: Can my applications break during a major version upgrade?
+**Q: Can my applications break during a major version upgrade?**
+
 A: Azure provides pre-upgrade validation checks (PVC) to identify common issues such as extension compatibility and parameter conflicts. We recommend testing upgrades in nonproduction environments. Azure is also investing in Blue/Green deployments to enable near-zero-downtime upgrades.
 
-Q: How do I know if my server is in Extended Support?
+**Q: How do I know if my server is in Extended Support?**
+
 A: The Azure portal and CLI clearly indicate if a server is enrolled in Extended Support.
 
-Q: Do I need to update Server Parameter Groups post major version upgrades?
+**Q: Do I need to update Server Parameter Groups post major version upgrades?**
+
 A: Yes. Major PostgreSQL versions often introduce or deprecate configuration parameters. Create a new parameter group for the target version and adjust memory and performance settings as needed.
 
-Q: Are PostgreSQL extensions automatically upgraded during a major version upgrade?
+**Q: Are PostgreSQL extensions automatically upgraded during a major version upgrade?**
+
 A: No. While Azure upgrades the database engine, noncore extensions (for example, pgvector, timescaledb) require manual updates. Use ALTER EXTENSION ... UPDATE or recreate unsupported extensions after the upgrade.
 
-Q: How can I reduce downtime during a major upgrade?
-A: To minimize downtime:
+**Q: How can I reduce downtime during a major upgrade?**
 
+A: To minimize downtime:
 - Apply pending maintenance before the upgrade.
 - Take a manual backup just before the upgrade to speed up snapshot creation.
 - Schedule upgrades during low-traffic periods.
 - Monitor replication lag and connections if using Blue/Green deployment.
 
-Q: Where can I track which of my servers are nearing end of support?
+**Q: Where can I track which of my servers are nearing end of support?**
+
 A: Azure provides visibility through the Portal.
 
-Q: What support options are available during the Extended Support phase?
+**Q: What support options are available during the Extended Support phase?**
+
 A: Servers in Extended Support can raise support cases for security-related issues only. Feature requests, performance tuning, and general bug fixes aren't supported for end of support versions.
-
-## PostgreSQL 11 support
-
-Azure is extending PostgreSQL 11 support for Azure Database for PostgreSQL flexible server. This extended support timeline is designed to provide more time for users to plan and [migrate from Azure Database for PostgreSQL single server to flexible server](../migrate/concepts-single-to-flexible.md) and to upgrade to higher PostgreSQL versions. The extended support timeline is designed to facilitate a smooth transition for users currently relying on PostgreSQL 11.
 
 ## PostgreSQL 12 support
 
 PostgreSQL 12 reached its end of life on **November 14, 2024**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, each major version is supported until retired by the community. Unlike PostgreSQL 11, which has extended support until November 9, 2025, PostgreSQL 12 doesn't receive extended support from Azure. Users are encouraged to upgrade to newer versions to ensure continued support and access to new features.
+
+## PostgreSQL 11 support
+
+Azure is extending PostgreSQL 11 support for Azure Database for PostgreSQL flexible server. This extended support timeline is designed to provide more time for users to plan and [migrate from Azure Database for PostgreSQL single server to flexible server](../migrate/concepts-single-to-flexible.md) and to upgrade to higher PostgreSQL versions. The extended support timeline is designed to facilitate a smooth transition for users currently relying on PostgreSQL 11.
 
 ### Flexible server support
 
