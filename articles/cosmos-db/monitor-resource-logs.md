@@ -1,12 +1,12 @@
 ---
-title: Monitor data using diagnostic settings
+title: Monitor Data using Diagnostic Settings
 titleSuffix: Azure Cosmos DB
 description: Learn how to use Azure diagnostic settings to monitor the performance and availability of data stored in Azure Cosmos DB
 author: stefarroyo
 ms.author: esarroyo
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 06/27/2024
+ms.date: 07/01/2025
 ms.custom: devx-track-azurecli
 #Customer Intent: As an operations user, I want to monitor metrics using Azure Monitor, so that I can use a Log Analytics workspace to perform complex analysis.
 ---
@@ -15,10 +15,10 @@ ms.custom: devx-track-azurecli
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-Diagnostic settings in Azure are used to collect resource logs. Resources emit Azure resource Logs and provide rich, frequent data about the operation of that resource. These logs are captured per request and they're also referred to as *data plane logs*. Some examples of the data plane operations include delete, insert, and readFeed. The content of these logs varies by resource type.
+You can collect resource logs in Azure by using diagnostic settings. Resources emit Azure resource logs and provide rich, frequent data about the operation of that resource. These logs are captured per request and they're also referred to as *data plane logs*. Some examples of the data plane operations include delete, insert, and readFeed. The content of these logs varies by resource type.
 
 To learn more about diagnostic settings, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).
-  
+
 > [!NOTE]
 > We recommend creating the diagnostic setting in resource-specific mode (for all APIs except API for Table) following the instructions in the *REST API* tab. This option provides additional cost-optimizations with an improved view for handling data.
 
@@ -31,7 +31,7 @@ To learn more about diagnostic settings, see [Diagnostic settings in Azure Monit
 - An existing Azure Monitor Log Analytics workspace.
 
 > [!WARNING]
-> If you need to delete a resource, rename, or move a resource, or migrate it across resource groups or subscriptions, first delete its diagnostic settings. Otherwise, if you recreate this resource, the diagnostic settings for the deleted resource could be included with the new resource, depending on the resource configuration for each resource. If the diagnostics settings are included with the new resource, this resumes the collection of resource logs as defined in the diagnostic setting and sends the applicable metric and log data to the previously configured destination. 
+> If you need to delete, rename, or move a resource, or migrate it across resource groups or subscriptions, first delete its diagnostic settings. Otherwise, if you recreate this resource, the diagnostic settings for the deleted resource could be included with the new resource, depending on the resource configuration for each resource. If the diagnostics settings are included with the new resource, this resumes the collection of resource logs as defined in the diagnostic setting and sends the applicable metric and log data to the previously configured destination. 
 >
 > Also, it's a good practice to delete the diagnostic settings for a resource you're going to delete and don't plan on using again to keep your environment clean.
 
@@ -40,7 +40,7 @@ To learn more about diagnostic settings, see [Diagnostic settings in Azure Monit
 Here, we walk through the process of creating diagnostic settings for your account.
 
 > [!NOTE]
-> The metric to logs export as a category is not currently supported.
+> The metric to logs export as a category isn't currently supported.
 
 ### [Azure portal](#tab/azure-portal)
 
@@ -53,7 +53,7 @@ Here, we walk through the process of creating diagnostic settings for your accou
     :::image type="content" source="media/monitor-resource-logs/add-diagnostic-setting.png" lightbox="media/monitor-resource-logs/add-diagnostic-setting.png" alt-text="Screenshot of the list of diagnostic settings with options to create new ones or edit existing ones.":::
 
     > [!IMPORTANT]
-    > You might see a prompt to "enable full-text query \[...\] for more detailed logging" if the **full-text query** feature is not enabled in your account. You can safely ignore this warning if you do not wish to enable this feature. For more information, see [enable full-text query](monitor-resource-logs.md#enable-full-text-query-for-logging-query-text).
+    > You might see a prompt to "enable full-text query \[...\] for more detailed logging" if the **full-text query** feature isn't enabled in your account. You can safely ignore this warning if you don't wish to enable this feature. For more information, see [enable full-text query](monitor-resource-logs.md#enable-full-text-query-for-logging-query-text).
 
 1. In the **Diagnostic settings** pane, name the setting **example-setting** and then select the **QueryRuntimeStatistics** category. Enable **Send to Log Analytics Workspace** checkbox, selecting your existing workspace. Finally, select **Resource specific** as the destination option.
 
@@ -61,9 +61,9 @@ Here, we walk through the process of creating diagnostic settings for your accou
 
 ### [Azure CLI](#tab/azure-cli)
 
-Use the [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) command to create a diagnostic setting with the Azure CLI. See the documentation for this command for descriptions of its parameters.
+Use the `az monitor diagnostic-settings create` command to create a diagnostic setting with the Azure CLI. To learn about about the command's parameters, see [the documentation](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
-1. Ensure you logged in to the Azure CLI. For more information, see [sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
+1. Ensure you logged in to the Azure CLI. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 
 1. Use `az monitor diagnostic-settings create` to create the setting.
 
@@ -109,9 +109,9 @@ Use the [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-
 
 ### [REST API](#tab/rest-api)
 
-Use the [Azure Monitor REST API](/rest/api/monitor/diagnosticsettings/createorupdate) for creating a diagnostic setting via the interactive console.
+Use the [Azure Monitor REST API](/rest/api/monitor/diagnosticsettings/createorupdate) to create a diagnostic setting via the interactive console.
 
-1. Ensure you logged in to the Azure CLI. For more information, see [sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
+1. Ensure you logged in to the Azure CLI. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 
 1. Create the diagnostic setting for your Azure Cosmos DB resource using an HTTP `PUT` request and [`az rest`](/cli/azure/reference-index#az-rest).
 
@@ -173,9 +173,9 @@ Use the [Azure Monitor REST API](/rest/api/monitor/diagnosticsettings/createorup
 
 ### [Bicep](#tab/bicep)
 
-Use an [Bicep template](/azure/azure-resource-manager/bicep/overview) to create the diagnostic setting.
+Use a [Bicep template](/azure/azure-resource-manager/bicep/overview) to create the diagnostic setting.
 
-1. Ensure you logged in to the Azure CLI. For more information, see [sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
+1. Ensure you logged in to the Azure CLI. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 
 1. Create a new file named `diagnosticSetting.bicep`.
 
@@ -236,7 +236,7 @@ Use an [Bicep template](/azure/azure-resource-manager/bicep/overview) to create 
 
 Use an [Azure Resource Manager template](/azure/azure-resource-manager/templates/overview) to create the diagnostic setting.
 
-1. Ensure you logged in to the Azure CLI. For more information, see [sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
+1. Ensure you logged in to the Azure CLI. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 
 1. Create a new file named `diagnosticSetting.bicep`.
 
@@ -312,7 +312,7 @@ Use an [Azure Resource Manager template](/azure/azure-resource-manager/templates
 Azure Cosmos DB provides advanced logging for detailed troubleshooting. By enabling full-text query, you're able to view the deobfuscated query for all requests within your Azure Cosmos DB account. You also give permission for Azure Cosmos DB to access and surface this data in your logs.
 
 > [!WARNING]
-> Enabling this feature may result in additional logging costs, for pricing details visit [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/). It is recommended to disable this feature after troubleshooting.
+> Enabling this feature might result in additional logging costs. For pricing details, see [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/). It's recommended to disable this feature after troubleshooting.
 
 ### [Azure portal](#tab/azure-portal)
 
