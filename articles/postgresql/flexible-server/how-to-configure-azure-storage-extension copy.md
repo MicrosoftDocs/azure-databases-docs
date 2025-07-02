@@ -190,10 +190,13 @@ Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 ## Create the extension
 
-Using the client of your preference (for example, [PostgreSQL for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), psql, pgAdmin, etc.), in your Azure Database for PostgreSQL flexible server, connect to the database in which you want to use the Azure Storage extension. To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
-    ```sql
-    CREATE EXTENSION azure_storage;
-    ```
+Using the client of your preference (for example, [PostgreSQL for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), psql, pgAdmin, etc.), in your Azure Database for PostgreSQL flexible server, connect to the database in which you want to use the Azure Storage extension.
+
+ To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
+
+```sql
+CREATE EXTENSION azure_storage;
+```
 
 ## Use the extension to import and export data
 
@@ -201,15 +204,15 @@ Now you're ready to add the storage accounts with which you want to interact (us
 
 Checkout the list of quickstart examples:
 
-- List all blobs in a container.
-- List blobs with a specific blob name prefix.
-- Read content from a blob.
-- Read, filter, and modify content read from a blob.
-- Read content from file with custom options (headers, column delimiters, escape characters)
-- Compute aggregations over the content of a blob
-- Import data using a COPY FROM statement
-- Write content to a blob
-- Export data using a COPY TO statement
+- [List all blobs in a container](quickstart-azure-storage-extension.md#list-all-blobs-in-a-container)
+- [List blobs with a specific name prefix](./quickstart-azure-storage-extension.md#list-blobs-with-specific-name-prefix)
+- [Read content from a blob](./quickstart-azure-storage-extension.md#read-content-from-a-blob)
+- [Read, filter, and modify content read from a blob](./quickstart-azure-storage-extension.md#read-filter-and-modify-content-read-from-a-blob)
+- [Read content from file with custom options (headers, column delimiters, escape characters)](./quickstart-azure-storage-extension.md#read-content-from-file-with-custom-options-headers-column-delimiters-escape-characters)
+- [Compute aggregations over the content of a blob](./quickstart-azure-storage-extension.md#compute-aggregations-over-the-content-of-a-blob)
+- [Import data using a COPY FROM statement](./quickstart-azure-storage-extension.md#import-data-using-a-copy-from-statement)
+- [Write content to a blob](./quickstart-azure-storage-extension.md#write-content-to-a-blob)
+- [Export data using a COPY TO statement](./quickstart-azure-storage-extension.md#import-data-using-a-copy-to-statement)
 
 In case you need to review all functions offered by the extension and all the details about each of them, review the full reference:
 
