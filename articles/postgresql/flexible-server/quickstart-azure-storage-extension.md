@@ -58,7 +58,7 @@ You must meet the following prerequisites before you can run the following examp
 > [!NOTE]  
 > You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on the reference to that storage account by using [azure_storage.account_user_add](./reference-azure-storage-extension.md#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](./reference-azure-storage-extension.md#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
 
-### Create table in which data is loaded
+## Create table in which data is loaded
 
 Let's create the table into which we import the contents of the CSV file that we uploaded to the storage account. To do so, connect to your instance of Azure Database for PostgreSQL flexible server using `PgAdmin`, `psql`, or the client of your preference, and execute the following statement:
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS events
         );
 ```
 
-### Add access key of storage account
+## Add access key of storage account
 
 This example illustrates how to add a reference to a storage account, together with the access key of that storage account which is required to access its content via the functionality provided by the `azure_storage` extension in your instance of Azure Database for PostgreSQL flexible server.
 
@@ -91,7 +91,7 @@ SELECT azure_storage.account_add('<account_name>', '<access_key>');
 > [!TIP]  
 > If you want to retrieve the storage account name and one of its access keys from the Azure portal, search for your storage account, in the resource menu select **Access keys**, copy the **Storage account name** and copy the **Key** from **key1** section (you have to select **Show** next to the key first).
 
-### Remove reference to storage account
+## Remove reference to storage account
 
 This example illustrates how to remove any reference to a storage account, so that no user in the current database can use the `azure_storage` extension functionality to access that storage account.
 
@@ -101,7 +101,7 @@ This example illustrates how to remove any reference to a storage account, so th
 SELECT azure_storage.account_remove('<account_name>');
 ```
 
-### Grant access to a user or role on the Azure Blob storage reference
+## Grant access to a user or role on the Azure Blob storage reference
 
 This example illustrates how to grant access to a user or role named `<regular_user>`, so that such PostgreSQL user can use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account.
 
@@ -113,7 +113,7 @@ This example illustrates how to grant access to a user or role named `<regular_u
 SELECT * FROM azure_storage.account_user_add('<account_name>', '<regular_user>');
 ```
 
-### List all the references to Azure storage accounts
+## List all the references to Azure storage accounts
 
 This example illustrates how to find out which Azure storage accounts the `azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](./reference-azure-storage-extension.md#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
 
@@ -121,7 +121,7 @@ This example illustrates how to find out which Azure storage accounts the `azure
 SELECT * FROM azure_storage.account_list();
 ```
 
-### Revoke access from a user or role on the Azure Blob storage reference
+## Revoke access from a user or role on the Azure Blob storage reference
 
 This example illustrates how to revoke access from a user or role named `<regular_user>`, so that such PostgreSQL user can't use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account. 
 
@@ -133,7 +133,7 @@ This example illustrates how to revoke access from a user or role named `<regula
 SELECT * FROM azure_storage.account_user_remove('<account_name>', '<regular_user>');
 ```
 
-### List all blobs in a container
+## List all blobs in a container
 
 This example illustrates how to list all existing blobs inside container `<container_name>` of storage account `<account_name>`.
 
@@ -145,7 +145,7 @@ This example illustrates how to list all existing blobs inside container `<conta
 SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>');
 ```
 
-### List blobs with specific name prefix
+## List blobs with specific name prefix
 
 This example illustrates how to list all existing blobs inside container `<container_name>` of storage account `<account_name>`, whose blob name begins with `<blob_name_prefix>`.
 
@@ -165,7 +165,7 @@ Alternatively, you can use the following syntax:
 SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE path LIKE '<blob_name_prefix>%';
 ```
 
-### Read content from a blob
+## Read content from a blob
 
 The `blob_get` function retrieves the contents of one specific blob (`events.csv` in this case), in the referred container `<container_name>` of the `<account_name>` storage. In order for `blob_get` to know how to parse the data you can pass a value in the form `NULL::table_name`, where `table_name` refers to a table whose schema matches that of the blob being read. In the example, it refers to the `events` table we created at the very beginning.
 
@@ -201,7 +201,7 @@ AS res (
 LIMIT 5;
 ```
 
-### Use the decoder option
+## Use the decoder option
 
 This example illustrates the use of the `decoder` option. Normally format is inferred from the extension of the file, but when the file content doesn't have a matching extension you can pass the decoder argument.
 
@@ -219,7 +219,7 @@ SELECT * FROM azure_storage.blob_get
 LIMIT 5;
 ```
 
-### Use compression with decoder option
+## Use compression with decoder option
 
 This example shows how to enforce using the gzip compression on a gzip compressed blob whose name doesn't end with a .gz extension.
 
@@ -238,7 +238,7 @@ SELECT * FROM azure_storage.blob_get
 LIMIT 5;
 ```
 
-### Read, filter, and modify content read from a blob
+## Read, filter, and modify content read from a blob
 
 This example illustrates the possibility to filter and modify the content imported from the blob, before loading that into a SQL table.
 
@@ -256,7 +256,7 @@ WHERE event_type='PushEvent'
 LIMIT 5;
 ```
 
-### Read content from file with custom options (headers, column delimiters, escape characters)
+## Read content from file with custom options (headers, column delimiters, escape characters)
 
 This example illustrates how you can use custom separators and escape characters, by passing the result of [options_copy](./reference-azure-storage-extension.md#azure_storageoptions_copy) to the `options` argument.
 
@@ -274,7 +274,7 @@ SELECT * FROM azure_storage.blob_get
         );
 ```
 
-### Compute aggregations over the content of a blob
+## Compute aggregations over the content of a blob
 
 This example illustrates how you can do aggregation operations over information that is stored in a blob container, without the need to import the contents of the blob into PostgreSQL tables.
 
@@ -293,7 +293,7 @@ ORDER BY 2 DESC
 LIMIT 5;
 ```
 
-### Import data using a COPY FROM statement
+## Import data using a COPY FROM statement
 
 The following example shows the import of data from a blob called `events.csv`  that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
 
@@ -322,7 +322,7 @@ The following example shows the import of data from a blob called `events.csv`  
     WITH (FORMAT 'csv', header);
     ```
 
-### Write content to a blob
+## Write content to a blob
 
 The `blob_put` function composes the contents of one specific blob (`eventscopy.csv` in this case), and uploads it to the referred container `<container_name>` of the `<account_name>` storage. This example uses `blob_get` to construct a set of five rows, which are then passed to the `blob_put` aggregate function which uploads them as a blob named `eventscopy.csv`.
 
@@ -343,7 +343,7 @@ FROM (SELECT * FROM azure_storage.blob_get
                      , NULL::events) LIMIT 5) AS top_5_events;
 ```
 
-### Export data using a COPY TO statement
+## Export data using a COPY TO statement
 
 The following example shows the export of data from a table called `events`, to a blob called `events_exported.csv` that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
 
