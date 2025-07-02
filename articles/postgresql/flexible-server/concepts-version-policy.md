@@ -148,7 +148,7 @@ A: Servers in Extended Support can raise support cases for security-related issu
 
 ## PostgreSQL 12 support
 
-PostgreSQL 12 reached its end of life on **November 14, 2024**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, each major version is supported until retired by the community. Unlike PostgreSQL 11, which has extended support until November 9, 2025, PostgreSQL 12 doesn't receive extended support from Azure. Users are encouraged to upgrade to newer versions to ensure continued support and access to new features.
+PostgreSQL 12 reached its end of life on **November 14, 2024**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, each major version is supported until retired by the community. Unlike PostgreSQL 11, which has extended support until November 9, 2025, PostgreSQL 12 doesn't receive extended support from Azure until March 1, 2026. Users are encouraged to upgrade to newer versions to ensure continued support and access to new features.
 
 ## PostgreSQL 11 support
 
