@@ -59,7 +59,7 @@ To load data into your API for Cassandra table, follow these steps:
    }
    ```
 
-1. Open the `UserProfile.java` file under the `src\main\java\com\azure\cosmosdb\cassandra folder`. This class contains the main method that calls the `createKeyspace` and `createTable` methods that you defined earlier. Now append the following code to insert some sample data into the API for Cassandra table.
+1. Open the `UserProfile.java` file under the `src\main\java\com\azure\cosmosdb\cassandra` folder. This class contains the main method that calls the `createKeyspace` and `createTable` methods that you defined earlier. Now append the following code to insert some sample data into the API for Cassandra table.
 
    ```java
    //Insert rows into user table

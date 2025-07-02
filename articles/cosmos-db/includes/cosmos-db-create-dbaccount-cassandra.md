@@ -16,7 +16,7 @@
 
    Select **Cassandra** because in this tutorial you're creating a table that works with the API for Cassandra.
 
-   [Learn more about the API for Cassandra](../cassandra/introduction.md).
+   To learn more about the API for Cassandra, see [What is Azure Cosmos DB for Apache Cassandra?](../cassandra/introduction.md).
 
 1. On the **Create Azure Cosmos DB Account** page, enter the basic settings for the new Azure Cosmos DB account.
 

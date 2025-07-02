@@ -76,8 +76,8 @@ You can move data from existing Cassandra workloads to Azure Cosmos DB by using 
 
 1. Now get your API for Cassandra account's connection string information:
 
-   - Sign in to the [Azure portal](https://portal.azure.com), and go to your Azure Cosmos DB account.
-   - Open the **Connection String** pane. Here you see all the information that you need to connect to your API for Cassandra account from `cqlsh`.
+   1. Sign in to the [Azure portal](https://portal.azure.com), and go to your Azure Cosmos DB account.
+   1. Open the **Connection String** pane. Here you see all the information that you need to connect to your API for Cassandra account from `cqlsh`.
 
 1. Sign in to `cqlsh` by using the connection information from the Azure portal.
 
@@ -96,7 +96,7 @@ You can move data from existing Cassandra workloads to Azure Cosmos DB by using 
 cqlsh <USERNAME>.cassandra.cosmos.azure.com 10350 -u <USERNAME> -p <PASSWORD> --ssl --protocol-version=4
 ```
 
-##### Add throughput-limiting options to the CQL COPY command
+#### Add throughput-limiting options to the CQL COPY command
 
 The `COPY` command in `cqlsh` supports various parameters to control the rate of ingestion of documents into Azure Cosmos DB.
 
@@ -108,7 +108,7 @@ We recommend the following configuration (at a minimum) for a collection at 20,0
 - `INGESTRATE` = 500
 - `MAXATTEMPTS` = 10
 
-###### Example commands
+##### Example commands
 
 - Copy data from the API for Cassandra to a local .csv file:
 
