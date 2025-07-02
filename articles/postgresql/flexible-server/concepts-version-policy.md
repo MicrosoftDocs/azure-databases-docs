@@ -37,7 +37,7 @@ A major version is a change in the first number of the version. For example, Pos
 
 ### Support
 
-Azure Database for PostgreSQL - Flexible server supports each major PostgreSQL version from the date Azure begins offering support until the version reaches end of life (end of support) as defined by the PostgreSQL community. For details, see [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
+Azure Database for PostgreSQL supports each major PostgreSQL version from the date Azure begins offering support until the version reaches end of life (end of support) as defined by the PostgreSQL community. For details, see [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
 
 ### Retirement policy
 

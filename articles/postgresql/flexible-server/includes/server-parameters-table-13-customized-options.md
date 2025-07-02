@@ -858,6 +858,23 @@ ms.custom: automatically generated
 
 
 
+### pgaadauth.enable_group_sync
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Enables synchronization of Entra ID group members. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pgaudit.log
 
 | Attribute | Value |
