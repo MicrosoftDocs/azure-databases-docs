@@ -536,7 +536,7 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/cassandra/migrate-data-arcion",
+      "source_path_from_root": "/articles/cosmos-db/cassandra/migrate-data-arcion.md",
       "redirect_url": "/azure/cosmos-db/cassandra",
       "redirect_document_id": false
     },
