@@ -31,5 +31,5 @@ To be able to use the `azure_storage` extension from any of the databases of an 
 
 ## Related content
 
-- [Configure the Azure Storage extension](how-to-use-pg-azure-storage-configure.md).
+- [Configure the Azure Storage extension](how-to-configure-azure-storage-extension.md).
 - [Extensions and modules](../extensions/concepts-extensions.md).
