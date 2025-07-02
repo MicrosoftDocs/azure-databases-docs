@@ -27,9 +27,9 @@ Azure Database for PostgreSQL flexible server supports the following database ve
 | PostgreSQL 13 | Yes | N/A |
 | PostgreSQL 12 | No (retired) | [Policy](#postgresql-12-support) |
 | PostgreSQL 11 | Yes | N/A |
-| PostgreSQL 10 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) |
-| PostgreSQL 9.6 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) |
-| PostgreSQL 9.5 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) |
+| PostgreSQL 10 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql) |
+| PostgreSQL 9.6 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql) |
+| PostgreSQL 9.5 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql) |
 
 ## Major version
 

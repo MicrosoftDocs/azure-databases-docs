@@ -58,17 +58,16 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
     
   Ensure that you're changing three parameters (location,pointInTimeUTC,sourceServerResourceId) as per your restore requirements. 
   
-    ```json
-        {
-        "location": "WestUS",
-        "properties":
-        {
-          "pointInTimeUTC": "2023-06-15T06:08:02Z",
-          "createMode": "ReviveDropped",
-          "sourceServerResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup-Name/providers/Microsoft.DBforPostgreSQL/flexibleServers/SourceServer-Name"
-        }
-      }
-    ```
+  ```json
+  {
+    "location": "WestUS",
+    "properties": {
+      "pointInTimeUTC": "2023-06-15T06:08:02Z",
+      "createMode": "ReviveDropped",
+      "sourceServerResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup-Name/providers/Microsoft.DBforPostgreSQL/flexibleServers/SourceServer-Name"
+    }
+  }
+  ```
 
   > [!IMPORTANT]  
   > There's a time limit of five days after the server was dropped. After five days, an error is expected since the backup file cannot be found.
