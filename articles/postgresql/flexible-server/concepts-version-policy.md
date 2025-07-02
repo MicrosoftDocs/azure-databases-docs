@@ -52,7 +52,7 @@ The table below provides the retirement details for PostgreSQL major versions. T
 | [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) | [Release notes](https://www.postgresql.org/docs/13/release-13.html) | 25-May-2021 | 13-Nov-2025 |
 | [PostgreSQL 12 (retired)](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Release notes](https://www.postgresql.org/docs/12/release-12.html) | 22-Sep-2020 | 14-Nov-2024 |
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Release notes](https://www.postgresql.org/docs/11/release-11.html) | 24-Jul-2019 | 9-Nov-2025 |
-| [PostgreSQL 10 (retired)](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [Release notes](https://wiki.postgresql.org/wiki/Newinpostgres10) | 4-Jun-2018 | 10-Nov-2022 |
+| [PostgreSQL 10 (retired)](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [Release notes](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 4-Jun-2018 | 10-Nov-2022 |
 | [PostgreSQL 9.6 (retired)](https://www.postgresql.org/about/news/postgresql-96-released-1703/) | [Release notes](https://wiki.postgresql.org/wiki/NewIn96) | 18-Apr-2018 | 11-Nov-2021 |
 | [PostgreSQL 9.5 (retired)](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/) | [Release notes](https://www.postgresql.org/docs/9.5/release-9-5.html) | 18-Apr-2018 | 11-Feb-2021 |
 
@@ -149,7 +149,7 @@ PostgreSQL 12 reached its end of life on **November 14, 2024**, in line with the
 ### Flexible server support
 
 - You can create and operate PostgreSQL 11 servers on Azure Database for PostgreSQL flexible Server, until November 9, 2025, when Azure stops supporting PostgreSQL 11.
-- From November 9, 2023, to November 9, 2025, while users can continue using and creating new instances of PostgreSQL 11 on the flexible server, they're [restrictions](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) of other retired PostgreSQL engines.
+- From November 9, 2023, to November 9, 2025, while users can continue using and creating new instances of PostgreSQL 11 on the flexible server, they're [restrictions](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql) of other retired PostgreSQL engines.
 
 This extension of Postgres 11 support is part of Azure's commitment to providing a seamless migration path and ensuring continued functionality for users.
 
