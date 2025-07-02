@@ -536,6 +536,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/migrate-data-arcion",
+      "redirect_url": "/azure/cosmos-db/cassandra",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-service-unavailable-java-sdk-v4-sql.md",
       "redirect_url": "/azure/cosmos-db/nosql/troubleshoot-java-sdk-service-unavailable",
       "redirect_document_id": true
