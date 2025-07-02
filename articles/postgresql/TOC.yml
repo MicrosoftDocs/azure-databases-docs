@@ -527,8 +527,6 @@
         items:
         - name: Configure Azure Storage extension
           href: flexible-server/how-to-configure-azure-storage-extension.md
-        - name: Use Azure Storage extension
-          href: flexible-server/how-to-use-azure-storage-extension.md
         - name: Quickstart examples
           href: flexible-server/quickstart-azure-storage-extension.md
         - name: Troubleshooting errors
