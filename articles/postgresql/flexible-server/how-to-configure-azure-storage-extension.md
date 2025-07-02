@@ -19,12 +19,12 @@ ms.custom:
 
 You must follow these steps to be able to use the Azure Storage extension:
 
-1. Identify Azure Storage accounts. 
-2. Choose type of authorization.
-3. Load the extension's library.
-4. Allowlist the extension.
-5. Connect to the database in which you want to use the extension, and create the extension.
-6. Use the SQL functions created by the extension to leverage the capabilities supported by the extension.
+1. [Identify Azure Storage accounts](#identify-the-azure-storage-accounts) 
+1. [Choose type of authorization](#choose-type-of-authorization)
+1. [Load the extension's library](#load-the-extensions-library)
+1. [Allowlist the extension](#allowlist-the-extension)
+1. [Create the extension]()
+1. Use the SQL functions created by the extension to leverage the capabilities supported by the extension.
 
 
 ## Identify the Azure Storage accounts
@@ -33,15 +33,19 @@ Identify the Azure Storage accounts with which you want users of the extension t
 
 ## Choose type of authorization
 
-Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. `azure_storage` extension supports [authorization with Shared Key](/rest/api/storageservices/authorize-with-shared-key), and [authorization with Microsoft Entra ID](/rest/api/storageservices/authorize-with-azure-active-directory). Of these two types of authorization, Microsoft Entra ID provides superior security and ease of use over Shared Key, and is the one Microsoft recommends. To meet the prerequisites needed in each case, follow the instructions in the corresponding sections:
-    - [Authorization with Microsoft Entra ID](#to-use-authorization-with-microsoft-entra-id), or
-    - [Authorization with Shared Key](#to-use-authorization-with-shared-key).
+Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. `azure_storage` extension supports [authorization with Shared Key](/rest/api/storageservices/authorize-with-shared-key), and [authorization with Microsoft Entra ID](/rest/api/storageservices/authorize-with-azure-active-directory).
+
+Of these two types of authorization, Microsoft Entra ID provides superior security and ease of use over Shared Key, and is the one Microsoft recommends. To meet the prerequisites needed in each case, follow the instructions in the corresponding sections:
+- [Authorization with Microsoft Entra ID](#to-use-authorization-with-microsoft-entra-id), or
+- [Authorization with Shared Key](#to-use-authorization-with-shared-key).
 
 ### To use authorization with Microsoft Entra ID
 
-1. [Enable System Assigned Managed Identity](concepts-identity.md) on your instance of Azure Database for PostgreSQLflexible server.
-2. [Restart the instance of Azure Database for PostgreSQLflexible server](how-to-restart-server.md), after enabling a system assigned managed identity on it.
-3. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure Database for PostgreSQLflexible server.
+1. Enable [System Assigned Managed Identity](concepts-identity.md) on your Azure Database for PostgreSQL flexible server.
+1. [Restart the instance of Azure Database for PostgreSQL flexible server](how-to-restart-server.md), after enabling a system assigned managed identity on it.
+1. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure Database for PostgreSQL flexible server.
+
+#### Enable System Assigned Managed Identity 
 
 # [Azure portal](#tab/portal-03)
 
@@ -64,8 +68,8 @@ Using the [Servers - Update](/rest/api/postgresql/servers/update) REST API.
 
 ### To use authorization with Shared Key
 
-1. Confirm that storage account allows access to its key.
-2. Fetch one of the two access keys of the storage account.
+1. [Confirm that storage account allows access to its key](#confirm-that-storage-account-allows-access-to-its-key)
+2. [Fetch one of the two access keys of the storage account](#fe)
 
 #### Confirm that storage account allows access to its key
 
@@ -90,9 +94,9 @@ Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) R
 
 ---
 
-#### Confirm that storage account allows access to its key
+#### Fetch one of the two access keys of the storage account
 
-To pass it to the [azure_storage.account_add](#azure_storageaccount_add) function, [fetch either of the two access keys](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#view-account-access-keys) of the Azure Storage account
+To pass it to the [azure_storage.account_add](#azure_storageaccount_add) function, [fetch either of the two access keys](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#view-account-access-keys) of the Azure Storage account.
 
 ##### [Azure portal](#tab/portal-05)
 
@@ -184,7 +188,7 @@ Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 ---
 
-5. Using the client of your preference (for example, psql, pgAdmin, etc.), connect to any database in your instance of Azure Database for PostgreSQLflexible server. To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
+5. Using the client of your preference (for example, psql, pgAdmin, etc.), connect to any database in your instance of Azure Database for PostgreSQL flexible server. To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
     ```sql
     CREATE EXTENSION azure_storage;
     ```
