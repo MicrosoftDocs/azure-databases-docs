@@ -529,8 +529,12 @@
           href: flexible-server/how-to-configure-azure-storage-extension.md
         - name: Use Azure Storage extension
           href: flexible-server/how-to-use-azure-storage-extension.md
+        - name: Quickstart examples
+          href: flexible-server/quickstart-azure-storage-extension.md
+        - name: Troubleshooting errors
+          href: flexible-server/troubleshoot-azure-storage-extension.md
         - name: Reference
-          href: flexible-server/how-to-azure-storage-extension-reference.md
+          href: flexible-server/reference-azure-storage-extension.md
     - name: Monitoring
       items:
       - name: Download PostgreSQL and upgrade logs
