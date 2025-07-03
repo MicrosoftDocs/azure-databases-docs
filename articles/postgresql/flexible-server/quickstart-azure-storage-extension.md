@@ -24,13 +24,17 @@ Following is a list of examples to help you learn how to use the Azure Storage e
 1. Create an Azure Storage account.
    To create an Azure Storage account, if you don't have one already, customize the values of `<resource_group>`, `<location>`, `<account_name>`, and `<container_name>`, and run the following Azure CLI command:
    ```azurecli-interactive
-   SUFFIX=$(tr -dc 'a-z0-9' </dev/urandom | head -c8)
-   resource_group="resource-group-$SUFFIX"
+   random_suffix=$(tr -dc 'a-z0-9' </dev/urandom | head -c8)
+   resource_group="resource-group-$random_suffix"
    location="eastus2"
-   storage_account="storageaccount$SUFFIX"
-   blob_container="container-$SUFFIX"
+   storage_account="storageaccount$random_suffix"
+   blob_container="container-$random_suffix"
    az group create --name $resource_group --location $location
    az storage account create --resource-group $resource_group --name $storage_account --location $location --sku Standard_LRS --kind BlobStorage --public-network-access enabled --access-tier hot
+   echo "Take note of the storage account name, which you'll have to replace in subsequent examples, whenever you find a reference to <account_name>:"
+   echo $storage_account
+   echo "Take note of the container name, which you'll have to replace in subsequent examples, whenever you find a reference to <container_name>:"
+   echo $blob_container
    ```
 1. Create a blob container.
    To create the blob container, run the following Azure CLI:
