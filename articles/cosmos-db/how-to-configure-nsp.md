@@ -46,8 +46,6 @@ All of these communications are taken care of automatically once Network Securit
 In cases where you have existing Azure Cosmos DB account and looking to add security perimeter:
 * Select **Networking** from the **Settings** 
 
-:::image type="content" source="./media/network-service-perimeter/add-nsp.png" alt-text="Screenshot showing how to add NSP to an Azure resource.":::
-
 * Then select **Associate NSP** to associate this resource with your network security perimeter to enable communication with other Azure resources in the same perimeter while restricting public access to only allow the connections you specify.
 
 ## Next steps
