@@ -15,7 +15,7 @@ ms.author: thvankra
 Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload. This feature allows maximum flexibility and control where needed. This article describes how to run database administrator (DBA) commands manually when necessary.
 
 > [!IMPORTANT]
-> The `Nodetool` and `sstable` commands are in public preview.
+> The `nodetool` and `sstable` commands are in public preview.
 >
 > This feature is provided without a service-level agreement (SLA). We don't recommend this feature for production workloads. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -96,13 +96,12 @@ az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name
   --host <ip of data node> --command-name cassandra-reset-password --arguments password="<password>"
 ```
 
-> [!IMPORTANT]
-> The password is URL encoded (UTF-8) in this command, which means that the following rules apply:
->
-> - The alphanumeric characters `a` through `z`, `A` through `Z`, and `0` through `9` remain the same.
-> - The special characters `.`, `-`, `*`, and `_` remain the same.
-> - The space character ` ` is converted into a plus sign `+`.
-> - All other characters are unsafe and are first converted into one or more bytes by using some encoding scheme. The three-character string `%xy` represents each byte, where `xy` is the two-digit hexadecimal representation of the byte.
+The password is URL encoded (UTF-8) in this command, which means that the following rules apply:
+
+- The alphanumeric characters `a` through `z`, `A` through `Z`, and `0` through `9` remain the same.
+- The special characters `.`, `-`, `*`, and `_` remain the same.
+- The space character ` ` is converted into a plus sign `+`.
+- All other characters are unsafe and are first converted into one or more bytes by using some encoding scheme. The three-character string `%xy` represents each byte, where `xy` is the two-digit hexadecimal representation of the byte.
 
 The `cassandra-reset-auth-replication` command lets a user change their schema for the Cassandra user. Separate the datacenter names by space.
 
@@ -112,13 +111,12 @@ az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name
   --arguments password="<datacenters>"
 ```
 
-> [!IMPORTANT]
-> The datacenters are URL encoded (UTF-8) when they're passed into this command, which means that the following rules apply:
->
-> - The alphanumeric characters `a` through `z`, `A` through `Z`, and `0` through `9` remain the same.
-> - The special characters `.`, `-`, `*`, and `_` remain the same.
-> - The space character ` ` is converted into a plus sign `+`.
-> - All other characters are unsafe and are first converted into one or more bytes by using some encoding scheme. The three-character string `%xy` represents each byte, where `xy` is the two-digit hexadecimal representation of the byte.
+The datacenters are URL encoded (UTF-8) when they're passed into this command, which means that the following rules apply:
+
+- The alphanumeric characters `a` through `z`, `A` through `Z`, and `0` through `9` remain the same.
+- The special characters `.`, `-`, `*`, and `_` remain the same.
+- The space character ` ` is converted into a plus sign `+`.
+- All other characters are unsafe and are first converted into one or more bytes by using some encoding scheme. The three-character string `%xy` represents each byte, where `xy` is the two-digit hexadecimal representation of the byte.
 
 The `sstable-tree` command lets a user see their sstables.
 
