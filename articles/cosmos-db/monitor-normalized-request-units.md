@@ -15,7 +15,7 @@ Azure Monitor for Azure Cosmos DB provides a metrics view to monitor your accoun
 
 ## Metric definition
 
-The **Normalized RU Consumption** metric is a metric between 0% to 100% that's used to help measure the utilization of provisioned throughput on a database or container. The metric is emitted at 1-minute intervals and is defined as the maximum Request Units per second (RU/s) utilization across all partition key ranges in the time interval. Each partition key range maps to one physical partition and is assigned to hold data for a range of possible hash values. In general, the higher the normalized RU percentage, the more you've utilized your provisioned throughput. The metric can also be used to view the utilization of individual partition key ranges on a database or container.
+**Normalized RU Consumption** is a metric between 0% to 100% that's used to help measure the utilization of provisioned throughput on a database or container. The metric is emitted at 1-minute intervals and is defined as the maximum Request Units per second (RU/s) utilization across all partition key ranges in the time interval. Each partition key range maps to one physical partition and is assigned to hold data for a range of possible hash values. In general, the higher the normalized RU percentage, the more you've utilized your provisioned throughput. The metric can also be used to view the utilization of individual partition key ranges on a database or container.
 
 For example, suppose you have a container where you set [autoscale max throughput](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and you have two partition key ranges (physical partitions) *P1* and *P2*. Because Azure Cosmos DB distributes the provisioned throughput equally across all the partition key ranges, *P1* and *P2* can each scale between 1000 - 10,000 RU/s. Suppose in a 1-minute interval, in a given second, *P1* consumed 6,000 RUs and *P2* consumed 8,000 RUs. The normalized RU consumption of P1 is 60% and 80% for *P2*. The overall normalized RU consumption of the entire container is MAX(60%, 80%) = 80%.
 
@@ -23,9 +23,9 @@ If you're interested in seeing the request unit consumption at a per-second inte
 
 ## What to expect and do when normalized RU/s is higher
 
-When the normalized RU consumption reaches 100% for given partition key range, and if a client still makes requests in that time window of 1 second to that specific partition key range, it receives a rate-limited error (429).
+When the normalized RU consumption reaches 100% for a given partition key range, and if a client still makes requests in that time window of 1 second to that specific partition key range, it receives a rate-limited error (429).
 
-This doesn't necessarily mean there's a problem with your resource. By default, the Azure Cosmos DB client SDKs and data import tools such as Azure Data Factory and bulk executor library automatically retry requests on 429s. They retry typically up to nine times. As a result, while you might see 429s in the metrics, these errors might not even have been returned to your application.
+This doesn't necessarily mean there's a problem with your resource. By default, the Azure Cosmos DB client SDKs and data import tools, such as Azure Data Factory and bulk executor library, automatically retry requests on 429s. They retry typically up to nine times. As a result, while you might see 429s in the metrics, these errors might not even have been returned to your application.
 
 In general, for a production workload, if you see between 1-5% of requests with 429s, and your end-to-end latency is acceptable, this is a healthy sign that the RU/s are being fully utilized. In this case, the normalized RU consumption metric reaching 100% only means that in a given second, at least one partition key range used all its provisioned throughput. This is acceptable because the overall rate of 429s is still low. No further action is required.
 
