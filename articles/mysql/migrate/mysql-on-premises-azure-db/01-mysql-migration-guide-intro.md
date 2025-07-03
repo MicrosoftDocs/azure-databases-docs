@@ -26,10 +26,6 @@ MySQL has a rich history in the open-source community and has become popular wit
 
 [Azure Database for MySQL](../../overview.md) is a Platform as a Service (PaaS) offering by Microsoft, where the MySQL environment is fully managed. In this fully managed environment, the operating system and software updates are automatically applied, and the implementation of high availability and protection of the data.
 
-In addition to the PaaS offering, it's still possible to run MySQL in Azure VMs. Reference the [Choose the right MySQL Server option in Azure](../../select-right-deployment-type.md) article to decide what deployment type is most appropriate for the target data workload.
-
-:::image type="content" source="media/01-mysql-migration-guide-intro/image3.jpg" alt-text="Screenshot of Comparison of MySQL environments.":::
-
 **Comparison of MySQL environments**
 
 This guide focuses entirely on migrating the on-premises MySQL workloads to the Platform as a Service Azure Database for MySQL offering due to its various advantages over Infrastructure as a Service (IaaS) such as scale-up and scale-out, pay-as-you-go, high availability, security, and manageability features.
