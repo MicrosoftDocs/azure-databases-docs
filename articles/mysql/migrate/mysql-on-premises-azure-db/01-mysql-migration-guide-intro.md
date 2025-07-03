@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Migrate MySQL on-premises to Azure Database for MySQL
 
-This migration guide is designed to provide stackable and actionable information for MySQL customers and software integrators seeking to migrate their MySQL workloads to Azure Database for MySQL (see [overview](../../overview.md). This guide provides applicable knowledge that applies to most cases and offers guidance on planning and executing a successful a MySQL migration.
+This migration guide is designed to provide stackable and actionable information for MySQL customers and software integrators seeking to migrate their MySQL workloads to Azure Database for MySQL (see [overview](../../overview.md). This guide provides applicable knowledge that applies to most cases and offers guidance on planning and executing a successful MySQL migration.
 
 The process of migrating existing databases and MySQL workloads to the cloud can present challenges related to workload functionality and the connectivity of existing applications. The information presented throughout this guide offers helpful links and recommendations that focus on a successful migration and ensure workloads and applications continue to operate as originally intended.
 
