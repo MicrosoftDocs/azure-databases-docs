@@ -529,7 +529,7 @@
           href: flexible-server/how-to-configure-azure-storage-extension.md
         - name: Quickstart examples
           href: flexible-server/quickstart-azure-storage-extension.md
-        - name: Troubleshooting errors
+        - name: Troubleshoot errors
           href: flexible-server/troubleshoot-azure-storage-extension.md
         - name: Reference
           href: flexible-server/reference-azure-storage-extension.md

@@ -379,5 +379,8 @@ LIMIT 5;
 
 ## Related content
 
-- [Import and export data using Azure Storage in Azure Database for PostgreSQL flexible server](concepts-storage-extension.md).
+- [Azure Storage extension](concepts-storage-extension.md).
+- [Configure the Azure Storage extension](how-to-configure-azure-storage-extension.md).
+- [Troubleshoot errors](troubleshoot-azure-storage-extension.md).
+- [Reference](reference-azure-storage-extension.md).
 - [Extensions and modules](../extensions/concepts-extensions.md).
