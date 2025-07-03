@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: rust
 ms.topic: quickstart-sdk
-ms.date: 06/11/2025
+ms.date: 07/03/2025
 ms.custom: devx-track-rust
 appliesto:
   - ✅ NoSQL
@@ -43,13 +43,13 @@ The client library is available through Rust, as the `azure_data_cosmos` crate.
 1. If not already installed, install the `azure_data_cosmos` create using `cargo install`.
 
     ```bash
-    cargo install azure_data_cosmos
+    cargo add azure_data_cosmos
     ```
 
 1. Also, install the `azure_identity` crate if not already installed.
 
     ```bash
-    cargo install azure_identity
+    cargo add azure_identity
     ```
 
 ### Import libraries
