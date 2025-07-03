@@ -250,8 +250,8 @@ And, if you need to do some troubleshooting, review the [list of errors](trouble
 
 ## Related content
 
-- [Azure Storage extension](concepts-storage-extension.md).
 - [Quickstart examples](quickstart-azure-storage-extension.md).
 - [Troubleshoot errors](troubleshoot-azure-storage-extension.md).
 - [Reference](reference-azure-storage-extension.md).
+- [Azure Storage extension](concepts-storage-extension.md).
 - [Extensions and modules](../extensions/concepts-extensions.md).

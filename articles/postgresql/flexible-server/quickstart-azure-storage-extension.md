@@ -384,8 +384,8 @@ LIMIT 5;
 
 ## Related content
 
-- [Azure Storage extension](concepts-storage-extension.md).
-- [Configure the Azure Storage extension](how-to-configure-azure-storage-extension.md).
 - [Troubleshoot errors](troubleshoot-azure-storage-extension.md).
 - [Reference](reference-azure-storage-extension.md).
+- [Azure Storage extension](concepts-storage-extension.md).
+- [Configure the Azure Storage extension](how-to-configure-azure-storage-extension.md).
 - [Extensions and modules](../extensions/concepts-extensions.md).
