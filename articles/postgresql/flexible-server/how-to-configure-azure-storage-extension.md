@@ -98,7 +98,7 @@ Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) R
 
 #### Fetch one of the two access keys of the storage account
 
-To pass it to the [azure_storage.account_add](#azure_storageaccount_add) function, [fetch either of the two access keys](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#view-account-access-keys) of the Azure Storage account.
+To pass it to the [azure_storage.account_add](./reference-azure-storage-extension.md#azure_storageaccount_add) function, [fetch either of the two access keys](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#view-account-access-keys) of the Azure Storage account.
 
 ##### [Azure portal](#tab/portal-05)
 
@@ -211,7 +211,7 @@ Checkout the list of quickstart examples:
 - [Add access key of storage account](quickstart-azure-storage-extension.md#add-access-key-of-storage-account)
 - [Grant access to a user or role on the Azure Blob storage reference](quickstart-azure-storage-extension.md#grant-access-to-a-user-or-role-on-the-azure-blob-storage-reference)
 - [List all blobs in a container](quickstart-azure-storage-extension.md#list-all-blobs-in-a-container)
-- [List blobs with a specific name prefix](quickstart-azure-storage-extension.md#list-blobs-with-specific-name-prefix)
+- [List blobs with a specific name prefix](quickstart-azure-storage-extension.md#list-blobs-with-a-specific-name-prefix)
 - [Import data using a COPY FROM statement](quickstart-azure-storage-extension.md#import-data-using-a-copy-from-statement)
 - [Export data using a COPY TO statement](quickstart-azure-storage-extension.md#export-data-using-a-copy-to-statement)
 - [Read content from a blob](quickstart-azure-storage-extension.md#read-content-from-a-blob)
