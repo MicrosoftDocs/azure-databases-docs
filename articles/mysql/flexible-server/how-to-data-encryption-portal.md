@@ -1,5 +1,5 @@
 ---
-title: Set up Data Encryption By Using the Azure Portal
+title: Set up Data Encryption By Using the Azure portal
 description: Learn how to set up and manage data encryption for Azure Database for MySQL - Flexible Server by using the Azure portal.
 author: SudheeshGH
 ms.author: sunaray
@@ -11,25 +11,37 @@ ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
 
-# Data encryption for Azure Database for MySQL - Flexible Server by using the Azure portal
+# Data encryption for Azure Database for MySQL with the Azure portal
 
-This tutorial shows you how to set up and manage data encryption for Azure Database for MySQL Flexible Server.
+This article shows you how to set up and manage data encryption for Azure Database for MySQL that focuses on encryption at rest, which protects data stored in the database.
 
-In this tutorial, you learn how to:
+In this article, you learn how to:
 
-- Set data encryption for Azure Database for MySQL Flexible Server.
+- Set data encryption for Azure Database for MySQL.
 - Configure data encryption for restoration.
 - Configure data encryption for replica servers.
 
-  > [!NOTE]  
-  > Azure key vault access configuration now supports two types of permission models - [Azure role-based access control](/azure/role-based-access-control/overview) and [Vault access policy](/azure/key-vault/general/assign-access-policy). The tutorial describes configuring data encryption for Azure Database for MySQL Flexible Server using Vault access policy. However, you can choose to use Azure RBAC as permission model to grant access to Azure Key Vault. To do so, you need any built-in or custom role that has below three permissions and assign it through "role assignments" using Access control (IAM) tab in the keyvault: a) KeyVault/vaults/keys/wrap/action b) KeyVault/vaults/keys/unwrap/action c) KeyVault/vaults/keys/read. For Azure key vault managed HSM, you will also need to assign the "Managed HSM Crypto Service Encryption User" role assignment in RBAC.
+Azure key vault access configuration now supports two types of permission models - [Azure role-based access control](/azure/role-based-access-control/overview) and [Vault access policy](/azure/key-vault/general/assign-access-policy). The article describes configuring data encryption for Azure Database for MySQL using Vault access policy. 
+
+You can choose to use Azure RBAC as permission model to grant access to Azure Key Vault. To do so, you need a built-in or custom role that has below three permissions and assign it through "role assignments" using Access control (IAM) tab in the keyvault:
+
+- KeyVault/vaults/keys/wrap/action
+- KeyVault/vaults/keys/unwrap/action
+- KeyVault/vaults/keys/read. For Azure key vault managed HSM, you'll also need to assign the "Managed HSM Crypto Service Encryption User" role assignment in RBAC.
+
+## Encryption types
+
+Azure Database for MySQL supports two primary types of encryption to help safeguard your data. **Encryption at rest** ensures that all data stored in the database, including backups and logs, is protected from unauthorized access by encrypting it on disk. **Encryption in transit** (communications encryption) secures data as it moves between your client applications and the database server, typically using TLS/SSL protocols. Together, these encryption types provide comprehensive protection for your data both while it's stored and as it's transmitted.
+
+- **Encryption at Rest**: Protects data stored in the database, backups, and logs. This is the primary focus of this article.
+- **Communications Encryption (Encryption in Transit)**: Protects data as it travels between the client and the server, typically using TLS/SSL protocols.
 
 ## Prerequisites
 
 - An Azure account with an active subscription.
 - If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/free) before you begin.
 
-    > [!NOTE]  
+    > [!NOTE]
     > With an Azure free account, you can now try Azure Database for MySQL Flexible Server for free for 12 months. For more information, see [Use an Azure free account to try Azure Database for MySQL - Flexible Server for free](how-to-deploy-on-azure-free-account.md).
 
 ## Set the proper permissions for key operations
@@ -93,7 +105,7 @@ After your Azure Database for MySQL Flexible Server instance is encrypted with a
     :::image type="content" source="media/how-to-data-encryption-portal/9-mysql-compute-storage.jpeg" alt-text="Screenshot of the Compute + Storage page.":::
 
     > [!IMPORTANT]  
-    > When trying to encrypt Azure Database for MySQL Flexible Server with a customer managed key that already has a replica(s), we recommend configuring the replica(s) as well by adding the managed identity and key.
+    > When trying to encrypt Azure Database for MySQL Flexible Server with a customer managed key that already has a replicas, we recommend configuring one or more replicas as well by adding the managed identity and key.
 
 ## Related content
 
