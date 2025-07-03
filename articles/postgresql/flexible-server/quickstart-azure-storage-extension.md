@@ -137,6 +137,66 @@ Alternatively, you can use the following syntax:
 SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE path LIKE '<blob_name_prefix>%';
 ```
 
+## Import data using a COPY FROM statement
+
+The following example shows the import of data from a blob called `events.csv`  that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
+
+1. Create a table that matches the schema of the source file:
+
+    ```sql
+    CREATE TABLE IF NOT EXISTS events
+            (
+             event_id bigint
+            ,event_type text
+            ,event_public boolean
+            ,repo_id bigint
+            ,payload jsonb
+            ,repo jsonb
+            ,user_id bigint
+            ,org jsonb
+            ,created_at timestamp without time zone
+            );
+    ```
+
+2. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
+
+    ```sql
+    COPY events
+    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/events.csv'
+    WITH (FORMAT 'csv', header);
+    ```
+
+## Export data using a COPY TO statement
+
+The following example shows the export of data from a table called `events`, to a blob called `events_exported.csv` that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
+
+1. Create a table that matches the schema of the source file:
+
+    ```sql
+    CREATE TABLE IF NOT EXISTS events
+            (
+             event_id bigint
+            ,event_type text
+            ,event_public boolean
+            ,repo_id bigint
+            ,payload jsonb
+            ,repo jsonb
+            ,user_id bigint
+            ,org jsonb
+            ,created_at timestamp without time zone
+            );
+    ```
+
+2. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY FROM statement](#import-data-using-a-copy-from-statement) example to populate it with the contents of the sample data set.
+
+3. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
+
+   ```sql
+   COPY events
+   TO 'https://<account_name>.blob.core.windows.net/<container_name>/events_exported.csv'
+   WITH (FORMAT 'csv', header);
+   ```
+
 ## Read content from a blob
 
 The `blob_get` function retrieves the contents of one specific blob (`events.csv` in this case), in the referred container `<container_name>` of the `<account_name>` storage. In order for `blob_get` to know how to parse the data you can pass a value in the form `NULL::table_name`, where `table_name` refers to a table whose schema matches that of the blob being read. In the example, it refers to the `events` table we created at the very beginning.
@@ -228,34 +288,6 @@ ORDER BY 2 DESC
 LIMIT 5;
 ```
 
-## Import data using a COPY FROM statement
-
-The following example shows the import of data from a blob called `events.csv`  that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
-
-1. Create a table that matches the schema of the source file:
-
-    ```sql
-    CREATE TABLE IF NOT EXISTS events
-            (
-             event_id bigint
-            ,event_type text
-            ,event_public boolean
-            ,repo_id bigint
-            ,payload jsonb
-            ,repo jsonb
-            ,user_id bigint
-            ,org jsonb
-            ,created_at timestamp without time zone
-            );
-    ```
-
-2. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
-
-    ```sql
-    COPY events
-    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/events.csv'
-    WITH (FORMAT 'csv', header);
-    ```
 
 ## Write content to a blob
 
@@ -278,36 +310,13 @@ FROM (SELECT * FROM azure_storage.blob_get
                      , NULL::events) LIMIT 5) AS top_5_events;
 ```
 
-## Export data using a COPY TO statement
+## List all the references to Azure storage accounts
 
-The following example shows the export of data from a table called `events`, to a blob called `events_exported.csv` that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
+This example illustrates how to find out which Azure storage accounts the `azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](./reference-azure-storage-extension.md#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
 
-1. Create a table that matches the schema of the source file:
-
-    ```sql
-    CREATE TABLE IF NOT EXISTS events
-            (
-             event_id bigint
-            ,event_type text
-            ,event_public boolean
-            ,repo_id bigint
-            ,payload jsonb
-            ,repo jsonb
-            ,user_id bigint
-            ,org jsonb
-            ,created_at timestamp without time zone
-            );
-    ```
-
-2. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY FROM statement](#import-data-using-a-copy-from-statement) example to populate it with the contents of the sample data set.
-
-3. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
-
-   ```sql
-   COPY events
-   TO 'https://<account_name>.blob.core.windows.net/<container_name>/events_exported.csv'
-   WITH (FORMAT 'csv', header);
-   ```
+```sql
+SELECT * FROM azure_storage.account_list();
+```
 
 ## Remove reference to storage account
 
@@ -317,14 +326,6 @@ This example illustrates how to remove any reference to a storage account, so th
 
 ```sql
 SELECT azure_storage.account_remove('<account_name>');
-```
-
-## List all the references to Azure storage accounts
-
-This example illustrates how to find out which Azure storage accounts the `azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](./reference-azure-storage-extension.md#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
-
-```sql
-SELECT * FROM azure_storage.account_list();
 ```
 
 ## Revoke access from a user or role on the Azure Blob storage reference

@@ -23,7 +23,7 @@ It reduces the need for external Extract, Transform, and Load (ETL) and Extract,
 
 Works with public and private access configurations, including PostgreSQL flexible servers whose network interface is injected in a virtual network of your own infrastructure.
 
-The extension supports sending requests to Azure Storage service using [authorization with Shared Key](/rest/api/storageservices/authorize-with-shared-key), or using [authorization with Microsoft Entra ID](/rest/api/storageservices/authorize-with-shared-key) managed identity assigned to your server.
+The extension supports sending requests to Azure Storage service using [authorization with Shared Key](how-to-configure-azure-storage-extension.md#to-use-authorization-with-shared-key), or using [authorization with Microsoft Entra ID](how-to-configure-azure-storage-extension.md#to-use-authorization-with-microsoft-entra-id) managed identity assigned to your server.
 
 Given its superior security, Microsoft highly recommends the use of authorization with Microsoft Entra ID.
 

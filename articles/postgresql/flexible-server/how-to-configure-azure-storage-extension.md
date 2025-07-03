@@ -33,9 +33,11 @@ Identify the Azure Storage accounts with which you want users of the extension t
 
 ## Choose type of authorization
 
-Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. `azure_storage` extension supports [authorization with Shared Key](/rest/api/storageservices/authorize-with-shared-key), and [authorization with Microsoft Entra ID](/rest/api/storageservices/authorize-with-azure-active-directory).
+Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. `azure_storage` extension supports authorization with Shared Key, and authorization with Microsoft Entra ID.
 
-Of these two types of authorization, Microsoft Entra ID provides superior security and ease of use over Shared Key, and is the one Microsoft recommends. To meet the prerequisites needed in each case, follow the instructions in the corresponding sections:
+Of these two types of authorization, Microsoft Entra ID provides superior security and ease of use over Shared Key, and is the one Microsoft recommends.
+
+To meet the prerequisites needed in each case, follow the instructions in the corresponding sections:
 - [Authorization with Microsoft Entra ID](#to-use-authorization-with-microsoft-entra-id), or
 - [Authorization with Shared Key](#to-use-authorization-with-shared-key).
 
@@ -210,15 +212,15 @@ Checkout the list of quickstart examples:
 - [Grant access to a user or role on the Azure Blob storage reference](quickstart-azure-storage-extension.md#grant-access-to-a-user-or-role-on-the-azure-blob-storage-reference)
 - [List all blobs in a container](quickstart-azure-storage-extension.md#list-all-blobs-in-a-container)
 - [List blobs with a specific name prefix](quickstart-azure-storage-extension.md#list-blobs-with-specific-name-prefix)
+- [Import data using a COPY FROM statement](quickstart-azure-storage-extension.md#import-data-using-a-copy-from-statement)
+- [Export data using a COPY TO statement](quickstart-azure-storage-extension.md#export-data-using-a-copy-to-statement)
 - [Read content from a blob](quickstart-azure-storage-extension.md#read-content-from-a-blob)
 - [Read, filter, and modify content read from a blob](quickstart-azure-storage-extension.md#read-filter-and-modify-content-read-from-a-blob)
 - [Read content from file with custom options (headers, column delimiters, escape characters)](quickstart-azure-storage-extension.md#read-content-from-file-with-custom-options-headers-column-delimiters-escape-characters)
 - [Compute aggregations over the content of a blob](quickstart-azure-storage-extension.md#compute-aggregations-over-the-content-of-a-blob)
-- [Import data using a COPY FROM statement](quickstart-azure-storage-extension.md#import-data-using-a-copy-from-statement)
 - [Write content to a blob](quickstart-azure-storage-extension.md#write-content-to-a-blob)
-- [Export data using a COPY TO statement](quickstart-azure-storage-extension.md#export-data-using-a-copy-to-statement)
-- [Remove reference to storage account](quickstart-azure-storage-extension.md#remove-reference-to-storage-account)
 - [List all the references to Azure storage accounts](quickstart-azure-storage-extension.md#list-all-the-references-to-azure-storage-accounts)
+- [Remove reference to storage account](quickstart-azure-storage-extension.md#remove-reference-to-storage-account)
 - [Revoke access from a user or role on the Azure Blob storage reference](quickstart-azure-storage-extension.md#revoke-access-from-a-user-or-role-on-the-azure-blob-storage-reference)
 - [Use the decoder option](quickstart-azure-storage-extension.md#use-the-decoder-option)
 - [Use compression with decoder option](quickstart-azure-storage-extension.md#use-compression-with-decoder-option)
