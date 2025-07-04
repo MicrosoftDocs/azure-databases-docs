@@ -25,6 +25,11 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 ## July 2025
 
+### Automate scheduling of on-demand backups
+
+Azure Database for MySQL now supports the ability to schedule on-demand backups using automation tasks. This feature gives you greater control and flexibility in managing on-demand backups for your Azure Database for MySQL Flexible Server instances. Learn more about the how to schedule an automation task [here](./create-automation-tasks.md#on-demand-backup-server-task).
+
+
 ### Configure backup interval for the automated backups
 
 Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. This new feature optimizes the process by introducing more frequent snapshots, thereby reducing the number of binlogs that need to be replayed for point-in-time restore and minimizing overall restore time. Learn more about the feature [here](./concepts-backup-restore.md#backup-frequency).
