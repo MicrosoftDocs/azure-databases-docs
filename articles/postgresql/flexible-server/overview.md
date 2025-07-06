@@ -4,7 +4,7 @@ description: Provides an overview of Azure Database for PostgreSQL flexible serv
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
-ms.date: 06/11/2025
+ms.date: 07/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -67,7 +67,7 @@ Azure Database for PostgreSQL flexible server has built-in performance monitorin
 
 ## Built-in PgBouncer
 
-An Azure Database for PostgreSQL flexible server instance has a [built-in PgBouncer](concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure Database for PostgreSQL flexible server instance via PgBouncer using the same hostname and port 6432.
+An Azure Database for PostgreSQL flexible server instance has a [built-in PgBouncer](concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure Database for PostgreSQL flexible server instance via PgBouncer using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
 
 ## Azure regions
 

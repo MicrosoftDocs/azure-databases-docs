@@ -4,7 +4,7 @@ description: Learn about the different types of tables available in an elastic c
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 02/28/2025
+ms.date: 06/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -36,7 +36,7 @@ Reference tables are typically small and are used to store data that's relevant 
 
 When you use elastic cluster, each node is a regular PostgreSQL database. You can create ordinary tables on them and choose not to shard them.
 
-A good candidate for local tables would be small administrative tables that don't participate in join queries. An example is a `users` table for application sign-in and authentication. This type of table is only useful when you don't plan to load balance your connection among an elastic cluster using port 7432.
+A good candidate for local tables would be small administrative tables that don't participate in join queries. An example is a `users` table for application sign-in and authentication. This type of table is only useful when you don't plan to load balance your connection among an elastic cluster using port 7432 or 8432.
 
 ## Local managed tables
 
