@@ -172,8 +172,8 @@ ThroughputProperties throughputProperties = ThroughputProperties.createManualThr
 
 // Create a container that's subpartitioned by TenantId > UserId > SessionId
 Mono<CosmosContainerResponse> container = database.createContainerIfNotExists(containerProperties, throughputProperties);
-
 ```
+
 #### [JavaScript SDK v4](#tab/javascript-v4)
 
 ```javascript
@@ -187,7 +187,6 @@ const containerDefinition = {
 }
 const { container } = await database.containers.createIfNotExists(containerDefinition);
 console.log(container.id);
-
 ```
 
 #### [Python SDK](#tab/python)
@@ -338,10 +337,9 @@ const item: UserSession = {
 
 // Pass in the object, and the SDK automatically extracts the full partition key path
 const { resource: document } = await = container.items.create(item);
-
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 ```python
 # specify values for all fields on partition key path
@@ -352,6 +350,7 @@ item_definition = {'id': 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
 
 item = container.create_item(body=item_definition)
 ```
+
 ---
 
 #### Manually specify the path
@@ -426,7 +425,7 @@ const partitionKey: PartitionKey = new PartitionKeyBuilder()
 const { resource: document } = await container.items.create(item, partitionKey);
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 For python, just make sure that values for all the fields in the partition key path are specified in the item definition.
 
@@ -506,6 +505,7 @@ PartitionKey partitionKey = new PartitionKeyBuilder()
 // Perform a point read
 Mono<CosmosItemResponse<UserSession>> readResponse = container.readItem(id, partitionKey, UserSession.class);
 ```
+
 ##### [JavaScript SDK v4](#tab/javascript-v4)
 
 ```javascript
@@ -523,7 +523,7 @@ const partitionKey: PartitionKey = new PartitionKeyBuilder()
 const { resource: document } = await container.item(id, partitionKey).read();
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 ```python
 item_id = "f7da01b0-090b-41d2-8416-dacae09fbb4a"
@@ -548,6 +548,7 @@ item, err := container.ReadItem(context.Background(), pk, itemId, nil)
 var result map[string]any
 json.Unmarshal(item.Value, &result)
 ```
+
 ---
 
 ### Run a query
@@ -615,6 +616,7 @@ pagedResponse.byPage().flatMap(fluxResponse -> {
     return Flux.empty();
 }).blockLast();
 ```
+
 ##### [JavaScript SDK v4](#tab/javascript-v4)
 
 ```javascript
@@ -630,7 +632,7 @@ while (queryIterator.hasMoreResults()) {
 }
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 ```python
 pk = ["Microsoft", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee", "0000-11-0000-1111"]
@@ -741,7 +743,7 @@ while (queryIterator.hasMoreResults()) {
 }
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 ```python
 pk = ["Microsoft", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee", "0000-11-0000-1111"]
@@ -754,8 +756,8 @@ items = list(container.query_items(
     ],
     enable_cross_partition_query=True
 ))
-
 ```
+
 ---
 
 ## Limitations and known issues
@@ -765,7 +767,7 @@ items = list(container.query_items(
 - You can specify hierarchical partition keys only up to three layers in depth.
 - Hierarchical partition keys can currently be enabled only on new containers. You must set partition key paths at the time of container creation, and you can't change them later. To use hierarchical partitions on existing containers, create a new container with the hierarchical partition keys set and move the data by using [container copy jobs](container-copy.md).
 - Hierarchical partition keys are currently supported only for the API for NoSQL accounts. The APIs for MongoDB and Cassandra aren't currently supported.
-- Hierarchical partition keys aren't currently supported with the users and permissions feature. You can't assign a permission to a partial prefix of the hierarchical partition key path. Permissions can only be assigned to the entire logical partition key path. For example, if you have partitioned by ``TenantId`` - > ``UserId``, you can't assign a permission that is for a specific value of ``TenantId``. However, you can assign a permission for a partition key if you specify both the value for ``TenantId`` and ``UserId```.
+- Hierarchical partition keys aren't currently supported with the users and permissions feature. You can't assign a permission to a partial prefix of the hierarchical partition key path. Permissions can only be assigned to the entire logical partition key path. For example, if you have partitioned by ``TenantId`` - > ``UserId``, you can't assign a permission that is for a specific value of ``TenantId``. However, you can assign a permission for a partition key if you specify both the value for ``TenantId`` and ``UserId``.
 
 ## Next steps
 

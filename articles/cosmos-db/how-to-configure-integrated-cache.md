@@ -224,7 +224,6 @@ container.NewQueryItemsPager("select * from c", azcosmos.NewPartitionKey(), &azc
 
 ---
 
-
 ## Bypass the integrated cache
 
 Use the `BypassIntegratedCache` request option to control which requests use the integrated cache. Writes, point reads, and queries that bypass the integrated cache won't use cache storage, saving space for other items. Requests that bypass the cache are still routed through the dedicated gateway. These requests are served from the backend and cost RUs.
