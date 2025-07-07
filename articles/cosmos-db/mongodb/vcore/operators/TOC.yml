@@ -38,6 +38,8 @@
   href: literal-expression/toc.yml
 - name: Logical query
   href: logical-query/toc.yml
+- name: Miscellaneous
+  href: miscellaneous/TOC.yml
 - name: Miscellaneous query
   href: miscellaneous-query/TOC.yml
 - name: Object expression
