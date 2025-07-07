@@ -28,7 +28,7 @@ The syntax for the `$sampleRate` operator is as follows:
 
 | | Description |
 | --- | --- |
-| **`number`** | A floating-point number between 0 and 1 representing the probability that a document will be included in the sample. For example, 0.33 means approximately 33% of documents will be sampled. |
+| **`number`** | A floating-point number between 0 and 1 representing the probability that a document will be included in the sample. For example, 0.33 means approximately 33% of documents are sampled.
 
 ## Example
 
