@@ -58,7 +58,7 @@ All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of 
 
 #### Premium SSD v2 - High availability
 
-High availability is now supported for Azure Database for PostgreSQL flexible server deployments using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. This capability is initially available in the following regions, with plans to expand support to more regions soon.
+High availability is now supported for Azure Database for PostgreSQL flexible server deployments using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. This capability is initially available in the following regions.
 
 *Canada Central,Central US, East Asia*
 
@@ -94,12 +94,12 @@ High availability is an opt-in feature that can be enabled at the subscription l
 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
-- Premium SSD v2 High Availability can only be configured for servers created on or after July 1st. Currently, SSD v2 High Availability is supported in Canada Central, Central US, and East Asia, with plans to expand to additional regions soon.
+- Premium SSD v2 High Availability can only be configured for servers created on or after July 1st. Currently, SSD v2 High Availability is supported in Canada Central, Central US, and East Asia regions.
 
 - Premium SSD V2 can only be enabled in the following regions: 
  *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.  
 
-- Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is not currently supported. Support for this capability will be added in the future.
+- Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is not currently supported.
 
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
