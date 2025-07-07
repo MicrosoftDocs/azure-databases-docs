@@ -4,7 +4,7 @@ description: Learn about sharding and horizontal scale-out with elastic clusters
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 02/28/2025
+ms.date: 07/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -26,7 +26,7 @@ An elastic cluster consists of one or more nodes of Azure Database for PostgreSQ
 
 Elastic clusters use instances of Flexible Servers (called nodes) to coordinate with one another in a "shared nothing" architecture. The nodes in a cluster collectively hold more data and use more CPU cores than would be possible on a single server. The architecture also allows the database to scale, by adding more nodes to the cluster.
 
-Connecting to your cluster using port 5432 lands you on the designated coordinator node. Elastic clusters also allow you to load balance connections across the cluster, using a five-tuple hash method, if you connect using port 7432. Using 7432 you can still land at the node currently designated as coordinator. For certain cluster-wide operations, like distributing tables, you might be required to connect over port 5432. We strongly recommend you to always connect on port 5432, when you plan to perform application schema upgrades and similar changes.
+Connecting to your cluster using port 5432 lands you on the designated coordinator node. Elastic clusters also allow you to load balance connections across the cluster, using a five-tuple hash method, if you connect using port 7432. Using 7432 you can still land at the node currently designated as coordinator. For certain cluster-wide operations, like distributing tables, you might be required to connect over port 5432. We strongly recommend you to always connect on port 5432, when you plan to perform application schema upgrades and similar changes. If you [enable PgBouncer](concepts-pgbouncer.md) on elastic clusters, you can use port 8432 to load balance connections across PgBouncer instances on every node (or use port 6432 for the designated coordinator).
 
 Unlike Cosmos DB for PostgreSQL, node addresses aren't externally exposed. If you look at Citus metadata tables like `pg_dist_node`, then you might notice all nodes having the same IP address as in the example `10.7.0.254` but different port numbers.
 
@@ -78,7 +78,7 @@ logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue
  (4 rows)
 ```
 
-If the node wants to determine which shard holds a row of `github_events`, it hashes the value of the distribution column in the row. Then the node checks which shard's range contains the hashed value. The ranges are defined so that the image of the hash function is their disjoint union.
+If the node wants to determine which shard holds a row of `github_events`, it hashes the value of the distribution column in the row. Then the node checks, which shard's range contains the hashed value. The ranges are defined so that the image of the hash function is their disjoint union.
 
 ### Shard placements
 
