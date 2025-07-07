@@ -78,7 +78,7 @@ db.promotionEvents.aggregate([
     }
   }
 ])
-
+```
 
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]
