@@ -97,9 +97,9 @@ db.stores.aggregate([
 ])
 ```
 
-This query returns approximately one-third of all documents in the stores collection, selected randomly.
+This query returns one-third of all documents in the stores collection, selected randomly.
 
-### Example 2: Sampling with Additional Filters
+### Example 2: Sampling with more Filters
 
 To sample 50% of stores that have total sales greater than 50,000:
 
@@ -112,7 +112,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query first filters stores with sales above 50,000, then randomly samples 50% of those matching documents.
+This query first filters store with sales above 50,000, then randomly samples 50% of those matching documents.
 
 ### Example 3: Sampling for Statistical Analysis
 
@@ -133,7 +133,7 @@ db.stores.aggregate([
 
 This query samples 25% of stores and calculates statistical measures on the sampled data.
 
-The $sampleRate operator is particularly valuable for statistical analysis and data exploration when working with large datasets where processing all documents would be computationally expensive. It efficiently creates representative samples for performance testing, quality assurance validation, and machine learning dataset generation. The operator is ideal for approximate reporting scenarios where statistical accuracy is acceptable and processing speed is prioritized over exact precision.
+The $sampleRate operator is valuable for statistical analysis and data exploration when working with large datasets where processing all documents would be computationally expensive. It efficiently creates representative samples for performance testing, quality assurance validation, and machine learning dataset generation. The operator is ideal for approximate reporting scenarios where statistical accuracy is acceptable and processing speed is prioritized over exact precision.
 
 
 ## Related content
