@@ -112,7 +112,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query first filters store with sales above 50,000, then randomly samples 50% of those matching documents.
+This query first filters stores with sales above 50,000, then randomly samples 50% of those matching documents.
 
 ### Example 3: Sampling for Statistical Analysis
 
