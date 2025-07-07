@@ -42,7 +42,7 @@ Or the shorthand syntax:
 | | Description |
 | --- | --- |
 | **`field`** | A string representing the name of the field to retrieve. |
-| **`input`** | The document from which to retrieve the field. If not specified, defaults to the current document (`$$ROOT`). |
+| **`input`** | The document from which the field is retrieved. If not specified, defaults to the current document (`$$ROOT`). |
 
 ## Example
 
@@ -118,7 +118,7 @@ db.stores.aggregate([
 ])
 ```
 
-This produces the following output:
+This command produces the following output:
 
 ```json
 {
@@ -144,7 +144,7 @@ db.stores.aggregate([
 ])
 ```
 
-This produces the following output:
+This command produces the following output:
 
 ```json
 {
