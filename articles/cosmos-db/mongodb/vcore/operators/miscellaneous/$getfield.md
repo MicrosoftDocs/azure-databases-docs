@@ -128,45 +128,7 @@ This produces the following output:
 }
 ```
 
-### Example 2: Dynamic field access
-
-Access nested fields dynamically from the staff information:
-
-```javascript
-db.stores.aggregate([
-  { $match: {"_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f"} },
-  {
-    $project: {
-      name: 1,
-      fullTimeStaff: {
-        $getField: {
-          field: "fullTime",
-          input: "$staff.totalStaff"
-        }
-      },
-      partTimeStaff: {
-        $getField: {
-          field: "partTime",
-          input: "$staff.totalStaff"
-        }
-      }
-    }
-  }
-])
-```
-
-This produces the following output:
-
-```json
-{
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
-  "fullTimeStaff": 18,
-  "partTimeStaff": 17
-}
-```
-
-### Example 3: Shorthand syntax
+### Example 2: Shorthand syntax
 
 Use the shorthand syntax to retrieve the store name:
 
