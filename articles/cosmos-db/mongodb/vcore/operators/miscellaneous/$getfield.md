@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$getField` operator is used to retrieve the value of a specified field from a document. It is particularly useful when working with dynamic field names or when you need to access fields programmatically within aggregation pipelines.
+The `$getField` operator is used to retrieve the value of a specified field from a document. It's useful when working with dynamic field names or when you need to access fields programmatically within aggregation pipelines.
 
 ## Syntax
 
