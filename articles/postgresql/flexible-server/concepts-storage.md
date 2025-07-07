@@ -80,7 +80,7 @@ High availability is an opt-in feature that can be enabled at the subscription l
 4.  Select the feature and click **Register**.
 
  
-5. Validate that the State changed to **Registered**.
+5. Validate that the **State** changed to **Registered**.
 
 
    :::image type="content" source="./media/concepts-storage/registration-validation.png" alt-text="Screenshot the  registration validation page." lightbox="./media/concepts-storage/registration-validation.png":::
@@ -96,8 +96,8 @@ High availability is an opt-in feature that can be enabled at the subscription l
 - Premium SSD V2 can only be enabled for newly created servers. Enabling Premium SSD V2 on existing servers isn't supported.
 
 - Premium SSD V2 can only be enabled in the following regions: 
- *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.
-  HA is supported only in Canada Central, Central US, East Asia.
+ *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.  
+- HA is supported only in Canada Central, Central US, East Asia.
 - Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is not currently supported. Support for this capability will be added in the future.
 
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
