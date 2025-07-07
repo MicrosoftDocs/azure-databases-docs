@@ -4,6 +4,7 @@ description: This article describes the storage options in Azure Database for Po
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
+ms.custom: references_regions
 ms.date: 01/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
@@ -55,27 +56,27 @@ All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of 
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server.
 
 
-#### Premium SSD v2 - High Availability
+#### Premium SSD v2 - High availability
 
 High availability is now supported for Azure Database for PostgreSQL flexible server deployments using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. This capability is initially available in the following regions, with plans to expand support to more regions soon.
 
 *Canada Central,Central US, East Asia*
 
 
-#### Enable Premium SSD v2 High Availability Preview
+#### Enable premium SSD v2 high availability preview
 
 High availability is an opt-in feature that can be enabled at the subscription level using the steps below. As this is a preview feature, it is recommended for use only with non-production workloads.
 
 1. In the **Search** bar, type **Preview features** and select it from the results.
 
  
- :::image type="content" source="./media/concepts-storage/preview-feature.png" alt-text="Screenshot the preview page." lightbox="./media/concepts-storage/preview-feature.png":::
+ :::image type="content" source="./media/concepts-storage/preview-feature.png" alt-text="Screenshot of the preview page." lightbox="./media/concepts-storage/preview-feature.png":::
 
   
 2. Use the **Filter by name** field, search for **Premium SSD v2 High Availability** and Select the **Subscription** 
 
  
-   :::image type="content" source="./media/concepts-storage/registration.png" alt-text="Screenshot the SSD v2 registration page." lightbox="./media/concepts-storage/registration.png":::
+   :::image type="content" source="./media/concepts-storage/registration.png" alt-text="Screenshot of the SSD v2 registration page." lightbox="./media/concepts-storage/registration.png":::
 
 4.  Select the feature and click **Register**.
 
@@ -83,7 +84,7 @@ High availability is an opt-in feature that can be enabled at the subscription l
 5. Validate that the **State** changed to **Registered**.
 
 
-   :::image type="content" source="./media/concepts-storage/registration-validation.png" alt-text="Screenshot the  registration validation page." lightbox="./media/concepts-storage/registration-validation.png":::
+   :::image type="content" source="./media/concepts-storage/registration-validation.png" alt-text="Screenshot of the  registration validation page." lightbox="./media/concepts-storage/registration-validation.png":::
 
 
 
@@ -151,16 +152,16 @@ As an illustrative example, let's consider a server with a storage capacity of 2
 
 The default behavior increases the disk size to the next premium SSD storage size. This increase is always double in both size and cost, regardless of whether you start the storage scaling operation manually or through storage autogrow. Enabling storage autogrow is valuable when you're managing unpredictable workloads, because it automatically detects low-storage conditions and scales up the storage accordingly.
 
-The process of scaling storage is performed online, without causing any downtime, except when the disk size needs to cross the border of 4,096 GiB. This exception is a limitation of [Azure managed disks](/azure/virtual-machines/managed-disks-overview). In that case, the automatic storage scaling activity isn't triggered, even if storage autogrow setting is enabled for the server. In such cases, you need to scale your storage manually. Be aware that in this scenario (reaching or crossing the 4,096-GiB boundary), manual scaling is an offline operation. We recommend scheduling this task to align with your business needs. All other operations can be performed online. Once the allocated disk size is 8,192 GiB or higher, storage autogrow triggers again automatically and every subsequent storage grow operation is performed online until the disk allocated reaches its maximum growing capacity, which is 32,768 GiB.
+The process of scaling storage is performed online, without causing any downtime, except when the disk size needs to cross the border of 4,096 GiB. This exception is a limitation of [Azure managed disks](/azure/virtual-machines/managed-disks-overview). In that case, the automatic storage scaling activity isn't triggered, even if storage autogrow setting is enabled for the server. In such cases, you need to scale your storage manually. Be aware that in this scenario (reaching or crossing the 4,096 GiB boundary), manual scaling is an offline operation. We recommend scheduling this task to align with your business needs. All other operations can be performed online. Once the allocated disk size is 8,192 GiB or higher, storage autogrow triggers again automatically and every subsequent storage grow operation is performed online until the disk allocated reaches its maximum growing capacity, which is 32,768 GiB.
 
 > [!NOTE]  
 > Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
 ## Limitations and considerations of storage autogrow
 
-- Disk scaling operations are typically performed online, except in specific scenarios involving crossing the boundary of 4,096-GiB. These scenarios include reaching or crossing the limit of 4,096-GiB. For instance, scaling from 2,048 GiB to 8,192-GiB triggers an offline operation. In the Azure portal, moving to 4 TB, which is represented as 4,095 GiB, keeps the operation online. However, if you explicitly specify 4 TB as 4,096 GiB, such as in Azure CLI, the scaling operation is completed in offline mode, since it reaches the limit of 4,096-GiB. Oflline scale operation usually takes anywhere between 2 to 10 minutes. With the [reduced downtime scaling feature](concepts-scaling-resources.md), this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
+- Disk scaling operations are typically performed online, except in specific scenarios involving crossing the boundary of 4,096 GiB. These scenarios include reaching or crossing the limit of 4,096 GiB. For instance, scaling from 2,048 GiB to 8,192 GiB triggers an offline operation. In the Azure portal, moving to 4 TiB, which is represented as 4,095 GiB, keeps the operation online. However, if you explicitly specify 4 TB as 4,096 GiB, such as in Azure CLI, the scaling operation is completed in offline mode, since it reaches the limit of 4,096 GiB. Oflline scale operation usually takes anywhere between 2 to 10 minutes. With the [reduced downtime scaling feature](concepts-scaling-resources.md), this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
 
-- Host Caching (ReadOnly and Read/Write) is supported on disk sizes less than 4,096-GIB or 4-Tib. Any disk that is provisioned up to 4,095-GiB can take advantage of Host Caching. Host caching isn't supported for disk sizes more than or equal to 4,096-GiB. For example, a P50 premium disk provisioned at 4,095-GiB can take advantage of Host caching and a P50 disk provisioned at 4,096-GiB can't take advantage of Host Caching. Customers moving from lower disk size to 4,096 GiB or higher lose the ability to use disk caching.
+- Host Caching (ReadOnly and Read/Write) is supported on disk sizes less than 4,096 GIB or 4 Tib. Any disk that is provisioned up to 4,095 GiB can take advantage of Host Caching. Host caching isn't supported for disk sizes more than or equal to 4,096 GiB. For example, a P50 premium disk provisioned at 4,095 GiB can take advantage of Host caching and a P50 disk provisioned at 4,096 GiB can't take advantage of Host Caching. Customers moving from lower disk size to 4,096 GiB or higher lose the ability to use disk caching.
 
   This limitation is due to the underlying [Azure managed disks](/azure/virtual-machines/managed-disks-overview), which needs a manual disk scaling operation. You receive an informational message in the portal when you approach this limit.
 
