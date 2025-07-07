@@ -1,26 +1,31 @@
 ---
 title: Monitor Azure Database for MySQL - Flexible Server
 description: Learn how to monitor Azure Database for MySQL - Flexible Server using Azure Monitor, including data collection, analysis, and alerting.
-ms.date: 01/27/2025
-ms.custom: horz-monitor
-ms.topic: concept-article
 author: markingmyname
 ms.author: maghan
+ms.date: 07/03/2025
 ms.service: azure-database-mysql
+ms.topic: concept-article
+ms.custom:
+  - horz-monitor
+ai-usage: ai-assisted
 ---
+
 # Monitor Azure Database for MySQL - Flexible Server
 
 [!INCLUDE [azmon-horz-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-intro.md)]
+
+Monitoring is essential for maintaining the health, performance, and security of your Azure Database for MySQL - Flexible Server instances. Azure Monitor provides a comprehensive solution for collecting, analyzing, and acting on telemetry from your MySQL servers. This article outlines the key monitoring capabilities available, including metrics, logs, alerting, and visualization tools, to help you proactively manage your database workloads.
 
 ## Collect data with Azure Monitor
 
 This table describes how you can collect data to monitor your service, and what you can do with the data once collected:
 
-|Data to collect|Description|How to collect and route the data|Where to view the data|Supported data|
-|---------|---------|---------|---------|---------|
-|Metric data|Metrics are numerical values that describe an aspect of a system at a particular point in time. Metrics can be aggregated using algorithms, compared to other metrics, and analyzed for trends over time.|- Collected automatically at regular intervals.</br> - You can route some platform metrics to a Log Analytics workspace to query with other data. Check the **DS export** setting for each metric to see if you can use a diagnostic setting to route the metric data.|[Metrics explorer](/azure/azure-monitor/essentials/metrics-getting-started)| [Azure Database for MySQL - Flexible Server metrics supported by Azure Monitor](concepts-monitor-mysql-reference.md#metrics)|
-|Resource log data|Logs are recorded system events with a timestamp. Logs can contain different types of data, and be structured or free-form text. You can route resource log data to Log Analytics workspaces for querying and analysis.|[Create a diagnostic setting](/azure/azure-monitor/essentials/create-diagnostic-settings) to collect and route resource log data.| [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace)|[Azure Database for MySQL - Flexible Server resource log data supported by Azure Monitor](concepts-monitor-mysql-reference.md#resource-logs)  |
-|Activity log data|The Azure Monitor activity log provides insight into subscription-level events. The activity log includes information like when a resource is modified or a virtual machine is started.|- Collected automatically.</br> - [Create a diagnostic setting](/azure/azure-monitor/essentials/create-diagnostic-settings) to a Log Analytics workspace at no charge.|[Activity log](/azure/azure-monitor/essentials/activity-log)|  |
+| Data to collect | Description | How to collect and route the data | Where to view the data | Supported data |
+| --- | --- | --- | --- | --- |
+| Metric data | Metrics are numerical values that describe an aspect of a system at a particular point in time. Metrics can be aggregated using algorithms, compared to other metrics, and analyzed for trends over time. | - Collected automatically at regular intervals.<br />- You can route some platform metrics to a Log Analytics workspace to query with other data. Check the **DS export** setting for each metric to see if you can use a diagnostic setting to route the metric data. | [Metrics explorer](/azure/azure-monitor/essentials/metrics-getting-started) | [Azure Database for MySQL - Flexible Server metrics supported by Azure Monitor](concepts-monitor-mysql-reference.md#metrics) |
+| Resource log data | Logs are recorded system events with a timestamp. Logs can contain different types of data, and be structured or free-form text. You can route resource log data to Log Analytics workspaces for querying and analysis. | [Create a diagnostic setting](/azure/azure-monitor/essentials/create-diagnostic-settings) to collect and route resource log data. | [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace) | [Azure Database for MySQL - Flexible Server resource log data supported by Azure Monitor](concepts-monitor-mysql-reference.md#resource-logs) |
+| Activity log data | The Azure Monitor activity log provides insight into subscription-level events. The activity log includes information like when a resource is modified or a virtual machine is started. | - Collected automatically.<br />- [Create a diagnostic setting](/azure/azure-monitor/essentials/create-diagnostic-settings) to a Log Analytics workspace at no charge. | [Activity log](/azure/azure-monitor/essentials/activity-log) | |
 
 [!INCLUDE [azmon-horz-supported-data](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-supported-data.md)]
 
@@ -101,7 +106,7 @@ The following table describes the output of the slow query log. Depending on the
 | `\_ResourceId` | Resource URI |
 
 > [!NOTE]  
-> For `sql_text_s`, log is truncated if it exceeds 2048 characters.
+> For `sql_text_s`, log is truncated if it exceeds 2,048 characters.
 
 ### Track database activity with Audit Logs
 
@@ -177,7 +182,7 @@ General:
 The following Schema applies to GENERAL, DML_SELECT, DML_NONSELECT, DML, DDL, DCL, and ADMIN event types.
 
 > [!NOTE]  
-> For `sql_text_s`, log is truncated if it exceeds 2048 characters.
+> For `sql_text_s`, log is truncated if it exceeds 2,048 characters.
 
 | **Property** | **Description** |
 | --- | --- |
@@ -208,7 +213,7 @@ The following Schema applies to GENERAL, DML_SELECT, DML_NONSELECT, DML, DDL, DC
 Table access:
 
 > [!NOTE]  
-> For `sql_text_s`, log is truncated if it exceeds 2048 characters.
+> For `sql_text_s`, log is truncated if it exceeds 2,048 characters.
 
 | **Property** | **Description** |
 | --- | --- |
@@ -273,11 +278,11 @@ You can also edit and customize these templates according to your requirements. 
 
 To view the templates in the Azure portal, go to the **Monitoring** pane for Azure Database for MySQL flexible server, and then select **Workbooks**.
 
-:::image type="content" source="media/concepts-workbooks/monitor-workbooks-all.png" alt-text="Screenshot showing the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the Workbooks pane." lightbox="media/concepts-workbooks/monitor-workbooks-all.png":::
+:::image type="content" source="media/concepts-monitor-mysql/monitor-workbooks-all.png" alt-text="Screenshot showing the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the Workbooks pane." lightbox="media/concepts-monitor-mysql/monitor-workbooks-all.png":::
 
 You can also display the list of templates by going to the **Public Templates** pane.
 
-:::image type="content" source="media/concepts-workbooks/monitor-workbooks-public.png" alt-text="Diagram that shows the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the 'Public Templates' pane." lightbox="media/concepts-workbooks/monitor-workbooks-public.png":::
+:::image type="content" source="media/concepts-monitor-mysql/monitor-workbooks-public.png" alt-text="Diagram that shows the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the 'Public Templates' pane." lightbox="media/concepts-monitor-mysql/monitor-workbooks-public.png":::
 
 [!INCLUDE [azmon-horz-tools](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-tools.md)]
 
@@ -401,8 +406,6 @@ For audit logs, after your audit logs are piped to Azure Monitor Logs through Di
     | project TimeGenerated, Resource, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
     | order by TimeGenerated asc nulls last
     ```
-
-
 
 [!INCLUDE [azmon-horz-alerts-part-one](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-alerts-part-one.md)]
 

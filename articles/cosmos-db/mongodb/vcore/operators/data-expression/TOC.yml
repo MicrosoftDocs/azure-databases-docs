@@ -2,9 +2,9 @@
   href: $dateadd.md
 - name: $datediff
   href: $datediff.md
-- name: $datefromparts
+- name: $dateFromParts
   href: $datefromparts.md
-- name: $datefromstring
+- name: $dateFromString
   href: $datefromstring.md
 - name: $hour
   href: $hour.md
@@ -24,3 +24,7 @@
   href: $second.md
 - name: $todate
   href: $todate.md
+- name: $week
+  href: $week.md
+- name: $year
+  href: $year.md

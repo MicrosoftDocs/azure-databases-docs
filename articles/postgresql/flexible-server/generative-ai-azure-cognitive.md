@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - build-2024
-ms.topic: concept-article
+ms.topic: how-to
 ---
 
 # Integrate Azure Database for PostgreSQL with Azure Cognitive Services

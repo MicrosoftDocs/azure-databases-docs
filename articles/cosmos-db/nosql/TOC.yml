@@ -26,10 +26,10 @@
           href: quickstart-python.md
         - name: Use with a JavaScript app
           displayName: Quickstart, Node.js, JavaScript, Express, AZD, Azure Developer CLI
-          href: quickstart-nodejs.md?pivots=programming-language-ts
-        - name: Use with a TypeScript app
-          displayName: Quickstart, Node.js, JavaScript, Express, AZD, Azure Developer CLI
           href: quickstart-nodejs.md?pivots=programming-language-js
+        - name: Use with a TypeScript app
+          displayName: Quickstart, Node.js, TypeScript, Express, AZD, Azure Developer CLI
+          href: quickstart-nodejs.md?pivots=programming-language-ts
         - name: Use with a Java app
           displayName: Quickstart, Spring, Spring Data, AZD, Azure Developer CLI
           href: quickstart-java.md
@@ -64,7 +64,7 @@
           href: vector-search.md
         - name: Sharded DiskANN for focused search
           href: ../gen-ai/sharded-diskann.md
-    - name: Enable full-text search
+    - name: Full text indexing and search
       href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
@@ -1105,7 +1105,7 @@
     - name: Microsoft Questions and Answers
       href: /answers/topics/azure-cosmos-db.html
     - name: Videos
-      href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
+      href: https://azure.microsoft.com/resources/videos/?services=cosmos-db
     - name: Azure Roadmap
       href: https://azure.microsoft.com/updates/?query=Cosmos%20DB
     - name: Try Azure Cosmos DB for free

@@ -4,6 +4,8 @@
   href: $addfields.md
 - name: $bucket
   href: $bucket.md
+- name: $changestreams
+  href: $changestreams.md
 - name: $collStats
   href: $collstats.md
 - name: $count
@@ -18,6 +20,10 @@
   href: $fill.md
 - name: $geonear
   href: $geonear.md
+- name: $group
+  href: $group.md
+- name: $indexStats
+  href: $indexstats.md
 - name: $lookup
   href: $lookup.md
 - name: $match

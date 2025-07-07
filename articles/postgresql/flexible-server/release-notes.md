@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/06/2025
+ms.date: 06/30/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -18,6 +18,9 @@ ms.custom:
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL flexible server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
+
+## Release: July 2025
+- General availability of [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17) for Azure Database for PostgreSQL flexible server.
 
 ## Release: June 2025
 
@@ -83,7 +86,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: September 2024
 
-- Public preview of [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17-preview) for Azure Database for PostgreSQL flexible server.
+- Public preview of [PostgreSQL 17](concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
 - Support for latest [minor versions](concepts-supported-versions.md) 16.4, 15.8, 14.13, 13.16, and 12.20. <sup>$</sup>
 - Support for [Reserved pricing](concepts-reserved-pricing.md) for Intel and AMD V5 Skus for Azure Database for PostgreSQL flexible server.
 - Public preview of [postgresql_anonymizer (anon)](../extensions/concepts-extensions-versions.md#anon) extension.

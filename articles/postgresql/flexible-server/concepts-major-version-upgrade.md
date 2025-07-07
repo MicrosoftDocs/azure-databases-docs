@@ -3,10 +3,10 @@ title: Major version upgrades in Azure Database for PostgreSQL flexible server
 description: Learn how to use Azure Database for PostgreSQL flexible server to do in-place major version upgrades of PostgreSQL on a server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 6/19/2025
+ms.date: 6/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: concept-article
+ms.topic: upgrade-and-migration-article
 ---
 
 # Major version upgrades in Azure Database for PostgreSQL flexible server
