@@ -22,7 +22,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: July 2025
 - General availability of [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17) for Azure Database for PostgreSQL flexible server.
 - Preview
-    - [High Availability with Premium SSDv2](concepts-storage.md#premium-ssd-v2---high-availability)
+    - [High Availability with Premium SSDv2](concepts-storage.md)
 
 ## Release: June 2025
 
