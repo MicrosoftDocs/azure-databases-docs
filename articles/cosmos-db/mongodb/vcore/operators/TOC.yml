@@ -50,3 +50,5 @@
   href: set-expression/toc.yml
 - name: Variable expression
   href: variable-expression/toc.yml
+- name: Window operators
+  href: window-operators/toc.yml
