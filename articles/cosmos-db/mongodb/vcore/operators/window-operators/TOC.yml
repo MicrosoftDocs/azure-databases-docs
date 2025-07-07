@@ -1,0 +1,4 @@
+- name: $shift
+  href: $shift.md
+- name: $stdDevSamp
+  href: $stdDevSamp.md
