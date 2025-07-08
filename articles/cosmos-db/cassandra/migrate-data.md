@@ -28,7 +28,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
 
 ## Prerequisites for migration
 
-- **Estimate your throughput needs:** Before you migrate data to the API for Cassandra account in Azure Cosmos DB, estimate the throughput needs of your workload. In general, start with the average throughput required by the create, read, update, and delete operations. Then include the extra throughput required for the extract, transform, and load or spiky operations. You need the following details to plan for migration:
+- **Estimate your throughput needs:** Before you migrate data to the API for Cassandra account in Azure Cosmos DB, estimate the throughput needs of your workload. In general, start with the average throughput required by the create, read, update, and delete (CRUD) operations. Then include the extra throughput required for the extract, transform, and load (ETL) or spiky operations. You need the following details to plan for migration:
 
   - **Existing data size or estimated data size:** Defines the minimum database size and throughput requirement. If you estimate data size for a new application, you can assume that the data is uniformly distributed across the rows. You can estimate the value by multiplying with the data size.
   - **Required throughput:** Approximate throughput rate of read (query/get) and write (update/delete/insert) operations. This value is required to compute the required request units, along with steady-state data size.
@@ -90,9 +90,9 @@ You can move data from existing Cassandra workloads to Azure Cosmos DB by using 
 > [!NOTE]
 > The API for Cassandra supports protocol version 4, which shipped with Cassandra 3.11. There might be issues if you use later protocol versions with our API. With a later protocol version, the `COPY FROM` command can go into a loop and return duplicate rows.
 >
-> Add `protocol-version` to the `cqlsh` command.
-
-```sql
+> Add `protocol-version` to the `cqlsh` command:
+>
+> ```sql
 cqlsh <USERNAME>.cassandra.cosmos.azure.com 10350 -u <USERNAME> -p <PASSWORD> --ssl --protocol-version=4
 ```
 
