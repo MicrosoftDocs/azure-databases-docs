@@ -93,8 +93,8 @@ You can move data from existing Cassandra workloads to Azure Cosmos DB by using 
 > Add `protocol-version` to the `cqlsh` command:
 >
 > ```sql
-cqlsh <USERNAME>.cassandra.cosmos.azure.com 10350 -u <USERNAME> -p <PASSWORD> --ssl --protocol-version=4
-```
+> cqlsh <USERNAME>.cassandra.cosmos.azure.com 10350 -u <USERNAME> -p <PASSWORD> --ssl --protocol-version=4
+> ```
 
 #### Add throughput-limiting options to the CQL COPY command
 
