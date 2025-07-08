@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.devlang: java
 ms.custom: devx-track-java, devx-track-extended-java, sfi-ropc-blocked
-#Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources. Customers want to store key-value data and use the global distribution, elastic scaling, multiregion writes, and other capabilities that are offered by Azure Cosmos DB.
+#Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources. Customers want to store key/value data and use the global distribution, elastic scaling, multiregion writes, and other capabilities that are offered by Azure Cosmos DB.
 ---
 
-# Tutorial: Create an API for Cassandra account in Azure Cosmos DB by using a Java application to store key-value data
+# Tutorial: Create an API for Cassandra account in Azure Cosmos DB by using a Java application to store key/value data
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
-As a developer, you might have applications that use key-value pairs. You can use an API for Cassandra account in Azure Cosmos DB to store the key-value data. This tutorial describes how to use a Java application to create an API for Cassandra account in Azure Cosmos DB, add a database (also called a keyspace), and add a table. The Java application uses the [Java driver](https://github.com/datastax/java-driver) to create a user database that contains details such as the user ID, username, and user city.
+As a developer, you might have applications that use key/value pairs. You can use an API for Cassandra account in Azure Cosmos DB to store the key/value data. This tutorial describes how to use a Java application to create an API for Cassandra account in Azure Cosmos DB, add a database (also called a keyspace), and add a table. The Java application uses the [Java driver](https://github.com/datastax/java-driver) to create a user database that contains details such as the user ID, username, and user city.
 
 This tutorial covers the following tasks:
 
@@ -30,8 +30,7 @@ This tutorial covers the following tasks:
 
 * If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) before you begin.
 * Get the latest version of [Java Development Kit (JDK)](/java/azure/jdk/).
-* [Download](https://maven.apache.org/download.cgi) and [install](https://maven.apache.org/install.html) the [Maven](https://maven.apache.org/) binary archive.
-  - On Ubuntu, you can run `apt-get install maven` to install Maven.
+* [Download](https://maven.apache.org/download.cgi) and [install](https://maven.apache.org/install.html) the [Maven](https://maven.apache.org/) binary archive. On Ubuntu, you can run `apt-get install maven` to install Maven.
 
 ## Create a database account
 
@@ -138,7 +137,7 @@ This section describes how to add a database (keyspace) and a table by using the
 
 1. Locate the `src\main\java\com\azure\cosmosdb\cassandra` folder, and create a new subfolder named `examples`.
 
-1. Create the `UserProfile` Java class. This class contains the main method that calls the `createKeyspace` and `createTable` methods that you defined earlier:
+1. Create the `UserProfile` Java class. This class contains the main method that calls the `createKeyspace` and `createTable` methods that you defined earlier.
 
    ```java
    package com.azure.cosmosdb.cassandra.examples; 
@@ -185,7 +184,7 @@ This section describes how to add a database (keyspace) and a table by using the
 
 1. Open a command prompt or terminal window. Paste the following code block.
 
-   This code changes the directory (cd) to the folder path where you created the project. Then, it runs the `mvn clean install` command to generate the `cosmosdb-cassandra-examples.jar` file within the target folder. Finally, it runs the Java application.
+   This code changes the directory (`cd`) to the folder path where you created the project. Then, it runs the `mvn clean install` command to generate the `cosmosdb-cassandra-examples.jar` file within the target folder. Finally, it runs the Java application.
 
    ```bash
    cd cassandra-demo
