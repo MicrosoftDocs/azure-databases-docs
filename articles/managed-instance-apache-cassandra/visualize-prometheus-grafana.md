@@ -31,7 +31,7 @@ The following tasks are required to visualize metrics:
 
    :::image type="content" source="./media/visualize-prometheus-grafana/select-ubuntu-image.png" alt-text="Screenshot that shows finding the Ubuntu server image from the Azure portal." border="true":::
 
-1. Select the image and select **Create**.
+1. Select the image, and then select **Create**.
 
 1. On the **Create a virtual machine** pane, enter values for the following fields. You can leave default values for other fields:
 
