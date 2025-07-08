@@ -238,6 +238,44 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ---
 
+## Azure Cosmos DB Go SDK
+
+You can use [ThroughputProperties](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ThroughputProperties) on database and container resources.
+
+### Create a database with manual throughput
+
+```go
+// manual throughput properties
+db_throughput := azcosmos.NewManualThroughputProperties(400)
+
+_, err = client.CreateDatabase(context.Background(), azcosmos.DatabaseProperties{
+	ID: "demo_db",
+}, &azcosmos.CreateDatabaseOptions{
+	ThroughputProperties: &db_throughput,
+})
+```
+
+### Create a container with autoscale throughput
+
+```go
+pkDefinition := azcosmos.PartitionKeyDefinition{
+	Paths: []string{"/state"},
+	Kind:  azcosmos.PartitionKeyKindHash,
+}
+
+// autoscale throughput properties
+throughput := azcosmos.NewAutoscaleThroughputProperties(4000)
+
+db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+	ID:                     "demo_container",
+	PartitionKeyDefinition: pkDefinition,
+}, &azcosmos.CreateContainerOptions{
+	ThroughputProperties: &throughput,
+})
+```
+
+---
+
 ## Azure Resource Manager
 
 Azure Resource Manager templates can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs. See [Azure Resource Manager templates for Azure Cosmos DB](./samples-resource-manager-templates.md) for samples. By design, Azure Resource Manager templates cannot be used to migrate between provisioned and autoscale throughput on an existing resource. 
