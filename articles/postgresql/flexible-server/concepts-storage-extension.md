@@ -1,6 +1,6 @@
 ---
 title: Azure storage extension in Azure Database for PostgreSQL flexible server
-description: This article describes the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data
+description: This article describes the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -17,11 +17,11 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The Azure Database for PostgreSQL flexible server extension for Azure Storage enables direct data movement between your PostgreSQL flexible server instance and Azure Storage accounts, supporting both import and export operations in multiple file formats. The use of this extensions simplifies data workflows by allowing SQL-based access to blob storage, making it easier to integrate PostgreSQL with other Azure services.
+The Azure Database for PostgreSQL flexible server extension for Azure Storage enables direct data movement between your PostgreSQL flexible server instance and Azure Storage accounts, supporting both import and export operations in multiple file formats. The use of this extension simplifies data workflows by allowing SQL-based access to blob storage, making it easier to integrate PostgreSQL with other Azure services.
 
 It reduces the need for external Extract, Transform, and Load (ETL) and Extract, Load, and Transform (ELT) tools by enabling SQL native commands to interact with blob containers.
 
-Works with public and private access configurations, including PostgreSQL flexible servers whose network interface is injected in a virtual network of your own infrastructure.
+It works with public and private access configurations, including PostgreSQL flexible servers whose network interface is injected in a virtual network of your own infrastructure.
 
 The extension supports sending requests to Azure Storage service using [authorization with Shared Key](how-to-configure-azure-storage-extension.md#to-use-authorization-with-shared-key), or using [authorization with Microsoft Entra ID](how-to-configure-azure-storage-extension.md#to-use-authorization-with-microsoft-entra-id) managed identity assigned to your server.
 

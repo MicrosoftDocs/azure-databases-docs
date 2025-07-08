@@ -1,6 +1,6 @@
 ---
 title: Quickstart examples for the Azure Storage extension in Azure Database for PostgreSQL flexible server
-description: Learn how to use the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data
+description: Learn how to use the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

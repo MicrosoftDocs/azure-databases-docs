@@ -1,6 +1,6 @@
 ---
 title: Configure the Azure Storage extension in Azure Database for PostgreSQL flexible server
-description: Learn how to configure the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data
+description: Learn how to configure the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -162,7 +162,7 @@ Because the `shared_preload_libraries` is static, the server must be restarted f
 
 ## Allowlist the extension
 
-You must allowlist the extension so that you users can run CREATE EXTENSION, DROP EXTENSION, ALTER EXTENSION, COMMENT ON EXTENSION.
+You must allowlist the extension so that users can run CREATE EXTENSION, DROP EXTENSION, ALTER EXTENSION, COMMENT ON EXTENSION.
 
 ### [Azure portal](#tab/portal-02)
 
@@ -204,7 +204,7 @@ CREATE EXTENSION azure_storage;
 
 Now you're ready to add the storage accounts with which you want to interact (using the `azure_storage.account_add` function). Then you can import data stored in files in Azure Storage accounts, by using the `azure_storage.blob_get` function or the `COPY FROM` statement, or you can export data from PostgreSQL into files in an Azure Storage account, by using the `azure_storage.blob_put` function or the `COPY TO` statement.
 
-Checkout the list of quickstart examples:
+Check out the list of quickstart examples:
 
 - [Create an Azure Storage account and populate it with data](quickstart-azure-storage-extension.md#create-an-azure-storage-account-and-populate-it-with-data)
 - [Create a table in which data is loaded](quickstart-azure-storage-extension.md#create-a-table-in-which-data-is-loaded)

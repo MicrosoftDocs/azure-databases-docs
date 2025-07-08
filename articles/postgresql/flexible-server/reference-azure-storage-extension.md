@@ -1,6 +1,6 @@
 ---
 title: Reference of functions provided by the Azure Storage extension in Azure Database for PostgreSQL flexible server
-description: Learn everything about the functions provided by the Azure Storage extension in Azure Database for PostgreSQL flexible server
+description: Learn everything about the functions provided by the Azure Storage extension in Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

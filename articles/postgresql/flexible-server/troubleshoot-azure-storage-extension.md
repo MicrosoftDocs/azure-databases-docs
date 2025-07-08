@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot the Azure Storage extension in Azure Database for PostgreSQL flexible server
-description: Learn how to troubleshoot the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data
+description: Learn how to troubleshoot the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -19,7 +19,7 @@ ms.custom:
 
 Following is the list of errors that the Azure Storage extension can return, and the reasons why, or the circumstances in which, they can be seen. 
 
-### ERROR: azure_storage: Permission is no sufficient to perform requested operation
+### ERROR: azure_storage: Permission is not sufficient to perform requested operation
 
 When executing any of the functions that interact with Azure Storage (`azure_storage.blob_list`, `azure_storage.blob_get` or `azure_storage.blob_put`) and the System Assigned Managed Identity isn't granted the adequate data plane roles or permissions (typically a minimum of **Storage Blob Data Contributor** for azure_storage.blob_put, and a minimum of **Storage Blob Data Reader** for the other two functions).
 
