@@ -49,17 +49,17 @@ The following table lists the required network rules and IP address dependencies
 
 | Destination endpoint                                                             | Protocol | Port    | Use  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-|`snovap\<region\>.blob.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage for Control Plane communication and configuration.|
-|`\*.store.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage for Control Plane communication and configuration.|
-|`\*.blob.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage to store backups. *Backup feature is being revised and a pattern for storage name follows by general availability.*|
-|`vmc-p-\<region\>.vault.azure.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Key Vault | HTTPS | 443 | Required for secure communication between the nodes and Azure Key Vault. Certificates and keys are used to secure communication inside the cluster.|
+|`snovap<region>.blob.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage for Control Plane communication and configuration.|
+|`*.store.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage for Control Plane communication and configuration.|
+|`*.blob.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage to store backups. *Backup feature is being revised and a pattern for storage name follows by general availability.*|
+|`vmc-p-<region>.vault.azure.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Key Vault | HTTPS | 443 | Required for secure communication between the nodes and Azure Key Vault. Certificates and keys are used to secure communication inside the cluster.|
 |`management.azure.com:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Virtual Machine Scale Sets/Azure Management API | HTTPS | 443 | Required to gather information about and manage Cassandra nodes (for example, reboot).|
-|`\*.servicebus.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Event Hubs | HTTPS | 443 | Required to forward logs to Azure.|
+|`*.servicebus.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Event Hubs | HTTPS | 443 | Required to forward logs to Azure.|
 |`jarvis-west.dc.ad.msft.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Monitor | HTTPS | 443 | Required to forward metrics to Azure. |
 |`login.microsoftonline.com:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Microsoft Entra ID | HTTPS | 443 | Required for Microsoft Entra authentication.|
 | `packages.microsoft.com` | HTTPS | 443 | Required for updates to Azure security scanner definition and signatures. |
 | `azure.microsoft.com` | HTTPS | 443 | Required to get information about virtual machine scale sets. |
-| `\<region\>-dsms.dsms.core.windows.net` | HTTPS | 443 | Certificate for logging. |
+| `<region>-dsms.dsms.core.windows.net` | HTTPS | 443 | Certificate for logging. |
 | `gcs.prod.monitoring.core.windows.net` | HTTPS | 443 | Logging endpoint needed for logging. |
 | `global.prod.microsoftmetrics.com` | HTTPS | 443 | Needed for metrics. |
 | `shavsalinuxscanpkg.blob.core.windows.net` | HTTPS | 443 | Needed to download/update security scanner. |
