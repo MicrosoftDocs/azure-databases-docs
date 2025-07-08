@@ -41,20 +41,20 @@ In addition to the tags table, you need to add the following address prefixes be
 
 ## User-defined routes
 
-If you're using a non-Microsoft firewall to restrict outbound access, we highly recommend that you configure [user-defined routes (UDRs)](/azure/virtual-network/virtual-networks-udr-overview#user-defined) for Microsoft address prefixes instead of attempting to allow connectivity through your own firewall. To add the required address prefixes in UDRs, see sample [bash script](https://github.com/Azure-Samples/cassandra-managed-instance-tools/blob/main/configureUDR.sh).
+If you're using a non-Microsoft firewall to restrict outbound access, we highly recommend that you configure [user-defined routes (UDRs)](/azure/virtual-network/virtual-networks-udr-overview#user-defined) for Microsoft address prefixes instead of attempting to allow connectivity through your own firewall. To add the required address prefixes in UDRs, see the [sample Bash script](https://github.com/Azure-Samples/cassandra-managed-instance-tools/blob/main/configureUDR.sh).
 
 ## Azure Global required network rules
 
-The required network rules and IP address dependencies are listed in the following table.
+The following table lists the required network rules and IP address dependencies.
 
 | Destination endpoint                                                             | Protocol | Port    | Use  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 |`snovap\<region\>.blob.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage for Control Plane communication and configuration.|
 |`\*.store.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage for Control Plane communication and configuration.|
 |`\*.blob.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage to store backups. *Backup feature is being revised and a pattern for storage name follows by general availability.*|
-|`vmc-p-\<region\>.vault.azure.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure KeyVault | HTTPS | 443 | Required for secure communication between the nodes and Azure Key Vault. Certificates and keys are used to secure communication inside the cluster.|
-|management.azure.com:443</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Virtual Machine Scale Sets/Azure Management API | HTTPS | 443 | Required to gather information about and manage Cassandra nodes (for example, reboot).|
-|`\*.servicebus.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure EventHub | HTTPS | 443 | Required to forward logs to Azure.|
+|`vmc-p-\<region\>.vault.azure.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Key Vault | HTTPS | 443 | Required for secure communication between the nodes and Azure Key Vault. Certificates and keys are used to secure communication inside the cluster.|
+|`management.azure.com:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Virtual Machine Scale Sets/Azure Management API | HTTPS | 443 | Required to gather information about and manage Cassandra nodes (for example, reboot).|
+|`\*.servicebus.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Event Hubs | HTTPS | 443 | Required to forward logs to Azure.|
 |`jarvis-west.dc.ad.msft.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Monitor | HTTPS | 443 | Required to forward metrics to Azure. |
 |`login.microsoftonline.com:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Microsoft Entra ID | HTTPS | 443 | Required for Microsoft Entra authentication.|
 | `packages.microsoft.com` | HTTPS | 443 | Required for updates to Azure security scanner definition and signatures. |
