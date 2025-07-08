@@ -95,7 +95,9 @@ High availability is an opt-in feature that can be enabled at the subscription l
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
 - Premium SSD v2 High Availability can only be configured for servers created on or after July 1st. Currently, SSD v2 High Availability is supported in Canada Central, Central US, and East Asia regions.
-
+  
+-  Premium SSD v2 High Availability can only be configured for servers created with PG version 16.
+  
 - Premium SSD V2 can only be enabled in the following regions: 
  *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.  
 
