@@ -56,7 +56,7 @@ Azure Database for PostgreSQL flexible server offers a baseline throughput of 12
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server.
 
 
-#### Premium SSD v2 - High availability
+## Premium SSD v2 - High availability
 
 High availability is now supported for Azure Database for PostgreSQL flexible server deployments using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. This capability is initially available in the following regions.
 
@@ -94,9 +94,9 @@ High availability is an opt-in feature that can be enabled at the subscription l
 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
-- Premium SSD v2 High Availability can only be configured for servers created on or after July 1st. Currently, SSD v2 High Availability is supported in Canada Central, Central US, and East Asia regions.
+- Premium SSD v2 High availability can only be configured for servers created on or after July 1st. Currently, SSD v2 High availability is supported in Canada Central, Central US, and East Asia regions.
   
--  Premium SSD v2 High Availability can only be configured for servers created with PG version 16.
+-  Premium SSD v2 High availability can only be configured for servers created with PG version 16.
   
 - Premium SSD V2 can only be enabled in the following regions: 
  *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.  
@@ -144,7 +144,7 @@ When your disk becomes full, the server starts returning errors and prevents any
 ```
 We recommend that you actively monitor the disk space that's in use by using storage_percentage or storage_used metrics and increase the disk size before you run out of available space in your storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see how to [use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL flexible server](how-to-alert-on-metrics.md).
 
-### Storage autogrow (Premium SSD)
+## Storage autogrow (Premium SSD)
 
 Storage autogrow can help ensure that your server always has enough free space available, and doesn't become read-only. When you turn on storage autogrow, disk size increases without affecting the workload. Storage autogrow is only supported for Premium SSD storage tier.
 
