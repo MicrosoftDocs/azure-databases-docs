@@ -46,7 +46,7 @@ To complete the replicate changes migration successfully, ensure that the follow
 - Ensure that the user has **"REPLICATION SLAVE"** permission on the target server.
 - Ensure that the user has **"REPLICATION CLIENT"** and **"REPLICATION SLAVE"** permission on the source server for reading and applying the bin log.
 - Run an offline migration scenario with "**Enable Transactional Consistency"** to get the bin log file and position.
-- If you're targeting a replicate changes migration, configure the [binlog_expire_logs_seconds](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/concepts-server-parameters#binlog_expire_logs_seconds) parameter on the source server to ensure that binlog files aren't purged before the replica commits the changes. We recommend at least two days, to begin with. After a successful cutover, the value can be reset.
+- If you're targeting a replicate changes migration, configure the [binlog_expire_logs_seconds](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-server-parameters#binlog_expire_logs_seconds) parameter on the source server to ensure that binlog files aren't purged before the replica commits the changes. We recommend at least two days, to begin with. After a successful cutover, the value can be reset.
 
 ## Limitations
 
