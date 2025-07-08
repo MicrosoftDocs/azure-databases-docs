@@ -33,9 +33,9 @@ This preference list is specified when initializing a connection using the SQL S
 
 The SDK will automatically send all writes to the current write region. All reads are sent to the first available region in the preferred locations list. If the request fails, the client will fail down the list to the next region.
 
-The SDK will only attempt to read from the regions specified in preferred locations. So, for example, if the Azure Cosmos DB account is available in four regions, but the client only specifies two read(non-write) regions within the `PreferredLocations`, then no reads will be served out of the read region that is not specified in `PreferredLocations`. If the read regions specified in the `PreferredLocations` list are not available, reads will be served out of write region.
+The SDK will only attempt to read from the regions specified in preferred locations. So, for example, if the Azure Cosmos DB account is available in four regions, but the client only specifies two read(non-write) regions within the `PreferredLocations`, then no reads are served out of the read region that isn't specified in `PreferredLocations`. If the read regions specified in the `PreferredLocations` list aren't available, reads are served out of write region.
 
-The application can verify the current write endpoint and read endpoint chosen by the SDK by checking two properties, `WriteEndpoint` and `ReadEndpoint`, available in SDK version 1.8 and above. If the `PreferredLocations` property is not set, all requests will be served from the current write region.
+The application can verify the current write endpoint and read endpoint chosen by the SDK by checking two properties, `WriteEndpoint` and `ReadEndpoint`, available in SDK version 1.8 and above. If the `PreferredLocations` property isn't set, all requests are served from the current write region.
 
 If you don't specify the preferred locations but used the `setCurrentLocation` method, the SDK automatically populates the preferred locations based on the current region that the client is running in. The SDK orders the regions based on the proximity of a region to the current region.
 
@@ -47,11 +47,11 @@ In version 1.8 and later of the .NET SDK, the ConnectionPolicy parameter for the
 The current write and read endpoints are available in DocumentClient.WriteEndpoint and DocumentClient.ReadEndpoint respectively.
 
 > [!NOTE]
-> The URLs for the endpoints should not be considered as long-lived constants. The service may update these at any point. The SDK handles this change automatically.
+> The URLs for the endpoints shouldn't be considered as long-lived constants. The service may update these at any point. The SDK handles this change automatically.
 >
 # [.NET SDK V2](#tab/dotnetv2)
 
-If you are using the .NET V2 SDK, use the `PreferredLocations` property to set the preferred region.
+If you're using the .NET V2 SDK, use the `PreferredLocations` property to set the preferred region.
 
 ```csharp
 // Getting endpoints from application settings or other configuration location
@@ -95,7 +95,7 @@ await docClient.OpenAsync().ConfigureAwait(false);
 
 # [.NET SDK V3](#tab/dotnetv3)
 
-If you are using the .NET V3 SDK, use the `ApplicationPreferredRegions` property to set the preferred region.
+If you're using the .NET V3 SDK, use the `ApplicationPreferredRegions` property to set the preferred region.
 
 ```csharp
 CosmosClientOptions options = new CosmosClientOptions();
@@ -121,7 +121,7 @@ CosmosClient client = new CosmosClient(endpoint, tokenCredential, options);
 ## Node.js/JavaScript
 
 > [!NOTE]
-> The URLs for the endpoints should not be considered as long-lived constants. The service may update these at any point. The SDK will handle this change automatically.
+> The URLs for the endpoints shouldn't be considered as long-lived constants. The service may update these at any point. The SDK handles this change automatically.
 >
 
 Below is a code example for Node.js/JavaScript.
@@ -213,7 +213,7 @@ client, err := azcosmos.NewClient(endpoint, token, &azcosmos.ClientOptions{
 
 Once a database account has been made available in multiple regions, clients can query its availability by performing a GET request on this  URI `https://{databaseaccount}.documents.azure.com/`
 
-The service will return a list of regions and their corresponding Azure Cosmos DB endpoint URIs for the replicas. The current write region will be indicated in the response. The client can then select the appropriate endpoint for all further REST API requests as follows.
+The service returns a list of regions and their corresponding Azure Cosmos DB endpoint URIs for the replicas. The current write region is indicated in the response. The client can then select the appropriate endpoint for all further REST API requests as follows.
 
 Example response
 
