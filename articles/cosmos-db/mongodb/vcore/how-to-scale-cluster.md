@@ -7,9 +7,12 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/27/2025
+ms.date: 06/09/2025
 appliesto:
-  - ✅ MongoDB (vCore)
+- ✅ MongoDB (vCore)
+ms.custom:
+- build-2025
+- sfi-image-nochange
 ---
 
 # Scaling and configuring Your Azure Cosmos DB for MongoDB vCore cluster
@@ -84,9 +87,27 @@ When a database grows beyond the capacity of a single physical shard cluster, yo
 
 If you need more than 10 physical shards on your cluster, open an [Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
 
+### Rebalance data
+
+After [a physical shard is added to a cluster](#increase-the-number-of-physical-shards), or if multishard cluster has [uneven storage usage](./how-to-manage-alerts.md) across its physical shards, data rebalancing redistributes data between shards without any downtime.
+
+To initiate data rebalancing, connect to the cluster using a management tool such as the [Mongo shell](./how-to-connect-mongo-shell.md).
+
+1. Start the rebalancer with the ```sh.startBalancer()``` command.
+
+1. Check the rebalancer status using ```sh.isBalancerRunning()```.
+
+1. Stop the rebalancer with the ```sh.stopBalancer()``` command.
+
+ > [!NOTE]
+> The duration of the rebalancing process depends on the volume of data being moved between physical shards. The operation is performed online and doesn't impact cluster availability or functionality.
+
 ## Next steps
 
 In this guide, we showed that scaling and configuring your Cosmos DB for MongoDB vCore cluster in the Azure portal is a straightforward process. The Azure portal includes the ability to adjust the cluster tier, increase storage size, enable or disable high availability, and add physical shards without any downtime.
+
+- [Compute and storage options](./compute-storage.md)
+- [Check out sharding fundamentals](./partitioning.md)
 
 > [!div class="nextstepaction"]
 > [Restore an Azure Cosmos DB for MongoDB vCore cluster](how-to-restore-cluster.md)

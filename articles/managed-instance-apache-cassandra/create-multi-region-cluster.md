@@ -6,7 +6,7 @@ ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 11/02/2021
-ms.custom: mode-other, devx-track-azurecli, kr2b-contr-experiment
+ms.custom: mode-other, devx-track-azurecli, kr2b-contr-experiment, sfi-ropc-blocked
 ms.devlang: azurecli
 ---
 

@@ -6,7 +6,7 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.date: 04/20/2023
 ---
 
@@ -53,11 +53,11 @@ Discovery involves creating a comprehensive list of the existing resources (data
 
 Assessment involves finding out whether you're using the [features and syntax that are supported](./feature-support-42.md). It also includes making sure you're adhering to the [limits and quotas](../concepts-limits.md#per-account-limits). The aim of this stage is to create a list of incompatibilities and warnings, if any. After you have the assessment results, you can try to address the findings during rest of the migration planning.
 
-There are 3 ways to complete the pre-migration assessment, we recommend you to use the [Azure Cosmos DB Migration for MongoDB extension](#azure-cosmos-db-migration-for-mongodb-extension).
+There are 3 ways to complete the pre-migration assessment, we recommend you to use the [Azure Cosmos DB Migration extension](#azure-cosmos-db-migration-extension).
 
-### Azure Cosmos DB Migration for MongoDB extension
+### Azure Cosmos DB Migration extension
 
-The [Azure Cosmos DB Migration for MongoDB extension](/azure-data-studio/extensions/database-migration-for-mongo-extension) in Azure Data Studio helps you assess a MongoDB workload for migrating to Azure Cosmos DB for MongoDB. You can use this extension to run an end-to-end assessment on your workload and find out the actions that you may need to take to seamlessly migrate your workloads on Azure Cosmos DB. During  the assessment of a MongoDB endpoint, the extension reports all the discovered resources.
+The [Azure Cosmos DB Migration extension](./vcore/how-to-assess-plan-migration-readiness.md) in VS Code helps you assess a MongoDB workload for migrating to Azure Cosmos DB for MongoDB. You can use this extension to run an end-to-end assessment on your workload and find out the actions that you may need to take to seamlessly migrate your workloads on Azure Cosmos DB. During  the assessment of a MongoDB endpoint, the extension reports all the discovered resources.
 
 
 > [!NOTE]
@@ -83,7 +83,7 @@ Go through the spreadsheet and verify each collection against the [supported fea
 ### Database Migration Assistant utility (legacy) 
 
 > [!NOTE]
-> Database Migration Assistant is a legacy utility meant to assist you with the pre-migration steps. We recommend you to use the [Azure Cosmos DB Migration for MongoDB extension](#azure-cosmos-db-migration-for-mongodb-extension) for all pre-migration steps.
+> Database Migration Assistant is a legacy utility meant to assist you with the pre-migration steps. We recommend you to use the [Azure Cosmos DB Migration extension](#azure-cosmos-db-migration-extension) for all pre-migration steps.
 
 You may use the [Database Migration Assistant (DMA)](programmatic-database-migration-assistant-legacy.md) utility to assist you with pre-migration steps.
 

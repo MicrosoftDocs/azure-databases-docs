@@ -5,7 +5,7 @@ ms.author: nlarin
 author: niklarin
 ms.service: azure-database-postgresql
 ms.subservice: hyperscale-citus
-ms.topic: conceptual
+ms.topic: article
 recommendations: false
 ms.date: 09/24/2023
 ---

@@ -7,7 +7,9 @@ ms.author: esarroyo
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 05/08/2025
-ms.custom: devx-track-azurecli
+ms.custom:
+  - devx-track-azurecli
+  - build-2025
 appliesto:
   - ✅ NoSQL
 #Customer Intent: As an operations user, I want to monitor metrics using Azure Monitor, so that I can use a Log Analytics workspace to perform complex analysis.

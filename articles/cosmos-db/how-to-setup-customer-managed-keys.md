@@ -7,7 +7,7 @@ ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 01/05/2023
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, sfi-image-nochange
 ms.devlang: azurecli
 ---
 
@@ -98,7 +98,7 @@ In this variation, use the Azure Cosmos DB principal to create an access policy 
 
 1. Under **Select principal**, select **None selected**.
 
-1. Search for **Azure Cosmos DB** principal and select it (to make it easier to find, you can also search by application ID: `00001111-aaaa-2222-bbbb-3333cccc4444` for any Azure region except Azure Government regions where the application ID is `11112222-bbbb-3333-cccc-4444dddd5555`).
+1. Search for **Azure Cosmos DB** principal and select it.
 
     > [!TIP]
     > This registers the Azure Cosmos DB first-party-identity in your Azure Key Vault access policy. If the **Azure Cosmos DB** principal isn't in the list, you might need to re-register the **Microsoft.DocumentDB** resource provider.
@@ -126,9 +126,6 @@ In this variation, use the Azure Cosmos DB principal to create an access policy 
 1. Then, the necessary permissions must be assigned to Cosmos DB’s principal. So, like the last role assignment, go to the assignment page but this time look for the **“Key Vault Crypto Service Encryption User”** role and on the members tab look for Cosmos DB’s principal. To find the principal, search for **Azure Cosmos DB** principal and select it.
 
    :::image type="content" source="media/how-to-setup-customer-managed-keys/assign-permission-principal.png" lightbox="media/how-to-setup-customer-managed-keys/assign-permission-principal.png" alt-text="Screenshot of the Azure Cosmos DB principal being assigned to a permission.":::
-
-    > [!IMPORTANT]
-    > In the Azure Government region, the application ID is `11112222-bbbb-3333-cccc-4444dddd5555`.
 
 1. Select Review + assign and the role will be assigned to Cosmos DB.
 

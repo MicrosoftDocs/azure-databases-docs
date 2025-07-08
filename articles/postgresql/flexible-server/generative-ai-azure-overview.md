@@ -7,11 +7,12 @@ ms.reviewer: maghan
 ms.date: 05/20/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: how-to
 ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - ignite-2023
   - build-2024
+  - build-2025
 ---
 
 # Azure AI extension in Azure Database for PostgreSQL

@@ -5,7 +5,7 @@ author: jcodella
 ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/26/2021
 ---
 

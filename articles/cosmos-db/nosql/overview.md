@@ -8,13 +8,13 @@ ms.reviewer: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: overview
-ms.date: 04/03/2025
+ms.date: 06/17/2025
 ai-usage: ai-generated
 ---
 
 # What is Azure Cosmos DB for NoSQL?
 
-Azure Cosmos DB for NoSQL is a globally distributed, multi-model database service designed to handle unstructured data as JSON documents. It provides a highly scalable and low-latency solution for applications that require flexible schema design, high availability, and global distribution. Developers can use Azure Cosmos DB for NoSQL to build modern applications that demand real-time performance and seamless scalability.
+Azure Cosmos DB for NoSQL is a fully managed and serverless NoSQL and vector database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL and vector data.
 
 This service is part of the Azure Cosmos DB suite but is tailored for NoSQL workloads. It supports querying JSON data using a SQL-like query language, making it approachable for developers familiar with the SQL syntax while using the flexibility of a NoSQL unstructured data store.
 

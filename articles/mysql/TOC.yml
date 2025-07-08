@@ -391,7 +391,7 @@
 - name: Troubleshooting
   items:
   - name: Resolve capacity errors
-    href: ./flexible-server/resolve-capacity-errors-mysql-flex.md
+    href: ./flexible-server/resolve-capacity-errors.md
   - name: Request quota increase
     href: ./flexible-server/how-to-request-quota-increase.md
     displayName: SUPER privilege, DBA role, Access is denied
@@ -448,7 +448,7 @@
   - name: Deployment templates
     href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=databases
+    href: https://azure.microsoft.com/updates?searchterms=databases
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/mysql/
   - name: Microsoft Q&A question page
@@ -472,7 +472,7 @@
   - name: Support options
     href: https://azure.microsoft.com/support/options/
   - name: Customer stories
-    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"
+    href: https://customers.microsoft.com/search?sq="Azure%20Database%20for%20MySQL%20"
   - name: Partners
     href: flexible-server/partners-migration-mysql.md
   - name: Database Migration Guide

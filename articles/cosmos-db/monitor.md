@@ -3,7 +3,7 @@ title: Monitor Azure Cosmos DB
 description: Start here to learn how to monitor Azure Cosmos DB.
 ms.date: 03/05/2024
 ms.custom: horz-monitor
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
 ms.service: azure-cosmos-db

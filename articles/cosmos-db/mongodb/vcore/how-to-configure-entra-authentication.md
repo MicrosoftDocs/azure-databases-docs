@@ -8,8 +8,10 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/27/2025
-ms.custom: devx-track-rust
+ms.date: 06/08/2025
+ms.custom:
+  - devx-track-rust
+  - build-2025
 appliesto:
   - ✅ MongoDB (vCore)
 # Customer Intent: As a database developer, I want to build a Rust console application to quickly and securely connect to and query my database and collections.
@@ -168,7 +170,7 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
 
 ## Connect to the cluster
 
-You can connect to the cluster using either a connection URI or a custom settings object from the driver for your preferred language. In either option, the **scheme** must be set to `mongodb+srv` to connect to the replica set. The **host** is at either the `*.global.mongocluster.cosmos.azure.com` or `*.mongocluster.cosmos.azure.com` domain depending on whether you're using the current cluster or global read-write endpoint. The `+srv` scheme and the `*.global.*` host ensures that your client is dynamically connected to the appropriate writable cluster in a multi-cluster configuration even if a region swap operation occurs. In a single-cluster configuration, you can use either host indiscriminately.
+You can connect to the cluster using either a connection URI or a custom settings object from the driver for your preferred language. In either option, the **scheme** must be set to `mongodb+srv` to connect to the cluster. The **host** is at either the `*.global.mongocluster.cosmos.azure.com` or `*.mongocluster.cosmos.azure.com` domain depending on whether you're using [the current cluster or global read-write endpoint](./how-to-cluster-replica.md#use-connection-strings). The `+srv` scheme and the `*.global.*` host ensures that your client is dynamically connected to the appropriate writable cluster in a multi-cluster configuration even if [a region swap operation occurs](./cross-region-replication.md#replica-cluster-promotion). In a single-cluster configuration, you can use either host indiscriminately.
 
 The `tls` setting must also be enabled. The remaining recommended settings are best practice configuration settings.
 
@@ -181,10 +183,12 @@ The `tls` setting must also be enabled. The remaining recommended settings are b
 | `retrywrites` | `false` |
 | `maxIdleTimeMS` | `120000` |
 
-### [Connection URI](#tab/connection-uri)
+### [Azure portal](#tab/connection-uri)
+
+On the cluster properties page in the Azure portal, under **Settings**, open **Connection strings**. The **Connection strings** page contains connection strings for the authentication methods enabled on the cluster. Microsoft Entra ID connection strings are in the **Microsoft Entra ID** section.
 
 - **Global**
-
+ 
     ```output
     mongodb+srv://<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
     ```

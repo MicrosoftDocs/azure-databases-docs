@@ -4,9 +4,11 @@ description: Learn about how to choose between provisioned throughput and server
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/09/2022
-ms.custom: cosmos-db-video
+ms.custom:
+  - cosmos-db-video
+  - build-2025
 ---
 
 # How to choose between provisioned throughput and serverless

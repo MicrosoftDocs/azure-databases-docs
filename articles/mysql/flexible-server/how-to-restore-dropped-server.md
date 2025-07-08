@@ -8,6 +8,7 @@ ms.date: 02/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Restore a deleted Azure Database for MySQL
@@ -19,6 +20,8 @@ When an Azure Database for MySQL Flexible Server instance is deleted, the server
 To restore a deleted Azure Database for MySQL Flexible Server instance, you need the following:
 - Azure Subscription name hosting the original server
 - Location where the server was created
+
+- The resource group where the deleted server previously resided must exist. If it no longer exists, it’s recommended to create a new resource group with the same name before attempting the restore
 
 ## Restore steps
 

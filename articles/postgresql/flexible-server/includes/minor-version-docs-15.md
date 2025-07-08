@@ -2,11 +2,11 @@
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 03/10/2025
+ms.date: 06/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
-[PostgreSQL documentation](https://www.postgresql.org/docs/release/15.12/)
+[PostgreSQL documentation](https://www.postgresql.org/docs/release/15.13/)
 

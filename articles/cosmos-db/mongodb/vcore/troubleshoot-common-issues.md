@@ -4,9 +4,10 @@ description: This doc discusses the ways to troubleshoot common issues encounter
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: troubleshooting
-ms.date: 01/08/2025
+ms.date: 06/02/2025
 author: khelanmodi
 ms.author: khelanmodi
+ms.custom: sfi-image-nochange
 ---
 
 # Troubleshoot common issues in Azure Cosmos DB for MongoDB vCore
@@ -44,6 +45,62 @@ If TCP connect to port 10260 fails, an environment firewall may be blocking the 
 #### Verify your connection string: 
 Only use the connection string provided in the Azure portal. Ensure that it includes the mongodb+srv:// protocol, as this is required for proper connectivity. Avoid using any variations or prefixes like c. If you encounter issues with connectivity, share the application or client-side driver logs for debugging by submitting a support ticket.
 
+### Error Codes
+This table lists error codes returned by Azure Cosmos DB for MongoDB vCore to help identify and resolve issues. These are also useful for troubleshooting issues using [diagnostic logs](./how-to-monitor-diagnostics-logs.md).
+
+| Error Code | Error Name                        |
+|---------------|----------------------------------|
+| 1             | InternalError                    |
+| 2             | BadValue                         |
+| 5             | GraphContainsCycle               |
+| 9             | FailedToParse                    |
+| 14            | TypeMismatch                     |
+| 15            | Overflow                         |
+| 20            | IllegalOperation                 |
+| 23            | AlreadyInitialized               |
+| 26            | NamespaceNotFound                |
+| 27            | IndexNotFound                    |
+| 28            | PathNotViable                    |
+| 31            | RoleNotFound                     |
+| 34            | CannotBackfillArray              |
+| 40            | ConflictingUpdateOperators       |
+| 43            | CursorNotFound                   |
+| 48            | NamespaceExists                  |
+| 52            | DollarPrefixedFieldName          |
+| 53            | CanNotBeTypeArray                |
+| 54            | NotSingleValueField              |
+| 56            | EmptyFieldName                   |
+| 57            | DottedFieldName                  |
+| 61            | ShardKeyNotFound                 |
+| 66            | ImmutableField                   |
+| 67            | CannotCreateIndex                |
+| 68            | IndexAlreadyExists               |
+| 72            | InvalidOptions                   |
+| 73            | InvalidNamespace                 |
+| 85            | IndexOptionsConflict             |
+| 86            | IndexKeySpecsConflict            |
+| 111           | NotExactValueField               |
+| 115           | CommandNotSupported              |
+| 118           | NamespaceNotSharded              |
+| 146           | ExceededMemoryLimit              |
+| 159           | DurationOverflow                 |
+| 165           | ViewDepthLimitExceeded           |
+| 166           | CommandNotSupportedOnView        |
+| 167           | OptionNotSupportedOnView         |
+| 181           | AmbiguousIndexKeyPattern         |
+| 197           | InvalidIndexSpecificationOption  |
+| 224           | QueryFeatureNotAllowed           |
+| 232           | MaxSubPipelineDepthExceeded      |
+| 241           | ConversionFailure                |
+| 263           | OperationNotSupportedInTransaction |
+| 276           | IndexBuildAborted                |
+| 291           | UnableToFindIndex                |
+| 361           | CollectionUUIDMismatch           |
+| 10334         | BsonObjectTooLarge               |
+| 11000         | DuplicateKey                     |
+| 12587         | BackgroundOperationInProgressForNamespace |
+| 13113         | MergeStageNoMatchingDocument     |
+| 13297         | DbAlreadyExists                  |
 
 ## Next steps
 - If you followed all the troubleshooting steps and still can't resolve your issue, you can open a [support request](https://azure.microsoft.com/support/create-ticket/) for further assistance.

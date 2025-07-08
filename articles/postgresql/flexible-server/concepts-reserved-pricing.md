@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 12/16/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Prepay for Azure Database for PostgreSQL flexible server compute resources with reserved capacity

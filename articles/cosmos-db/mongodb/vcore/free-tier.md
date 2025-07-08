@@ -6,7 +6,7 @@ author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2023
 ms.custom: references_regions
 # CustomerIntent: As a database owner, I want customers/developers to be able to evaluate the service for free.

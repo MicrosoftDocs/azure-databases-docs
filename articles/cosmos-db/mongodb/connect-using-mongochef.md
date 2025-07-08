@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
+ms.custom: sfi-image-nochange
 ---
 # Connect to an Azure Cosmos DB account using Studio 3T
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]

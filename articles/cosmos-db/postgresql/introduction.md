@@ -7,7 +7,7 @@ ms.author: jonels
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: overview
-ms.date: 10/01/2023
+ms.date: 06/11/2025
 ms.custom: mvc, build-2023, build-2023-dataai
 recommendations: false
 ---

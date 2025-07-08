@@ -4,7 +4,7 @@ description: Learn how to set provisioned throughput for your Azure Cosmos DB co
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/16/2021
 ---
 

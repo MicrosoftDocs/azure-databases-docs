@@ -9,6 +9,8 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 05/08/2025
 #Customer Intent: As an administrator, I want to change the capacity mode, so that I can migrate from serverless to provisioned capacity.
+ms.custom:
+  - build-2025
 ---
  
 # Change from serverless to provisioned capacity mode in Azure Cosmos DB for NoSQL

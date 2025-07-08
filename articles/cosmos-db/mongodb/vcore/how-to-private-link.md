@@ -8,13 +8,13 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom: ignite-2023, devx-track-azurecli
 ms.topic: how-to
-ms.date: 01/02/2025
+ms.date: 05/28/2025
+appliesto:
+  - ✅ MongoDB (vCore)
 # CustomerIntent: As a security administrator, I want to use Azure Private Link so that I can ensure that database connections occur over privately-managed virtual network endpoints.
 ---
 
 # Enable private access in Azure Cosmos DB for MongoDB vCore
-
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 Azure Private Link is a powerful service that allows users to connect to Azure Cosmos DB for MongoDB vCore through a designated private endpoint. This private endpoint consists of private IP addresses located in a subnet within your own virtual network. The endpoint enables you to restrict access to the Azure Cosmos DB for MongoDB vCore product solely over private IPs. The risk of data exfiltration is substantially reduced, by integrating Private Link with stringent NSG policies. For a deeper understanding of private endpoints, consider checking out [What is Azure Private Link?](/azure/private-link/private-endpoint-overview).
 
@@ -98,6 +98,9 @@ To create a private endpoint to a node in an existing cluster, open the
 
 6. Under **Private DNS integration**, for **Integrate with private DNS zone**, keep the default **Yes** or select **No**.
 
+> [!NOTE]
+> Private DNS integration needs to be enabled on the cluster for proper DNS resolution.
+
 7. Select **Next: Tags**, and add any desired tags.
 
 8. Select **Review + create**. Review the settings, and select
@@ -154,7 +157,10 @@ az network private-endpoint create \
 ```
 
 ### Integrate the private endpoint with a private DNS zone
-After you create the private endpoint, you can integrate it with a private DNS zone by using the following Azure CLI script:
+After you create the private endpoint, you should integrate it with a private DNS zone by using the following Azure CLI script:
+
+> [!NOTE]
+> Private DNS integration needs to be enabled on the cluster for proper DNS resolution.
 
 ```azurecli-interactive
 #Zone name differs based on the API type and group ID you are using. 
@@ -179,7 +185,17 @@ az network private-endpoint dns-zone-group create \
   --zone-name mongocluster 
 ```
 
-## MongoClusters Commands on Private Link 
+## Get connection string to connect
+Always use `mongodb+srv` connection string to connect to database from a client with a private IP address that has access to the private endpoint assigned to Azure Cosmos DB for MongoDB cluster.
+
+1. Select an existing Azure Cosmos DB for MongoDB vCore cluster.
+1. On the cluster sidebar, under **Settings**, select **Connection strings**.
+1. Copy global read-write or self connection string for native DocumentDB authentication or [Microsoft Entra ID authentication](./how-to-configure-entra-authentication.md).
+> [!NOTE]
+> On a replica cluster only self connection strings are provided.
+1. Use copied connection string in your application or management tools to connect to the cluster.
+
+## MongoClusters commands on Private Link 
 ```azurecli-interactive
 az network private-link-resource list \
   -g <rg-name> \

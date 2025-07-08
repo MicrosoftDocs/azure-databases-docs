@@ -1,12 +1,12 @@
 ---
 title: Transactional batch operations in Azure Cosmos DB using the .NET, Java or Python SDK 
-description: Learn how to use TransactionalBatch in the Azure Cosmos DB .NET, Java SDK or Python SDK to perform a group of point operations that either succeed or fail. 
+description: Learn how to use TransactionalBatch in the Azure Cosmos DB .NET, Java, Python, or Go SDK to perform a group of point operations that either succeed or fail. 
 author: stefArroyo
 ms.author: esarroyo
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-dotnet, devx-track-extended-java, devx-track-python
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/27/2020
 ---
 
@@ -203,7 +203,7 @@ replace_demo_item = {
 # The use of etags and if-match/if-none-match options allows users to run conditional replace operations
 # based on the etag value passed. When using if-match, the request will only succeed if the item's latest etag
 # matches the passed in value. For more on optimistic concurrency control, see the link below:
-# https://learn.microsoft.com/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency
+# /azure/cosmos-db/nosql/database-transactions-optimistic-concurrency
 replace_demo_item_if_match_operation = {
     "id": "68719519887",
     "category": "road-bikes",
@@ -267,6 +267,57 @@ The batch operation kwargs dictionary is limited, and only takes a total of thre
 
 > [!IMPORTANT]
 > If there's a failure, the failed operation will have a status code of its corresponding error. All the other operations will have a 424 status code (failed dependency). If the operation fails because it tries to create an item that already exists, a status code of 409 (conflict) is returned. The status code enables one to identify the cause of transaction failure.
+
+### [Go](#tab/go)
+
+When creating a transactional batch operation, call [NewTransactionalBatch](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ContainerClient.NewTransactionalBatch).
+
+```go
+pk := azcosmos.NewPartitionKeyString("road-bikes")
+
+batch := container.NewTransactionalBatch(pk)
+```
+
+Next, add multiple operations to the batch:
+
+```go
+type Bike struct {
+	ID       string `json:"id"`
+	Category string `json:"category"`
+	Name     string `json:"name"`
+}
+
+bike := Bike{ID: "68719520766", Category: "road-bikes", Name: "Chropen Road Bike"}
+bikeItem, _ := json.Marshal(bike)
+
+batch.CreateItem(bikeItem, nil)
+
+type BikePart struct {
+	ID        string `json:"id"`
+	Category  string `json:"category"`
+	Name      string `json:"name"`
+	ProductID string `json:"productID"`
+}
+
+part := BikePart{ID: "68719519885", Category: "road-bikes", Name: "Tronosuros Tire", ProductID: bike.ID}
+bikePartItem, _ := json.Marshal(part)
+
+batch.CreateItem(bikePartItem, nil)
+```
+
+Finally, use a container instance to call [ExecuteTransactionalBatch](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ContainerClient.ExecuteTransactionalBatch) with the batch:
+
+```go
+resp, _ := container.ExecuteTransactionalBatch(context.Background(), batch, nil)
+
+if resp.Success {
+	// execute conditional logic
+}
+```
+
+> [!IMPORTANT]
+> If there's a failure, the failed operation will have a status code of its corresponding error. All the other operations will have a 424 status code (failed dependency). If the operation fails because it tries to create an item that already exists, a status code of 409 (conflict) is returned. The status code enables one to identify the cause of transaction failure.
+
 ---
 
 ## How are transactional batch operations executed

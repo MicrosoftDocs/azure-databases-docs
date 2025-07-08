@@ -9,14 +9,15 @@ ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
-  - devx-track-azurecli
+- devx-track-azurecli
+- sfi-image-nochange
 ms.collection:
- - migration
- - gcp-to-azure
+- migration
+- gcp-to-azure
 # customer intent: As a developer, I want to learn how to migrate from Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
 ---
 
-# Tutorial: Migrate online from Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL with the migration service Preview
+# Tutorial: Migrate online from Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL with the migration service
 
 This article explores how to migrate your PostgreSQL database from Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL online.
 

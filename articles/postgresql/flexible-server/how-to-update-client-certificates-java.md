@@ -8,7 +8,7 @@ ms.date: 04/27/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom: devx-track-dotnet, devx-track-extended-java
-ms.topic: conceptual
+ms.topic: how-to
 ---
 
 # Update application client certificates

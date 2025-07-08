@@ -9,9 +9,10 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - devx-track-azurecli
-  - mode-api
+- mvc
+- devx-track-azurecli
+- mode-api
+- sfi-image-nochange
 ms.devlang: azurecli
 ---
 

@@ -5,7 +5,7 @@ description: Learn how to enable TLS 1.3 for your Azure Cosmos DB account to imp
 author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.date: 9/23/2024
 ---
 

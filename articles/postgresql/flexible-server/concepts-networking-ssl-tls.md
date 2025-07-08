@@ -6,9 +6,9 @@ ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 05/02/2024
 ms.service: azure-database-postgresql
-ms.subservice: 
-ms.topic: conceptual
-
+ms.subservice:
+ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Secure connectivity with TLS and SSL in Azure Database for PostgreSQL flexible server

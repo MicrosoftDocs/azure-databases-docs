@@ -8,7 +8,7 @@ ms.subservice: apache-gremlin
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.devlang: csharp
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, sfi-image-nochange
 ---
 
 # Regional endpoints for Azure Cosmos DB Graph account

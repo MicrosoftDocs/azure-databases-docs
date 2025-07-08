@@ -6,7 +6,7 @@ author: niklarin
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.custom: devx-track-terraform
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 01/02/2024
 ---
 

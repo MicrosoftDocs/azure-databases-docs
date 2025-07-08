@@ -7,6 +7,8 @@ ms.topic: how-to
 ms.date: 05/08/2025
 author: iriaosara
 ms.author: iriaosara
+ms.custom:
+  - build-2025
 ---
 
 # Use client-side encryption with Always Encrypted for Azure Cosmos DB
@@ -141,6 +143,9 @@ CosmosEncryptionAsyncClient cosmosEncryptionAsyncClient =
 # [NodeJS](#tab/nodejs)
 > [!NOTE]
 > Unlike .NET and Java SDK, there's no separate package for Encryption in JS. Same package can be used to encrypted and non-encrypted operations.
+
+> [!IMPORTANT]
+> These code samples use v3 of the JavaScript SDK.
 
 To use Always Encrypted in JS SDK, an instance of `EncryptionKeyResolver` must be passed in `ClientEncryptionOptions` during Azure Cosmos DB SDK instance initialization. This class is used to interact with the key store hosting your CMKs.
 

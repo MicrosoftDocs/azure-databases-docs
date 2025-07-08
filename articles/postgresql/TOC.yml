@@ -6,8 +6,6 @@
     href: flexible-server/service-overview.md
   - name: Self-hosted vs. managed service
     href: flexible-server/overview-postgres-choose-server-options.md
-  - name: Compare deployment options
-    href: flexible-server/concepts-compare-single-server-flexible-server.md
   - name: Versioning policy
     href: flexible-server/concepts-version-policy.md
     displayName: version, postgresql
@@ -87,8 +85,9 @@
       href: flexible-server/concepts-storage.md
     - name: Scaling resources
       href: flexible-server/concepts-scaling-resources.md
+    - name: Confidential computing
+      href: flexible-server/concepts-confidential-computing.md
     - name: Elastic clusters (preview)
-      displayName: scale-out, sharding
       items:
       - name: Overview
         href: flexible-server/concepts-elastic-clusters.md
@@ -114,10 +113,6 @@
       href: flexible-server/concepts-firewall-rules.md
     - name: Security
       href: flexible-server/concepts-security.md
-    - name: Import and export data
-      items:
-      - name: azure_storage extension
-        href: flexible-server/concepts-storage-extension.md
     - name: Microsoft Entra authentication
       href: flexible-server/concepts-azure-ad-authentication.md
     - name: Major version upgrade 
@@ -166,12 +161,14 @@
         items:
         - name: Overview  
           href: flexible-server/azure-local-ai.md
+      - name: Azure Storage (pg_azure_storage)
+        items:
+        - name: Overview
+          href: flexible-server/concepts-storage-extension.md
       - name: Vector indexing (pg_diskann)
         items:
         - name: Overview  
           href: flexible-server/how-to-use-pgdiskann.md
-      - name: Azure Storage (pg_azure_storage)
-        href: flexible-server/how-to-use-pg-azure-storage.md
       - name: Vector similarity search (pgvector)
         items:
         - name: Basics of pgvector
@@ -402,6 +399,12 @@
         href: flexible-server/how-to-connect-data-factory.md
       - name: Connect from Azure Data Factory via managed private endpoint
         href: flexible-server/how-to-connect-data-factory-private-endpoint.md
+    - name: Microsoft Fabric
+      items:
+      - name: Copy activity
+        href: flexible-server/how-to-use-microsoft-fabric-data-factory-copy-activity.md
+      - name: Script activity
+        href: flexible-server/how-to-use-microsoft-fabric-data-factory-script-activity.md
   - name: Troubleshooting
     items:  
     - name: Troubleshooting guides
@@ -518,6 +521,16 @@
         href: extensions/how-to-update-extensions.md
       - name: View installed extensions
         href: extensions/how-to-view-installed-extensions.md
+      - name: Azure Storage (pg_azure_storage)
+        items:
+        - name: Configure Azure Storage extension
+          href: flexible-server/how-to-configure-azure-storage-extension.md
+        - name: Quickstart examples
+          href: flexible-server/quickstart-azure-storage-extension.md
+        - name: Troubleshoot errors
+          href: flexible-server/troubleshoot-azure-storage-extension.md
+        - name: Reference
+          href: flexible-server/reference-azure-storage-extension.md
     - name: Monitoring
       items:
       - name: Download PostgreSQL and upgrade logs
@@ -644,10 +657,6 @@
           href: flexible-server/how-to-configure-managed-identities-user-assigned.md
       - name: Reset administrator password
         href: flexible-server/how-to-reset-admin-password.md
-      - name: Confidential computing
-        items:
-        - name: Overview
-          href: flexible-server/concepts-confidential-computing.md
     - name: Decommissioning and relocation
       items:
       - name: Delete a server
@@ -766,7 +775,7 @@
   - name: Deployment templates
     href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql
   - name: Azure Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=databases
+    href: https://azure.microsoft.com/updates?searchterms=databases
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/postgresql/
   - name: Microsoft Q&A question page
@@ -780,7 +789,7 @@
   - name: Support options
     href: https://azure.microsoft.com/support/options/
   - name: Customer stories
-    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"
+    href: https://customers.microsoft.com/search?sq="Azure%20Database%20for%20PostgreSQL"
   - name: Partners
     href: migrate/partners-migration-postgresql.md
   - name: Database Migration Guide

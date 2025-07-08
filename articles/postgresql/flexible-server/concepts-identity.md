@@ -7,7 +7,8 @@ ms.reviewer: maghan
 ms.date: 01/12/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
+ms.custom: sfi-image-nochange
 #customer intent: As a user, I want to learn about how can I use the different types of managed identities in an Azure Database for PostgreSQL flexible server.
 ---
 
@@ -44,9 +45,9 @@ There are two types of managed identities:
 
 **System assigned managed identity** for an Azure Database for PostgreSQL flexible server is used by:
 
-- [azure_storage extension](concepts-storage-extension.md), when configured to access a storage account using the `managed-identity` authentication type. For more information, see how to [configure the azure_storage extension to use authorization with Microsoft Entra ID](how-to-use-pg-azure-storage.md#to-use-authorization-with-microsoft-entra-id).
+- [azure_storage extension](concepts-storage-extension.md), when configured to access a storage account using the `managed-identity` authentication type. For more information, see how to [configure the azure_storage extension to use authorization with Microsoft Entra ID](./how-to-configure-azure-storage-extension.md#to-use-authorization-with-microsoft-entra-id).
 - [Microsoft Fabric mirrored databases from Azure Database for PostgreSQL flexible server (preview)](https://techcommunity.microsoft.com/blog/adforpostgresql/mirroring-azure-database-for-postgresql-flexible-server-in-microsoft-fabric---pr/4251876) uses the credentials of the system assigned managed identity to sign the requests that your instance of flexible server sends to the Azure DataLake service in Microsoft Fabric to mirror your designated databases.
-
+    
 **User assigned managed identities** configured for an Azure Database for PostgreSQL flexible server can be used for:
 
 - [Data encryption with customer managed keys](concepts-data-encryption.md).

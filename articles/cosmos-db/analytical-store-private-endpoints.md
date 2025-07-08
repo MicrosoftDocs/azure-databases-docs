@@ -6,6 +6,7 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 09/29/2022
 ms.author: anithaa
+ms.custom: sfi-image-nochange
 ---
 
 # Configure Azure Private Link for Azure Cosmos DB analytical store

@@ -7,7 +7,7 @@ ms.reviewer: shriramm, maghan
 ms.date: 03/28/2025
 ms.service: azure-database-postgresql	
 ms.subservice: flexible-server	
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: "Remove in June 2025"
 ---	
 
@@ -187,6 +187,15 @@ To determine if your Single Server is selected for automigration, follow these s
 
 **A.** Yes, there's one important caveat to be aware of. While major version upgrades to any PostgreSQL version supported on Flexible Server are fully supported for automigrated servers, the connection string format changes slightly after a successful upgrade. Specifically, the username format **"username@servername"** will no longer be supported post-upgrade. If your application or scripts currently use this format in the connection string, you need to update them to use the standard format: just **"username"**. Make sure to review and update all affected connection strings after the upgrade to avoid connection issues.
 
+**Q. Does automigration support migration of Microsoft Entra authenticated roles?**
+
+**A**. Yes, automigration supports the migration of Microsoft Entra authenticated roles. After your server is automigrated to a Flexible Server, you must use the format `entraid@servername` as the username when logging in with your Entra ID. The simpler format `entraid` is currently unsupported.
+
+**Example**:
+
+If your Entra ID is **abc@xyz.com** and your server name is **server1**, the username for logging into the automigrated Flexible Server will be **abc@xyz.com@server1**. Attempting to log in using just **abc@xyz.com** as the username will not work.
+
+This is a known issue, and Microsoft is actively working on addressing it in future updates.
 ## Related content	
 
 - [Manage an Azure Database for postgresql - Flexible Server using the Azure portal.](../flexible-server/how-to-manage-server-portal.md)	

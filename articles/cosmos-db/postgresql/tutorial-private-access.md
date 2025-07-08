@@ -5,7 +5,7 @@ ms.author: jonels
 author: jonels-msft
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, sfi-ropc-blocked
 ms.topic: tutorial
 ms.date: 06/05/2023
 ---

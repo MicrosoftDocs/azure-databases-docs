@@ -5,9 +5,9 @@ description: Learn about subpartitioning in Azure Cosmos DB, how to use the feat
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/05/2023
-ms.custom: build-2023
+ms.custom: build-2023, sfi-image-nochange
 ---
 
 # Hierarchical partition keys in Azure Cosmos DB
@@ -172,8 +172,8 @@ ThroughputProperties throughputProperties = ThroughputProperties.createManualThr
 
 // Create a container that's subpartitioned by TenantId > UserId > SessionId
 Mono<CosmosContainerResponse> container = database.createContainerIfNotExists(containerProperties, throughputProperties);
-
 ```
+
 #### [JavaScript SDK v4](#tab/javascript-v4)
 
 ```javascript
@@ -187,7 +187,6 @@ const containerDefinition = {
 }
 const { container } = await database.containers.createIfNotExists(containerDefinition);
 console.log(container.id);
-
 ```
 
 #### [Python SDK](#tab/python)
@@ -196,6 +195,19 @@ console.log(container.id);
 container = database.create_container(
         id=container_name, partition_key=PartitionKey(path=["/tenantId", "/userId", "/sessionId"], kind="MultiHash")
     )
+```
+
+#### [Go SDK](#tab/go)
+
+```go
+_, err = db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+	ID: "demo_container",
+	PartitionKeyDefinition: azcosmos.PartitionKeyDefinition{
+		Paths:   []string{"/TenantId", "/UserId", "/SessionId"},
+		Kind:    azcosmos.PartitionKeyKindMultiHash,
+		Version: 2,
+	},
+}, nil)
 ```
 
 ---
@@ -325,10 +337,9 @@ const item: UserSession = {
 
 // Pass in the object, and the SDK automatically extracts the full partition key path
 const { resource: document } = await = container.items.create(item);
-
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 ```python
 # specify values for all fields on partition key path
@@ -339,6 +350,13 @@ item_definition = {'id': 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
 
 item = container.create_item(body=item_definition)
 ```
+
+###### [Go SDK](#tab/go)
+
+```text
+Automatic extraction is not supported in the Go SDK.
+```
+
 ---
 
 #### Manually specify the path
@@ -413,7 +431,7 @@ const partitionKey: PartitionKey = new PartitionKeyBuilder()
 const { resource: document } = await container.items.create(item, partitionKey);
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 For python, just make sure that values for all the fields in the partition key path are specified in the item definition.
 
@@ -426,6 +444,31 @@ item_definition = {'id': 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
 
 item = container.create_item(body=item_definition)
 ```
+
+##### [Go SDK](#tab/go)
+
+[NewPartitionKey](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#NewPartitionKey) exposes a builder-like API to construct a partition key value. The value is a [PartitionKey](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#PartitionKey) object that can be used to create items in the container.
+
+```go
+tenantId := "Microsoft"
+userId := "00aa00aa-bb11-cc22-dd33-44ee44ee44ee"
+sessionId := "0000-11-0000-1111"
+
+pk := azcosmos.NewPartitionKeyString(tenantId).AppendString(userId).AppendString(sessionId)
+
+data := map[string]any{
+	"id":        uuid.NewString(),
+	"TenantId":  tenantId,
+	"UserId":    userId,
+	"SessionId": sessionId,
+}
+
+container, _ := c.NewContainer(dbName, containerName)
+
+item, _ := json.Marshal(data)
+container.CreateItem(context.Background(), pk, item, nil)
+```
+
 ---
 
 ### Perform a key/value lookup (point read) of an item
@@ -468,6 +511,7 @@ PartitionKey partitionKey = new PartitionKeyBuilder()
 // Perform a point read
 Mono<CosmosItemResponse<UserSession>> readResponse = container.readItem(id, partitionKey, UserSession.class);
 ```
+
 ##### [JavaScript SDK v4](#tab/javascript-v4)
 
 ```javascript
@@ -485,13 +529,32 @@ const partitionKey: PartitionKey = new PartitionKeyBuilder()
 const { resource: document } = await container.item(id, partitionKey).read();
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 ```python
 item_id = "f7da01b0-090b-41d2-8416-dacae09fbb4a"
 pk = ["Microsoft", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee", "0000-11-0000-1111"]
 container.read_item(item=item_id, partition_key=pk)
 ```
+
+##### [Go SDK](#tab/go)
+
+```go
+itemId := "some item id"
+tenantId := "Microsoft"
+userId := "00aa00aa-bb11-cc22-dd33-44ee44ee44ee"
+sessionId := "0000-11-0000-1111"
+
+// Build the full partition key path
+pk := azcosmos.NewPartitionKeyString(tenantId).AppendString(userId).AppendString(sessionId)
+
+// Perform a point read
+item, err := container.ReadItem(context.Background(), pk, itemId, nil)
+
+var result map[string]any
+json.Unmarshal(item.Value, &result)
+```
+
 ---
 
 ### Run a query
@@ -559,6 +622,7 @@ pagedResponse.byPage().flatMap(fluxResponse -> {
     return Flux.empty();
 }).blockLast();
 ```
+
 ##### [JavaScript SDK v4](#tab/javascript-v4)
 
 ```javascript
@@ -574,7 +638,7 @@ while (queryIterator.hasMoreResults()) {
 }
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 ```python
 pk = ["Microsoft", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee", "0000-11-0000-1111"]
@@ -586,6 +650,40 @@ items = list(container.query_items(
         {"name": "@session_id", "value": pk[2]}
     ]
 ))
+```
+
+##### [Go SDK](#tab/go)
+
+```go
+tenantId := "Microsoft"
+userId := "00aa00aa-bb11-cc22-dd33-44ee44ee44ee"
+sessionId := "0000-11-0000-1111"
+
+// Build the full partition key path
+pk := azcosmos.NewPartitionKeyString(tenantId).AppendString(userId).AppendString(sessionId)
+
+query := "SELECT * FROM r WHERE r.TenantId=@tenant_id and r.UserId=@user_id and r.SessionId=@session_id"
+
+pager := container.NewQueryItemsPager(query, pk, &azcosmos.QueryOptions{
+	QueryParameters: []azcosmos.QueryParameter{
+		{
+			Name:  "@tenant_id",
+			Value: tenantId,
+		},
+		{
+			Name:  "@user_id",
+			Value: userId,
+		},
+		{
+			Name:  "@session_id",
+			Value: sessionId,
+		},
+	},
+})
+
+for pager.More() {
+    // Read the next page of results
+}
 ```
 
 ---
@@ -651,7 +749,7 @@ while (queryIterator.hasMoreResults()) {
 }
 ```
 
-#### [Python SDK](#tab/python)
+##### [Python SDK](#tab/python)
 
 ```python
 pk = ["Microsoft", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee", "0000-11-0000-1111"]
@@ -664,8 +762,36 @@ items = list(container.query_items(
     ],
     enable_cross_partition_query=True
 ))
-
 ```
+
+##### [Go SDK](#tab/go)
+
+```go
+tenantId := "Microsoft"
+userId := "00aa00aa-bb11-cc22-dd33-44ee44ee44ee"
+
+emptyPartitionKey := azcosmos.NewPartitionKey()
+
+query := "SELECT * FROM r WHERE r.TenantId=@tenant_id and r.UserId=@user_id"
+
+pager := container.NewQueryItemsPager(query, emptyPartitionKey, &azcosmos.QueryOptions{
+	QueryParameters: []azcosmos.QueryParameter{
+		{
+			Name:  "@tenant_id",
+			Value: tenantId,
+		},
+		{
+			Name:  "@user_id",
+			Value: userId,
+		},
+	},
+})
+
+for pager.More() {
+    // Read the next page of results
+}
+```
+
 ---
 
 ## Limitations and known issues
@@ -675,7 +801,7 @@ items = list(container.query_items(
 - You can specify hierarchical partition keys only up to three layers in depth.
 - Hierarchical partition keys can currently be enabled only on new containers. You must set partition key paths at the time of container creation, and you can't change them later. To use hierarchical partitions on existing containers, create a new container with the hierarchical partition keys set and move the data by using [container copy jobs](container-copy.md).
 - Hierarchical partition keys are currently supported only for the API for NoSQL accounts. The APIs for MongoDB and Cassandra aren't currently supported.
-- Hierarchical partition keys aren't currently supported with the users and permissions feature. You can't assign a permission to a partial prefix of the hierarchical partition key path. Permissions can only be assigned to the entire logical partition key path. For example, if you have partitioned by ``TenantId`` - > ``UserId``, you can't assign a permission that is for a specific value of ``TenantId``. However, you can assign a permission for a partition key if you specify both the value for ``TenantId`` and ``UserId```.
+- Hierarchical partition keys aren't currently supported with the users and permissions feature. You can't assign a permission to a partial prefix of the hierarchical partition key path. Permissions can only be assigned to the entire logical partition key path. For example, if you have partitioned by ``TenantId`` - > ``UserId``, you can't assign a permission that is for a specific value of ``TenantId``. However, you can assign a permission for a partition key if you specify both the value for ``TenantId`` and ``UserId``.
 
 ## Next steps
 

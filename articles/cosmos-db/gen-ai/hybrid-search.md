@@ -11,11 +11,11 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
+ms.custom:
+  - build-2025
 ---
 
 # Hybrid search in Azure Cosmos DB for NoSQL
-
-[!INCLUDE [Ongoing Deployment](../nosql/includes/deployment-ongoing.md)]
 
 Azure Cosmos DB for NoSQL now supports the hybrid search capability that combines Vector Search with Full Text Search scoring (BM25) using the Reciprocal Rank Fusion (RRF) function.
 

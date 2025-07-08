@@ -5,7 +5,7 @@ author: ginsiucheng
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-terraform
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 09/16/2022
 ms.author: mjbrown
 ---

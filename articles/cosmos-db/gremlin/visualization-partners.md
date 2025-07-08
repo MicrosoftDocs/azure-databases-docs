@@ -101,7 +101,7 @@ With the Graphistry's GPU client/cloud technology, you can do interactive visual
 
 * [Video Guides](https://www.graphistry.com/videos)
 
-* [Deploy on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/graphistry.graphistry-core-2-24-9)
+* [Deploy on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/graphistry.graphistry-core-2-24-9)
 
 ## Graphlytic
 

@@ -9,10 +9,10 @@ ms.subservice: mongodb
 ms.devlang: typescript
 ms.topic: quickstart-sdk
 ms.date: 04/08/2025
-ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli
+ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli, sfi-image-nochange
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
-  - ✅ MongoDB (RU)
+- ✅ MongoDB (RU)
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for MongoDB (RU).
 ---
 

@@ -4,7 +4,7 @@ description: Learn how Azure Cosmos DB provides encryption of data at rest and h
 author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/26/2021
 ---
 

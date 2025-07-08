@@ -6,6 +6,7 @@ ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 11/16/2021
 ms.author: thvankra
+ms.custom: sfi-image-nochange
 ---
 
 # Configure Grafana to visualize metrics emitted from the managed instance cluster

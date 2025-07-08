@@ -16,8 +16,8 @@ ms.custom: automatically generated
 | Description | Limits the total size of all temporary files used by each process. |
 | Data type | integer |
 | Default value | `-1` |
-| Allowed values | `-1` |
-| Parameter type | read-only |
+| Allowed values | `-1-2147483647` |
+| Parameter type | dynamic |
 | Documentation | [temp_file_limit](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-TEMP-FILE-LIMIT) |
 
 

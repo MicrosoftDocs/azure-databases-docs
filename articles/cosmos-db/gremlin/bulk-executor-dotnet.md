@@ -8,8 +8,8 @@ ms.date: 05/10/2022
 author: manishmsfte
 ms.author: mansha
 ms.devlang: csharp
+ms.custom: devx-track-dotnet, devx-track-extended-java, sfi-ropc-blocked
 # ms.devlang: csharp, java
-ms.custom: devx-track-dotnet, devx-track-extended-java
 ---
 
 # Ingest data in bulk in the Azure Cosmos DB for Gremlin by using a bulk executor library
