@@ -134,7 +134,7 @@ az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name
 
 The `datetime` argument must be formatted as shown in the example. You can also add `--dry-run=""` as an argument to see which files the command deletes.
 
-## List of supported  commands
+## List of supported sstable commands
 
 For more information on each command, see [SSTable tools](https://cassandra.apache.org/doc/latest/cassandra/managing/tools/sstable/index.html).
 
