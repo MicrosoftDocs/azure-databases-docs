@@ -17,7 +17,7 @@ For successful deployment into an existing virtual network, Azure Managed Instan
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-1. Go to the target virtual network in your subscription, select the **Access control (IAM)** tab, and select **Add role assignment**.
+1. Go to the target virtual network in your subscription, select **Access control (IAM)**, and then select **Add role assignment**.
 
    :::image type="content" source="./media/add-service-principal/service-principal-1.png" alt-text="Screenshot that shows Add role assignment." lightbox="./media/add-service-principal/service-principal-1.png" border="true":::
 
