@@ -8,13 +8,13 @@ ms.subservice: apache-cassandra
 ms.custom: devx-track-extended-java
 ms.topic: tutorial
 ms.date: 09/24/2018
-#Customer intent: As a developer, I want to build a Java application to query data stored in an API for Cassandra account in Azure Cosmos DB. Customers want to manage the key-value data and use the global distribution, elastic scaling, multiple write regions, and other capabilities offered by Azure Cosmos DB.
+#Customer intent: As a developer, I want to build a Java application to query data stored in an API for Cassandra account in Azure Cosmos DB. Customers want to manage the key/value data and use the global distribution, elastic scaling, multiple write regions, and other capabilities offered by Azure Cosmos DB.
 ---
 
 # Tutorial: Query data from an API for Cassandra account in Azure Cosmos DB
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
-As a developer, you might have applications that use key-value pairs. You can use an API for Cassandra account in Azure Cosmos DB to store and query the key-value data. This tutorial shows you how to query user data from an API for Cassandra account in Azure Cosmos DB by using a Java application. The Java application uses the [Java driver](https://github.com/datastax/java-driver) and queries user data such as the user ID, username, and user city.
+As a developer, you might have applications that use key/value pairs. You can use an API for Cassandra account in Azure Cosmos DB to store and query the key/value data. This tutorial shows you how to query user data from an API for Cassandra account in Azure Cosmos DB by using a Java application. The Java application uses the [Java driver](https://github.com/datastax/java-driver) and queries user data such as the user ID, username, and user city.
 
 This tutorial covers the following tasks:
 
@@ -22,10 +22,9 @@ This tutorial covers the following tasks:
 > * Query data from a Cassandra table.
 > * Run the app.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+## Prerequisites
 
-## Prerequisite
-
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 * This article belongs to a multipart tutorial. Before you start, make sure to complete the previous steps to create the API for Cassandra account, keyspace, and table. Also [load sample data into the table](load-data-table.md).
 
 ## Query data
