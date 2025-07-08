@@ -28,9 +28,9 @@ However, you can't convert continuation tokens to a lease or vice versa.
 
 You should consider using the pull model in these scenarios:
 
-- To read changes from a specific partition key.
-- To control the pace at which your client receives changes for processing.
-- To perform a one-time read of the existing data in the change feed (for example, to do a data migration).
+- To read changes from a specific partition key
+- To control the pace at which your client receives changes for processing
+- To perform a one-time read of the existing data in the change feed (for example, to do a data migration)
 
 Here are some key differences between the change feed processor and the change feed pull model:
 
