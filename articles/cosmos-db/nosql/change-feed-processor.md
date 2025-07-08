@@ -43,7 +43,7 @@ The diagram shows two compute instances, and the change feed processor assigns d
 
 Each range is read in parallel. A range's progress is maintained separately from other ranges in the lease container through a *lease* document. The combination of the leases represents the current state of the change feed processor.
 
-:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="Change feed processor example" lightbox="./media/change-feed-processor/changefeedprocessor.png":::
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="Diagram that shows an example of the change feed processor." lightbox="./media/change-feed-processor/changefeedprocessor.png":::
 
 ## Implement the change feed processor
 

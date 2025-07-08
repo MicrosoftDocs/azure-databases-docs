@@ -61,7 +61,7 @@ Here, we walk through the process of creating diagnostic settings for your accou
 
 ### [Azure CLI](#tab/azure-cli)
 
-Use the `az monitor diagnostic-settings create` command to create a diagnostic setting with the Azure CLI. To learn about about the command's parameters, see [the documentation](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
+Use the `az monitor diagnostic-settings create` command to create a diagnostic setting with the Azure CLI. To learn about the command's parameters, see [the documentation](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 1. Ensure you logged in to the Azure CLI. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 

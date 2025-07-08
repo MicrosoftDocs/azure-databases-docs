@@ -101,7 +101,7 @@ In general, for a production workload using autoscale, if you see between 1-5% o
 
 1. From the **Metrics** pane > **Select a resource** > choose the required **subscription**, and **resource group**. For the **Resource type**, select **Azure Cosmos DB accounts**, choose one of your existing Azure Cosmos DB accounts, and select **Apply**.
 
-   :::image type="content" source="./media/monitor-account-key-updates/select-account-scope.png" alt-text="Screenshot that shows how to select the account scope to view metrics" border="true" lightbox="./media/monitor-account-key-updates/select-account-scope.png":::
+   :::image type="content" source="./media/monitor-account-key-updates/select-account-scope.png" alt-text="Screenshot that shows how to select the account scope to view metrics." border="true" lightbox="./media/monitor-account-key-updates/select-account-scope.png":::
 
 1. Next you can select a metric from the list of available metrics. You can select metrics specific to request units, storage, latency, availability, Cassandra, and others. To learn in detail about all the available metrics in this list, see the [Metrics by category](monitor-reference.md) article. In this example, let’s select **Normalized RU Consumption** metric and **Max** as the aggregation value.
 
