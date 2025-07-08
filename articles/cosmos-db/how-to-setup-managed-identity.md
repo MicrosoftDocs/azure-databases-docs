@@ -1,12 +1,12 @@
 ---
-title: Configure managed identities with Microsoft Entra ID for your Azure Cosmos DB account
-description: Learn how to configure managed identities with Microsoft Entra ID for your Azure Cosmos DB account
+title: Configure Managed Identities with Microsoft Entra ID
+description: Learn how to configure managed identities with Microsoft Entra ID for your Azure Cosmos DB account.
 author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: how-to
-ms.date: 10/15/2021
+ms.date: 06/30/2025
 ---
 
 # Configure managed identities with Microsoft Entra ID for your Azure Cosmos DB account
@@ -16,22 +16,22 @@ Managed identities for Azure resources provide Azure services with an automatica
 
 ## Prerequisites
 
-- If you're unfamiliar with managed identities for Azure resources, see [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview). To learn about managed identity types, see [Managed identity types](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types).
-- To set up managed identities, your account needs to have the [DocumentDB Account Contributor role](/azure/role-based-access-control/built-in-roles#documentdb-account-contributor).
+- If you're unfamiliar with managed identities for Azure resources, see [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview) To learn about managed identity types, see [Managed identity types](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types).
+- To set up managed identities, your account needs to have the [DocumentDB Account Contributor](/azure/role-based-access-control/built-in-roles#documentdb-account-contributor) role.
 
 ## Add a system-assigned identity
 
 ### Using the Azure portal
 
-To enable a system-assigned managed identity on an existing Azure Cosmos DB account, navigate to your account in the Azure portal and select **Identity** from the left menu.
+To enable a system-assigned managed identity on an existing Azure Cosmos DB account, navigate to your account in the Azure portal and select **Identity** from the sidebar menu.
 
 :::image type="content" source="./media/how-to-setup-managed-identity/identity-tab.png" alt-text="The Identity menu entry" border="true":::
 
-Under the **System assigned** section, flip the **Status** to On and select **Save**. You will be asked to confirm the creation of the system-assigned managed identity.
+Under the **System assigned** section, flip the **Status** to *On* and select **Save**. You will be asked to confirm the creation of the system-assigned managed identity.
 
 :::image type="content" source="./media/how-to-setup-managed-identity/enable-system-assigned.png" alt-text="Enabling a system-assigned identity" border="true":::
 
-Once the identity has been created and assigned, you can retrieve its Object (principal) ID.
+After the identity is created and assigned, you can retrieve its Object (principal) ID.
 
 :::image type="content" source="./media/how-to-setup-managed-identity/system-identity-enabled.png" alt-text="Retrieving the object ID of a system-assigned identity" border="true":::
 
@@ -63,7 +63,7 @@ The `resources` section of your ARM template should then look like the following
 ]
 ```
 
-Once your Azure Cosmos DB account has been created or updated, it will show the following property:
+After your Azure Cosmos DB account is created or updated, it shows the following property:
 
 ```json
 "identity": {
@@ -88,7 +88,7 @@ az cosmosdb create \
     --assign-identity
 ```
 
-You can also add a system-assigned identity on an existing account using the `az cosmosdb identity assign` command:
+You can also add a system-assigned identity on an existing account by using the `az cosmosdb identity assign` command:
 
 ```azurecli
 resourceGroupName='myResourceGroup'
@@ -99,7 +99,7 @@ az cosmosdb identity assign \
     -g $resourceGroupName
 ```
 
-Once your Azure Cosmos DB account has been created or updated, you can fetch the identity assigned with the `az cosmosdb identity show` command:
+After your Azure Cosmos DB account is created or updated, you can fetch the identity assigned by using the `az cosmosdb identity show` command:
 
 ```azurecli
 resourceGroupName='myResourceGroup'
@@ -122,11 +122,11 @@ az cosmosdb identity show \
 
 ### Using the Azure portal
 
-To enable a user-assigned managed identity on an existing Azure Cosmos DB account, navigate to your account in the Azure portal and select **Identity** from the left menu.
+To enable a user-assigned managed identity on an existing Azure Cosmos DB account, navigate to your account in the Azure portal and select **Identity** from the sidebar menu.
 
 :::image type="content" source="./media/how-to-setup-managed-identity/identity-tab.png" alt-text="The Identity menu entry" border="true":::
 
-Under the **user assigned** section, select **+ Add**.
+Under the **User assigned** section, select **+ Add**.
 
 :::image type="content" source="./media/how-to-setup-managed-identity/enable-user-assigned-1.png" alt-text="Enabling a user-assigned identity" border="true":::
 
@@ -150,7 +150,7 @@ To enable a user-assigned identity on a new or existing Azure Cosmos DB account,
 }
 ```
 
-The `resources` section of your ARM template should then look like the following:
+The `resources` section of your ARM template should then look like the following example:
 
 ```json
 "resources": [
@@ -168,7 +168,7 @@ The `resources` section of your ARM template should then look like the following
 ]
 ```
 
-After your Azure Cosmos DB account has been created or updated, it will show the following property:
+After your Azure Cosmos DB account is created or updated, it shows the following property:
 
 ```json
 "identity": {
@@ -193,7 +193,7 @@ az cosmosdb create \
     --assign-identity <identity-resource-id>
 ```
 
-You can also add a user-assigned identity on an existing account using the `az cosmosdb identity assign` command:
+You can also add a user-assigned identity on an existing account by using the `az cosmosdb identity assign` command:
 
 ```azurecli
 resourceGroupName='myResourceGroup'
@@ -205,7 +205,7 @@ az cosmosdb identity assign \
     --identities <identity-resource-id>
 ```
 
-After your Azure Cosmos DB account has been created or updated, you can fetch the identity assigned with the `az cosmosdb identity show` command:
+After your Azure Cosmos DB account is created or updated, you can fetch the identity assigned by using the `az cosmosdb identity show` command:
 
 ```azurecli
 resourceGroupName='myResourceGroup'

@@ -4,7 +4,7 @@ description: This article describes the scheduled maintenance feature in Azure D
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/23/2025
+ms.date: 07/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -63,6 +63,7 @@ Some considerations when considering during monthly maintenance:
 - Monthly maintenance is impactful and they involve some downtime.
 - Downtime depends on the transactional load on the server at the time of maintenance.
 - Once maintenance is scheduled, any changes to the maintenance settings will apply only to the next maintenance cycle, not the current one.
+- If a PostgreSQL server is stopped during scheduled maintenance, the system will restart the server, apply the pending maintenance, and then return the server to the stopped state after the maintenance is applied.
 
 ## Related content
 

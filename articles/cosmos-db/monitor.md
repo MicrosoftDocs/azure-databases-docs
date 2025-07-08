@@ -1,7 +1,7 @@
 ---
 title: Monitor Azure Cosmos DB
 description: Start here to learn how to monitor Azure Cosmos DB.
-ms.date: 03/05/2024
+ms.date: 07/01/2025
 ms.custom: horz-monitor
 ms.topic: how-to
 ms.author: esarroyo
@@ -48,7 +48,7 @@ For a list of available metrics for Azure Cosmos DB, see [Azure Cosmos DB monito
 
 You can monitor diagnostic logs from your Azure Cosmos DB account and create dashboards from Azure Monitor. Data such as events and traces that occur at a second granularity are stored as logs. For example, if the throughput of a container changes, the properties of an Azure Cosmos DB account change. The logs capture these events. You can analyze these logs by running queries on the gathered data.
 
-For the available resource log categories, their associated Log Analytics tables, and the logs schemas for Azure Cosmos DB, see [Azure Cosmos DB monitoring data reference](monitor-reference.md#resource-logs).
+For the available resource log categories, their associated Log Analytics tables, and the log schemas for Azure Cosmos DB, see [Azure Cosmos DB monitoring data reference](monitor-reference.md#resource-logs).
 
 <a name="activity-log"></a>
 [!INCLUDE [horz-monitor-activity-log](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-activity-log.md)]
@@ -107,7 +107,7 @@ Data in Azure Monitor Logs is stored in tables. Each table has its own set of un
 
 For the types of resource logs collected for Azure Cosmos DB, see [Azure Cosmos DB monitoring data reference](monitor-reference.md#resource-logs).
 
-See the following articles for more information about working with Azure Monitor Logs for Azure Cosmos DB:
+For more information about working with Azure Monitor Logs for Azure Cosmos DB, see the following articles:
 
 - [Monitor data by using Azure Diagnostic settings](monitor-resource-logs.md)
 - [Audit control plane logs](audit-control-plane-logs.md)
@@ -115,7 +115,7 @@ See the following articles for more information about working with Azure Monitor
 
 [!INCLUDE [horz-monitor-kusto-queries](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-kusto-queries.md)]
 
-Prior to using Log Analytics to issue Kusto queries, you must [enable diagnostic logs for control plane operations](audit-control-plane-logs.md#enable-diagnostic-logs-for-control-plane-operations). When you enable diagnostic logs, you select between storing your data in [resource-specific tables](/azure/azure-monitor/essentials/resource-logs#resource-specific) or the single [AzureDiagnostics table (legacy)](/azure/azure-monitor/essentials/resource-logs#azure-diagnostics-mode). The exact text of Kusto queries depends on the [collection mode](/azure/azure-monitor/essentials/resource-logs#select-the-collection-mode) you select.
+Before using Log Analytics to issue Kusto queries, you must [enable diagnostic logs for control plane operations](audit-control-plane-logs.md#enable-diagnostic-logs-for-control-plane-operations). When you enable diagnostic logs, you select between storing your data in [resource-specific tables](/azure/azure-monitor/essentials/resource-logs#resource-specific) or the single [AzureDiagnostics table (legacy)](/azure/azure-monitor/essentials/resource-logs#azure-diagnostics-mode). The exact text of Kusto queries depends on the [collection mode](/azure/azure-monitor/essentials/resource-logs#select-the-collection-mode) you select.
 
 - See [Troubleshoot issues with diagnostics queries](monitor-logs-basic-queries.md) for simple queries to help troubleshoot issues with your Azure Cosmos DB.
 - See [Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for NoSQL](nosql/diagnostic-queries.md) for more advanced queries to help troubleshoot issues with your Azure Cosmos DB account by using diagnostics logs sent to Azure Diagnostics (legacy) and resource-specific (preview) tables.
@@ -224,7 +224,7 @@ The following table lists some common and recommended alert rules for Azure Cosm
 
 | Alert type | Condition | Description  |
 |:---|:---|:---|
-|Rate limiting on request units (metric alert) |Dimension name: *StatusCode*, Operator: *Equals*, Dimension values: 429  | Alerts if the container or a database has exceeded the provisioned throughput limit. |
+|Rate limiting on request units (metric alert) |Dimension name: *StatusCode*, Operator: *Equals*, Dimension values: 429  | Alerts if the container or a database exceeds the provisioned throughput limit. |
 |Region failed over |Operator: *Greater than*, Aggregation type: *Count*, Threshold value: 1 | When a single region is failed over. This alert is helpful if you didn't enable service-managed failover. |
 |Rotate keys (activity log alert)| Event level: *Informational*, *Status*: started| Alerts when the account keys are rotated. You can update your application with the new keys. |
 
