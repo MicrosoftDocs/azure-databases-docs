@@ -217,13 +217,13 @@ Check out the list of quickstart examples:
 - [Read content from a blob](quickstart-azure-storage-extension.md#read-content-from-a-blob)
 - [Read, filter, and modify content read from a blob](quickstart-azure-storage-extension.md#read-filter-and-modify-content-read-from-a-blob)
 - [Read content from file with custom options (headers, column delimiters, escape characters)](quickstart-azure-storage-extension.md#read-content-from-file-with-custom-options-headers-column-delimiters-escape-characters)
+- [Use the decoder option](quickstart-azure-storage-extension.md#use-the-decoder-option)
+- [Use compression with decoder option](quickstart-azure-storage-extension.md#use-compression-with-decoder-option)
 - [Compute aggregations over the content of a blob](quickstart-azure-storage-extension.md#compute-aggregations-over-the-content-of-a-blob)
 - [Write content to a blob](quickstart-azure-storage-extension.md#write-content-to-a-blob)
 - [List all the references to Azure storage accounts](quickstart-azure-storage-extension.md#list-all-the-references-to-azure-storage-accounts)
-- [Remove reference to storage account](quickstart-azure-storage-extension.md#remove-reference-to-storage-account)
 - [Revoke access from a user or role on the Azure Blob storage reference](quickstart-azure-storage-extension.md#revoke-access-from-a-user-or-role-on-the-azure-blob-storage-reference)
-- [Use the decoder option](quickstart-azure-storage-extension.md#use-the-decoder-option)
-- [Use compression with decoder option](quickstart-azure-storage-extension.md#use-compression-with-decoder-option)
+- [Remove reference to storage account](quickstart-azure-storage-extension.md#remove-reference-to-storage-account)
 
 In case you need to review all functions offered by the extension and all the details about each of them, review the full reference:
 
