@@ -120,7 +120,7 @@ If metrics show one or all of the following characteristics, you might need to s
 
 - Your metrics are consistently higher than or equal to the base IOPS. Remember to multiply 5,000 IOPS by the number of disks per node to get the number.
 - Your metrics are consistently higher than or equal to the maximum IOPS allowed for the product tier for writes.
-- Your product tier supports cached storage (write-through-cache), and this number is smaller than the IOPS from the managed disks. This value is the upper limit for your read IOPS.
+- Your product tier supports cached storage (write-through cache), and this number is smaller than the IOPS from the managed disks. This value is the upper limit for your read IOPS.
 
 If you see the IOPS elevated for only a few nodes, you might have a hot partition and need to review your data for a potential skew.
 
@@ -180,11 +180,11 @@ If you need more memory, you can:
 
 ### Tombstones
 
-We run repairs every seven days with reaper, which removes rows whose time-to-live (TTL) expired. These rows are called *tombstones*. Some workloads delete more frequently and show warnings like `Read 96 live rows and 5035 tombstone cells for query SELECT ...; token <token> (see tombstone_warn_threshold)` in the Cassandra logs. Some errors indicate that a query couldn't be fulfilled because of excessive tombstones.
+We run repairs every seven days with reaper, which removes rows whose time to live (TTL) expired. These rows are called *tombstones*. Some workloads delete more frequently and show warnings like `Read 96 live rows and 5035 tombstone cells for query SELECT ...; token <token> (see tombstone_warn_threshold)` in the Cassandra logs. Some errors indicate that a query couldn't be fulfilled because of excessive tombstones.
 
 A short-term mitigation if queries don't get fulfilled is to increase the `tombstone_failure_threshold` value in the [Cassandra configuration](create-cluster-portal.md#update-cassandra-configuration) from the default 100,000 to a higher value.
 
-We also recommend that you review the TTL on the keyspace and potentially run repairs daily to clear out more tombstones. If the TTLs are short, for example, less than two days, and data flows in and gets deleted quickly, we recommend that you review the [compaction strategy](https://cassandra.apache.org/doc/4.1/cassandra/operating/compaction/index.html#types-of-compaction) and favor `Leveled Compaction Strategy`. In some cases, such actions might indicate that a review of the data model is required.
+We also recommend that you review the TTL on the keyspace and potentially run repairs daily to clear out more tombstones. If the TTLs are short (for example, less than two days), and data flows in and gets deleted quickly, we recommend that you review the [compaction strategy](https://cassandra.apache.org/doc/4.1/cassandra/operating/compaction/index.html#types-of-compaction) and favor `Leveled Compaction Strategy`. In some cases, such actions might indicate that a review of the data model is required.
 
 ### Batch warnings
 
@@ -210,7 +210,7 @@ Cassandra allows the selection of an appropriate compression algorithm when a ta
 
 ### Optimize memtable heap space
 
-The default is to use one quarter of the JVM heap for [memtable_heap_space](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html) in the `cassandra.yaml` file. For write-oriented applications or on product tiers with small amounts of memory, this issue can lead to frequent flushing and fragmented `sstables`, which require more compaction. Increasing to at least 4,048 might be good. This approach requires careful benchmarking to make sure that other operations, for example, reads, aren't affected.
+The default is to use one quarter of the JVM heap for [memtable_heap_space](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html) in the `cassandra.yaml` file. For write-oriented applications or on product tiers with small amounts of memory, this issue can lead to frequent flushing and fragmented `sstables`, which require more compaction. Increasing to at least 4,048 might be good. This approach requires careful benchmarking to make sure that other operations (for example, reads) aren't affected.
 
 ## Next step
 
