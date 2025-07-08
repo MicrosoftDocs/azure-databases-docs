@@ -41,8 +41,6 @@ Creating your Azure Function with an Azure Functions trigger for Azure Cosmos DB
 
 You can run your [Azure Function locally](/azure/azure-functions/functions-develop-local) with the [Azure Cosmos DB Emulator](../emulator.md) to create and develop your serverless event-based flows without an Azure Subscription or incurring any costs.
 
-If you want to test live scenarios in the cloud, you can [Try Azure Cosmos DB for free](https://azure.microsoft.com/try/cosmosdb/) without any credit card or Azure subscription required.
-
 ## Next steps
 
 You can now continue to learn more about change feed in the following articles:

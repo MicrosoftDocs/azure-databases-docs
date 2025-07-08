@@ -693,6 +693,52 @@ Add a composite index:
   ).container;
 ```
 
+### Use the Go SDK
+
+The [IndexingPolicy](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#IndexingPolicy) struct defines the indexing policy for a container. It can be used with when [creating](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#DatabaseClient.CreateContainer) a new container or [reconfiguring](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ContainerClient.Replace) an existing one.
+
+```go
+db, _ := client.NewDatabase("demodb")
+
+pkDefinition := azcosmos.PartitionKeyDefinition{
+	Paths: []string{"/state"},
+		Kind:  azcosmos.PartitionKeyKindHash,
+}
+
+indexingPolicy := &azcosmos.IndexingPolicy{
+	IndexingMode: azcosmos.IndexingModeConsistent,
+
+    // add an included path
+	IncludedPaths: []azcosmos.IncludedPath{
+		{Path: "/*"},
+	},
+
+    // add an excluded path
+	ExcludedPaths: []azcosmos.ExcludedPath{
+		{Path: "/address/*"},
+	},
+
+    // add composite indices
+	CompositeIndexes: [][]azcosmos.CompositeIndex{
+		{
+			{
+				Path:  "/name",
+				Order: azcosmos.CompositeIndexAscending,
+			},
+			{
+				Path:  "/age",
+				Order: azcosmos.CompositeIndexDescending,
+			},
+		},
+	}
+
+	db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+		ID:                     "demo_container",
+		PartitionKeyDefinition: pkDefinition,
+		IndexingPolicy:         indexingPolicy,
+	}, nil)
+```
+
 ### Use the Python SDK
 
 #### [Python SDK V3](#tab/pythonv3)

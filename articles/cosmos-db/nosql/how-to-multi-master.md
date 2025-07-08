@@ -138,6 +138,17 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
                                     'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
 ```
 
+## <a id="go"></a>Go SDK
+
+To enable multi-region in your application, use `PreferredRegions` in [ClientOptions](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ClientOptions):
+
+```go
+client, err := azcosmos.NewClient(endpoint, token, &azcosmos.ClientOptions{
+	PreferredRegions: []string{"West US", "Central US"},
+})
+```
+
+
 ## Next steps
 
 - [Use session tokens to manage consistency in Azure Cosmos DB](how-to-manage-consistency.md#utilize-session-tokens)
