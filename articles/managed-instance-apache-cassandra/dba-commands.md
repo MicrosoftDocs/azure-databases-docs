@@ -100,7 +100,7 @@ The password is URL encoded (UTF-8) in this command, which means that the follow
 
 - The alphanumeric characters `a` through `z`, `A` through `Z`, and `0` through `9` remain the same.
 - The special characters `.`, `-`, `*`, and `_` remain the same.
-- The space character ` ` is converted into a plus sign `+`.
+- The space character is converted into a plus sign (`+`).
 - All other characters are unsafe and are first converted into one or more bytes by using some encoding scheme. The three-character string `%xy` represents each byte, where `xy` is the two-digit hexadecimal representation of the byte.
 
 The `cassandra-reset-auth-replication` command lets a user change their schema for the Cassandra user. Separate the datacenter names by space.
@@ -115,17 +115,17 @@ The datacenters are URL encoded (UTF-8) when they're passed into this command, w
 
 - The alphanumeric characters `a` through `z`, `A` through `Z`, and `0` through `9` remain the same.
 - The special characters `.`, `-`, `*`, and `_` remain the same.
-- The space character ` ` is converted into a plus sign `+`.
+- The space character is converted into a plus sign (`+`).
 - All other characters are unsafe and are first converted into one or more bytes by using some encoding scheme. The three-character string `%xy` represents each byte, where `xy` is the two-digit hexadecimal representation of the byte.
 
-The `sstable-tree` command lets a user see their sstables.
+The `sstable-tree` command lets a user see their SSTables.
 
 ```azurecli-interactive
 az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name <cluster> \
   --host <ip of data node> --command-name sstable-tree
 ```
 
-The `sstable-delete` command lets a user delete their sstables that were made before a certain time.
+The `sstable-delete` command lets a user delete their SSTables that were made before a certain time.
 
 ```azurecli-interactive
 az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name <cluster> \
@@ -134,7 +134,7 @@ az managed-cassandra cluster invoke-command --resource-group <rg> --cluster-name
 
 The `datetime` argument must be formatted as shown in the example. You can also add `--dry-run=""` as an argument to see which files the command deletes.
 
-## List of supported sstable commands
+## List of supported  commands
 
 For more information on each command, see [SSTable tools](https://cassandra.apache.org/doc/latest/cassandra/managing/tools/sstable/index.html).
 
