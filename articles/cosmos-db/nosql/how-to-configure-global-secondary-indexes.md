@@ -289,6 +289,27 @@ container.query_items(
 )
 ```
 
+### [Go](#tab/go)
+
+```go
+gsiContainer, err := client.NewContainer("gsi-db", "gsi-target")
+
+pager := gsiContainer.NewQueryItemsPager("select * from c where c.state = @state", azcosmos.NewPartitionKey(), &azcosmos.QueryOptions{
+	QueryParameters: []azcosmos.QueryParameter{
+		{
+			Name:  "@state",
+			Value: "Alaska",
+		},
+	},
+})
+
+if pager.More() {
+  // Iterate through the results
+  // page, _ := pager.NextPage(context.Background())
+}
+```
+
+
 ---
 
 ## Next steps
