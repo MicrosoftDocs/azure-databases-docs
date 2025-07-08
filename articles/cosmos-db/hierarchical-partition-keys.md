@@ -351,6 +351,12 @@ item_definition = {'id': 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
 item = container.create_item(body=item_definition)
 ```
 
+###### [Go SDK](#tab/go)
+
+```text
+Automatic extraction is not supported in the Go SDK.
+```
+
 ---
 
 #### Manually specify the path
@@ -756,6 +762,34 @@ items = list(container.query_items(
     ],
     enable_cross_partition_query=True
 ))
+```
+
+##### [Go SDK](#tab/go)
+
+```go
+tenantId := "Microsoft"
+userId := "00aa00aa-bb11-cc22-dd33-44ee44ee44ee"
+
+emptyPartitionKey := azcosmos.NewPartitionKey()
+
+query := "SELECT * FROM r WHERE r.TenantId=@tenant_id and r.UserId=@user_id"
+
+pager := container.NewQueryItemsPager(query, emptyPartitionKey, &azcosmos.QueryOptions{
+	QueryParameters: []azcosmos.QueryParameter{
+		{
+			Name:  "@tenant_id",
+			Value: tenantId,
+		},
+		{
+			Name:  "@user_id",
+			Value: userId,
+		},
+	},
+})
+
+for pager.More() {
+    // Read the next page of results
+}
 ```
 
 ---

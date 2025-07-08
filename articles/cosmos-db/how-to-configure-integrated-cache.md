@@ -279,6 +279,10 @@ CosmosPagedFlux<MyClass> pagedFluxResponse = container.queryItems(
 
 The bypass integrated cache request option isn't available in the Python SDK.
 
+### [Go](#tab/go)
+
+The bypass integrated cache request option isn't available in the Go SDK.
+
 ---
 
 ## Verify cache hits
