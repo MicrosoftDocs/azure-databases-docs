@@ -2,8 +2,8 @@
 title: Linux-based emulator - vNext (preview)
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Use the Azure Cosmos DB Linux-based emulator to test your applications against API for NoSQL endpoints.
-author: TheovanKraay
-ms.author: thvankra
+author: Sajeetharan
+ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/07/2024
@@ -101,7 +101,7 @@ This emulator is in active development and preview. As a result, not all Azure C
 | **Delete document** | ✅ Supported |
 | **Get and change collection performance** | ⚠️ Not yet implemented |
 | **Insert large document** | ✅ Supported |
-| **Patch document** | ⚠️ Not yet implemented |
+| **Patch document** | ✅ Supported |
 | **Query partitioned collection in parallel** | ⚠️ Not yet implemented |
 | **Query with aggregates** | ⚠️ Not yet implemented |
 | **Query with and filter** | ⚠️ Not yet implemented |

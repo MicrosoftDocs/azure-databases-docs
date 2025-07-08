@@ -17,8 +17,6 @@ ms.custom:
 
 # Hybrid search in Azure Cosmos DB for NoSQL
 
-[!INCLUDE [Ongoing Deployment](../nosql/includes/deployment-ongoing.md)]
-
 Azure Cosmos DB for NoSQL now supports the hybrid search capability that combines Vector Search with Full Text Search scoring (BM25) using the Reciprocal Rank Fusion (RRF) function.
 
 ## What is hybrid search?

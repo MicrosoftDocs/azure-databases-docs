@@ -117,6 +117,13 @@ credential = DefaultAzureCredential()
 client = CosmosClient(endpoint, credential=credential)
 ```
 
+### [Go](#tab/go)
+
+```go
+endpoint = "<dedicated-gateway-endpoint>"
+client, _ := azcosmos.NewClient(endpoint, creds, nil)
+```
+
 ---
 
 ### Authenticate with connection strings
@@ -153,6 +160,7 @@ Adjusting the `MaxIntegratedCacheStaleness` is supported in these versions of ea
 | **Java SDK v4** | *>= 4.34.0* |
 | **Node.js SDK** | *>=3.17.0* |
 | **Python SDK**  | *>=4.3.1* |
+| **Go SDK**      | *>=1.1.0* |
 
 ### [.NET](#tab/dotnet)
 
@@ -202,8 +210,19 @@ container.query_items(
 )
 ```
 
----
+### [Go](#tab/go)
 
+```go
+staleness := 18000 * time.Millisecond
+
+container.NewQueryItemsPager("select * from c", azcosmos.NewPartitionKey(), &azcosmos.QueryOptions{
+	DedicatedGatewayRequestOptions: &azcosmos.DedicatedGatewayRequestOptions{
+		MaxIntegratedCacheStaleness: &staleness,
+	},
+})
+```
+
+---
 
 ## Bypass the integrated cache
 
@@ -259,6 +278,10 @@ CosmosPagedFlux<MyClass> pagedFluxResponse = container.queryItems(
 ### [Python](#tab/python)
 
 The bypass integrated cache request option isn't available in the Python SDK.
+
+### [Go](#tab/go)
+
+The bypass integrated cache request option isn't available in the Go SDK.
 
 ---
 

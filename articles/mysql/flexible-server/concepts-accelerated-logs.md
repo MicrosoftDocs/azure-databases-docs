@@ -34,12 +34,14 @@ Benefits of accelerated logs include:
 - **Cost efficiency**: Accelerated logs offer a cost-effective solution for mission-critical workloads by providing enhanced performance at no extra expense.
 - **Enhanced scalability**: Accelerated logs can accommodate growing workloads for applications that need to scale easily while maintaining high performance. Applications and services on the Business Critical service tier benefit from more responsive interactions and reduced query wait times.
 
-> [!NOTE]  
-> If [zone-redundant high availability](concepts-high-availability.md) is enabled for your server, expect additional latency due to the cross-zonal copy of data. We recommend that you conduct your own benchmark tests for an accurate performance assessment.
+> [!NOTE]
+>  - If [zone-redundant high availability](concepts-high-availability.md) is enabled for your server, expect additional latency due to the cross-zonal copy of data. We recommend that you conduct your own benchmark tests for an accurate performance assessment.
+> 
+>  - Accelerated logs cannot be enabled without an availability zone allocated to the server. Please raise a support case in case you want to enable accelerated logs such servers. 
 
 ## Limitations
 
-- Once the accelerated logs feature is enabled, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value will no longer have any effect**. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of `binlog_expire_logs_seconds` for binary log retention.
+- Once the accelerated logs feature is enabled, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value will no longer have any effect**. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of `binlog_expire_logs_seconds` for binary log retention. This applies to replica servers we well. 
 
 - [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for a accelerated logs enabled server and can not be disabled.
 
@@ -47,7 +49,7 @@ Benefits of accelerated logs include:
 
 The accelerated logs feature is currently available only in the following regions:
 
-  - Australia East
+- Australia East
   - Brazil South
   - Canada Central
   - Central India
