@@ -46,7 +46,7 @@ To create an Azure Database for MySQL Flexible Server instance in a virtual netw
     > The chosen subnet will be delegated to *Microsoft.DBforMySQL/flexibleServers*. It means that only Azure Database for MySQL Flexible Server instances can use that subnet.</br>
 
     :::image type="content" source="media/how-to-manage-virtual-network-portal/vnet-creation.png" alt-text="Screenshot of Vnet-integration." lightbox="media/how-to-manage-virtual-network-portal/vnet-creation.png":::
-
+1. (Public Preview) You can now specify a custom database port between 25001 to 26000 for your server. Find more details about custom port supported scenarios and limitation [here](./concepts-networking.md).
 1. Create a new or Select an existing **Private DNS Zone**.
     > [!NOTE]  
     > Private DNS zone names must end with `mysql.database.azure.com`. </br>
