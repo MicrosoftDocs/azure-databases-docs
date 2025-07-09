@@ -68,16 +68,10 @@ landingContent:
         links:
           - text: Migration options
             url: migration-options.md
-      - linkListType: how-to-guide
-        links:
           - text: Migrate using native tools
             url: how-to-migrate-native-tools.md
-          - text: Migrate using Azure Data Studio
-            url: /azure-data-studio/extensions/database-migration-for-mongo-extension
-          - text: Migrate using Azure Database Migration Service
-            url: ../../../dms/tutorial-mongodb-cosmos-db-online.md
-          - text: Migrate using Azure Database Migration Service (offline)
-            url: ../../../dms/tutorial-mongodb-cosmos-db.md
+          - text: Migration from RU to vCore
+            url: ../how-to-migrate-vcore.md
   - title: Manage a vCore cluster
     linkLists:
       - linkListType: how-to-guide

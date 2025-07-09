@@ -28,7 +28,7 @@ In this guide, you take an existing collection and migrate it from Azure Cosmos 
 
     - If you don't already have a cluster, [create a new Azure Cosmos DB for MongoDB (vCore) cluster](vcore/quickstart-portal.md).
     
-    - Ensure that you have the credentials required to connect to your vCore cluster. For more information, see [Azure Cosmos DB for MongoDB (vCore) cluster authentication](vcore/entra-authentication.md).
+    - Ensure that you have the ***native authentication credentials** required to connect to your vCore cluster. 
 
 - An Azure Key Vault account
 
@@ -81,7 +81,7 @@ First, you need to configure your source Azure Cosmos DB for MongoDB (RU) accoun
     | | Description |
     | --- | --- |
     | **Name** | Secret names are used to identify the secret and can only contain alphanumeric characters and dashes. This value is eventually used in the migration job's **Secret Name** field. |
-    | **Secret value** | Paste the credentials for your Azure Cosmos DB for Mongo DB (vCore) target cluster here. |
+    | **Secret value** | Paste the ***native authentication credentials** for your Azure Cosmos DB for Mongo DB (vCore) target cluster here. |
 
 1. In your newly created secret, gather the value of **Vault URI**. This value is eventually used in the migration job's **Vault URI** field.
 
