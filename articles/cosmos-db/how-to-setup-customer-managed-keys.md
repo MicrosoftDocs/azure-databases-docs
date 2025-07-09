@@ -1,12 +1,12 @@
 ---
-title: Configure customer-managed keys
+title: Configure Customer-Managed Keys
 titleSuffix: Azure Cosmos DB
 description: Store customer-managed keys in Azure Key Vault to use for encryption in your Azure Cosmos DB account with access control.
 author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 01/05/2023
+ms.date: 07/08/2025
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, sfi-image-nochange
 ms.devlang: azurecli
 ---
@@ -15,17 +15,17 @@ ms.devlang: azurecli
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-Data stored in your Azure Cosmos DB account is automatically and seamlessly encrypted with keys managed by Microsoft (**service-managed keys**). Optionally, you can choose to add a second layer of encryption with keys you manage (**customer-managed keys** or CMK).
+Data stored in your Azure Cosmos DB account is automatically and seamlessly encrypted with keys managed by Microsoft (*service-managed keys*). Optionally, you can choose to add a second layer of encryption with keys you manage (*customer-managed keys* or CMK).
 
 :::image type="content" source="media/how-to-setup-customer-managed-keys/managed-key-encryption-conceptual.png" alt-text="Diagram of the layers of encryption around customer data.":::
 
-You must store customer-managed keys in [Azure Key Vault](/azure/key-vault/general/overview) and provide a key for each Azure Cosmos DB account that is enabled with customer-managed keys. This key is used to encrypt all the data stored in that account.
+You must store customer-managed keys in [Azure Key Vault](/azure/key-vault/general/overview) and provide a key for each Azure Cosmos DB account that's enabled with customer-managed keys. This key is used to encrypt all the data stored in that account.
 
 > [!NOTE]
-> If you wish to enable customer-managed keys on your existing Azure Cosmos DB accounts then you can refer to the link [here](how-to-setup-customer-managed-keys-existing-accounts.md) for more details
+> If you wish to enable customer-managed keys on your existing Azure Cosmos DB accounts, see [Configure customer-managed keys for your existing Azure Cosmos DB account with Azure Key Vault](how-to-setup-customer-managed-keys-existing-accounts.md).
 
 > [!WARNING]
-> The following field names are reserved on Cassandra API tables in accounts using Customer-managed Keys:
+> The following field names are reserved on Cassandra API tables in accounts using customer-managed Keys:
 >
 > - `id`
 > - `ttl`
@@ -36,7 +36,7 @@ You must store customer-managed keys in [Azure Key Vault](/azure/key-vault/gener
 > - `_attachments`
 > - `_epk`
 > 
-> When Customer-managed Keys are not enabled, only field names beginning with `__sys_` are reserved.
+> When customer-managed keys aren't enabled, only field names beginning with `__sys_` are reserved.
 
 ## Prerequisites
 
@@ -57,30 +57,30 @@ If the **Microsoft.DocumentDB** resource provider isn't already registered, you 
 ## Configure your Azure Key Vault instance
 
 > [!IMPORTANT]
-> Your Azure Key Vault instance must be accessible through public network access or allow trusted Microsoft services to bypass its firewall. An instance that is exclusively accessible through [private endpoints](/azure/key-vault/general/private-link-service) cannot be used to host your customer-managed keys.
+> Your Azure Key Vault instance must be accessible through public network access or allow trusted Microsoft services to bypass its firewall. An instance that is exclusively accessible through [private endpoints](/azure/key-vault/general/private-link-service) can't be used to host your customer-managed keys.
 > 
-> It is highly recommended that the created Azure Key Vault Resource has [data replication enabled](/azure/key-vault/general/disaster-recovery-guidance) in order to ensure continous availability during unexpected regional outtages.
+> It's highly recommended that the created Azure Key Vault Resource has [data replication enabled](/azure/key-vault/general/disaster-recovery-guidance) in order to ensure continuous availability during unexpected regional outages.
 
 Using customer-managed keys with Azure Cosmos DB requires you to set two properties on the Azure Key Vault instance that you plan to use to host your encryption keys: **Soft Delete** and **Purge Protection**.
 
 1. If you create a new Azure Key Vault instance, enable these properties during creation:
 
-    :::image type="content" source="media/how-to-setup-customer-managed-keys/key-vault-properties.png" lightbox="media/how-to-setup-customer-managed-keys/key-vault-properties.png" alt-text="Screenshot of Azure Key Vault options including soft delete and purge protection.":::
+  :::image type="content" source="media/how-to-setup-customer-managed-keys/key-vault-properties.png" lightbox="media/how-to-setup-customer-managed-keys/key-vault-properties.png" alt-text="Screenshot of Azure Key Vault options including soft delete and purge protection.":::
 
-1. If you're using an existing Azure Key Vault instance, you can verify that these properties are enabled by looking at the **Properties** section on the Azure portal. If any of these properties isn't enabled, see the "Enabling soft-delete" and "Enabling Purge Protection" sections in one of the following articles:
+1. If you're using an existing Azure Key Vault instance, you can verify that these properties are enabled by looking at the **Properties** section on the Azure portal. If any of these properties isn't enabled, see the *Enabling soft-delete* and *Enabling Purge Protection* sections in one of the following articles:
 
-    - [How to use soft-delete with PowerShell](/azure/key-vault/general/key-vault-recovery)
-    - [How to use soft-delete with Azure CLI](/azure/key-vault/general/key-vault-recovery)
+  - [How to use soft-delete with PowerShell](/azure/key-vault/general/key-vault-recovery)
+  - [How to use soft-delete with Azure CLI](/azure/key-vault/general/key-vault-recovery)
 
 
-### Choosing the preferred security model 
+### Choose the preferred security model
 
-Once purge protection and soft-delete have been enabled, on the access policy tab, you can choose your preferred permission model to use. Access policies are set by default, but Azure role-based access control is supported as well.
+Once purge protection and soft-delete are enabled, on the access policy tab, you can choose your preferred permission model to use. Access policies are set by default, but Azure role-based access control is supported as well.
 
 The necessary permissions must be given for allowing Cosmos DB to use your encryption key. This step varies depending on whether the Azure Key Vault is using either Access policies or role-based access control.
 
 > [!NOTE]
-> It is important to note that only one security model can be active at a time, so there is no need to seed the role based access control if the Azure Key Vault is set to use access policies and vice versa)
+> It's important to note that only one security model can be active at a time, so there's no need to seed the role-based access control if the Azure Key Vault is set to use access policies and vice versa.
 
 ### Add an access policy
 
@@ -88,13 +88,13 @@ In this variation, use the Azure Cosmos DB principal to create an access policy 
 
 1. From the Azure portal, go to the Azure Key Vault instance that you plan to use to host your encryption keys. Select **Access Policies** from the left menu:
 
-   :::image type="content" source="media/how-to-setup-customer-managed-keys/navigation-access-policies.png" alt-text="Screenshot of the Access policies option in the resource navigation menu.":::
+  :::image type="content" source="media/how-to-setup-customer-managed-keys/navigation-access-policies.png" alt-text="Screenshot of the Access policies option in the resource navigation menu.":::
 
 1. Select **+ Add Access Policy**.
 
 1. Under the **Key permissions** drop-down menu, select **Get**, **Unwrap Key**, and **Wrap Key** permissions:
 
-   :::image type="content" source="media/how-to-setup-customer-managed-keys/add-access-policy-permissions.png" lightbox="media/how-to-setup-customer-managed-keys/add-access-policy-permissions.png" alt-text="Screenshot of access policy permissions including Get, Unwrap key, and Wrap key.":::
+  :::image type="content" source="media/how-to-setup-customer-managed-keys/add-access-policy-permissions.png" lightbox="media/how-to-setup-customer-managed-keys/add-access-policy-permissions.png" alt-text="Screenshot of access policy permissions including Get, Unwrap key, and Wrap key.":::
 
 1. Under **Select principal**, select **None selected**.
 
@@ -111,7 +111,7 @@ In this variation, use the Azure Cosmos DB principal to create an access policy 
 
 1. Select **Save** on the Key Vault instance to save all changes.
 
-### Adding role-based access control roles
+### Add role-based access control roles
 
 1. From the Azure portal, go to the Azure Key Vault instance that you plan to use to host your encryption keys. Select **Access control (IAM)** from the left menu and select **Grant access to this resource**.
 
@@ -119,25 +119,25 @@ In this variation, use the Azure Cosmos DB principal to create an access policy 
 
    :::image type="content" source="media/how-to-setup-customer-managed-keys/access-control-grant-access.png" lightbox="media/how-to-setup-customer-managed-keys/access-control-grant-access.png" alt-text="Screenshot of the Grant access to this resource option on the Access control page.":::
 
-1. Search the **Key Vault Administrator** role and assign it to yourself. This assignment is done by first searching the role name from the list and then clicking on the **“Members”** tab. Once on the tab, select the “User, group or service principal” option from the radio and then look up your Azure account. Once the account has been selected, the role can be assigned.
+1. Search the **Key Vault Administrator** role and assign it to yourself. This assignment is done by first searching the role name from the list and then clicking on the **Members** tab. Once on the tab, select the **User, group or service principal** option from the radio and then look up your Azure account. Once the account is selected, the role can be assigned.
 
    :::image type="content" source="media/how-to-setup-customer-managed-keys/access-control-assign-role.png" lightbox="media/how-to-setup-customer-managed-keys/access-control-assign-role.png" alt-text="Screenshot of a role assignment on the Access control page.":::
 
-1. Then, the necessary permissions must be assigned to Cosmos DB’s principal. So, like the last role assignment, go to the assignment page but this time look for the **“Key Vault Crypto Service Encryption User”** role and on the members tab look for Cosmos DB’s principal. To find the principal, search for **Azure Cosmos DB** principal and select it.
+1. Then, the necessary permissions must be assigned to Cosmos DB’s principal. So, like the last role assignment, go to the assignment page but this time look for the **Key Vault Crypto Service Encryption User** role and on the members tab look for Cosmos DB’s principal. To find the principal, search for **Azure Cosmos DB** principal and select it.
 
    :::image type="content" source="media/how-to-setup-customer-managed-keys/assign-permission-principal.png" lightbox="media/how-to-setup-customer-managed-keys/assign-permission-principal.png" alt-text="Screenshot of the Azure Cosmos DB principal being assigned to a permission.":::
 
-1. Select Review + assign and the role will be assigned to Cosmos DB.
+1. Select **Review + assign** and the role is assigned to Cosmos DB.
 
-## Validate that the roles have been set correctly
+## Validate that the roles are set correctly
 
-Next, use the access control page to confirm that all roles have been configured correctly.
+Next, use the access control page to confirm that all roles are configured correctly.
 
-1. Once the roles have been assigned, select **“View access to this resource”** on the Access Control IAM page to verify that everything has been set correctly.
+1. Once the roles are assigned, select **View access to this resource** on the Access Control IAM page to verify that everything is set correctly.
 
    :::image type="content" source="media/how-to-setup-customer-managed-keys/access-control-view-access-resource.png" lightbox="media/how-to-setup-customer-managed-keys/access-control-view-access-resource.png" alt-text="Screenshot of the View access to resource option on the Access control page.":::
 
-1. On the page, set the scope to **“this resource”** and verify that you have the Key Vault Administrator role, and the Cosmos DB principal has the Key Vault Crypto Encryption User role.
+1. On the page, set the scope to **this resource** and verify that you have the Key Vault Administrator role, and the Cosmos DB principal has the Key Vault Crypto Encryption User role.
 
 ## Generate a key in Azure Key Vault
 
@@ -182,7 +182,7 @@ When you create a new Azure Cosmos DB account from the Azure portal, choose **Cu
 
 When you create a new Azure Cosmos DB account with PowerShell:
 
-- Pass the URI of the Azure Key Vault key copied earlier under the **keyVaultKeyUri** property in **PropertyObject**.
+- Pass the URI of the Azure Key Vault key copied earlier under the `keyVaultKeyUri` property in `PropertyObject`.
 
 - Use **2019-12-12** or later as the API version.
 
@@ -222,7 +222,7 @@ $parameters = @{
 New-AzResource @parameters  
 ```
 
-After the account has been created, you can verify that customer-managed keys have been enabled by fetching the URI of the Azure Key Vault key:
+After the account is created, you can verify that customer-managed keys were enabled by fetching the URI of the Azure Key Vault key:
 
 ```azurepowershell
 $parameters = @{
@@ -237,7 +237,7 @@ Get-AzResource @parameters
 
 ### [Azure Resource Manager template](#tab/arm-template)
 
-When you create a new Azure Cosmos DB account through an Azure Resource Manager template:
+When you create a new Azure Cosmos DB account through an Azure Resource Manager (ARM) template:
 
 - Pass the URI of the Azure Key Vault key that you copied earlier under the **keyVaultKeyUri** property in the **properties** object.
 
@@ -333,7 +333,7 @@ az cosmosdb create \
     --key-uri $keyVaultKeyUri
 ```
 
-After the account has been created, you can verify that customer-managed keys have been enabled by fetching the URI of the Azure Key Vault key:
+After the account is created, you can verify that customer-managed keys were enabled by fetching the URI of the Azure Key Vault key:
 
 ```azurecli
 az cosmosdb show \
@@ -342,11 +342,10 @@ az cosmosdb show \
     --query "keyVaultKeyUri"
 ```
 
-
 ---
 
 > [!IMPORTANT]
-> Depending on your network configuration, you may need to allow access to Azure Cosmos DB from other Azure services.
+> Depending on your network configuration, you might need to allow access to Azure Cosmos DB from other Azure services.
 
 ## Using a managed identity in the Azure Key Vault access policy
 
@@ -410,7 +409,7 @@ You can use the Azure CLI to assign a managed identity to an access policy.
 
 Because a system-assigned managed identity can only be retrieved after the creation of your account, you still need to initially create your account using the first-party identity. Then:
 
-1. If the system-assigned managed identity wasn't configured during account creation, [enable a system-assigned managed identity](./how-to-setup-managed-identity.md#add-a-system-assigned-identity) on your account and copy the `principalId` that got assigned.
+1. If the system-assigned managed identity wasn't configured during account creation, enable a [system-assigned managed identity](./how-to-setup-managed-identity.md#add-a-system-assigned-identity) on your account and copy the `principalId` that got assigned.
 
 1. Add the correspondent permissions to your Azure Key Vault account as described previously. Instead of using the Cosmos DB principal, use the `principalId` you copied at the previous step instead of Azure Cosmos DB's first-party identity.
 
@@ -466,13 +465,13 @@ Not available
 
 ## Use customer-managed keys with continuous backup
 
-You can create a continuous backup account by using the Azure CLI or an Azure Resource Manager template.
+You can create a continuous backup account by using the Azure CLI or an ARM template.
 
 Currently, only user-assigned managed identity is supported for creating continuous backup accounts.
 
-Once the account has been created, you can update the identity to system-assigned managed identity.
+Once the account is created, you can update the identity to system-assigned managed identity.
 
-Alternatively, user can also create a system identity with periodic backup mode first, then migrate the account to Continuous backup mode using these instructions [Migrate an Azure Cosmos DB account from periodic to continuous backup mode](./migrate-continuous-backup.md)
+Alternatively, users can also create a system identity with periodic backup mode first, then migrate the account to Continuous backup mode. For detailed steps, see [Migrate an Azure Cosmos DB account from periodic to continuous backup mode](./migrate-continuous-backup.md).
 
 ### [Azure CLI](#tab/azure-cli)
 
@@ -502,7 +501,7 @@ az cosmosdb create \
 
 ### [Azure Resource Manager template](#tab/arm-template)
 
-When you create a new Azure Cosmos DB account through an Azure Resource Manager template:
+When you create a new Azure Cosmos DB account through an ARM template:
 
 - Pass the URI of the Azure Key Vault key that you copied earlier under the **keyVaultKeyUri** property in the **properties** object.
 - Use **2021-11-15** or later as the API version.
@@ -538,7 +537,7 @@ Not available
 
 ## Restore a continuous account that is configured with managed identity
 
-A user-assigned identity is required in the restore request because the source account managed identity (User-assigned and System-assigned identities) can't be carried over automatically to the target database account.
+A user-assigned identity is required in the restore request because the source account managed identity (user-assigned and system-assigned identities) can't be carried over automatically to the target database account.
 
 ### [Azure CLI](#tab/azure-cli)
 
@@ -546,7 +545,7 @@ Use the Azure CLI to restore a continuous account that is already configured usi
 
 1. Create a new user-assigned identity (or use an existing one) for the restore process.
 
-1. Create the new access policy in your Azure Key Vault account as described previously, use the Object ID of the managed identity from step 1.
+1. Create the new access policy in your Azure Key Vault account as described previously. Use the Object ID of the managed identity from step 1.
 
 1. Trigger the restore using Azure CLI:
 
@@ -575,8 +574,7 @@ Use the Azure CLI to restore a continuous account that is already configured usi
         --default-identity "UserAssignedIdentity=$identityId" \
     ```
 
-1. Once the restore has completed, the target (restored) account has the user-assigned identity.  If desired, user can update the account to use System-Assigned managed identity.
-
+1. Once the restore is complete, the target (restored) account has the user-assigned identity. If desired, user can update the account to use System-Assigned managed identity.
 
 ### [PowerShell / Azure Resource Manager template / Azure portal](#tab/azure-powershell+arm-template+azure-portal)
 
@@ -638,11 +636,11 @@ Rotating the customer-managed key used by your Azure Cosmos DB account can be do
 
 The previous key or key version can be disabled after the [Azure Key Vault audit logs](/azure/key-vault/general/logging) don't show activity from Azure Cosmos DB on that key or key version anymore. No more activity should take place on the previous key or key version after 24 hours of key rotation.
 
-[Key auto-rotation in Azure Key Vault](/azure/key-vault/keys/how-to-configure-key-rotation) is supported as long as the previous key is not disabled or deleted. The internal systems need some time to catch up with the new version of the key after validating that the account is not in revoked state or in transition to enable customer-managed keys.  
+[Key autorotation in Azure Key Vault](/azure/key-vault/keys/how-to-configure-key-rotation) is supported as long as the previous key isn't disabled or deleted. The internal systems need some time to catch up with the new version of the key after validating that the account isn't in revoked state or in transition to enable customer-managed keys.  
 
 ## Error handling
 
-If there are any errors with customer-managed keys in Azure Cosmos DB, Azure Cosmos DB returns the error details along with an HTTP substatus code in the response. You can use the HTTP substatus code to debug the root cause of the issue. See the [HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) article to get the list of supported HTTP substatus codes.
+If there are any errors with customer-managed keys in Azure Cosmos DB, Azure Cosmos DB returns the error details along with an HTTP substatus code in the response. You can use the HTTP substatus code to debug the root cause of the issue. To get the list of supported HTTP substatus codes, see [HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 ## Frequently asked questions
 
@@ -654,7 +652,7 @@ No, there's no charge to enable this feature.
 
 ### How do customer-managed keys influence capacity planning?
 
-[Request Units](./request-units.md) consumed by your database operations see an increase to reflect the extra processing required to perform encryption and decryption of your data when using customer-managed keys. The extra RU consumption may lead to slightly higher utilization of your provisioned capacity. Use this table for guidance:
+[Request Units (RU)](./request-units.md) consumed by your database operations see an increase to reflect the extra processing required to perform encryption and decryption of your data when using customer-managed keys. The extra RU consumption could lead to slightly higher utilization of your provisioned capacity. Use this table for guidance:
 
 | Operation type | Request Unit increase |
 |---|---|
@@ -676,7 +674,7 @@ All the data stored in your Azure Cosmos DB account is encrypted with the custom
 
 ### Are customer-managed keys supported for existing Azure Cosmos DB accounts?
 
-Yes. You can refer to [How to setup customer-managed keys for your existing Azure Cosmos DB accounts](./how-to-setup-customer-managed-keys-existing-accounts.md)
+Yes. To learn more, see [Configure customer-managed keys for your existing Azure Cosmos DB account with Azure Key Vault](./how-to-setup-customer-managed-keys-existing-accounts.md).
 
 ### Is it possible to use customer-managed keys with the Azure Cosmos DB [analytical store](analytical-store-introduction.md)?
 
@@ -688,7 +686,7 @@ Not currently, but container-level keys are being considered.
 
 ### How can I tell if customer-managed keys are enabled on my Azure Cosmos DB account?
 
-From the Azure portal, go to your Azure Cosmos DB account and watch for the **Data Encryption** entry in the left menu; if this entry exists, customer-managed keys are enabled on your account:
+From the Azure portal, go to your Azure Cosmos DB account and watch for the **Data Encryption** entry in the left menu. If this entry exists, customer-managed keys are enabled on your account:
 
 :::image type="content" source="media/how-to-setup-customer-managed-keys/navigation-data-encryption.png" alt-text="Screenshot of the Data encryption option in the resource navigation menu.":::
 
@@ -705,12 +703,12 @@ The following conditions are necessary to successfully restore a periodic backup
 
 ### How do customer-managed keys affect continuous backups?
 
-Azure Cosmos DB gives you the option to configure [continuous backups](./continuous-backup-restore-introduction.md) on your account. With continuous backups, you can restore your data to any point in time within the past 30 days. To use continuous backups on an account where customer-managed keys are enabled, you must use a system-assigned or user-assigned managed identity in the Key Vault access policy. Azure Cosmos DB first-party identities are not currently supported on accounts using continuous backups.
+Azure Cosmos DB gives you the option to configure [continuous backups](./continuous-backup-restore-introduction.md) on your account. With continuous backups, you can restore your data to any point in time within the past 30 days. To use continuous backups on an account where customer-managed keys are enabled, you must use a system-assigned or user-assigned managed identity in the Key Vault access policy. Azure Cosmos DB first-party identities aren't currently supported on accounts using continuous backups.
 
-Prerequisite steps for Customer Managed Keys enabled accounts to update user assigned identity.
+Prerequisite steps for accounts enabled with customer-managed keys to update user-assigned identity.
 
 - Add a user-assigned identity to the Cosmos DB account, and grant permissions in key vault access policy.
-- Set the user-assigned as default identity via Azure CLI or ARM.
+- Set the user-assigned as default identity via Azure CLI or Azure Resource Manager (ARM).
 
 ```azurecli
 az cosmosdb update --resource-group MyResourceGroup --name MyAccountName --default-identity UserAssignedIdentity=/subscriptions/MySubscriptionId/resourcegroups/MyResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/MyUserAssignedIdentity
@@ -718,12 +716,12 @@ az cosmosdb update --resource-group MyResourceGroup --name MyAccountName --defau
 
 The following conditions are necessary to successfully perform a point-in-time restore:
 
-- Access to the customer-managed key must be available to the account's default identity. If the key has been rotated, the rotation process must be fully completed ([see guidelines](/azure/key-vault/keys/how-to-configure-key-rotation)), or the account must have access to both the old and new key versions.
+- Access to the customer-managed key must be available to the account's default identity. If the key has been rotated, the rotation process must be [fully completed](/azure/key-vault/keys/how-to-configure-key-rotation), or the account must have access to both the old and new key versions.
 
 - You must ensure that the user-assigned managed identity originally used on the source account is still declared in the Key Vault access policy.
 
 > [!IMPORTANT]
-> If you revoke the encryption key before deleting your account, your account's backup may miss the data written up to 1 hour before the revocation was made.
+> If you revoke the encryption key before deleting your account, your account's backup might miss the data written up to one hour before the revocation was made.
 
 ### How do I revoke an encryption key?
 
@@ -737,19 +735,19 @@ Alternatively, to revoke all keys from an Azure Key Vault instance, you can dele
 
 ### What operations are available after a customer-managed key is revoked?
 
-The only operation possible when the encryption key has been revoked is account deletion.
+Account deletion is the only operation possible when the encryption key has been revoked.
 
 ### Assign a new managed-identity to the restored database account to continue accessing or recover access to the database account
 
-User-Assigned Identity is tied to a specified Cosmos DB account, whenever we assign a User-Assigned Identity to an account, ARM forwards the request to managed service identities to make this connection. Currently we carry over user-identity information from the source database account to the target database account during the restore (for both Continuous and Periodic backup restore) of CMK + User-Assigned Identity,  
- 
-Since the identity metadata is bound with the source database account and restore workflow doesn't re-scope identity to the target database account. This will cause the restored database accounts to be in a bad state, and become inaccessible after the source account is deleted and identity’s renew time is expired. 
+User-assigned identity is tied to a specified Cosmos DB account, whenever we assign a user-assigned identity to an account, ARM forwards the request to managed-service identities to make this connection. Currently we carry over user-identity information from the source database account to the target database account during the restore (for both Continuous and Periodic backup restore) of CMK + user-assigned identity,  
+
+The identity metadata is bound with the source database account and restore workflow doesn't rescope identity to the target database account. This causes the restored database accounts to be in a bad state, and become inaccessible after the source account is deleted and identity’s renew time is expired.
 
 Steps to assign a new managed-identity:
-1. [Create a new user-assigned managed identity.](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity)
-2. [Grant KeyVault key access to this identity.](#choosing-the-preferred-security-model)
-3. [Assign this new identity to your restored database account.](/cli/azure/cosmosdb/identity#az-cosmosdb-identity-assign)
+1. [Create a new user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity)
+1. [Grant Key Vault key access to this identity](#choose-the-preferred-security-model)
+1. [Assign this new identity to your restored database account](/cli/azure/cosmosdb/identity#az-cosmosdb-identity-assign)
 
-## Next steps
+## Next step
 
-- Learn more about [data encryption in Azure Cosmos DB](database-encryption-at-rest.md).
+- [Data encryption in Azure Cosmos DB](database-encryption-at-rest.md)
