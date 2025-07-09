@@ -43,7 +43,9 @@ Benefits of accelerated logs include:
 
 - Once the accelerated logs feature is enabled, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value will no longer have any effect**. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of `binlog_expire_logs_seconds` for binary log retention. This applies to replica servers we well. 
 
-- [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for a accelerated logs enabled server and can not be disabled.
+- [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for an accelerated logs enabled server and can not be disabled.
+
+- If you attempt to create a replica server in a region where **accelerated logs are not supported**, and the **source server has accelerated logs enabled**, the replica provisioning will **fail**. To proceed, you can **disable accelerated logs** on the source server and then retry provisioning the read replica.
 
 ## Availability of accelerated logs by region
 
