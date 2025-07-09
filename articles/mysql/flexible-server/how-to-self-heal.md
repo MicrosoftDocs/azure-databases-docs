@@ -8,7 +8,7 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ---
-# Self-Heal in Azure Database for MySQL
+# Self-Heal in Azure Database for MySQL (Public Preview)
 
 ## Overview
 
