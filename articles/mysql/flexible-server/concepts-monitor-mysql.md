@@ -29,6 +29,10 @@ This table describes how you can collect data to monitor your service, and what 
 
 [!INCLUDE [azmon-horz-supported-data](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-supported-data.md)]
 
+### Known Issues
+
+Server metrics fail to generate when the server parameter for `character_set_server` is set to **UTF16**. This occurs because the metrics collection task relies on the C# MySQL connector, which has compatibility issues with UTF16. We recommend customers use an alternative character set and restart the server after updating the configuration to restore metrics functionality.
+
 ## Built in monitoring for Azure Database for MySQL - Flexible Server
 
 Azure Database for MySQL - Flexible Server offers built-in resources for monitoring.
