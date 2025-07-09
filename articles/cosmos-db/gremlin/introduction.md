@@ -1,5 +1,5 @@
 ---
-title: Introduction/Overview
+title: Introduction to Azure Cosmos DB for Apache Gremlin
 titleSuffix: Azure Cosmos DB for Apache Gremlin
 description: Use Azure Cosmos DB for Apache Gremlin to store, query, and traverse massive graphs with the Gremlin graph query language of Apache TinkerPop.
 author: manishmsfte
@@ -7,7 +7,7 @@ ms.author: mansha
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: overview
-ms.date: 02/28/2023
+ms.date: 06/24/2025
 ---
 
 # What is Azure Cosmos DB for Apache Gremlin?
@@ -19,7 +19,7 @@ ms.date: 02/28/2023
 Azure Cosmos DB for Apache Gremlin is a graph database service that can be used to store massive graphs with billions of vertices and edges. You can query the graphs with millisecond latency and evolve the graph structure easily. The API for Gremlin is built based on [Apache TinkerPop](https://tinkerpop.apache.org), a graph computing framework that uses the Gremlin query language.
 
 > [!IMPORTANT]
-> Azure Cosmos DB graph engine closely follows Apache TinkerPop specification. However, there are some differences in the implementation details that are specific for Azure Cosmos DB. Some features supported by Apache TinkerPop are not available in Azure Cosmos DB, to learn more about the unsupported features, see [compatibility with Apache TinkerPop](support.md) article.
+> Azure Cosmos DB graph engine closely follows Apache TinkerPop specification. However, there are some differences in the implementation details that are specific for Azure Cosmos DB. Some features supported by Apache TinkerPop aren't available in Azure Cosmos DB. To learn more about the unsupported features, see the [compatibility with Apache TinkerPop](support.md) article.
 
 The API for Gremlin combines the power of graph database algorithms with highly scalable, managed infrastructure. This approach provides a unique and flexible solution to common data problems associated with inflexible or relational constraints.
 
@@ -28,7 +28,7 @@ The API for Gremlin combines the power of graph database algorithms with highly 
 
 ## API for Gremlin benefits
 
-The API for Gremlin has added benefits of being built on Azure Cosmos DB:
+The API for Gremlin has additional benefits of being built on Azure Cosmos DB:
 
 - **Elastically scalable throughput and storage**: Graphs in the real world need to scale beyond the capacity of a single server. Azure Cosmos DB supports horizontally scalable graph databases that can have an unlimited size in terms of storage and provisioned throughput. As the graph database scale grows, the data is automatically distributed using [graph partitioning](./partitioning.md).
 
@@ -42,7 +42,7 @@ The API for Gremlin has added benefits of being built on Azure Cosmos DB:
 
 - **Compatibility with Apache TinkerPop**: The API for Gremlin supports the [open-source Apache TinkerPop standard](https://tinkerpop.apache.org/). The Apache TinkerPop standard has an ample ecosystem of applications and libraries that can be easily integrated with the API.
 
-- **Tunable consistency levels**: Azure Cosmos DB provides five well-defined consistency levels to achieve the right tradeoff between consistency and performance for your application. For queries and read operations, Azure Cosmos DB offers five distinct consistency levels: strong, bounded-staleness, session, consistent prefix, and eventual. These granular, well-defined consistency levels allow you to make sound tradeoffs among consistency, availability, and latency. For more information, see [tunable data consistency levels in Azure Cosmos DB](../consistency-levels.md).
+- **Tunable consistency levels**: Azure Cosmos DB provides five well-defined consistency levels to achieve the right tradeoff between consistency and performance for your application. For queries and read operations, Azure Cosmos DB offers five distinct consistency levels: strong, bounded-staleness, session, consistent prefix, and eventual. These granular, well-defined consistency levels allow you to make sound tradeoffs among consistency, availability, and latency. For more information, see [Consistency levels in Azure Cosmos DB](../consistency-levels.md).
 
 ## Common scenarios for API for Gremlin
 
@@ -54,7 +54,7 @@ Here are some scenarios where graph support of Azure Cosmos DB can be useful:
 
 - **Geospatial**: Many applications in telecommunications, logistics, and travel planning need to find a location of interest within an area or locate the shortest/optimal route between two locations. Azure Cosmos DB is a natural fit for these problems.
 
-- **Internet of Things**: With the network and connections between IoT devices modeled as a graph, you can build a better understanding of the state of your devices and assets. You also can learn how changes in one part of the network can potentially affect another part.
+- **Internet of things**: With the network and connections between IoT devices modeled as a graph, you can build a better understanding of the state of your devices and assets. You also can learn how changes in one part of the network can potentially affect another part.
 
 ## Introduction to graph databases
 
@@ -72,33 +72,33 @@ A property [graph](https://mathworld.wolfram.com/Graph.html) is a structure that
 
 - **Properties**: Properties express information (or metadata) about the vertices and edges. There can be any number of properties in either vertices or edges, and they can be used to describe and filter the objects in a query. Example properties include a vertex that has name and age, or an edge, which can have a time stamp and/or a weight.
 
-- **Label** - A label is a name or the identifier of a vertex or an edge. Labels can group multiple vertices or edges such that all the vertices/edges in a group have a certain label. For example, a graph can have multiple vertices with a label of "person".
+- **Label**: A label is a name or the identifier of a vertex or an edge. Labels can group multiple vertices or edges such that all the vertices/edges in a group have a certain label. For example, a graph can have multiple vertices with a label of *person*.
 
-Graph databases are often included within the NoSQL or non-relational database category, since there's no dependency on a schema or constrained data model. This lack of schema allows for modeling and storing connected structures naturally and efficiently.
+Graph databases are often included within the NoSQL or nonrelational database category, since there's no dependency on a schema or constrained data model. This lack of schema allows for modeling and storing connected structures naturally and efficiently.
 
 ### Example of a graph database
 
 Let's use a sample graph to understand how queries can be expressed in Gremlin. The following figure shows a business application that manages data about users, interests, and devices in the form of a graph.  
 
-:::image type="content" source="media/introduction/example-graph.png" lightbox="media/introduction/example-graph.png" alt-text="Sample property graph showing persons, devices, and interests." border="false":::
+:::image type="content" source="media/introduction/example-graph.png" lightbox="media/introduction/example-graph.png" alt-text="Sample property graph showing persons, devices, and interests.":::
 
 This graph has the following *vertex* types. These types are also called *labels* in Gremlin:
 
-- **People**: The graph has three people; Robin, Thomas, and Ben.
+- **People**: The graph has three people, named Robin, Thomas, and Ben.
 
-- **Interests**: Their interests, in this example, include the game of Football.
+- **Interests**: Their interests, in this example, include the game of football.
 
 - **Devices**: The devices that people use.
 
 - **Operating Systems**: The operating systems that the devices run on.
 
-- **Place**: The place\[s\] where devices are accessed.
+- **Place**: The places where devices are accessed.
 
 We represent the relationships between these entities via the following *edge* types:
 
 - **Knows**: Represent familiarity. For example, "Thomas knows Robin".
 
-- **Interested**: Represent the interests of the people in our graph. For example, "Ben is interested in Football".
+- **Interested**: Represent the interests of the people in our graph. For example, "Ben is interested in football".
 
 - **RunsOS**: Represent what OS a device runs. For example, "Laptop runs the Windows OS".
 
@@ -106,9 +106,9 @@ We represent the relationships between these entities via the following *edge* t
 
 - **Located**: Represent the location from which the devices are accessed.
 
-The Gremlin Console is an interactive terminal offered by the Apache TinkerPop and this terminal is used to interact with the graph data. For more information, see [the Gremlin console quickstart](quickstart-console.md). You can also perform these operations using Gremlin drivers in the platform of your choice (Java, Node.js, Python, or .NET). The following examples show how to run queries against this graph data using the Gremlin Console.
+The Gremlin Console is an interactive terminal offered by the Apache TinkerPop, and this terminal is used to interact with the graph data. For more information, see [the Gremlin console quickstart](quickstart-console.md). You can also perform these operations using Gremlin drivers in the platform of your choice (Java, Node.js, Python, or .NET). The following examples show how to run queries against this graph data using the Gremlin Console.
 
-First let's look at create, read, update, and delete (CRUD). The following Gremlin statement inserts the **Thomas** *vertex* into the graph with a few properties:
+First, let's look at create, read, update, and delete (CRUD) operations. The following Gremlin statement inserts the **Thomas** *vertex* into the graph with a few properties:
 
 ```console
 g.addV('person').
@@ -119,7 +119,7 @@ g.addV('person').
 ```
 
 > [!TIP]
-> If you are following along with these examples, you can use any of these properties (`age`, `firstName`, `lastName`) as a partition key when you create your graph. The `id` property is not supported as a partition key in a graph.
+> If you're following along with these examples, you can use any of these properties (`age`, `firstName`, `lastName`) as a partition key when you create your graph. The `id` property isn't supported as a partition key in a graph.
 
 Next, the following Gremlin statement inserts a *knows* edge between **Thomas** and **Robin**.
 
@@ -138,7 +138,7 @@ g.V().
   by('firstName', decr)
 ```
 
-Where graphs shine is when you need to answer questions like "What operating systems do friends of Thomas use?". You can run this Gremlin traversal to get that information from the graph:
+Where graphs shine is when you need to answer questions like "What operating systems do friends of Thomas use?" You can run this Gremlin traversal to get that information from the graph:
 
 ```console
 g.V('thomas.1').
@@ -152,7 +152,7 @@ g.V('thomas.1').
 
 ## Next steps
 
-- Get started with the [API for Graph .NET quickstart](quickstart-dotnet.md).
-- Learn how to [query graphs in API for Graph using Gremlin](tutorial-query.md).
-- Learn about [graph data modeling](modeling.md).
-- Receive up to 63% discount on [Azure Cosmos DB prices with Reserved Capacity](../reserved-capacity.md).
+- [Quickstart: Azure Cosmos DB for Apache Gremlin library for .NET](quickstart-dotnet.md)
+- [Tutorial: Query Azure Cosmos DB for Gremlin by using Gremlin](tutorial-query.md)
+- [Graph data modeling with Azure Cosmos DB for Apache Gremlin](modeling.md)
+- [Azure Cosmos DB pricing & discounts with Reserved Capacity](../reserved-capacity.md)

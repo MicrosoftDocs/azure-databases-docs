@@ -146,9 +146,13 @@ A: Azure provides visibility through the Portal.
 
 A: Servers in Extended Support can raise support cases for security-related issues only. Feature requests, performance tuning, and general bug fixes aren't supported for end of support versions.
 
+**Q:** **How will the period between November 13, 2025, and March 1, 2026, be handled for PostgreSQL version 13? Will support be continued during this time? How will it differ from the period before November 13, 2025****?**
+
+A: According to the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/), each major version is supported until retired by the community. Extended support from Azure will not be provided  between November 13, 2025 - March 1, 2026. Customers are charged for Extended Support starting April 1. Users are encouraged to upgrade to newer versions to ensure continued support and access to new features.
+
 ## PostgreSQL 12 support
 
-PostgreSQL 12 reached its end of life on **November 14, 2024**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, each major version is supported until retired by the community. Unlike PostgreSQL 11, which has extended support until November 9, 2025, PostgreSQL 12 doesn't receive extended support from Azure. Users are encouraged to upgrade to newer versions to ensure continued support and access to new features.
+PostgreSQL 12 reached its end of life on **November 14, 2024**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, each major version is supported until retired by the community. Unlike PostgreSQL 11, which has extended support until November 9, 2025, PostgreSQL 12 doesn't receive extended support from Azure until March 1, 2026. Users are encouraged to upgrade to newer versions to ensure continued support and access to new features.
 
 ## PostgreSQL 11 support
 
