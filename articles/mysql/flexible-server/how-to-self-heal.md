@@ -16,6 +16,9 @@ The **Self-Heal** feature in Azure Database for MySQL empowers customers to reso
 
 Self-Heal is always available in the Azure portal and can be triggered proactively by customers whenever they suspect something is wrong with their server—even if no alerts or errors are currently shown.
 
+> [!NOTE]
+> **Self-heal is currently in Public Preview phase**. Availability is limited to selected region, For more information or to provide feedback, contact [Ask Azure Database For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
+
 ## Key Benefits
 
 - **Self-service recovery**: Resolve common issues without waiting for support.
