@@ -68,9 +68,11 @@ landingContent:
         links:
           - text: Migration options
             url: migration-options.md
+      - linkListType: how-to-guide
+        links:
           - text: Migrate using native tools
             url: how-to-migrate-native-tools.md
-          - text: Migration from RU to vCore
+          - text: Migrate from RU to vCore
             url: ../how-to-migrate-vcore.md
   - title: Manage a vCore cluster
     linkLists:
