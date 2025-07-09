@@ -58,17 +58,17 @@ To use Self-Heal:
 
 ## Frequently Asked Questions (FAQ)
 
-### Q: Will clicking the Self-Heal button automatically open a support case?
+**Q: Will clicking the Self-Heal button automatically open a support case?**
 
 A: **No.** Triggering a Self-Heal action does **not** create a support case. The feature is designed to help customers resolve issues independently, without involving Azure support unless further assistance is needed.
 
 
-### Q: When should I use Self-Heal?
+**Q: When should I use Self-Heal?**
 
 A: You can use Self-Heal **any time** you suspect your server isn't behaving as expected—even if there are no active alerts. It’s a proactive tool that helps you quickly address common issues without waiting for diagnostics or support.
 
 
-### Q: Will Self-Heal cause downtime?
+**Q: Will Self-Heal cause downtime?**
 
 A: It depends on the type of action:
 
@@ -76,7 +76,7 @@ A: It depends on the type of action:
 - **Impactful Self-Heal**: May cause brief downtime. You’ll be informed before proceeding.
 
 
-### Q: Is Self-Heal available for all MySQL servers?
+**Q: Is Self-Heal available for all MySQL servers?**
 
 A: Currently, Self-Heal is available for **Azure Database for MySQL – Flexible Server**, and only for **non-HA (High Availability) servers**.
 
