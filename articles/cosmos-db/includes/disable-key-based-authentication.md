@@ -117,4 +117,4 @@ Use these steps to create a new Azure Cosmos DB for NoSQL account with key-based
 ::: zone-end
 
 > [!IMPORTANT]
-> Modifying an Azure Cosmos DB account requires an Azure role-based access control (RBAC) role with at least the `Microsoft.DocumentDb/databaseAccounts/*/write` permission. For more information, see [permissions for Azure Cosmos DB](/azure/role-based-access-control/permissions/databases#microsoftdocumentdb).
+> Modifying an Azure Cosmos DB account requires an Azure role with at least the `Microsoft.DocumentDb/databaseAccounts/*/write` permission. For more information, see [permissions for Azure Cosmos DB](/azure/role-based-access-control/permissions/databases#microsoftdocumentdb).
