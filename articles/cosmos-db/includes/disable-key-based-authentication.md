@@ -115,3 +115,6 @@ Use these steps to create a new Azure Cosmos DB for NoSQL account with key-based
     :::image source="media/disable-key-based-authentication/security-step-toggle.png" alt-text="Screenshot of the option to disable key-based authentication when creating a new account in the Azure portal.":::
 
 ::: zone-end
+
+> [!IMPORTANT]
+> Changing an Azure Cosmos DB account requires an Azure role-based access control (RBAC) role with at least the `Microsoft.DocumentDb/databaseAccounts/*/write` permission. For more information, see [permissions for Azure Cosmos DB](/azure/role-based-access-control/permissions/databases#microsoftdocumentdb).
