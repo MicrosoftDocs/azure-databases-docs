@@ -12,7 +12,7 @@ ms.devlang: azurecli
 
 # Quickstart: Create a multi-region cluster with Azure Managed Instance for Apache Cassandra
 
-Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, for maximum flexibility and control where needed.
+Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, for maximum flexibility and control.
 
 This quickstart demonstrates how to use the Azure CLI commands to configure a multi-region cluster in Azure.
 
@@ -184,7 +184,7 @@ If you encounter errors when you run `az role assignment create`, you might not 
    * Standard_D16s_v4
    * Standard_D32s_v4
 
-   Note also that `--availability-zone` is set to false. To enable availability zones, set it to true. Availability zones increase the availability service-level agreement (SLA) of the service. For more information, see [Service-level agreements for Azure Managed Instance for Apache Cassandra](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
+   Note also that `--availability-zone` is set to `false`. To enable availability zones, set it to `true`. Availability zones increase the availability service-level agreement (SLA) of the service. For more information, see [Service-level agreements for Azure Managed Instance for Apache Cassandra](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    Availability zones aren't supported in all regions. Deployments fail if you select a region where availability zones aren't supported. For supported regions, see [Azure regions with availability zones](/azure/reliability/availability-zones-region-support).
 

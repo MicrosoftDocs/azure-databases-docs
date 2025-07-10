@@ -13,7 +13,7 @@ ms.devlang: azurecli
 
 # Quickstart: Create an Azure Managed Instance for Apache Cassandra cluster by using the Azure CLI
 
-Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, for maximum flexibility and control where needed.
+Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, for maximum flexibility and control.
 
 This quickstart demonstrates how to use the Azure CLI commands to create a cluster with Azure Managed Instance for Apache Cassandra. It also shows how to create a datacenter and scale nodes up or down within the datacenter.
 
@@ -115,7 +115,7 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
    - Standard_E20s_v5
    - Standard_E32s_v5
 
-   By default, `--availability-zone` is set to false. To enable availability zones, set it to true. Availability zones help increasing the availability of the service. For more information, see [Service-level agreements for online services](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
+   By default, `--availability-zone` is set to `false`. To enable availability zones, set it to `true`. Availability zones help increasing the availability of the service. For more information, see [Service-level agreements for online services](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    Availability zones aren't supported in all Azure regions. Deployments fail if you select a region where availability zones aren't supported. For supported regions, see the [Azure regions list](/azure/reliability/availability-zones-region-support).
 
@@ -162,13 +162,13 @@ Connect by using CQLSH, as described in the documentation.
 
 ### Connect from an application
 
-As with CQLSH, when you use one of the supported [Apache Cassandra client drivers](https://cassandra.apache.org/doc/stable/cassandra/getting-started/drivers.html) to connect from an application, Secure Sockets Layer (SSL) encryption must be enabled and certificate verification must be disabled. For samples, see [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started), and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started).
+As with CQLSH, when you use one of the supported [Apache Cassandra client drivers](https://cassandra.apache.org/doc/stable/cassandra/getting-started/drivers.html) to connect from an application, Transport Layer Security/Secure Sockets Layer (TLS/SSL) encryption must be enabled and certificate verification must be disabled. For samples, see [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started), and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started).
 
-We recommend that you disable certificate verification because it doesn't work unless you map IP addresses of your cluster nodes to the appropriate domain. If an internal policy mandates that you perform SSL certificate verification for any application, add entries like `10.0.1.5 host1.managedcassandra.cosmos.azure.com` in your hosts file for each node to facilitate this setup. If you take this approach, you also need to add new entries whenever you scale up nodes.
+We recommend that you disable certificate verification because it doesn't work unless you map IP addresses of your cluster nodes to the appropriate domain. If an internal policy mandates that you perform TLS/SSL certificate verification for any application, add entries like `10.0.1.5 host1.managedcassandra.cosmos.azure.com` in your hosts file for each node to facilitate this setup. If you take this approach, you also need to add new entries whenever you scale up nodes.
 
 For Java, we recommend that you enable the [speculative execution policy](https://docs.datastax.com/en/developer/java-driver/4.10/manual/core/speculative_execution/) where applications are sensitive to tail latency. For a demo that illustrates how this approach works and to see how to enable the policy, see [Implement speculative execution policy](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-speculative-execution).
 
-You usually don't need to configure certificates (such as `rootCA`, `node`, `client`, or `truststore`) to connect to Azure Managed Instance for Apache Cassandra. SSL encryption uses the default trust store and the client's chosen runtime password. For sample code, see [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started), and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started)). Certificates are trusted by default. If not, add them to the trust store.
+You usually don't need to configure certificates (such as `rootCA`, `node`, `client`, or `truststore`) to connect to Azure Managed Instance for Apache Cassandra. TLS/SSL encryption uses the default trust store and the client's chosen runtime password. For sample code, see [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started), and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started)). Certificates are trusted by default. If not, add them to the trust store.
 
 ### Configure client certificates (optional)
 
@@ -177,7 +177,7 @@ Configuring client certificates is optional. A client application can connect to
 - **Self-signed certificates:** Private and public certificates with no Certificate Authority (CA) for each node. In this case, all public certificates are required.
 - **Certificates signed by a CA:** Certificates issued by a self-signed CA or a public CA. For this setup, you need the root CA certificate and all intermediary certificates, if applicable. For more information, see [Prepare SSL certificates for production](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLCertWithCA.html).
 
-To implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS), provide the certificates by using the Azure CLI. The following command uploads and applies your client certificates to the trust store for your Azure Managed Instance for Apache Cassandra cluster. You don't need to modify `cassandra.yaml` settings. After the certificates are applied, the cluster requires Cassandra to verify the certificates during client connections. For more information, see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html).
+To implement client-to-node certificate authentication or mutual Transport Layer Security, provide the certificates by using the Azure CLI. The following command uploads and applies your client certificates to the trust store for your Azure Managed Instance for Apache Cassandra cluster. You don't need to modify `cassandra.yaml` settings. After the certificates are applied, the cluster requires Cassandra to verify the certificates during client connections. For more information, see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/stable/cassandra/managing/configuration/cass_yaml_file.html).
 
 
    ```azurecli-interactive
