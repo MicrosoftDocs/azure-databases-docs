@@ -25,6 +25,10 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 ## July 2025
 
+### Accelerated logs feature is now available in General Purpose service tier
+Accelerated logs are now supported in the General Purpose service tier of Azure Database for MySQL – Flexible Server. Previously available only in the Business Critical tier, this feature enhances performance and reduces transaction latency. Accelerated logs feature in General Purpose tier is available at an additonal cost. [Learn more](./concepts-accelerated-logs.md).
+
+
 ### Automate scheduling of on-demand backups
 
 Azure Database for MySQL now supports the ability to schedule on-demand backups using automation tasks. This feature gives you greater control and flexibility in managing on-demand backups for your Azure Database for MySQL Flexible Server instances. Learn more about the how to schedule an automation task [here](./create-automation-tasks.md#on-demand-backup-server-task).
