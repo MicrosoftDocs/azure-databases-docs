@@ -195,17 +195,17 @@ More information can be found in [PostgreSQL release notes.](https://www.postgre
 
 ### PostgreSQL 16 changes with role based security
 
-In PostgreSQL database role can have many attributes that define its privileges.One such attribute is the [**CREATEROLE** attribute](https://www.postgresql.org/docs/current/role-attributes.html), which is important to PostgreSQL database management of users and roles. In PostgreSQL 16 significant changes were introduced to this attribute.
+In PostgreSQL database role can have many attributes that define its privileges. One such attribute is the [**CREATEROLE** attribute](https://www.postgresql.org/docs/current/role-attributes.html), which is important to PostgreSQL database management of users and roles. In PostgreSQL 16 significant changes were introduced to this attribute.
 In PostgreSQL 16, users with **CREATEROLE** attribute no longer have the ability to hand out membership in any role to anyone; instead, like other users, without this attribute, they can only hand out memberships in roles for which they possess **ADMIN OPTION**. Also, in PostgreSQL 16, the **CREATEROLE** attribute still allows a nonsuperuser the ability to provision new users, however they can only drop users that they themselves created. Attempts to drop users, who were not created by a user with the **CREATEROLE** attribute, will result in an error.
 
 PostgreSQL 16 also introduced new and improved built-in roles. New *pg_use_reserved_connections* role in PostgreSQL 16 allows the use of connection slots reserved via reserved_connections. The *pg_create_subscription* role allows superusers to create subscriptions.
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL flexible server does not allow users to be granted *pg_write_all_data* attribute, which allows user to write all data (tables, views, sequences), as if having INSERT, UPDATE, and DELETE rights on those objects, and USAGE rights on all schemas, even without having it explicitly granted. As a workaround recommended to grant similar permissions on a more finite level per database and object. 
-
 ### Improved control for *azure_pg_admin*
 
 In PostgreSQL 16, a strict role hierarchy structure has been implemented for users with the [CREATEROLE](https://www.postgresql.org/docs/16/sql-createrole.html) privilege, specifically related to grant roles. To improve administrative flexibility and address a limitation introduced in PostgreSQL 16, Azure Database for PostgreSQL flexible server has enhanced the capabilities of the *azure_pg_admin* role across all PostgreSQL versions. With this update, members of the *azure_pg_admin* role can now manage roles and access objects owned by any non-restricted role, even if those roles are also members of *azure_pg_admin*. This enhancement ensures that administrative users maintain consistent and comprehensive control over role and permission management, providing a seamless and reliable experience without requiring superuser access.
+
+> [!IMPORTANT]
+> Azure Database for PostgreSQL flexible server does not allow users to be granted *pg_write_all_data* attribute, which allows user to write all data (tables, views, sequences), as if having INSERT, UPDATE, and DELETE rights on those objects, and USAGE rights on all schemas, even without having it explicitly granted. As a workaround recommended to grant similar permissions on a more finite level per database and object. 
 
 ## Row level security
 
