@@ -38,7 +38,6 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    :::image type="content" source="media/create-cluster-portal/create-cluster.png" border="true" alt-text="Screenshot that shows the button used to create the cluster." lightbox="media/create-cluster-portal/create-cluster.png":::
 
 1. On the **Create Managed Instance for Apache Cassandra** pane, enter the following information:
-
    - **Subscription**: From the dropdown, select your Azure subscription.
    - **Resource group**: Specify whether you want to create a new resource group or use an existing one. A resource group is a container that holds related resources for an Azure solution.
    - **Cluster name**: Enter a name for your cluster.
@@ -55,7 +54,6 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    If you use a [virtual private network](use-vpn.md), you don't need to open another connection.
 
    The deployment of Azure Managed Instance for Apache Cassandra requires internet access. Deployment fails in environments where internet access is restricted. Make sure that you aren't blocking access in your virtual network to the following vital Azure services that are necessary for Managed Cassandra to work properly. For more information, see [Required outbound network rules](network-rules.md).
-
       - Azure Storage
       - Azure Key Vault
       - Azure Virtual Machine Scale Sets
@@ -73,7 +71,6 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
 1. Next, select the **Data center** tab.
 
 1. Enter the following information:
-
    - **Data center name**: Enter a datacenter name in the text field.
    - **Availability zone**: Select this checkbox if you want to enable availability zones.
    - **SKU size**: Choose from the available virtual machine (VM) product tier sizes.
@@ -83,7 +80,6 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    We introduced write-through caching (public preview) by using L-series VM product tiers. This implementation aims to minimize tail latencies and enhance read performance, particularly for read-intensive workloads. These specific product tiers are equipped with locally attached disks, which ensure increased IOPS for read operations and reduced tail latency.
 
    Write-through caching is provided without a service-level agreement (SLA). We don't recommend it for production workloads. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
    - **No. of disks**: Choose the number of p30 disks to be attached to each Cassandra node.
    - **No. of nodes**: Choose the number of Cassandra nodes to deploy to this datacenter.
 
@@ -147,7 +143,6 @@ Scaling is an online operation and works in the same manner as described for pat
    ```
 
 1. Fill in the appropriate fields:
-
    * **Datacenter name**: From the dropdown list, select your Azure subscription.
    * **Availability zone**: Select if you want to enable availability zones in this datacenter.
    * **Location**: Location where your datacenter is deployed.

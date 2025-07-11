@@ -29,7 +29,7 @@ If your search requirements are significant, we recommend that you deploy a dedi
 
 ## Create data with Lucene Index
 
-1. In your `CQLSH` command window, create a keyspace and table:
+1. In your CQLSH command window, create a keyspace and table:
 
     ```SQL
        CREATE KEYSPACE demo
