@@ -113,7 +113,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
 
    The certificates returned from the preceding command contain line breaks that are represented as text. An example is `\r\n`. Copy each certificate to a file and format it before you attempt to import it into your existing trust store.
 
-   Copy the `gossipCertificates` array value shown in the screenshot into a file. Use the following bash script to format the certificates and create separate PEM files for each. To download the bash script, see [Download jq](https://stedolan.github.io/jq/download/) for your platform.
+   Copy the `gossipCertificates` array value shown in the screenshot into a file. Use the following Bash script to format the certificates and create separate PEM files for each. To download the Bash script, see [Download jq](https://stedolan.github.io/jq/download/) for your platform.
 
    ```bash
    readarray -t cert_array < <(jq -c '.[]' gossipCertificates.txt)

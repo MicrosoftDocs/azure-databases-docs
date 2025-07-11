@@ -25,7 +25,7 @@ If your search requirements are significant, we recommend that you deploy a dedi
 
    :::image type="content" source="./media/search-lucene-index/update-cluster.png" alt-text="Screenshot that shows Update Cassandra cluster properties." lightbox="./media/search-lucene-index/update-cluster.png" border="true":::
 
-- Connect to your cluster from the [Cassandra Query Language Shell (CQLSH)](create-cluster-portal.md#connecting-from-cqlsh).
+- Connect to your cluster from the [Cassandra Query Language Shell (CQLSH)](create-cluster-portal.md#connect-from-cqlsh).
 
 ## Create data with Lucene Index
 

@@ -50,18 +50,18 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    - **Virtual network**: Select an existing virtual network and subnet, or create a new one.
    - **Assign roles**: Virtual networks require special permissions to allow managed Cassandra clusters to be deployed. Keep this box selected if you create a new virtual network or use an existing virtual network without permissions applied. If you use a virtual network where you previously deployed Azure SQL Managed Instance Cassandra clusters, clear this option.
 
-   :::image type="content" source="media/create-cluster-portal/create-cluster-page.png" border="true" alt-text="Screenshot that shows the Basics tab on the Create page." lightbox="media/create-cluster-portal/create-cluster-page.png":::
+      :::image type="content" source="media/create-cluster-portal/create-cluster-page.png" border="true" alt-text="Screenshot that shows the Basics tab on the Create page." lightbox="media/create-cluster-portal/create-cluster-page.png":::
 
    If you use a [virtual private network](use-vpn.md), you don't need to open another connection.
 
    The deployment of Azure Managed Instance for Apache Cassandra requires internet access. Deployment fails in environments where internet access is restricted. Make sure that you aren't blocking access in your virtual network to the following vital Azure services that are necessary for Managed Cassandra to work properly. For more information, see [Required outbound network rules](network-rules.md).
 
-   - Azure Storage
-   - Azure Key Vault
-   - Azure Virtual Machine Scale Sets
-   - Azure Monitor
-   - Microsoft Entra ID
-   - Microsoft Defender for Cloud
+      - Azure Storage
+      - Azure Key Vault
+      - Azure Virtual Machine Scale Sets
+      - Azure Monitor
+      - Microsoft Entra ID
+      - Microsoft Defender for Cloud
 
    - **Auto replicate**: Choose the form of autoreplication to use. For more information, see [Turnkey replication](#turnkey-replication).
    - **Schedule event strategy**: The strategy the cluster uses for scheduled events.
@@ -78,7 +78,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    - **Availability zone**: Select this checkbox if you want to enable availability zones.
    - **SKU size**: Choose from the available virtual machine (VM) product tier sizes.
 
-   :::image type="content" source="media/create-cluster-portal/l-sku-sizes.png" border="true" alt-text="Screenshot that shows selecting a product tier size." lightbox="media/create-cluster-portal/l-sku-sizes.png":::
+      :::image type="content" source="media/create-cluster-portal/l-sku-sizes.png" border="true" alt-text="Screenshot that shows selecting a product tier size." lightbox="media/create-cluster-portal/l-sku-sizes.png":::
 
    We introduced write-through caching (public preview) by using L-series VM product tiers. This implementation aims to minimize tail latencies and enhance read performance, particularly for read-intensive workloads. These specific product tiers are equipped with locally attached disks, which ensure increased IOPS for read operations and reduced tail latency.
 
@@ -87,7 +87,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    - **No. of disks**: Choose the number of p30 disks to be attached to each Cassandra node.
    - **No. of nodes**: Choose the number of Cassandra nodes to deploy to this datacenter.
 
-   :::image type="content" source="media/create-cluster-portal/create-datacenter-page.png" border="true" alt-text="Screenshot that shows the Data center tab where you can review the values." lightbox="media/create-cluster-portal/create-datacenter-page.png":::
+      :::image type="content" source="media/create-cluster-portal/create-datacenter-page.png" border="true" alt-text="Screenshot that shows the Data center tab where you can review the values." lightbox="media/create-cluster-portal/create-datacenter-page.png":::
 
    Availability zones aren't supported in all regions. Deployments fail if you select a region where availability zones aren't supported. For more information, see the [Azure regions list](/azure/reliability/availability-zones-region-support).
 
@@ -158,7 +158,7 @@ Scaling is an online operation and works in the same manner as described for pat
 
       :::image type="content" source="media/create-cluster-portal/add-datacenter-2.png" border="true" alt-text="Screenshot that shows the Add Data Center page." lightbox="media/create-cluster-portal/add-datacenter-2.png":::
 
-     The Azure portal doesn't allow creation of a new virtual network when you add a datacenter. You need to choose an existing virtual network and you need to ensure that there's connectivity between the target subnets where datacenters are deployed. You also need to apply the appropriate role to the virtual network to allow deployment, as described previously.
+   The Azure portal doesn't allow creation of a new virtual network when you add a datacenter. You need to choose an existing virtual network and you need to ensure that there's connectivity between the target subnets where datacenters are deployed. You also need to apply the appropriate role to the virtual network to allow deployment, as described previously.
 
 1. When the datacenter is deployed, you should be able to view all the datacenter information on the **Data Center** pane.
 

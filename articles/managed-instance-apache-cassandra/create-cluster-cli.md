@@ -158,8 +158,6 @@ Check which [versions of Cassandra are still supported](https://cassandra.apache
 
 Install the Cassandra libraries to get CQLSH. Follow the official steps from the [Cassandra documentation](https://cassandra.apache.org/doc/stable/cassandra/managing/tools/cqlsh.html).
 
-Connect by using CQLSH, as described in the documentation.
-
 ### Connect from an application
 
 As with CQLSH, when you use one of the supported [Apache Cassandra client drivers](https://cassandra.apache.org/doc/stable/cassandra/getting-started/drivers.html) to connect from an application, Transport Layer Security/Secure Sockets Layer (TLS/SSL) encryption must be enabled and certificate verification must be disabled. For samples, see [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started), and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started).
