@@ -10,7 +10,7 @@ ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, devx-track-dotnet, devx-track-extended-java, devx-track-ts
 ---
 
-# Configure multi-region writes in your applications that use Azure Cosmos DB
+# Configure multi-region writes in applications that use Azure Cosmos DB
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 In multiple-region write scenarios, you can get a performance benefit by writing only to the region close to your application instance. Azure Cosmos DB handles the replication for you behind the scenes.

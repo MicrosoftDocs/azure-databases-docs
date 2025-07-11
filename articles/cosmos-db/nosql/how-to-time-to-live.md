@@ -18,6 +18,8 @@ In Azure Cosmos DB, you can choose to configure time to live (TTL) at the contai
 > [!TIP]
 > This article's content is related to Azure Cosmos DB transactional store TTL. If you're looking for analytical store TTL, which enables NoETL HTAP scenarios through [Azure Synapse Link](../synapse-link.md), see [Analytical Time-to-Live](../analytical-store-introduction.md#analytical-ttl).
 
+<a id="enable-time-to-live-on-a-container-using-the-azure-portal"></a>
+
 ## Enable TTL on a container by using the Azure portal
 
 Use the following steps to enable TTL on a container with no expiration. Enabling TTL at the container level allows the same value to be overridden at an individual item's level. You can also set the TTL by entering a nonzero value for seconds.

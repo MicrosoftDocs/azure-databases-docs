@@ -237,18 +237,18 @@ result = container.scripts.execute_stored_procedure(sproc=created_sproc,params=[
 
 ---
 
-## <a id="how-to-run-pre-triggers"></a>How to run pretriggers
+## <a id="how-to-run-pre-triggers"></a>How to run pre-triggers
 
-The following examples show how to register and call a pretrigger by using the Azure Cosmos DB SDKs. For the source of this pretrigger example, saved as *trgPreValidateToDoItemTimestamp.js*, see [Pretriggers](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers).
+The following examples show how to register and call a pre-trigger by using the Azure Cosmos DB SDKs. For the source of this pre-trigger example, saved as *trgPreValidateToDoItemTimestamp.js*, see [Pre-triggers](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers).
 
-When you run an operation by specifying `PreTriggerInclude` and then passing the name of the trigger in a `List` object, pretriggers are passed in the `RequestOptions` object.
+When you run an operation by specifying `PreTriggerInclude` and then passing the name of the trigger in a `List` object, pre-triggers are passed in the `RequestOptions` object.
 
 > [!NOTE]
 > Even though the name of the trigger is passed as a `List`, you can still run only one trigger per operation.
 
 ### [.NET SDK v2](#tab/dotnet-sdk-v2)
 
-The following code shows how to register a pretrigger using the .NET SDK v2:
+The following code shows how to register a pre-trigger using the .NET SDK v2:
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -263,7 +263,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-The following code shows how to call a pretrigger using the .NET SDK v2:
+The following code shows how to call a pre-trigger using the .NET SDK v2:
 
 ```csharp
 dynamic newItem = new
@@ -281,7 +281,7 @@ await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
 
 ### [.NET SDK v3](#tab/dotnet-sdk-v3)
 
-The following code shows how to register a pretrigger using the .NET SDK v3:
+The following code shows how to register a pre-trigger using the .NET SDK v3:
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
@@ -293,7 +293,7 @@ await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(ne
 });
 ```
 
-The following code shows how to call a pretrigger using the .NET SDK v3:
+The following code shows how to call a pre-trigger using the .NET SDK v3:
 
 ```csharp
 dynamic newItem = new
@@ -309,7 +309,7 @@ await client.GetContainer("database", "container").CreateItemAsync(newItem, null
 
 ### [Java SDK](#tab/java-sdk)
 
-The following code shows how to register a pretrigger using the Java SDK:
+The following code shows how to register a pre-trigger using the Java SDK:
 
 ```java
 CosmosTriggerProperties definition = new CosmosTriggerProperties(
@@ -324,7 +324,7 @@ CosmosTriggerResponse response = container
     .createTrigger(definition);
 ```
 
-The following code shows how to call a pretrigger using the Java SDK:
+The following code shows how to call a pre-trigger using the Java SDK:
 
 ```java
 ToDoItem item = new ToDoItem();
@@ -343,7 +343,7 @@ CosmosItemResponse<ToDoItem> response = container.createItem(item, options);
 
 ### [JavaScript SDK](#tab/javascript-sdk)
 
-The following code shows how to register a pretrigger using the JavaScript SDK:
+The following code shows how to register a pre-trigger using the JavaScript SDK:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -356,7 +356,7 @@ await container.scripts.triggers.create({
 });
 ```
 
-The following code shows how to call a pretrigger using the JavaScript SDK:
+The following code shows how to call a pre-trigger using the JavaScript SDK:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -371,7 +371,7 @@ await container.items.create({
 
 ### [Python SDK](#tab/python-sdk)
 
-The following code shows how to register a pretrigger using the Python SDK:
+The following code shows how to register a pre-trigger using the Python SDK:
 
 ```python
 import azure.cosmos.cosmos_client as cosmos_client
@@ -397,7 +397,7 @@ container = database.get_container_client(container_name)
 trigger = container.scripts.create_trigger(trigger_definition)
 ```
 
-The following code shows how to call a pretrigger using the Python SDK:
+The following code shows how to call a pre-trigger using the Python SDK:
 
 ```python
 item = {'category': 'Personal', 'name': 'Groceries',

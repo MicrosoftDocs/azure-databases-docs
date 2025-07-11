@@ -23,7 +23,7 @@ As you change your account level consistency, ensure you redeploy your applicati
 
 ## Configure the default consistency level
 
-The [default consistency level](../consistency-levels.md) is the consistency level that clients use by default.
+To learn more about the default consistency level, see [Consistency levels in Azure Cosmos DB](../consistency-levels.md).
 
 # [Azure portal](#tab/portal)
 
@@ -190,7 +190,7 @@ container.ReadItem(context.Background(), azcosmos.NewPartitionKeyString("Quentin
 
 ## Utilize session tokens
 
-One of the consistency levels in Azure Cosmos DB is *Session* consistency. This level is the default level applied to Azure Cosmos DB accounts. When working with Session consistency, every new write request to Azure Cosmos DB is assigned a new SessionToken. The CosmosClient uses this token internally with each read/query request to ensure that the set consistency level is maintained.
+One of the consistency levels in Azure Cosmos DB is *session* consistency. This level is the default level applied to Azure Cosmos DB accounts. When working with session consistency, every new write request to Azure Cosmos DB is assigned a new SessionToken. The CosmosClient uses this token internally with each read/query request to ensure that the set consistency level is maintained.
 
 In some scenarios, you need to manage this session yourself. Consider a web application with multiple nodes, each node has its own instance of CosmosClient. If you want these nodes to participate in the same session (to be able to read your own writes consistently across web tiers) you would have to send the SessionToken from FeedResponse\<T\> of the write action to the end-user using a cookie or some other mechanism, and have that token flow back to the web tier and ultimately the CosmosClient for subsequent reads. If you're using a round-robin load balancer that doesn't maintain session affinity between requests, such as the Azure Load Balancer, the read could potentially land on a different node to the write request, where the session was created.
 
@@ -325,11 +325,17 @@ container.ReadItem(context.Background(), azcosmos.NewPartitionKeyString("Quentin
 
 ## Monitor Probabilistically Bounded Staleness metric
 
-How eventual is eventual consistency? For the average case, we can offer staleness bounds with respect to version history and time. The [Probabilistically Bounded Staleness (PBS)](http://pbs.cs.berkeley.edu/) metric tries to quantify the probability of staleness and shows it as a metric. 
+How eventual is eventual consistency? For the average case, we can offer staleness bounds with respect to version history and time. The [Probabilistically Bounded Staleness (PBS)](http://pbs.cs.berkeley.edu/) metric tries to quantify the probability of staleness and shows it as a metric.
 
-To view the PBS metric, go to your Azure Cosmos DB account in the Azure portal. Open the **Metrics (Classic)** pane, and select the **Consistency** tab. Look at the graph named **Probability of strongly consistent reads based on your workload (see PBS)**.
+To view the PBS metric:
 
-:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Screenshot of the Probabilistically Bounded Staleness graph in the Azure portal.":::
+1. Go to your Azure Cosmos DB account in the Azure portal.
+
+1. Open the **Metrics (Classic)** pane, and select the **Consistency** tab.
+
+1. Look at the graph named **Probability of strongly consistent reads based on your workload (see PBS)**.
+
+  :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Screenshot of the Probabilistically Bounded Staleness graph in the Azure portal.":::
 
 ## Next steps
 
