@@ -26,7 +26,9 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [High Availability with Premium SSDv2](concepts-storage.md)
 
 ## Release: June 2025
-
+- General availability of [Indonesia Central](./overview.md#azure-regions) region.
+- Support for [TimescaleDB extension](../extensions/concepts-extensions-versions.md#postgis) version 2.15.3 for PG 13. 
+- Support for [Postgis extension](../extensions/concepts-extensions-versions.md#timescaledb) version 3.5.2 for PG 13 and above. 
 - Support for latest [minor versions](concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
 
 ## Release: May 2025
@@ -50,7 +52,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Fabric Mirroring](https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-mirroring-for-azure-database-for-postgresql-in-microsoft-fabric-for-p/4396750) for Azure Database for PostgreSQL flexible server.
 - Public preview of [Automatic key version updates](./concepts-data-encryption.md#cmk-key-version-updates).
 - Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL flexible server.
-- General availability of New Zealand North region.
+- General availability of [New Zealand North](./overview.md#azure-regions) region.
 
 ## Release: March 2025
 

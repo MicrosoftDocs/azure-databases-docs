@@ -44,6 +44,16 @@ The following characteristics apply whether you choose to use the private access
 - The server has a fully qualified domain name (fqdn). We recommend using the fqdn instead of an IP address for the hostname property in connection strings.
 - Both options control access at the server-level, not at the database- or table-level. You would use MySQL's roles properties to control database, table, and other object access.
 
+The following additional characteristics apply when you choose to use the private access (VNet integration) option:
+
+- Ability to specify custom port between 250001 and 26000 during server creation to connect to the server. The default port to connect is 3306 (Public Preview).
+  - Only one custom port per server is supported.
+  - Supported scenarios for custom port : server creation, restore (cross-port restore supported), read replica creation, high availability enablement.
+  - Current limitations:
+    - Custom port cannot be updated post server creation.
+    - Geo-restore and geo-replica creation with custom port are not supported.
+    - Custom port is supported for only VNet-injected servers.
+
 ### Unsupported virtual network scenarios
 
 - Public endpoint (or public IP or DNS) - A Flexible Server deployed to a virtual network can't have a public endpoint.
