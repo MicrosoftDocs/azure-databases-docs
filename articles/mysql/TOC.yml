@@ -24,6 +24,8 @@
         href: flexible-server/whats-new-archive.md
       - name: Release notes
         items:
+          - name: July 2025
+            href: flexible-server/release-notes/july-2025.md
           - name: May 2025
             href: flexible-server/release-notes/may-2025.md
           - name: March 2025
