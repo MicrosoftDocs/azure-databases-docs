@@ -322,6 +322,8 @@
         href: flexible-server/how-to-trigger-on-demand-backup.md
     - name: Troubleshooting
       items:
+      - name: Server self heal
+        href: flexible-server/how-to-self-heal.md
       - name: Troubleshoot connection errors
         href: flexible-server/how-to-troubleshoot-common-connection-issues.md
       - name: Troubleshoot CLI errors
