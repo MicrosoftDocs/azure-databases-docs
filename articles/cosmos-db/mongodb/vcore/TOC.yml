@@ -217,7 +217,7 @@
     - name: Java
       href: /java/api/overview/azure/resourcemanager-mongocluster-readme
     - name: .NET
-      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster
+      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster.resourceversions
     - name: Node.js
       href: /javascript/api/overview/azure/mongo-cluster
     - name: Python
