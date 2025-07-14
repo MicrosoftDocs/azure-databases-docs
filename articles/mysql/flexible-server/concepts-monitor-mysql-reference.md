@@ -1,6 +1,6 @@
 ---
 title: Monitoring Data Reference for Azure Database for MySQL 
-description: This article contains important reference material you need when you monitor Azure Database for MySQL .
+description: This article contains important reference material you need when you monitor Azure Database for MySQL.
 author: sk-microsoft
 ms.author: sakirta
 ms.reviewer: maghan
@@ -43,16 +43,16 @@ This table includes more detailed descriptions of some metrics.
 | Active Connections | The number of active connections to the server. Active connections are the total number of [threads connected](https://dev.mysql.com/doc/refman/8.0/en/server-status-variables.html#statvar_Threads_connected) to your server, which also includes threads from [azure_superuser](../single-server/how-to-create-users.md). |
 | Storage IO percent | The percentage of IO used over a selected period. IO percent is for both read and write IOPS. |
 | Storage IO Counts | The server's total count of I/O operations (both read and write) per minute. |
-| Memory Percent | This metric represents the percentage of memory occupied by the Azure MySQL (mysqld) server process. This metric is calculated from the Total Memory Size (GB) available on your Azure Database for MySQL flexible server . |
+| Memory Percent | This metric represents the percentage of memory occupied by the Azure MySQL (mysqld) server process. This metric is calculated from the Total Memory Size (GB) available on your Azure Database for MySQL flexible server. |
 | Total connections | The number of client connections to your Azure Database for MySQL flexible serverinstance. Total Connections is the sum of client connections using TCP/IP protocol over a selected period. |
 | Aborted Connections | Total number of failed attempts to connect to your Azure Database for MySQL flexible serverinstance, for example, failed connection due to bad credentials. For more information on aborted connections, see this [documentation](https://dev.mysql.com/doc/refman/5.7/en/communication-errors.html). |
 | Queries | Total number of queries executed per minute on your server. Total count of queries per minute on your server from your database workload and Azure MySQL processes. |
 | Slow_queries | The total count of slow queries on your server in the selected time range. |
 | Active Transactions | This metric represents the total number of transactions within MySQL. Active transactions include all transactions that started but have yet to be committed or rolled back. |
 
-*Storage breakdown metrics* provide valuable insights into the storage usage of your Azure Database for MySQL flexible server . These metrics give you a detailed breakdown of the storage limit, storage percentage, storage used, data storage used, ibdata1 storage used, binlog storage used, other storage used, and backup storage used. By monitoring these metrics, you can effectively manage your storage resources, optimize storage allocation, and ensure efficient utilization of your server's storage capacity. Understanding the storage breakdown metrics helps you make informed decisions to maintain the performance and availability of your Azure Database for MySQL flexible server .
+*Storage breakdown metrics* provide valuable insights into the storage usage of your Azure Database for MySQL flexible server. These metrics give you a detailed breakdown of the storage limit, storage percentage, storage used, data storage used, ibdata1 storage used, binlog storage used, other storage used, and backup storage used. By monitoring these metrics, you can effectively manage your storage resources, optimize storage allocation, and ensure efficient utilization of your server's storage capacity. Understanding the storage breakdown metrics helps you make informed decisions to maintain the performance and availability of your Azure Database for MySQL flexible server.
 
-The table below lists descriptions for the storage breakdown metrics available for Azure Database for MySQL flexible server :
+The table below lists descriptions for the storage breakdown metrics available for Azure Database for MySQL flexible server:
 
 | Metric display name | Description |
 | :--- | :--- |
@@ -65,9 +65,9 @@ The table below lists descriptions for the storage breakdown metrics available f
 | Other Storage Used | The amount of storage used for other components and metadata files. |
 | Backup Storage Used | The amount of backup storage used. |
 
-*Replication metrics* provide valuable insights into the performance and status of replication in Azure Database for MySQL flexible server . These metrics allow you to monitor the replication lag, check the status of replica and HA IO/SQL threads, and measure the replication latency. By tracking these metrics, you can ensure the reliability and efficiency of your replication setup, identify any potential issues or delays, and take appropriate actions to maintain data consistency and availability. Let's explore the different replication metrics available for Azure Database for MySQL flexible server .
+*Replication metrics* provide valuable insights into the performance and status of replication in Azure Database for MySQL flexible server. These metrics allow you to monitor the replication lag, check the status of replica and HA IO/SQL threads, and measure the replication latency. By tracking these metrics, you can ensure the reliability and efficiency of your replication setup, identify any potential issues or delays, and take appropriate actions to maintain data consistency and availability. Let's explore the different replication metrics available for Azure Database for MySQL flexible server.
 
-The table below lists the replication metrics available for Azure Database for MySQL flexible server :
+The table below lists the replication metrics available for Azure Database for MySQL flexible server:
 
 | Metric display name | Description |
 | :--- | :--- |
@@ -78,7 +78,7 @@ The table below lists the replication metrics available for Azure Database for M
 | HA SQL Status | HA SQL Status indicates the state of [High availability concepts in Azure Database for MySQL ](concepts-high-availability.md). The metric value is 1 if the SQL thread runs and 0 if not. |
 | HA Replication Lag | HA Replication lag is the number of seconds the HA Standby server is behind in replaying the transactions received from the source server. This metric is calculated from "Seconds_behind_Master" from the command "SHOW SLAVE STATUS" command and is available only for HA standby servers. |
 
-In addition to the standard metrics provided by Azure Database for MySQL flexible server , enhanced metrics are available to gain deeper insights into your server's performance. These enhanced metrics provide more granular information about specific aspects of your workload.
+In addition to the standard metrics provided by Azure Database for MySQL flexible server, enhanced metrics are available to gain deeper insights into your server's performance. These enhanced metrics provide more granular information about specific aspects of your workload.
 
 The *Data Manipulation Language (DML) statistics metrics* give you visibility into the number of select, update, insert, and delete statements executed on your server. By monitoring these metrics, you can track the usage and performance of your database operations and identify any potential bottlenecks or inefficiencies.
 
@@ -99,9 +99,9 @@ The *Data Definition Language (DDL) statistics metrics* provide information abou
 | Com_drop_table | The total count of drop table statements executed on your server in the selected time range. |
 | Com_Alter | The total count of alter table statements executed on your server in the selected time range. |
 
-The *Innodb metrics* focus on the performance of the InnoDB storage engine, which is the default engine for Azure Database for MySQL flexible server . These metrics include InnoDB row lock time, InnoDB row lock waits, Innodb buffer pool reads, Innodb buffer pool read requests, and more. By monitoring these metrics, you can gain insights into the efficiency and effectiveness of your database's storage and caching mechanisms.
+The *Innodb metrics* focus on the performance of the InnoDB storage engine, which is the default engine for Azure Database for MySQL flexible server. These metrics include InnoDB row lock time, InnoDB row lock waits, Innodb buffer pool reads, Innodb buffer pool read requests, and more. By monitoring these metrics, you can gain insights into the efficiency and effectiveness of your database's storage and caching mechanisms.
 
-These enhanced metrics provide valuable information for optimizing your workload and improving the performance of your Azure Database for MySQL flexible server . Using these metrics, you can make data-driven decisions to enhance your database operations' scalability, reliability, and efficiency.
+These enhanced metrics provide valuable information for optimizing your workload and improving the performance of your Azure Database for MySQL flexible server. Using these metrics, you can make data-driven decisions to enhance your database operations' scalability, reliability, and efficiency.
 
 | Metric display name | Description |
 | :--- | :--- |
@@ -123,7 +123,7 @@ These enhanced metrics provide valuable information for optimizing your workload
 
 Sometimes, you might encounter issues with creating, customizing, or interpreting charts in Azure Metrics Explorer.
 
-A *Chart showing no data* could arise due to various factors. These issues might include the Microsoft Insights resource provider not being registered for your subscription or you lacking adequate access rights to your Azure Database for MySQL . Other possibilities could be that your resource didn't generate metrics within the chosen time frame or the selected time range exceeds 30 days.
+A *Chart showing no data* could arise due to various factors. These issues might include the Microsoft Insights resource provider not being registered for your subscription or you lacking adequate access rights to your Azure Database for MySQLF. Other possibilities could be that your resource didn't generate metrics within the chosen time frame or the selected time range exceeds 30 days.
 
 Several reasons that follow can cause this behavior:
 
@@ -136,7 +136,7 @@ Several reasons that follow can cause this behavior:
 For more detailed information on troubleshooting metrics, refer to the [Azure Monitor metrics troubleshooting guide.](/azure/azure-monitor/essentials/metrics-troubleshoot)
 
 > [!NOTE]  
-> Metrics marked as deprecated are scheduled to be removed from the Azure portal. You should ignore these metrics when monitoring your Azure Database for MySQL flexible server .
+> Metrics marked as deprecated are scheduled to be removed from the Azure portal. You should ignore these metrics when monitoring your Azure Database for MySQL flexible server.
 
 [!INCLUDE [horz-monitor-ref-resource-logs](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-resource-logs.md)]
 
