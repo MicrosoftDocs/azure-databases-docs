@@ -36,7 +36,7 @@ For details on how enterprise customers and pay-as-you-go customers are charged 
 
 ## Reservation exchanges and refunds
 
-You can exchange a reservation for another reservation of the same type. You can also exchange a reservation from Azure Database for PostgreSQL single server with Azure Database for PostgreSQL flexible server. It's also possible to refund a reservation, if you no longer need it.
+You can exchange a reservation for another reservation of the same type. It's also possible to refund a reservation, if you no longer need it.
 
 You can use the Azure portal to exchange or refund a reservation. For more information, see [Self-service exchanges and refunds for Azure reservations](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 

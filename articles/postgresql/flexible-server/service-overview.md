@@ -40,8 +40,7 @@ These capabilities require almost no administration, and all are provided at no 
 
 Azure Database for PostgreSQL flexible server powered by the PostgreSQL community edition has two deployment modes:
 
-- Azure Database for PostgreSQL flexible server 
-- Azure Database for PostgreSQL single server 
+- Flexible server
 
 ### Azure Database for PostgreSQL flexible server
 
@@ -56,12 +55,5 @@ Azure Database for PostgreSQL flexible server instances are best suited for:
 
 For a detailed overview of Azure Database for PostgreSQL flexible server deployment mode, see [Azure Database for PostgreSQL flexible server](overview.md).
 
-### Azure Database for PostgreSQL single server
-
-Azure Database for PostgreSQL single server is a fully managed database service with minimal requirements for customizations of database. The single server platform is designed to handle most of the database management functions such as patching, backups, high availability, security with minimal user configuration and control. The architecture is optimized for built-in high availability with 99.99% availability on single availability zone. It supports community version of PostgreSQL 9.5, 9.6, 10, and 11.
-
-The Azure Database for PostgreSQL single server deployment option has three pricing tiers: Basic, General Purpose, and Memory Optimized. Each tier offers different resource capabilities to support your database workloads. You can build your first app on a small database for a few dollars a month, and then adjust the scale to meet the needs of your solution. Dynamic scalability enables your database to transparently respond to rapidly changing resource requirements. You only pay for the resources you need, and only when you need them. See [Pricing tiers](../single-server/concepts-pricing-tiers.md) for details.
-
-Azure Database for PostgreSQL single server instances are best suited for cloud native applications designed to handle automated patching without the need for granular control on the patching schedule and custom PostgreSQL configuration settings.
-
-For detailed overview of Azure Database for PostgreSQL single server deployment mode, see [Azure Database for PostgreSQL - Single Server](../single-server/overview-single-server.md).
+## Related content
+- [Azure Database for PostgreSQL flexible server overview](overview.md)
