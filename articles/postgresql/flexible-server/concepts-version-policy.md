@@ -1,6 +1,6 @@
 ---
 title: Version Policy
-description: Describes the policy around Postgres major and minor versions in Azure Database for PostgreSQL - Single Server and Azure Database for PostgreSQL flexible server.
+description: Describes the policy around Postgres major and minor versions in Azure Database for PostgreSQL flexible server.
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: varundhawan, maghan
@@ -156,7 +156,7 @@ PostgreSQL 12 reached its end of life on **November 14, 2024**, in line with the
 
 ## PostgreSQL 11 support
 
-Azure is extending PostgreSQL 11 support for Azure Database for PostgreSQL flexible server. This extended support timeline is designed to provide more time for users to plan and [migrate from Azure Database for PostgreSQL single server to flexible server](../migrate/concepts-single-to-flexible.md) and to upgrade to higher PostgreSQL versions. The extended support timeline is designed to facilitate a smooth transition for users currently relying on PostgreSQL 11.
+Azure is extending PostgreSQL 11 support for Azure Database for PostgreSQL flexible server. This extended support timeline is designed to provide more time for users to upgrade to higher PostgreSQL versions. The extended support timeline is designed to facilitate a smooth transition for users currently relying on PostgreSQL 11.
 
 ### Flexible server support
 

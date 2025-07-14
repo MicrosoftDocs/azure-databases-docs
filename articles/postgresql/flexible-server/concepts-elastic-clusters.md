@@ -24,7 +24,7 @@ Elastic clusters on Flexible Server offer two sharding models: row-based shardin
 
 An elastic cluster consists of one or more nodes of Azure Database for PostgreSQL Flexible Server. These instances are automatically made known to each other, and inter-connected to form a Citus cluster. The nodes are required to be of the same compute and storage tier, and can be uniformly scaled up or down to higher or lower tiers.
 
-Elastic clusters use instances of Flexible Servers (called nodes) to coordinate with one another in a "shared nothing" architecture. The nodes in a cluster collectively hold more data and use more CPU cores than would be possible on a single server. The architecture also allows the database to scale, by adding more nodes to the cluster.
+Elastic clusters use instances of Flexible Servers (called nodes) to coordinate with one another in a "shared nothing" architecture. The architecture also allows the database to scale, by adding more nodes to the cluster.
 
 Connecting to your cluster using port 5432 lands you on the designated coordinator node. Elastic clusters also allow you to load balance connections across the cluster, using a five-tuple hash method, if you connect using port 7432. Using 7432 you can still land at the node currently designated as coordinator. For certain cluster-wide operations, like distributing tables, you might be required to connect over port 5432. We strongly recommend you to always connect on port 5432, when you plan to perform application schema upgrades and similar changes. If you [enable PgBouncer](concepts-pgbouncer.md) on elastic clusters, you can use port 8432 to load balance connections across PgBouncer instances on every node (or use port 6432 for the designated coordinator).
 

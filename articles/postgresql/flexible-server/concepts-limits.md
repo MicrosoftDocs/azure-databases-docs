@@ -111,7 +111,7 @@ The following sections list considerations for what is and isn't supported in Az
 
 ### Postgres engine, extensions, and PgBouncer
 
-- Postgres 10 and older versions aren't supported, because the open-source community retired them. If you must use one of these versions, you need to use the [Azure Database for PostgreSQL single server](../overview-single-server.md) option, which supports the older major versions 9.5, 9.6, and 10.
+- Azure Database for PostgreSQL flexible server supports all the features of the PostgreSQL engine, including partitioning, logical replication, and foreign data wrappers.
 - Azure Database for PostgreSQL flexible server supports all `contrib` extensions and more. For more information, see [PostgreSQL extensions](/azure/postgresql/flexible-server/concepts-extensions).
 - The built-in PgBouncer connection pooler is currently not available for Burstable servers.
 
