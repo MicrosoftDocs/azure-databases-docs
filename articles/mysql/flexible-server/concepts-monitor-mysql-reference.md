@@ -123,7 +123,7 @@ These enhanced metrics provide valuable information for optimizing your workload
 
 Sometimes, you might encounter issues with creating, customizing, or interpreting charts in Azure Metrics Explorer.
 
-A *Chart showing no data* could arise due to various factors. These issues might include the Microsoft Insights resource provider not being registered for your subscription or you lacking adequate access rights to your Azure Database for MySQLF. Other possibilities could be that your resource didn't generate metrics within the chosen time frame or the selected time range exceeds 30 days.
+A *Chart showing no data* could arise due to various factors. These issues might include the Microsoft Insights resource provider not being registered for your subscription or you lacking adequate access rights to your Azure Database for MySQL. Other possibilities could be that your resource didn't generate metrics within the chosen time frame or the selected time range exceeds 30 days.
 
 Several reasons that follow can cause this behavior:
 
