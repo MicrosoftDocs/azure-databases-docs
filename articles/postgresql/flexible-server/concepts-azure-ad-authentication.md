@@ -25,7 +25,7 @@ Benefits of using Microsoft Entra ID include:
 - The use of PostgreSQL database roles to authenticate identities at the database level.
 - Support of token-based authentication for applications that connect to Azure Database for PostgreSQL flexible server.
 
-<<a id="how-azure-ad-works-in-flexible-server"></a>
+<a id="how-azure-ad-works-in-flexible-server"></a>
 
 ## How Microsoft Entra ID works in Azure Database for PostgreSQL flexible server
 
