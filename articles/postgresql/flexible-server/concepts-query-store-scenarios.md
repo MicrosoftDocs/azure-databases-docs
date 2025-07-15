@@ -45,7 +45,6 @@ Use query store to compare workload performance before and after an application 
 - Modifying the amount of resources granted to the server.
 - Changing any of the server parameters that affect the behavior of the server.
 - Creating missing indexes on tables referenced by expensive queries.
-- Migrating from Azure Database for PostgreSQL single server to Azure Database for PostgreSQL flexible server.
 
 In any of these scenarios, apply the following workflow:
 1. Run your workload with query store before the planned change, to generate a performance baseline.

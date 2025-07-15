@@ -1,9 +1,10 @@
 ---
-title: Monitor Azure Database for MySQL - Flexible Server
-description: Learn how to monitor Azure Database for MySQL - Flexible Server using Azure Monitor, including data collection, analysis, and alerting.
-author: markingmyname
-ms.author: maghan
-ms.date: 07/03/2025
+title: Monitor Azure Database for MySQL
+description: Learn how to monitor Azure Database for MySQL flexible server using Azure Monitor, including data collection, analysis, and alerting.
+author: sk-microsoft
+ms.author: sakirta
+ms.reviewer: maghan
+ms.date: 07/11/2025
 ms.service: azure-database-mysql
 ms.topic: concept-article
 ms.custom:
@@ -29,6 +30,10 @@ This table describes how you can collect data to monitor your service, and what 
 
 [!INCLUDE [azmon-horz-supported-data](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-supported-data.md)]
 
+### Known issues
+
+Server metrics fail to generate when the server parameter for `character_set_server` is set to **UTF16**. This occurs because the metrics collection task relies on the C# MySQL connector, which has compatibility issues with UTF16. We recommend customers use an alternative character set and restart the server after updating the configuration to restore metrics functionality.
+
 ## Built in monitoring for Azure Database for MySQL - Flexible Server
 
 Azure Database for MySQL - Flexible Server offers built-in resources for monitoring.
@@ -44,9 +49,10 @@ To perform a historical analysis of your data, in the Azure portal, on the Diagn
 
 When logging is enabled for an Azure Database for MySQL Flexible Server instance, logs are available up to seven days from their creation. If the total size of the available logs exceeds 7 GB, then the oldest files are deleted until space is available.
 The 7-GB storage limit for server logs is available free of cost and can't be extended.
-Logs are rotated every 24 hours or 500 MB, whichever comes first.
 
-### Slow query logs in Azure Database for MySQL - Flexible Server
+Logs rotate every 24 hours or once they reach 500 MB, whichever occurs first.
+
+### Slow query logs in Azure Database for MySQL
 
 In Azure Database for MySQL Flexible Server, the slow query log is available to users to configure and access. Slow query logs are disabled by default and can be enabled to assist with identifying performance bottlenecks during troubleshooting.
 
@@ -108,14 +114,15 @@ The following table describes the output of the slow query log. Depending on the
 > [!NOTE]  
 > For `sql_text_s`, log is truncated if it exceeds 2,048 characters.
 
-### Track database activity with Audit Logs
+### Track database activity with audit logs
 
 Azure Database for MySQL flexible server provides users with the ability to configure audit logs. Audit logs can be used to track database-level activity including connection, admin, DDL, and DML events. These types of logs are commonly used for compliance purposes.
 
 #### Configure audit logging
 
 > [!IMPORTANT]  
-> We recommend to only log the event types and users required for your auditing purposes. This approach helps to ensure your server's performance isn't heavily affected and a minimum amount of data is collected.
+> - We recommend to only log the event types and users required for your auditing purposes. This approach helps to ensure your server's performance isn't heavily affected and a minimum amount of data is collected.
+> - It isn't recommended to store plaintext passwords in a database. If you choose to do so and insert or access them via SQL queries, these queries might appear in audit logs, potentially exposing sensitive information.
 
 By default, audit logs are disabled. To enable them, set the `audit_log_enabled` server parameter to *ON*. Enable audit logs using the Azure portal or Azure CLI.
 

@@ -65,7 +65,11 @@
         - name: Sharded DiskANN for focused search
           href: ../gen-ai/sharded-diskann.md
     - name: Full text indexing and search
-      href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
+      items:
+        - name: Full text search overview
+          href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Stopwords list
+          href: ../gen-ai/stopwords.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrate with AI tools
