@@ -24,9 +24,9 @@ The Azure Client Configurator is a tool designed to assist you in configuring a 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](~/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
 
-- This article requires the Azure CLI version 2.30.0 or higher. If you're using Azure Cloud Shell, the latest version is already installed.
-- [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview) with connectivity to your self-hosted or on-premises environment. For more information on how to connect on-premises environments to Azure, see [Connect an on-premises network to Azure](/azure/architecture/reference-architectures/hybrid-networking/).
-- Python installation is required. To check if Python is installed, run `python --version` in your terminal.
+- This article requires the Azure CLI version 2.30.0 or later. If you're using Azure Cloud Shell, the latest version is already installed.
+- Use an [Azure virtual network](/azure/virtual-network/virtual-networks-overview) with connectivity to your self-hosted or on-premises environment. For more information on how to connect on-premises environments to Azure, see [Connect an on-premises network to Azure](/azure/architecture/reference-architectures/hybrid-networking/).
+- A Python installation is required. To check if Python is installed, run `python --version` in your terminal.
 - Ensure that both the Azure Managed Instance for Apache Cassandra cluster and the on-premises Cassandra cluster are located on the same virtual network. If not, you need to establish network peering or another means of connectivity. For example, use Azure ExpressRoute.
 - The cluster name for both the managed cluster and local cluster must be the same.
     * In the `cassandra.yaml` file, ensure that the storage port is set to 7001 and the cluster name is the same as the managed cluster:
