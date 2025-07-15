@@ -35,7 +35,7 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
    az account set --subscription <Subscription_ID>
    ```
 
-1. Next, create a virtual network with a dedicated subnet in your resource group:
+1. Create a virtual network with a dedicated subnet in your resource group:
 
    ```azurecli-interactive
    az network vnet create --name <VNet_Name> --location eastus2 \
@@ -62,7 +62,7 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
 
    The `assignee` and `role` values are fixed values. Enter these values exactly as mentioned in the command. Not doing so leads to errors when you create the cluster. If you encounter any errors when you run this command, you might not have permissions to run it. Contact your Azure admin for permissions.
 
-1. Next, create the cluster in your newly created virtual network by using the [az managed-cassandra cluster create](/cli/azure/managed-cassandra/cluster#az-managed-cassandra-cluster-create) command. Run the following command with the value of the `delegatedManagementSubnetId` variable. (The value of `delegatedManagementSubnetId` is the same virtual network name for which the permissions were applied.)
+1. Create the cluster in your newly created virtual network by using the [az managed-cassandra cluster create](/cli/azure/managed-cassandra/cluster#az-managed-cassandra-cluster-create) command. Run the following command with the value of the `delegatedManagementSubnetId` variable. (The value of `delegatedManagementSubnetId` is the same virtual network name for which the permissions were applied.)
 
 
    ```azurecli-interactive
