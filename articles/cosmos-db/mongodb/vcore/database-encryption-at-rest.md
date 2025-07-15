@@ -22,7 +22,7 @@ In the **customer-managed keys** mode, you can bring your own encryption key to 
 
 The configuration mode can only be selected at cluster creation time. It can't be changed from one mode to another for the lifetime of the cluster.
 
-To achieve the encryption of your data, Azure Cosmos DB for MongoDB vCore uses [Azure Storage encryption for data at rest](/azure/storage/common/storage-service-encryption). When using CMK, you are responsible for providing keys for encrypting and decrypting data in Azure Storage services. These keys must be stored in Azure Key Vault. 
+To achieve the encryption of your data, Azure Cosmos DB for MongoDB vCore uses [Azure Storage encryption for data at rest](/azure/storage/common/storage-service-encryption). When using CMK, you're responsible for providing keys for encrypting and decrypting data in Azure Storage services. These keys must be stored in Azure Key Vault. 
 
 ## Benefits provided by each mode (SMK or CMK)
 
@@ -48,12 +48,12 @@ When you configure customer-managed keys for an Azure Cosmos DB for MonogDB vCor
 
 Azure Key Vault is a cloud-based, external key management system. It's highly available and provides scalable, secure storage for RSA cryptographic keys. It doesn't allow direct access to a stored key, but provides encryption and decryption services to authorized entities. Key Vault can generate the key, import it, or receive it transferred from an on-premises HSM device.
 
-Following is the list of requirements and recommendations fordata encryption configuration for Azure Cosmos DB for MongoDB vCore:
+Following is the list of requirements and recommendations for data encryption configuration for Azure Cosmos DB for MongoDB vCore:
 
 - Key vault
     - Key vault and Azure Cosmos DB for MongoDB vCore must belong to the same [Microsoft Entra tenant](/entra/identity-platform/developer-glossary#tenant).
     - Recommendation: Set the **Days to retain deleted vaults** setting for Key Vault to *90 days*. This configuration setting can be defined only at key vault creation time. Once an instance is created, it isn't possible to modify this setting.
-    - Enable the [soft-delete feature](/azure/key-vault/general/soft-delete-overview) in key vault to help you with protecting from data loss, if a key or a key vault instance is accidentally deleted. Key vault retains soft-deleted resources for 90 days unless the user recovers or purges them in the meantime. The recover and purge actions have their own permissions associated with a key vault, an RBAC role, or an access policy permission. The soft-deleted feature is on by default. If you have some key vault which was deployed long time ago, it might still have soft-delete disabled. In that case, you can [turn it on](/azure/key-vault/general/soft-delete-overview#supporting-interfaces).
+    - Enable the [soft-delete feature](/azure/key-vault/general/soft-delete-overview) in key vault to help you with protecting from data loss, if a key or a key vault instance is accidentally deleted. Key vault retains soft-deleted resources for 90 days unless the user recovers or purges them in the meantime. The recover and purge actions have their own permissions associated with a key vault, an RBAC role, or an access policy permission. The soft-deleted feature is on by default. If you have a key vault that was deployed long time ago, it might still have soft-delete disabled. In that case, you can [turn it on](/azure/key-vault/general/soft-delete-overview#supporting-interfaces).
     - Enable[] purge protection](/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault) to enforce a mandatory retention period for deleted vaults and vault objects.
 - Permissions: Grant the Azure Cosmos DB for MongoDB vCore's user-assigned managed identity access to the key by:
   - **Preferred**: Azure Key Vault should be configured with [RBAC permission model](/azure/key-vault/general/rbac-guide) and the managed identity should be assigned the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) role.
@@ -71,14 +71,14 @@ Following is the list of requirements and recommendations fordata encryption con
     
 ## CMK key version updates
 
-CMK in Azure Cosmos DB for MongoDB vCore supports automatic key version updates, also known as version-less keys. Azure Cosmos DB for MonogoDB vCore service automatically picks up the new key version and reencrypt the data encryption key. This capability can be combined with the Azure Key Vault's [auto-rotation feature](/azure/key-vault/keys/how-to-configure-key-rotation).
+CMK in Azure Cosmos DB for MongoDB vCore supports automatic key version updates, also known as version-less keys. Azure Cosmos DB for MonogoDB vCore service automatically picks up the new key version and reencrypt the data encryption key. This capability can be combined with the Azure Key Vault's [autorotation feature](/azure/key-vault/keys/how-to-configure-key-rotation).
 
 ## Considertations
 
 When you're using a customer-managed key for data encryption, follow these recommendations to configure Key Vault:
 - To prevent accidental or unauthorized deletion of this critical resource, set a [resource lock](/azure/azure-resource-manager/management/lock-resources) on key vault.
 - Review and enable Azure Key Vault [availability and redundancy](/azure/key-vault/general/disaster-recovery-guidance) options.
-- Enable [logging](/azure/key-vault/general/howto-logging) and [alerting](/azure/key-vault/general/alert) on Azure Key Vault instance used to store keys. Key vault provides logs that are easy to inject into other security information and event management (SIEM) tools. Azure Monitor Logs is one example of a service that's already integrated.
+- Enable [logging](/azure/key-vault/general/howto-logging) and [alerting](/azure/key-vault/general/alert) on Azure Key Vault instance used to store keys. Key vault provides logs that are easy to inject into other security information and event management (SIEM) tools. Azure Monitor Logs is one example of a service that is already integrated.
 - [Lock down Key Vault](/azure/key-vault/general/secure-key-vault#network-security) by selecting **Disable public access** and **Allow trusted Microsoft services to bypass this firewall**.
 
 > [!NOTE]  
@@ -116,8 +116,8 @@ Some of the possible reasons why the cluster state might become **Inaccessible**
 | Any of the encryption keys pointed by the cluster had an expiry date and time configured, and that date and time is reached. | You must extend the expiry date of the key. Then you must wait for the service to revalidate the key and automatically transition the cluster state to **Ready**. Only when the cluster is back to **Ready** state you can rotate the key to a newer version or create a new key, and update the cluster so that it refers to that new version of the same key or to the new key. |
 | You delete the Key Vault instance, the Azure Cosmos DB for MongoDB vCore instance can't access the key and moves to an **Inaccessible** state. | [Recover the Key Vault instance](/azure/key-vault/general/key-vault-recovery) and wait for the service to run the periodical revalidation of the key, and automatically transition the cluster state to **Ready**. |
 | You delete, from Microsoft Entra ID, a [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that's used to retrieve any of the encryption keys stored in key vault. | [Recover the identity](/azure/active-directory/fundamentals/recover-from-deletions) and wait for the service to run the periodical revalidation of the key, and automatically transition the cluster state to **Ready**. |
-| Your key vault permission model is configured to use role-based access control. You remove the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) RBAC role assignment from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys. | Grant the RBAC role again to the [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) and wait for the service to run the periodical revalidation of the key, and automatically transition the cluster state to **Ready**. An alternative approach consists on granting the role on the key vault to a different [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities), and update the cluster so that it uses this other [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to access the key. |
-| Your key vault permission model is configured to use access policies. You revoke the **list**, **get**, **wrapKey**, or **unwrapKey** access policies from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys. | Grant the RBAC role to the managed identity and wait for the service to run the periodical revalidation of the key, and automatically transition the cluster state to **Ready**. An alternative approach consists on granting the required access policies on the key vault to a different managed identity, and update the cluster so that it uses this other managed identity to access the key. |
+| Your key vault permission model is configured to use role-based access control. You remove the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) RBAC role assignment from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys. | Grant the RBAC role again to the [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) and wait for the service to run the periodical revalidation of the key, and automatically transition the cluster state to **Ready**. An alternative approach consists of granting the role on the key vault to a different [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities), and update the cluster so that it uses this other [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to access the key. |
+| Your key vault permission model is configured to use access policies. You revoke the **list**, **get**, **wrapKey**, or **unwrapKey** access policies from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys. | Grant the RBAC role to the managed identity and wait for the service to run the periodical revalidation of the key, and automatically transition the cluster state to **Ready**. An alternative approach consists of granting the required access policies on the key vault to a different managed identity, and update the cluster so that it uses this other managed identity to access the key. |
 | You set up overly restrictive key vault firewall rules, so that your Azure Cosmos DB for MongoDB vCore cluster can't communicate with the key vault to retrieve your keys. | When you configure a key vault firewall, make sure that you select the option to allow [trusted Microsoft services](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services) so that your Azure Cosmos DB for MongoDB vCore can bypass the firewall. |
 
 > [!NOTE]  
@@ -146,62 +146,5 @@ These are the current limitations for configuring the customer-managed key in an
 
 ## Related content
 
-
-
-
-
-
-
-
-"Encryption at rest" is a phrase that commonly refers to the encryption of data on nonvolatile storage devices, such as solid-state drives (SSDs) and hard-disk drives (HDDs). Azure Cosmos DB stores its primary databases on SSDs. Its media attachments and backups are stored in Azure Blob Storage, which are generally backed up by HDDs. With the release of encryption at rest for Azure Cosmos DB, all your databases, media attachments, and backups are encrypted. Your data is now encrypted in transit (over the network) and at rest (nonvolatile storage), giving you end-to-end encryption.
-
-As a platform as a service (PaaS), Azure Cosmos DB is easy to use. Because all user data stored in Azure Cosmos DB is encrypted at rest and in transport, you don't have to take any action. In other words, encryption at rest is "on" by default. There are no controls to turn it off or on. Azure Cosmos DB uses AES-256 encryption on all regions where the account is running.
-
-We provide this feature while we continue to meet our [availability and performance service-level agreements (SLAs)](https://azure.microsoft.com/support/legal/sla/cosmos-db). Data stored in your Azure Cosmos DB account is automatically and seamlessly encrypted with keys managed by Microsoft (service-managed keys).
-
-## Implementation of encryption at rest for Azure Cosmos DB
-
-Encryption at rest is implemented by using several security technologies, including secure key storage systems, encrypted networks, and cryptographic APIs. Systems that decrypt and process data have to communicate with systems that manage keys. The diagram shows how storage of encrypted data and the management of keys is separated.
-
-:::image type="content" source="./media/database-encryption-at-rest/design-diagram.png" alt-text="Diagram that shows data storage and key management design." border="false":::
-
-The basic flow of a user request is:
-
-- The user database account is made ready, and storage keys are retrieved via a request to the Management Service Resource Provider.
-- A user creates a connection to Azure Cosmos DB via HTTPS/secure transport. (The SDKs abstract the details.)
-- The user sends a JSON document to be stored over the previously created secure connection.
-- The JSON document is indexed unless the user has turned off indexing.
-- Both the JSON document and index data are written to secure storage.
-- Periodically, data is read from the secure storage and backed up to the Azure Encrypted Blob Store.
-
-## Frequently asked questions
-
-Find answers to commonly asked questions about encryption.
-
-### How much more does Azure Storage cost if Storage Service Encryption is enabled?
-
-There's no extra cost.
-
-### Can I encrypt my data with customer-managed keys (CMK)?
-
-This feature is coming to the service later. Reach out to Microsoft Support for access to a preview as soon as it's available.
-
-### How often are encryption keys rotated?
-
-Microsoft has a set of internal guidelines for encryption key rotation, which Azure Cosmos DB follows. The specific guidelines aren't published. Microsoft does publish the [Security Development Lifecycle](https://www.microsoft.com/sdl/default.aspx), which is seen as a subset of internal guidance and has useful best practices for developers.
-
-### What regions have encryption turned on?
-
-All Azure Cosmos DB regions have encryption turned on for all user data.
-
-### Does encryption affect the performance latency and throughput SLAs?
-
-There's no effect or changes to the performance SLAs because encryption at rest is now enabled for all existing and new accounts. To see the latest guarantees, see [SLA for Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db).
-
-### Does the local emulator support encryption at rest?
-
-The emulator is a standalone dev/test tool and doesn't use the key management services that the managed Azure Cosmos DB service uses. We recommend that you enable BitLocker on drives where you're storing sensitive emulator test data. The [emulator supports changing the default data directory](../../emulator.md) and using a well-known location.
-
-## Next steps
-
-* For more information about Microsoft certifications, see the [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).
+- [Follow these steps to enable data encryption at rest with customer-managed key in Azure Cosmos DB for MongoDB vCore](./how-to-data-encryption.md)
+- [Migrate data to Azure Cosmos DB for MongoDB vCore](./migration-options.md)
