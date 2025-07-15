@@ -524,7 +524,7 @@ ___________________________________
 
 **Scenario**
 
-Customer tries turn off Continuous backup mode (Also called PITR) on existing db accounts that has Continuous backup mode already enabled.
+Customer tries turn off Continuous backup mode, also called point-in-time-restore(PITR), on existing db accounts that has Continuous backup mode already enabled.
 
 **Error Message**
 

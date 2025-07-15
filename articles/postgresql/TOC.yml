@@ -665,20 +665,10 @@
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
 - name: Migrate to Azure Database for PostgreSQL
   items:
-  - name: What's happening to Azure Database for PostgreSQL - Single Server?
-    href: migrate/whats-happening-to-postgresql-single-server.md
   - name: Migration Service for Azure Database for PostgreSQL
     items:
     - name: Overview
       href: migrate/migration-service/overview-migration-service-postgresql.md
-    - name: Tutorials for migrating from Single Server
-      items:
-      - name: Migrate from Single Server
-        href: migrate/migration-service/tutorial-migration-service-single-to-flexible.md
-      - name: Automigration of Azure Database for PostgreSQL - Single Server to Flexible Server
-        href: migrate/automigration-single-to-flexible-postgresql.md 
-      - name: Automigrations of Azure Database for PostgreSQL - Single Server with Private End Point
-        href: migrate/automigration-private-end-point.md
     - name: Tutorials for migrating from PostgreSQL
       items:
       - name: Migrate from an Azure VM or an on-premises PostgreSQL server offline
