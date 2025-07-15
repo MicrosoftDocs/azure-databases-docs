@@ -80,7 +80,7 @@ Follow these steps to create an Azure Databricks cluster in a virtual network th
    * **Cluster Name**: Enter a name for the cluster.
    * **Databricks Runtime Version**: We recommend that you select Azure Databricks runtime version 7.5 or higher, for Spark 3.x support.
 
-   :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/databricks-runtime.png" alt-text="Screenshot that shows the New Cluster dialog box with a Azure Databricks runtime version selected." border="true":::
+   :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/databricks-runtime.png" alt-text="Screenshot that shows the New Cluster dialog box with an Azure Databricks runtime version selected." border="true":::
 
 1. Expand **Advanced Options**, and add the following configuration. Make sure to replace the node IPs and credentials.
 
