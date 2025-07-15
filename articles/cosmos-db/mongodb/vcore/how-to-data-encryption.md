@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 13/07/2026
+ms.date: 07/13/2026
 appliesto:
   - ✅ MongoDB (vCore)
 ---
