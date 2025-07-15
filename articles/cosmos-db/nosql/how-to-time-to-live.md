@@ -1,11 +1,11 @@
 ---
-title: Configure and manage Time to Live in Azure Cosmos DB
-description: Learn how to configure and manage time to live on a container and an item in Azure Cosmos DB
+title: Configure and Manage Time to Live
+description: Learn how to configure and manage time to live on a container and an item in Azure Cosmos DB.
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 05/12/2022
+ms.date: 07/10/2025
 ms.author: mjbrown
 ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
 ---
@@ -13,44 +13,47 @@ ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
 # Configure time to live in Azure Cosmos DB
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-In Azure Cosmos DB, you can choose to configure Time to Live (TTL) at the container level, or you can override it at an item level after setting for the container. You can configure TTL for a container by using Azure portal or the language-specific SDKs. Item level TTL overrides can be configured by using the SDKs.
+In Azure Cosmos DB, you can choose to configure time to live (TTL) at the container level, or you can override it at an item level after setting TTL for the container. You can configure TTL for a container by using the Azure portal or the language-specific SDKs. Item-level TTL overrides can be configured by using the SDKs.
 
-> This article's content is related to Azure Cosmos DB transactional store TTL. If you are looking for analitycal store TTL, that enables NoETL HTAP scenarios through [Azure Synapse Link](../synapse-link.md), please click [here](../analytical-store-introduction.md#analytical-ttl).
+> [!TIP]
+> This article's content is related to Azure Cosmos DB transactional store TTL. If you're looking for analytical store TTL, which enables NoETL HTAP scenarios through [Azure Synapse Link](../synapse-link.md), see [Analytical Time-to-Live](../analytical-store-introduction.md#analytical-ttl).
 
-## Enable time to live on a container using the Azure portal
+<a id="enable-time-to-live-on-a-container-using-the-azure-portal"></a>
 
-Use the following steps to enable time to live on a container with no expiration. Enabling TTL at the container level to allow the same value to be overridden at an individual item's level. You can also set the TTL by entering a non-zero value for seconds.
+## Enable TTL on a container by using the Azure portal
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
+Use the following steps to enable TTL on a container with no expiration. Enabling TTL at the container level allows the same value to be overridden at an individual item's level. You can also set the TTL by entering a nonzero value for seconds.
 
-2. Create a new Azure Cosmos DB account or select an existing account.
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-3. Open the **Data Explorer** pane.
+1. Create a new Azure Cosmos DB account or select an existing account.
 
-4. Select an existing container, expand the **Settings** tab and modify the following values:
+1. Open the **Data Explorer** pane.
 
-   * Under **Setting** find, **Time to Live**.
-   * Based on your requirement, you can:
-     * Turn **off** this setting
-     * Set it to **On (no default)** or
+1. Select an existing container, expand the **Settings** tab, and modify the following values:
+
+   1. Under **Settings**, find **Time to Live**.
+   1. Based on your requirement, you can:
+     * Turn **off** this setting.
+     * Set it to **On (no default)**.
      * Turn **On** with a TTL value specified in seconds.
 
-   * Select **Save** to save the changes.
+   1. Select **Save** to save the changes.
 
-   :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Configure Time to live in Azure portal":::
+   :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Screenshot of the settings to configure Time to live in the Azure portal." lightbox="./media/how-to-time-to-live/how-to-time-to-live-portal.png":::
 
-* When DefaultTimeToLive is null, then your Time to Live is Off
-* When DefaultTimeToLive is -1 then, your Time to Live setting is On (No default)
-* When DefaultTimeToLive has any other Int value (except 0), then your Time to Live setting is On. The server will automatically delete items based on the configured value.
+* When **DefaultTimeToLive** is null, then your TTL is *Off*.
+* When **DefaultTimeToLive** is *-1* then, your TTL setting is *On* (No default).
+* When **DefaultTimeToLive** has any other integer value (except 0), then your TTL setting is *On*. The server automatically deletes items based on the configured value.
 
-## Enable time to live on a container using Azure CLI or Azure PowerShell
+## Enable TTL on a container by using Azure CLI or Azure PowerShell
 
-To create or enable TTL on a container see,
+To create or enable TTL on a container, see:
 
-* [Create a container with TTL using Azure CLI](manage-with-cli.md#create-a-container-with-ttl)
-* [Create a container with TTL using PowerShell](manage-with-powershell.md#create-container-unique-key-ttl)
+* [Create a container with TTL by using Azure CLI](manage-with-cli.md#create-a-container-with-ttl)
+* [Create a container with TTL by using PowerShell](manage-with-powershell.md#create-container-unique-key-ttl)
 
-## Enable time to live on a container using an SDK
+## Enable TTL on a container by using an SDK
 
 ### [.NET SDK v3](#tab/dotnet-sdk-v3)
 
@@ -137,12 +140,11 @@ db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
 }, nil)
 ```
 
-
 ---
 
-## Set time to live on a container using an SDK
+## Set TTL on a container by using an SDK
 
-To set the time to live on a container, you need to provide a non-zero positive number that indicates the time period in seconds. Based on the configured TTL value, all items in the container after the last modified timestamp of the item `_ts` are deleted.
+To set the TTL on a container, you need to provide a nonzero positive number that indicates the time period in seconds. Based on the configured TTL value, all items in the container after the last modified timestamp of the item `_ts` are deleted.
 
 ### [.NET SDK v3](#tab/dotnet-sdk-v3)
 
@@ -224,32 +226,32 @@ db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
 
 ---
 
-## Set time to live on an item using the Portal
+## Set TTL on an item by using the Azure portal
 
-In addition to setting a default time to live on a container, you can set a time to live for an item. Setting time to live at the item level will override the default TTL of the item in that container.
+In addition to setting a default TTL on a container, you can set a TTL for an item. Setting TTL at the item level overrides the default TTL of the item in that container.
 
-* To set the TTL on an item, you need to provide a non-zero positive number, which indicates the period, in seconds, to expire the item after the last modified timestamp of the item `_ts`. You can provide a `-1` as well when the item shouldn't expire.
+* To set the TTL on an item, you need to provide a nonzero positive number, which indicates the period, in seconds, to expire the item after the last modified timestamp of the item `_ts`. You can provide a `-1` as well when the item shouldn't expire.
 
-* If the item doesn't have a TTL field, then by default, the TTL set to the container will apply to the item.
+* If the item doesn't have a TTL field, then by default, the TTL set to the container applies to the item.
 
-* If TTL is disabled at the container level, the TTL field on the item will be ignored until TTL is re-enabled on the container.
+* If TTL is disabled at the container level, the TTL field on the item is ignored until TTL is re-enabled on the container.
 
-Use the following steps to enable time to live on an item:
+Use the following steps to enable TTL on an item:
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-2. Create a new Azure Cosmos DB account or select an existing account.
+1. Create a new Azure Cosmos DB account or select an existing account.
 
-3. Open the **Data Explorer** pane.
+1. Open the **Data Explorer** pane.
 
-4. Select an existing container, expand it and modify the following values:
+1. Select an existing container, expand it, and modify the following values:
 
     * Open the **Scale & Settings** window.
-    * Under **Setting** find, **Time to Live**.
-    * Select **On (no default)** or select **On** and set a TTL value. 
+    * Under **Setting**, find **Time to Live**.
+    * Select **On (no default)** or select **On** and set a TTL value.
     * Select **Save** to save the changes.
 
-5. Next navigate to the item for which you want to set time to live, add the `ttl` property and select **Update**. 
+1. Navigate to the item for which you want to set time to live, add the `ttl` property, and select **Update**. 
 
     ```json
     {
@@ -263,7 +265,7 @@ Use the following steps to enable time to live on an item:
     }
     ```
 
-## Set time to live on an item using an SDK
+## Set TTL on an item by using an SDK
 
 ### [.NET SDK v3](#tab/dotnet-sdk-v3)
 
@@ -359,9 +361,9 @@ container.CreateItem(context.Background(), azcosmos.NewPartitionKeyString("CO180
 
 ---
 
-## Reset time to live using an SDK
+## Reset TTL by using an SDK
 
-You can reset the time to live on an item by performing a write or update operation on the item. The write or update operation will set the `_ts` to the current time, and the TTL for the item to expire  will begin again. If you wish to change the TTL of an item, you can update the field just as you update any other field.
+You can reset the TTL on an item by performing a write or update operation on the item. The write or update operation sets the `_ts` to the current time, and the TTL for the item to expire begins again. If you wish to change the TTL of an item, you can update the field just as you update any other field.
 
 ### [.NET SDK v3](#tab/dotnet-sdk-v3)
 
@@ -458,9 +460,9 @@ container.ReplaceItem(context.Background(), azcosmos.NewPartitionKeyString("CO18
 
 ---
 
-## Disable time to live using an SDK
+## Disable TTL by using an SDK
 
-To disable time to live on a container and stop the background process from checking for expired items, the `DefaultTimeToLive` property on the container should be deleted. Deleting this property is different from setting it to -1. When you set it to -1, new items added to the container will live forever, however you can override this value on specific items in the container. When you remove the TTL property from the container the items will never expire, even if they have explicitly overridden the previous default TTL value.
+To disable TTL on a container and stop the background process from checking for expired items, the `DefaultTimeToLive` property on the container should be deleted. Deleting this property is different from setting it to *-1*. When you set it to *-1*, new items added to the container live forever, however you can override this value on specific items in the container. When you remove the TTL property from the container the items never expire, even if they explicitly override the previous default TTL value.
 
 ### [.NET SDK v3](#tab/dotnet-sdk-v3)
 
@@ -520,8 +522,6 @@ container.Replace(context.Background(), *props, nil)
 
 ---
 
-## Next steps
+## Related content
 
-Learn more about time to live in the following article:
-
-* [Time to live](time-to-live.md)
+* [Time to Live (TTL) in Azure Cosmos DB](time-to-live.md)
