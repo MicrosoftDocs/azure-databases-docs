@@ -28,7 +28,21 @@ Get started with the Azure Cosmos DB for Apache Cassandra client library for Nod
 
 ## Setting up
 
-[!INCLUDE[Section - Setting up](includes/section-quickstart-setup.md)]
+First, set up the account and development environment for this guide. This section walks you through the process of creating an account, getting its credentials, and then preparing your development environment.
+
+### Create an account
+
+[!INCLUDE[Section - Setting up](section-quickstart-provision.md)]
+
+### Get credentials
+
+[!INCLUDE[Section - Get credentials](section-quickstart-credentials.md)]
+
+### Prepare development environment
+
+Then, configure your development environment with a new project and the client library. This step is the last required prerequisite before moving on to the rest of this guide.
+
+1. TODO
 
 ## Object model
 
