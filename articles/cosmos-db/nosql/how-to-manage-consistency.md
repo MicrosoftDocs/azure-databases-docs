@@ -1,11 +1,11 @@
 ---
-title: Manage consistency in Azure Cosmos DB
-description: Learn how to configure and manage consistency levels in Azure Cosmos DB using Azure portal, .NET SDK, Java SDK, and various other SDKs
+title: Manage Consistency in Azure Cosmos DB
+description: "Learn how to configure and manage consistency levels in Azure Cosmos DB using Azure portal, .NET SDK, Java SDK, and various other SDKs."
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 02/16/2022
+ms.date: 07/09/2025
 ms.author: mjbrown
 ms.devlang: csharp
 # ms.devlang: csharp, java, javascript
@@ -23,29 +23,37 @@ As you change your account level consistency, ensure you redeploy your applicati
 
 ## Configure the default consistency level
 
-The [default consistency level](../consistency-levels.md) is the consistency level that clients use by default.
+To learn more about the default consistency level, see [Consistency levels in Azure Cosmos DB](../consistency-levels.md).
 
 # [Azure portal](#tab/portal)
 
-To view or modify the default consistency level, sign in to the Azure portal. Find your Azure Cosmos DB account, and open the **Default consistency** pane. Select the level of consistency you want as the new default, and then select **Save**. The Azure portal also provides a visualization of different consistency levels with music notes. 
+To view or modify the default consistency level:
 
-:::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Consistency menu in the Azure portal":::
+1. Sign in to the [Azure portal](https://portal.azure.com).
+
+1. Find your Azure Cosmos DB account, and open the **Default consistency** pane.
+
+1. Select the level of consistency you want as the new default, and then select **Save**.
+
+The Azure portal also provides a visualization of different consistency levels with music notes.
+
+:::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Screenshot of the consistency menu in the Azure portal." lightbox="./media/how-to-manage-consistency/consistency-settings.png":::
 
 # [CLI](#tab/cli)
 
-Create an Azure Cosmos DB account with Session consistency, then update the default consistency.
+Create an Azure Cosmos DB account with *Session* consistency, then update the default consistency.
 
 ```azurecli
 # Create a new account with Session consistency
 az cosmosdb create --name $accountName --resource-group $resourceGroupName --default-consistency-level Session
 
-# update an existing account's default consistency
+# Update an existing account's default consistency
 az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
 ```
 
 # [PowerShell](#tab/powershell)
 
-Create an Azure Cosmos DB account with Session consistency, then update the default consistency.
+Create an Azure Cosmos DB account with *Session* consistency, then update the default consistency.
 
 ```azurepowershell-interactive
 # Create a new account with Session consistency
@@ -67,7 +75,7 @@ The service sets the default consistency level, but clients can override it. The
 > Consistency can only be **relaxed** at the SDK instance or request level. To move from weaker to stronger consistency, update the default consistency for the Azure Cosmos DB account.
 
 > [!TIP]
-> Overriding the default consistency level only applies to reads within the SDK client. An account configured for strong consistency by default will still write and replicate data synchronously to every region in the account. When the SDK client instance or request overrides this level with Session or weaker consistency, reads are performed using a single replica. For more information, see [Consistency levels and throughput](../consistency-levels.md#consistency-levels-and-throughput).
+> Overriding the default consistency level only applies to reads within the SDK client. An account configured for strong consistency by default still writes and replicates data synchronously to every region in the account. When the SDK client instance or request overrides this level with Session or weaker consistency, reads are performed using a single replica. For more information, see [Consistency levels and throughput](../consistency-levels.md#consistency-levels-and-throughput).
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -182,13 +190,13 @@ container.ReadItem(context.Background(), azcosmos.NewPartitionKeyString("Quentin
 
 ## Utilize session tokens
 
-One of the consistency levels in Azure Cosmos DB is *Session* consistency. This level is the default level applied to Azure Cosmos DB accounts by default. When working with Session consistency, every new write request to Azure Cosmos DB is assigned a new SessionToken. The CosmosClient uses this token internally with each read/query request to ensure that the set consistency level is maintained.
+One of the consistency levels in Azure Cosmos DB is *session* consistency. This level is the default level applied to Azure Cosmos DB accounts. When working with session consistency, every new write request to Azure Cosmos DB is assigned a new SessionToken. The CosmosClient uses this token internally with each read/query request to ensure that the set consistency level is maintained.
 
-In some scenarios, you need to manage this Session yourself. Consider a web application with multiple nodes, each node has its own instance of CosmosClient. If you wanted these nodes to participate in the same session (to be able to read your own writes consistently across web tiers) you would have to send the SessionToken from FeedResponse\<T\> of the write action to the end-user using a cookie or some other mechanism, and have that token flow back to the web tier and ultimately the CosmosClient for subsequent reads. If you're using a round-robin load balancer that doesn't maintain session affinity between requests, such as the Azure Load Balancer, the read could potentially land on a different node to the write request, where the session was created.
+In some scenarios, you need to manage this session yourself. Consider a web application with multiple nodes, each node has its own instance of CosmosClient. If you want these nodes to participate in the same session (to be able to read your own writes consistently across web tiers) you would have to send the SessionToken from FeedResponse\<T\> of the write action to the end-user using a cookie or some other mechanism, and have that token flow back to the web tier and ultimately the CosmosClient for subsequent reads. If you're using a round-robin load balancer that doesn't maintain session affinity between requests, such as the Azure Load Balancer, the read could potentially land on a different node to the write request, where the session was created.
 
-If you don't flow the Azure Cosmos DB SessionToken across as described above, you could end up with inconsistent read results for a while.
+If you don't flow the Azure Cosmos DB SessionToken across, you could end up with inconsistent read results for a while.
 
-Session Tokens in Azure Cosmos DB are partition-bound, meaning they're exclusively associated with one partition. In order to ensure you can read your writes, use the session token that was last generated for the relevant item(s). To manage session tokens manually, get the session token from the response and set them per request. If you don't need to manage session tokens manually, you don't need to use these samples. The SDK keeps track of session tokens automatically. If you don't set the session token manually, by default, the SDK uses the most recent session token.
+Session tokens in Azure Cosmos DB are partition-bound, meaning they're exclusively associated with one partition. In order to ensure you can read your writes, use the session token that was last generated for the relevant items. To manage session tokens manually, get the session token from the response and set them per request. If you don't need to manage session tokens manually, you don't need to use these samples. The SDK keeps track of session tokens automatically. If you don't set the session token manually, by default, the SDK uses the most recent session token.
 
 ### <a id="utilize-session-tokens-dotnet"></a>.NET SDK
 
@@ -315,22 +323,27 @@ container.ReadItem(context.Background(), azcosmos.NewPartitionKeyString("Quentin
 })
 ```
 
-## Monitor Probabilistically Bounded Staleness (PBS) metric
+## Monitor Probabilistically Bounded Staleness metric
 
-How eventual is eventual consistency? For the average case, we can offer staleness bounds with respect to version history and time. The [**Probabilistically Bounded Staleness (PBS)**](http://pbs.cs.berkeley.edu/) metric tries to quantify the probability of staleness and shows it as a metric. 
+How eventual is eventual consistency? For the average case, we can offer staleness bounds with respect to version history and time. The [Probabilistically Bounded Staleness (PBS)](http://pbs.cs.berkeley.edu/) metric tries to quantify the probability of staleness and shows it as a metric.
 
-To view the PBS metric, go to your Azure Cosmos DB account in the Azure portal. Open the **Metrics (Classic)** pane, and select the **Consistency** tab. Look at the graph named **Probability of strongly consistent reads based on your workload (see PBS)**.
+To view the PBS metric:
 
-:::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="PBS graph in the Azure portal":::
+1. Go to your Azure Cosmos DB account in the Azure portal.
+
+1. Open the **Metrics (Classic)** pane, and select the **Consistency** tab.
+
+1. Look at the graph named **Probability of strongly consistent reads based on your workload (see PBS)**.
+
+  :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Screenshot of the Probabilistically Bounded Staleness graph in the Azure portal.":::
 
 ## Next steps
 
-Learn more about how to manage data conflicts, or move on to the next key concept in Azure Cosmos DB. See the following articles:
+Learn more about how to manage data conflicts, or move on to the next key concept in Azure Cosmos DB.
 
 * [Consistency Levels in Azure Cosmos DB](../consistency-levels.md)
-* [Partitioning and data distribution](../partitioning-overview.md)
-* [Manage conflicts between regions](how-to-manage-conflicts.md)
-* [Partitioning and data distribution](../partitioning-overview.md)
+* [Partitioning and horizontal scaling](../partitioning-overview.md)
+* [Manage conflict resolution policies](how-to-manage-conflicts.md)
 * [Consistency tradeoffs in modern distributed database systems design](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
-* [High availability](../high-availability.md)
-* [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [High availability (Reliability) in Azure Cosmos DB for NoSQL](/azure/reliability/reliability-cosmos-db-nosql)
+* [Azure Cosmos DB service level agreements](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services)
