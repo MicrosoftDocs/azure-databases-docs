@@ -24,7 +24,7 @@ The following image illustrates the approach.
 
 ## Prerequisites
 
-- Provision an Azure Managed Instance for Apache Cassandra cluster by using the [Azure portal](create-cluster-portal.md) or the [Azure CLI](create-cluster-cli.md). Ensure that you can [connect to your cluster with CQLSH](./create-cluster-portal.md#connecting-to-your-cluster).
+- Provision an Azure Managed Instance for Apache Cassandra cluster by using the [Azure portal](create-cluster-portal.md) or the [Azure CLI](create-cluster-cli.md). Ensure that you can [connect to your cluster with CQLSH](./create-cluster-portal.md#connect-to-your-cluster).
 
 - [Provision an Azure Databricks account inside your Managed Cassandra virtual network](deploy-cluster-databricks.md). Ensure that the account has network access to your source Cassandra cluster. This example creates a Spark cluster in this account for the historical data load.
 
