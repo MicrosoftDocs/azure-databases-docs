@@ -16,22 +16,21 @@
       href: faq.yml
   - name: Quickstarts
     items:
+    - name: Python
+      href: quickstart-python.md
+    - name: Node.js
+      href: quickstart-nodejs.md
+    - name: .NET
+      href: quickstart-dotnet.md
+
     - name: Java v4
       href: manage-data-java-v4-sdk.md
     - name: Java v3
       href: manage-data-java.md
-    - name: Python
-      href: manage-data-python.md
     - name: Golang
       href: manage-data-go.md
     - name: CQLSH
       href: manage-data-cqlsh.md
-    - name: Node.js
-      href: manage-data-nodejs.md
-    - name: .NET Core
-      href: manage-data-dotnet-core.md
-    - name: .NET
-      href: manage-data-dotnet.md
   - name: Tutorials
     items:
     - name: Create and manage data
