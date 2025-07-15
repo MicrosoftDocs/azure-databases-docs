@@ -9,7 +9,7 @@ ms.date: 12/25/2022
 ms.devlang: azurecli
 ---
 
-# Cross Tenant CMK Troubleshooting Guide
+# Cross Tenant Customer-Managed Key (CMK) Troubleshooting Guide
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
@@ -18,7 +18,7 @@ ms.devlang: azurecli
 **Public documentation links**
 
 - [Cosmos DB Customer Managed Key Documentation:](./how-to-setup-customer-managed-keys.md)
-- [Cosmos DB MSI Documentation:](./how-to-setup-managed-identity.md)
+- [Cosmos DB Managed Identity Documentation:](./how-to-setup-managed-identity.md)
 
 **Cosmos DB account is in revoke state**
 
@@ -524,7 +524,7 @@ ___________________________________
 
 **Scenario**
 
-Customer tries turn off Continuous backup mode (Also called PITR) on existing db accounts that has Continuous backup mode already enabled.
+Customer tries turn off Continuous backup mode, also called point-in-time-restore(PITR), on existing db accounts that has Continuous backup mode already enabled.
 
 **Error Message**
 
