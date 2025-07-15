@@ -1,6 +1,6 @@
 ---
 title: Find request unit charge for a SQL query in Azure Cosmos DB
-description: Find the request unit charge for SQL queries against containers created with Azure Cosmos DB, using the Azure portal, .NET, Java, Python, or Node.js.
+description: Find the request unit charge for SQL queries against containers created with Azure Cosmos DB, using the Azure portal, .NET, Java, Python, Node.js, or Go.
 author: jcocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
@@ -176,6 +176,36 @@ request_charge = container.client_connection.last_response_headers["x-ms-request
 ```
 
 For more information, see [Quickstart: Build a Python app by using an Azure Cosmos DB for NoSQL account](quickstart-python.md). 
+
+## Use the Go SDK
+
+[Response](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#Response) is the base response type for all responses from Azure Cosmos DB. It exposes a `RequestCharge` property that contains the request charge for the respective operation, such as reads, writes, and queries.
+
+Read operation:
+
+```go
+container, _ := c.NewContainer("moviesdb", "movies")
+
+resp, _ := container.ReadItem(context.Background(), azcosmos.NewPartitionKeyString("Quentin Tarantino"), "Pulp Fiction", nil)
+
+log.Println("read request charge", resp.RequestCharge)
+```
+
+Query operation:
+
+```go
+container, _ := c.NewContainer("moviesdb", "movies")
+
+pager := container.NewQueryItemsPager("select * from c", azcosmos.NewPartitionKey(), nil)
+
+if pager.More() {
+	page, _ := pager.NextPage(context.Background())
+	// use the result
+	log.Println("query request charge", page.RequestCharge)
+}
+```
+
+
 
 ## Next steps
 

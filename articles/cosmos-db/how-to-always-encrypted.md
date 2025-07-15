@@ -144,6 +144,9 @@ CosmosEncryptionAsyncClient cosmosEncryptionAsyncClient =
 > [!NOTE]
 > Unlike .NET and Java SDK, there's no separate package for Encryption in JS. Same package can be used to encrypted and non-encrypted operations.
 
+> [!IMPORTANT]
+> These code samples use v3 of the JavaScript SDK.
+
 To use Always Encrypted in JS SDK, an instance of `EncryptionKeyResolver` must be passed in `ClientEncryptionOptions` during Azure Cosmos DB SDK instance initialization. This class is used to interact with the key store hosting your CMKs.
 
 The following snippets use the `DefaultAzureCredential` class to retrieve the Microsoft Entra identity to use when accessing your Azure Key Vault instance. You can find examples of creating different kinds of `TokenCredential` classes [here](/dotnet/api/overview/azure/identity-readme#credential-classes).

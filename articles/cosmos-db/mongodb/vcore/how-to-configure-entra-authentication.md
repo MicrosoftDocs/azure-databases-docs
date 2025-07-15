@@ -147,7 +147,7 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
     ```
 
     > [!TIP]
-    > For example, if your parent resource is named `example-cluster` and your principal ID was `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`, the name of the resource would be:
+    > For example, if your parent resource is named `example-cluster` and your principal ID was `aaaaaaaa-bbbb-cccc-1111-222222222222`, the name of the resource would be:
     >
     > ```json
     > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"

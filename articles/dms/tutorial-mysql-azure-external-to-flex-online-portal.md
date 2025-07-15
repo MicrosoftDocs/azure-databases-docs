@@ -66,7 +66,7 @@ As you prepare for the migration, be sure to consider the following limitations.
 
 - When migrating non-table objects, DMS doesn't support renaming databases.
 - When migrating to a target server with bin_log enabled, be sure to enable log_bin_trust_function_creators to allow for creation of routines and triggers.
-- Currently, DMS doesn't support migrating the DEFINER clause for objects. All object types with definers on the source are dropped and after the migration, the default definer for all objects that support a definer clause and that are created during schema migration, will be set to the login used to run the migration.
+- Currently, DMS doesn't support migrating the DEFINER clause for objects. All object types with definers from the source are dropped on the target and after the migration, the default definer for all objects that support a definer clause and that are created during schema migration, will be set to the login used to run the migration.
 - Currently, DMS only supports migrating a schema as part of data movement. If nothing is selected for data movement, the schema migration won't occur. Selecting a table for schema migration also selects it for data movement.
 - Online migration support is limited to the ROW binlog format.
 - Azure Database for MySQL - Flexible Server doesn't support mixed case databases, mixed case databases on the source will not be included for an online migration.

@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/06/2025
+ms.date: 07/15/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -19,9 +19,17 @@ ms.custom:
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL flexible server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
-## Release: June 2025
+## Release: July 2025
+- General availability
+    - [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17) is now supported, including in-place major version upgrades.
+- Preview
+    - [High Availability with Premium SSDv2](concepts-storage.md)
 
+## Release: June 2025
 - Support for latest [minor versions](concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
+- General availability of [Indonesia Central](./overview.md#azure-regions) region.
+- Support for [TimescaleDB extension](../extensions/concepts-extensions-versions.md#postgis) version 2.15.3 for PG 13. 
+- Support for [Postgis extension](../extensions/concepts-extensions-versions.md#timescaledb) version 3.5.2 for PG 13 and above. 
 
 ## Release: May 2025
 
@@ -44,7 +52,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Fabric Mirroring](https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-mirroring-for-azure-database-for-postgresql-in-microsoft-fabric-for-p/4396750) for Azure Database for PostgreSQL flexible server.
 - Public preview of [Automatic key version updates](./concepts-data-encryption.md#cmk-key-version-updates).
 - Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL flexible server.
-- General availability of New Zealand North region.
+- General availability of [New Zealand North](./overview.md#azure-regions) region.
 
 ## Release: March 2025
 
@@ -83,7 +91,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: September 2024
 
-- Public preview of [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17-preview) for Azure Database for PostgreSQL flexible server.
+- Public preview of [PostgreSQL 17](concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
 - Support for latest [minor versions](concepts-supported-versions.md) 16.4, 15.8, 14.13, 13.16, and 12.20. <sup>$</sup>
 - Support for [Reserved pricing](concepts-reserved-pricing.md) for Intel and AMD V5 Skus for Azure Database for PostgreSQL flexible server.
 - Public preview of [postgresql_anonymizer (anon)](../extensions/concepts-extensions-versions.md#anon) extension.

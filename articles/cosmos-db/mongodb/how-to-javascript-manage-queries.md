@@ -106,7 +106,7 @@ Use a pipeline to keep data processing on the server before returning to the cli
 
 ### Example product data
 
-The aggregations below use the [sample products collection](https://github.com/Azure-Samples/cosmos-db-mongodb-api-javascript-samples/blob/main/252-insert-many/products.json) with data in the shape of:
+The aggregations below use the [sample products collection](https://github.com/Azure-Samples/cosmos-db-mongodb-api-javascript-samples/blob/main/252-insert-many/index.js) with data in the shape of:
 
 ```json
 [

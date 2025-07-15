@@ -106,6 +106,53 @@ query_items = container.query_items(query="Select * from c",
 
 print(container.client_connection.last_response_headers['x-ms-cosmos-index-utilization'])
 ```
+
+## [Go SDK](#tab/go)
+
+To enable indexing metrics in Go SDK, set `PopulateIndexMetrics` to `true` in the [QueryOptions](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#QueryOptions). Index metrics data in the [QueryItemsResponse](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#QueryItemsResponse) is `base64` encoded and needs to be decoded before they can be used.
+
+Enabling indexing metrics incurs overhead, so it should be done only when debugging slow queries and not recommended in production.
+
+```go
+	pager := container.NewQueryItemsPager("SELECT c.id FROM c WHERE CONTAINS(LOWER(c.description), @word)", azcosmos.NewPartitionKey(), &azcosmos.QueryOptions{
+		PopulateIndexMetrics: true,
+		QueryParameters: []azcosmos.QueryParameter{
+			{
+				Name:  "@word",
+				Value: "happy",
+			},
+		},
+	})
+
+	if pager.More() {
+		page, _ := pager.NextPage(context.Background())
+		
+    // process results
+
+		decoded, _ := base64.StdEncoding.DecodeString(*page.IndexMetrics)
+		log.Println("Index metrics", string(decoded))
+	}
+```
+
+Once decoded, the index metrics are available in JSON format. For example:
+
+```json
+{
+    "UtilizedSingleIndexes": [
+        {
+            "FilterExpression": "",
+            "IndexSpec": "/description/?",
+            "FilterPreciseSet": true,
+            "IndexPreciseSet": true,
+            "IndexImpactScore": "High"
+        }
+    ],
+    "PotentialSingleIndexes": [],
+    "UtilizedCompositeIndexes": [],
+    "PotentialCompositeIndexes": []
+}
+```
+
 ---
 
 ### Example output

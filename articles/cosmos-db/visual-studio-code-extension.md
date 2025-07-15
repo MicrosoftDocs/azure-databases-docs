@@ -32,7 +32,7 @@ Before you begin, ensure you have the following:
 
     1. Open Visual Studio Code.
     2. Access the **Extensions** pane by selecting **View > Extensions**  or using the shortcut **Ctrl + Shift + X** on Windows and **Command + Shift + X** on MacOS.
-    3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
+    3. In the search bar, type [DocumentDB for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) and select the extension. Then, click **Install**.
     4. After installation, reload Visual Studio Code if prompted.
 
 ### Connecting to an Azure Cosmos DB for NoSQL
@@ -104,7 +104,7 @@ Before you begin, ensure you have the following:
 - To connect and manage data in Azure Cosmos DB, you need to install the **Azure Databases** extension for Visual Studio Code.
     1. Open Visual Studio Code.
     2. Access the **Extensions** pane by selecting **View > Extensions** or using the shortcut **Ctrl + Shift + X** on Windows and **Command + Shift + X** on MacOS.
-    3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
+    3. In the search bar, type [DocumentDB for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) and select the extension. Then, click **Install**.
     4. After installation, reload Visual Studio Code if prompted.
 - MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
 

@@ -101,7 +101,7 @@
     - name: vCore
       items:
       - name: to Azure Cosmos DB for MongoDB vCore
-        href: ../cosmos-db/mongodb/vcore/migration-options.md#azure-data-studio-online
+        href: ../cosmos-db/mongodb/vcore/migration-options.md#web-app-utility-online
 - name: How-to guides
   items:
   - name: DMS (classic)

@@ -222,6 +222,9 @@ If you want to persist binary logs for a longer duration, you can configure the 
 
 Azure Database for MySQL - Flexible Server handles managed features, like backup and read replica deletion of binary files, internally. When you replicate the data-out from Azure Database for MySQL - Flexible Server, this parameter needs to be set in the primary to avoid deletion of binary logs before the replica reads from the changes in the primary. If you set `binlog_expire_logs_seconds` to a higher value, the binary logs won't be deleted soon enough. That delay can lead to an increase in the storage billing.
 
+#### Limitations
+Once the accelerated logs feature is enabled, the binlog_expire_logs_seconds server parameter is disregarded entirely, and any configured value will no longer have any effect. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of binlog_expire_logs_seconds for binary log retention. This applies to replica servers as well. 
+
 ### event_scheduler
 
 In Azure Database for MySQL - Flexible Server, the `event_scheduler` server parameter manages creating, scheduling, and running events. That is, the parameter manages tasks that run according to a schedule by a special MySQL Event Scheduler thread. When the `event_scheduler` parameter is set to `ON`, the Event Scheduler thread is listed as a daemon process in the output of `SHOW PROCESSLIST`.
