@@ -1,6 +1,6 @@
 ---
 ms.service: azure-cosmos-db
-ms.subservice: cassandra
+ms.subservice: apache-cassandra
 ms.topic: include
 ms.date: 07/15/2025
 ---
