@@ -38,13 +38,13 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    :::image type="content" source="media/create-cluster-portal/create-cluster.png" border="true" alt-text="Screenshot that shows the button used to create the cluster." lightbox="media/create-cluster-portal/create-cluster.png":::
 
 1. On the **Create Managed Instance for Apache Cassandra** pane, enter the following information:
-   - **Subscription**: From the dropdown, select your Azure subscription.
+   - **Subscription**: From the dropdown list, select your Azure subscription.
    - **Resource group**: Specify whether you want to create a new resource group or use an existing one. A resource group is a container that holds related resources for an Azure solution.
    - **Cluster name**: Enter a name for your cluster.
-   - **Location**: Location to deploy the cluster.
-   - **Cassandra version**: Version of Apache Cassandra to deploy.
-   - **Extension**: Extensions to add, including [Cassandra Lucene Index](search-lucene-index.md).
-   - **Initial Cassandra admin password**: Password used to create the cluster.
+   - **Location**: Select the location to deploy the cluster.
+   - **Cassandra version**: Select the version of Apache Cassandra to deploy.
+   - **Extension**: Select extensions to add, including [Cassandra Lucene Index](search-lucene-index.md).
+   - **Initial Cassandra admin password**: Enter the password used to create the cluster.
    - **Confirm Cassandra admin password**: Reenter your password.
    - **Virtual network**: Select an existing virtual network and subnet, or create a new one.
    - **Assign roles**: Virtual networks require special permissions to allow managed Cassandra clusters to be deployed. Keep this box selected if you create a new virtual network or use an existing virtual network without permissions applied. If you use a virtual network where you previously deployed Azure SQL Managed Instance Cassandra clusters, clear this option.
@@ -68,7 +68,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
     > - `StopANY` means stop any node when there's a scheduled event for the node.
     > - `StopByRack` means stop nodes only in a specific rack for a specific scheduled event. For instance, if several events are scheduled for nodes in different racks at the same time, nodes in only one rack stop. Other nodes in other racks are delayed.
 
-1. Next, select the **Data center** tab.
+1. Select the **Data center** tab.
 
 1. Enter the following information:
    - **Data center name**: Enter a datacenter name in the text field.
@@ -89,7 +89,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
 
    The successful deployment of availability zones is also subject to the availability of compute resources in all the zones in the specific region. Deployments might fail if the product tier you selected, or capacity, isn't available across all the zones.
 
-1. Next, select **Review + create** > **Create**.
+1. Select **Review + create** > **Create**.
 
    It can take up to 15 minutes to create a cluster.
 
@@ -181,7 +181,7 @@ Don't allow application clients to write to the new datacenter until you apply k
 
 You can use the Azure portal or [CLI commands](manage-resources-cli.md#update-yaml) to update Cassandra YAML configuration on a datacenter. To update settings in the portal:
 
-1. Under **Settings**, select **Cassandra Configuration**. Highlight the datacenter whose configuration you want to change, and select **Update**.
+1. Under **Settings**, select **Cassandra Configuration**. Highlight the datacenter whose configuration you want to change, and then select **Update**.
 
    :::image type="content" source="media/create-cluster-portal/update-config-1.png" border="true" alt-text="Screenshot that shows selecting the datacenter to update configuration." lightbox="media/create-cluster-portal/update-config-1.png":::
 
