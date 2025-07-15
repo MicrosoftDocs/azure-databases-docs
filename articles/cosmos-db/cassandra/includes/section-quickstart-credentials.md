@@ -6,6 +6,14 @@ ms.date: 07/15/2025
 ms.custom: sfi-ropc-nochange
 ---
 
-TODO
+Now, get the connection string for the client library to use to create a connection to the recently created account.
+
+#### [](#tab/azure-cli)
 
 1. TODO
+
+#### [](#tab/azure-portal)
+
+1. TODO
+
+---

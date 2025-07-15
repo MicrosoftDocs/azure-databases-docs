@@ -6,7 +6,7 @@ ms.date: 07/15/2025
 ms.custom: sfi-ropc-nochange
 ---
 
-TODO
+First, set up the account and development environment for this guide. This section walks you through the process of creating an account, getting its credentials, and then preparing your development environment.
 
 ### Create an account
 

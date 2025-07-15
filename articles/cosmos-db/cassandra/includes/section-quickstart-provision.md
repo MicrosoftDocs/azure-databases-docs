@@ -9,7 +9,7 @@ Start by creating an API for Apache Cassandra account. Once the account is creat
 
 #### [](#tab/azure-cli)
 
-1. 
+1. TODO
 
 #### [](#tab/azure-portal)
 
