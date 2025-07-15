@@ -10,12 +10,12 @@ First, set up the account and development environment for this guide. This secti
 
 ### Create an account
 
-[!INCLUDE[Section - Setting up](includes/section-quickstart-provision.md)]
+[!INCLUDE[Section - Setting up](section-quickstart-provision.md)]
 
 ### Get credentials
 
-[!INCLUDE[Section - Get credentials](includes/section-quickstart-credentials.md)]
+[!INCLUDE[Section - Get credentials](section-quickstart-credentials.md)]
 
 ### Prepare development environment
 
-[!INCLUDE[Section - Prepare development environment](includes/section-quickstart-environment.md)]
+[!INCLUDE[Section - Prepare development environment](section-quickstart-environment.md)]

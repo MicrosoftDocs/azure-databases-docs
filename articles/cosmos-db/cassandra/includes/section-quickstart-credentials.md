@@ -8,11 +8,11 @@ ms.custom: sfi-ropc-nochange
 
 Now, get the connection string for the client library to use to create a connection to the recently created account.
 
-#### [](#tab/azure-cli)
+#### [Azure CLI](#tab/azure-cli)
 
 1. TODO
 
-#### [](#tab/azure-portal)
+#### [Azure portal](#tab/azure-portal)
 
 1. TODO
 

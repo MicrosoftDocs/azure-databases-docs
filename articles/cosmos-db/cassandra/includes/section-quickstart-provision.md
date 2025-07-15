@@ -5,13 +5,49 @@ ms.topic: include
 ms.date: 07/15/2025
 ---
 
-Start by creating an API for Apache Cassandra account. Once the account is created, get the credentials for the account. You use these credentials to connect to the account using the client library.
+Start by creating an API for Apache Cassandra account. Once the account is created, create the keyspace and table resources.
 
-#### [](#tab/azure-cli)
+#### [Azure CLI](#tab/azure-cli)
 
-1. TODO
+1. If you don't already have a target resource group, use the `az group create` command to create a new resource group in your subscription.
 
-#### [](#tab/azure-portal)
+    ```azurecli-interactive
+    az group create \
+        --name "<resource-group-name>" \
+        --location "<location>"
+    ```
+
+1. Use the `az cosmosdb create` command to create a new Azure Cosmos DB for Apache Cassandra account with default settings.
+
+    ```azurecli-interactive
+    az cosmosdb create \
+        --resource-group "<resource-group-name>" \
+        --name "<account-name>" \
+        --locations "regionName=<location>" \
+        --capabilities "EnableCassandra"
+    ```
+
+1. Create a new keyspace using `az cosmosdb cassandra keyspace create` named `cosmicworks`.
+
+    ```azurecli-interactive
+    az cosmosdb cassandra keyspace create \
+        --resource-group "<resource-group-name>" \
+        --account-name "<account-name>" \
+        --name "cosmicworks"
+    ```
+
+1. Use the `az cosmosdb cassandra table create` command to create a new table named `products`.
+
+    ```azurecli-interactive
+    az cosmosdb cassandra table create \
+        --resource-group "<resource-group-name>" \
+        --account-name "<account-name>" \
+        --keyspace-name "cosmicworks" \
+        --name "products" \
+        --schema '{"columns": [{"name": "id", "type": "uuid"}, {"name": "name", "type": "text"}, {"name": "category", "type": "text"}],"partitionKeys": [{"name": "category"}]}'
+    ```
+
+#### [Azure portal](#tab/azure-portal)
 
 1. Sign in to the Azure portal (<https://portal.azure.com>).
 
@@ -41,6 +77,22 @@ Start by creating an API for Apache Cassandra account. Once the account is creat
 
 1. The portal automatically navigates to the **Deployment** pane. Wait for the deployment to complete.
 
-1. Once the deployment is complete, select **Go to resource** to navigate to the new Azure Cosmos DB for NoSQL account.
+1. Once the deployment is complete, select **Go to resource** to navigate to the new API for Apache Cassandra account.
+
+1. In the resource menu, select the **Data Explorer** option.
+
+1. In the Data Explorer, select **+ New Table**.
+
+1. In the **Add Table** dialog, configure the following options, and then select **OK**:
+
+    | | Value |
+    | --- | --- |
+    | **Keyspace** | *Create new* |
+    | **Keyspace name** | `cosmicworks` |
+    | **Table name** | `products` |
+    | **Table schema** | `(id uuid, name text, category text, PRIMARY KEY (id))`
+
+    > [!TIP]
+    > You can leave any unspecified options to their default values.
 
 ---
