@@ -1,33 +1,35 @@
 ---
-title: Provision autoscale throughput in Azure Cosmos DB for NoSQL
+title: Provision Autoscale Throughput
 description: Learn how to provision autoscale throughput at the container and database level in Azure Cosmos DB for NoSQL using Azure portal, CLI, PowerShell, and various other SDKs. 
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 04/01/2022
+ms.date: 07/09/2025
 ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template, devx-track-dotnet, devx-track-extended-java
 ---
 
 # Provision autoscale throughput on database or container in Azure Cosmos DB - API for NoSQL
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-This article explains how to provision autoscale throughput on a database or container (collection, graph, or table) in Azure Cosmos DB for NoSQL. You can enable autoscale on a single container, or provision autoscale throughput on a database and share it among all the containers in the database.
+This article explains how to enable autoscale throughput on a database or container (collection, graph, or table) in Azure Cosmos DB for NoSQL. You can enable autoscale on a single container, or provision autoscale throughput on a database and share it among all the containers in the database.
 
-If you are using a different API, see [API for MongoDB](../mongodb/how-to-provision-throughput.md), [API for Cassandra](../cassandra/how-to-provision-throughput.md), [API for Gremlin](../gremlin/how-to-provision-throughput.md) articles to provision the throughput.
+If you're using a different API, see [API for MongoDB](../mongodb/how-to-provision-throughput.md), [API for Cassandra](../cassandra/how-to-provision-throughput.md), or [API for Gremlin](../gremlin/how-to-provision-throughput.md).
 
 ## Azure portal
 
 ### Create new database or container with autoscale
 
-1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos DB explorer.](https://cosmos.azure.com/)
+1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos DB explorer](https://cosmos.azure.com).
 
 1. Navigate to your Azure Cosmos DB account and open the **Data Explorer** tab.
 
-1. Select **New Container.** Enter a name for your database, container, and a partition key. Under database or container throughput, select the **Autoscale** option, and set the [maximum throughput (RU/s)](../provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) that you want the database or container to scale to.
+1. Select **New Container.** Enter a name for your database, container, and a partition key.
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Creating a container and configuring autoscale provisioned throughput":::
+1. Under database or container throughput, select the **Autoscale** option, and set the [maximum throughput (RU/s)](../provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) that you want the database or container to scale to.
+
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Screenshot that shows the settings to create a container and configure autoscale provisioned throughput." lightbox="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png":::
 
 1. Select **OK**.
 
@@ -35,7 +37,7 @@ To provision autoscale on shared throughput database, select the **Provision dat
 
 ### Enable autoscale on existing database or container
 
-1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos DB explorer.](https://cosmos.azure.com/)
+1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos DB explorer](https://cosmos.azure.com).
 
 1. Navigate to your Azure Cosmos DB account and open the **Data Explorer** tab.
 
@@ -43,17 +45,17 @@ To provision autoscale on shared throughput database, select the **Provision dat
 
 1. Under **Scale**, select the **Autoscale** option and **Save**.
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Enabling autoscale on an existing container":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Screenshot of settings to enable autoscale on an existing container.":::
 
 > [!NOTE]
-> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. [Learn more.](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-) 
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 ## Azure Cosmos DB .NET V3 SDK
 
 Use [version 3.9 or higher](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) of the Azure Cosmos DB .NET SDK for API for NoSQL to manage autoscale resources. 
 
 > [!IMPORTANT]
-> You can use the .NET SDK to create new autoscale resources. The SDK does not support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
+> You can use the .NET SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
 
 ### Create database with shared throughput
 
@@ -110,7 +112,8 @@ await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThrou
 You can use [version 4.0 or higher](https://mvnrepository.com/artifact/com.azure/azure-cosmos) of the Azure Cosmos DB Java SDK for API for NoSQL to manage autoscale resources.
 
 > [!IMPORTANT]
-> You can use the Java SDK to create new autoscale resources. The SDK does not support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
+> You can use the Java SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
+
 ### Create database with shared throughput
 
 # [Async](#tab/api-async)
@@ -278,18 +281,20 @@ db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
 
 ## Azure Resource Manager
 
-Azure Resource Manager templates can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs. See [Azure Resource Manager templates for Azure Cosmos DB](./samples-resource-manager-templates.md) for samples. By design, Azure Resource Manager templates cannot be used to migrate between provisioned and autoscale throughput on an existing resource. 
+Azure Resource Manager templates can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs. For samples, see [Azure Resource Manager templates for Azure Cosmos DB](./samples-resource-manager-templates.md).
+
+By design, Azure Resource Manager templates can't be used to migrate between provisioned and autoscale throughput on an existing resource. 
 
 ## Azure CLI
 
-Azure CLI can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs, or enable autoscale on an existing resource.
+Azure CLI can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs, or to enable autoscale on an existing resource.
 
 ## Azure PowerShell
 
-Azure PowerShell can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs, or enable autoscale on an existing resource.
+Azure PowerShell can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs, or to enable autoscale on an existing resource.
 
 ## Next steps
 
-* Learn about the [benefits of provisioned throughput with autoscale](../provision-throughput-autoscale.md#benefits-of-autoscale).
-* Learn how to [choose between manual and autoscale throughput](../how-to-choose-offer.md).
-* Review the [autoscale FAQ](../autoscale-faq.yml).
+* [Benefits of provisioned throughput with autoscale](../provision-throughput-autoscale.md#benefits-of-autoscale)
+* [How to choose between standard (manual) and autoscale provisioned throughput](../how-to-choose-offer.md)
+* [Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB](../autoscale-faq.yml)

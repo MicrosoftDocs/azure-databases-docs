@@ -3,7 +3,7 @@ title: Major version upgrades in Azure Database for PostgreSQL flexible server
 description: Learn how to use Azure Database for PostgreSQL flexible server to do in-place major version upgrades of PostgreSQL on a server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 6/29/2025
+ms.date: 7/15/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: upgrade-and-migration-article
@@ -72,6 +72,7 @@ If you're using PostGIS or any dependent extensions, you must configure the sear
 
 ### Other upgrade considerations
 
+- Event triggers: Upgrade pre-check blocks event triggers because they hook into DDL commands and may reference system catalogs that change between major versions—drop all `EVENT TRIGGER`s before upgrading and then recreate them after the upgrade to ensure a smooth upgrade.
 - Large objects (LOs): Databases with millions of large objects (stored in `pg_largeobject`) can cause upgrade failures due to high memory usage or log volume. Use [vacuumlo](https://www.postgresql.org/docs/current/vacuumlo.html) utility to clean up unused LOs, and consider scaling up your server before upgrade if many LOs are still in use.
 
 > [!WARNING]
