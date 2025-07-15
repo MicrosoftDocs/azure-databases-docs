@@ -52,10 +52,10 @@ Follow these steps to create an Azure Databricks cluster in a virtual network th
 
    :::image type="content" source="./media/deploy-cluster-databricks/select-name.png" alt-text="Screenshot that shows a dialog box where you can enter the workspace name, region, and pricing tier for the Azure Databricks account." border="true":::
 
-1. Next, select the **Networking** tab, and enter the following details:
+1. Select the **Networking** tab, and enter the following details:
 
    * **Deploy Azure Databricks workspace in your Virtual Network (VNet)**: Select **Yes**.
-   * **Virtual Network**: From the dropdown, choose the virtual network where your managed instance exists.
+   * **Virtual Network**: From the dropdown list, choose the virtual network where your managed instance exists.
    * **Public Subnet Name**: Enter a name for the public subnet.
    * **Public Subnet CIDR Range**: Enter an IP range for the public subnet.
    * **Private Subnet Name**: Enter a name for the private subnet.
@@ -80,7 +80,7 @@ Follow these steps to create an Azure Databricks cluster in a virtual network th
    * **Cluster Name**: Enter a name for the cluster.
    * **Databricks Runtime Version**: We recommend that you select Azure Databricks runtime version 7.5 or later, for Spark 3.x support.
 
-   :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/databricks-runtime.png" alt-text="Screenshot that shows the New Cluster dialog box with a Azure Databricks runtime version selected." border="true":::
+   :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/databricks-runtime.png" alt-text="Screenshot that shows the New Cluster dialog box with an Azure Databricks runtime version selected." border="true":::
 
 1. Expand **Advanced Options**, and add the following configuration. Make sure to replace the node IPs and credentials.
 
