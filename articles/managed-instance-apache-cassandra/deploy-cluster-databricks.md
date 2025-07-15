@@ -52,10 +52,10 @@ Follow these steps to create an Azure Databricks cluster in a virtual network th
 
    :::image type="content" source="./media/deploy-cluster-databricks/select-name.png" alt-text="Screenshot that shows a dialog box where you can enter the workspace name, region, and pricing tier for the Azure Databricks account." border="true":::
 
-1. Next, select the **Networking** tab, and enter the following details:
+1. Select the **Networking** tab, and enter the following details:
 
    * **Deploy Azure Databricks workspace in your Virtual Network (VNet)**: Select **Yes**.
-   * **Virtual Network**: From the dropdown, choose the virtual network where your managed instance exists.
+   * **Virtual Network**: From the dropdown list, choose the virtual network where your managed instance exists.
    * **Public Subnet Name**: Enter a name for the public subnet.
    * **Public Subnet CIDR Range**: Enter an IP range for the public subnet.
    * **Private Subnet Name**: Enter a name for the private subnet.
