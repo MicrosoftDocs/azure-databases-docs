@@ -18,7 +18,7 @@ ms.devlang: azurecli
 **Public documentation links**
 
 - [Cosmos DB Customer Managed Key Documentation:](./how-to-setup-customer-managed-keys.md)
-- [Cosmos DB Managed Identity Documentation:](./how-to-setup-managed-identity.md)
+- [Cosmos DB Managed Identity (MSI) Documentation:](./how-to-setup-managed-identity.md)
 
 **Cosmos DB account is in revoke state**
 
@@ -49,7 +49,7 @@ Customer creates a CMK db account via Azure CLI/ARM Template with Key Vault's Fi
 
 **Error Message**
 
-``Database account creation failed. Operation Id: 00000000-0000-0000-0000-000000000000, Error: {\"error\":{\"code\":\"Forbidden\",\"message\":\"Client address is not authorized and caller was ignored **because bypass is set to None** \\r\\nClient address: xx.xx.xx.xx\\r\\nCaller: name=Unknown/unknown;appid=00001111-aaaa-2222-bbbb-3333cccc4444;oid=ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0\\r\\nVault: mykeyvault;location=eastus\",\"innererror\":{\"code\":\" **ForbiddenByFirewall** \"}}}\r\nActivityId: 00000000-0000-0000-0000-000000000000, ``
+``Database account creation failed. Operation Id: 00000000-0000-0000-0000-000000000000, Error: {\"error\":{\"code\":\"Forbidden\",\"message\":\"Client address is not authorized and caller was ignored **because bypass is set to None** \\r\\nClient address: xx.xx.xx.xx\\r\\nCaller: name=Unknown/unknown;appid=00001111-aaaa-2222-bbbb-3333cccc4444;oid=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb\\r\\nVault: mykeyvault;location=eastus\",\"innererror\":{\"code\":\" **ForbiddenByFirewall** \"}}}\r\nActivityId: 00000000-0000-0000-0000-000000000000, ``
 
 **Status Code**
 
@@ -72,7 +72,7 @@ ___________________________________
 1. A customer attempts to create CMK account with a Key Vault Key Uri that doesn't exist in the tenant. 
 2. A customer tries to create a Cross Tenant CMK account with db account and key vault in different tenant, however the customer forgot to include the "&FederatedClientId=\<00000000-0000-0000-0000-000000000000\>" in the default identity.
 
-For example: *``az cosmosdb create -n mydb -g myresourcegroup --key-uri "https://myvault.vault.azure.net/keys/mykey" --assign-identity "/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity" --default-identity "UserAssignedIdentity=/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity"``*
+For example: *``az cosmosdb create -n mydb -g myresourcegroup --key-uri "https://myvault.vault.azure.net/keys/mykey" --assign-identity "/subscriptions/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity" --default-identity "UserAssignedIdentity=/subscriptions/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity"``*
 
 The "&FederatedClientId=\<00000000-0000-0000-0000-000000000000\>" is missing in the default identity. 
 
@@ -467,7 +467,7 @@ The Continuous backup / Azure Synapse Link / Full fidelity change feed / Materia
 If customer wants to create CMK account with **Continuous backup/ Synapse link / Full fidelity change feed / Materialized view enabled**, then UserAssigned identity is the only supported default identity right now. Notice the SystemAssignedIdentity as default identity is only supported in scenario when customer update the default identity to SystemAssigned identity & and the key vault and the db account must be in the same tenant. 
 
 Sample Command for creation db account using UserAssigned identity.
-``az cosmosdb create -n mydb -g myresourcegroup --key-uri "https://myvault.vault.azure.net/keys/mykey" --assign-identity "/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity" --default-identity "UserAssignedIdentity=/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity&FederatedClientId=00000000-0000-0000-0000-000000000000"``
+``az cosmosdb create -n mydb -g myresourcegroup --key-uri "https://myvault.vault.azure.net/keys/mykey" --assign-identity "/subscriptions/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity" --default-identity "UserAssignedIdentity=/subscriptions/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity&FederatedClientId=00000000-0000-0000-0000-000000000000"``
 
 
 ___________________________________
