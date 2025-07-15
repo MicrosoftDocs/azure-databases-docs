@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: Configure a Hybrid Cluster with Azure Managed Instance for Apache Cassandra Client Configurator'
-description: This quickstart shows how to configure a hybrid cluster with Azure Managed Instance for Apache Cassandra Client Configurator.
+description: This quickstart shows how to configure a hybrid cluster with the Azure Managed Instance for Apache Cassandra Client Configurator.
 author: IriaOsara
 ms.author: iriaosara
 ms.reviewer: sidandrews
@@ -13,7 +13,7 @@ ms.custom:
 ms.devlang: azurecli
 ---
 
-# Quickstart: Configure a hybrid cluster with Azure Managed Instance for Apache Cassandra by using Client Configurator
+# Quickstart: Configure a hybrid cluster with Azure Managed Instance for Apache Cassandra by using the Client Configurator
 
 The Azure Client Configurator is a tool designed to assist you in configuring a hybrid cluster and simplifying the migration process to Azure Managed Instance for Apache Cassandra. If you currently have on-premises datacenters or are operating in a self-hosted environment, you can use Azure Managed Instance for Apache Cassandra to seamlessly incorporate other datacenters into your cluster while effectively maintaining them.
 
@@ -29,16 +29,17 @@ The Azure Client Configurator is a tool designed to assist you in configuring a 
 - Python installation is required. To check if Python is installed, run `python --version` in your terminal.
 - Ensure that both the Azure Managed Instance for Apache Cassandra cluster and the on-premises Cassandra cluster are located on the same virtual network. If not, you need to establish network peering or another means of connectivity. For example, use Azure ExpressRoute.
 - The cluster name for both the managed cluster and local cluster must be the same.
-    * In the `cassandra.yaml` file, ensure that the storage port is set to 7001 and the cluster name is the same as the managed cluster:
+  
+  In the `cassandra.yaml` file, ensure that the storage port is set to 7001 and the cluster name is the same as the managed cluster:
 
-    ```bash
-    cluster_name: managed_cluster-name
-    storage_port: 7001
-     ```
+  ```bash
+  cluster_name: managed_cluster-name
+  storage_port: 7001
+   ```
     
-    ```sql
-    UPDATE system.local SET cluster_name = 'managed_cluster-name' where key='local';
-    ```
+  ```sql
+  UPDATE system.local SET cluster_name = 'managed_cluster-name' where key='local';
+  ```
 
 ## Installation
 
@@ -73,8 +74,7 @@ The Azure Client Configurator is a tool designed to assist you in configuring a 
     `dc-name`| Datacenter name of the on-premises cluster
     `sku`| Virtual machine product tier size
 
-1. The Python script produces a tar archive named `install_certs.tar.gz`.
-    * Unpack this folder into `/etc/cassandra/` on each node:
+1. The Python script produces a tar archive named `install_certs.tar.gz`. Unpack this folder into `/etc/cassandra/` on each node:
 
       ```bash
       sudo tar -xzvf install_certs.tar.gz -C /etc/cassandra
