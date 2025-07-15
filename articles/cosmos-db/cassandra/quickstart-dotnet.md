@@ -8,13 +8,13 @@ ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: quickstart-sdk
 ms.devlang: csharp
-ms.custom: devx-track-csharp, devx-track-dotnet
+ms.custom: devx-track-csharp, devx-track-dotnet, sfi-ropc-nochange
 ms.date: 07/15/2025
 ---
 
 # Quickstart: Azure Cosmos DB for Apache Cassandra client library for .NET
 
-[!INCLUDE[Developer Quickstart selector](includes/selector-quickstart-developer.md)]
+[!INCLUDE[Quickstart developer selector](includes/selector-quickstart-developer.md)]
 
 Get started with the Azure Cosmos DB for Apache Cassandra client library for .NET to store, manage, and query unstructured data. Follow the steps in this guide to create a new account, install a .NET client library, connect to the account, perform common operations, and query your final sample data.
 
@@ -22,8 +22,14 @@ Get started with the Azure Cosmos DB for Apache Cassandra client library for .NE
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Developer Quickstart](../includes/prerequisites-quickstart-developer.md)]
+[!INCLUDE[Prerequisites - Quickstart developer](../includes/prerequisites-quickstart-developer.md)]
 
 - .NET SDK 9.0 or later
 
-## TODO
+## Setting up
+
+[!INCLUDE[Section - Setting up](includes/section-quickstart-setup.md)]
+
+## Object model
+
+TODO
