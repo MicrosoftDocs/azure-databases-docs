@@ -83,7 +83,7 @@ To learn more about the premigration validation, visit [premigration](concepts-p
 
 Select **Next: Runtime server**.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-setup-migration-iaas" alt-text="Screenshot of the Setup tab after providing necessary details.":::
+:::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-setup-migration-iaas.png" alt-text="Screenshot of the Setup tab after providing necessary details.":::
 
 #### Runtime server
 
