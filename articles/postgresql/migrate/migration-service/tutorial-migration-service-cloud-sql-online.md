@@ -80,10 +80,9 @@ The first tab is the **Setup** tab, where the user needs to provide migration de
 - **Migration Option** allows you to perform validations before triggering a migration. You can pick any of the following options:
 
      - **Validate** - Checks your server and database readiness for migration to the target.
-     - **Migrate** - Skips validations and starts migrations.
-     - **Validate and Migrate**—Performs validation before triggering a migration. The migration is triggered only if there are no validation failures.
+     - **Validate and migrate**—Performs validation before triggering a migration. The migration is triggered only if there are no validation failures.
 
-Choosing the **Validate** or **Validate and Migrate** option is always a good practice when performing premigration validations before running the migration. To learn more about the premigration validation, refer to this [documentation](concepts-premigration-migration-service.md).
+Choosing the **Validate** or **Validate and migrate** option is always a good practice when performing premigration validations before running the migration. To learn more about the premigration validation, refer to this [documentation](concepts-premigration-migration-service.md).
 
 - **Migration mode** allows you to pick the mode for the migration. **Offline** is the default option.
 
@@ -195,7 +194,7 @@ Some possible migration states:
 
 #### Cutover
 
-If there are both **Migrate** and **Validate and Migrate**, completing the Online migration requires another step—the user must take a Cutover action. After the copy/clone of the base data is complete, the migration moves to the `WaitingForUserAction` state and the `WaitingForCutoverTrigger` substate. In this state, the user can trigger the cutover from the portal by selecting the migration.
+If **Validate and migrate** appears, completing the Online migration requires another step—the user must take a Cutover action. After the copy/clone of the base data is complete, the migration moves to the `WaitingForUserAction` state and the `WaitingForCutoverTrigger` substate. In this state, the user can trigger the cutover from the portal by selecting the migration.
 
 Before initiating cutover, it's important to ensure that:
 

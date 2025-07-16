@@ -24,8 +24,8 @@ The migration service in Azure Database for PostgreSQL is a fully managed servic
 
 > [!div class="checklist"]
 >  
-> - Configure your Azure Database for PostgreSQL Flexible Server
-> - Configure the migration task
+> - Prerequisites
+> - Perform the migration
 > - Monitor the migration
 > - Check the migration when completed
 
@@ -74,10 +74,9 @@ You need to provide multiple details related to the migration, like the migratio
 
 - **Migration option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
     - **Validate** - Checks your server and database readiness for migration to the target.
-    - **Migrate** - Skips validations and starts migrations.
-    - **Validate and Migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is initiated.
+    - **Validate and migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is initiated.
 
-Choosing the **Validate** or **Validate and Migrate** option is always a good practice for performing premigration validations before running the migration.
+Choosing the **Validate** or **Validate and migrate** option is always a good practice for performing premigration validations before running the migration.
 
 To learn more about the premigration validation, visit [premigration](concepts-premigration-migration-service.md).
 
@@ -139,7 +138,7 @@ The **Summary** tab summarizes all the source and target details for creating th
 
 ### Cutover
 
-If there are both **Migrate** and **Validate and Migrate**, completing the online migration requires another step—the user must take a Cutover action. After the copy/clone of the base data is complete, the migration moves to the `WaitingForUserAction` state and the `WaitingForCutoverTrigger` substrate. In this state, the user can trigger the cutover from the portal by selecting the migration.
+For **Validate and migrate** option, completing of the online migration requires the user to complete an additional step, which is to trigger the Cutover action. After the copy/clone of the base data is complete, the migration moves to the `WaitingForUserAction` state and the `WaitingForCutoverTrigger` substrate. In this state, the user can trigger the cutover from the portal by selecting the migration.
 
 Before initiating cutover, it's important to ensure that:
 

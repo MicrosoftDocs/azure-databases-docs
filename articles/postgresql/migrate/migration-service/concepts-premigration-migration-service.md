@@ -30,7 +30,7 @@ Here's how to do it in both methods.
 
 1. Select **Create**.
 
-1. On the **Setup** page, choose the migration option that includes validation. Select **Validate** or **Validate and Migrate**.
+1. On the **Setup** page, choose the migration option that includes validation. Select **Validate** or **Validate and migrate**.
 
     :::image type="content" source="media/concepts-premigration-migration-service/premigration-option.png" alt-text="Screenshot that shows the premigration option to start migration." lightbox="media/concepts-premigration-migration-service/premigration-option.png":::
 
@@ -55,8 +55,7 @@ You can choose any of the following options:
 
 - **Validate**: Use this option to check your server and database readiness for migration to the target. *This option won't start data migration and won't require any server downtime.*
      - Plan your migrations better by performing premigration validations in advance to know the potential issues you might encounter while you perform migrations.
-- **Migrate**: Use this option to kickstart the migration without going through a validation process. Perform validation before you trigger a migration to increase the chances of success. After validation is finished, you can use this option to start the migration process.
-- **Validate and Migrate**: This option performs validations, and migration gets triggered if all checks are in the **Succeeded** or **Warning** state. Validation failures don't start the migration between source and target servers.
+- **Validate and migrate**: This option performs validations, and migration gets triggered if all checks are in the **Succeeded** or **Warning** state. Validation failures don't start the migration between source and target servers.
 
 We recommend that you use premigration validations to identify issues before you run migrations. This technique helps you to plan your migrations better and avoid any surprises during the migration process.
 
@@ -66,7 +65,7 @@ We recommend that you use premigration validations to identify issues before you
 
 1. Rerun step 1 until the validation is successful.
 
-1. Start the migration by using the **Validate and Migrate** option on the planned date and time.
+1. Start the migration by using the **Validate and migrate** option on the planned date and time.
 
 ## Validation states
 

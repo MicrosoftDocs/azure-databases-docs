@@ -78,10 +78,9 @@ Enter or select the following information:
 - **Migration option**: Choose one of the following options for a premigration validation:
 
   - **Validate**. Checks your server and database readiness for migration to the target source.
-  - **Migrate**. Skips validations and starts the migration.
-  - **Validate and Migrate**. Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
+  - **Validate and migrate**. Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
 
-  A good practice is to select the **Validate** or **Validate and Migrate** option for premigration validations.
+  A good practice is to select the **Validate** or **Validate and migrate** option for premigration validations.
 
   For more information, see [Premigration validations](concepts-premigration-migration-service.md).
 
@@ -165,7 +164,7 @@ The entries are displayed in descending order of start time, with the most recen
 
 In the list of migrations, select the name of a migration to see associated details.
 
-On the **Setup** tab, select the migration option **Validate and Migrate**. In this scenario, validations are completed before migration starts. After the **PerformingPreRequisiteSteps** substate is completed, the workflow moves into the **Validation in Progress** substate.
+On the **Setup** tab, select the migration option **Validate and migrate**. In this scenario, validations are completed before migration starts. After the **PerformingPreRequisiteSteps** substate is completed, the workflow moves into the **Validation in Progress** substate.
 
 - If validation has errors, the migration moves into a **Failed** state.
 
@@ -219,7 +218,7 @@ The following tables describe some possible migration states and substates.
 
 ### Initiate a cutover
 
-If **Migrate** and **Validate and Migrate** both appear, completing the online migration requires the additional step of initiating a cutover. After the copy and clone of the base data is complete, the migration moves to the **WaitingForUserAction** state and the **WaitingForCutoverTrigger** substate. In this state, the user can trigger the cutover from the portal by selecting the migration.
+For **Validate and migrate** option, completing of the online migration requires the user to complete an additional step, which is to trigger the Cutover action. After the copy and clone of the base data is complete, the migration moves to the **WaitingForUserAction** state and the **WaitingForCutoverTrigger** substate. In this state, the user can trigger the cutover from the portal by selecting the migration.
 
 Before initiating a cutover, it's important to ensure that:
 

@@ -79,10 +79,9 @@ The user needs to provide multiple details related to the migration, such as the
 
 - **Migration Option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
     - **Validate** - Checks your server and database readiness for migration to the target.
-    - **Migrate** - Skips validations and starts migrations.
-    - **Validate and Migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
+    - **Validate and migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
 
-Choosing the **Validate** or **Validate and Migrate** option is always a good practice for performing premigration validations before running the migration.
+Choosing the **Validate** or **Validate and migrate** option is always a good practice for performing premigration validations before running the migration.
 
 To learn more about the premigration validation, visit [premigration](concepts-premigration-migration-service.md).
 
@@ -153,7 +152,7 @@ The grid that displays the migrations has these columns: **Name**, **Status**, *
 
 Select the migration name in the grid to see the associated details.
 
-In the **Setup** tab, we have selected the migration option as **Validate and Migrate**. In this scenario, validations are performed first before migration starts. After the **PerformingPreRequisiteSteps** substrate is completed, the workflow moves into the substrate of **Validation in Progress**.
+In the **Setup** tab, we have selected the migration option as **Validate and migrate**. In this scenario, validations are performed first before migration starts. After the **PerformingPreRequisiteSteps** substrate is completed, the workflow moves into the substrate of **Validation in Progress**.
 
 - If validation has errors, the migration moves into a **Failed** state.
 

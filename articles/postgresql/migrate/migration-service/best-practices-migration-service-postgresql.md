@@ -18,7 +18,7 @@ This article explains common pitfalls encountered and best practices to ensure a
 
 ## Premigration validation
 
-As a first step in the migration, run the premigration validation before you perform a migration. You can use the **Validate** and **Validate and Migrate** options on the migration **Setup** page. Premigration validation conducts thorough checks against a predefined rule set. The goal is to identify potential problems and provide actionable insights for remedial actions. Keep running premigration validation until it results in a **Succeeded** state. To learn more, see [Premigration validations](concepts-premigration-migration-service.md).
+As a first step in the migration, run the premigration validation before you perform a migration. You can use the **Validate** and **Validate and migrate** options on the migration **Setup** page. Premigration validation conducts thorough checks against a predefined rule set. The goal is to identify potential problems and provide actionable insights for remedial actions. Keep running premigration validation until it results in a **Succeeded** state. To learn more, see [Premigration validations](concepts-premigration-migration-service.md).
 
 ## Target Flexible Server configuration
 

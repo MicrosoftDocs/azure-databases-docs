@@ -74,10 +74,9 @@ The first tab is **Setup**. In case you missed it, allowlist necessary extension
 
 **Migration option** allows you to perform validations before triggering a migration. You can pick any of the following options.
 - **Validate** - Checks your server and database readiness for migration to the target.
-- **Migrate** - Skips validations and starts migration.
-- **Validate and Migrate** - Performs validation before triggering a migration. Migration gets triggered only if there are no validation failures.
+- **Validate and migrate** - Performs validation before triggering a migration. Migration gets triggered only if there are no validation failures.
 
-It's always a good practice to choose **Validate** or **Validate and Migrate** option to perform premigration validations before running the migration.
+It's always a good practice to choose **Validate** or **Validate and migrate** option to perform premigration validations before running the migration.
 
 **Migration mode** allows you to choose between an online and an offline migration, in this case it must be set to **Offline**.
 
@@ -189,13 +188,13 @@ Once the migration moves to the **Succeeded** state, schema and data migration f
 
 :::image type="content" source="../../media/postgresql-single-server-portal-migrate/flexible-migration-progress-complete.png" alt-text="Screenshot of the completed migrations." lightbox="../../media/postgresql-single-server-portal-migrate/flexible-migration-progress-complete.png":::
 
-### Validate and Migrate
+### Validate and migrate
 
 In this option, validations are performed first before migration starts. After the **PerformingPreRequisiteSteps** substate is completed, the workflow moves into the substate of **Validation in Progress**.
 - If validation has errors, the migration moves into a **Failed** state.
 - If validation is complete without any error, the migration starts, and the workflow moves into the substate of **Migrating Data**.
 
-You can see the results of **Validate and Migrate** once the operation is complete.
+You can see the results of **Validate and migrate** once the operation is complete.
 
 :::image type="content" source="../../media/postgresql-single-server-portal-migrate/validate-and-migrate-1.png" alt-text="Screenshot showing validations tab in details page." lightbox="../../media/postgresql-single-server-portal-migrate/validate-and-migrate-1.png":::
 
@@ -255,10 +254,9 @@ The first tab is **Setup**. In case you missed it, allowlist necessary extension
 
 **Migration option** allows you to perform validations before triggering a migration. You can pick any of the following options.
 - **Validate** - Checks your server and database readiness for migration to the target.
-- **Migrate** - Skips validations and starts migration.
-- **Validate and Migrate** - Performs validation before triggering a migration. Migration gets triggered only if there are no validation failures.
+- **Validate and migrate** - Performs validation before triggering a migration. Migration gets triggered only if there are no validation failures.
 
-It's always a good practice to choose **Validate** or **Validate and Migrate** option to perform premigration validations before running the migration.
+It's always a good practice to choose **Validate** or **Validate and migrate** option to perform premigration validations before running the migration.
 
 **Migration mode** allows you to choose between an online and an offline migration, in this case it must be set to **Online**.
 
@@ -352,11 +350,11 @@ In this option, validations are performed first before migration starts. After t
 - If validation has errors, the migration moves into a **Failed** state.
 - If validation is complete without any error, the migration starts, and the workflow moves into the substate of **Migrating Data**.
 
-You can see the results of **Validate and Migrate** once the operation is complete.
+You can see the results of **Validate and migrate** once the operation is complete.
 
 ### Cutover migration
 
-For the **Migrate** and for the **Validate and Migrate** migration options, completion of the online migration requires the user to complete an additional step, which is to trigger the Cutover action. After the copy/clone of the base data is complete, the migration moves to the **WaitingForUserAction** state and the `WaitingForCutoverTrigger** substate. In this state, user can trigger cutover from the portal by selecting the migration, and selecting the **Cutover** button.
+For **Validate and migrate** option, completing of the online migration requires the user to complete an additional step, which is to trigger the Cutover action. After the copy/clone of the base data is complete, the migration moves to the **WaitingForUserAction** state and the `WaitingForCutoverTrigger** substate. In this state, user can trigger cutover from the portal by selecting the migration, and selecting the **Cutover** button.
 
 Before initiating cutover, it's essential to ensure that:
 

@@ -37,7 +37,7 @@ To begin the migration, you need the following prerequisites:
 
 You can migrate by using Azure portal or Azure CLI.
 
-#### [Portal](#tab/portal)
+### [Portal](#tab/portal)
 
 This article guides you using the Azure portal to migrate your PostgreSQL database from an Azure VM or an on-premises PostgreSQL server to an Azure Database for PostgreSQL. The Azure portal allows you to perform various tasks, including database migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
 
@@ -72,10 +72,9 @@ You need to provide multiple details related to the migration, like the migratio
 
 - **Migration option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
     - **Validate** - Checks your server and database readiness for migration to the target.
-    - **Migrate** - Skips validations and starts migrations.
-    - **Validate and Migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is initiated.
+    - **Validate and migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is initiated.
 
-Choosing the **Validate** or **Validate and Migrate** option is always a good practice for performing premigration validations before running the migration.
+Choosing the **Validate** or **Validate and migrate** option is always a good practice for performing premigration validations before running the migration.
 
 To learn more about the premigration validation, visit [premigration](concepts-premigration-migration-service.md).
 
@@ -223,7 +222,7 @@ The grid that displays the migrations has the following columns: **Name**, **Sta
 
 Select the migration name in the grid to see the associated details.
 
-Remember that in the previous steps, when you created this migration, you configured the migration option as **Validate and Migrate**. In this scenario, validations are performed first, before migration starts. After the **PerformingPreRequisiteSteps** substrate is completed, the workflow moves into the substrate of **Validation in Progress**.
+Remember that in the previous steps, when you created this migration, you configured the migration option as **Validate and migrate**. In this scenario, validations are performed first, before migration starts. After the **PerformingPreRequisiteSteps** substrate is completed, the workflow moves into the substrate of **Validation in Progress**.
 
 - If validation has errors, the migration moves into a **Failed** state.
 
