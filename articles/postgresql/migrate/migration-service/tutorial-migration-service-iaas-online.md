@@ -4,7 +4,7 @@ description: "Learn to migrate seamlessly from on-premises or an Azure VM to Azu
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 07/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -18,7 +18,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server using the Azure portal and Azure CLI.
+This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server in online mode.
 
 The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server.
 
@@ -37,7 +37,7 @@ To begin the migration, you need the following prerequisites:
 
 ## Perform the migration
 
-You can migrate by using the Azure portal or the Azure CLI.
+You can migrate by using Azure portal or Azure CLI.
 
 #### [Portal](#tab/portal)
 
@@ -45,147 +45,97 @@ This article guides you using the Azure portal to migrate your PostgreSQL databa
 
 ### Configure the migration task
 
-The migration service comes with a simple, wizard-based experience on the Azure portal. Here's how to start:
+The migration service comes with a simple, wizard-based experience on the Azure portal.
 
-1. Open your web browser and go to the [portal](https://portal.azure.com/). Enter your credentials to sign in. The default view is your service dashboard.
+Using the [Azure portal](https://portal.azure.com/):
 
-1. Go to your Azure Database for PostgreSQL Flexible Server target.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-1. In the Flexible Server's **Overview** tab, on the left menu, scroll down to Migration and select it.
+1. In the resource menu, select **Migration**.
 
-    :::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-select-migration-pane.png" alt-text="Screenshot of the Migration selection page in the Azure portal." lightbox="media/tutorial-migration-service-iaas-online/portal-online-select-migration-pane.png":::
+    :::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-select-migration-pane.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service-iaas-online/portal-online-select-migration-pane.png":::
 
-1. Select the **Create** button to migrate from an Azure virtual machine (VM) or an on-premises PostgreSQL server to the Flexible Server. If this is your first time using the migration service, an empty grid appears with a prompt to begin your first migration.
+1. Select **Create** to go through a wizard-based series of tabs to perform a migration to a flexible server from on-premises or Azure VM.
 
-    :::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-create-migration.png" alt-text="Screenshot of Create migration." lightbox="media/tutorial-migration-service-iaas-online/portal-online-create-migration.png":::
+    > [!NOTE]
+    > The first time you use the migration service, an empty grid appears with a prompt to begin your first migration.
 
-    If you've already created migrations to your Flexible Server target, the grid contains information about attempted migrations.
+    If migrations to your flexible server target have already been created, the grid now contains information about attempted migrations.
 
-1. Select the **Create** button. Then, you go through a wizard-based series of tabs to create a migration into this Flexible Server target from the PostgreSQL source Server.
+    :::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-iaas-online/portal-online-create-migration.png":::
 
 #### Setup
 
-The first tab is the setup tab, where the user initiates the migrations by providing migration details like migration name and source type.
+You need to provide multiple details related to the migration, like the migration name, source server type, option, and mode.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/01-portal-online-setup-iaas.png" alt-text="Screenshot of Setup migration.":::
+- **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same flexible server target can have the same name.
 
-- **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same Flexible Server target can have the same name.
+- **Source server type** - Depending on your PostgreSQL source, you can select **Azure Virtual Machine** or **On-premise Server**.
 
-- **Source Server Type** — Depending on your PostgreSQL source, you can select *Azure VM* or *on-premises*.
+- **Migration option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
+    - **Validate** - Checks your server and database readiness for migration to the target.
+    - **Migrate** - Skips validations and starts migrations.
+    - **Validate and Migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is initiated.
 
-- **Migration Option** allows you to perform validations before triggering a migration. You can pick any of the following options:
-     - **Validate** - Checks your server and database readiness for migration to the target.
-     - **Migrate** - Skips validations and starts migrations.
-     - **Validate and Migrate**—Performs validation before triggering a migration. The migration is triggered only if there are no validation failures.
+Choosing the **Validate** or **Validate and Migrate** option is always a good practice for performing premigration validations before running the migration.
 
-Choosing the **Validate** or **Validate and Migrate** option is always a good practice when performing premigration validations before running the migration. To learn more about the premigration validation, refer to this [documentation](concepts-premigration-migration-service.md).
+To learn more about the premigration validation, visit [premigration](concepts-premigration-migration-service.md).
 
-**Migration mode** allows you to choose the mode for the migration. **Offline** is the default option.
+- **Migration mode** allows you to pick the mode for the migration. **Offline** is the default option. In this case, we'll change it to **Online**.
 
-Select the **Next: Connect to source** button.
+Select **Next: Runtime server**.
 
-#### Runtime Server
+:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-setup-migration-iaas.png" alt-text="Screenshot of the Setup tab after providing necessary details.":::
 
-The Migration Runtime Server is a specialized feature within the [migration service in Azure Database for PostgreSQL](concepts-migration-service-postgresql.md), designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
+#### Runtime server
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/02-portal-online-runtime-server-iaas.png" alt-text="Screenshot of the migration Runtime Server page.":::
+The migration runtime server is a specialized feature within the [migration service in Azure Database for PostgreSQL](concepts-migration-service-postgresql.md), designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server, but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
-For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
+:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-runtime-server-migration-iaas.png" alt-text="Screenshot of the Runtime server tab.":::
 
-#### Connect to source
+For more information about the runtime server, visit [Migration runtime server](concepts-migration-service-runtime-server.md).
 
-The **Connect to Source** tab prompts you to give details related to the source selected in the **Setup Tab** that is the source of the databases.
+#### Source server
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/03-portal-online-connect-to-source-iaas.png" alt-text="Screenshot of Connectsourcemigration.":::
+The **Source server** tab prompts you to give details related to the source selected in the **Setup** tab, which is the source of the databases.
 
-- **Server Name** - Provide the Hostname or the IP address of the source PostgreSQL instance
-- **Port** - Port number of the Source server
-- **Server admin login name** - Username of the source PostgreSQL server
-- **Password** - Password of the source PostgreSQL server
-- **SSL Mode** - Supported values are preferred and required. When the SSL at the source PostgreSQL server is OFF, use the SSLMODE=prefer. If the SSL at the source server is ON, use the SSLMODE=require. SSL values can be determined in postgresql.conf file.
-- **Test Connection** - Performs the connectivity test between target and source. Once the connection is successful, users can proceed with the next step. Otherwise, you need to identify the networking issues between the target and source and verify the username/password for the source. Test connection takes a few minutes to establish a connection between the target and source
+- **Server name** - Provide the name of the host or the IP address of the source PostgreSQL server.
+- **Port** - Port number of the source server.
+- **Admininistrator login** - Name of the administrator user of the source PostgreSQL server.
+- **Password** - Password of the administrator login provided to connect to source PostgreSQL server.
+- **SSL mode** - Supported values are `preferred` and `required`. When the SSL at the source PostgreSQL server is `OFF`, use `prefer`. If the SSL at the source server is `ON`, use the `require`. SSL values can be determined in postgresql.conf file of the source server.
+- **Test connection** — Performs the connectivity test between the target and source. Once the connection is successful, you can proceed to the next tab. These test aims to identify any connectivity issues that might exist between the target and source servers, including verification of authentication using the credentials supplied. Establishing a test connection takes a few seconds.
 
-After the successful test connection, select the **Next: Select Migration target**
+After the successful test connection, select **Next: Target server**.
 
-#### Select migration target
+:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-source-server-migration-iaas.png" alt-text="Screenshot of Source server migration tab.":::
 
-The **select migration target** tab displays metadata for the Flexible Server target, such as the subscription name, resource group, server name, location, and PostgreSQL version.
+#### Target server
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/04-portal-online-select-migration-target-iaas.png" alt-text="Screenshot of Connecttargetmigration.":::
+The **Target server** tab displays metadata for the flexible server target, such as the subscription name, resource group, server name, location, and PostgreSQL version.
 
-- **Admin username** - Admin username of the target PostgreSQL server
-- **Password** - Password of the target PostgreSQL server
-- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
-- **Test Connection** - Performs the connectivity test between target and source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the source and verify the username/password for the target. The test connection takes a few minutes to establish a connection between the target and the source.
+- **Admininistrator login** - Name of the administrator user of the target PostgreSQL server.
+- **Password** - Password of the administrator login provided to connect to target PostgreSQL server.
+- **Custom FQDN or IP address**: The custom FQDN or IP address field is optional, and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `production-flexible-server.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `production-flexible-server.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
+- **Test connection** — Performs the connectivity test between the source and target. Once the connection is successful, you can proceed to the next tab. These test aims to identify any connectivity issues that might exist between the source and target servers, including verification of authentication using the credentials supplied. Establishing a test connection takes a few seconds.
 
-After the successful test connection, select the **Next: Select Database(s) for Migration**
+After the successful test connection, select the **Next: Databases to validate or migrate**
 
-#### Select databases for migration
+:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-target-server-migration-iaas.png" alt-text="Screenshot of the Target server migration tab.":::
 
-Under this tab, a list of user databases is inside the source server selected in the setup tab. You can select and migrate up to eight databases in a single migration attempt. If there are more than eight user databases, the migration process is repeated between the source and target servers for the next set of databases.
+#### Databases to validate or migrate
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/05-portal-online-select-database-for-migration-iaas.png" alt-text="Screenshot of FetchDBmigration.":::
+Under the **Databases to validate or migrate** tab, you can choose a list of user databases to migrate from your source PostgreSQL server.
 
-After selecting the databases, select the **Next: Summary**
+After selecting the databases, select **Next: Summary**.
+
+:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-databases-to-validate-or-migrate-migration-iaas.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab.":::
 
 #### Summary
 
-The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select the start button.
+The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select **Start validation and migration**.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/06-portal-online-summary-iaas.png" alt-text="Screenshot of Summary migration.":::
-
-### Monitor the migration
-
-After you select the start button, a notification appears in a few seconds, saying that the validation or migration creation is successful. You're redirected automatically to the **Migration** blade of Flexible Server, which has a new entry for the recently created validation or migration.
-
-:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-monitor-migration.png" alt-text="Screenshot of monitor migration in the Azure portal." lightbox="media/tutorial-migration-service-iaas-online/portal-online-monitor-migration.png":::
-
-The grid that displays the migrations has these columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration, and **Start time**. The entries are displayed in the descending order of the start time, with the most recent entry at the top. You can use the refresh button to refresh the status of the validation or migration.
-Select the migration name in the grid to see the associated details.
-
-When the validation or migration is created, it moves to the **InProgress** state and **PerformingPreRequisiteSteps** substate. The workflow takes 2 to 3 minutes to set up the migration infrastructure and network connections.
-
-### Migration details
-
-In the Setup tab, we have selected the migration option as **Migrate and Validate**. In this scenario, validations are performed first before migration starts. After the **PerformingPreRequisiteSteps** substate is completed, the workflow moves into the substate of **Validation in Progress**.
-- If validation has errors, the migration moves into a **Failed** state.
-- If validation completes without error, the migration starts, and the workflow moves into the substate of **Migrating Data**.
-
-The validation results are displayed under the **Validation** tab, and the migration is monitored under the **Migration** tab.
-
-:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-details-migration.png" alt-text="Screenshot of Details migration." lightbox="media/tutorial-migration-service-iaas-online/portal-online-details-migration.png":::
-
-Some possible migration states:
-
-### Migration states
-
-| State | Description |
-| --- | --- |
-| **InProgress** | The migration infrastructure setup is underway, or the actual data migration is in progress. |
-| **Canceled** | The migration is canceled or deleted. |
-| **Failed** | The migration has failed. |
-| **Validation Failed** | The validation has failed. |
-| **Succeeded** | The migration has succeeded and is complete. |
-| **WaitingForUserAction** | Applicable only for online migration. Waiting for user action to perform cutover. |
-
-### Migration substates
-
-| Substate | Description |
-| --- | --- |
-| **PerformingPreRequisiteSteps** | Infrastructure setup is underway for data migration. |
-| **Validation in Progress** | Validation is in progress. |
-| **MigratingData** | Data migration is in progress. |
-| **CompletingMigration** | Migration is in the final stages of completion. |
-| **Completed** | Migration has been completed. |
-| **Failed** | Migration has failed. |
-
-### Validation substates
-
-| Substate | Description |
-| --- | --- |
-| **Failed** | Validation has failed. |
-| **Succeeded** | Validation is successful. |
-| **Warning** | Validation is in warning. |
+:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-summary-migration-iaas.png" alt-text="Screenshot of the Summary migration tab.":::
 
 ### Cutover
 
