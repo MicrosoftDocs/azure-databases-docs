@@ -101,7 +101,7 @@ High availability is an opt-in feature that can be enabled at the subscription l
 - Premium SSD V2 can only be enabled in the following regions: 
  *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.  
 
-- Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is not currently supported.
+- During HA preview, Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is not currently supported.
 
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
