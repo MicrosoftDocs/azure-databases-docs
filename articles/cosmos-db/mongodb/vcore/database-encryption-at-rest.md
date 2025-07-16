@@ -14,7 +14,7 @@ appliesto:
 
 All the data managed by an Azure Cosmos DB for MongoDB vCore is always encrypted at rest. That data includes all system and user databases, temporary files, logs, and backups.
 
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/notice-cmk-preview.md)]
+[!INCLUDE[MongoDB vCore](./includes/notice-cmk-preview.md)]
 
 ## Encryption at rest with service-managed key (SMK) or customer-managed key (CMK)
 
@@ -75,7 +75,7 @@ Following is the list of requirements and recommendations for data encryption co
 
 CMK in Azure Cosmos DB for MongoDB vCore supports automatic key version updates, also known as version-less keys. Azure Cosmos DB for MonogoDB vCore service automatically picks up the new key version and reencrypt the data encryption key. This capability can be combined with the Azure Key Vault's [autorotation feature](/azure/key-vault/keys/how-to-configure-key-rotation).
 
-## Considertations
+## Considerations
 
 When you're using a customer-managed key for data encryption, follow these recommendations to configure Key Vault:
 - To prevent accidental or unauthorized deletion of this critical resource, set a [resource lock](/azure/azure-resource-manager/management/lock-resources) on key vault.
