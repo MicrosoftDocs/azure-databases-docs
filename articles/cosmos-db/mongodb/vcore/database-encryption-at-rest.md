@@ -14,7 +14,7 @@ appliesto:
 
 All the data managed by an Azure Cosmos DB for MongoDB vCore is always encrypted at rest. That data includes all system and user databases, temporary files, logs, and backups.
 
-[!INCLUDE[MongoDB vCore](./includes/notice-cmk-preview.md)]
+[!INCLUDE[MongoDB vCore](./includes/notice-customer-managed-key-preview.md)]
 
 ## Encryption at rest with service-managed key (SMK) or customer-managed key (CMK)
 
