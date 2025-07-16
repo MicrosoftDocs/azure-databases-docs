@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 07/13/2026
+ms.date: 07/13/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -13,6 +13,8 @@ appliesto:
 # Data encryption in Azure Cosmos DB for MongoDB vCore
 
 All the data managed by an Azure Cosmos DB for MongoDB vCore is always encrypted at rest. That data includes all system and user databases, temporary files, logs, and backups.
+
+[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/notice-cmk-preview.md)]
 
 ## Encryption at rest with service-managed key (SMK) or customer-managed key (CMK)
 
@@ -50,25 +52,25 @@ Azure Key Vault is a cloud-based, external key management system. It's highly av
 
 Following is the list of requirements and recommendations for data encryption configuration for Azure Cosmos DB for MongoDB vCore:
 
-- Key vault
+- **Key vault**
     - Key vault and Azure Cosmos DB for MongoDB vCore must belong to the same [Microsoft Entra tenant](/entra/identity-platform/developer-glossary#tenant).
     - Recommendation: Set the **Days to retain deleted vaults** setting for Key Vault to *90 days*. This configuration setting can be defined only at key vault creation time. Once an instance is created, it isn't possible to modify this setting.
     - Enable the [soft-delete feature](/azure/key-vault/general/soft-delete-overview) in key vault to help you with protecting from data loss, if a key or a key vault instance is accidentally deleted. Key vault retains soft-deleted resources for 90 days unless the user recovers or purges them in the meantime. The recover and purge actions have their own permissions associated with a key vault, an RBAC role, or an access policy permission. The soft-deleted feature is on by default. If you have a key vault that was deployed long time ago, it might still have soft-delete disabled. In that case, you can [turn it on](/azure/key-vault/general/soft-delete-overview#supporting-interfaces).
     - Enable[] purge protection](/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault) to enforce a mandatory retention period for deleted vaults and vault objects.
-- Permissions: Grant the Azure Cosmos DB for MongoDB vCore's user-assigned managed identity access to the key by:
+- **Key**
+    - The key used for encrypting the data encryption key can be only asymmetric, RSA, or RSA-HSM. Key sizes of 2,048, 3,072, and 4,096 are supported. 
+        - Recommendation: Use a 4,096-bit key for better security.
+    - The date and time for key activation (if set) must be in the past. The date and time for expiration (if set) must be in the future.
+    - The key must be in **Enabled** state.
+    - If you're importing an existing key into Azure Key Vault, provide it in the supported file formats (`.pfx`, `.byok`, or `.backup`).
+- **Permissions**: Grant the Azure Cosmos DB for MongoDB vCore's user-assigned managed identity access to the key by:
   - **Preferred**: Azure Key Vault should be configured with [RBAC permission model](/azure/key-vault/general/rbac-guide) and the managed identity should be assigned the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) role.
   - Legacy: If Azure Key Vault is configured with [Access policy permission model](/azure/key-vault/general/assign-access-policy), grant the following permissions to the managed identity:
     - **get**: To retrieve the properties and the public part of the key in key vault.
     - **list**: To list and iterate through the keys stored in key vault.
     - **wrapKey**: To encrypt the data encryption key.
     - **unwrapKey**: To decrypt the data encryption key.
-- Key
-    - The key used for encrypting the data encryption key can be only asymmetric, RSA, or RSA-HSM. Key sizes of 2,048, 3,072, and 4,096 are supported. 
-        - Recommendation: Use a 4,096-bit key for better security.
-    - The date and time for key activation (if set) must be in the past. The date and time for expiration (if set) must be in the future.
-    - The key must be in **Enabled** state.
-    - If you're importing an existing key into Azure Key Vault, provide it in the supported file formats (`.pfx`, `.byok`, or `.backup`).
-    
+
 ## CMK key version updates
 
 CMK in Azure Cosmos DB for MongoDB vCore supports automatic key version updates, also known as version-less keys. Azure Cosmos DB for MonogoDB vCore service automatically picks up the new key version and reencrypt the data encryption key. This capability can be combined with the Azure Key Vault's [autorotation feature](/azure/key-vault/keys/how-to-configure-key-rotation).
