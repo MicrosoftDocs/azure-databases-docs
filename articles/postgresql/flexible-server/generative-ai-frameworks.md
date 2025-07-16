@@ -4,6 +4,7 @@ description: Integrate Azure Database for PostgreSQL with AI and large language 
 author: abeomor
 ms.author: abeomorogbe
 ms.date: 03/17/2025
+ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.collection: ce-skilling-ai-copilot

@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 06/11/2025
+ms.update-cycle: 180-days
 ms.custom: query-reference, devx-track-dotnet, build-2024, ignite-2024
 ms.collection:
   - ce-skilling-ai-copilot
