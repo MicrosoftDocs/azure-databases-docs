@@ -111,6 +111,9 @@ To monitor the database state, and to turn on alerts for the loss of access to t
 
 When you configure data encryption with a customer-managed key stored in key vault, continuous access to this key is required for the cluster to stay online. If that's not the case, the cluster changes its state to **Inaccessible** and begins denying all connections.
 
+> [!NOTE]  
+> In preview, cluster status may continue to be **Ready** and not change to **Inaccessible**.
+
 Some of the possible reasons why the cluster state might become **Inaccessible** are:
 
 | Cause | Resolution |
