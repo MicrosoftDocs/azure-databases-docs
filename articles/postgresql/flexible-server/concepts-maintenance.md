@@ -4,7 +4,7 @@ description: This article describes the scheduled maintenance feature in Azure D
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 07/08/2025
+ms.date: 07/15/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -64,6 +64,13 @@ Some considerations when considering during monthly maintenance:
 - Downtime depends on the transactional load on the server at the time of maintenance.
 - Once maintenance is scheduled, any changes to the maintenance settings will apply only to the next maintenance cycle, not the current one.
 - If a PostgreSQL server is stopped during scheduled maintenance, the system will restart the server, apply the pending maintenance, and then return the server to the stopped state after the maintenance is applied.
+
+## Applying Maintenance on Stopped/Disabled Instances
+If a PostgreSQL server is stopped during scheduled maintenance, the maintenance will not be applied immediately. Instead, the maintenance will be applied when the server is restarted, either manually by the customer or automatically through the [7-day auto-restart](./concepts-limits.md#stopstart-operations) feature. A notification will be sent to the customer indicating that maintenance couldn’t be applied because the server is stopped and will be applied when the server is restarted.
+
+Customers may notice a slight increase in restart time (5-8 minutes) when pending maintenance is applied, particularly during manual restarts.
+
+Note: This functionality is currently rolled out in East Asia and will soon be available in other regions.
 
 ## Related content
 
