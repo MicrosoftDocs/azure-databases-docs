@@ -157,20 +157,20 @@ az login
 
 To begin the migration, create a JSON file with the migration details. The JSON file contains the following information:
 
-- Edit the below placeholders `<< >>` in the JSON lines and store them in the local machine as `<<filename>>.json` where the CLI is being invoked. In this tutorial, we have saved the file in C:\migration-CLI\migration_body.json
+- Edit the below placeholders `<< >>` in the JSON lines and store them in the local machine as `<<filename>>.json` where the CLI is being invoked. In this tutorial, we have saved the file in `c:/migration-CLI/migration_body.json`
 
 ```bash
 {
 "properties": {
-"SourceDBServerResourceId": "<<source hostname or IP address>>:<<port>>@<<username>>",
+"SourceDBServerResourceId": "<<source-server-hostname-or-IP-address>>:<<port>>@<<username>>",
         "SecretParameters": {
             "AdminCredentials": {
-                "SourceServerPassword": "<<Source Password>>",
-                "TargetServerPassword": "<<Target Password>>"
+                "SourceServerPassword": "<<source-server-administrator-password>>",
+                "TargetServerPassword": "<<target-server-administrator-password>>"
             },
-            "targetServerUserName": "<<Target username>>"
+            "targetServerUserName": "<<target-server-administrator-login>>"
         },
-        "DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
+        "DBsToMigrate": "<<comma-separated-list-of-databases-in-array-like-["ticketdb","timedb","inventorydb"]>>",
         "OverwriteDBsInTarget": "true",
         "sourceType": "OnPremises",
         "sslMode": "Prefer"
@@ -184,28 +184,29 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 - Run the following command to check if any migrations are running. The migration name is unique across the migrations within the Azure Database for PostgreSQL flexible server target.
 
     ```azurecli-interactive
-    az postgres flexible-server migration list --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --filter All
+    az postgres flexible-server migration list --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --filter all
     ```
 
-- In the above steps, there are no migrations performed so we start with the new migration by running the following command
+- In the above steps, there are no migrations performed so we start with the new migration by running the following command.
 
     ```azurecli-interactive
-    az postgres flexible-server migration create --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1 --migration-mode offline --migration-option ValidateAndMigrate --properties "C:\migration-cli\migration_body.json"
+    az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-mode offline --migration-option ValidateAndMigrate --properties "c:/migration-cli/migration_body.json"
     ```
 
-- Run the following command to initiate the migration status in the previous step. You can check the status of the migration by providing the migration name
+- Run the following command to see the status of the migration initiated in the previous step. You can check the status of the migration by providing the migration name.
 
     ```azurecli-interactive
-    az postgres flexible-server migration show --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1
+    az postgres flexible-server migration show --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration>
     ```
 
-- The status of the migration progress is shown in the Azure CLI.
-- You can also see the status of the Azure Database for PostgreSQL flexible server in the Azure portal.
+- The progress and status of the migration is shown in Azure CLI.
 
-- You can cancel any ongoing migration attempts using the `cancel` command. This command stops the particular migration attempt and rolls back all changes on your target server. Here's the CLI command to delete a migration:
+- You can also see the progress and status in Azure portal.
+
+- You can cancel any ongoing migration attempts using the `cancel` command. This command stops the particular migration attempt, and rolls back all changes that it could have made on your target server. Following is the CLI command to cancel migration that has an "In progress" status.
 
     ```azurecli-interactive
-    az postgres flexible-server migration update cancel --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1
+    az postgres flexible-server migration update cancel --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration>
     ```
 
 ---
