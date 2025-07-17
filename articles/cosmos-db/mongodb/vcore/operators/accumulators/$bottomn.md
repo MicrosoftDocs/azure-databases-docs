@@ -1,7 +1,7 @@
 ---
   title: $bottomN
-  titleSuffix: Overview of the $tbottomN operator in Azure Cosmos DB for MongoDB vCore
-  description: The $bottomN operator returns the bottom N elements in a group according to a specified sort order.
+  titleSuffix: Overview of the $tbottomN operator
+  description: The $bottomN operator returns the last N documents from the result sorted by one or more fields
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
@@ -12,9 +12,7 @@
 
 # $bottomN
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$bottomN` operator returns the bottom N elements in a group according to a specified sort order. It's useful when you want to find the lowest-ranked N documents based on certain criteria within each group.
+The $bottomN operator sorts documents on one more fields specified by the query and returns the last N documents matching the filtering criteria.
 
 ## Syntax
 
@@ -22,81 +20,164 @@ The syntax for the `$bottomN` operator is as follows:
 
 ```javascript
 {
-  $bottomN: {
-    n: <expression>,
-    sortBy: { <field1>: <sort order>, <field2>: <sort order>, ... },
-    output: <expression>
-  }
+    $bottomN: {
+        output: [listOfFields],
+        sortBy: {
+            <fieldName>: < sortOrder >
+        },
+        n: < numDocumentsToReturn >
+    }
 }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`n`** | An expression that specifies the number of bottom elements to return. Must be a positive integer. |
-| **`sortBy`** | Specifies the fields to sort by and the sort order. Use 1 for ascending order and -1 for descending order. |
-| **`output`** | An expression that specifies the output for elements in the bottom of the sort order. |
+| **`listOfFields`** | The list of fields to be returned for the last document in the result set|
+| **`fieldName`** | The field to use for sorting the result set|
+| **`sortOrder`** | 1 or -1. 1 implies sorting in ascending order of the value of the field while -1 implies sorting in descending order of the values of the field|
+| **`n`** | The number of documents to return from the bottom of the sorted result set |
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  }
 }
 ```
 
-### Example 1: Find bottom three stores by total sales
+### Example 1: Find the bottom two stores by total sales
 
-Find the three stores with the lowest total sales.
+Suppose we want to determine the two stores in the Boulder Innovations company with the lowest sales, run a query to filter the company field matching "Boulder Innovations", sort the resulting documents in descending order of total sales and return the last two documents from the sorted result set.
 
 ```javascript
-db.stores.aggregate([
-  {
-    $group: {
-      _id: null,
-      bottomThreeStores: {
-        $bottomN: {
-          n: 3,
-          sortBy: { "sales.totalSales": 1 },
-          output: {
-            storeId: "$_id",
-            storeName: "$name",
-            totalSales: "$sales.totalSales"
-          }
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["Boulder Innovations"]
         }
-      }
     }
-  }
-])
+}, {
+    "$group": {
+        "_id": "$company",
+        "bottomSales": {
+            "$bottomN": {
+                "output": ["$company", "$sales"],
+                "sortBy": {
+                    "sales.revenue": -1
+                },
+                "n": 2
+            }
+        }
+    }
+}])
 ```
 
 This produces the following output:
@@ -104,82 +185,114 @@ This produces the following output:
 ```json
 [
   {
-    _id: null,
-    bottomThreeStores: [
-      {
-        storeId: '27d12c50-ef9b-4a1e-981f-2eb46bf68c70',
-        storeName: 'Boulder Innovations | Electronics Closet - West Freddy',
-        totalSales: 404106
-      },
-      {
-        storeId: 'ffe155dd-caa2-4ac1-8ec9-0342241a84a3',
-        storeName: 'Lakeshore Retail | Electronics Stop - Vicentastad',
-        totalSales: 399426
-      },
-      {
-        storeId: 'cba62761-10f8-4379-9eea-a9006c667927',
-        storeName: 'Fabrikam, Inc. | Electronics Nook - East Verlashire',
-        totalSales: 374845
-      }
+    "_id": "Boulder Innovations",
+    "bottomSales": [
+        [
+            "Boulder Innovations",
+            {
+                "salesByCategory": [
+                    {
+                        "categoryName": "Yoga Mats",
+                        "totalSales": 119
+                    }
+                ],
+                "revenue": 119
+            }
+        ],
+        [
+            "Boulder Innovations",
+            {
+                "salesByCategory": [
+                    {
+                        "categoryName": "Portable Turntables",
+                        "totalSales": 162
+                    }
+                ],
+                "revenue": 162
+            }
+        ]
     ]
-  }
+}
 ]
 ```
 
-### Example 2: Find bottom two categories per store
-
-Find the two categories with the lowest sales in each store that has multiple categories.
+### Example 2: Find the bottom two categories by total sales within each store
+Suppose we want to determine the two lowest performing categories by total sales within each store, first run a query to fetch all documents with at least two sales categories, sort the categories within each store in descending order of total sales and finally return the bottom two categories per store.
 
 ```javascript
-db.stores.aggregate([
-  { $unwind: "$sales.salesByCategory" },
-  { $match: { "sales.salesByCategory.totalSales": { $exists: true } } },
-  {
-    $group: {
-      _id: "$_id",
-      storeName: { $first: "$name" },
-      categoryCount: { $sum: 1 },
-      bottomTwoCategories: {
-        $bottomN: {
-          n: 2,
-          sortBy: { "sales.salesByCategory.totalSales": 1 },
-          output: {
-            categoryName: "$sales.salesByCategory.categoryName",
-            totalSales: "$sales.salesByCategory.totalSales"
-          }
+db.stores.aggregate([{
+    $unwind: "$sales.salesByCategory"
+}, {
+    $match: {
+        "sales.salesByCategory.totalSales": {
+            $exists: true
         }
-      }
     }
-  },
-  { $match: { categoryCount: { $gte: 2 } } }
-])
+}, {
+    $group: {
+        _id: "$_id",
+        storeName: {
+            $first: "$name"
+        },
+        categoryCount: {
+            $sum: 1
+        },
+        bottomTwoCategories: {
+            $bottomN: {
+                n: 2,
+                sortBy: {
+                    "sales.salesByCategory.totalSales": -1
+                },
+                output: {
+                    categoryName: "$sales.salesByCategory.categoryName",
+                    totalSales: "$sales.sale"
+                }
+            }
+        }
+    }
+}, {
+    $match: {
+        categoryCount: {
+            $gte: 2
+        }
+    }
+}])
 ```
 
-This produces output showing the bottom two categories for each store with multiple categories:
+The first results returned by this query are:
 
 ```json
 [
-  {
-    _id: '4a99546f-a1d2-4e61-ae9f-b8c7c1faf73c',
-    storeName: 'Lakeshore Retail | Stationery Nook - West Van',
-    categoryCount: 2,
-    bottomTwoCategories: [
-      { categoryName: 'Pencils', totalSales: 33447 },
-      { categoryName: 'Rulers', totalSales: 2234 }
-    ]
-  },
-  {
-    _id: '7b09ecb8-ba2a-4595-b313-67cfd732379f',
-    storeName: 'VanArsdel, Ltd. | DJ Equipment Bazaar - Kiehnside',
-    categoryCount: 2,
-    bottomTwoCategories: [
-      { categoryName: 'DJ Headphones', totalSales: 46705 },
-      { categoryName: 'DJ Software', totalSales: 19949 }
-    ]
-  }
-.
-.
-.
+    {
+        "_id": "86e9df70-b5ae-4078-856e-d5b8c6e3ecb7",
+        "storeName": "Boulder Innovations | Health Food Boutique - Clementinabury",
+        "categoryCount": 2,
+        "bottomTwoCategories": [
+            {
+                "categoryName": "Herbal Teas",
+                "totalSales": null
+            },
+            {
+                "categoryName": "Protein Bars",
+                "totalSales": null
+            }
+        ]
+    },
+    {
+        "_id": "9bb70b69-2f26-41cf-90c9-2c42c7023dad",
+        "storeName": "Lakeshore Retail | Home Office Corner - New Bartholome",
+        "categoryCount": 2,
+        "bottomTwoCategories": [
+            {
+                "categoryName": "Desk Lamps",
+                "totalSales": null
+            },
+            {
+                "categoryName": "Office Accessories",
+                "totalSales": null
+            }
+        ]
+    }
 ]
 ```
 
