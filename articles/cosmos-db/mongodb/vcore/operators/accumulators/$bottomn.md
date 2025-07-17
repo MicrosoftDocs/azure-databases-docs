@@ -155,7 +155,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Find the bottom two stores by total sales
 
-Suppose we want to determine the two stores in the Boulder Innovations company with the lowest sales, run a query to filter the company field matching "Boulder Innovations", sort the resulting documents in descending order of total sales and return the last two documents from the sorted result set.
+To determine the two stores in the Boulder Innovations company with the lowest sales, run a query to retrieve stores within the "Boulder Innovations" company, sort the resulting documents in descending order of total sales and return the last two documents from the sorted result set.
 
 ```javascript
 db.stores.aggregate([{
@@ -180,7 +180,7 @@ db.stores.aggregate([{
 }])
 ```
 
-This produces the following output:
+This query produces the following output:
 
 ```json
 [
@@ -217,7 +217,7 @@ This produces the following output:
 ```
 
 ### Example 2: Find the bottom two categories by total sales within each store
-Suppose we want to determine the two lowest performing categories by total sales within each store, first run a query to fetch all documents with at least two sales categories, sort the categories within each store in descending order of total sales and finally return the bottom two categories per store.
+To determine the two lowest performing categories by total sales within each store, run a query to retrieve documents with at least two sales categories, sort the categories in descending order of total sales and finally return the bottom two categories per store.
 
 ```javascript
 db.stores.aggregate([{
@@ -259,7 +259,7 @@ db.stores.aggregate([{
 }])
 ```
 
-The first results returned by this query are:
+The first two results returned by this query are:
 
 ```json
 [
