@@ -1,8 +1,8 @@
 ---
 title: Revert all server parameters to their defaults
 description: This article describes how to revert all server parameters to their defaults of an Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
+author: jjfrost
+ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql

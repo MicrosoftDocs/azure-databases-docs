@@ -3,6 +3,7 @@ title: Scaling resources
 description: This article describes the resource scaling in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
+ms.reviewer: maghan
 ms.date: 02/14/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
