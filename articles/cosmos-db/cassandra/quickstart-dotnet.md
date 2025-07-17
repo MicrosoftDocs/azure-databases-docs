@@ -186,7 +186,7 @@ Next, upsert new data into a table. Upserting ensures that the data is created o
     };
     ```
 
-1. Asynchronously invoke the `InsertAsync` passing in the `product` variable created in the previous step.
+1. Asynchronously invoke the `InsertAsync` method passing in the `product` variable created in the previous step.
 
     ```csharp
     await mapper.InsertAsync(product);

@@ -10,6 +10,7 @@ ms.topic: quickstart-sdk
 ms.devlang: typescript
 ms.custom: devx-track-js, devx-track-ts, sfi-ropc-nochange
 ms.date: 07/17/2025
+zone_pivot_groups: azure-devlang-nodejs
 ---
 
 # Quickstart: Azure Cosmos DB for Apache Cassandra client library for Node.js
@@ -42,6 +43,8 @@ First, set up the account and development environment for this guide. This secti
 
 Then, configure your development environment with a new project and the client library. This step is the last required prerequisite before moving on to the rest of this guide.
 
+::: zone pivot="programming-language-js"
+
 1. Start in an empty folder.
 
 1. Initialize a new module.
@@ -50,21 +53,60 @@ Then, configure your development environment with a new project and the client l
     npm init es6 --yes
     ```
 
-1. Install the `` package from Node Package Manager (npm).
+1. Install the `cassandra-driver` package from Node Package Manager (npm).
 
     ```bash
-    npm install --save 
+    npm install --save cassandra-driver
     ```
 
 1. Create the **index.js** file.
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
+
+1. Start in an empty folder.
+
+1. Initialize a new module.
+
+    ```bash
+    npm init es6 --yes
+    ```
+
+1. Install the `typescript` package from Node Package Manager (npm).
+
+    ```bash
+    npm install --save-dev typescript
+    ```
+
+1. Install the `tsx` package from npm.
+
+    ```bash
+    npm install --save-dev tsx
+    ```
+
+1. Install the `cassandra-driver` package from npm.
+
+    ```bash
+    npm install --save cassandra-driver
+    ```
+
+1. Initialize the TypeScript project using the compiler (`tsc`).
+
+    ```bash
+    npx tsc --init --target es2017 --module es2022 --moduleResolution nodenext
+    ```
+
+1. Create the **index.ts** file.
+
+:::zone-end
 
 ## Object model
 
 | | Description |
 | --- | --- |
-| **``** | |
-| **``** | |
-| **``** | |
+| **`Client`** | |
+| **`Mapper`** | |
 
 ## Code examples
 
@@ -77,83 +119,295 @@ Then, configure your development environment with a new project and the client l
 
 Start by authenticating the client using the credentials gathered earlier in this guide.
 
+::: zone pivot="programming-language-js"
+
 1. Open the **index.js** file in your integrated development environment (IDE).
 
-1. Import the `` type from the `` module.
+1. Import the following types from the `cassandra-driver` module:
+
+    - `cassandra`
+    - `cassandra.Client`
+    - `cassandra.mapping.Mapper`
+    - `cassandra.auth.PlainTextAuthProvider`
+
+    ```javascript
+    import cassandra from 'cassandra-driver';
+    
+    const { Client } = cassandra;
+    const { Mapper } = cassandra.mapping;
+    const { PlainTextAuthProvider } = cassandra.auth;
+    ```
+
+1. Create string constant variables for the credentials collected earlier in this guide. Name the variables `username`, `password`, and `contactPoint`.
+
+    ```javascript
+    const username = '<username>';
+    const password = '<password>';
+    const contactPoint = '<contact-point>';
+    ```
+
+1. Create another string variable for the region where you created your Azure Cosmos DB for Apache Cassandra account. Name this variable `region`.
+
+    ```javascript
+    const region = '<azure-region>';
+    ```
+
+1. Create a new `PlainTextAuthProvider` object with the credentials specified in the previous steps.
+
+    ```javascript
+    let authProvider = new PlainTextAuthProvider(
+        username,
+        password
+    );
+    ```
 
 1. TODO
 
+    ```javascript
+    let client = new Client({
+        contactPoints: [`${contactPoint}:10350`],
+        authProvider: authProvider,
+        localDataCenter: region,
+        sslOptions: {
+            secureProtocol: 'TLSv1_2_method'
+        },
+    });
+    ```
+
 1. TODO
+
+    ```javascript
+    await client.connect();
+    ```
+
+1. TODO
+
+    ```javascript
+    const mapper = new Mapper(client, {
+        models: {
+            'Product': {
+                tables: ['product'],
+                keyspace: 'cosmicworks'
+            }
+        }
+    });
+    ```
+
+1. TODO
+
+    ```javascript
+    const productMapper = mapper.forModel('Product');
+    ```
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
+
+1. Open the **index.ts** file in your integrated development environment (IDE).
+
+1. Import the following types from the `cassandra-driver` module:
+
+    - `cassandra`
+    - `cassandra.Client`
+    - `cassandra.mapping.Mapper`
+    - `cassandra.auth.PlainTextAuthProvider`
 
     ```typescript
+    import { auth, mapping, Client, ClientOptions } from 'cassandra-driver';
     
+    const { Mapper } = mapping;
+    const { PlainTextAuthProvider } = auth;
+    ```
+
+1. Create string constant variables for the credentials collected earlier in this guide. Name the variables `username`, `password`, and `contactPoint`.
+
+    ```typescript
+    const username: string = '<username>';
+    const password: string = '<password>';
+    const contactPoint: string = '<contact-point>';
+    ```
+
+1. Create another string variable for the region where you created your Azure Cosmos DB for Apache Cassandra account. Name this variable `region`.
+
+    ```typescript
+    const region: string = '<azure-region>';
+    ```
+
+1. Create a new `PlainTextAuthProvider` object with the credentials specified in the previous steps.
+
+    ```typescript
+    let authProvider = new PlainTextAuthProvider(
+        username,
+        password
+    );
+    ```
+
+1. Create an anonymous object with options that ensures that you're using the transport layer security (TLS) 1.2 protocol.
+
+    ```typescript
+    let sslOptions = {
+        secureProtocol: 'TLSv1_2_method'
+    };
     ```
 
 1. TODO
 
     ```typescript
-    
+    let clientOptions: ClientOptions = {
+        contactPoints: [`${contactPoint}:10350`],
+        authProvider: authProvider,
+        localDataCenter: region,
+        sslOptions: sslOptions
+    };
     ```
 
 1. TODO
 
     ```typescript
-    
+    let client = new Client(clientOptions);
     ```
 
 1. TODO
 
     ```typescript
-    
+    await client.connect();
     ```
 
 1. TODO
 
     ```typescript
-    
+    const mapper = new Mapper( client, {
+        models: {
+            'Product': {
+                tables: ['product'],
+                keyspace: 'cosmicworks'
+            }
+        }
+    });
     ```
+
+1. TODO
+
+    ```typescript
+    const productMapper = mapper.forModel('Product');
+    ```
+
+:::zone-end
 
 ### Upsert data
 
 Next, upsert new data into a table. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the table.
 
-1. TODO
+::: zone pivot="programming-language-js"
 
-1. TODO
+1. Create a new object in a variable named `product`.
 
-    ```typescript
-    
+    ```javascript
+    const product = {
+        id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+        name: 'Yamba Surfboard',
+        category: 'gear-surf-surfboards',
+        quantity: 12,
+        price: 850.00,
+        clearance: false
+    };
     ```
 
-1. TODO
+1. Asynchronously invoke the `insert` function passing in the `product` variable created in the previous step.
 
-    ```typescript
-    
+    ```javascript
+    await productMapper.insert(product);
     ```
 
-1. TODO
+:::zone-end
+
+::: zone pivot="programming-language-ts"
+
+1. Define a new interface named `Product` with fields corresponding to the table created earlier in this guide.
+
+    | | Type |
+    | --- | --- |
+    | **`Id`** | `string` |
+    | **`Name`** | `string` |
+    | **`Category`** | `string` |
+    | **`Quantity`** | `int` |
+    | **`Price`** | `decimal` |
+    | **`Clearance`** | `bool` |
 
     ```typescript
-    
+    interface Product {
+        id: string;
+        name: string;
+        category: string;
+        quantity: number;
+        price: number;
+        clearance: boolean;
+    }
     ```
 
-1. TODO
+    > [!TIP]
+    > In Node.js, you can create this type in another file or create it at the end of the existing file.
+
+1. Create a new object of type `Product`. Store the object in a variable named `product`.
 
     ```typescript
-    
+    const product: Product = {
+        id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+        name: 'Yamba Surfboard',
+        category: 'gear-surf-surfboards',
+        quantity: 12,
+        price: 850.00,
+        clearance: false
+    };
     ```
 
-1. TODO
+1. Asynchronously invoke the `insert` function passing in the `product` variable created in the previous step.
 
     ```typescript
-    
+    await productMapper.insert(product);
     ```
+
+:::zone-end
 
 ### Read data
 
 Then, read data that was previously upserted into the table.
 
+::: zone pivot="programming-language-js"
+
 1. TODO
+
+    ```javascript
+    
+    ```
+
+1. TODO
+
+    ```javascript
+    
+    ```
+
+1. TODO
+
+    ```javascript
+    
+    ```
+
+1. TODO
+
+    ```javascript
+    
+    ```
+
+1. TODO
+
+    ```javascript
+    
+    ```
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
 
 1. TODO
 
@@ -184,12 +438,48 @@ Then, read data that was previously upserted into the table.
     ```typescript
     
     ```
+
+:::zone-end
 
 ### Query data
 
 Finally, use a query to find all data that matches a specific filter in the table.
 
+::: zone pivot="programming-language-js"
+
 1. TODO
+
+    ```javascript
+    
+    ```
+
+1. TODO
+
+    ```javascript
+    
+    ```
+
+1. TODO
+
+    ```javascript
+    
+    ```
+
+1. TODO
+
+    ```javascript
+    
+    ```
+
+1. TODO
+
+    ```javascript
+    
+    ```
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
 
 1. TODO
 
@@ -220,13 +510,15 @@ Finally, use a query to find all data that matches a specific filter in the tabl
     ```typescript
     
     ```
+
+:::zone-end
 
 ## Run the code
 
 Run the newly created application using a terminal in your application directory.
 
 ```bash
-node index.js
+npx tsx index.ts
 ```
 
 ## Clean up resources
