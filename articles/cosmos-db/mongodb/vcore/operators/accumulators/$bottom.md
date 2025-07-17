@@ -1,7 +1,7 @@
 ---
   title: $bottom
-  titleSuffix: Overview of the $bottom operator in Azure Cosmos DB for MongoDB vCore
-  description: The $bottom operator returns the bottom elements in a group according to a specified sort order.
+  titleSuffix: Overview of the $bottom operator
+  description: The $bottom operator returns the last document from the query's result set sorted by one or more fields
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
@@ -12,9 +12,7 @@
 
 # $bottom
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$bottom` operator returns the bottom elements in a group according to a specified sort order. It is useful when you want to find the lowest-ranked documents based on certain criteria within each group.
+The `$bottom` operator sorts documents on one more fields specified by the query and returns the last document matching the filtering criteria.
 
 ## Syntax
 
@@ -22,132 +20,222 @@ The syntax for the `$bottom` operator is as follows:
 
 ```javascript
 {
-  $bottom: {
-    sortBy: { <field1>: <sort order>, <field2>: <sort order>, ... },
-    output: <expression>
-  }
+    "$bottom": {
+        "output": [listOfFields],
+        "sortBy": {
+            "<fieldName>": < sortOrder >
+        }
+    }
 }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`sortBy`** | Specifies the field(s) to sort by and the sort order. Use 1 for ascending order and -1 for descending order. |
-| **`output`** | An expression that specifies the output for elements in the bottom of the sort order. |
+| **`listOfFields`** | The list of fields to be returned from the last document in the result set|
+| **`fieldName`** | The field to use for sorting the result set|
+| **`sortOrder`** | 1 or -1. 1 implies sorting in ascending order of the value of the field while -1 implies sorting in descending order of the values of the field|
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 19,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  }
 }
 ```
 
 ### Example 1: Find store with lowest total sales
 
-Find the store with the lowest total sales among all stores.
+Suppose we want to determine the store within the Boulder Innovations company with the lowest total sales, run a query to retrieve documents within the Boulder Innovations company, sort the documents in descending order of total sales and return the last document in the sorted result set.
 
 ```javascript
-db.stores.aggregate([
-  {
-    $group: {
-      _id: null,
-      bottomStore: {
-        $bottom: {
-          sortBy: { "sales.totalSales": 1 },
-          output: {
-            storeId: "$_id",
-            storeName: "$name",
-            totalSales: "$sales.totalSales"
-          }
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["Boulder Innovations"]
         }
-      }
     }
-  }
-])
+}, {
+    "$group": {
+        "_id": "$company",
+        "bottomSales": {
+            "$bottom": {
+                "output": ["$company", "$sales"],
+                "sortBy": {
+                    "sales.revenue": -1
+                }
+            }
+        }
+    }
+}])
 ```
 
-This will produce the following output:
+This query returns the following result:
 
 ```json
 [
   {
-    _id: null,
-    bottomStore: {
-      storeId: '27d12c50-ef9b-4a1e-981f-2eb46bf68c70',
-      storeName: 'Boulder Innovations | Electronics Closet - West Freddy',
-      totalSales: 404106
-    }
-  }
-]
+    "_id": "Boulder Innovations",
+    "bottomSales": [
+        "Boulder Innovations",
+        {
+            "totalSales": 119,
+            "salesByCategory": [
+                {
+                    "categoryName": "Yoga Mats",
+                    "totalSales": 119
+                }
+            ]
+        }
+    ]
+}]
 ```
 
-### Example 2: Find lowest performing category per store
+### Example 2: Find the category per store with the lowest sales
 
-Find the category with the lowest sales in each store that has multiple categories.
+To find the category with the lowest sales per store, run a query to retrieve stores with multiple sales categories, sort the categories in descending order of total sales within each store and return the last document in the sorted result set.
 
 ```javascript
-db.stores.aggregate([
-  { $unwind: "$sales.salesByCategory" },
-  { $match: { "sales.salesByCategory.totalSales": { $exists: true } } },
-  {
-    $group: {
-      _id: "$_id",
-      storeName: { $first: "$name" },
-      lowestCategory: {
-        $bottom: {
-          sortBy: { "sales.salesByCategory.totalSales": 1 },
-          output: {
-            categoryName: "$sales.salesByCategory.categoryName",
-            totalSales: "$sales.salesByCategory.totalSales"
-          }
+db.stores.aggregate([{
+        $unwind: "$sales.salesByCategory"
+    },
+    {
+        $match: {
+            "sales.salesByCategory.totalSales": {
+                $exists: true
+            }
         }
-      }
+    },
+    {
+        $group: {
+            _id: "$_id",
+            storeName: {
+                $first: "$name"
+            },
+            lowestCategory: {
+                $bottom: {
+                    sortBy: {
+                        "sales.salesByCategory.totalSales": 1
+                    },
+                    output: {
+                        categoryName: "$sales.salesByCategory.categoryName",
+                        totalSales: "$sales.salesByCategory.totalSales"
+                    }
+                }
+            }
+        }
     }
-  }
 ])
 ```
 
-This will produce output showing the lowest performing category for each store:
+The first two results returned by this query are:
 
 ```json
 [
@@ -160,11 +248,7 @@ This will produce output showing the lowest performing category for each store:
     _id: '22e6367e-8341-415f-9795-118d2b522abf',
     storeName: 'Adatum Corporation | Outdoor Furniture Mart - Port Simone',
     lowestCategory: { categoryName: 'Outdoor Benches', totalSales: 4976 }
-  },
-.
-.
-.
-.
+  }
 ]
 ```
 
