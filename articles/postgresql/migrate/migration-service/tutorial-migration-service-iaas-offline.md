@@ -134,7 +134,7 @@ The **Summary** tab summarizes all the source and target details for creating th
 
 :::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-summary-migration-iaas.png" alt-text="Screenshot of the Summary migration tab.":::
 
-### Cancel the migration using the portal
+### Cancel the migration
 
 You can cancel any ongoing validations or migrations. The workflow must be in the **In progress** status so that it can be canceled. You can't cancel a validation or migration in the **Succeeded** or **Failed** state.
 
@@ -179,7 +179,7 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 ```
 
 > [!NOTE]  
-> When configuring the JSON properties for the migration to Azure Database for PostgreSQL Flexible Server, if your source environment is an Azure Virtual Machine, you can specify the source type using the `"sourceType":"AzureVM"` property. This helps the migration service understand the environment from which the data is being migrated.
+> When configuring the JSON properties for the migration to Azure Database for PostgreSQL flexible server, if your source environment is an Azure Virtual Machine, you can specify the source type using the `"sourceType":"AzureVM"` property. This helps the migration service understand the environment from which the data is being migrated.
 
 - Run the following command to check if any migrations are running. The migration name is unique across the migrations within the Azure Database for PostgreSQL flexible server target.
 
@@ -250,8 +250,6 @@ Some possible migration statuses:
 | **Canceled** | The migration is canceled or deleted. |
 | **Failed** | The migration has failed. |
 | **Validation failed** | The validation has failed. |
-| **Validation passed** | The validation has failed. |
-| **Validation passed with warning** | The validation has passed with warnings. |
 | **Succeeded** | The migration has succeeded and is complete. |
 | **Waiting for user action** | Applicable only for online migration. Waiting for user action to perform cutover. |
 
@@ -288,7 +286,7 @@ After migration, you can perform the following tasks:
 
 - If you change any server parameters from their default values in the source instance, copy those server parameter values in the flexible server.
 
-Copy other server settings, such as tags, alerts, and firewall rules (if applicable), from the source instance to the flexible server.
+- Copy other server settings, such as tags, alerts, and firewall rules (if applicable), from the source instance to the flexible server.
 
 - Make changes to your application to point the connection strings to a flexible server.
 
@@ -298,6 +296,6 @@ Copy other server settings, such as tags, alerts, and firewall rules (if applica
 
 - [Migration service](concepts-migration-service-postgresql.md)
 - [Best practices](best-practices-migration-service-postgresql.md)
-- [Known Issues and limitations](concepts-known-issues-migration-service.md)
+- [Known issues and limitations](concepts-known-issues-migration-service.md)
 - [Network setup](how-to-network-setup-migration-service.md)
 - [Premigration validations](concepts-premigration-migration-service.md)
