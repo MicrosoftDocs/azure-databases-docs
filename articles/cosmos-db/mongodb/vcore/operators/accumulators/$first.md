@@ -30,7 +30,7 @@ The $first operator sorts documents on one more fields specified by the query an
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
