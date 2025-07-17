@@ -75,7 +75,10 @@ Following is the list of requirements to configure data encryption for Azure Dat
 
 CMK can be configured with manual key rotation and updates or with automatic key version updates after a manual or automatic key rotation in the Key Vault.
 
-For details see [Configure data encryption with customer managed key during server provisioning](how-to-data-encryption.md)
+For details see [Configure data encryption with customer managed key during server provisioning](how-to-data-encryption.md).
+
+> [!IMPORTANT]  
+> When you rotate the key to a new version, you must keep the old key available for the reencryption to succeed. While most reencryptions should happen within 30 minutes, we recommend that you wait at least 2 hours before disabling access to the old key version.
 
 ### Manual key rotation and updates
 
