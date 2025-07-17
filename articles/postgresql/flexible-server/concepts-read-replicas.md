@@ -1,8 +1,8 @@
 ---
 title: Read replicas
 description: This article describes the read replica feature in Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 07/16/2025
 ms.service: azure-database-postgresql
@@ -87,17 +87,15 @@ Certain functionalities are restricted to primary servers and can't be set up on
 
 If your source Azure Database for PostgreSQL flexible server instance is encrypted with customer-managed keys, see the [documentation](concepts-data-encryption.md) for other considerations.
 
-## Create cascading read replicas
+## Create cascading read replicas (Preview)
 
-You can add cascading read replicas to Azure Database for PostgreSQL flexible server instance. This allows you to create new read replicas on top of an existing read replica, with the existing read replica acting as the source for the next level. 
+Cascading read replicas can help distribute read workloads, reducing the load on the primary server. Deploying read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies. You can add cascading read replicas to Azure Database for PostgreSQL flexible server instance, this feature is supported in public preview capacity. This allows you to create new read replicas on top of an existing read replica, with the existing read replica acting as the source for the next level. 
 
-The first-level read replica asynchronously replicates data from the primary server. A second-level read replica can then be created using the first-level replica as its source, forming a two-tier replication hierarchy. This architecture increases scalability, supporting up to 30 read replica servers with the primary server allowing up to 5 read replicas, and each of those replicas supporting 5 additional replicas.
+The first-level read replica asynchronously replicates data from the primary server. A second-level read replica can then be created using the first-level replica as its source, forming a two-tier replication hierarchy. This architecture increases scalability, supporting up to 30 read replica servers with the primary server allowing up to 5 read replicas, and each of those replicas supporting 5 additional replicas. You can add cascading read replicas by clicking on your read replica server and navigate to the replication tab.
 
-For e.g. Your primary server can have up to 5 read replicas (Level 1). One of these, say read-replica-1, can act as the source for another replica, read-replica-2, which becomes part of Level 2. These replicas can be deployed in different regions, enabling cross-region replication.
+For example, your primary server can have up to 5 read replicas (Level 1). One of these, say read-replica-1, can act as the source for another replica, read-replica-2, which becomes part of Level 2. These replicas can be deployed in different regions, enabling cross-region replication.
 
-Cascading read replicas can help distribute read workloads, reducing the load on the primary server. Deploying read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies.
-
-#### Key considerations:
+#### Preview considerations:
 1. Up to 5 read replicas can be created per source read replica, with support for 2 levels of replication.
 2. Promote operation is not supported for intermediate read replicas with cascading read replicas.
 3. Virtual endpoints are not supported for cascading replicas.
