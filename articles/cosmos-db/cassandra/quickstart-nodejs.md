@@ -18,7 +18,7 @@ ms.date: 07/17/2025
 
 Get started with the Azure Cosmos DB for Apache Cassandra client library for Node.js to store, manage, and query unstructured data. Follow the steps in this guide to create a new account, install a Node.js client library, connect to the account, perform common operations, and query your final sample data.
 
-[API reference documentation]() | [Library source code]() | [Package (NuGet)]()
+[API reference documentation](https://docs.datastax.com/en/developer/nodejs-driver/index.html) | [Library source code](https://github.com/datastax/nodejs-driver) | [Package (npm)](https://www.npmjs.com/package/cassandra-driver)
 
 ## Prerequisites
 

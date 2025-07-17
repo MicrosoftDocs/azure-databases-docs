@@ -18,7 +18,7 @@ ms.date: 07/17/2025
 
 Get started with the Azure Cosmos DB for Apache Cassandra client library for Python to store, manage, and query unstructured data. Follow the steps in this guide to create a new account, install a Python client library, connect to the account, perform common operations, and query your final sample data.
 
-[API reference documentation]() | [Library source code]() | [Package (NuGet)]()
+[API reference documentation](https://docs.datastax.com/en/developer/python-driver/index.html) | [Library source code](https://github.com/datastax/python-driver) | [Package (PyPI)](https://pypi.org/project/cassandra-driver/)
 
 ## Prerequisites
 
