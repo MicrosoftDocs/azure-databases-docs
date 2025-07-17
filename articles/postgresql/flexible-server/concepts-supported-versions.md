@@ -1,10 +1,10 @@
 ---
 title: Supported versions of PostgreSQL
 description: Describes the supported major and minor versions of PostgreSQL in Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
-ms.reviewer: maghan
-ms.date: 1/28/2025
+author: andtapia
+ms.author: andreatapia
+ms.reviewer: varundhawan, maghan
+ms.date: 07/01/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -14,11 +14,9 @@ ms.custom:
 
 # Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 Azure Database for PostgreSQL flexible server currently supports the following major versions.
 
-## PostgreSQL version 17 (preview)
+## PostgreSQL version 17
 
 The current minor release is **[!INCLUDE [minor-versions-17](includes/minor-version-17.md)]**. Refer to the [!INCLUDE [minor-versions-docs-17](includes/minor-version-docs-17.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version. 
 
@@ -40,7 +38,7 @@ The current minor release is **[!INCLUDE [minor-versions-13](includes/minor-vers
 
 ## PostgreSQL version 12 (retired)
 
-The current minor release is **[!INCLUDE [minor-versions-12](includes/minor-version-12.md)]**. Refer to the [!INCLUDE [minor-versions-docs-12](includes/minor-version-docs-12.md)] to learn more about improvements and fixes in this release. Refer to the [versioning policy](./concepts-version-policy.md#postgresql-12-support) regarding the End-of-life.
+The current minor release is **[!INCLUDE [minor-versions-12](includes/minor-version-12.md)]**. Refer to the [!INCLUDE [minor-versions-docs-12](includes/minor-version-docs-12.md)] to learn more about improvements and fixes in this release. Refer to the [versioning policy](./concepts-version-policy.md#postgresql-12-support) regarding the end-of-life.
 
 ## PostgreSQL version 11 (extended support)
 
@@ -48,7 +46,7 @@ The current minor release is **[!INCLUDE [minor-versions-11](includes/minor-vers
 
 ## PostgreSQL version 10 and older
 
-We don't support PostgreSQL version 10 and older for Azure Database for PostgreSQL flexible server. Use the [Azure Database for PostgreSQL single server](../concepts-supported-versions.md) deployment option if you require older versions.
+We don't support PostgreSQL version 10 and older for Azure Database for PostgreSQL flexible server.
 
 ## Managing upgrades
 

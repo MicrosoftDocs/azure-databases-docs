@@ -6,8 +6,6 @@
     href: flexible-server/service-overview.md
   - name: Self-hosted vs. managed service
     href: flexible-server/overview-postgres-choose-server-options.md
-  - name: Compare deployment options
-    href: flexible-server/concepts-compare-single-server-flexible-server.md
   - name: Versioning policy
     href: flexible-server/concepts-version-policy.md
     displayName: version, postgresql
@@ -115,10 +113,6 @@
       href: flexible-server/concepts-firewall-rules.md
     - name: Security
       href: flexible-server/concepts-security.md
-    - name: Import and export data
-      items:
-      - name: azure_storage extension
-        href: flexible-server/concepts-storage-extension.md
     - name: Microsoft Entra authentication
       href: flexible-server/concepts-azure-ad-authentication.md
     - name: Major version upgrade 
@@ -167,12 +161,14 @@
         items:
         - name: Overview  
           href: flexible-server/azure-local-ai.md
+      - name: Azure Storage (pg_azure_storage)
+        items:
+        - name: Overview
+          href: flexible-server/concepts-storage-extension.md
       - name: Vector indexing (pg_diskann)
         items:
         - name: Overview  
           href: flexible-server/how-to-use-pgdiskann.md
-      - name: Azure Storage (pg_azure_storage)
-        href: flexible-server/how-to-use-pg-azure-storage.md
       - name: Vector similarity search (pgvector)
         items:
         - name: Basics of pgvector
@@ -525,6 +521,16 @@
         href: extensions/how-to-update-extensions.md
       - name: View installed extensions
         href: extensions/how-to-view-installed-extensions.md
+      - name: Azure Storage (pg_azure_storage)
+        items:
+        - name: Configure Azure Storage extension
+          href: flexible-server/how-to-configure-azure-storage-extension.md
+        - name: Quickstart examples
+          href: flexible-server/quickstart-azure-storage-extension.md
+        - name: Troubleshoot errors
+          href: flexible-server/troubleshoot-azure-storage-extension.md
+        - name: Reference
+          href: flexible-server/reference-azure-storage-extension.md
     - name: Monitoring
       items:
       - name: Download PostgreSQL and upgrade logs
@@ -659,20 +665,10 @@
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
 - name: Migrate to Azure Database for PostgreSQL
   items:
-  - name: What's happening to Azure Database for PostgreSQL - Single Server?
-    href: migrate/whats-happening-to-postgresql-single-server.md
   - name: Migration Service for Azure Database for PostgreSQL
     items:
     - name: Overview
       href: migrate/migration-service/overview-migration-service-postgresql.md
-    - name: Tutorials for migrating from Single Server
-      items:
-      - name: Migrate from Single Server
-        href: migrate/migration-service/tutorial-migration-service-single-to-flexible.md
-      - name: Automigration of Azure Database for PostgreSQL - Single Server to Flexible Server
-        href: migrate/automigration-single-to-flexible-postgresql.md 
-      - name: Automigrations of Azure Database for PostgreSQL - Single Server with Private End Point
-        href: migrate/automigration-private-end-point.md
     - name: Tutorials for migrating from PostgreSQL
       items:
       - name: Migrate from an Azure VM or an on-premises PostgreSQL server offline

@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 05/21/2025
+ms.date: 06/25/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -123,19 +123,16 @@ M10, M20, and M25 have the following limitations:
 
 ### Microsoft Entra ID authentication
 The Microsoft Entra ID authentication feature has these current limitations:
-- This feature isn't supported on replica clusters.
-- This feature isn't supported on restored clusters.
 - This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
+- This feature doesn't support Entra ID groups.
 
 ### Native DocumentDB secondary users
 
-The native secondary users feature has these preview limitations:
-- You can create up to 10 users/roles per cluster.
+[The native secondary users](./secondary-users.md) feature has these preview limitations:
+- You can create up to 100 users/roles per cluster.
 - The `Updateuser` command now only supports password updates and can't modify other object fields.
 - The `Roleinfo` command isn't supported in preview. Alternatively, you can use `usersInfo`.
-- Assigning roles to specific databases or collections isn't supported.
-- Cluster restore operation may not work when secondary users preview is enabled on the cluster. 
-    - To perform cluster restore, remove **EnableReadOnlyUser** value from the**previewFeatures** properties. You can re-enable preview once restore is completed. Removing preview from the cluster doesn't impact secondary users that were created on the cluster, only ability to perform user management operations.
+- Assigning roles to specific databases or collections isn't supported, only cluster level is supported.
 
 ## Miscellaneous Limits
 

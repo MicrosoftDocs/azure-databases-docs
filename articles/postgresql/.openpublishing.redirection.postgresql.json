@@ -2084,6 +2084,16 @@
             "source_path_from_root": "/articles/postgresql/flexible-server/generative-ai-azure-local-ai.md",
             "redirect_url": "/azure/postgresql/flexible-server/generative-ai-overview",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-compare-single-server-flexible-server.md",
+            "redirect_url": "/azure/postgresql/flexible-server/overview",
+            "redirect_document_id": false
+        },
+        {   
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-use-pg-azure-storage.md",
+            "redirect_url": "/azure/postgresql/flexible-server/concepts-storage-extension",
+            "redirect_document_id": false
         }
     ]
 }

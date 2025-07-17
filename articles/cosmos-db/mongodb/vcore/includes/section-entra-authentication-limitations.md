@@ -2,13 +2,10 @@
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: include
-ms.date: 05/02/2025
+ms.date: 06/24/2025
 ---
 
 The Microsoft Entra ID authentication feature has these current limitations:
 
-- This feature isn't supported on replica clusters.
-
-- This feature isn't supported on restored clusters.
-
 - This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
+- This feature doesn't support Microsoft Entra ID groups.

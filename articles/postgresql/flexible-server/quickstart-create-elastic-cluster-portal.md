@@ -54,7 +54,7 @@ To create an Azure Database for PostgreSQL flexible server instance, take the fo
    By default, a **postgres** database is created under your server. The [postgres](https://www.postgresql.org/docs/current/static/app-initdb.html) database is a default database meant for users, utilities, and applications. (The other default database is **azure_maintenance**. Its function is to separate the managed service processes from user actions. You can't access this database.)
 
     > [!NOTE]
-    > Connections to your Azure Database for PostgreSQL flexible server instance communicate over port 5432. When you try to connect from within a corporate network, outbound traffic over port 5432 might not be allowed by your network's firewall. If so, you can't connect to your server unless your IT department opens port 5432. Elastic clusters also use port 7432 for load balanced connections across the cluster nodes and might need to be allow listed in a similar way by your IT department.
+    > Connections to your Azure Database for PostgreSQL flexible server instance communicate over port 5432 and 6432 (PgBouncer). When you try to connect from within a corporate network, outbound traffic over port 5432 and 6432 might not be allowed by your network's firewall. If so, you can't connect to your server unless your IT department opens port 5432 and 6432. Elastic clusters also use port 7432 and 8432 (PgBouncer) for load balanced connections across the cluster nodes and might need to be allow listed in a similar way by your IT department.
 
 ## Get the connection information
 

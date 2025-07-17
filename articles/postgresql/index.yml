@@ -140,8 +140,7 @@ landingContent:
             url: migrate/migration-service/concepts-premigration-migration-service.md
       - linkListType: how-to-guide
         links:
-          - text: Migrate from Azure Database for PostgreSQL - Single Server to Flexible Server
-            url: migrate/migration-service/tutorial-migration-service-single-to-flexible.md        
+ 
           - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
             url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
           - text: Migrate (Online) from an Azure VM or on-premises PostgreSQL server

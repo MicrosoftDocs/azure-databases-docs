@@ -7,7 +7,7 @@ metadata:
   ms.reviewer: maghan
   ms.service: azure-database-postgresql
   ms.topic: faq
-  ms.date: 02/28/2025
+  ms.date: 07/06/2025
   ms.custom: references_regions
 
 title: "Frequently asked questions about elastic clusters (preview)"
@@ -68,7 +68,7 @@ sections:
   - name: Networking
     questions:
       - question: Can I use PgBouncer for connection pooling with elastic clusters?
-        answer: Connection pooling with PgBouncer is only available for the non-load-balanced connection port 5432. When PgBouncer is enabled, the pooling on port 6432 directs to port 5432
+        answer: Yes, you can use PgBouncer with elastic clusters. Port 6432 should be used for schema and node management operations, while port 8432 is load-balanced to PgBouncer instances running across all nodes in the cluster.
 
       - question: Can I use virtual network (VNet) with elastic clusters?
         answer: Currently, virtual network isn't supported during the preview.

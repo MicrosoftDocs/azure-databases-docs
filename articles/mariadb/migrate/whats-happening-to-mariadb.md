@@ -76,6 +76,18 @@ A. To migrate your Azure Database for MariaDB workloads to Azure Database for My
 
 For more information about how you can migrate your Azure Database for MariaDB server to Azure Database for MySQL - Flexible Server, see the blog post [Migrating from Azure Database for MariaDB to Azure Database for MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/migrating-from-azure-database-for-mariadb-to-azure-database-for/ba-p/3838455).
 
+In addition you can leverage third-party marketplace offerings like the one from **Quadrant Technologies** for specialized or large-scale migrations.
+
+**Q. What is the Quadrant offering for MariaDB to MySQL Flexible Server migration?**
+
+A. Quadrant Technologies offers a comprehensive migration solution on the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/quadranttechnologies1724273152029.mariatomysql?tab=Overview) to help you migrate from MariaDB to Azure Database for MySQL - Flexible Server. This offering includes: 
+- Automated schema and data migration
+- Support for large datasets
+- Minimal downtime strategies
+- Migrates from any version of Azure MariaDB to any Version of Azure MySQL
+- Migrates multiple databases at the same time
+- Expert guidance and support throughout the migration process
+
 **Q. I have further questions on retirement. How can I get assistance with it?**
 
 A. If you have questions, get answers from community experts in [Microsoft Q&A.](/answers/tags/56/azure-database-mariadb) If you have a support plan and you need technical help, create a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest):

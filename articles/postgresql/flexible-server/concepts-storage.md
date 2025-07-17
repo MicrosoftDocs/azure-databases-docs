@@ -4,6 +4,7 @@ description: This article describes the storage options in Azure Database for Po
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
+ms.custom: references_regions
 ms.date: 01/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
@@ -54,16 +55,53 @@ Azure Database for PostgreSQL flexible server offers a baseline throughput of 12
 > [!NOTE]  
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server.
 
+
+## Premium SSD v2 - High availability
+
+High availability is now supported for Azure Database for PostgreSQL flexible server deployments using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. This capability is initially available in the following regions.
+
+*Canada Central,Central US, East Asia*
+
+
+#### Enable premium SSD v2 high availability preview
+
+High availability is an opt-in feature that can be enabled at the subscription level using the steps below. As this is a preview feature, it is recommended for use only with non-production workloads.
+
+1. In the **Search** bar, type **Preview features** and select it from the results.
+
+ 
+ :::image type="content" source="./media/concepts-storage/preview-feature.png" alt-text="Screenshot of the preview page." lightbox="./media/concepts-storage/preview-feature.png":::
+
+  
+2. Use the **Filter by name** field, search for **Premium SSD v2 High Availability** and Select the **Subscription** 
+
+ 
+   :::image type="content" source="./media/concepts-storage/registration.png" alt-text="Screenshot of the SSD v2 registration page." lightbox="./media/concepts-storage/registration.png":::
+
+4.  Select the feature and click **Register**.
+
+ 
+5. Validate that the **State** changed to **Registered**.
+
+
+   :::image type="content" source="./media/concepts-storage/registration-validation.png" alt-text="Screenshot of the  registration validation page." lightbox="./media/concepts-storage/registration-validation.png":::
+
+
+
 #### Premium SSD v2 - Limitations during preview
 
-- [High availability](/azure/reliability/reliability-postgresql-flexible-server), [read replicas](concepts-read-replicas.md), [geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), or [storage autogrow](#limitations-and-considerations-of-storage-autogrow) features aren't supported for Premium SSD v2.
+- [Read replicas](concepts-read-replicas.md), [geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](concepts-backup-restore.md) or [storage autogrow](#limitations-and-considerations-of-storage-autogrow) features aren't supported for Premium SSD v2.
 
-- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one that is provisioned with a different storage type.
+- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
-- Premium SSD V2 can only be enabled for newly created servers. Enabling Premium SSD V2 on existing servers isn't supported.
+- Premium SSD v2 High availability can only be configured for servers created on or after July 1st. Currently, SSD v2 High availability is supported in Canada Central, Central US, and East Asia regions.
+  
+-  Premium SSD v2 High availability can only be configured for servers created with PG version 16.
+  
+- Premium SSD V2 can only be enabled in the following regions: 
+ *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.  
 
-- Premium SSD V2 can only be enabled in the following regions: Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2.
-Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is not currently supported. Support for this capability will be added in the future.
+- During HA preview, Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is not currently supported.
 
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
@@ -100,13 +138,13 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 
 When your disk becomes full, the server starts returning errors and prevents any further modifications. Reaching the limit might also cause problems with other operational activities, such as backups and write-ahead log (WAL) archiving. There are different ways with which this disk full condition can be avoided:
 1. To avoid this situation, the server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. If you're using Premium SSD storage type, you can use the [storage autogrow](#storage-autogrow-premium-ssd) feature or scale up the storage of the server to avoid this issue from occurring.
-2. If the server is marked as read only because of disk full condition, you can delete the data that is no longer required, to do this you can execute the below command to change the mode to read-write mode and once that is done you can execute delete command.
+2. If the server is marked as read only because of disk full condition, you can delete the data that is no longer required. To do this you can execute the below command to change the mode to read-write and once that is done you can execute delete command.
 ```sql
 	SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;
 ```
 We recommend that you actively monitor the disk space that's in use by using storage_percentage or storage_used metrics and increase the disk size before you run out of available space in your storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see how to [use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL flexible server](how-to-alert-on-metrics.md).
 
-### Storage autogrow (Premium SSD)
+## Storage autogrow (Premium SSD)
 
 Storage autogrow can help ensure that your server always has enough free space available, and doesn't become read-only. When you turn on storage autogrow, disk size increases without affecting the workload. Storage autogrow is only supported for Premium SSD storage tier.
 
@@ -116,16 +154,16 @@ As an illustrative example, let's consider a server with a storage capacity of 2
 
 The default behavior increases the disk size to the next premium SSD storage size. This increase is always double in both size and cost, regardless of whether you start the storage scaling operation manually or through storage autogrow. Enabling storage autogrow is valuable when you're managing unpredictable workloads, because it automatically detects low-storage conditions and scales up the storage accordingly.
 
-The process of scaling storage is performed online, without causing any downtime, except when the disk size needs to cross the border of 4,096 GiB. This exception is a limitation of [Azure managed disks](/azure/virtual-machines/managed-disks-overview). In that case, the automatic storage scaling activity isn't triggered, even if storage autogrow setting is enabled for the server. In such cases, you need to scale your storage manually. Please be aware that in this scenario (reaching or crossing the 4096 GiB boundary), manual scaling is an offline operation. We recommend scheduling this task to align with your business needs. All other operations can be performed online. Once the allocated disk size is 8,192 GiB or higher, storage autogrow triggers again automatically and every subsequent storage grow operation is performed online until the disk allocated reaches its maximum growing capacity, which is 32,768 GiB.
+The process of scaling storage is performed online, without causing any downtime, except when the disk size needs to cross the border of 4,096 GiB. This exception is a limitation of [Azure managed disks](/azure/virtual-machines/managed-disks-overview). In that case, the automatic storage scaling activity isn't triggered, even if storage autogrow setting is enabled for the server. In such cases, you need to scale your storage manually. Be aware that in this scenario (reaching or crossing the 4,096 GiB boundary), manual scaling is an offline operation. We recommend scheduling this task to align with your business needs. All other operations can be performed online. Once the allocated disk size is 8,192 GiB or higher, storage autogrow triggers again automatically and every subsequent storage grow operation is performed online until the disk allocated reaches its maximum growing capacity, which is 32,768 GiB.
 
 > [!NOTE]  
 > Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
 ## Limitations and considerations of storage autogrow
 
-- Disk scaling operations are typically performed online, except in specific scenarios involving crossing the boundary of 4,096 GiB. These scenarios include reaching or crossing the limit of 4,096 GiB. For instance, scaling from 2,048 GiB to 8,192 GiB triggers an offline operation. In the Azure portal, moving to 4 TB, which is represented as 4,095 GiB, keeps the operation online. However, if you explicitly specify 4 TB as 4,096 GiB, such as in Azure CLI, the scaling operation is completed in offline mode, since it reaches the limit of 4,096 GiB. Oflline scale operation usually takes anywhere between 2 to 10 minutes. With the [reduced downtime scaling feature](concepts-scaling-resources.md), this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
+- Disk scaling operations are typically performed online, except in specific scenarios involving crossing the boundary of 4,096 GiB. These scenarios include reaching or crossing the limit of 4,096 GiB. For instance, scaling from 2,048 GiB to 8,192 GiB triggers an offline operation. In the Azure portal, moving to 4 TiB, which is represented as 4,095 GiB, keeps the operation online. However, if you explicitly specify 4 TB as 4,096 GiB, such as in Azure CLI, the scaling operation is completed in offline mode, since it reaches the limit of 4,096 GiB. Oflline scale operation usually takes anywhere between 2 to 10 minutes. With the [reduced downtime scaling feature](concepts-scaling-resources.md), this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
 
-- Host Caching (ReadOnly and Read/Write) is supported on disk sizes less than 4 TiB. Any disk that is provisioned up to 4,095 GiB can take advantage of Host Caching. Host caching isn't supported for disk sizes more than or equal to 4,096 GiB. For example, a P50 premium disk provisioned at 4,095 GiB can take advantage of Host caching and a P50 disk provisioned at 4,096 GiB can't take advantage of Host Caching. Customers moving from lower disk size to 4,096 GiB or higher lose the ability to use disk caching.
+- Host Caching (ReadOnly and Read/Write) is supported on disk sizes less than 4,096 GIB or 4 Tib. Any disk that is provisioned up to 4,095 GiB can take advantage of Host Caching. Host caching isn't supported for disk sizes more than or equal to 4,096 GiB. For example, a P50 premium disk provisioned at 4,095 GiB can take advantage of Host caching and a P50 disk provisioned at 4,096 GiB can't take advantage of Host Caching. Customers moving from lower disk size to 4,096 GiB or higher lose the ability to use disk caching.
 
   This limitation is due to the underlying [Azure managed disks](/azure/virtual-machines/managed-disks-overview), which needs a manual disk scaling operation. You receive an informational message in the portal when you approach this limit.
 

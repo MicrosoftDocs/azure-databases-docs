@@ -24,6 +24,8 @@
         href: flexible-server/whats-new-archive.md
       - name: Release notes
         items:
+          - name: July 2025
+            href: flexible-server/release-notes/july-2025.md
           - name: May 2025
             href: flexible-server/release-notes/may-2025.md
           - name: March 2025
@@ -390,8 +392,10 @@
     displayName: SUPER privilege, DBA role, Access is denied
 - name: Troubleshooting
   items:
+  - name: Server self heal
+    href: flexible-server/how-to-self-heal.md
   - name: Resolve capacity errors
-    href: ./flexible-server/resolve-capacity-errors-mysql-flex.md
+    href: ./flexible-server/resolve-capacity-errors.md
   - name: Request quota increase
     href: ./flexible-server/how-to-request-quota-increase.md
     displayName: SUPER privilege, DBA role, Access is denied

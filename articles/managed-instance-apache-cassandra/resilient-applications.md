@@ -64,7 +64,7 @@ In CAP theorem terms, Cassandra is by default an Available Partition-tolerant (A
 
 We recommend auditing `keyspaces` and their replication settings from time to time to ensure that the required replication between data centers is configured. In the early stages of development, we recommend that you do simple tests using `cqlsh`. For example, insert a value while connected to one data center and read it from the other.
 
-In particular, when you set up a second data center where an existing data center already has data, determine that you replicated all the data and that the system is ready. We recommend that you monitor replication progress through our [DBA commands with `nodetool netstats`](dba-commands.md#how-to-run-a-nodetool-command). An alternate approach would be to count the rows in each table. Keep in mind that with big data sizes, due to the distributed nature of Cassandra, this approach can give only a rough estimate.
+In particular, when you set up a second data center where an existing data center already has data, determine that you replicated all the data and that the system is ready. We recommend that you monitor replication progress through our [DBA commands with `nodetool netstats`](dba-commands.md#run-a-nodetool-command). An alternate approach would be to count the rows in each table. Keep in mind that with big data sizes, due to the distributed nature of Cassandra, this approach can give only a rough estimate.
 
 ## Balancing the cost of disaster recovery
 

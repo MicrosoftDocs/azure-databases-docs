@@ -1,5 +1,5 @@
 ---
-title: Change feed processor in Azure Cosmos DB 
+title: Change Feed Processor in Azure Cosmos DB 
 description: Learn how to use the Azure Cosmos DB change feed processor to read the change feed, and learn about the components of the change feed processor.
 author: markjbrown
 ms.author: mjbrown
@@ -7,22 +7,21 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 07/25/2024
+ms.date: 07/02/2025
 ms.custom: devx-track-csharp, build-2023
 ---
-
 
 # Change feed processor in Azure Cosmos DB
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-The change feed processor is part of the Azure Cosmos DB [.NET V3](https://github.com/Azure/azure-cosmos-dotnet-v3) and [Java V4](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos) SDKs. It simplifies the process of reading the change feed and distributes the event processing across multiple consumers effectively.
+The change feed processor is part of the Azure Cosmos DB [.NET V3](https://github.com/Azure/azure-cosmos-dotnet-v3) and [Java V4](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos) SDKs, which simplify the process of reading the change feed and distribute the event processing across multiple consumers effectively.
 
-The main benefit of using the change feed processor is its fault-tolerant design, which assures an "at-least-once" delivery of all the events in the change feed.
+The main benefit of using the change feed processor is its fault-tolerant design, which assures an *at-least-once* delivery of all the events in the change feed.
 
 ## Supported SDKs
 
-|  .Net V3  |   Java    |  Node.JS  |  Python   |
+|  .NET V3  |   Java    |  Node.JS  |  Python   |
 | --------- | --------- | --------- | --------- |
 |     ✓     |    ✓     |     ✕     |    ✕     |
 
@@ -44,13 +43,13 @@ The diagram shows two compute instances, and the change feed processor assigns d
 
 Each range is read in parallel. A range's progress is maintained separately from other ranges in the lease container through a *lease* document. The combination of the leases represents the current state of the change feed processor.
 
-:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="Change feed processor example" border="false":::
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="Diagram that shows an example of the change feed processor." lightbox="./media/change-feed-processor/changefeedprocessor.png":::
 
 ## Implement the change feed processor
 
 ### [.NET](#tab/dotnet)
 
-The change feed processor in .NET is available for [latest version mode](change-feed-modes.md#latest-version-change-feed-mode) and [all versions and deletes mode](change-feed-modes.md#all-versions-and-deletes-change-feed-mode-preview). All versions and deletes mode is in preview and is supported for the change feed processor beginning in version `3.40.0-preview.0`. The point of entry for both modes is always the monitored container. 
+The change feed processor in .NET is available for [latest version mode](change-feed-modes.md#latest-version-change-feed-mode) and [all versions and deletes mode](change-feed-modes.md#all-versions-and-deletes-change-feed-mode-preview). All versions and deletes mode is in preview and is supported for the change feed processor beginning in version `3.40.0-preview.0`. The point of entry for both modes is always the monitored container.
 
 To read using latest version mode, in a `Container` instance, you call `GetChangeFeedProcessorBuilder`:
 
@@ -82,18 +81,18 @@ Calling `Build` gives you the processor instance that you can start by calling `
 The normal life cycle of a host instance is:
 
 1. Read the change feed.
-1. If there are no changes, sleep for a predefined amount of time (customizable by using `WithPollInterval` in the Builder) and go to #1.
+1. If there are no changes, sleep for a predefined amount of time (customizable by using `WithPollInterval` in the Builder) and go to step 1.
 1. If there are changes, send them to the *delegate*.
-1. When the delegate finishes processing the changes *successfully*, update the lease store with the latest processed point in time and go to #1.
+1. When the delegate finishes processing the changes *successfully*, update the lease store with the latest processed point in time and go to step 1.
 
 ## Error handling
 
-The change feed processor is resilient to user code errors. If your delegate implementation has an unhandled exception (step #4), the thread that is processing that particular batch of changes stops, and a new thread is eventually created. The new thread checks the latest point in time that the lease store has saved for that range of partition key values. The new thread restarts from there, effectively sending the same batch of changes to the delegate. This behavior continues until your delegate processes the changes correctly, and it's the reason the change feed processor has an "at least once" guarantee.
+The change feed processor is resilient to user code errors. If your delegate implementation has an unhandled exception (step 4), the thread that processes that particular batch of changes stops, and a new thread is eventually created. The new thread checks the latest point in time that the lease store saved for that range of partition key values. The new thread restarts from there, effectively sending the same batch of changes to the delegate. This behavior continues until your delegate processes the changes correctly, and it's the reason the change feed processor has an "at least once" guarantee.
 
 > [!NOTE]
-> In only one scenario, a batch of changes is not retried. If the failure happens on the first-ever delegate execution, the lease store has no previous saved state to be used on the retry. In those cases, the retry uses the [initial starting configuration](#starting-time), which might or might not include the last batch.
+> In only one scenario, a batch of changes isn't retried. If the failure happens on the first-ever delegate execution, the lease store has no previous saved state to be used on the retry. In those cases, the retry uses the [initial starting configuration](#starting-time), which might or might not include the last batch.
 
-To prevent your change feed processor from getting "stuck" continuously retrying the same batch of changes, you should add logic in your delegate code to write documents, upon exception, to an errored-message queue. This design ensures that you can keep track of unprocessed changes while still being able to continue to process future changes. The errored-message queue might be another Azure Cosmos DB container. The exact data store doesn't matter. You simply want the unprocessed changes to be persisted.
+To prevent your change feed processor from getting *stuck* continuously retrying the same batch of changes, you should add logic in your delegate code to write documents, upon exception, to an errored-message queue. This design ensures that you can keep track of unprocessed changes while still being able to continue to process future changes. The errored-message queue might be another Azure Cosmos DB container. The exact data store doesn't matter. You simply want the unprocessed changes to be persisted.
 
 You also can use the [change feed estimator](how-to-use-change-feed-estimator.md) to monitor the progress of your change feed processor instances as they read the change feed, or you can use [life cycle notifications](#life-cycle-notifications) to detect underlying failures.
 
@@ -152,11 +151,11 @@ The change feed processor is initialized, and it starts reading changes from the
 > [!NOTE]
 > These customization options work only to set up the starting point in time of the change feed processor. After the lease container is initialized for the first time, changing these options has no effect.
 >
-> Customizing the starting point is only available for latest version change feed mode. When using all versions and deletes mode you must start reading from the time the processor is started, or resume from a prior lease state that is within the [continuous backup](../continuous-backup-restore-introduction.md) retention period of your account.
+> Customizing the starting point is only available for latest version change feed mode. When using all versions and deletes mode you must start reading from the time the processor is started, or resume from a prior lease state that's within the [continuous backup](../continuous-backup-restore-introduction.md) retention period of your account.
 
 ### [Java](#tab/java)
 
-For full working samples, see [here](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/tree/main/src/main/java/com/azure/cosmos/examples/changefeed). An example of a delegate implementation when reading the change feed in [latest version mode](change-feed-modes.md#latest-version-change-feed-mode) is:
+For full working samples, see [this GitHub repository](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/tree/main/src/main/java/com/azure/cosmos/examples/changefeed). An example of a delegate implementation when reading the change feed in [latest version mode](change-feed-modes.md#latest-version-change-feed-mode) is:
 
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java?name=Delegate)]
 
@@ -183,16 +182,16 @@ In either change feed mode, you can assign it to `changeFeedProcessorInstance` a
 The normal life cycle of a host instance is:
 
 1. Read the change feed.
-1. If there are no changes, sleep for a predefined amount of time (customizable with `options.setFeedPollDelay` in the builder) and go to #1.
+1. If there are no changes, sleep for a predefined amount of time (customizable with `options.setFeedPollDelay` in the builder) and go to step 1.
 1. If there are changes, send them to the *delegate*.
-1. When the delegate finishes processing the changes *successfully*, update the lease store by using the latest processed point in time and go to #1.
+1. When the delegate finishes processing the changes *successfully*, update the lease store by using the latest processed point in time and go to step 1.
 
 ## Error handling
 
-The change feed processor is resilient to user code errors. If your delegate implementation has an unhandled exception (step #4), the thread that's processing that particular batch of changes is stopped, and a new thread is created. The new thread checks the latest point in time that the lease store has saved for that range of partition key values, and it restarts from there, effectively sending the same batch of changes to the delegate. This behavior continues until your delegate processes the changes correctly. It's the reason why the change feed processor has an "at least once" guarantee.
+The change feed processor is resilient to user code errors. If your delegate implementation has an unhandled exception (step 4), the thread that's processing that particular batch of changes is stopped, and a new thread is created. The new thread checks the latest point in time that the lease store saved for that range of partition key values, and it restarts from there, effectively sending the same batch of changes to the delegate. This behavior continues until your delegate processes the changes correctly. It's the reason why the change feed processor has an *at least once* guarantee.
 
 > [!NOTE]
-> In only one scenario is a batch of changes is not retried. If the failure happens on the first-ever delegate execution, the lease store has no previous saved state to be used on the retry. In those cases, the retry uses the [initial starting configuration](#starting-time), which might or might not include the last batch.
+> In only one scenario is a batch of changes isn't retried. If the failure happens on the first-ever delegate execution, the lease store has no previous saved state to be used on the retry. In those cases, the retry uses the [initial starting configuration](#starting-time), which might or might not include the last batch.
 
 To prevent your change feed processor from getting "stuck" continuously retrying the same batch of changes, you should add logic in your delegate code to write documents, upon exception, to an errored-message. This design ensures that you can keep track of unprocessed changes while still being able to continue to process future changes. The errored-message might be another Azure Cosmos DB container. The exact data store doesn't matter. You simply want the unprocessed changes to be persisted.
 
@@ -202,15 +201,15 @@ You also can use the [change feed estimator](how-to-use-change-feed-estimator.md
 
 A single change feed processor deployment unit consists of one or more compute instances that have the same lease container configuration and the same `leasePrefix`, but different `hostName` values. You can have many deployment units in which each one has a different business flow for the changes, and each deployment unit consists of one or more instances.
 
-For example, you might have one deployment unit that triggers an external API  each time there's a change in your container. Another deployment unit might move data in real time each time there's a change. When a change happens in your monitored container, all your deployment units are notified.
+For example, you might have one deployment unit that triggers an external API each time there's a change in your container. Another deployment unit might move data in real time each time there's a change. When a change happens in your monitored container, all your deployment units are notified.
 
 ## Dynamic scaling
 
 As mentioned earlier, within a deployment unit, you can have one or more compute instances. To take advantage of the compute distribution within the deployment unit, the only key requirements are that:
 
-* All instances should have the same lease container configuration.
-* All instances should have the same value set in `options.setLeasePrefix` (or none set at all).
-* Each instance needs to have a different `hostName`.
+* All instances should have the same lease container configuration
+* All instances should have the same value set in `options.setLeasePrefix` (or none set at all)
+* Each instance needs to have a different `hostName`
 
 If these three conditions apply, then the change feed processor distributes all the leases in the lease container across all running instances of that deployment unit, and it parallelizes compute by using an equal-distribution algorithm. A lease is owned by one instance at any time, so the number of instances shouldn't be greater than the number of leases.
 
@@ -260,7 +259,6 @@ Three key configurations can affect how the change feed processor works. Each co
 
 The change feed processor can be hosted in any platform that supports long-running processes or tasks. Here are some examples:
 
-* A continuous running instance of [WebJobs](/training/modules/run-web-app-background-task-with-webjobs/) in Azure App Service
 * A process in an instance of [Azure Virtual Machines](/azure/architecture/best-practices/background-jobs#azure-virtual-machines)
 * A background job in [Azure Kubernetes Service](/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)
 * A serverless function in [Azure Functions](/azure/architecture/best-practices/background-jobs#azure-functions)
@@ -282,11 +280,11 @@ When using Microsoft Entra ID as authentication mechanism, make sure the identit
   * `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/delete`
   * `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/executeQuery`
 
-## Additional resources
+## More resources
 
 * [Azure Cosmos DB SDK](sdk-dotnet-v2.md)
 * [Complete sample application on GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
-* [Additional usage samples on GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [Usage samples on GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Azure Cosmos DB workshop labs for change feed processor](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## Next steps

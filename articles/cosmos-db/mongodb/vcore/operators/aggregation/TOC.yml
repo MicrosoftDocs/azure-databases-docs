@@ -2,6 +2,8 @@
   href: type-expression/TOC.yml
 - name: $addFields
   href: $addfields.md
+- name: $bucket
+  href: $bucket.md
 - name: $changestreams
   href: $changestreams.md
 - name: $collStats
@@ -26,6 +28,12 @@
   href: $lookup.md
 - name: $match
   href: $match.md
+- name: $merge
+  href: $merge.md
+- name: $out
+  href: $out.md
+- name: $redact
+  href: $redact.md
 - name: $replaceWith
   href: $replacewith.md
 - name: $sample
