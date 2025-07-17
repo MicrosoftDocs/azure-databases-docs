@@ -66,53 +66,186 @@ Then, configure your development environment with a new project and the client l
 
 | | Description |
 | --- | --- |
-| **``** | |
-| **``** | |
-| **``** | |
+| **`Cluster`** | Represents the connection state to a cluster |
+| **`ISession`** | Thread-safe entities that hold a specific connection to a cluster |
+| **`Mapper`** | Cassandra Query Language (CQL) client used to run queries |
 
 ## Code examples
 
-- [Authenticate client](#authenticate-the-client)
+- [Authenticate client](#authenticate-client)
 - [Upsert data](#upsert-data)
 - [Read data](#read-data)
 - [Query data](#query-data)
 
 ### Authenticate client
 
-Start by authenticating the client using the username and password described earlier in this guide.
+Start by authenticating the client using the credentials gathered earlier in this guide.
 
 1. Open the **Program.cs** file.
 
 1. Delete any existing content within the file.
 
-1. Add a using block for the `` namespace.
+1. Add using directives for the following namespaces:
 
-1. TODO
+    - `System.Security.Authentication`
+    - `Cassandra`
+    - `Cassandra.Mapping`
+
+    ```csharp
+    using System.Security.Authentication;
+    using Cassandra;
+    using Cassandra.Mapping;
+    ```
+
+1. Create string constant variables for the credentials collected earlier in this guide. Name the variables `username`, `password`, and `contactPoint`.
+
+    ```csharp
+    const string username = "<username>";
+    const string password = "<password>";
+    const string contactPoint = "<contact-point>";
+    ```
+
+1. Create a new `SSLoptions` object to ensure that you're using the transport layer security (TLS) 1.2 protocol, checking for certificate revocation, and not performing any extra client-side certification validation.
+
+    ```csharp
+    SSLOptions sslOptions = new(
+        sslProtocol: SslProtocols.Tls12,
+        checkCertificateRevocation: true,
+        remoteCertValidationCallback: (_, _, _, _) => true);
+    ```
+
+1. Construct a new `Cluster` object using the fluent `Cluster.Builder()` syntax. Use the credential and configuration variables created in the previous steps.
+
+    ```csharp
+    Cluster cluster = Cluster.Builder()
+        .WithCredentials(username, password)
+        .WithPort(10350)
+        .AddContactPoint(contactPoint)
+        .WithSSL(sslOptions)
+        .Build();
+    ```
+
+1. Create a new `session` variable using the `ConnectAsync` method passing in the name of the target keyspace (`cosmicworks`).
+
+    ```csharp
+    using ISession session = await cluster.ConnectAsync("cosmicworks");
+    ```
+
+1. Create a new `mapper` variable by using the `Mapper` class constructor passing in the recently created `session` variable.
+
+    ```csharp
+    Mapper mapper = new(session);
+    ```
 
 ### Upsert data
 
 Next, upsert new data into a table. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the table.
 
-1. TODO
+1. Define a new record type named `Product` with fields corresponding to the table created earlier in this guide.
+
+    | | Type |
+    | --- | --- |
+    | **`Id`** | `string` |
+    | **`Name`** | `string` |
+    | **`Category`** | `string` |
+    | **`Quantity`** | `int` |
+    | **`Price`** | `decimal` |
+    | **`Clearance`** | `bool` |
+
+    ```csharp
+    record Product
+    {
+        public required string Id { get; init; }
+    
+        public required string Name { get; init; }
+    
+        public required string Category { get; init; }
+    
+        public required int Quantity { get; init; }
+    
+        public required decimal Price { get; init; }
+    
+        public required bool Clearance { get; init; }
+    }
+    ```
+
+    > [!TIP]
+    > In .NET, you can create this type in another file or create it at the end of the existing file.
+
+1. Create a new object of type `Product`. Store the object in a variable named `product`.
+
+    ```csharp
+    Product product = new()
+    {
+        Id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        Name = "Yamba Surfboard",
+        Category = "gear-surf-surfboards",
+        Quantity = 12,
+        Price = 850.00m,
+        Clearance = false
+    };
+    ```
+
+1. Asynchronously invoke the `InsertAsync` passing in the `product` variable created in the previous step.
+
+    ```csharp
+    await mapper.InsertAsync(product);
+    ```
 
 ### Read data
 
 Then, read data that was previously upserted into the table.
 
-1. TODO
+1. Create a new string variable named `readQuery` with a CQL query that matches items with the same `id` field.
+
+    ```csharp
+    string readQuery = "SELECT * FROM product WHERE id = ?;";
+    ```
+
+1. Create a string variable named `id` with the same value as the product created earlier in this guide.
+
+    ```csharp
+    string id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
+    ```
+
+1. Use the `SingleAsync<>` generic method to run the query stored in `readQuery`, pass in the `id` variable as an argument, and map the output to the `Product` type. Store the result of this operation in a variable of type `Product`.
+
+    ```csharp
+    Product matchedProduct = await mapper.SingleAsync<Product>(readQuery, [id]);
+    ```
 
 ### Query data
 
 Finally, use a query to find all data that matches a specific filter in the table.
 
-1. TODO
+1. Create string variables named `findQuery` and `category` with the CQL query and required parameter.
+
+    ```csharp
+    string findQuery = "SELECT * FROM product WHERE category = ? ALLOW FILTERING;";
+    string category = "gear-surf-surfboards";
+    ```
+
+1. Use the two string variables and the `FetchAsync<>` generic method to asynchronously query multiple results. Store the result of this query in a variable of type `IEnumerable<Product>` named `queriedProducts`.
+
+    ```csharp
+    IEnumerable<Product> queriedProducts = await mapper.FetchAsync<Product>(findQuery, [category]);
+    ```
+
+1. Use a `foreach` loop to iterate over the query results.
+
+    ```csharp
+    foreach (Product queriedProduct in queriedProducts)
+    {
+        // Do something here with each result
+    }
+    ```
 
 ## Run the code
 
 Run the newly created application using a terminal in your application directory.
 
 ```bash
-python app.py
+dotnet run
 ```
 
 ## Clean up resources

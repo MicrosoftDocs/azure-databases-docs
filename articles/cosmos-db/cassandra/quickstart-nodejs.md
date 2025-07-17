@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Node.js & TypeScript/JavaScript library'
+title: 'Quickstart: Node.js & TypeScript library'
 titleSuffix: Azure Cosmos DB for Apache Cassandra
-description: Create a new Azure Cosmos DB for Apache Cassandra account and connect using the Node.js library and TypeScript or JavaScript in this quickstart.
+description: Create a new Azure Cosmos DB for Apache Cassandra account and connect using the Node.js library and TypeScript in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
@@ -68,14 +68,14 @@ Then, configure your development environment with a new project and the client l
 
 ## Code examples
 
-- [Authenticate client](#authenticate-the-client)
+- [Authenticate client](#authenticate-client)
 - [Upsert data](#upsert-data)
 - [Read data](#read-data)
 - [Query data](#query-data)
 
-### Authenticate the client
+### Authenticate client
 
-Start by authenticating the client using the username and password described earlier in this guide.
+Start by authenticating the client using the credentials gathered earlier in this guide.
 
 1. Open the **index.js** file in your integrated development environment (IDE).
 
@@ -83,11 +83,71 @@ Start by authenticating the client using the username and password described ear
 
 1. TODO
 
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
 ### Upsert data
 
 Next, upsert new data into a table. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the table.
 
 1. TODO
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
 
 ### Read data
 
@@ -95,11 +155,71 @@ Then, read data that was previously upserted into the table.
 
 1. TODO
 
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
 ### Query data
 
 Finally, use a query to find all data that matches a specific filter in the table.
 
 1. TODO
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
+
+1. TODO
+
+    ```typescript
+    
+    ```
 
 ## Run the code
 

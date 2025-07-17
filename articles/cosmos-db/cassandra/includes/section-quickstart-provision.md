@@ -36,15 +36,52 @@ Start by creating an API for Apache Cassandra account. Once the account is creat
         --name "cosmicworks"
     ```
 
-1. Use the `az cosmosdb cassandra table create` command to create a new table named `products`.
+1. Create a new JSON object to represent your schema using a multi-line Bash command. Then, use the `az cosmosdb cassandra table create` command to create a new table named `products`.
 
     ```azurecli-interactive
+    schemaJson=$(cat <<EOF
+    {
+      "columns": [
+        {
+          "name": "id",
+          "type": "text"
+        },
+        {
+          "name": "name",
+          "type": "text"
+        },
+        {
+          "name": "category",
+          "type": "text"
+        },
+        {
+          "name": "quantity",
+          "type": "int"
+        },
+        {
+          "name": "price",
+          "type": "decimal"
+        },
+        {
+          "name": "clearance",
+          "type": "boolean"
+        }
+      ],
+      "partitionKeys": [
+        {
+          "name": "id"
+        }
+      ]
+    }
+    EOF
+    )
+
     az cosmosdb cassandra table create \
         --resource-group "<resource-group-name>" \
         --account-name "<account-name>" \
         --keyspace-name "cosmicworks" \
-        --name "products" \
-        --schema '{"columns": [{"name": "id", "type": "uuid"}, {"name": "name", "type": "text"}, {"name": "category", "type": "text"}],"partitionKeys": [{"name": "category"}]}'
+        --name "product" \
+        --schema "$schemaJson"
     ```
 
 #### [Azure portal](#tab/azure-portal)
@@ -89,8 +126,8 @@ Start by creating an API for Apache Cassandra account. Once the account is creat
     | --- | --- |
     | **Keyspace** | *Create new* |
     | **Keyspace name** | `cosmicworks` |
-    | **Table name** | `products` |
-    | **Table schema** | `(id uuid, name text, category text, PRIMARY KEY (id))`
+    | **Table name** | `product` |
+    | **Table schema** | `(id text, name text, category text, quantity int, price decimal, clearance boolean, PRIMARY KEY (id))` |
 
     > [!TIP]
     > You can leave any unspecified options to their default values.
