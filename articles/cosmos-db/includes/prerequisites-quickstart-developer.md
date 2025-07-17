@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 07/15/2025
+ms.date: 07/17/2025
 ---
 
 [!INCLUDE[Prerequisites - Azure subscription](prerequisites-azure-subscription.md)]

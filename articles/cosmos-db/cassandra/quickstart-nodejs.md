@@ -9,7 +9,7 @@ ms.subservice: apache-cassandra
 ms.topic: quickstart-sdk
 ms.devlang: typescript
 ms.custom: devx-track-js, devx-track-ts, sfi-ropc-nochange
-ms.date: 07/15/2025
+ms.date: 07/17/2025
 ---
 
 # Quickstart: Azure Cosmos DB for Apache Cassandra client library for Node.js
@@ -32,18 +32,88 @@ First, set up the account and development environment for this guide. This secti
 
 ### Create an account
 
-[!INCLUDE[Section - Setting up](includes/section-quickstart-provision.md)]
+[!INCLUDE[Section - Quickstart provision](includes/section-quickstart-provision.md)]
 
 ### Get credentials
 
-[!INCLUDE[Section - Get credentials](includes/section-quickstart-credentials.md)]
+[!INCLUDE[Section - Quickstart credentials](includes/section-quickstart-credentials.md)]
 
 ### Prepare development environment
 
 Then, configure your development environment with a new project and the client library. This step is the last required prerequisite before moving on to the rest of this guide.
 
-1. TODO
+1. Start in an empty folder.
+
+1. Initialize a new module.
+
+    ```bash
+    npm init es6 --yes
+    ```
+
+1. Install the `` package from Node Package Manager (npm).
+
+    ```bash
+    npm install --save 
+    ```
+
+1. Create the **index.js** file.
 
 ## Object model
 
-TODO
+| | Description |
+| --- | --- |
+| **``** | |
+| **``** | |
+| **``** | |
+
+## Code examples
+
+- [Authenticate client](#authenticate-the-client)
+- [Upsert data](#upsert-data)
+- [Read data](#read-data)
+- [Query data](#query-data)
+
+### Authenticate the client
+
+Start by authenticating the client using the username and password described earlier in this guide.
+
+1. Open the **index.js** file in your integrated development environment (IDE).
+
+1. Import the `` type from the `` module.
+
+1. TODO
+
+### Upsert data
+
+Next, upsert new data into a table. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the table.
+
+1. TODO
+
+### Read data
+
+Then, read data that was previously upserted into the table.
+
+1. TODO
+
+### Query data
+
+Finally, use a query to find all data that matches a specific filter in the table.
+
+1. TODO
+
+## Run the code
+
+Run the newly created application using a terminal in your application directory.
+
+```bash
+node index.js
+```
+
+## Clean up resources
+
+[!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-credentials.md)]
+
+## Next step
+
+> [!div class="nextstepaction"]
+> [Overview of Azure Cosmos DB for Apache Cassandra](introduction.md)
