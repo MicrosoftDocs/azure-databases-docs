@@ -240,14 +240,14 @@ The first two results returned by this query are:
 ```json
 [
   {
-    _id: 'b1d86d1f-8705-4157-b64c-a9eda0df4921',
-    storeName: 'VanArsdel, Ltd. | Baby Products Haven - West Kingfort',
-    lowestCategory: { categoryName: 'Baby Monitors', totalSales: 49585 }
+    "_id": "b1d86d1f-8705-4157-b64c-a9eda0df4921",
+    "storeName": "VanArsdel, Ltd. | Baby Products Haven - West Kingfort",
+    "lowestCategory": { "categoryName": "Baby Monitors", "totalSales": 49585 }
   },
   {
-    _id: '22e6367e-8341-415f-9795-118d2b522abf',
-    storeName: 'Adatum Corporation | Outdoor Furniture Mart - Port Simone',
-    lowestCategory: { categoryName: 'Outdoor Benches', totalSales: 4976 }
+    "_id": "22e6367e-8341-415f-9795-118d2b522abf",
+    "storeName": "Adatum Corporation | Outdoor Furniture Mart - Port Simone",
+    "lowestCategory": { "categoryName": "Outdoor Benches", "totalSales": 4976 }
   }
 ]
 ```
