@@ -93,7 +93,7 @@ Cascading read replicas can help distribute read workloads, reducing the load on
 
 The first-level read replica asynchronously replicates data from the primary server. A second-level read replica can then be created using the first-level replica as its source, forming a two-tier replication hierarchy. This architecture increases scalability, supporting up to 30 read replica servers with the primary server allowing up to 5 read replicas, and each of those replicas supporting 5 additional replicas. You can add cascading read replicas by clicking on your read replica server and navigate to the replication tab.
 
-For example, your primary server can have up to 5 read replicas (Level 1). One of these, say read-replica-1, can act as the source for another replica, read-replica-2, which becomes part of Level 2. These replicas can be deployed in different regions, enabling cross-region replication.
+For example, your primary server can have up to 5 read replicas (level 1). One of these, say read-replica-1, can act as the source for another replica, read-replica-2, which becomes part of (level 2). These replicas can be deployed in different regions, enabling cross-region replication.
 
 #### Preview considerations:
 1. Up to 5 read replicas can be created per source read replica, with support for 2 levels of replication.
