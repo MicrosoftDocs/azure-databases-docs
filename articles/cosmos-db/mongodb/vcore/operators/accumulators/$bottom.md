@@ -20,10 +20,10 @@ The syntax for the `$bottom` operator is as follows:
 
 ```javascript
 {
-    "$bottom": {
-        "output": [listOfFields],
-        "sortBy": {
-            "<fieldName>": < sortOrder >
+    $bottom: {
+        output: [listOfFields],
+        sortBy: {
+            <fieldName>: < sortOrder >
         }
     }
 }
