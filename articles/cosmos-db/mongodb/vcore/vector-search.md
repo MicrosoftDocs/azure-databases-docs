@@ -35,11 +35,11 @@ In the Integrated Vector Database in Azure Cosmos DB for MongoDB (vCore), embedd
 
 ## Perform Vector Similarity search
 
-Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. Cosmos DB currently supports three types of vector indexes:
+Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. While Azure Cosmos DB for MongoDB (vCore) offers multiple options, here are some general guidelines to help you get started based on the size of your dataset:
 
-- **DiskANN (Recommended)**: Ideal for large-scale datasets, leveraging SSDs for efficient memory usage while maintaining high recall in approximate nearest-neighbor (ANN) searches.
-- **HNSW**: Suited for moderate-sized datasets needing high recall, with a graph-based structure that balances accuracy and resource efficiency.
-- **IVF**: Uses clustering to optimize search speed in expansive datasets, focusing searches within targeted clusters to accelerate performance.
+- **IVF**: This index is best for very small-scale datasets, typically **under 10,000 vectors**, making it ideal for testing or small proof-of-concept projects. For best performance, choose an M10 or M20 cluster.
+- **HNSW**: For small to medium datasets (up to 50,000 vectors), the HNSW index offers a good balance of accuracy and performance. It is a solid choice for production workloads and performs best when paired with M25 and higher tiers.
+- **DiskANN (Recommended)**: For large-scale datasets (**up to 500,000 vectors or more**), DiskANN is the recommended index. It is designed to handle massive workloads efficiently while still retaining high QPS and low latency. It delivers optimal performance on M30 and higher cluster tiers. 
 
 ### [DiskANN](#tab/diskann)
 
