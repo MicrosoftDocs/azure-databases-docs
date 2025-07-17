@@ -37,9 +37,13 @@ In the Integrated Vector Database in Azure Cosmos DB for MongoDB (vCore), embedd
 
 Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. While Azure Cosmos DB for MongoDB (vCore) offers multiple options, here are some general guidelines to help you get started based on the size of your dataset:
 
-- **IVF**: This index is best for very small-scale datasets, typically **under 10,000 vectors**, making it ideal for testing or small proof-of-concept projects. For best performance, choose an M10 or M20 cluster.
-- **HNSW**: For small to medium datasets (up to 50,000 vectors), the HNSW index offers a good balance of accuracy and performance. It is a solid choice for production workloads and performs best when paired with M25 and higher tiers.
-- **DiskANN (Recommended)**: For large-scale datasets (**up to 500,000 vectors or more**), DiskANN is the recommended index. It is designed to handle massive workloads efficiently while still retaining high QPS and low latency. It delivers optimal performance on M30 and higher cluster tiers. 
+| Index | Description | Key Trade-offs | Vector Count | Cluster Tier |
+| --- | --- | --- | --- | --- |
+| **IVF** | An IVFFlat index divides vectors into lists, then searches a subset closest to the query vector. It has faster build times and uses less memory than HNSW. | **Pros:** Faster build times, lower memory use. \<br\> **Cons:** Lower query performance (in terms of speed-recall tradeoff). | Under 10,000 | M10 or M20 |
+| **HNSW** | An HNSW index creates a multilayer graph. It has better query performance than IVFFlat but has slower build times and uses more memory. | **Pros:** Better query performance (in terms of speed-recall tradeoff), can be created on an empty table. \<br\> **Cons:** Slower build times, higher memory use. | Up to 50,000 | M25 and higher |
+| **DiskANN (recommended)** | DiskANN is an approximate nearest neighbor search algorithm designed for efficient vector search at any scale. It offers a combination of high recall, high throughput, and low query latency. | **Pros:** Efficient at any scale, high recall, high throughput, low latency. | Up to 500,000+ | M30 and higher |
+
+
 
 ### [DiskANN](#tab/diskann)
 
