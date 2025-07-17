@@ -8,19 +8,19 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: quickstart
-ms.date: 03/18/2024
+ms.date: 06/11/2025
 ms.custom: devx-track-terraform
 ---
 
 # Azure Cosmos DB for MongoDB (vCore) with Terraform
-This document provides instructions on using Terraform to deploy Azure Cosmos DB for MongoDB vCore resources. This involves directly calling the ARM API through Terraform. Full support for Terraform is targetted for the second half of 2024.
+This document provides instructions on using Terraform to deploy Azure Cosmos DB for MongoDB vCore resources. This process involves directly calling the ARM API through Terraform.
 
 ## Prerequisites
 - Terraform installed on your machine.
 - An Azure subscription.
 
 ## Terraform Configuration
-Create a new '.tf' file in your Terraform project directory. Copy the example code and replace the resource group placeholder values with your own:
+Create a new *\*.tf* file in your Terraform project directory. Copy the example code and replace the resource group placeholder values with your own:
 
 ```hcl
 resource "azurerm_resource_group" "example" {
@@ -41,7 +41,7 @@ resource "azurerm_mongo_cluster" "example" {
 }
 ```
 
-For a complete list of parameters, including required and optional arguments, please visit the official [Terraform Registry documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mongo_cluster#arguments-reference).
+For a complete list of parameters, including required and optional arguments, visit the official [Terraform Registry documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mongo_cluster#arguments-reference).
 
 
 ## Next steps

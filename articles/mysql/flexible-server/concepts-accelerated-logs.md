@@ -12,10 +12,11 @@ ms.custom:
   - references_regions
   - ignite-2023
   - build-2024
+  - build-2025
 # customer intent: As a reader, I want to understand the concept of accelerated logs in Azure Database for MySQL - Flexible Server.
 ---
 
-# Accelerated logs feature in Azure Database for MySQL - Flexible Server
+# Accelerated logs in Azure Database for MySQL
 
 Azure Database for MySQL - Flexible Server includes a feature called *accelerated logs*, which is now generally available for servers that use the [Azure Database for MySQL - Flexible Server service tiers](concepts-service-tiers-storage.md). The feature boosts server performance by optimizing operations related to transactional logs. When you enable this feature, the server can automatically store transactional logs on faster storage to enhance server throughput without incurring any extra cost.
 
@@ -33,20 +34,24 @@ Benefits of accelerated logs include:
 - **Cost efficiency**: Accelerated logs offer a cost-effective solution for mission-critical workloads by providing enhanced performance at no extra expense.
 - **Enhanced scalability**: Accelerated logs can accommodate growing workloads for applications that need to scale easily while maintaining high performance. Applications and services on the Business Critical service tier benefit from more responsive interactions and reduced query wait times.
 
-> [!NOTE]  
-> If [zone-redundant high availability](concepts-high-availability.md) is enabled for your server, expect additional latency due to the cross-zonal copy of data. We recommend that you conduct your own benchmark tests for an accurate performance assessment.
+> [!NOTE]
+>  - If [zone-redundant high availability](concepts-high-availability.md) is enabled for your server, expect additional latency due to the cross-zonal copy of data. We recommend that you conduct your own benchmark tests for an accurate performance assessment.
+> 
+>  - Accelerated logs cannot be enabled without an availability zone allocated to the server. Please raise a support case in case you want to enable accelerated logs such servers. 
 
 ## Limitations
 
-- Once the accelerated logs feature is enabled, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value will no longer have any effect**. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of `binlog_expire_logs_seconds` for binary log retention.
+- Once the accelerated logs feature is enabled, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value will no longer have any effect**. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of `binlog_expire_logs_seconds` for binary log retention. This applies to replica servers we well. 
 
-- [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for a accelerated logs enabled server and can not be disabled.
+- [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for an accelerated logs enabled server and can not be disabled.
+
+- If you attempt to create a replica server in a region where **accelerated logs are not supported**, and the **source server has accelerated logs enabled**, the replica provisioning will **fail**. To proceed, you can **disable accelerated logs** on the source server and then retry provisioning the read replica.
 
 ## Availability of accelerated logs by region
 
 The accelerated logs feature is currently available only in the following regions:
 
-  - Australia East
+- Australia East
   - Brazil South
   - Canada Central
   - Central India

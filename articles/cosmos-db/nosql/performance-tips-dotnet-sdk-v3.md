@@ -89,7 +89,7 @@ Edit your `app.config` or `web.config` files:
 
 For general guidance on configuring high availability in Azure Cosmos DB, see [High availability in Azure Cosmos DB](/azure/reliability/reliability-cosmos-db-nosql). 
 
-In addition to a good foundational setup in the database platform, Threshold-based availability strategy can be implemented in the .NET SDK, which can help in outage scenarios. This feature provides advanced mechanisms to address specific latency and availability challenges, going above and beyond the cross-region retry capabilities that are built into the SDK by default. This can significantly enhance the resilience and performance of your application, particularly under high-load or degraded conditions.
+In addition to a good foundational setup in the database platform, there are specific techniques that can be implemented in the .NET SDK itself, which can help in outage scenarios. Two notable strategies are the threshold-based availability strategy and the partition-level circuit breaker.
 
 ### Threshold-based availability strategy
 
@@ -142,6 +142,54 @@ CosmosClient client = new CosmosClient(
 
 > [!NOTE]
 > If the first preferred region returns a non-transient error status code (e.g., document not found, authorization error, conflict, etc.), the operation itself will fail fast, as availability strategy would not have any benefit in this scenario.
+
+### Partition-level circuit breaker
+
+The partition-level circuit breaker (PPCB) is a feature in the .NET SDK that enhances availability and latency by tracking unhealthy physical partitions. When enabled, it helps route requests to healthier regions, preventing cascading failures due to regional or partition-specific issues. The feature is independent of backend-triggered failover and is controlled through environment variables.
+
+This feature is **disabled by default**, but is **enabled automatically** when partition-level failover is enabled.
+
+#### How it works
+
+1. **Failure Detection:** When specific errors such as `503 Service Unavailable`, `408 Request Timeout`, or cancellation tokens are observed, the SDK counts consecutive failures for a partition.
+2. **Triggering Failover:** Once a configured threshold of consecutive failures is reached, the SDK redirects requests for that partition key range to the next preferred region using `GlobalPartitionEndpointManagerCore.TryMarkEndpointUnavailableForPartitionKeyRange`.
+3. **Background Recovery:** A background task is initiated during failover to periodically re-evaluate the health of the failed partition by trying to connect to all four replicas. Once healthy, the SDK removes the override and returns to the primary region.
+
+#### Behavior by account type
+
+- **Single-region write (single master):** Only **read** requests participate in PPCB failover logic.
+- **Multi-region write (multi master):** Both **read and write** requests use PPCB failover logic.
+
+#### Configuration options
+
+Use the following environment variables to configure PPCB:
+
+| Environment Variable | Description | Default |
+|----------------------|-------------|---------|
+| `AZURE_COSMOS_CIRCUIT_BREAKER_ENABLED` | Enables/disables the PPCB feature. | `false` |
+| `AZURE_COSMOS_PPCB_CONSECUTIVE_FAILURE_COUNT_FOR_READS` | Consecutive read failures to trigger failover. | `10` |
+| `AZURE_COSMOS_PPCB_CONSECUTIVE_FAILURE_COUNT_FOR_WRITES` | Consecutive write failures to trigger failover. | `5` |
+| `AZURE_COSMOS_PPCB_ALLOWED_PARTITION_UNAVAILABILITY_DURATION_IN_SECONDS` | Time before re-evaluating partition health. | `5` seconds |
+| `AZURE_COSMOS_PPCB_STALE_PARTITION_UNAVAILABILITY_REFRESH_INTERVAL_IN_SECONDS` | Interval for background refresh of partition health. | `60` seconds |
+
+> [!NOTE]
+> The SDK does not currently have a reliable failback trigger for reads. Instead, a background health checker gradually attempts to re-enable the original region when all four replicas are responsive.
+
+### Comparing availability optimizations
+
+- **Threshold-based availability strategy**: 
+  - **Benefit**: Reduces tail latency by sending parallel read requests to secondary regions, and improves availability by preempting requests that will result in network time-outs.
+  - **Trade-off**: Incurs extra RU (Request Units) costs compared to circuit breaker, due to additional parallel cross-region requests (though only during periods when thresholds are breached).
+  - **Use Case**: Optimal for read-heavy workloads where reducing latency is critical and some additional cost (both in terms of RU charge and client CPU pressure) is acceptable. Write operations can also benefit, if opted into non-idempotent write retry policy and the account has multi-region writes.
+
+- **Partition level circuit breaker**: 
+  - **Benefit**: Improves availability and latency by avoiding unhealthy partitions, ensuring requests are routed to healthier regions.
+  - **Trade-off**: Does not incur more RU costs, but can still allow some initial availability loss for requests that will result in network time-outs. 
+  - **Use Case**: Ideal for write-heavy or mixed workloads where consistent performance is essential, especially when dealing with partitions that may intermittently become unhealthy.
+
+Both strategies can be used together to enhance read and write availability and reduce tail latency. Partition Level Circuit Breaker can handle a variety of transient failure scenarios, including those that may result in slow performing replicas, without the need to perform parallel requests. Additionally, adding Threshold-based Availability Strategy will further minimize tail latency and eliminate availability loss, if additional RU cost is acceptable. 
+
+By implementing these strategies, developers can ensure their applications remain resilient, maintain high performance, and provide a better user experience even during regional outages or high-latency conditions.
 
 ## Networking
 <a id="direct-connection"></a>

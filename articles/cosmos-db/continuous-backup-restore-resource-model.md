@@ -4,7 +4,7 @@ description: This article explains the resource model for the Azure Cosmos DB po
 author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 03/21/2024
 ---
 

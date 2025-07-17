@@ -11,7 +11,8 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: landing-page
-  ms.date: 01/11/2025
+  ms.date: 06/11/2025
+  ms.custom: build-2025
 landingContent:
   - title: Get started with Azure Cosmos DB for MongoDB (vCore)
     linkLists:
@@ -37,8 +38,12 @@ landingContent:
             url: vector-search.md
           - text: Full-text search
             url: full-text-search.md
+          - text: Hybrid Search
+            url: hybrid-search.md
           - text: Exact Nearest Neighbor (ENN) Vector Search 
             url: enn-vector-search.md
+          - text: Product Quantization
+            url: product-quantization.md
           - text: Half-Precision Vector Indexing
             url: half-precision.md
           - text: Open-source vector database
@@ -59,20 +64,12 @@ landingContent:
             url: how-to-create-text-index.md
   - title: Migrate to MongoDB (vCore)
     linkLists:
-      - linkListType: concept
-        links:
-          - text: Migration options
-            url: migration-options.md
       - linkListType: how-to-guide
         links:
-          - text: Migrate using native tools
-            url: how-to-migrate-native-tools.md
-          - text: Migrate using Azure Data Studio
-            url: /azure-data-studio/extensions/database-migration-for-mongo-extension
-          - text: Migrate using Azure Database Migration Service
-            url: ../../../dms/tutorial-mongodb-cosmos-db-online.md
-          - text: Migrate using Azure Database Migration Service (offline)
-            url: ../../../dms/tutorial-mongodb-cosmos-db.md
+          - text: Migrate from MongoDB
+            url: migration-options.md
+          - text: Migrate from RU to vCore
+            url: ../how-to-migrate-vcore.md
   - title: Manage a vCore cluster
     linkLists:
       - linkListType: how-to-guide

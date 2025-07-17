@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 10/01/2023
+ms.custom: sfi-image-nochange
 ---
 
 # Audit logging in Azure Cosmos DB for PostgreSQL

@@ -8,6 +8,8 @@ ms.date: 03/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
+ms.custom:
+  - build-2025
 ---
 
 # Considerations with the use of extensions and modules
@@ -37,6 +39,7 @@ Modules don't need to be [allowlisted](how-to-allow-extensions.md). That's an ex
 
 The following list enumerates all the supported extensions that require specific considerations when used in an Azure Database for PostgreSQL flexible server:
 
+- `AGE`
 - `dblink`
 - `pg_buffercache`
 - `pg_cron`
@@ -46,6 +49,13 @@ The following list enumerates all the supported extensions that require specific
 - `pg_stat_statements`
 - `postgres_fdw`
 - `pgstattuple`
+ 
+### AGE
+
+The Apache AGE extension is a graph extension for PostgreSQL supported by Azure Database for PostgreSQL flexible server. It provides graph database functionalities, open cypher query support, and the ability to execute complex queries on graph data stored in PostgreSQL. ['Apache AGE'](https://age.apache.org/) is an open-source project released under the Apache License 2.0. 
+
+#### Install AGE
+To use AGE, make sure that you ['allowlist'](/azure/postgresql/extensions/how-to-allow-extensions) the extension, ['load its library'](/azure/postgresql/extensions/how-to-load-libraries), and ['install the extension'](/azure/postgresql/extensions/how-to-create-extensions) in the database on which you plan to use its functionality. 
 
 ### dblink
 
@@ -241,7 +251,7 @@ More details on these utilities can be found [here](https://github.com/timescale
 
 Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance, with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
 
-The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
+The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
 
 ## Modules with specific considerations
 

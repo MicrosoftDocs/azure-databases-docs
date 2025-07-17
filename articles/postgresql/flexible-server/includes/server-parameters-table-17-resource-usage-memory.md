@@ -118,8 +118,8 @@ ms.custom: automatically generated
 | Description | Sets the maximum memory to be used for logical decoding. |
 | Data type | integer |
 | Default value | `65536` |
-| Allowed values | `65536` |
-| Parameter type | read-only |
+| Allowed values | `64-2147483647` |
+| Parameter type | dynamic |
 | Documentation | [logical_decoding_work_mem](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-LOGICAL-DECODING-WORK-MEM) |
 
 

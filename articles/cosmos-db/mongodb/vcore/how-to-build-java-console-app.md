@@ -8,8 +8,10 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/03/2025
-ms.custom: devx-track-java
+ms.date: 05/14/2025
+ms.custom:
+  - devx-track-java
+  - build-2025
 ai-usage: ai-assisted
 appliesto:
   - ✅ MongoDB (vCore)
@@ -19,8 +21,6 @@ appliesto:
 # Build a Java console app with Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[Developer console app selector](includes/selector-build-console-app-dev.md)]
-
-[!INCLUDE[Notice - Entra Authentication preview](includes/notice-entra-authentication-preview.md)]
 
 In this guide, you develop a Java console application to connect to an Azure Cosmos DB for MongoDB vCore cluster. The guide includes steps to set up your development environment, authenticate using the `azure-identity` package from the Azure SDK for Java, and interact with the database and collection to manage documents.
 

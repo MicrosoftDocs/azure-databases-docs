@@ -8,14 +8,14 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 05/03/2025
+ms.date: 06/24/2025
 appliesto:
   - ✅ MongoDB (vCore)
+ms.custom:
+  - build-2025
 ---
 
 # Microsoft Entra ID authentication with Azure Cosmos DB for MongoDB vCore
-
-[!INCLUDE[Notice - Entra Authentication preview](includes/notice-entra-authentication-preview.md)]
 
 Azure Cosmos DB for MongoDB vCore supports integration with Microsoft Entra ID and native DocumentDB authentication. Each Azure Cosmos DB for MongoDB vCore cluster is created with native DocumentDB authentication enabled and one built-in administrative user.
 
@@ -61,13 +61,11 @@ Additionally, one or more nonadministrative Microsoft Entra ID users can be adde
     > [!NOTE]  
     > Sign in with a deleted principal can still occur until the token expires (up to 90 minutes from the issuing of the token). If you also remove the user from the Azure Cosmos DB for MongoDB vCore cluster, this access is revoked immediately.
 
-## Limitations
-
-[!INCLUDE[Section - Entra authentication limitations](includes/section-entra-authentication-limitations.md)]
-
 ## Related content
 
-- Develop a [console app with Microsoft Entra authentication](how-to-build-dotnet-console-app.md)
+- Develop a [console app with Microsoft Entra ID authentication](how-to-build-dotnet-console-app.md)
 - Deploy a [Microsoft Entra-enabled web application template](quickstart-dotnet.md)
+- Lean [how to enable Microsoft Entra ID and manage Entra ID users on clusters](./how-to-configure-entra-authentication.md)
+- Check [limitations of Microsoft Entra ID](./limits.md#authentication-and-access-control-rbac) in Azure Cosmos DB for MongoDB vCore
 - Review [Microsoft Entra ID fundamentals](/entra/fundamentals/whatis)
 - Review [Open ID Connect (OIDC) support in Microsoft Entra ID](/entra/architecture/auth-oidc)

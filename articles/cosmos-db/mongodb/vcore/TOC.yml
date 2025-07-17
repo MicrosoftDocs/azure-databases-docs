@@ -35,32 +35,44 @@
       items:
         - name: Node.js
           href: tutorial-nodejs-web-app.md
+    - name: Build GenAI applications
+      items:
+        - name: Real-time custom content generation
+          href: ai-advertisement-generation.md
 - name: Concepts
   items:
     - name: Vector database
       href: vector-search.md
-    - name: Real-time custom content generation
-      href: ai-advertisement-generation.md
     - name: Free tier
       href: free-tier.md
     - name: Multicloud solution
       href: multi-cloud.md
     - name: Open source
       href: oss.md
-    - name: Full-text search
-      href: full-text-search.md
+    - name: First-party MongoDB service
+      href: azure-mongo-first-party.md
     - name: Integrated vector database
       items:
-        - name: Integrated vector database overview
-          href: vector-search.md
-        - name: Exact Nearest Neighbor (ENN) Vector Search
-          href: enn-vector-search.md
-        - name: Half-Precision Vector Indexing
-          href: half-precision.md
+        - name: Data Retrieval
+          items: 
+            - name: Vector Search
+              href: vector-search.md
+            - name: Full-text search
+              href: full-text-search.md
+            - name: Hybrid Search
+              href: hybrid-search.md
+            - name: Exact Nearest Neighbor (ENN) Vector Search
+              href: enn-vector-search.md
+            - name: RAG with Langchain & OpenAI
+              href: rag.md
+        - name: Vector Index Compression
+          items: 
+            - name: Product Quantization
+              href: product-quantization.md
+            - name: Half-Precision Vector Indexing
+              href: half-precision.md
         - name: Open-source vector databases
           href: vector-search-ai.md
-        - name: RAG with Langchain & OpenAI
-          href: rag.md
     - name: MongoDB compatibility and feature support
       href: compatibility-and-feature-support.md
     - name: Managed service compatibility
@@ -111,6 +123,8 @@
       href: limits.md
 - name: Migrate data
   items:
+    - name: Migrate from Azure Cosmos DB for Mongo (RU)
+      href: ../how-to-migrate-vcore.md?context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: Premigration assessment
       href: how-to-assess-plan-migration-readiness.md
     - name: Online migration tools
@@ -203,7 +217,7 @@
     - name: Java
       href: /java/api/overview/azure/resourcemanager-mongocluster-readme
     - name: .NET
-      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster
+      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster.resourceversions
     - name: Node.js
       href: /javascript/api/overview/azure/mongo-cluster
     - name: Python

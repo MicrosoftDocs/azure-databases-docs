@@ -5,7 +5,7 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, sfi-image-nochange
 ms.topic: how-to
 ms.date: 10/11/2021
 ---

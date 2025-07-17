@@ -8,8 +8,10 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/03/2025
-ms.custom: devx-track-js
+ms.date: 05/14/2025
+ms.custom:
+  - devx-track-js
+  - build-2025
 ai-usage: ai-assisted
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
@@ -20,8 +22,6 @@ appliesto:
 # Build a Node.js console app with Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[Developer console app selector](includes/selector-build-console-app-dev.md)]
-
-[!INCLUDE[Notice - Entra Authentication preview](includes/notice-entra-authentication-preview.md)]
 
 This guide helps you build a Node.js console application to connect to an Azure Cosmos DB for MongoDB vCore cluster. You prepare your development environment, use the `@azure/identity` package from the Azure SDK for JavaScript to authenticate, and perform common operations on documents in the database.
 

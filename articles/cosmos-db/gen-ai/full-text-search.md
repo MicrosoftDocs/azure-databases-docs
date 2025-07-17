@@ -1,6 +1,5 @@
 ---
-title: Use full-text search (preview)
-titleSuffix: Azure Cosmos DB for NoSQL
+title: Use full-text search
 description: Overview of full text search for querying data using "best matching 25" scoring in Azure Cosmos DB for NoSQL.
 author: jcodella
 ms.author: jacodel
@@ -11,20 +10,17 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
+ms.custom:
+  - build-2025
 ---
 
-# Full-text search in Azure Cosmos DB for NoSQL (preview)
+# Full-text search in Azure Cosmos DB for NoSQL
 
-Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature in preview, designed to enhance the search capabilities of your applications.
-
-## Prerequisites
-
-- Azure Cosmos DB for NoSQL account
-- [Vector search](vector-search-overview.md) feature enabled
+Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature as generally available. This is designed to enhance the native search capabilities of your apps without needing an external search service for basic full-text search. 
 
 ## What is full text search?
 
-Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature in preview, designed to enhance your data querying capabilities. This feature includes advanced text processing techniques such as stemming, stop word removal, and tokenization, enabling efficient and effective text searches through a specialized text index. Full text search also includes *full text scoring* with a function that evaluates the relevance of documents to a given search query. BM25, or Best Matching 25, considers factors like term frequency, inverse document frequency, and document length to score and rank documents. This helps ensure that the most relevant documents appear at the top of the search results, improving the accuracy and usefulness of text searches.
+Azure Cosmos DB for NoSQL now offers full-text indexing and search, designed to enhance your search and retrieval workloads. This feature includes advanced text processing techniques such as stemming, stop word removal, and tokenization, enabling efficient and effective text searches through a specialized text index. Full text search also includes *full text scoring* with a function that evaluates the relevance of documents to a given search query. BM25, or Best Matching 25, considers factors like term frequency, inverse document frequency, and document length to score and rank documents. This helps ensure that the most relevant documents appear at the top of the search results, improving the accuracy and usefulness of text searches.
 
 Full Text Search is ideal for a variety of scenarios, including:
 
@@ -37,28 +33,17 @@ Full Text Search is ideal for a variety of scenarios, including:
 
 ## How to use full text search
 
-1. Enable the "Full Text & Hybrid Search for NoSQL" preview feature.
-2. Configure a container with a full text policy and full text index.
-3. Insert your data with text properties.
-4. Run hybrid queries against the data.
-
-## Enable the full text and hybrid search for NoSQL preview feature
-
-Full text search, full text scoring, and hybrid search all require enabling the preview feature on your Azure Cosmos DB for NoSQL account before using. Follow the below steps to register:
-
-1. Navigate to your Azure Cosmos DB for NoSQL resource page.
-2. Select the "Features" pane under the "Settings" menu item.
-3. Select the "Full-Text & Hybrid Search for NoSQL API (preview)" feature.
-4. Read the description of the feature to confirm you want to enable it.
-5. Select "Enable" to turn on the vector indexing and search capability.
-
-:::image type="content" source="../nosql/media/full-text-search/full-text-search-feature.png" alt-text="Screenshot of full text and hybrid search preview feature in the Azure portal.":::
+1. Configure a container with a full text policy and full text index.
+2. Insert your data with text properties.
+3. Run queries against the data using full text search system functions.
 
 ### Configure container policies and indexes for hybrid search
 
-To use full text search capabilities, you'll first need to define two policies:
-- A container-level full text policy that defines what paths will contain text for the new full text query system functions.
+To use full text search capabilities, you should first define two policies:
+- A container-level full text policy that defines what paths contain text for the new full text query system functions.
 - A full text index added to the indexing policy that enables efficient search.
+
+While it's possible to run full text search queries without these policies, they won't utilize the full-text index and can consume higher RUs and have longer execution times. It's strongly recommended to define full text container and index policies. 
 
 ### Full text policy
 
@@ -94,11 +79,22 @@ Defining multiple text paths is easily done by adding another element to the `fu
 }
 ```
 
-> [!NOTE]
-> English ("en-us" as the language) is the only supported language at this time.
 
 > [!IMPORTANT]
 > Wild card characters (*, []) are not currently supported in the full text policy or full text index.
+
+#### Multi-language support (preview)
+Multi-language support allows you to index and search text in languages beyond English. It applies language-specific tokenization, stemming, and stopword removal for more accurate search results. 
+
+> [!NOTE]
+> Multi-language support is in early preview. Performance and quality of search may be different than full-text search in English. For example, stopword removal is only available for English (en-us) at this time. The functionality is subject to change through the evolution of the preview. To try it, you must enroll in the *Preview Capabilities for Full Text Search* feature via the "Features" section of your Azure Cosmos DB resource in the Azure portal. 
+
+Currently supported languages are:
+- en-US (English)
+- de-DE (German)
+- es-ES (Spanish)
+- fr-FR (French)
+
 
 ### Full text index
 
@@ -166,17 +162,17 @@ Here are a few examples of each function in use.
 
 #### FullTextContains
 
-In this example, we want to obtain the first 10 results where the keyword "bicycle" is contained in the property `c.text`.
+In this example, we want to obtain the first 10 results where the phrase "red bicycle" is contained in the property `c.text`.
 
 ```sql
 SELECT TOP 10 *
 FROM c
-WHERE FullTextContains(c.text, "bicycle")
+WHERE FullTextContains(c.text, "red bicycle")
 ```
 
 #### FullTextContainsAll
 
-In this example, we want to obtain first 10 results where the keywords "red" and "bicycle" are contained in the property `c.text`.
+In this example, we want to obtain first 10 results where the keywords "red" and "bicycle" are contained in the property `c.text`, but not necessarily together.
 
 ```sql
 SELECT TOP 10 *
@@ -206,6 +202,18 @@ ORDER BY RANK FullTextScore(c.text, "bicycle", "mountain")
 
 > [!IMPORTANT]
 > FullTextScore can only be used in the `ORDER BY RANK` clause and not projected in the `SELECT` statement or in a `WHERE` clause.
+
+#### Fuzzy Search (preview)
+Fuzzy search can improve resilience to typos and text variations. You can specify an allowable "distance" (number of edits) between the search term and document text, allowing near matches to be considered a hit. The maximum distance that can be specified is 2 (two edits).
+
+> [!NOTE]
+> Fuzzy search is in early preview. Performance, quality, and functionality are subject to change through the evolution of the preview. To try it, you must enroll in the *Preview Capabilities for Full Text Search* feature via the "Features" section of your Azure Cosmos DB resource in the Azure portal. 
+
+```sql
+SELECT TOP 10 *
+FROM c
+WHERE FullTextContains(c.text, {"term": "red", "distance":1}, {"term": "bicycle", "distance":2})
+```
 
 ## Related content
 

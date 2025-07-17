@@ -1,16 +1,16 @@
 ---
-  title: $indexOfArray (array expression operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $indexOfArray (array expression) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $indexOfArray operator is used to search for an element in an array and return the index of the first occurrence of the element. 
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
+  ms.topic: language-reference
   ms.date: 09/11/2024
 ---
 
-# $indexOfArray (array expression operator)
+# $indexOfArray (array expression)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

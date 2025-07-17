@@ -5,7 +5,7 @@ author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 04/10/2024
 ---
 

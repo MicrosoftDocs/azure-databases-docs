@@ -11,7 +11,7 @@ metadata:
   ms.author: mjbrown
   ms.service: azure-cosmos-db
   ms.topic: landing-page
-  ms.date: 10/09/2024
+  ms.date: 06/11/2025
 highlightedContent:
   items:
     - title: Introduction to Azure Cosmos DB
@@ -175,7 +175,5 @@ additionalContent:
               url: cassandra/migrate-data-striim.md
             - text: Oracle Database to Azure Cosmos DB API for Cassandra using Arcion
               url: cassandra/oracle-migrate-cosmos-db-arcion.md
-            - text: Apache Cassandra to Azure Cosmos DB using Arcion
-              url: cassandra/migrate-data-arcion.md
             - text: Migrate hundreds of terabytes of data
               url: migrate.md

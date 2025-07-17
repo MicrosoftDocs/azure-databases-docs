@@ -9,7 +9,10 @@ ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
 ms.date: 11/04/2024
-ms.custom: query-reference, ingite-2024
+ms.custom:
+  - query-reference
+  - ingite-2024
+  - build-2025
 ---
 
 # FullTextContainsAll (NoSQL query)
@@ -38,12 +41,12 @@ Returns a boolean expression.
 
 ## Examples
 
-This example finds all documents that contain both "keyword1" and "keyword2" in the path `c.text`, projects the path, and returns only the TOP 10.
+This example finds all documents that contain both "search phrase" and "keyword" in the path `c.text`, projects the path, and returns only the TOP 10.
 
 ```nosql
 SELECT TOP 10 c.text
 FROM c
-WHERE FullTextContainsAll(c.text, "keyword1", "keyword2")
+WHERE FullTextContainsAll(c.text, "search phrase", "keyword")
 ```
 
 This example returns all documents that contain  "keyword1", "keyword2", and "keyword3" in the path `c.text`.
@@ -56,7 +59,7 @@ WHERE FullTextContainsAll(c.text, "keyword1", "keyword2", "keyword3")
 
 ## Remarks
 
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md)
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search feature](../../gen-ai/full-text-search.md)
 - This function benefits from a [Full Text Index](../../index-policy.md)
 
 ## Related content

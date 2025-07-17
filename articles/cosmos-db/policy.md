@@ -4,7 +4,7 @@ description: Learn how to use Azure Policy to implement governance and controls 
 author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/23/2020
 ---
 

@@ -9,8 +9,9 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
 ms.custom:
-  - mvc
-  - devx-track-azurecli
+- mvc
+- devx-track-azurecli
+- sfi-ropc-blocked
 ms.devlang: azurecli
 ---
 

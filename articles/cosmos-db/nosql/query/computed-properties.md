@@ -8,8 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
-ms.date: 08/22/2024
-ms.custom: query-reference
+ms.date: 06/11/2025
+ms.custom: query-reference, sfi-image-nochange
 ---
 
 # Computed properties in Azure Cosmos DB for NoSQL

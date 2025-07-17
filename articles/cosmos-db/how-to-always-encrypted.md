@@ -1,11 +1,14 @@
 ---
-title: Use client-side encryption with Always Encrypted for Azure Cosmos DB
+title: Use client-side encryption with Always Encrypted
+titleSuffix: Azure Cosmos DB
 description: Learn how to use client-side encryption with Always Encrypted for Azure Cosmos DB
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 04/04/2022
+ms.date: 05/08/2025
 author: iriaosara
 ms.author: iriaosara
+ms.custom:
+  - build-2025
 ---
 
 # Use client-side encryption with Always Encrypted for Azure Cosmos DB
@@ -140,6 +143,9 @@ CosmosEncryptionAsyncClient cosmosEncryptionAsyncClient =
 # [NodeJS](#tab/nodejs)
 > [!NOTE]
 > Unlike .NET and Java SDK, there's no separate package for Encryption in JS. Same package can be used to encrypted and non-encrypted operations.
+
+> [!IMPORTANT]
+> These code samples use v3 of the JavaScript SDK.
 
 To use Always Encrypted in JS SDK, an instance of `EncryptionKeyResolver` must be passed in `ClientEncryptionOptions` during Azure Cosmos DB SDK instance initialization. This class is used to interact with the key store hosting your CMKs.
 
@@ -300,21 +306,23 @@ database.createEncryptionContainerAsync(containerProperties);
 # [NodeJS](#tab/nodejs)
 
 ```ts
-const path1 = new ClientEncryptionIncludedPath(
-   "/property1",
-   "my-key",
-   EncryptionType.DETERMINISTIC,
-   EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
-);
-const path2 = new ClientEncryptionIncludedPath(
-   "/property2",
-   "my-key",
-   EncryptionType.DETERMINISTIC,
-   EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
-);
+const path1 : ClientEncryptionIncludedPath = {
+   path: "/property1",
+   clientEncryptionKeyId: "my-key",
+   encryptionType: EncryptionType.DETERMINISTIC,
+   encryptionAlgorithm: EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
+};
+const path2 : ClientEncryptionIncludedPath = {
+   path: "/property2",
+   clientEncryptionKeyId: "my-key",
+   encryptionType: EncryptionType.RANDOMIZED,
+   encryptionAlgorithm: EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
+};
 const paths = [path1, path2];
-const clientEncryptionPolicy = new ClientEncryptionPolicy(paths, 2);
-
+const clientEncryptionPolicy : ClientEncryptionPolicy = {
+   includedPaths: paths,
+   policyFormatVersion: 2
+};
 const containerDefinition = {
     id: "my-container",
     partitionKey: {
@@ -322,7 +330,6 @@ const containerDefinition = {
     },
     clientEncryptionPolicy: clientEncryptionPolicy,
 };
-
 await database.containers.createIfNotExists(containerDefinition);
 ```
 ---
@@ -382,10 +389,15 @@ sqlQuerySpecWithEncryption.addEncryptionParameter(
 # [NodeJS](#tab/nodejs)
 
 ```ts
-const queryBuilder = new EncryptionQueryBuilder("SELECT * FROM c where c.property1 = @Property1");
-queryBuilder.addIntegerParameter(@Property1, 1234, "/property1");
+const queryBuilder = new EncryptionQueryBuilder("SELECT * FROM c where c.property1 = @Property1 and c.property2 = @Property2");
+const numberParam : CosmosEncryptedNumber = {
+   value: 1234,
+   numberType: CosmosEncryptedNumberType.Integer
+}
+queryBuilder.addParameter(@Property1, numberParam, "/property1");
+queryBuilder.addParameter(@Property2, "someStringValue", "/property2");
 
-const iterator = await container.items.getEncryptionQueryIterator(queryBuilder);
+const queryIterator = await container.items.getEncryptionQueryIterator(queryBuilder);
 ```
 ---
 
@@ -425,11 +437,12 @@ database.rewrapClientEncryptionKey(
 # [NodeJS](#tab/nodejs)
 
 ```ts
-const newMetadata = new EncryptionKeyWrapMetadata(
-    EncryptionKeyResolverName.AzureKeyVault, 
-    "akvKey", 
-    "https://<my-key-vault>.vault.azure.net/keys/<new-key>/<version>",
-    KeyEncryptionAlgorithm.RSA_OAEP);
+const newMetadata : EncryptionKeyWrapMetadata = {
+    type: EncryptionKeyResolverName.AzureKeyVault, 
+    name: "akvKey", 
+    value: "https://<my-key-vault>.vault.azure.net/keys/<new-key>/<version>",
+    algorithm: KeyEncryptionAlgorithm.RSA_OAEP
+};
 
 await database.rewrapClientEncryptionKey(
     "my-key",

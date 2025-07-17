@@ -7,7 +7,7 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 06/11/2025
 ms.custom: query-reference, devx-track-dotnet, build-2024, ignite-2024
 ms.collection:
   - ce-skilling-ai-copilot

@@ -6,8 +6,9 @@ ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
-  - build-2024
-  - devx-track-azurecli
+- build-2024
+- devx-track-azurecli
+- sfi-image-nochange
 ---
 
 You can migrate using Azure CLI.

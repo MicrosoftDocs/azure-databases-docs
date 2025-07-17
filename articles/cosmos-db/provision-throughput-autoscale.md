@@ -4,7 +4,7 @@ description: Learn about the benefits, use cases, and how to provision Azure Cos
 author: kirillg
 ms.author: kirillg
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/25/2024
 ---
 

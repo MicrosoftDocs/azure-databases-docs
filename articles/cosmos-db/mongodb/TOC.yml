@@ -381,6 +381,8 @@
       href: ../vector-search.md#retrieval-augmented-generation
     - name: Vercel
       href: ../vercel-integration.md
+  - name: Migrate to Azure Cosmos DB for MongoDB (vCore)
+    href: how-to-migrate-vcore.md
   - name: Migrate data to Azure Cosmos DB
     items:
     - name: Desktop data migration tool
@@ -567,7 +569,7 @@
   - name: Microsoft Questions and Answers
     href: /answers/topics/azure-cosmos-db.html
   - name: Videos
-    href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
+    href: https://azure.microsoft.com/resources/videos/?services=cosmos-db
   - name: Azure Roadmap
     href: https://azure.microsoft.com/updates/?query=Cosmos%20DB
   - name: Try Azure Cosmos DB for free

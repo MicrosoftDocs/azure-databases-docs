@@ -1,13 +1,13 @@
 ---
 title: Read replicas
 description: This article describes the read replica feature in Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 05/02/2024
+ms.date: 07/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2023
 ---
@@ -87,6 +87,21 @@ Certain functionalities are restricted to primary servers and can't be set up on
 
 If your source Azure Database for PostgreSQL flexible server instance is encrypted with customer-managed keys, see the [documentation](concepts-data-encryption.md) for other considerations.
 
+## Create cascading read replicas (Preview)
+
+Cascading read replicas can help distribute read workloads, reducing the load on the primary server. Deploying read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies. You can add cascading read replicas to Azure Database for PostgreSQL flexible server instance, this feature is supported in public preview capacity. This allows you to create new read replicas on top of an existing read replica, with the existing read replica acting as the source for the next level. 
+
+The first-level read replica asynchronously replicates data from the primary server. A second-level read replica can then be created using the first-level replica as its source, forming a two-tier replication hierarchy. This architecture increases scalability, supporting up to 30 read replica servers with the primary server allowing up to 5 read replicas, and each of those replicas supporting 5 additional replicas. To add a cascading read replica to Azure Database for PostgreSQL flexible server instance, select the existing read replica (created from the primary server), and navigate to the 'Replication' tab and click 'Create replica'.
+
+For example, your primary server can have up to 5 read replicas (level 1). One of these, say read-replica-1, can act as the source for another replica read-replica-2 which becomes part of (level 2).
+
+#### Preview considerations:
+1. Up to 5 read replicas can be created per source read replica, with support for 2 levels of replication.
+2. Promote operation is not supported for intermediate read replicas with cascading read replicas.
+3. Virtual endpoints are not supported for cascading replicas.
+4. Cascading read replicas are supported on intermediate replicas with PostgreSQL version 14 and above.
+5. This feature is supported in: West US, Spain Central, Australia East, South Central US, UK West, Poland Central, Italy North, West US 2, East US 2, East Asia and Canada Central.
+   
 ## Connect to a replica
 
 When you create a replica, it does inherit the firewall rules or virtual network service endpoint of the primary server. These rules might be changed during replica creation and at any later point in time.

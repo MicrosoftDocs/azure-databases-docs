@@ -9,9 +9,10 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
 ms.custom:
-  - mvc
-  - build-2023
-  - build-2023-dataai
+- mvc
+- build-2023
+- build-2023-dataai
+- sfi-image-nochange
 ms.devlang: php
 ---
 

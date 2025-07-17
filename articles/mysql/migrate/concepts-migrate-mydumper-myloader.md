@@ -6,7 +6,8 @@ ms.author: sunaray
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
+ms.custom: sfi-ropc-nochange
 ---
 
 # Migrate large databases to Azure Database for MySQL using mydumper/myloader

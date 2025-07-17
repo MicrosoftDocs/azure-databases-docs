@@ -9,10 +9,11 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - devx-track-js
-  - mode-api
-  - linux-related-content
+- mvc
+- devx-track-js
+- mode-api
+- linux-related-content
+- sfi-image-nochange
 ms.devlang: javascript
 ---
 

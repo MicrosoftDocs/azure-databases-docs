@@ -4,8 +4,9 @@ description: Integrate web applications using the Vercel platform with Azure Cos
 author: sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2023
+ms.custom: sfi-image-nochange, sfi-ropc-blocked
 ---
 
 # Vercel Integration with Azure Cosmos DB

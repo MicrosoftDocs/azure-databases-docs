@@ -7,7 +7,9 @@ ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 4/11/2025
+ms.date: 4/29/2025
+ms.custom:
+  - build-2025
 ---
 
 # How to configure Azure Cosmos DB for NoSQL global secondary indexes (preview)
@@ -15,9 +17,9 @@ ms.date: 4/11/2025
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
-> Azure Cosmos DB for NoSQL global secondary indexes are currently in preview. You can enable this feature by using the Azure portal and the feature can't be disabled. This preview is provided without a service-level agreement. At this time, we don't recommend that you use global secondary indexes for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Cosmos DB for NoSQL global secondary indexes are currently in preview. This preview is provided without a service-level agreement. At this time, we don't recommend that you use global secondary indexes for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Global secondary indexes provide a powerful way to optimize query performance and simplify application logic by storing your data with a different partition key and/ or data model. This article describes how to create global secondary indexes and how to use them to handle cross-partition queries efficiently.
+Global secondary indexes provide a powerful way to optimize query performance and simplify application logic by storing your data with a different partition key and/ or data model. This article describes how to create global secondary indexes and how to use them to avoid cross-partition queries.
 
 ## Prerequisites
 
@@ -28,7 +30,7 @@ Global secondary indexes provide a powerful way to optimize query performance an
 
 ## Enable global secondary indexes
 
-The global secondary index feature needs to be enabled for your Azure Cosmos DB account before provisioning a builder or creating index containers.
+Enable the global secondary index feature for your Azure Cosmos DB account. [Continuous backups](../continuous-backup-restore-introduction.md) must be turned on for the account before enabling global secondary indexes.
 
 ### [Azure portal](#tab/azure-portal)
 
@@ -98,92 +100,15 @@ Use the Azure CLI to enable the global secondary index feature either by using a
 
 ---
 
-> [!WARNING]
-> The global secondary index feature can't be disabled on an account once enabled, however the global secondary builder and index containers themselves can be deprovisioned.
-
-## Create a global secondary index builder
-
-After the global secondary index feature is enabled for your account, you'll see a new page in the **Settings** section of the Azure portal for **Global Secondary Index Builder**. You must provision a builder before creating global secondary index containers in your account. The builder is responsible for automatically hydrating data in the index containers and keeping them in sync with source containers. Learn more about options for [provisioning the global secondary index builder](./global-secondary-indexes.md#provisioning-the-global-secondary-index-builder).
-
-### [Azure portal](#tab/azure-portal)
-
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-
-1. Go to your Azure Cosmos DB for NoSQL account.
-
-1. In the resource menu, select **Global Secondary Index Builder**.
-
-1. On the **Global Secondary Index Builder** page, configure the SKU and the number of instances for the builder.
-
-   > [!NOTE]
-   > This resource menu option and page appear only when the global secondary index feature is enabled for the account.
-
-1. Select **Save**.
-
-### [Azure CLI](#tab/azure-cli)
-
-1. Define the variables for the resource group and account name of your existing Azure Cosmos DB for NoSQL account.
-
-    ```azurecli
-    # Variable for resource group name
-    $resourceGroupName="<resource-group-name>"
-    
-    # Variable for account name
-    $accountName="<account-name>"
-    
-    # Variable for Azure subscription
-    $subscriptionId="<subscription-id>"
-    ```
-
-1. Create a new JSON file named *builder.json* by using the builder manifest. Update the `instanceCount` and `instanceSize` as needed.
-
-    ```json
-    {
-      "properties": {
-        "serviceType": "materializedViewsBuilder",
-        "instanceCount": 1,
-        "instanceSize": "Cosmos.D4s"
-      }
-    }
-    ```
-
-    > [!NOTE]
-    > The service type is `materializedViewsBuilder`, which is the former feature name. Creating this resource will provision a global secondary index builder. 
-
-1. Get the identifier of the account and store it in a shell variable named `$accountId`.
-
-    ```azurecli
-    $accountId="/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/$accountName"
-    ```
-
-1. Enable the global secondary index builder for the account using the REST API and `az rest` with an HTTP `PUT` verb:
-
-    ```azurecli
-    az rest \
-        --method PUT \
-        --uri "https://management.azure.com$accountId/services/materializedViewsBuilder/?api-version=2022-11-15-preview" \
-        --body @builder.json
-    ```
-
-1. Wait for a couple of minutes, and then check the status by using `az rest` again with the HTTP `GET` verb. The status in the output should now be `Running`.
-
-    ```azurecli
-    az rest \
-        --method GET \
-        --uri "https://management.azure.com$accountId/services/materializedViewsBuilder/?api-version=2022-11-15-preview"
-    ```
-
----
-
 ## Create a global secondary index
 
-After the global secondary index feature is enabled and the builder is provisioned, you can create index containers.
+After the global secondary index feature is enabled, you can create global secondary indexes.
 
 ### Create a source container
 
-Global secondary indexes store a copy of data from the source container. Before creating a global secondary index, create the source container that your index container will be built from. If you already have a source container in your Azure Cosmos DB account, you can skip these steps.
+Global secondary indexes store a copy of data from the source container. Before creating a global secondary index, create the source container that your index container will be built from. If you already have a container in your Azure Cosmos DB account that you would like to use as the source, you can skip these steps.
 
-1. Use the Azure portal, the Azure SDKs, the Azure CLI, or the REST API to create a source container that has `/customerId` as the partition key path. Name this source container `gsi-src`.
+1. Use the Azure portal, the Azure SDKs, the Azure CLI, or the REST API to create a source container named `gsi-src` with `/customerId` as the partition key path.
 
    > [!NOTE]
    > The `/customerId` field is used only as an example in this article. For your own containers, select a partition key that works for your solution.
@@ -199,7 +124,7 @@ Global secondary indexes store a copy of data from the source container. Before 
     }
     ```
 
-   > [!NOTE]
+   > [!TIP]
    > In this example, you populate the source container with sample data before adding an index container. You can also create a global secondary index from an empty source container.
 
 ### Create a global secondary index container
@@ -220,15 +145,15 @@ Once the source container is created, you can create a global secondary index co
 
     :::image type="content" source="./media/how-to-configure-global-secondary-indexes/configure-global-secondary-indexes.png" alt-text="Screenshot of how to configure a Global Secondary Index in the Data Explorer page of the Azure portal." :::
 
-1. Configure any other container settings you'd like and select **OK** to create the global secondary index container.
+1. Global secondary index containers must use autoscale throughput. Configure any other container settings you'd like and select **OK** to create the global secondary index container.
 
-1. After the global secondary index container is created, the builder automatically syncs data from the source container. Try executing create, update, and delete operations in the source container. You'll see the same changes propagated to items in the index container.
+1. After the global secondary index container is created, data is automatically synced from the source container. Try executing create, update, and delete operations in the source container. You'll see the same changes propagated to items in the global secondary index.
 
 ### [Azure CLI](#tab/azure-cli)
 
 1. Create a global secondary index named `gsi-target` with a partition key path that is different from the source container. For this example, specify `/emailAddress` as the partition key path for the `gsi-target` container.
 
-    1. Create a definition manifest for a global secondary index and save it in a JSON file named *gsi-definition.json*:
+    1. Create a definition manifest for a global secondary index and save it in a JSON file named *gsi-definition.json*. Global secondary index containers must use autoscale throughput. At this stage, you can also define any other relevant container properties such as an indexing policy.
 
         ```json
         {
@@ -257,9 +182,9 @@ Once the source container is created, you can create a global secondary index co
         ```
 
    > [!IMPORTANT]
-   > In the template, the property for defining global secondary indexes is `materializedViewDefinition`, which is the former name for this feature.
+   > Notice that the partition key path is set as `/emailAddress`.
    >
-   > Notice that the partition key path is set as `/emailAddress`. The `sourceCollectionId` defines the source container and the `definition` contains a query to determine the data model of the index container. The global secondary index source container and definition query can't be changed once created. Learn more about [defining global secondary indexes](global-secondary-indexes.md#defining-global-secondary-indexes) and the query constraints.
+   > The property for defining global secondary indexes is `materializedViewDefinition`, which is the former name for this feature. The `sourceCollectionId` defines the source container and the `definition` contains a query to determine the data model of the index container. The global secondary index source container and definition query can't be changed once created. Learn more about [defining global secondary indexes](global-secondary-indexes.md#defining-global-secondary-indexes) and the query constraints.
 
 1. Next, make a REST API call to create the global secondary index as defined in the *gsi-definition.json* file. Use the Azure CLI to make the REST API call.
 
@@ -310,13 +235,13 @@ Once the source container is created, you can create a global secondary index co
             --query "{mvCreateStatus: properties.Status}"
         ```
 
-1. After the global secondary index is created, the builder automatically syncs data from the source container. Try executing create, update, and delete operations in the source container. You'll see the same changes propagated to items in the index container.
+1. After the global secondary index is created, data is automatically synced from the source container. Try executing create, update, and delete operations in the source container. You'll see the same changes propagated to items in the global secondary index.
 
 ---
 
 ## Query data from global secondary indexes
 
-In this example, we have a source container partitioned on `customerId` and a global secondary index container partitioned on `emailAddress`. Without the index container, queries that only include the `emailAddress` would be cross-partition, but now they can use be executed against the global secondary index instead to increase efficiency. 
+In this example, we have a source container partitioned on `customerId` and a global secondary index container partitioned on `emailAddress`. Without the index container, queries that only include the `emailAddress` would be cross-partition, but now they can be run against the global secondary index instead to increase efficiency.
 
 Querying data from global secondary indexes is similar to querying data from any other container. You can use the Azure portal, Azure SDKs, or REST API to query data in global secondary indexes.
 
@@ -363,6 +288,27 @@ container.query_items(
     query=query
 )
 ```
+
+### [Go](#tab/go)
+
+```go
+gsiContainer, err := client.NewContainer("gsi-db", "gsi-target")
+
+pager := gsiContainer.NewQueryItemsPager("select * from c where c.state = @state", azcosmos.NewPartitionKey(), &azcosmos.QueryOptions{
+	QueryParameters: []azcosmos.QueryParameter{
+		{
+			Name:  "@state",
+			Value: "Alaska",
+		},
+	},
+})
+
+if pager.More() {
+  // Iterate through the results
+  // page, _ := pager.NextPage(context.Background())
+}
+```
+
 
 ---
 

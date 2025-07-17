@@ -15,14 +15,14 @@ ms.custom: devx-track-js, devx-track-csharp
 # Manage conflict resolution policies in Azure Cosmos DB
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-With multi-region writes, when multiple clients write to the same item, conflicts may occur. When a conflict occurs, you can resolve the conflict by using different conflict resolution policies. This article describes how to manage conflict resolution policies.
+With multi-region writes, when multiple clients write to the same item, conflicts might occur. When a conflict occurs, you can resolve the conflict by using different conflict resolution policies. This article describes how to manage conflict resolution policies.
 
 > [!TIP]
-> Conflict resolution policy can only be specified at container creation time and cannot be modified after container creation.
+> Conflict resolution policy can only be specified at container creation time and can't be modified after container creation.
 
 ## Create a last-writer-wins conflict resolution policy
 
-These samples show how to set up a container with a last-writer-wins conflict resolution policy. The default path for last-writer-wins is the timestamp field or the `_ts` property. For API for NoSQL, this may also be set to a user-defined path with a numeric type. In a conflict, the highest value wins. If the path isn't set or it's invalid, it defaults to `_ts`. Conflicts resolved with this policy do not show up in the conflict feed. This policy can be used by all APIs.
+These samples show how to set up a container with a last-writer-wins conflict resolution policy. The default path for last-writer-wins is the timestamp field or the `_ts` property. For API for NoSQL, this path might also be set to a user-defined path with a numeric type. In a conflict, the highest value wins. If the path isn't set or it's invalid, it defaults to `_ts`. Conflicts resolved with this policy don't show up in the conflict feed. All the APIs can use this policy.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -123,15 +123,33 @@ lww_container = database.create_container(id=lww_container_id, partition_key=Par
     conflict_resolution_policy=lww_conflict_resolution_policy)
 ```
 
+### <a id="create-custom-conflict-resolution-policy-lww-go"></a>Go SDK
+
+```go
+db, _ := c.NewDatabase("demo_db")
+
+_, err = db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+	ID: "demo_container",
+	PartitionKeyDefinition: azcosmos.PartitionKeyDefinition{
+		Paths: []string{"/id"},
+		Kind:  azcosmos.PartitionKeyKindHash,
+	},
+	ConflictResolutionPolicy: &azcosmos.ConflictResolutionPolicy{
+		Mode:           azcosmos.ConflictResolutionModeLastWriteWins,
+		ResolutionPath: "/myCustomId",
+	},
+}, nil)
+```
+
 ## Create a custom conflict resolution policy using a stored procedure
 
-These samples show how to set up a container with a custom conflict resolution policy. This policy uses the logic in a stored procedure to resolve the conflict. If a stored procedure is designated to resolve conflicts, conflicts won't show up in the conflict feed unless there's an error in the designated stored procedure.
+These samples show how to set up a container with a custom conflict resolution policy. This policy uses the logic in a stored procedure to resolve the conflict. If a stored procedure is designated to resolve conflicts, conflicts don't show up in the conflict feed unless there's an error in the designated stored procedure.
 
-After the policy is created with the container, you need to create the stored procedure. The .NET SDK sample below shows an example of this workflow. This policy is supported in the API for NoSQL  only.
+After the policy is created with the container, you need to create the stored procedure. The .NET SDK sample shows an example of this workflow. This policy is supported in the API for NoSQL  only.
 
 ### Sample custom conflict resolution stored procedure
 
-Custom conflict resolution stored procedures must be implemented using the function signature shown below. The function name does not need to match the name used when registering the stored procedure with the container but it does simplify naming. Here is a description of the parameters that must be implemented for this stored procedure.
+Custom conflict resolution stored procedures must be implemented using the function signature shown below. The function name doesn't need to match the name used when registering the stored procedure with the container but it does simplify naming. Here's a description of the parameters that must be implemented for this stored procedure.
 
 - **incomingItem**: The item being inserted or updated in the commit that is generating the conflicts. Is null for delete operations.
 - **existingItem**: The currently committed item. This value is non-null in an update and null for an insert or deletes.
@@ -139,7 +157,7 @@ Custom conflict resolution stored procedures must be implemented using the funct
 - **conflictingItems**: Array of the committed version of all items in the container that are conflicting with incomingItem on ID or any other unique index properties.
 
 > [!IMPORTANT]
-> Just as with any stored procedure, a custom conflict resolution procedure can access any data with the same partition key and can perform any insert, update or delete operation to resolve conflicts.
+> Like any stored procedure, a custom conflict resolution procedure can access any data with the same partition key and can perform any insert, update or delete operation to resolve conflicts.
 
 This sample stored procedure resolves conflicts by selecting the lowest value from the `/myCustomId` path.
 
@@ -319,7 +337,7 @@ After your container is created, you must create the `resolver` stored procedure
 
 ## Create a custom conflict resolution policy
 
-These samples show how to set up a container with a custom conflict resolution policy. With this implementation, each conflict will show up in the conflict feed. It's up to you to handle the conflicts individually from the conflict feed.
+These samples show how to set up a container with a custom conflict resolution policy. With this implementation, each conflict shows up in the conflict feed. It's up to you to handle the conflicts individually from the conflict feed.
 
 ### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK
 
@@ -419,11 +437,11 @@ manual_container = database.create_container(id=manual_container_id, partition_k
 
 ## Read from conflict feed
 
-These samples show how to read from a container's conflict feed. Conflicts may show up in the conflict feed only for a couple of reasons:
+These samples show how to read from a container's conflict feed. Conflicts might show up in the conflict feed only for a couple of reasons:
 
-- The conflict was not resolved automatically
+- The conflict wasn't resolved automatically
 - The conflict caused an error with the designated stored procedure
-- The conflict resolution policy is set to **custom** and does not designate a stored procedure to handle conflicts
+- The conflict resolution policy is set to **custom** and doesn't designate a stored procedure to handle conflicts
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
 

@@ -1,16 +1,16 @@
 ---
-title: Linux-based emulator (preview)
+title: Linux-based emulator - vNext (preview)
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Use the Azure Cosmos DB Linux-based emulator to test your applications against API for NoSQL endpoints.
-author: TheovanKraay
-ms.author: thvankra
+author: Sajeetharan
+ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/07/2024
 # CustomerIntent: As a developer, I want to use the Linux-based Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---
 
-# Linux-based emulator (preview)
+# Linux-based emulator - vNext (preview)
 
 The next generation of the Azure Cosmos DB emulator is entirely Linux-based and is available as a Docker container. It supports running on a wide variety of processors and operating systems.
 
@@ -86,22 +86,22 @@ This emulator is in active development and preview. As a result, not all Azure C
 |---|---|
 | **Batch API** | ✅ Supported |
 | **Bulk API** | ✅ Supported |
-| **Change Feed** | ⚠️ Not yet implemented |
+| **Change Feed** | ✅ Supported |
 | **Create and read document with utf data** | ✅ Supported |
 | **Create collection** | ✅ Supported |
 | **Create collection twice conflict** | ✅ Supported |
 | **Create collection with custom index policy** | ⚠️ Not yet implemented |
-| **Create collection with ttl expiration** | ⚠️ Not yet implemented |
+| **Create collection with ttl expiration** | ✅ Supported  |
 | **Create database** | ✅ Supported |
 | **Create database twice conflict** | ✅ Supported |
 | **Create document** | ✅ Supported |
-| **Create partitioned collection** | ⚠️ Not yet implemented |
+| **Create partitioned collection** | ✅ Supported |
 | **Delete collection** | ✅ Supported |
 | **Delete database** | ✅ Supported |
 | **Delete document** | ✅ Supported |
 | **Get and change collection performance** | ⚠️ Not yet implemented |
 | **Insert large document** | ✅ Supported |
-| **Patch document** | ⚠️ Not yet implemented |
+| **Patch document** | ✅ Supported |
 | **Query partitioned collection in parallel** | ⚠️ Not yet implemented |
 | **Query with aggregates** | ⚠️ Not yet implemented |
 | **Query with and filter** | ⚠️ Not yet implemented |

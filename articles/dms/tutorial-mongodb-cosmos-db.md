@@ -9,9 +9,10 @@ ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
 ms.custom:
-  - ignite-2023
+- ignite-2023
+- sfi-image-nochange
 ---
 
 # Tutorial: Migrate MongoDB to Azure Cosmos DB for MongoDB RU offline using Azure Database Migration Service
@@ -19,7 +20,7 @@ ms.custom:
 [!INCLUDE [appliesto-mongodb-api](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
 > [!IMPORTANT]  
-> Migrations to Azure Cosmos DB for MongoDB vCore can be performed using the [MongoDB migration extension for Azure Data Studio](../cosmos-db/mongodb/vcore/migration-options.md#azure-data-studio-online). This extension leverages the Azure Database Migration Service in the background. Note that migrations to Azure Cosmos DB for MongoDB vCore cannot be done using the Database Migration Service on the Azure portal.
+>  You can migrate to Azure Cosmos DB for MongoDB vCore using [various available methods](../cosmos-db/mongodb/vcore/migration-options.md). Note that migrations to Azure Cosmos DB for MongoDB vCore cannot be done using the Database Migration Service on the Azure portal.
 
 This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](../cosmos-db/mongodb-pre-migration.md), migration, and [post-migration](../cosmos-db/mongodb-post-migration.md), as shown below.
 
@@ -59,7 +60,7 @@ To complete this tutorial, you need to:
   This configuration is necessary because Azure Database Migration Service lacks internet connectivity.
 
 - Ensure that your network security group (NSG) rules for your virtual network don't block the following communication ports: 53, 443, 445, 9354, and 10000-20000. For more information, see [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-- Open your Windows firewall to allow Azure Database Migration Service to access the source MongoDB server, which by default is TCP port 27017.
+- Open your Windows Firewall to allow Azure Database Migration Service to access the source MongoDB server, which by default is TCP port 27017.
 - When you're using a firewall appliance in front of your source database, you might need to add firewall rules to allow Azure Database Migration Service to access the source database for migration.
 
 ## Configure the Server Side Retry feature

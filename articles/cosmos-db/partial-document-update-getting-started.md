@@ -1,7 +1,7 @@
 ---
 title: Get started with partial document update
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Learn how to use the partial document update feature with the .NET, Java, and Node SDKs for Azure Cosmos DB for NoSQL.
+description: Learn how to use the partial document update feature in Azure Cosmos DB for NoSQL.
 author: AbhinavTrips
 ms.author: abtripathi
 ms.service: azure-cosmos-db
@@ -258,27 +258,6 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB JavaScri
         .patch(operations);
     ```
 
-- Use conditional patch syntax based on filter predicate:
-
-    ```javascript
-    const filter = 'FROM products p WHERE p.used = false'
-
-    const operations =
-    [
-        { op: 'replace', path: '/price', value: 100.00 }
-    ];
-    
-    const { resource: updated } = await container
-        .item(
-            'e379aea5-63f5-4623-9a9b-4cd9b33b91d5', 
-            'road-bikes'
-        )
-        .patch(
-            body = operations,
-            options = filter
-        );
-    ```
-
 ## [Python (Preview)](#tab/python)
 
 Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python SDK](nosql/sdk-python.md) is available from version *4.4.0b2*. You can download it from the [pip Registry](https://pypi.org/project/azure-cosmos/4.4.0b2/).
@@ -326,6 +305,55 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python S
     except exceptions.CosmosHttpResponseError as e:
         print('\nError occurred. {0}'.format(e.message))
     
+    ```
+
+## [Go](#tab/go)
+
+- Run a single patch operation:
+
+    ```go
+	pk := azcosmos.NewPartitionKeyString("road-bikes")
+	id := "e379aea5-63f5-4623-9a9b-4cd9b33b91d5"
+
+	patchOp := azcosmos.PatchOperations{}
+	patchOp.AppendReplace("/price", 100.00)
+
+	_, err := container.PatchItem(context.Background(), pk, id, patchOp, nil)
+    ```
+
+- Combine multiple patch operations:
+
+    ```go
+    pk := azcosmos.NewPartitionKeyString("road-bikes")
+	id := "e379aea5-63f5-4623-9a9b-4cd9b33b91d5"
+	
+    patchOp := azcosmos.PatchOperations{}
+	patchOp.AppendAdd("/color", "silver")
+	patchOp.AppendRemove("/used")
+	patchOp.AppendIncrement("/price", 50)
+
+	_, err := container.PatchItem(context.Background(), pk, id, patchOp, nil)
+    ```
+
+- Run patch operation as a part of a transaction:
+
+    ```go
+    patchOp := azcosmos.PatchOperations{}
+	patchOp.AppendAdd("/new", true)
+	patchOp.AppendRemove("/used")
+
+	batch := container.NewTransactionalBatch(pk)
+	batch.PatchItem("e379aea5-63f5-4623-9a9b-4cd9b33b91d5", patchOp, nil)
+	batch.PatchItem("892f609b-8885-44df-a9ed-cce6c0bd2b9e", patchOp, nil)
+
+	resp, err := container.ExecuteTransactionalBatch(context.Background(), batch, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if resp.Success {
+        // Handle success
+    }
     ```
 
 ---

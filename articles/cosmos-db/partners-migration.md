@@ -5,7 +5,7 @@ author: wmwxwa
 ms.author: wangwilliam
 ms.date: 07/20/2023
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: partner-tools
 ---
 
 # Azure Cosmos DB NoSQL migration and application development partners

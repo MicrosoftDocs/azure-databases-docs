@@ -9,11 +9,12 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - devcenter
-  - devx-track-azurecli
-  - mode-api
-  - devx-track-extended-java
+- mvc
+- devcenter
+- devx-track-azurecli
+- mode-api
+- devx-track-extended-java
+- sfi-ropc-nochange
 ms.devlang: java
 ---
 

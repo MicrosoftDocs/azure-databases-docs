@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/10/2025
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra-gremlin-table
+ms.custom: sfi-ropc-nochange
 # CustomerIntent: As a developer, I want to use the Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---
 
@@ -91,7 +92,7 @@ To get started, get the Linux-variant of the container image from the [Microsoft
 1. Pull the `mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator` Linux container image using the `mongodb` tag from the container registry to the local Docker host.
 
     ```bash
-    docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:mongodb
+    docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
     ```
 
 1. Check to make sure that the emulator image is available on your local Docker host.

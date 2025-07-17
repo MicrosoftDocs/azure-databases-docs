@@ -1,0 +1,33 @@
+### YamlMime:FAQ
+metadata:
+  title: Frequently Asked Questions - Fleets (Preview)
+  titleSuffix: Azure Cosmos DB for NoSQL
+  description: Get answers to frequently asked questions about Azure Cosmos DB fleets, fleetspaces, and fleetspace accounts.
+  author: deborahc
+  ms.author: dech
+  ms.service: azure-cosmos-db
+  ms.subservice: nosql
+  ms.topic: faq
+  ms.date: 05/07/2025
+  ai-usage: ai-assisted
+  appliesto:
+    - ✅ NoSQL
+  ms.custom: build-2025
+title: Frequently asked questions about Azure Cosmos DB fleets
+sections:
+  - name: General
+    questions:
+      - question: |
+          What is a fleet in Azure Cosmos DB?
+        answer: |
+          **Azure Cosmos DB fleets** is a new way to organize and manage multitenant workloads at scale. With fleets, you can model each of your B2B tenants as its own database account, ensuring strong performance and security isolation. At the same time, you can simplify management by sharing throughput (RU/s) and monitoring usage at the fleet level using two new capabilities: pools and fleet analytics.
+  - name: Fleet analytics
+    questions:
+      - question: |
+          How do I grant Azure Cosmos DB write access to my Microsoft Fabric workspace?
+        answer: |
+          After saving the destination, you must grant Azure Cosmos DB permission to write data to your Fabric workspace and/or your Azure Storage account. Failure to complete this step results in no data being sent to your destinations. For more information, see [enable fleet analytics](how-to-enable-fleet-analytics.md#enable-fleet-analytics).
+      - question: |
+          After I granted Azure Cosmos DB access to my Microsoft Fabric workspace, why do I not see any data in my workspace?
+        answer: |
+          Data could take up to **one hour** to start populating your storage location. If more than 24 hours pass without data appearing, submit a support ticket for further assistance.

@@ -4,7 +4,7 @@ description: This article provides technical details relating to global distribu
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/02/2020
 ---
 

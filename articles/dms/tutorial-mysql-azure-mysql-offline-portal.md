@@ -9,7 +9,8 @@ ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS

@@ -26,10 +26,10 @@
           href: quickstart-python.md
         - name: Use with a JavaScript app
           displayName: Quickstart, Node.js, JavaScript, Express, AZD, Azure Developer CLI
-          href: quickstart-nodejs.md?pivots=programming-language-ts
-        - name: Use with a TypeScript app
-          displayName: Quickstart, Node.js, JavaScript, Express, AZD, Azure Developer CLI
           href: quickstart-nodejs.md?pivots=programming-language-js
+        - name: Use with a TypeScript app
+          displayName: Quickstart, Node.js, TypeScript, Express, AZD, Azure Developer CLI
+          href: quickstart-nodejs.md?pivots=programming-language-ts
         - name: Use with a Java app
           displayName: Quickstart, Spring, Spring Data, AZD, Azure Developer CLI
           href: quickstart-java.md
@@ -64,16 +64,20 @@
           href: vector-search.md
         - name: Sharded DiskANN for focused search
           href: ../gen-ai/sharded-diskann.md
-    - name: Enable full-text search
-      href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Full text indexing and search
+      items:
+        - name: Full text search overview
+          href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Stopwords list
+          href: ../gen-ai/stopwords.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrate with AI tools
       href: ../gen-ai/integrations.md?context=/azure/cosmos-db/nosql/context/context
     - name: Build a RAG chatbot
       href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
-    - name: Ingest and vectorize document files
-      href: ../gen-ai/document-ingestion.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Index documents for search
+      href: ../gen-ai/document-indexer.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create a knowledge graph
       href: ../gen-ai/cosmos-ai-graph.md?context=/azure/cosmos-db/nosql/context/context
     - name: Author AI agents
@@ -544,6 +548,8 @@
               href: how-to-migrate-from-bulk-executor-library.md
             - name: Bulk executor - Java library
               href: bulk-executor-java.md
+            - name: Bulk executor - JavaScript library
+              href: bulk-executor-nodejs.md
             - name: Migrate from bulk executor to Java SDK
               href: how-to-migrate-from-bulk-executor-library-java.md
         - name: Migrate to newer SDKs
@@ -659,6 +665,8 @@
       href: query/toc.yml
 - name: Integrate with Azure services
   items:
+    - name: Index documents for search
+      href: ../gen-ai/document-indexer.md
     - name: Integrate with Azure Kubernetes Service and Spring Boot
       href: tutorial-springboot-azure-kubernetes-service.md
     - name: Deploy app on Azure Kubernetes Service (AKS) cluster using Bicep
@@ -691,93 +699,25 @@
       href: odbc-driver.md
     - name: Vercel
       href: ../vercel-integration.md?context=/azure/cosmos-db/nosql/context/context
-    - name: Analytics and BI
+- name: Orchestrate multitenant solutions
+  items:
+    - name: Fleets
+      expanded: true
       items:
-        - name: Analytics and BI overview
-          href: ../analytics-and-business-intelligence-overview.md?context=/azure/cosmos-db/nosql/context/context
-        - name: Analytics and BI use cases
-          href: ../analytics-and-business-intelligence-use-cases.md?context=/azure/cosmos-db/nosql/context/context
-        - name: Mirroring in Microsoft Fabric
-          items:
-            - name: Overview
-              href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
-            - name: FAQ
-              href: /fabric/database/mirrored-database/azure-cosmos-db-faq?context=/azure/cosmos-db/context/context
-            - name: Limitations
-              href: /fabric/database/mirrored-database/azure-cosmos-db-limitations?context=/azure/cosmos-db/context/context
-            - name: Troubleshoot
-              href: /fabric/database/mirrored-database/azure-cosmos-db-troubleshooting?context=/azure/cosmos-db/context/context
-        - name: Azure Synapse Link
-          items:
-            - name: Azure Synapse Link for Azure Cosmos DB
-              href: ../synapse-link.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Azure Synapse Link supported features
-              href: /azure/synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support?context=/azure/cosmos-db/nosql/context/context
-            - name: Custom partitioning - Overview
-              href: ../custom-partitioning-analytical-store.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Azure Synapse Link FAQ
-              href: ../synapse-link-frequently-asked-questions.yml?context=/azure/cosmos-db/nosql/context/context
-            - name: Analytical store - overview
-              href: ../analytical-store-introduction.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Change data capture (CDC)
-              href: ../analytical-store-change-data-capture.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Time travel (preview)
-              href: ../synapse-link-time-travel.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Mirroring in Microsoft Fabric
-              items:
-                - name: Overview
-                  href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
-                - name: Get started with mirrored data
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context
-                - name: Join mirrored data
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-join-multiple?context=/azure/cosmos-db/context/context
-                - name: Query nested data
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-query-nested?context=/azure/cosmos-db/context/context
-                - name: Access data using Lakehouse and notebooks
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-lakehouse-notebooks?context=/azure/cosmos-db/context/context
-            - name: Azure Synapse Link
-              items:
-                - name: Configure Azure Synapse Link
-                  href: ../configure-synapse-link.md?context=/azure/cosmos-db/nosql/context/context
-                - name: Connect to Azure Synapse Link
-                  href: /azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db?context=/azure/cosmos-db/nosql/context/context
-                - name: Azure Synapse Link and integrated Power BI
-                  href: ../integrated-power-bi-synapse-link.md?context=/azure/cosmos-db/nosql/context/context
-                - name: Analytical store and private endpoints
-                  href: ../analytical-store-private-endpoints.md?context=/azure/cosmos-db/nosql/context/context
-                - name: Query with Azure Synapse Spark 3
-                  href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3?context=/azure/cosmos-db/nosql/context/context
-                - name: Query with Azure Synapse Spark 2
-                  href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark?context=/azure/cosmos-db/nosql/context/context
-                - name: Query with serverless SQL pool
-                  href: /azure/synapse-analytics/sql/query-cosmos-db-analytical-store?context=/azure/cosmos-db/nosql/context/context
-                - name: Configure custom partitioning
-                  href: ../configure-custom-partitioning.md?context=/azure/cosmos-db/nosql/context/context
-                - name: Get started with change data capture
-                  href: ../get-started-change-data-capture.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Power BI
-              items:
-                - name: Use Power BI
-                  href: powerbi-visualize.md
-                - name: Use Power BI with Azure Synapse Link
-                  href: ../synapse-link-power-bi.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Use Power BI
-              href: powerbi-visualize.md
-            - name: Use Power BI with Azure Synapse Link
-              href: ../synapse-link-power-bi.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Use Qlik Sense
-              href: ../visualize-qlik-sense.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Reverse extract, transform, & load (ETL)
-              href: reverse-extract-transform-load.md
-            - name: Use Databricks for reverse ETL
-              displayName: Python, Scala, Spark, Databricks, Azure Cosmos DB
-              href: tutorial-reverse-extract-transform-load.md
-            - name: Connect using Spark
-              displayName: Python, Scala, Spark, Java, Databricks
-              href: tutorial-spark-connector.md
-            - name: Kusto Query Language (KQL) transformations
-              displayName: KQL, workspace, data
-              href: ../tutorial-log-transformation.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Fleets overview
+          href: fleet.md
+        - name: Create a fleet
+          href: how-to-create-fleet.md
+        - name: Fleet pools
+          href: fleet-pools.md
+        - name: Fleet analytics
+          href: fleet-analytics.md
+        - name: Enable fleet analytics
+          href: how-to-enable-fleet-analytics.md
+        - name: Fleet analytics schema reference
+          href: fleet-analytics-schema-reference.md
+        - name: Frequently asked questions
+          href: fleet-faq.yml
 - name: Migrate data
   items:
     - name: Desktop data migration tool
@@ -840,6 +780,8 @@
           href: /azure/operational-excellence/relocation-cosmos-db?context=/azure/cosmos-db/nosql/context/context
         - name: Prevent changes or deletion
           href: ../resource-locks.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Enable Per Partition Automatic Failover
+          href: ../how-to-configure-per-partition-automatic-failover.md
     - name: Back up and restore
       items:
         - name: Back up and restore introduction
@@ -914,6 +856,8 @@
           items:
             - name: Monitor with diagnostic logs
               href: ../monitor-resource-logs.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Monitor with aggregated diagnostic logs
+              href: ../monitor-aggregated-logs.md?context=/azure/cosmos-db/nosql/context/context
             - name: Troubleshoot issues using basic queries
               href: ../monitor-logs-basic-queries.md?context=/azure/cosmos-db/nosql/context/context
             - name: Audit control plane logs
@@ -950,6 +894,95 @@
       href: ../optimize-costs.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Network bandwidth
       href: ../network-bandwidth.md?context=/azure/cosmos-db/nosql/context/context
+- name: Analyze and gain insights
+  items:
+    - name: Analytics and BI overview
+      href: ../analytics-and-business-intelligence-overview.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Analytics and BI use cases
+      href: ../analytics-and-business-intelligence-use-cases.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Cosmos DB in Microsoft Fabric
+      href: /fabric/database/cosmos-db
+    - name: Mirroring in Microsoft Fabric
+      items:
+        - name: Overview
+          href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
+        - name: FAQ
+          href: /fabric/database/mirrored-database/azure-cosmos-db-faq?context=/azure/cosmos-db/context/context
+        - name: Limitations
+          href: /fabric/database/mirrored-database/azure-cosmos-db-limitations?context=/azure/cosmos-db/context/context
+        - name: Troubleshoot
+          href: /fabric/database/mirrored-database/azure-cosmos-db-troubleshooting?context=/azure/cosmos-db/context/context
+    - name: Azure Synapse Link
+      items:
+        - name: Azure Synapse Link for Azure Cosmos DB
+          href: ../synapse-link.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Azure Synapse Link supported features
+          href: /azure/synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support?context=/azure/cosmos-db/nosql/context/context
+        - name: Custom partitioning - Overview
+          href: ../custom-partitioning-analytical-store.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Azure Synapse Link FAQ
+          href: ../synapse-link-frequently-asked-questions.yml?context=/azure/cosmos-db/nosql/context/context
+        - name: Analytical store - overview
+          href: ../analytical-store-introduction.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Change data capture (CDC)
+          href: ../analytical-store-change-data-capture.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Time travel (preview)
+          href: ../synapse-link-time-travel.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Mirroring in Microsoft Fabric
+          items:
+            - name: Overview
+              href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
+            - name: Get started with mirrored data
+              href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context
+            - name: Join mirrored data
+              href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-join-multiple?context=/azure/cosmos-db/context/context
+            - name: Query nested data
+              href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-query-nested?context=/azure/cosmos-db/context/context
+            - name: Access data using Lakehouse and notebooks
+              href: /fabric/database/mirrored-database/azure-cosmos-db-lakehouse-notebooks?context=/azure/cosmos-db/context/context
+        - name: Azure Synapse Link
+          items:
+            - name: Configure Azure Synapse Link
+              href: ../configure-synapse-link.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Connect to Azure Synapse Link
+              href: /azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db?context=/azure/cosmos-db/nosql/context/context
+            - name: Azure Synapse Link and integrated Power BI
+              href: ../integrated-power-bi-synapse-link.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Analytical store and private endpoints
+              href: ../analytical-store-private-endpoints.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Query with Azure Synapse Spark 3
+              href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3?context=/azure/cosmos-db/nosql/context/context
+            - name: Query with Azure Synapse Spark 2
+              href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark?context=/azure/cosmos-db/nosql/context/context
+            - name: Query with serverless SQL pool
+              href: /azure/synapse-analytics/sql/query-cosmos-db-analytical-store?context=/azure/cosmos-db/nosql/context/context
+            - name: Configure custom partitioning
+              href: ../configure-custom-partitioning.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Get started with change data capture
+              href: ../get-started-change-data-capture.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Power BI
+          items:
+            - name: Use Power BI
+              href: powerbi-visualize.md
+            - name: Use Power BI with Azure Synapse Link
+              href: ../synapse-link-power-bi.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Use Power BI
+          href: powerbi-visualize.md
+        - name: Use Power BI with Azure Synapse Link
+          href: ../synapse-link-power-bi.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Use Qlik Sense
+          href: ../visualize-qlik-sense.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Reverse extract, transform, & load (ETL)
+          href: reverse-extract-transform-load.md
+        - name: Use Databricks for reverse ETL
+          displayName: Python, Scala, Spark, Databricks, Azure Cosmos DB
+          href: tutorial-reverse-extract-transform-load.md
+        - name: Connect using Spark
+          displayName: Python, Scala, Spark, Java, Databricks
+          href: tutorial-spark-connector.md
+        - name: Kusto Query Language (KQL) transformations
+          displayName: KQL, workspace, data
+          href: ../tutorial-log-transformation.md?context=/azure/cosmos-db/nosql/context/context
 - name: Reference
   items:
     - name: .NET SDKs
@@ -1006,7 +1039,7 @@
           items:
             - name: Troubleshoot query performance
               href: troubleshoot-query-performance.md
-            - name: Troubleshoot service request time out
+            - name: Troubleshoot service request timeout
               href: troubleshoot-request-time-out.md
             - name: Troubleshoot request rate too large
               href: troubleshoot-request-rate-too-large.md
@@ -1028,7 +1061,7 @@
               href: troubleshoot-dotnet-sdk.md
             - name: Troubleshoot request header too large
               href: troubleshoot-dotnet-sdk-request-header-too-large.md
-            - name: Troubleshoot request time out
+            - name: Troubleshoot request timeout
               href: troubleshoot-dotnet-sdk-request-time-out.md
             - name: Troubleshoot slow requests
               href: troubleshoot-dotnet-sdk-slow-request.md
@@ -1038,7 +1071,7 @@
           items:
             - name: Troubleshoot Java SDK v4
               href: troubleshoot-java-sdk-v4.md
-            - name: Troubleshoot request time out
+            - name: Troubleshoot request timeout
               href: troubleshoot-java-sdk-request-time-out.md
             - name: Troubleshoot service unavailable
               href: troubleshoot-java-sdk-service-unavailable.md
@@ -1078,7 +1111,7 @@
     - name: Microsoft Questions and Answers
       href: /answers/topics/azure-cosmos-db.html
     - name: Videos
-      href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
+      href: https://azure.microsoft.com/resources/videos/?services=cosmos-db
     - name: Azure Roadmap
       href: https://azure.microsoft.com/updates/?query=Cosmos%20DB
     - name: Try Azure Cosmos DB for free

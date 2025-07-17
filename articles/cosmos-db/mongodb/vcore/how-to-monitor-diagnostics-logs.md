@@ -19,7 +19,7 @@ ms.date: 10/31/2023
 Azure's diagnostic logs are essential to capture Azure resource logs for an Azure Cosmos DB for MongoDB vCore account. These logs furnish detailed and frequent insights into the operations for resources with the account.
 
 > [!IMPORTANT]
-> This feature is not available with `M25`, `M30`, or free-tier SKUs.
+> This feature is not available with compute tier `M30` or lower tiers, or free-tier SKUs.
 
 ## Prerequisites
 

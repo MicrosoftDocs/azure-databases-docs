@@ -7,7 +7,7 @@ ms.reviewer: maghan, randolphwest
 ms.date: 03/27/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Server concepts for Azure Database for PostgreSQL flexible server

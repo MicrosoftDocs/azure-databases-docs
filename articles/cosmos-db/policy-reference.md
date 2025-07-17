@@ -21,7 +21,7 @@ the link in the **Version** column to view the source on the
 
 ## Azure Cosmos DB
 
-[!INCLUDE [azure-policy-reference-rp-cosmosdb](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.documentdb.md)]
+[!INCLUDE [azure-policy-reference-rp-cosmosdb](~/azure-policy-autogen-docs/includes/policy/reference/byrp/microsoft.documentdb.md)]
 
 ## Next steps
 

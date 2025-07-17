@@ -9,7 +9,8 @@ ms.date: 09/13/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 # Tutorial: Migrate RDS PostgreSQL to Azure Database for PostgreSQL online using DMS
 

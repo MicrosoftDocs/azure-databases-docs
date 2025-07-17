@@ -7,8 +7,11 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2024
-ms.topic: conceptual
-ms.date: 11/06/2024
+  - build-2025
+ms.topic: limits-and-quotas
+ms.date: 06/25/2025
+appliesto:
+  - ✅ MongoDB (vCore)
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
@@ -83,10 +86,10 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 
 [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for the higher values support.
 
-### Secondary Regions
+### Secondary regions
 - Maximum: 1 secondary region. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more regions.
 
-### Free Tier Limits
+### Free Tier limits
 The following limitations can be overridden by upgrading to a paid tier
 - Maximum storage: 32 GiB.
 - Backup / Restore not supported (available in M25+)
@@ -96,11 +99,18 @@ The following limitations can be overridden by upgrading to a paid tier
 - Microsoft Entra ID (formerly known as Azure Active Directory (AAD)) not supported
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
-- Transition from a paid tier account to a free tier accounts is not supported.
+- Transition from a paid tier account to a free tier accounts isn't supported.
 
-## Replication and HA (high availability) Limits
+### M10/M20/M25 limits
+M10, M20, and M25 have the following limitations:
+- Supports one shard only.
+- Designed for Dev/Test use cases; High Availability (HA) isn't supported.
+- Supported disk sizes include 32 GiB, 64 GiB, and 128 GiB.
+- Once scaled to an M30 SKU or higher, the cluster can't be scaled back down to M10, M20, and M25.
 
-### Cross-Region Replication
+## Replication and HA (high availability) limits
+
+### Cross-region replication
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
   - Storage and shard count
   - User accounts
@@ -108,6 +118,21 @@ The following limitations can be overridden by upgrading to a paid tier
   - Point-in-time restore
   - High availability (HA)
 - Cross-region replication isn't available on clusters with burstable compute or Free tier clusters.
+
+## Authentication and access control (RBAC)
+
+### Microsoft Entra ID authentication
+The Microsoft Entra ID authentication feature has these current limitations:
+- This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
+- This feature doesn't support Entra ID groups.
+
+### Native DocumentDB secondary users
+
+[The native secondary users](./secondary-users.md) feature has these preview limitations:
+- You can create up to 100 users/roles per cluster.
+- The `Updateuser` command now only supports password updates and can't modify other object fields.
+- The `Roleinfo` command isn't supported in preview. Alternatively, you can use `usersInfo`.
+- Assigning roles to specific databases or collections isn't supported, only cluster level is supported.
 
 ## Miscellaneous Limits
 

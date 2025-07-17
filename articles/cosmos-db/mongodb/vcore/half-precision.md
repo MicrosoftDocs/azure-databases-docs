@@ -12,6 +12,8 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ MongoDB vCore
+ms.custom:
+  - build-2025
 ---
 
 # Half-Precision vector indexing in Azure Cosmos DB for MongoDB (vCore)
@@ -38,7 +40,7 @@ db.runCommand({
       "key": { "<vector_field_name>": "cosmosSearch" },
       "name": "<index_name>",
       "cosmosSearchOptions": {
-        "kind": "vector-hnsw", // vector-ivf
+        "kind": "vector-hnsw", // or vector-ivf
         "similarity": "cos",
         "dimensions": integer_value, // max 4000
         "compression": "half"
@@ -79,6 +81,23 @@ db.collection.aggregate([
 
 > [!NOTE]
 > The `oversampling` factor must be a **double** with a minimum value of `1.0`. This factor is only relevant for vector indexes created with `"compression": "half"`.
+
+## Half-Precision vs. Product Quantization
+
+Both Half-Precision and [Product Quantization (PQ)](./product-quantization.md) compress vector indexes in Azure Cosmos DB for MongoDB (vCore), but they differ in how they achieve compression and affect search:
+
+| Feature                 | Half-Precision                                   | Product Quantization (PQ)                                      |
+|-------------------------|---------------------------------------------------|-----------------------------------------------------------------|
+| **Compression Method** | Reduces each vector dimension to 16 bits.         | Divides vector space into subspaces and quantizes each.          |
+| **Max Dimensions** | Up to 4,000                                      | Up to 16,000                                                   |
+| **Precision Change** | Slight loss due to lower bit depth.               | Potentially larger loss, configurable via `pqCompressedDims`.    |
+| **Search Speed** | Moderate speed increase due to smaller index.     | Significant speed increase due to highly compressed vectors.   |
+| **Index Build Time** | Relatively fast.                                | Can be longer due to centroid training (`pqSampleSize`).          |
+| **Index Support** | HNSW, IVF.                                      | DiskANN.                                                      |
+| **Configuration** | Simple, enable `compression: "half"`.            | More parameters: `pqCompressedDims`, `pqSampleSize`.          |
+| **Oversampling Use** | Helps with minor precision loss.                  | Essential for recovering accuracy from larger compression.       |
+| **Ideal Use Cases** | Moderate memory reduction, increased dimensions, acceptable precision trade-off. | Large datasets, high dimensions, fast search prioritized, precision managed with oversampling. |
+
 ## Next step
 
 > [!div class="nextstepaction"]

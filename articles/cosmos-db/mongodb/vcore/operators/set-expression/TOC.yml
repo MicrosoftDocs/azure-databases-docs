@@ -1,0 +1,14 @@
+- name: $allElementsTrue
+  href: $allelementstrue.md
+- name: $anyElementTrue
+  href: $anyelementtrue.md
+- name: $setDifference
+  href: $setdifference.md
+- name: $setEquals
+  href: $setequals.md
+- name: $setIntersection
+  href: $setintersection.md
+- name: $setIsSubset
+  href: $setissubset.md
+- name: $setUnion
+  href: $setunion.md

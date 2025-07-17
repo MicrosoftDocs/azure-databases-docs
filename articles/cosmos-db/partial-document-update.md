@@ -6,7 +6,7 @@ author: abhinavtrips
 ms.author: abtripathi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2023
 ---
 

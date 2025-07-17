@@ -96,6 +96,10 @@ AzureDiagnostics
 | where TimeGenerated > ago(1d)
 | where Message contains "AUDIT:"
 ```
+## Major Version Upgrade with pgaudit extension installed
+
+During a major version upgrade, the pgaudit extension is automatically dropped and then recreated after the upgrade completes. While the extension is restored, any custom configurations set in `pgaudit.log` or other related parameters are not automatically preserved.
+
 
 ## Related content
 

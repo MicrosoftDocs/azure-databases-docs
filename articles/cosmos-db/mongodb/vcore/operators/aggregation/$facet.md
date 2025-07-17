@@ -1,12 +1,12 @@
 ---
-  title: $facet (aggregation) usage on Azure Cosmos DB for MongoDB vCore
+  title: $facet (aggregation)
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $facet allows for multiple parallel aggregations to be executed within a single pipeline stage.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
+  ms.topic: language-reference
   ms.date: 10/14/2024
 ---
 

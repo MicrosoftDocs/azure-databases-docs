@@ -9,7 +9,10 @@ ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
 ms.date: 11/04/2024
-ms.custom: query-reference, ingite-2024
+ms.custom:
+  - query-reference
+  - ingite-2024
+  - build-2025
 ---
 
 # FullTextScore (NoSQL query)
@@ -29,8 +32,8 @@ FullTextScore(<property_path>, <string_expr1>, <string_expr2>, ... )
 | | Description |
 | --- | --- |
 | **`property_path`** | The property path to search. |
-| **`string_expr1`** | The first term to find. |
-| **`string_expr2`** | The second term to find. |
+| **`string_expr1`** | The first keyword or phrase to find. |
+| **`string_expr2`** | The second keyword or phrase to find. |
 
 
 ## Return types
@@ -44,7 +47,7 @@ This is a simple example showing how to use `FullTextScore` with `ORDER BY RANK`
 ```nosql
 SELECT TOP 10 c.text
 FROM c
-ORDER BY RANK FullTextScore(c.text, "keyword")
+ORDER BY RANK FullTextScore(c.text, "keywords or phrases here")
 ```
 
 This next example shows use of both `FullTextScore` in the `ORDER BY RANK` clause, and `FullTextContains` in the `WHERE` clause.
@@ -58,7 +61,7 @@ ORDER BY RANK FullTextScore(c.text, "keyword1", "keyword2")
 
 ## Remarks
 
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search feature](../../gen-ai/full-text-search.md).
 - This function requires a [Full Text Index](../../index-policy.md).
 - This function can only be used in an `ORDER BY RANK` clause, or as an argument in an `RRF` system function.
 - This function can’t be part of a projection (for example, `SELECT FullTextScore(c.text, "keyword") AS Score FROM c` is invalid.

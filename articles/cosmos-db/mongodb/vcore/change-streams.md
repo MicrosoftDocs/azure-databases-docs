@@ -1,18 +1,25 @@
 ---
-  title: Change Stream on vCore-based Azure Cosmos DB for MongoDB (Preview)
+  title: Change Stream on vCore-based Azure Cosmos DB for MongoDB
   titleSuffix: vCore-based Azure Cosmos DB for MongoDB
   description: Learn how to configure and use change streams to track the real-time changes made on targeted collection\database.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: conceptual
-  ms.date: 03/24/2025
+  ms.topic: concept-article
+  ms.date: 05/20/2025
 ---
 
-# Change Stream on vCore-based Azure Cosmos DB for MongoDB (Preview)
+# Change Stream on vCore-based Azure Cosmos DB for MongoDB
 
 Change streams are a real-time stream of database changes that flows from your database to your application. This feature enables you to build reactive applications by subscribing to database changes, eliminating the need for continuous polling to detect changes.
+
+> [!NOTE]
+> Azure Cosmos DB for MongoDB (vCore) currently supports Change Stream in single-shard clusters. We are actively working on
+> providing Change Stream support for multi-shard clusters in the near future.
+>
+> Azure Cosmos DB for MongoDB (vCore) imposes a 400 MB limit on change streams. Please submit a support request for increasing 
+> this limit.
 
 ## Enable change streams
 
@@ -215,9 +222,12 @@ Customize your change stream output by specifying an array of one or more pipeli
 
 ## Limitations
 
-- Historical change stream events from past timeline are yet not supported.
 - Change stream events on multi-shard cluster are yet not supported.
 - Change stream cursors need to be reinitialized after a fail-over event at current state.
 - `Update` event yet doesn't support Update description.
 - `pre-image` is an unsupported option.
 - `$changestream` as a nested pipeline of another stage is yet not supported.
+
+## Related content
+
+- Integrate [Change streams with Kafka (using debezium connector)](https://github.com/Azure-Samples/Delivery-tracking-vCore-debezium).
