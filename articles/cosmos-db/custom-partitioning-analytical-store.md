@@ -1,11 +1,11 @@
 ---
 title: Custom partitioning in Azure Synapse Link for Azure Cosmos DB
 description: Custom partitioning enables you to partition the analytical store data on fields that are commonly used as filters in analytical queries resulting in improved query performance.
-author: Rodrigossz
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 10/24/2023
-ms.author: rosouz
 ---
 
 # Custom partitioning in Azure Synapse Link for Azure Cosmos DB
