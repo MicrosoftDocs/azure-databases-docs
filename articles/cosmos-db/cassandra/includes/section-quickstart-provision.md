@@ -75,7 +75,9 @@ Start by creating an API for Apache Cassandra account. Once the account is creat
     }
     EOF
     )
+    ```
 
+    ```azurecli-interactive
     az cosmosdb cassandra table create \
         --resource-group "<resource-group-name>" \
         --account-name "<account-name>" \
