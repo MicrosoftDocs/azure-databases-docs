@@ -21,10 +21,9 @@ The `$firstN` operator returns the first N values in a group according to the gr
     $firstN: {
         input: [listOfFields],
         sortBy: {
-            <
-            fieldName >: < sortOrder >
+            <fieldName>: <sortOrder>
         },
-        n: < numDocumentsToReturn >
+        n: <numDocumentsToReturn>
     }
 }
 ```
