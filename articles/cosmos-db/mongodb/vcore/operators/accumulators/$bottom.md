@@ -151,7 +151,7 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Find store with lowest total sales
+### Example 1: Find the store with lowest total sales
 
 Suppose we want to determine the store within the Boulder Innovations company with the lowest total sales, run a query to retrieve documents within the Boulder Innovations company, sort the documents in descending order of total sales and return the last document in the sorted result set.
 
