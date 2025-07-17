@@ -56,21 +56,6 @@ To achieve a successful create operation, avoid making replicas during times of 
 
 Learn how to [Create a read replica](how-to-create-read-replica.md).
 
-## Create cascading read replicas
-
-We are excited to announce the support for cascading read replicas in Public Preview. This feature allows the addition of new read replicas on top of an existing read replica, with the existing read replica acting as the source for the new one. 
-
-![screenshot](media/concepts-read-replica/cascadingreadreplica.png)
-
-In this setup, each read replica's replication is dependent on its source read replica. The first-level read replica asynchronously replicates data from the primary server, and the newly added read replica uses this first-level read replica to replicate data. For example, "Read-Replica 1" serves as the source for "Read-Replica 1.1" and replicates data from its source.
-
-Cascading read replicas can help distribute read workloads, thereby reducing the load on the primary server. Additionally, deploying these read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies.
-
-#### Key considerations:
-1. Up to 5 read replicas can be created per source read replica, with support for up to 2 levels of replication.
-2. Failover and virtual endpoints are not supported for intermediate read replicas and cascading read replicas.
-3. Cascading read replicas are supported for PostgreSQL version 14 and above.
-
 ### Configuration management
 
 When setting up read replicas for Azure Database for PostgreSQL flexible server, it's essential to understand the server configurations that can be adjusted, the ones inherited from the primary, and any related limitations.
@@ -102,6 +87,23 @@ Certain functionalities are restricted to primary servers and can't be set up on
 
 If your source Azure Database for PostgreSQL flexible server instance is encrypted with customer-managed keys, see the [documentation](concepts-data-encryption.md) for other considerations.
 
+## Create cascading read replicas
+
+You can add cascading read replicas to Azure Database for PostgreSQL flexible server instance. This allows you to create new read replicas on top of an existing read replica, with the existing read replica acting as the source for the next level. 
+
+The first-level read replica asynchronously replicates data from the primary server. A second-level read replica can then be created using the first-level replica as its source, forming a two-tier replication hierarchy. This architecture increases scalability, supporting up to 30 read replica servers with the primary server allowing up to 5 read replicas, and each of those replicas supporting 5 additional replicas.
+
+For e.g. Your primary server can have up to 5 read replicas (Level 1). One of these, say read-replica-1, can act as the source for another replica, read-replica-2, which becomes part of Level 2. These replicas can be deployed in different regions, enabling cross-region replication.
+
+Cascading read replicas can help distribute read workloads, reducing the load on the primary server. Deploying read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies.
+
+#### Key considerations:
+1. Up to 5 read replicas can be created per source read replica, with support for 2 levels of replication.
+2. Promote operation is not supported for intermediate read replicas with cascading read replicas.
+3. Virtual endpoints are not supported for cascading replicas.
+4. Cascading read replicas are supported on intermediate replicas with PostgreSQL version 14 and above.
+5. This feature is supported in: West US, Spain Central, Australia East, South Central US, UK West, Poland Central, Italy North, West US 2, East US 2, East Asia and Canada Central.
+   
 ## Connect to a replica
 
 When you create a replica, it does inherit the firewall rules or virtual network service endpoint of the primary server. These rules might be changed during replica creation and at any later point in time.
