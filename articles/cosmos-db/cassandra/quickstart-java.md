@@ -44,7 +44,19 @@ Then, configure your development environment with a new project and the client l
 
 1. Start in an empty folder.
 
+1. TODO
+
+    ```bash
+     
+    ```
+
 1. Import the `` package from Maven.
+
+    ```bash
+     
+    ```
+
+1. TODO
 
     ```bash
      
@@ -56,7 +68,6 @@ Then, configure your development environment with a new project and the client l
 
 | | Description |
 | --- | --- |
-| **``** | |
 | **``** | |
 | **``** | |
 
@@ -74,8 +85,6 @@ Start by authenticating the client using the credentials gathered earlier in thi
 1. Open the **** file in your integrated development environment (IDE).
 
 1. Import `` and `` from the `` module.
-
-1. TODO
 
 1. TODO
 
@@ -113,8 +122,6 @@ Next, upsert new data into a table. Upserting ensures that the data is created o
 
 1. TODO
 
-1. TODO
-
     ```java
     
     ```
@@ -149,8 +156,6 @@ Then, read data that was previously upserted into the table.
 
 1. TODO
 
-1. TODO
-
     ```java
     
     ```
@@ -182,8 +187,6 @@ Then, read data that was previously upserted into the table.
 ### Query data
 
 Finally, use a query to find all data that matches a specific filter in the table.
-
-1. TODO
 
 1. TODO
 

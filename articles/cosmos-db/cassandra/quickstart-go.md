@@ -18,13 +18,13 @@ ms.date: 07/18/2025
 
 Get started with the Azure Cosmos DB for Apache Cassandra client library for Go to store, manage, and query unstructured data. Follow the steps in this guide to create a new account, install a Go client library, connect to the account, perform common operations, and query your final sample data.
 
-[API reference documentation]() | [Library source code]() | [Package (Go)]()
+[API reference documentation](https://pkg.go.dev/github.com/apache/cassandra-gocql-driver/v2#pkg-overview) | [Library source code](https://github.com/apache/cassandra-gocql-driver) | [Package (Go)](https://pkg.go.dev/github.com/apache/cassandra-gocql-driver/v2)
 
 ## Prerequisites
 
 [!INCLUDE[Prerequisites - Quickstart developer](../includes/prerequisites-quickstart-developer.md)]
 
-- `Go` 1.21 or newer
+- `Go` 1.24 or newer
 
 ## Setting up
 
@@ -44,19 +44,37 @@ Then, configure your development environment with a new project and the client l
 
 1. Start in an empty folder.
 
-1. Import the `` package from Go.
+1. Create a new Go module.
 
     ```bash
-    
+    go mod init quickstart
     ```
 
-1. Create the **** file.
+1. Import the `github.com/apache/cassandra-gocql-driver/v2` package from Go.
+
+    ```bash
+    go get github.com/apache/cassandra-gocql-driver/v2
+    ```
+
+1. Create the **main.go** file.
+
+1. Add the Go application boilerplate.
+
+    ```go
+    package main
+    
+    func main() {
+    
+    }
+    ```
+
+    > [!IMPORTANT]
+    > The remaining steps within this guide assume that you are adding your code within the `main` function.    
 
 ## Object model
 
 | | Description |
 | --- | --- |
-| **``** | |
 | **``** | |
 | **``** | |
 
@@ -71,13 +89,11 @@ Then, configure your development environment with a new project and the client l
 
 Start by authenticating the client using the credentials gathered earlier in this guide.
 
-1. Open the **** file in your integrated development environment (IDE).
+1. Open the **main.go** file in your integrated development environment (IDE).
 
 1. Import `` and `` from the `` module.
 
-1. TODO
-
-1. TODO
+1. Within the `main` function, TODO
 
     ```go
     
@@ -113,8 +129,6 @@ Next, upsert new data into a table. Upserting ensures that the data is created o
 
 1. TODO
 
-1. TODO
-
     ```go
     
     ```
@@ -146,8 +160,6 @@ Next, upsert new data into a table. Upserting ensures that the data is created o
 ### Read data
 
 Then, read data that was previously upserted into the table.
-
-1. TODO
 
 1. TODO
 
