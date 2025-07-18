@@ -429,7 +429,8 @@ Finally, use a query to find all data that matches a specific filter in the tabl
     FROM
         cosmicworks.product
     WHERE
-        category = :category ALLOW FILTERING
+        category = :category
+    ALLOW FILTERING
     `;
     ```
 
@@ -468,7 +469,8 @@ Finally, use a query to find all data that matches a specific filter in the tabl
     FROM
         cosmicworks.product
     WHERE
-        category = :category ALLOW FILTERING
+        category = :category
+    ALLOW FILTERING
     `;
     ```
 

@@ -201,7 +201,7 @@ Then, read data that was previously upserted into the table.
 1. Create a new string variable named `readQuery` with a CQL query that matches items with the same `id` field.
 
     ```csharp
-    string readQuery = "SELECT * FROM product WHERE id = ?";
+    string readQuery = "SELECT * FROM product WHERE id = ? LIMIT 1";
     ```
 
 1. Create a string variable named `id` with the same value as the product created earlier in this guide.

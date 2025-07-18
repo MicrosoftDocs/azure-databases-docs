@@ -63,8 +63,7 @@ Then, configure your development environment with a new project and the client l
     ```go
     package main
     
-    func main() {
-    
+    func main() {    
     }
     ```
 
@@ -75,8 +74,8 @@ Then, configure your development environment with a new project and the client l
 
 | | Description |
 | --- | --- |
-| **``** | |
-| **``** | |
+| **`Cluster`** | Represents a specific connection to a cluster |
+| **`Session`** | Entities that hold a specific connection to a cluster |
 
 ## Code examples
 
@@ -96,13 +95,19 @@ Start by authenticating the client using the credentials gathered earlier in thi
 1. Within the `main` function, TODO
 
     ```go
-    
+    import (
+        "context"
+        "crypto/tls"
+        "github.com/apache/cassandra-gocql-driver/v2"
+    )
     ```
 
 1. TODO
 
     ```go
-    
+    username := "sidandrews-cosmos-cassandra"
+    password := "eEAU1rEqSN90FSUOJRtVPEy0YpOkseWovX8wwWoSrOdvpEf2I6iYojYRtYmynagFgqFlhT05Y0LHACDbWh5GeQ=="
+    contactPoint := "sidandrews-cosmos-cassandra.cassandra.cosmos.azure.com"
     ```
 
 1. TODO
@@ -234,7 +239,7 @@ Finally, use a query to find all data that matches a specific filter in the tabl
 Run the newly created application using a terminal in your application directory.
 
 ```bash
-
+go run .
 ```
 
 ## Clean up resources
