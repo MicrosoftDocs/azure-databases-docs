@@ -5,6 +5,7 @@ author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 05/19/2025
+ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.collection:

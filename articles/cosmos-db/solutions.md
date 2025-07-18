@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: best-practice
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ms.collection:
   - ce-skilling-ai-copilot
