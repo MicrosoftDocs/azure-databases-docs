@@ -1,7 +1,7 @@
 ---
 title: $stddevsamp
-titleSuffix: Overview of the $stddevsamp operator in Azure Cosmos DB for MongoDB vCore
-description: The $stddevsamp operator in Azure Cosmos DB for MongoDB vCore calculates the standard deviation of a specified sample of values and not the entire population
+titleSuffix: Overview of the $stddevsamp operator
+description: The $stddevsamp operator calculates the standard deviation of a specified sample of values and not the entire population
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -16,9 +16,9 @@ The `$stddevsamp` operator calculates the standard deviation by taking a specifi
 
 ## Syntax
 
-```mongodb
+```javascript
 {
-  "$stddevsamp": {"fieldName"}
+  $stddevsamp: {fieldName}
 }
 ```
 
@@ -30,7 +30,7 @@ The `$stddevsamp` operator calculates the standard deviation by taking a specifi
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -142,10 +142,27 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1 - Calculate the standard deviation of the total sales by sampling 10 stores under the Fourth Coffee company
+### Example 1 - Calculate the standard deviation of total sales
 
-```mongodb
-db.stores.aggregate([{"$match": {"company": "Fourth Coffee"} }, {"$sample": {"size": 10}}, {"$group": {"_id": "$company", "stdDev": {"$stdDevSamp": "$sales.totalSales"} } }])
+This query calculates the standard deviation of total sales across stores in the "Fourth Coffee" company by taking a random sample of 10 documents matching the filtering criteria.
+
+```javascript
+db.stores.aggregate([{
+    "$match": {
+        "company": "Fourth Coffee"
+    }
+}, {
+    "$sample": {
+        "size": 10
+    }
+}, {
+    "$group": {
+        "_id": "$company",
+        "stdDev": {
+            "$stdDevSamp": "$sales.totalSales"
+        }
+    }
+}])
 ```
 
 This query returns the following results:
@@ -159,4 +176,4 @@ This query returns the following results:
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+[!INCLUDE[Related content](../includes/related-content.md)]
