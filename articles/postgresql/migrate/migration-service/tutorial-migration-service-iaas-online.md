@@ -22,12 +22,7 @@ This article guides you in migrating a PostgreSQL instance from your on-premises
 
 The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server.
 
-> [!div class="checklist"]
->  
-> - Prerequisites
-> - Perform the migration
-> - Monitor the migration
-> - Check the migration when completed
+[!INCLUDE [checklist-online](includes/checklist-online.md)]
 
 ## Prerequisites
 
@@ -136,22 +131,6 @@ The **Summary** tab summarizes all the source and target details for creating th
 
 :::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-summary-migration-iaas.png" alt-text="Screenshot of the Summary migration tab.":::
 
-### Cutover
-
-For **Validate and migrate** option, completing of the online migration requires the user to complete an additional step, which is to trigger the cutover action. After the copying or cloning of the base data is complete, the migration moves to the `Waiting for user action` status and the `Waiting for cutover trigger` substatus. In this status, the user can trigger the cutover from the portal by selecting the migration.
-
-Before initiating cutover, it's important to ensure that:
-
-- Writes to the source are stopped - `latency` value is 0 or close to 0. The `latency` information can be obtained from the migration details screen as shown below:
-- `latency` value decreases to 0 or close to 0
-- The `latency` value indicates when the target last synced with the source. Writing to the source can be stopped at this point, and a cutover can be initiated. In case there's heavy traffic at the source, it's recommended to stop writes first so that `latency` can come close to 0, and then a cutover is initiated.
-
-The cutover operation applies all pending changes from the source server to the target server, and completes the migration. If you trigger a cutover, even with nonzero `latency`, the replication stops until that point in time. All the data on the source until the cutover point is then applied to the target. If you experience a latency of 15 minutes at the cutover point, all the changes made to data in the last 15 minutes are applied to the target.
-
-The time depends on the backlog of changes occurring in the last 15 minutes. Hence, it's recommended that the latency goes to zero or near zero before triggering the cutover.
-
-- The migration moves to the `Succeeded` status when the `Migrating data` substatus or the cutover (in online migration) finishes successfully. If there's a problem at the `Migrating data` substatus, the migration moves into a `Failed` status.
-
 ## Cancel the migration
 
 You can cancel any ongoing validations or migrations. The workflow must be in the **In progress** status to be canceled. You can't cancel a validation or migration in the **Succeeded** or **Failed** status.
@@ -228,7 +207,31 @@ To begin the migration, create a JSON file with the migration details. The JSON 
     az postgres flexible-server migration update cancel --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration>
     ```
 
-### Cutover
+---
+
+[!INCLUDE [monitor-the-migration-online](includes/monitor-the-migration-online.md)]
+
+[!INCLUDE [initiate-the-cutover](includes/initiate-the-cutover.md)]
+
+## Initiate the cutover
+
+#### [Portal](#tab/portal)
+
+For **Validate and migrate** option, completing of the online migration requires the user to complete an additional step, which is to trigger the cutover action. After the copying or cloning of the base data is complete, the migration moves to the `Waiting for user action` status and the `Waiting for cutover trigger` substatus. In this status, the user can trigger the cutover from the portal by selecting the migration.
+
+Before initiating cutover, it's important to ensure that:
+
+- Writes to the source are stopped - `latency` value is 0 or close to 0. The `latency` information can be obtained from the migration details screen as shown below:
+- `latency` value decreases to 0 or close to 0
+- The `latency` value indicates when the target last synced with the source. Writing to the source can be stopped at this point, and a cutover can be initiated. In case there's heavy traffic at the source, it's recommended to stop writes first so that `latency` can come close to 0, and then a cutover is initiated.
+
+The cutover operation applies all pending changes from the source server to the target server, and completes the migration. If you trigger a cutover, even with nonzero `latency`, the replication stops until that point in time. All the data on the source until the cutover point is then applied to the target. If you experience a latency of 15 minutes at the cutover point, all the changes made to data in the last 15 minutes are applied to the target.
+
+The time depends on the backlog of changes occurring in the last 15 minutes. Hence, it's recommended that the latency goes to zero or near zero before triggering the cutover.
+
+- The migration moves to the `Succeeded` status when the `Migrating data` substatus or the cutover (in online migration) finishes successfully. If there's a problem at the `Migrating data` substatus, the migration moves into a `Failed` status.
+
+#### [CLI](#tab/cli)
 
 For **Validate and migrate** option, completing of the online migration requires the user to complete an additional step, which is to trigger the cutover action. After the copying or cloning of the base data is complete, the migration moves to the `Waiting for user action` status and the `Waiting for cutover trigger` substatus. In this state, the user can trigger the cutover through the CLI using the command below. The cutover can also be triggered from the portal by selecting the migration name in the migration grid.
 
@@ -252,66 +255,10 @@ To trigger the cutover, use the following command:
 
 ---
 
-## Monitor the migration
+[!INCLUDE [monitor-migration-online](includes/monitor-migration-online.md)]
 
-After you select the **Start validation and migration** button, a notification appears, in a few seconds, to say that the validation or migration creation is successful. You're automatically redirected to the flexible server's **Migration** page. The entry shows **Status** as **In progress**. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
+[!INCLUDE [check-migration-completed-online](includes/check-migration-completed-online.md)]
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-monitor-migration.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-iaas-online/portal-online-monitor-migration.png":::
-
-The grid that displays the migrations has the following columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration**, and **Start time**. The entries are displayed sorted by **Start time** in descending order, with the most recent entry on the top. You can use the **Refresh** button in the toolbar, to refresh the status of the validation or migration run.
-
-### Migration details
-
-Select the migration name in the grid to see the associated details.
-
-Remember that in the previous steps, when you created this migration, you configured the migration option as **Validate and migrate**. In this scenario, validations are performed first, before migration starts. After the **PerformingPreRequisiteSteps** substrate is completed, the workflow moves into the substrate of **Validation in Progress**.
-
-- If validation has errors, the migration moves into a **Failed** state.
-
-- If validation is complete without error, the migration starts, and the workflow moves into the substate of **Migrating Data**.
-
-Validation details are available at the instance and database level.
-
-- **Validation details for instance**
-    - Contains validation related to the connectivity check, source version, that is, PostgreSQL version >= 9.5, and server parameter check, whether the extensions are enabled in the server parameters of the Azure Database for PostgreSQL flexible server.
-- **Validation and migration details for databases**
-    - It contains validation of the individual databases related to extensions and collations support in Azure Database for PostgreSQL flexible server.
-
-You can see the **Validation status** and **Migration status** under the migration details page.
-
-:::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-details-migration.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-iaas-offline/portal-offline-details-migration.png":::
-
-Some possible migration statuses:
-
-### Migration statuses
-
-| Status | Description |
-| --- | --- |
-| **In progress** | The migration infrastructure setup is underway, or the actual data migration is in progress. |
-| **Canceled** | The migration is canceled or deleted. |
-| **Failed** | The migration has failed. |
-| **Validation failed** | The validation has failed. |
-| **Succeeded** | The migration has succeeded and is complete. |
-| **Waiting for user action** | Applicable only for online migration. Waiting for user action to perform cutover. |
-
-### Migration substatuses
-
-| Substatus | Description |
-| --- | --- |
-| **PerformingPreRequisiteSteps** | Infrastructure setup is underway for data migration. |
-| **Validation in progress** | Validation is in progress. |
-| **MigratingData** | Data migration is in progress. |
-| **CompletingMigration** | Migration is in the final stages of completion. |
-| **Completed** | Migration has been completed. |
-| **Failed** | Migration has failed. |
-
-### Validation substatuses
-
-| Substatus | Description |
-| --- | --- |
-| **Failed** | Validation has failed. |
-| **Succeeded** | Validation is successful. |
-| **Warning** | Validation is in warning. |
 
 ## Check the migration when complete
 
