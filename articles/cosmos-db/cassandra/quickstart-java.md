@@ -81,7 +81,7 @@ Then, configure your development environment with a new project and the client l
     }
     ```
 
-1. Remove the comments and console output from the boilerplate. This will be the starting point for the remainder of this guide.
+1. Remove the comments and console output from the boilerplate. This code block is the starting point for the remainder of this guide.
 
     ```java
     package quickstart;
@@ -91,6 +91,20 @@ Then, configure your development environment with a new project and the client l
         public static void main(String[] args)
         {
         }
+    }
+    ```
+
+1. Import the `java.security.NoSuchAlgorithmException` namespace.
+    
+    ```java
+    import java.security.NoSuchAlgorithmException;
+    ```
+
+1. Update the `main` method signature to indicate that it could throw the `NoSuchAlgorithmException` exception.
+
+    ```java
+    public static void main(String[] args) throws NoSuchAlgorithmException
+    {    
     }
     ```
 
@@ -107,8 +121,10 @@ Then, configure your development environment with a new project and the client l
 
 | | Description |
 | --- | --- |
-| **``** | |
-| **``** | |
+| **`CqlSession`** | Represents a specific connection to a cluster |
+| **`PreparedStatement`** | Represents a precompiled CQL statement that can be executed multiple times efficiently |
+| **`BoundStatement`** | Represents a prepared statement with bound parameters |
+| **`Row`** | Represents a single row of a query result |
 
 ## Code examples
 
@@ -123,48 +139,60 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 1. Open the */console/src/main/java/quickstart/App.java* file in your integrated development environment (IDE).
 
-1. Import the following namespaces:
+1. Import the following types:
 
-    - ``
-    - ``
-    - ``
-    - ``
-    - ``
-    - ``
-
-    ```java
-    
-    ```
-    
-
-1. TODO
+    - `java.net.InetSocketAddress`
+    - `javax.net.ssl.SSLContext`
+    - `com.datastax.oss.driver.api.core.CqlIdentifier`
+    - `com.datastax.oss.driver.api.core.CqlSession`
+    - `com.datastax.oss.driver.api.core.cql.BoundStatement`
+    - `com.datastax.oss.driver.api.core.cql.PreparedStatement`
+    - `com.datastax.oss.driver.api.core.cql.ResultSet`
+    - `com.datastax.oss.driver.api.core.cql.Row`
 
     ```java
-    
-    ```
+    import java.net.InetSocketAddress;    
 
-1. TODO
+    import javax.net.ssl.SSLContext;
 
-    ```java
-    
+    import com.datastax.oss.driver.api.core.CqlIdentifier;
+    import com.datastax.oss.driver.api.core.CqlSession;
+    import com.datastax.oss.driver.api.core.cql.BoundStatement;
+    import com.datastax.oss.driver.api.core.cql.PreparedStatement;
+    import com.datastax.oss.driver.api.core.cql.ResultSet;
+    import com.datastax.oss.driver.api.core.cql.Row;
     ```
 
-1. TODO
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `username`, `password`, and `contactPoint`. Also create a string variable named `region` for the local data center.
 
     ```java
-    
+    String username = "<username>";
+    String password = "<password>";
+    String contactPoint = "<contact-point>";
     ```
 
-1. TODO
+1. Create another string variable for the region where you created your Azure Cosmos DB for Apache Cassandra account. Name this variable `region`.
 
-    ```java
-    
+    ```javascript
+    String region = "<region>";
     ```
 
-1. TODO
+1. Create an `SSLContext` object to ensure that you're using the transport layer security (TLS) protocol.
 
     ```java
-    
+    SSLContext sslContext = SSLContext.getDefault();
+    ```
+
+1. Create a new `CqlSession` object using the credential and configuration variables created in the previous steps. Set the contact point, local data center, authentication credentials, keyspace, and Transport Layer Security (TLS) context.
+
+    ```java
+    CqlSession session = CqlSession.builder()
+        .addContactPoint(new InetSocketAddress(contactPoint, 10350))
+        .withLocalDatacenter(region)
+        .withAuthCredentials(username, password)
+        .withKeyspace(CqlIdentifier.fromCql("cosmicworks"))
+        .withSslContext(sslContext)
+        .build();
     ```
 
 [!INCLUDE[Section - Transport Layer Security disabled warning](../includes/section-transport-layer-security-disabled-warning.md)]
@@ -173,112 +201,165 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 Next, upsert new data into a table. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the table.
 
-1. TODO
+1. Define a new class named `Product` with fields corresponding to the table created earlier in this guide.
 
     ```java
+    class Product {
+        public String id;
+        public String name;
+        public String category;
+        public int quantity;
+        public boolean clearance;
 
+        public Product(String id, String name, String category, int quantity, boolean clearance) {
+            this.id = id;
+            this.name = name;
+            this.category = category;
+            this.quantity = quantity;
+            this.clearance = clearance;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("Product{id='%s', name='%s', category='%s', quantity=%d, clearance=%b}",
+                    id, name, category, quantity, clearance);
+        }
+    }
     ```
 
     > [!TIP]
     > In Java, you can create this type in another file or create it at the end of the existing file.
 
-1. TODO
+1. Create a new object of type `Product`. Store the object in a variable named `product`.
 
     ```java
-    
+    Product product = new Product(
+        "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        "Yamba Surfboard",
+        "gear-surf-surfboards",
+        12,
+        false
+    );
     ```
 
-1. TODO
+1. Create a new string variable named `insertQuery` with the Cassandra Query Language (CQL) query for inserting a new row.
 
     ```java
-    
+    String insertQuery = "INSERT INTO product (id, name, category, quantity, clearance) VALUES (?, ?, ?, ?, ?)";
     ```
 
-1. TODO
+1. Prepare the insert statement and bind the product properties as parameters.
 
     ```java
-    
+    PreparedStatement insertStmt = session.prepare(insertQuery);
+    BoundStatement boundInsert = insertStmt.bind(
+        product.id,
+        product.name,
+        product.category,
+        product.quantity,
+        product.clearance
+    );
     ```
 
-1. TODO
+1. Upsert the product by executing the bound statement.
 
     ```java
-    
-    ```
-
-1. TODO
-
-    ```java
-    
+    session.execute(boundInsert);
     ```
 
 ### Read data
 
 Then, read data that was previously upserted into the table.
 
-1. TODO
+1. Create a new string variable named `readQuery` with a CQL query that matches items with the same `id` field.
 
     ```java
-    
+    String readQuery = "SELECT * FROM product WHERE id = ? LIMIT 1";
     ```
 
-1. TODO
+1. Create a string variable named `id` with the same value as the product created earlier in this guide.
 
-    ```java
-    
+    ```go
+    String id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
     ```
 
-1. TODO
+1. Prepare the statement and bind the product's `id` field as a parameter.
 
     ```java
-    
+    PreparedStatement readStmt = session.prepare(readQuery);
+    BoundStatement boundRead = readStmt.bind(id);
     ```
 
-1. TODO
+1. Execute the bound statement and store the result in a variable named `readResult`.
 
     ```java
-    
+    ResultSet readResult = session.execute(boundRead);
     ```
 
-1. TODO
+1. Retrieve the first row from the result set and map it to a `Product` object if found.
 
     ```java
-    
+    Row row = readResult.one();
+    Product matchedProduct = new Product(
+        row.getString("id"),
+        row.getString("name"),
+        row.getString("category"),
+        row.getInt("quantity"),
+        row.getBoolean("clearance")
+    );
     ```
 
 ### Query data
 
-Finally, use a query to find all data that matches a specific filter in the table.
+Now, use a query to find all data that matches a specific filter in the table.
 
-1. TODO
-
-    ```java
-    
-    ```
-
-1. TODO
+1. Create a new string variable named `findQuery` with a CQL query that matches items with the same `category` field.
 
     ```java
-    
+    String findQuery = "SELECT * FROM product WHERE category = ? ALLOW FILTERING";
     ```
 
-1. TODO
+1. Create a string variable named `id` with the same value as the product created earlier in this guide.
 
     ```java
-    
+    String category = "gear-surf-surfboards";
     ```
 
-1. TODO
+1. Prepare the statement and bind the product category as a parameter.
 
     ```java
-    
+    PreparedStatement findStmt = session.prepare(findQuery);
+    BoundStatement boundFind = findStmt.bind(category);
     ```
 
-1. TODO
+1. Execute the bound statement and store the result in a variable named `findResults`.
 
     ```java
-    
+    ResultSet results = session.execute(boundFind);
     ```
+
+1. Iterate over the query results and map each row to a `Product` object.
+
+    ```java
+    for (Row result : results) {
+        Product queriedProduct = new Product(
+            result.getString("id"),
+            result.getString("name"),
+            result.getString("category"),
+            result.getInt("quantity"),
+            result.getBoolean("clearance")
+        );
+        // Do something here with each result
+    }
+    ```
+
+### Close session
+
+In Java, you're required to close the session after you're done with any queries and operations.
+
+```java
+session.close();
+```
 
 ## Run the code
 
@@ -290,7 +371,7 @@ mvn exec:java -Dexec.mainClass="quickstart.App"
 ```
 
 > [!TIP]
-> Ensure that you are running this command within the */console* path created within this guide.
+> Ensure that you're running this command within the */console* path created within this guide.
 
 ## Clean up resources
 
