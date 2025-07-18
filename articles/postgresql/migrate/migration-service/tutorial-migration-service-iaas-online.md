@@ -215,7 +215,7 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 
 ## Initiate the cutover
 
-[!INCLUDE [initiate-cutover](includes/initiate-cutover.md)]
+[!INCLUDE [initiate-cut-over](includes/initiate-cut-over.md)]
 
 ## Check the migration when completed
 
