@@ -16,22 +16,16 @@
       href: faq.yml
   - name: Quickstarts
     items:
-    - name: Java v4
-      href: manage-data-java-v4-sdk.md
-    - name: Java v3
-      href: manage-data-java.md
     - name: Python
-      href: manage-data-python.md
-    - name: Golang
-      href: manage-data-go.md
-    - name: CQLSH
-      href: manage-data-cqlsh.md
+      href: quickstart-python.md
     - name: Node.js
-      href: manage-data-nodejs.md
-    - name: .NET Core
-      href: manage-data-dotnet-core.md
+      href: quickstart-nodejs.md
     - name: .NET
-      href: manage-data-dotnet.md
+      href: quickstart-dotnet.md
+    - name: Java
+      href: quickstart-java.md
+    - name: Go
+      href: quickstart-go.md
   - name: Tutorials
     items:
     - name: Create and manage data
@@ -218,6 +212,8 @@
       href: ../network-bandwidth.md
   - name: How to
     items:
+    - name: Manage data using CQLSH
+      href: manage-data-cqlsh.md
     - name: Develop applications
       items:
       - name: API for Apache Cassandra extensions overview
