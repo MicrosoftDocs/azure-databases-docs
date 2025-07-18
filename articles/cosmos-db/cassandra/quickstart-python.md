@@ -9,7 +9,7 @@ ms.subservice: apache-cassandra
 ms.topic: quickstart-sdk
 ms.devlang: python
 ms.custom: devx-track-python, sfi-ropc-nochange
-ms.date: 07/17/2025
+ms.date: 07/18/2025
 ---
 
 # Quickstart: Azure Cosmos DB for Apache Cassandra client library for Python

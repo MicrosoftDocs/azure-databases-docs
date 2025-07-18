@@ -9,7 +9,7 @@ ms.subservice: apache-cassandra
 ms.topic: quickstart-sdk
 ms.devlang: typescript
 ms.custom: devx-track-js, devx-track-ts, sfi-ropc-nochange
-ms.date: 07/17/2025
+ms.date: 07/18/2025
 zone_pivot_groups: azure-devlang-nodejs
 ---
 
