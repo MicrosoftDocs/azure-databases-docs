@@ -6,6 +6,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.author: jacodel
 ms.collection:
   - ce-skilling-ai-copilot
