@@ -42,7 +42,7 @@ First, set up the account and development environment for this guide. This secti
 
 Then, configure your development environment with a new project and the client library. This step is the last required prerequisite before moving on to the rest of this guide.
 
-1. Start in an empty folder.
+1. Start in an empty directory.
 
 1. Create a new Go module.
 
@@ -56,7 +56,7 @@ Then, configure your development environment with a new project and the client l
     go get github.com/apache/cassandra-gocql-driver/v2
     ```
 
-1. Create the **main.go** file.
+1. Create the *main.go* file.
 
 1. Add the Go application boilerplate.
 
@@ -88,7 +88,7 @@ Then, configure your development environment with a new project and the client l
 
 Start by authenticating the client using the credentials gathered earlier in this guide.
 
-1. Open the **main.go** file in your integrated development environment (IDE).
+1. Open the *main.go* file in your integrated development environment (IDE).
 
 1. Within the `main` function, import the following packages along with the `github.com/apache/cassandra-gocql-driver/v2` package:
 

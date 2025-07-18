@@ -42,7 +42,7 @@ First, set up the account and development environment for this guide. This secti
 
 Then, configure your development environment with a new project and the client library. This step is the last required prerequisite before moving on to the rest of this guide.
 
-1. Start in an empty folder.
+1. Start in an empty directory.
 
 1. Import the `cassandra-driver` package from the Python Package Index (PyPI).
 

@@ -65,7 +65,7 @@ Then, configure your development environment with a new project and the client l
 
 :::zone pivot="programming-language-ts"
 
-1. Start in an empty folder.
+1. Start in an empty directory.
 
 1. Initialize a new module.
 

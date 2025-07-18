@@ -42,23 +42,23 @@ First, set up the account and development environment for this guide. This secti
 
 Then, configure your development environment with a new project and the client library. This step is the last required prerequisite before moving on to the rest of this guide.
 
-1. Start in an empty folder.
+1. Start in an empty directory.
 
 1. Create a new .NET console application
 
-    ```dotnetcli
+    ```bash
     dotnet new console
     ```
 
 1. Add the `CassandraCSharpDriver` package from NuGet.
 
-    ```dotnetcli
+    ```bash
     dotnet add package CassandraCSharpDriver
     ```
 
 1. Build the project.
 
-    ```dotnetcli
+    ```bash
     dotnet build
     ```
 
