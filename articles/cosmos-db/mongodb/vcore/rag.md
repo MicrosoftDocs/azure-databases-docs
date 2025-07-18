@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.collection:
 - ce-skilling-ai-copilot
 appliesto:

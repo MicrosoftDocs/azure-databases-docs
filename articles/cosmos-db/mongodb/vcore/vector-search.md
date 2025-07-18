@@ -13,6 +13,7 @@ ms.custom:
 - sfi-ropc-blocked
 ms.topic: concept-article
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.collection:
 - ce-skilling-ai-copilot
 appliesto:
@@ -42,7 +43,7 @@ Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, 
 | **Description** | An IVFFlat index divides vectors into lists, then searches a subset closest to the query vector. | An HNSW index creates a multilayer graph. | DiskANN is an approximate nearest neighbor search algorithm designed for efficient vector search at any scale. |
 | **Key Trade-offs** | **Pros:** Faster build times, lower memory use. <br /> **Cons:** Lower query performance (in terms of speed-recall tradeoff). | **Pros:** Better query performance (in terms of speed-recall tradeoff), can be created on an empty table. <br />**Cons:** Slower build times, higher memory use. | **Pros:** Efficient at any scale, high recall, high throughput, low latency. |
 | **Vector Count** | Under 10,000 | Up to 50,000 | Up to 500,000+ |
-| **Cluster Tier** | M10 or M20 | M25 and higher | M30 and higher |
+| **Recommended Cluster Tier** | M10 or M20 | M30 and higher | M30 and higher |
 
 ### [DiskANN](#tab/diskann)
 
