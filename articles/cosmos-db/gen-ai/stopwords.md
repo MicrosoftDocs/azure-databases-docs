@@ -6,6 +6,7 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/10/2025
+ms.update-cycle: 180-days
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
