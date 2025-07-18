@@ -87,12 +87,9 @@ Start by authenticating the client using the credentials gathered earlier in thi
 1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `port`, and `primary_key`.
 
     ```python
-    # Replace with your Gremlin endpoint and key
-    hostname = "<your-gremlin-account>.gremlin.cosmos.azure.com"
+    hostname = "<endpoint>"
     port = 443
-    primary_key = "<your-primary-key>"
-    database = "<your-database>"
-    collection = "<your-graph>"
+    primary_key = "<key>"
     ```
 
 1. Create a Gremlin client using the credentials and configuration variables created in the previous steps.
@@ -101,7 +98,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
     gremlin_client = client.Client(
         f'wss://{hostname}:{port}/gremlin',
         'g',
-        username=f'/dbs/{database}/colls/{collection}',
+        username='/dbs/cosmicworks/colls/products',
         password=primary_key,
         message_serializer=serializer.GraphSONSerializersV2d0()
     )

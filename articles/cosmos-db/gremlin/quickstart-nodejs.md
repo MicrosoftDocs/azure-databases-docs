@@ -136,18 +136,15 @@ Start by authenticating the client using the credentials gathered earlier in thi
 1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `primaryKey`, `database`, and `collection`.
 
     ```javascript
-    // Replace with your Gremlin endpoint and key
-    const hostname = '<your-gremlin-account>.gremlin.cosmos.azure.com';
-    const primaryKey = '<your-primary-key>';
-    const database = '<your-database>';
-    const collection = '<your-graph>';
+    const hostname = '<endpoint>';
+    const primaryKey = '<key>';
     ```
 
 1. Create a Gremlin connection and traversal source using the credentials and configuration variables created in the previous steps.
 
     ```javascript
     const authenticator = new gremlin.driver.auth.PlainTextSaslAuthenticator(
-        `/dbs/${database}/colls/${collection}`,
+        '/dbs/cosmicworks/colls/product',
         primaryKey
     );
     const connection = new DriverRemoteConnection(
@@ -176,18 +173,15 @@ Start by authenticating the client using the credentials gathered earlier in thi
 1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `primaryKey`, `database`, and `collection`.
 
     ```typescript
-    // Replace with your Gremlin endpoint and key
-    const hostname: string = '<your-gremlin-account>.gremlin.cosmos.azure.com';
-    const primaryKey: string = '<your-primary-key>';
-    const database: string = '<your-database>';
-    const collection: string = '<your-graph>';
+    const hostname: string = '<endpoint>';
+    const primaryKey: string = '<key>';
     ```
 
 1. Create a Gremlin connection and traversal source using the credentials and configuration variables created in the previous steps.
 
     ```typescript
     const authenticator = new gremlin.driver.auth.PlainTextSaslAuthenticator(
-        `/dbs/${database}/colls/${collection}`,
+        '/dbs/cosmicworks/colls/product',
         primaryKey
     );
     const connection = new DriverRemoteConnection(

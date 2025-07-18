@@ -97,11 +97,9 @@ Start by authenticating the client using the credentials gathered earlier in thi
 1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `port`, and `primaryKey`.
 
     ```csharp
-    var hostname = "<your-gremlin-account>.gremlin.cosmos.azure.com";
+    var hostname = "<endpoint>";
     var port = 443;
-    var primaryKey = "<your-primary-key>";
-    var database = "<your-database>";
-    var collection = "<your-graph>";
+    var primaryKey = "<key>";
     ```
 
 1. Create a Gremlin client using the credentials and configuration variables created in the previous steps.
@@ -111,7 +109,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
         hostname,
         port,
         enableSsl: true,
-        username: $"/dbs/{database}/colls/{collection}",
+        username: "/dbs/cosmicworks/colls/products",
         password: primaryKey
     );
     var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType);
