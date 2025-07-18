@@ -119,6 +119,8 @@ Start by authenticating the client using the credentials gathered earlier in thi
     
     ```
 
+[!INCLUDE[Section - Transport Layer Security disabled warning](../includes/section-transport-layer-security-disabled-warning.md)]
+
 ### Upsert data
 
 Next, upsert new data into a table. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the table.
