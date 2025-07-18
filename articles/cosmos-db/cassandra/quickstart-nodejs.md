@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Node.js & TypeScript library'
+title: 'Quickstart: Node.js library'
 titleSuffix: Azure Cosmos DB for Apache Cassandra
-description: Create a new Azure Cosmos DB for Apache Cassandra account and connect using the Node.js library and TypeScript in this quickstart.
+description: Create a new Azure Cosmos DB for Apache Cassandra account and connect using the Node.js library, JavaScript, and TypeScript in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
@@ -43,7 +43,7 @@ First, set up the account and development environment for this guide. This secti
 
 Then, configure your development environment with a new project and the client library. This step is the last required prerequisite before moving on to the rest of this guide.
 
-::: zone pivot="programming-language-js"
+:::zone pivot="programming-language-js"
 
 1. Start in an empty folder.
 
@@ -63,7 +63,7 @@ Then, configure your development environment with a new project and the client l
 
 :::zone-end
 
-::: zone pivot="programming-language-ts"
+:::zone pivot="programming-language-ts"
 
 1. Start in an empty folder.
 
@@ -119,7 +119,7 @@ Then, configure your development environment with a new project and the client l
 
 Start by authenticating the client using the credentials gathered earlier in this guide.
 
-::: zone pivot="programming-language-js"
+:::zone pivot="programming-language-js"
 
 1. Open the **index.js** file in your integrated development environment (IDE).
 
@@ -201,7 +201,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 :::zone-end
 
-::: zone pivot="programming-language-ts"
+:::zone pivot="programming-language-ts"
 
 1. Open the **index.ts** file in your integrated development environment (IDE).
 
@@ -301,7 +301,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 Next, upsert new data into a table. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the table.
 
-::: zone pivot="programming-language-js"
+:::zone pivot="programming-language-js"
 
 1. Create a new object in a variable named `product`.
 
@@ -324,7 +324,7 @@ Next, upsert new data into a table. Upserting ensures that the data is created o
 
 :::zone-end
 
-::: zone pivot="programming-language-ts"
+:::zone pivot="programming-language-ts"
 
 1. Define a new interface named `Product` with fields corresponding to the table created earlier in this guide.
 
@@ -376,7 +376,7 @@ Next, upsert new data into a table. Upserting ensures that the data is created o
 
 Then, read data that was previously upserted into the table.
 
-::: zone pivot="programming-language-js"
+:::zone pivot="programming-language-js"
 
 1. Create an anonymous object named `filter`. In this object, include a property named `id` with the same value as the product created earlier in this guide.
 
@@ -394,7 +394,7 @@ Then, read data that was previously upserted into the table.
 
 :::zone-end
 
-::: zone pivot="programming-language-ts"
+:::zone pivot="programming-language-ts"
 
 1. Create an anonymous object named `filter`. In this object, include a property named `id` with the same value as the product created earlier in this guide.
 
@@ -416,7 +416,7 @@ Then, read data that was previously upserted into the table.
 
 Finally, use a query to find all data that matches a specific filter in the table.
 
-::: zone pivot="programming-language-js"
+:::zone pivot="programming-language-js"
 
 1. Create a new string variable named `query` with a CQL query that matches items with the same `category` field.
 
@@ -455,7 +455,7 @@ Finally, use a query to find all data that matches a specific filter in the tabl
 
 :::zone-end
 
-::: zone pivot="programming-language-ts"
+:::zone pivot="programming-language-ts"
 
 1. Create a new string variable named `query` with a CQL query that matches items with the same `category` field.
 
@@ -504,7 +504,7 @@ Finally, use a query to find all data that matches a specific filter in the tabl
 
 Run the newly created application using a terminal in your application directory.
 
-::: zone pivot="programming-language-js"
+:::zone pivot="programming-language-js"
 
 ```bash
 node index.js
@@ -512,7 +512,7 @@ node index.js
 
 :::zone-end
 
-::: zone pivot="programming-language-ts"
+:::zone pivot="programming-language-ts"
 
 ```bash
 npx tsx index.ts
