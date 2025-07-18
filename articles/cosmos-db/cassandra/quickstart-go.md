@@ -69,7 +69,7 @@ Then, configure your development environment with a new project and the client l
     ```
 
     > [!IMPORTANT]
-    > The remaining steps within this guide assume that you are adding your code within the `main` function.    
+    > The remaining steps within this guide assume that you're adding your code within the `main` function.
 
 ## Object model
 

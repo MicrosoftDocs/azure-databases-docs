@@ -44,7 +44,7 @@ Then, configure your development environment with a new project and the client l
 
 1. Start in an empty folder.
 
-1. TODO
+1. Generate a new Java console project.
 
     ```bash
      
@@ -56,13 +56,16 @@ Then, configure your development environment with a new project and the client l
      
     ```
 
-1. TODO
+1. Open the **** file.
 
-    ```bash
-     
+1. Observe the existing Java application boilerplate.
+
+    ```java
+    
     ```
 
-1. Create the **** file.
+    > [!IMPORTANT]
+    > The remaining steps within this guide assume that you're adding your code within the `main` method.
 
 ## Object model
 
