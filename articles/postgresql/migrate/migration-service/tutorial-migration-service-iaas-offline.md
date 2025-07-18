@@ -134,7 +134,7 @@ The **Summary** tab summarizes all the source and target details for creating th
 
 :::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-summary-migration-iaas.png" alt-text="Screenshot of the Summary migration tab.":::
 
-### Cancel the migration
+## Cancel the validation or migration
 
 You can cancel any ongoing validations or migrations. The workflow must be in the **In progress** status so that it can be canceled. You can't cancel a validation or migration in the **Succeeded** or **Failed** state.
 
