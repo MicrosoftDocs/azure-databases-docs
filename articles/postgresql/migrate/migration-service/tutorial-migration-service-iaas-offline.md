@@ -211,7 +211,11 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 
 ---
 
+## Monitor the migration
+
 [!INCLUDE [monitor-migration-offline](includes/monitor-migration-offline.md)]
+
+## Check the migration when completed
 
 [!INCLUDE [check-migration-completed-offline](includes/check-migration-completed-offline.md)]
 

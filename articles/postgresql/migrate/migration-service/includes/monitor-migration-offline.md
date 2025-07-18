@@ -8,8 +8,6 @@ ms.date: 07/17/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
-## Monitor the migration
-
 After you select the **Start validation and migration** button, a notification appears, in a few seconds, to say that the validation or migration creation is successful. You're automatically redirected to the flexible server's **Migration** page. The entry shows **Status** as **In progress**. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
 
 :::image type="content" source="../media/tutorial-migration-service-iaas-offline/portal-offline-monitor-migration.png" alt-text="Screenshot of the monitor migration page." lightbox="../media/tutorial-migration-service-iaas-offline/portal-offline-monitor-migration.png":::

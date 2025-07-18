@@ -8,8 +8,6 @@ ms.date: 07/17/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
-## Initiate the cutover
-
 You can initiate the cutover using Azure portal or Azure CLI.
 
 #### [Portal](#tab/portal)

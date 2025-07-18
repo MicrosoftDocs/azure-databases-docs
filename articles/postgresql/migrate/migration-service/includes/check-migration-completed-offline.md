@@ -8,8 +8,6 @@ ms.date: 07/17/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
-## Check the migration when completed
-
 After completing the databases, you need to manually validate the data between source and target and verify that all the objects in the target database are successfully created.
 
 After migration, you can perform the following tasks:

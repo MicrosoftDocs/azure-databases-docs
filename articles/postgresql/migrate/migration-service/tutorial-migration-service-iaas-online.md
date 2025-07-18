@@ -209,11 +209,15 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 
 ---
 
+## Monitor the migration
+
 [!INCLUDE [monitor-migration-online](includes/monitor-migration-online.md)]
+
+## Initiate the cutover
 
 [!INCLUDE [initiate-cutover](includes/initiate-cutover.md)]
 
-[!INCLUDE [monitor-migration-online](includes/monitor-migration-online.md)]
+## Check the migration when completed
 
 [!INCLUDE [check-migration-completed-online](includes/check-migration-completed-online.md)]
 
