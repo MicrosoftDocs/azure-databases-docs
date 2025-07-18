@@ -46,8 +46,8 @@ The time depends on the backlog of changes occurring in the last 15 minutes. Hen
 
 To trigger the cutover, use the following command:
 
-    ```azurecli-interactive
-    az postgres flexible-server migration update --subscription <subscription_id> --resource-group <resource_group> --name <server> --migration-name <migration> --cutover
-    ```
+```azurecli-interactive
+az postgres flexible-server migration update --subscription <subscription_id> --resource-group <resource_group> --name <server> --migration-name <migration> --cutover
+```
 
 ---
