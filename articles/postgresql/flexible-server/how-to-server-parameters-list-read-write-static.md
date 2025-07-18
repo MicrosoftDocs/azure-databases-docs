@@ -1,8 +1,8 @@
 ---
 title: List read-write static server parameters
 description: This article describes how to list read-write static server parameters of an Azure Database for PostgreSQL flexible server.
-author: jjfrost
-ms.author: jfrost
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
