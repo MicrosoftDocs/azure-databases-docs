@@ -3,7 +3,7 @@ title: Troubleshoot Azure Cosmos DB Not Found Exceptions
 description: Learn how to diagnose and fix not found exceptions.
 author: markjbrown
 ms.author: mjbrown
-ms.date: 06/17/2025
+ms.date: 07/17/2025
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
@@ -13,7 +13,7 @@ ms.topic: troubleshooting
 
 [!INCLUDE [NoSQL](../includes/appliesto-nosql.md)]
 
-The HTTP status code 404 represents that the resource no longer exists.
+The HTTP status code 404 indicates that the resource no longer exists.
 
 ## Expected behavior
 
