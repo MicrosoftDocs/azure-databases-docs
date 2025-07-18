@@ -2,7 +2,7 @@
 ms.service: azure-cosmos-db
 ms.subservice: cassandra
 ms.topic: include
-ms.date: 07/17/2025
+ms.date: 07/18/2025
 ms.custom: sfi-ropc-nochange
 ---
 
