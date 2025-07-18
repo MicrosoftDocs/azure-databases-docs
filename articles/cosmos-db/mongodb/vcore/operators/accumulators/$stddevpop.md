@@ -1,7 +1,7 @@
 ---
 title: $stddevpop
-titleSuffix: Overview of the $stddevpop operator in Azure Cosmos DB for MongoDB vCore
-description: The $stddevpop operator in Azure Cosmos DB for MongoDB vCore calculates the standard deviation of the specified values
+titleSuffix: Overview of the $stddevpop operator
+description: The $stddevpop operator calculates the standard deviation of the specified values
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -12,13 +12,13 @@ ms.date: 05/19/2025
 
 # $stddevpop
 
-The `$stddevpop` operator calculates the standard deviation of the specified values. The operator can only calculate the standard deviation on numeric values.
+The `$stddevpop` operator calculates the standard deviation of the specified values. The operator can only calculate the standard deviation of numeric values.
 
 ## Syntax
 
-```mongodb
+```javascript
 {
-  "$stddevpop": {"fieldName"}
+  $stddevpop: {fieldName}
 }
 ```
 
@@ -30,7 +30,7 @@ The `$stddevpop` operator calculates the standard deviation of the specified val
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -142,13 +142,26 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1 - Calculate the standard deviation of the total sales across all stores under the Fourth Coffee company
+### Example 1 - Calculate the standard deviation of total sales
 
-```mongodb
-db.stores.aggregate([{"$match": {"company": "Fourth Coffee"} }, {"$group": {"_id": "$company", "stdDev": {"$stdDevPop": "$sales.totalSales"} } }])
+To calculate the standard deviation of the total sales across all sales categories for stores belonging to "Fourth Coffee", first filter on the company field, then calculate the total sales across all resulting stores using stddevpop and return the aggregated result.
+
+```javascript
+db.stores.aggregate([{
+    "$match": {
+        "company": "Fourth Coffee"
+    }
+}, {
+    "$group": {
+        "_id": "$company",
+        "stdDev": {
+            "$stdDevPop": "$sales.totalSales"
+        }
+    }
+}])
 ```
 
-This query returns the following results:
+This query returns the following result:
 
 ```json
 {
@@ -157,13 +170,26 @@ This query returns the following results:
 }
 ```
 
-### Example 2 - Calculate the standard deviation for a field with a single value
+### Example 2 - Calculate the standard deviation of a field with a single value
 
-```mongodb
-db.stores.aggregate([{"$match": {"company": "Fourth Coffee"} }, {"$group": {"_id": "$name", "stdDev": {"$stdDevPop": "$sales.totalSales"} } }])
+To calculate the standard deviation of a field with only one distinct value, the standard deviation is 0. This query groups documents corresponding to the "Fourth Company". Each store contains a single document and only one distinct value for total sales. 
+
+```javascript
+db.stores.aggregate([{
+    "$match": {
+        "company": "Fourth Coffee"
+    }
+}, {
+    "$group": {
+        "_id": "$name",
+        "stdDev": {
+            "$stdDevPop": "$sales.totalSales"
+        }
+    }
+}])
 ```
 
-This query groups the documents corresponding to 'Fourth Company' by store. Each store contains just a single document and only one distinct value for total sales. The query returns the following result, with a standard deviation of 0 as expected.
+This query returns the following results.
 
 ```json
 [{
@@ -192,59 +218,61 @@ This query groups the documents corresponding to 'Fourth Company' by store. Each
 }]
 ```
 
-### Example 3 - Calculate the standard deviation for a field when using window operators. This query calculates the standard deviation of total sales for stores belonging to the "Boulder Innovations" company from the first to the current document in the result set.
+### Example 3 - Calculate the standard deviation for a field when using window operators. 
 
-```mongodb
+This query calculates the standard deviation of total sales for stores belonging to the "Boulder Innovations" company from the first to the current document in the result set.
+
+```javascript
 db.stores.aggregate(
-[{
-      "$match": {
-          "company": {
-              "$in": [
-                  "Boulder Innovations"
-              ]
-          },
-        "$and": [
-            {
-                "lastUpdated": {
-                    "$gt": ISODate("2024-09-01T03:06:24.180Z")
-                }
-            },
-            {
-                "lastUpdated": {
-                    "$lt": ISODate("2024-09-30T03:55:17.557Z")
+    [{
+            "$match": {
+                "company": {
+                    "$in": [
+                        "Boulder Innovations"
+                    ]
+                },
+                "$and": [{
+                        "lastUpdated": {
+                            "$gt": ISODate("2024-09-01T03:06:24.180Z")
+                        }
+                    },
+                    {
+                        "lastUpdated": {
+                            "$lt": ISODate("2024-09-30T03:55:17.557Z")
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "$setWindowFields": {
+                "partitionBy": "$company",
+                "sortBy": {
+                    "lastUpdated": 1
+                },
+                "output": {
+                    "stdDevPopTotalSales": {
+                        "$stdDevPop": "$sales.totalSales",
+                        "window": {
+                            "documents": [
+                                "unbounded",
+                                "current"
+                            ]
+                        }
+                    }
                 }
             }
-        ]
-      }
-  },
-  {
-    "$setWindowFields": {
-        "partitionBy": "$company",
-        "sortBy": {
-            "lastUpdated": 1
         },
-        "output": {
-            "stdDevPopTotalSales": {
-                "$stdDevPop": "$sales.totalSales",
-                "window": {
-                    "documents": [
-                        "unbounded",
-                        "current"
-                    ]
-                }
+        {
+            "$project": {
+                "company": 1,
+                "name": 1,
+                "sales.totalSales": 1,
+                "lastUpdated": 1,
+                "stdDevPopTotalSales": 1
             }
         }
-    }
-  },
-  {
-    "$project": {
-        "company": 1,
-        "name": 1,
-        "sales.totalSales": 1,
-        "lastUpdated": 1,
-        "stdDevPopTotalSales": 1
-    }
-  }]
+    ]
 )
 ```
 
@@ -278,7 +306,6 @@ The first three documents returned by this query are:
 
 ```
 
-
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+[!INCLUDE[Related content](../includes/related-content.md)]
