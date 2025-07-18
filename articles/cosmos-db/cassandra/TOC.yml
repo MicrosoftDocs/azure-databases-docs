@@ -22,15 +22,10 @@
       href: quickstart-nodejs.md
     - name: .NET
       href: quickstart-dotnet.md
-
-    - name: Java v4
-      href: manage-data-java-v4-sdk.md
-    - name: Java v3
-      href: manage-data-java.md
-    - name: Golang
-      href: manage-data-go.md
-    - name: CQLSH
-      href: manage-data-cqlsh.md
+    - name: Java
+      href: quickstart-java.md
+    - name: Go
+      href: quickstart-go.md
   - name: Tutorials
     items:
     - name: Create and manage data
@@ -217,6 +212,8 @@
       href: ../network-bandwidth.md
   - name: How to
     items:
+    - name: Manage data using CQLSH
+      href: manage-data-cqlsh.md
     - name: Develop applications
       items:
       - name: API for Apache Cassandra extensions overview
