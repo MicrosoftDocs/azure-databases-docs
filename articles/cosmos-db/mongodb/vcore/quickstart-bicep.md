@@ -247,7 +247,7 @@ List the resources deployed by the Bicep template to your target resource group.
     ResourceGroupName : msdocs-cosmos-quickstart-rg
     ResourceType      : Microsoft.DocumentDB/mongoClusters
     Location          : eastus
-    ResourceId        : /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-cosmos-quickstart-rg/providers/Microsoft.DocumentDB/mongoClusters/msdocs-sz2dac3xtwzzu
+    ResourceId        : /subscriptions/a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1/resourceGroups/msdocs-cosmos-quickstart-rg/providers/Microsoft.DocumentDB/mongoClusters/msdocs-sz2dac3xtwzzu
     Tags              : 
     ```
     
