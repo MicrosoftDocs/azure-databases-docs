@@ -1,6 +1,6 @@
 ---
 ms.service: azure-cosmos-db
-ms.subservice: cassandra
+ms.subservice: apache-cassandra
 ms.topic: include
 ms.date: 07/18/2025
 ms.custom: sfi-ropc-nochange
@@ -10,7 +10,7 @@ Now, get the password for the client library to use to create a connection to th
 
 #### [Azure CLI](#tab/azure-cli)
 
-1. Use `az cosmosdb show` to get the contactPoint and username for the account.
+1. Use `az cosmosdb show` to get the contact point and username for the account.
 
     ```azurecli-interactive
     az cosmosdb show \
