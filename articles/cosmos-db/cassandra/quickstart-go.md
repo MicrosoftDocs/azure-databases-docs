@@ -90,9 +90,10 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 1. Open the **main.go** file in your integrated development environment (IDE).
 
-1. Import `` and `` from the `` module.
+1. Within the `main` function, import the following packages along with the `github.com/apache/cassandra-gocql-driver/v2` package:
 
-1. Within the `main` function, TODO
+    - `context`
+    - `crypto/tls`
 
     ```go
     import (
@@ -102,30 +103,71 @@ Start by authenticating the client using the credentials gathered earlier in thi
     )
     ```
 
-1. TODO
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `username`, `password`, and `contactPoint`.
 
     ```go
-    username := "sidandrews-cosmos-cassandra"
-    password := "eEAU1rEqSN90FSUOJRtVPEy0YpOkseWovX8wwWoSrOdvpEf2I6iYojYRtYmynagFgqFlhT05Y0LHACDbWh5GeQ=="
-    contactPoint := "sidandrews-cosmos-cassandra.cassandra.cosmos.azure.com"
+    username := "<username>"
+    password := "<password>"
+    contactPoint := "<contact-point>"
     ```
 
-1. TODO
+1. Configure an instance of the `PasswordAuthenticator` type with the credentials specified in the previous steps. Store the result in a variable named `authentication`.
 
     ```go
-    
+    authentication := gocql.PasswordAuthenticator{
+        Username: username,
+        Password: password,
+    }
     ```
 
-1. TODO
+1. Configure an instance of `SslOptions` with a minimum version of Transport Layer Security (TLS) 1.2 and the `contactPoint` variable as the target server name. Store the result in a variable named `sslOptions`.
 
     ```go
-    
+    sslOptions := &gocql.SslOptions{
+        Config: &tls.Config{
+            MinVersion: tls.VersionTLS12,
+            ServerName: contactPoint,
+        },
+    }
     ```
 
-1. TODO
+1. Create a new cluster specification using `NewCluster` and the `contactPoint` variable.
 
     ```go
-    
+    cluster := gocql.NewCluster(contactPoint)
+    ```
+
+1. Configure the cluster specification object by using the credential and configuration variables created in the previous steps. 
+
+    ```go
+    cluster.SslOpts = sslOptions
+    cluster.Authenticator = authentication
+    ```
+
+1. Configure the remainder of the cluster specification object with these static values.
+
+    ```go
+    cluster.Keyspace = "cosmicworks"
+    cluster.Port = 10350
+    cluster.ProtoVersion = 4    
+    ```
+
+1. Create a new session that connects to the cluster using `CreateSession`.
+
+    ```go
+    session, _ := cluster.CreateSession()
+    ```
+
+1. Configure the session to invoke the `Close` function after the `main` function returns.
+
+    ```go
+    defer session.Close()
+    ```
+
+1. Create a new `Background` context object and store it in the `ctx` variable.
+
+    ```go
+    ctx := context.Background()
     ```
 
 [!INCLUDE[Section - Transport Layer Security disabled warning](../includes/section-transport-layer-security-disabled-warning.md)]
@@ -134,104 +176,152 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 Next, upsert new data into a table. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the table.
 
-1. TODO
+1. Define a new type named `Product` with fields corresponding to the table created earlier in this guide.
 
     ```go
-    
+    type Product struct {
+        id        string
+        name      string
+        category  string
+        quantity  int
+        clearance bool
+    }
     ```
 
-1. TODO
+    > [!TIP]
+    > In Go, you can create this type in another file or create it at the end of the existing file.
+
+1. Create a new object of type `Product`. Store the object in a variable named `product`.
 
     ```go
-    
+    product := Product {
+        id:        "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        name:      "Yamba Surfboard",
+        category:  "gear-surf-surfboards",
+        quantity:  12,
+        clearance: false,
+    }
     ```
 
-1. TODO
+1. Create a new string variable named `insertQuery` with the Cassandra Query Language (CQL) query for inserting a new row.
 
     ```go
-    
+    insertQuery := `
+        INSERT INTO
+            product (id, name, category, quantity, clearance)
+        VALUES
+            (?, ?, ?, ?, ?)
+    `
     ```
 
-1. TODO
+1. Use the `Query` and `ExecContext` functions to run the query. Pass in various properties of the `product` variable as query parameters.
 
     ```go
-    
-    ```
-
-1. TODO
-
-    ```go
-    
+    _ = session.Query(
+        insertQuery,
+        product.id, 
+        product.name, 
+        product.category, 
+        product.quantity, 
+        product.clearance,
+    ).ExecContext(ctx)
     ```
 
 ### Read data
 
 Then, read data that was previously upserted into the table.
 
-1. TODO
+1. Create a new string variable named `readQuery` with a CQL query that matches items with the same `id` field.
 
     ```go
-    
+    readQuery := `
+        SELECT
+            id,
+            name,
+            category,
+            quantity,
+            clearance
+        FROM
+            product
+        WHERE id = ?
+        LIMIT 1
+    `
     ```
 
-1. TODO
+1. Create a string variable named `id` with the same value as the product created earlier in this guide.
 
     ```go
-    
+    id := "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" 
     ```
 
-1. TODO
+1. Create another variable named `matchedProduct` to store the result of this operation in.
 
     ```go
-    
+    var matchedProduct Product
     ```
 
-1. TODO
+1. Use the `Query`, `Consistency`, `IterContext`, and `Scan` functions together to find the single item that matches the query and assign its properties to the `matchedProduct` variable.
 
     ```go
-    
-    ```
-
-1. TODO
-
-    ```go
-    
+    session.Query(
+        readQuery,
+        &id,
+    ).Consistency(gocql.One).IterContext(ctx).Scan(
+        &matchedProduct.id,
+        &matchedProduct.name,
+        &matchedProduct.category,
+        &matchedProduct.quantity,
+        &matchedProduct.clearance,
+    )
     ```
 
 ### Query data
 
 Finally, use a query to find all data that matches a specific filter in the table.
 
-1. TODO
-
-1. TODO
+1. Create string variables named `findQuery` and `category` with the CQL query and required parameter.
 
     ```go
+    findQuery := `
+        SELECT
+            id,
+            name,
+            category,
+            quantity,
+            clearance
+        FROM
+            product
+        WHERE
+            category = ?
+        ALLOW FILTERING
+    `
     
+    category := "gear-surf-surfboards"
     ```
 
-1. TODO
+1. Use the `Query`, `Consistency`, `IterContext`, and `Scanner` functions together to create a scanner that can iterate over multiple items that matches the query.
 
     ```go
-    
+    queriedProducts := session.Query(
+        findQuery, 
+        &category,
+    ).Consistency(gocql.All).IterContext(ctx).Scanner()
     ```
 
-1. TODO
+1. Use the `Next` and `Scan` functions to iterate over the query results and assign the properties of each result to the inner `queriedProduct` variable.
 
     ```go
-    
-    ```
-
-1. TODO
-
-    ```go
-    
-    ```
-
-1. TODO
-
-    ```go
-    
+    for queriedProducts.Next() {
+        var queriedProduct Product
+        queriedProducts.Scan(
+            &queriedProduct.id,
+            &queriedProduct.name,
+            &queriedProduct.category,
+            &queriedProduct.quantity,
+            &queriedProduct.clearance,
+        )
+        // Do something here with each result
+    }
     ```
 
 ## Run the code

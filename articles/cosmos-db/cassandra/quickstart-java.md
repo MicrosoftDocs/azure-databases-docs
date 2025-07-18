@@ -87,7 +87,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 1. Open the **** file in your integrated development environment (IDE).
 
-1. Import `` and `` from the `` module.
+1. Import `` and `` from the `` namespace.
 
 1. TODO
 
@@ -124,6 +124,15 @@ Start by authenticating the client using the credentials gathered earlier in thi
 ### Upsert data
 
 Next, upsert new data into a table. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the table.
+
+1. TODO
+
+    ```java
+
+    ```
+
+    > [!TIP]
+    > In Java, you can create this type in another file or create it at the end of the existing file.
 
 1. TODO
 
