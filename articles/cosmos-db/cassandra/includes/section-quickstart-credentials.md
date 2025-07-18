@@ -19,7 +19,7 @@ Now, get the password for the client library to use to create a connection to th
         --query "{username:name,contactPoint:documentEndpoint}"
     ```
 
-1. Record the value of the `contactPoint` and `username` properties from the previous commands' output. These properties' values are the **contact point** and **password** you use later in this guide to connect to the account with the library.
+1. Record the value of the `contactPoint` and `username` properties from the previous commands' output. These properties' values are the **contact point** and **username** you use later in this guide to connect to the account with the library.
 
 1. Use `az cosmosdb keys list` to get the **keys** for the account.
 
