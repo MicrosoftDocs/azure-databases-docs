@@ -1,221 +1,230 @@
 ---
-title: 'Quickstart: Gremlin library for Python'
+title: 'Quickstart: Python library'
 titleSuffix: Azure Cosmos DB for Apache Gremlin
-description: In this quickstart, connect to Azure Cosmos DB for Apache Gremlin using Python. Then, create and traverse vertices and edges.
-author: manishmsfte
-ms.author: mansha
+description: Create a new Azure Cosmos DB for Apache Gremlin account and connect using the Python library in this quickstart.
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
-ms.custom: devx-track-azurecli, devx-track-python
 ms.topic: quickstart-sdk
-ms.date: 09/27/2023
-# CustomerIntent: As a Python developer, I want to use a library for my programming language so that I can create and traverse vertices and edges in code.
+ms.devlang: python
+ms.custom: devx-track-python, sfi-ropc-nochange
+ms.date: 07/21/2025
 ---
 
-# Quickstart: Azure Cosmos DB for Apache Gremlin library for Python
+# Quickstart: Azure Cosmos DB for Apache Gremlin client library for Python
 
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+[!INCLUDE[Quickstart developer selector](includes/selector-quickstart-developer.md)]
 
-[!INCLUDE[Gremlin devlang](includes/quickstart-devlang.md)]
-
-Azure Cosmos DB for Apache Gremlin is a fully managed graph database service implementing the popular [`Apache Tinkerpop`](https://tinkerpop.apache.org/), a graph computing framework using the Gremlin query language. The API for Gremlin gives you a low-friction way to get started using Gremlin with a service that can grow and scale out as much as you need with minimal management.
-
-In this quickstart, you use the `gremlinpython` library to connect to a newly created Azure Cosmos DB for Gremlin account.
+Get started with the Azure Cosmos DB for Apache Gremlin client library for Python to store, manage, and query unstructured data. Follow the steps in this guide to create a new account, install a Python client library, connect to the account, perform common operations, and query your final sample data.
 
 [Library source code](https://github.com/apache/tinkerpop/tree/master/gremlin-python/src/main/python) | [Package (PyPi)](https://pypi.org/project/gremlinpython/)
 
 ## Prerequisites
 
-- An Azure account with an active subscription.
-  - No Azure subscription? [Sign up for a free Azure account](https://azure.microsoft.com/free/).
-  - Don't want an Azure subscription? You can [try Azure Cosmos DB free](../try-free.md) with no subscription required.
-- [Python (latest)](https://www.python.org/)
-  - Don't have Python installed? Try this quickstart in [GitHub Codespaces](https://codespaces.new/github/codespaces-blank?quickstart=1).
-- [Azure Command-Line Interface (CLI)](/cli/azure/)
+[!INCLUDE[Prerequisites - Quickstart developer](../includes/prerequisites-quickstart-developer.md)]
 
-[!INCLUDE[Cloud Shell](~/reusable-content/ce-skilling/azure/includes/cloud-shell-try-it.md)]
+- Python 3.12 or later
 
 ## Setting up
 
-This section walks you through creating an API for Gremlin account and setting up a Python project to use the library to connect to the account.
+First, set up the account and development environment for this guide. This section walks you through the process of creating an account, getting its credentials, and then preparing your development environment.
 
-### Create an API for Gremlin account
+### Create an account
 
-The API for Gremlin account should be created prior to using the Python library. Additionally, it helps to also have the database and graph in place.
+[!INCLUDE[Section - Setting up](includes/section-quickstart-provision.md)]
 
-[!INCLUDE[Create account, database, and graph](includes/create-account-database-graph-cli.md)]
+### Get credentials
 
-### Create a new Python console application
+[!INCLUDE[Section - Get credentials](includes/section-quickstart-credentials.md)]
 
-Create a Python console application in an empty folder using your preferred terminal.
+### Prepare development environment
 
-1. Open your terminal in an empty folder.
+Then, configure your development environment with a new project and the client library. This step is the last required prerequisite before moving on to the rest of this guide.
+
+1. Start in an empty folder.
+
+1. Import the `` package from Python Package Index (PyPI).
+
+    ```bash
+     
+    ```
 
 1. Create the **app.py** file.
 
-    ```bash
-    touch app.py
-    ```
+## Object model
 
-### Install the PyPI package
-
-Add the `gremlinpython` PyPI package to the Python project.
-
-1. Create the **requirements.txt** file.
-
-    ```bash
-    touch requirements.txt
-    ```
-
-1. Add the `gremlinpython` package from the Python Package Index to the requirements file.
-
-    ```requirements
-    gremlinpython==3.7.0
-    ```
-
-1. Install all the requirements to your project.
-
-    ```bash
-    python install -r requirements.txt
-    ```
-
-### Configure environment variables
-
-To use the *NAME* and *URI* values obtained earlier in this quickstart, persist them to new environment variables on the local machine running the application.
-
-1. To set the environment variable, use your terminal to persist the values as `COSMOS_ENDPOINT` and `COSMOS_KEY` respectively.
-
-    ```bash
-    export COSMOS_GREMLIN_ENDPOINT="<account-name>"
-    export COSMOS_GREMLIN_KEY="<account-key>"
-    ```
-
-1. Validate that the environment variables were set correctly.
-
-    ```bash
-    printenv COSMOS_GREMLIN_ENDPOINT
-    printenv COSMOS_GREMLIN_KEY
-    ```
+| | Description |
+| --- | --- |
+| **``** | |
+| **``** | |
 
 ## Code examples
 
-- [Authenticate the client](#authenticate-the-client)
-- [Create vertices](#create-vertices)
-- [Create edges](#create-edges)
-- [Query vertices &amp; edges](#query-vertices--edges)
+- [Authenticate client](#authenticate-client)
+- [Upsert data](#upsert-data)
+- [Read data](#read-data)
+- [Query data](#query-data)
 
-The code in this article connects to a database named `cosmicworks` and a graph named `products`. The code then adds vertices and edges to the graph before traversing the added items.
+### Authenticate client
 
-### Authenticate the client
+Start by authenticating the client using the credentials gathered earlier in this guide.
 
-Application requests to most Azure services must be authorized. For the API for Gremlin, use the *NAME* and *URI* values obtained earlier in this quickstart.
+1. Open the *app.py* file in your integrated development environment (IDE).
 
-1. Open the **app.py** file.
+1. Import the following types from the `` module:
 
-1. Import `client` and `serializer` from the `gremlin_python.driver` module.
+    - ``
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="imports":::
+    ```python
+    
+    ```
 
-    > [!WARNING]
-    > Depending on your version of Python, you may also need to import `asyncio` and override the event loop policy:
-    >
-    > :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="import_async_bug_fix":::
-    >
+1. TODO
 
-1. Create `ACCOUNT_NAME` and `ACCOUNT_KEY` variables. Store the `COSMOS_GREMLIN_ENDPOINT` and `COSMOS_GREMLIN_KEY` environment variables as the values for each respective variable.
+    ```python
+    
+    ```
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="environment_variables":::
+1. TODO
 
-1. Use `Client` to connect using the account's credentials and the **GraphSON 2.0** serializer.
+    ```python
+    
+    ```
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="authenticate_connect_client":::
+1. TODO
 
-### Create vertices
+    ```python
+    
+    ```
 
-Now that the application is connected to the account, use the standard Gremlin syntax to create vertices.
+1. TODO
 
-1. Use `submit` to run a command server-side on the API for Gremlin account. Create a **product** vertex with the following properties:
+    ```python
+    
+    ```
 
-    | | Value |
-    | --- | --- |
-    | **label** | `product` |
-    | **id** | `68719518371` |
-    | **`name`** | `Kiama classic surfboard` |
-    | **`price`** | `285.55` |
-    | **`category`** | `surfboards` |
+1. TODO
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="create_vertices_1":::
+    ```python
+    
+    ```
 
-1. Create a second **product** vertex with these properties:
+### Upsert data
 
-    | | Value |
-    | --- | --- |
-    | **label** | `product` |
-    | **id** | `68719518403` |
-    | **`name`** | `Montau Turtle Surfboard` |
-    | **`price`** | `600.00` |
-    | **`category`** | `surfboards` |
+Next, upsert new data into the graph. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the graph.
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="create_vertices_2":::
+1. TODO
 
-1. Create a third **product** vertex with these properties:
+    ```python
+    
+    ```
 
-    | | Value |
-    | --- | --- |
-    | **label** | `product` |
-    | **id** | `68719518409` |
-    | **`name`** | `Bondi Twin Surfboard` |
-    | **`price`** | `585.50` |
-    | **`category`** | `surfboards` |
+1. TODO
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="create_vertices_3":::
+    ```python
+    
+    ```
 
-### Create edges
+1. TODO
 
-Create edges using the Gremlin syntax to define relationships between vertices.
+    ```python
+    
+    ```
 
-1. Create an edge from the `Montau Turtle Surfboard` product named **replaces** to the `Kiama classic surfboard` product.
+1. TODO
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="create_edges_1":::
+    ```python
+    
+    ```
 
-    > [!TIP]
-    > This edge defintion uses the `g.V(['<partition-key>', '<id>'])` syntax. Alternatively, you can use `g.V('<id>').has('category', '<partition-key>')`.
+1. TODO
 
-1. Create another **replaces** edge from the same product to the `Bondi Twin Surfboard`.
+    ```python
+    
+    ```
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="create_edges_2":::
+### Read data
 
-### Query vertices &amp; edges
+Then, read data that was previously upserted into the graph.
 
-Use the Gremlin syntax to traverse the graph and discover relationships between vertices.
+1. TODO
 
-1. Traverse the graph and find all vertices that `Montau Turtle Surfboard` replaces.
+    ```python
+    
+    ```
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="query_vertices_edges":::
+1. TODO
 
-1. Write to the console the result of this traversal.
+    ```python
+    
+    ```
 
-    :::code language="python" source="~/cosmos-db-apache-gremlin-python-samples/001-quickstart/app.py" id="output_vertices_edges":::
+1. TODO
+
+    ```python
+    
+    ```
+
+1. TODO
+
+    ```python
+    
+    ```
+
+1. TODO
+
+    ```python
+    
+    ```
+
+### Query data
+
+Finally, use a query to find all data that matches a specific traversal or filter in the graph.
+
+1. TODO
+
+    ```python
+    
+    ```
+
+1. TODO
+
+    ```python
+    
+    ```
+
+1. TODO
+
+    ```python
+    
+    ```
+
+1. TODO
+
+    ```python
+    
+    ```
+
+1. TODO
+
+    ```python
+    
+    ```
 
 ## Run the code
 
-Validate that your application works as expected by running the application. The application should execute with no errors or warnings. The output of the application includes data about the created and queried items.
+Run the newly created application using a terminal in your application directory.
 
-1. Open the terminal in the Python project folder.
-
-1. Use `python <filename>` to run the application. Observe the output from the application.
-
-    ```bash
-    python app.py
-    ```
+```bash
+python app.py
+```
 
 ## Clean up resources
 
-When you no longer need the API for Gremlin account, delete the corresponding resource group.
-
-[!INCLUDE[Delete account](includes/delete-account-cli.md)]
+[!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-cleanup.md)]
 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Create and query data using Azure Cosmos DB for Apache Gremlin](tutorial-query.md)
+> [Overview of Azure Cosmos DB for Apache Gremlin](introduction.md)
