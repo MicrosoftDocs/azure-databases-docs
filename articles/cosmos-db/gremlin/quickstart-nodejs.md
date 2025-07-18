@@ -54,10 +54,11 @@ Then, configure your development environment with a new project and the client l
     npm init es6 --yes
     ```
 
-1. Import the `` package from Node Package Manager (npm).
+
+1. Install the `gremlin` package from Node Package Manager (npm).
 
     ```bash
-    npm install --save     
+    npm install --save gremlin
     ```
 
 1. Create the *index.js* file.
@@ -86,10 +87,10 @@ Then, configure your development environment with a new project and the client l
     npm install --save-dev tsx
     ```
 
-1. Install the `` package from npm.
+1. Install the `gremlin` package from npm.
 
     ```bash
-    npm install --save     
+    npm install --save gremlin 
     ```
 
 1. Initialize the TypeScript project using the compiler (`tsc`).
@@ -106,8 +107,8 @@ Then, configure your development environment with a new project and the client l
 
 | | Description |
 | --- | --- |
-| **``** | |
-| **``** | |
+| **`DriverRemoteConnection`** | Represents the connection to the Gremlin server |
+| **`GraphTraversalSource`** | Used to construct and execute Gremlin traversals |
 
 ## Code examples
 
@@ -124,89 +125,81 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 1. Open the *index.js* file in your integrated development environment (IDE).
 
-1. Import the following types from the `` module:
-
-    - ``
+1. Import the `gremlin` package and required types:
 
     ```javascript
-    
+    import gremlin from 'gremlin';
+    const { DriverRemoteConnection } = gremlin.driver;
+    const { Graph } = gremlin.structure;
     ```
 
-1. TODO
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `primaryKey`, `database`, and `collection`.
 
     ```javascript
-    
+    // Replace with your Gremlin endpoint and key
+    const hostname = '<your-gremlin-account>.gremlin.cosmos.azure.com';
+    const primaryKey = '<your-primary-key>';
+    const database = '<your-database>';
+    const collection = '<your-graph>';
     ```
 
-1. TODO
+1. Create a Gremlin connection and traversal source using the credentials and configuration variables created in the previous steps.
 
     ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
+    const authenticator = new gremlin.driver.auth.PlainTextSaslAuthenticator(
+        `/dbs/${database}/colls/${collection}`,
+        primaryKey
+    );
+    const connection = new DriverRemoteConnection(
+        `wss://${hostname}:443/gremlin`,
+        { authenticator, traversalsource: 'g', rejectUnauthorized: true }
+    );
+    const graph = new Graph();
+    const g = graph.traversal().withRemote(connection);
     ```
 
 :::zone-end
+
 
 :::zone pivot="programming-language-ts"
 
 1. Open the *index.ts* file in your integrated development environment (IDE).
 
-1. Import the following types from the `` module:
-
-    - ``
+1. Import the `gremlin` package and required types:
 
     ```typescript
-    
+    import gremlin from 'gremlin';
+    const { DriverRemoteConnection } = gremlin.driver;
+    const { Graph } = gremlin.structure;
     ```
 
-1. TODO
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `primaryKey`, `database`, and `collection`.
 
     ```typescript
-    
+    // Replace with your Gremlin endpoint and key
+    const hostname: string = '<your-gremlin-account>.gremlin.cosmos.azure.com';
+    const primaryKey: string = '<your-primary-key>';
+    const database: string = '<your-database>';
+    const collection: string = '<your-graph>';
     ```
 
-1. TODO
+1. Create a Gremlin connection and traversal source using the credentials and configuration variables created in the previous steps.
 
     ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
+    const authenticator = new gremlin.driver.auth.PlainTextSaslAuthenticator(
+        `/dbs/${database}/colls/${collection}`,
+        primaryKey
+    );
+    const connection = new DriverRemoteConnection(
+        `wss://${hostname}:443/gremlin`,
+        { authenticator, traversalsource: 'g', rejectUnauthorized: true }
+    );
+    const graph = new Graph();
+    const g = graph.traversal().withRemote(connection);
     ```
 
 :::zone-end
+
 
 ### Upsert data
 
@@ -214,71 +207,69 @@ Next, upsert new data into the graph. Upserting ensures that the data is created
 
 :::zone pivot="programming-language-js"
 
-1. TODO
+1. Add a vertex (upsert data) for a product:
 
     ```javascript
-    
+    await g.addV('product')
+        .property('id', 'surfboard1')
+        .property('name', 'Kiama classic surfboard')
+        .property('category', 'surf')
+        .property('price', 699.99)
+        .next();
     ```
 
-1. TODO
+1. Add another product vertex:
 
     ```javascript
-    
+    await g.addV('product')
+        .property('id', 'surfboard2')
+        .property('name', 'Montau Turtle Surfboard')
+        .property('category', 'surf')
+        .property('price', 799.99)
+        .next();
     ```
 
-1. TODO
+1. Create an edge between the two products:
 
     ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
+    await g.V('surfboard2').addE('replaces').to(g.V('surfboard1')).next();
     ```
 
 :::zone-end
+
 
 :::zone pivot="programming-language-ts"
 
-1. TODO
+1. Add a vertex (upsert data) for a product:
 
     ```typescript
-    
+    await g.addV('product')
+        .property('id', 'surfboard1')
+        .property('name', 'Kiama classic surfboard')
+        .property('category', 'surf')
+        .property('price', 699.99)
+        .next();
     ```
 
-1. TODO
+1. Add another product vertex:
 
     ```typescript
-    
+    await g.addV('product')
+        .property('id', 'surfboard2')
+        .property('name', 'Montau Turtle Surfboard')
+        .property('category', 'surf')
+        .property('price', 799.99)
+        .next();
     ```
 
-1. TODO
+1. Create an edge between the two products:
 
     ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
+    await g.V('surfboard2').addE('replaces').to(g.V('surfboard1')).next();
     ```
 
 :::zone-end
+
 
 ### Read data
 
@@ -286,71 +277,41 @@ Then, read data that was previously upserted into the graph.
 
 :::zone pivot="programming-language-js"
 
-1. TODO
+1. Read a vertex by ID:
 
     ```javascript
-    
+    const result = await g.V('surfboard1').next();
+    console.log(result.value);
     ```
 
-1. TODO
+1. Read all vertices:
 
     ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
+    const allVertices = await g.V().toList();
+    allVertices.forEach(item => console.log(item));
     ```
 
 :::zone-end
+
 
 :::zone pivot="programming-language-ts"
 
-1. TODO
+1. Read a vertex by ID:
 
     ```typescript
-    
+    const result = await g.V('surfboard1').next();
+    console.log(result.value);
     ```
 
-1. TODO
+1. Read all vertices:
 
     ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
+    const allVertices = await g.V().toList();
+    allVertices.forEach(item => console.log(item));
     ```
 
 :::zone-end
+
 
 ### Query data
 
@@ -358,68 +319,37 @@ Finally, use a query to find all data that matches a specific traversal or filte
 
 :::zone pivot="programming-language-js"
 
-1. TODO
+1. Query for all products in the 'surf' category:
 
     ```javascript
-    
+    const surfProducts = await g.V().hasLabel('product').has('category', 'surf').toList();
+    surfProducts.forEach(item => console.log(item));
     ```
 
-1. TODO
+1. Query for all products that replace another product:
 
     ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
+    const replaces = await g.V().hasLabel('product').outE('replaces').inV().toList();
+    replaces.forEach(item => console.log(item));
     ```
 
 :::zone-end
 
+
 :::zone pivot="programming-language-ts"
 
-1. TODO
+1. Query for all products in the 'surf' category:
 
     ```typescript
-    
+    const surfProducts = await g.V().hasLabel('product').has('category', 'surf').toList();
+    surfProducts.forEach(item => console.log(item));
     ```
 
-1. TODO
+1. Query for all products that replace another product:
 
     ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
+    const replaces = await g.V().hasLabel('product').outE('replaces').inV().toList();
+    replaces.forEach(item => console.log(item));
     ```
 
 :::zone-end

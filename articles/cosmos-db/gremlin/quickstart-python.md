@@ -45,10 +45,10 @@ Then, configure your development environment with a new project and the client l
 
 1. Start in an empty folder.
 
-1. Import the `` package from Python Package Index (PyPI).
+1. Import the `gremlinpython` package from Python Package Index (PyPI).
 
     ```bash
-     
+    pip install gremlinpython
     ```
 
 1. Create the **app.py** file.
@@ -57,8 +57,8 @@ Then, configure your development environment with a new project and the client l
 
 | | Description |
 | --- | --- |
-| **``** | |
-| **``** | |
+| **`GremlinClient`** | Represents the client used to connect and interact with the Gremlin server |
+| **`GraphTraversalSource`** | Used to construct and execute Gremlin traversals |
 
 ## Code examples
 
@@ -73,144 +73,121 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 1. Open the *app.py* file in your integrated development environment (IDE).
 
-1. Import the following types from the `` module:
-
-    - ``
+1. Import the following types from the `gremlin_python.driver` and `gremlin_python.process.graph_traversal` modules:
+    - `GremlinClient`, `Client`
+    - `GraphTraversalSource`, `g`, `__`
 
     ```python
-    
+    from gremlin_python.driver import client, serializer
+    from gremlin_python.process.graph_traversal import __
+    from gremlin_python.process.anonymous_traversal import traversal
+    from gremlin_python.structure.graph import Graph
     ```
 
-1. TODO
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `port`, and `primary_key`.
 
     ```python
-    
+    # Replace with your Gremlin endpoint and key
+    hostname = "<your-gremlin-account>.gremlin.cosmos.azure.com"
+    port = 443
+    primary_key = "<your-primary-key>"
+    database = "<your-database>"
+    collection = "<your-graph>"
     ```
 
-1. TODO
+1. Create a Gremlin client using the credentials and configuration variables created in the previous steps.
 
     ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
+    gremlin_client = client.Client(
+        f'wss://{hostname}:{port}/gremlin',
+        'g',
+        username=f'/dbs/{database}/colls/{collection}',
+        password=primary_key,
+        message_serializer=serializer.GraphSONSerializersV2d0()
+    )
     ```
 
 ### Upsert data
 
 Next, upsert new data into the graph. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the graph.
 
-1. TODO
+1. Add a vertex (upsert data) for a product:
 
     ```python
-    
+    add_vertex_query = """
+    g.addV('product').property('id', 'surfboard1').property('name', 'Kiama classic surfboard').property('category', 'surf').property('price', 699.99)
+    """
+    gremlin_client.submitAsync(add_vertex_query).result()
     ```
 
-1. TODO
+1. Add another product vertex:
 
     ```python
-    
+    add_vertex_query2 = """
+    g.addV('product').property('id', 'surfboard2').property('name', 'Montau Turtle Surfboard').property('category', 'surf').property('price', 799.99)
+    """
+    gremlin_client.submitAsync(add_vertex_query2).result()
     ```
 
-1. TODO
+1. Create an edge between the two products:
 
     ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
+    add_edge_query = """
+    g.V('surfboard2').addE('replaces').to(g.V('surfboard1'))
+    """
+    gremlin_client.submitAsync(add_edge_query).result()
     ```
 
 ### Read data
 
 Then, read data that was previously upserted into the graph.
 
-1. TODO
+1. Read a vertex by ID:
 
     ```python
-    
+    read_vertex_query = """
+    g.V('surfboard1')
+    """
+    result = gremlin_client.submitAsync(read_vertex_query).result()
+    for item in result:
+        print(item)
     ```
 
-1. TODO
+1. Read all vertices:
 
     ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
+    read_all_query = """
+    g.V()
+    """
+    result = gremlin_client.submitAsync(read_all_query).result()
+    for item in result:
+        print(item)
     ```
 
 ### Query data
 
 Finally, use a query to find all data that matches a specific traversal or filter in the graph.
 
-1. TODO
+1. Query for all products in the 'surf' category:
 
     ```python
-    
+    query_products = """
+    g.V().hasLabel('product').has('category', 'surf')
+    """
+    result = gremlin_client.submitAsync(query_products).result()
+    for item in result:
+        print(item)
     ```
 
-1. TODO
+1. Query for all products that replace another product:
 
     ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
-    ```
-
-1. TODO
-
-    ```python
-    
+    query_replaces = """
+    g.V().hasLabel('product').outE('replaces').inV()
+    """
+    result = gremlin_client.submitAsync(query_replaces).result()
+    for item in result:
+        print(item)
     ```
 
 ## Run the code

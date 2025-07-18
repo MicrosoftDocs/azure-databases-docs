@@ -51,10 +51,10 @@ Then, configure your development environment with a new project and the client l
     dotnet new console
     ```
 
-1. Import the `` package from NuGet.
+1. Import the `Gremlin.Net` package from NuGet.
 
     ```bash
-     
+    dotnet add package Gremlin.Net
     ```
 
 1. Build the project.
@@ -67,8 +67,8 @@ Then, configure your development environment with a new project and the client l
 
 | | Description |
 | --- | --- |
-| **``** | |
-| **``** | |
+| **`GremlinClient`** | Represents the client used to connect and interact with the Gremlin server |
+| **`GraphTraversalSource`** | Used to construct and execute Gremlin traversals |
 
 ## Code examples
 
@@ -87,142 +87,96 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 1. Add using directives for the following namespaces:
 
-    - ``
-
     ```csharp
-    
+    using Gremlin.Net.Driver;
+    using Gremlin.Net.Structure.IO.GraphSON;
+    using System;
+    using System.Threading.Tasks;
     ```
 
-1. TODO
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `port`, and `primaryKey`.
 
     ```csharp
-    
+    var hostname = "<your-gremlin-account>.gremlin.cosmos.azure.com";
+    var port = 443;
+    var primaryKey = "<your-primary-key>";
+    var database = "<your-database>";
+    var collection = "<your-graph>";
     ```
 
-1. TODO
+1. Create a Gremlin client using the credentials and configuration variables created in the previous steps.
 
     ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
+    var gremlinServer = new GremlinServer(
+        hostname,
+        port,
+        enableSsl: true,
+        username: $"/dbs/{database}/colls/{collection}",
+        password: primaryKey
+    );
+    var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType);
     ```
 
 ### Upsert data
 
 Next, upsert new data into the graph. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the graph.
 
-1. TODO
+1. Add a vertex (upsert data) for a product:
 
     ```csharp
-    
+    await gremlinClient.SubmitAsync("g.addV('product').property('id', 'surfboard1').property('name', 'Kiama classic surfboard').property('category', 'surf').property('price', 699.99)");
     ```
 
-1. TODO
+1. Add another product vertex:
 
     ```csharp
-    
+    await gremlinClient.SubmitAsync("g.addV('product').property('id', 'surfboard2').property('name', 'Montau Turtle Surfboard').property('category', 'surf').property('price', 799.99)");
     ```
 
-1. TODO
+1. Create an edge between the two products:
 
     ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
+    await gremlinClient.SubmitAsync("g.V('surfboard2').addE('replaces').to(g.V('surfboard1'))");
     ```
 
 ### Read data
 
 Then, read data that was previously upserted into the graph.
 
-1. TODO
+1. Read a vertex by ID:
 
     ```csharp
-    
+    var result = await gremlinClient.SubmitAsync<dynamic>("g.V('surfboard1')");
+    foreach (var item in result)
+        Console.WriteLine(item);
     ```
 
-1. TODO
+1. Read all vertices:
 
     ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
+    var allVertices = await gremlinClient.SubmitAsync<dynamic>("g.V()");
+    foreach (var item in allVertices)
+        Console.WriteLine(item);
     ```
 
 ### Query data
 
 Finally, use a query to find all data that matches a specific traversal or filter in the graph.
 
-1. TODO
+1. Query for all products in the 'surf' category:
 
     ```csharp
-    
+    var surfProducts = await gremlinClient.SubmitAsync<dynamic>("g.V().hasLabel('product').has('category', 'surf')");
+    foreach (var item in surfProducts)
+        Console.WriteLine(item);
     ```
 
-1. TODO
+1. Query for all products that replace another product:
 
     ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
-    ```
-
-1. TODO
-
-    ```csharp
-    
+    var replaces = await gremlinClient.SubmitAsync<dynamic>("g.V().hasLabel('product').outE('replaces').inV()");
+    foreach (var item in replaces)
+        Console.WriteLine(item);
     ```
 
 ## Run the code
