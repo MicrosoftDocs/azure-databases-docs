@@ -81,7 +81,7 @@ Then, configure your development environment with a new project and the client l
 
 Start by authenticating the client using the credentials gathered earlier in this guide.
 
-1. Open the **Program.cs** file.
+1. Open the *Program.cs* file in your integrated development environment (IDE).
 
 1. Delete any existing content within the file.
 
@@ -250,7 +250,7 @@ dotnet run
 
 ## Clean up resources
 
-[!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-credentials.md)]
+[!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-cleanup.md)]
 
 ## Next step
 

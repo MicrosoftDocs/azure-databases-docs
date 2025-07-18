@@ -50,7 +50,7 @@ Then, configure your development environment with a new project and the client l
     pip install cassandra-driver
     ```
 
-1. Create the **app.py** file.
+1. Create the *app.py* file.
 
 ## Object model
 
@@ -69,7 +69,7 @@ Then, configure your development environment with a new project and the client l
 
 Start by authenticating the client using the credentials gathered earlier in this guide.
 
-1. Open the **app.py** file in your integrated development environment (IDE).
+1. Open the *app.py* file in your integrated development environment (IDE).
 
 1. Import the following types from the `cassandra-driver` module:
 
@@ -221,7 +221,7 @@ python app.py
 
 ## Clean up resources
 
-[!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-credentials.md)]
+[!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-cleanup.md)]
 
 ## Next step
 

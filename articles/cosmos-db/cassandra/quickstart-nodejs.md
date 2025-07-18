@@ -59,7 +59,7 @@ Then, configure your development environment with a new project and the client l
     npm install --save cassandra-driver
     ```
 
-1. Create the **index.js** file.
+1. Create the *index.js* file.
 
 :::zone-end
 
@@ -97,7 +97,7 @@ Then, configure your development environment with a new project and the client l
     npx tsc --init --target es2017 --module es2022 --moduleResolution nodenext
     ```
 
-1. Create the **index.ts** file.
+1. Create the *index.ts* file.
 
 :::zone-end
 
@@ -121,7 +121,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 :::zone pivot="programming-language-js"
 
-1. Open the **index.js** file in your integrated development environment (IDE).
+1. Open the *index.js* file in your integrated development environment (IDE).
 
 1. Import the following types from the `cassandra-driver` module:
 
@@ -203,7 +203,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 :::zone pivot="programming-language-ts"
 
-1. Open the **index.ts** file in your integrated development environment (IDE).
+1. Open the *index.ts* file in your integrated development environment (IDE).
 
 1. Import the following types from the `cassandra-driver` module:
 
@@ -522,7 +522,7 @@ npx tsx index.ts
 
 ## Clean up resources
 
-[!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-credentials.md)]
+[!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-cleanup.md)]
 
 ## Next step
 
