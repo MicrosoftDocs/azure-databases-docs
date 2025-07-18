@@ -10,6 +10,7 @@ ms.topic: quickstart-sdk
 ms.devlang: typescript
 ms.custom: devx-track-js, devx-track-ts, sfi-ropc-nochange
 ms.date: 07/21/2025
+ai-usage: ai-generated
 zone_pivot_groups: azure-devlang-nodejs
 ---
 

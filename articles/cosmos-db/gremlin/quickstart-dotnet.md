@@ -10,6 +10,7 @@ ms.topic: quickstart-sdk
 ms.devlang: csharp
 ms.custom: devx-track-csharp, devx-track-dotnet, sfi-ropc-nochange
 ms.date: 07/21/2025
+ai-usage: ai-generated
 ---
 
 # Quickstart: Azure Cosmos DB for Apache Gremlin client library for .NET
