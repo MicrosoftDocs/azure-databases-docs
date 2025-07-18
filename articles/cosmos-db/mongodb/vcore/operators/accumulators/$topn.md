@@ -1,7 +1,7 @@
 ---
   title: $topN
-  titleSuffix: Overview of the $topN operator in Azure Cosmos DB for MongoDB vCore
-  description: The $topN accumulator operator returns the top N elements from a group based on a specified sort order.
+  titleSuffix: Overview of the $topN operator
+  description: The $topN operator returns the first N documents from the result sorted by one or more fields
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
@@ -12,279 +12,281 @@
 
 # $topN
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$topN` accumulator operator returns the top N elements from a group based on a specified sort order. It extends the functionality of `$top` by allowing you to retrieve multiple top elements instead of just the single highest-ranked item.
+The `$topN` operator sorts documents on one more fields specified by the query and returns the first N documents matching the filtering criteria. It extends the functionality of `$top` by allowing you to retrieve multiple top elements instead of just the single highest-ranked item.
 
 ## Syntax
 
-The syntax for the `$topN` accumulator operator is as follows:
-
 ```javascript
 {
-  $group: {
-    _id: <expression>,
-    <field>: { 
-      $topN: {
-        n: <number>,
-        sortBy: { <field1>: <sort order>, <field2>: <sort order>, ... },
-        output: <expression>
-      }
+    $topN: {
+        output: [listOfFields],
+        sortBy: {
+            <fieldName>: < sortOrder >
+        },
+        n: < numDocumentsToReturn >
     }
-  }
 }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`n`** | The number of elements to return. Must be a positive integer. |
-| **`sortBy`** | Specifies the sort order using a document with field names and sort directions (1 for ascending, -1 for descending). |
-| **`output`** | The expression that specifies the field or value to return from the top N documents. |
+| **`listOfFields`** | The list of fields to be returned for the last document in the result set|
+| **`fieldName`** | The field to use for sorting the result set|
+| **`sortOrder`** | 1 or -1. 1 implies sorting in ascending order of the value of the field while -1 implies sorting in descending order of the values of the field|
+| **`n`** | The number of documents to return from the top of the sorted result set |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
-    ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Massive Markdown Mania",
-      "discounts": [
-        {
-          "categoryName": "DVD Players",
-          "discountPercentage": 14
-        },
-        {
-          "categoryName": "Media Players",
-          "discountPercentage": 21
-        },
-        {
-          "categoryName": "Televisions",
-          "discountPercentage": 22
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      ]
-    }
-  ]
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
 
-### Example 1: Get top three selling categories per store
+### Example 1 - Get the two stores with the lowest total sales
 
-Find the top three highest-selling categories for each store.
+To get the two lowest stores by sales within the Boulder Innovations company, run a query to filter on the company name, sort the resulting documents in asecending order of sales and return the top two documents from the sorted result set.
 
 ```javascript
-db.stores.aggregate([
-  { $unwind: "$sales.salesByCategory" },
-  {
-    $group: {
-      _id: "$_id",
-      storeName: { $first: "$name" },
-      top3Categories: {
-        $topN: {
-          n: 3,
-          sortBy: { "sales.salesByCategory.totalSales": -1 },
-          output: {
-            categoryName: "$sales.salesByCategory.categoryName",
-            totalSales: "$sales.salesByCategory.totalSales"
-          }
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["Boulder Innovations"]
         }
-      }
     }
-  }
+}, {
+    "$group": {
+        "_id": "$company",
+        "topSales": {
+            "$topN": {
+                "output": ["$company", "$sales"],
+                "sortBy": {
+                    "sales.totalSales": 1
+                },
+                "n": 2
+            }
+        }
+    }
+}])
+```
+
+This query returns the following result:
+
+```json
+{
+    "_id": "Boulder Innovations",
+    "topSales": [
+        [
+            "Boulder Innovations",
+            {
+                "totalSales": 119,
+                "salesByCategory": [
+                    {
+                        "categoryName": "Yoga Mats",
+                        "totalSales": 119
+                    }
+                ]
+            }
+        ],
+        [
+            "Boulder Innovations",
+            {
+                "totalSales": 162,
+                "salesByCategory": [
+                    {
+                        "categoryName": "Portable Turntables",
+                        "totalSales": 162
+                    }
+                ]
+            }
+        ]
+    ]
+}
+```
+
+### Example 2: Get the two most recent promotion events
+
+To find the two most recent promotion events for each store, group the documents in collection by store, sort them in ascending order of promotion dates and return the top two results from the sorted result set per store.
+
+```javascript
+db.stores.aggregate([{
+        $unwind: "$promotionEvents"
+    },
+    {
+        $group: {
+            _id: "$_id",
+            storeName: {
+                $first: "$name"
+            },
+            top2RecentPromotions: {
+                $topN: {
+                    n: 2,
+                    sortBy: {
+                        "promotionEvents.promotionalDates.startDate.Year": -1,
+                        "promotionEvents.promotionalDates.startDate.Month": -1,
+                        "promotionEvents.promotionalDates.startDate.Day": -1
+                    },
+                    output: {
+                        eventName: "$promotionEvents.eventName",
+                        startDate: "$promotionEvents.promotionalDates.startDate"
+                    }
+                }
+            }
+        }
+    }
 ])
 ```
 
-This produces output showing the top three selling categories for each store:
+The first two results returned by this query are:
 
 ```json
 [
-  {
-    _id: '8c8f23c9-1893-4ddd-97ad-dd57088058a5',
-    storeName: 'Proseware, Inc. | Camera Haven - North Jerroldville',
-    top3Categories: [
-      { categoryName: 'Waterproof Camcorders', totalSales: 25237 },
-      { categoryName: 'Camera Lenses', totalSales: 21189 },
-      { categoryName: 'Action Camcorders', totalSales: 19467 }
-    ]
-  },
-  {
-    _id: '7f0b0454-e22b-4646-8eb4-32ad5eb48042',
-    storeName: 'First Up Consultants | Tool Boutique - Paoloberg',
-    top3Categories: [
-      { categoryName: 'Drills', totalSales: 40686 },
-      { categoryName: 'Screwdrivers', totalSales: 30155 },
-      { categoryName: 'Chisels', totalSales: 15762 }
-    ]
-  },
-.
-.
-.
-]
-```
-
-### Example 2: Get top two recent promotion events
-
-Find the two most recent promotion events for each store based on start date.
-
-```javascript
-db.stores.aggregate([
-  { $unwind: "$promotionEvents" },
-  {
-    $group: {
-      _id: "$_id",
-      storeName: { $first: "$name" },
-      top2RecentPromotions: {
-        $topN: {
-          n: 2,
-          sortBy: { 
-            "promotionEvents.promotionalDates.startDate.Year": -1,
-            "promotionEvents.promotionalDates.startDate.Month": -1,
-            "promotionEvents.promotionalDates.startDate.Day": -1
-          },
-          output: {
-            eventName: "$promotionEvents.eventName",
-            startDate: "$promotionEvents.promotionalDates.startDate"
-          }
-        }
-      }
+    {
+        "_id": "4a99546f-a1d2-4e61-ae9f-b8c7c1faf73c'",
+        "storeName": "Lakeshore Retail | Stationery Nook - West Van",
+        "top2RecentPromotions": [
+            {
+                "eventName": "Crazy Markdown Madness",
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                }
+            },
+            {
+                "eventName": "Flash Sale Fiesta",
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                }
+            }
+        ]
+    },
+    {
+        "_id": "e0c47a06-4fe0-46b7-a309-8971bbb3978f",
+        "storeName": "VanArsdel, Ltd. | Baby Products Bargains - Elainamouth",
+        "top2RecentPromotions": [
+            {
+                "eventName": "Crazy Deal Days",
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                }
+            }
+        ]
     }
-  }
-])
-```
-
-This returns the two most recent promotion events for each store:
-
-```json
-[
-  {
-    _id: '4a99546f-a1d2-4e61-ae9f-b8c7c1faf73c',
-    storeName: 'Lakeshore Retail | Stationery Nook - West Van',
-    top2RecentPromotions: [
-      {
-        eventName: 'Crazy Markdown Madness',
-        startDate: { Year: 2024, Month: 9, Day: 21 }
-      },
-      {
-        eventName: 'Flash Sale Fiesta',
-        startDate: { Year: 2024, Month: 6, Day: 23 }
-      }
-    ]
-  },
-  {
-    _id: 'e0c47a06-4fe0-46b7-a309-8971bbb3978f',
-    storeName: 'VanArsdel, Ltd. | Baby Products Bargains - Elainamouth',
-    top2RecentPromotions: [
-      {
-        eventName: 'Crazy Deal Days',
-        startDate: { Year: 2024, Month: 9, Day: 21 }
-      }
-    ]
-  },
-.
-.
-.
 ]
 ```
-
-### Example 3: Get top five highest discounts by category
-
-Find the top five categories with the highest discount percentages across all promotion events for each store.
-
-```javascript
-db.stores.aggregate([
-  { $unwind: "$promotionEvents" },
-  { $unwind: "$promotionEvents.discounts" },
-  {
-    $group: {
-      _id: "$_id",
-      storeName: { $first: "$name" },
-      top5Discounts: {
-        $topN: {
-          n: 5,
-          sortBy: { "promotionEvents.discounts.discountPercentage": -1 },
-          output: {
-            categoryName: "$promotionEvents.discounts.categoryName",
-            discountPercentage: "$promotionEvents.discounts.discountPercentage",
-            eventName: "$promotionEvents.eventName"
-          }
-        }
-      }
-    }
-  }
-])
-```
-
-This shows the top five categories with highest discount percentages for each store:
-
-```json
-[
-  {
-    _id: '4a99546f-a1d2-4e61-ae9f-b8c7c1faf73c',
-    storeName: 'Lakeshore Retail | Stationery Nook - West Van',
-    top5Discounts: [
-      {
-        categoryName: 'Rulers',
-        discountPercentage: 24,
-        eventName: 'Markdown Madness'
-      },
-      {
-        categoryName: 'Notebooks',
-        discountPercentage: 21,
-        eventName: 'Markdown Madness'
-      },
-      {
-        categoryName: 'Paper Clips',
-        discountPercentage: 17,
-        eventName: 'Flash Sale Fiesta'
-      },
-      {
-        categoryName: 'Pencils',
-        discountPercentage: 15,
-        eventName: 'Bargain Blitz Bash'
-      },
-      {
-        categoryName: 'Erasers',
-        discountPercentage: 14,
-        eventName: 'Crazy Markdown Madness'
-      }
-    ]
-  },
-.
-.
-.
-]
-```
-
 
 ## Related content
 
