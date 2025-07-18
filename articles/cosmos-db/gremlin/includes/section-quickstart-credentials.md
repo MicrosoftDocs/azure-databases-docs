@@ -18,7 +18,7 @@ Now, get the password for the client library to use to create a connection to th
         --query "{endpoint:documentEndpoint}"
     ```
 
-1. Record the value of the `endpoint` property from the previous commands' output. This property' value is the **endpoint**you use later in this guide to connect to the account with the library.
+1. Record the value of the `endpoint` property from the previous commands' output. This property' value is the **endpoint** you use later in this guide to connect to the account with the library.
 
 1. Use `az cosmosdb keys list` to get the **keys** for the account.
 
