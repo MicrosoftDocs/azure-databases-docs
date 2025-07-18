@@ -50,7 +50,7 @@ Then, configure your development environment with a new project and the client l
     
     ```
 
-1. Create the **app.py** file.
+1. Create the **** file.
 
 ## Object model
 

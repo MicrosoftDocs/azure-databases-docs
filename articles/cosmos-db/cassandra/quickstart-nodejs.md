@@ -105,8 +105,8 @@ Then, configure your development environment with a new project and the client l
 
 | | Description |
 | --- | --- |
-| **`Client`** | |
-| **`Mapper`** | |
+| **`Client`** | Represents the a specific connection to a cluster |
+| **`Mapper`** | Cassandra Query Language (CQL) client used to run queries |
 
 ## Code examples
 
@@ -161,7 +161,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
     );
     ```
 
-1. TODO
+1. Create a `Client` object using the credential and configuration variables created in the previous steps.
 
     ```javascript
     let client = new Client({
@@ -174,13 +174,13 @@ Start by authenticating the client using the credentials gathered earlier in thi
     });
     ```
 
-1. TODO
+1. Asynchronously connect to the cluster.
 
     ```javascript
     await client.connect();
     ```
 
-1. TODO
+1. Create a new mapper targeting the `cosmicworks` keyspace and `product` table. Name the mapper `Product`.
 
     ```javascript
     const mapper = new Mapper(client, {
@@ -193,7 +193,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
     });
     ```
 
-1. TODO
+1. Generate a mapper instance using the `forModel` function and the `Product` mapper name.
 
     ```javascript
     const productMapper = mapper.forModel('Product');
@@ -207,13 +207,16 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 1. Import the following types from the `cassandra-driver` module:
 
-    - `cassandra`
+    - `cassandra.auth`
+    - `cassandra.mapping`
+    - `cassandra.types`
     - `cassandra.Client`
+    - `cassandra.ClientOptions`
     - `cassandra.mapping.Mapper`
     - `cassandra.auth.PlainTextAuthProvider`
 
     ```typescript
-    import { auth, mapping, Client, ClientOptions } from 'cassandra-driver';
+    import { auth, mapping, types, Client, ClientOptions } from 'cassandra-driver';
     
     const { Mapper } = mapping;
     const { PlainTextAuthProvider } = auth;
@@ -250,7 +253,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
     };
     ```
 
-1. TODO
+1. Create a `ClientOptions` object using the credential and configuration variables created in the previous steps.
 
     ```typescript
     let clientOptions: ClientOptions = {
@@ -261,19 +264,19 @@ Start by authenticating the client using the credentials gathered earlier in thi
     };
     ```
 
-1. TODO
+1. Create a `Client` object using the `clientOptions` variable in the constructor.
 
     ```typescript
     let client = new Client(clientOptions);
     ```
 
-1. TODO
+1. Asynchronously connect to the cluster.
 
     ```typescript
     await client.connect();
     ```
 
-1. TODO
+1. Create a new mapper targeting the `cosmicworks` keyspace and `product` table. Name the mapper `Product`.
 
     ```typescript
     const mapper = new Mapper( client, {
@@ -286,7 +289,7 @@ Start by authenticating the client using the credentials gathered earlier in thi
     });
     ```
 
-1. TODO
+1. Generate a mapper instance using the `forModel` function and the `Product` mapper name.
 
     ```typescript
     const productMapper = mapper.forModel('Product');
@@ -375,68 +378,36 @@ Then, read data that was previously upserted into the table.
 
 ::: zone pivot="programming-language-js"
 
-1. TODO
+1. Create an anonymous object named `filter`. In this object, include a property named `id` with the same value as the product created earlier in this guide.
 
     ```javascript
-    
+    const filter = {
+        id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'
+    };
     ```
 
-1. TODO
+1. Invoke the `get` function of the mapper passing in the `filter` variable. Store the result in a variable named `matchedProduct`.
 
     ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
+    let matchedProduct = await productMapper.get(filter);
     ```
 
 :::zone-end
 
 ::: zone pivot="programming-language-ts"
 
-1. TODO
+1. Create an anonymous object named `filter`. In this object, include a property named `id` with the same value as the product created earlier in this guide.
 
     ```typescript
-    
+    const filter = {
+        id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'
+    };
     ```
 
-1. TODO
+1. Invoke the `get` function of the mapper passing in the `filter` variable. Store the result in a variable named `matchedProduct` of type `Product`.
 
     ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
-    ```
-
-1. TODO
-
-    ```typescript
-    
+    let matchedProduct: Product = await productMapper.get(filter);
     ```
 
 :::zone-end
@@ -447,68 +418,84 @@ Finally, use a query to find all data that matches a specific filter in the tabl
 
 ::: zone pivot="programming-language-js"
 
-1. TODO
+1. Create a new string variable named `query` with a CQL query that matches items with the same `category` field.
 
     ```javascript
-    
+    const query = `
+    SELECT
+        *
+    FROM
+        cosmicworks.product
+    WHERE
+        category = :category ALLOW FILTERING;
+    `;
     ```
 
-1. TODO
+1. Create an anonymous object named `params`. In this object, include a property named `category` with the same value as the product created earlier in this guide.
 
     ```javascript
-    
+    const params = {
+        category: 'gear-surf-surfboards'
+    };
     ```
 
-1. TODO
+1. Asynchronously invoke the `execute` function passing in both the `query` and `params` variables as arguments. Store the result's `rows` property as a variable named `matchedProducts`.
 
     ```javascript
-    
+    let { rows: matchedProducts } = await client.execute(query, params);
     ```
 
-1. TODO
+1. Iterate over the query results by invoking the `foreach` method on the array of products.
 
     ```javascript
-    
-    ```
-
-1. TODO
-
-    ```javascript
-    
+    matchedProducts.forEach(product => {
+        // Do something here with each result
+    });
     ```
 
 :::zone-end
 
 ::: zone pivot="programming-language-ts"
 
-1. TODO
+1. Create a new string variable named `query` with a CQL query that matches items with the same `category` field.
 
     ```typescript
-    
+    const query: string = `
+    SELECT
+        *
+    FROM
+        cosmicworks.product
+    WHERE
+        category = :category ALLOW FILTERING;
+    `;
     ```
 
-1. TODO
+1. Create an anonymous object named `params`. In this object, include a property named `category` with the same value as the product created earlier in this guide.
 
     ```typescript
-    
+    const params = {
+        category: 'gear-surf-surfboards'
+    };
     ```
 
-1. TODO
+1. Asynchronously invoke the `execute` function passing in both the `query` and `params` variables as arguments. Store the result in a variable named `result` of type `types.ResultSet`.
 
     ```typescript
-    
+    let result: types.ResultSet = await client.execute(query, params);
     ```
 
-1. TODO
+1. Store the result's `rows` property as a variable named `matchedProducts` of type `Product[]`.
 
     ```typescript
-    
+    let matchedProducts: Product[] = result.rows;
     ```
 
-1. TODO
+1. Iterate over the query results by invoking the `foreach` method on the array of products.
 
     ```typescript
-    
+    matchedProducts.forEach((product: Product) => {
+        // Do something here with each result
+    });
     ```
 
 :::zone-end
@@ -517,9 +504,21 @@ Finally, use a query to find all data that matches a specific filter in the tabl
 
 Run the newly created application using a terminal in your application directory.
 
+::: zone pivot="programming-language-js"
+
+```bash
+node index.js
+```
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
+
 ```bash
 npx tsx index.ts
 ```
+
+:::zone-end
 
 ## Clean up resources
 
