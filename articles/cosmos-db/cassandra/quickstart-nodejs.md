@@ -105,7 +105,7 @@ Then, configure your development environment with a new project and the client l
 
 | | Description |
 | --- | --- |
-| **`Client`** | Represents the a specific connection to a cluster |
+| **`Client`** | Represents a specific connection to a cluster |
 | **`Mapper`** | Cassandra Query Language (CQL) client used to run queries |
 
 ## Code examples
@@ -427,7 +427,7 @@ Finally, use a query to find all data that matches a specific filter in the tabl
     FROM
         cosmicworks.product
     WHERE
-        category = :category ALLOW FILTERING;
+        category = :category ALLOW FILTERING
     `;
     ```
 
@@ -466,7 +466,7 @@ Finally, use a query to find all data that matches a specific filter in the tabl
     FROM
         cosmicworks.product
     WHERE
-        category = :category ALLOW FILTERING;
+        category = :category ALLOW FILTERING
     `;
     ```
 

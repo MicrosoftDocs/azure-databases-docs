@@ -199,7 +199,7 @@ Then, read data that was previously upserted into the table.
 1. Create a new string variable named `readQuery` with a CQL query that matches items with the same `id` field.
 
     ```csharp
-    string readQuery = "SELECT * FROM product WHERE id = ?;";
+    string readQuery = "SELECT * FROM product WHERE id = ?";
     ```
 
 1. Create a string variable named `id` with the same value as the product created earlier in this guide.
@@ -221,7 +221,7 @@ Finally, use a query to find all data that matches a specific filter in the tabl
 1. Create string variables named `findQuery` and `category` with the CQL query and required parameter.
 
     ```csharp
-    string findQuery = "SELECT * FROM product WHERE category = ? ALLOW FILTERING;";
+    string findQuery = "SELECT * FROM product WHERE category = ? ALLOW FILTERING";
     string category = "gear-surf-surfboards";
     ```
 
