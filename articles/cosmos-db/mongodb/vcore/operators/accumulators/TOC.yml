@@ -20,6 +20,10 @@
   href: $maxn.md
 - name: $min
   href: $min.md
+- name: $stdDevPop
+  href: $stddevpop.md
+- name: $stdDevSamp
+  href: $stddevsamp.md
 - name: $sum
   href: $sum.md
 - name: $top
