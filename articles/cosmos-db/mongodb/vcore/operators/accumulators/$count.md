@@ -144,7 +144,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Retrieve the count of all documents
 
-To retrieve the full count of documents within the collection, simply run a count query without query filters.
+To retrieve the count of documents within the collection, simply run a count query without query filters.
 
 ```javascript
 db.stores.aggregate([{
@@ -164,7 +164,7 @@ This query returns the following results:
 
 ### Example 2: Count documents grouped by a specific field
 
-To retrieve the count of documents within each sales category, first run a query to group all documents by sales category. Then roun a count query within each category.
+To retrieve the count of documents within each sales category, first run a query to group documents by sales category. Then run a count query within each category.
 
 ```javascript
 db.stores.aggregate([{
@@ -270,7 +270,7 @@ This query returns the following document:
 
 ### Example 3: Count the number of promotion events
 
-To count the number of promotion events across all stores, run a query to first unwind by promotion events and then count the number of distinct promotion events.
+To count the number of promotion events across all stores, first run a query to first unwind by promotion events and then count the distinct promotion events.
 
 ```javascript
 db.stores.aggregate([{
@@ -294,7 +294,7 @@ This query returns the following results:
 
 ### Example 4: Using `$count` in `$setWindowFields`
 
-To get the total sales per store for promotions on Laptops in 2023, first run a query to filter promotion events for laptops in 2023 and partition the stores by company. Then run a count query to return the results.  
+To get sales for Laptops promotions per store, first run a query to filter promotion events for laptops in 2023. Then partition the resulting stores by company. Lastly, run a count query across the partitioned stores to return the results.  
 
 ```javascript
 db.stores.aggregate([{
