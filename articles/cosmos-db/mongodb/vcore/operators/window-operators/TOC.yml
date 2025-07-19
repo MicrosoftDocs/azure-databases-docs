@@ -1,16 +1,16 @@
 - name: $shift
   href: $shift.md
-- name: $covariancepop
+- name: $covariancePop
   href: $covariancepop.md
-- name: $covariancesamp
+- name: $covarianceSamp
   href: $covariancesamp.md
-- name: $denserank
+- name: $denseRank
   href: $denserank.md
 - name: $derivative
   href: $derivative.md
-- name: $documentnumber
+- name: $documentNumber
   href: $documentnumber.md
-- name: $expmovingavg
+- name: $expMovingAvg
   href: $expmovingavg.md
 - name: $integral
   href: $integral.md
