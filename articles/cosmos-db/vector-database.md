@@ -160,12 +160,6 @@ Use the natively integrated vector database in [Azure Cosmos DB for PostgreSQL](
 
 - Python: [Python notebook tutorial - food review chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-PostgreSQL_CognitiveSearch)
 
-## Vector database solutions
-
-- [Azure PostgreSQL Server pgvector Extension](../postgresql/flexible-server/how-to-use-pgvector.md)
-
-:::image type="content" source="media/vector-search/azure-databases-and-ai-search.png" lightbox="media/vector-search/azure-databases-and-ai-search.png" alt-text="Diagram of Vector indexing services for Azure Cosmos DB.":::
-
 ## Related content
 
 - [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
