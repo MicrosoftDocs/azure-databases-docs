@@ -1,7 +1,7 @@
 ---
 title: $min
-titleSuffix: Overview of the $min operator in Azure Cosmos DB for MongoDB vCore
-description: Retrieves the minimum value from a specified field in a group, bucket, bucketAuto, or setWindowFields stage.
+titleSuffix: Overview of the $min operator
+description: Retrieves the minimum value for a specified field
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@ ms.date: 01/05/2025
 
 # $min
 
-The `$min` operator is used within aggregation stages like `$group`, `$bucket`, `$bucketAuto`, or `$setWindowFields`. It calculates the minimum value of a specified field across documents in a group or window. This operator is particularly useful for summarizing data or finding the smallest value in a dataset.
+The `$min` operator is used within aggregation stages like `$group`, `$bucket`, `$bucketAuto`, or `$setWindowFields`. The min operator is particularly useful in summarizing data or finding the smallest value in a dataset.
 
 ## Syntax
 
@@ -98,7 +98,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Using `$min` in `$group`
 
-This example calculates the minimum sales value for each category in the `sales.salesByCategory` array.
+This query calculates the minimum sales value for each category in the `sales.salesByCategory` array by first grouping documents by sales category and then calculating the minimum sales volume within each category.
 
 ```javascript
 db.stores.aggregate([{
