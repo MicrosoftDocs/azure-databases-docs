@@ -1,8 +1,8 @@
 ---
 title: What Is the PostgreSQL Extension for Visual Studio Code?
 description: Overview of the PostgreSQL extension for Visual Studio Code.
-author: swarathmika
-ms.author: skakivaya
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 06/24/2025
 ms.service: azure-database-postgresql
