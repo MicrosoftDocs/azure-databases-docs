@@ -1,4 +1,17 @@
 - name: $shift
   href: $shift.md
-- name: $stdDevSamp
-  href: $stdDevSamp.md
+- name: $covariancepop
+  href: $covariancepop.md
+- name: $covariancesamp
+  href: $covariancesamp.md
+- name: $denserank
+  href: $denserank.md
+- name: $derivative
+  href: $derivative.md
+- name: $documentnumber
+  href: $documentnumber.md
+- name: $expmovingavg
+  href: $expmovingavg.md
+- name: $integral
+  href: $integral.md
+
