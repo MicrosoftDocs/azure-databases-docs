@@ -56,7 +56,7 @@ Following is the list of requirements and recommendations for data encryption co
     - Key vault and Azure Cosmos DB for MongoDB vCore must belong to the same [Microsoft Entra tenant](/entra/identity-platform/developer-glossary#tenant).
     - Recommendation: Set the **Days to retain deleted vaults** setting for Key Vault to *90 days*. This configuration setting can be defined only at key vault creation time. Once an instance is created, it isn't possible to modify this setting.
     - Enable the [soft-delete feature](/azure/key-vault/general/soft-delete-overview) in key vault to help you with protecting from data loss, if a key or a key vault instance is accidentally deleted. Key vault retains soft-deleted resources for 90 days unless the user recovers or purges them in the meantime. The recover and purge actions have their own permissions associated with a key vault, an RBAC role, or an access policy permission. The soft-deleted feature is on by default. If you have a key vault that was deployed long time ago, it might still have soft-delete disabled. In that case, you can [turn it on](/azure/key-vault/general/soft-delete-overview#supporting-interfaces).
-    - Enable[] purge protection](/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault) to enforce a mandatory retention period for deleted vaults and vault objects.
+    - Enable [purge protection](/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault) to enforce a mandatory retention period for deleted vaults and vault objects.
 - **Key**
     - The key used for encrypting the data encryption key can be only asymmetric, RSA, or RSA-HSM. Key sizes of 2,048, 3,072, and 4,096 are supported. 
         - Recommendation: Use a 4,096-bit key for better security.
@@ -98,14 +98,6 @@ Someone with sufficient access rights to Key Vault, might accidentally disable c
 - Deleting the Key Vault instance.
 - Changing the Key Vault firewall rules.
 - Deleting the managed identity of the cluster in Microsoft Entra ID.
-
-### Monitoring the keys kept in Azure Key Vault
-
-To monitor the database state, and to turn on alerts for the loss of access to the data encryption protector, configure the following Azure features:
-
-- [Resource health](/azure/service-health/resource-health-overview): A database that lost access to the CMK appears as **Inaccessible** after the first connection to the database is denied.
-- [Activity log](/azure/service-health/alerts-activity-log-service-notifications-portal): When access to the CMK in the customer-managed Key Vault instance fails, entries are added to the activity log. You can reinstate access if you create alerts for these events as soon as possible.
-- [Action groups](/azure/azure-monitor/alerts/action-groups): Define these groups to receive notifications and alerts based on your preferences.
 
 ### Inaccessible customer-managed key condition
 
