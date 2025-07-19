@@ -487,10 +487,6 @@ demo.launch(debug=True)
 demo.close()
 ```
 
-## Vector Database Solutions
-
-[Azure PostgreSQL Server pgvector Extension](../../postgresql/flexible-server/how-to-use-pgvector.md)
-
 ## Related content
 
 - [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
