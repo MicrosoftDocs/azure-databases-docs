@@ -1,8 +1,8 @@
 ---
 title: Restore a dropped server
 description: This article describes how to restore a dropped server in Azure Database for  PostgreSQL flexible server using the Azure portal.
-author: kabharati
-ms.author: kabharati
+author: danyal-bukhari
+ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 09/18/2024
 ms.service: azure-database-postgresql

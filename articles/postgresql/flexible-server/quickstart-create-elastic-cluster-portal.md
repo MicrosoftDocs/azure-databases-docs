@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Create elastic clusters with portal"
 description: Quickstart guide to creating an instance of elastic cluster in Azure Database for PostgreSQL / Flexible Server.
-author: mulander
-ms.author: adamwolk
+author: jjfrost
+ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 02/28/2025
 ms.service: azure-database-postgresql

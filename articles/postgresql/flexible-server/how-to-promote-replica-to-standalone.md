@@ -1,8 +1,8 @@
 ---
 title: Promote read replica to standalone server
 description: This article describes how to promote a read replica so that it becomes an independent standalone server.
-author: kabharati
-ms.author: kabharati
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/13/2025
 ms.service: azure-database-postgresql
