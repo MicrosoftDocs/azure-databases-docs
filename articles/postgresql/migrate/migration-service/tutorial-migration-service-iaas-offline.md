@@ -46,7 +46,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Migration**.
 
-    :::image type="content" source="media/tutorial-migration-service/portal-select-migration-pane.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service/portal-select-migration-pane.png":::
+    :::image type="content" source="media/tutorial-migration-service/select-migration-page.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service/select-migration-page.png":::
 
 1. Select **Create** to go through a wizard-based series of tabs to perform a migration to a flexible server from on-premises or Azure VM.
 
@@ -83,7 +83,7 @@ Select **Next: Runtime server**.
 
 The migration runtime server is a specialized feature within the [migration service in Azure Database for PostgreSQL](concepts-migration-service-postgresql.md), designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server, but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
-:::image type="content" source="media/tutorial-migration-service/portal-runtime-server-migration.png" alt-text="Screenshot of the Runtime server tab.":::
+:::image type="content" source="media/tutorial-migration-service/runtime-server-migration.png" alt-text="Screenshot of the Runtime server tab.":::
 
 For more information about the runtime server, visit [Migration runtime server](concepts-migration-service-runtime-server.md).
 
@@ -100,7 +100,7 @@ The **Source server** tab prompts you to give details related to the source sele
 
 After the successful test connection, select **Next: Target server**.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-source-server-migration-iaas.png" alt-text="Screenshot of Source server migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/source-server-migration.png" alt-text="Screenshot of Source server migration tab.":::
 
 #### Target server
 
@@ -113,7 +113,7 @@ The **Target server** tab displays metadata for the flexible server target, such
 
 After the successful test connection, select the **Next: Databases to validate or migrate**
 
-:::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-target-server-migration-iaas.png" alt-text="Screenshot of the Target server migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/target-server-migration.png" alt-text="Screenshot of the Target server migration tab.":::
 
 #### Databases to validate or migrate
 
@@ -121,7 +121,7 @@ Under the **Databases to validate or migrate** tab, you can choose a list of use
 
 After selecting the databases, select **Next: Summary**.
 
-:::image type="content" source="media/tutorial-migration-service/portal-databases-to-validate-or-migrate-migration.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/databases-to-validate-or-migrate-migration.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab.":::
 
 #### Summary
 

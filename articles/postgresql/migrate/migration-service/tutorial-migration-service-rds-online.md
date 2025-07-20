@@ -102,7 +102,7 @@ The **Source server** tab prompts you to give details related to the source sele
 
 After the successful test connection, select **Next: Target server**.
 
-:::image type="content" source="media/tutorial-migration-service-rds-online/portal-online-source-server-migration-rds.png" alt-text="Screenshot of Source server migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/source-server-migration.png" alt-text="Screenshot of Source server migration tab.":::
 
 #### Target server
 
@@ -115,7 +115,7 @@ The **Target server** tab displays metadata for the flexible server target, such
 
 After the successful test connection, select the **Next: Databases to validate or migrate**
 
-:::image type="content" source="media/tutorial-migration-service-rds-online/portal-online-target-server-migration-rds.png" alt-text="Screenshot of the Target server migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/target-server-migration.png" alt-text="Screenshot of the Target server migration tab.":::
 
 #### Databases to validate or migrate
 
