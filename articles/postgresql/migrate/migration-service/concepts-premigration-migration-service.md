@@ -4,7 +4,7 @@ description: Learn about premigration validations to identify issues before you 
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 07/21/2025
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
@@ -17,37 +17,39 @@ Premigration validation is a set of rules that involves assessing and verifying 
 
 ## How do you use the premigration validation feature?
 
-To use premigration validation when you migrate to Azure Database for PostgreSQL flexible server, you have two migration options:
+You can migrate by using Azure portal or Azure CLI.
 
-- Use the Azure portal during setup.
-- Specify the `--migration-option` parameter in the Azure CLI when you create a migration.
+### [Portal](#tab/portal)
 
-Here's how to do it in both methods.
+Using the [Azure portal](https://portal.azure.com/):
 
-### Use the Azure portal
+1. Select your Azure Database for PostgreSQL flexible server.
 
-1. Go to the migration tab in Azure Database for PostgreSQL.
+1. In the resource menu, select **Migration**.
 
-1. Select **Create**.
+    :::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-select-migration-pane.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service-iaas-offline/portal-offline-select-migration-pane.png":::
 
-1. On the **Setup** page, choose the migration option that includes validation. Select **Validate** or **Validate and migrate**.
+1. Select **Create** to go through a wizard-based series of tabs to perform a migration to a flexible server from on-premises or Azure VM.
+
+    :::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-iaas-offline/portal-offline-create-migration.png":::
+
+1. In **MIgration option**, select **Validate** or **Validate and migrate**.
 
     :::image type="content" source="media/concepts-premigration-migration-service/premigration-option.png" alt-text="Screenshot that shows the premigration option to start migration." lightbox="media/concepts-premigration-migration-service/premigration-option.png":::
 
-### Use the Azure CLI
+### [CLI](#tab/cli)
 
 1. Open your command-line interface.
 
-1. Ensure that you have the Azure CLI installed and that you're signed in to your Azure account by using `az sign-in`.
-   The version should be at least 2.56.0 or above to use the migration option.
+1. Ensure that you have the Azure CLI installed, and that you're signed in to your Azure account by using `az login`. Make usre that you're using the latest available version of CLI.
 
 1. Construct your migration task creation command with the Azure CLI.
 
-    ```bash
-    az postgres flexible-server migration create --subscription <subscription ID> --resource-group <Resource group Name> --name <Flexible server Name> --migration-name <Unique migration ID> --migration-option ValidateAndMigrate --properties "Path of the JSON File" --migration-mode offline
+    ```azurecli-interactive
+    az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-option Validate --properties "path_to_json_file_with_all_migration_properties" --migration-mode offline
     ```
 
-1. Include the `--migration-option` parameter followed by the `Validate` option to perform only the premigration. Use `Validate`, `Migrate`, or `ValidateAndMigrate` to perform validation. If the validation is successful, continue with the migration.
+1. Include the `--migration-option` parameter followed by the `Validate` option to perform only the premigration. If the validation is successful, use `ValidateAndMigrate` to perform validation followed by migration.
 
 ## Premigration validation options
 
