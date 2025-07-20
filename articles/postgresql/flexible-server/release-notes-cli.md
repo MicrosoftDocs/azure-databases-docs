@@ -1,8 +1,8 @@
 ---
-title: CLI  release notes
+title: CLI release notes
 description: Azure CLI release notes for Azure Database for PostgreSQL flexible server.
-author: techlake
-ms.author: hganten
+author: jjfrost
+ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 5/1/2024
 ms.service: azure-database-postgresql
@@ -12,6 +12,7 @@ ms.custom:
   - references_regions
   - build-2023
 ---
+
 # Azure CLI release notes - Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]

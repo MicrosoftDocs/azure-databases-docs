@@ -1,8 +1,8 @@
 ---
 title: Version and Platform Compatibility / Previous PostgreSQL Versions server parameters
 description: Version and Platform Compatibility / Previous PostgreSQL Versions server parameters for Azure Database for PostgreSQL flexible server.
-author: nachoalonsoportillo
-ms.author: ialonso
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 05/05/2025
 ms.service: azure-database-postgresql

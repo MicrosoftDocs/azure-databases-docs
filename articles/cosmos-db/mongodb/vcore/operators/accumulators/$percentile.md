@@ -1,35 +1,38 @@
 ---
-title: $maxN
-titleSuffix: Overview of the $maxN operator
-description: Retrieves the top N values based on a specified filtering criteria
-author: sandeepsnairms
-ms.author: sandnair
+title: $percentile
+titleSuffix: Overview of the $percentile operator
+description: The $percentile operator calculates the percentile of numerical values that match a filtering criteria
+author: niklarin
+ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 01/05/2025
+ms.date: 06/28/2025
 ---
 
-# $maxN
+# $percentile
 
-The `$maxN` operator is used to retrieve the top N values for a field based on a specified filtering critieria. 
+The `$percentile` operator calculates the percentile of numerical values that match a filtering criteria. This operator is particularly useful for identifying statistical thresholds, such as median or percentiles.
 
 ## Syntax
 
 ```javascript
-$maxN: {
+$percentile: {
     input: < field or expression > ,
-    n: < number of values to retrieve >
+    p: [ < percentile values > ],
+    method: < method >
 }
 ```
 
 ## Parameters  
+
 | Parameter | Description |
 | --- | --- |
-| **`input`** | Specifies the field or expression to evaluate for maximum values. |
-| **`n`** | Specifies the number of maximum values to retrieve. Must be a positive integer. |
+| **`input`** | Specifies the numerical data to calculate the percentile from. |
+| **`p`** | An array of percentile values (between 0 and 1) to calculate. |
+| **`method`** | Specifies the interpolation method to use. Valid values are `"approximate"` and `"continuous"`. |
 
-## Examples
+## Example
 
 Consider this sample document from the stores collection.
 
@@ -143,23 +146,25 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Retrieve top 2 sales categories
+### Example 1: Calculate the 50th percentile of sales volume
 
-The following query retrieves the top 2 sales categories with the highest sales volume:
+The following example calculates the 50th percentile (median) of total sales volume within each sales category across all stores.
 
 ```javascript
 db.stores.aggregate([{
-        $project: {
-            topSalesCategories: {
-                $maxN: {
-                    input: "$sales.salesByCategory",
-                    n: 2
+        $unwind: "$sales.salesByCategory"
+    },
+    {
+        $group: {
+            _id: null,
+            medianSales: {
+                $percentile: {
+                    input: "$sales.salesByCategory.totalSales",
+                    p: [0.5],
+                    method: "approximate"
                 }
             }
         }
-    },
-    {
-        $limit: 4
     }
 ])
 ```
@@ -169,109 +174,48 @@ This query returns the following results:
 ```json
 [
     {
-        "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
-        "topSalesCategories": [
-            {
-                "categoryName": "Photo Albums",
-                "totalSales": 17676
-            }
-        ]
-    },
-    {
-        "_id": "b5c9f932-4efa-49fd-86ba-b35624d80d95",
-        "topSalesCategories": [
-            {
-                "categoryName": "Rulers",
-                "totalSales": 35346
-            }
-        ]
-    },
-    {
-        "_id": "5c882644-f86f-433f-b45e-88e2015825df",
-        "topSalesCategories": [
-            {
-                "categoryName": "iPads",
-                "totalSales": 39014
-            },
-            {
-                "categoryName": "Unlocked Phones",
-                "totalSales": 49969
-            }
-        ]
-    },
-    {
-        "_id": "cba62761-10f8-4379-9eea-a9006c667927",
-        "topSalesCategories": [
-            {
-                "categoryName": "Ultrabooks",
-                "totalSales": 41654
-            },
-            {
-                "categoryName": "Toner Refill Kits",
-                "totalSales": 10726
-            }
+        "_id": null,
+        "medianSales": [
+            25070.449624139295
         ]
     }
 ]
 ```
 
-### Example 2: Using `$maxN` in `$setWindowFields`
+### Example 2: Calculate multiple percentiles
 
-To retrieve the top N discounts for "Laptops" in 2023 per city:
+This example calculates the 25th, 50th, and 75th percentiles of the total sales across all stores.
 
 ```javascript
 db.stores.aggregate([{
-        $unwind: "$promotionEvents"
-    },
-    {
-        $unwind: "$promotionEvents.discounts"
-    },
-    // Match only "Laptops" discounts from year 2023
-    {
-        $match: {
-            "promotionEvents.discounts.categoryName": "Laptops",
-            "promotionEvents.promotionalDates.startDate.Year": 2023
-        }
-    },
-    // Group by city and collect top N max discounts
-    {
-        $group: {
-            _id: "$city",
-            topDiscounts: {
-                $maxN: {
-                    input: "$promotionEvents.discounts.discountPercentage",
-                    n: 3 // Change this to however many top discounts you want
-                }
+    $group: {
+        _id: null,
+        percentiles: {
+            $percentile: {
+                input: "$sales.fullSales",
+                p: [0.25, 0.5, 0.75],
+                method: "approximate"
             }
         }
     }
-])
+}])
 ```
 
-The first three results returned by this query are:
+This query returns the following results:
 
 ```json
 [
     {
-        "_id": "Lake Margareteland",
-        "topDiscounts": [
-            18
-        ]
-    },
-    {
-        "_id": "Horacetown",
-        "topDiscounts": [
-            13
-        ]
-    },
-    {
-        "_id": "D'Amoreside",
-        "topDiscounts": [
-            9
+        "_id": null,
+        "percentiles": [
+            3700,
+            3700,
+            3700
         ]
     }
 ]
 ```
 
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]

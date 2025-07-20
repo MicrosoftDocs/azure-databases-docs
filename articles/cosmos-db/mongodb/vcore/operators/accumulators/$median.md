@@ -1,33 +1,40 @@
 ---
-title: $maxN
-titleSuffix: Overview of the $maxN operator
-description: Retrieves the top N values based on a specified filtering criteria
-author: sandeepsnairms
-ms.author: sandnair
+title: $median
+titleSuffix: Overview of the $median operator
+description: The $median operator calculates the median value of a numeric field in a group of documents.
+author: niklarin
+ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 01/05/2025
+ms.date: 06/28/2025
 ---
 
-# $maxN
+# $median usage on Azure Cosmos DB for MongoDB vCore
 
-The `$maxN` operator is used to retrieve the top N values for a field based on a specified filtering critieria. 
+The `$median` accumulator operator calculates the median value of a numeric field in a group of documents. 
 
 ## Syntax
 
 ```javascript
-$maxN: {
-    input: < field or expression > ,
-    n: < number of values to retrieve >
+{
+    $group: {
+        _id: < expression > ,
+        medianValue: {
+            $median: {
+                input: < field or expression > ,
+                method: < >
+            }
+        }
+    }
 }
 ```
 
 ## Parameters  
+
 | Parameter | Description |
 | --- | --- |
-| **`input`** | Specifies the field or expression to evaluate for maximum values. |
-| **`n`** | Specifies the number of maximum values to retrieve. Must be a positive integer. |
+| **`<field or expression>`** | The field or expression from which to calculate the median. |
 
 ## Examples
 
@@ -143,135 +150,53 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Retrieve top 2 sales categories
+### Example 1: Calculate the median sales volume
 
-The following query retrieves the top 2 sales categories with the highest sales volume:
+To calculate the median sales volume within each category, first group the documents by the distinct sales categories, then calculate the median sales within each grouped category.
 
 ```javascript
 db.stores.aggregate([{
-        $project: {
-            topSalesCategories: {
-                $maxN: {
-                    input: "$sales.salesByCategory",
-                    n: 2
-                }
+    $unwind: "$sales.salesByCategory"
+}, {
+    $group: {
+        _id: "$sales.salesByCategory.categoryName",
+        medianSales: {
+            $median: {
+                "input": "$sales.salesByCategory.totalSales",
+                "method": "approximate"
             }
         }
-    },
-    {
-        $limit: 4
     }
-])
+}])
 ```
 
-This query returns the following results:
+The first five results returned by this query are:
 
 ```json
 [
     {
-        "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
-        "topSalesCategories": [
-            {
-                "categoryName": "Photo Albums",
-                "totalSales": 17676
-            }
-        ]
+        "_id": "Light Bulbs",
+        "medianSales": 24845
     },
     {
-        "_id": "b5c9f932-4efa-49fd-86ba-b35624d80d95",
-        "topSalesCategories": [
-            {
-                "categoryName": "Rulers",
-                "totalSales": 35346
-            }
-        ]
+        "_id": "Christmas Trees",
+        "medianSales": 28210
     },
     {
-        "_id": "5c882644-f86f-433f-b45e-88e2015825df",
-        "topSalesCategories": [
-            {
-                "categoryName": "iPads",
-                "totalSales": 39014
-            },
-            {
-                "categoryName": "Unlocked Phones",
-                "totalSales": 49969
-            }
-        ]
+        "_id": "Ukuleles",
+        "medianSales": 27295
     },
     {
-        "_id": "cba62761-10f8-4379-9eea-a9006c667927",
-        "topSalesCategories": [
-            {
-                "categoryName": "Ultrabooks",
-                "totalSales": 41654
-            },
-            {
-                "categoryName": "Toner Refill Kits",
-                "totalSales": 10726
-            }
-        ]
-    }
-]
-```
-
-### Example 2: Using `$maxN` in `$setWindowFields`
-
-To retrieve the top N discounts for "Laptops" in 2023 per city:
-
-```javascript
-db.stores.aggregate([{
-        $unwind: "$promotionEvents"
+        "_id": "GPUs",
+        "medianSales": 19813
     },
     {
-        $unwind: "$promotionEvents.discounts"
-    },
-    // Match only "Laptops" discounts from year 2023
-    {
-        $match: {
-            "promotionEvents.discounts.categoryName": "Laptops",
-            "promotionEvents.promotionalDates.startDate.Year": 2023
-        }
-    },
-    // Group by city and collect top N max discounts
-    {
-        $group: {
-            _id: "$city",
-            topDiscounts: {
-                $maxN: {
-                    input: "$promotionEvents.discounts.discountPercentage",
-                    n: 3 // Change this to however many top discounts you want
-                }
-            }
-        }
-    }
-])
-```
-
-The first three results returned by this query are:
-
-```json
-[
-    {
-        "_id": "Lake Margareteland",
-        "topDiscounts": [
-            18
-        ]
-    },
-    {
-        "_id": "Horacetown",
-        "topDiscounts": [
-            13
-        ]
-    },
-    {
-        "_id": "D'Amoreside",
-        "topDiscounts": [
-            9
-        ]
+        "_id": "Towels",
+        "medianSales": 27771
     }
 ]
 ```
 
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]

@@ -1,8 +1,8 @@
 ---
 title: Scale compute
 description: This article describes how to scale the compute of an Azure Database for PostgreSQL flexible server.
-author: akashraokm
-ms.author: akashrao
+author: danyal-bukhari
+ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
