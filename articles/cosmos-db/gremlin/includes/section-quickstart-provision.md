@@ -43,8 +43,8 @@ Start by creating an API for Apache Gremlin account. Once the account is created
         --resource-group "<resource-group-name>" \
         --account-name "<account-name>" \
         --database-name "cosmicworks" \
-        --name "product" \
-        --partition-key-path "/id"
+        --name "products" \
+        --partition-key-path "/category"
     ```
 
 #### [Azure portal](#tab/azure-portal)
@@ -56,8 +56,6 @@ Start by creating an API for Apache Gremlin account. Once the account is created
 1. Within **Services**, select **Azure Cosmos DB**.
 
 1. In the **Azure Cosmos DB** pane, select **Create**, and then **Azure Cosmos DB for Apache Gremlin** within the **Others** tab.
-
-1. Select **Request unit (RU) database account** for the account type.
 
 1. Within the **Basics** pane, configure the following options, and then select **Review + create**:
 
@@ -89,8 +87,8 @@ Start by creating an API for Apache Gremlin account. Once the account is created
     | --- | --- |
     | **Database** | *Create new* |
     | **Database name** | `cosmicworks` |
-    | **Graph name** | `product` |
-    | **Partition key** | `/id` |
+    | **Graph name** | `products` |
+    | **Partition key** | `/category` |
 
     > [!TIP]
     > You can leave any unspecified options to their default values.
