@@ -4,7 +4,7 @@ description: "Learn to migrate, seamlessly and in offline mode, from an Azure VM
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 07/18/2025
+ms.date: 07/21/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial

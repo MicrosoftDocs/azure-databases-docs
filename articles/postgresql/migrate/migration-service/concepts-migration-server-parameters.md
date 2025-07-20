@@ -1,15 +1,15 @@
 ---
-title: "Migration Configurable parameters in Migration Service"
-description: Learn about migration configurable parameters by using the migration service in Azure Database for PostgreSQL.
+title: "Managing migration with server parameters"
+description: Learn about migration configurable parameters, by using the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 03/17/2025
+ms.date: 07/21/2025
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Managing Migration with Server Parameters
+# Managing migration with server parameters
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -22,16 +22,16 @@ For example, customers can use the `azure.migration_skip_role_user` parameter to
 
 ## Migration server parameters
 
-| Parameter Name | Type | Description | Supported Sources |
+| Parameter name | Type | Description | Supported sources |
 | --- | --- | --- | --- |
-| `azure.migration_skip_role_user` | Boolean | When set to `on`, this parameter excludes user roles from the migration process. | only Azure Database for PostgreSQL - Single server |
+| `azure.migration_skip_role_user` | Boolean | When set to `on`, this parameter excludes user roles from the migration process. | Only Azure Database for PostgreSQL single server |
 | `azure.migration_copy_with_binary` | Boolean | When set to `on`, this parameter enables the use of the binary format for copying data during migration. | All supported sources by the migration service |
 | `azure.migration_table_split_size` | Integer (MB) | Defines the size (in MB) at which tables will be partitioned during migration. | All supported sources by the migration service |
 | `azure.migration_skip_analyze` | Boolean | When set to `on`, this parameter skips the analyze phase during the migration. | only Azure Database for PostgreSQL - Single server |
 | `azure.migration_skip_large_objects` | Boolean | When set to `on`, this parameter skips the migration of large objects such as BLOBs. | All supported sources by the migration service |
 | `azure.migration_skip_extensions` | Boolean | When set to `on`, this parameter skips the migration of extensions. | All supported sources by the migration service |
 
-> [!NOTE]  
+> [!NOTE]
 > - The migration configurable server parameters are only applicable to the new Azure Database for PostgreSQL flexible server.
 > - Changes in the migration configurable server parameters do not require a restart.
 > - The `azure.migration_skip_role_user` parameter is disabled for the target Azure Database for PostgreSQL flexible server version 16.

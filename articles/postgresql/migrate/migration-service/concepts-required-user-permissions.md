@@ -1,26 +1,26 @@
 ---
-title: Required Permissions for Migration Creation and Monitoring
+title: Required permissions for migration creation and monitoring
 description: Permissions required for a user to create and monitor migrations.
 author: shriramm
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 07/21/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Required Permissions for Migration Creation and Monitoring
+# Required permissions for migration creation and monitoring
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 To create and monitor migrations using the PostgreSQL Migration Service, users need specific permissions. Here's a guide on the permissions required and steps to configure them effectively.
 
-## Minimum Set of Permissions
+## Minimum set of permissions
 
 The following permissions are the minimum required for a user to successfully create and monitor migrations:
 
-- **Resource Group and Subscription Permissions**
+- **Resource group** and **Subscription**
     - Microsoft.Resources/subscriptions/resourceGroups/read
     - Microsoft.Resources/subscriptions/read
     - Microsoft.Resources/subscriptions/locations/read
@@ -28,26 +28,26 @@ The following permissions are the minimum required for a user to successfully cr
     - Microsoft.Resources/deployments/read
     - Microsoft.Resources/subscriptions/resourceGroups/resources/read
 
-- **Migration-Specific Permissions**
+- **Migration-specific**
     - Microsoft.DBforPostgreSQL/flexibleServers/checkMigrationNameAvailability/action
     - Microsoft.DBforPostgreSQL/flexibleServers/migrations/write
     - Microsoft.DBforPostgreSQL/flexibleServers/migrations/read
     - Microsoft.DBforPostgreSQL/flexibleServers/migrations/delete
 
-- **Flexible Server Access Permissions**
+- **Target flexible server**
     - Microsoft.DBforPostgreSQL/flexibleServers/read
     - Microsoft.DBforPostgreSQL/flexibleServers/databases/read
 
-- **Source Server Access Permissions (Required for Single Server Sources only)**
+- **Source server (required for Single Server sources only)**
     - Microsoft.DBforPostgreSQL/servers/read
     - Microsoft.DBforPostgreSQL/servers/administrators/read
     - Microsoft.DBforPostgreSQL/servers/databases/read
 
-- **Connectivity and Database List Actions**
+- **Connectivity** and **Database List**
     - Microsoft.DBforPostgreSQL/flexibleServers/testConnectivity/action
     - Microsoft.DBforPostgreSQL/flexibleServers/getSourceDatabaseList/action
 
-- **Configuration Access Permissions**
+- **Configurations**
     - Microsoft.DBforPostgreSQL/flexibleServers/configurations/read
     - Microsoft.DBforPostgreSQL/servers/configurations/read
 
@@ -55,7 +55,7 @@ The following permissions are the minimum required for a user to successfully cr
 
 By default, privileged administrator roles such as **Owner** or **Contributor** at the subscription level have the necessary permissions enabled.
 
-### Assigning a Custom Role for Migration
+### Assigning a custom role for migration
 
 If you want to grant permissions specifically for creating and monitoring migrations, without additional database admin privileges, consider creating a custom role.
 
