@@ -29,8 +29,6 @@ To configure customer-managed key encryption on your Azure Cosmos DB for MonogDB
 > [!IMPORTANT]  
 > User-managed identity and Azure Key Vault instance used to configure CMK should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is hosted and all belong to the same [Microsoft tenant](/entra/identity-platform/developer-glossary#tenant).
 
-### [Portal](#tab/portal-customer-managed-cluster-provisioning)
-
 Using the [Azure portal](https://portal.azure.com/):
 
 1. [Create one user-assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity), if you don't have one yet. 
@@ -42,6 +40,8 @@ Using the [Azure portal](https://portal.azure.com/):
 1. Grant user-assigned managed identity permissions to the AKV instance as outlined in [the requirements](./database-encryption-at-rest.md#cmk-requirements). 
 
 ## Configure data encryption with customer-managed key during cluster provisioning
+
+### [Portal](#tab/portal-customer-managed-cluster-provisioning)
 
 1. During provisioning of a new Azure Cosmos DB for MongoDB vCore cluster, service-managed or customer-managed keys for cluster data encryption is configured in the **Encryption** tab. Select the **Customer-managed key** for **Data encryption**.
 
@@ -65,21 +65,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-change-key.png" alt-text="Screenshot that shows how to open the window for encryption key selection.":::
 
-1. In the **Select a key** pane select the Azuzre Key Vault in the **Key vault**, encryption key in the **Key**, the key version to be used for encryption in the **Version**, and confirm your choices by selecting **Select**.
+1. In the **Select a key** pane select the Azure Key Vault in the **Key vault**, encryption key in the **Key**, the key version to be used for encryption in the **Version**, and confirm your choices by selecting **Select**.
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-select-encryption-key.png" alt-text="Screenshot that shows how to open the window for encryption key selection.":::
 
-1. **Subscription** is automatically populated with the name of the subscription on which your cluster is about to be created. The key store that keeps the data encryption key must exist in the same subscription as the cluster.
-
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-key-subscription.png" alt-text="Screenshot that shows how to select the subscription in which the key store should exist." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-key-subscription.png":::
-
-1. In **Key store type**, select the radio button corresponding to the type of key store in which you plan to store the data encryption key. In this example, we choose **Key vault**, but the experience is similar if you choose **Managed HSM**.
-
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-key-store-type.png" alt-text="Screenshot that shows how to select the type of store that keeps the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-key-store-type.png":::
-
 1. Confirm selected user-assigned managed identity and encryption key on the **Encryption** tab and select **Review + create** to create cluster.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encription tab and review + create button for cluster creation completion.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion.":::
 
 ### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
