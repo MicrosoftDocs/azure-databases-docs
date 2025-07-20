@@ -49,7 +49,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Migration**.
 
-    :::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/portal-offline-select-migration-pane.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service-cloud-sql-offline/portal-offline-select-migration-pane.png":::
+    :::image type="content" source="media/tutorial-migration-service/portal-select-migration-pane.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service/portal-select-migration-pane.png":::
 
 1. Select **Create** to go through a wizard-based series of tabs to perform a migration to a flexible server from an Google Cloud SQL for PostgreSQL.
 
@@ -86,7 +86,7 @@ Select **Next: Runtime server**.
 
 The migration runtime server is a specialized feature within the [migration service in Azure Database for PostgreSQL](concepts-migration-service-postgresql.md), designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server, but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
-:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/portal-offline-runtime-server-migration-cloud-sql.png" alt-text="Screenshot of the Runtime server tab.":::
+:::image type="content" source="media/tutorial-migration-service/portal-runtime-server-migration.png" alt-text="Screenshot of the Runtime server tab.":::
 
 For more information about the runtime server, visit [Migration runtime server](concepts-migration-service-runtime-server.md).
 
@@ -124,7 +124,7 @@ Under the **Databases to validate or migrate** tab, you can choose a list of use
 
 After selecting the databases, select **Next: Summary**.
 
-:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/portal-offline-databases-to-validate-or-migrate-migration-cloud-sql.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/portal-databases-to-validate-or-migrate-migration.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab.":::
 
 #### Summary
 
