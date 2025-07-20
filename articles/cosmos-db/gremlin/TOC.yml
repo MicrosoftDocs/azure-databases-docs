@@ -16,8 +16,6 @@
     href: quickstart-nodejs.md
   - name: .NET
     href: quickstart-dotnet.md
-  - name: Console
-    href: quickstart-console.md
 - name: Tutorials
   items:
   - name: Query data using Gremlin
@@ -228,6 +226,8 @@
     href: ../network-bandwidth.md
 - name: How to
   items:
+  - name: Manage data using console
+    href: quickstart-console.md
   - name: Develop applications
     items:
     - name: Graph data modeling
