@@ -51,21 +51,23 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-select-managed-identity.png" alt-text="Screenshot that shows how to select the user-assigned managed identity to access the data encryption key.":::
 
-1. Among the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
+1. In the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-select-identity.png" alt-text="Screenshot that shows how to select the user assigned managed identity with which the cluster accesses the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-select-identity.png":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the user-assigned managed identity with which the cluster uses to access the data encryption key.":::
 
 1. Select **Add**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-add-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity with which the cluster accesses the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-add-identity.png":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-add-managed-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity which the cluster uses to access the data encryption key.":::
 
-1. Select **Use automatic key version update**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using automatic key version updates, see [automatic key version update](concepts-data-encryption.md#cmk-key-version-updates).
+1. In the **Key selection method** choose **Select a key** .
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-version-less.png" alt-text="Screenshot that shows how to enable automatic key version updates." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-version-less.png":::
+1. In the **Key** section select **Change key** .
 
-1. Select **Select a key**.
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-change-key.png" alt-text="Screenshot that shows how to open the window for encryption key selection.":::
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-select-key.png" alt-text="Screenshot that shows how to select a data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-select-key.png":::
+1. In the **Select a key** pane select the Azuzre Key Vault in the **Key vault**, encryption key in the **Key**, the key version to be used for encryption in the **Version**, and confirm your choices by selecting **Select**.
+
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-select-encryption-key.png" alt-text="Screenshot that shows how to open the window for encryption key selection.":::
 
 1. **Subscription** is automatically populated with the name of the subscription on which your cluster is about to be created. The key store that keeps the data encryption key must exist in the same subscription as the cluster.
 
@@ -75,34 +77,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-key-store-type.png" alt-text="Screenshot that shows how to select the type of store that keeps the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-key-store-type.png":::
 
-1. Expand **Key vault** (or **Managed HSM**, if you selected that storage type), and select the instance where the data encryption key exists.
+1. Confirm selected user-assigned managed identity and encryption key on the **Encryption** tab and select **Review + create** to create cluster.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-key-vault.png" alt-text="Screenshot that shows how to select the key store that keeps the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-key-vault.png":::
-
-    > [!NOTE]  
-    > When you expand the dropdown box, it shows **No available items**. It takes a few seconds until it lists all the instances of key vault which are deployed in the same region as the cluster.
-
-1. Expand **Key**, and select the name of the key that you want to use for data encryption.
-
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-key-key.png" alt-text="Screenshot that shows how to select the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-key-key.png":::
-
-1. If you didn't select **Use automatic key version update**, you must also select a specific version of the key. To do that, expand **Version**, and select the identifier of the version of the key that you want to use for data encryption.
-
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-key-version.png" alt-text="Screenshot that shows how to select the version to use of the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-key-version.png":::
-
-1. Select **Select**.
-
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-key-select.png" alt-text="Screenshot that shows how to select the chose key." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-key-select.png":::
-
-1. Configure all other settings of the new cluster and select **Review + create**.
-
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-assigned-key-review-create.png" alt-text="Screenshot that shows how to complete creation of cluster." lightbox="media/how-to-data-encryption/create-cluster-customer-assigned-key-review-create.png":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encription tab and review + create button for cluster creation completion.":::
 
 ### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
-You can enable data encryption with user assigned encryption key, while provisioning a new cluster, via the [az postgres flexible-cluster create](/cli/azure/postgres/flexible-cluster#az-postgres-flexible-cluster-create) command.
-
-If your cluster doesn't have geo-redundant backups enabled:
+You can enable data encryption with user assigned encryption key, while provisioning a new cluster, via an az rest command.
 
 ```azurecli-interactive
 az postgres flexible-cluster create \
@@ -111,22 +92,6 @@ az postgres flexible-cluster create \
   --geo-redundant-backup Disabled \
   --identity <managed_identity_to_access_primary_encryption_key> \
   --key <resource_identifier_of_primary_encryption_key> ...
-```
-
-> [!NOTE]  
-> The previous command needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned cluster.
-
-If your cluster has geo-redundant backups enabled:
-
-```azurecli-interactive
-az postgres flexible-cluster create \
-  --resource-group <resource_group> \
-  --name <cluster> \
-  --geo-redundant-backup Enabled \
-  --identity <managed_identity_to_access_primary_encryption_key> \
-  --key <resource_identifier_of_primary_encryption_key> \
-  --backup-identity <managed_identity_to_access_geo_backups_encryption_key> \
-  --backup-key <resource_identifier_of_geo_backups_encryption_key> ...
 ```
 
 > [!NOTE]  
