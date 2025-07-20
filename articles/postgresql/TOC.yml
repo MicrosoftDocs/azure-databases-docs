@@ -676,9 +676,9 @@
       - name: Migrate from an Azure VM or an on-premises PostgreSQL server online
         href: migrate/migration-service/tutorial-migration-service-iaas-online.md
       - name: Migrate from Amazon RDS offline
-        href: migrate/migration-service/tutorial-migration-service-aws-offline.md
+        href: migrate/migration-service/tutorial-migration-service-rds-offline.md
       - name: Migrate from Amazon RDS online
-        href: migrate/migration-service/tutorial-migration-service-aws-online.md
+        href: migrate/migration-service/tutorial-migration-service-rds-online.md
       - name: Migrate from Amazon Aurora offline
         href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
       - name: Migrate from Amazon Aurora online
