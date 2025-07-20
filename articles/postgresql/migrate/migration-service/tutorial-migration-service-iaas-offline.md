@@ -1,31 +1,26 @@
 ---
-title: "Migrate Offline From an Azure VM or an On-Premises PostgreSQL Server to Azure Database for PostgreSQL, the Migration Service"
-description: "Learn to migrate seamlessly from Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL using the new migration service in Azure."
+title: "Migrate offline, from an Azure VM or an on-premises PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure"
+description: "Learn to migrate, seamlessly and in offline mode, from an Azure VM or an on-premises PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 07/16/2025
+ms.date: 07/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
 - devx-track-azurecli
 - sfi-image-nochange
-# CustomerIntent: As a user, I want to learn how to perform offline migration from on-premises and Azure virtual machines to Azure Database for PostgreSQL flexible server using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
+# CustomerIntent: As a user, I want to learn how to perform offline migration from an Azure VM or an on-premises PostgreSQL to Azure Database for PostgreSQL flexible server, using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
 ---
 
-# Tutorial: Migrate offline from an Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL with the migration service
+# Migrate offline, from an Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL, with the migration service
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server in offline mode.
 
 The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server.
 
-> [!div class="checklist"]
->  
-> - Prerequisites
-> - Perform the migration
-> - Monitor the migration
-> - Check the migration when completed
+[!INCLUDE [checklist-offline](includes/checklist-offline.md)]
 
 ## Prerequisites
 
@@ -66,7 +61,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 You need to provide multiple details related to the migration, like the migration name, source server type, option, and mode.
 
-- **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same flexible server target can have the same name.
+- **Migration name** is the unique identifier for each migration to this flexible server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same flexible server target can have the same name.
 
 - **Source server type** - Depending on your PostgreSQL source, you can select **Azure Virtual Machine** or **On-premise Server**.
 

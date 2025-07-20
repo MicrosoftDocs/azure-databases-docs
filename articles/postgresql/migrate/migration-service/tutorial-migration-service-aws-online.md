@@ -1,10 +1,10 @@
 ---
-title: "Tutorial: Migrate Online From Amazon RDS for PostgreSQL Using the Migration Service With the Azure Portal and Azure CLI"
-description: "Learn to migrate online seamlessly from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
+title: "Migrate online, from an Amazon RDS for PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure"
+description: "Learn to migrate, seamlessly and in online mode, from an Amazon RDS for PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 07/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -14,10 +14,10 @@ ms.custom:
 ms.collection:
 - migration
 - aws-to-azure
-# customer intent: As a developer, I want to learn how to migrate from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
+# CustomerIntent: As a user, I want to learn how to perform online migration from an Amazon RDS for PostgreSQL to Azure Database for PostgreSQL flexible server, using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
 ---
 
-# Tutorial: Migrate online from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL with the migration service
+# Migrate online, from an Amazon RDS for PostgreSQL to Azure Database for PostgreSQL, with the migration service
 
 This article explores how to migrate your PostgreSQL database from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL online.
 
