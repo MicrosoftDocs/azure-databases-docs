@@ -34,7 +34,7 @@ The following permissions are the minimum required for a user to successfully cr
     - Microsoft.DBforPostgreSQL/flexibleServers/migrations/read
     - Microsoft.DBforPostgreSQL/flexibleServers/migrations/delete
 
-- **Target flexible server**
+- **Target server**
     - Microsoft.DBforPostgreSQL/flexibleServers/read
     - Microsoft.DBforPostgreSQL/flexibleServers/databases/read
 
@@ -65,7 +65,7 @@ If you want to grant permissions specifically for creating and monitoring migrat
 
 - [Assign this custom role to the user](/azure/role-based-access-control/role-assignments-portal) responsible for conducting the migration.
 
-### Additional Requirements for Runtime Server Migrations
+### Additional requirements for migrations that include a runtime server
 
 If a runtime server is part of your migration setup, ensure the permissions Microsoft.DBforPostgreSQL/flexibleServers/migrations/* are included in the scope of the runtime server.
 
