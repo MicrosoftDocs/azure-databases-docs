@@ -13,9 +13,9 @@ When you no longer need the account, remove the account from your Azure subscrip
 az cosmosdb delete \
     --resource-group "<resource-group-name>" \
     --name "<account-name>"
+```
 
 #### [Azure portal](#tab/azure-portal)
-```
 
 1. Navigate to the existing **Azure Cosmos DB for Apache Cassandra** resource you created earlier in this guide.
 
