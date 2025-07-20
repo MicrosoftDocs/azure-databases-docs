@@ -129,7 +129,7 @@ After selecting the databases, select **Next: Summary**.
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select **Start validation and migration**.
 
-:::image type="content" source="media/tutorial-migration-service/summary-migration.png" alt-text="Screenshot of the Summary migration tab.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-online/summary-migration.png" alt-text="Screenshot of the Summary migration tab.":::
 
 ## Cancel the validation or migration
 
