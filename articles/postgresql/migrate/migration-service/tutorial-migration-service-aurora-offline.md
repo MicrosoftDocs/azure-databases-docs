@@ -58,7 +58,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     If migrations to your flexible server target have already been created, the grid now contains information about attempted migrations.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-aurora-offline/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-aurora-offline/create-migration.png":::
 
 #### Setup
 
@@ -80,7 +80,7 @@ To learn more about the premigration validation, visit [premigration](concepts-p
 
 Select **Next: Runtime server**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-setup-migration-aurora.png" alt-text="Screenshot of the Setup tab after providing necessary details.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/setup-migration.png" alt-text="Screenshot of the Setup tab after providing necessary details.":::
 
 #### Runtime server
 
@@ -130,7 +130,7 @@ After selecting the databases, select **Next: Summary**.
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select **Start validation and migration**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-summary-migration-aurora.png" alt-text="Screenshot of the Summary migration tab.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/summary-migration.png" alt-text="Screenshot of the Summary migration tab.":::
 
 ## Cancel the validation or migration
 

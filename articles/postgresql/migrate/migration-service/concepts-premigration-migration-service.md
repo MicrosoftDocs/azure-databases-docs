@@ -31,7 +31,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select **Create** to go through a wizard-based series of tabs to perform a migration to a flexible server from on-premises or Azure VM.
 
-    :::image type="content" source="media/tutorial-migration-service-iaas-offline/portal-offline-create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-iaas-offline/portal-offline-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-iaas-offline/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-iaas-offline/create-migration.png":::
 
 1. In **MIgration option**, select **Validate** or **Validate and migrate**.
 
