@@ -57,7 +57,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     If migrations to your flexible server target have already been created, the grid now contains information about attempted migrations.
 
-    :::image type="content" source="media/tutorial-migration-service-rds-online/portal-online-create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-rds-online/portal-online-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-rds-online/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-rds-online/create-migration.png":::
 
 #### Setup
 
@@ -79,13 +79,13 @@ To learn more about the premigration validation, visit [premigration](concepts-p
 
 Select **Next: Runtime server**.
 
-:::image type="content" source="media/tutorial-migration-service-rds-online/portal-online-setup-migration-rds.png" alt-text="Screenshot of the Setup tab after providing necessary details.":::
+:::image type="content" source="media/tutorial-migration-service-rds-online/setup-migration.png" alt-text="Screenshot of the Setup tab after providing necessary details.":::
 
 #### Runtime server
 
 The migration runtime server is a specialized feature within the [migration service in Azure Database for PostgreSQL](concepts-migration-service-postgresql.md), designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server, but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
-:::image type="content" source="media/tutorial-migration-service-rds-online/portal-online-runtime-server-migration-rds.png" alt-text="Screenshot of the Runtime server tab.":::
+:::image type="content" source="media/tutorial-migration-service/runtime-server-migration.png" alt-text="Screenshot of the Runtime server tab.":::
 
 For more information about the runtime server, visit [Migration runtime server](concepts-migration-service-runtime-server.md).
 
@@ -123,13 +123,13 @@ Under the **Databases to validate or migrate** tab, you can choose a list of use
 
 After selecting the databases, select **Next: Summary**.
 
-:::image type="content" source="media/tutorial-migration-service-rds-online/portal-online-databases-to-validate-or-migrate-migration-rds.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/databases-to-validate-or-migrate-migration.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab.":::
 
 #### Summary
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select **Start validation and migration**.
 
-:::image type="content" source="media/tutorial-migration-service-rds-online/portal-online-summary-migration-rds.png" alt-text="Screenshot of the Summary migration tab.":::
+:::image type="content" source="media/tutorial-migration-service-rds-online/summary-migration.png" alt-text="Screenshot of the Summary migration tab.":::
 
 ## Cancel the validation or migration
 
