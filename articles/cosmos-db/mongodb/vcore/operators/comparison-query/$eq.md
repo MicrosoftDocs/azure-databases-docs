@@ -1,7 +1,7 @@
 ---
 title: $eq
-titleSuffix: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
-description: The $eq query operator in Azure Cosmos DB for MongoDB vCore compares the value of a field to a specified value
+titleSuffix: Overview of the $eq query operator
+description: The $eq query operator compares the value of a field to a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -12,16 +12,16 @@ ms.date: 02/24/2025
 
 # $eq (Comparison Query)
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$eq` operator is used to match documents where the value of a field is equal to a specified value. This operator is used to filter documents based on exact matches and with query predicates to retrieve documents with specific values, objects and arrays.
+The `$eq` operator is used to match documents where the value of a field is equal to a specified value. The $eq operator filters documents based on exact matches on query predicates to retrieve documents with specific values, objects and arrays.
 
 ## Syntax
 
-The syntax for the `$eq` operator is:
-
-```json
-{ "field": { "$eq": "value" } }
+```javascript
+{
+    field: {
+        $eq: <value>
+    }
+}
 ```
 
 ## Parameters
@@ -33,139 +33,108 @@ The syntax for the `$eq` operator is:
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
-    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
-    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
-    "location": {
-        "lat": -89.2384,
-        "lon": -46.4012
-    },
-    "staff": {
-        "totalStaff": {
-            "fullTime": 8,
-            "partTime": 20
+  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+  "location": {
+    "lat": 60.1441,
+    "lon": -141.5012
+  },
+  "staff": {
+    "totalStaff": {
+      "fullTime": 2,
+      "partTime": 0
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      {
+        "categoryName": "DJ Headphones",
+        "totalSales": 35921
+      }
+    ],
+    "fullSales": 3700
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Bargain Blitz Days",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 3,
+          "Day": 11
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 2,
+          "Day": 18
         }
-    },
-    "sales": {
-        "totalSales": 75670,
-        "salesByCategory": [
-            {
-                "categoryName": "Wine Accessories",
-                "totalSales": 34440
-            },
-            {
-                "categoryName": "Bitters",
-                "totalSales": 39496
-            },
-            {
-                "categoryName": "Rum",
-                "totalSales": 1734
-            }
-        ]
-    },
-    "promotionEvents": [
+      },
+      "discounts": [
         {
-            "eventName": "Unbeatable Bargain Bash",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 23
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 7,
-                    "Day": 2
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 7
-                },
-                {
-                    "categoryName": "Bitters",
-                    "discountPercentage": 15
-                },
-                {
-                    "categoryName": "Brandy",
-                    "discountPercentage": 8
-                },
-                {
-                    "categoryName": "Sports Drinks",
-                    "discountPercentage": 22
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 19
-                }
-            ]
+          "categoryName": "DJ Turntables",
+          "discountPercentage": 18
         },
         {
-            "eventName": "Steal of a Deal Days",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 21
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 29
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Organic Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "White Wine",
-                    "discountPercentage": 20
-                },
-                {
-                    "categoryName": "Sparkling Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 17
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 23
-                }
-            ]
+          "categoryName": "DJ Mixers",
+          "discountPercentage": 15
         }
-    ]
+      ]
+    }
+  ],
+  "tag": [
+    "#ShopLocal",
+    "#SeasonalSale",
+    "#FreeShipping",
+    "#MembershipDeals"
+  ],
+  "company": "Lakeshore Retail",
+  "city": "Port Cecile",
+  "lastUpdated": {
+    "$date": "2024-12-11T10:21:58.274Z"
+  }
 }
 ```
 
-### Example 1: Find documents based an equality match on the value of a root level field
+### Example 1: Use $eq filter on a root level field
 
-To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh":
+To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh", run a query with the $eq predicate to match on the name field and project only the id and name fields in the result.
 
 ```javascript
-db.stores.find({ "name": { "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh" } }, {"name": 1})
+db.stores.find({
+    "name": {
+        "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh"
+    }
+}, {
+    "name": 1
+})
 ```
 
-This returns the following results:
+This query returns the following result:
+
 ```json
 {
     "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
     "name": "Boulder Innovations | Home Security Place - Ankundingburgh"
 }
 ```
-### Example 2: Find documents based on an equality match on the value of a nested field
 
-To find stores where the total sales amount is exactly $37,015:
+### Example 2: Use $eq filter on a nested field
+
+To find a store with a total sales of exactly $37,015, run a query using the $eq operator using the dot notation on the nested field sales.totalSales field.
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$eq": 37015 } }, {"name": 1, "sales.totalSales": 1})
+db.stores.find({
+    "sales.totalSales": {
+        "$eq": 37015
+    }
+}, {
+    "name": 1,
+    "sales.totalSales": 1
+})
 ```
 
 This returns the following results:
@@ -177,15 +146,28 @@ This returns the following results:
 }
 ```
 
-### Example 3: Find documents based on an equality match on any individual item within an array
+### Example 3: Use $eq for individual items in an array
+
+The following query retrieves documents using equality predicates on individual items within the nested promotionEvents.discounts array. 
 
 This query searches for an equality match on any one of the objects within the nested discounts array
 
 ```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Systems", "discountPercentage": 5}}}, {"name": 1}, {"limit": 2})
+db.stores.find({
+    "promotionEvents.discounts": {
+        "$eq": {
+            "categoryName": "Alarm Systems",
+            "discountPercentage": 5
+        }
+    }
+}, {
+    "name": 1
+}, {
+    "limit": 2
+})
 ```
 
-This returns the following results:
+This query returns the following results:
 ```json
 [
   {
@@ -199,20 +181,35 @@ This returns the following results:
 ]
 ```
 
-### Example 4: Find documents based on an equality on the entire array
+### Example 4: Use $eq to match the entire array
 
-This query searches for documents based on exact match on ALL the values within an array.
+This query searches for documents based on exact match on ALL the values within the promotionEvents.discounts array.
 
 ```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": [{"categoryName": "Alarm Systems", "discountPercentage": 5}, {"categoryName": "Door Locks", "discountPercentage": 12}]}}, {"name": 1})
+db.stores.find({
+    "promotionEvents.discounts": {
+        "$eq": [{
+            "categoryName": "Alarm Systems",
+            "discountPercentage": 5
+        }, {
+            "categoryName": "Door Locks",
+            "discountPercentage": 12
+        }]
+    }
+}, {
+    "name": 1
+})
 ```
 
 This returns the following results:
+
 ```json
+[
 {
     "_id": "aa9ad64c-29da-42f8-a1f0-30e03bf04a2d",
     "name": "Boulder Innovations | Home Security Market - East Sheridanborough"
 }
+]
 ```
 
 > [!NOTE]
@@ -220,6 +217,4 @@ This returns the following results:
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$gte for greater than or equal to comparisons]($gte.md)
-- [$lte for less than or equal to comparisons]($lte.md)
+[!INCLUDE[Related content](../includes/related-content.md)]
