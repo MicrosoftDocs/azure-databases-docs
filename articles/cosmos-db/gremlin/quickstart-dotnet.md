@@ -73,7 +73,7 @@ Then, configure your development environment with a new project and the client l
 ## Code examples
 
 - [Authenticate client](#authenticate-client)
-- [Upsert data](#upsert-data)
+- [Insert data](#insert-data)
 - [Read data](#read-data)
 - [Query data](#query-data)
 
@@ -87,94 +87,186 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 1. Add using directives for the following namespaces:
 
+    - `Gremlin.Net.Driver`
+    - `Gremlin.Net.Structure.IO.GraphSON`
+
     ```csharp
     using Gremlin.Net.Driver;
     using Gremlin.Net.Structure.IO.GraphSON;
-    using System;
-    using System.Threading.Tasks;
     ```
 
-1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `port`, and `primaryKey`.
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname` and `primaryKey`.
 
     ```csharp
-    var hostname = "<endpoint>";
-    var port = 443;
-    var primaryKey = "<key>";
+    string hostname = "<host>";
+    string primaryKey = "<key>";
     ```
 
-1. Create a Gremlin client using the credentials and configuration variables created in the previous steps.
+1. Create a `GremlinServer` using the credentials and configuration variables created in the previous steps. Name the variable `server`.
 
     ```csharp
-    var gremlinServer = new GremlinServer(
-        hostname,
-        port,
+    GremlinServer server = new(
+        $"{hostname}.gremlin.cosmos.azure.com",
+        443,
         enableSsl: true,
         username: "/dbs/cosmicworks/colls/products",
         password: primaryKey
     );
-    var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType);
     ```
 
-### Upsert data
-
-Next, upsert new data into the graph. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the graph.
-
-1. Add a vertex (upsert data) for a product:
+1. Now, create a `GremlinClient` using the `server` variable and the `GraphSON2MessageSerializer` configuration.
 
     ```csharp
-    await gremlinClient.SubmitAsync("g.addV('product').property('id', 'surfboard1').property('name', 'Kiama classic surfboard').property('category', 'surf').property('price', 699.99)");
+    GremlinClient client = new(
+        server,
+        new GraphSON2MessageSerializer()
+    );
     ```
 
-1. Add another product vertex:
+### Insert data
+
+Next, insert new vertex and edge data into the graph. Before creating the new data, clear the graph of any existing data.
+
+1. Run the `g.V().drop()` query to clear all vertices and edges from the graph.
 
     ```csharp
-    await gremlinClient.SubmitAsync("g.addV('product').property('id', 'surfboard2').property('name', 'Montau Turtle Surfboard').property('category', 'surf').property('price', 799.99)");
+    await client.SubmitAsync("g.V().drop()");
     ```
 
-1. Create an edge between the two products:
+1. Create a Gremlin query that adds a vertex.
 
     ```csharp
-    await gremlinClient.SubmitAsync("g.V('surfboard2').addE('replaces').to(g.V('surfboard1'))");
+    string insertVertexQuery = """
+        g.addV('product')
+            .property('id', prop_id)
+            .property('name', prop_name)
+            .property('category', prop_category)
+            .property('quantity', prop_quantity)
+            .property('price', prop_price)
+            .property('clearance', prop_clearance)
+    """;
+    ```
+
+1. Add a vertex for a single product.
+
+    ```csharp
+    await client.SubmitAsync(insertVertexQuery, new Dictionary<string, object>
+    {
+        ["prop_id"] = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        ["prop_name"] = "Yamba Surfboard",
+        ["prop_category"] = "gear-surf-surfboards",
+        ["prop_quantity"] = 12,
+        ["prop_price"] = 850.00,
+        ["prop_clearance"] = false
+    });
+    ```
+
+1. Add two more vertices for two extra products.
+
+    ```csharp
+    await client.SubmitAsync(insertVertexQuery, new Dictionary<string, object>
+    {
+        ["prop_id"] = "bbbbbbbb-1111-2222-3333-cccccccccccc",
+        ["prop_name"] = "Montau Turtle Surfboard",
+        ["prop_category"] = "gear-surf-surfboards",
+        ["prop_quantity"] = 5,
+        ["prop_price"] = 600.00,
+        ["prop_clearance"] = true
+    });
+
+    await client.SubmitAsync(insertVertexQuery, new Dictionary<string, object>
+    {
+        ["prop_id"] = "cccccccc-2222-3333-4444-dddddddddddd",
+        ["prop_name"] = "Noosa Surfboard",
+        ["prop_category"] = "gear-surf-surfboards",
+        ["prop_quantity"] = 31,
+        ["prop_price"] = 1100.00,
+        ["prop_clearance"] = false
+    });
+    ```
+
+1. Create another Gremlin query that adds an edge.
+
+    ```csharp
+    string insertEdgeQuery = """
+        g.V([prop_partition_key, prop_source_id])
+            .addE('replaces')
+            .to(g.V([prop_partition_key, prop_target_id]))
+    """;
+    ```
+
+1. Add two edges.
+
+    ```csharp
+    await client.SubmitAsync(insertEdgeQuery, new Dictionary<string, object>
+    {
+        ["prop_partition_key"] = "gear-surf-surfboards",
+        ["prop_source_id"] = "bbbbbbbb-1111-2222-3333-cccccccccccc",
+        ["prop_target_id"] = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+    });
+
+    await client.SubmitAsync(insertEdgeQuery, new Dictionary<string, object>
+    {
+        ["prop_partition_key"] = "gear-surf-surfboards",
+        ["prop_source_id"] = "bbbbbbbb-1111-2222-3333-cccccccccccc",
+        ["prop_target_id"] = "cccccccc-2222-3333-4444-dddddddddddd"
+    });
     ```
 
 ### Read data
 
-Then, read data that was previously upserted into the graph.
+Then, read data that was previously inserted into the graph.
 
-1. Read a vertex by ID:
+1. Create a query that reads a vertex using the unique identifier and partition key value.
 
     ```csharp
-    var result = await gremlinClient.SubmitAsync<dynamic>("g.V('surfboard1')");
-    foreach (var item in result)
-        Console.WriteLine(item);
+    string readVertexQuery = "g.V([prop_partition_key, prop_id])";
     ```
 
-1. Read all vertices:
+1. Then, read a vertex by supplying the required parameters.
 
     ```csharp
-    var allVertices = await gremlinClient.SubmitAsync<dynamic>("g.V()");
-    foreach (var item in allVertices)
-        Console.WriteLine(item);
+    ResultSet<Dictionary<string, object>> readResults = await client.SubmitAsync<Dictionary<string, object>>(readVertexQuery, new Dictionary<string, object>
+    {
+        ["prop_partition_key"] = "gear-surf-surfboards",
+        ["prop_id"] = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+    });
+
+    Dictionary<string, object> matchedItem = readResults.Single();
     ```
 
 ### Query data
 
 Finally, use a query to find all data that matches a specific traversal or filter in the graph.
 
-1. Query for all products in the 'surf' category:
+1. Create a query that finds all vertices that traverse out from a specific vertex.
 
     ```csharp
-    var surfProducts = await gremlinClient.SubmitAsync<dynamic>("g.V().hasLabel('product').has('category', 'surf')");
-    foreach (var item in surfProducts)
-        Console.WriteLine(item);
+    string findVerticesQuery = """
+        g.V().hasLabel('product')
+            .has('category', prop_partition_key)
+            .has('name', prop_name)
+            .outE('replaces').inV()
+    """;
     ```
 
-1. Query for all products that replace another product:
+1. Execute the query specifying the `Montau Turtle Surfboard` product.
 
     ```csharp
-    var replaces = await gremlinClient.SubmitAsync<dynamic>("g.V().hasLabel('product').outE('replaces').inV()");
-    foreach (var item in replaces)
-        Console.WriteLine(item);
+    ResultSet<Dictionary<string, object>> findResults = await client.SubmitAsync<Dictionary<string, object>>(findVerticesQuery, new Dictionary<string, object>
+    {
+        ["prop_partition_key"] = "gear-surf-surfboards",
+        ["prop_name"] = "Montau Turtle Surfboard"
+    });
+    ```
+
+1. Iterate over the query results.
+
+    ```csharp
+    foreach (Dictionary<string, object> result in findResults)
+    {
+        // Do something here with each result
+    }
     ```
 
 ## Run the code

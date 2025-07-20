@@ -63,7 +63,7 @@ Then, configure your development environment with a new project and the client l
 ## Code examples
 
 - [Authenticate client](#authenticate-client)
-- [Upsert data](#upsert-data)
+- [Insert data](#insert-data)
 - [Read data](#read-data)
 - [Query data](#query-data)
 
@@ -73,118 +73,188 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
 1. Open the *app.py* file in your integrated development environment (IDE).
 
-1. Import the following types from the `gremlin_python.driver` and `gremlin_python.process.graph_traversal` modules:
-    - `GremlinClient`, `Client`
-    - `GraphTraversalSource`, `g`, `__`
+1. Import the following types from the `gremlin_python.driver` library:
+
+    - `gremlin_python.driver.client`
+    - `gremlin_python.driver.serializer`
 
     ```python
     from gremlin_python.driver import client, serializer
-    from gremlin_python.process.graph_traversal import __
-    from gremlin_python.process.anonymous_traversal import traversal
-    from gremlin_python.structure.graph import Graph
     ```
 
-1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `port`, and `primary_key`.
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname` and `primary_key`.
 
     ```python
-    hostname = "<endpoint>"
-    port = 443
+    hostname = "<host>"
     primary_key = "<key>"
     ```
 
-1. Create a Gremlin client using the credentials and configuration variables created in the previous steps.
+1. Create a `Client` object using the credentials and configuration variables created in the previous steps. Name the variable `client`.
 
     ```python
-    gremlin_client = client.Client(
-        f'wss://{hostname}:{port}/gremlin',
-        'g',
-        username='/dbs/cosmicworks/colls/products',
-        password=primary_key,
+    client = client.Client(
+        url=f"wss://{hostname}.gremlin.cosmos.azure.com:443/",
+        traversal_source="g",
+        username="/dbs/cosmicworks/colls/products",
+        password=f"{primary_key}",
         message_serializer=serializer.GraphSONSerializersV2d0()
     )
     ```
 
-### Upsert data
+### Insert data
 
-Next, upsert new data into the graph. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the graph.
+Next, insert new vertex and edge data into the graph. Before creating the new data, clear the graph of any existing data.
 
-1. Add a vertex (upsert data) for a product:
+1. Run the `g.V().drop()` query to clear all vertices and edges from the graph.
 
     ```python
-    add_vertex_query = """
-    g.addV('product').property('id', 'surfboard1').property('name', 'Kiama classic surfboard').property('category', 'surf').property('price', 699.99)
-    """
-    gremlin_client.submitAsync(add_vertex_query).result()
+    client.submit("g.V().drop()").all().result()
     ```
 
-1. Add another product vertex:
+1. Create a Gremlin query that adds a vertex.
 
     ```python
-    add_vertex_query2 = """
-    g.addV('product').property('id', 'surfboard2').property('name', 'Montau Turtle Surfboard').property('category', 'surf').property('price', 799.99)
-    """
-    gremlin_client.submitAsync(add_vertex_query2).result()
+    insert_vertex_query = (
+        "g.addV('product')"
+        ".property('id', prop_id)"
+        ".property('name', prop_name)"
+        ".property('category', prop_category)"
+        ".property('quantity', prop_quantity)"
+        ".property('price', prop_price)"
+        ".property('clearance', prop_clearance)"
+    )
     ```
 
-1. Create an edge between the two products:
+1. Add a vertex for a single product.
 
     ```python
-    add_edge_query = """
-    g.V('surfboard2').addE('replaces').to(g.V('surfboard1'))
-    """
-    gremlin_client.submitAsync(add_edge_query).result()
+    client.submit(
+        message=insert_vertex_query,
+        bindings={
+            "prop_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+            "prop_name": "Yamba Surfboard",
+            "prop_category": "gear-surf-surfboards",
+            "prop_quantity": 12,
+            "prop_price": 850.00,
+            "prop_clearance": False,
+        },
+    ).all().result()
+    ```
+
+1. Add two more vertices for two extra products.
+
+    ```python
+    client.submit(
+        message=insert_vertex_query,
+        bindings={
+            "prop_id": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+            "prop_name": "Montau Turtle Surfboard",
+            "prop_category": "gear-surf-surfboards",
+            "prop_quantity": 5,
+            "prop_price": 600.00,
+            "prop_clearance": True,
+        },
+    ).all().result()
+
+    client.submit(
+        message=insert_vertex_query,
+        bindings={
+            "prop_id": "cccccccc-2222-3333-4444-dddddddddddd",
+            "prop_name": "Noosa Surfboard",
+            "prop_category": "gear-surf-surfboards",
+            "prop_quantity": 31,
+            "prop_price": 1100.00,
+            "prop_clearance": False,
+        },
+    ).all().result()
+    ```
+
+1. Create another Gremlin query that adds an edge.
+
+    ```python
+    insert_edge_query = (
+        "g.V([prop_partition_key, prop_source_id])"
+        ".addE('replaces')"
+        ".to(g.V([prop_partition_key, prop_target_id]))"
+    )
+    ```
+
+1. Add two edges.
+
+    ```python
+    client.submit(
+        message=insert_edge_query,
+        bindings={
+            "prop_partition_key": "gear-surf-surfboards",
+            "prop_source_id": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+            "prop_target_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        },
+    ).all().result()
+
+    client.submit(
+        message=insert_edge_query,
+        bindings={
+            "prop_partition_key": "gear-surf-surfboards",
+            "prop_source_id": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+            "prop_target_id": "cccccccc-2222-3333-4444-dddddddddddd",
+        },
+    ).all().result()
     ```
 
 ### Read data
 
-Then, read data that was previously upserted into the graph.
+Then, read data that was previously inserted into the graph.
 
-1. Read a vertex by ID:
+1. Create a query that reads a vertex using the unique identifier and partition key value.
 
     ```python
-    read_vertex_query = """
-    g.V('surfboard1')
-    """
-    result = gremlin_client.submitAsync(read_vertex_query).result()
-    for item in result:
-        print(item)
+    read_vertex_query = "g.V([prop_partition_key, prop_id])"
     ```
 
-1. Read all vertices:
+1. Then, read a vertex by supplying the required parameters.
 
     ```python
-    read_all_query = """
-    g.V()
-    """
-    result = gremlin_client.submitAsync(read_all_query).result()
-    for item in result:
-        print(item)
+    matched_item = client.submit(
+        message=read_vertex_query,
+        bindings={
+            "prop_partition_key": "gear-surf-surfboards",
+            "prop_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+        }
+    ).one()
     ```
 
 ### Query data
 
 Finally, use a query to find all data that matches a specific traversal or filter in the graph.
 
-1. Query for all products in the 'surf' category:
+1. Create a query that finds all vertices that traverse out from a specific vertex.
 
     ```python
-    query_products = """
-    g.V().hasLabel('product').has('category', 'surf')
-    """
-    result = gremlin_client.submitAsync(query_products).result()
-    for item in result:
-        print(item)
+    find_vertices_query = (
+        "g.V().hasLabel('product')"
+        ".has('category', prop_partition_key)"
+        ".has('name', prop_name)"
+        ".outE('replaces').inV()"
+    )
     ```
 
-1. Query for all products that replace another product:
+1. Execute the query specifying the `Montau Turtle Surfboard` product.
 
     ```python
-    query_replaces = """
-    g.V().hasLabel('product').outE('replaces').inV()
-    """
-    result = gremlin_client.submitAsync(query_replaces).result()
-    for item in result:
-        print(item)
+    find_results = client.submit(
+        message=find_vertices_query,
+        bindings={
+            "prop_partition_key": "gear-surf-surfboards",
+            "prop_name": "Montau Turtle Surfboard",
+        },
+    ).all().result()
+    ```
+
+1. Iterate over the query results.
+
+    ```python
+    for result in find_results:
+        # Do something here with each result
     ```
 
 ## Run the code

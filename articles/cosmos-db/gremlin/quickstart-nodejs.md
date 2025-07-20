@@ -54,7 +54,6 @@ Then, configure your development environment with a new project and the client l
     npm init es6 --yes
     ```
 
-
 1. Install the `gremlin` package from Node Package Manager (npm).
 
     ```bash
@@ -90,7 +89,19 @@ Then, configure your development environment with a new project and the client l
 1. Install the `gremlin` package from npm.
 
     ```bash
-    npm install --save gremlin 
+    npm install --save gremlin
+    ```
+
+1. Install the `@types/node` package from npm.
+
+    ```bash
+    npm install --save-dev @types/node
+    ```
+
+1. Install the `@types/gremlin` package from npm.
+
+    ```bash
+    npm install --save-dev @types/gremlin
     ```
 
 1. Initialize the TypeScript project using the compiler (`tsc`).
@@ -113,7 +124,7 @@ Then, configure your development environment with a new project and the client l
 ## Code examples
 
 - [Authenticate client](#authenticate-client)
-- [Upsert data](#upsert-data)
+- [Insert data](#insert-data)
 - [Read data](#read-data)
 - [Query data](#query-data)
 
@@ -129,34 +140,41 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
     ```javascript
     import gremlin from 'gremlin';
-    const { DriverRemoteConnection } = gremlin.driver;
-    const { Graph } = gremlin.structure;
+    const { Client, auth } = gremlin.driver;
+    const { PlainTextSaslAuthenticator } = auth;
     ```
 
-1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `primaryKey`, `database`, and `collection`.
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname` and `primaryKey`.
 
     ```javascript
-    const hostname = '<endpoint>';
+    const hostname = '<host>';
     const primaryKey = '<key>';
     ```
 
-1. Create a Gremlin connection and traversal source using the credentials and configuration variables created in the previous steps.
+1. Create an object of type `PlainTextSaslAuthenticator` using the credentials and configuration variables created in the previous steps. Store the object in a variable named `authenticator`.
 
     ```javascript
-    const authenticator = new gremlin.driver.auth.PlainTextSaslAuthenticator(
-        '/dbs/cosmicworks/colls/product',
+    const authenticator = new PlainTextSaslAuthenticator(
+        '/dbs/cosmicworks/colls/products',
         primaryKey
     );
-    const connection = new DriverRemoteConnection(
-        `wss://${hostname}:443/gremlin`,
-        { authenticator, traversalsource: 'g', rejectUnauthorized: true }
+    ```
+
+1. Create a `Client` object using the authenticator variable. Name the variable `client`.
+
+    ```javascript
+    const client = new Client(
+        `wss://${hostname}.gremlin.cosmos.azure.com:443/`,
+        {
+            authenticator,
+            traversalsource: 'g',
+            rejectUnauthorized: true,
+            mimeType: 'application/vnd.gremlin-v2.0+json'
+        }
     );
-    const graph = new Graph();
-    const g = graph.traversal().withRemote(connection);
     ```
 
 :::zone-end
-
 
 :::zone pivot="programming-language-ts"
 
@@ -166,146 +184,261 @@ Start by authenticating the client using the credentials gathered earlier in thi
 
     ```typescript
     import gremlin from 'gremlin';
-    const { DriverRemoteConnection } = gremlin.driver;
-    const { Graph } = gremlin.structure;
+    const { Client, auth } = gremlin.driver;
+    const { PlainTextSaslAuthenticator } = auth;
     ```
 
-1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname`, `primaryKey`, `database`, and `collection`.
+1. Create string variables for the credentials collected earlier in this guide. Name the variables `hostname` and `primaryKey`.
 
     ```typescript
-    const hostname: string = '<endpoint>';
+    const hostname: string = '<host>';
     const primaryKey: string = '<key>';
     ```
 
-1. Create a Gremlin connection and traversal source using the credentials and configuration variables created in the previous steps.
+1. Create an object of type `PlainTextSaslAuthenticator` using the credentials and configuration variables created in the previous steps. Store the object in a variable named `authenticator`.
 
     ```typescript
-    const authenticator = new gremlin.driver.auth.PlainTextSaslAuthenticator(
-        '/dbs/cosmicworks/colls/product',
+    const authenticator = new PlainTextSaslAuthenticator(
+        '/dbs/cosmicworks/colls/products',
         primaryKey
     );
-    const connection = new DriverRemoteConnection(
-        `wss://${hostname}:443/gremlin`,
-        { authenticator, traversalsource: 'g', rejectUnauthorized: true }
+    ```
+
+1. Create a `Client` object using the authenticator variable. Name the variable `client`.
+
+    ```typescript
+    const client = new Client(
+        `wss://${hostname}.gremlin.cosmos.azure.com:443/`,
+        {
+            authenticator,
+            traversalsource: 'g',
+            rejectUnauthorized: true,
+            mimeType: 'application/vnd.gremlin-v2.0+json'
+        }
     );
-    const graph = new Graph();
-    const g = graph.traversal().withRemote(connection);
     ```
 
 :::zone-end
 
+### Insert data
 
-### Upsert data
-
-Next, upsert new data into the graph. Upserting ensures that the data is created or replaced appropriately depending on whether the same data already exists in the graph.
+Next, insert new vertex and edge data into the graph. Before creating the new data, clear the graph of any existing data.
 
 :::zone pivot="programming-language-js"
 
-1. Add a vertex (upsert data) for a product:
+1. Run the `g.V().drop()` query to clear all vertices and edges from the graph.
 
     ```javascript
-    await g.addV('product')
-        .property('id', 'surfboard1')
-        .property('name', 'Kiama classic surfboard')
-        .property('category', 'surf')
-        .property('price', 699.99)
-        .next();
+    await client.submit('g.V().drop()');
     ```
 
-1. Add another product vertex:
+1. Create a Gremlin query that adds a vertex.
 
     ```javascript
-    await g.addV('product')
-        .property('id', 'surfboard2')
-        .property('name', 'Montau Turtle Surfboard')
-        .property('category', 'surf')
-        .property('price', 799.99)
-        .next();
+    const insert_vertex_query = `
+        g.addV('product')
+            .property('id', prop_id)
+            .property('name', prop_name)
+            .property('category', prop_category)
+            .property('quantity', prop_quantity)
+            .property('price', prop_price)
+            .property('clearance', prop_clearance)
+    `;
     ```
 
-1. Create an edge between the two products:
+1. Add a vertex for a single product.
 
     ```javascript
-    await g.V('surfboard2').addE('replaces').to(g.V('surfboard1')).next();
+    await client.submit(insert_vertex_query, {
+        prop_id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+        prop_name: 'Yamba Surfboard',
+        prop_category: 'gear-surf-surfboards',
+        prop_quantity: 12,
+        prop_price: 850.00,
+        prop_clearance: false,
+    });
+    ```
+
+1. Add two more vertices for two extra products.
+
+    ```javascript
+    await client.submit(insert_vertex_query, {
+        prop_id: 'bbbbbbbb-1111-2222-3333-cccccccccccc',
+        prop_name: 'Montau Turtle Surfboard',
+        prop_category: 'gear-surf-surfboards',
+        prop_quantity: 5,
+        prop_price: 600.00,
+        prop_clearance: true,
+    });
+
+    await client.submit(insert_vertex_query, {
+        prop_id: 'cccccccc-2222-3333-4444-dddddddddddd',
+        prop_name: 'Noosa Surfboard',
+        prop_category: 'gear-surf-surfboards',
+        prop_quantity: 31,
+        prop_price: 1100.00,
+        prop_clearance: false,
+    });
+    ```
+
+1. Create another Gremlin query that adds an edge.
+
+    ```javascript
+    const insert_edge_query = `
+        g.V([prop_partition_key, prop_source_id])
+            .addE('replaces')
+            .to(g.V([prop_partition_key, prop_target_id]))
+    `;
+    ```
+
+1. Add two edges.
+
+    ```javascript
+    await client.submit(insert_edge_query, {
+        prop_partition_key: 'gear-surf-surfboards',
+        prop_source_id: 'bbbbbbbb-1111-2222-3333-cccccccccccc',
+        prop_target_id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    });
+
+    await client.submit(insert_edge_query, {
+        prop_partition_key: 'gear-surf-surfboards',
+        prop_source_id: 'bbbbbbbb-1111-2222-3333-cccccccccccc',
+        prop_target_id: 'cccccccc-2222-3333-4444-dddddddddddd',
+    });
     ```
 
 :::zone-end
-
 
 :::zone pivot="programming-language-ts"
 
-1. Add a vertex (upsert data) for a product:
+1. Run the `g.V().drop()` query to clear all vertices and edges from the graph.
 
     ```typescript
-    await g.addV('product')
-        .property('id', 'surfboard1')
-        .property('name', 'Kiama classic surfboard')
-        .property('category', 'surf')
-        .property('price', 699.99)
-        .next();
+    await client.submit('g.V().drop()');
     ```
 
-1. Add another product vertex:
+1. Create a Gremlin query that adds a vertex.
 
     ```typescript
-    await g.addV('product')
-        .property('id', 'surfboard2')
-        .property('name', 'Montau Turtle Surfboard')
-        .property('category', 'surf')
-        .property('price', 799.99)
-        .next();
+    const insert_vertex_query: string = `
+        g.addV('product')
+            .property('id', prop_id)
+            .property('name', prop_name)
+            .property('category', prop_category)
+            .property('quantity', prop_quantity)
+            .property('price', prop_price)
+            .property('clearance', prop_clearance)
+    `;
     ```
 
-1. Create an edge between the two products:
+1. Add a vertex for a single product.
 
     ```typescript
-    await g.V('surfboard2').addE('replaces').to(g.V('surfboard1')).next();
+    await client.submit(insert_vertex_query, {
+        prop_id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+        prop_name: 'Yamba Surfboard',
+        prop_category: 'gear-surf-surfboards',
+        prop_quantity: 12,
+        prop_price: 850.00,
+        prop_clearance: false,
+    });
+    ```
+
+1. Add two more vertices for two extra products.
+
+    ```typescript
+    await client.submit(insert_vertex_query, {
+        prop_id: 'bbbbbbbb-1111-2222-3333-cccccccccccc',
+        prop_name: 'Montau Turtle Surfboard',
+        prop_category: 'gear-surf-surfboards',
+        prop_quantity: 5,
+        prop_price: 600.00,
+        prop_clearance: true,
+    });
+
+    await client.submit(insert_vertex_query, {
+        prop_id: 'cccccccc-2222-3333-4444-dddddddddddd',
+        prop_name: 'Noosa Surfboard',
+        prop_category: 'gear-surf-surfboards',
+        prop_quantity: 31,
+        prop_price: 1100.00,
+        prop_clearance: false,
+    });
+    ```
+
+1. Create another Gremlin query that adds an edge.
+
+    ```typescript
+    const insert_edge_query: string = `
+        g.V([prop_partition_key, prop_source_id])
+            .addE('replaces')
+            .to(g.V([prop_partition_key, prop_target_id]))
+    `;
+    ```
+
+1. Add two edges.
+
+    ```typescript
+    await client.submit(insert_edge_query, {
+        prop_partition_key: 'gear-surf-surfboards',
+        prop_source_id: 'bbbbbbbb-1111-2222-3333-cccccccccccc',
+        prop_target_id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    });
+
+    await client.submit(insert_edge_query, {
+        prop_partition_key: 'gear-surf-surfboards',
+        prop_source_id: 'bbbbbbbb-1111-2222-3333-cccccccccccc',
+        prop_target_id: 'cccccccc-2222-3333-4444-dddddddddddd',
+    });
     ```
 
 :::zone-end
-
 
 ### Read data
 
-Then, read data that was previously upserted into the graph.
+Then, read data that was previously inserted into the graph.
 
 :::zone pivot="programming-language-js"
 
-1. Read a vertex by ID:
+1. Create a query that reads a vertex using the unique identifier and partition key value.
 
     ```javascript
-    const result = await g.V('surfboard1').next();
-    console.log(result.value);
+    const read_vertex_query = 'g.V([prop_partition_key, prop_id])';
     ```
 
-1. Read all vertices:
+1. Then, read a vertex by supplying the required parameters.
 
     ```javascript
-    const allVertices = await g.V().toList();
-    allVertices.forEach(item => console.log(item));
+    let read_results = await client.submit(read_vertex_query, {
+        prop_partition_key: 'gear-surf-surfboards',
+        prop_id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    });
+
+    let matched_item = read_results._items[0];
     ```
 
 :::zone-end
-
 
 :::zone pivot="programming-language-ts"
 
-1. Read a vertex by ID:
+1. Create a query that reads a vertex using the unique identifier and partition key value.
 
     ```typescript
-    const result = await g.V('surfboard1').next();
-    console.log(result.value);
+    const read_vertex_query: string = 'g.V([prop_partition_key, prop_id])';
     ```
 
-1. Read all vertices:
+1. Then, read a vertex by supplying the required parameters.
 
     ```typescript
-    const allVertices = await g.V().toList();
-    allVertices.forEach(item => console.log(item));
+    let read_results = await client.submit(read_vertex_query, {
+        prop_partition_key: 'gear-surf-surfboards',
+        prop_id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    });
+
+    let matched_item = read_results._items[0];
     ```
 
 :::zone-end
-
 
 ### Query data
 
@@ -313,37 +446,64 @@ Finally, use a query to find all data that matches a specific traversal or filte
 
 :::zone pivot="programming-language-js"
 
-1. Query for all products in the 'surf' category:
+1. Create a query that finds all vertices that traverse out from a specific vertex.
 
     ```javascript
-    const surfProducts = await g.V().hasLabel('product').has('category', 'surf').toList();
-    surfProducts.forEach(item => console.log(item));
+    const find_vertices_query = `
+        g.V().hasLabel('product')
+            .has('category', prop_partition_key)
+            .has('name', prop_name)
+            .outE('replaces').inV()
+    `;
     ```
 
-1. Query for all products that replace another product:
+1. Execute the query specifying the `Montau Turtle Surfboard` product.
 
     ```javascript
-    const replaces = await g.V().hasLabel('product').outE('replaces').inV().toList();
-    replaces.forEach(item => console.log(item));
+    let find_results = await client.submit(find_vertices_query, {
+        prop_partition_key: 'gear-surf-surfboards',
+        prop_name: 'Montau Turtle Surfboard',
+    });
+    ```
+
+1. Iterate over the query results.
+
+    ```javascript
+    for (const item of find_results._items) {
+        // Do something here with each result
+    }
     ```
 
 :::zone-end
 
-
 :::zone pivot="programming-language-ts"
 
-1. Query for all products in the 'surf' category:
+1. Create a query that finds all vertices that traverse out from a specific vertex.
 
     ```typescript
-    const surfProducts = await g.V().hasLabel('product').has('category', 'surf').toList();
-    surfProducts.forEach(item => console.log(item));
+    const find_vertices_query: string = `
+        g.V().hasLabel('product')
+            .has('category', prop_partition_key)
+            .has('name', prop_name)
+            .outE('replaces').inV()
+    `;
     ```
 
-1. Query for all products that replace another product:
+1. Execute the query specifying the `Montau Turtle Surfboard` product.
 
     ```typescript
-    const replaces = await g.V().hasLabel('product').outE('replaces').inV().toList();
-    replaces.forEach(item => console.log(item));
+    let find_results = await client.submit(find_vertices_query, {
+        prop_partition_key: 'gear-surf-surfboards',
+        prop_name: 'Montau Turtle Surfboard',
+    });
+    ```
+
+1. Iterate over the query results.
+
+    ```typescript
+    for (const item of find_results._items) {
+        // Do something here with each result
+    }
     ```
 
 :::zone-end
