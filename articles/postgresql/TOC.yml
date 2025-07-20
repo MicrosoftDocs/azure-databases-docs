@@ -671,35 +671,39 @@
       href: migrate/migration-service/overview-migration-service-postgresql.md
     - name: Tutorials for migrating from PostgreSQL
       items:
-      - name: Migrate from an Azure VM or an on-premises PostgreSQL server offline
-        href: migrate/migration-service/tutorial-migration-service-iaas-offline.md
-      - name: Migrate from an Azure VM or an on-premises PostgreSQL server online
-        href: migrate/migration-service/tutorial-migration-service-iaas-online.md
-      - name: Migrate from Amazon RDS offline
-        href: migrate/migration-service/tutorial-migration-service-rds-offline.md
-      - name: Migrate from Amazon RDS online
-        href: migrate/migration-service/tutorial-migration-service-rds-online.md
-      - name: Migrate from Amazon Aurora offline
-        href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
-      - name: Migrate from Amazon Aurora online
-        href: migrate/migration-service/tutorial-migration-service-aurora-online.md
-      - name: Migrate from Google Cloud SQL for PostgreSQL offline
-        href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
-      - name: Migrate from Google Cloud SQL for PostgreSQL online
-        href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
+      - name: Migrate offline
+        items:
+        - name: From an Azure VM or an on-premises PostgreSQL server
+          href: migrate/migration-service/tutorial-migration-service-iaas-offline.md
+        - name: From Amazon RDS
+          href: migrate/migration-service/tutorial-migration-service-rds-offline.md
+        - name: From Amazon Aurora
+          href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
+        - name: From Google Cloud SQL for PostgreSQL
+          href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+      - name: Migrate online
+        items:
+        - name: From an Azure VM or an on-premises PostgreSQL server
+          href: migrate/migration-service/tutorial-migration-service-iaas-online.md
+        - name: From Amazon RDS
+          href: migrate/migration-service/tutorial-migration-service-rds-online.md
+        - name: From Amazon Aurora
+          href: migrate/migration-service/tutorial-migration-service-aurora-online.md
+        - name: From Google Cloud SQL for PostgreSQL
+          href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
     - name: Concepts
       items:
       - name: Premigration validation
         href: migrate/migration-service/concepts-premigration-migration-service.md
-      - name: Migration of  roles, ownerships and permissions
+      - name: Migration of roles, ownerships and permissions
         href: migrate/migration-service/concepts-user-roles-migration-service.md
-      - name: Runtime Server
+      - name: Runtime server
         href: migrate/migration-service/concepts-migration-service-runtime-server.md
-      - name: Required User Permissions
+      - name: Required user permissions
         href: migrate/migration-service/concepts-required-user-permissions.md
-      - name: Migration Configuration Parameters
+      - name: Migration configuration parameters
         href: migrate/migration-service/concepts-migration-server-parameters.md
-      - name: Extension Migrations
+      - name: Extension migrations
         href: migrate/migration-service/concepts-migration-extensions.md
       - name: Best practices
         href: migrate/migration-service/best-practices-migration-service-postgresql.md
