@@ -1,6 +1,6 @@
 ---
 title: $documentNumber
-titleSuffix: Overview of the $documentNumber operator
+titleSuffix: Overview of the $documentNumber operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $documentNumber operator assigns and returns a position for each document within a partition based on a specified sort order 
 author: abinav2307
 ms.author: abramees
