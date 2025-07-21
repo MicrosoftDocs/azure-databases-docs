@@ -1,6 +1,6 @@
 ---
 title: $and
-titleSuffix: Overview of the $and operator
+titleSuffix: Overview of the $and operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $and operator joins multiple query clauses and returns documents that match all specified conditions.
 author: suvishodcitus
 ms.author: suvishod
