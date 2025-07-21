@@ -99,7 +99,7 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Find a stores with sales below $36,000
+### Example 1: Find a store with sales below $36,000
 
 To find a store with less than $36,000 in sales, first run a query using $lt on the sales.totalSales field. Then project only the name and total sales of the resulting stores and limit the number of results to a single document.
 
