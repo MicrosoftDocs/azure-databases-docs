@@ -1,6 +1,6 @@
 ---
 title: $gte
-titleSuffix: Overview of the $gte operator
+titleSuffix: Overview of the $gte operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $gte operator retrieves documents where the value of a field is greater than or equal to a specified value
 author: abinav2307
 ms.author: abramees
