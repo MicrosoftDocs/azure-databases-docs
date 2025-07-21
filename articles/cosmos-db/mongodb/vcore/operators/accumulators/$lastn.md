@@ -1,6 +1,6 @@
 ---
   title: $lastN
-  titleSuffix: Overview of the $lastN operator
+  titleSuffix: Overview of the $lastN operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $lastN accumulator operator returns the last N values in a group of documents.
   author: suvishodcitus
   ms.author: suvishod
