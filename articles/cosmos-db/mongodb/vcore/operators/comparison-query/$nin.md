@@ -1,6 +1,6 @@
 ---
 title: $nin
-titleSuffix: Overview of the $nin operator
+titleSuffix: Overview of the $nin operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $nin operator retrieves documents where the value of a field doesn't match a list of values
 author: abinav2307
 ms.author: abramees
