@@ -1,6 +1,6 @@
 ---
 title: $expMovingAvg
-titleSuffix: Overview of the $expMovingAvg operator
+titleSuffix: Overview of the $expMovingAvg operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $expMovingAvg operator calculates the moving average of a field based on the specified number of documents to hold the highest weight
 author: abinav2307
 ms.author: abramees
