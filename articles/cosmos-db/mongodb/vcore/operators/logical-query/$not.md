@@ -1,6 +1,6 @@
 ---
 title: $not
-titleSuffix: Overview of the $not operator
+titleSuffix: Overview of the $not operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $not operator performs a logical NOT operation on a specified expression, selecting documents that do not match the expression.
 author: suvishodcitus
 ms.author: suvishod
