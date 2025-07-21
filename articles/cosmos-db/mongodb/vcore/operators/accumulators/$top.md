@@ -1,6 +1,6 @@
 ---
   title: $top
-  titleSuffix: Overview of the $top operator
+  titleSuffix: Overview of the $top operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $top operator returns the first document from the result set sorted by one or more fields
   author: suvishodcitus
   ms.author: suvishod
