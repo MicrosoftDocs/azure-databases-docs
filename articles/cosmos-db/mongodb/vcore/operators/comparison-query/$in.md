@@ -1,6 +1,6 @@
 ---
 title: $in
-titleSuffix: Overview of the $in operator
+titleSuffix: Overview of the $in operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $in operator matches value of a field against an array of specified values
 author: abinav2307
 ms.author: abramees
