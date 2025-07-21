@@ -10,7 +10,7 @@ ms.topic: language-reference
 ms.date: 02/24/2025
 ---
 
-# $eq (Comparison Query)
+# $eq
 
 The `$eq` operator is used to match documents where the value of a field is equal to a specified value. The $eq operator filters documents based on exact matches on query predicates to retrieve documents with specific values, objects and arrays.
 
