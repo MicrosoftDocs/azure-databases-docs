@@ -9,7 +9,7 @@ ms.author: mjbrown
 ms.topic: troubleshooting
 ---
 
-# Diagnose and troubleshoot Azure Cosmos DB request rate too large (429) exceptions
+# Diagnose and troubleshoot "Request rate too large" (429) exceptions
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 A "Request rate too large" exception, also known as error code 429, indicates that your requests against Azure Cosmos DB are being rate limited.

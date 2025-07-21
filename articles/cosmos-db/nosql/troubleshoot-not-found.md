@@ -27,7 +27,7 @@ Here are the possible reasons for a status code 404 to be returned if the item s
 
 #### Solution
 
-1. Update your current SDK to the latest version available. The most common causes for this particular error have been fixed in the newest SDK versions.
+* Update your current SDK to the latest version available. The most common causes for this particular error have been fixed in the newest SDK versions.
 
 ### Race condition
 
@@ -124,7 +124,7 @@ The database or container that the item exists in was deleted.
 1. [Restore from a backup](../periodic-backup-restore-introduction.md) the parent resource, or re-create the resources.
 1. Create a new resource to replace the deleted resource.
 
-### 7. Container/Collection names are case-sensitive
+### Container/Collection names are case-sensitive
 
 Container/Collection names are case-sensitive in Azure Cosmos DB.
 

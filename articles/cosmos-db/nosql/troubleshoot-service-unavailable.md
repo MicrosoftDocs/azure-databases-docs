@@ -20,7 +20,7 @@ It's important to make sure the application design follows our [guide for design
 When evaluating the case for service unavailable errors:
 
 * What is the effect measured in volume of operations affected compared to the operations succeeding? Is it within the service SLAs?
-* Is the P99 latency / availability affected?
+* Is the P99 latency or availability affected?
 * Are the failures affecting all your application instances or only a subset? When the issue is reduced to a subset of instances, it's commonly a problem related to those instances.
 
 ## Troubleshooting steps
@@ -29,7 +29,7 @@ The following list contains known causes and solutions for service unavailable e
 
 ### Verify the substatus code
 
-In certain conditions, the HTTP 503 Service Unavailable error includes a substatus code that helps to identify the cause.
+In certain conditions, the HTTP 503 "Service Unavailable" error includes a substatus code that helps to identify the cause.
 
 | Substatus code | Description |
 |----------|-------------|
