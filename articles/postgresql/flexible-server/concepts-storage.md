@@ -1,8 +1,8 @@
 ---
 title: Storage options
 description: This article describes the storage options in Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
 ms.custom: references_regions
 ms.date: 01/16/2025

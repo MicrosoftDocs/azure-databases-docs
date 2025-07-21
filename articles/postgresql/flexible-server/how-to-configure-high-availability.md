@@ -1,8 +1,8 @@
 ---
 title: Configure high availability
 description: This article describes how to configure and operate high availability in an Azure Database for PostgreSQL flexible server.
-author: akashraokm
-ms.author: akashrao
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
