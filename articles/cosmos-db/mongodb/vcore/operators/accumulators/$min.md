@@ -1,6 +1,6 @@
 ---
 title: $min
-titleSuffix: Overview of the $min operator
+titleSuffix: Overview of the $min operator in Azure Cosmos DB for MongoDB (vCore)
 description: Retrieves the minimum value for a specified field
 author: sandeepsnairms
 ms.author: sandnair
