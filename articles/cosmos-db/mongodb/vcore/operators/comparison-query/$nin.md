@@ -143,7 +143,7 @@ This returns the following result:
 ]
 ```
 
-### Example 2 - Find a store with no discounts on a specific categories of promotions
+### Example 2 - Find a store with no discounts on specific categories of promotions
 
 To find a store without promotions on Smoked Salmon and Anklets, first run a query using $nin on the nested categoryName field. Then project the name and promotions offered by the store and limit the results to one document from the result set.
 
