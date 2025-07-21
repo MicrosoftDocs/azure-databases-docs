@@ -1,6 +1,6 @@
 ---
 title: $maxN
-titleSuffix: Overview of the $maxN operator
+titleSuffix: Overview of the $maxN operator in Azure Cosmos DB for MongoDB (vCore)
 description: Retrieves the top N values based on a specified filtering criteria
 author: sandeepsnairms
 ms.author: sandnair
