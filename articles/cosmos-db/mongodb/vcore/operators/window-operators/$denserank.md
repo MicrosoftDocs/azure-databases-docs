@@ -1,6 +1,6 @@
 ---
 title: $denseRank
-titleSuffix: Overview of the $denseRank operator
+titleSuffix: Overview of the $denseRank operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $denseRank operator assigns and returns a positional ranking for each document within a partition based on a specified sort order 
 author: abinav2307
 ms.author: abramees
