@@ -1,20 +1,21 @@
 ---
 title: Introduction/Overview
 titleSuffix: Azure Cosmos DB for Table
-description: Use Azure Cosmos DB for Table to store, manage, and query massive volumes of key-value typed NoSQL data.
+description: Learn how to use Azure Cosmos DB for Table to store, manage, and query massive volumes of key-value typed NoSQL data.
 author: seesharprun
-ms.author: sasinnat
+ms.author: sidandrews
+ms.reviewer: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: overview
-ms.date: 02/28/2023
+ms.date: 07/22/2025
+appliesto:
+  - ✅ Table
 ---
 
 # What is Azure Cosmos DB for Table?
 
-[!INCLUDE[Table](../includes/appliesto-table.md)]
-
-[Azure Cosmos DB](../introduction.md) is a fully managed NoSQL and relational database for modern app development.
+Azure Cosmos DB is a fully managed NoSQL and relational database for modern app development.
 
 Azure Cosmos DB for Table provides applications written for Azure Table storage with premium capabilities like:
 

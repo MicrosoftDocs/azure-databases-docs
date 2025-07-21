@@ -1,20 +1,21 @@
 ---
-title: Introduction to Azure Cosmos DB for Apache Gremlin
+title: Introduction/Overview
 titleSuffix: Azure Cosmos DB for Apache Gremlin
-description: Use Azure Cosmos DB for Apache Gremlin to store, query, and traverse massive graphs with the Gremlin graph query language of Apache TinkerPop.
-author: manishmsfte
-ms.author: mansha
+description: Learn how to use Azure Cosmos DB for Apache Gremlin to store, query, and traverse massive graphs with the Gremlin graph query language of Apache TinkerPop.
+author: seesharprun
+ms.author: sidandrews
+ms.reviewer: mansha
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: overview
-ms.date: 06/24/2025
+ms.date: 07/22/2025
+appliesto:
+  - ✅ Apache Gremlin
 ---
 
 # What is Azure Cosmos DB for Apache Gremlin?
 
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
-
-[Azure Cosmos DB](../introduction.md) is a fully managed NoSQL and relational database for modern app development.
+Azure Cosmos DB is a fully managed NoSQL and relational database for modern app development.
 
 Azure Cosmos DB for Apache Gremlin is a graph database service that can be used to store massive graphs with billions of vertices and edges. You can query the graphs with millisecond latency and evolve the graph structure easily. The API for Gremlin is built based on [Apache TinkerPop](https://tinkerpop.apache.org), a graph computing framework that uses the Gremlin query language.
 

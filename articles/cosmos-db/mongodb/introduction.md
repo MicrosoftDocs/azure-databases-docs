@@ -1,20 +1,23 @@
 ---
-title: Overview
+title: Introduction/Overview
 titleSuffix: Azure Cosmos DB for MongoDB
 description: Learn how to use Azure Cosmos DB for MongoDB to store and query massive amounts of data using popular open-source drivers.
-author: gahl-levy
-ms.author: gahllevy
+author: seesharprun
+ms.author: sidandrews
+ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: overview
-ms.date: 06/30/2025
+ms.date: 07/22/2025
+appliesto:
+  - ✅ MongoDB
 ---
 
 # What is Azure Cosmos DB for MongoDB?
 
-[!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
+Azure Cosmos DB is a fully managed NoSQL and relational database for modern app development.
 
-Azure Cosmos DB is a fully managed NoSQL, relational, and vector database for modern app development. It offers single-digit millisecond response times, automatic and instant scalability, and guaranteed speed at any scale. It's the database that ChatGPT relies on to [dynamically scale](../introduction.md) with high reliability and low maintenance.
+It offers single-digit millisecond response times, automatic and instant scalability, and guaranteed speed at any scale. It's the database that ChatGPT relies on to [dynamically scale](../introduction.md) with high reliability and low maintenance.
 
 Azure Cosmos DB for MongoDB makes it easy to use Azure Cosmos DB as if it were a MongoDB database. You can use your existing MongoDB skills and continue to use your favorite MongoDB drivers, SDKs, and tools by pointing your application to the connection string for your account using the API for MongoDB. 
 
