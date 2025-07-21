@@ -1,6 +1,6 @@
 ---
 title: $sum
-titleSuffix: Overview of the $sum operator
+titleSuffix: Overview of the $sum operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $sum operator calculates the sum of of the values of a field based on a filtering criteria
 author: sandeepsnairms
 ms.author: sandnair
