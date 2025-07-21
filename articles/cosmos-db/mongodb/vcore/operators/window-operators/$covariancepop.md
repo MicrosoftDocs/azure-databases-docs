@@ -1,6 +1,6 @@
 ---
 title: $covariancePop
-titleSuffix: Overview of the $covariancePop operator
+titleSuffix: Overview of the $covariancePop operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $covariancePop operator returns the covariance of two numerical expressions
 author: abinav2307
 ms.author: abramees
