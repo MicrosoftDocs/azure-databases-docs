@@ -1,10 +1,10 @@
 ---
-title: Monitoring Data Reference for Azure Database for MySQL 
+title: Monitoring Data Reference for Azure Database for MySQL
 description: This article contains important reference material you need when you monitor Azure Database for MySQL.
 author: sk-microsoft
 ms.author: sakirta
 ms.reviewer: maghan
-ms.date: 07/11/2025
+ms.date: 07/21/2025
 ms.service: azure-database-mysql
 ms.topic: reference
 ms.custom:
@@ -18,7 +18,7 @@ ms.custom:
 
 [!INCLUDE [horz-monitor-ref-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-intro.md)]
 
-See [Monitor Azure Database for MySQL ](concepts-monitor-mysql.md) for details on the data you can collect for Azure Database for MySQL  and how to use it.
+See [Monitor Azure Database for MySQL ](concepts-monitor-mysql.md) for details on the data you can collect for Azure Database for MySQL and how to use it.
 
 [!INCLUDE [horz-monitor-ref-metrics-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-intro.md)]
 
@@ -115,7 +115,7 @@ These enhanced metrics provide valuable information for optimizing your workload
 | MySQL History List Length | This metric calculates the number of changes in the database, specifically the number of records containing previous changes. It's related to the rate of changes to data, causing new row versions to be created. An increasing history list length can affect the performance of the database. |
 | MySQL Lock Timeouts | This metric represents the number of times a query has timed out due to a lock. This situation typically occurs when a query waits for a lock on a row or table held by another query for a longer time than the `innodb_lock_wait_timeout` setting. |
 | MySQL Lock Deadlocks | This metric represents the number of [deadlocks](https://dev.mysql.com/doc/refman/8.0/en/innodb-deadlocks.html) on your Azure Database for MySQL flexible serverinstance in the selected period. |
-[!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
+| [!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)] |
 
 [!INCLUDE [horz-monitor-ref-no-metrics-dimensions](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-no-metrics-dimensions.md)]
 
@@ -128,7 +128,7 @@ A *Chart showing no data* could arise due to various factors. These issues might
 Several reasons that follow can cause this behavior:
 
 - *Microsoft.Insights resource provider isn't registered*: Exploring metrics requires Microsoft.Insights resource provider registered in your subscription. Register your server manually by following the steps described in [Azure resource providers and types](/azure/azure-resource-manager/management/resource-providers-and-types).
-- *Insufficient access rights to your resource*: Ensure you have sufficient permissions for your Azure Database for MySQL  from which you're exploring metrics. Your resource didn't emit metrics during the selected time range. Change the time of the chart to a wider range. In Azure, [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) controls access to metrics. You must be a member of [monitoring reader](/azure/role-based-access-control/built-in-roles#monitoring-reader), [monitoring contributor](/azure/role-based-access-control/built-in-roles#monitoring-contributor), or [contributor](/azure/role-based-access-control/built-in-roles#contributor) to explore metrics for any resource.
+- *Insufficient access rights to your resource*: Ensure you have sufficient permissions for your Azure Database for MySQL from which you're exploring metrics. Your resource didn't emit metrics during the selected time range. Change the time of the chart to a wider range. In Azure, [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) controls access to metrics. You must be a member of [monitoring reader](/azure/role-based-access-control/built-in-roles#monitoring-reader), [monitoring contributor](/azure/role-based-access-control/built-in-roles#monitoring-contributor), or [contributor](/azure/role-based-access-control/built-in-roles#contributor) to explore metrics for any resource.
 - *Your resource didn't emit metrics during the selected time range*: This behavior could be due to several reasons. One possibility is that your resource didn't generate metrics within the chosen time frame. Change the time of the chart to a broader range to see if this approach resolves the issue. For more detailed information on troubleshooting this issue, refer to the [Azure Monitor metrics troubleshooting guide](/azure/azure-monitor/essentials/metrics-troubleshoot#your-resource-didnt-emit-metrics-during-the-selected-time-range).
 - *Time range greater than 30 days*: Verify that the difference between the start and end dates in the time picker doesn't exceed the 30-day interval. For more detailed information on troubleshooting metrics, refer to the [Azure Monitor metrics troubleshooting guide](/azure/azure-monitor/essentials/metrics-troubleshoot).
 - *Dashed Line Indication*: In Azure Monitor, a dashed line signifies a gap in data, or a *null value*, between two points of known time grain data. This aspect is a deliberate design that helps detect missing data points. If your chart displays dashed lines, it indicates missing data. For more information, see [Chart shows dashed line](/azure/azure-monitor/essentials/metrics-troubleshoot#chart-shows-dashed-line).
@@ -146,7 +146,7 @@ For more detailed information on troubleshooting metrics, refer to the [Azure Mo
 
 [!INCLUDE [horz-monitor-ref-logs-tables](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-logs-tables.md)]
 
-### Azure Database for MySQL  Microsoft.DBforMySQL\flexibleServers
+### Azure Database for MySQL Microsoft.DBforMySQL\flexibleServers
 
 - [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity#columns)
 - [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics#columns)
