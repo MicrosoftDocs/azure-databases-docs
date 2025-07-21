@@ -1,6 +1,6 @@
 ---
 title: $gt
-titleSuffix: Overview of the $gt operator
+titleSuffix: Overview of the $gt operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $gt query operator retrieves documents where the value of a field is greater than a specified value
 author: abinav2307
 ms.author: abramees
