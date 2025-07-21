@@ -212,7 +212,7 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 
 ## Check the migration when completed
 
-[!INCLUDE [check-migration-completed-offline](includes/check-migration-completed-offline.md)]
+[!INCLUDE [check-migration-completed](includes/check-migration-completed.md)]
 
 ## Related content
 
