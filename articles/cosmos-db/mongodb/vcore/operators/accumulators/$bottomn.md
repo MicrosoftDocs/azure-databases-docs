@@ -1,6 +1,6 @@
 ---
   title: $bottomN
-  titleSuffix: Overview of the $tbottomN operator
+  titleSuffix: Overview of the $tbottomN operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $bottomN operator returns the last N documents from the result sorted by one or more fields
   author: suvishodcitus
   ms.author: suvishod
