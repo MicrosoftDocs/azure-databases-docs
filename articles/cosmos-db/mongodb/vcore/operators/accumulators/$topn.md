@@ -1,6 +1,6 @@
 ---
   title: $topN
-  titleSuffix: Overview of the $topN operator
+  titleSuffix: Overview of the $topN operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $topN operator returns the first N documents from the result sorted by one or more fields
   author: suvishodcitus
   ms.author: suvishod
