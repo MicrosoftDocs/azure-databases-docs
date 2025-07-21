@@ -213,7 +213,7 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 
 After you select the **Start validation and migration** button, a notification appears, in a few seconds, to say that the validation or migration creation is successful. You're automatically redirected to the flexible server's **Migration** page. The entry shows **Status** as **In progress**. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
 
-:::image type="content" source="../media/tutorial-migration-service-aurora-online/monitor-migration.png" alt-text="Screenshot of the monitor migration page." lightbox="../media/tutorial-migration-service-aurora-online/monitor-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-aurora-online/monitor-migration.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-aurora-online/monitor-migration.png":::
 
 The grid that displays the migrations has the following columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration**, and **Start time**. The entries are displayed sorted by **Start time** in descending order, with the most recent entry on the top. You can use the **Refresh** button in the toolbar, to refresh the status of the validation or migration run.
 
@@ -236,7 +236,7 @@ Validation details are available at the instance and database level.
 
 You can see the **Validation status** and **Migration status** under the migration details page.
 
-:::image type="content" source="../media/tutorial-migration-service-online/details-migration.png" alt-text="Screenshot of the details showing validation and migration." lightbox="../media/tutorial-migration-service-online/details-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-online/details-migration.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-online/details-migration.png":::
 
 Some possible migration statuses:
 
