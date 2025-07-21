@@ -10,7 +10,7 @@ ms.topic: language-reference
 ms.date: 02/24/2025
 ---
 
-# $gte (Comparison query)
+# $gte
 
 The `$gte` operator retrieves documents where the value of a field is greater than or equal to a specified value. The `$gte` operator retrieves documents that meet a minimum threshold for the value of a field.
 
