@@ -205,10 +205,10 @@ This returns the following results:
 
 ```json
 [
-{
-    "_id": "aa9ad64c-29da-42f8-a1f0-30e03bf04a2d",
-    "name": "Boulder Innovations | Home Security Market - East Sheridanborough"
-}
+    {
+        "_id": "aa9ad64c-29da-42f8-a1f0-30e03bf04a2d",
+        "name": "Boulder Innovations | Home Security Market - East Sheridanborough"
+    }
 ]
 ```
 
