@@ -29,7 +29,7 @@ The $exists operator retrieves documents that contain the specified field. The $
 | **`field`** | The field to check for existence. |
 | **`true or false`** | `true` for documents that contain the field (including null values), `false` for documents that do not contain the field. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
