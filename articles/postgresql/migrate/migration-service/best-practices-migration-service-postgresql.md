@@ -1,5 +1,5 @@
 ---
-title: Best Practices to Migrate Into Flexible Server
+title: Best Practices to Migrate Into flexible server
 description: Best practices for migration into Azure Database for PostgreSQL, including premigration validation, target server configuration, migration timeline, and migration speed benchmarking.
 author: hariramt
 ms.author: hariramt
@@ -20,7 +20,7 @@ This article explains common pitfalls encountered and best practices to ensure a
 
 As a first step in the migration, run the premigration validation before you perform a migration. You can use the **Validate** and **Validate and migrate** options on the migration **Setup** page. Premigration validation conducts thorough checks against a predefined rule set. The goal is to identify potential problems and provide actionable insights for remedial actions. Keep running premigration validation until it results in a **Succeeded** state. To learn more, see [Premigration validations](concepts-premigration-migration-service.md).
 
-## Target Flexible Server configuration
+## Target flexible server configuration
 
 During the initial base copy of data, multiple insert statements are executed on the target, which generates write-ahead logs (WALs). Until these WALs are archived, the logs consume storage at the target and the storage required by the database.
 

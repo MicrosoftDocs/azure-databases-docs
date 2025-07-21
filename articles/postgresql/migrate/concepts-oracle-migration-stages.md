@@ -88,7 +88,7 @@ Query Store for Azure Postgres serves as the foundation for your monitoring feat
 
 ### Index Tuning
 
-Index tuning is a feature of Azure Database for PostgreSQL flexible server that can automatically improve the performance of your workload by analyzing tracked queries and providing index recommendations. It's natively built into Azure Database for PostgreSQL Flexible Server, and builds upon Query Store functionality. Index tuning analyzes workloads tracked by Query Store and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. This is accomplished in three unique ways:
+Index tuning is a feature of Azure Database for PostgreSQL flexible server that can automatically improve the performance of your workload by analyzing tracked queries and providing index recommendations. It's natively built into Azure Database for PostgreSQL flexible server, and builds upon Query Store functionality. Index tuning analyzes workloads tracked by Query Store and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. This is accomplished in three unique ways:
 
 - Identify which indexes are beneficial to create because they could significantly improve the queries analyzed during an index tuning session.
 - Identify indexes that are exact duplicates and can be eliminated to reduce the performance impact their existence and maintenance have on the system's overall performance.
