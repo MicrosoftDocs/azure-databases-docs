@@ -10,7 +10,7 @@ ms.topic: language-reference
 ms.date: 02/24/2025
 ---
 
-# $gt (Comparison Query)
+# $gt
 
 The `$gt` operator retrieves documents where the value of a field is greater than a specified value. The `$gt` operator queries numerical and date values to filter records that exceed a specified threshold.
 
