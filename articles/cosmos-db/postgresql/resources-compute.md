@@ -23,6 +23,13 @@ Postgres server logs.
  
 You can select the compute and storage settings independently for worker nodes
 and the coordinator node in a multi-node cluster.
+
+> [!NOTE]
+> General Purpose service tier is used for the Coordinator node
+> and Memory Optimized service tier is used for the Worker nodes.
+> Creating a cluster using a method other than the Azure Portal to set
+> other server type for Coordinator and Worker nodes will lead to an unsupported configuration.
+
  
 | Resource              | Worker node                | Coordinator node                     |
 |-----------------------|----------------------------|--------------------------------------|
@@ -97,6 +104,11 @@ compute](concepts-burstable-compute.md) and regular compute.
 | Storage type | General purpose (SSD) |
 
 **Regular compute**
+
+> [!NOTE]
+> Only General Purpose service tier is supported
+> Creating a cluster using a method other than the Azure Portal to set
+> other server type will lead to an unsupported configuration.
 
 | Resource | Resource value |
 |----------|----------------|
