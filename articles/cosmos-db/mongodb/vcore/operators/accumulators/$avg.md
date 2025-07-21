@@ -1,6 +1,6 @@
 ---
 title: $avg
-titleSuffix: Overview of the $avg operator
+titleSuffix: Overview of the $avg operator in Azure Cosmos DB for MongoDB (vCore)
 description: Computes the average of numeric values for documents in a group, bucket, or window.
 author: sandeepsnairms
 ms.author: sandnair
