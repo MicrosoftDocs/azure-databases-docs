@@ -1,6 +1,6 @@
 ---
 title: $or
-titleSuffix: Overview of the $or operator
+titleSuffix: Overview of the $or operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $or operator joins query clauses with a logical OR and returns documents that match at least one of the specified conditions.
 author: suvishodcitus
 ms.author: suvishod
