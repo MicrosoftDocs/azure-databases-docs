@@ -1,6 +1,6 @@
 ---
 title: $nor
-titleSuffix: Overview of the $nor operator
+titleSuffix: Overview of the $nor operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $nor operator performs a logical NOR on an array of expressions and retrieves documents that fail all the conditions.
 author: suvishodcitus
 ms.author: suvishod
