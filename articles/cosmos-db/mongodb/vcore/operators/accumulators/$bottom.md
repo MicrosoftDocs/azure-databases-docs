@@ -1,6 +1,6 @@
 ---
   title: $bottom
-  titleSuffix: Overview of the $bottom operator
+  titleSuffix: Overview of the $bottom operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $bottom operator returns the last document from the query's result set sorted by one or more fields
   author: suvishodcitus
   ms.author: suvishod
