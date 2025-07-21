@@ -1,8 +1,8 @@
 ---
 title: "Migrate MySQL On-Premises to Azure Database for MySQL: Summary"
 description: "This document has covered several topics related to migrating an application from on-premises MySQL to Azure Database for MySQL."
-author: SudheeshGH
-ms.author: sunaray
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
