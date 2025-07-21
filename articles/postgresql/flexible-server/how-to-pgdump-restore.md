@@ -1,8 +1,8 @@
 ---
 title: Best Practices for pg_dump and pg_restore
 description: This article discusses best practices for pg_dump and pg_restore in Azure Database for PostgreSQL flexible server.
-author: sarat0681
-ms.author: sbalijepalli
+author: danyal-bukhari
+ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 06/24/2025
 ms.service: azure-database-postgresql

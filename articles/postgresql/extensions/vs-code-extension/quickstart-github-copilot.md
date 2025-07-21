@@ -1,10 +1,11 @@
 ---
 title: "Quickstart: Guide for GitHub Copilot Feature for Visual Studio Code PostgreSQL Extension"
 description: Learn how to use the GitHub Copilot integration in the PostgreSQL extension for Visual Studio Code.
-author: jjfrost
-ms.author: jfrost
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 05/19/2025
+ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.collection:

@@ -6669,6 +6669,41 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/regex.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/evaluation-query/$regex",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/manage-data-dotnet-core.md",
+      "redirect_url": "/azure/cosmos-db/cassandra/quickstart-dotnet",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/manage-data-dotnet.md",
+      "redirect_url": "/azure/cosmos-db/cassandra/quickstart-dotnet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/manage-data-nodejs.md",
+      "redirect_url": "/azure/cosmos-db/cassandra/quickstart-nodejs",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/manage-data-python.md",
+      "redirect_url": "/azure/cosmos-db/cassandra/quickstart-python",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/manage-data-java-v4-sdk.md",
+      "redirect_url": "/azure/cosmos-db/cassandra/quickstart-java",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/manage-data-java.md",
+      "redirect_url": "/azure/cosmos-db/cassandra/quickstart-java",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/manage-data-go.md",
+      "redirect_url": "/azure/cosmos-db/cassandra/quickstart-go",
+      "redirect_document_id": true
     }
   ]
 }

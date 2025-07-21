@@ -131,7 +131,6 @@ To drop a text index in MongoDB, you can use the `dropIndex()` method on the col
 ## Text index limitations
 
 - Only one text index can be defined on a collection.
-- Text indexes support simple text searches and don't provide advanced search capabilities like regular expression searches.
 - Hint() isn't supported in combination with a query using $text expression.
 - Sort operations can't use the ordering of the text index in MongoDB.
 - Text indexes can be relatively large, consuming significant storage space compared to other index types.

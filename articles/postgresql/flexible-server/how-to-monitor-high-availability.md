@@ -1,8 +1,8 @@
 ---
 title: High Availability (HA) Health Status Monitoring
 description: This article describes how to monitor the health of HA-enabled instances for Azure Database for PostgreSQL flexible server using Azure Resource Health.
-author: varun-dhawan
-ms.author: varundhawan
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 11/04/2024
 ms.service: azure-database-postgresql

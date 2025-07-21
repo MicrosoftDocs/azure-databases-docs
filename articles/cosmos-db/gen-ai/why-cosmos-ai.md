@@ -9,6 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
 ms.date: 04/15/2025
+ms.update-cycle: 180-days
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
