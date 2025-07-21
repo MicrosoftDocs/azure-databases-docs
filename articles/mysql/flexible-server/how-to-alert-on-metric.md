@@ -1,8 +1,8 @@
 ---
 title: Configure Metrics Alerts
 description: This article describes how to configure and access metrics alerts for Azure Database for MySQL - Flexible Server from the Azure portal.
-author: code-sidd
-ms.author: sisawant
+author: VandhanaMehta  
+ms.author: vamehta  
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
