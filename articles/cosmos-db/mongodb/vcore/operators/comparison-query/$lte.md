@@ -1,7 +1,7 @@
 ---
 title: $lte
-titleSuffix: Overview of the $lte query operator in Azure Cosmos DB for MongoDB vCore
-description: The $lte query operator in Azure Cosmos DB for MongoDB vCore matches documents where the value of a field is less than or equal to a specified value
+titleSuffix: Overview of the $lte operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $lte operator retrieves documents where the value of a field is less than or equal to a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -12,17 +12,15 @@ ms.date: 02/24/2025
 
 # $lte
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$lte` operator is used to match documents where the value of a field is less than or equal to a specified value. The `$lte` operator filters documents based on numerical, date, or other comparable fields.
+The `$lte` operator retrieves documents where the value of a field is less than or equal to a specified value. The `$lte` operator filters documents based on numerical, date, or other comparable fields.
 
 ## Syntax
 
-The syntax for using the `$lte` operator is:
-
-```mongodb
+```javascript
 {
-  "field": { "$lte": value }
+    field: {
+        $lte: <value>
+    }
 }
 ```
 
@@ -34,148 +32,128 @@ The syntax for using the `$lte` operator is:
 | **`value`** | The value to compare against|
 
 ## Examples
-Consider this sample document from the stores collection in the StoreData database.
+
+Consider this sample document from the stores collection.
 
 ```json
 {
-    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
-    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
-    "location": {
-        "lat": -89.2384,
-        "lon": -46.4012
-    },
-    "staff": {
-        "totalStaff": {
-            "fullTime": 8,
-            "partTime": 20
+  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+  "location": {
+    "lat": 60.1441,
+    "lon": -141.5012
+  },
+  "staff": {
+    "totalStaff": {
+      "fullTime": 2,
+      "partTime": 0
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      {
+        "categoryName": "DJ Headphones",
+        "totalSales": 35921
+      }
+    ],
+    "fullSales": 3700
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Bargain Blitz Days",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 3,
+          "Day": 11
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 2,
+          "Day": 18
         }
-    },
-    "sales": {
-        "totalSales": 75670,
-        "salesByCategory": [
-            {
-                "categoryName": "Wine Accessories",
-                "totalSales": 34440
-            },
-            {
-                "categoryName": "Bitters",
-                "totalSales": 39496
-            },
-            {
-                "categoryName": "Rum",
-                "totalSales": 1734
-            }
-        ]
-    },
-    "promotionEvents": [
+      },
+      "discounts": [
         {
-            "eventName": "Unbeatable Bargain Bash",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 23
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 7,
-                    "Day": 2
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 7
-                },
-                {
-                    "categoryName": "Bitters",
-                    "discountPercentage": 15
-                },
-                {
-                    "categoryName": "Brandy",
-                    "discountPercentage": 8
-                },
-                {
-                    "categoryName": "Sports Drinks",
-                    "discountPercentage": 22
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 19
-                }
-            ]
+          "categoryName": "DJ Turntables",
+          "discountPercentage": 18
         },
         {
-            "eventName": "Steal of a Deal Days",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 21
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 29
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Organic Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "White Wine",
-                    "discountPercentage": 20
-                },
-                {
-                    "categoryName": "Sparkling Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 17
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 23
-                }
-            ]
+          "categoryName": "DJ Mixers",
+          "discountPercentage": 15
         }
-    ]
+      ]
+    }
+  ],
+  "tag": [
+    "#ShopLocal",
+    "#SeasonalSale",
+    "#FreeShipping",
+    "#MembershipDeals"
+  ],
+  "company": "Lakeshore Retail",
+  "city": "Port Cecile",
+  "lastUpdated": {
+    "$date": "2024-12-11T10:21:58.274Z"
+  }
 }
 ```
 
-### Example 1: Retrieve all stores where the total sales is less than or equal to $35,000
+### Example 1: Find a store with sales <= $35,000
+
+To find a store with sales <= $35,000, run a query using $lte on the sales.totalSales field and limit the resulting documents to a single store.
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$lte": 35000 } }, {"_id": 1}, {"limit": 1})
+db.stores.find({
+    "sales.totalSales": {
+        "$lte": 35000
+    }
+}, {
+    "_id": 1
+}, {
+    "limit": 1
+})
 ```
 
-This returns the following results:
+This query returns the following result:
+
 ```json
-{
-  "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6"
-}
+[
+  {
+    "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6"
+  }
+]
 ```
 
-### Example 2: Find stores with 12 or fewer full-time staff
+### Example 2: Find a store with 12 or fewer full-time staff
+
+To find a store with <= 12 full-time staff, run a query using $lte on the nested fullTime field. Then project only the name and full time staff count and limit the results to one store from the result set.
 
 ```javascript
-db.stores.find({ "staff.totalStaff.fullTime": { "$lte": 12 } }, {"name": 1, "staff.totalStaff.fullTime": 1}, {"limit": 1})
+db.stores.find({
+    "staff.totalStaff.fullTime": {
+        "$lte": 12
+    }
+}, {
+    "name": 1,
+    "staff.totalStaff.fullTime": 1
+}, {
+    "limit": 1
+})
 ```
 
-This returns the following results:
+This query returns the following result:
+
 ```json
-{
-    "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
-    "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
-    "staff": { "totalStaff": { "fullTime": 6 } }
-}
+[
+  {
+      "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
+      "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
+      "staff": { "totalStaff": { "fullTime": 6 } }
+  }
+]
 ```
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$lt for less than comparisons]($lt.md)
-- [$gt for greater than comparisons]($gt.md)
+[!INCLUDE[Related content](../includes/related-content.md)]
