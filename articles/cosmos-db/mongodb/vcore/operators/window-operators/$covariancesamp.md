@@ -1,6 +1,6 @@
 ---
 title: $covarianceSamp
-titleSuffix: Overview of the $covarianceSamp operator
+titleSuffix: Overview of the $covarianceSamp operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $covarianceSamp operator returns the covariance of a sample of two numerical expressions
 author: abinav2307
 ms.author: abramees
