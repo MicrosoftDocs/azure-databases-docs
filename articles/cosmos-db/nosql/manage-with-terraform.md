@@ -89,7 +89,7 @@ Create an Azure Cosmos account, a natively maintained role definition, and a nat
 
 :::code language="terraform" source="~/terraform_samples/quickstart/101-cosmos-db-aad-rbac/variables.tf":::
 
-## <a id="free-tier"></a>Free tier Azure Cosmos DB account
+## <a id="free-tier"></a>Free-tier Azure Cosmos DB account
 
 Create a free-tier Azure Cosmos account and a database with shared throughput that can be shared with up to 25 containers.
 

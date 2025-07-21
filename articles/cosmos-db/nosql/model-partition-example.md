@@ -1,5 +1,5 @@
 ---
-title: Model and Partition Data with a Real-World Example
+title: Model and Partition Data using a Real-World Example
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to model and partition data using a real-world example scenario and Azure Cosmos DB for NoSQL.
 author: markjbrown
@@ -12,7 +12,7 @@ ms.devlang: javascript
 ms.custom: sfi-image-nochange
 ---
 
-# How to model and partition data on Azure Cosmos DB using a real-world example
+# How to model and partition data using a real-world example
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
@@ -249,6 +249,8 @@ Looking at the performance issues we faced in the previous section, we can ident
 - Some queries don't filter on the partition key of the containers they target, leading to a fan-out that impedes our scalability.
 
 Let's resolve each of those problems, starting with the first one.
+
+<a id="v2-introducing-denormalization-to-optimize-read-queries">
 
 ## V2: Introduce denormalization to optimize read queries
 
