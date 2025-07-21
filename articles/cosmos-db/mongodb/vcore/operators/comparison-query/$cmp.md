@@ -1,6 +1,6 @@
 ---
   title: $cmp
-  titleSuffix: Overview of the $cmp operator
+  titleSuffix: Overview of the $cmp operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $cmp operator compares two values
   author: abinav2307
   ms.author: abramees
