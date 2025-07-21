@@ -1,6 +1,6 @@
 ---
 title: $eq
-titleSuffix: Overview of the $eq query operator
+titleSuffix: Overview of the $eq operator
 description: The $eq query operator compares the value of a field to a specified value
 author: abinav2307
 ms.author: abramees
