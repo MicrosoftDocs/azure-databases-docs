@@ -13,7 +13,7 @@ ms.date: 07/21/2025
 ai-usage: ai-generated
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
-  - ✅ Apache Cassanda
+  - ✅ Apache Gremlin
 ---
 
 # Quickstart: Azure Cosmos DB for Apache Gremlin client library for Node.js
