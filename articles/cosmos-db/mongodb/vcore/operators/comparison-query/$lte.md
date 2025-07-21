@@ -1,6 +1,6 @@
 ---
 title: $lte
-titleSuffix: Overview of the $lte operator
+titleSuffix: Overview of the $lte operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $lte operator retrieves documents where the value of a field is less than or equal to a specified value
 author: abinav2307
 ms.author: abramees
