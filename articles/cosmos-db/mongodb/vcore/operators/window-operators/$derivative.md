@@ -1,6 +1,6 @@
 ---
 title: $derivative
-titleSuffix: Overview of the $derivative operator
+titleSuffix: Overview of the $derivative operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $derivative operator calculates the average rate of change of the value of a field within a specified window. 
 author: abinav2307
 ms.author: abramees
