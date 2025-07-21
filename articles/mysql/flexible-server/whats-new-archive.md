@@ -1,9 +1,9 @@
 ---
 title: "Azure Database for MySQL: A Look Back at Recent Features"
 description: Archive list of features released for Azure Database for MySQL.
-author: SudheeshGH
-ms.author: sunaray
-ms.reviewer: vamehta, maghan
+author: deepthiprasad
+ms.author: deprasa
+ms.reviewer: maghan
 ms.date: 05/02/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
