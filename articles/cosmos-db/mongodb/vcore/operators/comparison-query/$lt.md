@@ -1,6 +1,6 @@
 ---
 title: $lt
-titleSuffix: Overview of the $lt operator
+titleSuffix: Overview of the $lt operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $lt operator retrieves documents where the value of field is less than a specified value
 author: abinav2307
 ms.author: abramees
