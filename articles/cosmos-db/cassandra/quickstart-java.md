@@ -9,8 +9,10 @@ ms.subservice: apache-cassandra
 ms.topic: quickstart-sdk
 ms.devlang: java
 ms.custom: devx-track-java, sfi-ropc-nochange
-ms.date: 07/18/2025
+ms.date: 07/21/2025
 ai-usage: ai-generated
+appliesto:
+  - ✅ Apache Cassanda
 ---
 
 # Quickstart: Azure Cosmos DB for Apache Cassandra client library for Java
