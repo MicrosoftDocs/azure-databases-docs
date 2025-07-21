@@ -1,6 +1,6 @@
 ---
 title: $ne
-titleSuffix: Overview of the $ne operator
+titleSuffix: Overview of the $ne operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $ne operator retrieves documents where the value of a field doesn't equal a specified value
 author: abinav2307
 ms.author: abramees
