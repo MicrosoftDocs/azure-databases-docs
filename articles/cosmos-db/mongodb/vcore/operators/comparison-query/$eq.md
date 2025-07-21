@@ -101,7 +101,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Use $eq filter on a root level field
 
-To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh", run a query with the $eq predicate to match on the name field and project only the id and name fields in the result.
+To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh", run a query with the $eq predicate to match on the name field and project only the ID and name fields in the result.
 
 ```javascript
 db.stores.find({
