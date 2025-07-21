@@ -1,8 +1,8 @@
 ---
 title: CLI Script - Restart/stop/start
 description: This Azure CLI sample script shows how to restart/stop/start an Azure Database for MySQL - Flexible Server instance.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

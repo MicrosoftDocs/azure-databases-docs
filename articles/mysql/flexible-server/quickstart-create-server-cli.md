@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Create a Flexible Server By Using the Azure CLI"
 description: In this quickstart, learn how to create an instance of Azure Database for MySQL - Flexible Server in an Azure resource group by using the Azure CLI.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
