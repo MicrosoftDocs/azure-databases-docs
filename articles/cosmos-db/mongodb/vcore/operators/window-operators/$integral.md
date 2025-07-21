@@ -1,6 +1,6 @@
 ---
 title: $integral
-titleSuffix: Overview of the $integral operator
+titleSuffix: Overview of the $integral operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $integral operator calculates the area under a curve with the specified range of documents forming the adjacent documents for the calculation.
 author: abinav2307
 ms.author: abramees
