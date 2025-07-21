@@ -1,6 +1,6 @@
 ---
 title: $last
-titleSuffix: Overview of the $last operator
+titleSuffix: Overview of the $last operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $last operator returns the last document from the result sorted by one or more fields 
 author: abinav2307
 ms.author: abramees
