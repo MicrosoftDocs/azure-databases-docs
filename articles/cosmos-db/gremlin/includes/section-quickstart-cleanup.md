@@ -1,6 +1,6 @@
 ---
 ms.service: azure-cosmos-db
-ms.subservice: apache-cassandra
+ms.subservice: apache-gremlin
 ms.topic: include
 ms.date: 07/21/2025
 ---
@@ -17,7 +17,7 @@ az cosmosdb delete \
 
 #### [Azure portal](#tab/azure-portal)
 
-1. Navigate to the existing **Azure Cosmos DB for Apache Cassandra** resource you created earlier in this guide.
+1. Navigate to the existing **Azure Cosmos DB for Apache Gremlin** resource you created earlier in this guide.
 
 1. On the resource's page, select **Delete** from the menu bar.
 
