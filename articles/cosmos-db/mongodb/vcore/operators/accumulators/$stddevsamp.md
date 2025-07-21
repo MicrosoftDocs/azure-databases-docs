@@ -1,6 +1,6 @@
 ---
 title: $stddevsamp
-titleSuffix: Overview of the $stddevsamp operator
+titleSuffix: Overview of the $stddevsamp operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $stddevsamp operator calculates the standard deviation of a specified sample of values and not the entire population
 author: abinav2307
 ms.author: abramees
