@@ -51,9 +51,11 @@ landingContent:
             url: sample-supply-chain-traceability.md
   - title: Resources
     linkLists:
-      - linkListType: test
+      - linkListType: reference
         links:
           - text: Pricing
             url: https://azure.microsoft.com/pricing/details/cosmos-db
+      - linkListType: download
+        links:
           - text: Partners
             url: partner-tools.md
