@@ -1,6 +1,6 @@
 ---
   title: $mergeObjects
-  titleSuffix: Overview of the $mergeObjects expression in Azure Cosmos DB for MongoDB vCore
+  titleSuffix: Overview of the $mergeObjects expression in Azure Cosmos DB for MongoDB (vCore)
   description: The $mergeObjects operator merges multiple documents into a single document
   author: abinav2307
   ms.author: abramees
@@ -12,14 +12,14 @@
 
 # $mergeObjects as object expression operator
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
 The `$mergeObjects` operator combines multiple documents into a single document. The mergeObjects operation is used in aggregation pipelines to merge fields from different documents or add one or more fields to an existing document. The operator overwrites fields in the target document with fields from the source document when conflicts occur.
 
 ## Syntax
 
-```mongodb
-{ "$mergeObjects": [ <document1>, <document2>, ... ] }
+```javascript
+{
+  $mergeObjects: [ < document1 > , < document2 > , ...]
+}
 ```
 
 ## Parameters
@@ -29,7 +29,7 @@ The `$mergeObjects` operator combines multiple documents into a single document.
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -143,43 +143,56 @@ Consider this sample document from the stores collection in the StoreData databa
 
 ### Example 1 - Merging documents as an accumulator to group documents by the sales subdocument
 
-```mongodb
-db.stores.aggregate([{"$match": {"company": "Fourth Coffee"}}, {"$group": {"_id": "$city", "mergedSales": {"$mergeObjects": "$sales"}}}])
+```javascript
+db.stores.aggregate([{
+    "$match": {
+        "company": "Fourth Coffee"
+    }
+}, {
+    "$group": {
+        "_id": "$city",
+        "mergedSales": {
+            "$mergeObjects": "$sales"
+        }
+    }
+}])
 ```
 
-The top two documents returned by this query are:
+The first two results returned by this query are:
 
 ```json
-[{
-    "_id": "Jalonborough",
-    "mergedSales": {
-        "totalSales": 45747,
-        "salesByCategory": [
-            {
-                "categoryName": "Bucket Bags",
-                "totalSales": 45747
-            }
-        ]
-    }
-},
-{
-    "_id": "Port Vladimir",
-    "mergedSales": {
-        "totalSales": 32000,
-        "salesByCategory": [
-            {
-                "categoryName": "DJ Speakers",
-                "totalSales": 24989
-            },
-            {
-                "categoryName": "DJ Cables",
-                "totalSales": 7011
-            }
-        ]
-    }
-}]
+[
+  {
+      "_id": "Jalonborough",
+      "mergedSales": {
+          "totalSales": 45747,
+          "salesByCategory": [
+              {
+                  "categoryName": "Bucket Bags",
+                  "totalSales": 45747
+              }
+          ]
+      }
+  },
+  {
+      "_id": "Port Vladimir",
+      "mergedSales": {
+          "totalSales": 32000,
+          "salesByCategory": [
+              {
+                  "categoryName": "DJ Speakers",
+                  "totalSales": 24989
+              },
+              {
+                  "categoryName": "DJ Cables",
+                  "totalSales": 7011
+              }
+          ]
+      }
+  }
+]
 ```
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+[!INCLUDE[Related content](../includes/related-content.md)]
