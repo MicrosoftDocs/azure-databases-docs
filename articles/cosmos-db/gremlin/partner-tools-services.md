@@ -65,7 +65,7 @@ For more information, see [Grapһlytic documentation](https://graphlytic.com/doc
 
 yWorks provides professional software solutions for visualizing graphs, diagrams, and networks. With yFiles, users can visually explore and edit Azure Cosmos DB for Gremlin data, create interactive applications, and use advanced graph layouts and analysis algorithms. The platform is designed for flexibility and integration into custom dashboards and applications.
 
-For more information, see [yWorks documentation](https://www.yworks.com/products/yfiles/doc)
+For more information, see [yWorks documentation](https://www.yfiles.com/the-yfiles-sdk/documentation)
 
 ## Modeling
 
@@ -77,4 +77,4 @@ This section includes a list of partner tools and services for modeling graph da
 
 Haсkolade is a data modeling and schema design tool for NoSQL databases, including Azure Cosmos DB for Gremlin. It allows users to visually design, reverse-engineer, and document graph data models, supporting collaboration, versioning, and integration with CI/CD pipelines. The tool also helps migrate relational data to NoSQL and generate Gremlin scripts for deployment.
 
-For more information, see [Haсkolade documentation](https://hackolade.com/help/AzureCosmosDBGremlin.html)
+For more information, see [Haсkolade documentation](https://hackolade.com/help)
