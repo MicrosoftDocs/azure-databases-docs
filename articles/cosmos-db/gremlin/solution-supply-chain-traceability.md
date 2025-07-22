@@ -31,10 +31,9 @@ The solution leverages a graph database model to represent complex relationships
 
 ## Prerequisites
 
-- An active Azure subscription
-- Permissions to create and manage Azure resources (Cosmos DB, Event Hubs, API Management, etc.)
+[!INCLUDE[Prerequisites - Account with sample data](includes/prerequisites-account-sample-data.md)]\
+
 - Familiarity with supply chain processes and data
-- (Optional) Access to sample data for testing
 
 ## Process overview
 

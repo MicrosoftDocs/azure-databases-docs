@@ -7,16 +7,11 @@ ms.date: 07/23/2025
 
 # Query Graph Data in Azure Cosmos DB for Apache Gremlin
 
-The Azure Cosmos DB [API for Gremlin](overview.md) supports [Gremlin](https://tinkerpop.apache.org/gremlin.html) queries. This article provides sample documents and queries to get you started. A detailed Gremlin reference is provided in the [Gremlin support](support.md) article.
-
-This article covers the following tasks: 
-
-> [!div class="checklist"]
-> * Querying data with Gremlin
+The Azure Cosmos DB for Apache Gremlin supports the [Gremlin TinkerPop](https://tinkerpop.apache.org/gremlin.html) syntax for queries. This guide walks through common queries that can be performed using this service. You can run following queries in this guide using the [Gremlin console](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console), or your favorite Gremlin driver.
 
 ## Prerequisites
 
-For these queries to work, you must have an Azure Cosmos DB account and have graph data in the container. Don't have any of those? Complete the [5-minute quickstart](quickstart-dotnet.md) to create an account and populate your database. You can run the following queries using the [Gremlin console](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console), or your favorite Gremlin driver.
+[!INCLUDE[Prerequisites - Account with sample data](includes/prerequisites-account-sample-data.md)]\
 
 ## Count vertices in the graph
 
