@@ -516,8 +516,8 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$stddevsamp.md",
-      "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$stddevsamp.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$stdDevSamp.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$stddevsamp",
       "redirect_document_id": true
     },
     {
