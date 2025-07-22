@@ -21,7 +21,7 @@ This section includes a list of partner tools and services for visualizing graph
 
 ### Linkurious Enterprise
 
-:::image type="icon" source="media/partner-tools/services/linkurious.png":::
+:::image type="icon" source="media/partner-tools-services/linkurious.png":::
 
 Linkurious Enterprise is a graph data visualization platform that helps users explore and analyze complex datasets through interactive visual networks. It connects directly to Azure Cosmos DB for Gremlin, allowing users to search, expand, and investigate graph data without writing queries. The platform supports both reading and writing data from its user interface, making it suitable for various graph visualization scenarios.
 
