@@ -1,8 +1,8 @@
 ---
 title: Restore From Backup
 description: This article describes how to perform restore operations in Azure Database for MySQL flexible server through the Azure portal.
-author: code-sidd
-ms.author: sisawant
+author: VandhanaMehta  
+ms.author: vamehta  
 ms.reviewer: maghan
 ms.date: 05/06/2025
 ms.service: azure-database-mysql

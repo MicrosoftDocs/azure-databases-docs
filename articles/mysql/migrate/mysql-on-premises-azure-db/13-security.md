@@ -1,8 +1,8 @@
 ---
 title: "Migrate MySQL On-Premises to Azure Database for MySQL: Security"
 description: "Moving to a cloud-based service doesn’t mean the entire internet has access to it always."
-author: SudheeshGH
-ms.author: sunaray
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
