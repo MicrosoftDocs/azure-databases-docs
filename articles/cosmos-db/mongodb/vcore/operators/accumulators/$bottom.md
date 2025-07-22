@@ -153,13 +153,13 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Find the store with lowest total sales
 
-Suppose we want to determine the store within the Boulder Innovations company with the lowest total sales, run a query to retrieve documents within the Boulder Innovations company, sort the documents in descending order of total sales and return the last document in the sorted result set.
+Suppose we want to determine the store within the First Up Consultants company with the lowest total sales, run a query to retrieve documents within the First Up Consultants company, sort the documents in descending order of total sales and return the last document in the sorted result set.
 
 ```javascript
 db.stores.aggregate([{
     "$match": {
         "company": {
-            "$in": ["Boulder Innovations"]
+            "$in": ["First Up Consultants"]
         }
     }
 }, {
@@ -182,15 +182,15 @@ This query returns the following result:
 ```json
 [
   {
-    "_id": "Boulder Innovations",
+    "_id": "First Up Consultants",
     "bottomSales": [
-        "Boulder Innovations",
+        "First Up Consultants",
         {
             "totalSales": 119,
             "salesByCategory": [
                 {
-                    "categoryName": "Yoga Mats",
-                    "totalSales": 119
+                    "categoryName": "Skirts",
+                    "totalSales": 109
                 }
             ]
         }
