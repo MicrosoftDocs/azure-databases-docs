@@ -104,11 +104,10 @@ Using descriptive relationship labels can improve the efficiency of edge resolut
 
 :::image type="content" source="./media/modeling/graph-modeling-3.png" alt-text="Diagram of relationship labeling examples.":::
 
-The more specific the label that the traverser uses to filter the edges, the better. This decision can have a significant effect on query cost as well. You can evaluate the query cost at any time by using the [executionProfile step](execution-profile.md).
+The more specific the label that the traverser uses to filter the edges, the better. This decision can have a significant effect on query cost as well. You can evaluate the query cost at any time by using the `executionProfile` step.
 
 ## Next steps
 
 * Check out the list of [supported Gremlin steps](support.md).
 * Learn about [graph database partitioning](partitioning.md) to deal with large-scale graphs.
-* Evaluate your Gremlin queries using the [execution profile step](execution-profile.md).
 * Third-party graph [design data model](modeling-tools.md).
