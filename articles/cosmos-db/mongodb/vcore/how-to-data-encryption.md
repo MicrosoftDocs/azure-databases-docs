@@ -139,7 +139,7 @@ You can enable data encryption with user-assigned encryption key, while provisio
 For existing clusters that were deployed with data encryption using a customer-managed key, you can do several configuration changes. Things that can be changed are the references to the keys used for encryption, and references to the user-assigned managed identities used by the service to access the keys kept in the key stores.
 
 You must update references that your Azure Cosmos DB for MongoDB vCore cluster has to a key:
-- When the key stored in the key store is rotated, either manually or automatically. 
+- When the key stored in the key store is rotated either manually or automatically. 
 - When you want to use the same or a different key stored in a different key store.
 
 You must update the user-assigned managed identities which are used by your Azure Cosmos DB for MongoDB vCore cluster to access the encryption keys:
