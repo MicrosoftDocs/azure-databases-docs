@@ -12,7 +12,7 @@
 
 # $bottomN
 
-The $bottomN operator sorts documents on one more fields specified by the query and returns the last N documents matching the filtering criteria.
+The $bottomN operator sorts documents on one or more fields specified by the query and returns the last N documents matching the filtering criteria.
 
 ## Syntax
 
