@@ -1,8 +1,8 @@
 ---
 title: Server Parameters in Azure Database for MySQL - Flexible Server
 description: This article provides guidelines for configuring server parameters in Azure Database for MySQL - Flexible Server.
-author: code-sidd
-ms.author: sisawant
+author: VandhanaMehta  
+ms.author: vamehta  
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
