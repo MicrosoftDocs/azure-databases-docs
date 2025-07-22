@@ -169,17 +169,22 @@
         "articles/cosmos-db/mongodb/vcore/**/*.md": "mongodb-vcore",
         "articles/cosmos-db/postgresql/**/*.md": "postgresql",
         "articles/cosmos-db/cassandra/**/*.md": "apache-cassandra",
-        "articles/cosmos-db/table/**/*.md": "table"
+        "articles/cosmos-db/table/**/*.md": "table",
+        "articles/cosmos-db/gremlin/**/*.md": "apache-gremlin"
       },
       "author": {
-        "articles/cosmos-db/**/includes/**/*.md": "markjbrown"
+        "articles/cosmos-db/**/includes/**/*.md": "seesharprun",
+        "articles/cosmos-db/gremlin/**/*.md": "seesharprun",
+        "articles/cosmos-db/gremlin/**/*.yml": "seesharprun"
       },
       "ms.author": {
-        "articles/cosmos-db/**/includes/**/*.md": "mjbrown"
+        "articles/cosmos-db/**/includes/**/*.md": "sidandrews",
+        "articles/cosmos-db/gremlin/**/*.md": "sidandrews",
+        "articles/cosmos-db/gremlin/**/*.yml": "sidandrews"
       },
       "ms.reviewer": {
-        "articles/cosmos-db/**/*.md": "mjbrown",
-        "articles/cosmos-db/**/*.yml": "mjbrown"
+        "articles/cosmos-db/gremlin/**/*.md": "mansha",
+        "articles/cosmos-db/gremlin/**/*.yml": "mansha"
       },
       "searchScope": {
         "articles/cosmos-db/**/*.md": [
@@ -231,7 +236,14 @@
         "articles/mysql/flexible-server/**/*.yml": "Azure Database for MySQL",
         "articles/postgresql/scripts/**/*.yml": "Azure Database for PostgreSQL",
         "articles/postgresql/flexible-server/**/*.yml": "Azure Database for PostgreSQL",
-        "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL"
+        "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL",
+        "articles/cosmos-db/gremlin/**/*.md": "Azure Cosmos DB for Apache Gremlin",
+        "articles/cosmos-db/gremlin/**/*.yml": "Azure Cosmos DB for Apache Gremlin"
+      },      
+      "appliesto": {
+        "articles/cosmos-db/gremlin/**/*.{md,yml}": [
+          "✅ Apache Gremlin"
+        ]
       }
     },
     "overwrite": [],
