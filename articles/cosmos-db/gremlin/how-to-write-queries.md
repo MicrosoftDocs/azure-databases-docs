@@ -16,7 +16,6 @@ The Azure Cosmos DB for Apache Gremlin supports the [Gremlin TinkerPop](https://
 
 ## Count the number of vertices in the graph
 
-
 Count the total number of product vertices in the graph. This operation is useful for understanding the size of your product catalog or validating data loads.
 
 ```gremlin
@@ -39,7 +38,6 @@ Retrieve products that match a specific label and property value. This query is 
 g.V().hasLabel('product').has('price', gt(800))
 ```
 
-
 ## Project specific properties from products
 
 Return only selected properties from the matched products. This query reduces the amount of data returned and focuses on relevant fields, such as product names.
@@ -47,7 +45,6 @@ Return only selected properties from the matched products. This query reduces th
 ```gremlin
 g.V().hasLabel('product').values('name')
 ```
-
 
 ## Find related products using edges
 
@@ -66,7 +63,6 @@ g.V(['gear-surf-surfboards', 'bbbbbbbb-1111-2222-3333-cccccccccccc']).outE('repl
 ```
 
 ## Analyze query execution with execution profile
-
 
 Analyze the performance and execution details of a Gremlin query using the `executionProfile()` step. This step returns a JSON object with metrics for each step in the query, which helps with troubleshooting and optimization.
 
@@ -120,7 +116,6 @@ For more information about the `executionProfile()` step, see [execution profile
 
 A blind fan-out occurs when a query accesses more partitions than necessary, often due to missing partition key predicates. This antipattern can increase latency and cost. The execution profile helps identify such patterns by showing a high `fanoutFactor`.
 
-
 ```gremlin
 g.V(['gear-surf-surfboards', 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb']).executionProfile()
 ```
@@ -151,7 +146,6 @@ g.V(['gear-surf-surfboards', 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb']).executionP
 
 ## Optimizing fan-out queries
 
-
 A high `fanoutFactor` (such as 5) indicates the query accessed multiple partitions. To optimize, include the partition key in the query predicate:
 
 ```gremlin
@@ -161,9 +155,6 @@ g.V(['gear-surf-surfboards', 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'])
 ## Unfiltered query pattern
 
 Unfiltered queries could process a large initial dataset, increasing cost and latency.
-
-
-Unfiltered query:
 
 ```gremlin
 g.V().hasLabel('product').out().executionProfile()
@@ -209,8 +200,7 @@ g.V().hasLabel('product').out().executionProfile()
 
 ## Filtered query pattern
 
-
-Adding filters before traversals can reduce the working set and improve performance. The execution profile shows the effect of filtering.
+Adding filters before traversals can reduce the working set and improve performance. The execution profile shows the effect of filtering. The filtered query processes fewer vertices, resulting in lower latency and cost.
 
 ```gremlin
 g.V().hasLabel('product').has('clearance', true).out().executionProfile()
@@ -253,5 +243,3 @@ g.V().hasLabel('product').has('clearance', true).out().executionProfile()
   }
 ]
 ```
-
-The filtered query processes fewer vertices, resulting in lower latency and cost.
