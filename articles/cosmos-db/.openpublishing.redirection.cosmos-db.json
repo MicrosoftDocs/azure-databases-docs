@@ -6717,7 +6717,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/table/introduction.md",
-      "redirect_url": "/azure/cosmos-db/cassandra/overview",
+      "redirect_url": "/azure/cosmos-db/table/overview",
       "redirect_document_id": true
     },
     {
