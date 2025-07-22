@@ -24,6 +24,6 @@
 - name: Apache Cassandra
   href: cassandra/toc.yml
 - name: Apache Gremlin
-  href: gremlin/toc.yml
+  href: gremlin/index.yml
 - name: Table
   href: table/toc.yml
