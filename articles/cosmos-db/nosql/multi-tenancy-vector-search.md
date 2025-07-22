@@ -6,6 +6,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.author: thvankra
 ms.collection:
   - ce-skilling-ai-copilot
@@ -192,12 +193,6 @@ Azure Cosmos DB's support for DiskANN vector index capability makes it an excell
 Multi-tenancy in Azure Cosmos DB, especially with its DiskANN vector index capability, offers a powerful solution for building scalable, high-performance AI applications. Whether you choose partition key-per-tenant, hierarchical partitioning, or account-per-tenant models, you can effectively balance cost, security, and performance. By using these models and best practices, you can ensure that your multitenant application meets the diverse needs of your customers, delivering an exceptional user experience.
 
 Azure Cosmos DB provides the tools necessary to build a robust, secure, and scalable multitenant environment. With the power of DiskANN vector indexing, you can deliver fast, high-dimensional searches that drive your AI applications.
-
-## Vector database solutions
-
-[Azure PostgreSQL Server pgvector Extension](../../postgresql/flexible-server/how-to-use-pgvector.md)
-
-:::image type="content" source="../media/vector-search/azure-databases-and-ai-search.png" lightbox="../media/vector-search/azure-databases-and-ai-search.png" alt-text="Diagram of Vector indexing services for Azure PostgreSQL.":::
 
 ## Related content
 

@@ -1,8 +1,8 @@
 ---
 title: Geo-replication
 description: This article describes the Geo-replication in Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql

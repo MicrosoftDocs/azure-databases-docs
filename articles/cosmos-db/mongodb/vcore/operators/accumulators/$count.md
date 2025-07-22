@@ -1,7 +1,7 @@
 ---
 title: $count
-titleSuffix: Overview of the $count operator in Azure Cosmos DB for MongoDB vCore
-description: The `$count` accumulator is used to count the number of documents or groupings in a pipeline stage.
+titleSuffix: Overview of the $count operator in Azure Cosmos DB for MongoDB (vCore)
+description: The `$count` operator is used to count the number of documents that match a query filtering criteria.
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
@@ -12,17 +12,15 @@ ms.date: 01/05/2025
 
 # $count
 
-The `$count` operator is an accumulator used in aggregation pipelines to count the number of documents or groupings. It is commonly used in stages such as `$group`, `$bucket`, `$bucketAuto`, or `$setWindowFields`. This operator is useful for summarizing data or generating counts for specific groupings.
+The `$count` operator is used to count the number of documents that match a specified query filter. The count operator is useful for summarizing data or generating counts for specific groupings.
 
 ## Syntax
 
 ```javascript
 {
-  $count: "<fieldName>"
+    $count: "<fieldName>"
 }
 ```
-
-- `<fieldName>`: Specifies the name of the output field that will store the count.
 
 ## Parameters
 
@@ -32,221 +30,368 @@ The `$count` operator is an accumulator used in aggregation pipelines to count t
 
 ## Examples
 
-Let's understand the usage with documents structured according to this schema.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ],
-  "company": "Lakeshore Retail",
-  "city": "Port Cecile",
-  "lastUpdated": {
-    "$date": "2024-12-11T10:21:58.274Z"
-  }
+    ]
 }
-
 ```
 
-### Example 1: Count the Total Number of Documents
-The following pipeline counts the total number of documents in a collection.
+### Example 1: Retrieve the count of all documents
+
+To retrieve the count of documents within the collection, simply run a count query without query filters.
 
 ```javascript
-db.stores.aggregate([
-  {
+db.stores.aggregate([{
     $count: "totalDocuments"
-  }
-])
+}])
 ```
 
-This query would return the following document.
+This query returns the following result:
 
 ```json
 [
- { totalDocuments: 41501 }
-]
-```
-
----
-
-### Example 2: Count Documents Grouped by a Field
-The following pipeline uses `$group` to count the number of documents for each `categoryName` in the `salesByCategory`.
-
-```javascript
-db.stores.aggregate([
-  {
-    $unwind: "$sales.salesByCategory"
-  },
-  {
-    $group: {
-      _id: "$sales.salesByCategory.categoryName",
-      totalCount: { $count: {} }
+    {
+        "totalDocuments": 41501
     }
-  }
-])
-```
-
-This query would return the following document.
-
-```json
-[
-  { _id: 'Christmas Trees', totalCount: 93 },
-  { _id: 'Nuts', totalCount: 83 },
-  { _id: 'Camping Tables', totalCount: 130 },
-  { _id: 'Music Theory Books', totalCount: 52 },
-  { _id: 'Fortified Wine', totalCount: 55 },
-  { _id: "Children's Mystery", totalCount: 45 },
-  { _id: 'Short Throw Projectors', totalCount: 72 },
-  { _id: 'Pliers', totalCount: 56 },
-  { _id: 'Bluetooth Headphones', totalCount: 104 },
-  { _id: 'Video Storage', totalCount: 80 },
-  { _id: 'Cleansers', totalCount: 68 },
-  { _id: 'Camera Straps', totalCount: 64 },
-  { _id: 'Carry-On Bags', totalCount: 57 },
-  { _id: 'Disinfectant Wipes', totalCount: 85 },
-  { _id: 'Insignia Smart TVs', totalCount: 81 },
-  { _id: 'Toner Refill Kits', totalCount: 38 },
-  { _id: 'iPads', totalCount: 51 },
-  { _id: 'Memory Foam Mattresses', totalCount: 58 },
-  { _id: 'Storage Baskets', totalCount: 68 },
-  { _id: 'Body Spray', totalCount: 96 }
 ]
 ```
 
----
+### Example 2: Count documents grouped by a specific field
 
-### Example 3: Count Promotion Events
-The following pipeline counts the number of `promotionEvents`.
+To retrieve the count of documents within each sales category, first run a query to group documents by sales category. Then run a count query within each category.
 
 ```javascript
-db.stores.aggregate([
-  {
-    $unwind: "$promotionEvents"
-  },
-  {
-    $count: "totalPromotionEvents"
-  }
+db.stores.aggregate([{
+        $unwind: "$sales.salesByCategory"
+    },
+    {
+        $group: {
+            _id: "$sales.salesByCategory.categoryName",
+            totalCount: {
+                $count: {}
+            }
+        }
+    }
 ])
 ```
 
-This query would return the following document.
+This query returns the following document:
 
 ```json
-[ 
-{ totalPromotionEvents: 145673 } 
+[
+    {
+        "_id": "Christmas Trees",
+        "totalCount": 93
+    },
+    {
+        "_id": "Nuts",
+        "totalCount": 83
+    },
+    {
+        "_id": "Camping Tables",
+        "totalCount": 130
+    },
+    {
+        "_id": "Music Theory Books",
+        "totalCount": 52
+    },
+    {
+        "_id": "Fortified Wine",
+        "totalCount": 55
+    },
+    {
+        "_id": "Children's Mystery",
+        "totalCount": 45
+    },
+    {
+        "_id": "Short Throw Projectors",
+        "totalCount": 72
+    },
+    {
+        "_id": "Pliers",
+        "totalCount": 56
+    },
+    {
+        "_id": "Bluetooth Headphones",
+        "totalCount": 104
+    },
+    {
+        "_id": "Video Storage",
+        "totalCount": 80
+    },
+    {
+        "_id": "Cleansers",
+        "totalCount": 68
+    },
+    {
+        "_id": "Camera Straps",
+        "totalCount": 64
+    },
+    {
+        "_id": "Carry-On Bags",
+        "totalCount": 57
+    },
+    {
+        "_id": "Disinfectant Wipes",
+        "totalCount": 85
+    },
+    {
+        "_id": "Insignia Smart TVs",
+        "totalCount": 81
+    },
+    {
+        "_id": "Toner Refill Kits",
+        "totalCount": 38
+    },
+    {
+        "_id": "iPads",
+        "totalCount": 51
+    },
+    {
+        "_id": "Memory Foam Mattresses",
+        "totalCount": 58
+    },
+    {
+        "_id": "Storage Baskets",
+        "totalCount": 68
+    },
+    {
+        "_id": "Body Spray",
+        "totalCount": 96
+    }
+]
+```
+
+### Example 3: Count the number of promotion events
+
+To count the number of promotion events across all stores, first run a query to first unwind by promotion events and then count the distinct promotion events.
+
+```javascript
+db.stores.aggregate([{
+        $unwind: "$promotionEvents"
+    },
+    {
+        $count: "totalPromotionEvents"
+    }
+])
+```
+
+This query returns the following results:
+
+```json
+[
+    {
+        "totalPromotionEvents": 145673
+    }
 ]
 ```
 
 ### Example 4: Using `$count` in `$setWindowFields`
 
-Count of sales for the category "Laptops" by company in the year 2023
+To get sales for Laptops promotions per store, first run a query to filter promotion events for laptops in 2023. Then partition the resulting stores by company. Lastly, run a count query across the partitioned stores to return the results.  
 
 ```javascript
-db.stores.aggregate([
-  { $unwind: "$promotionEvents" },
-  { $unwind: "$promotionEvents.discounts" },
-
-  // Filter only for Laptop discounts in 2023
-  {
-    $match: {
-      "promotionEvents.promotionalDates.startDate.Year": 2023,
-      "promotionEvents.discounts.categoryName": "Laptops"
-    }
-  },
-
-  // Add sales count by city using window function
-  {
-    $setWindowFields: {
-      partitionBy: "$company",
-      output: {
-        salesCount: {
-          $count: {},
-          window: { documents: ["unbounded", "unbounded"] }
+db.stores.aggregate([{
+        $unwind: "$promotionEvents"
+    },
+    {
+        $unwind: "$promotionEvents.discounts"
+    },
+    // Filter only for Laptop discounts in 2023
+    {
+        $match: {
+            "promotionEvents.promotionalDates.startDate.Year": 2023,
+            "promotionEvents.discounts.categoryName": "Laptops"
         }
-      }
+    },
+    // Add sales count by city using window function
+    {
+        $setWindowFields: {
+            partitionBy: "$company",
+            output: {
+                salesCount: {
+                    $count: {},
+                    window: {
+                        documents: ["unbounded", "unbounded"]
+                    }
+                }
+            }
+        }
+    },
+    // Group to return a single result per city
+    {
+        $group: {
+            _id: "$company",
+            salesCount: {
+                $first: "$salesCount"
+            }
+        }
     }
-  },
-
-  // Group to return a single result per city
-  {
-    $group: {
-      _id: "$company",
-      salesCount: { $first: "$salesCount" }
-    }
-  }
 ])
-
 ```
 
-This query would return the following document.
+This query returns the following result:
 
 ```json
 [
-  { _id: 'Boulder Innovations', salesCount: 10 },
-  { _id: 'VanArsdel, Ltd.', salesCount: 13 },
-  { _id: 'Proseware, Inc.', salesCount: 12 },
-  { _id: 'Fabrikam, Inc.', salesCount: 11 },
-  { _id: 'Contoso, Ltd.', salesCount: 13 },
-  { _id: 'Fourth Coffee', salesCount: 8 },
-  { _id: 'Trey Research', salesCount: 14 },
-  { _id: 'Adatum Corporation', salesCount: 12 },
-  { _id: 'Relecloud', salesCount: 16 },
-  { _id: 'Lakeshore Retail', salesCount: 13 },
-  { _id: 'Northwind Traders', salesCount: 5 },
-  { _id: 'First Up Consultants', salesCount: 4 },
-  { _id: 'Wide World Importers', salesCount: 7 },
-  { _id: 'Tailwind Traders', salesCount: 12 }
+    {
+        "_id": "VanArsdel, Ltd.",
+        "salesCount": 13
+    },
+    {
+        "_id": "Proseware, Inc.",
+        "salesCount": 12
+    },
+    {
+        "_id": "Fabrikam, Inc.",
+        "salesCount": 11
+    },
+    {
+        "_id": "Contoso, Ltd.",
+        "salesCount": 13
+    },
+    {
+        "_id": "Fourth Coffee",
+        "salesCount": 8
+    },
+    {
+        "_id": "Trey Research",
+        "salesCount": 14
+    },
+    {
+        "_id": "Adatum Corporation",
+        "salesCount": 12
+    },
+    {
+        "_id": "Relecloud",
+        "salesCount": 16
+    },
+    {
+        "_id": "Lakeshore Retail",
+        "salesCount": 13
+    },
+    {
+        "_id": "Northwind Traders",
+        "salesCount": 5
+    },
+    {
+        "_id": "First Up Consultants",
+        "salesCount": 4
+    },
+    {
+        "_id": "Wide World Importers",
+        "salesCount": 7
+    },
+    {
+        "_id": "Tailwind Traders",
+        "salesCount": 12
+    }
 ]
 ```
 

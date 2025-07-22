@@ -1,8 +1,8 @@
 ---
 title: Switch over read replica to primary
 description: This article describes how to switch over a read replica so that it becomes the primary.
-author: kabharati
-ms.author: kabharati
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/13/2025
 ms.service: azure-database-postgresql

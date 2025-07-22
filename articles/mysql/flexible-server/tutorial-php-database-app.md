@@ -1,8 +1,8 @@
 ---
 title: "Tutorial: Build a PHP (Laravel) App on Azure App Service"
 description: This tutorial explains how to build and deploy a PHP Laravel app with Azure Database for MySQL - Flexible Server, secured within a VNet.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

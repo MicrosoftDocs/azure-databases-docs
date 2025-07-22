@@ -1,8 +1,8 @@
 ---
 title: Delete a read replica
 description: This article describes how to delete a read replica of an Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/13/2025
 ms.service: azure-database-postgresql

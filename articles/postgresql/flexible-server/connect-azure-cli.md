@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect using Azure CLI"
 description: This quickstart provides several ways to connect with Azure CLI with Azure Database for PostgreSQL flexible server.
-author: gkasar
-ms.author: gkasar
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 05/10/2024
 ms.service: azure-database-postgresql

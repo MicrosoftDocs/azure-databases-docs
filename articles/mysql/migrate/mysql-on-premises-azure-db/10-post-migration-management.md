@@ -1,8 +1,8 @@
 ---
 title: "Migrate MySQL On-Premises to Azure Database for MySQL: Post Migration Management"
 description: "Once the migration has been successfully completed, the next phase it to manage the new cloud-based data workload resources."
-author: SudheeshGH
-ms.author: sunaray
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

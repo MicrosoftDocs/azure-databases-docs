@@ -224,14 +224,14 @@
         ]
       },
       "titleSuffix": {
-        "articles/mysql/flexible-server/**/*.md": "Azure Database for MySQL - Flexible Server",
-        "articles/postgresql/scripts/**/*.md": "Azure Database for PostgreSQL flexible server",
-        "articles/postgresql/flexible-server/**/*.md": "Azure Database for PostgreSQL flexible server",
-        "articles/postgresql/migrate/**/*.md": "Azure Database for PostgreSQL flexible server",
-        "articles/mysql/flexible-server/**/*.yml": "Azure Database for MySQL - Flexible Server",
-        "articles/postgresql/scripts/**/*.yml": "Azure Database for PostgreSQL flexible server",
-        "articles/postgresql/flexible-server/**/*.yml": "Azure Database for PostgreSQL flexible server",
-        "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL flexible server"
+        "articles/mysql/flexible-server/**/*.md": "Azure Database for MySQL",
+        "articles/postgresql/scripts/**/*.md": "Azure Database for PostgreSQL",
+        "articles/postgresql/flexible-server/**/*.md": "Azure Database for PostgreSQL",
+        "articles/postgresql/migrate/**/*.md": "Azure Database for PostgreSQL",
+        "articles/mysql/flexible-server/**/*.yml": "Azure Database for MySQL",
+        "articles/postgresql/scripts/**/*.yml": "Azure Database for PostgreSQL",
+        "articles/postgresql/flexible-server/**/*.yml": "Azure Database for PostgreSQL",
+        "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL"
       }
     },
     "overwrite": [],

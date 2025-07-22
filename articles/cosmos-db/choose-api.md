@@ -66,7 +66,7 @@ The features that Azure Cosmos DB provides, that you don't have to compromise on
 * Automatic and transparent shard management
 * Transparent replication between operational and analytical stores
 
-You can use your existing MongoDB apps with API for MongoDB by just changing the connection string. You can move any existing data using native MongoDB tools such as mongodump & mongorestore or using our Azure Database Migration tool. Tools, such as the MongoDB shell, [MongoDB Compass](mongodb/connect-using-compass.md), and [Robo3T](mongodb/connect-using-robomongo.md), can run queries and work with data as they do with native MongoDB. To learn more, see [API for MongoDB](mongodb/introduction.md) article.
+You can use your existing MongoDB apps with API for MongoDB by just changing the connection string. You can move any existing data using native MongoDB tools such as mongodump & mongorestore or using our Azure Database Migration tool. Tools, such as the MongoDB shell, [MongoDB Compass](mongodb/connect-using-compass.md), and [Robo3T](mongodb/connect-using-robomongo.md), can run queries and work with data as they do with native MongoDB. To learn more, see [API for MongoDB](mongodb/overview.md) article.
 
 ## API for PostgreSQL
 
@@ -80,7 +80,7 @@ If you’re looking for a managed open source relational database with high perf
 
 The Azure Cosmos DB API for Cassandra stores data in column-oriented schema. Apache Cassandra offers a highly distributed, horizontally scaling approach to storing large volumes of data while offering a flexible approach to a column-oriented schema. API for Cassandra in Azure Cosmos DB aligns with this philosophy to approaching distributed NoSQL databases. This API for Cassandra is wire protocol compatible with native Apache Cassandra. You should consider API for Cassandra if you want to benefit from the elasticity and fully managed nature of Azure Cosmos DB and still use most of the native Apache Cassandra features, tools, and ecosystem. This fully managed nature means on API for Cassandra you don't need to manage the OS, Java VM, garbage collector, read/write performance, nodes, clusters, etc.
 
-You can use Apache Cassandra client drivers to connect to the API for Cassandra. The API for Cassandra enables you to interact with data using the Cassandra Query Language (CQL), and tools like CQL shell, Cassandra client drivers that you're already familiar with. API for Cassandra currently only supports OLTP scenarios. Using API for Cassandra, you can also use the unique features of Azure Cosmos DB such as [change feed](cassandra/change-feed.md). To learn more, see [API for Cassandra](cassandra/introduction.md) article. For more information if you're already familiar with Apache Cassandra, but are new to Azure Cosmos DB, see [how to adapt to API for Cassandra](./cassandra/adoption.md).
+You can use Apache Cassandra client drivers to connect to the API for Cassandra. The API for Cassandra enables you to interact with data using the Cassandra Query Language (CQL), and tools like CQL shell, Cassandra client drivers that you're already familiar with. API for Cassandra currently only supports OLTP scenarios. Using API for Cassandra, you can also use the unique features of Azure Cosmos DB such as [change feed](cassandra/change-feed.md). To learn more, see [API for Cassandra](cassandra/overview.md) article. For more information if you're already familiar with Apache Cassandra, but are new to Azure Cosmos DB, see [how to adapt to API for Cassandra](./cassandra/adoption.md).
 
 ## API for Apache Gremlin
 
@@ -95,13 +95,13 @@ Use the API for Gremlin for scenarios:
 
 The API for Gremlin combines the power of graph database algorithms with highly scalable, managed infrastructure. This API provides a unique and flexible solution to common data problems associated with lack of flexibility or relational approaches. API for Gremlin currently only supports OLTP scenarios.
 
-The API for Gremlin is based on the [Apache TinkerPop](https://tinkerpop.apache.org/) graph computing framework. API for Gremlin uses the same Graph query language to ingest and query data. It uses the Azure Cosmos DB partition strategy to do the read/write operations from the Graph database engine. API for Gremlin has a wire protocol support with the open-source Gremlin, so you can use the open-source Gremlin SDKs to build your application. API for Gremlin also works with Apache Spark and [GraphFrames](https://github.com/graphframes/graphframes) for complex analytical graph scenarios. To learn more, see [API for Gremlin](gremlin/introduction.md) article.
+The API for Gremlin is based on the [Apache TinkerPop](https://tinkerpop.apache.org/) graph computing framework. API for Gremlin uses the same Graph query language to ingest and query data. It uses the Azure Cosmos DB partition strategy to do the read/write operations from the Graph database engine. API for Gremlin has a wire protocol support with the open-source Gremlin, so you can use the open-source Gremlin SDKs to build your application. API for Gremlin also works with Apache Spark and [GraphFrames](https://github.com/graphframes/graphframes) for complex analytical graph scenarios. To learn more, see [API for Gremlin](gremlin/overview.md) article.
 
 ## API for Table
 
 The Azure Cosmos DB API for Table stores data in key/value format. If you're currently using Azure Table storage, you may see some limitations in latency, scaling, throughput, global distribution, index management, low query performance. API for Table overcomes these limitations and it's recommended to migrate your app if you want to use the benefits of Azure Cosmos DB. API for Table only supports OLTP scenarios.
 
-Applications written for Azure Table storage can migrate to the API for Table with little code changes and take advantage of premium capabilities. To learn more, see [API for Table](table/introduction.md) article.
+Applications written for Azure Table storage can migrate to the API for Table with little code changes and take advantage of premium capabilities. To learn more, see [API for Table](table/overview.md) article.
 
 ## Capacity planning when migrating data
 

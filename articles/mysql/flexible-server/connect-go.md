@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect Using Go"
 description: This quickstart provides several Go code samples you can use to connect and query data from Azure Database for MySQL.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

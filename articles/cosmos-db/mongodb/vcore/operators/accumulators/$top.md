@@ -1,7 +1,7 @@
 ---
   title: $top
-  titleSuffix: Overview of the $top operator in Azure Cosmos DB for MongoDB vCore
-  description: The $top accumulator operator returns the top element from a group based on a specified sort order.
+  titleSuffix: Overview of the $top operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $top operator returns the first document from the result set sorted by one or more fields
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
@@ -12,190 +12,283 @@
 
 # $top
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$top` accumulator operator returns the top element from a group based on a specified sort order. It combines sorting and selection in a single operation, making it efficient for finding the highest or lowest values without requiring a separate sort stage.
+The `$top` operator sorts documents on one or more fields specified by the query and returns the first document matching the filtering criteria. It combines sorting and selection in a single operation, making it efficient for finding the highest or lowest values without requiring a separate sort stage.
 
 ## Syntax
 
-The syntax for the `$top` accumulator operator is as follows:
-
 ```javascript
 {
-  $group: {
-    _id: <expression>,
-    <field>: { 
-      $top: {
-        sortBy: { <field1>: <sort order>, <field2>: <sort order>, ... },
-        output: <expression>
+    $top: {
+      output: [listOfFields],
+      sortBy: {
+          < fieldName >: < sortOrder >
       }
-    }
   }
 }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`sortBy`** | Specifies the sort order using a document with field names and sort directions (1 for ascending, -1 for descending). |
-| **`output`** | The expression that specifies the field or value to return from the top document. |
+| **`listOfFields`** | The list of fields to be returned for the last document in the result set|
+| **`fieldName`** | The field to use for sorting the result set|
+| **`sortOrder`** | 1 or -1. 1 implies sorting in ascending order of the value of the field while -1 implies sorting in descending order of the values of the field|
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
-    ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Massive Markdown Mania",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 6,
-          "Day": 29
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DVD Players",
-          "discountPercentage": 14
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "Televisions",
-          "discountPercentage": 22
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
 ```
 
-### Example 1: Get top selling category per store
+### Example 1: Get the top selling category per store
 
-Find the highest-selling category for each store.
+To find the highest-selling category within the First Up Consultants company, run a query to retrieve stores within the company, sort the documents in descending order of total sales within each category and return the top document in the sorted result set.
 
 ```javascript
-db.stores.aggregate([
-  { $unwind: "$sales.salesByCategory" },
-  {
-    $group: {
-      _id: "$_id",
-      storeName: { $first: "$name" },
-      topSellingCategory: {
-        $top: {
-          sortBy: { "sales.salesByCategory.totalSales": -1 },
-          output: {
-            categoryName: "$sales.salesByCategory.categoryName",
-            totalSales: "$sales.salesByCategory.totalSales"
-          }
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
         }
-      }
     }
-  }
-])
+}, {
+    "$group": {
+        "_id": "$company",
+        "topSales": {
+            "$top": {
+                "output": ["$company", "$sales"],
+                "sortBy": {
+                    "sales.totalSales": -1
+                }
+            }
+        }
+    }
+}])
 ```
 
-This will produce output showing the top-selling category for each store:
+This query returns the following result:
 
 ```json
 [
-  {
-    _id: 'b1d86d1f-8705-4157-b64c-a9eda0df4921',
-    storeName: 'VanArsdel, Ltd. | Baby Products Haven - West Kingfort',
-    topSellingCategory: { categoryName: 'Baby Monitors', totalSales: 49585 }
-  },
-  {
-    _id: '22e6367e-8341-415f-9795-118d2b522abf',
-    storeName: 'Adatum Corporation | Outdoor Furniture Mart - Port Simone',
-    topSellingCategory: { categoryName: 'Outdoor Benches', totalSales: 4976 }
-  },
-.
-.
-.
+    {
+        "_id": "First Up Consultants",
+        "topSales": [
+            "First Up Consultants",
+            {
+                "salesByCategory": [
+                    {
+                        "categoryName": "Towel Sets",
+                        "totalSales": 520
+                    },
+                    {
+                        "categoryName": "Bath Accessories",
+                        "totalSales": 41710
+                    },
+                    {
+                        "categoryName": "Drapes",
+                        "totalSales": 42893
+                    },
+                    {
+                        "categoryName": "Towel Racks",
+                        "totalSales": 30773
+                    },
+                    {
+                        "categoryName": "Hybrid Mattresses",
+                        "totalSales": 39491
+                    },
+                    {
+                        "categoryName": "Innerspring Mattresses",
+                        "totalSales": 6410
+                    },
+                    {
+                        "categoryName": "Bed Frames",
+                        "totalSales": 41917
+                    },
+                    {
+                        "categoryName": "Mattress Protectors",
+                        "totalSales": 44124
+                    },
+                    {
+                        "categoryName": "Bath Towels",
+                        "totalSales": 5671
+                    },
+                    {
+                        "categoryName": "Turkish Towels",
+                        "totalSales": 25674
+                    }
+                ],
+                "revenue": 279183
+            }
+        ]
+    }
 ]
 ```
 
-### Example 2: Get highest discount by category
+### Example 2: Get the highest discount by promotion category
 
-Find the category with the highest discount percentage across all promotion events for each store.
+To fetch the highest discount per sales category, first run a query to group all documents by store, then sort the documents in descending order of discount percentages within each promotion event and return the top document from the sorted result set per store.
 
 ```javascript
-db.stores.aggregate([
-  { $unwind: "$promotionEvents" },
-  { $unwind: "$promotionEvents.discounts" },
-  {
-    $group: {
-      _id: "$_id",
-      storeName: { $first: "$name" },
-      highestDiscount: {
-        $top: {
-          sortBy: { "promotionEvents.discounts.discountPercentage": -1 },
-          output: {
-            categoryName: "$promotionEvents.discounts.categoryName",
-            discountPercentage: "$promotionEvents.discounts.discountPercentage",
-            eventName: "$promotionEvents.eventName"
-          }
+db.stores.aggregate([{
+        $unwind: "$promotionEvents"
+    },
+    {
+        $unwind: "$promotionEvents.discounts"
+    },
+    {
+        $group: {
+            _id: "$_id",
+            storeName: {
+                $first: "$name"
+            },
+            highestDiscount: {
+                $top: {
+                    sortBy: {
+                        "promotionEvents.discounts.discountPercentage": -1
+                    },
+                    output: {
+                        categoryName: "$promotionEvents.discounts.categoryName",
+                        discountPercentage: "$promotionEvents.discounts.discountPercentage",
+                        eventName: "$promotionEvents.eventName"
+                    }
+                }
+            }
         }
-      }
     }
-  }
 ])
 ```
 
-This will show the category with the highest discount percentage for each store:
+The first two results returned by this query are:
 
 ```json
 [
-  {
-    _id: '64ec6589-068a-44a6-be5b-9d37bb0a90f1',
-    storeName: 'First Up Consultants | Computer Gallery - West Cathrine',
-    highestDiscount: {
-      categoryName: 'Gaming Accessories',
-      discountPercentage: 24,
-      eventName: 'Crazy Markdown Madness'
+    {
+        "_id": "64ec6589-068a-44a6-be5b-9d37bb0a90f1",
+        "storeName": "First Up Consultants | Computer Gallery - West Cathrine",
+        "highestDiscount": {
+            "categoryName": "Gaming Accessories",
+            "discountPercentage": 24,
+            "eventName": "Crazy Markdown Madness"
+        }
+    },
+    {
+        "_id": "a58d0356-493b-44e6-afab-260aa3296930",
+        "storeName": "Fabrikam, Inc. | Outdoor Furniture Nook - West Lexie",
+        "highestDiscount": {
+            "categoryName": "Fire Pits",
+            "discountPercentage": 22,
+            "eventName": "Savings Showdown"
+        }
     }
-  },
-  {
-    _id: 'a58d0356-493b-44e6-afab-260aa3296930',
-    storeName: 'Fabrikam, Inc. | Outdoor Furniture Nook - West Lexie',
-    highestDiscount: {
-      categoryName: 'Fire Pits',
-      discountPercentage: 22,
-      eventName: 'Savings Showdown'
-    }
-  },
-.
-.
-.
 ]
 ```
 

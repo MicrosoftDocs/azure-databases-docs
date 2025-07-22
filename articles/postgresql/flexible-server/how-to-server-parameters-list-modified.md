@@ -1,8 +1,8 @@
 ---
 title: List server parameters with modified defaults
 description: This article describes how to list all server parameters with modified defaults of an Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql

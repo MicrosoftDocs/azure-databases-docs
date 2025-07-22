@@ -3,15 +3,13 @@
 - name: Overview
   items:
   - name: What is Azure Cosmos DB for Apache Gremlin?
-    href: introduction.md
+    href: overview.md
   - name: Wire protocol support
     href: support.md
   - name: FAQ
     href: faq.yml
 - name: Quickstarts
   items:
-  - name: Console
-    href: quickstart-console.md
   - name: Python
     href: quickstart-python.md
   - name: Node.js
@@ -228,6 +226,8 @@
     href: ../network-bandwidth.md
 - name: How to
   items:
+  - name: Manage data using console
+    href: quickstart-console.md
   - name: Develop applications
     items:
     - name: Graph data modeling
