@@ -12,7 +12,7 @@ ms.date: 05/20/2025
 
 # $covariancePop
 
-The `$covariancePop` operator sorts documents on one more fields within a partition and calculates a covariance of two numerical fields within a specified document window.
+The `$covariancePop` operator sorts documents on one or more fields within a partition and calculates a covariance of two numerical fields within a specified document window.
 
 ## Syntax
 
