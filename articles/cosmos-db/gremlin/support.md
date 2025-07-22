@@ -223,4 +223,4 @@ You can review the performance of the queries by using the [Gremlin `executionPr
 ## Next steps
 
 * Get started building a graph application [using our SDKs](quickstart-dotnet.md) 
-* Learn more about [graph support](introduction.md) in Azure Cosmos DB
+* Learn more about [graph support](overview.md) in Azure Cosmos DB
