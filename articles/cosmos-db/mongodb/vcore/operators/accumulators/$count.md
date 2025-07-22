@@ -341,10 +341,6 @@ This query return the following results:
 ```json
 [
     {
-        "_id": "Boulder Innovations",
-        "salesCount": 10
-    },
-    {
         "_id": "VanArsdel, Ltd.",
         "salesCount": 13
     },
