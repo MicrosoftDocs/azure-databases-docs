@@ -29,6 +29,8 @@ For more information, see [Linkurious Enterprise documentation](https://doc.link
 
 ### Cambridge Intelligence
 
+:::image type="icon" source="media/partner-tools-services/cambridge-intelligence.png":::
+
 Cambridge Intelligence offers graph visualization toolkits, including KeyLines for JavaScript and Re-Graph for React, that support Azure Cosmos DB for Gremlin. These toolkits enable developers to build high-performance, interactive graph visualization and analysis applications for the web, with support for a wide range of browsers and devices.
 
 For more information, see [Cambridge Intelligence documentation](https://cambridge-intelligence.com/products/)
