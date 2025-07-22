@@ -148,14 +148,14 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Calculate the derivative for total sales
 
-To calculate the derivative of total sales for each store in the Boulder Innovations company, first run a query to filter on the company, sort the resulting documents in ascending order of their last updated timestamps, and calculate the derivate (average rate of change) of total sales between the first and current document in the result set. 
+To calculate the derivative of total sales for each store in the First Up Consultants company, first run a query to filter on the company, sort the resulting documents in ascending order of their last updated timestamps, and calculate the derivate (average rate of change) of total sales between the first and current document in the result set. 
 
 ```javascript
 db.stores.aggregate([{
         "$match": {
             "company": {
                 "$in": [
-                    "Boulder Innovations"
+                    "First Up Consultants"
                 ]
             },
             "$and": [{
@@ -165,7 +165,7 @@ db.stores.aggregate([{
                 },
                 {
                     "lastUpdated": {
-                        "$lt": ISODate("2024-12-01T03:55:17.557Z")
+                        "$lt": ISODate("2025-12-01T03:55:17.557Z")
                     }
                 }
             ]
@@ -203,35 +203,15 @@ db.stores.aggregate([{
 ])
 ```
 
-The first five documents returned by this query are:
+This query returns the following result:
 
 ```json
 [
-{
-    "_id": "6f20a67f-885c-46ed-8b74-7229e8372387",
-    "lastUpdated": "ISODate('2024-12-01T03:15:05.615Z')",
-    "storeAverageSales": null
-},
-{
-    "_id": "c22cc140-a27a-4363-a3dd-49ced8af0b2b",
-    "lastUpdated": "ISODate('2024-12-01T03:30:08.755Z')",
-    "storeAverageSales": 33204600.83707952
-},
-{
-    "_id": "2f70ad3a-c0bd-448a-81ba-8cc011b34ee6",
-    "lastUpdated": "ISODate('2024-12-01T03:38:30.206Z')",
-    "storeAverageSales": 23269835.56067211
-},
-{
-    "_id": "6cbbdc6d-56a4-472d-9121-20a7b002b4d5",
-    "lastUpdated": "ISODate('2024-12-01T03:45:17.557Z')",
-    "storeAverageSales": 13936212.969289305
-},
-{
-    "_id": "073ad628-fdc7-4115-ab12-f49bd02a2fb8",
-    "lastUpdated": "ISODate('2024-12-01T03:55:06.549Z')",
-    "storeAverageSales": 21554495.708753344
-}
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "lastUpdated": "2025-06-11T10:48:01.291Z",
+        "storeAverageSales": 21554495.708753344
+    }
 ]
 ```
 
