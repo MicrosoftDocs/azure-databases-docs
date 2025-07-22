@@ -23,10 +23,6 @@
       href: quickstart-nodejs.md?pivots=programming-language-js
     - name: .NET
       href: quickstart-dotnet.md
-- name: Perform common tasks
-  items:
-    - name: Measure request unit charge
-      href: how-to-measure-request-unit-charge.md
 - name: Explore samples and automation
   items:
     - name: Supply chain traceability solution
