@@ -141,11 +141,11 @@ The response also matches this JSON schema:
 
 | | Description |
 | --- | --- |
-| **`GetVertices**` | This step obtains a predicated set of objects from the persistence layer. |
-| **`GetEdges**` | This step obtains the edges that are near a set of vertices. This step can result in one or many storage operations. |
-| **`GetNeighborVertices**` | This step obtains the vertices that are connected to a set of edges. The edges contain the partition keys and unique identifiers of both their source and target vertices. |
-| **`Coalesce**` | This step accounts for the evaluation of two operations whenever the `coalesce()` Gremlin step is executed. |
-| **`CartesianProductOperator**` | This step computes a cartesian product between two datasets. Executed whenever the predicates `to()` or `from()` are used. |
-| **`ConstantSourceOperator**` | This step computes an expression to produce a constant value as a result. |
-| **`ProjectOperator**` | This step prepares and serializes a response using the result of preceding operations. |
-| **`ProjectAggregation**` | This step prepares and serializes a response for an aggregate operation. |
+| **`GetVertices`** | This step obtains a predicated set of objects from the persistence layer. |
+| **`GetEdges`** | This step obtains the edges that are near a set of vertices. This step can result in one or many storage operations. |
+| **`GetNeighborVertices`** | This step obtains the vertices that are connected to a set of edges. The edges contain the partition keys and unique identifiers of both their source and target vertices. |
+| **`Coalesce`** | This step accounts for the evaluation of two operations whenever the `coalesce()` Gremlin step is executed. |
+| **`CartesianProductOperator`** | This step computes a cartesian product between two datasets. Executed whenever the predicates `to()` or `from()` are used. |
+| **`ConstantSourceOperator`** | This step computes an expression to produce a constant value as a result. |
+| **`ProjectOperator`** | This step prepares and serializes a response using the result of preceding operations. |
+| **`ProjectAggregation`** | This step prepares and serializes a response for an aggregate operation. |
