@@ -23,14 +23,6 @@
       href: quickstart-nodejs.md?pivots=programming-language-js
     - name: .NET
       href: quickstart-dotnet.md
-- name: Tune performance and cost
-  items:
-    - name: Model data for graph
-      href: support.md
-    - name: Design partitions
-      href: support.md
-    - name: Optimize costs
-      href: support.md
 - name: Explore samples
   items:
     - name: Sample supply chain traceability solution
