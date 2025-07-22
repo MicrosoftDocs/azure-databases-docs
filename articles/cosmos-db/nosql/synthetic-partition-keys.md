@@ -28,7 +28,7 @@ You can form a partition key by concatenating multiple property values into a si
 }
 ```
 
-For the previous document, one option is to set `deviceId` or `date` as the partition key. Use this option, if you want to partition your container based on either device ID or date. Another option is to concatenate these two values into a synthetic `partitionKey` property that's used as the partition key.
+For the previous document, one option is to set `/deviceId` or `/date` as the partition key field. Use this option, if you want to partition your container based on either device ID or date. Another option is to concatenate these two values into a synthetic `partitionKey` property that's used as the partition key.
 
 ```JavaScript
 {
