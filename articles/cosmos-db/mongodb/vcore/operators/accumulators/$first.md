@@ -144,14 +144,14 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Get the least recently updated document
 
-To retrieve the least recently updated store under the Boulder Innovations company, run a query to fetch all documents belonging to the "Boulder Innovations" company, sort the resulting documents in ascending order of the lastUpdated field and return the first document in the result set.
+To retrieve the least recently updated store under the First Up Consultants company, run a query to fetch all documents belonging to the "First Up Consultants" company, sort the resulting documents in ascending order of the lastUpdated field and return the first document in the result set.
 
 ```javascript
 db.stores.aggregate([{
         "$match": {
             "company": {
                 "$in": [
-                    "Boulder Innovations"
+                    "First Up Consultants"
                 ]
             }
         }
@@ -176,8 +176,8 @@ This query returns the following result:
 
 ```json
 {
-    "_id": "Boulder Innovations",
-    "firstUpdated": "ISODate('2024-12-01T01:05:22.107Z')"
+    "_id": "First Up Consultants",
+    "firstUpdated": "ISODate('2025-06-11T10:48:01.291Z')"
 }
 ```
 
