@@ -1,7 +1,7 @@
 ---
   title: $firstN
   titleSuffix: Overview of the $firstN operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $firstN operator sorts documents on one more fields specified by the query and returns the first N document matching the filtering criteria
+  description: The $firstN operator sorts documents on one or more fields specified by the query and returns the first N document matching the filtering criteria
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
