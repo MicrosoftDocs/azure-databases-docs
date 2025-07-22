@@ -1,7 +1,7 @@
 ---
 title: Sample Supply Chain Traceability Solution
 description: Review a solution for traceability in global supply chains track-and-trace capability in graph form for finished goods using Azure Cosmos DB for Gremlin and other Azure services.
-ms.topic: how-to
+ms.topic: solution-overview
 ms.date: 07/22/2025
 ---
 
@@ -82,5 +82,4 @@ The preceding diagram is a simplified view of a complex process. However, gettin
 ## Next steps
 
 * Learn about [Infosys Integrate+ for Azure](https://azuremarketplace.microsoft.com/marketplace/apps/infosysltd.infosys-integrate-for-azure).
-* To visualize graph data, see the [API for Gremlin visualization solutions](visualization-partners.md).
 * To model your graph data, see the [API for Gremlin modeling solutions](modeling-tools.md).

@@ -1,15 +1,12 @@
 ---
-title: Visualize Azure Cosmos DB for Gremlin data using partner solutions
-description: Learn how to integrate Azure Cosmos DB graph data with different third-party visualization solutions.
-author: manishmsfte
-ms.author: mansha
-ms.service: azure-cosmos-db
-ms.subservice: apache-gremlin
-ms.topic: how-to
-ms.date: 07/22/2021
+title: Partner tools
+description: Integrate graph data in Azure Cosmos DB for Apache Gremlin with different third-party tools and solutions for scenarios like visualization.
+ms.topic: partner-tools
+ms.date: 07/22/2025
 ---
 
-# Visualize graph data stored in Azure Cosmos DB for Gremlin with data visualization solutions
+# Partner tools for Azure Cosmos DB for Apache Gremlin
+
 [!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
 
 You can visualize data stored in Azure Cosmos DB for Gremlin by using various data visualization solutions.
@@ -160,14 +157,3 @@ Typical use-cases and data models include:
 * knowledge graphs, stored as triplets and in other formats
 * Product Lifecycle Management data
 * Bill of Material lists and Supply Chain data
-
-### Useful links
-
-* [Pricing](https://www.yworks.com/products/yfiles-for-html/pricing)
-* [Visualizing a Microsoft Azure Cosmos DB](https://www.yworks.com/pages/visualizing-a-microsoft-azure-cosmos-db)
-* [yFiles - the diagramming library](https://www.yworks.com/yfiles-overview)
-* [yWorks - Demos](https://www.yworks.com/products/yfiles/demos)
-
-### Next Steps
-
-* [Azure Cosmos DB - API for Gremlin Pricing](../how-pricing-works.md)

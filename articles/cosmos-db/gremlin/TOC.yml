@@ -67,3 +67,9 @@
       href: headers.md
     - name: System document properties
       href: access-system-properties.md
+- name: Review resources
+  items:
+    - name: Pricing
+      href: https://azure.microsoft.com/pricing/details/cosmos-db
+    - name: Partners
+      href: partner-tools.md
