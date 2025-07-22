@@ -153,13 +153,13 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Get the two stores with the lowest total sales
 
-To get the two lowest stores by sales within the Boulder Innovations company, run a query to filter on the company name, sort the resulting documents in ascending order of sales and return the top two documents from the sorted result set.
+To get the two lowest stores by sales within the First Up Consultants company, run a query to filter on the company name, sort the resulting documents in ascending order of sales and return the top two documents from the sorted result set.
 
 ```javascript
 db.stores.aggregate([{
     "$match": {
         "company": {
-            "$in": ["Boulder Innovations"]
+            "$in": ["First Up Consultants"]
         }
     }
 }, {
@@ -181,35 +181,78 @@ db.stores.aggregate([{
 This query returns the following result:
 
 ```json
-{
-    "_id": "Boulder Innovations",
-    "topSales": [
-        [
-            "Boulder Innovations",
-            {
-                "totalSales": 119,
-                "salesByCategory": [
-                    {
-                        "categoryName": "Yoga Mats",
-                        "totalSales": 119
-                    }
-                ]
-            }
-        ],
-        [
-            "Boulder Innovations",
-            {
-                "totalSales": 162,
-                "salesByCategory": [
-                    {
-                        "categoryName": "Portable Turntables",
-                        "totalSales": 162
-                    }
-                ]
-            }
+[
+    {
+        "_id": "First Up Consultants",
+        "topSales": [
+            [
+                "First Up Consultants",
+                {
+                    "salesByCategory": [
+                        {
+                            "categoryName": "Towel Sets",
+                            "totalSales": 520
+                        },
+                        {
+                            "categoryName": "Bath Accessories",
+                            "totalSales": 41710
+                        },
+                        {
+                            "categoryName": "Drapes",
+                            "totalSales": 42893
+                        },
+                        {
+                            "categoryName": "Towel Racks",
+                            "totalSales": 30773
+                        },
+                        {
+                            "categoryName": "Hybrid Mattresses",
+                            "totalSales": 39491
+                        },
+                        {
+                            "categoryName": "Innerspring Mattresses",
+                            "totalSales": 6410
+                        },
+                        {
+                            "categoryName": "Bed Frames",
+                            "totalSales": 41917
+                        },
+                        {
+                            "categoryName": "Mattress Protectors",
+                            "totalSales": 44124
+                        },
+                        {
+                            "categoryName": "Bath Towels",
+                            "totalSales": 5671
+                        },
+                        {
+                            "categoryName": "Turkish Towels",
+                            "totalSales": 25674
+                        }
+                    ],
+                    "revenue": 279183
+                }
+            ],
+            [
+                "First Up Consultants",
+                {
+                    "salesByCategory": [
+                        {
+                            "categoryName": "Lavalier Microphones",
+                            "totalSales": 40000
+                        },
+                        {
+                            "categoryName": "Wireless Microphones",
+                            "totalSales": 39691
+                        }
+                    ],
+                    "minimumSalesTarget": 30000,
+                    "revenue": 50000
+                }
+            ]
         ]
-    ]
-}
+    }
+]
 ```
 
 ### Example 2: Get the two most recent promotion events
