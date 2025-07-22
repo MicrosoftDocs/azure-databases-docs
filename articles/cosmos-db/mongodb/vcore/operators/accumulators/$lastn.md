@@ -239,7 +239,7 @@ The first two results returned by this query are:
 
 ### Example 2: Get the three highest selling categories of sales
 
-To retrieve the highest selling sales categories per store, run a query to sort sales cateogires in ascending order of sales volume, group the sorted results by store and return the last three categories per store.
+To retrieve the highest selling sales categories per store, run a query to sort sales categories in ascending order of sales volume, group the sorted results by store and return the last three categories per store.
 
 ```javascript
 db.stores.aggregate([{
