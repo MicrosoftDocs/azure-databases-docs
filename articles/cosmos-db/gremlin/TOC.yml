@@ -23,6 +23,10 @@
       href: quickstart-nodejs.md?pivots=programming-language-js
     - name: .NET
       href: quickstart-dotnet.md
+- name: Perform common tasks
+  items:
+    - name: Write queries
+      href: how-to-write-queries.md
 - name: Explore samples and automation
   items:
     - name: Supply chain traceability solution

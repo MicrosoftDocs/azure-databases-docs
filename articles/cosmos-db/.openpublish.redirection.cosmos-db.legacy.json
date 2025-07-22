@@ -11,8 +11,13 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/gremlin/find-request-unit-charge.md",
-      "redirect_url": "/azure/cosmos-db/gremlin/how-to-measure-request-unit-charge",
+      "source_path_from_root": "/articles/cosmos-db/gremlin/tutorial-query.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/how-to-write-queries",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/execution-profile.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/how-to-write-queries#use-execution-profile",
       "redirect_document_id": true
     }
   ]
