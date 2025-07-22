@@ -1,7 +1,7 @@
 ---
 title: $max
-titleSuffix: Overview of the $max operator
-description: The $max accumulator operator returns the maximum value from a set of input values.
+titleSuffix: Overview of the $max operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $max operator returns the maximum value from a set of input values.
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
@@ -270,18 +270,10 @@ db.stores.aggregate([{
 ])
 ```
 
-The first five results returned by this query are:
+The first three results returned by this query are:
 
 ```json
 [
-    {
-        "_id": "Boulder Innovations",
-        "maxDiscount": 24
-    },
-    {
-        "_id": "VanArsdel, Ltd.",
-        "maxDiscount": 24
-    },
     {
         "_id": "Proseware, Inc.",
         "maxDiscount": 24

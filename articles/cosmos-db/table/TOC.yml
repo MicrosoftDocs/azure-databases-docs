@@ -3,7 +3,7 @@
 - name: Overview
   items:
   - name: What is Azure Cosmos DB for Table?
-    href: introduction.md
+    href: overview.md
   - name: FAQ
     href: faq.yml
 - name: Quickstarts

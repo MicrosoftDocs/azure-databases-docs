@@ -274,4 +274,4 @@ python app.py
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Overview of Azure Cosmos DB for Apache Gremlin](introduction.md)
+> [Overview of Azure Cosmos DB for Apache Gremlin](overview.md)

@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 06/08/2025
+ms.date: 07/21/2025
 ms.custom:
   - devx-track-rust
   - build-2025
@@ -107,7 +107,7 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
     > ```
     >
 
-1. Validate that the configuration was successful by using `az resource show` again and observing the entire cluster's configuration which includes `properties.authConfig`.
+1. Validate that the configuration was successful by using `az resource show` again and observing the entire cluster's configuration that includes `properties.authConfig`.
 
     ```azurecli-interactive
     az resource show \
@@ -142,7 +142,7 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
         --name "<cluster-name>/users/<principal-id>" \
         --resource-type "Microsoft.DocumentDB/mongoClusters/users" \
         --location "<cluster-region>" \
-        --properties '{"identityProvider":{"type":"MicrosoftEntraID","properties":{"principalType":"User"}},"roles":[{"db":"admin","role":"dbOwner"}]}' \
+        --properties '{"identityProvider":{"type":"MicrosoftEntraID","properties":{"principalType":"User"}},"roles":[{"db":"admin","role":"root"}]}' \
         --latest-include-preview
     ```
 
@@ -161,7 +161,7 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
     > az rest \
     >     --method "PUT" \
     >     --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-04-01-preview" \
-    >     --body '{"location":"<cluster-region>","properties":{"identityProvider":{"type":"MicrosoftEntraID","properties":{"principalType":"User"}},"roles":[{"db":"admin","role":"dbOwner"}]}}'
+    >     --body '{"location":"<cluster-region>","properties":{"identityProvider":{"type":"MicrosoftEntraID","properties":{"principalType":"User"}},"roles":[{"db":"admin","role":"root"}]}}'
     > ```
     >
 

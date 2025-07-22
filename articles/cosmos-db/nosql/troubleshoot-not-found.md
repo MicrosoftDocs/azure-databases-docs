@@ -3,7 +3,7 @@ title: Troubleshoot Azure Cosmos DB Not Found Exceptions
 description: Learn how to diagnose and fix not found exceptions.
 author: markjbrown
 ms.author: mjbrown
-ms.date: 06/17/2025
+ms.date: 07/17/2025
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
@@ -13,7 +13,7 @@ ms.topic: troubleshooting
 
 [!INCLUDE [NoSQL](../includes/appliesto-nosql.md)]
 
-The HTTP status code 404 represents that the resource no longer exists.
+The HTTP status code 404 indicates that the resource no longer exists.
 
 ## Expected behavior
 
@@ -27,7 +27,7 @@ Here are the possible reasons for a status code 404 to be returned if the item s
 
 #### Solution
 
-1. Update your current SDK to the latest version available. The most common causes for this particular error have been fixed in the newest SDK versions.
+* Update your current SDK to the latest version available. The most common causes for this particular error have been fixed in the newest SDK versions.
 
 ### Race condition
 
@@ -124,7 +124,7 @@ The database or container that the item exists in was deleted.
 1. [Restore from a backup](../periodic-backup-restore-introduction.md) the parent resource, or re-create the resources.
 1. Create a new resource to replace the deleted resource.
 
-### 7. Container/Collection names are case-sensitive
+### Container/Collection names are case-sensitive
 
 Container/Collection names are case-sensitive in Azure Cosmos DB.
 

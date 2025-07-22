@@ -18,7 +18,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: What is Azure Cosmos DB for Apache Cassandra?
-            url: introduction.md
+            url: overview.md
       - linkListType: concept
         links:
           - text: Wire protocol compatibility with Apache Cassandra

@@ -1,6 +1,6 @@
 ---
 title: $avg
-titleSuffix: Overview of the $avg operator
+titleSuffix: Overview of the $avg operator in Azure Cosmos DB for MongoDB (vCore)
 description: Computes the average of numeric values for documents in a group, bucket, or window.
 author: sandeepsnairms
 ms.author: sandnair
@@ -142,7 +142,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Calculate the average sales by category
 
-To calculate the average sales across all stores within each category, first run a query to group documents within each sales category. THen, calculate the average sales across all documents within each group.
+To calculate the average sales across all stores within each category, first run a query to group documents within each sales category. Then, calculate the average sales across all documents within each group.
 
 ```javascript
 db.stores.aggregate([{
@@ -339,10 +339,6 @@ This query would return the following results:
 
 ```json
 [
-    {
-        "_id": "Boulder Innovations",
-        "avgDiscount": 14.5
-    },
     {
         "_id": "VanArsdel, Ltd.",
         "avgDiscount": 14.461538461538462

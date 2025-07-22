@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect Using Azure CLI"
 description: This quickstart provides several ways to connect with and query Azure Database for MySQL - Flexible Server by using Azure CLI.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
