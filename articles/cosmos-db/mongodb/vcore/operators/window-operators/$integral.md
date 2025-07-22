@@ -148,7 +148,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Calculate the integral of total sales
 
-To calculate the integral of total sales across all stores under the Boulder Innovations company, first run a query to filter on the company name. Then, sort the resulting stores in ascending order of their opening dates. Lastly, calculate the integral of total sales from the first to the current document in the sorted result set.
+To calculate the integral of total sales across all stores under the First Up Consultants company, first run a query to filter on the company name. Then, sort the resulting stores in ascending order of their opening dates. Lastly, calculate the integral of total sales from the first to the current document in the sorted result set.
 
 ```javascript
 db.stores.aggregate(
@@ -156,7 +156,7 @@ db.stores.aggregate(
       "$match": {
           "company": {
               "$in": [
-                  "Boulder Innovations"
+                  "First Up Consultants"
               ]
           }
       }
@@ -171,7 +171,7 @@ db.stores.aggregate(
             "salesIntegral": {
                 "$integral": {
                         "input": "$sales.revenue",
-						            "unit": "hour"
+			"unit": "hour"
                 },
                 "window": {
                     "range": [
@@ -195,34 +195,30 @@ db.stores.aggregate(
   }])
 ```
 
-The first three documents returned by this query are:
+The first two results returned by this query are:
 
 ```json
 [
-{
-  "_id": "a639bcc2-a553-4365-8298-ad21b71fe225",
-  "name": "Boulder Innovations | Computer Variety - Lake Noemie",
-  "sales": { "totalSales": 18216 },
-  "company": "Boulder Innovations",
-  "storeOpeningDate": ISODate('2024-09-02T01:05:22.107Z'),
-  "salesIntegral": 0
-},
-{
-  "_id": "5c7932cb-b720-44a9-8b73-7e3cd95efc99",
-  "name": "Boulder Innovations | Home Decor Bazaar - Rutherfordchester",
-  "sales": { "totalSales": 20383 },
-  "company": "Boulder Innovations",
-  "storeOpeningDate": ISODate('2024-09-02T01:15:36.736Z'),
-  "salesIntegral": 3295.0089959722222
-},
-{
-  "_id": "f54dfadb-bc62-42ff-912b-a281950019d6",
-  "name": "Boulder Innovations | Smart TV Depot - Lake Lonnyborough",
-  "sales": { "totalSales": 43648 },
-  "company": "Boulder Innovations",
-  "storeOpeningDate": ISODate('2024-09-02T01:28:42.683Z'),
-  "salesIntegral": 10284.58849
-}
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "sales": {
+            "revenue": 37701
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2021-10-03T00:00:00.000Z",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "salesIntegral": 0
+    },
+    {
+        "_id": "8e7a259b-f7d6-4ec5-a521-3bed53adc587",
+        "name": "First Up Consultants | Drone Stop - Lake Joana",
+        "sales": {
+            "revenue": 14329
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2024-09-02T00:05:39.311Z",
+        "salesIntegral": 664945851.9932402
+    }
 ]
 ```
 
