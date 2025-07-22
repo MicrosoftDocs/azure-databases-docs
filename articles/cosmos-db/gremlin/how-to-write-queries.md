@@ -1,18 +1,11 @@
 ---
-title: How to query graph data in Azure Cosmos DB?
-description: Learn how to query graph data from Azure Cosmos DB using Gremlin queries
-author: manishmsfte
-ms.author: mansha
-ms.service: azure-cosmos-db
-ms.subservice: apache-gremlin
-ms.topic: tutorial
-ms.date: 02/16/2022
-ms.devlang: csharp
-ms.custom: devx-track-csharp
+title: Query Graph Data
+description: Perform common graph data queries and supplement those queries with the execution step using Azure Cosmos DB for Apache Gremlin.
+ms.topic: how-to
+ms.date: 07/22/2025
 ---
 
-# Tutorial: Query Azure Cosmos DB for Gremlin by using Gremlin
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+# Query Graph Data in Azure Cosmos DB for Apache Gremlin
 
 The Azure Cosmos DB [API for Gremlin](overview.md) supports [Gremlin](https://tinkerpop.apache.org/gremlin.html) queries. This article provides sample documents and queries to get you started. A detailed Gremlin reference is provided in the [Gremlin support](support.md) article.
 
@@ -65,9 +58,7 @@ g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabe
 
 You can build more complex queries and implement powerful graph traversal logic using Gremlin, including mixing filter expressions, performing looping using the `loop` step, and implementing conditional navigation using the `choose` step. Learn more about what you can do with [Gremlin support](support.md)!
 
-
-# How to use the execution profile step to evaluate your Gremlin queries
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+# Use execution profile
 
 This article provides an overview of how to use the execution profile step for Azure Cosmos DB for Gremlin graph databases. This step provides relevant information for troubleshooting and query optimizations, and it's compatible with any Gremlin query that can be executed against a Cosmos DB Gremlin API account.
 
