@@ -133,16 +133,6 @@ If the user-assigned managed identity used to access the encryption key stored i
 > [!IMPORTANT]  
 > Simply creating new Entra ID identity with the same name as deleted identity doesn't recover from managed identity deletion.
 
-## Limitations
-
-The following are the current limitations for configuring the customer-managed key in an Azure Cosmos DB for MongoDB vCore:
-
-- You can configure customer-managed key encryption only during creation of a new cluster, not as an update to an existing Azure Cosmos DB for MongoDB vCore instance.
-- After you configure customer-managed key encryption, you can't revert back to system-managed key.
-- The instance of Azure Key Vault where you plan to store the encryption key and user-assigned managed identity must be in the same region as the Azure Cosmos DB for MongoDB vCore cluster.
-- CMK isn't supported on restored clusters.
-- CMK isn't supported on replica clusters.
-
 ## Related content
 
 - [Follow these steps to enable data encryption at rest with customer-managed key in Azure Cosmos DB for MongoDB vCore](./how-to-data-encryption.md)
