@@ -12,7 +12,7 @@
 
 # $top
 
-The `$top` operator sorts documents on one more fields specified by the query and returns the first document matching the filtering criteria. It combines sorting and selection in a single operation, making it efficient for finding the highest or lowest values without requiring a separate sort stage.
+The `$top` operator sorts documents on one or more fields specified by the query and returns the first document matching the filtering criteria. It combines sorting and selection in a single operation, making it efficient for finding the highest or lowest values without requiring a separate sort stage.
 
 ## Syntax
 
