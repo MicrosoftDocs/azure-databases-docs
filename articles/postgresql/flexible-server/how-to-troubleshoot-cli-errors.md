@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot CLI errors
 description: This topic gives guidance on troubleshooting common issues with Azure CLI when using Azure Database for PostgreSQL flexible server.
-author: jjfrost
-ms.author: jfrost
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
