@@ -149,7 +149,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Calculate the exponential moving average of total sales
 
-To retrieve the exponential moving average of the total sales across all stores within the Boulder Innovations company, first run a query to filter on the company. Then, sort the resulting documents in ascending order of their opening date. Finally, assigned the highest weight to the two most recent documents to calculate the exponential moving average of total sales.
+To retrieve the exponential moving average of the total sales across all stores within the First Up Consultants company, first run a query to filter on the company. Then, sort the resulting documents in ascending order of their opening date. Finally, assigned the highest weight to the two most recent documents to calculate the exponential moving average of total sales.
 
 ```javascript
 db.stores.aggregate(
@@ -157,7 +157,7 @@ db.stores.aggregate(
       "$match": {
           "company": {
               "$in": [
-                  "Boulder Innovations"
+                  "First Up Consultants"
               ]
           }
       }
@@ -189,40 +189,40 @@ db.stores.aggregate(
   }])
 ```
 
-The firs three documents returned by this query are:
+The firs two results returned by this query are:
 
 ```json
 [
-{
-    "_id": "a639bcc2-a553-4365-8298-ad21b71fe225",
-    "name": "Boulder Innovations | Computer Variety - Lake Noemie",
-    "sales": { "totalSales": 18216 },
-    "company": 'Boulder Innovations',
-    "storeOpeningDate": ISODate('2024-09-02T01:05:22.107Z'),
-    "expMovingAvgForSales": 18216
-  },
-  {
-    "_id": "5c7932cb-b720-44a9-8b73-7e3cd95efc99",
-    "name": "Boulder Innovations | Home Decor Bazaar - Rutherfordchester",
-    "sales": { "totalSales": 20383 },
-    "company": "Boulder Innovations",
-    "storeOpeningDate": ISODate('2024-09-02T01:15:36.736Z'),
-    "expMovingAvgForSales": 19660.666666666668
-  },
-  {
-    "_id": "f54dfadb-bc62-42ff-912b-a281950019d6",
-    "name": "Boulder Innovations | Smart TV Depot - Lake Lonnyborough",
-    "sales": { "totalSales": 43648 },
-    "company": "Boulder Innovations",
-    "storeOpeningDate": ISODate('2024-09-02T01:28:42.683Z'),
-    "expMovingAvgForSales": 35652.22222222223
-  }
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "sales": {
+            "revenue": 37701
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": {
+            "$date": 1633219200000
+        },
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "expMovingAvgForSales": 37701
+    },
+    {
+        "_id": "8e7a259b-f7d6-4ec5-a521-3bed53adc587",
+        "name": "First Up Consultants | Drone Stop - Lake Joana",
+        "sales": {
+            "revenue": 14329
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": {
+            "$date": 1706958339311
+        },
+        "expMovingAvgForSales": 22119.666666666668
+    }
 ]
 ```
 
 ### Example 2 - Calculate the exponential moving average of the total sales using the alpha parameter
 
-To retrieve the exponential moving average of the total sales across all stores within the Boulder Innovations company, first run a query to filter on the company. Then, sort the resulting documents in ascending order of their opening date. Finally, specify a decay rate (alpha) to calculate the exponential moving average of total sales. A higher alpha value gives previous documents a lower weight in the calculation.
+To retrieve the exponential moving average of the total sales across all stores within the First Up Consultants company, first run a query to filter on the company. Then, sort the resulting documents in ascending order of their opening date. Finally, specify a decay rate (alpha) to calculate the exponential moving average of total sales. A higher alpha value gives previous documents a lower weight in the calculation.
 
 ```javascript
 db.stores.aggregate(
@@ -230,7 +230,7 @@ db.stores.aggregate(
         "$match": {
             "company": {
                 "$in": [
-                    "Boulder Innovations"
+                    "First Up Consultants"
                 ]
             }
         }
@@ -263,34 +263,30 @@ db.stores.aggregate(
 ])
 ```
 
-The first three documents returned by this query are:
+The first two results returned by this query are:
 
 ```json
 [
-{
-    "_id": "a639bcc2-a553-4365-8298-ad21b71fe225",
-    "name": "Boulder Innovations | Computer Variety - Lake Noemie",
-    "sales": { "totalSales": 18216 },
-    "company": "Boulder Innovations",
-    "storeOpeningDate": ISODate('2024-09-02T01:05:22.107Z'),
-    "expMovingAvgForSales": 18216
-  },
-  {
-    "_id": "5c7932cb-b720-44a9-8b73-7e3cd95efc99",
-    "name": "Boulder Innovations | Home Decor Bazaar - Rutherfordchester",
-    "sales": { "totalSales": 20383 },
-    "company": "Boulder Innovations",
-    "storeOpeningDate": ISODate('2024-09-02T01:15:36.736Z'),
-    "expMovingAvgForSales": 19841.25
-  },
-  {
-    "_id": "f54dfadb-bc62-42ff-912b-a281950019d6",
-    "name": "Boulder Innovations | Smart TV Depot - Lake Lonnyborough",
-    "sales": { "totalSales": 43648 },
-    "company": "Boulder Innovations",
-    "storeOpeningDate": ISODate('2024-09-02T01:28:42.683Z'),
-    "expMovingAvgForSales": 37696.3125
-}
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "sales": {
+            "revenue": 37701
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2021-10-03T00:00:00.000Z",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "expMovingAvgForSales": 37701
+    },
+    {
+        "_id": "8e7a259b-f7d6-4ec5-a521-3bed53adc587",
+        "name": "First Up Consultants | Drone Stop - Lake Joana",
+        "sales": {
+            "revenue": 14329
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2024-09-02T00:05:39.311Z",
+        "expMovingAvgForSales": 20172
+    }
 ]
 ```
 
