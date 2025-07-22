@@ -15,9 +15,13 @@ This article describes how read-and-write requests translate into [Request Units
 
 Azure Cosmos DB offers a rich set of database operations that operate on the items within a container. The cost associated with each of these operations varies based on the CPU, IO, and memory required to complete the operation. Instead of thinking about and managing hardware resources, you can think of an RU as a single measure for the resources required to perform various database operations to serve a request.
 
+<a id="measuring-the-ru-charge-of-a-request"></a>
+
 ## Measure the RU charge of a request
 
 It's important to measure the RU charge of your requests to understand their actual cost and also evaluate the effectiveness of your optimizations. You can fetch this cost by using the Azure portal or by inspecting the response sent back from Azure Cosmos DB through one of the SDKs. See [Find the request unit charge in Azure Cosmos DB](find-request-unit-charge.md) for detailed instructions on how to achieve that.
+
+<a id="reading-data-point-reads-and-queries"></a>
 
 ## Read data: point reads and queries
 

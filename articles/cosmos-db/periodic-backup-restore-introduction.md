@@ -82,7 +82,7 @@ Use [Azure Data Factory](/azure/data-factory/connector-azure-cosmos-db) to move 
 
 Use the Azure Cosmos DB [change feed](change-feed.md) to read data periodically for full backups or for incremental changes, and store it in your own storage.
 
-## Next steps
+## Next step
 
 > [!div class="nextstepaction"]
 > [Periodic backup storage redundancy](periodic-backup-storage-redundancy.md)
