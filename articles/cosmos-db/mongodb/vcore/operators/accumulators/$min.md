@@ -296,10 +296,6 @@ This query returns the following results.
 ```json
 [
     {
-        "_id": "Boulder Innovations",
-        "minDiscount": 6
-    },
-    {
         "_id": "VanArsdel, Ltd.",
         "minDiscount": 6
     },
