@@ -107,7 +107,7 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
     > ```
     >
 
-1. Validate that the configuration was successful by using `az resource show` again and observing the entire cluster's configuration which includes `properties.authConfig`.
+1. Validate that the configuration was successful by using `az resource show` again and observing the entire cluster's configuration that includes `properties.authConfig`.
 
     ```azurecli-interactive
     az resource show \
