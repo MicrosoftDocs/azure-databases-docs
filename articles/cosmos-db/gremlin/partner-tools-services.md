@@ -37,17 +37,23 @@ For more information, see [Cambridge Intelligence documentation](https://cambrid
 
 ### Tom Sawyer
 
+:::image type="icon" source="media/partner-tools-services/tom-sawyer.png":::
+
 Tom Sawyer Perspectives is a low-code platform for building enterprise-grade graph data visualization and analysis applications. It integrates with Azure Cosmos DB for Gremlin, allowing users to design, preview, and analyze graph data through an intuitive interface. The platform supports schema extraction, multiple graph layouts, and advanced analysis features for users of all skill levels.
 
 For more information, see [Tom Sawyer Graph Database Browser documentation](https://www.tomsawyer.com/graph-database-browser/)
 
 ### Graphistry
 
+:::image type="icon" source="media/partner-tools-services/graphistry.png":::
+
 Graphistry is a platform that turns your data into interactive, visual investigation maps, making it easy to uncover relationships and patterns without writing queries. Graphistry is built for scalability and performance, Graphistry applies GPU acceleration to provide fast, responsive graph visualizations for security, fraud, IT, and business analytics use cases.
 
 For more information, see [Graphistry documentation](https://www.graphistry.com/docs)
 
 ### Grapһlytic
+
+:::image type="icon" source="media/partner-tools-services/grapһlytic.png":::
 
 Grapһlytic is a customizable web application for graph visualization and analysis, supporting Azure Cosmos DB for Gremlin. It enables users to explore, filter, and analyze large graphs interactively, with support for Gremlin queries and advanced rendering using Cytoscape.js. The platform is easily deployable on Azure and can be tailored to specific visualization needs.
 
