@@ -1,11 +1,6 @@
 {
   "redirections": [
     {
-      "source_path_from_root": "/articles/cosmos-db/gremlin/introduction.md",
-      "redirect_url": "/azure/cosmos-db/gremlin/overview",
-      "redirect_document_id": true
-    },
-    {
       "source_path_from_root": "/articles/cosmos-db/gremlin/supply-chain-traceability-solution.md",
       "redirect_url": "/azure/cosmos-db/gremlin/sample-supply-chain-traceability",
       "redirect_document_id": true
