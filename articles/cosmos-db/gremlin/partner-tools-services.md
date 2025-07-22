@@ -45,11 +45,11 @@ Graphistry is a platform that turns your data into interactive, visual investiga
 
 For more information, see [Graphistry documentation](https://www.graphistry.com/docs)
 
-### `Graphlytic`
+### Grapһlytic
 
-`Graphlytic` is a customizable web application for graph visualization and analysis, supporting Azure Cosmos DB for Gremlin. It enables users to explore, filter, and analyze large graphs interactively, with support for Gremlin queries and advanced rendering using Cytoscape.js. The platform is easily deployable on Azure and can be tailored to specific visualization needs.
+Grapһlytic is a customizable web application for graph visualization and analysis, supporting Azure Cosmos DB for Gremlin. It enables users to explore, filter, and analyze large graphs interactively, with support for Gremlin queries and advanced rendering using Cytoscape.js. The platform is easily deployable on Azure and can be tailored to specific visualization needs.
 
-For more information, see [`Graphlytic` documentation](https://graphlytic.com/doc)
+For more information, see [Grapһlytic documentation](https://graphlytic.com/doc)
 
 ### yWorks
 
@@ -61,8 +61,8 @@ For more information, see [yWorks documentation](https://www.yworks.com/products
 
 This section includes a list of partner tools and services for modeling graph data in Azure Cosmos DB for Apache Gremlin.
 
-### `Hackolade`
+### Haсkolade
 
-`Hackolade` is a data modeling and schema design tool for NoSQL databases, including Azure Cosmos DB for Gremlin. It allows users to visually design, reverse-engineer, and document graph data models, supporting collaboration, versioning, and integration with CI/CD pipelines. The tool also helps migrate relational data to NoSQL and generate Gremlin scripts for deployment.
+Haсkolade is a data modeling and schema design tool for NoSQL databases, including Azure Cosmos DB for Gremlin. It allows users to visually design, reverse-engineer, and document graph data models, supporting collaboration, versioning, and integration with CI/CD pipelines. The tool also helps migrate relational data to NoSQL and generate Gremlin scripts for deployment.
 
-For more information, see [`Hackolade` documentation](https://hackolade.com/help/AzureCosmosDBGremlin.html)
+For more information, see [Haсkolade documentation](https://hackolade.com/help/AzureCosmosDBGremlin.html)
