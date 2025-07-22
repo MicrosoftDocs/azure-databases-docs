@@ -1,24 +1,24 @@
---- 
-title: $addToSet
-titleSuffix: Overview of the addToSet operation in Azure Cosmos DB for MongoDB (vCore)
-description: The addToSet operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
-author: sandeepsnairms
-ms.author: sandnair
+---
+title: $covariancePop
+titleSuffix: Overview of the $covariancePop operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $covariancePop operator returns the covariance of two numerical expressions
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: language-reference
-ms.date: 05/04/2025
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
-# $addToSet
+# $covariancePop
 
-The `$addToSet` operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
+The `$covariancePop` operator sorts documents on one or more fields within a partition and calculates a covariance of two numerical fields within a specified document window.
 
 ## Syntax
 
 ```javascript
 {
-  $addToSet: { <field1>: <value1>, ... }
+  $covariancePop: [ < numericalExpression1 > , < numericalExpression2 > ]
 }
 ```
 
@@ -26,8 +26,8 @@ The `$addToSet` operator adds elements to an array if they don't already exist, 
 
 | Parameter | Description |
 | --- | --- |
-| **`<field1>`** | The field to which you want to add elements. |
-| **`<value1>`** | The value to be added to the array. |
+| **`numericalExpression1`** | The first numerical expression to use to calculate the covariance within the specified document window|
+| **`numericalExpression2`** | The first numerical expression to use to calculate the covariance within the specified document window|
 
 ## Examples
 
@@ -143,77 +143,80 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Add a new tag to the `tag` array
+### Example 1 - Calculate the covariance in sales volume 
 
-To add a new tag to the array of tags, run a query using the $addToSet operator to add the new value.
-
-```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
-    "$addToSet": {
-        "tag": "#ShopLocal"
-    }
-})
-```
-
-This query returns the following result:
-
-```json
-[
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "0",
-    "upsertedCount": 0
-  }
-]
-```
-
-### Example 2: Adding a new promotional event to the `promotionEvents` array
-
-To add a new event to the `promotionEvents` array, run a query using the $addToSet operator with the new promotion object to be added.
+To get the covariance in total sales for stores in the First Up Consultants company, first run a query to filter on the company name, then sort the resulting documents in ascending order of the last updated timestamp, and calculate the covariance between the first and current document in the sorted result set.
 
 ```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
-    "$addToSet": {
-        "promotionEvents": {
-            "eventName": "Summer Sale",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 1
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 15
+db.stores.aggregate(
+    [{
+            "$match": {
+                "company": {
+                    "$in": [
+                        "First Up Consultants"
+                    ]
                 }
-            },
-            "discounts": [{
-                "categoryName": "DJ Speakers",
-                "discountPercentage": 20
-            }]
+            }
+        },
+        {
+            "$setWindowFields": {
+                "partitionBy": "$company",
+                "sortBy": {
+                    "lastUpdated": 1
+                },
+                "output": {
+                    "covariancePopForSales": {
+                        "$covariancePop": [{
+                                "$hour": "$lastUpdated"
+                            },
+                            "$sales.totalSales"
+                        ],
+                        "window": {
+                            "documents": [
+                                "unbounded",
+                                "current"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "$project": {
+                "company": 1,
+                "name": 1,
+                "sales.totalSales": 1,
+                "lastUpdated": 1,
+                "covariancePopForSales": 1
+            }
         }
-    }
-})
+    ]
+)
 ```
 
-This query returns the following result:
+The first two results returned by this query are:
 
 ```json
 [
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "1",
-    "upsertedCount": 0
-  }
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "sales": {},
+        "company": "First Up Consultants",
+        "lastUpdated": "2025-06-11T10:48:01.291Z",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "covariancePopForSales": null
+    },
+    {
+        "_id": "8e7a259b-f7d6-4ec5-a521-3bed53adc587",
+        "name": "First Up Consultants | Drone Stop - Lake Joana",
+        "sales": {},
+        "company": "First Up Consultants",
+        "lastUpdated": {
+            "t": 1727827539,
+            "i": 1
+        },
+        "covariancePopForSales": null
+    }
 ]
 ```
 

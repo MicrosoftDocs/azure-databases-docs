@@ -1,6 +1,6 @@
 ---
 title: $median
-titleSuffix: Overview of the $median operator
+titleSuffix: Overview of the $median operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $median operator calculates the median value of a numeric field in a group of documents.
 author: niklarin
 ms.author: nlarin

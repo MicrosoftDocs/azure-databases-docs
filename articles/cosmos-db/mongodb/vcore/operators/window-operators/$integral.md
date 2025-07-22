@@ -1,38 +1,40 @@
 ---
-title: $type
-titleSuffix: Overview of the $type operator in Azure Cosmos DB for MongoDB vCore
-description: The $type operator in Azure Cosmos DB for MongoDB vCore returns the type of the specified value
+title: $integral
+titleSuffix: Overview of the $integral operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $integral operator calculates the area under a curve with the specified range of documents forming the adjacent documents for the calculation.
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: language-reference
-ms.date: 02/24/2025
+ms.topic: conceptual
+ms.date: 05/19/2025
 ---
 
-# $type
+# $integral
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$type` operator returns the type of the value specified in the expression.
+The `$integral` operator calculates the area under a curve based on the specified range of documents sorted based on a specific field.
 
 ## Syntax
 
-The syntax for the `$type` operator is:
-
-```mongodb
-{ "$type": <expression> }
+```javascript
+{
+    $integral: {
+        input: < expression > ,
+        unit: < time window >
+    }
+}
 ```
 
 ## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`expression`** | The specified value whose type to retrieve|
+| **`input`** | The field in the documents for the integral|
+| **`unit`** | The specified time unit for the integral|
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -144,94 +146,82 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1: Get the type of a Double value
-```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
-    }
-},
-{
-    "$project": {
-        "longitude": "$location.lon",
-        "longitudeType": {
-            "$type": "$location.lon"
-        }
-    }
-}])
-```
+### Example 1 - Calculate the integral of total sales
 
-This query returns the following result:
-
-```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "longitude": 72.8377,
-    "longitudeType": "double"
-}
-```
-
-### Example 2: Get the type of a String value
+To calculate the integral of total sales across all stores under the First Up Consultants company, first run a query to filter on the company name. Then, sort the resulting stores in ascending order of their opening dates. Lastly, calculate the integral of total sales from the first to the current document in the sorted result set.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
-    }
-},
-{
-    "$project": {
-        "name": "$name",
-        "nameType": {
-            "$type": "$name"
+db.stores.aggregate(
+[{
+      "$match": {
+          "company": {
+              "$in": [
+                  "First Up Consultants"
+              ]
+          }
+      }
+  },
+  {
+    "$setWindowFields": {
+        "partitionBy": "$company",
+        "sortBy": {
+            "storeOpeningDate": 1
+        },
+        "output": {
+            "salesIntegral": {
+                "$integral": {
+                        "input": "$sales.revenue",
+			"unit": "hour"
+                },
+                "window": {
+                    "range": [
+                        "unbounded",
+                        "current"
+                    ],
+					        "unit": "hour"
+                }
+            }
         }
     }
-}])
-```
-
-This query returns the following result:
-
-```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "name": "Wide World Importers | Furniture Bargains - Roobport",
-    "nameType": "string"
-}
-```
-
-### Example 3: Get the type of an Int value
-
-```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
-    }
-},
-{
+  },
+  {
     "$project": {
-        "fullTimeStaff": "$staff.totalStaff.fullTime",
-        "fullTimeStaffType": {
-            "$type": "$staff.totalStaff.fullTime"
-        }
+        "company": 1,
+        "name": 1,
+        "sales.revenue": 1,
+        "storeOpeningDate": 1,
+        "salesIntegral": 1
     }
-}])
+  }])
 ```
 
-This query returns the following result:
+The first two results returned by this query are:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "fullTimeStaff": 3,
-    "fullTimeStaffType": "int"
-}
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "sales": {
+            "revenue": 37701
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2021-10-03T00:00:00.000Z",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "salesIntegral": 0
+    },
+    {
+        "_id": "8e7a259b-f7d6-4ec5-a521-3bed53adc587",
+        "name": "First Up Consultants | Drone Stop - Lake Joana",
+        "sales": {
+            "revenue": 14329
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2024-09-02T00:05:39.311Z",
+        "salesIntegral": 664945851.9932402
+    }
+]
 ```
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$convert to convert a value from one type to another]($convert.md)
-
+[!INCLUDE[Related content](../includes/related-content.md)]

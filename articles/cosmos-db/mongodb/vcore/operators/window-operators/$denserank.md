@@ -1,33 +1,26 @@
---- 
-title: $addToSet
-titleSuffix: Overview of the addToSet operation in Azure Cosmos DB for MongoDB (vCore)
-description: The addToSet operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
-author: sandeepsnairms
-ms.author: sandnair
+---
+title: $denseRank
+titleSuffix: Overview of the $denseRank operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $denseRank operator assigns and returns a positional ranking for each document within a partition based on a specified sort order 
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: language-reference
-ms.date: 05/04/2025
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
-# $addToSet
+# $denseRank
 
-The `$addToSet` operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
+The `$denseRank` operator sorts documents on one or more fields within a partition and assigns a ranking for each document relative to other documents in the result set.
 
 ## Syntax
 
 ```javascript
 {
-  $addToSet: { <field1>: <value1>, ... }
+  $denseRank: {}
 }
 ```
-
-## Parameters
-
-| Parameter | Description |
-| --- | --- |
-| **`<field1>`** | The field to which you want to add elements. |
-| **`<value1>`** | The value to be added to the array. |
 
 ## Examples
 
@@ -143,77 +136,82 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Add a new tag to the `tag` array
+### Example 1 - Retrieve a document rank for each store
 
-To add a new tag to the array of tags, run a query using the $addToSet operator to add the new value.
-
-```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
-    "$addToSet": {
-        "tag": "#ShopLocal"
-    }
-})
-```
-
-This query returns the following result:
-
-```json
-[
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "0",
-    "upsertedCount": 0
-  }
-]
-```
-
-### Example 2: Adding a new promotional event to the `promotionEvents` array
-
-To add a new event to the `promotionEvents` array, run a query using the $addToSet operator with the new promotion object to be added.
+To calculate a document rank for each store under the First Up Consultants company, first run a query to filter on the company, then sort the resulting documents in descending order of sales and assign a document rank to each document in the sorted result set. 
 
 ```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
-    "$addToSet": {
-        "promotionEvents": {
-            "eventName": "Summer Sale",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 1
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 15
-                }
-            },
-            "discounts": [{
-                "categoryName": "DJ Speakers",
-                "discountPercentage": 20
-            }]
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
         }
     }
-})
+}, {
+    "$setWindowFields": {
+        "partitionBy": "$company",
+        "sortBy": {
+            "sales.totalSales": -1
+        },
+        "output": {
+            "denseRank": {
+                "$denseRank": {}
+            }
+        }
+    }
+}, {
+    "$project": {
+        "company": 1,
+        "sales.totalSales": 1,
+        "denseRank": 1
+    }
+}])
 ```
 
-This query returns the following result:
+The first five results returned by this query are:
 
 ```json
 [
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "1",
-    "upsertedCount": 0
-  }
+    {
+        "_id": "a0386810-b6f8-4b05-9d60-e536fb2b0026",
+        "sales": {
+            "revenue": 327583
+        },
+        "company": "First Up Consultants",
+        "denseRank": 1
+    },
+    {
+        "_id": "ad8af64a-d5bb-4162-9bb6-e5104126566d",
+        "sales": {
+            "revenue": 288582
+        },
+        "company": "First Up Consultants",
+        "denseRank": 2
+    },
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "sales": {
+            "revenue": 279183
+        },
+        "company": "First Up Consultants",
+        "denseRank": 3
+    },
+    {
+        "_id": "cd3d3782-17d1-451e-8b0f-4f10a68a8db7",
+        "sales": {
+            "revenue": 271604
+        },
+        "company": "First Up Consultants",
+        "denseRank": 4
+    },
+    {
+        "_id": "63ac4722-fc87-4526-a5e0-b5767d2807f7",
+        "sales": {
+            "revenue": 260409
+        },
+        "company": "First Up Consultants",
+        "denseRank": 5
+    }
 ]
 ```
 

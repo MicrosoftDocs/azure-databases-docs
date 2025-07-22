@@ -1,7 +1,7 @@
 ---
 title: $count
-titleSuffix: Overview of the $count operator
-description: The `$count` accumulator is used to count the number of documents that match a query filtering criteria.
+titleSuffix: Overview of the $count operator in Azure Cosmos DB for MongoDB (vCore)
+description: The `$count` operator is used to count the number of documents that match a query filtering criteria.
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
@@ -152,7 +152,7 @@ db.stores.aggregate([{
 }])
 ```
 
-This query returns the following results:
+This query returns the following result:
 
 ```json
 [
@@ -336,14 +336,10 @@ db.stores.aggregate([{
 ])
 ```
 
-This query return the following results:
+This query returns the following result:
 
 ```json
 [
-    {
-        "_id": "Boulder Innovations",
-        "salesCount": 10
-    },
     {
         "_id": "VanArsdel, Ltd.",
         "salesCount": 13

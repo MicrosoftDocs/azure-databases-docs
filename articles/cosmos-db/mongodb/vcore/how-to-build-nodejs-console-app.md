@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 05/14/2025
+ms.date: 07/21/2025
 ms.custom:
   - devx-track-js
   - build-2025
@@ -31,7 +31,7 @@ This guide helps you build a Node.js console application to connect to an Azure 
 
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
-- Microsoft Entra authentication configured for the cluster with your identity granted `dbOwner` role.
+- Microsoft Entra authentication configured for the cluster with your identity granted `root` role.
 
     - To enable Microsoft Entra authentication, [review the configuration guide](how-to-configure-entra-authentication.md).
 

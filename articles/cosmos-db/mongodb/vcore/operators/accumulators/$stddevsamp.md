@@ -1,24 +1,24 @@
---- 
-title: $addToSet
-titleSuffix: Overview of the addToSet operation in Azure Cosmos DB for MongoDB (vCore)
-description: The addToSet operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
-author: sandeepsnairms
-ms.author: sandnair
+---
+title: $stddevsamp
+titleSuffix: Overview of the $stddevsamp operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $stddevsamp operator calculates the standard deviation of a specified sample of values and not the entire population
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: language-reference
-ms.date: 05/04/2025
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
-# $addToSet
+# $stddevsamp
 
-The `$addToSet` operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
+The `$stddevsamp` operator calculates the standard deviation by taking a specified sample of the values of a field. The standard deviation is calculated by taking a random sample of the specified size. If a precise standard deviation is needed, $stdDevPop must be used instead.
 
 ## Syntax
 
 ```javascript
 {
-  $addToSet: { <field1>: <value1>, ... }
+  $stddevsamp: {fieldName}
 }
 ```
 
@@ -26,8 +26,7 @@ The `$addToSet` operator adds elements to an array if they don't already exist, 
 
 | Parameter | Description |
 | --- | --- |
-| **`<field1>`** | The field to which you want to add elements. |
-| **`<value1>`** | The value to be added to the array. |
+| **`fieldName`** | The field whose values are used to calculate the standard deviation of the specified sample size|
 
 ## Examples
 
@@ -143,78 +142,36 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Add a new tag to the `tag` array
+### Example 1 - Calculate the standard deviation of total sales
 
-To add a new tag to the array of tags, run a query using the $addToSet operator to add the new value.
+This query calculates the standard deviation of total sales across stores in the "Fourth Coffee" company by taking a random sample of 10 documents matching the filtering criteria.
 
 ```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
-    "$addToSet": {
-        "tag": "#ShopLocal"
+db.stores.aggregate([{
+    "$match": {
+        "company": "Fourth Coffee"
     }
-})
-```
-
-This query returns the following result:
-
-```json
-[
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "0",
-    "upsertedCount": 0
-  }
-]
-```
-
-### Example 2: Adding a new promotional event to the `promotionEvents` array
-
-To add a new event to the `promotionEvents` array, run a query using the $addToSet operator with the new promotion object to be added.
-
-```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
 }, {
-    "$addToSet": {
-        "promotionEvents": {
-            "eventName": "Summer Sale",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 1
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 15
-                }
-            },
-            "discounts": [{
-                "categoryName": "DJ Speakers",
-                "discountPercentage": 20
-            }]
+    "$sample": {
+        "size": 10
+    }
+}, {
+    "$group": {
+        "_id": "$company",
+        "stdDev": {
+            "$stdDevSamp": "$sales.totalSales"
         }
     }
-})
+}])
 ```
 
-This query returns the following result:
+This query returns the following results:
 
 ```json
-[
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "1",
-    "upsertedCount": 0
-  }
-]
+{
+    "_id": "Fourth Coffee",
+    "stdDev": 22040.044055209048
+}
 ```
 
 ## Related content

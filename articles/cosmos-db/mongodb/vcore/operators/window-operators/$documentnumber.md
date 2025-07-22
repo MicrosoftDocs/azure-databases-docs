@@ -1,33 +1,26 @@
---- 
-title: $addToSet
-titleSuffix: Overview of the addToSet operation in Azure Cosmos DB for MongoDB (vCore)
-description: The addToSet operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
-author: sandeepsnairms
-ms.author: sandnair
+---
+title: $documentNumber
+titleSuffix: Overview of the $documentNumber operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $documentNumber operator assigns and returns a position for each document within a partition based on a specified sort order 
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: language-reference
-ms.date: 05/04/2025
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
-# $addToSet
+# $documentNumber
 
-The `$addToSet` operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
+The `$documentNumber` operator sorts documents on one or more fields within a partition and assigns a document number for each document in the result set.
 
 ## Syntax
 
 ```javascript
 {
-  $addToSet: { <field1>: <value1>, ... }
+    $documentNumber: {}
 }
 ```
-
-## Parameters
-
-| Parameter | Description |
-| --- | --- |
-| **`<field1>`** | The field to which you want to add elements. |
-| **`<value1>`** | The value to be added to the array. |
 
 ## Examples
 
@@ -143,77 +136,66 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Add a new tag to the `tag` array
+### Example 1 - Retrieve a document number by total sales
 
-To add a new tag to the array of tags, run a query using the $addToSet operator to add the new value.
-
-```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
-    "$addToSet": {
-        "tag": "#ShopLocal"
-    }
-})
-```
-
-This query returns the following result:
-
-```json
-[
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "0",
-    "upsertedCount": 0
-  }
-]
-```
-
-### Example 2: Adding a new promotional event to the `promotionEvents` array
-
-To add a new event to the `promotionEvents` array, run a query using the $addToSet operator with the new promotion object to be added.
+To retrieve a document number (positional ranking) for each store under the First Up Consultants company, first run a query to filter on the company name, then sort the results in ascending order of total sales, and assign a document number to each of the documents in the sorted result set.
 
 ```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
-    "$addToSet": {
-        "promotionEvents": {
-            "eventName": "Summer Sale",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 1
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 15
-                }
-            },
-            "discounts": [{
-                "categoryName": "DJ Speakers",
-                "discountPercentage": 20
-            }]
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
         }
     }
-})
+}, {
+    "$setWindowFields": {
+        "partitionBy": "$company",
+        "sortBy": {
+            "sales.totalSales": -1
+        },
+        "output": {
+            "documentNumber": {
+                "$documentNumber": {}
+            }
+        }
+    }
+}, {
+    "$project": {
+        "company": 1,
+        "documentNumber": 1
+    }
+}])
 ```
 
-This query returns the following result:
+The first 5 results returned by this query are:
 
 ```json
 [
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "1",
-    "upsertedCount": 0
-  }
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "company": "First Up Consultants",
+        "documentNumber": 1
+    },
+    {
+        "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+        "company": "First Up Consultants",
+        "documentNumber": 2
+    },
+    {
+        "_id": "62438f5f-0c56-4a21-8c6c-6bfa479494ad",
+        "company": "First Up Consultants",
+        "documentNumber": 3
+    },
+    {
+        "_id": "bfb213fa-8db8-419f-8e5b-e7096120bad2",
+        "company": "First Up Consultants",
+        "documentNumber": 4
+    },
+    {
+        "_id": "14ab145b-0819-4d22-9e02-9ae0725fcda9",
+        "company": "First Up Consultants",
+        "documentNumber": 5
+    }
 ]
 ```
 

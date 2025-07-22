@@ -1,24 +1,27 @@
---- 
-title: $addToSet
-titleSuffix: Overview of the addToSet operation in Azure Cosmos DB for MongoDB (vCore)
-description: The addToSet operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
-author: sandeepsnairms
-ms.author: sandnair
+---
+title: $derivative
+titleSuffix: Overview of the $derivative operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $derivative operator calculates the average rate of change of the value of a field within a specified window. 
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: language-reference
-ms.date: 05/04/2025
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
-# $addToSet
+# $derivative
 
-The `$addToSet` operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
+The `$derivative` operator sorts documents on one or more fields within a partition and calculates the average rate of change of a field between the first and last documents within the window.
 
 ## Syntax
 
 ```javascript
 {
-  $addToSet: { <field1>: <value1>, ... }
+    $derivative: {
+        input: < expression >,
+        unit: < timeWindow >
+    }
 }
 ```
 
@@ -26,8 +29,8 @@ The `$addToSet` operator adds elements to an array if they don't already exist, 
 
 | Parameter | Description |
 | --- | --- |
-| **`<field1>`** | The field to which you want to add elements. |
-| **`<value1>`** | The value to be added to the array. |
+| **`input`** | The expression or the field to calculate the rate of range|
+| **`unit`** | The time window for the rate of change|
 
 ## Examples
 
@@ -143,77 +146,72 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Add a new tag to the `tag` array
+### Example 1 - Calculate the derivative for total sales
 
-To add a new tag to the array of tags, run a query using the $addToSet operator to add the new value.
-
-```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
-    "$addToSet": {
-        "tag": "#ShopLocal"
-    }
-})
-```
-
-This query returns the following result:
-
-```json
-[
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "0",
-    "upsertedCount": 0
-  }
-]
-```
-
-### Example 2: Adding a new promotional event to the `promotionEvents` array
-
-To add a new event to the `promotionEvents` array, run a query using the $addToSet operator with the new promotion object to be added.
+To calculate the derivative of total sales for each store in the First Up Consultants company, first run a query to filter on the company, sort the resulting documents in ascending order of their last updated timestamps, and calculate the derivate (average rate of change) of total sales between the first and current document in the result set. 
 
 ```javascript
-db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
-    "$addToSet": {
-        "promotionEvents": {
-            "eventName": "Summer Sale",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 1
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 15
-                }
+db.stores.aggregate([{
+        "$match": {
+            "company": {
+                "$in": [
+                    "First Up Consultants"
+                ]
             },
-            "discounts": [{
-                "categoryName": "DJ Speakers",
-                "discountPercentage": 20
-            }]
+            "$and": [{
+                    "lastUpdated": {
+                        "$gt": ISODate("2024-12-01T03:06:24.180Z")
+                    }
+                },
+                {
+                    "lastUpdated": {
+                        "$lt": ISODate("2025-12-01T03:55:17.557Z")
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "$setWindowFields": {
+            "partitionBy": "$company",
+            "sortBy": {
+                "lastUpdated": 1
+            },
+            "output": {
+                "storeAverageSales": {
+                    "$derivative": {
+                        "input": "$sales.totalSales",
+                        "unit": "week"
+                    },
+                    "window": {
+                        "range": [
+                            -1,
+                            0
+                        ],
+                        "unit": "week"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "$project": {
+            "lastUpdated": 1,
+            "storeAverageSales": 1
         }
     }
-})
+])
 ```
 
 This query returns the following result:
 
 ```json
 [
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "1",
-    "upsertedCount": 0
-  }
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "lastUpdated": "2025-06-11T10:48:01.291Z",
+        "storeAverageSales": 21554495.708753344
+    }
 ]
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: $percentile
-titleSuffix: Overview of the $percentile operator
+titleSuffix: Overview of the $percentile operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $percentile operator calculates the percentile of numerical values that match a filtering criteria
 author: niklarin
 ms.author: nlarin
