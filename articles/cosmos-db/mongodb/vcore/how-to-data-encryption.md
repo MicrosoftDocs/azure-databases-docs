@@ -77,62 +77,61 @@ Using the [Azure portal](https://portal.azure.com/):
 
 You can enable data encryption with user assigned encryption key, while provisioning a new cluster, via an az rest command.
 
-1. Create a save a JSON file with the following content:
+1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
 
-```json
-{
-    "identity": {
-        "type": "UserAssigned",
-        "userAssignedIdentities": {
-          "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName": {}
-        }
-      },
-  "location": "$regionName",
-      "properties": {
-        "administrator": {
-          "userName": "$adminName",
-          "password": "$complexPassword"
-        },
-        "serverVersion": "8.0",
-        "storage": {
-          "sizeGb": 32
-        },
-        "compute": {
-          "tier": "M40"
-        },
-        "sharding": {
-          "shardCount": 1
-        },
-        "highAvailability": {
-          "targetMode": "ZoneRedundantPreferred"
-        },
-      "encryption": {
-          "customerManagedKeyEncryption": {
-            "keyEncryptionKeyIdentity": {
-              "identityType": "UserAssignedIdentity",
-              "userAssignedIdentityResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName"
+    ```json
+    {
+        "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+              "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName": {}
+            }
+          },
+      "location": "$regionName",
+          "properties": {
+            "administrator": {
+              "userName": "$adminName",
+              "password": "$complexPassword"
             },
-            "keyEncryptionKeyUrl": "$encryptionKeyUrl"
+            "serverVersion": "8.0",
+            "storage": {
+              "sizeGb": 32
+            },
+            "compute": {
+              "tier": "M40"
+            },
+            "sharding": {
+              "shardCount": 1
+            },
+            "highAvailability": {
+              "targetMode": "ZoneRedundantPreferred"
+            },
+          "encryption": {
+              "customerManagedKeyEncryption": {
+                "keyEncryptionKeyIdentity": {
+                  "identityType": "UserAssignedIdentity",
+                  "userAssignedIdentityResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName"
+                },
+                "keyEncryptionKeyUrl": "$encryptionKeyUrl"
+              }
+            }
           }
-        }
-      }
-}
-```
-1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster:
+    }
+    ```
+    1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
 
-
-```powershell
-# Define your variables
-$randomIdentifier = (New-Guid).ToString().Substring(0,8)
-$subscriptionId="00000000-0000-0000-0000-000000000000"
-$resourceGroup="AzureCosmosDB"
-$mongoClustersName="msdocscr$randomIdentifier"
-$locationName="westus"
-
-# Execute the az rest command to make REST API call
-az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  --@jsonFileFromThePreviousStep.json
-```
-
+    ```powershell
+    # Define your variables
+    $randomIdentifier = (New-Guid).ToString().Substring(0,8)
+    $subscriptionId="00000000-0000-0000-0000-000000000000"
+    $resourceGroup="AzureCosmosDB"
+    $mongoClustersName="msdocscr$randomIdentifier"
+    $locationName="westus"
+    
+    # Execute the az rest command to make REST API call
+    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
+    ```
+    
 ---
 
 ## Configure data encryption with customer-managed key on existing clusters
