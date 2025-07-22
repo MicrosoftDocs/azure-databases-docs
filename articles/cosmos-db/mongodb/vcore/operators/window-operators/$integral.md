@@ -1,38 +1,38 @@
 ---
-title: $percentile
-titleSuffix: Overview of the $percentile operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $percentile operator calculates the percentile of numerical values that match a filtering criteria
-author: niklarin
-ms.author: nlarin
+title: $integral
+titleSuffix: Overview of the $integral operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $integral operator calculates the area under a curve with the specified range of documents forming the adjacent documents for the calculation.
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 06/28/2025
+ms.topic: conceptual
+ms.date: 05/19/2025
 ---
 
-# $percentile
+# $integral
 
-The `$percentile` operator calculates the percentile of numerical values that match a filtering criteria. This operator is particularly useful for identifying statistical thresholds, such as median or percentiles.
+The `$integral` operator calculates the area under a curve based on the specified range of documents sorted based on a specific field.
 
 ## Syntax
 
 ```javascript
-$percentile: {
-    input: < field or expression > ,
-    p: [ < percentile values > ],
-    method: < method >
+{
+    $integral: {
+        input: < expression > ,
+        unit: < time window >
+    }
 }
 ```
 
-## Parameters  
+## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`input`** | Specifies the numerical data to calculate the percentile from. |
-| **`p`** | An array of percentile values (between 0 and 1) to calculate. |
-| **`method`** | Specifies the interpolation method to use. Valid values are `"approximate"` and `"continuous"`. |
+| **`input`** | The field in the documents for the integral|
+| **`unit`** | The specified time unit for the integral|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -146,72 +146,78 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the 50th percentile of sales volume
+### Example 1 - Calculate the integral of total sales
 
-The following example calculates the 50th percentile (median) of total sales volume within each sales category across all stores.
+To calculate the integral of total sales across all stores under the First Up Consultants company, first run a query to filter on the company name. Then, sort the resulting stores in ascending order of their opening dates. Lastly, calculate the integral of total sales from the first to the current document in the sorted result set.
 
 ```javascript
-db.stores.aggregate([{
-        $unwind: "$sales.salesByCategory"
-    },
-    {
-        $group: {
-            _id: null,
-            medianSales: {
-                $percentile: {
-                    input: "$sales.salesByCategory.totalSales",
-                    p: [0.5],
-                    method: "approximate"
+db.stores.aggregate(
+[{
+      "$match": {
+          "company": {
+              "$in": [
+                  "First Up Consultants"
+              ]
+          }
+      }
+  },
+  {
+    "$setWindowFields": {
+        "partitionBy": "$company",
+        "sortBy": {
+            "storeOpeningDate": 1
+        },
+        "output": {
+            "salesIntegral": {
+                "$integral": {
+                        "input": "$sales.revenue",
+			"unit": "hour"
+                },
+                "window": {
+                    "range": [
+                        "unbounded",
+                        "current"
+                    ],
+					        "unit": "hour"
                 }
             }
         }
     }
-])
+  },
+  {
+    "$project": {
+        "company": 1,
+        "name": 1,
+        "sales.revenue": 1,
+        "storeOpeningDate": 1,
+        "salesIntegral": 1
+    }
+  }])
 ```
 
-This query returns the following results:
+The first two results returned by this query are:
 
 ```json
 [
     {
-        "_id": null,
-        "medianSales": [
-            25070.449624139295
-        ]
-    }
-]
-```
-
-### Example 2: Calculate multiple percentiles
-
-This example calculates the 25th, 50th, and 75th percentiles of the total sales across all stores.
-
-```javascript
-db.stores.aggregate([{
-    $group: {
-        _id: null,
-        percentiles: {
-            $percentile: {
-                input: "$sales.fullSales",
-                p: [0.25, 0.5, 0.75],
-                method: "approximate"
-            }
-        }
-    }
-}])
-```
-
-This query returns the following results:
-
-```json
-[
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "sales": {
+            "revenue": 37701
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2021-10-03T00:00:00.000Z",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "salesIntegral": 0
+    },
     {
-        "_id": null,
-        "percentiles": [
-            3700,
-            3700,
-            3700
-        ]
+        "_id": "8e7a259b-f7d6-4ec5-a521-3bed53adc587",
+        "name": "First Up Consultants | Drone Stop - Lake Joana",
+        "sales": {
+            "revenue": 14329
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2024-09-02T00:05:39.311Z",
+        "salesIntegral": 664945851.9932402
     }
 ]
 ```

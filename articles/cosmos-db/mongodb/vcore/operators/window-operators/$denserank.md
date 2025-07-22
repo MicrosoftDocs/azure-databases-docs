@@ -1,38 +1,28 @@
 ---
-title: $percentile
-titleSuffix: Overview of the $percentile operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $percentile operator calculates the percentile of numerical values that match a filtering criteria
-author: niklarin
-ms.author: nlarin
+title: $denseRank
+titleSuffix: Overview of the $denseRank operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $denseRank operator assigns and returns a positional ranking for each document within a partition based on a specified sort order 
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 06/28/2025
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
-# $percentile
+# $denseRank
 
-The `$percentile` operator calculates the percentile of numerical values that match a filtering criteria. This operator is particularly useful for identifying statistical thresholds, such as median or percentiles.
+The `$denseRank` operator sorts documents on one or more fields within a partition and assigns a ranking for each document relative to other documents in the result set.
 
 ## Syntax
 
 ```javascript
-$percentile: {
-    input: < field or expression > ,
-    p: [ < percentile values > ],
-    method: < method >
+{
+  $denseRank: {}
 }
 ```
 
-## Parameters  
-
-| Parameter | Description |
-| --- | --- |
-| **`input`** | Specifies the numerical data to calculate the percentile from. |
-| **`p`** | An array of percentile values (between 0 and 1) to calculate. |
-| **`method`** | Specifies the interpolation method to use. Valid values are `"approximate"` and `"continuous"`. |
-
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -146,72 +136,81 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the 50th percentile of sales volume
+### Example 1 - Retrieve a document rank for each store
 
-The following example calculates the 50th percentile (median) of total sales volume within each sales category across all stores.
-
-```javascript
-db.stores.aggregate([{
-        $unwind: "$sales.salesByCategory"
-    },
-    {
-        $group: {
-            _id: null,
-            medianSales: {
-                $percentile: {
-                    input: "$sales.salesByCategory.totalSales",
-                    p: [0.5],
-                    method: "approximate"
-                }
-            }
-        }
-    }
-])
-```
-
-This query returns the following results:
-
-```json
-[
-    {
-        "_id": null,
-        "medianSales": [
-            25070.449624139295
-        ]
-    }
-]
-```
-
-### Example 2: Calculate multiple percentiles
-
-This example calculates the 25th, 50th, and 75th percentiles of the total sales across all stores.
+To calculate a document rank for each store under the First Up Consultants company, first run a query to filter on the company, then sort the resulting documents in descending order of sales and assign a document rank to each document in the sorted result set. 
 
 ```javascript
 db.stores.aggregate([{
-    $group: {
-        _id: null,
-        percentiles: {
-            $percentile: {
-                input: "$sales.fullSales",
-                p: [0.25, 0.5, 0.75],
-                method: "approximate"
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
+        }
+    }
+}, {
+    "$setWindowFields": {
+        "partitionBy": "$company",
+        "sortBy": {
+            "sales.totalSales": -1
+        },
+        "output": {
+            "denseRank": {
+                "$denseRank": {}
             }
         }
+    }
+}, {
+    "$project": {
+        "company": 1,
+        "sales.totalSales": 1,
+        "denseRank": 1
     }
 }])
 ```
 
-This query returns the following results:
+The first five results returned by this query are:
 
 ```json
 [
     {
-        "_id": null,
-        "percentiles": [
-            3700,
-            3700,
-            3700
-        ]
+        "_id": "a0386810-b6f8-4b05-9d60-e536fb2b0026",
+        "sales": {
+            "revenue": 327583
+        },
+        "company": "First Up Consultants",
+        "denseRank": 1
+    },
+    {
+        "_id": "ad8af64a-d5bb-4162-9bb6-e5104126566d",
+        "sales": {
+            "revenue": 288582
+        },
+        "company": "First Up Consultants",
+        "denseRank": 2
+    },
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "sales": {
+            "revenue": 279183
+        },
+        "company": "First Up Consultants",
+        "denseRank": 3
+    },
+    {
+        "_id": "cd3d3782-17d1-451e-8b0f-4f10a68a8db7",
+        "sales": {
+            "revenue": 271604
+        },
+        "company": "First Up Consultants",
+        "denseRank": 4
+    },
+    {
+        "_id": "63ac4722-fc87-4526-a5e0-b5767d2807f7",
+        "sales": {
+            "revenue": 260409
+        },
+        "company": "First Up Consultants",
+        "denseRank": 5
     }
 ]
 ```

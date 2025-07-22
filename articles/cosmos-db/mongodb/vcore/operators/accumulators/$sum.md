@@ -1,7 +1,7 @@
 ---
 title: $sum
-titleSuffix: Overview of the $sum operator
-description: The $sum operator calculates the sum of of the values of a field based on a filtering criteria
+titleSuffix: Overview of the $sum operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $sum operator calculates the sum of the values of a field based on a filtering criteria
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@ ms.date: 01/05/2025
 
 # $sum
 
-The `$sum` operator calculates the sum of numberic values of a field or expression that match a filtering criteria. 
+The `$sum` operator calculates the sum of numeric values of a field or expression that match a filtering criteria. 
 
 ## Syntax
 

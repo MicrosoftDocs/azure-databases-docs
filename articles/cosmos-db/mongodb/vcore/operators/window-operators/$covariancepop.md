@@ -1,38 +1,35 @@
 ---
-title: $percentile
-titleSuffix: Overview of the $percentile operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $percentile operator calculates the percentile of numerical values that match a filtering criteria
-author: niklarin
-ms.author: nlarin
+title: $covariancePop
+titleSuffix: Overview of the $covariancePop operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $covariancePop operator returns the covariance of two numerical expressions
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 06/28/2025
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
-# $percentile
+# $covariancePop
 
-The `$percentile` operator calculates the percentile of numerical values that match a filtering criteria. This operator is particularly useful for identifying statistical thresholds, such as median or percentiles.
+The `$covariancePop` operator sorts documents on one or more fields within a partition and calculates a covariance of two numerical fields within a specified document window.
 
 ## Syntax
 
 ```javascript
-$percentile: {
-    input: < field or expression > ,
-    p: [ < percentile values > ],
-    method: < method >
+{
+  $covariancePop: [ < numericalExpression1 > , < numericalExpression2 > ]
 }
 ```
 
-## Parameters  
+## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`input`** | Specifies the numerical data to calculate the percentile from. |
-| **`p`** | An array of percentile values (between 0 and 1) to calculate. |
-| **`method`** | Specifies the interpolation method to use. Valid values are `"approximate"` and `"continuous"`. |
+| **`numericalExpression1`** | The first numerical expression to use to calculate the covariance within the specified document window|
+| **`numericalExpression2`** | The first numerical expression to use to calculate the covariance within the specified document window|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -146,72 +143,79 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the 50th percentile of sales volume
+### Example 1 - Calculate the covariance in sales volume 
 
-The following example calculates the 50th percentile (median) of total sales volume within each sales category across all stores.
+To get the covariance in total sales for stores in the First Up Consultants company, first run a query to filter on the company name, then sort the resulting documents in ascending order of the last updated timestamp, and calculate the covariance between the first and current document in the sorted result set.
 
 ```javascript
-db.stores.aggregate([{
-        $unwind: "$sales.salesByCategory"
-    },
-    {
-        $group: {
-            _id: null,
-            medianSales: {
-                $percentile: {
-                    input: "$sales.salesByCategory.totalSales",
-                    p: [0.5],
-                    method: "approximate"
+db.stores.aggregate(
+    [{
+            "$match": {
+                "company": {
+                    "$in": [
+                        "First Up Consultants"
+                    ]
                 }
             }
-        }
-    }
-])
-```
-
-This query returns the following results:
-
-```json
-[
-    {
-        "_id": null,
-        "medianSales": [
-            25070.449624139295
-        ]
-    }
-]
-```
-
-### Example 2: Calculate multiple percentiles
-
-This example calculates the 25th, 50th, and 75th percentiles of the total sales across all stores.
-
-```javascript
-db.stores.aggregate([{
-    $group: {
-        _id: null,
-        percentiles: {
-            $percentile: {
-                input: "$sales.fullSales",
-                p: [0.25, 0.5, 0.75],
-                method: "approximate"
+        },
+        {
+            "$setWindowFields": {
+                "partitionBy": "$company",
+                "sortBy": {
+                    "lastUpdated": 1
+                },
+                "output": {
+                    "covariancePopForSales": {
+                        "$covariancePop": [{
+                                "$hour": "$lastUpdated"
+                            },
+                            "$sales.totalSales"
+                        ],
+                        "window": {
+                            "documents": [
+                                "unbounded",
+                                "current"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "$project": {
+                "company": 1,
+                "name": 1,
+                "sales.totalSales": 1,
+                "lastUpdated": 1,
+                "covariancePopForSales": 1
             }
         }
-    }
-}])
+    ]
+)
 ```
 
-This query returns the following results:
+The first two results returned by this query are:
 
 ```json
 [
     {
-        "_id": null,
-        "percentiles": [
-            3700,
-            3700,
-            3700
-        ]
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "sales": {},
+        "company": "First Up Consultants",
+        "lastUpdated": "2025-06-11T10:48:01.291Z",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "covariancePopForSales": null
+    },
+    {
+        "_id": "8e7a259b-f7d6-4ec5-a521-3bed53adc587",
+        "name": "First Up Consultants | Drone Stop - Lake Joana",
+        "sales": {},
+        "company": "First Up Consultants",
+        "lastUpdated": {
+            "t": 1727827539,
+            "i": 1
+        },
+        "covariancePopForSales": null
     }
 ]
 ```
