@@ -32,7 +32,7 @@ The `$lastN` accumulator operator returns the last N values in a group of docume
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`n`** | The number of values to return. Must be a positive integer. |
 | **`input`** | The expression that specifies the field or value to return the last N occurrences of. |
