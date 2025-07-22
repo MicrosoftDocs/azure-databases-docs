@@ -12,7 +12,7 @@ ms.date: 05/20/2025
 
 # $last
 
-The `$last` operator sorts documents on one more fields specified by the query and returns the last document matching the filtering criteria.
+The `$last` operator sorts documents on one or more fields specified by the query and returns the last document matching the filtering criteria.
 
 ## Syntax
 
