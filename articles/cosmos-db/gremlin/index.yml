@@ -37,8 +37,6 @@ landingContent:
             url: quickstart-nodejs.md?pivots=programming-language-js
           - text: .NET
             url: quickstart-dotnet.md
-  - title: Connect from applications
-    linkLists:
       - linkListType: how-to-guide
         links:
           - text: Write queries

@@ -1,12 +1,12 @@
 ---
-title: Query Graph Data
+title: Execute Queries on Graph Data
 description: Perform common graph data queries and supplement those queries with the execution step using Azure Cosmos DB for Apache Gremlin.
 ms.topic: how-to
 ms.date: 07/23/2025
 ai-usage: ai-generated
 ---
 
-# Query Graph Data in Azure Cosmos DB for Apache Gremlin
+# Execute queries on graph data in Azure Cosmos DB for Apache Gremlin
 
 The Azure Cosmos DB for Apache Gremlin supports the [Gremlin TinkerPop](https://tinkerpop.apache.org/gremlin.html) syntax for queries. This guide walks through common queries that can be performed using this service. You can run following queries in this guide using the [Gremlin console](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console), or your favorite Gremlin driver.
 
