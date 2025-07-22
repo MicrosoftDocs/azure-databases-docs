@@ -189,4 +189,4 @@ This table delineates the expected behavior of the $toDouble operator based on t
 
 ## Related content
 
-[!INCLUDE[Related content](../includes/related-content.md)]
+[!INCLUDE[Related content](../../includes/related-content.md)]
