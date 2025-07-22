@@ -18,38 +18,43 @@ appliesto:
 
 Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
 
-<!-- COPILOT: Don't edit above this line -->
+Azure Cosmos DB for Apache Cassandra is a fully managed NoSQL database service that enables you to run Cassandra workloads in the cloud with minimal changes to your application code. This API supports the Cassandra Query Language (CQL) and is compatible with existing Cassandra drivers and tools, making it easy to migrate or extend your applications without rearchitecting.
 
-You can use Azure Cosmos DB for Apache Cassandra as the data store for apps written for [Apache Cassandra](https://cassandra.apache.org). This compatibility means that by using existing [Apache drivers](https://cassandra.apache.org/doc/stable/cassandra/getting-started/drivers.html) compliant with CQLv4, your existing Cassandra application can now communicate with the API for Cassandra. 
+## Data
 
-In many cases, you can switch from using Apache Cassandra to using the API for Cassandra by just changing a connection string. The API for Cassandra enables you to interact with data stored in Azure Cosmos DB using the Cassandra Query Language (CQL), Cassandra-based tools like `cqlsh`, and Cassandra client drivers that you're already familiar with.
+The API for Cassandra is designed for applications that require scalable, distributed storage of wide-column data. It supports tables with flexible schemas, allowing you to store and query large volumes of structured and semi-structured data. Each table consists of rows and columns, with support for partition and clustering keys to optimize data distribution and query performance. This model is ideal for time series, sensor data, user profiles, and other scenarios where high write throughput and fast lookups are important.
 
-> [!TIP]
-> Want to try the API for Cassandra with no commitment? Create an Azure Cosmos DB account using [Try Azure Cosmos DB](../try-free.md) for free.
+## Features
 
-## API for Cassandra benefits
+Every Azure Cosmos DB compatibility API offers a robust set of features to help you build modern, scalable applications. Key features of the API for Cassandra include:
 
-The API for Cassandra also has the benefits of being built on Azure Cosmos DB:
+- **Wire protocol compatibility**: Use your existing Cassandra drivers, SDKs, and tools with minimal changes—often just updating the connection string.
 
-- **No operations management**: As a fully managed cloud service, API for Cassandra removes the overhead of managing and monitoring a myriad of settings across operating systems, Java virtual machines, and yaml files and their interactions. Azure Cosmos DB provides monitoring of throughput, latency, storage, availability, and configurable alerts.
+- **Fully managed service**: Azure Cosmos DB handles infrastructure, patching, scaling, and backups, so you can focus on your application.
 
-- **Open source standard**: Despite being a fully managed service, API for Cassandra still supports a large surface area of the native [Apache Cassandra wire protocol](support.md), which allows you to build applications on a widely used and cloud agnostic open source standard.
+- **Elastic scalability**: Instantly scale throughput and storage across regions to meet the needs of your workload, with predictable performance.
 
-- **Performance management**: Azure Cosmos DB provides guaranteed low latency reads and writes at the 99th percentile, backed up by the SLAs. You don't have to worry about operational overhead to ensure high performance and low latency reads and writes. Users don't need to deal with scheduling compaction, managing tombstones, and setting up bloom filters and replicas manually. Azure Cosmos DB removes the overhead to manage these issues and lets you focus on the application logic.
+- **Global distribution**: Distribute your data across any Azure region for low-latency access and high availability.
 
-- **Ability to use existing code and tools**: Azure Cosmos DB provides wire protocol level compatibility with existing Cassandra SDKs and tools. This compatibility ensures that you can use your existing codebase with API for Cassandra while only making trivial changes.
+- **Automatic indexing**: All data is indexed by default, enabling fast queries without manual index management.
 
-- **Throughput and storage elasticity**: Azure Cosmos DB provides throughput across all regions and can scale the provisioned throughput with Azure portal, PowerShell, or CLI operations. You can [elastically scale](scale-account-throughput.md) storage and throughput for your tables as needed with predictable performance.
+- **Change feed support**: Access a persistent change log for event sourcing and real-time analytics scenarios.
 
-- **Global distribution and availability**: Azure Cosmos DB globally distributes data across all Azure regions and serves the data locally while ensuring low latency data access and high availability. Azure Cosmos DB provides 99.99% high availability within a region and 99.999% read and write availability across multiple regions with no operations overhead. For more information, see [distribute data globally](../distribute-data-globally.md).
+- **Tunable consistency levels**: Choose from five consistency levels to balance performance and data consistency for your application.
 
-- **Choice of consistency**: Azure Cosmos DB provides the choice of five well-defined consistency levels to achieve optimal tradeoffs between consistency and performance. These consistency levels are *strong*, *bounded-staleness*, *session*, *consistent prefix*, and *eventual*. These consistency levels allow developers to make precise trade-offs between consistency, availability, and latency. For more information, see [consistency levels](../consistency-levels.md).
+- **Enterprise-grade security**: Benefit from encryption at rest and in transit, IP firewall, audit logs, and compliance certifications.
 
-- **Enterprise grade**: Azure Cosmos DB provides [compliance certifications](https://www.microsoft.com/trust-center) to ensure that users can use the platform securely. Azure Cosmos DB also provides encryption at rest and in motion, IP firewall, and audit logs for control plane activities.
+## Common scenarios
 
-- **Event Sourcing**: The API for Cassandra provides access to a persistent change log, the [Change Feed](change-feed.md). The change feed can facilitate event sourcing directly from the database. In Apache Cassandra, change data capture (CDC) is the only equivalent feature. CDC is merely a mechanism to flag specific tables for archival and rejecting writes to those tables once a configurable size-on-disk for the CDC log is reached. These capabilities are redundant in Azure Cosmos DB as the relevant aspects are automatically governed.
+The API for Cassandra is well-suited for applications that require high write throughput, flexible data models, and global scale. Common use cases include:
 
-<!-- COPILOT: Don't edit below this line -->
+- **IoT and time series data**: Store and analyze large volumes of sensor or event data with high write rates and efficient queries.
+
+- **User profile and personalization**: Manage user data, preferences, and activity logs for web and mobile applications.
+
+- **Catalogs and inventory**: Track product catalogs, inventory levels, and order histories in retail and supply chain solutions.
+
+- **Real-time analytics**: Power dashboards and analytics applications that require fast ingestion and querying of operational data.
 
 ## Azure Managed Instance for Apache Cassandra
 

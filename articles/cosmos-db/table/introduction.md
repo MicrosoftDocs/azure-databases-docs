@@ -18,39 +18,41 @@ appliesto:
 
 Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
 
-<!-- COPILOT: Don't edit above this line -->
+Azure Cosmos DB for Table is a fully managed NoSQL database service that enables you to store, manage, and query large volumes of key-value data using the familiar Azure Table storage APIs. This API is designed for applications that need scalable, high-performance storage for structured, non-relational data, and is compatible with existing Azure Table Storage SDKs and tools.
 
-Azure Cosmos DB for Table provides applications written for Azure Table storage with premium capabilities like:
+## Data
 
-- [Turnkey global distribution](../distribute-data-globally.md).
-- [Dedicated throughput](../partitioning-overview.md) worldwide (when using provisioned throughput).
-- Single-digit millisecond latencies at the 99th percentile.
-- Guaranteed high availability.
-- Automatic secondary indexing.
+The API for Table is optimized for storing and retrieving key-value and tabular data. Each table consists of entities (rows) identified by a unique combination of partition key and row key, with flexible properties for each entity. This model is ideal for scenarios such as device registries, user profiles, configuration data, and other applications that require fast lookups and simple queries over large datasets.
 
-Azure Table Storage has [SDKs](https://devblogs.microsoft.com/azure-sdk/announcing-the-new-azure-data-tables-libraries/) available for .NET, Java, Python, Node.js, and Go. These SDKs can be used to target either Azure Table Storage or the API for Table. Applications written for Azure Table Storage using the Azure Tables SDKs can be migrated to the Azure Cosmos DB with no code changes to take advantage of premium capabilities.
+## Features
 
-Specifically, the .NET Azure Tables SDK [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/) offers the latest features supported by the API for Table. The Azure Tables client library can seamlessly target either Azure Table storage or API for Table service endpoints with no code changes.
+Every Azure Cosmos DB compatibility API offers a robust set of features to help you build modern, scalable applications. Key features of the API for Table include:
 
-> [!TIP]
-> Want to try the API for Table with no commitment? Create an Azure Cosmos DB account using [Try Azure Cosmos DB](../try-free.md) for free.
+- **Wire protocol compatibility**: Use your existing Azure Table Storage SDKs and tools with minimal or no code changes.
 
-## API for Table benefits
+- **Fully managed service**: Azure Cosmos DB handles infrastructure, patching, scaling, and backups, so you can focus on your application.
 
-If you currently use Azure Table Storage, you gain the following benefits by moving to the API for Table:
+- **Elastic scalability**: Instantly scale throughput and storage to handle millions of operations per second and massive datasets.
 
-| | Azure Table storage | API for Table |
-| --- | --- | --- |
-| **Latency** | Fast, but no upper bounds on latency. | Single-digit millisecond latency for reads and writes, backed with <10-ms latency for reads and writes at the 99th percentile, at any scale, anywhere in the world. |
-| **Throughput** | Variable throughput model. Tables have a scalability limit of 20,000 operations/s. | Highly scalable with [dedicated reserved throughput per table](../request-units.md) backed by SLAs. Accounts have no upper limit on throughput and support >10 million operations/s per table. |
-| **Global distribution** | Single region with one optional readable secondary read region for high availability. | [Turnkey global distribution](../distribute-data-globally.md) from one to any number of regions. Support for [service-managed and manual failovers](../high-availability.md) at any time, anywhere in the world. Multiple write regions to let any region accept write operations. |
-| **Indexing** | Only primary index on PartitionKey and RowKey. No secondary indexes. | Automatic and complete indexing on all properties by default, with no index management. |
-| **Query** | Query execution uses index for primary key, and scans otherwise. | Queries can take advantage of automatic indexing on properties for fast query times. |
-| **Consistency** | Strong within primary region. Eventual within secondary region. | [Five well-defined consistency levels](../consistency-levels.md) to trade off availability, latency, throughput, and consistency based on your application needs. |
-| **Pricing** | Consumption-based. | Available in both [consumption-based](../serverless.md) and [provisioned capacity](../set-throughput.md) modes. |
-| **SLAs** | 99.9% to 99.99% availability, depending on the replication strategy. | 99.999% read availability, 99.99% write availability on a single-region account and 99.999% write availability on multi-region accounts. [Comprehensive SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/) covering availability, latency, throughput and consistency. |
+- **Global distribution**: Distribute your tables across any Azure region for low-latency access and high availability.
 
-<!-- COPILOT: Don't edit below this line -->
+- **Automatic indexing**: All properties are indexed by default, enabling fast queries without manual index management.
+
+- **Tunable consistency levels**: Choose from five consistency levels to balance performance and data consistency for your application.
+
+- **Enterprise-grade security**: Benefit from encryption at rest and in transit, role-based access control, audit logs, and compliance certifications.
+
+## Common scenarios
+
+The API for Table is well-suited for applications that require scalable, high-performance key-value storage. Common use cases include:
+
+- **Device registries and IoT**: Store and manage metadata for millions of devices or sensors with fast lookups and updates.
+
+- **User profiles and session data**: Manage user information, preferences, and session state for web and mobile applications.
+
+- **Configuration and reference data**: Store application settings, lookup tables, and other reference data for fast access.
+
+- **Audit logs and event tracking**: Capture and query large volumes of log or event data for monitoring and analytics.
 
 ## Next step
 
