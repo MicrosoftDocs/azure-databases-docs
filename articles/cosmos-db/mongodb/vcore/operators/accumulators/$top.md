@@ -151,13 +151,13 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Get the top selling category per store
 
-To find the highest-selling category within the Boulder Innovations company, run a query to retrieve stores within the company, sort the documents in descending order of total sales within each category and return the top document in the sorted result set.
+To find the highest-selling category within the First Up Consultants company, run a query to retrieve stores within the company, sort the documents in descending order of total sales within each category and return the top document in the sorted result set.
 
 ```javascript
 db.stores.aggregate([{
     "$match": {
         "company": {
-            "$in": ["Boulder Innovations"]
+            "$in": ["First Up Consultants"]
         }
     }
 }, {
@@ -178,65 +178,59 @@ db.stores.aggregate([{
 This query returns the following result:
 
 ```json
-{
-    "_id": "Boulder Innovations",
-    "topSales": [
-        "Boulder Innovations",
-        {
-            "salesByCategory": [
-                {
-                    "categoryName": "iPads",
-                    "totalSales": 46592
-                },
-                {
-                    "categoryName": "External Hard Drives",
-                    "totalSales": 11364
-                },
-                {
-                    "categoryName": "Student Laptops",
-                    "totalSales": 30481
-                },
-                {
-                    "categoryName": "Android Tablets",
-                    "totalSales": 48149
-                },
-                {
-                    "categoryName": "Desktops",
-                    "totalSales": 42726
-                },
-                {
-                    "categoryName": "Inkjet Cartridges",
-                    "totalSales": 36581
-                },
-                {
-                    "categoryName": "2-in-1 Laptops",
-                    "totalSales": 26355
-                },
-                {
-                    "categoryName": "Phone Mounts",
-                    "totalSales": 19886
-                },
-                {
-                    "categoryName": "Android Phones",
-                    "totalSales": 4532
-                },
-                {
-                    "categoryName": "Power Banks",
-                    "totalSales": 48347
-                },
-                {
-                    "categoryName": "All-in-One Printers",
-                    "totalSales": 44346
-                },
-                {
-                    "categoryName": "Photo Printers",
-                    "totalSales": 44747
-                }
-            ],
-            "revenue": 404106
-        }
-    ]
-}
+[
+    {
+        "_id": "First Up Consultants",
+        "topSales": [
+            "First Up Consultants",
+            {
+                "salesByCategory": [
+                    {
+                        "categoryName": "Towel Sets",
+                        "totalSales": 520
+                    },
+                    {
+                        "categoryName": "Bath Accessories",
+                        "totalSales": 41710
+                    },
+                    {
+                        "categoryName": "Drapes",
+                        "totalSales": 42893
+                    },
+                    {
+                        "categoryName": "Towel Racks",
+                        "totalSales": 30773
+                    },
+                    {
+                        "categoryName": "Hybrid Mattresses",
+                        "totalSales": 39491
+                    },
+                    {
+                        "categoryName": "Innerspring Mattresses",
+                        "totalSales": 6410
+                    },
+                    {
+                        "categoryName": "Bed Frames",
+                        "totalSales": 41917
+                    },
+                    {
+                        "categoryName": "Mattress Protectors",
+                        "totalSales": 44124
+                    },
+                    {
+                        "categoryName": "Bath Towels",
+                        "totalSales": 5671
+                    },
+                    {
+                        "categoryName": "Turkish Towels",
+                        "totalSales": 25674
+                    }
+                ],
+                "revenue": 279183
+            }
+        ]
+    }
+]
 ```
 
 ### Example 2: Get the highest discount by promotion category
