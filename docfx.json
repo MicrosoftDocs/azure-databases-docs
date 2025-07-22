@@ -239,6 +239,11 @@
         "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL",
         "articles/cosmos-db/gremlin/**/*.md": "Azure Cosmos DB for Apache Gremlin",
         "articles/cosmos-db/gremlin/**/*.yml": "Azure Cosmos DB for Apache Gremlin"
+      },      
+      "appliesto": {
+        "articles/cosmos-db/gremlin/**/*.{md,yml}": [
+          "✅ Apache Gremlin"
+        ]
       }
     },
     "overwrite": [],
