@@ -7,7 +7,7 @@
   - name: Overview
     items:
     - name: What is Azure Cosmos DB for Apache Cassandra?
-      href: introduction.md
+      href: overview.md
     - name: Wire protocol support
       href: support.md
     - name: Tokens and the Token function
