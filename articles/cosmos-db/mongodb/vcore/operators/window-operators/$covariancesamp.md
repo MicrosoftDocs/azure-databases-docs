@@ -12,7 +12,7 @@ ms.date: 05/20/2025
 
 # $covarianceSamp
 
-The `$covarianceSamp` operator sorts documents on one more fields within a partition and calculates the covariance of a sample two numerical fields within a specified document window.
+The `$covarianceSamp` operator sorts documents on one or more fields within a partition and calculates the covariance of a sample two numerical fields within a specified document window.
 
 ## Syntax
 
