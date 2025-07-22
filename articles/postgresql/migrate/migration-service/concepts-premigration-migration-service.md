@@ -46,10 +46,8 @@ Using the [Azure portal](https://portal.azure.com/):
 1. Construct your migration task creation command with the Azure CLI.
 
     ```azurecli-interactive
-    az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-option Validate --properties "path_to_json_file_with_all_migration_properties" --migration-mode offline
+    az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-option ValidateAndMigrate --properties "path_to_json_file_with_all_migration_properties" --migration-mode offline
     ```
-
-1. Include the `--migration-option` parameter followed by the `Validate` option to perform only the premigration. If the validation is successful, use `ValidateAndMigrate` to perform validation followed by migration.
 
 ## Premigration validation options
 

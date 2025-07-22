@@ -218,7 +218,7 @@ The grid that displays the migrations has the following columns: **Name**, **Sta
 
 Select the migration name in the grid to see the associated details.
 
-Remember that in the previous steps, when you created this migration, you configured the migration option as **Validate and migrate**. In this scenario, validations are performed first, before migration starts. After the **Performing prerequisite steps** substrate is completed, the workflow moves into the substrate of **Validation in progress**.
+Remember that in the previous steps, when you created this migration, you configured the migration option as **Validate and migrate**. In this scenario, validations are performed first, before migration starts. After the **Performing prerequisite steps** substate is completed, the workflow moves into the substate of **Validation in progress**.
 
 - If validation has errors, the migration moves into a **Failed** state.
 

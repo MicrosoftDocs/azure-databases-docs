@@ -63,7 +63,7 @@ You need to provide multiple details related to the migration, like the migratio
 
 - **Migration name** is the unique identifier for each migration to this flexible server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same flexible server target can have the same name.
 
-- **Source server type** - Depending on your PostgreSQL source, you can select **Azure Virtual Machine** or **On-premise Server**.
+- **Source server type** - Depending on your PostgreSQL source, you can select **Azure Virtual Machine** or **On-premise server**.
 
 - **Migration option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
     - **Validate** - Checks your server and database readiness for migration to the target.
@@ -218,7 +218,7 @@ The grid that displays the migrations has the following columns: **Name**, **Sta
 
 Select the migration name in the grid to see the associated details.
 
-Remember that in the previous steps, when you created this migration, you configured the migration option as **Validate and migrate**. In this scenario, validations are performed first, before migration starts. After the **Performing prerequisite steps** substrate is completed, the workflow moves into the substrate of **Validation in progress**.
+Remember that in the previous steps, when you created this migration, you configured the migration option as **Validate and migrate**. In this scenario, validations are performed first, before migration starts. After the **Performing prerequisite steps** substate is completed, the workflow moves into the substate of **Validation in progress**.
 
 - If validation has errors, the migration moves into a **Failed** state.
 
