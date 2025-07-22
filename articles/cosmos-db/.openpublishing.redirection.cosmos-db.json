@@ -6732,7 +6732,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/gremlin/find-request-unit-charge.md",
-      "redirect_url": "/azure/cosmos-db/gremlin/how-to-measure-request-unit-charge.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/how-to-measure-request-unit-charge",
       "redirect_document_id": true
     }
   ]
