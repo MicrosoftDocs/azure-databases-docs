@@ -17,8 +17,13 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/gremlin/visualization-partners.md",
-      "redirect_url": "/azure/cosmos-db/gremlin/partner-tools",
+      "redirect_url": "/azure/cosmos-db/gremlin/partner-tools-services#visualization",
       "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/modeling-tools.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/partner-tools-services#modeling",
+      "redirect_document_id": false
     }
   ]
 }

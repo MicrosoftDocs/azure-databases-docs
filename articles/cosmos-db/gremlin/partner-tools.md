@@ -1,18 +1,24 @@
 ---
-title: Partner tools
+title: Partner tools and services
 description: Integrate graph data in Azure Cosmos DB for Apache Gremlin with different third-party tools and solutions for scenarios like visualization.
 ms.topic: partner-tools
 ms.date: 07/22/2025
 ---
 
-# Partner tools for Azure Cosmos DB for Apache Gremlin
+# Azure Cosmos DB for Apache Gremlin partner tools and services
 
-You can visualize data stored in Azure Cosmos DB for Gremlin by using various data visualization solutions.
+Azure Cosmos DB for Apache Gremlin is a fully managed graph database service that enables you to store, query, and traverse large-scale graph data using the Gremlin query language.
+
+This article lists partners who have solutions or services that use Azure Cosmos DB for Apache Gremlin.
 
 > [!IMPORTANT] 
-> Solutions mentioned in this article are for information purpose only, the ownership lies to individual solution owner. We recommend users to do thorough evaluation and then select most suitable to you.
+> This list changes over time, Microsoft is not responsible to any changes or updates made to the solutions of these partners.
 
-## Linkurious Enterprise
+## Visualization
+
+This section includes a list of partner tools and services for visualizing graph data in Azure Cosmos DB for Apache Gremlin.
+
+### Linkurious Enterprise
 
 [Linkurious Enterprise](https://linkurio.us/product/) uses graph technology and data visualization to turn complex datasets into interactive visual networks. The platform connects to your data sources and enables investigators to seamlessly navigate across billions of entities and relationships. The result is a new ability to detect suspicious relationships without juggling with queries or tables.
 
@@ -27,7 +33,7 @@ The interactive interface of Linkurious Enterprise offers an easy way to investi
 * [Documentation](https://doc.linkurio.us/)
 * [Demo](https://linkurious.com/demo/)
 
-## Cambridge Intelligence
+### Cambridge Intelligence
 
 [Cambridge Intelligence’s](https://cambridge-intelligence.com/products/) graph visualization toolkits support Azure Cosmos DB. The following two visualization toolkits are supported by Azure Cosmos DB:
 
@@ -51,7 +57,7 @@ These toolkits let you design high-performance graph visualization and analysis 
 * [Re-Graph technology overview](https://cambridge-intelligence.com/regraph/technology/)
 * [Graph visualization use cases](https://cambridge-intelligence.com/use-cases/)
 
-## Tom Sawyer
+### Tom Sawyer
 
 [Tom Sawyer Perspectives](https://www.tomsawyer.com/perspectives/) is a robust platform for building enterprise grade graph data visualization and analysis applications. It is a low-code graph & data visualization development platform, which includes integrated design, preview interface, and extensive API libraries. The platform integrates enterprise data sources with powerful graph visualization, layout, and analysis technology to solve big data problems.
 
@@ -76,7 +82,7 @@ Users of all skill levels can take advantage of five unique graph layouts to dis
 
 * [Live Demo for Tom Sawyer Databrowser](https://support.tomsawyer.com/demonstrations/graph.database.browser.demo/)
 
-## Graphistry
+### Graphistry
 
 Graphistry automatically transforms your data into interactive, visual investigation maps built for the needs of analysts. It can quickly surface relationships between events and entities without having to write queries or wrangle data. You can harness your data without worrying about scale. You can detect security, fraud, and IT investigations to 3600 views of customers and supply chains, Graphistry turns the potential of your data into human insight and value.
 
@@ -90,7 +96,7 @@ With the Graphistry's GPU client/cloud technology, you can do interactive visual
 
 <b>Figure:</b> Graphistry in action
 
-### Useful links
+ Useful links
 
 * [Documentation](https://www.graphistry.com/docs)
 
@@ -98,7 +104,7 @@ With the Graphistry's GPU client/cloud technology, you can do interactive visual
 
 * [Deploy on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/graphistry.graphistry-core-2-24-9)
 
-## Graphlytic
+### Graphlytic
 
 Graphlytic is a highly customizable web application for graph visualization and analysis. Users can interactively explore the graph, look for patterns with the Gremlin language, or use filters to find answers to any graph question. Graph rendering is done with the 'Cytoscape.js' library, which allows Graphlytic to render tens of thousands of nodes and hundreds of thousands of relationships at once.
 
@@ -122,7 +128,7 @@ The basic idea behind Graphlytic is the fact that the human eye can simply disti
 
 <b>Figure:</b> Graphlytic Fraud detection use case demo
 
-### Useful links
+Useful links
 
 * [Documentation](https://graphlytic.com/doc)
 * [Free Online Demo](https://graphlytic.com/demo)
@@ -133,7 +139,7 @@ The basic idea behind Graphlytic is the fact that the human eye can simply disti
 * [Geo Map Server Integration](https://graphlytic.com/doc/latest/Geo_Map_Server_Integration.html)
 * [Single Sign-on Configuration](https://graphlytic.com/doc/latest/Single_sign-on.html)
 
-## yWorks
+### yWorks
 
 yWorks specializes in the development of professional software solutions that enable the clear visualization of graphs, diagrams, and networks. yWorks has brought together efficient data structures, complex algorithms, and advanced techniques that provide excellent user interaction on a multitude of target platforms. This allows the user to experience highly versatile and sophisticated diagram visualization in applications across many diverse areas.
 
@@ -156,20 +162,15 @@ Typical use-cases and data models include:
 * Product Lifecycle Management data
 * Bill of Material lists and Supply Chain data
 
-# Third-party data modeling tools for Azure Cosmos DB graph data
+## Modeling
 
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+This section includes a list of partner tools and services for modeling graph data in Azure Cosmos DB for Apache Gremlin.
 
-It is important to design the data model and further important to maintain. Here are set of third-party visual design tools which help in designing & maintaining the graph data model.
-
-> [!IMPORTANT] 
-> Solutions mentioned in this article are for information purpose only, the ownership lies to individual solution owner. We recommend users to do thorough evaluation and then select most suitable to you.
-
-## Hackolade
+### Hackolade
 
 Hackolade is a data modeling and schema design tool for NoSQL databases. It has a data modeling Studio, which helps in management of schemas for data-at-rest and data-in-motion.
 
-### How it works
+#### How it works
 This tool provides the data modeling of vertices / edges and their respective properties.  It supports several use cases, some of them are:
 -	Start from a blank page and think through different options to graphically build your Azure Cosmos DB Gremlin model.  Then forward-engineer the model to your Azure instance to evaluate the result and continue the evolution.  All such goodies without writing single line of code.
 -	Reverse-engineer an existing graph on Azure to clearly understand its structure, so you could effectively query your graph too.  Then enrich the data model with descriptions, metadata, and constraints to produce documentation. It supports HTML, Markdown or PDF format, and feeds to corporate data governance or dictionary systems.
@@ -178,7 +179,7 @@ This tool provides the data modeling of vertices / edges and their respective pr
 -	Collaboration and versioning using Git
 -	And much more…
 
-### Sample
+#### Sample
 
 The animation at Figure-2 provides a demonstration of reverse engineering, extraction of entities from RDBMS then Hackolade will discover relations from foreign key relationships then modifications.
 
