@@ -270,18 +270,10 @@ db.stores.aggregate([{
 ])
 ```
 
-The first five results returned by this query are:
+The first three results returned by this query are:
 
 ```json
 [
-    {
-        "_id": "Boulder Innovations",
-        "maxDiscount": 24
-    },
-    {
-        "_id": "VanArsdel, Ltd.",
-        "maxDiscount": 24
-    },
     {
         "_id": "Proseware, Inc.",
         "maxDiscount": 24
