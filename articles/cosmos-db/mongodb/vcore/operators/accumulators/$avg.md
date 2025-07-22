@@ -340,10 +340,6 @@ This query would return the following results:
 ```json
 [
     {
-        "_id": "Boulder Innovations",
-        "avgDiscount": 14.5
-    },
-    {
         "_id": "VanArsdel, Ltd.",
         "avgDiscount": 14.461538461538462
     },
