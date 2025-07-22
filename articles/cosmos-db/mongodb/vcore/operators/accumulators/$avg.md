@@ -142,7 +142,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Calculate the average sales by category
 
-To calculate the average sales across all stores within each category, first run a query to group documents within each sales category. THen, calculate the average sales across all documents within each group.
+To calculate the average sales across all stores within each category, first run a query to group documents within each sales category. Then, calculate the average sales across all documents within each group.
 
 ```javascript
 db.stores.aggregate([{
