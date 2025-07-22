@@ -145,15 +145,15 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Calculate the covariance in sales volume 
 
-To get the covariance in total sales for stores in the Boulder Innovations company, first run a query to filter on the company name, then sort the resulting documents in ascending order of the last updated timestamp, and calculate the covariance between the first and current document in the sorted result set.
+To get the covariance in total sales for stores in the First Up Consultants company, first run a query to filter on the company name, then sort the resulting documents in ascending order of the last updated timestamp, and calculate the covariance between the first and current document in the sorted result set.
 
 ```javascript
-db.stores.aggregage(
+db.stores.aggregate(
     [{
             "$match": {
                 "company": {
                     "$in": [
-                        "Boulder Innovations"
+                        "First Up Consultants"
                     ]
                 }
             }
@@ -194,29 +194,30 @@ db.stores.aggregage(
 )
 ```
 
-The first two documents returned by this query are:
+The first two results returned by this query are:
 
 ```json
-{
-    "_id": "a639bcc2-a553-4365-8298-ad21b71fe225",
-    "name": "Boulder Innovations | Computer Variety - Lake Noemie",
-    "sales": {
-        "totalSales": 18216
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "sales": {},
+        "company": "First Up Consultants",
+        "lastUpdated": "2025-06-11T10:48:01.291Z",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "covariancePopForSales": null
     },
-    "company": "Boulder Innovations",
-    "lastUpdated": "ISODate('2024-12-01T01:05:22.107Z')",
-    "covariancePopForSales": 0
-},
-{
-    "_id": "5c7932cb-b720-44a9-8b73-7e3cd95efc99",
-    "name": "Boulder Innovations | Home Decor Bazaar - Rutherfordchester",
-    "sales": {
-        "totalSales": 20383
-    },
-    "company": "Boulder Innovations",
-    "lastUpdated": "ISODate('2024-12-01T01:15:36.736Z')",
-    "covariancePopForSales": 0
-}
+    {
+        "_id": "8e7a259b-f7d6-4ec5-a521-3bed53adc587",
+        "name": "First Up Consultants | Drone Stop - Lake Joana",
+        "sales": {},
+        "company": "First Up Consultants",
+        "lastUpdated": {
+            "t": 1727827539,
+            "i": 1
+        },
+        "covariancePopForSales": null
+    }
+]
 ```
 
 ## Related content
