@@ -16,48 +16,62 @@ The Azure Cosmos DB for Apache Gremlin supports the [Gremlin TinkerPop](https://
 
 ## Count the number of vertices in the graph
 
-Count the total number of vertices in the graph. This operation is useful for understanding the size of your dataset or validating data loads.
+
+Count the total number of product vertices in the graph. This operation is useful for understanding the size of your product catalog or validating data loads.
 
 ```gremlin
-g.V().count()
+g.V().hasLabel('product').count()
 ```
 
-## Filter vertices by label and property
+## Count the number of vertices with a specific label in the graph
 
-Retrieve vertices that match a specific label and property value. This query is helpful for narrowing down results to a subset of interest, such as people over a certain age.
+Count the total number of product vertices in the graph that include a specific label. In this example, the label is `product`.
 
 ```gremlin
-g.V().hasLabel('person').has('age', gt(40))
+g.V().hasLabel('product').count()
 ```
 
-## Project specific properties from vertices
+## Filter products by label and property
 
-Return only selected properties from the matched vertices. This query reduces the amount of data returned and focuses on relevant fields, such as names.
+Retrieve products that match a specific label and property value. This query is helpful for narrowing down results to a subset of interest, such as products with a price greater than $800.
 
 ```gremlin
-g.V().hasLabel('person').values('name')
+g.V().hasLabel('product').has('price', gt(800))
 ```
 
-## Find related edges and vertices
 
-Find related entities by traversing the graph. For example, find all friends of a specific person by traversing outgoing edges and then to the connected vertices.
+## Project specific properties from products
+
+Return only selected properties from the matched products. This query reduces the amount of data returned and focuses on relevant fields, such as product names.
 
 ```gremlin
-g.V('thomas').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('product').values('name')
 ```
 
-To find friends of friends, perform two hops in the traversal:
+
+## Find related products using edges
+
+Find related products by traversing the graph. For example, find all products that replaced by a specific product by traversing outgoing 'replaces' edges and then to the connected product vertices.
 
 ```gremlin
-g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
+g.V(['gear-surf-surfboards', 'bbbbbbbb-1111-2222-3333-cccccccccccc']).outE('replaces').inV().hasLabel('product')
+```
+
+## Find distant related products using edges
+
+Use this query to find products two hops away in the replacement chain:
+
+```gremlin
+g.V(['gear-surf-surfboards', 'bbbbbbbb-1111-2222-3333-cccccccccccc']).outE('replaces').inV().hasLabel('product').outE('replaces').inV().hasLabel('product')
 ```
 
 ## Analyze query execution with execution profile
 
+
 Analyze the performance and execution details of a Gremlin query using the `executionProfile()` step. This step returns a JSON object with metrics for each step in the query, which helps with troubleshooting and optimization.
 
 ```gremlin
-g.V('mary').out().executionProfile()
+g.V(['gear-surf-surfboards', 'bbbbbbbb-1111-2222-3333-cccccccccccc']).out().executionProfile()
 ```
 
 ```json
@@ -106,8 +120,9 @@ For more information about the `executionProfile()` step, see [execution profile
 
 A blind fan-out occurs when a query accesses more partitions than necessary, often due to missing partition key predicates. This antipattern can increase latency and cost. The execution profile helps identify such patterns by showing a high `fanoutFactor`.
 
+
 ```gremlin
-g.V('tt0093640').executionProfile()
+g.V(['gear-surf-surfboards', 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb']).executionProfile()
 ```
 
 ```json
@@ -136,20 +151,22 @@ g.V('tt0093640').executionProfile()
 
 ## Optimizing fan-out queries
 
+
 A high `fanoutFactor` (such as 5) indicates the query accessed multiple partitions. To optimize, include the partition key in the query predicate:
 
 ```gremlin
-g.V('tt0093640').has('partitionKey', 't1001')
+g.V(['gear-surf-surfboards', 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb'])
 ```
 
 ## Unfiltered query pattern
 
 Unfiltered queries could process a large initial dataset, increasing cost and latency.
 
+
 Unfiltered query:
 
 ```gremlin
-g.V().hasLabel('tweet').out().executionProfile()
+g.V().hasLabel('product').out().executionProfile()
 ```
 
 ```json
@@ -192,10 +209,11 @@ g.V().hasLabel('tweet').out().executionProfile()
 
 ## Filtered query pattern
 
+
 Adding filters before traversals can reduce the working set and improve performance. The execution profile shows the effect of filtering.
 
 ```gremlin
-g.V().hasLabel('tweet').has('lang', 'en').out().executionProfile()
+g.V().hasLabel('product').has('clearance', true).out().executionProfile()
 ```
 
 ```json
