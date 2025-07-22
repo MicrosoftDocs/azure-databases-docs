@@ -1,3 +1,29 @@
 {
-  "redirections": []
+  "redirections": [
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/supply-chain-traceability-solution.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/solution-supply-chain-traceability",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/tutorial-query.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/how-to-write-queries",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/execution-profile.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/how-to-write-queries#use-execution-profile",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/visualization-partners.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/partner-tools-services#visualization",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/modeling-tools.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/partner-tools-services#modeling",
+      "redirect_document_id": false
+    }
+  ]
 }
