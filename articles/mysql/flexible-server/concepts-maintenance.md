@@ -1,8 +1,8 @@
 ---
 title: Scheduled Maintenance
 description: This article describes the scheduled maintenance feature in Azure Database for MySQL.
-author: xboxeer
-ms.author: yuzheng1
+author: SudheeshGH 
+ms.author: sunaray
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

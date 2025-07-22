@@ -1,7 +1,7 @@
 ---
 title: $gte
-titleSuffix: Overview of the $gte query operator in Azure Cosmos DB for MongoDB vCore
-description: The $gte query operator in Azure Cosmos DB for MongoDB vCore returns documents where the value of a field is greater than or equal to a specified value
+titleSuffix: Overview of the $gte operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $gte operator retrieves documents where the value of a field is greater than or equal to a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -10,18 +10,18 @@ ms.topic: language-reference
 ms.date: 02/24/2025
 ---
 
-# $gte (Comparison query)
+# $gte
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$gte` operator is used to filter documents where the value of a field is greater than or equal to a specified value. The `$gte` operator is used to retrieve documents that meet a minimum threshold for the value of a field or to find records within a range of values for the field.
+The `$gte` operator retrieves documents where the value of a field is greater than or equal to a specified value. The `$gte` operator retrieves documents that meet a minimum threshold for the value of a field.
 
 ## Syntax
 
-The syntax for using the `$gte` operator is:
-
-```mongodb
-{ "field": { "$gte": value } }
+```javascript
+{
+    field: {
+        $gte: <value>
+    }
+}
 ```
 
 ## Parameters
@@ -32,155 +32,155 @@ The syntax for using the `$gte` operator is:
 | **`value`** | The value that the field should be greater than|
 
 ## Examples
-Consider this sample document from the stores collection in the StoreData database.
+
+Consider this sample document from the stores collection.
 
 ```json
 {
-    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
-    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
-    "location": {
-        "lat": -89.2384,
-        "lon": -46.4012
-    },
-    "staff": {
-        "totalStaff": {
-            "fullTime": 8,
-            "partTime": 20
+  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+  "location": {
+    "lat": 60.1441,
+    "lon": -141.5012
+  },
+  "staff": {
+    "totalStaff": {
+      "fullTime": 2,
+      "partTime": 0
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      {
+        "categoryName": "DJ Headphones",
+        "totalSales": 35921
+      }
+    ],
+    "fullSales": 3700
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Bargain Blitz Days",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 3,
+          "Day": 11
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 2,
+          "Day": 18
         }
-    },
-    "sales": {
-        "totalSales": 75670,
-        "salesByCategory": [
-            {
-                "categoryName": "Wine Accessories",
-                "totalSales": 34440
-            },
-            {
-                "categoryName": "Bitters",
-                "totalSales": 39496
-            },
-            {
-                "categoryName": "Rum",
-                "totalSales": 1734
-            }
-        ]
-    },
-    "promotionEvents": [
+      },
+      "discounts": [
         {
-            "eventName": "Unbeatable Bargain Bash",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 23
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 7,
-                    "Day": 2
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 7
-                },
-                {
-                    "categoryName": "Bitters",
-                    "discountPercentage": 15
-                },
-                {
-                    "categoryName": "Brandy",
-                    "discountPercentage": 8
-                },
-                {
-                    "categoryName": "Sports Drinks",
-                    "discountPercentage": 22
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 19
-                }
-            ]
+          "categoryName": "DJ Turntables",
+          "discountPercentage": 18
         },
         {
-            "eventName": "Steal of a Deal Days",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 21
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 29
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Organic Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "White Wine",
-                    "discountPercentage": 20
-                },
-                {
-                    "categoryName": "Sparkling Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 17
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 23
-                }
-            ]
+          "categoryName": "DJ Mixers",
+          "discountPercentage": 15
         }
-    ]
+      ]
+    }
+  ],
+  "tag": [
+    "#ShopLocal",
+    "#SeasonalSale",
+    "#FreeShipping",
+    "#MembershipDeals"
+  ],
+  "company": "Lakeshore Retail",
+  "city": "Port Cecile",
+  "lastUpdated": {
+    "$date": "2024-12-11T10:21:58.274Z"
+  }
 }
 ```
 
-### Example 1: Retrieve all stores where the total sales is greater than or equal to $35,000
+### Example 1: Find a store with sales >= $35,000
+
+To retrieve a store with at least $35,000 in sales, first run a query using the $gte operator on the sales.totalSales field. Then project only the name of the store and its total sales and limit the result set to one document.
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$gte": 35000 } },{"name": 1, "sales.totalSales": 1}, {"limit": 1})
+db.stores.find({
+    "sales.totalSales": {
+        "$gte": 35000
+    }
+}, {
+    "name": 1,
+    "sales.totalSales": 1
+}, {
+    "limit": 1
+})
 ```
 
-This returns the following results:
+This returns the following result:
+
 ```json
-{
-    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-    "name": "First Up Consultants | Bed and Bath Center - South Amir",
-    "sales": { "totalSales": 37701 }
-}
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "sales": { "totalSales": 37701 }
+    }
+]
 ```
 
-### Example 2: Find stores with 12 or more full-time staff
+### Example 2: Find a store with 12 or more full-time staff
+
+To retrieve a store with at least 12 full time staff, first run a query with the $gte operator on the staff.totalStaff.fullTime field. Then, project only the name and full time staff count and limit the results to a single document from the result set.
 
 ```javascript
-db.stores.find({ "staff.totalStaff.fullTime": { "$gte": 12 } },{"name": 1, "staff.totalStaff.fullTime": 1}, {"limit": 1})
+db.stores.find({
+    "staff.totalStaff.fullTime": {
+        "$gte": 12
+    }
+}, {
+    "name": 1,
+    "staff.totalStaff.fullTime": 1
+}, {
+    "limit": 1
+})
 ```
 
-This returns the following results:
+This query returns the following result:
+
 ```json
-{
-    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-    "name": "First Up Consultants | Bed and Bath Center - South Amir",
-    "staff": { "totalStaff": { "fullTime": 18 } }
-}
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "staff": { "totalStaff": { "fullTime": 18 } }
+    }
+]
 ```
 
-### Example 3: Find promotion events with a discount percentage greater than or equal to 15% for Mirrors
+### Example 3: Find promotion events with a discount percentage greater than or equal to 15% for Laptops
+
+To find two stores with promotions with a discount of at least 15% for laptops, first run a query to filter stores with laptop promotions. Then use the $gte operator on the discountPercentage field. Lastly, project only the name of the store and limit the results to two documents from the result set.
+
 
 ```javascript
-db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Laptops", "discountPercentage": { "$gte": 15 } } } }, {"name": 1}, {"limit": 2})
+db.stores.find({
+    "promotionEvents.discounts": {
+        "$elemMatch": {
+            "categoryName": "Laptops",
+            "discountPercentage": {
+                "$gte": 15
+            }
+        }
+    }
+}, {
+    "name": 1
+}, {
+    "limit": 2
+})
 ```
 
 This returns the following results:
+
 ```json
 [
   {
@@ -196,6 +196,4 @@ This returns the following results:
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$gt for greater than comparisons]($gt.md)
-- [$lt for less than comparisons]($lt.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

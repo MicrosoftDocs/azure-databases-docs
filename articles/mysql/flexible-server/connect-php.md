@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect Using PHP"
 description: This quickstart provides several PHP code samples you can use to connect and query data from Azure Database for MySQL - Flexible Server.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan, randolphwest
 ms.date: 06/18/2025
 ms.service: azure-database-mysql

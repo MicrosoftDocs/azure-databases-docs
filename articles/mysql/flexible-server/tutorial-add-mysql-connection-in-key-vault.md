@@ -1,8 +1,8 @@
 ---
 title: "Tutorial: Manage Credentials in Azure Key Vault"
 description: This tutorial shows how to store and get an Azure Database for MySQL - Flexible Server connection string in Azure Key Vault.
-author: SudheeshGH
-ms.author: sunaray
+author: aditivgupta
+ms.author: adig
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
