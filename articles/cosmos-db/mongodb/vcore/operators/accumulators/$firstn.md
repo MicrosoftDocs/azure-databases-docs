@@ -151,9 +151,9 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Get first three stores by total sales
+### Example 1: Get first two stores by total sales
 
-To get the top three stores by total sales, run a query to sort all documents in descending order of sales.totalSales and return the first three documents from the sorted result set. 
+To get the top two stores by total sales, run a query to sort all documents in descending order of sales.totalSales and return the first two documents from the sorted result set. 
 
 ```javascript
 db.stores.aggregate([{
@@ -164,9 +164,9 @@ db.stores.aggregate([{
     {
         $group: {
             _id: null,
-            topThreeStores: {
+            topTwoStores: {
                 $firstN: {
-                    n: 3,
+                    n: 2,
                     input: {
                         storeId: "$_id",
                         storeName: "$name",
@@ -185,12 +185,7 @@ This query returns the following result:
 [
     {
         "_id": null,
-        "topThreeStores": [
-            {
-                "storeId": "27d12c50-ef9b-4a1e-981f-2eb46bf68c70",
-                "storeName": "Boulder Innovations | Electronics Closet - West Freddy",
-                "totalSales": 404106
-            },
+        "topTwoStores": [
             {
                 "storeId": "ffe155dd-caa2-4ac1-8ec9-0342241a84a3",
                 "storeName": "Lakeshore Retail | Electronics Stop - Vicentastad",
