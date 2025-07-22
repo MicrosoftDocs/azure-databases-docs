@@ -8,13 +8,11 @@ ai-usage: ai-generated
 
 # Sample supply chain traceability solution using Azure Cosmos DB for Gremlin
 
-This article provides an overview of the [traceability graph solution implemented by Infosys](https://azuremarketplace.microsoft.com/marketplace/apps/infosysltd.infosys-traceability-knowledge-graph?tab=Overview) in the Azure Marketplace. This solution uses Azure Cosmos DB for Apache Gremlin and other Azure services to provide a track-and-trace capability for finished goods in global supply chains.
+This article provides an overview of the [traceability graph solution implemented by Infosys](https://azuremarketplace.microsoft.com/marketplace/apps/infosysltd.infosys-traceability-knowledge-graph?tab=Overview) in Azure Marketplace.
 
-# Supply chain traceability solution overview
+This solution implements end-to-end supply chain traceability using Azure Cosmos DB for Gremlin and other Azure services. The solution enables organizations to track and trace finished goods, raw materials, and their relationships throughout the supply chain. This solution supports food safety, regulatory compliance, and rapid incident response.
 
-This article introduces a solution for implementing end-to-end supply chain traceability using Azure Cosmos DB for Gremlin and other Azure services. The solution enables organizations to track and trace finished goods, raw materials, and their relationships throughout the supply chain, supporting food safety, regulatory compliance, and rapid incident response.
-
-The solution leverages a graph database model to represent complex relationships and movements of goods, and integrates with Azure services for data ingestion, processing, analytics, and user access. This article is relevant for supply chain managers, architects, and IT professionals seeking to modernize traceability processes.
+The solution uses a graph database model to represent complex relationships and movements of goods, and integrates with Azure services for data ingestion, processing, analytics, and user access. This article is relevant for supply chain managers, architects, and IT professionals seeking to modernize traceability processes.
 
 ## Key capabilities
 
