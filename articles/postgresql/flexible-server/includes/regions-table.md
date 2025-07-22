@@ -39,6 +39,7 @@ ms.topic: include
 | Jio India West | :white_check_mark: (v3 only) | :x: | :white_check_mark: | :white_check_mark: |
 | Korea Central | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: ** | :white_check_mark: | :white_check_mark: |
 | Korea South | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
+| Malaysia West | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Mexico Central | :white_check_mark: (v3/v4 only) | :white_check_mark: $ | :white_check_mark: | :x: |
 | New Zealand North | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: | :white_check_mark: | :x: |
 | North Central US | :white_check_mark: (all SKUs) | :x: | :white_check_mark: | :white_check_mark: |

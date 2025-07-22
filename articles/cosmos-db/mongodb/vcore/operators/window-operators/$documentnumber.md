@@ -1,38 +1,28 @@
 ---
-title: $percentile
-titleSuffix: Overview of the $percentile operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $percentile operator calculates the percentile of numerical values that match a filtering criteria
-author: niklarin
-ms.author: nlarin
+title: $documentNumber
+titleSuffix: Overview of the $documentNumber operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $documentNumber operator assigns and returns a position for each document within a partition based on a specified sort order 
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 06/28/2025
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
-# $percentile
+# $documentNumber
 
-The `$percentile` operator calculates the percentile of numerical values that match a filtering criteria. This operator is particularly useful for identifying statistical thresholds, such as median or percentiles.
+The `$documentNumber` operator sorts documents on one or more fields within a partition and assigns a document number for each document in the result set.
 
 ## Syntax
 
 ```javascript
-$percentile: {
-    input: < field or expression > ,
-    p: [ < percentile values > ],
-    method: < method >
+{
+    $documentNumber: {}
 }
 ```
 
-## Parameters  
-
-| Parameter | Description |
-| --- | --- |
-| **`input`** | Specifies the numerical data to calculate the percentile from. |
-| **`p`** | An array of percentile values (between 0 and 1) to calculate. |
-| **`method`** | Specifies the interpolation method to use. Valid values are `"approximate"` and `"continuous"`. |
-
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -146,72 +136,65 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the 50th percentile of sales volume
+### Example 1 - Retrieve a document number by total sales
 
-The following example calculates the 50th percentile (median) of total sales volume within each sales category across all stores.
-
-```javascript
-db.stores.aggregate([{
-        $unwind: "$sales.salesByCategory"
-    },
-    {
-        $group: {
-            _id: null,
-            medianSales: {
-                $percentile: {
-                    input: "$sales.salesByCategory.totalSales",
-                    p: [0.5],
-                    method: "approximate"
-                }
-            }
-        }
-    }
-])
-```
-
-This query returns the following results:
-
-```json
-[
-    {
-        "_id": null,
-        "medianSales": [
-            25070.449624139295
-        ]
-    }
-]
-```
-
-### Example 2: Calculate multiple percentiles
-
-This example calculates the 25th, 50th, and 75th percentiles of the total sales across all stores.
+To retrieve a document number (positional ranking) for each store under the First Up Consultants company, first run a query to filter on the company name, then sort the results in ascending order of total sales, and assign a document number to each of the documents in the sorted result set.
 
 ```javascript
 db.stores.aggregate([{
-    $group: {
-        _id: null,
-        percentiles: {
-            $percentile: {
-                input: "$sales.fullSales",
-                p: [0.25, 0.5, 0.75],
-                method: "approximate"
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
+        }
+    }
+}, {
+    "$setWindowFields": {
+        "partitionBy": "$company",
+        "sortBy": {
+            "sales.totalSales": -1
+        },
+        "output": {
+            "documentNumber": {
+                "$documentNumber": {}
             }
         }
+    }
+}, {
+    "$project": {
+        "company": 1,
+        "documentNumber": 1
     }
 }])
 ```
 
-This query returns the following results:
+The first 5 results returned by this query are:
 
 ```json
 [
     {
-        "_id": null,
-        "percentiles": [
-            3700,
-            3700,
-            3700
-        ]
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "company": "First Up Consultants",
+        "documentNumber": 1
+    },
+    {
+        "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+        "company": "First Up Consultants",
+        "documentNumber": 2
+    },
+    {
+        "_id": "62438f5f-0c56-4a21-8c6c-6bfa479494ad",
+        "company": "First Up Consultants",
+        "documentNumber": 3
+    },
+    {
+        "_id": "bfb213fa-8db8-419f-8e5b-e7096120bad2",
+        "company": "First Up Consultants",
+        "documentNumber": 4
+    },
+    {
+        "_id": "14ab145b-0819-4d22-9e02-9ae0725fcda9",
+        "company": "First Up Consultants",
+        "documentNumber": 5
     }
 ]
 ```

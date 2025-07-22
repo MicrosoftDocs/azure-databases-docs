@@ -1,38 +1,34 @@
 ---
-title: $percentile
-titleSuffix: Overview of the $percentile operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $percentile operator calculates the percentile of numerical values that match a filtering criteria
-author: niklarin
-ms.author: nlarin
+title: $stddevsamp
+titleSuffix: Overview of the $stddevsamp operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $stddevsamp operator calculates the standard deviation of a specified sample of values and not the entire population
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 06/28/2025
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
-# $percentile
+# $stddevsamp
 
-The `$percentile` operator calculates the percentile of numerical values that match a filtering criteria. This operator is particularly useful for identifying statistical thresholds, such as median or percentiles.
+The `$stddevsamp` operator calculates the standard deviation by taking a specified sample of the values of a field. The standard deviation is calculated by taking a random sample of the specified size. If a precise standard deviation is needed, $stdDevPop must be used instead.
 
 ## Syntax
 
 ```javascript
-$percentile: {
-    input: < field or expression > ,
-    p: [ < percentile values > ],
-    method: < method >
+{
+  $stddevsamp: {fieldName}
 }
 ```
 
-## Parameters  
+## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`input`** | Specifies the numerical data to calculate the percentile from. |
-| **`p`** | An array of percentile values (between 0 and 1) to calculate. |
-| **`method`** | Specifies the interpolation method to use. Valid values are `"approximate"` and `"continuous"`. |
+| **`fieldName`** | The field whose values are used to calculate the standard deviation of the specified sample size|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -146,56 +142,24 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the 50th percentile of sales volume
+### Example 1 - Calculate the standard deviation of total sales
 
-The following example calculates the 50th percentile (median) of total sales volume within each sales category across all stores.
-
-```javascript
-db.stores.aggregate([{
-        $unwind: "$sales.salesByCategory"
-    },
-    {
-        $group: {
-            _id: null,
-            medianSales: {
-                $percentile: {
-                    input: "$sales.salesByCategory.totalSales",
-                    p: [0.5],
-                    method: "approximate"
-                }
-            }
-        }
-    }
-])
-```
-
-This query returns the following results:
-
-```json
-[
-    {
-        "_id": null,
-        "medianSales": [
-            25070.449624139295
-        ]
-    }
-]
-```
-
-### Example 2: Calculate multiple percentiles
-
-This example calculates the 25th, 50th, and 75th percentiles of the total sales across all stores.
+This query calculates the standard deviation of total sales across stores in the "Fourth Coffee" company by taking a random sample of 10 documents matching the filtering criteria.
 
 ```javascript
 db.stores.aggregate([{
-    $group: {
-        _id: null,
-        percentiles: {
-            $percentile: {
-                input: "$sales.fullSales",
-                p: [0.25, 0.5, 0.75],
-                method: "approximate"
-            }
+    "$match": {
+        "company": "Fourth Coffee"
+    }
+}, {
+    "$sample": {
+        "size": 10
+    }
+}, {
+    "$group": {
+        "_id": "$company",
+        "stdDev": {
+            "$stdDevSamp": "$sales.totalSales"
         }
     }
 }])
@@ -204,16 +168,10 @@ db.stores.aggregate([{
 This query returns the following results:
 
 ```json
-[
-    {
-        "_id": null,
-        "percentiles": [
-            3700,
-            3700,
-            3700
-        ]
-    }
-]
+{
+    "_id": "Fourth Coffee",
+    "stdDev": 22040.044055209048
+}
 ```
 
 ## Related content
