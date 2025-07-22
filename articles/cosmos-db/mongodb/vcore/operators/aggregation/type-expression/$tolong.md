@@ -225,4 +225,4 @@ This table delineates the expected behavior of the $toLong operator based on the
 
 ## Related content
 
-[!INCLUDE[Related content](../includes/related-content.md)]
+[!INCLUDE[Related content](../../includes/related-content.md)]
