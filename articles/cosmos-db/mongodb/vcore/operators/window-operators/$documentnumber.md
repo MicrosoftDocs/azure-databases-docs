@@ -138,13 +138,13 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Retrieve a document number by total sales
 
-To retrieve a document number (positional ranking) for each store under the Boulder Innovations company, first run a query to filter on the company name, then sort the results in ascending order of total sales, and assign a document number to each of the documents in the sorted result set.
+To retrieve a document number (positional ranking) for each store under the First Up Consultants company, first run a query to filter on the company name, then sort the results in ascending order of total sales, and assign a document number to each of the documents in the sorted result set.
 
 ```javascript
 db.stores.aggregate([{
     "$match": {
         "company": {
-            "$in": ["Boulder Innovations"]
+            "$in": ["First Up Consultants"]
         }
     }
 }, {
@@ -167,35 +167,35 @@ db.stores.aggregate([{
 }])
 ```
 
-The first 5 documents in the response are:
+The first 5 results returned by this query are:
 
 ```json
 [
-{
-    "_id": "27d12c50-ef9b-4a1e-981f-2eb46bf68c70",
-    "company": "Boulder Innovations",
-    "documentNumber": 1
-},
-{
-    "_id": "4276b045-2488-4fea-86d4-c055097ccd62",
-    "company": "Boulder Innovations",
-    "documentNumber": 2
-},
-{
-    "_id": "8c72f697-314f-4cda-a0d2-873164e5e590",
-    "company": "Boulder Innovations",
-    "documentNumber": 3
-},
-{
-    "_id": "98e5d149-1823-48c5-aa9b-52513cb2ef00",
-    "company": "Boulder Innovations",
-    "documentNumber": 4
-},
-{
-    "_id": "1259ee1c-be37-4a7d-82d1-20532cbecbdf",
-    "company": "Boulder Innovations",
-    "documentNumber": 5
-}
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "company": "First Up Consultants",
+        "documentNumber": 1
+    },
+    {
+        "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+        "company": "First Up Consultants",
+        "documentNumber": 2
+    },
+    {
+        "_id": "62438f5f-0c56-4a21-8c6c-6bfa479494ad",
+        "company": "First Up Consultants",
+        "documentNumber": 3
+    },
+    {
+        "_id": "bfb213fa-8db8-419f-8e5b-e7096120bad2",
+        "company": "First Up Consultants",
+        "documentNumber": 4
+    },
+    {
+        "_id": "14ab145b-0819-4d22-9e02-9ae0725fcda9",
+        "company": "First Up Consultants",
+        "documentNumber": 5
+    }
 ]
 ```
 
