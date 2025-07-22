@@ -12,7 +12,7 @@ ms.date: 05/20/2025
 
 # $documentNumber
 
-The `$documentNumber` operator sorts documents on one more fields within a partition and assigns a document number for each document in the result set.
+The `$documentNumber` operator sorts documents on one or more fields within a partition and assigns a document number for each document in the result set.
 
 ## Syntax
 
