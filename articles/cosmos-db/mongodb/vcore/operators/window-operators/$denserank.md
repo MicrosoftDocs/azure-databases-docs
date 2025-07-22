@@ -12,7 +12,7 @@ ms.date: 05/20/2025
 
 # $denseRank
 
-The `$denseRank` operator sorts documents on one more fields within a partition and assigns a ranking for each document relative to other documents in the result set.
+The `$denseRank` operator sorts documents on one or more fields within a partition and assigns a ranking for each document relative to other documents in the result set.
 
 ## Syntax
 
