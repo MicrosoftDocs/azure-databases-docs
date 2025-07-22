@@ -138,13 +138,13 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Retrieve a document rank for each store
 
-To calculate a document rank for each store under the Boulder Innovations company, first run a query to filter on the company, then sort the resulting documents in descending order of sales and assign a document rank to each document in the sorted result set. 
+To calculate a document rank for each store under the First Up Consultants company, first run a query to filter on the company, then sort the resulting documents in descending order of sales and assign a document rank to each document in the sorted result set. 
 
 ```javascript
 db.stores.aggregate([{
     "$match": {
         "company": {
-            "$in": ["Boulder Innovations"]
+            "$in": ["First Up Consultants"]
         }
     }
 }, {
@@ -168,50 +168,50 @@ db.stores.aggregate([{
 }])
 ```
 
-The first 5 documents in the response are:
+The first five results returned by this query are:
 
 ```json
 [
-{
-    "_id": "27d12c50-ef9b-4a1e-981f-2eb46bf68c70",
-    "sales": {
-        "totalSales": 404106
+    {
+        "_id": "a0386810-b6f8-4b05-9d60-e536fb2b0026",
+        "sales": {
+            "revenue": 327583
+        },
+        "company": "First Up Consultants",
+        "denseRank": 1
     },
-    "company": "Boulder Innovations",
-    "denseRank": 1
-},
-{
-    "_id": "4276b045-2488-4fea-86d4-c055097ccd62",
-    "sales": {
-        "totalSales": 327029
+    {
+        "_id": "ad8af64a-d5bb-4162-9bb6-e5104126566d",
+        "sales": {
+            "revenue": 288582
+        },
+        "company": "First Up Consultants",
+        "denseRank": 2
     },
-    "company": "Boulder Innovations",
-    "denseRank": 2
-},
-{
-    "_id": "8c72f697-314f-4cda-a0d2-873164e5e590",
-    "sales": {
-        "totalSales": 317530
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "sales": {
+            "revenue": 279183
+        },
+        "company": "First Up Consultants",
+        "denseRank": 3
     },
-    "company": "Boulder Innovations",
-    "denseRank": 3
-},
-{
-    "_id": "98e5d149-1823-48c5-aa9b-52513cb2ef00",
-    "sales": {
-        "totalSales": 304747
+    {
+        "_id": "cd3d3782-17d1-451e-8b0f-4f10a68a8db7",
+        "sales": {
+            "revenue": 271604
+        },
+        "company": "First Up Consultants",
+        "denseRank": 4
     },
-    "company": "Boulder Innovations",
-    "denseRank": 4
-},
-{
-    "_id": "1259ee1c-be37-4a7d-82d1-20532cbecbdf",
-    "sales": {
-        "totalSales": 288303
-    },
-    "company": "Boulder Innovations",
-    "denseRank": 5
-}
+    {
+        "_id": "63ac4722-fc87-4526-a5e0-b5767d2807f7",
+        "sales": {
+            "revenue": 260409
+        },
+        "company": "First Up Consultants",
+        "denseRank": 5
+    }
 ]
 ```
 
