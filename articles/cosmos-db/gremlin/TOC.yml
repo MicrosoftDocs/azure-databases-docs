@@ -10,9 +10,9 @@
     - name: FAQ
       href: faq.yml
     - name: Security
-      href: support.md
+      href: security.md
     - name: Limits
-      href: support.md
+      href: limits.md
 - name: Connect from applications
   items:
     - name: Python
@@ -40,7 +40,6 @@
           href: /samples/azure/azure-quickstart-templates/cosmosdb-gremlin-autoscale/
         - name: Reference
           href: /azure/templates/microsoft.documentdb/databaseaccounts/gremlindatabases
-      href: support.md
     - name: Azure CLI
       expanded: true
       items:
@@ -63,8 +62,8 @@
 - name: Troubleshoot issues
   items:
     - name: Issues with advanced diagnostics queries
-      href: support.md
+      href: diagnostic-queries.md
     - name: Response headers
-      href: support.md
+      href: headers.md
     - name: System document properties
-      href: support.md
+      href: access-system-properties.md
