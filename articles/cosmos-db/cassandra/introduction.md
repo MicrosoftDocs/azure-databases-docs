@@ -16,7 +16,9 @@ appliesto:
 
 # What is Azure Cosmos DB for Apache Cassandra?
 
-Azure Cosmos DB is a fully managed NoSQL and relational database for modern app development.
+Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
+
+<!-- COPILOT: Don't edit above this line -->
 
 You can use Azure Cosmos DB for Apache Cassandra as the data store for apps written for [Apache Cassandra](https://cassandra.apache.org). This compatibility means that by using existing [Apache drivers](https://cassandra.apache.org/doc/stable/cassandra/getting-started/drivers.html) compliant with CQLv4, your existing Cassandra application can now communicate with the API for Cassandra. 
 
@@ -47,9 +49,13 @@ The API for Cassandra also has the benefits of being built on Azure Cosmos DB:
 
 - **Event Sourcing**: The API for Cassandra provides access to a persistent change log, the [Change Feed](change-feed.md). The change feed can facilitate event sourcing directly from the database. In Apache Cassandra, change data capture (CDC) is the only equivalent feature. CDC is merely a mechanism to flag specific tables for archival and rejecting writes to those tables once a configurable size-on-disk for the CDC log is reached. These capabilities are redundant in Azure Cosmos DB as the relevant aspects are automatically governed.
 
+<!-- COPILOT: Don't edit below this line -->
+
 ## Azure Managed Instance for Apache Cassandra
 
-For some customers, adapting to API for Cassandra can be a challenge due to differences in behavior or configuration, especially for lift-and-shift migrations. [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md) is a first-party Azure service for hosting and maintaining pure open-source Apache Cassandra clusters with 100% compatibility.
+For some workloads, adapting to Azure Cosmos DB for Cassandra can be a challenge due to differences in behavior or configuration from the native platform. This is especially true for lift-and-shift migrations. Azure Managed Instance for Apache Cassandra is a first-party Azure service for hosting and maintaining pure open-source Apache Cassandra clusters with full native platform compatibility.
+
+For more information, see [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md)
 
 ## Next step
 

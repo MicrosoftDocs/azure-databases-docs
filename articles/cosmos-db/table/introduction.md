@@ -16,7 +16,9 @@ appliesto:
 
 # What is Azure Cosmos DB for Table?
 
-Azure Cosmos DB is a fully managed NoSQL and relational database for modern app development.
+Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
+
+<!-- COPILOT: Don't edit above this line -->
 
 Azure Cosmos DB for Table provides applications written for Azure Table storage with premium capabilities like:
 
@@ -47,6 +49,8 @@ If you currently use Azure Table Storage, you gain the following benefits by mov
 | **Consistency** | Strong within primary region. Eventual within secondary region. | [Five well-defined consistency levels](../consistency-levels.md) to trade off availability, latency, throughput, and consistency based on your application needs. |
 | **Pricing** | Consumption-based. | Available in both [consumption-based](../serverless.md) and [provisioned capacity](../set-throughput.md) modes. |
 | **SLAs** | 99.9% to 99.99% availability, depending on the replication strategy. | 99.999% read availability, 99.99% write availability on a single-region account and 99.999% write availability on multi-region accounts. [Comprehensive SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/) covering availability, latency, throughput and consistency. |
+
+<!-- COPILOT: Don't edit below this line -->
 
 ## Next step
 
