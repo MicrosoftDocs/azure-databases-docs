@@ -17,7 +17,7 @@ landingContent:
             url: overview.md
       - linkListType: concept
         links:
-          - text: Wire protocol compatibility with TinkerPop
+          - text: Protocol compatibility
             url: support.md
           - text: Frequently asked questions (FAQ)
             url: faq.yml
