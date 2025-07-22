@@ -23,14 +23,42 @@
       href: quickstart-nodejs.md?pivots=programming-language-js
     - name: .NET
       href: quickstart-dotnet.md
-- name: Explore samples
+- name: Perform common tasks
   items:
-    - name: Sample supply chain traceability solution
+    - name: how-to-measure-request-unit-charge.md
+- name: Explore samples and automation
+  items:
+    - name: Supply chain traceability solution
+      href: sample-supply-chain-traceability.md
+    - name: Azure Resource Manager/Bicep
+      expanded: true
+      items:
+        - name: Deploy an account
+          href: /samples/azure/azure-quickstart-templates/cosmosdb-gremlin/
+        - name: Deploy an account with autoscale
+          href: /samples/azure/azure-quickstart-templates/cosmosdb-gremlin-autoscale/
+        - name: Reference
+          href: /azure/templates/microsoft.documentdb/databaseaccounts/gremlindatabases
       href: support.md
-    - name: Azure PowerShell scripts
-      href: support.md
-    - name: Azure CLI scripts
-      href: support.md
+    - name: Azure CLI
+      expanded: true
+      items:
+        - name: Sample scripts
+          href: https://github.com/azure-samples/azure-cli-samples/tree/master/cosmosdb/gremlin
+        - name: Reference
+          href: /cli/azure/cosmosdb/gremlin
+    - name: Azure PowerShell
+      expanded: true
+      items:
+        - name: Sample scripts
+          href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin
+        - name: Reference
+          href: /powershell/module/az.cosmosdb/
+    - name: Azure Resource Graph
+      expanded: true
+      items:
+        - name: Sample query
+          href: /azure/governance/resource-graph/samples/samples-by-category#azure-cosmos-db
 - name: Troubleshoot issues
   items:
     - name: Issues with advanced diagnostics queries

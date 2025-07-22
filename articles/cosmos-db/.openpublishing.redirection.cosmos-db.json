@@ -6704,6 +6704,16 @@
       "source_path_from_root": "/articles/cosmos-db/cassandra/manage-data-go.md",
       "redirect_url": "/azure/cosmos-db/cassandra/quickstart-go",
       "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/supply-chain-traceability-solution.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/sample-supply-chain-traceability",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/find-request-unit-charge.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/how-to-measure-request-unit-charge.md",
+      "redirect_document_id": true
     }
   ]
 }
