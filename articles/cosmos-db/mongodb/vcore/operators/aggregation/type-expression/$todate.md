@@ -179,4 +179,4 @@ The query converts the following result:
 
 ## Related content
 
-[!INCLUDE[Related content](../includes/related-content.md)]
+[!INCLUDE[Related content](../../includes/related-content.md)]
