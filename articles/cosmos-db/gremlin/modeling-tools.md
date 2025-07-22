@@ -45,10 +45,3 @@ The following image demonstrates reverse engineering from RDBMS & Hackolade in a
 :::image type="content" source="./media/modeling-tools/cosmos-db-gremlin-hackolade.gif" alt-text="Hackolade in action":::
 
 **Figure-2:** Hackolade in action (demonstrating SQL to Gremlin data model conversion)
-### Useful links 
--	[Download a 14-day free trial](https://hackolade.com/download.html)
--  [Get more data models](https://hackolade.com/samplemodels.html#cosmosdb).
--  [Documentation of Hackolade](https://hackolade.com/help/CosmosDBGremlin.html)
-
-## Next steps
-- [Visualizing the data](./visualization-partners.md)
