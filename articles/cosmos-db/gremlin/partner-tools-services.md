@@ -53,7 +53,7 @@ For more information, see [Graphistry documentation](https://www.graphistry.com/
 
 ### Grapһlytic
 
-:::image type="icon" source="media/partner-tools-services/grapһlytic.png":::
+:::image type="icon" source="media/partner-tools-services/graphlytic.png":::
 
 Grapһlytic is a customizable web application for graph visualization and analysis, supporting Azure Cosmos DB for Gremlin. It enables users to explore, filter, and analyze large graphs interactively, with support for Gremlin queries and advanced rendering using Cytoscape.js. The platform is easily deployable on Azure and can be tailored to specific visualization needs.
 
