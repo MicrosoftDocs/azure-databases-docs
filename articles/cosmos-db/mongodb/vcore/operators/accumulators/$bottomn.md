@@ -155,13 +155,13 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Find the bottom two stores by total sales
 
-To determine the two stores in the Boulder Innovations company with the lowest sales, run a query to retrieve stores within the "Boulder Innovations" company, sort the resulting documents in descending order of total sales and return the last two documents from the sorted result set.
+To determine the two stores in the First Up Consultants company with the lowest sales, run a query to retrieve stores within the "First Up Consultants" company, sort the resulting documents in descending order of total sales and return the last two documents from the sorted result set.
 
 ```javascript
 db.stores.aggregate([{
     "$match": {
         "company": {
-            "$in": ["Boulder Innovations"]
+            "$in": ["First Up Consultants"]
         }
     }
 }, {
@@ -185,30 +185,30 @@ This query produces the following output:
 ```json
 [
   {
-    "_id": "Boulder Innovations",
+    "_id": "First Up Consultants",
     "bottomSales": [
         [
-            "Boulder Innovations",
+            "First Up Consultants",
             {
                 "salesByCategory": [
                     {
-                        "categoryName": "Yoga Mats",
-                        "totalSales": 119
+                        "categoryName": "Skirts",
+                        "totalSales": 109
                     }
                 ],
-                "revenue": 119
+                "revenue": 109
             }
         ],
         [
-            "Boulder Innovations",
+            "First Up Consultants",
             {
                 "salesByCategory": [
                     {
-                        "categoryName": "Portable Turntables",
-                        "totalSales": 162
+                        "categoryName": "Mirrors",
+                        "totalSales": 120
                     }
                 ],
-                "revenue": 162
+                "revenue": 120
             }
         ]
     ]
@@ -259,36 +259,21 @@ db.stores.aggregate([{
 }])
 ```
 
-The first two results returned by this query are:
+The first result returned by this query is:
 
 ```json
 [
     {
-        "_id": "86e9df70-b5ae-4078-856e-d5b8c6e3ecb7",
-        "storeName": "Boulder Innovations | Health Food Boutique - Clementinabury",
-        "categoryCount": 2,
+        "_id": "64ec6589-068a-44a6-be5b-9d37bb0a90f1",
+        "storeName": "First Up Consultants | Computer Gallery - West Cathrine",
+        "categoryCount": 8,
         "bottomTwoCategories": [
             {
-                "categoryName": "Herbal Teas",
+                "categoryName": "Gaming Controllers",
                 "totalSales": null
             },
             {
-                "categoryName": "Protein Bars",
-                "totalSales": null
-            }
-        ]
-    },
-    {
-        "_id": "9bb70b69-2f26-41cf-90c9-2c42c7023dad",
-        "storeName": "Lakeshore Retail | Home Office Corner - New Bartholome",
-        "categoryCount": 2,
-        "bottomTwoCategories": [
-            {
-                "categoryName": "Desk Lamps",
-                "totalSales": null
-            },
-            {
-                "categoryName": "Office Accessories",
+                "categoryName": "Network Adapters",
                 "totalSales": null
             }
         ]
