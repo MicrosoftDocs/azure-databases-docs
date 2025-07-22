@@ -9,6 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: overview
 ms.date: 07/22/2025
+ai-usage: ai-generated
 appliesto:
   - ✅ MongoDB
 ---
@@ -76,9 +77,6 @@ Cosmos DB for MongoDB implements the wire protocol for MongoDB. This implementat
 > [!IMPORTANT]
 > This article describes a feature of Azure Cosmos DB that provides wire protocol compatibility with MongoDB databases. Microsoft doesn't run MongoDB databases to provide this service. Azure Cosmos DB isn't affiliated with MongoDB, Inc.
 
-## Next steps
+## Next step
 
-- [Frequently asked questions on Azure Cosmos DB for MongoDB in RU architecture](faq.yml)
-- [Quickstart: Create an Azure Cosmos DB for MongoDB vCore cluster](./vcore/quickstart-portal.md)
-- [Connect a MongoDB application to Azure Cosmos DB](connect-account.yml)
-- [Azure Cosmos DB pricing & discounts with Reserved Capacity](../reserved-capacity.md)
+- [Start using Azure Cosmos DB for MongoDB](quickstart-nodejs.md)

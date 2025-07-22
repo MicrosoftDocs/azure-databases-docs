@@ -9,6 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: overview
 ms.date: 07/22/2025
+ai-usage: ai-generated
 appliesto:
   - ✅ Table
 ---
@@ -47,9 +48,6 @@ If you currently use Azure Table Storage, you gain the following benefits by mov
 | **Pricing** | Consumption-based. | Available in both [consumption-based](../serverless.md) and [provisioned capacity](../set-throughput.md) modes. |
 | **SLAs** | 99.9% to 99.99% availability, depending on the replication strategy. | 99.999% read availability, 99.99% write availability on a single-region account and 99.999% write availability on multi-region accounts. [Comprehensive SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/) covering availability, latency, throughput and consistency. |
 
-## Next steps
+## Next step
 
-- [Query table data by using the API for Table](tutorial-query.md)
-- [Learn how to set up Azure Cosmos DB global distribution by using the API for Table](tutorial-global-distribution.md)
-- [Azure Cosmos DB Table .NET SDK](/dotnet/api/overview/azure/data.tables-readme)
-- Receive up to 63% discount on [Azure Cosmos DB prices with Reserved Capacity](../reserved-capacity.md)
+- [Start using Azure Cosmos DB for Table](quickstart-dotnet.md)

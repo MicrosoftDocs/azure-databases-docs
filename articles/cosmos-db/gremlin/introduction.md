@@ -9,6 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: overview
 ms.date: 07/22/2025
+ai-usage: ai-generated
 appliesto:
   - ✅ Apache Gremlin
 ---
@@ -151,9 +152,6 @@ g.V('thomas.1').
   by(count())
 ```
 
-## Next steps
+## Next step
 
-- [Quickstart: Azure Cosmos DB for Apache Gremlin library for .NET](quickstart-dotnet.md)
-- [Tutorial: Query Azure Cosmos DB for Gremlin by using Gremlin](tutorial-query.md)
-- [Graph data modeling with Azure Cosmos DB for Apache Gremlin](modeling.md)
-- [Azure Cosmos DB pricing & discounts with Reserved Capacity](../reserved-capacity.md)
+- [Start using Azure Cosmos DB for Apache Gremlin](quickstart-python.md)
