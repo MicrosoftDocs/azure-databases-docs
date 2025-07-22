@@ -30,7 +30,7 @@
 - name: Explore samples and automation
   items:
     - name: Supply chain traceability solution
-      href: sample-supply-chain-traceability.md
+      href: solution-supply-chain-traceability.md
     - name: Azure Resource Manager/Bicep
       expanded: true
       items:

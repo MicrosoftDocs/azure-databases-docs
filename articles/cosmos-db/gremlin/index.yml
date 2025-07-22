@@ -48,7 +48,7 @@ landingContent:
       - linkListType: sample
         links:
           - text: Supply chain traceability solution
-            url: sample-supply-chain-traceability.md
+            url: solution-supply-chain-traceability.md
   - title: Resources
     linkLists:
       - linkListType: reference
