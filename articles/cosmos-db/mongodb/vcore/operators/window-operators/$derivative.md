@@ -12,7 +12,7 @@ ms.date: 05/20/2025
 
 # $derivative
 
-The `$derivative` operator sorts documents on one more fields within a partition and calculates the average rate of change of a field between the first and last documents within the window.
+The `$derivative` operator sorts documents on one or more fields within a partition and calculates the average rate of change of a field between the first and last documents within the window.
 
 ## Syntax
 
