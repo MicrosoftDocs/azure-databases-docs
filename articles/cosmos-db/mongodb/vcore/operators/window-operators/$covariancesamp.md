@@ -143,17 +143,17 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1 - Calculate the covariance sample between an unbounded starting document and the current document for stores in the Boulder Innovations company 
+### Example 1 - Calculate the covariance sample between an unbounded starting document and the current document
 
-To calculate the covariance sample for stores in the Boulder Innovations company, first run a query to filter on the company, then sort the resulting stores in ascending order of their opening dates, and calculate the covariance of the sales of the sorted result set.
+To calculate the covariance sample for stores in the First Up Consultants company, first run a query to filter on the company, then sort the resulting stores in ascending order of their opening dates, and calculate the covariance of the sales of the sorted result set.
 
 ```javascript
-db.stores.aggregage(
+db.stores.aggregate(
 [{
       "$match": {
           "company": {
               "$in": [
-                  "Boulder Innovations"
+                  "First Up Consultants"
               ]
           },
         "$and": [
@@ -164,7 +164,7 @@ db.stores.aggregage(
             },
             {
                 "storeOpeningDate": {
-                    "$lt": ISODate("2024-09-30T03:55:17.557Z")
+                    "$lt": ISODate("2025-09-30T03:55:17.557Z")
                 }
             }
         ]
@@ -206,27 +206,31 @@ db.stores.aggregage(
 )
 ```
 
-The first 2 documents in the response are:
+The first two results returned by this query are:
 
 ```json
-[{
-    "_id": "5c7932cb-b720-44a9-8b73-7e3cd95efc99",
-    "name": "Boulder Innovations | Home Decor Bazaar - Rutherfordchester",
-    "sales": {
-        "totalSales": 20383
+[
+    {
+        "_id": "2d315043-db26-4d18-8bb7-71ba922f00a0",
+        "name": "First Up Consultants | Furniture Shoppe - Wymantown",
+        "sales": {
+            "revenue": 38042
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2024-09-02T02:00:52.592Z",
+        "covarianceSampForSales": 935.0972222222222
     },
-    "company": "Boulder Innovations",
-    "lastUpdated": "ISODate('2024-12-01T01:15:36.736Z')",
-    "covarianceSampForSales": 0
-},
-{
-    "_id": "be1e76e0-3ccf-43d3-b6eb-9e352860575a",
-    "name": "Boulder Innovations | Book Shoppe - Wolffside",
-    "sales": { "totalSales": 48540 },
-    "company": "Boulder Innovations",
-    "storeOpeningDate": ISODate('2024-09-02T02:05:26.540Z'),
-    "covarianceSampForSales": 2120.3
-}]
+    {
+        "_id": "416adb8c-7d65-40e5-af88-8659c71194ce",
+        "name": "First Up Consultants | Picture Frame Bazaar - South Lysanneborough",
+        "sales": {
+            "revenue": 37157
+        },
+        "company": "First Up Consultants",
+        "storeOpeningDate": "2024-09-02T02:39:50.269Z",
+        "covarianceSampForSales": 1901.1777777777777
+    }
+]
 ```
 
 ## Related content
