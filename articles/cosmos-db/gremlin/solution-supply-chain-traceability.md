@@ -29,7 +29,7 @@ The solution uses a graph database model to represent complex relationships and 
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Account with sample data](includes/prerequisites-account-sample-data.md)]\
+[!INCLUDE[Prerequisites - Account with sample data](includes/prerequisites-account-sample-data.md)]
 
 - Familiarity with supply chain processes and data
 

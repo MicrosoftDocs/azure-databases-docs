@@ -12,7 +12,7 @@ The Azure Cosmos DB for Apache Gremlin supports the [Gremlin TinkerPop](https://
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Account with sample data](includes/prerequisites-account-sample-data.md)]\
+[!INCLUDE[Prerequisites - Account with sample data](includes/prerequisites-account-sample-data.md)]
 
 ## Count the number of vertices in the graph
 
