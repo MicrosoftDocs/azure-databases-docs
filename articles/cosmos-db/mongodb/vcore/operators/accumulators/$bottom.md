@@ -12,7 +12,7 @@
 
 # $bottom
 
-The `$bottom` operator sorts documents on one more fields specified by the query and returns the last document matching the filtering criteria.
+The `$bottom` operator sorts documents on one or more fields specified by the query and returns the last document matching the filtering criteria.
 
 ## Syntax
 
