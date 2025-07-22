@@ -12,7 +12,7 @@
 
 # $push
 
-The `$push` operator is used to add a specified value to an array within a document. The $push operator adds new elements to an existing array without affecting other elements in the array. It
+The `$push` operator is used to add a specified value to an array within a document. The $push operator adds new elements to an existing array without affecting other elements in the array.
 
 ## Syntax
 
