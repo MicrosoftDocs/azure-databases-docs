@@ -11,7 +11,7 @@
 - name: Overview
   items:
   - name: What is Azure Cosmos DB for MongoDB (RU)?
-    href: ru/introduction.md
+    href: overview.md
   - name: API versions
     items:
     - name: API version 7.0
