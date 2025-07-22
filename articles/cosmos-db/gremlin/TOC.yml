@@ -6,44 +6,44 @@
     - name: What is Azure Cosmos DB for Apache Gremlin?
       href: introduction.md
     - name: Compatibility
-      href: about:blank
+      href: support.md
     - name: FAQ
       href: faq.yml
-- name: Get started
-  items:
-    - name: Use with a Python app
-      href: quickstart-python.md
-    - name: Use with a TypeScript app
-      href: quickstart-nodejs.md?pivots=programming-language-ts
-    - name: Use with a JavaScript app
-      href: quickstart-nodejs.md?pivots=programming-language-js
-    - name: Use with a .NET app
-      href: quickstart-dotnet.md
-- name: Create secure solutions
-  items:
     - name: Security
-      href: about:blank
+      href: support.md
+    - name: Limits
+      href: support.md
+- name: Connect from applications
+  items:
+    - name: Python
+      href: quickstart-python.md
+    - name: TypeScript
+      href: quickstart-nodejs.md?pivots=programming-language-ts
+    - name: JavaScript
+      href: quickstart-nodejs.md?pivots=programming-language-js
+    - name: .NET
+      href: quickstart-dotnet.md
 - name: Tune performance and cost
   items:
     - name: Model data for graph
-      href: about:blank
+      href: support.md
     - name: Design partitions
-      href: about:blank
+      href: support.md
     - name: Optimize costs
-      href: about:blank
+      href: support.md
 - name: Explore samples
   items:
     - name: Sample supply chain traceability solution
-      href: about:blank
+      href: support.md
     - name: Azure PowerShell scripts
-      href: about:blank
+      href: support.md
     - name: Azure CLI scripts
-      href: about:blank
+      href: support.md
 - name: Troubleshoot issues
   items:
     - name: Issues with advanced diagnostics queries
-      href: about:blank
+      href: support.md
     - name: Response headers
-      href: about:blank
+      href: support.md
     - name: System document properties
-      href: about:blank
+      href: support.md
