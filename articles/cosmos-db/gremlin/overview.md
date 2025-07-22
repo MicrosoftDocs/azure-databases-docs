@@ -10,8 +10,6 @@ ms.subservice: apache-gremlin
 ms.topic: overview
 ms.date: 07/22/2025
 ai-usage: ai-generated
-appliesto:
-  - ✅ Apache Gremlin
 ---
 
 # What is Azure Cosmos DB for Apache Gremlin?
