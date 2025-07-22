@@ -1,7 +1,7 @@
 ---
 title: $isNumber
-titleSuffix: Overview of the $isNumber operator in Azure Cosmos DB for MongoDB vCore
-description: The $isNumber operator in Azure Cosmos DB for MongoDB vCore checks if a specified expression is a numerical type
+titleSuffix: Overview of the $isNumber operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $isNumber operator checks if a specified expression is a numerical type
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -12,16 +12,14 @@ ms.date: 02/24/2025
 
 # $isNumber
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$isNumber` operator returns true if the input expression is a number type - Decimal, Long, Int or Double. The `$isNumber` operator returns false for an expression of any other type. 
+The `$isNumber` operator returns true if the input expression is a numerical type. The `$isNumber` operator returns false for an expression of any other type. 
 
 ## Syntax
 
-The syntax for the `$isNumber` operator is:
-
-```mongodb
-{ "$isNumber": <expression> }
+```javascript
+{
+    $isNumber: < expression >
+}
 ```
 
 ## Parameters
@@ -32,7 +30,7 @@ The syntax for the `$isNumber` operator is:
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -146,6 +144,8 @@ Consider this sample document from the stores collection in the StoreData databa
 
 ### Example 1: Check if a Double value is a number
 
+To verify if the value of the latitude field is numeric, run a query using the $isNumber operator to validate that the double value of the field is a number.
+
 ```javascript
 db.stores.aggregate([
 {
@@ -174,6 +174,8 @@ This query returns the following result:
 ```
 
 ### Example 2: Check if an Int value is a number
+
+To verify if the value of the totalSales field is numeric, run a query using the $isNumber operator to validate that the double value of the field is a number.
 
 ```javascript
 db.stores.aggregate([
@@ -204,6 +206,8 @@ This query returns the following result:
 
 ### Example 3: Check if a string is a number
 
+To verify if the value of the _id field is numeric, run a query using the $isNumber operator to validate that the string value of the field is not a number.
+
 ```javascript
 db.stores.aggregate([
 {
@@ -231,5 +235,4 @@ This query returns the following result:
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$type to determine the BSON type of a value]($type.md)
+[!INCLUDE[Related content](../includes/related-content.md)]
