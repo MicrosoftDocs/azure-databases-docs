@@ -192,35 +192,37 @@ db.stores.aggregate([{
 This query returns the following results.
 
 ```json
-[{
-    "_id": "Fourth Coffee | Outdoor Equipment Collection - Kochview",
-    "stdDev": 0
-},
-{
-    "_id": "Fourth Coffee | Grocery Hub - Brakusborough",
-    "stdDev": 0
-},
-{
-    "_id": "Fourth Coffee | Pet Supply Nook - Lake Armanimouth",
-    "stdDev": 0
-},
-{
-    "_id": "Fourth Coffee | Beauty Product Nook - Emmytown",
-    "stdDev": 0
-},
-{
-    "_id": "Fourth Coffee | Bed and Bath Closet - Legroston",
-    "stdDev": 0
-},
-{
-    "_id": "Fourth Coffee | Automotive Part Collection - Cassinport",
-    "stdDev": 0
-}]
+[
+  {
+      "_id": "Fourth Coffee | Outdoor Equipment Collection - Kochview",
+      "stdDev": 0
+  },
+  {
+      "_id": "Fourth Coffee | Grocery Hub - Brakusborough",
+      "stdDev": 0
+  },
+  {
+      "_id": "Fourth Coffee | Pet Supply Nook - Lake Armanimouth",
+      "stdDev": 0
+  },
+  {
+      "_id": "Fourth Coffee | Beauty Product Nook - Emmytown",
+      "stdDev": 0
+  },
+  {
+      "_id": "Fourth Coffee | Bed and Bath Closet - Legroston",
+      "stdDev": 0
+  },
+  {
+      "_id": "Fourth Coffee | Automotive Part Collection - Cassinport",
+      "stdDev": 0
+  }
+]
 ```
 
 ### Example 3 - Calculate the standard deviation for a field when using window operators 
 
-This query calculates the standard deviation of total sales for stores belonging to the "Boulder Innovations" company from the first to the current document in the result set.
+This query calculates the standard deviation of total sales for stores belonging to the "First Up Consultants" company from the first to the current document in the result set.
 
 ```javascript
 db.stores.aggregate(
@@ -228,7 +230,7 @@ db.stores.aggregate(
             "$match": {
                 "company": {
                     "$in": [
-                        "Boulder Innovations"
+                        "First Up Consultants"
                     ]
                 },
                 "$and": [{
@@ -238,7 +240,7 @@ db.stores.aggregate(
                     },
                     {
                         "lastUpdated": {
-                            "$lt": ISODate("2024-09-30T03:55:17.557Z")
+                            "$lt": ISODate("2025-09-30T03:55:17.557Z")
                         }
                     }
                 ]
@@ -276,34 +278,21 @@ db.stores.aggregate(
 )
 ```
 
-The first three documents returned by this query are:
+This query returns the following result:
 
 ```json
-{
-    "_id": "a639bcc2-a553-4365-8298-ad21b71fe225",
-    "name": "Boulder Innovations | Computer Variety - Lake Noemie",
-    "sales": {"totalSales": 18216},
-    "company": "Boulder Innovations",
-    "storeOpeningDate": ISODate('2024-09-02T01:05:22.107Z'),
-    "stdDevPopTotalSales": 0
-  },
-  {
-    "_id": "5c7932cb-b720-44a9-8b73-7e3cd95efc99",
-    "name": "Boulder Innovations | Home Decor Bazaar - Rutherfordchester",
-    "sales": {"totalSales": 20383},
-    "company": 'Boulder Innovations',
-    "storeOpeningDate": ISODate('2024-09-02T01:15:36.736Z'),
-    "stdDevPopTotalSales": 1083.5
-  },
-  {
-    "_id": "f54dfadb-bc62-42ff-912b-a281950019d6",
-    "name": "Boulder Innovations | Smart TV Depot - Lake Lonnyborough",
-    "sales": { "totalSales": 43648 },
-    "company": "Boulder Innovations",
-    "storeOpeningDate": ISODate('2024-09-02T01:28:42.683Z'),
-    "stdDevPopTotalSales": 11512.035914159098
-  }
-
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "sales": {},
+        "company": "First Up Consultants",
+        "lastUpdated": {
+            "$date": "2025-06-11T10:48:01.291Z"
+        },
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "stdDevPopTotalSales": null
+    }
+]
 ```
 
 ## Related content
