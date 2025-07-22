@@ -336,7 +336,7 @@ db.stores.aggregate([{
 ])
 ```
 
-This query return the following results:
+This query returns the following result:
 
 ```json
 [
