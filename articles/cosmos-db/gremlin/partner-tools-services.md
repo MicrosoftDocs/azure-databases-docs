@@ -12,7 +12,7 @@ Azure Cosmos DB for Apache Gremlin is a fully managed graph database service tha
 This article lists partners who have solutions or services that use Azure Cosmos DB for Apache Gremlin.
 
 > [!IMPORTANT] 
-> This list changes over time, Microsoft is not responsible to any changes or updates made to the solutions of these partners.
+> This list changes over time, Microsoft isn't responsible to any changes or updates made to the solutions of these partners.
 
 ## Visualization
 
@@ -61,7 +61,7 @@ These toolkits let you design high-performance graph visualization and analysis 
 
 [Tom Sawyer Perspectives](https://www.tomsawyer.com/perspectives/) is a robust platform for building enterprise grade graph data visualization and analysis applications. It is a low-code graph & data visualization development platform, which includes integrated design, preview interface, and extensive API libraries. The platform integrates enterprise data sources with powerful graph visualization, layout, and analysis technology to solve big data problems.
 
-Perspectives enables developers to quickly develop production-quality, data-oriented visualization applications. Two graphic modules, the "Designer" and the "Previewer" are used to build applications to visualize and analyze the specific data that drives each project. When used together, the Designer and Previewer provide an efficient round-trip process that dramatically speeds up application development. To visualize Azure Cosmos DB for Gremlin data using this platform, request a [free 60-day evaluation](https://www.tomsawyer.com/get-started) of this tool. 
+Perspectives enable developers to quickly develop production-quality, data-oriented visualization applications. Two graphic modules, the "Designer" and the "Previewer" are used to build applications to visualize and analyze the specific data that drives each project. When used together, the Designer and Previewer provide an efficient round-trip process that dramatically speeds up application development. To visualize Azure Cosmos DB for Gremlin data using this platform, request a [free 60-day evaluation](https://www.tomsawyer.com/get-started) of this tool. 
 
 :::image type="content" source="./media/visualization-partners/tom-sawyer/tom-sawyer-perspective.gif" alt-text="Tom Sawyer Perspectives demo" border="false":::
 
@@ -69,7 +69,7 @@ Perspectives enables developers to quickly develop production-quality, data-orie
 
 [Tom Sawyer Graph Database Browser](https://www.tomsawyer.com/graph-database-browser/) makes it easy to visualize and analyze data in Azure Cosmos DB for Gremlin. The Graph Database Browser helps you see and understand connections in your data without extensive knowledge of the query language or the schema. You can manually define the schema for your project or use schema extraction to create it. So, even less technical users can interact with the data by loading the neighbors of selected nodes and building the visualization in whatever direction they need. Advanced users can execute queries using Gremlin, Cypher, or SPARQL to gain other insights. When you define the schema then you can load the Azure Cosmos DB data into the Perspectives model. With the help of integrator definition, you can specify the location and configuration for the Gremlin endpoint. Later you can bind elements from the Azure Cosmos DB data source to elements in the Perspectives model and visualize your data.
 
-Users of all skill levels can take advantage of five unique graph layouts to display the graph in a way that provides the most meaning. And there are built-in centrality, clustering, and path-finding analyses to reveal previously unseen patterns. Using these techniques, organizations can identify critical patterns in areas like fraud detection, customer intelligence, and cybersecurity. Pattern recognition is very important for network analysts in areas such as general IT and network management, logistics, legacy system migration, and business transformation. Try a live demo of Tom Sawyer Graph Database Browser. 
+Users of all skill levels can take advantage of five unique graph layouts to display the graph in a way that provides the most meaning. And there are built-in centrality, clustering, and path-finding analyses to reveal previously unseen patterns. Using these techniques, organizations can identify critical patterns in areas like fraud detection, customer intelligence, and cybersecurity. Pattern recognition is important for network analysts in areas such as general IT and network management, logistics, legacy system migration, and business transformation. Try a live demo of Tom Sawyer Graph Database Browser. 
 
 :::image type="content" source="./media/visualization-partners/tom-sawyer/tom-sawyer-databrowser.gif" alt-text="Tom Sawyer Data browser demo" border="false":::
 
@@ -84,7 +84,7 @@ Users of all skill levels can take advantage of five unique graph layouts to dis
 
 ### Graphistry
 
-Graphistry automatically transforms your data into interactive, visual investigation maps built for the needs of analysts. It can quickly surface relationships between events and entities without having to write queries or wrangle data. You can harness your data without worrying about scale. You can detect security, fraud, and IT investigations to 3600 views of customers and supply chains, Graphistry turns the potential of your data into human insight and value.
+Graphistry automatically transforms your data into interactive, visual investigation maps built for the needs of analysts. It can quickly surface relationships between events and entities without having to write queries or wrangle data. You can harness your data without worrying about scale. You can detect security, fraud, and IT investigations to 3,600 views of customers and supply chains, Graphistry turns the potential of your data into human insight and value.
 
 :::image type="content" source="./media/visualization-partners/graphistry/graphistry-demo.png" alt-text="Graphistry snapshot" border="false":::
 
@@ -114,15 +114,15 @@ The following are two example scenarios:
 
 * **IT Management use case**
 Companies running their IT operations on their own infrastructure, Telco, or IP providers, all need a solid network documentation and a functional configuration management. Impact analyses describing interdependencies among network elements (active and passive) are being developed to overcome blackouts, which cause significant financial losses, or even single outages causing no or low availability of service. Bottlenecks and single points of failure are determined and solved. Endpoint as well as route redundancies are being implemented.
-Graphlytic property graph visualization is a perfect enabler for all above mentioned points - network documentation, network configuration management, impact analysis and asset management. It stores and depicts all relevant network configuration information in one place, bringing a completely new added value to IT managers and field technicians.
+Graphlytic property graph visualization is a perfect enabler for all above mentioned points - network documentation, network configuration management, impact analysis, and asset management. It stores and depicts all relevant network configuration information in one place, bringing a new added value to IT managers and field technicians.
 
   :::image type="content" source="./media/visualization-partners/graphlytic/it-management.gif" alt-text="Graphlytic IT Management use case demo" :::
 
 <b>Figure:</b> Graphlytic IT management use case
 
 * **Anti-fraud use case**
-Fraud pattern is a well-known term to every single insurance company, bank or e-commerce enterprise. Modern fraudsters build sophisticated fraud rings and schemes that are hard to unveil with traditional tools. It can cause serious losses if not detected properly and on time. On the other hand, traditional red flag systems with too strict criteria must be adjusted to eliminate false positive indicators, as it would lead to overwhelming fraud indications. Great amounts of time are spent trying to detect complex fraud, paralyzing investigators in their daily tasks.
-The basic idea behind Graphlytic is the fact that the human eye can simply distinguish and find any pattern in a graphical form much easier than in any table or data set. It means that the antifraud analyst can capture fraud schemes within graph visualization more easily, faster and smarter than with solely traditional tools.
+Fraud pattern is a well-known term to every single insurance company, bank, or e-commerce enterprise. Modern fraudsters build sophisticated fraud rings and schemes that are hard to unveil with traditional tools. It can cause serious losses if not detected properly and on time. On the other hand, traditional red flag systems with too strict criteria must be adjusted to eliminate false positive indicators, as it would lead to overwhelming fraud indications. Great amounts of time are spent trying to detect complex fraud, paralyzing investigators in their daily tasks.
+The basic idea behind Graphlytic is the fact that the human eye can simply distinguish and find any pattern in a graphical form easier than in any table or data set. It means that the antifraud analyst can capture fraud schemes within graph visualization more easily, faster and smarter than with solely traditional tools.
 
   :::image type="content" source="./media/visualization-partners/graphlytic/antifraud.gif" alt-text="Graphlytic Fraud detection use case demo":::
 
