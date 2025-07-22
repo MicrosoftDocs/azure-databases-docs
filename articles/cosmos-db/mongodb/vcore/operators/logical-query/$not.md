@@ -1,6 +1,6 @@
 ---
-title: $not (Logical Query) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $not
+titleSuffix: Overview of the $not operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $not operator performs a logical NOT operation on a specified expression, selecting documents that do not match the expression.
 author: suvishodcitus
 ms.author: suvishod
@@ -10,197 +10,240 @@ ms.topic: language-reference
 ms.date: 02/12/2025
 ---
 
-# $not (logical query)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $not
 
 The `$not` operator performs a logical NOT operation on a specified expression and selects documents that do not match the expression.
 
 ## Syntax
 
 ```javascript
-{ field: { $not: { <operator-expression> } } }
+{
+    field: {
+        $not: {
+            < operator - expression >
+        }
+    }
+}
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `operator-expression` | Expression | The expression to negate |
+| Parameter | Description |
+|-----------|-------------|
+| `operator-expression` | The expression to negate |
 
 ## Examples
 
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
 ### Example 1: Basic NOT operation
 
-Find stores that don't have exactly 5 full-time staff:
+To find stores with either less than or more than 5 full time staff, run a query using the $not operator on the fullTime staff count. Then, project only the name and staff fields from the stores in the result set.
 
 ```javascript
-db.stores.find({
-  "staff.totalStaff.fullTime": {
-    $not: { $eq: 5 }
-  }
-})
+ db.stores.find({
+     "staff.totalStaff.fullTime": {
+         $not: {
+             $eq: 5
+         }
+     }
+ }, {
+     "name": 1,
+     "staff": 1
+ })
 ```
 
-Output:
+The first two results returned by this query are:
 
-```javascript
-      {
-        eventName: 'Unbeatable Bargain Bash',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 6, Day: 23 },
-          endDate: { Year: 2024, Month: 7, Day: 2 }
-        },
-        discounts: [
-          { categoryName: 'Cabinets', discountPercentage: 8 },
-          { categoryName: 'Desks', discountPercentage: 22 }
-        ]
-      }
-```
-
-### Example 2: NOT with regular expression
-
-Find stores whose names don't start with "First Up":
-
-```javascript
-db.stores.find({
-  name: {
-    $not: /^First Up/
-  }
-})
-```
-
-Output:
-
-```javascript
-  {
-    _id: 'cac30620-fd99-4ee2-8329-c87980ab2b24',
-    name: 'Contoso, Ltd. | Handbag Bargains - South Jovanny',
-    location: { lat: 19.6816, lon: 18.6237 },
-    staff: { totalStaff: { fullTime: 10, partTime: 19 } },
-    sales: {
-      totalSales: 56878,
-      salesByCategory: [
-        { categoryName: 'Mini Bags', totalSales: 20543 },
-        { categoryName: 'Satchels', totalSales: 36335 }
-      ]
+```json
+[
+    {
+        "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+        "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+        "staff": {
+            "totalStaff": {
+                "fullTime": 9,
+                "partTime": 18
+            }
+        }
     },
-    promotionEvents: [
-      {
-        eventName: 'Price Slash Carnival',
-        promotionalDates: {
-          startDate: { Year: 2023, Month: 6, Day: 29 },
-          endDate: { Year: 2023, Month: 7, Day: 8 }
-        },
-        discounts: [
-          { categoryName: 'Messenger Bags', discountPercentage: 9 },
-          { categoryName: 'Shoulder Bags', discountPercentage: 8 }
-        ]
-      },
-      {
-        eventName: 'Major Bargain Bash',
-        promotionalDates: {
-          startDate: { Year: 2023, Month: 9, Day: 27 },
-          endDate: { Year: 2023, Month: 10, Day: 5 }
-        },
-        discounts: [
-          { categoryName: 'Hobo Bags', discountPercentage: 15 },
-          { categoryName: 'Messenger Bags', discountPercentage: 9 }
-        ]
-      },
-      {
-        eventName: 'Unbeatable Bargain Bash',
-        promotionalDates: {
-          startDate: { Year: 2023, Month: 12, Day: 26 },
-          endDate: { Year: 2024, Month: 1, Day: 4 }
-        },
-        discounts: [
-          { categoryName: 'Bucket Bags', discountPercentage: 22 },
-          { categoryName: 'Shoulder Bags', discountPercentage: 10 }
-        ]
-      },
-      {
-        eventName: 'Big Bargain Blitz',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 3, Day: 25 },
-          endDate: { Year: 2024, Month: 4, Day: 1 }
-        },
-        discounts: [
-          { categoryName: 'Crossbody Bags', discountPercentage: 25 },
-          { categoryName: 'Backpacks', discountPercentage: 19 }
-        ]
-      },
-      {
-        eventName: 'Clearance Carnival',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 6, Day: 23 },
-          endDate: { Year: 2024, Month: 6, Day: 30 }
-        },
-        discounts: [
-          { categoryName: 'Bucket Bags', discountPercentage: 8 },
-          { categoryName: 'Mini Bags', discountPercentage: 16 }
-        ]
-      },
-      {
-        eventName: 'Blowout Bargain Bash',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 9, Day: 21 },
-          endDate: { Year: 2024, Month: 9, Day: 29 }
-        },
-        discounts: [
-          { categoryName: 'Hobo Bags', discountPercentage: 23 },
-          { categoryName: 'Clutches', discountPercentage: 8 }
-        ]
-      }
-    ]
-  }
+    {
+        "_id": "923d2228-6a28-4856-ac9d-77c39eaf1800",
+        "name": "Lakeshore Retail | Home Decor Hub - Franciscoton",
+        "staff": {
+            "totalStaff": {
+                "fullTime": 7,
+                "partTime": 6
+            }
+        }
+    }
+]
 ```
-### Example 3: Complex NOT operation
 
-Find stores that don't have any promotional events with exactly 20% discount:
+### Example 2: Complex NOT operation
+
+To find stores without promotional events with 20% discounts, run a query with the $not operator on the discountPercentage field. Then project only the name and promotionEvents fields from the stores in the result set.
 
 ```javascript
 db.stores.find({
-  "promotionEvents.discounts.discountPercentage": {
-    $not: { $eq: 20 }
-  }
+    "promotionEvents.discounts.discountPercentage": {
+        $not: {
+            $eq: 20
+        }
+    }
+}, {
+    "name": 1,
+    "promotionEvents": 1
 })
 ```
 
-Output:
+The first document returned by this query is:
 
-```javascript
-  {
-    _id: 'f25b56da-2789-42f2-b844-3c88c7384307',
-    name: 'Fourth Coffee | Home Decor Corner - Kavonshire',
-    location: { lat: -82.8806, lon: 125.2905 },
-    staff: { totalStaff: { fullTime: 19, partTime: 14 } },
-    sales: {
-      totalSales: 6485,
-      salesByCategory: [ { categoryName: 'Picture Frames', totalSales: 6485 } ]
-    },
-    promotionEvents: [
-      {
-        eventName: 'Crazy Discount Days',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 9, Day: 21 },
-          endDate: { Year: 2024, Month: 10, Day: 1 }
-        },
-        discounts: [
-          { categoryName: 'Mirrors', discountPercentage: 21 },
-          { categoryName: 'Vases', discountPercentage: 15 }
+```json
+[
+    {
+        "_id": "70032165-fded-47b4-84a3-8d9c18a4d1e7",
+        "name": "Northwind Traders | Picture Frame Bazaar - Lake Joesph",
+        "promotionEvents": [
+            {
+                "eventName": "Super Saver Fiesta",
+                "promotionalDates": {
+                    "startDate": {
+                        "Year": 2024,
+                        "Month": 9,
+                        "Day": 21
+                    },
+                    "endDate": {
+                        "Year": 2024,
+                        "Month": 10,
+                        "Day": 1
+                    }
+                },
+                "discounts": [
+                    {
+                        "categoryName": "Picture Hanging Supplies",
+                        "discountPercentage": 13
+                    },
+                    {
+                        "categoryName": "Shadow Boxes",
+                        "discountPercentage": 9
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  }..
+    }
+]
 ```
-
-## Limitations
-
-   - `$not` only accepts a single expression
-   - Cannot directly contain another logical operator
-
-
 
 ## Related content
 
