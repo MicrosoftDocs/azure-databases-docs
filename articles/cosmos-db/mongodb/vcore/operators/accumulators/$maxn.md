@@ -12,7 +12,7 @@ ms.date: 01/05/2025
 
 # $maxN
 
-The `$maxN` operator is used to retrieve the top N values for a field based on a specified filtering critieria. 
+The `$maxN` operator is used to retrieve the top N values for a field based on a specified filtering criteria. 
 
 ## Syntax
 
