@@ -12,7 +12,7 @@
 
 # $topN
 
-The `$topN` operator sorts documents on one more fields specified by the query and returns the first N documents matching the filtering criteria. It extends the functionality of `$top` by allowing you to retrieve multiple top elements instead of just the single highest-ranked item.
+The `$topN` operator sorts documents on one or more fields specified by the query and returns the first N documents matching the filtering criteria. It extends the functionality of `$top` by allowing you to retrieve multiple top elements instead of just the single highest-ranked item.
 
 ## Syntax
 
@@ -153,7 +153,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Get the two stores with the lowest total sales
 
-To get the two lowest stores by sales within the Boulder Innovations company, run a query to filter on the company name, sort the resulting documents in asecending order of sales and return the top two documents from the sorted result set.
+To get the two lowest stores by sales within the Boulder Innovations company, run a query to filter on the company name, sort the resulting documents in ascending order of sales and return the top two documents from the sorted result set.
 
 ```javascript
 db.stores.aggregate([{
