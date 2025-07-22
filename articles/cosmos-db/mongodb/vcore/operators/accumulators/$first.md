@@ -12,7 +12,7 @@
 
 # $first
 
-The $first operator sorts documents on one more fields specified by the query and returns the first document matching the filtering criteria. If no sorting order is specified, the order is undefined.
+The $first operator sorts documents on one or more fields specified by the query and returns the first document matching the filtering criteria. If no sorting order is specified, the order is undefined.
 
 ## Syntax
 
