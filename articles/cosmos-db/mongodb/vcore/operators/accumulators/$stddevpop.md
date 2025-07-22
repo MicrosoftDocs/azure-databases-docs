@@ -218,7 +218,7 @@ This query returns the following results.
 }]
 ```
 
-### Example 3 - Calculate the standard deviation for a field when using window operators. 
+### Example 3 - Calculate the standard deviation for a field when using window operators 
 
 This query calculates the standard deviation of total sales for stores belonging to the "Boulder Innovations" company from the first to the current document in the result set.
 
