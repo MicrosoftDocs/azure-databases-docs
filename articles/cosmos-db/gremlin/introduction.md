@@ -16,9 +16,9 @@ appliesto:
 
 # What is Azure Cosmos DB for Apache Gremlin?
 
-Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
+Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it's ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
 
-Azure Cosmos DB for Apache Gremlin is a fully managed graph database service that enables you to store, query, and traverse large-scale graph data using the Gremlin query language. Built on the open-source Apache TinkerPop framework, this API is designed for applications that need to model and analyze complex relationships between data points, such as social networks, recommendation engines, and connected devices.
+Azure Cosmos DB for Apache Gremlin is a fully managed graph database service that enables you to store, query, and traverse large-scale graph data using the Gremlin query language. This API is built on the open-source Apache TinkerPop framework and is designed for applications that need to model and analyze complex relationships between data points. This API is designed for solutions such as social networks, recommendation engines, and connected devices.
 
 ## Data
 
@@ -32,11 +32,11 @@ Every Azure Cosmos DB compatibility API offers a robust set of features to help 
 
 - **Elastic scalability**: Seamlessly scale storage and throughput to handle graphs with billions of vertices and edges. Data is automatically partitioned and distributed for high performance.
 
-- **Global distribution**: Replicate your graph data across any Azure region to provide low-latency access and high availability for users worldwide.
+- **Global distribution**: Provides low-latency access and high availability for users worldwide by replicating your graph data across any Azure region.
 
 - **Automatic indexing**: All properties on vertices and edges are indexed by default, enabling fast and flexible queries without manual index management.
 
-- **Open-source compatibility**: Built on Apache TinkerPop, the API supports the Gremlin query language and integrates with a wide ecosystem of tools and libraries.
+- **Open-source compatibility**: The API is built on Apache TinkerPop, supports the Gremlin query language, and integrates with a wide ecosystem of tools and libraries.
 
 - **Tunable consistency levels**: Choose from five well-defined consistency levels to balance performance, availability, and data consistency for your application needs.
 
@@ -48,14 +48,14 @@ The API for Gremlin is ideal for scenarios where relationships between data poin
 
 - **Social networks and customer 360**: Model and analyze connections between people, their interests, and interactions to deliver personalized experiences and insights.
 
-- **Recommendation engines**: Combine information about users, products, and behaviors to generate real-time, personalized recommendations.
+- **Recommendation engines**: Deliver real-time, personalized recommendations by combining information about users, products, and behaviors.
 
 - **Geospatial and logistics**: Find optimal routes, analyze proximity, and manage networks of locations or assets for applications in transportation, logistics, and travel.
 
-- **Internet of Things (IoT)**: Represent and monitor networks of devices, sensors, and their interactions to gain insights into system health and dependencies.
+- **Internet of Things (IoT)**: Gain insights into system health and dependencies by representing and monitoring networks of devices, sensors, and their interactions.
 
 > [!IMPORTANT]
-> This introduction reviews various features of Azure Cosmos DB for Apache Gremlin that provides wire protocol compatibility with the Apache TinkerPop specification. Some features may differ from Apache Tinkerpop. For more information, see [compatibility with Apache TinkerPop](support.md).
+> This introduction reviews various features of Azure Cosmos DB for Apache Gremlin that provides wire protocol compatibility with the Apache TinkerPop specification. Some features might differ from Apache TinkerPop. For more information, see [compatibility with Apache TinkerPop](support.md).
 
 ## Next step
 
