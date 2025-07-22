@@ -4,7 +4,7 @@ description: This article describes the scheduled maintenance feature in Azure D
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 07/15/2025
+ms.date: 07/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -71,7 +71,7 @@ If a PostgreSQL server is stopped during scheduled maintenance, the maintenance 
 
 Customers might notice a slight increase in restart time (5-8 minutes) when pending maintenance is applied, particularly during manual restarts.
 
-Note: This functionality is currently rolled out in East Asia and will soon be available in other regions.
+Note: This functionality is currently rolled out in East Asia, West US3, North Central US, West Central US and will soon be available in other regions.
 
 ## Related content
 
