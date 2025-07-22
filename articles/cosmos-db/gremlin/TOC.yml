@@ -3,7 +3,7 @@
 - name: Overview
   items:
   - name: What is Azure Cosmos DB for Apache Gremlin?
-    href: introduction.md
+    href: overview.md
   - name: Wire protocol support
     href: support.md
   - name: FAQ
