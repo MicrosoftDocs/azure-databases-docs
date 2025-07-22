@@ -2,7 +2,7 @@
 title: Query Graph Data
 description: Perform common graph data queries and supplement those queries with the execution step using Azure Cosmos DB for Apache Gremlin.
 ms.topic: how-to
-ms.date: 07/22/2025
+ms.date: 07/23/2025
 ---
 
 # Query Graph Data in Azure Cosmos DB for Apache Gremlin

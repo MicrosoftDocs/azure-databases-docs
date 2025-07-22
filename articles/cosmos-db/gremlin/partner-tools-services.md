@@ -2,7 +2,7 @@
 title: Partner tools and services
 description: Integrate graph data in Azure Cosmos DB for Apache Gremlin with different third-party tools and solutions for scenarios like visualization.
 ms.topic: partner-tools
-ms.date: 07/22/2025
+ms.date: 07/23/2025
 ---
 
 # Azure Cosmos DB for Apache Gremlin partner tools and services
