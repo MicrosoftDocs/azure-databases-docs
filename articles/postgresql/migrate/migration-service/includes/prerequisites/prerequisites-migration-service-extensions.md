@@ -4,7 +4,7 @@ description: Get prerequisite information for enabling extensions for the migrat
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 07/16/2025
+ms.date: 07/21/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
