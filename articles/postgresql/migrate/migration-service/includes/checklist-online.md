@@ -1,5 +1,5 @@
 ---
-title: "Checklist (online)"
+title: "Checklist (Online)"
 description: Checklist (online).
 author: apduvuri
 ms.author: adityaduvuri

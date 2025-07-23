@@ -1,5 +1,5 @@
 ---
-title: "Prerequisites Using the Migration Service From an Azure VM or an On-Premises PostgreSQL Server (Online)"
+title: "Prerequisites Using the Migration Service From an Azure VM or an on-premise PostgreSQL Server (Online)"
 description: Providing the online prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
@@ -47,7 +47,7 @@ When migrating across PostgreSQL versions (major or minor), ensure compatibility
 - In the source PostgreSQL instance, set the following parameters and values in the postgresql.conf configuration file:
     - Set `wal_level` to `logical`.
     - Set `max_replication_slots` to a value greater than 1. Should be greater than the number of databases selected for migration.
-    - Set `max_wal_senders` to a value greater than 1. Should be set to, at least, the same valuae as `max_replication_slots`, plus the number of senders already used by your instance.
+    - Set `max_wal_senders` to a value greater than 1. Should be set to, at least, the same value as `max_replication_slots`, plus the number of senders already used by your instance.
     - `wal_sender_timeout` parameter terminates replication connections that are inactive longer than the specified number of milliseconds. Default for an on-premises PostgreSQL database is 60000 milliseconds (60 seconds). Setting the value to 0 (zero) disables the timeout mechanism, and is a recommended value for migration.
 
 To prevent the online migration from running out of space, ensure that you have sufficient tablespace space, by using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` on the flexible server for the duration of the migration, and restore it to the original state after the migration.

@@ -46,8 +46,8 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 - `test_decoding` logical decoding plugin captures the changed records from the source.
 - To ensure the migration user has the necessary replication privileges, execute the following SQL command:
 
-```bash
-Alter user <<username>> with REPLICATION;
+```sql
+ALTER USER <user> WITH REPLICATION;
 ```
 - Go to the Google Cloud SQL PostgreSQL instance in the Google Cloud Console, select the instance name to open its details page, select the Edit button, and in the Flags section, modify the following flags:
 

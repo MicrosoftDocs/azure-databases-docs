@@ -1,5 +1,5 @@
 ---
-title: "Prerequisites Using the Migration Service From AWS RDS PostgreSQL (Online)"
+title: "Prerequisites Using The Migration Service From Aws Rds Postgresql (Online)"
 description: Providing the online prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri

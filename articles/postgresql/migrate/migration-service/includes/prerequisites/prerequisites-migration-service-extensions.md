@@ -1,5 +1,5 @@
 ---
-title: "Prerequisites for the Migration Service: Enable Extensions"
+title: "Prerequisites For The Migration Service: Enable Extensions"
 description: Get prerequisite information for enabling extensions for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri

@@ -1,5 +1,5 @@
 ---
-title: "Networking Scenarios for the Migration Service"
+title: "Networking Scenarios For The Migration Service"
 titleSuffix: Azure Database for PostgreSQL flexible server
 description: Learn about network scenarios for connecting supported source environments with Azure Database for PostgreSQL flexible server.
 author: apduvuri

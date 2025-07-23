@@ -1,5 +1,5 @@
 ---
-title: "Migrate offline, from an Azure VM or an on-premises PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure"
+title: "Migrate Offline, From An Azure Vm Or An On-Premises Postgresql To Azure Database For Postgresql, Using The Migration Service In Azure"
 description: "Learn to migrate, seamlessly and in offline mode, from an Azure VM or an on-premises PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri
@@ -77,13 +77,13 @@ To learn more about the premigration validation, visit [premigration](concepts-p
 
 Select **Next: Runtime server**.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-offline/setup-migration.png" alt-text="Screenshot of the Setup tab after providing necessary details.":::
+:::image type="content" source="media/tutorial-migration-service-iaas-offline/setup-migration.png" alt-text="Screenshot of the Setup tab after providing necessary details." lightbox="media/tutorial-migration-service-iaas-offline/setup-migration.png":::
 
 #### Runtime server
 
 The migration runtime server is a specialized feature within the [migration service in Azure Database for PostgreSQL](concepts-migration-service-postgresql.md), designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server, but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
-:::image type="content" source="media/tutorial-migration-service/runtime-server-migration.png" alt-text="Screenshot of the Runtime server tab.":::
+:::image type="content" source="media/tutorial-migration-service/runtime-server-migration.png" alt-text="Screenshot of the Runtime server tab." lightbox="media/tutorial-migration-service/runtime-server-migration.png":::
 
 For more information about the runtime server, visit [Migration runtime server](concepts-migration-service-runtime-server.md).
 
@@ -93,27 +93,27 @@ The **Source server** tab prompts you to give details related to the source sele
 
 - **Server name** - Provide the name of the host or the IP address of the source PostgreSQL server.
 - **Port** - Port number of the source server.
-- **Admininistrator login** - Name of the administrator user of the source PostgreSQL server.
+- **Administrator login** - Name of the administrator user of the source PostgreSQL server.
 - **Password** - Password of the administrator login provided to connect to source PostgreSQL server.
 - **SSL mode** - Supported values are `preferred` and `required`. When the SSL at the source PostgreSQL server is `OFF`, use `prefer`. If the SSL at the source server is `ON`, use the `require`. SSL values can be determined in postgresql.conf file of the source server.
 - **Test connection** — Performs the connectivity test between the target and source. Once the connection is successful, you can proceed to the next tab. These test aims to identify any connectivity issues that might exist between the target and source servers, including verification of authentication using the credentials supplied. Establishing a test connection takes a few seconds.
 
 After the successful test connection, select **Next: Target server**.
 
-:::image type="content" source="media/tutorial-migration-service/source-server-migration.png" alt-text="Screenshot of Source server migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/source-server-migration.png" alt-text="Screenshot of Source server migration tab." lightbox="media/tutorial-migration-service/source-server-migration.png":::
 
 #### Target server
 
 The **Target server** tab displays metadata for the flexible server target, such as the subscription name, resource group, server name, location, and PostgreSQL version.
 
-- **Admininistrator login** - Name of the administrator user of the target PostgreSQL server.
+- **Administrator login** - Name of the administrator user of the target PostgreSQL server.
 - **Password** - Password of the administrator login provided to connect to target PostgreSQL server.
 - **Custom FQDN or IP address**: The custom FQDN or IP address field is optional, and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `production-flexible-server.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `production-flexible-server.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test connection** — Performs the connectivity test between the source and target. Once the connection is successful, you can proceed to the next tab. These test aims to identify any connectivity issues that might exist between the source and target servers, including verification of authentication using the credentials supplied. Establishing a test connection takes a few seconds.
 
 After the successful test connection, select the **Next: Databases to validate or migrate**
 
-:::image type="content" source="media/tutorial-migration-service/target-server-migration.png" alt-text="Screenshot of the Target server migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/target-server-migration.png" alt-text="Screenshot of the Target server migration tab." lightbox="media/tutorial-migration-service/target-server-migration.png":::
 
 #### Databases to validate or migrate
 
@@ -121,13 +121,13 @@ Under the **Databases to validate or migrate** tab, you can choose a list of use
 
 After selecting the databases, select **Next: Summary**.
 
-:::image type="content" source="media/tutorial-migration-service/databases-to-validate-or-migrate-migration.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab.":::
+:::image type="content" source="media/tutorial-migration-service/databases-to-validate-or-migrate-migration.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab." lightbox="media/tutorial-migration-service/databases-to-validate-or-migrate-migration.png":::
 
 #### Summary
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select **Start validation and migration**.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-offline/summary-migration.png" alt-text="Screenshot of the Summary migration tab.":::
+:::image type="content" source="media/tutorial-migration-service-iaas-offline/summary-migration.png" alt-text="Screenshot of the Summary migration tab." lightbox="media/tutorial-migration-service-iaas-offline/summary-migration.png":::
 
 ## Cancel the validation or migration
 

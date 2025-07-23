@@ -1,5 +1,5 @@
 ---
-title: "Migration runtime server in Azure Database for PostgreSQL"
+title: "Migration Runtime Server In Azure Database For Postgresql"
 description: "This article discusses concepts about migration runtime server with the migration service in Azure Database for PostgreSQL."
 author: apduvuri
 ms.author: adityaduvuri

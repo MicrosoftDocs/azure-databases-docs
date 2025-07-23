@@ -1,5 +1,5 @@
 ---
-title: "Known Issues and Limitations for the Migration Service"
+title: "Known Issues And Limitations For The Migration Service"
 description: This article describes the limitations and known issues of the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
@@ -45,7 +45,7 @@ The following list describes limitations specific to migrating from Azure Databa
 
 - If the target flexible server uses the SCRAM-SHA-256 password encryption method, connection to a flexible server by using the users or roles on a single server fails. On a single server, passwords are encrypted by using the MD5 algorithm. To mitigate this limitation, for the `password_encryption` server parameter on your flexible server, select the option `MD5`.
 - Online migration uses [pgcopydb follow](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html). Some [logical decoding restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow) apply.
-- The migration service does not support copying Microsoft Entra ID–authenticated roles when using a [runtime server](./concepts-migration-service-runtime-server.md) for performing the migration from Single Server to Flexible server.We recommend that you manually create the Entra ID–authenticated roles on the target server before initiating the migration.
+- The migration service does not support copying Microsoft Entra ID–authenticated roles when using a [runtime server](./concepts-migration-service-runtime-server.md) for performing the migration from Single Server to Flexible server. We recommend that you manually create the Entra ID–authenticated roles on the target server before initiating the migration.
 
 ## Related content
 

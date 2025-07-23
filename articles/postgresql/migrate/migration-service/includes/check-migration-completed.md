@@ -1,5 +1,5 @@
 ---
-title: "Check the migration when completed (online)"
+title: "Check The Migration When Completed (Online)"
 description: Check the migration when completed (online).
 author: apduvuri
 ms.author: adityaduvuri

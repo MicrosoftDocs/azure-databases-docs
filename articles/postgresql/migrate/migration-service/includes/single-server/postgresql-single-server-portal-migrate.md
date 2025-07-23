@@ -66,7 +66,7 @@ After deploying the flexible server, follow the steps 3 to 5 under [Configure th
 
 The first tab is **Setup**. In case you missed it, allowlist necessary extensions as described in [Configure your Azure Database for PostgreSQL flexible server](#configure-your-azure-database-for-postgresql-flexible-server), before you initiate a migration.
 
-:::image type="content" source="../../media/postgresql-single-server-portal-migrate/flexible-migration-setup-offline.png" alt-text="Screenshot of the details belonging to the set up tab for offline.":::
+:::image type="content" source="../../media/postgresql-single-server-portal-migrate/flexible-migration-setup-offline.png" alt-text="Screenshot of the details belonging to the Setup tab for offline.":::
 
 **Migration name** is the unique identifier for each migration to this flexible server target. This field accepts only alphanumeric characters and doesn't accept any special characters except for underscore (_) and hyphen (-). The name must start with an alphanumeric character. The name must also be unique for a target server, because no two migrations to the same flexible server target can have the same name.
 
@@ -206,7 +206,7 @@ You can see the results of **Validate and migrate** once the operation is comple
 > Certain limitations apply to Online migration which are documented [here](../../best-practices-migration-service-postgresql.md#online-migration). Ensure that your database is compliant to execute an Online migration.
 
 > [!IMPORTANT]  
-> Online migration replays changes that happen during the migration from the source to the target. This ensures that you do not miss out on any ongoing changes and you can reduce the downtime for your application. However, this can be achieved only if the updates at the source is kept as low as possible. Low update traffic at the source ensures that ongoing changes are replayed to the target quickly and it can catch up with the source. If you observe an increasing `latency` trend over time with your migration, it is an indication that you need to further reduce the volume of traffic at the source.
+> Online migration replays changes that happen during the migration from the source to the target. This ensures that you do not miss out on any ongoing changes and you can reduce the downtime for your application. However, this can be achieved only if the updates at the source are kept as low as possible. Low update traffic at the source ensures that ongoing changes are replayed to the target quickly and it can catch up with the source. If you observe an increasing `latency` trend over time with your migration, it is an indication that you need to further reduce the volume of traffic at the source.
 
 ## Configure your Azure Database for PostgreSQL flexible server
 

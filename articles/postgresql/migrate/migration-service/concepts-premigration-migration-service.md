@@ -33,7 +33,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/tutorial-migration-service-iaas-offline/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-iaas-offline/create-migration.png":::
 
-1. In **MIgration option**, select **Validate** or **Validate and migrate**.
+1. In **Migration option**, select **Validate** or **Validate and migrate**.
 
     :::image type="content" source="media/concepts-premigration-migration-service/premigration-option.png" alt-text="Screenshot that shows the premigration option to start migration." lightbox="media/concepts-premigration-migration-service/premigration-option.png":::
 
@@ -41,13 +41,14 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Open your command-line interface.
 
-1. Ensure that you have the Azure CLI installed, and that you're signed in to your Azure account by using `az login`. Make usre that you're using the latest available version of CLI.
+1. Ensure that you have the Azure CLI installed, and that you're signed in to your Azure account by using `az login`. Make sure that you're using the latest available version of CLI.
 
 1. Construct your migration task creation command with the Azure CLI.
 
     ```azurecli-interactive
     az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-option ValidateAndMigrate --properties "path_to_json_file_with_all_migration_properties" --migration-mode offline
     ```
+---
 
 ## Premigration validation options
 

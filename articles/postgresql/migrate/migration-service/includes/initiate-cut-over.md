@@ -1,5 +1,5 @@
 ---
-title: "Initiate the cutover (online)"
+title: "Initiate The Cutover (Online)"
 description: Initiate the cutover (online).
 author: apduvuri
 ms.author: adityaduvuri

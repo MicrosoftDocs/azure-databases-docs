@@ -1,5 +1,5 @@
 ---
-title: "Checklist (offline)"
+title: "Checklist (Offline)"
 description: Checklist (offline).
 author: apduvuri
 ms.author: adityaduvuri

@@ -1,5 +1,5 @@
 ---
-title: How to Set up Azure CLI for Migration Service in Azure Database for PostgreSQL flexible server
+title: "How To Set Up Azure Cli For Migration Service In Azure Database For Postgresql Flexible Server"
 description: Learn how to set up Azure CLI for migration service in Azure Database for PostgreSQL flexible server and begin migrating your data.
 author: markingmyname
 ms.author: maghan

@@ -12,7 +12,7 @@ ms.topic: concept-article
 
 # Oracle To Azure Database for PostgreSQL Migration Stages
 
-A comprehensive end-to-end migration from Oracle to Azure Postgres requires the careful execeution of several key steps and migration stages. These milestones are all closely related and essential to a complete and successful migration.
+A comprehensive end-to-end migration from Oracle to Azure Postgres requires the careful execution of several key steps and migration stages. These milestones are all closely related and essential to a complete and successful migration.
 
 
 
@@ -62,7 +62,7 @@ Alternatively, there are partner solution providers offering novel approaches ca
 In many cases, your decision might incorporate a combination of multiple strategies and hybrid approach collectively employed for their respective strengths and combined capabilities. Deploying a real-time database translation layer can enable your teams to rapidly re-deploy their client applications while providing your software engineers and developers with appropriate time and resource planning to refactor their database-specific dependencies to support Postgres native operations.
 
 > [!IMPORTANT]  
-> Each of these choices are accompanied by their own particular sets of considerations and benefits and it is essential that your teams carefully review each of these approaches to determine the ideal strategic path forward.
+> Each of these choices is accompanied by their own particular sets of considerations and benefits and it is essential that your teams carefully review each of these approaches to determine the ideal strategic path forward.
 
 ## Migration Validation
 

@@ -1,5 +1,5 @@
 ---
-title: "Managing migration with server parameters"
+title: "Managing Migration With Server Parameters"
 description: Learn about migration configurable parameters, by using the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri

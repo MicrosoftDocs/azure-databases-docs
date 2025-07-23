@@ -1,5 +1,5 @@
 ---
-title: "Migration of extensions in migration service"
+title: "Migration Of Extensions In Migration Service"
 description: Learn about migration of extensions by using the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
