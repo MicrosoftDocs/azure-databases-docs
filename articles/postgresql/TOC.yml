@@ -123,8 +123,6 @@
       href: flexible-server/concepts-limits.md
     - name: Identity
       href: flexible-server/concepts-Identity.md
-    - name: Fabric mirroring
-      href: flexible-server/concepts-fabric-mirroring.md
     - name: Data encryption
       href: flexible-server/concepts-data-encryption.md
     - name: Scheduled maintenance
@@ -393,18 +391,24 @@
       displayName: Automation
     - name: Power BI
       href: flexible-server/connect-with-power-bi-desktop.md
-    - name: Azure Data Factory and Synapse Analytics
+    - name: Azure Data Factory and Azure Synapse Analytics
       items:
-      - name: Connect to Azure Data Factory and Synapse Analytics
+      - name: Connect to Azure Data Factory and Azure Synapse Analytics
         href: flexible-server/how-to-connect-data-factory.md
       - name: Connect from Azure Data Factory via managed private endpoint
         href: flexible-server/how-to-connect-data-factory-private-endpoint.md
+      - name: Copy activity
+        href: flexible-server/how-to-data-factory-copy-activity-azure.md
+      - name: Script activity
+        href: flexible-server/how-to-data-factory-script-activity-azure.md
     - name: Microsoft Fabric
       items:
+      - name: Fabric mirroring
+        href: flexible-server/concepts-fabric-mirroring.md
       - name: Copy activity
-        href: flexible-server/how-to-use-microsoft-fabric-data-factory-copy-activity.md
+        href: flexible-server/how-to-data-factory-copy-activity-fabric.md
       - name: Script activity
-        href: flexible-server/how-to-use-microsoft-fabric-data-factory-script-activity.md
+        href: flexible-server/how-to-data-factory-script-activity-fabric.md
   - name: Troubleshooting
     items:  
     - name: Troubleshooting guides
