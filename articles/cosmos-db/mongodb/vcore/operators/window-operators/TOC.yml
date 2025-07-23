@@ -14,4 +14,10 @@
   href: $expmovingavg.md
 - name: $integral
   href: $integral.md
+- name: $linearFill
+  href: $linearfill.md
+- name: $locf
+  href: $locf.md
+- name: $rank
+  href: $rank.md
 
