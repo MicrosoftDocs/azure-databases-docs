@@ -38,19 +38,19 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
 1. On the **Activities** menu, select the **Script** icon.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png" alt-text="Screenshot that shows the icon for selecting a script activity." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/create-script-activity.png":::
+   :::image type="content" source="./media/how-to-data-factory-script-activity-fabric/create-script-activity.png" alt-text="Screenshot that shows the icon for selecting a script activity." lightbox="./media/how-to-data-factory-script-activity-fabric/create-script-activity.png":::
 
 1. With the script activity selected on the data pipeline canvas, on the **General** tab, enter a name for the activity.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png" alt-text="Screenshot that shows where to enter a name for a script activity on the General tab." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-name.png":::
+   :::image type="content" source="./media/how-to-data-factory-script-activity-fabric/script-activity-name.png" alt-text="Screenshot that shows where to enter a name for a script activity on the General tab." lightbox="./media/how-to-data-factory-script-activity-fabric/script-activity-name.png":::
 
 1. On the **Settings** tab, select your Azure Database for PostgreSQL connection, or create a new one by using the **More** option. [Learn more about connecting to your data by using the modern get-data experience for data pipelines](/fabric/data-factory/modern-get-data-experience-pipeline).
 
-   :::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png" alt-text="Screenshot that shows an example setting for a connection." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/script-activity-settings-connection.png":::
+   :::image type="content" source="media/how-to-data-factory-script-activity-fabric/script-activity-settings-connection.png" alt-text="Screenshot that shows an example setting for a connection." lightbox="media/how-to-data-factory-script-activity-fabric/script-activity-settings-connection.png":::
 
 1. Select either the **Query** or **NonQuery** option, depending on your script.
 
-   :::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png" alt-text="Screenshot that highlights the query and nonquery options for a script." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/tab-non-query.png":::
+   :::image type="content" source="media/how-to-data-factory-script-activity-fabric/tab-non-query.png" alt-text="Screenshot that highlights the query and nonquery options for a script." lightbox="media/how-to-data-factory-script-activity-fabric/tab-non-query.png":::
 
    The script activity supports both query and nonquery statements.
 
@@ -58,7 +58,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
    Query statements execute PostgreSQL statements (often `SELECT` statements) that return results. A query statement returns records of data.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/settings-query.png" alt-text="Screenshot that shows a sample of a query script." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/settings-query.png":::
+   :::image type="content" source="./media/how-to-data-factory-script-activity-fabric/settings-query.png" alt-text="Screenshot that shows a sample of a query script." lightbox="./media/how-to-data-factory-script-activity-fabric/settings-query.png":::
 
    Here's a sample payload with a query statement:
 
@@ -96,7 +96,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
    Nonquery statements execute PostgreSQL statements (often `INSERT`, `UPDATE`, or `DELETE` statements) that don't return any results. A nonquery statement returns the number of affected rows.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/settings-non-query.png" alt-text="Screenshot that shows a sample of a nonquery script." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/settings-non-query.png":::
+   :::image type="content" source="./media/how-to-data-factory-script-activity-fabric/settings-non-query.png" alt-text="Screenshot that shows a sample of a nonquery script." lightbox="./media/how-to-data-factory-script-activity-fabric/settings-non-query.png":::
 
    Here's a sample payload with a nonquery statement:
 
@@ -134,15 +134,15 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
 On the **Settings** tab, you can configure multiple queries in one script activity. To add a new script input, select the plus (**+**) button in the **Script** area.
 
-:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/plus-script.png" alt-text="Screenshot that shows an example of the button and box for creating a new script input." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/plus-script.png":::
+:::image type="content" source="./media/how-to-data-factory-script-activity-fabric/plus-script.png" alt-text="Screenshot that shows an example of the button and box for creating a new script input." lightbox="./media/how-to-data-factory-script-activity-fabric/plus-script.png":::
 
 You can select the **+** button multiple times, depending on how many script inputs you want to create. For example, to add two new script inputs, select the **+** button two times.
 
-:::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/multi-script.png" alt-text="Screenshot that shows how to add a second box for script input." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/multi-script.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-fabric/multi-script.png" alt-text="Screenshot that shows how to add a second box for script input." lightbox="media/how-to-data-factory-script-activity-fabric/multi-script.png":::
 
 If you want to delete a query input box, select the **Delete** icon for that box.
 
-:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/delete-script-activity.png" alt-text="Screenshot that shows the Delete icon for script input boxes." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/delete-script-activity.png":::
+:::image type="content" source="./media/how-to-data-factory-script-activity-fabric/delete-script-activity.png" alt-text="Screenshot that shows the Delete icon for script input boxes." lightbox="./media/how-to-data-factory-script-activity-fabric/delete-script-activity.png":::
 
 Here's a sample payload with two separate queries:
 
@@ -197,7 +197,7 @@ A script activity supports two types of script parameters:
 
 For named parameters as output parameters, use the `@` prefix. Set the value as `null` with the **Treat as null** box checked on the UI, and leave the payload blank or `null`. The value in the text should be `null`.
 
-:::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/output-parameter-example.png" alt-text="Screenshot that shows an output parameter example with checkboxes selected for treating the values as null." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/output-parameter-example.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-fabric/output-parameter-example.png" alt-text="Screenshot that shows an output parameter example with checkboxes selected for treating the values as null." lightbox="media/how-to-data-factory-script-activity-fabric/output-parameter-example.png":::
 
 The name set within the procedure for output is the name used within the `resultSets` data output. The name set in the UI output row is used for the name of `outputParameters`.
 
@@ -279,7 +279,7 @@ To use positional parameters, use a placeholder of `$<positional number>` in you
 
 The following example shows a valid positional parameter.
 
-:::image type="content" source="media/how-to-use-microsoft-fabric-data-factory-script-activity/multiple-scripts-positional-parameters.png" alt-text="Screenshot that shows an example of a valid positional parameter." lightbox="media/how-to-use-microsoft-fabric-data-factory-script-activity/multiple-scripts-positional-parameters.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-fabric/multiple-scripts-positional-parameters.png" alt-text="Screenshot that shows an example of a valid positional parameter." lightbox="media/how-to-data-factory-script-activity-fabric/multiple-scripts-positional-parameters.png":::
 
 ```json
 {
@@ -373,7 +373,7 @@ The following example shows an invalid positional parameter:
 
 You can configure a timeout in minutes for each script block that you run. If any script block within your script activity exceeds the specified timeout, the entire activity fails.
 
-:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-block-timeout.png" alt-text="Screenshot that shows an advanced setting in a script activity to set execution timeout for a script block." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/script-block-timeout.png":::
+:::image type="content" source="./media/how-to-data-factory-script-activity-fabric/script-block-timeout.png" alt-text="Screenshot that shows an advanced setting in a script activity to set execution timeout for a script block." lightbox="./media/how-to-data-factory-script-activity-fabric/script-block-timeout.png":::
 
 ```JSON
     "typeProperties": {
@@ -409,7 +409,7 @@ To set up external logging:
 
 1. You can optionally provide a folder path. If you leave the **Folder path** box blank, the logs go to the `scriptactivity-logs` folder.
 
-:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/logging-external-storage.png" alt-text="Screenshot that shows an external logging example." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/logging-external-storage.png":::
+:::image type="content" source="./media/how-to-data-factory-script-activity-fabric/logging-external-storage.png" alt-text="Screenshot that shows an external logging example." lightbox="./media/how-to-data-factory-script-activity-fabric/logging-external-storage.png":::
 
 ```JSON
 "typeProperties": {
@@ -441,7 +441,7 @@ To set up logging in the activity output:
 
 1. Select the **Enable logging** checkbox and the **Activity output** option.
 
-:::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-script-activity/logging-activity-output.png" alt-text="Screenshot that shows selections for setting up activity output logging." lightbox="./media/how-to-use-microsoft-fabric-data-factory-script-activity/logging-activity-output.png":::
+:::image type="content" source="./media/how-to-data-factory-script-activity-fabric/logging-activity-output.png" alt-text="Screenshot that shows selections for setting up activity output logging." lightbox="./media/how-to-data-factory-script-activity-fabric/logging-activity-output.png":::
 
 ```JSON
 "typeProperties": {
@@ -462,4 +462,4 @@ To set up logging in the activity output:
 
 - [How to use a script activity](/fabric/data-factory/script-activity)
 - [Azure Database for PostgreSQL connector overview](/fabric/data-factory/connector-azure-database-for-postgresql-overview)
-- [Copy activity in Microsoft Fabric Data Factory](how-to-use-microsoft-fabric-data-factory-copy-activity.md)
+- [Copy activity in Microsoft Fabric Data Factory](how-to-data-factory-copy-activity-fabric.md)
