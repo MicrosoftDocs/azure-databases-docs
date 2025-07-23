@@ -30,11 +30,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
 1. On the **New item** pane, search for **pipeline** and select the **Data pipeline** tile.
 
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png" alt-text="Screenshot that shows selections for starting the process of creating a data pipeline." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/create-a-new-fabric-data-factory-pipeline.png":::
-
 1. In the **New pipeline** dialog, enter a name and then select the **Create** button to create a data pipeline.
-
-   :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/new-pipeline-name.png" alt-text="Screenshot that shows the dialog for naming a new pipeline." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/new-pipeline-name.png":::
 
 1. On the **Activities** menu, select the **Script** icon.
 
