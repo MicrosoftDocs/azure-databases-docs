@@ -2094,6 +2094,16 @@
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-use-pg-azure-storage.md",
             "redirect_url": "/azure/postgresql/flexible-server/concepts-storage-extension",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-use-microsoft-fabric-data-factory-copy-activity.md",
+            "redirect_url": "/azure/postgresql/flexible-server/how-to-data-factory-copy-activity-fabric",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-use-microsoft-fabric-data-factory-script-activity.md",
+            "redirect_url": "/azure/postgresql/flexible-server/how-to-data-factory-script-activity-fabric",
+            "redirect_document_id": true
         }
     ]
 }
