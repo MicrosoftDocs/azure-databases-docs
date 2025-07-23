@@ -175,9 +175,9 @@ This query returns the following result:
 ]
 ```
 
-### Example 2 - $push with $setWindowFields
+### Example 2 - Using $push with $setWindowFields
 
-To retrieve the sales across all stores under the "First Up Consultants" company, first run a query to partition stores within the company. Then, use the $push operator to create a list of sales from the first to the current store within the partition.
+To retrieve the distinct sales volumes across all stores under the "First Up Consultants" company, first run a query to partition stores within the company. Then, use the $push operator to create a list of sales from the first to the current store within the partition.
 
 ```javascript
 db.stores.aggregate([{
