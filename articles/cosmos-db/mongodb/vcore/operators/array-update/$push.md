@@ -175,5 +175,72 @@ This query returns the following result:
 ]
 ```
 
+### Example 2 - $push with $setWindowFields
+
+To retrieve the sales across all stores under the "First Up Consultants" company, first run a query to partition stores within the company. Then, use the $push operator to create a list of sales from the first to the current store within the partition.
+
+```javascript
+db.stores.aggregate([{
+        "$match": {
+            "company": {
+                "$in": ["First Up Consultants"]
+            }
+        }
+    }, {
+        "$setWindowFields": {
+            "partitionBy": "$company",
+            "sortBy": {
+                "sales.totalSales": -1
+            },
+            "output": {
+                "salesByStore": {
+                    "$push": "$sales.totalSales",
+                    "window": {
+                        "documents": ["unbounded", "current"]
+                    }
+                }
+            }
+        }
+    },
+    {
+        "$project": {
+            "company": 1,
+            "salesByStore": 1
+        }
+    }
+])
+```
+
+The first three results returned by this query are:
+
+```json
+[
+    {
+        "_id": "a0386810-b6f8-4b05-9d60-e536fb2b0026",
+        "company": "First Up Consultants",
+        "salesByStore": [
+            327583
+        ]
+    },
+    {
+        "_id": "ad8af64a-d5bb-4162-9bb6-e5104126566d",
+        "company": "First Up Consultants",
+        "salesByStore": [
+            327583,
+            288582
+        ]
+    },
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "company": "First Up Consultants",
+        "salesByStore": [
+            327583,
+            288582,
+            279183
+        ]
+    }
+]
+```
+
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]
