@@ -1,40 +1,38 @@
 ---
-  title: $push
-  titleSuffix: Overview of the $push operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $push operator adds a specified value to an array within a document. 
-  author: sandeepsnairms
-  ms.author: sandnair
-  ms.service: azure-cosmos-db
-  ms.subservice: mongodb-vcore
-  ms.topic: language-reference
-  ms.date: 09/11/2024
+title: $linearFill
+titleSuffix: Overview of the $linearFill operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $linearFill operator interpolates missing values in a sequence of documents using linear interpolation.
+author: niklarin
+ms.author: nlarin
+ms.service: azure-cosmos-db
+ms.subservice: mongodb-vcore
+ms.topic: reference
+ms.date: 06/28/2025
 ---
 
-# $push
+# $linearFill
 
-The `$push` operator is used to add a specified value to an array within a document. The $push operator adds new elements to an existing array without affecting other elements in the array.
+The `$linearFill` operator interpolates missing values in a sequence of documents. The $linearFill operator performs linear interpolation for missing data, making it useful for datasets with gaps in values, such as time-series data.
 
 ## Syntax
 
 ```javascript
-db.collection.update({
-    < query >
-}, {
-    $push: {
-        < field >: < value >
+{
+    $linearFill: {
+        input: < expression > ,
+        sortBy: {
+            < field >: < 1 or - 1 >
+        }
     }
-}, {
-    < options >
-})
+}
 ```
 
-## Parameters
+## Parameters  
+
 | Parameter | Description |
 | --- | --- |
-| **`<query>`**| The selection criteria for the documents to update.|
-| **`<field>`**| The array field to which the value will be appended.|
-| **`<value>`**| The value to append to the array field.|
-| **`<options>`**| Optional. Additional options for the update operation.|
+| **`input`** | The field or expression to interpolate missing values for. |
+| **`sortBy`** | Specifies the field by which the data is sorted for interpolation, along with the sort order (1 for ascending, -1 for descending). |
 
 ## Examples
 
@@ -150,34 +148,9 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1 - Add a new sales category
+### Example 1: Interpolating missing sales data
 
-To add a new sales category to the salesByCategory array, run a query using the $push operator on the field with a new Sales object with the name of the category and its sales volume.
-
-```javascript
-db.stores.update(
-   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-   { $push: { "sales.salesByCategory": { "categoryName": "DJ Cables", "totalSales": 1000.00 } } }
-)
-```
-
-This query returns the following result:
-
-```json
-[
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "1",
-    "upsertedCount": 0
-  }
-]
-```
-
-### Example 2 - Using $push with $setWindowFields
-
-To retrieve the distinct sales volumes across all stores under the "First Up Consultants" company, first run a query to partition stores within the company. Then, use the $push operator to create a list of sales from the first to the current store within the partition.
+To interpolate missing sales data, run a query to first partition the stores in the dataset by name. Then, use the $linearFill operator to interpolate the missing sales data across the stores within the partition.
 
 ```javascript
 db.stores.aggregate([{
@@ -186,26 +159,18 @@ db.stores.aggregate([{
                 "$in": ["First Up Consultants"]
             }
         }
-    }, {
-        "$setWindowFields": {
-            "partitionBy": "$company",
-            "sortBy": {
-                "sales.totalSales": -1
-            },
-            "output": {
-                "salesByStore": {
-                    "$push": "$sales.totalSales",
-                    "window": {
-                        "documents": ["unbounded", "current"]
-                    }
-                }
-            }
-        }
     },
     {
-        "$project": {
-            "company": 1,
-            "salesByStore": 1
+        "$setWindowFields": {
+            "partitionBy": "$name",
+            "sortBy": {
+                "storeOpeningDate": 1
+            },
+            "output": {
+                "interpolatedSales": {
+                    "$linearFill": "$sales.totalSales"
+                }
+            }
         }
     }
 ])
@@ -216,31 +181,23 @@ The first three results returned by this query are:
 ```json
 [
     {
-        "_id": "a0386810-b6f8-4b05-9d60-e536fb2b0026",
-        "company": "First Up Consultants",
-        "salesByStore": [
-            327583
-        ]
+        "_id": "0f4c48fe-c43b-4083-a856-afe6dd902077",
+        "name": "First Up Consultants | Appliance Bargains - Feilmouth",
+        "interpolatedSales": 26630
     },
     {
-        "_id": "ad8af64a-d5bb-4162-9bb6-e5104126566d",
-        "company": "First Up Consultants",
-        "salesByStore": [
-            327583,
-            288582
-        ]
+        "_id": "c4883253-7ccd-4054-a7e0-8aeb202307b5",
+        "name": "First Up Consultants | Appliance Bargains - New Kari",
+        "interpolatedSales": 31568
     },
     {
-        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
-        "company": "First Up Consultants",
-        "salesByStore": [
-            327583,
-            288582,
-            279183
-        ]
+        "_id": "a159ff5c-6ec5-4ca8-9672-e8903a54dd90",
+        "name": "First Up Consultants | Appliance Bargains - Schadenstad",
+        "interpolatedSales": 59926
     }
 ]
 ```
 
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]

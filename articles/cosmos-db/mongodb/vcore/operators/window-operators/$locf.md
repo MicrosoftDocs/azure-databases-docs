@@ -1,40 +1,36 @@
 ---
-  title: $push
-  titleSuffix: Overview of the $push operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $push operator adds a specified value to an array within a document. 
-  author: sandeepsnairms
-  ms.author: sandnair
-  ms.service: azure-cosmos-db
-  ms.subservice: mongodb-vcore
-  ms.topic: language-reference
-  ms.date: 09/11/2024
+title: $locf
+titleSuffix: Overview of the $locf operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $locf operator propagates the last observed non-null value forward within a partition in a windowed query.
+author: niklarin
+ms.author: nlarin
+ms.service: azure-cosmos-db
+ms.subservice: mongodb-vcore
+ms.topic: reference
+ms.date: 06/28/2025
 ---
 
-# $push
+# $locf
 
-The `$push` operator is used to add a specified value to an array within a document. The $push operator adds new elements to an existing array without affecting other elements in the array.
+The `$locf` operator propagates the last observed non-null value forward within a partition in a windowed query. The $locf operator is particularly useful in filling missing data points in time-series data or other datasets with gaps.
 
 ## Syntax
 
 ```javascript
-db.collection.update({
-    < query >
-}, {
-    $push: {
-        < field >: < value >
-    }
-}, {
-    < options >
-})
+{
+  $locf: {
+    input: <expression>,
+    sortBy: <document>
+  }
+}
 ```
 
-## Parameters
+## Parameters  
+
 | Parameter | Description |
 | --- | --- |
-| **`<query>`**| The selection criteria for the documents to update.|
-| **`<field>`**| The array field to which the value will be appended.|
-| **`<value>`**| The value to append to the array field.|
-| **`<options>`**| Optional. Additional options for the update operation.|
+| **`input`** | The expression that resolves to the field whose value you want to propagate. |
+| **`sortBy`** | A document that specifies the sort order for the partition. |
 
 ## Examples
 
@@ -150,65 +146,38 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1 - Add a new sales category
+### Example 1: Using `$locf` to fill missing time series data
 
-To add a new sales category to the salesByCategory array, run a query using the $push operator on the field with a new Sales object with the name of the category and its sales volume.
-
-```javascript
-db.stores.update(
-   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-   { $push: { "sales.salesByCategory": { "categoryName": "DJ Cables", "totalSales": 1000.00 } } }
-)
-```
-
-This query returns the following result:
-
-```json
-[
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "1",
-    "upsertedCount": 0
-  }
-]
-```
-
-### Example 2 - Using $push with $setWindowFields
-
-To retrieve the distinct sales volumes across all stores under the "First Up Consultants" company, first run a query to partition stores within the company. Then, use the $push operator to create a list of sales from the first to the current store within the partition.
+To propagate the most recent non-null value for the lastUpdated field across stores within the "First Up Consultants" company, first run a query to partition the stores within the company. Then, use the $lecf operator to propagate the last non-null value for the field for all stores within the partition.
 
 ```javascript
 db.stores.aggregate([{
-        "$match": {
-            "company": {
-                "$in": ["First Up Consultants"]
-            }
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
         }
-    }, {
-        "$setWindowFields": {
-            "partitionBy": "$company",
-            "sortBy": {
-                "sales.totalSales": -1
-            },
-            "output": {
-                "salesByStore": {
-                    "$push": "$sales.totalSales",
-                    "window": {
-                        "documents": ["unbounded", "current"]
-                    }
+    }
+}, {
+    "$setWindowFields": {
+        "partitionBy": "$name",
+        "sortBy": {
+            "sales.revenue": 1
+        },
+        "output": {
+            "lastUpdatedDate": {
+                "$locf": {
+                    "lastUpdated": 1
                 }
             }
         }
-    },
-    {
-        "$project": {
-            "company": 1,
-            "salesByStore": 1
-        }
     }
-])
+}, {
+    "$project": {
+        "company": 1,
+        "name": 1,
+        "lastObservedDiscount": 1
+    }
+}])
 ```
 
 The first three results returned by this query are:
@@ -216,31 +185,23 @@ The first three results returned by this query are:
 ```json
 [
     {
-        "_id": "a0386810-b6f8-4b05-9d60-e536fb2b0026",
-        "company": "First Up Consultants",
-        "salesByStore": [
-            327583
-        ]
+        "_id": "0f4c48fe-c43b-4083-a856-afe6dd902077",
+        "name": "First Up Consultants | Appliance Bargains - Feilmouth",
+        "company": "First Up Consultants"
     },
     {
-        "_id": "ad8af64a-d5bb-4162-9bb6-e5104126566d",
-        "company": "First Up Consultants",
-        "salesByStore": [
-            327583,
-            288582
-        ]
+        "_id": "c4883253-7ccd-4054-a7e0-8aeb202307b5",
+        "name": "First Up Consultants | Appliance Bargains - New Kari",
+        "company": "First Up Consultants"
     },
     {
-        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
-        "company": "First Up Consultants",
-        "salesByStore": [
-            327583,
-            288582,
-            279183
-        ]
+        "_id": "a159ff5c-6ec5-4ca8-9672-e8903a54dd90",
+        "name": "First Up Consultants | Appliance Bargains - Schadenstad",
+        "company": "First Up Consultants"
     }
 ]
 ```
 
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]
