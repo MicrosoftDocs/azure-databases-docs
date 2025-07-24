@@ -39,6 +39,11 @@
       "source_path_from_root": "/articles/cosmos-db/gremlin/find-request-unit-charge.md",
       "redirect_url": "/azure/cosmos-db/gremlin/faq.md#how-do-i-find-the-request-unit-charge-for-a-query",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/manage-with-bicep.md",
+      "redirect_url": "/samples/azure/azure-quickstart-templates/cosmosdb-gremlin/",
+      "redirect_document_id": false
     }
   ]
 }
