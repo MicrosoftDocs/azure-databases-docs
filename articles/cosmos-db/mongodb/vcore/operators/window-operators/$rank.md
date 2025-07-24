@@ -1,40 +1,44 @@
 ---
-  title: $push
-  titleSuffix: Overview of the $push operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $push operator adds a specified value to an array within a document. 
-  author: sandeepsnairms
-  ms.author: sandnair
-  ms.service: azure-cosmos-db
-  ms.subservice: mongodb-vcore
-  ms.topic: language-reference
-  ms.date: 09/11/2024
+title: $rank
+titleSuffix: Overview of the $rank operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $rank operator ranks documents within a partition based on a specified sort order.
+author: niklarin
+ms.author: nlarin
+ms.service: azure-cosmos-db
+ms.subservice: mongodb-vcore
+ms.topic: reference
+ms.date: 06/28/2025
 ---
 
-# $push
+# $rank
 
-The `$push` operator is used to add a specified value to an array within a document. The $push operator adds new elements to an existing array without affecting other elements in the array.
+The `$rank` operator assigns a rank to each document within a partition of a dataset. The rank is determined based on a specified sort order.
 
 ## Syntax
 
 ```javascript
-db.collection.update({
-    < query >
-}, {
-    $push: {
-        < field >: < value >
+{
+    $setWindowFields: {
+        partitionBy: < expression > ,
+        sortBy: {
+            < field >: < order >
+        },
+        output: {
+            < outputField >: {
+                $rank: {}
+            }
+        }
     }
-}, {
-    < options >
-})
+}
 ```
 
-## Parameters
+## Parameters  
+
 | Parameter | Description |
 | --- | --- |
-| **`<query>`**| The selection criteria for the documents to update.|
-| **`<field>`**| The array field to which the value will be appended.|
-| **`<value>`**| The value to append to the array field.|
-| **`<options>`**| Optional. Additional options for the update operation.|
+| **`partitionBy`** | Specifies the expression to group documents into partitions. If omitted, all documents are treated as a single partition. |
+| **`sortBy`** | Defines the sort order for ranking. Must be specified for `$rank`. |
+| **`output`** | Contains the field where the rank value is stored. |
 
 ## Examples
 
@@ -150,65 +154,36 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1 - Add a new sales category
+### Example 1: Ranking stores by sales volume
 
-To add a new sales category to the salesByCategory array, run a query using the $push operator on the field with a new Sales object with the name of the category and its sales volume.
-
-```javascript
-db.stores.update(
-   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-   { $push: { "sales.salesByCategory": { "categoryName": "DJ Cables", "totalSales": 1000.00 } } }
-)
-```
-
-This query returns the following result:
-
-```json
-[
-  {
-    "acknowledged": true,
-    "insertedId": null,
-    "matchedCount": "1",
-    "modifiedCount": "1",
-    "upsertedCount": 0
-  }
-]
-```
-
-### Example 2 - Using $push with $setWindowFields
-
-To retrieve the distinct sales volumes across all stores under the "First Up Consultants" company, first run a query to partition stores within the company. Then, use the $push operator to create a list of sales from the first to the current store within the partition.
+To rank all stores within the "First Up Consultants" company by sales volume, first run a query to partition the stores within the company. Then, sort the resulting stores in ascending order of sales volume and use the $rank operator to rank the sorted documents in the result set.
 
 ```javascript
 db.stores.aggregate([{
-        "$match": {
-            "company": {
-                "$in": ["First Up Consultants"]
-            }
-        }
-    }, {
-        "$setWindowFields": {
-            "partitionBy": "$company",
-            "sortBy": {
-                "sales.totalSales": -1
-            },
-            "output": {
-                "salesByStore": {
-                    "$push": "$sales.totalSales",
-                    "window": {
-                        "documents": ["unbounded", "current"]
-                    }
-                }
-            }
-        }
-    },
-    {
-        "$project": {
-            "company": 1,
-            "salesByStore": 1
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
         }
     }
-])
+}, {
+    "$setWindowFields": {
+        "partitionBy": "$company",
+        "sortBy": {
+            "sales.totalSales": -1
+        },
+        "output": {
+            "rankBySales": {
+                "$rank": {}
+            }
+        }
+    }
+}, {
+    "$project": {
+        "company": 1,
+        "name": 1,
+        "rankBySales": 1
+    }
+}])
 ```
 
 The first three results returned by this query are:
@@ -217,30 +192,25 @@ The first three results returned by this query are:
 [
     {
         "_id": "a0386810-b6f8-4b05-9d60-e536fb2b0026",
+        "name": "First Up Consultants | Electronics Stop - South Thelma",
         "company": "First Up Consultants",
-        "salesByStore": [
-            327583
-        ]
+        "rankBySales": 1
     },
     {
         "_id": "ad8af64a-d5bb-4162-9bb6-e5104126566d",
+        "name": "First Up Consultants | Electronics Emporium - South Carmenview",
         "company": "First Up Consultants",
-        "salesByStore": [
-            327583,
-            288582
-        ]
+        "rankBySales": 2
     },
     {
         "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "name": "First Up Consultants | Bed and Bath Pantry - Port Antone",
         "company": "First Up Consultants",
-        "salesByStore": [
-            327583,
-            288582,
-            279183
-        ]
+        "rankBySales": 3
     }
 ]
 ```
 
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]
