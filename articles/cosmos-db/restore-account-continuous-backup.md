@@ -431,7 +431,7 @@ az cosmosdb restore \
 
 ```
 
-If `--public-network-access` is not set, restored account is accessible from public network. Please ensure to pass `Disabled` to the `--public-network-access` option to prevent public network access for restored account. Setting disable-ttl to  to $true ensures TTL is disabled on restored account,  and not providing this parameter restores the account with TTL enabled if it was set earlier. 
+If `--public-network-access` is not set, restored account is accessible from public network. Please ensure to pass `Disabled` to the `--public-network-access` option to prevent public network access for restored account. Setting disable-ttl to  $true ensures TTL is disabled on restored account,  and not providing this parameter restores the account with TTL enabled if it was set earlier. 
 
  > [!NOTE]
  > For restoring with public network access disabled, the minimum stable version of azure-cli is 2.52.0.
@@ -782,7 +782,7 @@ az cosmosdb table restorable-table list \
 ] 
 ```
 
-### List all the resources of a API for Table account that are available to restore at a given timestamp and region 
+### List all the resources of an API for Table account that are available to restore at a given timestamp and region 
 
 ```azurecli-interactive
 az cosmosdb table restorable-resource list \ 
