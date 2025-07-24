@@ -24,6 +24,16 @@
       "source_path_from_root": "/articles/cosmos-db/gremlin/modeling-tools.md",
       "redirect_url": "/azure/cosmos-db/gremlin/partner-tools-services#modeling",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/how-to-provision-throughput.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-provision-container-throughput",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/how-to-create-container.md",
+      "redirect_url": "/azure/cosmos-db/nosql/quickstart-portal.md#create-a-database-and-container",
+      "redirect_document_id": false
     }
   ]
 }
