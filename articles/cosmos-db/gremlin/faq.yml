@@ -88,34 +88,16 @@ sections:
 
           - Use the .NET software development kit (SDK)
 
-            1. Run a query to get the result as an object of type `ResultSet<>`.
-            
-                ```csharp
-                ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;
-                ```
+            1. Run a query to get the result as an object of type `ResultSet<>`: `ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;`
 
-            1. Get the request charge from the results using the `StatusAttributes` array and the `x-ms-request-charge` indexer.
-            
-                ```csharp
-                double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];
-                ```
+            1. Get the request charge from the results using the `StatusAttributes` array and the `x-ms-request-charge` indexer: `double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];`                
 
           - Use the Java SDK
 
-            1. Run a query to get the result as an object of type `ResultSet`.
+            1. Run a query to get the result as an object of type `ResultSet`: `ResultSet results = client.submit("g.V().count()");`
 
-                ```java
-                ResultSet results = client.submit("g.V().count()");
-                ```
-
-            1. Get the request charge from the results using the `statusAttributes` method and the `x-ms-request-charge` key.
+            1. Get the request charge from the results using the `statusAttributes` method and the `x-ms-request-charge` key: `Map<String, Object> attributes = results.statusAttributes(); Double requestCharge = (Double) attributes.get("x-ms-request-charge");`
             
-                ```java
-                Double requestCharge = results.statusAttributes()
-                  .map(attrs -> (Double) attrs.get("x-ms-request-charge"))
-                  .orElse(null);
-                ```
-
           The request charge is available under the `x-ms-request-charge` key in the response headers returned by the API for Gremlin.
 additionalContent: |
   ## Related content
