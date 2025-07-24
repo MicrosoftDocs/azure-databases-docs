@@ -1,15 +1,15 @@
 ---
 title: |
-  Tutorial: Query data
+  Tutorial: Query Data
 titleSuffix: Azure Cosmos DB for NoSQL
-description: In this tutorial, learn how to query data in Azure Cosmos DB for NoSQL with the built-in query syntax using the Data Explorer.
+description: Learn how to query data in Azure Cosmos DB for NoSQL with the built-in query syntax using the Data Explorer.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
-ms.date: 06/05/2024
+ms.date: 07/21/2025
 ---
 
 # Tutorial: Query data in Azure Cosmos DB for NoSQL
@@ -27,13 +27,11 @@ This article covers the following tasks:
 
 ## Prerequisites
 
-This tutorial assumes you have an Azure Cosmos DB account, database, and container.
-
-Don't have any of those resources? Complete this quickstart: [Create an Azure Cosmos DB account, database, container, and items from the Azure portal](quickstart-portal.md).
+- An Azure Cosmos DB account, database, and container. If you don't have these resources, see [Create an Azure Cosmos DB account, database, container, and items from the Azure portal](quickstart-portal.md).
 
 You can run the queries using the [Azure Cosmos DB Explorer](../data-explorer.md) in the Azure portal. You can also run queries by using the [REST API](/rest/api/cosmos-db/) or [various SDKs](sdk-dotnet-v3.md).
 
-For more information about queries, see [getting started with queries](query/getting-started.md).
+For more information about queries, see [Queries in Azure Cosmos DB for NoSQL](query/getting-started.md).
 
 ## Sample document
 
@@ -139,16 +137,7 @@ Results:
 ]
 ```
 
-## Next steps
-
-In this tutorial, you've done the following tasks:
-
-> [!div class="checklist"]
->
-> - Learned how to query using the built-in query syntax
->
-
-You can now proceed to the next tutorial to learn how to distribute your data globally.
+## Next step
 
 > [!div class="nextstepaction"]
 > [Distribute your data globally](tutorial-global-distribution.md)
