@@ -3,6 +3,8 @@ metadata:
   title: Frequently asked questions
   titleSuffix: Azure Cosmos DB for Apache Gremlin
   description: Get answers to frequently asked questions about Azure Cosmos DB for Apache Gremlin.
+  ms.service: azure-cosmos-db
+  ms.subservice: apache-gremlin
   ms.topic: faq
   ms.date: 07/24/2025
 title: Frequently asked questions about Azure Cosmos DB for Apache Gremlin
