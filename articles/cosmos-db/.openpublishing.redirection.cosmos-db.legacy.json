@@ -34,6 +34,11 @@
       "source_path_from_root": "/articles/cosmos-db/gremlin/how-to-create-container.md",
       "redirect_url": "/azure/cosmos-db/nosql/quickstart-portal.md#create-a-database-and-container",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/find-request-unit-charge.md",
+      "redirect_url": "/azure/cosmos-db/gremlin/faq.md#how-do-i-find-the-request-unit-charge-for-a-query",
+      "redirect_document_id": false
     }
   ]
 }
