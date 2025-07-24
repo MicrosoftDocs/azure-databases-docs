@@ -225,9 +225,9 @@ The `timescaleDB` extension is a time-series database packaged as an extension f
 
 To use `timescaleDB`, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions) the extension, [load its library](how-to-load-libraries.md), and [install the extension](how-to-create-extensions.md) in the database on which you plan to use its functionality.
 
-You can now create a TimescaleDB hypertable [from scratch](https://docs.tigerdata.com/use-timescale/latest/hypertables/hypertable-crud/#create-a-hypertable) or migrate [existing time-series data in PostgreSQL](https://docs.tigerdata.com/self-hosted/latest/migration/).
+You can now create a TimescaleDB hypertable [from scratch](https://github.com/timescale/docs.timescale.com-content/blob/master/getting-started/creating-hypertables.md) or migrate [existing time-series data in PostgreSQL](https://github.com/timescale/docs.timescale.com-content/blob/master/getting-started/migrating-data.md).
 
-For more information on restoring a Timescale database using `pg_dump` and `pg_restore`, see [Timescale documentation](https://docs.tigerdata.com/self-hosted/latest/backup-and-restore/logical-backup/).
+For more information on restoring a Timescale database using `pg_dump` and `pg_restore`, see [Timescale documentation](https://github.com/timescale/docs.timescale.com-content/blob/master/using-timescaledb/backup.md).
 
 #### Restore a Timescale database using timescaledb-backup
 
