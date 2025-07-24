@@ -1,5 +1,5 @@
 ---
-title: Get started with partial document update
+title: Get Started with Partial Document Update
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to use the partial document update feature in Azure Cosmos DB for NoSQL.
 author: AbhinavTrips
@@ -8,14 +8,14 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.custom: devx-track-dotnet, devx-track-extended-java
-ms.date: 05/23/2023
+ms.date: 07/22/2025
 ---
 
-# Get started with Azure Cosmos DB Partial Document Update
+# Get started with Azure Cosmos DB partial document update
 
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-This article provides examples that illustrate how to use Partial Document Update with .NET, Java, and Node SDKs. It also describes common errors that you might encounter.
+This article provides examples that illustrate how to use *partial document update* with .NET, Java, and Node SDKs. It also describes common errors that you might encounter.
 
 This article links to code samples for the following scenarios:
 
@@ -31,18 +31,20 @@ This article links to code samples for the following scenarios:
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
   - Alternatively, you can [try Azure Cosmos DB free](try-free.md) before you commit.
 
+## Use partial document update
+
 ## [.NET](#tab/dotnet)
 
-Support for Partial Document Update (Patch API) in the [Azure Cosmos DB .NET v3 SDK](nosql/sdk-dotnet-v3.md) is available starting with version *3.23.0*. You can download it from the [NuGet Gallery](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.23.0).
+Support for partial document update (Patch API) in the [Azure Cosmos DB .NET v3 SDK](nosql/sdk-dotnet-v3.md) is available in version *3.23.0* and later. You can download the package from the [NuGet gallery](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.23.0).
 
 > [!NOTE]
-> Find a complete Partial Document Update sample in the [.NET v3 samples repository](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs) on GitHub.
+> Find a complete partial document update sample in the [.NET v3 samples repository](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs) on GitHub.
 
 - Run a single patch operation:
 
     ```csharp
     ItemResponse<Product> response = await container.PatchItemAsync<Product>(
-        id: "e379aea5-63f5-4623-9a9b-4cd9b33b91d5",
+        id: "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
         partitionKey: new PartitionKey("road-bikes"),
         patchOperations: new[] {
             PatchOperation.Replace("/price", 355.45)
@@ -64,7 +66,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB .NET v3 
     };
     
     ItemResponse<Product> response = await container.PatchItemAsync<Product>(
-        id: "e379aea5-63f5-4623-9a9b-4cd9b33b91d5",
+        id: "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
         partitionKey: new PartitionKey("road-bikes"),
         patchOperations: operations
     );
@@ -84,7 +86,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB .NET v3 
     };
     
     ItemResponse<Product> response = await container.PatchItemAsync<Product>(
-        id: "e379aea5-63f5-4623-9a9b-4cd9b33b91d5",
+        id: "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
         partitionKey: new PartitionKey("road-bikes"),
         patchOperations: operations,
         requestOptions: options
@@ -109,12 +111,12 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB .NET v3 
         partitionKey: new PartitionKey("road-bikes")
     );
     batch.PatchItem(
-        id: "e379aea5-63f5-4623-9a9b-4cd9b33b91d5",
+        id: "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
         patchOperations: operations,
         requestOptions: options
     );
     batch.PatchItem(
-        id: "892f609b-8885-44df-a9ed-cce6c0bd2b9e",
+        id: "f5f5f5f5-aaaa-bbbb-cccc-d6d6d6d6d6d6",
         patchOperations: operations,
         requestOptions: options
     );
@@ -125,7 +127,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB .NET v3 
 
 ## [Java](#tab/java)
 
-Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Java v4 SDK](nosql/sdk-java-v4.md) is available starting with version *4.21.0*. You can either add it to the list of dependencies in your `pom.xml` or download it directly from [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos).
+Support for partial document update (Patch API) in the [Azure Cosmos DB Java v4 SDK](nosql/sdk-java-v4.md) is available in version *4.21.0* and later. You can either add it to the list of dependencies in your `pom.xml` or download it directly from [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos).
 
 ```xml
 <dependency>
@@ -142,7 +144,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Java v4 
 
     ```java
     CosmosItemResponse<Product> response = container.patchItem(
-        "e379aea5-63f5-4623-9a9b-4cd9b33b91d5",
+        "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
         new PartitionKey("road-bikes"),
         CosmosPatchOperations
             .create()
@@ -163,7 +165,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Java v4 
         .increment("/price", 50);
 
     CosmosItemResponse<Product> response = container.patchItem(
-        "e379aea5-63f5-4623-9a9b-4cd9b33b91d5",
+        "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
         new PartitionKey("road-bikes"),
         operations,
         Product.class
@@ -181,7 +183,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Java v4 
         .replace("/price", 100.00);
 
     CosmosItemResponse<Product> response = container.patchItem(
-        "e379aea5-63f5-4623-9a9b-4cd9b33b91d5",
+        "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
         new PartitionKey("road-bikes"),
         operations,
         options,
@@ -204,12 +206,12 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Java v4 
         new PartitionKey("road-bikes")
     );
     batch.patchItemOperation(
-        "e379aea5-63f5-4623-9a9b-4cd9b33b91d5",
+        "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
         operations,
         options
     );
     batch.patchItemOperation(
-        "892f609b-8885-44df-a9ed-cce6c0bd2b9e",
+        "f5f5f5f5-aaaa-bbbb-cccc-d6d6d6d6d6d6",
         operations,
         options
     );
@@ -220,10 +222,10 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Java v4 
 
 ## [Node.js](#tab/nodejs)
 
-Support for Partial Document Update (Patch API) in the [Azure Cosmos DB JavaScript SDK](nosql/sdk-nodejs.md) is available starting with version *3.15.0*. You can download it from the [npm Registry](https://www.npmjs.com/package/@azure/cosmos).
+Support for partial document update (Patch API) in the [Azure Cosmos DB JavaScript SDK](nosql/sdk-nodejs.md) is available in version *3.15.0* and later. You can download it from the [npm Registry](https://www.npmjs.com/package/@azure/cosmos).
 
 > [!NOTE]
-> Find a complete Partial Document Update sample in the [.js v3 samples repository](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples/v3/typescript/src/ItemManagement.ts#L167) on GitHub. In the sample, as the container is created without a partition key specified, the JavaScript SDK resolves the partition key values from the items through the container's partition key definition.
+> Find a complete partial document update sample in the [.js v3 samples repository](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples/v3/typescript/src/ItemManagement.ts#L167) on GitHub. In the sample, as the container is created without a partition key specified, the JavaScript SDK resolves the partition key values from the items through the container's partition key definition.
 
 - Run a single patch operation:
 
@@ -235,7 +237,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB JavaScri
     
     const { resource: updated } = await container
         .item(
-            'e379aea5-63f5-4623-9a9b-4cd9b33b91d5', 
+            'e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5', 
             'road-bikes'
         )
         .patch(operations);
@@ -252,7 +254,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB JavaScri
     
     const { resource: updated } = await container
         .item(
-            'e379aea5-63f5-4623-9a9b-4cd9b33b91d5', 
+            'e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5', 
             'road-bikes'
         )
         .patch(operations);
@@ -260,10 +262,10 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB JavaScri
 
 ## [Python (Preview)](#tab/python)
 
-Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python SDK](nosql/sdk-python.md) is available from version *4.4.0b2*. You can download it from the [pip Registry](https://pypi.org/project/azure-cosmos/4.4.0b2/).
+Support for partial document update (Patch API) in the [Azure Cosmos DB Python SDK](nosql/sdk-python.md) is available from version *4.4.0b2*. You can download it from the [pip registry](https://pypi.org/project/azure-cosmos/4.4.0b2/).
 
 > [!NOTE]
-> Find a complete Partial Document Update sample in the [python samples repository](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/document_management.py#L105C8-L122) on GitHub. 
+> Find a complete partial document update sample in the [python samples repository](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/document_management.py#L105C8-L122) on GitHub. 
 
 - Run a single patch operation:
 
@@ -273,7 +275,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python S
         { 'op': 'replace', 'path': '/price', 'value': 355.45 }
     ]
     
-    response = container.patch_item(item='e379aea5-63f5-4623-9a9b-4cd9b33b91d5', partition_key='road-bikes', patch_operations=operations)
+    response = container.patch_item(item='e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5', partition_key='road-bikes', patch_operations=operations)
     
     ```
 
@@ -286,7 +288,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python S
         { 'op': 'remove', 'path': '/used' }
     ]
     
-    response = container.patch_item(item='e379aea5-63f5-4623-9a9b-4cd9b33b91d5', partition_key='road-bikes', patch_operations=operations)
+    response = container.patch_item(item='e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5', partition_key='road-bikes', patch_operations=operations)
 
     ```
 
@@ -301,7 +303,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python S
     ]
 
     try:
-        container.patch_item(item='e379aea5-63f5-4623-9a9b-4cd9b33b91d5', partition_key='road-bikes', patch_operations=operations, filter_predicate=filter)
+        container.patch_item(item='e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5', partition_key='road-bikes', patch_operations=operations, filter_predicate=filter)
     except exceptions.CosmosHttpResponseError as e:
         print('\nError occurred. {0}'.format(e.message))
     
@@ -313,7 +315,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python S
 
     ```go
 	pk := azcosmos.NewPartitionKeyString("road-bikes")
-	id := "e379aea5-63f5-4623-9a9b-4cd9b33b91d5"
+	id := "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5"
 
 	patchOp := azcosmos.PatchOperations{}
 	patchOp.AppendReplace("/price", 100.00)
@@ -325,7 +327,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python S
 
     ```go
     pk := azcosmos.NewPartitionKeyString("road-bikes")
-	id := "e379aea5-63f5-4623-9a9b-4cd9b33b91d5"
+	id := "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5"
 	
     patchOp := azcosmos.PatchOperations{}
 	patchOp.AppendAdd("/color", "silver")
@@ -343,8 +345,8 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python S
 	patchOp.AppendRemove("/used")
 
 	batch := container.NewTransactionalBatch(pk)
-	batch.PatchItem("e379aea5-63f5-4623-9a9b-4cd9b33b91d5", patchOp, nil)
-	batch.PatchItem("892f609b-8885-44df-a9ed-cce6c0bd2b9e", patchOp, nil)
+	batch.PatchItem("e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5", patchOp, nil)
+	batch.PatchItem("f5f5f5f5-aaaa-bbbb-cccc-d6d6d6d6d6d6", patchOp, nil)
 
 	resp, err := container.ExecuteTransactionalBatch(context.Background(), batch, nil)
 	if err != nil {
@@ -360,7 +362,7 @@ Support for Partial Document Update (Patch API) in the [Azure Cosmos DB Python S
 
 ## Support for server-side programming
 
-Partial Document Update operations can also be [executed on the server-side](stored-procedures-triggers-udfs.md) using stored procedures, triggers, and user-defined functions.
+Partial document update operations can also be [executed on the server-side](stored-procedures-triggers-udfs.md) by using stored procedures, triggers, and user-defined functions.
 
 ```javascript
 this.patchDocument = function (documentLink, patchSpec, options, callback) {
@@ -457,21 +459,21 @@ function patchDemo() {
 
 ## Troubleshooting
 
-Here's some common errors that you might encounter while using this feature:
+Here are some common errors that you might encounter while using this feature:
 
-| **Error Message** | **Description** |
+| **Error message** | **Description** |
 | ------------ | -------- |
-| Invalid patch request: check syntax of patch specification. | The patch operation syntax is invalid. For more information, see [the Partial Document Update specification](partial-document-update.md#rest-api-reference-for-partial-document-update). |
-| Invalid patch request: Can't patch system property `SYSTEM_PROPERTY`. | System-generated properties like `_id`, `_ts`, `_etag`, `_rid` aren't modifiable using a patch operation. For more information, see [Partial Document Update FAQs](partial-document-update-faq.yml#is-partial-document-update-supported-for-system-generated-properties-). |
-| The number of patch operations can't exceed 10. | There's a limit of 10 patch operations that can be added in a single patch specification. For more information, see [Partial Document Update FAQs](partial-document-update-faq.yml#is-there-a-limit-to-the-number-of-partial-document-update-operations-). |
+| Invalid patch request: check syntax of patch specification. | The patch operation syntax is invalid. To learn more, see the [specification](partial-document-update.md#rest-api-reference-for-partial-document-update). |
+| Invalid patch request: Can't patch system property `SYSTEM_PROPERTY`. | System-generated properties like `_id`, `_ts`, `_etag`, `_rid` aren't modifiable using a patch operation. To learn more, see the [partial document update FAQ](partial-document-update-faq.yml#is-partial-document-update-supported-for-system-generated-properties-). |
+| The number of patch operations can't exceed 10. | There's a limit of 10 patch operations that can be added in a single patch specification. To learn more, see the [partial document update FAQ](partial-document-update-faq.yml#is-there-a-limit-to-the-number-of-partial-document-update-operations-). |
 | For Operation(`PATCH_OPERATION_INDEX`): Index(`ARRAY_INDEX`) to operate on is out of array bounds. | The index of array element to be patched is out of bounds. |
-| For Operation(`PATCH_OPERATION_INDEX`)): Node(`PATH`) to be replaced has been removed earlier in the transaction. | The path you're trying to patch doesn't exist. |
+| For Operation(`PATCH_OPERATION_INDEX`)): Node(`PATH`) to be replaced was removed earlier in the transaction. | The path you're trying to patch doesn't exist. |
 | For Operation(`PATCH_OPERATION_INDEX`): Node(`PATH`) to be removed is absent. Note: it might also have been removed earlier in the transaction. | The path you're trying to patch doesn't exist. |
 | For Operation(`PATCH_OPERATION_INDEX`): Node(`PATH`) to be replaced is absent. | The path you're trying to patch doesn't exist. |
-| For Operation(`PATCH_OPERATION_INDEX`): Node(`PATH`) isn't a number. | Increment operation can only work on integer and float. For more information, see: [Supported Operations](partial-document-update.md#supported-operations). |
-| For Operation(`PATCH_OPERATION_INDEX`): Add Operation can only create a child object of an existing node (array or object) and can't create path recursively, no path found beyond: `PATH`. | Child paths can be added to an object or array node type. Also, to create `n`th child, `n-1`th child should be present. |
-| For Operation(`PATCH_OPERATION_INDEX`): Given Operation can only create a child object of an existing node(array or object) and can't create path recursively, no path found beyond: `PATH`. | Child paths can be added to an object or array node type. Also, to create `n`th child, `n-1`th child should be present. |
+| For Operation(`PATCH_OPERATION_INDEX`): Node(`PATH`) isn't a number. | Increment operation can only work on integer and float. For more information, see [Supported operations](partial-document-update.md#supported-operations). |
+| For Operation(`PATCH_OPERATION_INDEX`): Add operation can only create a child object of an existing node (array or object) and can't create path recursively, no path found beyond: `PATH`. | Child paths can be added to an object or array node type. Also, to create `n`th child, `n-1`th child should be present. |
+| For Operation(`PATCH_OPERATION_INDEX`): Given operation can only create a child object of an existing node(array or object) and can't create path recursively, no path found beyond: `PATH`. | Child paths can be added to an object or array node type. Also, to create `n`th child, `n-1`th child should be present. |
 
-## Next steps
+## Next step
 
-- [Frequently asked questions about Partial Document Update in Azure Cosmos DB](partial-document-update-faq.yml)
+- [Frequently asked questions about partial document update](partial-document-update-faq.yml)

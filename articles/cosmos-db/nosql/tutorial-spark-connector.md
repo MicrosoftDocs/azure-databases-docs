@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Connect by using Spark'
+title: 'Tutorial: Connect by Using Spark'
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Connect to Azure Cosmos DB for NoSQL by using the Spark 3 OLTP connector. Use the connector to query data in your API for a NoSQL account.
 author: markjbrown
@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-python
 ms.topic: tutorial
-ms.date: 01/17/2024
+ms.date: 07/21/2025
 zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 #CustomerIntent: As a data scientist, I want to connect to Azure Cosmos DB for NoSQL by using Spark so that I can perform analytics on my data in Azure Cosmos DB.
 ---
@@ -152,7 +152,7 @@ Use the Catalog API to manage account resources such as databases and containers
 
     ::: zone-end
 
-1. Create another container named `employees` by using a hierarchical partition key configuration. Use `/organization`, `/department`, and `/team` as the set of partition key paths. Follow that specific order. Also, set the throughput to a manual amount of `400` RUs.
+1. Create another container named `employees` by using a hierarchical partition key configuration. Use `/organization`, `/department`, and `/team` as the set of partition key paths. Follow that specific order. Also, set the throughput to a manual number of `400` RUs.
 
     ::: zone pivot="programming-language-python"
 
@@ -624,10 +624,10 @@ When you work with API for NoSQL data in Spark, you can perform partial updates 
 - [Apache Spark](https://spark.apache.org/)
 - [Azure Cosmos DB Catalog API](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/catalog-api.md)
 - [Configuration parameter reference](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/configuration-reference.md)
-- [Azure Cosmos DB Spark Connector Samples](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3_2-12/Samples)
+- [Azure Cosmos DB Spark connector samples](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3_2-12/Samples)
 - [Migrate from Spark 2.4 to Spark 3.*](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/migration.md)
 - Deprecated versions:
-  - The Azure Cosmos DB Spark Connector for Spark 3.1 and 3.2 is deprecated, because there are no supported Sprark 3.1 or 3.2 runtimes in Azure Databricks, Azure Synapse or Azure HDInsight available anymore.
+  - The Azure Cosmos DB Spark Connector for Spark 3.1 and 3.2 is deprecated, because there are no supported Spark 3.1 or 3.2 runtimes in Azure Databricks, Azure Synapse or Azure HDInsight available anymore.
   - [Migration Guide to update from Spark 3.1](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-1_2-12/migration-guide.md)
   - [Migration Guide to update from Spark 3.2](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-2_2-12/migration-guide.md)
 - Version compatibility:
