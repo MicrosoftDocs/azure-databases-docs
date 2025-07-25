@@ -1,8 +1,8 @@
 ---
 title: Geo-disaster recovery
 description: Learn about the concepts of Geo-disaster recovery with Azure Database for PostgreSQL flexible server.
-author: gkasar
-ms.author: gkasar
+author: jjfrost
+ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql

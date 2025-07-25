@@ -1,8 +1,8 @@
 ---
 title: Security
 description: Learn about security in the Flexible Server deployment option for Azure Database for PostgreSQL flexible server.
-author: techlake
-ms.author: hganten
+author: tameikal-msft
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 6/30/2025
 ms.service: azure-database-postgresql
@@ -188,10 +188,10 @@ Newly created databases in Azure Database for PostgreSQL flexible server have a 
   ```
 In this example, user *user1* can connect and has all privileges in our test database *Test_db*, but not any other db on the server. It would be recommended further, instead of giving this user\role *ALL PRIVILEGES* on that database and its objects, to provide more selective permissions, such as *SELECT*,*INSERT*,*EXECUTE*, etc. For more information about privileges in PostgreSQL databases, see the [GRANT](https://www.postgresql.org/docs/current/sql-grant.html) and [REVOKE](https://www.postgresql.org/docs/current/sql-revoke.html) commands in the PostgreSQL docs.
 
-### Public schema ownership changes in PostgreSQL 15
+### Public schema ownership changes in Azure Database for PostgreSQL Flexible server
 
-From Postgres version 15, ownership of the public schema has been changed to the new pg_database_owner role. It enables every database owner to own the database’s public schema.  
-More information can be found in [PostgreSQL release notes.](https://www.postgresql.org/docs/release/15.0/)
+In vanilla (open-source) PostgreSQL 15+, ownership of the public schema changed to the new pg_database_owner role, allowing database owners to control it. More information can be found in the [PostgreSQL release notes.](https://www.postgresql.org/docs/release/15.0/)
+However, in Azure Database for PostgreSQL Flexible server, this change does not apply. The public schema is owned by the azure_pg_admin role across all supported PostgreSQL versions. This is a managed service behavior for security and consistency.
 
 ### PostgreSQL 16 changes with role based security
 

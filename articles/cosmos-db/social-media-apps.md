@@ -33,7 +33,7 @@ You could use an enormous SQL instance with enough power to solve thousands of q
 
 ## The NoSQL road
 
-This article guides you into modeling your social platform's data with Azure's NoSQL database [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) cost-effectively. It also tells you how to use other Azure Cosmos DB features like the [API for Gremlin](gremlin/introduction.md). Using a [NoSQL](https://en.wikipedia.org/wiki/NoSQL) approach, storing data, in JSON format and applying [denormalization](https://en.wikipedia.org/wiki/Denormalization), the previously complicated post can be transformed into a single [Document](https://en.wikipedia.org/wiki/Document-oriented_database):
+This article guides you into modeling your social platform's data with Azure's NoSQL database [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) cost-effectively. It also tells you how to use other Azure Cosmos DB features like the [API for Gremlin](gremlin/overview.md). Using a [NoSQL](https://en.wikipedia.org/wiki/NoSQL) approach, storing data, in JSON format and applying [denormalization](https://en.wikipedia.org/wiki/Denormalization), the previously complicated post can be transformed into a single [Document](https://en.wikipedia.org/wiki/Document-oriented_database):
 
 ```json
 {

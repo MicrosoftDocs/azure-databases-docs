@@ -1,10 +1,11 @@
 ---
 title: "Quickstart: Guide for GitHub Copilot Feature for Visual Studio Code PostgreSQL Extension"
 description: Learn how to use the GitHub Copilot integration in the PostgreSQL extension for Visual Studio Code.
-author: jjfrost
-ms.author: jfrost
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 05/19/2025
+ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.collection:
@@ -163,4 +164,4 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 - [What is the PostgreSQL extension for Visual Studio Code preview?](overview.md)
 - [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview](quickstart-connect.md)
-- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
+- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

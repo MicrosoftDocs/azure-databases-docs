@@ -13,6 +13,7 @@ ms.custom:
 - sfi-ropc-blocked
 ms.topic: concept-article
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.collection:
 - ce-skilling-ai-copilot
 appliesto:
@@ -35,11 +36,14 @@ In the Integrated Vector Database in Azure Cosmos DB for MongoDB (vCore), embedd
 
 ## Perform Vector Similarity search
 
-Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. Cosmos DB currently supports three types of vector indexes:
+Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. While Azure Cosmos DB for MongoDB (vCore) offers multiple options, here are some general guidelines to help you get started based on the size of your dataset:
 
-- **DiskANN (Recommended)**: Ideal for large-scale datasets, leveraging SSDs for efficient memory usage while maintaining high recall in approximate nearest-neighbor (ANN) searches.
-- **HNSW**: Suited for moderate-sized datasets needing high recall, with a graph-based structure that balances accuracy and resource efficiency.
-- **IVF**: Uses clustering to optimize search speed in expansive datasets, focusing searches within targeted clusters to accelerate performance.
+| | **IVF** | **HNSW** | **DiskANN (recommended)** |
+| --- | --- | --- | --- |
+| **Description** | An IVFFlat index divides vectors into lists, then searches a subset closest to the query vector. | An HNSW index creates a multilayer graph. | DiskANN is an approximate nearest neighbor search algorithm designed for efficient vector search at any scale. |
+| **Key Trade-offs** | **Pros:** Faster build times, lower memory use. <br /> **Cons:** Lower query performance (in terms of speed-recall tradeoff). | **Pros:** Better query performance (in terms of speed-recall tradeoff), can be created on an empty table. <br />**Cons:** Slower build times, higher memory use. | **Pros:** Efficient at any scale, high recall, high throughput, low latency. |
+| **Vector Count** | Under 10,000 | Up to 50,000 | Up to 500,000+ |
+| **Recommended Cluster Tier** | M10 or M20 | M30 and higher | M30 and higher |
 
 ### [DiskANN](#tab/diskann)
 

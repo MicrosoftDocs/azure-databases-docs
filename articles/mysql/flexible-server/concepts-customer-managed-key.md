@@ -1,8 +1,8 @@
 ---
 title: Data Encryption with Customer Managed Keys
 description: Learn how data encryption with customer-managed keys for Azure Database for MySQL - Flexible Server enables you to bring your own key (BYOK) for data protection at rest.
-author: SudheeshGH
-ms.author: sunaray
+author: techlake
+ms.author: hganten
 ms.reviewer: maghan
 ms.date: 04/22/2025
 ms.service: azure-database-mysql

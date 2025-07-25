@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Create a Flexible Server By Using Bicep"
 description: In this quickstart, learn how to deploy a database in an instance of Azure Database for MySQL - Flexible Server by using Bicep.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

@@ -9,6 +9,7 @@ ms.custom:
   - build-2024
 ms.topic: concept-article
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
@@ -158,12 +159,6 @@ Use the natively integrated vector database in [Azure Cosmos DB for PostgreSQL](
 #### Code sample
 
 - Python: [Python notebook tutorial - food review chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-PostgreSQL_CognitiveSearch)
-
-## Vector database solutions
-
-- [Azure PostgreSQL Server pgvector Extension](../postgresql/flexible-server/how-to-use-pgvector.md)
-
-:::image type="content" source="media/vector-search/azure-databases-and-ai-search.png" lightbox="media/vector-search/azure-databases-and-ai-search.png" alt-text="Diagram of Vector indexing services for Azure Cosmos DB.":::
 
 ## Related content
 

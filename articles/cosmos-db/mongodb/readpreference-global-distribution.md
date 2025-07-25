@@ -70,11 +70,11 @@ readFromSecondaryfunc query completed!
 
 MongoDB protocol provides the following Read Preference modes for clients to use:
 
-1. PRIMARY
-2. PRIMARY_PREFERRED
-3. SECONDARY
-4. SECONDARY_PREFERRED
-5. NEAREST
+1. primary
+2. primaryPreferred
+3. secondary
+4. secondaryPreferred
+5. nearest
 
 Refer to the detailed [MongoDB Read Preference behavior](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) documentation for details on the behavior of each of these read preference modes. In Azure Cosmos DB, primary maps to WRITE region and secondary maps to READ region.
 

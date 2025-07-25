@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.author: thvankra
 ms.collection:
   - ce-skilling-ai-copilot
@@ -486,10 +487,6 @@ demo.launch(debug=True)
 # Be sure to run this cell to close or restart the Gradio demo
 demo.close()
 ```
-
-## Vector Database Solutions
-
-[Azure PostgreSQL Server pgvector Extension](../../postgresql/flexible-server/how-to-use-pgvector.md)
 
 ## Related content
 

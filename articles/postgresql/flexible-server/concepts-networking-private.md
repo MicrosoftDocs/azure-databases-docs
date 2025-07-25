@@ -1,8 +1,8 @@
 ---
 title: Networking overview with private access (virtual network)
 description: Learn about connectivity and networking options for Azure Database for PostgreSQL flexible server with private access (virtual network).
-author: akashraokm
-ms.author: akashrao
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/27/2024
 ms.service: azure-database-postgresql

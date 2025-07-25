@@ -1,3 +1,5 @@
+- name: $cmp
+  href: $cmp.md
 - name: $eq
   href: $eq.md
 - name: $gt
