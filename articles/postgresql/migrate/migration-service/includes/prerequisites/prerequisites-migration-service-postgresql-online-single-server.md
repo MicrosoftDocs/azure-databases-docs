@@ -47,7 +47,7 @@ To prevent the Online migration from running out of storage to store the logs, e
 - When migrating across PostgreSQL versions (major or minor), ensure compatibility between your database and application by reviewing the [release notes](https://www.postgresql.org/docs/17/release.html) for potential breaking changes.
 
 > [!IMPORTANT]  
-> [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before inititating the migration. This is essential for the existing credentials on single server to work on your flexible server.
+> [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initiating the migration. This is essential for the existing credentials on single server to work on your flexible server.
 
 ### Set up Network
 

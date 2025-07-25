@@ -1,5 +1,5 @@
 ---
-title: "Prerequisites Using the Migration Service From an Azure VM or an on-premise PostgreSQL Server (Online)"
+title: "Prerequisites Using the Migration Service From an Azure VM or an on-premises PostgreSQL Server (Online)"
 description: Providing the online prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri

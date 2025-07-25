@@ -1,5 +1,5 @@
 ---
-title: "Premigration Error Codes In The Migration Service"
+title: "Premigration Error Codes in the Migration Service"
 description: Error codes for troubleshooting and resolving issues during the migration process in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri

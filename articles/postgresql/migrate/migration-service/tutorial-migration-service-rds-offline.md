@@ -1,5 +1,5 @@
 ---
-title: "Migrate Offline, From An Amazon Rds For Postgresql To Azure Database For Postgresql, Using The Migration Service In Azure"
+title: "Migrate Offline, from an Amazon RDS for PostgreSQL to Azure Database for PostgreSQL, Using the Migration Service in Azure"
 description: "Learn to migrate, seamlessly and in offline mode, from an Amazon RDS for PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri

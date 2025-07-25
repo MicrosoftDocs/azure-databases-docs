@@ -1,5 +1,5 @@
 ---
-title: "Permissions In Migration Scenarios"
+title: "Permissions in Migration Scenarios"
 description: Learn about key concerns about permissions when you migrate users, roles, and ownerships by using the migration service in Azure Database for PostgreSQL. Learn about steps to take in specific migration scenarios.
 author: shriramm
 ms.author: shriramm

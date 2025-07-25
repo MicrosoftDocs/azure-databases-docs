@@ -1,5 +1,5 @@
 ---
-title: "Migrate Online, From An Azure Vm Or An On-Premises Postgresql To Azure Database For Postgresql, Using The Migration Service In Azure"
+title: "Migrate Online, from an Azure VM or an On-Premises PostgreSQL to Azure Database for PostgreSQL, Using the Migration Service in Azure"
 description: "Learn to migrate, seamlessly and in online mode, from an Azure VM or an on-premises PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri

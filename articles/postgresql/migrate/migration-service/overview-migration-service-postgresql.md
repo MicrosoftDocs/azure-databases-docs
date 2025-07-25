@@ -1,5 +1,5 @@
 ---
-title: "Migration Service In Azure Database For Postgresql"
+title: "Migration Service in Azure Database for PostgreSQL"
 description: Get an introduction to using the migration service to migrate to Azure Database for PostgreSQL flexible server, including advantages and migration options.
 author: hariramt
 ms.author: hariramt

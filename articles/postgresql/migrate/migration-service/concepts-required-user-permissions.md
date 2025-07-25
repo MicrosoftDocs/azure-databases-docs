@@ -1,5 +1,5 @@
 ---
-title: "Required Permissions For Migration Creation And Monitoring"
+title: "Required Permissions for Migration Creation and Monitoring"
 description: Permissions required for a user to create and monitor migrations.
 author: shriramm
 ms.author: shriramm
