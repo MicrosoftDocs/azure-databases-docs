@@ -1,26 +1,22 @@
 ---
-  title: $mod (evaluation query) 
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $mod
+  titleSuffix: Overview of the $mod operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $mod operator performs a modulo operation on the value of a field and selects documents with a specified result.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 07/25/2025
 ---
 
-# $mod (evaluation query)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $mod
 
 The `$mod` operator performs a modulo operation on the value of a field and selects documents with a specified result. This operator is useful for finding documents where a numeric field value, when divided by a divisor, leaves a specific remainder. It commonly serves for pagination, sampling data, or finding patterns in numeric sequences.
 
 ## Syntax
 
-The syntax for the `$mod` operator is as follows:
-
-```javascript
+```Javascript
 {
   <field>: { $mod: [ <divisor>, <remainder> ] }
 }
@@ -28,13 +24,35 @@ The syntax for the `$mod` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameters | Description |
 | --- | --- |
 | **`<field>`** | The field to perform the modulo operation on. The field must contain numeric values. |
 | **`<divisor>`** | The number to divide the field value by. Must be a positive number. |
 | **`<remainder>`** | The expected remainder after the modulo operation. Must be a non-negative number less than the divisor. |
 
 ## Example
+
+Let's understand the usage with sample json from `stores` dataset.
+
+```json
+{
+  "_id": "new-store-001",
+  "name": "TechWorld Electronics - Downtown Branch",
+  "sales": {
+    "totalSales": 5000
+  },
+  "createdDate": { "$date": "2025-06-11T11:11:32.262Z" },
+  "status": "new",
+  "staff": {
+    "totalStaff": {
+      "fullTime": 0,
+      "partTime": 0
+    }
+  },
+  "version": 1,
+  "storeOpeningDate": { "$date": "2025-06-11T11:11:32.262Z" }
+}
+```
 
 ### Example 1: Find stores with sales divisible by 1000
 

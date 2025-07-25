@@ -1,24 +1,20 @@
 ---
-  title: $text performs text search on the content of indexed string fields.
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $text
+  titleSuffix: Overview of the $text operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $text operator performs text search on the content of indexed string fields, enabling full-text search capabilities.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 07/25/2025
 ---
 
-# $text (field evaluation query operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $text
 
 The `$text` operator performs text search on the content of indexed string fields. It enables full-text search capabilities by searching for specified words or phrases across text-indexed fields. The `$text` operator requires at least one text index on the collection and provides features like stemming, stop word removal, and relevance scoring.
 
 ## Syntax
-
-The syntax for the `$text` operator is as follows:
 
 ```javascript
 {
@@ -33,7 +29,7 @@ The syntax for the `$text` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameters | Description |
 | --- | --- |
 | **`$search`** | Required. The search string containing the terms to search for. Multiple terms are treated as an OR operation unless enclosed in quotes for phrase matching. |
 | **`$language`** | Optional. Language for the text search, which determines the stemming rules and stop words, though the system uses the index's default language if you don't specify one |

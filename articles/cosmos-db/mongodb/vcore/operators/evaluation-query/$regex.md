@@ -1,18 +1,16 @@
 ---
-  title: $regex (evaluation query)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $regex
+  titleSuffix: Overview of the $regex operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $regex operator provides regular expression capabilities for pattern matching in queries, allowing flexible string matching and searching.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 07/25/2025
 ---
 
-# $regex (evaluation query)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $regex
 
 The `$regex` operator provides regular expression capabilities for pattern matching in queries. It allows you to search for documents where a field matches a specified regular expression pattern. This operator is useful for flexible string searching, pattern validation, and complex text filtering operations.
 
@@ -36,13 +34,129 @@ Or the shorter form:
 
 ## Parameters
 
-| | Description |
+| Parameters | Description |
 | --- | --- |
 | **`<field>`** | The field to search in. Must contain string values. |
 | **`<pattern>`** | The regular expression pattern to match against. |
 | **`<options>`** | Optional. Regular expression options such as case-insensitive matching. Common options include 'i' (case insensitive), 'm' (multiline), 's' (dot all), and 'x' (extended). |
 
 ## Example
+
+Let's understand the usage with sample json from `stores` dataset.
+
+```json
+{
+  "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+  "name": "First Up Consultants | Bed and Bath Pantry - Port Antone",
+  "location": {
+    "lat": 87.2239,
+    "lon": -129.0506
+  },
+  "staff": {
+    "employeeCount": {
+      "fullTime": 8,
+      "partTime": 7
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      { "categoryName": "Towel Sets", "totalSales": 520 },
+      { "categoryName": "Bath Accessories", "totalSales": 41710 },
+      { "categoryName": "Drapes", "totalSales": 42893 },
+      { "categoryName": "Towel Racks", "totalSales": 30773 },
+      { "categoryName": "Hybrid Mattresses", "totalSales": 39491 },
+      { "categoryName": "Innerspring Mattresses", "totalSales": 6410 },
+      { "categoryName": "Bed Frames", "totalSales": 41917 },
+      { "categoryName": "Mattress Protectors", "totalSales": 44124 },
+      { "categoryName": "Bath Towels", "totalSales": 5671 },
+      { "categoryName": "Turkish Towels", "totalSales": 25674 }
+    ],
+    "revenue": 279183
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Discount Derby",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
+        "endDate": { "Year": 2024, "Month": 1, "Day": 5 }
+      },
+      "discounts": [
+        { "categoryName": "Microfiber Towels", "discountPercentage": 6 },
+        { "categoryName": "Bath Sheets", "discountPercentage": 16 },
+        { "categoryName": "Towels", "discountPercentage": 10 },
+        { "categoryName": "Hand Towels", "discountPercentage": 11 },
+        { "categoryName": "Kitchen Towels", "discountPercentage": 21 },
+        { "categoryName": "Placemat", "discountPercentage": 11 },
+        { "categoryName": "Bath Accessories", "discountPercentage": 11 },
+        { "categoryName": "Bedspreads", "discountPercentage": 21 },
+        { "categoryName": "Shower Curtains", "discountPercentage": 24 },
+        { "categoryName": "Pillow Top Mattresses", "discountPercentage": 10 }
+      ]
+    },
+    {
+      "eventName": "Big Bargain Blitz",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
+        "endDate": { "Year": 2024, "Month": 4, "Day": 3 }
+      },
+      "discounts": [
+        { "categoryName": "Mattress Toppers", "discountPercentage": 24 },
+        { "categoryName": "Pillow Cases", "discountPercentage": 14 },
+        { "categoryName": "Soap Dispensers", "discountPercentage": 20 },
+        { "categoryName": "Beach Towels", "discountPercentage": 18 },
+        { "categoryName": "Bath Mats", "discountPercentage": 22 },
+        { "categoryName": "Blankets", "discountPercentage": 12 },
+        { "categoryName": "Kitchen Towels", "discountPercentage": 8 },
+        { "categoryName": "Memory Foam Mattresses", "discountPercentage": 14 },
+        { "categoryName": "Placemat", "discountPercentage": 17 },
+        { "categoryName": "Bed Frames", "discountPercentage": 23 }
+      ]
+    },
+    {
+      "eventName": "Massive Markdown Mania",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Bed Skirts", "discountPercentage": 17 },
+        { "categoryName": "Shower Curtains", "discountPercentage": 23 },
+        { "categoryName": "Bath Towels", "discountPercentage": 21 },
+        { "categoryName": "Memory Foam Mattresses", "discountPercentage": 11 },
+        { "categoryName": "Bathrobes", "discountPercentage": 19 },
+        { "categoryName": "Bath Accessories", "discountPercentage": 5 },
+        { "categoryName": "Box Springs", "discountPercentage": 21 },
+        { "categoryName": "Hand Towels", "discountPercentage": 13 },
+        { "categoryName": "Tablecloths", "discountPercentage": 19 },
+        { "categoryName": "Duvet Covers", "discountPercentage": 23 }
+      ]
+    },
+    {
+      "eventName": "Unbeatable Bargain Bash",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+        "endDate": { "Year": 2024, "Month": 9, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Adjustable Beds", "discountPercentage": 19 },
+        { "categoryName": "Mattress Toppers", "discountPercentage": 23 },
+        { "categoryName": "Washcloths", "discountPercentage": 7 },
+        { "categoryName": "Comforters", "discountPercentage": 24 },
+        { "categoryName": "Kitchen Towels", "discountPercentage": 7 },
+        { "categoryName": "Pillows", "discountPercentage": 13 },
+        { "categoryName": "Bath Sheets", "discountPercentage": 25 },
+        { "categoryName": "Napkins", "discountPercentage": 25 },
+        { "categoryName": "Bath Towels", "discountPercentage": 15 },
+        { "categoryName": "Beach Towels", "discountPercentage": 15 }
+      ]
+    }
+  ],
+  "company": "First Up Consultants",
+  "city": "Port Antone",
+  "storeOpeningDate": { "$date": "2024-09-19T17:31:59.665Z" },
+  "lastUpdated": { "$timestamp": { "t": 1729359119, "i": 1 } }
+}
+```
 
 ### Example 1: Find stores by name pattern
 
