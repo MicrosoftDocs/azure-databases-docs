@@ -57,7 +57,7 @@ The following are best practices for the properties in the graph objects:
 
 ## Entity and relationship modeling guidelines
 
-The following guidelines help you approach data modeling for an [Azure Cosmos DB for Apache Gremlin](introduction.md) graph database. These guidelines assume that there's an existing definition of a data domain and queries for it.
+The following guidelines help you approach data modeling for an [Azure Cosmos DB for Apache Gremlin](overview.md) graph database. These guidelines assume that there's an existing definition of a data domain and queries for it.
 
 > [!NOTE]
 > The following steps are presented as recommendations. You should evaluate and test the final model before considering it as production-ready. Additionally, the recommendations are specific to Azure Cosmos DB's Gremlin API implementation. 

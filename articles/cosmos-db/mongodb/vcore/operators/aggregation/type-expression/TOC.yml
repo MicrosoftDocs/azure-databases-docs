@@ -18,5 +18,3 @@
   href: $tostring.md
 - name: $toDate
   href: $todate.md
-- name: $type
-  href: $type.md

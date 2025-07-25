@@ -437,6 +437,9 @@ Migrating to Azure SQL Database by using the Azure SQL extension for Azure Data 
 
 ## Azure SQL Managed Instance limitations
 
+> [!IMPORTANT]  
+> Online migrations with the Azure SQL extension use the same technology as the Log Replay Service (LRS), and have the same limitations. Before you migrate databases to the **Business Critical** service tier, consider [these limitations](/azure/azure-sql/managed-instance/log-replay-service-migrate#limitations-when-migrating-to-the-business-critical-service-tier), which don't apply to the **General Purpose** service tier.
+
 Migrating to Azure SQL Managed Instance by using the Azure SQL extension for Azure Data Studio has the following limitations:
 
 [!INCLUDE [sql-mi-limitations](includes/sql-managed-instance-limitations.md)]

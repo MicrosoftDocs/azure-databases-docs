@@ -5,6 +5,7 @@ author: jojohnso-msft
 ms.author: jojohnso
 ms.reviewer: maghan
 ms.date: 05/19/2025
+ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to

@@ -7,6 +7,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 adobe-target: true
 ms.collection:
   - ce-skilling-ai-copilot

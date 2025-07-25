@@ -1,7 +1,7 @@
 ---
 title: $convert
-titleSuffix: Overview of the $convert operator in Azure Cosmos DB for MongoDB vCore
-description: The $convert operator in Azure Cosmos DB for MongoDB vCore converts an expression into the specified type
+titleSuffix: Overview of the $convert operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $convert operator converts an expression into the specified type
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -11,16 +11,21 @@ ms.date: 02/24/2025
 ---
 
 # $convert
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The $convert operator converts an expression into a value of the specified type. The $convert operator also performs a specified action if the conversion of the input expression to the specified type fails.
+The $convert operator converts an expression into a value of the specified type.
 
 ## Syntax
 
-The syntax for the `$convert` operator is:
-
-```mongodb
-{ "$convert": {"input": <expression>, "to": <type>, "format": <binData format>, "onError": <value to return on error>, "onNull": <value to return on null> }
+```javascript
+{
+    $convert: {
+        input: < expression > ,
+        to: < type > ,
+        format: < binData format > ,
+        onError: < value to return on error > ,
+        onNull: < value to return on null >
+    }
+}
 ```
 
 ## Parameters
@@ -34,7 +39,7 @@ The syntax for the `$convert` operator is:
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -148,6 +153,8 @@ Consider this sample document from the stores collection in the StoreData databa
 
 ### Example 1: Convert an Int value into a String
 
+To convert the fullTime field from an integer to a string, run a query using the $convert operator to make the conversion.
+
 ```javascript
 db.stores.aggregate([
 {
@@ -179,6 +186,8 @@ This query returns the following result:
 ```
 
 ### Example 2: Convert an Int value into a Boolean value
+
+To convert the fullTime field from an integer to a boolean, run a query using the $convert operator to make the conversion. Any positive value for the fullTime field will be converted to true.
 
 ```javascript
 db.stores.aggregate([
@@ -212,6 +221,8 @@ This query returns the following result:
 
 ### Example 3: Convert an Int value into a Decimal value
 
+To convert the fullTime staff field from an integer to a decimal value, run a query using the $convert operator to make the conversion. 
+
 ```javascript
 db.stores.aggregate([
 {
@@ -242,40 +253,6 @@ This query returns the following result:
 }
 ```
 
-### Example 4: Convert an Int value into a Long value
-
-```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
-    }
-},
-{
-    "$project": {
-        "fulltimeStaff": "$staff.totalStaff.fullTime",
-        "fulltimeStaffAsLong": {
-            "$convert": {
-                "input": "$staff.totalStaff.fullTime",
-                "to": "long"
-            }
-        }
-    }
-}])
-```
-
-This query returns the following result:
-
-```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "fulltimeStaff": 3,
-    "fulltimeStaffAsLong": "Long('3')"
-}
-```
-
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$type to determine the BSON type of a value]($type.md)
-- [$toInt to convert a value to an Integer type]($toint.md)
+[!INCLUDE[Related content](../../includes/related-content.md)]

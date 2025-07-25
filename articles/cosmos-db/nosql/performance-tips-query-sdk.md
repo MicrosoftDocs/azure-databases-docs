@@ -1,11 +1,11 @@
 ---
-title: Azure Cosmos DB performance tips for queries using the Azure Cosmos DB SDK
+title: Query Performance Tips for Azure Cosmos DB SDKs
 description: Learn query configuration options to help improve performance using the Azure Cosmos DB SDK.
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 06/20/2023
+ms.date: 07/14/2025
 ms.author: mjbrown
 ms.devlang: csharp
 # ms.devlang: csharp, java
@@ -16,30 +16,31 @@ zone_pivot_groups: programming-languages-set-cosmos
 # Query performance tips for Azure Cosmos DB SDKs
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-
 Azure Cosmos DB is a fast, flexible distributed database that scales seamlessly with guaranteed latency and throughput levels. You don't have to make major architecture changes or write complex code to scale your database with Azure Cosmos DB. Scaling up and down is as easy as making a single API call. To learn more, see [provision container throughput](how-to-provision-container-throughput.md) or [provision database throughput](how-to-provision-database-throughput.md).
 
 ::: zone pivot="programming-language-csharp"
 
-## Reduce Query Plan calls
+## Reduce query plan calls
 
-To execute a query, a query plan needs to be built. This in general represents a network request to the Azure Cosmos DB Gateway, which adds to the latency of the query operation. There are two ways to remove this request and reduce the latency of the query operation:
+To execute a query, a query plan needs to be built. Network requests to the Azure Cosmos DB Gateway add to the latency of the query operation. There are two ways to remove this request and reduce the latency of the query operation:
 
-### Optimizing single partition queries with Optimistic Direct Execution
+### Optimize single partition queries with Optimistic Direct Execution
 
-Azure Cosmos DB NoSQL has an optimization called Optimistic Direct Execution (ODE), which can improve the efficiency of certain NoSQL queries. Specifically, queries that don’t require distribution include those that can be executed on a single physical partition or that have responses that don't require [pagination](query/pagination.md). Queries that don’t require distribution can confidently skip some processes, such as client-side query plan generation and query rewrite, thereby reducing query latency and RU cost. If you specify the partition key in the request or query itself (or have only one physical partition), and the results of your query don’t require pagination, then ODE can improve your queries.
+Azure Cosmos DB NoSQL has an optimization called Optimistic Direct Execution (ODE), which can improve the efficiency of certain NoSQL queries. Specifically, queries that don’t require distribution include those that can be executed on a single physical partition or that have responses that don't require [pagination](query/pagination.md). Queries that don’t require distribution can confidently skip some processes, such as client-side query plan generation and query rewrite, which reduces query latency and Request Units (RU) cost. If you specify the partition key in the request or query itself (or have only one physical partition), and the results of your query don’t require pagination, then ODE can improve your queries.
 
 >[!NOTE]
-> Optimistic Direct Execution (ODE), which offers improved performance for queries that don't require distribution, should not to be confused with [Direct Mode](sdk-connection-modes.md), which is a path for connecting your application to backend replicas. 
+> ODE, which offers improved performance for queries that don't require distribution, shouldn't be confused with [direct mode](sdk-connection-modes.md), which is a path for connecting your application to backend replicas.
 
-ODE is now available in the .NET SDK version 3.38.0 and later. When you execute a query and specify a partition key in the request or query itself, or your database has only one physical partition, your query execution can leverage the benefits of ODE. To enable ODE, set EnableOptimisticDirectExecution to true in the QueryRequestOptions. 
+ODE is now available in the .NET SDK version 3.38.0 and later. When you execute a query and specify a partition key in the request or query itself, or your database has only one physical partition, your query execution can use the benefits of ODE. To enable ODE, set `EnableOptimisticDirectExecution` to true in the QueryRequestOptions. 
 
-Single partition queries that feature GROUP BY, ORDER BY, DISTINCT, and aggregation functions (like sum, mean, min, and max) can significantly benefit from using ODE. However, in scenarios where the query is targeting multiple partitions or still requires pagination, the latency of the query response and RU cost might be higher than without using ODE. Therefore, when using ODE, we recommend to:
--	Specify the partition key in the call or query itself. 
--	Ensure that your data size hasn’t grown and caused the partition to split.
--	Ensure that your query results don’t require pagination to get the full benefit of ODE.
- 
-Here are a few examples of simple single partition queries which can benefit from ODE:
+Single partition queries that feature *GROUP BY*, *ORDER BY*, *DISTINCT*, and aggregation functions (like sum, mean, min, and max) can significantly benefit from using ODE. However, in scenarios where the query targets multiple partitions or still requires pagination, the latency of the query response and RU cost might be higher than without using ODE. Therefore, when using ODE, you should:
+
+- Specify the partition key in the call or query itself. 
+- Ensure that your data size hasn’t grown and caused the partition to split.
+- Ensure that your query results don’t require pagination to get the full benefit of ODE.
+
+Here are a few examples of simple single partition queries that can benefit from ODE:
+
 ```
 - SELECT * FROM r
 - SELECT * FROM r WHERE r.pk == "value"
@@ -48,7 +49,9 @@ Here are a few examples of simple single partition queries which can benefit fro
 - SELECT TOP 5 r.id FROM r ORDER BY r.id
 - SELECT * FROM r WHERE r.id > 5 OFFSET 5 LIMIT 3 
 ```
-There can be cases where single partition queries may still require distribution if the number of data items increases over time and your Azure Cosmos DB database [splits the partition](../partitioning-overview.md#physical-partitions).  Examples of queries where this could occur include:
+
+There can be cases where single partition queries might still require distribution if the number of data items increases over time and your Azure Cosmos DB database [splits the partition](../partitioning-overview.md#physical-partitions). Examples of queries where this could occur include:
+
 ```
 - SELECT Count(r.id) AS count_a FROM r
 - SELECT DISTINCT r.id FROM r
@@ -56,7 +59,9 @@ There can be cases where single partition queries may still require distribution
 - SELECT Avg(r.a) as min_a FROM r
 - SELECT Sum(r.a) as sum_a FROM r WHERE r.a > 0 
 ```
+
 Some complex queries can always require distribution, even if targeting a single partition. Examples of such queries include:
+
 ```
 - SELECT Sum(id) as sum_id FROM r JOIN id IN r.id
 - SELECT DISTINCT r.id FROM r GROUP BY r.id
@@ -65,19 +70,19 @@ Some complex queries can always require distribution, even if targeting a single
 - SELECT Avg(1) AS avg FROM root r 
 ```
 
-It's important to note that ODE might not always retrieve the query plan and, as a result, is not able to disallow or turn off for unsupported queries. For example, after partition split, such queries are no longer eligible for ODE and, therefore, won't run because client-side query plan evaluation will block those. To ensure compatibility/service continuity, it's critical to ensure that only queries that are fully supported in scenarios without ODE (that is, they execute and produce the correct result in the general multi-partition case) are used with ODE.
+It's important to note that ODE might not always retrieve the query plan and, as a result, isn't able to disallow or turn off unsupported queries. For example, after partition split, such queries are no longer eligible for ODE and, therefore, won't run because client-side query plan evaluation blocks those. To ensure compatibility/service continuity, it's critical to ensure that only queries that are fully supported in scenarios without ODE (that is, they execute and produce the correct result in the general multi-partition case) are used with ODE.
 
 >[!NOTE]
-> Using ODE can potentially cause a new type of continuation token to be generated. Such a token is not recognized by the older SDKs by design and this could result in a Malformed Continuation Token Exception. If you have a scenario where tokens generated from the newer SDKs are used by an older SDK, we recommend a 2 step approach to upgrade:
+> Using ODE can potentially cause a new type of continuation token to be generated. Such a token isn't recognized by the older SDKs by design and this could result in a Malformed Continuation Token Exception. If you have a scenario where tokens generated from the newer SDKs are used by an older SDK, we recommend a two-step approach to upgrade:
 >
 >- Upgrade to the new SDK and disable ODE, both together as part of a single deployment. Wait for all nodes to upgrade.
->    - In order to disable ODE, set EnableOptimisticDirectExecution to false in the QueryRequestOptions. 
+>- In order to disable ODE, set `EnableOptimisticDirectExecution` to false in the QueryRequestOptions. 
 >- Enable ODE as part of second deployment for all nodes.
 
 
-### Use local Query Plan generation
+### Use local query plan generation
 
-The SQL SDK includes a native ServiceInterop.dll to parse and optimize queries locally. ServiceInterop.dll is supported only on the **Windows x64** platform. The following types of applications use 32-bit host processing by default. To change host processing to 64-bit processing, follow these steps, based on the type of your application:
+The SQL SDK includes a native *ServiceInterop.dll* to parse and optimize queries locally. *ServiceInterop.dll* is supported only on the *Windows x64* platform. The following types of applications use 32-bit host processing by default. To change host processing to 64-bit processing, follow these steps, based on the type of your application:
 
 - For executable applications, you can change host processing by setting the [platform target](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true) to **x64**  in the **Project Properties** window, on the **Build** tab.
 
@@ -87,15 +92,16 @@ The SQL SDK includes a native ServiceInterop.dll to parse and optimize queries l
 
 - For ASP.NET web applications deployed on Azure, you can change host processing by selecting the **64-bit** platform in **Application settings** in the Azure portal.
 
-> [!NOTE] 
-> By default, new Visual Studio projects are set to **Any CPU**. We recommend that you set your project to **x64** so it doesn't switch to **x86**. A project set to **Any CPU** can easily switch to **x86** if an x86-only dependency is added.<br/>
-> ServiceInterop.dll needs to be in the folder that the SDK DLL is being executed from. This should be a concern only if you manually copy DLLs or have custom build/deployment systems.
+> [!NOTE]
+> By default, new Visual Studio projects are set to **Any CPU**. We recommend that you set your project to **x64** so it doesn't switch to **x86**. A project set to **Any CPU** can easily switch to **x86** if an x86-only dependency is added.
+>
+> *ServiceInterop.dll* needs to be in the folder that the SDK DLL is being executed from. This should be a concern only if you manually copy DLLs or have custom build/deployment systems.
 
 ### Use single partition queries
 
 # [V3 .NET SDK](#tab/v3)
 
-For queries that target a Partition Key by setting the [PartitionKey](/dotnet/api/microsoft.azure.cosmos.queryrequestoptions.partitionkey) property in `QueryRequestOptions` and contain no aggregations (including Distinct, DCount, Group By). In this example, the partition key field of `/state` is filtered on the value `Washington`.
+For queries that target a partition key by setting the [PartitionKey](/dotnet/api/microsoft.azure.cosmos.queryrequestoptions.partitionkey) property in `QueryRequestOptions` and contain no aggregations (including *Distinct*, *DCount*, or *Group By*). In this example, the partition key field of `/state` is filtered on the value `Washington`.
 
 ```csharp
 using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem>(
@@ -115,13 +121,13 @@ using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem
     // ...
 }
 ```
-> [!IMPORTANT] 
-> On clients running a non-Windows OS, such as Linux and MacOS, the partition key should **always** be specified in the request options object.
 
+> [!IMPORTANT] 
+> On clients running a non-Windows OS, such as Linux and macOS, the partition key should *always* be specified in the request options object.
 
 # [V2 .NET SDK](#tab/v2)
 
-For queries that target a Partition Key by setting the [PartitionKey](/dotnet/api/microsoft.azure.documents.client.feedoptions.partitionkey) property in `FeedOptions` and contain no aggregations (including Distinct, DCount, Group By):
+For queries that target a partition key by setting the [PartitionKey](/dotnet/api/microsoft.azure.documents.client.feedoptions.partitionkey) property in `FeedOptions` and contain no aggregations (including *Distinct*, *DCount*, or *Group By*):
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -184,7 +190,7 @@ while (query.HasMoreResults)
 
 # [V3 .NET SDK](#tab/v3)
 
-For queries, tune the [MaxConcurrency](/dotnet/api/microsoft.azure.cosmos.queryrequestoptions.maxconcurrency) property in `QueryRequestOptions` to identify the best configurations for your application, especially if you perform cross-partition queries (without a filter on the partition-key value). `MaxConcurrency` controls the maximum number of parallel tasks, that is, the maximum of partitions to be visited in parallel. Setting the value to -1 will let the SDK decide the optimal concurrency.
+For queries, tune the [MaxConcurrency](/dotnet/api/microsoft.azure.cosmos.queryrequestoptions.maxconcurrency) property in `QueryRequestOptions` to identify the best configurations for your application, especially if you perform cross-partition queries (without a filter on the partition-key value). `MaxConcurrency` controls the maximum number of parallel tasks, that is, the maximum of partitions to be visited in parallel. Setting the value to *-1* lets the SDK decide the optimal concurrency.
 
 ```cs
 using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem>(
@@ -199,7 +205,7 @@ using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem
 
 # [V2 .NET SDK](#tab/v2)
 
-For queries, tune the [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxdegreeofparallelism) property in `FeedOptions` to identify the best configurations for your application, especially if you perform cross-partition queries (without a filter on the partition-key value). `MaxDegreeOfParallelism` controls the maximum number of parallel tasks, that is, the maximum of partitions to be visited in parallel. Setting the value to -1 will let the SDK decide the optimal concurrency.
+For queries, tune the [MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxdegreeofparallelism) property in `FeedOptions` to identify the best configurations for your application, especially if you perform cross-partition queries (without a filter on the partition-key value). `MaxDegreeOfParallelism` controls the maximum number of parallel tasks, that is, the maximum of partitions to be visited in parallel. Setting the value to *-1* lets the SDK decide the optimal concurrency.
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -214,13 +220,13 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 
 ---
 
-Let's assume that
-* D = Default Maximum number of parallel tasks (= total number of processors in the client machine)
+Let's assume that:
+* D = Default maximum number of parallel tasks (= total number of processors in the client machine)
 * P = User-specified maximum number of parallel tasks
 * N = Number of partitions that needs to be visited for answering a query
 
-Following are implications of how the parallel queries would behave for different values of P.
-* (P == 0) => Serial Mode
+Following are implications of how the parallel queries behave for different values of P.
+* (P == 0) => Serial mode
 * (P == 1) => Maximum of one task
 * (P > 1) => Min (P, N) parallel tasks
 * (P < 1) => Min (N, D) parallel tasks
@@ -234,7 +240,7 @@ When you issue a SQL query, the results are returned in a segmented fashion if t
 
 # [V3 .NET SDK](#tab/v3)
 
-You can also set the page size by using the available Azure Cosmos DB SDKs. The [MaxItemCount](/dotnet/api/microsoft.azure.cosmos.queryrequestoptions.maxitemcount) property in `QueryRequestOptions` allows you to set the maximum number of items to be returned in the enumeration operation. When `MaxItemCount` is set to -1, the SDK automatically finds the optimal value, depending on the document size. For example:
+You can also set the page size by using the available Azure Cosmos DB SDKs. The [MaxItemCount](/dotnet/api/microsoft.azure.cosmos.queryrequestoptions.maxitemcount) property in `QueryRequestOptions` allows you to set the maximum number of items to be returned in the enumeration operation. When `MaxItemCount` is set to *-1*, the SDK automatically finds the optimal value, depending on the document size. For example:
 
 ```cs
 using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem>(
@@ -249,7 +255,7 @@ using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem
 
 # [V2 .NET SDK](#tab/v2)
 
-You can also set the page size by using the available Azure Cosmos DB SDKs. The [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount) property in `FeedOptions` allows you to set the maximum number of items to be returned in the enumeration operation. When `MaxItemCount` is set to -1, the SDK automatically finds the optimal value, depending on the document size. For example:
+You can also set the page size by using the available Azure Cosmos DB SDKs. The [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount) property in `FeedOptions` allows you to set the maximum number of items to be returned in the enumeration operation. When `MaxItemCount` is set to *-1*, the SDK automatically finds the optimal value, depending on the document size. For example:
 
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(
@@ -260,13 +266,13 @@ IQueryable<dynamic> authorResults = client.CreateDocumentQuery(
 
 ---
 
-When a query is executed, the resulting data is sent within a TCP packet. If you specify too low a value for `MaxItemCount`, the number of trips required to send the data within the TCP packet is high, which affects performance. So if you're not sure what value to set for the `MaxItemCount` property, it's best to set it to -1 and let the SDK choose the default value.
+When a query is executed, the resulting data is sent within a TCP packet. If you specify too low a value for `MaxItemCount`, the number of trips required to send the data within the TCP packet is high, which affects performance. So if you're not sure what value to set for the `MaxItemCount` property, it's best to set it to *-1* and let the SDK choose the default value.
 
 ## Tune the buffer size
 
 # [V3 .NET SDK](#tab/v3)
 
-Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. This pre-fetching helps improve the overall latency of a query. The [MaxBufferedItemCount](/dotnet/api/microsoft.azure.cosmos.queryrequestoptions.maxbuffereditemcount) property in `QueryRequestOptions` limits the number of pre-fetched results. Set `MaxBufferedItemCount` to the expected number of results returned (or a higher number) to allow the query to receive the maximum benefit from pre-fetching. If you set this value to -1, the system will automatically determine the number of items to buffer.
+Parallel query is designed to prefetch results while the current batch of results is being processed by the client. This prefetching helps improve the overall latency of a query. The [MaxBufferedItemCount](/dotnet/api/microsoft.azure.cosmos.queryrequestoptions.maxbuffereditemcount) property in `QueryRequestOptions` limits the number of prefetched results. Set `MaxBufferedItemCount` to the expected number of results returned (or a higher number) to allow the query to receive the maximum benefit from prefetching. If you set this value to *-1*, the system automatically determines the number of items to buffer.
 
 ```cs
 using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem>(
@@ -281,7 +287,7 @@ using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem
 
 # [V2 .NET SDK](#tab/v2)
 
-Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. This pre-fetching helps improve the overall latency of a query. The [MaxBufferedItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxbuffereditemcount) property in `FeedOptions` limits the number of pre-fetched results. Set `MaxBufferedItemCount` to the expected number of results returned (or a higher number) to allow the query to receive the maximum benefit from pre-fetching. If you set this value to -1, the system will automatically determine the number of items to buffer.
+Parallel query is designed to prefetch results while the current batch of results is being processed by the client. This prefetching helps improve the overall latency of a query. The [MaxBufferedItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxbuffereditemcount) property in `FeedOptions` limits the number of prefetched results. Set `MaxBufferedItemCount` to the expected number of results returned (or a higher number) to allow the query to receive the maximum benefit from prefetching. If you set this value to *-1*, the system automatically determines the number of items to buffer.
 
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(
@@ -292,30 +298,30 @@ IQueryable<dynamic> authorResults = client.CreateDocumentQuery(
 
 ---
 
-Pre-fetching works the same way regardless of the degree of parallelism, and there's a single buffer for the data from all partitions.
+Prefetching works the same way regardless of the degree of parallelism, and there's a single buffer for the data from all partitions.
 
 ## Next steps
 
 To learn more about performance using the .NET SDK:
 
 * [Best practices for Azure Cosmos DB .NET SDK](best-practice-dotnet.md)
-* [Performance tips for Azure Cosmos DB .NET V3 SDK](performance-tips-dotnet-sdk-v3.md)
-* [Performance tips for Azure Cosmos DB .NET V2 SDK](performance-tips.md)
+* [Performance tips for Azure Cosmos DB and .NET v3 SDK](performance-tips-dotnet-sdk-v3.md)
+* [Performance tips for Azure Cosmos DB and .NET v2 SDK](performance-tips.md)
 
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-## Reduce Query Plan calls
+## Reduce query plan calls
 
-To execute a query, a query plan needs to be built. This in general represents a network request to the Azure Cosmos DB Gateway, which adds to the latency of the query operation.
+To execute a query, a query plan needs to be built. Network requests to the Azure Cosmos DB Gateway add to the latency of the query operation. 
 
-### Use Query Plan caching
+### Use query plan caching
 
-The query plan, for a query scoped to a single partition, is cached on the client. This eliminates the need to make a call to the gateway to retrieve the query plan after the first call. The key for the cached query plan is the SQL query string. You need to **make sure the query is [parametrized](query/parameterized-queries.md)**. If not, the query plan cache lookup will often be a cache miss as the query string is unlikely to be identical across calls. Query plan caching is **enabled by default for Java SDK version 4.20.0 and above** and **for Spring Data Azure Cosmos DB SDK version 3.13.0 and above**.
+The query plan, for a query scoped to a single partition, is cached on the client. This eliminates the need to make a call to the gateway to retrieve the query plan after the first call. The key for the cached query plan is the SQL query string. You need to *make sure the query is [parametrized](query/parameterized-queries.md)*. If not, the query plan cache lookup is often a cache miss as the query string is unlikely to be identical across calls. Query plan caching is *enabled by default for Java SDK version 4.20.0 and above* and *for Spring Data Azure Cosmos DB SDK version 3.13.0 and above*.
 
 ### Use parametrized single partition queries
 
-For parametrized queries that are scoped to a partition key with [setPartitionKey](/java/api/com.azure.cosmos.models.cosmosqueryrequestoptions.setpartitionkey) in `CosmosQueryRequestOptions` and contain no aggregations (including Distinct, DCount, Group By), the query plan can be avoided:
+For parametrized queries that are scoped to a partition key with [setPartitionKey](/java/api/com.azure.cosmos.models.cosmosqueryrequestoptions.setpartitionkey) in `CosmosQueryRequestOptions` and contain no aggregations (including *Distinct*, *DCount*, or *Group By*), the query plan can be avoided:
 
 ```java
 CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
@@ -341,9 +347,9 @@ CosmosPagedFlux<MyItem> filteredItems =
 
 ## Tune the degree of parallelism
 
-Parallel queries work by querying multiple partitions in parallel. However, data from an individual partitioned container is fetched serially with respect to the query. So, use [setMaxDegreeOfParallelism](/java/api/com.azure.cosmos.models.cosmosqueryrequestoptions.setmaxdegreeofparallelism) on `CosmosQueryRequestOptions` to set the value to the number of partitions you have. If you don't know the number of partitions, you can use `setMaxDegreeOfParallelism` to set a high number, and the system chooses the minimum (number of partitions, user provided input) as the maximum degree of parallelism. Setting the value to -1 will let the SDK decide the optimal concurrency.
+Parallel queries work by querying multiple partitions in parallel. However, data from an individual partitioned container is fetched serially with respect to the query. So, use [setMaxDegreeOfParallelism](/java/api/com.azure.cosmos.models.cosmosqueryrequestoptions.setmaxdegreeofparallelism) on `CosmosQueryRequestOptions` to set the value to the number of partitions you have. If you don't know the number of partitions, you can use `setMaxDegreeOfParallelism` to set a high number, and the system chooses the minimum (number of partitions, user provided input) as the maximum degree of parallelism. Setting the value to *-1* lets the SDK decide the optimal concurrency.
 
-It is important to note that parallel queries produce the best benefits if the data is evenly distributed across all partitions with respect to the query. If the partitioned container is partitioned such a way that all or a majority of the data returned by a query is concentrated in a few partitions (one partition in worst case), then the performance of the query would be degraded.
+It's important to note that parallel queries produce the best benefits if the data is evenly distributed across all partitions with respect to the query. If the partitioned container is partitioned such a way that all or most of the data returned by a query is concentrated in a few partitions (one partition in worst case), then the performance of the query would be degraded.
 
 ```java
 CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
@@ -361,20 +367,20 @@ CosmosPagedFlux<MyItem> filteredItems =
     asyncContainer.queryItems(querySpec, options, MyItem.class);
 ```
 
-Let's assume that
-* D = Default Maximum number of parallel tasks (= total number of processors in the client machine)
+Let's assume that:
+* D = Default maximum number of parallel tasks (= total number of processors in the client machine)
 * P = User-specified maximum number of parallel tasks
 * N = Number of partitions that needs to be visited for answering a query
 
-Following are implications of how the parallel queries would behave for different values of P.
-* (P == 0) => Serial Mode
+Following are implications of how the parallel queries behave for different values of P:
+* (P == 0) => Serial mode
 * (P == 1) => Maximum of one task
 * (P > 1) => Min (P, N) parallel tasks
 * (P == -1) => Min (N, D) parallel tasks
 
 ## Tune the page size
 
-When you issue a SQL query, the results are returned in a segmented fashion if the result set is too large. By default, results are returned in chunks of 100 items or 4 MB, whichever limit is hit first. Increasing the page size will reduce the number of round trips required and increase performance for queries that return more than 100 items. If you're not sure what value to set, 1000 is typically a good choice. Memory consumption will increase as page size increases, so if your workload is memory sensitive consider a lower value.
+When you issue a SQL query, the results are returned in a segmented fashion if the result set is too large. By default, results are returned in chunks of 100 items or 4 MB, whichever limit is hit first. Increasing the page size reduces the number of round trips required and increase performance for queries that return more than 100 items. If you're not sure what value to set, 1000 is typically a good choice. Memory consumption increases as page size increases, so if your workload is memory sensitive consider a lower value.
 
 You can use the `pageSize` parameter in `iterableByPage()` for sync API and `byPage()` for async API, to define a page size:
 
@@ -402,7 +408,7 @@ filteredItemsAsPages.map(page -> {
 
 ## Tune the buffer size
 
-Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. [setMaxBufferedItemCount](/java/api/com.azure.cosmos.models.cosmosqueryrequestoptions.setmaxbuffereditemcount) in `CosmosQueryRequestOptions` limits the number of pre-fetched results. To maximize the pre-fetching, set the `maxBufferedItemCount` to a higher number than the `pageSize` (NOTE: This can also result in high memory consumption). To minimize the pre-fetching, set the `maxBufferedItemCount` equal to the `pageSize`. If you set this value to 0, the system will automatically determine the number of items to buffer.
+Parallel query is designed to prefetch results while the current batch of results is being processed by the client. The prefetching helps in overall latency improvement of a query. [setMaxBufferedItemCount](/java/api/com.azure.cosmos.models.cosmosqueryrequestoptions.setmaxbuffereditemcount) in `CosmosQueryRequestOptions` limits the number of prefetched results. To maximize the prefetching, set the `maxBufferedItemCount` to a higher number than the `pageSize` (NOTE: This can also result in high memory consumption). To minimize the prefetching, set the `maxBufferedItemCount` equal to the `pageSize`. If you set this value to *0*, the system automatically determines the number of items to buffer.
 
 ```java
 CosmosQueryRequestOptions options = new CosmosQueryRequestOptions();
@@ -420,7 +426,7 @@ CosmosPagedFlux<MyItem> filteredItems =
     asyncContainer.queryItems(querySpec, options, MyItem.class);
 ```
 
-Pre-fetching works the same way regardless of the degree of parallelism, and there's a single buffer for the data from all partitions.
+Prefetching works the same way regardless of the degree of parallelism, and there's a single buffer for the data from all partitions.
 
 
 ## Next steps
@@ -433,9 +439,9 @@ To learn more about performance using the Java SDK:
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-## Reduce Query Plan calls
+## Reduce query plan calls
 
-To execute a query, a query plan needs to be built. This in general represents a network request to the Azure Cosmos DB Gateway, which adds to the latency of the query operation. There is a way to remove this request and reduce the latency of the single partition query operation. For single partition queries specify the partition key value for the item and pass it as [partition_key](/python/api/azure-cosmos/azure.cosmos.containerproxy#azure-cosmos-containerproxy-query-items) argument:
+To execute a query, a query plan needs to be built. Network requests to the Azure Cosmos DB Gateway add to the latency of the query operation. There's a way to remove this request and reduce the latency of the single partition query operation. For single partition queries, specify the partition key value for the item and pass it as [partition_key](/python/api/azure-cosmos/azure.cosmos.containerproxy#azure-cosmos-containerproxy-query-items) argument:
 
 ```python
 items = container.query_items(
@@ -466,9 +472,9 @@ To learn more about using the Python SDK for API for NoSQL:
 ::: zone-end
 
 ::: zone pivot="programming-language-nodejs"
-## Reduce Query Plan calls
+## Reduce query plan calls
 
-To execute a query, a query plan needs to be built. This in general represents a network request to the Azure Cosmos DB Gateway, which adds to the latency of the query operation. There is a way to remove this request and reduce the latency of the single partition query operation. For single partition queries scoping a query to a single partition can be accomplished two ways.
+To execute a query, a query plan needs to be built. Network requests to the Azure Cosmos DB Gateway add to the latency of the query operation. There's a way to remove this request and reduce the latency of the single partition query operation. For single partition queries, scoping a query to a single partition can be accomplished two ways.
 
 Using a parameterized query expression and specifying partition key in query statement. The query is programmatically composed to `SELECT * FROM todo t WHERE t.partitionKey = 'Bikes, Touring Bikes'`:
 
@@ -528,13 +534,13 @@ for (const item of resources) {
 }
 ```
 
-## Enhanced Query Control
+## Enhanced query control
 
-CosmosDB JS SDK version 4.3.0 onwards, `enableQueryControl` flag has been introduced, which provides greater control over query execution, offering additional flexibility in managing Request Unit (RU) consumption.
+For Cosmos DB JS SDK version 4.3.0 and later, `enableQueryControl` flag was introduced, which provides greater control over query execution, offering more flexibility in managing Request Unit (RU) consumption.
 
-By default, `enableQueryControl` is set to `false` and the SDK guarantees that each `fetchNext` call would return `maxItemCount` number of results, provided those many results existed in the back end. But to meet the guaranteed result count, the SDK may query back end partitions multiple times in a single `fetchNext` iteration. This can sometimes lead to unpredictable latency and RU drain with no user control, especially when results are scattered across partitions.
- 
-When `enableQueryControl` is set to `true`, each `fetchNext` call will now query up to `maxDegreeOfParallelism` physical partitions. If no results are found or results are not ready to be served yet, the SDK will return empty pages instead of continuing to search all partitions in the background. This way, users gain finer control over their query execution with predictable latency and granular RU consumption data.
+By default, `enableQueryControl` is set to `false` and the SDK guarantees that each `fetchNext` call would return `maxItemCount` number of results, provided those many results existed in the back end. But to meet the guaranteed result count, the SDK might query back end partitions multiple times in a single `fetchNext` iteration. This can sometimes lead to unpredictable latency and RU drain with no user control, especially when results are scattered across partitions.
+
+When `enableQueryControl` is set to `true`, each `fetchNext` call now queries up to `maxDegreeOfParallelism` physical partitions. If no results are found or results aren't ready to be served yet, the SDK returns empty pages instead of continuing to search all partitions in the background. This way, users gain finer control over their query execution with predictable latency and granular RU consumption data.
 
 ```javascript
 const options = {
@@ -561,6 +567,6 @@ const queryIterator = container.items.query(querySpec, options);
 To learn more about using the Node.js SDK for API for NoSQL:
 
 * [Azure Cosmos DB Node.js SDK for API for NoSQL](sdk-nodejs.md)
-* [Quickstart - Azure Cosmos DB for NoSQL client library for Node.js](quickstart-nodejs.md)
+* [Quickstart: Azure Cosmos DB for NoSQL client library for Node.js](quickstart-nodejs.md)
 
 ::: zone-end

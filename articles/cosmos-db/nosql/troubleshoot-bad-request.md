@@ -1,10 +1,10 @@
 ---
-title: Troubleshoot Azure Cosmos DB bad request exceptions
+title: Troubleshoot Azure Cosmos DB Bad Request Exceptions
 description: Learn how to diagnose and fix bad request exceptions such as input content or partition key is invalid, partition key doesn't match in Azure Cosmos DB.
 author: ealsur
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.date: 03/07/2022
+ms.date: 07/17/2025
 ms.author: maquaran
 ms.topic: troubleshooting
 ---
@@ -12,52 +12,61 @@ ms.topic: troubleshooting
 # Diagnose and troubleshoot bad request exceptions in Azure Cosmos DB
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-The HTTP status code 400 represents the request contains invalid data or it's missing required parameters.
+The HTTP status code 400 indicates that the request contains invalid data or is missing required parameters.
 
 ## <a name="missing-id-property"></a>Missing the ID property
-On this scenario, it's common to see the error:
 
-*The input content is invalid because the required properties - 'id; ' - are missing*
+In this scenario, it's common to see the error:
 
-A response with this error means the JSON document that is being sent to the service is lacking the required ID property.
+  "The input content is invalid because the required properties - 'id; ' - are missing"
+
+A response with this error means the JSON document that is being sent to the service lacks the required ID property.
 
 ### Solution
-Specify an `id` property with a string value as per the [REST specification](/rest/api/cosmos-db/documents) as part of your document, the SDKs do not autogenerate values for this property.
+
+Specify an `id` property with a string value as per the [REST specification](/rest/api/cosmos-db/documents) as part of your document, The SDKs don't autogenerate values for this property.
 
 ## <a name="invalid-partition-key-type"></a>Invalid partition key type
-On this scenario, it's common to see errors like:
 
-*Partition key ... is invalid.*
+In this scenario, it's common to see errors like:
 
-A response with this error means the partition key value is of an invalid type.
+  "Partition key ... is invalid"
+
+A response with this error means the partition key value is an invalid type.
 
 ### Solution
-The value of the partition key should be a string or a number, make sure the value is of the expected types.
+
+The value of the partition key should be a string or a number. Make sure the value is of the expected types.
 
 ## <a name="wrong-partition-key-value"></a>Wrong partition key value
-On this scenario, it's common to see these errors:
 
-*Response status code does not indicate success: BadRequest (400); Substatus: 1001*
+In this scenario, it's common to see these errors:
 
-*PartitionKey extracted from document doesn’t match the one specified in the header*
+  "Response status code does not indicate success: BadRequest (400); Substatus: 1001"
 
-A response with this error means you are executing an operation and passing a partition key value that does not match the document's body value for the expected property. If the collection's partition key path is `/myPartitionKey`, the document has a property called `myPartitionKey` with a value that does not match what was provided as partition key value when calling the SDK method.
+  "PartitionKey extracted from document doesn’t match the one specified in the header"
+
+A response with this error means you're executing an operation and passing a partition key value that doesn't match the document's body value for the expected property. If the collection's partition key path is `/myPartitionKey`, the document has a property called `myPartitionKey` with a value that doesn't match what was provided as partition key value when calling the SDK method.
 
 ### Solution
+
 Send the partition key value parameter that matches the document property value.
 
 ## Numeric partition key value precision loss
-On this scenario, it's common to see errors like:
 
-*The requested partition key is out of key range, possibly because of loss of precision of partition key value*
+In this scenario, it's common to see errors like:
 
-A response with this error is likely to be caused by an operation on a document with a numeric partition key whose value is outside what is supported by Azure Cosmos DB. See [Per-item limits](/azure/cosmos-db/concepts-limits#per-item-limits) for the maximum length of numeric property value.
+  "The requested partition key is out of key range, possibly because of loss of precision of partition key value"
+
+A response with this error is likely caused by an operation on a document with a numeric partition key whose value is outside what Azure Cosmos DB supports. For the maximum length of numeric property value, see [Per-item limits](/azure/cosmos-db/concepts-limits#per-item-limits).
 
 ### Solution
-Consider using type `string` for partition key if requiring precise numeric values.
+
+Consider using type `string` for the partition key if you require precise numeric values.
 
 ## Next steps
-* [Diagnose and troubleshoot](troubleshoot-dotnet-sdk.md) issues when you use the Azure Cosmos DB .NET SDK.
-* Learn about performance guidelines for [.NET v3](performance-tips-dotnet-sdk-v3.md) and [.NET v2](performance-tips.md).
-* [Diagnose and troubleshoot](troubleshoot-java-sdk-v4.md) issues when you use the Azure Cosmos DB Java v4 SDK.
-* Learn about performance guidelines for [Java v4 SDK](performance-tips-java-sdk-v4.md).
+
+* [Diagnose and troubleshoot issues when using Azure Cosmos DB .NET SDK](troubleshoot-dotnet-sdk.md)
+* Learn about performance guidelines for [.NET v3](performance-tips-dotnet-sdk-v3.md) and [.NET v2](performance-tips.md)
+* [Troubleshoot issues when you use Azure Cosmos DB Java SDK v4 with API for NoSQL accounts](troubleshoot-java-sdk-v4.md)
+* [Performance tips for Azure Cosmos DB Java SDK v4](performance-tips-java-sdk-v4.md)

@@ -1,8 +1,8 @@
 ---
 title: Delete on-demand backups
 description: This article describes how to delete on-demand backups of an Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: danyal-bukhari
+ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql

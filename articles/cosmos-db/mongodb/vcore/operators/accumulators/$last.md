@@ -1,202 +1,221 @@
 ---
-  title: $last
-  titleSuffix: Overview of the $last operator in Azure Cosmos DB for MongoDB vCore
-  description: The $last accumulator operator returns the last value in a group of documents.
-  author: suvishodcitus
-  ms.author: suvishod
-  ms.service: azure-cosmos-db
-  ms.subservice: mongodb-vcore
-  ms.topic: language-reference
-  ms.date: 02/12/2025
+title: $last
+titleSuffix: Overview of the $last operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $last operator returns the last document from the result sorted by one or more fields 
+author: abinav2307
+ms.author: abramees
+ms.service: azure-cosmos-db
+ms.subservice: mongodb-vcore
+ms.topic: conceptual
+ms.date: 05/20/2025
 ---
 
 # $last
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$last` accumulator operator returns the last value in a group of documents for a specified expression. It is commonly used in `$group` stages to get the final value from a sorted collection of documents.
+The `$last` operator sorts documents on one or more fields specified by the query and returns the last document matching the filtering criteria.
 
 ## Syntax
 
-The syntax for the `$last` accumulator operator is as follows:
-
 ```javascript
 {
-  $group: {
-    _id: <expression>,
-    <field>: { $last: <expression> }
-  }
+  "$last": <expression>
 }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`<expression>`** | The expression that specifies the field or value to return the last occurrence of. |
+| **`expression`** | The expression to evaluate and return the last document from the result set|
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 19,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
-    ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Massive Markdown Mania",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 6,
-          "Day": 29
-        },
-        "endDate": {
-          "Year": 2023,
-          "Month": 7,
-          "Day": 9
-        }
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
     },
-    {
-      "eventName": "Major Bargain Bash",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 21
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 30
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      }
-    }
-  ]
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
 
-### Example 1: Get last promotion event by date
+### Example 1: Get the last updated store within a company
 
-Get the most recent promotion event for each store by grouping stores and finding the last promotion event when sorted by date.
+To retrieve the more recently updated store within the First Up Consultants company, run a query to fetch all stores within First Up Consultants, sort the documents in ascending order of the lastUpdated field and return the last document from the sorted results. 
 
 ```javascript
-db.stores.aggregate([
-  { $unwind: "$promotionEvents" },
-  { $sort: { 
-      "promotionEvents.promotionalDates.startDate.Year": 1,
-      "promotionEvents.promotionalDates.startDate.Month": 1,
-      "promotionEvents.promotionalDates.startDate.Day": 1
+db.stores.aggregate([{
+        "$match": {
+            "company": {
+                "$in": [
+                    "First Up Consultants"
+                ]
+            }
+        }
+    },
+    {
+        "$sort": {
+            "lastUpdated": 1
+        }
+    },
+    {
+        "$group": {
+            "_id": "$company",
+            "lastUpdated": {
+                "$last": "$lastUpdated"
+            }
+        }
     }
-  },
-  {
-    $group: {
-      _id: "$_id",
-      storeName: { $last: "$name" },
-      lastPromotionEvent: { $last: "$promotionEvents.eventName" },
-      lastPromotionStartDate: { $last: "$promotionEvents.promotionalDates.startDate" }
-    }
-  }
 ])
 ```
 
-This will produce output showing the most recent promotion event for each store:
+This query returns the following results:
+
+```json
+{
+    "_id": "First Up Consultants",
+    "lastUpdated": "ISODate('2024-12-31T13:01:19.097Z')"
+}
+```
+
+### Example 2 - Using the window operator
+
+To retrieve the more recently updated store within each company, run a query to partition the results by the company field and sort the documents within each partition in ascending order of lastUpdated field and return the sorted results per partition.
+
+```javascript
+db.stores.aggregate([
+{
+    "$setWindowFields": {
+        "partitionBy": "$company",
+        "sortBy": {
+            "lastUpdated": 1
+        },
+        "output": {
+            "lastUpdatedDateForStore": {
+                "$last": "$lastUpdated",
+                "window": {
+                    "documents": [
+                        "current",
+                        "unbounded"
+                    ]
+                }
+            }
+        }
+    }
+}])
+```
+
+One resulting document from the query is:
 
 ```json
 [
   {
-    _id: '64ec6589-068a-44a6-be5b-9d37bb0a90f1',
-    storeName: 'First Up Consultants | Computer Gallery - West Cathrine',
-    lastPromotionEvent: 'Blowout Bargain Bash',
-    lastPromotionStartDate: { Year: 2024, Month: 9, Day: 21 }
-  },
-  {
-    _id: 'a58d0356-493b-44e6-afab-260aa3296930',
-    storeName: 'Fabrikam, Inc. | Outdoor Furniture Nook - West Lexie',
-    lastPromotionEvent: 'Big Bargain Bash',
-    lastPromotionStartDate: { Year: 2024, Month: 9, Day: 21 }
-  },
-.
-.
-.
-]
-```
-
-### Example 2: Get last sales category by sales amount
-
-Find the highest-selling category (last when sorted by sales amount) for each store.
-
-```javascript
-db.stores.aggregate([
-  { $unwind: "$sales.salesByCategory" },
-  { $sort: { "sales.salesByCategory.totalSales": 1 } },
-  {
-    $group: {
-      _id: "$_id",
-      storeName: { $last: "$name" },
-      topSellingCategory: { $last: "$sales.salesByCategory.categoryName" },
-      topSalesAmount: { $last: "$sales.salesByCategory.totalSales" }
-    }
+      "_id": "First Up Consultants",
+      "lastUpdated": "ISODate('2024-12-31T13:01:19.097Z')"
   }
-])
-```
-
-This will return the category with the highest sales for each store:
-
-```json
-[
-  {
-    _id: '2e07b49d-1730-491b-b847-44b6a34812c1',
-    storeName: 'VanArsdel, Ltd. | Electronics Market - North Bransonborough',
-    topSellingCategory: 'iPads',
-    topSalesAmount: 37113
-  },
-  {
-    _id: '4a99546f-a1d2-4e61-ae9f-b8c7c1faf73c',
-    storeName: 'Lakeshore Retail | Stationery Nook - West Van',
-    topSellingCategory: 'Pencils',
-    topSalesAmount: 33447
-  },
-.
-.
-.
 ]
 ```
 

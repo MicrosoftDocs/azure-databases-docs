@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot "request header too large" or "bad request"
+title: Troubleshoot "Request Header Too Large" or "Bad Request"
 titleSuffix: Azure Cosmos DB
 description: Learn how to diagnose and fix either the HTTP request header too large or bad request (400) exceptions.
 author: markjbrown
@@ -7,15 +7,17 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
-ms.date: 02/27/2023
+ms.date: 07/17/2025
 ms.custom: devx-track-dotnet
 ---
 
-# Diagnose and troubleshoot "request header too large" or "bad request" messages in Azure Cosmos DB SDK for .NET
+# Troubleshoot "request header too large" or "bad request" messages in Azure Cosmos DB SDK for .NET
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-The "Request header too large" message is thrown with an HTTP error code 400. This error occurs if the size of the request header has grown so large that it exceeds the maximum-allowed size. We recommend that you use the latest version of the Azure Cosmos DB SDK for .NET. We recommend that you use version 3.x because this major version adds header size tracing to the exception message.
+The "Request header too large" message is thrown with an HTTP error code 400. This error occurs if the size of the request header grows so large that it exceeds the maximum-allowed size.
+
+We recommend that you use the latest version of the Azure Cosmos DB SDK for .NET. You should use version 3.x because this major version adds header size tracing to the exception message.
 
 ## Troubleshooting steps
 
@@ -50,7 +52,7 @@ This section reviews scenarios where the continuation token is too large.
 
 #### Cause
 
-The 400 bad request occurs on query operations where the continuation token is used if the token has grown too large. This error can also occur if different queries have different continuation token sizes.
+The 400 bad request occurs on query operations where the continuation token is used if the token grows too large. This error can also occur if different queries have different continuation token sizes.
 
 #### Solution
 
@@ -59,5 +61,5 @@ The 400 bad request occurs on query operations where the continuation token is u
 
 ## Next steps
 
-* [Diagnose and troubleshoot](troubleshoot-dotnet-sdk.md) issues when you use the Azure Cosmos DB .NET SDK.
-* Learn about performance guidelines for [.NET v3](performance-tips-dotnet-sdk-v3.md) and [.NET v2](performance-tips.md).
+* [Diagnose and troubleshoot issues when using Azure Cosmos DB .NET SDK](troubleshoot-dotnet-sdk.md)
+* Learn about performance guidelines for [.NET v3](performance-tips-dotnet-sdk-v3.md) and [.NET v2](performance-tips.md)

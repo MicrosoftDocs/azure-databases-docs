@@ -18,8 +18,16 @@
   href: $max.md
 - name: $maxn
   href: $maxn.md
+- name: $median
+  href: $median.md
 - name: $min
   href: $min.md
+- name: $minN
+  href: $minn.md
+- name: $stdDevPop
+  href: $stddevpop.md
+- name: $stdDevSamp
+  href: $stddevsamp.md
 - name: $sum
   href: $sum.md
 - name: $top

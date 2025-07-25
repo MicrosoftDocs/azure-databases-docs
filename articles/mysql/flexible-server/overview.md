@@ -1,8 +1,8 @@
 ---
 title: Azure Database for MySQL - Flexible Server Overview
 description: Learn about the Flexible Server deployment model for Azure Database for MySQL.
-author: SudheeshGH
-ms.author: sunaray
+author: deepthiprasad
+ms.author: deprasa
 ms.reviewer: maghan
 ms.date: 02/20/2025
 ms.service: azure-database-mysql
@@ -263,7 +263,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | UAE North | Yes | Yes | Yes | Yes |
 | UK South | Yes | Yes | Yes | Yes |
 | UK West | Yes | Yes | No | Yes |
-| USGov Virginia | Yes | Yes | No | No |
+| USGov Virginia | Yes | Yes |Yes| No |
 | USGov Arizona | Yes | Yes | No | Yes |
 | USGov Texas | Yes | Yes | No | Yes |
 | West Central US | Yes | Yes | No | Yes |

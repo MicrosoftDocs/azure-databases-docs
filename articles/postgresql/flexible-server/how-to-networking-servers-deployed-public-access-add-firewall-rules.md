@@ -1,8 +1,8 @@
 ---
 title: Add firewall rules
 description: This article describes how to add firewall rules to an Azure Database for PostgreSQL flexible server.
-author: nachoalonsoportillo
-ms.author: ialonso
+author: techlake
+ms.author: hganten
 ms.reviewer: maghan
 ms.date: 03/30/2025
 ms.service: azure-database-postgresql
