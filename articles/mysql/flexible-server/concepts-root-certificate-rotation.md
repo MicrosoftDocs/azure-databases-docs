@@ -13,14 +13,14 @@ ms.custom: sfi-image-nochange
 
 # Changes in the root certificate rotation for Azure Database for MySQL
 
-To maintain our security and compliance standards, we'll begin changing the root certificates for Azure Database for MySQL Flexible Server after 31 July 2025.
+To maintain our security and compliance standards, we'll begin changing the root certificates for Azure Database for MySQL Flexible Server after 1 September 2025.
 
 The current root certificate **DigiCert Global Root CA** will be replaced by two new ones:
 
 * **DigiCert Global Root G2**
 * **Microsoft RSA Root Certificate Authority 2017**
 
-If you're using Transport Layer Security (TLS) with root certificate verification, you must have all three root certificates installed during the transition period. Once all the certificates are changed, you can remove the old SHA-1 root certificate **DigiCert Global Root CA** from the store.  by adding the two new certificates to the existing store. If you don't add the new certificates before 31 July 2025, your connections to the databases will **fail**.
+If you're using Transport Layer Security (TLS) with root certificate verification, you must have all three root certificates installed during the transition period. Once all the certificates are changed, you can remove the old SHA-1 root certificate **DigiCert Global Root CA** from the store.  by adding the two new certificates to the existing store. If you don't add the new certificates before 1 September 2025, your connections to the databases will **fail**.
 
 This article gives you more instructions on how to add the two new root certificates. about the changes, as well as, answering frequently asked questions
 
