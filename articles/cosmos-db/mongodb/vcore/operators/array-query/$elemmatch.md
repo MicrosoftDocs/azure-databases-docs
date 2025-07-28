@@ -1,24 +1,20 @@
 ---
-  title: $elemmatch (array query) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $elemMatch
+  titleSuffix: Overview of the $elemMatch operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $elemmatch operator returns complete array, qualifying criteria with at least one matching array element.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/12/2024
+  ms.date: 07/25/2024
 ---
 
-# $elemMatch (array query)
+# $elemMatch
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$elemMatch` operator is used to match documents that contain an array field with at least one element that matches all the specified query criteria. This operator is particularly useful when you need to find array documents with specified element.
+The `$elemMatch` operator is used to match documents that contain an array field with at least one element that matches all the specified query criteria. This operator is useful when you need to find array documents with specified element.
 
 ## Syntax
-
-The basic syntax for the `$elemMatch` operator is as follows:
 
 ```javascript
 db.collection.find({ <field>: { $elemMatch: { <query1>, <query2>, ... } } })
@@ -26,7 +22,7 @@ db.collection.find({ <field>: { $elemMatch: { <query1>, <query2>, ... } } })
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field in the document that contains the array to be queried. |
 | **`query`** | The conditions that at least one element in the array must satisfy. |
@@ -66,7 +62,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Find in an array for specific element among the list of elements
 
-This example finds the first two documents in the `stores` collection that have at least one discount with the category name "DJ Lighting" in their `promotionEvents` array. The query only returns the `_id` and `promotionEvents.discounts` fields for those documents.
+The example finds the first two documents in the `stores` collection that have at least one discount with the category name "DJ Lighting" in their `promotionEvents` array. The query only returns the `_id` and `promotionEvents.discounts` fields for those documents.
 
 ```javascript
 db.stores.find(  {"promotionEvents.discounts":{$elemMatch:{"categoryName":"DJ Lighting"}}}

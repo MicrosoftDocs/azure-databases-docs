@@ -1,18 +1,16 @@
 ---
-  title: $all (array query) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $all
+  titleSuffix: Overview of the $all operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $all operator helps finding array documents matching all the elements.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/12/2024
+  ms.date: 07/25/2024
 ---
 
-# $all (array query)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $all
 
 The `$all` operator is used to select documents where the value of a field is an array that contains all the specified elements. This operator is useful when you need to ensure that an array field contains multiple specified elements, regardless of their order in the array.
 
@@ -24,12 +22,14 @@ db.collection.find({ <field>: { $all: [ <value1> , <value2> ... ] } })
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field to be queried. |
 | **`<value1> , <value2>`** | The values that must all be present in the array field. |
 
 ## Example
+
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
