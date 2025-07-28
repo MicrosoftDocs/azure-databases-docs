@@ -29,7 +29,7 @@ The `$text` operator performs text search on the content of indexed string field
 
 ## Parameters
 
-| Parameters | Description |
+| Parameter | Description |
 | --- | --- |
 | **`$search`** | Required. The search string containing the terms to search for. Multiple terms are treated as an OR operation unless enclosed in quotes for phrase matching. |
 | **`$language`** | Optional. Language for the text search, which determines the stemming rules and stop words, though the system uses the index's default language if you don't specify one |

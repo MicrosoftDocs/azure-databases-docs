@@ -1,24 +1,20 @@
 ---
-title: $maxDistance (geospatial) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $maxDistance
+titleSuffix: Overview of the $maxDistance operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $maxDistance operator specifies the maximum distance that can exist between two points in a geospatial query.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 07/25/2025
 ---
 
-# $maxDistance (geospatial)
+# $maxDistance
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$maxDistance` operator is used in geospatial queries to specify the maximum distance (in meters) that can exist between two points. It's commonly used with `$near` to find locations within a certain radius.
+The `$maxDistance` operator is used in geospatial queries to specify the maximum distance (in meters) that can exist between two points. It pairs well with `$near` for radius-based location searches.
 
 ## Syntax
-
-The syntax for the `$maxDistance` operator is as follows:
 
 ```javascript
 {
@@ -36,15 +32,15 @@ The syntax for the `$maxDistance` operator is as follows:
 
 ## Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `location field` | Field | The field containing the geospatial data |
-| `coordinates` | Array | An array of [longitude, latitude] specifying the center point |
-| `$maxDistance` | Number | Maximum distance in meters from the center point |
+| Parameter | Description |
+|-----------|-------------|
+| `location field` | The field containing the geospatial data |
+| `coordinates` | An array of [longitude, latitude] specifying the center point |
+| `$maxDistance`| Maximum distance in meters from the center point |
 
 ## Example
 
-Using the `stores` collection, let's find all stores within 10 KM of the "VanArsdel Picture Frame Store":
+Using the `stores` collection, let's find all stores within 10Km of the Point coordinate.
 
 ```javascript
 db.stores.find({
@@ -52,7 +48,7 @@ db.stores.find({
     $near: {
       $geometry: {
         type: "Point",
-        coordinates: [-141.9922, 16.8331]  // VanArsdel Picture Frame Store location
+        coordinates: [-77.9951,-62.7339]
       },
       $maxDistance: 10000  // 10 kilometers in meters
     }
@@ -61,13 +57,18 @@ db.stores.find({
 {
   name: 1,
   location: 1
-})
+}).limit(2)
 ```
 
-This query returns stores like:
-- First Up Consultants Microphone Bazaar
-- Fabrikam Car Accessory Outlet and other stores within the 10 KM radius.
+The query returns only one store that falls within 10Km of the coordinate provided.
 
+```json
+{
+   "_id": "66fd4cdd-ffc3-44b6-81d9-6d5e9c1f7f9a",
+   "name": "Trey Research | Health Food Center - North Michelle",
+   "location": { "lat": -77.9951, "lon": -62.7339 }
+}
+```
 
 ## Related content
 

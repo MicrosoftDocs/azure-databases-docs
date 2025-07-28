@@ -16,7 +16,7 @@ The `$mod` operator performs a modulo operation on the value of a field and sele
 
 ## Syntax
 
-```Javascript
+```javascript
 {
   <field>: { $mod: [ <divisor>, <remainder> ] }
 }
@@ -24,7 +24,7 @@ The `$mod` operator performs a modulo operation on the value of a field and sele
 
 ## Parameters
 
-| Parameters | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<field>`** | The field to perform the modulo operation on. The field must contain numeric values. |
 | **`<divisor>`** | The number to divide the field value by. Must be a positive number. |

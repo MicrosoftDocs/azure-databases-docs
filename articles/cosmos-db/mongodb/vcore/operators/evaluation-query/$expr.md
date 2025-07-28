@@ -16,7 +16,7 @@ The `$expr` operator allows the use of aggregation expressions within the query 
 
 ## Syntax
 
-```Javascript
+```javascript
 {
   $expr: { <aggregation expression> }
 }
@@ -24,7 +24,7 @@ The `$expr` operator allows the use of aggregation expressions within the query 
 
 ## Parameters
 
-| Parameters | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<aggregation expression>`** | Any valid aggregation expression that evaluates to a boolean value. The expression includes field comparisons, arithmetic operations, conditional expressions, and other aggregation operators. |
 

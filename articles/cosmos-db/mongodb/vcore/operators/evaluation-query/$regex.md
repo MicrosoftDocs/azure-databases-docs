@@ -34,7 +34,7 @@ Or the shorter form:
 
 ## Parameters
 
-| Parameters | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<field>`** | The field to search in. Must contain string values. |
 | **`<pattern>`** | The regular expression pattern to match against. |
