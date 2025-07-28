@@ -1,18 +1,16 @@
 ---
-  title: $in (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $in
+  titleSuffix: Overview of the $in operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $in operator allows finding a value existence within an array.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/16/2024
+  ms.date: 07/28/2025
 ---
 
-# $in (array expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $in
 
 The `$in` operator filters documents where a field's value matches any value in a specified array, making it ideal for matching multiple criteria. It's especially useful for querying nested arrays and handling complex data structures efficiently.
 
@@ -26,7 +24,7 @@ The `$in` operator filters documents where a field's value matches any value in 
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field in the document you want to query. |
 | **`<value1>, <value2>, ...`** | An array of values to match against the specified field. |

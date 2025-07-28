@@ -1,24 +1,20 @@
 ---
-  title: $firstN (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $firstN
+  titleSuffix: Overview of the $firstN operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $firstN operator returns the first n elements from an array.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 07/28/2025
 ---
 
-# $firstN (array expression)
+# $firstN
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$firstN` operator returns the first n elements from an array. It is useful when you want to limit the number of elements returned from the beginning of an array, such as getting the top few items from a list.
+The `$firstN` operator returns the first n elements from an array. It's useful when you want to limit the number of elements returned from the beginning of an array, such as getting the top few items from a list.
 
 ## Syntax
-
-The syntax for the `$firstN` operator is as follows:
 
 ```javascript
 {
@@ -31,9 +27,9 @@ The syntax for the `$firstN` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`input`** | The array from which to return the first n elements. |
+| **`input`** | Indicates the array to slice and return its first n values. |
 | **`n`** | The number of elements to return from the beginning of the array. Must be a positive integer. |
 
 ## Example
@@ -84,7 +80,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Get first three sales categories
 
-Suppose you want to get the first three sales categories for analysis.
+The example demonstrates the operator usage to find the first three sales categories for analysis.
 
 ```javascript
 db.stores.aggregate([
@@ -104,21 +100,19 @@ db.stores.aggregate([
 ])
 ```
 
-This produces the following output:
+The query returns first three elements from `sales.salesByCategory` array.
 
 ```json
-[
   {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    totalSales: 151864,
-    firstThreeCategories: [
-      { categoryName: 'Sound Bars', totalSales: 2120 },
-      { categoryName: 'Home Theater Projectors', totalSales: 45004 },
-      { categoryName: 'Game Controllers', totalSales: 43522 }
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "totalSales": 151864,
+    "firstThreeCategories": [
+      { "categoryName": "Sound Bars", "totalSales": 2120 },
+      { "categoryName": "Home Theater Projectors", "totalSales": 45004 },
+      { "categoryName": "Game Controllers", "totalSales": 43522 }
     ]
   }
-]
 ```
 
 ### Example 2: Get first two promotion events
@@ -142,55 +136,52 @@ db.stores.aggregate([
 ])
 ```
 
-This returns the first two promotion events with their complete details including event names, promotional dates, and discount information.
+The query returns the first two promotion events with their complete details including event names, promotional dates, and discount information.
 
 ```json
-[
   {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    firstTwoPromotions: [
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "firstTwoPromotions": [
       {
-        eventName: 'Massive Markdown Mania',
-        promotionalDates: {
-          startDate: { Year: 2023, Month: 6, Day: 29 },
-          endDate: { Year: 2023, Month: 7, Day: 9 }
+        "eventName": "Massive Markdown Mania",
+        "promotionalDates": {
+          "startDate": { "Year": 2023, "Month": 6, "Day": 29 },
+          "endDate": { "Year": 2023, "Month": 7, "Day": 9 }
         },
-        discounts: [
-          { categoryName: 'DVD Players', discountPercentage: 14 },
-          { categoryName: 'Projector Lamps', discountPercentage: 6 },
-          { categoryName: 'Media Players', discountPercentage: 21 },
-          { categoryName: 'Blu-ray Players', discountPercentage: 21 },
+        "discounts": [
+          { "categoryName": "DVD Players", "discountPercentage": 14 },
+          { "categoryName": "Projector Lamps", "discountPercentage": 6 },
+          { "categoryName": "Media Players", "discountPercentage": 21 },
+          { "categoryName": "Blu-ray Players", "discountPercentage": 21 },
           {
-            categoryName: 'Home Theater Systems',
-            discountPercentage: 5
+            "categoryName": "Home Theater Systems",
+            "discountPercentage": 5
           },
-          { categoryName: 'Televisions', discountPercentage: 22 }
+          { "categoryName": "Televisions", "discountPercentage": 22 }
         ]
       },
       {
-        eventName: 'Fantastic Deal Days',
-        promotionalDates: {
-          startDate: { Year: 2023, Month: 9, Day: 27 },
-          endDate: { Year: 2023, Month: 10, Day: 7 }
+        "eventName": "Fantastic Deal Days",
+        "promotionalDates": {
+          "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
+          "endDate": { "Year": 2023, "Month": 10, "Day": 7 }
         },
-        discounts: [
-          { categoryName: 'TV Mounts', discountPercentage: 15 },
-          { categoryName: 'Game Accessories', discountPercentage: 25 },
+        "discounts": [
+          { "categoryName": "TV Mounts", "discountPercentage": 15 },
+          { "categoryName": "Game Accessories", "discountPercentage": 25 },
           {
-            categoryName: 'Portable Projectors',
-            discountPercentage: 25
+            "categoryName": "Portable Projectors",
+            "discountPercentage": 25
           },
-          { categoryName: 'Projector Screens', discountPercentage: 21 },
-          { categoryName: 'Blu-ray Players', discountPercentage: 20 },
-          { categoryName: 'DVD Players', discountPercentage: 21 }
+          { "categoryName": "Projector Screens", "discountPercentage": 21 },
+          { "categoryName": "Blu-ray Players", "discountPercentage": 20 },
+          { "categoryName": "DVD Players", "discountPercentage": 21 }
         ]
       }
     ]
   }
-]
 ```
-
 
 ## Related content
 

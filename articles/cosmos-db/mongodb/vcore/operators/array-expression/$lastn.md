@@ -1,24 +1,20 @@
 ---
-  title: $lastN (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $lastN
+  titleSuffix: Overview of the $lastN operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $lastN operator returns the last n elements from an array.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 07/28/2025
 ---
 
-# $lastN (array expression)
+# $lastN
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$lastN` operator returns the last n elements from an array. It is useful when you want to limit the number of elements returned from the end of an array, such as getting the most recent items from a chronologically ordered list.
+The `$lastN` operator returns the last n elements from an array. It's useful when you want to limit the number of elements returned from the end of an array, such as getting the most recent items from a chronologically ordered list.
 
 ## Syntax
-
-The syntax for the `$lastN` operator is as follows:
 
 ```javascript
 {
@@ -31,9 +27,9 @@ The syntax for the `$lastN` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`input`** | The array from which to return the last n elements. |
+| **`input`** | Indicates the array to slice and return its last n values. |
 | **`n`** | The number of elements to return from the end of the array. Must be a positive integer. |
 
 ## Example
@@ -93,7 +89,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Get last two promotion events
 
-Suppose you want to get the most recent two promotion events from a store.
+The example demonstrates the operator usage to find the last or most recent two promotion events from a store.
 
 ```javascript
 db.stores.aggregate([
@@ -112,53 +108,45 @@ db.stores.aggregate([
 ])
 ```
 
-This produces the following output:
+The query returns the last two events from `promotionEvents` array.
 
 ```json
-[
   {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    lastTwoPromotions: [
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "lastTwoPromotions": [
       {
-        eventName: 'Grand Deal Days',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 6, Day: 23 },
-          endDate: { Year: 2024, Month: 6, Day: 30 }
+        "eventName": "Grand Deal Days",
+        "promotionalDates": {
+          "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+          "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
         },
-        discounts: [
-          { categoryName: 'Remote Controls', discountPercentage: 7 },
-          { categoryName: 'Televisions', discountPercentage: 11 },
-          {
-            categoryName: 'Business Projectors',
-            discountPercentage: 13
-          },
-          { categoryName: 'Laser Projectors', discountPercentage: 6 },
-          { categoryName: 'Projectors', discountPercentage: 6 },
-          { categoryName: 'Projector Screens', discountPercentage: 24 }
+        "discounts": [
+          { "categoryName": "Remote Controls", "discountPercentage": 7 },
+          { "categoryName": "Televisions", "discountPercentage": 11 },
+          { "categoryName": "Business Projectors", "discountPercentage": 13 },
+          { "categoryName": "Laser Projectors", "discountPercentage": 6 },
+          { "categoryName": "Projectors", "discountPercentage": 6 },
+          { "categoryName": "Projector Screens", "discountPercentage": 24 }
         ]
       },
       {
-        eventName: 'Major Bargain Bash',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 9, Day: 21 },
-          endDate: { Year: 2024, Month: 9, Day: 30 }
+        "eventName": "Major Bargain Bash",
+        "promotionalDates": {
+          "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+          "endDate": { "Year": 2024, "Month": 9, "Day": 30 }
         },
-        discounts: [
-          { categoryName: 'Sound Bars', discountPercentage: 9 },
-          { categoryName: 'VR Games', discountPercentage: 7 },
-          { categoryName: 'Xbox Games', discountPercentage: 25 },
-          {
-            categoryName: 'Projector Accessories',
-            discountPercentage: 18
-          },
-          { categoryName: 'Mobile Games', discountPercentage: 8 },
-          { categoryName: 'Projector Cases', discountPercentage: 22 }
+        "discounts": [
+          { "categoryName": "Sound Bars", "discountPercentage": 9 },
+          { "categoryName": "VR Games", "discountPercentage": 7 },
+          { "categoryName": "Xbox Games", "discountPercentage": 25 },
+          { "categoryName": "Projector Accessories", "discountPercentage": 18 },
+          { "categoryName": "Mobile Games", "discountPercentage": 8 },
+          { "categoryName": "Projector Cases", "discountPercentage": 22 }
         ]
       }
     ]
   }
-]
 ```
 
 ### Example 2: Get last three sales categories
@@ -185,17 +173,15 @@ db.stores.aggregate([
 This returns the last three sales categories from the salesByCategory array.
 
 ```json
-[
-  {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    lastThreeCategories: [
-      { categoryName: 'Game Controllers', totalSales: 43522 },
-      { categoryName: 'Remote Controls', totalSales: 28946 },
-      { categoryName: 'VR Games', totalSales: 32272 }
+ {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "lastThreeCategories": [
+      { "categoryName": "Game Controllers", "totalSales": 43522 },
+      { "categoryName": "Remote Controls", "totalSales": 28946 },
+      { "categoryName": "VR Games", "totalSales": 32272 }
     ]
   }
-]
 ```
 
 ## Related content

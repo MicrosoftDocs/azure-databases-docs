@@ -1,32 +1,30 @@
 ---
-  title: $range (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $range
+  titleSuffix: Overview of the $range operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $range operator allows generating an array of sequential integers.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/16/2024
+  ms.date: 07/28/2025
 ---
 
-# $range (array expression)
+# $range
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$range` operator is used to generate an array of sequential integers. This operator is particularly useful for creating arrays of numbers within a specific range, which can then be used for various purposes such as pagination, indexing, or generating test data.
+The `$range` operator is used to generate an array of sequential integers. The operator helps create number arrays in a range, useful for pagination, indexing, or test data.
 
 ## Syntax
 
-The syntax for the `$range` operator is:
-
 ```javascript
-$range: [ <start>, <end>, <step> ]
+{
+    $range: [ <start>, <end>, <step> ]
+}
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`start`** | The starting value of the range (inclusive). |
 | **`end`** | The ending value of the range (exclusive). |
@@ -34,15 +32,13 @@ $range: [ <start>, <end>, <step> ]
 
 ## Examples
 
-Here are some examples demonstrating the use of the `$range` operator.
-
 ### Example 1: Generate a range of numbers
 
-To generate an array of integers from 0 to 9:
+The example demonstrates usage of operator to generate an array of integers from 0 to 5, wherein it includes the left boundary while excludes the right.
 
 ```javascript
 db.stores.aggregate([
-  { $match: { "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60"} }
+  { $match: { "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6"} }
 , {
     $project: {
       rangeArray: { $range: [0, 5] }
@@ -55,18 +51,18 @@ The query results in generating an array of sequential numbers.
 
 ```json
 {
-    "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
     "rangeArray": [ 0, 1, 2, 3, 4 ]
 }
 ```
 
 ### Example 2: Generate a range of numbers with a step value
 
-To generate an array of even numbers from 0 to 18:
+The example demonstrates usage of operator to generate an array of even numbers from 0 to 18.
 
 ```javascript
 db.stores.aggregate([
-  { $match: { "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60"} }
+  { $match: { "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6"} }
 , {
     $project: {
       evenNumbers: { $range: [0, 8, 2] }
@@ -75,11 +71,11 @@ db.stores.aggregate([
 ])
 ```
 
-The query results in generating an array of even numbers, stepping by 2.
+The query results in generating an array of even numbers.
 
 ```json
 {
-    "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
     "rangeArray": [ 0, 2, 4, 6 ]
 }
 ```

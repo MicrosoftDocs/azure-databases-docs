@@ -1,24 +1,20 @@
 ---
-  title: $size (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $size
+  titleSuffix: Overview of the $reverseArray operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $size operator is used to count number of elements in an array.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/16/2024
+  ms.date: 07/28/2025
 ---
 
-# $size (array expression)
+# $size 
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$size` operator is used to count the number of elements in an array. It is particularly useful when you need to determine the size of an array field within a document. This operator can be used in aggregation pipelines and in query projections.
+The `$size` operator is used to count the number of elements in an array. It's useful when you need to determine the size of an array field within a document. This operator can be used in aggregation pipelines and in query projections.
 
 ## Syntax
-
-The syntax for using the `$size` operator is as follows:
 
 ```javascript
 { $size: <array> }
@@ -26,7 +22,7 @@ The syntax for using the `$size` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`array`** | The array whose number of elements you want to count. |
 

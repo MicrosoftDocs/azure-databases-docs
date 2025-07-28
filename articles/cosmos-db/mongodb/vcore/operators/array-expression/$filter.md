@@ -1,38 +1,34 @@
 ---
-  title: $filter (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $filter
+  titleSuffix: Overview of the $filter operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $filter operator filters for elements from an array based on a specified condition.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 10/14/2024
+  ms.date: 07/28/2025
 ---
 
-# $filter (array expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $filter
 
 The `$filter` operator is used to filter elements from an array based on a specified condition. This operator is useful when you need to manipulate or retrieve specific array elements within documents.
 
 ## Syntax
 
-The basic syntax of the `$filter` operator is as follows:
-
-```json
+```javascript
 {
-  "$filter": {
-    "input": "<array>",
-    "as": "<string>",
-    "cond": "<expression>"
+  $filter: {
+    input: "<array>",
+    as: "<string>",
+    cond: "<expression>"
   }
 }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`input`**| An expression that resolves to an array.|
 | **`as`**| A string that specifies the variable name for each element in the input array.|
@@ -87,7 +83,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Retrieve an element filtered on condition
 
-The following example demonstrates how to filter sales category based on `totalSales`.
+The example demonstrates how to filter sales category based on `totalSales`.
 
 ```javascript
 db.yourCollection.aggregate([

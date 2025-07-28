@@ -1,20 +1,18 @@
 ---
-  title: $reduce (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $reduce
+  titleSuffix: Overview of the $reduce operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $reduce operator applies an expression to each element in an array & accumulate result as single value.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/11/2024
+  ms.date: 07/28/2025
 ---
 
-# $reduce (array expression)
+# $reduce
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$reduce` operator is used to apply an expression to each element in an array and accumulate the results into a single value. This operator is particularly useful for performing operations that require iterating over array elements and aggregating their values.
+The `$reduce` operator is used to apply an expression to each element in an array and accumulate the results into a single value. This operator is useful for performing operations that require iterating over array elements and aggregating their values.
 
 ## Syntax
 
@@ -28,7 +26,7 @@ $reduce: {
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`input`** | The array to iterate over. |
 | **`initialValue`** | The initial cumulative value set before the array iteration begins. |

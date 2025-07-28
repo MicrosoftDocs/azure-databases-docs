@@ -1,24 +1,20 @@
 ---
-  title: $isArray (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $isArray
+  titleSuffix: Overview of the $isArray operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $isArray operator is used to determine if a specified value is an array. 
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/11/2024
+  ms.date: 07/28/2025
 ---
 
-# $isArray (array expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $isArray
 
 The `$isArray` operator is used to determine if a specified value is an array. It returns `true` if the value is an array and `false` otherwise. This operator is often used in aggregation pipelines to filter or transform documents based on whether a field contains an array.
 
 ## Syntax
-
-The syntax for the `$isArray` operator is as follows:
 
 ```javascript
 { $isArray: <expression> }
@@ -26,12 +22,14 @@ The syntax for the `$isArray` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<expression>`**| Any valid expression that resolves to a value you want to check.|
 
+## Example
 
-Let's understand the usage with the following sample json.
+Let's understand the usage with sample json from `stores` dataset.
+
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
@@ -91,11 +89,9 @@ Let's understand the usage with the following sample json.
 }
 ```
 
-Here are some examples demonstrating the usage of the `$isArray` operator.
-
 ### Example 1: Checking if a field is an array
 
-To check if the `salesByCategory` field in the `sales` subdocument is an array across all documents.
+The aggregation query checks whether the `sales.salesByCategory` field in each store document is an array and returns that information for the first three documents.
 
 ```javascript
 db.stores.aggregate([
@@ -109,7 +105,8 @@ db.stores.aggregate([
   { $limit: 3 } 
 ])
 ```
-This query would return the following document.
+
+This query returns the array categorization for first three documents.
 
 ```json
 [
@@ -128,11 +125,9 @@ This query would return the following document.
 ]
 ```
 
-
-
 ### Example 2: Filtering documents based on array fields
 
-We can also use `$isArray` to filter documents where the `promotionEvents` field is an array.
+The example demonstrates use of `$isArray` to filter documents where the `promotionEvents` field is an array.
 
 ```javascript
 db.stores.aggregate([
@@ -148,7 +143,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query would return the following document.
+The query returns three documents having `promotionEvents` as array.
 
 ```json
 [
@@ -164,8 +159,8 @@ This query would return the following document.
     "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197",
     "name": "Wide World Importers | Bed and Bath Store - West Vitafort"
   }
-]
-
 ```
+
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]

@@ -1,34 +1,30 @@
 ---
-  title: $concatArrays (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $concatArrays
+  titleSuffix: Overview of the $concatArrays operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $concatArrays is used to combine multiple arrays into a single array.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 10/14/2024
+  ms.date: 07/28/2025
 ---
 
-# $concatArrays (array expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $concatArrays
 
 The `$concatArrays` operator is used to combine multiple arrays into a single array. This operator is useful when you need to merge arrays from different documents or fields in a document.
 
 ## Syntax
 
-The syntax for the `$concatArrays` operator is as follows:
-
-```json
+```javascript
 {
-  "$concatArrays": [ "<array1>", "<array2>"]
+  $concatArrays: ["<array1>", "<array2>"]
 }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<array1>, <array2>`**| The array fields targeted for concatenation.|
 
@@ -79,7 +75,7 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Concatenating Arrays in a Document
+### Example 1: Concatenating Arrays in a document
 
 The example pipeline merges the `categoryName` field from the `promotionEvents.discounts` array with the `tag` array into a single combinedTags array.
 
