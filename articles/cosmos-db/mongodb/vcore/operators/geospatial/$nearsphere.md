@@ -1,20 +1,18 @@
 ---
-title: $nearSphere (geospatial) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $nearSphere
+titleSuffix: Overview of the $nearSphere operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $nearSphere operator returns documents whose location fields are near a specified point on a sphere, sorted by distance on a spherical surface.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 07/25/2025
 ---
 
-# $nearSphere (geospatial)
+# $nearSphere
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$nearSphere` operator returns documents with location fields near a specified point on a sphere, calculating distances using spherical geometry. This is more accurate for Earth-based calculations than `$near`.
+The `$nearSphere` operator returns documents with location fields near a specified point on a sphere, calculating distances using spherical geometry. The operator is more accurate for Earth-based calculations than `$near`.
 
 ## Syntax
 
@@ -35,23 +33,24 @@ The `$nearSphere` operator returns documents with location fields near a specifi
 
 ## Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `location field` | Field | The field containing the GeoJSON Point |
-| `$geometry` | Object | GeoJSON Point object specifying the center point |
-| `$maxDistance` | Number | Optional. Maximum distance in meters on a spherical surface |
-| `$minDistance` | Number | Optional. Minimum distance in meters on a spherical surface |
+| Parameter | Description |
+|-----------|-------------|
+| `location field` | The field containing the GeoJSON Point |
+| `$geometry` | GeoJSON Point object specifying the center point |
+| `$maxDistance` | Optional. Maximum distance in meters on a spherical surface |
+| `$minDistance` | Optional. Minimum distance in meters on a spherical surface |
 
 ## Examples
 
-Create the required '2dsphere' index:
+For better performance, start with creating the required `2dsphere` index.
 
 ```javascript
 db.stores.createIndex({ "location": "2dsphere" })
 ```
 
 ### Example 1: Basic Spherical Search
-Find stores near "VanArsdel Picture Frame Store" (-141.9922, 16.8331):
+
+The example uses the `$nearSphere` operator to find documents in the stores collection that are closest to the Point (-141.9922, 16.8331) on a spherical (Earth-like) surface.
 
 ```javascript
 db.stores.find({
@@ -66,31 +65,33 @@ db.stores.find({
 }, {
   name: 1,
   location: 1
-})
+}).limit(2)
 ```
 
-### Example 2: With Maximum Distance
-Find stores within 20 KM of "Fabrikam Car Accessory Outlet" (-38.4071, -47.2548):
+The query returns stores sorted closest to farthest from defined Point.
 
-```javascript
-db.stores.find({
-  'location': {
-    $nearSphere: {
-      $geometry: {
-        type: "Point",
-        coordinates: [-38.4071, -47.2548]
-      },
-      $maxDistance: 20000  // 20 KM in meters
+```json
+  {
+    "_id": "643b2756-c22d-4063-9777-0945b9926346",
+    "name": "Contoso, Ltd. | Outdoor Furniture Corner - Pagacfort",
+    "location": {
+      "type": "Point",
+      "coordinates": [152.1353, -89.8688]
+    }
+  },
+  {
+    "_id": "daa71e60-75d4-4e03-8b45-9df59af0811f",
+    "name": "First Up Consultants | Handbag Corner - South Salvatore",
+    "location": {
+      "type": "Point",
+      "coordinates": [150.2305, -89.8431]
     }
   }
-}, {
-  name: 1,
-  location: 1
-})
 ```
 
-### Example 3: Complex Distance Analysis
-Find and analyze stores between 20 and 100 Kms from Fourth Coffee Turntable Boutique (65.3765, -44.8674):
+### Example 2: Complex Distance Analysis
+
+The example helps to find and analyze stores between 20 meter and 200 meter from Point (65.3765, -44.8674).
 
 ```javascript
 db.stores.aggregate([
@@ -101,8 +102,8 @@ db.stores.aggregate([
         coordinates: [65.3765, -44.8674]
       },
       distanceField: "sphericalDistance",
-      minDistance: 20000,     // 20 KM in meters
-      maxDistance: 100000,    // 100 KM in meters
+      minDistance: 20,
+      maxDistance: 200,
       spherical: true
     }
   },
@@ -113,14 +114,20 @@ db.stores.aggregate([
       distanceKm: { $divide: ["$sphericalDistance", 1000] },
       _id: 0
     }
+  },
+  {
+    $limit: 2
   }
 ])
 ```
 
-Key differences between `$nearSphere` and `$near`:
-*  Uses spherical geometry for distance calculations
-* More accurate for Earth-based distances
-* Better for applications requiring precise global distance calculations
+The query searches in a "donut-shaped" search area - finding stores that are at least 20 meters away but no more than 200 meters from the specified point, perfect for scenarios like "find stores in nearby cities but not in the immediate area.
+
+Key difference between the operator `$nearSphere` and `$near`.
+
+* Former uses spherical geometry for distance calculations.
+* Former is more accurate for Earth-based distance calculations.
+* Former is better for applications requiring precise global distance calculations
 
 ## Related content
 
