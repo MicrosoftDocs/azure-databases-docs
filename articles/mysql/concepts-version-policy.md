@@ -133,7 +133,7 @@ A: Billing starts one month after the community EOL date of the MySQL version. T
 
 __Q: How is Extended Support priced?__
 
-A: Extended Support is billed on a per vCore per hour basis. Pricing details will be published in September 2025 and will be available in the https://azure.microsoft.com/en-us/pricing/calculator/.
+A: Extended Support is billed on a per vCore per hour basis. Pricing details will be published in September 2025 and will be available in the https://azure.microsoft.com/pricing/calculator/.
 
 __Q: How do I exit Extended Support?__
 
