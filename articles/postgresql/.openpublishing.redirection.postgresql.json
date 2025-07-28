@@ -2095,7 +2095,17 @@
             "redirect_url": "/azure/postgresql/flexible-server/concepts-storage-extension",
             "redirect_document_id": false
         },
-        {
+        {   
+            "source_path_from_root": "/articles/postgresql/migrate/migration-service/tutorial-migration-service-aws-offline.md",
+            "redirect_url": "/azure/postgresql/migrate/migration-service/tutorial-migration-service-rds-offline",
+            "redirect_document_id": false
+        },
+        {   
+            "source_path_from_root": "/articles/postgresql/migrate/migration-service/tutorial-migration-service-aws-online.md",
+            "redirect_url": "/azure/postgresql/migrate/migration-service/tutorial-migration-service-rds-online",
+            "redirect_document_id": false
+        },
+        {   
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-use-microsoft-fabric-data-factory-copy-activity.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-data-factory-copy-activity-fabric",
             "redirect_document_id": true

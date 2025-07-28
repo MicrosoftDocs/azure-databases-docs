@@ -49,7 +49,7 @@ To set the Microsoft Entra admin during server provisioning, follow these steps:
   > [!NOTE]  
   > You can add only one Azure admin user during server provisioning. You can add multiple Microsoft Entra admin users after the Server is created.
 
-  :::image type="content" source="media/how-to-configure-sign-in-azure-ad-authentication/set-Azure-ad-admin-server-creation.png" alt-text="Screenshot that shows selections for setting a Microsoft Entra admin during server provisioning.].":::
+  :::image type="content" source="media/how-to-configure-sign-in-azure-ad-authentication/set-azure-ad-admin-server-creation.png" alt-text="Screenshot that shows selections for setting a Microsoft Entra admin during server provisioning.].":::
 
 To set the Microsoft Entra administrator after server creation, follow these steps:
 
@@ -58,7 +58,7 @@ To set the Microsoft Entra administrator after server creation, follow these ste
 1. Select **Add Microsoft Entra Admins**. Then select a valid Microsoft Entra user, group, service principal, or managed identity in the customer tenant to be a Microsoft Entra administrator.
 1. Select **Save**.
 
-  :::image type="content" source="media/how-to-configure-sign-in-azure-ad-authentication/set-Azure-ad-admin.png" alt-text="Screenshot that shows selections for setting a Microsoft Entra admin after server creation." lightbox="media/how-to-configure-sign-in-azure-ad-authentication/set-Azure-ad-admin.png":::
+  :::image type="content" source="media/how-to-configure-sign-in-azure-ad-authentication/set-azure-ad-admin.png" alt-text="Screenshot that shows selections for setting a Microsoft Entra admin after server creation." lightbox="media/how-to-configure-sign-in-azure-ad-authentication/set-azure-ad-admin.png":::
 
 > [!IMPORTANT]  
 > When setting the administrator, a new user is added to Azure Database for PostgreSQL flexible server with full administrator permissions.
