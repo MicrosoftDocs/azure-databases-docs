@@ -46,6 +46,7 @@ To learn more about it, visit [Managed Identities](/azure/active-directory/manag
 1. In the **Members** section, select **Managed identity**.
 1. Choose the subscription and the managed identity of your PostgreSQL server.
 1. Select **Save** to assign the role.
+1. Return to the server's Overview page and click the Restart button to reboot the server.
 
 To learn more, visit  ['Managed Identity with Azure AI Services'](/azure/active-directory/managed-identities-azure-resources/overview)
 
