@@ -1,6 +1,6 @@
 ---
 title: Semantic Operators in the Azure AI extension
-description: Overview of semantic operator capabilities in the azure_ai extension for Azure Database for PostgreSQL, which integrates advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
+description: Overview of semantic operator capabilities in the azure_ai extension for Azure Database for PostgreSQL. These operators bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
@@ -17,7 +17,7 @@ ms.custom:
 
 # Semantic operators in the Azure AI extension (Preview)
 
-The Azure AI extension introduces **Semantic Operators**, a groundbreaking feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. Powered by models like chat completion and other deployments hosted on [Azure AI services](https://azure.microsoft.com/products/ai-model-catalog), these operators enable developers to build intelligent, GenAI-driven applications natively within their databases, unlocking new possibilities for text understanding, reasoning, and structured output generation.
+The Azure AI extension introduces **Semantic Operators**, a groundbreaking feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. These operators, which are powered by models like chat completion and other [Azure AI deployments](https://azure.microsoft.com/products/ai-model-catalog), allow developers to build GenAI-driven applications directly within their databases. This unlocks new capabilities for understanding text, reasoning, and generating structured outputs.
 
 ## Key features
 
@@ -137,11 +137,11 @@ It supports the following input parameters:
 | Argument | Type | Description | 
 |----------|------|-------|
 |`query` | `text` | The search string used to evaluate and rank the relevance of each document.|
-| `document_contents` | `array[text]` | An array of documents to be re-ranked. |
-| `document_ids` (optional) | `array` | An array document identifiers corresponding to the input documents. |
+| `document_contents` | `array[text]` | An array of documents to be reranked. |
+| `document_ids` (optional) | `array` | An array of document identifiers corresponding to the input documents. |
 | `model` (optional)| `text` `DEFAULT "cohere-rerank-v3.5"`| Name of the model deployment in Azure AI Foundry. Supports both cross-encoder and GPT-based models.|
 
-The operator returns a `table` containing the document ID, its rank and the associated relevance score.
+The operator returns a `table` containing the document ID, its rank, and the associated relevance score.
 
 **Example usage:**
 
@@ -174,7 +174,7 @@ SELECT azure_ai.rank(
 
 To use Semantic Operators in your PostgreSQL database, follow these steps:
 
-### Setup for `.generate()`, `.extract()` and `.is_true()` operators
+### Setup for `.generate()`, `.extract()`, and `.is_true()` operators
 
 These operators support chat completion models and default to [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series). 
 
@@ -191,12 +191,12 @@ These operators support chat completion models and default to [`gpt-4.1`](/azure
     ```
 
     If you wish to use managed identities instead, refer [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
-      - Enable system-assigned managed identiy for your Azure Database for PostgreSQL flexible server and restart the server.
+      - Enable system-assigned managed identity for your Azure Database for PostgreSQL flexible server and restart the server.
       - Assign the "Cognitive Services OpenAI User" role to the managed identity to interact with the Azure OpenAI resource.
       - Set the `azure_openai.auth_type` to 'managed-identity'.
       - Set the `azure_openai.endpoint` with the endpoint URL.
 
-1. You are now all set to invoke the `.generate()`, `.is_true()` and `.extract()` operators.
+1. You're now all set to invoke the `.generate()`, `.is_true()`, and `.extract()` operators.
 
     Example usage with `gpt-4.1` (default):
 
@@ -235,12 +235,12 @@ Using `Cohere-rerank-v3.5` cross-encoder:
     ```
 
     If you wish to use managed identities instead, refer [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
-    - Enable system-assigned managed identiy for your Azure Database for PostgreSQL flexible server and restart the server.
+    - Enable system-assigned managed identity for your Azure Database for PostgreSQL flexible server and restart the server.
     - Assign the "Azure Machine Learning Data Scientist" role to the managed identity to interact with the Cohere model.
     - Set the `azure_ml.auth_type` to 'managed-identity'.
     - Set the `azure_ml.serverless_ranking_endpoint` with the Cohere reranker API.
 
-1. You are now all set to invoke the `.rank()` operator using Cohere reranker model.
+1. You're now all set to invoke the `.rank()` operator using Cohere reranker model.
 
     ```sql
     SELECT azure_ai.rank(
