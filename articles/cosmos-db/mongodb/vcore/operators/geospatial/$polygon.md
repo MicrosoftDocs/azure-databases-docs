@@ -1,24 +1,20 @@
 ---
-title: $polygon (geospatial) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $polygon
+titleSuffix: Overview of the $polygon operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $polygon operator defines a polygon for geospatial queries, allowing you to find locations within an irregular shape.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 07/25/2025
 ---
 
-# $polygon (geospatial)
+# $polygon
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$polygon` operator defines a polygon for geospatial queries, allowing you to find locations within an irregular shape. This is particularly useful for querying locations within complex geographical boundaries.
+The `$polygon` operator defines a polygon for geospatial queries, allowing you to find locations within an irregular shape. The operator is useful for querying locations within complex geographical boundaries.
 
 ## Syntax
-
-The syntax for the `$polygon` operator is as follows:
 
 ```javascript
 {
@@ -37,14 +33,14 @@ The syntax for the `$polygon` operator is as follows:
 
 ## Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `location field` | Field | The field containing the geospatial data |
-| `coordinates` | Array | An array of coordinate pairs forming the polygon. The first and last points must be identical to close the polygon |
+| Parameter | Description |
+|-----------|-------------|
+| `location field` | The field containing the geospatial data |
+| `coordinates` | An array of coordinate pairs forming the polygon. The first and last points must be identical to close the polygon |
 
 ## Example
 
-Using the `stores` collection, let's find stores within a triangular region formed by three store locations:
+The query retrieves stores that fall inside a custom polygon region based on the coordinates provided.
 
 ```javascript
 db.stores.find({
@@ -65,9 +61,29 @@ db.stores.find({
 {
   name: 1,
   location: 1
-})
+}).limit(2)
 ```
 
+The query returns two stores lying within the region.s
+
+```json
+{
+    "_id": "4a417727-a002-4c80-a01f-bc9526b300a5",
+    "name": "Northwind Traders | Bed and Bath Deals - East Duane",
+    "location": {
+      "type": "Point",
+      "coordinates": [-46.1444, -60.9697]
+    }
+  },
+  {
+    "_id": "1e27040c-7242-4970-8893-e5738e1bc1ca",
+    "name": "Northwind Traders | Seasonal Decoration Bazaar - Cassidyberg",
+    "location": {
+      "type": "Point",
+      "coordinates": [-44.3617, -81.2186]
+    }
+  }
+```
 
 ## Related content
 

@@ -1,18 +1,16 @@
 ---
-title: $geoIntersects (geospatial operator) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $geoIntersects
+titleSuffix:  Overview of the $geoIntersects operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $geoIntersects operator selects documents whose location field intersects with a specified GeoJSON object.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 07/25/2025
 ---
 
-# $geoIntersects (geospatial operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $geoIntersects
 
 The `$geoIntersects` operator selects documents whose location field intersects with a specified GeoJSON object. This operator is useful when you want to find stores that intersect with a specific geographical area.
 
@@ -35,21 +33,21 @@ The syntax for the `$geoIntersects` operator is as follows:
 
 ## Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `location field` | Field | The field containing the GeoJSON object |
-| `type` | String | The GeoJSON object type (for example, "Polygon", "MultiPolygon") |
-| `coordinates` | Array | The coordinates defining the GeoJSON object |
+| Parameter | Description |
+|-----------|-------------|
+| `location field` | The field containing the GeoJSON object |
+| `type` | The GeoJSON object type (for example, "Polygon", "MultiPolygon") |
+| `coordinates` | The coordinates defining the GeoJSON object |
 
 ## Example
 
-First, let's create a 2dsphere index for the location field:
+For better performance, start with creating the required 2dsphere index.
 
 ```javascript
 db.stores.createIndex({ "location": "2dsphere" })
 ```
 
-Now, let's find stores that intersect with a specific polygon area using the `stores` collection. This polygon encompasses several store locations from our dataset:
+Now, let's find stores that intersect with a specific polygon area using the `stores` collection. This polygon encompasses several store locations from our dataset.
 
 ```javascript
 db.stores.find({
@@ -58,62 +56,43 @@ db.stores.find({
       $geometry: {
         type: "Polygon",
         coordinates: [[
-          [-150.0, 50.0],    // Northwest corner
-          [-150.0, 70.0],    // Northeast corner
-          [-130.0, 70.0],    // Southeast corner
-          [-130.0, 50.0],    // Southwest corner
-          [-150.0, 50.0]     // Back to start to close polygon
+          [-80.0, -75.0],   // Bottom-left
+          [-80.0, -70.0],   // Top-left
+          [-55.0, -70.0],   // Top-right
+          [-55.0, -75.0],   // Bottom-right
+          [-80.0, -75.0]    // Close polygon
         ]]
       }
     }
   }
 }, {
-  name: 1,
+  "name": 1,
   "location": 1
-})
+}).limit(2)
 ```
 
-This query returns stores like:
-- "First Up Consultants | Bed and Bath Center - South Amir" (located at 60.7954, -142.0012)
+This query returns stores, whose locations intersect with the Polygon contour defined by the coordinates.
 
-To demonstrate with actual data points, here's a query that finds all stores within this region:
-
-```javascript
-// First, let's see what stores we found
-db.stores.aggregate([
+```json
   {
-    $match: {
-      'location': {
-        $geoIntersects: {
-          $geometry: {
-            type: "Polygon",
-            coordinates: [[
-              [-150.0, 50.0],
-              [-150.0, 70.0],
-              [-130.0, 70.0],
-              [-130.0, 50.0],
-              [-150.0, 50.0]
-            ]]
-          }
-        }
-      }
-    }
+    "_id": "6bba7117-d180-4584-b50c-a2f843e9c9ab",
+    "name": "Wide World Importers | Craft Supply Mart - Heaneybury",
+    "location": { "lat": -64.4843, "lon": -107.7003 },
+    "city": "Heaneybury"
   },
   {
-    $project: {
-      name: 1,
-      location: 1,
-      _id: 0
-    }
+    "_id": "2fd37663-e0ff-41d0-9c5a-3aec86285daa",
+    "name": "Relecloud | Cleaning Supply Closet - Patiencehaven",
+    "location": { "lat": -70.6077, "lon": -105.9901 },
+    "city": "Patiencehaven"
   }
-])
 ```
 
-The query returns stores whose locations intersect with the specified polygon area in Alaska/Northern Canada region. This is useful for:
+The operator is useful for use cases like
+
 - Finding stores within a specific geographical boundary
 - Identifying service coverage areas
 - Planning delivery routes
-
 
 ## Related content
 
