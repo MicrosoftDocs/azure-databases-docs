@@ -18,7 +18,7 @@ Use Change data capture (CDC) in Azure Cosmos DB analytical store as a source to
 
 
 > [!NOTE]
-> Please note that the linked service interface for Azure Cosmos DB for MongoDB API is not available on Dataflow yet. However, you would be able to use your account’s document endpoint with the “Azure Cosmos DB for NoSQL” linked service interface as a work around until the Mongo linked service is supported. On a NoSQL linked service, choose “Enter Manually” to provide the Cosmos DB account info and use account’s document endpoint (eg: `https://[your-database-account-uri].documents.azure.com:443/`) instead of the MongoDB endpoint (eg: `mongodb://[your-database-account-uri].mongo.cosmos.azure.com:10255/`)  
+> Please note that the linked service interface for Azure Cosmos DB for MongoDB API isn't available on Dataflow yet. However, you would be able to use your account’s document endpoint with the “Azure Cosmos DB for NoSQL” linked service interface as a work-around until the Mongo linked service is supported. On a NoSQL linked service, choose “Enter Manually” to provide the Cosmos DB account info and use account’s document endpoint (eg: `https://[your-database-account-uri].documents.azure.com:443/`) instead of the MongoDB endpoint (eg: `mongodb://[your-database-account-uri].mongo.cosmos.azure.com:10255/`)  
 
 ## Prerequisites
 
@@ -63,6 +63,9 @@ The change data capture feature of the analytical store is available through the
 ## Configure source settings for the analytical store container
 
 Now create and configure a source to flow data from the Azure Cosmos DB account's analytical store.
+
+> [!NOTE]
+> Azure Cosmos DB's Synapse Link Spark connector doesn't support Managed Identity.
 
 1. Select **Add Source**.
 
@@ -119,10 +122,10 @@ When you check any of the `Capture intermediate updates`, `Capture Deltes`, and 
 | 3 | USER_DELETE | Capture Deletes |
 | 4 | TTL_DELETE |  Capture Transactional store TTLs|
   
-If you have to differentiate the TTL deleted records from documents deleted by users or applications, you have check both `Capture intermediate updates` and `Capture Transactional store TTLs` options. Then you have to adapt your CDC processes or applications or queries to use `__usr_opType` according to what is necessary for your business needs.
+If you have to differentiate the TTL deleted records from documents deleted by users or applications, you can check both `Capture intermediate updates` and `Capture Transactional store TTLs` options. Then you have to adapt your CDC processes or applications or queries to use `__usr_opType` according to what is necessary for your business needs.
 
 >[!TIP]
-> If there is a need for the downstream consumers to restore the order of updates with the “capture intermediate updates” option checked,  the system timestamp `_ts` field can be used as the ordering field.
+> If there's a need for the downstream consumers to restore the order of updates with the “capture intermediate updates” option checked,  the system timestamp `_ts` field can be used as the ordering field.
   
   
 ## Create and configure sink settings for update and delete operations
@@ -203,11 +206,11 @@ After a data flow has been published, you can add a new pipeline to move and tra
     :::image type="content" source="media/get-started-change-data-capture/output-files.png" alt-text="Screnshot of the output files from the pipeline in the Azure Blob Storage container.":::
 
     > [!NOTE]
-    > The initial cluster startup time may take up to three minutes. To avoid cluster startup time in the subsequent change data capture executions, configure the Dataflow cluster **Time to live** value. For more information about the itegration runtime and TTL, see [integration runtime in Azure Data Factory](/azure/data-factory/concepts-integration-runtime).
+    > The initial cluster startup time may take up to three minutes. To avoid cluster startup time in the subsequent change data capture executions, configure the Dataflow cluster **Time to live** value. For more information about the integration runtime and TTL, see [integration runtime in Azure Data Factory](/azure/data-factory/concepts-integration-runtime).
 
 ## Concurrent jobs
 
-The batch size in the source options, or situations when the sink is slow to ingest the stream of changes, may cause the execution of multiple jobs at the same time. To avoid this situation, set the **Concurrency** option to 1 in the Pipeline settings, to make sure that new executions are not triggered until the current execution completes.
+The batch size in the source options, or situations when the sink is slow to ingest the stream of changes, may cause the execution of multiple jobs at the same time. To avoid this situation, set the **Concurrency** option to 1 in the Pipeline settings, to make sure that new executions aren't triggered until the current execution completes.
 
 
 ## Next steps
