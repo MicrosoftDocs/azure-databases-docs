@@ -64,6 +64,9 @@ The change data capture feature of the analytical store is available through the
 
 Now create and configure a source to flow data from the Azure Cosmos DB account's analytical store.
 
+> [!NOTE]
+> Azure Cosmos DB's Synapse Link Spark connector does not support Managed Identity.
+
 1. Select **Add Source**.
 
     :::image type="content" source="media/get-started-change-data-capture/add-source.png" alt-text="Screenshot of the add source menu option.":::
