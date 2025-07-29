@@ -1,6 +1,6 @@
 ---
-title: $abs (arithmetic expression) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $abs
+titleSuffix: Usage of the $avg operator in Azure Cosmos DB for MongoDB vCore
 description: The $abs operator returns the absolute value of a number.
 author: suvishodcitus
 ms.author: suvishod
@@ -10,29 +10,141 @@ ms.topic: language-reference
 ms.date: 02/12/2025
 ---
 
-# $abs (arithmetic expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $abs
 
 The `$abs` operator returns the absolute value of a number. It removes any negative sign from a number, making it positive.
 
 ## Syntax
 
-The syntax for the `$abs` operator is as follows:
-
 ```javascript
-{ $abs: <number> }
+{
+  $abs: <expression>
+}
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`<number>`** | Any valid expression that resolves to a number. If the expression resolves to null or refers to a missing field, $abs returns null. |
+| **`<expression>`** | Any expression that resolves to a number. If the expression is null or refers to a missing field, $abs returns null. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample data from the `stores` dataset.
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1 - Use the absolute value of total sales
+
+To calculate the absolute difference in sales volume of each category and the average sales across all categories for a store, first run a query to filter on the specific store. Then, calculate the difference in sales between each category and the average across all categories. Lastly, project the absolute difference using the $abs operator.
 
 ```javascript
 db.stores.aggregate([
@@ -63,40 +175,42 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce output showing the absolute difference between each category's sales and the average sales:
+This query returns the following result:
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "salesByCategory": [
-    {
-      "categoryName": "Sound Bars",
-      "totalSales": 2120,
-      "differenceFromAverage": 28252.8
-    },
-    {
-      "categoryName": "Home Theater Projectors",
-      "totalSales": 45004,
-      "differenceFromAverage": 14631.2
-    },
-    {
-      "categoryName": "Game Controllers",
-      "totalSales": 43522,
-      "differenceFromAverage": 13149.2
-    },
-    {
-      "categoryName": "Remote Controls",
-      "totalSales": 28946,
-      "differenceFromAverage": 1426.8
-    },
-    {
-      "categoryName": "VR Games",
-      "totalSales": 32272,
-      "differenceFromAverage": 1899.2
-    }
-  ]
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "salesByCategory": [
+      {
+        "categoryName": "Sound Bars",
+        "totalSales": 2120,
+        "differenceFromAverage": 28252.8
+      },
+      {
+        "categoryName": "Home Theater Projectors",
+        "totalSales": 45004,
+        "differenceFromAverage": 14631.2
+      },
+      {
+        "categoryName": "Game Controllers",
+        "totalSales": 43522,
+        "differenceFromAverage": 13149.2
+      },
+      {
+        "categoryName": "Remote Controls",
+        "totalSales": 28946,
+        "differenceFromAverage": 1426.8
+      },
+      {
+        "categoryName": "VR Games",
+        "totalSales": 32272,
+        "differenceFromAverage": 1899.2
+      }
+    ]
+  }
+]
 ```
 
 ## Related content
