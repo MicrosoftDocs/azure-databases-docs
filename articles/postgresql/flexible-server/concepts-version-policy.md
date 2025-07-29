@@ -1,4 +1,4 @@
----
+  ---
 title: Version Policy
 description: Describes the policy around Postgres major and minor versions in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
@@ -91,11 +91,11 @@ Best Practices
 
 ### Eligible PostgreSQL versions
 
-| PostgreSQL Version | Azure Support Start Date | Community Retirement Date | Paid Extended Support Starts (includes grace period) | Extended Support Ends |
+| PostgreSQL Version | Azure Support Start Date | Community Retirement Date | Free Extended Support Starts | Free Extended Support Ends | Paid Extended Support Starts (includes grace period) | Extended Support Ends |
 | --- | --- | --- | --- | --- |
-| 11 | 24-Jul-19 | 9-Nov-25 | 1-Apr-26 | 31-Mar-29 |
-| 12 | 22-Sep-20 | 14-Nov-24 | 1-Apr-26 | 31-Mar-29 |
-| 13 | 25-May-21 | 13-Nov-25 | 1-Apr-26 | 31-Mar-29 |
+| 11 | 24-Jul-19 |  9-Nov-25 | 10-Nov-25 | 31-Mar-26 | 1-Apr-26 | 31-Mar-29 |
+| 12 | 22-Sep-20 | 14-Nov-24 | 15-Nov-24 | 31-Mar-26 |  1-Apr-26 | 31-Mar-29 |
+| 13 | 25-May-21 | 13-Nov-25 | 14-Nov-25 | 31-Mar-26 |  1-Apr-26 | 31-Mar-29 |
 
 ### Enrollment and price
 
