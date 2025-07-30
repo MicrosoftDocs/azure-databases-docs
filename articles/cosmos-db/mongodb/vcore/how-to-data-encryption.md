@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 07/21/2025
+ms.date: 07/28/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -65,7 +65,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-change-key.png" alt-text="Screenshot that shows how to open the window for encryption key selection.":::
 
-1. In the **Select a key** pane select the Azure Key Vault in the **Key vault**, encryption key in the **Key**, the key version to be used for encryption in the **Version**, and confirm your choices by selecting **Select**.
+1. In the **Select a key** pane select the Azure Key Vault in the **Key vault** and encryption key in the **Key**, and confirm your choices by selecting **Select**.
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-select-encryption-key.png" alt-text="Screenshot that shows how to open the window for encryption key selection.":::
 
@@ -118,6 +118,10 @@ You can enable data encryption with user-assigned encryption key, while provisio
           }
     }
     ```
+
+> [!NOTE]  
+> The `keyEncryptionKeyUrl` should contain the key name but shouldn't contain [a specific key version](./database-encryption-at-rest.md#cmk-key-version-updates).
+
 1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
 
     ```powershell
