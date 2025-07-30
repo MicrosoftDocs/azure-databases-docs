@@ -1,7 +1,7 @@
 --- 
-title: $subtract (as arithmetic expression operator) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Subtracts two numbers and returns the result.
+title: $subtract
+titleSuffix: Overview of the $subtract operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $subtract operator subtracts two numbers and returns the result.
 author: khelanmodi
 ms.author: khelanmodi
 ms.service: azure-cosmos-db
@@ -10,82 +10,200 @@ ms.topic: language-reference
 ms.date: 09/27/2024
 ---
 
-# $subtract (as arithmetic expression operator)
+# $subtract
 
-The `$subtract` operator is used to subtract two numbers and return the result. This operator is useful in various scenarios such as calculating differences between dates, times, or numerical values in a document.
+The `$subtract` operator is used to subtract two numbers and return the result. 
 
 ## Syntax
 
 ```javascript
-{ $subtract: [ <expression1>, <expression2> ] }
+{
+  $subtract: [ <expression 1>, <expression 2> ]
+}
 ```
 
 ## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`<expression1>`** | The minuend (the number from which another number is to be subtracted). |
-| **`<expression2>`** | The subtrahend (the number to be subtracted). |
+| **`<expression 1>`** | The minuend (the number from which another number is to be subtracted). |
+| **`<expression 2>`** | The subtrahend (the number to be subtracted). |
 
-## Example(s)
+## Examples
 
-### Example 1: Subtracting Total Sales from Full Sales
+Consider this sample document from the stores collection.
 
-The following example demonstrates how to subtract the `fullSales` value from the `totalSales` value in the `salesByCategory` array.
-
-```javascript
-db.collection.aggregate([
-  {
-    $project: {
-      category: "$sales.salesByCategory.categoryName",
-      salesDifference: { $subtract: ["$sales.salesByCategory.totalSales", "$sales.fullSales"] }
-    }
-  }
-])
-```
-
-This output shows the difference between totalSales and fullSales for each category:
 ```json
-[
-  { "_id": 1, "category": "Electronics", "salesDifference": 500 },
-  { "_id": 2, "category": "Clothing", "salesDifference": -200 },
-  { "_id": 3, "category": "Home Appliances", "salesDifference": 1000 }
-]
-```
-
-### Example 2: Calculating the Duration of a Promotional Event
-
-The following example calculates the duration of a promotional event in days by subtracting the `startDate` from the `endDate`.
-
-```javascript
-db.collection.aggregate([
-  {
-    $project: {
-      eventName: "$promotionEvents.eventName",
-      eventDuration: {
-        $subtract: [
-          { $dateFromParts: { year: "$promotionEvents.promotionalDates.endDate.Year", month: "$promotionEvents.promotionalDates.endDate.Month", day: "$promotionEvents.promotionalDates.endDate.Day" } },
-          { $dateFromParts: { year: "$promotionEvents.promotionalDates.startDate.Year", month: "$promotionEvents.promotionalDates.startDate.Month", day: "$promotionEvents.promotionalDates.startDate.Day" } }
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
         ]
-      }
-    }
-  }
-])
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
 ```
 
-This output calculates the number of days between the start and end date of each promotional event:
+### Example 1: Calculating the difference between full time and part time staff
+
+To calculate the absolute difference in part time and full time staff for stores within the "First Up Consultants" company, first run a query to filter stores by the company name. Then, use the $diff operator along with the $abs operator to calculate the absolute difference between the full time and part time staff for each store.
+
+```javascript
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
+        }
+    }
+}, {
+    "$project": {
+        "name": 1,
+        "staff": 1,
+        "staffCountDiff": {
+            $abs: {
+                "$subtract": ["$staff.employeeCount.fullTime", "$staff.employeeCount.partTime"]
+            }
+        }
+    }
+}])
+```
+
+The first three results returned by this query are:
+
 ```json
 [
-  {
-    "_id": 4,
-    "eventName": "Black Friday",
-    "eventDuration": 5
-  },
-  {
-    "_id": 5,
-    "eventName": "Holiday Sale",
-    "eventDuration": 10
-  }
+    {
+        "_id": "62438f5f-0c56-4a21-8c6c-6bfa479494ad",
+        "name": "First Up Consultants | Plumbing Supply Shoppe - New Ubaldofort",
+        "staff": {
+            "employeeCount": {
+                "fullTime": 20,
+                "partTime": 18
+            }
+        },
+        "staffCountDiff": 2
+    },
+    {
+        "_id": "bfb213fa-8db8-419f-8e5b-e7096120bad2",
+        "name": "First Up Consultants | Beauty Product Shop - Hansenton",
+        "staff": {
+            "employeeCount": {
+                "fullTime": 18,
+                "partTime": 10
+            }
+        },
+        "staffCountDiff": 8
+    },
+    {
+        "_id": "14ab145b-0819-4d22-9e02-9ae0725fcda9",
+        "name": "First Up Consultants | Flooring Haven - Otisville",
+        "staff": {
+            "employeeCount": {
+                "fullTime": 19,
+                "partTime": 10
+            }
+        },
+        "staffCountDiff": 9
+    }
 ]
 ```
 

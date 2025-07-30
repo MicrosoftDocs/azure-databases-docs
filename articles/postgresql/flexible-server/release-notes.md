@@ -22,6 +22,8 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: July 2025
 - General availability
     - [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17) is now supported, including in-place major version upgrades.
+    - [Malaysia West region](./overview.md#azure-regions)
+    - [Chile Central region](./overview.md#azure-regions)
 - Preview
     - [High Availability with Premium SSDv2](concepts-storage.md)
 
