@@ -1,7 +1,7 @@
 ---
 title: $mod
 titleSuffix: Overview of the $mod operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $mod query operator in Azure Cosmos DB for MongoDB vCore is used to filter documents based on a modulus operation.
+description: The $mod operator filters documents based on a modulus operation.
 author: khelanmodi
 ms.author: khelanmodi
 ms.service: azure-cosmos-db
@@ -10,7 +10,7 @@ ms.topic: language-reference
 ms.date: 09/27/2024
 ---
 
-# $mod (as query operator)
+# $mod
 
 The `$mod` query operator is used to filter documents based on the remainder of a division operation. This operator allows for queries that involve mathematical conditions, such as finding values divisible by a number or having a specific remainder. It's supported in Azure Cosmos DB for MongoDB (vCore).
 
