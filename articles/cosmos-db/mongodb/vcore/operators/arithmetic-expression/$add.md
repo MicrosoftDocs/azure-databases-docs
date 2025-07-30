@@ -1,6 +1,6 @@
 ---
 title: $add
-titleSuffix: Usage of the $add operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $add operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $add operator returns the sum of two numbers or the sum of a date and numbers.
 author: suvishodcitus
 ms.author: suvishod
