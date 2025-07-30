@@ -67,12 +67,12 @@ Then replace the original keystore file with the newly generated one:
 
 For **Java** users, run these commands to add the new trusted root certificates to an **existing** trusted root **certificate store**:
 
-        ```bash
-        keytool -importcert -alias MySqlFlexServerCACert2  -file digiCertGlobalRootG2.crt.pem -keystore truststore -storepass password -noprompt
-        keytool -importcert -alias MicrosoftRSARootCert2017  -file MicrosoftRSARootCertificateAuthority2017.crt -keystore truststore -storepass password -noprompt
-        ```
+```bash
+keytool -importcert -alias MySqlFlexServerCACert2  -file digiCertGlobalRootG2.crt.pem -keystore truststore -storepass password -noprompt
+keytool -importcert -alias MicrosoftRSARootCert2017  -file MicrosoftRSARootCertificateAuthority2017.crt -keystore truststore -storepass password -noprompt
+```
 
-        There is no need change the `javax.net.ssl.trustStore` and `javax.net.ssl.trustStorePassword` properties if you are updating an existing keystore.
+There is no need change the `javax.net.ssl.trustStore` and `javax.net.ssl.trustStorePassword` properties if you are updating an existing keystore.
 
 ## Update your .NET client
 
