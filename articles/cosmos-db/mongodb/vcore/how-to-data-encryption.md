@@ -130,8 +130,7 @@ You can enable data encryption with user-assigned encryption key, while provisio
     $subscriptionId="00000000-0000-0000-0000-000000000000"
     $resourceGroup="AzureCosmosDB"
     $mongoClustersName="msdocscr$randomIdentifier"
-    $locationName="westus"
-    
+        
     # Execute the az rest command to make REST API call
     az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
     ```
@@ -182,8 +181,7 @@ You can change user-assigned managed identity and encryption key for data encryp
     $subscriptionId="00000000-0000-0000-0000-000000000000"
     $resourceGroup="resourceGroupName"
     $mongoClustersName="clusterName"
-    $locationName="regionName"
-    
+        
     # Execute the az rest command to make REST API call
     az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
     ```
@@ -204,6 +202,7 @@ The following are the current limitations for configuring the customer-managed k
 
 - The instance of Azure Key Vault where you plan to store the encryption key and user-assigned managed identity must be in the same region and in the same Microsoft tenant as the Azure Cosmos DB for MongoDB vCore cluster.
 - After you configure customer-managed key encryption, you can't revert back to system-managed key.
+- [Add physical shard operation](./how-to-scale-cluster.md#increase-the-number-of-physical-shards) isn't supported on clusters with CMK enabled.
 
 ## Related content
 
