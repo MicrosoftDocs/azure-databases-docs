@@ -1,6 +1,6 @@
 ---
 title: $abs
-titleSuffix: Usage of the $avg operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $avg operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $abs operator returns the absolute value of a number.
 author: suvishodcitus
 ms.author: suvishod
