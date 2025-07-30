@@ -5,8 +5,6 @@
   items:
   - name: What is Azure Database for MySQL?
     href: flexible-server/overview.md
-  - name: Select the right deployment type
-    href: select-right-deployment-type.md
   - name: Try for free
     href: flexible-server/how-to-deploy-on-azure-free-account.md
   - name: Prepay for reserved capacity
