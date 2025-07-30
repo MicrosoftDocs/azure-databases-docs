@@ -1,7 +1,7 @@
 ---
-title: $exp (arithmetic expression) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: The $exp operator raises e to the specified exponent and returns the result.
+title: $exp
+titleSuffix: Overview of the $exp operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $exp operator raises e to the specified exponent and returns the result
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
@@ -10,29 +10,141 @@ ms.topic: language-reference
 ms.date: 02/12/2025
 ---
 
-# $exp (arithmetic expression)
+# $exp
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$exp` operator raises Euler's number (e) to the specified exponent and returns the result. The mathematical constant e is approximately equal to 2.71828.
+The `$exp` operator returns the value of e raised to the specified exponent. The mathematical constant e is approximately equal to 2.71828.
 
 ## Syntax
 
-The syntax for the `$exp` operator is as follows:
-
 ```javascript
-{ $exp: <exponent> }
+{
+  $exp: <exponent>
+}
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<exponent>`** | Any valid expression that resolves to a number. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample data from the `stores` dataset to calculate exponential growth projections for sales.
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1 - Calculate exponential growth rate
+
+To calculate the exponential growth rate of total sales volume of a store by 10% and 20% respectively, use the $exp operator to multiple the value of the totalSales field by e^0.1 and e^0.2.
 
 ```javascript
 db.stores.aggregate([
@@ -60,18 +172,20 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce the following output:
+This query returns the following result:
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "currentSales": 151864,
-  "projectedGrowth": {
-    "oneYear": 167809.93,
-    "twoYears": 185304.95
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "currentSales": 151864,
+    "projectedGrowth": {
+      "oneYear": 167809.93,
+      "twoYears": 185304.95
+    }
   }
-}
+]
 ```
 
 ## Related content
