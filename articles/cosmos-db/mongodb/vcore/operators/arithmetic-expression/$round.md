@@ -145,7 +145,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Round the location coordinates of stores
 
-To round the latitude and longititude of all stores within the "First Up Consultants" company, first run a query to filter on the name of the company. Then, use the $round operator on the lat and lon fields to return the desired result.
+To round the latitude and longitude of all stores within the "First Up Consultants" company, first run a query to filter on the name of the company. Then, use the $round operator on the lat and lon fields to return the desired result.
 
 ```javascript
 db.stores.aggregate([{
