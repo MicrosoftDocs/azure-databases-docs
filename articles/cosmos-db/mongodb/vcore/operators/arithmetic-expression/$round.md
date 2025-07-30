@@ -1,6 +1,6 @@
 ---
-title: $round usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $round
+titleSuffix: Overview of the $round operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $round operator rounds a number to a specified decimal place.
 author: khelanmodi
 ms.author: khelanmodi
@@ -17,7 +17,9 @@ The `$round` operator is used to round a number to a specified decimal place. It
 ## Syntax
 
 ```javascript
-{ $round: [ <number>, <place> ] }
+{
+  $round: [ <number>, <place> ]
+}
 ```
 
 ## Parameters
@@ -27,87 +29,227 @@ The `$round` operator is used to round a number to a specified decimal place. It
 | **`<number>`** | The number to be rounded. |
 | **`<place>`** | The decimal place to which the number should be rounded. |
 
-## Example
+## Examples
 
-### Round the latitude and longitude values
+Consider this sample document from the stores collection.
 
-```javascript
-db.collection.aggregate([
-  {
-    $project: {
-      roundedLat: { $round: ["$location.lat", 1] },
-      roundedLon: { $round: ["$location.lon", 1] }
-    }
-  }
-])
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
 ```
 
-This rounds the latitude and longitude values to one decimal place for better readability:
+### Example 1 - Round the location coordinates of stores
+
+To round the latitude and longititude of all stores within the "First Up Consultants" company, first run a query to filter on the name of the company. Then, use the $round operator on the lat and lon fields to return the desired result.
+
+```javascript
+db.stores.aggregate([{
+        "$match": {
+            "company": {
+                "$in": [
+                    "First Up Consultants"
+                ]
+            }
+        }
+    }, {
+    "$project": {
+        "company": 1,
+        "location.lat": 1,
+		"location.lon": 1,
+		"roundedLat": { $round: ["$location.lat", 1] },
+		"roundedLon": { $round: ["$location.lon", 1] }
+    }
+}])
+```
+
+The first three results returned by this query are:
+
 ```json
 [
-  { "_id": 1, "location": { "lat": 37.774929, "lon": -122.419416 }, "roundedLat": 37.8, "roundedLon": -122.4 },
-  { "_id": 2, "location": { "lat": 40.712776, "lon": -74.005974 }, "roundedLat": 40.7, "roundedLon": -74.0 }
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "location": {
+            "lat": 87.2239,
+            "lon": -129.0506
+        },
+        "company": "First Up Consultants",
+        "roundedLat": 87.2,
+        "roundedLon": -129.1
+    },
+    {
+        "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+        "location": {
+            "lat": -29.1866,
+            "lon": -112.7858
+        },
+        "company": "First Up Consultants",
+        "roundedLat": -29.2,
+        "roundedLon": -112.8
+    },
+    {
+        "_id": "62438f5f-0c56-4a21-8c6c-6bfa479494ad",
+        "location": {
+            "lat": -0.2136,
+            "lon": 108.7466
+        },
+        "company": "First Up Consultants",
+        "roundedLat": -0.2,
+        "roundedLon": 108.7
+    }
 ]
 ```
 
-### Round the total sales to the nearest thousand
+### Example 2 - Round to the nearest thousand
+
+To round the total sales volume of stores within the "First Up Consultants" company, first run a query to filter stores by the company name. Then use the $round operator on the totalSales field to round the value to the nearest thousand.
 
 ```javascript
-db.collection.aggregate([
-  {
-    $project: {
-      roundedSales: { $round: ["$sales.fullSales", -3] }
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
+        }
     }
-  }
-])
-```
-
-This rounds total sales to the nearest thousand, which is useful for financial reporting:
-```json
-[
-  { "_id": 3, "sales": { "fullSales": 25400 }, "roundedSales": 25000 },
-  { "_id": 4, "sales": { "fullSales": 127500 }, "roundedSales": 128000 }
-]
-```
-
-### Round the discount percentages to the nearest integer
-
-```javascript
-db.collection.aggregate([
-  {
-    $unwind: "$promotionEvents"
-  },
-  {
-    $unwind: "$promotionEvents.discounts"
-  },
-  {
-    $project: {
-      eventName: "$promotionEvents.eventName",
-      categoryName: "$promotionEvents.discounts.categoryName",
-      roundedDiscount: { $round: ["$promotionEvents.discounts.discountPercentage", 0] }
+}, {
+    "$project": {
+        "company": 1,
+        "sales.totalSales": 1,
+        "roundedSales": {
+            $round: ["$sales.totalSales", -3]
+        }
     }
-  }
-])
+}])
 ```
 
-This rounds discount percentages to the nearest whole number, which is helpful for display and pricing adjustments:
+The first three results returned by this query are:
+
 ```json
 [
   {
-    "_id": 5,
-    "eventName": "Black Friday",
-    "categoryName": "Electronics",
-    "roundedDiscount": 20
+    _id: '39acb3aa-f350-41cb-9279-9e34c004415a',
+    sales: { revenue: 279183 },
+    company: 'First Up Consultants',
+    roundedSales: 279000
   },
   {
-    "_id": 6,
-    "eventName": "Holiday Sale",
-    "categoryName": "Clothing",
-    "roundedDiscount": 15
+    _id: '26afb024-53c7-4e94-988c-5eede72277d5',
+    sales: { revenue: 50000 },
+    company: 'First Up Consultants',
+    roundedSales: 50000
+  },
+  {
+    _id: '62438f5f-0c56-4a21-8c6c-6bfa479494ad',
+    sales: { revenue: 68508 },
+    company: 'First Up Consultants',
+    roundedSales: 69000
   }
 ]
 ```
-
 
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]
