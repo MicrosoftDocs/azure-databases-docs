@@ -86,6 +86,26 @@ The following steps guide you through the process of updating the root certifica
      (Root CA3: .crt.pem)
      -----END CERTIFICATE-----
      ```
+   - For Data-in replication where **both master and replica are hosted on Azure**, you can merge the CA certificate files in this format:
+  
+     ```output
+     SET @cert = '-----BEGIN CERTIFICATE-----
+     (Root CA1:DigiCertGlobalRootCA.crt.pem)
+     -----END CERTIFICATE-----
+     -----BEGIN CERTIFICATE-----
+     (Root CA2: DigiCertGlobalRootG2.crt.pem)
+     -----END CERTIFICATE-----
+     -----BEGIN CERTIFICATE-----
+     (Root CA3: .crt.pem)
+     -----END CERTIFICATE-----'
+     ```
+     
+     Then call mysql.az_replication_change_master as follow:
+
+     ```sql
+     CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
+     ```
+     Reboot your replica server.
 
 ## How do I know if I'm using SSL/TLS with root certificate verification?
 
