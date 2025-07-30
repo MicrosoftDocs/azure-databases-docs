@@ -1,7 +1,7 @@
 ---
-title: $multiply (Aggregation Expression)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: The $multiply operator in Azure Cosmos DB for MongoDB vCore calculates the product of numerical expressions.
+title: $multiply
+titleSuffix: Overview of the $multiple operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $multiply operator multiplies the input numerical values
 author: khelanmodi
 ms.author: khelanmodi
 ms.service: azure-cosmos-db
@@ -10,112 +10,189 @@ ms.topic: language-reference
 ms.date: 09/27/2024
 ---
 
-# $multiply (aggregation expression)
+# $multiply
 
-The `$multiply` operator calculates the product of numerical expressions and is supported in aggregation operations. It's a useful tool for deriving calculated fields or performing arithmetic within aggregation pipelines.
+The `$multiply` operator calculates the product of the specified input numerical values.
 
 ## Syntax
 
 ```javascript
 {
-  $multiply: [ <expression1>, <expression2>, ... ]
+  $multiply: [ <listOfValues> ]
 }
 ```
 
-- **`<expression1>`**: A valid expression that resolves to a number.
-- **`<expression2>`**: A valid expression that resolves to a number.
-- **`...`**: Additional expressions, each resolving to a number.
+## Parameters
 
-## Example
+| Parameter | Description |
+| --- | --- |
+|**`<listOfValues>`**| A comma separated list of numerical values.
+
+
+## Examples
+
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
 
 ### Example 1: Multiply a field by a constant
 
-This example demonstrates how to double the value of the `fullSales` field:
+To double the total sales for all stores under the "First Up Consultants" company, first run a query to filter on the name of the company. Then, use the $multiply operator on the totalSales field to return the desired results.
 
 ```javascript
-db.collection.aggregate([
-  {
-    $project: {
-      sales: 1,
-      doubleSales: { $multiply: ["$sales.fullSales", 2] }
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
+        }
     }
-  }
-])
+}, {
+    "$project": {
+        "company": 1,
+        "sales.revenue": 1,
+        "salesVolumeDoubled": {
+            "$multiply": ["$sales.revenue", 2]
+        }
+    }
+}])
 ```
 
-The result includes the original `sales` field and a new field `doubleSales` that is twice the value of `sales.fullSales`. It will produce the following output:
+The first three results returned by this query are:
+
 ```json
 [
-  { "_id": 1, "sales": { "fullSales": 100 }, "doubleSales": 200 },
-  { "_id": 2, "sales": { "fullSales": 250 }, "doubleSales": 500 },
-  { "_id": 3, "sales": { "fullSales": 400 }, "doubleSales": 800 }
-]
-```
-
-### Example 2: Calculate total discounts during a promotion
-
-This example calculates the total discount for a promotion in the "DJ Turntables" category:
-
-```javascript
-db.collection.aggregate([
-  {
-    $project: {
-      promotionEvents: 1,
-      totalDiscount: {
-        $multiply: [
-          { $arrayElemAt: ["$promotionEvents.discounts.discountPercentage", 0] },
-          "$sales.salesByCategory.totalSales"
-        ]
-      }
-    }
-  }
-])
-```
-
-The `totalDiscount` field is derived by multiplying the first discount percentage from the `promotionEvents` array with the `totalSales` value. It will produce the following output:
-```json
-[
-  {
-    "_id": 4,
-    "promotionEvents": {
-      "discounts": [{ "discountPercentage": 0.10 }]
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "sales": {
+            "revenue": 279183
+        },
+        "company": "First Up Consultants",
+        "salesVolumeDoubled": 558366
     },
-    "sales": { "salesByCategory": { "totalSales": 5000 } },
-    "totalDiscount": 500
-  },
-  {
-    "_id": 5,
-    "promotionEvents": {
-      "discounts": [{ "discountPercentage": 0.15 }]
+    {
+        "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+        "sales": {
+            "revenue": 50000
+        },
+        "company": "First Up Consultants",
+        "salesVolumeDoubled": 100000
     },
-    "sales": { "salesByCategory": { "totalSales": 10000 } },
-    "totalDiscount": 1500
-  }
-]
-```
-
-### Example 3: Compute area of a rectangle
-
-This example calculates the area of a rectangle given its `width` and `height`:
-
-```javascript
-db.collection.aggregate([
-  {
-    $project: {
-      width: 1,
-      height: 1,
-      area: { $multiply: ["$dimensions.width", "$dimensions.height"] }
+    {
+        "_id": "62438f5f-0c56-4a21-8c6c-6bfa479494ad",
+        "sales": {
+            "revenue": 68508
+        },
+        "company": "First Up Consultants",
+        "salesVolumeDoubled": 137016
     }
-  }
-])
-```
-
-The resulting `area` field is the product of the rectangle's `width` and `height`. It will produce the following output:
-```json
-[
-  { "_id": 6, "dimensions": { "width": 5, "height": 10 }, "area": 50 },
-  { "_id": 7, "dimensions": { "width": 8, "height": 12 }, "area": 96 },
-  { "_id": 8, "dimensions": { "width": 3, "height": 7 }, "area": 21 }
 ]
 ```
 
