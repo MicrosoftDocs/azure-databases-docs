@@ -4,7 +4,7 @@ description: API release notes for Azure Database for PostgreSQL flexible server
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
-ms.date: 02/25/2025
+ms.date: 07/30/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -26,6 +26,8 @@ This page provides latest news and updates regarding the recommended API version
 
 | API Version | Stable/Preview | Comments |
 | --- | --- | --- |
+| 2025-06-01-preview | Preview | Renames files for better representation of their contents<br>Renames operations to improve organization, clarity and navigation<br>Adds example for CMK-based data encryption with automatic key version update<br>Adds example for creation of server in Microsoft owned virtual network<br>Adds support for table recommendations<br>Adds support for specifying default database name in an Elastic Cluster<br>Removes support for server parameter tuning feature<br> |
+| 2025-01-01-preview | Preview | Adds support for server parameter tuning feature<br> |
 | 2024-11-01-preview | Preview | Index tuning<br>Added source types for migration<br>PG 17 support<br>UltraSSD_LRS storage type support<br>Elastic Clusters on Flexible Server<br> |
 | 2024-08-01 | Stable (GA) | Geo + CMK - Revive Dropped<br>Storage auto growth<br>IOPS scaling<br>New location capability api<br>Long Term Retention Backup<br>Server Logs<br>Migrations<br>Migration Pre-validation<br>Read replicas - Switchover (Site swap)<br>Read replicas - Virtual Endpoints<br>Private Endpoints<br>Azure Defender / Threat Protection APIs<br>PG 16 support<br>PremiumV2_LRS storage type support<br>Location capability changes for SSDv2<br>Migration Roles<br>Migration Instance Resource Id to support Private endpoint Migrations<br>On-demand backup<br>System assign identity<br> |
 | 2023-06-01-preview| Preview | Earlier GA features   +<br>Migration Prevalidation<br>Read replicas - Switchover (Site swap)<br>Read replicas - Virtual Endpoints<br>Private Endpoints<br>Azure Defender\Threat Protection APIs<br>PG 16 support<br>PremiumV2_LRS storage type support<br>Location capability changes for SSDv2<br>Quota Usage API<br> |
