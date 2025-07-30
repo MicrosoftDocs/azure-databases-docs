@@ -1,6 +1,6 @@
 ---
 title: $trunc
-titleSuffix: Overview of the $truc operator in Azure Cosmos DB for MongoDB (vCore)
+titleSuffix: Overview of the $trunc operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $trunc operator truncates a number to a specified decimal place.
 author: khelanmodi
 ms.author: khelanmodi
@@ -143,7 +143,7 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1 - Truncate Latitude
+### Example 1 - Fetch truncated location coordinates
 
 To retrieve the truncated coordinates of stores within the "First Up Consultants" company, first run a query to filter stores by the company name. Then, use the $trunc operator on the latitude and longitude fields to return the desired result.
 
@@ -194,3 +194,5 @@ The first three results returned by this query are:
 ]
 ```
 
+## Related content
+[!INCLUDE[Related content](../includes/related-content.md)]
