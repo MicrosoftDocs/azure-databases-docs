@@ -1,6 +1,6 @@
 ---
-title: $mod (as Query Operator)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $mod
+titleSuffix: Overview of the $mod operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $mod query operator in Azure Cosmos DB for MongoDB vCore is used to filter documents based on a modulus operation.
 author: khelanmodi
 ms.author: khelanmodi
@@ -22,53 +22,178 @@ The `$mod` query operator is used to filter documents based on the remainder of 
 }
 ```
 
-- **`<field>`**: The field on which to perform the modulus operation.
-- **`<divisor>`**: The number by which to divide the field's value.
-- **`<remainder>`**: The expected remainder after the division.
+## Parameters
+| Parameter | Description |
+| --- | --- |
+|**`<field>`**| The field on which to perform the modulus operation|
+|**`<divisor>`**| The number by which to divide the field's value|
+|**`<remainder>`**| The expected remainder after the division|
 
-## Example
+## Examples
 
-### Example 1: Find documents where the `sales` value is divisible by 3
+Consider this sample document from the stores collection.
 
 ```json
-db.collection.find({ "sales": { "$mod": [3, 0] } })
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
 ```
 
-This example retrieves all documents where the `sales` field value is divisible by 3 (that is, the remainder is 0). It will produce the following output:
+### Example 1: Find stores where the total sales volume is divisible by 3
+
+To find stores within the "First Up Consultants" company whose sales volumes are divisible by 3, first run a query to filter on the company name. Then, use the $mod operator on the totalSales field to retrieve the desired stores.
+
+```javascript
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": [
+                "First Up Consultants"
+            ]
+        },
+        "$and": [{
+            "sales.totalSales": {
+                "$mod": [5, 2]
+            }
+        }]
+    }
+}, {
+    "$project": {
+        "company": 1,
+        "sales.revenue": 1
+    }
+}])
+```
+
+The first three results returned by this query are:
+
 ```json
 [
-  { "_id": 1, "sales": 9, "product": "A" },
-  { "_id": 2, "sales": 15, "product": "B" },
-  { "_id": 3, "sales": 21, "product": "C" }
-]
-```
-
-### Example 2: Find documents where the `totalSales` value has a remainder of 2 when divided by 5
-
-```json
-db.collection.find({ "totalSales": { "$mod": [5, 2] } })
-```
-
-This query filters documents where the `totalSales` field has a remainder of 2 when divided by 5. It will produce the following output:
-```json
-[
-  { "_id": 4, "totalSales": 7, "product": "X" },
-  { "_id": 5, "totalSales": 12, "product": "Y" },
-  { "_id": 6, "totalSales": 17, "product": "Z" }
-]
-```
-
-### Example 3: Query nested fields using $mod
-
-```json
-db.collection.find({ "sales.monthly.total": { "$mod": [4, 1] } })
-```
-
-This example demonstrates querying a nested field (`sales.monthly.total`) with the `$mod` operator. It will produce the following output:
-```json
-[
-  { "_id": 7, "sales": { "monthly": { "total": 5 } }, "category": "Electronics" },
-  { "_id": 8, "sales": { "monthly": { "total": 9 } }, "category": "Clothing" }
+    {
+        "_id": "1596d31a-84d4-47bb-973f-884cc1a1aa03",
+        "sales": {
+            "revenue": 74467
+        },
+        "company": "First Up Consultants"
+    },
+    {
+        "_id": "269181ff-e9db-4019-9f36-7b7935ef6ab2",
+        "sales": {
+            "revenue": 48832
+        },
+        "company": "First Up Consultants"
+    },
+    {
+        "_id": "cb93912d-4392-4393-a1f9-b3d1f0681254",
+        "sales": {
+            "revenue": 11227
+        },
+        "company": "First Up Consultants"
+    }
 ]
 ```
 
