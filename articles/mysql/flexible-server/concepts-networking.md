@@ -71,6 +71,9 @@ Regardless of your networking option, we recommend you use the fully qualified d
 
 An example that uses an FQDN as a host name is hostname = servername.mysql.database.azure.com. Where possible, avoid using hostname = 10.0.0.4 (a private address) or hostname = 40.2.45.67 (a public address).
 
+> [!NOTE]  
+> If your Azure Database for MySQL Flexible Server has both public access and Private Link enabled, public IPs for your instance will be updated as part of architectural change to make the networking experience better. If you have been using such public IPs in your connection string, you must replace with FQDN before Sept 9 2025 to avoid any disruption in server connection. (Note: Private Link IP or VNet Integration IP will not be impacted). Required action - Run NSLookup, if the returned value is different from the hardcoded IP in your connection string your server will be impacted post 9 September 2025 and you should update it to use DNS name instead.
+
 ## TLS and SSL
 
 Azure Database for MySQL Flexible Server supports connecting your client applications to the Azure Database for MySQL Flexible Server instance using Secure Sockets Layer (SSL) with Transport layer security (TLS) encryption. TLS is an industry-standard protocol that ensures encrypted network connections between your database server and client applications, allowing you to adhere to compliance requirements.
