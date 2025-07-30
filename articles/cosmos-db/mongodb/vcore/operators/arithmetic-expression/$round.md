@@ -230,24 +230,24 @@ The first three results returned by this query are:
 
 ```json
 [
-  {
-    _id: '39acb3aa-f350-41cb-9279-9e34c004415a',
-    sales: { revenue: 279183 },
-    company: 'First Up Consultants',
-    roundedSales: 279000
-  },
-  {
-    _id: '26afb024-53c7-4e94-988c-5eede72277d5',
-    sales: { revenue: 50000 },
-    company: 'First Up Consultants',
-    roundedSales: 50000
-  },
-  {
-    _id: '62438f5f-0c56-4a21-8c6c-6bfa479494ad',
-    sales: { revenue: 68508 },
-    company: 'First Up Consultants',
-    roundedSales: 69000
-  }
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "sales": {},
+        "company": "First Up Consultants",
+        "roundedSales": 279000
+    },
+    {
+        "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+        "sales": {},
+        "company": "First Up Consultants",
+        "roundedSales": 50000
+    },
+    {
+        "_id": "62438f5f-0c56-4a21-8c6c-6bfa479494ad",
+        "sales": {},
+        "company": "First Up Consultants",
+        "roundedSales": 69000
+    }
 ]
 ```
 
