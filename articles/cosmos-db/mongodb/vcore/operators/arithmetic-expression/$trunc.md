@@ -1,6 +1,6 @@
 ---
-title: $trunc Usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $trunc
+titleSuffix: Overview of the $truc operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $trunc operator truncates a number to a specified decimal place.
 author: khelanmodi
 ms.author: khelanmodi
@@ -12,12 +12,14 @@ ms.date: 09/27/2024
 
 # $trunc
 
-The `$trunc` operator is used to truncate a number to a specified decimal place. This operator is particularly useful in scenarios where you need to limit the precision of numerical data, such as financial calculations, reporting, or data normalization.
+The `$trunc` operator truncates a number to a specified decimal place.
 
 ## Syntax
 
 ```javascript
-{ $trunc: [ <number>, <place> ] }
+{
+  $trunc: [ <number>, <decimal place> ]
+}
 ```
 
 ## Parameters
@@ -25,13 +27,125 @@ The `$trunc` operator is used to truncate a number to a specified decimal place.
 | Parameter | Description |
 | --- | --- |
 | **`<number>`** | The number to truncate. |
-| **`<place>`** | The decimal place to truncate to. A positive value truncates to the right of the decimal point, and a negative value truncates to the left of the decimal point. |
+| **`<decimal place>`** | The decimal place to truncate the specified number to. A positive value truncates to the right of the decimal point, and a negative value truncates to the left of the decimal point. |
 
-## Example(s)
+## Examples
 
-### Truncate Latitude
+Consider this sample document from the stores collection.
 
-This example demonstrates how to use the `$trunc` operator to truncate the latitude value in the `location` field to 2 decimal places.
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1 - Truncate Latitude
+
+To retrieve the truncated coordinates of stores within the "First Up Consultants" company, first run a query to filter stores by the company name. Then, use the $trunc operator on the latitude and longitude fields to return the desired result.
 
 ```javascript
 db.collection.aggregate([
@@ -43,35 +157,40 @@ db.collection.aggregate([
 ])
 ```
 
-This truncates the lat value to two decimal places:
+The first three results returned by this query are:
+
 ```json
 [
-  { "_id": 1, "location": { "lat": 37.774929 }, "truncatedLat": 37.77 },
-  { "_id": 2, "location": { "lat": 40.712776 }, "truncatedLat": 40.71 }
-]
-```
-
-### Truncate Sales
-
-In this example, we truncate the `fullSales` value in the `sales` field to the nearest integer.
-
-```javascript
-db.collection.aggregate([
-  {
-    $project: {
-      truncatedSales: { $trunc: ["$sales.fullSales", 0] }
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "name": "First Up Consultants | Bed and Bath Pantry - Port Antone",
+        "location": {
+            "lat": 87.2239,
+            "lon": -129.0506
+        },
+        "truncatedLatitute": 87,
+        "truncatedLongitude": -129
+    },
+    {
+        "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+        "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+        "location": {
+            "lat": -29.1866,
+            "lon": -112.7858
+        },
+        "truncatedLatitute": -29,
+        "truncatedLongitude": -112
+    },
+    {
+        "_id": "62438f5f-0c56-4a21-8c6c-6bfa479494ad",
+        "name": "First Up Consultants | Plumbing Supply Shoppe - New Ubaldofort",
+        "location": {
+            "lat": -0.2136,
+            "lon": 108.7466
+        },
+        "truncatedLatitute": 0,
+        "truncatedLongitude": 108
     }
-  }
-])
-```
-
-This truncates fullSales to the nearest whole number by removing the decimal portion:
-```json
-[
-  { "_id": 3, "sales": { "fullSales": 1234.56 }, "truncatedSales": 1234 },
-  { "_id": 4, "sales": { "fullSales": 9876.99 }, "truncatedSales": 9876 }
 ]
 ```
 
-## Related content
-[!INCLUDE[Related content](../includes/related-content.md)]
