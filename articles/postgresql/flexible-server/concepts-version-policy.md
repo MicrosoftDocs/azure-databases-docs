@@ -91,7 +91,7 @@ Best Practices
 
 ### Eligible PostgreSQL versions
 
-| PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Starts (includes grace period) | Paid Extended Support Ends |
+| PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date (includes grace period) | Paid Extended Support End Date |
 | --- | --- | --- | --- | --- | --- |
 | 11 | 24-Jul-19 |  9-Nov-25 |  9-Nov-25 |  1-Apr-26 | 31-Mar-29 |
 | 12 | 22-Sep-20 | 14-Nov-24 | 14-Nov-24 |  1-Apr-26 | 31-Mar-29 |
