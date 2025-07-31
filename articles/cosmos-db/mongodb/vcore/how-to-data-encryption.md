@@ -49,7 +49,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In **User-assigned managed identity** section select **Change identity**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-select-managed-identity.png" alt-text="Screenshot that shows how to select the user-assigned managed identity to access the data encryption key.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-managed-identity.png" alt-text="Screenshot that shows how to select the user-assigned managed identity to access the data encryption key.":::
 
 1. In the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
 
@@ -57,21 +57,21 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select **Add**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-add-managed-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity which the cluster uses to access the data encryption key.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity which the cluster uses to access the data encryption key.":::
 
 1. In the **Key selection method** choose **Select a key** .
 
 1. In the **Key** section select **Change key** .
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-change-key.png" alt-text="Screenshot that shows how to open the window for encryption key selection.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-change-key.png" alt-text="Screenshot that shows how to open the window to change the encryption key.":::
 
 1. In the **Select a key** pane select the Azure Key Vault in the **Key vault** and encryption key in the **Key**, and confirm your choices by selecting **Select**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-select-encryption-key.png" alt-text="Screenshot that shows how to open the window for encryption key selection.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-encryption-key.png" alt-text="Screenshot that shows how to select another encryption key.":::
 
 1. Confirm selected user-assigned managed identity and encryption key on the **Encryption** tab and select **Review + create** to create cluster.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-cmk-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion.":::
 
 ### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
