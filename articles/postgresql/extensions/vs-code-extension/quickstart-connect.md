@@ -122,7 +122,7 @@ Write prompts like the example below to receive detailed insights and suggestion
 
 To learn more, visit [Configure GitHub Copilot](quickstart-github-copilot.md)
 
-## Connect to an Azure Database for PostgreSQL Flexible Server instance with VS Code from the Azure portal
+## Connect to an Azure Database for PostgreSQL flexible server instance with VS Code from the Azure portal
 
 To connect to an Azure Database for PostgreSQL flexible server instance using Visual Studio Code, follow these steps:
 
@@ -131,7 +131,7 @@ To connect to an Azure Database for PostgreSQL flexible server instance using Vi
 
 ### Connect with VS Code
 
-The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure Database for PostgreSQL Flexible Server. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
+The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure Database for PostgreSQL flexible server. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
 
 - Select the prominent **Connect with VS Code** button on the Overview page.
 - A side pane listing the requirements to connect using VS Code appears.

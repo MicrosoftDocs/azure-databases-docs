@@ -16,7 +16,7 @@ ms.topic: concept-article
 
 Sharding is a technique used in database systems and distributed computing to horizontally partition data across multiple servers or nodes. It involves breaking up a large database or dataset into smaller, more manageable parts called Shards. A shard contains a subset of the data, and together, shards form the complete dataset.
 
-Elastic clusters on Azure Database for PostgreSQL Flexible Server offer two types of data sharding: row-based and schema-based. Each option comes with its own [tradeoffs](#sharding-tradeoffs), allowing you to choose the approach that best aligns with your application's requirements.
+Elastic clusters on Azure Database for PostgreSQL flexible server offer two types of data sharding: row-based and schema-based. Each option comes with its own [tradeoffs](#sharding-tradeoffs), allowing you to choose the approach that best aligns with your application's requirements.
 
 ## Row-based sharding
 
