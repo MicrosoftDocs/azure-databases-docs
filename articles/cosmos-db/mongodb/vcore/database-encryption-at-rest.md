@@ -44,7 +44,7 @@ Data encryption with **customer-managed keys** for Azure Cosmos DB for MongoDB v
 
 ## CMK requirements
 
-With **customer-managed encryption key** you assume all the responsibility for maintaining properly configurated components required for CMK to work. Hence, you must deploy your own [Azure Key Vault](/azure/key-vault/general/basic-concepts) and provide a [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types). You must generate or import your own key. You must grant required permissions on the Key Vault, so that your Azure Cosmos DB for MongoDB vCore can perform the necessary actions on the key. You have to take care of configuring all networking aspects of the Azure Key Vault in which the key is kept, so that your Azure Cosmos DB for MongoDB vCore instance can access the key. Auditing access to the key is also your responsibility. 
+With **customer-managed encryption key** you assume all the responsibility for maintaining properly configured components required for CMK to work. Hence, you must deploy your own [Azure Key Vault](/azure/key-vault/general/basic-concepts) and provide a [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types). You must generate or import your own key. You must grant required permissions on the Key Vault, so that your Azure Cosmos DB for MongoDB vCore can perform the necessary actions on the key. You have to take care of configuring all networking aspects of the Azure Key Vault in which the key is kept, so that your Azure Cosmos DB for MongoDB vCore instance can access the key. Auditing access to the key is also your responsibility. 
 
 When you configure customer-managed keys for an Azure Cosmos DB for MonogDB vCore cluster, Azure Storage wraps the root data encryption key (DEK) for the account with the customer-managed key in the associated key vault. The protection of the root encryption key changes, but the data in your Azure Storage account always remains encrypted. There's no extra action required on your part to ensure that your data remains encrypted. Protection by customer-managed keys takes effect immediately.
 
@@ -73,7 +73,7 @@ Following is the list of requirements and recommendations for data encryption co
 
 ## CMK key version updates
 
-CMK in Azure Cosmos DB for MongoDB vCore supports automatic key version updates, also known as version-less keys. Azure Cosmos DB for MonogoDB vCore service automatically picks up the new key version and reencrypt the data encryption key. This capability can be combined with the Azure Key Vault's [autorotation feature](/azure/key-vault/keys/how-to-configure-key-rotation).
+CMK in Azure Cosmos DB for MongoDB vCore supports automatic key version updates, also known as version-less keys. Azure Cosmos DB for MonogoDB vCore service automatically picks up the new key version and reencrypts the data encryption key. This capability can be combined with the Azure Key Vault's [autorotation feature](/azure/key-vault/keys/how-to-configure-key-rotation).
 
 ## Considerations
 
@@ -91,7 +91,7 @@ When you're using a customer-managed key for data encryption, follow these recom
 
 ### Accidental key access revocation from Azure Key Vault
 
-Someone with sufficient access rights to Key Vault, might accidentally disable cluster access to the key by:
+Someone with sufficient access rights to Key Vault might accidentally disable cluster access to the key by:
 
 - Unassigning the RBAC role **[Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations)** or revoking the permissions from the identity that's used to retrieve the key in Key Vault.
 - Deleting the key.

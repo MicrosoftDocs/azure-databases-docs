@@ -22,7 +22,7 @@ In this article, you learn how to configure [customer-managed key (CMK)](./datab
 
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
-## Prepare user-assigned managed identity and Azure Key Vault (AKV)
+## Prepare user-assigned managed identity and Azure Key Vault
 
 To configure customer-managed key encryption on your Azure Cosmos DB for MonogDB vCore cluster, you need a user-assigned managed identity, an Azure Key Vault instance, and permissions properly configured.
 
@@ -45,33 +45,33 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. During provisioning of a new Azure Cosmos DB for MongoDB vCore cluster, service-managed or customer-managed keys for cluster data encryption is configured in the **Encryption** tab. Select the **Customer-managed key** for **Data encryption**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the customer-managed encryption key during cluster provisioning.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the customer-managed encryption key during cluster provisioning." lightbox="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png":::
 
 1. In **User-assigned managed identity** section select **Change identity**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-managed-identity.png" alt-text="Screenshot that shows how to select the user-assigned managed identity to access the data encryption key.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-managed-identity.png" alt-text="Screenshot that shows how to select the user-assigned managed identity to access the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-select-managed-identity.png":::
 
 1. In the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the user-assigned managed identity, which the cluster uses to access the data encryption key.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the user-assigned managed identity, which the cluster uses to access the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png":::
 
 1. Select **Add**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity, which the cluster uses to access the data encryption key.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity, which the cluster uses to access the data encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png":::
 
 1. In the **Key selection method**, choose **Select a key** .
 
 1. In the **Key** section, select **Change key** .
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-change-key.png" alt-text="Screenshot that shows how to open the window to change the encryption key.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-change-key.png" alt-text="Screenshot that shows how to open the window to change the encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-change-key.png":::
 
 1. In the **Select a key** pane select the Azure Key Vault in the **Key vault** and encryption key in the **Key**, and confirm your choices by selecting **Select**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-encryption-key.png" alt-text="Screenshot that shows how to select another encryption key.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-encryption-key.png" alt-text="Screenshot that shows how to select another encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-select-encryption-key.png":::
 
 1. Confirm selected user-assigned managed identity and encryption key on the **Encryption** tab and select **Review + create** to create cluster.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png":::
 
 ### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
@@ -119,9 +119,9 @@ You can enable data encryption with user-assigned encryption key, while provisio
     }
     ```
 
-> [!NOTE]  
-> The `keyEncryptionKeyUrl` should contain the key name but shouldn't contain [a specific key version](./database-encryption-at-rest.md#cmk-key-version-updates).
-
+    > [!NOTE]  
+    > The `keyEncryptionKeyUrl` should contain the key name but shouldn't contain [a specific key version](./database-encryption-at-rest.md#cmk-key-version-updates).
+    
 1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
 
     ```powershell
