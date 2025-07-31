@@ -1,6 +1,6 @@
 ---
 title: Update application client certificates
-description: Learn about updating Java clients with Flexible Server using  TLS.
+description: Learn about updating Java clients with flexible server using  TLS.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -19,7 +19,7 @@ ms.topic: how-to
 ## Import Root CA Certificates in Java Key Store on the client, for certificate pinning scenarios
 
 Custom-written Java applications  use a default keystore, called `cacerts`, which contains trusted certificate authority (CA) certificates. It's also often known as Java trust store. A certificates file named `cacerts` resides in the security properties directory, java.home\lib\security, where java.home is the runtime environment directory (the `jre` directory in the SDK or the top-level directory of the Java™ 2 Runtime Environment).
-You can use following directions to update client root CA certificates for client certificate pinning scenarios with PostgreSQL Flexible Server:
+You can use following directions to update client root CA certificates for client certificate pinning scenarios with PostgreSQL flexible server:
 1. Check `cacerts` java keystore to see if it already contains required certificates. You can list certificates in Java keystore by using following command:
   ```powershell
     keytool -list -v -keystore ..\lib\security\cacerts > outputfile.txt

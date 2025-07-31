@@ -26,7 +26,7 @@ This page provides latest news and updates regarding the recommended API version
 
 | API Version | Stable/Preview | Comments |
 | --- | --- | --- |
-| 2024-11-01-preview | Preview | Index tuning<br>Added source types for migration<br>PG 17 support<br>UltraSSD_LRS storage type support<br>Elastic Clusters on Flexible Server<br> |
+| 2024-11-01-preview | Preview | Index tuning<br>Added source types for migration<br>PG 17 support<br>UltraSSD_LRS storage type support<br>Elastic Clusters on flexible server<br> |
 | 2024-08-01 | Stable (GA) | Geo + CMK - Revive Dropped<br>Storage auto growth<br>IOPS scaling<br>New location capability api<br>Long Term Retention Backup<br>Server Logs<br>Migrations<br>Migration Pre-validation<br>Read replicas - Switchover (Site swap)<br>Read replicas - Virtual Endpoints<br>Private Endpoints<br>Azure Defender / Threat Protection APIs<br>PG 16 support<br>PremiumV2_LRS storage type support<br>Location capability changes for SSDv2<br>Migration Roles<br>Migration Instance Resource Id to support Private endpoint Migrations<br>On-demand backup<br>System assign identity<br> |
 | 2023-06-01-preview| Preview | Earlier GA features   +<br>Migration Prevalidation<br>Read replicas - Switchover (Site swap)<br>Read replicas - Virtual Endpoints<br>Private Endpoints<br>Azure Defender\Threat Protection APIs<br>PG 16 support<br>PremiumV2_LRS storage type support<br>Location capability changes for SSDv2<br>Quota Usage API<br> |
 | 2023-03-01-preview | Preview | New GA version features (2022-12-01) +<br>Geo + CMK<br>Storage auto growth<br>IOPS scaling<br>New location capability API<br>Azure Defender<br>Server Logs<br>Migrations<br> |

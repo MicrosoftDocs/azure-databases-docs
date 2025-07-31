@@ -313,7 +313,7 @@ In versions of PostgreSQL <= 13, autovacuum doesn't run on tables with an inse
 
 Using the **pg_cron** extension, a cron job can be set up to schedule a periodic vacuum analyze on the table. The frequency of the cron job depends on the workload.
 
-For guidance, see [special considerations about using pg_cron in Azure Database for PostgreSQL Flexible Server](../extensions/concepts-extensions-considerations.md#pg_cron).
+For guidance, see [special considerations about using pg_cron in Azure Database for PostgreSQL flexible server](../extensions/concepts-extensions-considerations.md#pg_cron).
 
 ##### Postgres 13 and higher versions
 
