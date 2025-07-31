@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 07/28/2025
+ms.date: 07/30/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -24,7 +24,7 @@ In this article, you learn how to configure [customer-managed key (CMK)](./datab
 
 ## Prepare user-assigned managed identity and Azure Key Vault (AKV)
 
-To configure customer-managed key encryption on your Azure Cosmos DB for MonogDB vCore cluster you need a user-assigned managed identity, an Azure Key Vault instance, and permissions properly configured.
+To configure customer-managed key encryption on your Azure Cosmos DB for MonogDB vCore cluster, you need a user-assigned managed identity, an Azure Key Vault instance, and permissions properly configured.
 
 > [!IMPORTANT]  
 > User-managed identity and Azure Key Vault instance used to configure CMK should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is hosted and all belong to the same [Microsoft tenant](/entra/identity-platform/developer-glossary#tenant).
@@ -53,15 +53,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the user-assigned managed identity with which the cluster uses to access the data encryption key.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the user-assigned managed identity, which the cluster uses to access the data encryption key.":::
 
 1. Select **Add**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity which the cluster uses to access the data encryption key.":::
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity, which the cluster uses to access the data encryption key.":::
 
-1. In the **Key selection method** choose **Select a key** .
+1. In the **Key selection method**, choose **Select a key** .
 
-1. In the **Key** section select **Change key** .
+1. In the **Key** section, select **Change key** .
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-change-key.png" alt-text="Screenshot that shows how to open the window to change the encryption key.":::
 
@@ -145,7 +145,7 @@ You must update references that your Azure Cosmos DB for MongoDB vCore cluster h
 - When the key stored in the key store is rotated either manually or automatically. 
 - When you want to use the same or a different key stored in a different key store.
 
-You must update the user-assigned managed identities which are used by your Azure Cosmos DB for MongoDB vCore cluster to access the encryption keys:
+You must update the user-assigned managed identities that are used by your Azure Cosmos DB for MongoDB vCore cluster to access the encryption keys:
 - Whenever you want to use a different identity.
 
 You can change user-assigned managed identity and encryption key for data encryption on an existing cluster via a REST API call.

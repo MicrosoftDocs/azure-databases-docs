@@ -202,14 +202,16 @@
         href: how-to-monitor-diagnostics-logs.md
     - name: Security and data access
       items:
-      - name: Configure Entra ID authentication
-        href: how-to-configure-entra-authentication.md
       - name: Manage private access
         href: how-to-private-link.md
       - name: Manage public access
         href: how-to-public-access.md
+      - name: Configure Entra ID authentication
+        href: how-to-configure-entra-authentication.md
       - name: Create secondary users
         href: secondary-users.md
+      - name: Configure customer-managed key (CMK) encryption
+        href: how-to-data-encryption.md
 - name: Reference
   items:
     - name: Azure CLI
