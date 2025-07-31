@@ -20,7 +20,7 @@ This article describes how you can enable or disable high availability configura
 High availability feature deploys physically separate primary and standby replicas. Both replicas can be provisioned within the same availability zone or each on a different zone, depending on the deployment model you choose. For more information, see [high availability concepts](/azure/reliability/reliability-postgresql-flexible-server). You can enable high availability at creation time of your Azure Database for PostgreSQL flexible server, or you can do it after the server is created.
 
 > [!IMPORTANT]
-> _Billing Model Update for Azure Database for PostgreSQL Flexible Server (v5 HA):_
+> _Billing Model Update for Azure Database for PostgreSQL flexible server (v5 HA):_
 In April, we implemented a billing model update for v5 SKU with High Availability (HA) enabled servers. This change aims to correctly reflect the charges, by accounting for both the primary and standby servers. Before this change, we were incorrectly charging customers for the primary server only. Customers using v5 SKU with HA enabled servers would now see billing quantities multiplied by 2. This update doesn't impact v4 and v3 SKUs.
 
 ## Steps to enable high availability for existing servers
@@ -195,7 +195,7 @@ az postgres flexible-server update \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. During provisioning of a new instance of Azure Database for PostgreSQL Flexible Server, in the **High availability** section, select **Same zone** or **Zone redundant**.
+1. During provisioning of a new instance of Azure Database for PostgreSQL flexible server, in the **High availability** section, select **Same zone** or **Zone redundant**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png" alt-text="Screenshot showing how to configure high availability options during provisioning of a new instance." lightbox="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png":::
 

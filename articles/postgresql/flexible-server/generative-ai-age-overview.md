@@ -46,7 +46,7 @@ These steps help you to enable the extension in your flexible server instance:
 
 ### Access server parameters
 
-Within the Azure portal, navigate to the PostgreSQL Flexible Server instance and select the Server Parameters option.
+Within the Azure portal, navigate to the PostgreSQL flexible server instance and select the Server Parameters option.
 
 Adjust the following settings:
 

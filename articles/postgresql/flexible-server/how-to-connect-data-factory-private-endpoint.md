@@ -45,7 +45,7 @@ The previous action takes you to the **Networking** page of the Azure Database f
 
 If you don't have permission to approve the private endpoint, ask someone with such permissions to do so for you.
 
-:::image type="content" source="./media/how-to-connect-data-factory-private-endpoint/managed-private-endpoints-screen-approving.png" alt-text="Screenshot that presents the Networking page of Azure Database for PostgreSQL Flexible Server showing how to approve a private endpoint." lightbox="./media/how-to-connect-data-factory-private-endpoint/managed-private-endpoints-screen-approving.png":::
+:::image type="content" source="./media/how-to-connect-data-factory-private-endpoint/managed-private-endpoints-screen-approving.png" alt-text="Screenshot that presents the Networking page of Azure Database for PostgreSQL flexible server showing how to approve a private endpoint." lightbox="./media/how-to-connect-data-factory-private-endpoint/managed-private-endpoints-screen-approving.png":::
 
 The data factory might take several minutes to discover that the private endpoint is approved.
 

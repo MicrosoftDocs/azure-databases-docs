@@ -1,6 +1,6 @@
 ---
 title: Security
-description: Learn about security in the Flexible Server deployment option for Azure Database for PostgreSQL flexible server.
+description: Learn about security in the flexible server deployment option for Azure Database for PostgreSQL flexible server.
 author: tameikal-msft
 ms.author: talawren
 ms.reviewer: maghan
