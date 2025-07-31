@@ -92,11 +92,11 @@ Best Practices
 ### Eligible PostgreSQL versions
 
 | PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Starts (includes grace period) | Paid Extended Support Ends |
-| --- | --- | --- | --- | --- |
-| 11 | 24-Jul-19 |  9-Nov-25 |  9-Nov-25 |  1-Apr-26 |  1-Apr-26 | 31-Mar-29 |
-| 12 | 22-Sep-20 | 14-Nov-24 | 14-Nov-24 | 31-Mar-26 |  1-Apr-26 | 31-Mar-29 |
-| 13 | 25-May-21 | 13-Nov-25 | 13-Nov-25 | 31-Mar-26 |  1-Apr-26 | 31-Mar-29 |
-| 14 | 29-Jun-22 | 12-Nov-26 | 12-Nov-26 | 30-Nov-26 | 12-Dec-26 | 11-Dec-29 |
+| --- | --- | --- | --- | --- | --- |
+| 11 | 24-Jul-19 |  9-Nov-25 |  9-Nov-25 |  1-Apr-26 | 31-Mar-29 |
+| 12 | 22-Sep-20 | 14-Nov-24 | 14-Nov-24 |  1-Apr-26 | 31-Mar-29 |
+| 13 | 25-May-21 | 13-Nov-25 | 13-Nov-25 |  1-Apr-26 | 31-Mar-29 |
+| 14 | 29-Jun-22 | 12-Nov-26 | 12-Nov-26 | 12-Dec-26 | 11-Dec-29 |
 
 ### Enrollment and price
 
