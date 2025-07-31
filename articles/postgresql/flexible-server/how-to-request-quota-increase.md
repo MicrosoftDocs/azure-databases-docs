@@ -28,7 +28,7 @@ To request a quota increase, you must create a new support request with your wor
    * For **Summary**, Provide a short description of your request such as your workload, why the default values aren’t sufficient along with any error messages you're observing.
    * For **Issue type**, select **Service and subscription limits (quotas)**
    * For **Subscription**, select the subscription for which you want to increase the quota.
-   * For **Quota type**, select **Azure Database for PostgreSQL Flexible Server**
+   * For **Quota type**, select **Azure Database for PostgreSQL flexible server**
 
    :::image type="content" source="./media/how-to-create-support-request-quota-increase/create-quota-increase-request.png" alt-text="Create a new Azure Database for PostgreSQL flexible server request for quota increase.":::
 

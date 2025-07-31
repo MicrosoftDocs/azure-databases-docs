@@ -189,7 +189,7 @@ Index tuning is supported on all [currently available tiers](concepts-compute.md
 
 ### Supported versions of PostgreSQL
 
-Index tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL Flexible Server.
+Index tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server.
 
 ### Use of search_path
 

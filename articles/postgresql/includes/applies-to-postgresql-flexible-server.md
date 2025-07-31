@@ -1,5 +1,5 @@
 ---
-title: Applies to Flexible Server 
+title: Applies to Azure Database for PostgreSQL flexible server 
 ms.service: azure-database-postgresql
 ms.topic: include
 author: markingmyname

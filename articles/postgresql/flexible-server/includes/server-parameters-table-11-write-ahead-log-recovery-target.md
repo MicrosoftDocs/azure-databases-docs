@@ -9,4 +9,4 @@ ms.topic: include
 ms.custom: automatically generated
 ---
 > [!NOTE]
-> Azure Database for PostgreSQL Flexible Server 11 does not have any server parameter in the 'Write-Ahead Log / Recovery Target' category.
+> Azure Database for PostgreSQL flexible server 11 does not have any server parameter in the 'Write-Ahead Log / Recovery Target' category.

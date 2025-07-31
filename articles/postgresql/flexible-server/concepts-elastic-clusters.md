@@ -1,6 +1,6 @@
 ---
 title: Elastic clusters on PostgreSQL Flexible server
-description: Learn about sharding and horizontal scale-out with elastic clusters on Azure Database for PostgreSQL Flexible Server.
+description: Learn about sharding and horizontal scale-out with elastic clusters on Azure Database for PostgreSQL flexible server.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
@@ -14,17 +14,17 @@ ms.topic: concept-article
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Elastic clusters on Azure Database for PostgreSQL Flexible Server are a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
+Elastic clusters on Azure Database for PostgreSQL flexible server are a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
 
-While Citus is just an extension, it connects multiple PostgreSQL instances. When Azure Database for PostgreSQL Flexible Server is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
+While Citus is just an extension, it connects multiple PostgreSQL instances. When Azure Database for PostgreSQL flexible server is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
 
-Elastic clusters on Flexible Server offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more.
+Elastic clusters on flexible server offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more.
 
 ## Architecture
 
-An elastic cluster consists of one or more nodes of Azure Database for PostgreSQL Flexible Server. These instances are automatically made known to each other, and inter-connected to form a Citus cluster. The nodes are required to be of the same compute and storage tier, and can be uniformly scaled up or down to higher or lower tiers.
+An elastic cluster consists of one or more nodes of Azure Database for PostgreSQL flexible server. These instances are automatically made known to each other, and inter-connected to form a Citus cluster. The nodes are required to be of the same compute and storage tier, and can be uniformly scaled up or down to higher or lower tiers.
 
-Elastic clusters use instances of Flexible Servers (called nodes) to coordinate with one another in a "shared nothing" architecture. The architecture also allows the database to scale, by adding more nodes to the cluster.
+Elastic clusters use instances of flexible servers (called nodes) to coordinate with one another in a "shared nothing" architecture. The architecture also allows the database to scale, by adding more nodes to the cluster.
 
 Connecting to your cluster using port 5432 lands you on the designated coordinator node. Elastic clusters also allow you to load balance connections across the cluster, using a five-tuple hash method, if you connect using port 7432. Using 7432 you can still land at the node currently designated as coordinator. For certain cluster-wide operations, like distributing tables, you might be required to connect over port 5432. We strongly recommend you to always connect on port 5432, when you plan to perform application schema upgrades and similar changes. If you [enable PgBouncer](concepts-pgbouncer.md) on elastic clusters, you can use port 8432 to load balance connections across PgBouncer instances on every node (or use port 6432 for the designated coordinator).
 
