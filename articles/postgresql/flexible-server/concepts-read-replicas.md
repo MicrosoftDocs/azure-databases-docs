@@ -220,7 +220,7 @@ While the server is a read replica, no backups are taken. However, once it's pro
 
 ### Networking
 
-Read replicas support all the networking options supported by Azure Database for PostgreSQL Flexible Server.
+Read replicas support all the networking options supported by Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]  
 > Bi-directional communication between the primary server and read replicas is crucial for the Azure Database for PostgreSQL flexible server setup. There must be a provision to send and receive traffic on destination port 5432 within the Azure virtual network subnet.

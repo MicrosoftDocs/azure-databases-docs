@@ -14,7 +14,7 @@ ms.topic: troubleshooting-general
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article describes how to identify the root cause of high memory utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL Flexible Server](overview.md).
+This article describes how to identify the root cause of high memory utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL flexible server](overview.md).
 
 In this article, you can learn:
 
