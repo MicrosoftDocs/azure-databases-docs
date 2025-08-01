@@ -147,14 +147,14 @@
           href: flexible-server/generative-ai-azure-overview.md
         - name: Azure OpenAI
           href: flexible-server/generative-ai-azure-openai.md
+        - name: Semantic Operators
+          href: flexible-server/generative-ai-azure-ai-semantic-operators.md
         - name: Azure Cognitive Services
           href: flexible-server/generative-ai-azure-cognitive.md
         - name: Azure Machine Learning Services
           href: flexible-server/generative-ai-azure-machine-learning.md
         - name: Enable Managed Identity
           href: flexible-server/generative-ai-enable-managed-identity-azure-ai.md
-        - name: Introducing Semantic Operators
-          href: flexible-server/generative-ai-azure-ai-semantic-operators.md
       - name: In-database Embeddings (azure_local_ai)
         items:
         - name: Overview  
