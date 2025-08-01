@@ -21,7 +21,6 @@ In this article, you learn how to create a Microsoft Entra application and servi
 
 - An existing Azure Cosmos DB for NoSQL account.
   - If you have an existing Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
-  - No Azure subscription? You can [try Azure Cosmos DB free](../try-free.md) with no credit card required.
 - An existing Azure Databricks workspace.
 - Registered Microsoft Entra application and service principal.
   - If you don't have a service principal and application, [register an application by using the Azure portal](/entra/identity-platform/howto-create-service-principal-portal).

@@ -30,7 +30,6 @@ You can also change the throughput or provisioning mode from manual to autoscale
 - An existing Azure Cosmos DB for NoSQL account.
   - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-  - Alternatively, you can [try Azure Cosmos DB free](../try-free.md) before you commit.
 
 ## Change capacity mode
 

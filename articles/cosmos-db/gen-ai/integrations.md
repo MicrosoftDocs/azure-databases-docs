@@ -34,8 +34,6 @@ Azure Cosmos DB seamlessly integrates with leading large language model (LLM) or
 - [Tokens](tokens.md)
 - [Vector Embeddings](vector-embeddings.md)
 - [Retrieval Augmented Generated (RAG)](rag.md)
-- [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
-- [90-day Free Trial and up to $6,000 in throughput credits with Azure AI Advantage](../ai-advantage.md)
 
 ## Next step
 

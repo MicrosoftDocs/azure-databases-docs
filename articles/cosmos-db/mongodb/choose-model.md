@@ -42,10 +42,6 @@ Here are a few key factors to help you decide which is the right option for you.
 
 [**Get started with Azure Cosmos DB for MongoDB RU**](./quickstart-python.md)
 
-> [!TIP]
-> Want to try the Azure Cosmos DB for MongoDB RU with no commitment? [Try Azure Cosmos DB for free](../try-free.md).
-
-
 ## Resource and billing differences between the options
 
 The vCore and RU services have different architectures with important billing differences.
@@ -70,8 +66,3 @@ The vCore and RU services have different architectures with important billing di
 
 > [!NOTE]
 > RU charges depend on the selected model: provisioned throughput (standard or autoscale) or serverless.
-
-## Next steps
-
-> [!div class="nextstepaction"]
-> [Try Azure Cosmos DB for free](../try-free.md)

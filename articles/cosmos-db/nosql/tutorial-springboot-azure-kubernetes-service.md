@@ -21,7 +21,7 @@ In this tutorial, you will set up and deploy a Spring Boot application that expo
 
 ## Pre-requisites
 
-- An Azure account with an active subscription. Create a [free account](https://azure.microsoft.com/free/) or [try Azure Cosmos DB for free](https://azure.microsoft.com/try/cosmosdb/) without an Azure subscription.
+- An Azure account with an active subscription. Create a [free account](https://azure.microsoft.com/free/) if you dont have a Azure subscription.
 - [Java Development Kit (JDK) 8](/java/openjdk/download#openjdk-8). Point your `JAVA_HOME` environment variable to the path where the JDK is installed.
 - [Azure CLI](/cli/azure/install-azure-cli) to provision Azure services.
 - [Docker](https://docs.docker.com/engine/install/) to manage images and containers.

@@ -224,7 +224,7 @@ The sample agent operates within a Python FastAPI back end. It supports user int
 
 ### Prerequisites
 
-- An Azure subscription. If you don't have one, you can [try Azure Cosmos DB for free](try-free.md) for 30 days without creating an Azure account. The free trial doesn't require a credit card, and no commitment follows the trial period.
+- An Azure subscription.
 - An account for the OpenAI API or Azure OpenAI Service.
 - A vCore cluster in Azure Cosmos DB for MongoDB. You can create one by following [this quickstart](mongodb/vcore/quickstart-portal.md).
 - An integrated development environment, such as Visual Studio Code.
@@ -854,6 +854,4 @@ When your AI agent is ready to go into production, you can use semantic caching 
 
 ## Related content
 
-- [30-day free trial without an Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
-- [90-day free trial and up to $6,000 in throughput credits with Azure AI Advantage](ai-advantage.md)
 - [Azure Cosmos DB lifetime free tier](free-tier.md)
