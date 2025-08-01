@@ -1,6 +1,6 @@
 ---
-  title: $set
-  titleSuffix: Overview of the $set operator in Azure Cosmos DB for MongoDB (vCore)
+  title: $set (field update operator) usage on Azure Cosmos DB for MongoDB vCore
+  titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $set operator sets the value of a field in a document during update operations.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,7 +10,9 @@
   ms.date: 02/12/2025
 ---
 
-# $set
+# $set (field update operator)
+
+[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 The `$set` operator is used to set the value of a field in a document during update operations. If the field does not exist, `$set` will create the field with the specified value. If the field already exists, `$set` will replace the existing value with the new value. This is one of the most commonly used update operators in MongoDB.
 
@@ -30,14 +32,14 @@ The syntax for the `$set` operator is as follows:
 
 ## Parameters
 
-| Parameter | Description |
+| | Description |
 | --- | --- |
 | **`field`** | The name of the field to set. Can be a top-level field or use dot notation for nested fields. |
 | **`value`** | The value to assign to the field. Can be any valid BSON type. |
 
 ## Example
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-  title: $max
-  titleSuffix: Overview of the $max operator in Azure Cosmos DB for MongoDB (vCore)
+  title: $max (field update operator) usage on Azure Cosmos DB for MongoDB vCore
+  titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $max operator updates the value of a field to a specified value if the specified value is greater than the current value of the field.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,7 +10,9 @@
   ms.date: 02/12/2025
 ---
 
-# $max
+# $max (field update operator)
+
+[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 The `$max` operator updates the value of a field to a specified value if the specified value is greater than the current value of the field. If the field does not exist, `$max` creates the field and sets it to the specified value. This operator is useful for maintaining maximum thresholds, tracking peak values, or ensuring values don't fall below a certain level.
 
@@ -30,14 +32,14 @@ The syntax for the `$max` operator is as follows:
 
 ## Parameters
 
-| Parameter | Description |
+| | Description |
 | --- | --- |
 | **`field`** | The name of the field to update with the maximum value. |
 | **`value`** | The value to compare with the current field value. The field will be updated only if this value is larger. |
 
 ## Example
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
