@@ -149,13 +149,27 @@ Consider this sample document from the stores collection.
 ### Example 1 - Update an existing field
 
 ```javascript
-db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"name": "Lakeshore Retail"}})
+db.stores.updateOne({
+		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+	},
+	{
+		"$set": {
+			"name": "Lakeshore Retail"
+		}
+	})
 ```
 
 ### Example 2 - Update an existing field in a nested object
 
 ```javascript
-db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"staff.totalStaff.partTime": 9}})
+db.stores.updateOne({
+		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+	},
+	{
+		"$set": {
+			"staff.totalStaff.partTime": 9
+		}
+	})
 ```
 
 ### Example 3 - Create a new field that does not exist
@@ -163,7 +177,14 @@ db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"
 Create a new field called "formerName" with the old name of the store.
 
 ```javascript
-db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"formerName": "Tailwind Traders | Drone Shoppe - New Theodora"}})
+db.stores.updateOne({
+		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+	},
+	{
+		"$set": {
+			"formerName": "Tailwind Traders | Drone Shoppe - New Theodora"
+		}
+	})
 ```
 
 ### Example 4 - Create a new field in a nested object
@@ -171,13 +192,28 @@ db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"
 Create a new field within the nested totalStaff object to specify a count of temporary staff members.
 
 ```javascript
-db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"staff.totalStaff.temporary": 3}})
+db.stores.updateOne({
+		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+	},
+	{
+		"$set": {
+			"staff.totalStaff.temporary": 3
+		}
+	})
 ```
 
 ### Example 5 - Update multiple fields
 
 ```javascript
-db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"staff.totalStaff.partTime": 9, "sales.totalSales": 3611}})
+db.stores.updateOne({
+		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+	},
+	{
+		"$set": {
+			"staff.totalStaff.partTime": 9,
+			"sales.totalSales": 3611
+		}
+	})
 ```
 
 ## Related content

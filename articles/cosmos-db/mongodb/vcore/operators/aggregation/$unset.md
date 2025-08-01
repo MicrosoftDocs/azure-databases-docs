@@ -145,7 +145,7 @@ Consider this sample document from the stores collection.
 ### Example 1: Remove a Single Field
 To remove the location field from the documents.
 
-```json
+```javascript
 db.stores.aggregate([
   {
     $unset: "store.location"
@@ -180,7 +180,7 @@ Sample output
 ### Example 2: Remove Multiple Fields
 To remove the location and sales.totalSales fields from the documents.
 
-```json
+```javascript
 db.stores.aggregate([
   {
     $unset: ["store.location", "store.sales.totalSales"]
@@ -214,7 +214,7 @@ Sample output
 ### Example 3: Remove Nested Fields
 To remove the staff.totalStaff.fullTime and promotionEvents.discounts fields from the documents.
 
-```json
+```javascript
 db.stores.aggregate([
   {
     $unset: ["store.staff.totalStaff.fullTime", "store.promotionEvents.discounts"]

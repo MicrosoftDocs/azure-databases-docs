@@ -9,7 +9,7 @@
   ms.topic: language-reference
   ms.date: 09/11/2024
 ---
-# $each (array update)
+# $each
 
 The `$each` operator is used within an `$addToSet` or `$push` operation to add multiple elements to an array field in a single update operation. This operator is useful when you need to insert multiple items into an array without having to perform multiple update operations. The `$each` operator ensures that each item in the specified array is added to the target array.
 
