@@ -206,7 +206,7 @@
         href: how-to-private-link.md
       - name: Manage public access
         href: how-to-public-access.md
-      - name: Configure Mircrosoft Entra ID authentication
+      - name: Configure Microsoft Entra ID authentication
         href: how-to-configure-entra-authentication.md
       - name: Create secondary users
         href: secondary-users.md
