@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL - Single Server to Flexible Server CLI Migration
+title: Azure Database for PostgreSQL - Single Server to flexible server CLI Migration
 author: markingmyname
 ms.author: maghan
 ms.date: 01/24/2025
@@ -74,10 +74,10 @@ az postgres flexible-server migration create [--subscription]
 
 | Parameter | Description |
 | --- | --- |
-| `subscription` | Subscription ID of the Flexible Server target. |
-| `resource-group` | Resource group of the Flexible Server target. |
-| `name` | Name of the Flexible Server target. |
-| `migration-name` | Unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except for underscore (_) and hyphen (-). The name must start and end with an alphanumeric character. The name must also be unique for a target server, because no two migrations to the same Flexible Server target can have the same name. |
+| `subscription` | Subscription ID of the flexible server target. |
+| `resource-group` | Resource group of the flexible server target. |
+| `name` | Name of the flexible server target. |
+| `migration-name` | Unique identifier for each migration to this flexible server target. This field accepts only alphanumeric characters and doesn't accept any special characters except for underscore (_) and hyphen (-). The name must start and end with an alphanumeric character. The name must also be unique for a target server, because no two migrations to the same flexible server target can have the same name. |
 | `migration-mode` | This is an optional parameter. Default value: Offline. Offline migration involves copying your source databases at a point in time, to your target server. |
 | `properties` | Absolute path to a JSON file that has the information about the Single Server source. |
 
@@ -119,14 +119,14 @@ The `create` parameters that go into the JSON file format are as shown below:
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `sourceDbServerResourceId` | Required | This parameter is the resource ID of the Single Server source. |
-| `adminCredentials` | Required | This parameter lists passwords for admin users for both the Single Server source and the Flexible Server target. These passwords help to authenticate against the source and target servers. |
+| `adminCredentials` | Required | This parameter lists passwords for admin users for both the Single Server source and the flexible server target. These passwords help to authenticate against the source and target servers. |
 | `sourceServerUserName` | Required | The default value is the admin user specified during the creation of a single server, and the password provided is used for authentication with this user. If you aren't using the default user, this parameter is the user or role on the source server for performing the migration. This user should have the necessary privileges and ownership of the database objects involved in the migration and should be a member of the **azure_pg_admin** role. |
 | `targetServerUserName` | Required | The default value is the admin user created during the creation of a flexible server, and the password provided is used for authentication with this user. In case you aren't using the default user, this parameter is the user or role on the target server used for performing the migration. This user should be a member of **azure_pg_admin**, **pg_read_all_settings**, **pg_read_all_stats**,**pg_stat_scan_tables** roles and should have the **Create role, Create DB** attributes. |
-| `dbsToMigrate` | Required | Specify the list of databases that you want to migrate to Flexible Server. Only user databases are migrated. System databases or template databases such as template0 and template1 aren't migrated. |
+| `dbsToMigrate` | Required | Specify the list of databases that you want to migrate to flexible server. Only user databases are migrated. System databases or template databases such as template0 and template1 aren't migrated. |
 | `overwriteDbsInTarget` | Required | When set to true, if the target server happens to have an existing database with the same name as the one you're trying to migrate, migration service automatically overwrites the database. |
 | `setupLogicalReplicationOnSourceDBIfNeeded` | Optional | You can automatically enable logical replication on the source server by setting this property to `true`. This change in the server settings requires a server restart with two to three minutes of downtime. |
 | `sourceDBServerFullyQualifiedDomainName` | Optional | Use it when a custom DNS server is used for name resolution for a virtual network. Provide the FQDN of the Single Server source according to the custom DNS server for this property. |
-| `targetDBServerFullyQualifiedDomainName` | Optional | Use it when a custom DNS server is used for name resolution inside a virtual network. Provide the FQDN of the Flexible Server target according to the custom DNS server.<br />`sourceDBServerFullyQualifiedDomainName` and `targetDBServerFullyQualifiedDomainName` are included as a part of the JSON only in the rare scenario that a custom DNS server is used for name resolution instead of Azure-provided DNS. Otherwise, don't include these parameters in the JSON file. |
+| `targetDBServerFullyQualifiedDomainName` | Optional | Use it when a custom DNS server is used for name resolution inside a virtual network. Provide the FQDN of the flexible server target according to the custom DNS server.<br />`sourceDBServerFullyQualifiedDomainName` and `targetDBServerFullyQualifiedDomainName` are included as a part of the JSON only in the rare scenario that a custom DNS server is used for name resolution instead of Azure-provided DNS. Otherwise, don't include these parameters in the JSON file. |
 
 Note these essential points for the command response:
 
@@ -138,7 +138,7 @@ Note these essential points for the command response:
 
 ### List the migrations
 
-The `list` command lists all the migration attempts made to a Flexible Server target:
+The `list` command lists all the migration attempts made to a flexible server target:
 
 ```azurecli
 az postgres flexible-server migration list [--subscription]
@@ -204,7 +204,7 @@ The following tables describe the migration states and substates.
 > Certain limitations apply to Online migration which are documented [here](../../best-practices-migration-service-postgresql.md#online-migration). Ensure that your database is compliant to execute an Online migration.
 
 > [!IMPORTANT]  
-> Online migration replays changes that happen during the migration from the source to the target. This ensures that you do not miss out on any ongoing changes and you can reduce the downtime for your application. However, this can be achieved only if the updates at the source is kept as low as possible. Low update traffic at the source ensures that ongoing changes are replayed to the target quickly and it can catch up with the source. If you observe an increasing `latency` trend over time with your migration, it is an indication that you need to further reduce the volume of traffic at the source.
+> Online migration replays changes that happen during the migration from the source to the target. This ensures that you do not miss out on any ongoing changes and you can reduce the downtime for your application. However, this can be achieved only if the updates at the source are kept as low as possible. Low update traffic at the source ensures that ongoing changes are replayed to the target quickly and it can catch up with the source. If you observe an increasing `latency` trend over time with your migration, it is an indication that you need to further reduce the volume of traffic at the source.
 
 ## Get started
 
@@ -259,10 +259,10 @@ az postgres flexible-server migration create [--subscription]
 
 | Parameter | Description |
 | --- | --- |
-| `subscription` | Subscription ID of the Flexible Server target. |
-| `resource-group` | Resource group of the Flexible Server target. |
-| `name` | Name of the Flexible Server target. |
-| `migration-name` | Unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except for underscore (_) and hyphen (-). The name must start and end with an alphanumeric character. The name must also be unique for a target server, because no two migrations to the same Flexible Server target can have the same name. |
+| `subscription` | Subscription ID of the flexible server target. |
+| `resource-group` | Resource group of the flexible server target. |
+| `name` | Name of the flexible server target. |
+| `migration-name` | Unique identifier for each migration to this flexible server target. This field accepts only alphanumeric characters and doesn't accept any special characters except for underscore (_) and hyphen (-). The name must start and end with an alphanumeric character. The name must also be unique for a target server, because no two migrations to the same flexible server target can have the same name. |
 | `migration-mode` | This is an optional parameter. Default value is `Offline`. For online migrations you have to pass `Online`. |
 | `properties` | Absolute path to a JSON file that has the information about the Single Server source. |
 
@@ -301,14 +301,14 @@ The `create` parameters that go into the JSON file format are as shown below:
 | Parameter | Type | Description |
 | --- | --- | --- |
 | `sourceDbServerResourceId` | Required | This parameter is the resource ID of the Single Server source. |
-| `adminCredentials` | Required | This parameter lists passwords for admin users for both the Single Server source and the Flexible Server target. These passwords help to authenticate against the source and target servers. |
+| `adminCredentials` | Required | This parameter lists passwords for admin users for both the Single Server source and the flexible server target. These passwords help to authenticate against the source and target servers. |
 | `sourceServerUserName` | Required | The default value is the admin user specified during the creation of a single server, and the password provided is used for authentication with this user. If you aren't using the default user, this parameter is the user or role on the source server for performing the migration. This user should have the necessary privileges and ownership of the database objects involved in the migration and should be a member of the **azure_pg_admin** role. |
 | `targetServerUserName` | Required | The default value is the admin user created during the creation of a flexible server, and the password provided is used for authentication with this user. In case you aren't using the default user, this parameter is the user or role on the target server used for performing the migration. This user should be a member of **azure_pg_admin**, **pg_read_all_settings**, **pg_read_all_stats**,**pg_stat_scan_tables** roles and should have the **Create role, Create DB** attributes. |
-| `dbsToMigrate` | Required | Specify the list of databases that you want to migrate to Flexible Server. Only user databases are migrated. System databases or template databases such as template0 and template1 aren't migrated. |
+| `dbsToMigrate` | Required | Specify the list of databases that you want to migrate to flexible server. Only user databases are migrated. System databases or template databases such as template0 and template1 aren't migrated. |
 | `overwriteDbsInTarget` | Required | When set to true, if the target server happens to have an existing database with the same name as the one you're trying to migrate, migration service automatically overwrites the database. |
 | `setupLogicalReplicationOnSourceDBIfNeeded` | Optional | You can automatically enable logical replication on the source server by setting this property to `true`. This change in the server settings requires a server restart with two to three minutes of downtime. |
 | `sourceDBServerFullyQualifiedDomainName` | Optional | Use it when a custom DNS server is used for name resolution for a virtual network. Provide the FQDN of the Single Server source according to the custom DNS server for this property. |
-| `targetDBServerFullyQualifiedDomainName` | Optional | Use it when a custom DNS server is used for name resolution inside a virtual network. Provide the FQDN of the Flexible Server target according to the custom DNS server.<br />`sourceDBServerFullyQualifiedDomainName` and `targetDBServerFullyQualifiedDomainName` are included as a part of the JSON only in the rare scenario that a custom DNS server is used for name resolution instead of Azure-provided DNS. Otherwise, don't include these parameters in the JSON file. |
+| `targetDBServerFullyQualifiedDomainName` | Optional | Use it when a custom DNS server is used for name resolution inside a virtual network. Provide the FQDN of the flexible server target according to the custom DNS server.<br />`sourceDBServerFullyQualifiedDomainName` and `targetDBServerFullyQualifiedDomainName` are included as a part of the JSON only in the rare scenario that a custom DNS server is used for name resolution instead of Azure-provided DNS. Otherwise, don't include these parameters in the JSON file. |
 
 Note these essential points for the command response:
 
@@ -338,7 +338,7 @@ az postgres flexible-server migration create --subscription 11111111-1111-1111-1
 
 ### List the migrations
 
-The `list` command lists all the migration attempts made to a Flexible Server target:
+The `list` command lists all the migration attempts made to a flexible server target:
 
 ```azurecli
 az postgres flexible-server migration list [--subscription]

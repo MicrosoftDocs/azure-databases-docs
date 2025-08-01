@@ -46,7 +46,7 @@ Creating an automation task doesn't immediately incur charges. Underneath, an au
 :::image type="content" source="media/create-automation-tasks/add-automation-task.png" alt-text="Screenshot that shows the 'Tasks' pane with 'Add a task' selected." lightbox="media/create-automation-tasks/add-automation-task.png":::
 
 1. Under **Select a template**, select the task for stopping your Azure Database for PostgreSQL flexible server instance.
-:::image type="content" source="media/create-automation-tasks/select-task-template.png" alt-text="Screenshot that shows the 'Add a task' pane with 'Stop PostgreSQL Flexible Server' template selected." lightbox="media/create-automation-tasks/select-task-template.png":::
+:::image type="content" source="media/create-automation-tasks/select-task-template.png" alt-text="Screenshot that shows the 'Add a task' pane with 'Stop PostgreSQL flexible server' template selected." lightbox="media/create-automation-tasks/select-task-template.png":::
 
 1. Under **Authenticate**, in the **Connections** section, select **Create** for every connection that appears in the task so that you can provide authentication credentials for all the connections. The types of connections in each task vary based on the task.
 :::image type="content" source="media/create-automation-tasks/create-authenticate-connections.png" alt-text="Screenshot that shows the selected 'Create' option for the Azure Resource Manager connection." lightbox="media/create-automation-tasks/create-authenticate-connections.png":::
@@ -78,7 +78,7 @@ The task you've created, which is automatically live and running, appears on the
 You can apply the same steps outlined above to create separate automation tasks for starting the Azure Database for PostgreSQL flexible server instance at a specific time. Here's how:
 
 1. Follow the steps outlined in the "Create an automation task" section until you reach the "Select a template" stage.
-1. Here, instead of selecting the "Stop PostgreSQL Flexible Server" task, select the template for "Start PostgreSQL Flexible Server."
+1. Here, instead of selecting the "Stop PostgreSQL flexible server" task, select the template for "Start PostgreSQL flexible server."
 1. Proceed to fill in the rest of the required details as described in the subsequent steps, defining the specific schedule at which you want the server to start in the 'Configure' section.
 
 ## Review task history

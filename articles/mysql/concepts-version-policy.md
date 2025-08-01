@@ -43,11 +43,11 @@ The retirement details for MySQL major versions are listed in the following tabl
 | Version | What's New | Azure Support Start Date | Community Retirement Date | Azure Standard Support End Date | Azure Extended Support Start Date | Azure Extended Support End Date |
 | --- | --- | --- | --- | --- | --- | --- |
 | [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | March 20, 2018 | October 31, 2023 | March 31, 2026 | April 1, 2026 | March 31, 2029 |
-| [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | May 31, 2026 | June 1, 2026 | March 31, 2029 |
+| [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | May 31, 2026 | June 1, 2026 | May 31, 2029 |
 
 ### What happens after standard support ends?
 
-To provide customers with sufficient time to decide whether to upgrade or be enrolled in Extended Support, the Extended Support plan officially begins sometime early 2026.
+To provide customers with sufficient time to decide whether to upgrade to a supported version, Extended Support is planned to begin in spring 2026.
 
 After the standard support end date, Azure Database for MySQL servers running on unsupported MySQL versions are automatically enrolled in Extended Support and are automatically charged for this service after a one-month grace period. Extended Support provides critical security updates for up to three years after the end of standard Support, allowing customers more time to plan and execute major version upgrades. To avoid Extended Support charges, you must upgrade your Azure Database for MySQL server to a MySQL version that is still within standard Support.
 
@@ -114,6 +114,30 @@ A: If you have questions, get answers from community experts in [Microsoft Q&A](
 __Q: What happens to my data during the upgrade?__
 
 A: While your data remains unaffected during the upgrade process, it's highly advisable to create a backup before proceeding with the upgrade. This precautionary measure helps mitigate the risk of potential data loss due to any unforeseen complications.
+
+__Q: What is Azure Database for MySQL – Extended Support?__
+
+A: Extended Support is a feature offering that allows customers to continue running MySQL versions that have reached community end-of-life (EOL), with continued access to SLA-backed availability, security updates, and technical support.
+
+__Q: Is Extended Support a separate support plan like Azure Standard or Professional Direct Support?__
+
+A: No. Extended Support is not a support plan. It is a feature of the Azure Database for MySQL service that applies to specific MySQL versions after their community EOL. It is independent of your Azure Support Plan.
+
+__Q: Do I need to take any action to enable Extended Support?__
+
+A: No action is required. If your server is running a MySQL version that has entered the Extended Support phase, it will be automatically enrolled.
+
+__Q: When does billing for Extended Support begin?__
+
+A: Billing starts one month after the community EOL date of the MySQL version. This one-month grace period gives customers time to plan their upgrade or evaluate options.
+
+__Q: How is Extended Support priced?__
+
+A: Extended Support is billed on a per vCore per hour basis. Pricing details will be published in September 2025 and will be available in the https://azure.microsoft.com/pricing/calculator/.
+
+__Q: How do I exit Extended Support?__
+
+A: Simply upgrade your server to a MySQL version that is still under community support. Once the upgrade is complete, your server will automatically exit Extended Support and billing will stop.
 
 ## Related content
 

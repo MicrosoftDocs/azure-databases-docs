@@ -25,6 +25,19 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 ## July 2025
 
+### General Availability in new Azure regions
+
+Azure Database for MySQL Flexible Server is now available in the following Azure regions:
+
+- Chile Central
+
+- Indonesia Central
+
+- Malaysia West
+
+### Self-Heal in Azure Database for MySQL (Public Preview)
+The Self-Heal feature in Azure Database for MySQL empowers customers to resolve common server issues independently, without needing to open a support case. It provides a one-click repair experience that helps restore service health quickly and safely. [Learn more](./how-to-self-heal.md).
+
 ### Accelerated logs feature is now available in General Purpose service tier
 Accelerated logs are now supported in the General Purpose service tier of Azure Database for MySQL – Flexible Server. Previously available only in the Business Critical tier, this feature enhances performance and reduces transaction latency. Accelerated logs feature in General Purpose tier is available at an additonal cost. [Learn more](./concepts-accelerated-logs.md).
 

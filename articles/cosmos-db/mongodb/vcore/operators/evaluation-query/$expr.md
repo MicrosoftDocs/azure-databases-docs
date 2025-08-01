@@ -1,24 +1,20 @@
 ---
-  title: $expr (evaluation query)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $expr
+  titleSuffix: Overview of the $expr operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $expr operator allows the use of aggregation expressions within the query language, enabling complex field comparisons and calculations.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 07/25/2025
 ---
 
-# $expr (evaluation query)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $expr
 
 The `$expr` operator allows the use of aggregation expressions within the query language, which enables us to compare fields from the same document, perform calculations, and use aggregation operators in find operations. The `$expr` operator is useful for complex field comparisons that can't be achieved with traditional query operators.
 
 ## Syntax
-
-The syntax for the `$expr` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$expr` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<aggregation expression>`** | Any valid aggregation expression that evaluates to a boolean value. The expression includes field comparisons, arithmetic operations, conditional expressions, and other aggregation operators. |
 

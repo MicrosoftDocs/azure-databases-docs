@@ -13,14 +13,14 @@ ms.custom: sfi-image-nochange
 
 # Changes in the root certificate rotation for Azure Database for MySQL
 
-To maintain our security and compliance standards, we'll begin changing the root certificates for Azure Database for MySQL Flexible Server after 31 July 2025.
+To maintain our security and compliance standards, we'll begin changing the root certificates for Azure Database for MySQL Flexible Server after 1 September 2025.
 
 The current root certificate **DigiCert Global Root CA** will be replaced by two new ones:
 
 * **DigiCert Global Root G2**
 * **Microsoft RSA Root Certificate Authority 2017**
 
-If you're using Transport Layer Security (TLS) with root certificate verification, you must have all three root certificates installed during the transition period. Once all the certificates are changed, you can remove the old SHA-1 root certificate **DigiCert Global Root CA** from the store.  by adding the two new certificates to the existing store. If you don't add the new certificates before 31 July 2025, your connections to the databases will **fail**.
+If you're using Transport Layer Security (TLS) with root certificate verification, you must have all three root certificates installed during the transition period. Once all the certificates are changed, you can remove the old SHA-1 root certificate **DigiCert Global Root CA** from the store.  by adding the two new certificates to the existing store. If you don't add the new certificates before 1 September 2025, your connections to the databases will **fail**.
 
 This article gives you more instructions on how to add the two new root certificates. about the changes, as well as, answering frequently asked questions
 
@@ -45,47 +45,92 @@ The following steps guide you through the process of updating the root certifica
     - [Download the Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt).
 
 1. Add the downloaded certificates to your client certificate store. The process varies depending on the client type
-    - For **Java** users, run these commands to create a **new** trusted root **certificate store**:
-        ```bash
-        keytool -importcert -alias MySqlFlexServerCACert  -file digiCertGlobalRootCA.crt.pem  -keystore truststore -storepass password -noprompt
-        keytool -importcert -alias MySqlFlexServerCACert2  -file digiCertGlobalRootG2.crt.pem -keystore truststore -storepass password -noprompt
-        keytool -importcert -alias MicrosoftRSARootCert2017  -file MicrosoftRSARootCertificateAuthority2017.crt -keystore truststore -storepass password -noprompt
-        ```
-    
-         Then replace the original keystore file with the newly generated one:
-    
-         - `System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");`
-         - `System.setProperty("javax.net.ssl.trustStorePassword","password");`
-    - For **Java** users, run these commands to add the new trusted root certificates to an **existing** trusted root **certificate store**:
-        ```bash
-        keytool -importcert -alias MySqlFlexServerCACert2  -file digiCertGlobalRootG2.crt.pem -keystore truststore -storepass password -noprompt
-        keytool -importcert -alias MicrosoftRSARootCert2017  -file MicrosoftRSARootCertificateAuthority2017.crt -keystore truststore -storepass password -noprompt
-        ```
 
-        There is no need change the `javax.net.ssl.trustStore` and `javax.net.ssl.trustStorePassword` properties if you are updating an existing keystore.
-   - For .NET users on Windows, make sure that **DigiCert Global Root CA**, **DigiCert Global Root G2** and **Microsoft RSA Root Certificate Authority 2017** exist in the Windows certificate store under **Trusted Root Certification Authorities**. If any certificate doesn't exist, import it.
+## Update your Java client
 
-     :::image type="content" source="media/concepts-root-certificate-rotation/net-connecter-certificates.png" alt-text="Screenshot of Azure Database for MySQL .NET certificates." lightbox="media/concepts-root-certificate-rotation/net-connecter-certificates.png":::
-   - For .NET users on Linux who are using `SSL_CERT_DIR`, make sure that `DigiCertGlobalRootCA.crt.pem`, `DigiCertGlobalRootG2.crt.pem` and `Microsoft RSA Root Certificate Authority 2017.crt.pem` exist in the directory indicated by `SSL_CERT_DIR`. If any certificate doesn't exist, create the missing certificate file.
+## Creating a new trusted root certificate store
+
+For **Java** users, run these commands to create a **new** trusted root **certificate store**:
+
+```bash
+keytool -importcert -alias MySqlFlexServerCACert  -file digiCertGlobalRootCA.crt.pem  -keystore truststore -storepass password -noprompt
+keytool -importcert -alias MySqlFlexServerCACert2  -file digiCertGlobalRootG2.crt.pem -keystore truststore -storepass password -noprompt
+keytool -importcert -alias MicrosoftRSARootCert2017  -file MicrosoftRSARootCertificateAuthority2017.crt -keystore truststore -storepass password -noprompt
+```
+
+Then replace the original keystore file with the newly generated one:
+    
+- `System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");`
+- `System.setProperty("javax.net.ssl.trustStorePassword","password");`
+
+## Updating an existing trusted root certificate store
+
+For **Java** users, run these commands to add the new trusted root certificates to an **existing** trusted root **certificate store**:
+
+```bash
+keytool -importcert -alias MySqlFlexServerCACert2  -file digiCertGlobalRootG2.crt.pem -keystore truststore -storepass password -noprompt
+keytool -importcert -alias MicrosoftRSARootCert2017  -file MicrosoftRSARootCertificateAuthority2017.crt -keystore truststore -storepass password -noprompt
+```
+
+There is no need change the `javax.net.ssl.trustStore` and `javax.net.ssl.trustStorePassword` properties if you are updating an existing keystore.
+
+## Update your .NET client
+
+### .Net on Windows
+
+For .NET users on Windows, make sure that **DigiCert Global Root CA**, **DigiCert Global Root G2** and **Microsoft RSA Root Certificate Authority 2017** exist in the Windows certificate store under **Trusted Root Certification Authorities**. If any certificate doesn't exist, import it.
+
+:::image type="content" source="media/concepts-root-certificate-rotation/net-connecter-certificates.png" alt-text="Screenshot of Azure Database for MySQL .NET certificates." lightbox="media/concepts-root-certificate-rotation/net-connecter-certificates.png":::
+
+### .Net on Linux
+
+For .NET users on Linux who are using `SSL_CERT_DIR`, make sure that `DigiCertGlobalRootCA.crt.pem`, `DigiCertGlobalRootG2.crt.pem` and `Microsoft RSA Root Certificate Authority 2017.crt.pem` exist in the directory indicated by `SSL_CERT_DIR`. If any certificate doesn't exist, create the missing certificate file.
    
-     Convert the `Microsoft RSA Root Certificate Authority 2017.crt` certificate to PEM format by running the following command:
-     
-      ```bash
-      openssl x509 -inform der -in MicrosoftRSARootCertificateAuthority2017.crt -out MicrosoftRSARootCertificateAuthority2017.crt.pem
-      ```
-   - For other (MySQL Workbench, C, C++, Go, Python, Ruby, PHP, Node.js, Perl, or Swift) users, you can merge the CA certificate files in this format:
+Convert the `Microsoft RSA Root Certificate Authority 2017.crt` certificate to PEM format by running the following command:
+
+```bash
+openssl x509 -inform der -in MicrosoftRSARootCertificateAuthority2017.crt -out MicrosoftRSARootCertificateAuthority2017.crt.pem
+```
+
+## Other clients
+
+For other (MySQL Workbench, C, C++, Go, Python, Ruby, PHP, Node.js, Perl, or Swift) users, you can merge the CA certificate files in this format:
+
+```output
+-----BEGIN CERTIFICATE-----
+(Root CA1:DigiCertGlobalRootCA.crt.pem)
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+(Root CA2: DigiCertGlobalRootG2.crt.pem)
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+(Root CA3: .crt.pem)
+-----END CERTIFICATE-----
+```
+
+## Data-in replication MySQL
+
+For Data-in replication where **both master and replica are hosted on Azure**, you can merge the CA certificate files in this format:
   
-     ```output
-     -----BEGIN CERTIFICATE-----
-     (Root CA1:DigiCertGlobalRootCA.crt.pem)
-     -----END CERTIFICATE-----
-     -----BEGIN CERTIFICATE-----
-     (Root CA2: DigiCertGlobalRootG2.crt.pem)
-     -----END CERTIFICATE-----
-     -----BEGIN CERTIFICATE-----
-     (Root CA3: .crt.pem)
-     -----END CERTIFICATE-----
-     ```
+```output
+SET @cert = '-----BEGIN CERTIFICATE-----
+(Root CA1:DigiCertGlobalRootCA.crt.pem)
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+(Root CA2: DigiCertGlobalRootG2.crt.pem)
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+(Root CA3: .crt.pem)
+-----END CERTIFICATE-----'
+```
+
+Call mysql.az_replication_change_master as follow:
+
+```sql
+CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
+```
+> [!IMPORTANT]
+> Reboot your replica server.
 
 ## How do I know if I'm using SSL/TLS with root certificate verification?
 

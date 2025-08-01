@@ -1,18 +1,16 @@
 ---
-title: $near (geospatial) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $near
+titleSuffix: Overview of the $near operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $near operator returns documents with location fields that are near a specified point, sorted by distance.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 07/25/2025
 ---
 
-# $near (geospatial)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $near
 
 The `$near` operator returns documents whose location field is near a specified point, sorted by distance. It requires a '2dsphere' index and returns documents from nearest to farthest.
 
@@ -35,23 +33,26 @@ The `$near` operator returns documents whose location field is near a specified 
 
 ## Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `location field` | Field | The field containing the GeoJSON Point |
-| `$geometry` | Object | GeoJSON Point object specifying the center point |
-| `$maxDistance` | Number | Optional. Maximum distance in meters from the center point |
-| `$minDistance` | Number | Optional. Minimum distance in meters from the center point |
+| Parameter | Description |
+|-----------|-------------|
+| `location field` | The field containing the GeoJSON Point |
+| `$geometry` | GeoJSON Point object specifying the center point |
+| `$maxDistance` | Optional. Maximum distance in meters from the center point |
+| `$minDistance` | Optional. Minimum distance in meters from the center point |
 
-## Examples
+## Prerequisite
 
-Create the required '2dsphere' index:
+For better performance, start with creating the required `2dsphere` index.
 
 ```javascript
 db.stores.createIndex({ "location": "2dsphere" })
 ```
 
+## Examples
+
 ### Example 1: Basic Proximity Search
-Find stores near the Proseware Home Entertainment Hub location (70.1272, 69.7296), sorted by distance:
+
+The example demonstrates operator usage to find the two closest stores to a specific geographic point (70.1272, 69.7296) using geospatial search.
 
 ```javascript
 db.stores.find({
@@ -66,31 +67,27 @@ db.stores.find({
 }, {
   name: 1,
   location: 1
-})
+}).limit(2)
 ```
 
-### Example 2: Using Maximum Distance
-Find stores within 10 KM of First Up Consultants Microphone Bazaar (-112.7858, -29.1866):
+The query searches the stores collection for locations closest to the given point and returns them in ascending order of distance. It's used for "finding nearest locations" functionality in applications like store locators or delivery services.
 
-```javascript
-db.stores.find({
-  'location': {
-    $near: {
-      $geometry: {
-        type: "Point",
-        coordinates: [-112.7858, -29.1866]
-      },
-      $maxDistance: 10000  // 10 kilometers in meters
-    }
-  }
-}, {
-  name: 1,
-  location: 1
-})
+```json
+{
+   "_id": "3882eb86-5dd6-4701-9640-f670ccb67859",
+   "name": "Fourth Coffee | DJ Equipment Stop - Schuppestad",
+   "location": { "lat": 69.4923, "lon": 70.1851 }
+ },
+ {
+   "_id": "bbec6d3e-1666-45b4-8803-8b7ef8544845",
+   "name": "First Up Consultants | Baby Products Bargains - South Keenan",
+   "location": { "lat": 69.2158, "lon": 70.3328 }
+ }
 ```
 
-### Example 3: Using Both Min and Max Distance
-Find stores between 10 and 50 KM from Wide World Importers (-82.5543, -65.105):
+### Example 2: Using Both Min and Max Distance
+
+The aggregation query finds stores within a specific distance range from a point [70.3328, 69.2158] and calculates their distances in kilometers.
 
 ```javascript
 db.stores.aggregate([
@@ -98,11 +95,11 @@ db.stores.aggregate([
     $geoNear: {
       near: {
         type: "Point",
-        coordinates: [-82.5543, -65.105]
+        coordinates: [70.3328, 69.2158]
       },
       distanceField: "distance",
-      minDistance: 10000,    // 10 KM in meters
-      maxDistance: 50000,    // 50 KM in meters,
+      minDistance: 20,
+      maxDistance: 200,
       spherical: true
     }
   },
@@ -113,14 +110,12 @@ db.stores.aggregate([
       distanceKm: { $divide: ["$distance", 1000] },
       _id: 0
     }
-  }
+  },
+  { $limit: 2 }
 ])
 ```
 
-This returns stores with their distances from the specified point, such as:
-* Distance to nearby stores in kilometers
-* Only stores within the specified distance range
-* Sorted from nearest to farthest
+The query searches in a "donut-shaped" search area - finding stores that are at least 20 meters away but no more than 200 meters from the specified point, perfect for scenarios like "find stores in nearby cities but not in the immediate area.
 
 ## Related content
 

@@ -52,5 +52,5 @@ This script uses the commands outlined in the following table:
 ## Related content
 
 - [Azure CLI documentation](/cli/azure)
-- [Azure CLI samples for Azure Database for PostgreSQL- Flexible Server](../single-server/sample-scripts-azure-cli.md)
+- [Azure CLI samples for Azure Database for PostgreSQL flexible server](../single-server/sample-scripts-azure-cli.md)
 - [How to configure server parameters in Azure portal](../flexible-server/how-to-configure-server-parameters-using-portal.md)

@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions in Az
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 07/01/2025
+ms.date: 07/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -91,11 +91,12 @@ Best Practices
 
 ### Eligible PostgreSQL versions
 
-| PostgreSQL Version | Azure Support Start Date | Community Retirement Date | Paid Extended Support Starts (includes grace period) | Extended Support Ends |
-| --- | --- | --- | --- | --- |
-| 11 | 24-Jul-19 | 9-Nov-25 | 1-Apr-26 | 31-Mar-29 |
-| 12 | 22-Sep-20 | 14-Nov-24 | 1-Apr-26 | 31-Mar-29 |
-| 13 | 25-May-21 | 13-Nov-25 | 1-Apr-26 | 31-Mar-29 |
+| PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date (includes grace period) | Paid Extended Support End Date |
+| --- | --- | --- | --- | --- | --- |
+| 11 | 24-Jul-19 |  9-Nov-25 |  9-Nov-25 |  1-Apr-26 | 31-Mar-29 |
+| 12 | 22-Sep-20 | 14-Nov-24 | 14-Nov-24 |  1-Apr-26 | 31-Mar-29 |
+| 13 | 25-May-21 | 13-Nov-25 | 13-Nov-25 |  1-Apr-26 | 31-Mar-29 |
+| 14 | 29-Jun-22 | 12-Nov-26 | 12-Nov-26 | 12-Dec-26 | 11-Dec-29 |
 
 ### Enrollment and price
 
@@ -169,7 +170,7 @@ This extension of Postgres 11 support is part of Azure's commitment to providing
 
 You might continue to run the retired version in Azure Database for PostgreSQL flexible server. However, note the following restrictions after the retirement date for each PostgreSQL database version:
 
-- Once a PostgreSQL version is retired by the community, Azure Database for PostgreSQL – Flexible Server no longer applies bug or security patches to the database engine. This might expose your server to security risks or other issues. However, Azure continues to maintain and patch the underlying host, operating system, containers, and related service components.
+- Once a PostgreSQL version is retired by the community, Azure Database for PostgreSQL flexible server no longer applies bug or security patches to the database engine. This might expose your server to security risks or other issues. However, Azure continues to maintain and patch the underlying host, operating system, containers, and related service components.
 
 - If any support issue you might experience relates to the PostgreSQL engine itself, as the community no longer provides the patches, we might not be able to provide you with support. In such cases, you have to upgrade your database to one of the supported versions.
 
@@ -181,7 +182,7 @@ You might continue to run the retired version in Azure Database for PostgreSQL f
 
 - In rare cases where a critical vulnerability in a retired PostgreSQL version poses a threat to the service, Azure might stop affected servers to protect the platform. In such case, you're notified to upgrade the server before bringing the server online.
 
-- New extensions introduced for Azure Database for PostgreSQL – Flexible Server aren't supported on PostgreSQL versions that have been retired by the community.
+- New extensions introduced for Azure Database for PostgreSQL flexible server aren't supported on PostgreSQL versions that have been retired by the community.
 
 ## PostgreSQL version syntax
 
