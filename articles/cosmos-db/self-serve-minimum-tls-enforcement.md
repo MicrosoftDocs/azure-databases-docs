@@ -63,15 +63,15 @@ After setting up your account, you can review in the **Review + create** tab, un
 
 1. You'll find the **Minimum Transport Layer Security Protocol** option. If you're using an API Kind that only supports TLS 1.2, you'll notice this option disabled. Otherwise, you can select the desired TLS Protocol by just clicking on it.
 
-  :::image type="content" source="media/self-serve-minimum-tls-enforcement/edit.png" alt-text="Screenshot of minimum transport layer security protocol option.":::
+    :::image type="content" source="media/self-serve-minimum-tls-enforcement/edit.png" alt-text="Screenshot of minimum transport layer security protocol option.":::
 
 1. Select **Save** once you changed the TLS protocol.
 
-  :::image type="content" source="media/self-serve-minimum-tls-enforcement/save.png" alt-text="Screenshot of save after change.":::
+    :::image type="content" source="media/self-serve-minimum-tls-enforcement/save.png" alt-text="Screenshot of save after change.":::
 
 1. Once it's saved, you'll receive a success notification. Still, this change can take up to 15 minutes to take effect after the configuration update is completed.
 
-  :::image type="content" source="media/self-serve-minimum-tls-enforcement/notification-success.png" alt-text="Screenshot of success notification.":::
+    :::image type="content" source="media/self-serve-minimum-tls-enforcement/notification-success.png" alt-text="Screenshot of success notification.":::
 
 ### Set via Azure CLI
 
