@@ -1,6 +1,6 @@
 --- 
 title: $addToSet
-titleSuffix: Overview of the addToSet operation in Azure Cosmos DB for MongoDB (vCore)
+titleSuffix: Overview of the $addToSet operation in Azure Cosmos DB for MongoDB (vCore)
 description: The addToSet operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
 author: sandeepsnairms
 ms.author: sandnair

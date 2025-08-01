@@ -1,6 +1,6 @@
 ---
-title: $slice (projection)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $slice
+titleSuffix: Overview of the $slice operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $slice operator is used to return a subset of an array limited by a specified number or range of items.
 author: avijitgupta
 ms.author: avijitgupta
@@ -10,9 +10,7 @@ ms.topic: language-reference
 ms.date: 09/12/2024
 ---
 
-# $slice (projection)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $slice
 
 The `$slice` operator is used to return a subset of an array. It can be used to limit the number of elements in an array to a specified number or to return elements from a specified position in the array. This operator is useful when dealing with large arrays where only a portion of the data is needed for processing or display.
 
@@ -36,19 +34,19 @@ db.collection.find({},
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The array field from which you want to slice a subset. |
 | **`count`** | The number of elements to return from the beginning of the array. |
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`skip`** | The number of elements to skip. |
 | **`limit`** | The number of elements to return after skipping. |
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -97,7 +95,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Returns the first matching element from an array
 
-The example queries `stores` data for "Lakeshore Retail", and finds the first document from "sales.salesByCategory" array.
+The example queries for "Lakeshore Retail", and finds the first document from "sales.salesByCategory" array.
 
 ```javascript
 db.stores.find(
@@ -106,7 +104,7 @@ db.stores.find(
 )
 ```
 
-This query will return document from the `stores` collection, with first `categoryName` document within the array.
+This query will return document with first element from the `salesByCategory` array.
 
 ```json
 {
@@ -125,7 +123,7 @@ This query will return document from the `stores` collection, with first `catego
 
 ### Example 2: Return the last element from an array
 
-The example queries `stores` data for "Lakeshore Retail", and finds the last document from "sales.salesByCategory" array.
+The example queries for "Lakeshore Retail", and finds the last document from "sales.salesByCategory" array.
 
 ```javascript
 db.stores.find(
@@ -134,7 +132,7 @@ db.stores.find(
 )
 ```
 
-This query will return document from the `stores` collection, with last `categoryName` document within the array.
+This query will return document with last element from the `salesByCategory` array.
 
 ```json
 {
@@ -153,7 +151,7 @@ This query will return document from the `stores` collection, with last `categor
 
 ### Example 3: Returns a range of elements from an array
 
-The example queries `stores` data for "Lakeshore Retail", and finds a subset range from "sales.salesByCategory" array.
+The example queries for "Lakeshore Retail", and finds a subset range from "sales.salesByCategory" array.
 
 ```javascript
 db.stores.find(
@@ -162,7 +160,7 @@ db.stores.find(
 )
 ```
 
-This query returns document from the `stores` collection, with two elements starting from the fourth element of the `sales.salesByCategory` array.
+This query returns document with two elements starting from the fourth element of the `sales.salesByCategory` array.
 
 ```json
 {

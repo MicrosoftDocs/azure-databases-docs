@@ -1,7 +1,7 @@
 ---
-  title: $inc (field update operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $inc
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $inc operator increments the value of a field by a specified amount.
+  description: Overview of the $inc operator in Azure Cosmos DB for MongoDB (vCore)
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $inc (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $inc
 
 The `$inc` operator increments the value of a field by a specified amount. If the field does not exist, `$inc` creates the field and sets it to the specified value. The operator accepts positive and negative values for incrementing and decrementing respectively.
 
@@ -32,14 +30,14 @@ The syntax for the `$inc` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to increment. |
 | **`amount`** | The amount by which to increment the field. Must be a number (positive for increment, negative for decrement). |
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {

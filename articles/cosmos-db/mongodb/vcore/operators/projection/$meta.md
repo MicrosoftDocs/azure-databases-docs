@@ -1,6 +1,6 @@
 ---
-  title: $meta (projection) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $meta
+  titleSuffix: Overview of the $meta operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $meta operator returns a calculated metadata column with returned dataset.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,9 +10,7 @@
   ms.date: 09/12/2024
 ---
 
-# $meta (projection)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $meta
 
 The `$meta` projection operator is used to include metadata in the results of a query. It's useful for including metadata such as text search scores or other computed values in the output documents.
 
@@ -29,18 +27,104 @@ db.collection.find( {$text: { $search: <string> } },
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field in the output documents where the metadata gets included. |
 | **`metaDataKeyword`** | The type of metadata to include common keywords like `textScore` for text search scores. |
 
 ## Example
 
-Here's the example to illustrate the usage of the `$meta` projection operator.
+Consider this sample document from the stores collection.
+
+```json
+{
+  "_id": "34f462fe-5085-4a77-a3de-53f4117466bd",
+  "name": "Wide World Importers",
+  "location": {
+    "lat": -63.5435,
+    "lon": 77.7226
+  },
+  "staff": {
+    "totalStaff": {
+      "fullTime": 16,
+      "partTime": 16
+    }
+  },
+  "sales": {
+    "totalSales": 41481,
+    "salesByCategory": [
+      {
+        "categoryName": "Holiday Tableware",
+        "totalSales": 41481
+      }
+    ]
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Crazy Deal Days",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2023,
+          "Month": 11,
+          "Day": 13
+        },
+        "endDate": {
+          "Year": 2023,
+          "Month": 11,
+          "Day": 22
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "Gift Boxes",
+          "discountPercentage": 9
+        },
+        {
+          "categoryName": "Holiday Tableware",
+          "discountPercentage": 24
+        }
+      ]
+    },
+    {
+      "eventName": "Incredible Savings Showcase",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 5,
+          "Day": 11
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 5,
+          "Day": 20
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "Ribbons",
+          "discountPercentage": 15
+        },
+        {
+          "categoryName": "Gift Bags",
+          "discountPercentage": 25
+        }
+      ]
+    }
+  ],
+  "tag": [
+    "#ShopLocal",
+    "#FashionStore",
+    "#SeasonalSale",
+    "#FreeShipping",
+    "#MembershipDeals"
+  ]
+}
+
+```
 
 ### Example 1: Including text search scores
 
-We have a collection named `stores` and we want to include the text search score in the results of a text search query.
+To include the text search score in the results of a text search query.
 
 ```javascript
 db.stores.createIndex({ "name": "text"});
@@ -52,7 +136,7 @@ db.stores.find(
 
 ```
 
-This query returns documents from the `stores` collection that match the text search criteria and include a `score` field containing the text search score.
+To match the text search criteria and include a `score` field containing the text search score.
 
 ```json
 {

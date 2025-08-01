@@ -1,6 +1,6 @@
 --- 
-  title: $switch (conditional expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $switch
+  titleSuffix: Overview of the $switch operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $switch operator is used to evaluate a series of conditions and return a value based on the first condition that evaluates to true.  
   author: sandeepsnairms
   ms.author: sandnair
@@ -11,7 +11,7 @@
 ---
 
 
-# $switch (conditional expression)
+# $switch
 
 The `$switch` operator is used to evaluate a series of conditions and return a value based on the first condition that evaluates to true. This is useful when you need to implement complex conditional logic within aggregation pipelines.
 
@@ -34,7 +34,7 @@ The syntax for the `$switch` operator is as follows:
 
 ### Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **branches**| An array of documents, each containing|
 | **case**| An expression that evaluates to either `true` or `false`|
@@ -43,7 +43,7 @@ The syntax for the `$switch` operator is as follows:
 
 ## Example
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
 
 ```json
 {

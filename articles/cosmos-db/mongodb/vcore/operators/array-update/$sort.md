@@ -1,6 +1,6 @@
 ---
-  title: $sort (array update) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $sort
+  titleSuffix: Overview of the $sort operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $sort is used to sort an array in ascending or descending order within a document during an update operation.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,9 +10,7 @@
   ms.date: 10/14/2024
 ---
 
-# $sort (array update)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $sort
 
 The `$sort` operator is used to sort an array in ascending or descending order within a document during an update operation. This operator is useful for maintaining ordered arrays based on specific fields.
 
@@ -29,14 +27,14 @@ The `$sort` operator is used to sort an array in ascending or descending order w
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`**| The field in the array to sort by.|
 | **`sortOrder`**| The sort order (1 for ascending, -1 for descending).|
 
 ## Example
 
-Let's review the usage with a sample json document from `stores` collection.
+Consider this sample document from the stores collection.
 
 ```json
 {

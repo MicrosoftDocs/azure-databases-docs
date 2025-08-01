@@ -1,6 +1,6 @@
 ---
-title: $pop (array update) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $pop
+titleSuffix: Overview of the $pop operation in Azure Cosmos DB for MongoDB (vCore)
 description: Removes the first or last element of an array.
 author: sandeepsnairms
 ms.author: sandnair
@@ -10,9 +10,9 @@ ms.topic: language-reference
 ms.date: 10/15/2024
 ---
 
-# $pop  (array update)
+# $pop
 
-The `$pop` operator in MongoDB is used to remove the first or last element of an array. This operator is useful when you need to manage arrays by removing elements from either end. The `$pop` operator can be used in update operations.
+The `$pop` operator is used to remove the first or last element of an array. This operator is useful when you need to manage arrays by removing elements from either end. The `$pop` operator can be used in update operations.
 
 ## Syntax
 
@@ -25,14 +25,14 @@ The `$pop` operator in MongoDB is used to remove the first or last element of an
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<field>`** | The field that contains the array from which you want to remove an element. |
 | **`<value>`** | Use `1` to remove the last element, and `-1` to remove the first element. |
 
 ## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
 
 ```json
 {

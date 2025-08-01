@@ -1,6 +1,6 @@
 ---
-  title: $unset (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $unset
+  titleSuffix: Overview of the $unset operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $unset operator removes specified fields from documents during update operations.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $unset (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $unset
 
 The `$unset` operator is used to remove specified fields from documents during update operations. This operator completely removes the field from the document, regardless of its current value. It's useful for cleaning up document schemas, removing deprecated fields, or eliminating unnecessary data from documents.
 
@@ -32,14 +30,14 @@ The syntax for the `$unset` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to remove. Can be a top-level field or use dot notation for nested fields. |
 | **`value`** | The value is typically an empty string ("") but can be any value. The actual value is ignored; only the field name matters. |
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -74,7 +72,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Removing top-level fields
 
-Suppose you want to remove temporary or outdated fields from a store document.
+To remove temporary or outdated fields from a store document.
 
 ```javascript
 db.stores.updateOne(
@@ -88,7 +86,7 @@ db.stores.updateOne(
 )
 ```
 
-After above operation, the document would be updated as follows:
+The document will be updated as follows:
 
 ```json
 {
@@ -132,7 +130,7 @@ db.stores.updateOne(
 )
 ```
 
-After above operation, the document would be updated as follows:
+The document will be updated as follows:
 
 ```json
 {

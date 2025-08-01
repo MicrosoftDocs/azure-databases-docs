@@ -1,6 +1,6 @@
 ---
-  title: $min (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $min
+  titleSuffix: Overview of the $min operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $min operator updates the value of a field to a specified value if the specified value is less than the current value of the field.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,8 @@
   ms.date: 02/12/2025
 ---
 
-# $min (field update operator)
+# $min
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 The `$min` operator updates the value of a field to a specified value if the specified value is less than the current value of the field. If the field does not exist, `$min` creates the field and sets it to the specified value. This operator is useful for maintaining minimum thresholds or tracking the lowest values.
 
@@ -32,14 +31,14 @@ The syntax for the `$min` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to update with the minimum value. |
 | **`value`** | The value to compare with the current field value. The field will be updated only if this value is smaller. |
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: $geoNear (aggregation)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $geoNear
+titleSuffix: Overview of the $geoNear operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $geoNear operator finds and sorts documents by their proximity to a geospatial point, returning distance information for each document.
 author: suvishodcitus
 ms.author: suvishod
@@ -10,9 +10,7 @@ ms.topic: language-reference
 ms.date: 02/12/2025
 ---
 
-# $geoNear (aggregation)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $geoNear
 
 The `$geoNear` aggregation stage calculates distances between a specified point and the location field in each document, sorts the documents by distance, and can optionally limit results by distance.
 
@@ -54,6 +52,61 @@ The syntax for the `$geoNear` operator is as follows:
 | `key` | String | Optional. Field path to use for calculating distances |
 
 ## Examples
+
+Consider this sample document from the stores collection.
+
+```json
+{
+  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+  "name": "First Up Consultants | Bed and Bath Center - South Amir",
+  "location": {
+    "lat": 60.7954,
+    "lon": -142.0012
+  },
+  "staff": {
+    "totalStaff": {
+      "fullTime": 18,
+      "partTime": 17
+    }
+  },
+  "sales": {
+    "totalSales": 37701,
+    "salesByCategory": [
+      {
+        "categoryName": "Mattress Toppers",
+        "totalSales": 37701
+      }
+    ]
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Price Drop Palooza",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 21
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 30
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "Bath Accessories",
+          "discountPercentage": 18
+        },
+        {
+          "categoryName": "Pillow Top Mattresses",
+          "discountPercentage": 17
+        }
+      ]
+    }
+  ]
+}
+```
 
 ### Example 1: Basic distance calculation
 

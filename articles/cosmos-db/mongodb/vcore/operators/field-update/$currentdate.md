@@ -1,6 +1,6 @@
 ---
-  title: $currentDate (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $currentDate
+  titleSuffix: Overview of the $currentDate operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $currentDate operator sets the value of a field to the current date, either as a Date or a timestamp.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $currentDate (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $currentDate
 
 The `$currentDate` operator sets the value of a field to the current date, either as a Date or a timestamp. This operator is useful for tracking when documents were last modified or for setting creation timestamps.
 
@@ -32,14 +30,14 @@ The syntax for the `$currentDate` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to set to the current date. |
 | **`typeSpecification`** | Optional. Specifies the type of the date value. Can be `true` (for Date type) or `{ $type: "timestamp" }` for timestamp type. Default is `true` (Date). |
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -100,7 +98,7 @@ db.stores.updateOne(
 )
 ```
 
-Output:
+This query will return  the following document 
 
 ```json
 {

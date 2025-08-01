@@ -1,5 +1,5 @@
 ---
-title: $set (aggregation)
+title: $set
 titleSuffix: Overview of the $set operator in Azure Cosmos DB for MongoDB vCore
 description: The $set operator in Azure Cosmos DB for MongoDB vCore updates or creates a new field with a specified value
 author: abinav2307
@@ -10,13 +10,13 @@ ms.topic: language-reference
 ms.date: 02/24/2025
 ---
 
-# $set (aggregation)
+# $set
 
 The `$set` operator updates an existing field or creates a new field with the specified value if it does not exist. One or more fields listed are updated or created. The dot notation is used to update or create nested objects.
 
 ## Syntax
 
-```mongodb
+```javascript
 {
   "$set": {
     "newField": <expression>,
@@ -34,7 +34,7 @@ The `$set` operator updates an existing field or creates a new field with the sp
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -148,13 +148,13 @@ Consider this sample document from the stores collection in the StoreData databa
 
 ### Example 1 - Update an existing field
 
-```mongodb
+```javascript
 db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"name": "Lakeshore Retail"}})
 ```
 
 ### Example 2 - Update an existing field in a nested object
 
-```mongodb
+```javascript
 db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"staff.totalStaff.partTime": 9}})
 ```
 
@@ -162,7 +162,7 @@ db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"
 
 Create a new field called "formerName" with the old name of the store.
 
-```mongodb
+```javascript
 db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"formerName": "Tailwind Traders | Drone Shoppe - New Theodora"}})
 ```
 
@@ -170,13 +170,13 @@ db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"
 
 Create a new field within the nested totalStaff object to specify a count of temporary staff members.
 
-```mongodb
+```javascript
 db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"staff.totalStaff.temporary": 3}})
 ```
 
 ### Example 5 - Update multiple fields
 
-```mongodb
+```javascript
 db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"staff.totalStaff.partTime": 9, "sales.totalSales": 3611}})
 ```
 

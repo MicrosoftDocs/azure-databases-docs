@@ -1,6 +1,6 @@
 ---
-  title: $slice (array update) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $slice
+  titleSuffix: Overview of the $slice operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $slice is used to limit the number of elements in an array that are returned in a query.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,9 +10,7 @@
   ms.date: 10/14/2024
 ---
 
-# $slice (array update)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $slice
 
 The `$slice` operator is used to limit the number of elements in an array that are returned in a query. It can be useful when dealing with large arrays where only a subset of the elements is needed. This operator can be applied to arrays to either return the first N elements, the last N elements, or a specific range of elements.
 
@@ -33,7 +31,7 @@ The general syntax for the `$slice` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`**| The array field to which the `$slice` operator is applied.|
 | **`<value1>, <value2>`**| The values to be inserted into the array. We can keep an empty array for slicing through existing values in array field.|
@@ -41,7 +39,7 @@ The general syntax for the `$slice` operator is as follows:
 
 ## Example
 
-Let's review the usage with a sample json document from `stores` collection.
+Consider this sample document from the stores collection.
 
 ```json
 {
