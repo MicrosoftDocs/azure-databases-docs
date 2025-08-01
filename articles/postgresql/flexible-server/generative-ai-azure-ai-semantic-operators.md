@@ -88,7 +88,7 @@ It supports the following input parameters:
 
 | Argument | Type | Description | 
 |----------|------|-------|
-|`statement` | `text` |Statement to be evaluated as true or false.|
+|`statement` | `text` | Statement to be evaluated as true or false.|
 | `model` (optional)| `text` `DEFAULT "gpt-4.1"`| Name of the model deployment in Azure AI Foundry.|
 
 **Example usage:**
@@ -121,11 +121,23 @@ The operator returns a `JsonB` object containing the extracted entities mapped t
 
 ```sql
 SELECT azure_ai.extract(
-  'Alice Smith traveled to Paris.',
-  ARRAY['person', 'location', 'action']
+   'The headphones are not great. They have a good design, but the sound quality is poor and the battery life is short.',
+   ARRAY[ 'product', 'sentiment']
 );
 
--- Output: {"person": "Alice Smith", "location": "Paris", "action": "travel"}
+-- Output: {"product": "headphones", "sentiment": "negative"}
+
+SELECT azure_ai.extract(
+    'The music quality is good, though the call quality could have been better. The design is sleek, but still slightly heavy for convenient travel.',
+    ARRAY[
+        'design: string - comma separated list of design features of the product',
+        'sound: string - sound quality (e.g., music, call, noise cancellation) of the product',
+        'sentiment: number - sentiment score of the review; 1 (lowest) to 5 (highest)'
+    ]
+);
+
+-- Output: {"sound": "music quality is good, call quality could have been better", "design": "sleek, slightly heavy", "sentiment": 3}
+
 ```
 
 ### `azure_ai.rank()`
@@ -147,14 +159,13 @@ The operator returns a `table` containing the document ID, its rank, and the ass
 
 ```sql
 SELECT azure_ai.rank(
-  'How to Care for Indoor Succulents',
-  ARRAY[
-    'A complete guide to watering succulents.',
-    'Best outdoor plants for shade.',
-    'Soil mixtures for cacti and succulents.'
-  ]
-) AS ranked_documents;
-
+    'Best headphones for travel',
+    ARRAY[
+        'The headphones are lightweight and foldable, making them easy to carry.',
+        'Bad battery life, not so great for long trips.',
+        'The sound quality is excellent, with good noise isolation.'
+    ]
+)
 
 SELECT azure_ai.rank(
   query => 'Clear calling capability that blocks out background noise',
@@ -179,7 +190,7 @@ To use Semantic Operators in your PostgreSQL database, follow these steps:
 These operators support chat completion models and default to [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series). 
 
 1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL flexible server. 
-1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (e.g., [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through the intuitive experiences provided by [Azure AI Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). 
+1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (for example, [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through the intuitive experiences provided by [Azure AI Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). 
 1. Note the Azure OpenAI **endpoint URL** and **API key**. 
 1. **Configure access**:
     
@@ -244,13 +255,13 @@ Using `Cohere-rerank-v3.5` cross-encoder:
 
     ```sql
     SELECT azure_ai.rank(
-       'How to Care for Indoor Succulents',
-        ARRAY[
-          'A complete guide to watering succulents.',
-          'Best outdoor plants for shade.',
-          'Soil mixtures for cacti and succulents.'
-        ]
-    ) AS ranked_documents;
+      'Best headphones for travel',
+      ARRAY[
+          'The headphones are lightweight and foldable, making them easy to carry.',
+          'Bad battery life, not so great for long trips.',
+          'The sound quality is excellent, with good noise isolation.'
+      ]
+    ) AS ranked_reviews;
     ```
 
 To use the `.rank()` operator with chat completion models like `gpt-4.1`, deploy the desired model on Azure OpenAI, configure the `azure_ai` extension with the model’s endpoint details, and specify the model name when invoking the operator.
@@ -260,14 +271,14 @@ SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<endpoint>.openai.
 SELECT azure_ai.set_setting('azure_openai.subscription_key', '<API Key>');
 
 SELECT azure_ai.rank(
- 'How to Care for Indoor Succulents',
+ 'Best headphones for travel',
   ARRAY[
-    'A complete guide to watering succulents.',
-    'Best outdoor plants for shade.',
-    'Soil mixtures for cacti and succulents.'
+      'The headphones are lightweight and foldable, making them easy to carry.',
+      'Bad battery life, not so great for long trips.',
+      'The sound quality is excellent, with good noise isolation.'
   ],
-'gpt-4.1'
-) AS ranked_documents;
+  'gpt-4.1'
+) AS ranked_reviews;
 ```
 
 
