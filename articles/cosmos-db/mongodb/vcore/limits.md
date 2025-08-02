@@ -1,5 +1,5 @@
 ---
-title: Service Limits in Azure Cosmos DB for MongoDB vCore
+title: Service limits in Azure Cosmos DB for MongoDB vCore
 description: This document outlines the service limits for vCore-based Azure Cosmos DB for MongoDB.
 author: gahl-levy
 ms.author: gahllevy
@@ -9,12 +9,12 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 06/25/2025
+ms.date: 08/01/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
 
-# Service Limits in Azure Cosmos DB for MongoDB vCore
+# Service limits in Azure Cosmos DB for MongoDB vCore
 
 This document outlines the current hard and soft limits for Azure Cosmos DB for MongoDB vCore. Many of these limitations are temporary and will evolve over time as the service continues to improve. If any of these limits are an issue for your organization, [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
 
@@ -72,9 +72,9 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Only one index can be created per vector path.
 - `HNSW` and `DiskANN` are available on M40 and above cluster tiers. 
 
-## Cluster and Shard Limits
+## Cluster and shard limits
 
-### Cluster Tier
+### Cluster tier
 - Maximum: M200 / 64 vCores / 256 GiB RAM per physical shard. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
 
 ### Physical shards
@@ -103,20 +103,28 @@ The following limitations can be overridden by upgrading to a paid tier
 
 ### M10/M20/M25 limits
 M10, M20, and M25 have the following limitations:
-- Supports one shard only.
-- Designed for Dev/Test use cases; High Availability (HA) isn't supported.
+- Supports one physical shard (node) only.
+- Designed for Dev/Test use cases; in-region high availability (HA) isn't supported.
 - Supported disk sizes include 32 GiB, 64 GiB, and 128 GiB.
 - Once scaled to an M30 SKU or higher, the cluster can't be scaled back down to M10, M20, and M25.
 
-## Replication and HA (high availability) limits
+### Customer-managed key data encryption limits
+The following are the current limitations for configuring [the customer-managed key (CMK)](./database-encryption-at-rest.md#data-encryption-in-azure-cosmos-db-for-mongodb-vcore) in an Azure Cosmos DB for MongoDB vCore:
+
+- The instance of Azure Key Vault where you plan to store the encryption key and user-assigned managed identity must be in the same Azure region and in the same Microsoft tenant as the Azure Cosmos DB for MongoDB vCore cluster.
+- After you create a cluster you can't change the data encryption mode from system-managed key to customer-managed key or vice versa.
+    - You can create [a replica cluster or perform cluster restore](./how-to-data-encryption.md#change-data-encryption-mode-on-existing-clusters) and choose a different encryption mode.
+- [Add physical shard operation](./how-to-scale-cluster.md#increase-the-number-of-physical-shards) isn't supported on clusters with CMK enabled.
+
+## Replication and in-region HA (high availability) limits
 
 ### Cross-region replication
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
-  - Storage and shard count
+  - Storage and physical shard count
   - User accounts
 - The following features aren't available on replica clusters:
-  - Point-in-time restore
-  - High availability (HA)
+  - Point-in-time restore (PITR)
+  - In-region high availability (HA)
 - Cross-region replication isn't available on clusters with burstable compute or Free tier clusters.
 
 ## Authentication and access control (RBAC)

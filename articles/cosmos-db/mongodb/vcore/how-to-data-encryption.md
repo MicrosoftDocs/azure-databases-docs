@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 07/30/2025
+ms.date: 08/01/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -196,15 +196,8 @@ Identities passed as parameters, if they exist and are valid, are automatically 
 
 The only point at which you can decide if you want to use a service-managed key or a customer-managed key (CMK) for data encryption, is at cluster creation time. Once you make that decision and create the cluster, you can't switch between the two options. To create a copy of your Azure Cosmos DB for MongoDB vCore cluster with a different encryption option, you can either create a replica cluster or perform a cluster restore and select the new encryption mode during replica cluster or restored cluster creation.
 
-## Limitations
-
-The following are the current limitations for configuring the customer-managed key in an Azure Cosmos DB for MongoDB vCore:
-
-- The instance of Azure Key Vault where you plan to store the encryption key and user-assigned managed identity must be in the same region and in the same Microsoft tenant as the Azure Cosmos DB for MongoDB vCore cluster.
-- After you configure customer-managed key encryption, you can't revert back to system-managed key.
-- [Add physical shard operation](./how-to-scale-cluster.md#increase-the-number-of-physical-shards) isn't supported on clusters with CMK enabled.
-
 ## Related content
 
 - [Learn about data encryption at rest in Azure Cosmos DB for MongoDB vCore](./database-encryption-at-rest.md)
+- Check out [CMK limitations](./limits.md#customer-managed-key-data-encryption-limits)
 - [Migrate data to Azure Cosmos DB for MongoDB vCore](./migration-options.md)

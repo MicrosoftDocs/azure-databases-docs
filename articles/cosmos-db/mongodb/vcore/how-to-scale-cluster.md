@@ -75,7 +75,7 @@ You can enable or disable [in-region high availability (HA)](./high-availability
 
 ## Increase the number of physical shards
 
-[!INCLUDE[MongoDB vCore](./includes/notice-customer-add-shard-rebalancing-preview.md)]
+[!INCLUDE[MongoDB vCore](./includes/notice-customer-add-shard-and-data-rebalancing-preview.md)]
 
 When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards. Each physical shard in a cluster always has the same [compute](#scale-cluster-compute) and [storage](#increase-disk-size) configuration.
 
