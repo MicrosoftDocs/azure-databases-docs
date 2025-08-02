@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. [Create one key in your key store](/azure/key-vault/keys/quick-create-portal#add-a-key-to-key-vault). 
 
-1. Grant user-assigned managed identity permissions to the AKV instance as outlined in [the requirements](./database-encryption-at-rest.md#cmk-requirements). 
+1. Grant user-assigned managed identity permissions to the Azure Key Vault instance as outlined in [the requirements](./database-encryption-at-rest.md#cmk-requirements). 
 
 ## Configure data encryption with customer-managed key during cluster provisioning
 

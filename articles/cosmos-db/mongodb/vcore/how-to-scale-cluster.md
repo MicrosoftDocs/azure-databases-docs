@@ -50,7 +50,7 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
 2. Select **Save** to persist your change.
 
-## Increase disk size
+## Increase storage size
 
 You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos-db-for-mongodb-vcore) to give your database more room to grow. For example, you can increase the storage from **128 GiB** to **256 GiB**.
 
@@ -77,7 +77,7 @@ You can enable or disable [in-region high availability (HA)](./high-availability
 
 [!INCLUDE[MongoDB vCore](./includes/notice-customer-add-shard-and-data-rebalancing-preview.md)]
 
-When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards. Each physical shard in a cluster always has the same [compute](#scale-cluster-compute) and [storage](#increase-disk-size) configuration.
+When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-storage-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards. Each physical shard in a cluster always has the same [compute](#scale-cluster-compute) and [storage](#increase-storage-size) configuration.
 
 1. To add physical shards, select new shard count from the list.
 
