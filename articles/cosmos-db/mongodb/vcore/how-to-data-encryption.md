@@ -199,5 +199,5 @@ The only point at which you can decide if you want to use a service-managed key 
 ## Related content
 
 - [Learn about data encryption at rest in Azure Cosmos DB for MongoDB vCore](./database-encryption-at-rest.md)
-- Check out [CMK limitations](./limits.md#customer-managed-key-data-encryption-limits)
+- Check out [CMK limitations](./limits.md#customer-managed-key-data-encryption-limitations)
 - [Migrate data to Azure Cosmos DB for MongoDB vCore](./migration-options.md)
