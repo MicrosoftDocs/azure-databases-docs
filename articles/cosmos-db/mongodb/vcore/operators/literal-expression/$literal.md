@@ -1,24 +1,20 @@
 ---
-  title: $literal (literal expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $literal
+  titleSuffix: Overview of the $literal operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $literal operator returns the specified value without parsing it as an expression, allowing literal values to be used in aggregation pipelines.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 08/03/2025
 ---
 
-# $literal (literal expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $literal
 
 The `$literal` operator returns the specified value without parsing it as an expression. This operator is useful when you need to include literal values that might otherwise be interpreted as field names, operators, or expressions in your aggregation pipeline. It ensures that the value is treated as a constant rather than being evaluated.
 
 ## Syntax
-
-The syntax for the `$literal` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$literal` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<value>`** | Any value that should be returned as-is without interpretation. This can be a string, number, boolean, array, object, or null. |
 
