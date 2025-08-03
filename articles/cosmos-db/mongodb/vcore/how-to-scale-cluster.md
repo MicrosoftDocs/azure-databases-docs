@@ -1,13 +1,13 @@
 ---
 title: Scale or configure a cluster
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Scale an Azure Cosmos DB for MongoDB vCore cluster by changing the tier and disk size or change the configuration by enabling high availability.
+description: Scale an Azure Cosmos DB for MongoDB vCore cluster by changing the compute tier and storage size or change the configuration by enabling in-region high availability.
 author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 06/09/2025
+ms.date: 08/01/2025
 appliesto:
 - ✅ MongoDB (vCore)
 ms.custom:
@@ -15,9 +15,9 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Scaling and configuring Your Azure Cosmos DB for MongoDB vCore cluster
+# Scaling and configuring Azure Cosmos DB for MongoDB vCore cluster
 
-Azure Cosmos DB for MongoDB vCore provides seamless scalability and high availability. This document serves as a quick guide for developers who want to learn how to scale and configure their clusters. Changes to the cluster are performed live without downtime.
+Azure Cosmos DB for MongoDB vCore provides seamless [scalability](./scalability-overview.md) and [in-region high availability (HA)](./high-availability.md). This document serves as a quick guide for developers who want to learn how to scale and configure their clusters. 
 
 ## Prerequisites
 
@@ -43,22 +43,20 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
 1. To change the cluster tier, select the new tier from the drop-down menu.
 
-   :::image type="content" source="media/how-to-scale-cluster/configure-tier.png" alt-text="Screenshot of the cluster tier option in the Scale page of a cluster.":::
+   :::image type="content" source="media/how-to-scale-cluster/configure-tier.png" alt-text="Screenshot of the cluster tier option in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-tier.png":::
 
     > [!NOTE]
-    > This change is performed live to the cluster without downtime.
-    >
-    > Upgrade or downgrade from burstable tiers to regular compute tier isn't supported at the moment.
+    > Downgrade from regular compute tier to [a burstable tier](./burstable-tier.md) isn't supported.
 
 2. Select **Save** to persist your change.
 
-## Increase disk size
+## Increase storage size
 
-You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos-db-for-mongodb-vcore) to give your database more room to grow. For example, you can increase the storage from **128 GB** to **256 GB**.
+You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos-db-for-mongodb-vcore) to give your database more room to grow. For example, you can increase the storage from **128 GiB** to **256 GiB**.
 
 1. To increase the storage size, select the new size from the drop-down menu.
 
-   :::image type="content" source="media/how-to-scale-cluster/configure-storage.png" alt-text="Screenshot of the storage per shard option in the Scale page of a cluster.":::
+   :::image type="content" source="media/how-to-scale-cluster/configure-storage.png" alt-text="Screenshot of the storage per shard option in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-storage.png":::
 
     > [!NOTE]
     > This change is performed live to the cluster without downtime. Also, storage size can only be increased, not decreased.
@@ -67,21 +65,23 @@ You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos
 
 ## Enable or disable high availability
 
-You can enable or disable [high availability (HA)](./high-availability.md) to suit your needs. HA avoids database downtime by maintaining replica shards of every primary shard in a cluster. If a primary shard goes down, incoming connections are automatically redirected to its replica shard, ensuring that there's minimal downtime.
+You can enable or disable [in-region high availability (HA)](./high-availability.md) to suit your needs. In-region HA avoids database downtime by maintaining replica shards of every primary shard in a cluster. If a primary shard goes down, incoming connections are automatically redirected to its replica shard, ensuring that there's minimal downtime.
 
-1. To enable or disable HA, toggle the checkbox option.
+1. To enable or disable in-region HA, toggle the checkbox option.
 
-   :::image type="content" source="media/how-to-scale-cluster/configure-high-availability.png" alt-text="Screenshot of the high availability checkbox in the Scale page of a cluster.":::
+   :::image type="content" source="media/how-to-scale-cluster/configure-high-availability.png" alt-text="Screenshot of the in-region high availability checkbox in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-high-availability.png":::
 
 2. Select **Save** to persist your change.
 
 ## Increase the number of physical shards
 
-When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-disk-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards. Each physical shard in a cluster always has the same [compute](#scale-cluster-compute) and [storage](#increase-disk-size) configuration.
+[!INCLUDE[MongoDB vCore](./includes/notice-customer-add-physical-shard-preview.md)]
+
+When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-storage-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards. Each physical shard in a cluster always has the same [compute](#scale-cluster-compute) and [storage](#increase-storage-size) configuration.
 
 1. To add physical shards, select new shard count from the list.
 
-   :::image type="content" source="media/how-to-scale-cluster/configure-add-shards.png" alt-text="Screenshot of the physical shard count drop-down list in the Scale page of a cluster.":::
+   :::image type="content" source="media/how-to-scale-cluster/configure-add-shards.png" alt-text="Screenshot of the physical shard count drop-down list in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-add-shards.png":::
 
 1. Select **Save** to persist your change.
 
