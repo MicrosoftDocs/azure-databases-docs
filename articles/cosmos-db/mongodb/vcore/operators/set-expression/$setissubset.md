@@ -1,6 +1,6 @@
 ---
-  title: $setIsSubset (set expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $setIsSubset
+  titleSuffix: Overview of the $setIsSubset operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $setIsSubset operator determines if the first array is a subset of the second array.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,15 +10,11 @@
   ms.date: 06/09/2025
 ---
 
-# $setIsSubset (set expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $setIsSubset
 
 The `$setIsSubset` operator returns a boolean value indicating whether the first array is a subset of the second array. It treats arrays as sets, meaning it ignores duplicates and element order. Returns `true` if all elements in the first array exist in the second array, otherwise `false`.
 
 ## Syntax
-
-The syntax for the `$setIsSubset` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$setIsSubset` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<array1>`** | The array to check if it's a subset of array2. |
 | **`<array2>`** | The array to check against. |
@@ -151,7 +147,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query return categories covered under both Sales and promotion bracket and confirms that sales is subset of promotion category while same isn't true other way around.
+The query return categories covered under both Sales and promotion bracket and confirms that `sales` is subset of promotion category while same isn't true other way around.
 
 ```json
 {

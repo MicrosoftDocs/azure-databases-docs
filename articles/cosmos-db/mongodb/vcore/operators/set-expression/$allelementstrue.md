@@ -1,24 +1,20 @@
 ---
-  title: $allElementsTrue (set expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $allElementsTrue
+  titleSuffix: Overview of the $allElementsTrue operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $allElementsTrue operator returns true if all elements in an array evaluate to true.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 08/03/2025
 ---
 
-# $allElementsTrue (set expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $allElementsTrue
 
 The `$allElementsTrue` operator evaluates an array as a set and returns `true` if no element in the array is `false` or equivalent to `false` (such as `null`, `0`, or `undefined`). If any element evaluates to `false`, the operator returns `false`.
 
 ## Syntax
-
-The syntax for the `$allElementsTrue` operator is as follows:
 
 ```javascript
 {
@@ -28,13 +24,13 @@ The syntax for the `$allElementsTrue` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`array`** | An array of expressions to evaluate. If the array is empty, `$allElementsTrue` returns `true`. |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Let's understand the usage with sample json from the `stores` dataset.
 
 ```json
 {
@@ -95,7 +91,7 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 
 ### Example 1: Check if all discount percentages are higher than zero
 
-Suppose you want to verify that all discount percentages in a promotion event are greater than zero.
+The aggregation query checks if all discount percentages in each promotion event are greater than zero.
 
 ```javascript
 db.stores.aggregate([

@@ -1,24 +1,20 @@
 ---
-  title: $setIntersection (set expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $setIntersection
+  titleSuffix: Overview of the $setIntersection operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $setIntersection operator returns the common elements that appear in all input arrays.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 08/03/2025
 ---
 
-# $setIntersection (set expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $setIntersection
 
 The `$setIntersection` operator returns an array containing the elements that appear in all of the input arrays. It treats arrays as sets, meaning it removes duplicates and ignores the order of elements.
 
 ## Syntax
-
-The syntax for the `$setIntersection` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$setIntersection` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<array1>, <array2>, ...`** | Two or more arrays to find the intersection of. Each array is treated as a set. |
 
@@ -200,7 +196,6 @@ The query output shows which categories are common between sales and different p
   "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
   "salesCategories": [
     "Sound Bars",
-    "Home Theater Projectors",
     "Game Controllers",
     "Remote Controls",
     "VR Games"
@@ -214,19 +209,15 @@ The query output shows which categories are common between sales and different p
     "Televisions"
   ],
   "secondPromotionCategories": [
-    "Game Controllers",
-    "Home Theater Projectors",
-    "Sound Bars",
-    "Media Players",
-    "Televisions",
-    "Projector Lamps"
+    "TV Mounts",
+    "Game Accessories",
+    "Portable Projectors",
+    "Projector Screens",
+    "Blu-ray Players",
+    "DVD Players"
   ],
   "commonSalesAndFirstPromotion": [],
-  "commonSalesAndSecondPromotion": [
-    "Sound Bars",
-    "Home Theater Projectors",
-    "Game Controllers"
-  ]
+  "commonSalesAndSecondPromotion": []
 }
 ```
 
