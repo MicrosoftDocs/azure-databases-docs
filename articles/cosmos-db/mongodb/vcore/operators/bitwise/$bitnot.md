@@ -1,24 +1,20 @@
 ---
-title: $bitNot (bitwise expression) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $bitNot
+titleSuffix: Overview of the $bitNot operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $bitNot operator performs a bitwise NOT operation on integer values and returns the result as an integer.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 08/03/2025
 ---
 
-# $bitNot (bitwise expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $bitNot
 
 The `$bitNot` operator performs a bitwise NOT operation on integer values. It inverts all the bits of the operand, turning 1s into 0s and 0s into 1s. The result is the bitwise complement of the input value.
 
 ## Syntax
-
-The syntax for the `$bitNot` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$bitNot` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`expression`** | An expression that evaluates to an integer. The `$bitNot` operator performs a bitwise NOT operation on this value. |
 
@@ -95,7 +91,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Basic bitwise NOT operation
 
-Perform a bitwise NOT operation on staff numbers to create inverted flags.
+The example aggregation query performs a bitwise inversion on the staff count fields for a specific store document.
 
 ```javascript
 db.stores.aggregate([
@@ -116,26 +112,22 @@ db.stores.aggregate([
 ])
 ```
 
-This produces the following output:
+The inverted values can be used for special permission flags, feature toggles, or bitmask operations. The bitwise NOT of 14 results are -15, and the bitwise NOT of 8 results in -9. The observed result is due to two's complement representation where ~n = -(n+1).
 
 ```json
-[
-  {
-    _id: '26afb024-53c7-4e94-988c-5eede72277d5',
-    name: 'First Up Consultants | Microphone Bazaar - South Lexusland',
-    fullTimeStaff: 14,
-    partTimeStaff: 8,
-    invertedFullTime: -15,
-    invertedPartTime: -9
-  }
-]
+{
+  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+  "fullTimeStaff": 14,
+  "partTimeStaff": 8,
+  "invertedFullTime": -15,
+  "invertedPartTime": -9
+}
 ```
 
-The bitwise NOT of 14 results in -15, and the bitwise NOT of 8 results in -9. This is due to two's complement representation where ~n = -(n+1).
+### Example 2: Using $bitNot with discount percentages
 
-### Example 2: Using $bitNot with Discount Percentages
-
-Apply bitwise NOT operations on discount percentages.
+The example aggregation query extracts and processes discount information for a specific store and applies a bitwise NOT operation on each discount percentage.
 
 ```javascript
 db.stores.aggregate([
@@ -157,31 +149,27 @@ db.stores.aggregate([
 ])
 ```
 
-This produces the following output:
-
-```json
-[
-  {
-    _id: '26afb024-53c7-4e94-988c-5eede72277d5',
-    name: 'First Up Consultants | Microphone Bazaar - South Lexusland',
-    eventName: 'Incredible Savings Showcase',
-    categoryName: 'Condenser Microphones',
-    discountPercentage: 20,
-    invertedDiscount: -21
-  },
-  {
-    _id: '26afb024-53c7-4e94-988c-5eede72277d5',
-    name: 'First Up Consultants | Microphone Bazaar - South Lexusland',
-    eventName: 'Incredible Savings Showcase',
-    categoryName: 'Microphone Stands',
-    discountPercentage: 17,
-    invertedDiscount: -18
-  }
-]
-```
-
+Applies $bitNot to produce bitwise-inverted discount values for potential flag checks or encoded logic. 
 The bitwise NOT operation inverts all bits: 20 becomes -21 and 17 becomes -18.
 
+```json
+{
+  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+  "eventName": "Incredible Savings Showcase",
+  "categoryName": "Microphone Stands",
+  "discountPercentage": 17,
+  "invertedDiscount": -18
+},
+{
+  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+  "eventName": "Incredible Savings Showcase",
+  "categoryName": "Condenser Microphones",
+  "discountPercentage": 20,
+  "invertedDiscount": -21
+}
+```
 
 ## Related content
 

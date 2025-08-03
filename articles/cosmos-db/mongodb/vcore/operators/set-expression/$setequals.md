@@ -1,24 +1,20 @@
 ---
-  title: $setEquals (set expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $setEquals
+  titleSuffix: Overview of the $setEquals operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $setEquals operator returns true if two sets have the same distinct elements.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 08/03/2025
 ---
 
-# $setEquals (set expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $setEquals
 
 The `$setEquals` operator returns `true` if two sets have the same distinct elements, regardless of order or duplicates. It treats arrays as sets, ignoring duplicate values and element order.
 
 ## Syntax
-
-The syntax for the `$setEquals` operator is as follows:
 
 ```javascript
 {
@@ -28,13 +24,13 @@ The syntax for the `$setEquals` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`array1, array2, ...`** | Arrays to compare for equality. You can specify two or more arrays. |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Let's understand the usage with sample json from the `stores` dataset.
 
 ```json
 {
@@ -135,7 +131,7 @@ db.stores.aggregate([
   {
     $group: {
       _id: null,
-      stores: { $push: "$$ROOT" }
+      stores: { $push: { _id: "$_id", name: "$name" }}
     }
   },
   {
@@ -176,7 +172,7 @@ The query returns `true` since both the stores have same staff structure.
 
 ### Example 3: Compare sets with duplicates
 
-Demonstrate that `$setEquals` ignores duplicates and order.
+The example demonstrates that `$setEquals` ignores duplicates and order.
 
 ```javascript
 db.stores.aggregate([
