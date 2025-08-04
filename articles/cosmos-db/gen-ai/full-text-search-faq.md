@@ -22,8 +22,8 @@ Full Text Search (sometimes called lexical search) in Azure Cosmos DB for NoSQL 
 ## What processing steps are done?
 Full text search in Azure Cosmos DB applies several text processing techniques to improve search relevance and efficiency. It uses stemming to reduce words to their root forms, [stopword removal](./stopwords.md) to eliminate common words like “the” and “and” that don’t add value to search results, and tokenization to break text into searchable units. These steps help ensure that queries return the most meaningful and relevant documents.
 
-## Does the full text index spport  wildcard paths?
-No, wildcard characters such as * and [] are not currently supported in full text container policies or indexes. Instead, the full text path should be defined explicitly.
+## Does the full text index support wildcard paths?
+No, wildcard characters such as * and [] aren't currently supported in full text container policies or indexes. Instead, the full text path should be defined explicitly.
 
 ## My full text queries have high latency and/or RU charge. 
 Several factors can contribute to high latency or RU consumption:
@@ -49,7 +49,7 @@ ORDER BY RANK FullTextScore(c.text, "mountian", "bicycle")
 ## Can I see the score returned by FullTextscore?
 As of today, you cannot project the FullTextScore in the `SELECT` clause of a query.
 
-# Why are my search results different than I see using separate search engine?
+# Why are my search results different than I expect to see?
 If you're comparing Full Text Search results in Azure Cosmos DB to those from a search engine that indexes your Cosmos DB data, the results may be slightly different. This is usually because of one of the following reasons:
 
 - Stopword Filtering: Cosmos DB automatically removes common words like “the” and “and,” which your search engine might include.
@@ -70,7 +70,7 @@ If you're comparing Full Text Search results in Azure Cosmos DB to those from a 
 - Use FullTextScore only in ORDER BY RANK clauses.
 
 ## Known limitations
-- Wildcard paths (*, []) are not supported in full text policies or indexes.
+- Wildcard paths (*, []) aren't supported in full text policies or indexes.
 - Using `FullTextScore` on phrases (strings with multiple words with spaces) may be slower than searching on each word separately.
 - Multi-language support is in preview and may have inconsistent performance. Stopword removal is currently only available for English (en-US).
 - Fuzzy search is also in preview and limited to a maximum edit distance of 2.
