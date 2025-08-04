@@ -49,7 +49,7 @@ ORDER BY RANK FullTextScore(c.text, "mountian", "bicycle")
 ## Can I see the score returned by FullTextscore?
 As of today, you cannot project the FullTextScore in the `SELECT` clause of a query.
 
-# Why are my search results different than I expect to see?
+## Why are my search results different than I expect to see?
 If you're comparing Full Text Search results in Azure Cosmos DB to those from a search engine that indexes your Cosmos DB data, the results may be slightly different. This is usually because of one of the following reasons:
 
 - Stopword Filtering: Cosmos DB automatically removes common words like “the” and “and,” which your search engine might include.
