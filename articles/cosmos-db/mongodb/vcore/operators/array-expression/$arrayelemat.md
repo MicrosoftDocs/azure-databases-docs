@@ -1,30 +1,30 @@
 ---
-  title: $arrayElemAt (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $arrayElemAt
+  titleSuffix: Overview of the $arrayElemAt operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $arrayElemAt returns the element at the specified array index.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 10/14/2024
+  ms.date: 07/28/2025
 ---
 
-# $arrayElemAt  (array expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $arrayElemAt
 
 The `$arrayElemAt` operator is used to return the element at the specified array index. This operator is helpful when you need to extract a specific element from an array within your documents.
 
 ## Syntax
 
-```json
-{ "$arrayElemAt": [ "<array>", "<idx>" ] }
+```javascript
+{
+  $arrayElemAt: ["<array>", <idx>]
+}
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<array>`**| The array reference from which the element is retrieved.|
 | **`<idx>`**| The index of the element to return. The index is zero-based. A negative index counts from the end of the array.|

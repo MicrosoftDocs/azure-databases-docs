@@ -1,24 +1,20 @@
 ---
-  title: $minute (date expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $minute
+  titleSuffix: Overview of the $minute operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $minute operator extracts the minute portion from a date value.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 08/04/2025
 ---
 
-# $minute (date expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $minute
 
 The `$minute` operator extracts the minute portion from a date value, returning a number between 0 and 59. This operator is commonly used for time-based analysis and scheduling operations.
 
 ## Syntax
-
-The syntax for the `$minute` operator is as follows:
 
 ```javascript
 {
@@ -28,13 +24,13 @@ The syntax for the `$minute` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, a Timestamp, or an ObjectId. If the expression resolves to `null` or is missing, `$minute` returns `null`. |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Let's understand the usage with sample json from the `stores` dataset.
 
 ```json
 {
@@ -55,7 +51,7 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 
 ### Example 1: Extract minutes from store opening date
 
-This example extracts the minute portion from the store opening date to analyze opening time patterns.
+The example extracts the minute portion from the store opening date to analyze opening time patterns.
 
 ```javascript
 db.stores.aggregate([

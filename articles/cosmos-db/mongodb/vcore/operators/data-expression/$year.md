@@ -1,20 +1,18 @@
 ---
-  title: $year (date expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $year
+  titleSuffix: Overview of the $year operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $year operator returns the year for a date as a four-digit number.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 06/20/2025
+  ms.date: 08/04/2025
 ---
 
-# $year (date expression)
+# $year
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$year` operator returns the year for a date as a four-digit number (e.g., 2024). If the date is null or missing, `$year` returns null.
+The `$year` operator returns the year for a date as a four-digit number (for example, 2024). If the date is null or missing, `$year` returns null.
 
 ## Syntax
 
@@ -26,7 +24,7 @@ The syntax for the `$year` operator is as follows:
 }
 ```
 
-Or with timezone specification:
+Or with timezone specification
 
 ```javascript
 {
@@ -39,14 +37,14 @@ Or with timezone specification:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`dateExpression`** | Any expression that resolves to a Date, Timestamp, or ObjectId. |
-| **`timezone`** | Optional. The timezone to use for the calculation. Can be an Olson Timezone Identifier (e.g., "America/New_York") or a UTC offset (e.g., "+0530"). |
+| **`timezone`** | Optional. The timezone to use for the calculation. Can be an Olson Timezone Identifier (for example, "America/New_York") or a UTC offset (for example, "+0530"). |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Let's understand the usage with sample json from the `stores` dataset.
 
 ```json
 {
@@ -108,7 +106,7 @@ The query returns the year the store was opened.
 
 ### Example 2: Find stores opened in specific year
 
-This example finds all stores that were opened in a specific year.
+The example finds all stores that were opened in a specific year.
 
 ```javascript
 db.stores.aggregate([
