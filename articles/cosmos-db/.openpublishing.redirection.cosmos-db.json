@@ -6757,7 +6757,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$in.md",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$in",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/comparison-query/$in",
       "redirect_document_id": false
     },
     {
