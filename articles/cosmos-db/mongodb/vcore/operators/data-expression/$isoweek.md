@@ -1,24 +1,20 @@
 ---
   title: $isoWeek (date expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  titleSuffix: Overview of the $dateDiff operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $isoWeek operator returns the week number of the year in ISO 8601 format, ranging from 1 to 53.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 08/04/2025
 ---
 
-# $isoWeek (date expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $isoWeek
 
 The `$isoWeek` operator returns the week number of the year in ISO 8601 format, ranging from 1 to 53. The operator accepts a date expression that resolves to a Date, Timestamp, or ObjectId. In ISO 8601, weeks start on Monday and the first week of the year is the week that contains the first Thursday of the year.
 
 ## Syntax
-
-The syntax for the `$isoWeek` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$isoWeek` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, Timestamp, or ObjectId. If the expression resolves to null or is missing, `$isoWeek` returns null. |
 

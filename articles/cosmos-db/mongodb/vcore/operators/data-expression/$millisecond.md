@@ -1,24 +1,20 @@
 ---
-  title: $millisecond (date expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $millisecond
+  titleSuffix: Overview of the $millisecond operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $millisecond operator extracts the milliseconds portion from a date value.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 08/04/2025
 ---
 
-# $millisecond (date expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $millisecond
 
 The `$millisecond` operator extracts the milliseconds portion from a date value, returning a number between 0 and 999. This operator is useful for precise timestamp analysis and filtering operations that require millisecond-level granularity.
 
 ## Syntax
-
-The syntax for the `$millisecond` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$millisecond` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, a Timestamp, or an ObjectId. If the expression resolves to `null` or is missing, `$millisecond` returns `null`. |
 
@@ -55,7 +51,7 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 
 ### Example 1: Extract milliseconds from store opening date
 
-This example extracts the milliseconds portion from the store opening date.
+The example extracts the milliseconds portion from the store opening date.
 
 ```javascript
 db.stores.aggregate([

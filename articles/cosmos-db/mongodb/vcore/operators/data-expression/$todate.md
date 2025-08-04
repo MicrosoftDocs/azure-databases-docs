@@ -1,24 +1,20 @@
 ---
-  title: $toDate (date expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $toDate
+  titleSuffix: Overview of the $toDate operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $toDate operator converts a value to a date.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 08/04/2025
 ---
 
-# $toDate (date expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $toDate
 
 The `$toDate` operator converts a value to a date. The operator accepts various input formats including strings, numbers (representing milliseconds since Unix epoch), ObjectId, and Timestamp values. This operator is essential for data transformation and type conversion operations.
 
 ## Syntax
-
-The syntax for the `$toDate` operator is as follows:
 
 ```javascript
 {
@@ -28,13 +24,13 @@ The syntax for the `$toDate` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`expression`** | An expression that can be converted to a date. Supported formats include: ISO date strings, milliseconds since Unix epoch (number), ObjectId, and Timestamp. If the expression can't be converted to a date, the operation returns an error. |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Let's understand the usage with sample json from the `stores` dataset.
 
 ```json
 {
@@ -64,7 +60,7 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 
 ### Example 1: Convert timestamp to date
 
-This example converts a Unix timestamp to a proper date format for better readability and date operations.
+The example converts a Unix timestamp to a proper date format for better readability and date operations.
 
 ```javascript
 db.stores.aggregate([
@@ -77,7 +73,6 @@ db.stores.aggregate([
     }
   }
 ])
-
 ```
 
 The query converts the timestamp field to a readable date format.

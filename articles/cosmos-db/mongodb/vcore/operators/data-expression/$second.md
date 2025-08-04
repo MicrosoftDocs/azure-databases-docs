@@ -1,24 +1,20 @@
 ---
-  title: $second (date expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $second
+  titleSuffix: Overview of the $second operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $second operator extracts the seconds portion from a date value.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 08/04/2025
 ---
 
-# $second (date expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $second
 
 The `$second` operator extracts the seconds portion from a date value, returning a number between 0 and 59. This operator is useful for precise timestamp analysis and time-sensitive operations that require second-level granularity.
 
 ## Syntax
-
-The syntax for the `$second` operator is as follows:
 
 ```javascript
 {
@@ -28,13 +24,13 @@ The syntax for the `$second` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, a Timestamp, or an ObjectId. If the expression resolves to `null` or is missing, `$second` returns `null`. |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Let's understand the usage with sample json from the `stores` dataset.
 
 ```json
 {
@@ -55,7 +51,7 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 
 ### Example 1: Extract seconds from store opening date
 
-This example extracts the seconds portion from the store opening date for precise timing analysis.
+The example extracts the seconds portion from the store opening date for precise timing analysis.
 
 ```javascript
 db.stores.aggregate([
@@ -78,7 +74,7 @@ The query returns the seconds portion (25) from the store opening timestamp.
 {
   "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
   "name": "Trey Research | Home Office Depot - Lake Freeda",
-  "storeOpeningDate": ISODate("2024-09-26T22:55:25.779Z"),
+  "storeOpeningDate": ISODate("2024-12-30T22:55:25.779Z"),
   "openingSecond": 25
 }
 ```
