@@ -1,32 +1,30 @@
 ---
-  title: $arrayToObject (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $arrayToObject
+  titleSuffix: Overview of the $arrayElemAt operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $arrayToObject allows converting an array into a single document.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 10/14/2024
+  ms.date: 07/28/2025
 ---
 
-# $arrayToObject (array expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $arrayToObject
 
 The `$arrayToObject` operator is used to convert an array into a single document. This operator is useful when you need to transform arrays of key-value pairs into a more structured document format.
 
 ## Syntax
 
-The syntax for the `$arrayToObject` operator is as follows:
-
-```json
-{ $arrayToObject: <array> }
+```javascript
+{
+  $arrayToObject: "<array>"
+}
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<array>`**| The array to be converted into a document. Each element in the array must be either: a) A two-element array where the first element is the field name and the second element is the field value. b) A document with exactly two fields, "k" and "v", where "k" is the field name and "v" is the field value.|
 

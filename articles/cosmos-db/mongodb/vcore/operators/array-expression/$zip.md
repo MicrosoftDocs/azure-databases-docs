@@ -1,20 +1,20 @@
 ---
-  title: $zip (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $zip
+  titleSuffix: Overview of the $zip operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $zip operator allows merging two or more arrays element-wise into a single array or arrays.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/16/2024
+  ms.date: 07/28/2025
 ---
 
 # $zip (array expression)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$zip` operator is used to merge two or more arrays element-wise into a single array of arrays. It is useful when you want to combine related elements from multiple arrays into a single array structure.
+The `$zip` operator is used to merge two or more arrays element-wise into a single array of arrays. It's useful when you want to combine related elements from multiple arrays into a single array structure.
 
 ## Syntax
 
@@ -114,7 +114,7 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce an output for individual array of arrays under `categoryWithSales` field. `useLongestLength` set to `true` would return the following output, while a value of `false` will remove the `Napkins` array from the output.
+The query returns individual array of arrays under `categoryWithSales` field. `useLongestLength` set to `true` would return the following output, while a value of `false` removes the `Napkins` array from the output.
 
 ```json
 {

@@ -1,18 +1,16 @@
 ---
-  title: $indexOfArray (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $indexOfArray
+  titleSuffix: Overview of the $indexOfArray operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $indexOfArray operator is used to search for an element in an array and return the index of the first occurrence of the element. 
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/11/2024
+  ms.date: 07/28/2025
 ---
 
-# $indexOfArray (array expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $indexOfArray
 
 The `$indexOfArray` operator is used to search for an element in an array and return the index of the first occurrence of the element. If the element isn't found, it returns `-1`. This operator is useful for queries where you need to determine the position of an element within an array. For example,  finding the index of a specific value or object in a list.
 
@@ -24,7 +22,7 @@ The `$indexOfArray` operator is used to search for an element in an array and re
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<array>`**| The array in which you want to search for the element.|
 | **`<searchElement>`**|  The element you're searching for in the array.|
@@ -33,7 +31,8 @@ The `$indexOfArray` operator is used to search for an element in an array and re
 
 ## Examples
 
-Let's understand the usage with the following sample json.
+Let's understand the usage with the sample json from `stores` collection.
+
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
@@ -95,7 +94,7 @@ Let's understand the usage with the following sample json.
 
 ### Example 1: Finding the index of the first occurrence
 
-To find the index of the category "DJ Headphones" in the `salesByCategory` array across all documents:
+The aggregation query finds the position (index) of a specific category name ("DJ Headphones") inside the `salesByCategory` array across the collection.
 
 ```javascript
 db.stores.aggregate([
@@ -117,16 +116,14 @@ db.stores.aggregate([
 This query would return the following document.
 
 ```json
-[
   { "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41", "index": -1 },
   { "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34", "index": -1 },
   { "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197", "index": -1 }
-]
 ```
 
 ### Example 2: Finding the index in a range
 
-To find documents having index between 3 and 5 for "Bargain Blitz Days" event in the `promotionEvents` array:
+This aggregation query finds the position of the "Bargain Blitz Days" promotion event inside the `promotionEvents` array within a specific range of indexes (3 to 5) and filters results along with returning the first three matching documents
 
 ```javascript
 db.stores.aggregate([
@@ -154,17 +151,14 @@ db.stores.aggregate([
 ])
 ```
 
-
-This query would return the following document.
+The query locates "Bargain Blitz Days" within a limited range (indexes 3–5) in each store’s promotions array, filters out stores without it in that range, and returns the index position for up to three stores.
 
 ```json
-[
   { "_id": "ced8caf0-051a-48ce-88d3-2935815261c3", "index": 3 },
   { "_id": "509be7ce-539a-41b5-8fde-b85fb3ef3faa", "index": 3 },
   { "_id": "d06e8136-9a7f-4b08-92c8-dc8eac73bad3", "index": 3 }
-]
-
 ```
 
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]

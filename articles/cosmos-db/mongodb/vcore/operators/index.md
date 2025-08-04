@@ -74,7 +74,7 @@ This article contains details for various supported operators you can use with A
 | --- | --- |
 | **[`$eq`](comparison-query/$eq.md)** | The `$eq` operator matches documents where the value of a field equals the specified value. |
 
-## Data expression
+## Date expression
 
 | | Description |
 | --- | --- |
