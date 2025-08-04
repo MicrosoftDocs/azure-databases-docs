@@ -41,26 +41,64 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
+  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
   "location": {
-    "lat": 60.7954,
-    "lon": -142.0012
+    "lat": 60.1441,
+    "lon": -141.5012
   },
   "staff": {
     "totalStaff": {
-      "fullTime": 18,
-      "partTime": 17
+      "fullTime": 2,
+      "partTime": 0
     }
   },
   "sales": {
-    "totalSales": 37701,
     "salesByCategory": [
       {
-        "categoryName": "Mattress Toppers",
-        "totalSales": 37701
+        "categoryName": "DJ Headphones",
+        "totalSales": 35921
       }
-    ]
+    ],
+    "fullSales": 3700
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Bargain Blitz Days",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 3,
+          "Day": 11
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 2,
+          "Day": 18
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "DJ Turntables",
+          "discountPercentage": 18
+        },
+        {
+          "categoryName": "DJ Mixers",
+          "discountPercentage": 15
+        }
+      ]
+    }
+  ],
+  "tag": [
+    "#ShopLocal",
+    "#SeasonalSale",
+    "#FreeShipping",
+    "#MembershipDeals"
+  ],
+  "company": "Lakeshore Retail",
+  "city": "Port Cecile",
+  "lastUpdated": {
+    "$date": "2024-12-11T10:21:58.274Z"
   }
 }
 ```
@@ -80,7 +118,19 @@ db.stores.updateOne(
 )
 ```
 
-This will add a `lastUpdated` field with the current date as a Date object.
+This will add a `lastUpdated` field with the current date as a Date object and produce the following result:
+
+```json
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+```
+
 
 ### Example 2: Setting current timestamp
 

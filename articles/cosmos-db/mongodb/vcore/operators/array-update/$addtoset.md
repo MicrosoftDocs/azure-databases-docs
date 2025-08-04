@@ -149,8 +149,9 @@ To add a new tag to the array of tags, run a query using the $addToSet operator 
 
 ```javascript
 db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-}, {
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
+    },
+    {
     "$addToSet": {
         "tag": "#ShopLocal"
     }
@@ -177,7 +178,7 @@ To add a new event to the `promotionEvents` array, run a query using the $addToS
 
 ```javascript
 db.stores.update({
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
 }, {
     "$addToSet": {
         "promotionEvents": {

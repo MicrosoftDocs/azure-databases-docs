@@ -39,7 +39,7 @@ The $collStats stage in the aggregation pipeline is used to return statistics ab
 
 To count documents in the store collection:
 ```javascript
-db.store.aggregate([
+db.stores.aggregate([
   {
     $collStats: {
       count: {}
@@ -49,11 +49,7 @@ db.store.aggregate([
 ```
 Sample output
 ```json
-[
-  {
-    "count": 1523
-  }
-]
+[ { ns: 'StoreData.stores', count: 41505 } ]
 ```
 
 This example returns the count of documents in the store collection.

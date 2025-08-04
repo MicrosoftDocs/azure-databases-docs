@@ -150,7 +150,7 @@ To deconstruct the salesByCategory array in the store document:
 ```json
 db.stores.aggregate([
   {
-    $unwind: "$store.sales.salesByCategory"
+    $unwind: "$sales.salesByCategory"
   }
 ])
 ```
@@ -195,7 +195,7 @@ To deconstruct the promotionEvents array and include the array index in the outp
 db.stores.aggregate([
   {
     $unwind: {
-      path: "$store.promotionEvents",
+      path: "$promotionEvents",
       includeArrayIndex: "eventIndex"
     }
   }
@@ -238,7 +238,7 @@ To deconstruct the discounts array within each promotion event and preserve docu
 db.stores.aggregate([
   {
     $unwind: {
-      path: "$store.promotionEvents.discounts",
+      path: "$promotionEvents.discounts",
       preserveNullAndEmptyArrays: true
     }
   }

@@ -46,79 +46,101 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
-  "name": "Trey Research | Home Office Depot - Lake Freeda",
-  "location": { "lat": -48.9752, "lon": -141.6816 },
-  "staff": { "employeeCount": { "fullTime": 12, "partTime": 19 } },
-  "sales": {
-    "salesByCategory": [ { "categoryName": "Desk Lamps", "totalSales": 37978 } ],
-    "revenue": 37978
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Crazy Deal Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
-        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
-      },
-      "discounts": [
-        { "categoryName": "Desks", "discountPercentage": 22 },
-        { "categoryName": "Filing Cabinets", "discountPercentage": 23 }
-      ]
+    _id: '905d1939-e03a-413e-a9c4-221f74055aac',
+    name: 'Trey Research | Home Office Depot - Lake Freeda',
+    location: { lat: -48.9752, lon: -141.6816 },
+    staff: { employeeCount: { fullTime: 12, partTime: 19 } },
+    sales: {
+      salesByCategory: [ { categoryName: 'Desk Lamps', totalSales: 37978 } ],
+      revenue: 37978
     },
-    {
-      "eventName": "Incredible Markdown Mania",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
-        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
+    promotionEvents: [
+      {
+        eventName: 'Crazy Deal Days',
+        promotionalDates: {
+          startDate: { Year: 2023, Month: 9, Day: 27 },
+          endDate: { Year: 2023, Month: 10, Day: 4 }
+        },
+        discounts: [
+          { categoryName: 'Desks', discountPercentage: 25 },
+          { categoryName: 'Filing Cabinets', discountPercentage: 23 }
+        ]
       },
-      "discounts": [
-        { "categoryName": "Monitor Stands", "discountPercentage": 20 },
-        { "categoryName": "Desks", "discountPercentage": 24 }
-      ]
-    }
-  ]
-}
+      {
+        eventName: 'Incredible Markdown Mania',
+        promotionalDates: {
+          startDate: { Year: 2023, Month: 12, Day: 26 },
+          endDate: { Year: 2024, Month: 1, Day: 2 }
+        },
+        discounts: [
+          { categoryName: 'Monitor Stands', discountPercentage: 20 },
+          { categoryName: 'Desks', discountPercentage: 24 }
+        ]
+      },
+      {
+        eventName: 'Major Deal Days',
+        promotionalDates: {
+          startDate: { Year: 2024, Month: 3, Day: 25 },
+          endDate: { Year: 2024, Month: 4, Day: 2 }
+        },
+        discounts: [
+          { categoryName: 'Office Accessories', discountPercentage: 9 },
+          { categoryName: 'Desks', discountPercentage: 13 }
+        ]
+      },
+      {
+        eventName: 'Blowout Bonanza',
+        promotionalDates: {
+          startDate: { Year: 2024, Month: 6, Day: 23 },
+          endDate: { Year: 2024, Month: 7, Day: 2 }
+        },
+        discounts: [
+          { categoryName: 'Office Chairs', discountPercentage: 24 },
+          { categoryName: 'Desk Lamps', discountPercentage: 19 }
+        ]
+      },
+      {
+        eventName: 'Super Saver Fiesta',
+        promotionalDates: {
+          startDate: { Year: 2024, Month: 9, Day: 21 },
+          endDate: { Year: 2024, Month: 10, Day: 1 }
+        },
+        discounts: [
+          { categoryName: 'Desks', discountPercentage: 5 },
+          { categoryName: 'Monitor Stands', discountPercentage: 10 }
+        ]
+      }
+    ],
+    company: 'Trey Research',
+    city: 'Lake Freeda',
+    storeOpeningDate: ISODate("2024-12-30T22:55:25.779Z"),
+    lastUpdated: Timestamp({ t: 1729983325, i: 1 })
+  }
 ```
 
-### Example 1: Updating Discount Percentage for a Specific Category
-To update the discount percentage for the "Laptops" category in the "Holiday Specials" promotion event.
+To update the discount percentage for the "Desk Lamps" category in the "Blowout Bonanza" promotion event.
 
 ```javascript
-db.collection.update(
-  { "store.storeId": "12345", "store.promotionEvents.eventName": "Holiday Specials" },
+db.stores.updateOne(
+  {
+    _id: "905d1939-e03a-413e-a9c4-221f74055aac",
+    "promotionEvents.eventName": "Blowout Bonanza"
+  },
   {
     $set: {
-      "store.promotionEvents.$[event].discounts.$[discount].discountPercentage": 18
+      "promotionEvents.$[event].discounts.$[discount].discountPercentage": 18
     }
   },
   {
     arrayFilters: [
-      { "event.eventName": "Holiday Specials" },
-      { "discount.categoryName": "Laptops" }
+      { "event.eventName": "Blowout Bonanza" },
+      { "discount.categoryName": "Desk Lamps" }
     ]
   }
 )
+
 ```
 
-### Example 2: Increasing Total Sales by Category
-To increase the total sales for the "Smartphones" category by $10,000.
-
-```javascript
-db.collection.update(
-  { "store.storeId": "12345" },
-  {
-    $inc: {
-      "store.sales.salesByCategory.$[category].totalSales": 10000
-    }
-  },
-  {
-    arrayFilters: [
-      { "category.categoryName": "Smartphones" }
-    ]
-  }
-)
-```
 
 ## Related content
 

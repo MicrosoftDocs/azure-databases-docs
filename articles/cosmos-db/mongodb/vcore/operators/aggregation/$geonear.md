@@ -134,7 +134,7 @@ db.stores.aggregate([
 ```
 This produces the following output:
 
-```javascript
+```JSON
 {
     _id: '643b2756-c22d-4063-9777-0945b9926346',
     name: 'Contoso, Ltd. | Outdoor Furniture Corner - Pagacfort',

@@ -33,112 +33,63 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
-    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
-    "location": {
-        "lat": -89.2384,
-        "lon": -46.4012
+    _id: '0fcc0bf0-ed18-4ab8-b558-9848e18058f4',
+    name: 'First Up Consultants | Beverage Shop - Satterfieldmouth',
+    location: { lat: -89.2384, lon: -46.4012 },
+    staff: { employeeCount: { fullTime: 2, partTime: 20 } },
+    sales: {
+      salesByCategory: [
+        { categoryName: 'Wine Accessories', totalSales: 34450 },
+        { categoryName: 'Bitters', totalSales: 39496 },
+        { categoryName: 'Rum', totalSales: 1734 }
+      ],
+      revenue: 75670
     },
-    "staff": {
-        "totalStaff": {
-            "fullTime": 8,
-            "partTime": 20
-        }
-    },
-    "sales": {
-        "totalSales": 75670,
-        "salesByCategory": [
-            {
-                "categoryName": "Wine Accessories",
-                "totalSales": 34440
-            },
-            {
-                "categoryName": "Bitters",
-                "totalSales": 39496
-            },
-            {
-                "categoryName": "Rum",
-                "totalSales": 1734
-            }
-        ]
-    },
-    "promotionEvents": [
-        {
-            "eventName": "Unbeatable Bargain Bash",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 23
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 7,
-                    "Day": 2
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 7
-                },
-                {
-                    "categoryName": "Bitters",
-                    "discountPercentage": 15
-                },
-                {
-                    "categoryName": "Brandy",
-                    "discountPercentage": 8
-                },
-                {
-                    "categoryName": "Sports Drinks",
-                    "discountPercentage": 22
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 19
-                }
-            ]
+    promotionEvents: [
+      {
+        eventName: 'Unbeatable Bargain Bash',
+        promotionalDates: {
+          startDate: { Year: 2024, Month: 6, Day: 23 },
+          endDate: { Year: 2024, Month: 7, Day: 2 }
         },
-        {
-            "eventName": "Steal of a Deal Days",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 21
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 29
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Organic Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "White Wine",
-                    "discountPercentage": 20
-                },
-                {
-                    "categoryName": "Sparkling Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 17
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 23
-                }
-            ]
-        }
-    ]
-}
+        discounts: [
+          { categoryName: 'Whiskey', discountPercentage: 7 },
+          { categoryName: 'Bitters', discountPercentage: 15 },
+          { categoryName: 'Brandy', discountPercentage: 8 },
+          { categoryName: 'Sports Drinks', discountPercentage: 22 },
+          { categoryName: 'Vodka', discountPercentage: 19 }
+        ]
+      },
+      {
+        eventName: 'Steal of a Deal Days',
+        promotionalDates: {
+          startDate: { Year: 2024, Month: 9, Day: 21 },
+          endDate: { Year: 2024, Month: 9, Day: 29 }
+        },
+        discounts: [
+          { categoryName: 'Organic Wine', discountPercentage: 19 },
+          { categoryName: 'White Wine', discountPercentage: 20 },
+          { categoryName: 'Sparkling Wine', discountPercentage: 19 },
+          { categoryName: 'Whiskey', discountPercentage: 17 },
+          { categoryName: 'Vodka', discountPercentage: 23 }
+        ]
+      },
+      {
+        eventName: 'Summer Sale',
+        promotionalDates: {
+          startDate: { Year: 2024, Month: 6, Day: 1 },
+          endDate: { Year: 2024, Month: 6, Day: 15 }
+        },
+        discounts: [ { categoryName: 'DJ Speakers', discountPercentage: 20 } ]
+      }
+    ],
+    company: 'First Up Consultants',
+    city: 'Satterfieldmouth',
+    storeOpeningDate: ISODate("2024-09-20T18:28:57.302Z"),
+    lastUpdated: Timestamp({ t: 1729448937, i: 1 }),
+    store: { promotionEvents: null },
+    tag: [ '#ShopLocal' ]
+  }
 ```
 
 ### Example 1: Skipping Documents in a Collection
@@ -185,12 +136,46 @@ To skip the first promotion event and then project the remaining events for a sp
 
 ```javascript 
 db.stores.aggregate([
-  { $match: { "store.storeId": "12345" } },
-  { $unwind: "$store.promotionEvents" },
+  { $match: { "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4", } },
+  { $unwind: "$promotionEvents" },
   { $skip: 1 },
-  { $project: { "store.promotionEvents": 1, _id: 0 } }
+  { $project: { "promotionEvents": 1, _id: 0 } }
 ])
 ``` 
+
+Sample output:
+
+```json
+[
+  {
+    promotionEvents: {
+      eventName: 'Steal of a Deal Days',
+      promotionalDates: {
+        startDate: { Year: 2024, Month: 9, Day: 21 },
+        endDate: { Year: 2024, Month: 9, Day: 29 }
+      },
+      discounts: [
+        { categoryName: 'Organic Wine', discountPercentage: 19 },
+        { categoryName: 'White Wine', discountPercentage: 20 },
+        { categoryName: 'Sparkling Wine', discountPercentage: 19 },
+        { categoryName: 'Whiskey', discountPercentage: 17 },
+        { categoryName: 'Vodka', discountPercentage: 23 }
+      ]
+    }
+  },
+  {
+    promotionEvents: {
+      eventName: 'Summer Sale',
+      promotionalDates: {
+        startDate: { Year: 2024, Month: 6, Day: 1 },
+        endDate: { Year: 2024, Month: 6, Day: 15 }
+      },
+      discounts: [ { categoryName: 'DJ Speakers', discountPercentage: 20 } ]
+    }
+  }
+]
+```
+
 
 ## Related content
 
