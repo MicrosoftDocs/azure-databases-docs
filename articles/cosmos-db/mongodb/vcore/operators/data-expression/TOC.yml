@@ -36,8 +36,6 @@
   href: $month.md
 - name: $second
   href: $second.md
-- name: $todate
-  href: $todate.md
 - name: $week
   href: $week.md
 - name: $year
