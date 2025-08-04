@@ -6741,7 +6741,7 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/data-expression/$todate.md.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/data-expression/$todate.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$todate",
       "redirect_document_id": false
     },
