@@ -6739,6 +6739,11 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/ru/introduction.md",
       "redirect_url": "/azure/cosmos-db/mongodb/overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/data-expression/$todate.md.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$todate",
+      "redirect_document_id": false
     }
   ]
 }
