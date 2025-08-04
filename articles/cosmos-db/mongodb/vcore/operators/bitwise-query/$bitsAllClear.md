@@ -103,11 +103,33 @@ Consider this sample document from the stores collection.
 
 ```javascript
 db.stores.find({
-  "store.storeId": { $bitsAllClear: 0b00000011 }
-})
+  "staff.totalStaff.fullTime": { $bitsAllClear: 0b00000011 }},
+  { _id: 1, name: 1, staff: 1 }
+).limit(2)
 ```
 
-This query would return documents where all the specified bit positions in the `storeId` field are clear.
+This uses the MongoDB bitwise operator $bitsAllClear, which matches documents where all bit positions specified in the bitmask are clear (0) in the `staff.totalStaff.fullTime` field.The bitmask 0b00000011 corresponds to the two least significant bits (bit 0 and bit 1).The query matches documents where both the least significant bits are 0 in the fullTime field.
+
+Sample output:
+
+```json
+[
+  {
+    _id: 'new-store-001',
+    name: 'TechWorld Electronics - Downtown Branch',
+    staff: { totalStaff: { fullTime: 0, partTime: 0 } }
+  },
+  {
+    _id: 'gaming-store-mall-001',
+    name: 'Gaming Paradise - Mall Location',
+    staff: {
+      totalStaff: { fullTime: 8, partTime: 12 },
+      manager: 'Alex Johnson',
+      departments: [ 'gaming', 'accessories', 'repairs' ]
+    }
+  }
+]
+```
 
 
 ## Related content

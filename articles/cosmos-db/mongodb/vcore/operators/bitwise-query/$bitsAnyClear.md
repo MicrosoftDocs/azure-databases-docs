@@ -98,11 +98,34 @@ Consider this sample document from the stores collection.
 
 ```javascript
 db.stores.find({
-  "store.staff.totalStaff.fullTime": { $bitsAnyClear: 0b00000111 }
-})
+  "staff.totalStaff.fullTime": { $bitsAnyClear: 0b00000111 }},
+  { _id: 1, name: 1, staff: 1 }
+).limit(2)
 ```
 
-In this example, `0b00000111` is the bitmask representing the first 3 bits. The query would return documents where any of the first 3 bits of the `totalStaff.fullTime` field are clear.
+This uses the bitwise operator $bitsAnyClear, which matches documents where any of the bits specified in the bitmask are clear (0) in the `staff.totalStaff.fullTime` field.The bitmask 0b00000111 corresponds to the 3 least significant bits (bits 0, 1, and 2). The query matches documents where at least one of these three bits is 0 in the fullTime field.
+
+Sample output:
+
+```json
+[
+  {
+    _id: 'new-store-001',
+    name: 'TechWorld Electronics - Downtown Branch',
+    staff: { totalStaff: { fullTime: 0, partTime: 0 } }
+  },
+  {
+    _id: 'gaming-store-mall-001',
+    name: 'Gaming Paradise - Mall Location',
+    staff: {
+      totalStaff: { fullTime: 8, partTime: 12 },
+      manager: 'Alex Johnson',
+      departments: [ 'gaming', 'accessories', 'repairs' ]
+    }
+  }
+]
+```
+
 
 ## Related content
 

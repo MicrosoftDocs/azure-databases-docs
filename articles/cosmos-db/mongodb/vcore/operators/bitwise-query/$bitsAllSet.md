@@ -96,27 +96,36 @@ Consider this sample document from the stores collection.
   }
 }
 ```
-
-
-### Example 1: Find stores with specific bits set in `storeId`
+This uses the bitwise operator $bitsAllSet, which matches documents where all bit positions specified in the bitmask are set to 1 in the `staff.totalStaff.fullTime` field. The bitmask 0b00000011 corresponds to the two least significant bits (bit 0 and bit 1). The query matches documents where both bits 0 and 1 are set to 1 in the fullTime field.
 
 ```javascript
-db.stores.find({
-  "store.storeId": { $bitsAllSet: 0b00000011 }
-})
+db.stores.find(
+  { "staff.totalStaff.fullTime": { $bitsAllSet: 0b00000011 } },
+  { _id: 1, name: 1, staff: 1 }
+).limit(2)
+
 ```
+Sample output:
 
-This query would return documents where the `storeId` field has both the first and second bits set.
+```json
+[
+  {
+    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
+    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
+    staff: { totalStaff: { fullTime: 19, partTime: 20 } }
+  },
+  {
+    _id: 'f2a8c190-28e4-4e14-9d8b-0256e53dca66',
+    name: 'Fabrikam, Inc. | Car Accessory Outlet - West Adele',
+    staff: {
+      maxStaffCapacity: 25,
+      employeeCount: { fullTime: 10, partTime: 2 },
+      totalStaff: { fullTime: 3, partTime: 2 }
+    }
+  }
+]
 
-### Example 2: Find stores with specific bits set in `totalStaff.fullTime`
-
-```javascript
-db.stores.find({
-  "store.staff.totalStaff.fullTime": { $bitsAllSet: 0b00001111 }
-})
 ```
-
-This query would return documents where the `fullTime` field in `totalStaff` has the first 4 bits set.
 
 
 ## Related content

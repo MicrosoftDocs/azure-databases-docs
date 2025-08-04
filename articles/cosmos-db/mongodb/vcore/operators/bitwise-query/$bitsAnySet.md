@@ -94,15 +94,40 @@ Consider this sample document from the stores collection.
     "$date": "2024-12-11T10:21:58.274Z"
   }
 }
-
+```
 ### Example 1: Querying for Documents with Specific Bit Positions Set
 
-To find all stores where any of the bit positions 1 or 3 in the `storeId` field are set to `1`.
+This uses the bitwise operator $bitsAnySet, which matches documents where any of the bit positions specified in the array are set to **1** in the `staff.totalStaff.fullTime` field.The positions 1,correspond to the second bit (bit 1) and the fourth bit (bit 3), counting bits from right to left starting at 0.The query matches documents where either bit 1 or bit 3 (or both) are set to 1 in the fullTime field.
 
 ```javascript
 db.stores.find({
-  "store.storeId": { $bitsAnySet: [1, 3] }
-})
+  "staff.totalStaff.fullTime": { $bitsAnySet: [1, 3] }},
+  { _id: 1, name: 1, staff: 1 }
+).limit(2)
+```
+Sample output:
+
+```JSON
+[
+  {
+    _id: 'gaming-store-mall-001',
+    name: 'Gaming Paradise - Mall Location',
+    staff: {
+      totalStaff: { fullTime: 8, partTime: 12 },
+      manager: 'Alex Johnson',
+      departments: [ 'gaming', 'accessories', 'repairs' ]
+    }
+  },
+  {
+    _id: '26afb024-53c7-4e94-988c-5eede72277d5',
+    name: 'First Up Consultants | Microphone Bazaar - South Lexusland',
+    staff: {
+      minStaffRequired: 15,
+      employeeCount: { fullTime: 10, partTime: 8 },
+      totalStaff: { fullTime: 14, partTime: 8 }
+    }
+  }
+]
 ```
 
 ### Example 2: Querying for Documents with Bit Positions in Nested Fields
@@ -118,6 +143,22 @@ db.stores.find({
     }
   }
 })
+```
+Sample output:
+
+```JSON
+[
+  {
+    _id: 'e2a23707-b166-4df4-ad76-ea3e300d27ad',
+    name: 'Contoso, Ltd. | Electronics Corner - Lake Maryse',
+    staff: { employeeCount: { fullTime: 8, partTime: 1 } }
+  },
+  {
+    _id: '7bc85b2e-d6c2-4341-a841-9020dffad454',
+    name: 'Contoso, Ltd. | Electronics Pantry - North Monserrate',
+    staff: { employeeCount: { fullTime: 18, partTime: 10 } }
+  }
+]
 ```
 
 ## Related content

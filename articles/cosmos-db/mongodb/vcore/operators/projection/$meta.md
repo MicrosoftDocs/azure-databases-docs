@@ -139,16 +139,18 @@ db.stores.find(
 To match the text search criteria and include a `score` field containing the text search score.
 
 ```json
-{
-    "_id": "7a9aa41e-95bd-43c1-96cd-bcff0c3c33fb",
-    "name": "Fabrikam, Inc",
-    "score": 2
-},
-{
-    "_id": "ee51cc4c-6770-4bb7-bb61-cd0cc44cb387",
-    "name": "Proseware, Inc",
-    "score": 2
-}
+[
+  {
+    _id: 'cf1448e9-5493-49b5-95da-ab8a105b5240',
+    name: 'Tailwind Traders | Camera Market - Wolfmouth',
+    score: 4
+  },
+  {
+    _id: '4fd389af-4693-4c02-93cf-0d80ae8ace07',
+    name: 'Wide World Importers | Camera Collection - South Cordelia',
+    score: 4
+  }
+]
 ```
 
 ## Limitation
