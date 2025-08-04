@@ -6764,6 +6764,11 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$size.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-query/$size",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$objectToArray.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/object-expression/$objecttoarray",
+      "redirect_document_id": false
     }
   ]
 }
