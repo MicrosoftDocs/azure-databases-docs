@@ -10,8 +10,6 @@
   href: $indexofarray.md  
 - name: $isArray
   href: $isarray.md
-- name: $objectToArray
-  href: $objecttoarray.md
 - name: $reverseArray
   href: $reversearray.md
 - name: $map
