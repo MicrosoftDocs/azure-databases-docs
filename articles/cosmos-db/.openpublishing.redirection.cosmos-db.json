@@ -6739,6 +6739,41 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/ru/introduction.md",
       "redirect_url": "/azure/cosmos-db/mongodb/overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$firstn.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$firstn",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$lastn.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$lastn",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$minn.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$minn",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$maxn.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$maxn",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$in.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/comparison-query/$in",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$size.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-query/$size",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$objectToArray.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/object-expression/$objectToArray",
+      "redirect_document_id": false
     }
   ]
 }

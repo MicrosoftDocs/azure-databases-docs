@@ -1,24 +1,20 @@
 ---
-  title: $sortArray (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $sortArray
+  titleSuffix: Overview of the $sortArray operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $sortArray operator helps in sorting the elements in an array.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/16/2024
+  ms.date: 07/28/2025
 ---
 
-# $sortArray (array expression)
+# $sortArray
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$sortArray` operator is used to sort the elements of an array. This operator can be particularly useful when you need to sort arrays within your documents based on specific fields or criteria. It can be applied to arrays of embedded documents or simple arrays of values.
+The `$sortArray` operator is used to sort the elements of an array. The operator can be useful when you need to sort arrays within your documents based on specific fields or criteria. It can be applied to arrays of embedded documents or simple arrays of values.
 
 ## Syntax
-
-The syntax for the `$sortArray` operator is as follows:
 
 ```javascript
 {
@@ -31,10 +27,10 @@ The syntax for the `$sortArray` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`input`** | The array to be sorted. |
-| **`sortBy`** | Specifies the sort order. This can be a single field or multiple fields with their corresponding sort order (1 for ascending, -1 for descending). |
+| **`sortBy`** | Specifies the sort order. It can be a single field or multiple fields with their corresponding sort order (1 for ascending, -1 for descending). |
 
 ## Example
 
