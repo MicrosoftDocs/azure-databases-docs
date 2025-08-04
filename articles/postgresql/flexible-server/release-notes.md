@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 08/04/2025
+ms.date: 07/15/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -22,7 +22,6 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: July 2025
 - General availability
     - [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17) is now supported, including in-place major version upgrades.
-    - Support for latest [minor versions](concepts-supported-versions.md) 17.6, 16.10, 15.14, 14.19 and 13.22. <sup>$</sup>
     - [Malaysia West region](./overview.md#azure-regions)
     - [Chile Central region](./overview.md#azure-regions)
 - Preview
