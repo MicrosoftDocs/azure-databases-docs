@@ -5,12 +5,12 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 08/01/2025
+ms.date: 08/04/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
 
-# Configure customer-managed key for data encryption at rest for an Azure Cosmos DB for MongoDB vCore cluster
+# Configure customer-managed key (CMK) for data encryption at rest for an Azure Cosmos DB for MongoDB vCore cluster
 
 [!INCLUDE[MongoDB vCore](./includes/notice-customer-managed-key-preview.md)]
 
@@ -195,6 +195,139 @@ Identities passed as parameters, if they exist and are valid, are automatically 
 ## Change data encryption mode on existing clusters
 
 The only point at which you can decide if you want to use a service-managed key or a customer-managed key (CMK) for data encryption, is at cluster creation time. Once you make that decision and create the cluster, you can't switch between the two options. To create a copy of your Azure Cosmos DB for MongoDB vCore cluster with a different encryption option, you can either create a replica cluster or perform a cluster restore and select the new encryption mode during replica cluster or restored cluster creation.
+
+### Enable or disable customer-managed key (CMK) data encryption during replica cluster creation
+
+Follow these steps to create a replica cluster with CMK or SMK data encryption to enable or disable CMK on a replica cluster.
+
+#### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+
+1. On the cluster sidebar, under **Settings**, select **Global distribution**.
+
+
+1. Select **Add new read replica**.
+
+
+1. Provide a replica cluster name in the **Read replica** name field.
+
+
+1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
+
+    > [!NOTE]  
+    > If you need to have a cluster with a different data encryption mode in the same region, consider performing a [cluster restore](#enable-or-disable-customer-managed-key-data-encryption-during-cluster-restore).
+
+
+1. In **Data encryption**, select the **Customer-managed key** to enable CMK or **Service-managed key** to disable CMK on the replica cluster.
+
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the customer-managed encryption key during replica cluster creation." lightbox="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png":::
+
+1. In **User-assigned managed identity** section select **Change identity**.
+
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-managed-identity.png" alt-text="Screenshot that shows how to select the user-assigned managed identity to access the data encryption key during replica cluster creation." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-select-managed-identity.png":::
+
+1. In the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
+
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the user-assigned managed identity, which the cluster uses to access the data encryption key, during replica cluster creation." lightbox="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png":::
+
+1. Select **Add**.
+
+    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity, which the cluster uses to access the data encryption key, during replica cluster creation." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png":::
+
+1. In the **Key selection method**, choose **Select a key** .
+
+ 
+1. Verify your selection and select the Save button to confirm replica creation.
+
+
+#### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+
+1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
+
+    ```json
+    {
+        "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+              "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName": {}
+            }
+          },
+      "location": "$regionName",
+          "properties": {
+            "encryption": {
+              "customerManagedKeyEncryption": {
+                "keyEncryptionKeyIdentity": {
+                  "identityType": "UserAssignedIdentity",
+                  "userAssignedIdentityResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName"
+                },
+                "keyEncryptionKeyUrl": "$encryptionKeyUrl"
+              }
+            }
+          }
+    }
+    ```
+1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
+
+    ```powershell
+    # Define your variables
+    $subscriptionId="00000000-0000-0000-0000-000000000000"
+    $resourceGroup="resourceGroupName"
+    $mongoClustersName="clusterName"
+        
+    # Execute the az rest command to make REST API call
+    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
+    ```
+
+---
+
+
+### Enable or disable customer-managed key data encryption during cluster restore
+
+#### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+
+
+1. On the cluster sidebar, under **Settings**, select **Point In Time Restore**.
+
+
+#### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+
+1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
+
+    ```json
+    {
+        "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+              "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName": {}
+            }
+          },
+      "location": "$regionName",
+          "properties": {
+            "encryption": {
+              "customerManagedKeyEncryption": {
+                "keyEncryptionKeyIdentity": {
+                  "identityType": "UserAssignedIdentity",
+                  "userAssignedIdentityResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName"
+                },
+                "keyEncryptionKeyUrl": "$encryptionKeyUrl"
+              }
+            }
+          }
+    }
+    ```
+1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
+
+    ```powershell
+    # Define your variables
+    $subscriptionId="00000000-0000-0000-0000-000000000000"
+    $resourceGroup="resourceGroupName"
+    $mongoClustersName="clusterName"
+        
+    # Execute the az rest command to make REST API call
+    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
+    ```
+
+---
+
 
 ## Related content
 
