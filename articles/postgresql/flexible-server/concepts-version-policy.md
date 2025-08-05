@@ -171,7 +171,7 @@ Azure is extending support for PostgreSQL 11 on Azure Database for PostgreSQL fl
 
 This extension of PostgreSQL 11 support is part of Azure's commitment to providing a seamless migration path and ensuring continued functionality for users.
 
-## Retired PostgreSQL engine versions aren't supported in Azure Database for PostgreSQL
+## Retired PostgreSQL engine versions not supported in Azure Database for PostgreSQL
 
 You can continue to use the retired version in Azure Database for PostgreSQL flexible server. However, after the retirement date for each PostgreSQL database version, the following restrictions apply:
 
