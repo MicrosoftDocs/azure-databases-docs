@@ -1,20 +1,18 @@
 ---
-  title: $map (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $map
+  titleSuffix: Overview of the $map operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $map operator allows applying an expression to each element in an array.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/16/2024
+  ms.date: 07/28/2025
 ---
 
-# $map (array expression)
+# $map
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$map` operator in MongoDB is used to apply an expression to each element in an array and return an array with the applied results. This operator is useful for transforming arrays within documents, such as modifying each element or extracting specific fields.
+The `$map` operator is used to apply an expression to each element in an array and return an array with the applied results. This operator is useful for transforming arrays within documents, such as modifying each element or extracting specific fields.
 
 ## Syntax
 
@@ -30,9 +28,9 @@ The `$map` operator in MongoDB is used to apply an expression to each element in
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`input`** | The array to which the expression will be applied. |
+| **`input`** | The array processed by the expression. |
 | **`as`** | The variable name for each element in the array. |
 | **`in`** | The expression to apply to each element. |
 

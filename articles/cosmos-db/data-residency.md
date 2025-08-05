@@ -1,6 +1,6 @@
 ---
 title: How to meet data residency requirements in Azure Cosmos DB
-description: learn how to meet data residency requirements in Azure Cosmos DB for your data and backups to remain in a single region.
+description: Learn how to meet data residency requirements in Azure Cosmos DB for your data and backups to remain in a single region.
 author: kanshiG
 ms.service: azure-cosmos-db
 ms.topic: legal
@@ -27,12 +27,15 @@ In Azure Cosmos DB, you must explicitly configure the cross-region data replicat
 
 Analytical store is resident by default as it is stored in either locally redundant or zone redundant storage. To learn more, see the [analytical store](analytical-store-introduction.md) article.
 
+## Residency requirements for Azure Cloud Shell
+
+Azure Cloud Shell service is a non-regional service. It doesn't store any customer data, but when used through the Azure Portal may process shell commands and responses outside of the Geo for the sole purpose of providing the Shell experience inside the Portal. To learn more, see the [Azure Cloud Shell](https://aka.ms/cloudshell) article.
 
 ## Use Azure Policy to enforce the residency requirements
 
 If you have data residency requirements that require you to keep all your data in a single Azure region, you can enforce zone-redundant or locally redundant backups for your account by using an Azure Policy.  You can also enforce a policy that the Azure Cosmos DB accounts are not geo-replicated to other regions.
 
-Azure Policy is a service that you can use to create, assign, and manage policies that apply rules to Azure resources. Azure Policy helps you to keep these resources compliant with your corporate standards and service level agreements. For more information, see how to use [Azure Policy](policy.md) to implement governance and controls for Azure Cosmos DB resources
+Azure Policy is a service that you can use to create, assign, and manage policies that apply rules to Azure resources. Azure Policy helps you to keep these resources compliant with your corporate standards and service level agreements. For more information, see how to use [Azure Policy](policy.md) to implement governance and controls for Azure Cosmos DB resources.
 
 ## Next steps
 

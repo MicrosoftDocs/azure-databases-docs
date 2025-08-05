@@ -1,24 +1,20 @@
 ---
-  title: $isoDayOfWeek (date expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $isoDayOfWeek
+  titleSuffix: Overview of the $dateDiff operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $isoDayOfWeek operator returns the weekday number in ISO 8601 format, ranging from 1 (Monday) to 7 (Sunday).
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 08/04/2025
 ---
 
-# $isoDayOfWeek (date expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $isoDayOfWeek
 
 The `$isoDayOfWeek` operator returns the weekday number in ISO 8601 format, ranging from 1 (Monday) to 7 (Sunday). The operator accepts a date expression that resolves to a Date, Timestamp, or ObjectId.
 
 ## Syntax
-
-The syntax for the `$isoDayOfWeek` operator is as follows:
 
 ```javascript
 {
@@ -28,13 +24,13 @@ The syntax for the `$isoDayOfWeek` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, Timestamp, or ObjectId. If the expression resolves to null or is missing, `$isoDayOfWeek` returns null. |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Let's understand the usage with sample json from the `stores` dataset.
 
 ```json
 {

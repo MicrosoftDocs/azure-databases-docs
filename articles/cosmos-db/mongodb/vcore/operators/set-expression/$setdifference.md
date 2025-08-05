@@ -1,6 +1,6 @@
 ---
-  title: $setDifference (set expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $setDifference
+  titleSuffix: Overview of the $setDifference operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $setDifference operator returns a set with elements that exist in the first set but not in the second set.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,15 +10,11 @@
   ms.date: 06/09/2025
 ---
 
-# $setDifference (set expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $setDifference
 
 The `$setDifference` operator returns a set with elements that exist in the first set but not in the second set. It treats arrays as sets, ignoring duplicate values and element order.
 
 ## Syntax
-
-The syntax for the `$setDifference` operator is as follows:
 
 ```javascript
 {
@@ -28,14 +24,14 @@ The syntax for the `$setDifference` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`array1`** | The first array to compare. Elements unique to this array are returned. |
 | **`array2`** | The second array to compare against. Elements that exist in both arrays are excluded from the result. |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Let's understand the usage with sample json from the `stores` dataset.
 
 ```json
 {
@@ -122,7 +118,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query output shows categories which are sold but never discounted.
+The query output shows categories, which are sold but never discounted.
 
 ```json
 {
@@ -130,7 +126,6 @@ The query output shows categories which are sold but never discounted.
   "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
   "soldCategories": [
     "Sound Bars",
-    "Home Theater Projectors",
     "Game Controllers",
     "Remote Controls",
     "VR Games"
@@ -155,7 +150,7 @@ The query output shows categories which are sold but never discounted.
 
 ### Example 2: Compare staff distribution types
 
-Find the difference between two hypothetical staff requirement lists.
+The example demonstrates how to find the difference between two hypothetical staff requirement lists.
 
 ```javascript
 db.stores.aggregate([

@@ -1,6 +1,6 @@
 ---
-  title: $fill (aggregation)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $fill
+  titleSuffix: Overview of the $fill operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $fill stage allows filling missing values in documents based on specified methods and criteria.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $fill (aggregation)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $fill
 
 The `$fill` stage is used to fill missing or null values in documents within the aggregation pipeline. It provides various methods to populate missing data, including using static values, linear interpolation, or values from previous/next documents.
 
@@ -37,7 +35,7 @@ The syntax for the `$fill` stage is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`sortBy`** | Specifies the sort order for documents when applying fill methods that depend on document order. |
 | **`partitionBy`** | Optional. Groups documents into partitions. Fill operations are applied within each partition separately. |
@@ -55,7 +53,7 @@ The syntax for the `$fill` stage is as follows:
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -112,7 +110,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Fill missing values with static value
 
-Suppose you want to fill missing `totalSales` values in the `salesByCategory` array with a default value of 0.
+To fill missing `totalSales` values in the `salesByCategory` array with a default value of 0.
 
 ```javascript
 db.stores.aggregate([
@@ -138,7 +136,7 @@ This will ensure all category entries have a `totalSales` value, replacing any m
 
 ### Example 2: Fill missing staff data using last observation carried forward
 
-Fill missing part-time staff data using the last known value within each store group.
+To fill missing part-time staff data using the last known value within each store group.
 
 ```javascript
 db.stores.aggregate([
@@ -161,7 +159,7 @@ db.stores.aggregate([
 
 ### Example 3: Fill missing discount percentages with average value
 
-Fill missing discount percentages with the average discount percentage across all stores.
+To fill missing discount percentages with the average discount percentage across all stores.
 
 ```javascript
 db.stores.aggregate([

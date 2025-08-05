@@ -1,24 +1,20 @@
 ---
-  title: $setUnion (set expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $setUnion
+  titleSuffix: Overview of the $setUnion operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $setUnion operator returns an array containing all unique elements from the input arrays.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 08/03/2025
 ---
 
-# $setUnion (set expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $setUnion
 
 The `$setUnion` operator returns an array containing all unique elements from the input arrays. It treats arrays as sets, removing duplicates and ignoring element order. The result contains each unique element only once, regardless of how many times it appears across the input arrays.
 
 ## Syntax
-
-The syntax for the `$setUnion` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$setUnion` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<array1>, <array2>, ...`** | Two or more arrays to be combined. Each array is treated as a set, and duplicates are removed from the final result. |
 

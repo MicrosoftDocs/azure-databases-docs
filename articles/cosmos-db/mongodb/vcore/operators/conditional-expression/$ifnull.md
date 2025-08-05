@@ -1,6 +1,6 @@
 ---
-  title: $ifNull (conditional expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $ifNull
+  titleSuffix: Overview of the $ifNull operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $ifNull operator is used to evaluate an expression and return a specified value if the expression resolves to null.  
   author: sandeepsnairms
   ms.author: sandnair
@@ -10,7 +10,7 @@
   ms.date: 09/27/2024
 ---
 
-# $ifNull (conditional expression)
+# $ifNull
 
 The `$ifNull` operator is used to evaluate an expression and return a specified value if the expression resolves to `null`. This operator is useful in scenarios where you want to provide a default value for fields that may not exist or may have `null` values.
 
@@ -22,14 +22,15 @@ The `$ifNull` operator is used to evaluate an expression and return a specified 
 
 ### Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<expression>`**| The expression to evaluate.|
 | **`<replacement-value>`**| The value to return if the expression evaluates to `null`|
 
 ## Example
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
+
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
@@ -129,6 +130,5 @@ This query would return the following document.
 ]
 
 ```
-
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]

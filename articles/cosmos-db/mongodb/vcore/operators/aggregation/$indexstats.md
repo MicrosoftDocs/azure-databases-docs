@@ -1,6 +1,6 @@
 ---
-  title: $indexStats (aggregation)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $indexStats
+  titleSuffix: Overview of the $group operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $indexStats stage returns usage statistics for each index in the collection.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,9 +10,7 @@
   ms.date: 06/20/2025
 ---
 
-# $indexStats (aggregation)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $indexStats
 
 The `$indexStats` aggregation stage returns usage statistics for each index in the collection. This stage is useful for analyzing index performance, identifying unused indexes, and optimizing query performance.
 
@@ -32,9 +30,7 @@ The `$indexStats` stage takes no parameters.
 
 ## Example
 
-### Example 1: Get index usage statistics for stores collection
-
-The example shows how to retrieve usage statistics for all indexes on the `stores` collection.
+To retrieve usage statistics for all indexes on the stores collection.
 
 ```javascript
 db.stores.aggregate([

@@ -7,10 +7,10 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 11/01/2024
+  ms.date: 08/03/2025
 ---
 
-# $mergeObjects as object expression operator
+# $mergeObjects
 
 The `$mergeObjects` operator combines multiple documents into a single document. The mergeObjects operation is used in aggregation pipelines to merge fields from different documents or add one or more fields to an existing document. The operator overwrites fields in the target document with fields from the source document when conflicts occur.
 
@@ -23,13 +23,14 @@ The `$mergeObjects` operator combines multiple documents into a single document.
 ```
 
 ## Parameters
+
 | Parameter | Description |
 | --- | --- |
 | **`document1, document2`** | The documents to be merged. The documents can be specified as field paths, subdocuments, or constants. |
 
 ## Examples
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
@@ -143,22 +144,30 @@ Consider this sample document from the stores collection.
 
 ### Example 1 - Merging documents as an accumulator to group documents by the sales subdocument
 
+The query is an aggregation pipeline that uses $mergeObjects to merge all sales subdocuments per city for a specific company.
+
 ```javascript
-db.stores.aggregate([{
-    "$match": {
-        "company": "Fourth Coffee"
+db.stores.aggregate([
+  {
+    $match: {
+      company: "Fourth Coffee"
     }
-}, {
-    "$group": {
-        "_id": "$city",
-        "mergedSales": {
-            "$mergeObjects": "$sales"
-        }
+  },
+  {
+    $group: {
+      _id: "$city",
+      mergedSales: {
+        $mergeObjects: "$sales"
+      }
     }
-}])
+  },
+  {
+    $limit: 2   // returns only the first 3 grouped cities
+  }
+])
 ```
 
-The first two results returned by this query are:
+The query groups store documents by city for the company "Fourth Coffee" and merges their sales fields into a single object per city.
 
 ```json
 [

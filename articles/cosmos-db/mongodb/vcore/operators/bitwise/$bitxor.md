@@ -1,24 +1,20 @@
 ---
-  title: $bitXor (bitwise expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $bitXor
+  titleSuffix: Overview of the $bitXor operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $bitXor operator performs a bitwise XOR operation on integer values.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 08/03/2025
 ---
 
-# $bitXor (bitwise expression)
+# $bitXor
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$bitXor` operator performs a bitwise exclusive OR (XOR) operation on integer values. The XOR operation returns 1 for each bit position where the corresponding bits of the operands are different, and 0 where they are the same.
+The `$bitXor` operator performs a bitwise exclusive OR (XOR) operation on integer values. The XOR operation returns 1 for each bit position where the corresponding bits of the operands are different, and 0 where they're the same.
 
 ## Syntax
-
-The syntax for the `$bitXor` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$bitXor` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`expression1, expression2, ...`** | Expressions that resolve to integer values. The operator performs XOR operations on these values in sequence. |
 
@@ -107,7 +103,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Basic XOR operation
 
-Suppose you want to perform a bitwise XOR operation between full-time and part-time staff numbers.
+The query uses an aggregation pipeline to calculate between full-time and part-time staff counts for a specific store.
 
 ```javascript
 db.stores.aggregate([
@@ -125,25 +121,21 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce the following output:
+The output document contains the store details along with a computed field. The XOR operation between 19 (binary: 10011) and 20 (binary: 10100) results in 7 (binary: 00111).
 
 ```json
-[
-  {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    fullTimeStaff: 20,
-    partTimeStaff: 19,
-    staffXor: 7
-  }
-]
+{
+  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+  "fullTimeStaff": 19,
+  "partTimeStaff": 20,
+  "staffXor": 7
+}
 ```
-
-The XOR operation between 19 (binary: 10011) and 20 (binary: 10100) results in 7 (binary: 00111).
 
 ### Example 2: XOR with Multiple Values
 
-You can perform XOR operations with multiple discount percentages from promotion events.
+The aggregation pipeline computes the bitwise XOR of all discount percentages for the `Discount Delight Days` event of a specific store.
 
 ```javascript
 db.stores.aggregate([
@@ -182,20 +174,17 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce the following output:
+The output represents the bitwise XOR calculation of all discount percentages for the `Discount Delight Days` event.
 
 ```json
-[
-  {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    eventName: 'Discount Delight Days',
-    discountPercentages: [ 22, 23, 10, 10, 9, 24 ],
-    xorResult: Long("16")
-  }
-]
+{
+  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+  "eventName": "Discount Delight Days",
+  "discountPercentages": [22, 23, 10, 10, 9, 24],
+  "xorResult": { "$numberLong": "16" }
+}
 ```
-
 
 ## Related content
 

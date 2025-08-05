@@ -1,12 +1,12 @@
 ---
-title: Use unique keys in Azure Cosmos DB
+title: Use Unique Keys in Azure Cosmos DB
 description: Learn how to define and use unique keys for an Azure Cosmos DB database. This article also describes how unique keys add a layer of data integrity.
 author: jcodella
 ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 08/26/2021
+ms.date: 07/25/2025
 ---
 
 # Unique key constraints in Azure Cosmos DB
@@ -14,9 +14,9 @@ ms.date: 08/26/2021
 
 Unique keys add a layer of data integrity to an Azure Cosmos DB container. You create a unique key policy when you create an Azure Cosmos DB container. With unique keys, you make sure that one or more values within a logical partition is unique. You also can guarantee uniqueness per [partition key](partitioning-overview.md).
 
-After you create a container with a unique key policy, the creation of a new or an update of an existing item resulting in a duplicate within a logical partition is prevented, as specified by the unique key constraint. The partition key combined with the unique key guarantees the uniqueness of an item within the scope of the container.
+After you create a container with a unique key policy, the creation of a new item or an update of an existing item that results in a duplicate within a logical partition is prevented, as specified by the unique key constraint. The partition key combined with the unique key guarantees the uniqueness of an item within the scope of the container.
 
-For example, consider an Azure Cosmos DB container with `Email address` as the unique key constraint and `CompanyID` as the partition key. When you configure the user's email address with a unique key, each item has a unique email address within a given `CompanyID`. Two items can't be created with duplicate email addresses and with the same partition key value. In Azure Cosmos DB's API for NoSQL, items are stored as JSON values. These JSON values are case sensitive. When you choose a property as a unique key, you can insert case sensitive values for that property. For example, If you have a unique key defined on the name property, "Gaby" is different from "gaby" and you can insert both into the container.
+For example, consider an Azure Cosmos DB container with `Email address` as the unique key constraint and `CompanyID` as the partition key. When you configure the user's email address with a unique key, each item has a unique email address within a given `CompanyID`. Two items can't be created with duplicate email addresses and with the same partition key value. In Azure Cosmos DB's API for NoSQL, items are stored as JSON values. These JSON values are case sensitive. When you choose a property as a unique key, you can insert case sensitive values for that property. For example, If you have a unique key defined on the name property, *Gaby* is different from *gaby* and you can insert both into the container.
 
 To create items with the same email address, but not the same first name, last name, and email address, add more paths to the unique key policy. Instead of creating a unique key based on the email address only, you also can create a unique key with a combination of the first name, last name, and email address. This key is known as a composite unique key. In this case, each unique combination of the three values within a given `CompanyID` is allowed. 
 
@@ -45,14 +45,14 @@ You can define unique keys only when you create an Azure Cosmos DB container. A 
 
 * When a container has a unique key policy, [Request Unit (RU)](request-units.md) charges to create, update, and delete an item are slightly higher.
 
-* Sparse unique keys are not supported. If some unique path values are missing, they're treated as null values, which take part in the uniqueness constraint. For this reason, there can be only a single item with a null value to satisfy this constraint.
+* Sparse unique keys aren't supported. If some unique path values are missing, they're treated as null values, which take part in the uniqueness constraint. For this reason, there can be only a single item with a null value to satisfy this constraint.
 
-* Unique key names are case-sensitive. For example, consider a container with the unique key constraint set to `/address/zipcode`. If your data has a field named `ZipCode`, Azure Cosmos DB inserts "null" as the unique key because `zipcode` isn't the same as `ZipCode`. Because of this case sensitivity, all other records with ZipCode can't be inserted because the duplicate "null" violates the unique key constraint.
+* Unique key names are case-sensitive. For example, consider a container with the unique key constraint set to `/address/zipcode`. If your data has a field named `ZipCode`, Azure Cosmos DB inserts *null* as the unique key because `zipcode` isn't the same as `ZipCode`. Because of this case sensitivity, all other records with ZipCode can't be inserted because the duplicate *null* violates the unique key constraint.
 
 ## Next steps
 
-* Learn more about [logical partitions](partitioning-overview.md)
-* Explore [how to define unique keys](how-to-define-unique-keys.md) when creating a container
+* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+* [Define unique keys for an Azure Cosmos DB container](how-to-define-unique-keys.md)
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
-    * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
+  * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
+  * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

@@ -1,6 +1,6 @@
 ---
-title: $densify (aggregation)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $densify
+titleSuffix: Overview of the $densify operation in Azure Cosmos DB for MongoDB (vCore)
 description: Adds missing data points in a sequence of values within an array or collection.
 author: sandeepsnairms
 ms.author: sandnair
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 06/09/2025
 ---
 
-# $densify (aggregation)
+# $densify
 
 The `$densify` stage in an aggregation pipeline is used to fill in missing data points within a sequence of values. It helps in creating a more complete dataset by generating missing values based on a specified field, range, and step. This is particularly useful in scenarios like time-series data analysis, where gaps in data points need to be filled to ensure accurate analysis.
 
@@ -114,11 +114,11 @@ This query would return the following document.
 
 The following table summarizes the key restrictions and behaviors associated with the $densify stage in MongoDB aggregation pipelines:
 
-| Category               | Condition / Behavior                                                                                                                                         |
-|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Field Restrictions     | - Errors if any document has a **date** value and `unit` is **not specified**. <br> - Errors if any document has a **numeric** value and `unit` is **specified**. <br> - Field name **starts with `$`**. Use `$project` to rename it. |
-| partitionByFields      | - Any field evaluates to a **non-string** value. <br> - Field name **starts with `$`**.                                                                      |
-| range.bounds           | - **Lower bound** defines the start value, regardless of existing documents. <br> - **Lower bound is inclusive**. <br> - **Upper bound is exclusive**. <br> - `$densify` does **not filter out** documents outside the bounds. |
+| Category| Condition / Behavior |
+| --- | --- |
+| Field Restrictions | - Errors if any document has a **date** value and `unit` is **not specified**. <br> - Errors if any document has a **numeric** value and `unit` is **specified**. <br> - Field name **starts with `$`**. Use `$project` to rename it.|
+| partitionByFields | - Any field evaluates to a **non-string** value. <br> - Field name **starts with `$`**. |
+| range.bounds | - **Lower bound** defines the start value, regardless of existing documents. <br> - **Lower bound is inclusive**. <br> - **Upper bound is exclusive**. <br> - `$densify` does **not filter out** documents outside the bounds. |
 
 
 ## Related content

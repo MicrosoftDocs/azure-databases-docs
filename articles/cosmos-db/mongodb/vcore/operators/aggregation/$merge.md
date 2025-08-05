@@ -1,6 +1,6 @@
 ---
-title: $merge usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $merge
+titleSuffix: Overview of the $merge operation in Azure Cosmos DB for MongoDB (vCore)
 description: The $merge stage in an aggregation pipeline writes the results of the aggregation to a specified collection.
 author: gahl-levy
 ms.author: gahllevy
@@ -33,7 +33,8 @@ The `$merge` stage in an aggregation pipeline is used to write the results of th
 | **`whenMatched`** | Specifies the action to take when a matching document is found. Options include `merge`, `replace`, `keepExisting`, `fail`, or a custom pipeline. |
 | **`whenNotMatched`** | Specifies the action to take when no matching document is found. Options include `insert` or `discard`. |
 
-## Example(s)
+## Examples
+
 ### Example 1: Merge data into a collection
 This example aggregates documents and writes the results to a collection named `salesSummary`, updating existing documents where the `_id` matches and inserting new documents otherwise.
 
@@ -57,6 +58,7 @@ db.sales.aggregate([
 ```
 
 ### Example 2: Replace documents in the target collection
+
 This example replaces documents in the `promotionEventsSummary` collection based on the `_id` field.
 
 ```javascript

@@ -1,6 +1,6 @@
 ---
-  title: $natural (query and projection operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $natural
+  titleSuffix: Overview of the $natural operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $natural operator forces the query to use the natural order of documents in a collection, providing control over document ordering and retrieval.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $natural (miscellaneous query)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $natural
 
 The `$natural` operator forces the query to use the natural order of documents in a collection. It can be used in sorting operations to retrieve documents in the order they were inserted or in reverse order. This operator is useful when you need predictable ordering without relying on indexed fields.
 
@@ -26,14 +24,14 @@ The syntax for the `$natural` operator in sort operations is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`1`** | Sort in forward natural order (insertion order). |
 | **`-1`** | Sort in reverse natural order (reverse insertion order). |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
