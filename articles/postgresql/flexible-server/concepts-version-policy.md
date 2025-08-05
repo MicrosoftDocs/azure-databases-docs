@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions in Az
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 07/29/2025
+ms.date: 08/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -12,7 +12,7 @@ ms.topic: concept-article
 
 # Azure Database for PostgreSQL version policy
 
-This page describes the Azure Database for PostgreSQL flexible server versioning policy.
+This article describes the Azure Database for PostgreSQL flexible server versioning policy.
 
 ## Supported PostgreSQL versions
 
@@ -33,7 +33,7 @@ Azure Database for PostgreSQL flexible server supports the following database ve
 
 ## Major version
 
-A major version is a change in the first number of the version. For example, PostgreSQL 10 to PostgreSQL 11 is a major version upgrade. Major versions introduce new features and capabilities, and might include changes that require application code updates.
+A major version is a change in the first number of the version. For example, PostgreSQL 10 to PostgreSQL 11 is a major version upgrade. Major versions introduce new features and capabilities. They might include changes that require application code updates.
 
 ### Support
 
@@ -41,7 +41,7 @@ Azure Database for PostgreSQL supports each major PostgreSQL version from the da
 
 ### Retirement policy
 
-The table below provides the retirement details for PostgreSQL major versions. The dates follow the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
+The following table provides the retirement details for PostgreSQL major versions. The dates follow the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
 
 | PostgreSQL Version | What's New | Azure Support Start Date | Azure Retirement Date |
 | --- | --- | --- | --- |
@@ -58,45 +58,45 @@ The table below provides the retirement details for PostgreSQL major versions. T
 
 ## Minor version support
 
-Azure Database for PostgreSQL flexible server automatically performs minor version upgrades to the Azure preferred PostgreSQL version as part of periodic maintenance.
+Azure Database for PostgreSQL flexible server automatically upgrades minor versions to the Azure preferred PostgreSQL version during periodic maintenance.
 
 ## Extended Support
 
-To help customers maintain secure and compliant workloads beyond community end-of-life (end of support), Azure is introducing Extended Support for Azure Database for PostgreSQL.
+To help you maintain secure and compliant workloads beyond community end-of-life (end of support), Azure is introducing Extended Support for Azure Database for PostgreSQL.
 
-Extended Support offers continued access to critical security updates and technical assistance, giving you time to plan and implement your upgrade strategy with confidence.
+Extended Support gives you continued access to critical security updates and technical assistance. With Extended Support, you have time to plan and implement your upgrade strategy with confidence.
 
 Extended support provides:
 
-- Up to three additional years of support after standard support ends
+- Up to three extra years of support after standard support ends
 - Security patches and critical bug fixes
-- Technical support via Azure Support channels (per your existing plan)
+- Technical support through Azure Support channels (per your existing plan)
 
 > [!NOTE]  
 > Extended Support doesn't include new feature releases, performance enhancements, or support for minor version upgrades.
 
 ### Why use Extended Support?
 
-Ideal for customers who...
+Extended Support is ideal for customers who...
 
 - Need more time to upgrade complex workloads.
 - Require compliance and security coverage during upgrade planning.
 - Depend on uninterrupted technical support for critical environments.
 
-Best Practices
+### Best practices
 
 - Treat Extended Support as a temporary bridge, not a long-term solution.
-- Begin upgrade planning well before the end-of-life (end of support) date.
+- Start upgrade planning well before the end-of-life (end of support) date.
 - Consider upgrading to newer versions such as PostgreSQL 15 or 16 for improved performance and support.
 
 ### Eligible PostgreSQL versions
 
 | PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date (includes grace period) | Paid Extended Support End Date |
 | --- | --- | --- | --- | --- | --- |
-| 11 | 24-Jul-19 |  9-Nov-25 |  9-Nov-25 |  1-Apr-26 | 31-Mar-29 |
-| 12 | 22-Sep-20 | 14-Nov-24 | 14-Nov-24 |  1-Apr-26 | 31-Mar-29 |
-| 13 | 25-May-21 | 13-Nov-25 | 13-Nov-25 |  1-Apr-26 | 31-Mar-29 |
-| 14 | 29-Jun-22 | 12-Nov-26 | 12-Nov-26 | 12-Dec-26 | 11-Dec-29 |
+| 11 | July 24, 2019 |  November 9, 2025 |  November 9, 2025 |  April 1, 2026 | March 31, 2029 |
+| 12 | September 22, 2020 | November 14, 2024 | November 14, 2024 |  April 1, 2026 | March 31, 2029 |
+| 13 | May 25, 2021 | November 13, 2025 | November 13, 2025 |  April 1, 2026 | March 31, 2029 |
+| 14 | June 29, 2022 | November 12, 2026 | November 12, 2026 | December 12, 2026 | December 11, 2029 |
 
 ### Enrollment and price
 
@@ -107,9 +107,9 @@ Best Practices
 
 ### Frequently asked questions (FAQs)
 
-**Q: What if I want to keep running without extended support? Can I opt out??**
+**Q: What if I want to keep running without extended support? Can I opt out?**
 
-A: No
+A: No.
 
 **Q: What happens if I continue running an unsupported PostgreSQL version on Azure after its community end of support?**
 
@@ -133,7 +133,7 @@ A: Yes. Major PostgreSQL versions often introduce or deprecate configuration par
 
 **Q: Are PostgreSQL extensions automatically upgraded during a major version upgrade?**
 
-A: No. While Azure upgrades the database engine, noncore extensions (for example, pgvector, timescaledb) require manual updates. Use ALTER EXTENSION ... UPDATE or recreate unsupported extensions after the upgrade.
+A: No. While Azure upgrades the database engine, noncore extensions (for example, pgvector, timescaledb) require manual updates. Use `ALTER EXTENSION ... UPDATE` or recreate unsupported extensions after the upgrade.
 
 **Q: How can I reduce downtime during a major upgrade?**
 
@@ -145,52 +145,52 @@ A: To minimize downtime:
 
 **Q: Where can I track which of my servers are nearing end of support?**
 
-A: Azure provides visibility through the Portal.
+A: Azure provides visibility through the portal.
 
 **Q: What support options are available during the Extended Support phase?**
 
 A: Servers in Extended Support can raise support cases for security-related issues only. Feature requests, performance tuning, and general bug fixes aren't supported for end of support versions.
 
-**Q:** **How will the period between November 13, 2025, and March 1, 2026, be handled for PostgreSQL version 13? Will support be continued during this time? How will it differ from the period before November 13, 2025****?**
+**Q:** **How will the period between November 13, 2025, and March 1, 2026, be handled for PostgreSQL version 13? Will support be continued during this time? How will it differ from the period before November 13, 2025?**
 
-A: According to the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/), each major version is supported until retired by the community. Extended support from Azure will not be provided  between November 13, 2025 - March 1, 2026. Customers are charged for Extended Support starting April 1. Users are encouraged to upgrade to newer versions to ensure continued support and access to new features.
+A: According to the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/), each major version is supported until retired by the community. Extended support from Azure isn't provided between November 13, 2025, and March 1, 2026. Customers are charged for Extended Support starting April 1. To ensure continued support and access to new features, upgrade to newer versions.
 
 ## PostgreSQL 12 support
 
-PostgreSQL 12 reached its end of life on **November 14, 2024**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, each major version is supported until retired by the community. Unlike PostgreSQL 11, which has extended support until November 9, 2025, PostgreSQL 12 doesn't receive extended support from Azure until March 1, 2026. Users are encouraged to upgrade to newer versions to ensure continued support and access to new features.
+PostgreSQL 12 reaches end of life on **November 14, 2024**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, the community supports each major version until retirement. Unlike PostgreSQL 11, which has extended support until November 9, 2025, Azure doesn't provide extended support for PostgreSQL 12 beyond March 1, 2026. Upgrade to newer versions to ensure continued support and access to new features.
 
 ## PostgreSQL 11 support
 
-Azure is extending PostgreSQL 11 support for Azure Database for PostgreSQL flexible server. This extended support timeline is designed to provide more time for users to upgrade to higher PostgreSQL versions. The extended support timeline is designed to facilitate a smooth transition for users currently relying on PostgreSQL 11.
+Azure is extending support for PostgreSQL 11 on Azure Database for PostgreSQL flexible server. This extended support timeline gives you more time to upgrade to higher PostgreSQL versions. It facilitates a smooth transition for users currently relying on PostgreSQL 11.
 
 ### Flexible server support
 
-- You can create and operate PostgreSQL 11 servers on Azure Database for PostgreSQL flexible Server, until November 9, 2025, when Azure stops supporting PostgreSQL 11.
-- From November 9, 2023, to November 9, 2025, while users can continue using and creating new instances of PostgreSQL 11 on the flexible server, they're [restrictions](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql) of other retired PostgreSQL engines.
+- You can create and operate PostgreSQL 11 servers on Azure Database for PostgreSQL flexible Server until November 9, 2025, when Azure stops supporting PostgreSQL 11.
+- From November 9, 2023, to November 9, 2025, you can continue using and creating new instances of PostgreSQL 11 on the flexible server, but there are [restrictions](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql) for other retired PostgreSQL engines.
 
-This extension of Postgres 11 support is part of Azure's commitment to providing a seamless migration path and ensuring continued functionality for users.
+This extension of PostgreSQL 11 support is part of Azure's commitment to providing a seamless migration path and ensuring continued functionality for users.
 
-## Retired PostgreSQL engine versions not supported in Azure Database for PostgreSQL
+## Retired PostgreSQL engine versions aren't supported in Azure Database for PostgreSQL
 
-You might continue to run the retired version in Azure Database for PostgreSQL flexible server. However, note the following restrictions after the retirement date for each PostgreSQL database version:
+You can continue to use the retired version in Azure Database for PostgreSQL flexible server. However, after the retirement date for each PostgreSQL database version, the following restrictions apply:
 
-- Once a PostgreSQL version is retired by the community, Azure Database for PostgreSQL flexible server no longer applies bug or security patches to the database engine. This might expose your server to security risks or other issues. However, Azure continues to maintain and patch the underlying host, operating system, containers, and related service components.
+- When the community retires a PostgreSQL version, Azure Database for PostgreSQL flexible server stops applying bug or security patches to the database engine. This change might expose your server to security risks or other issues. However, Azure continues to maintain and patch the underlying host, operating system, containers, and related service components.
 
-- If any support issue you might experience relates to the PostgreSQL engine itself, as the community no longer provides the patches, we might not be able to provide you with support. In such cases, you have to upgrade your database to one of the supported versions.
+- If you experience a support issue that relates to the PostgreSQL engine itself, we might not be able to provide support because the community no longer provides the patches. In such cases, you need to upgrade your database to one of the supported versions.
 
-- You can't create new servers using a PostgreSQL version that has been retired. However, you're able to perform point-in-time recoveries and create read replicas for your existing servers.
+- You can't create new servers by using a PostgreSQL version that is retired. However, you can perform point-in-time recoveries and create read replicas for your existing servers.
 
 - New service capabilities developed by Azure Database for PostgreSQL flexible server might only be available to supported database server versions.
 
-- Uptime SLAs apply solely to Azure Database for PostgreSQL flexible server service-related issues and not to any downtime caused by database engine-related bugs.
+- Uptime SLAs apply solely to Azure Database for PostgreSQL flexible server service-related issues and don't apply to any downtime caused by database engine-related bugs.
 
-- In rare cases where a critical vulnerability in a retired PostgreSQL version poses a threat to the service, Azure might stop affected servers to protect the platform. In such case, you're notified to upgrade the server before bringing the server online.
+- In rare cases where a critical vulnerability in a retired PostgreSQL version poses a threat to the service, Azure might stop affected servers to protect the platform. In such cases, you're notified to upgrade the server before bringing the server online.
 
-- New extensions introduced for Azure Database for PostgreSQL flexible server aren't supported on PostgreSQL versions that have been retired by the community.
+- New extensions introduced for Azure Database for PostgreSQL flexible server aren't supported on PostgreSQL versions that the community retired.
 
 ## PostgreSQL version syntax
 
-Before PostgreSQL version 10, the [PostgreSQL versioning policy](https://www.postgresql.org/support/versioning/) considered a major version upgrade to be an increase in the first or second number. For example, 9.5 to 9.6 was considered as a major version upgrade. As of version 10, only a change in the first number is considered as a major version upgrade. For example, 10.0 to 10.1 is a minor release upgrade. Version 10 to 11 is a major version upgrade.
+Before PostgreSQL version 10, the [PostgreSQL versioning policy](https://www.postgresql.org/support/versioning/) considered a major version upgrade to be an increase in the first or second number. For example, 9.5 to 9.6 was considered a major version upgrade. As of version 10, only a change in the first number is considered a major version upgrade. For example, 10.0 to 10.1 is a minor release upgrade. Version 10 to 11 is a major version upgrade.
 
 ## Related content
 
