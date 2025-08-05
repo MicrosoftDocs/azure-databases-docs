@@ -105,7 +105,7 @@ You need to update the database authorization settings to configure the Azure AI
 - For Azure OpenAI, execute the following SQL command to set the endpoint:
 
  ```sql
-  SELECT azure_ai.set_setting('azure_openai.endpoint', '<Your_OpenAI_Endpoint>');
+  SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<Your_openai_account>.openai.azure.com'); 
  ```
 
 ### Verify settings
