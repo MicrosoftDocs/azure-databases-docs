@@ -1,6 +1,6 @@
 ---
-  title: $comment (Misc. Query) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $comment
+  titleSuffix: Overview of the $comment operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $comment operator adds a comment to a query to help identify the query in logs and profiler output.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $comment (misc. query)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $comment
 
 The `$comment` operator adds comments to queries to help identify them in logs and profiler output. This is particularly useful for debugging and monitoring database operations.
 
@@ -26,13 +24,67 @@ The syntax for the `$comment` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`string`** | A string containing the comment to be included with the query. |
 
 ## Example
 
-Let's understand the usage with sample data from the `stores` dataset.
+Consider this sample document from the stores collection.
+
+```json
+{
+  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+  "location": {
+    "lat": 70.1272,
+    "lon": 69.7296
+  },
+  "staff": {
+    "totalStaff": {
+      "fullTime": 19,
+      "partTime": 20
+    }
+  },
+  "sales": {
+    "totalSales": 151864,
+    "salesByCategory": [
+      {
+        "categoryName": "Sound Bars",
+        "totalSales": 2120
+      },
+      {
+        "categoryName": "Home Theater Projectors",
+        "totalSales": 45004
+      }
+    ]
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Massive Markdown Mania",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2023,
+          "Month": 6,
+          "Day": 29
+        },
+        "endDate": {
+          "Year": 2023,
+          "Month": 7,
+          "Day": 9
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "DVD Players",
+          "discountPercentage": 14
+        }
+      ]
+    }
+  ]
+}
+```
+To find stores with total sales greater than 100,000 and includes a comment for easy identification in logs. 
 
 ```javascript
 db.stores.find(
@@ -41,7 +93,7 @@ db.stores.find(
 ).comment("Query to find high-performing stores")
 ```
 
-This query finds stores with total sales greater than 100,000 and includes a comment for easy identification in logs. When executed against our sample dataset, it returns:
+Sample Output
 
 ```json
 {

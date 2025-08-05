@@ -156,8 +156,8 @@ To add a new sales category to the salesByCategory array, run a query using the 
 
 ```javascript
 db.stores.update(
-   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-   { $push: { "sales.salesByCategory": { "categoryName": "DJ Cables", "totalSales": 1000.00 } } }
+   { _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4" },
+   { $push: { "sales.salesByCategory": { "categoryName": "Wine Accessories", "totalSales": 1000.00 } } }
 )
 ```
 

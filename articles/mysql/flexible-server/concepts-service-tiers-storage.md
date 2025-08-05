@@ -84,7 +84,7 @@ The detailed specifications of the available server types are as follows for the
 | Standard_D48ds_v4 | 48 | 192 | 264 | 48000 | 32768 | 1290 |
 | Standard_D64ads_v5 | 64 | 256 | 352 | 48000 | 43691 | 1720 |
 | Standard_D64ds_v4 | 64 | 256 | 352 | 48000 | 43691 | 1720 |
-| Standard_D96ds_v5 | 96 | 384 | 528 | 48000 | 65536 | 2580 |
+| Standard_D96ads_v5 | 96 | 384 | 528 | 48000 | 65536 | 2580 |
 
 #### Business Critical
 

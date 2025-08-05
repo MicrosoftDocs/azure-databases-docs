@@ -1,6 +1,6 @@
 ---
-  title: $sampleRate (query operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $sampleRate
+  titleSuffix: Overview of the $sampleRate operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $sampleRate operator randomly samples documents from a collection based on a specified probability rate, useful for statistical analysis and testing.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $sampleRate (query operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $sampleRate
 
 The `$sampleRate` operator randomly samples documents from a collection based on a specified probability rate. This operator is useful for statistical analysis, testing with subset data, and performance optimization when working with large datasets where you need a representative sample.
 
@@ -26,13 +24,13 @@ The syntax for the `$sampleRate` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`number`** | A floating-point number between 0 and 1 representing the probability that a document will be included in the sample. For example, 0.33 means approximately 33% of documents are sampled.
 
-## Example
+## Examples
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {

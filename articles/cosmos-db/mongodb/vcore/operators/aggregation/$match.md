@@ -1,6 +1,6 @@
 ---
-  title: $match (aggregation) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $match
+  titleSuffix: Overview of the $match operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $match stage in the aggregation pipeline is used to filter documents that match a specified condition.
   author: sandeepsnairms
   ms.author: sandnair
@@ -10,9 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $match (aggregation)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $match
 
 The `$match` stage in the aggregation pipeline is used to filter documents that match a specified condition. It's similar to the `find` operation but is used within the aggregation pipeline to narrow down the documents that pass through to the next stage. This stage is highly useful for optimizing performance by reducing the number of documents that need to be processed in subsequent stages.
 
@@ -28,13 +26,16 @@ The basic syntax for the `$match` stage is as follows:
 }
 ```
 
-| | Description |
+## Parameters
+
+| Parameter | Description |
 | --- | --- |
 | **`<query>`**| A standard MongoDB query document that specifies the conditions that the documents must meet.|
 
 ## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
+
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
