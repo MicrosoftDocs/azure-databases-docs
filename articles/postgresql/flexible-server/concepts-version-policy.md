@@ -103,9 +103,13 @@ Best Practices
 - Automatic Enrollment: PostgreSQL servers running unsupported versions are automatically enrolled in Extended Support on March 1, 2026.
 - Opt-Out Option: You can opt out at any time by upgrading to a supported version.
 - Grace Period: A one-month grace period applies. Billing begins on April 1, 2026.
-- Pricing: Details are published on this [page](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/?cdn=disable) before billing begins.
+- Pricing: Details will be published on this [page](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/?cdn=disable) before billing begins.
 
 ### Frequently asked questions (FAQs)
+
+**Q: What if I want to keep running without extended support? Can I opt out??**
+
+A: No
 
 **Q: What happens if I continue running an unsupported PostgreSQL version on Azure after its community end of support?**
 
