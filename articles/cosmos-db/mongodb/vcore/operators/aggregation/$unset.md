@@ -153,7 +153,9 @@ db.stores.aggregate([
   }
 ])
 ```
-Sample output
+
+Sample output:
+
 ```json
 [
   {
@@ -179,6 +181,7 @@ Sample output
 ```
 
 ### Example 2: Remove Multiple Fields
+
 To remove the location and sales.totalSales fields from the documents.
 
 ```javascript
@@ -213,6 +216,7 @@ Sample output
 ```
 
 ### Example 3: Remove Nested Fields
+
 To remove the staff.totalStaff.fullTime and promotionEvents.discounts fields from the documents.
 
 ```javascript
@@ -222,7 +226,9 @@ db.stores.aggregate([
   }
 ])
 ```
-Sample output
+
+Sample output:
+
 ```json
 [
   {
