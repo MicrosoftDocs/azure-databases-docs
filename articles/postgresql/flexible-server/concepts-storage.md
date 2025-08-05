@@ -103,6 +103,8 @@ High availability is an opt-in feature that can be enabled at the subscription l
 
 - Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is currently not supported when the AFEC flag is enabled for accessing the High Availability (HA) preview feature.
   
+- SSDv2 can be provisioned using General Purpose and Memory Optimized SKUs. Creating new Burstable SKUs with SSDv2 is not supported
+  
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
 | Disk size | Premium SSD IOPS | Premium SSD v2 IOPS |
