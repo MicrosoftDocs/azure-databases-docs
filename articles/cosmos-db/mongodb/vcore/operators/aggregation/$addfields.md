@@ -146,7 +146,8 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Adding a New Field
+### Example 1: Adding a new field
+
 To add a new field totalDiscountEvents that counts the number of promotion events
 
 ```javascript

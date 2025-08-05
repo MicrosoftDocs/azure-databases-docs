@@ -35,9 +35,10 @@ The $collStats stage in the aggregation pipeline is used to return statistics ab
 | **`count`** | Optional. Includes the count of documents in the collection. |
 
 
-### Example: Basic Collection Statistics
+### Example: Basic collection statistics
 
 To count documents in the store collection:
+
 ```javascript
 db.stores.aggregate([
   {

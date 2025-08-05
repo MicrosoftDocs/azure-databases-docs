@@ -142,7 +142,8 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Remove a Single Field
+### Example 1: Remove a single field
+
 To remove the location field from the documents.
 
 ```javascript
