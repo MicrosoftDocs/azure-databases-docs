@@ -11,9 +11,11 @@ ms.date: 06/24/2025
 ---
 
 # $dateToParts
-The `$dateToParts` operator is used to extract individual components (Year, Month, Day, Hour, Minute, Second, Millisecond, etc.) from a date object. This is useful for scenarios where manipulation or analysis of specific date parts is required, such as sorting, filtering, or aggregating data based on individual date components.
+
+The `$dateToParts` operator is used to extract individual components (Year, Month, Day, Hour, Minute, Second, Millisecond, etc.) from a date object. The operator is useful for scenarios where manipulation or analysis of specific date parts is required, such as sorting, filtering, or aggregating data based on individual date components.
 
 ## Syntax
+
 ```javascript
 $dateToParts: {
   date: <dateExpression>,
@@ -22,51 +24,133 @@ $dateToParts: {
 }
 ```
 
-## Parameters  
+## Parameters
+
 | Parameter | Description |
 | --- | --- |
 | **`date`** | The date expression to extract parts from. |
 | **`timezone`** | Optional. Specifies the timezone for the date. Defaults to UTC if not provided. |
-| **`iso8601`** | Optional. If true, the operator will use ISO 8601 week date calendar system. Defaults to false. |
+| **`iso8601`** | Optional. If true, the operator uses ISO 8601 week date calendar system. Defaults to false. |
 
 ## Examples
-We'll use this document from the `stores` collection to demonstrate how `$dateToParts` works:
+
+Let's understand the usage with sample json from `stores` dataset.
+
 ```json
 {
-  "_id": "store-01",
-  "name": "Time Travel Mart",
-  "metadata": {
-    "lastUpdated": ISODate("2024-07-21T14:38:00Z")
-  }
+  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+  "name": "Relecloud | Toy Collection - North Jaylan",
+  "location": {
+    "lat": 2.0797,
+    "lon": -94.4134
+  },
+  "staff": {
+    "employeeCount": {
+      "fullTime": 7,
+      "partTime": 4
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      {
+        "categoryName": "Educational Toys",
+        "totalSales": 3299
+      }
+    ],
+    "revenue": 3299
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Massive Markdown Mania",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 21
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 29
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "Remote Control Toys",
+          "discountPercentage": 6
+        },
+        {
+          "categoryName": "Building Sets",
+          "discountPercentage": 21
+        }
+      ]
+    }
+  ],
+  "company": "Relecloud",
+  "city": "North Jaylan",
+  "lastUpdated": {
+    "$timestamp": {
+      "t": 1733313006,
+      "i": 1
+    }
+  },
+  "storeOpeningDate": "2024-09-05T11:50:06.549Z"
 }
 ```
 
 ### Example 1: Extracting date parts from a field
+
+The query uses `$dateToParts` to break down the `lastUpdated` date into components like year, month, day, and time. It helps in analyzing or transforming individual parts of a date for further processing.
+
 ```javascript
 db.stores.aggregate([
+  {
+    $match: { _id: "e6410bb3-843d-4fa6-8c70-7472925f6d0a" }
+  },
   {
     $project: {
       _id: 0,
       dateParts: {
         $dateToParts: { 
-          date: "$metadata.lastUpdated" 
+          date: "$lastUpdated" 
         }
       }
     }
   }
 ])
 ```
-This example extracts the constituent parts of the `lastUpdated` field in the `metadata` object.
+
+The example extracts the constituent parts of the `lastUpdated` field.
+
+```json
+{
+  "dateParts": {
+    "year": 2024,
+    "month": 12,
+    "day": 4,
+    "hour": 11,
+    "minute": 50,
+    "second": 6,
+    "millisecond": 0
+  }
+}
+```
 
 ### Example 2: Using timezone
+
+The query extracts the `lastUpdated` timestamp of a specific document and breaks it into date parts like year, month, day, and hour using $dateToParts. Including the "America/New_York" timezone permits the breakdown, reflects the local time instead of UTC.
+
 ```javascript
 db.stores.aggregate([
+  {
+    $match: { _id: "e6410bb3-843d-4fa6-8c70-7472925f6d0a" }
+  },
   {
     $project: {
       _id: 0,
       datePartsWithTimezone: {
         $dateToParts: { 
-          date: "$metadata.lastUpdated", 
+          date: "$lastUpdated", 
           timezone: "America/New_York" 
         }
       }
@@ -74,25 +158,23 @@ db.stores.aggregate([
   }
 ])
 ```
-This example extracts the date parts while considering the timezone `America/New_York`.
 
-### Example 3: Using ISO 8601 week date system
-```javascript
-db.stores.aggregate([
-  {
-    $project: {
-      _id: 0,
-      iso8601Parts: {
-        $dateToParts: { 
-          date: "$metadata.lastUpdated", 
-          iso8601: true 
-        }
-      }
-    }
+The example extracts the date parts while considering the timezone `America/New_York`.
+
+```json
+{
+  "datePartsWithTimezone": {
+    "year": 2024,
+    "month": 12,
+    "day": 4,
+    "hour": 6,
+    "minute": 50,
+    "second": 6,
+    "millisecond": 0
   }
-])
+}
 ```
-This example extracts date parts using the ISO 8601 week date calendar system.
 
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]

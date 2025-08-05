@@ -48,32 +48,88 @@ The `$dateToString` operator is used to convert a date object to a string in a s
 | `%S`   | Second (two digits)        |
 | `%L`   | Millisecond (three digits)   |
 
-
 ## Examples
-We'll use this document from the `stores` collection to demonstrate how `$dateToString` works:
+
+Let's understand the usage with sample json from `stores` dataset.
+
 ```json
 {
-  "_id": "store-01",
-  "name": "Time Travel Mart",
-  "metadata": {
-    "lastUpdated": ISODate("2024-07-21T14:38:00Z")
-  }
+  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+  "name": "Relecloud | Toy Collection - North Jaylan",
+  "location": {
+    "lat": 2.0797,
+    "lon": -94.4134
+  },
+  "staff": {
+    "employeeCount": {
+      "fullTime": 7,
+      "partTime": 4
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      {
+        "categoryName": "Educational Toys",
+        "totalSales": 3299
+      }
+    ],
+    "revenue": 3299
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Massive Markdown Mania",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 21
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 29
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "Remote Control Toys",
+          "discountPercentage": 6
+        },
+        {
+          "categoryName": "Building Sets",
+          "discountPercentage": 21
+        }
+      ]
+    }
+  ],
+  "company": "Relecloud",
+  "city": "North Jaylan",
+  "lastUpdated": {
+    "$timestamp": {
+      "t": 1733313006,
+      "i": 1
+    }
+  },
+  "storeOpeningDate": "2024-09-05T11:50:06.549Z"
 }
 ```
 
 ### Example 1: Formatting a date field to an ISO-like string
 
-This example returns the `lastUpdated` field as a formatted date string in `YYYY-MM-DD` format.
+The query uses `$dateToString` operator to format the `lastUpdated` timestamp into a `YYYY-MM-DD` string. It helps present dates in a readable format suitable for logs, reports, or UI.
 
 ```javascript
 db.stores.aggregate([
+  {
+    $match: { _id: "e6410bb3-843d-4fa6-8c70-7472925f6d0a" }
+  },
   {
     $project: {
       _id: 0,
       formattedDate: {
         $dateToString: {
           format: "%Y-%m-%d",
-          date: "$metadata.lastUpdated"
+          date: "$lastUpdated"
         }
       }
     }
@@ -81,45 +137,44 @@ db.stores.aggregate([
 ])
 ```
 
-### Example 2: Including time in formatted output
+The query returns the `lastUpdated` date as a formatted string in `YYYY-MM-DD` format.
 
-This query formats the date to include both date and time.
+```json
+{
+  "formattedDate": "2024-12-04"
+}
+```
+
+### Example 2: Handling Null Values
+
+The query formats the nonexistent field `lastUpdated_new` timestamp as a `YYYY-MM-DD` string using `$dateToString`. Considering the date is missing or null, it substitutes a fallback string "No date available" via the onNull option.
 
 ```javascript
 db.stores.aggregate([
   {
-    $project: {
-      _id: 0,
-      formattedDateTime: {
-        $dateToString: {
-          format: "%Y-%m-%d %H:%M:%S",
-          date: "$metadata.lastUpdated"
-        }
-      }
-    }
-  }
-])
-```
-
-### Example 3: Handling Null Values
-
-This example uses the `onNull` parameter to provide a default string when the `lastUpdated` date field is null or missing.
-
-```javascript
-db.stores.aggregate([
+    $match: { _id: "e6410bb3-843d-4fa6-8c70-7472925f6d0a" }
+  },
   {
     $project: {
       _id: 0,
       formattedDateOrDefault: {
         $dateToString: {
           format: "%Y-%m-%d",
-          date: "$metadata.lastUpdated",
+          date: "$lastUpdated_new", // field doesn't exist
           onNull: "No date available"
         }
       }
     }
   }
 ])
+```
+
+The query returns the formatted default message as the date isn't present.
+
+```json
+{
+  "formattedDateOrDefault": "No date available"
+}
 ```
 
 ## Related content
