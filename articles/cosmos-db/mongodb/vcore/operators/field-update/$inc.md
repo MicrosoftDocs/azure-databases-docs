@@ -12,7 +12,7 @@
 
 # $inc
 
-The `$inc` operator increments the value of a field by a specified amount. If the field does not exist, `$inc` creates the field and sets it to the specified value. The operator accepts positive and negative values for incrementing and decrementing respectively.
+The `$inc` operator increments the value of a field by a specified amount. If the field doesn't exist, `$inc` creates the field and sets it to the specified value. The operator accepts positive and negative values for incrementing and decrementing respectively.
 
 ## Syntax
 
@@ -33,7 +33,7 @@ The syntax for the `$inc` operator is as follows:
 | Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to increment. |
-| **`amount`** | The amount by which to increment the field. Must be a number (positive for increment, negative for decrement). |
+| **`amount`** | The increment value. Must be a number (positive for increment, negative for decrement). |
 
 ## Example
 
@@ -80,7 +80,7 @@ db.stores.updateOne(
 )
 ```
 
-This will change the `fullTime` value from 19 to 22.
+The query increments the `fullTime` value by 3.
 
 ### Example 2: Decreasing and increasing values
 

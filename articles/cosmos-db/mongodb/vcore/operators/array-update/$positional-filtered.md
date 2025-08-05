@@ -1,7 +1,7 @@
 ---
-title: $[identifier] usage in Azure Cosmos DB for MongoDB vCore
+title: $[identifier]
 titleSuffix: Overview of the $[identifier] positional operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $[] operator is used to update all elements using a specific identifer in an array that match the query condition.
+description: The $[] operator is used to update all elements using a specific identifier in an array that match the query condition.
 author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
@@ -11,10 +11,12 @@ ms.date: 10/14/2024
 ---
 
 # $[identifier]
-The $[identifier] array update operator in Azure Cosmos DB for MongoDB vCore is used to update specific elements in an array that match a given condition. This operator is particularly useful when you need to update multiple elements within an array based on certain criteria. It allows for more granular updates within documents, making it a powerful tool for managing complex data structures.
+The $[identifier] array update operator is used to update specific elements in an array that match a given condition. This operator is useful when you need to update multiple elements within an array based on certain criteria. It allows for more granular updates within documents, making it a powerful tool for managing complex data structures.
 
-## javascript
-```json
+
+## Syntax
+
+```javascript
 {
   "<update operator>": {
     "<array field>.$[<identifier>]": <value>
@@ -31,7 +33,7 @@ The $[identifier] array update operator in Azure Cosmos DB for MongoDB vCore is 
 
 | Parameter | Description |
 | --- | --- |
-| **`<update operator>`** | The update operator to be applied (e.g., `$set`, `$inc`, etc.). |
+| **`<update operator>`** | The update operator to be applied (for example, `$set`, `$inc`, etc.). |
 | **`<array field>`** | The field containing the array to be updated. |
 | **`<identifier>`** | A placeholder used in `arrayFilters` to match specific elements in the array. |
 | **`<value>`** | The value to be set or updated. |

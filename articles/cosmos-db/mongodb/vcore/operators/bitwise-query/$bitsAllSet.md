@@ -35,93 +35,245 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
+  _id: 'a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6',
+  name: 'Lakeshore Retail | Holiday Supply Hub - Marvinfort',
+  location: {
+    lat: -74.0427,
+    lon: 160.8154
   },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
+  staff: {
+    employeeCount: {
+      fullTime: 9,
+      partTime: 18
     }
   },
-  "sales": {
-    "salesByCategory": [
+  sales: {
+    salesByCategory: [
       {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
+        categoryName: 'Stockings',
+        totalSales: 25731
       }
     ],
-    "fullSales": 3700
+    revenue: 25731
   },
-  "promotionEvents": [
+  promotionEvents: [
     {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
+      eventName: 'Mega Savings Extravaganza',
+      promotionalDates: {
+        startDate: {
+          Year: 2023,
+          Month: 6,
+          Day: 29
         },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
+        endDate: {
+          Year: 2023,
+          Month: 7,
+          Day: 7
         }
       },
-      "discounts": [
+      discounts: [
         {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
+          categoryName: 'Stockings',
+          discountPercentage: 16
         },
         {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
+          categoryName: 'Tree Ornaments',
+          discountPercentage: 8
+        }
+      ]
+    },
+    {
+      eventName: 'Incredible Discount Days',
+      promotionalDates: {
+        startDate: {
+          Year: 2023,
+          Month: 9,
+          Day: 27
+        },
+        endDate: {
+          Year: 2023,
+          Month: 10,
+          Day: 4
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 11
+        },
+        {
+          categoryName: 'Holiday Cards',
+          discountPercentage: 9
+        }
+      ]
+    },
+    {
+      eventName: 'Massive Deal Mania',
+      promotionalDates: {
+        startDate: {
+          Year: 2023,
+          Month: 12,
+          Day: 26
+        },
+        endDate: {
+          Year: 2024,
+          Month: 1,
+          Day: 2
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Gift Bags',
+          discountPercentage: 21
+        },
+        {
+          categoryName: 'Bows',
+          discountPercentage: 19
+        }
+      ]
+    },
+    {
+      eventName: 'Super Saver Soiree',
+      promotionalDates: {
+        startDate: {
+          Year: 2024,
+          Month: 3,
+          Day: 25
+        },
+        endDate: {
+          Year: 2024,
+          Month: 4,
+          Day: 1
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Tree Ornaments',
+          discountPercentage: 15
+        },
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 14
+        }
+      ]
+    },
+    {
+      eventName: 'Fantastic Savings Fiesta',
+      promotionalDates: {
+        startDate: {
+          Year: 2024,
+          Month: 6,
+          Day: 23
+        },
+        endDate: {
+          Year: 2024,
+          Month: 6,
+          Day: 30
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 24
+        },
+        {
+          categoryName: 'Gift Wrap',
+          discountPercentage: 16
+        }
+      ]
+    },
+    {
+      eventName: 'Price Plunge Party',
+      promotionalDates: {
+        startDate: {
+          Year: 2024,
+          Month: 9,
+          Day: 21
+        },
+        endDate: {
+          Year: 2024,
+          Month: 9,
+          Day: 28
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Holiday Tableware',
+          discountPercentage: 13
+        },
+        {
+          categoryName: 'Holiday Cards',
+          discountPercentage: 11
         }
       ]
     }
   ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ],
-  "company": "Lakeshore Retail",
-  "city": "Port Cecile",
-  "lastUpdated": {
-    "$date": "2024-12-11T10:21:58.274Z"
-  }
+  company: 'Lakeshore Retail',
+  city: 'Marvinfort',
+  storeOpeningDate: 2024-10-01T18:24:02.586Z,
+  lastUpdated: Timestamp({ t: 1730485442, i: 1 }),
+  storeFeatures: 38
 }
 ```
-This uses the bitwise operator $bitsAllSet, which matches documents where all bit positions specified in the bitmask are set to 1 in the `staff.totalStaff.fullTime` field. The bitmask 0b00000011 corresponds to the two least significant bits (bit 0 and bit 1). The query matches documents where both bits 0 and 1 are set to 1 in the fullTime field.
+
+The `storeFeatures` field is a bitmask integer representing various store capabilities. Each bit corresponds to a feature:
+
+| Bit | Value | Feature                 |
+|-----|-------|--------------------------|
+| 0   | 1     | In-Store Pickup          |
+| 1   | 2     | Parking                  |
+| 2   | 4     | Wheelchair Access        |
+| 3   | 8     | Open 24 Hours            |
+| 4   | 16    | Pet-Friendly             |
+| 5   | 32    | Free Wi-Fi               |
+| 6   | 64    | Restrooms                |
+| 7   | 128   | Home Delivery            |
+
+
+
+Find stores that **have parking AND restrooms** (bits 1 and 6)
 
 ```javascript
-db.stores.find(
-  { "staff.totalStaff.fullTime": { $bitsAllSet: 0b00000011 } },
-  { _id: 1, name: 1, staff: 1 }
-).limit(2)
-
+db.stores.find({
+  storeFeatures: { $bitsAllSet: [1, 6] }},
+  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
 ```
+
+Equivalent:
+```javascript
+db.stores.find({
+  storeFeatures: { $bitsAllSet: 66 }},
+  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+```
+
 Sample output:
 
 ```json
 [
   {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    staff: { totalStaff: { fullTime: 19, partTime: 20 } }
+    _id: '7e53ca0f-6e24-4177-966c-fe62a11e9af5',
+    name: 'Contoso, Ltd. | Office Supply Deals - South Shana',
+    storeFeatures: 86
   },
   {
-    _id: 'f2a8c190-28e4-4e14-9d8b-0256e53dca66',
-    name: 'Fabrikam, Inc. | Car Accessory Outlet - West Adele',
-    staff: {
-      maxStaffCapacity: 25,
-      employeeCount: { fullTime: 10, partTime: 2 },
-      totalStaff: { fullTime: 3, partTime: 2 }
-    }
+    _id: '44fdb9b9-df83-4492-8f71-b6ef648aa312',
+    name: 'Fourth Coffee | Storage Solution Gallery - Port Camilla',
+    storeFeatures: 222
+  },
+  {
+    _id: '728c068a-638c-40af-9172-8ccfa7dddb49',
+    name: 'Contoso, Ltd. | Book Store - Lake Myron',
+    storeFeatures: 239
+  },
+  {
+    _id: 'a2b54e5c-36cd-4a73-b547-84e21d91164e',
+    name: 'Contoso, Ltd. | Baby Products Corner - Port Jerrold',
+    storeFeatures: 126
+  },
+  {
+    _id: 'dda2a7d2-6984-40cc-bbea-4cbfbc06d8a3',
+    name: 'Contoso, Ltd. | Home Improvement Closet - Jaskolskiview',
+    storeFeatures: 107
   }
 ]
 
