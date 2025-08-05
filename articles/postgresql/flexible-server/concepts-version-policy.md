@@ -122,7 +122,7 @@ A: Yes, but after the grace period, you're automatically enrolled in paid Extend
 
 **Q: Can my applications break during a major version upgrade?**
 
-A: Azure provides pre-upgrade validation checks (PVC) to identify common issues such as extension compatibility and parameter conflicts. We recommend testing upgrades in nonproduction environments. Azure is also investing in Blue/Green deployments to enable near-zero-downtime upgrades.
+A: Azure provides preupgrade validation checks (PVC) to identify common issues such as extension compatibility and parameter conflicts. We recommend testing upgrades in nonproduction environments. Azure is also investing in Blue/Green deployments to enable near-zero-downtime upgrades.
 
 **Q: How do I know if my server is in Extended Support?**
 
