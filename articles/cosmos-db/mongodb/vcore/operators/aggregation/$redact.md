@@ -1,6 +1,6 @@
 ---
-title: $redact usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $redact
+titleSuffix: Overview of the $redact operation in Azure Cosmos DB for MongoDB (vCore)
 description: Filters the content of the documents based on access rights.
 author: gahl-levy
 ms.author: gahllevy
@@ -25,10 +25,121 @@ The `$redact` stage in aggregation pipeline is used to filter fields of the docu
 | --- | --- |
 | **`<expression>`** | A valid MongoDB expression that evaluates to one of the following: `$$DESCEND`, `$$PRUNE`, or `$$KEEP`. These variables determine whether to keep, remove, or traverse deeper into the document. |
 
-## Example(s)
+## Examples
+
+Consider this sample document from the stores collection.
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
 
 ### Example 1: Redacting sensitive information
-The following aggregation pipeline uses `$redact` to filter out the `promotionEvents` field for documents where the `discountPercentage` in a promotion exceeds 15%.
+To filter out the `promotionEvents` field for documents where the `discountPercentage` in a promotion exceeds 15%.
 
 ```javascript
 db.collection.aggregate([
@@ -47,7 +158,7 @@ db.collection.aggregate([
 ```
 
 ### Example 2: Restricting access based on tags
-The following example removes all documents that contain the tag `#MembershipDeals`.
+To remove all documents that contain the tag `#MembershipDeals`.
 
 ```javascript
 db.collection.aggregate([

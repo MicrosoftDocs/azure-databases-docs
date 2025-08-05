@@ -1,6 +1,6 @@
 ---
-title: $documents (aggregation)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $documents
+titleSuffix: Overview of the $documents operation in Azure Cosmos DB for MongoDB (vCore)
 description: The $documents stage creates a pipeline from a set of provided documents.
 author: sandeepsnairms
 ms.author: sandnair
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 06/09/2025
 ---
 
-# $documents (aggregation)
+# $documents
 
 The `$documents` aggregation pipeline stage is used to create a pipeline from a set of provided documents. This stage is particularly useful when you want to process specific documents without querying a collection.
 
@@ -164,7 +164,7 @@ This query would return the following document.
 ## Limitations
 
 - The $documents stage is only supported in database-level aggregation pipelines.
-It must be the first stage in the pipeline to function correctly.
+- It must be the first stage in the pipeline to function correctly.
 
 ## Related content
 
