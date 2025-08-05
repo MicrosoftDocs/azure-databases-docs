@@ -24,27 +24,27 @@ The following tables identify the services and tools you can use to plan for dat
 
 ## Business justification phase
 
-| Source | Target | Discover /<br />Inventory | Target and SKU<br />recommendation | TCO/ROI and<br />Business case |
-| --- | --- | --- | --- | --- |
-| SQL Server | Azure SQL Database | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Cloudamize*](https://cloudamize.com/) | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Azure SQL Migration extension](migration-using-azure-data-studio.md)<br />[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br />[Cloudamize*](https://cloudamize.com/) | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| SQL Server | Azure SQL Managed Instance | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Cloudamize*](https://cloudamize.com/) | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Azure SQL Migration extension](migration-using-azure-data-studio.md)<br />[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br />[Cloudamize*](https://cloudamize.com/) | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| SQL Server | SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Cloudamize*](https://cloudamize.com/) | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Azure SQL Migration extension](migration-using-azure-data-studio.md)<br />[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br />[Cloudamize*](https://cloudamize.com/) | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| SQL Server | Azure Synapse Analytics | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Cloudamize*](https://cloudamize.com/) | | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| Amazon RDS for SQL Server | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Azure SQL Migration extension](migration-using-azure-data-studio.md) | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| Oracle | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [SSMA](/sql/ssma/sql-server-migration-assistant) | [SSMA](/sql/ssma/sql-server-migration-assistant)<br />[MigVisor*](https://solutionshub.epam.com/solution/migvisor-by-epam) | |
-| Oracle | Azure Synapse Analytics | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant) | |
-| Oracle | Azure Database for PostgreSQL flexible server | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | | |
-| MongoDB | Azure Cosmos DB | [Cloudamize*](https://cloudamize.com/) | [Cloudamize*](https://cloudamize.com/) | |
-| Cassandra | Azure Cosmos DB | | | |
-| MySQL | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant)<br />[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/) | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| MySQL | Azure Database for MySQL | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| Amazon RDS for MySQL | Azure Database for MySQL | | | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| PostgreSQL | Azure Database for PostgreSQL flexible server | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| Amazon RDS for PostgreSQL | Azure Database for PostgreSQL flexible server | | | [TCO Calculator](https://azure.microsoft.com/pricing/tco/calculator/) |
-| DB2 | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant) | |
-| Access | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant) | |
-| Sybase - SAP ASE | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant) | |
-| Sybase - SAP IQ | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | | | |
+| Source | Target | Discover /<br />Inventory | Target and SKU<br />recommendation |
+| --- | --- | --- | --- |
+| SQL Server | Azure SQL Database | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Cloudamize*](https://cloudamize.com/) | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Azure SQL Migration extension](migration-using-azure-data-studio.md)<br />[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br />[Cloudamize*](https://cloudamize.com/) |
+| SQL Server | Azure SQL Managed Instance | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Cloudamize*](https://cloudamize.com/) | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Azure SQL Migration extension](migration-using-azure-data-studio.md)<br />[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br />[Cloudamize*](https://cloudamize.com/) |
+| SQL Server | SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Cloudamize*](https://cloudamize.com/) | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Azure SQL Migration extension](migration-using-azure-data-studio.md)<br />[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br />[Cloudamize*](https://cloudamize.com/) |
+| SQL Server | Azure Synapse Analytics | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Cloudamize*](https://cloudamize.com/) | |
+| Amazon RDS for SQL Server | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/)<br />[Azure SQL Migration extension](migration-using-azure-data-studio.md) |
+| Oracle | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [SSMA](/sql/ssma/sql-server-migration-assistant) | [SSMA](/sql/ssma/sql-server-migration-assistant)<br />[MigVisor*](https://solutionshub.epam.com/solution/migvisor-by-epam) |
+| Oracle | Azure Synapse Analytics | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant) |
+| Oracle | Azure Database for PostgreSQL flexible server | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | |
+| MongoDB | Azure Cosmos DB | [Cloudamize*](https://cloudamize.com/) | [Cloudamize*](https://cloudamize.com/) |
+| Cassandra | Azure Cosmos DB | | |
+| MySQL | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant)<br />[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/) |
+| MySQL | Azure Database for MySQL | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | |
+| Amazon RDS for MySQL | Azure Database for MySQL | | |
+| PostgreSQL | Azure Database for PostgreSQL flexible server | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | |
+| Amazon RDS for PostgreSQL | Azure Database for PostgreSQL flexible server | | |
+| DB2 | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant) |
+| Access | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant) |
+| Sybase - SAP ASE | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [SSMA](/sql/ssma/sql-server-migration-assistant) |
+| Sybase - SAP IQ | Azure SQL Database, Azure SQL Managed Instance, SQL Server on Azure VM | | |
 
 ## Premigration phase
 

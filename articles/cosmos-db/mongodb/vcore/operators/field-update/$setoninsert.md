@@ -1,6 +1,6 @@
 ---
-  title: $setOnInsert (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $setOnInsert
+  titleSuffix: Overview of the $setOnInsert operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $setOnInsert operator sets field values only when an upsert operation results in an insert of a new document.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $setOnInsert (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $setOnInsert
 
 The `$setOnInsert` operator is used to set field values only when an upsert operation results in the insertion of a new document. If the document already exists and is being updated, the `$setOnInsert` operator has no effect. This operator is particularly useful for setting default values or initialization data that should only be applied when creating new documents.
 
@@ -32,14 +30,14 @@ The syntax for the `$setOnInsert` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to set only on insert. Can be a top-level field or use dot notation for nested fields. |
 | **`value`** | The value to assign to the field only when inserting a new document. Can be any valid BSON type. |
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset for upsert operations.
+Consider this sample document from the stores collection.
 
 ### Example 1: Basic $setOnInsert usage
 
@@ -65,7 +63,8 @@ db.stores.updateOne(
   { upsert: true }
 )
 ```
-Output:
+Sample Output
+
 ```json
 {
   acknowledged: true,

@@ -1,6 +1,6 @@
 ---
-title: $sort (aggregation)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $sort
+titleSuffix: Overview of the $sort operator in Azure Cosmos DB for MongoDB vCore
 description: The $sort stage in the aggregation pipeline is used to order the documents in the pipeline by a specified field or fields.
 author: gahl-levy
 ms.author: gahllevy
@@ -10,13 +10,13 @@ ms.topic: language-reference
 ms.date: 08/27/2024
 ---
 
-# $sort (aggregation)
+# $sort
 The $sort stage in the aggregation pipeline is used to order the documents in the pipeline by a specified field or fields. This stage helps you sort data, like arranging sales by amount or events by date.
 
 ## Syntax
 The syntax for the $sort stage is as follows:
 
-```json
+```javascript
 {
   $sort: { <field1>: <sort order>, <field2>: <sort order>, ... }
 }
@@ -24,16 +24,127 @@ The syntax for the $sort stage is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field to sort by |
 | **`sort order`** | The order in which we should sort the field. 1 for ascending order and -1 for descending order. |
 
 ## Examples
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
 ### Example 1: Sorting by Total Sales in Descending Order
 To sort the sales categories by their total sales in descending order:
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $unwind: "$store.sales.salesByCategory"
@@ -96,7 +207,7 @@ Sample output
 ### Example 2: Sorting by Event Start Date in Ascending Order
 To sort the promotion events by their start dates in ascending order:
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $unwind: "$store.promotionEvents"

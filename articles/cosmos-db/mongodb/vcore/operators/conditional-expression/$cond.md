@@ -1,6 +1,6 @@
 --- 
-  title:  $cond (conditional expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title:  $cond
+  titleSuffix: Overview of the $cond operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $cond operator is used to evaluate a condition and return one of two expressions based on the result. 
   author: sandeepsnairms
   ms.author: sandnair
@@ -10,7 +10,7 @@
   ms.date: 09/27/2024
 ---
 
-# $cond (conditional expression)
+# $cond
 
 The `$cond` operator is used to evaluate a condition and return one of two expressions based on the result. It's similar to the ternary operator in many programming languages. The `$cond` operator can be used within aggregation pipelines to add conditional logic to your queries.
 
@@ -30,7 +30,7 @@ The basic syntax for the `$cond` operator is:
 
 ### Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **if**| A boolean expression that is evaluated.|
 | **then**| The expression to return if the `if` condition evaluates to true.|
@@ -38,7 +38,7 @@ The basic syntax for the `$cond` operator is:
 
 ## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
 
 ```json
 {
