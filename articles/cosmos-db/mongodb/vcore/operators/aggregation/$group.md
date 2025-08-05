@@ -1,6 +1,6 @@
 ---
-  title: $group (aggregation)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $group
+  titleSuffix: Overview of the $group operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $group stage groups documents by specified identifier expressions and applies accumulator expressions.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,9 +10,7 @@
   ms.date: 06/20/2025
 ---
 
-# $group (aggregation)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $group
 
 The `$group` aggregation stage groups documents by specified identifier expressions and applies accumulator expressions to create computed fields for each group. This stage is essential for data aggregation and summarization operations.
 
@@ -33,16 +31,69 @@ The syntax for the `$group` stage is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`_id`** | Required. The expression to group by. Use null to calculate accumulated values for all input documents. |
 | **`field`** | Optional. Computed using accumulator operators like $sum, $avg, $max, $min, $count, etc. |
 
 ## Example
 
-### Example 1: Group by city and analyze staff distribution
+Consider this sample document from the stores collection.
 
-The example groups stores by city and analyzes the staffing patterns across different locations.
+```json
+{
+  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+  "name": "First Up Consultants | Bed and Bath Center - South Amir",
+  "location": {
+    "lat": 60.7954,
+    "lon": -142.0012
+  },
+  "staff": {
+    "totalStaff": {
+      "fullTime": 18,
+      "partTime": 17
+    }
+  },
+  "sales": {
+    "totalSales": 37701,
+    "salesByCategory": [
+      {
+        "categoryName": "Mattress Toppers",
+        "totalSales": 37701
+      }
+    ]
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Price Drop Palooza",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 21
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 30
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "Bath Accessories",
+          "discountPercentage": 18
+        },
+        {
+          "categoryName": "Pillow Top Mattresses",
+          "discountPercentage": 17
+        }
+      ]
+    }
+  ]
+}
+```
+
+To group stores by city and analyzes the staffing patterns across different locations.
 
 ```javascript
 db.stores.aggregate([

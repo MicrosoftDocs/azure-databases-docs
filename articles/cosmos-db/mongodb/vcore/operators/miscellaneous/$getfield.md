@@ -1,6 +1,6 @@
 ---
-  title: $getField (miscellaneous expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $getField
+  titleSuffix: Overview of the $getField operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $getField operator allows retrieving the value of a specified field from a document.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $getField (miscellaneous expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $getField
 
 The `$getField` operator is used to retrieve the value of a specified field from a document. It's useful when working with dynamic field names or when you need to access fields programmatically within aggregation pipelines.
 
@@ -39,14 +37,14 @@ Or the shorthand syntax:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | A string representing the name of the field to retrieve. |
 | **`input`** | The document from which the field is retrieved. If not specified, defaults to the current document (`$$ROOT`). |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: $pull (array update) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $pull
+titleSuffix: Overview of the $pull operation in Azure Cosmos DB for MongoDB (vCore)
 description: Removes all instances of a value from an array.
 author: sandeepsnairms
 ms.author: sandnair
@@ -22,14 +22,14 @@ The `$pull` operator is used to remove all instances of a specified value or val
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<field>`** | The field from which to remove one or more values. |
 | **`<value|condition>`** | The value or condition to remove from the array. |
 
 ## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -132,10 +132,6 @@ This query would return the following document.
   "upsertedCount": 0
 }
 ```
-
-## Limitations
-
-Delete if no limitations/deviations from standard Mongo command, else update as necessary.
 
 ## Related content
 

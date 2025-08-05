@@ -1,6 +1,6 @@
 ---
-  title: $lookup (aggregation) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $lookup
+  titleSuffix: Overview of the $lookup operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $lookup stage in the Aggregation Framework is used to perform left outer joins with other collections.
   author: sandeepsnairms
   ms.author: sandnair
@@ -10,8 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $lookup (aggregation)
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $lookup
 
 The `$lookup` stage in the Aggregation Framework is used to perform left outer joins with other collections. It allows you to combine documents from different collections based on a specified condition. This operator is useful for enriching documents with related data from other collections without having to perform multiple queries.
 
@@ -32,7 +31,7 @@ The syntax for the `$lookup` stage is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`from`** | The name of the collection to join with.|
 | **`localField`** | The field from the input documents that are matched with the `foreignField`.|
@@ -54,7 +53,8 @@ Let's say we have a `ratings` collection with two documents.
 }
 ```
 
-Let's understand the usage with the following sample json in stores collection.
+Consider this sample document from the stores collection.
+
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",

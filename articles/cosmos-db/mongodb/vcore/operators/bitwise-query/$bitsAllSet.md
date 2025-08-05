@@ -1,6 +1,6 @@
 ---
-  title: $bitsAllSet bitwise query object expression in Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $bitsAllSet
+  titleSuffix: Overview of the $bitsAllSet operator in Azure Cosmos DB for MongoDB (vCore)
   description: The bitsAllSet command is used to match documents where all the specified bit positions are set.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,46 +10,274 @@
   ms.date: 11/02/2024
 ---
 
-# $bitsAllSet as bitwise query operator
+# $bitsAllSet
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 The `$bitsAllSet` operator is used to match documents where all the specified bit positions are set (that is, are 1). This operator is useful for performing bitwise operations on fields that store integer values. It can be used in scenarios where you need to filter documents based on specific bits being set within an integer field.
 
 ## Syntax
 
-```json
+```javascript
 {
   <field>: { $bitsAllSet: <bitmask> }
 }
 ```
+## Parameters
 
-- `<field>`: The field in the document on which the bitwise operation is to be performed.
-- `<bitmask>`: A bitmask indicating which bits must be set in the field's value.
+| Parameter | Description |
+| --- | --- |
+| **`field`** | The field in the document on which the bitwise operation is to be performed.|
+| **`<bitmask>`** | A bitmask indicating which bits must be set in the field's value.|
 
 ## Example
 
-Consider a collection named `stores` that contains documents with various fields. To find documents where the `storeId` field has specific bits set, you can use the `$bitsAllSet` operator.
+Consider this sample document from the stores collection.
 
-### Example 1: Find stores with specific bits set in `storeId`
+```json
+{
+  _id: 'a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6',
+  name: 'Lakeshore Retail | Holiday Supply Hub - Marvinfort',
+  location: {
+    lat: -74.0427,
+    lon: 160.8154
+  },
+  staff: {
+    employeeCount: {
+      fullTime: 9,
+      partTime: 18
+    }
+  },
+  sales: {
+    salesByCategory: [
+      {
+        categoryName: 'Stockings',
+        totalSales: 25731
+      }
+    ],
+    revenue: 25731
+  },
+  promotionEvents: [
+    {
+      eventName: 'Mega Savings Extravaganza',
+      promotionalDates: {
+        startDate: {
+          Year: 2023,
+          Month: 6,
+          Day: 29
+        },
+        endDate: {
+          Year: 2023,
+          Month: 7,
+          Day: 7
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 16
+        },
+        {
+          categoryName: 'Tree Ornaments',
+          discountPercentage: 8
+        }
+      ]
+    },
+    {
+      eventName: 'Incredible Discount Days',
+      promotionalDates: {
+        startDate: {
+          Year: 2023,
+          Month: 9,
+          Day: 27
+        },
+        endDate: {
+          Year: 2023,
+          Month: 10,
+          Day: 4
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 11
+        },
+        {
+          categoryName: 'Holiday Cards',
+          discountPercentage: 9
+        }
+      ]
+    },
+    {
+      eventName: 'Massive Deal Mania',
+      promotionalDates: {
+        startDate: {
+          Year: 2023,
+          Month: 12,
+          Day: 26
+        },
+        endDate: {
+          Year: 2024,
+          Month: 1,
+          Day: 2
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Gift Bags',
+          discountPercentage: 21
+        },
+        {
+          categoryName: 'Bows',
+          discountPercentage: 19
+        }
+      ]
+    },
+    {
+      eventName: 'Super Saver Soiree',
+      promotionalDates: {
+        startDate: {
+          Year: 2024,
+          Month: 3,
+          Day: 25
+        },
+        endDate: {
+          Year: 2024,
+          Month: 4,
+          Day: 1
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Tree Ornaments',
+          discountPercentage: 15
+        },
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 14
+        }
+      ]
+    },
+    {
+      eventName: 'Fantastic Savings Fiesta',
+      promotionalDates: {
+        startDate: {
+          Year: 2024,
+          Month: 6,
+          Day: 23
+        },
+        endDate: {
+          Year: 2024,
+          Month: 6,
+          Day: 30
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 24
+        },
+        {
+          categoryName: 'Gift Wrap',
+          discountPercentage: 16
+        }
+      ]
+    },
+    {
+      eventName: 'Price Plunge Party',
+      promotionalDates: {
+        startDate: {
+          Year: 2024,
+          Month: 9,
+          Day: 21
+        },
+        endDate: {
+          Year: 2024,
+          Month: 9,
+          Day: 28
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Holiday Tableware',
+          discountPercentage: 13
+        },
+        {
+          categoryName: 'Holiday Cards',
+          discountPercentage: 11
+        }
+      ]
+    }
+  ],
+  company: 'Lakeshore Retail',
+  city: 'Marvinfort',
+  storeOpeningDate: 2024-10-01T18:24:02.586Z,
+  lastUpdated: Timestamp({ t: 1730485442, i: 1 }),
+  storeFeatures: 38
+}
+```
+
+The `storeFeatures` field is a bitmask integer representing various store capabilities. Each bit corresponds to a feature:
+
+| Bit | Value | Feature                 |
+|-----|-------|--------------------------|
+| 0   | 1     | In-Store Pickup          |
+| 1   | 2     | Parking                  |
+| 2   | 4     | Wheelchair Access        |
+| 3   | 8     | Open 24 Hours            |
+| 4   | 16    | Pet-Friendly             |
+| 5   | 32    | Free Wi-Fi               |
+| 6   | 64    | Restrooms                |
+| 7   | 128   | Home Delivery            |
+
+
+
+Find stores that **have parking AND restrooms** (bits 1 and 6)
 
 ```javascript
 db.stores.find({
-  "store.storeId": { $bitsAllSet: 0b00000011 }
-})
+  storeFeatures: { $bitsAllSet: [1, 6] }},
+  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
 ```
 
-This query would return documents where the `storeId` field has both the first and second bits set.
-
-### Example 2: Find stores with specific bits set in `totalStaff.fullTime`
-
+Equivalent:
 ```javascript
 db.stores.find({
-  "store.staff.totalStaff.fullTime": { $bitsAllSet: 0b00001111 }
-})
+  storeFeatures: { $bitsAllSet: 66 }},
+  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
 ```
 
-This query would return documents where the `fullTime` field in `totalStaff` has the first 4 bits set.
+Sample output:
+
+```json
+[
+  {
+    _id: '7e53ca0f-6e24-4177-966c-fe62a11e9af5',
+    name: 'Contoso, Ltd. | Office Supply Deals - South Shana',
+    storeFeatures: 86
+  },
+  {
+    _id: '44fdb9b9-df83-4492-8f71-b6ef648aa312',
+    name: 'Fourth Coffee | Storage Solution Gallery - Port Camilla',
+    storeFeatures: 222
+  },
+  {
+    _id: '728c068a-638c-40af-9172-8ccfa7dddb49',
+    name: 'Contoso, Ltd. | Book Store - Lake Myron',
+    storeFeatures: 239
+  },
+  {
+    _id: 'a2b54e5c-36cd-4a73-b547-84e21d91164e',
+    name: 'Contoso, Ltd. | Baby Products Corner - Port Jerrold',
+    storeFeatures: 126
+  },
+  {
+    _id: 'dda2a7d2-6984-40cc-bbea-4cbfbc06d8a3',
+    name: 'Contoso, Ltd. | Home Improvement Closet - Jaskolskiview',
+    storeFeatures: 107
+  }
+]
+
+```
 
 
 ## Related content

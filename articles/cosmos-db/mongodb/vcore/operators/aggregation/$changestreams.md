@@ -1,6 +1,6 @@
 ---
-  title: $changeStream (aggregation)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $changeStream
+  titleSuffix: Overview of the $changeStream operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $changeStream stage opens a change stream cursor to track data changes in real-time.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,9 +10,7 @@
   ms.date: 06/23/2025
 ---
 
-# $changeStream (aggregation)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $changeStream
 
 The `$changeStream` aggregation stage opens a change stream cursor that tracks data changes in real-time. This stage enables applications to react to insert, update, delete, and other operations as they occur in the collection.
 
@@ -36,7 +34,7 @@ The syntax for the `$changeStream` stage is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`allChangesForCluster`** | Optional. Boolean. If true, returns changes for the entire cluster. Default is false. |
 | **`fullDocument`** | Optional. String. Determines what to return for update operations. Options: 'default', 'updateLookup', 'whenAvailable', 'required'. |
@@ -48,7 +46,7 @@ The syntax for the `$changeStream` stage is as follows:
 
 ## Example
 
-Let's understand the usage with the `stores` dataset for monitoring real-time changes.
+Let's understand the usage with the stores collection for monitoring real-time changes.
 
 ### Example 1: Monitor all changes in stores collection
 
