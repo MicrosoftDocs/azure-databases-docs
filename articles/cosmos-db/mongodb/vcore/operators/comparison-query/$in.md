@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 08/04/2025
 ---
 
 # $in
@@ -31,7 +31,9 @@ The `$in` operator matches values of a field against an array of possible values
 | **`field`** | The field to match|
 | **`[listOfValues]`** | An array of values to match against the specified field|
 
-Consider this sample document from the stores collection.
+## Examples
+
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
@@ -97,92 +99,122 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1 - Find a store with promotion events offering a discount percentage of either 10%, 15% or 20%
+### Example 1 - Use $in operator as comparison-query to find a store with specific categories of promotions
 
-To find a store with promotion events across any sales category with discounts of either 10%, 15%, or 20%, first run a query using $in on the nested discountPercentage field. Then project only the name and discount offered by the store and limit the result to a single document from the result set. 
-
-```javascript
-db.stores.find({
-    "promotionEvents.discounts.discountPercentage": {
-        "$in": [10, 15, 20]
-    }
-}, {
-    "name": 1,
-    "promotionEvents.discounts.discountPercentage": 1
-}, {
-    "limit": 1
-})
-```
-
-This returns the following result:
-
-```json
-[
-    {
-        "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-        "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-        "promotionEvents": [
-          {
-            "discounts": [
-              { "discountPercentage": 14 },
-              { "discountPercentage": 6 },
-              { "discountPercentage": 21 },
-              { "discountPercentage": 21 },
-              { "discountPercentage": 5 },
-              { "discountPercentage": 22 }
-            ]
-          }
-        ]
-    }
-]
-```
-
-### Example 2 - Find a store with specific categories of promotions
-
-To find a store with discounts specifically for Smoked Salmon and Anklets, first run a query using $in on the nested categoryName array. Then project only the name and discount category offered by the store. Lastly, limit the results to a single document from the result set.
+The query finds stores that offer discounts in either "Smoked Salmon" or "Anklets" categories via promotion events.
 
 ```javascript
-db.stores.find({
+db.stores.find(
+  {
     "promotionEvents.discounts.categoryName": {
-        "$in": ["Smoked Salmon", "Anklets"]
+      "$in": ["Smoked Salmon", "Anklets"]
     }
-}, {
+  },
+  {
     "name": 1,
     "promotionEvents.discounts.categoryName": 1
-}, {
-    "limit": 1
-})
+  }
+).limit(1)
 ```
 
 This returns the following result:
 
 ```json
-[
+{
+  "_id": "48fcdab8-b961-480e-87a9-19ad880e9a0a",
+  "name": "Lakeshore Retail | Jewelry Collection - South Nicholas",
+  "promotionEvents": [
     {
-        "_id": "3f140a3f-6809-4b40-85b1-75657f5605b8",
-        "name": "Boulder Innovations | Jewelry Store - Littleborough",
-        "promotionEvents": [
-          {
-            "discounts": [ { "categoryName": "Watches" }, { "categoryName": "Rings" } ]
-          },
-          {
-            "discounts": [ { "categoryName": "Anklets" }, { "categoryName": "Earrings" } ]
-          },
-          {
-            "discounts": [ { "categoryName": "Rings" }, { "categoryName": "Anklets" } ]
-          },
-          {
-            "discounts": [ { "categoryName": "Earrings" }, { "categoryName": "Necklaces" } ]
-          },
-          {
-            "discounts": [ { "categoryName": "Charms" }, { "categoryName": "Bracelets" } ]
-          },
-          {
-            "discounts": [ { "categoryName": "Watches" }, { "categoryName": "Brooches" } ]
-          }
-        ]
+      "discounts": [
+        {"categoryName": "Anklets"},
+        {"categoryName": "Cufflinks"}
+      ]
+    },
+    {
+      "discounts": [
+        {"categoryName": "Anklets"},
+        {"categoryName": "Brooches"}
+      ]
+    },
+    {
+      "discounts": [
+        {"categoryName": "Rings"},
+        {"categoryName": "Bracelets"}
+      ]
+    },
+    {
+      "discounts": [
+        {"categoryName": "Charms"},
+        {"categoryName": "Bracelets"}
+      ]
+    },
+    {
+      "discounts": [
+        {"categoryName": "Watches"},
+        {"categoryName": "Pendants"}
+      ]
     }
-]
+  ]
+}
+```
+
+### Example 2 - Use $in operator as array-expression in an array for a specified value or set of values
+
+The query searches for the specified store and filters documents where at least one `discountPercentage` within any `promotionEvents.discounts` is either 15 or 20. It uses a dot notation path and the $in operator to match nested discount values across the array hierarchy.
+
+```javascript
+db.stores.find(
+  {
+    "_id": "48fcdab8-b961-480e-87a9-19ad880e9a0a",
+    "promotionEvents.discounts.discountPercentage": { $in: [15, 20] }
+  },
+  {
+    "_id": 1,
+    "name": 1,
+    "promotionEvents.discounts": 1
+  }
+)
+```
+
+The query returns document where the `discounts` array contains any element with a `discountPercentage` of either `15` or `20`, and only shows the `complete discounts array` for those documents.
+
+```json
+{
+  "_id": "48fcdab8-b961-480e-87a9-19ad880e9a0a",
+  "name": "Lakeshore Retail | Jewelry Collection - South Nicholas",
+  "promotionEvents": [
+    {
+      "discounts": [
+        { "categoryName": "Anklets", "discountPercentage": 12 },
+        { "categoryName": "Cufflinks", "discountPercentage": 9 }
+      ]
+    },
+    {
+      "discounts": [
+        { "categoryName": "Anklets", "discountPercentage": 23 },
+        { "categoryName": "Brooches", "discountPercentage": 12 }
+      ]
+    },
+    {
+      "discounts": [
+        { "categoryName": "Rings", "discountPercentage": 10 },
+        { "categoryName": "Bracelets", "discountPercentage": 21 }
+      ]
+    },
+    {
+      "discounts": [
+        { "categoryName": "Charms", "discountPercentage": 9 },
+        { "categoryName": "Bracelets", "discountPercentage": 13 }
+      ]
+    },
+    {
+      "discounts": [
+        { "categoryName": "Watches", "discountPercentage": 20 },
+        { "categoryName": "Pendants", "discountPercentage": 7 }
+      ]
+    }
+  ]
+}
 ```
 
 ## Related content

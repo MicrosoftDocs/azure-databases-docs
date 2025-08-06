@@ -80,20 +80,18 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Updating Discount Percentages
 
-To update the discount percentage for all categories in the "Summer Sale" promotion event. You can use the $[] operator to achieve this:
+To update to all elements in the discounts array inside each promotion event.:
 
 ```javascript
-db.stores.update(
-  { "store.storeId": "12345", "store.promotionEvents.eventName": "Summer Sale" },
+db.stores.updateOne(
+  { _id: "905d1939-e03a-413e-a9c4-221f74055aac" },
   {
-    $set: {
-      "store.promotionEvents.$[event].discounts.$[].discountPercentage": 5
+    $inc: {
+      "promotionEvents.$[].discounts.$[].discountPercentage": 5
     }
-  },
-  {
-    arrayFilters: [{ "event.eventName": "Summer Sale" }]
   }
 )
+
 ```
 
 ### Example 2: Updating Sales by Category
@@ -102,10 +100,10 @@ To increase the total sales for all categories by 10%, you can use the $[] opera
 
 ```javascript
 db.stores.update(
-  { "store.storeId": "12345" },
+  { _id: "905d1939-e03a-413e-a9c4-221f74055aac" },
   {
     $mul: {
-      "store.sales.salesByCategory.$[].totalSales": 1.10
+      "sales.salesByCategory.$[].totalSales": 1.10
     }
   }
 )

@@ -12,7 +12,7 @@ ms.date: 06/24/2025
 
 # $dayOfMonth
 
-The `$dayOfMonth` operator extracts the day of the month (1–31) from a date value. It is useful for grouping or filtering documents based on the day of the month.
+The `$dayOfMonth` operator extracts the day of the month (1–31) from a date value. It's useful for grouping or filtering documents based on the day of the month.
 
 ## Syntax
 
@@ -28,31 +28,94 @@ The `$dayOfMonth` operator extracts the day of the month (1–31) from a date va
 
 ## Examples
 
-We'll use this document from the `stores` collection to demonstrate how `$dayOfMonth` works:
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
-  "_id": "store-01",
-  "name": "Time Travel Mart",
-  "metadata": {
-    "lastUpdated": ISODate("2024-07-21T14:38:00Z")
-  }
+  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+  "name": "Relecloud | Toy Collection - North Jaylan",
+  "location": {
+    "lat": 2.0797,
+    "lon": -94.4134
+  },
+  "staff": {
+    "employeeCount": {
+      "fullTime": 7,
+      "partTime": 4
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      {
+        "categoryName": "Educational Toys",
+        "totalSales": 3299
+      }
+    ],
+    "revenue": 3299
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Massive Markdown Mania",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 21
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 29
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "Remote Control Toys",
+          "discountPercentage": 6
+        },
+        {
+          "categoryName": "Building Sets",
+          "discountPercentage": 21
+        }
+      ]
+    }
+  ],
+  "company": "Relecloud",
+  "city": "North Jaylan",
+  "lastUpdated": {
+    "$timestamp": {
+      "t": 1733313006,
+      "i": 1
+    }
+  },
+  "storeOpeningDate": "2024-09-05T11:50:06.549Z"
 }
 ```
 
 ### Example 1: Extract day of the month
 
-This example extracts the day of the month from the `lastUpdated` field.
+The query uses the `$dayOfMonth` operator to extract the day of the month (1–31) from the `lastUpdated` timestamp. It helps in isolating just the date component for reporting or grouping.
 
 ```javascript
 db.stores.aggregate([
   {
+    $match: { _id: "e6410bb3-843d-4fa6-8c70-7472925f6d0a" }
+  },
+  {
     $project: {
       _id: 0,
-      dayOfMonth: { $dayOfMonth: "$metadata.lastUpdated" }
+      dayOfMonth: { $dayOfMonth: "$lastUpdated" }
     }
   }
 ])
+```
+
+The result displays the numeric day of the month on which `lastUpdated` occurred. In current scenario, 4 as the date was "2024-12-04".
+
+```json
+{
+  "dayOfMonth": "4"
+}
 ```
 
 ## Related content
