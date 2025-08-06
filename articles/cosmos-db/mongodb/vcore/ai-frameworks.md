@@ -14,7 +14,7 @@ appliesto:
   - ✅ MongoDB vCore
 ---
 
-# Azure Cosmos DB integrations for AI applications
+# Azure Cosmos DB for MongoDB integrations for AI applications
 
 Azure Cosmos DB seamlessly integrates with leading large language model (LLM) orchestration packages like [Semantic Kernel](https://github.com/microsoft/semantic-kernel) and [LangChain](https://www.langchain.com/), enabling developers to harness the power of advanced AI capabilities within their applications. These orchestration packages can streamline the management and use of LLMs, embedding models, and databases, making it even easier to develop Generative AI applications.
 
@@ -28,12 +28,11 @@ Azure Cosmos DB seamlessly integrates with leading large language model (LLM) or
 ## Related content
 
 - [Azure Cosmos DB Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)
-- [Vector Search with Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
-- [Tokens](tokens.md)
-- [Vector Embeddings](vector-embeddings.md)
-- [Retrieval Augmented Generated (RAG)](rag.md)
+- [Vector Search with Azure Cosmos DB for MongoDB](./vector-search.md)
+- [Tokens](../../gen-ai/tokens.md)
+- [Vector Embeddings](../../gen-ai/vector-embeddings.md)
+- [Retrieval Augmented Generated (RAG)](../../gen-ai/rag.md)
 - [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
-- [90-day Free Trial and up to $6,000 in throughput credits with Azure AI Advantage](../ai-advantage.md)
 
 ## Next step
 
