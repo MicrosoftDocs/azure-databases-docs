@@ -20,14 +20,14 @@ Azure Cosmos DB for MongoDB (vCore) seamlessly integrates with leading large lan
 
 | Integration Tool | Description | Language | Type of Integration |
 | --- | --- | --- | --- |
-| **[LangChain](https://www.langchain.com/)** | A framework for building context-aware and reasoning-based applications powered by large language models. It provides a comprehensive set of tools for common AI workflows. | [Python](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/) | Vector Store, Chat History, Semantic Cache |
+| **[LangChain](https://www.langchain.com/)** | A framework for building context-aware and reasoning-based applications powered by large language models (LLM). | [Python](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/) | Vector Store, Chat History, Semantic Cache |
 | | | [JavaScript](https://js.langchain.com/docs/integrations/vectorstores/azure_cosmosdb_mongodb/) | Vector Store, Chat History |
 | | | [Java](https://docs.langchain4j.dev/integrations/embedding-stores/azure-cosmos-mongo-vcore/) | Chat History |
-| **[Semantic Kernel](https://github.com/microsoft/semantic-kernel)** | An open-source framework by Microsoft that integrates conventional programming languages with AI models. It's designed for orchestrating complex AI workflows and agents. | [Python](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-python) | Vector Store |
+| **[Semantic Kernel](https://github.com/microsoft/semantic-kernel)** | An open-source framework by Microsoft that integrates conventional programming languages with AI models. It's designed for orchestrating complex AI agents. | [Python](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-python) | Vector Store |
 | | | [.NET](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-csharp) | Vector Store |
-| **[LlamaIndex](https://www.llamaindex.ai/)** | A data framework for LLM applications that connects your custom data sources to large language models. It's ideal for building RAG (Retrieval-Augmented Generation) applications over private or domain-specific data. | [Python](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo/) | Vector Store |
+| **[LlamaIndex](https://www.llamaindex.ai/)** | A data framework for LLM applications that connects your custom data sources to large language models (LLM). It's ideal for building RAG (Retrieval-Augmented Generation) applications over domain-specific data. | [Python](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo/) | Vector Store |
 | | | TypeScript | Vector Store |
-| **[CosmosAIGraph](https://aka.ms/cosmosaigraph)** | A solution that leverages Azure Cosmos DB for creating AI-powered knowledge graphs. It helps uncover complex relationships and insights within semi-structured data. | | [Quickstart](https://github.com/AzureCosmosDB/CosmosAIGraph/tree/main/impl) |
+| **[CosmosAIGraph](https://aka.ms/cosmosaigraph)** | A solution that leverages Azure Cosmos DB for creating AI-powered knowledge graphs. It helps uncover complex relationships within semi-structured data. | | [Quickstart](https://github.com/AzureCosmosDB/CosmosAIGraph/tree/main/impl) |
 
 ## Related content
 
