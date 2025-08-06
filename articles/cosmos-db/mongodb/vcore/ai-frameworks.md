@@ -21,7 +21,7 @@ Azure Cosmos DB for MongoDB (vCore) seamlessly integrates with leading large lan
 | Integration Tool | Description | Language | Type of Integration |
 | --- | --- | --- | --- |
 | **[LangChain](https://www.langchain.com/)** | A framework for building context-aware and reasoning-based applications powered by large language models (LLM). | [Python](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/) | Vector Store, Chat History, Semantic Cache |
-| | | [JavaScript](https://js.langchain.com/docs/integrations/vectorstores/azure_cosmosdb_mongodb/) | Vector Store, Chat History |
+| | | [JavaScript](https://js.langchain.com/docs/integrations/vectorstores/azure_cosmosdb_mongodb/) | Vector Store, [Chat History](https://js.langchain.com/docs/integrations/platforms/microsoft#azure-cosmos-db-mongodb-vcore-chat-message-history) |
 | | | [Java](https://docs.langchain4j.dev/integrations/embedding-stores/azure-cosmos-mongo-vcore/) | Chat History |
 | **[Semantic Kernel](https://github.com/microsoft/semantic-kernel)** | An open-source framework by Microsoft that integrates conventional programming languages with AI models. It's designed for orchestrating complex AI agents. | [Python](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-python) | Vector Store |
 | | | [.NET](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-csharp) | Vector Store |
