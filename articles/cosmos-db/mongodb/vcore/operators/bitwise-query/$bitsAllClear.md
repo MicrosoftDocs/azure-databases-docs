@@ -16,6 +16,23 @@ The `$bitsAllClear` operator is used to match documents where all the bit positi
 
 ## Syntax
 
+```javascript
+{
+  <field>: { $bitsAllClear: <bitmask> }
+}
+```
+## Parameters
+
+| Parameter | Description |
+| --- | --- |
+| **`field`** | The field in the document on which the bitwise operation is to be performed.|
+| **`<bitmask>`** | A bitmask indicating which bits must be set in the field's value.|
+
+## Example
+
+Consider this sample document from the stores collection.
+
+
 ```json
 {
   _id: 'a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6',
@@ -29,7 +46,168 @@ The `$bitsAllClear` operator is used to match documents where all the bit positi
       fullTime: 9,
       partTime: 18
     }
-  }, 
+  },
+  sales: {
+    salesByCategory: [
+      {
+        categoryName: 'Stockings',
+        totalSales: 25731
+      }
+    ],
+    revenue: 25731
+  },
+  promotionEvents: [
+    {
+      eventName: 'Mega Savings Extravaganza',
+      promotionalDates: {
+        startDate: {
+          Year: 2023,
+          Month: 6,
+          Day: 29
+        },
+        endDate: {
+          Year: 2023,
+          Month: 7,
+          Day: 7
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 16
+        },
+        {
+          categoryName: 'Tree Ornaments',
+          discountPercentage: 8
+        }
+      ]
+    },
+    {
+      eventName: 'Incredible Discount Days',
+      promotionalDates: {
+        startDate: {
+          Year: 2023,
+          Month: 9,
+          Day: 27
+        },
+        endDate: {
+          Year: 2023,
+          Month: 10,
+          Day: 4
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 11
+        },
+        {
+          categoryName: 'Holiday Cards',
+          discountPercentage: 9
+        }
+      ]
+    },
+    {
+      eventName: 'Massive Deal Mania',
+      promotionalDates: {
+        startDate: {
+          Year: 2023,
+          Month: 12,
+          Day: 26
+        },
+        endDate: {
+          Year: 2024,
+          Month: 1,
+          Day: 2
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Gift Bags',
+          discountPercentage: 21
+        },
+        {
+          categoryName: 'Bows',
+          discountPercentage: 19
+        }
+      ]
+    },
+    {
+      eventName: 'Super Saver Soiree',
+      promotionalDates: {
+        startDate: {
+          Year: 2024,
+          Month: 3,
+          Day: 25
+        },
+        endDate: {
+          Year: 2024,
+          Month: 4,
+          Day: 1
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Tree Ornaments',
+          discountPercentage: 15
+        },
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 14
+        }
+      ]
+    },
+    {
+      eventName: 'Fantastic Savings Fiesta',
+      promotionalDates: {
+        startDate: {
+          Year: 2024,
+          Month: 6,
+          Day: 23
+        },
+        endDate: {
+          Year: 2024,
+          Month: 6,
+          Day: 30
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Stockings',
+          discountPercentage: 24
+        },
+        {
+          categoryName: 'Gift Wrap',
+          discountPercentage: 16
+        }
+      ]
+    },
+    {
+      eventName: 'Price Plunge Party',
+      promotionalDates: {
+        startDate: {
+          Year: 2024,
+          Month: 9,
+          Day: 21
+        },
+        endDate: {
+          Year: 2024,
+          Month: 9,
+          Day: 28
+        }
+      },
+      discounts: [
+        {
+          categoryName: 'Holiday Tableware',
+          discountPercentage: 13
+        },
+        {
+          categoryName: 'Holiday Cards',
+          discountPercentage: 11
+        }
+      ]
+    }
+  ],
   company: 'Lakeshore Retail',
   city: 'Marvinfort',
   storeOpeningDate: 2024-10-01T18:24:02.586Z,
