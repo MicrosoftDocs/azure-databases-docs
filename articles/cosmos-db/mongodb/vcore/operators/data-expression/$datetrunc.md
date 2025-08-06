@@ -12,7 +12,7 @@ ms.date: 06/24/2025
 
 # $dateTrunc
 
-The `$dateTrunc` expression operator truncates a date to the nearest specified unit (e.g., hour, day, month). It is particularly useful when working with time-series data or when grouping data by specific time intervals. This operator can be used to simplify and standardize date calculations.
+The `$dateTrunc` expression operator truncates a date to the nearest specified unit (for example, hour, day, month). It's useful when working with time-series data or when grouping data by specific time intervals. This operator can be used to simplify and standardize date calculations.
 
 ## Syntax
 
@@ -32,29 +32,90 @@ The `$dateTrunc` expression operator truncates a date to the nearest specified u
 | --- | --- |
 | **`date`** | The date to truncate. |
 | **`unit`** | The unit to truncate the date to. Supported values include `year`, `month`, `week`, `day`, `hour`, `minute`, `second`, and `millisecond`. |
-| **`binSize`** | (Optional) The size of each bin for truncation. For example, if `binSize` is 2 and `unit` is `hour`, the date will be truncated to every 2 hours. |
+| **`binSize`** | (Optional) The size of each bin for truncation. For example, if `binSize` is 2 and `unit` is `hour`, the date is truncated to every 2 hours. |
 | **`timezone`** | (Optional) The timezone to use for truncation. Defaults to UTC if not specified. |
 
-## Example(s)
-We'll use this document from the `stores` collection to demonstrate how `$dateTrunc` works:
+## Example
+
+Let's understand the usage with sample json from `stores` dataset.
+
 ```json
 {
-  "_id": "store-01",
-  "name": "Time Travel Mart",
-  "metadata": {
-    "lastUpdated": ISODate("2024-07-21T14:38:00Z")
-  }
+  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+  "name": "Relecloud | Toy Collection - North Jaylan",
+  "location": {
+    "lat": 2.0797,
+    "lon": -94.4134
+  },
+  "staff": {
+    "employeeCount": {
+      "fullTime": 7,
+      "partTime": 4
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      {
+        "categoryName": "Educational Toys",
+        "totalSales": 3299
+      }
+    ],
+    "revenue": 3299
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Massive Markdown Mania",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 21
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 29
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "Remote Control Toys",
+          "discountPercentage": 6
+        },
+        {
+          "categoryName": "Building Sets",
+          "discountPercentage": 21
+        }
+      ]
+    }
+  ],
+  "company": "Relecloud",
+  "city": "North Jaylan",
+  "lastUpdated": {
+    "$timestamp": {
+      "t": 1733313006,
+      "i": 1
+    }
+  },
+  "storeOpeningDate": "2024-09-05T11:50:06.549Z"
 }
 ```
+
 ### Example 1: Truncate to the day
+
+The query uses `$dateTrunc` to truncate the `lastUpdated` timestamp to the start of the day (00:00:00) in UTC. The operator is useful for grouping or comparing data by calendar day regardless of time.
+
 ```javascript
 db.stores.aggregate([
+  {
+    $match: { _id: "e6410bb3-843d-4fa6-8c70-7472925f6d0a" }
+  },
   {
     $project: {
       _id: 0,
       truncatedToDay: {
         $dateTrunc: {
-          date: "$metadata.lastUpdated",
+          date: "$lastUpdated",
           unit: "day"
         }
       }
@@ -62,36 +123,30 @@ db.stores.aggregate([
   }
 ])
 ```
-This example normalizes all date and time values to the beginning of their respective day.
 
-### Example 2: Truncate to the hour in a specific timezone
+The example normalizes all date and time values to the beginning of their respective day.
+
+```json
+{
+  "truncatedToDay": "2024-11-29T00:00:00.000Z"
+}
+```
+
+### Example 2: Truncate to the start of the week
+
+The query uses `$dateTrunc` to round the `lastUpdated` timestamp down to the start of its week. It specifies Monday as the start of the week to ensure consistent calendar alignment.
+
 ```javascript
 db.stores.aggregate([
   {
-    $project: {
-      _id: 0,
-      truncatedToHour: {
-        $dateTrunc: {
-          date: "$metadata.lastUpdated",
-          unit: "hour",
-          timezone: "America/New_York"
-        }
-      }
-    }
-  }
-])
-```
-This example adjusts dates to a specified timezone before truncating them to the hour.
-
-### Example 3: Truncate to the start of the week
-```javascript
-db.stores.aggregate([
+    $match: { _id: "e6410bb3-843d-4fa6-8c70-7472925f6d0a" }
+  },
   {
     $project: {
       _id: 0,
       truncatedToWeek: {
         $dateTrunc: {
-          date: "$metadata.lastUpdated",
+          date: "$lastUpdated",
           unit: "week",
           startOfWeek: "Monday"
         }
@@ -100,7 +155,14 @@ db.stores.aggregate([
   }
 ])
 ```
-This example aligns dates to the beginning of a week, with a configurable start day.
+
+The result shows the Monday (00:00:00 UTC) that marks the beginning of the week in which `lastUpdated` falls, which can be configured.
+
+```json
+{
+  "truncatedToWeek": "2024-11-25T00:00:00.000Z"
+}
+```
 
 ## Related content
 

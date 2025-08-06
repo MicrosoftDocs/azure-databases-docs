@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 08/04/2025
 ---
 
 # $firstN
@@ -39,7 +39,7 @@ The `$firstN` operator returns the first N values in a group according to the gr
 
 ## Example
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
@@ -151,7 +151,7 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Get first two stores by total sales
+### Example 1: Use $firstN operator as accumulator to find first two stores by total sales
 
 To get the top two stores by total sales, run a query to sort all documents in descending order of sales.totalSales and return the first two documents from the sorted result set. 
 
@@ -201,180 +201,123 @@ This query returns the following result:
 ]
 ```
 
-### Example 2: Get first two categories per store
+### Example 2: Use $firstN operator as accumulator to find first two categories per store
 
 To retrieve the first two categories by total sales within each store, run a query to sort all documents in descending order of sales.totalSales within the scope of each store and return the first two categories from the sorted result set per store.
 
 ```javascript
-db.stores.aggregate([{
-        $unwind: "$sales.salesByCategory"
-    },
-    {
-        $match: {
-            "sales.salesByCategory.totalSales": {
-                $exists: true
-            }
-        }
-    },
-    {
-        $sort: {
-            "_id": 1,
-            "sales.salesByCategory.totalSales": -1
-        }
-    },
-    {
-        $group: {
-            _id: "$_id",
-            storeName: {
-                $first: "$name"
-            },
-            categoryCount: {
-                $sum: 1
-            },
-            firstTwoCategories: {
-                $firstN: {
-                    n: 2,
-                    input: {
-                        categoryName: "$sales.salesByCategory.categoryName",
-                        totalSales: "$sales.salesByCategory.totalSales"
-                    }
-                }
-            }
-        }
-    },
-    {
-        $match: {
-            categoryCount: {
-                $gte: 2
-            }
-        }
+db.stores.aggregate([
+  { $unwind: "$sales.salesByCategory" },
+  {
+    $match: {
+      "sales.salesByCategory.totalSales": { $exists: true }
     }
+  },
+  {
+    $sort: {
+      "_id": 1,
+      "sales.salesByCategory.totalSales": -1
+    }
+  },
+  {
+    $group: {
+      _id: "$_id",
+      storeName: { $first: "$name" },
+      categoryCount: { $sum: 1 },
+      firstTwoCategories: {
+        $push: {
+          categoryName: "$sales.salesByCategory.categoryName",
+          totalSales: "$sales.salesByCategory.totalSales"
+        }
+      }
+    }
+  },
+  {
+    $project: {
+      storeName: 1,
+      categoryCount: 1,
+      firstTwoCategories: { $slice: ["$firstTwoCategories", 2] }
+    }
+  },
+  {
+    $match: {
+      categoryCount: { $gte: 2 }
+    }
+  },
+  { $limit: 2 }
 ])
 ```
 
 The first two results returned by this query are:
 
 ```json
-[
-    {
-        "_id": "14343900-2a5c-44bf-a52b-9efe63579866",
-        "storeName": "Northwind Traders | Home Improvement Closet - West Evanside",
-        "categoryCount": 2,
-        "firstTwoCategories": [
-            {
-                "categoryName": "Doors",
-                "totalSales": 21108
-            },
-            {
-                "categoryName": "Hardware",
-                "totalSales": 14263
-            }
-        ]
-    },
-    {
-        "_id": "19ea47b8-4fbd-468c-88f6-133ffa517fad",
-        "storeName": "Proseware, Inc. | Grocery Bazaar - North Earnest",
-        "categoryCount": 2,
-        "firstTwoCategories": [
-            {
-                "categoryName": "Frozen Foods",
-                "totalSales": 36967
-            },
-            {
-                "categoryName": "Meat",
-                "totalSales": 2724
-            }
-        ]
-    }
-]
+  {
+    "_id": "2e07b49d-1730-491b-b847-44b6a34812c1",
+    "storeName": "VanArsdel, Ltd. | Electronics Market – North Bransonborough",
+    "categoryCount": 3,
+    "firstTwoCategories": [
+      {
+        "categoryName": "iPads",
+        "totalSales": 37113
+      },
+      {
+        "categoryName": "Laptops",
+        "totalSales": 9175
+      }
+    ]
+  },
+  {
+    "_id": "1bec7539-dc75-4f7e-b4e8-afdf8ff2f234",
+    "storeName": "Adatum Corporation | Health Food Market – East Karina",
+    "categoryCount": 2,
+    "firstTwoCategories": [
+      {
+        "categoryName": "Protein Bars",
+        "totalSales": 49900
+      },
+      {
+        "categoryName": "Superfoods",
+        "totalSales": 39683
+      }
+    ]
+  }
 ```
 
-### Example 3: Get first two promotion events per store
+### Example 3: Use `firstN` operator as array-expression to find first three sales categories
 
-To retrieve the two earliest promotion events within each store, run a query to sort promotion events in ascending order of date within the scope of the store and return the first two events from the sorted result set.
+The example demonstrates the operator usage to find the first three sales categories for analysis.
 
 ```javascript
-db.stores.aggregate([{
-        $unwind: "$promotionEvents"
-    },
-    {
-        $sort: {
-            "_id": 1,
-            "promotionEvents.promotionalDates.startDate.Year": 1,
-            "promotionEvents.promotionalDates.startDate.Month": 1,
-            "promotionEvents.promotionalDates.startDate.Day": 1
+db.stores.aggregate([
+  { $match: {"_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
+  {
+    $project: {
+      name: 1,
+      totalSales: "$sales.totalSales",
+      firstThreeCategories: {
+        $firstN: {
+          input: "$sales.salesByCategory",
+          n: 3
         }
-    },
-    {
-        $group: {
-            _id: "$_id",
-            storeName: {
-                $first: "$name"
-            },
-            eventCount: {
-                $sum: 1
-            },
-            firstTwoEvents: {
-                $firstN: {
-                    n: 2,
-                    input: {
-                        eventName: "$promotionEvents.eventName",
-                        startYear: "$promotionEvents.promotionalDates.startDate.Year",
-                        startMonth: "$promotionEvents.promotionalDates.startDate.Month"
-                    }
-                }
-            }
-        }
-    },
-    {
-        $match: {
-            eventCount: {
-                $gte: 2
-            }
-        }
+      }
     }
+  }
 ])
 ```
 
-The first two results returned by this query are:
+The query returns first three elements from `sales.salesByCategory` array.
 
 ```json
-[
-    {
-        "_id": "34e650dc-df46-49b4-aacb-7365e4fd7103",
-        "storeName": "Tailwind Traders | Flooring Bargains - Dexterport",
-        "eventCount": 2,
-        "firstTwoEvents": [
-            {
-                "eventName": "Spectacular Savings Showcase",
-                "startYear": 2024,
-                "startMonth": 6
-            },
-            {
-                "eventName": "Super Saver Celebration",
-                "startYear": 2024,
-                "startMonth": 9
-            }
-        ]
-    },
-    {
-        "_id": "22e6367e-8341-415f-9795-118d2b522abf",
-        "storeName": "Adatum Corporation | Outdoor Furniture Mart - Port Simone",
-        "eventCount": 5,
-        "firstTwoEvents": [
-            {
-                "eventName": "Super Saver Soiree",
-                "startYear": 2023,
-                "startMonth": 9
-            },
-            {
-                "eventName": "Massive Deal Mania",
-                "startYear": 2023,
-                "startMonth": 12
-            }
-        ]
-    }
-]
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "totalSales": 165000,
+    "firstThreeCategories": [
+      { "categoryName": "Sound Bars", "totalSales": 2120 },
+      null,
+      { "categoryName": "Game Controllers", "totalSales": 43522 }
+    ]
+  }
 ```
 
 ## Related content

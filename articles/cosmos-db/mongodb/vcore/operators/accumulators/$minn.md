@@ -7,12 +7,12 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 01/05/2025
+ms.date: 08/04/2025
 ---
 
 # $minN
 
-The `$minN` operator is used to retrieve the bottom N values for a field based on a specified filtering criteria. 
+The `$minN` operator is used to retrieve the bottom N values for a field based on a specified filtering criteria.
 
 ## Syntax
 
@@ -23,7 +23,8 @@ $minN: {
 }
 ```
 
-## Parameters  
+## Parameters
+
 | Parameter | Description |
 | --- | --- |
 | **`input`** | Specifies the field or expression to evaluate for minimum values. |
@@ -31,7 +32,7 @@ $minN: {
 
 ## Examples
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
@@ -97,9 +98,9 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Retrieve bottom 2 sales categories
+### Example 1: Retrieve bottom two sales categories
 
-To retrieve the bottom 2 sales categories per store with the lowest sales volume, run a query using the $minN operator on the nested salesCategory field.
+The example finds the bottom two sales categories per store with the lowest sales volume. Run a query using the $minN operator on the nested salesCategory field.
 
 ```javascript
 db.stores.aggregate([{
@@ -167,7 +168,7 @@ This query returns the following results:
 
 ### Example 2 - Using $minN with $setWindowFields
 
-To get the bottom 2 lists of sales categories by sales volume across all stores within the "First Up Consultants" company, first run a query to partition the stores by the company. Then, use the $minN operator to determine the two categories with the lowest sales within each partition.
+To get the bottom two lists of sales categories by sales volume across all stores within the "First Up Consultants" company, first run a query to partition the stores by the company. Then, use the $minN operator to determine the two categories with the lowest sales within each partition.
 
 ```javascript
 db.stores.aggregate([{
@@ -278,5 +279,37 @@ The first result returned by this query is:
 ]
 ```
 
+### Example 3 - Using $minN operator as array-expression to get lowest two sales values
+
+The aggregation query extracts the two lowest sales values for a specific store document.
+
+```javascript
+db.stores.aggregate([
+  { $match: {"_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
+  {
+    $project: {
+      name: 1,
+      lowestTwoSales: {
+        $minN: {
+          input: "$sales.salesByCategory.totalSales",
+          n: 2
+        }
+      }
+    }
+  }
+])
+```
+
+The query was directed towards a sample document for a store to review and help identify lowest sale values.
+
+```json
+{
+  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+  "lowestTwoSales": [28946, 3000]
+}
+```
+
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]
