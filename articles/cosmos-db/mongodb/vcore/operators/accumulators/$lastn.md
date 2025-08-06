@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 08/04/2025
 ---
 
 # $lastN
@@ -152,7 +152,7 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Get last two promotion events by store
+### Example 1: Use $lastN as accumulator to find last two promotion events by store
 
 To retrieve the last two promotion events for each store, run a query to sort promotion events in ascending order of their start dates, group the sorted events by store and return the last two events within each store.
 
@@ -237,7 +237,7 @@ The first two results returned by this query are:
 ]
 ```
 
-### Example 2: Get the three highest selling categories of sales
+### Example 2: Use $lastN as accumulator to find the three highest selling categories of sales
 
 To retrieve the highest selling sales categories per store, run a query to sort sales categories in ascending order of sales volume, group the sorted results by store and return the last three categories per store.
 
@@ -300,6 +300,68 @@ The first two results returned by this query are:
         ]
     }
 ]
+```
+
+### Example 3: Use $lastN operator as array-expression to get last two promotion events
+
+The example demonstrates the operator usage to find the last or most recent two promotion events from a store.
+
+```javascript
+db.stores.aggregate([
+  { $match: {"_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
+  {
+    $project: {
+      name: 1,
+      lastTwoPromotions: {
+        $lastN: {
+          input: "$promotionEvents",
+          n: 2
+        }
+      }
+    }
+  }
+])
+```
+
+The query returns the last two events from `promotionEvents` array.
+
+```json
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "lastTwoPromotions": [
+      {
+        "eventName": "Grand Deal Days",
+        "promotionalDates": {
+          "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+          "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
+        },
+        "discounts": [
+          { "categoryName": "Remote Controls", "discountPercentage": 7 },
+          { "categoryName": "Televisions", "discountPercentage": 11 },
+          { "categoryName": "Business Projectors", "discountPercentage": 13 },
+          { "categoryName": "Laser Projectors", "discountPercentage": 6 },
+          { "categoryName": "Projectors", "discountPercentage": 6 },
+          { "categoryName": "Projector Screens", "discountPercentage": 24 }
+        ]
+      },
+      {
+        "eventName": "Major Bargain Bash",
+        "promotionalDates": {
+          "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+          "endDate": { "Year": 2024, "Month": 9, "Day": 30 }
+        },
+        "discounts": [
+          { "categoryName": "Sound Bars", "discountPercentage": 9 },
+          { "categoryName": "VR Games", "discountPercentage": 7 },
+          { "categoryName": "Xbox Games", "discountPercentage": 25 },
+          { "categoryName": "Projector Accessories", "discountPercentage": 18 },
+          { "categoryName": "Mobile Games", "discountPercentage": 8 },
+          { "categoryName": "Projector Cases", "discountPercentage": 22 }
+        ]
+      }
+    ]
+  }
 ```
 
 ## Related content
