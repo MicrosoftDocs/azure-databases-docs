@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 08/01/2025
+ms.date: 08/05/2025
 appliesto:
 - ✅ MongoDB (vCore)
 ms.custom:
@@ -90,6 +90,12 @@ If you need more than 10 physical shards on your cluster, open an [Azure support
 ### Rebalance data
 
 After [a physical shard is added to a cluster](#increase-the-number-of-physical-shards), or if multishard cluster has [uneven storage usage](./how-to-manage-alerts.md) across its physical shards, data rebalancing redistributes data between shards without any downtime.
+
+In preview, data rebalancing needs to be enabled on cluster:
+
+1. In the Azure portal, open cluster properties.
+1. Under **Settings** on the **Features** page, select **Rebalancer for multishard clusters**.
+1. In the **Rebalancer for multishard clusters** panel, select **Enable**.
 
 To initiate data rebalancing, connect to the cluster using a management tool such as the [Mongo shell](./how-to-connect-mongo-shell.md).
 
