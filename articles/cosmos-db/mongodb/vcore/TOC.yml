@@ -38,11 +38,7 @@
     - name: Build GenAI applications
       items:
         - name: Real-time custom content generation
-          href: ai-advertisement-generation.md
-    - name: Integrate with AI Tools
-      items:
-        - name: AI Frameworks
-          href: ai-frameworks.md  
+          href: ai-advertisement-generation.md  
 - name: Concepts
   items:
     - name: Vector database
@@ -77,6 +73,10 @@
               href: half-precision.md
         - name: Open-source vector databases
           href: vector-search-ai.md
+    - name: Integrate with AI Tools
+      items:
+        - name: AI Frameworks
+          href: ai-frameworks.md
     - name: MongoDB compatibility and feature support
       href: compatibility-and-feature-support.md
     - name: Managed service compatibility
