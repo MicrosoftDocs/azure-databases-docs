@@ -150,7 +150,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Use AND operator as logical-query
 
-The query filters for stores where the number of full-time employees is greater than 10 and part-time employees is less than 15 using the `$and` operator. It projects only the `name` and `staff` fields and limits the result to 3 records.
+The query filters for stores where the number of full-time employees is greater than 10 and part-time employees is less than 15 using the `$and` operator. It projects only the `name` and `staff` fields and limits the result to three records.
 
 ```javascript
 db.stores.find({
@@ -169,7 +169,7 @@ db.stores.find({
 }).limit(3)
 ```
 
-The query returns up to 3 stores with high full-time but limited part-time staffing.
+The query returns up to three stores with high full-time but limited part-time staffing.
 
 ```json
 [

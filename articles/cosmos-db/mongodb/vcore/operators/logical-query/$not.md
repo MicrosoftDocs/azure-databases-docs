@@ -1,7 +1,7 @@
 ---
 title: $not
 titleSuffix: Overview of the $not operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $not operator performs a logical NOT operation on a specified expression, selecting documents that do not match the expression.
+description: The $not operator performs a logical NOT operation on a specified expression, selecting documents that don't match the expression.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@ ms.date: 08/04/2025
 
 # $not
 
-The `$not` operator performs a logical NOT operation on a specified expression and selects documents that do not match the expression.
+The `$not` operator performs a logical NOT operation on a specified expression and selects documents that don't match the expression.
 
 ## Syntax
 
@@ -148,7 +148,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Use NOT operation as logical-query operator
 
-The example helps to find stores where the number of full-time staff is not equal to 5 using the `$not` operator with $eq. It returns only the `name` and `staff` fields for up to two such matching documents.
+The example helps to find stores where the number of full-time staff isn't equal to 5 using the `$not` operator with $eq. It returns only the `name` and `staff` fields for up to two such matching documents.
 
 ```javascript
  db.stores.find({

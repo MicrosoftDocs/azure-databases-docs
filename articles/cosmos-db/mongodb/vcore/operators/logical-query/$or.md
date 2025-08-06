@@ -167,7 +167,7 @@ db.stores.find(
 ).limit(2)
 ```
 
-The query returns up to 2 store documents showing only their name and staff details, filtered by employee count criteria.
+The query returns up to two store documents showing only their name and staff details, filtered by employee count criteria.
 
 ```json
   {
@@ -248,7 +248,7 @@ The query returns stores that meet either the sales or staffing criteria.
 
 ## Performance Considerations
 
-- Please review the suggestions for finding better performance.
+- Review the suggestions for finding better performance.
   - Each condition in the `$or` array is evaluated independently
   - Use indexes when possible for better performance
   - Consider the order of conditions for optimal execution
