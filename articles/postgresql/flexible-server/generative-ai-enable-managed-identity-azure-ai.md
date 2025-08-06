@@ -132,7 +132,7 @@ Ensure that the function executes successfully without any authorization errors.
 Testing OpenAI services ensures that the integration between the Azure AI extension for PostgreSQL and Azure OpenAI is functioning correctly. By executing sample function calls, you can validate that the managed identity or subscription key authentication is configured correctly and that the database can successfully interact with OpenAI models. Follow the example below to test the embedding creation functionality and confirm that the service works without authorization errors.
 
  ```sql
-  SELECT azure_openai.create_embedding('Your model deployment name', 'Your text here');
+  SELECT azure_openai.create_embeddings('Your model deployment name', 'Your text here');
  ```
 
 Ensure that the function executes successfully without any authorization errors.
