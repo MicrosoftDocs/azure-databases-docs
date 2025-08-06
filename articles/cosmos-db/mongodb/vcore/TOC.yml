@@ -39,6 +39,10 @@
       items:
         - name: Real-time custom content generation
           href: ai-advertisement-generation.md
+    - name: Integrate with AI Tools
+      items:
+        - name: AI Frameworks
+          href: ai-frameworks.md  
 - name: Concepts
   items:
     - name: Vector database
