@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 08/04/2025
 ---
 
 # $and
@@ -36,7 +36,7 @@ The `$and` operator performs a logical AND operation on an array of expressions 
 
 ## Examples
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
@@ -148,9 +148,9 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Basic AND operation
+### Example 1: Use AND operator as logical-query
 
-To find store that satisfies having more than 10 full time staff and fewer than 15 part time staff, run a query with the $and operator with both the conditions specified. Lastly, project only the name and staff fields in the resulting documents.
+The query filters for stores where the number of full-time employees is greater than 10 and part-time employees is less than 15 using the `$and` operator. It projects only the `name` and `staff` fields and limits the result to three records.
 
 ```javascript
 db.stores.find({
@@ -166,10 +166,10 @@ db.stores.find({
 }, {
     "name": 1,
     "staff": 1
-})
+}).limit(3)
 ```
 
-The first three results returned by this query are:
+The query returns up to three stores with high full-time but limited part-time staffing.
 
 ```json
 [
@@ -204,97 +204,48 @@ The first three results returned by this query are:
         }
     }
 ]
-
 ```
 
-### Example 2: Complex AND operation
+### Example 2: Use AND operator as boolean-expression to find stores with high sales and sufficient staff
 
-To find stores with sales over $100,000 with both "Game Controllers" and "Home Theater Projectors" in their sales categories, run a query to combine all three conditions using the $and operator. Lastly, project only the name and sales fields from the stores in the result set.
+The example finds stores that have both total sales greater than 100,000 and more than 30 total staff members.
 
 ```javascript
-db.stores.find({
-    $and: [{
-        "sales.totalSales": {
-            $gt: 100000
-        }
-    }, {
-        "sales.salesByCategory.categoryName": "Game Controllers"
-    }, {
-        "sales.salesByCategory.categoryName": "Home Theater Projectors"
-    }]
-}, {
-    "name": 1,
-    "sales": 1
-})
+db.stores.aggregate([
+  {
+    $project: {
+      name: 1,
+      totalSales: "$sales.totalSales",
+      totalStaff: {
+        $add: ["$staff.employeeCount.fullTime", "$staff.employeeCount.partTime"]
+      },
+      meetsHighPerformanceCriteria: {
+        $and: [
+          { $gt: ["$sales.totalSales", 100000] },
+          { $gt: [{ $add: ["$staff.employeeCount.fullTime", "$staff.employeeCount.partTime"] }, 30] }
+        ]
+      }
+    }
+  },
+  { $limit: 2 }
+])
 ```
 
-The first two results returned by this query are:
+The query returns stores that meet both high sales and staffing criteria.
 
 ```json
-[
-    {
-        "_id": "43863d56-645e-4a37-b1d5-a8947312f78d",
-        "name": "Fabrikam, Inc. | Home Entertainment Shop - East Justice",
-        "sales": {
-            "salesByCategory": [
-                {
-                    "categoryName": "Business Projectors",
-                    "totalSales": 42294
-                },
-                {
-                    "categoryName": "Blu-ray Players",
-                    "totalSales": 32544
-                },
-                {
-                    "categoryName": "Home Theater Projectors",
-                    "totalSales": 14581
-                },
-                {
-                    "categoryName": "Projector Cases",
-                    "totalSales": 11074
-                },
-                {
-                    "categoryName": "Game Controllers",
-                    "totalSales": 38025
-                }
-            ],
-            "totalSales": 138518
-        }
-    },
-    {
-        "_id": "a6a66f47-95a0-40f7-9283-1de7ec1165dd",
-        "name": "VanArsdel, Ltd. | Home Entertainment Market - New Sigmundmouth",
-        "sales": {
-            "salesByCategory": [
-                {
-                    "categoryName": "Game Controllers",
-                    "totalSales": 28627
-                },
-                {
-                    "categoryName": "Home Theater Systems",
-                    "totalSales": 7659
-                },
-                {
-                    "categoryName": "Home Theater Projectors",
-                    "totalSales": 41420
-                },
-                {
-                    "categoryName": "VR Games",
-                    "totalSales": 15060
-                },
-                {
-                    "categoryName": "PC Games",
-                    "totalSales": 42499
-                },
-                {
-                    "categoryName": "Nintendo Switch Games",
-                    "totalSales": 27581
-                }
-            ],
-            "totalSales": 162846
-        }
-    }
-]
+ {
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "totalStaff": 31,
+    "meetsHighPerformanceCriteria": false
+  },
+  {
+    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+    "totalStaff": 27,
+    "meetsHighPerformanceCriteria": false
+  }
 ```
 
 ## Related content

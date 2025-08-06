@@ -1,18 +1,18 @@
 ---
 title: $not
 titleSuffix: Overview of the $not operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $not operator performs a logical NOT operation on a specified expression, selecting documents that do not match the expression.
+description: The $not operator performs a logical NOT operation on a specified expression, selecting documents that don't match the expression.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 08/04/2025
 ---
 
 # $not
 
-The `$not` operator performs a logical NOT operation on a specified expression and selects documents that do not match the expression.
+The `$not` operator performs a logical NOT operation on a specified expression and selects documents that don't match the expression.
 
 ## Syntax
 
@@ -34,7 +34,7 @@ The `$not` operator performs a logical NOT operation on a specified expression a
 
 ## Examples
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
@@ -146,9 +146,9 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Basic NOT operation
+### Example 1: Use NOT operation as logical-query operator
 
-To find stores with either less than or more than 5 full time staff, run a query using the $not operator on the fullTime staff count. Then, project only the name and staff fields from the stores in the result set.
+The example helps to find stores where the number of full-time staff isn't equal to 5 using the `$not` operator with $eq. It returns only the `name` and `staff` fields for up to two such matching documents.
 
 ```javascript
  db.stores.find({
@@ -160,10 +160,10 @@ To find stores with either less than or more than 5 full time staff, run a query
  }, {
      "name": 1,
      "staff": 1
- })
+ }).limit(2)
 ```
 
-The first two results returned by this query are:
+The query returns up to two stores where full-time staff count differs from 5.
 
 ```json
 [
@@ -190,59 +190,49 @@ The first two results returned by this query are:
 ]
 ```
 
-### Example 2: Complex NOT operation
+### Example 2: Use NOT operator as boolean-expression to identify stores that aren't high-volume
 
-To find stores without promotional events with 20% discounts, run a query with the $not operator on the discountPercentage field. Then project only the name and promotionEvents fields from the stores in the result set.
+The example finds stores that don't have high sales volume (not greater than 50,000).
 
 ```javascript
-db.stores.find({
-    "promotionEvents.discounts.discountPercentage": {
-        $not: {
-            $eq: 20
-        }
+db.stores.aggregate([
+  {
+    $project: {
+      name: 1,
+      totalSales: "$sales.salesByCategory.totalSales",
+      isNotHighVolume: {
+        $not: { $gt: ["$sales.salesByCategory.totalSales", 50000] }
+      },
+      storeCategory: {
+        $cond: [
+          { $not: { $gt: ["$sales.salesByCategory.totalSales", 50000] } },
+          "High Volume Store",
+          "Small/Medium Store"
+        ]
+      }
     }
-}, {
-    "name": 1,
-    "promotionEvents": 1
-})
+  },
+  { $limit: 2 }
+])
 ```
 
-The first document returned by this query is:
+The query identifies stores that aren't high-volume.
 
 ```json
-[
-    {
-        "_id": "70032165-fded-47b4-84a3-8d9c18a4d1e7",
-        "name": "Northwind Traders | Picture Frame Bazaar - Lake Joesph",
-        "promotionEvents": [
-            {
-                "eventName": "Super Saver Fiesta",
-                "promotionalDates": {
-                    "startDate": {
-                        "Year": 2024,
-                        "Month": 9,
-                        "Day": 21
-                    },
-                    "endDate": {
-                        "Year": 2024,
-                        "Month": 10,
-                        "Day": 1
-                    }
-                },
-                "discounts": [
-                    {
-                        "categoryName": "Picture Hanging Supplies",
-                        "discountPercentage": 13
-                    },
-                    {
-                        "categoryName": "Shadow Boxes",
-                        "discountPercentage": 9
-                    }
-                ]
-            }
-        ]
-    }
-]
+ {
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "totalSales": [ 37978 ],
+    "isNotHighVolume": false,
+    "storeCategory": "Small/Medium Store"
+  },
+  {
+    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+    "totalSales": [ 25731 ],
+    "isNotHighVolume": false,
+    "storeCategory": "Small/Medium Store"
+  }
 ```
 
 ## Related content

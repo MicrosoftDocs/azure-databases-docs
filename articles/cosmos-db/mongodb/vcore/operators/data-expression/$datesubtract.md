@@ -32,36 +32,92 @@ The `$dateSubtract` operator subtracts a specified time unit from a date. It's u
 | Parameter       | Description                                      |
 | --------------- | ------------------------------------------------ |
 | **`startDate`** | The date expression to subtract from.            |
-| **`unit`**      | The time unit to subtract (e.g., "day", "hour"). |
+| **`unit`**      | The time unit to subtract (for example, "day", "hour"). |
 | **`amount`**    | The amount of the time unit to subtract.         |
 | **`timezone`**  | *(Optional)* Timezone for date calculation.      |
 
 ## Examples
 
-We'll use this document from the `stores` collection to demonstrate how `$dateSubtract` works:
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
-  "_id": "store-01",
-  "name": "Time Travel Mart",
-  "metadata": {
-    "lastUpdated": ISODate("2024-07-21T14:38:00Z")
-  }
+  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+  "name": "Relecloud | Toy Collection - North Jaylan",
+  "location": {
+    "lat": 2.0797,
+    "lon": -94.4134
+  },
+  "staff": {
+    "employeeCount": {
+      "fullTime": 7,
+      "partTime": 4
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      {
+        "categoryName": "Educational Toys",
+        "totalSales": 3299
+      }
+    ],
+    "revenue": 3299
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Massive Markdown Mania",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 21
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 9,
+          "Day": 29
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "Remote Control Toys",
+          "discountPercentage": 6
+        },
+        {
+          "categoryName": "Building Sets",
+          "discountPercentage": 21
+        }
+      ]
+    }
+  ],
+  "company": "Relecloud",
+  "city": "North Jaylan",
+  "lastUpdated": {
+    "$timestamp": {
+      "t": 1733313006,
+      "i": 1
+    }
+  },
+  "storeOpeningDate": "2024-09-05T11:50:06.549Z"
 }
 ```
 
 ### Example 1: Subtract seven days
 
-This example calculates the date one week before the `lastUpdated` field.
+The example calculates the date one week before the `lastUpdated` field.
+The query uses `$dateSubtract` to calculate the date exactly seven days before the `storeOpeningDate` timestamp.
 
 ```javascript
 db.stores.aggregate([
+  {
+    $match: { _id: "e6410bb3-843d-4fa6-8c70-7472925f6d0a" }
+  },
   {
     $project: {
       _id: 0,
       dateOneWeekAgo: {
         $dateSubtract: {
-          startDate: "$metadata.lastUpdated",
+          startDate: "$storeOpeningDate",
           unit: "day",
           amount: 7
         }
@@ -71,11 +127,19 @@ db.stores.aggregate([
 ])
 ```
 
+The query returns the date that is exactly seven days before the `storeOpeningDate` timestamp.
+
+```json
+{
+  "dateOneWeekAgo": "2024-08-29T11:50:06.549Z"
+}
+```
+
 ### Example 2: Subtract two hours with timezone
 
 This example subtracts two hours, considering the `America/New_York` timezone.
-
-```javascript
+// ERROR ON TIMEZONE
+```javascript 
 db.stores.aggregate([
   {
     $project: {
