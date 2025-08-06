@@ -26,7 +26,7 @@ The `$bitsAllClear` operator is used to match documents where all the bit positi
 | Parameter | Description |
 | --- | --- |
 | **`field`** | The field in the document on which the bitwise operation is to be performed.|
-| **`<bitmask>`** | A bitmask indicating which bits must be set in the field's value.|
+| **`<bitmask>`** | A bitmask where each bit position specifies the corresponding bit position in the field's value that must be clear (0).|
 
 ## Example
 
