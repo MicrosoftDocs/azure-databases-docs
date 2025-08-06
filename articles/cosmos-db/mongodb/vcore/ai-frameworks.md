@@ -25,8 +25,8 @@ Azure Cosmos DB for MongoDB (vCore) seamlessly integrates with leading large lan
 | | | [Java](https://docs.langchain4j.dev/integrations/embedding-stores/azure-cosmos-mongo-vcore/) | Chat History |
 | **[Semantic Kernel](https://github.com/microsoft/semantic-kernel)** | An open-source framework by Microsoft that integrates conventional programming languages with AI models. It's designed for orchestrating complex AI agents. | [Python](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-python) | Vector Store |
 | | | [.NET](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-csharp) | Vector Store |
-| **[LlamaIndex](https://www.llamaindex.ai/)** | A data framework for LLM applications that connects your custom data sources to large language models (LLM). It's ideal for building RAG (Retrieval-Augmented Generation) applications over domain-specific data. | [Python](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo/) | Vector Store |
-| | | TypeScript | Vector Store |
+| **[LlamaIndex](https://www.llamaindex.ai/)** | A data framework for LLM applications that connects your custom data sources to large language models (LLM). It's ideal for building RAG (Retrieval-Augmented Generation) applications over domain-specific data. | [Python](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo/) | Vector Store, Document Store, Index Store |
+| | | [TypeScript](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo/) | Vector Store |
 | **[CosmosAIGraph](https://aka.ms/cosmosaigraph)** | A solution that leverages Azure Cosmos DB for creating AI-powered knowledge graphs. It helps uncover complex relationships within semi-structured data. | | [Quickstart](https://github.com/AzureCosmosDB/CosmosAIGraph/tree/main/impl) |
 
 ## Related content
