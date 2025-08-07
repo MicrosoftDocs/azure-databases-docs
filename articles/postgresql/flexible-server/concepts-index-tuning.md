@@ -215,6 +215,26 @@ If index tuning is enabled on a server, and you scale down that server's compute
 
 If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when implementing the recommended indexes. Be especially careful when creating indexes whose size is estimated to be large.
 
+### Reasons why index tuning might not produce create index recommendations for certain queries
+
+Following is a list of query types for which index tuning won't generate CREATE INDEX recommendations. Those which:
+
+- Encounter an error when index tuning engine tries to obtain its EXPLAIN output during the analysis phase.
+- Have the query text truncated in query store. That's the case when the length of query text exceeds the value configured in [pg_qs.max_query_text_length](concepts-query-store.md#configuration-options).
+- Reference objects that were dropped or renamed before the analysis occurs. These queries could still be syntactically valid, but not semantically valid.
+- Access temporary tables or indexes on temporary tables.
+- Are identified as utility statements. Utility statements or utility commands are, basically, any statement not considered SELECT, INSERT, UPDATE, DELETE, or MERGE, and certain commands containing one of these.
+- Are not among the top [index_tuning.max_queries_per_database](concepts-index-tuning.md#configuring-index-tuning) slowest, for the database and period analyzed.
+- All queries that were run in the context of one specific database, when none of those queries were identified as the top slowest at the server level.
+
+### Reasons why index tuning might not produce create index recommendations for certain objects
+
+Following is a list of objects for which index tuning won't generate CREATE INDEX recommendations:
+
+- Partitioned tables.
+- Views.
+- Materialized views.
+
 ## Related content
 
 - [Query store](concepts-query-store.md).
