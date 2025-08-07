@@ -4,11 +4,12 @@ description: Learn about the upcoming changes of root certificate rotation that 
 author: shih-che
 ms.author: shihche
 ms.reviewer: talawren, maghan
-ms.date: 11/27/2024
+ms.date: 08/07/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Changes in the root certificate rotation for Azure Database for MySQL
@@ -17,15 +18,15 @@ To maintain our security and compliance standards, we start changing the root ce
 
 The current root certificate **DigiCert Global Root CA** is replaced by two new root certificates:
 
-* **DigiCert Global Root G2**
-* **Microsoft RSA Root Certificate Authority 2017**
+- **DigiCert Global Root G2**
+- **Microsoft RSA Root Certificate Authority 2017**
 
 If you use Transport Layer Security (TLS) with root certificate verification, you must have all three root certificates installed during the transition period. Once all the certificates are changed, you can remove the old SHA-1 root certificate **DigiCert Global Root CA** from the store. If you don't add the new certificates before September 1, 2025, your connections to the databases **fail**.
 
-This article provides instructions on how to add the two new root certificates, as well as answers to frequently asked questions.
+This article provides instructions on how to add the two new root certificates, and answers to frequently asked questions.
 
-> [!NOTE]
-> If the continued use of SHA-1 is a blocker and you want to have your certificates changed before the general rollout, follow the [instructions in this article for creating a combined certificate authority (CA) certificate on the client](#how-to-update-the-root-certificate-store-on-your-client). Then open a support request to rotate your  certificate for Azure Database for MySQL.
+> [!NOTE]  
+> If the continued use of SHA-1 is a blocker and you want to have your certificates changed before the general rollout, follow the [instructions in this article for creating a combined certificate authority (CA) certificate on the client](#how-to-update-the-root-certificate-store-on-your-client). Then open a support request to rotate your certificate for Azure Database for MySQL.
 
 ## Why is a root certificate update required?
 
@@ -40,12 +41,10 @@ To ensure that your applications can connect to Azure Database for MySQL after t
 The following steps guide you through the process of updating the root certificate store on your client:
 
 - Download the three root certificates. If you installed the **DigiCert Global Root CA** certificate, you can skip the first download:
-    - [Download the DigiCert Global Root CA certificate](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)
-      - SHA-256 Fingerprint: `43:48:A0:E9:44:4C:78:CB:26:5E:05:8D:5E:89:44:B4:D8:4F:96:62:BD:26:DB:25:7F:89:34:A4:43:C7:01:61`
-    - [Download the DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
-      - SHA-256 Fingerprint: `CB:3C:CB:B7:60:31:E5:E0:13:8F:8D:D3:9A:23:F9:DE:47:FF:C3:5E:43:C1:14:4C:EA:27:D4:6A:5A:B1:CB:5F`
-    - [Download the Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt).
-      - SHA-256 Fingerprint: `C7:41:F7:0F:4B:2A:8D:88:BF:2E:71:C1:41:22:EF:53:EF:10:E0:20:6B:4D:8F:00:8B:5C:B2:C8:54:26:09:32`
+
+- [Download the DigiCert Global Root CA certificate](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem).
+- [Download the DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
+- [Download the Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt).
 
 - Add the downloaded certificates to your client certificate store. The process varies depending on the client type.
 
@@ -92,7 +91,7 @@ For .NET users on Windows, make sure that **DigiCert Global Root CA**, **DigiCer
 ### .NET on Linux
 
 For .NET users on Linux who use `SSL_CERT_DIR`, make sure that `DigiCertGlobalRootCA.crt.pem`, `DigiCertGlobalRootG2.crt.pem`, and `Microsoft RSA Root Certificate Authority 2017.crt.pem` exist in the directory indicated by `SSL_CERT_DIR`. If any certificate doesn't exist, create the missing certificate file.
-   
+
 Convert the `Microsoft RSA Root Certificate Authority 2017.crt` certificate to PEM format by running the following command:
 
 ```bash
@@ -118,7 +117,7 @@ For other users (MySQL Workbench, C, C++, Go, Python, Ruby, PHP, Node.js, Perl, 
 ## Data-in replication MySQL
 
 For data-in replication where **both primary and replica are hosted on Azure**, you can merge the CA certificate files in this format:
-  
+
 ```output
 SET @cert = '-----BEGIN CERTIFICATE-----
 (Root CA1:DigiCertGlobalRootCA.crt.pem)
@@ -137,7 +136,7 @@ Call `mysql.az_replication_change_master` as follows:
 CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Reboot your replica server.
 
 ## How do I know if I'm using SSL/TLS with root certificate verification?
@@ -153,62 +152,6 @@ If you're using a client that abstracts the connection string away, review the c
 ### Can I use a server-side query to verify if I'm using SSL?
 
 To verify if you're using an SSL connection to connect to the server, see [Verify the TLS/SSL connection](/azure/mysql/flexible-server/how-to-connect-tls-ssl#verify-the-tlsssl-connection).
-
-## Frequently asked questions
-
-This section provides answers to common questions about the root certificate rotation.
-
-### What happens if I remove the DigiCert Global Root CA certificate?
-
-If you remove the certificate before Microsoft's certificate rotation, your connections fail. Add the **DigiCert Global Root CA** certificate back to your client certificate store to restore connectivity.
-
-### How can I ensure that MySQL connections work after I download the DigiCert Global Root G2 certificate?
-
-After the root certificate change, the new certificate is pushed to your servers. When you restart your server, it uses the new certificate. If you experience connectivity issues, check the preceding instructions for any mistakes.
-
-### If I'm not using SSL/TLS, do I still need to update the root certificate?
-
-No. You don't need to take any action if you aren't using SSL/TLS.
-
-### If I'm using SSL/TLS, do I need to restart my database server to update the root certificate?
-
-No. If you're using SSL/TLS, you don't need to restart the database server to start using the new certificate.
-
-The certificate update is a client-side change. Incoming client connections need to use the new certificate to connect to the database server.
-
-### Does this change require me to plan maintenance downtime for the database server?
-
-No. Because the change is only on the client side to connect to the database server, it doesn't require any maintenance downtime for the database server.
-
-### Is there a rollback plan for the root certificate rotation?
-
-If your application experiences problems after the certificate rotation, replace the certificate file by reinstalling the combined certificate or the SHA-2-based certificate, depending on your use case. We recommend that you don't roll back the change, because the change is mandatory.
-
-### Are the certificates that Azure Database for MySQL uses trustworthy?
-
-The certificates that Azure Database for MySQL uses come from trusted certificate authorities. We support these certificates based on the support that the certificate authority provides.
-
-The DigiCert Global Root CA certificate uses the less secure SHA-1 hashing algorithm. This algorithm compromises the security of applications that connect to Azure Database for MySQL. For this reason, we need to perform a certificate change.
-
-### Is the DigiCert Global Root G2 certificate the same certificate that the Single Server deployment option used?
-
-Yes. The DigiCert Global Root G2 certificate is the SHA-2-based root certificate for Azure Database for MySQL. It's the same certificate that the Single Server deployment option used.
-
-### If I'm using read replicas, do I need to perform this update only on the source server or also on the read replicas?
-
-Because this update is a client-side change, you need to apply the changes for all clients that read data from the replica server.
-
-### If I'm using data-in replication, do I need to perform any action?
-
-If you're using [data-in replication](/azure/mysql/flexible-server/concepts-data-in-replication) to connect to Azure Database for MySQL, and the data replication is between two Azure Database for MySQL databases, you need to reset the replica by running `CALL mysql.az_replication_change_master`. Provide the triple dual-root certificate as the last parameter, [master_ssl_ca](/azure/mysql/flexible-server/how-to-data-in-replication?tabs=bash%2Ccommand-line#link-source-and-replica-servers-to-start-data-in-replication).
-
-### Do I need to take any action if I already have `DigiCert Global Root G2` and `Microsoft Root Certificate Authority 2017` in my certificate file?
-
-No. You don't need to take any action if your certificate file already has the `DigiCert Global Root G2` certificate and the `Microsoft Root Certificate Authority 2017` certificate.
-
-## What if I have more questions?
-
-If you still have questions, you can get answers from community experts in [Microsoft Q&A](/answers/questions/).
 
 ## Related content
 
