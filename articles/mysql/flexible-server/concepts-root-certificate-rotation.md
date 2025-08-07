@@ -7,12 +7,12 @@ ms.reviewer: talawren, maghan
 ms.date: 08/07/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: how-to
+ms.topic: concept-article
 ms.custom:
   - sfi-image-nochange
 ---
 
-# Changes in the root certificate rotation for Azure Database for MySQL
+# Root certificate rotation for Azure Database for MySQL
 
 To maintain our security and compliance standards, we start changing the root certificates for Azure Database for MySQL Flexible Server after September 1, 2025.
 
@@ -100,17 +100,34 @@ openssl x509 -inform der -in MicrosoftRSARootCertificateAuthority2017.crt -out M
 
 ## Other clients
 
-For other users (MySQL Workbench, C, C++, Go, Python, Ruby, PHP, Node.js, Perl, or Swift), you can merge the CA certificate files in this format:
+For other users that use other clients, you need to create a combined certificate file that contains all three root certificates.
+
+Other clients such as:
+
+- MySQL Workbench
+- C or C++
+- Go
+- Python
+- Ruby
+- PHP
+- Node.js
+- Perl
+- Swift
+
+### Steps
+
+1. Create a new text file and save it as `combined-ca-certificates.pem`
+1. Copy and paste the contents of all three certificate files into this single file in the following format:
 
 ```output
 -----BEGIN CERTIFICATE-----
-(Root CA1:DigiCertGlobalRootCA.crt.pem)
+(Content from DigiCertGlobalRootCA.crt.pem)
 -----END CERTIFICATE-----
 -----BEGIN CERTIFICATE-----
-(Root CA2: DigiCertGlobalRootG2.crt.pem)
+(Content from DigiCertGlobalRootG2.crt.pem)
 -----END CERTIFICATE-----
 -----BEGIN CERTIFICATE-----
-(Root CA3: .crt.pem)
+(Content from MicrosoftRSARootCertificateAuthority2017.crt.pem)
 -----END CERTIFICATE-----
 ```
 
@@ -139,20 +156,7 @@ CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ss
 > [!IMPORTANT]  
 > Reboot your replica server.
 
-## How do I know if I'm using SSL/TLS with root certificate verification?
-
-You can identify whether your connections verify the root certificate by reviewing your connection string:
-
-- If your connection string includes `sslmode=verify-ca` or `sslmode=verify-identity`, you need to update the trusted root certificates.
-- If your connection string includes `sslmode=disable`, `sslmode=allow`, `sslmode=prefer`, or `sslmode=require`, you don't need to update the trusted root certificates.
-- If your connection string doesn't specify `sslmode`, you don't need to update certificates.
-
-If you're using a client that abstracts the connection string away, review the client's documentation to understand whether it verifies certificates.
-
-### Can I use a server-side query to verify if I'm using SSL?
-
-To verify if you're using an SSL connection to connect to the server, see [Verify the TLS/SSL connection](/azure/mysql/flexible-server/how-to-connect-tls-ssl#verify-the-tlsssl-connection).
-
 ## Related content
 
-- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md)
+- [FAQ](concepts-root-certificate-rotation-faq.md)
+- [Connect to Azure Database for MySQL with encrypted connections](how-to-connect-tls-ssl.md)
