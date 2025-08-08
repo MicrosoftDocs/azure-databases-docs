@@ -49,7 +49,7 @@ specify your storage requirements, and you're all set. Rest assured, your data, 
 
 * For a given subscription, only one free tier account is permissible.
 * Free tier is currently available in the limited regions only.
-* High availability, Microsoft Entra ID (formerly known as Azure Active Directory), Backup / Restore, HNSW vector indexes, and Diagnostic Logging aren't supported.
+* High availability, Microsoft Entra ID (formerly known as Azure Active Directory), Backup / Restore, HNSW & DiskANN vector indexes, and Diagnostic Logging aren't supported.
 * Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
 * Transition from a paid tier account to a free tier accounts isn't supported.
 
