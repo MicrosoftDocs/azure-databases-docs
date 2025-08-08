@@ -40,19 +40,21 @@ To ensure that your applications can connect to Azure Database for MySQL after t
 
 The following steps guide you through the process of updating the root certificate store on your client:
 
-- Download the three root certificates. If you installed the **DigiCert Global Root CA** certificate, you can skip the first download:
+1. Download the three root certificates. If you installed the **DigiCert Global Root CA** certificate, you can skip the first download:
 
-- [Download the DigiCert Global Root CA certificate](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem).
-- [Download the DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
-- [Download the Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt).
+  1. [Download the DigiCert Global Root CA certificate](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem).
 
-- Add the downloaded certificates to your client certificate store. The process varies depending on the client type.
+  1. [Download the DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
+
+  1. [Download the Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt).
+
+1. Add the downloaded certificates to your client certificate store. The process varies depending on the client type.
 
 ## Update your Java client
 
 Follow these steps to update your Java client certificates for the root certificate rotation.
 
-## Creating a new trusted root certificate store
+### Create a new trusted root certificate store
 
 For **Java** users, run these commands to create a **new** trusted root **certificate store**:
 
@@ -67,7 +69,7 @@ Then replace the original keystore file with the newly generated one:
 - `System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");`
 - `System.setProperty("javax.net.ssl.trustStorePassword","password");`
 
-## Update an existing trusted root certificate store
+### Update an existing trusted root certificate store
 
 For **Java** users, run these commands to add the new trusted root certificates to an **existing** trusted root **certificate store**:
 
