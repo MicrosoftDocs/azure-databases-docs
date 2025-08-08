@@ -46,11 +46,11 @@ Premium SSD v2 offers up to 32 TiBs per region per subscription by default, but 
 
 #### Premium SSD v2 - IOPS
 
-Azure Database for PostgreSQL flexible server offers a baseline IOPS of 3000 for disks up to 399 GiB, and 12000 IOPS for disks over 400 GiB at no additional cost. To achieve 80,000 IOPS on a disk, it must be at least 160 GiB. Increasing IOPS beyond the free tier results in additional charges.
+Azure Database for PostgreSQL flexible server offers a baseline IOPS of 3000 for disks up to 399 GiB, and 12000 IOPS for disks over 400 GiB at no extra cost. To achieve 80,000 IOPS on a disk, it must be at least 160 GiB. Increasing IOPS beyond the free tier results in extra charges.
 
 #### Premium SSD v2 - Throughput
 
-Azure Database for PostgreSQL flexible server offers a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks over 400 GiB at no additional cost. Increasing throughput beyond the free tier results in additional charges.
+Azure Database for PostgreSQL flexible server offers a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks over 400 GiB at no extra cost. Increasing throughput beyond the free tier results in extra charges.
 
 > [!NOTE]  
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server.
@@ -65,7 +65,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 #### Enable premium SSD v2 high availability preview
 
-High availability is an opt-in feature that can be enabled at the subscription level using the steps below. As this is a preview feature, it is recommended for use only with non-production workloads.
+High availability is an opt-in feature that can be enabled at the subscription level using the following steps. As this is a preview feature, it is recommended for use only with non-production workloads.
 
 1. In the **Search** bar, type **Preview features** and select it from the results.
 
@@ -94,12 +94,12 @@ High availability is an opt-in feature that can be enabled at the subscription l
 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
-- Premium SSD v2 High availability can only be configured for servers created on or after July 1st. Currently, SSD v2 High availability is supported in Canada Central, Central US,  East Asia, and East US 2 regions.
+- Premium SSD v2 High availability can only be configured for servers created on or after July 1, 2025. Currently, SSD v2 High availability is supported in Canada Central, Central US,  East Asia, and East US 2 regions.
   
 -  Premium SSD v2 High availability can only be configured for servers created with PG version 16.
   
-- Premium SSD V2 can only be enabled in the following regions: 
- *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.  
+- Premium SSD V2 can only be enabled in the following regions:
+   *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.  
 
 - Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is currently not supported when the AFEC flag is enabled for accessing the High Availability (HA) preview feature.
   
@@ -140,7 +140,7 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 
 When your disk becomes full, the server starts returning errors and prevents any further modifications. Reaching the limit might also cause problems with other operational activities, such as backups and write-ahead log (WAL) archiving. There are different ways with which this disk full condition can be avoided:
 1. To avoid this situation, the server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. If you're using Premium SSD storage type, you can use the [storage autogrow](#storage-autogrow-premium-ssd) feature or scale up the storage of the server to avoid this issue from occurring.
-2. If the server is marked as read only because of disk full condition, you can delete the data that is no longer required. To do this you can execute the below command to change the mode to read-write and once that is done you can execute delete command.
+2. If the server is marked as read only because of disk full condition, you can delete the data that is no longer required. To do this, you can execute the below command to change the mode to read-write, and once that is done, you can execute delete command.
 ```sql
 	SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;
 ```
@@ -156,7 +156,7 @@ As an illustrative example, let's consider a server with a storage capacity of 2
 
 The default behavior increases the disk size to the next premium SSD storage size. This increase is always double in both size and cost, regardless of whether you start the storage scaling operation manually or through storage autogrow. Enabling storage autogrow is valuable when you're managing unpredictable workloads, because it automatically detects low-storage conditions and scales up the storage accordingly.
 
-The process of scaling storage is performed online, without causing any downtime, except when the disk size needs to cross the border of 4,096 GiB. This exception is a limitation of [Azure managed disks](/azure/virtual-machines/managed-disks-overview). In that case, the automatic storage scaling activity isn't triggered, even if storage autogrow setting is enabled for the server. In such cases, you need to scale your storage manually. Be aware that in this scenario (reaching or crossing the 4,096 GiB boundary), manual scaling is an offline operation. We recommend scheduling this task to align with your business needs. All other operations can be performed online. Once the allocated disk size is 8,192 GiB or higher, storage autogrow triggers again automatically and every subsequent storage grow operation is performed online until the disk allocated reaches its maximum growing capacity, which is 32,768 GiB.
+The process of scaling storage is performed online, without causing any downtime, except when the disk size needs to cross the border of 4,096 GiB. This exception is a limitation of [Azure managed disks](/azure/virtual-machines/managed-disks-overview). In that case, the automatic storage scaling activity isn't triggered, even if storage autogrow setting is enabled for the server. In such cases, you need to scale your storage manually. In this scenario (reaching or crossing the 4,096 GiB boundary), manual scaling is an offline operation. We recommend scheduling this task to align with your business needs. All other operations can be performed online. Once the allocated disk size is 8,192 GiB or higher, storage autogrow triggers again automatically and every subsequent storage grow operation is performed online until the disk allocated reaches its maximum growing capacity, which is 32,768 GiB.
 
 > [!NOTE]  
 > Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
