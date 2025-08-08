@@ -224,6 +224,7 @@ Following is a list of query types for which index tuning won't generate CREATE 
 - Reference objects that were dropped or renamed before the analysis occurs. These queries could still be syntactically valid, but not semantically valid.
 - Access temporary tables or indexes on temporary tables.
 - Access views or materialized views.
+- Access partitioned tables.
 - Are identified as utility statements. Utility statements or utility commands are, basically, any statement not considered SELECT, INSERT, UPDATE, DELETE, or MERGE, and certain commands containing one of these.
 - Are not among the top [index_tuning.max_queries_per_database](concepts-index-tuning.md#configuring-index-tuning) slowest, for the database and period analyzed.
 - Were run in the context of one specific database, when none of those queries were identified as the top slowest at the server level.
