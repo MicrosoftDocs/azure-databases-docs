@@ -1,6 +1,6 @@
 ---
 title: Configure High Availability
-description: This article describes how to configure and operate high availability in an Azure Database for PostgreSQL flexible server.
+description: This article describes how to configure and operate high availability on an Azure Database for PostgreSQL flexible server.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -8,19 +8,19 @@ ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to configure and operate high availability in an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server.
 ---
 
-# Configure high availability in an Azure Database for PostgreSQL flexible server
+# Configure high availability on an Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article describes how to enable or disable high availability (HA) in your Azure Database for PostgreSQL flexible server by using the Azure portal or the Azure CLI. The information applies whether you're using flexible servers in the same zone or a zone-redundant deployment model.
+This article describes how to enable or disable high availability (HA) on your Azure Database for PostgreSQL flexible server by using the Azure portal or the Azure CLI. The information applies whether you're using flexible servers in the same zone or using a zone-redundant deployment model.
 
 The high-availability feature deploys physically separate primary and standby replicas. You can provision the replicas within the same availability zone or in different zones, depending on the deployment model that you choose. For more information, see the [article about high-availability concepts](/azure/reliability/reliability-postgresql-flexible-server). You can enable high availability during or after the creation of your Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
-> In April 2024, we implemented a billing model update for v5 compute tier with HA-enabled servers. This change aimed to correctly reflect the charges by accounting for both the primary and standby servers. Before this change, we were incorrectly charging customers for the primary server only. Customers who use the v5 tier with HA-enabled servers now see billing quantities multiplied by 2. This update doesn't affect the v4 and v3 tiers.
+> In April 2024, we implemented a billing model update for the v5 compute tier with HA-enabled servers. This change aimed to correctly reflect the charges by accounting for both the primary and standby servers. Before this change, we were incorrectly charging customers for the primary server only. Customers who use the v5 tier with HA-enabled servers now see billing quantities multiplied by 2. This update doesn't affect the v4 and v3 tiers.
 
 ## Enable high availability for existing servers
 
@@ -38,13 +38,13 @@ The high-availability feature deploys physically separate primary and standby re
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable.png" alt-text="Screenshot that shows the checkbox selected to enable high availability." lightbox="./media/how-to-configure-high-availability/high-availability-enable.png":::
 
-1. **Same zone** and **Zone redundant** options appear:
+1. For **High availability mode**, the **Same zone** and **Zone redundant** options appear:
 
     * To create the standby server in the same availability zone as the primary server, select **Same zone**.
 
       :::image type="content" source="./media/how-to-configure-high-availability/high-availability-same-zone.png" alt-text="Screenshot that shows selection of the same-zone option for high availability." lightbox="./media/how-to-configure-high-availability/high-availability-same-zone.png":::
 
-    * To choose zone redundancy, select **Zone redundant**. For **Standby availability zone**, choose the other availability zones in which you want to deploy your standby server.
+    * To choose zone redundancy, select **Zone redundant**. Then, for **Standby availability zone**, choose the other availability zones in which you want to deploy your standby server.
 
       > [!NOTE]
       > If the region in which your server is created doesn't support high availability with zone redundancy, the **Zone redundant** option is unavailable.
@@ -166,10 +166,10 @@ az postgres flexible-server update \
 
 1. In the [Azure portal](https://portal.azure.com/), during provisioning of a new Azure Database for PostgreSQL flexible server, go to the **High availability** section. Select **Same zone** or **Zone redundant**.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png" alt-text="Screenshot that shows high-availability options during provisioning of a new flexible server." lightbox="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png":::
-
     > [!NOTE]
     > If the region in which your server is created doesn't support high availability with zone redundancy, the **Zone redundant** option is unavailable.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png" alt-text="Screenshot that shows high-availability options during provisioning of a new flexible server." lightbox="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png":::
 
 1. Select a specific zone for the primary server by setting **Availability zone** to any value other than **No preference**.
 
@@ -258,7 +258,7 @@ This region is single availability zone. Zone redundant high availability is not
 
 Follow these steps to force a failover of your primary server to the standby server in Azure Database for PostgreSQL.
 
-Initiating a forced failover immediately brings the primary server down and triggers a failover to the standby server. Initiating a forced failover is useful for cases in which you want to test how a failover caused by an unplanned outage would affect your workload.
+Initiating a forced failover immediately brings the primary server down and triggers a failover to the standby server. Initiating a forced failover is useful when you want to test how a failover caused by an unplanned outage would affect your workload.
 
 > [!IMPORTANT]
 >
@@ -274,8 +274,6 @@ Initiating a forced failover immediately brings the primary server down and trig
 
 1. If the high-availability mode is set to **Zone redundant**, note the values assigned to **Primary availability zone** and **Standby availability zone**. They should be reversed after the failover operation finishes.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png" alt-text="Screenshot that shows the zones in which primary and standby servers are deployed." lightbox="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png":::
-
 1. Select **Forced failover** to initiate the manual failover procedure. A dialog informs you of the expected downtime until the failover finishes. If you decide to proceed, select **Initiate forced failover**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-forced-failover.png" alt-text="Screenshot that shows the dialog displayed before the initiation of a forced failover." lightbox="./media/how-to-configure-high-availability/confirm-forced-failover.png":::
@@ -290,8 +288,6 @@ Initiating a forced failover immediately brings the primary server down and trig
 
 1. If the high-availability mode is configured as **Zone redundant**, confirm that the values of **Primary availability zone** and **Standby availability zone** are now reversed.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png" alt-text="Screenshot that shows the values for zones in which primary and standby servers are deployed." lightbox="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png":::
-
 ### [CLI](#tab/cli-force-failover)
 
 You can enable high availability while provisioning a new server via the [az postgres flexible-server restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
@@ -305,13 +301,13 @@ az postgres flexible-server restart \
   --failover Forced
 ```
 
-If you try to force a failover of an Azure Database for PostgreSQL flexible server that doesn't have high availability enabled, you get this error:
+If you try to force the failover of an Azure Database for PostgreSQL flexible server that doesn't have high availability enabled, you get this error:
 
 ```output
 Failing over can only be triggered for zone redundant or same zone servers.
 ```
 
-If you try to force a failover of an Azure Database for PostgreSQL flexible server that has high availability enabled but isn't ready to initiate the failover operation, you get this error:
+If you try to force the failover of an Azure Database for PostgreSQL flexible server that has high availability enabled but isn't ready to initiate the failover operation, you get this error:
 
 ```output
 Code: OperationFailed
@@ -342,8 +338,6 @@ This failover operation provides the least downtime, because it performs a grace
 
 1. If the high-availability mode is set to **Zone redundant**, note the values assigned to **Primary availability zone** and **Standby availability zone**. They should be reversed after the failover operation finishes.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png" alt-text="Screenshot that shows the zones in which primary and standby servers are deployed." lightbox="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png":::
-
 1. Select **Planned failover** to initiate the manual failover procedure. A dialog informs you of the expected downtime until the failover finishes. If you decide to proceed, select **Initiate planned failover**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-planned-failover.png" alt-text="Screenshot that shows the dialog displayed before the initiation of a planned failover." lightbox="./media/how-to-configure-high-availability/confirm-planned-failover.png":::
@@ -358,13 +352,11 @@ This failover operation provides the least downtime, because it performs a grace
 
 1. If the high-availability mode is configured as **Zone redundant**, confirm that the values of **Primary availability zone** and **Standby availability zone** are now reversed.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png" alt-text="Screenshot that shows the values for the zones in which primary and standby servers are deployed." lightbox="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png":::
-
 ### [CLI](#tab/cli-planned-failover)
 
 You can enable high availability while provisioning a new server via the [az postgres flexible-server restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
 
-To initiate a forced failover, use this command:
+To initiate a planned failover, use this command:
 
 ```azurecli-interactive
 az postgres flexible-server restart \
@@ -373,13 +365,13 @@ az postgres flexible-server restart \
   --failover Planned
 ```
 
-If you try to force a failover of an Azure Database for PostgreSQL flexible server that doesn't have high availability enabled, you get this error:
+If you try to fail over an Azure Database for PostgreSQL flexible server that doesn't have high availability enabled, you get this error:
 
 ```output
 Failing over can only be triggered for zone redundant or same zone servers.
 ```
 
-If you try to force a failover of an Azure Database for PostgreSQL flexible server that has high availability enabled but isn't ready to initiate the failover operation, you get this error:
+If you try to fail over an Azure Database for PostgreSQL flexible server that has high availability enabled but isn't ready to initiate the failover operation, you get this error:
 
 ```output
 Code: OperationFailed
@@ -392,13 +384,13 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 * Enabling or disabling high availability on an Azure Database for PostgreSQL flexible server doesn't change other settings, including networking configuration, firewall settings, server parameters, or backup retention. Enabling or disabling high availability is an online operation. It doesn't affect your application connectivity and operations.
 
-* High availability with both replicas deployed in the same zone is supported and available in all regions in which Azure Database for PostgreSQL flexible server is supported. However, high availability with zone redundancy is [available only in certain regions](overview.md#azure-regions).
+* High availability with both replicas deployed in the same zone is supported and available in all regions in which Azure Database for PostgreSQL flexible servers are supported. However, high availability with zone redundancy is [available only in certain regions](overview.md#azure-regions).
 
 * High availability isn't supported in the **Burstable** tier. It's supported only in the **General purpose** and **Memory optimized** tiers.
 
 * If you deploy a server in a region that consists of a single availability zone, you can enable high availability in the same-zone mode only. If the region is enhanced in the future with multiple availability zones, you can deploy new Azure Database for PostgreSQL flexible servers with high availability configured as same zone or zone redundant.
 
-  However, for any flexible serers that were deployed in the region when the region consisted of a single availability zone, you can't directly enable high availability in zone-redundant mode for them. As a workaround, you can restore those instances on new servers, and then enable zone-redundant high availability on the restored servers:
+  However, for any flexible servers that were deployed in the region when the region consisted of a single availability zone, you can't directly enable high availability in zone-redundant mode for them. As a workaround, you can restore those instances on new servers, and then enable zone-redundant high availability on the restored servers:
 
   1. [Restore an existing instance on a new server by using the latest restore point](how-to-restore-latest-restore-point.md).
   2. After you create the new server, [enable high availability with zone redundancy](#enable-high-availability-for-existing-servers).
