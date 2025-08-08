@@ -70,7 +70,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.
-- `HNSW` and `DiskANN` are available on M40 and above cluster tiers. 
+- `HNSW` and `DiskANN` are available on M30 and above cluster tiers. 
 
 ## Cluster and shard limits
 
