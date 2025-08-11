@@ -38,6 +38,7 @@ Follow these steps to trigger backup on demand:
     :::image type="content" source="media/how-to-trigger-on-demand-backup/trigger-on-demand-backup.png" alt-text="Screenshot showing how to trigger an on-demand backup." lightbox="media/how-to-trigger-on-demand-backup/trigger-on-demand-backup.png":::
 
 1. Once completed, the on-demand and automated backups are listed.
+1. These on-demand backups can also be deleted if no longer needed. Select **Delete** to delete any on-demand backup.
 
 ## Trigger an On-Demand Backup and Export (preview)
 
