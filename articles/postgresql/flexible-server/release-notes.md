@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 07/15/2025
+ms.date: 08/11/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -29,10 +29,11 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [Cascading read replica support in Azure Database for PostgreSQL](concepts-read-replicas.md)
 
 ## Release: June 2025
+- General availability
+    - [Indonesia Central](./overview.md#azure-regions) region.
+    - [TimescaleDB extension](../extensions/concepts-extensions-versions.md#postgis) version 2.15.3 for PG 13. 
+    - [Postgis extension](../extensions/concepts-extensions-versions.md#timescaledb) version 3.5.2 for PG 13 and above.
 - Support for latest [minor versions](concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
-- General availability of [Indonesia Central](./overview.md#azure-regions) region.
-- Support for [TimescaleDB extension](../extensions/concepts-extensions-versions.md#postgis) version 2.15.3 for PG 13. 
-- Support for [Postgis extension](../extensions/concepts-extensions-versions.md#timescaledb) version 3.5.2 for PG 13 and above.
 
 ## Release: May 2025
 
