@@ -190,7 +190,7 @@ To use Semantic Operators in your PostgreSQL database, follow these steps:
 These operators support chat completion models and default to [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series). 
 
 1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL flexible server. 
-1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (for example, [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through the intuitive experiences provided by [Azure AI Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). 
+1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (for example, [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through [Azure AI Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). 
 1. Note the Azure OpenAI **endpoint URL** and **API key**. 
 1. **Configure access**:
     
