@@ -210,10 +210,11 @@ Fuzzy search can improve resilience to typos and text variations. You can specif
 > [!NOTE]
 > Fuzzy search is in early preview. Performance, quality, and functionality are subject to change through the evolution of the preview. To try it, you must enroll in the *Preview Capabilities for Full Text Search* feature via the "Features" section of your Azure Cosmos DB resource in the Azure portal. 
 
+In this example, we search for "red" and "bycycle", allowing for up to 2 edits (i.e., errors) in the spelling in both the searched and indexed terms.
 ```sql
 SELECT TOP 10 *
 FROM c
-WHERE FullTextContains(c.text, {"term": "red", "distance":1}, {"term": "bicycle", "distance":2})
+WHERE FullTextContains(c.text, {"term": "red", "distance":1}) AND FullTextContains({"term": "bycycle", "distance":2})
 ```
 
 ## Related content
