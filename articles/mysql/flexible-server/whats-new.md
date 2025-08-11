@@ -168,7 +168,7 @@ Starting November 1, 2024, new B1 servers are limited to ensure performance and 
 
   Azure Database for MySQL now offers major version upgrades for Burstable SKU compute tiers. This support automatically upgrades the compute tier to General Purpose SKU before performing the upgrade, ensuring sufficient resources. Customers can choose to revert to Burstable SKU after the upgrade. Additional costs might apply.
 
-  To learn more, visit [Upgrade MySQL version](./how-to-upgrade.md#perform-a-planned-major-version-upgrade-from-mysql-57-to-mysql-80-using-the-azure-portal-for-burstable-sku-servers).
+  To learn more, visit [Upgrade MySQL version](./how-to-upgrade.md#perform-a-planned-major-version-upgrade-using-the-azure-portal-for-burstable-sku-servers).
 
 - **Deprecated Metrics Announcement**
 
