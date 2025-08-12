@@ -243,7 +243,7 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
 
 1. Confirm selected user-assigned managed identity and encryption key on the **Global distribution** page and select **Save** to confirm your selections and create replica cluster.
 
-    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion." lightbox="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png":::
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png" alt-text="Screenshot that shows the location of Save button for replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png":::
  
 #### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
