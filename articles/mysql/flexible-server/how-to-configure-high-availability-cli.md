@@ -1,7 +1,7 @@
 ---
 title: Manage Zone Redundant High Availability - Azure CLI
 description: This article describes how to configure zone redundant high availability in Azure Database for MySQL - Flexible Server by using the Azure CLI.
-author: sunaray
+author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
 ms.date: 07/21/2025
