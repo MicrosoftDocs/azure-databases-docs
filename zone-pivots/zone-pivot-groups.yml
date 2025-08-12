@@ -84,7 +84,7 @@ groups:
   prompt: Choose a PostgreSQL version
   pivots:
   - id: postgresql-17
-    title: PostgreSQL 17 (preview)
+    title: PostgreSQL 17
   - id: postgresql-16
     title: PostgreSQL 16
   - id: postgresql-15
