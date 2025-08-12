@@ -23,9 +23,9 @@ This article contains release notes for the API for MongoDB vCore. These release
 - [Preview] Enabled index pushdown optimization for $sort on any field.
 - Enabled index pushdown optimization for $limit.
 - [Preview] Added support for composite indexes on filter conditions.
-- Added support for HNSW index for M30 SKU.
+- Added support for HNSW index for M30 instance types.
 - Enhanced TTL index behavior to continue processing even if the cluster becomes read-only due to disk full.
-- Improvements to parallel build for faster index creation on sharded collection.
+- Improvements to parallel build for faster index creation on sharded and unsharded collection.
 
 #### Infrastructure Enhancements_0715
 
@@ -59,7 +59,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 - Added support for the $dateFromString operator with full functionality.
 - Extended syntax for $getField aggregation operator. Now the value of 'field' could be an expression that resolves to a string.
 - Added support for top-level aggregate command let variables in the $geoNear stage.
-- Backend command support for statement time-out is now available.
+- Backend command support for statement time out is now available.
 - Introduced support for the $toUUID aggregation operator.
 - Implemented full functionality for the $dateFromString operator.
 - Extended $getField operator to accept expressions resolving to a string for the field parameter.
