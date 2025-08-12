@@ -11,7 +11,7 @@ ms.topic: how-to
 #customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server.
 ---
 
-# Configure high availability on an Azure Database for PostgreSQL flexible server
+# Configure high availability for Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -399,5 +399,5 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 ## Related content
 
-* [Overview of business continuity with Azure Database for PostgreSQL flexible server](concepts-business-continuity.md)
-* [High availability (reliability) in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server)
+* [Overview of business continuity with Azure Database for PostgreSQL](concepts-business-continuity.md)
+* [High availability (reliability) in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server)
