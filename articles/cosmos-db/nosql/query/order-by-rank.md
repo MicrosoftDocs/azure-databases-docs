@@ -40,7 +40,7 @@ This is a simple example showing how to use `FullTextScore` with `ORDER BY RANK`
 ```nosql
 SELECT TOP 10 c.text
 FROM c
-ORDER BY RANK FullTextScore(c.text, ["keyword"])
+ORDER BY RANK FullTextScore(c.text, "keyword")
 ```
 
 This next example shows use `RRF` in the `ORDER BY RANK` clause to combine `VectorDistance` similarity scores with `FullTextScore` BM25 scores to execute a hybrid search
@@ -49,7 +49,7 @@ This next example shows use `RRF` in the `ORDER BY RANK` clause to combine `Vect
 SELECT TOP 10 c.text
 FROM c
 WHERE FullTextContains(c.text, "keyword1")
-ORDER BY RANK RRF(FullTextScore(c.text, ["keyword1", "keyword2"]), VectorDistance(c.vector, [1,2,3]))
+ORDER BY RANK RRF(FullTextScore(c.text, "keyword1", "keyword2"), VectorDistance(c.vector, [1,2,3]))
 ```
 
 ## Remarks  
