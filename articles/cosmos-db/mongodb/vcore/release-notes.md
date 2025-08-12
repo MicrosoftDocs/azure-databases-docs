@@ -23,7 +23,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 - [Preview] Enabled index pushdown optimization for $sort on any field.
 - Enabled index pushdown optimization for $limit.
 - [Preview] Added support for composite indexes on filter conditions.
-- Added support for HNSW index for M30 instance types.
+- Added support for HNSW index for M30 cluster tier.
 - Enhanced TTL index behavior to continue processing even if the cluster becomes read-only due to disk full.
 - Improvements to parallel build for faster index creation on sharded and unsharded collection.
 
