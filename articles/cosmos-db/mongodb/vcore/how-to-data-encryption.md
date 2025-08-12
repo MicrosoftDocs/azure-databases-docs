@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 08/04/2025
+ms.date: 08/10/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -204,41 +204,47 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
 
 1. On the cluster sidebar, under **Settings**, select **Global distribution**.
 
-
 1. Select **Add new read replica**.
 
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster.png" alt-text="Screenshot that shows how to create a replica cluster for an existing one." lightbox="media/how-to-data-encryption/create-replica-cluster.png":::
 
 1. Provide a replica cluster name in the **Read replica** name field.
-
 
 1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
 
     > [!NOTE]  
-    > If you need to have a cluster with a different data encryption mode in the same region, consider performing a [cluster restore](#enable-or-disable-customer-managed-key-data-encryption-during-cluster-restore).
+    > Replica cluster is always created in the same Azure subscription and resource group as its primary (read-write) cluster.
 
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-name-and-region.png" alt-text="Screenshot that shows how to enter the replica cluster name and select Azure region for it." lightbox="media/how-to-data-encryption/create-replica-cluster-name-and-region.png":::
 
-1. In **Data encryption**, select the **Customer-managed key** to enable CMK or **Service-managed key** to disable CMK on the replica cluster.
+1. In **Data encryption** section, select the **Customer-managed key** to enable CMK or **Service-managed key** to disable CMK on the replica cluster.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the customer-managed encryption key during replica cluster creation." lightbox="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png":::
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-data-encryption-mode-selection.png" alt-text="Screenshot that shows how to select the customer-managed encryption key or service-managed encryption key during replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-data-encryption-mode-selection.png":::
 
 1. In **User-assigned managed identity** section select **Change identity**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-managed-identity.png" alt-text="Screenshot that shows how to select the user-assigned managed identity to access the data encryption key during replica cluster creation." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-select-managed-identity.png":::
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity.png" alt-text="Screenshot that shows how to select the user-assigned managed identity to access the data encryption key during replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity.png":::
 
 1. In the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png" alt-text="Screenshot that shows how to select the user-assigned managed identity, which the cluster uses to access the data encryption key, during replica cluster creation." lightbox="media/how-to-data-encryption/create-cluster-with-customer-assigned-key.png":::
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity-selection.png" alt-text="Screenshot that shows how to select the user-assigned managed identity, which the cluster uses to access the data encryption key, during replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity-selection.png":::
 
 1. Select **Add**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity, which the cluster uses to access the data encryption key, during replica cluster creation." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-add-managed-identity.png":::
-
 1. In the **Key selection method**, choose **Select a key** .
 
+1. In the **Key**, choose **Change key**.
+
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-encryption-key.png" alt-text="Screenshot that shows how to open the  encryptino key selection panel during replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-encryption-key.png":::
+
+1. In the **Select a key** pane select the Azure Key Vault in the **Key vault** and encryption key in the **Key**, and confirm your choices by selecting **Select**.
+
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-key-vault-and-encryption-key-selection.png" alt-text="Screenshot that shows how to select key vault and encryption key in that key vault to be used as a customer-managed key during replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-key-vault-and-encryption-key-selection.png":::
+
+1. Confirm selected user-assigned managed identity and encryption key on the **Global distribution** page and select **Save** to confirm your selections and create replica cluster.
+
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion." lightbox="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png":::
  
-1. Verify your selection and select the Save button to confirm replica creation.
-
-
 #### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
 1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
