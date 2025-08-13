@@ -235,7 +235,7 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
 
 1. In the **Key**, choose **Change key**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-encryption-key.png" alt-text="Screenshot that shows how to open the  encryptino key selection panel during replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-encryption-key.png":::
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-encryption-key.png" alt-text="Screenshot that shows how to open the encryption key selection panel during replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-encryption-key.png":::
 
 1. In the **Select a key** pane select the Azure Key Vault in the **Key vault** and encryption key in the **Key**, and confirm your choices by selecting **Select**.
 
@@ -288,11 +288,50 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
 
 ### Enable or disable customer-managed key data encryption during cluster restore
 
+The restore process creates a new cluster with the same configuration in the same Azure region, subscription, and resource group as the original. Follow these steps to create a restored cluster with CMK or SMK enabled.
+
 #### [Portal](#tab/portal-customer-managed-cluster-provisioning)
 
-
+1. Select an existing Azure Cosmos DB for MongoDB vCore cluster.
 1. On the cluster sidebar, under **Settings**, select **Point In Time Restore**.
+1. Select a date and provide a time (in UTC time zone) in the date and time fields.
 
+    :::image type="content" source="media/how-to-data-encryption/cluster-restore-date-time.png" alt-text="Screenshot that shows how to select date and time for the cluster restore." lightbox="media/how-to-data-encryption/cluster-restore-date-time.png":::
+
+1. Enter a cluster name in the **Restore target cluster name** field. 
+
+    :::image type="content" source="media/how-to-data-encryption/cluster-restore-cluster-name.png" alt-text="Screenshot that shows how to enter cluster name for the cluster restore." lightbox="media/how-to-data-encryption/cluster-restore-cluster-name.png":::
+
+1. Enter a cluster admin name for the restored cluster in the **Admin user name** field.
+1. Enter a password for the admin role in the **Password** and **Confirm password** fields.
+
+    :::image type="content" source="media/how-to-data-encryption/cluster-restore-cluster-administrator-name-and-password.png" alt-text="Screenshot that shows how to administrative user name and  cluster name for the cluster restore." lightbox="media/how-to-data-encryption/cluster-restore-cluster-administrator-name-and-password.png":::
+
+1. In **Data encryption** section, select the **Customer-managed key** to enable CMK. If you need to have CMK disabled on the restored cluster, select **Service-managed key**.
+
+    :::image type="content" source="media/how-to-data-encryption/cluster-restore-cluster-data-encryption-mode.png" alt-text="Screenshot that shows how to enable data encryption with customer-managed key for restored cluster." lightbox="media/how-to-data-encryption/cluster-restore-cluster-data-encryption-mode.png":::
+
+1. In **User-assigned managed identity** section select **Change identity**.
+
+    :::image type="content" source="media/how-to-data-encryption/cluster-restore-cluster-user-assigned-change-identity-selection.png" alt-text="Screenshot that shows how to select the user-assigned managed identity to access the data encryption key during cluster restore." lightbox="media/how-to-data-encryption/cluster-restore-cluster-user-assigned-change-identity-selection.png":::
+
+1. In the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
+
+    :::image type="content" source="media/how-to-data-encryption/cluster-restore-cluster-user-assigned-managed-identity-add.png" alt-text="Screenshot that shows how to select the user-assigned managed identity, which the cluster uses to access the data encryption key, during cluster restore." lightbox="media/how-to-data-encryption/cluster-restore-cluster-user-assigned-managed-identity-add.png":::
+
+1. Select **Add**.
+
+1. In the **Key selection method**, choose **Select a key** .
+
+1. In the **Key**, choose **Change key**.
+
+    :::image type="content" source="media/how-to-data-encryption/cluster-restore-cluster-encryption-key.png" alt-text="Screenshot that shows how to open the encryption key selection panel during cluster restore." lightbox="media/how-to-data-encryption/cluster-restore-cluster-encryption-key.png":::
+
+1. In the **Select a key** pane select the Azure Key Vault in the **Key vault** and encryption key in the **Key**, and confirm your choices by selecting **Select**.
+
+    :::image type="content" source="media/how-to-data-encryption/cluster-restore-cluster-key-vault-and-encryption-key-selection.png" alt-text="Screenshot that shows how to select key vault and encryption key in that key vault to be used as a customer-managed key during cluster restore." lightbox="media/how-to-data-encryption/cluster-restore-cluster-key-vault-and-encryption-key-selection.png":::
+
+1. Select **Submit** to initiate cluster restore.
 
 #### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
@@ -334,6 +373,7 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
 
 ---
 
+One restored cluster is created, review the list of [post-restore tasks](./how-to-restore-cluster.md#post-restore-tasks).
 
 ## Related content
 
