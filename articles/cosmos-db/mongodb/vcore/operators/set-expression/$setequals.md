@@ -1,7 +1,7 @@
 ---
   title: $setEquals
   titleSuffix: Overview of the $setEquals operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $setEquals operator returns true if two sets have the same distinct elements.
+  description: The $setEquals operator returns a value of true if two sets have the same distinct elements.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # $setEquals
 
-The `$setEquals` operator returns `true` if two sets have the same distinct elements, regardless of order or duplicates. It treats arrays as sets, ignoring duplicate values and element order.
+The `$setEquals` operator returns a value of `true` if two sets have the same distinct elements, regardless of order or duplicates. It treats arrays as sets and ignores duplicate values and element order.
 
 ## Syntax
 
@@ -26,11 +26,11 @@ The `$setEquals` operator returns `true` if two sets have the same distinct elem
 
 | Parameter | Description |
 | --- | --- |
-| **`array1, array2, ...`** | Arrays to compare for equality. You can specify two or more arrays. |
+| `array1, array2, ...` | Arrays that you want to compare to determine if they're equal. You can specify two or more arrays. |
 
-## Example
+## JSON example
 
-Let's understand the usage with sample json from the `stores` dataset.
+The following JSON sample from the `stores` dataset can help you understand how to use this operator.
 
 ```json
 {
@@ -82,7 +82,7 @@ Let's understand the usage with sample json from the `stores` dataset.
 
 ### Example 1: Compare discount categories between events
 
-The example allows checking if the two promotion events, offer discounts on the same categories.
+The following example helps you determine if two promotion events offer discounts on the same categories.
 
 ```javascript
 db.stores.aggregate([
@@ -103,7 +103,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query output compares the discount categories and returns false due to non matching values.
+The query output compares the discount categories and returns a value of `false`, because the values don't match.
 
 ```json
 {
@@ -123,7 +123,7 @@ The query output compares the discount categories and returns false due to non m
 
 ### Example 2: Compare staff requirements
 
-This example allows checking if the two stores have the same staff structure requirements.
+The following example determines whether two stores have the same staff structure requirements.
 
 ```javascript
 db.stores.aggregate([
@@ -151,7 +151,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` since both the stores have same staff structure.
+The query returns `true` because both stores have same staff structure.
 
 ```json
 {
@@ -172,7 +172,7 @@ The query returns `true` since both the stores have same staff structure.
 
 ### Example 3: Compare sets with duplicates
 
-The example demonstrates that `$setEquals` ignores duplicates and order.
+The following example demonstrates that `$setEquals` ignores duplicates and order.
 
 ```javascript
 db.stores.aggregate([
@@ -193,7 +193,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` since both the provided arrays list same products in different sequence along with duplicates.
+The query returns a value of `true` because both of the arrays list the same products in a different sequence, with duplicates.
 
 ```json
 {

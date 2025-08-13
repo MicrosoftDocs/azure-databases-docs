@@ -12,7 +12,7 @@
 
 # $setDifference
 
-The `$setDifference` operator returns a set with elements that exist in the first set but not in the second set. It treats arrays as sets, ignoring duplicate values and element order.
+The `$setDifference` operator returns a set that includes elements that exist in one set but not in another set. It treats arrays as sets and ignores duplicate values and element order.
 
 ## Syntax
 
@@ -26,12 +26,12 @@ The `$setDifference` operator returns a set with elements that exist in the firs
 
 | Parameter | Description |
 | --- | --- |
-| **`array1`** | The first array to compare. Elements unique to this array are returned. |
-| **`array2`** | The second array to compare against. Elements that exist in both arrays are excluded from the result. |
+| `array1` | The first array that you want to compare. Elements that are unique to this array are returned. |
+| `array2` | The second array that you want to compare against the first array. Elements that exist in both arrays are excluded from the result. |
 
-## Example
+## JSON example
 
-Let's understand the usage with sample json from the `stores` dataset.
+The following JSON sample from the `stores` dataset can help you understand how to use this operator.
 
 ```json
 {
@@ -83,9 +83,9 @@ Let's understand the usage with sample json from the `stores` dataset.
 }
 ```
 
-### Example 1: Find categories sold but not discounted
+### Example 1: Find categories of products that are for sale but not discounted
 
-The example checks for product categories with sales data but aren't providing any discounts.
+The following example checks for product categories that include sales data, but no discounts.
 
 ```javascript
 db.stores.aggregate([
@@ -118,7 +118,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query output shows categories, which are sold but never discounted.
+The query output shows categories of products that are sold but never discounted.
 
 ```json
 {
@@ -150,7 +150,7 @@ The query output shows categories, which are sold but never discounted.
 
 ### Example 2: Compare staff distribution types
 
-The example demonstrates how to find the difference between two hypothetical staff requirement lists.
+The following example demonstrates how to find the difference between two hypothetical staff requirement lists.
 
 ```javascript
 db.stores.aggregate([
@@ -171,7 +171,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the skills that are required but not available.
+The query returns the skills that are required, but not available.
 
 ```json
 {

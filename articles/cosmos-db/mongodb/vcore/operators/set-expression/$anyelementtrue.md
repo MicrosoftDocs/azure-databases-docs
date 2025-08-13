@@ -1,7 +1,7 @@
 ---
   title: $anyElementsTrue
   titleSuffix: Overview of the $allElementsTrue operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $anyElementsTrue operator returns true if any element evaluates to true in an array.
+  description: The $anyElementsTrue operator returns a value of true if any element in an array is evaluated to have a value of true.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # $anyElementTrue
 
-The `$anyElementTrue` operator evaluates an array as a set and returns `true` if any element in the array is `true` or equivalent to `true`. If all elements evaluate to `false`, `null`, `0`, or `undefined`, the operator returns `false`.
+The `$anyElementTrue` operator evaluates an array as a set and returns a value of `true` if any element in the array is `true` (or equivalent to `true`). If all the elements are evaluated to have a value of `false`, `null`, `0`, or `undefined`, the operator returns a value of `false`.
 
 ## Syntax
 
@@ -26,11 +26,11 @@ The `$anyElementTrue` operator evaluates an array as a set and returns `true` if
 
 | Parameter | Description |
 | --- | --- |
-| **`array`** | An array of expressions to evaluate. If the array is empty, `$anyElementTrue` returns `false`. |
+| `array` | An array of expressions that you want to evaluate. If the array is empty, `$anyElementTrue` returns a value of `false`. |
 
-## Example
+## JSON example
 
-Let's understand the usage with sample json from the `stores` dataset.
+The following JSON sample from the `stores` dataset can help you understand how to use this operator.
 
 ```json
 {
@@ -74,9 +74,9 @@ Let's understand the usage with sample json from the `stores` dataset.
 }
 ```
 
-### Example 1: Check if any sales category exceeds target
+### Example 1: Determine if any sales category exceeds a target
 
-This example allows checking if any sales category exceeds a target of 40,000 in sales.
+This following example helps you determine if any sales category exceeds a target. In this case, the target is 40,000 in sales.
 
 ```javascript
 db.stores.aggregate([
@@ -100,7 +100,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` for `hasHighPerformingCategory` field as sales for one of the categories is beyond 40,000.
+The query returns a value of `true` for the `hasHighPerformingCategory` field, because sales for one of the categories is over 40,000.
 
 ```json
 {
@@ -129,9 +129,9 @@ The query returns `true` for `hasHighPerformingCategory` field as sales for one 
 }
 ```
 
-### Example 2: Check if any promotion event has high discounts
+### Example 2: Determine whether any promotion event has high discounts
 
-The example allows checking if any promotion event offers discounts above 20%.
+The following example helps you determine if any promotion event offers discounts over 20%.
 
 ```javascript
 db.stores.aggregate([
@@ -156,7 +156,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` considering we have at least one promotion event with discounts above 20%.
+The query returns a value of `true`, because there's at least one promotion event with discounts over 20%.
 
 ```json
   {

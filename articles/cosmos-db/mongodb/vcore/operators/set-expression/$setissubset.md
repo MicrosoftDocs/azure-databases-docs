@@ -1,7 +1,7 @@
 ---
   title: $setIsSubset
   titleSuffix: Overview of the $setIsSubset operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $setIsSubset operator determines if the first array is a subset of the second array.
+  description: The $setIsSubset operator determines if one array is a subset of a second array.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # $setIsSubset
 
-The `$setIsSubset` operator returns a boolean value indicating whether the first array is a subset of the second array. It treats arrays as sets, meaning it ignores duplicates and element order. Returns `true` if all elements in the first array exist in the second array, otherwise `false`.
+The `$setIsSubset` operator returns a Boolean value that indicates whether one array is a subset of a second array. It treats arrays as sets, which means it ignores duplicates and element order. It returns a value of `true` if all the elements in the first array exist in the second array. If not, it returns a value of `false`.
 
 ## Syntax
 
@@ -26,12 +26,12 @@ The `$setIsSubset` operator returns a boolean value indicating whether the first
 
 | Parameter | Description |
 | --- | --- |
-| **`<array1>`** | The array to check if it's a subset of array2. |
-| **`<array2>`** | The array to check against. |
+| `<array1>` | The array that you want to check to see if it's a subset of `<array2>`. |
+| `<array2>` | The array that you want to check against. |
 
-## Example
+## JSON example
 
-Let's understand the usage with sample json from `stores` dataset.
+The following JSON sample from the `stores` dataset can help you understand how to use this operator.
 
 ```json
 {
@@ -118,9 +118,9 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Check if sales categories are subset of promotion categories
+### Example 1: Determine if sales categories are a subset of promotion categories
 
-The example allows checking if all categories that the store sells are also included in their promotion discounts and vice versa.
+The following example helps you determine if all of a store's categories are included in their promotion discounts, and vice versa.
 
 ```javascript
 db.stores.aggregate([
@@ -147,7 +147,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query return categories covered under both Sales and promotion bracket and confirms that `sales` is subset of promotion category while same isn't true other way around.
+The query returns categories that are included under both the sales and promotion brackets. It confirms that the `sales` value is a subset of a particular promotion category (but doesn't do the reverse).
 
 ```json
 {
