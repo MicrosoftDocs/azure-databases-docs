@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 08/01/2025
+ms.date: 08/12/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -125,7 +125,7 @@ The following are the current limitations for configuring [the customer-managed 
 - The following features aren't available on replica clusters:
   - Point-in-time restore (PITR)
   - In-region high availability (HA)
-- Cross-region replication isn't available on clusters with burstable compute or Free tier clusters.
+- Cross-region replication isn't available on clusters with [burstable compute](./burstable-tier.md) or [Free tier](./free-tier.md) clusters.
 
 ## Authentication and access control (RBAC)
 
