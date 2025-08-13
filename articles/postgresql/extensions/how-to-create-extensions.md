@@ -23,7 +23,7 @@ Before creating extensions in Azure Database for PostgreSQL flexible server, you
 
 1. If the extension requires it, also add it to `shared_load_libraries`.
 
-1. The user that creates the extensions must be a member of the `azure_pg_admin` role.
+1. To create untrusted extensions, a user must be a member of the `azure_pg_admin` role. Any user with `CREATE` privilege can create any trusted extension listed in azure.extensions. This list can be retrieved by running `SHOW azure.extensions;`
 
 1. Run the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command to create or install a particular extension. This command loads the packaged objects into your database.
 

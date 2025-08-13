@@ -23,6 +23,16 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 > [!NOTE]
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## Aug 2025
+
+### Cross subscription and cross resource-group placement in restore/replica provisioning workflow
+
+You can now restore a server or create a read replica in a different subscription and resource group in Azure Database for MySQL – Flexible Server. This enhancement offers greater flexibility for cross-environment restores, resource organization, and subscription-level separation, helping meet governance and operational requirements. To learn more, visit [Point-in-time restore](how-to-restore-server-portal.md).
+
+### Ability to delete on-demand backup
+
+You can now delete on-demand backups in Azure Database for MySQL – Flexible Server, giving you greater control over backup management and storage costs. This feature allows you to remove on-demand backups that are no longer needed, helping maintain a cleaner backup inventory and optimize resource usage. To learn more, visit [Backup and restore](how-to-trigger-on-demand-backup.md#trigger-on-demand-backup)
+
 ## July 2025
 
 ### General Availability in new Azure regions

@@ -140,6 +140,8 @@
         href: flexible-server/concepts-maintenance.md
       - name: Root certificate change
         href: flexible-server/concepts-root-certificate-rotation.md
+      - name: Root certificate change FAQ
+        href: flexible-server/concepts-root-certificate-rotation-faq.md
     - name: High availability
       items:
       - name: Business continuity overview
