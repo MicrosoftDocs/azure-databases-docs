@@ -139,14 +139,37 @@ You can enable data encryption with user-assigned encryption key, while provisio
 
 ## Update settings for encryption on cluster with CMK
 
-For existing clusters that were deployed with data encryption using a customer-managed key, you can do several configuration changes. Things that can be changed are the references to the keys used for encryption, and references to the user-assigned managed identities used by the service to access the keys kept in the key stores.
+For existing clusters that were deployed with data encryption using a customer-managed key, you can do several configuration changes. Things that can be changed are the references to the keys used for encryption including key vault and key used as a customer-managed key, and references to the user-assigned managed identities used by the service to access the keys kept in the key stores.
 
-You must update references that your Azure Cosmos DB for MongoDB vCore cluster has to a key:
-- When the key stored in the key store is rotated either manually or automatically. 
-- When you want to use the same or a different key stored in a different key store.
+#### [Portal](#tab/portal-customer-managed-cluster-provisioning)
 
-You must update the user-assigned managed identities that are used by your Azure Cosmos DB for MongoDB vCore cluster to access the encryption keys:
-- Whenever you want to use a different identity.
+1. On the cluster sidebar, under **Settings**, select **Data encryption**.
+
+1. In **User-assigned managed identity** section select **Change identity**.
+
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity.png" alt-text="Screenshot that shows how to change the user-assigned managed identity to access the data encryption key on an existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity.png":::
+
+1. In the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
+
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity-selection.png" alt-text="Screenshot that shows how to select the new user-assigned managed identity, which the cluster uses to access the data encryption key on existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity-selection.png":::
+
+1. Select **Add**.
+
+1. In the **Key selection method**, choose **Select a key** .
+
+1. In the **Key**, choose **Change key**.
+
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-encryption-key.png" alt-text="Screenshot that shows how to open the encryption key selection panel on an existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-encryption-key.png":::
+
+1. In the **Select a key** pane select the Azure Key Vault in the **Key vault** and encryption key in the **Key**, and confirm your choices by selecting **Select**.
+
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-key-vault-and-encryption-key-selection.png" alt-text="Screenshot that shows how to select new key vault and encryption key in that key vault to be used as a customer-managed key on an existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-key-vault-and-encryption-key-selection.png":::
+
+1. Confirm selected user-assigned managed identity and encryption key on the **Data encryption** page and select **Save** to confirm your selections and create replica cluster.
+
+    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png" alt-text="Screenshot that shows the location of Save button for data encryptoin configuration changes on an existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png":::
+ 
+#### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
 You can change user-assigned managed identity and encryption key for data encryption on an existing cluster via a REST API call.
 
@@ -185,6 +208,7 @@ You can change user-assigned managed identity and encryption key for data encryp
     # Execute the az rest command to make REST API call
     az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
     ```
+---
 
 Whether you want to only change the user-assigned managed identity used to access the key, or you want to only change the key used for data encryption, or you want to change both at the same time, you're required to provide all parameters listed in the JSON file.
 
@@ -284,7 +308,6 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
     ```
 
 ---
-
 
 ### Enable or disable customer-managed key data encryption during cluster restore
 
