@@ -74,7 +74,7 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 ---
 
 > [!NOTE]
-> Once the server is started, all management operations are available for the Azure Database for PostgreSQL flexible server.
+> Starting a server depends on the available capacity in the region. During capacity outages, the server start operation is not guaranteed to succeed. Once the server is started, all management operations are available for the Azure Database for PostgreSQL flexible server.
 
 ## Related content
 
