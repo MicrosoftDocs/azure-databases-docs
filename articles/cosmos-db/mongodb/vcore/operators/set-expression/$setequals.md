@@ -151,7 +151,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` because both stores have same staff structure.
+The query returns a value of `true`, because both stores have the same staff structure.
 
 ```json
 {
