@@ -137,7 +137,7 @@ You can enable data encryption with user-assigned encryption key, while provisio
     
 ---
 
-## Update settings for encryption on cluster with CMK
+## Update data encryption settings on cluster with CMK enabled
 
 For existing clusters that were deployed with data encryption using a customer-managed key, you can do several configuration changes. Things that can be changed are the references to the keys used for encryption including key vault and key used as a customer-managed key, and references to the user-assigned managed identities used by the service to access the keys kept in the key stores.
 
@@ -147,11 +147,11 @@ For existing clusters that were deployed with data encryption using a customer-m
 
 1. In **User-assigned managed identity** section select **Change identity**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity.png" alt-text="Screenshot that shows how to change the user-assigned managed identity to access the data encryption key on an existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity.png":::
+    :::image type="content" source="media/how-to-data-encryption/cluster-management-user-assigned-managed-identity.png" alt-text="Screenshot that shows how to change the user-assigned managed identity to access the data encryption key on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-user-assigned-managed-identity.png":::
 
 1. In the list of user-assigned managed identities, select the one you want your cluster to use to access the data encryption key stored in an Azure Key Vault.
 
-    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity-selection.png" alt-text="Screenshot that shows how to select the new user-assigned managed identity, which the cluster uses to access the data encryption key on existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-user-assigned-managed-identity-selection.png":::
+    :::image type="content" source="media/how-to-data-encryption/cluster-management-user-assigned-managed-identity-selection.png" alt-text="Screenshot that shows how to select the new user-assigned managed identity, which the cluster uses to access the data encryption key on existing cluster." lightbox="media/how-to-data-encryption/cluster-management-user-assigned-managed-identity-selection.png":::
 
 1. Select **Add**.
 
@@ -159,15 +159,15 @@ For existing clusters that were deployed with data encryption using a customer-m
 
 1. In the **Key**, choose **Change key**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-encryption-key.png" alt-text="Screenshot that shows how to open the encryption key selection panel on an existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-encryption-key.png":::
+    :::image type="content" source="media/how-to-data-encryption/cluster-management-encryption-key-change.png" alt-text="Screenshot that shows how to open the encryption key selection panel on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-encryption-key-change.png":::
 
 1. In the **Select a key** pane select the Azure Key Vault in the **Key vault** and encryption key in the **Key**, and confirm your choices by selecting **Select**.
 
-    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-key-vault-and-encryption-key-selection.png" alt-text="Screenshot that shows how to select new key vault and encryption key in that key vault to be used as a customer-managed key on an existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-key-vault-and-encryption-key-selection.png":::
+    :::image type="content" source="media/how-to-data-encryption/cluster-management-encryption-key-selection.png" alt-text="Screenshot that shows how to select new key vault and encryption key in that key vault to be used as a customer-managed key on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-encryption-key-selection.png":::
 
 1. Confirm selected user-assigned managed identity and encryption key on the **Data encryption** page and select **Save** to confirm your selections and create replica cluster.
 
-    :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png" alt-text="Screenshot that shows the location of Save button for data encryptoin configuration changes on an existing cluster." lightbox="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png":::
+    :::image type="content" source="media/how-to-data-encryption/cluster-management-save-changes.png" alt-text="Screenshot that shows the location of Save button for data encryptoin configuration changes on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-save-changes.png":::
  
 #### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
