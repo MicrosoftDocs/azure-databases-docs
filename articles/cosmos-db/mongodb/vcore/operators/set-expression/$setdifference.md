@@ -1,7 +1,7 @@
 ---
   title: $setDifference
   titleSuffix: Overview of the $setDifference operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $setDifference operator returns a set with elements that exist in the first set but not in the second set.
+  description: The $setDifference operator returns a set with elements that exist in one set but not in a second set.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
