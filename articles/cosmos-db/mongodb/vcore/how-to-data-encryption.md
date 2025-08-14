@@ -69,9 +69,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-encryption-key.png" alt-text="Screenshot that shows how to select another encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-select-encryption-key.png":::
 
-> [!IMPORTANT]  
-> Selected Azure Key Vault instance should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is going to be hosted.
-
+    > [!IMPORTANT]  
+    > Selected Azure Key Vault instance should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is going to be hosted.
+    
 1. Confirm selected user-assigned managed identity and encryption key on the **Encryption** tab and select **Review + create** to create cluster.
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png":::
