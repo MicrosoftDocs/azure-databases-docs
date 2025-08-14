@@ -244,6 +244,9 @@
         "articles/cosmos-db/gremlin/**/*.{md,yml}": [
           "✅ Apache Gremlin"
         ]
+      },
+      "ms.update-cycle": {
+        "articles/cosmos-db/gremlin/**/*.{md,yml}": "1825-days"
       }
     },
     "overwrite": [],
