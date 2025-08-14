@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 08/10/2025
+ms.date: 08/12/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -271,30 +271,40 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
  
 #### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
+To create a replica cluster with CMK enabled in the same region follow these steps.
+
 1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
 
     ```json
     {
-        "identity": {
-            "type": "UserAssigned",
-            "userAssignedIdentities": {
-              "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName": {}
-            }
-          },
-      "location": "$regionName",
-          "properties": {
-            "encryption": {
-              "customerManagedKeyEncryption": {
-                "keyEncryptionKeyIdentity": {
-                  "identityType": "UserAssignedIdentity",
-                  "userAssignedIdentityResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName"
-                },
-                "keyEncryptionKeyUrl": "$encryptionKeyUrl"
+            "identity": {
+                "type": "UserAssigned",
+                "userAssignedIdentities": {
+                  "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName": {}
+                }
+              },
+          "location": "$regionName",
+              "properties": {
+              	"createMode": "Replica",
+                    "replicaParameters": {
+                      "sourceResourceId": "/subscriptions/$subscriptionId$/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/$replicaClusterName",
+                      "sourceLocation": "$regionName"
+                    }
+                    "encryption": {
+                      "customerManagedKeyEncryption": {
+                        "keyEncryptionKeyIdentity": {
+                          "identityType": "UserAssignedIdentity",
+                          "userAssignedIdentityResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName"
+                        },
+                        "keyEncryptionKeyUrl": "$encryptionKeyUrl"
+                      }
+                    }
               }
-            }
-          }
-    }
+        }
     ```
+    
+    If you need to create a replica in another region, use `"createMode": "GeoReplica"` and set `location` to the desired Azure region for CMK-enabled replica.
+
 1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
 
     ```powershell
@@ -306,7 +316,6 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
     # Execute the az rest command to make REST API call
     az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
     ```
-
 ---
 
 ### Enable or disable customer-managed key data encryption during cluster restore
@@ -358,6 +367,8 @@ The restore process creates a new cluster with the same configuration in the sam
 
 #### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
+To restore a cluster with CMK enabled follow these steps.
+
 1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
 
     ```json
@@ -370,18 +381,26 @@ The restore process creates a new cluster with the same configuration in the sam
           },
       "location": "$regionName",
           "properties": {
-            "encryption": {
-              "customerManagedKeyEncryption": {
-                "keyEncryptionKeyIdentity": {
-                  "identityType": "UserAssignedIdentity",
-                  "userAssignedIdentityResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName"
+                "administrator": {
+                  "userName": "$adminName"
                 },
-                "keyEncryptionKeyUrl": "$encryptionKeyUrl"
-              }
-            }
+          	"createMode": "PointInTimeRestore",
+                "restoreParameters": {
+                  "pointInTimeUTC": "yyyy-mm-ddThh:mm:ssZ",
+                  "sourceResourceId": "/subscriptions/$subscriptionId$/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/$restoredClusterName"
+                }
+                "encryption": {
+                  "customerManagedKeyEncryption": {
+                    "keyEncryptionKeyIdentity": {
+                      "identityType": "UserAssignedIdentity",
+                      "userAssignedIdentityResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName"
+                    },
+                    "keyEncryptionKeyUrl": "$encryptionKeyUrl"
+                  }
+                }
           }
     }
-    ```
+```
 1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
 
     ```powershell
