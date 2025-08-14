@@ -69,13 +69,16 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-select-encryption-key.png" alt-text="Screenshot that shows how to select another encryption key." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-select-encryption-key.png":::
 
+> [!IMPORTANT]  
+> Selected Azure Key Vault instance should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is going to be hosted.
+
 1. Confirm selected user-assigned managed identity and encryption key on the **Encryption** tab and select **Review + create** to create cluster.
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png":::
 
 ### [CLI](#tab/cli-customer-managed-cluster-provisioning)
 
-You can enable data encryption with user-assigned encryption key, while provisioning a new cluster, via an az rest command.
+You can enable data encryption with user-assigned encryption key, while provisioning a new cluster, via an `az rest` command.
 
 1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
 
@@ -164,6 +167,9 @@ For existing clusters that were deployed with data encryption using a customer-m
 1. In the **Select a key** pane select the Azure Key Vault in the **Key vault** and encryption key in the **Key**, and confirm your choices by selecting **Select**.
 
     :::image type="content" source="media/how-to-data-encryption/cluster-management-encryption-key-selection.png" alt-text="Screenshot that shows how to select new key vault and encryption key in that key vault to be used as a customer-managed key on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-encryption-key-selection.png":::
+
+> [!IMPORTANT]  
+> Selected Azure Key Vault instance should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is hosted.
 
 1. Confirm selected user-assigned managed identity and encryption key on the **Data encryption** page and select **Save** to confirm your selections and create replica cluster.
 
@@ -391,8 +397,8 @@ To restore a cluster with CMK enabled follow these steps.
           	"createMode": "PointInTimeRestore",
                 "restoreParameters": {
                   "pointInTimeUTC": "yyyy-mm-ddThh:mm:ssZ",
-                  "sourceResourceId": "/subscriptions/$subscriptionId$/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/$restoredClusterName"
-                }
+                  "sourceResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/$restoredClusterName"
+                },
                 "encryption": {
                   "customerManagedKeyEncryption": {
                     "keyEncryptionKeyIdentity": {
