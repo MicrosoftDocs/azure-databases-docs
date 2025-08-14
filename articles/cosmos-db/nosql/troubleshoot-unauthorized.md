@@ -4,7 +4,7 @@ description: Learn how to diagnose and fix unauthorized exceptions.
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.date: 07/13/2020
+ms.date: 08/15/2025
 ms.author: mjbrown
 ms.topic: troubleshooting
 ---

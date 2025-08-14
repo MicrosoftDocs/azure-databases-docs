@@ -8,7 +8,7 @@ ms.subservice: mongodb
 ms.devlang: csharp
 # ms.devlang: csharp, java, javascript
 ms.topic: how-to
-ms.date: 05/08/2024
+ms.date: 08/15/2025
 ms.custom: devx-track-csharp
 ---
 # Expire data with Azure Cosmos DB for MongoDB

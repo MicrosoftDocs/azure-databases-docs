@@ -4,7 +4,7 @@ description: This article describes how multi-region writes work in Azure Cosmos
 author: TheovanKraay
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 04/12/2024
+ms.date: 08/15/2025
 ms.author: thvankra
 ---
 

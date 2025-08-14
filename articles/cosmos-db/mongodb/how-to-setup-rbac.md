@@ -5,7 +5,7 @@ author: gahl-levy
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli, devx-track-extended-java, devx-track-js, sfi-ropc-blocked
 ms.topic: how-to
-ms.date: 09/26/2022
+ms.date: 08/15/2025
 ms.author: gahllevy
 ms.subservice: mongodb
 ---

@@ -6,7 +6,7 @@ ms.author: govindk
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: build-2023, devx-track-azurecli, sfi-image-nochange
-ms.date: 05/08/2024
+ms.date: 08/15/2025
 ms.topic: how-to
 ---
 

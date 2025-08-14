@@ -7,7 +7,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: overview
-ms.date: 09/12/2023
+ms.date: 08/15/2025
 ---
 
 # What is RU-based and vCore-based Azure Cosmos DB for MongoDB?

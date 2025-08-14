@@ -4,7 +4,7 @@ description: Learn how Azure Cosmos DB for Table and Azure Table Storage work to
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 03/07/2023
+ms.date: 08/15/2025
 author: seesharprun
 ms.author: sasinnat
 ms.devlang: cpp

@@ -6,7 +6,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: release-notes
-ms.date: 10/12/2022
+ms.date: 08/15/2025
 ms.custom: build-2023
 ---
 

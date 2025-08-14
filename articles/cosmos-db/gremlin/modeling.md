@@ -4,7 +4,7 @@ description: Learn how to model a graph database by using Azure Cosmos DB for Ap
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
-ms.date: 03/14/2023
+ms.date: 08/15/2025
 author: manishmsfte
 ms.author: mansha
 ---

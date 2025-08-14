@@ -5,7 +5,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: javascript
 ms.topic: how-to
-ms.date: 12/2/2022
+ms.date: 08/15/2025
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: cosmos-db-video, sfi-image-nochange
