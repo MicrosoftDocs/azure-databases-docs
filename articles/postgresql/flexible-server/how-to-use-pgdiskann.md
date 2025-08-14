@@ -105,7 +105,7 @@ WITH(
 ```
 
 ### Improve accuracy when using PQ with reranking
-To balance speed and precision in vector similarity search, a two-step reranking strategy can be implemented used when querying with DiskANN and product quantization.
+To balance speed and precision in vector similarity search, a two-step reranking strategy can be implemented when querying with DiskANN and product quantization.
 
 1. **Initial Approximate Search**: The inner query uses DiskANN to retrieve the top 50 approximate nearest neighbors based on cosine distance between the stored embeddings and the query vector. This step is fast and efficient, leveraging DiskANN’s indexing capabilities.
 
@@ -126,25 +126,20 @@ LIMIT 10;
 > [!NOTE]
 > **%s** should be replace by the query vector. You can use [azure_ai](generative-ai-azure-openai.md) to create a query vector directly in Postgres.
 
-This approach balances speed (via approximate search) and accuracy (via reranking), ensuring high-quality results without scanning the entire dataset.
-
-This two-step approach ensures:
-* **Speed** from approximate search using DiskANN.
-* **Accuracy** from reranking based on true distance values.
-It delivers high-quality results without scanning the entire dataset—ideal for large-scale, high-dimensional embedding applications.
+This approach balances speed (via approximate search) and accuracy (via reranking), ensuring high-quality results without scanning the entire dataset. 
 
 ### Support for high dimension embeddings
-Advanced Generative AI applications often rely on high-dimensional embedding models—such as *text-embedding-3-large* to achieve superior accuracy. However, traditional indexing methods like [HNSW in pgvector](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) are limited to vectors with up to 2,000 dimensions, which restricts the use of these powerful models.
+Advanced Generative AI applications often rely on high-dimensional embedding models such as *text-embedding-3-large* to achieve superior accuracy. However, traditional indexing methods like [HNSW in pgvector](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) are limited to vectors with up to 2,000 dimensions, which restricts the use of these powerful models.
 
-With the latest release, DiskANN now supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads.
+Starting in pg_diskann v0.6 and above, DiskANN now supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads.
 
 > [!IMPORTANT]
-> This capability is available when product quantization is enabled.
+> Product Quantization must be turned on to leverage high-dimensional support.
 
-Product Quantization must be turned on to leverage high-dimensional support.
-Recommended settings include:
-    * `pq_param_num_chunks`: Set to one-third of the embedding dimension for optimal performance.
-    * `pq_param_training_samples`: Automatically determined based on table size unless explicitly set.
+**Recommended settings:**
+- `product_quantized`: Set to true
+- `pq_param_num_chunks`: Set to one-third of the embedding dimension for optimal performance.
+- `pq_param_training_samples`: Automatically determined based on table size unless explicitly set.
 
 This enhancement enables scalable, efficient search across large vector datasets while maintaining high recall and precision.
 
