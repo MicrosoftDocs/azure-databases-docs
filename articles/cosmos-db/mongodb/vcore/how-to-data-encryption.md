@@ -197,6 +197,9 @@ You can change user-assigned managed identity and encryption key for data encryp
           }
     }
     ```
+    > [!NOTE]  
+    > The `keyEncryptionKeyUrl` should contain the key name but shouldn't contain [a specific key version](./database-encryption-at-rest.md#cmk-key-version-updates).
+
 1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
 
     ```powershell
@@ -283,13 +286,13 @@ To create a replica cluster with CMK enabled in the same region follow these ste
                   "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$userAssignedIdentityName": {}
                 }
               },
-          "location": "$regionName",
+          "location": "$targetRegionName",
               "properties": {
-              	"createMode": "Replica",
+              	"createMode": "GeoReplica",
                     "replicaParameters": {
-                      "sourceResourceId": "/subscriptions/$subscriptionId$/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/$replicaClusterName",
-                      "sourceLocation": "$regionName"
-                    }
+                      "sourceResourceId": "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/$sourceClusterName",
+                      "sourceLocation": "sourceRegionName"
+                    },
                     "encryption": {
                       "customerManagedKeyEncryption": {
                         "keyEncryptionKeyIdentity": {
@@ -302,9 +305,10 @@ To create a replica cluster with CMK enabled in the same region follow these ste
               }
         }
     ```
-    
-    If you need to create a replica in another region, use `"createMode": "GeoReplica"` and set `location` to the desired Azure region for CMK-enabled replica.
 
+    > [!NOTE]  
+    > The `keyEncryptionKeyUrl` should contain the key name but shouldn't contain [a specific key version](./database-encryption-at-rest.md#cmk-key-version-updates).
+    
 1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
 
     ```powershell
@@ -401,6 +405,10 @@ To restore a cluster with CMK enabled follow these steps.
           }
     }
     ```
+
+    > [!NOTE]  
+    > The `keyEncryptionKeyUrl` should contain the key name but shouldn't contain [a specific key version](./database-encryption-at-rest.md#cmk-key-version-updates).
+
 1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
 
     ```powershell
