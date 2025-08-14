@@ -205,6 +205,6 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 > This scenario only incurs downtime during steps 4 through 7.
 
 ## Related content
-
+- [How to upgrade Frequently asked questions](how-to-upgrade-faq.md)
 - [How to configure scheduled maintenance](how-to-maintenance-portal.md)
 - [MySQL version 8.0](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html)
