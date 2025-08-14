@@ -246,7 +246,7 @@
         ]
       },
       "ms.update-cycle": {
-        "articles/cosmos-db/gremlin/**/*.{md,yml}": "1825-days"
+        "articles/cosmos-db/gremlin/**/*.{md,yml}": "1095-days"
       }
     },
     "overwrite": [],
