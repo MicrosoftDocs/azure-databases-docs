@@ -1,6 +1,6 @@
 ---
 title: Major Version Upgrade FAQ
-description: Learn how to upgrade major version for an Azure Database for MySQL flexible server instance.
+description: Major Version Upgrade FAQ
 author: xboxeer
 ms.author: yuzheng1
 ms.reviewer: yuzheng1, maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-## Frequently asked questions (FAQs)
+# Frequently asked questions (FAQs)
 
 - Q: **Can I upgrade directly from MySQL 5.7 to 8.4 (or skip major versions)?**
 
