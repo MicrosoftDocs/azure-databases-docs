@@ -91,9 +91,62 @@ COMMIT;
 
 ## Scale efficiently with Quantization (Preview)
 
-DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)
+DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. **This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)**. 
 
-To get access the product quantization(PQ) feature, [please sign up for the preview](https://aka.ms/pg-diskann-form)
+> [!IMPORTANT]
+> Product quantization support in DiskANN is available starting from pg_diskann v0.6 and above.
+
+To reduce the size of your index and fit more data into memory, you can utilize PQ:
+```sql
+CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann(embedding vector_cosine_ops) 
+WITH(
+    product_quantized=true
+    );    
+```
+
+### Improve Accuracy when using PQ with Reranking
+To balance speed and precision in vector similarity search, a two-step reranking strategy can be implemented used when querying with DiskANN and product quantization.
+
+1. Initial Approximate Search: The inner query uses DiskANN to retrieve the top 50 approximate nearest neighbors based on cosine distance between the stored embeddings and the query vector. This step is fast and efficient, leveraging DiskANN’s indexing capabilities.
+
+2. Precise Reranking: The outer query reorders those 50 results by their actual computed distance and returns the top 10 most relevant matches:
+
+Here is an example of reranking using this 2 step approach:
+```sql
+SELECT id, content
+FROM (
+    SELECT id, embedding <=> %s::vector AS distance
+    FROM demo
+    ORDER BY embedding <=> %s::vector asc
+    LIMIT 50
+) AS t
+ORDER BY t.distance
+LIMIT 10;
+```
+> [!NOTE]
+> %s should be replace by the query vector. You can use [azure_ai](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/generative-ai-azure-openai) to create a query vector directly in Postgres.
+
+This approach balances speed (via approximate search) and accuracy (via reranking), ensuring high-quality results without scanning the entire dataset.
+
+This two-step approach ensures:
+* **Speed** from approximate search using DiskANN.
+* **Accuracy** from reranking based on true distance values.
+It delivers high-quality results without scanning the entire dataset—ideal for large-scale, high-dimensional embedding applications.
+
+### Support for high dimension embeddings
+Advanced Generative AI applications often rely on high-dimensional embedding models—such as *text-embedding-3-large* to achieve superior accuracy. However, traditional indexing methods like [HNSW in pgvector](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) are limited to vectors with up to 2,000 dimensions, which restricts the use of these powerful models.
+
+With the latest release, DiskANN now supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads.
+
+> [!IMPORTANT]
+This capability is available when product quantization is enabled.
+
+Product Quantization must be turned on to leverage high-dimensional support.
+Recommended settings include:
+    * `pq_param_num_chunks`: Set to one-third of the embedding dimension for optimal performance.
+    * `pq_param_training_samples`: Automatically determined based on table size unless explicitly set.
+
+This enhancement enables scalable, efficient search across large vector datasets while maintaining high recall and precision.
 
 ## Speed up index build
 There are a few ways we recommend to improve your index build times.
@@ -162,6 +215,7 @@ When creating a `diskann` index, you can specify various parameters to control i
 
 - `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
 - `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
+- `product_quantized`: Enables product quantization for more efficient search (Defaults to false).
 - `pq_param_num_chunks`: Number of chunks for product quantization (Defaults to 0). 0 means it is determined automatically, based on embedding dimensions. It is recommended to use 1/3 of the original embedding dimensions.
 - `pq_param_training_samples`: Number of vectors to train the PQ pivot table on (Defaults to 0). 0 means it is determined automatically, based on table size.
 
@@ -170,6 +224,7 @@ CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding 
 WITH (
  max_neighbors = 48,
  l_value_ib = 100,
+ product_quantized=true, 
  pq_param_num_chunks = 0,
  pq_param_training_samples = 0
  );
@@ -230,10 +285,12 @@ WITH (
 |  | | | |
 | 1M-50M | Index build | `l_value_ib` | 100 |
 | 1M-50M | Index build | `max_neighbors` | 64 |
+| 1M-50M | Index build | `product_quantized` | true |
 | 1M-50M | Query time | `diskann.l_value_is` | 100 |
 |  | | | |
 | >50M | Index build | `l_value_ib` | 100 |
 | >50M | Index build | `max_neighbors` | 96 |
+| >50M | Index build | `product_quantized` | true |
 | >50M | Query time | `diskann.l_value_is` | 100 |
 
 > [!NOTE]
