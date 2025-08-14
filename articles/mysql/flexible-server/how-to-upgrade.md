@@ -1,7 +1,7 @@
 ---
 title: Major Version Upgrade
 description: Learn how to upgrade major version for an Azure Database for MySQL flexible server instance.
-author: code-sidd
+author: xboxeer
 ms.author: yuzheng1
 ms.reviewer: yuzheng1, maghan
 ms.date: 06/11/2025
@@ -203,28 +203,6 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
 > [!NOTE]  
 > This scenario only incurs downtime during steps 4 through 7.
-
-## Frequently asked questions (FAQs)
-
-- Q: **Can I upgrade directly from MySQL 5.7 to 8.4 (or skip major versions)?**
-
-    A. Cross-major version upgrades (for example, upgrading directly from MySQL 5.7 to 8.4) aren't supported. You must upgrade from 5.7 to 8.0 and then from 8.0 to 8.4. In the future, if new MySQL major versions are released, direct upgrades skipping major versions won't be supported. Each major version upgrade must be performed sequentially.
-
-- Q: **Will this cause downtime of the server, and if so, how long?**
-
-    A. To have minimal downtime during upgrades, follow the steps mentioned under [Perform minimal downtime major version upgrade using read replicas](#perform-minimal-downtime-major-version-upgrade-using-read-replicas). The server is unavailable during the upgrade process, so we recommend you perform this operation during your planned maintenance window. The estimated downtime depends on the database size, storage size provisioned (IOPs provisioned), and the number of tables on the database. The upgrade time is directly proportional to the number of tables on the server. To estimate the downtime for your server environment, we recommend first performing an upgrade on a restored copy of the server.
-
-- Q: **What happens to my backups after the upgrade?**
-
-    A. All backups (automated/on-demand) taken before a major version upgrade are restored to a server with the previous version when used for restoration. All the backups (automated/on-demand) taken after a major version upgrade are restored to the server with the upgraded version. It's highly recommended to take an on-demand backup before you perform the major version upgrade for an easy rollback.        
-
-- Q: **I'm currently using Burstable SKU. Does Microsoft plan to support major version upgrades for this SKU in the future?**
-
-    A. Burstable SKU isn't able to support major version upgrades due to the performance limitation of this SKU.
-    
-    A. If you need to perform a major version upgrade on your Azure Database for MySQL Flexible Server instance and are currently using Burstable SKU, one temporary solution would be to upgrade to General Purpose or Business Critical SKU, perform the upgrade, and then switch back to Burstable SKU.
-    
-    A. Upgrading to a higher SKU might involve a change in pricing and result in increased deployment costs. However, since the upgrade process isn't expected to take a long time, the added costs shouldn't be significant.
 
 ## Related content
 
