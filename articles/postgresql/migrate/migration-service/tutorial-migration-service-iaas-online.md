@@ -8,6 +8,9 @@ ms.date: 07/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
+ms.collection:
+  - migration
+  - onprem-to-azure
 ms.custom:
 - devx-track-azurecli
 - sfi-image-nochange

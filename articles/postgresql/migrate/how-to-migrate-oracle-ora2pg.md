@@ -8,6 +8,9 @@ ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
+ms.collection:
+  - migration
+  - onprem-to-azure
 ---
 
 # Migrate Oracle to Azure Database for PostgreSQL Using Ora2Pg

@@ -8,6 +8,9 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.topic: upgrade-and-migration-article
 ms.custom: sfi-ropc-nochange
+ms.collection:
+  - migration
+  - onprem-to-azure
 ---
 
 # Migrate large databases to Azure Database for MySQL using mydumper/myloader

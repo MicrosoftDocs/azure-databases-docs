@@ -6,7 +6,6 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/10/2025
-ms.update-cycle: 180-days
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
@@ -14,10 +13,9 @@ appliesto:
 ms.custom:
 ---
 
-# Stopwords for full text search
+# Stopwords for Full Text Search
 
 When a text path is configured in both a [full text container and indexing policy](./full-text-search.md#full-text-policy) in an Azure Cosmos DB container, it's processed by language-specific analyzers to enable efficient and accurate search and ranking. By default, these analyzers remove stopwords, which are common words like "the", "to", or "an" that typically don't contribute meaningful value to search relevance. In Azure Cosmos DB, stopword removal is applied during indexing and search. Here we list the stopwords for reference so you can better understand full text search in Azure Cosmos DB and how stopwords can affect the results of your search.
-
 ## Stopwords list
 
 ### English (EN-US)
