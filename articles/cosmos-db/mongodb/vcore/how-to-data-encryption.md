@@ -168,9 +168,9 @@ For existing clusters that were deployed with data encryption using a customer-m
 
     :::image type="content" source="media/how-to-data-encryption/cluster-management-encryption-key-selection.png" alt-text="Screenshot that shows how to select new key vault and encryption key in that key vault to be used as a customer-managed key on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-encryption-key-selection.png":::
 
-> [!IMPORTANT]  
-> Selected Azure Key Vault instance should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is hosted.
-
+    > [!IMPORTANT]  
+    > Selected Azure Key Vault instance should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is hosted.
+    
 1. Confirm selected user-assigned managed identity and encryption key on the **Data encryption** page and select **Save** to confirm your selections and create replica cluster.
 
     :::image type="content" source="media/how-to-data-encryption/cluster-management-save-changes.png" alt-text="Screenshot that shows the location of Save button for data encryption configuration changes on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-save-changes.png":::
@@ -206,8 +206,8 @@ You can change user-assigned managed identity and encryption key for data encryp
     > [!NOTE]  
     > The `keyEncryptionKeyUrl` should contain the key name but shouldn't contain [a specific key version](./database-encryption-at-rest.md#cmk-key-version-updates).
 
-1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
-
+  1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
+    
     ```powershell
     # Define your variables
     $subscriptionId="00000000-0000-0000-0000-000000000000"
