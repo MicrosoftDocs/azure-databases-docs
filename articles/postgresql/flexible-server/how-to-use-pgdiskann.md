@@ -94,7 +94,7 @@ COMMIT;
 DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. **This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)**. 
 
 > [!IMPORTANT]
-> Product quantization support in DiskANN is available starting from pg_diskann v0.6 and above.
+> Product quantization support in DiskANN is available starting from **pg_diskann v0.6 and above**.
 
 To reduce the size of your index and fit more data into memory, you can utilize PQ:
 ```sql
@@ -104,16 +104,16 @@ WITH(
     );    
 ```
 
-### Improve Accuracy when using PQ with Reranking
+### Improve accuracy when using PQ with reranking
 To balance speed and precision in vector similarity search, a two-step reranking strategy can be implemented used when querying with DiskANN and product quantization.
 
-1. Initial Approximate Search: The inner query uses DiskANN to retrieve the top 50 approximate nearest neighbors based on cosine distance between the stored embeddings and the query vector. This step is fast and efficient, leveraging DiskANN’s indexing capabilities.
+1. **Initial Approximate Search**: The inner query uses DiskANN to retrieve the top 50 approximate nearest neighbors based on cosine distance between the stored embeddings and the query vector. This step is fast and efficient, leveraging DiskANN’s indexing capabilities.
 
-2. Precise Reranking: The outer query reorders those 50 results by their actual computed distance and returns the top 10 most relevant matches:
+2. **Precise Reranking**: The outer query reorders those 50 results by their actual computed distance and returns the top 10 most relevant matches:
 
 Here is an example of reranking using this 2 step approach:
 ```sql
-SELECT id, content
+SELECT id
 FROM (
     SELECT id, embedding <=> %s::vector AS distance
     FROM demo
@@ -124,7 +124,7 @@ ORDER BY t.distance
 LIMIT 10;
 ```
 > [!NOTE]
-> %s should be replace by the query vector. You can use [azure_ai](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/generative-ai-azure-openai) to create a query vector directly in Postgres.
+> **%s** should be replace by the query vector. You can use [azure_ai](generative-ai-azure-openai.md) to create a query vector directly in Postgres.
 
 This approach balances speed (via approximate search) and accuracy (via reranking), ensuring high-quality results without scanning the entire dataset.
 
@@ -139,7 +139,7 @@ Advanced Generative AI applications often rely on high-dimensional embedding mod
 With the latest release, DiskANN now supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads.
 
 > [!IMPORTANT]
-This capability is available when product quantization is enabled.
+> This capability is available when product quantization is enabled.
 
 Product Quantization must be turned on to leverage high-dimensional support.
 Recommended settings include:
