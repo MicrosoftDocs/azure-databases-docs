@@ -208,15 +208,15 @@ You can change user-assigned managed identity and encryption key for data encryp
 
   1. Run the following Azure CLI command to make a REST API call to create an Azure Cosmos DB for MongoDB vCore cluster. Replace placeholders in the variables section and the file name for the `--body` parameter in the `az rest` command line with the actual values. 
     
-    ```powershell
-    # Define your variables
-    $subscriptionId="00000000-0000-0000-0000-000000000000"
-    $resourceGroup="resourceGroupName"
-    $mongoClustersName="clusterName"
-        
-    # Execute the az rest command to make REST API call
-    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
-    ```
+  ```powershell
+  # Define your variables
+  $subscriptionId="00000000-0000-0000-0000-000000000000"
+  $resourceGroup="resourceGroupName"
+  $mongoClustersName="clusterName"
+      
+  # Execute the az rest command to make REST API call
+  az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
+  ```
 ---
 
 Whether you want to only change the user-assigned managed identity used to access the key, or you want to only change the key used for data encryption, or you want to change both at the same time, you're required to provide all parameters listed in the JSON file.
