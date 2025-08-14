@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 07/30/2025
+ms.date: 08/04/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -24,7 +24,7 @@ In the **customer-managed keys** mode, you can bring your own encryption key to 
 
 The configuration mode can only be selected at cluster creation time. It can't be changed from one mode to another for the lifetime of the cluster.
 
-To achieve the encryption of your data, Azure Cosmos DB for MongoDB vCore uses [Azure Storage encryption for data at rest](/azure/storage/common/storage-service-encryption). When using CMK, you're responsible for providing keys for encrypting and decrypting data in Azure Storage services. These keys must be stored in Azure Key Vault. 
+To achieve the encryption of your data, Azure Cosmos DB for MongoDB vCore uses [server-side encryption of Azure Storage for data at rest](/azure/virtual-machines/disk-encryption). When using CMK, you're responsible for providing keys for encrypting and decrypting data in Azure Storage services. These keys must be stored in Azure Key Vault. 
 
 ## Benefits provided by each mode (SMK or CMK)
 
