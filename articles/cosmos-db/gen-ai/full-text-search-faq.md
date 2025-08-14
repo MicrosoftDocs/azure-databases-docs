@@ -1,5 +1,6 @@
 ---
 title: Full text search FAQ
+titleSuffix: Azure Cosmos DB
 description: Commonly asked questions for full text indexing and search in Azure Cosmos DB
 author: jcodella
 ms.author: jacodel
@@ -14,7 +15,7 @@ ms.custom:
 ---
 
 
-# Full Text Search Frequently Asked Questions
+# Full text search frequently asked questions
 
 Full Text Search (sometimes called lexical search) in Azure Cosmos DB for NoSQL enables efficient querying of textual data using a specialized index and scoring system. It also features a text-relevancy method to order search results by the BM25 (Best Matching 25) algorithm. This ranks the returned documents based on relevancy, considering term frequency, inverse document frequency, and document length, and helps to enable applications to search for and retrieve the most relevant text documents from your Azure Cosmos DB data without relying on external search services like Lucene or Elasticsearch.
 
