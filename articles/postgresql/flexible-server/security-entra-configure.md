@@ -1,19 +1,20 @@
 ---
-title: Use Microsoft Entra ID for Authentication
+title: Use Microsoft Entra ID Authentication
 description: Learn how to set up Microsoft Entra ID for authentication with Azure Database for PostgreSQL flexible server.
 author: milenak
 ms.author: mpopovic
 ms.reviewer: maghan
-ms.date: 12/26/2024
+ms.date: 08/08/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: security
 ms.topic: how-to
-ms.custom: sfi-image-nochange, sfi-ropc-blocked
+ms.custom:
+  - horz-security
+  - sfi-image-nochange
+  - sfi-ropc-blocked
 ---
 
-# Use Microsoft Entra ID for authentication with Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-Flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Use Microsoft Entra ID for authentication with Azure Database for PostgreSQL
 
 In this article, you configure Microsoft Entra ID access for authentication with Azure Database for PostgreSQL flexible server. You'll also learn how to use a Microsoft Entra token with Azure Database for PostgreSQL flexible server.
 
@@ -31,11 +32,11 @@ Microsoft Entra ID is a multitenant application. It requires outbound connectivi
 
 - **Public access (allowed IP addresses)**: No extra network rules are required.
 - **Private access (virtual network integration)**:
-  - You need an outbound network security group (NSG) rule to allow virtual network traffic to only reach the `AzureActiveDirectory` service tag.
-  - If you're using a route table, you need to create a rule with the destination service tag `AzureActiveDirectory` and next hop `Internet`.
-  - Optionally, if you're using a proxy, you can add a new firewall rule to allow HTTP/S traffic to reach only the `AzureActiveDirectory` service tag.
+- You need an outbound network security group (NSG) rule to allow virtual network traffic to only reach the `AzureActiveDirectory` service tag.
+- If you're using a route table, you need to create a rule with the destination service tag `AzureActiveDirectory` and next hop `Internet`.
+- Optionally, if you're using a proxy, you can add a new firewall rule to allow `HTTP`/S traffic to reach only the `AzureActiveDirectory` service tag.
 - **Custom DNS**:
-   There are additional considerations if you are using custom DNS in your Virtual Network (VNET). In such cases, it is crucial to ensure that the following **endpoints** resolve to their corresponding IP addresses:
+There are additional considerations if you are using custom DNS in your Virtual Network (VNET). In such cases, it is crucial to ensure that the following **endpoints** resolve to their corresponding IP addresses:
 **login.microsoftonline.com**: This endpoint is used for authentication purposes. Verify that your custom DNS setup enables resolving login.microsoftonline.com to its correct IP addresses
 **graph.microsoft.com**: This endpoint is used to access the Microsoft Graph API. Ensure your custom DNS setup allows the resolution of graph.microsoft.com to the correct IP addresses.
 
@@ -44,12 +45,10 @@ To set the Microsoft Entra admin during server provisioning, follow these steps:
 1. In the Azure portal, during server provisioning, select either **PostgreSQL and Microsoft Entra authentication** or **Microsoft Entra authentication only** as the authentication method.
 1. On the **Set admin** tab, select a valid Microsoft Entra user, group, service principal, or managed identity in the customer tenant to be the Microsoft Entra administrator.
 
-  You can optionally add a local PostgreSQL admin account if you prefer using the **PostgreSQL and Microsoft Entra authentication** method.
+You can optionally add a local PostgreSQL admin account if you prefer using the **PostgreSQL and Microsoft Entra authentication** method.
 
-  > [!NOTE]  
-  > You can add only one Azure admin user during server provisioning. You can add multiple Microsoft Entra admin users after the Server is created.
-
-  :::image type="content" source="media/how-to-configure-sign-in-azure-ad-authentication/set-azure-ad-admin-server-creation.png" alt-text="Screenshot that shows selections for setting a Microsoft Entra admin during server provisioning.].":::
+> [!NOTE]  
+> You can add only one Azure admin user during server provisioning. You can add multiple Microsoft Entra admin users after the Server is created.
 
 To set the Microsoft Entra administrator after server creation, follow these steps:
 
@@ -57,8 +56,6 @@ To set the Microsoft Entra administrator after server creation, follow these ste
 1. Under **Security**, select **Authentication**. Then choose either **PostgreSQL and Microsoft Entra authentication** or **Microsoft Entra authentication only** as the authentication method, based on your requirements.
 1. Select **Add Microsoft Entra Admins**. Then select a valid Microsoft Entra user, group, service principal, or managed identity in the customer tenant to be a Microsoft Entra administrator.
 1. Select **Save**.
-
-  :::image type="content" source="media/how-to-configure-sign-in-azure-ad-authentication/set-azure-ad-admin.png" alt-text="Screenshot that shows selections for setting a Microsoft Entra admin after server creation." lightbox="media/how-to-configure-sign-in-azure-ad-authentication/set-azure-ad-admin.png":::
 
 > [!IMPORTANT]  
 > When setting the administrator, a new user is added to Azure Database for PostgreSQL flexible server with full administrator permissions.
@@ -68,8 +65,6 @@ To set the Microsoft Entra administrator after server creation, follow these ste
 ## Connect to Azure Database for PostgreSQL by using Microsoft Entra ID
 
 The following high-level diagram summarizes the workflow of using Microsoft Entra authentication with Azure Database for PostgreSQL:
-
-  :::image type="content" source="media/how-to-configure-sign-in-azure-ad-authentication/authentication-flow.png" alt-text="Diagram of authentication flow between Microsoft Entra ID, the user's computer, and the server." lightbox="media/how-to-configure-sign-in-azure-ad-authentication/authentication-flow.png":::
 
 Microsoft Entra integration works with standard PostgreSQL tools like psql, which aren't Microsoft Entra aware and support only specifying the username and password when you're connecting to PostgreSQL. As shown in the preceding diagram, the Microsoft Entra token is passed as the password.
 
@@ -173,18 +168,16 @@ To connect by using a Microsoft Entra token with PgAdmin, follow these steps:
 1. Open Pgadmin and select **Register** from left hand menu and select **Server**
 1. In **General** Tab provide a connection name and clear the **Connect now** option.
 1. Select the **Connection** tab and provide your Azure Database for PostgreSQL flexible server instance details for **Hostname/address** and **username** and save.
-   **username is your Microsoft Entra ID or email**
+**username is your Microsoft Entra ID or email**
 1. From the browser menu, select your Azure Database for PostgreSQL flexible server connection and select **Connect Server**
 1. Enter your Active Directory token password when prompted.
-
-:::image type="content" source="media/how-to-configure-sign-in-azure-ad-authentication/login-using-pgadmin.png" alt-text="Screenshot that shows login process using PG admin." lightbox="media/how-to-configure-sign-in-azure-ad-authentication/login-using-pgadmin.png":::
 
 Here are some essential considerations when you're connecting:
 
 - `user@tenant.onmicrosoft.com` is the userPrincipalName of the Microsoft Entra user.
 - Be sure to use the exact way the Azure user is spelled. Microsoft Entra user and group names are case-sensitive.
 - If the name contains spaces, use a backslash (`\`) before each space to escape it.
-  You can use the Azure CLI to get the signed in user and set the value for `PGUGSER` environment variable:
+You can use the Azure CLI to get the signed in user and set the value for `PGUGSER` environment variable:
 
   ```bash
   export PGUSER=$(az ad signed-in-user show --query "[userPrincipalName]" -o tsv | sed 's/ /\\ /g')

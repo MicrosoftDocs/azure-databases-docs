@@ -4,20 +4,17 @@ description: Learn how data encryption works in Azure Database for PostgreSQL fl
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 05/08/2025
+ms.date: 08/08/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: security
 ms.topic: concept-article
 ms.custom:
-  - build-2025
-# customer intent: As a user, I want to learn how data is encrypted in my Azure Database for PostgreSQL flexible server, and what options do I have to bring my own encryption key.
+  - horz-security
 ---
 
-# Data encryption in Azure Database for PostgreSQL
+# Data encryption at rest in Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-All the data managed by an Azure Database for PostgreSQL flexible server flexible is always encrypted at rest. That data includes all system and user databases, temporary files, server logs, write-ahead log segments, and backups.
+All the data managed by an Azure Database for PostgreSQL flexible server flexible is always encrypted at rest. That data includes all system and user databases, server logs, write-ahead log segments, and backups. Encryption is handled by the underlying storage through [Server-side encryption of Azure Disk Storage](/azure/virtual-machines/disk-encryption).
 
 ## Encryption at Rest with Service (SMK) or Customer Managed Keys (CMK)
 
@@ -25,13 +22,14 @@ Azure Database for PostgreSQL flexible server supports two modes of data encrypt
 
 In the **customer managed keys** mode, you can bring your own encryption key to encrypt your data. This mode gives you more control over the encryption process, but it also requires you to manage the encryption keys yourself. You must deploy your own Azure Key Vault or Azure Key Vault Managed Hardware Security Module (HSM) and configure it to store the encryption keys used by your Azure Database for PostgreSQL flexible server.
 
-The configuration mode can only be selected at server creation time. It can't be changed from one mode to another for the lifetime of the server.
+The mode can only be selected at server creation time. It can't be changed from one mode to another for the lifetime of the server.
 
 To achieve the encryption of your data, Azure Database for PostgreSQL flexible server uses [Azure Storage encryption for data at rest](/azure/storage/common/storage-service-encryption). When using CMK, the customer is responsible for providing keys for encrypting and decrypting data in Blob Storage and Azure Files services. These keys must be stored in Azure Key Vault or Azure Key Vault Managed Hardware Security Module (HSM). For more information, see [customer-managed keys for Azure Storage encryption](/azure/storage/common/customer-managed-keys-overview).
 
 ## Benefits provided by each mode (SMK or CMK)
 
 Data encryption with **service managed keys** for Azure Database for PostgreSQL flexible server provides the following benefits:
+
 - The service automatically and fully controls data access.
 - The service automatically and fully controls your key's life cycle, including rotation of the key.
 - You don't need to worry about managing data encryption keys.
@@ -39,6 +37,7 @@ Data encryption with **service managed keys** for Azure Database for PostgreSQL 
 - It simplifies the management of encryption keys (including their regular rotation), and the management of the identities used to access those keys.
 
 Data encryption with **customer managed keys** for Azure Database for PostgreSQL flexible server provides the following benefits:
+
 - You fully control data access. You can remove a key to make a database inaccessible.
 - You fully control a key's life cycle, including rotation of the key, to align with corporate policies.
 - You can centrally manage and organize all your encryption keys in your own instances of Azure Key Vault.
@@ -60,12 +59,12 @@ Following is the list of requirements to configure data encryption for Azure Dat
 - Enable the soft-deleted feature in Key Vault to help you with protecting from data loss, if a key or a Key Vault instance is accidentally deleted. Key Vault retains soft-deleted resources for 90 days unless the user recovers or purges them in the meantime. The recover and purge actions have their own permissions associated with a Key Vault an RBAC role or an access policy permission. The soft-deleted feature is on by default. If you have some Key Vault which was deployed long time ago, it might still have soft-delete disabled. In that case, you can turn it on using Azure CLI.
 - Enable purge protection to enforce a mandatory retention period for deleted vaults and vault objects.
 - Grant the Azure Database for PostgreSQL flexible server's user assigned managed identity access to the key by:
-  - **Preferred**: Azure Key Vault should be configured with [RBAC permission model](/azure/key-vault/general/rbac-guide) and the managed identity should be assigned the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) role.
-  - Legacy: If Azure Key Vault is configured with [Access policy permission model](/azure/key-vault/general/assign-access-policy), grant the following permissions to the managed identity:
-    - **get**: To retrieve the properties and the public part of the key in Key Vault.
-    - **list**: To list and iterate through the keys stored in Key Vault.
-    - **wrapKey**: To encrypt the data encryption key.
-    - **unwrapKey**: To decrypt the data encryption key.
+- **Preferred**: Azure Key Vault should be configured with [RBAC permission model](/azure/key-vault/general/rbac-guide) and the managed identity should be assigned the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) role.
+- Legacy: If Azure Key Vault is configured with [Access policy permission model](/azure/key-vault/general/assign-access-policy), grant the following permissions to the managed identity:
+- **get**: To retrieve the properties and the public part of the key in Key Vault.
+- **list**: To list and iterate through the keys stored in Key Vault.
+- **wrapKey**: To encrypt the data encryption key.
+- **unwrapKey**: To decrypt the data encryption key.
 - The key used for encrypting the data encryption key can be only asymmetric, RSA, or RSA-HSM. Key sizes of 2,048, 3,072, and 4,096 are supported. We recommend using a 4,096-bit key for better security.
 - The date and time for key activation (if set) must be in the past. The date and time for expiration (if set) must be in the future.
 - The key must be in **Enabled** state.
@@ -82,15 +81,15 @@ For details see [Configure data encryption with customer managed key during serv
 
 ### Manual key rotation and updates
 
-When you configure CMK with manual key updates, you must manually update the key version in the Azure Database for PostgreSQL flexible server after a manual or automatic key rotation in the Key Vault. The server will continue to use the old key version until you update it. You provision this mode by specifying a key URI including the version GUID in the URI. For example, `https://<keyvault-name>.vault.azure.net/keys/<key-name>/<key-version>`. Until recently this was the only option available.
+When you configure CMK with manual key updates, you must manually update the key version in the Azure Database for PostgreSQL flexible server after a manual or automatic key rotation in the Key Vault. The server will continue to use the old key version until you update it. You provision this mode by specifying a key URI including the version `GUID` in the URI. For example, `https://<keyvault-name>.vault.azure.net/keys/<key-name>/<key-version>`. Until recently this was the only option available.
 
 Whenever you manually rotate the key or AKV auto-rotates the key based on its rotation policy, you had to update the CMK property on your PostgreSQL instance. This approach proved to be error-prone work for the operators or required a custom script to handle the rotation, especially when using Key Vault's automatic rotation feature.
 
 ### Automatic key version updates
 
-To enable automatic key version updates, use a version-less key URI. This eliminates the need to update the CMK’s version property in your PostgreSQL instance after a key rotation. PostgreSQL will automatically pick up the new key version and reencrypt the data encryption key. This is a huge simplification in your key lifecycle management, especially when combined with Key Vault auto-rotation.
+To enable automatic key version updates, use a version-less key URI. This eliminates the need to update the CMK's version property in your PostgreSQL instance after a key rotation. PostgreSQL will automatically pick up the new key version and reencrypt the data encryption key. This is a huge simplification in your key lifecycle management, especially when combined with Key Vault auto-rotation.
 
-To implement using ARM, Bicep, Terraform, Azure PowerShell or Azure CLI, simply omit the version GUID from your key URI.
+To implement using ARM, Bicep, Terraform, Azure PowerShell or Azure CLI, simply omit the version `GUID` from your key URI.
 
 In the Portal select the checkbox to guide the UI to suppress version GUIDs during interactive selection and when validating the URI.
 
@@ -105,7 +104,7 @@ When you're using a customer managed key for data encryption, follow these recom
 > [!NOTE]  
 > After you select **Disable public access** and **Allow trusted Microsoft services to bypass this firewall**, you might get an error similar to the following when you try to use public access to administer Key Vault via the portal: "You have enabled the network access control. Only allowed networks have access to this key vault." This error doesn't preclude the ability to provide keys during customer managed key setup or fetch keys from Key Vault during server operations.
 
-- Keep a copy of the customer manged key in a secure place, or escrow it to the escrow service.
+- Keep a copy of the customer managed key in a secure place, or escrow it to the escrow service.
 - If Key Vault generates the key, create a key backup before you use the key for the first time. You can only restore the backup to Key Vault.
 
 ## Special considerations
@@ -164,7 +163,7 @@ Some of the possible reasons why the server state might become **Inaccessible** 
 
 > [!NOTE]  
 > When a key is disabled, deleted, expired, or not reachable, a server that has data encrypted with that key becomes **Inaccessible**, as stated earlier. The server state doesn't change to **Ready** again until it can revalidate the encryption keys.
->  
+>
 > Generally, a server becomes **Inaccessible** within 60 minutes after a key is disabled, deleted, expired, or not reachable. After the key becomes available, the server might take up to 60 minutes to become **Ready** again.
 
 ### Recovering from managed identity deletion
