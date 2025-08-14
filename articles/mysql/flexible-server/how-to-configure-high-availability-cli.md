@@ -4,7 +4,7 @@ description: This article describes how to configure zone redundant high availab
 author: aditivgupta
 ms.author: adig
 ms.reviewer: maghan
-ms.date: 07/21/2025
+ms.date: 08/11/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
