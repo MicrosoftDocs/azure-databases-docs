@@ -98,7 +98,7 @@ Read replicas scale read-intensive workloads and don't provide high availability
 Because replication is asynchronous, there's a lag between the source and the replica. Many factors influence the amount of lag, such as the workload on the source server and the latency between data centers. In most cases, replica lag ranges between a few seconds to a couple of minutes. You can track your actual replication lag by using the *Replica Lag* metric, which is available for each replica. This metric shows the time since the last replayed transaction. We recommend that you identify your average lag by observing your replica lag over time. You can set an alert on replica lag, so that if it goes outside your expected range, you can take action.
 
 > [!TIP]  
-> If you failover to the replica, the lag at the time you unlink the replica from the source indicates how much data is lost.
+> If you fail over to the replica, the lag at the time you unlink the replica from the source indicates how much data is lost.
 
 After you decide to fail over to a replica:
 

@@ -69,7 +69,7 @@ Follow these steps to force failover from your primary to a standby Azure Databa
 
 1. Select **Forced Failover** to initiate the manual failover procedure. A pop-up informs you of the expected failover time depending on the current workload on the primary and the recency of the last checkpoint. Read the message and select **OK**.
 
-1. A notification states that failover is in progress. When fail over to the standby server succeeds, a notification appears.
+1. A notification states that failover is in progress. When failover to the standby server succeeds, a notification appears.
 
 1. Check the new **Primary availability zone** and the **Standby availability zone**.
 
