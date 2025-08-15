@@ -1,13 +1,12 @@
 ---
 title: Change feed with Apache Spark
 description: Learn how to use the Azure Cosmos DB Spark Connector to read the change feed, including pull model implementation, checkpointing, and scale-out processing.
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 08/15/2025
-ms.custom: build-2023
 ---
 
 # Change feed with Apache Spark
