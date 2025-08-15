@@ -19,7 +19,7 @@ Azure Database for MySQL Flexible Server lets you configure high availability wi
 
 - **Same-zone high availability (HA)**. This option provides infrastructure redundancy with lower network latency because the primary and standby servers are in the same availability zone. It offers high availability without the need to configure application redundancy across zones. Choose same-zone HA when you want to achieve the highest level of availability within a single availability zone with the lowest network latency. Same-zone HA is available in all [Azure regions](./overview.md#azure-regions) where you can use Azure Database for MySQL Flexible Server.
 
-## Zone-redundant high availability architecture
+## Zone-redundant high availability (HA) architecture
 
 When you deploy a server with zone-redundant high availability (HA), Azure creates two servers:
 
@@ -43,7 +43,7 @@ You use the database server name to connect applications to the primary server. 
 
 Automatic backups, both snapshots and log backups, are performed on zone-redundant storage from the primary database server.
 
-## Same-zone HA architecture
+## Same-zone high availability (HA) architecture
 
 When you deploy a server with same-zone HA, you create two servers in the same zone:
 
