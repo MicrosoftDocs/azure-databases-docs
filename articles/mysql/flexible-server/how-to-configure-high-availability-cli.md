@@ -4,7 +4,7 @@ description: This article describes how to configure zone redundant high availab
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 07/21/2025
+ms.date: 08/11/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -26,7 +26,7 @@ High availability feature provisions physically separate primary and standby rep
 
 - An Azure account with an active subscription.
 
-[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 - Install or upgrade Azure CLI to the latest version. See [Install Azure CLI](/cli/azure/install-azure-cli).
 - Sign in to your Azure account using [az login](/cli/azure/reference-index#az-login). Note the **id** property, which refers to the **Subscription ID** for your Azure account.
@@ -59,7 +59,15 @@ You can only create an Azure Database for MySQL flexible server instance using G
 **Example:**
 
    ```azurecli
-    az mysql flexible-server create --name myservername --sku-name Standard_D2ds_v4 --tier GeneralPurpose --resource-group myresourcegroup --high-availability ZoneRedundant --location eastus
+  
+        az mysql flexible-server create \
+          --name myservername \
+          --sku-name Standard_D2ds_v4 \
+          --tier GeneralPurpose \
+          --resource-group myresourcegroup \
+          --high-availability ZoneRedundant \
+          --location eastus
+
    ```
 
 ## Disable high availability
@@ -77,7 +85,12 @@ az mysql flexible-server update [--high-availability {Disabled, SameZone, ZoneRe
 **Example:**
 
    ```azurecli
-    az mysql flexible-server update --resource-group myresourcegroup --name myservername --high-availability Disabled
+   
+        az mysql flexible-server update \
+          --resource-group myresourcegroup \
+          --name myservername \
+          --high-availability Disabled
+
    ```
 
 ## Related content
