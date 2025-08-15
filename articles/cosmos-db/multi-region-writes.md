@@ -1,49 +1,49 @@
 ---
-title: Understanding multi-region writes in Azure Cosmos DB
-description: This article describes how multi-region writes work in Azure Cosmos DB.
+title: Multi-region writes
+titleSuffix: Azure Cosmos DB
+description: Multi-region writes in Azure Cosmos DB let you achieve near-zero downtime and high availability. Learn how to set up and manage multi-region write accounts.
 author: TheovanKraay
+ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 04/12/2024
-ms.author: thvankra
+ms.date: 08/15/2025
+ms.custom:
+  - ai-gen-docs-bap
+  - ai-gen-title
+  - ai-seo-date:08/15/2025
+  - ai-gen-description
+applies-to:
+  - NoSQL
+  - MongoDB
+  - Apache Cassandra
+  - Apache Gremlin
+  - Table
 ---
 
-# Understanding multi-region writes in Azure Cosmos DB
+# Multi-region writes in Azure Cosmos DB
 
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
-
-The best way to achieve near-zero downtime in either a partial or total outage scenario where consistency of reads doesn't need to be guaranteed, is to configure your account for multi-region writes. This article covers the key concepts to be aware of when configuring a multi-region write account. 
+To achieve near-zero downtime during a partial or total outage when read consistency isn't required, set up your account for multi-region writes. This article explains the key concepts to know when you set up a multi-region write account. 
 
 ## Hub region
-In a multi-region-write database account with two or more regions, the first region in which your account was created is called the "hub" region. All other regions that are then added to the account are called "satellite" regions. If the hub region is removed from the account, the next region, in the order they were added, is automatically chosen as the hub region.  
 
-Any writes arriving in satellite regions are quorum committed in the local region and then later sent to the Hub region for [conflict resolution](conflict-resolution-policies.md), asynchronously. Once a write goes to the hub region and gets conflict resolved, it becomes a "confirmed" write. Until then, it's called a "tentative" write or an "unconfirmed" write. Any write served from the hub region immediately becomes a confirmed write. 
+In a multi-region-write database account with two or more regions, the first region where your account is created is called the "hub" region. All other regions you add to the account are called "satellite" regions. If you remove the hub region from the account, the next region, in the order you added them, is automatically chosen as the hub region.
 
-## Understanding timestamps  
+Any writes that arrive in satellite regions are quorum committed in the local region, then sent to the hub region for [conflict resolution](conflict-resolution-policies.md) asynchronously. When a write goes to the hub region and is conflict resolved, it becomes a "confirmed" write. Until then, it's a "tentative" or "unconfirmed" write. Any write served from the hub region immediately becomes a confirmed write. 
 
-One of the primary differences in a multi-region-write account is the presence of two server timestamp values associated with each entity. The first is the server epoch time at which the entity was written in that region. This timestamp is available in both single-region write and multi-region write accounts. The second server timestamp value is associated with the epoch time at which the absence of a conflict was confirmed, or the conflict was resolved in the hub region. A confirmed or conflict resolved write has a conflict-resolution timestamp (`crts`) assigned, whereas an unconfirmed or tentative write doesn't have `crts`. There are two timestamps in Cosmos DB set by the server. The primary difference is whether the region configuration of the account is Single-Write or Multi-Write.
+## Understanding timestamps
 
-| Timestamp | Meaning                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | When exposed                                                                                                                                                                 |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `_ts`       | The server epoch time at which the entity was written.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Always exposed by all read and query APIs.                                                                                                                                   |
-| `crts`      | The epoch time at which the Multi-Write conflict was resolved, or the absence of a conflict was confirmed. For Multi-Write region configuration, this timestamp defines the order of changes for Change Feed:<br><br><ul><li>Used to find start time for Change Feed requests</li><li>Used as sort order in Change Feed response.</li></ul> | Exposed in response to Change Feed requests and only when "New Wire Model" is enabled by the request. This is the default for [All versions and deletes](change-feed.md#all-versions-and-deletes-mode-preview) Change Feed mode. |
+A multi-region-write account uses two server timestamp values for each entity. The first is the server epoch time when the entity is written in that region. You see this timestamp in both single-region write and multi-region write accounts. The second server timestamp is the epoch time when the absence of a conflict is confirmed, or a conflict is fixed in the hub region. A confirmed or conflict-fixed write gets a conflict-resolution timestamp (`crts`), but an unconfirmed or tentative write doesn't get `crts`. Cosmos DB sets two timestamps on the server. The main difference is whether the account uses single-write or multi-write region configuration.
 
+| Timestamp | Meaning | When exposed |
+| --- | --- | --- |
+| `_ts` | The server epoch time at which the entity was written | Always exposed by all read and query APIs. |
+| `crts` | The epoch time when a multi-write conflict is fixed, or the absence of a conflict is confirmed. For multi-write region configuration, this timestamp sets the order of changes for Change Feed: Finds the start time for Change Feed requests, Sets the sort order in Change Feed responses. | Shown in Change Feed responses only when the request enables "New Wire Model." This behavior is the default for ["all versions and deletes"](change-feed.md#all-versions-and-deletes-mode-preview) Change Feed mode. |
 
+## Related content
 
-## Next steps
-
-Next, you can read the following articles:
-
-* [Conflict types and resolution policies when using multiple write regions](conflict-resolution-policies.md)
-
-* [Configure multi-region writes in your applications that use Azure Cosmos DB](how-to-multi-master.md)
-
-* [Consistency levels in Azure Cosmos DB](./consistency-levels.md)
-
-* [Request Units in Azure Cosmos DB](./request-units.md)
-
-* [Global data distribution with Azure Cosmos DB - under the hood](global-dist-under-the-hood.md)
-
-* [Consistency levels in Azure Cosmos DB](consistency-levels.md)
-
-* [Diagnose and troubleshoot the availability of Azure Cosmos DB SDKs in multiregional environments](troubleshoot-sdk-availability.md)
+- [Conflict types and resolution policies when using multiple write regions](conflict-resolution-policies.md)
+- [Multi-region writes in your applications that use Azure Cosmos DB](nosql/how-to-multi-master.md)
+- [Consistency levels in Azure Cosmos DB](consistency-levels.md)
+- [Request Units in Azure Cosmos DB](request-units.md)
+- [Global data distribution with Azure Cosmos DB - under the hood](global-dist-under-the-hood.md)
+- [Availability of Azure Cosmos DB software development kits (SDKs) in multiregional environments](nosql/troubleshoot-sdk-availability.md)
