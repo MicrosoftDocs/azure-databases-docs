@@ -1,6 +1,6 @@
 ---
-title: Manage Zone Redundant High Availability - Azure CLI
-description: This article describes how to configure zone redundant high availability in Azure Database for MySQL - Flexible Server by using the Azure CLI.
+title: Manage Zone Redundant high-availability - Azure CLI
+description: This article describes how to configure zone redundant high-availability in Azure Database for MySQL - Flexible Server by using the Azure CLI.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
@@ -13,14 +13,14 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Manage zone redundant high availability in Azure Database for MySQL with Azure CLI
+# Manage zone redundant high-availability in Azure Database for MySQL with Azure CLI
 
-This article describes how to enable or disable zone redundant high availability configuration when you create a server in your Azure Database for MySQL flexible server instance. You can also disable zone redundant high availability after server creation. Enabling zone redundant high availability after server creation isn't supported.
+This article describes how to enable or disable zone redundant high-availability configuration when you create a server in your Azure Database for MySQL flexible server instance. You can also disable zone redundant high-availability after server creation. Enabling zone redundant high-availability after server creation isn't supported.
 
-The high availability feature provisions physically separate primary and standby replicas in different zones. For more information, see [high availability concepts documentation](concepts-high-availability.md). Enabling or disabling high availability doesn't change your other settings, including virtual network configuration, firewall settings, and backup retention. Disabling high availability doesn't impact your application connectivity and operations.
+The high-availability feature provisions physically separate primary and standby replicas in different zones. For more information, see [high-availability concepts documentation](concepts-high-availability.md). Enabling or disabling high-availability doesn't change your other settings, including virtual network configuration, firewall settings, and backup retention. Disabling high-availability doesn't impact your application connectivity and operations.
 
 > [!IMPORTANT]  
-> Zone redundant high availability is available in a limited [set of regions](./overview.md#azure-regions).
+> Zone redundant high-availability is available in a limited [set of regions](./overview.md#azure-regions).
 
 ## Prerequisites
 
@@ -42,9 +42,9 @@ The high availability feature provisions physically separate primary and standby
     az account set --subscription <subscription id>
     ```
 
-## Enable high availability during server creation
+## Enable high-availability during server creation
 
-You can only create an Azure Database for MySQL flexible server instance with high availability by using the General Purpose or Business Critical pricing tiers. You can enable zone redundant high availability for a server only during creation.
+You can only create an Azure Database for MySQL flexible server instance with high-availability by using the General Purpose or Business Critical pricing tiers. You can enable zone redundant high-availability for a server only during creation.
 
 **Usage:**
 
@@ -70,9 +70,9 @@ You can only create an Azure Database for MySQL flexible server instance with hi
           --location eastus
    ```
 
-## Disable high availability
+## Disable high-availability
 
-You can disable high availability by using the [az mysql flexible-server update](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-update) command. You can disable high availability only if the server was created with high availability.
+You can disable high-availability by using the [az mysql flexible-server update](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-update) command. You can disable high-availability only if the server was created with high-availability.
 
 ```azurecli
 az mysql flexible-server update [--high-availability {Disabled, SameZone, ZoneRedundant}]
@@ -80,7 +80,7 @@ az mysql flexible-server update [--high-availability {Disabled, SameZone, ZoneRe
                                 [--name]
 ```
 > [!NOTE]  
-> To move from `ZoneRedundant` to `SameZone`, first disable high availability, then enable same zone.
+> To move from `ZoneRedundant` to `SameZone`, first disable high-availability, then enable same zone.
 
 **Example:**
 
@@ -95,4 +95,4 @@ az mysql flexible-server update [--high-availability {Disabled, SameZone, ZoneRe
 ## Related content
 
 - [business continuity](concepts-business-continuity.md)
-- [zone redundant high availability](concepts-high-availability.md)
+- [zone redundant high-availability](concepts-high-availability.md)

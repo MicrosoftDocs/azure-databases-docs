@@ -12,9 +12,9 @@ ms.custom:
   - references_regions
 ---
 
-# Manage zone redundant high availability in Azure Database for MySQL
+# Manage zone redundant high availability in Azure Database for MySQL with the Azure portal
 
-This article describes how to turn on or off the zone redundant high availability configuration in Azure Database for MySQL Flexible Server.
+This article describes how to turn on or off the zone redundant high availability configuration in Azure Database for MySQL.
 
 The high availability feature provisions physically separate primary and standby replicas in different zones. For more information, see the [high availability concepts documentation](concepts-high-availability.md).
 
