@@ -25,7 +25,7 @@ You manage replicas as new servers, just like your source Azure Database for MyS
 
 To learn more about MySQL replication features and issues, see the [MySQL replication documentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
-> [!NOTE]  
+> [!NOTE]
 > This article contains references to the term *slave*, a term that Microsoft no longer uses. When we remove the term from the software, we remove it from this article.
 
 ## Common use cases for read replica

@@ -1,5 +1,5 @@
 ---
-title: High Availability - FAQ
+title: High-Availability (HA) - FAQ
 description: FAQ related to high availability in Azure Database for MySQL - Flexible Server.
 author: SudheeshGH
 ms.author: sunaray
@@ -11,7 +11,7 @@ ms.topic: concept-article
 ai-usage: ai-assisted
 ---
 
-# High availability frequently asked questions (FAQ) in Azure Database for MySQL
+# High-availability (HA) frequently asked questions (FAQ) in Azure Database for MySQL
 
 ## Frequently asked questions (FAQ)
 

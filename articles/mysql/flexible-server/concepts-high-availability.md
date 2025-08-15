@@ -1,6 +1,6 @@
 ---
-title: "Zone-Redundant High Availability (HA)"
-description: Get a conceptual overview of zone-redundant high availability in Azure Database for MySQL - Flexible Server.
+title: Zone-Redundant High-Availability (HA)
+description: Get a conceptual overview of zone-redundant high-availability in Azure Database for MySQL - Flexible Server.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
@@ -11,24 +11,24 @@ ms.topic: concept-article
 ai-usage: ai-assisted
 ---
 
-# High availability in Azure Database for MySQL
+# High-availability in Azure Database for MySQL
 
-Azure Database for MySQL Flexible Server lets you configure high availability with automatic failover. This solution ensures that failures never cause loss of committed data and that the database isn't a single point of failure in your software architecture. When you configure high availability, Flexible Server automatically provisions and manages a standby replica. You pay for the provisioned compute and storage for both the primary and secondary replicas. Two high availability architectural models are available:
+Azure Database for MySQL Flexible Server lets you configure high-availability with automatic failover. This solution ensures that failures never cause loss of committed data and that the database isn't a single point of failure in your software architecture. When you configure high-availability, Flexible Server automatically provisions and manages a standby replica. You pay for the provisioned compute and storage for both the primary and secondary replicas. Two high-availability architectural models are available:
 
-- **Zone-redundant high availability (HA)**. This option provides complete isolation and redundancy of infrastructure across multiple availability zones. It offers the highest level of availability, but it requires you to configure application redundancy across zones. Choose zone-redundant HA when you want to protect against any infrastructure failure in the availability zone and when latency across the availability zone is acceptable. You can enable zone-redundant HA only when you create the server. Zone-redundant HA is available in a [subset of Azure regions](./overview.md#azure-regions) where the region supports multiple [availability zones](/azure/reliability/availability-zones-overview) and [zone-redundant Premium file shares](/azure/storage/common/storage-redundancy#zone-redundant-storage) are available.
+- **Zone-redundant high-availability**. This option provides complete isolation and redundancy of infrastructure across multiple availability zones. It offers the highest level of availability, but it requires you to configure application redundancy across zones. Choose zone-redundant HA when you want to protect against any infrastructure failure in the availability zone and when latency across the availability zone is acceptable. You can enable zone-redundant HA only when you create the server. Zone-redundant HA is available in a [subset of Azure regions](./overview.md#azure-regions) where the region supports multiple [availability zones](/azure/reliability/availability-zones-overview) and [zone-redundant Premium file shares](/azure/storage/common/storage-redundancy#zone-redundant-storage) are available.
 
-- **Same-zone high availability (HA)**. This option provides infrastructure redundancy with lower network latency because the primary and standby servers are in the same availability zone. It offers high availability without the need to configure application redundancy across zones. Choose same-zone HA when you want to achieve the highest level of availability within a single availability zone with the lowest network latency. Same-zone HA is available in all [Azure regions](./overview.md#azure-regions) where you can use Azure Database for MySQL Flexible Server.
+- **Same-zone high-availability**. This option provides infrastructure redundancy with lower network latency because the primary and standby servers are in the same availability zone. It offers high-availability without the need to configure application redundancy across zones. Choose same-zone HA when you want to achieve the highest level of availability within a single availability zone with the lowest network latency. Same-zone HA is available in all [Azure regions](./overview.md#azure-regions) where you can use Azure Database for MySQL Flexible Server.
 
-## Zone-redundant high availability (HA) architecture
+## Zone-redundant high-availability (HA) architecture
 
-When you deploy a server with zone-redundant high availability (HA), Azure creates two servers:
+When you deploy a server with zone-redundant high-availability, Azure creates two servers:
 
 - A primary server in one availability zone.
 - A standby replica server in another availability zone of the same Azure region. The standby replica server has the same configuration as the primary server, including the compute tier, compute size, storage size, and network configuration.
 
 You can choose the availability zone for both the primary server and the standby replica. Placing the standby database servers and standby applications in the same zone reduces latency. It also helps you prepare for disaster recovery situations and "zone down" scenarios.
 
-:::image type="content" source="media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png" alt-text="Diagram that shows the architecture for zone-redundant high availability." lightbox="media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png":::
+:::image type="content" source="media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png" alt-text="Diagram that shows the architecture for zone-redundant high-availability." lightbox="media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png":::
 
 The data and log files are hosted in [zone-redundant storage (ZRS)](/azure/storage/common/storage-redundancy#redundancy-in-the-primary-region). The standby server continuously reads and replays the log files from the primary server's storage account, which storage-level replication protects.
 
@@ -43,7 +43,7 @@ You use the database server name to connect applications to the primary server. 
 
 Automatic backups, both snapshots and log backups, are performed on zone-redundant storage from the primary database server.
 
-## Same-zone high availability (HA) architecture
+## Same-zone high-availability (HA) architecture
 
 When you deploy a server with same-zone HA, you create two servers in the same zone:
 
@@ -52,7 +52,7 @@ When you deploy a server with same-zone HA, you create two servers in the same z
 
 The standby server provides infrastructure redundancy with a separate virtual machine (compute). This redundancy reduces failover time and network latency between the application and the database server because of colocation.
 
-:::image type="content" source="media/concepts-high-availability/flexible-server-overview-same-zone-ha.png" alt-text="Diagram that shows the architecture for same-zone high availability." lightbox="media/concepts-high-availability/flexible-server-overview-same-zone-ha.png":::
+:::image type="content" source="media/concepts-high-availability/flexible-server-overview-same-zone-ha.png" alt-text="Diagram that shows the architecture for same-zone high-availability." lightbox="media/concepts-high-availability/flexible-server-overview-same-zone-ha.png":::
 
 The data and log files are hosted in [locally redundant storage (LRS)](/azure/storage/common/storage-redundancy#locally-redundant-storage). The standby server continuously reads and replays the log files from the primary server's storage account, which is protected by storage-level replication.
 
@@ -63,7 +63,7 @@ If a failover occurs:
 
 Logs in LRS are accessible even when the primary server is unavailable. This availability helps to ensure there's no loss of data. After the standby replica is activated and binary logs are applied, the current standby replica takes the role of the primary server. DNS is updated to redirect connections to the new primary when the client reconnects. The failover is fully transparent from the client application and doesn't require any action from you. The HA solution then brings back the old primary server when possible and places it as a standby.
 
-The database server name connects applications to the primary server. Standby replica information isn't exposed for direct access. Commits and writes are acknowledged after the log files are flushed at the primary server's LRS. Because the primary and the standby replica are in the same zone, there's less replication lag and lower latency between the application server and the database server. The same-zone setup doesn't provide high availability when dependent infrastructures are down for the specific availability zone. There's downtime until all dependent services are back online for that availability zone.
+The database server name connects applications to the primary server. Standby replica information isn't exposed for direct access. Commits and writes are acknowledged after the log files are flushed at the primary server's LRS. Because the primary and the standby replica are in the same zone, there's less replication lag and lower latency between the application server and the database server. The same-zone setup doesn't provide high-availability when dependent infrastructures are down for the specific availability zone. There's downtime until all dependent services are back online for that availability zone.
 
 Automatic backups, both snapshots and log backups, are performed on locally redundant storage from the primary database server.
 
@@ -75,7 +75,7 @@ Automatic backups, both snapshots and log backups, are performed on locally redu
 
 ## Failover process
 
-During the failover process in Azure Database for MySQL, the system automatically switches from the primary server to the standby replica. This switch ensures continuity and minimizes downtime. When the system detects a failure, it promotes the standby replica to become the new primary server. The system applies the binary log files from the original primary server to the standby replica. This process synchronizes the standby replica with the last committed transaction and ensures no data loss. This seamless transition helps maintain high availability and reliability of the database service.
+During the failover process in Azure Database for MySQL, the system automatically switches from the primary server to the standby replica. This switch ensures continuity and minimizes downtime. When the system detects a failure, it promotes the standby replica to become the new primary server. The system applies the binary log files from the original primary server to the standby replica. This process synchronizes the standby replica with the last committed transaction and ensures no data loss. This seamless transition helps maintain high-availability and reliability of the database service.
 
 ### Planned: Forced failover
 
@@ -114,19 +114,19 @@ The health monitor component continuously does the following checks:
 
 <a id="monitoring-for-high-availability"></a>
 
-## Monitor high availability
+## Monitor high-availability
 
-To check the server's high availability configuration status, use the **High Availability Status** in the server's *High Availability* pane in the portal.
+To check the server's high-availability configuration status, use the **high-availability Status** in the server's *high-availability* pane in the portal.
 
 | **Status** | **Description** |
 | --- | --- |
-| **NotEnabled** | High availability isn't enabled. |
-| **ReplicatingData** | Standby server synchronizes with the primary server during high availability server provisioning or when you enable the high availability option. |
+| **NotEnabled** | high-availability isn't enabled. |
+| **ReplicatingData** | Standby server synchronizes with the primary server during high-availability server provisioning or when you enable the high-availability option. |
 | **FailingOver** | The database server is failing over from the primary to the standby. |
-| **Healthy** | High availability option is enabled. |
-| **RemovingStandby** | The deletion process is underway when you disable the high availability option. |
+| **Healthy** | high-availability option is enabled. |
+| **RemovingStandby** | The deletion process is underway when you disable the high-availability option. |
 
-To monitor the health of the high availability server, use the following metrics.
+To monitor the health of the high-availability server, use the following metrics.
 
 | Metric display name | Metric | Unit | Description |
 | --- | --- | --- | --- |
@@ -136,10 +136,10 @@ To monitor the health of the high availability server, use the following metrics
 
 ## Limitations
 
-Keep the following considerations in mind when you use high availability:
-- You can configure zone-redundant high availability only during server creation.
+Keep the following considerations in mind when you use high-availability:
+- You can configure zone-redundant high-availability only during server creation.
 
-- The burstable compute tier doesn't support high availability.
+- The burstable compute tier doesn't support high-availability.
 - Restarting the primary database server to apply static parameter changes also restarts the standby replica.
 - The solution turns on GTID mode because it uses GTID. Check whether your workload has [restrictions or limitations on replication with GTIDs](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-restrictions.html).
 
@@ -151,7 +151,7 @@ Keep the following considerations in mind when you use high availability:
 
 ## Health checks
 
-When you configure high availability (HA) for Azure Database for MySQL, health checks play a crucial role in maintaining the reliability and performance of your database. These checks continuously monitor the status and health of both the primary and standby replicas, ensuring that they detect any issues promptly. By tracking various metrics such as server responsiveness, replication lag, and resource utilization, health checks help ensure that failover processes can be executed seamlessly, minimizing downtime and preventing data loss. Properly configured health checks are essential for achieving the desired level of availability and resilience in your database setup.
+When you configure high-availability (HA) for Azure Database for MySQL, health checks play a crucial role in maintaining the reliability and performance of your database. These checks continuously monitor the status and health of both the primary and standby replicas, ensuring that they detect any issues promptly. By tracking various metrics such as server responsiveness, replication lag, and resource utilization, health checks help ensure that failover processes can be executed seamlessly, minimizing downtime and preventing data loss. Properly configured health checks are essential for achieving the desired level of availability and resilience in your database setup.
 
 ### Monitoring health
 
@@ -163,7 +163,7 @@ You can monitor the health of your HA setup through the Azure portal. Key metric
 
 ## Related content
 
-- [High Availability](concepts-high-availability-faq.md)
+- [high-availability](concepts-high-availability-faq.md)
 - [Business continuity](concepts-business-continuity.md)
-- [Zone-redundant high availability](concepts-high-availability.md)
+- [Zone-redundant high-availability](concepts-high-availability.md)
 - [Backup and recovery](concepts-backup-restore.md)
