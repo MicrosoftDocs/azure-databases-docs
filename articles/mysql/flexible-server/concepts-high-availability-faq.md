@@ -23,9 +23,9 @@ High availability is a key feature of Azure Database for MySQL, designed to mini
 
 - **How am I billed for high available (HA) servers?**
 
-  Servers enabled with HA have a primary and secondary replica. Secondary replica can be in same zone or zone redundant. You're billed for the provisioned compute and storage for both the primary and secondary replica. For example, if you have a primary with 4 vCores of compute and 512 GB of provisioned storage, your secondary replica will also have 4 vCores and 512 GB of provisioned storage.
+  Servers enabled with HA have a primary and secondary replica. Secondary replica can be in same zone or zone redundant. You're billed for the provisioned compute and storage for both the primary and secondary replica. For example, if you have a primary with 4 vCores of compute and 512 GB of provisioned storage, your secondary replica has 4 vCores and 512 GB of provisioned storage.
 
-  Your zone redundant HA server will be billed for 8 vCores and 1,024 GB of storage. Depending on your backup storage volume, you might also be billed for backup storage.
+  Your zone redundant HA server is billed for 8 vCores and 1,024 GB of storage. Depending on your backup storage volume, you might also be billed for backup storage.
 
 - **Can I use the standby replica for read or write operations?**
 
@@ -41,7 +41,7 @@ High availability is a key feature of Azure Database for MySQL, designed to mini
 
 - **What happens when I don't choose a specific zone for my standby replica? Can I change the zone later?**
 
-  If you don't choose a zone, one will be randomly selected. It will be the one used for the primary server. To change the zone later, you can set **High Availability** to **Disabled** on the **High Availability** pane, and then set it back to **Zone Redundant** and choose a zone.
+  If you don't choose a zone, one is randomly selected. It's the one used for the primary server. To change the zone later, you can set **High Availability** to **Disabled** on the **High Availability** pane, and then set it back to **Zone Redundant** and choose a zone.
 
 - **Is replication between the primary and standby replicas synchronous?**
 
@@ -49,17 +49,17 @@ High availability is a key feature of Azure Database for MySQL, designed to mini
 
 - **Is there a failover to the standby replica for all unplanned failures?**
 
-  If there's a database crash or node failure, the Flexible Server VM is restarted on the same node. At the same time, an automatic failover is triggered. If the Flexible Server VM restart is successful before the failover finishes, the failover operation will be canceled. The determination of which server to use as the primary replica depends on the process that finishes first.
+  If there's a database crash or node failure, the Flexible Server VM is restarted on the same node. At the same time, an automatic failover is triggered. If the Flexible Server VM restart is successful before the failover finishes, the failover operation is canceled. The determination of which server to use as the primary replica depends on the process that finishes first.
 
 - **Is there a performance impact when I use HA?**
 
-  For zone-redundant HA, while there is no major performance impact for read workloads across availability zones, there might be up to 40 percent drop in write-query latency. The increase in write-latency is due to synchronous replication across Availability zone. The write latency impact is generally twice in zone redundant HA compared to the same zone HA. For same-zone HA, because the primary and the standby replica is in the same zone, the replication latency and consequently the synchronous write latency is lower.
+  For zone-redundant HA, while there's no major performance impact for read workloads across availability zones, there might be up to 40 percent drop in write-query latency. The increase in write-latency is due to synchronous replication across Availability zone. The write latency impact is twice in zone redundant HA compared to the same zone HA. For same-zone HA, because the primary and the standby replica is in the same zone, the replication latency and so the synchronous write latency is lower.
 
   In summary, if write-latency is more critical for you compared to availability, you might want to choose same-zone HA but if availability and resiliency of your data is more critical for you at the expense of write-latency drop, you must choose zone-redundant HA. To measure the accurate impact of the latency drop in HA setup, we recommend you to perform performance testing for your workload to take an informed decision.
 
 - **How does maintenance of my HA server happen?**
 
-  Planned events like scaling of compute and minor version upgrades happen on the original standby instance first, and followed by triggering a planned failover operation, and then operate on the original primary instance. You can set the [scheduled maintenance window](concepts-maintenance.md) for HA servers as you do for Flexible Servers. The amount of downtime will be the same as the downtime for the Azure Database for MySQL Flexible Server instance when HA is disabled.
+  Planned events like scaling of compute and minor version upgrades happen on the original standby instance first, and followed by triggering a planned failover operation, and then operate on the original primary instance. You can set the [scheduled maintenance window](concepts-maintenance.md) for HA servers as you do for Flexible Servers. The amount of downtime is the same as the downtime for the Azure Database for MySQL Flexible Server instance when HA is disabled.
 
 - **Can I do a point-in-time restore (PITR) of my HA server?**
 
@@ -89,13 +89,13 @@ High availability is a key feature of Azure Database for MySQL, designed to mini
 
 - **To reduce downtime, can I fail over to the standby server during server restarts or while scaling up or down?**
 
-  Currently, Azure Database for MySQL Flexible Server has utlized Planned Failover to optmize the HA operations including scaling up/down, and planned maintenance to help reduce the downtime.
+  Currently, Azure Database for MySQL Flexible Server has utilized Planned Failover to optimize the HA operations including scaling up/down, and planned maintenance to help reduce the downtime.
 
   When such operations started, it would operate on the original standby instance first, followed by triggering a planned failover operation, and then operate on the original primary instance.
 
 - **Can we change the availability mode (Zone-redundant HA/same-zone) of server**
 
-  If you create the server with Zone-redundant HA mode enabled then you can change from Zone-redundant HA to same-zone and vice versa.
+  If you create the server with Zone-redundant HA mode enabled, then you can change from Zone-redundant HA to same-zone and vice versa.
 
   To change the availability mode, you can set **High Availability** to **Disabled** on the **High Availability** pane, and then set it back to **Zone Redundant or same-zone** and choose **High Availability Mode**.
 
