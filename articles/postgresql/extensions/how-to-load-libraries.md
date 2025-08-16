@@ -53,7 +53,7 @@ az postgres flexible-server parameter set \
   --value <extension_name>,<extension_name>
 ```
 
-And can restart the server using the CLI [parameter set](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
+And can restart the server using the CLI [restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
 
 ```azurecli-interactive
 az postgres flexible-server restart \
