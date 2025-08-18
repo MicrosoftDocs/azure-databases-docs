@@ -195,6 +195,23 @@ ms.custom: automatically generated
 
 
 
+### restrict_nonsystem_relation_kind
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Statement Behavior |
+| Description | Prohibits access to non-system relations of specified kinds. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [restrict_nonsystem_relation_kind](https://www.postgresql.org/docs/16/runtime-config-client.html#GUC-RESTRICT-NONSYSTEM-RELATION-KIND) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### row_security
 
 | Attribute | Value |
