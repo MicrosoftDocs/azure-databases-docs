@@ -1,20 +1,23 @@
 ---
-title: Migrate an Azure Cosmos DB account from periodic to continuous backup mode
-description: Azure Cosmos DB currently supports a one-way migration from periodic to continuous mode and it’s irreversible. After migrating from periodic to continuous mode, you can apply the benefits of continuous mode.
+title: Migrate From Periodic to Continuous Backup Mode
+titleSuffix: Azure Cosmos DB
+description: Migrate your Azure Cosmos DB account from periodic to continuous backup mode. Learn about the benefits, limitations, and steps for migration. Start your migration today.
 author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
-ms.subservice: nosql
 ms.topic: how-to
 ms.date: 08/21/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Migrate an Azure Cosmos DB account from periodic to continuous backup mode
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 Azure Cosmos DB accounts with periodic mode backup policy can be migrated to continuous mode using the [Azure portal](#portal), [CLI](#cli), [PowerShell](#powershell), or [Resource Manager templates](#ARM-template). Migration from periodic to continuous mode is a one-way migration and it’s not reversible. After migrating from periodic to continuous mode, you can apply the benefits of continuous mode.
 

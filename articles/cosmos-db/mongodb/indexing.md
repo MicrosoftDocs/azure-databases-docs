@@ -1,6 +1,7 @@
 ---
-title: Manage indexing in Azure Cosmos DB for MongoDB
-description: This article presents an overview of Azure Cosmos DB indexing capabilities using Azure Cosmos DB for MongoDB
+title: Manage Indexing
+titleSuffix: Azure Cosmos DB for MongoDB
+description: Learn how to manage indexing in Azure Cosmos DB for MongoDB to optimize query performance. Explore types, benefits, and best practices for faster queries.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
@@ -11,13 +12,14 @@ ms.date: 08/21/2025
 ms.custom:
   - cosmos-db-video
   - sfi-image-nochange
+appliesto:
+  - ✅ MongoDB
 ---
+
 # Manage indexing in Azure Cosmos DB for MongoDB
-[!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
-Azure Cosmos DB for MongoDB takes advantage of the core index-management capabilities of Azure Cosmos DB. This article focuses on how to add indexes using Azure Cosmos DB for MongoDB. Indexes are specialized data structures that make querying your data roughly an order of magnitude faster.
+Azure Cosmos DB for MongoDB provides robust indexing capabilities to accelerate query performance. This article explains how to manage and optimize indexes for faster data retrieval and improved efficiency.
 
->
 > [!VIDEO https://www.youtube.com/embed/qHFVwvfqZMA?si=rq2EOJSH8qY_09br]
 
 ## Indexing for MongoDB server version 3.6 and higher
@@ -30,7 +32,7 @@ The API for MongoDB behaves differently from the Azure Cosmos DB for NoSQL, whic
 
 We recommend editing your indexing policy in the Data Explorer within the Azure portal. You can add single field and wildcard indexes from the indexing policy editor in the Data Explorer:
 
-:::image type="content" source="media/indexing/indexing-policy-editor.png" alt-text="Indexing policy editor":::
+:::image type="content" source="media/indexing/indexing-policy-editor.png" alt-text="Screenshot of indexing policy editor in Azure Cosmos DB for MongoDB.":::
 
 > [!NOTE]
 > You can't create compound indexes using the indexing policy editor in the Data Explorer.

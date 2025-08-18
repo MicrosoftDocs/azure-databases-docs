@@ -1,5 +1,6 @@
 ---
-title: MongoDB per-document TTL feature in Azure Cosmos DB
+title: Per-Document TTL feature
+titleSuffix: Azure Cosmos DB for MongoDB
 description: Learn how to set time to live value for documents using Azure Cosmos DB for MongoDB, to automatically purge them from the system after a period of time.
 author: gahl-levy
 ms.author: gahllevy
@@ -10,9 +11,11 @@ ms.devlang: csharp
 ms.date: 08/21/2025
 ms.custom:
   - devx-track-csharp
+appliesto:
+  - ✅ MongoDB
 ---
-# Expire data with Azure Cosmos DB for MongoDB
-[!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
+
+# Expire data with Azure Cosmos DB for MongoDB and per-document TTL
 
 Time-to-live (TTL) functionality allows the database to automatically expire data. Azure Cosmos DB for MongoDB utilizes Azure Cosmos DB's core TTL capabilities. Two modes are supported: setting a default TTL value on the whole collection, and setting individual TTL values for each document. The logic governing TTL indexes and per-document TTL values in Azure Cosmos DB for MongoDB is the [same as in Azure Cosmos DB](indexing.md).
 

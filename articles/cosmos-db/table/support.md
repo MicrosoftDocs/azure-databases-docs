@@ -1,6 +1,7 @@
 ---
-title: Azure Table Storage support in Azure Cosmos DB
-description: Learn how Azure Cosmos DB for Table and Azure Table Storage work together by sharing the same table data model and operations.
+title: Azure Table Storage Support
+titleSuffix: Azure Cosmos DB for Table
+description: Discover how Azure Cosmos DB for Table and Azure Table Storage share the same data model and operations. Learn how to integrate both for scalable table storage.
 ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: table
@@ -8,12 +9,13 @@ author: seesharprun
 ms.topic: how-to
 ms.devlang: csharp
 ms.date: 08/21/2025
+appliesto:
+  - ✅ Table
 ---
 
-# Develop with Azure Cosmos DB for Table and Azure Table Storage
-[!INCLUDE[Table](../includes/appliesto-table.md)]
+# Use Azure Cosmos DB for Table and Azure Table Storage
 
-Azure Cosmos DB for Table and Azure Table Storage share the same table data model and expose the same *create*, *delete*, *update*, and *query* operations through their SDKs.
+Azure Cosmos DB for Table and Azure Table Storage share the same table data model and operations, making it easy to build scalable applications. This article explains how to use both services together for efficient table storage management.
 
 > [!NOTE]
 > The *serverless capacity mode* is now available on Azure Cosmos DB API for Table. For more information, see [Azure Cosmos DB serverless](../serverless.md).

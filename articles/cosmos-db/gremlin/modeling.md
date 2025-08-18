@@ -1,16 +1,18 @@
 ---
-title: Graph data modeling with Azure Cosmos DB for Apache Gremlin
-description: Learn how to model a graph database by using Azure Cosmos DB for Apache Gremlin, and learn best practices to model entities and relationships.
+title: Graph Data Modeling
+titleSuffix: Azure Cosmos DB for Apache Gremlin
+description: Learn how to model a graph database with Azure Cosmos DB for Apache Gremlin, discover best practices for entities and relationships, and start optimizing your data model today.
 author: manishmsfte
 ms.author: mansha
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
 ms.date: 08/21/2025
+appliesto:
+  - ✅ Apache Gremlin
 ---
 
 # Graph data modeling with Azure Cosmos DB for Apache Gremlin
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
 
 This article provides recommendations for the use of graph data models. These best practices are vital for ensuring the scalability and performance of a graph database system as the data evolves. An efficient data model is especially important for large-scale graphs.
 

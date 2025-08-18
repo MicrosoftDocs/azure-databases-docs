@@ -1,6 +1,7 @@
 ---
-title: Configure role-based access control in Azure Cosmos DB for MongoDB database
-description: Learn how to configure native role-based access control in Azure Cosmos DB for MongoDB
+title: Configure Role-Based Access Control
+titleSuffix: Azure Cosmos DB for MongoDB
+description: Learn how to configure role-based access control in Azure Cosmos DB for MongoDB to secure data access. Follow these steps to get started.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
@@ -12,10 +13,11 @@ ms.custom:
   - devx-track-extended-java
   - devx-track-js
   - sfi-ropc-blocked
+appliesto:
+  - ✅ MongoDB
 ---
 
 # Configure role-based access control in Azure Cosmos DB for MongoDB
-[!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
 This article is about role-based access control for data plane operations in Azure Cosmos DB for MongoDB.
 
