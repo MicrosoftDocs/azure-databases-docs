@@ -183,7 +183,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies if hostname is allowed in the username for Azure Database for PostgreSQL Flexible Server. |
+| Description | Specifies if hostname is allowed in the username for Azure Database for PostgreSQL flexible server. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |

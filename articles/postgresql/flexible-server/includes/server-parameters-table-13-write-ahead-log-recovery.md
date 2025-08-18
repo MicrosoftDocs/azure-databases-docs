@@ -9,4 +9,4 @@ ms.topic: include
 ms.custom: automatically generated
 ---
 > [!NOTE]
-> Azure Database for PostgreSQL Flexible Server 13 does not have any server parameter in the 'Write-Ahead Log / Recovery' category.
+> Azure Database for PostgreSQL flexible server 13 does not have any server parameter in the 'Write-Ahead Log / Recovery' category.
