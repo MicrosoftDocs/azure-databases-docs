@@ -297,6 +297,23 @@ ms.custom: automatically generated
 
 
 
+### enable_presorted_aggregate
+
+| Attribute | Value |
+| --- | --- |
+| Category | Query Tuning / Planner Method Configuration |
+| Description | Enables the planner's ability to produce plans that provide presorted input for ORDER BY / DISTINCT aggregate functions. Allows the query planner to build plans that provide presorted input for aggregate functions with an ORDER BY / DISTINCT clause. When disabled, implicit sorts are always performed during execution. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [enable_presorted_aggregate](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PRESORTED-AGGREGATE) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### enable_seqscan
 
 | Attribute | Value |
