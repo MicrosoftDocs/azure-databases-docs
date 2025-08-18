@@ -8,6 +8,9 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
+ms.collection:
+  - migration
+  - onprem-to-azure
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL

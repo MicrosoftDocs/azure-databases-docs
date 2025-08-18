@@ -70,6 +70,8 @@
           href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
         - name: Stopwords list
           href: ../gen-ai/stopwords.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Full text search FAQ
+          href: ../gen-ai/full-text-search-faq.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrate with AI tools
@@ -487,6 +489,8 @@
           href: change-feed-functions.md
         - name: Change feed (pull model)
           href: change-feed-pull-model.md
+        - name: Change feed with Apache Spark
+          href: change-feed-spark.md
         - name: Azure Cosmos DB Trigger advanced configuration
           href: how-to-configure-cosmos-db-trigger.md
         - name: Multiple Azure Cosmos DB Triggers

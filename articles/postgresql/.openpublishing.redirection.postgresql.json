@@ -1514,47 +1514,47 @@
             "source_path_from_root": "/articles/postgresql/migrate/common-errors-and-special-scenarios-fms.md",
             "redirect_url": "/azure/postgresql/migrate/best-practices-seamless-migration-single-to-flexible",
             "redirect_document_id": false
-        },    
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/howto-alert-on-metrics.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-alert-on-metrics",
             "redirect_document_id": true
-        },    
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/howto-configure-and-access-logs.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-and-access-logs",
             "redirect_document_id": true
-        },    
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/howto-configure-server-parameters-using-cli.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-parameters-using-cli",
             "redirect_document_id": true
-        },    
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/howto-configure-server-parameters-using-portal.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-parameters-using-portal",
             "redirect_document_id": true
-        },    
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/howto-connect-to-data-factory-private-endpoint.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-connect-to-data-factory-private-endpoint",
             "redirect_document_id": true
-        },    
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/howto-optimize-performance-pgvector.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-optimize-performance-pgvector",
             "redirect_document_id": true
-        },    
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/howto-restore-different-subscription-resource-group-api.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-restore-different-subscription-resource-group-api",
             "redirect_document_id": true
-        },    
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concept-reserved-pricing.md",
             "redirect_url": "/azure/postgresql/flexible-server/concepts-reserved-pricing",
             "redirect_document_id": true
-        },    
+        },
         {
             "source_path_from_root": "/articles/postgresql/single-server/overview.md",
             "redirect_url": "/azure/postgresql/flexible-server/service-overview",
@@ -2080,7 +2080,7 @@
             "redirect_url": "/azure/postgresql/index",
             "redirect_document_id": false
         },
-        {   
+        {
             "source_path_from_root": "/articles/postgresql/flexible-server/generative-ai-azure-local-ai.md",
             "redirect_url": "/azure/postgresql/flexible-server/generative-ai-overview",
             "redirect_document_id": false
@@ -2090,22 +2090,122 @@
             "redirect_url": "/azure/postgresql/flexible-server/overview",
             "redirect_document_id": false
         },
-        {   
+        {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-use-pg-azure-storage.md",
             "redirect_url": "/azure/postgresql/flexible-server/concepts-storage-extension",
             "redirect_document_id": false
         },
-        {   
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-security.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-data-encryption.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-data-encryption",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-networking-ssl-tls.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-tls",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-create-users.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-manage-database-users",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-audit.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-audit",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-azure-ad-authentication.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-entra-concepts",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-compliance.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-compliance",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-firewall-rules.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-firewall-rules",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-managed-identities-system-assigned.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-configure-managed-identities-system-assigned",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-managed-identities-user-assigned.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-configure-managed-identities-user-assigned",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-entra-configure",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-connect-scram.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-connect-scram",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-connect-tls-ssl.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-connect-tls",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-connect-with-managed-identity.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-connect-with-managed-identity",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/.md",
+            "redirect_url": "/azure/postgresql/flexible-server/",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-data-encryption.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-configure-data-encryption",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-reset-admin-password.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-reset-admin-password",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-update-client-certificates-java.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-update-trusted-root-java",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-identity.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-managed-identity-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-confidential-computing.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-confidential-computing",
+            "redirect_document_id": true
+        },
+        {
             "source_path_from_root": "/articles/postgresql/migrate/migration-service/tutorial-migration-service-aws-offline.md",
             "redirect_url": "/azure/postgresql/migrate/migration-service/tutorial-migration-service-rds-offline",
             "redirect_document_id": false
         },
-        {   
+        {
             "source_path_from_root": "/articles/postgresql/migrate/migration-service/tutorial-migration-service-aws-online.md",
             "redirect_url": "/azure/postgresql/migrate/migration-service/tutorial-migration-service-rds-online",
             "redirect_document_id": false
         },
-        {   
+        {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-use-microsoft-fabric-data-factory-copy-activity.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-data-factory-copy-activity-fabric",
             "redirect_document_id": true
