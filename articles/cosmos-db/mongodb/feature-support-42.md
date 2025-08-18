@@ -6,8 +6,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: release-notes
-ms.date: 08/15/2025
-ms.custom: build-2023
+ms.date: 08/21/2025
 ---
 
 # Azure Cosmos DB for MongoDB (4.2 server version): Supported features and syntax

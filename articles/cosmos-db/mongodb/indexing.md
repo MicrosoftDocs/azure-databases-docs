@@ -1,14 +1,16 @@
 ---
 title: Manage indexing in Azure Cosmos DB for MongoDB
 description: This article presents an overview of Azure Cosmos DB indexing capabilities using Azure Cosmos DB for MongoDB
-ms.service: azure-cosmos-db
-ms.subservice: mongodb
-ms.devlang: javascript
-ms.topic: how-to
-ms.date: 08/15/2025
 author: gahl-levy
 ms.author: gahllevy
-ms.custom: cosmos-db-video, sfi-image-nochange
+ms.service: azure-cosmos-db
+ms.subservice: mongodb
+ms.topic: how-to
+ms.devlang: javascript
+ms.date: 08/21/2025
+ms.custom:
+  - cosmos-db-video
+  - sfi-image-nochange
 ---
 # Manage indexing in Azure Cosmos DB for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]

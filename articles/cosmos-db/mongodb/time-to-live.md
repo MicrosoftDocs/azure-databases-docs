@@ -5,11 +5,11 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
-ms.devlang: csharp
-# ms.devlang: csharp, java, javascript
 ms.topic: how-to
-ms.date: 08/15/2025
-ms.custom: devx-track-csharp
+ms.devlang: csharp
+ms.date: 08/21/2025
+ms.custom:
+  - devx-track-csharp
 ---
 # Expire data with Azure Cosmos DB for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]

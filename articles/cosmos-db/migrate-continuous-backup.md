@@ -5,9 +5,11 @@ author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.custom: build-2023, devx-track-azurecli, sfi-image-nochange
-ms.date: 08/15/2025
 ms.topic: how-to
+ms.date: 08/21/2025
+ms.custom:
+  - devx-track-azurecli
+  - sfi-image-nochange
 ---
 
 # Migrate an Azure Cosmos DB account from periodic to continuous backup mode

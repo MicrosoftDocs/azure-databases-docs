@@ -6,10 +6,10 @@ metadata:
   description: Learn how to connect a MongoDB app to Azure Cosmos DB by getting the connection string from Azure portal.
   author: gahl-levy
   ms.author: gahllevy
-  ms.date: 08/15/2025
   ms.service: azure-cosmos-db
   ms.subservice: mongodb
   ms.topic: how-to
+  ms.date: 08/21/2025
   ms.custom:
     - ge-structured-content-pilot
 title: |

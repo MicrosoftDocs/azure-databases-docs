@@ -2,11 +2,11 @@
 title: Troubleshoot Azure Cosmos DB unauthorized exceptions
 description: Learn how to diagnose and fix unauthorized exceptions.
 author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.date: 08/15/2025
-ms.author: mjbrown
 ms.topic: troubleshooting
+ms.date: 08/21/2025
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB unauthorized exceptions
