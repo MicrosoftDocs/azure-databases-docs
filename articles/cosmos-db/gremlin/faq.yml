@@ -6,7 +6,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: faq
-  ms.date: 07/24/2025
+  ms.date: 08/18/2025
 title: Frequently asked questions about Azure Cosmos DB for Apache Gremlin
 sections:
   - name: Gremlin queries
@@ -28,7 +28,7 @@ sections:
       - question: |
           What's the maximum scale that a graph database can have in Azure Cosmos DB for Apache Gremlin?
         answer: |
-          Azure Cosmos DB uses horizontal partitioning](../partitioning-overview.md) to automatically scale storage and throughput as needed. The number of partitions in a container determines its maximum throughput and storage capacity. For optimal performance at scale, follow the specific guidelines for API for Gremlin containers. To learn more about partitioning and best practices, see the [partitioning in Azure Cosmos DB article.
+          Azure Cosmos DB uses horizontal partitioning to automatically scale storage and throughput as needed. The number of partitions in a container determines its maximum throughput and storage capacity. For optimal performance at scale, follow the specific guidelines for API for Gremlin containers. To learn more about partitioning and best practices, see the [partitioning in Azure Cosmos DB article.
       - question: |
           For C#/.NET development, should I use the Microsoft.Azure.Graphs package or Gremlin.NET?
         answer: |
