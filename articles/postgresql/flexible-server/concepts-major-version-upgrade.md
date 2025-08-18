@@ -4,7 +4,7 @@ description: Learn how to use Azure Database for PostgreSQL flexible server to d
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 7/15/2025
+ms.date: 8/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: upgrade-and-migration-article
@@ -58,7 +58,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 
 In-place major version upgrades do not support all PostgreSQL extensions. The upgrade will fail during the precheck if unsupported extensions are found.
 - The following extensions are not supported across any PostgreSQL versions: `timescaledb`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`
-- The following extensions are not supported when upgrading to PostgreSQL 17: `pgrouting`, `age`, `azure_ai`, `hll`, `pg_diskann`
+- The following extensions are not supported when upgrading to PostgreSQL 17: `age`, `azure_ai`, `hll`, `pg_diskann`
 - Extensions such as `pgrouting`, `pg_repack`, and `hypopg` are not supported for in-place upgrades and should be dropped before the upgrade and recreated after. These extensions are non-persistent and safe to reconfigure post-upgrade.
 
 These extensions must be removed from the **azure.extensions** server parameter prior to upgrade. If present, the upgrade will be blocked.
