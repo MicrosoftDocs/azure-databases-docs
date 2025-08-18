@@ -453,7 +453,7 @@ Sample output:
 }
 ```
 
-If `reIndex` will improve query performance, **requiresReIndex** will be true. If `reIndex` won't improve query performance, this property will be omitted.
+If `reIndex` improves query performance, **requiresReIndex** will be true. If `reIndex` won't improve query performance, this property is omitted.
 
 ## Migrate collections with indexes
 
