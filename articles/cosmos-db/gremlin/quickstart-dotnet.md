@@ -280,8 +280,3 @@ dotnet run
 ## Clean up resources
 
 [!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-cleanup.md)]
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Overview of Azure Cosmos DB for Apache Gremlin](overview.md)
