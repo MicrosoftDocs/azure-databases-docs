@@ -65,7 +65,3 @@ To help your organization adopt the solution:
 - Provide training on using the user portal for search and reporting.
 - Share documentation on how to interpret graph-based traceability data.
 - Offer support channels for troubleshooting and feedback.
-
-## Related content
-
-- [Infosys traceability solution overview](https://azuremarketplace.microsoft.com/marketplace/apps/infosysltd.infosys-traceability-knowledge-graph?tab=Overview).
