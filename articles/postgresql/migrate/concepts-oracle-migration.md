@@ -9,6 +9,9 @@ ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
+ms.collection:
+  - migration
+  - onprem-to-azure
 ---
 
 # Migrating Oracle To Azure Database for PostgreSQL
