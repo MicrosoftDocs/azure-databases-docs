@@ -56,8 +56,3 @@ If a graph has document expiration enabled and documents have `ttl` property set
 
 > [!NOTE]
 > You can set time to Live (TTL) on the container to `-1` or to **On (no default)** from the Azure portal. Then, the TTL is infinite for any item unless the item has a TTL value explicitly set.
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Time to Live (TTL) in Azure Cosmos DB](../time-to-live.md)
