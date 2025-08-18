@@ -10,7 +10,6 @@ ms.author: mansha
 ---
 
 # Graph data modeling with Azure Cosmos DB for Apache Gremlin
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
 
 This article provides recommendations for the use of graph data models. These best practices are vital for ensuring the scalability and performance of a graph database system as the data evolves. An efficient data model is especially important for large-scale graphs.
 
@@ -105,9 +104,3 @@ Using descriptive relationship labels can improve the efficiency of edge resolut
 :::image type="content" source="./media/modeling/graph-modeling-3.png" alt-text="Diagram of relationship labeling examples.":::
 
 The more specific the label that the traverser uses to filter the edges, the better. This decision can have a significant effect on query cost as well. You can evaluate the query cost at any time by using the `executionProfile` step.
-
-## Next steps
-
-* Check out the list of [supported Gremlin steps](support.md).
-* Learn about [graph database partitioning](partitioning.md) to deal with large-scale graphs.
-* Third-party graph [design data model](modeling-tools.md).
