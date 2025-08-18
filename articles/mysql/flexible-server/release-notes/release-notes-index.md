@@ -23,19 +23,19 @@ Welcome to the centralized index of release notes for **Azure Database for MySQL
 ## Release Notes by Year
 
 ### 2025
-- # [July-2025](./release-notes/july-2025.md)
-- # [May-2025](./release-notes/may-2025.md)
-- # [March-2025](./release-notes/march-2025.md)
-- # [February-2025](./release-notes/february-2025.md)
+- #### [July-2025](./release-notes/july-2025.md)
+- #### [May-2025](./release-notes/may-2025.md)
+- #### [March-2025](./release-notes/march-2025.md)
+- #### [February-2025](./release-notes/february-2025.md)
 
 ### 2024
-- # [October-2024](./release-notes/october-2024.md)
-- # [September-2024](./release-notes/september-2024.md)
-- # [August-2024](./release-notes/august-2024.md)
-- # [June-2024](./release-notes/june-2024.md)
-- # [May-2024](./release-notes/may-2024.md)
-- # [April-2024](./release-notes/april-2024.md)
-- # [January-2024](./release-notes/january-2024.md)
+- #### [October-2024](./release-notes/october-2024.md)
+- #### [September-2024](./release-notes/september-2024.md)
+- #### [August-2024](./release-notes/august-2024.md)
+- #### [June-2024](./release-notes/june-2024.md)
+- #### [May-2024](./release-notes/may-2024.md)
+- #### [April-2024](./release-notes/april-2024.md)
+- #### [January-2024](./release-notes/january-2024.md)
 
 ---
 
