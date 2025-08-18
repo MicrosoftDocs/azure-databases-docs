@@ -6,7 +6,7 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
-ms.topic: concept
+ms.topic: product-comparison
 ms.date: 08/18/2025
 ---
 
