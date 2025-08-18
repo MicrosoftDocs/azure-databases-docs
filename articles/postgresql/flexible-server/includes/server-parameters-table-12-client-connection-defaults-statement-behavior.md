@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 08/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -189,6 +189,23 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [lock_timeout](https://www.postgresql.org/docs/12/runtime-config-client.html#GUC-LOCK-TIMEOUT) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### restrict_nonsystem_relation_kind
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Statement Behavior |
+| Description | Prohibits access to non-system relations of specified kinds. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [restrict_nonsystem_relation_kind](https://www.postgresql.org/docs/16/runtime-config-client.html#GUC-RESTRICT-NONSYSTEM-RELATION-KIND) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

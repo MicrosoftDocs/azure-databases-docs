@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 08/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -70,6 +70,40 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [debug_discard_caches](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-DEBUG-DISCARD-CACHES) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### debug_io_direct
+
+| Attribute | Value |
+| --- | --- |
+| Category | Developer Options |
+| Description | Use direct I/O for file access. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [debug_io_direct](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-DEBUG-IO-DIRECT) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### debug_logical_replication_streaming
+
+| Attribute | Value |
+| --- | --- |
+| Category | Developer Options |
+| Description | Forces immediate streaming or serialization of changes in large transactions. On the publisher, it allows streaming or serializing each change in logical decoding. On the subscriber, it allows serialization of all changes to files and notifies the parallel apply workers to read and apply them at the end of the transaction. |
+| Data type | set |
+| Default value | `buffered` |
+| Allowed values | `buffered` |
+| Parameter type | read-only |
+| Documentation | [debug_logical_replication_streaming](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-DEBUG-LOGICAL-REPLICATION-STREAMING) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -274,6 +308,40 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [remove_temp_files_after_crash](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-REMOVE-TEMP-FILES-AFTER-CRASH) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### send_abort_for_crash
+
+| Attribute | Value |
+| --- | --- |
+| Category | Developer Options |
+| Description | Send SIGABRT not SIGQUIT to child processes after backend crash. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [send_abort_for_crash](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-SEND-ABORT-FOR-CRASH) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### send_abort_for_kill
+
+| Attribute | Value |
+| --- | --- |
+| Category | Developer Options |
+| Description | Send SIGABRT not SIGKILL to stuck child processes. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [send_abort_for_kill](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-SEND-ABORT-FOR-KILL) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

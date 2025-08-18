@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 08/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -183,7 +183,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies if hostname is allowed in the username for Azure Database for PostgreSQL flexible server. |
+| Description | Specifies if hostname is allowed in the username for Azure Database for PostgreSQL Flexible Server. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |

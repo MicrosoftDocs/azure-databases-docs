@@ -1,10 +1,10 @@
 ---
 title: Resource Usage / Cost-Based Vacuum Delay server parameters
 description: Resource Usage / Cost-Based Vacuum Delay server parameters for Azure Database for PostgreSQL flexible server.
-author: jasomaning
-ms.author: jasomaning
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 08/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article

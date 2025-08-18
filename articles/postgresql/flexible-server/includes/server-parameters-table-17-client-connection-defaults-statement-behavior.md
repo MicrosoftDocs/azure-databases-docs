@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 08/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -53,6 +53,23 @@ ms.custom: automatically generated
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,log,notice,warning,error` |
 | Parameter type | dynamic |
 | Documentation | [client_min_messages](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-CLIENT-MIN-MESSAGES) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### createrole_self_grant
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Statement Behavior |
+| Description | Sets whether a CREATEROLE user automatically grants the role to themselves, and with which options. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [createrole_self_grant](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-CREATEROLE-SELF-GRANT) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -240,6 +257,23 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [lock_timeout](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-LOCK-TIMEOUT) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### restrict_nonsystem_relation_kind
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Statement Behavior |
+| Description | Prohibits access to non-system relations of specified kinds. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [restrict_nonsystem_relation_kind](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-RESTRICT-NONSYSTEM-RELATION-KIND) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 08/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -104,6 +104,23 @@ ms.custom: automatically generated
 | Allowed values | `0-262143` |
 | Parameter type | static |
 | Documentation | [max_worker_processes](https://www.postgresql.org/docs/12/runtime-config-resource.html#GUC-MAX-WORKER-PROCESSES) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### old_snapshot_threshold
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Asynchronous Behavior |
+| Description | Time before a snapshot is too old to read pages changed after the snapshot was taken. |
+| Data type | integer |
+| Default value | `-1` |
+| Allowed values | `-1-86400` |
+| Parameter type | static |
+| Documentation | [old_snapshot_threshold](https://www.postgresql.org/docs/12/runtime-config-resource.html#GUC-OLD-SNAPSHOT-THRESHOLD) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

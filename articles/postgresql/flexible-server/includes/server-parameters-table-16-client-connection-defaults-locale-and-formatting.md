@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 08/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -70,6 +70,23 @@ ms.custom: automatically generated
 | Allowed values | `-15-3` |
 | Parameter type | dynamic |
 | Documentation | [extra_float_digits](https://www.postgresql.org/docs/16/runtime-config-client.html#GUC-EXTRA-FLOAT-DIGITS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### icu_validation_level
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Locale and Formatting |
+| Description | Log level for reporting invalid ICU locale strings. |
+| Data type | enumeration |
+| Default value | `warning` |
+| Allowed values | `warning` |
+| Parameter type | read-only |
+| Documentation | [icu_validation_level](https://www.postgresql.org/docs/16/runtime-config-client.html#GUC-ICU-VALIDATION-LEVEL) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 08/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -291,6 +291,23 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_partitionwise_join](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PARTITIONWISE-JOIN) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### enable_presorted_aggregate
+
+| Attribute | Value |
+| --- | --- |
+| Category | Query Tuning / Planner Method Configuration |
+| Description | Enables the planner's ability to produce plans that provide presorted input for ORDER BY / DISTINCT aggregate functions. Allows the query planner to build plans that provide presorted input for aggregate functions with an ORDER BY / DISTINCT clause. When disabled, implicit sorts are always performed during execution. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [enable_presorted_aggregate](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PRESORTED-AGGREGATE) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 08/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -36,6 +36,23 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [db_user_namespace](https://www.postgresql.org/docs/16/runtime-config-connection.html#GUC-DB-USER-NAMESPACE) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### gss_accept_delegation
+
+| Attribute | Value |
+| --- | --- |
+| Category | Connections and Authentication / Authentication |
+| Description | Sets whether GSSAPI delegation should be accepted from the client. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [gss_accept_delegation](https://www.postgresql.org/docs/16/runtime-config-connection.html#GUC-GSS-ACCEPT-DELEGATION) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -87,6 +104,23 @@ ms.custom: automatically generated
 | Allowed values | `md5,scram-sha-256` |
 | Parameter type | dynamic |
 | Documentation | [password_encryption](https://www.postgresql.org/docs/16/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### scram_iterations
+
+| Attribute | Value |
+| --- | --- |
+| Category | Connections and Authentication / Authentication |
+| Description | Sets the iteration count for SCRAM secret generation. |
+| Data type | integer |
+| Default value | `4096` |
+| Allowed values | `4096` |
+| Parameter type | read-only |
+| Documentation | [scram_iterations](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-SCRAM-ITERATIONS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
