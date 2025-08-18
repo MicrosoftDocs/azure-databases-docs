@@ -99,8 +99,3 @@ sections:
             1. Get the request charge from the results using the `statusAttributes` method and the `x-ms-request-charge` key: `Map<String, Object> attributes = results.statusAttributes(); Double requestCharge = (Double) attributes.get("x-ms-request-charge");`
             
           The request charge is available under the `x-ms-request-charge` key in the response headers returned by the API for Gremlin.
-additionalContent: |
-  ## Related content
-
-  - [Gremlin TinkerPop wire protocol support in Azure Cosmos DB for Apache Gremlin](support.md)
-  - [Get started with Azure Cosmos DB for Apache Gremlin](quickstart-python.md)
