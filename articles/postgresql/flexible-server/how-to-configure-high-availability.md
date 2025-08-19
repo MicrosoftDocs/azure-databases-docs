@@ -365,13 +365,13 @@ az postgres flexible-server restart \
   --failover Planned
 ```
 
-If you try to fail over an Azure Database for PostgreSQL flexible server that doesn't have high availability enabled, you get this error:
+If you try to initiate the planned failover of an Azure Database for PostgreSQL flexible server that doesn't have high availability enabled, you get this error:
 
 ```output
 Failing over can only be triggered for zone redundant or same zone servers.
 ```
 
-If you try to fail over an Azure Database for PostgreSQL flexible server that has high availability enabled but isn't ready to initiate the failover operation, you get this error:
+If you try to initiate the planned failover of an Azure Database for PostgreSQL flexible server that has high availability enabled but isn't ready for the failover operation, you get this error:
 
 ```output
 Code: OperationFailed
