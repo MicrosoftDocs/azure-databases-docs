@@ -39,6 +39,9 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 - Public Preview of dedicated SLB based HA. [Learn more](../how-to-configure-high-availability.md)
 - Support for in place major version upgrade from 8.0 to 8.4. [Learn more](../how-to-upgrade.md)
 
+> [!NOTE]  
+> Existing servers must be upgraded to the latest version through the next scheduled maintenance to gain the capability to in place upgrade from 8.0 to 8.4.
+
 ## Improvements
 
 - Data migration service can now detect data corruption during external data migration, with both rest API and mysql import CLI support
