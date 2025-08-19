@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot the Azure Storage extension in Azure Database for PostgreSQL flexible server
 description: Learn how to troubleshoot the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data.
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 06/26/2025
 ms.service: azure-database-postgresql
@@ -37,13 +37,13 @@ When the instance of flexible server can't reach the target storage account. Tha
 
 When the System Assigned Managed Identity isn't enabled in the instance of flexible server.
 
-### ERROR: azure_storage: storage credentials invalid format
-
-When the System Assigned Managed Identity is enabled on the instance of flexible server, but the server hasn't been restarted after enabling it.
-
 ### ERROR:  azure_storage: current user <user_or_role> isn't allowed to use storage account <account_name>
 
 When executing any of the functions that interact with Azure Storage (`azure_storage.blob_list`, `azure_storage.blob_get` or `azure_storage.blob_put`) with a user or role that isn't member of `azure_storage_admin` and isn't granted permissions, using `azure_storage.account_user_add`, to use the referred storage account.
+
+### ERROR:  azure_storage: Query is not supported while copying data to blob storage
+
+When executing a COPY TO statement for which the source is a query. Azure Storage extension doesn't support this syntax. It only supports the syntax on which the source of the COPY TO is a relation. As a workaround, you can implement a view with the query as its definition, and rewrite the COPY TO statement to be sourced on the view.
 
 ## Related content
 
