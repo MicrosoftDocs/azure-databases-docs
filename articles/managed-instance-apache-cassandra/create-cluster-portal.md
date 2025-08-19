@@ -195,7 +195,7 @@ You can use the Azure portal or [CLI commands](manage-resources-cli.md#update-ya
 
    Only overridden Cassandra configuration values are shown in the Azure portal.
 
-   Ensure that the Cassandra YAML settings that you provide are appropriate for the version of Cassandra that you deployed. For more information, see [Cassandra v3.11](https://github.com/apache/cassandra/blob/cassandra-3.11/conf/cassandra.yaml) for Cassandra v3.11 settings and [Cassandra v4.0](https://github.com/apache/cassandra/blob/cassandra-4.0/conf/cassandra.yaml) for v4.0. You can't update the following YAML settings:
+   Ensure that the Cassandra YAML settings that you provide are appropriate for the version of Cassandra that you deployed. For more information, see [Cassandra v5.0] (https://github.com/apache/cassandra/blob/cassandra-5.0/conf/cassandra.yaml) and [Cassandra v4.0](https://github.com/apache/cassandra/blob/cassandra-4.0/conf/cassandra.yaml) for v4.0 and [Cassandra v3.11](https://github.com/apache/cassandra/blob/cassandra-3.11/conf/cassandra.yaml) for Cassandra v3.11 settings. You can't update the following YAML settings:
 
    - `cluster_name`
    - `seed_provider`
@@ -237,7 +237,7 @@ You can conduct in-place major version upgrades directly from the portal or thro
 
 1. Select the Cassandra version from the dropdown list.
 
-   Don't skip versions. We recommend that you update from only one version to another. For example, update 3.11 to 4.0 or 4.0 to 4.1.
+   Don't skip versions. We recommend that you update from only one version to another. For example, update 3.11 to 4.0 or 4.0 to 4.1 or 4.1 to 5.0.
 
    :::image type="content" source="media/create-cluster-portal/cluster-version.png" border="true" alt-text="Screenshot that shows selecting the Cassandra version." lightbox="media/create-cluster-portal/cluster-version.png":::
 
