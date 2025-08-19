@@ -36,7 +36,7 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 ## Features
 
 - General availability of Azure Database for MySQL 8.4. [Learn more](../../concepts-version-policy.md#supported-mysql-versions)
-- Public Preview of dedicated SLB based HA. [Learn more](../how-to-configure-ha.md)
+- Public Preview of dedicated SLB based HA. [Learn more](../how-to-configure-high-availability.md)
 - Support for in place major version upgrade from 8.0 to 8.4. [Learn more](../how-to-upgrade.md)
 
 ## Improvements
