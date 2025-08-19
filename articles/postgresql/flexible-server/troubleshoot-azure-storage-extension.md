@@ -23,7 +23,7 @@ Following is the list of errors that the Azure Storage extension can return, and
 
 When executing any of the functions that interact with Azure Storage (`azure_storage.blob_list`, `azure_storage.blob_get` or `azure_storage.blob_put`) and the System Assigned Managed Identity isn't granted the adequate data plane roles or permissions (typically a minimum of **Storage Blob Data Contributor** for azure_storage.blob_put, and a minimum of **Storage Blob Data Reader** for the other two functions).
 
-It may also be the case that you have already granted the minimum required permissions but they aren't yet in effect. It can take a few minutes until those permissions get propagated.
+It may be the case that you already granted the minimum required permissions, but they aren't yet in effect. It can take a few minutes until those permissions propagate.
 
 ### ERROR: azure_storage: missing storage credentials
 
@@ -31,7 +31,7 @@ When executing any of the functions that interact with Azure Storage (`azure_sto
 
 ### ERROR: azure_storage: internal error while connecting
 
-When the instance of flexible server can't reach the target storage account. That could happen in the following cases:
+When the instance of flexible server can't reach the target storage account. This situation can happen in the following cases:
 - The storage account doesn't exist.
 - Networking configuration doesn't allow traffic originated from the instance of flexible server to reach the storage account. For example, when the instance of flexible server is deployed with public access networking, and the storage account is only accessible via private endpoints.
 
@@ -43,7 +43,7 @@ When executing any of the functions that interact with Azure Storage (`azure_sto
 
 ### ERROR:  azure_storage: Query is not supported while copying data to blob storage
 
-When executing a COPY TO statement for which the source is a query. Azure Storage extension doesn't support this syntax. It only supports the syntax on which the source of the COPY TO is a relation. As a workaround, you can implement a view with the query as its definition, and rewrite the COPY TO statement to be sourced on the view.
+When executing a COPY TO statement for which the source is a query. Azure Storage extension doesn't support this syntax. It only supports the syntax on which the source of the COPY TO be a relation. As a workaround, you can implement a view with the query as its definition, and rewrite the COPY TO statement to be sourced on the view.
 
 ## Related content
 
