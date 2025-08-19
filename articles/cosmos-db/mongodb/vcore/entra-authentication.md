@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 06/24/2025
+ms.date: 08/18/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ms.custom:
