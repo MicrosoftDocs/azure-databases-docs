@@ -35,13 +35,17 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 
 ## Features
 
-- General availability of Azure Database for MySQL 8.4. [Learn more](.../concepts-version-policy.md#supported-mysql-versions)
+- General availability of Azure Database for MySQL 8.4. [Learn more](../../concepts-version-policy.md#supported-mysql-versions)
 - Support for in place major version upgrade from 8.0 to 8.4. [Learn more](../how-to-upgrade.md)
-
 
 ## Improvements
 
-
+- General availability of dedicated SLB HA. [Learn more](../how-to-configure-ha.md)
+- Data migration service can now detect data corruption during external data migration, with both rest API and mysql import CLI support
+- Improve capacity related server creation error messages, make them more descriptive and to include the link to the customer-facing troubleshooting guide. 
+- Improve the error message when customer try to remove a non-existent private endpoint
 
 ## Known Issues Fix
 
+- Fix the issue that in certain scenarios, VNet server enabling would fail.
+- Fix the issue that in certain scenarios, VNet server creation or point in time recovery gets stuck until a timeout or customer cancel it
