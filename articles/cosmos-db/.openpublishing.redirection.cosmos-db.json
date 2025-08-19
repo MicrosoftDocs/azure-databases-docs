@@ -6779,6 +6779,11 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$objectToArray.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/object-expression/$objectToArray",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$changestreams.md",
+      "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$changestream.md",
+      "redirect_document_id": false
     }
   ]
 }
