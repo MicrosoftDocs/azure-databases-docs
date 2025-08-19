@@ -26,9 +26,9 @@ Azure Database for MySQL currently supports the following major and minor versio
 | Version | Current minor version | Release status |
 | :--- | :--- | :--- |
 | MySQL Version 5.7 | [5.7.44](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-44.html) | GA |
-| MySQL Version 8.0 | [8.0.41](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-41.html) | GA |
-| MySQL Version 8.4 | [8.4.4](https://dev.mysql.com/doc/relnotes/mysql/8.4/en/news-8-4-4.html) | GA |
-| MySQL Version 9.2 | [9.2.0](https://dev.mysql.com/doc/relnotes/mysql/9.1/en/news-9-2-0.html) | Public Preview |
+| MySQL Version 8.0 | [8.0.42](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-42.html) | GA |
+| MySQL Version 8.4 | [8.4.5](https://dev.mysql.com/doc/relnotes/mysql/8.4/en/news-8-4-5.html) | GA |
+| MySQL Version 9.3 | [9.3.0](https://dev.mysql.com/doc/relnotes/mysql/9.1/en/news-9-3-0.html) | Public Preview |
 
 Read the version support policy for retired versions in [version support policy documentation.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
 
