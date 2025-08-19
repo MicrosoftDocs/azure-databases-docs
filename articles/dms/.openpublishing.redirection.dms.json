@@ -174,6 +174,11 @@
             "source_path_from_root": "/articles/dms/tutorial-mysql-azure-single-to-flex-online-portal.md",
             "redirect_url": "/azure/dms/tutorial-mysql-azure-external-to-flex-online-portal",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$changestreams.md",
+            "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$changestream",
+scm-history-item:c%3A%5CWork%5CDocsRepo%5CPR%20Repos%5Cazure-databases-docs-pr?%7B%22repositoryId%22%3A%22scm0%22%2C%22historyItemId%22%3A%229fb319b397cd2c81ded00b546e27a4e8e14cdca7%22%2C%22historyItemParentId%22%3A%22973059a0efbcd692c068ff5085c3257732d7e7e8%22%2C%22historyItemDisplayId%22%3A%229fb319b%22%7D            "redirect_document_id": false
         }
     ]
 }

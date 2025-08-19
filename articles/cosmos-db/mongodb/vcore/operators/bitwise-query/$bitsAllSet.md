@@ -29,7 +29,7 @@ The `$bitsAllSet` operator is used to match documents where all the specified bi
 | **`field`** | The field in the document on which the bitwise operation is to be performed.|
 | **`<bitmask>`** | A bitmask indicating which bits must be set in the field's value.|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -229,7 +229,7 @@ The `storeFeatures` field is a bitmask integer representing various store capabi
 | 6   | 64    | Restrooms                |
 | 7   | 128   | Home Delivery            |
 
-
+### Example 1: Find stores that have parking and restrooms
 
 Find stores that **have parking AND restrooms** (bits 1 and 6)
 

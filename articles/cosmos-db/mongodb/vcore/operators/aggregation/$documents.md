@@ -75,7 +75,7 @@ db.aggregate([
       "location.lat": 1,
       "location.lon": 1,
       "sales.fullSales": 1,
-      tags: "$tag"  // renames "tag" to "tags"
+      tags: "$tag" 
     }
   }
 ]);

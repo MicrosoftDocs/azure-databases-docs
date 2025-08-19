@@ -28,7 +28,7 @@ This operator is used to match documents where any of the bit positions specifie
 | **`field`** | The field in the document to be queried.|
 | **`<bitmask>`** |A bitmask where each bit position represents a position to check if it's clear (0).|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -227,6 +227,8 @@ The `storeFeatures` field is a bitmask integer representing various store capabi
 | 5   | 32    | Free Wi-Fi               |
 | 6   | 64    | Restrooms                |
 | 7   | 128   | Home Delivery            |
+
+### Example 1: Find stores that don’t have Wi-Fi or in-store pickup
 
 Find stores that don’t have either Wi-Fi OR in-store pickup (bits 0 and 5)
 

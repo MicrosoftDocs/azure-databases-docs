@@ -28,10 +28,9 @@ The `$bitsAllClear` operator is used to match documents where all the bit positi
 | **`field`** | The field in the document on which the bitwise operation is to be performed.|
 | **`<bitmask>`** | A bitmask where each bit position specifies the corresponding bit position in the field's value that must be clear (0).|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
-
 
 ```json
 {
@@ -228,6 +227,8 @@ The `storeFeatures` field is a bitmask integer representing various store capabi
 | 5   | 32    | Free Wi-Fi               |
 | 6   | 64    | Restrooms                |
 | 7   | 128   | Home Delivery            |
+
+### Example 1: Find stores that are not open 24 hours and do not allow pets
 
 Find stores that are NOT open 24 hours AND do NOT allow pets (bits 3 and 4)
 

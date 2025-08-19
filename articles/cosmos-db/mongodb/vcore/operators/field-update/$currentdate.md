@@ -35,7 +35,7 @@ The syntax for the `$currentDate` operator is as follows:
 | **`field`** | The name of the field to set to the current date. |
 | **`typeSpecification`** | Optional. Specifies the type of the date value. Can be `true` (for Date type) or `{ $type: "timestamp" }` for timestamp type. Default is `true` (Date). |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -131,7 +131,6 @@ This will add a `lastUpdated` field with the current date as a Date object and p
 
 ```
 
-
 ### Example 2: Setting current timestamp
 
 Add both a date field and a timestamp field to track modifications.
@@ -159,7 +158,6 @@ This query will return  the following document
   upsertedCount: 0
 }
 ```
-
 
 ### Example 3: Updating nested fields
 

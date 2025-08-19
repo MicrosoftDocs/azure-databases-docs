@@ -94,7 +94,9 @@ Consider this sample document from the stores collection.
 
 ```
 
-### Example 1: Removing the last tag from the `tag` array
+### Example 1: Removing the last element from an array
+
+To remove the last element from the tag array.
 
 ```shell
 db.stores.update(
@@ -116,7 +118,9 @@ This query would return the following document. The last element from the array 
 
 ```
 
-### Example 2: Removing the last discount from the `promotionEvents` array
+### Example 2: Removing the first element from an array
+
+To remove the first element from the promotionEvents array.
 
 ```shell
 db.stores.update(

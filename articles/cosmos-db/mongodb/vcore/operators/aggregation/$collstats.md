@@ -49,6 +49,7 @@ db.stores.aggregate([
 ])
 ```
 Sample output
+
 ```json
 [ { ns: 'StoreData.stores', count: 41505 } ]
 ```

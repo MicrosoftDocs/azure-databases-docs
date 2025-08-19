@@ -230,6 +230,7 @@ The `storeFeatures` field is a bitmask integer representing various store capabi
 
 Find stores that offer either home delivery OR free Wi-Fi (bits 5 and 7)
 
+### Example 1: Find stores that have in-store pickup or drive-thru
 
 ```javascript
 db.stores.find({

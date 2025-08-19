@@ -28,7 +28,7 @@ The syntax for the $sortByCount stage is:
 | --- | --- |
 | **`expression`** | This is the field or computed expression on which to group and count the documents. |
 
-## Example
+## Examples
 Consider this sample document from the stores collection.
 
 ```json
@@ -140,6 +140,9 @@ Consider this sample document from the stores collection.
     ]
 }
 ```
+
+### Example 1: Group promotion events by name and count occurrences in descending order
+
 To group by the eventName field and count the number of occurrences of each event name, sorting the results in descending order of the count
 
 ```javascript

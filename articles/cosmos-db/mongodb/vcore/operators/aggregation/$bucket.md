@@ -157,7 +157,7 @@ Consider this sample document from the stores collection.
 The following example categorizes the `fullSales` field into three buckets: `[0, 1000)`, `[1000, 5000)`, and `[5000, 10000)`. Documents that do not fall into these ranges are grouped into a default bucket.
 
 ```javascript
-db.sales.aggregate([
+db.stores.aggregate([
   {
     $bucket: {
       groupBy: "$sales.fullSales",
@@ -172,27 +172,13 @@ db.sales.aggregate([
 ])
 ```
 
-### Example 2: Categorizing promotional event discounts
+Sample Output 
 
-The following example groups the discount percentages in the `promotionEvents.discounts` array into buckets: `[0, 10)`, `[10, 20)`, and `[20, 30)`.
-
-```javascript
-db.promotionEvents.aggregate([
-  {
-    $unwind: "$discounts"
-  },
-  {
-    $bucket: {
-      groupBy: "$discounts.discountPercentage",
-      boundaries: [0, 10, 20, 30],
-      default: "Other",
-      output: {
-        count: { $sum: 1 },
-        averageDiscount: { $avg: "$discounts.discountPercentage" }
-      }
-    }
-  }
-])
+```json
+[
+  { _id: 1000, count: 1, totalSales: 3700 },
+  { _id: 'Other', count: 41504, totalSales: 0 }
+]
 ```
 
 ## Related content

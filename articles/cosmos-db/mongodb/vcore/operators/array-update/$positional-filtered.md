@@ -120,7 +120,9 @@ Consider this sample document from the stores collection.
   }
 ```
 
-To update the discount percentage for the "Desk Lamps" category in the "Blowout Bonanza" promotion event.
+### Example 1: Update the discount percentage for the chosen category in the specified promotion event. 
+
+Update the discount percentage for the 'Desk Lamps' category by modifying the specific elements in the promotion event array where the event name is 'Blowout Bonanza'.
 
 ```javascript
 db.stores.updateOne(
