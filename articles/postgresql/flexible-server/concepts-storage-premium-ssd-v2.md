@@ -1,5 +1,5 @@
 ---
-title: Storage options
+title: Premium SSD v2
 description: This article describes about Premium ssd v2 storage option in Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,12 +11,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Storage options in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-You can create an Azure Database for PostgreSQL flexible server instance using [Azure managed disks](/azure/virtual-machines/managed-disks-overview), which are block-level storage volumes managed by Azure and used with Azure Virtual Machines. Managed disks are like a physical disk in an on-premises server, but they're virtualized. With managed disks, all you have to do is specify the disk size, the disk type, and provision the disk. Once you provision the disk, Azure handles the rest. Azure Database for PostgreSQL flexible server supports premium solid-state drives (Premium SSD) and premium solid-state drives version 2 (Premium SSD v2), and the pricing is calculated based on the compute, memory, and storage tier you provision.
-
+# Premium SSD v2 storage option in Azure Database for PostgreSQL flexible server
 
 ## Premium SSD v2 (preview)
 
