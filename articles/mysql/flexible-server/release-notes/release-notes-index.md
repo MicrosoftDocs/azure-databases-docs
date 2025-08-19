@@ -23,6 +23,7 @@ Welcome to the centralized index of release notes for **Azure Database for MySQL
 ## Release Notes by Year
 
 ### 2025
+- [September-2025](./september-2025.md)
 - [July-2025](./july-2025.md)
 - [May-2025](./may-2025.md)
 - [March-2025](./march-2025.md)
