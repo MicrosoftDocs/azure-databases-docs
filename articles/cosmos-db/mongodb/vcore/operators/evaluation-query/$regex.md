@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/25/2025
+  ms.date: 08/19/2025
 ---
 
 # $regex
@@ -164,8 +164,8 @@ The example finds all the stores containing "Consultants" in their name (case-in
 
 ```javascript
 db.stores.find(
-    { "name": { $regex: "Consultants", $options: "i" } },
-    { "_id": 1, "name": 1, "storeOpeningDate": 1 }
+  { name: { $regex: "Consultants", $options: "i" } },
+  { _id: 1, name: 1, storeOpeningDate: 1 }
 ).limit(3)
 ```
 
@@ -196,9 +196,9 @@ The example finds stores selling products with category name that starts with a 
 ```javascript
 db.stores.find(
   {
-    "sales.salesByCategory.categoryName": { $regex: "^[AEIOUaeiou]", $options: "" }
+    "sales.salesByCategory.categoryName": { $regex: "^[AEIOUaeiou]" }
   },
-  { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1}
+  { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }
 ).limit(2)
 ```
 
@@ -232,8 +232,8 @@ The example finds stores with names containing a pipe character (|) separator.
 
 ```javascript
 db.stores.find(
-{ "name": { $regex: "\\|" }},
-{ "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1}).limit(2)
+{ name: { $regex: "\\|" }},
+{ _id: 1, name: 1, "sales.salesByCategory.categoryName": 1}).limit(2)
 ```
 
 The query searches for stores with names containing the pipe character, which appears to be a naming convention in the dataset.
