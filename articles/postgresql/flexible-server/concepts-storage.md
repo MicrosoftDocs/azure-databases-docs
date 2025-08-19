@@ -11,7 +11,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Storage options in Azure Database for PostgreSQL flexible server
+# Storage in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
