@@ -8,6 +8,9 @@ ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: best-practice
+ms.collection:
+  - migration
+  - onprem-to-azure
 ---
 
 # Best Practices For Migrations From Oracle To Azure Database for PostgreSQL
