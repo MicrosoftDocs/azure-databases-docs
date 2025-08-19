@@ -1,5 +1,5 @@
 ---
-title: Storage options
+title: Premium SSD
 description: This article describes the Premium ssd storage option in Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -12,7 +12,7 @@ ms.topic: concept-article
 ---
 
 
-## Premium SSD
+# Premium SSD
 
 Azure Premium SSD deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSD units are suitable for mission-critical production applications.
 
