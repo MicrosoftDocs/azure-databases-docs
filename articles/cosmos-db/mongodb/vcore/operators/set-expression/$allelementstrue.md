@@ -28,7 +28,7 @@ The `$allElementsTrue` operator evaluates an array as a set. It returns a value 
 | --- | --- |
 | `array` | An array of expressions to evaluate. If the array is empty, `$allElementsTrue` returns a value of `true`. |
 
-## JSON example
+## Example
 
 The following JSON sample from the `stores` dataset can help you understand how to use this operator.
 
