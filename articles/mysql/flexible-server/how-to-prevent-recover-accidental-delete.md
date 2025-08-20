@@ -1,5 +1,5 @@
 ---
-title: Prevent and Recover from an accidental deletion
+title: Prevent and Recover from an Accidental Deletion
 description: This article describes how to prevent and recover from an accidental deletion of an  Azure Database for MySQL flexible server.
 author: ramnov  
 ms.author: ramkumarch  

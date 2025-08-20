@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Monitoring business continuity for Azure Database for MySQL with Azure Advisor and Azure Monitor
+# Monitor business continuity for Azure Database for MySQL with Azure Advisor and Azure Monitor
 
 Business continuity is a critical aspect of database security and operational resilience. Azure Database for MySQL integrates with Azure Advisor and Azure Monitor to help you identify risks, optimize performance, and maintain high availability. This article outlines how to use these tools to monitor and secure MySQL workloads.
 
