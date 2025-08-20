@@ -408,7 +408,7 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | **`jsonSchema`** | ✖️ No |
 | **`mod`** | ✅ Yes |
 | **`regex`** | ✅ Yes |
-| `text` | ✖️ No |
+| **`text`** | ✖️ No |
 | **`where`** | ✖️ No |
 
 In the $regex queries, left-anchored expressions allow index search. However, using 'i' modifier (case-insensitivity) and 'm' modifier (multiline) causes the collection scan in all expressions.

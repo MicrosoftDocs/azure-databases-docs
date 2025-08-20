@@ -481,7 +481,7 @@ Azure Cosmos DB for MongoDB supports the following operators.
 | **`jsonSchema`** | ✖️ No |
 | **`mod`** | ✅ Yes |
 | **`regex`** | ✅ Yes |
-| `text` | No (Not supported. Use `$regex` instead.) |
+| **`text`** | ✖️ No |
 | **`where`** | ✖️ No |
 
 In `$regex` queries, left-anchored expressions allow index search. However, using the `i` modifier (case-insensitivity) and the `m` modifier (multiline) causes the collection to scan in all expressions.
@@ -501,6 +501,9 @@ find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})
 ```
 
 The first part of the modified query uses the index to restrict the search to documents that begin with `^abc`. The second part of the query matches the exact entries. The bar operator (`|`) acts as an `or` function. The query `find({x:{$regex: /^abc |^def/})` matches the documents in which field `x` has values that begin with `abc` or `def`. To use the index, break the query into two separate queries and join them with the `$or` operator: `find({$or: [{x: {$regex: /^abc/}}, {x: {$regex: /^def/}}]})`.
+
+> [!TIP]
+> The `text` command isn't supported. Use `$regex` instead.
 
 ### Array operators
 
@@ -545,8 +548,8 @@ The first part of the modified query uses the index to restrict the search to do
 | | Supported |
 | --- | --- |
 | **`$`** | ✅ Yes |
-| `$[]` | ✅ Yes |
-| `$[\<identifier\>]` | ✅ Yes |
+| **`$[]`** | ✅ Yes |
+| **`$[\<identifier\>]`** | ✅ Yes |
 | **`addToSet`** | ✅ Yes |
 | **`pop`** | ✅ Yes |
 | **`pullAll`** | ✅ Yes |
