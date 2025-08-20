@@ -1,23 +1,22 @@
 ---
-title: Azure Cosmos DB for MongoDB (3.2 version) supported features and syntax
-description: Learn about Azure Cosmos DB for MongoDB (3.2 version) supported features and syntax.
+title: 3.2 Supported Features and Syntax
+titleSuffix: Azure Cosmos DB for MongoDB
+description: Discover supported features and syntax in Azure Cosmos DB for MongoDB 3.2, including database commands, query language, and aggregation pipeline. Explore benefits and get started today.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: release-notes
-ms.date: 10/12/2022
+ms.date: 08/20/2025
+appliesto:
+  - ✅ MongoDB
 ---
 
-# Azure Cosmos DB for MongoDB (3.2 version): supported features and syntax
+# Supported features and syntax in Azure Cosmos DB for MongoDB 3.2 server version
 
-[!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
+Azure Cosmos DB for MongoDB 3.2 enables you to use familiar MongoDB features with enterprise-grade capabilities such as global distribution, automatic sharding, and high availability. This article describes the supported features, syntax, and benefits of using Azure Cosmos DB for MongoDB 3.2.
 
-Azure Cosmos DB is Microsoft's globally distributed multi-model database service. You can communicate with the Azure Cosmos DB for MongoDB using any of the open-source MongoDB client [drivers](https://docs.mongodb.org/ecosystem/drivers). The Azure Cosmos DB for MongoDB enables the use of existing client drivers by adhering to the MongoDB [wire protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
-
-By using the Azure Cosmos DB for MongoDB, you can enjoy the benefits of the MongoDB you're used to, with all of the enterprise capabilities that Azure Cosmos DB provides: [global distribution](../distribute-data-globally.md), [automatic sharding](../partitioning-overview.md), availability and latency guarantees, automatic indexing of every field, encryption at rest, backups, and much more.
-
-> [!NOTE]
+> [!IMPORTANT]
 > Version 3.2 of the Azure Cosmos DB for MongoDB has no current plans for end-of-life (EOL). The minimum notice for a future EOL is three years.
 
 ## Protocol Support
