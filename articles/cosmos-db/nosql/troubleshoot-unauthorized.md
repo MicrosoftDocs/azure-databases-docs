@@ -8,63 +8,52 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
 ms.date: 08/20/2025
+ai-usage: ai-assisted
 appliesto:
   - ✅ NoSQL
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB for NoSQL unauthorized exceptions
 
-This article explains how to diagnose and troubleshoot Azure Cosmos DB unauthorized exceptions, including HTTP 401 errors related to MAC signature mismatches. You'll learn common causes and solutions to resolve these issues and improve application reliability.
+Unauthorized exceptions in Azure Cosmos DB for NoSQL, such as HTTP 401 errors, typically occur when the MAC signature in the request doesn't match the expected value. Incorrect keys, incomplete key rotations, or using read-only keys for write operations are often causes of this error message.
 
+## Symptoms
+
+A common symptom of unauthorized exceptions is receiving an HTTP 401 error message. This error indicates that the request wasn't properly authenticated.
+
+```output
 HTTP 401: The MAC signature found in the HTTP request isn't the same as the computed signature.
-If you received the 401 error message "The MAC signature found in the HTTP request is not the same as the computed signature", it can be caused by the following scenarios.
+```
 
-> [!NOTE]
-> For older SDKs, the exception can appear as an invalid JSON exception instead of the correct 401 unauthorized exception. Newer SDKs properly handle this scenario and give a valid error message.
+For older software development kits (SDKs), the exception might appear as an invalid JSON exception instead of the correct 401 unauthorized exception. Newer SDKs handle this scenario and show a valid error message.
 
-## Troubleshooting steps
+## Cause
 
-The following list contains known causes and solutions for unauthorized exceptions.
+This error occurs when the authentication signature (MAC) in your request doesn't match what Azure Cosmos DB expects. Common reasons include using the wrong key, incomplete key rotation, or trying to perform write operations with a read-only key. This mismatch prevents Cosmos DB from verifying your identity, resulting in an HTTP 401 unauthorized error.
 
-### The key wasn't properly rotated is the most common scenario
+## Solution: Wait for key rotation to complete
 
-The 401 MAC signature is seen shortly after a key rotation and eventually stops without any changes. 
+Apply this solution if you encounter 401 MAC signature errors immediately after rotating your account keys. Key rotation in Azure Cosmos DB can take anywhere from a few seconds to several days, depending on the account size.
 
-#### Solution
+Ensure your application waits until the key rotation process is fully completed before using the new key for authentication. The error should resolve automatically once the rotation is finished.
 
-The key was rotated and didn't follow the best practices. The Azure Cosmos DB account key rotation can take anywhere from a few seconds to possibly days depending on the Azure Cosmos DB account size.
+## Solution: Fix misconfigured keys
 
-### The key is misconfigured
+Use this solution if you consistently receive 401 MAC signature errors for all requests using a particular key. This scenario usually means the key is incorrect or incomplete in your application configuration.
 
-The 401 MAC signature issue will be consistent and happens for all calls using that key.
+Verify that the key in your application matches the correct account key and ensure the entire key is copied without truncation.
 
-#### Solution
+## Solution: Use read/write keys for write operations
 
-The key is misconfigured on the application and is using the wrong key for the account, or the entire key wasn't copied.
+Apply this solution if 401 MAC signature errors only occur during write operations, while read requests succeed. This scenario indicates the application is using read-only keys for write actions.
 
-### The application is using the read-only keys for write operations
+Update your application to use a read/write key or an authorization mechanism with write access for all write operations.
 
-The 401 MAC signature issue only occurs for write operations like create or replace, but read requests succeed.
+## Solution: Wait for container creation to complete
 
-#### Solution
+Choose this solution if 401 MAC signature errors appear immediately after creating a container, especially when containers are deleted and re-created with the same name.
 
-Switch the application to use a read/write key to allow the operations to complete successfully.
-
-### Race condition with create container
-
-The 401 MAC signature issue is seen shortly after a container creation. This issue occurs only until the container creation is completed.
-
-#### Solution
-
-There's a race condition with container creation. An application instance is trying to access the container before the container creation is complete. The most common scenario for this race condition is if the application is running and the container is deleted and re-created with the same name. The SDK attempts to use the new container, but the container creation is still in progress so it doesn't have the keys.
-
-### Bulk mode enabled 
-
-When using [Bulk mode enabled](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk/), read and write operations are optimized for best network performance and sent to the backend through a dedicated Bulk API. 401 errors while performing read operations with Bulk mode enabled often mean that the application is using the read-only keys.
-
-#### Solution
-
-Use the read/write keys or authorization mechanism with write access when performing operations with Bulk mode enabled.
+Ensure your application waits until the container creation process is fully completed before attempting to access or perform operations on the container.
 
 ## Related content
 
