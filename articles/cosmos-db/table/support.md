@@ -32,12 +32,12 @@ The Azure software development kits (SDKs) provide libraries for multiple progra
 
 These SDK packages work with both Azure Cosmos DB for Table and Table Storage.
 
-| Language | Package | Source Code |
+| | Package | Source Code |
 | --- | --- | --- |
 | **.NET** | [NuGet - `Azure.Data.Tables`](https://www.nuget.org/packages/Azure.Data.Tables/) | [`azure-sdk-for-net/sdk/tables/Azure.Data.Tables`](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/tables/Azure.Data.Tables) |
 | **Python** | [PyPI - `azure-data-tables`](https://pypi.org/project/azure-data-tables/) | [`azure-sdk-for-python/sdk/tables/azure-data-tables`](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/tables/azure-data-tables) |
 | **JavaScript/TypeScript** | [npm - `@azure/data-tables`](https://www.npmjs.com/package/@azure/data-tables) | [`azure-sdk-for-js/sdk/tables/data-tables`](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/tables/data-tables) |
-| **Java** | [Maven - `azure-data-tables](https://mvnrepository.com/artifact/com.azure/azure-data-tables) | [`azure-sdk-for-java/sdk/tables/azure-data-tables`](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/tables/azure-data-tables) |
+| **Java** | [Maven - `azure-data-tables`](https://mvnrepository.com/artifact/com.azure/azure-data-tables) | [`azure-sdk-for-java/sdk/tables/azure-data-tables`](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/tables/azure-data-tables) |
 | **Go** | [pkg.go.dev - `aztables`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables) | [`azure-sdk-for-go/sdk/data/aztables`](https://github.com/Azure/azure-sdk-for-go/tree/main/sdk/data/aztables) |
 | **C++** | [vcpkg - `azure-data-tables-cpp`](https://vcpkg.io/en/package/azure-data-tables-cpp) | [`azure-sdk-for-cpp/sdk/tables/azure-data-tables`](https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/tables/azure-data-tables) |
 
