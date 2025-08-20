@@ -20,6 +20,7 @@ ms.topic: concept-article
 
 Azure Premium SSD deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSD units are suitable for mission-critical production applications.Capacity, IOPS, and throughput are guaranteed when a premium storage disk is provisioned. For example, if you create a P40 disk, Azure provisions 2,048-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the preceding table 99.9% of the time.
 
+The maximum supported storage size is 32 TiB with Premium SSD, allowing you to scale up to 20,000 IOPS and 900 MB/s throughput. By switching to Premium SSD v2, you can scale up to 64 TiB with support for 80,000 IOPS and 1,200 MB/s throughput.
   
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
