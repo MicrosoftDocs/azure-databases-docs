@@ -22,7 +22,7 @@ The process outlined in this guide is based on the following assumptions:
 
 - The *entities* in the problem-space are identified. These entities are meant to be consumed *atomically* for each request. In other words, the database system isn't designed to retrieve a single entity's data in multiple query requests.
 - There's an understanding of *read and write requirements* for the database system. These requirements guide the optimizations needed for the graph data model.
-- The principles of the [](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) are well understood.
+- The principles of the [property graph standard from Apache](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) are well understood.
 
 ## When do I need a graph database?
 
