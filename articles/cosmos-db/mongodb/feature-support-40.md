@@ -18,14 +18,14 @@ Azure Cosmos DB for MongoDB 4.0 enables you to use familiar MongoDB features wit
 
 ## Protocol Support
 
-The supported operators and any limitations or exceptions are listed below. Any client driver that understands these protocols should be able to connect to Azure Cosmos DB for MongoDB. When you create Azure Cosmos DB for MongoDB accounts, the 3.6+ versions of accounts have the endpoint in the format `*.mongo.cosmos.azure.com` whereas the 3.2 version of accounts has the endpoint in the format `*.documents.azure.com`.
+The supported operators and any limitations or exceptions are listed here. Any client driver that understands these protocols should be able to connect to Azure Cosmos DB for MongoDB. When you create Azure Cosmos DB for MongoDB accounts, the 3.6+ versions of accounts have the endpoint in the format `*.mongo.cosmos.azure.com` whereas the 3.2 version of accounts has the endpoint in the format `*.documents.azure.com`.
 
 > [!NOTE]
 > This article only lists the supported server commands and excludes client-side wrapper functions. Client-side wrapper functions such as `deleteMany()` and `updateMany()` internally utilize the `delete()` and `update()` server commands. Functions utilizing supported server commands are compatible with Azure Cosmos DB for MongoDB.
 
 ## Query language support
 
-Azure Cosmos DB for MongoDB provides comprehensive support for MongoDB query language constructs. Below you can find the detailed list of currently supported operations, operators, stages, commands, and options.
+Azure Cosmos DB for MongoDB provides comprehensive support for MongoDB query language constructs. Here you can find the detailed list of currently supported operations, operators, stages, commands, and options.
 
 ## Database commands
 
@@ -37,15 +37,15 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | --- | --- |
 | [**`change streams`**](change-streams.md) | Yes |
 | **`delete`** | Yes |
-| **`eval`** | No |
+| **`eval`** | ✖️ No |
 | **`find`** | Yes |
 | **`findAndModify`** | Yes |
 | **`getLastError`** | Yes |
 | **`getMore`** | Yes |
-| **`getPrevError`** | No |
+| **`getPrevError`** | ✖️ No |
 | **`insert`** | Yes |
-| **`parallelCollectionScan`** | No |
-| **`resetError`** | No |
+| **`parallelCollectionScan`** | ✖️ No |
+| **`resetError`** | ✖️ No |
 | **`update`** | Yes |
 
 ### Transaction commands
@@ -67,11 +67,11 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| **`cloneCollectionAsCapped`** | No |
-| **`collMod`** | No |
-| **`connectionStatus`** | No |
-| **`convertToCapped`** | No |
-| **`copydb`** | No |
+| **`cloneCollectionAsCapped`** | ✖️ No |
+| **`collMod`** | ✖️ No |
+| **`connectionStatus`** | ✖️ No |
+| **`convertToCapped`** | ✖️ No |
+| **`copydb`** | ✖️ No |
 | **`create`** | Yes |
 | **`createIndexes`** | Yes |
 | **`currentOp`** | Yes |
@@ -80,12 +80,12 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | **`dropIndexes`** | Yes |
 | **`filemd5`** | Yes |
 | **`killCursors`** | Yes |
-| **`killOp`** | No |
+| **`killOp`** | ✖️ No |
 | **`listCollections`** | Yes |
 | **`listDatabases`** | Yes |
 | **`listIndexes`** | Yes |
 | **`reIndex`** | Yes |
-| **`renameCollection`** | No |
+| **`renameCollection`** | ✖️ No |
 
 ### Diagnostics commands
 
@@ -93,20 +93,20 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | --- | --- |
 | **`buildInfo`** | Yes |
 | **`collStats`** | Yes |
-| **`connPoolStats`** | No |
-| **`connectionStatus`** | No |
-| **`dataSize`** | No |
-| **`dbHash`** | No |
+| **`connPoolStats`** | ✖️ No |
+| **`connectionStatus`** | ✖️ No |
+| **`dataSize`** | ✖️ No |
+| **`dbHash`** | ✖️ No |
 | **`dbStats`** | Yes |
 | **`explain`** | Yes |
-| **`features`** | No |
+| **`features`** | ✖️ No |
 | **`hello`** | Yes |
 | **`hostInfo`** | Yes |
 | **`listDatabases`** | Yes |
-| **`listCommands`** | No |
-| **`profiler`** | No |
-| **`serverStatus`** | No |
-| **`top`** | No |
+| **`listCommands`** | ✖️ No |
+| **`profiler`** | ✖️ No |
+| **`serverStatus`** | ✖️ No |
+| **`top`** | ✖️ No |
 | **`whatsmyuri`** | Yes |
 
 ## <a name="aggregation-pipeline"></a>Aggregation pipeline
@@ -118,34 +118,34 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | **`aggregate`** | Yes |
 | **`count`** | Yes |
 | **`distinct`** | Yes |
-| **`mapReduce`** | No |
+| **`mapReduce`** | ✖️ No |
 
 ### Aggregation stages
 
 | | Supported |
 | --- | --- |
 | **`addFields`** | Yes |
-| **`bucket`** | No |
-| **`bucketAuto`** | No |
+| **`bucket`** | ✖️ No |
+| **`bucketAuto`** | ✖️ No |
 | **`changeStream`** | Yes |
-| **`collStats`** | No |
+| **`collStats`** | ✖️ No |
 | **`count`** | Yes |
-| **`currentOp`** | No |
+| **`currentOp`** | ✖️ No |
 | **`facet`** | Yes |
 | **`geoNear`** | Yes |
 | **`graphLookup`** | Yes |
 | **`group`** | Yes |
-| **`indexStats`** | No |
+| **`indexStats`** | ✖️ No |
 | **`limit`** | Yes |
-| **`listLocalSessions`** | No |
-| **`listSessions`** | No |
-| **`lookup`** | Partial |
+| **`listLocalSessions`** | ✖️ No |
+| **`listSessions`** | ✖️ No |
+| **`lookup`** | ❓Partial |
 | **`match`** | Yes |
 | **`out`** | Yes |
 | **`project`** | Yes |
 | **`redact`** | Yes |
 | **`replaceRoot`** | Yes |
-| **`replaceWith`** | No |
+| **`replaceWith`** | ✖️ No |
 | **`sample`** | Yes |
 | **`skip`** | Yes |
 | **`sort`** | Yes |
@@ -153,7 +153,7 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | **`unwind`** | Yes |
 
 > [!NOTE]
-> `$lookup` does not yet support the [uncorrelated subqueries](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) feature introduced in server version 3.6. You will receive an error with a message containing `let is not supported` if you attempt to use the `$lookup` operator with `let` and `pipeline` fields.
+> `$lookup` doesn't yet support the [uncorrelated subqueries](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) feature introduced in server version 3.6. You receive an error with a message containing `let is not supported` if you attempt to use the `$lookup` operator with `let` and `pipeline` fields.
 
 ### Boolean expressions
 
@@ -192,7 +192,7 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 ### Comparison expressions
 
 > [!NOTE]
-> The API for MongoDB does not support comparison expressions with an array literal in the query.
+> The API for MongoDB doesn't support comparison expressions with an array literal in the query.
 
 | | Supported |
 | --- | --- |
@@ -250,7 +250,7 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| **`meta`** | No |
+| **`meta`** | ✖️ No |
 
 ### Array expressions
 
@@ -354,15 +354,15 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 ## Data types
 
-Azure Cosmos DB for MongoDB supports documents encoded in MongoDB BSON format. The 4.0 API version enhances the internal usage of this format to improve performance and reduce costs. Documents written or updated through an endpoint running 4.0+ benefit from optimization.
+Azure Cosmos DB for MongoDB supports documents encoded in MongoDB binary JSON (BSON) format. The 4.0 API version enhances the internal usage of this format to improve performance and reduce costs. Documents written or updated through an endpoint running 4.0+ benefit from optimization.
 
-In an [upgrade scenario](upgrade-version.md), documents written prior to the upgrade to version 4.0+ won't benefit from the enhanced performance until they're updated via a write operation through the 4.0+ endpoint.
+In an [upgrade scenario to version 4.0 or later](upgrade-version.md), documents created before upgrading don't immediately benefit from the enhanced performance. To take advantage of the improvements, update these documents through a write operation using the 4.0 endpoint.
 
-16-MB document support raises the size limit for your documents from 2 MB to 16 MB. This limit only applies to collections created after this feature has been enabled. Once this feature is enabled for your database account, it can't be disabled.
+16-MB document support raises the size limit for documents from 2 MB to 16 MB. This limit applies only to collections created after enabling the feature. After you enable this feature for a database account, it can't be disabled.
 
-Enabling 16 MB can be done in the features tab in the Azure portal or programmatically by [adding the "EnableMongo16MBDocumentSupport" capability](how-to-configure-capabilities.md).
+Enabling 16 MB can be done in the features tab in the Azure portal or programmatically by [adding the `EnableMongo16MBDocumentSupport` capability](how-to-configure-capabilities.md).
 
-We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure requests with larger documents succeed. If necessary, raising your DB/Collection RUs may also help performance.
+We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure requests with larger documents succeed. If necessary, raising your database or collection request units might also help performance.
 
 | | Supported |
 | --- | --- |
@@ -395,10 +395,10 @@ We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure 
 | **`Single Field Index`** | Yes |
 | **`Compound Index`** | Yes |
 | **`Multikey Index`** | Yes |
-| **`Text Index`** | No |
+| **`Text Index`** | ✖️ No |
 | **`2dsphere`** | Yes |
-| **`2d Index`** | No |
-| **`Hashed Index`** | No |
+| **`2d Index`** | ✖️ No |
+| **`Hashed Index`** | ✖️ No |
 
 ### Index properties
 
@@ -406,9 +406,9 @@ We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure 
 | --- | --- |
 | **`TTL`** | Yes |
 | **`Unique`** | Yes |
-| **`Partial`** | No |
-| **`Case Insensitive`** | No |
-| **`Sparse`** | No |
+| **`Partial`** | ✖️ No |
+| **`Case Insensitive`** | ✖️ No |
+| **`Sparse`** | ✖️ No |
 | **`Background`** | Yes |
 
 ## Operators
@@ -434,19 +434,24 @@ We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure 
 | | Supported |
 | --- | --- |
 | **`expr`** | Yes |
-| **`jsonSchema`** | No |
+| **`jsonSchema`** | ✖️ No |
 | **`mod`** | Yes |
 | **`regex`** | Yes |
-| **`text`** | No |
-| **`where`** | No |
+| **`text`** | ✖️ No |
+| **`where`** | ✖️ No |
 
-In the $regex queries, left-anchored expressions allow index search. However, using 'i' modifier (case-insensitivity) and 'm' modifier (multiline) causes the collection scan in all expressions.
+In the $regex queries, left-anchored expressions allow index search. However, using `i` modifier (case-insensitivity) and `m` modifier (multiline) causes the collection scan in all expressions.
 
-When there's a need to include '$' or '|', it's best to create two (or more) regex queries. For example, given the following original query: `find({x:{$regex: /^abc$/})`, it has to be modified as follows:
+When there's a need to include `$` or `|`, it's best to create two (or more) regex queries. For example, given the following original query: `find({x:{$regex: /^abc$/})`, it has to be modified as follows:
 
-`find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})`
+```mongodb
+find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})
+```
 
-The first part will use the index to restrict the search to those documents beginning with ^abc and the second part will match the exact entries. The bar operator '|' acts as an "or" function - the query `find({x:{$regex: /^abc |^def/})` matches the documents in which field 'x' has values that begin with "abc" or "def". To utilize the index, it's recommended to break the query into two different queries joined by the $or operator: `find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`.
+The first part uses the index to restrict the search to those documents beginning with `^abc` and the second part matches the exact entries. The bar operator `|` acts as an "or" function - the query `find({x:{$regex: /^abc |^def/})` matches the documents in which field `x` has values that begin with `"abc"` or `"def"`. To utilize the index, break the query into two different queries joined by the $or operator: `find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`.
+
+> [!TIP]
+> The `text` command isn't supported. Use `$regex` instead.
 
 > [!TIP]
 > The `text` command is not supported. Use `$regex` instead.
@@ -470,7 +475,7 @@ The first part will use the index to restrict the search to those documents begi
 | | Supported |
 | --- | --- |
 | **`elemMatch`** | Yes |
-| **`meta`** | No |
+| **`meta`** | ✖️ No |
 | **`slice`** | Yes |
 
 ### Update operators
@@ -517,10 +522,10 @@ The first part will use the index to restrict the search to those documents begi
 | | Supported |
 | --- | --- |
 | **`bit`** | Yes |
-| **`bitsAllSet`** | No |
-| **`bitsAnySet`** | No |
-| **`bitsAllClear`** | No |
-| **`bitsAnyClear`** | No |
+| **`bitsAllSet`** | ✖️ No |
+| **`bitsAnySet`** | ✖️ No |
+| **`bitsAllClear`** | ✖️ No |
+| **`bitsAnyClear`** | ✖️ No |
 
 ### Geospatial operators
 
@@ -533,10 +538,10 @@ The first part will use the index to restrict the search to those documents begi
 | **`$geometry`** | Yes |
 | **`$minDistance`** | Yes |
 | **`$maxDistance`** | Yes |
-| **`$center`** | No |
-| **`$centerSphere`** | No |
-| **`$box`** | No |
-| **`$polygon`** | No |
+| **`$center`** | ✖️ No |
+| **`$centerSphere`** | ✖️ No |
+| **`$box`** | ✖️ No |
+| **`$polygon`** | ✖️ No |
 
 ## Sort operations
 
@@ -556,21 +561,21 @@ Azure Cosmos DB supports automatic, native replication at the lowest layers. Thi
 
 ## Retryable Writes
 
-Retryable writes enable MongoDB drivers to automatically retry certain write operations if there was failure, but results in more stringent requirements for certain operations, which match MongoDB protocol requirements. With this feature enabled, update operations, including deletes, in sharded collections will require the shard key to be included in the query filter or update statement.
+Retryable writes enable MongoDB drivers to automatically retry certain write operations if there was failure, but results in more stringent requirements for certain operations, which match MongoDB protocol requirements. With this feature enabled, update operations, including deletes, in sharded collections require the shard key to be included in the query filter or update statement.
 
-For example, with a sharded collection, sharded on key “country”: To delete all the documents with the field **city** = `"NYC"`, the application will need to execute the operation for all shard key (country) values if Retryable writes are enabled.
+For example, with a sharded collection, sharded on key `region`: To delete all the documents with the field `city = "NYC"`, the application needs to execute the operation for all shard key (**region**) values if Retryable writes are enabled.
 
-- `db.coll.deleteMany({"country": "USA", "city": "NYC"})` - **Success**
-- `db.coll.deleteMany({"city": "NYC"})` - Fails with error **ShardKeyNotFound(61)**
+- `db.coll.deleteMany({"region": "USA", "city": "NYC"})` - Succeeds with message `Success`
+- `db.coll.deleteMany({"city": "NYC"})` - Fails with error `ShardKeyNotFound(61)`
 
 > [!NOTE]
-> Retryable writes does not support bulk unordered writes at this time. If you would like to perform bulk writes with retryable writes enabled, perform bulk ordered writes.
+> Retryable writes don't support bulk unordered writes at this time. If you would like to perform bulk writes with retryable writes enabled, perform bulk ordered writes.
 
 To enable the feature, [add the EnableMongoRetryableWrites capability](how-to-configure-capabilities.md) to your database account. This feature can also be enabled in the features tab in the Azure portal.
 
 ## Sharding
 
-Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means you don't have to invoke commands such as addShard, balancerStart, moveChunk etc. You only need to specify the shard key while creating the containers or querying the data.
+Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means that you don't have to invoke commands like `addShard`, `balancerStart`, and `moveChunk`. You only need to specify the shard key while creating the containers or querying the data.
 
 ## Sessions
 
@@ -586,17 +591,8 @@ Multi-document transactions are supported within an unsharded collection. Multi-
 
 ## User and role management
 
-Azure Cosmos DB doesn't yet support users and roles. However, Azure Cosmos DB supports Azure role-based access control (Azure RBAC) and read-write and read-only passwords/keys that can be obtained through the [Azure portal](https://portal.azure.com) (Connection String page).
+Azure Cosmos DB doesn't yet support users and roles. However, Azure Cosmos DB supports Azure role-based access control and read-write and read-only passwords/keys that can be obtained through the [Azure portal](https://portal.azure.com) (Connection String page).
 
 ## Write Concern
 
 Some applications rely on a [Write Concern](https://docs.mongodb.com/manual/reference/write-concern/), which specifies the number of responses required during a write operation. Due to how Azure Cosmos DB handles replication in the background all writes are automatically Quorum by default. Any write concern specified by the client code is ignored. Learn more in [Using consistency levels to maximize availability and performance](../consistency-levels.md).
-
-## Next steps
-
-- Learn how to [use Studio 3T](connect-using-mongochef.md) with Azure Cosmos DB for MongoDB.
-- Learn how to [use Robo 3T](connect-using-robomongo.md) with Azure Cosmos DB for MongoDB.
-- Explore MongoDB [samples](nodejs-console-app.md) with Azure Cosmos DB for MongoDB.
-- Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-  - If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md)
-  - If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-capacity-planner.md)
