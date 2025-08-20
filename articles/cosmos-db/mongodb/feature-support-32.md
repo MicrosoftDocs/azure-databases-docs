@@ -337,7 +337,7 @@ The first part uses the index to restrict the search to those documents beginnin
 | **`$near`** | ✅ Yes | `{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` |
 | **`$nearSphere`** | ✅ Yes | `{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }` |
 | **`$geometry`** | ✅ Yes | `{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` |
-| **`$minDistance`** | ✅ Yes | `{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }` ||
+| **`$minDistance`** | ✅ Yes | `{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }` |
 | **`$maxDistance`** | ✅ Yes | `{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }` |
 | **`$center`** | ✅ Yes | `{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }` |
 | **`$centerSphere`** | ✅ Yes | `{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }` |
