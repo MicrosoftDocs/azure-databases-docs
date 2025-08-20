@@ -5221,6 +5221,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/how-to-setup-rbac.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/how-to-setup-role-based-access-control",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/sql/import-github-notebooks.md",
       "redirect_url": "/azure/cosmos-db/nosql/import-github-notebooks",
       "redirect_document_id": true
