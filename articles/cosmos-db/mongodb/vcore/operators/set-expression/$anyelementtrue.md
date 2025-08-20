@@ -28,9 +28,9 @@ The `$anyElementTrue` operator evaluates an array as a set and returns a value o
 | --- | --- |
 | `array` | An array of expressions that you want to evaluate. If the array is empty, `$anyElementTrue` returns a value of `false`. |
 
-## JSON example
+## Example
 
-The following JSON sample from the `stores` dataset can help you understand how to use this operator.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
