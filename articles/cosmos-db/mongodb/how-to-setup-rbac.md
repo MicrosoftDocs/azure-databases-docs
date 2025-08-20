@@ -1,7 +1,7 @@
 ---
 title: Configure Role-Based Access Control
 titleSuffix: Azure Cosmos DB for MongoDB
-description: Learn how to configure role-based access control in Azure Cosmos DB for MongoDB to secure data access. Follow these steps to get started.
+description: Learn how to configure role-based access control in Azure Cosmos DB for MongoDB to secure data access.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
@@ -12,298 +12,170 @@ ms.custom:
   - devx-track-azurecli
   - devx-track-extended-java
   - devx-track-js
-  - sfi-ropc-blocked
+  - sfi-ropc-nochange
 appliesto:
   - ✅ MongoDB
 ---
 
 # Configure role-based access control in Azure Cosmos DB for MongoDB
 
-This article is about role-based access control for data plane operations in Azure Cosmos DB for MongoDB.
+Azure Cosmos DB for MongoDB provides a built-in role-based access control system for data plane operations. Use role-based access control to authorize data requests with fine-grained, role-based permissions. This guide shows you how to enable role-based access control, create roles and users, and authenticate with supported drivers.
 
-If you're using management plane operations, see [role-based access control](security/index.md) applied to your management plane operations article.
+## Prerequisites
 
-Azure Cosmos DB for MongoDB exposes a built-in role-based access control (RBAC) system that lets you authorize your data requests with a fine-grained, role-based permission model. Users and roles reside within a database and are managed using the Azure CLI, Azure PowerShell, or Azure Resource Manager (ARM).
+- An Azure subscription
+- An Azure Cosmos DB for MongoDB account (version 3.6 or higher)
+- Latest version of Azure CLI
 
-## Concepts
+## Enable role-based access control
 
-### Resource
-A resource is a collection or database to which we're applying access control rules.
+Enable role-based access control on your Azure Cosmos DB for MongoDB account.
 
-### Privileges
-Privileges are actions that can be performed on a specific resource. For example, "read access to collection xyz". Privileges are assigned to a specific role.
+1. Sign in to Azure CLI.
 
-### Role
-A role has one or more privileges. Roles are assigned to users (zero or more) to enable them to perform the actions defined in those privileges. Roles are stored within a single database.
+    ```azurecli-interactive		
+    az login
+    ```
 
-### Diagnostic log auditing
-Another column called `userId` has been added to the `MongoRequests` table in the Azure portal's diagnostics feature. This column identifies which user performed which data plan operation. The value in this column is empty when RBAC isn't enabled. 
+1. Enable the role-based access control capability on your database account.
 
-## Available Privileges
-#### Query and Write
-* find
-* insert
-* remove
-* update
+    ```azurecli-interactive		
+    az cosmosdb create \
+        --resource-group "<resource-group-name>" \
+        --name "<account-name>" \
+        --kind "MongoDB" \
+        --capabilities "EnableMongoRoleBasedAccessControl"
+    ```
 
-#### Change Streams
-* changeStream
+    > [!TIP]
+    > You can also enable role-based access control from the Features tab in the Azure portal.
 
-#### Database Management
-* createCollection
-* createIndex 
-* dropCollection
-* killCursors
-* killAnyCursor
+3. Create a database for users to connect to in the Azure portal.
 
-#### Server Administration 
-* dropDatabase
-* dropIndex
-* reIndex
+## Create roles and users
 
-#### Diagnostics
-* collStats
-* dbStats
-* listDatabases
-* listCollections
-* listIndexes
+Define custom roles and users to control access to your database account.
 
-## Built-in Roles
-These roles already exist on every database and don't need to be created.
+1. Create a role definition.
 
-| | `read` | `readWrite` | `dbAdmin` | `dbOwner` |
-| --- | --- | --- | --- | --- |
-| **`changeStream`** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| **`collStats`** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| **`listCollections`** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| **`listIndexes`** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| **`createCollection`** | ✖️ No | ✅ Yes | ✅ Yes | ✅ Yes |
-| **`createIndex`** | ✖️ No | ✅ Yes | ✅ Yes | ✅ Yes |
-| **`dropCollection`** | ✖️ No | ✅ Yes | ✅ Yes | ✅ Yes |
-| **`dbStats`** | ✖️ No | ✖️ No | ✅ Yes | ✅ Yes |
-| **`dropDatabase`** | ✖️ No | ✖️ No | ✅ Yes | ✅ Yes |
-| **`reIndex`** | ✖️ No | ✖️ No | ✅ Yes | ✅ Yes |
-| **`find`** | ✅ Yes | ✅ Yes | ✖️ No | ✅ Yes |
-| **`killCursors`** | ✅ Yes | ✅ Yes | ✖️ No | ✅ Yes |
-| **`dropIndex`** | ✖️ No | ✅ Yes | ✅ Yes | ✅ Yes |
-| **`insert`** | ✖️ No | ✅ Yes | ✖️ No | ✅ Yes |
-| **`remove`** | ✖️ No | ✅ Yes | ✖️ No | ✅ Yes |
-| **`update`** | ✖️ No | ✅ Yes | ✖️ No | ✅ Yes |
+    ```azurecli-interactive
+    az cosmosdb mongodb role definition create \
+        --resource-group "<resource-group-name>" \
+        --account-name "<account-name>" \
+        --body {\"Id\":\"test.My_Read_Only_Role101\",\"RoleName\":\"My_Read_Only_Role101\",\"Type\":\"CustomRole\",\"DatabaseName\":\"test\",\"Privileges\":[{\"Resource\":{\"Db\":\"test\",\"Collection\":\"test\"},\"Actions\":[\"insert\",\"find\"]}],\"Roles\":[]}
+    ```
 
-## Azure CLI Setup (Quickstart)
-We recommend using the cmd when using Windows.
+    > [!TIP]
+    > Alternatively, use a JSON file:
+    >
+    > ```azurecli-interactive
+    > az cosmosdb mongodb role definition create \
+    >    --resource-group "<resource-group-name>" \
+    >    --account-name "<account-name>" \
+    >    --body @role.json
+    > ```
+    >
+    > ```json
+    > {
+    >   "Id": "test.My_Read_Only_Role101",
+    >   "RoleName": "My_Read_Only_Role101",
+    >   "Type": "CustomRole",
+    >   "DatabaseName": "test",
+    >   "Privileges": [{
+    >     "Resource": {
+    >       "Db": "test",
+    >       "Collection": "test"
+    >     },
+    >     "Actions": ["insert", "find"]
+    >   }],
+    >   "Roles": []
+    > }
+    > ```
+    >
 
-1. Make sure you have latest CLI version(not extension) installed locally. try `az upgrade` command.
-2. Connect to your subscription.
-```powershell
-az cloud set -n  AzureCloud
-az login
-az account set --subscription <your subscription ID>
-```
-3. Enable the RBAC capability on your existing API for MongoDB database account. You need to [add the capability](how-to-configure-capabilities.md) "EnableMongoRoleBasedAccessControl" to your database account. RBAC can also be enabled via the features tab in the Azure portal instead. 
-If you prefer a new database account instead, create a new database account with the RBAC capability set to true.
-```powershell
-az cosmosdb create -n <account_name> -g <azure_resource_group> --kind MongoDB --capabilities EnableMongoRoleBasedAccessControl
-```
-4. Create a database for users to connect to in the Azure portal.
-5. Create an RBAC user with built-in read role.
-```powershell
-az cosmosdb mongodb user definition create --account-name <YOUR_DB_ACCOUNT> --resource-group <YOUR_RG> --body {\"Id\":\"<YOUR_DB_NAME>.<YOUR_USERNAME>\",\"UserName\":\"<YOUR_USERNAME>\",\"Password\":\"<YOUR_PASSWORD>\",\"DatabaseName\":\"<YOUR_DB_NAME>\",\"CustomData\":\"Some_Random_Info\",\"Mechanisms\":\"SCRAM-SHA-256\",\"Roles\":[{\"Role\":\"read\",\"Db\":\"<YOUR_DB_NAME>\"}]}
-```
+1. Create a user definition with a role assignment.
 
-## Authenticate using pymongo
+    ```azurecli-interactive
+    az cosmosdb mongodb user definition create \
+        --resource-group "<resource-group-name>" \
+        --account-name "<account-name>" \
+				--body {\"Id\":\"test.myName\",\"UserName\":\"myName\",\"Password\":\"pass\",\"DatabaseName\":\"test\",\"CustomData\":\"Some_Random_Info\",\"Mechanisms\":\"SCRAM-SHA-256\",\"Roles\":[{\"Role\":\"My_Read_Only_Role101\",\"Db\":\"test\"}]}
+    ```
+
+    > [!TIP]
+    > Alternatively, use a JSON file:
+    >
+    > ```azurecli-interactive
+    > az cosmosdb mongodb role definition create \
+    >    --resource-group "<resource-group-name>" \
+    >    --account-name "<account-name>" \
+    >    --body @role.json
+    > ```
+    >
+    > ```json
+    > {
+    >   "Id": "test.myName",
+    >   "UserName": "myName",
+    >   "Password": "pass",
+    >   "DatabaseName": "test",
+    >   "CustomData": "Some_Random_Info",
+    >   "Mechanisms": "SCRAM-SHA-256",
+    >   "Roles": [{
+    >     "Role": "My_Read_Only_Role101",
+    >     "Db": "test"
+    >   }]
+    > }
+    > ```
+    >
+
+## Authenticate with drivers
+
+Connect to your database using supported drivers and role-based access control credentials.
+
+### [Python (`pymongo`)](#tab/python)
+
 ```python
 from pymongo import MongoClient
-client = MongoClient("mongodb://<YOUR_HOSTNAME>:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000", username="<YOUR_USER>", password="<YOUR_PASSWORD>", authSource='<YOUR_DATABASE>', authMechanism='SCRAM-SHA-256', appName="<YOUR appName FROM CONNECTION STRING IN AZURE PORTAL>")
+client = MongoClient(
+    "mongodb://<YOUR_HOSTNAME>:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000",
+    username="<YOUR_USER>",
+    password="<YOUR_PASSWORD>",
+    authSource='<YOUR_DATABASE>',
+    authMechanism='SCRAM-SHA-256',
+    appName="<YOUR appName FROM CONNECTION STRING IN AZURE PORTAL>"
+)
 ```
 
-## Authenticate using Node.js driver
+### [Node.js](#tab/nodejs)
+
 ```javascript
 connectionString = "mongodb://" + "<YOUR_USER>" + ":" + "<YOUR_PASSWORD>" + "@" + "<YOUR_HOSTNAME>" + ":10255/" + "<YOUR_DATABASE>" +"?ssl=true&retrywrites=false&replicaSet=globaldb&authmechanism=SCRAM-SHA-256&appname=@" + "<YOUR appName FROM CONNECTION STRING IN AZURE PORTAL>" + "@";
 var client = await mongodb.MongoClient.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 ```
 
-## Authenticate using Java driver
+### [Java](#tab/java)
+
 ```java
 connectionString = "mongodb://" + "<YOUR_USER>" + ":" + "<YOUR_PASSWORD>" + "@" + "<YOUR_HOSTNAME>" + ":10255/" + "<YOUR_DATABASE>" +"?ssl=true&retrywrites=false&replicaSet=globaldb&authmechanism=SCRAM-SHA-256&appname=@" + "<YOUR appName FROM CONNECTION STRING IN AZURE PORTAL>" + "@";
 MongoClientURI uri = new MongoClientURI(connectionString);
 MongoClient client = new MongoClient(uri);
 ```
 
-## Authenticate using Mongosh
-```powershell
+### [Mongo shell (`mongosh`)](#tab/mongo-shell)
+
+```shell
 mongosh --authenticationDatabase <YOUR_DB> --authenticationMechanism SCRAM-SHA-256 "mongodb://<YOUR_USERNAME>:<YOUR_PASSWORD>@<YOUR_HOST>:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000"
 ```
 
-## Authenticate using MongoDB Compass/Azure Data Studio
-```bash
+### [MongoDB Compass](#tab/mongodb-compass)
+
+```shell
 connectionString = "mongodb://" + "<YOUR_USER>" + ":" + "<YOUR_PASSWORD>" + "@" + "<YOUR_HOSTNAME>" + ":10255/" + "?ssl=true&retrywrites=false&replicaSet=globaldb&authmechanism=SCRAM-SHA-256&appname=@" + "<YOUR appName FROM CONNECTION STRING IN AZURE PORTAL>" + "@"
 +"&authSource=" +"<YOUR_DATABASE>";
 ```
 
-## Azure CLI RBAC Commands
-The RBAC management commands will only work with newer versions of the Azure CLI installed. See the Quickstart above on how to get started. 
+---
 
-#### Create Role Definition
-```powershell
-az cosmosdb mongodb role definition create --account-name <account-name> --resource-group <resource-group-name> --body {\"Id\":\"test.My_Read_Only_Role101\",\"RoleName\":\"My_Read_Only_Role101\",\"Type\":\"CustomRole\",\"DatabaseName\":\"test\",\"Privileges\":[{\"Resource\":{\"Db\":\"test\",\"Collection\":\"test\"},\"Actions\":[\"insert\",\"find\"]}],\"Roles\":[]}
-```
+## Related content
 
-#### Create Role by passing JSON file body
-```powershell
-az cosmosdb mongodb role definition create --account-name <account-name> --resource-group <resource-group-name> --body role.json
-```
-##### JSON file
-```json
-{
-	"Id": "test.My_Read_Only_Role101",
-	"RoleName": "My_Read_Only_Role101",
-	"Type": "CustomRole",
-	"DatabaseName": "test",
-	"Privileges": [{
-		"Resource": {
-			"Db": "test",
-			"Collection": "test"
-		},
-		"Actions": ["insert", "find"]
-	}],
-	"Roles": []
-}
-```
-
-#### Update Role Definition
-```powershell
-az cosmosdb mongodb role definition update --account-name <account-name> --resource-group <resource-group-name> --body {\"Id\":\"test.My_Read_Only_Role101\",\"RoleName\":\"My_Read_Only_Role101\",\"Type\":\"CustomRole\",\"DatabaseName\":\"test\",\"Privileges\":[{\"Resource\":{\"Db\":\"test\",\"Collection\":\"test\"},\"Actions\":[\"insert\",\"find\"]}],\"Roles\":[]}
-```
-
-#### Update role by passing JSON file body
-```powershell
-az cosmosdb mongodb role definition update --account-name <account-name> --resource-group <resource-group-name> --body role.json
-```
-##### JSON file
-```json
-{
-	"Id": "test.My_Read_Only_Role101",
-	"RoleName": "My_Read_Only_Role101",
-	"Type": "CustomRole",
-	"DatabaseName": "test",
-	"Privileges": [{
-		"Resource": {
-			"Db": "test",
-			"Collection": "test"
-		},
-		"Actions": ["insert", "find"]
-	}],
-	"Roles": []
-}
-```
-
-#### List roles
-```powershell
-az cosmosdb mongodb role definition list --account-name <account-name> --resource-group <resource-group-name>
-```
-
-#### Check if role exists
-```powershell
-az cosmosdb mongodb role definition exists --account-name <account-name> --resource-group <resource-group-name> --id test.My_Read_Only_Role
-```
-    
-#### Delete role
-```powershell
-az cosmosdb mongodb role definition delete --account-name <account-name> --resource-group <resource-group-name> --id test.My_Read_Only_Role
-```
-
-#### Create user definition
-```powershell
-az cosmosdb mongodb user definition create --account-name <account-name> --resource-group <resource-group-name> --body {\"Id\":\"test.myName\",\"UserName\":\"myName\",\"Password\":\"pass\",\"DatabaseName\":\"test\",\"CustomData\":\"Some_Random_Info\",\"Mechanisms\":\"SCRAM-SHA-256\",\"Roles\":[{\"Role\":\"My_Read_Only_Role101\",\"Db\":\"test\"}]}
-```
-
-#### Create user by passing JSON file body
-```powershell
-az cosmosdb mongodb user definition create --account-name <account-name> --resource-group <resource-group-name> --body user.json
-```
-##### JSON file
-```json
-{
-	"Id": "test.myName",
-	"UserName": "myName",
-	"Password": "pass",
-	"DatabaseName": "test",
-	"CustomData": "Some_Random_Info",
-	"Mechanisms": "SCRAM-SHA-256",
-	"Roles": [{
-		"Role": "My_Read_Only_Role101",
-		"Db": "test"
-	}]
-}
-```
-
-#### Update user definition
-To update the user's password, send the new password in the password field. 
-
-```powershell
-az cosmosdb mongodb user definition update --account-name <account-name> --resource-group <resource-group-name> --body {\"Id\":\"test.myName\",\"UserName\":\"myName\",\"Password\":\"pass\",\"DatabaseName\":\"test\",\"CustomData\":\"Some_Random_Info\",\"Mechanisms\":\"SCRAM-SHA-256\",\"Roles\":[{\"Role\":\"My_Read_Only_Role101\",\"Db\":\"test\"}]}
-```
-
-#### Update user by passing JSON file body
-```powershell
-az cosmosdb mongodb user definition update --account-name <account-name> --resource-group <resource-group-name> --body user.json
-```
-##### JSON file
-```json
-{
-	"Id": "test.myName",
-	"UserName": "myName",
-	"Password": "pass",
-	"DatabaseName": "test",
-	"CustomData": "Some_Random_Info",
-	"Mechanisms": "SCRAM-SHA-256",
-	"Roles": [{
-		"Role": "My_Read_Only_Role101",
-		"Db": "test"
-	}]
-}
-```
-
-#### List users
-```powershell
-az cosmosdb mongodb user definition list --account-name <account-name> --resource-group <resource-group-name>
-```
-
-#### Check if user exists
-```powershell
-az cosmosdb mongodb user definition exists --account-name <account-name> --resource-group <resource-group-name> --id test.myName
-```
-
-#### Delete user
-```powershell
-az cosmosdb mongodb user definition delete --account-name <account-name> --resource-group <resource-group-name> --id test.myName
-```
-
-## Limitations
-
-- The number of users and roles you can create must equal less than 10,000. 
-- The commands listCollections, listDatabases, killCursors, and currentOp are excluded from RBAC.
-- Users and Roles across databases aren't supported.
-- A user's password can only be set/reset by through the Azure CLI / Azure PowerShell.
-- Configuring Users and Roles is only supported through Azure CLI / PowerShell. 
-- Disabling primary/secondary key authentication isn't supported. We recommend rotating your keys to prevent access when enabling RBAC.
-- RBAC policies for Cosmos DB for Mongo DB RU won't be automatically reinstated following a restore operation. You'll be required to reconfigure these policies after the restoration process is complete.
-
-## Frequently asked questions (FAQs)
-
-### Is it possible to manage role definitions and role assignments from the Azure portal?
-
-Azure portal support for role management isn't available. However, RBAC can be enabled via the features tab in the Azure portal.
-
-### How do I change a user's password?
-
-Update the user definition with the new password.
-
-### What Cosmos DB for MongoDB versions support role-based access control (RBAC)?
-
-Versions 3.6 and higher support RBAC.
-
-## Next steps
-
-- Learn more about [RBAC for Azure Cosmos DB management](security/index.md).
+- [Role-based access control](role-based-access-control.md)
