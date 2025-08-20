@@ -14,6 +14,8 @@ ms.topic: concept-article
 
 # Premium SSD  storage option in Azure Database for PostgreSQL flexible server
 
+[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+
 ## Premium SSD
 
 Azure Premium SSD deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSD units are suitable for mission-critical production applications.Capacity, IOPS, and throughput are guaranteed when a premium storage disk is provisioned. For example, if you create a P40 disk, Azure provisions 2,048-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the preceding table 99.9% of the time.
