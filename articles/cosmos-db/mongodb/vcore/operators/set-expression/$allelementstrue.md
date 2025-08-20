@@ -30,7 +30,7 @@ The `$allElementsTrue` operator evaluates an array as a set. It returns a value 
 
 ## Example
 
-The following JSON sample from the `stores` dataset can help you understand how to use this operator.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
