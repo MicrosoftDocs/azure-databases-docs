@@ -90,3 +90,4 @@ These roles already exist on every database and don't need to be created.
 ## Related content
 
 - [How to setup role-based access control](how-to-setup-rbac.md)
+- [Frequently asked questions about role-based access control](faq.yml#role-based-access-control)

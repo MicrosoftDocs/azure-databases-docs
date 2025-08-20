@@ -15,6 +15,7 @@ ms.custom:
   - sfi-ropc-nochange
 appliesto:
   - ✅ MongoDB
+ai-usage: ai-assisted
 ---
 
 # Configure role-based access control in Azure Cosmos DB for MongoDB
@@ -176,6 +177,47 @@ connectionString = "mongodb://" + "<YOUR_USER>" + ":" + "<YOUR_PASSWORD>" + "@" 
 
 ---
 
+## Perform common operations
+
+Now, perform some common operations for role-based access control features in Azure Cosmos DB for MongoDB.
+
+1. Use the following command to display all role definitions.
+
+    ```powershell
+    az cosmosdb mongodb role definition list --account-name <account-name> --resource-group <resource-group-name>
+    ```
+
+1. Verify the existence of a role by its ID.
+
+    ```powershell
+    az cosmosdb mongodb role definition exists --account-name <account-name> --resource-group <resource-group-name> --id test.My_Read_Only_Role
+    ```
+
+1. Remove a role definition using its ID.
+
+    ```powershell
+    az cosmosdb mongodb role definition delete --account-name <account-name> --resource-group <resource-group-name> --id test.My_Read_Only_Role
+    ```
+
+1. Display all user definitions.
+
+    ```powershell
+    az cosmosdb mongodb user definition list --account-name <account-name> --resource-group <resource-group-name>
+    ```
+
+1. Verify the existence of a user by its ID.
+
+    ```powershell
+    az cosmosdb mongodb user definition exists --account-name <account-name> --resource-group <resource-group-name> --id test.myName
+    ```
+
+1. Remove a user definition using its ID.
+
+    ```powershell
+    az cosmosdb mongodb user definition delete --account-name <account-name> --resource-group <resource-group-name> --id test.myName
+    ```
+
 ## Related content
 
 - [Role-based access control](role-based-access-control.md)
+- [Frequently asked questions about role-based access control](faq.yml#role-based-access-control)
