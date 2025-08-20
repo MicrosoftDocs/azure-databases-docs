@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: how-to
 ms.devlang: csharp
-ms.date: 08/21/2025
+ms.date: 08/20/2025
 ms.custom:
   - devx-track-csharp
 appliesto:

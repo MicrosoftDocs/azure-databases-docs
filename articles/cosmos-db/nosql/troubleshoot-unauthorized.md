@@ -7,7 +7,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
-ms.date: 08/21/2025
+ms.date: 08/20/2025
 appliesto:
   - ✅ NoSQL
 ---

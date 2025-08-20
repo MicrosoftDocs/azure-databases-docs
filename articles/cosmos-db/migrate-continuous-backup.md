@@ -6,7 +6,7 @@ author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 08/21/2025
+ms.date: 08/20/2025
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange

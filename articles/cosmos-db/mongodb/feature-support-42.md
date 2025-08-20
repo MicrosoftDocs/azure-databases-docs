@@ -7,7 +7,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: release-notes
-ms.date: 08/21/2025
+ms.date: 08/20/2025
 appliesto:
   - ✅ MongoDB
 ---

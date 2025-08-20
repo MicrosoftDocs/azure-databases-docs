@@ -7,7 +7,7 @@ ms.author: mansha
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
-ms.date: 08/21/2025
+ms.date: 08/20/2025
 appliesto:
   - ✅ Apache Gremlin
 ---
