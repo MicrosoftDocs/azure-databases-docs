@@ -29,9 +29,9 @@ The `$setDifference` operator returns a set that includes elements that exist in
 | `array1` | The first array that you want to compare. Elements that are unique to this array are returned. |
 | `array2` | The second array that you want to compare against the first array. Elements that exist in both arrays are excluded from the result. |
 
-## JSON example
+## Example
 
-The following JSON sample from the `stores` dataset can help you understand how to use this operator.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
