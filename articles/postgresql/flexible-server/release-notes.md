@@ -117,7 +117,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: June 2024
 
 - Support for latest [minor versions](concepts-supported-versions.md) 16.3, 15.7, 14.12, 13.15, and 12.19. <sup>$</sup>
-- General availability of [IOPS scaling](concepts-storage.md#iops-scaling) on Azure Database for PostgreSQL flexible server.
+- General availability of [IOPS scaling](concepts-storage-premium-ssd.md#iops-scaling) on Azure Database for PostgreSQL flexible server.
 - CMK support for LTR is in Public preview [long-term backup retention](concepts-backup-restore.md).
 - Support for [built-in Azure Policy definitions](concepts-security.md#azure-policy-support)
 
