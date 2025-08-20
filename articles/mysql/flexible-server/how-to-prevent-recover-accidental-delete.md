@@ -90,4 +90,4 @@ az mysql flexible-server restore \
 
 ## Related articles
 
-- [Azure Database for MySQL flexible server overview](https://learn.microsoft.com/azure/mysql/flexible-server/overview)
+- [Azure Database for MySQL overview](overview.md)

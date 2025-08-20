@@ -31,7 +31,7 @@ Azure Advisor analyzes your MySQL server configuration and usage patterns to pro
 - **Backup configuration**: Ensures automated backups are enabled and retained for an appropriate duration.
 - **Security posture**: Flags missing configurations such as SSL enforcement or Azure AD authentication.
 
-[Learn more](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-azure-advisor-recommendations)
+To learn more, visit [Azure Advisor](concepts-azure-advisor-recommendations.md)
 
 ### Azure Monitor integration
 
@@ -42,7 +42,7 @@ Azure Monitor collects performance metrics, telemetry, and logs from your MySQL 
 - Visualize trends using dashboards and workbooks
 - Diagnose issues with Application Insights and Log Analytics
 
-[Learn more](https://learn.microsoft.com/azure/azure-monitor/metrics/data-platform-metrics)
+To learn more, visit [Azure Monitor](/azure/azure-monitor/metrics/data-platform-metrics)
 
 ## Implementation Steps
 
@@ -76,5 +76,4 @@ For more information, visit [Best practices for monitoring](concept-monitoring-b
 ## Related articles
 
 - [Business continuity](concepts-business-continuity.md)
-- [Monitoring best practices](concept-monitoring-best-practices.md)
-- [Azure Monitor overview](concepts-azure-monitor-overview.md)
+
