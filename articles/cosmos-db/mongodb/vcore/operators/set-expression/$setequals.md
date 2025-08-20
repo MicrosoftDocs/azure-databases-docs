@@ -28,9 +28,9 @@ The `$setEquals` operator returns a value of `true` if two sets have the same di
 | --- | --- |
 | `array1, array2, ...` | Arrays that you want to compare to determine if they're equal. You can specify two or more arrays. |
 
-## JSON example
+## Example
 
-The following JSON sample from the `stores` dataset can help you understand how to use this operator.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
