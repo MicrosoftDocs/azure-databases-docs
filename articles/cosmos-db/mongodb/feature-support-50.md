@@ -14,7 +14,7 @@ ms.custom: build-2024
 
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
-Azure Cosmos DB is the Microsoft globally distributed multi-model database service. Azure Cosmos DB offers [multiple database APIs](../choose-api.md). You can communicate with Azure Cosmos DB for MongoDB by using any of the open-source MongoDB client [drivers](https://docs.mongodb.org/ecosystem/drivers). Azure Cosmos DB for MongoDB supports the use of existing client drivers by adhering to the MongoDB [wire protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Azure Cosmos DB is the Microsoft globally distributed multi-model database service. Azure Cosmos DB offers [multiple database APIs](../choose-api.md). You can communicate with Azure Cosmos DB for MongoDB by using any of the open-source MongoDB client [drivers](https://www.mongodb.com/docs/drivers/). Azure Cosmos DB for MongoDB supports the use of existing client drivers by adhering to the MongoDB [wire protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
 By using Azure Cosmos DB for MongoDB, you can enjoy the benefits of MongoDB that you're used to, with all of the enterprise capabilities that Azure Cosmos DB provides: [global distribution](../distribute-data-globally.md), [automatic sharding](../partitioning-overview.md), availability and latency guarantees, encryption at rest, backups, and much more.
 
