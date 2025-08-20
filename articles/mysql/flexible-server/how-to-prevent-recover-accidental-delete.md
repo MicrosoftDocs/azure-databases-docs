@@ -4,7 +4,7 @@ description: This article describes how to prevent and recover from an accidenta
 author: ramnov  
 ms.author: ramkumarch  
 ms.reviewer: maghan
-ms.date: 08/19/2025
+ms.date: 08/20/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -66,7 +66,7 @@ az lock create \
 
 ## Recover a deleted server
 
-If you accidentally delete a server, you can recover it by using Azure CLI and point-in-time restore (PITR), provided that backups are available.
+If you accidentally delete a server, you can recover it by using Azure CLI and point-in-time restore (PITR), if backups are available.
 
 ### Restore with Azure CLI
 
