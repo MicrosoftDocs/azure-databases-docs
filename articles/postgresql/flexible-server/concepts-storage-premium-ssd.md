@@ -68,8 +68,6 @@ The compute size selected determines the minimum and maximum IOPS. To learn more
 
 Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
-[!INCLUDE [pricing](includes/compute-storage-princing.md)]
-
 ## Related content
 
 - [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).

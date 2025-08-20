@@ -110,7 +110,6 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 
 Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
-[!INCLUDE [pricing](includes/compute-storage-princing.md)]
 
 ## Related content
 
