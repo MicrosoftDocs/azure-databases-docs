@@ -331,7 +331,7 @@ The first part uses the index to restrict the search to those documents beginnin
 ### Geospatial operators
 
 | | Supported | Example |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **`$geoWithin`** | ✅ Yes | `{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }` |
 | **`$geoIntersects`** | ✅ Yes |  `{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` |
 | **`$near`** | ✅ Yes | `{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` |
