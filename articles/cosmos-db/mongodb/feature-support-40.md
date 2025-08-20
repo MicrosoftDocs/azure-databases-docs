@@ -37,15 +37,15 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | --- | --- |
 | [**`change streams`**](change-streams.md) | Yes |
 | **`delete`** | Yes |
-| **`eval`** | No |
+| **`eval`** | ✖️ No |
 | **`find`** | Yes |
 | **`findAndModify`** | Yes |
 | **`getLastError`** | Yes |
 | **`getMore`** | Yes |
-| **`getPrevError`** | No |
+| **`getPrevError`** | ✖️ No |
 | **`insert`** | Yes |
-| **`parallelCollectionScan`** | No |
-| **`resetError`** | No |
+| **`parallelCollectionScan`** | ✖️ No |
+| **`resetError`** | ✖️ No |
 | **`update`** | Yes |
 
 ### Transaction commands
@@ -67,11 +67,11 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| **`cloneCollectionAsCapped`** | No |
-| **`collMod`** | No |
-| **`connectionStatus`** | No |
-| **`convertToCapped`** | No |
-| **`copydb`** | No |
+| **`cloneCollectionAsCapped`** | ✖️ No |
+| **`collMod`** | ✖️ No |
+| **`connectionStatus`** | ✖️ No |
+| **`convertToCapped`** | ✖️ No |
+| **`copydb`** | ✖️ No |
 | **`create`** | Yes |
 | **`createIndexes`** | Yes |
 | **`currentOp`** | Yes |
@@ -80,12 +80,12 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | **`dropIndexes`** | Yes |
 | **`filemd5`** | Yes |
 | **`killCursors`** | Yes |
-| **`killOp`** | No |
+| **`killOp`** | ✖️ No |
 | **`listCollections`** | Yes |
 | **`listDatabases`** | Yes |
 | **`listIndexes`** | Yes |
 | **`reIndex`** | Yes |
-| **`renameCollection`** | No |
+| **`renameCollection`** | ✖️ No |
 
 ### Diagnostics commands
 
@@ -93,20 +93,20 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | --- | --- |
 | **`buildInfo`** | Yes |
 | **`collStats`** | Yes |
-| **`connPoolStats`** | No |
-| **`connectionStatus`** | No |
-| **`dataSize`** | No |
-| **`dbHash`** | No |
+| **`connPoolStats`** | ✖️ No |
+| **`connectionStatus`** | ✖️ No |
+| **`dataSize`** | ✖️ No |
+| **`dbHash`** | ✖️ No |
 | **`dbStats`** | Yes |
 | **`explain`** | Yes |
-| **`features`** | No |
+| **`features`** | ✖️ No |
 | **`hello`** | Yes |
 | **`hostInfo`** | Yes |
 | **`listDatabases`** | Yes |
-| **`listCommands`** | No |
-| **`profiler`** | No |
-| **`serverStatus`** | No |
-| **`top`** | No |
+| **`listCommands`** | ✖️ No |
+| **`profiler`** | ✖️ No |
+| **`serverStatus`** | ✖️ No |
+| **`top`** | ✖️ No |
 | **`whatsmyuri`** | Yes |
 
 ## <a name="aggregation-pipeline"></a>Aggregation pipeline
@@ -118,34 +118,34 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | **`aggregate`** | Yes |
 | **`count`** | Yes |
 | **`distinct`** | Yes |
-| **`mapReduce`** | No |
+| **`mapReduce`** | ✖️ No |
 
 ### Aggregation stages
 
 | | Supported |
 | --- | --- |
 | **`addFields`** | Yes |
-| **`bucket`** | No |
-| **`bucketAuto`** | No |
+| **`bucket`** | ✖️ No |
+| **`bucketAuto`** | ✖️ No |
 | **`changeStream`** | Yes |
-| **`collStats`** | No |
+| **`collStats`** | ✖️ No |
 | **`count`** | Yes |
-| **`currentOp`** | No |
+| **`currentOp`** | ✖️ No |
 | **`facet`** | Yes |
 | **`geoNear`** | Yes |
 | **`graphLookup`** | Yes |
 | **`group`** | Yes |
-| **`indexStats`** | No |
+| **`indexStats`** | ✖️ No |
 | **`limit`** | Yes |
-| **`listLocalSessions`** | No |
-| **`listSessions`** | No |
-| **`lookup`** | Partial |
+| **`listLocalSessions`** | ✖️ No |
+| **`listSessions`** | ✖️ No |
+| **`lookup`** | ❓Partial |
 | **`match`** | Yes |
 | **`out`** | Yes |
 | **`project`** | Yes |
 | **`redact`** | Yes |
 | **`replaceRoot`** | Yes |
-| **`replaceWith`** | No |
+| **`replaceWith`** | ✖️ No |
 | **`sample`** | Yes |
 | **`skip`** | Yes |
 | **`sort`** | Yes |
@@ -250,7 +250,7 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| **`meta`** | No |
+| **`meta`** | ✖️ No |
 
 ### Array expressions
 
@@ -395,10 +395,10 @@ We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure 
 | **`Single Field Index`** | Yes |
 | **`Compound Index`** | Yes |
 | **`Multikey Index`** | Yes |
-| **`Text Index`** | No |
+| **`Text Index`** | ✖️ No |
 | **`2dsphere`** | Yes |
-| **`2d Index`** | No |
-| **`Hashed Index`** | No |
+| **`2d Index`** | ✖️ No |
+| **`Hashed Index`** | ✖️ No |
 
 ### Index properties
 
@@ -406,9 +406,9 @@ We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure 
 | --- | --- |
 | **`TTL`** | Yes |
 | **`Unique`** | Yes |
-| **`Partial`** | No |
-| **`Case Insensitive`** | No |
-| **`Sparse`** | No |
+| **`Partial`** | ✖️ No |
+| **`Case Insensitive`** | ✖️ No |
+| **`Sparse`** | ✖️ No |
 | **`Background`** | Yes |
 
 ## Operators
@@ -434,11 +434,11 @@ We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure 
 | | Supported |
 | --- | --- |
 | **`expr`** | Yes |
-| **`jsonSchema`** | No |
+| **`jsonSchema`** | ✖️ No |
 | **`mod`** | Yes |
 | **`regex`** | Yes |
-| **`text`** | No |
-| **`where`** | No |
+| **`text`** | ✖️ No |
+| **`where`** | ✖️ No |
 
 In the $regex queries, left-anchored expressions allow index search. However, using 'i' modifier (case-insensitivity) and 'm' modifier (multiline) causes the collection scan in all expressions.
 
@@ -470,7 +470,7 @@ The first part will use the index to restrict the search to those documents begi
 | | Supported |
 | --- | --- |
 | **`elemMatch`** | Yes |
-| **`meta`** | No |
+| **`meta`** | ✖️ No |
 | **`slice`** | Yes |
 
 ### Update operators
@@ -517,10 +517,10 @@ The first part will use the index to restrict the search to those documents begi
 | | Supported |
 | --- | --- |
 | **`bit`** | Yes |
-| **`bitsAllSet`** | No |
-| **`bitsAnySet`** | No |
-| **`bitsAllClear`** | No |
-| **`bitsAnyClear`** | No |
+| **`bitsAllSet`** | ✖️ No |
+| **`bitsAnySet`** | ✖️ No |
+| **`bitsAllClear`** | ✖️ No |
+| **`bitsAnyClear`** | ✖️ No |
 
 ### Geospatial operators
 
@@ -533,10 +533,10 @@ The first part will use the index to restrict the search to those documents begi
 | **`$geometry`** | Yes |
 | **`$minDistance`** | Yes |
 | **`$maxDistance`** | Yes |
-| **`$center`** | No |
-| **`$centerSphere`** | No |
-| **`$box`** | No |
-| **`$polygon`** | No |
+| **`$center`** | ✖️ No |
+| **`$centerSphere`** | ✖️ No |
+| **`$box`** | ✖️ No |
+| **`$polygon`** | ✖️ No |
 
 ## Sort operations
 

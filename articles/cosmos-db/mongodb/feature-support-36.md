@@ -38,72 +38,72 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| [**`change streams`**](change-streams.md) | Yes |
-| **`delete`** | Yes |
-| **`eval`** | No |
-| **`find`** | Yes |
-| **`findAndModify`** | Yes |
-| **`getLastError`** | Yes |
-| **`getMore`** | Yes |
-| **`getPrevError`** | No |
-| **`insert`** | Yes |
-| **`parallelCollectionScan`** | No |
-| **`resetError`** | No |
-| **`update`** | Yes |
+| [**`change streams`**](change-streams.md) | ✅ Yes |
+| **`delete`** | ✅ Yes |
+| **`eval`** | ✖️ No |
+| **`find`** | ✅ Yes |
+| **`findAndModify`** | ✅ Yes |
+| **`getLastError`** | ✅ Yes |
+| **`getMore`** | ✅ Yes |
+| **`getPrevError`** | ✖️ No |
+| **`insert`** | ✅ Yes |
+| **`parallelCollectionScan`** | ✖️ No |
+| **`resetError`** | ✖️ No |
+| **`update`** | ✅ Yes |
 
 ### Authentication commands
 
 | | Supported |
 | --- | --- |
-| **`authenticate`** | Yes |
-| **`getnonce`** | Yes |
-| **`logout`** | Yes |
+| **`authenticate`** | ✅ Yes |
+| **`getnonce`** | ✅ Yes |
+| **`logout`** | ✅ Yes |
 
 ### Administration commands
 
 | | Supported |
 | --- | --- |
-| **`cloneCollectionAsCapped`** | No |
-| **`collMod`** | No |
-| **`connectionStatus`** | No |
-| **`convertToCapped`** | No |
-| **`copydb`** | No |
-| **`create`** | Yes |
-| **`createIndexes`** | Yes |
-| **`currentOp`** | Yes |
-| **`drop`** | Yes |
-| **`dropDatabase`** | Yes |
-| **`dropIndexes`** | Yes |
-| **`filemd5`** | Yes |
-| **`killCursors`** | Yes |
-| **`killOp`** | No |
-| **`listCollections`** | Yes |
-| **`listDatabases`** | Yes |
-| **`listIndexes`** | Yes |
-| **`reIndex`** | Yes |
-| **`renameCollection`** | No |
+| **`cloneCollectionAsCapped`** | ✖️ No |
+| **`collMod`** | ✖️ No |
+| **`connectionStatus`** | ✖️ No |
+| **`convertToCapped`** | ✖️ No |
+| **`copydb`** | ✖️ No |
+| **`create`** | ✅ Yes |
+| **`createIndexes`** | ✅ Yes |
+| **`currentOp`** | ✅ Yes |
+| **`drop`** | ✅ Yes |
+| **`dropDatabase`** | ✅ Yes |
+| **`dropIndexes`** | ✅ Yes |
+| **`filemd5`** | ✅ Yes |
+| **`killCursors`** | ✅ Yes |
+| **`killOp`** | ✖️ No |
+| **`listCollections`** | ✅ Yes |
+| **`listDatabases`** | ✅ Yes |
+| **`listIndexes`** | ✅ Yes |
+| **`reIndex`** | ✅ Yes |
+| **`renameCollection`** | ✖️ No |
 
 ### Diagnostics commands
 
 | | Supported |
 | --- | --- |
-| **`buildInfo`** | Yes |
-| **`collStats`** | Yes |
-| **`connPoolStats`** | No |
-| **`connectionStatus`** | No |
-| **`dataSize`** | No |
-| **`dbHash`** | No |
-| **`dbStats`** | Yes |
-| **`explain`** | Yes |
-| **`features`** | No |
-| **`hello`** | Yes |
-| **`hostInfo`** | Yes |
-| **`listDatabases`** | Yes |
-| **`listCommands`** | No |
-| **`profiler`** | No |
-| **`serverStatus`** | No |
-| **`top`** | No |
-| **`whatsmyuri`** | Yes |
+| **`buildInfo`** | ✅ Yes |
+| **`collStats`** | ✅ Yes |
+| **`connPoolStats`** | ✖️ No |
+| **`connectionStatus`** | ✖️ No |
+| **`dataSize`** | ✖️ No |
+| **`dbHash`** | ✖️ No |
+| **`dbStats`** | ✅ Yes |
+| **`explain`** | ✅ Yes |
+| **`features`** | ✖️ No |
+| **`hello`** | ✅ Yes |
+| **`hostInfo`** | ✅ Yes |
+| **`listDatabases`** | ✅ Yes |
+| **`listCommands`** | ✖️ No |
+| **`profiler`** | ✖️ No |
+| **`serverStatus`** | ✖️ No |
+| **`top`** | ✖️ No |
+| **`whatsmyuri`** | ✅ Yes |
 
 <a name="aggregation-pipeline"></a>
 
@@ -113,42 +113,42 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| **`aggregate`** | Yes |
-| **`count`** | Yes |
-| **`distinct`** | Yes |
-| **`mapReduce`** | No |
+| **`aggregate`** | ✅ Yes |
+| **`count`** | ✅ Yes |
+| **`distinct`** | ✅ Yes |
+| **`mapReduce`** | ✖️ No |
 
 ### Aggregation stages
 
 | | Supported |
 | --- | --- |
-| **`addFields`** | Yes |
-| **`bucket`** | No |
-| **`bucketAuto`** | No |
-| **`changeStream`** | Yes |
-| **`collStats`** | No |
-| **`count`** | Yes |
-| **`currentOp`** | No |
-| **`facet`** | Yes |
-| **`geoNear`** | Yes |
-| **`graphLookup`** | Yes |
-| **`group`** | Yes |
-| **`indexStats`** | No |
-| **`limit`** | Yes |
-| **`listLocalSessions`** | No |
-| **`listSessions`** | No |
-| **`lookup`** | Partial |
-| **`match`** | Yes |
-| **`out`** | Yes |
-| **`project`** | Yes |
-| **`redact`** | Yes |
-| **`replaceRoot`** | Yes |
-| **`replaceWith`** | No |
-| **`sample`** | Yes |
-| **`skip`** | Yes |
-| **`sort`** | Yes |
-| **`sortByCount`** | Yes |
-| **`unwind`** | Yes |
+| **`addFields`** | ✅ Yes |
+| **`bucket`** | ✖️ No |
+| **`bucketAuto`** | ✖️ No |
+| **`changeStream`** | ✅ Yes |
+| **`collStats`** | ✖️ No |
+| **`count`** | ✅ Yes |
+| **`currentOp`** | ✖️ No |
+| **`facet`** | ✅ Yes |
+| **`geoNear`** | ✅ Yes |
+| **`graphLookup`** | ✅ Yes |
+| **`group`** | ✅ Yes |
+| **`indexStats`** | ✖️ No |
+| **`limit`** | ✅ Yes |
+| **`listLocalSessions`** | ✖️ No |
+| **`listSessions`** | ✖️ No |
+| **`lookup`** | ❓Partial |
+| **`match`** | ✅ Yes |
+| **`out`** | ✅ Yes |
+| **`project`** | ✅ Yes |
+| **`redact`** | ✅ Yes |
+| **`replaceRoot`** | ✅ Yes |
+| **`replaceWith`** | ✖️ No |
+| **`sample`** | ✅ Yes |
+| **`skip`** | ✅ Yes |
+| **`sort`** | ✅ Yes |
+| **`sortByCount`** | ✅ Yes |
+| **`unwind`** | ✅ Yes |
 
 > [!NOTE]
 > `$lookup` does not yet support the [uncorrelated subqueries](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) feature introduced in server version 3.6. You will receive an error with a message containing `let is not supported` if you attempt to use the `$lookup` operator with `let` and `pipeline` fields.
@@ -157,21 +157,21 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| **`and`** | Yes |
-| **`not`** | Yes |
-| **`or`** | Yes |
+| **`and`** | ✅ Yes |
+| **`not`** | ✅ Yes |
+| **`or`** | ✅ Yes |
 
 ### Set expressions
 
 | | Supported |
 | --- | --- |
-| **`setEquals`** | Yes |
-| **`setIntersection`** | Yes |
-| **`setUnion`** | Yes |
-| **`setDifference`** | Yes |
-| **`setIsSubset`** | Yes |
-| **`anyElementTrue`** | Yes |
-| **`allElementsTrue`** | Yes |
+| **`setEquals`** | ✅ Yes |
+| **`setIntersection`** | ✅ Yes |
+| **`setUnion`** | ✅ Yes |
+| **`setDifference`** | ✅ Yes |
+| **`setIsSubset`** | ✅ Yes |
+| **`anyElementTrue`** | ✅ Yes |
+| **`allElementsTrue`** | ✅ Yes |
 
 ### Comparison expressions
 
@@ -180,182 +180,182 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| **`cmp`** | Yes |
-| **`eq`** | Yes |
-| **`gt`** | Yes |
-| **`gte`** | Yes |
-| **`lt`** | Yes |
-| **`lte`** | Yes |
-| **`ne`** | Yes |
-| **`in`** | Yes |
-| **`nin`** | Yes |
+| **`cmp`** | ✅ Yes |
+| **`eq`** | ✅ Yes |
+| **`gt`** | ✅ Yes |
+| **`gte`** | ✅ Yes |
+| **`lt`** | ✅ Yes |
+| **`lte`** | ✅ Yes |
+| **`ne`** | ✅ Yes |
+| **`in`** | ✅ Yes |
+| **`nin`** | ✅ Yes |
 
 ### Arithmetic expressions
 
 | | Supported |
 | --- | --- |
-| **`abs`** | Yes |
-| **`add`** | Yes |
-| **`ceil`** | Yes |
-| **`divide`** | Yes |
-| **`exp`** | Yes |
-| **`floor`** | Yes |
-| **`ln`** | Yes |
-| **`log`** | Yes |
-| **`log10`** | Yes |
-| **`mod`** | Yes |
-| **`multiply`** | Yes |
-| **`pow`** | Yes |
-| **`sqrt`** | Yes |
-| **`subtract`** | Yes |
-| **`trunc`** | Yes |
+| **`abs`** | ✅ Yes |
+| **`add`** | ✅ Yes |
+| **`ceil`** | ✅ Yes |
+| **`divide`** | ✅ Yes |
+| **`exp`** | ✅ Yes |
+| **`floor`** | ✅ Yes |
+| **`ln`** | ✅ Yes |
+| **`log`** | ✅ Yes |
+| **`log10`** | ✅ Yes |
+| **`mod`** | ✅ Yes |
+| **`multiply`** | ✅ Yes |
+| **`pow`** | ✅ Yes |
+| **`sqrt`** | ✅ Yes |
+| **`subtract`** | ✅ Yes |
+| **`trunc`** | ✅ Yes |
 
 ### String expressions
 
 | | Supported |
 | --- | --- |
-| **`concat`** | Yes |
-| **`indexOfBytes`** | Yes |
-| **`indexOfCP`** | Yes |
-| **`split`** | Yes |
-| **`strLenBytes`** | Yes |
-| **`strLenCP`** | Yes |
-| **`strcasecmp`** | Yes |
-| **`substr`** | Yes |
-| **`substrBytes`** | Yes |
-| **`substrCP`** | Yes |
-| **`toLower`** | Yes |
-| **`toUpper`** | Yes |
+| **`concat`** | ✅ Yes |
+| **`indexOfBytes`** | ✅ Yes |
+| **`indexOfCP`** | ✅ Yes |
+| **`split`** | ✅ Yes |
+| **`strLenBytes`** | ✅ Yes |
+| **`strLenCP`** | ✅ Yes |
+| **`strcasecmp`** | ✅ Yes |
+| **`substr`** | ✅ Yes |
+| **`substrBytes`** | ✅ Yes |
+| **`substrCP`** | ✅ Yes |
+| **`toLower`** | ✅ Yes |
+| **`toUpper`** | ✅ Yes |
 
 ### Text search operator
 
 | | Supported |
 | --- | --- |
-| **`meta`** | No |
+| **`meta`** | ✖️ No |
 
 ### Array expressions
 
 | | Supported |
 | --- | --- |
-| **`arrayElemAt`** | Yes |
-| **`arrayToObject`** | Yes |
-| **`concatArrays`** | Yes |
-| **`filter`** | Yes |
-| **`indexOfArray`** | Yes |
-| **`isArray`** | Yes |
-| **`objectToArray`** | Yes |
-| **`range`** | Yes |
-| **`reverseArray`** | Yes |
-| **`reduce`** | Yes |
-| **`size`** | Yes |
-| **`slice`** | Yes |
-| **`zip`** | Yes |
-| **`in`** | Yes |
+| **`arrayElemAt`** | ✅ Yes |
+| **`arrayToObject`** | ✅ Yes |
+| **`concatArrays`** | ✅ Yes |
+| **`filter`** | ✅ Yes |
+| **`indexOfArray`** | ✅ Yes |
+| **`isArray`** | ✅ Yes |
+| **`objectToArray`** | ✅ Yes |
+| **`range`** | ✅ Yes |
+| **`reverseArray`** | ✅ Yes |
+| **`reduce`** | ✅ Yes |
+| **`size`** | ✅ Yes |
+| **`slice`** | ✅ Yes |
+| **`zip`** | ✅ Yes |
+| **`in`** | ✅ Yes |
 
 ### Variable operators
 
 | | Supported |
 | --- | --- |
-| **`map`** | Yes |
-| **`let`** | Yes |
+| **`map`** | ✅ Yes |
+| **`let`** | ✅ Yes |
 
 ### System variables
 
 | | Supported |
 | --- | --- |
-| **`$$CURRENT`** | Yes |
-| **`$$DESCEND`** | Yes |
-| **`$$KEEP`** | Yes |
-| **`$$PRUNE`** | Yes |
-| **`$$REMOVE`** | Yes |
-| **`$$ROOT`** | Yes |
+| **`$$CURRENT`** | ✅ Yes |
+| **`$$DESCEND`** | ✅ Yes |
+| **`$$KEEP`** | ✅ Yes |
+| **`$$PRUNE`** | ✅ Yes |
+| **`$$REMOVE`** | ✅ Yes |
+| **`$$ROOT`** | ✅ Yes |
 
 ### Literal operator
 
 | | Supported |
 | --- | --- |
-| **`literal`** | Yes |
+| **`literal`** | ✅ Yes |
 
 ### Date expressions
 
 | | Supported |
 | --- | --- |
-| **`dayOfYear`** | Yes |
-| **`dayOfMonth`** | Yes |
-| **`dayOfWeek`** | Yes |
-| **`year`** | Yes |
-| **`month`** | Yes |
-| **`week`** | Yes |
-| **`hour`** | Yes |
-| **`minute`** | Yes |
-| **`second`** | Yes |
-| **`millisecond`** | Yes |
-| **`dateToString`** | Yes |
-| **`isoDayOfWeek`** | Yes |
-| **`isoWeek`** | Yes |
-| **`dateFromParts`** | Yes |
-| **`dateToParts`** | Yes |
-| **`dateFromString`** | Yes |
-| **`isoWeekYear`** | Yes |
+| **`dayOfYear`** | ✅ Yes |
+| **`dayOfMonth`** | ✅ Yes |
+| **`dayOfWeek`** | ✅ Yes |
+| **`year`** | ✅ Yes |
+| **`month`** | ✅ Yes |
+| **`week`** | ✅ Yes |
+| **`hour`** | ✅ Yes |
+| **`minute`** | ✅ Yes |
+| **`second`** | ✅ Yes |
+| **`millisecond`** | ✅ Yes |
+| **`dateToString`** | ✅ Yes |
+| **`isoDayOfWeek`** | ✅ Yes |
+| **`isoWeek`** | ✅ Yes |
+| **`dateFromParts`** | ✅ Yes |
+| **`dateToParts`** | ✅ Yes |
+| **`dateFromString`** | ✅ Yes |
+| **`isoWeekYear`** | ✅ Yes |
 
 ### Conditional expressions
 
 | | Supported |
 | --- | --- |
-| **`cond`** | Yes |
-| **`ifNull`** | Yes |
-| **`switch`** | Yes |
+| **`cond`** | ✅ Yes |
+| **`ifNull`** | ✅ Yes |
+| **`switch`** | ✅ Yes |
 
 ### Data type operator
 
 | | Supported |
 | --- | --- |
-| **`type`** | Yes |
+| **`type`** | ✅ Yes |
 
 ### Accumulator expressions
 
 | | Supported |
 | --- | --- |
-| **`sum`** | Yes |
-| **`avg`** | Yes |
-| **`first`** | Yes |
-| **`last`** | Yes |
-| **`max`** | Yes |
-| **`min`** | Yes |
-| **`push`** | Yes |
-| **`addToSet`** | Yes |
-| **`stdDevPop`** | Yes |
-| **`stdDevSamp`** | Yes |
+| **`sum`** | ✅ Yes |
+| **`avg`** | ✅ Yes |
+| **`first`** | ✅ Yes |
+| **`last`** | ✅ Yes |
+| **`max`** | ✅ Yes |
+| **`min`** | ✅ Yes |
+| **`push`** | ✅ Yes |
+| **`addToSet`** | ✅ Yes |
+| **`stdDevPop`** | ✅ Yes |
+| **`stdDevSamp`** | ✅ Yes |
 
 ### Merge operator
 
 | | Supported |
 | --- | --- |
-| **`mergeObjects`** | Yes |
+| **`mergeObjects`** | ✅ Yes |
 
 ## Data types
 
 | | Supported |
 | --- | --- |
-| **`Double`** | Yes |
-| **`String`** | Yes |
-| **`Object`** | Yes |
-| **`Array`** | Yes |
-| **`Binary Data`** | Yes |
-| **`ObjectId`** | Yes |
-| **`Boolean`** | Yes |
-| **`Date`** | Yes |
-| **`Null`** | Yes |
-| **`32-bit Integer (int)`** | Yes |
-| **`Timestamp`** | Yes |
-| **`64-bit Integer (long)`** | Yes |
-| **`MinKey`** | Yes |
-| **`MaxKey`** | Yes |
-| **`Decimal128`** | Yes |
-| **`Regular Expression`** | Yes |
-| **`JavaScript`** | Yes |
-| **`JavaScript (with scope)`** | Yes |
-| **`Undefined`** | Yes |
+| **`Double`** | ✅ Yes |
+| **`String`** | ✅ Yes |
+| **`Object`** | ✅ Yes |
+| **`Array`** | ✅ Yes |
+| **`Binary Data`** | ✅ Yes |
+| **`ObjectId`** | ✅ Yes |
+| **`Boolean`** | ✅ Yes |
+| **`Date`** | ✅ Yes |
+| **`Null`** | ✅ Yes |
+| **`32-bit Integer (int)`** | ✅ Yes |
+| **`Timestamp`** | ✅ Yes |
+| **`64-bit Integer (long)`** | ✅ Yes |
+| **`MinKey`** | ✅ Yes |
+| **`MaxKey`** | ✅ Yes |
+| **`Decimal128`** | ✅ Yes |
+| **`Regular Expression`** | ✅ Yes |
+| **`JavaScript`** | ✅ Yes |
+| **`JavaScript (with scope)`** | ✅ Yes |
+| **`Undefined`** | ✅ Yes |
 
 ## Indexes and index properties
 
@@ -363,24 +363,24 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| **`Single Field Index`** | Yes |
-| **`Compound Index`** | Yes |
-| **`Multikey Index`** | Yes |
-| **`Text Index`** | No |
-| **`2dsphere`** | Yes |
-| **`2d Index`** | No |
-| **`Hashed Index`** | No |
+| **`Single Field Index`** | ✅ Yes |
+| **`Compound Index`** | ✅ Yes |
+| **`Multikey Index`** | ✅ Yes |
+| **`Text Index`** | ✖️ No |
+| **`2dsphere`** | ✅ Yes |
+| **`2d Index`** | ✖️ No |
+| **`Hashed Index`** | ✖️ No |
 
 ### Index properties
 
 | | Supported |
 | --- | --- |
-| **`TTL`** | Yes |
-| **`Unique`** | Yes |
-| **`Partial`** | No |
-| **`Case Insensitive`** | No |
-| **`Sparse`** | No |
-| **`Background`** | Yes |
+| **`TTL`** | ✅ Yes |
+| **`Unique`** | ✅ Yes |
+| **`Partial`** | ✖️ No |
+| **`Case Insensitive`** | ✖️ No |
+| **`Sparse`** | ✖️ No |
+| **`Background`** | ✅ Yes |
 
 ## Operators
 
@@ -388,28 +388,28 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 | | Supported |
 | --- | --- |
-| **`or`** | Yes |
-| **`and`** | Yes |
-| **`not`** | Yes |
-| **`nor`** | Yes |
+| **`or`** | ✅ Yes |
+| **`and`** | ✅ Yes |
+| **`not`** | ✅ Yes |
+| **`nor`** | ✅ Yes |
 
 ### Element operators
 
 | | Supported |
 | --- | --- |
-| **`exists`** | Yes |
-| **`type`** | Yes |
+| **`exists`** | ✅ Yes |
+| **`type`** | ✅ Yes |
 
 ### Evaluation query operators
 
 | | Supported |
 | --- | --- |
-| **`expr`** | Yes |
-| **`jsonSchema`** | No |
-| **`mod`** | Yes |
-| **`regex`** | Yes |
-| `text` | No |
-| **`where`** | No |
+| **`expr`** | ✅ Yes |
+| **`jsonSchema`** | ✖️ No |
+| **`mod`** | ✅ Yes |
+| **`regex`** | ✅ Yes |
+| `text` | ✖️ No |
+| **`where`** | ✖️ No |
 
 In the $regex queries, left-anchored expressions allow index search. However, using 'i' modifier (case-insensitivity) and 'm' modifier (multiline) causes the collection scan in all expressions.
 
@@ -426,23 +426,23 @@ The first part will use the index to restrict the search to those documents begi
 
 | | Supported |
 | --- | --- |
-| **`all`** | Yes |
-| **`elemMatch`** | Yes |
-| **`size`** | Yes |
+| **`all`** | ✅ Yes |
+| **`elemMatch`** | ✅ Yes |
+| **`size`** | ✅ Yes |
 
 ### Comment operator
 
 | | Supported |
 | --- | --- |
-| **`comment`** | Yes |
+| **`comment`** | ✅ Yes |
 
 ### Projection operators
 
 | | Supported |
 | --- | --- |
-| **`elemMatch`** | Yes |
-| **`meta`** | No |
-| **`slice`** | Yes |
+| **`elemMatch`** | ✅ Yes |
+| **`meta`** | ✖️ No |
+| **`slice`** | ✅ Yes |
 
 ### Update operators
 
@@ -450,64 +450,64 @@ The first part will use the index to restrict the search to those documents begi
 
 | | Supported |
 | --- | --- |
-| **`inc`** | Yes |
-| **`mul`** | Yes |
-| **`rename`** | Yes |
-| **`setOnInsert`** | Yes |
-| **`set`** | Yes |
-| **`unset`** | Yes |
-| **`min`** | Yes |
-| **`max`** | Yes |
-| **`currentDate`** | Yes |
+| **`inc`** | ✅ Yes |
+| **`mul`** | ✅ Yes |
+| **`rename`** | ✅ Yes |
+| **`setOnInsert`** | ✅ Yes |
+| **`set`** | ✅ Yes |
+| **`unset`** | ✅ Yes |
+| **`min`** | ✅ Yes |
+| **`max`** | ✅ Yes |
+| **`currentDate`** | ✅ Yes |
 
 #### Array update operators
 
 | | Supported |
 | --- | --- |
-| **`$`** | Yes |
-| **`$[]`** | Yes |
-| **`$[\<identifier\>]`** | Yes |
-| **`addToSet`** | Yes |
-| **`pop`** | Yes |
-| **`pullAll`** | Yes |
-| **`pull`** | Yes |
-| **`push`** | Yes |
-| **`pushAll`** | Yes |
+| **`$`** | ✅ Yes |
+| **`$[]`** | ✅ Yes |
+| **`$[\<identifier\>]`** | ✅ Yes |
+| **`addToSet`** | ✅ Yes |
+| **`pop`** | ✅ Yes |
+| **`pullAll`** | ✅ Yes |
+| **`pull`** | ✅ Yes |
+| **`push`** | ✅ Yes |
+| **`pushAll`** | ✅ Yes |
 
 #### Update modifiers
 
 | | Supported |
 | --- | --- |
-| **`each`** | Yes |
-| **`slice`** | Yes |
-| **`sort`** | Yes |
-| **`position`** | Yes |
+| **`each`** | ✅ Yes |
+| **`slice`** | ✅ Yes |
+| **`sort`** | ✅ Yes |
+| **`position`** | ✅ Yes |
 
 #### Bitwise update operator
 
 | | Supported |
 | --- | --- |
-| **`bit`** | Yes |
-| **`bitsAllSet`** | No |
-| **`bitsAnySet`** | No |
-| **`bitsAllClear`** | No |
-| **`bitsAnyClear`** | No |
+| **`bit`** | ✅ Yes |
+| **`bitsAllSet`** | ✖️ No |
+| **`bitsAnySet`** | ✖️ No |
+| **`bitsAllClear`** | ✖️ No |
+| **`bitsAnyClear`** | ✖️ No |
 
 ### Geospatial operators
 
 | | Supported |
 | --- | --- |
-| **`$geoWithin`** | Yes |
-| **`$geoIntersects`** | Yes |
-| **`$near`** | Yes |
-| **`$nearSphere`** | Yes |
-| **`$geometry`** | Yes |
-| **`$minDistance`** | Yes |
-| **`$maxDistance`** | Yes |
-| **`$center`** | No |
-| **`$centerSphere`** | No |
-| **`$box`** | No |
-| **`$polygon`** | No |
+| **`$geoWithin`** | ✅ Yes |
+| **`$geoIntersects`** | ✅ Yes |
+| **`$near`** | ✅ Yes |
+| **`$nearSphere`** | ✅ Yes |
+| **`$geometry`** | ✅ Yes |
+| **`$minDistance`** | ✅ Yes |
+| **`$maxDistance`** | ✅ Yes |
+| **`$center`** | ✖️ No |
+| **`$centerSphere`** | ✖️ No |
+| **`$box`** | ✖️ No |
+| **`$polygon`** | ✖️ No |
 
 ## Sort operations
 
