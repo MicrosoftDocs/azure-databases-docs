@@ -28,9 +28,9 @@ The `$setIntersection` operator returns an array that contains elements that app
 | --- | --- |
 | `<array1>, <array2>, ...` | Two or more arrays that you want to find the intersection of. Each array is treated as a set. |
 
-## JSON example
+## Example
 
-The following JSON sample from the `stores` dataset can help you understand how to use this operator.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
