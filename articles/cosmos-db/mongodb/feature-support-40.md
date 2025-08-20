@@ -153,7 +153,7 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | **`unwind`** | Yes |
 
 > [!NOTE]
-> `$lookup` does not yet support the [uncorrelated subqueries](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) feature introduced in server version 3.6. You will receive an error with a message containing `let is not supported` if you attempt to use the `$lookup` operator with `let` and `pipeline` fields.
+> `$lookup` doesn't yet support the [uncorrelated subqueries](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) feature introduced in server version 3.6. You receive an error with a message containing `let is not supported` if you attempt to use the `$lookup` operator with `let` and `pipeline` fields.
 
 ### Boolean expressions
 
@@ -192,7 +192,7 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 ### Comparison expressions
 
 > [!NOTE]
-> The API for MongoDB does not support comparison expressions with an array literal in the query.
+> The API for MongoDB doesn't support comparison expressions with an array literal in the query.
 
 | | Supported |
 | --- | --- |
@@ -354,15 +354,15 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 ## Data types
 
-Azure Cosmos DB for MongoDB supports documents encoded in MongoDB BSON format. The 4.0 API version enhances the internal usage of this format to improve performance and reduce costs. Documents written or updated through an endpoint running 4.0+ benefit from optimization.
+Azure Cosmos DB for MongoDB supports documents encoded in MongoDB binary JSON (BSON) format. The 4.0 API version enhances the internal usage of this format to improve performance and reduce costs. Documents written or updated through an endpoint running 4.0+ benefit from optimization.
 
-In an [upgrade scenario](upgrade-version.md), documents written prior to the upgrade to version 4.0+ won't benefit from the enhanced performance until they're updated via a write operation through the 4.0+ endpoint.
+In an [upgrade scenario to version 4.0 or later](upgrade-version.md), documents created before upgrading don't immediately benefit from the enhanced performance. To take advantage of the improvements, update these documents through a write operation using the 4.0 endpoint.
 
-16-MB document support raises the size limit for your documents from 2 MB to 16 MB. This limit only applies to collections created after this feature has been enabled. Once this feature is enabled for your database account, it can't be disabled.
+16-MB document support raises the size limit for documents from 2 MB to 16 MB. This limit applies only to collections created after enabling the feature. After you enable this feature for a database account, it can't be disabled.
 
-Enabling 16 MB can be done in the features tab in the Azure portal or programmatically by [adding the "EnableMongo16MBDocumentSupport" capability](how-to-configure-capabilities.md).
+Enabling 16 MB can be done in the features tab in the Azure portal or programmatically by [adding the `EnableMongo16MBDocumentSupport` capability](how-to-configure-capabilities.md).
 
-We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure requests with larger documents succeed. If necessary, raising your DB/Collection RUs may also help performance.
+We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure requests with larger documents succeed. If necessary, raising your database or collection request units might also help performance.
 
 | | Supported |
 | --- | --- |
@@ -440,7 +440,7 @@ We recommend enabling Server Side Retry and avoiding wildcard indexes to ensure 
 | **`text`** | ✖️ No |
 | **`where`** | ✖️ No |
 
-In the $regex queries, left-anchored expressions allow index search. However, using 'i' modifier (case-insensitivity) and 'm' modifier (multiline) causes the collection scan in all expressions.
+In the $regex queries, left-anchored expressions allow index search. However, using `i` modifier (case-insensitivity) and `m` modifier (multiline) causes the collection scan in all expressions.
 
 When there's a need to include `$` or `|`, it's best to create two (or more) regex queries. For example, given the following original query: `find({x:{$regex: /^abc$/})`, it has to be modified as follows:
 
@@ -451,7 +451,7 @@ find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})
 The first part uses the index to restrict the search to those documents beginning with `^abc` and the second part matches the exact entries. The bar operator `|` acts as an "or" function - the query `find({x:{$regex: /^abc |^def/})` matches the documents in which field `x` has values that begin with `"abc"` or `"def"`. To utilize the index, break the query into two different queries joined by the $or operator: `find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`.
 
 > [!TIP]
-> The `text` command is not supported. Use `$regex` instead.
+> The `text` command isn't supported. Use `$regex` instead.
 
 ### Array operators
 
@@ -558,21 +558,21 @@ Azure Cosmos DB supports automatic, native replication at the lowest layers. Thi
 
 ## Retryable Writes
 
-Retryable writes enable MongoDB drivers to automatically retry certain write operations if there was failure, but results in more stringent requirements for certain operations, which match MongoDB protocol requirements. With this feature enabled, update operations, including deletes, in sharded collections will require the shard key to be included in the query filter or update statement.
+Retryable writes enable MongoDB drivers to automatically retry certain write operations if there was failure, but results in more stringent requirements for certain operations, which match MongoDB protocol requirements. With this feature enabled, update operations, including deletes, in sharded collections require the shard key to be included in the query filter or update statement.
 
-For example, with a sharded collection, sharded on key “country”: To delete all the documents with the field **city** = `"NYC"`, the application will need to execute the operation for all shard key (country) values if Retryable writes are enabled.
+For example, with a sharded collection, sharded on key `region`: To delete all the documents with the field `city = "NYC"`, the application needs to execute the operation for all shard key (**region**) values if Retryable writes are enabled.
 
-- `db.coll.deleteMany({"country": "USA", "city": "NYC"})` - **Success**
-- `db.coll.deleteMany({"city": "NYC"})` - Fails with error **ShardKeyNotFound(61)**
+- `db.coll.deleteMany({"region": "USA", "city": "NYC"})` - Succeeds with message `Success`
+- `db.coll.deleteMany({"city": "NYC"})` - Fails with error `ShardKeyNotFound(61)`
 
 > [!NOTE]
-> Retryable writes does not support bulk unordered writes at this time. If you would like to perform bulk writes with retryable writes enabled, perform bulk ordered writes.
+> Retryable writes don't support bulk unordered writes at this time. If you would like to perform bulk writes with retryable writes enabled, perform bulk ordered writes.
 
 To enable the feature, [add the EnableMongoRetryableWrites capability](how-to-configure-capabilities.md) to your database account. This feature can also be enabled in the features tab in the Azure portal.
 
 ## Sharding
 
-Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means you don't have to invoke commands such as addShard, balancerStart, moveChunk etc. You only need to specify the shard key while creating the containers or querying the data.
+Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means that you don't have to invoke commands like `addShard`, `balancerStart`, and `moveChunk`. You only need to specify the shard key while creating the containers or querying the data.
 
 ## Sessions
 
@@ -588,7 +588,7 @@ Multi-document transactions are supported within an unsharded collection. Multi-
 
 ## User and role management
 
-Azure Cosmos DB doesn't yet support users and roles. However, Azure Cosmos DB supports Azure role-based access control (Azure RBAC) and read-write and read-only passwords/keys that can be obtained through the [Azure portal](https://portal.azure.com) (Connection String page).
+Azure Cosmos DB doesn't yet support users and roles. However, Azure Cosmos DB supports Azure role-based access control and read-write and read-only passwords/keys that can be obtained through the [Azure portal](https://portal.azure.com) (Connection String page).
 
 ## Write Concern
 

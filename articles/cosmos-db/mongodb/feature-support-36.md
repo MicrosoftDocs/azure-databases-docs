@@ -533,7 +533,7 @@ Azure Cosmos DB doesn't yet support retryable writes. Client drivers must add `r
 
 ## Sharding
 
-Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means you don't have to invoke commands such as addShard, balancerStart, moveChunk, etc. You only need to specify the shard key while creating the containers or querying the data.
+Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means that you don't have to invoke commands like `addShard`, `balancerStart`, and `moveChunk`. You only need to specify the shard key while creating the containers or querying the data.
 
 ## Sessions
 

@@ -38,41 +38,49 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 ### Query and write operation commands
 
-- `delete`
-- `find`
-- `findAndModify`
-- `getLastError`
-- `getMore`
-- `insert`
-- `update`
+| | Supported |
+| --- | --- |
+| **`delete`** | ✅ Yes |
+| **`find`** | ✅ Yes |
+| **`findAndModify`** | ✅ Yes |
+| **`getLastError`** | ✅ Yes |
+| **`getMore`** | ✅ Yes |
+| **`insert`** | ✅ Yes |
+| **`update`** | ✅ Yes |
 
 ### Authentication commands
 
-- `logout`
-- `authenticate`
-- `getnonce`
+| | Supported |
+| --- | --- |
+| **`logout`** | ✅ Yes |
+| **`authenticate`** | ✅ Yes |
+| **`getnonce`** | ✅ Yes |
 
 ### Administration commands
 
-- `dropDatabase`
-- `listCollections`
-- `drop`
-- `create`
-- `filemd5`
-- `createIndexes`
-- `listIndexes`
-- `dropIndexes`
-- `connectionStatus`
-- `reIndex`
+| | Supported |
+| --- | --- |
+| **`dropDatabase`** | ✅ Yes |
+| **`listCollections`** | ✅ Yes |
+| **`drop`** | ✅ Yes |
+| **`create`** | ✅ Yes |
+| **`filemd5`** | ✅ Yes |
+| **`createIndexes`** | ✅ Yes |
+| **`listIndexes`** | ✅ Yes |
+| **`dropIndexes`** | ✅ Yes |
+| **`connectionStatus`** | ✅ Yes |
+| **`reIndex`** | ✅ Yes |
 
 ### Diagnostics commands
 
-- `buildInfo`
-- `collStats`
-- `dbStats`
-- `hostInfo`
-- `listDatabases`
-- `whatsmyuri`
+| | Supported |
+| --- | --- |
+| **`buildInfo`** | ✅ Yes |
+| **`collStats`** | ✅ Yes |
+| **`dbStats`** | ✅ Yes |
+| **`hostInfo`** | ✅ Yes |
+| **`listDatabases`** | ✅ Yes |
+| **`whatsmyuri`** | ✅ Yes |
 
 <a name="aggregation-pipeline"></a>
 
@@ -80,133 +88,155 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 
 ### Aggregation commands
 
-- `aggregate`
-- `count`
-- `distinct`
+| | Supported |
+| --- | --- |
+| **`aggregate`** | ✅ Yes |
+| **`count`** | ✅ Yes |
+| **`distinct`** | ✅ Yes |
 
 ### Aggregation stages
 
-- `$project`
-- `$match`
-- `$limit`
-- `$skip`
-- `$unwind`
-- `$group`
-- `$sample`
-- `$sort`
-- `$lookup`
-- `$out`
-- `$count`
-- `$addFields`
+| | Supported |
+| --- | --- |
+| **`$project`** | ✅ Yes |
+| **`$match`** | ✅ Yes |
+| **`$limit`** | ✅ Yes |
+| **`$skip`** | ✅ Yes |
+| **`$unwind`** | ✅ Yes |
+| **`$group`** | ✅ Yes |
+| **`$sample`** | ✅ Yes |
+| **`$sort`** | ✅ Yes |
+| **`$lookup`** | ✅ Yes |
+| **`$out`** | ✅ Yes |
+| **`$count`** | ✅ Yes |
+| **`$addFields`** | ✅ Yes |
 
 ### Aggregation expressions
 
 #### Boolean expressions
 
-- `$and`
-- `$or`
-- `$not`
+| | Supported |
+| --- | --- |
+| **`$and`** | ✅ Yes |
+| **`$or`** | ✅ Yes |
+| **`$not`** | ✅ Yes |
 
 #### Set expressions
 
-- `$setEquals`
-- `$setIntersection`
-- `$setUnion`
-- `$setDifference`
-- `$setIsSubset`
-- `$anyElementTrue`
-- `$allElementsTrue`
+| | Supported |
+| --- | --- |
+| **`$setEquals`** | ✅ Yes |
+| **`$setIntersection`** | ✅ Yes |
+| **`$setUnion`** | ✅ Yes |
+| **`$setDifference`** | ✅ Yes |
+| **`$setIsSubset`** | ✅ Yes |
+| **`$anyElementTrue`** | ✅ Yes |
+| **`$allElementsTrue`** | ✅ Yes |
 
 #### Comparison expressions
 
-- `$cmp`
-- `$eq`
-- `$gt`
-- `$gte`
-- `$lt`
-- `$lte`
-- `$ne`
+| | Supported |
+| --- | --- |
+| **`$cmp`** | ✅ Yes |
+| **`$eq`** | ✅ Yes |
+| **`$gt`** | ✅ Yes |
+| **`$gte`** | ✅ Yes |
+| **`$lt`** | ✅ Yes |
+| **`$lte`** | ✅ Yes |
+| **`$ne`** | ✅ Yes |
 
 #### Arithmetic expressions
 
-- `$abs`
-- `$add`
-- `$ceil`
-- `$divide`
-- `$exp`
-- `$floor`
-- `$ln`
-- `$log`
-- `$log10`
-- `$mod`
-- `$multiply`
-- `$pow`
-- `$sqrt`
-- `$subtract`
-- `$trunc`
+| | Supported |
+| --- | --- |
+| **`$abs`** | ✅ Yes |
+| **`$add`** | ✅ Yes |
+| **`$ceil`** | ✅ Yes |
+| **`$divide`** | ✅ Yes |
+| **`$exp`** | ✅ Yes |
+| **`$floor`** | ✅ Yes |
+| **`$ln`** | ✅ Yes |
+| **`$log`** | ✅ Yes |
+| **`$log10`** | ✅ Yes |
+| **`$mod`** | ✅ Yes |
+| **`$multiply`** | ✅ Yes |
+| **`$pow`** | ✅ Yes |
+| **`$sqrt`** | ✅ Yes |
+| **`$subtract`** | ✅ Yes |
+| **`$trunc`** | ✅ Yes |
 
 #### String expressions
 
-- `$concat`
-- `$indexOfBytes`
-- `$indexOfCP`
-- `$split`
-- `$strLenBytes`
-- `$strLenCP`
-- `$strcasecmp`
-- `$substr`
-- `$substrBytes`
-- `$substrCP`
-- `$toLower`
-- `$toUpper`
+| | Supported |
+| --- | --- |
+| **`$concat`** | ✅ Yes |
+| **`$indexOfBytes`** | ✅ Yes |
+| **`$indexOfCP`** | ✅ Yes |
+| **`$split`** | ✅ Yes |
+| **`$strLenBytes`** | ✅ Yes |
+| **`$strLenCP`** | ✅ Yes |
+| **`$strcasecmp`** | ✅ Yes |
+| **`$substr`** | ✅ Yes |
+| **`$substrBytes`** | ✅ Yes |
+| **`$substrCP`** | ✅ Yes |
+| **`$toLower`** | ✅ Yes |
+| **`$toUpper`** | ✅ Yes |
 
 #### Array expressions
 
-- `$arrayElemAt`
-- `$concatArrays`
-- `$filter`
-- `$indexOfArray`
-- `$isArray`
-- `$range`
-- `$reverseArray`
-- `$size`
-- `$slice`
-- `$in`
+| | Supported |
+| --- | --- |
+| **`$arrayElemAt`** | ✅ Yes |
+| **`$concatArrays`** | ✅ Yes |
+| **`$filter`** | ✅ Yes |
+| **`$indexOfArray`** | ✅ Yes |
+| **`$isArray`** | ✅ Yes |
+| **`$range`** | ✅ Yes |
+| **`$reverseArray`** | ✅ Yes |
+| **`$size`** | ✅ Yes |
+| **`$slice`** | ✅ Yes |
+| **`$in`** | ✅ Yes |
 
 #### Date expressions
 
-- `$dayOfYear`
-- `$dayOfMonth`
-- `$dayOfWeek`
-- `$year`
-- `$month`
-- `$week`
-- `$hour`
-- `$minute`
-- `$second`
-- `$millisecond`
-- `$isoDayOfWeek`
-- `$isoWeek`
+| | Supported |
+| --- | --- |
+| **`$dayOfYear`** | ✅ Yes |
+| **`$dayOfMonth`** | ✅ Yes |
+| **`$dayOfWeek`** | ✅ Yes |
+| **`$year`** | ✅ Yes |
+| **`$month`** | ✅ Yes |
+| **`$week`** | ✅ Yes |
+| **`$hour`** | ✅ Yes |
+| **`$minute`** | ✅ Yes |
+| **`$second`** | ✅ Yes |
+| **`$millisecond`** | ✅ Yes |
+| **`$isoDayOfWeek`** | ✅ Yes |
+| **`$isoWeek`** | ✅ Yes |
 
 #### Conditional expressions
 
-- `$cond`
-- `$ifNull`
+| | Supported |
+| --- | --- |
+| **`$cond`** | ✅ Yes |
+| **`$ifNull`** | ✅ Yes |
 
 ## Aggregation accumulators
 
-- `$sum`
-- `$avg`
-- `$first`
-- `$last`
-- `$max`
-- `$min`
-- `$push`
-- `$addToSet`
+| | Supported |
+| --- | --- |
+| **`$sum`** | ✅ Yes |
+| **`$avg`** | ✅ Yes |
+| **`$first`** | ✅ Yes |
+| **`$last`** | ✅ Yes |
+| **`$max`** | ✅ Yes |
+| **`$min`** | ✅ Yes |
+| **`$push`** | ✅ Yes |
+| **`$addToSet`** | ✅ Yes |
 
 ## Operators
 
-Following operators are supported with corresponding examples of their use. Consider this sample document used in the queries below:
+Following operators are supported with corresponding examples of their use. Consider this sample document used in the queries here:
 
 ```json
 {
@@ -227,24 +257,24 @@ Following operators are supported with corresponding examples of their use. Cons
 }
 ```
 
-| Operator | Example |
+| | Supported | Example |
 | --- | --- |
-| `eq` | `{ "Volcano Name": { $eq: "Rainier" } }` |
-| `gt` | `{ "Elevation": { $gt: 4000 } }` |
-| `gte` | `{ "Elevation": { $gte: 4392 } }` |
-| `lt` | `{ "Elevation": { $lt: 5000 } }` |
-| `lte` | `{ "Elevation": { $lte: 5000 } }` |
-| `ne` | `{ "Elevation": { $ne: 1 } }` |
-| `in` | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |
-| `nin` | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` |
-| `or` | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |
-| `and` | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |
-| `not` | `{ "Elevation": { $not: { $gt: 5000 } } }`|
-| `nor` | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |
-| `exists` | `{ "Status": { $exists: true } }`|
-| `type` | `{ "Status": { $type: "string" } }`|
-| `mod` | `{ "Elevation": { $mod: [ 4, 0 ] } }` |
-| `regex` | `{ "Volcano Name": { $regex: "^Rain"} }`|
+| **`eq`** | ✅ Yes | `{ "Volcano Name": { $eq: "Rainier" } }` |
+| **`gt`** | ✅ Yes | `{ "Elevation": { $gt: 4000 } }` |
+| **`gte`** | ✅ Yes | `{ "Elevation": { $gte: 4392 } }` |
+| **`lt`** | ✅ Yes | `{ "Elevation": { $lt: 5000 } }` |
+| **`lte`** | ✅ Yes | `{ "Elevation": { $lte: 5000 } }` |
+| **`ne`** | ✅ Yes | `{ "Elevation": { $ne: 1 } }` |
+| **`in`** | ✅ Yes | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |
+| **`nin`** | ✅ Yes | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` |
+| **`or`** | ✅ Yes | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |
+| **`and`** | ✅ Yes | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |
+| **`not`** | ✅ Yes | `{ "Elevation": { $not: { $gt: 5000 } } }`|
+| **`nor`** | ✅ Yes | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |
+| **`exists`** | ✅ Yes | `{ "Status": { $exists: true } }`|
+| **`type`** | ✅ Yes | `{ "Status": { $type: "string" } }`|
+| **`mod`** | ✅ Yes | `{ "Elevation": { $mod: [ 4, 0 ] } }` |
+| **`regex`** | ✅ Yes | `{ "Volcano Name": { $regex: "^Rain"} }`|
 
 ### Notes
 
@@ -262,48 +292,57 @@ The first part uses the index to restrict the search to those documents beginnin
 
 #### Field update operators
 
-- `$inc`
-- `$mul`
-- `$rename`
-- `$setOnInsert`
-- `$set`
-- `$unset`
-- `$min`
-- `$max`
-- `$currentDate`
+| | Supported |
+| --- | --- |
+| **`$inc`** | ✅ Yes |
+| **`$mul`** | ✅ Yes |
+| **`$rename`** | ✅ Yes |
+| **`$setOnInsert`** | ✅ Yes |
+| **`$set`** | ✅ Yes |
+| **`$unset`** | ✅ Yes |
+| **`$min`** | ✅ Yes |
+| **`$max`** | ✅ Yes |
+| **`$currentDate`** | ✅ Yes |
 
 #### Array update operators
 
-- `$addToSet`
-- `$pop`
-- `$pullAll`
-- `$pull`  (Note: $pull with condition isn't supported)
-- `$pushAll`
-- `$push`
-- `$each`
-- `$slice`
-- `$sort`
-- `$position`
+| | Supported |
+| --- | --- |
+| **`$addToSet`** | ✅ Yes |
+| **`$pop`** | ✅ Yes |
+| **`$pullAll`** | ✅ Yes |
+| **`$pull`** | ✅ Yes |
+| **`$pushAll`** | ✅ Yes |
+| **`$push`** | ✅ Yes |
+| **`$each`** | ✅ Yes |
+| **`$slice`** | ✅ Yes |
+| **`$sort`** | ✅ Yes |
+| **`$position`** | ✅ Yes |
+
+> [!TIP]
+> `$pull` with a condition isn't supported.
 
 #### Bitwise update operator
 
-- `$bit`
+| | Supported |
+| --- | --- |
+| **`$bit`** | ✅ Yes |
 
 ### Geospatial operators
 
-| Operator | Example | Supported |
-| --- | --- | --- |
-| `$geoWithin` | `{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }` | Yes |
-| `$geoIntersects` |  `{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` | Yes |
-| `$near` | `{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` | Yes |
-| `$nearSphere` | `{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }` | Yes |
-| `$geometry` | `{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` | Yes |
-| `$minDistance` | `{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }` | Yes |
-| `$maxDistance` | `{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }` | Yes |
-| `$center` | `{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }` | Yes |
-| `$centerSphere` | `{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }` | Yes |
-| `$box` | `{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }` | Yes |
-| `$polygon` | `{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` | Yes |
+| | Supported | Example |
+| --- | --- | --- | --- |
+| **`$geoWithin`** | ✅ Yes | `{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }` |
+| **`$geoIntersects`** | ✅ Yes |  `{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` |
+| **`$near`** | ✅ Yes | `{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` |
+| **`$nearSphere`** | ✅ Yes | `{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }` |
+| **`$geometry`** | ✅ Yes | `{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` |
+| **`$minDistance`** | ✅ Yes | `{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }` ||
+| **`$maxDistance`** | ✅ Yes | `{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }` |
+| **`$center`** | ✅ Yes | `{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }` |
+| **`$centerSphere`** | ✅ Yes | `{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }` |
+| **`$box`** | ✅ Yes | `{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }` |
+| **`$polygon`** | ✅ Yes | `{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }` |
 
 ## Sort Operations
 
@@ -311,17 +350,17 @@ When you use the `findOneAndUpdate` operation, sort operations on a single field
 
 ## Other operators
 
-| Operator | Example | Notes
-| --- | --- | --- |
-| `$all` | `{ "Location.coordinates": { $all: [-121.758, 46.87] } }` |
-| `$elemMatch` | `{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }` |
-| `$size` | `{ "Location.coordinates": { $size: 2 } }` |
-| `$comment` |  `{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}` |
-| `$text` |  | Not supported. Use $regex instead.
+| | Supported | Example | Notes
+| --- | --- | --- | --- |
+| **`$all`** | ✅ Yes | `{ "Location.coordinates": { $all: [-121.758, 46.87] } }` |
+| **`$elemMatch`** | ✅ Yes | `{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }` |
+| **`$size`** | ✅ Yes | `{ "Location.coordinates": { $size: 2 } }` |
+| **`$comment`** | ✅ Yes |  `{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}` |
+| **`$text`** | ✅ Yes | | Not supported. Use $regex instead.
 
 ## Unsupported operators
 
-The `$where` and the `$eval` operators aren't supported by Azure Cosmos DB.
+Azure Cosmos DB for MongoDB doesn't support the `$where` and `$eval` operators.
 
 ### Methods
 
@@ -329,9 +368,9 @@ Following methods are supported:
 
 #### Cursor methods
 
-| Method | Example | Notes |
-| --- | --- | --- |
-| `cursor.sort()` | `cursor.sort({ "Elevation": -1 })` | Documents without sort key don't get returned |
+| | Supported | Example | Notes |
+| --- | --- | --- | --- |
+| **`cursor.sort()`** | ✅ Yes | `cursor.sort({ "Elevation": -1 })` | Documents without sort key don't get returned |
 
 ## Unique indexes
 
@@ -345,7 +384,7 @@ Azure Cosmos DB only supports a time-to-live (TTL) at the collection level (_ts)
 
 ## User and role management
 
-Azure Cosmos DB doesn't yet support users and roles. However, Azure Cosmos DB supports Azure role-based access control (Azure RBAC) and read-write and read-only passwords/keys that can be obtained through the [Azure portal](https://portal.azure.com) (Connection String page).
+Azure Cosmos DB doesn't yet support users and roles. However, Azure Cosmos DB supports Azure role-based access control and read-write and read-only passwords/keys that can be obtained through the [Azure portal](https://portal.azure.com) (Connection String page).
 
 ## Replication
 
@@ -357,4 +396,4 @@ Some applications rely on a [Write Concern](https://docs.mongodb.com/manual/refe
 
 ## Sharding
 
-Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means you don't have to invoke commands such as shardCollection, addShard, balancerStart, moveChunk etc. You only need to specify the shard key while creating the containers or querying the data.
+Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means that you don't have to invoke commands like `addShard`, `balancerStart`, and `moveChunk`. You only need to specify the shard key while creating the containers or querying the data.
