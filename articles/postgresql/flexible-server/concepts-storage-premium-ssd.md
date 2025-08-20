@@ -12,34 +12,26 @@ ms.topic: concept-article
 ---
 
 
-# Premium SSD
+# Premium SSD  storage option in Azure Database for PostgreSQL flexible server
 
-Azure Premium SSD deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSD units are suitable for mission-critical production applications.
+## Premium SSD
+
+Azure Premium SSD deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSD units are suitable for mission-critical production applications.Capacity, IOPS, and throughput are guaranteed when a premium storage disk is provisioned. For example, if you create a P40 disk, Azure provisions 2,048-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the preceding table 99.9% of the time.
 
   
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
-Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.
-To learn more, see [compute options in Azure Database for PostgreSQL flexible server](concepts-compute.md).
+Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.To learn more, see [compute options in Azure Database for PostgreSQL flexible server](concepts-compute.md).
 
 > [!NOTE]  
 > Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
 You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](concepts-monitoring.md).
 
-### Disk full conditions
-
-When your disk becomes full, the server starts returning errors and prevents any further modifications. Reaching the limit might also cause problems with other operational activities, such as backups and write-ahead log (WAL) archiving. There are different ways with which this disk full condition can be avoided:
-1. To avoid this situation, the server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. If you're using Premium SSD storage type, you can use the [storage autogrow](#storage-autogrow-premium-ssd) feature or scale up the storage of the server to avoid this issue from occurring.
-2. If the server is marked as read only because of disk full condition, you can delete the data that is no longer required. To do this, you can execute the below command to change the mode to read-write, and once that is done, you can execute delete command.
-```sql
-	SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;
-```
-We recommend that you actively monitor the disk space that's in use by using storage_percentage or storage_used metrics and increase the disk size before you run out of available space in your storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see how to [use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL flexible server](how-to-alert-on-metrics.md).
 
 ## Storage autogrow (Premium SSD)
 
-Storage autogrow can help ensure that your server always has enough free space available, and doesn't become read-only. When you turn on storage autogrow, disk size increases without affecting the workload. Storage autogrow is only supported for Premium SSD storage tier.
+Storage autogrow can help ensure that your server always has enough free space available, and doesn't become read-only which happens when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB.  When you turn on storage autogrow, disk size increases without affecting the workload. Storage autogrow is only supported for Premium SSD storage tier.
 
 For servers with more than 1 TiB of provisioned storage, the storage autogrow mechanism activates when the available space falls below 10% of the total capacity or 64 GiB, whichever of the two values are smaller. Conversely, for servers with storage under 1 TiB this threshold is adjusted to 20% of the available free space or 64 GiB, depending on which of these values is smaller.
 
