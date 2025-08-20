@@ -101,19 +101,27 @@ This feature can be enabled for your database account by [enabling the 'EnableUn
 
 The following command creates a compound index on the fields `name` and `age`:
 
-`db.coll.createIndex({name:1,age:1})`
+```mongodb
+db.coll.createIndex({name:1,age:1})
+```
 
 You can use compound indexes to sort efficiently on multiple fields at once, as shown in the following example:
 
-`db.coll.find().sort({name:1,age:1})`
+```mongodb
+db.coll.find().sort({name:1,age:1})
+```
 
 You can also use the preceding compound index to efficiently sort on a query with the opposite sort order on all fields. Here's an example:
 
-`db.coll.find().sort({name:-1,age:-1})`
+```mongodb
+db.coll.find().sort({name:-1,age:-1})
+```
 
 However, the sequence of the paths in the compound index must exactly match the query. Here's an example of a query that would require an additional compound index:
 
-`db.coll.find().sort({age:1,name:1})`
+```mongodb
+db.coll.find().sort({age:1,name:1})
+```
 
 ### Multikey indexes
 
@@ -125,7 +133,9 @@ Many geospatial operators will benefit from geospatial indexes. Currently, Azure
 
 Here's an example of creating a geospatial index on the `location` field:
 
-`db.coll.createIndex({ location : "2dsphere" })`
+```mongodb
+db.coll.createIndex({ location : "2dsphere" })
+```
 
 ### Text indexes
 
@@ -139,10 +149,10 @@ Here is part of an example document in that collection:
 
 ```json
 "children": [
-   {
-     "firstName": "Henriette Thaulow",
-     "grade": "5"
-   }
+  {
+    "firstName": "Henriette Thaulow",
+    "grade": "5"
+  }
 ]
 ```
 
@@ -150,18 +160,18 @@ Here's another example, this time with a slightly different set of properties in
 
 ```json
 "children": [
-    {
-     "familyName": "Merriam",
-     "givenName": "Jesse",
-     "pets": [
-         { "givenName": "Goofy" },
-         { "givenName": "Shadow" }
-         ]
-   },
-   {
-     "familyName": "Merriam",
-     "givenName": "John",
-   }
+  {
+    "familyName": "Merriam",
+    "givenName": "Jesse",
+    "pets": [
+      { "givenName": "Goofy" },
+      { "givenName": "Shadow" }
+    ]
+  },
+  {
+    "familyName": "Merriam",
+    "givenName": "John",
+  }
 ]
 ```
 
@@ -171,20 +181,24 @@ In this collection, documents can have many different possible properties. If yo
 
 The following command creates a wildcard index on any properties within `children`:
 
-`db.coll.createIndex({"children.$**" : 1})`
+```mongodb
+db.coll.createIndex({"children.$**" : 1})
+```
 
-**Unlike in MongoDB, wildcard indexes can support multiple fields in query predicates**. There will not be a difference in query performance if you use one single wildcard index instead of creating a separate index for each property.
+- *Unlike in MongoDB, wildcard indexes can support multiple fields in query predicates**. There will not be a difference in query performance if you use one single wildcard index instead of creating a separate index for each property.
 
 You can create the following index types using wildcard syntax:
 
-* Single field
-* Geospatial
+- Single field
+- Geospatial
 
 ### Indexing all properties
 
 Here's how you can create a wildcard index on all fields:
 
-`db.coll.createIndex( { "$**" : 1 } )`
+```mongodb
+db.coll.createIndex( { "$**" : 1 } )
+```
 
 You can also create wildcard indexes using the Data Explorer in the Azure portal:
 
@@ -199,37 +213,37 @@ Documents with many fields may have a high Request Unit (RU) charge for writes a
 
 Wildcard indexes do not support any of the following index types or properties:
 
-* Compound
-* TTL
-* Unique
+- Compound
+- TTL
+- Unique
 
-**Unlike in MongoDB**, in Azure Cosmos DB for MongoDB you **can't** use wildcard indexes for:
+- *Unlike in MongoDB**, in Azure Cosmos DB for MongoDB you **can't** use wildcard indexes for:
 
-* Creating a wildcard index that includes multiple specific fields
+- Creating a wildcard index that includes multiple specific fields
 
   ```json
   db.coll.createIndex(
-      { "$**" : 1 },
-      { "wildcardProjection " :
-          {
-             "children.givenName" : 1,
-             "children.grade" : 1
-          }
+    { "$**" : 1 },
+    { "wildcardProjection " :
+      {
+        "children.givenName" : 1,
+        "children.grade" : 1
       }
+    }
   )
   ```
 
-* Creating a wildcard index that excludes multiple specific fields
+- Creating a wildcard index that excludes multiple specific fields
 
   ```json
   db.coll.createIndex(
-      { "$**" : 1 },
-      { "wildcardProjection" :
-          {
-             "children.givenName" : 0,
-             "children.grade" : 0
-          }
+    { "$**" : 1 },
+    { "wildcardProjection" :
+      {
+        "children.givenName" : 0,
+        "children.grade" : 0
       }
+    }
   )
   ```
 
@@ -245,14 +259,14 @@ The following operations are common for accounts serving wire protocol version 4
 
 The following command creates a unique index on the field `student_id`:
 
-```shell
-globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
+```mongodb
+db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
 {
-    "_t" : "CreateIndexesResponse",
-    "ok" : 1,
-    "createdCollectionAutomatically" : false,
-    "numIndexesBefore" : 1,
-    "numIndexesAfter" : 4
+  "_t" : "CreateIndexesResponse",
+  "ok" : 1,
+  "createdCollectionAutomatically" : false,
+  "numIndexesBefore" : 1,
+  "numIndexesAfter" : 4
 }
 ```
 
@@ -260,20 +274,23 @@ For sharded collections, you must provide the shard (partition) key  to create a
 
 The following commands create a sharded collection ```coll``` (the shard key is ```university```) with a unique index on the fields `student_id` and `university`:
 
-```shell
-globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { university: "hashed"}});
+```mongodb
+db.runCommand({shardCollection: db.coll._fullName, key: { university: "hashed"}});
 {
-    "_t" : "ShardCollectionResponse",
-    "ok" : 1,
-    "collectionsharded" : "test.coll"
+  "_t" : "ShardCollectionResponse",
+  "ok" : 1,
+  "collectionsharded" : "test.coll"
 }
-globaldb:PRIMARY> db.coll.createIndex( { "university" : 1, "student_id" : 1 }, {unique:true});
+```
+
+```mongodb
+db.coll.createIndex( { "university" : 1, "student_id" : 1 }, {unique:true});
 {
-    "_t" : "CreateIndexesResponse",
-    "ok" : 1,
-    "createdCollectionAutomatically" : false,
-    "numIndexesBefore" : 3,
-    "numIndexesAfter" : 4
+  "_t" : "CreateIndexesResponse",
+  "ok" : 1,
+  "createdCollectionAutomatically" : false,
+  "numIndexesBefore" : 3,
+  "numIndexesAfter" : 4
 }
 ```
 
@@ -288,12 +305,37 @@ Unique indexes need to be created while the collection is empty.
 Unique indexes on nested fields are not supported by default due to limitations with arrays. If your nested field does not contain an array, the index will work as intended. If your nested field contains an array (anywhere on the path), that value will be ignored in the unique index and uniqueness will not be preserved for that value. 
 
 For example a unique index on people.tom.age will work in this case since there's no array on the path:
-```javascript
-{ "people": { "tom": { "age": "25" }, "mark": { "age": "30" } } }
+
+```json
+{
+  "people": {
+    "tom": {
+      "age": "25"
+    },
+    "mark": {
+      "age": "30"
+    }
+  }
+}
 ```
+
 but won't work in this case since there's an array in the path:
-```javascript
-{ "people": { "tom": [ { "age": "25" } ], "mark": [ { "age": "30" } ] } }
+
+```json
+{
+  "people": {
+    "tom": [
+      {
+        "age": "25"
+      }
+    ],
+    "mark": [
+      {
+        "age": "30"
+      }
+    ]
+  }
+}
 ```
 
 This feature can be enabled for your database account by [enabling the 'EnableUniqueCompoundNestedDocs' capability](how-to-configure-capabilities.md).
@@ -305,8 +347,8 @@ To enable document expiration in a particular collection, you need to create a [
 
 Example:
 
-```JavaScript
-globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
+```mongodb
+db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 ```
 
 The preceding command deletes any documents in the ```db.coll``` collection that have not been modified in the last 10 seconds.
@@ -320,21 +362,21 @@ Version 3.6+ of Azure Cosmos DB for MongoDB support the `currentOp()` command to
 
 Here are some examples that show how to use the `currentOp` command to track index progress:
 
-* Get the index progress for a collection:
+- Get the index progress for a collection:
 
-   ```shell
-   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
-   ```
+  ```mongodb
+  db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+  ```
 
-* Get the index progress for all collections in a database:
+- Get the index progress for all collections in a database:
 
-  ```shell
+  ```mongodb
   db.currentOp({"command.$db": <databaseName>})
   ```
 
-* Get the index progress for all databases and collections in an Azure Cosmos DB account:
+- Get the index progress for all databases and collections in an Azure Cosmos DB account:
 
-  ```shell
+  ```mongodb
   db.currentOp({"command.createIndexes": { $exists : true } })
   ```
 
@@ -342,62 +384,62 @@ Here are some examples that show how to use the `currentOp` command to track ind
 
 The index progress details show the percentage of progress for the current index operation. Here's an example that shows the output document format for different stages of index progress:
 
-* An index operation on a "foo" collection and "bar" database that is 60 percent complete will have the following output document. The `Inprog[0].progress.total` field shows 100 as the target completion percentage.
+- An index operation on a "foo" collection and "bar" database that is 60 percent complete will have the following output document. The `Inprog[0].progress.total` field shows 100 as the target completion percentage.
 
-   ```json
-   {
-        "inprog" : [
-        {
-                ………………...
-                "command" : {
-                        "createIndexes" : foo
-                        "indexes" :[ ],
-                        "$db" : bar
-                },
-                "msg" : "Index Build (background) Index Build (background): 60 %",
-                "progress" : {
-                        "done" : 60,
-                        "total" : 100
-                },
-                …………..…..
-        }
-        ],
-        "ok" : 1
-   }
-   ```
+  ```json
+  {
+    "inprog": [
+      {
+        ...
+        "command": {
+          "createIndexes": foo
+          "indexes": [],
+          "$db": bar
+        },
+        "msg": "Index Build (background) Index Build (background): 60 %",
+        "progress": {
+          "done": 60,
+          "total": 100
+        },
+        ...
+      }
+    ],
+    "ok": 1
+  }
+  ```
 
-* If an index operation has just started on a "foo" collection and "bar" database, the output document might show 0 percent progress until it reaches a measurable level.
+- If an index operation has just started on a "foo" collection and "bar" database, the output document might show 0 percent progress until it reaches a measurable level.
 
-   ```json
-   {
-        "inprog" : [
-        {
-                ………………...
-                "command" : {
-                        "createIndexes" : foo
-                        "indexes" :[ ],
-                        "$db" : bar
-                },
-                "msg" : "Index Build (background) Index Build (background): 0 %",
-                "progress" : {
-                        "done" : 0,
-                        "total" : 100
-                },
-                …………..…..
-        }
-        ],
-       "ok" : 1
-   }
-   ```
+  ```json
+  {
+    "inprog": [
+      {
+        ...
+        "command": {
+          "createIndexes": foo
+          "indexes": [],
+          "$db": bar
+        },
+        "msg": "Index Build (background) Index Build (background): 0 %",
+        "progress": {
+          "done": 0,
+          "total": 100
+        },
+        ...
+      }
+    ],
+    "ok": 1
+  }
+  ```
 
-* When the in-progress index operation finishes, the output document shows empty `inprog` operations.
+- When the in-progress index operation finishes, the output document shows empty `inprog` operations.
 
-   ```json
-   {
-      "inprog" : [],
-      "ok" : 1
-   }
-   ```
+  ```json
+  {
+    "inprog" : [],
+    "ok" : 1
+  }
+  ```
 
 ## Background index updates
 
@@ -416,40 +458,44 @@ The `reIndex` command will recreate all indexes on a collection. In some rare ca
 
 You can run the `reIndex` command using the following syntax:
 
-`db.runCommand({ reIndex: <collection> })`
+```mongodb
+db.runCommand({ reIndex: <collection> })
+```
 
 You can use the below syntax to check if running the `reIndex` command would improve query performance in your collection:
 
-`db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
+```mongodb
+db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})
+```
 
 Sample output:
 
-```
+```json
 {
-        "database" : "myDB",
-        "collection" : "myCollection",
-        "provisionedThroughput" : 400,
-        "indexes" : [
-                {
-                        "v" : 1,
-                        "key" : {
-                                "_id" : 1
-                        },
-                        "name" : "_id_",
-                        "ns" : "myDB.myCollection",
-                        "requiresReIndex" : true
-                },
-                {
-                        "v" : 1,
-                        "key" : {
-                                "b.$**" : 1
-                        },
-                        "name" : "b.$**_1",
-                        "ns" : "myDB.myCollection",
-                        "requiresReIndex" : true
-                }
-        ],
-        "ok" : 1
+  "database": "myDB",
+  "collection": "myCollection",
+  "provisionedThroughput": 400,
+  "indexes": [
+    {
+      "v": 1,
+      "key": {
+        "_id": 1
+      },
+      "name": "_id_",
+      "ns": "myDB.myCollection",
+      "requiresReIndex": true
+    },
+    {
+      "v": 1,
+      "key": {
+        "b.$**": 1
+      },
+      "name": "b.$**_1",
+      "ns": "myDB.myCollection",
+      "requiresReIndex": true
+    }
+  ],
+  "ok": 1
 }
 ```
 
@@ -469,8 +515,11 @@ If you're using version 3.2, this section outlines key differences with versions
 
 Unlike the 3.6+ versions of Azure Cosmos DB for MongoDB, version 3.2 indexes every property by default. You can use the following command to drop these default indexes for a collection (```coll```):
 
-```JavaScript
-> db.coll.dropIndexes()
+```mongodb
+db.coll.dropIndexes()
+```
+
+```json
 { "_t" : "DropIndexesResponse", "ok" : 1, "nIndexesWas" : 3 }
 ```
 
@@ -486,9 +535,5 @@ If you want to create a wildcard index, [upgrade to version 4.0 or 3.6](upgrade-
 
 ## Next steps
 
-* [Indexing in Azure Cosmos DB](../index-policy.md)
-* [Expire data in Azure Cosmos DB automatically with time to live](../time-to-live.md)
-* To learn about the relationship between partitioning and indexing, see how to [Query an Azure Cosmos DB container](../how-to-query-container.md) article.
-* Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-    * If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
-    * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-capacity-planner.md)
+- [Indexing in Azure Cosmos DB](../index-policy.md)
+- [Expire data in Azure Cosmos DB automatically with time to live](../time-to-live.md)

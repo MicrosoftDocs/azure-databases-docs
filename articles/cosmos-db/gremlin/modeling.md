@@ -20,19 +20,19 @@ This article provides recommendations for the use of graph data models. These be
 
 The process outlined in this guide is based on the following assumptions:
 
-* The *entities* in the problem-space are identified. These entities are meant to be consumed *atomically* for each request. In other words, the database system isn't designed to retrieve a single entity's data in multiple query requests.
-* There's an understanding of *read and write requirements* for the database system. These requirements guide the optimizations needed for the graph data model.
-* The principles of the [Apache Tinkerpop property graph standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) are well understood.
+- The *entities* in the problem-space are identified. These entities are meant to be consumed *atomically* for each request. In other words, the database system isn't designed to retrieve a single entity's data in multiple query requests.
+- There's an understanding of *read and write requirements* for the database system. These requirements guide the optimizations needed for the graph data model.
+- The principles of the [Apache Tinkerpop property graph standard](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) are well understood.
 
 ## When do I need a graph database?
 
 A graph database solution can be optimally used if the entities and relationships in a data domain have any of the following characteristics: 
 
-* The entities are *highly connected* through descriptive relationships. The benefit in this scenario is that the relationships persist in storage.
-* There are *cyclic relationships* or *self-referenced entities*. This pattern is often a challenge when you use relational or document databases.
-* There are *dynamically evolving relationships* between entities. This pattern is especially applicable to hierarchical or tree-structured data with many levels.
-* There are *many-to-many relationships* between entities.
-* There are *write and read requirements on both entities and relationships*. 
+- The entities are *highly connected* through descriptive relationships. The benefit in this scenario is that the relationships persist in storage.
+- There are *cyclic relationships* or *self-referenced entities*. This pattern is often a challenge when you use relational or document databases.
+- There are *dynamically evolving relationships* between entities. This pattern is especially applicable to hierarchical or tree-structured data with many levels.
+- There are *many-to-many relationships* between entities.
+- There are *write and read requirements on both entities and relationships*. 
 
 If the above criteria are satisfied, a graph database approach likely provides advantages for *query complexity*, *data model scalability*, and *query performance*.
 
@@ -70,11 +70,11 @@ The first step for a graph data model is to map every identified entity to a *ve
 
 One common pitfall is to map properties of a single entity as separate vertices. Consider the following example, where the same entity is represented in two different ways:
 
-* **Vertex-based properties**: In this approach, the entity uses three separate vertices and two edges to describe its properties. While this approach might reduce redundancy, it increases model complexity. An increase in model complexity can result in added latency, query complexity, and computation cost. This model can also present challenges in partitioning.
+- **Vertex-based properties**: In this approach, the entity uses three separate vertices and two edges to describe its properties. While this approach might reduce redundancy, it increases model complexity. An increase in model complexity can result in added latency, query complexity, and computation cost. This model can also present challenges in partitioning.
 
     :::image type="content" source="./media/modeling/graph-modeling-1.png" alt-text="Diagram of entity model with vertices for properties.":::
 
-* **Property-embedded vertices**: This approach takes advantage of the key-value pair list to represent all the properties of the entity inside a vertex. This approach reduces model complexity, which leads to simpler queries and more cost-efficient traversals.
+- **Property-embedded vertices**: This approach takes advantage of the key-value pair list to represent all the properties of the entity inside a vertex. This approach reduces model complexity, which leads to simpler queries and more cost-efficient traversals.
 
     :::image type="content" source="./media/modeling/graph-modeling-2.png" alt-text="Diagram of the Luis vertex from the previous diagram with ID, label, and properties.":::
 
@@ -101,16 +101,10 @@ You can determine the edge direction by using the `.to()` or `.from()` predicate
 ### Relationship labels
 
 Using descriptive relationship labels can improve the efficiency of edge resolution operations. You can apply this pattern in the following ways:
-* Use non-generic terms to label a relationship.
-* Associate the label of the source vertex to the label of the target vertex with the relationship name.
+
+- Use non-generic terms to label a relationship.
+- Associate the label of the source vertex to the label of the target vertex with the relationship name.
 
 :::image type="content" source="./media/modeling/graph-modeling-3.png" alt-text="Diagram of relationship labeling examples.":::
 
 The more specific the label that the traverser uses to filter the edges, the better. This decision can have a significant effect on query cost as well. You can evaluate the query cost at any time by using the [executionProfile step](execution-profile.md).
-
-## Next steps
-
-* Check out the list of [supported Gremlin steps](support.md).
-* Learn about [graph database partitioning](partitioning.md) to deal with large-scale graphs.
-* Evaluate your Gremlin queries using the [execution profile step](execution-profile.md).
-* Third-party graph [design data model](modeling-tools.md).
