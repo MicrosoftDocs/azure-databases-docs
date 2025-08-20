@@ -677,12 +677,3 @@ Azure Cosmos DB doesn't yet support users and roles. However, Azure Cosmos DB su
 ## Write concerns
 
 Some applications rely on a [write concern](https://docs.mongodb.com/manual/reference/write-concern/), which specifies the number of responses that are required during a write operation. Due to how Azure Cosmos DB handles replication in the background, all writes are automatically Quorum by default. Any write concern that's specified by the client code is ignored. Learn how to [use consistency levels to maximize availability and performance](../consistency-levels.md).
-
-## Next steps
-
-- Learn how to [use Studio 3T](connect-using-mongochef.md) with Azure Cosmos DB for MongoDB.
-- Learn how to [use Robo 3T](connect-using-robomongo.md) with Azure Cosmos DB for MongoDB.
-- Explore MongoDB [samples](nodejs-console-app.md) with Azure Cosmos DB for MongoDB.
-- Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-  - If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units by using vCores or vCPUs](../convert-vcore-to-request-unit.md).
-  - If you know typical request rates for your current database workload, read about [estimating request units by using the Azure Cosmos DB capacity planner](estimate-ru-capacity-planner.md).

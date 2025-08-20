@@ -17,11 +17,11 @@ appliesto:
 Azure Cosmos DB for MongoDB 3.6 enables you to use familiar MongoDB features with enterprise-grade capabilities such as global distribution, automatic sharding, and high availability. This article describes the supported features, syntax, and benefits of using Azure Cosmos DB for MongoDB 3.6.
 
 > [!IMPORTANT]
-> Version 3.6 of the Azure Cosmos DB for MongoDB has no current plans for end-of-life (EOL). The minimum notice for a future EOL is three years.
+> Version 3.6 of the Azure Cosmos DB for MongoDB has no current plans for end-of-support. The minimum notice for a future end-of-support is three years.
 
 ## Protocol Support
 
-The Azure Cosmos DB for MongoDB is compatible with MongoDB server version **3.6** by default for new accounts. The supported operators and any limitations or exceptions are listed below. Any client driver that understands these protocols should be able to connect to Azure Cosmos DB for MongoDB. When you create Azure Cosmos DB API for MongoDB accounts, the 3.6 version of account has the endpoint in the format `*.mongo.cosmos.azure.com` whereas the 3.2 version of account has the endpoint in the format `*.documents.azure.com`.
+The Azure Cosmos DB for MongoDB is compatible with MongoDB server version **3.6** by default for new accounts. The supported operators and any limitations or exceptions are listed here. Any client driver that understands these protocols should be able to connect to Azure Cosmos DB for MongoDB. When you create Azure Cosmos DB API for MongoDB accounts, the 3.6 version of account has the endpoint in the format `*.mongo.cosmos.azure.com` whereas the 3.2 version of account has the endpoint in the format `*.documents.azure.com`.
 
 ## Query language support
 
@@ -151,7 +151,7 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 | **`unwind`** | ✅ Yes |
 
 > [!NOTE]
-> `$lookup` does not yet support the [uncorrelated subqueries](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) feature introduced in server version 3.6. You will receive an error with a message containing `let is not supported` if you attempt to use the `$lookup` operator with `let` and `pipeline` fields.
+> `$lookup` doesn't yet support the [uncorrelated subqueries](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) feature introduced in server version 3.6. You receive an error with a message containing `let is not supported` if you attempt to use the `$lookup` operator with `let` and `pipeline` fields.
 
 ### Boolean expressions
 
@@ -176,7 +176,7 @@ Azure Cosmos DB for MongoDB supports the following database commands:
 ### Comparison expressions
 
 > [!NOTE]
-> The API for MongoDB does not support comparison expressions with an array literal in the query.
+> The API for MongoDB doesn't support comparison expressions with an array literal in the query.
 
 | | Supported |
 | --- | --- |
@@ -415,12 +415,14 @@ In the $regex queries, left-anchored expressions allow index search. However, us
 
 When there's a need to include `$` or `|`, it's best to create two (or more) regex queries. For example, given the following original query: `find({x:{$regex: /^abc$/})`, it has to be modified as follows:
 
-`find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})`
+```mongodb
+find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})
+```
 
-The first part will use the index to restrict the search to those documents beginning with ^abc and the second part will match the exact entries. The bar operator `|` acts as an "or" function - the query `find({x:{$regex: /^abc |^def/})` matches the documents in which field `x` has values that begin with `"abc"` or `"def"`. To utilize the index, it's recommended to break the query into two different queries joined by the $or operator: `find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`.
+The first part uses the index to restrict the search to those documents beginning with `^abc` and the second part matches the exact entries. The bar operator `|` acts as an "or" function - the query `find({x:{$regex: /^abc |^def/})` matches the documents in which field `x` has values that begin with `"abc"` or `"def"`. To utilize the index, break the query into two different queries joined by the $or operator: `find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`.
 
 > [!TIP]
-> The `text` command is not supported. Use `$regex` instead.
+> The `text` command isn't supported. Use `$regex` instead.
 
 ### Array operators
 
@@ -531,7 +533,7 @@ Azure Cosmos DB doesn't yet support retryable writes. Client drivers must add `r
 
 ## Sharding
 
-Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means you don't have to invoke commands such as addShard, balancerStart, moveChunk etc. You only need to specify the shard key while creating the containers or querying the data.
+Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means you don't have to invoke commands such as addShard, balancerStart, moveChunk, etc. You only need to specify the shard key while creating the containers or querying the data.
 
 ## Sessions
 
@@ -543,15 +545,8 @@ Azure Cosmos DB supports a time-to-live (TTL) based on the timestamp of the docu
 
 ## User and role management
 
-Azure Cosmos DB doesn't yet support users and roles. However, it supports Azure role-based access control (Azure RBAC) and read-write and read-only passwords or keys that can be obtained through the connection string pane in the [Azure portal](https://portal.azure.com).
+Azure Cosmos DB doesn't yet support users and roles. However, it supports Azure role-based access control and read-write and read-only passwords or keys that can be obtained through the connection string pane in the [Azure portal](https://portal.azure.com).
 
 ## Write Concern
 
 Some applications rely on a [Write Concern](https://docs.mongodb.com/manual/reference/write-concern/), which specifies the number of responses required during a write operation. Due to how Azure Cosmos DB handles replication, all writes are automatically majority quorum by default when using strong consistency. Any write concern specified by the client code is ignored. To learn more, see [Using consistency levels to maximize availability and performance](../consistency-levels.md) article.
-
-## Next steps
-
-- For further information check [Mongo 3.6 version features](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
-- Learn how to [use Studio 3T](connect-using-mongochef.md) with Azure Cosmos DB for MongoDB.
-- Learn how to [use Robo 3T](connect-using-robomongo.md) with Azure Cosmos DB for MongoDB.
-- Explore MongoDB [samples](nodejs-console-app.md) with Azure Cosmos DB for MongoDB.

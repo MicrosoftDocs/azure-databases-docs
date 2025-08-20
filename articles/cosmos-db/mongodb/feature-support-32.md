@@ -17,17 +17,17 @@ appliesto:
 Azure Cosmos DB for MongoDB 3.2 enables you to use familiar MongoDB features with enterprise-grade capabilities such as global distribution, automatic sharding, and high availability. This article describes the supported features, syntax, and benefits of using Azure Cosmos DB for MongoDB 3.2.
 
 > [!IMPORTANT]
-> Version 3.2 of the Azure Cosmos DB for MongoDB has no current plans for end-of-life (EOL). The minimum notice for a future EOL is three years.
+> Version 3.2 of the Azure Cosmos DB for MongoDB has no current plans for end-of-support. The minimum notice for a future end-of-support is three years.
 
 ## Protocol Support
 
-All new accounts for Azure Cosmos DB for MongoDB are compatible with MongoDB server version **3.6**. This article covers MongoDB version 3.2. The supported operators and any limitations or exceptions are listed below. Any client driver that understands these protocols should be able to connect to Azure Cosmos DB for MongoDB.
+All new accounts for Azure Cosmos DB for MongoDB are compatible with MongoDB server version **3.6**. This article covers MongoDB version 3.2. The supported operators and any limitations or exceptions are listed here. Any client driver that understands these protocols should be able to connect to Azure Cosmos DB for MongoDB.
 
 Azure Cosmos DB for MongoDB also offers a seamless upgrade experience for qualifying accounts. Learn more on the [MongoDB version upgrade guide](upgrade-version.md).
 
 ## Query language support
 
-Azure Cosmos DB for MongoDB provides comprehensive support for MongoDB query language constructs. Below you can find the detailed list of currently supported operations, operators, stages, commands, and options.
+Azure Cosmos DB for MongoDB provides comprehensive support for MongoDB query language constructs. Here you can find the detailed list of currently supported operations, operators, stages, commands, and options.
 
 ## Database commands
 
@@ -248,12 +248,15 @@ Following operators are supported with corresponding examples of their use. Cons
 
 ### Notes
 
-In $regex queries, Left-anchored expressions allow index search. However, using 'i' modifier (case-insensitivity) and 'm' modifier (multiline) causes the collection scan in all expressions.
-When there's a need to include '$' or '|', it's best to create two (or more) regex queries.
-For example, given the following original query: `find({x:{$regex: /^abc$/})`, it has to be modified as follows:
-`find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})`.
-The first part will use the index to restrict the search to those documents beginning with ^abc and the second part will match the exact entries.
-The bar operator '|' acts as an "or" function - the query `find({x:{$regex: /^abc|^def/})` matches the documents in which field 'x' has values that begin with "abc" or "def". To utilize the index, it's recommended to break the query into two different queries joined by the $or operator: `find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`.
+In the $regex queries, left-anchored expressions allow index search. However, using 'i' modifier (case-insensitivity) and 'm' modifier (multiline) causes the collection scan in all expressions.
+
+When there's a need to include `$` or `|`, it's best to create two (or more) regex queries. For example, given the following original query: `find({x:{$regex: /^abc$/})`, it has to be modified as follows:
+
+```mongodb
+find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})
+```
+
+The first part uses the index to restrict the search to those documents beginning with `^abc` and the second part matches the exact entries. The bar operator `|` acts as an "or" function - the query `find({x:{$regex: /^abc |^def/})` matches the documents in which field `x` has values that begin with `"abc"` or `"def"`. To utilize the index, break the query into two different queries joined by the $or operator: `find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`.
 
 ### Update operators
 
@@ -355,9 +358,3 @@ Some applications rely on a [Write Concern](https://docs.mongodb.com/manual/refe
 ## Sharding
 
 Azure Cosmos DB supports automatic, server-side sharding. It manages shard creation, placement, and balancing automatically. Azure Cosmos DB doesn't support manual sharding commands, which means you don't have to invoke commands such as shardCollection, addShard, balancerStart, moveChunk etc. You only need to specify the shard key while creating the containers or querying the data.
-
-## Next steps
-
-- Learn how to [use Studio 3T](connect-using-mongochef.md) with Azure Cosmos DB for MongoDB.
-- Learn how to [use Robo 3T](connect-using-robomongo.md) with Azure Cosmos DB for MongoDB.
-- Explore MongoDB [samples](nodejs-console-app.md) with Azure Cosmos DB for MongoDB.

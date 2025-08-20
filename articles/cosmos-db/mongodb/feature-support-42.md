@@ -51,7 +51,7 @@ Azure Cosmos DB for MongoDB supports the following database commands.
 ### Transaction commands
 
 > [!NOTE]
-> Multi-document transactions are supported only within a single non-sharded collection. Cross-collection and cross-shard multi-document transactions are not yet supported in the API for MongoDB.
+> Multi-document transactions are supported only within a single nonsharded collection. Cross-collection and cross-shard multi-document transactions aren't yet supported in the API for MongoDB.
 
 | | Supported |
 | --- | --- |
@@ -167,7 +167,7 @@ Azure Cosmos DB for MongoDB supports the following aggregation commands.
 | **`unwind`** | ✅ Yes |
 
 > [!NOTE]
-> The `$lookup` aggregation does not yet support the [uncorrelated subqueries](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) feature that's introduced in server version 3.6. If you attempt to use the `$lookup` operator with the `let` and `pipeline` fields, an error message that indicates that *`let` is not supported* appears.
+> The `$lookup` aggregation doesn't yet support the [uncorrelated subqueries](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#join-conditions-and-uncorrelated-sub-queries) feature that's introduced in server version 3.6. If you attempt to use the `$lookup` operator with the `let` and `pipeline` fields, an error message that indicates that *`let` isn't supported* appears.
 
 ### Boolean expressions
 
@@ -206,7 +206,7 @@ Azure Cosmos DB for MongoDB supports the following aggregation commands.
 ### Comparison expressions
 
 > [!NOTE]
-> The API for MongoDB does not support comparison expressions that have an array literal in the query.
+> The API for MongoDB doesn't support comparison expressions that have an array literal in the query.
 
 | | Supported |
 | --- | --- |
@@ -391,7 +391,7 @@ Azure Cosmos DB for MongoDB supports the following aggregation commands.
 
 ## Data types
 
-Azure Cosmos DB for MongoDB supports documents that are encoded in MongoDB BSON format. Versions 4.0 and later (4.0+) enhance the internal usage of this format to improve performance and reduce costs. Documents that are written or updated through an endpoint running 4.0+ benefit from this optimization.
+Azure Cosmos DB for MongoDB supports documents that are encoded in MongoDB binary format. Versions 4.0 and later (4.0+) enhance the internal usage of this format to improve performance and reduce costs. Documents that are written or updated through an endpoint running 4.0+ benefit from this optimization.
 
 In an [upgrade scenario](upgrade-version.md), documents that were written prior to the upgrade to version 4.0+ won't benefit from the enhanced performance until they're updated via a write operation through the 4.0+ endpoint.
 
@@ -490,13 +490,17 @@ When there's a need to include `$` or `|`, it's best to create two (or more) `$r
 
 For example, change the following original query:
 
-`find({x:{$regex: /^abc$/})`
+```mongodb
+find({x:{$regex: /^abc$/})
+```
 
 To this query:
 
-`find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})`
+```mongodb
+find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})
+```
 
-The first part of the modified query uses the index to restrict the search to documents that begin with `^abc`. The second part of the query matches the exact entries. The bar operator (`|`) acts as an "or" function. The query `find({x:{$regex: /^abc |^def/})` matches the documents in which field `x` has values that begin with `abc` or `def`. To use the index, we recommend that you break the query into two different queries that are joined by the `$or` operator: `find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`.
+The first part of the modified query uses the index to restrict the search to documents that begin with `^abc`. The second part of the query matches the exact entries. The bar operator (`|`) acts as an `or` function. The query `find({x:{$regex: /^abc |^def/})` matches the documents in which field `x` has values that begin with `abc` or `def`. To use the index, break the query into two different queries that are joined by the `$or` operator: `find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })`.
 
 ### Array operators
 
@@ -617,7 +621,7 @@ For example, with a sharded collection that's sharded on the `"country"` key, to
 - `db.coll.deleteMany({"city": "NYC"})` - Fails with error **ShardKeyNotFound(61)**
 
 > [!NOTE]
-> Retryable writes does not support bulk unordered writes at this time. If you want to perform bulk writes with retryable writes enabled, perform bulk ordered writes.
+> Retryable writes doesn't support bulk unordered writes at this time. If you want to perform bulk writes with retryable writes enabled, perform bulk ordered writes.
 
 To enable the feature, [add the EnableMongoRetryableWrites capability](how-to-configure-capabilities.md) to your database account. This feature can also be enabled on the **Features** tab in the Azure portal.
 
@@ -674,12 +678,3 @@ Azure Cosmos DB doesn't yet support users and roles. However, Azure Cosmos DB su
 ## Write concerns
 
 Some applications rely on a [write concern](https://docs.mongodb.com/manual/reference/write-concern/), which specifies the number of responses that are required during a write operation. Due to how Azure Cosmos DB handles replication in the background, all writes are automatically Quorum by default. Any write concern that's specified by the client code is ignored. Learn how to [use consistency levels to maximize availability and performance](../consistency-levels.md).
-
-## Next steps
-
-- Learn how to [use Studio 3T](connect-using-mongochef.md) with Azure Cosmos DB for MongoDB.
-- Learn how to [use Robo 3T](connect-using-robomongo.md) with Azure Cosmos DB for MongoDB.
-- Explore MongoDB [samples](nodejs-console-app.md) with Azure Cosmos DB for MongoDB.
-- Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-  - If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units by using vCores or vCPUs](../convert-vcore-to-request-unit.md).
-  - If you know typical request rates for your current database workload, read about [estimating request units by using the Azure Cosmos DB capacity planner](estimate-ru-capacity-planner.md).
