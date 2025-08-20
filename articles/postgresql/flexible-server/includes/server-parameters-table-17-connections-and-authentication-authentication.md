@@ -42,6 +42,23 @@ ms.custom: automatically generated
 
 
 
+### gss_accept_delegation
+
+| Attribute | Value |
+| --- | --- |
+| Category | Connections and Authentication / Authentication |
+| Description | Sets whether GSSAPI delegation should be accepted from the client. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [gss_accept_delegation](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-GSS-ACCEPT-DELEGATION) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### krb_caseins_users
 
 | Attribute | Value |
@@ -87,6 +104,23 @@ ms.custom: automatically generated
 | Allowed values | `md5,scram-sha-256` |
 | Parameter type | dynamic |
 | Documentation | [password_encryption](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-PASSWORD-ENCRYPTION) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### scram_iterations
+
+| Attribute | Value |
+| --- | --- |
+| Category | Connections and Authentication / Authentication |
+| Description | Sets the iteration count for SCRAM secret generation. |
+| Data type | integer |
+| Default value | `4096` |
+| Allowed values | `4096` |
+| Parameter type | read-only |
+| Documentation | [scram_iterations](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-SCRAM-ITERATIONS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

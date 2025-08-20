@@ -127,6 +127,23 @@ ms.custom: automatically generated
 
 
 
+### old_snapshot_threshold
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Asynchronous Behavior |
+| Description | Time before a snapshot is too old to read pages changed after the snapshot was taken. |
+| Data type | integer |
+| Default value | `-1` |
+| Allowed values | `-1-86400` |
+| Parameter type | static |
+| Documentation | [old_snapshot_threshold](https://www.postgresql.org/docs/14/runtime-config-resource.html#GUC-OLD-SNAPSHOT-THRESHOLD) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### parallel_leader_participation
 
 | Attribute | Value |
