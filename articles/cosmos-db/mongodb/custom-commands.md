@@ -26,7 +26,7 @@ By using Azure Cosmos DB for MongoDB, you can enjoy the shared benefits of Azure
 * Encryption at rest
 * Backups
 
-You can enjoy these benefits while preserving your investments in your existing MongoDB application\[s\]. You can communicate with the Azure Cosmos DB for MongoDB by using any of the open-source [MongoDB client drivers](https://docs.mongodb.org/ecosystem/drivers). The Azure Cosmos DB for MongoDB enables the use of existing client drivers by adhering to the [MongoDB wire protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+You can enjoy these benefits while preserving your investments in your existing MongoDB application\[s\]. You can communicate with the Azure Cosmos DB for MongoDB by using any of the open-source [MongoDB client drivers](https://www.mongodb.com/docs/drivers/). The Azure Cosmos DB for MongoDB enables the use of existing client drivers by adhering to the [MongoDB wire protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
 ## MongoDB protocol support
 
