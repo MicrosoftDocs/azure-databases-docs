@@ -82,7 +82,13 @@
         - name: Compute
           href: flexible-server/concepts-compute.md
         - name: Storage
-          href: flexible-server/concepts-storage.md
+          items:
+            - name: Overview
+              href: flexible-server/concepts-storage.md
+            - name: Premium SSD
+              href: flexible-server/concepts-storage-premium-ssd.md  
+            - name: Premium SSD v2
+              href: flexible-server/concepts-storage-premium-ssd-v2.md  
         - name: Scaling resources
           href: flexible-server/concepts-scaling-resources.md
         - name: Elastic clusters (preview)

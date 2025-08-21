@@ -86,6 +86,7 @@ For horizontally scaled configurations, consisting of a primary server and one o
 - Logical replication slots aren't preserved during a near-zero downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling the pg_failover_slots extension in an instance of flexible server](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
 - Near-zero downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you're using unlogged tables for any of your data will lose all the data in those tables after the near-zero downtime scaling.
 - Near-zero downtime scaling is currently not supported for High Availability (HA) enabled servers.
+- Near-zero doesn't work if you're scaling the compute of your server from or to a compute size of 1 or 2 vCores of the Burstable tier. 
 
 ## Related content
 
