@@ -29,9 +29,9 @@ The `$setIsSubset` operator returns a Boolean value that indicates if one array 
 | `<array1>` | The array to check to see if it's a subset of `<array2>`. |
 | `<array2>` | The array to check against. |
 
-## JSON example
+## Example
 
-The following JSON sample from the `stores` dataset can help you understand how to use this operator.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {

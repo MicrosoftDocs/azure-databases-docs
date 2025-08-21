@@ -28,9 +28,9 @@ The `$setEquals` operator returns `true` if two sets have the same distinct elem
 | --- | --- |
 | `array1, array2, ...` | Arrays to compare for equality. You can specify two or more arrays. |
 
-## JSON example
+## Example
 
-The following JSON sample from the `stores` dataset can help you understand how to use this operator.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
@@ -151,7 +151,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` because both stores have same staff structure.
+The query returns a value of `true`, because both stores have the same staff structure.
 
 ```json
 {
