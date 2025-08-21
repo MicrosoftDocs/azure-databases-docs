@@ -8,6 +8,9 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
+ms.collection:
+  - migration
+  - onprem-to-azure
 ms.custom:
 - mvc
 - devx-track-azurecli

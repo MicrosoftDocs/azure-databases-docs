@@ -10,7 +10,7 @@ ms.custom:
   - build-2024
   - ignite-2024
 ms.topic: how-to
-ms.date: 01/08/2025
+ms.date: 08/11/2025
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
 ---
 
@@ -26,6 +26,10 @@ Azure Cosmos DB for MongoDB vCore allows continuous data streaming to a replica 
 
 ## Enable cross-region replication
 
+You can create a replica cluster during new cluster provisioning or at any time on an existing cluster.
+
+### Replica cluster creation during new cluster provisioning
+
 To enable cross-region replication on a new cluster *during cluster creation*, follow these steps:
 
 1. Follow the steps to [start cluster creation and complete the **Basics** tab for a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
@@ -38,6 +42,8 @@ To enable cross-region replication on a new cluster *during cluster creation*, f
 > [!NOTE]
 > The replica cluster is created in the same Azure subscription and resource group as its primary cluster.
 
+### Replica cluster creation for existing cluster
+
 To enable cross-region replication on a new cluster *at any time after cluster creation*, follow these steps:
 
 1. Follow the steps to [create a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
@@ -46,6 +52,7 @@ To enable cross-region replication on a new cluster *at any time after cluster c
 1. Select **Add new read replica**.
 1. Provide a replica cluster name in the **Read replica name** field. 
 1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
+1. (optionally) Select **Customer-manageed key** in **Data encryption** section to enable data encryption with a customer-managed key (CMK) on replica cluster. Then follow [the steps to enable CMK](./how-to-data-encryption.md#change-data-encryption-mode-on-existing-clusters).
 1. Verify your selection and select the **Save** button to confirm replica creation.
 
 To make the replica cluster accessible for read operations, adjust its networking settings by configuring firewall rules for public access or by adding private endpoints for secure, private access.
