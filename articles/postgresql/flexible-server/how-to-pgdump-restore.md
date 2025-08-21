@@ -14,8 +14,6 @@ ms.custom:
 
 # Best practices for pg_dump and pg_restore for Azure Database for PostgreSQL flexible server
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article reviews options and best practices for speeding up pg_dump and pg_restore. It also explains the best server configurations for carrying out pg_restore.
 
 ## Best practices for pg_dump
@@ -42,7 +40,7 @@ This option specifies the compression level to use. Zero means no compression. Z
 
 Before you start the pg_dump process, consider whether table vacuuming is necessary. Bloat on tables significantly increases pg_dump times. Execute the following query to identify table bloats:
 
-```
+```sql
 select schemaname,relname,n_dead_tup,n_live_tup,round(n_dead_tup::float/n_live_tup::float*100) dead_pct,autovacuum_count,last_vacuum,last_autovacuum,last_autoanalyze,last_analyze from pg_stat_all_tables where n_live_tup >0;
 ```
 
@@ -50,7 +48,7 @@ The `dead_pct` column in this query is the percentage of dead tuples when comp
 
 For each table that you identify, you can perform a manual vacuum analysis by running the following:
 
-```
+```sql
 vacuum(analyze, verbose) <table_name>
 ```
 
@@ -60,11 +58,24 @@ You can perform a pg_dump on an online or live server. It makes consistent backu
 
 For large databases, you could create a point-in-time recovery (PITR) server from the production server and perform the pg_dump process on the PITR server. Running pg_dump on a PITR would be a cold run process. The trade-off for this approach is that you wouldn't be concerned with extra CPU, memory, and IO utilization that comes with a pg_dump process that runs on an actual production server. You can run pg_dump on a PITR server and then drop the PITR server after the pg_dump process is completed.
 
+### Recommended server sizing and parameter tuning
+
+When you observe slow pg_dump performance while network bandwidth is high, consider using a higher vCore SKU. Higher vCore SKUs typically provide additional CPU and network throughput, which can reduce overall dump time. Monitor CPU, network, and IOPS metrics to confirm whether bandwidth or compute is the bottleneck before you scale.
+
+Tune the following server parameters to help speed up index creation during restore operations. pg_dump archives often include index-creation commands (for example, CREATE INDEX or ALTER TABLE ... ADD CONSTRAINT); improving index-build performance can shorten total migration time:
+
+- `maintenance_work_mem` — Increase this value to allocate more memory for index creation and other maintenance tasks. For large indexes, consider raising this setting (for example, hundreds of megabytes to multiple gigabytes) and validate memory usage on a nonproduction instance before applying it in production.
+- `max_parallel_maintenance_workers` — Increase this value to allow parallel index creation on multi-vCore servers. Set this relative to the number of vCores and test to determine the optimal level for your workload.
+
+Test any parameter or SKU changes on a nonproduction or PITR server. Validate performance and stability, then apply the changes to production. After migration or large restores complete, revert parameters to values that match normal workload requirements.
+
 ### Syntax for pg_dump
 
 Use the following syntax for pg_dump:
 
 `pg_dump -h <hostname> -U <username> -d <databasename> -Fd -j <Num of parallel jobs> -Z0 -f sampledb_dir_format`
+
+
 
 ## Best practices for pg_restore
 
