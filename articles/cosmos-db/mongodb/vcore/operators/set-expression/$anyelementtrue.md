@@ -1,7 +1,7 @@
 ---
   title: $anyElementsTrue
   titleSuffix: Overview of the $allElementsTrue operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $anyElementsTrue operator returns a value of true if any element in an array is evaluated to have a value of true.
+  description: The $anyElementsTrue operator returns true if any element in an array evaluates to a value of true.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # $anyElementTrue
 
-The `$anyElementTrue` operator evaluates an array as a set and returns a value of `true` if any element in the array is `true` (or equivalent to `true`). If all the elements are evaluated to have a value of `false`, `null`, `0`, or `undefined`, the operator returns a value of `false`.
+The `$anyElementTrue` operator evaluates an array as a set and returns `true` if any element in the array is `true` (or equivalent to `true`). If all the elements evaluates to a value of `false`, `null`, `0`, or `undefined`, the operator returns `false`.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The `$anyElementTrue` operator evaluates an array as a set and returns a value o
 
 | Parameter | Description |
 | --- | --- |
-| `array` | An array of expressions that you want to evaluate. If the array is empty, `$anyElementTrue` returns a value of `false`. |
+| `array` | An array of expressions to evaluate. If the array is empty, `$anyElementTrue` returns `false`. |
 
 ## JSON example
 
@@ -100,7 +100,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns a value of `true` for the `hasHighPerformingCategory` field, because sales for one of the categories is over 40,000.
+The query returns `true` for the `hasHighPerformingCategory` field, because sales for one of the categories is more than 40,000.
 
 ```json
 {
@@ -129,7 +129,7 @@ The query returns a value of `true` for the `hasHighPerformingCategory` field, b
 }
 ```
 
-### Example 2: Determine whether any promotion event has high discounts
+### Example 2: Determine if any promotion event has high discounts
 
 The following example helps you determine if any promotion event offers discounts over 20%.
 
@@ -156,7 +156,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns a value of `true`, because there's at least one promotion event with discounts over 20%.
+The query returns `true`, because there's at least one promotion event with discounts over 20%.
 
 ```json
   {

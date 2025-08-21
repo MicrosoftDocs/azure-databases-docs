@@ -12,7 +12,7 @@
 
 # $setIsSubset
 
-The `$setIsSubset` operator returns a Boolean value that indicates whether one array is a subset of a second array. It treats arrays as sets, which means it ignores duplicates and element order. It returns a value of `true` if all the elements in the first array exist in the second array. If not, it returns a value of `false`.
+The `$setIsSubset` operator returns a Boolean value that indicates if one array is a subset of a second array. It treats arrays as sets, which means it ignores duplicates and element order. It returns `true` if all the elements in the first array exist in the second array. If not, it returns `false`.
 
 ## Syntax
 
@@ -26,8 +26,8 @@ The `$setIsSubset` operator returns a Boolean value that indicates whether one a
 
 | Parameter | Description |
 | --- | --- |
-| `<array1>` | The array that you want to check to see if it's a subset of `<array2>`. |
-| `<array2>` | The array that you want to check against. |
+| `<array1>` | The array to check to see if it's a subset of `<array2>`. |
+| `<array2>` | The array to check against. |
 
 ## JSON example
 
@@ -147,7 +147,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns categories that are included under both the sales and promotion brackets. It confirms that the `sales` value is a subset of a particular promotion category (but doesn't do the reverse).
+The query returns categories included under both the sales and promotion brackets. It confirms that the `sales` value is a subset of a particular promotion category (but doesn't do the reverse).
 
 ```json
 {

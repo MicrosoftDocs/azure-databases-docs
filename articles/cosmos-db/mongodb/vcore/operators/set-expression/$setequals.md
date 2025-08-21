@@ -1,7 +1,7 @@
 ---
   title: $setEquals
   titleSuffix: Overview of the $setEquals operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $setEquals operator returns a value of true if two sets have the same distinct elements.
+  description: The $setEquals operator returns true if two sets have the same distinct elements.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # $setEquals
 
-The `$setEquals` operator returns a value of `true` if two sets have the same distinct elements, regardless of order or duplicates. It treats arrays as sets and ignores duplicate values and element order.
+The `$setEquals` operator returns `true` if two sets have the same distinct elements, regardless of order or duplicates. It treats arrays as sets and ignores duplicate values and element order.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The `$setEquals` operator returns a value of `true` if two sets have the same di
 
 | Parameter | Description |
 | --- | --- |
-| `array1, array2, ...` | Arrays that you want to compare to determine if they're equal. You can specify two or more arrays. |
+| `array1, array2, ...` | Arrays to compare for equality. You can specify two or more arrays. |
 
 ## JSON example
 
@@ -103,7 +103,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query output compares the discount categories and returns a value of `false`, because the values don't match.
+The query output compares the discount categories and returns `false`, because the values don't match.
 
 ```json
 {
@@ -123,7 +123,7 @@ The query output compares the discount categories and returns a value of `false`
 
 ### Example 2: Compare staff requirements
 
-The following example determines whether two stores have the same staff structure requirements.
+The following example determines if two stores have the same staff structure requirements.
 
 ```javascript
 db.stores.aggregate([
@@ -193,7 +193,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns a value of `true` because both of the arrays list the same products in a different sequence, with duplicates.
+The query returns `true` because both of the arrays list the same products in a different sequence, with duplicates.
 
 ```json
 {

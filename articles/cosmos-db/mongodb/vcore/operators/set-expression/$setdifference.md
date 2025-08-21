@@ -26,8 +26,8 @@ The `$setDifference` operator returns a set that includes elements that exist in
 
 | Parameter | Description |
 | --- | --- |
-| `array1` | The first array that you want to compare. Elements that are unique to this array are returned. |
-| `array2` | The second array that you want to compare against the first array. Elements that exist in both arrays are excluded from the result. |
+| `array1` | The first array to compare. Elements unique to this array are returned. |
+| `array2` | The second array to compare against the first array. Elements that exist in both arrays are excluded from the result. |
 
 ## JSON example
 
@@ -83,9 +83,9 @@ The following JSON sample from the `stores` dataset can help you understand how 
 }
 ```
 
-### Example 1: Find categories of products that are for sale but not discounted
+### Example 1: Find categories of products for sale but not discounted
 
-The following example checks for product categories that include sales data, but no discounts.
+The following example checks for product categories that include sales data but no discounts.
 
 ```javascript
 db.stores.aggregate([
@@ -171,7 +171,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the skills that are required, but not available.
+The query returns the skills that are required but not available.
 
 ```json
 {

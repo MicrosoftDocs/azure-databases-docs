@@ -26,7 +26,7 @@ The `$setUnion` operator returns an array that contains all the unique elements 
 
 | Parameter | Description |
 | --- | --- |
-| `<array1>, <array2>, ...` | Two or more arrays that you want to combine. Each array is treated as a set, and duplicates are removed from the final result. |
+| `<array1>, <array2>, ...` | Two or more arrays to combine. Each array is treated as a set, and duplicates are removed from the final result. |
 
 ## JSON example
 

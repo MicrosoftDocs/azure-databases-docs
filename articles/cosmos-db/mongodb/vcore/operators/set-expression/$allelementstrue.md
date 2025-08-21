@@ -1,7 +1,7 @@
 ---
   title: $allElementsTrue
   titleSuffix: Overview of the $allElementsTrue operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $allElementsTrue operator returns a value of true if all elements in an array are evaluated to be true.
+  description: The $allElementsTrue operator returns true if all elements in an array evaluates to true.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # $allElementsTrue
 
-The `$allElementsTrue` operator evaluates an array as a set. It returns a value of `true` if no element in the array has a value of `false` or equivalent to `false` (like `null`, `0`, or `undefined`). If any element is evaluated to have a value of `false` or the equivalent, the operator returns a value of `false`.
+The `$allElementsTrue` operator evaluates an array as a set. It returns `true` if no element in the array has a value of `false` or equivalent to `false` (like `null`, `0`, or `undefined`). If any element evaluates to a value of `false` or the equivalent, the operator returns `false`.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The `$allElementsTrue` operator evaluates an array as a set. It returns a value 
 
 | Parameter | Description |
 | --- | --- |
-| `array` | An array of expressions to evaluate. If the array is empty, `$allElementsTrue` returns a value of `true`. |
+| `array` | An array of expressions to evaluate. If the array is empty, `$allElementsTrue` returns `true`. |
 
 ## JSON example
 
@@ -89,9 +89,9 @@ The following JSON sample from the `stores` dataset can help you understand how 
 }
 ```
 
-### Example: Determine whether all the discount percentages are higher than zero
+### Example: Determine if all the discount percentages are higher than zero
 
-The aggregation query determines whether all the discount percentages in each promotion event are greater than zero.
+The aggregation query determines if all the discount percentages in each promotion event are greater than zero.
 
 ```javascript
 db.stores.aggregate([
