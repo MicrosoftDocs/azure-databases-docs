@@ -12,7 +12,7 @@
 
 # $anyElementTrue
 
-The `$anyElementTrue` operator evaluates an array as a set and returns `true` if any element in the array is `true` (or equivalent to `true`). If all the elements evaluates to a value of `false`, `null`, `0`, or `undefined`, the operator returns `false`.
+The `$anyElementTrue` operator evaluates an array as a set and returns `true` if any element in the array is `true` (or equivalent to `true`). If all the elements evaluate to a value of `false`, `null`, `0`, or `undefined`, the operator returns `false`.
 
 ## Syntax
 
