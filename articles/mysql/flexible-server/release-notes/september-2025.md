@@ -43,7 +43,7 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 - Support for in place major version upgrade from 8.0 to 8.4. [Learn more](../how-to-upgrade.md)
 
 > [!NOTE]  
-> Existing servers must be upgraded to the latest version through the next scheduled maintenancto gain the capability to in place upgrade from 8.0 to 8.4.
+> Existing servers must be upgraded to the latest version through the next scheduled maintenance gain the capability to in place upgrade from 8.0 to 8.4.
 
 ## Improvements
 
