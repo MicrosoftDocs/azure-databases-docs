@@ -32,6 +32,16 @@ landingContent:
             url: array-length.md
           - text: ARRAY_SLICE
             url: array-slice.md
+          - text: ARRAY_MAX
+            url: array-max.md
+          - text: ARRAY_MIN
+            url: array-min.md
+          - text: ARRAY_SUM
+            url: array-sum.md
+          - text: ARRAY_AVG
+            url: array-avg.md
+          - text: ARRAY_MEDIAN
+            url: array-median.md
           - text: CHOOSE
             url: choose.md
           - text: ObjectToArray
@@ -40,6 +50,10 @@ landingContent:
             url: setintersect.md
           - text: SetUnion
             url: setunion.md
+          - text: SetDifference
+            url: setdifference.md
+          - text: SetEqual
+            url: setequal.md
   - title: Conditional functions
     linkLists:
       - linkListType: reference
@@ -50,6 +64,8 @@ landingContent:
     linkLists:
       - linkListType: reference
         links:
+          - text: Ago
+            url: ago.md
           - text: GetCurrentDateTime
             url: getcurrentdatetime.md
           - text: GetCurrentDateTimeStatic
@@ -62,6 +78,8 @@ landingContent:
             url: getcurrenttimestamp.md
           - text: GetCurrentTimestampStatic
             url: getcurrenttimestampstatic.md
+          - text: Now
+            url: now.md
       - linkListType: reference
         links:
           - text: DateTimeAdd
@@ -70,6 +88,8 @@ landingContent:
             url: datetimebin.md
           - text: DateTimeDiff
             url: datetimediff.md
+          - text: DateTimeFormat
+            url: datetimeformat.md
           - text: DateTimeFromParts
             url: datetimefromparts.md
           - text: DateTimePart
@@ -78,10 +98,16 @@ landingContent:
             url: datetimetoticks.md
           - text: DateTimeToTimestamp
             url: datetimetotimestamp.md
+          - text: Day
+            url: day.md
+          - text: Month
+            url: month.md
           - text: TicksToDateTime
             url: tickstodatetime.md
           - text: TimestampToDateTime
             url: timestamptodatetime.md
+          - text: Year
+            url: year.md
   - title: Item functions
     linkLists:
       - linkListType: reference
@@ -194,10 +220,20 @@ landingContent:
             url: concat.md
           - text: CONTAINS
             url: contains.md
+          - text: CONTAINS_ALL_CI
+            url: contains-all-ci.md
+          - text: CONTAINS_ALL_CS
+            url: contains-all-cs.md
+          - text: CONTAINS_ANY_CI
+            url: contains-any-ci.md
+          - text: CONTAINS_ANY_CS
+            url: contains-any-cs.md
           - text: ENDSWITH
             url: endswith.md
           - text: INDEX_OF
             url: index-of.md
+          - text: LASTINDEXOF
+            url: lastindexof.md
           - text: LEFT
             url: left.md
           - text: LENGTH
@@ -256,6 +292,8 @@ landingContent:
             url: is-array.md
           - text: IS_BOOL
             url: is-bool.md
+          - text: IS_DATETIME
+            url: is-datetime.md
           - text: IS_DEFINED
             url: is-defined.md
           - text: IS_FINITE_NUMBER
