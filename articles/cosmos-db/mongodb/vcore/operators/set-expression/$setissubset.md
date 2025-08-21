@@ -12,7 +12,7 @@
 
 # $setIsSubset
 
-The `$setIsSubset` operator returns a Boolean value that indicates if one array is a subset of a second array. It treats arrays as sets, which means it ignores duplicates and element order. It returns `true` if all the elements in the first array exist in the second array. If not, it returns `false`.
+The `$setIsSubset` operator returns a Boolean value that indicates if one array is a subset of a second array. It treats arrays as sets, which means it ignores duplicates and element order. It returns `true` if all the elements in the first array exist in the second array. Otherwise, it returns `false`.
 
 ## Syntax
 
