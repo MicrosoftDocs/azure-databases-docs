@@ -2,7 +2,7 @@
 title: 'Quickstart: Create an Azure Managed Instance for Apache Cassandra Cluster from the Azure Portal'
 description: This quickstart shows how to create an Azure Managed Instance for Apache Cassandra cluster by using the Azure portal.
 author: ManishSharma
-ms.author: manishmsfte
+ms.author: mansha
 ms.reviewer: sidandrews
 ms.date: 08/21/2025
 ms.service: azure-managed-instance-apache-cassandra
@@ -45,7 +45,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    - **Extension**: Select extensions to add, including [Cassandra Lucene Index](search-lucene-index.md). This is only relevant for Cassandra v3.11.
    - **Initial Cassandra admin password**: Enter the password used to create the cluster.
    - **Confirm Cassandra admin password**: Reenter your password.
-   - **Virtual network**: Select an existing virtual network and subnet, or create a new one. Please take a note of [network rules](https://learn.microsoft.com/en-us/azure/managed-instance-apache-cassandra/network-rules) or you can use [VPN based configuration](https://learn.microsoft.com/en-us/azure/managed-instance-apache-cassandra/use-vpn).
+   - **Virtual network**: Select an existing virtual network and subnet, or create a new one. Please take a note of [network rules](./network-rules.md) or you can use [VPN based configuration](./use-vpn.md).
    - **Assign roles**: Virtual networks require special permissions to allow managed Cassandra clusters to be deployed. Keep this box selected if you create a new virtual network or use an existing virtual network without permissions applied. If you use a virtual network where you previously deployed Azure SQL Managed Instance Cassandra clusters, clear this option.
 
       :::image type="content" source="media/create-cluster-portal/create-cluster-page.png" border="true" alt-text="Screenshot that shows the Basics tab on the Create page." lightbox="media/create-cluster-portal/create-cluster-page.png":::
