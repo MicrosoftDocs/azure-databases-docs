@@ -1,7 +1,7 @@
 ---
   title: $allElementsTrue
   titleSuffix: Overview of the $allElementsTrue operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $allElementsTrue operator returns true if all elements in an array evaluates to true.
+  description: The $allElementsTrue operator returns true if all elements in an array evaluate to true.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
