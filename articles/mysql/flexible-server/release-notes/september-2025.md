@@ -17,7 +17,8 @@ We're excited to announce the September 2025 version of Azure Database for MySQL
 This new version introduces a range of new features and enhancements, resolves known issues, and includes essential security patches to ensure optimal performance and security.
 
 > [!IMPORTANT]
-> We'll force upgrade TLS 1.0/1.1 setting to TLS 1.2 during maintenance for this version. For customer who are still using TLS 1.0/1.1 to connect to their MySQL servers, we recommend updating their clients to support TLS 1.2, otherwise they may experience connectivity issues after the new version is applied. 
+> - We'll force upgrade TLS 1.0/1.1 setting to TLS 1.2 during maintenance for this version. For customer who are still using TLS 1.0/1.1 to connect to their MySQL servers, we recommend updating their clients to support TLS 1.2, otherwise they may experience connectivity issues after the new version is applied. 
+> - A new certificate authorities (CAs) will be rotated during the maintenance for this version to maintain strong security and compliance standards. For more details about the process and actions to be taken to preserve connectivity across the maintenance, you can review our documentation here: [Certificate rotation for Azure Database for MySQL Flexible Server](https://aka.ms/mysql/certificate-rotation).
 
 ## Engine version changes
 
