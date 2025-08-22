@@ -19,7 +19,7 @@ Azure Database for MySQL provides a fully managed database service powered by th
 
 ## Supported MySQL versions
 
-Azure Database for MySQL was developed from the [MySQL Community Edition](https://www.mysql.com/products/community/), using the InnoDB storage engine. The service supports the community's current major versions, namely MySQL 5.7 and 8.0. MySQL uses the X.Y.Z. naming scheme where X is the major version, Y is the minor version, and Z is the bug fix release. For more information about the scheme, see the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
+Azure Database for MySQL was developed from the [MySQL Community Edition](https://www.mysql.com/products/community/), using the InnoDB storage engine. The service supports the community's current major versions, namely MySQL 5.7 and 8.0. MySQL uses the X.Y.Z. naming scheme where X.Y is the major version, Z is the minor version.Z is incremented for each new LTS release, but is likely always 0 for innovation releases. For more information about the scheme, see the [MySQL documentation](https://dev.mysql.com/doc/refman/8.4/en/which-version.html).
 
 Azure Database for MySQL currently supports the following major and minor versions of MySQL:
 

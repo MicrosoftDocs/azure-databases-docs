@@ -1,7 +1,7 @@
 ---
   title: $setUnion
   titleSuffix: Overview of the $setUnion operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $setUnion operator returns an array containing all unique elements from the input arrays.
+  description: The $setUnion operator returns an array that contains all the unique elements from the input arrays.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # $setUnion
 
-The `$setUnion` operator returns an array containing all unique elements from the input arrays. It treats arrays as sets, removing duplicates and ignoring element order. The result contains each unique element only once, regardless of how many times it appears across the input arrays.
+The `$setUnion` operator returns an array that contains all the unique elements from the input arrays. It treats arrays as sets, removes duplicates, and ignores element order. The result contains each unique element only once, regardless of how many times it appears across the input arrays.
 
 ## Syntax
 
@@ -26,11 +26,11 @@ The `$setUnion` operator returns an array containing all unique elements from th
 
 | Parameter | Description |
 | --- | --- |
-| **`<array1>, <array2>, ...`** | Two or more arrays to be combined. Each array is treated as a set, and duplicates are removed from the final result. |
+| `<array1>, <array2>, ...` | Two or more arrays to combine. Each array is treated as a set, and duplicates are removed from the final result. |
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
@@ -141,7 +141,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Combine all product categories
 
-The example gets a complete list of all unique product categories that a store deals with, including both sales and promotion categories.
+The following example produces a complete list of all of a store's unique product categories. The list includes sales and promotion categories.
 
 ```javascript
 db.stores.aggregate([
@@ -166,7 +166,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns all the unique categories across sales and promotions.
+The query returns all the unique categories across all sales and promotions.
 
 ```json
 {
