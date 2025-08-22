@@ -12,7 +12,7 @@
 
 # $setIntersection
 
-The `$setIntersection` operator returns an array containing the elements that appear in all of the input arrays. It treats arrays as sets, meaning it removes duplicates and ignores the order of elements.
+The `$setIntersection` operator returns an array that contains elements that appear in all of the input arrays. It treats arrays as sets, which means that it removes duplicates and ignores the order of elements.
 
 ## Syntax
 
@@ -26,11 +26,11 @@ The `$setIntersection` operator returns an array containing the elements that ap
 
 | Parameter | Description |
 | --- | --- |
-| **`<array1>, <array2>, ...`** | Two or more arrays to find the intersection of. Each array is treated as a set. |
+| `<array1>, <array2>, ...` | Two or more arrays to find the intersection of. Each array is treated as a set. |
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
@@ -160,7 +160,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Find common categories between sales and promotions
 
-The example allows finding what product categories appear in both the sales data and promotion discounts for a store.
+The following example helps you determine which product categories appear in a store's sales data and promotion discounts.
 
 ```javascript
 db.stores.aggregate([
@@ -188,7 +188,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query output shows which categories are common between sales and different promotion events.
+The query output shows which categories are common between sales and promotion events.
 
 ```json
 {
@@ -221,9 +221,9 @@ The query output shows which categories are common between sales and different p
 }
 ```
 
-### Example 2: Find categories common across multiple promotion events
+### Example 2: Find common categories across multiple promotion events
 
-The example allows us to find categories that appear in multiple promotion events.
+The following example helps you find categories that appear in multiple promotion events.
 
 ```javascript
 db.stores.aggregate([
@@ -243,7 +243,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns an empty array for `commonAcrossPromotions` as there are no common product category appearing across all the promotions.
+The query returns an empty array for `commonAcrossPromotions`, because there are no common product categories that appear across all of the promotions.
 
 ```json
  {
