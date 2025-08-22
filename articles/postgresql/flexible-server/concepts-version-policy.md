@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions in Az
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 08/19/2025
+ms.date: 08/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -122,7 +122,7 @@ A: Yes, but after the grace period, you're automatically enrolled in paid Extend
 
 **Q: Can my applications break during a major version upgrade?**
 
-A: Azure provides pre-upgrade validation checks (PVC) to identify common issues such as extension compatibility and parameter conflicts. We recommend testing upgrades in non-production environments. 
+A: Azure provides pre-upgrade validation checks (PVC) to identify common issues such as extension compatibility and parameter conflicts. We recommend testing upgrades in non-production environments. For more details, refer [Major Version Upgrades](./concepts-major-version-upgrade.md).
 
 **Q: How do I know if my server is in Extended Support?**
 
@@ -139,10 +139,12 @@ A: No. While Azure upgrades the database engine, noncore extensions (for example
 **Q: How can I reduce downtime during a major upgrade?**
 
 A: To minimize downtime:
-- Apply pending maintenance before the upgrade.
-- Take a manual backup just before the upgrade to speed up snapshot creation.
-- Schedule upgrades during low-traffic periods.
-- Monitor replication lag and connections if using Blue/Green deployment.
+- Plan upgrades during low-traffic hours.
+- Identify and fix any upgrade blockers (e.g. extensions, roles, replication slots) ahead of the upgrade.
+- Pause background jobs and long-running sessions.
+- Temporarily scale up compute to speed up pg_upgrade.
+- Clean up bloat with VACUUM or REINDEX if needed.
+- Run ANALYZE after upgrade to restore performance.
 
 **Q: Where can I track which of my servers are nearing end of support?**
 
