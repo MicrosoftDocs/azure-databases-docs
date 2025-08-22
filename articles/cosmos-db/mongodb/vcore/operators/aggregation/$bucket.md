@@ -176,8 +176,8 @@ Sample Output
 
 ```json
 [
-  { _id: 1000, count: 1, totalSales: 3700 },
-  { _id: 'Other', count: 41504, totalSales: 0 }
+  { "_id": 1000, "count": 1, "totalSales": 3700 },
+  { "_id": "Other", "count": 41504, "totalSales": 0 }
 ]
 ```
 

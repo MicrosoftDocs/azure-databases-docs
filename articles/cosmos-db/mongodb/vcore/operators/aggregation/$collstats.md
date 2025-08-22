@@ -51,7 +51,9 @@ db.stores.aggregate([
 Sample output
 
 ```json
-[ { ns: 'StoreData.stores', count: 41505 } ]
+[
+  { "ns": "StoreData.stores", "count": 41505 }
+]
 ```
 
 This example returns the count of documents in the store collection.

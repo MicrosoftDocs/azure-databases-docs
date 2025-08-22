@@ -34,185 +34,102 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  _id: 'a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6',
-  name: 'Lakeshore Retail | Holiday Supply Hub - Marvinfort',
-  location: {
-    lat: -74.0427,
-    lon: 160.8154
+  "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+  "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+  "location": {
+    "lat": -74.0427,
+    "lon": 160.8154
   },
-  staff: {
-    employeeCount: {
-      fullTime: 9,
-      partTime: 18
+  "staff": {
+    "employeeCount": {
+      "fullTime": 9,
+      "partTime": 18
     }
   },
-  sales: {
-    salesByCategory: [
+  "sales": {
+    "salesByCategory": [
       {
-        categoryName: 'Stockings',
-        totalSales: 25731
+        "categoryName": "Stockings",
+        "totalSales": 25731
       }
     ],
-    revenue: 25731
+    "revenue": 25731
   },
-  promotionEvents: [
+  "promotionEvents": [
     {
-      eventName: 'Mega Savings Extravaganza',
-      promotionalDates: {
-        startDate: {
-          Year: 2023,
-          Month: 6,
-          Day: 29
-        },
-        endDate: {
-          Year: 2023,
-          Month: 7,
-          Day: 7
-        }
+      "eventName": "Mega Savings Extravaganza",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 6, "Day": 29 },
+        "endDate": { "Year": 2023, "Month": 7, "Day": 7 }
       },
-      discounts: [
-        {
-          categoryName: 'Stockings',
-          discountPercentage: 16
-        },
-        {
-          categoryName: 'Tree Ornaments',
-          discountPercentage: 8
-        }
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 16 },
+        { "categoryName": "Tree Ornaments", "discountPercentage": 8 }
       ]
     },
     {
-      eventName: 'Incredible Discount Days',
-      promotionalDates: {
-        startDate: {
-          Year: 2023,
-          Month: 9,
-          Day: 27
-        },
-        endDate: {
-          Year: 2023,
-          Month: 10,
-          Day: 4
-        }
+      "eventName": "Incredible Discount Days",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
+        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
       },
-      discounts: [
-        {
-          categoryName: 'Stockings',
-          discountPercentage: 11
-        },
-        {
-          categoryName: 'Holiday Cards',
-          discountPercentage: 9
-        }
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 11 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 9 }
       ]
     },
     {
-      eventName: 'Massive Deal Mania',
-      promotionalDates: {
-        startDate: {
-          Year: 2023,
-          Month: 12,
-          Day: 26
-        },
-        endDate: {
-          Year: 2024,
-          Month: 1,
-          Day: 2
-        }
+      "eventName": "Massive Deal Mania",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
+        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
       },
-      discounts: [
-        {
-          categoryName: 'Gift Bags',
-          discountPercentage: 21
-        },
-        {
-          categoryName: 'Bows',
-          discountPercentage: 19
-        }
+      "discounts": [
+        { "categoryName": "Gift Bags", "discountPercentage": 21 },
+        { "categoryName": "Bows", "discountPercentage": 19 }
       ]
     },
     {
-      eventName: 'Super Saver Soiree',
-      promotionalDates: {
-        startDate: {
-          Year: 2024,
-          Month: 3,
-          Day: 25
-        },
-        endDate: {
-          Year: 2024,
-          Month: 4,
-          Day: 1
-        }
+      "eventName": "Super Saver Soiree",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
+        "endDate": { "Year": 2024, "Month": 4, "Day": 1 }
       },
-      discounts: [
-        {
-          categoryName: 'Tree Ornaments',
-          discountPercentage: 15
-        },
-        {
-          categoryName: 'Stockings',
-          discountPercentage: 14
-        }
+      "discounts": [
+        { "categoryName": "Tree Ornaments", "discountPercentage": 15 },
+        { "categoryName": "Stockings", "discountPercentage": 14 }
       ]
     },
     {
-      eventName: 'Fantastic Savings Fiesta',
-      promotionalDates: {
-        startDate: {
-          Year: 2024,
-          Month: 6,
-          Day: 23
-        },
-        endDate: {
-          Year: 2024,
-          Month: 6,
-          Day: 30
-        }
+      "eventName": "Fantastic Savings Fiesta",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
       },
-      discounts: [
-        {
-          categoryName: 'Stockings',
-          discountPercentage: 24
-        },
-        {
-          categoryName: 'Gift Wrap',
-          discountPercentage: 16
-        }
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 24 },
+        { "categoryName": "Gift Wrap", "discountPercentage": 16 }
       ]
     },
     {
-      eventName: 'Price Plunge Party',
-      promotionalDates: {
-        startDate: {
-          Year: 2024,
-          Month: 9,
-          Day: 21
-        },
-        endDate: {
-          Year: 2024,
-          Month: 9,
-          Day: 28
-        }
+      "eventName": "Price Plunge Party",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+        "endDate": { "Year": 2024, "Month": 9, "Day": 28 }
       },
-      discounts: [
-        {
-          categoryName: 'Holiday Tableware',
-          discountPercentage: 13
-        },
-        {
-          categoryName: 'Holiday Cards',
-          discountPercentage: 11
-        }
+      "discounts": [
+        { "categoryName": "Holiday Tableware", "discountPercentage": 13 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 11 }
       ]
     }
   ],
-  company: 'Lakeshore Retail',
-  city: 'Marvinfort',
-  storeOpeningDate: 2024-10-01T18:24:02.586Z,
-  lastUpdated: Timestamp({ t: 1730485442, i: 1 }),
-  storeFeatures: 38
+  "company": "Lakeshore Retail",
+  "city": "Marvinfort",
+  "storeOpeningDate": { "$date": "2024-10-01T18:24:02.586Z" },
+  "lastUpdated": { "$timestamp": { "t": 1730485442, "i": 1 } },
+  "storeFeatures": 38
 }
+
 ```
 
 The `storeFeatures` field is a bitmask integer representing various store capabilities. Each bit corresponds to a feature:
@@ -251,31 +168,32 @@ Sample output:
 ```JSON
 [
   {
-    _id: 'a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6',
-    name: 'Lakeshore Retail | Holiday Supply Hub - Marvinfort',
-    storeFeatures: 38
+    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+    "storeFeatures": 38
   },
   {
-    _id: '7e53ca0f-6e24-4177-966c-fe62a11e9af5',
-    name: 'Contoso, Ltd. | Office Supply Deals - South Shana',
-    storeFeatures: 86
+    "_id": "7e53ca0f-6e24-4177-966c-fe62a11e9af5",
+    "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
+    "storeFeatures": 86
   },
   {
-    _id: '44fdb9b9-df83-4492-8f71-b6ef648aa312',
-    name: 'Fourth Coffee | Storage Solution Gallery - Port Camilla',
-    storeFeatures: 222
+    "_id": "44fdb9b9-df83-4492-8f71-b6ef648aa312",
+    "name": "Fourth Coffee | Storage Solution Gallery - Port Camilla",
+    "storeFeatures": 222
   },
   {
-    _id: 'e6410bb3-843d-4fa6-8c70-7472925f6d0a',
-    name: 'Relecloud | Toy Collection - North Jaylan',
-    storeFeatures: 108
+    "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+    "name": "Relecloud | Toy Collection - North Jaylan",
+    "storeFeatures": 108
   },
   {
-    _id: '9024d615-eed0-429a-a098-6640207cc2b6',
-    name: 'Adatum Corporation | Paper Product Mart - Lake Coralie',
-    storeFeatures: 204
+    "_id": "9024d615-eed0-429a-a098-6640207cc2b6",
+    "name": "Adatum Corporation | Paper Product Mart - Lake Coralie",
+    "storeFeatures": 204
   }
 ]
+
 ```
 
 ## Related content

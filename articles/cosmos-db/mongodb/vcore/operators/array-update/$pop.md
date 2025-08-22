@@ -20,9 +20,6 @@ The `$pop` operator is used to remove the first or last element of an array. Thi
 { $pop: { <field>: <value> } }
 ```
 
-- `<field>`: The field that contains the array from which you want to remove an element.
-- `<value>`: Use `1` to remove the last element, and `-1` to remove the first element.
-
 ## Parameters
 
 | Parameter | Description |

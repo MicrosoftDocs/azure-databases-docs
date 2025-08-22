@@ -150,14 +150,13 @@ This query would return the following document.
 ```json
 [
   {
-    _id: '7e53ca0f-6e24-4177-966c-fe62a11e9af5',
-    name: 'Contoso, Ltd. | Office Supply Deals - South Shana',
-    location: { lat: 40.7128, lon: -74.006 },
-    sales: { fullSales: 5400 },
-    tag: [ '#TechDeals', '#FreeShipping' ]
+    "_id": "7e53ca0f-6e24-4177-966c-fe62a11e9af5",
+    "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
+    "location": { "lat": 40.7128, "lon": -74.006 },
+    "sales": { "fullSales": 5400 },
+    "tag": [ "#TechDeals", "#FreeShipping" ]
   }
 ]
-
 ```
 
 
