@@ -19,7 +19,7 @@ appliesto:
 
 # Configure Microsoft Entra ID authentication for an Azure Cosmos DB for MongoDB vCore cluster
 
-In this article, you learn how to configure Microsoft Entra ID authentication for an Azure Cosmos DB for MongoDB vCore. The steps in this guide configure an existing Azure Cosmos DB for MongoDB vCore cluster to use Microsoft Entra ID authentication with your human identity (currently signed-in account). Microsoft Entra ID authentication enables secure and seamless access to your database by using your organization's existing identities. This guide goes through the steps to set up authentication, register users or service principals, and validate the configuration.
+In this article, you learn how to configure [Microsoft Entra ID authentication](./entra-authentication.md) for an Azure Cosmos DB for MongoDB vCore. The steps in this guide configure an existing Azure Cosmos DB for MongoDB vCore cluster to use Microsoft Entra ID authentication with your human identity (currently signed-in account) or a Microsoft Entra ID security principal such as managed identity. Microsoft Entra ID authentication enables secure and seamless access to your database by using your organization's existing identities. This guide goes through the steps to set up authentication, register users or service principals, and validate the configuration.
 
 ## Prerequisites
 
@@ -60,7 +60,27 @@ First, get the unique identifier for your currently signed-in identity.
 
 ## Configure existing cluster for authentication
 
-When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is configured for native authentication by default. Use the Azure CLI to configure your existing cluster to support Microsoft Entra ID authentication. Then, configure the cluster to map a user to your signed-in identity.
+When you create an Azure Cosmos DB for MongoDB vCore cluster, it is configured to use native authentication by default. To enable authentication using Entra ID, turn on the Entra ID authentication method and add Entra ID users to the cluster.
+
+### Managing cluster authentication methods 
+Use the following steps to enable MicrosoftEntra ID authentication method on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster.
+
+#### [Azure portal](#tab/portal)
+
+1. On the cluster sidebar, under **Settings**, select **Authentication**.
+
+1. In **Authentication methods** section select **Native DocumentDB and Microsoft Entra ID**.
+
+    :::image type="content" source="media/how-to-configure-entra-authentication/enable-entra-id-authentication-method.png" alt-text="Screenshot that shows how to enable Microsoft Entra ID authentication method on an existing cluster." lightbox="media/how-to-configure-entra-authentication/enable-entra-id-authentication-method.png":::
+
+1. In the list **Microsoft Entra ID authentication** section, select **+Add Microsoft Entra ID** to open the side panel that allows to add Entra ID users and security principals to the cluster.
+
+    :::image type="content" source="media/how-to-configure-entra-authentication/open-side-panel-to-add-entra-id-users.png" alt-text="Screenshot that shows how to open the side panel that allows to add Microsoft Entra ID users and secruity principals to the cluster." lightbox="media/how-to-configure-entra-authentication/open-side-panel-to-add-entra-id-users.png":::
+
+1. In the **Select Microsoft Entra ID roles** side panel, select one or more Entra ID users and confirm your choice by seelcting **Select**.
+
+
+#### [Azure portal](#tab/cli)
 
 1. Now, get the `authConfig` property from your existing cluster using `az resource show`.
 
@@ -165,6 +185,8 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, the cluster is con
     > ```
     >
 
+---
+
 > [!NOTE]
 > Microsoft Entra ID users added to the cluster are going to be in addition to native DocumentDB users defined on the same cluster. An Azure Cosmos DB for MongoDB vCore cluster is created with at least one built-in native DocumentDB user. You can add more native DocumentDB users after cluster provisioning is completed.
 
@@ -183,7 +205,7 @@ The `tls` setting must also be enabled. The remaining recommended settings are b
 | `retrywrites` | `false` |
 | `maxIdleTimeMS` | `120000` |
 
-### [Azure portal](#tab/connection-uri)
+### [Azure portal](#tab/portal)
 
 On the cluster properties page in the Azure portal, under **Settings**, open **Connection strings**. The **Connection strings** page contains connection strings for the authentication methods enabled on the cluster. Microsoft Entra ID connection strings are in the **Microsoft Entra ID** section.
 
@@ -198,6 +220,7 @@ On the cluster properties page in the Azure portal, under **Settings**, open **C
     ```output
     mongodb+srv://<cluster-name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
     ```
+
 
 ### [Node.js](#tab/nodejs)
 
