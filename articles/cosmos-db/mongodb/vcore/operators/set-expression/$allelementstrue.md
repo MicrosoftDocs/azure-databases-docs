@@ -12,7 +12,7 @@
 
 # $allElementsTrue
 
-The `$allElementsTrue` operator evaluates an array as a set and returns `true` if no element in the array is `false` or equivalent to `false` (such as `null`, `0`, or `undefined`). If any element evaluates to `false`, the operator returns `false`.
+The `$allElementsTrue` operator evaluates an array as a set. It returns `true` if no element in the array has a value of `false` or equivalent to `false` (like `null`, `0`, or `undefined`). If any element evaluates to a value of `false` or the equivalent, the operator returns `false`.
 
 ## Syntax
 
@@ -26,11 +26,11 @@ The `$allElementsTrue` operator evaluates an array as a set and returns `true` i
 
 | Parameter | Description |
 | --- | --- |
-| **`array`** | An array of expressions to evaluate. If the array is empty, `$allElementsTrue` returns `true`. |
+| `array` | An array of expressions to evaluate. If the array is empty, `$allElementsTrue` returns `true`. |
 
 ## Example
 
-Let's understand the usage with sample json from the `stores` dataset.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
@@ -89,9 +89,9 @@ Let's understand the usage with sample json from the `stores` dataset.
 }
 ```
 
-### Example 1: Check if all discount percentages are higher than zero
+### Example: Determine if all the discount percentages are higher than zero
 
-The aggregation query checks if all discount percentages in each promotion event are greater than zero.
+The aggregation query determines if all the discount percentages in each promotion event are greater than zero.
 
 ```javascript
 db.stores.aggregate([

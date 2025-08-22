@@ -1,7 +1,7 @@
 ---
   title: $setDifference
   titleSuffix: Overview of the $setDifference operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $setDifference operator returns a set with elements that exist in the first set but not in the second set.
+  description: The $setDifference operator returns a set with elements that exist in one set but not in a second set.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # $setDifference
 
-The `$setDifference` operator returns a set with elements that exist in the first set but not in the second set. It treats arrays as sets, ignoring duplicate values and element order.
+The `$setDifference` operator returns a set that includes elements that exist in one set but not in another set. It treats arrays as sets and ignores duplicate values and element order.
 
 ## Syntax
 
@@ -26,12 +26,12 @@ The `$setDifference` operator returns a set with elements that exist in the firs
 
 | Parameter | Description |
 | --- | --- |
-| **`array1`** | The first array to compare. Elements unique to this array are returned. |
-| **`array2`** | The second array to compare against. Elements that exist in both arrays are excluded from the result. |
+| `array1` | The first array to compare. Elements unique to this array are returned. |
+| `array2` | The second array to compare against the first array. Elements that exist in both arrays are excluded from the result. |
 
 ## Example
 
-Let's understand the usage with sample json from the `stores` dataset.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
@@ -83,9 +83,9 @@ Let's understand the usage with sample json from the `stores` dataset.
 }
 ```
 
-### Example 1: Find categories sold but not discounted
+### Example 1: Find categories of products for sale but not discounted
 
-The example checks for product categories with sales data but aren't providing any discounts.
+The following example checks for product categories that include sales data but no discounts.
 
 ```javascript
 db.stores.aggregate([
@@ -118,7 +118,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query output shows categories, which are sold but never discounted.
+The query output shows categories of products that are sold but never discounted.
 
 ```json
 {
@@ -150,7 +150,7 @@ The query output shows categories, which are sold but never discounted.
 
 ### Example 2: Compare staff distribution types
 
-The example demonstrates how to find the difference between two hypothetical staff requirement lists.
+The following example demonstrates how to find the difference between two hypothetical staff requirement lists.
 
 ```javascript
 db.stores.aggregate([
