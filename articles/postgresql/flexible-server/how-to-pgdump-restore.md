@@ -4,7 +4,7 @@ description: This article discusses best practices for pg_dump and pg_restore in
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 06/24/2025
+ms.date: 08/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: best-practice
@@ -58,14 +58,16 @@ You can perform a pg_dump on an online or live server. It makes consistent backu
 
 For large databases, you could create a point-in-time recovery (PITR) server from the production server and perform the pg_dump process on the PITR server. Running pg_dump on a PITR would be a cold run process. The trade-off for this approach is that you wouldn't be concerned with extra CPU, memory, and IO utilization that comes with a pg_dump process that runs on an actual production server. You can run pg_dump on a PITR server and then drop the PITR server after the pg_dump process is completed.
 
-### Recommended server sizing and parameter tuning
+### Recommended server sizing 
 
 When you observe slow pg_dump performance while network bandwidth is high, consider using a higher vCore SKU. Higher vCore SKUs typically provide additional CPU and network throughput, which can reduce overall dump time. Monitor CPU, network, and IOPS metrics to confirm whether bandwidth or compute is the bottleneck before you scale.
 
+### Parameter tuning
+
 Tune the following server parameters to help speed up index creation during restore operations. pg_dump archives often include index-creation commands (for example, CREATE INDEX or ALTER TABLE ... ADD CONSTRAINT); improving index-build performance can shorten total migration time:
 
-- `maintenance_work_mem` — Increase this value to allocate more memory for index creation and other maintenance tasks. For large indexes, consider raising this setting (for example, hundreds of megabytes to multiple gigabytes) and validate memory usage on a nonproduction instance before applying it in production.
-- `max_parallel_maintenance_workers` — Increase this value to allow parallel index creation on multi-vCore servers. Set this relative to the number of vCores and test to determine the optimal level for your workload.
+- `maintenance_work_mem` = 2097151 (2 GB) — Increase this value to allocate more memory for index creation and other maintenance tasks. For large indexes, consider raising this setting (for example, hundreds of megabytes to multiple gigabytes) and validate memory usage on a nonproduction instance before applying it in production.
+- `max_parallel_maintenance_workers` = 4 — Increase this value to allow parallel index creation on multi-vCore servers. Set this relative to the number of vCores and test to determine the optimal level for your workload.
 
 Test any parameter or SKU changes on a nonproduction or PITR server. Validate performance and stability, then apply the changes to production. After migration or large restores complete, revert parameters to values that match normal workload requirements.
 
@@ -74,10 +76,6 @@ Test any parameter or SKU changes on a nonproduction or PITR server. Validate pe
 Use the following syntax for pg_dump:
 
 `pg_dump -h <hostname> -U <username> -d <databasename> -Fd -j <Num of parallel jobs> -Z0 -f sampledb_dir_format`
-
-
-
-## Best practices for pg_restore
 
 You can use the pg_restore utility to restore an Azure Database for PostgreSQL flexible server database from an archive that's created by pg_dump. A few command line options for reducing the overall restore time are listed in the following sections.
 
