@@ -29,9 +29,9 @@ When you create an Azure Cosmos DB for MongoDB vCore cluster, cluster is configu
 
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
-### Get identity metadata
+## Get identity metadata
 
-#### Get unique identifier for Entra ID user management
+### Get unique identifier for Entra ID user management
 
 First, get the unique identifier used to manage Entra ID principals on the cluster.
 
@@ -68,7 +68,7 @@ First, get the unique identifier used to manage Entra ID principals on the clust
 
 1. Record the value of the `id` property. This property is the unique identifier for your principal and is sometimes referred to as the **principal ID**. You use this value in the next series of steps.
 
-#### Get friendly name using unique identifier
+### Get friendly name using unique identifier
 
 When you need to get a friendly name using unique identifier, follow these steps.
 
@@ -100,7 +100,7 @@ When you need to get a friendly name using unique identifier, follow these steps
 1. Note the value of the `mail` and `displayName` properties.
 
 ## Manage cluster authentication methods 
-Use the following steps to enable Microsoft Entra ID authentication method on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have native DocumentDB authentication only or native DocumentDB and Microsoft Entra ID authentication methods enabled on the cluster.  
+Use the following steps to enable Microsoft Entra ID authentication method on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have *native DocumentDB authentication only* or *native DocumentDB and Microsoft Entra ID* authentication methods enabled on the cluster.  
 
 ### [Azure portal](#tab/portal)
 
@@ -127,18 +127,16 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
         --latest-include-preview
     ```
 
-    > [!TIP]
-    > If you're using the Azure Cloud Shell, you can upload/download files directly to the shell. For more information, see [managed files in Azure Cloud Shell](/azure/cloud-shell/using-the-shell-window#upload-and-download-files).
-    >
-    > Also, if you prefer to use the Azure REST API directly with `az rest`, use this alternative command:
-    >
-    > ```azurecli-interactive
-    > az rest \
-    >     --method "PUT" \
-    >     --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
-    >     --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\",\"NativeAuth\"]}}}"
-    > ```
-    >
+1. To disable Microsoft Entra ID authentication method on the cluster, update the existing cluster with an HTTP `PATCH` operation by overwriting the current values in `allowedModes` in the `authConfig` property with `NativeAuth`.
+
+    ```azurecli-interactive
+    az resource patch \
+        --resource-group "<resource-group-name>" \
+        --name "<cluster-name>" \
+        --resource-type "Microsoft.DocumentDB/mongoClusters" \
+        --properties "{\"authConfig\":{\"allowedModes\":[\"NativeAuth\"]}}" \
+        --latest-include-preview
+    ```
 
 1. Validate that the configuration was successful by using `az resource show` and observing the entire cluster's configuration that includes `properties.authConfig`.
 
@@ -166,6 +164,35 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
       ...
     }
     ```
+### [REST APIs](#tab/rest-apis)
+
+1.  If you prefer to use the Azure REST API directly with `az rest`, use this command to add Microsoft Entra ID authentication method to the cluster:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "PUT" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+         --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\",\"NativeAuth\"]}}}"
+     ```
+
+1.  Use this command to remove Microsoft Entra ID authentication method from the cluster and leave only native DocumentDB authentication method enabled:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "PUT" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+         --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":\"NativeAuth\"}}}"
+     ```
+
+1.  Use this command to check authentication methods currently enabled on the cluster:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "GET" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
+     ```
+    > [!TIP]
+    > If you're using the Azure Cloud Shell, you can upload/download files directly to the shell. For more information, see [managed files in Azure Cloud Shell](/azure/cloud-shell/using-the-shell-window#upload-and-download-files).
 ---
 
 ## View authentication methods enabled on the cluster
