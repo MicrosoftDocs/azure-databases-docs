@@ -123,7 +123,7 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
         --resource-group "<resource-group-name>" \
         --name "<cluster-name>" \
         --resource-type "Microsoft.DocumentDB/mongoClusters" \
-        --properties "{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\",\"NativeAuth\"]}}' \
+        --properties "{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\",\"NativeAuth\"]}}" \
         --latest-include-preview
     ```
 
@@ -135,12 +135,12 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
     > ```azurecli-interactive
     > az rest \
     >     --method "PUT" \
-    >     --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-04-01-preview" \
-    >     --body '{"location":"<cluster-region>","properties":{"authConfig":{"allowedModes":["MicrosoftEntraID","NativeAuth"]}}}'
+    >     --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+    >     --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\",\"NativeAuth\"]}}}"
     > ```
     >
 
-1. Validate that the configuration was successful by using `az resource show` again and observing the entire cluster's configuration that includes `properties.authConfig`.
+1. Validate that the configuration was successful by using `az resource show` and observing the entire cluster's configuration that includes `properties.authConfig`.
 
     ```azurecli-interactive
     az resource show \
@@ -166,38 +166,6 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
       ...
     }
     ```
-
-1. Use `az resource create` to create a new resource of type `Microsoft.DocumentDB/mongoClusters/users`. Compose the name of the resource by concatenating the **name of the parent cluster** and the **principal ID** of your identity.
- 
-    ```azurecli-interactive
-    az resource create \
-        --resource-group "<resource-group-name>" \
-        --name "<cluster-name>/users/<principal-id>" \
-        --resource-type "Microsoft.DocumentDB/mongoClusters/users" \
-        --location "<cluster-region>" \
-        --properties '{"identityProvider":{"type":"MicrosoftEntraID","properties":{"principalType":"User"}},"roles":[{"db":"admin","role":"root"}]}' \
-        --latest-include-preview
-    ```
-
-    > [!TIP]
-    > For example, if your parent resource is named `example-cluster` and your principal ID was `aaaaaaaa-bbbb-cccc-1111-222222222222`, the name of the resource would be:
-    >
-    > ```json
-    > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
-    > ```
-    >
-    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
-    > 
-    > Finally, if you prefer to use the Azure REST API directly with `az rest`, use this alternative command:
-    >
-    > ```azurecli-interactive
-    > az rest \
-    >     --method "PUT" \
-    >     --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-04-01-preview" \
-    >     --body '{"location":"<cluster-region>","properties":{"identityProvider":{"type":"MicrosoftEntraID","properties":{"principalType":"User"}},"roles":[{"db":"admin","role":"root"}]}}'
-    > ```
-    >
-
 ---
 
 ## View authentication methods enabled on the cluster
@@ -286,7 +254,36 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 ### [Azure CLI](#tab/cli)
 
-TODO
+1. To add administrative Entra ID users, use `az resource create`. This command creates a new resource of type `Microsoft.DocumentDB/mongoClusters/users`. Compose the name of the resource by concatenating the **name of the parent cluster** and the **principal ID** of your identity.
+ 
+    ```azurecli-interactive
+    az resource create \
+        --resource-group "<resource-group-name>" \
+        --name "<cluster-name>/users/<principal-id>" \
+        --resource-type "Microsoft.DocumentDB/mongoClusters/users" \
+        --location "<cluster-region>" \
+        --properties '{"identityProvider":{"type":"MicrosoftEntraID","properties":{"principalType":"User"}},"roles":[{"db":"admin","role":"root"}]}' \
+        --latest-include-preview
+    ```
+
+    > [!TIP]
+    > For example, if your parent resource is named `example-cluster` and your principal ID was `aaaaaaaa-bbbb-cccc-1111-222222222222`, the name of the resource would be:
+    >
+    > ```json
+    > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+    > ```
+    >
+    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
+    > 
+    > Finally, if you prefer to use the Azure REST API directly with `az rest`, use this alternative command:
+    >
+    > ```azurecli-interactive
+    > az rest \
+    >     --method "PUT" \
+    >     --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-07-01-preview" \
+    >     --body "{\"location\":\"<cluster-region>\",\"properties\":{\"identityProvider\":{\"type\":\"MicrosoftEntraID\",\"properties\":{\"principalType\":\"User\"}},\"roles\":[{\"db\":\"admin\",\"role\":\"root\"}]}}"
+    > ```
+    >
 
 ---
 
