@@ -231,10 +231,12 @@ Follow these steps to see authentication methods currently enabled on the cluste
 
 1. In the **Authentication methods** section, check authentication methods currently enabled on the cluster. 
 
-    :::image type="content" source="media/how-to-configure-entra-authentication/view-currently-enabled-authentication-methods.png" alt-text="Screenshot that shows how to open the side panel that allows to add Microsoft Entra ID users and secruity principals to the cluster." lightbox="media/how-to-configure-entra-authentication/media/how-to-configure-entra-authentication/view-currently-enabled-authentication-methods.png":::
+    :::image type="content" source="media/how-to-configure-entra-authentication/view-currently-enabled-authentication-methods.png" alt-text="Screenshot that shows how view authentication methods currently enabled on the cluster." lightbox="media/how-to-configure-entra-authentication/view-currently-enabled-authentication-methods.png":::
 
 
 ### [Azure CLI](#tab/cli)
+
+TODO
 
 ---
 
@@ -277,6 +279,8 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 ### [Azure CLI](#tab/cli)
 
+TODO
+
 ---
 
 
@@ -297,6 +301,8 @@ Follow these steps to see all [administrative Entra ID users](./entra-authentica
 1. To get friendly names using a unique identifier [follow these steps](#get-friendly-name-using-unique-identifier). 
 
 ### [Azure CLI](#tab/cli)
+
+TODO
 
 ---
 
