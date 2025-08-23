@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 08/28/2025
+ms.date: 08/21/2025
 ms.custom:
   - devx-track-rust
   - build-2025
@@ -116,35 +116,14 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
 
 ### [Azure CLI](#tab/cli)
 
-1. Now, get the `authConfig` property from your existing cluster using `az resource show`.
-
-    ```azurecli-interactive
-    az resource show \
-        --resource-group "<resource-group-name>" \
-        --name "<cluster-name>" \
-        --resource-type "Microsoft.DocumentDB/mongoClusters" \
-        --query "properties.authConfig" \
-        --latest-include-preview
-    ```
-
-1. Observe the output. If Microsoft Entra ID authentication isn't configured, the output includes only the `NativeAuth` value in the `allowedModes` array.
-
-    ```output
-    {
-      "allowedModes": [
-        "NativeAuth"
-      ]
-    }
-    ```
-
-1. Then, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes`.
+1. To enable Microsoft Entra ID on the cluster, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes` in the `authConfig` property.
 
     ```azurecli-interactive
     az resource patch \
         --resource-group "<resource-group-name>" \
         --name "<cluster-name>" \
         --resource-type "Microsoft.DocumentDB/mongoClusters" \
-        --properties '{"authConfig":{"allowedModes":["MicrosoftEntraID","NativeAuth"]}}' \
+        --properties "{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\",\"NativeAuth\"]}}' \
         --latest-include-preview
     ```
 
@@ -236,10 +215,38 @@ Follow these steps to see authentication methods currently enabled on the cluste
 
 ### [Azure CLI](#tab/cli)
 
-TODO
+1. Get the `authConfig` property from your existing cluster using `az resource show`.
 
+    ```azurecli-interactive
+    az resource show \
+        --resource-group "<resource-group-name>" \
+        --name "<cluster-name>" \
+        --resource-type "Microsoft.DocumentDB/mongoClusters" \
+        --query "properties.authConfig" \
+        --latest-include-preview
+    ```
+
+1. Observe the output. If Microsoft Entra ID authentication isn't configured, the output includes only the `NativeAuth` value in the `allowedModes` array.
+
+    ```output
+    {
+      "allowedModes": [
+        "NativeAuth"
+      ]
+    }
+    ```
+
+1. If Microsoft Entra ID authentication is enabled on the cluster, the output includes both the `NativeAuth` and `MicrosoftEntraID` values in the `allowedModes` array.
+
+    ```output
+    {
+      "allowedModes": [
+        "NativeAuth",
+        "MicrosotEntraID"
+      ]
+    }
+    ```
 ---
-
 
 ## Manage Entra ID users on the cluster
 
