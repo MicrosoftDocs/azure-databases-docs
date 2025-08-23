@@ -21,20 +21,30 @@ appliesto:
 
 In this article, you learn how to configure [Microsoft Entra ID authentication](./entra-authentication.md) for an Azure Cosmos DB for MongoDB vCore. The steps in this guide configure an existing Azure Cosmos DB for MongoDB vCore cluster to use Microsoft Entra ID authentication with your human identity (currently signed-in account) or a Microsoft Entra ID security principal such as managed identity. Microsoft Entra ID authentication enables secure and seamless access to your database by using your organization's existing identities. This guide goes through the steps to set up authentication, register users or service principals, and validate the configuration.
 
+When you create an Azure Cosmos DB for MongoDB vCore cluster, it is configured to use native authentication by default. To enable authentication using Entra ID, [turn on the Entra ID authentication method](#manage-cluster-authentication-methods) and [add Entra ID users](#manage-entra-id-users) to the cluster.
+
 ## Prerequisites
 
 [!INCLUDE[Prerequisite - Existing cluster](includes/prereq-existing-cluster.md)]
 
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
-## Get signed-in identity metadata
+### Get identity metadata
 
-First, get the unique identifier for your currently signed-in identity.
+#### Get unique identifier for Entra ID user management
 
-1. Get the details for the currently logged-in account using `az ad signed-in-user`.
+First, get the unique identifier used to manage Entra ID principals on the cluster.
+
+1. Get the details for *the currently logged-in account* using `az ad signed-in-user`.
 
     ```azurecli-interactive
     az ad signed-in-user show
+    ```
+
+1. Get the details for another account using `az ad user show`.
+
+    ```azurecli-interactive
+    az ad user show --id kai@adventure-works.com
     ```
 
 1. The command outputs a JSON response containing various fields.
@@ -58,29 +68,53 @@ First, get the unique identifier for your currently signed-in identity.
 
 1. Record the value of the `id` property. This property is the unique identifier for your principal and is sometimes referred to as the **principal ID**. You use this value in the next series of steps.
 
-## Configure existing cluster for authentication
+#### Get friendly name using unique identifier
 
-When you create an Azure Cosmos DB for MongoDB vCore cluster, it is configured to use native authentication by default. To enable authentication using Entra ID, turn on the Entra ID authentication method and add Entra ID users to the cluster.
+When you need to get a friendly name using unique identifier, follow these steps.
 
-### Managing cluster authentication methods 
-Use the following steps to enable MicrosoftEntra ID authentication method on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster.
+1. Get the details for another account using `az ad user show`.
 
-#### [Azure portal](#tab/portal)
+    ```azurecli-interactive
+    az ad user show --id aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb
+    ```
+
+1. The command outputs a JSON response containing various fields.
+
+    ```json
+    {
+      "@odata.context": "<https://graph.microsoft.com/v1.0/$metadata#users/$entity>",
+      "businessPhones": [],
+      "displayName": "Kai Carter",
+      "givenName": "Kai",
+      "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+      "jobTitle": "Senior Sales Representative",
+      "mail": "<kai@adventure-works.com>",
+      "mobilePhone": null,
+      "officeLocation": "Redmond",
+      "preferredLanguage": null,
+      "surname": "Carter",
+      "userPrincipalName": "<kai@adventure-works.com>"
+    }
+    ```
+
+1. Note the value of the `mail` and `displayName` properties.
+
+## Manage cluster authentication methods 
+Use the following steps to enable Microsoft Entra ID authentication method on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have native DocumentDB authentication only or native Document DB and Microsoft Entra ID authentication methods enabled on the cluster.  
+
+### [Azure portal](#tab/portal)
 
 1. On the cluster sidebar, under **Settings**, select **Authentication**.
 
-1. In **Authentication methods** section select **Native DocumentDB and Microsoft Entra ID**.
+1. In **Authentication methods** section select **Native DocumentDB and Microsoft Entra ID** to enable Microsoft Entra ID authentication.
 
     :::image type="content" source="media/how-to-configure-entra-authentication/enable-entra-id-authentication-method.png" alt-text="Screenshot that shows how to enable Microsoft Entra ID authentication method on an existing cluster." lightbox="media/how-to-configure-entra-authentication/enable-entra-id-authentication-method.png":::
 
-1. In the list **Microsoft Entra ID authentication** section, select **+Add Microsoft Entra ID** to open the side panel that allows to add Entra ID users and security principals to the cluster.
+1. Select **Save** to confirm the authentication method changes. 
 
-    :::image type="content" source="media/how-to-configure-entra-authentication/open-side-panel-to-add-entra-id-users.png" alt-text="Screenshot that shows how to open the side panel that allows to add Microsoft Entra ID users and secruity principals to the cluster." lightbox="media/how-to-configure-entra-authentication/open-side-panel-to-add-entra-id-users.png":::
+    :::image type="content" source="media/how-to-configure-entra-authentication/save-authentication-method-change.png" alt-text="Screenshot that shows the location of Save button for confirmation of the authentication method changes on an existing cluster." lightbox="media/how-to-configure-entra-authentication/save-authentication-method-change.png":::
 
-1. In the **Select Microsoft Entra ID roles** side panel, select one or more Entra ID users and confirm your choice by seelcting **Select**.
-
-
-#### [Azure portal](#tab/cli)
+### [Azure CLI](#tab/cli)
 
 1. Now, get the `authConfig` property from your existing cluster using `az resource show`.
 
@@ -186,6 +220,87 @@ Use the following steps to enable MicrosoftEntra ID authentication method on you
     >
 
 ---
+
+## View authentication methods enabled on the cluster
+
+Follow these steps to see authentication methods currently enabled on the cluster. 
+
+### [Azure portal](#tab/portal)
+
+1. On the cluster sidebar, under **Settings**, select **Authentication**.
+
+1. In the **Authentication methods** section, check authentication methods currently enabled on the cluster. 
+
+    :::image type="content" source="media/how-to-configure-entra-authentication/view-currently-enabled-authentication-methods.png" alt-text="Screenshot that shows how to open the side panel that allows to add Microsoft Entra ID users and secruity principals to the cluster." lightbox="media/how-to-configure-entra-authentication/media/how-to-configure-entra-authentication/view-currently-enabled-authentication-methods.png":::
+
+
+### [Azure CLI](#tab/cli)
+
+---
+
+
+## Manage Entra ID users on the cluster
+
+Follow these steps to add or remove [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) to cluster. 
+
+### [Azure portal](#tab/portal)
+
+1. Select a cluster with [Microsoft Entra ID authentication method enabled](#manage-cluster-authentication-methods).
+
+1. On the cluster sidebar, under **Settings**, select **Authentication**.
+
+1. To add administrative Entra ID users:
+
+    1. In the **Microsoft Entra ID authentication** section, select **+Add Microsoft Entra ID** to open the side panel that allows to add Entra ID users and security principals to the cluster.
+    
+        :::image type="content" source="media/how-to-configure-entra-authentication/open-side-panel-to-add-entra-id-users.png" alt-text="Screenshot that shows how to open the side panel that allows to add Microsoft Entra ID users and secruity principals to the cluster." lightbox="media/how-to-configure-entra-authentication/open-side-panel-to-add-entra-id-users.png":::
+    
+    1. In the **Select Microsoft Entra ID roles** side panel, select one or more Entra ID users and confirm your choice by selecting **Select**.
+        
+        :::image type="content" source="media/how-to-configure-entra-authentication/select-entra-id-users-to-add-to-cluster.png" alt-text="Screenshot that shows how to select and add administrative Microsoft Entra ID users and secruity principals to the cluster." lightbox="media/how-to-configure-entra-authentication/select-entra-id-users-to-add-to-cluster.png":::
+
+    > [!NOTE]
+    > When administrative Microsoft Entra ID users are added to the cluster, their identifiers not human readable names are added to the cluster.
+
+1. Select **Save** to confirm the authentication method changes.
+    
+1. To remove administrative Entra ID users from the cluster:
+
+    1. [Get Entra ID identifiers](#get-unique-identifier-for-entra-id-user-management) for the users to be removed from the cluster.
+
+    1. In the **Microsoft Entra ID authentication** section, select **Remove** next to the user's identifier to remove that user from the cluster.
+
+    :::image type="content" source="media/how-to-configure-entra-authentication/remove-entra-id-user-from-cluster.png" alt-text="Screenshot that shows location of the Remove icon used to remove Microsoft Entra ID users and secruity principals from the cluster." lightbox="media/how-to-configure-entra-authentication/remove-entra-id-user-from-cluster.png":::
+
+    > [!IMPORTANT]
+    > User is removed from the cluster right after **Remove** is selected.
+
+### [Azure CLI](#tab/cli)
+
+---
+
+
+## View Entra ID users on the cluster
+
+Follow these steps to see all [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) added to cluster. 
+
+### [Azure portal](#tab/portal)
+
+1. Select a cluster with [Microsoft Entra ID authentication method enabled](#manage-cluster-authentication-methods).
+
+1. On the cluster sidebar, under **Settings**, select **Authentication**.
+
+1. In the **Microsoft Entra ID authentication** section, find the list of object IDs (unique identifiers) fo rthe administrative Entra ID users added to the cluster.
+
+    :::image type="content" source="media/how-to-configure-entra-authentication/view-entra-id-users-on-cluster.png" alt-text="Screenshot that shows how to view the list of administrative Microsoft Entra ID users on the cluster." lightbox="media/how-to-configure-entra-authentication/view-entra-id-users-on-cluster.png":::
+
+1. To get friendly names using a unique identifier [follow these steps](#get-friendly-name-using-unique-identifier). 
+
+### [Azure CLI](#tab/cli)
+
+---
+
+
 
 > [!NOTE]
 > Microsoft Entra ID users added to the cluster are going to be in addition to native DocumentDB users defined on the same cluster. An Azure Cosmos DB for MongoDB vCore cluster is created with at least one built-in native DocumentDB user. You can add more native DocumentDB users after cluster provisioning is completed.

@@ -41,6 +41,8 @@ Interoperability with MongoDB drivers is provided via [OpenID Connect (OIDC) sup
 
 When Microsoft Entra ID authentication is enabled on an Azure Cosmos DB for MongoDB vCore cluster, you can add one or more Microsoft Entra ID principals as *administrator users* to that cluster. The Microsoft Entra ID administrator can be a Microsoft Entra ID user, a service principal, or a managed identity. Multiple Microsoft Entra ID administrators can be configured at any time. 
 
+Administrative Entra ID users are created as Azure entities under Microsoft.DocumentDB/mongoClusters/users and are replicated to the database.
+
 Additionally, one or more nonadministrative Microsoft Entra ID users can be added to a cluster at any time once Microsoft Entra ID authentication is enabled. Nonadministrative users are often used for ongoing production tasks that don't require administrative privileges.
 
 ## Considerations
