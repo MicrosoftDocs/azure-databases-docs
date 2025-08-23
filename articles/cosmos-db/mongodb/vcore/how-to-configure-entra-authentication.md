@@ -326,7 +326,7 @@ The `tls` setting must also be enabled. The remaining recommended settings are b
 | `retrywrites` | `false` |
 | `maxIdleTimeMS` | `120000` |
 
-### [Azure portal](#tab/portal)
+### [Azure portal](#tab/azure-portal)
 
 On the cluster properties page in the Azure portal, under **Settings**, open **Connection strings**. The **Connection strings** page contains connection strings for the authentication methods enabled on the cluster. Microsoft Entra ID connection strings are in the **Microsoft Entra ID** section.
 
