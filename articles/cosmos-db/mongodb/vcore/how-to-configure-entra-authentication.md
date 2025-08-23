@@ -138,32 +138,6 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
         --latest-include-preview
     ```
 
-1. Validate that the configuration was successful by using `az resource show` and observing the entire cluster's configuration that includes `properties.authConfig`.
-
-    ```azurecli-interactive
-    az resource show \
-        --resource-group "<resource-group-name>" \
-        --name "<cluster-name>" \
-        --resource-type "Microsoft.DocumentDB/mongoClusters" \
-        --latest-include-preview
-    ```
-
-    ```output
-    {
-      ...
-      "properties": {
-        ...
-        "authConfig": {
-          "allowedModes": [
-            "MicrosoftEntraID",
-            "NativeAuth"
-          ]
-        },
-        ...
-      },
-      ...
-    }
-    ```
 ### [REST APIs](#tab/rest-apis)
 
 1.  If you prefer to use the Azure REST API directly with `az rest`, use this command to add Microsoft Entra ID authentication method to the cluster:
@@ -241,6 +215,15 @@ Follow these steps to see authentication methods currently enabled on the cluste
       ]
     }
     ```
+### [REST APIs](#tab/rest-apis)
+
+1.  Use this command to check authentication methods currently enabled on the cluster:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "GET" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
+     ```
 ---
 
 ## Manage Entra ID users on the cluster
@@ -311,6 +294,16 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
     >     --body "{\"location\":\"<cluster-region>\",\"properties\":{\"identityProvider\":{\"type\":\"MicrosoftEntraID\",\"properties\":{\"principalType\":\"User\"}},\"roles\":[{\"db\":\"admin\",\"role\":\"root\"}]}}"
     > ```
     >
+### [REST APIs](#tab/rest-apis)
+
+1. TODO 
+Use this command to check authentication methods currently enabled on the cluster:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "GET" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
+     ```
 
 ---
 
@@ -335,7 +328,20 @@ Follow these steps to see all [administrative Entra ID users](./entra-authentica
 
 TODO
 
+### [REST APIs](#tab/rest-apis)
+
+1.  TODO
+Use this command to check authentication methods currently enabled on the cluster:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "GET" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
+     ```
+
+
 ---
+
 
 
 
