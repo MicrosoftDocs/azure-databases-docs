@@ -323,7 +323,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 1. [Get the unique ID](#get-unique-identifier-for-entra-id-user-management) of the user or service principal that needs to be added to or removed from the cluster.
 
-1.  To add administrative Entra ID users to the cluster, use PUT Azure REST API call with this `az rest` command :
+1.  To add administrative Entra ID users to the cluster, use PUT Azure REST API call with this `az rest` command:
     
      ```azurecli-interactive
      az rest \
@@ -355,7 +355,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 ## View Entra ID users on the cluster
 
-When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there is always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed.
+When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there's always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed.
 
 Follow these steps to see all [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) added to cluster. 
 
@@ -428,7 +428,7 @@ Use commands on the **REST APIs** tab to list administrative users on the cluste
 
 ## Connect to the cluster
 
-You can connect to the cluster using either a connection URI or a custom settings object from the driver for your preferred language. In either option, the **scheme** must be set to `mongodb+srv` to connect to the cluster. The **host** is at either the `*.global.mongocluster.cosmos.azure.com` or `*.mongocluster.cosmos.azure.com` domain depending on whether you're using [the current cluster or global read-write endpoint](./how-to-cluster-replica.md#use-connection-strings). The `+srv` scheme and the `*.global.*` host ensures that your client is dynamically connected to the appropriate writable cluster in a multi-cluster configuration even if [a region swap operation occurs](./cross-region-replication.md#replica-cluster-promotion). In a single-cluster configuration, you can use either host indiscriminately.
+You can connect to the cluster using either a connection URI or a custom settings object from the driver for your preferred language. In either option, the **scheme** must be set to `mongodb+srv` to connect to the cluster. The **host** is at either the `*.global.mongocluster.cosmos.azure.com` or `*.mongocluster.cosmos.azure.com` domain depending on whether you're using [the current cluster or global read-write endpoint](./how-to-cluster-replica.md#use-connection-strings). The `+srv` scheme and the `*.global.*` host ensures that your client is dynamically connected to the appropriate writable cluster in a multi-cluster configuration even if [a region swap operation occurs](./cross-region-replication.md#replica-cluster-promotion). In a single-cluster configuration, you can use either connection string indiscriminately.
 
 The `tls` setting must also be enabled. The remaining recommended settings are best practice configuration settings.
 
