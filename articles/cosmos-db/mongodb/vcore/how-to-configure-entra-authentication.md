@@ -323,7 +323,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 1. [Get the unique ID](#get-unique-identifier-for-entra-id-user-management) of the user or service principal that needs to be added to or removed from the cluster.
 
-1.  Use PUT Azure REST API call with this `az rest` command to add administrative Entra ID users to the cluster:
+1.  To add administrative Entra ID users to the cluster, use PUT Azure REST API call with this `az rest` command :
     
      ```azurecli-interactive
      az rest \
@@ -341,7 +341,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
     >
     > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
  
-1.  Use DELETE Azure REST API call with this `az rest` command to remove administrative Entra ID users from the cluster:
+1.  To remove administrative Entra ID users from the cluster, use DELETE Azure REST API call with this `az rest` command:
     
      ```azurecli-interactive
      az rest \
@@ -384,6 +384,40 @@ Use commands on the **REST APIs** tab to list administrative users on the cluste
          --method "GET" \
          --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-07-01-preview" 
      ```
+1. Observe the output. The output includes an array of administrative user accounts on the cluster. This array has one built-in native administrative users and all administrative Entra ID user and service principals added to the cluster.
+
+    ```output
+    {
+      "id": "/subscriptions/<subscription-id>>/resourceGroups/<resource-group-name>>/providers/Microsoft.DocumentDB/mongoClusters/<cluser-name>>/users/<user's-unique-id>",
+      "name": "user's-unique-id",
+      "properties": {
+        "identityProvider": {
+          "properties": {
+            "entraTenant": "entra-tenant-id",
+            "principalType": "User"
+          },
+          "type": "MicrosoftEntraID"
+        },
+        ...
+        "user": "user's-unique-id"
+      },
+        ...
+      "type": "Microsoft.DocumentDB/mongoClusters/users"
+    }
+    ```
+
+1. If Microsoft Entra ID authentication is enabled on the cluster, the output includes both the `NativeAuth` and `MicrosoftEntraID` values in the `allowedModes` array.
+
+    ```output
+    {
+      "authConfig": {
+        "allowedModes": [
+            "NativeAuth",
+            "MicrosotEntraID"
+              ] }
+        }
+    ```
+
 
 ---
 
