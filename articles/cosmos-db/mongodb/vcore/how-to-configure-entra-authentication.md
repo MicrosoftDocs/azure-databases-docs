@@ -167,6 +167,7 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
      ```
     > [!TIP]
     > If you're using the Azure Cloud Shell, you can upload/download files directly to the shell. For more information, see [managed files in Azure Cloud Shell](/azure/cloud-shell/using-the-shell-window#upload-and-download-files).
+
 ---
 
 ## View authentication methods enabled on the cluster
@@ -180,7 +181,6 @@ Follow these steps to see authentication methods currently enabled on the cluste
 1. In the **Authentication methods** section, check authentication methods currently enabled on the cluster. 
 
     :::image type="content" source="media/how-to-configure-entra-authentication/view-currently-enabled-authentication-methods.png" alt-text="Screenshot that shows how view authentication methods currently enabled on the cluster." lightbox="media/how-to-configure-entra-authentication/view-currently-enabled-authentication-methods.png":::
-
 
 ### [Azure CLI](#tab/cli)
 
@@ -215,6 +215,7 @@ Follow these steps to see authentication methods currently enabled on the cluste
       ]
     }
     ```
+
 ### [REST APIs](#tab/rest-apis)
 
 1.  Use this command to check authentication methods currently enabled on the cluster:
@@ -224,6 +225,7 @@ Follow these steps to see authentication methods currently enabled on the cluste
          --method "GET" \
          --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
      ```
+
 ---
 
 ## Manage Entra ID users on the cluster
