@@ -269,7 +269,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
         :::image type="content" source="media/how-to-configure-entra-authentication/select-entra-id-users-to-add-to-cluster.png" alt-text="Screenshot that shows how to select and add administrative Microsoft Entra ID users and security principals to the cluster." lightbox="media/how-to-configure-entra-authentication/select-entra-id-users-to-add-to-cluster.png":::
 
     > [!NOTE]
-    > When administrative Microsoft Entra ID users are added to the cluster, their identifiers not human readable names are added to the cluster.
+    > When administrative Microsoft Entra ID users are added to the cluster, their identifiers in `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb` format not human readable names such as `kai@adventure-works.com` are added to the cluster.
 
 1. Select **Save** to confirm the authentication method changes.
     
@@ -323,7 +323,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 1. [Get the unique ID](#get-unique-identifier-for-entra-id-user-management) of the user or service principal that needs to be added to or removed from the cluster.
 
-1.  Use Azure REST API with this `az rest` command to add administrative Entra ID users to the cluster:
+1.  Use PUT Azure REST API call with this `az rest` command to add administrative Entra ID users to the cluster:
     
      ```azurecli-interactive
      az rest \
@@ -341,7 +341,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
     >
     > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
  
-1.  Use Azure REST API with this `az rest` command to remove administrative Entra ID users from the cluster:
+1.  Use DELETE Azure REST API call with this `az rest` command to remove administrative Entra ID users from the cluster:
     
      ```azurecli-interactive
      az rest \
@@ -354,6 +354,8 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 
 ## View Entra ID users on the cluster
+
+When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there is always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed.
 
 Follow these steps to see all [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) added to cluster. 
 
@@ -371,27 +373,24 @@ Follow these steps to see all [administrative Entra ID users](./entra-authentica
 
 ### [Azure CLI](#tab/cli)
 
-TODO
+Use commands on the **REST APIs** tab to list administrative users on the cluster.
 
 ### [REST APIs](#tab/rest-apis)
 
-1.  TODO
-Use this command to check authentication methods currently enabled on the cluster:
+1. Use this command to list all administrative users on the cluster:
     
      ```azurecli-interactive
      az rest \
          --method "GET" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-07-01-preview" 
      ```
-
 
 ---
 
 
-
-
 > [!NOTE]
-> Microsoft Entra ID users added to the cluster are going to be in addition to native DocumentDB users defined on the same cluster. An Azure Cosmos DB for MongoDB vCore cluster is created with at least one built-in native DocumentDB user. You can add more native DocumentDB users after cluster provisioning is completed.
+> An Azure Cosmos DB for MongoDB vCore cluster is created with one built-in native DocumentDB user. You can [add more native DocumentDB users](./secondary-users.md) after cluster provisioning is completed. Microsoft Entra ID users added to the cluster are going to be in addition to native DocumentDB users defined on the same cluster.
+
 
 ## Connect to the cluster
 
