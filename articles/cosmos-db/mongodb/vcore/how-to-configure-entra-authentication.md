@@ -286,6 +286,8 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 ### [Azure CLI](#tab/cli)
 
+1. [Get the unique ID](#get-unique-identifier-for-entra-id-user-management) of the user or service principal that needs to be added to or removed from the cluster.
+
 1. To add administrative Entra ID users, use `az resource create`. This command creates a new resource of type `Microsoft.DocumentDB/mongoClusters/users`. Compose the name of the resource by concatenating the **name of the parent cluster** and the **principal ID** of your identity.
  
     ```azurecli-interactive
@@ -294,7 +296,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
         --name "<cluster-name>/users/<principal-id>" \
         --resource-type "Microsoft.DocumentDB/mongoClusters/users" \
         --location "<cluster-region>" \
-        --properties '{"identityProvider":{"type":"MicrosoftEntraID","properties":{"principalType":"User"}},"roles":[{"db":"admin","role":"root"}]}' \
+        --properties "{\"identityProvider\":{\"type\":\"MicrosoftEntraID\",\"properties\":{\"principalType\":\"User\"}},\"roles\":[{\"db\":\"admin\",\"role\":\"root\"}]}" \
         --latest-include-preview
     ```
 
@@ -306,26 +308,47 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
     > ```
     >
     > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
-    > 
-    > Finally, if you prefer to use the Azure REST API directly with `az rest`, use this alternative command:
-    >
-    > ```azurecli-interactive
-    > az rest \
-    >     --method "PUT" \
-    >     --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-07-01-preview" \
-    >     --body "{\"location\":\"<cluster-region>\",\"properties\":{\"identityProvider\":{\"type\":\"MicrosoftEntraID\",\"properties\":{\"principalType\":\"User\"}},\"roles\":[{\"db\":\"admin\",\"role\":\"root\"}]}}"
-    > ```
-    >
+     
+1. To remove administrative Entra ID users, use `az resource delete`. This command deletes resource of type `Microsoft.DocumentDB/mongoClusters/users`. Compose the name of the resource by concatenating the **name of the parent cluster** and the **principal ID** of your identity.
+ 
+    ```azurecli-interactive
+    az resource delete \
+        --resource-group "<resource-group-name>" \
+        --name "<cluster-name>/users/<principal-id>" \
+        --resource-type "Microsoft.DocumentDB/mongoClusters/users" \
+        --latest-include-preview
+    ```
+    
 ### [REST APIs](#tab/rest-apis)
 
-1. TODO 
-Use this command to check authentication methods currently enabled on the cluster:
+1. [Get the unique ID](#get-unique-identifier-for-entra-id-user-management) of the user or service principal that needs to be added to or removed from the cluster.
+
+1.  Use Azure REST API with this `az rest` command to add administrative Entra ID users to the cluster:
     
      ```azurecli-interactive
      az rest \
-         --method "GET" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
+         --method "PUT" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-07-01-preview" \
+         --body "{\"location\":\"<cluster-region>\",\"properties\":{\"identityProvider\":{\"type\":\"MicrosoftEntraID\",\"properties\":{\"principalType\":\"User\"}},\"roles\":[{\"db\":\"admin\",\"role\":\"root\"}]}}"
      ```
+
+    > [!TIP]
+    > For example, if your parent resource is named `example-cluster` and your principal ID was `aaaaaaaa-bbbb-cccc-1111-222222222222`, the name of the resource would be:
+    >
+    > ```json
+    > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+    > ```
+    >
+    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
+ 
+1.  Use Azure REST API with this `az rest` command to remove administrative Entra ID users from the cluster:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "DELETE" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-07-01-preview" 
+     ```
+    
 
 ---
 
