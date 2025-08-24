@@ -140,7 +140,9 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
 
 ### [REST APIs](#tab/rest-apis)
 
-1.  If you prefer to use the Azure REST API directly with `az rest`, use this command to add Microsoft Entra ID authentication method to the cluster:
+You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
+
+1.  Use this command to add Microsoft Entra ID authentication method to the cluster:
     
      ```azurecli-interactive
      az rest \
@@ -158,15 +160,9 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
          --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":\"NativeAuth\"}}}"
      ```
 
-1.  Use this command to check authentication methods currently enabled on the cluster:
-    
-     ```azurecli-interactive
-     az rest \
-         --method "GET" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
-     ```
     > [!TIP]
     > If you're using the Azure Cloud Shell, you can upload/download files directly to the shell. For more information, see [managed files in Azure Cloud Shell](/azure/cloud-shell/using-the-shell-window#upload-and-download-files).
+
 
 ---
 
@@ -199,9 +195,10 @@ Follow these steps to see authentication methods currently enabled on the cluste
 
     ```output
     {
-      "allowedModes": [
-        "NativeAuth"
-      ]
+      "authConfig": {
+        "allowedModes": [
+            "NativeAuth"
+      ] }
     }
     ```
 
@@ -209,10 +206,11 @@ Follow these steps to see authentication methods currently enabled on the cluste
 
     ```output
     {
-      "allowedModes": [
-        "NativeAuth",
-        "MicrosotEntraID"
-      ]
+      "authConfig": {
+        "allowedModes": [
+            "NativeAuth",
+            "MicrosotEntraID"
+              ] }
     }
     ```
 
@@ -225,6 +223,28 @@ Follow these steps to see authentication methods currently enabled on the cluste
          --method "GET" \
          --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
      ```
+1. Observe the output. If Microsoft Entra ID authentication isn't configured, the output includes only the `NativeAuth` value in the `allowedModes` array.
+
+    ```output
+    {
+      "authConfig": {
+        "allowedModes": [
+            "NativeAuth"
+      ] }
+    }
+    ```
+
+1. If Microsoft Entra ID authentication is enabled on the cluster, the output includes both the `NativeAuth` and `MicrosoftEntraID` values in the `allowedModes` array.
+
+    ```output
+    {
+      "authConfig": {
+        "allowedModes": [
+            "NativeAuth",
+            "MicrosotEntraID"
+              ] }
+        }
+    ```
 
 ---
 
