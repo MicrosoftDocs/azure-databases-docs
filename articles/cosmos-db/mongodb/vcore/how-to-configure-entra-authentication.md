@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 08/21/2025
+ms.date: 08/23/2025
 ms.custom:
   - devx-track-rust
   - build-2025

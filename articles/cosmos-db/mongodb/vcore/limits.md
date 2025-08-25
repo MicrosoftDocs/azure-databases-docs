@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 08/12/2025
+ms.date: 08/23/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -70,7 +70,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.
-- `HNSW` and `DiskANN` are available on M30 and above cluster tiers. 
+- `HNSW` and `DiskANN` are available on M30 and greater cluster tiers. 
 
 ## Cluster and shard limits
 
@@ -129,7 +129,7 @@ The following are the current limitations for configuring [the customer-managed 
 
 ## Authentication and access control (RBAC)
 
-- You can create up to 100 total users/roles per cluster.
+- You can create up to 100 total users/roles per cluster. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more users.
 
 ### Microsoft Entra ID authentication
 
