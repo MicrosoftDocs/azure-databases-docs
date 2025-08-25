@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 08/12/2025
+ms.date: 08/23/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -70,7 +70,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.
-- `HNSW` and `DiskANN` are available on M30 and above cluster tiers. 
+- `HNSW` and `DiskANN` are available on M30 and greater cluster tiers. 
 
 ## Cluster and shard limits
 
@@ -96,7 +96,7 @@ The following limitations can be overridden by upgrading to a paid tier
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
 - Diagnostic logging not supported (available in M40+)
-- Microsoft Entra ID (formerly known as Azure Active Directory (AAD)) not supported
+- Microsoft Entra ID not supported
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
 - Transition from a paid tier account to a free tier accounts isn't supported.
@@ -129,7 +129,10 @@ The following are the current limitations for configuring [the customer-managed 
 
 ## Authentication and access control (RBAC)
 
+- You can create up to 100 total users/roles per cluster. Open a support request to increase the default limit.
+
 ### Microsoft Entra ID authentication
+
 The Microsoft Entra ID authentication feature has these current limitations:
 - This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
 - This feature doesn't support Entra ID groups.
@@ -137,7 +140,6 @@ The Microsoft Entra ID authentication feature has these current limitations:
 ### Native DocumentDB secondary users
 
 [The native secondary users](./secondary-users.md) feature has these preview limitations:
-- You can create up to 100 users/roles per cluster.
 - The `Updateuser` command now only supports password updates and can't modify other object fields.
 - The `Roleinfo` command isn't supported in preview. Alternatively, you can use `usersInfo`.
 - Assigning roles to specific databases or collections isn't supported, only cluster level is supported.
