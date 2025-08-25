@@ -129,7 +129,10 @@ The following are the current limitations for configuring [the customer-managed 
 
 ## Authentication and access control (RBAC)
 
+- You can create up to 100 total users/roles per cluster.
+
 ### Microsoft Entra ID authentication
+
 The Microsoft Entra ID authentication feature has these current limitations:
 - This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
 - This feature doesn't support Entra ID groups.
@@ -137,7 +140,6 @@ The Microsoft Entra ID authentication feature has these current limitations:
 ### Native DocumentDB secondary users
 
 [The native secondary users](./secondary-users.md) feature has these preview limitations:
-- You can create up to 100 users/roles per cluster.
 - The `Updateuser` command now only supports password updates and can't modify other object fields.
 - The `Roleinfo` command isn't supported in preview. Alternatively, you can use `usersInfo`.
 - Assigning roles to specific databases or collections isn't supported, only cluster level is supported.
