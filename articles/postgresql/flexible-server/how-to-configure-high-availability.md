@@ -34,7 +34,7 @@ The high-availability feature deploys physically separate primary and standby re
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-disabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="./media/how-to-configure-high-availability/high-availability-disabled.png":::
 
-1. Select the **Enable high availability** checkbox to enable the option. Once selected, if the chosen region supports zonal capacity, the **Zone redundant** option is automatically enabled by default, as it is the recommended configuration.
+1. Select the **Enable high availability** checkbox to enable the option. Once selected, the **Zone redundant** option is automatically enabled by default for regions that have support for [availability zones](/azure/postgresql/flexible-server/overview#azure-regions), as it is the recommended configuration.
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable.png" alt-text="Screenshot that shows the checkbox selected to enable high availability." lightbox="./media/how-to-configure-high-availability/high-availability-enable.png":::
 
