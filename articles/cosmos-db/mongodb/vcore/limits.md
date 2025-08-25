@@ -96,7 +96,7 @@ The following limitations can be overridden by upgrading to a paid tier
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
 - Diagnostic logging not supported (available in M40+)
-- Microsoft Entra ID (formerly known as Azure Active Directory (AAD)) not supported
+- Microsoft Entra ID not supported
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
 - Transition from a paid tier account to a free tier accounts isn't supported.
@@ -129,7 +129,7 @@ The following are the current limitations for configuring [the customer-managed 
 
 ## Authentication and access control (RBAC)
 
-- You can create up to 100 total users/roles per cluster. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more users.
+- You can create up to 100 total users/roles per cluster. Open a support request to increase the default limit.
 
 ### Microsoft Entra ID authentication
 
