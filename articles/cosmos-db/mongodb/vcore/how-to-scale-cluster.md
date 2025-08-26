@@ -21,10 +21,8 @@ Azure Cosmos DB for MongoDB vCore provides seamless [scalability](./scalability-
 
 ## Prerequisites
 
-- An existing Azure Cosmos DB for MongoDB vCore cluster.
-  - If you don't have an Azure subscription, [create an account for free](https://azure.microsoft.com/free).
-  - If you have an existing Azure subscription, [create a new Azure Cosmos DB for MongoDB vCore cluster](quickstart-portal.md).
 [!INCLUDE[Prerequisite - Existing cluster](includes/prereq-existing-cluster.md)]
+
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
 ## Navigate to the scale section
@@ -41,7 +39,7 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
 ## Scale cluster compute
 
-[The cluster tier](./compute-storage.md#compute-in-azure-cosmos-db-for-mongodb-vcore) you congifure number of vCores and amount of RAM on your cluster's [physical shards](./partitioning.md#physical-shards). You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
+[The cluster tier](./compute-storage.md#compute-in-azure-cosmos-db-for-mongodb-vcore) allows you to configure number of vCores and amount of RAM on your cluster's [physical shards](./partitioning.md#physical-shards). You can change the cluster tier to suit your needs at any time without interruption. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40**.
 
 ### [Azure portal](#tab/portal)
 
@@ -51,14 +49,27 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
    :::image type="content" source="media/how-to-scale-cluster/configure-tier.png" alt-text="Screenshot of the cluster tier option in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-tier.png":::
 
+2. Select **Save** to persist your change.
+
+### [Azure CLI](#tab/cli)
+
+1. To enable Microsoft Entra ID on the cluster, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes` in the `authConfig` property.
+
+### [REST APIs](#tab/rest-apis)
+You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
+
+1.  Use this command to add Microsoft Entra ID authentication method to the cluster:
+
+---
+
     > [!NOTE]
     > Downgrade from regular compute tier to [a burstable tier](./burstable-tier.md) isn't supported.
-
-2. Select **Save** to persist your change.
 
 ## Increase storage size
 
 You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos-db-for-mongodb-vcore) to give your database more room to grow. For example, you can increase the storage from **128 GiB** to **256 GiB**.
+
+### [Azure portal](#tab/portal)
 
 1. To increase the storage size, select the new size from the drop-down menu.
 
@@ -69,9 +80,22 @@ You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos
 
 2. Select **Save** to persist your change.
 
+### [Azure CLI](#tab/cli)
+
+1. To enable Microsoft Entra ID on the cluster, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes` in the `authConfig` property.
+
+### [REST APIs](#tab/rest-apis)
+You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
+
+1.  Use this command to add Microsoft Entra ID authentication method to the cluster:
+
+---
+
 ## Enable or disable high availability
 
 You can enable or disable [in-region high availability (HA)](./high-availability.md) to suit your needs. In-region HA avoids database downtime by maintaining replica shards of every primary shard in a cluster. If a primary shard goes down, incoming connections are automatically redirected to its replica shard, ensuring that there's minimal downtime.
+
+### [Azure portal](#tab/portal)
 
 1. To enable or disable in-region HA, toggle the checkbox option.
 
