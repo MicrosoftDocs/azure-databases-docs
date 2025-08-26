@@ -157,6 +157,8 @@ db.stores.aggregate([
 ])
 ```
 
+The query fills missing staff.totalStaff.partTime values by carrying forward the last known value (locf) within each store, then projects only the store name and staff.totalStaff fields.
+
 ### Example 3: Fill missing discount percentages with average value
 
 To fill missing discount percentages with the average discount percentage across all stores.
@@ -186,7 +188,7 @@ db.stores.aggregate([
   }
 ])
 ```
-
+The query fills missing promotionEvents.discounts.discountPercentage values with the average discount percentage across all stores for each event, and then groups results back by store and event with their corresponding discounts.
 
 ## Use Cases
 

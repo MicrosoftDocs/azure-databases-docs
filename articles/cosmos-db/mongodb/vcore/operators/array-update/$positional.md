@@ -37,7 +37,7 @@ The basic syntax for using the `$position` operator in an update command is as f
 | **`<value1>, <value2>, ...`**| The values to be inserted into the array.|
 | **`<index>`**| The position at which the values should be inserted.|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 

@@ -28,7 +28,7 @@ The `$out` stage in an aggregation pipeline allows you to write the resulting do
 | --- | --- |
 | **`<outputCollection>`** | The name of the collection where the aggregation result will be stored. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 ```json
@@ -141,12 +141,12 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Writing Aggregation Results to a New Collection
+### Example 1:Writing aggregation results to a new collection
 
 The following aggregation pipeline writes the documents with total sales greater than 30,000 into a new collection called `highSales`.
 
 ```javascript
-db.sales.aggregate([
+db.stores.aggregate([
   {
     $match: {
       "sales.salesByCategory.totalSales": { $gt: 30000 }
@@ -158,12 +158,12 @@ db.sales.aggregate([
 ]);
 ```
 
-### Example 2: Writing Processed Data to Another Collection
+### Example 2: Writing processed data to another collection
 
 The below example extracts promotion events and writes them into a collection named `promotionEventsSummary`.
 
 ```javascript
-db.promotionEvents.aggregate([
+db.stores.aggregate([
   {
     $project: {
       eventName: 1,
