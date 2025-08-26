@@ -71,7 +71,7 @@ Azure Database for MySQL automatically performs minor version upgrades to the Az
 
 ## Retired MySQL engine versions not supported in Azure Database for MySQL
 
-The following restrictions apply only after the extended pport period has ended, and your server is still running a retired MySQL version:
+The following restrictions apply only after the extended support period has ended, and your server is still running a retired MySQL version:
 
 - No further security or support updates are provided for the retired version. Azure Database for MySQL can't patch the retired database engine for any bugs or security issues, and support for database engine-related issues are no longer be available. However, Azure continues performing periodic maintenance and patching for the host, OS, containers, and other service-related components.
 - You can't create new database servers for the retired version. However, you can perform point-in-time recoveries and create read replicas for your existing servers.
@@ -117,11 +117,11 @@ A: While your data remains unaffected during the upgrade process, it's highly ad
 
 __Q: What is Azure Database for MySQL – Extended Support?__
 
-A: Extended Support is a feature offering that allows customers to continue running MySQL versions that have reached community end-of-life (EOL), with continued access to SLA-backed availability, security updates, and technical support.
+A: Extended Support is a feature offering that allows customers to continue running MySQL versions that have reached community end-of-life (end of support), with continued access to SLA-backed availability, security updates, and technical support.
 
 __Q: Is Extended Support a separate support plan like Azure Standard or Professional Direct Support?__
 
-A: No. Extended Support is not a support plan. It is a feature of the Azure Database for MySQL service that applies to specific MySQL versions after their community EOL. It is independent of your Azure Support Plan.
+A: No. Extended Support is not a support plan. It is a feature of the Azure Database for MySQL service that applies to specific MySQL versions after their community end of support. It is independent of your Azure Support Plan.
 
 __Q: Do I need to take any action to enable Extended Support?__
 
@@ -129,7 +129,7 @@ A: No action is required. If your server is running a MySQL version that has ent
 
 __Q: When does billing for Extended Support begin?__
 
-A: Billing starts one month after the community EOL date of the MySQL version. This one-month grace period gives customers time to plan their upgrade or evaluate options.
+A: Billing starts one month after the community end of support date of the MySQL version. This one-month grace period gives customers time to plan their upgrade or evaluate options.
 
 __Q: How is Extended Support priced?__
 

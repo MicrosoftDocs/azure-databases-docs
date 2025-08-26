@@ -50,18 +50,18 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
 
 1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL Flexible Server instance.
   
-> [!IMPORTANT]
-> We recommend performing an upgrade first on a restored server copy rather than upgrading production directly. See [how to perform point-in-time restore](how-to-restore-server-portal.md).
+    > [!IMPORTANT]
+    > We recommend performing an upgrade first on a restored server copy rather than upgrading production directly. See [how to perform point-in-time restore](how-to-restore-server-portal.md).
 
 1. On the **Overview** page, in the toolbar, select **Upgrade**.
   
-> [!IMPORTANT]
-> Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
-> Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
-> [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) with values NO_AUTO_CREATE_USER, NO_FIELD_OPTIONS, NO_KEY_OPTIONS and NO_TABLE_OPTIONS are no longer supported in MySQL 8.0 and later.
-
- :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
-
+    > [!IMPORTANT]
+    > Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
+    > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
+    > [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) with values NO_AUTO_CREATE_USER, NO_FIELD_OPTIONS, NO_KEY_OPTIONS and NO_TABLE_OPTIONS are no longer supported in MySQL 8.0 and later.
+    
+     :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
+    
 1. Schema Compatibility Validation
 
  Before proceeding with the upgrade, run Oracle's official [MySQL Upgrade checker tool](https://go.microsoft.com/fwlink/?linkid=2230525) to validate that your current database schema is compatible with the target MySQL version. This step is crucial to ensure a smooth upgrade process.
@@ -69,9 +69,9 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
 1. Pre-Upgrade Decision
 
  Before upgrading, you must choose the compute tier to upgrade to perform the major version upgrade. By default, the system upgrades from Burstable SKU to the most basic General Purpose SKU, but you can upgrade to a higher compute tier if needed.
-> [!NOTE]  
-> While your server operates in the "General Purpose" tier during the upgrade, you'll only be charged for the actual "General Purpose" resources used during this period.
-
+    > [!NOTE]  
+    > While your server operates in the "General Purpose" tier during the upgrade, you'll only be charged for the actual "General Purpose" resources used during this period.
+    
 1. Post-Upgrade Decision
 
  After the upgrade, decide whether to retain the General Purpose SKU or revert to Burstable SKU. This choice is prompted during the initial upgrade steps.
@@ -82,47 +82,48 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
 
  Once the compute tier is upgraded, the system initiates the major version upgrade process. Monitor the upgrade progress through the Azure portal. The upgrade process might take some time, depending on the size and activity of your database.
 
-> [!NOTE]  
-> If the major version upgrade fails, the compute tier won't automatically revert to the previous Burstable SKU. This allows customers to continue the major version upgrade without performing the compute tier upgrade again.
-
+    > [!NOTE]  
+    > If the major version upgrade fails, the compute tier won't automatically revert to the previous Burstable SKU. This allows customers to continue the major version upgrade without performing the compute tier upgrade again.
+    
 1. Automatic Reversion
 
  Based on your preupgrade decision, the system either retains the General Purpose SKU or automatically revert to Burstable SKU after the upgrade.
 
-> [!NOTE]  
-> If you automatically revert to Burstable SKU, the system reverts to the B2S SKU by default.
-
+    > [!NOTE]  
+    > If you automatically revert to Burstable SKU, the system reverts to the B2S SKU by default.
+    
 ## Perform a planned major version upgrade using the Azure portal for general-purpose and business-critical SKU servers
 
 To perform a major version upgrade of an Azure Database for MySQL Flexible Server using the Azure portal, perform the following steps.
 
 1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL Flexible Server instance.
-> [!IMPORTANT]
-> We recommend performing an upgrade first on a restored server copy rather than upgrading production directly. See [how to perform point-in-time restore](how-to-restore-server-portal.md).
 
+    > [!IMPORTANT]
+    > We recommend performing an upgrade first on a restored server copy rather than upgrading production directly. See [how to perform point-in-time restore](how-to-restore-server-portal.md).
+    
 1. On the **Overview** page, in the toolbar, select **Upgrade**.
 
-> [!IMPORTANT]
-> Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
-> Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
-> [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) with values NO_AUTO_CREATE_USER, NO_FIELD_OPTIONS, NO_KEY_OPTIONS and NO_TABLE_OPTIONS are no longer supported in MySQL 8.0 and later.
-
- :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
+    > [!IMPORTANT]
+    > Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
+    > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
+    > [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) with values NO_AUTO_CREATE_USER, NO_FIELD_OPTIONS, NO_KEY_OPTIONS and NO_TABLE_OPTIONS are no longer supported in MySQL 8.0 and later.
+    
+     :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
 1. Perform Pre-Upgrade Validation
 
  Before proceeding with the upgrade, select the **Validate** button to check the compatibility of your server with the target MySQL version.
 
  :::image type="content" source="media/how-to-upgrade/how-to-validate.png" alt-text="Screenshot showing validate.":::
 
-> [!NOTE]  
-> When using the 'Validate' feature to assess your database schema for compatibility with the target MySQL version, please take note of the following considerations:
-> - Table Locking During Validation: The validation process involves locking tables to inspect the entire schema accurately. This can lead to query timeouts if the database is under heavy load.
->  
-> **Recommendation**: Avoid running validation during peak business hours or when the database handles high traffic. Instead, schedule the validation during low-activity periods to reduce the impact on operations.
-> - Potential for Hanging Due to Large Result Sets: In some instances—particularly with complex databases containing many objects—the validation result might become too large to be processed or displayed within the online workflow. This might result in the 'Validate' operation appearing to hang or remain in progress indefinitely.
->  
-> **Recommendation**: If you encounter this issue, we suggest performing the validation locally using Oracle's official client-side upgrade checker tool, such as the one included in MySQL Shell. This approach avoids platform-side result size limitations and provides a more detailed and reliable validation output.
-> - Recommended Use Cases for Online Validation: The online 'Validate' feature is designed for simple or moderately complex schemas. For large-scale production environments—such as those with thousands of tables, views, routines, or other schema objects—we strongly recommend using Oracle's client-side upgrade checker tool to perform the compatibility check. This ensures the full schema is analyzed comprehensively and avoids potential issues related to result size or validation timeouts.
+    > [!NOTE]  
+    > When using the 'Validate' feature to assess your database schema for compatibility with the target MySQL version, please take note of the following considerations:
+    > - Table Locking During Validation: The validation process involves locking tables to inspect the entire schema accurately. This can lead to query timeouts if the database is under heavy load.
+    >  
+    > **Recommendation**: Avoid running validation during peak business hours or when the database handles high traffic. Instead, schedule the validation during low-activity periods to reduce the impact on operations.
+    > - Potential for Hanging Due to Large Result Sets: In some instances—particularly with complex databases containing many objects—the validation result might become too large to be processed or displayed within the online workflow. This might result in the 'Validate' operation appearing to hang or remain in progress indefinitely.
+    >  
+    > **Recommendation**: If you encounter this issue, we suggest performing the validation locally using Oracle's official client-side upgrade checker tool, such as the one included in MySQL Shell. This approach avoids platform-side result size limitations and provides a more detailed and reliable validation output.
+    > - Recommended Use Cases for Online Validation: The online 'Validate' feature is designed for simple or moderately complex schemas. For large-scale production environments—such as those with thousands of tables, views, routines, or other schema objects—we strongly recommend using Oracle's client-side upgrade checker tool to perform the compatibility check. This ensures the full schema is analyzed comprehensively and avoids potential issues related to result size or validation timeouts.
 
 1. In the **Upgrade** sidebar, in the **MySQL version to upgrade** text box, verify the major MySQL version you want to upgrade to (for example, 8.0 or 8.4).
 
@@ -161,10 +162,10 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 1. select your existing Azure Database for MySQL Flexible Server and read the replica server in the Azure portal.
 
 1. On the **Overview** page, in the toolbar, select **Upgrade**.
-
-> [!IMPORTANT]
-> Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
-> Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
+    
+    > [!IMPORTANT]
+    > Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
+    > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
 
 1. In the **Upgrade** section, select **Upgrade** to upgrade an Azure Database for MySQL Flexible Server read replica server to the target major version.
 
@@ -201,8 +202,8 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
 1. Point your application to the new primary (former replica) running the target version. Each server has a unique connection string. Update your application to point to the (former) replica instead of the source.
 
-> [!NOTE]  
-> This scenario only incurs downtime during steps 4 through 7.
+    > [!NOTE]  
+    > This scenario only incurs downtime during steps 4 through 7.
 
 ## Related content
 - [How to upgrade Frequently asked questions](how-to-upgrade-faq.md)
