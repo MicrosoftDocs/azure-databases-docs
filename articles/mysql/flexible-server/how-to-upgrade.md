@@ -120,6 +120,7 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 3. In the **Upgrade** sidebar, in the **MySQL version to upgrade** text box, verify the major MySQL version you want to upgrade to (for example, 8.0 or 8.4).
 
     :::image type="content" source="media/how-to-upgrade/2-how-to-upgrade.png" alt-text="Screenshot showing Upgrade.":::
+    
     Before you can upgrade your primary server, you must first upgrade any associated read replica servers. Until this is completed, **Upgrade** is disabled.
 
 4. On the primary server, select the confirmation message to verify that all replica servers have been upgraded, and then select **Upgrade**.
