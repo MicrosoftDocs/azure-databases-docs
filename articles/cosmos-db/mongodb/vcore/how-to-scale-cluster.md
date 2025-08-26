@@ -2,12 +2,12 @@
 title: Scale or configure a cluster
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Scale an Azure Cosmos DB for MongoDB vCore cluster by changing the compute tier and storage size or change the configuration by enabling in-region high availability.
-author: avijitgupta
-ms.author: avijitgupta
+author: niklarin
+ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 08/05/2025
+ms.date: 08/25/2025
 appliesto:
 - ✅ MongoDB (vCore)
 ms.custom:
@@ -24,6 +24,8 @@ Azure Cosmos DB for MongoDB vCore provides seamless [scalability](./scalability-
 - An existing Azure Cosmos DB for MongoDB vCore cluster.
   - If you don't have an Azure subscription, [create an account for free](https://azure.microsoft.com/free).
   - If you have an existing Azure subscription, [create a new Azure Cosmos DB for MongoDB vCore cluster](quickstart-portal.md).
+[!INCLUDE[Prerequisite - Existing cluster](includes/prereq-existing-cluster.md)]
+[!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
 ## Navigate to the scale section
 
@@ -39,7 +41,11 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
 ## Scale cluster compute
 
-[The cluster tier](./compute-storage.md#compute-in-azure-cosmos-db-for-mongodb-vcore) you select influences the amount of vCores and RAM assigned to your cluster. You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
+[The cluster tier](./compute-storage.md#compute-in-azure-cosmos-db-for-mongodb-vcore) you congifure number of vCores and amount of RAM on your cluster's [physical shards](./partitioning.md#physical-shards). You can change the cluster tier to suit your needs at any time without downtime. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40** using the Azure portal.
+
+### [Azure portal](#tab/portal)
+
+1. On the cluster sidebar, under **Settings**, select **Scale**.
 
 1. To change the cluster tier, select the new tier from the drop-down menu.
 
@@ -72,6 +78,17 @@ You can enable or disable [in-region high availability (HA)](./high-availability
    :::image type="content" source="media/how-to-scale-cluster/configure-high-availability.png" alt-text="Screenshot of the in-region high availability checkbox in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-high-availability.png":::
 
 2. Select **Save** to persist your change.
+
+### [Azure CLI](#tab/cli)
+
+1. To enable Microsoft Entra ID on the cluster, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes` in the `authConfig` property.
+
+### [REST APIs](#tab/rest-apis)
+You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
+
+1.  Use this command to add Microsoft Entra ID authentication method to the cluster:
+
+---
 
 ## Increase the number of physical shards
 
