@@ -29,7 +29,7 @@ The syntax for the `$natural` operator in sort operations is as follows:
 | **`1`** | Sort in forward natural order (insertion order). |
 | **`-1`** | Sort in reverse natural order (reverse insertion order). |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 

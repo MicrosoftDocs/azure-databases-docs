@@ -93,7 +93,9 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Remove a specific tag from the `tag` array
 
-```mongodb
+To remove the value "#SeasonalSale" from the tag array field.
+
+```javascript
 db.stores.update(
   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
   { $pull: { tag: "#SeasonalSale" } }
@@ -114,7 +116,9 @@ This query would return the following document.
 
 ### Example 2: Remove all events from the `promotionEvents` array that end before a certain date
 
-```mongodb
+To remove all elements from the promotionEvents array where the endDate year is 2024 and the endDate month is earlier than March.
+
+```javascript
 db.stores.update(
   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
   { $pull: { promotionEvents: { "promotionalDates.endDate.Year": 2024, "promotionalDates.endDate.Month": { $lt: 3 } } } }
