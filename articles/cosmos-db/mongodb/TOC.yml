@@ -279,6 +279,12 @@
     - name: Security controls by Azure Policy
       displayName: regulatory, compliance, standards, domains
       href: ../security-controls-policy.md
+    - name: Role-based access control
+      items:
+      - name: Overview of role-based access control
+        href: role-based-access-control.md
+      - name: Setup role-based access control
+        href: how-to-setup-role-based-access-control.md
   - name: Optimize your Azure Cosmos DB costs
     href: ../optimize-costs.yml
   - name: Enterprise readiness

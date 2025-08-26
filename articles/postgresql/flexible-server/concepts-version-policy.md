@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions in Az
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 08/05/2025
+ms.date: 08/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -122,15 +122,15 @@ A: Yes, but after the grace period, you're automatically enrolled in paid Extend
 
 **Q: Can my applications break during a major version upgrade?**
 
-A: Azure provides preupgrade validation checks (PVC) to identify common issues such as extension compatibility and parameter conflicts. We recommend testing upgrades in nonproduction environments. Azure is also investing in Blue/Green deployments to enable near-zero-downtime upgrades.
+A: Azure provides pre-upgrade validation checks (PVC) to identify common issues such as extension compatibility and parameter conflicts. We recommend testing upgrades in non-production environments. For more details, refer [Major Version Upgrades](./concepts-major-version-upgrade.md).
 
 **Q: How do I know if my server is in Extended Support?**
 
 A: The Azure portal and CLI clearly indicate if a server is enrolled in Extended Support.
 
-**Q: Do I need to update Server Parameter Groups post major version upgrades?**
+**Q: Do I need to update Server Parameters post major version upgrades?**
 
-A: Yes. Major PostgreSQL versions often introduce or deprecate configuration parameters. Create a new parameter group for the target version and adjust memory and performance settings as needed.
+A: No manual change is required. The upgrade workflow will automatically update the parameters for the new PostgreSQL Version.
 
 **Q: Are PostgreSQL extensions automatically upgraded during a major version upgrade?**
 
@@ -139,10 +139,12 @@ A: No. While Azure upgrades the database engine, noncore extensions (for example
 **Q: How can I reduce downtime during a major upgrade?**
 
 A: To minimize downtime:
-- Apply pending maintenance before the upgrade.
-- Take a manual backup just before the upgrade to speed up snapshot creation.
-- Schedule upgrades during low-traffic periods.
-- Monitor replication lag and connections if using Blue/Green deployment.
+- Plan upgrades during low-traffic hours.
+- Identify and fix any upgrade blockers (e.g. extensions, roles, replication slots) ahead of the upgrade.
+- Pause background jobs and long-running sessions.
+- Temporarily scale up compute to speed up pg_upgrade.
+- Clean up bloat with VACUUM or REINDEX if needed.
+- Run ANALYZE after upgrade to restore performance.
 
 **Q: Where can I track which of my servers are nearing end of support?**
 
