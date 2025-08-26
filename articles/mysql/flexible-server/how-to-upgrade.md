@@ -68,10 +68,7 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
 
 1. Pre-Upgrade Decision
 
- Before upgrading, you must choose the compute tier to upgrade to perform the major version upgrade. By default, the system upgrades from Burstable SKU to the most basic General Purpose SKU, but you can upgrade to a higher compute tier if needed.
-
-    > [!NOTE]
-    > While your server operates in the "General Purpose" tier during the upgrade, you'll only be charged for the actual "General Purpose" resources used during this period.
+ Before upgrading, you must choose the compute tier to upgrade to perform the major version upgrade. By default, the system upgrades from Burstable SKU to the most basic General Purpose SKU, but you can upgrade to a higher compute tier if needed. Please note that while your server operates in the "General Purpose" tier during the upgrade, you'll only be charged for the actual "General Purpose" resources used during this period.
     
 1. Post-Upgrade Decision
 
@@ -81,17 +78,11 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
 
 1. Major Version Upgrade
 
- Once the compute tier is upgraded, the system initiates the major version upgrade process. Monitor the upgrade progress through the Azure portal. The upgrade process might take some time, depending on the size and activity of your database.
-    
-    > [!NOTE]  
-    > If the major version upgrade fails, the compute tier won't automatically revert to the previous Burstable SKU. This allows customers to continue the major version upgrade without performing the compute tier upgrade again.
+ Once the compute tier is upgraded, the system initiates the major version upgrade process. Monitor the upgrade progress through the Azure portal. The upgrade process might take some time, depending on the size and activity of your database. Please note that If the major version upgrade fails, the compute tier won't automatically revert to the previous Burstable SKU. This allows customers to continue the major version upgrade without performing the compute tier upgrade again.
     
 1. Automatic Reversion
 
- Based on your preupgrade decision, the system either retains the General Purpose SKU or automatically revert to Burstable SKU after the upgrade.
-    
-   > [!NOTE]  
-   > If you automatically revert to Burstable SKU, the system reverts to the B2S SKU by default.
+ Based on your preupgrade decision, the system either retains the General Purpose SKU or automatically revert to Burstable SKU after the upgrade. If you automatically revert to Burstable SKU, the system reverts to the B2S SKU by default.
     
 ## Perform a planned major version upgrade using the Azure portal for general-purpose and business-critical SKU servers
 
