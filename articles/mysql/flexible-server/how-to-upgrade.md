@@ -49,38 +49,38 @@ Performing a major version upgrade for an Azure Database for MySQL Burstable SKU
 To perform a major version upgrade for an Azure Database for MySQL Burstable SKU compute tier using the Azure portal, follow these steps:
 
 1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL Flexible Server instance.
-  
-    > [!IMPORTANT]
-    > We recommend performing an upgrade first on a restored server copy rather than upgrading production directly. See [how to perform point-in-time restore](how-to-restore-server-portal.md).
+   
+   > [!IMPORTANT]
+   > We recommend performing an upgrade first on a restored server copy rather than upgrading production directly. See [how to perform point-in-time restore](how-to-restore-server-portal.md).
 
-1. On the **Overview** page, in the toolbar, select **Upgrade**.
-  
-    > [!IMPORTANT]
-    > Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
-    > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
-    > [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) with values NO_AUTO_CREATE_USER, NO_FIELD_OPTIONS, NO_KEY_OPTIONS and NO_TABLE_OPTIONS are no longer supported in MySQL 8.0 and later.
+2. On the **Overview** page, in the toolbar, select **Upgrade**.
+   
+   > [!IMPORTANT]
+   > Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
+   > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
+   > [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) with values NO_AUTO_CREATE_USER, NO_FIELD_OPTIONS, NO_KEY_OPTIONS and NO_TABLE_OPTIONS are no longer supported in MySQL 8.0 and later.
     
-     :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
+   :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
     
-1. Schema Compatibility Validation
+3. Schema Compatibility Validation
 
  Before proceeding with the upgrade, run Oracle's official [MySQL Upgrade checker tool](https://go.microsoft.com/fwlink/?linkid=2230525) to validate that your current database schema is compatible with the target MySQL version. This step is crucial to ensure a smooth upgrade process.
 
-1. Pre-Upgrade Decision
+4. Pre-Upgrade Decision
 
  Before upgrading, you must choose the compute tier to upgrade to perform the major version upgrade. By default, the system upgrades from Burstable SKU to the most basic General Purpose SKU, but you can upgrade to a higher compute tier if needed. Please note that while your server operates in the "General Purpose" tier during the upgrade, you'll only be charged for the actual "General Purpose" resources used during this period.
     
-1. Post-Upgrade Decision
+5. Post-Upgrade Decision
 
  After the upgrade, decide whether to retain the General Purpose SKU or revert to Burstable SKU. This choice is prompted during the initial upgrade steps.
 
  The system automatically upgrades your compute tier from Burstable SKU to the selected General Purpose SKU to support the major version upgrade.
 
-1. Major Version Upgrade
+6. Major Version Upgrade
 
  Once the compute tier is upgraded, the system initiates the major version upgrade process. Monitor the upgrade progress through the Azure portal. The upgrade process might take some time, depending on the size and activity of your database. Please note that If the major version upgrade fails, the compute tier won't automatically revert to the previous Burstable SKU. This allows customers to continue the major version upgrade without performing the compute tier upgrade again.
     
-1. Automatic Reversion
+7. Automatic Reversion
 
  Based on your preupgrade decision, the system either retains the General Purpose SKU or automatically revert to Burstable SKU after the upgrade. If you automatically revert to Burstable SKU, the system reverts to the B2S SKU by default.
     
