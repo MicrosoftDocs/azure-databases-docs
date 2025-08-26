@@ -93,7 +93,7 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
    > [!IMPORTANT]
    > We recommend performing an upgrade first on a restored server copy rather than upgrading production directly. See [how to perform point-in-time restore](how-to-restore-server-portal.md).
     
-1. On the **Overview** page, in the toolbar, select **Upgrade**.
+2. On the **Overview** page, in the toolbar, select **Upgrade**.
 
    > [!IMPORTANT]
    > Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
@@ -101,7 +101,7 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
    > [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) with values NO_AUTO_CREATE_USER, NO_FIELD_OPTIONS, NO_KEY_OPTIONS and NO_TABLE_OPTIONS are no longer supported in MySQL 8.0 and later.
     
      :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
-1. Perform Pre-Upgrade Validation
+2. Perform Pre-Upgrade Validation
 
  Before proceeding with the upgrade, select the **Validate** button to check the compatibility of your server with the target MySQL version.
 
@@ -117,13 +117,13 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
   > **Recommendation**: If you encounter this issue, we suggest performing the validation locally using Oracle's official client-side upgrade checker tool, such as the one included in MySQL Shell. This approach avoids platform-side result size limitations and provides a more detailed and reliable validation output.
   > - Recommended Use Cases for Online Validation: The online 'Validate' feature is designed for simple or moderately complex schemas. For large-scale production environments—such as those with thousands of tables, views, routines, or other schema objects—we strongly recommend using Oracle's client-side upgrade checker tool to perform the compatibility check. This ensures the full schema is analyzed comprehensively and avoids potential issues related to result size or validation timeouts.
 
-1. In the **Upgrade** sidebar, in the **MySQL version to upgrade** text box, verify the major MySQL version you want to upgrade to (for example, 8.0 or 8.4).
+3. In the **Upgrade** sidebar, in the **MySQL version to upgrade** text box, verify the major MySQL version you want to upgrade to (for example, 8.0 or 8.4).
 
   :::image type="content" source="media/how-to-upgrade/2-how-to-upgrade.png" alt-text="Screenshot showing Upgrade.":::
 
  Before you can upgrade your primary server, you must first upgrade any associated read replica servers. Until this is completed, **Upgrade** is disabled.
 
-1. On the primary server, select the confirmation message to verify that all replica servers have been upgraded, and then select **Upgrade**.
+4. On the primary server, select the confirmation message to verify that all replica servers have been upgraded, and then select **Upgrade**.
 
   :::image type="content" source="media/how-to-upgrade/how-to-upgrade.png" alt-text="Screenshot showing upgrade.":::
 
@@ -137,7 +137,7 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
  This upgrade requires the Azure CLI version 2.40.0 or later. If you're using Azure Cloud Shell, the latest version is already installed. Run az version to find the version and dependent libraries that are installed. To upgrade to the latest version, run az upgrade.
 
-1. After you sign in, run the [az MySQL server upgrade](/cli/azure/mysql/server#az-mysql-server-upgrade) command.
+2. After you sign in, run the [az MySQL server upgrade](/cli/azure/mysql/server#az-mysql-server-upgrade) command.
 
  ```azurecli
  az mysql flexible-server upgrade --name {your mysql server name} --resource-group {your resource group} --subscription {your subscription id} --version {target major version}
@@ -145,7 +145,7 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
  Replace `{target major version}` with the version you want to upgrade to (for example, 8 or 8.4).
 
-1. Under the confirmation prompt, type **y** to confirm or **n** to stop the upgrade process, and then press Enter.
+3. Under the confirmation prompt, type **y** to confirm or **n** to stop the upgrade process, and then press Enter.
 
 ## Perform a major version upgrade on a read replica server using the Azure portal
 
@@ -153,19 +153,19 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
 1. select your existing Azure Database for MySQL Flexible Server and read the replica server in the Azure portal.
 
-1. On the **Overview** page, in the toolbar, select **Upgrade**.
+2. On the **Overview** page, in the toolbar, select **Upgrade**.
     
     > [!IMPORTANT]
     > Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
     > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
 
-1. In the **Upgrade** section, select **Upgrade** to upgrade an Azure Database for MySQL Flexible Server read replica server to the target major version.
+3. In the **Upgrade** section, select **Upgrade** to upgrade an Azure Database for MySQL Flexible Server read replica server to the target major version.
 
   A notification appears to confirm that the upgrade is successful.
 
-1. On the **Overview** page, confirm that your Azure Database for MySQL Flexible Server read replica server is running the target version.
+4. On the **Overview** page, confirm that your Azure Database for MySQL Flexible Server read replica server is running the target version.
 
-1. go to your primary server and perform a major version upgrade.
+5. go to your primary server and perform a major version upgrade.
 
 ## Perform minimal downtime major version upgrade using read replicas
 
@@ -173,26 +173,26 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
 1. select your existing Azure Database for MySQL Flexible Server instance in the Azure portal.
 
-1. Create a [read replica](how-to-read-replicas-portal.md) from your primary server.
+2. Create a [read replica](how-to-read-replicas-portal.md) from your primary server.
 
-1. [Upgrade](#perform-a-planned-major-version-upgrade-using-the-azure-cli) your read replica to the target major version.
+3. [Upgrade](#perform-a-planned-major-version-upgrade-using-the-azure-cli) your read replica to the target major version.
 
-1. After you confirm that the replica server is running the target version, stop your application from connecting to your primary server.
+4. After you confirm that the replica server is running the target version, stop your application from connecting to your primary server.
 
-1. Check replication status to ensure that the replica has caught up with the primary, so all data is in sync, and no new operations are being performed on the primary.
+5. Check replication status to ensure that the replica has caught up with the primary, so all data is in sync, and no new operations are being performed on the primary.
 
-1. Confirm with the show replica status command on the replica server to view the replication status.
+6. Confirm with the show replica status command on the replica server to view the replication status.
 
  ```azurecli
  SHOW SLAVE STATUS\G
  ```
  If the state of Slave_IO_Running and Slave_SQL_Running is **yes** and the value of Seconds_Behind_Master is **0**, replication works well. Seconds_Behind_Master indicates how late the replica is. If the value isn't **0**, then the replica is still processing updates. After you confirm that the value of Seconds_Behind_Master is **0**, it's safe to stop replication.
 
-1. Promote your read replica to primary by stopping replication.
+7. Promote your read replica to primary by stopping replication.
 
-1. Set Server Parameter read_only to **0** (OFF) to start writing on the promoted primary.
+8. Set Server Parameter read_only to **0** (OFF) to start writing on the promoted primary.
 
-1. Point your application to the new primary (former replica) running the target version. Each server has a unique connection string. Update your application to point to the (former) replica instead of the source.
+9. Point your application to the new primary (former replica) running the target version. Each server has a unique connection string. Update your application to point to the (former) replica instead of the source.
 
     > [!NOTE]  
     > This scenario only incurs downtime during steps 4 through 7.
