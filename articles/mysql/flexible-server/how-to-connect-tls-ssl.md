@@ -109,7 +109,7 @@ To set TLS versions on your Azure Database for MySQL Flexible Server instance, y
 
 ### Download the public SSL certificate
 
-To establish encrypted connections with your client applications, download the [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and the [Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt). Combine both certificates before initiating a connection to the server. For detailed steps, refer to [How to update the root certificate store on your client](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/concepts-root-certificate-rotation#how-to-update-the-root-certificate-store-on-your-client)
+To establish encrypted connections with your client applications, download the [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and the [Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt). Combine both certificates before initiating a connection to the server. For detailed steps, refer to [How to update the root certificate store on your client](./concepts-root-certificate-rotation.md#how-to-update-the-root-certificate-store-on-your-client)
 
 > [!NOTE]  
 > You must download [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) for your servers in Azure Government cloud.
