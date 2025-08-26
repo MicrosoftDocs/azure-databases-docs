@@ -11,7 +11,7 @@ ms.topic: conceptual
 ---
 
 
-# Azure Database for MySQL – Release Notes Index
+# Azure Database for MySQL – Release notes index
 
 Welcome to the centralized index of release notes for **Azure Database for MySQL**. This page provides a year-by-year overview of all published release notes, helping you stay informed about platform updates, feature enhancements, and bug fixes.
 
@@ -20,7 +20,7 @@ Welcome to the centralized index of release notes for **Azure Database for MySQL
 
 ---
 
-## Release Notes by Year
+## Release notes by year
 
 ### 2025
 - [September-2025](./september-2025.md)
