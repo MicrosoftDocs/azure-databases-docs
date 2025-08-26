@@ -183,10 +183,10 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
 6. Confirm with the show replica status command on the replica server to view the replication status.
 
- ```azurecli
- SHOW SLAVE STATUS\G
- ```
- If the state of Slave_IO_Running and Slave_SQL_Running is **yes** and the value of Seconds_Behind_Master is **0**, replication works well. Seconds_Behind_Master indicates how late the replica is. If the value isn't **0**, then the replica is still processing updates. After you confirm that the value of Seconds_Behind_Master is **0**, it's safe to stop replication.
+     ```azurecli
+    SHOW SLAVE STATUS\G
+    ```
+    If the state of Slave_IO_Running and Slave_SQL_Running is **yes** and the value of Seconds_Behind_Master is **0**, replication works well. Seconds_Behind_Master indicates how late the replica is. If the value isn't **0**, then the replica is still processing updates. After you confirm that the value of Seconds_Behind_Master is **0**, it's safe to stop replication.
 
 7. Promote your read replica to primary by stopping replication.
 
