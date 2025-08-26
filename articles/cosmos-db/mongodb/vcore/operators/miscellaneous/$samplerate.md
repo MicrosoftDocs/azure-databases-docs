@@ -85,7 +85,7 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Basic Random Sampling
+### Example 1: Basic random sampling
 
 To randomly sample approximately 33% of all stores:
 
@@ -97,7 +97,7 @@ db.stores.aggregate([
 
 This query returns one-third of all documents in the stores collection, selected randomly.
 
-### Example 2: Sampling with more Filters
+### Example 2: Sampling with more filters
 
 To sample 50% of stores that have total sales greater than 50,000:
 
@@ -112,7 +112,7 @@ db.stores.aggregate([
 
 This query first filters stores with sales above 50,000, then randomly samples 50% of those matching documents.
 
-### Example 3: Sampling for Statistical Analysis
+### Example 3: Sampling for statistical analysis
 
 To get a 25% sample of stores and calculate average sales:
 

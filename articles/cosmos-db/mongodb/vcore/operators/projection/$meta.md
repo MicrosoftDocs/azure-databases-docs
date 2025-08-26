@@ -32,7 +32,7 @@ db.collection.find( {$text: { $search: <string> } },
 | **`field`** | The name of the field in the output documents where the metadata gets included. |
 | **`metaDataKeyword`** | The type of metadata to include common keywords like `textScore` for text search scores. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 

@@ -38,7 +38,7 @@ The syntax for the `$lookup` stage is as follows:
 | **`foreignField`** | The field from the documents in the `from` collection that are matched with the `localField`.|
 | **`as`** | The name of the new array field to add to the input documents. This array contains the matched documents from the `from` collection.|
 
-## Example
+## Examples
 
 Let's say we have a `ratings` collection with two documents.
 
@@ -113,6 +113,7 @@ Consider this sample document from the stores collection.
   ]
 }
 ```
+### Example 1: Combine two collections to list promotion events for stores with a rating of 5
 
 We want to join the `ratings` collection with the `stores` collection to list promotion events related to each store having a 5 rating.
 
@@ -155,7 +156,7 @@ This query would return the following document.
 ]
 ```
 
-Joining two collections (ratings and stores) using a variable from ratings.
+### Example 2: Joining two collections (ratings and stores) using a variable from ratings.
 
 ```javascript
 db.ratings.aggregate([

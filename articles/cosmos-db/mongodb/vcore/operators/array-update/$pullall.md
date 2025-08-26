@@ -33,7 +33,7 @@ The syntax for the `$pullAll` operator is as follows:
 | **`<field1>`**| The field where the specified values will be removed.|
 | **`[ <value1>, <value2>, ... ]`**| An array of values to be removed from the specified field.|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -95,7 +95,7 @@ Consider this sample document from the stores collection.
   ]
 }
 ```
-
+### Example 1: Remove multiple elements from an array
 
 To remove the discounts for "#MembershipDeals" and "#SeasonalSale" from the 'tag' array.
 

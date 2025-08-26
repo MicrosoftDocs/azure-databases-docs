@@ -35,7 +35,7 @@ The syntax for the `$inc` operator is as follows:
 | **`field`** | The name of the field to increment. |
 | **`amount`** | The increment value. Must be a number (positive for increment, negative for decrement). |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 

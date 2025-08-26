@@ -44,7 +44,7 @@ The syntax for the `$changeStream` stage is as follows:
 | **`startAtOperationTime`** | Optional. timestamp for starting change stream from a specific time. |
 | **`showExpandedEvents`** | Optional. Boolean. Include another change stream events. Default is false. |
 
-## Example
+## Examples
 
 Let's understand the usage with the stores collection for monitoring real-time changes.
 
