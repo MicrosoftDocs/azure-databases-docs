@@ -62,8 +62,8 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
 
 ---
 
-    > [!NOTE]
-    > Downgrade from regular compute tier to [a burstable tier](./burstable-tier.md) isn't supported.
+> [!NOTE]
+> Downgrade from regular compute tier to [a burstable tier](./burstable-tier.md) isn't supported.
 
 ## Increase storage size
 
