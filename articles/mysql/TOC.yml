@@ -260,6 +260,8 @@
         href: flexible-server/how-to-move-regions.md
       - name: Major version upgrade
         href: flexible-server/how-to-upgrade.md
+      - name: Major version upgrade FAQ
+        href: flexible-server/how-to-upgrade-faq.md
       - name: Server maintenance
         href: flexible-server/how-to-maintenance-portal.md
     - name: Networking
