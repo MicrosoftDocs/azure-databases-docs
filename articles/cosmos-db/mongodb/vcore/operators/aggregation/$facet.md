@@ -34,7 +34,8 @@ The syntax for the `$facet` stage is as follows:
 | **`outputFieldN`**| The name of the output field.|
 | **`stageN`**| The aggregation stage to be executed.|
 
-## Example
+## Examples
+
 Consider this sample document from the stores collection.
 ```json
 {
@@ -145,7 +146,6 @@ Consider this sample document from the stores collection.
     ]
 }
 ```
-
 
 ### Example 1: Faceted search on sales and promotions
 

@@ -49,7 +49,7 @@ Azure Database for MySQL Flexible Server is now available in the following Azure
 The Self-Heal feature in Azure Database for MySQL empowers customers to resolve common server issues independently, without needing to open a support case. It provides a one-click repair experience that helps restore service health quickly and safely. [Learn more](./how-to-self-heal.md).
 
 ### Accelerated logs feature is now available in General Purpose service tier
-Accelerated logs are now supported in the General Purpose service tier of Azure Database for MySQL – Flexible Server. Previously available only in the Business Critical tier, this feature enhances performance and reduces transaction latency. Accelerated logs feature in General Purpose tier is available at an additonal cost. [Learn more](./concepts-accelerated-logs.md).
+Accelerated logs are now supported in the General Purpose service tier of Azure Database for MySQL – Flexible Server. Previously available only in the Business Critical tier, this feature enhances performance and reduces transaction latency. Accelerated logs feature in General Purpose tier is available at an additional cost. [Learn more](./concepts-accelerated-logs.md).
 
 
 ### Automate scheduling of on-demand backups
@@ -178,7 +178,7 @@ Starting November 1, 2024, new B1 servers are limited to ensure performance and 
 
   Azure Database for MySQL now offers major version upgrades for Burstable SKU compute tiers. This support automatically upgrades the compute tier to General Purpose SKU before performing the upgrade, ensuring sufficient resources. Customers can choose to revert to Burstable SKU after the upgrade. Additional costs might apply.
 
-  To learn more, visit [Upgrade MySQL version](./how-to-upgrade.md#perform-a-planned-major-version-upgrade-from-mysql-57-to-mysql-80-using-the-azure-portal-for-burstable-sku-servers).
+  To learn more, visit [Upgrade MySQL version](./how-to-upgrade.md#perform-a-planned-major-version-upgrade-using-the-azure-portal-for-burstable-sku-servers).
 
 - **Deprecated Metrics Announcement**
 

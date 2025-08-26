@@ -35,7 +35,7 @@ The syntax for the `$rename` operator is as follows:
 | **`field`** | The current name of the field to be renamed. |
 | **`newName`** | The new name for the field. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 

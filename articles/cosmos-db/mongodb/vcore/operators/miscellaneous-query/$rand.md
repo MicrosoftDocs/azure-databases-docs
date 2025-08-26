@@ -22,7 +22,7 @@ The syntax for the `$rand` operator is as follows:
 { $rand: {} }
 ```
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -38,6 +38,7 @@ db.stores.aggregate([
    { $limit: 2 }
 ])
 ```
+### Example 1: Add a random value
 
 This query adds a random value to each store document. When executed, it might return something like:
 
