@@ -64,25 +64,25 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
     
 3. Schema Compatibility Validation
 
- Before proceeding with the upgrade, run Oracle's official [MySQL Upgrade checker tool](https://go.microsoft.com/fwlink/?linkid=2230525) to validate that your current database schema is compatible with the target MySQL version. This step is crucial to ensure a smooth upgrade process.
+    Before proceeding with the upgrade, run Oracle's official [MySQL Upgrade checker tool](https://go.microsoft.com/fwlink/?linkid=2230525) to validate that your current database schema is compatible with the target MySQL version. This step is crucial to ensure a smooth upgrade process.
 
 4. Pre-Upgrade Decision
-
- Before upgrading, you must choose the compute tier to upgrade to perform the major version upgrade. By default, the system upgrades from Burstable SKU to the most basic General Purpose SKU, but you can upgrade to a higher compute tier if needed. Please note that while your server operates in the "General Purpose" tier during the upgrade, you'll only be charged for the actual "General Purpose" resources used during this period.
+   
+    Before upgrading, you must choose the compute tier to upgrade to perform the major version upgrade. By default, the system upgrades from Burstable SKU to the most basic General Purpose SKU, but you can upgrade to a higher compute tier if needed. Please note that while your server operates in the "General Purpose" tier during the upgrade, you'll only be charged for the actual "General Purpose" resources used during this period.
     
 5. Post-Upgrade Decision
 
- After the upgrade, decide whether to retain the General Purpose SKU or revert to Burstable SKU. This choice is prompted during the initial upgrade steps.
-
- The system automatically upgrades your compute tier from Burstable SKU to the selected General Purpose SKU to support the major version upgrade.
+    After the upgrade, decide whether to retain the General Purpose SKU or revert to Burstable SKU. This choice is prompted during the initial upgrade steps.
+    
+    The system automatically upgrades your compute tier from Burstable SKU to the selected General Purpose SKU to support the major version upgrade.
 
 6. Major Version Upgrade
 
- Once the compute tier is upgraded, the system initiates the major version upgrade process. Monitor the upgrade progress through the Azure portal. The upgrade process might take some time, depending on the size and activity of your database. Please note that If the major version upgrade fails, the compute tier won't automatically revert to the previous Burstable SKU. This allows customers to continue the major version upgrade without performing the compute tier upgrade again.
+    Once the compute tier is upgraded, the system initiates the major version upgrade process. Monitor the upgrade progress through the Azure portal. The upgrade process might take some time, depending on the size and activity of your database. Please note that If the major version upgrade fails, the compute tier won't automatically revert to the previous Burstable SKU. This allows customers to continue the major version upgrade without performing the compute tier upgrade again.
     
 7. Automatic Reversion
 
- Based on your preupgrade decision, the system either retains the General Purpose SKU or automatically revert to Burstable SKU after the upgrade. If you automatically revert to Burstable SKU, the system reverts to the B2S SKU by default.
+    Based on your preupgrade decision, the system either retains the General Purpose SKU or automatically revert to Burstable SKU after the upgrade. If you automatically revert to Burstable SKU, the system reverts to the B2S SKU by default.
     
 ## Perform a planned major version upgrade using the Azure portal for general-purpose and business-critical SKU servers
 
@@ -103,31 +103,30 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
      :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
 2. Perform Pre-Upgrade Validation
 
- Before proceeding with the upgrade, select the **Validate** button to check the compatibility of your server with the target MySQL version.
+    Before proceeding with the upgrade, select the **Validate** button to check the compatibility of your server with the target MySQL version.
 
- :::image type="content" source="media/how-to-upgrade/how-to-validate.png" alt-text="Screenshot showing validate.":::
+     :::image type="content" source="media/how-to-upgrade/how-to-validate.png" alt-text="Screenshot showing validate.":::
     
-  > [!NOTE]  
-  > When using the 'Validate' feature to assess your database schema for compatibility with the target MySQL version, please take note of the following considerations:
-  > - Table Locking During Validation: The validation process involves locking tables to inspect the entire schema accurately. This can lead to query timeouts if the database is under heavy load.
-  >  
-  > **Recommendation**: Avoid running validation during peak business hours or when the database handles high traffic. Instead, schedule the validation during low-activity periods to reduce the impact on operations.
-  > - Potential for Hanging Due to Large Result Sets: In some instances—particularly with complex databases containing many objects—the validation result might become too large to be processed or displayed within the online workflow. This might result in the 'Validate' operation appearing to hang or remain in progress indefinitely.
-  >  
-  > **Recommendation**: If you encounter this issue, we suggest performing the validation locally using Oracle's official client-side upgrade checker tool, such as the one included in MySQL Shell. This approach avoids platform-side result size limitations and provides a more detailed and reliable validation output.
-  > - Recommended Use Cases for Online Validation: The online 'Validate' feature is designed for simple or moderately complex schemas. For large-scale production environments—such as those with thousands of tables, views, routines, or other schema objects—we strongly recommend using Oracle's client-side upgrade checker tool to perform the compatibility check. This ensures the full schema is analyzed comprehensively and avoids potential issues related to result size or validation timeouts.
+    > [!NOTE]  
+    > When using the 'Validate' feature to assess your database schema for compatibility with the target MySQL version, please take note of the following considerations:
+    > - Table Locking During Validation: The validation process involves locking tables to inspect the entire schema accurately. This can lead to query timeouts if the database is under heavy load.
+    >  
+    > **Recommendation**: Avoid running validation during peak business hours or when the database handles high traffic. Instead, schedule the validation during low-activity periods to reduce the impact on operations.
+    > - Potential for Hanging Due to Large Result Sets: In some instances—particularly with complex databases containing many objects—the validation result might become too large to be processed or displayed within the online workflow. This might result in the 'Validate' operation appearing to hang or remain in progress indefinitely.
+    >  
+    > **Recommendation**: If you encounter this issue, we suggest performing the validation locally using Oracle's official client-side upgrade checker tool, such as the one included in MySQL Shell. This approach avoids platform-side result size limitations and provides a more detailed and reliable validation output.
+    > - Recommended Use Cases for Online Validation: The online 'Validate' feature is designed for simple or moderately complex schemas. For large-scale production environments—such as those with thousands of tables, views, routines, or other schema objects—we strongly recommend using Oracle's client-side upgrade checker tool to perform the compatibility check. This ensures the full schema is analyzed comprehensively and avoids potential issues related to result size or validation timeouts.
 
 3. In the **Upgrade** sidebar, in the **MySQL version to upgrade** text box, verify the major MySQL version you want to upgrade to (for example, 8.0 or 8.4).
 
-  :::image type="content" source="media/how-to-upgrade/2-how-to-upgrade.png" alt-text="Screenshot showing Upgrade.":::
-
- Before you can upgrade your primary server, you must first upgrade any associated read replica servers. Until this is completed, **Upgrade** is disabled.
+    :::image type="content" source="media/how-to-upgrade/2-how-to-upgrade.png" alt-text="Screenshot showing Upgrade.":::
+    Before you can upgrade your primary server, you must first upgrade any associated read replica servers. Until this is completed, **Upgrade** is disabled.
 
 4. On the primary server, select the confirmation message to verify that all replica servers have been upgraded, and then select **Upgrade**.
+    
+    :::image type="content" source="media/how-to-upgrade/how-to-upgrade.png" alt-text="Screenshot showing upgrade.":::
 
-  :::image type="content" source="media/how-to-upgrade/how-to-upgrade.png" alt-text="Screenshot showing upgrade.":::
-
- **Upgrade** is enabled by default on read replica and standalone servers.
+    **Upgrade** is enabled by default on read replica and standalone servers.
 
 ## Perform a planned major version upgrade using the Azure CLI
 
@@ -135,15 +134,15 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
 1. Install the [Azure CLI](/cli/azure/install-azure-cli) for Windows or use the [Azure CLI](/azure/cloud-shell/overview) in Azure Cloud Shell to run the upgrade commands.
 
- This upgrade requires the Azure CLI version 2.40.0 or later. If you're using Azure Cloud Shell, the latest version is already installed. Run az version to find the version and dependent libraries that are installed. To upgrade to the latest version, run az upgrade.
+    This upgrade requires the Azure CLI version 2.40.0 or later. If you're using Azure Cloud Shell, the latest version is already installed. Run az version to find the version and dependent libraries that are installed. To upgrade to the latest version, run az upgrade.
 
 2. After you sign in, run the [az MySQL server upgrade](/cli/azure/mysql/server#az-mysql-server-upgrade) command.
 
- ```azurecli
- az mysql flexible-server upgrade --name {your mysql server name} --resource-group {your resource group} --subscription {your subscription id} --version {target major version}
- ```
+     ```azurecli
+     az mysql flexible-server upgrade --name {your mysql server name} --resource-group {your resource group} --subscription {your subscription id} --version {target major version}
+     ```
 
- Replace `{target major version}` with the version you want to upgrade to (for example, 8 or 8.4).
+    Replace `{target major version}` with the version you want to upgrade to (for example, 8 or 8.4).
 
 3. Under the confirmation prompt, type **y** to confirm or **n** to stop the upgrade process, and then press Enter.
 
@@ -159,9 +158,7 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
     > Before upgrading, visit the link for the list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in the target MySQL version.
     > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
 
-3. In the **Upgrade** section, select **Upgrade** to upgrade an Azure Database for MySQL Flexible Server read replica server to the target major version.
-
-  A notification appears to confirm that the upgrade is successful.
+3. In the **Upgrade** section, select **Upgrade** to upgrade an Azure Database for MySQL Flexible Server read replica server to the target major version.A notification appears to confirm that the upgrade is successful.
 
 4. On the **Overview** page, confirm that your Azure Database for MySQL Flexible Server read replica server is running the target version.
 
