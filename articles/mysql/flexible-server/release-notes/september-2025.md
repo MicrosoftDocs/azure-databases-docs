@@ -52,7 +52,7 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 - Improve capacity related server creation error messages, make them more descriptive and to include the link to the customer-facing troubleshooting guide. 
 - Improve the error message related to private endpoint operations.
 
-## Known Issues Fix
+## Known issues fix
 
 - Fix the issue that in certain scenarios, VNet server enabling would fail.
 - Fix the issue that in certain scenarios, VNet server creation or point in time recovery gets stuck until a timeout or customer cancel it
