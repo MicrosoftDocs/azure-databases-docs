@@ -28,7 +28,7 @@ The syntax for the `$comment` operator is as follows:
 | --- | --- |
 | **`string`** | A string containing the comment to be included with the query. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -84,6 +84,8 @@ Consider this sample document from the stores collection.
   ]
 }
 ```
+### Example 1: Find stores with total sales over 100,000 and add a log comment for reference
+
 To find stores with total sales greater than 100,000 and includes a comment for easy identification in logs. 
 
 ```javascript

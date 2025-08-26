@@ -4,8 +4,8 @@
   href: $addfields.md
 - name: $bucket
   href: $bucket.md
-- name: $changestreams
-  href: $changestreams.md
+- name: $changeStream
+  href: $changestream.md
 - name: $collStats
   href: $collstats.md
 - name: $count

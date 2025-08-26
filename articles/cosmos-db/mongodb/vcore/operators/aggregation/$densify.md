@@ -112,7 +112,7 @@ This query would return the following document.
 
 ## Limitations
 
-The following table summarizes the key restrictions and behaviors associated with the $densify stage in MongoDB aggregation pipelines:
+The following table summarizes the key restrictions and behaviors associated with the $densify stage in aggregation pipelines:
 
 | Category| Condition / Behavior |
 | --- | --- |

@@ -14,7 +14,7 @@ ms.date: 08/27/2024
 The $unwind stage in the aggregation framework is used to deconstruct an array field from the input documents to output a document for each element. Each output document is a copy of the original but with the value of the array field replaced by a single element. This is particularly useful for normalizing data stored in arrays and for performing operations on each element of an array separately.
 
 ## Syntax
-```json
+```javascript
 {
   $unwind: {
     path: <field path>,
@@ -147,7 +147,7 @@ Consider this sample document from the stores collection.
 ### Example 1: Unwind Sales by Category
 To deconstruct the salesByCategory array in the store document:
 
-```json
+```javascript
 db.stores.aggregate([
   {
     $unwind: "$sales.salesByCategory"
@@ -191,7 +191,7 @@ This will output documents where each document represents a single category's sa
 ### Example 2: Unwind Promotion Events with Array Index
 To deconstruct the promotionEvents array and include the array index in the output:
 
-```json
+```javascript
 db.stores.aggregate([
   {
     $unwind: {
@@ -234,7 +234,7 @@ This will output documents where each document represents a single promotion eve
 
 ### Example 3: Unwind Discounts within Promotion Events
 To deconstruct the discounts array within each promotion event and preserve documents with no discounts:
-```json
+```javascript
 db.stores.aggregate([
   {
     $unwind: {

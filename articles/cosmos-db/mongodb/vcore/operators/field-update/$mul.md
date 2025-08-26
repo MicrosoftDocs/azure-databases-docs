@@ -35,7 +35,7 @@ The syntax for the `$mul` operator is as follows:
 | **`field`** | The name of the field to multiply. |
 | **`number`** | The number to multiply the field value by. Must be a numeric value. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
