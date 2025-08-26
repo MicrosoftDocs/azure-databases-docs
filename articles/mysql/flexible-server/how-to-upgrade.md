@@ -82,7 +82,7 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
     
 7. Automatic Reversion
 
-    Based on your preupgrade decision, the system either retains the General Purpose SKU or automatically revert to Burstable SKU after the upgrade. If you automatically revert to Burstable SKU, the system reverts to the B2S SKU by default.
+    Based on your preupgrade decision, the system either retains the General Purpose SKU or automatically reverts to Burstable SKU after the upgrade. If you automatically revert to Burstable SKU, the system reverts to the B2S SKU by default.
     
 ## Perform a planned major version upgrade using the Azure portal for general-purpose and business-critical SKU servers
 
