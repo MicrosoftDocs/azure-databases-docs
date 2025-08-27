@@ -28,7 +28,7 @@ The `$last` operator sorts documents on one or more fields specified by the quer
 | --- | --- |
 | **`expression`** | The expression to evaluate and return the last document from the result set|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -175,10 +175,12 @@ db.stores.aggregate([{
 This query returns the following results:
 
 ```json
-{
-    "_id": "First Up Consultants",
-    "lastUpdated": "ISODate('2024-12-31T13:01:19.097Z')"
-}
+[
+  {
+      "_id": "First Up Consultants",
+      "lastUpdated": "ISODate('2024-12-31T13:01:19.097Z')"
+  }
+]
 ```
 
 ### Example 2 - Using the window operator
