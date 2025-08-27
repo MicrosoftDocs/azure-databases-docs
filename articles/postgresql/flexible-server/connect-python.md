@@ -177,7 +177,7 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
    export SSLMODE=require
    ```
 
-   ---
+
 
 Replace the following placeholder values in the commands:
 
