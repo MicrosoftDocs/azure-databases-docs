@@ -17,7 +17,7 @@ ms.custom:
 ms.devlang: python
 ---
 
-# Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL flexible server
+# Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -67,7 +67,8 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Note: Ensure the virtual environment is activated before you run any `python -m pip install ...` commands; using `python -m pip` (not a bare `pip`) ensures packages install into the same interpreter/venv you use to run the examples.
+> [!NOTE]
+> Ensure the virtual environment is activated before you run any `python -m pip install ...` commands; using `python -m pip` (not a bare `pip`) ensures packages install into the same interpreter/venv you use to run the examples.
 
 ---
 
@@ -159,25 +160,23 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
 1. Set environment variables for the connection URI elements:
 
-   ### [Windows](#tab/cmd)
-
-   ```cmd
-   set DBHOST=<server-name>
-   set DBNAME=<database-name>
-   set DBUSER=<username>
-   set SSLMODE=require
-   ```
-
-   ### [macOS/Linux](#tab/bash)
-
-   ```bash
-   export DBHOST=<server-name>
-   export DBNAME=<database-name>
-   export DBUSER=<username>
-   export SSLMODE=require
-   ```
-
-
+    ### [Windows](#tab/cmd)
+    
+    ```cmd
+    set DBHOST=<server-name>
+    set DBNAME=<database-name>
+    set DBUSER=<username>
+    set SSLMODE=require
+    ```
+    
+    ### [macOS/Linux](#tab/bash)
+    
+    ```bash
+    export DBHOST=<server-name>
+    export DBNAME=<database-name>
+    export DBUSER=<username>
+    export SSLMODE=require
+    ```
 
 Replace the following placeholder values in the commands:
 
