@@ -47,7 +47,7 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
 1. To change the cluster tier, select the new tier from the drop-down menu.
 
-   :::image type="content" source="media/how-to-scale-cluster/configure-tier.png" alt-text="Screenshot of the cluster tier option in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-tier.png":::
+   :::image type="content" source="media/how-to-scale-cluster/configure-tier.png" alt-text="Screenshot of how to change the cluster compute tier on the Scale page of a cluster and save changes." lightbox="media/how-to-scale-cluster/configure-tier.png":::
 
 2. Select **Save** to persist your change.
 
@@ -73,10 +73,7 @@ You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos
 
 1. To increase the storage size, select the new size from the drop-down menu.
 
-   :::image type="content" source="media/how-to-scale-cluster/configure-storage.png" alt-text="Screenshot of the storage per shard option in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-storage.png":::
-
-    > [!NOTE]
-    > This change is performed live to the cluster without downtime. Also, storage size can only be increased, not decreased.
+   :::image type="content" source="media/how-to-scale-cluster/configure-storage.png" alt-text="Screenshot of the storage per physical shard option in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-storage.png":::
 
 2. Select **Save** to persist your change.
 
@@ -90,6 +87,10 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
 1.  Use this command to add Microsoft Entra ID authentication method to the cluster:
 
 ---
+
+> [!IMPORTANT]
+> Storage size can only be increased, not decreased.
+
 
 ## Enable or disable high availability
 
