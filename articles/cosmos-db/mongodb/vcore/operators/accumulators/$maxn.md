@@ -251,11 +251,13 @@ db.stores.aggregate([
 The query returns top three sales values for provided document.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "topThreeSales": [43522, 32272, 28946]
-}
+[
+    {
+      "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+      "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+      "topThreeSales": [43522, 32272, 28946]
+    }
+]
 ```
 
 ## Related content
