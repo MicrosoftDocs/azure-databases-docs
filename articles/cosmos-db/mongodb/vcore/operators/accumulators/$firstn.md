@@ -37,7 +37,7 @@ The `$firstN` operator returns the first N values in a group according to the gr
 | **`sortOrder`** | 1 or -1. 1 implies sorting in ascending order of the value of the field while -1 implies sorting in descending order of the values of the field|
 | **`n`** | The number of documents to return from the top of the sorted result set |
 
-## Example
+## Examples
 
 Let's understand the usage with sample json from `stores` dataset.
 
@@ -251,36 +251,38 @@ db.stores.aggregate([
 The first two results returned by this query are:
 
 ```json
-  {
-    "_id": "2e07b49d-1730-491b-b847-44b6a34812c1",
-    "storeName": "VanArsdel, Ltd. | Electronics Market – North Bransonborough",
-    "categoryCount": 3,
-    "firstTwoCategories": [
-      {
-        "categoryName": "iPads",
-        "totalSales": 37113
-      },
-      {
-        "categoryName": "Laptops",
-        "totalSales": 9175
-      }
-    ]
-  },
-  {
-    "_id": "1bec7539-dc75-4f7e-b4e8-afdf8ff2f234",
-    "storeName": "Adatum Corporation | Health Food Market – East Karina",
-    "categoryCount": 2,
-    "firstTwoCategories": [
-      {
-        "categoryName": "Protein Bars",
-        "totalSales": 49900
-      },
-      {
-        "categoryName": "Superfoods",
-        "totalSales": 39683
-      }
-    ]
-  }
+[
+    {
+        "_id": "2e07b49d-1730-491b-b847-44b6a34812c1",
+        "storeName": "VanArsdel, Ltd. | Electronics Market – North Bransonborough",
+        "categoryCount": 3,
+        "firstTwoCategories": [
+            {
+                "categoryName": "iPads",
+                "totalSales": 37113
+            },
+            {
+                "categoryName": "Laptops",
+                "totalSales": 9175
+            }
+        ]
+    },
+    {
+        "_id": "1bec7539-dc75-4f7e-b4e8-afdf8ff2f234",
+        "storeName": "Adatum Corporation | Health Food Market – East Karina",
+        "categoryCount": 2,
+        "firstTwoCategories": [
+            {
+                "categoryName": "Protein Bars",
+                "totalSales": 49900
+            },
+            {
+                "categoryName": "Superfoods",
+                "totalSales": 39683
+            }
+        ]
+    }
+]
 ```
 
 ### Example 3: Use `firstN` operator as array-expression to find first three sales categories
@@ -308,16 +310,24 @@ db.stores.aggregate([
 The query returns first three elements from `sales.salesByCategory` array.
 
 ```json
+[
   {
-    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-    "totalSales": 165000,
-    "firstThreeCategories": [
-      { "categoryName": "Sound Bars", "totalSales": 2120 },
-      null,
-      { "categoryName": "Game Controllers", "totalSales": 43522 }
-    ]
+      "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+      "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+      "totalSales": 165000,
+      "firstThreeCategories": [
+          {
+              "categoryName": "Sound Bars",
+              "totalSales": 2120
+          },
+          null,
+          {
+              "categoryName": "Game Controllers",
+              "totalSales": 43522
+          }
+      ]
   }
+]
 ```
 
 ## Related content
