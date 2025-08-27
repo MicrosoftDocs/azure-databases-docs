@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect Using Python"
 description: This quickstart provides several Python code samples you can use to connect and query data from Azure Database for PostgreSQL flexible server.
-author: agapovm
-ms.author: maximagapov
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 08/27/2025
 ms.service: azure-database-postgresql
@@ -67,6 +67,8 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
+Note: Ensure the virtual environment is activated before you run any `python -m pip install ...` commands; using `python -m pip` (not a bare `pip`) ensures packages install into the same interpreter/venv you use to run the examples.
+
 ---
 
 ## Install the Python libraries
@@ -78,7 +80,9 @@ Install the Python libraries needed to run the code examples.
 Install the [azure-identity](https://pypi.org/project/azure-identity/) library, which provides Microsoft Entra token authentication support across the Azure SDK.
 
 ```bash
-pip install azure-identity
+# Use the interpreter-bound pip to ensure installs go into the active venv/interpreter
+python -m pip install --upgrade pip
+python -m pip install azure-identity azure-keyvault-secrets
 ```
 
 #### [Password](#tab/password)
@@ -86,12 +90,87 @@ pip install azure-identity
 Install the [psycopg](https://pypi.org/project/psycopg/) module, which enables connecting to and querying a PostgreSQL database.
 
 ```bash
-pip install psycopg
+# Recommended: install the binary wheel that bundles a compatible libpq wrapper (Windows/macOS)
+python -m pip install "psycopg[binary]"
+
+# Linux alternative (if you prefer building against system libpq):
+sudo apt-get update
+sudo apt-get install -y libpq-dev build-essential python3-dev
+python -m pip install psycopg
 ```
 
 ---
 
+## Troubleshooting
+
+Information on how to troubleshoot the install.
+
+### ImportError: no pq wrapper available
+
+If you see an error like:
+
+```output
+ImportError: no pq wrapper available
+Attempts made:
+- couldn't import psycopg 'c' implementation: No module named 'psycopg_c'
+- couldn't import psycopg 'binary' implementation: No module named 'psycopg_binary'
+```
+
+Try the following fixes:
+
+1. Preferred (quick): install the bundled binary wheel:
+```bash
+python -m pip install "psycopg[binary]"
+```
+
+2. Linux (build against system libpq):
+```bash
+sudo apt-get update
+sudo apt-get install -y libpq-dev build-essential python3-dev
+python -m pip install psycopg
+```
+
+3. Windows build issues: prefer the binary wheel above; if you must build from source, install the Visual C++ Build Tools.
+
+4. Ensure your virtual environment is activated when you install packages and run the examples.
+
+```text
+ImportError: no pq wrapper available
+Attempts made:
+- couldn't import psycopg 'c' implementation: No module named 'psycopg_c'
+- couldn't import psycopg 'binary' implementation: No module named 'psycopg_binary'
+```
+
+Try the following fixes:
+
+1. Preferred (quick): install the bundled binary wheel:
+
+```bash
+python -m pip install "psycopg[binary]"
+```
+
+2. Linux (build against system libpq):
+
+```bash
+sudo apt-get update
+sudo apt-get install -y libpq-dev build-essential python3-dev
+python -m pip install psycopg
+```
+
+3. Windows build issues: prefer the binary wheel above; if you must build from source, install the Visual C++ Build Tools.
+
+4. Ensure your virtual environment is activated when you install packages and run the examples.
+
 ## Add authentication code
+
+Before you add the authentication code, make sure the required packages for each example are installed.
+
+Required packages (examples in this article):
+
+- Passwordless example: `azure-identity`, `azure-keyvault-secrets` (if you use Key Vault)
+- Password example: `psycopg` (recommended: `python -m pip install "psycopg[binary]"`)
+
+Optional: create a `requirements.txt` with these entries and install with `python -m pip install -r requirements.txt` for reproducible installs.
 
 In this section, you add authentication code to your working directory and perform any additional steps required for authentication and authorization with your server instance.
 
@@ -188,9 +267,9 @@ In this section, you add authentication code to your working directory and perfo
        dbhost = os.environ['DBHOST']
        dbname = os.environ['DBNAME']
        dbuser = urllib.parse.quote(os.environ['DBUSER'])
-       password = os.environ['DBPASSWORD']
-       sslmode = os.environ['SSLMODE']
-       db_uri = f"host={dbhost} dbname={dbname} user={dbuser} password={password} sslmode ={sslmode}"
+   password = os.environ['DBPASSWORD']
+   sslmode = os.environ['SSLMODE']
+   db_uri = f"host={dbhost} dbname={dbname} user={dbuser} password={password} sslmode={sslmode}"
        # Construct connection URI
        return db_uri
    ```
@@ -389,7 +468,6 @@ conn.close()
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md)
 - [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL flexible server](connect-java.md)
 - [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL flexible server](connect-csharp.md)
 - [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL flexible server](connect-go.md)
