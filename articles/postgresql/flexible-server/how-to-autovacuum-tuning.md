@@ -170,8 +170,8 @@ In case the autovacuum isn't keeping up, the following parameters might be chang
 | `autovacuum_vacuum_cost_delay` | **Postgres Version 11** - Default: `20 ms`. The parameter might be decreased to `2-10 ms`.<br />**Postgres Versions 12 and above** - Default: `2 ms`. |
 
 > [!NOTE]  
-> - The `autovacuum_vacuum_cost_limit` value is distributed proportionally among the running autovacuum workers, so that if there is more than one, the sum of the limits for each worker doesn't exceed the value of the `autovacuum_vacuum_cost_limit` parameter.
-> - `autovacuum_vacuum_scale_factor` is another parameter which could trigger vacuum on a table based on dead tuple accumulation. Default: `0.2`, Allowed range: `0.05 - 0.1`. The scale factor is workload-specific and should be set depending on the amount of data in the tables. Before changing the value, investigate the workload and individual table volumes.
+> - The `autovacuum_vacuum_cost_limit` value is distributed proportionally among the running autovacuum workers, so that if there's more than one, the sum of the limits for each worker doesn't exceed the value of the `autovacuum_vacuum_cost_limit` parameter.
+> - `autovacuum_vacuum_scale_factor` is another parameter, which could trigger vacuum on a table based on dead tuple accumulation. Default: `0.2`, Allowed range: `0.05 - 0.1`. The scale factor is workload-specific and should be set depending on the amount of data in the tables. Before changing the value, investigate the workload and individual table volumes.
 
 ### Autovacuum constantly running
 
@@ -230,7 +230,7 @@ Stop the postmaster and vacuum that database in single-user mode.
 ```
 
 > [!NOTE]  
-> This error message is a long-standing oversight. Usually, you do not need to switch to single-user mode. Instead, you can run the required VACUUM commands and perform tuning for VACUUM to run fast. While you cannot run any data manipulation language (DML), you can still run VACUUM.
+> This error message is a long-standing oversight. Usually, you don't need to switch to single-user mode. Instead, you can run the required VACUUM commands and perform tuning for VACUUM to run fast. While you can't run any data manipulation language (DML), you can still run VACUUM.
 
 The wraparound problem occurs when the database is either not vacuumed or there are too many dead tuples not removed by autovacuum.
 
@@ -326,9 +326,9 @@ Using the feature troubleshooting guides that is available on the Azure Database
 
 ### Terminating autovacuum process - pg_signal_autovacuum_worker role
 
-Autovacuum is a very important background process as it helps with efficient storage and performance maintenance in the database. In the normal autovacuum process, it cancels itself after the `deadlock_timeout`. If a user is executing DDL statement on a table, a user might have to wait until the `deadlock_timeout` interval. Autovacuum doesn't allow executing reads/writes on the table requested by different connection requests, adding to latency in the transaction.
+Autovacuum is an important background process as it helps with efficient storage and performance maintenance in the database. In the normal autovacuum process, it cancels itself after the `deadlock_timeout`. If a user is executing DDL statement on a table, a user might have to wait until the `deadlock_timeout` interval. Autovacuum doesn't allow executing reads/writes on the table requested by different connection requests, adding to latency in the transaction.
 
-We introduced a new role `pg_signal_autovacuum_worker` from PostgreSQL, which allows non-superuser members to terminate an ongoing autovacuum task. The new role helps users to get secure and controlled access to the autovacuum process. Non-super users can cancel the autovacuum process once they're granted the `pg_signal_autovacuum_worker` role by using `pg_terminate_backend` command. The role `pg_signal_autovacuum_worker` is backported to Azure Database for PostgreSQL flexible Server in PostgreSQL versions 15 and higher.
+We introduced a new role `pg_signal_autovacuum_worker` from PostgreSQL, which allows nonsuperuser members to terminate an ongoing autovacuum task. The new role helps users to get secure and controlled access to the autovacuum process. Nonsuper users can cancel the autovacuum process once they're granted as the `pg_signal_autovacuum_worker` role by using `pg_terminate_backend` command. The role `pg_signal_autovacuum_worker` is backported to Azure Database for PostgreSQL flexible Server in PostgreSQL versions 15 and higher.
 
 > [!NOTE]  
 > We don't recommend killing any ongoing autovacuum process because terminating autovacuum process might lead to table and databases bloat, which can further lead to performances regressions. However, in cases where there's a business-critical requirement involving the scheduled execution of a DDL statement that coincides with the autovacuum process, we can allow non-superusers to terminate the autovacuum in a controlled and secure manner using `pg_signal_autovacuum_worker role`.
@@ -341,7 +341,7 @@ The recommendations are:
 
 - **High Bloat Ratio**: A high bloat ratio can affect server performance in several ways. One significant issue is that the PostgreSQL Engine Optimizer might struggle to select the best execution plan, leading to degraded query performance. Therefore, a recommendation is triggered when the bloat percentage on a server reaches a certain threshold to avoid such performance issues.
 
-- **Transaction Wrap around**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state it might stop accepting anymore transactions, causing the server to become read-only. Hence, a recommendation is triggered when we see the server crosses 1 billion transactions threshold.
+- **Transaction Wrap around**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state it might stop accepting any more transactions, causing the server to become read-only. Hence, a recommendation is triggered when we see the server crosses 1 billion transactions threshold.
 
 ## Related content
 
