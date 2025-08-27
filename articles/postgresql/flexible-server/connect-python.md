@@ -27,7 +27,7 @@ The steps in this article include two authentication methods: Microsoft Entra au
 
 Microsoft Entra authentication is a mechanism for connecting to Azure Database for PostgreSQL using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management. To learn more, see [Microsoft Entra authentication with Azure Database for PostgreSQL flexible server](concepts-azure-ad-authentication.md).
 
-PostgreSQL authentication uses accounts stored in PostgreSQL. If you choose to use passwords as credentials for the accounts, these credentials will be stored in the `user` table. Because these passwords are stored in PostgreSQL, you need to manage the rotation of the passwords by yourself.
+PostgreSQL authentication uses accounts stored in PostgreSQL. If you choose to use passwords as credentials for the accounts, these credentials are stored in the `user` table. Because these passwords are stored in PostgreSQL, you need to manage the rotation of the passwords by yourself.
 
 This article assumes that you're familiar with developing using Python, but you're new to working with Azure Database for PostgreSQL flexible server.
 
@@ -40,7 +40,7 @@ This article assumes that you're familiar with developing using Python, but you'
 
 ## Add firewall rules for your client workstation
 
-- If you created your Azure Database for PostgreSQL flexible server instance with *Private access (VNet Integration)*, you will need to connect to your server from a resource within the same VNet as your server. You can create a virtual machine and add it to the VNet created with your Azure Database for PostgreSQL flexible server instance. Refer to [Create and manage Azure Database for PostgreSQL flexible server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
+- If you created your Azure Database for PostgreSQL flexible server instance with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your Azure Database for PostgreSQL flexible server instance. Refer to [Create and manage Azure Database for PostgreSQL flexible server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
 - If you created your Azure Database for PostgreSQL flexible server instance with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Create and manage Azure Database for PostgreSQL flexible server firewall rules using the Azure CLI](how-to-manage-firewall-cli.md).
 
 ## Configure Microsoft Entra integration on the server (passwordless only)
@@ -101,67 +101,9 @@ python -m pip install psycopg
 
 ---
 
-## Troubleshooting
-
-Information on how to troubleshoot the install.
-
-### ImportError: no pq wrapper available
-
-If you see an error like:
-
-```output
-ImportError: no pq wrapper available
-Attempts made:
-- couldn't import psycopg 'c' implementation: No module named 'psycopg_c'
-- couldn't import psycopg 'binary' implementation: No module named 'psycopg_binary'
-```
-
-Try the following fixes:
-
-1. Preferred (quick): install the bundled binary wheel:
-```bash
-python -m pip install "psycopg[binary]"
-```
-
-2. Linux (build against system libpq):
-```bash
-sudo apt-get update
-sudo apt-get install -y libpq-dev build-essential python3-dev
-python -m pip install psycopg
-```
-
-3. Windows build issues: prefer the binary wheel above; if you must build from source, install the Visual C++ Build Tools.
-
-4. Ensure your virtual environment is activated when you install packages and run the examples.
-
-```text
-ImportError: no pq wrapper available
-Attempts made:
-- couldn't import psycopg 'c' implementation: No module named 'psycopg_c'
-- couldn't import psycopg 'binary' implementation: No module named 'psycopg_binary'
-```
-
-Try the following fixes:
-
-1. Preferred (quick): install the bundled binary wheel:
-
-```bash
-python -m pip install "psycopg[binary]"
-```
-
-2. Linux (build against system libpq):
-
-```bash
-sudo apt-get update
-sudo apt-get install -y libpq-dev build-essential python3-dev
-python -m pip install psycopg
-```
-
-3. Windows build issues: prefer the binary wheel above; if you must build from source, install the Visual C++ Build Tools.
-
-4. Ensure your virtual environment is activated when you install packages and run the examples.
-
 ## Add authentication code
+
+In this section, you add authentication code to your working directory and perform any additional steps required for authentication and authorization with your server instance.
 
 Before you add the authentication code, make sure the required packages for each example are installed.
 
@@ -171,8 +113,6 @@ Required packages (examples in this article):
 - Password example: `psycopg` (recommended: `python -m pip install "psycopg[binary]"`)
 
 Optional: create a `requirements.txt` with these entries and install with `python -m pip install -r requirements.txt` for reproducible installs.
-
-In this section, you add authentication code to your working directory and perform any additional steps required for authentication and authorization with your server instance.
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
@@ -239,11 +179,11 @@ In this section, you add authentication code to your working directory and perfo
 
    ---
 
-   Replace the following placeholder values in the commands:
+Replace the following placeholder values in the commands:
 
-   - `<server-name>` with the value you copied from the Azure portal.
-   - `<username>` with your Azure user name; for example,. `john@contoso.com`.
-   - `<database-name>` with the name of your Azure Database for PostgreSQL flexible server database. A default database named *postgres* was automatically created when you created your server. You can use that database or create a new database by using SQL commands.
+- `<server-name>` with the value you copied from the Azure portal.
+- `<username>` with your Azure user name; for example: `john@contoso.com`.
+- `<database-name>` with the name of your Azure Database for PostgreSQL flexible server database. A default database named *postgres* was automatically created when you created your server. You can use that database or create a new database by using SQL commands.
 
 1. Sign in to Azure on your workstation. You can sign in using the Azure CLI, Azure PowerShell, or Azure Developer CLI. For example, to sign in via the Azure CLI, enter this command:
 
@@ -318,11 +258,11 @@ In this section, you add authentication code to your working directory and perfo
 
    ---
 
-   Replace the following placeholder values in the commands:
+Replace the following placeholder values in the commands:
 
-   - `<server-name>` and `<username>` with the values you copied from the Azure portal.
-   - `<password>` with your server password.
-   - `<database-name>` with the name of your Azure Database for PostgreSQL flexible server database. A default database named *postgres* was automatically created when you created your server. You can use that database or create a new database by using SQL commands.
+- `<server-name>` and `<username>` with the values you copied from the Azure portal.
+- `<password>` with your server password.
+- `<database-name>` with the name of your Azure Database for PostgreSQL flexible server database. A default database named *postgres* was automatically created when you created your server. You can use that database or create a new database by using SQL commands.
 
 ---
 
