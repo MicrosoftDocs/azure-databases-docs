@@ -253,12 +253,6 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
    ---
 
-Replace the following placeholder values in the commands:
-
-- `<server-name>` and `<username>` with the values you copied from the Azure portal.
-- `<password>` with your server password.
-- `<database-name>` with the name of your Azure Database for PostgreSQL flexible server database. A default database named *postgres* was automatically created when you created your server. You can use that database or create a new database by using SQL commands.
-
 ---
 
 ## How to run the Python examples
