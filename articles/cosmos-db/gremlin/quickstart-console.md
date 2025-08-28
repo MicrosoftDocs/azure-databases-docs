@@ -14,8 +14,6 @@ ms.date: 09/27/2023
 
 # Quickstart: Traverse vertices and edges with the Gremlin console and Azure Cosmos DB for Apache Gremlin
 
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
-
 [!INCLUDE[Gremlin devlang](includes/quickstart-devlang.md)]
 
 Azure Cosmos DB for Apache Gremlin is a fully managed graph database service implementing the popular [`Apache Tinkerpop`](https://tinkerpop.apache.org/), a graph computing framework using the Gremlin query language. The API for Gremlin gives you a low-friction way to get started using Gremlin with a service that can grow and scale out as much as you need with minimal management.
@@ -155,8 +153,3 @@ When you no longer need the API for Gremlin account, delete the corresponding re
 Azure Cosmos DB for Apache Gremlin solved our problem by offering Gremlin as a service. With this offering, you aren't required to stand up your own Gremlin server instances or manage your own infrastructure. Even more, you can scale your solution as your needs grow over time.
 
 To connect to the API for Gremlin account, you used the `tinkerpop/gremlin-console` container image to run the gremlin console in a manner that didn't require a local installation. Then, you used the configuration stored in the **remote-secure.yaml** file to connect from the running container the API for Gremlin account. From there, you ran multiple common Gremlin commands.
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Create and query data using Azure Cosmos DB for Apache Gremlin](tutorial-query.md)
