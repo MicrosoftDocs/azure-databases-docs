@@ -154,9 +154,9 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
 1. Get database connection information.
 
-   1. In the [Azure portal](https://portal.azure.com/), search for and select your Azure Database for PostgreSQL flexible server name.
-   1. On the server's **Overview** page, copy the fully qualified **Server name**. The fully qualified **Server name** is always of the form *\<my-server-name>.postgres.database.azure.com*.
-   1. On the left menu, under **Security**, select **Authentication**. Make sure your account is listed under **Microsoft Entra Admins**. If it isn't, complete the steps in [Configure Microsoft Entra integration on the server (passwordless only)](#configure-microsoft-entra-integration-on-the-server-passwordless-only).
+    1. In the [Azure portal](https://portal.azure.com/), search for and select your Azure Database for PostgreSQL flexible server name.
+    1. On the server's **Overview** page, copy the fully qualified **Server name**. The fully qualified **Server name** is always of the form *\<my-server-name>.postgres.database.azure.com*.
+    1. On the left menu, under **Security**, select **Authentication**. Make sure your account is listed under **Microsoft Entra Admins**. If it isn't, complete the steps in [Configure Microsoft Entra integration on the server (passwordless only)](#configure-microsoft-entra-integration-on-the-server-passwordless-only).
 
 1. Set environment variables for the connection URI elements:
 
@@ -178,20 +178,16 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
     export SSLMODE=require
     ```
 
-Replace the following placeholder values in the commands:
+    Replace the following placeholder values in the commands:
+    
+    - `<server-name>` with the value you copied from the Azure portal.
+    - `<username>` with your Azure user name; for example: `john@contoso.com`.
+    - `<database-name>` with the name of your Azure Database for PostgreSQL flexible server database. A default database named *postgres* was automatically created when you created your server. You can use that database or create a new database by using SQL commands.
 
-- `<server-name>` with the value you copied from the Azure portal.
-- `<username>` with your Azure user name; for example: `john@contoso.com`.
-- `<database-name>` with the name of your Azure Database for PostgreSQL flexible server database. A default database named *postgres* was automatically created when you created your server. You can use that database or create a new database by using SQL commands.
+1. Sign in to Azure on your workstation. You can sign in using the Azure CLI, Azure PowerShell, or Azure Developer CLI.
 
-1. Sign in to Azure on your workstation. You can sign in using the Azure CLI, Azure PowerShell, or Azure Developer CLI. For example, to sign in via the Azure CLI, enter this command:
-
-   ```azurecli-interactive
-   az login
-   ```
-
-   The authentication code uses [`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential) to authenticate with Microsoft Entra ID and get a token that authorizes you to perform operations on your server instance. `DefaultAzureCredential` supports a chain of authentication credential types. Among the credentials supported are credentials that you're signed in to developer tools with like the Azure CLI, Azure PowerShell, or Azure Developer CLI.
-
+    The authentication code uses [`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential) to authenticate with Microsoft Entra ID and get a token that authorizes you to perform operations on your server instance. `DefaultAzureCredential` supports a chain of authentication credential types. Among the credentials supported are credentials that you're signed in to developer tools with like the Azure CLI, Azure PowerShell, or Azure Developer CLI.
+    
 #### [Password](#tab/password)
 
 1. Copy the following code into an editor and save it in a file named *get_conn.py*.
