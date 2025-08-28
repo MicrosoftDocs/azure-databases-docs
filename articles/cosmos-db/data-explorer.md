@@ -6,7 +6,7 @@ author: meredithmooreux
 ms.author: merae
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2024
+ms.date: 08/28/2025
 # CustomerIntent: As a database developer, I want to access the Data Explorer so that I can observe my data and make queries against my data.
 ---
 

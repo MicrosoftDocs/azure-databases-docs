@@ -8,7 +8,7 @@ ms.author: merae
 ms.service: azure-cosmos-db
 ms.custom: references_regions, sfi-image-nochange
 ms.topic: overview
-ms.date: 09/19/2024
+ms.date: 08/28/2025
 ---
 
 # Try Azure Cosmos DB free
