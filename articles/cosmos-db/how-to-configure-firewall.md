@@ -5,7 +5,7 @@ author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 10/24/2024
+ms.date: 08/28/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ---
 

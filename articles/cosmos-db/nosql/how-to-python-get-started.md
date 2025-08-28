@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 08/28/2025
 ms.custom: devx-track-python, devguide-python, cosmos-db-dev-journey, devx-track-azurepowershell, devx-track-azurecli
 ---
 

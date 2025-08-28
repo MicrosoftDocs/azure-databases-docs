@@ -7,7 +7,7 @@ ms.author: mansha
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
-ms.date: 08/20/2025
+ms.date: 08/21/2025
 appliesto:
   - ✅ Apache Gremlin
 ---
@@ -107,4 +107,4 @@ Using descriptive relationship labels can improve the efficiency of edge resolut
 
 :::image type="content" source="./media/modeling/graph-modeling-3.png" alt-text="Diagram of relationship labeling examples.":::
 
-The more specific the label that the traverser uses to filter the edges, the better. This decision can have a significant effect on query cost as well. You can evaluate the query cost at any time by using the [executionProfile step](execution-profile.md).
+The more specific the label that the traverser uses to filter the edges, the better. This decision can have a significant effect on query cost as well. You can evaluate the query cost at any time by using the `executionProfile` step.

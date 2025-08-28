@@ -5,7 +5,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
-ms.date: 09/26/2024
+ms.date: 08/28/2025
 adobe-target: true
 ---
 
