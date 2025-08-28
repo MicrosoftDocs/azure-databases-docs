@@ -1,11 +1,11 @@
 ---
 title: Required Outbound Network Rules for Azure Managed Instance for Apache Cassandra
 description: Learn about the required outbound network rules and FQDNs for Azure Managed Instance for Apache Cassandra.
-author: rothja
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 11/02/2021
-ms.author: jroth
 ---
 
 # Required outbound network rules
