@@ -10,8 +10,6 @@ ms.subservice: apache-gremlin
 ms.topic: overview
 ms.date: 07/22/2025
 ai-usage: ai-generated
-appliesto:
-  - ✅ Apache Gremlin
 ---
 
 # What is Azure Cosmos DB for Apache Gremlin?
@@ -56,7 +54,3 @@ The API for Gremlin is ideal for scenarios where relationships between data poin
 
 > [!IMPORTANT]
 > This introduction reviews various features of Azure Cosmos DB for Apache Gremlin that provides wire protocol compatibility with the Apache TinkerPop specification. Some features might differ from Apache TinkerPop. For more information, see [compatibility with Apache TinkerPop](support.md).
-
-## Next step
-
-- [Start using Azure Cosmos DB for Apache Gremlin](quickstart-python.md)
