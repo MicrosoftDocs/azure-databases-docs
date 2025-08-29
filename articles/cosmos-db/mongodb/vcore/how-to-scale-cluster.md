@@ -25,18 +25,6 @@ Azure Cosmos DB for MongoDB vCore provides seamless [scalability](./scalability-
 
 [!INCLUDE[Prerequisite - Azure CLI](includes/prereq-azure-cli.md)]
 
-## Navigate to the scale section
-
-To change the configuration of your cluster, use the **Scale** section of the Azure Cosmos DB for MongoDB vCore cluster page in the Azure portal. The portal includes real-time costs for these changes.
-
-1. Sign in to the [Azure portal](https://portal.azure.com).
-
-2. Navigate to the existing Azure Cosmos DB for MongoDB vCore cluster page.
-
-3. From the Azure Cosmos DB for MongoDB vCore cluster page, in the **Settings** section select the **Scale** navigation menu option.
-
-   :::image type="content" source="media/how-to-scale-cluster/select-scale-option.png" lightbox="media/how-to-scale-cluster/select-scale-option.png" alt-text="Screenshot of the Scale option on the page for an Azure Cosmos DB for MongoDB vCore cluster.":::
-
 ## Scale cluster compute
 
 [The cluster tier](./compute-storage.md#compute-in-azure-cosmos-db-for-mongodb-vcore) allows you to configure number of vCores and amount of RAM on your cluster's [physical shards](./partitioning.md#physical-shards). You can change the cluster tier to suit your needs at any time without interruption. For example, you can increase from **M50** to **M60** or decrease **M50** to **M40**.
@@ -67,14 +55,17 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
 You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
 
-1.  Use this command to change cluster compute tier:
+1. Use this command to change cluster compute tier:
     
-     ```azurecli-interactive
-     az rest \
-         --method "PATCH" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
-         --body "{\"location\":\"<cluster-region>\",\"properties\":{\"compute\":{\"tier\":\"<compute-tier>\"}}}"
-     ```
+   ```azurecli-interactive
+   az rest \
+      --method "PATCH" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --body "{\"location\":\"<cluster-region>\",\"properties\":{\"compute\":{\"tier\":\"<compute-tier>\"}}}"
+   ```
+    > [!TIP]
+    > If you're using the Azure Cloud Shell, you can upload/download files directly to the shell. For more information, see [managed files in Azure Cloud Shell](/azure/cloud-shell/using-the-shell-window#upload-and-download-files).
+
 ---
 
 > [!NOTE]
@@ -94,18 +85,35 @@ You can increase [the storage size](./compute-storage.md#storage-in-azure-cosmos
 
 ### [Azure CLI](#tab/cli)
 
-1. To enable Microsoft Entra ID on the cluster, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes` in the `authConfig` property.
+1. To increase cluster storage size, update the existing cluster with an `update` operation by increasing the value in the `storage.sizeGb` property. Supported storage sizes are listed on [the supported storage page](./compute-storage.md#storage-in-azure-cosmos-db-for-mongodb-vcore).
+
+    ```azurecli-interactive
+    az resource update \
+      --resource-type "Microsoft.DocumentDB/mongoClusters" \
+      --name "<cluster-name>" \
+      --resource-group "<resource-group>" \
+      --set properties.storage.sizeGb="<new-size-in-GiB>"
+    ```
 
 ### [REST APIs](#tab/rest-apis)
+
 You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
 
-1.  Use this command to add Microsoft Entra ID authentication method to the cluster:
+1. Use this command to change cluster compute tier:
+    
+   ```azurecli-interactive
+   az rest \
+      --method "PATCH" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --body "{\"location\":\"<cluster-region>\",\"properties\":{\"storage\":{\"sizeGb\":\"<new-size-in-GiB>\"}}}"
+   ```
+    > [!TIP]
+    > If you're using the Azure Cloud Shell, you can upload/download files directly to the shell. For more information, see [managed files in Azure Cloud Shell](/azure/cloud-shell/using-the-shell-window#upload-and-download-files).
 
 ---
 
 > [!IMPORTANT]
 > Storage size can only be increased, not decreased.
-
 
 ## Enable or disable high availability
 
@@ -121,12 +129,47 @@ You can enable or disable [in-region high availability (HA)](./high-availability
 
 ### [Azure CLI](#tab/cli)
 
-1. To enable Microsoft Entra ID on the cluster, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes` in the `authConfig` property.
+1. To *enable* in-region high availability on the cluster, update the existing cluster with an `update` operation by setting the value in the `highAvailability.targetMode` property to `ZoneRedundantPreferred`. 
+
+    ```azurecli-interactive
+    az resource update \
+      --resource-type "Microsoft.DocumentDB/mongoClusters" \
+      --name "<cluster-name>" \
+      --resource-group "<resource-group>" \
+      --set properties.highAvailability.targetMode="ZoneRedundantPreferred"
+    ```
+
+1. To *disable* in-region high availability on the cluster, update the existing cluster with an `update` operation by setting the value in the `highAvailability.targetMode` property to `Disabled`. 
+
+    ```azurecli-interactive
+    az resource update \
+      --resource-type "Microsoft.DocumentDB/mongoClusters" \
+      --name "<cluster-name>" \
+      --resource-group "<resource-group>" \
+      --set properties.highAvailability.targetMode="Disabled"
+    ```
 
 ### [REST APIs](#tab/rest-apis)
+
 You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
 
-1.  Use this command to add Microsoft Entra ID authentication method to the cluster:
+1. Use this command to *enable* in-region high availability on the cluster:
+    
+   ```azurecli-interactive
+   az rest \
+      --method "PATCH" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --body "{\"location\":\"<cluster-region>\",\"properties\":{\"highAvailability\":{\"targetMode\":\"ZoneRedundantPreferred\"}}}"
+   ```
+
+1. Use this command to *disable* in-region high availability on the cluster:
+    
+   ```azurecli-interactive
+   az rest \
+      --method "PATCH" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --body "{\"location\":\"<cluster-region>\",\"properties\":{\"highAvailability\":{\"targetMode\":\"Disabled\"}}}"
+   ```
 
 ---
 
