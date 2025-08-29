@@ -53,13 +53,28 @@ To change the configuration of your cluster, use the **Scale** section of the Az
 
 ### [Azure CLI](#tab/cli)
 
-1. To enable Microsoft Entra ID on the cluster, update the existing cluster with an HTTP `PATCH` operation by adding the `MicrosoftEntraID` value to `allowedModes` in the `authConfig` property.
+1. To scale cluster compute tier up or down, update the existing cluster with an `update` operation by changing the `MXXX` value in the `compute.tier` property.
 
+    ```azurecli-interactive
+    az resource update \
+      --resource-type "Microsoft.DocumentDB/mongoClusters" \
+      --name "<cluster-name>" \
+      --resource-group "<resource-group>" \
+      --set properties.compute.tier="<compute-tier>"
+    ```
+    
 ### [REST APIs](#tab/rest-apis)
+
 You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
 
-1.  Use this command to add Microsoft Entra ID authentication method to the cluster:
-
+1.  Use this command to change cluster compute tier:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "PATCH" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+         --body "{\"location\":\"<cluster-region>\",\"properties\":{\"compute\":{\"tier\":\"<compute-tier>\"}}}"
+     ```
 ---
 
 > [!NOTE]
