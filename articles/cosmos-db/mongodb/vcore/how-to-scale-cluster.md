@@ -179,11 +179,48 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
 
 When a database grows beyond the capacity of a single physical shard cluster, you can either increase the [storage size](#increase-storage-size) or add more [physical shards](./partitioning.md#physical-shards). After a new physical shard is added to the cluster, you must perform a cluster rebalancing operation to redistribute data across the shards. Each physical shard in a cluster always has the same [compute](#scale-cluster-compute) and [storage](#increase-storage-size) configuration.
 
+### [Azure portal](#tab/portal)
+
 1. To add physical shards, select new shard count from the list.
 
    :::image type="content" source="media/how-to-scale-cluster/configure-add-shards.png" alt-text="Screenshot of the physical shard count drop-down list in the Scale page of a cluster." lightbox="media/how-to-scale-cluster/configure-add-shards.png":::
 
 1. Select **Save** to persist your change.
+
+1. Select **Continute** in the pop-up window to persist your change.
+
+### [Azure CLI](#tab/cli)
+
+1. To add a physical shard to the cluster, update the existing cluster with an `update` operation by increasing the value for the `sharding.shardCount` property by one. 
+
+    ```azurecli-interactive
+    az resource update \
+      --resource-type "Microsoft.DocumentDB/mongoClusters" \
+      --name "<cluster-name>" \
+      --resource-group "<resource-group>" \
+      --set properties.sharding.shardCount="<current-shard-count-plus-one>"
+    ```
+
+    > [!NOTE]
+    > You can add only one physical shard at a time. If you need to add more than one physical shard to the cluster, you need to do it sequentially.
+
+### [REST APIs](#tab/rest-apis)
+
+You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
+
+1. Use this command to add a physical shard to the cluster:
+    
+   ```azurecli-interactive
+   az rest \
+      --method "PATCH" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --body "{\"location\":\"<cluster-region>\",\"properties\":{\"sharding\":{\"shardCount\":\"<current-shard-count-plus-one>\"}}}"
+   ```
+
+    > [!NOTE]
+    > You can add only one physical shard at a time. If you need to add more than one physical shard to the cluster, you need to do it sequentially.
+
+---
 
 If you need more than 10 physical shards on your cluster, open an [Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
 
