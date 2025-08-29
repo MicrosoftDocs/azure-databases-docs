@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 08/25/2025
+ms.date: 08/27/2025
 appliesto:
 - ✅ MongoDB (vCore)
 ms.custom:
@@ -187,7 +187,7 @@ When a database grows beyond the capacity of a single physical shard cluster, yo
 
 1. Select **Save** to persist your change.
 
-1. Select **Continute** in the pop-up window to persist your change.
+1. Select **Continue** in the pop-up window to persist your change.
 
 ### [Azure CLI](#tab/cli)
 
