@@ -37,7 +37,7 @@ Throughput buckets help manage resource consumption for workloads sharing a Cosm
 
 ### Getting started
 
-To enable Throughput buckets, navigate to **Preview features** in your Subscription page in Azure Portal and search for **Throughput Buckets** feature to register for preview. Once the registration is approved, you'll be able to create throughput buckets for your Cosmos DB containers.
+To enable Throughput buckets, go to the **Preview features** section on your Subscription page in the Azure portal. Search for the **Throughput Buckets** feature and register for the preview. After your registration is approved, it may take up to an hour for Throughput buckets to be enabled on all accounts within the subscription. Once enabled, you can create throughput buckets for your Cosmos DB containers.
 
 ### Configuring Throughput buckets
 
