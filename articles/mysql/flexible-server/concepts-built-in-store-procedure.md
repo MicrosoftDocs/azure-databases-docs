@@ -68,5 +68,20 @@ In some cases your undo log might grow large, and you might want to clean it up.
 1. Execute ```call az_deactivate_undo_tablespace(3);``` to deactivate the newly created table space. Wait for the state to be empty. Then execute ```Call az_drop_undo_tablespace(3);``` to drop the newly created table space. 
    You can't drop the default ones (innodb_undo_001, innodb_undo_002). You can only drop the one you created, in this example it's x_undo_003.Before dropping, first deactivate x_undo_003 to empty state.
 
+### Drop problematic table 
+
+If you encounter an error like the following when accessing a table, it may indicate table corruption:
+
+```
+Incorrect information in file: './DATABASE_NAME/TABLE_NAME.frm'
+```
+
+To resolve this issue, you can use the built-in stored procedure:
+
+```sql
+mysql.az_drop_broken_table(DBNAME, TABLENAME)
+```
+ Alternatively, you can perform a [Point-in-time restore](./how-to-restore-server-portal.md) to revert the server to a state before the issue occurred.
+
 ## **Conclusion**  
 Azure Database for MySQL provides built-in stored procedures that simplify advanced database management tasks. These procedures enable you to set up replication, manage the Undo log, and enable plugins efficiently. By applying these tools, you can enhance performance, optimize storage, and ensure seamless data synchronization.  
