@@ -6,8 +6,9 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 08/28/2025
+ms.date: 09/03/2025
 ms.custom: build-2023
+ai-usage: ai-assisted
 ---
 
 # Azure Cosmos DB service quotas

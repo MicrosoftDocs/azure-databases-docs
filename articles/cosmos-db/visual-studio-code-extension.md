@@ -4,12 +4,13 @@ description: Learn how to connect to Azure Cosmos DB for NoSQL or Azure Cosmos D
 author: khelanmodi
 ms.author: khelanmodi
 ms.reviewer: gahllevy, sasinnat, esarroyo
-ms.date: 08/28/2025
+ms.date: 09/03/2025
 ms.service: azure-cosmos-db
 ms.topic: how-to
 keywords: connect to cosmos db for nosql or cosmos db for mongodb database
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ms.custom: sfi-image-nochange
+ai-usage: ai-assisted
 ---
 
 # Use Visual Studio Code to connect and query Azure Cosmos DB instances

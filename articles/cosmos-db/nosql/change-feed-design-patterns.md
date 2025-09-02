@@ -6,8 +6,9 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 08/28/2025
+ms.date: 09/03/2025
 ms.custom: cosmos-db-video, build-2023
+ai-usage: ai-assisted
 ---
 
 # Change feed design patterns in Azure Cosmos DB
