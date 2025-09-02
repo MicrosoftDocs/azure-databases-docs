@@ -1,6 +1,6 @@
 ---
-title: $collStats (aggregation)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $collStats
+titleSuffix: Overview of the $collStats operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $collStats stage in the aggregation pipeline is used to return statistics about a collection.
 author: gahl-levy
 ms.author: gahllevy
@@ -10,15 +10,13 @@ ms.topic: language-reference
 ms.date: 08/27/2024
 ---
 
-# $collStats (aggregation)
-This section will have an introduction to the command, its use cases, and behavior.
+# $collStats
 
 The $collStats stage in the aggregation pipeline is used to return statistics about a collection. This stage can be particularly useful for understanding the performance characteristics of a collection, such as the number of documents, the size of the collection, and storage statistics. It provides detailed information that can help with database optimization and monitoring.
 
 ## Syntax
-This section will have the syntax of the command and its parameter definitions.
 
-```json
+```javascript
 {
   $collStats: {
     latencyStats: { histograms: <boolean> },
@@ -30,18 +28,19 @@ This section will have the syntax of the command and its parameter definitions.
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`latencyStats`** | Optional. Specifies whether to include latency statistics. The `histograms` field is a boolean that indicates whether to include histograms of latency data. |
 | **`storageStats`** | Optional. Specifies whether to include storage statistics. The `scale` field is a number that indicates the scale factor for the storage statistics. |
 | **`count`** | Optional. Includes the count of documents in the collection. |
 
-## Example(s)
-This section will have one or more examples that will help explain the command usage.
 
-### Example 1: Basic Collection Statistics
-```json
-db.store.aggregate([
+### Example: Basic collection statistics
+
+To count documents in the store collection:
+
+```javascript
+db.stores.aggregate([
   {
     $collStats: {
       count: {}
@@ -50,11 +49,10 @@ db.store.aggregate([
 ])
 ```
 Sample output
+
 ```json
 [
-  {
-    "count": 1523
-  }
+  { "ns": "StoreData.stores", "count": 41505 }
 ]
 ```
 

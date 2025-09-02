@@ -35,7 +35,7 @@ You can work with the change feed by using the following options:
 
 * [Use change feed with Azure Functions](change-feed-functions.md)
 * [Use change feed with change feed processor](change-feed-processor.md) 
-* [Use change feed with pull model](nosql/change-feed-pull-model.md) 
+* [Use change feed with Apache Spark](nosql/change-feed-spark.md) 
 
 Change feed is available for partition key ranges of an Azure Cosmos DB container. This allows it to be distributed across one or more consumers for parallel processing as shown in the following image.  
 

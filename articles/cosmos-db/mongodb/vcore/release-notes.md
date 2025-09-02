@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: release-notes
-ms.date: 05/20/2025
+ms.date: 07/30/2025
 
 #Customer intent: As a database administrator, I want to review the release notes, so I can understand what new features are released for the service.
 ---
@@ -16,7 +16,24 @@ ms.date: 05/20/2025
 
 This article contains release notes for the API for MongoDB vCore. These release notes are composed of feature release dates, and feature updates.
 
-## Latest release: May 05, 2025
+## Latest release: July 15, 2025
+
+### Engine Enhancements_0715
+
+- [Preview] Enabled index pushdown optimization for $sort on any field.
+- Enabled index pushdown optimization for $limit.
+- [Preview] Added support for composite indexes on filter conditions.
+- Added support for HNSW index for M30 cluster tier.
+- Enhanced TTL index behavior to continue processing even if the cluster becomes read-only due to disk full.
+- Improvements to parallel build for faster index creation on sharded and unsharded collection.
+
+#### Infrastructure Enhancements_0715
+
+- [Preview] Added support for CMK, allowed only during provisioning phase.
+
+## Previous releases
+
+### May 05, 2025
 
 ### Engine Enhancements_0505
 
@@ -31,8 +48,6 @@ This article contains release notes for the API for MongoDB vCore. These release
 
 - [EntraID](entra-authentication.md) support (Preview).
 
-## Previous releases
-
 ### March 23, 2025
 
 #### Engine Enhancements_0323
@@ -44,7 +59,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 - Added support for the $dateFromString operator with full functionality.
 - Extended syntax for $getField aggregation operator. Now the value of 'field' could be an expression that resolves to a string.
 - Added support for top-level aggregate command let variables in the $geoNear stage.
-- Backend command support for statement time-out is now available.
+- Backend command support for statement time out is now available.
 - Introduced support for the $toUUID aggregation operator.
 - Implemented full functionality for the $dateFromString operator.
 - Extended $getField operator to accept expressions resolving to a string for the field parameter.

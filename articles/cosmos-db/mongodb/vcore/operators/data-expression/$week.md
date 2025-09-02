@@ -1,18 +1,16 @@
 ---
-  title: $week (date expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $week
+  titleSuffix: Overview of the $week operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $week operator returns the week number for a date as a value between 0 and 53.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 06/20/2025
+  ms.date: 08/04/2025
 ---
 
-# $week (date expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $week
 
 The `$week` operator returns the week number for a date as a value between 0 and 53. Week 0 begins on January 1, and subsequent weeks begin on Sundays. If the date is null or missing, `$week` returns null.
 
@@ -26,7 +24,7 @@ The syntax for the `$week` operator is as follows:
 }
 ```
 
-Or with timezone specification:
+Or with timezone specification
 
 ```javascript
 {
@@ -39,14 +37,14 @@ Or with timezone specification:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`dateExpression`** | Any expression that resolves to a Date, Timestamp, or ObjectId. |
-| **`timezone`** | Optional. The timezone to use for the calculation. Can be an Olson Timezone Identifier (e.g., "America/New_York") or a UTC offset (e.g., "+0530"). |
+| **`timezone`** | Optional. The timezone to use for the calculation. Can be an Olson Timezone Identifier (for example, "America/New_York") or a UTC offset (for example, "+0530"). |
 
 ## Example
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Let's understand the usage with sample json from the `stores` dataset.
 
 ```json
 {
@@ -108,7 +106,7 @@ The query returns the week number for the corresponding date value in ``storeOpe
 
 ### Example 2: Group stores by opening week
 
-This example groups stores by the week they were opened for analysis.
+The example groups stores by the week they were opened for analysis.
 
 ```javascript
 db.stores.aggregate([

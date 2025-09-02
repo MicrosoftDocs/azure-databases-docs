@@ -1,6 +1,6 @@
 --- 
-title: $bit(bitwise update) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $bit
+titleSuffix: Overview of the $bit operation in Azure Cosmos DB for MongoDB (vCore)
 description: The `$bit` operator is used to perform bitwise operations on integer values.
 author: sandeepsnairms
 ms.author: sandnair
@@ -11,7 +11,7 @@ ms.date: 10/15/2024
 ---
 
 
-# $bit(bitwise update)
+# $bit
 The `$bit` operator is used to perform bitwise operations on integer values. It can be used to update integer fields in documents by applying bitwise AND, OR, and XOR operations. Bitwise operators like $bit aren't designed for incrementing values, but for manipulating bits directly (like checking, setting, or clearing specific bits).
 
 ## Syntax
@@ -20,7 +20,7 @@ The `$bit` operator is used to perform bitwise operations on integer values. It 
 ```
 
 ## Parameters  
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<field>`** | The field to perform the bitwise operation on. |
 | **`<operator>`** | The bitwise operation to perform. Can be one of: `and`, `or`, `xor`. |
@@ -28,7 +28,7 @@ The `$bit` operator is used to perform bitwise operations on integer values. It 
 
 ## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
 
 ```json
 {

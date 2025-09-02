@@ -6,7 +6,7 @@ ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 09/09/2024
+ms.date: 08/28/2025
 ---
 
 # Visualize Azure Cosmos DB data using Power BI

@@ -46,7 +46,8 @@ The initial release of Self-Heal supports a focused set of scenarios, including:
 
 - Missing or corrupted logs  
 - Server unresponsive or unreachable  
-- Server availability issues (for example, stuck in restarting state)  
+- Server availability issues (for example, stuck in restarting state)
+- Sever stuck in management operations (for example, change server parameter)
 
 Support for additional scenarios will be added over time based on telemetry and customer feedback.
 

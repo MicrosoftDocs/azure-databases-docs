@@ -34,21 +34,21 @@ The tables in the following sections show the status of specific migration scena
 
 ### Offline (one-time) migration support
 
-The following table describes the current status of Database Migration Service support for *offline* migrations:
+The following table describes the current status of Database Migration Service (DMS) and Database Migration Service (classic) support for *offline* migrations:
 
 | Target | Source | Support | Status |
 | --- | --- | :---: | :---: |
-| **Azure SQL Database** | SQL Server <sup>1</sup> | Yes | GA |
-| | Amazon RDS SQL Server | Yes | GA |
-| | Oracle | No | |
-| **Azure SQL Database Managed Instance** | SQL Server <sup>1</sup> | Yes | GA |
-| | Amazon RDS SQL Server | Yes | GA |
-| | Oracle | No | |
-| **Azure SQL VM** | SQL Server <sup>1</sup> | Yes | GA |
-| | Amazon RDS SQL Server | Yes | GA |
-| | Oracle | No | |
+| **Azure SQL Database** | SQL Server <sup>1</sup> | Yes [using DMS] | GA |
+| | Amazon RDS SQL Server | Yes [using DMS] | GA |
+| | Oracle | Yes [using DMS via SSMA] | Preview |
+| **Azure SQL Database Managed Instance** | SQL Server <sup>1</sup> | Yes [using DMS] | GA |
+| | Amazon RDS SQL Server | Yes [using DMS] | GA |
+| | Oracle | Yes [using DMS via SSMA] | Preview |
+| **Azure SQL VM** | SQL Server <sup>1</sup> | Yes [using DMS] | GA |
+| | Amazon RDS SQL Server | Yes [using DMS] | GA |
+| | Oracle | Yes [using DMS via SSMA] | Preview |
 | **Azure Cosmos DB** | MongoDB | Yes | GA |
-| **Azure Database for MySQL - Flexible Server** | MySQL | Yes | GA |
+| **Azure Database for MySQL - Flexible Server** | MySQL | Yes  | GA |
 | | Amazon RDS MySQL | Yes | GA |
 | | Amazon Aurora MySQL | Yes | GA |
 | | Google Cloud SQL for MySQL | Yes | GA |
@@ -63,18 +63,18 @@ The following table describes the current status of Database Migration Service s
 
 ### Online (continuous sync) migration support
 
-The following table describes the current status of Database Migration Service support for *online* migrations:
+The following table describes the current status of Database Migration Service (DMS) and Database Migration Service (classic) support for *online* migrations:
 
 | Target | Source | Support | Status |
 | --- | --- | :---: | :---: |
 | **Azure SQL Database** | SQL Server <sup>1</sup> | No | |
 | | Amazon RDS SQL | No | |
 | | Oracle | No | |
-| **Azure SQL Database MI** | SQL Server <sup>1</sup> | Yes | GA |
-| | Amazon RDS SQL | Yes | GA |
+| **Azure SQL Database MI** | SQL Server <sup>1</sup> | Yes [using DMS] | GA |
+| | Amazon RDS SQL | Yes [using DMS] | GA |
 | | Oracle | No | |
-| **Azure SQL VM** | SQL Server <sup>1</sup> | Yes | GA |
-| | Amazon RDS SQL | Yes | GA |
+| **Azure SQL VM** | SQL Server <sup>1</sup> | Yes [using DMS] | GA |
+| | Amazon RDS SQL | Yes [using DMS] | GA |
 | | Oracle | No | |
 | **Azure Cosmos DB** | MongoDB | Yes | GA |
 | **Azure Database for MySQL - Flexible Server** | MySQL | Yes | GA |

@@ -8,6 +8,176 @@ ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
+### anon.algorithm
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | The hash method used for pseudonymizing functions. |
+| Data type | string |
+| Default value | `sha256` |
+| Allowed values | `sha256` |
+| Parameter type | read-only |
+| Documentation | [anon.algorithm](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### anon.k_anonymity_provider
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | The security label provider used for k-anonymity. |
+| Data type | string |
+| Default value | `k_anonymity` |
+| Allowed values | `k_anonymity` |
+| Parameter type | read-only |
+| Documentation | [anon.k_anonymity_provider](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### anon.masking_policies
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Define multiple masking policies (NOT IMPLEMENTED YET). |
+| Data type | string |
+| Default value | `anon` |
+| Allowed values | `anon` |
+| Parameter type | read-only |
+| Documentation | [anon.masking_policies](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### anon.maskschema
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | The schema where the dynamic masking views are stored. |
+| Data type | string |
+| Default value | `mask` |
+| Allowed values | `mask` |
+| Parameter type | read-only |
+| Documentation | [anon.maskschema](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### anon.privacy_by_default
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Mask all columns with NULL (or the default value for NOT NULL columns). |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [anon.privacy_by_default](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### anon.restrict_to_trusted_schemas
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Masking filters must be in a trusted schema. Activate this option to prevent non-superuser from using their own masking filters. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [anon.restrict_to_trusted_schemas](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### anon.salt
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | The salt value used for the pseudonymizing functions. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [anon.salt](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### anon.sourceschema
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | The schema where the table are masked by the dynamic masking engine. |
+| Data type | string |
+| Default value | `public` |
+| Allowed values | `public` |
+| Parameter type | read-only |
+| Documentation | [anon.sourceschema](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### anon.strict_mode
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | A masking rule cannot change a column data type, unless you disable this. Disabling the mode is not recommended. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [anon.strict_mode](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### anon.transparent_dynamic_masking
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | New masking engine (EXPERIMENTAL). |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [anon.transparent_dynamic_masking](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### auto_explain.log_analyze
 
 | Attribute | Value |
@@ -370,12 +540,12 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Allow accessing data from blob storage in extension azure_storage. |
+| Description | Allows accessing Azure Storage Blob service from azure_storage extension. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
-| Documentation | |
+| Documentation | [azure_storage.allow_network_access](https://go.microsoft.com/fwlink/?linkid=2323791) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -387,15 +557,32 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Blob block size in megabytes for blob_put in extension azure_storage. |
+| Description | Size of blob block, in megabytes, for PUT blob operations. |
 | Data type | integer |
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `1024` |
 | Parameter type | read-only |
-| Documentation | [azure_storage.blob_block_size_mb](/rest/api/storageservices/put-block?tabs=azure-ad#remarks) |
+| Documentation | [azure_storage.blob_block_size_mb](https://go.microsoft.com/fwlink/?linkid=2323791) |
 
 
 [!INCLUDE [server-parameters-azure-notes-azure-storage-blob-block-size-mb](./server-parameters-azure-notes-azure-storage-blob-block-size-mb.md)]
+
+
+
+### azure_storage.log_level
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Log level used by the azure_storage extension. |
+| Data type | enumeration |
+| Default value | `log` |
+| Allowed values | `debug5,debug4,debug3,debug2,debug1,debug,log,info,notice,warning,error` |
+| Parameter type | dynamic |
+| Documentation | [azure_storage.log_level](https://go.microsoft.com/fwlink/?linkid=2323791) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -404,12 +591,12 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Allow all users to access data from public storage accounts in extension azure_storage. |
+| Description | Allows all users to access data in storage accounts for which there are no credentials, and the storage account access is configured as public. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
-| Documentation | |
+| Documentation | [azure_storage.public_account_access](https://go.microsoft.com/fwlink/?linkid=2323791) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -552,6 +739,74 @@ ms.custom: automatically generated
 
 
 
+### cron.enable_superuser_jobs
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Allow jobs to be scheduled as superuser. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [cron.enable_superuser_jobs](https://github.com/citusdata/pg_cron) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### cron.host
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Hostname to connect to postgres. This setting has no effect when background workers are used. |
+| Data type | string |
+| Default value | `/tmp` |
+| Allowed values | `/tmp` |
+| Parameter type | read-only |
+| Documentation | [cron.host](https://github.com/citusdata/pg_cron) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### cron.launch_active_jobs
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Launch jobs that are defined as active. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [cron.launch_active_jobs](https://github.com/citusdata/pg_cron) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### cron.log_min_messages
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | log_min_messages for the launcher bgworker. |
+| Data type | enumeration |
+| Default value | `warning` |
+| Allowed values | `warning` |
+| Parameter type | read-only |
+| Documentation | [cron.log_min_messages](https://github.com/citusdata/pg_cron) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### cron.log_run
 
 | Attribute | Value |
@@ -597,6 +852,40 @@ ms.custom: automatically generated
 | Allowed values | `0-5000` |
 | Parameter type | static |
 | Documentation | [cron.max_running_jobs](https://github.com/citusdata/pg_cron) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### cron.timezone
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Specify timezone used for cron schedule. |
+| Data type | enumeration |
+| Default value | `GMT` |
+| Allowed values | `GMT` |
+| Parameter type | read-only |
+| Documentation | [cron.timezone](https://github.com/citusdata/pg_cron) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### cron.use_background_workers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Use background workers instead of client sessions. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [cron.use_background_workers](https://github.com/citusdata/pg_cron) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -841,6 +1130,23 @@ ms.custom: automatically generated
 
 
 
+### pgaadauth.enable_group_sync
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Enables synchronization of Entra ID group members. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pgaudit.log
 
 | Attribute | Value |
@@ -977,6 +1283,210 @@ ms.custom: automatically generated
 
 
 
+### pg_failover_slots.drop_extra_slots
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | whether to drop extra slots on standby that don't match pg_failover_slots.synchronize_slot_names. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [pg_failover_slots.drop_extra_slots](https://github.com/EnterpriseDB/pg_failover_slots) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_failover_slots.primary_dsn
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | connection string to the primary server for synchronization logical slots on standby. if empty, uses the defaults to primary_conninfo. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [pg_failover_slots.primary_dsn](https://github.com/EnterpriseDB/pg_failover_slots) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_failover_slots.standby_slot_names
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | list of names of slot that must confirm changes before they're sent by the decoding plugin. List of physical replication slots that must confirm durable flush of a given lsn before commits up to that lsn may be replicated to logical peers by the output plugin. Imposes ordering of physical replication before logical replication. |
+| Data type | string |
+| Default value | `azure_standby_, wal_replica_` |
+| Allowed values | `azure_standby_, wal_replica_` |
+| Parameter type | read-only |
+| Documentation | [pg_failover_slots.standby_slot_names](https://github.com/EnterpriseDB/pg_failover_slots) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_failover_slots.standby_slots_min_confirmed
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Number of slots from pg_failover_slots.standby_slot_names that must confirm lsn. Modifies behaviour of pg_failover_slots.standby_slot_names so to allow logical replication of a transaction after at least pg_failover_slots.standby_slots_min_confirmed physical peers have confirmed the transaction as durably flushed. The value -1 (default) means all entries in pg_failover_slots.standby_slot_namesmust confirm the write. The value 0 causes pg_failover_slots.standby_slots_min_confirmedto be effectively ignored. |
+| Data type | integer |
+| Default value | `1` |
+| Allowed values | `1` |
+| Parameter type | read-only |
+| Documentation | [pg_failover_slots.standby_slots_min_confirmed](https://github.com/EnterpriseDB/pg_failover_slots) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_failover_slots.synchronize_slot_names
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | list of slots to synchronize from primary to physical standby. |
+| Data type | string |
+| Default value | `name_like:%%` |
+| Allowed values | `name_like:%%` |
+| Parameter type | read-only |
+| Documentation | [pg_failover_slots.synchronize_slot_names](https://github.com/EnterpriseDB/pg_failover_slots) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_failover_slots.version
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | pg_failover_slots module version. |
+| Data type | string |
+| Default value | `1.0.1` |
+| Allowed values | `1.0.1` |
+| Parameter type | read-only |
+| Documentation | [pg_failover_slots.version](https://github.com/EnterpriseDB/pg_failover_slots) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_failover_slots.wait_for_inactive_slots
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | whether to wait for an inactive replication slots on primary to catchup with standby. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [pg_failover_slots.wait_for_inactive_slots](https://github.com/EnterpriseDB/pg_failover_slots) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_hint_plan.debug_print
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Logs results of hint parsing. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [pg_hint_plan.debug_print](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_hint_plan.enable_hint
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Force planner to use plans specified in the hint comment preceding to the query. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [pg_hint_plan.enable_hint](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_hint_plan.enable_hint_table
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Let pg_hint_plan look up the hint table. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [pg_hint_plan.enable_hint_table](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_hint_plan.message_level
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Message level of debug messages. |
+| Data type | enumeration |
+| Default value | `log` |
+| Allowed values | `log` |
+| Parameter type | read-only |
+| Documentation | [pg_hint_plan.message_level](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_hint_plan.parse_messages
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Message level of parse errors. |
+| Data type | enumeration |
+| Default value | `info` |
+| Allowed values | `info` |
+| Parameter type | read-only |
+| Documentation | [pg_hint_plan.parse_messages](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pglogical.batch_inserts
 
 | Attribute | Value |
@@ -1022,6 +1532,57 @@ ms.custom: automatically generated
 | Allowed values | `error,apply_remote,keep_local,last_update_wins,first_update_wins` |
 | Parameter type | dynamic |
 | Documentation | [pglogical.conflict_resolution](https://github.com/ArmMbedCloud/pglogical) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pglogical.extra_connection_options
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | connection options to add to all peer node connections. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [pglogical.extra_connection_options](https://github.com/ArmMbedCloud/pglogical) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pglogical.synchronous_commit
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | pglogical specific synchronous commit value. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [pglogical.synchronous_commit](https://github.com/ArmMbedCloud/pglogical) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pglogical.temp_directory
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Directory to store dumps for local restore. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [pglogical.temp_directory](https://github.com/ArmMbedCloud/pglogical) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -1192,6 +1753,40 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z\\._]*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_prewarm.autoprewarm
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Starts the autoprewarm worker. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [pg_prewarm.autoprewarm](https://www.postgresql.org/docs/16/pgprewarm.html#PGPREWARM-CONFIG-PARAMS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_prewarm.autoprewarm_interval
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Sets the interval between dumps of shared buffers. If set to zero, time-based dumping is disabled. |
+| Data type | integer |
+| Default value | `300` |
+| Allowed values | `300` |
+| Parameter type | read-only |
+| Documentation | [pg_prewarm.autoprewarm_interval](https://www.postgresql.org/docs/16/pgprewarm.html#PGPREWARM-CONFIG-PARAMS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -1430,6 +2025,108 @@ ms.custom: automatically generated
 | Allowed values | `DISABLE_ALL,ENABLE_ALL` |
 | Parameter type | dynamic |
 | Documentation | [postgis.gdal_enabled_drivers](https://postgis.net/docs/postgis_gdal_enabled_drivers.html) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### squeeze.max_xlock_time
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | The maximum time the processed table may be locked exclusively. The source table is locked exclusively during the final stage of processing. If the lock time should exceed this value, the lock is released and the final stage is retried a few more times. |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0` |
+| Parameter type | read-only |
+| Documentation | [squeeze.max_xlock_time](https://github.com/cybertec-postgresql/pg_squeeze/blob/master/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### squeeze.worker_autostart
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Names of databases for which background workers start automatically. Comma-separated list for of databases which squeeze worker starts as soon as the cluster startup has completed. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [squeeze.worker_autostart](https://github.com/cybertec-postgresql/pg_squeeze/blob/master/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### squeeze.worker_role
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Role that background workers use to connect to database. If background worker was launched automatically on cluster startup, it uses this role to initiate database connection(s). |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [squeeze.worker_role](https://github.com/cybertec-postgresql/pg_squeeze/blob/master/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### timescaledb.bgw_launcher_poll_time
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Launcher timeout value in milliseconds. Configure the time the launcher waits to look for new TimescaleDB instances. |
+| Data type | integer |
+| Default value | `60000` |
+| Allowed values | `60000` |
+| Parameter type | read-only |
+| Documentation | [timescaledb.bgw_launcher_poll_time](https://github.com/timescale/timescaledb/blob/main/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### timescaledb.disable_load
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Disable the loading of the actual extension. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [timescaledb.disable_load](https://github.com/timescale/timescaledb/blob/main/README.md) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### timescaledb.max_background_workers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum background worker processes allocated to TimescaleDB. Max background worker processes allocated to TimescaleDB - set to at least 1 + number of databases in Postgres instance to use background workers. |
+| Data type | integer |
+| Default value | `16` |
+| Allowed values | `16` |
+| Parameter type | read-only |
+| Documentation | [timescaledb.max_background_workers](https://github.com/timescale/timescaledb/blob/main/README.md) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

@@ -6,7 +6,7 @@ author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: upgrade-and-migration-article
-ms.date: 9/23/2024
+ms.date: 08/28/2025
 ---
 
 # Prepare for upcoming TLS 1.3 support for Azure Cosmos DB

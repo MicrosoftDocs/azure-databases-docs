@@ -1,6 +1,6 @@
 ---
-  title: $setOnInsert (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $setOnInsert
+  titleSuffix: Overview of the $setOnInsert operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $setOnInsert operator sets field values only when an upsert operation results in an insert of a new document.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $setOnInsert (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $setOnInsert
 
 The `$setOnInsert` operator is used to set field values only when an upsert operation results in the insertion of a new document. If the document already exists and is being updated, the `$setOnInsert` operator has no effect. This operator is particularly useful for setting default values or initialization data that should only be applied when creating new documents.
 
@@ -32,26 +30,25 @@ The syntax for the `$setOnInsert` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to set only on insert. Can be a top-level field or use dot notation for nested fields. |
 | **`value`** | The value to assign to the field only when inserting a new document. Can be any valid BSON type. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset for upsert operations.
+We will use the `$setOnInsert` operator to create a document and then update it.
 
 ### Example 1: Basic $setOnInsert usage
 
-Suppose you want to create or update a store record, but only set certain initialization fields when creating a new store.
+To create or update a store record, but only set certain initialization fields when creating a new store.
 
 ```javascript
-// First, let's try upserting a store that doesn't exist
 db.stores.updateOne(
   { "_id": "new-store-001" },
   {
     $set: {
-      "name": "TechWorld Electronics - Downtown",
+      "name": "Trey Research Electronics - Downtown",
       "sales.totalSales": 0
     },
     $setOnInsert: {
@@ -65,7 +62,8 @@ db.stores.updateOne(
   { upsert: true }
 )
 ```
-Output:
+Sample Output
+
 ```json
 {
   acknowledged: true,
@@ -78,11 +76,10 @@ Output:
 
 Since the document with `_id: "new-store-001"` doesn't exist, this will create a new document:
 
-
 ```json
 {
   "_id": "new-store-001",
-  "name": "TechWorld Electronics - Downtown",
+  "name": "Trey Research Electronics - Downtown",
   "sales": {
     "totalSales": 0
   },
@@ -107,7 +104,7 @@ db.stores.updateOne(
   { "_id": "new-store-001" },
   {
     $set: {
-      "name": "TechWorld Electronics - Downtown Branch",
+      "name": "Trey Research Electronics - Downtown Branch",
       "sales.totalSales": 5000
     },
     $setOnInsert: {
@@ -127,7 +124,7 @@ Since the document already exists, only the `$set` operations will be applied, a
 ```json
 {
   "_id": "new-store-001",
-  "name": "TechWorld Electronics - Downtown Branch",
+  "name": "Trey Research Electronics - Downtown Branch",
   "sales": {
     "totalSales": 5000
   },
@@ -149,7 +146,7 @@ You can use `$setOnInsert` to initialize complex nested structures:
 
 ```javascript
 db.stores.updateOne(
-  { "name": "Gaming Paradise - Mall Location" },
+  { "name": "Adatum Gaming Paradise - Mall Location" },
   {
     $set: {
       "location.lat": 35.6762,

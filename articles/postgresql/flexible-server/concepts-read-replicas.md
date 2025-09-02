@@ -173,7 +173,7 @@ This section summarizes considerations about the read replica feature. The follo
 
 - **Power operations**: Power operations, including [start](how-to-start-server.md) and [stop](how-to-stop-server.md) actions, can be applied to both the primary and replica servers. However, to preserve system integrity, a specific sequence should be followed. Before stopping the read replicas, ensure the primary server is stopped first. When commencing operations, initiate the start action on the replica servers before starting the primary server.
 - If server has read replicas, then read replicas should be deleted first before deleting the primary server.
-- [In-place major version upgrade](concepts-major-version-upgrade.md) in Azure Database for PostgreSQL flexible server requires removing any read replicas currently enabled on the server. Once the replicas have been deleted, the primary server can be upgraded to the desired major version. After the upgrade is complete, you can recreate the replicas to resume the replication process.
+- [In-place major version upgrade](concepts-major-version-upgrade.md) in Azure Database for PostgreSQL flexible server requires removing any read replicas and cascading read replicas that are enabled on the server. Once the replicas have been deleted, the primary server can be upgraded to the desired major version. After the upgrade is complete, you can recreate the replicas to resume the replication process.
 - **Premium SSD v2**: As of the current release, if the primary server uses Premium SSD v2 for storage, the creation of read replicas isn't supported.
 - **Resetting admin password**: Resetting the admin password on the replica server is currently not supported. Additionally, updating the admin password along with [promoting](concepts-read-replicas-promote.md) replica operation in the same request is also not supported. If you wish to do this you must first promote the replica server, and then update the password on the newly promoted server separately.
 
@@ -220,7 +220,7 @@ While the server is a read replica, no backups are taken. However, once it's pro
 
 ### Networking
 
-Read replicas support all the networking options supported by Azure Database for PostgreSQL Flexible Server.
+Read replicas support all the networking options supported by Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]  
 > Bi-directional communication between the primary server and read replicas is crucial for the Azure Database for PostgreSQL flexible server setup. There must be a provision to send and receive traffic on destination port 5432 within the Azure virtual network subnet.

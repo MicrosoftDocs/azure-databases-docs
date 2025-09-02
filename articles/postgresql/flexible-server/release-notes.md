@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 07/15/2025
+ms.date: 08/11/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -22,14 +22,18 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: July 2025
 - General availability
     - [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17) is now supported, including in-place major version upgrades.
+    - [Malaysia West region](./overview.md#azure-regions)
+    - [Chile Central region](./overview.md#azure-regions)
 - Preview
     - [High Availability with Premium SSDv2](concepts-storage.md)
+    - [Cascading read replica support in Azure Database for PostgreSQL](concepts-read-replicas.md)
 
 ## Release: June 2025
+- General availability
+    - [Indonesia Central](./overview.md#azure-regions) region.
+    - [TimescaleDB extension](../extensions/concepts-extensions-versions.md#postgis) version 2.15.3 for PG 13. 
+    - [Postgis extension](../extensions/concepts-extensions-versions.md#timescaledb) version 3.5.2 for PG 13 and above.
 - Support for latest [minor versions](concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
-- General availability of [Indonesia Central](./overview.md#azure-regions) region.
-- Support for [TimescaleDB extension](../extensions/concepts-extensions-versions.md#postgis) version 2.15.3 for PG 13. 
-- Support for [Postgis extension](../extensions/concepts-extensions-versions.md#timescaledb) version 3.5.2 for PG 13 and above. 
 
 ## Release: May 2025
 
@@ -113,7 +117,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: June 2024
 
 - Support for latest [minor versions](concepts-supported-versions.md) 16.3, 15.7, 14.12, 13.15, and 12.19. <sup>$</sup>
-- General availability of [IOPS scaling](concepts-storage.md#iops-scaling) on Azure Database for PostgreSQL flexible server.
+- General availability of [IOPS scaling](concepts-storage-premium-ssd.md#iops-scaling) on Azure Database for PostgreSQL flexible server.
 - CMK support for LTR is in Public preview [long-term backup retention](concepts-backup-restore.md).
 - Support for [built-in Azure Policy definitions](concepts-security.md#azure-policy-support)
 

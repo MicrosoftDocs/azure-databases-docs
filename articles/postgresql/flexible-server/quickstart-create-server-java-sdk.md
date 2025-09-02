@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Use Azure (SDK) libraries in Java to create, update, and delete an Azure Database for PostgreSQL - Flexible Server
+# Quickstart: Use Azure (SDK) libraries in Java to create, update, and delete an Azure Database for PostgreSQL flexible server
 
 In this quickstart, you learn how to create, update, and delete an Azure Database for PostgreSQL flexible server instance using the Azure SDK for Java. The code examples are written in Java and use the Azure SDK libraries to interact with the Azure Database for PostgreSQL flexible server service.
 

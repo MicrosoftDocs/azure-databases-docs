@@ -1,6 +1,6 @@
 ---
-title: $unwind (aggregation)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $unwind
+titleSuffix: Overview of the $unset operator in Azure Cosmos DB for MongoDB vCore
 description: The $unwind stage in the aggregation framework is used to deconstruct an array field from the input documents to output a document for each element.
 author: gahl-levy
 ms.author: gahllevy
@@ -10,11 +10,11 @@ ms.topic: language-reference
 ms.date: 08/27/2024
 ---
 
-# $unwind (aggregation)
+# $unwind
 The $unwind stage in the aggregation framework is used to deconstruct an array field from the input documents to output a document for each element. Each output document is a copy of the original but with the value of the array field replaced by a single element. This is particularly useful for normalizing data stored in arrays and for performing operations on each element of an array separately.
 
 ## Syntax
-```json
+```javascript
 {
   $unwind: {
     path: <field path>,
@@ -25,20 +25,132 @@ The $unwind stage in the aggregation framework is used to deconstruct an array f
 ```
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`path`** | The field path to an array field. This is a required parameter. |
 | **`includeArrayIndex`** | Optional. The name of a new field to hold the array index of the unwound element. |
 | **`preserveNullAndEmptyArrays`** | Optional. If true, if the path is null, missing, or an empty array, `$unwind` outputs the document unchanged. |
 
-## Example(s)
+## Examples
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
 ### Example 1: Unwind Sales by Category
 To deconstruct the salesByCategory array in the store document:
 
-```json
+```javascript
 db.stores.aggregate([
   {
-    $unwind: "$store.sales.salesByCategory"
+    $unwind: "$sales.salesByCategory"
   }
 ])
 ```
@@ -79,11 +191,11 @@ This will output documents where each document represents a single category's sa
 ### Example 2: Unwind Promotion Events with Array Index
 To deconstruct the promotionEvents array and include the array index in the output:
 
-```json
+```javascript
 db.stores.aggregate([
   {
     $unwind: {
-      path: "$store.promotionEvents",
+      path: "$promotionEvents",
       includeArrayIndex: "eventIndex"
     }
   }
@@ -122,11 +234,11 @@ This will output documents where each document represents a single promotion eve
 
 ### Example 3: Unwind Discounts within Promotion Events
 To deconstruct the discounts array within each promotion event and preserve documents with no discounts:
-```json
+```javascript
 db.stores.aggregate([
   {
     $unwind: {
-      path: "$store.promotionEvents.discounts",
+      path: "$promotionEvents.discounts",
       preserveNullAndEmptyArrays: true
     }
   }

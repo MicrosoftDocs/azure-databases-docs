@@ -1,20 +1,18 @@
 ---
-  title: $slice (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $slice
+  titleSuffix: Overview of the $slice operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $slice operator returns a subset of an array from any element onwards in the array.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/11/2024
+  ms.date: 07/28/2025
 ---
 
-# $slice (Array Expression)
+# $slice
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$slice` operator is used to return a subset of an array. It can be used to limit the number of elements in an array to a specified number or to return elements from a specified position in the array. This is particularly useful when dealing with large arrays where only a portion of the data is needed for processing or display.
+The `$slice` operator is used to return a subset of an array. It can be used to limit the number of elements in an array to a specified number or to return elements from a specified position in the array. The operator is useful when dealing with large arrays where only a portion of the data is needed for processing or display.
 
 ## Syntax
 
@@ -34,7 +32,7 @@ The syntax for the `$slice` operator is as following.
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`array`** | Any valid array expression. |
 | **`position`** | Any valid integer expression. |

@@ -1,6 +1,6 @@
 ---
-  title: $rand (Misc. Query) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $rand
+  titleSuffix: Overview of the $rand operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $rand operator generates a random float value between 0 and 1.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $rand (misc. query)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $rand
 
 The `$rand` operator generates a random float value between 0 and 1. This is useful for random sampling of documents or creating random values in aggregation pipelines. 
 
@@ -24,9 +22,9 @@ The syntax for the `$rand` operator is as follows:
 { $rand: {} }
 ```
 
-## Example
+## Examples
 
-Let's understand the usage with sample data from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```javascript
 db.stores.aggregate([
@@ -40,6 +38,7 @@ db.stores.aggregate([
    { $limit: 2 }
 ])
 ```
+### Example 1: Add a random value
 
 This query adds a random value to each store document. When executed, it might return something like:
 

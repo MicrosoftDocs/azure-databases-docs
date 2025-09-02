@@ -1,6 +1,6 @@
 ---
-  title: $position (array update) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $position
+  titleSuffix: Overview of the $position operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $position is used to specify the position in the array where a new element should be inserted.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,9 +10,7 @@
   ms.date: 10/14/2024
 ---
 
-# $position (array update)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $position
 
 The `$position` operator is used to specify the position in the array where a new element should be inserted. This operator is useful when you need to insert an element at a specific index in an array rather than appending it to the end.
 
@@ -33,15 +31,15 @@ The basic syntax for using the `$position` operator in an update command is as f
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<arrayField>`**| The field in the document that contains the array to be updated.|
 | **`<value1>, <value2>, ...`**| The values to be inserted into the array.|
 | **`<index>`**| The position at which the values should be inserted.|
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {

@@ -37,7 +37,7 @@ Here are some of the important considerations with in-place major version upgrad
 - An in-place major version upgrade is an offline operation, meaning the server will be unavailable during the process. While most upgrades complete in under 15 minutes, the actual duration depends on the size and complexity of the database. Specifically, the time required is directly proportional to the number of objects (tables, indexes, schemas) in your PostgreSQL instance. Larger or more complex schemas may experience longer upgrade times.
 - Long-running transactions or high workload before the upgrade might increase the time taken to shut down the database and increase upgrade time.
 - After an in-place major version upgrade is successful, there are no automated ways to revert to the earlier version. However, you can perform a point-in-time recovery (PITR) to a time before the upgrade to restore the previous version of the database instance.
-- Azure Database for PostgreSQL Flexible Server takes snapshot of your database during an upgrade. The snapshot is taken before the upgrade starts. If the upgrade fails, the system automatically restores your database to its state from the snapshot.
+- Azure Database for PostgreSQL flexible server takes snapshot of your database during an upgrade. The snapshot is taken before the upgrade starts. If the upgrade fails, the system automatically restores your database to its state from the snapshot.
 - [PostgreSQL 16 introduces role-based security](concepts-security.md#postgresql-16-changes-with-role-based-security) measures. After a major version upgrade on Azure Database for PostgreSQL flexible server, the first user created on the server—who is granted the ADMIN option—will now have administrative privileges over other roles for essential maintenance operations.
 
 ## Upgrade Considerations and Limitations
@@ -46,7 +46,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 
 ### Unsupported Server Configurations
 
-- Read replicas are not supported during in-place upgrades. You must delete the read replica before upgrading the primary server. After the upgrade, you can re-create the replica.
+- [Read replicas](./concepts-read-replicas-geo.md) are not supported during in-place upgrades. You must delete the read replica (including any cascading read replica) before upgrading the primary server. After the upgrade, you can re-create the replica.
 - Network traffic rules may block upgrade operations. 
     - Ensure your flexible server can send/receive traffic on ports 5432 and 6432 within its virtual network and to Azure Storage (for log archiving).
     - If Network Security Groups (NSGs) restrict this traffic, HA will not re-enable automatically post-upgrade. You may need to manually update NSG rules and re-enable HA.
@@ -58,9 +58,8 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 
 In-place major version upgrades do not support all PostgreSQL extensions. The upgrade will fail during the precheck if unsupported extensions are found.
 - The following extensions are not supported across any PostgreSQL versions: `timescaledb`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`
-- The following extensions are not supported when the upgrade target is PostgreSQL 16 or higher: `pgrouting`
 - The following extensions are not supported when upgrading to PostgreSQL 17: `pgrouting`, `age`, `azure_ai`, `hll`, `pg_diskann`
-- Extensions such as `pg_repack`, and `hypopg` do not support in-place upgrades and should be dropped before the upgrade and recreated after. These extensions are non-persistent and safe to reconfigure post-upgrade.
+- Extensions such as `pgrouting`, `pg_repack`, and `hypopg` are not supported for in-place upgrades and should be dropped before the upgrade and recreated after. These extensions are non-persistent and safe to reconfigure post-upgrade.
 
 These extensions must be removed from the **azure.extensions** server parameter prior to upgrade. If present, the upgrade will be blocked.
 

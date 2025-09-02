@@ -1,24 +1,20 @@
 ---
-  title: $isoWeekYear (date expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $isoWeekYear operator returns the year number in ISO 8601 format, which may differ from the calendar year for dates at the beginning or end of the year.
+  title: $isoWeekYear
+  titleSuffix: Overview of the $isoWeekYear operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $isoWeekYear operator returns the year number in ISO 8601 format, which can differ from the calendar year for dates at the beginning or end of the year.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/16/2025
+  ms.date: 08/04/2025
 ---
 
-# $isoWeekYear (date expression)
+# $isoWeekYear
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$isoWeekYear` operator returns the year number in ISO 8601 format. The ISO week-numbering year may differ from the calendar year for dates at the beginning or end of the year. The ISO week year is the year that contains the Thursday of the week in question.
+The `$isoWeekYear` operator returns the year number in ISO 8601 format. The ISO week-numbering year can differ from the calendar year for dates at the beginning or end of the year. The ISO week year is the year that contains the Thursday of the week in question.
 
 ## Syntax
-
-The syntax for the `$isoWeekYear` operator is as follows:
 
 ```javascript
 {
@@ -28,7 +24,7 @@ The syntax for the `$isoWeekYear` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, Timestamp, or ObjectId. If the expression resolves to null or is missing, `$isoWeekYear` returns null. |
 

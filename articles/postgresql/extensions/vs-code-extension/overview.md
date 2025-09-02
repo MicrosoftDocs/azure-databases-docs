@@ -6,7 +6,7 @@ ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 06/24/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: overview
 ms.custom:
   - build-2025
@@ -98,4 +98,4 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 - [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview](quickstart-connect.md)
 - [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview](quickstart-github-copilot.md)
-- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
+- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

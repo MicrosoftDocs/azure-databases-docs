@@ -1,5 +1,5 @@
 ---
-title: Service Limits in Azure Cosmos DB for MongoDB vCore
+title: Service limits in Azure Cosmos DB for MongoDB vCore
 description: This document outlines the service limits for vCore-based Azure Cosmos DB for MongoDB.
 author: gahl-levy
 ms.author: gahllevy
@@ -9,16 +9,16 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 06/25/2025
+ms.date: 08/23/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
 
-# Service Limits in Azure Cosmos DB for MongoDB vCore
+# Service limits in Azure Cosmos DB for MongoDB vCore
 
 This document outlines the current hard and soft limits for Azure Cosmos DB for MongoDB vCore. Many of these limitations are temporary and will evolve over time as the service continues to improve. If any of these limits are an issue for your organization, [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
 
-## Query and Execution Limits
+## Query and execution limits
 
 ### MongoDB Execution Limits
 - Maximum transaction lifetime: 30 seconds.
@@ -33,7 +33,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - The maximum memory size for MongoDB queries depends on the tier. For example, for M80, the query memory size limit is approximately 150 MiB.
 - In sharded clusters, if a query pulls data across nodes, the limit on that data size is 1 GB.
 
-## Indexing Limits
+## Indexing limits
 
 ### General Indexing Limits
 - Maximum number of compound index fields: 32.
@@ -70,11 +70,11 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.
-- `HNSW` and `DiskANN` are available on M40 and above cluster tiers. 
+- `HNSW` and `DiskANN` are available on M30 and greater cluster tiers. 
 
-## Cluster and Shard Limits
+## Cluster and shard limits
 
-### Cluster Tier
+### Cluster tier
 - Maximum: M200 / 64 vCores / 256 GiB RAM per physical shard. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
 
 ### Physical shards
@@ -87,7 +87,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for the higher values support.
 
 ### Secondary regions
-- Maximum: 1 secondary region. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more regions.
+- Maximum: One secondary region. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more regions.
 
 ### Free Tier limits
 The following limitations can be overridden by upgrading to a paid tier
@@ -96,32 +96,43 @@ The following limitations can be overridden by upgrading to a paid tier
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
 - Diagnostic logging not supported (available in M40+)
-- Microsoft Entra ID (formerly known as Azure Active Directory (AAD)) not supported
+- Microsoft Entra ID not supported
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
 - Transition from a paid tier account to a free tier accounts isn't supported.
 
 ### M10/M20/M25 limits
 M10, M20, and M25 have the following limitations:
-- Supports one shard only.
-- Designed for Dev/Test use cases; High Availability (HA) isn't supported.
-- Supported disk sizes include 32 GiB, 64 GiB, and 128 GiB.
-- Once scaled to an M30 SKU or higher, the cluster can't be scaled back down to M10, M20, and M25.
+- Supports one physical shard (node) only.
+- Designed for Dev/Test use cases; in-region high availability (HA) isn't supported.
+- Supported storage sizes include 32 GiB, 64 GiB, and 128 GiB.
+- Once cluster is scaled to M30 tier or higher, the cluster can't be scaled back down to M10, M20, or M25 compute tier.
 
-## Replication and HA (high availability) limits
+### Customer-managed key data encryption limitations
+The following are the current limitations for configuring [the customer-managed key (CMK)](./database-encryption-at-rest.md#data-encryption-in-azure-cosmos-db-for-mongodb-vcore) in an Azure Cosmos DB for MongoDB vCore:
+
+- The instance of Azure Key Vault where you plan to store the encryption key and user-assigned managed identity must be in the same Azure region and in the same [Microsoft tenant](/entra/identity-platform/developer-glossary#tenant) as the Azure Cosmos DB for MongoDB vCore cluster.
+- After you create a cluster, you can't change the data encryption mode from system-managed key to customer-managed key or vice versa.
+    - You can create [a replica cluster or perform cluster restore](./how-to-data-encryption.md#change-data-encryption-mode-on-existing-clusters) and choose a different encryption mode.
+- [Add physical shard operation](./how-to-scale-cluster.md#increase-the-number-of-physical-shards) isn't supported on clusters with CMK enabled.
+
+## Replication and in-region HA (high availability) limits
 
 ### Cross-region replication
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
-  - Storage and shard count
+  - Storage and physical shard count
   - User accounts
 - The following features aren't available on replica clusters:
-  - Point-in-time restore
-  - High availability (HA)
-- Cross-region replication isn't available on clusters with burstable compute or Free tier clusters.
+  - Point-in-time restore (PITR)
+  - In-region high availability (HA)
+- Cross-region replication isn't available on clusters with [burstable compute](./burstable-tier.md) or [Free tier](./free-tier.md) clusters.
 
 ## Authentication and access control (RBAC)
 
+- You can create up to 100 total users/roles per cluster. Open a support request to increase the default limit.
+
 ### Microsoft Entra ID authentication
+
 The Microsoft Entra ID authentication feature has these current limitations:
 - This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
 - This feature doesn't support Entra ID groups.
@@ -129,12 +140,11 @@ The Microsoft Entra ID authentication feature has these current limitations:
 ### Native DocumentDB secondary users
 
 [The native secondary users](./secondary-users.md) feature has these preview limitations:
-- You can create up to 100 users/roles per cluster.
 - The `Updateuser` command now only supports password updates and can't modify other object fields.
 - The `Roleinfo` command isn't supported in preview. Alternatively, you can use `usersInfo`.
 - Assigning roles to specific databases or collections isn't supported, only cluster level is supported.
 
-## Miscellaneous Limits
+## Miscellaneous limits
 
 ### Portal Mongo Shell Usage
 - The Portal Mongo Shell can be used for 120 minutes within a 24-hour window.

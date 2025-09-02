@@ -6,7 +6,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 09/26/2024
+ms.date: 08/28/2025
 ms.custom: cosmos-db-video, build-2023
 ---
 

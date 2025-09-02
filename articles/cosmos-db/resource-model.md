@@ -6,7 +6,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 09/26/2024
+ms.date: 08/28/2025
 ---
 
 # Databases, containers, and items in Azure Cosmos DB

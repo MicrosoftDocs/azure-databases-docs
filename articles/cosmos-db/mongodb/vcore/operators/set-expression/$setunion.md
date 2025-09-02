@@ -1,24 +1,20 @@
 ---
-  title: $setUnion (set expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $setUnion operator returns an array containing all unique elements from the input arrays.
+  title: $setUnion
+  titleSuffix: Overview of the $setUnion operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $setUnion operator returns an array that contains all the unique elements from the input arrays.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 08/03/2025
 ---
 
-# $setUnion (set expression)
+# $setUnion
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$setUnion` operator returns an array containing all unique elements from the input arrays. It treats arrays as sets, removing duplicates and ignoring element order. The result contains each unique element only once, regardless of how many times it appears across the input arrays.
+The `$setUnion` operator returns an array that contains all the unique elements from the input arrays. It treats arrays as sets, removes duplicates, and ignores element order. The result contains each unique element only once, regardless of how many times it appears across the input arrays.
 
 ## Syntax
-
-The syntax for the `$setUnion` operator is as follows:
 
 ```javascript
 {
@@ -28,13 +24,13 @@ The syntax for the `$setUnion` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`<array1>, <array2>, ...`** | Two or more arrays to be combined. Each array is treated as a set, and duplicates are removed from the final result. |
+| `<array1>, <array2>, ...` | Two or more arrays to combine. Each array is treated as a set, and duplicates are removed from the final result. |
 
 ## Example
 
-Let's understand the usage with sample json from `stores` dataset.
+Let's understand the usage with sample JSON from the `stores` dataset.
 
 ```json
 {
@@ -145,7 +141,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Combine all product categories
 
-The example gets a complete list of all unique product categories that a store deals with, including both sales and promotion categories.
+The following example produces a complete list of all of a store's unique product categories. The list includes sales and promotion categories.
 
 ```javascript
 db.stores.aggregate([
@@ -170,7 +166,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns all the unique categories across sales and promotions.
+The query returns all the unique categories across all sales and promotions.
 
 ```json
 {

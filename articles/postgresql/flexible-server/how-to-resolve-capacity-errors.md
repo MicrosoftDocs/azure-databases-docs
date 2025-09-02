@@ -1,6 +1,6 @@
 ---
 title: Resolve capacity errors
-description: This article describes how to resolve possible capacity errors when attempting to deploy or scale Azure Database for PostgreSQL Flexible Server.
+description: This article describes how to resolve possible capacity errors when attempting to deploy or scale Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -12,18 +12,18 @@ ms.custom:
   - references_regions
 ---
 
-# Resolve capacity errors for Azure Database for PostgreSQL Flexible Server
+# Resolve capacity errors for Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The article describes how you can resolve capacity errors when deploying or scaling Azure Database for PostgreSQL Flexible Server.
+The article describes how you can resolve capacity errors when deploying or scaling Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
 > For the list of regions that support Zone redundant high availability, please review the supported regions [here](overview.md#azure-regions). 
 
 ## Exceeded quota 
 
-If you encounter any of the following errors when attempting to deploy your Azure PostgreSQL Flexible Server resource, [submit a request to increase your quota](how-to-request-quota-increase.md).
+If you encounter any of the following errors when attempting to deploy your Azure PostgreSQL flexible server resource, [submit a request to increase your quota](how-to-request-quota-increase.md).
 
 - Operation could not be completed as it results in exceeding approved {0} Cores quota. Additional details - Current Limit: {1}, Current Usage: {2}, Additional Required: {3}, (Minimum) New Limit Required: {4}.Submit a request for Quota increase by specifying parameters listed in the ‘Details’ section for deployment to succeed.
 
@@ -105,7 +105,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DBforPostgreSQL
 
 ## Other provisioning issues
 
-If you're still experiencing provisioning issues, open a **Region** access request under the support topic of Azure PostgreSQL Flexible Server and specify the vCores you want to utilize. 
+If you're still experiencing provisioning issues, open a **Region** access request under the support topic of Azure PostgreSQL flexible server and specify the vCores you want to utilize. 
 
 ## Azure program regions 
 

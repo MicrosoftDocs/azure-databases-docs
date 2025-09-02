@@ -9,11 +9,9 @@ ms.subservice: apache-gremlin
 ms.topic: quickstart-sdk
 ms.devlang: typescript
 ms.custom: devx-track-js, devx-track-ts, sfi-ropc-nochange
-ms.date: 07/21/2025
+ms.date: 07/22/2025
 ai-usage: ai-generated
 zone_pivot_groups: azure-devlang-nodejs
-appliesto:
-  - ✅ Apache Gremlin
 ---
 
 # Quickstart: Azure Cosmos DB for Apache Gremlin client library for Node.js
@@ -533,8 +531,3 @@ npx tsx index.ts
 ## Clean up resources
 
 [!INCLUDE[Section - Quickstart cleanup](includes/section-quickstart-cleanup.md)]
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Overview of Azure Cosmos DB for Apache Gremlin](overview.md)

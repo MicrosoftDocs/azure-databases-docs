@@ -1,6 +1,6 @@
 ---
-  title: $pullAll (array update) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $pullAll
+  titleSuffix: Overview of the $pullAll operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $pullAll operator is used to remove all instances of the specified values from an array.  
   author: sandeepsnairms
   ms.author: sandnair
@@ -10,9 +10,8 @@
   ms.date: 09/11/2024
 ---
 
-# $pullAll (array update)
+# $pullAll
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 The `$pullAll` operator is used to remove all instances of the specified values from an array. This operator is useful when you need to clean up arrays by removing multiple specific elements in a single operation.
 
@@ -29,14 +28,15 @@ The syntax for the `$pullAll` operator is as follows:
 ```
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<field1>`**| The field where the specified values will be removed.|
 | **`[ <value1>, <value2>, ... ]`**| An array of values to be removed from the specified field.|
 
-## Example
+## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
+
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
@@ -95,7 +95,7 @@ Let's understand the usage with the following sample json.
   ]
 }
 ```
-
+### Example 1: Remove multiple elements from an array
 
 To remove the discounts for "#MembershipDeals" and "#SeasonalSale" from the 'tag' array.
 

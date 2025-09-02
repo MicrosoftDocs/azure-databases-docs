@@ -1,6 +1,6 @@
 ---
-  title: $sampleRate (query operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $sampleRate
+  titleSuffix: Overview of the $sampleRate operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $sampleRate operator randomly samples documents from a collection based on a specified probability rate, useful for statistical analysis and testing.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $sampleRate (query operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $sampleRate
 
 The `$sampleRate` operator randomly samples documents from a collection based on a specified probability rate. This operator is useful for statistical analysis, testing with subset data, and performance optimization when working with large datasets where you need a representative sample.
 
@@ -26,13 +24,13 @@ The syntax for the `$sampleRate` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`number`** | A floating-point number between 0 and 1 representing the probability that a document will be included in the sample. For example, 0.33 means approximately 33% of documents are sampled.
 
-## Example
+## Examples
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -87,7 +85,7 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 }
 ```
 
-### Example 1: Basic Random Sampling
+### Example 1: Basic random sampling
 
 To randomly sample approximately 33% of all stores:
 
@@ -99,7 +97,7 @@ db.stores.aggregate([
 
 This query returns one-third of all documents in the stores collection, selected randomly.
 
-### Example 2: Sampling with more Filters
+### Example 2: Sampling with more filters
 
 To sample 50% of stores that have total sales greater than 50,000:
 
@@ -114,7 +112,7 @@ db.stores.aggregate([
 
 This query first filters stores with sales above 50,000, then randomly samples 50% of those matching documents.
 
-### Example 3: Sampling for Statistical Analysis
+### Example 3: Sampling for statistical analysis
 
 To get a 25% sample of stores and calculate average sales:
 

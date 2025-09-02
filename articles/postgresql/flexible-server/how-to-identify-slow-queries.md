@@ -46,7 +46,7 @@ With troubleshooting guides and `auto_explain` extension in place, we describe t
 
 We have a scenario where CPU utilization spikes to 90% and want to determine the cause of the spike. To debug the scenario, follow theses steps:
 
-1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure Database for PostgreSQL Flexible Server, under the **Monitoring** section, select **Troubleshooting guides**.
+1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure Database for PostgreSQL flexible server, under the **Monitoring** section, select **Troubleshooting guides**.
 
     :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu option." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
 
@@ -81,7 +81,7 @@ GROUP BY c_w_id, c_id
 ORDER BY c_w_id;
 ```
 
-7. To understand what exact explain plan was generated, use Azure Database for PostgreSQL Flexible Server logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**.
+7. To understand what exact explain plan was generated, use Azure Database for PostgreSQL flexible server logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**.
 
     :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-tab.png" alt-text="Screenshot of troubleshooting guides menu - Logs." lightbox="./media/how-to-identify-slow-queries/log-analytics-tab.png":::
  
@@ -131,7 +131,7 @@ With troubleshooting guides and auto_explain extension in place, we explain the 
 
 We have a scenario where CPU utilization spikes to 90% and want to determine the cause of the spike. To debug the scenario, follow theses steps:
 
-1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure Database for PostgreSQL Flexible Server, under the **Monitoring** section, select **Troubleshooting guides**.
+1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure Database for PostgreSQL flexible server, under the **Monitoring** section, select **Troubleshooting guides**.
 
     :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
 
@@ -163,7 +163,7 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
     call autoexplain_test ();
 ```
 
-7. To understand what exact explain plan was generated, use Azure Database for PostgreSQL Flexible Server logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**. Then, in **Time range:**, select the time window where you want to focus the analysis.
+7. To understand what exact explain plan was generated, use Azure Database for PostgreSQL flexible server logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**. Then, in **Time range:**, select the time window where you want to focus the analysis.
 
 :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot of troubleshooting guides menu - Logs Time range." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
 

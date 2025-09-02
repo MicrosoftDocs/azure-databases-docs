@@ -17,7 +17,7 @@
 - name: $log10
   href: $log10.md
 - name: $mod
-  href: $mod.md
+  href: ../evaluation-query/$mod.md
 - name: $multiply
   href: $multiply.md
 - name: $pow

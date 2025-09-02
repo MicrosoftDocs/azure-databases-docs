@@ -28,6 +28,8 @@
   href: data-expression/TOC.yml
 - name: Data size
   href: data-size/TOC.yml
+- name: Element query
+  href: element-query/TOC.yml
 - name: Evaluation query
   href: evaluation-query/toc.yml
 - name: Field update

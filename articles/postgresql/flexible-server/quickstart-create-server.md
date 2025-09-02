@@ -43,13 +43,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/quickstart-create-server/create-an-instance-databases.png" alt-text="Screenshot that shows how to select Databases under resource categories." lightbox="./media/quickstart-create-server/create-an-instance-databases.png":::
 
-4. From the filtered list of resource types, find the one called **Azure Database for PostgreSQL Flexible Server**.
+4. From the filtered list of resource types, find the one called **Azure Database for PostgreSQL flexible server**.
 
-    :::image type="content" source="./media/quickstart-create-server/create-an-instance-flexible-server.png" alt-text="Screenshot that shows the Azure Database for PostgreSQL Flexible Server resource type." lightbox="./media/quickstart-create-server/create-an-instance-flexible-server.png":::
+    :::image type="content" source="./media/quickstart-create-server/create-an-instance-flexible-server.png" alt-text="Screenshot that shows the Azure Database for PostgreSQL flexible server resource type." lightbox="./media/quickstart-create-server/create-an-instance-flexible-server.png":::
 
 5. Select **Create**.
 
-    :::image type="content" source="./media/quickstart-create-server/create-an-instance-flexible-server-create.png" alt-text="Screenshot that shows the Create link in the Azure Database for PostgreSQL Flexible Server resource type." lightbox="./media/quickstart-create-server/create-an-instance-flexible-server-create.png":::
+    :::image type="content" source="./media/quickstart-create-server/create-an-instance-flexible-server-create.png" alt-text="Screenshot that shows the Create link in the Azure Database for PostgreSQL flexible server resource type." lightbox="./media/quickstart-create-server/create-an-instance-flexible-server-create.png":::
 
 6. The **New Azure Database for PostgreSQL flexible server** wizard launches.
 

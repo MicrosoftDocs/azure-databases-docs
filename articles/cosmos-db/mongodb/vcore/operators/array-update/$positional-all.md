@@ -1,6 +1,6 @@
 ---
-title: $[] (positional-all update) usage in Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $[] usage in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $[] positional operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $[] operator is used to update all elements in an array that match the query condition.
 author: avijitgupta
 ms.author: avijitgupta
@@ -10,7 +10,7 @@ ms.topic: language-reference
 ms.date: 10/14/2024
 ---
 
-# $[] (as Array Update Operator)
+# $[]
 The $[] operator in Azure Cosmos DB for MongoDB vCore is used to update all elements in an array that match a specified condition. This operator allows you to perform updates on multiple elements in an array without specifying their positions. It is particularly useful when you need to apply the same update to all items in an array.
 
 ## Syntax
@@ -29,40 +29,81 @@ db.collection.update(
 
 ## Parameters
 
-| Parameter      | Description                                                  |
-|----------------|--------------------------------------------------------------|
-| `<query>`      | The selection criteria for the documents to update.          |
-| `<arrayField>` | The field containing the array to update.                    |
-| `<value>`      | The value to set for each matching element in the array.     |
+| Parameter | Description |
+| --- | --- |
+| **`<query>`** | The selection criteria for the documents to update. |
+| **`<arrayField>`** | The field containing the array to update. |
+| **`<value>`** | The value to set for each matching element in the array. |
 
 
-## Example(s)
+## Examples
+
+Consider this sample document from the stores collection.
+
+```json
+{
+  "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+  "name": "Trey Research | Home Office Depot - Lake Freeda",
+  "location": { "lat": -48.9752, "lon": -141.6816 },
+  "staff": { "employeeCount": { "fullTime": 12, "partTime": 19 } },
+  "sales": {
+    "salesByCategory": [ { "categoryName": "Desk Lamps", "totalSales": 37978 } ],
+    "revenue": 37978
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Crazy Deal Days",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
+        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
+      },
+      "discounts": [
+        { "categoryName": "Desks", "discountPercentage": 22 },
+        { "categoryName": "Filing Cabinets", "discountPercentage": 23 }
+      ]
+    },
+    {
+      "eventName": "Incredible Markdown Mania",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
+        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
+      },
+      "discounts": [
+        { "categoryName": "Monitor Stands", "discountPercentage": 20 },
+        { "categoryName": "Desks", "discountPercentage": 24 }
+      ]
+    }
+  ]
+}
+```
+
+
 ### Example 1: Updating Discount Percentages
-Suppose you want to update the discount percentage for all categories in the "Summer Sale" promotion event. You can use the $[] operator to achieve this:
+
+To update to all elements in the discounts array inside each promotion event.:
 
 ```javascript
-db.stores.update(
-  { "store.storeId": "12345", "store.promotionEvents.eventName": "Summer Sale" },
+db.stores.updateOne(
+  { _id: "905d1939-e03a-413e-a9c4-221f74055aac" },
   {
-    $set: {
-      "store.promotionEvents.$[event].discounts.$[].discountPercentage": 5
+    $inc: {
+      "promotionEvents.$[].discounts.$[].discountPercentage": 5
     }
-  },
-  {
-    arrayFilters: [{ "event.eventName": "Summer Sale" }]
   }
 )
+
 ```
 
 ### Example 2: Updating Sales by Category
-If you want to increase the total sales for all categories by 10%, you can use the $[] operator as follows:
+
+To increase the total sales for all categories by 10%, you can use the $[] operator as follows:
 
 ```javascript
 db.stores.update(
-  { "store.storeId": "12345" },
+  { _id: "905d1939-e03a-413e-a9c4-221f74055aac" },
   {
     $mul: {
-      "store.sales.salesByCategory.$[].totalSales": 1.10
+      "sales.salesByCategory.$[].totalSales": 1.10
     }
   }
 )

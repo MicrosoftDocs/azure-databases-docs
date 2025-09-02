@@ -71,7 +71,7 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
    location='eastus2'
    delegatedManagementSubnetId='/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>'
    initialCassandraAdminPassword='myPassword'
-   cassandraVersion='3.11' # set to 4.0 for a Cassandra 4.0 cluster
+   cassandraVersion='5.0' # set to 4.0 for a Cassandra 4.0 cluster
 
    az managed-cassandra cluster create \
      --cluster-name $clusterName \

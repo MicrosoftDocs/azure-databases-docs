@@ -1,9 +1,9 @@
 ---
 title: How to Connect from Azure Data Factory to Azure Database for PostgreSQL
 description: Guide on how to connect an Azure Database for PostgreSQL flexible server from Azure Data Factory using the Azure Database for PostgreSQL connector
-author: MitchellGale
-ms.author: v-mgale
-ms.reviewer: dabukhari, maghan
+author: danyal-bukhari
+ms.author: dabukhari
+ms.reviewer: maghan
 ms.date: 04/11/2025 
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server

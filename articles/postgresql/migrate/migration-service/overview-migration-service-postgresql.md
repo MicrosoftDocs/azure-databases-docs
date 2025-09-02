@@ -1,5 +1,5 @@
 ---
-title: Migration Service in Azure Database for PostgreSQL
+title: "Migration Service in Azure Database for PostgreSQL"
 description: Get an introduction to using the migration service to migrate to Azure Database for PostgreSQL flexible server, including advantages and migration options.
 author: hariramt
 ms.author: hariramt
@@ -30,7 +30,7 @@ The following figure shows the PostgreSQL sources you can migrate by using the m
 
 The next figure depicts the detailed steps that are involved in migrating from Azure Database for PostgreSQL - Single Server to Azure Database for PostgreSQL flexible server. The figure illustrates the migration workflow and key stages of the migration for a successful transition to Azure Database for PostgreSQL flexible server.
 
-:::image type="content" source="media/overview-migration-service-postgresql/concepts-flow-diagram.png" alt-text="Diagram that depicts the migration from Single Server to Flexible Server." lightbox="media/overview-migration-service-postgresql/concepts-flow-diagram.png":::
+:::image type="content" source="media/overview-migration-service-postgresql/concepts-flow-diagram.png" alt-text="Diagram that depicts the migration from Single Server to flexible server." lightbox="media/overview-migration-service-postgresql/concepts-flow-diagram.png":::
 
 ## Why use a flexible server?
 

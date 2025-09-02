@@ -13,12 +13,14 @@ ms.topic: include
 | Australia Central 2 * | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :x: |
 | Australia East | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Australia Southeast | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
+| Austria East | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :x: |
 | Brazil South | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :x: |
 | Brazil Southeast * | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :x: |
 | Canada Central | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Canada East | :white_check_mark: (all SKUs) | :x: | :white_check_mark: | :white_check_mark: |
 | Central India | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: |
 | Central US | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Chile Central | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :x: |
 | China East 2 | :white_check_mark: (v3/v4 only) | :x: | :white_check_mark: | :x: |
 | China East 3 | :white_check_mark: (v3/v4 only) | :x: | :white_check_mark: | :white_check_mark: |
 | China North 2 | :white_check_mark: (v3/v4 only) | :x: | :white_check_mark: | :x: |

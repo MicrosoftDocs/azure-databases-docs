@@ -1,24 +1,20 @@
 ---
-  title: $anyElementsTrue (set expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $anyElementsTrue operator returns true if any element evaluates to true in an array.
+  title: $anyElementsTrue
+  titleSuffix: Overview of the $allElementsTrue operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $anyElementsTrue operator returns true if any element in an array evaluates to a value of true.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 08/03/2025
 ---
 
-# $anyElementTrue (set expression)
+# $anyElementTrue
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$anyElementTrue` operator evaluates an array as a set and returns `true` if any element in the array is `true` or equivalent to `true`. If all elements evaluate to `false`, `null`, `0`, or `undefined`, the operator returns `false`.
+The `$anyElementTrue` operator evaluates an array as a set and returns `true` if any element in the array is `true` (or equivalent to `true`). If all the elements evaluate to a value of `false`, `null`, `0`, or `undefined`, the operator returns `false`.
 
 ## Syntax
-
-The syntax for the `$anyElementTrue` operator is as follows:
 
 ```javascript
 {
@@ -28,9 +24,9 @@ The syntax for the `$anyElementTrue` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
-| **`array`** | An array of expressions to evaluate. If the array is empty, `$anyElementTrue` returns `false`. |
+| `array` | An array of expressions to evaluate. If the array is empty, `$anyElementTrue` returns `false`. |
 
 ## Example
 
@@ -78,9 +74,9 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 }
 ```
 
-### Example 1: Check if any sales category exceeds target
+### Example 1: Determine if any sales category exceeds a target
 
-This example allows checking if any sales category exceeds a target of 40,000 in sales.
+This following example helps you determine if any sales category exceeds a target. In this case, the target is 40,000 in sales.
 
 ```javascript
 db.stores.aggregate([
@@ -104,7 +100,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` for `hasHighPerformingCategory` field as sales for one of the categories is beyond 40,000.
+The query returns `true` for the `hasHighPerformingCategory` field, because sales for one of the categories is more than 40,000.
 
 ```json
 {
@@ -112,12 +108,10 @@ The query returns `true` for `hasHighPerformingCategory` field as sales for one 
   "salesByCategory": [
     {
       "categoryName": "Sound Bars",
-      "totalSales": 2120
+      "totalSales": 2120,
+      "lastUpdated": "2025-06-11T11:10:34.414Z"
     },
-    {
-      "categoryName": "Home Theater Projectors",
-      "totalSales": 45004
-    },
+    null,
     {
       "categoryName": "Game Controllers",
       "totalSales": 43522
@@ -135,9 +129,9 @@ The query returns `true` for `hasHighPerformingCategory` field as sales for one 
 }
 ```
 
-### Example 2: Check if any promotion event has high discounts
+### Example 2: Determine if any promotion event has high discounts
 
-This example allows checking if any promotion event offers discounts above 20%.
+The following example helps you determine if any promotion event offers discounts over 20%.
 
 ```javascript
 db.stores.aggregate([
@@ -162,14 +156,39 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` considering we have at least one promotion event with discounts above 20%.
+The query returns `true`, because there's at least one promotion event with discounts over 20%.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "eventName": "Massive Markdown Mania",
-  "hasHighDiscount": true
-}
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "eventName": "Massive Markdown Mania",
+    "hasHighDiscount": true
+    },
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "eventName": "Fantastic Deal Days",
+    "hasHighDiscount": true
+  },
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "eventName": "Discount Delight Days",
+    "hasHighDiscount": true
+  },
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "eventName": "Super Sale Spectacular",
+    "hasHighDiscount": true
+  },
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "eventName": "Grand Deal Days",
+    "hasHighDiscount": true
+  },
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "eventName": "Major Bargain Bash",
+    "hasHighDiscount": true
+  }
 ```
 
 ## Related content

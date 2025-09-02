@@ -51,7 +51,7 @@ To complete this tutorial, you need:
     | --- | --- | --- |
     | Subscription | Your subscription name | Select the Free Trial Azure subscription. |
     | Resource group | Your resource group | Enter a new resource group or an existing one from your subscription. |
-    | Server name | mydemoserver-pgsql | Specify a unique name to identify your Flexible Server. The domain name *postgres.database.azure.com* is appended to the server name you provide. The server name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain between 3 and 63 characters. |
+    | Server name | mydemoserver-pgsql | Specify a unique name to identify your flexible server. The domain name *postgres.database.azure.com* is appended to the server name you provide. The server name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain between 3 and 63 characters. |
     | Region | The region closest to your users | Select a location from the list, preferably the location that's closest to your users. |
     | PostgreSQL version | The latest major version | Use the latest PostgreSQL major version unless you have specific requirements otherwise. |
     | Workload type | Development | For a free trial, select **Development** workload. For a production workload, choose Small/Medium-size or Large-size depending on your requirements. |
@@ -134,7 +134,7 @@ You're not charged for Azure Database for PostgreSQL flexible server services th
 
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/free-services-usage-overview.png" alt-text="Screenshot that shows the Free Trial subscription overview page and highlights View all free services." lightbox="media/how-to-deploy-on-azure-free-account/free-services-usage-overview.png":::
 
-1. Locate the below meters related to **Azure Database for PostgreSQL – Flexible Server** to track usage:
+1. Locate the below meters related to **Azure Database for PostgreSQL flexible server** to track usage:
 
     | Meter | Description | Monthly Limit |
     | --- | --- | --- |

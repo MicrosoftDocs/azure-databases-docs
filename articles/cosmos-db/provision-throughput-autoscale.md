@@ -5,7 +5,7 @@ author: kirillg
 ms.author: kirillg
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 09/25/2024
+ms.date: 08/28/2025
 ---
 
 # Create Azure Cosmos DB containers and databases with autoscale throughput

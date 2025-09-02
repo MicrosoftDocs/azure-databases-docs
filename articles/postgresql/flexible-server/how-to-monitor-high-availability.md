@@ -14,11 +14,11 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Azure Database for PostgreSQL Flexible Server includes a High Availability (HA) Health Status Monitoring feature, which uses Azure's Resource Health Check (RHC) framework. This service provides continuous insights into the health of HA-enabled instances, notifying you of events that might affect connectivity and availability. The following details each health state and associated scenarios to help you troubleshoot and maintain HA stability.
+Azure Database for PostgreSQL flexible server includes a High Availability (HA) Health Status Monitoring feature, which uses Azure's Resource Health Check (RHC) framework. This service provides continuous insights into the health of HA-enabled instances, notifying you of events that might affect connectivity and availability. The following details each health state and associated scenarios to help you troubleshoot and maintain HA stability.
 
 ## Health States
 
-Each HA state is monitored through various internal signals that represent specific conditions. Below are the possible HA states along with visual indicators and scenarios that might affect your Azure Database for PostgreSQL Flexible Server.
+Each HA state is monitored through various internal signals that represent specific conditions. Below are the possible HA states along with visual indicators and scenarios that might affect your Azure Database for PostgreSQL flexible server.
 
 ### Ready – HA is Healthy
 
@@ -34,7 +34,7 @@ The *Degraded* status might appear when NSG rules or a virtual appliance is bloc
 
 ### Degraded – Read-Only State
 
-If your PostgreSQL Flexible Server enters a read-only state, the *Degraded* status reflects this restriction. This typically requires provisioning additional resources or addressing the conditions that led to the read-only setting to restore full functionality.
+If your PostgreSQL flexible server enters a read-only state, the *Degraded* status reflects this restriction. This typically requires provisioning additional resources or addressing the conditions that led to the read-only setting to restore full functionality.
 
 :::image type="content" source="media/how-to-monitor-high-availability/high-availability-status-degraded-read-only.png" alt-text="Screenshot of showing HA Degraded status due to read-only state." lightbox="media/how-to-monitor-high-availability/high-availability-status-degraded-read-only.png":::
 
@@ -71,7 +71,7 @@ You can set up Resource Health alerts to receive real-time notifications when an
 
 ### Steps to Configure Resource Health Alerts via Portal
 
-1. Navigate to the Azure portal and select your PostgreSQL Flexible Server.
+1. Navigate to the Azure portal and select your PostgreSQL flexible server.
 1. In the left-hand menu, select "Alerts" under the "Monitoring" section.
 1. Select "New alert rule" and configure the alert logic based on Resource Health signals.
 1. Set up the action group to specify how you want to be notified (email, SMS, etc.).

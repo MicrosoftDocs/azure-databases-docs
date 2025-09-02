@@ -1,7 +1,7 @@
 ---
-title: $sqrt usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: The $sqrt operator returns the square root of a number.
+title: $sqrt
+titleSuffix: Overview of the $sqrt operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $sqrt operator calculates and returns the square root of an input number
 author: khelanmodi
 ms.author: khelanmodi
 ms.service: azure-cosmos-db
@@ -12,12 +12,14 @@ ms.date: 09/27/2024
 
 # $sqrt
 
-The `$sqrt` operator is used to return the square root of a specified number. It is commonly used in aggregation pipelines to perform mathematical calculations on numeric fields within documents.
+The `$sqrt` operator is used to calculate the square root of a specified number.
 
 ## Syntax
 
 ```javascript
-{ $sqrt: <expression> }
+{
+  $sqrt: <expression>
+}
 ```
 
 ## Parameters  
@@ -26,70 +28,199 @@ The `$sqrt` operator is used to return the square root of a specified number. It
 | --- | --- |
 | **`<expression>`**| Any valid expression that resolves to a number. |
 
-## Example(s)
+## Examples
 
-### Example 1: Calculate the square root of a specific sales value
+Consider this sample document from the stores collection.
 
-The following example demonstrates how to calculate the square root of the `fullSales` value within a document.
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1: Calculate the square root of sales
+
+To calculate the square root of the sales volumes of each store under the "First Up Consultants" company, first run a query to filter stores by the company name. Then, use the $sqrt operator on the totalSales field to retrieve the desired results.
 
 ```javascript
-db.collection.aggregate([
-  {
-    $project: {
-      name: 1,
-      fullSales: 1,
-      sqrtFullSales: { $sqrt: "$sales.fullSales" }
+db.stores.aggregate([{
+    "$match": {
+        "company": {
+            "$in": ["First Up Consultants"]
+        }
     }
-  }
-])
+}, {
+    "$project": {
+        "name": 1,
+        "sales.revenue": 1,
+        "categoryName": "$promotionEvents.discounts.categoryName",
+        "sqrtFullSales": {
+            $sqrt: "$sales.revenue"
+        }
+    }
+}])
 ```
 
-This output includes the original fullSales value and its square root:
+The first two results returned by this query are:
+
 ```json
 [
-  { "_id": 1, "name": "Store A", "sales": { "fullSales": 100 }, "sqrtFullSales": 10 },
-  { "_id": 2, "name": "Store B", "sales": { "fullSales": 225 }, "sqrtFullSales": 15 },
-  { "_id": 3, "name": "Store C", "sales": { "fullSales": 400 }, "sqrtFullSales": 20 }
-]
-```
-
-### Example 2: Calculate the square root of total sales by category
-
-This example shows how to calculate the square root of the `totalSales` for each sales category.
-
-```javascript
-db.collection.aggregate([
-  {
-    $unwind: "$sales.salesByCategory"
-  },
-  {
-    $project: {
-      name: 1,
-      categoryName: "$sales.salesByCategory.categoryName",
-      totalSales: "$sales.salesByCategory.totalSales",
-      sqrtTotalSales: { $sqrt: "$sales.salesByCategory.totalSales" }
+    {
+        "_id": "c52c9f65-5b1a-4ef5-a7a2-d1af0426cbe4",
+        "name": "First Up Consultants | Jewelry Pantry - Nicolasberg",
+        "sales": {
+            "revenue": 4624
+        },
+        "categoryName": [
+            [
+                "Watches",
+                "Bracelets"
+            ],
+            [
+                "Brooches",
+                "Necklaces"
+            ],
+            [
+                "Charms",
+                "Brooches"
+            ],
+            [
+                "Brooches",
+                "Anklets"
+            ],
+            [
+                "Earrings",
+                "Anklets"
+            ]
+        ],
+        "sqrtFullSales": 68
+    },
+    {
+        "_id": "176aa484-c21c-44ce-ab6d-5e097bbdc2b4",
+        "name": "First Up Consultants | Medical Supply Shop - Daughertyville",
+        "sales": {
+            "revenue": 67311
+        },
+        "categoryName": [
+            [
+                "First Aid Kits",
+                "OTC Medications"
+            ],
+            [
+                "Blood Pressure Monitors",
+                "OTC Medications"
+            ],
+            [
+                "Face Masks",
+                "Stethoscopes"
+            ]
+        ],
+        "sqrtFullSales": 259.44363549719236
     }
-  }
-])
-```
-
-This output calculates the square root of the totalSales for each sales category:
-```json
-[
-  {
-    "_id": 4,
-    "name": "Electronics Store",
-    "categoryName": "Laptops",
-    "totalSales": 144,
-    "sqrtTotalSales": 12
-  },
-  {
-    "_id": 5,
-    "name": "Fashion Outlet",
-    "categoryName": "Shoes",
-    "totalSales": 81,
-    "sqrtTotalSales": 9
-  }
 ]
 ```
 

@@ -12,7 +12,7 @@ ms.topic: concept-article
 
 # Oracle To Azure Database for PostgreSQL Migration Stages
 
-A comprehensive end-to-end migration from Oracle to Azure Postgres requires the careful execeution of several key steps and migration stages. These milestones are all closely related and essential to a complete and successful migration.
+A comprehensive end-to-end migration from Oracle to Azure Postgres requires the careful execution of several key steps and migration stages. These milestones are all closely related and essential to a complete and successful migration.
 
 
 
@@ -62,7 +62,7 @@ Alternatively, there are partner solution providers offering novel approaches ca
 In many cases, your decision might incorporate a combination of multiple strategies and hybrid approach collectively employed for their respective strengths and combined capabilities. Deploying a real-time database translation layer can enable your teams to rapidly re-deploy their client applications while providing your software engineers and developers with appropriate time and resource planning to refactor their database-specific dependencies to support Postgres native operations.
 
 > [!IMPORTANT]  
-> Each of these choices are accompanied by their own particular sets of considerations and benefits and it is essential that your teams carefully review each of these approaches to determine the ideal strategic path forward.
+> Each of these choices is accompanied by their own particular sets of considerations and benefits and it is essential that your teams carefully review each of these approaches to determine the ideal strategic path forward.
 
 ## Migration Validation
 
@@ -88,7 +88,7 @@ Query Store for Azure Postgres serves as the foundation for your monitoring feat
 
 ### Index Tuning
 
-Index tuning is a feature of Azure Database for PostgreSQL flexible server that can automatically improve the performance of your workload by analyzing tracked queries and providing index recommendations. It's natively built into Azure Database for PostgreSQL Flexible Server, and builds upon Query Store functionality. Index tuning analyzes workloads tracked by Query Store and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. This is accomplished in three unique ways:
+Index tuning is a feature of Azure Database for PostgreSQL flexible server that can automatically improve the performance of your workload by analyzing tracked queries and providing index recommendations. It's natively built into Azure Database for PostgreSQL flexible server, and builds upon Query Store functionality. Index tuning analyzes workloads tracked by Query Store and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. This is accomplished in three unique ways:
 
 - Identify which indexes are beneficial to create because they could significantly improve the queries analyzed during an index tuning session.
 - Identify indexes that are exact duplicates and can be eliminated to reduce the performance impact their existence and maintenance have on the system's overall performance.

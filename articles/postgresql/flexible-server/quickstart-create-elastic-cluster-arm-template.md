@@ -213,7 +213,7 @@ Follow these steps to verify if your server was created in Azure.
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-1. In the [Azure portal](https://portal.azure.com), search for and select **Azure Database for PostgreSQL Flexible Servers**.
+1. In the [Azure portal](https://portal.azure.com), search for and select **Azure Database for PostgreSQL flexible servers**.
 1. In the database list, select your new server to view the **Overview** page to manage the server.
 
 # [PowerShell](#tab/PowerShell)
@@ -264,7 +264,7 @@ In the [portal](https://portal.azure.com), select the resource group you want to
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 ```azurepowershell-interactive
-$serverName = Read-Host -Prompt "Enter the resource group where the Azure Database for PostgreSQL Flexible Server exists:"
+$serverName = Read-Host -Prompt "Enter the resource group where the Azure Database for PostgreSQL flexible server exists:"
 Remove-AzResourceGroup -Name $serverName
 ```
 
@@ -273,7 +273,7 @@ Remove-AzResourceGroup -Name $serverName
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 ```azurecli-interactive
-echo "Enter the resource group where the Azure Database for PostgreSQL Flexible Server exists:" &&
+echo "Enter the resource group where the Azure Database for PostgreSQL flexible server exists:" &&
 read resourcegroupName &&
 az group delete --name $resourcegroupName
 ```

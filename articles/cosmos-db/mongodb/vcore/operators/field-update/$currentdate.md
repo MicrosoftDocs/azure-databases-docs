@@ -1,6 +1,6 @@
 ---
-  title: $currentDate (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $currentDate
+  titleSuffix: Overview of the $currentDate operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $currentDate operator sets the value of a field to the current date, either as a Date or a timestamp.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $currentDate (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $currentDate
 
 The `$currentDate` operator sets the value of a field to the current date, either as a Date or a timestamp. This operator is useful for tracking when documents were last modified or for setting creation timestamps.
 
@@ -32,37 +30,75 @@ The syntax for the `$currentDate` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to set to the current date. |
 | **`typeSpecification`** | Optional. Specifies the type of the date value. Can be `true` (for Date type) or `{ $type: "timestamp" }` for timestamp type. Default is `true` (Date). |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
+  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
   "location": {
-    "lat": 60.7954,
-    "lon": -142.0012
+    "lat": 60.1441,
+    "lon": -141.5012
   },
   "staff": {
     "totalStaff": {
-      "fullTime": 18,
-      "partTime": 17
+      "fullTime": 2,
+      "partTime": 0
     }
   },
   "sales": {
-    "totalSales": 37701,
     "salesByCategory": [
       {
-        "categoryName": "Mattress Toppers",
-        "totalSales": 37701
+        "categoryName": "DJ Headphones",
+        "totalSales": 35921
       }
-    ]
+    ],
+    "fullSales": 3700
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Bargain Blitz Days",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 3,
+          "Day": 11
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 2,
+          "Day": 18
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "DJ Turntables",
+          "discountPercentage": 18
+        },
+        {
+          "categoryName": "DJ Mixers",
+          "discountPercentage": 15
+        }
+      ]
+    }
+  ],
+  "tag": [
+    "#ShopLocal",
+    "#SeasonalSale",
+    "#FreeShipping",
+    "#MembershipDeals"
+  ],
+  "company": "Lakeshore Retail",
+  "city": "Port Cecile",
+  "lastUpdated": {
+    "$date": "2024-12-11T10:21:58.274Z"
   }
 }
 ```
@@ -82,7 +118,18 @@ db.stores.updateOne(
 )
 ```
 
-This will add a `lastUpdated` field with the current date as a Date object.
+This will add a `lastUpdated` field with the current date as a Date object and produce the following result:
+
+```json
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+```
 
 ### Example 2: Setting current timestamp
 
@@ -100,7 +147,7 @@ db.stores.updateOne(
 )
 ```
 
-Output:
+This query will return  the following document 
 
 ```json
 {
@@ -111,7 +158,6 @@ Output:
   upsertedCount: 0
 }
 ```
-
 
 ### Example 3: Updating nested fields
 

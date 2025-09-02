@@ -138,6 +138,8 @@ landingContent:
             url: how-to-configure-entra-authentication.md
           - text: Manage secondary native users
             url: secondary-users.md
+          - text: Manage data encryption settings
+            url: how-to-data-encryption.md
       - linkListType: concept
         links:
           - text: Cluster security overview

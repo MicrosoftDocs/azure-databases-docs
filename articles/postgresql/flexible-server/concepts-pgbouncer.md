@@ -1,5 +1,5 @@
 ---
-title: PgBouncer in Azure Database for PostgreSQL Flexible Server
+title: PgBouncer in Azure Database for PostgreSQL flexible server
 description: This article provides an overview of the built-in PgBouncer feature.
 author: varun-dhawan
 ms.author: varundhawan
@@ -45,7 +45,7 @@ For more information about PgBouncer configurations, see the [pgbouncer.ini docu
 
 ## Version of PgBouncer
 
-Currently, the version of PgBouncer deployed on all supported major versions of the engine ([!INCLUDE [pgbouncer-table](includes/major-versions-ascending.md)]), in Azure Database for PostgreSQL Flexible Server, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**.
+Currently, the version of PgBouncer deployed on all supported major versions of the engine ([!INCLUDE [pgbouncer-table](includes/major-versions-ascending.md)]), in Azure Database for PostgreSQL flexible server, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**.
 
 ## Benefits
 

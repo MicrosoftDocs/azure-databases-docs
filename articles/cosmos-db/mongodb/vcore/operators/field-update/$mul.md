@@ -1,6 +1,6 @@
 ---
-  title: $mul (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $mul
+  titleSuffix: Overview of the $mul operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $mul operator multiplies the value of a field by a specified number.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $mul (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $mul
 
 The `$mul` operator multiplies the value of a field by a specified number. If the field does not exist, `$mul` creates the field and sets it to zero. This operator is useful for applying percentage changes, scaling values, or performing bulk calculations on numeric fields.
 
@@ -32,14 +30,14 @@ The syntax for the `$mul` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to multiply. |
 | **`number`** | The number to multiply the field value by. Must be a numeric value. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {

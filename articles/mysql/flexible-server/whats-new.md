@@ -23,10 +23,33 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 > [!NOTE]
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## Aug 2025
+
+### Cross subscription and cross resource-group placement in restore/replica provisioning workflow
+
+You can now restore a server or create a read replica in a different subscription and resource group in Azure Database for MySQL – Flexible Server. This enhancement offers greater flexibility for cross-environment restores, resource organization, and subscription-level separation, helping meet governance and operational requirements. To learn more, visit [Point-in-time restore](how-to-restore-server-portal.md).
+
+### Ability to delete on-demand backup
+
+You can now delete on-demand backups in Azure Database for MySQL – Flexible Server, giving you greater control over backup management and storage costs. This feature allows you to remove on-demand backups that are no longer needed, helping maintain a cleaner backup inventory and optimize resource usage. To learn more, visit [Backup and restore](how-to-trigger-on-demand-backup.md#trigger-on-demand-backup)
+
 ## July 2025
 
+### General Availability in new Azure regions
+
+Azure Database for MySQL Flexible Server is now available in the following Azure regions:
+
+- Chile Central
+
+- Indonesia Central
+
+- Malaysia West
+
+### Self-Heal in Azure Database for MySQL (Public Preview)
+The Self-Heal feature in Azure Database for MySQL empowers customers to resolve common server issues independently, without needing to open a support case. It provides a one-click repair experience that helps restore service health quickly and safely. [Learn more](./how-to-self-heal.md).
+
 ### Accelerated logs feature is now available in General Purpose service tier
-Accelerated logs are now supported in the General Purpose service tier of Azure Database for MySQL – Flexible Server. Previously available only in the Business Critical tier, this feature enhances performance and reduces transaction latency. Accelerated logs feature in General Purpose tier is available at an additonal cost. [Learn more](./concepts-accelerated-logs.md).
+Accelerated logs are now supported in the General Purpose service tier of Azure Database for MySQL – Flexible Server. Previously available only in the Business Critical tier, this feature enhances performance and reduces transaction latency. Accelerated logs feature in General Purpose tier is available at an additional cost. [Learn more](./concepts-accelerated-logs.md).
 
 
 ### Automate scheduling of on-demand backups
@@ -155,7 +178,7 @@ Starting November 1, 2024, new B1 servers are limited to ensure performance and 
 
   Azure Database for MySQL now offers major version upgrades for Burstable SKU compute tiers. This support automatically upgrades the compute tier to General Purpose SKU before performing the upgrade, ensuring sufficient resources. Customers can choose to revert to Burstable SKU after the upgrade. Additional costs might apply.
 
-  To learn more, visit [Upgrade MySQL version](./how-to-upgrade.md#perform-a-planned-major-version-upgrade-from-mysql-57-to-mysql-80-using-the-azure-portal-for-burstable-sku-servers).
+  To learn more, visit [Upgrade MySQL version](./how-to-upgrade.md#perform-a-planned-major-version-upgrade-using-the-azure-portal-for-burstable-sku-servers).
 
 - **Deprecated Metrics Announcement**
 

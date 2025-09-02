@@ -1,6 +1,6 @@
 ---
-  title: $rename (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $rename
+  titleSuffix: Overview of the $mul operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $rename operator allows renaming fields in documents during update operations.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,9 +10,7 @@
   ms.date: 02/12/2025
 ---
 
-# $rename (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $rename
 
 The `$rename` operator is used to rename fields in documents during update operations. It removes the field with the old name and creates a new field with the specified name, preserving the original value. This operator is useful for restructuring document schemas or correcting field naming conventions.
 
@@ -32,14 +30,14 @@ The syntax for the `$rename` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The current name of the field to be renamed. |
 | **`newName`** | The new name for the field. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -69,7 +67,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Renaming top-level fields
 
-Suppose you want to rename the `name` field to `storeName` and `location` to `storeLocation`.
+To rename the `name` field to `storeName` and `location` to `storeLocation`.
 
 ```javascript
 db.stores.updateOne(

@@ -1554,6 +1554,11 @@
         "source_path_from_root": "/articles/mysql/flexible-server/resolve-capacity-errors-mysql-flex.md",
         "redirect_url": "/azure/mysql/flexible-server/resolve-capacity-errors",
         "redirect_document_id": true
+      },
+      {
+        "source_path_from_root": "/articles/mysql/flexible-server/concept-monitoring-best-practices.md",
+        "redirect_url": "/azure/mysql/flexible-server/concept-monitor-best-practices",
+        "redirect_document_id": true
       }
   ]
 }
