@@ -81,7 +81,9 @@ To resolve this issue, you can use the built-in stored procedure:
 ```sql
 mysql.az_drop_broken_table(DBNAME, TABLENAME)
 ```
- Alternatively, you can perform a [Point-in-time restore](./how-to-restore-server-portal.md) to revert the server to a state before the issue occurred.
+After executing the procedure, it is recommended to reboot the server to ensure the changes take effect.
+
+Alternatively, you can perform a [Point-in-time restore](./how-to-restore-server-portal.md) to revert the server to a state before the issue occurred.
 
 ## **Conclusion**  
 Azure Database for MySQL provides built-in stored procedures that simplify advanced database management tasks. These procedures enable you to set up replication, manage the Undo log, and enable plugins efficiently. By applying these tools, you can enhance performance, optimize storage, and ensure seamless data synchronization.  
