@@ -12,7 +12,7 @@ appliesto:
 
 # Configure customer-managed key (CMK) for data encryption at rest for an Azure Cosmos DB for MongoDB vCore cluster
 
-In this article, you learn how to configure [customer-managed key (CMK)](./database-encryption-at-rest.md) for data encryption at rest in Azure Cosmos DB for MongoDB vCore. The steps in this guide configure a new Azure Cosmos DB for MongoDB vCore cluster, a replica cluster, or a restored cluster. Customer-managed key stored in an Azure Key Vault and user-assigned managed identity are used for CMK configuration. 
+In this article, you learn how to configure [customer-managed key (CMK)](./database-encryption-at-rest.md) for data encryption at rest in Azure Cosmos DB for MongoDB vCore. The steps in this guide configure a new Azure Cosmos DB for MongoDB vCore cluster, a replica cluster, or a restored cluster. CMK setup uses customer-managed key stored in an Azure Key Vault and user-assigned managed identity. 
 
 ## Prerequisites
 
