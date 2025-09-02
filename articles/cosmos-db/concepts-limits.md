@@ -324,8 +324,7 @@ The following table lists the limits for [Azure Cosmos DB free tier accounts.](o
 | Duration of free-tier discount | Lifetime of the account. Must opt in during account creation. |
 | Maximum RU/s for free | 1000 RU/s |
 | Maximum storage for free | 25 GB |
-| Maximum number of shared throughput databases | 5 |
-| Maximum number of containers in a shared throughput database | 25 <br>In free tier accounts, the minimum RU/s for a shared throughput database with up to 25 containers is 400 RU/s. |
+| Maximum number of containers in a shared throughput database | 25 |
 
 In addition to the previous table, the [Per-account limits](#per-account-limits) also apply to free tier accounts. To learn more, see how to create a [free tier account](free-tier.md).
 
