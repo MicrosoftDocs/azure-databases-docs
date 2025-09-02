@@ -12,7 +12,7 @@ appliesto:
 
 # Configure customer-managed key (CMK) for data encryption at rest for an Azure Cosmos DB for MongoDB vCore cluster
 
-In this article, you learn how to configure [customer-managed key (CMK)](./database-encryption-at-rest.md) for data encryption at rest in Azure Cosmos DB for MongoDB vCore. The steps in this guide configure a new Azure Cosmos DB for MongoDB vCore cluster, a replica cluster, or a restored cluster with customer-managed key stored in an Azure Key Vault and user-assigned managed identity. 
+In this article, you learn how to configure [customer-managed key (CMK)](./database-encryption-at-rest.md) for data encryption at rest in Azure Cosmos DB for MongoDB vCore. The steps in this guide configure a new Azure Cosmos DB for MongoDB vCore cluster, a replica cluster, or a restored cluster. Customer-managed key stored in an Azure Key Vault and user-assigned managed identity are used for CMK configuration. 
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## Configure data encryption with customer-managed key during cluster provisioning
 
-### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+### [Portal](#tab/portal-steps)
 
 1. During provisioning of a new Azure Cosmos DB for MongoDB vCore cluster, service-managed or customer-managed keys for cluster data encryption is configured in the **Encryption** tab. Select the **Customer-managed key** for **Data encryption**.
 
@@ -74,7 +74,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png":::
 
-### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+### [Azure CLI](#tab/cli-steps)
 
 You can enable data encryption with user-assigned encryption key, while provisioning a new cluster, via an `az rest` command.
 
@@ -142,7 +142,7 @@ You can enable data encryption with user-assigned encryption key, while provisio
 
 For existing clusters that were deployed with data encryption using a customer-managed key, you can do several configuration changes. Things that can be changed are the references to the keys used for encryption including key vault and key used as a customer-managed key, and references to the user-assigned managed identities used by the service to access the keys kept in the key stores.
 
-#### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+#### [Portal](#tab/portal-steps)
 
 1. On the cluster sidebar, under **Settings**, select **Data encryption**.
 
@@ -173,7 +173,7 @@ For existing clusters that were deployed with data encryption using a customer-m
 
     :::image type="content" source="media/how-to-data-encryption/cluster-management-save-changes.png" alt-text="Screenshot that shows the location of Save button for data encryption configuration changes on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-save-changes.png":::
  
-#### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+#### [Azure CLI](#tab/cli-steps)
 
 You can change user-assigned managed identity and encryption key for data encryption on an existing cluster via a REST API call.
 
@@ -231,7 +231,7 @@ The only point at which you can decide if you want to use a service-managed key 
 
 Follow these steps to create a replica cluster with CMK or SMK data encryption to enable or disable CMK on a replica cluster.
 
-#### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+#### [Portal](#tab/portal-steps)
 
 1. On the cluster sidebar, under **Settings**, select **Global distribution**.
 
@@ -276,9 +276,9 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
 
     :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png" alt-text="Screenshot that shows the location of Save button for replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png":::
  
-#### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+#### [Azure CLI](#tab/cli-steps)
 
-To create a replica cluster with CMK enabled in the same region follow these steps.
+To create a replica cluster with CMK enabled in the same region, follow these steps.
 
 1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
 
@@ -330,7 +330,7 @@ To create a replica cluster with CMK enabled in the same region follow these ste
 
 The restore process creates a new cluster with the same configuration in the same Azure region, subscription, and resource group as the original. Follow these steps to create a restored cluster with CMK or SMK enabled.
 
-#### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+#### [Portal](#tab/portal-steps)
 
 1. Select an existing Azure Cosmos DB for MongoDB vCore cluster.
 1. On the cluster sidebar, under **Settings**, select **Point In Time Restore**.
@@ -373,9 +373,9 @@ The restore process creates a new cluster with the same configuration in the sam
 
 1. Select **Submit** to initiate cluster restore.
 
-#### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+#### [Azure CLI](#tab/cli-steps)
 
-To restore a cluster with CMK enabled follow these steps.
+To restore a cluster with CMK enabled, follow these steps.
 
 1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
 
@@ -427,7 +427,7 @@ To restore a cluster with CMK enabled follow these steps.
 
 ---
 
-One restored cluster is created, review the list of [post-restore tasks](./how-to-restore-cluster.md#post-restore-tasks).
+Once restored cluster is created, review the list of [post-restore tasks](./how-to-restore-cluster.md#post-restore-tasks).
 
 ## Related content
 

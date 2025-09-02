@@ -14,15 +14,13 @@ appliesto:
 
 This guide is designed to help you troubleshoot common issues when using [customer-managed key (CMK) for data encryption at rest](./database-encryption-at-rest.md#encryption-at-rest-with-service-managed-key-smk-or-customer-managed-key-cmk) with Azure Cosmos DB for MongoDB vCore. It offers practical solutions for troubleshooting various components involved in the CMK setup.
 
-## Troubleshooting CMK setup
+A managed identity, a key vault, an encryption key in the key vault, and proper permissions granted to the managed identity [are required](./database-encryption-at-rest.md#cmk-requirements) to configure CMK on an Azure Cosmos DB for MongoDB vCore cluster.
 
-A managed idenity, a key vault, an encryption key in the key vault, and proper permissions granted to the managed identity [are required](./database-encryption-at-rest.md#cmk-requirements) to configure CMK on an Azure Cosmos DB for MongoDB vCore cluster.
-
-If managed identity, key vault, key, or permissions and not configurated as per [the requirements](#cmk-requirements), you may not be able to enable CMK during cluster provisioning. If proper setup becomes invalid on a CMK-enabled cluster, data on this cluster becomes unavailable due to the core security requirment of encryption with the customer-managed key. 
+If managed identity, key vault, key, or permissions and not configurated as per [the requirements](./database-encryption-at-rest.md#cmk-requirements), you may not be able to enable CMK during cluster provisioning. If proper setup becomes invalid on a CMK-enabled cluster, data on this cluster becomes unavailable due to the core security requirement of encryption with the customer-managed key. 
 
 Follow the steps in this section to troubleshoot all components required for proper CMK setup.
 
-### Accidental key access revocation from Azure Key Vault
+## Accidental key access revocation from Azure Key Vault
 
 Someone with sufficient access rights to Key Vault might accidentally disable cluster access to the key by:
 
@@ -32,7 +30,7 @@ Someone with sufficient access rights to Key Vault might accidentally disable cl
 - Changing the Key Vault firewall rules.
 - Deleting the managed identity of the cluster in Microsoft Entra ID.
 
-### Inaccessible customer-managed key condition
+## Inaccessible customer-managed key condition
 
 When you configure data encryption with a customer-managed key stored in key vault, continuous access to this key is required for the cluster to stay online. If that's not the case, the cluster changes its state to **Inaccessible** and begins denying all connections.
 
@@ -52,7 +50,7 @@ Some of the possible reasons why the cluster state might become **Inaccessible**
 >  
 > Generally, a cluster becomes **Inaccessible** within 60 minutes after a key is disabled, deleted, expired, or not reachable. After the key becomes available, the cluster might take up to 60 minutes to become **Ready** again.
 
-### Recovering from managed identity deletion
+## Recovering from managed identity deletion
 
 If the user-assigned managed identity used to access the encryption key stored in key vault is deleted in Microsoft Entra ID, you should follow these steps to recover:
 1. [Recover the identity](/azure/active-directory/fundamentals/recover-from-deletions) or create a new managed Entra ID identity.
@@ -66,4 +64,5 @@ If the user-assigned managed identity used to access the encryption key stored i
 ## Related content
 
 - Learn about [data encryption at rest fundamentals](./database-encryption-at-rest.md)
+- Check [the best practices for configuring key vault for CMK](./database-encryption-at-rest.md#considerations)
 - [Follow these steps to enable data encryption at rest with customer-managed key in Azure Cosmos DB for MongoDB vCore](./how-to-data-encryption.md)
