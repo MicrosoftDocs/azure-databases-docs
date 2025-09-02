@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 08/23/2025
+ms.date: 09/01/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -139,9 +139,9 @@ The Microsoft Entra ID authentication feature has these current limitations:
 
 ### Native DocumentDB secondary users
 
-[The native secondary users](./secondary-users.md) feature has these preview limitations:
+[The native secondary users](./secondary-users.md) feature has these limitations:
 - The `Updateuser` command now only supports password updates and can't modify other object fields.
-- The `Roleinfo` command isn't supported in preview. Alternatively, you can use `usersInfo`.
+- The `Roleinfo` command isn't supported. Alternatively, you can use `usersInfo`.
 - Assigning roles to specific databases or collections isn't supported, only cluster level is supported.
 
 ## Miscellaneous limits

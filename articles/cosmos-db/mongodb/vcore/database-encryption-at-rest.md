@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 08/04/2025
+ms.date: 09/01/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -13,8 +13,6 @@ appliesto:
 # Data encryption in Azure Cosmos DB for MongoDB vCore
 
 All the data managed by an Azure Cosmos DB for MongoDB vCore is always encrypted at rest. That data includes all system and user databases, temporary files, logs, and backups.
-
-[!INCLUDE[MongoDB vCore](./includes/notice-customer-managed-key-preview.md)]
 
 ## Encryption at rest with service-managed key (SMK) or customer-managed key (CMK)
 
@@ -102,9 +100,6 @@ Someone with sufficient access rights to Key Vault might accidentally disable cl
 ### Inaccessible customer-managed key condition
 
 When you configure data encryption with a customer-managed key stored in key vault, continuous access to this key is required for the cluster to stay online. If that's not the case, the cluster changes its state to **Inaccessible** and begins denying all connections.
-
-> [!NOTE]  
-> In preview, cluster status may continue to be **Ready** and not change to **Inaccessible**.
 
 Some of the possible reasons why the cluster state might become **Inaccessible** are:
 
