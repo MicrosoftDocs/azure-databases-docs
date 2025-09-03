@@ -32,6 +32,9 @@ The `$range` operator is used to generate an array of sequential integers. The o
 
 ## Examples
 
+Consider this sample document from the stores collection.
+
+
 ### Example 1: Generate a range of numbers
 
 The example demonstrates usage of operator to generate an array of integers from 0 to 5, wherein it includes the left boundary while excludes the right.
