@@ -30,7 +30,7 @@ Azure Cosmos DB is ideal for IoT, gaming, retail, and operational logging applic
 
 The change feed in Azure Cosmos DB lets you build efficient, scalable solutions for these patterns, as shown in the following image:
 
-:::image type="content" source=".media/change-feed/changefeedoverview.png" alt-text="Diagram showing how Azure Cosmos DB change feed powers real-time analytics and event-driven computing scenarios." border="false":::
+:::image type="content" source="media/change-feed-design-patterns/changefeedoverview.png" alt-text="Diagram showing how Azure Cosmos DB change feed powers real-time analytics and event-driven computing scenarios." border="false":::
 
 ## Event computing and notifications
 
@@ -42,7 +42,7 @@ Selectively trigger a notification or call an API based on specific criteria. Fo
 
 The Azure Cosmos DB change feed lets you perform real-time stream processing for IoT or real-time analytics on operational data. For example, you receive and store event data from devices, sensors, infrastructure, and applications, and process these events in real time by using [Spark](/azure/hdinsight/spark/apache-spark-overview). The following image shows how to implement a lambda architecture by using the Azure Cosmos DB change feed:
 
-:::image type="content" source=".media/change-feed/lambda.png" alt-text="Diagram that shows an Azure Cosmos DB-based lambda pipeline for ingestion and query." border="false":::
+:::image type="content" source="media/change-feed-design-patterns/lambda.png" alt-text="Diagram that shows an Azure Cosmos DB-based lambda pipeline for ingestion and query." border="false":::
 
 In many cases, stream processing implementations first receive a high volume of incoming data into a temporary message queue such as Azure Event Hubs or Apache Kafka. The change feed is a great alternative due to Azure Cosmos DB's ability to support a sustained high rate of data ingestion with guaranteed low read and write latency.
 

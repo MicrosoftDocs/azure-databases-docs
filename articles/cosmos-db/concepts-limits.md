@@ -108,8 +108,8 @@ In summary, here are the minimum provisioned RU limits when using provisioned th
 | --- | --- | --- |
 | Manual throughput | Minimum RUs per container ([dedicated throughput provisioned mode with manual throughput](./set-throughput.md#set-throughput-on-a-container)) | 400 |
 | Manual throughput | Minimum RUs per database ([shared throughput provisioned mode with manual throughput](./set-throughput.md#set-throughput-on-a-database) | 400 RU/s for first 25 containers. |
-| Autoscale throughput | Minimum max RUs per container ([dedicated throughput provisioned mode with autoscale throughput](./provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works)) | 1000 |
-| Autoscale throughput | Minimum max RUs per database ([shared throughput provisioned mode with autoscale throughput](./provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works)) | 1000 RU/s for first 25 containers. |
+| Autoscale throughput | Minimum max RUs per container ([dedicated throughput provisioned mode with autoscale throughput](./provision-throughput-autoscale.md)) | 1000 |
+| Autoscale throughput | Minimum max RUs per database ([shared throughput provisioned mode with autoscale throughput](./provision-throughput-autoscale.md)) | 1000 RU/s for first 25 containers. |
 
 Azure Cosmos DB supports programmatic scaling of throughput (RU/s) per container or database through the SDKs or portal.
 
@@ -266,7 +266,7 @@ Azure Cosmos DB uses hash-based message authentication codes (HMAC) for authoriz
 
 ## Limits for autoscale provisioned throughput
 
-See the [Autoscale](./provision-throughput-autoscale.md#autoscale-limits) article and [FAQ](./autoscale-faq.yml#how-do-i-lower-the-maximum-ru-s-) for a detailed explanation of throughput and storage limits with autoscale.
+See the [Autoscale](./provision-throughput-autoscale.md) article and [FAQ](./autoscale-faq.yml#how-do-i-lower-the-maximum-ru-s-) for a detailed explanation of throughput and storage limits with autoscale.
 
 | Resource | Limit |
 | --- | --- |

@@ -1,15 +1,21 @@
 ---
 title: Monitor Normalized Request Units
+titleSuffix: Azure Cosmos DB
 description: Learn how to monitor the normalized request unit usage of an operation in Azure Cosmos DB. Owners of an Azure Cosmos DB account can understand which operations are consuming more request units.
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
-ms.date: 07/01/2025
+ms.date: 09/03/2025
+applies-to:
+  - NoSQL
+  - MongoDB
+  - Apache Cassandra
+  - Apache Gremlin
+  - Table
 ---
 
-# How to monitor normalized RU/s for an Azure Cosmos DB container or an account
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
+# Monitor normalized request units in Azure Cosmos DB
 
 Azure Monitor for Azure Cosmos DB provides a metrics view to monitor your account and create dashboards. The Azure Cosmos DB metrics are collected by default. This feature doesn't require you to enable or configure anything explicitly.
 
@@ -17,7 +23,7 @@ Azure Monitor for Azure Cosmos DB provides a metrics view to monitor your accoun
 
 **Normalized RU Consumption** is a metric between 0% to 100% that's used to help measure the utilization of provisioned throughput on a database or container. The metric is emitted at 1-minute intervals and is defined as the maximum Request Units per second (RU/s) utilization across all partition key ranges in the time interval. Each partition key range maps to one physical partition and is assigned to hold data for a range of possible hash values. In general, the higher the normalized RU percentage, the more you've utilized your provisioned throughput. The metric can also be used to view the utilization of individual partition key ranges on a database or container.
 
-For example, suppose you have a container where you set [autoscale max throughput](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and you have two partition key ranges (physical partitions) *P1* and *P2*. Because Azure Cosmos DB distributes the provisioned throughput equally across all the partition key ranges, *P1* and *P2* can each scale between 1000 - 10,000 RU/s. Suppose in a 1-minute interval, in a given second, *P1* consumed 6,000 RUs and *P2* consumed 8,000 RUs. The normalized RU consumption of P1 is 60% and 80% for *P2*. The overall normalized RU consumption of the entire container is MAX(60%, 80%) = 80%.
+For example, suppose you have a container where you set [autoscale max throughput](provision-throughput-autoscale.md) of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and you have two partition key ranges (physical partitions) *P1* and *P2*. Because Azure Cosmos DB distributes the provisioned throughput equally across all the partition key ranges, *P1* and *P2* can each scale between 1000 - 10,000 RU/s. Suppose in a 1-minute interval, in a given second, *P1* consumed 6,000 RUs and *P2* consumed 8,000 RUs. The normalized RU consumption of P1 is 60% and 80% for *P2*. The overall normalized RU consumption of the entire container is MAX(60%, 80%) = 80%.
 
 If you're interested in seeing the request unit consumption at a per-second interval, along with operation type, you can use the opt-in [diagnostic logs](monitor-resource-logs.md) and query the **PartitionKeyRUConsumption** table. To get a high-level overview of the operations and status code that your application is performing on the Azure Cosmos DB resource, you can use the built-in Azure Monitor **Total Requests** (API for NoSQL), **Mongo Requests**, **Gremlin Requests**, or **Cassandra Requests** metric. Later, you can filter on these requests by the 429 status code and split them by **Operation Type**.
 
