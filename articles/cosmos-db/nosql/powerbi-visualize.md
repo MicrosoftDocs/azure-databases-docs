@@ -70,13 +70,13 @@ To build a Power BI report/dashboard:
 
    - If Azure Synapse Link isn't enabled, you can enable this feature on your existing containers. If enabling Azure Synapse Link is in progress on any of the containers, the data from those containers isn't included. You should come back to this tab later and import data when the containers are enabled.
 
-   :::image type="content" source="media/powerbi-visualize/synapse-link-progress-existing-containers.png" alt-text="Progress of Azure Synapse Link enabled on existing containers." border="true" lightbox="media/powerbi-visualize/synapse-link-progress-existing-containers.png":::
+   :::image type="content" source="media/powerbi-visualize/synapse-link-progress-existing-containers.png" alt-text="Screenshot that shows progress of Azure Synapse Link enabled on existing containers." border="true" lightbox="media/powerbi-visualize/synapse-link-progress-existing-containers.png":::
 
 1. Depending on the amount of data in your containers, it might take a while to enable Azure Synapse Link. To learn more, see [enable Azure Synapse Link on existing containers](../configure-synapse-link.md#update-analytical-ttl) article.
 
    You can check the progress in the portal as shown in the following screen. Containers are enabled with Azure Synapse Link when the progress reaches 100%.
 
-   :::image type="content" source="media/powerbi-visualize/synapse-link-existing-containers-registration-complete.png" alt-text="Azure Synapse Link successfully enabled on the selected containers." border="true" lightbox="media/powerbi-visualize/synapse-link-existing-containers-registration-complete.png":::
+   :::image type="content" source="media/powerbi-visualize/synapse-link-existing-containers-registration-complete.png" alt-text="Screenshot that shows Azure Synapse Link successfully enabled on the selected containers." border="true" lightbox="media/powerbi-visualize/synapse-link-existing-containers-registration-complete.png":::
 
 1. From the Select workspace tab, choose the Azure Synapse Analytics workspace and select Next. This step automatically creates T-SQL views in Synapse Analytics, for the containers selected earlier. For more information on T-SQL views required to connect your Azure Cosmos DB to Power BI, see [Prepare views](/azure/synapse-analytics/sql/tutorial-connect-power-bi-desktop#3-prepare-view) article.
 
@@ -85,17 +85,17 @@ To build a Power BI report/dashboard:
 
 1. Choose an existing workspace or create a new one. To select an existing workspace, provide the Subscription, Workspace, and the Database details. Azure portal uses your Microsoft Entra credentials to automatically connect to your Synapse workspace and create T-SQL views. Make sure you have "Synapse administrator" permissions to this workspace.
 
-   :::image type="content" source="media/powerbi-visualize/synapse-create-views.png" alt-text="Connect to Azure Synapse Link workspace and create views." border="true" lightbox="media/powerbi-visualize/synapse-create-views.png":::
+   :::image type="content" source="media/powerbi-visualize/synapse-create-views.png" alt-text="Screenshot that shows how to connect to Azure Synapse Link workspace and create views." border="true" lightbox="media/powerbi-visualize/synapse-create-views.png":::
 
 1. Next, select Download .pbids to download the Power BI data source file. Open the downloaded file. It contains the required connection information and opens Power BI desktop.
 
-   :::image type="content" source="media/powerbi-visualize/download-powerbi-desktop-files.png" alt-text="Download the Power BI desktop files in .pbids format." border="true" lightbox="media/powerbi-visualize/download-powerbi-desktop-files.png":::
+   :::image type="content" source="media/powerbi-visualize/download-powerbi-desktop-files.png" alt-text="Screenshot that shows how to download the Power BI desktop files in .pbids format." border="true" lightbox="media/powerbi-visualize/download-powerbi-desktop-files.png":::
 
 1. You can now connect to Azure Cosmos DB data from Power BI desktop. A list of T-SQL views corresponding to the data in each container are displayed.
 
    For example, the following screen shows vehicle fleet data. You can load this data for further analysis or transform it before loading.
 
-   :::image type="content" source="media/powerbi-visualize/powerbi-desktop-select-view.png" alt-text="T-SQL views corresponding to the data in each container." border="true" lightbox="media/powerbi-visualize/powerbi-desktop-select-view.png":::
+   :::image type="content" source="media/powerbi-visualize/powerbi-desktop-select-view.png" alt-text="Screenshot that shows T-SQL views corresponding to the data in each container." border="true" lightbox="media/powerbi-visualize/powerbi-desktop-select-view.png":::
 
 1. You can now start building the report using Azure Cosmos DB's analytical data. Any changes to your data aren't reflected in the report, as soon as the data is replicated to analytical store, which typically happens in a couple of minutes.
 
@@ -108,13 +108,13 @@ Connecting to Azure Cosmos DB with the Power BI connector is currently supported
 
 1. You can Get Data, see Recent Sources, or Open Other Reports directly from the welcome screen. Close the screen by selecting the "X" option. The Report view of Power BI Desktop is displayed.
 
-   :::image type="content" source="media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop Report View - Power BI connector":::
+   :::image type="content" source="media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Screenshot of Power BI Desktop Report View - Power BI connector.":::
 
 1. Select the Home ribbon, then select on Get Data. The Get Data window should appear.
 
 1. Select on Azure, select Azure Cosmos DB (Beta), and then select Connect.
 
-   :::image type="content" source="media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop Get Data - Power BI connector":::
+   :::image type="content" source="media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Screenshot of Power BI Desktop Get Data - Power BI connector.":::
 
 1. On the Preview Connector page, select Continue. The Azure Cosmos DB window appears.
 

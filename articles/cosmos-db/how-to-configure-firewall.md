@@ -148,7 +148,7 @@ In Azure, cloud services are a common way for hosting middle-tier service logic 
 
 You can retrieve IP addresses for your cloud services in the Azure portal, as shown in the following screenshot:
 
-:::image type="content" source="media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Screenshot showing the public IP address for a cloud service displayed in the Azure portal":::
+:::image type="content" source="media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Screenshot showing the public IP address for a cloud service displayed in the Azure portal.":::
 When you scale out your cloud service by adding role instances, the new instances automatically have access to the Azure Cosmos DB account because they're part of the same cloud service.
 
 ### Requests from virtual machines
@@ -157,7 +157,7 @@ You can also use [virtual machines](https://azure.microsoft.com/services/virtual
 
 You can retrieve IP addresses for virtual machines in the Azure portal, as shown in the following screenshot:
 
-:::image type="content" source="media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Screenshot showing a public IP address for a virtual machine displayed in the Azure portal":::
+:::image type="content" source="media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Screenshot showing a public IP address for a virtual machine displayed in the Azure portal.":::
 
 When you add virtual machine instances to the group, they automatically receive access to your Azure Cosmos DB account.
 
