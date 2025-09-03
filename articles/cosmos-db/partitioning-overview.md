@@ -6,14 +6,18 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 09/02/2025
+ms.date: 09/03/2025
 ms.custom: cosmos-db-video
 ai-usage: ai-assisted
+applies-to:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Partitioning and horizontal scaling in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB uses partitioning to scale containers in a database to meet your application's performance needs. The items in a container are divided into distinct subsets called *logical partitions*. Logical partitions form based on the value of a *partition key* associated with each item in a container. All the items in a logical partition have the same partition key value.
 

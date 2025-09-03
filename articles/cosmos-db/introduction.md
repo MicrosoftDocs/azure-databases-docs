@@ -6,7 +6,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
-ms.date: 12/03/2024
+ms.date: 09/03/2025
 ms.update-cycle: 180-days
 adobe-target: true
 ms.collection:
@@ -14,11 +14,11 @@ ms.collection:
 appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ MongoDB vCore
-  - ✅ Cassandra
-  - ✅ Gremlin
-  - ✅ Table
+  - ✅ MongoDB (vCore)
   - ✅ PostgreSQL
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB - Database for the AI Era

@@ -1,17 +1,19 @@
 ---
 title: Provision Autoscale Throughput
+titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to provision autoscale throughput at the container and database level in Azure Cosmos DB for NoSQL using Azure portal, CLI, PowerShell, and various other SDKs. 
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 07/09/2025
+ms.date: 09/03/2025
 ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template, devx-track-dotnet, devx-track-extended-java
+applies-to:
+  - NoSQL
 ---
 
-# Provision autoscale throughput on database or container in Azure Cosmos DB - API for NoSQL
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+# Provision autoscale throughput for Azure Cosmos DB for NoSQL
 
 This article explains how to enable autoscale throughput on a database or container (collection, graph, or table) in Azure Cosmos DB for NoSQL. You can enable autoscale on a single container, or provision autoscale throughput on a database and share it among all the containers in the database.
 
@@ -27,7 +29,7 @@ If you're using a different API, see [API for MongoDB](../mongodb/how-to-provisi
 
 1. Select **New Container.** Enter a name for your database, container, and a partition key.
 
-1. Under database or container throughput, select the **Autoscale** option, and set the [maximum throughput (RU/s)](../provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) that you want the database or container to scale to.
+1. Under database or container throughput, select the **Autoscale** option, and set the [maximum throughput (RU/s)](../provision-throughput-autoscale.md) that you want the database or container to scale to.
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Screenshot that shows the settings to create a container and configure autoscale provisioned throughput." lightbox="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png":::
 
