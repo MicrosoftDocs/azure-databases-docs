@@ -1,18 +1,22 @@
 ### YamlMime:FAQ
 metadata:
-  title: Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB
+  title: Frequently Asked Questions About Autoscale Throughput
+  titleSuffix: Azure Cosmos DB
   description: Frequently asked questions about autoscale provisioned throughput for Azure Cosmos DB databases and containers.
   author: deborahc
   ms.author: dech
   ms.service: azure-cosmos-db
   ms.topic: faq
-  ms.date: 05/07/2025
-title: Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB
-summary: |
-  [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
-  
+  ms.date: 09/03/2025
+  applies-to:
+    - NoSQL
+    - MongoDB
+    - Apache Cassandra
+    - Apache Gremlin
+    - Table
+title: Frequently asked questions about autoscale throughput in Azure Cosmos DB
+summary: |  
   Azure Cosmos DB uses autoscale provisioned throughput to automatically manage and scale the request units per second (RU/s) of your database or container based on usage. This article answers commonly asked questions about autoscale in Azure Cosmos DB.
-
 sections:
   - name: General
     questions:
@@ -194,7 +198,7 @@ sections:
         answer: |
           The storage limit in GB for each maximum RU/s is the maximum RU/s of the database or container divided by 10. For example, if the maximum RU/s is 20,000 RU/s, the resource can support 2,000 GB of storage.
 
-          For available maximum RU/s and storage options, see [Provision throughput autoscale limits](provision-throughput-autoscale.md#autoscale-limits). 
+          For available maximum RU/s and storage options, see [Provision throughput autoscale limits](provision-throughput-autoscale.md). 
           
       - question: |
           What happens if I exceed the storage limit associated with my maximum throughput?
