@@ -536,7 +536,7 @@ What can you do?
 
 ## Takeaways
 
-The biggest takeaway from this article is that data modeling in a schema-free world is as important as ever.
+The biggest takeaway from this article is that data modeling in a schema-free scenario is as important as ever.
 
 Just as there's no single way to represent a piece of data on a screen, there's no single way to model your data. You need to understand your application and how it produces, consumes, and processes the data. By applying the guidelines presented here, you can create a model that addresses the immediate needs of your application. When your application changes, use the flexibility of a schema-free database to adapt and evolve your data model easily.
 
