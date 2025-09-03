@@ -47,13 +47,21 @@ db.stores.aggregate([
 ])
 ```
 
-The query results in generating an array of sequential numbers.
+This query returns the following result.
 
 ```json
-{
-    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-    "rangeArray": [ 0, 1, 2, 3, 4 ]
-}
+[
+    {
+        "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+        "rangeArray": [
+            0,
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+]
 ```
 
 ### Example 2: Generate a range of numbers with a step value
@@ -71,13 +79,20 @@ db.stores.aggregate([
 ])
 ```
 
-The query results in generating an array of even numbers.
+The query results the following result.
 
 ```json
-{
-    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-    "rangeArray": [ 0, 2, 4, 6 ]
-}
+[
+    {
+        "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+        "rangeArray": [
+            0,
+            2,
+            4,
+            6
+        ]
+    }
+]
 ```
 
 ## Related content
