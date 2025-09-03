@@ -36,7 +36,7 @@ The `$map` operator is used to apply an expression to each element in an array a
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
