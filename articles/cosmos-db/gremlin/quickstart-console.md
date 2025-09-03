@@ -101,7 +101,7 @@ Now that the console is connected to the account, use the standard Gremlin synta
     ```
 
     > [!IMPORTANT]
-    > Don't foget the `:>` prefix. THis prefix is required to run the command remotely.
+    > Don't forget the `:>` prefix. THis prefix is required to run the command remotely.
 
 1. Add another **product** vertex with these properties:
 
