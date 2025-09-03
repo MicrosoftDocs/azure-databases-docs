@@ -7,6 +7,7 @@ ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
+ms.date: 09/03/2025
 ms.custom: build-2023
 ai-usage: ai-assisted
 applies-to:
@@ -69,13 +70,13 @@ To build a Power BI report/dashboard:
 
    - If Azure Synapse Link isn't enabled, you can enable this feature on your existing containers. If enabling Azure Synapse Link is in progress on any of the containers, the data from those containers isn't included. You should come back to this tab later and import data when the containers are enabled.
 
-   :::image type="content" source=".media/powerbi-visualize/synapse-link-progress-existing-containers.png" alt-text="Progress of Azure Synapse Link enabled on existing containers." border="true" lightbox=".media/powerbi-visualize/synapse-link-progress-existing-containers.png":::
+   :::image type="content" source="media/powerbi-visualize/synapse-link-progress-existing-containers.png" alt-text="Progress of Azure Synapse Link enabled on existing containers." border="true" lightbox="media/powerbi-visualize/synapse-link-progress-existing-containers.png":::
 
 1. Depending on the amount of data in your containers, it might take a while to enable Azure Synapse Link. To learn more, see [enable Azure Synapse Link on existing containers](../configure-synapse-link.md#update-analytical-ttl) article.
 
    You can check the progress in the portal as shown in the following screen. Containers are enabled with Azure Synapse Link when the progress reaches 100%.
 
-   :::image type="content" source=".media/powerbi-visualize/synapse-link-existing-containers-registration-complete.png" alt-text="Azure Synapse Link successfully enabled on the selected containers." border="true" lightbox=".media/powerbi-visualize/synapse-link-existing-containers-registration-complete.png":::
+   :::image type="content" source="media/powerbi-visualize/synapse-link-existing-containers-registration-complete.png" alt-text="Azure Synapse Link successfully enabled on the selected containers." border="true" lightbox="media/powerbi-visualize/synapse-link-existing-containers-registration-complete.png":::
 
 1. From the Select workspace tab, choose the Azure Synapse Analytics workspace and select Next. This step automatically creates T-SQL views in Synapse Analytics, for the containers selected earlier. For more information on T-SQL views required to connect your Azure Cosmos DB to Power BI, see [Prepare views](/azure/synapse-analytics/sql/tutorial-connect-power-bi-desktop#3-prepare-view) article.
 
@@ -84,17 +85,17 @@ To build a Power BI report/dashboard:
 
 1. Choose an existing workspace or create a new one. To select an existing workspace, provide the Subscription, Workspace, and the Database details. Azure portal uses your Microsoft Entra credentials to automatically connect to your Synapse workspace and create T-SQL views. Make sure you have "Synapse administrator" permissions to this workspace.
 
-   :::image type="content" source=".media/powerbi-visualize/synapse-create-views.png" alt-text="Connect to Azure Synapse Link workspace and create views." border="true" lightbox=".media/powerbi-visualize/synapse-create-views.png":::
+   :::image type="content" source="media/powerbi-visualize/synapse-create-views.png" alt-text="Connect to Azure Synapse Link workspace and create views." border="true" lightbox="media/powerbi-visualize/synapse-create-views.png":::
 
 1. Next, select Download .pbids to download the Power BI data source file. Open the downloaded file. It contains the required connection information and opens Power BI desktop.
 
-   :::image type="content" source=".media/powerbi-visualize/download-powerbi-desktop-files.png" alt-text="Download the Power BI desktop files in .pbids format." border="true" lightbox=".media/powerbi-visualize/download-powerbi-desktop-files.png":::
+   :::image type="content" source="media/powerbi-visualize/download-powerbi-desktop-files.png" alt-text="Download the Power BI desktop files in .pbids format." border="true" lightbox="media/powerbi-visualize/download-powerbi-desktop-files.png":::
 
 1. You can now connect to Azure Cosmos DB data from Power BI desktop. A list of T-SQL views corresponding to the data in each container are displayed.
 
    For example, the following screen shows vehicle fleet data. You can load this data for further analysis or transform it before loading.
 
-   :::image type="content" source=".media/powerbi-visualize/powerbi-desktop-select-view.png" alt-text="T-SQL views corresponding to the data in each container." border="true" lightbox=".media/powerbi-visualize/powerbi-desktop-select-view.png":::
+   :::image type="content" source="media/powerbi-visualize/powerbi-desktop-select-view.png" alt-text="T-SQL views corresponding to the data in each container." border="true" lightbox="media/powerbi-visualize/powerbi-desktop-select-view.png":::
 
 1. You can now start building the report using Azure Cosmos DB's analytical data. Any changes to your data aren't reflected in the report, as soon as the data is replicated to analytical store, which typically happens in a couple of minutes.
 
@@ -157,7 +158,7 @@ Connecting to Azure Cosmos DB with the Power BI connector is currently supported
 
   - The query has one or more partition keys appear in an `IS NOT NULL` clause in the `WHERE` clause.
 
-- The V2 connector doesn't support complex data types like arrays, objects, and hierarchical structures. Use the [Fabric Mirroring for Azure Cosmos DB]([/articles/cosmos-db/analytics-and-business-intelligence-overview.md](/fabric/database/mirrored-database/azure-cosmos-db)) feature for those scenarios.
+- The V2 connector doesn't support complex data types like arrays, objects, and hierarchical structures. Use the [Fabric Mirroring for Azure Cosmos DB](/fabric/database/mirrored-database/azure-cosmos-db) feature for those scenarios.
 
 - The V2 connector uses sampling of the first 1,000 documents to come up with the inferred schema. This approach isn't recommended for schema evolution scenarios where only some documents are updated. As an example, a newly added property to one document in a container with thousands of documents might not be included in the inferred schema. We recommend the [Fabric Mirroring for Azure Cosmos DB](/fabric/database/mirrored-database/azure-cosmos-db) feature for those scenarios.
 
