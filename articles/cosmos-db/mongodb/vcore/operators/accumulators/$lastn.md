@@ -38,7 +38,7 @@ The `$lastN` accumulator operator returns the last N values in a group of docume
 | **`input`** | The expression that specifies the field or value to return the last N occurrences of. |
 
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -326,42 +326,96 @@ db.stores.aggregate([
 The query returns the last two events from `promotionEvents` array.
 
 ```json
+[
   {
-    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-    "lastTwoPromotions": [
-      {
-        "eventName": "Grand Deal Days",
-        "promotionalDates": {
-          "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
-          "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
-        },
-        "discounts": [
-          { "categoryName": "Remote Controls", "discountPercentage": 7 },
-          { "categoryName": "Televisions", "discountPercentage": 11 },
-          { "categoryName": "Business Projectors", "discountPercentage": 13 },
-          { "categoryName": "Laser Projectors", "discountPercentage": 6 },
-          { "categoryName": "Projectors", "discountPercentage": 6 },
-          { "categoryName": "Projector Screens", "discountPercentage": 24 }
-        ]
-      },
-      {
-        "eventName": "Major Bargain Bash",
-        "promotionalDates": {
-          "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
-          "endDate": { "Year": 2024, "Month": 9, "Day": 30 }
-        },
-        "discounts": [
-          { "categoryName": "Sound Bars", "discountPercentage": 9 },
-          { "categoryName": "VR Games", "discountPercentage": 7 },
-          { "categoryName": "Xbox Games", "discountPercentage": 25 },
-          { "categoryName": "Projector Accessories", "discountPercentage": 18 },
-          { "categoryName": "Mobile Games", "discountPercentage": 8 },
-          { "categoryName": "Projector Cases", "discountPercentage": 22 }
-        ]
-      }
-    ]
+      "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+      "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+      "lastTwoPromotions": [
+          {
+              "eventName": "Grand Deal Days",
+              "promotionalDates": {
+                  "startDate": {
+                      "Year": 2024,
+                      "Month": 6,
+                      "Day": 23
+                  },
+                  "endDate": {
+                      "Year": 2024,
+                      "Month": 6,
+                      "Day": 30
+                  }
+              },
+              "discounts": [
+                  {
+                      "categoryName": "Remote Controls",
+                      "discountPercentage": 7
+                  },
+                  {
+                      "categoryName": "Televisions",
+                      "discountPercentage": 11
+                  },
+                  {
+                      "categoryName": "Business Projectors",
+                      "discountPercentage": 13
+                  },
+                  {
+                      "categoryName": "Laser Projectors",
+                      "discountPercentage": 6
+                  },
+                  {
+                      "categoryName": "Projectors",
+                      "discountPercentage": 6
+                  },
+                  {
+                      "categoryName": "Projector Screens",
+                      "discountPercentage": 24
+                  }
+              ]
+          },
+          {
+              "eventName": "Major Bargain Bash",
+              "promotionalDates": {
+                  "startDate": {
+                      "Year": 2024,
+                      "Month": 9,
+                      "Day": 21
+                  },
+                  "endDate": {
+                      "Year": 2024,
+                      "Month": 9,
+                      "Day": 30
+                  }
+              },
+              "discounts": [
+                  {
+                      "categoryName": "Sound Bars",
+                      "discountPercentage": 9
+                  },
+                  {
+                      "categoryName": "VR Games",
+                      "discountPercentage": 7
+                  },
+                  {
+                      "categoryName": "Xbox Games",
+                      "discountPercentage": 25
+                  },
+                  {
+                      "categoryName": "Projector Accessories",
+                      "discountPercentage": 18
+                  },
+                  {
+                      "categoryName": "Mobile Games",
+                      "discountPercentage": 8
+                  },
+                  {
+                      "categoryName": "Projector Cases",
+                      "discountPercentage": 22
+                  }
+              ]
+          }
+      ]
   }
+]
 ```
 
 ## Related content

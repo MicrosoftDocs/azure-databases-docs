@@ -164,10 +164,12 @@ db.stores.aggregate([{
 This query returns the following result:
 
 ```json
-{
-    "_id": "Fourth Coffee",
-    "stdDev": 39133.27057120701
-}
+[
+  {
+      "_id": "Fourth Coffee",
+      "stdDev": 39133.27057120701
+  }
+]
 ```
 
 ### Example 2 - Calculate the standard deviation of a field with a single value
