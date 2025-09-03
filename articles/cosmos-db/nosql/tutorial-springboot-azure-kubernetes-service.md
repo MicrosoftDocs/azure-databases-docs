@@ -23,7 +23,7 @@ In this tutorial, you set up and deploy a Spring Boot application that exposes R
 
 ## Prerequisites
 
-- An Azure account with an active subscription. Create a [free account](https://azure.microsoft.com/free/) if you dont have a Azure subscription.
+- An Azure account with an active subscription. Create a [free account](https://azure.microsoft.com/free/) if you don't have an Azure subscription.
 - [Java Development Kit (JDK) 8](/java/openjdk/download#openjdk-8). Point your `JAVA_HOME` environment variable to the path where the JDK is installed.
 - [Azure CLI](/cli/azure/install-azure-cli) to create Azure services.
 - [Docker](https://docs.docker.com/engine/install/) to manage images and containers.
@@ -196,8 +196,7 @@ If you intend to run the application on Azure Kubernetes Service, skip this sect
     > [!NOTE]
     > The database and a container (`users`) are created automatically once you start the application.
 
-
-2. Deploy to Kubernetes and wait for the `Pod` to transition to `Running` state:
+1. Deploy to Kubernetes and wait for the `Pod` to transition to `Running` state:
 
     ```bash
     kubectl apply -f deploy/app.yaml
@@ -207,7 +206,6 @@ If you intend to run the application on Azure Kubernetes Service, skip this sect
 
    > [!NOTE]
    > You can check application logs using: `kubectl logs -f $(kubectl get pods -l=app=spring-cosmos-app -o=jsonpath='{.items[0].metadata.name}') -c spring-cosmos-app`
-
 
 ## Access the application
 
