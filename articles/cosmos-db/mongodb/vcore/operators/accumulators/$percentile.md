@@ -32,7 +32,7 @@ $percentile: {
 | **`p`** | An array of percentile values (between 0 and 1) to calculate. |
 | **`method`** | Specifies the interpolation method to use. Valid values are `"approximate"` and `"continuous"`. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 

@@ -10,11 +10,11 @@ ms.date: 09/03/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ai-usage: ai-assisted
 applies-to:
-  - NoSQL
-  - MongoDB
-  - Apache Cassandra
-  - Apache Gremlin
-  - Table
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Configure IP firewall for Azure Cosmos DB

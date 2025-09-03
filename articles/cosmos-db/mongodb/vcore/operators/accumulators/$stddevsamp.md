@@ -168,10 +168,12 @@ db.stores.aggregate([{
 This query returns the following results:
 
 ```json
-{
-    "_id": "Fourth Coffee",
-    "stdDev": 22040.044055209048
-}
+[
+  {
+      "_id": "Fourth Coffee",
+      "stdDev": 22040.044055209048
+  }
+]
 ```
 
 ## Related content

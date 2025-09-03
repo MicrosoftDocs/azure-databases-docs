@@ -10,11 +10,11 @@ ms.date: 09/03/2025
 ms.custom: build-2023
 ai-usage: ai-assisted
 applies-to:
-  - NoSQL
-  - MongoDB
-  - Apache Cassandra
-  - Apache Gremlin
-  - Table
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB service quotas and default limits
@@ -313,21 +313,6 @@ The following table lists the limits specific to MongoDB feature support. Other 
 ¹ Large document sizes up to 16 MB require feature enablement in the Azure portal. Learn more in the [feature documentation](../cosmos-db/mongodb/feature-support-42.md#data-types).
 
 ² Set the idle connection timeout in the driver settings to 2-3 minutes because the [default timeout for Azure LoadBalancer is 4 minutes](/azure/load-balancer/load-balancer-tcp-idle-timeout). This timeout ensures that an intermediate load balancer idle doesn't close connections between the client machine and Azure Cosmos DB.
-
-## Try Azure Cosmos DB free limits
-
-The following table lists the limits for the [Try Azure Cosmos DB for Free](https://azure.microsoft.com/try/cosmosdb/) trial.
-
-| Resource | Limit |
-| --- | --- |
-| Duration of the trial | 30 days (you can request a new trial after expiration). <br> After expiration, the stored information is deleted. |
-| Maximum containers per subscription (NoSQL, Gremlin, API for Table) | 1 |
-| Maximum containers per subscription (API for MongoDB) | 3 |
-| Maximum throughput per container | 5000 |
-| Maximum throughput per shared-throughput database | 20000 |
-| Maximum total storage per account | 10 GB |
-
-Try Azure Cosmos DB supports global distribution only in the Central US, North Europe, and Southeast Asia regions. You can't create Azure support tickets for Try Azure Cosmos DB accounts. However, support is available for subscribers with existing support plans.
 
 ## Azure Cosmos DB free tier account limits
 

@@ -35,7 +35,7 @@ The `$top` operator sorts documents on one or more fields specified by the query
 | **`fieldName`** | The field to use for sorting the result set|
 | **`sortOrder`** | 1 or -1. 1 implies sorting in ascending order of the value of the field while -1 implies sorting in descending order of the values of the field|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 

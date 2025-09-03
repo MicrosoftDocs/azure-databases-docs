@@ -100,7 +100,7 @@ Retrieval-augmentated generation (RAG) is an architecture that augments the capa
 A simple RAG pattern using Azure Cosmos DB for NoSQL could be:
 
 1. Enable [Azure Cosmos DB NoSQL Vector Index](nosql/vector-search.md).
-1. Setup a database and container with a container vector policy and vector index.
+1. Set up a database and container with a container vector policy and vector index.
 1. Insert data into an Azure Cosmos DB for NoSQL database and container
 1. Create embeddings from a data property using Azure OpenAI Embeddings
 1. Link the Azure Cosmos DB for NoSQL.
@@ -127,7 +127,7 @@ DiskANN enables you to perform highly accurate, low latency queriers at any scal
 - [What is the database behind ChatGPT? - Microsoft Mechanics](https://www.youtube.com/watch?v=6IIUtEFKJec)
 - [Vector indexing in Azure Cosmos DB for NoSQL](index-policy.md#vector-indexes)
 - [VectorDistance system function NoSQL queries](nosql/query/vectordistance.md)
-- [How to setup vector database capabilities in Azure Cosmos DB NoSQL](nosql/vector-search.md)
+- [How to set up vector database capabilities in Azure Cosmos DB NoSQL](nosql/vector-search.md)
 - [Python - Notebook tutorial](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
 - [C# - Build Your Own Copilot Complete Solution Accelerator with AKS and Semantic Kernel](https://aka.ms/cdbcopilot)
 - [C# - Build Your Own Copilot Sample App and Hands-on-Lab](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot)
@@ -159,11 +159,6 @@ Use the natively integrated vector database in [Azure Cosmos DB for PostgreSQL](
 #### Code sample
 
 - Python: [Python notebook tutorial - food review chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-PostgreSQL_CognitiveSearch)
-
-## Related content
-
-- [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
-- [90-day Free Trial and up to $6,000 in throughput credits with Azure AI Advantage](ai-advantage.md)
 
 ## Next step
 

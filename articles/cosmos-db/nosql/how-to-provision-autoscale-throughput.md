@@ -10,7 +10,7 @@ ms.topic: how-to
 ms.date: 09/03/2025
 ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template, devx-track-dotnet, devx-track-extended-java
 applies-to:
-  - NoSQL
+  - ✅ NoSQL
 ---
 
 # Provision autoscale throughput for Azure Cosmos DB for NoSQL

@@ -10,7 +10,7 @@ ms.topic: language-reference
 ms.date: 02/12/2025
 ---
 
-# $divide (arithmetic expression)
+# $divide
 
 The `$divide` operator divides two numbers and returns the quotient. The $divide operator returns an error if the divisor is zero.
 
@@ -188,3 +188,4 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
