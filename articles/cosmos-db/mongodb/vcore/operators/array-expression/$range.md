@@ -34,6 +34,43 @@ The `$range` operator is used to generate an array of sequential integers. The o
 
 Consider this sample document from the stores collection.
 
+```json
+{
+    "_id": "d3c9df51-41bd-4b4e-a26b-b038d9cf8b45",
+    "location": {
+        "lat": -67.7571,
+        "lon": 97.2505
+    },
+    "sales": {
+        "totalSales": 149849,
+        "salesByCategory": [
+            {
+                "categoryName": "DJ Speakers",
+                "totalSales": 36972
+            },
+            {
+                "categoryName": "DJ Headphones",
+                "totalSales": 12877
+            },
+            {
+                "categoryName": "Music Accessories",
+                "totalSales": 40000
+            },
+            {
+                "categoryName": "DJ Accessories",
+                "totalSales": 60000
+            }
+        ]
+    },
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
+    ]
+}
+```
 
 ### Example 1: Generate a range of numbers
 
