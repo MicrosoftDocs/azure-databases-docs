@@ -23,6 +23,12 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 > [!NOTE]
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## September 2025
+
+### Azure MySQL 8.4 General Available
+
+We’re excited to announce that Azure Database for MySQL – Flexible Server now supports MySQL 8.4 in General Availability (GA). This means you can create new MySQL 8.4 servers on Azure fully supported for production workloads. MySQL 8.4 is a long-term supported release from the MySQL community, bringing the latest features and improvements while emphasizing stability. With Azure’s managed service, you get these new capabilities backed by Azure’s enterprise-grade reliability and support. In short, MySQL 8.4 GA opens the door for you to upgrade your databases and future-proof your MySQL environment on Azure. [Learn more](../concepts-version-policy.md#supported-mysql-versions)
+
 ## Aug 2025
 
 ### Cross subscription and cross resource-group placement in restore/replica provisioning workflow
