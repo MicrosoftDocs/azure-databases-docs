@@ -6,7 +6,7 @@ ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 09/02/2025
+ms.custom: build-2023
 ai-usage: ai-assisted
 ---
 

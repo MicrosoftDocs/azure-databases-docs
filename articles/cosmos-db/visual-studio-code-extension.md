@@ -3,14 +3,12 @@ title: Use Visual Studio Code to connect and manage Azure Cosmos DB resources
 description: Learn how to connect to Azure Cosmos DB for NoSQL or Azure Cosmos DB for MongoDB (vCore) cluster by using Visual Studio Code.
 author: khelanmodi
 ms.author: khelanmodi
-ms.reviewer: gahllevy, sasinnat, esarroyo
-ms.date: 09/03/2025
 ms.service: azure-cosmos-db
 ms.topic: how-to
-keywords: connect to cosmos db for nosql or cosmos db for mongodb database
-zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
+ms.date: 09/03/2025
 ms.custom: sfi-image-nochange
 ai-usage: ai-assisted
+zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ---
 
 # Use Visual Studio Code to connect and query Azure Cosmos DB instances
