@@ -10,11 +10,11 @@ ms.date: 09/03/2025
 ms.custom: build-2023
 ai-usage: ai-assisted
 applies-to:
-  - NoSQL
-  - MongoDB
-  - Apache Cassandra
-  - Apache Gremlin
-  - Table
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB service quotas and default limits

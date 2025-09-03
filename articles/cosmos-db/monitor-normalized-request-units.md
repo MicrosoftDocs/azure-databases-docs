@@ -8,11 +8,11 @@ ms.author: esarroyo
 author: StefArroyo
 ms.date: 09/03/2025
 applies-to:
-  - NoSQL
-  - MongoDB
-  - Apache Cassandra
-  - Apache Gremlin
-  - Table
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Monitor normalized request units in Azure Cosmos DB

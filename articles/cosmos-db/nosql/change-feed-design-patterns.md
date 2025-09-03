@@ -11,7 +11,7 @@ ms.date: 09/03/2025
 ms.custom: cosmos-db-video, build-2023
 ai-usage: ai-assisted
 applies-to:
-  - NoSQL
+  - ✅ NoSQL
 ---
 
 # Change feed design patterns in Azure Cosmos DB for NoSQL

@@ -11,7 +11,7 @@ ms.date: 09/03/2025
 ms.custom: cosmos-db-video
 ai-usage: ai-assisted
 applies-to:
-  - NoSQL
+  - ✅ NoSQL
 ---
 
 # Data modeling in Azure Cosmos DB for NoSQL
