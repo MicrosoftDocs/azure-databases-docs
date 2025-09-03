@@ -30,7 +30,7 @@ Azure Cosmos DB is ideal for IoT, gaming, retail, and operational logging applic
 
 The change feed in Azure Cosmos DB lets you build efficient, scalable solutions for these patterns, as shown in the following image:
 
-:::image type="content" source="media/change-feed-design-patterns/changefeedoverview.png" alt-text="Diagram showing how Azure Cosmos DB change feed powers real-time analytics and event-driven computing scenarios." border="false":::
+:::image type="content" source="media/change-feed-design-patterns/overview.png" alt-text="Diagram showing how Azure Cosmos DB change feed powers real-time analytics and event-driven computing scenarios." border="false":::
 
 ## Event computing and notifications
 
