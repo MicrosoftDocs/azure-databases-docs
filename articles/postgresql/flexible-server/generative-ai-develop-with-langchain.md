@@ -98,7 +98,7 @@ embeddings = AzureOpenAIEmbeddings(
 
 ### Use Microsoft Entra authentication
 
-The following sections demonstrats how to set up LangChain to using Microsoft Entra authentication. The class `AzurePGConnectionPool` in the LangChain Azure Postgres package retrieves tokens for the Azure Database for PostgreSQL service by using `DefaultAzureCredential` from the `azure.identity` library. 
+The following sections demonstrate how to set up LangChain to use Microsoft Entra authentication. The class `AzurePGConnectionPool` in the LangChain Azure Postgres package retrieves tokens for the Azure Database for PostgreSQL service by using `DefaultAzureCredential` from the `azure.identity` library. 
 
 The connection  can be passed into the `connection` parameter of the `AzurePGVectorStore` LangChain vector store.
 
@@ -129,7 +129,7 @@ entra_connection_pool = AzurePGConnectionPool(
 
 ### Use password authentication
 
-If you're not using Microsoft Entra authentication, The `BasicAuth` classesallows the use of username and password:
+If you're not using Microsoft Entra authentication, the `BasicAuth` class allows the use of username and password:
 
 ``` python
 basic_auth_connection_pool = AzurePGConnectionPool(
@@ -247,7 +247,7 @@ After you create your vector store and add the relevant documents, you can query
 
 ### Filtering support
 
-The vector store supports a set of filters that can be applied against the metadata fields of the documents via the `FilterCondition`, `OrFilter` and `AndFilter` in the [LangChain Azure PostgreSQL](https://pypi.org/project/langchain-azure-postgresql/) package:
+The vector store supports a set of filters that can be applied against the metadata fields of the documents via the `FilterCondition`, `OrFilter`, and `AndFilter` in the [LangChain Azure PostgreSQL](https://pypi.org/project/langchain-azure-postgresql/) package:
 
 | Operator | Meaning/Category                |
 | -------- | ------------------------------- |
