@@ -21,13 +21,17 @@ The syntax for the `$slice` operator is as following.
 - Returns elements from either the start or end of the array
 
 ```javascript
-{ $slice: [ <array>, <n> ] }
+{
+  $slice: [ <array>, <n> ]
+}
 ```
 
 - Returns elements from the specified position in the array
 
 ```javascript
-{ $slice: [ <array>, <position>, <n> ] }
+{
+  $slice: [ <array>, <position>, <n> ]
+}
 ```
 
 ## Parameters
@@ -38,52 +42,53 @@ The syntax for the `$slice` operator is as following.
 | **`position`** | Any valid integer expression. |
 | **`n`** | Any valid integer expression. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Lakeshore Retail",
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "Towel Racks",
-        "totalSales": 13237
-      },
-      {
-        "categoryName": "Washcloths",
-        "totalSales": 44315
-      },
-      {
-        "categoryName": "Face Towels",
-        "totalSales": 42095
-      },
-      {
-        "categoryName": "Toothbrush Holders",
-        "totalSales": 47912
-      },
-      {
-        "categoryName": "Hybrid Mattresses",
-        "totalSales": 48660
-      },
-      {
-        "categoryName": "Napkins",
-        "totalSales": 31439
-      },
-      {
-        "categoryName": "Pillow Cases",
-        "totalSales": 38833
-      }
-    ]},
-"tag": [
-    '#ShopLocal',
-    '#FashionStore',
-    '#SeasonalSale',
-    '#FreeShipping',
-    '#MembershipDeals'
-  ]
+    "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+    "name": "Lakeshore Retail",
+    "sales": {
+        "salesByCategory": [
+            {
+                "categoryName": "Towel Racks",
+                "totalSales": 13237
+            },
+            {
+                "categoryName": "Washcloths",
+                "totalSales": 44315
+            },
+            {
+                "categoryName": "Face Towels",
+                "totalSales": 42095
+            },
+            {
+                "categoryName": "Toothbrush Holders",
+                "totalSales": 47912
+            },
+            {
+                "categoryName": "Hybrid Mattresses",
+                "totalSales": 48660
+            },
+            {
+                "categoryName": "Napkins",
+                "totalSales": 31439
+            },
+            {
+                "categoryName": "Pillow Cases",
+                "totalSales": 38833
+            }
+        ]
+    },
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
+    ]
 }
 ```
 
@@ -92,32 +97,41 @@ Let's understand the usage with sample json from `stores` dataset.
 The example queries for the first three elements of the `sales.salesByCategory` array for `_id: 988d2dd1-2faa-4072-b420-b91b95cbfd60` within `stores` collection.
 
 ```javascript
-db.stores.aggregate([
-     { $match: { "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60"} }
-   , { $project: { "salesByCategory": { $slice: [ "$sales.salesByCategory", 3 ] } } }
-])
+db.stores.aggregate([{
+    $match: {
+        "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60"
+    }
+}, {
+    $project: {
+        "salesByCategory": {
+            $slice: ["$sales.salesByCategory", 3]
+        }
+    }
+}])
 ```
 
-The query response reverts with first three array elements for the sample json.
+This query returns the following result.
 
 ```json
-{
-  "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "salesByCategory": [
+[
     {
-      "categoryName": "Towel Racks",
-      "totalSales": 13237
-    },
-    {
-      "categoryName": "Washcloths",
-      "totalSales": 44315
-    },
-    {
-      "categoryName": "Face Towels",
-      "totalSales": 42095
+        "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+        "salesByCategory": [
+            {
+                "categoryName": "Towel Racks",
+                "totalSales": 13237
+            },
+            {
+                "categoryName": "Washcloths",
+                "totalSales": 44315
+            },
+            {
+                "categoryName": "Face Towels",
+                "totalSales": 42095
+            }
+        ]
     }
-  ]
-}
+]
 ```
 
 ## Related content

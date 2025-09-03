@@ -32,6 +32,46 @@ The `$range` operator is used to generate an array of sequential integers. The o
 
 ## Examples
 
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "d3c9df51-41bd-4b4e-a26b-b038d9cf8b45",
+    "location": {
+        "lat": -67.7571,
+        "lon": 97.2505
+    },
+    "sales": {
+        "totalSales": 149849,
+        "salesByCategory": [
+            {
+                "categoryName": "DJ Speakers",
+                "totalSales": 36972
+            },
+            {
+                "categoryName": "DJ Headphones",
+                "totalSales": 12877
+            },
+            {
+                "categoryName": "Music Accessories",
+                "totalSales": 40000
+            },
+            {
+                "categoryName": "DJ Accessories",
+                "totalSales": 60000
+            }
+        ]
+    },
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
+    ]
+}
+```
+
 ### Example 1: Generate a range of numbers
 
 The example demonstrates usage of operator to generate an array of integers from 0 to 5, wherein it includes the left boundary while excludes the right.
@@ -47,13 +87,21 @@ db.stores.aggregate([
 ])
 ```
 
-The query results in generating an array of sequential numbers.
+This query returns the following result.
 
 ```json
-{
-    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-    "rangeArray": [ 0, 1, 2, 3, 4 ]
-}
+[
+    {
+        "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+        "rangeArray": [
+            0,
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+]
 ```
 
 ### Example 2: Generate a range of numbers with a step value
@@ -71,13 +119,20 @@ db.stores.aggregate([
 ])
 ```
 
-The query results in generating an array of even numbers.
+The query results the following result.
 
 ```json
-{
-    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-    "rangeArray": [ 0, 2, 4, 6 ]
-}
+[
+    {
+        "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+        "rangeArray": [
+            0,
+            2,
+            4,
+            6
+        ]
+    }
+]
 ```
 
 ## Related content
