@@ -7,7 +7,13 @@ metadata:
   ms.author: mjbrown
   ms.service: azure-cosmos-db
   ms.topic: faq
-  ms.date: 08/20/2025
+  ms.date: 09/03/2025
+  applies-to:
+    - ✅ NoSQL
+    - ✅ MongoDB
+    - ✅ Apache Cassandra
+    - ✅ Apache Gremlin
+    - ✅ Table
 title: Frequently asked questions about Azure Cosmos DB
 summary: |
   [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
