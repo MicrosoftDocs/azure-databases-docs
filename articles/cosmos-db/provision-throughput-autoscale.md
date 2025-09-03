@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 09/03/2025
 ai-usage: ai-assisted
 applies-to:
-  - NoSQL
-  - MongoDB
-  - Apache Cassandra
-  - Apache Gremlin
-  - Table
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Create Azure Cosmos DB containers and databases with autoscale

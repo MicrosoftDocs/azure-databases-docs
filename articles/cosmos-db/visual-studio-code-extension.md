@@ -11,8 +11,8 @@ ms.custom: sfi-image-nochange
 ai-usage: ai-assisted
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 applies-to:
-  - NoSQL
-  - MongoDB
+  - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
 # Use Visual Studio Code to connect and query Azure Cosmos DB instances

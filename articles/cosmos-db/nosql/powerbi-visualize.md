@@ -11,7 +11,7 @@ ms.date: 09/03/2025
 ms.custom: build-2023
 ai-usage: ai-assisted
 applies-to:
-  - NoSQL
+  - ✅ NoSQL
 ---
 
 # Visualize Azure Cosmos DB for NoSQL data using Power BI
