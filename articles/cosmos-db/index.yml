@@ -17,9 +17,6 @@ highlightedContent:
     - title: Introduction to Azure Cosmos DB
       itemType: concept
       url: introduction.md
-    - title: Try Azure Cosmos DB free
-      itemType: get-started
-      url: try-free.md
     - title: Distributed NoSQL databases
       itemType: concept
       url: distributed-nosql.md

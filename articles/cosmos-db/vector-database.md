@@ -160,11 +160,6 @@ Use the natively integrated vector database in [Azure Cosmos DB for PostgreSQL](
 
 - Python: [Python notebook tutorial - food review chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-PostgreSQL_CognitiveSearch)
 
-## Related content
-
-- [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
-- [90-day Free Trial and up to $6,000 in throughput credits with Azure AI Advantage](ai-advantage.md)
-
 ## Next step
 
 > [!div class="nextstepaction"]

@@ -23,7 +23,6 @@ The Azure Cosmos DB point-in-time same-account restore feature helps you recover
 - An Azure Cosmos DB account. You can choose one of the following options for an Azure Cosmos DB account:
   - Use an existing Azure Cosmos DB account.
   - Create a [new Azure Cosmos DB account](nosql/how-to-create-account.md?tabs=azure-portal) in your Azure subscription.
-  - Create a [Try Azure Cosmos DB free](try-free.md) account with no commitment.
 
 ## Restore a deleted container or database
 

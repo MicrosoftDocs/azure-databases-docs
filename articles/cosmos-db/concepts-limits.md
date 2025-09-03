@@ -298,21 +298,6 @@ The following table lists the limits specific to MongoDB feature support. Other 
 
 ² We recommend that client applications set the idle connection timeout in the driver settings to 2-3 minutes because the [default timeout for Azure LoadBalancer is 4 minutes](/azure/load-balancer/load-balancer-tcp-idle-timeout).  This timeout ensures that an intermediate load balancer idle doesn't close connections between the client machine and Azure Cosmos DB.
 
-## Try Azure Cosmos DB Free limits
-
-The following table lists the limits for the [Try Azure Cosmos DB for Free](https://azure.microsoft.com/try/cosmosdb/) trial.
-
-| Resource | Limit |
-| --- | --- |
-| Duration of the trial | 30 days (a new trial can be requested after expiration) <br> After expiration, the information stored is deleted. |
-| Maximum containers per subscription (NoSQL, Gremlin, API for Table) | 1 |
-| Maximum containers per subscription (API for MongoDB) | 3 |
-| Maximum throughput per container | 5000 |
-| Maximum throughput per shared-throughput database | 20000 |
-| Maximum total storage per account | 10 GB |
-
-Try Azure Cosmos DB supports global distribution in only the Central US, North Europe, and Southeast Asia regions. Azure support tickets can't be created for Try Azure Cosmos DB accounts. However, support is provided for subscribers with existing support plans.
-
 ## Azure Cosmos DB free tier account limits
 
 The following table lists the limits for [Azure Cosmos DB free tier accounts.](optimize-dev-test.md#azure-cosmos-db-free-tier)
