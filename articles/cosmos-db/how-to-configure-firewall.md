@@ -1,6 +1,7 @@
 ---
-title: Configure an IP firewall for your Azure Cosmos DB account
-description: Learn how to configure IP access control policies for firewall support on Azure Cosmos DB accounts.
+title: Configure IP Firewall
+titleSuffix: Azure Cosmos DB
+description: Learn to configure IP firewall policies for Azure Cosmos DB accounts to enhance security.
 author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
@@ -8,11 +9,15 @@ ms.topic: how-to
 ms.date: 09/03/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ai-usage: ai-assisted
+applies-to:
+  - NoSQL
+  - MongoDB
+  - Apache Cassandra
+  - Apache Gremlin
+  - Table
 ---
 
-# Configure IP firewall in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
+# Configure IP firewall for Azure Cosmos DB
 
 To secure the data stored in your account, Azure Cosmos DB supports a secret based authorization model that utilizes a strong Hash-based Message Authentication Code (HMAC). Additionally, Azure Cosmos DB supports IP-based access controls for inbound firewall support. This model is similar to the firewall rules of a traditional database system and provides another level of security to your account. With firewalls, you can configure your Azure Cosmos DB account to be accessible only from an approved set of machines and/or cloud services. Access to data stored in your Azure Cosmos DB database from these approved sets of machines and services will still require the caller to present a valid authorization token.
 
