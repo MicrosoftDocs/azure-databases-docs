@@ -41,7 +41,7 @@ In this article, you can use either authentication method.
 Azure Database for PostgreSQL uses the open-source [LangChain Postgres support](https://python.langchain.com/docs/integrations/vectorstores/pgvector/) to connect to Azure Database for PostgreSQL. First, download the partner package:
 
 ```python
-%pip install -qU langchain_postgres
+%pip install -qU langchain-azure-postgresql
 %pip install -qU langchain-openai
 %pip install -qU azure-identity
 ```
@@ -98,9 +98,9 @@ embeddings = AzureOpenAIEmbeddings(
 
 ### Use Microsoft Entra authentication
 
-The following sections contain functions that set up LangChain to use Microsoft Entra authentication. The function `get_token_and_username` retrieves tokens for the Azure Database for PostgreSQL service by using `DefaultAzureCredential` from the `azure.identity` library. It ensures that the SQLAlchemy engine has a valid token with which to create new connections. It also parses the token, which is a JSON Web Token (JWT), to extract the username that's used to connect to the database.
+The following sections demonstrate how to set up LangChain to use Microsoft Entra authentication. The class `AzurePGConnectionPool` in the LangChain Azure Postgres package retrieves tokens for the Azure Database for PostgreSQL service by using `DefaultAzureCredential` from the `azure.identity` library. 
 
-The `create_postgres_engine` function creates a SQLAlchemy engine that dynamically sets the username and password based on the token fetched from the token manager. This engine can be passed into the `connection` parameter of the `PGVector` LangChain vector store.
+The connection  can be passed into the `connection` parameter of the `AzurePGVectorStore` LangChain vector store.
 
 #### Sign in to Azure
 
@@ -113,110 +113,52 @@ az login
 After you sign in, the following code fetches the token:
 
 ``` python
-import base64
-import json
-from functools import lru_cache
-
-from azure.identity import DefaultAzureCredential
-from sqlalchemy import create_engine, event
-from sqlalchemy.engine.url import URL
-
-
-@lru_cache(maxsize=1)
-def get_credential():
-    """Memoized function to create the Azure credential, which caches tokens."""
-    return DefaultAzureCredential()
-
-
-def decode_jwt(token):
-    """Decode the JWT payload to extract claims."""
-    payload = token.split(".")[1]
-    padding = "=" * (4 - len(payload) % 4)
-    decoded_payload = base64.urlsafe_b64decode(payload + padding)
-    return json.loads(decoded_payload)
-
-
-def get_token_and_username():
-    """Fetches a token and returns the username and token."""
-    # Fetch a new token and extract the username
-    token = get_credential().get_token(
-        "https://ossrdbms-aad.database.windows.net/.default"
+from langchain_azure_postgresql.common import (
+    BasicAuth,
+    AzurePGConnectionPool,
+    ConnectionInfo,
+)
+from langchain_azure_postgresql.langchain import AzurePGVectorStore
+entra_connection_pool = AzurePGConnectionPool(
+        azure_conn_info=ConnectionInfo(
+            host=os.environ["DBHOST"],
+            dbname=os.environ["DBNAME"]
+        )
     )
-    claims = decode_jwt(token.token)
-    username = claims.get("upn")
-    if not username:
-        raise ValueError("Could not extract username from token. Have you logged in?")
-
-    return username, token.token
-
-
-def create_postgres_engine():
-    db_url = URL.create(
-        drivername="postgresql+psycopg",
-        username="",  # This will be replaced dynamically
-        password="",  # This will be replaced dynamically
-        host=os.environ["DBHOST"],
-        port=os.environ.get("DBPORT", 5432),
-        database=os.environ["DBNAME"],
-    )
-
-    # Create a SQLAlchemy engine
-    engine = create_engine(db_url, echo=True)
-
-    # Listen for the connection event to inject dynamic credentials
-    @event.listens_for(engine, "do_connect")
-    def provide_dynamic_credentials(dialect, conn_rec, cargs, cparams):
-        # Fetch the dynamic username and token
-        username, token = get_token_and_username()
-
-        # Override the connection parameters
-        cparams["user"] = username
-        cparams["password"] = token
-
-    return engine
 ```
 
 ### Use password authentication
 
-If you're not using Microsoft Entra authentication, `get_connection_uri` provides a connection URI that pulls the username and password from environment variables:
+If you're not using Microsoft Entra authentication, the `BasicAuth` class allows the use of username and password:
 
 ``` python
-import urllib.parse
-
-
-def get_connection_uri():
-    # Read URI parameters from the environment
-    dbhost = os.environ["DBHOST"]
-    dbname = os.environ["DBNAME"]
-    dbuser = urllib.parse.quote(os.environ["DBUSER"])
-    password = os.environ["DBPASSWORD"]
-    sslmode = os.environ["SSLMODE"]
-
-    # Construct the connection URI
-    # Use Psycopg 3!
-    db_uri = (
-        f"postgresql+psycopg://{dbuser}:{password}@{dbhost}/{dbname}?sslmode={sslmode}"
+basic_auth_connection_pool = AzurePGConnectionPool(
+    azure_conn_info=ConnectionInfo(
+        host=os.environ["DBHOST"],
+        dbname=os.environ["DBNAME"],
+        credentials=BasicAuth(
+            username=os.environ["DBUSER"],
+            password=os.environ["DBPASSWORD"],
+        )
     )
-    return db_uri
+)
 ```
 
 ### Create the vector store
 
 ``` python
 from langchain_core.documents import Document
-from langchain_postgres import PGVector
-from langchain_postgres.vectorstores import PGVector
+from langchain_azure_postgresql.langchain import AzurePGVectorStore
 
 collection_name = "my_docs"
 
-# The connection is either a SQLAlchemy engine or a connection URI
-connection = create_postgres_engine() if USE_ENTRA_AUTH else get_connection_uri()
+# The connection is either using Entra ID or Basic Auth
+connection = entra_connection_pool if USE_ENTRA_AUTH else basic_auth_connection_pool
 
-vector_store = PGVector(
+vector_store = AzurePGVectorStore(
     embeddings=embeddings,
-    collection_name=collection_name,
+    table_name=table_name,
     connection=connection,
-    use_jsonb=True,
 )
 ```
 
@@ -230,65 +172,73 @@ Adding documents by ID overwrites any existing documents that match that ID.
 docs = [
     Document(
         page_content="there are cats in the pond",
-        metadata={"id": 1, "location": "pond", "topic": "animals"},
+        metadata={"doc_id": 1, "location": "pond", "topic": "animals"},
     ),
     Document(
         page_content="ducks are also found in the pond",
-        metadata={"id": 2, "location": "pond", "topic": "animals"},
+        metadata={"doc_id": 2, "location": "pond", "topic": "animals"},
     ),
     Document(
         page_content="fresh apples are available at the market",
-        metadata={"id": 3, "location": "market", "topic": "food"},
+        metadata={"doc_id": 3, "location": "market", "topic": "food"},
     ),
     Document(
         page_content="the market also sells fresh oranges",
-        metadata={"id": 4, "location": "market", "topic": "food"},
+        metadata={"doc_id": 4, "location": "market", "topic": "food"},
     ),
     Document(
         page_content="the new art exhibit is fascinating",
-        metadata={"id": 5, "location": "museum", "topic": "art"},
+        metadata={"doc_id": 5, "location": "museum", "topic": "art"},
     ),
     Document(
         page_content="a sculpture exhibit is also at the museum",
-        metadata={"id": 6, "location": "museum", "topic": "art"},
+        metadata={"doc_id": 6, "location": "museum", "topic": "art"},
     ),
     Document(
         page_content="a new coffee shop opened on Main Street",
-        metadata={"id": 7, "location": "Main Street", "topic": "food"},
+        metadata={"doc_id": 7, "location": "Main Street", "topic": "food"},
     ),
     Document(
         page_content="the book club meets at the library",
-        metadata={"id": 8, "location": "library", "topic": "reading"},
+        metadata={"doc_id": 8, "location": "library", "topic": "reading"},
     ),
     Document(
         page_content="the library hosts a weekly story time for kids",
-        metadata={"id": 9, "location": "library", "topic": "reading"},
+        metadata={"doc_id": 9, "location": "library", "topic": "reading"},
     ),
     Document(
         page_content="a cooking class for beginners is offered at the community center",
-        metadata={"id": 10, "location": "community center", "topic": "classes"},
+        metadata={"doc_id": 10, "location": "community center", "topic": "classes"},
     ),
 ]
 
-vector_store.add_documents(docs, ids=[doc.metadata["id"] for doc in docs])
+uuids = vector_store.add_documents(docs)
+uuids
 ```
 
 ### Update items in the vector store
 
 ``` python
-docs = [
+updated_docs = [
     Document(
         page_content="Updated - cooking class for beginners is offered at the community center",
-        metadata={"id": 10, "location": "community center", "topic": "classes"},
+        metadata={"doc_id": 10, "location": "community center", "topic": "classes"},
+        id=uuids[-1],
     )
 ]
-vector_store.add_documents(docs, ids=[doc.metadata["id"] for doc in docs])
+vector_store.add_documents(docs, ids=[uuids[-1]], on_conflict_update=True)
+```
+
+### See items from the vector store
+
+``` python
+vector_store.get_by_ids([str(uuids[-1])])
 ```
 
 ### Delete items from the vector store
 
 ``` python
-vector_store.delete(ids=["3"])
+vector_store.delete(ids=[uuids[-1]])
 ```
 
 ## Queries to the vector store
@@ -297,74 +247,84 @@ After you create your vector store and add the relevant documents, you can query
 
 ### Filtering support
 
-The vector store supports a set of filters that can be applied against the metadata fields of the documents:
+The vector store supports a set of filters that can be applied against the metadata fields of the documents via the `FilterCondition`, `OrFilter`, and `AndFilter` in the [LangChain Azure PostgreSQL](https://pypi.org/project/langchain-azure-postgresql/) package:
 
 | Operator | Meaning/Category                |
 | -------- | ------------------------------- |
-| `$eq`      | Equality (==)                   |
-| `$ne`      | Inequality (!=)                 |
-| `$lt`      | Less than (<)                   |
-| `$lte`     | Less than or equal (<=)         |
-| `$gt`      | Greater than (>)                |
-| `$gte`     | Greater than or equal (>=)      |
-| `$in`      | Special cased (in)              |
-| `$nin`     | Special cased (not in)          |
-| `$between` | Special cased (between)         |
-| `$like`    | Text (like)                     |
-| `$ilike`   | Text (case-insensitive like)    |
-| `$and`     | Logical (and)                   |
-| `$or`      | Logical (or)                    |
+| `=`      | Equality (==)                   |
+| `!=`      | Inequality (!=)                 |
+| `<`      | Less than (<)                   |
+| `<=`     | Less than or equal (<=)         |
+| `>`      | Greater than (>)                |
+| `>=`     | Greater than or equal (>=)      |
+| `in`      | Special cased (in)              |
+| `not in`     | Special cased (not in)          |
+| `is null`     | Special cased (is null)          |
+| `is not null`     | Special cased (is not null)          |
+| `between` | Special cased (between)         |
+| `not between` | Special cased (not between)         |
+| `like`    | Text (like)                     |
+| `ilike`   | Text (case-insensitive like)    |
+| `AND`     | Logical (and)                   |
+| `OR`      | Logical (or)                    |
 
 ### Direct query
 
 You can perform a simple similarity search as follows:
 
 ``` python
+from langchain_azure_postgresql import FilterCondition, AndFilter
+
 results = vector_store.similarity_search(
-    "kitty", k=10, filter={"id": {"$in": [1, 5, 2, 9]}}
+    "kitty",
+    k=10,
+    filter=FilterCondition(
+        column="(metadata->>'doc_id')::int",
+        operator="in",
+        value=[1, 5, 2, 9],
+    ),
 )
+
 for doc in results:
     print(f"* {doc.page_content} [{doc.metadata}]")
 ```
 
 ```shell
-    * there are cats in the pond [{'id': 1, 'topic': 'animals', 'location': 'pond'}]
-    * ducks are also found in the pond [{'id': 2, 'topic': 'animals', 'location': 'pond'}]
-    * the new art exhibit is fascinating [{'id': 5, 'topic': 'art', 'location': 'museum'}]
-    * the library hosts a weekly story time for kids [{'id': 9, 'topic': 'reading', 'location': 'library'}]
+    * there are cats in the pond [{'doc_id': 1, 'topic': 'animals', 'location': 'pond'}]
+    * ducks are also found in the pond [{'doc_id': 2, 'topic': 'animals', 'location': 'pond'}]
+    * the new art exhibit is fascinating [{'doc_id': 5, 'topic': 'art', 'location': 'museum'}]
+    * the library hosts a weekly story time for kids [{'doc_id': 9, 'topic': 'reading', 'location': 'library'}]
 ```
 
 If you provide a dictionary with multiple fields but no operators, the top level is interpreted as a logical `AND` filter:
 
 ``` python
-vector_store.similarity_search(
+results = vector_store.similarity_search(
     "ducks",
     k=10,
-    filter={"id": {"$in": [1, 5, 2, 9]}, "location": {"$in": ["pond", "market"]}},
-)
-```
-
-```shell
-[Document(id='2', metadata={'id': 2, 'topic': 'animals', 'location': 'pond'}, page_content='ducks are also found in the pond'),
- Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
-```
-
-``` python
-vector_store.similarity_search(
-    "ducks",
-    k=10,
-    filter={
-        "$and": [
-            {"id": {"$in": [1, 5, 2, 9]}},
-            {"location": {"$in": ["pond", "market"]}},
+    filter=AndFilter(
+        AND=[
+            FilterCondition(
+                column="(metadata->>'doc_id')::int",
+                operator="in",
+                value=[1, 5, 2, 9],
+            ),
+            FilterCondition(
+                column="metadata->>'location'",
+                operator="in",
+                value=["pond", "market"],
+            ),
         ]
-    },
+    ),
 )
+
+for doc in results:
+    print(f"* {doc.page_content} [{doc.metadata}]")
 ```
 
 ```shell
-[Document(id='2', metadata={'id': 2, 'topic': 'animals', 'location': 'pond'}, page_content='ducks are also found in the pond'),
- Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
+    * ducks are also found in the pond [{'topic': 'animals', 'doc_id': 2, 'location': 'pond'}]
+    * there are cats in the pond [{'topic': 'animals', 'doc_id': 1, 'location': 'pond'}]
 ```
 
 If you want to execute a similarity search and receive the corresponding scores, you can run:
@@ -376,8 +336,34 @@ for doc, score in results:
 ```
 
 ```shell
-* [SIM=0.528338] there are cats in the pond [{'id': 1, 'topic': 'animals', 'location': 'pond'}]
+* [SIM=0.528338] there are cats in the pond [{'doc_id': 1, 'topic': 'animals', 'location': 'pond'}]
 ```
+
+If you want to use max marginal relevance search on your vector store:
+
+``` python
+results = vector_store.max_marginal_relevance_search(
+    "query about cats",
+    k=10,
+    lambda_mult=0.5,
+    filter=FilterCondition(
+        column="(metadata->>'doc_id')::int",
+        operator="in",
+        value=[1, 2, 5, 9],
+    ),
+)
+
+for doc in results:
+    print(f"* {doc.page_content} [{doc.metadata}]")
+```
+
+```shell
+    * there are cats in the pond [{'doc_id': 1, 'topic': 'animals', 'location': 'pond'}]
+    * ducks are also found in the pond [{'doc_id': 2, 'topic': 'animals', 'location': 'pond'}]
+    * the new art exhibit is fascinating [{'doc_id': 5, 'topic': 'art', 'location': 'museum'}]
+    * the library hosts a weekly story time for kids [{'doc_id': 9, 'topic': 'reading', 'location': 'library'}]
+```
+
 
 For a full list of the searches that you can execute on a `PGVector` vector store, refer to the [API reference](https://python.langchain.com/api_reference/postgres/vectorstores/langchain_postgres.vectorstores.PGVector.html).
 
@@ -391,19 +377,12 @@ retriever.invoke("kitty")
 ```
 
 ```shell
-[Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
+[Document(id='9fe8bc1c-9a8e-4f83-b546-9b64527aa79d', metadata={'doc_id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
 ```
-
-## Current limitations
-
-- `langchain_postgres` works only with Psycopg 3 (`psycopg3`). Update your connection strings from `postgresql+psycopg2://...` to `postgresql+psycopg://langchain:langchain@...`.
-- The schema of the embedding store and collection changed to make `add_documents` work correctly with user specified IDs.
-- You have to pass an explicit connection object now.
-- Currently, there is *no mechanism* that supports easy data migration on schema changes. Any schema changes in the vector store require you to re-create the tables and add the documents again.
 
 ## Related content
 
-- [LangChain PGVector reference](https://python.langchain.com/docs/integrations/vectorstores/pgvector/)
+- [LangChain AzurePGVectorStore reference](https://pypi.org/project/langchain-azure-postgresql/)
 - [Azure Database for PostgreSQL integrations for AI applications](generative-ai-frameworks.md)
 - [AI agents in Azure Database for PostgreSQL](generative-ai-agents.md)
 - [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md)
