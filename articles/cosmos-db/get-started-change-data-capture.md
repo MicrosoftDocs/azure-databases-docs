@@ -25,7 +25,6 @@ Use Change data capture (CDC) in Azure Cosmos DB analytical store as a source to
 - An existing Azure Cosmos DB account.
   - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-  - Alternatively, you can [try Azure Cosmos DB free](try-free.md) before you commit.
 
 ## Enable analytical store
 
@@ -83,7 +82,7 @@ Now create and configure a source to flow data from the Azure Cosmos DB account'
 
     :::image type="content" source="media/get-started-change-data-capture/dataset-type-cosmos.png" alt-text="Screenshot of selecting Azure Cosmos DB for NoSQL as the dataset type.":::
 
-1. Create a new linked service for your account named **cosmoslinkedservice**. Select your existing Azure Cosmos DB for NoSQL account in the **New linked service** popup dialog and then select **Ok**. In this example, we select a pre-existing Azure Cosmos DB for NoSQL account named `msdocs-cosmos-source` and a database named `cosmicworks`.
+1. Create a new linked service for your account named **cosmoslinkedservice**. Select your existing Azure Cosmos DB for NoSQL account in the **New linked service** popup dialog and then select **Ok**. In this example, we select a preexisting Azure Cosmos DB for NoSQL account named `msdocs-cosmos-source` and a database named `cosmicworks`.
 
     :::image type="content" source="media/get-started-change-data-capture/new-linked-service.png" alt-text="Screenshot of the New linked service dialog with an Azure Cosmos DB account selected.":::
 
@@ -149,7 +148,7 @@ First, create a straightforward [Azure Blob Storage](/azure/storage/blobs/) sink
 
     :::image type="content" source="media/get-started-change-data-capture/sink-dataset-type.png" alt-text="Screenshot of selecting and Inline Delta dataset type for the sink.":::
 
-1. Create a new linked service for your account using **Azure Blob Storage** named **storagelinkedservice**. Select your existing Azure Blob Storage account in the **New linked service** popup dialog and then select **Ok**. In this example, we select a pre-existing Azure Blob Storage account named `msdocsblobstorage`.
+1. Create a new linked service for your account using **Azure Blob Storage** named **storagelinkedservice**. Select your existing Azure Blob Storage account in the **New linked service** popup dialog and then select **Ok**. In this example, we select a preexisting Azure Blob Storage account named `msdocsblobstorage`.
 
     :::image type="content" source="media/get-started-change-data-capture/new-linked-service-sink-type.png" alt-text="Screenshot of the service type options for a new Delta linked service.":::
 

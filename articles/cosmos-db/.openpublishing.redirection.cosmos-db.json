@@ -6789,6 +6789,16 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$changestreams.md",
       "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$changestream",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/try-free.md",
+      "redirect_url": "/azure/cosmos-db",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/ai-advantage.md",
+      "redirect_url": "/azure/cosmos-db",
+      "redirect_document_id": false
     }
   ]
 }

@@ -21,7 +21,6 @@ Use the Data Explorer for Azure Cosmos DB to select and delete multiple items di
 - An existing Azure Cosmos DB account.
   - If you have an Azure subscription, [create a new API for NoSQL account](nosql/how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-  - Alternatively, you can [try Azure Cosmos DB free](try-free.md) before you commit.
 
 ## Delete multiple items
 

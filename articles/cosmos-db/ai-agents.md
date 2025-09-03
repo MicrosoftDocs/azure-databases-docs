@@ -224,7 +224,7 @@ The sample agent operates within a Python FastAPI back end. It supports user int
 
 ### Prerequisites
 
-- An Azure subscription. If you don't have one, you can [try Azure Cosmos DB for free](try-free.md) for 30 days without creating an Azure account. The free trial doesn't require a credit card, and no commitment follows the trial period.
+- An Azure subscription.
 - An account for the OpenAI API or Azure OpenAI Service.
 - A vCore cluster in Azure Cosmos DB for MongoDB. You can create one by following [this quickstart](mongodb/vcore/quickstart-portal.md).
 - An integrated development environment, such as Visual Studio Code.
@@ -234,30 +234,30 @@ The sample agent operates within a Python FastAPI back end. It supports user int
 
 All of the code and sample datasets are available in [this GitHub repository](https://github.com/jonathanscholtes/Travel-AI-Agent-React-FastAPI-and-Cosmos-DB-Vector-Store). The repository includes these folders:
 
-- *loader*: This folder contains Python code for loading sample documents and vector embeddings in Azure Cosmos DB.
-- *api*: This folder contains the Python FastAPI project for hosting the AI travel agent.
-- *web*: This folder contains code for the React web interface.
+- `/loader`: This folder contains Python code for loading sample documents and vector embeddings in Azure Cosmos DB.
+- `/api`: This folder contains the Python FastAPI project for hosting the AI travel agent.
+- `/web`: This folder contains code for the React web interface.
 
 ### Load travel documents into Azure Cosmos DB
 
-The GitHub repository contains a Python project in the *loader* directory. It's intended for loading the sample travel documents into Azure Cosmos DB.
+The GitHub repository contains a Python project in the `/loader` directory. It's intended for loading the sample travel documents into Azure Cosmos DB.
 
 #### Set up the environment
 
-Set up your Python virtual environment in the *loader* directory by running the following command:
+Set up your Python virtual environment in the `/loader` directory by running the following command:
 
 ```shell
 python -m venv venv
 ```
 
-Activate your environment and install dependencies in the *loader* directory:
+Activate your environment and install dependencies in the `/loader` directory:
 
 ```shell
 venv\Scripts\activate
 python -m pip install -r requirements.txt
 ```
 
-Create a file named *.env* in the *loader* directory, to store the following environment variables:
+Create a file named *.env* in the `/loader` directory, to store the following environment variables:
 
 ```env
 OPENAI_API_KEY="<your OpenAI key>"
@@ -303,7 +303,7 @@ collection = cosmosdb_loader.load_vectors(ship_json['ships'],'ships')
 collection.create_index([('name', 'text')])
 ```
 
-Load the documents, load the vectors, and create indexes by running the following command from the *loader* directory:
+Load the documents, load the vectors, and create indexes by running the following command from the `/loader` directory:
 
 ```shell
 python main.py
@@ -335,27 +335,27 @@ The API project in the GitHub repository is structured as follows:
 
 We used Python version 3.11.4 for the development and testing of the API.
 
-Set up your Python virtual environment in the *api* directory:
+Set up your Python virtual environment in the `/api` directory:
 
 ```shell
 python -m venv venv
 ```
 
-Activate your environment and install dependencies by using the *requirements* file in the *api* directory:
+Activate your environment and install dependencies by using the *requirements* file in the `/api` directory:
 
 ```shell
 venv\Scripts\activate
 python -m pip install -r requirements.txt
 ```
 
-Create a file named *.env* in the *api* directory, to store your environment variables:
+Create a file named *.env* in the `/api` directory, to store your environment variables:
 
 ```env
 OPENAI_API_KEY="<your Open AI key>"
 MONGO_CONNECTION_STRING="mongodb+srv:<your connection string from Azure Cosmos DB>"
 ```
 
-Now that you've configured the environment and set up variables, run the following command from the *api* directory to initiate the server:
+Now that you've configured the environment and set up variables, run the following command from the `/api` directory to initiate the server:
 
 ```shell
 python app.py
@@ -596,17 +596,17 @@ With the successful loading of the data and accessibility of the AI agent throug
 
 Install Node.js and the dependencies before testing the React interface.
 
-Run the following command from the *web* directory to perform a clean installation of project dependencies. The installation might take some time.
+Run the following command from the `/web` directory to perform a clean installation of project dependencies. The installation might take some time.
 
 ```shell
 npm ci
 ```
 
-Next, create a file named *.env* within the *web* directory to facilitate the storage of environment variables. Include the following details in the newly created *.env* file:
+Next, create a file named *.env* within the `/web` directory to facilitate the storage of environment variables. Include the following details in the newly created *.env* file:
 
 `REACT_APP_API_HOST=http://127.0.0.1:8000`
 
-Now, run the following command from the *web* directory to initiate the React web user interface:
+Now, run the following command from the `/web` directory to initiate the React web user interface:
 
 ```shell
 npm start
@@ -854,6 +854,4 @@ When your AI agent is ready to go into production, you can use semantic caching 
 
 ## Related content
 
-- [30-day free trial without an Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
-- [90-day free trial and up to $6,000 in throughput credits with Azure AI Advantage](ai-advantage.md)
 - [Azure Cosmos DB lifetime free tier](free-tier.md)
