@@ -6,14 +6,18 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 09/02/2025
+ms.date: 09/03/2025
 ms.custom: cosmos-db-video
 ai-usage: ai-assisted
+applies-to:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Consistency levels in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Distributed databases that rely on replication for high availability, low latency, or both must balance read consistency, availability, latency, and throughput as defined by the [PACELC theorem](https://en.wikipedia.org/wiki/PACELC_theorem). The linearizability of the strong consistency model is the standard for data programmability. However, it increases write latencies because data must replicate and commit across large distances. Strong consistency also reduces availability during failures because data can't replicate and commit in every region. Eventual consistency offers higher availability and better performance, but it's more difficult to program applications because data might not be consistent across all regions.
 

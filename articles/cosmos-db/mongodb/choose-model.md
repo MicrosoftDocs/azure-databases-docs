@@ -7,7 +7,10 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: product-comparison
-ms.date: 08/18/2025
+ms.date: 09/03/2025
+applies-to:
+  - ✅ MongoDB
+  - ✅ MongoDB (vCore)
 ---
 
 # RU-based and vCore-based models in Azure Cosmos DB for MongoDB

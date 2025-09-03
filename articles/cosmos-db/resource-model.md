@@ -6,13 +6,17 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 09/02/2025
+ms.date: 09/03/2025
 ai-usage: ai-assisted
+applies-to:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Databases, containers, and items in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB is a fully managed platform as a service (PaaS). To begin using Azure Cosmos DB, create an Azure Cosmos DB account in an Azure resource group in your subscription. Then, create databases and containers within the account.
 

@@ -42,7 +42,7 @@ Deploy an ARM template with the following specific parameters:
 | --- | --- | --- |
 | `keyVaultKeyUri` | Identifier of the customer-managed key residing in the service provider's key vault. | `https://my-vault.vault.azure.com/keys/my-key` |
 | `identity` | Object specifying that the managed identity should be assigned to the Azure Cosmos DB account. | `"identity":{"type":"UserAssigned","userAssignedIdentities":{"/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-identity":{}}}` |
-| `defaultIdentity` | Combination of the resource ID of the managed identity and the application ID of the multitenant Microsoft Entra application. | `UserAssignedIdentity=/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-identity&FederatedClientId=aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e` |
+| `defaultIdentity` | Combination of the resource ID of the managed identity and the application ID of the multitenant Microsoft Entra application. | `UserAssignedIdentity=/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourcegroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-identity&FederatedClientId=aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e` |
 
 Here's an example of a template segment with the three parameters configured:
 
