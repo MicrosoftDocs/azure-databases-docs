@@ -1,13 +1,13 @@
 ---
 title: $dayOfMonth
-titleSuffix: Overview of the $dayOfMonth operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $dayOfMonth operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $dayOfMonth operator in Azure Cosmos DB for MongoDB vCore extracts the day of the month from a date.
 author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 06/24/2025
+ms.date: 09/04/2025
 ---
 
 # $dayOfMonth
@@ -17,7 +17,9 @@ The `$dayOfMonth` operator extracts the day of the month (1–31) from a date va
 ## Syntax
 
 ```javascript
-{ $dayOfMonth: <dateExpression> }
+{
+  $dayOfMonth: <dateExpression>
+}
 ```
 
 ## Parameters
@@ -28,7 +30,7 @@ The `$dayOfMonth` operator extracts the day of the month (1–31) from a date va
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -94,7 +96,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Extract day of the month
 
-The query uses the `$dayOfMonth` operator to extract the day of the month (1–31) from the `lastUpdated` timestamp. It helps in isolating just the date component for reporting or grouping.
+This query uses the `$dayOfMonth` operator to extract the day of the month (1–31) from the `lastUpdated` timestamp and isolates the date component of the field for reporting or grouping.
 
 ```javascript
 db.stores.aggregate([
@@ -110,12 +112,14 @@ db.stores.aggregate([
 ])
 ```
 
-The result displays the numeric day of the month on which `lastUpdated` occurred. In current scenario, 4 as the date was "2024-12-04".
+This query returns the following result.
 
 ```json
-{
-  "dayOfMonth": "4"
-}
+[
+  {
+    "dayOfMonth": "4"
+  }
+]
 ```
 
 ## Related content
