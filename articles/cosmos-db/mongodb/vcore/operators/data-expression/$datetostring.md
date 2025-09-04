@@ -1,7 +1,7 @@
 ---
 title: $dateToString
 titleSuffix: Overview of the $dateToString operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $dateToString operator in Azure Cosmos DB for MongoDB vCore converts a date object into a formatted string.
+description: The $dateToString operator converts a date object into a formatted string.
 author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
@@ -184,4 +184,5 @@ This query returns the following result.
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
 
