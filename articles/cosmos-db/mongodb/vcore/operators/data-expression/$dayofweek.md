@@ -1,7 +1,7 @@
 ---
 title: $dayOfWeek
-titleSuffix: Overview of the $dayOfWeek operator in Azure Cosmos DB for MongoDB vCore
-description: The $dayOfWeek operator in Azure Cosmos DB for MongoDB vCore extracts the day of the week from a date.
+titleSuffix: Overview of the $dayOfWeek operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $dayOfWeek operator extracts the day of the week from a date.
 author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
@@ -17,7 +17,9 @@ The `$dayOfWeek` operator extracts the day of the week from a date value, where 
 ## Syntax
 
 ```javascript
-{ $dayOfWeek: <dateExpression> }
+{
+  $dayOfWeek: <dateExpression>
+}
 ```
 
 ## Parameters
@@ -28,7 +30,7 @@ The `$dayOfWeek` operator extracts the day of the week from a date value, where 
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -94,7 +96,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Extract day of the week
 
-The query uses the `$dayOfWeek` operator to extract the day of the week from the `lastUpdated` timestamp. The returned value ranges from 1 (Sunday) to 7 (Saturday), based on ISO-8601 ordering.
+This query uses the `$dayOfWeek` operator to extract the day of the week from the `lastUpdated` timestamp. The returned value ranges from 1 (Sunday) to 7 (Saturday), based on ISO-8601 ordering.
 
 ```javascript
 db.stores.aggregate([
@@ -110,12 +112,14 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns which day of the week the `lastUpdated` date falls on, as a number from 1 (Sunday) through 7 (Saturday).
+This query returns the following result.
 
 ```json
-{
-  "dayOfWeek": "4"
-}
+[
+  {
+    "dayOfWeek": "4"
+  }
+]
 ```
 
 ## Related content
