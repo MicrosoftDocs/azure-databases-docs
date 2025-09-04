@@ -36,9 +36,9 @@ $dateDiff: {
 | **`timezone`**| Optional. The timezone to use for the calculation.|
 | **`startOfWeek`**| Optional. The starting day of the week. Valid values are: `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`.|
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -104,7 +104,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ## Example 1: Calculate duration in days between two dates
 
-The query uses `$dateDiff` to compute the number of units (e.g., days, months) between two date fields. It helps measure durations like event length or time since a given date.
+This query uses `$dateDiff` to compute the number of units (e.g., days, months) between two date fields. It helps measure durations like event length or time since a given date. This query returns the durationInDays along with other fields for the specified `stores` document.
 
 ```javascript
 db.stores.aggregate([
@@ -151,16 +151,18 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the durationInDays along with other fields for the specified `stores` document.
+This query returns the following result.
 
 ```json
-{
-  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
-  "eventName": "Massive Markdown Mania",
-  "startDate": "2024-09-21T00:00:00.000Z",
-  "endDate": "2024-09-29T00:00:00.000Z",
-  "durationInDays": 8
-}
+[
+   {
+     "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+     "eventName": "Massive Markdown Mania",
+     "startDate": "2024-09-21T00:00:00.000Z",
+     "endDate": "2024-09-29T00:00:00.000Z",
+     "durationInDays": 8
+   }
+]
 ```
 
 ## Related content
