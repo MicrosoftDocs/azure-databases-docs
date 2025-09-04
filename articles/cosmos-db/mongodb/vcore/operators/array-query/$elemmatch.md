@@ -32,32 +32,67 @@ db.collection.find({ <field>: { $elemMatch: { <query1>, <query2>, ... } } })
 Consider this sample document from the stores collection.
 
 ```json
-[
-  {
-    "_id": "91de5201-8194-44bf-848f-674e8df8bf5e",
-    "name": "Adatum Corporation",
+{
+    "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
+    "name": "Wide World Importers",
+    "location": {
+        "lat": 68.6378,
+        "lon": -145.2852
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 1,
+            "partTime": 5
+        }
+    },
+    "sales": {
+        "totalSales": 23399,
+        "salesByCategory": [
+            {
+                "categoryName": "Smartphones",
+                "totalSales": 5231
+            },
+            {
+                "categoryName": "Laptops",
+                "totalSales": 18168
+            }
+        ]
+    },
     "promotionEvents": [
-      {
-        "discounts": [
-          { "categoryName": "DJ Cases", "discountPercentage": 6 },
-          { "categoryName": "DJ Mixers", "discountPercentage": 14 }
-        ]
-      },
-      {
-        "discounts": [
-          { "categoryName": "DJ Headphones", "discountPercentage": 19 },
-          { "categoryName": "DJ Speakers", "discountPercentage": 13 }
-        ]
-      },
-      {
-        "discounts": [
-          { "categoryName": "DJ Lighting", "discountPercentage": 12 },
-          { "categoryName": "DJ Accessories", "discountPercentage": 6 }
-        ]
-      }
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2023,
+                    "Month": 5,
+                    "Day": 17
+                },
+                "endDate": {
+                    "Year": 2023,
+                    "Month": 5,
+                    "Day": 25
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Video Games",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Tablets",
+                    "discountPercentage": 18
+                }
+            ]
+        }
+    ],
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
     ]
-  }
-]
+}
 ```
 
 ### Example 1: Find in an array for specific element among the list of elements
