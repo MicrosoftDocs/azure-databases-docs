@@ -38,7 +38,7 @@ The `$dateSubtract` operator subtracts a specified time unit from a date. It's u
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -104,8 +104,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Subtract seven days
 
-The example calculates the date one week before the `lastUpdated` field.
-The query uses `$dateSubtract` to calculate the date exactly seven days before the `storeOpeningDate` timestamp.
+This example calculates the date one week before the `lastUpdated` field. This query uses `$dateSubtract` to calculate the date exactly seven days before the `storeOpeningDate` timestamp.
 
 ```javascript
 db.stores.aggregate([
@@ -127,36 +126,15 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the date that is exactly seven days before the `storeOpeningDate` timestamp.
+This query returns the following result.
 
 ```json
-{
-  "dateOneWeekAgo": "2024-08-29T11:50:06.549Z"
-}
-```
-
-### Example 2: Subtract two hours with timezone
-
-This example subtracts two hours, considering the `America/New_York` timezone.
-// ERROR ON TIMEZONE
-```javascript 
-db.stores.aggregate([
+[
   {
-    $project: {
-      _id: 0,
-      dateTwoHoursAgo: {
-        $dateSubtract: {
-          startDate: "$metadata.lastUpdated",
-          unit: "hour",
-          amount: 2,
-          timezone: "America/New_York"
-        }
-      }
-    }
+    "dateOneWeekAgo": "2024-08-29T11:50:06.549Z"
   }
-])
+]
 ```
 
 ## Related content
-
 [!INCLUDE[Related content](../includes/related-content.md)]
