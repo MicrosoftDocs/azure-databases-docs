@@ -1,5 +1,5 @@
 ---
-  title: $sort
+  title: $sort (array update)
   titleSuffix: Overview of the $sort operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $sort is used to sort an array in ascending or descending order within a document during an update operation.
   author: avijitgupta
