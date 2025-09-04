@@ -1,7 +1,7 @@
 ---
 title: $dateFromParts
 titleSuffix: Overview of the $dateDiff operator in Azure Cosmos DB for MongoDB (vCore)
-description: Constructs a date from individual components.
+description: The $dateFromParts operator constructs a date from individual components.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
