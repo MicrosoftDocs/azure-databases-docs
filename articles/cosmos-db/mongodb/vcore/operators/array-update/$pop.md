@@ -17,7 +17,11 @@ The `$pop` operator is used to remove the first or last element of an array. Thi
 ## Syntax
 
 ```javascript
-{ $pop: { <field>: <value> } }
+{
+  $pop: {
+    <field>: <value>
+  }
+}
 ```
 
 ## Parameters
@@ -91,54 +95,56 @@ Consider this sample document from the stores collection.
 
 ```
 
-### Example 1: Removing the last element from an array
+### Example 1: Remove the last element from an array
 
-To remove the last element from the tag array.
+To remove the last element from the tag array, run a query using the $pop operator on the tag field with a value of 1.
 
-```shell
+```javascript
 db.stores.update(
   { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
   { $pop: { "tag": 1 } }
 )
 ```
 
-This query would return the following document. The last element from the array is removed.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 
 ```
 
 ### Example 2: Removing the first element from an array
 
-To remove the first element from the promotionEvents array.
+To remove the first element from the promotionEvents array, run a query using the $pop operator on the promotionEvents array with a value of -1.
 
-```shell
+```javascript
 db.stores.update(
   { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
   { $pop: { "promotionEvents": -1 } }
 )
 ```
 
-This query would return the following document. The first element from the array is removed.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
-
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
-
 
 ## Related content
 
