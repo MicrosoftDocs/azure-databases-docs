@@ -1,13 +1,13 @@
 ---
 title: $dateTrunc
-titleSuffix: Overview of the $dateTrunc operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $dateTrunc operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $dateTrunc operator in Azure Cosmos DB for MongoDB vCore truncates a date to a specified unit.
 author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 06/24/2025
+ms.date: 09/04/2025
 ---
 
 # $dateTrunc
@@ -35,9 +35,9 @@ The `$dateTrunc` expression operator truncates a date to the nearest specified u
 | **`binSize`** | (Optional) The size of each bin for truncation. For example, if `binSize` is 2 and `unit` is `hour`, the date is truncated to every 2 hours. |
 | **`timezone`** | (Optional) The timezone to use for truncation. Defaults to UTC if not specified. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -103,7 +103,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Truncate to the day
 
-The query uses `$dateTrunc` to truncate the `lastUpdated` timestamp to the start of the day (00:00:00) in UTC. The operator is useful for grouping or comparing data by calendar day regardless of time.
+This query uses `$dateTrunc` to truncate the `lastUpdated` timestamp to the start of the day (00:00:00) in UTC. The operator is useful for grouping or comparing data by calendar day regardless of time.
 
 ```javascript
 db.stores.aggregate([
@@ -124,17 +124,19 @@ db.stores.aggregate([
 ])
 ```
 
-The example normalizes all date and time values to the beginning of their respective day.
+This query returns the following result.
 
 ```json
-{
-  "truncatedToDay": "2024-11-29T00:00:00.000Z"
-}
+[
+  {
+    "truncatedToDay": "2024-11-29T00:00:00.000Z"
+  }
+]
 ```
 
 ### Example 2: Truncate to the start of the week
 
-The query uses `$dateTrunc` to round the `lastUpdated` timestamp down to the start of its week. It specifies Monday as the start of the week to ensure consistent calendar alignment.
+This query uses `$dateTrunc` to round the `lastUpdated` timestamp down to the start of its week. It specifies Monday as the start of the week to ensure consistent calendar alignment.
 
 ```javascript
 db.stores.aggregate([
@@ -156,14 +158,17 @@ db.stores.aggregate([
 ])
 ```
 
-The result shows the Monday (00:00:00 UTC) that marks the beginning of the week in which `lastUpdated` falls, which can be configured.
+This query returns the following result.
 
 ```json
-{
-  "truncatedToWeek": "2024-11-25T00:00:00.000Z"
-}
+[
+  {
+    "truncatedToWeek": "2024-11-25T00:00:00.000Z"
+  }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
