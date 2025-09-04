@@ -56,7 +56,7 @@ This article contains details for various supported operators you can use with A
 | **[`$positional`](array-update/$positional.md)** | The `$position` is used to specify the position in the array where a new element should be inserted. |
 | **[`$pullAll`](array-update/$pullall.md)** | The `$pullAll` operator removes all instances of the specified values from an existing array. |
 | **[`$push`](array-update/$push.md)** | The `$push` operator appends a specified value to an array. |
-| **[`$slice`](array-update/$slice.md)** | The `$slice` operator limits the number of array elements that are returned or modified. |
+| **[`$slice`](array-expression/$slice.md)** | The `$slice` operator limits the number of array elements that are returned or modified. |
 | **[`$sort`](array-update/$sort.md)** | The `$sort` operator sorts the elements of an array. |
 
 ## Bitwise query
