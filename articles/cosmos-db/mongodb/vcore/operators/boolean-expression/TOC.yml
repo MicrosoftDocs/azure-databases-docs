@@ -1,6 +1,6 @@
 - name: $and
-  href: $and.md
+  href: ../logical-query/$and.md
 - name: $not
-  href: $not.md
+  href: ../logical-query/$not.md
 - name: $or
-  href: $or.md
+  href: ../logical-query/$or.md
