@@ -14,7 +14,6 @@ ms.date: 10/14/2024
 The $[] operator in Azure Cosmos DB for MongoDB vCore is used to update all elements in an array that match a specified condition. This operator allows you to perform updates on multiple elements in an array without specifying their positions. It is particularly useful when you need to apply the same update to all items in an array.
 
 ## Syntax
-The syntax for using the $[] array update operator is as follows:
 
 ```javascript
 db.collection.update(
