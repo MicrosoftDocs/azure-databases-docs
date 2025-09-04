@@ -10,7 +10,7 @@
   ms.date: 10/14/2024
 ---
 
-# $sort
+# $sort (array update)
 
 The `$sort` operator is used to sort an array in ascending or descending order within a document during an update operation. This operator is useful for maintaining ordered arrays based on specific fields.
 
