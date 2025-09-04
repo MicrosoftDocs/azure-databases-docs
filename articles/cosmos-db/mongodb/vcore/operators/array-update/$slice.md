@@ -10,7 +10,7 @@
   ms.date: 10/14/2024
 ---
 
-# $slice
+# $slice (array update)
 
 The `$slice` operator is used to limit the number of elements in an array that are returned in a query. It can be useful when dealing with large arrays where only a subset of the elements is needed. This operator can be applied to arrays to either return the first N elements, the last N elements, or a specific range of elements.
 
