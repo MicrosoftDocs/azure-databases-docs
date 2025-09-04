@@ -102,7 +102,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Adding days to a date
 
-The query projects `eventName` and computes a `newEndDate` by adding 7 days to a date constructed from nested year, month, and day fields. The result is a simplified document showing the event name and its extended end date.
+This query projects `eventName` and computes a `newEndDate` by adding 7 days to a date constructed from nested year, month, and day fields. The result is a simplified document showing the event name and its extended end date.
 
 ```javascript
 db.stores.aggregate([
@@ -143,7 +143,7 @@ This query returns the following result.
 
 ### Example 2: Adding months to a date
 
-The aggregation query projects the `eventName` and calculates a newStartDate by adding 1 month to a reconstructed start date from nested promotion fields. It helps determine an adjusted event start date based on the original schedule. The query returns each document’s eventName and a newStartDate that is 1 month after the original startDate from nested promotion event data.
+This aggregation query projects the `eventName` and calculates a newStartDate by adding 1 month to a reconstructed start date from nested promotion fields. It helps determine an adjusted event start date based on the original schedule. This query returns each document’s eventName and a newStartDate that is 1 month after the original startDate from nested promotion event data.
 
 ```javascript
 db.stores.aggregate([
