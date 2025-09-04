@@ -1,6 +1,6 @@
 ---
 title: $dateToParts
-titleSuffix: Overview of the $dateToParts operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $dateToParts operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $dateToParts operator in Azure Cosmos DB for MongoDB vCore decomposes a date into its individual parts such as year, month, day, and more.
 author: patty-chow
 ms.author: pattychow
