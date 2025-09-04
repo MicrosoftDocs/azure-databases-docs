@@ -17,7 +17,18 @@ The `$dateFromParts` operator constructs a date from individual components such 
 ## Syntax
 
 ```javascript
-{ $dateFromParts: { year: <year>, month: <month>, day: <day>, hour: <hour>, minute: <minute>, second: <second>, millisecond: <millisecond>, timezone: <timezone> } }
+{
+    $dateFromParts: {
+        year: < year > ,
+        month: < month > ,
+        day: < day > ,
+        hour: < hour > ,
+        minute: < minute > ,
+        second: < second > ,
+        millisecond: < millisecond > ,
+        timezone: < timezone >
+    }
+}
 ```
 
 ## Parameters
@@ -35,7 +46,7 @@ The `$dateFromParts` operator constructs a date from individual components such 
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -101,7 +112,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Constructing a start date
 
-The aggregation query constructs precise startDate and endDate values from nested fields using `$dateFromParts`, then calculates the event duration in days. It helps standardize and analyze event timelines stored in fragmented date formats.
+This aggregation query constructs precise startDate and endDate values from nested fields using `$dateFromParts`, then calculates the event duration in days. It helps standardize and analyze event timelines stored in fragmented date formats.
 
 ```javascript
 db.stores.aggregate([
@@ -126,13 +137,15 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the `_id` and a computed startDate by extracting and assembling date parts from nested promotion data.
+This query returns the following result.
 
 ```json
-{
-  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
-  "startDate": "2024-09-21T00:00:00.000Z"
-}
+[
+  {
+    "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+    "startDate": "2024-09-21T00:00:00.000Z"
+  }
+]
 ```
 
 ## Related content
