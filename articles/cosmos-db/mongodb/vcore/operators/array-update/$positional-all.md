@@ -80,7 +80,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Updating Discount Percentages
 
-To update to all elements in the discounts array inside each promotion event.:
+To update to all elements in the discounts array inside each promotion event:
 
 ```javascript
 db.stores.updateOne(
@@ -96,7 +96,7 @@ db.stores.updateOne(
 
 ### Example 2: Updating Sales by Category
 
-To increase the total sales for all categories by 10%, you can use the $[] operator as follows:
+To increase the total sales for all categories by 10%, use the $[] operator as follows:
 
 ```javascript
 db.stores.update(
