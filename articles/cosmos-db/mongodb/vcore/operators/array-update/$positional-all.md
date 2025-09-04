@@ -1,5 +1,5 @@
 ---
-title: $[] usage in Azure Cosmos DB for MongoDB vCore
+title: $[]
 titleSuffix: Overview of the $[] positional operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $[] operator is used to update all elements in an array that match the query condition.
 author: avijitgupta
