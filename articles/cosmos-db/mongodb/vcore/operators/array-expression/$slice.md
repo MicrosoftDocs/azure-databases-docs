@@ -134,6 +134,152 @@ This query returns the following result.
 ]
 ```
 
+### Example 2: Slice with $push
+
+The example uses `$push` with `$each` to add new elements to the `promotionEvents` array and `$slice` to retain only the first N (positive slice) or last N (negative slice) elements. This ensures the array keeps the most recent entries after the update.
+
+```javascript
+db.stores.updateOne(
+  { _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5' },
+  {
+    $push: {
+      promotionEvents: {
+        $each: [
+          {
+            eventName: "Black Friday Event",
+            promotionalDates: {
+              startDate: { Year: 2024, Month: 8, Day: 1 },
+              endDate: { Year: 2024, Month: 8, Day: 7 }
+            },
+            discounts: [
+              { categoryName: 'DJ Speakers', discountPercentage: 25 }
+            ]
+          },
+          {
+            eventName: "Mega Discount Days",
+            promotionalDates: {
+              startDate: { Year: 2024, Month: 5, Day: 11 },
+              endDate: { Year: 2024, Month: 5, Day: 18 }
+            },
+            discounts: [
+              { categoryName: "DJ Lights", discountPercentage: 20 }
+            ]
+          }
+        ],
+        $slice: -3
+      }
+    }
+  }
+)
+```
+
+The query returns the following result.
+
+```json
+[
+    {
+        "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+        "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+        "location": {
+            "lat": 60.1441,
+            "lon": -141.5012
+        },
+        "staff": {
+            "totalStaff": {
+                "fullTime": 2,
+                "partTime": 0
+            }
+        },
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "DJ Headphones",
+                    "totalSales": 35921
+                },
+                {
+                    "categoryName": "DJ Cables",
+                    "totalSales": 1000
+                }
+            ],
+            "fullSales": 3700
+        },
+        "promotionEvents": [
+            {
+                "eventName": "Cyber Monday Event",
+                "promotionalDates": {
+                    "startDate": {
+                        "Year": 2024,
+                        "Month": 8,
+                        "Day": 1
+                    },
+                    "endDate": {
+                        "Year": 2024,
+                        "Month": 8,
+                        "Day": 7
+                    }
+                },
+                "discounts": [
+                    {
+                        "categoryName": "DJ Speakers",
+                        "discountPercentage": 25
+                    }
+                ]
+            },
+            {
+                "eventName": "Black Friday Event",
+                "promotionalDates": {
+                    "startDate": {
+                        "Year": 2024,
+                        "Month": 8,
+                        "Day": 1
+                    },
+                    "endDate": {
+                        "Year": 2024,
+                        "Month": 8,
+                        "Day": 7
+                    }
+                },
+                "discounts": [
+                    {
+                        "categoryName": "DJ Speakers",
+                        "discountPercentage": 25
+                    }
+                ]
+            },
+            {
+                "eventName": "Mega Discount Days",
+                "promotionalDates": {
+                    "startDate": {
+                        "Year": 2024,
+                        "Month": 5,
+                        "Day": 11
+                    },
+                    "endDate": {
+                        "Year": 2024,
+                        "Month": 5,
+                        "Day": 18
+                    }
+                },
+                "discounts": [
+                    {
+                        "categoryName": "DJ Lights",
+                        "discountPercentage": 20
+                    }
+                ]
+            }
+        ],
+        "tag": [
+            "#ShopLocal",
+            "#NewArrival",
+            "#FashionStore",
+            "#SeasonalSale",
+            "#FreeShipping",
+            "#MembershipDeals"
+        ]
+    }
+]
+```
+
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]

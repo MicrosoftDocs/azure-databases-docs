@@ -16,8 +16,6 @@ The `$cond` operator is used to evaluate a condition and return one of two expre
 
 ## Syntax
 
-The basic syntax for the `$cond` operator is:
-
 ```javascript
 {
    $cond: {
@@ -124,7 +122,7 @@ db.stores.aggregate([
   { $limit: 3 }  
 ])
 ```
-This query would return the following document.
+This query returns the following result.
 
 ```json
 [
@@ -177,7 +175,8 @@ db.stores.aggregate([
   { $limit: 3 }  
 ])
 ```
-This query would return the following document.
+
+This query returns the following results.
 
 ```json
 [
