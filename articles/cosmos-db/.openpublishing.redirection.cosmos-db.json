@@ -521,8 +521,8 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$type.md",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/element-query/$type",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$mod.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/evaluation-query/$mod",
       "redirect_document_id": true
     },
     {
@@ -531,7 +531,7 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$slide.md",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$slice.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-expression/$slice",
       "redirect_document_id": true
     },
