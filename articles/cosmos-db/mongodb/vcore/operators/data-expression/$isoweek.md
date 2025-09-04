@@ -1,6 +1,6 @@
 ---
-  title: $isoWeek (date expression)
-  titleSuffix: Overview of the $dateDiff operator in Azure Cosmos DB for MongoDB (vCore)
+  title: $isoWeek
+  titleSuffix: Overview of the $isoWeek operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $isoWeek operator returns the week number of the year in ISO 8601 format, ranging from 1 to 53.
   author: avijitgupta
   ms.author: avijitgupta
@@ -28,9 +28,9 @@ The `$isoWeek` operator returns the week number of the year in ISO 8601 format, 
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, Timestamp, or ObjectId. If the expression resolves to null or is missing, `$isoWeek` returns null. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -58,7 +58,7 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 
 ### Example 1: Get ISO week number for promotion events
 
-The example demonstrates extracting the ISO week number for promotion event start dates.
+This query extracts the ISO week number for promotion event start dates.
 
 ```javascript
 db.stores.aggregate([
@@ -87,7 +87,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the ISO week number for each promotion event start date.
+This query returns the following results.
 
 ```json
 [
