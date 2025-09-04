@@ -1,7 +1,7 @@
 ---
 title: $dateAdd
 titleSuffix: Overview of the $dateAdd operator in Azure Cosmos DB for MongoDB (vCore)
-description: Adds a specified number of time units (day, hour, month etc) to a date.
+description: The $dateAdd operator adds a specified number of time units (day, hour, month etc) to a date.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
