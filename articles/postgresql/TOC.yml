@@ -547,6 +547,8 @@
               href: flexible-server/how-to-configure-high-availability.md
             - name: Schedule maintenance
               href: flexible-server/how-to-configure-scheduled-maintenance.md
+            - name: Enable deletion protection
+              href: flexible-server/how-to-enable-deletion-protection.md
             - name: Server parameters
               items:
                 - name: List all server parameters
