@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 08/04/2025
+  ms.date: 09/04/2025
 ---
 
 # $year
@@ -42,43 +42,123 @@ Or with timezone specification
 | **`dateExpression`** | Any expression that resolves to a Date, Timestamp, or ObjectId. |
 | **`timezone`** | Optional. The timezone to use for the calculation. Can be an Olson Timezone Identifier (for example, "America/New_York") or a UTC offset (for example, "+0530"). |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
-  "name": "Trey Research | Home Office Depot - Lake Freeda",
-  "location": { "lat": -48.9752, "lon": -141.6816 },
-  "staff": { "employeeCount": { "fullTime": 12, "partTime": 19 } },
-  "sales": {
-    "salesByCategory": [ { "categoryName": "Desk Lamps", "totalSales": 37978 } ],
-    "revenue": 37978
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Crazy Deal Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
-        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
-      },
-      "discounts": [
-        { "categoryName": "Desks", "discountPercentage": 22 },
-        { "categoryName": "Filing Cabinets", "discountPercentage": 23 }
-      ]
-    }
-  ],
-  "company": "Trey Research",
-  "city": "Lake Freeda",
-  "storeOpeningDate": "2024-12-30T22:55:25.779Z",
-  "lastUpdated": { "t": 1729983325, "i": 1 }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
 
 ### Example 1: Extract year from store opening date
 
-The example extracts the year when the store was opened.
+This query extracts the year when the store was opened.
 
 ```javascript
 db.stores.aggregate([
@@ -93,20 +173,22 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the year the store was opened.
+This query returns the following result.
 
 ```json
-{
-  "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
-  "name": "Trey Research | Home Office Depot - Lake Freeda",
-  "storeOpeningDate": "2024-12-30T22:55:25.779Z",
-  "openingYear": 2024
-}
+[
+  {
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "storeOpeningDate": "2024-12-30T22:55:25.779Z",
+    "openingYear": 2024
+  }
+]
 ```
 
 ### Example 2: Find stores opened in specific year
 
-The example finds all stores that were opened in a specific year.
+This query retrieves all stores that were opened in 2021.
 
 ```javascript
 db.stores.aggregate([
@@ -128,16 +210,18 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns stores opened in 2021.
+This query returns the following result.
 
 ```json
-{
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "city": "South Amir",
-  "storeOpeningDate": "2021-10-03T00:00:00.000Z",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
-  "openingYear": 2021
-}
+[
+  {
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "city": "South Amir",
+    "storeOpeningDate": "2021-10-03T00:00:00.000Z",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "openingYear": 2021
+  }
+]
 ```
 
 ## Related content
