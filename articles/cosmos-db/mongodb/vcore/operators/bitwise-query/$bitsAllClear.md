@@ -1,7 +1,7 @@
 ---
-title: $bitsallclear
+title: $bitsAllClear
 titleSuffix: Overview of the $bitsallclear operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $bitsallclear operator is used to match documents where all the bit positions specified in a bitmask are clear.
+description: The $bitsAllClear operator is used to match documents where all the bit positions specified in a bitmask are clear.
 author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
@@ -151,21 +151,34 @@ Find stores that are NOT open 24 hours AND do NOT allow pets (bits 3 and 4)
 
 ```javascript
 db.stores.find({
-  storeFeatures: {  $bitsAllClear: [3, 4] }},
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+    storeFeatures: {
+        $bitsAllClear: [3, 4]
+    }
+}, {
+    _id: 1,
+    name: 1,
+    storeFeatures: 1
+}).limit(5)
 ```
 
 Equivalent:
 
 ```javascript
 db.stores.find({
-  storeFeatures: { $bitsAnySet: 24  }},  // 8 + 16
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+        storeFeatures: {
+            $bitsAnySet: 24
+        }
+    }, // 8 + 16
+    {
+        _id: 1,
+        name: 1,
+        storeFeatures: 1
+    }).limit(5)
 ```
 
-Sample output:
+This query returns the following results:
 
-```JSON
+```json
 [
   {
     "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",

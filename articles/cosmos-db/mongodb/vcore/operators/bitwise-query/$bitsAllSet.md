@@ -12,7 +12,6 @@
 
 # $bitsAllSet
 
-
 The `$bitsAllSet` operator is used to match documents where all the specified bit positions are set (that is, are 1). This operator is useful for performing bitwise operations on fields that store integer values. It can be used in scenarios where you need to filter documents based on specific bits being set within an integer field.
 
 ## Syntax
@@ -152,18 +151,30 @@ Find stores that **have parking AND restrooms** (bits 1 and 6)
 
 ```javascript
 db.stores.find({
-  storeFeatures: { $bitsAllSet: [1, 6] }},
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+    storeFeatures: {
+        $bitsAllSet: [1, 6]
+    }
+}, {
+    _id: 1,
+    name: 1,
+    storeFeatures: 1
+}).limit(5)
 ```
 
 Equivalent:
 ```javascript
 db.stores.find({
-  storeFeatures: { $bitsAllSet: 66 }},
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+    storeFeatures: {
+        $bitsAllSet: 66
+    }
+}, {
+    _id: 1,
+    name: 1,
+    storeFeatures: 1
+}).limit(5)
 ```
 
-Sample output:
+This query returns the following results:
 
 ```json
 [
