@@ -1,7 +1,7 @@
 ---
 title: $dateFromString
 titleSuffix: Overview of the $dateDiff operator in Azure Cosmos DB for MongoDB (vCore)
-description: Converts a date/time string to a date object.
+description: The $dateDiff operator converts a date/time string to a date object.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
