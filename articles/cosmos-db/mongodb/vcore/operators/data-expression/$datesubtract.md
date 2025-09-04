@@ -1,6 +1,6 @@
 ---
 title: $dateSubtract
-titleSuffix: Overview of the $dateSubtract operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $dateSubtract operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $dateSubtract operator in Azure Cosmos DB for MongoDB vCore subtracts a specified amount of time from a date.
 author: patty-chow
 ms.author: pattychow
@@ -138,3 +138,4 @@ This query returns the following result.
 
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]
+
