@@ -1,5 +1,5 @@
 ---
-  title: $slice
+  title: $slice (array update)
   titleSuffix: Overview of the $slice operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $slice is used to limit the number of elements in an array that are returned in a query.
   author: avijitgupta
