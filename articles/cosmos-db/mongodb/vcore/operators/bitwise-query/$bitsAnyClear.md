@@ -1,7 +1,7 @@
 ---
   title: $bitsAnyClear
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: Overview of the $bitsAnyClear operator in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $bitsAnyClear operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $bitsAnyClear operator matches documents where any of the specified bit positions in a bitmask are clear.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -151,21 +151,34 @@ Find stores that don’t have either Wi-Fi OR in-store pickup (bits 0 and 5)
 
 ```javascript
 db.stores.find({
-  storeFeatures: {  $bitsAnyClear: [0, 5] }},
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+    storeFeatures: {
+        $bitsAnyClear: [0, 5]
+    }
+}, {
+    _id: 1,
+    name: 1,
+    storeFeatures: 1
+}).limit(5)
 ```
 
 Equivalent:
 
 ```javascript
 db.stores.find({
-  storeFeatures: { $bitsAnySet: 33  }},  // 1 + 32
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+        storeFeatures: {
+            $bitsAnySet: 33
+        }
+    }, // 1 + 32
+    {
+        _id: 1,
+        name: 1,
+        storeFeatures: 1
+    }).limit(5)
 ```
 
-Sample output:
+This query returns the following results:
 
-```JSON
+```json
 [
   {
     "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
