@@ -10,9 +10,7 @@
   ms.date: 07/28/2025
 ---
 
-# $zip (array expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $zip
 
 The `$zip` operator is used to merge two or more arrays element-wise into a single array of arrays. It's useful when you want to combine related elements from multiple arrays into a single array structure.
 
@@ -38,56 +36,56 @@ The syntax for the `$zip` operator is as follows:
 | **`useLongestLength`** | A boolean value that, if set to true, uses the longest length of the input arrays. If false or not specified, it uses the shortest length. |
 | **`defaults`** | An array of default values to use if `useLongestLength` is true and any input array is shorter than the longest array. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Lakeshore Retail",
-  "location": {
-    "lat": -51.3041,
-    "lon": -166.0838
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 5,
-      "partTime": 20
+    "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+    "name": "Lakeshore Retail",
+    "location": {
+        "lat": -51.3041,
+        "lon": -166.0838
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 5,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 266491,
+        "salesByCategory": [
+            {
+                "categoryName": "Towel Racks",
+                "totalSales": 13237
+            },
+            {
+                "categoryName": "Washcloths",
+                "totalSales": 44315
+            },
+            {
+                "categoryName": "Face Towels",
+                "totalSales": 42095
+            },
+            {
+                "categoryName": "Toothbrush Holders",
+                "totalSales": 47912
+            },
+            {
+                "categoryName": "Hybrid Mattresses",
+                "totalSales": 48660
+            },
+            {
+                "categoryName": "Napkins"
+            },
+            {
+                "categoryName": "Pillow Cases",
+                "totalSales": 38833
+            }
+        ]
     }
-  },
-  "sales": {
-    "totalSales": 266491,
-    "salesByCategory": [
-      {
-        "categoryName": "Towel Racks",
-        "totalSales": 13237
-      },
-      {
-        "categoryName": "Washcloths",
-        "totalSales": 44315
-      },
-      {
-        "categoryName": "Face Towels",
-        "totalSales": 42095
-      },
-      {
-        "categoryName": "Toothbrush Holders",
-        "totalSales": 47912
-      },
-      {
-        "categoryName": "Hybrid Mattresses",
-        "totalSales": 48660
-      },
-      {
-        "categoryName": "Napkins"
-      },
-      {
-        "categoryName": "Pillow Cases",
-        "totalSales": 38833
-      }
-    ]
-  }
 }
 ```
 
@@ -117,33 +115,59 @@ db.stores.aggregate([
 The query returns individual array of arrays under `categoryWithSales` field. `useLongestLength` set to `true` would return the following output, while a value of `false` removes the `Napkins` array from the output.
 
 ```json
-{
-  "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Lakeshore Retail",
-  "categoryNames": [
-    "Towel Racks",
-    "Washcloths",
-    "Face Towels",
-    "Toothbrush Holders",
-    "Hybrid Mattresses",
-    "Napkins",
-    "Pillow Cases"
-  ],
-  "totalSales": [
-    13237, 44315,
-    42095, 47912,
-    48660, 38833
-  ],
-  "categoryWithSales": [
-    ["Towel Racks", 13237],
-    ["Washcloths", 44315],
-    ["Face Towels", 42095],
-    ["Toothbrush Holders", 47912],
-    ["Hybrid Mattresses", 48660],
-    ["Napkins", null],
-    ["Pillow Cases", 38833]
-  ]
-}
+[
+    {
+        "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+        "name": "Lakeshore Retail",
+        "categoryNames": [
+            "Towel Racks",
+            "Washcloths",
+            "Face Towels",
+            "Toothbrush Holders",
+            "Hybrid Mattresses",
+            "Napkins",
+            "Pillow Cases"
+        ],
+        "totalSales": [
+            13237,
+            44315,
+            42095,
+            47912,
+            48660,
+            38833
+        ],
+        "categoryWithSales": [
+            [
+                "Towel Racks",
+                13237
+            ],
+            [
+                "Washcloths",
+                44315
+            ],
+            [
+                "Face Towels",
+                42095
+            ],
+            [
+                "Toothbrush Holders",
+                47912
+            ],
+            [
+                "Hybrid Mattresses",
+                48660
+            ],
+            [
+                "Napkins",
+                null
+            ],
+            [
+                "Pillow Cases",
+                38833
+            ]
+        ]
+    }
+]
 ```
 
 ## Related content

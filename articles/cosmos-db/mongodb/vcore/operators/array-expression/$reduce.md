@@ -32,45 +32,45 @@ $reduce: {
 | **`initialValue`** | The initial cumulative value set before the array iteration begins. |
 | **`in`** | A valid expression that evaluates to the accumulated value for each element in the array. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "d3c9df51-41bd-4b4e-a26b-b038d9cf8b45",
-  "location": {
-    "lat": -67.7571,
-    "lon": 97.2505
-  },
-  "sales": {
-    "totalSales": 149849,
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Speakers",
-        "totalSales": 36972
-      },
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 12877
-      },
-      {
-        "categoryName": "Music Accessories",
-        "totalSales": 40000
-      },
-      {
-        "categoryName": "DJ Accessories",
-        "totalSales": 60000
-      }
+    "_id": "d3c9df51-41bd-4b4e-a26b-b038d9cf8b45",
+    "location": {
+        "lat": -67.7571,
+        "lon": 97.2505
+    },
+    "sales": {
+        "totalSales": 149849,
+        "salesByCategory": [
+            {
+                "categoryName": "DJ Speakers",
+                "totalSales": 36972
+            },
+            {
+                "categoryName": "DJ Headphones",
+                "totalSales": 12877
+            },
+            {
+                "categoryName": "Music Accessories",
+                "totalSales": 40000
+            },
+            {
+                "categoryName": "DJ Accessories",
+                "totalSales": 60000
+            }
+        ]
+    },
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
     ]
-  },
-  "tag": [
-    "#ShopLocal",
-    "#FashionStore",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
 }
 ```
 
@@ -95,13 +95,15 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `totalSales` across the categories.
+The query returns the following result.
 
 ```json
-{
-    "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-    "totalSalesByCategory": 149849
-}
+[
+  {
+      "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+      "totalSalesByCategory": 149849
+  }
+]
 ```
 
 ## Related content
