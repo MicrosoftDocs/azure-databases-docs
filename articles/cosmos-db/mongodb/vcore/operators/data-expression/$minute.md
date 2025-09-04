@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/04/2025
+  ms.date: 09/04/2025
 ---
 
 # $minute
@@ -28,24 +28,117 @@ The `$minute` operator extracts the minute portion from a date value, returning 
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, a Timestamp, or an ObjectId. If the expression resolves to `null` or is missing, `$minute` returns `null`. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
-  "name": "Trey Research | Home Office Depot - Lake Freeda",
-  "location": { "lat": -48.9752, "lon": -141.6816 },
-  "staff": { "employeeCount": { "fullTime": 12, "partTime": 19 } },
-  "sales": {
-    "salesByCategory": [ { "categoryName": "Desk Lamps", "totalSales": 37978 } ],
-    "revenue": 37978
-  },
-  "company": "Trey Research",
-  "city": "Lake Freeda",
-  "storeOpeningDate": ISODate("2024-09-26T22:55:25.779Z"),
-  "lastUpdated": Timestamp({ "t": 1729983325, "i": 1 })
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -68,15 +161,17 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the minute portion (55) from the store opening timestamp.
+This query returns the following result.
 
 ```json
-{
-  "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
-  "name": "Trey Research | Home Office Depot - Lake Freeda",
-  "storeOpeningDate": ISODate("2024-09-26T22:55:25.779Z"),
-  "openingMinute": 55
-}
+[
+  {
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "storeOpeningDate": ISODate("2024-09-26T22:55:25.779Z"),
+    "openingMinute": 55
+  }
+]
 ```
 
 ## Related content
