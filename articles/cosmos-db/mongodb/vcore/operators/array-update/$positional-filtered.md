@@ -142,7 +142,6 @@ db.stores.updateOne(
     ]
   }
 )
-
 ```
 
 
