@@ -58,7 +58,7 @@ az lock delete \
 
 ### ARM Template
 
-When applying a lock to an Azure PostgreSQL DB resource, use the [Microsoft.Authorization/locks](/azure/templates/microsoft.authorization/2017-04-01) Azure Resource Manager (ARM) resource.
+When applying a lock to an Azure PostgreSQL DB resource, use the [Microsoft.Authorization/locks](/azure/templates/microsoft.authorization/2017-04-01/locks) Azure Resource Manager (ARM) resource.
 
 ```json
 {
