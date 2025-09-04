@@ -33,46 +33,65 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Lakeshore Retail",
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "Towel Racks",
-        "totalSales": 13237
-      },
-      {
-        "categoryName": "Washcloths",
-        "totalSales": 44315
-      },
-      {
-        "categoryName": "Face Towels",
-        "totalSales": 42095
-      },
-      {
-        "categoryName": "Toothbrush Holders",
-        "totalSales": 47912
-      },
-      {
-        "categoryName": "Hybrid Mattresses",
-        "totalSales": 48660
-      },
-      {
-        "categoryName": "Napkins",
-        "totalSales": 31439
-      },
-      {
-        "categoryName": "Pillow Cases",
-        "totalSales": 38833
-      }
-    ]},
-"tag": [
-    '#ShopLocal',
-    '#FashionStore',
-    '#SeasonalSale',
-    '#FreeShipping',
-    '#MembershipDeals'
-  ]
+    "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
+    "name": "Wide World Importers",
+    "location": {
+        "lat": 68.6378,
+        "lon": -145.2852
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 1,
+            "partTime": 5
+        }
+    },
+    "sales": {
+        "totalSales": 23399,
+        "salesByCategory": [
+            {
+                "categoryName": "Smartphones",
+                "totalSales": 5231
+            },
+            {
+                "categoryName": "Laptops",
+                "totalSales": 18168
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2023,
+                    "Month": 5,
+                    "Day": 17
+                },
+                "endDate": {
+                    "Year": 2023,
+                    "Month": 5,
+                    "Day": 25
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Video Games",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Tablets",
+                    "discountPercentage": 18
+                }
+            ]
+        }
+    ],
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
+    ]
 }
 ```
 
