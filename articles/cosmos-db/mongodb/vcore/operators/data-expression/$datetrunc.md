@@ -1,7 +1,7 @@
 ---
 title: $dateTrunc
 titleSuffix: Overview of the $dateTrunc operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $dateTrunc operator in Azure Cosmos DB for MongoDB vCore truncates a date to a specified unit.
+description: The $dateTrunc operator truncates a date to a specified unit.
 author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
@@ -171,4 +171,5 @@ This query returns the following result.
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
 
