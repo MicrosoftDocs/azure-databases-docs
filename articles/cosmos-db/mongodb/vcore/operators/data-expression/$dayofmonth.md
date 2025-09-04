@@ -1,7 +1,7 @@
 ---
 title: $dayOfMonth
 titleSuffix: Overview of the $dayOfMonth operator in Azure Cosmos DB for MongoDB (vCore)
-description: The $dayOfMonth operator in Azure Cosmos DB for MongoDB vCore extracts the day of the month from a date.
+description: The $dayOfMonth operator extracts the day of the month from a date.
 author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
