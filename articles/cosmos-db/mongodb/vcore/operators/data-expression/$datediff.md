@@ -1,7 +1,7 @@
 --- 
 title: $dateDiff
 titleSuffix: Overview of the $dateDiff operator in Azure Cosmos DB for MongoDB (vCore)
-description: Calculates the difference between two dates in various units such as years, months, days, etc.
+description: The $dateDiff operator calculates the difference between two dates in various units such as years, months, days, etc.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
