@@ -28,9 +28,9 @@ The `$hour` operator returns the hour portion of a date as a number between 0 an
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, Timestamp, or ObjectId. If the expression resolves to null or is missing, `$hour` returns null. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -96,7 +96,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Extract hour from current date
 
-The example demonstrates extracting the `hour` from the current date and time.
+This query extracts the `hour` from the current date and time.
 
 ```javascript
 db.stores.aggregate([
@@ -112,16 +112,18 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the current hour and the hour from the ObjectId creation time.
+This query returns the following result.
 
 ```json
-{
-  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
-  "name": "Relecloud | Toy Collection - North Jaylan",
-  "storeOpeningDate": "2024-09-05T11:50:06.549Z",
-  "currentHour": 12,
-  "documentHour": 11
-}
+[
+  {
+    "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+    "name": "Relecloud | Toy Collection - North Jaylan",
+    "storeOpeningDate": "2024-09-05T11:50:06.549Z",
+    "currentHour": 12,
+    "documentHour": 11
+  }
+]
 ```
 
 ## Related content
