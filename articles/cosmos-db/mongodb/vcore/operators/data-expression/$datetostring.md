@@ -1,6 +1,6 @@
 ---
 title: $dateToString
-titleSuffix: Overview of the $dateToString operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $dateToString operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $dateToString operator in Azure Cosmos DB for MongoDB vCore converts a date object into a formatted string.
 author: patty-chow
 ms.author: pattychow
@@ -50,7 +50,7 @@ The `$dateToString` operator is used to convert a date object to a string in a s
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -116,7 +116,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Formatting a date field to an ISO-like string
 
-The query uses `$dateToString` operator to format the `lastUpdated` timestamp into a `YYYY-MM-DD` string. It helps present dates in a readable format suitable for logs, reports, or UI.
+This query uses `$dateToString` operator to format the `lastUpdated` timestamp into a `YYYY-MM-DD` string. It helps present dates in a readable format suitable for logs, reports, or UI.
 
 ```javascript
 db.stores.aggregate([
@@ -137,17 +137,19 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the `lastUpdated` date as a formatted string in `YYYY-MM-DD` format.
+This query returns the following result.
 
 ```json
-{
-  "formattedDate": "2024-12-04"
-}
+[
+  {
+    "formattedDate": "2024-12-04"
+  }
+]
 ```
 
 ### Example 2: Handling Null Values
 
-The query formats the nonexistent field `lastUpdated_new` timestamp as a `YYYY-MM-DD` string using `$dateToString`. Considering the date is missing or null, it substitutes a fallback string "No date available" via the onNull option.
+This query formats the nonexistent field `lastUpdated_new` timestamp as a `YYYY-MM-DD` string using `$dateToString`. Considering the date is missing or null, it substitutes a fallback string "No date available" via the onNull option.
 
 ```javascript
 db.stores.aggregate([
@@ -169,14 +171,17 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the formatted default message as the date isn't present.
+This query returns the following result.
 
 ```json
-{
-  "formattedDateOrDefault": "No date available"
-}
+[
+  {
+    "formattedDateOrDefault": "No date available"
+  }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
