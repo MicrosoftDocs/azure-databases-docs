@@ -16,7 +16,7 @@ The `$elemMatch` projection operator is used to project the first element in an 
 
 ## Syntax
 
-```json
+```javascript
 db.collection.find({}, {
     "field": {
         "$elemMatch": {
