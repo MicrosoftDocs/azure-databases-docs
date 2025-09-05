@@ -32,9 +32,123 @@ The `$center` operator specifies a circle using legacy coordinate pairs to be us
 | `<y>` | The y-coordinate of the circle's center point |
 | `<radius>` | The radius of the circle in the same units as the coordinates |
 
-## Example
+## Examples
 
-Let's find all stores within a 50-degree radius of 'First Up Consultants Microphone Bazaar' using our `stores` dataset.
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1 - Search within a 50-degree radius
+
+Let's find all stores within a 50-degree radius of 'First Up Consultants Microphone Bazaar' using our `stores` dataset. This query retrieves stores within a 50-degree radius of the First Up Consultants Microphone Bazaar location.
 
 ```javascript
 db.stores.find(
@@ -54,9 +168,10 @@ db.stores.find(
 ).limit(2)
 ```
 
-The query returns stores within 50-degree radius of the First Up Consultants Microphone Bazaar location, which could be useful for analyzing market coverage or planning delivery routes.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "name": "Contoso, Ltd. | Baby Products Corner - Port Jerrold",
     "location": { "lat": -72.7709, "lon": -24.3031 },
@@ -67,6 +182,7 @@ The query returns stores within 50-degree radius of the First Up Consultants Mic
     "location": { "lat": -64.5509, "lon": -28.7144 },
     "city": "Trystanport"
   }
+]
 ```
 
 > [!IMPORTANT]
@@ -79,3 +195,4 @@ The query returns stores within 50-degree radius of the First Up Consultants Mic
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
