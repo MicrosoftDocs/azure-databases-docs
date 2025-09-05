@@ -28,7 +28,7 @@ The `$max` operator updates the value of a field to a specified value if the spe
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to update with the maximum value. |
 | **`value`** | The value to compare with the current field value. The field will be updated only if this value is larger. |
