@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/17/2025
+  ms.date: 09/04/2025
 ---
 
 # $type
@@ -214,15 +214,24 @@ db.stores.find({
 )
 ```
 
-This query returns stores where all specified fields have the expected data types, helping ensure data consistency.
+This query returns the following result.
 
 ```json
-{
-  "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
-  "name": "Trey Research | Home Office Depot - Lake Freeda",
-  "location": { "lat": -48.9752, "lon": -141.6816 },
-  "staff": { "employeeCount": { "fullTime": 12 } }
-}
+[
+    {
+        "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+        "name": "Trey Research | Home Office Depot - Lake Freeda",
+        "location": {
+            "lat": -48.9752,
+            "lon": -141.6816
+        },
+        "staff": {
+            "employeeCount": {
+                "fullTime": 12
+            }
+        }
+    }
+]
 ```
 
 ## Related content
