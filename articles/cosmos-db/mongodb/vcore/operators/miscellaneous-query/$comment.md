@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/04/2025
 ---
 
 # $comment
@@ -112,4 +112,5 @@ This query returns the following result.
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
 
