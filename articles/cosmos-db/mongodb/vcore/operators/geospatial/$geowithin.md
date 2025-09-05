@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2025
+ms.date: 09/04/2025
 ---
 
 # $geoWithin
@@ -59,6 +59,118 @@ The `$geoWithin` operator selects documents whose location field falls completel
 
 ## Examples
 
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
 For getting better performance, ensure you have a 2dsphere index.
 
 ```javascript
@@ -67,7 +179,7 @@ db.stores.createIndex({ "location": "2dsphere" })
 
 ### Example 1: Using $box
 
-The example finds stores that are located within a specific rectangular area on a map, defined by a box (bounding rectangle).
+This query finds stores that are located within a specific rectangular area on a map, defined by a box (bounding rectangle).
 
 ```javascript
 db.stores.find({
@@ -85,9 +197,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-This query returns stores located within box [70.1272, 69.7296].
+The first two results returned by this query are:
 
 ```json
+[
  {
     "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
     "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
@@ -106,11 +219,12 @@ This query returns stores located within box [70.1272, 69.7296].
       "lon": 68.9829
     }
   }
+]
 ```
 
 ### Example 2: Using $center
 
-The example uses a `$geoWithin` operator to find stores within a circular area defined by a center point and a radius.
+This query uses a `$geoWithin` operator to find stores within a circular area defined by a center point and a radius.
 
 ```javascript
 db.stores.find({
@@ -128,9 +242,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns the closest two matching stores.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "3e962dd0-dffb-49d6-8a96-1d29fa1553d2",
     "name": "Tailwind Traders | Book Center - Lake Marlen",
@@ -141,11 +256,12 @@ The query returns the closest two matching stores.
     "name": "Proseware, Inc. | Outdoor Furniture Bargains - North Obieberg",
     "location": { "lat": -84.1013, "lon": -69.5717 }
   }
+]
 ```
 
 ### Example 3: Using $geometry
 
-The query finds up to two stores whose location falls within the defined rectangular polygon.
+This query finds up to two stores whose location falls within the defined rectangular polygon.
 
 ```javascript
 db.stores.find({
@@ -169,9 +285,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns two stores physically located inside the specified polygon area.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "66fd4cdd-ffc3-44b6-81d9-6d5e9c1f7f9a",
     "name": "Trey Research | Health Food Center - North Michelle",
@@ -182,8 +299,10 @@ The query returns two stores physically located inside the specified polygon are
     "name": "VanArsdel, Ltd. | Outdoor Equipment Pantry - Port Aleenton",
     "location": { "lat": -76.4516, "lon": -67.2051 }
   }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
