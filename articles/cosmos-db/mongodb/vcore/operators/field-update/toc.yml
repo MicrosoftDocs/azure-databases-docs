@@ -1,4 +1,4 @@
-- name: $currentdate
+- name: $currentDate
   href: $currentdate.md
 - name: $inc
   href: $inc.md
@@ -12,7 +12,7 @@
   href: $rename.md
 - name: $set
   href: $set.md
-- name: $setoninsert
+- name: $setOnInsert
   href: $setoninsert.md
 - name: $unset
   href: $unset.md
