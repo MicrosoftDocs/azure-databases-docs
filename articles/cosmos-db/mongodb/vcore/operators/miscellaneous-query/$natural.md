@@ -1,13 +1,13 @@
 ---
   title: $natural
-  titleSuffix: Overview of the $natural operation in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $natural operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $natural operator forces the query to use the natural order of documents in a collection, providing control over document ordering and retrieval.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 02/12/2025
+  ms.date: 09/04/2025
 ---
 
 # $natural
@@ -16,10 +16,10 @@ The `$natural` operator forces the query to use the natural order of documents i
 
 ## Syntax
 
-The syntax for the `$natural` operator in sort operations is as follows:
-
 ```javascript
-{ $natural: <1 | -1> }
+{
+  $natural: <1 | -1>
+}
 ```
 
 ## Parameters
@@ -84,39 +84,41 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Basic Natural Order Sorting
 
-To retrieve stores in their natural insertion order:
+This query retrieves all stores in the order they were inserted into the collection.
 
 ```javascript
-db.stores.find({}).sort({ $natural: 1 })
+db.stores.find({}).sort({
+    $natural: 1
+})
 ```
-
-This query returns all stores in the order they were inserted into the collection.
 
 ### Example 2: Reverse Natural Order
 
-To retrieve stores in reverse insertion order (most recently inserted first):
+This query returns all stores in reverse insertion order, with the most recently added documents appearing first.
 
 ```javascript
-db.stores.find({}).sort({ $natural: -1 })
+db.stores.find({}).sort({
+    $natural: -1
+})
 ```
-
-This query returns all stores in reverse insertion order, with the most recently added documents appearing first.
 
 ### Example 3: Natural Order with Filtering
 
-To find stores with total sales above a certain threshold and sort them in natural order:
+This query filters stores with total sales greater than 50,000 and returns them in natural insertion order.
 
 ```javascript
 db.stores.find({
-  "sales.totalSales": { $gt: 50000 }
-}).sort({ $natural: 1 })
+    "sales.totalSales": {
+        $gt: 50000
+    }
+}).sort({
+    $natural: 1
+})
 ```
-
-This query filters stores with total sales greater than 50,000 and returns them in natural insertion order.
 
 ### Example 4: Natural Order with Projection
 
-To retrieve specific fields from stores in natural order:
+This query returns only the store name, total sales, and location coordinates in natural insertion order.
 
 ```javascript
 db.stores.find({}, {
@@ -127,17 +129,15 @@ db.stores.find({}, {
 }).sort({ $natural: 1 })
 ```
 
-This query returns only the store name, total sales, and location coordinates in natural insertion order.
-
 ### Example 5: Natural Order with Limit
 
-To get the first three stores that were inserted into the collection:
+This query returns the first three stores in their natural insertion order.
 
 ```javascript
-db.stores.find({}).sort({ $natural: 1 }).limit(3)
+db.stores.find({}).sort({
+    $natural: 1
+}).limit(3)
 ```
-
-This query returns the first three stores in their natural insertion order.
 
 ## Use Cases
 
@@ -152,3 +152,4 @@ The `$natural` operator is useful in the following scenarios:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
