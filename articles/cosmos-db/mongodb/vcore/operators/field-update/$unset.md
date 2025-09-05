@@ -1,6 +1,6 @@
 ---
-  title: $unset (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $unset
+  titleSuffix: Overview of the $unset operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $unset operator removes specified fields from documents during update operations.
   author: suvishodcitus
   ms.author: suvishod
@@ -10,15 +10,11 @@
   ms.date: 02/12/2025
 ---
 
-# $unset (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $unset
 
 The `$unset` operator is used to remove specified fields from documents during update operations. This operator completely removes the field from the document, regardless of its current value. It's useful for cleaning up document schemas, removing deprecated fields, or eliminating unnecessary data from documents.
 
 ## Syntax
-
-The syntax for the `$unset` operator is as follows:
 
 ```javascript
 {
@@ -32,49 +28,128 @@ The syntax for the `$unset` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to remove. Can be a top-level field or use dot notation for nested fields. |
 | **`value`** | The value is typically an empty string ("") but can be any value. The actual value is ignored; only the field name matters. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
-  "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
-  "location": {
-    "lat": 16.8331,
-    "lon": -141.9922
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 6,
-      "partTime": 8
-    }
-  },
-  "sales": {
-    "totalSales": 17676,
-    "salesByCategory": [
-      {
-        "categoryName": "Photo Albums",
-        "totalSales": 17676
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  },
-  "temporaryField": "This should be removed",
-  "outdatedInfo": {
-    "oldSystem": true,
-    "legacyData": "deprecated"
-  }
 }
 ```
 
 ### Example 1: Removing top-level fields
 
-Suppose you want to remove temporary or outdated fields from a store document.
+To remove temporary or outdated fields from a store document, use the $unset operator on the fields to be removed.
 
 ```javascript
 db.stores.updateOne(
@@ -88,7 +163,7 @@ db.stores.updateOne(
 )
 ```
 
-After above operation, the document would be updated as follows:
+After this operation, the updated document is:
 
 ```json
 {
@@ -132,7 +207,7 @@ db.stores.updateOne(
 )
 ```
 
-After above operation, the document would be updated as follows:
+After this operation, the updated document is:
 
 ```json
 {
@@ -174,7 +249,7 @@ db.stores.updateOne(
 )
 ```
 
-This sets the second element (index 1) of the salesByCategory array to `null`:
+This operation sets the second element (index 1) of the salesByCategory array to `null`:
 
 ```json
 {
