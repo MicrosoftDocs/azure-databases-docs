@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 09/04/2025
 ---
 
 # $nor
@@ -274,3 +274,4 @@ One of the results returned by this query is:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
