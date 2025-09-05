@@ -11,7 +11,7 @@
 - name: $rename
   href: $rename.md
 - name: $set
-  href: $set.md
+  href: ../aggregation/$set.md
 - name: $setOnInsert
   href: $setoninsert.md
 - name: $unset
