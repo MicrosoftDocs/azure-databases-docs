@@ -280,6 +280,116 @@ The query returns the following result.
 ]
 ```
 
+### Example 3: Fetch the first matching element from an array
+
+This query retrieves the first document from "sales.salesByCategory" array.
+
+```javascript
+db.stores.find({
+        "name": "Lakeshore Retail"
+    }, {
+        "_id": 1,
+        "name": 1,
+        "sales.salesByCategory": {
+            $slice: 1
+        }
+    } // restricts the fields to be returned
+)
+```
+
+This query returns the following result.
+
+```json
+[
+  {
+    "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+    "name": "Lakeshore Retail",
+    "sales": {
+      "salesByCategory": [
+        {
+          "categoryName": "Towel Racks",
+          "totalSales": 13237
+        }
+      ]
+    }
+  }
+]
+```
+
+### Example 4: Fetch the last element from an array
+
+This query retrieves the last document from "sales.salesByCategory" array.
+
+```javascript
+db.stores.find({
+    "name": "Lakeshore Retail"
+}, {
+    "_id": 1,
+    "name": 1,
+    "sales.salesByCategory": {
+        $slice: -1
+    }
+})
+```
+
+This query returns the following result.
+
+```json
+[
+  {
+    "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+    "name": "Lakeshore Retail",
+    "sales": {
+      "salesByCategory": [
+        {
+          "categoryName": "Pillow Cases",
+          "totalSales": 38833
+        }
+      ]
+    }
+  }
+]
+```
+
+### Example 5: Retrieve a range of elements from an array
+
+This query retrieves a subset range from "sales.salesByCategory" array.
+
+```javascript
+db.stores.find({
+    "name": "Lakeshore Retail"
+}, {
+    "_id": 1,
+    "name": 1,
+    "sales.salesByCategory": {
+        $slice: [3, 2]
+    }
+})
+```
+
+This query returns the following result.
+
+```json
+[
+  {
+    "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+    "name": "Lakeshore Retail",
+    "sales": {
+      "salesByCategory": [
+        {
+          "categoryName": "Toothbrush Holders",
+          "totalSales": 47912
+        },
+        {
+          "categoryName": "Hybrid Mattresses",
+          "totalSales": 48660
+        }
+      ]
+    }
+  }
+]
+```
+
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
