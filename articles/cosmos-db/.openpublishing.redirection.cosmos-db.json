@@ -551,6 +551,111 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$dateadd.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$dateadd",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$datediff.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$datediff",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$datefromparts.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$datefromparts",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$datefromstring.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$datefromstring",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$datesubtract.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$datesubtract",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$datetoparts.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$datetoparts",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$datetostring.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$datetostring",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$datetrunc.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$datetrunc",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$dayofmonth.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$dayofmonth",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$dayofweek.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$dayofweek",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$dayofyear.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$dayofyear",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$hour.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$hour",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$isodayofweek.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$isodayofweek",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$isoweek.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$isoweek",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$isoweekyear.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$isoweekyear",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$millisecond.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$millisecond",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$minute.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$minute",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$month.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$month",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$second.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$second",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$week.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$week",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-expression/$year.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/date-expression/$year",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-dot-net-sdk-request-timeout.md",
       "redirect_url": "/azure/cosmos-db/nosql/troubleshoot-dotnet-sdk-request-timeout",
       "redirect_document_id": true

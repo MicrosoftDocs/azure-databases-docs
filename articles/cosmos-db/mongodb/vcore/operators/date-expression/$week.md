@@ -1,32 +1,46 @@
---- 
-  title: $binarySize
-  titleSuffix: Overview of the $binarySize operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $binarySize operator is used to return the size of a binary data field. 
-  author: sandeepsnairms
-  ms.author: sandnair
+---
+  title: $week
+  titleSuffix: Overview of the $week operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $week operator returns the week number for a date as a value between 0 and 53.
+  author: avijitgupta
+  ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.topic: reference
+  ms.date: 08/04/2025
 ---
 
-# $binarySize
+# $week
 
-The `$binarySize` operator is used to return the size of a binary data field. This can be useful when dealing with binary data stored, such as images, files, or any other binary content. The argument for `$binarySize` should be a string, or a binary value.
+The `$week` operator returns the week number for a date as a value between 0 and 53. Week 0 begins on January 1, and subsequent weeks begin on Sundays. If the date is null or missing, `$week` returns null.
 
 ## Syntax
 
+The syntax for the `$week` operator is as follows:
+
 ```javascript
 {
-  $binarySize: "<field>"
+  $week: <dateExpression>
 }
 ```
 
-### Parameters
+Or with timezone specification
+
+```javascript
+{
+  $week: {
+    date: <dateExpression>,
+    timezone: <timezoneExpression>
+  }
+}
+```
+
+## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`<field>`**| The field for which you want to get the binary size.|
+| **`dateExpression`** | Any expression that resolves to a Date, Timestamp, or ObjectId. |
+| **`timezone`** | Optional. The timezone to use for the calculation. Can be an Olson Timezone Identifier (for example, "America/New_York") or a UTC offset (for example, "+0530"). |
 
 ## Examples
 
@@ -142,43 +156,81 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the size of a string or binary data in bytes using $binarySize
+### Example 1: Get week number for store opening date
 
-This query calculates the binary size of the name field for each document in the stores collection.
+This query extracts the week number from the store opening date.
+
+```javascript
+db.stores.aggregate([
+  { $match: { "_id": "905d1939-e03a-413e-a9c4-221f74055aac" } },
+  {
+    $project: {
+      name: 1,
+      storeOpeningDate: 1,
+      openingWeek: { $week: { $toDate: "$storeOpeningDate" } }
+    }
+  }
+])
+```
+
+This query returns the following result.
+
+```json
+[
+  {
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "storeOpeningDate": ISODate("2024-12-30T22:55:25.779Z"),
+    "openingWeek": 52
+  }
+]
+```
+
+### Example 2: Group stores by opening week
+
+This query groups stores by the week they were opened for analysis.
 
 ```javascript
 db.stores.aggregate([
   {
     $project: {
-      name: 1,          
-      dataSize: {
-        $binarySize: "$name" // Calculate the binary size of the string data
-      }
+      name: 1,
+      openingWeek: { $week: { $toDate: "$storeOpeningDate" } },
+      openingYear: { $year: { $toDate: "$storeOpeningDate" } }
     }
   },
-  // Limit the result to the first 3 documents
-  { $limit: 3 }  
-])
+  {
+    $group: {
+      _id: { week: "$openingWeek", year: "$openingYear" },
+      storeCount: { $sum: 1 },
+      stores: { $push: "$name" }
+    }
+  },
+  { $sort: { "_id.year": 1, "_id.week": -1 } },
+  { $limit : 3 } ])
 ```
 
-The first three results returned by this query are:
+This query returns the following results.
 
 ```json
 [
   {
-    "_id": "7e53ca0f-6e24-4177-966c-fe62a11e9af5",
-    "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
-    "dataSize": 49
+    "_id": { "week": 40, "year": 2021 },
+    "storeCount": 1,
+    "stores": [ "First Up Consultants | Bed and Bath Center - South Amir" ]
   },
   {
-    "_id": "923d2228-6a28-4856-ac9d-77c39eaf1800",
-    "name": "Lakeshore Retail | Home Decor Hub - Franciscoton",
-    "dataSize": 48
+    "_id": { "week": 52, "year": 2024 },
+    "storeCount": 1,
+    "stores": [ "Trey Research | Home Office Depot - Lake Freeda" ]
   },
   {
-    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
-    "dataSize": 50
+    "_id": { "week": 50, "year": 2024 },
+    "storeCount": 2,
+    "stores": [
+      "Fourth Coffee | Paper Product Bazaar - Jordanechester",
+      "Adatum Corporation | Pet Supply Center - West Cassie"
+    ]
   }
 ]
 ```

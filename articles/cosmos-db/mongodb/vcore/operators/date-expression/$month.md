@@ -1,32 +1,32 @@
---- 
-  title: $binarySize
-  titleSuffix: Overview of the $binarySize operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $binarySize operator is used to return the size of a binary data field. 
-  author: sandeepsnairms
-  ms.author: sandnair
+---
+  title: $month
+  titleSuffix: Overview of the $month operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $month operator extracts the month portion from a date value.
+  author: avijitgupta
+  ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.date: 09/04/2025
 ---
 
-# $binarySize
+# $month
 
-The `$binarySize` operator is used to return the size of a binary data field. This can be useful when dealing with binary data stored, such as images, files, or any other binary content. The argument for `$binarySize` should be a string, or a binary value.
+The `$month` operator extracts the month portion from a date value, returning a number between 1 and 12, where 1 represents January and 12 represents December. This operator is essential for seasonal analysis and monthly reporting.
 
 ## Syntax
 
 ```javascript
 {
-  $binarySize: "<field>"
+  $month: <dateExpression>
 }
 ```
 
-### Parameters
+## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`<field>`**| The field for which you want to get the binary size.|
+| **`dateExpression`** | An expression that resolves to a Date, a Timestamp, or an ObjectId. If the expression resolves to `null` or is missing, `$month` returns `null`. |
 
 ## Examples
 
@@ -142,43 +142,53 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the size of a string or binary data in bytes using $binarySize
+### Example 1: Extract month from store opening date
 
-This query calculates the binary size of the name field for each document in the stores collection.
+This query extracts the month portion from the store opening date to analyze seasonal opening patterns.
 
 ```javascript
 db.stores.aggregate([
+  { $match: {"_id": "905d1939-e03a-413e-a9c4-221f74055aac"} },
   {
     $project: {
-      name: 1,          
-      dataSize: {
-        $binarySize: "$name" // Calculate the binary size of the string data
+      name: 1,
+      storeOpeningDate: 1,
+      openingMonth: {
+        $month: "$storeOpeningDate"
+      },
+      openingMonthName: {
+        $switch: {
+          branches: [
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 1] }, then: "January" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 2] }, then: "February" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 3] }, then: "March" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 4] }, then: "April" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 5] }, then: "May" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 6] }, then: "June" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 7] }, then: "July" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 8] }, then: "August" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 9] }, then: "September" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 10] }, then: "October" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 11] }, then: "November" },
+            { case: { $eq: [{ $month: "$storeOpeningDate" }, 12] }, then: "December" }
+          ]
+        }
       }
     }
-  },
-  // Limit the result to the first 3 documents
-  { $limit: 3 }  
+  }
 ])
 ```
 
-The first three results returned by this query are:
+This query returns the following result.
 
 ```json
 [
   {
-    "_id": "7e53ca0f-6e24-4177-966c-fe62a11e9af5",
-    "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
-    "dataSize": 49
-  },
-  {
-    "_id": "923d2228-6a28-4856-ac9d-77c39eaf1800",
-    "name": "Lakeshore Retail | Home Decor Hub - Franciscoton",
-    "dataSize": 48
-  },
-  {
-    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
-    "dataSize": 50
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "storeOpeningDate": "2024-12-30T22:55:25.779Z",
+    "openingMonth": 12,
+    "openingMonthName": "December"
   }
 ]
 ```

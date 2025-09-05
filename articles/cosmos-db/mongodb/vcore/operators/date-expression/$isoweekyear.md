@@ -1,34 +1,34 @@
---- 
-  title: $binarySize
-  titleSuffix: Overview of the $binarySize operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $binarySize operator is used to return the size of a binary data field. 
-  author: sandeepsnairms
-  ms.author: sandnair
+---
+  title: $isoWeekYear
+  titleSuffix: Overview of the $isoWeekYear operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $isoWeekYear operator returns the year number in ISO 8601 format, which can differ from the calendar year for dates at the beginning or end of the year.
+  author: avijitgupta
+  ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.date: 08/04/2025
 ---
 
-# $binarySize
+# $isoWeekYear
 
-The `$binarySize` operator is used to return the size of a binary data field. This can be useful when dealing with binary data stored, such as images, files, or any other binary content. The argument for `$binarySize` should be a string, or a binary value.
+The `$isoWeekYear` operator returns the year number in ISO 8601 format. The ISO week-numbering year can differ from the calendar year for dates at the beginning or end of the year. The ISO week year is the year that contains the Thursday of the week in question.
 
 ## Syntax
 
 ```javascript
 {
-  $binarySize: "<field>"
+  $isoWeekYear: <dateExpression>
 }
 ```
 
-### Parameters
+## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`<field>`**| The field for which you want to get the binary size.|
+| **`dateExpression`** | An expression that resolves to a Date, Timestamp, or ObjectId. If the expression resolves to null or is missing, `$isoWeekYear` returns null. |
 
-## Examples
+## Example
 
 Consider this sample document from the stores collection.
 
@@ -142,43 +142,65 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the size of a string or binary data in bytes using $binarySize
+### Example 1: Compare calendar year vs ISO week year
 
-This query calculates the binary size of the name field for each document in the stores collection.
+This query demonstrates the difference between calendar year and ISO week year, especially for dates near year boundaries.
 
 ```javascript
 db.stores.aggregate([
+  { $match: {"_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
+  { $unwind: "$promotionEvents" },
   {
     $project: {
-      name: 1,          
-      dataSize: {
-        $binarySize: "$name" // Calculate the binary size of the string data
+      eventName: "$promotionEvents.eventName",
+      startDate: {
+        $dateFromParts: {
+          year: "$promotionEvents.promotionalDates.startDate.Year",
+          month: "$promotionEvents.promotionalDates.startDate.Month",
+          day: "$promotionEvents.promotionalDates.startDate.Day"
+        }
+      },
+      endDate: {
+        $dateFromParts: {
+          year: "$promotionEvents.promotionalDates.endDate.Year",
+          month: "$promotionEvents.promotionalDates.endDate.Month",
+          day: "$promotionEvents.promotionalDates.endDate.Day"
+        }
       }
     }
   },
-  // Limit the result to the first 3 documents
-  { $limit: 3 }  
+  {
+    $project: {
+      eventName: 1,
+      startDate: 1,
+      endDate: 1,
+      startCalendarYear: { $year: "$startDate" },
+      startISOWeekYear: { $isoWeekYear: "$startDate" },
+      endCalendarYear: { $year: "$endDate" },
+      endISOWeekYear: { $isoWeekYear: "$endDate" },
+      yearDifference: {
+        $ne: [{ $year: "$startDate" }, { $isoWeekYear: "$startDate" }]
+      }
+    }
+  },
+  { $match: {"eventName": "Discount Delight Days" } }
 ])
 ```
 
-The first three results returned by this query are:
+This query returns the following result.
 
 ```json
 [
   {
-    "_id": "7e53ca0f-6e24-4177-966c-fe62a11e9af5",
-    "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
-    "dataSize": 49
-  },
-  {
-    "_id": "923d2228-6a28-4856-ac9d-77c39eaf1800",
-    "name": "Lakeshore Retail | Home Decor Hub - Franciscoton",
-    "dataSize": 48
-  },
-  {
-    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
-    "dataSize": 50
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "eventName": "Discount Delight Days",
+    "startDate": "2023-12-26T00:00:00.000Z",
+    "endDate": "2024-01-05T00:00:00.000Z",
+    "startCalendarYear": 2023,
+    "startISOWeekYear": Long("2023"),
+    "endCalendarYear": 2024,
+    "endISOWeekYear": Long("2024"),
+    "yearDifference": true
   }
 ]
 ```

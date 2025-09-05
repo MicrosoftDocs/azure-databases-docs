@@ -1,32 +1,32 @@
---- 
-  title: $binarySize
-  titleSuffix: Overview of the $binarySize operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $binarySize operator is used to return the size of a binary data field. 
-  author: sandeepsnairms
-  ms.author: sandnair
+---
+  title: $millisecond
+  titleSuffix: Overview of the $millisecond operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $millisecond operator extracts the milliseconds portion from a date value.
+  author: avijitgupta
+  ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.date: 08/04/2025
 ---
 
-# $binarySize
+# $millisecond
 
-The `$binarySize` operator is used to return the size of a binary data field. This can be useful when dealing with binary data stored, such as images, files, or any other binary content. The argument for `$binarySize` should be a string, or a binary value.
+The `$millisecond` operator extracts the milliseconds portion from a date value, returning a number between 0 and 999. This operator is useful for precise timestamp analysis and filtering operations that require millisecond-level granularity.
 
 ## Syntax
 
 ```javascript
 {
-  $binarySize: "<field>"
+  $millisecond: <dateExpression>
 }
 ```
 
-### Parameters
+## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`<field>`**| The field for which you want to get the binary size.|
+| **`dateExpression`** | An expression that resolves to a Date, a Timestamp, or an ObjectId. If the expression resolves to `null` or is missing, `$millisecond` returns `null`. |
 
 ## Examples
 
@@ -142,43 +142,34 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the size of a string or binary data in bytes using $binarySize
+### Example 1: Extract milliseconds from store opening date
 
-This query calculates the binary size of the name field for each document in the stores collection.
+This query extracts the milliseconds portion from the store opening date.
 
 ```javascript
 db.stores.aggregate([
+  { $match: {"_id": "905d1939-e03a-413e-a9c4-221f74055aac"} },
   {
     $project: {
-      name: 1,          
-      dataSize: {
-        $binarySize: "$name" // Calculate the binary size of the string data
+      name: 1,
+      storeOpeningDate: 1,
+      openingMilliseconds: {
+        $millisecond: "$storeOpeningDate"
       }
     }
-  },
-  // Limit the result to the first 3 documents
-  { $limit: 3 }  
+  }
 ])
 ```
 
-The first three results returned by this query are:
+This query returns the following result.
 
 ```json
 [
   {
-    "_id": "7e53ca0f-6e24-4177-966c-fe62a11e9af5",
-    "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
-    "dataSize": 49
-  },
-  {
-    "_id": "923d2228-6a28-4856-ac9d-77c39eaf1800",
-    "name": "Lakeshore Retail | Home Decor Hub - Franciscoton",
-    "dataSize": 48
-  },
-  {
-    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
-    "dataSize": 50
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "storeOpeningDate": ISODate("2024-09-26T22:55:25.779Z"),
+    "openingMilliseconds": 779
   }
 ]
 ```

@@ -1,32 +1,46 @@
---- 
-  title: $binarySize
-  titleSuffix: Overview of the $binarySize operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $binarySize operator is used to return the size of a binary data field. 
-  author: sandeepsnairms
-  ms.author: sandnair
+---
+  title: $year
+  titleSuffix: Overview of the $year operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $year operator returns the year for a date as a four-digit number.
+  author: avijitgupta
+  ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.topic: reference
+  ms.date: 09/04/2025
 ---
 
-# $binarySize
+# $year
 
-The `$binarySize` operator is used to return the size of a binary data field. This can be useful when dealing with binary data stored, such as images, files, or any other binary content. The argument for `$binarySize` should be a string, or a binary value.
+The `$year` operator returns the year for a date as a four-digit number (for example, 2024). If the date is null or missing, `$year` returns null.
 
 ## Syntax
 
+The syntax for the `$year` operator is as follows:
+
 ```javascript
 {
-  $binarySize: "<field>"
+  $year: <dateExpression>
 }
 ```
 
-### Parameters
+Or with timezone specification
+
+```javascript
+{
+  $year: {
+    date: <dateExpression>,
+    timezone: <timezoneExpression>
+  }
+}
+```
+
+## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`<field>`**| The field for which you want to get the binary size.|
+| **`dateExpression`** | Any expression that resolves to a Date, Timestamp, or ObjectId. |
+| **`timezone`** | Optional. The timezone to use for the calculation. Can be an Olson Timezone Identifier (for example, "America/New_York") or a UTC offset (for example, "+0530"). |
 
 ## Examples
 
@@ -142,43 +156,70 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Calculate the size of a string or binary data in bytes using $binarySize
+### Example 1: Extract year from store opening date
 
-This query calculates the binary size of the name field for each document in the stores collection.
+This query extracts the year when the store was opened.
 
 ```javascript
 db.stores.aggregate([
+  { $match: { "_id": "905d1939-e03a-413e-a9c4-221f74055aac" } },
   {
     $project: {
-      name: 1,          
-      dataSize: {
-        $binarySize: "$name" // Calculate the binary size of the string data
-      }
+      name: 1,
+      storeOpeningDate: 1,
+      openingYear: { $year: { $toDate: "$storeOpeningDate" } }
     }
-  },
-  // Limit the result to the first 3 documents
-  { $limit: 3 }  
+  }
 ])
 ```
 
-The first three results returned by this query are:
+This query returns the following result.
 
 ```json
 [
   {
-    "_id": "7e53ca0f-6e24-4177-966c-fe62a11e9af5",
-    "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
-    "dataSize": 49
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "storeOpeningDate": "2024-12-30T22:55:25.779Z",
+    "openingYear": 2024
+  }
+]
+```
+
+### Example 2: Find stores opened in specific year
+
+This query retrieves all stores that were opened in 2021.
+
+```javascript
+db.stores.aggregate([
+  {
+    $match: {
+      $expr: {
+        $eq: [{ $year: { $toDate: "$storeOpeningDate" } }, 2021]
+      }
+    }
   },
   {
-    "_id": "923d2228-6a28-4856-ac9d-77c39eaf1800",
-    "name": "Lakeshore Retail | Home Decor Hub - Franciscoton",
-    "dataSize": 48
-  },
+    $project: {
+      name: 1,
+      city: 1,
+      openingYear: { $year: { $toDate: "$storeOpeningDate" } },
+      storeOpeningDate: 1
+    }
+  }
+])
+```
+
+This query returns the following result.
+
+```json
+[
   {
-    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
-    "dataSize": 50
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "city": "South Amir",
+    "storeOpeningDate": "2021-10-03T00:00:00.000Z",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "openingYear": 2021
   }
 ]
 ```

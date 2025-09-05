@@ -1,13 +1,13 @@
 ---
   title: $isoDayOfWeek
-  titleSuffix: Overview of the $dateDiff operator in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $isoDayOfWeek operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $isoDayOfWeek operator returns the weekday number in ISO 8601 format, ranging from 1 (Monday) to 7 (Sunday).
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/04/2025
+  ms.date: 09/04/2025
 ---
 
 # $isoDayOfWeek
@@ -28,9 +28,9 @@ The `$isoDayOfWeek` operator returns the weekday number in ISO 8601 format, rang
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, Timestamp, or ObjectId. If the expression resolves to null or is missing, `$isoDayOfWeek` returns null. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -215,7 +215,7 @@ Let's understand the usage with sample json from the `stores` dataset.
 
 ### Example 1: Analyze promotion events by day of week
 
-The example reviews promotion events to see which days of the week they typically started on.
+This query reviews promotion events to see which days of the week they started on.
 
 ```javascript
 db.stores.aggregate([
@@ -264,9 +264,10 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns promotion events grouped by the ISO day of week they start on.
+This query returns the following results.
 
 ```json
+[
   {
     "_id": 1,
     "eventCount": 1,
@@ -303,6 +304,7 @@ The query returns promotion events grouped by the ISO day of week they start on.
     "events": ["Grand Deal Days"],
     "dayName": "Sunday"
   }
+]
 ```
 
 ## Related content
