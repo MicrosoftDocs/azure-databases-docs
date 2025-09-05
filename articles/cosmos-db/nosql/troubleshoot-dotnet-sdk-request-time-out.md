@@ -55,12 +55,12 @@ This type of exception is common when your application is passing [CancellationT
 
 The exception's `Message` / `ToString()` also indicates the state of your `CancellationToken` through `Cancellation Token has expired: true` and it also contains [`Diagnostics`](troubleshoot-dotnet-sdk.md#capture-diagnostics) that contain the context of the cancellation for the involved requests.
 
-These exceptions are safe to retry on and can be treated as [time out exceptions](conceptual-resilient-sdk-applications.md#time outs-and-connectivity-related-failures-http-408503) from the retrying perspective.
+These exceptions are safe to retry on and can be treated as [time out exceptions](conceptual-resilient-sdk-applications.md#timeouts-and-connectivity-related-failures-http-408503) from the retrying perspective.
 
 #### Solution
 
 Verify the configured time in your `CancellationToken`. Then, make sure that it's greater than your [request time out](#request-level-time-out) and the `CosmosClientOptions.OpenTcpConnectionTimeout` property (if you're using [**Direct** mode](sdk-connection-modes.md)). 
-If the available time in the `CancellationToken` is less than the configured time out, and the SDK is facing [transient connectivity issues](conceptual-resilient-sdk-applications.md#time outs-and-connectivity-related-failures-http-408503), the SDK can't retry and throws an `CosmosOperationCanceledException` exception.
+If the available time in the `CancellationToken` is less than the configured time out, and the SDK is facing [transient connectivity issues](conceptual-resilient-sdk-applications.md#timeouts-and-connectivity-related-failures-http-408503), the SDK can't retry and throws an `CosmosOperationCanceledException` exception.
 
 ### High CPU utilization
 
