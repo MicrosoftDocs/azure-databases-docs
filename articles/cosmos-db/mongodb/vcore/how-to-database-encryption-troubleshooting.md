@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 09/01/2025
+ms.date: 09/04/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -20,17 +20,19 @@ If managed identity, key vault, key, or permissions and not configurated as per 
 
 Follow the steps in this section to troubleshoot all components required for proper CMK setup.
 
-## Accidental key access revocation from Azure Key Vault
+## Reasons for key access revocation from Azure Key Vault
 
 Someone with sufficient access rights to Key Vault might accidentally disable cluster access to the key by:
 
 - Unassigning the RBAC role **[Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations)** or revoking the permissions from the identity that's used to retrieve the key in Key Vault.
 - Deleting the key.
 - Deleting the Key Vault instance.
-- Changing the Key Vault firewall rules.
+- Changing the Key Vault firewall rules or otherwise misconfiguring the Key Vault's networking settings.
 - Deleting the managed identity of the cluster in Microsoft Entra ID.
 
-## Inaccessible customer-managed key condition
+These actions cause the customer-managed key used for data encryption to become inaccessible.
+
+## Troubleshooting inaccessible customer-managed key condition
 
 When you configure data encryption with a customer-managed key stored in key vault, continuous access to this key is required for the cluster to stay online. If that's not the case, the cluster changes its state to **Inaccessible** and begins denying all connections.
 
