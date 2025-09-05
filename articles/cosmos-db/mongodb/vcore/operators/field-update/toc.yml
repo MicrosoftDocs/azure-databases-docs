@@ -3,7 +3,7 @@
 - name: $inc
   href: $inc.md
 - name: $max
-  href: $max.md
+  href: ../accumulators/$max.md
 - name: $min
   href: $min.md
 - name: $mul
