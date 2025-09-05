@@ -1,24 +1,20 @@
 ---
-  title: $set (field update operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $set
+  titleSuffix: Overview of the $set operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $set operator sets the value of a field in a document during update operations.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/04/2025
 ---
 
-# $set (field update operator)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $set
 
 The `$set` operator is used to set the value of a field in a document during update operations. If the field does not exist, `$set` will create the field with the specified value. If the field already exists, `$set` will replace the existing value with the new value. This is one of the most commonly used update operators in MongoDB.
 
 ## Syntax
-
-The syntax for the `$set` operator is as follows:
 
 ```javascript
 {
@@ -37,37 +33,117 @@ The syntax for the `$set` operator is as follows:
 | **`field`** | The name of the field to set. Can be a top-level field or use dot notation for nested fields. |
 | **`value`** | The value to assign to the field. Can be any valid BSON type. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 19,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  }
 }
 ```
 
@@ -88,7 +164,7 @@ db.stores.updateOne(
 )
 ```
 
-After above operation, the document would be updated as follows:
+After this operation, the updated document is:
 
 ```json
 {
@@ -140,7 +216,7 @@ db.stores.updateOne(
 )
 ```
 
-After above operation, the document would be updated as follows:
+After this operation, the updated document is:
 
 ```json
 {
