@@ -14,6 +14,8 @@ ms.date: 01/05/2025
 
 The `$min` operator is used within aggregation stages like `$group`, `$bucket`, `$bucketAuto`, or `$setWindowFields`. The min operator is particularly useful in summarizing data or finding the smallest value in a dataset.
 
+When used as a field update operator, `$min` operator updates the value of a field to a specified value if the specified value is less than the current value of the field. If the field does not exist, `$min` creates the field and sets it to the specified value.
+
 ## Syntax
 
 ```javascript
@@ -22,11 +24,30 @@ $min: <expression>
 
 The `<expression>` can be a field path or an aggregation expression that specifies the values to be considered for the minimum calculation.
 
+As a field update operator:
+
+```javascript
+{
+  $min: {
+    <field1>: <value1>,
+    <field2>: <value2>,
+    ...
+  }
+}
+```
+
 ## Parameters  
 
 | Parameter | Description |
 | --- | --- |
 | **`<expression>`** | Specifies the field or computed value to determine the minimum value. |
+
+As a field update operator:
+
+| Parameter | Description |
+| --- | --- |
+| **`field`** | The name of the field to update with the minimum value. |
+| **`value`** | The value to compare with the current field value. The field will be updated only if this value is smaller. |
 
 ## Examples
 
@@ -348,6 +369,123 @@ This query returns the following results.
         "minDiscount": 5
     }
 ]
+```
+
+### Example 4: Setting minimum staff requirements (field update operator)
+
+To set a minimum staff requirement, update the full time stagg count only if the current value of the field is higher. Since the current `fullTime` value is 14, and 10 is less than 14, the field will be updated to 10.
+
+```javascript
+db.stores.updateOne(
+  { "_id": "26afb024-53c7-4e94-988c-5eede72277d5" },
+  {
+    $min: {
+      "staff.totalStaff.fullTime": 10
+    }
+  }
+)
+```
+
+### Example 5: Multiple field updates (field update operator)
+
+To update multiple fields with minimum values simultaneously, use the $min operator with multiple fields and corresponding min values.
+
+```javascript
+db.stores.updateOne(
+  { "_id": "26afb024-53c7-4e94-988c-5eede72277d5" },
+  {
+    $min: {
+      "staff.totalStaff.partTime": 12,
+      "sales.totalSales": 50000
+    }
+  }
+)
+```
+
+In this case:
+- `partTime` (8) will be updated to 8 since 12 > 8 (no change)
+- `totalSales` (83865) will be updated to 50000 since 50000 < 83865
+
+### Example 6: Creating new fields (field update operator)
+
+If a field doesn't exist, `$min` creates it with the specified value.
+
+```javascript
+db.stores.updateOne(
+  { "_id": "26afb024-53c7-4e94-988c-5eede72277d5" },
+  {
+    $min: {
+      "staff.minStaffRequired": 15,
+      "sales.minimumSalesTarget": 30000
+    }
+  }
+)
+```
+
+### Example 7: Working with Dates (field update operator)
+
+Set minimum dates for tracking earliest events.
+
+```javascript
+db.stores.updateOne(
+  { "_id": "26afb024-53c7-4e94-988c-5eede72277d5" },
+  {
+    $min: {
+      "lastInventoryCheck": new Date("2024-01-15"),
+      "firstSaleDate": new Date("2023-06-01")
+    }
+  }
+)
+```
+
+### Example 8: Updating array elements (field update operator)
+
+Update minimum values within array elements using positional operators.
+
+```javascript
+db.stores.updateOne(
+  {
+    "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+    "sales.salesByCategory.categoryName": "Lavalier Microphones"
+  },
+  {
+    $min: {
+      "sales.salesByCategory.$.totalSales": 40000
+    }
+  }
+)
+```
+
+After these field update operations, the updated document is:
+
+```json
+{
+  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+  "staff": {
+    "totalStaff": {
+      "fullTime": 10,
+      "partTime": 8
+    },
+    "minStaffRequired": 15
+  },
+  "sales": {
+    "totalSales": 50000,
+    "minimumSalesTarget": 30000,
+    "salesByCategory": [
+      {
+        "categoryName": "Lavalier Microphones",
+        "totalSales": 40000
+      },
+      {
+        "categoryName": "Wireless Microphones",
+        "totalSales": 39691
+      }
+    ]
+  },
+  "lastInventoryCheck": ISODate("2024-01-15T00:00:00.000Z"),
+  "firstSaleDate": ISODate("2023-06-01T00:00:00.000Z")
+}
 ```
 
 ## Related content
