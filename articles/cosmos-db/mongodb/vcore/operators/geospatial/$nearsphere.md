@@ -42,6 +42,118 @@ The `$nearSphere` operator returns documents with location fields near a specifi
 
 ## Examples
 
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
 For better performance, start with creating the required `2dsphere` index.
 
 ```javascript
@@ -50,7 +162,7 @@ db.stores.createIndex({ "location": "2dsphere" })
 
 ### Example 1: Basic Spherical Search
 
-The example uses the `$nearSphere` operator to find documents in the stores collection that are closest to the Point (-141.9922, 16.8331) on a spherical (Earth-like) surface.
+This query retrieves stores that are closest to a specified Point (-141.9922, 16.8331) on a spherical (Earth-like) surface.
 
 ```javascript
 db.stores.find({
@@ -68,9 +180,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns stores sorted closest to farthest from defined Point.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "643b2756-c22d-4063-9777-0945b9926346",
     "name": "Contoso, Ltd. | Outdoor Furniture Corner - Pagacfort",
@@ -87,11 +200,12 @@ The query returns stores sorted closest to farthest from defined Point.
       "coordinates": [150.2305, -89.8431]
     }
   }
+]
 ```
 
 ### Example 2: Complex Distance Analysis
 
-The example helps to find and analyze stores between 20 meter and 200 meter from Point (65.3765, -44.8674).
+This query retrieves stores between 20 meter and 200 meter from Point (65.3765, -44.8674). The query searches in a "donut-shaped" area - finding stores that are at least 20 meters away but no more than 200 meters from the specified point.
 
 ```javascript
 db.stores.aggregate([
@@ -121,8 +235,6 @@ db.stores.aggregate([
 ])
 ```
 
-The query searches in a "donut-shaped" search area - finding stores that are at least 20 meters away but no more than 200 meters from the specified point, perfect for scenarios like "find stores in nearby cities but not in the immediate area.
-
 Key difference between the operator `$nearSphere` and `$near`.
 
 * Former uses spherical geometry for distance calculations.
@@ -132,3 +244,4 @@ Key difference between the operator `$nearSphere` and `$near`.
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
