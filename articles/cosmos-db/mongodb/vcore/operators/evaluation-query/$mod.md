@@ -30,33 +30,123 @@ The `$mod` operator performs a modulo operation on the value of a field and sele
 | **`<divisor>`** | The number to divide the field value by. Must be a positive number. |
 | **`<remainder>`** | The expected remainder after the modulo operation. Must be a non-negative number less than the divisor. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "new-store-001",
-  "name": "TechWorld Electronics - Downtown Branch",
-  "sales": {
-    "totalSales": 5000
-  },
-  "createdDate": { "$date": "2025-06-11T11:11:32.262Z" },
-  "status": "new",
-  "staff": {
-    "totalStaff": {
-      "fullTime": 0,
-      "partTime": 0
-    }
-  },
-  "version": 1,
-  "storeOpeningDate": { "$date": "2025-06-11T11:11:32.262Z" }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
 
 ### Example 1: Find stores with sales divisible by 1000
 
-The example retrieves stores where total sales are divisible by 1000 (useful for identifying round sales figures).
+This query retrieves stores where the total sales are divisible by 1000 (useful for identifying round sales figures).
 
 ```javascript
 db.stores.find({
@@ -64,9 +154,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-This query identifies stores with sales figures that are exact multiples of 1000, which might indicate promotional pricing or bulk sales patterns.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "new-store-001",
     "name": "TechWorld Electronics - Downtown Branch",
@@ -117,11 +208,12 @@ This query identifies stores with sales figures that are exact multiples of 1000
       "source": "store-management-system"
     }
   }
+]
 ```
 
 ### Example 2: Pagination-style querying
 
-Find stores where part-time employee count leaves remainder 0 when divided by 4 (useful for creating data subsets).
+This query retrieves stores where the part-time employee count leaves a remainder of 0 when divided by 4 (useful for creating data subsets).
 
 ```javascript
 db.stores.find({
@@ -129,9 +221,10 @@ db.stores.find({
 })
 ```
 
-This type of query is useful for creating consistent data partitions or implementing custom pagination logic based on field values.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "new-store-001",
     "name": "TechWorld Electronics - Downtown Branch",
@@ -182,6 +275,7 @@ This type of query is useful for creating consistent data partitions or implemen
       "source": "store-management-system"
     }
   }
+]
 ```
 
 ## Related content

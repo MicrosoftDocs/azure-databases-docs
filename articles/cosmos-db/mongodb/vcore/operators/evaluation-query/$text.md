@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/25/2025
+  ms.date: 09/04/2025
 ---
 
 # $text
@@ -40,11 +40,123 @@ The `$text` operator performs text search on the content of indexed string field
 
 Before using the `$text` operator, you must create a text index on the fields you want to search.
 
-## Example
+## Examples
+
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
 
 ### Example 1: Simple text search
 
-The example searches for stores containing the word "Microphone" in indexed text fields.
+This query retrieves stores containing the word "Microphone" in indexed text fields.
 
 ```javascript
 // First create a text index
@@ -56,9 +168,10 @@ db.stores.find(
 { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
-This query searches for documents containing the word "Microphone" in any of the text-indexed fields.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
     "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
@@ -79,11 +192,12 @@ This query searches for documents containing the word "Microphone" in any of the
       ]
     }
   }
+]
 ```
 
 ### Example 2: Multiple term search
 
-The example searches for stores related to "Home Decor" (multiple terms treated as `OR` by default).
+This query retrieves stores related to "Home Decor" (multiple terms treated as `OR` by default).
 
 ```javascript
 // First create a text index
@@ -95,9 +209,10 @@ db.stores.find(
 { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(5)
 ```
 
-The query finds documents containing either "Home" OR "Decor" in the indexed text fields.
+The first five results returned by this query are:
 
 ```json
+[
   {
     "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
     "name": "Trey Research | Home Office Depot - Lake Freeda",
@@ -147,11 +262,12 @@ The query finds documents containing either "Home" OR "Decor" in the indexed tex
       ]
     }
   }
+]
 ```
 
 ### Example 3: Phrase search
 
-The example searches for the exact phrase "Home Theater" using quotes.
+This query searches for the exact phrase "Home Theater" using quotes.
 
 ```javascript
 db.stores.find(
@@ -159,9 +275,10 @@ db.stores.find(
  { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
-The quoted search term ensures exact phrase matching rather than individual word matching.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "0bc4f653-e64e-4342-ae7f-9611dfd37800",
     "name": "Tailwind Traders | Speaker Bazaar - North Mireyamouth",
@@ -184,11 +301,12 @@ The quoted search term ensures exact phrase matching rather than individual word
       ]
     }
   }
+]
 ```
 
 ### Example 4: Exclude terms with negation
 
-The example searches for stores with "Audio" but exclude the ones with "Wireless".
+This query searches for stores with "Audio" but exclude the ones with "Wireless".
 
 ```javascript
 db.stores.find(
@@ -196,9 +314,10 @@ db.stores.find(
  { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
-The minus sign (-) before "Wireless" excludes documents containing that term from the results.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "32afe6ec-dd3c-46b3-a681-ed041b032c39",
     "name": "Relecloud | Audio Equipment Gallery - Margretshire",
@@ -218,27 +337,12 @@ The minus sign (-) before "Wireless" excludes documents containing that term fro
       ] 
     }
   }
+]
 ```
 
-### Example 5: Case-sensitive search
+### Example 5: Combined with other query operators
 
-> [!NOTE]
-> Support for case-sensitive is in pipeline and should be released soon.
-
-The example allows performing a case-sensitive search for "BAZAAR".
-
-```javascript
-db.stores.find(
-  { $text: { $search: "BAZAAR", $caseSensitive: true } },
-  { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }
-).limit(2)
-```
-
-The query will match documents where "BAZAAR" appears in exactly that case.
-
-### Example 6: Combined with other query operators
-
-The example allows search for stores with "Hub" in text and total sales greater than 50000.
+This query retrieves stores with "Hub" in text and total sales greater than 50000.
 
 ```javascript
 db.stores.find({
@@ -247,9 +351,10 @@ db.stores.find({
 ).limit(2)
 ```
 
-The query combines text search with traditional field-based queries for more precise filtering.
+The first two results returned by this query are:
 
 ```json
+[
  {
     "_id": "future-electronics-001",
     "name": "Future Electronics Hub",
@@ -268,11 +373,12 @@ The query combines text search with traditional field-based queries for more pre
       "totalSales": 160000
     }
   }
+]
 ```
 
-### Example 7: Get text search scores
+### Example 6: Get text search scores
 
-Retrieve text search results with relevance scores for ranking.
+This query retrieves text search results with relevance scores for ranking.
 
 ```javascript
 db.stores.find(
@@ -281,19 +387,36 @@ db.stores.find(
 ).sort({ score: { $meta: "textScore" } }).limit(5)
 ```
 
-This query returns documents sorted by text search relevance score, with the most relevant results first.
+The first five results returned by this query are:
 
 ```json
-  { "_id": '511c9932-d647-48dd-9bd8-baf47b593f88', "score": 2 },
-  { "_id": 'a0a2f05c-6085-4c99-9781-689af759662f', "score": 2 },
-  { "_id": 'fb5aa470-557c-43cb-8ca0-5915d6cae34b', "score": 2 },
-  { "_id": '1a2c387b-bb43-4b14-a6cd-cc05a5dbfbd5', "score": 1 },
-  { "_id": '40d6f4d7-50cd-4929-9a07-0a7a133c2e74', "score": 1 }
+[
+    {
+        "_id": "511c9932-d647-48dd-9bd8-baf47b593f88",
+        "score": 2
+    },
+    {
+        "_id": "a0a2f05c-6085-4c99-9781-689af759662f",
+        "score": 2
+    },
+    {
+        "_id": "fb5aa470-557c-43cb-8ca0-5915d6cae34b",
+        "score": 2
+    },
+    {
+        "_id": "1a2c387b-bb43-4b14-a6cd-cc05a5dbfbd5",
+        "score": 1
+    },
+    {
+        "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+        "score": 1
+    }
+]
 ```
 
-### Example 8: Search across multiple categories
+### Example 7: Search across multiple categories
 
-Create a comprehensive text index and search across all text fields.
+First, create a comprehensive text index to search across all text fields.
 
 ```javascript
 // Create comprehensive text index
@@ -305,14 +428,22 @@ db.stores.createIndex({
 })
 
 // Search across all indexed fields
-db.stores.find(
-{ $text: { $search: "\"Home Theater\"" }},
-{ "name": 1, "sales.salesByCategory.categoryName": 1, "promotionEvents.eventName": 1, "promotionEvents.discounts.categoryName": 1}).limit(2)
+db.stores.find({
+    $text: {
+        $search: "\"Home Theater\""
+    }
+}, {
+    "name": 1,
+    "sales.salesByCategory.categoryName": 1,
+    "promotionEvents.eventName": 1,
+    "promotionEvents.discounts.categoryName": 1
+}).limit(2)
 ```
 
-The example demonstrates searching across multiple fields simultaneously for maximum coverage.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
     "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
@@ -418,6 +549,7 @@ The example demonstrates searching across multiple fields simultaneously for max
       }
     ]
   }
+]
 ```
 
 ## Related content

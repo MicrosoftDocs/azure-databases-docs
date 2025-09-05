@@ -1,7 +1,7 @@
 --- 
   title: $bsonSize
   titleSuffix: Overview of the $bsonSize operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $bsonSize operator is used to return the size of a document in bytes when encoded as BSON. 
+  description: The $bsonSize operator returns the size of a document in bytes when encoded as BSON. 
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
@@ -17,7 +17,9 @@ The `$bsonSize` operator is used to return the size of a document in bytes when 
 ## Syntax
 
 ```javascript
-{ $bsonSize: <expression> }
+{
+  $bsonSize: <expression>
+}
 ```
 
 ### Parameters
@@ -26,74 +28,125 @@ The `$bsonSize` operator is used to return the size of a document in bytes when 
 | --- | --- |
 | **`<expression>`**| Any valid expression that resolves to a document whose BSON size you want to calculate.|
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
+    ]
 }
 ```
 
 ### Example 1: Calculate the total BSON-encoded size of a document in bytes using $bsonSize
 
-To calculate the BSON size of the document, adding it as a new field called `bsonSize`,
+This query calculates the BSON size of the document.
 
-```JavaScript
+```javascript
 db.stores.aggregate([
   {
     $project: {
@@ -109,9 +162,10 @@ db.stores.aggregate([
 ])
 ```
 
-This query  would return the following document.
+The first three results returned by this query are:
 
 ```json
+[
   {
     "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
     "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
@@ -127,6 +181,7 @@ This query  would return the following document.
     "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
     "documentSize": 1882
   }
+]
 ```
 
 ## Related content
