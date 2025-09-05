@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2025
+ms.date: 09/04/2025
 ---
 
 # $minDistance
@@ -38,9 +38,123 @@ The `$minDistance` operator is used in geospatial queries to specify the minimum
 | `coordinates` | An array of [longitude, latitude] specifying the center point |
 | `$minDistance` | Minimum distance in meters from the center point |
 
-## Example
+## Examples
 
-Using the `stores` collection, let's find stores that are at least 500 kilometers away from point coordinate [69.7296, 70.1272].
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1 - Search beyond a minimum distance
+
+This query retrieves stores that are at least 500 kilometers away from a specified point coordinate.
 
 ```javascript
 db.stores.find({
@@ -60,9 +174,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns the two stores at least 500Km away from the provided coordinates.
+The first two results returned by this query are:
 
 ```json
+[
  {
    "_id": "9d9d768b-4daf-4126-af15-a963bd3b88aa",
    "name": "First Up Consultants | Perfume Gallery - New Verniceshire",
@@ -73,8 +188,10 @@ The query returns the two stores at least 500Km away from the provided coordinat
    "name": "Fabrikam, Inc. | Turntable Depot - Schinnershire",
    "location": { "lat": 37.5534, "lon": 81.6805 }
  }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+

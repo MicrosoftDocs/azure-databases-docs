@@ -32,7 +32,121 @@ The `$centerSphere` operator specifies a circle using spherical geometry for `$g
 | `<y>` | The latitude of the circle's center point |
 | `<radius in radians>` | The radius of the sphere in radians (divide distance in kilometers by 6371 to convert to radians) |
 
-## Example
+## Examples
+
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1 - Search within a specified radius
 
 Let's find all stores within approximately 1,000 kilometers (radius ≈ 0.157 radians) of the Wide World Importers Headphone Corner store location. This query can help identify nearby stores for regional marketing campaigns or supply chain optimization.
 
@@ -55,9 +169,10 @@ db.stores.find(
 ).limit(2)
 ```
 
-The query returns the nearest stores from Wide World Importers Headphone Corner location.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "name": "Fourth Coffee | Electronics Bazaar - O'Keefeburgh",
     "location": { "lat": -64.5856, "lon": -115.5241 },
@@ -68,6 +183,7 @@ The query returns the nearest stores from Wide World Importers Headphone Corner 
     "location": { "lat": -72.73, "lon": -60.2306 },
     "city": "West Sybleberg"
   }
+]
 ```
 
 > [!IMPORTANT]
@@ -82,3 +198,4 @@ The query returns the nearest stores from Wide World Importers Headphone Corner 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+

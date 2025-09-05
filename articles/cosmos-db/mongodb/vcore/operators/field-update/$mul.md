@@ -16,8 +16,6 @@ The `$mul` operator multiplies the value of a field by a specified number. If th
 
 ## Syntax
 
-The syntax for the `$mul` operator is as follows:
-
 ```javascript
 {
   $mul: {
@@ -41,29 +39,117 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "438db151-04b8-4422-aa97-acf94bc69cfc",
-  "name": "Fourth Coffee | Turntable Boutique - Tromptown",
-  "staff": {
-    "totalStaff": {
-      "fullTime": 8,
-      "partTime": 5
-    }
-  },
-  "sales": {
-    "totalSales": 24863,
-    "salesByCategory": [
-      {
-        "categoryName": "Direct-Drive Turntables",
-        "totalSales": 24863
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  }
 }
 ```
 
 ### Example 1: Applying percentage increase
 
-Apply a 10% increase to total sales (multiply by 1.1).
+Apply a 10% increase to total sales (multiply by 1.1). This will change `totalSales` from 24863 to 27349.3 (24863 × 1.1).
 
 ```javascript
 db.stores.updateOne(
@@ -75,8 +161,6 @@ db.stores.updateOne(
   }
 )
 ```
-
-This will change `totalSales` from 24863 to 27349.3 (24863 × 1.1).
 
 ### Example 2: Applying discount
 

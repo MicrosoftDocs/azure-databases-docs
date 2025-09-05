@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2025
+ms.date: 09/04/2025
 ---
 
 # $maxDistance
@@ -38,9 +38,123 @@ The `$maxDistance` operator is used in geospatial queries to specify the maximum
 | `coordinates` | An array of [longitude, latitude] specifying the center point |
 | `$maxDistance`| Maximum distance in meters from the center point |
 
-## Example
+## Examples
 
-Using the `stores` collection, let's find all stores within 10Km of the Point coordinate.
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1 - Search within a maximum distance
+
+This query searches for all stores within 10Km of the specified Point coordinate.
 
 ```javascript
 db.stores.find({
@@ -60,16 +174,19 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns only one store that falls within 10Km of the coordinate provided.
+This query returns the following result.
 
 ```json
-{
-   "_id": "66fd4cdd-ffc3-44b6-81d9-6d5e9c1f7f9a",
-   "name": "Trey Research | Health Food Center - North Michelle",
-   "location": { "lat": -77.9951, "lon": -62.7339 }
-}
+[
+  {
+     "_id": "66fd4cdd-ffc3-44b6-81d9-6d5e9c1f7f9a",
+     "name": "Trey Research | Health Food Center - North Michelle",
+     "location": { "lat": -77.9951, "lon": -62.7339 }
+  }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+

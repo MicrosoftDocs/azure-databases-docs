@@ -7,10 +7,10 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2025
+ms.date: 09/04/2025
 ---
 
-# $geometry (geospatial)
+# $geometry
 
 The `$geometry` operator specifies a GeoJSON geometry object for geospatial queries. It's used within other geospatial operators to define shapes and points for spatial calculations.
 
@@ -34,6 +34,118 @@ The `$geometry` operator specifies a GeoJSON geometry object for geospatial quer
 
 ## Examples
 
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
 For better performance, start with creating the required 2dsphere index.
 
 ```javascript
@@ -42,9 +154,7 @@ db.stores.createIndex({ "location": "2dsphere" })
 
 ### Example 1: Point geometry
 
-This query retrieves up to two stores closest to the point at coordinates [46.2917, -62.6354], ordered by proximity.
-
-It uses the $near operator to sort results by distance from a specific point, helping find stores that are geographically nearest to a given location.
+This query retrieves up to two stores closest to the point at coordinates [46.2917, -62.6354], ordered by proximity. It uses the $near operator to sort results by distance from a specific point to find stores that are geographically nearest to a given location.
 
 ```javascript
 db.stores.find({
@@ -62,9 +172,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns the two nearest stores around the coordinates supplied.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "59c355e9-586c-44f8-bbaf-a87989142119",
     "name": "Relecloud | Outdoor Furniture Shop - Chetside",
@@ -75,6 +186,7 @@ The query returns the two nearest stores around the coordinates supplied.
     "name": "VanArsdel, Ltd. | Furniture Place - North Dustinside",
     "location": { "lat": 47.3426, "lon": -62.4031 }
   }
+]
 ```
 
 ### Example 2: Polygon geometry
@@ -106,9 +218,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-This query finds stores whose coordinates overlap with the defined polygon boundary.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "6bba7117-d180-4584-b50c-a2f843e9c9ab",
     "name": "Wide World Importers | Craft Supply Mart - Heaneybury",
@@ -121,6 +234,7 @@ This query finds stores whose coordinates overlap with the defined polygon bound
     "location": { "lat": -70.6077, "lon": -105.9901 },
     "city": "Patiencehaven"
   }
+]
 ```
 
 ### Example 3: MultiPolygon geometry
@@ -160,9 +274,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns the two stores falling within either of the two defined rectangular regions.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "6d70de9c-7b83-426d-81aa-f2173f97b64d",
     "name": "Fabrikam, Inc. | Footwear Haven - Port Erling",
@@ -173,8 +288,10 @@ The query returns the two stores falling within either of the two defined rectan
     "name": "Wide World Importers | Eyewear Bazaar - West Oletachester",
     "location": { "lat": 47.3461, "lon": -61.6605 }
   }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
