@@ -28,7 +28,7 @@ The `$set` operator is used to set the value of a field in a document during upd
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The name of the field to set. Can be a top-level field or use dot notation for nested fields. |
 | **`value`** | The value to assign to the field. Can be any valid BSON type. |
