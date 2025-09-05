@@ -34,7 +34,7 @@ The `$not` operator performs a logical NOT operation on a specified expression a
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -148,7 +148,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Use NOT operation as logical-query operator
 
-The example helps to find stores where the number of full-time staff isn't equal to 5 using the `$not` operator with $eq. It returns only the `name` and `staff` fields for up to two such matching documents.
+This query retrieves stores where the number of full-time staff isn't equal to 5 using the `$not` operator with $eq. It returns only the `name` and `staff` fields for up to two such matching documents.
 
 ```javascript
  db.stores.find({
@@ -163,7 +163,7 @@ The example helps to find stores where the number of full-time staff isn't equal
  }).limit(2)
 ```
 
-The query returns up to two stores where full-time staff count differs from 5.
+The first two results returned by this query are:
 
 ```json
 [
@@ -192,7 +192,7 @@ The query returns up to two stores where full-time staff count differs from 5.
 
 ### Example 2: Use NOT operator as boolean-expression to identify stores that aren't high-volume
 
-The example finds stores that don't have high sales volume (not greater than 50,000).
+This query retrieves stores that don't have high sales volume (not greater than 50,000).
 
 ```javascript
 db.stores.aggregate([
@@ -216,9 +216,10 @@ db.stores.aggregate([
 ])
 ```
 
-The query identifies stores that aren't high-volume.
+The first two results returned by this query are:
 
 ```json
+[
  {
     "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
     "name": "Trey Research | Home Office Depot - Lake Freeda",
@@ -233,8 +234,10 @@ The query identifies stores that aren't high-volume.
     "isNotHighVolume": false,
     "storeCategory": "Small/Medium Store"
   }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
