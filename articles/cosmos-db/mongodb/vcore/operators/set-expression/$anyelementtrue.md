@@ -1,7 +1,7 @@
 ---
-  title: $anyElementsTrue
-  titleSuffix: Overview of the $allElementsTrue operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $anyElementsTrue operator returns true if any element in an array evaluates to a value of true.
+  title: $anyElementTrue
+  titleSuffix: Overview of the $anyElementTrue operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $anyElementTrue operator returns true if any element in an array evaluates to a value of true.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
