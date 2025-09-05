@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 09/04/2025
 ---
 
 # $setIsSubset
@@ -29,9 +29,9 @@ The `$setIsSubset` operator returns a Boolean value that indicates if one array 
 | `<array1>` | The array to check to see if it's a subset of `<array2>`. |
 | `<array2>` | The array to check against. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -120,7 +120,7 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 
 ### Example 1: Determine if sales categories are a subset of promotion categories
 
-The following example helps you determine if all of a store's categories are included in their promotion discounts, and vice versa.
+This query determines if all of a store's categories are included in their promotion discounts, and vice versa. This query returns categories included under both the sales and promotion brackets. It confirms that the `sales` value is a subset of a particular promotion category (but doesn't do the reverse).
 
 ```javascript
 db.stores.aggregate([
@@ -147,30 +147,32 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns categories included under both the sales and promotion brackets. It confirms that the `sales` value is a subset of a particular promotion category (but doesn't do the reverse).
+This query returns the following result.
 
 ```json
-{
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
-  "salesCategories": [
-    "Mattress Toppers"
-  ],
-  "promotionCategories": [
-    "Bath Accessories",
-    "Pillow Top Mattresses",
-    "Bathroom Scales",
-    "Towels",
-    "Bathrobes",
-    "Mattress Toppers",
-    "Hand Towels",
-    "Shower Heads",
-    "Bedspreads",
-    "Bath Mats"
-  ],
-  "salesAreSubsetOfPromotions": true,
-  "promotionsAreSubsetOfSales": false
-}
+[
+  {
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "salesCategories": [
+      "Mattress Toppers"
+    ],
+    "promotionCategories": [
+      "Bath Accessories",
+      "Pillow Top Mattresses",
+      "Bathroom Scales",
+      "Towels",
+      "Bathrobes",
+      "Mattress Toppers",
+      "Hand Towels",
+      "Shower Heads",
+      "Bedspreads",
+      "Bath Mats"
+    ],
+    "salesAreSubsetOfPromotions": true,
+    "promotionsAreSubsetOfSales": false
+  }
+]
 ```
 
 ## Related content
