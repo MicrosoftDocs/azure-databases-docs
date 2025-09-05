@@ -1,34 +1,36 @@
 ---
-title: $dayOfWeek
-titleSuffix: Overview of the $dayOfWeek operator in Azure Cosmos DB for MongoDB vCore
-description: The $dayOfWeek operator in Azure Cosmos DB for MongoDB vCore extracts the day of the week from a date.
+title: $dayOfMonth
+titleSuffix: Overview of the $dayOfMonth operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $dayOfMonth operator extracts the day of the month from a date.
 author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 06/24/2025
+ms.date: 09/04/2025
 ---
 
-# $dayOfWeek
+# $dayOfMonth
 
-The `$dayOfWeek` operator extracts the day of the week from a date value, where 1 represents Sunday and 7 represents Saturday. It's useful for grouping or filtering documents based on the day of the week.
+The `$dayOfMonth` operator extracts the day of the month (1–31) from a date value. It's useful for grouping or filtering documents based on the day of the month.
 
 ## Syntax
 
 ```javascript
-{ $dayOfWeek: <dateExpression> }
+{
+  $dayOfMonth: <dateExpression>
+}
 ```
 
 ## Parameters
 
-| Parameter              | Description                                                    |
-| ---------------------- | -------------------------------------------------------------- |
-| **`<dateExpression>`** | The date expression from which to extract the day of the week. |
+| Parameter              | Description                                                     |
+| ---------------------- | --------------------------------------------------------------- |
+| **`<dateExpression>`** | The date expression from which to extract the day of the month. |
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -92,9 +94,9 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Extract day of the week
+### Example 1: Extract day of the month
 
-The query uses the `$dayOfWeek` operator to extract the day of the week from the `lastUpdated` timestamp. The returned value ranges from 1 (Sunday) to 7 (Saturday), based on ISO-8601 ordering.
+This query uses the `$dayOfMonth` operator to extract the day of the month (1–31) from the `lastUpdated` timestamp and isolates the date component of the field for reporting or grouping.
 
 ```javascript
 db.stores.aggregate([
@@ -104,18 +106,20 @@ db.stores.aggregate([
   {
     $project: {
       _id: 0,
-      dayOfWeek: { $dayOfWeek: "$lastUpdated" }
+      dayOfMonth: { $dayOfMonth: "$lastUpdated" }
     }
   }
 ])
 ```
 
-The query returns which day of the week the `lastUpdated` date falls on, as a number from 1 (Sunday) through 7 (Saturday).
+This query returns the following result.
 
 ```json
-{
-  "dayOfWeek": "4"
-}
+[
+  {
+    "dayOfMonth": "4"
+  }
+]
 ```
 
 ## Related content

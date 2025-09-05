@@ -1,14 +1,15 @@
 ---
 title: $dayOfYear
-titleSuffix: Overview of the $dayOfYear operator in Azure Cosmos DB for MongoDB vCore
-description: The $dayOfYear operator in Azure Cosmos DB for MongoDB vCore extracts the day of the year from a date.
+titleSuffix: Overview of the $dayOfYear operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $dayOfYear operator extracts the day of the year from a date.
 author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 06/24/2025
+ms.date: 09/04/2025
 ---
+
 # $dayOfYear
 
 The `$dayOfYear` operator extracts the day of the year from a date value, where 1 represents January 1. It's useful for grouping or filtering documents based on the day of the year.
@@ -16,7 +17,9 @@ The `$dayOfYear` operator extracts the day of the year from a date value, where 
 ## Syntax
 
 ```javascript
-{ $dayOfYear: <dateExpression> }
+{
+  $dayOfYear: <dateExpression>
+}
 ```
 
 ## Parameters
@@ -27,7 +30,7 @@ The `$dayOfYear` operator extracts the day of the year from a date value, where 
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -93,7 +96,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Extract day of the year
 
-The query uses the `$dayOfYear` operator to extract the ordinal day of the year (1–366) from the `lastUpdated` timestamp. It's useful for tracking events by position in the calendar year, such as seasonal trends or week-over-week comparisons.
+This query uses the `$dayOfYear` operator to extract the ordinal day of the year (1–366) from the `lastUpdated` timestamp.
 
 ```javascript
 db.stores.aggregate([
