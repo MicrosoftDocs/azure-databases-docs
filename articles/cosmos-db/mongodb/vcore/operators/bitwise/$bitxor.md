@@ -28,9 +28,9 @@ The `$bitXor` operator performs a bitwise exclusive OR (XOR) operation on intege
 | --- | --- |
 | **`expression1, expression2, ...`** | Expressions that resolve to integer values. The operator performs XOR operations on these values in sequence. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -103,7 +103,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Basic XOR operation
 
-The query uses an aggregation pipeline to calculate between full-time and part-time staff counts for a specific store.
+This query uses an aggregation pipeline to calculate between full-time and part-time staff counts for a specific store. The resulting document contains the store details along with a computed field. The XOR operation between 19 (binary: 10011) and 20 (binary: 10100) results in 7 (binary: 00111).
 
 ```javascript
 db.stores.aggregate([
@@ -121,21 +121,23 @@ db.stores.aggregate([
 ])
 ```
 
-The output document contains the store details along with a computed field. The XOR operation between 19 (binary: 10011) and 20 (binary: 10100) results in 7 (binary: 00111).
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "fullTimeStaff": 19,
-  "partTimeStaff": 20,
-  "staffXor": 7
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "fullTimeStaff": 19,
+    "partTimeStaff": 20,
+    "staffXor": 7
+  }
+]
 ```
 
 ### Example 2: XOR with Multiple Values
 
-The aggregation pipeline computes the bitwise XOR of all discount percentages for the `Discount Delight Days` event of a specific store.
+The aggregation pipeline computes the bitwise XOR of all discount percentages for the `Discount Delight Days` event of a specific store. The resulting document represents the bitwise XOR calculation of all discount percentages for the `Discount Delight Days` event.
 
 ```javascript
 db.stores.aggregate([
@@ -174,16 +176,18 @@ db.stores.aggregate([
 ])
 ```
 
-The output represents the bitwise XOR calculation of all discount percentages for the `Discount Delight Days` event.
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "eventName": "Discount Delight Days",
-  "discountPercentages": [22, 23, 10, 10, 9, 24],
-  "xorResult": { "$numberLong": "16" }
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "eventName": "Discount Delight Days",
+    "discountPercentages": [22, 23, 10, 10, 9, 24],
+    "xorResult": { "$numberLong": "16" }
+  }
+]
 ```
 
 ## Related content

@@ -28,9 +28,9 @@ The `$bitOr` operator performs a bitwise OR operation on integer values. It comp
 | --- | --- |
 | **`expression1, expression2, ...`** | Expressions that evaluate to integers. The `$bitOr` operator performs a bitwise OR operation on all provided expressions. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -91,7 +91,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Basic bitwise OR operation
 
-The query performs a bitwise OR operation on the staff values of a specific store document to combine permission flags.
+The query performs a bitwise OR operation on the staff values of a specific store document to combine permission flags. The bitwise OR of 3 (011 in binary) and 2 (010 in binary) equals 3 (011 in binary).
 
 ```javascript
 db.stores.aggregate([
@@ -109,21 +109,23 @@ db.stores.aggregate([
 ])
 ```
 
-The bitwise OR of 3 (011 in binary) and 2 (010 in binary) equals 3 (011 in binary).
+This query returns the following result.
 
 ```json
-{
-  "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
-  "name": "Fabrikam, Inc. | Car Accessory Outlet - West Adele",
-  "fullTimeStaff": 3,
-  "partTimeStaff": 2,
-  "combinedStaffFlag": 3
-}
+[
+  {
+    "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
+    "name": "Fabrikam, Inc. | Car Accessory Outlet - West Adele",
+    "fullTimeStaff": 3,
+    "partTimeStaff": 2,
+    "combinedStaffFlag": 3
+  }
+]
 ```
 
 ### Example 2: Multiple value bitwise OR with discount percentages
 
-The example aggregation query extracts discount details for a specific promotion event and computes a bitwise flag combining discounts and staff values
+The example aggregation query extracts discount details for a specific promotion event and computes a bitwise flag combining discounts and staff values. The output shows the results of the aggregation query that calculates a combined bitwise flag for each discount in the event `Super Saver Spectacular`. The operation combines discount percentages with staff numbers using bitwise OR: 7|3|2 = 7 and 11|3|2 = 11.
 
 ```javascript
 db.stores.aggregate([
@@ -156,26 +158,28 @@ db.stores.aggregate([
 ])
 ```
 
-The output shows the results of the aggregation query that calculates a combined bitwise flag for each discount in the event `Super Saver Spectacular`. The operation combines discount percentages with staff numbers using bitwise OR: 7|3|2 = 7 and 11|3|2 = 11.
+This query returns the following result.
 
 ```json
-{
-  "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
-  "name": "Fabrikam, Inc. | Car Accessory Outlet - West Adele",
-  "eventName": "Super Saver Spectacular",
-  "discountFlags": [
-    {
-      "categoryName": "Car Chargers",
-      "discountPercentage": 7,
-      "combinedFlag": 7
-    },
-    {
-      "categoryName": "Dash Cameras",
-      "discountPercentage": 11,
-      "combinedFlag": 11
-    }
-  ]
-}
+[
+  {
+    "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
+    "name": "Fabrikam, Inc. | Car Accessory Outlet - West Adele",
+    "eventName": "Super Saver Spectacular",
+    "discountFlags": [
+      {
+        "categoryName": "Car Chargers",
+        "discountPercentage": 7,
+        "combinedFlag": 7
+      },
+      {
+        "categoryName": "Dash Cameras",
+        "discountPercentage": 11,
+        "combinedFlag": 11
+      }
+    ]
+  }
+]
 ```
 
 ## Related content
