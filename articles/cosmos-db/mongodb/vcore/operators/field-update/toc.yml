@@ -5,7 +5,7 @@
 - name: $max
   href: ../accumulators/$max.md
 - name: $min
-  href: $min.md
+  href: ../accumulators/$min.md
 - name: $mul
   href: $mul.md
 - name: $rename
