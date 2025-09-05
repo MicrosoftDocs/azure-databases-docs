@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.date: 09/04/2025
 ---
 
 # $setIntersection
@@ -28,9 +28,9 @@ The `$setIntersection` operator returns an array that contains elements that app
 | --- | --- |
 | `<array1>, <array2>, ...` | Two or more arrays to find the intersection of. Each array is treated as a set. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -160,7 +160,7 @@ Let's understand the usage with sample JSON from the `stores` dataset.
 
 ### Example 1: Find common categories between sales and promotions
 
-The following example helps you determine which product categories appear in a store's sales data and promotion discounts.
+This query determines which product categories appear in a store's sales data and promotion discounts.
 
 ```javascript
 db.stores.aggregate([
@@ -188,42 +188,44 @@ db.stores.aggregate([
 ])
 ```
 
-The query output shows which categories are common between sales and promotion events.
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "salesCategories": [
-    "Sound Bars",
-    "Game Controllers",
-    "Remote Controls",
-    "VR Games"
-  ],
-  "firstPromotionCategories": [
-    "DVD Players",
-    "Projector Lamps",
-    "Media Players",
-    "Blu-ray Players",
-    "Home Theater Systems",
-    "Televisions"
-  ],
-  "secondPromotionCategories": [
-    "TV Mounts",
-    "Game Accessories",
-    "Portable Projectors",
-    "Projector Screens",
-    "Blu-ray Players",
-    "DVD Players"
-  ],
-  "commonSalesAndFirstPromotion": [],
-  "commonSalesAndSecondPromotion": []
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "salesCategories": [
+      "Sound Bars",
+      "Game Controllers",
+      "Remote Controls",
+      "VR Games"
+    ],
+    "firstPromotionCategories": [
+      "DVD Players",
+      "Projector Lamps",
+      "Media Players",
+      "Blu-ray Players",
+      "Home Theater Systems",
+      "Televisions"
+    ],
+    "secondPromotionCategories": [
+      "TV Mounts",
+      "Game Accessories",
+      "Portable Projectors",
+      "Projector Screens",
+      "Blu-ray Players",
+      "DVD Players"
+    ],
+    "commonSalesAndFirstPromotion": [],
+    "commonSalesAndSecondPromotion": []
+  }
+]
 ```
 
 ### Example 2: Find common categories across multiple promotion events
 
-The following example helps you find categories that appear in multiple promotion events.
+This query fetches categories that appear in multiple promotion events.
 
 ```javascript
 db.stores.aggregate([
@@ -243,14 +245,16 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns an empty array for `commonAcrossPromotions`, because there are no common product categories that appear across all of the promotions.
+This query returns the following result.
 
 ```json
- {
-    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-    "commonAcrossPromotions": []
-  }
+[
+   {
+      "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+      "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+      "commonAcrossPromotions": []
+   }
+]
 ```
 
 ## Related content
