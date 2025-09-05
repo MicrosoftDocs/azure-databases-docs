@@ -1,13 +1,13 @@
 ---
 title: $dateFromString
 titleSuffix: Overview of the $dateDiff operator in Azure Cosmos DB for MongoDB (vCore)
-description: Converts a date/time string to a date object.
+description: The $dateDiff operator converts a date/time string to a date object.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/04/2025
+ms.date: 09/04/2025
 ---
 
 # $dateFromString
@@ -17,7 +17,15 @@ The `$dateFromString` operator is used to convert a date/time string to a date o
 ## Syntax
 
 ```javascript
-{ $dateFromString: { dateString: <string>, format: <string>, timezone: <string>, onError: <expression>, onNull: <expression> } }
+{
+    $dateFromString: {
+        dateString: < string > ,
+        format: < string > ,
+        timezone: < string > ,
+        onError: < expression > ,
+        onNull: < expression >
+    }
+}
 ```
 
 ## Parameters
@@ -30,9 +38,9 @@ The `$dateFromString` operator is used to convert a date/time string to a date o
 | **`onError`** | (Optional) The value to return if an error occurs while parsing the `dateString`. |
 | **`onNull`** | (Optional) The value to return if the `dateString` is `null` or missing. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -166,15 +174,17 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the event name along with its computed ISO-formatted startDate and endDate derived from separate year, month, and day fields.
+This query returns the following result.
 
 ```json
-{
-  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
-  "eventName": "Massive Markdown Mania",
-  "startDate": "2024-09-21T00:00:00.000Z",
-  "endDate": "2024-09-29T00:00:00.000Z"
-}
+[
+  {
+    "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+    "eventName": "Massive Markdown Mania",
+    "startDate": "2024-09-21T00:00:00.000Z",
+    "endDate": "2024-09-29T00:00:00.000Z"
+  }
+]
 ```
 
 ## Related content

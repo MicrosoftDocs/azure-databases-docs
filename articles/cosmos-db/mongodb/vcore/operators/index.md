@@ -78,10 +78,10 @@ This article contains details for various supported operators you can use with A
 
 | | Description |
 | --- | --- |
-| **[`$dateadd`](data-expression/$dateadd.md)** | The `$dateAdd` operator adds a specified number of time units to a date value. |
-| **[`$datediff`](data-expression/$datediff.md)** | The `$dateDiff` operator returns the difference between two dates. |
-| **[`$datefromparts`](data-expression/$datefromparts.md)** | The `$dateFromParts` operator constructs a date from the specified parts. |
-| **[`$datefromstring`](data-expression/$datefromstring.md)** | The `$dateFromString` operator converts a date/time string to a date object. |
+| **[`$dateadd`](date-expression/$dateadd.md)** | The `$dateAdd` operator adds a specified number of time units to a date value. |
+| **[`$datediff`](date-expression/$datediff.md)** | The `$dateDiff` operator returns the difference between two dates. |
+| **[`$datefromparts`](date-expression/$datefromparts.md)** | The `$dateFromParts` operator constructs a date from the specified parts. |
+| **[`$datefromstring`](date-expression/$datefromstring.md)** | The `$dateFromString` operator converts a date/time string to a date object. |
 
 ## Evaluation query
 

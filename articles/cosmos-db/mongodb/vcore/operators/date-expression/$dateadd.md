@@ -1,13 +1,13 @@
 ---
 title: $dateAdd
 titleSuffix: Overview of the $dateAdd operator in Azure Cosmos DB for MongoDB (vCore)
-description: Adds a specified number of time units (day, hour, month etc) to a date.
+description: The $dateAdd operator adds a specified number of time units (day, hour, month etc) to a date.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/04/2025
+ms.date: 09/04/2025
 ---
 
 # $dateAdd
@@ -36,7 +36,7 @@ $dateAdd: {
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -102,7 +102,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Adding days to a date
 
-The query projects `eventName` and computes a `newEndDate` by adding 7 days to a date constructed from nested year, month, and day fields. The result is a simplified document showing the event name and its extended end date.
+This query projects `eventName` and computes a `newEndDate` by adding 7 days to a date constructed from nested year, month, and day fields. The result is a simplified document showing the event name and its extended end date.
 
 ```javascript
 db.stores.aggregate([
@@ -130,18 +130,20 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns each event's eventName along with a newEndDate that is 7 days after the original endDate specified in the nested promotion data.
+This query returns the following result.
 
 ```json
-{
-  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
-  "newEndDate": "2024-10-06T00:00:00.000Z"
-}
+[
+   {
+     "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+     "newEndDate": "2024-10-06T00:00:00.000Z"
+   }
+]
 ```
 
 ### Example 2: Adding months to a date
 
-The aggregation query projects the `eventName` and calculates a newStartDate by adding 1 month to a reconstructed start date from nested promotion fields. It helps determine an adjusted event start date based on the original schedule.
+This aggregation query projects the `eventName` and calculates a newStartDate by adding 1 month to a reconstructed start date from nested promotion fields. It helps determine an adjusted event start date based on the original schedule. This query returns each document’s eventName and a newStartDate that is 1 month after the original startDate from nested promotion event data.
 
 ```javascript
 db.stores.aggregate([
@@ -169,14 +171,16 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns each document’s eventName and a newStartDate that is 1 month after the original startDate from nested promotion event data.
+This query returns the following result.
 
 ```json
-{
-  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
-  "eventName": "Massive Markdown Mania",
-  "newStartDate": "2024-10-21T00:00:00.000Z"
-}
+[
+   {
+     "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
+     "eventName": "Massive Markdown Mania",
+     "newStartDate": "2024-10-21T00:00:00.000Z"
+   }
+]
 ```
 
 ## Related content
