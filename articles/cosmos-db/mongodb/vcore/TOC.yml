@@ -202,7 +202,7 @@
         href: secondary-users.md
       - name: Configure customer-managed key (CMK) encryption
         href: how-to-data-encryption.md
-      - name: Troubleshoot customer-managed key (CMK) encryption
+      - name: Troubleshoot CMK data encryption
         href: how-to-database-encryption-troubleshooting.md
     - name: Replication
       items:
