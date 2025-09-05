@@ -678,7 +678,7 @@
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/projection/$slice.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-expression/$slice",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-dot-net-sdk-request-timeout.md",
