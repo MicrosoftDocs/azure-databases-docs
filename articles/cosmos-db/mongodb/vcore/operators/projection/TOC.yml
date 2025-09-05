@@ -1,5 +1,5 @@
 - name: $
-  href: $.md
+  href: ../array-update/$.md
 - name: $elemMatch
   href: ../array-query/$elemmatch.md
 - name: $meta
