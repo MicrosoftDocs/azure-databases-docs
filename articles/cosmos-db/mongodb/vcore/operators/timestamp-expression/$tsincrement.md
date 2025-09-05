@@ -1,24 +1,20 @@
 ---
-  title: $tsIncrement (variable expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $tsIncrement
+  titleSuffix: Overview of the $tsIncrement operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $tsIncrement operator extracts the increment portion from a timestamp value.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 09/04/2025
 ---
 
-# $tsIncrement (variable expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $tsIncrement
 
 The `$tsIncrement` operator returns the increment value from a timestamp. Timestamps in MongoDB consist of two parts: a time value (in seconds since epoch) and an increment value. This operator extracts the increment portion.
 
 ## Syntax
-
-The syntax for the `$tsIncrement` operator is as follows:
 
 ```javascript
 {
@@ -28,70 +24,121 @@ The syntax for the `$tsIncrement` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`expression`** | An expression that evaluates to a timestamp. If the expression does not evaluate to a timestamp, `$tsIncrement` returns an error. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample JSON from the `stores` dataset. For demonstration purposes, we'll add timestamp fields to show how `$tsIncrement` works.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
-  "location": {
-    "lat": 60.7954,
-    "lon": -142.0012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 18,
-      "partTime": 17
-    }
-  },
-  "sales": {
-    "totalSales": 37701,
-    "salesByCategory": [
-      {
-        "categoryName": "Mattress Toppers",
-        "totalSales": 37701
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  },
-  "lastUpdated": Timestamp({ t: 1640995200, i: 5 }),
-  "storeOpeningDate": ISODate("2021-10-03T00:00:00.000Z"),
-  "promotionEvents": [
-    {
-      "eventName": "Price Drop Palooza",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 21
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 30
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Bath Accessories",
-          "discountPercentage": 18
-        },
-        {
-          "categoryName": "Pillow Top Mattresses",
-          "discountPercentage": 17
-        },
-        {
-          "categoryName": "Bathroom Scales",
-          "discountPercentage": 9
-        }
-      ]
-    }
-  ]
 }
 ```
 
@@ -113,14 +160,16 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce an output showing the increment value from the timestamp:
+This query returns the following result.
 
 ```json
-{
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
-  "lastUpdatedIncrement": Long("5")
-}
+[
+  {
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "lastUpdatedIncrement": Long("5")
+  }
+]
 ```
 
 ## Related content
