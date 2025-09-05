@@ -656,6 +656,26 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/field-update/$max.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$max",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/field-update/$min.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$min",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/field-update/$set.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/aggregation/$set",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/field-update/$unset.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/aggregation/$unset",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-dot-net-sdk-request-timeout.md",
       "redirect_url": "/azure/cosmos-db/nosql/troubleshoot-dotnet-sdk-request-timeout",
       "redirect_document_id": true

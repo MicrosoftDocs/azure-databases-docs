@@ -1,7 +1,7 @@
 ---
   title: $inc
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: Overview of the $inc operator in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $inc operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $inc operator increments the value of a field by a specified amount.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
@@ -67,7 +67,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Incrementing staff count
 
-Increase the full-time staff count by 3.
+To increase the full-time staff count by 3, use the $inc operator on the fullTime staff field with a value of 3.
 
 ```javascript
 db.stores.updateOne(
@@ -80,11 +80,9 @@ db.stores.updateOne(
 )
 ```
 
-The query increments the `fullTime` value by 3.
-
 ### Example 2: Decreasing and increasing values
 
-Decrease part-time staff by 2 and increase total sales by 5000.
+To decrease the part-time staff by 2 and increase total sales by 5000, use the $inc operator on both fields with values of -2 and 5000 respectively.
 
 ```javascript
 db.stores.updateOne(
@@ -132,7 +130,7 @@ db.stores.updateOne(
 )
 ```
 
-After these operations, the document would be updated as follows:
+After these operations, the document is updated as follows:
 
 ```json
 {
