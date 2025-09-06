@@ -76,49 +76,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [Azure CLI](#tab/cli-steps)
 
-```azurecli-interactive
-az resource create \
-  --resource-group "nik-misc" \
-  --name "nik0905b-mdbv101-cmk-eastus" \
-  --resource-type "Microsoft.DocumentDB/mongoClusters" \
-  --location "eastus" \
-  --identity '{
-	"type": "UserAssigned",
-    "userAssignedIdentities": {
-      "/subscriptions/88abe223-c630-4f2c-8782-00bb5be874f6/resourceGroups/nik-misc/providers/Microsoft.ManagedIdentity/userAssignedIdentities/nik-mi02-uk-south"
-	  }
-	}' \
-  --properties '{
-	  "encryption": {
-		  "customerManagedKeyEncryption": {
-			"keyEncryptionKeyIdentity": {
-			  "identityType": "UserAssignedIdentity",
-			  "userAssignedIdentityResourceId": "/subscriptions/88abe223-c630-4f2c-8782-00bb5be874f6/resourceGroups/nik-misc/providers/Microsoft.ManagedIdentity/userAssignedIdentities/nik-mi02-uk-south"
-			},
-			"keyEncryptionKeyUrl": "https://akv-for-cmk02-uk-south.vault.azure.net/keys/akv02-key02"
-		  }
-    },	
-       "administrator": {
-          "userName": "clusterAdmin",
-          "password": "AzureAzure0)"
-        },
-        "serverVersion": "8.0",
-        "storage": {
-          "sizeGb": 32
-        },
-        "compute": {
-          "tier": "M40"
-        },
-        "sharding": {
-          "shardCount": 1
-        },
-        "highAvailability": {
-          "targetMode": "ZoneRedundantPreferred"
-        }
-	
-  }' \
-  --latest-include-preview
-```
+TODO
 
 #### [REST APIs](#tab/rest-apis)
 
