@@ -107,7 +107,7 @@ There are many applications you can use to connect to your Azure Database for Po
    >  
    > Confirm your client's IP is allowed in the firewall rules.
 
-1. Create a blank database called "mypgsqldb" at the prompt by typing the following command:
+1. Create a blank schema called "mypgsqlschema" at the prompt by typing the following command:
 
     ```bash
     CREATE SCHEMA mypgsqlschema;
