@@ -29,9 +29,9 @@ To configure customer-managed key encryption on your Azure Cosmos DB for MonogDB
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. [Create one user-assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity), if you don't have one yet. 
+1. [Create one user-assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity) in the cluster region, if you don't have one yet. 
 
-1. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal), if you don't have one key store created yet. Make sure that you meet the [requirements](./database-encryption-at-rest.md#cmk-requirements). Also, follow the [recommendations](./database-encryption-at-rest.md#considerations) before you configure the key store, and before you create the key and assign the required permissions to the user-assigned managed identity. 
+1. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal) in the cluster region, if you don't have one key store created yet. Make sure that you meet the [requirements](./database-encryption-at-rest.md#cmk-requirements). Also, follow the [recommendations](./database-encryption-at-rest.md#considerations) before you configure the key store, and before you create the key and assign the required permissions to the user-assigned managed identity. 
 
 1. [Create one key in your key store](/azure/key-vault/keys/quick-create-portal#add-a-key-to-key-vault). 
 
@@ -75,6 +75,52 @@ Using the [Azure portal](https://portal.azure.com/):
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png":::
 
 ### [Azure CLI](#tab/cli-steps)
+
+```azurecli-interactive
+az resource create \
+  --resource-group "nik-misc" \
+  --name "nik0905b-mdbv101-cmk-eastus" \
+  --resource-type "Microsoft.DocumentDB/mongoClusters" \
+  --location "eastus" \
+  --identity '{
+	"type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/88abe223-c630-4f2c-8782-00bb5be874f6/resourceGroups/nik-misc/providers/Microsoft.ManagedIdentity/userAssignedIdentities/nik-mi02-uk-south"
+	  }
+	}' \
+  --properties '{
+	  "encryption": {
+		  "customerManagedKeyEncryption": {
+			"keyEncryptionKeyIdentity": {
+			  "identityType": "UserAssignedIdentity",
+			  "userAssignedIdentityResourceId": "/subscriptions/88abe223-c630-4f2c-8782-00bb5be874f6/resourceGroups/nik-misc/providers/Microsoft.ManagedIdentity/userAssignedIdentities/nik-mi02-uk-south"
+			},
+			"keyEncryptionKeyUrl": "https://akv-for-cmk02-uk-south.vault.azure.net/keys/akv02-key02"
+		  }
+    },	
+       "administrator": {
+          "userName": "clusterAdmin",
+          "password": "AzureAzure0)"
+        },
+        "serverVersion": "8.0",
+        "storage": {
+          "sizeGb": 32
+        },
+        "compute": {
+          "tier": "M40"
+        },
+        "sharding": {
+          "shardCount": 1
+        },
+        "highAvailability": {
+          "targetMode": "ZoneRedundantPreferred"
+        }
+	
+  }' \
+  --latest-include-preview
+```
+
+#### [REST APIs](#tab/rest-apis)
 
 You can enable data encryption with user-assigned encryption key, while provisioning a new cluster, via an `az rest` command.
 
@@ -173,7 +219,11 @@ For existing clusters that were deployed with data encryption using a customer-m
 
     :::image type="content" source="media/how-to-data-encryption/cluster-management-save-changes.png" alt-text="Screenshot that shows the location of Save button for data encryption configuration changes on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-save-changes.png":::
  
-#### [Azure CLI](#tab/cli-steps)
+#### [Azure CLI](#tab/cli-steps)  
+
+TODO
+
+#### [REST APIs](#tab/rest-apis)
 
 You can change user-assigned managed identity and encryption key for data encryption on an existing cluster via a REST API call.
 
@@ -276,7 +326,11 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
 
     :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png" alt-text="Screenshot that shows the location of Save button for replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png":::
  
-#### [Azure CLI](#tab/cli-steps)
+#### [Azure CLI](#tab/cli-steps) 
+
+TODO
+
+#### [REST APIs](#tab/rest-apis)
 
 To create a replica cluster with CMK enabled in the same region, follow these steps.
 
@@ -373,7 +427,11 @@ The restore process creates a new cluster with the same configuration in the sam
 
 1. Select **Submit** to initiate cluster restore.
 
-#### [Azure CLI](#tab/cli-steps)
+#### [Azure CLI](#tab/cli-steps) 
+
+TODO
+
+#### [REST APIs](#tab/rest-apis)
 
 To restore a cluster with CMK enabled, follow these steps.
 

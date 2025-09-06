@@ -48,7 +48,7 @@ Some of the possible reasons why the cluster state might become **Inaccessible**
 | You set up overly restrictive key vault firewall rules, so that your Azure Cosmos DB for MongoDB vCore cluster can't communicate with the key vault to retrieve your keys. | When you configure a key vault firewall, make sure that you either disable public access and selected the option to allow [trusted Microsoft services](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services) or allowed public access from all networks. With public access from all networks your Azure Cosmos DB for MongoDB vCore cluster can access the key vault. With disabled public access and the option to allow trusted Microsoft services to access the key vaule, your cluster can bypass the firewall. |
 
 > [!NOTE]  
-> When a key is disabled, deleted, expired, or not reachable, a cluster that has data encrypted with that key becomes **Inaccessible**, as stated earlier. The cluster state doesn't change to **Ready** again until it can revalidate the encryption keys.
+> When a key is disabled, deleted, expired, or not reachable, a cluster that has data encrypted with that key becomes **Inaccessible**, as stated earlier. The cluster state doesn't change to **Ready** again until it can revalidate the encryption key.
 >  
 > Generally, a cluster becomes **Inaccessible** within 60 minutes after a key is disabled, deleted, expired, or not reachable. After the key becomes available, the cluster might take up to 60 minutes to become **Ready** again.
 
@@ -65,7 +65,7 @@ If the user-assigned managed identity used to access the encryption key stored i
 
 ## Troubleshooting failed CMK-enabled cluster provisioning
 
-If any of [the CMK requirements](./database-encryption-at-rest.md#cmk-requirements) are not met, an attempt to provision a cluster with CMK enabled will fail. The following error during cluster provisioning indicates that [the key vault](./database-encryption-at-rest.md#key-vault), the [encryption key](./database-encryption-at-rest.md#encryption-key), or the [permissions for managed identity](./database-encryption-at-rest.md#permissions) were not setup correctly: 'Couldn't get access to the key. It might be missing, the provided user identity does not have GET permissions on it, or the key vault hasn't enabled access to the public internet.'
+If any of [the CMK requirements](./database-encryption-at-rest.md#cmk-requirements) are *not* met, an attempt to provision a cluster with CMK enabled will fail. The following error during cluster provisioning indicates that [the key vault](./database-encryption-at-rest.md#key-vault), the [encryption key](./database-encryption-at-rest.md#encryption-key), or the [permissions for managed identity](./database-encryption-at-rest.md#permissions) were not setup correctly: 'Couldn't get access to the key. It might be missing, the provided user identity does not have GET permissions on it, or the key vault hasn't enabled access to the public internet.'
 
 To troubleshoot this situation:
 1. Check all [CMK requirements](./database-encryption-at-rest.md#cmk-requirements).
