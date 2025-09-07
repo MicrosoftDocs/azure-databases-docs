@@ -50,7 +50,7 @@ Azure Key Vault is a cloud-based, external key management system. It's highly av
 
 Following is the list of requirements and recommendations for data encryption configuration for Azure Cosmos DB for MongoDB vCore:
 
-### **Key vault**
+### Key vault
 
 The key vault used for CMK setup must meet the following requirements:
 
@@ -62,7 +62,7 @@ The key vault used for CMK setup must meet the following requirements:
       - **Allow public access from all networks** lets all hosts on the Internet to access the key vault.
       - Select **Disable public access** and **Allow trusted Microsoft services to bypass this firewall** to disable all public access but to allow your cluster to access the key vault.
 
-### **Encryption key**
+### Encryption key
 
 The encryption key selected for CMK configuration must meet the following requirements:
 
@@ -72,7 +72,7 @@ The encryption key selected for CMK configuration must meet the following requir
   - The key must be in **Enabled** state.
   - If you're importing an existing key into Azure Key Vault, provide it in the supported file formats (`.pfx`, `.byok`, or `.backup`).
 
-### **Permissions**
+### Permissions
 
 Grant the Azure Cosmos DB for MongoDB vCore's user-assigned managed identity access to the encryption key:
   - **Preferred**: Azure Key Vault should be configured with [RBAC permission model](/azure/key-vault/general/rbac-guide) and the managed identity should be assigned the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) role.
@@ -104,5 +104,5 @@ When you're using a customer-managed key for data encryption, follow these recom
 ## Related content
 
 - Follow [these steps to enable data encryption at rest with customer-managed key in Azure Cosmos DB for MongoDB vCore](./how-to-data-encryption.md)
-- [Troubleshoot CMK setup](./how-to-database-encryption-troubleshooting.md)
+- [Troubleshoot CMK setup](./how-to-database-encryption-troubleshoot.md)
 - [Migrate data to Azure Cosmos DB for MongoDB vCore](./migration-options.md)

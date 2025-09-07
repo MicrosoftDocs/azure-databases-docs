@@ -432,6 +432,6 @@ Once restored cluster is created, review the list of [post-restore tasks](./how-
 ## Related content
 
 - [Learn about data encryption at rest in Azure Cosmos DB for MongoDB vCore](./database-encryption-at-rest.md)
-- [Troubleshoot CMK setup](./how-to-database-encryption-troubleshooting.md)
+- [Troubleshoot CMK setup](./how-to-database-encryption-troubleshoot.md)
 - Check out [CMK limitations](./limits.md#customer-managed-key-data-encryption-limitations)
 - [Migrate data to Azure Cosmos DB for MongoDB vCore](./migration-options.md)
