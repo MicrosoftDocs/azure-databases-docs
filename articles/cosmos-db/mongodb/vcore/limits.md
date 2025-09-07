@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 09/01/2025
+ms.date: 09/05/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -111,7 +111,7 @@ M10, M20, and M25 have the following limitations:
 ### Customer-managed key data encryption limitations
 The following are the current limitations for configuring [the customer-managed key (CMK)](./database-encryption-at-rest.md#data-encryption-in-azure-cosmos-db-for-mongodb-vcore) in an Azure Cosmos DB for MongoDB vCore:
 
-- The instance of Azure Key Vault where you plan to store the encryption key and user-assigned managed identity must be in the same Azure region and in the same [Microsoft tenant](/entra/identity-platform/developer-glossary#tenant) as the Azure Cosmos DB for MongoDB vCore cluster.
+- The instance of Azure Key Vault and user-assigned managed identity must be in the same Azure region and in the same [Microsoft tenant](/entra/identity-platform/developer-glossary#tenant) as the Azure Cosmos DB for MongoDB vCore cluster.
 - After you create a cluster, you can't change the data encryption mode from system-managed key to customer-managed key or vice versa.
     - You can create [a replica cluster or perform cluster restore](./how-to-data-encryption.md#change-data-encryption-mode-on-existing-clusters) and choose a different encryption mode.
 - [Add physical shard operation](./how-to-scale-cluster.md#increase-the-number-of-physical-shards) isn't supported on clusters with CMK enabled.

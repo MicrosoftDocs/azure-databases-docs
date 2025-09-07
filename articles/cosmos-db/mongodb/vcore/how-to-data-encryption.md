@@ -25,7 +25,7 @@ In this article, you learn how to configure [customer-managed key (CMK)](./datab
 To configure customer-managed key encryption on your Azure Cosmos DB for MonogDB vCore cluster, you need a user-assigned managed identity, an Azure Key Vault instance, and permissions properly configured.
 
 > [!IMPORTANT]  
-> User-managed identity and Azure Key Vault instance used to configure CMK should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is hosted and all belong to the same [Microsoft tenant](/entra/identity-platform/developer-glossary#tenant).
+> User-assigned managed identity and Azure Key Vault instance used to configure CMK should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is hosted and all belong to the same [Microsoft tenant](/entra/identity-platform/developer-glossary#tenant).
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -140,7 +140,7 @@ You can enable data encryption with user-assigned encryption key, while provisio
 
 ## Update data encryption settings on cluster with CMK enabled
 
-For existing clusters that were deployed with data encryption using a customer-managed key, you can do several configuration changes. Things that can be changed are the references to the keys used for encryption including key vault and key used as a customer-managed key, and references to the user-assigned managed identities used by the service to access the keys kept in the key stores.
+For existing clusters that were deployed with data encryption using a customer-managed key, you can do several configuration changes. You can change the key vault where the encryption key is stored and the encryption key used as a customer-managed key. You can also change the user-assigned managed identity used by the service to access the encryption key kept in the key store.
 
 #### [Portal](#tab/portal-steps)
 

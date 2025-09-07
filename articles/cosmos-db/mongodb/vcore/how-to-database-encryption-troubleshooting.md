@@ -65,7 +65,7 @@ If the user-assigned managed identity used to access the encryption key stored i
 
 ## Troubleshooting failed CMK-enabled cluster provisioning
 
-If any of [the CMK requirements](./database-encryption-at-rest.md#cmk-requirements) *aren't* met, an attempt to provision a cluster with CMK enabled will fail. The following error during cluster provisioning indicates that [the key vault](./database-encryption-at-rest.md#key-vault), the [encryption key](./database-encryption-at-rest.md#encryption-key), or the [permissions for managed identity](./database-encryption-at-rest.md#permissions) weren't set up correctly: 'Couldn't get access to the key. It might be missing, the provided user identity doesn't have GET permissions on it, or the key vault hasn't enabled access to the public internet.'
+If any of [the CMK requirements](./database-encryption-at-rest.md#cmk-requirements) *aren't* met, an attempt to provision a cluster with CMK enabled fails. The following error during cluster provisioning indicates that [the key vault](./database-encryption-at-rest.md#key-vault), the [encryption key](./database-encryption-at-rest.md#encryption-key), or the [permissions for managed identity](./database-encryption-at-rest.md#permissions) weren't set up correctly: 'Couldn't get access to the key. It might be missing, the provided user identity doesn't have GET permissions on it, or the key vault hasn't enabled access to the public internet.'
 
 To troubleshoot this situation:
 1. Check all [CMK requirements](./database-encryption-at-rest.md#cmk-requirements).
