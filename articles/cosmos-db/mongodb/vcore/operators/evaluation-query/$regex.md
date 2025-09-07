@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/25/2025
+  ms.date: 08/19/2025
 ---
 
 # $regex
@@ -164,8 +164,8 @@ This query retrieves all the stores containing "Consultants" in their name (case
 
 ```javascript
 db.stores.find(
-    { "name": { $regex: "Consultants", $options: "i" } },
-    { "_id": 1, "name": 1, "storeOpeningDate": 1 }
+  { name: { $regex: "Consultants", $options: "i" } },
+  { _id: 1, name: 1, storeOpeningDate: 1 }
 ).limit(3)
 ```
 
@@ -198,9 +198,9 @@ This query retrieves stores selling products with a category name that starts wi
 ```javascript
 db.stores.find(
   {
-    "sales.salesByCategory.categoryName": { $regex: "^[AEIOUaeiou]", $options: "" }
+    "sales.salesByCategory.categoryName": { $regex: "^[AEIOUaeiou]" }
   },
-  { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1}
+  { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }
 ).limit(2)
 ```
 
@@ -236,8 +236,8 @@ This query retrieves stores with names containing a pipe character (|) separator
 
 ```javascript
 db.stores.find(
-{ "name": { $regex: "\\|" }},
-{ "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1}).limit(2)
+{ name: { $regex: "\\|" }},
+{ _id: 1, name: 1, "sales.salesByCategory.categoryName": 1}).limit(2)
 ```
 
 The first two results returned by this query are:

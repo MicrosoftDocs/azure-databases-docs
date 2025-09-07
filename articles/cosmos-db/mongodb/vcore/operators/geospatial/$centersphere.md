@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2025
+ms.date: 08/28/2025
 ---
 
 # $centerSphere
@@ -146,15 +146,15 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1 - Search within a specified radius
+### Example 1: Find stores within a circular area (calculation over earth's spherical shape)
 
-Let's find all stores within approximately 1,000 kilometers (radius ≈ 0.157 radians) of the Wide World Importers Headphone Corner store location. This query can help identify nearby stores for regional marketing campaigns or supply chain optimization.
+The example query finds two stores within approximately 1,000 kilometers (radius ≈ 0.157 radians) of the Wide World Importers Headphone Corner store location. The query can help identify nearby stores for regional marketing campaigns or supply chain optimization.
 
 ```javascript
 // Convert 1000km to radians: 1000/6371 ≈ 0.157
 db.stores.find(
   {
-    "location": {
+    location: {
       $geoWithin: {
         $centerSphere: [[-82.5543, -65.105], 0.157]
       }

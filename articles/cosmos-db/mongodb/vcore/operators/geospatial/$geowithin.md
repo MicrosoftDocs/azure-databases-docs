@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/04/2025
+ms.date: 09/08/2025
 ---
 
 # $geoWithin
@@ -59,7 +59,7 @@ The `$geoWithin` operator selects documents whose location field falls completel
 
 ## Examples
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
@@ -171,19 +171,19 @@ Consider this sample document from the stores collection.
 }
 ```
 
-For getting better performance, ensure you have a 2dsphere index.
+### Example 1: Find stores defined by $box
+
+For getting better performance, ensure you have a `2dsphere` index.
 
 ```javascript
-db.stores.createIndex({ "location": "2dsphere" })
+db.stores.createIndex({ location: "2dsphere" })
 ```
-
-### Example 1: Using $box
 
 This query finds stores that are located within a specific rectangular area on a map, defined by a box (bounding rectangle).
 
 ```javascript
 db.stores.find({
-  'location': {
+  location: {
     $geoWithin: {
       $box: [
         [65.0, 65.0],    // Bottom left corner
@@ -197,7 +197,7 @@ db.stores.find({
 }).limit(2)
 ```
 
-The first two results returned by this query are:
+The first two results returned by this query.
 
 ```json
 [
@@ -222,9 +222,9 @@ The first two results returned by this query are:
 ]
 ```
 
-### Example 2: Using $center
+### Example 2: Find stores defined by $center
 
-This query uses a `$geoWithin` operator to find stores within a circular area defined by a center point and a radius.
+The query uses a `$geoWithin` operator to find stores within a circular area defined by a center point and a radius.
 
 ```javascript
 db.stores.find({
@@ -259,7 +259,7 @@ The first two results returned by this query are:
 ]
 ```
 
-### Example 3: Using $geometry
+### Example 3: Find stores defined by $geometry
 
 This query finds up to two stores whose location falls within the defined rectangular polygon.
 

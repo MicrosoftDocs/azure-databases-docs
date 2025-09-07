@@ -39,7 +39,97 @@ The `$box` operator defines a rectangular area for geospatial queries using two 
 
 ## Examples
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
+
+```json
+{
+  "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+  "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+  "location": { "lat": -74.0427, "lon": 160.8154 },
+  "staff": { "employeeCount": { "fullTime": 9, "partTime": 18 } },
+  "sales": {
+    "salesByCategory": [ { "categoryName": "Stockings", "totalSales": 25731 } ],
+    "revenue": 25731
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Mega Savings Extravaganza",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 6, "Day": 29 },
+        "endDate": { "Year": 2023, "Month": 7, "Day": 7 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 16 },
+        { "categoryName": "Tree Ornaments", "discountPercentage": 8 }
+      ]
+    },
+    {
+      "eventName": "Incredible Discount Days",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
+        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 11 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 9 }
+      ]
+    },
+    {
+      "eventName": "Massive Deal Mania",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
+        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
+      },
+      "discounts": [
+        { "categoryName": "Gift Bags", "discountPercentage": 21 },
+        { "categoryName": "Bows", "discountPercentage": 19 }
+      ]
+    },
+    {
+      "eventName": "Super Saver Soiree",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
+        "endDate": { "Year": 2024, "Month": 4, "Day": 1 }
+      },
+      "discounts": [
+        { "categoryName": "Tree Ornaments", "discountPercentage": 15 },
+        { "categoryName": "Stockings", "discountPercentage": 14 }
+      ]
+    },
+    {
+      "eventName": "Fantastic Savings Fiesta",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 24 },
+        { "categoryName": "Gift Wrap", "discountPercentage": 16 }
+      ]
+    },
+    {
+      "eventName": "Price Plunge Party",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+        "endDate": { "Year": 2024, "Month": 9, "Day": 28 }
+      },
+      "discounts": [
+        { "categoryName": "Holiday Tableware", "discountPercentage": 13 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 11 }
+      ]
+    }
+  ],
+  "company": "Lakeshore Retail",
+  "city": "Marvinfort",
+  "storeOpeningDate": { "$date": "2024-10-01T18:24:02.586Z" },
+  "lastUpdated": { "$timestamp": { "t": 1730485442, "i": 1 } },
+  "storeFeatures": 38
+}
+```
+
+### Example 1: Find stores within a geographic box
+
+The query retrieves up to 2 stores whose location falls inside the specified rectangular bounding box defined by two corner coordinates.
 
 ```json
 {
@@ -151,7 +241,9 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1 - Find stores within a rectangular region
+### Example 2 - Find stores within a rectangular region
+
+The query returns all stores that fall within the rectangular region defined by these coordinates.
 
 ```javascript
 db.stores.find(
@@ -172,18 +264,10 @@ db.stores.find(
 ).limit(2)
 ```
 
-The first two results returned by this query are:
+The query returns all stores that fall within the rectangular region defined by these coordinates.
 
 ```json
 [
-  {
-    "_id": "923d2228-6a28-4856-ac9d-77c39eaf1800",
-    "name": "Lakeshore Retail | Home Decor Hub - Franciscoton",
-    "location": {
-      "lat": 61.3945,
-      "lon": -3.6196
-    }
-  },
   {
     "_id": "44fdb9b9-df83-4492-8f71-b6ef648aa312",
     "name": "Fourth Coffee | Storage Solution Gallery - Port Camilla",
@@ -191,6 +275,11 @@ The first two results returned by this query are:
       "lat": 78.3889,
       "lon": 0.6784
     }
+  },
+  {
+    "_id": "728c068a-638c-40af-9172-8ccfa7dddb49",
+    "name": "Contoso, Ltd. | Book Store - Lake Myron",
+    "location": { "lat": 29.416, "lon": 21.5231 }
   }
 ]
 ```
@@ -198,4 +287,5 @@ The first two results returned by this query are:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
 
