@@ -225,7 +225,7 @@ Identities passed as parameters, if they exist and are valid, are automatically 
 
 ## Change data encryption mode on existing clusters
 
-The only point at which you can decide if you want to use a service-managed key or a customer-managed key (CMK) for data encryption, is at cluster creation time. Once you make that decision and create the cluster, you can't switch between the two options. To create a copy of your Azure Cosmos DB for MongoDB vCore cluster with a different encryption option, you can either create a replica cluster or perform a cluster restore and select the new encryption mode during replica cluster or restored cluster creation.
+The only point at which you can decide if you want to use a service-managed key or a customer-managed key (CMK) for data encryption, is at cluster creation time. Once you make that decision and create the cluster, you can't switch between the two options. To create a copy of your Azure Cosmos DB for MongoDB vCore cluster with a different encryption option, you can either [create a replica cluster](#enable-or-disable-customer-managed-key-cmk-data-encryption-during-replica-cluster-creation) or [perform a cluster restore](#enable-or-disable-customer-managed-key-data-encryption-during-cluster-restore) and select the new encryption mode during replica cluster or restored cluster creation.
 
 ### Enable or disable customer-managed key (CMK) data encryption during replica cluster creation
 
@@ -432,5 +432,6 @@ Once restored cluster is created, review the list of [post-restore tasks](./how-
 ## Related content
 
 - [Learn about data encryption at rest in Azure Cosmos DB for MongoDB vCore](./database-encryption-at-rest.md)
+- [Troubleshoot CMK setup](./how-to-database-encryption-troubleshooting.md)
 - Check out [CMK limitations](./limits.md#customer-managed-key-data-encryption-limitations)
 - [Migrate data to Azure Cosmos DB for MongoDB vCore](./migration-options.md)

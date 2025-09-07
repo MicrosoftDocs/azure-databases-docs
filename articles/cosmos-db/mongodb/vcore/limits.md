@@ -146,8 +146,8 @@ The Microsoft Entra ID authentication feature has these current limitations:
 
 ## Miscellaneous limits
 
-### Portal Mongo Shell Usage
-- The Portal Mongo Shell can be used for 120 minutes within a 24-hour window.
+### Portal Mongo shell usage
+- The Portal Mongo shell can be used for 120 minutes within a 24-hour window.
 
 ## Next steps
 

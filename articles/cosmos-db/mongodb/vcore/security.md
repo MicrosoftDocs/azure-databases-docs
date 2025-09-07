@@ -10,7 +10,7 @@ ms.custom:
 - ignite-2024
 - sfi-image-nochange
 ms.topic: concept-article
-ms.date: 01/11/2025
+ms.date: 09/05/2025
 ---
 
 # Overview of database security in Azure Cosmos DB for MongoDB vCore
@@ -21,7 +21,7 @@ This article discusses database security best practices and key features offered
 
 ## What's new in Azure Cosmos DB for MongoDB vCore security
 
-Encryption at rest is now available for documents and backups stored in Azure Cosmos DB for MongoDB vCore in most Azure regions. Encryption at rest is applied automatically for both new and existing customers in these regions. There's no need to configure anything. You get the same great latency, throughput, availability, and functionality as before with the benefit of knowing your data is safe and secure with encryption at rest.  Data stored in your Azure Cosmos DB for MongoDB vCore cluster is automatically and seamlessly encrypted with keys managed by Microsoft using service-managed keys. 
+[Encryption at rest](./database-encryption-at-rest.md) is enforced for documents and backups stored in Azure Cosmos DB for MongoDB vCore in all Azure regions. Encryption at rest with service-managed key (SMK) is applied automatically for both new and existing clusters. There's no need to configure anything. You get the same great latency, throughput, availability, and functionality as before with the benefit of knowing your data is safe and secure with encryption at rest.  Data stored in your Azure Cosmos DB for MongoDB vCore cluster is automatically and seamlessly encrypted with keys managed by Microsoft using service-managed keys or, with additional configuration, using customer-managed keys (CMK). 
 
 ## How do I secure my database
 
@@ -68,7 +68,7 @@ Let's dig into each one in detail.
 |Automated cluster backups|Backup for Azure Cosmos DB for MongoDB vCore clusters is enabled at cluster creation time, is fully automated, and can't be disabled. [Restore](./how-to-restore-cluster.md) is provided to any timestamp within 35 day backup retention period.|
 |Restore *deleted* data|The automated online backups can be used to recover data from a cluster you may have accidentally deleted up to ~7 days after the event.|
 |HTTPS/SSL/TLS encryption|All network communications with Azure Cosmos DB for MongoDB vCore clusters are encrypted. Only connections via a MongoDB client are accepted and encryption is always enforced. Whenever data is written to Azure Cosmos DB for MongoDB vCore, your data is encrypted in-transit. Data encryption supports TLS levels up to 1.3 (included).|
-|Encryption at rest|Azure Cosmos DB for MongoDB vCore data, including all backups, are encrypted on disk, including the temporary files. The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys are system-managed. Storage encryption is always on, and can't be disabled.|
+|[Encryption at rest](./database-encryption-at-rest.md)|Azure Cosmos DB for MongoDB vCore data, including all backups, logs, and temporary files, are encrypted on disk. The service uses the AES 256-bit cipher included in Azure storage encryption. Storage encryption is always on, and can't be disabled. You can choose to use default service-managed key for data encryption at rest or you can configure [customer-managed key (CMK)](./how-to-data-encryption.md#configure-customer-managed-key-cmk-for-data-encryption-at-rest-for-an-azure-cosmos-db-for-mongodb-vcore-cluster).|
 |Monitor for attacks|By using [audit logging](./how-to-monitor-diagnostics-logs.md) and [activity logs](/azure/azure-monitor/essentials/activity-log-insights), you can monitor your database for normal and abnormal activity. You can view what operations were performed on your resources. This data includes who initiated the operation, when the operation occurred, the status of the operation, and much more.|
 |Respond to attacks|Once you contacted Azure support to report a potential attack, a five-step incident response process is kicked off. The goal of the five-step process is to restore normal service security and operations. The five-step process restores services as quickly as possible after an issue is detected and an investigation is started.<br><br>Learn more in [Shared responsibility in the Cloud](/azure/security/fundamentals/shared-responsibility).|
 |Protected facilities|Data in Azure Cosmos DB for MongoDB vCore is stored in Azure's protected data centers.<br><br>Learn more in [Microsoft global datacenters](https://www.microsoft.com/cloud-platform/global-datacenters)|
