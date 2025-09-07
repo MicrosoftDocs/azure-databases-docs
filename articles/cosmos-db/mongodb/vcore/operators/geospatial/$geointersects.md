@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2025
+ms.date: 08/28/2025
 ---
 
 # $geoIntersects
@@ -151,39 +151,43 @@ Consider this sample document from the stores collection.
 }
 ```
 
-For better performance, start with creating the required 2dsphere index.
+
+### Example 1 - Find stores that geographically intersect
+
+For better performance, start with creating the required `2dsphere` index.
 
 ```javascript
 db.stores.createIndex({ "location": "2dsphere" })
 ```
 
-### Example 1 - Find stores that geographically intersect
-
-Now, let's find stores that intersect with a specific polygon area using the `stores` collection. This polygon encompasses several store locations from our dataset.
+The example query find stores that intersect with a specific polygon area using the `stores` collection. This polygon encompasses several store locations from our dataset.
 
 ```javascript
-db.stores.find({
-  'location': {
-    $geoIntersects: {
-      $geometry: {
-        type: "Polygon",
-        coordinates: [[
-          [-80.0, -75.0],   // Bottom-left
-          [-80.0, -70.0],   // Top-left
-          [-55.0, -70.0],   // Top-right
-          [-55.0, -75.0],   // Bottom-right
-          [-80.0, -75.0]    // Close polygon
-        ]]
+db.stores.find(
+  {
+    location: {
+      $geoIntersects: {
+        $geometry: {
+          type: "Polygon",
+          coordinates: [[
+            [-80.0, -75.0],
+            [-80.0, -70.0],
+            [-55.0, -70.0],
+            [-55.0, -75.0],
+            [-80.0, -75.0]
+          ]]
+        }
       }
     }
+  },
+  {
+    name: 1,
+    location: 1
   }
-}, {
-  "name": 1,
-  "location": 1
-}).limit(2)
+).limit(2)
 ```
 
-The first two results returned by this query are:
+The query returns stores, whose locations intersect with the Polygon contour defined by the coordinates.
 
 ```json
 [

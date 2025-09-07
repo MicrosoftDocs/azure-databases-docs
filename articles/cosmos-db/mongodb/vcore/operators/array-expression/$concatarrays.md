@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/28/2025
+  ms.date: 09/08/2025
 ---
 
 # $concatArrays
@@ -132,22 +132,10 @@ db.stores.aggregate([{
 The query returns the following result.
 
 ```json
-[
-  {
-      "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-      "combinedTags": [
-          [
-              "DJ Turntables",
-              "DJ Mixers"
-          ],
-          "#ShopLocal",
-          "#FashionStore",
-          "#SeasonalSale",
-          "#FreeShipping",
-          "#MembershipDeals"
-      ]
+{
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "combinedTags": [ '#ShopLocal', '#NewArrival', '#NewArrival', '#FreeShipping' ]
   }
-]
 ```
 
 ## Related content

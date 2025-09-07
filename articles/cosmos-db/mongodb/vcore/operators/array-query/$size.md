@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2024
+ms.date: 08/28/2024
 ---
 
 # $size

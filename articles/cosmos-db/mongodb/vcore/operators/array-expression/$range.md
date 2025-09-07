@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/28/2025
+  ms.date: 09/08/2025
 ---
 
 # $range
@@ -32,45 +32,92 @@ The `$range` operator is used to generate an array of sequential integers. The o
 
 ## Examples
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
-    "_id": "d3c9df51-41bd-4b4e-a26b-b038d9cf8b45",
-    "location": {
-        "lat": -67.7571,
-        "lon": 97.2505
+  "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+  "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+  "location": { "lat": -74.0427, "lon": 160.8154 },
+  "staff": { "employeeCount": { "fullTime": 9, "partTime": 18 } },
+  "sales": {
+    "salesByCategory": [ { "categoryName": "Stockings", "totalSales": 25731 } ],
+    "revenue": 25731
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Mega Savings Extravaganza",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 6, "Day": 29 },
+        "endDate": { "Year": 2023, "Month": 7, "Day": 7 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 16 },
+        { "categoryName": "Tree Ornaments", "discountPercentage": 8 }
+      ]
     },
-    "sales": {
-        "totalSales": 149849,
-        "salesByCategory": [
-            {
-                "categoryName": "DJ Speakers",
-                "totalSales": 36972
-            },
-            {
-                "categoryName": "DJ Headphones",
-                "totalSales": 12877
-            },
-            {
-                "categoryName": "Music Accessories",
-                "totalSales": 40000
-            },
-            {
-                "categoryName": "DJ Accessories",
-                "totalSales": 60000
-            }
-        ]
+    {
+      "eventName": "Incredible Discount Days",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
+        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 11 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 9 }
+      ]
     },
-    "tag": [
-        "#ShopLocal",
-        "#FashionStore",
-        "#SeasonalSale",
-        "#FreeShipping",
-        "#MembershipDeals"
-    ]
-}
-```
+    {
+      "eventName": "Massive Deal Mania",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
+        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
+      },
+      "discounts": [
+        { "categoryName": "Gift Bags", "discountPercentage": 21 },
+        { "categoryName": "Bows", "discountPercentage": 19 }
+      ]
+    },
+    {
+      "eventName": "Super Saver Soiree",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
+        "endDate": { "Year": 2024, "Month": 4, "Day": 1 }
+      },
+      "discounts": [
+        { "categoryName": "Tree Ornaments", "discountPercentage": 15 },
+        { "categoryName": "Stockings", "discountPercentage": 14 }
+      ]
+    },
+    {
+      "eventName": "Fantastic Savings Fiesta",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 24 },
+        { "categoryName": "Gift Wrap", "discountPercentage": 16 }
+      ]
+    },
+    {
+      "eventName": "Price Plunge Party",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+        "endDate": { "Year": 2024, "Month": 9, "Day": 28 }
+      },
+      "discounts": [
+        { "categoryName": "Holiday Tableware", "discountPercentage": 13 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 11 }
+      ]
+    }
+  ],
+  "company": "Lakeshore Retail",
+  "city": "Marvinfort",
+  "storeOpeningDate": { "$date": "2024-10-01T18:24:02.586Z" },
+  "lastUpdated": { "$timestamp": { "t": 1730485442, "i": 1 } },
+  "storeFeatures": 38
+
 
 ### Example 1: Generate a range of numbers
 

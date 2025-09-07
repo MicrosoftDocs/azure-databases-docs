@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/04/2025
+ms.date: 08/28/2025
 ---
 
 # $geometry
@@ -34,7 +34,7 @@ The `$geometry` operator specifies a GeoJSON geometry object for geospatial quer
 
 ## Examples
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
@@ -146,19 +146,20 @@ Consider this sample document from the stores collection.
 }
 ```
 
-For better performance, start with creating the required 2dsphere index.
+
+### Example 1: Find nearest stores to point geometry
+
+For better performance, start with creating the required `2dsphere` index.
 
 ```javascript
-db.stores.createIndex({ "location": "2dsphere" })
+db.stores.createIndex({ location: "2dsphere" })
 ```
 
-### Example 1: Point geometry
-
-This query retrieves up to two stores closest to the point at coordinates [46.2917, -62.6354], ordered by proximity. It uses the $near operator to sort results by distance from a specific point to find stores that are geographically nearest to a given location.
+The query retrieves up to two stores closest to the point at coordinates [46.2917, -62.6354], ordered by proximity. It uses the $near operator to sort results by distance from a specific point, helping find stores that are geographically nearest to a given location.
 
 ```javascript
 db.stores.find({
-  'location': {
+  location: {
     $near: {
       $geometry: {
         type: "Point",
@@ -189,7 +190,7 @@ The first two results returned by this query are:
 ]
 ```
 
-### Example 2: Polygon geometry
+### Example 2: Find nearest stores to polygon geometry
 
 This query finds up to two stores whose locations intersect with a defined rectangular polygon bounded by coordinates from [-80.0, -75.0] to [-55.0, -70.0].
 
@@ -197,7 +198,7 @@ The `$geoIntersects` operator finds stores that overlap with or touch your polyg
 
 ```javascript
 db.stores.find({
-  'location': {
+  location: {
     $geoIntersects: {
       $geometry: {
         type: "Polygon",
@@ -212,13 +213,13 @@ db.stores.find({
     }
   }
 }, {
-  "name": 1,
-  "location": 1,
-  "city": 1
+  name: 1,
+  location: 1,
+  city: 1
 }).limit(2)
 ```
 
-The first two results returned by this query are:
+The first two results returned by this query.
 
 ```json
 [
@@ -237,7 +238,7 @@ The first two results returned by this query are:
 ]
 ```
 
-### Example 3: MultiPolygon geometry
+### Example 3: Find nearest stores to multi-polygon geometry
 
 The example retrieves up to two stores whose locations fall within either of the two defined rectangular regions (MultiPolygon): one near the coordinates [120.0, -13.0] to [125.0, -10.0], and another near [44.0, -64.0] to [48.0, -61.0].
 
@@ -245,7 +246,7 @@ It uses the $geoWithin operator with a MultiPolygon geometry to search for store
 
 ```javascript
 db.stores.find({
-  'location': {
+  location: {
     $geoWithin: {
       $geometry: {
         type: "MultiPolygon",

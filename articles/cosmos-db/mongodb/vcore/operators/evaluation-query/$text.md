@@ -42,115 +42,119 @@ Before using the `$text` operator, you must create a text index on the fields yo
 
 ## Examples
 
-Consider this sample document from the stores collection.
+Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
-    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
-    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
-    "location": {
-        "lat": -89.2384,
-        "lon": -46.4012
+  "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+  "name": "First Up Consultants | Bed and Bath Pantry - Port Antone",
+  "location": {
+    "lat": 87.2239,
+    "lon": -129.0506
+  },
+  "staff": {
+    "employeeCount": {
+      "fullTime": 8,
+      "partTime": 7
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      { "categoryName": "Towel Sets", "totalSales": 520 },
+      { "categoryName": "Bath Accessories", "totalSales": 41710 },
+      { "categoryName": "Drapes", "totalSales": 42893 },
+      { "categoryName": "Towel Racks", "totalSales": 30773 },
+      { "categoryName": "Hybrid Mattresses", "totalSales": 39491 },
+      { "categoryName": "Innerspring Mattresses", "totalSales": 6410 },
+      { "categoryName": "Bed Frames", "totalSales": 41917 },
+      { "categoryName": "Mattress Protectors", "totalSales": 44124 },
+      { "categoryName": "Bath Towels", "totalSales": 5671 },
+      { "categoryName": "Turkish Towels", "totalSales": 25674 }
+    ],
+    "revenue": 279183
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Discount Derby",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
+        "endDate": { "Year": 2024, "Month": 1, "Day": 5 }
+      },
+      "discounts": [
+        { "categoryName": "Microfiber Towels", "discountPercentage": 6 },
+        { "categoryName": "Bath Sheets", "discountPercentage": 16 },
+        { "categoryName": "Towels", "discountPercentage": 10 },
+        { "categoryName": "Hand Towels", "discountPercentage": 11 },
+        { "categoryName": "Kitchen Towels", "discountPercentage": 21 },
+        { "categoryName": "Placemat", "discountPercentage": 11 },
+        { "categoryName": "Bath Accessories", "discountPercentage": 11 },
+        { "categoryName": "Bedspreads", "discountPercentage": 21 },
+        { "categoryName": "Shower Curtains", "discountPercentage": 24 },
+        { "categoryName": "Pillow Top Mattresses", "discountPercentage": 10 }
+      ]
     },
-    "staff": {
-        "totalStaff": {
-            "fullTime": 8,
-            "partTime": 20
-        }
+    {
+      "eventName": "Big Bargain Blitz",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
+        "endDate": { "Year": 2024, "Month": 4, "Day": 3 }
+      },
+      "discounts": [
+        { "categoryName": "Mattress Toppers", "discountPercentage": 24 },
+        { "categoryName": "Pillow Cases", "discountPercentage": 14 },
+        { "categoryName": "Soap Dispensers", "discountPercentage": 20 },
+        { "categoryName": "Beach Towels", "discountPercentage": 18 },
+        { "categoryName": "Bath Mats", "discountPercentage": 22 },
+        { "categoryName": "Blankets", "discountPercentage": 12 },
+        { "categoryName": "Kitchen Towels", "discountPercentage": 8 },
+        { "categoryName": "Memory Foam Mattresses", "discountPercentage": 14 },
+        { "categoryName": "Placemat", "discountPercentage": 17 },
+        { "categoryName": "Bed Frames", "discountPercentage": 23 }
+      ]
     },
-    "sales": {
-        "totalSales": 75670,
-        "salesByCategory": [
-            {
-                "categoryName": "Wine Accessories",
-                "totalSales": 34440
-            },
-            {
-                "categoryName": "Bitters",
-                "totalSales": 39496
-            },
-            {
-                "categoryName": "Rum",
-                "totalSales": 1734
-            }
-        ]
+    {
+      "eventName": "Massive Markdown Mania",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Bed Skirts", "discountPercentage": 17 },
+        { "categoryName": "Shower Curtains", "discountPercentage": 23 },
+        { "categoryName": "Bath Towels", "discountPercentage": 21 },
+        { "categoryName": "Memory Foam Mattresses", "discountPercentage": 11 },
+        { "categoryName": "Bathrobes", "discountPercentage": 19 },
+        { "categoryName": "Bath Accessories", "discountPercentage": 5 },
+        { "categoryName": "Box Springs", "discountPercentage": 21 },
+        { "categoryName": "Hand Towels", "discountPercentage": 13 },
+        { "categoryName": "Tablecloths", "discountPercentage": 19 },
+        { "categoryName": "Duvet Covers", "discountPercentage": 23 }
+      ]
     },
-    "promotionEvents": [
-        {
-            "eventName": "Unbeatable Bargain Bash",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 23
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 7,
-                    "Day": 2
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 7
-                },
-                {
-                    "categoryName": "Bitters",
-                    "discountPercentage": 15
-                },
-                {
-                    "categoryName": "Brandy",
-                    "discountPercentage": 8
-                },
-                {
-                    "categoryName": "Sports Drinks",
-                    "discountPercentage": 22
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 19
-                }
-            ]
-        },
-        {
-            "eventName": "Steal of a Deal Days",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 21
-                },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 9,
-                    "Day": 29
-                }
-            },
-            "discounts": [
-                {
-                    "categoryName": "Organic Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "White Wine",
-                    "discountPercentage": 20
-                },
-                {
-                    "categoryName": "Sparkling Wine",
-                    "discountPercentage": 19
-                },
-                {
-                    "categoryName": "Whiskey",
-                    "discountPercentage": 17
-                },
-                {
-                    "categoryName": "Vodka",
-                    "discountPercentage": 23
-                }
-            ]
-        }
-    ]
+    {
+      "eventName": "Unbeatable Bargain Bash",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+        "endDate": { "Year": 2024, "Month": 9, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Adjustable Beds", "discountPercentage": 19 },
+        { "categoryName": "Mattress Toppers", "discountPercentage": 23 },
+        { "categoryName": "Washcloths", "discountPercentage": 7 },
+        { "categoryName": "Comforters", "discountPercentage": 24 },
+        { "categoryName": "Kitchen Towels", "discountPercentage": 7 },
+        { "categoryName": "Pillows", "discountPercentage": 13 },
+        { "categoryName": "Bath Sheets", "discountPercentage": 25 },
+        { "categoryName": "Napkins", "discountPercentage": 25 },
+        { "categoryName": "Bath Towels", "discountPercentage": 15 },
+        { "categoryName": "Beach Towels", "discountPercentage": 15 }
+      ]
+    }
+  ],
+  "company": "First Up Consultants",
+  "city": "Port Antone",
+  "storeOpeningDate": { "$date": "2024-09-19T17:31:59.665Z" },
+  "lastUpdated": { "$timestamp": { "t": 1729359119, "i": 1 } }
 }
 ```
 
@@ -165,7 +169,7 @@ db.stores.createIndex({ "name": "text", "sales.salesByCategory.categoryName": "t
 // Then perform the search
 db.stores.find(
 { $text: { $search: "Microphone" }},
-{ "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
+{ _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
 The first two results returned by this query are:
@@ -197,7 +201,7 @@ The first two results returned by this query are:
 
 ### Example 2: Multiple term search
 
-This query retrieves stores related to "Home Decor" (multiple terms treated as `OR` by default).
+The query retrieves stores related to "Home Decor" (multiple terms treated as `OR` by default).
 
 ```javascript
 // First create a text index
@@ -206,7 +210,7 @@ db.stores.createIndex({ "name": "text", "sales.salesByCategory.categoryName": "t
 // Then perform the search
 db.stores.find(
 { $text: { $search: "Home Decor" }},
-{ "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(5)
+{ _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(5)
 ```
 
 The first five results returned by this query are:
@@ -272,7 +276,7 @@ This query searches for the exact phrase "Home Theater" using quotes.
 ```javascript
 db.stores.find(
  { $text: { $search: "\"Home Theater\"" }},
- { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
+ { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
 The first two results returned by this query are:
@@ -311,7 +315,7 @@ This query searches for stores with "Audio" but exclude the ones with "Wireless"
 ```javascript
 db.stores.find(
  { $text: { $search: "Audio -Wireless" }},
- { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
+ { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
 The first two results returned by this query are:
@@ -340,18 +344,21 @@ The first two results returned by this query are:
 ]
 ```
 
-### Example 5: Combined with other query operators
+### Example 5: Case-sensitive search
 
-This query retrieves stores with "Hub" in text and total sales greater than 50000.
+> [!NOTE]
+> Support for case-sensitive is in pipeline and should be released soon.
+
+The example allows performing a case-sensitive search for "BAZAAR".
 
 ```javascript
-db.stores.find({
-  $text: { $search: "Hub" }, "sales.totalSales": { $gt: 20000 }},
-{ "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1,"sales.totalSales":1 }
+db.stores.find(
+  { $text: { $search: "BAZAAR", $caseSensitive: true } },
+  { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }
 ).limit(2)
 ```
 
-The first two results returned by this query are:
+The query will match documents where "BAZAAR" appears in exactly that case.
 
 ```json
 [
@@ -391,26 +398,11 @@ The first five results returned by this query are:
 
 ```json
 [
-    {
-        "_id": "511c9932-d647-48dd-9bd8-baf47b593f88",
-        "score": 2
-    },
-    {
-        "_id": "a0a2f05c-6085-4c99-9781-689af759662f",
-        "score": 2
-    },
-    {
-        "_id": "fb5aa470-557c-43cb-8ca0-5915d6cae34b",
-        "score": 2
-    },
-    {
-        "_id": "1a2c387b-bb43-4b14-a6cd-cc05a5dbfbd5",
-        "score": 1
-    },
-    {
-        "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-        "score": 1
-    }
+  { "_id": "511c9932-d647-48dd-9bd8-baf47b593f88", "score": 2 },
+  { "_id": "a0a2f05c-6085-4c99-9781-689af759662f", "score": 2 },
+  { "_id": "fb5aa470-557c-43cb-8ca0-5915d6cae34b", "score": 2 },
+  { "_id": "1a2c387b-bb43-4b14-a6cd-cc05a5dbfbd5", "score": 1 },
+  { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74", "score": 1 }
 ]
 ```
 
@@ -421,26 +413,19 @@ First, create a comprehensive text index to search across all text fields.
 ```javascript
 // Create comprehensive text index
 db.stores.createIndex({ 
-  "name": "text",
+  name: "text",
   "sales.salesByCategory.categoryName": "text",
   "promotionEvents.eventName": "text",
   "promotionEvents.discounts.categoryName": "text"
 })
 
 // Search across all indexed fields
-db.stores.find({
-    $text: {
-        $search: "\"Home Theater\""
-    }
-}, {
-    "name": 1,
-    "sales.salesByCategory.categoryName": 1,
-    "promotionEvents.eventName": 1,
-    "promotionEvents.discounts.categoryName": 1
-}).limit(2)
+db.stores.find(
+{ $text: { $search: "\"Home Theater\"" }},
+{ name: 1, "sales.salesByCategory.categoryName": 1, "promotionEvents.eventName": 1, "promotionEvents.discounts.categoryName": 1}).limit(2)
 ```
 
-The first two results returned by this query are:
+The first two results returned by this query.
 
 ```json
 [
