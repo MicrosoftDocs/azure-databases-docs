@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 09/01/2025
+ms.date: 09/05/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -73,10 +73,6 @@ Using the [Azure portal](https://portal.azure.com/):
 1. Confirm selected user-assigned managed identity and encryption key on the **Encryption** tab and select **Review + create** to create cluster.
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png":::
-
-### [Azure CLI](#tab/cli-steps)
-
-TODO
 
 #### [REST APIs](#tab/rest-apis)
 
@@ -177,10 +173,6 @@ For existing clusters that were deployed with data encryption using a customer-m
 
     :::image type="content" source="media/how-to-data-encryption/cluster-management-save-changes.png" alt-text="Screenshot that shows the location of Save button for data encryption configuration changes on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-save-changes.png":::
  
-#### [Azure CLI](#tab/cli-steps)  
-
-TODO
-
 #### [REST APIs](#tab/rest-apis)
 
 You can change user-assigned managed identity and encryption key for data encryption on an existing cluster via a REST API call.
@@ -284,10 +276,6 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
 
     :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png" alt-text="Screenshot that shows the location of Save button for replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png":::
  
-#### [Azure CLI](#tab/cli-steps) 
-
-TODO
-
 #### [REST APIs](#tab/rest-apis)
 
 To create a replica cluster with CMK enabled in the same region, follow these steps.
@@ -384,10 +372,6 @@ The restore process creates a new cluster with the same configuration in the sam
     :::image type="content" source="media/how-to-data-encryption/cluster-restore-cluster-key-vault-and-encryption-key-selection.png" alt-text="Screenshot that shows how to select key vault and encryption key in that key vault to be used as a customer-managed key during cluster restore." lightbox="media/how-to-data-encryption/cluster-restore-cluster-key-vault-and-encryption-key-selection.png":::
 
 1. Select **Submit** to initiate cluster restore.
-
-#### [Azure CLI](#tab/cli-steps) 
-
-TODO
 
 #### [REST APIs](#tab/rest-apis)
 
