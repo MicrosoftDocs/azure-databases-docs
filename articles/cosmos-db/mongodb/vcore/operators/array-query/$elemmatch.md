@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/25/2024
+  ms.date: 08/28/2024
 ---
 
 # $elemMatch
@@ -27,7 +27,7 @@ db.collection.find({ <field>: { $elemMatch: { <query1>, <query2>, ... } } })
 | **`field`** | The field in the document that contains the array to be queried. |
 | **`query`** | The conditions that at least one element in the array must satisfy. |
 
-## Example
+## Examples
 
 Let's understand the usage with sample json from `stores` dataset.
 

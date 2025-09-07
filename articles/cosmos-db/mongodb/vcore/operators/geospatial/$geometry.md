@@ -7,10 +7,10 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2025
+ms.date: 08/28/2025
 ---
 
-# $geometry (geospatial)
+# $geometry
 
 The `$geometry` operator specifies a GeoJSON geometry object for geospatial queries. It's used within other geospatial operators to define shapes and points for spatial calculations.
 
@@ -34,21 +34,107 @@ The `$geometry` operator specifies a GeoJSON geometry object for geospatial quer
 
 ## Examples
 
-For better performance, start with creating the required 2dsphere index.
+Let's understand the usage with sample json from `stores` dataset.
 
-```javascript
-db.stores.createIndex({ "location": "2dsphere" })
+```json
+{
+  "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+  "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+  "location": { "lat": -74.0427, "lon": 160.8154 },
+  "staff": { "employeeCount": { "fullTime": 9, "partTime": 18 } },
+  "sales": {
+    "salesByCategory": [ { "categoryName": "Stockings", "totalSales": 25731 } ],
+    "revenue": 25731
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Mega Savings Extravaganza",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 6, "Day": 29 },
+        "endDate": { "Year": 2023, "Month": 7, "Day": 7 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 16 },
+        { "categoryName": "Tree Ornaments", "discountPercentage": 8 }
+      ]
+    },
+    {
+      "eventName": "Incredible Discount Days",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
+        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 11 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 9 }
+      ]
+    },
+    {
+      "eventName": "Massive Deal Mania",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
+        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
+      },
+      "discounts": [
+        { "categoryName": "Gift Bags", "discountPercentage": 21 },
+        { "categoryName": "Bows", "discountPercentage": 19 }
+      ]
+    },
+    {
+      "eventName": "Super Saver Soiree",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
+        "endDate": { "Year": 2024, "Month": 4, "Day": 1 }
+      },
+      "discounts": [
+        { "categoryName": "Tree Ornaments", "discountPercentage": 15 },
+        { "categoryName": "Stockings", "discountPercentage": 14 }
+      ]
+    },
+    {
+      "eventName": "Fantastic Savings Fiesta",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 24 },
+        { "categoryName": "Gift Wrap", "discountPercentage": 16 }
+      ]
+    },
+    {
+      "eventName": "Price Plunge Party",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+        "endDate": { "Year": 2024, "Month": 9, "Day": 28 }
+      },
+      "discounts": [
+        { "categoryName": "Holiday Tableware", "discountPercentage": 13 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 11 }
+      ]
+    }
+  ],
+  "company": "Lakeshore Retail",
+  "city": "Marvinfort",
+  "storeOpeningDate": { "$date": "2024-10-01T18:24:02.586Z" },
+  "lastUpdated": { "$timestamp": { "t": 1730485442, "i": 1 } },
+  "storeFeatures": 38
+}
 ```
 
-### Example 1: Point geometry
+### Example 1: Find nearest stores to point geometry
 
-This query retrieves up to two stores closest to the point at coordinates [46.2917, -62.6354], ordered by proximity.
+The query retrieves up to two stores closest to the point at coordinates [46.2917, -62.6354], ordered by proximity. It uses the $near operator to sort results by distance from a specific point, helping find stores that are geographically nearest to a given location.
 
-It uses the $near operator to sort results by distance from a specific point, helping find stores that are geographically nearest to a given location.
+For better performance, start with creating the required `2dsphere` index.
+
+```javascript
+db.stores.createIndex({ location: "2dsphere" })
+```
 
 ```javascript
 db.stores.find({
-  'location': {
+  location: {
     $near: {
       $geometry: {
         type: "Point",
@@ -77,7 +163,7 @@ The query returns the two nearest stores around the coordinates supplied.
   }
 ```
 
-### Example 2: Polygon geometry
+### Example 2: Find nearest stores to polygon geometry
 
 This query finds up to two stores whose locations intersect with a defined rectangular polygon bounded by coordinates from [-80.0, -75.0] to [-55.0, -70.0].
 
@@ -85,7 +171,7 @@ The `$geoIntersects` operator finds stores that overlap with or touch your polyg
 
 ```javascript
 db.stores.find({
-  'location': {
+  location: {
     $geoIntersects: {
       $geometry: {
         type: "Polygon",
@@ -100,9 +186,9 @@ db.stores.find({
     }
   }
 }, {
-  "name": 1,
-  "location": 1,
-  "city": 1
+  name: 1,
+  location: 1,
+  city: 1
 }).limit(2)
 ```
 
@@ -123,7 +209,7 @@ This query finds stores whose coordinates overlap with the defined polygon bound
   }
 ```
 
-### Example 3: MultiPolygon geometry
+### Example 3: Find nearest stores to multi-polygon geometry
 
 The example retrieves up to two stores whose locations fall within either of the two defined rectangular regions (MultiPolygon): one near the coordinates [120.0, -13.0] to [125.0, -10.0], and another near [44.0, -64.0] to [48.0, -61.0].
 
@@ -131,7 +217,7 @@ It uses the $geoWithin operator with a MultiPolygon geometry to search for store
 
 ```javascript
 db.stores.find({
-  'location': {
+  location: {
     $geoWithin: {
       $geometry: {
         type: "MultiPolygon",

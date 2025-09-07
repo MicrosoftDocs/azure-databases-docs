@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2024
+ms.date: 08/28/2024
 ---
 
 # $size
@@ -27,7 +27,7 @@ db.collection.find({ <field>: { $size: <number> } })
 | **`field`** | The field that contains the array. |
 | **`number`** | The number of elements the array should have. |
 
-## Example
+## Examples
 
 Let's understand the usage with sample json from `stores` dataset.
 

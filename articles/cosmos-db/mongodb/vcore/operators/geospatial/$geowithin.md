@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 07/25/2025
+ms.date: 08/28/2025
 ---
 
 # $geoWithin
@@ -59,19 +59,107 @@ The `$geoWithin` operator selects documents whose location field falls completel
 
 ## Examples
 
-For getting better performance, ensure you have a 2dsphere index.
+Let's understand the usage with sample json from `stores` dataset.
 
-```javascript
-db.stores.createIndex({ "location": "2dsphere" })
+```json
+{
+  "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+  "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+  "location": { "lat": -74.0427, "lon": 160.8154 },
+  "staff": { "employeeCount": { "fullTime": 9, "partTime": 18 } },
+  "sales": {
+    "salesByCategory": [ { "categoryName": "Stockings", "totalSales": 25731 } ],
+    "revenue": 25731
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Mega Savings Extravaganza",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 6, "Day": 29 },
+        "endDate": { "Year": 2023, "Month": 7, "Day": 7 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 16 },
+        { "categoryName": "Tree Ornaments", "discountPercentage": 8 }
+      ]
+    },
+    {
+      "eventName": "Incredible Discount Days",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
+        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 11 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 9 }
+      ]
+    },
+    {
+      "eventName": "Massive Deal Mania",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
+        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
+      },
+      "discounts": [
+        { "categoryName": "Gift Bags", "discountPercentage": 21 },
+        { "categoryName": "Bows", "discountPercentage": 19 }
+      ]
+    },
+    {
+      "eventName": "Super Saver Soiree",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
+        "endDate": { "Year": 2024, "Month": 4, "Day": 1 }
+      },
+      "discounts": [
+        { "categoryName": "Tree Ornaments", "discountPercentage": 15 },
+        { "categoryName": "Stockings", "discountPercentage": 14 }
+      ]
+    },
+    {
+      "eventName": "Fantastic Savings Fiesta",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Stockings", "discountPercentage": 24 },
+        { "categoryName": "Gift Wrap", "discountPercentage": 16 }
+      ]
+    },
+    {
+      "eventName": "Price Plunge Party",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+        "endDate": { "Year": 2024, "Month": 9, "Day": 28 }
+      },
+      "discounts": [
+        { "categoryName": "Holiday Tableware", "discountPercentage": 13 },
+        { "categoryName": "Holiday Cards", "discountPercentage": 11 }
+      ]
+    }
+  ],
+  "company": "Lakeshore Retail",
+  "city": "Marvinfort",
+  "storeOpeningDate": { "$date": "2024-10-01T18:24:02.586Z" },
+  "lastUpdated": { "$timestamp": { "t": 1730485442, "i": 1 } },
+  "storeFeatures": 38
+}
 ```
 
-### Example 1: Using $box
+### Example 1: Find stores defined by $box
+
+For getting better performance, ensure you have a `2dsphere` index.
+
+```javascript
+db.stores.createIndex({ location: "2dsphere" })
+```
 
 The example finds stores that are located within a specific rectangular area on a map, defined by a box (bounding rectangle).
 
 ```javascript
 db.stores.find({
-  'location': {
+  location: {
     $geoWithin: {
       $box: [
         [65.0, 65.0],    // Bottom left corner
@@ -108,7 +196,7 @@ This query returns stores located within box [70.1272, 69.7296].
   }
 ```
 
-### Example 2: Using $center
+### Example 2: Find stores defined by $center
 
 The example uses a `$geoWithin` operator to find stores within a circular area defined by a center point and a radius.
 
@@ -143,7 +231,7 @@ The query returns the closest two matching stores.
   }
 ```
 
-### Example 3: Using $geometry
+### Example 3: Find stores defined by $geometry
 
 The query finds up to two stores whose location falls within the defined rectangular polygon.
 

@@ -40,7 +40,7 @@ The `$text` operator performs text search on the content of indexed string field
 
 Before using the `$text` operator, you must create a text index on the fields you want to search.
 
-## Example
+## Examples
 
 Let's understand the usage with sample json from `stores` dataset.
 

@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/25/2024
+  ms.date: 08/28/2024
 ---
 
 # $all
@@ -27,7 +27,7 @@ db.collection.find({ <field>: { $all: [ <value1> , <value2> ... ] } })
 | **`field`** | The field to be queried. |
 | **`<value1> , <value2>`** | The values that must all be present in the array field. |
 
-## Example
+## Examples
 
 Let's understand the usage with sample json from `stores` dataset.
 
