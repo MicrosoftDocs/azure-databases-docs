@@ -203,7 +203,7 @@
       - name: Configure customer-managed key (CMK) encryption
         href: how-to-data-encryption.md
       - name: Troubleshoot CMK data encryption
-        href: how-to-database-encryption-troubleshooting.md
+        href: how-to-database-encryption-troubleshoot.md
     - name: Replication
       items:
       - name: Manage replication
