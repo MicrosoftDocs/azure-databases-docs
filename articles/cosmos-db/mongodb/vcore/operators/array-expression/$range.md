@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/28/2025
+  ms.date: 09/08/2025
 ---
 
 # $range
@@ -31,7 +31,6 @@ The `$range` operator is used to generate an array of sequential integers. The o
 | **`step`** | The increment value between each number in the range (optional, defaults to 1). |
 
 ## Examples
-
 
 Let's understand the usage with sample json from `stores` dataset.
 

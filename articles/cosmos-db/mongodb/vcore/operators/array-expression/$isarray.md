@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/28/2025
+  ms.date: 09/08/2025
 ---
 
 # $isArray
@@ -106,7 +106,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query returns the array categorization for first three documents.
+The query returns the array categorization for first three documents.
 
 ```json
 [

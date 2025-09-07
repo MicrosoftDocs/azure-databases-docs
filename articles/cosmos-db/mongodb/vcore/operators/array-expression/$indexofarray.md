@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/28/2025
+  ms.date: 09/08/2025
 ---
 
 # $indexOfArray
@@ -113,7 +113,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query would return the following document.
+The query would return the following document.
 
 ```json
   { "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41", "index": -1 },
@@ -123,7 +123,7 @@ This query would return the following document.
 
 ### Example 2: Finding the index in a range
 
-This aggregation query finds the position of the "Bargain Blitz Days" promotion event inside the `promotionEvents` array within a specific range of indexes (3 to 5) and filters results along with returning the first three matching documents
+The aggregation query finds the position of the "Bargain Blitz Days" promotion event inside the `promotionEvents` array within a specific range of indexes (3 to 5) and filters results along with returning the first three matching documents
 
 ```javascript
 db.stores.aggregate([

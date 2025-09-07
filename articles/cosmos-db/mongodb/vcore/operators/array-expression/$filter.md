@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/28/2025
+  ms.date: 09/08/2025
 ---
 
 # $filter
@@ -86,7 +86,7 @@ Let's understand the usage with sample json from `stores` dataset.
 The example demonstrates how to filter sales category based on `totalSales`.
 
 ```javascript
-db.yourCollection.aggregate([
+db.stores.aggregate([
   { $match: { _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5' } },
   { $project: { filteredSalesByCategory: { $filter: { input: "$sales.salesByCategory", as: "item", cond: { $gt: ["$$item.totalSales", 10000] } } } } }
 ])
