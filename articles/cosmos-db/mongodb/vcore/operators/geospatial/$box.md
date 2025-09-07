@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
 ms.date: 09/04/2025
+---
 
 # $box
 
@@ -286,4 +287,5 @@ The query returns all stores that fall within the rectangular region defined by 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
 
