@@ -71,7 +71,8 @@ To troubleshoot this situation:
 1. Check all [CMK requirements](./database-encryption-at-rest.md#cmk-requirements).
 1. Provision cluster with the managed identity and the key vault that you checked.
 1. Delete the failed cluster entity.
-    > [!NOTE] The failed cluster has `clusterStatus` property set to **Failed**. In the Azure portal, you can find cluster status on the **Overview** blade in the cluster properties.
+  > [!NOTE]
+  > The failed cluster has `clusterStatus` property set to **Failed**. In the Azure portal, you can find cluster status on the **Overview** blade in the cluster properties.
 
 ## Related content
 
