@@ -17,11 +17,12 @@ The `$pop` operator is used to remove the first or last element of an array. Thi
 ## Syntax
 
 ```javascript
-{ $pop: { <field>: <value> } }
+{
+  $pop: {
+    <field>: <value>
+  }
+}
 ```
-
-- `<field>`: The field that contains the array from which you want to remove an element.
-- `<value>`: Use `1` to remove the last element, and `-1` to remove the first element.
 
 ## Parameters
 
@@ -94,50 +95,56 @@ Consider this sample document from the stores collection.
 
 ```
 
-### Example 1: Removing the last tag from the `tag` array
+### Example 1: Remove the last element from an array
 
-```shell
+To remove the last element from the tag array, run a query using the $pop operator on the tag field with a value of 1.
+
+```javascript
 db.stores.update(
   { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
   { $pop: { "tag": 1 } }
 )
 ```
 
-This query would return the following document. The last element from the array is removed.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 
 ```
 
-### Example 2: Removing the last discount from the `promotionEvents` array
+### Example 2: Removing the first element from an array
 
-```shell
+To remove the first element from the promotionEvents array, run a query using the $pop operator on the promotionEvents array with a value of -1.
+
+```javascript
 db.stores.update(
   { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
   { $pop: { "promotionEvents": -1 } }
 )
 ```
 
-This query would return the following document. The first element from the array is removed.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
-
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
-
 
 ## Related content
 

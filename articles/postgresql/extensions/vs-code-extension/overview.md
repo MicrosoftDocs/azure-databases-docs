@@ -6,7 +6,7 @@ ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 06/24/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: overview
 ms.custom:
   - build-2025

@@ -1,6 +1,6 @@
 ---
   title: $ifNull
-  titleSuffix: Overview of the $ifNull operation in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $ifNull operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $ifNull operator is used to evaluate an expression and return a specified value if the expression resolves to null.  
   author: sandeepsnairms
   ms.author: sandnair
@@ -16,8 +16,10 @@ The `$ifNull` operator is used to evaluate an expression and return a specified 
 
 ## Syntax
 
-```json
-{ $ifNull: [ <expression>, <replacement-value> ] }
+```javascript
+{
+  $ifNull: [ <expression>, <replacement-value> ]
+}
 ```
 
 ### Parameters
@@ -27,7 +29,7 @@ The `$ifNull` operator is used to evaluate an expression and return a specified 
 | **`<expression>`**| The expression to evaluate.|
 | **`<replacement-value>`**| The value to return if the expression evaluates to `null`|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -90,12 +92,11 @@ Consider this sample document from the stores collection.
 }
 ```
 
-
 ### Example 1: Default value for missing `store.manager` field
 
 To ensure that the `$staff.totalStaff.intern` field is always a number, you can use `$ifNull` to replace `null` values with `0`.
 
-```JavaScript
+```javascript
 db.stores.aggregate([
   {
     $project: {
@@ -108,7 +109,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query would return the following document.
+This query returns the following results.
 
 ```json
 [

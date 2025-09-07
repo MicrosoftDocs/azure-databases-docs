@@ -16,7 +16,7 @@
   href: $lastn.md
 - name: $max
   href: $max.md
-- name: $maxn
+- name: $maxN
   href: $maxn.md
 - name: $median
   href: $median.md

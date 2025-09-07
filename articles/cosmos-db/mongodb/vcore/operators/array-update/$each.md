@@ -36,7 +36,7 @@ The `$each` operator is used within an `$addToSet` or `$push` operation to add m
 | **`$each`**| An array of values to be added to the array field.|
 | **`<modifier>`**| Optional modifiers like `$sort`, `$slice`, and `$position` to control the behavior of the `$push` operation.|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -98,6 +98,7 @@ Consider this sample document from the stores collection.
   ]
 }
 ```
+### Example 1: Add multiple elements to an array
 
 To add multiple new promotion events to the `promotionEvents` array.
 
@@ -141,17 +142,18 @@ db.stores.updateOne(
 )
 ```
 
-
-This query would return the following document.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "0",
-  "modifiedCount": "0",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "0",
+    "modifiedCount": "0",
+    "upsertedCount": 0
+  }
+]
 ```
 
 ## Related content

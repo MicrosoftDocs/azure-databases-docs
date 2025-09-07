@@ -28,82 +28,82 @@ The `$reverseArray` operator is used to reverse the order of elements in an arra
 | --- | --- |
 | **`<array>`**| The array that you want to reverse.|
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
-        },
-        {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
-        }
-      ]
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+    "location": {
+        "lat": 60.1441,
+        "lon": -141.5012
     },
-    {
-      "eventName": "Discount Delight Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 5,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 5,
-          "Day": 18
+    "staff": {
+        "totalStaff": {
+            "fullTime": 2,
+            "partTime": 0
         }
-      }
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#FashionStore",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
+    },
+    "sales": {
+        "salesByCategory": [
+            {
+                "categoryName": "DJ Headphones",
+                "totalSales": 35921
+            }
+        ],
+        "fullSales": 3700
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Bargain Blitz Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 3,
+                    "Day": 11
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 2,
+                    "Day": 18
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "DJ Turntables",
+                    "discountPercentage": 18
+                },
+                {
+                    "categoryName": "DJ Mixers",
+                    "discountPercentage": 15
+                }
+            ]
+        },
+        {
+            "eventName": "Discount Delight Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 5,
+                    "Day": 11
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 5,
+                    "Day": 18
+                }
+            }
+        }
+    ],
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
+    ]
 }
 ```
 
@@ -131,29 +131,47 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns document with reversed order for promotionEvents.
+The query returns the following result.
 
 ```json
-  {
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-    "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-    "promotionEventsReversed": [
-      {
-        "eventName": "Discount Delight Days",
-        "promotionalDates": {
-          "startDate": { "Year": 2024, "Month": 5, "Day": 11 },
-          "endDate": { "Year": 2024, "Month": 5, "Day": 18 }
-        }
-      },
-      {
-        "eventName": "Bargain Blitz Days",
-        "promotionalDates": {
-          "startDate": { "Year": 2024, "Month": 3, "Day": 11 },
-          "endDate": { "Year": 2024, "Month": 2, "Day": 18 }
-        }
-      }
-    ]
-  }
+[
+    {
+        "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+        "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+        "promotionEventsReversed": [
+            {
+                "eventName": "Discount Delight Days",
+                "promotionalDates": {
+                    "startDate": {
+                        "Year": 2024,
+                        "Month": 5,
+                        "Day": 11
+                    },
+                    "endDate": {
+                        "Year": 2024,
+                        "Month": 5,
+                        "Day": 18
+                    }
+                }
+            },
+            {
+                "eventName": "Bargain Blitz Days",
+                "promotionalDates": {
+                    "startDate": {
+                        "Year": 2024,
+                        "Month": 3,
+                        "Day": 11
+                    },
+                    "endDate": {
+                        "Year": 2024,
+                        "Month": 2,
+                        "Day": 18
+                    }
+                }
+            }
+        ]
+    }
+]
 ```
 
 ## Related content

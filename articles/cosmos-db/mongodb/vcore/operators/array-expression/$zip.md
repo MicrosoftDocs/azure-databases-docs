@@ -34,9 +34,9 @@ The `$zip` operator is used to merge two or more arrays element-wise into a sing
 | **`useLongestLength`** | A boolean value that, if set to true, uses the longest length of the input arrays. If false or not specified, it uses the shortest length. |
 | **`defaults`** | An array of default values to use if `useLongestLength` is true and any input array is shorter than the longest array. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {

@@ -22,6 +22,10 @@
         href: flexible-server/whats-new-archive.md
       - name: Release notes
         items:
+          - name: Release notes index
+            href: flexible-server/release-notes/release-notes-index.md
+          - name: September 2025
+            href: flexible-server/release-notes/september-2025.md
           - name: July 2025
             href: flexible-server/release-notes/july-2025.md
           - name: May 2025
@@ -152,12 +156,14 @@
         href: flexible-server/concepts-high-availability-faq.md
     - name: Monitoring
       items:
-      - name: Monitor Azure Database for MySQL - Flexible Server
+      - name: Monitor Azure Database for MySQL
         href: flexible-server/concepts-monitor-mysql.md
       - name: Monitoring data reference
         href: flexible-server/concepts-monitor-mysql-reference.md
       - name: Error logs
-        href: flexible-server/concepts-error-logs.md        
+        href: flexible-server/concepts-error-logs.md
+      - name: Azure Advisor and Azure Monitor
+        href: flexible-server/concepts-business-continuity-advisor-monitor.md    
     - name: Replication
       items:
       - name: Data-in replication
@@ -170,6 +176,8 @@
       items:
       - name: Backup & restore concepts
         href: flexible-server/concepts-backup-restore.md
+      - name: How to prevent and recover from an accidental deletion
+        href: flexible-server/how-to-prevent-recover-accidental-delete.md
     - name: Security
       items:
       - name: Microsoft Entra authentication
@@ -252,6 +260,8 @@
         href: flexible-server/how-to-move-regions.md
       - name: Major version upgrade
         href: flexible-server/how-to-upgrade.md
+      - name: Major version upgrade FAQ
+        href: flexible-server/how-to-upgrade-faq.md
       - name: Server maintenance
         href: flexible-server/how-to-maintenance-portal.md
     - name: Networking

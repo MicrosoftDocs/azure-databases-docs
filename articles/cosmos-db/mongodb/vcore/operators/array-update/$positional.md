@@ -16,9 +16,7 @@ The `$position` operator is used to specify the position in the array where a ne
 
 ## Syntax
 
-The basic syntax for using the `$position` operator in an update command is as follows:
-
-```json
+```javascript
 {
   "$push": {
     "<arrayField>": {
@@ -37,7 +35,7 @@ The basic syntax for using the `$position` operator in an update command is as f
 | **`<value1>, <value2>, ...`**| The values to be inserted into the array.|
 | **`<index>`**| The position at which the values should be inserted.|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -95,7 +93,7 @@ db.stores.update(
 )
 ```
 
-The example document updated `tag` field has following values.
+The updated document has the following values in the tag array.
 
 ```json
 {

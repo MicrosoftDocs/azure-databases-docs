@@ -36,7 +36,7 @@ The syntax for the `$group` stage is as follows:
 | **`_id`** | Required. The expression to group by. Use null to calculate accumulated values for all input documents. |
 | **`field`** | Optional. Computed using accumulator operators like $sum, $avg, $max, $min, $count, etc. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -92,6 +92,8 @@ Consider this sample document from the stores collection.
   ]
 }
 ```
+
+### Example 1: Group staffing analysis by city
 
 To group stores by city and analyzes the staffing patterns across different locations.
 

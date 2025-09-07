@@ -209,6 +209,7 @@ Sample output
 
 
 ### Example 3: Adding Nested Fields
+
 To add a nested field location.coordinates that combines latitude and longitude into an array.
 
 ```javascript

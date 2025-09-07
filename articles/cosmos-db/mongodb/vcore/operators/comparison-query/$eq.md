@@ -137,13 +137,16 @@ db.stores.find({
 })
 ```
 
-This returns the following results:
+This returns the following result:
+
 ```json
-{
-    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
-    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
-    "sales": { "totalSales": 37015 }
-}
+[
+    {
+        "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
+        "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
+        "sales": { "totalSales": 37015 }
+    }
+]
 ```
 
 ### Example 3: Use $eq for individual items in an array
@@ -168,6 +171,7 @@ db.stores.find({
 ```
 
 This query returns the following results:
+
 ```json
 [
   {

@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/28/2025
+ms.date: 09/08/2025
 ---
 
 # $maxDistance
@@ -150,16 +150,19 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns only one store that falls within 10Km of the coordinate provided.
+The query returns the following result.
 
 ```json
-{
-   "_id": "66fd4cdd-ffc3-44b6-81d9-6d5e9c1f7f9a",
-   "name": "Trey Research | Health Food Center - North Michelle",
-   "location": { "lat": -77.9951, "lon": -62.7339 }
-}
+[
+  {
+     "_id": "66fd4cdd-ffc3-44b6-81d9-6d5e9c1f7f9a",
+     "name": "Trey Research | Health Food Center - North Michelle",
+     "location": { "lat": -77.9951, "lon": -62.7339 }
+  }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+

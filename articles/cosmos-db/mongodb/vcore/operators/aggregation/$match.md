@@ -111,7 +111,7 @@ db.stores.aggregate([
 This query would return the sample document.
 
 
-### Example 2: Match documents  using numeric comparison
+### Example 2: Match documents using numeric comparison
 
 To filter documents where the total sales are greater than $35,000:
 

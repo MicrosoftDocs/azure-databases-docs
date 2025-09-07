@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/28/2025
+ms.date: 09/08/2025
 ---
 
 # $minDistance
@@ -38,7 +38,7 @@ The `$minDistance` operator is used in geospatial queries to specify the minimum
 | `coordinates` | An array of [longitude, latitude] specifying the center point |
 | `$minDistance` | Minimum distance in meters from the center point |
 
-## Example
+## Examples
 
 Let's understand the usage with sample json from `stores` dataset.
 
@@ -150,9 +150,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns the two stores at least 500Km away from the provided coordinates.
+The first two results returned by this query are:
 
 ```json
+[
  {
    "_id": "9d9d768b-4daf-4126-af15-a963bd3b88aa",
    "name": "First Up Consultants | Perfume Gallery - New Verniceshire",
@@ -163,8 +164,10 @@ The query returns the two stores at least 500Km away from the provided coordinat
    "name": "Fabrikam, Inc. | Turntable Depot - Schinnershire",
    "location": { "lat": 37.5534, "lon": 81.6805 }
  }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+

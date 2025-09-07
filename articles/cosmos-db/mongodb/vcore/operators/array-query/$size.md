@@ -29,50 +29,69 @@ db.collection.find({ <field>: { $size: <number> } })
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Lakeshore Retail",
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "Towel Racks",
-        "totalSales": 13237
-      },
-      {
-        "categoryName": "Washcloths",
-        "totalSales": 44315
-      },
-      {
-        "categoryName": "Face Towels",
-        "totalSales": 42095
-      },
-      {
-        "categoryName": "Toothbrush Holders",
-        "totalSales": 47912
-      },
-      {
-        "categoryName": "Hybrid Mattresses",
-        "totalSales": 48660
-      },
-      {
-        "categoryName": "Napkins",
-        "totalSales": 31439
-      },
-      {
-        "categoryName": "Pillow Cases",
-        "totalSales": 38833
-      }
-    ]},
-"tag": [
-    '#ShopLocal',
-    '#FashionStore',
-    '#SeasonalSale',
-    '#FreeShipping',
-    '#MembershipDeals'
-  ]
+    "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
+    "name": "Wide World Importers",
+    "location": {
+        "lat": 68.6378,
+        "lon": -145.2852
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 1,
+            "partTime": 5
+        }
+    },
+    "sales": {
+        "totalSales": 23399,
+        "salesByCategory": [
+            {
+                "categoryName": "Smartphones",
+                "totalSales": 5231
+            },
+            {
+                "categoryName": "Laptops",
+                "totalSales": 18168
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2023,
+                    "Month": 5,
+                    "Day": 17
+                },
+                "endDate": {
+                    "Year": 2023,
+                    "Month": 5,
+                    "Day": 25
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Video Games",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Tablets",
+                    "discountPercentage": 18
+                }
+            ]
+        }
+    ],
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
+    ]
 }
 ```
 
@@ -81,86 +100,94 @@ Let's understand the usage with sample json from `stores` dataset.
 The example retrieves documents from the `stores` collection where the `sales.salesByCategory` array contains exactly seven items.
 
 ```javascript
-db.stores.find(  { "sales.salesByCategory": { $size: 7 }}
-                ,{"_id":1,"name":1,"sales.salesByCategory":1}
-                ).limit(2)
+db.stores.find({
+    "sales.salesByCategory": {
+        $size: 7
+    }
+}, {
+    "_id": 1,
+    "name": 1,
+    "sales.salesByCategory": 1
+}).limit(2)
 ```
 
-This query returns the two documents from the `stores` collection as restricted by `limit` clause.
+This query returns the following results.
 
 ```json
-{
-  "_id": "7ed4b356-1290-433e-bd96-bf95f817eaaa",
-  "name": "Wide World Importers",
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "Ultrabooks",
-        "totalSales": 31304
-      },
-      {
-        "categoryName": "Laptop Accessories",
-        "totalSales": 10044
-      },
-      {
-        "categoryName": "Laptops",
-        "totalSales": 48851
-      },
-      {
-        "categoryName": "Refill Kits",
-        "totalSales": 9604
-      },
-      {
-        "categoryName": "Prepaid Phones",
-        "totalSales": 28600
-      },
-      {
-        "categoryName": "Android Phones",
-        "totalSales": 4580
-      },
-      {
-        "categoryName": "Photo Printers",
-        "totalSales": 35234
-      }
-    ]
-  }
-}
-{
-  "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Lakeshore Retail",
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "Towel Racks",
-        "totalSales": 13237
-      },
-      {
-        "categoryName": "Washcloths",
-        "totalSales": 44315
-      },
-      {
-        "categoryName": "Face Towels",
-        "totalSales": 42095
-      },
-      {
-        "categoryName": "Toothbrush Holders",
-        "totalSales": 47912
-      },
-      {
-        "categoryName": "Hybrid Mattresses",
-        "totalSales": 48660
-      },
-      {
-        "categoryName": "Napkins",
-        "totalSales": 31439
-      },
-      {
-        "categoryName": "Pillow Cases",
-        "totalSales": 38833
-      }
-    ]
-  }
-}
+[
+    {
+        "_id": "7ed4b356-1290-433e-bd96-bf95f817eaaa",
+        "name": "Wide World Importers",
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "Ultrabooks",
+                    "totalSales": 31304
+                },
+                {
+                    "categoryName": "Laptop Accessories",
+                    "totalSales": 10044
+                },
+                {
+                    "categoryName": "Laptops",
+                    "totalSales": 48851
+                },
+                {
+                    "categoryName": "Refill Kits",
+                    "totalSales": 9604
+                },
+                {
+                    "categoryName": "Prepaid Phones",
+                    "totalSales": 28600
+                },
+                {
+                    "categoryName": "Android Phones",
+                    "totalSales": 4580
+                },
+                {
+                    "categoryName": "Photo Printers",
+                    "totalSales": 35234
+                }
+            ]
+        }
+    },
+    {
+        "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
+        "name": "Lakeshore Retail",
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "Towel Racks",
+                    "totalSales": 13237
+                },
+                {
+                    "categoryName": "Washcloths",
+                    "totalSales": 44315
+                },
+                {
+                    "categoryName": "Face Towels",
+                    "totalSales": 42095
+                },
+                {
+                    "categoryName": "Toothbrush Holders",
+                    "totalSales": 47912
+                },
+                {
+                    "categoryName": "Hybrid Mattresses",
+                    "totalSales": 48660
+                },
+                {
+                    "categoryName": "Napkins",
+                    "totalSales": 31439
+                },
+                {
+                    "categoryName": "Pillow Cases",
+                    "totalSales": 38833
+                }
+            ]
+        }
+    }
+]
 ```
 
 ## Related content

@@ -1,6 +1,6 @@
 --- 
   title: $switch
-  titleSuffix: Overview of the $switch operation in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $switch operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $switch operator is used to evaluate a series of conditions and return a value based on the first condition that evaluates to true.  
   author: sandeepsnairms
   ms.author: sandnair
@@ -17,9 +17,7 @@ The `$switch` operator is used to evaluate a series of conditions and return a v
 
 ## Syntax
 
-The syntax for the `$switch` operator is as follows:
-
-```JavaScript
+```javascript
 {
   $switch: {
     branches: [
@@ -41,7 +39,7 @@ The syntax for the `$switch` operator is as follows:
 | **then**| The expression to return if the associated `case` expression evaluates to `true`|
 | **default**| The expression to return if none of the `case` expressions evaluate to `true`. This field is optional.|
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -103,10 +101,11 @@ Consider this sample document from the stores collection.
   ]
 }
 ```
+### Example 1: To determine staff type based on full-time and part-time counts
 
 To determine the type of staff based on their count.
 
-```JavaScript
+```javascript
 db.stores.aggregate([
   {
     $project: {
@@ -133,7 +132,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query would return the following document.
+This query returns the following results.
 
 ```json
 [

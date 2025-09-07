@@ -1,13 +1,13 @@
 ---
   title: $mergeObjects
-  titleSuffix: Overview of the $mergeObjects expression in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $mergeObjects operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $mergeObjects operator merges multiple documents into a single document
   author: abinav2307
   ms.author: abramees
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.date: 09/04/2025
 ---
 
 # $mergeObjects
@@ -30,7 +30,7 @@ The `$mergeObjects` operator combines multiple documents into a single document.
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -144,7 +144,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1 - Merging documents as an accumulator to group documents by the sales subdocument
 
-The query is an aggregation pipeline that uses $mergeObjects to merge all sales subdocuments per city for a specific company.
+The query merges all sales subdocuments per city for a specific company.
 
 ```javascript
 db.stores.aggregate([
@@ -167,7 +167,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query groups store documents by city for the company "Fourth Coffee" and merges their sales fields into a single object per city.
+The first two results returned by this query are:
 
 ```json
 [

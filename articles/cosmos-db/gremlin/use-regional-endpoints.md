@@ -12,7 +12,6 @@ ms.custom: devx-track-csharp, sfi-image-nochange
 ---
 
 # Regional endpoints for Azure Cosmos DB Graph account
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
 
 Azure Cosmos DB Graph database is [globally distributed](../distribute-data-globally.md) so applications can use multiple read endpoints. Applications that need write access in multiple locations should enable [multi-region writes](../how-to-multi-master.md) capability.
 
@@ -106,9 +105,3 @@ foreach (string location in readLocations)
   // Use code from the previous sample to instantiate Gremlin client.
 }
 ```
-
-## Next steps
-* [How to manage database accounts control](../how-to-manage-database-account.yml) in Azure Cosmos DB
-* [High availability](../high-availability.md) in Azure Cosmos DB
-* [Global distribution with Azure Cosmos DB - under the hood](../global-dist-under-the-hood.md)
-* [Azure CLI Samples](cli-samples.md) for Azure Cosmos DB

@@ -38,99 +38,124 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
-  "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-  "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
-  "location": { "lat": -74.0427, "lon": 160.8154 },
-  "staff": { "employeeCount": { "fullTime": 9, "partTime": 18 } },
-  "sales": {
-    "salesByCategory": [ { "categoryName": "Stockings", "totalSales": 25731 } ],
-    "revenue": 25731
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Mega Savings Extravaganza",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 6, "Day": 29 },
-        "endDate": { "Year": 2023, "Month": 7, "Day": 7 }
-      },
-      "discounts": [
-        { "categoryName": "Stockings", "discountPercentage": 16 },
-        { "categoryName": "Tree Ornaments", "discountPercentage": 8 }
-      ]
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
     },
-    {
-      "eventName": "Incredible Discount Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
-        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
-      },
-      "discounts": [
-        { "categoryName": "Stockings", "discountPercentage": 11 },
-        { "categoryName": "Holiday Cards", "discountPercentage": 9 }
-      ]
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
     },
-    {
-      "eventName": "Massive Deal Mania",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
-        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
-      },
-      "discounts": [
-        { "categoryName": "Gift Bags", "discountPercentage": 21 },
-        { "categoryName": "Bows", "discountPercentage": 19 }
-      ]
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
     },
-    {
-      "eventName": "Super Saver Soiree",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
-        "endDate": { "Year": 2024, "Month": 4, "Day": 1 }
-      },
-      "discounts": [
-        { "categoryName": "Tree Ornaments", "discountPercentage": 15 },
-        { "categoryName": "Stockings", "discountPercentage": 14 }
-      ]
-    },
-    {
-      "eventName": "Fantastic Savings Fiesta",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
-        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
-      },
-      "discounts": [
-        { "categoryName": "Stockings", "discountPercentage": 24 },
-        { "categoryName": "Gift Wrap", "discountPercentage": 16 }
-      ]
-    },
-    {
-      "eventName": "Price Plunge Party",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
-        "endDate": { "Year": 2024, "Month": 9, "Day": 28 }
-      },
-      "discounts": [
-        { "categoryName": "Holiday Tableware", "discountPercentage": 13 },
-        { "categoryName": "Holiday Cards", "discountPercentage": 11 }
-      ]
-    }
-  ],
-  "company": "Lakeshore Retail",
-  "city": "Marvinfort",
-  "storeOpeningDate": { "$date": "2024-10-01T18:24:02.586Z" },
-  "lastUpdated": { "$timestamp": { "t": 1730485442, "i": 1 } },
-  "storeFeatures": 38
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
 
-### Example 1: Find nearest stores to point geometry
 
-The query retrieves up to two stores closest to the point at coordinates [46.2917, -62.6354], ordered by proximity. It uses the $near operator to sort results by distance from a specific point, helping find stores that are geographically nearest to a given location.
+### Example 1: Find nearest stores to point geometry
 
 For better performance, start with creating the required `2dsphere` index.
 
 ```javascript
 db.stores.createIndex({ location: "2dsphere" })
 ```
+
+The query retrieves up to two stores closest to the point at coordinates [46.2917, -62.6354], ordered by proximity. It uses the $near operator to sort results by distance from a specific point, helping find stores that are geographically nearest to a given location.
 
 ```javascript
 db.stores.find({
@@ -148,9 +173,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns the two nearest stores around the coordinates supplied.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "59c355e9-586c-44f8-bbaf-a87989142119",
     "name": "Relecloud | Outdoor Furniture Shop - Chetside",
@@ -161,6 +187,7 @@ The query returns the two nearest stores around the coordinates supplied.
     "name": "VanArsdel, Ltd. | Furniture Place - North Dustinside",
     "location": { "lat": 47.3426, "lon": -62.4031 }
   }
+]
 ```
 
 ### Example 2: Find nearest stores to polygon geometry
@@ -192,9 +219,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-This query finds stores whose coordinates overlap with the defined polygon boundary.
+The first two results returned by this query.
 
 ```json
+[
   {
     "_id": "6bba7117-d180-4584-b50c-a2f843e9c9ab",
     "name": "Wide World Importers | Craft Supply Mart - Heaneybury",
@@ -207,6 +235,7 @@ This query finds stores whose coordinates overlap with the defined polygon bound
     "location": { "lat": -70.6077, "lon": -105.9901 },
     "city": "Patiencehaven"
   }
+]
 ```
 
 ### Example 3: Find nearest stores to multi-polygon geometry
@@ -246,9 +275,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns the two stores falling within either of the two defined rectangular regions.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "6d70de9c-7b83-426d-81aa-f2173f97b64d",
     "name": "Fabrikam, Inc. | Footwear Haven - Port Erling",
@@ -259,8 +289,10 @@ The query returns the two stores falling within either of the two defined rectan
     "name": "Wide World Importers | Eyewear Bazaar - West Oletachester",
     "location": { "lat": 47.3461, "lon": -61.6605 }
   }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+

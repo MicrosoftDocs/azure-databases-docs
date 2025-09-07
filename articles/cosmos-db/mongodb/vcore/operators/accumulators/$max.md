@@ -12,17 +12,40 @@ ms.date: 01/05/2025
 
 # $max
 
-The `$max` operator returns the maximum value of a set of input values. The max operator is particularly useful in identifying the highest value in a dataset, such as maximum sales, discounts, and other numerical comparisons.
+The `$max` operator returns the maximum value of a set of input values. 
+
+When used as a field update operator, the `$max` operator updates the value of a field to a specified value if the specified value is greater than the current value of the field. If the field does not exist, `$max` creates the field and sets it to the specified value.
 
 ## Syntax
+
 ```javascript
 $max: <expression>
 ```
+
+When used as a field update operator:
+
+```javascript
+{
+  $max: {
+    <field1>: <value1>,
+    <field2>: <value2>,
+    ...
+  }
+}
+```
+
 
 ## Parameters  
 | Parameter | Description |
 | --- | --- |
 | **`<expression>`** | Any valid expression that resolves to a value. The `$max` operator evaluates this expression to determine the maximum value. |
+
+When used as a field update operator:
+
+| Parameter | Description |
+| --- | --- |
+| **`field`** | The name of the field to update with the maximum value. |
+| **`value`** | The value to compare with the current field value. The field will be updated only if this value is larger. |
 
 ## Examples
 
@@ -287,6 +310,129 @@ The first three results returned by this query are:
         "maxDiscount": 24
     }
 ]
+```
+
+### Example 4: Setting maximum staff capacity (field update operator)
+
+To update the full time staff to 10 only if the current full time staff count is lower, use the $max operator on the field to perform the update. Since the current `fullTime` value is 3, and 10 is greater than 3, the field will be updated to 10.
+
+```javascript
+db.stores.updateOne(
+  { "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
+  {
+    $max: {
+      "staff.totalStaff.fullTime": 10
+    }
+  }
+)
+```
+
+### Example 5: Multiple field updates (field update operator)
+
+To update multiple fields with maximum values, use the $max operator with multiple fields and their corresponding max values to set.
+
+```javascript
+db.stores.updateOne(
+  { "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
+  {
+    $max: {
+      "staff.totalStaff.partTime": 1,
+      "sales.totalSales": 50000
+    }
+  }
+)
+```
+
+In this case:
+- `partTime` (2) will remain 2 since 1 < 2 (no change)
+- `totalSales` (31211) will be updated to 50000 since 50000 > 31211
+
+### Example 6: Creating new fields (field update operator)
+
+If a field doesn't exist, `$max` creates it with the specified value.
+
+```javascript
+db.stores.updateOne(
+  { "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
+  {
+    $max: {
+      "staff.maxStaffCapacity": 25,
+      "sales.peakSalesRecord": 100000
+    }
+  }
+)
+```
+
+### Example 7: Updating array elements (field update operator)
+
+Update maximum values within array elements using positional operators.
+
+```javascript
+db.stores.updateOne(
+  {
+    "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
+    "sales.salesByCategory.categoryName": "Phone Mounts"
+  },
+  {
+    $max: {
+      "sales.salesByCategory.$.totalSales": 12000
+    }
+  }
+)
+```
+
+### Example 8: Tracking peak performance (field update operator)
+
+Set peak performance metrics that only update when exceeded.
+
+```javascript
+db.stores.updateOne(
+  { "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
+  {
+    $max: {
+      "performance.peakDailySales": 5000,
+      "performance.maxCustomersPerDay": 150,
+      "performance.highestSalesMonth": 45000
+    }
+  }
+)
+```
+
+After these field update operations, the updated document is:
+
+```json
+{
+  "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
+  "name": "Fabrikam, Inc. | Car Accessory Outlet - West Adele",
+  "staff": {
+    "totalStaff": {
+      "fullTime": 10,
+      "partTime": 2
+    },
+    "maxStaffCapacity": 25
+  },
+  "sales": {
+    "totalSales": 50000,
+    "peakSalesRecord": 100000,
+    "salesByCategory": [
+      {
+        "categoryName": "Phone Mounts",
+        "totalSales": 12000
+      },
+      {
+        "categoryName": "Dash Cameras",
+        "totalSales": 22300
+      }
+    ]
+  },
+  "performance": {
+    "peakDailySales": 5000,
+    "maxCustomersPerDay": 150,
+    "highestSalesMonth": 45000
+  },
+  "lastPromotionDate": ISODate("2024-12-31T00:00:00.000Z"),
+  "inventoryDeadline": ISODate("2024-06-30T00:00:00.000Z")
+}
 ```
 
 ## Related content

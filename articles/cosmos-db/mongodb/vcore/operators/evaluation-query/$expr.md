@@ -30,41 +30,115 @@ The `$expr` operator allows the use of aggregation expressions within the query 
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 19,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  },
-  "storeOpeningDate": ISODate("2024-09-23T13:45:01.480Z"),
-  "lastUpdated": ISODate("2025-06-11T11:06:57.922Z"),
-  "status": "active",
-  "category": "high-volume",
-  "priority": 1,
-  "reviewDate": ISODate("2025-06-11T11:10:50.276Z")
 }
 ```
 
@@ -105,15 +179,15 @@ The query compares two fields within the specified (`_id`) document and returns 
         "categoryName": "Home Theater Projectors",
         "totalSales": 45004
       }
-    ]
-  },
-  "storeOpeningDate": ISODate("2024-09-23T13:45:01.480Z"),
-  "lastUpdated": ISODate("2025-06-11T11:06:57.922Z"),
-  "status": "active",
-  "category": "high-volume",
-  "priority": 1,
-  "reviewDate": ISODate("2025-06-11T11:10:50.276Z")
-}
+    },
+    "storeOpeningDate": ISODate("2024-09-23T13:45:01.480Z"),
+    "lastUpdated": ISODate("2025-06-11T11:06:57.922Z"),
+    "status": "active",
+    "category": "high-volume",
+    "priority": 1,
+    "reviewDate": ISODate("2025-06-11T11:10:50.276Z")
+  }
+]
 ```
 
 ### Example 2: Conditional logic with store location
@@ -141,42 +215,44 @@ db.stores.find({_id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
 }).limit(1)
 ```
 
-The query combines location-based filtering with a calculated efficiency metric, demonstrating the power of `$expr` for complex business logic.
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 19,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "location": {
+      "lat": 70.1272,
+      "lon": 69.7296
+    },
+    "staff": {
+      "totalStaff": {
+        "fullTime": 19,
+        "partTime": 20
       }
-    ]
-  },
-  "storeOpeningDate": ISODate("2024-09-23T13:45:01.480Z"),
-  "lastUpdated": ISODate("2025-06-11T11:06:57.922Z"),
-  "status": "active",
-  "category": "high-volume",
-  "priority": 1,
-  "reviewDate": ISODate("2025-06-11T11:10:50.276Z")
-}
+    },
+    "sales": {
+      "totalSales": 151864,
+      "salesByCategory": [
+        {
+          "categoryName": "Sound Bars",
+          "totalSales": 2120
+        },
+        {
+          "categoryName": "Home Theater Projectors",
+          "totalSales": 45004
+        }
+      ]
+    },
+    "storeOpeningDate": ISODate("2024-09-23T13:45:01.480Z"),
+    "lastUpdated": ISODate("2025-06-11T11:06:57.922Z"),
+    "status": "active",
+    "category": "high-volume",
+    "priority": 1,
+    "reviewDate": ISODate("2025-06-11T11:10:50.276Z")
+  }
+]
 ```
 
 ## Related content

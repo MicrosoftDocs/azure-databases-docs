@@ -28,50 +28,86 @@ The `$concatArrays` operator is used to combine multiple arrays into a single ar
 | --- | --- |
 | **`<array1>, <array2>`**| The array fields targeted for concatenation.|
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": { "lat": 60.1441, "lon": -141.5012 },
-  "staff": { "totalStaff": { "fullTime": 2, "partTime": 0 } },
-  "sales": {
-    "salesByCategory": [
-      { "categoryName": "DJ Headphones", "totalSales": 35921 },
-      { "categoryName": "DJ Cables", "totalSales": 1000 }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 3, "Day": 11 },
-        "endDate": { "Year": 2024, "Month": 2, "Day": 18 }
-      },
-      "discounts": [
-        { "categoryName": "DJ Turntables", "discountPercentage": 18 },
-        { "categoryName": "DJ Mixers", "discountPercentage": 15 }
-      ]
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+    "location": {
+        "lat": 60.1441,
+        "lon": -141.5012
     },
-    {
-      "eventName": "Discount Delight Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 5, "Day": 11 },
-        "endDate": { "Year": 2024, "Month": 5, "Day": 18 }
-      }
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#FashionStore",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
+    "staff": {
+        "totalStaff": {
+            "fullTime": 2,
+            "partTime": 0
+        }
+    },
+    "sales": {
+        "salesByCategory": [
+            {
+                "categoryName": "DJ Headphones",
+                "totalSales": 35921
+            },
+            {
+                "categoryName": "DJ Cables",
+                "totalSales": 1000
+            }
+        ],
+        "fullSales": 3700
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Bargain Blitz Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 3,
+                    "Day": 11
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 2,
+                    "Day": 18
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "DJ Turntables",
+                    "discountPercentage": 18
+                },
+                {
+                    "categoryName": "DJ Mixers",
+                    "discountPercentage": 15
+                }
+            ]
+        },
+        {
+            "eventName": "Discount Delight Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 5,
+                    "Day": 11
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 5,
+                    "Day": 18
+                }
+            }
+        }
+    ],
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
+    ]
 }
 ```
 
@@ -80,13 +116,20 @@ Let's understand the usage with sample json from `stores` dataset.
 The example pipeline merges the `categoryName` field from the `promotionEvents.discounts` array with the `tag` array into a single combinedTags array.
 
 ```javascript
-db.stores.aggregate([ 
-        { $match: { _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5' } }
-       ,{ $project: { combinedTags: { $concatArrays: ["$promotionEvents.discounts.categoryName", "$tag"] } } }
-])
+db.stores.aggregate([{
+    $match: {
+        _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5'
+    }
+}, {
+    $project: {
+        combinedTags: {
+            $concatArrays: ["$promotionEvents.discounts.categoryName", "$tag"]
+        }
+    }
+}])
 ```
 
-The query returns the arrays `categoryName` and `tags` merged as single array from the document.
+The query returns the following result.
 
 ```json
 {

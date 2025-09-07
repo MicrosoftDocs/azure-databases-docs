@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/28/2025
+ms.date: 09/08/2025
 ---
 
 # $geoWithin
@@ -63,87 +63,111 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ```json
 {
-  "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-  "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
-  "location": { "lat": -74.0427, "lon": 160.8154 },
-  "staff": { "employeeCount": { "fullTime": 9, "partTime": 18 } },
-  "sales": {
-    "salesByCategory": [ { "categoryName": "Stockings", "totalSales": 25731 } ],
-    "revenue": 25731
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Mega Savings Extravaganza",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 6, "Day": 29 },
-        "endDate": { "Year": 2023, "Month": 7, "Day": 7 }
-      },
-      "discounts": [
-        { "categoryName": "Stockings", "discountPercentage": 16 },
-        { "categoryName": "Tree Ornaments", "discountPercentage": 8 }
-      ]
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
     },
-    {
-      "eventName": "Incredible Discount Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
-        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
-      },
-      "discounts": [
-        { "categoryName": "Stockings", "discountPercentage": 11 },
-        { "categoryName": "Holiday Cards", "discountPercentage": 9 }
-      ]
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
     },
-    {
-      "eventName": "Massive Deal Mania",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
-        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
-      },
-      "discounts": [
-        { "categoryName": "Gift Bags", "discountPercentage": 21 },
-        { "categoryName": "Bows", "discountPercentage": 19 }
-      ]
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
     },
-    {
-      "eventName": "Super Saver Soiree",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
-        "endDate": { "Year": 2024, "Month": 4, "Day": 1 }
-      },
-      "discounts": [
-        { "categoryName": "Tree Ornaments", "discountPercentage": 15 },
-        { "categoryName": "Stockings", "discountPercentage": 14 }
-      ]
-    },
-    {
-      "eventName": "Fantastic Savings Fiesta",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
-        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
-      },
-      "discounts": [
-        { "categoryName": "Stockings", "discountPercentage": 24 },
-        { "categoryName": "Gift Wrap", "discountPercentage": 16 }
-      ]
-    },
-    {
-      "eventName": "Price Plunge Party",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
-        "endDate": { "Year": 2024, "Month": 9, "Day": 28 }
-      },
-      "discounts": [
-        { "categoryName": "Holiday Tableware", "discountPercentage": 13 },
-        { "categoryName": "Holiday Cards", "discountPercentage": 11 }
-      ]
-    }
-  ],
-  "company": "Lakeshore Retail",
-  "city": "Marvinfort",
-  "storeOpeningDate": { "$date": "2024-10-01T18:24:02.586Z" },
-  "lastUpdated": { "$timestamp": { "t": 1730485442, "i": 1 } },
-  "storeFeatures": 38
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -155,7 +179,7 @@ For getting better performance, ensure you have a `2dsphere` index.
 db.stores.createIndex({ location: "2dsphere" })
 ```
 
-The example finds stores that are located within a specific rectangular area on a map, defined by a box (bounding rectangle).
+This query finds stores that are located within a specific rectangular area on a map, defined by a box (bounding rectangle).
 
 ```javascript
 db.stores.find({
@@ -173,9 +197,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-This query returns stores located within box [70.1272, 69.7296].
+The first two results returned by this query.
 
 ```json
+[
  {
     "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
     "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
@@ -194,11 +219,12 @@ This query returns stores located within box [70.1272, 69.7296].
       "lon": 68.9829
     }
   }
+]
 ```
 
 ### Example 2: Find stores defined by $center
 
-The example uses a `$geoWithin` operator to find stores within a circular area defined by a center point and a radius.
+The query uses a `$geoWithin` operator to find stores within a circular area defined by a center point and a radius.
 
 ```javascript
 db.stores.find({
@@ -216,9 +242,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns the closest two matching stores.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "3e962dd0-dffb-49d6-8a96-1d29fa1553d2",
     "name": "Tailwind Traders | Book Center - Lake Marlen",
@@ -229,11 +256,12 @@ The query returns the closest two matching stores.
     "name": "Proseware, Inc. | Outdoor Furniture Bargains - North Obieberg",
     "location": { "lat": -84.1013, "lon": -69.5717 }
   }
+]
 ```
 
 ### Example 3: Find stores defined by $geometry
 
-The query finds up to two stores whose location falls within the defined rectangular polygon.
+This query finds up to two stores whose location falls within the defined rectangular polygon.
 
 ```javascript
 db.stores.find({
@@ -257,9 +285,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns two stores physically located inside the specified polygon area.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "66fd4cdd-ffc3-44b6-81d9-6d5e9c1f7f9a",
     "name": "Trey Research | Health Food Center - North Michelle",
@@ -270,8 +299,10 @@ The query returns two stores physically located inside the specified polygon are
     "name": "VanArsdel, Ltd. | Outdoor Equipment Pantry - Port Aleenton",
     "location": { "lat": -76.4516, "lon": -67.2051 }
   }
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+

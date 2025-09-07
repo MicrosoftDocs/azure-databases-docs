@@ -122,9 +122,9 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Find stores within a circular area
+### Example 1 - Find stores within a circular area
 
-The example finds two stores within a 50-degree radius of geo-location specified.
+Let's find all stores within a 50-degree radius of 'First Up Consultants Microphone Bazaar' using our `stores` dataset. This query retrieves stores within a 50-degree radius of the First Up Consultants Microphone Bazaar location.
 
 ```javascript
 db.stores.find(
@@ -147,6 +147,7 @@ db.stores.find(
 The query returns stores within 50-degree radius, which could be useful for analyzing market coverage or planning delivery routes.
 
 ```json
+[
   {
     "name": "Contoso, Ltd. | Baby Products Corner - Port Jerrold",
     "location": { "lat": -72.7709, "lon": -24.3031 },
@@ -157,6 +158,7 @@ The query returns stores within 50-degree radius, which could be useful for anal
     "location": { "lat": -64.5509, "lon": -28.7144 },
     "city": "Trystanport"
   }
+]
 ```
 
 > [!IMPORTANT]
@@ -169,3 +171,4 @@ The query returns stores within 50-degree radius, which could be useful for anal
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+

@@ -162,7 +162,6 @@ The rate of container copy job progress is determined by these factors:
 Container copy jobs don't work with accounts that have the following capabilities enabled. Disable these features before you run container copy jobs:
 
 * [Merge partition](merge.md)
-* [Disable key-based authentication](nosql/security/how-to-disable-key-based-authentication.md)
 
 ### Account configurations
 
@@ -272,17 +271,6 @@ Currently, container copy is supported in the following regions:
     ```output
     "code": "404",
     "message": "Response status code does not indicate success: NotFound (404); Substatus: 1003; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: (Message: {\"Errors\":[\"Owner resource does not exist\"]
-    ```
-
-* Error - Request is unauthorized
-
-    If the request fails and displays the error "Unauthorized" (error code 401), local authorization might be disabled.
-
-    Container copy jobs use primary keys to authenticate. If local authorization is disabled, the job creation fails. Local authorization must be enabled for container copy jobs to work.
-
-    ```output
-    "code": "401",
-    "message": " Response status code does not indicate success: Unauthorized (401); Substatus: 5202; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: Local Authorization is disabled. Use an AAD token to authorize all requests."
     ```
 
 * Error - Error while getting resources for job

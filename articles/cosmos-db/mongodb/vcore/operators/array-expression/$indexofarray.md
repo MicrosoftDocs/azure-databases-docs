@@ -17,7 +17,9 @@ The `$indexOfArray` operator is used to search for an element in an array and re
 ## Syntax
 
 ```javascript
-{ $indexOfArray: [ <array>, <searchElement>, <start>, <end> ] }
+{
+    $indexOfArray: [ < array > , < searchElement > , < start > , < end > ]
+}
 ```
 
 ## Parameters
@@ -31,64 +33,64 @@ The `$indexOfArray` operator is used to search for an element in an array and re
 
 ## Examples
 
-Let's understand the usage with the sample json from `stores` collection.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+    "location": {
+        "lat": 60.1441,
+        "lon": -141.5012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 2,
+            "partTime": 0
+        }
+    },
+    "sales": {
+        "salesByCategory": [
+            {
+                "categoryName": "DJ Headphones",
+                "totalSales": 35921
+            }
+        ],
+        "fullSales": 3700
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Bargain Blitz Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 3,
+                    "Day": 11
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 2,
+                    "Day": 18
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "DJ Turntables",
+                    "discountPercentage": 18
+                },
+                {
+                    "categoryName": "DJ Mixers",
+                    "discountPercentage": 15
+                }
+            ]
+        }
     ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
-        },
-        {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
-        }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
+    "tag": [
+        "#ShopLocal",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
+    ]
 }
 ```
 
@@ -116,9 +118,20 @@ db.stores.aggregate([
 The query would return the following document.
 
 ```json
-  { "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41", "index": -1 },
-  { "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34", "index": -1 },
-  { "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197", "index": -1 }
+[
+    {
+        "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41",
+        "index": -1
+    },
+    {
+        "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34",
+        "index": -1
+    },
+    {
+        "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197",
+        "index": -1
+    }
+]
 ```
 
 ### Example 2: Finding the index in a range
@@ -151,12 +164,23 @@ db.stores.aggregate([
 ])
 ```
 
-The query locates "Bargain Blitz Days" within a limited range (indexes 3–5) in each store’s promotions array, filters out stores without it in that range, and returns the index position for up to three stores.
+This query returns the following results.
 
 ```json
-  { "_id": "ced8caf0-051a-48ce-88d3-2935815261c3", "index": 3 },
-  { "_id": "509be7ce-539a-41b5-8fde-b85fb3ef3faa", "index": 3 },
-  { "_id": "d06e8136-9a7f-4b08-92c8-dc8eac73bad3", "index": 3 }
+ [
+    {
+        "_id": "ced8caf0-051a-48ce-88d3-2935815261c3",
+        "index": 3
+    },
+    {
+        "_id": "509be7ce-539a-41b5-8fde-b85fb3ef3faa",
+        "index": 3
+    },
+    {
+        "_id": "d06e8136-9a7f-4b08-92c8-dc8eac73bad3",
+        "index": 3
+    }
+]
 ```
 
 ## Related content

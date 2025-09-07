@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/25/2025
+  ms.date: 09/04/2025
 ---
 
 # $text
@@ -160,7 +160,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Simple text search
 
-The example searches for stores containing the word "Microphone" in indexed text fields.
+This query retrieves stores containing the word "Microphone" in indexed text fields.
 
 ```javascript
 // First create a text index
@@ -172,9 +172,10 @@ db.stores.find(
 { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
-This query searches for documents containing the word "Microphone" in any of the text-indexed fields.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
     "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
@@ -195,11 +196,12 @@ This query searches for documents containing the word "Microphone" in any of the
       ]
     }
   }
+]
 ```
 
 ### Example 2: Multiple term search
 
-The example searches for stores related to "Home Decor" (multiple terms treated as `OR` by default).
+The query retrieves stores related to "Home Decor" (multiple terms treated as `OR` by default).
 
 ```javascript
 // First create a text index
@@ -211,9 +213,10 @@ db.stores.find(
 { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(5)
 ```
 
-The query finds documents containing either "Home" OR "Decor" in the indexed text fields.
+The first five results returned by this query are:
 
 ```json
+[
   {
     "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
     "name": "Trey Research | Home Office Depot - Lake Freeda",
@@ -263,11 +266,12 @@ The query finds documents containing either "Home" OR "Decor" in the indexed tex
       ]
     }
   }
+]
 ```
 
 ### Example 3: Phrase search
 
-The example searches for the exact phrase "Home Theater" using quotes.
+This query searches for the exact phrase "Home Theater" using quotes.
 
 ```javascript
 db.stores.find(
@@ -275,9 +279,10 @@ db.stores.find(
  { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
-The quoted search term ensures exact phrase matching rather than individual word matching.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "0bc4f653-e64e-4342-ae7f-9611dfd37800",
     "name": "Tailwind Traders | Speaker Bazaar - North Mireyamouth",
@@ -300,11 +305,12 @@ The quoted search term ensures exact phrase matching rather than individual word
       ]
     }
   }
+]
 ```
 
 ### Example 4: Exclude terms with negation
 
-The example searches for stores with "Audio" but exclude the ones with "Wireless".
+This query searches for stores with "Audio" but exclude the ones with "Wireless".
 
 ```javascript
 db.stores.find(
@@ -312,9 +318,10 @@ db.stores.find(
  { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
-The minus sign (-) before "Wireless" excludes documents containing that term from the results.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "32afe6ec-dd3c-46b3-a681-ed041b032c39",
     "name": "Relecloud | Audio Equipment Gallery - Margretshire",
@@ -334,6 +341,7 @@ The minus sign (-) before "Wireless" excludes documents containing that term fro
       ] 
     }
   }
+]
 ```
 
 ### Example 5: Case-sensitive search
@@ -352,20 +360,8 @@ db.stores.find(
 
 The query will match documents where "BAZAAR" appears in exactly that case.
 
-### Example 6: Combined with other query operators
-
-The example allows search for stores with "Hub" in text and total sales greater than 50000.
-
-```javascript
-db.stores.find({
-  $text: { $search: "Hub" }, "sales.totalSales": { $gt: 20000 }},
-{ _id: 1, name: 1, "sales.salesByCategory.categoryName": 1,"sales.totalSales":1 }
-).limit(2)
-```
-
-The query combines text search with traditional field-based queries for more precise filtering.
-
 ```json
+[
  {
     "_id": "future-electronics-001",
     "name": "Future Electronics Hub",
@@ -384,11 +380,12 @@ The query combines text search with traditional field-based queries for more pre
       "totalSales": 160000
     }
   }
+]
 ```
 
-### Example 7: Get text search scores
+### Example 6: Get text search scores
 
-Retrieve text search results with relevance scores for ranking.
+This query retrieves text search results with relevance scores for ranking.
 
 ```javascript
 db.stores.find(
@@ -397,7 +394,7 @@ db.stores.find(
 ).sort({ score: { $meta: "textScore" } }).limit(5)
 ```
 
-This query returns documents sorted by text search relevance score, with the most relevant results first.
+The first five results returned by this query are:
 
 ```json
 [
@@ -409,9 +406,9 @@ This query returns documents sorted by text search relevance score, with the mos
 ]
 ```
 
-### Example 8: Search across multiple categories
+### Example 7: Search across multiple categories
 
-Create a comprehensive text index and search across all text fields.
+First, create a comprehensive text index to search across all text fields.
 
 ```javascript
 // Create comprehensive text index
@@ -428,9 +425,10 @@ db.stores.find(
 { name: 1, "sales.salesByCategory.categoryName": 1, "promotionEvents.eventName": 1, "promotionEvents.discounts.categoryName": 1}).limit(2)
 ```
 
-The example demonstrates searching across multiple fields simultaneously for maximum coverage.
+The first two results returned by this query.
 
 ```json
+[
   {
     "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
     "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
@@ -536,6 +534,7 @@ The example demonstrates searching across multiple fields simultaneously for max
       }
     ]
   }
+]
 ```
 
 ## Related content

@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/12/2024
+  ms.date: 09/04/2025
 ---
 
 # $meta
@@ -19,10 +19,15 @@ The `$meta` projection operator is used to include metadata in the results of a 
 The syntax for using the `$meta` projection operator is as follows:
 
 ```javascript
-db.collection.find( {$text: { $search: <string> } },
-    { field: { $meta: <metaDataKeyword> } 
+db.collection.find({
+    $text: {
+        $search: < string >
     }
-)
+}, {
+    field: {
+        $meta: < metaDataKeyword >
+    }
+})
 ```
 
 ## Parameters
@@ -32,7 +37,7 @@ db.collection.find( {$text: { $search: <string> } },
 | **`field`** | The name of the field in the output documents where the metadata gets included. |
 | **`metaDataKeyword`** | The type of metadata to include common keywords like `textScore` for text search scores. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -136,7 +141,7 @@ db.stores.find(
 
 ```
 
-To match the text search criteria and include a `score` field containing the text search score.
+The first two results returned by this query are:
 
 ```json
 [

@@ -29,69 +29,69 @@ db.collection.find({ <field>: { $all: [ <value1> , <value2> ... ] } })
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
-  "name": "Wide World Importers",
-  "location": {
-    "lat": 68.6378,
-    "lon": -145.2852
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 1,
-      "partTime": 5
-    }
-  },
-  "sales": {
-    "totalSales": 23399,
-    "salesByCategory": [
-      {
-        "categoryName": "Smartphones",
-        "totalSales": 5231
-      },
-      {
-        "categoryName": "Laptops",
-        "totalSales": 18168
-      }
+    "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
+    "name": "Wide World Importers",
+    "location": {
+        "lat": 68.6378,
+        "lon": -145.2852
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 1,
+            "partTime": 5
+        }
+    },
+    "sales": {
+        "totalSales": 23399,
+        "salesByCategory": [
+            {
+                "categoryName": "Smartphones",
+                "totalSales": 5231
+            },
+            {
+                "categoryName": "Laptops",
+                "totalSales": 18168
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2023,
+                    "Month": 5,
+                    "Day": 17
+                },
+                "endDate": {
+                    "Year": 2023,
+                    "Month": 5,
+                    "Day": 25
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Video Games",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Tablets",
+                    "discountPercentage": 18
+                }
+            ]
+        }
+    ],
+    "tag": [
+        "#ShopLocal",
+        "#FashionStore",
+        "#SeasonalSale",
+        "#FreeShipping",
+        "#MembershipDeals"
     ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Unbeatable Bargain Bash",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 5,
-          "Day": 17
-        },
-        "endDate": {
-          "Year": 2023,
-          "Month": 5,
-          "Day": 25
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Video Games",
-          "discountPercentage": 20
-        },
-        {
-          "categoryName": "Tablets",
-          "discountPercentage": 18
-        }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#FashionStore",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
 }
 ```
 
@@ -106,35 +106,37 @@ db.stores.find(
 ).limit(2)
 ```
 
-The query returns the two documents containing both `Laptops` and `Smartphones` within `salesCategory` array.
+This query returns the following results.
 
 ```json
-  {
-    "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
-    "sales": {
-      "salesByCategory": [
-        {
-          "categoryName": "Smartphones"
-        },
-        {
-          "categoryName": "Laptops"
+[
+    {
+        "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "Smartphones"
+                },
+                {
+                    "categoryName": "Laptops"
+                }
+            ]
         }
-      ]
-    }
-  },
-  {
-    "_id": "ca56d696-5208-40c3-aa04-d4e245df44dd",
-    "sales": {
-      "salesByCategory": [
-        {
-          "categoryName": "Laptops"
-        },
-        {
-          "categoryName": "Smartphones"
+    },
+    {
+        "_id": "ca56d696-5208-40c3-aa04-d4e245df44dd",
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "Laptops"
+                },
+                {
+                    "categoryName": "Smartphones"
+                }
+            ]
         }
-      ]
     }
-  }
+]
 ```
 
 ## Related content

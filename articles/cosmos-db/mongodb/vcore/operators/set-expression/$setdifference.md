@@ -1,18 +1,18 @@
 ---
   title: $setDifference
   titleSuffix: Overview of the $setDifference operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $setDifference operator returns a set with elements that exist in the first set but not in the second set.
+  description: The $setDifference operator returns a set with elements that exist in one set but not in a second set.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 09/04/2025
 ---
 
 # $setDifference
 
-The `$setDifference` operator returns a set with elements that exist in the first set but not in the second set. It treats arrays as sets, ignoring duplicate values and element order.
+The `$setDifference` operator returns a set that includes elements that exist in one set but not in another set. It treats arrays as sets and ignores duplicate values and element order.
 
 ## Syntax
 
@@ -26,66 +26,125 @@ The `$setDifference` operator returns a set with elements that exist in the firs
 
 | Parameter | Description |
 | --- | --- |
-| **`array1`** | The first array to compare. Elements unique to this array are returned. |
-| **`array2`** | The second array to compare against. Elements that exist in both arrays are excluded from the result. |
+| `array1` | The first array to compare. Elements unique to this array are returned. |
+| `array2` | The second array to compare against the first array. Elements that exist in both arrays are excluded from the result. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
-    ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Massive Markdown Mania",
-      "discounts": [
-        {
-          "categoryName": "DVD Players",
-          "discountPercentage": 14
-        },
-        {
-          "categoryName": "Media Players",
-          "discountPercentage": 21
-        },
-        {
-          "categoryName": "Televisions",
-          "discountPercentage": 22
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      ]
-    }
-  ]
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
+### Example 1: Find categories of products for sale but not discounted
 
-### Example 1: Find categories sold but not discounted
-
-The example checks for product categories with sales data but aren't providing any discounts.
+This query retrieves product categories that include sales data but no discounts.
 
 ```javascript
 db.stores.aggregate([
@@ -118,39 +177,41 @@ db.stores.aggregate([
 ])
 ```
 
-The query output shows categories, which are sold but never discounted.
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "soldCategories": [
-    "Sound Bars",
-    "Game Controllers",
-    "Remote Controls",
-    "VR Games"
-  ],
-  "discountedCategories": [
-    "DVD Players",
-    "Projector Lamps",
-    "Media Players",
-    "Blu-ray Players",
-    "Home Theater Systems",
-    "Televisions"
-  ],
-  "categoriesWithoutDiscounts": [
-    "Sound Bars",
-    "Home Theater Projectors",
-    "Game Controllers",
-    "Remote Controls",
-    "VR Games"
-  ]
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "soldCategories": [
+      "Sound Bars",
+      "Game Controllers",
+      "Remote Controls",
+      "VR Games"
+    ],
+    "discountedCategories": [
+      "DVD Players",
+      "Projector Lamps",
+      "Media Players",
+      "Blu-ray Players",
+      "Home Theater Systems",
+      "Televisions"
+    ],
+    "categoriesWithoutDiscounts": [
+      "Sound Bars",
+      "Home Theater Projectors",
+      "Game Controllers",
+      "Remote Controls",
+      "VR Games"
+    ]
+  }
+]
 ```
 
 ### Example 2: Compare staff distribution types
 
-The example demonstrates how to find the difference between two hypothetical staff requirement lists.
+This query finds the difference between two hypothetical staff requirement lists.
 
 ```javascript
 db.stores.aggregate([
@@ -171,29 +232,31 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the skills that are required but not available.
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "requiredSkills": [
-    "Sales",
-    "Customer Service", 
-    "Technical Support",
-    "Inventory Management"
-  ],
-  "availableSkills": [
-    "Sales",
-    "Customer Service",
-    "Marketing",
-    "Administration"
-  ],
-  "missingSkills": [
-    "Technical Support",
-    "Inventory Management"
-  ]
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "requiredSkills": [
+      "Sales",
+      "Customer Service", 
+      "Technical Support",
+      "Inventory Management"
+    ],
+    "availableSkills": [
+      "Sales",
+      "Customer Service",
+      "Marketing",
+      "Administration"
+    ],
+    "missingSkills": [
+      "Technical Support",
+      "Inventory Management"
+    ]
+  }
+]
 ```
 
 ## Related content

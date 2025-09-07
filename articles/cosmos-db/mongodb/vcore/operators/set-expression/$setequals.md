@@ -7,12 +7,12 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.date: 09/04/2025
 ---
 
 # $setEquals
 
-The `$setEquals` operator returns `true` if two sets have the same distinct elements, regardless of order or duplicates. It treats arrays as sets, ignoring duplicate values and element order.
+The `$setEquals` operator returns `true` if two sets have the same distinct elements, regardless of order or duplicates. It treats arrays as sets and ignores duplicate values and element order.
 
 ## Syntax
 
@@ -26,63 +26,125 @@ The `$setEquals` operator returns `true` if two sets have the same distinct elem
 
 | Parameter | Description |
 | --- | --- |
-| **`array1, array2, ...`** | Arrays to compare for equality. You can specify two or more arrays. |
+| `array1, array2, ...` | Arrays to compare for equality. You can specify two or more arrays. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
-  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
-  "sales": {
-    "totalSales": 83865,
-    "salesByCategory": [
-      {
-        "categoryName": "Lavalier Microphones",
-        "totalSales": 44174
-      },
-      {
-        "categoryName": "Wireless Microphones",
-        "totalSales": 39691
-      }
-    ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Price Cut Spectacular",
-      "discounts": [
-        {
-          "categoryName": "Condenser Microphones",
-          "discountPercentage": 5
-        },
-        {
-          "categoryName": "Dynamic Microphones",
-          "discountPercentage": 14
-        }
-      ]
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
     },
-    {
-      "eventName": "Bargain Bonanza",
-      "discounts": [
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "Streaming Microphones",
-          "discountPercentage": 14
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "Microphone Stands",
-          "discountPercentage": 14
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
 ```
 
 ### Example 1: Compare discount categories between events
 
-The example allows checking if the two promotion events, offer discounts on the same categories.
+This query determines if two promotion events offer discounts on the same categories.
 
 ```javascript
 db.stores.aggregate([
@@ -103,27 +165,29 @@ db.stores.aggregate([
 ])
 ```
 
-The query output compares the discount categories and returns false due to non matching values.
+This query returns the following result.
 
 ```json
-{
-  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
-  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
-  "event1Categories": [
-    "Condenser Microphones",
-    "Dynamic Microphones"
-  ],
-  "event2Categories": [
-    "Streaming Microphones",
-    "Microphone Stands"
-  ],
-  "sameDiscountCategories": false
-}
+[
+  {
+    "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+    "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+    "event1Categories": [
+      "Condenser Microphones",
+      "Dynamic Microphones"
+    ],
+    "event2Categories": [
+      "Streaming Microphones",
+      "Microphone Stands"
+    ],
+    "sameDiscountCategories": false
+  }
+]
 ```
 
 ### Example 2: Compare staff requirements
 
-This example allows checking if the two stores have the same staff structure requirements.
+This query determines if two stores have the same staff structure requirements.
 
 ```javascript
 db.stores.aggregate([
@@ -151,28 +215,30 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` since both the stores have same staff structure.
+This query returns the following result.
 
 ```json
-{
-  "_id": null,
-  "store1": {
-    "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
-    "name": "First Up Consultants | Microphone Bazaar - South Lexusland"
-  },
-  "store2": {
-    "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
-    "name": "Fabrikam, Inc. | Car Accessory Outlet - West Adele"
-  },
-  "staffTypes1": ["fullTime", "partTime"],
-  "staffTypes2": ["fullTime", "partTime"],
-  "sameStaffStructure": true
-}
+[
+  {
+    "_id": null,
+    "store1": {
+      "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+      "name": "First Up Consultants | Microphone Bazaar - South Lexusland"
+    },
+    "store2": {
+      "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
+      "name": "Fabrikam, Inc. | Car Accessory Outlet - West Adele"
+    },
+    "staffTypes1": ["fullTime", "partTime"],
+    "staffTypes2": ["fullTime", "partTime"],
+    "sameStaffStructure": true
+  }
+]
 ```
 
 ### Example 3: Compare sets with duplicates
 
-The example demonstrates that `$setEquals` ignores duplicates and order.
+This query uses the `$setEquals` operator to ignore duplicates and order.
 
 ```javascript
 db.stores.aggregate([
@@ -193,16 +259,18 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` since both the provided arrays list same products in different sequence along with duplicates.
+This query returns the following result.
 
 ```json
-{
-  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
-  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
-  "array1": ["Microphones", "Stands", "Microphones", "Accessories"],
-  "array2": ["Stands", "Accessories", "Microphones"],
-  "arraysEqual": true
-}
+[
+  {
+    "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+    "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+    "array1": ["Microphones", "Stands", "Microphones", "Accessories"],
+    "array2": ["Stands", "Accessories", "Microphones"],
+    "arraysEqual": true
+  }
+]
 ```
 
 ## Related content

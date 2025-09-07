@@ -303,11 +303,13 @@ db.stores.aggregate([
 The query was directed towards a sample document for a store to review and help identify lowest sale values.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "lowestTwoSales": [28946, 3000]
-}
+[
+    {
+      "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+      "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+      "lowestTwoSales": [28946, 3000]
+    }
+]
 ```
 
 ## Related content

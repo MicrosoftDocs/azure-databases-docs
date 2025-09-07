@@ -10,14 +10,16 @@ ms.topic: language-reference
 ms.date: 10/15/2024
 ---
 
-# $pull (array update)
+# $pull
 
 The `$pull` operator is used to remove all instances of a specified value or values that match a condition from an array. This is useful when you need to clean up or modify array data within your documents.
 
 ## Syntax
 
-```mongodb
-{ $pull: { <field>: <value|condition> } }
+```javascript
+{
+  $pull: { <field>: <value|condition> }
+}
 ```
 
 ## Parameters
@@ -93,44 +95,52 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Remove a specific tag from the `tag` array
 
-```mongodb
+To remove the value "#SeasonalSale" from the tag array field, run a query using the $pull operator on the tag field.
+
+```javascript
 db.stores.update(
   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
   { $pull: { tag: "#SeasonalSale" } }
 )
 ```
 
-This query would return the following document.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
 
 ### Example 2: Remove all events from the `promotionEvents` array that end before a certain date
 
-```mongodb
+To remove all elements from the promotionEvents array where the endDate year is 2024 and the endDate month is earlier than March, run a query using the $pull operator on the promotionEvents field with the specified date values.
+
+```javascript
 db.stores.update(
   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
   { $pull: { promotionEvents: { "promotionalDates.endDate.Year": 2024, "promotionalDates.endDate.Month": { $lt: 3 } } } }
 )
 ```
 
-This query would return the following document.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
 
 ## Related content

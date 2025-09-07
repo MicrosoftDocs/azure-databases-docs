@@ -138,7 +138,7 @@ db.stores.createIndex({ "location": "2dsphere" })
 
 ### Example 1: Basic spherical search
 
-The example uses the `$nearSphere` operator to find documents in the stores collection that are closest to the Point (-141.9922, 16.8331) on a spherical (Earth-like) surface.
+The query retrieves stores that are closest to a specified Point (-141.9922, 16.8331) on a spherical (Earth-like) surface.
 
 ```javascript
 db.stores.find({
@@ -156,9 +156,10 @@ db.stores.find({
 }).limit(2)
 ```
 
-The query returns stores sorted closest to farthest from defined Point.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "643b2756-c22d-4063-9777-0945b9926346",
     "name": "Contoso, Ltd. | Outdoor Furniture Corner - Pagacfort",
@@ -175,11 +176,12 @@ The query returns stores sorted closest to farthest from defined Point.
       "coordinates": [150.2305, -89.8431]
     }
   }
+]
 ```
 
 ### Example 2: Complex distance analysis
 
-The example helps to find and analyze stores between 20 meter and 200 meter from Point (65.3765, -44.8674).
+This query retrieves stores between 20 meter and 200 meter from Point (65.3765, -44.8674). The query searches in a "donut-shaped" area - finding stores that are at least 20 meters away but no more than 200 meters from the specified point.
 
 ```javascript
 db.stores.aggregate([
@@ -209,8 +211,6 @@ db.stores.aggregate([
 ])
 ```
 
-The query searches in a "donut-shaped" search area - finding stores that are at least 20 meters away but no more than 200 meters from the specified point, perfect for scenarios like "find stores in nearby cities but not in the immediate area.
-
 Key difference between the operator `$nearSphere` and `$near`.
 
 * Former uses spherical geometry for distance calculations.
@@ -220,3 +220,4 @@ Key difference between the operator `$nearSphere` and `$near`.
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
