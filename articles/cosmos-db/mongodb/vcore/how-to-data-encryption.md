@@ -5,16 +5,14 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 08/12/2025
+ms.date: 09/05/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
 
 # Configure customer-managed key (CMK) for data encryption at rest for an Azure Cosmos DB for MongoDB vCore cluster
 
-[!INCLUDE[MongoDB vCore](./includes/notice-customer-managed-key-preview.md)]
-
-In this article, you learn how to configure [customer-managed key (CMK)](./database-encryption-at-rest.md) for data encryption at rest in Azure Cosmos DB for MongoDB vCore. The steps in this guide configure a new Azure Cosmos DB for MongoDB vCore cluster, a replica cluster, or a restored cluster with customer-managed key stored in an Azure Key Vault and user-assigned managed identity. 
+In this article, you learn how to configure [customer-managed key (CMK)](./database-encryption-at-rest.md) for data encryption at rest in Azure Cosmos DB for MongoDB vCore. The steps in this guide configure a new Azure Cosmos DB for MongoDB vCore cluster, a replica cluster, or a restored cluster. CMK setup uses customer-managed key stored in an Azure Key Vault and user-assigned managed identity. 
 
 ## Prerequisites
 
@@ -27,13 +25,13 @@ In this article, you learn how to configure [customer-managed key (CMK)](./datab
 To configure customer-managed key encryption on your Azure Cosmos DB for MonogDB vCore cluster, you need a user-assigned managed identity, an Azure Key Vault instance, and permissions properly configured.
 
 > [!IMPORTANT]  
-> User-managed identity and Azure Key Vault instance used to configure CMK should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is hosted and all belong to the same [Microsoft tenant](/entra/identity-platform/developer-glossary#tenant).
+> User-assigned managed identity and Azure Key Vault instance used to configure CMK should be in the same Azure region where Azure Cosmos DB for MongoDB cluster is hosted and all belong to the same [Microsoft tenant](/entra/identity-platform/developer-glossary#tenant).
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. [Create one user-assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity), if you don't have one yet. 
+1. [Create one user-assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity) in the cluster region, if you don't have one yet. 
 
-1. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal), if you don't have one key store created yet. Make sure that you meet the [requirements](./database-encryption-at-rest.md#cmk-requirements). Also, follow the [recommendations](./database-encryption-at-rest.md#considerations) before you configure the key store, and before you create the key and assign the required permissions to the user-assigned managed identity. 
+1. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal) in the cluster region, if you don't have one key store created yet. Make sure that you meet the [requirements](./database-encryption-at-rest.md#cmk-requirements). Also, follow the [recommendations](./database-encryption-at-rest.md#considerations) before you configure the key store, and before you create the key and assign the required permissions to the user-assigned managed identity. 
 
 1. [Create one key in your key store](/azure/key-vault/keys/quick-create-portal#add-a-key-to-key-vault). 
 
@@ -41,7 +39,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## Configure data encryption with customer-managed key during cluster provisioning
 
-### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+### [Portal](#tab/portal-steps)
 
 1. During provisioning of a new Azure Cosmos DB for MongoDB vCore cluster, service-managed or customer-managed keys for cluster data encryption is configured in the **Encryption** tab. Select the **Customer-managed key** for **Data encryption**.
 
@@ -76,7 +74,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png" alt-text="Screenshot that shows completed Encryption tab and review + create button for cluster creation completion." lightbox="media/how-to-data-encryption/create-cluster-customer-managed-key-encryption-tab-with-selections.png":::
 
-### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+#### [REST APIs](#tab/rest-apis)
 
 You can enable data encryption with user-assigned encryption key, while provisioning a new cluster, via an `az rest` command.
 
@@ -142,9 +140,9 @@ You can enable data encryption with user-assigned encryption key, while provisio
 
 ## Update data encryption settings on cluster with CMK enabled
 
-For existing clusters that were deployed with data encryption using a customer-managed key, you can do several configuration changes. Things that can be changed are the references to the keys used for encryption including key vault and key used as a customer-managed key, and references to the user-assigned managed identities used by the service to access the keys kept in the key stores.
+For existing clusters that were deployed with data encryption using a customer-managed key, you can do several configuration changes. You can change the key vault where the encryption key is stored and the encryption key used as a customer-managed key. You can also change the user-assigned managed identity used by the service to access the encryption key kept in the key store.
 
-#### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+#### [Portal](#tab/portal-steps)
 
 1. On the cluster sidebar, under **Settings**, select **Data encryption**.
 
@@ -175,7 +173,7 @@ For existing clusters that were deployed with data encryption using a customer-m
 
     :::image type="content" source="media/how-to-data-encryption/cluster-management-save-changes.png" alt-text="Screenshot that shows the location of Save button for data encryption configuration changes on an existing cluster." lightbox="media/how-to-data-encryption/cluster-management-save-changes.png":::
  
-#### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+#### [REST APIs](#tab/rest-apis)
 
 You can change user-assigned managed identity and encryption key for data encryption on an existing cluster via a REST API call.
 
@@ -227,13 +225,13 @@ Identities passed as parameters, if they exist and are valid, are automatically 
 
 ## Change data encryption mode on existing clusters
 
-The only point at which you can decide if you want to use a service-managed key or a customer-managed key (CMK) for data encryption, is at cluster creation time. Once you make that decision and create the cluster, you can't switch between the two options. To create a copy of your Azure Cosmos DB for MongoDB vCore cluster with a different encryption option, you can either create a replica cluster or perform a cluster restore and select the new encryption mode during replica cluster or restored cluster creation.
+The only point at which you can decide if you want to use a service-managed key or a customer-managed key (CMK) for data encryption, is at cluster creation time. Once you make that decision and create the cluster, you can't switch between the two options. To create a copy of your Azure Cosmos DB for MongoDB vCore cluster with a different encryption option, you can either [create a replica cluster](#enable-or-disable-customer-managed-key-cmk-data-encryption-during-replica-cluster-creation) or [perform a cluster restore](#enable-or-disable-customer-managed-key-cmk-data-encryption-during-cluster-restore) and select the new encryption mode during replica cluster or restored cluster creation.
 
 ### Enable or disable customer-managed key (CMK) data encryption during replica cluster creation
 
 Follow these steps to create a replica cluster with CMK or SMK data encryption to enable or disable CMK on a replica cluster.
 
-#### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+#### [Portal](#tab/portal-steps)
 
 1. On the cluster sidebar, under **Settings**, select **Global distribution**.
 
@@ -278,9 +276,9 @@ Follow these steps to create a replica cluster with CMK or SMK data encryption t
 
     :::image type="content" source="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png" alt-text="Screenshot that shows the location of Save button for replica cluster creation." lightbox="media/how-to-data-encryption/create-replica-cluster-confirmation-screen.png":::
  
-#### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+#### [REST APIs](#tab/rest-apis)
 
-To create a replica cluster with CMK enabled in the same region follow these steps.
+To create a replica cluster with CMK enabled in the same region, follow these steps.
 
 1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
 
@@ -328,11 +326,11 @@ To create a replica cluster with CMK enabled in the same region follow these ste
     ```
 ---
 
-### Enable or disable customer-managed key data encryption during cluster restore
+### Enable or disable customer-managed key (CMK) data encryption during cluster restore
 
 The restore process creates a new cluster with the same configuration in the same Azure region, subscription, and resource group as the original. Follow these steps to create a restored cluster with CMK or SMK enabled.
 
-#### [Portal](#tab/portal-customer-managed-cluster-provisioning)
+#### [Portal](#tab/portal-steps)
 
 1. Select an existing Azure Cosmos DB for MongoDB vCore cluster.
 1. On the cluster sidebar, under **Settings**, select **Point In Time Restore**.
@@ -375,9 +373,9 @@ The restore process creates a new cluster with the same configuration in the sam
 
 1. Select **Submit** to initiate cluster restore.
 
-#### [CLI](#tab/cli-customer-managed-cluster-provisioning)
+#### [REST APIs](#tab/rest-apis)
 
-To restore a cluster with CMK enabled follow these steps.
+To restore a cluster with CMK enabled, follow these steps.
 
 1. Create a JSON file with the following content. Replace placeholders that start with `$` sign with the actual values and save the file.
 
@@ -429,10 +427,11 @@ To restore a cluster with CMK enabled follow these steps.
 
 ---
 
-One restored cluster is created, review the list of [post-restore tasks](./how-to-restore-cluster.md#post-restore-tasks).
+Once restored cluster is created, review the list of [post-restore tasks](./how-to-restore-cluster.md#post-restore-tasks).
 
 ## Related content
 
 - [Learn about data encryption at rest in Azure Cosmos DB for MongoDB vCore](./database-encryption-at-rest.md)
+- [Troubleshoot CMK setup](./how-to-database-encryption-troubleshoot.md)
 - Check out [CMK limitations](./limits.md#customer-managed-key-data-encryption-limitations)
 - [Migrate data to Azure Cosmos DB for MongoDB vCore](./migration-options.md)
