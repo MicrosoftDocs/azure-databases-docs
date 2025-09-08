@@ -1,23 +1,23 @@
 ---
-title: $sample (aggregation)
-titleSuffix: Overview of the $sample operator in Azure Cosmos DB for MongoDB vCore
+title: $sample
+titleSuffix: Overview of the $sample operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $sample operator in Azure Cosmos DB for MongoDB vCore returns a randomly selected number of documents
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
-# $sample (aggregation)
+# $sample
 The `$sample` stage is used in aggregation pipelines to randomly select a specified number of documents from a collection. The `$sample` command is useful during testing, data analysis, and generating random subsets of data for machine learning.
 
 ## Syntax
 
-```mongodb
+```javascript
 {
-  "$sample": { "size": <number> }
+  $sample: { size: <number> }
 }
 ```
 
@@ -28,7 +28,8 @@ The `$sample` stage is used in aggregation pipelines to randomly select a specif
 | **`size`** | The number of documents to randomly select from the collection|
 
 ## Examples
-Consider this sample document from the stores collection in the StoreData database.
+
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -142,11 +143,20 @@ Consider this sample document from the stores collection in the StoreData databa
 
 ### Example 1 - Randomly select five documents and project the corresponding document IDs
 
-```mongodb
-db.stores.aggregate([{"$sample": {"size": 5}}, {"$project": {"_id": 1}}])
+```javascript
+ db.stores.aggregate([{
+     $sample: {
+         size: 5
+     }
+ }, {
+     $project: {
+         _id: 1
+     }
+ }])
 ```
 
 This query returns the following results:
+
 ```json
 [
   { "_id": "f7ae8b40-0c66-4e80-9261-ab31bbabffb4" },
