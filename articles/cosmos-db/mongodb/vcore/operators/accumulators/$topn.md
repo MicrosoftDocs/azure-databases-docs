@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/05/2025
 ---
 
 # $topN
@@ -157,21 +157,21 @@ To get the two lowest stores by sales within the First Up Consultants company, r
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$group": {
-        "_id": "$company",
-        "topSales": {
-            "$topN": {
-                "output": ["$company", "$sales"],
-                "sortBy": {
+    $group: {
+        _id: "$company",
+        topSales: {
+            $topN: {
+                output: ["$company", "$sales"],
+                sortBy: {
                     "sales.totalSales": 1
                 },
-                "n": 2
+                n: 2
             }
         }
     }

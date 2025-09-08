@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/05/2025
 ---
 
 # $bottom
@@ -15,8 +15,6 @@
 The `$bottom` operator sorts documents on one or more fields specified by the query and returns the last document matching the filtering criteria.
 
 ## Syntax
-
-The syntax for the `$bottom` operator is as follows:
 
 ```javascript
 {
@@ -157,18 +155,18 @@ Suppose we want to determine the store within the First Up Consultants company w
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$group": {
-        "_id": "$company",
-        "bottomSales": {
-            "$bottom": {
-                "output": ["$company", "$sales"],
-                "sortBy": {
+    $group: {
+        _id: "$company",
+        bottomSales: {
+            $bottom: {
+                output: ["$company", "$sales"],
+                sortBy: {
                     "sales.revenue": -1
                 }
             }

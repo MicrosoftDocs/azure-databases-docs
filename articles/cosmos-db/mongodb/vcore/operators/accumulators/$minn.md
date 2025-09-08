@@ -7,7 +7,7 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 08/04/2025
+ms.date: 09/05/2025
 ---
 
 # $minN
@@ -32,7 +32,7 @@ $minN: {
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -100,7 +100,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Retrieve bottom two sales categories
 
-The example finds the bottom two sales categories per store with the lowest sales volume. Run a query using the $minN operator on the nested salesCategory field.
+This query retrieves the bottom two sales categories per store with the lowest sales volume. Run a query using the $minN operator on the nested salesCategory field.
 
 ```javascript
 db.stores.aggregate([{
@@ -172,31 +172,31 @@ To get the bottom two lists of sales categories by sales volume across all store
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$setWindowFields": {
-        "partitionBy": "$company",
-        "sortBy": {
+    $setWindowFields: {
+        partitionBy: "$company",
+        sortBy: {
             "sales.totalSales": -1
         },
-        "output": {
-            "minTwoBySales": {
-                "$minN": {
-                    "input": "$sales.totalSales",
-                    "n": 2
+        output: {
+            minTwoBySales: {
+                $minN: {
+                    input: "$sales.totalSales",
+                    n: 2
                 }
             }
         }
     }
 }, {
-    "$project": {
-        "company": 1,
-        "name": 1,
-        "minCategoriesBySales": 1
+    $project: {
+        company: 1,
+        name: 1,
+        minCategoriesBySales: 1
     }
 }])
 ```
@@ -281,11 +281,11 @@ The first result returned by this query is:
 
 ### Example 3 - Using $minN operator as array-expression to get lowest two sales values
 
-The aggregation query extracts the two lowest sales values for a specific store document.
+This query extracts the two lowest sales values for a specific store document.
 
 ```javascript
 db.stores.aggregate([
-  { $match: {"_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
+  { $match: {_id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
   {
     $project: {
       name: 1,
@@ -300,7 +300,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query was directed towards a sample document for a store to review and help identify lowest sale values.
+This query returns the following result.
 
 ```json
 [
