@@ -411,7 +411,7 @@ ms.custom:
 
 ## login_hook
 
-[login_hook](https://github.com/splendiddata/login_is a hook to execute `login_hook.login()` at login time.
+[login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
