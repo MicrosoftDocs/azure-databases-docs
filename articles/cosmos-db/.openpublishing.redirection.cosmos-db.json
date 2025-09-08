@@ -692,7 +692,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$count.md",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/count",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$count",
       "redirect_document_id": true
     },
     {
