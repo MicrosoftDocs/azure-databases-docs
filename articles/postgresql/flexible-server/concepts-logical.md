@@ -334,7 +334,7 @@ SELECT * FROM pg_replication_slots;
 
 
 > [!IMPORTANT]  
-> You must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the WAL files accumulate in the primary, filling up the storage. The primary server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. Suppose the storage threshold exceeds a certain limit, and the logical replication slot isn't in use (due to a nonavailable subscriber), in that case, the Azure Database for PostgreSQL flexible server instance automatically drops that unused logical replication slot. That action releases accumulated WAL files and avoids your server becoming unavailable due to storage getting filled situation.
+> You must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the WAL files accumulate in the primary, filling up the storage. The primary server is automatically switched to read-only mode when the storage usage reaches 95 percent, and when the available capacity is less than 5 GiB. Suppose the storage threshold exceeds a certain limit, and the logical replication slot isn't in use (due to a nonavailable subscriber), in that case, the Azure Database for PostgreSQL flexible server instance automatically drops that unused logical replication slot. That action releases accumulated WAL files and avoids your server becoming unavailable due to storage getting filled situation.
 
 ## Related content
 
