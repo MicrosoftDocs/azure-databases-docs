@@ -18,8 +18,6 @@ appliesto:
 ---
 # Quickstart: Vector Search with Node.js in Azure Cosmos DB for MongoDB (vCore)
 
-[!INCLUDE [mongodb-vcore-availability](../../includes/mongodb-vcore-availability.md)]
-
 In this quickstart, you learn how to use vector search in Azure Cosmos DB for MongoDB (vCore) using the Node.js client library. This quickstart demonstrates how to store and query vector data efficiently. 
 
 The data for this quickstart is provided for you in a JSON file that includes pre-computed vectors using `text-embedding-ada-002` model. This hotel dataset is a sample dataset provided by Microsoft for learning purposes. It includes various attributes of hotels, such as their names, locations, descriptions, and vector embeddings.
@@ -28,7 +26,7 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Azure subscription](prereq-azure-subscription.md)]
+[!INCLUDE[Prerequisites - Azure subscription](includes/prereq-azure-subscription.md)]
 - [Visual Studio Code](https://code.visualstudio.com/download).
 - [Azure CLI](/cli/azure/install-azure-cli)
 - [Node.js LTS](https://nodejs.org/download/)
@@ -39,11 +37,11 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
    ```
 - [Azure OpenAI resource](/azure/ai-foundry/openai)
     - With deployment of `text-embedding-ada-002` model
-- [MongoDB vCore resource](../../create-mongodb-vcore-account-azcli.md) with:
+- [MongoDB vCore resource](quickstart-portal.md) with:
     - vector search enabled
     - firewall configured to allow your IP address
 
-[!INCLUDE[Prerequisites - Azure Developer CLI](../../includes/prereq-dev-quickstart.md)]
+[!INCLUDE[Prerequisites - Azure Developer CLI](../includes/prereq-dev-quickstart.md)]
 
 ## Create a Node.js project
 
@@ -237,21 +235,21 @@ This utility module exports the following functionality:
 
 #### [IVF](#tab/tab-ivf)
 
-    ```bash
-    npm run start:ivf
-    ```
+```bash
+npm run start:ivf
+```
 
 #### [HNSW](#tab/tab-hnsw)
 
-    ```bash
-    npm run start:hnsw
-    ```
+```bash
+npm run start:hnsw
+```
 
 ### [DiskANN](#tab/tab-diskann)
 
-    ```bash
-    npm run start:diskann
-    ```
+```bash
+npm run start:diskann
+```
 
 ----
 
@@ -264,4 +262,4 @@ When no longer needed, delete the resource group, MongoDB vCore account, and Azu
 ## Related content
 
 - [Vector store in Azure Cosmos DB for MongoDB vCore](vector-search.md)
-- [Support for Geospatial Queries](geospatial-queries.md)
+- [Support for Geospatial Queries](geospatial-support.md)
