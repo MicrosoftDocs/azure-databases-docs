@@ -1,27 +1,22 @@
 ---
-# Required metadata
-# For more information, see https://learn.microsoft.com/en-us/help/platform/learn-editor-add-metadata
-# For valid values of ms.service, ms.prod, and ms.topic, see https://learn.microsoft.com/en-us/help/platform/metadata-taxonomies
-
-title:       # Add a title for the browser tab
-description: # Add a meaningful description for search results
-author:      tarabhatiamsft # GitHub alias
-ms.author:   tarabhatia # Microsoft alias
-ms.service:  # Add the ms.service or ms.prod value
-# ms.prod:   # To use ms.prod, uncomment it and delete ms.service
-ms.topic:    # Add the ms.topic value
-ms.date:     08/07/2025
+title: Redistribute throughput across partitions
+titleSuffix: Azure Cosmos DB
+description: Learn how to redistribute throughput across partitions in Azure Cosmos DB to optimize performance. Discover steps and best practices.
+author: tarabhatiamsft
+ms.author: tarabhatia
+ms.service: cosmos-db
+ms.topic: how-to
+ms.date: 09/09/2025
+applies-to:
+  - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
 # Redistribute throughput across partitions (preview)
-[!INCLUDE[NoSQL, MongoDB](../includes/appliesto-nosql-mongodb.md)]
 
 By default, Azure Cosmos DB distributes the provisioned throughput of a database or container equally across all physical partitions. However, scenarios may arise where due to a skew in the workload or choice of partition key, certain logical (and thus physical) partitions need more throughput than others. For these scenarios, Azure Cosmos DB gives you the ability to redistribute your provisioned throughput across physical partitions. Redistributing throughput across partitions helps you achieve better performance without having to configure your overall throughput based on the hottest partition. 
 
 The throughput redistributing feature applies to databases and containers using provisioned throughput (manual and autoscale) and doesn't apply to serverless containers. You can change the throughput per physical partition using the Azure Cosmos DB PowerShell or Azure CLI commands.
-
-> [!NOTE]
-> This feature's documentation was previously published [here](/azure/cosmos-db/nosql/distribute-throughput-across-partitions?tabs=azure-powershell%2Cnosql) which will soon be deprecated. We recommend following the guidance on this page instead.
 
 ## When to use this feature
 
