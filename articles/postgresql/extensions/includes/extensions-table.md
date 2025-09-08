@@ -2,9 +2,9 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 06/04/2025
+ms.date: 09/08/2025
 ms.service: azure-database-postgresql
-ms.subservice: extensions
+ms.subservice: flexible-server
 ms.topic: include
 ms.custom:
   - automatically generated
@@ -111,12 +111,12 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 17 | 1.3.0 |
-| 16 | 1.3.0 |
-| 15 | 1.3.0 |
-| 14 | 1.3.0 |
-| 13 | 1.3.0 |
-| 12 | 1.3.0 |
+| 17 | 1.3.1 |
+| 16 | 1.3.1 |
+| 15 | 1.3.1 |
+| 14 | 1.3.1 |
+| 13 | 1.3.1 |
+| 12 | 1.3.1 |
 | 11 | Not supported |
 
 
@@ -411,7 +411,7 @@ ms.custom:
 
 ## login_hook
 
-[login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time.
+[login_hook](https://github.com/splendiddata/login_hook) (Preview) is a hook to execute `login_hook.login()` at login time.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -423,7 +423,6 @@ ms.custom:
 | 12 | 1.4 |
 | 11 | 1.4 |
 
-<sup>*</sup> Enable corresponding libraries in the `session_preload_libraries` server parameter.
 
 
 ## ltree
@@ -577,7 +576,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 17 | Not supported |
+| 17 | Not supported <sup>*</sup> |
 | 16 | 1.0.1 <sup>*</sup> |
 | 15 | 1.0.1 <sup>*</sup> |
 | 14 | 1.0.1 <sup>*</sup> |
