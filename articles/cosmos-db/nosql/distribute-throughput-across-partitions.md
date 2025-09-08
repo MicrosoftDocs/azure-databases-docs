@@ -1,12 +1,16 @@
 ---
-title: Redistribute throughput across partitions (preview) in Azure Cosmos DB
-description: Learn how to redistribute throughput across partitions (preview)
-author: markjbrown
-ms.author: mjbrown
-ms.service: azure-cosmos-db
-ms.custom: devx-track-azurecli
-ms.topic: how-to
-ms.date: 12/18/2023
+# Required metadata
+# For more information, see https://learn.microsoft.com/en-us/help/platform/learn-editor-add-metadata
+# For valid values of ms.service, ms.prod, and ms.topic, see https://learn.microsoft.com/en-us/help/platform/metadata-taxonomies
+
+title:       # Add a title for the browser tab
+description: # Add a meaningful description for search results
+author:      tarabhatiamsft # GitHub alias
+ms.author:   tarabhatia # Microsoft alias
+ms.service:  # Add the ms.service or ms.prod value
+# ms.prod:   # To use ms.prod, uncomment it and delete ms.service
+ms.topic:    # Add the ms.topic value
+ms.date:     08/07/2025
 ---
 
 # Redistribute throughput across partitions (preview)
@@ -15,6 +19,9 @@ ms.date: 12/18/2023
 By default, Azure Cosmos DB distributes the provisioned throughput of a database or container equally across all physical partitions. However, scenarios may arise where due to a skew in the workload or choice of partition key, certain logical (and thus physical) partitions need more throughput than others. For these scenarios, Azure Cosmos DB gives you the ability to redistribute your provisioned throughput across physical partitions. Redistributing throughput across partitions helps you achieve better performance without having to configure your overall throughput based on the hottest partition. 
 
 The throughput redistributing feature applies to databases and containers using provisioned throughput (manual and autoscale) and doesn't apply to serverless containers. You can change the throughput per physical partition using the Azure Cosmos DB PowerShell or Azure CLI commands.
+
+> [!NOTE]
+> This feature's documentation was previously published [here](/azure/cosmos-db/nosql/distribute-throughput-across-partitions?tabs=azure-powershell%2Cnosql) which will soon be deprecated. We recommend following the guidance on this page instead.
 
 ## When to use this feature
 
@@ -224,29 +231,25 @@ az cosmosdb mongodb collection retrieve-partition-throughput \
 
 ### Determine RU/s for target partition
 
-Next, let's decide how many RU/s we want to give to our hottest physical partition(s). Let's call this set our target partition(s). The most RU/s any physical partition can contain is 10,000 RU/s.
+Next, let's decide how many RU/s we want to give to our hottest physical partition(s). Let's call this set our target partition(s).
+
+Please consider the following before setting throughput on your target partitions:
+
+1. You can either decrease or increase the throughput on the partition.
+2. Physical partitions can only contain up to 10,000 RU/s.
+3. Users can set throughput of a target partition to a maximum value of 20,000 RU/s.
+    - Setting the partition to a throughput value greater than 10,000 RU/s will result in the partition splitting which may take some time.
+    - When setting a target partition to an RU value greater than 10,000 RU/s, the original partition will instantly get 10,000 RU/s and once the split is completed, the system will allocate the specified throughput across the split partitions evenly.
+    - For example:
+        - Say we have a physical partition that is maxing out at 5,000 RU/s and we need to increase throughput to 15,000 RU/s. Because physical partitions can only have up to 10,000 RU/s, once the target throughput is specified, it will automatically allocate 10,000 RU/s to the original physical partition, and then split the partition into two physical partitions that can each go up to 7,500 RU/s.
+4. If the final sum of throughput across all partitions is not equal to the current total offer throughput, then this operation will update the offer throughput accordingly.
 
 The right approach depends on your workload requirements. General approaches include:
-- Increasing the RU/s by a percentage, measure the rate of 429 responses, and repeat until desired throughput is achieved. 
+- Increasing the RU/s by a percentage, measure the rate of 429 responses, and repeat until desired throughput is achieved.
     - If you aren't sure the right percentage, you can start with 10% to be conservative.
     - If you already know this physical partition requires most of the throughput of the workload, you can start by doubling the RU/s or increasing it to the maximum of 10,000 RU/s, whichever is lower.
-- Increasing the RU/s to `Total consumed RU/s of the physical partition + (Number of 429 responses per second * Average RU charge per request to the partition)` 
-    - This approach tries to estimate what the "real" RU/s consumption would have been if the requests hadn't been rate limited. 
-
-### Determine RU/s for source partition
-
-Finally, let's decide how many RU/s we want to keep on our other physical partitions. This selection will determine the partitions that the target physical partition takes throughput from.
-
-In the PowerShell APIs, we must specify at least one source partition to redistribute RU/s from. We can also specify a custom minimum throughput each physical partition should have after the redistribution. If not specified, by default, Azure Cosmos DB will ensure that each physical partition has at least 100 RU/s after the redistribution. It's recommended to explicitly specify the minimum throughput.
-
-The right approach depends on your workload requirements. General approaches include:
-- Taking RU/s equally from all source partitions (works best when there are <=  10 partitions)
-    - Calculate the amount we need to offset each source physical partition by. `Offset = Total desired RU/s of target partition(s) - total current RU/s of target partition(s)) / (Total physical partitions - number of target partitions)`
-    - Assign the minimum throughput for each source partition = `Current RU/s of source partition - offset`
-- Taking RU/s from the least active partition(s)
-    - Use Azure Monitor metrics and Diagnostic Logs to determine which physical partition(s) have the least traffic/request volume
-    - Calculate the amount we need to offset each source physical partition by. `Offset = Total desired RU/s of target partition(s) - total current RU/s of target partition) / Number of source physical partitions`
-    - Assign the minimum throughput for each source partition = `Current RU/s of source partition - offset`
+- Increasing the RU/s to `Total consumed RU/s of the physical partition + (Number of 429 responses per second * Average RU charge per request to the partition)`
+    - This approach tries to estimate what the "real" RU/s consumption would have been if the requests hadn't been rate limited.
 
 ## Step 3: Programatically change the throughput across partitions
 
@@ -254,23 +257,21 @@ You can use the PowerShell command `Update-AzCosmosDBSqlContainerPerPartitionThr
 
 To understand the below example, let's take an example where we have a container that has 6000 RU/s total (either 6000 manual RU/s or autoscale 6000 RU/s) and 3 physical partitions. Based on our analysis, we want a layout where:
 
-- Physical partition 0: 1000 RU/s
+- Physical partition 0: 2000 RU/s
 - Physical partition 1: 4000 RU/s
 - Physical partition 2: 1000 RU/s
 
-We specify partitions 0 and 2 as our source partitions, and specify that after the redistribution, they should have a minimum RU/s of 1000 RU/s. Partition 1 is out target partition, which we specify should have 4000 RU/s.
+After the redistribution, the total offer throughput will be updated from 6,000 RU/s to 7,000 RU/s.
 
 #### [API for NoSQL](#tab/nosql/azure-powershell)
 
 Use the `Update-AzCosmosDBSqlContainerPerPartitionThroughput` for containers with dedicated RU/s or the `Update-AzCosmosDBSqlDatabasePerPartitionThroughput` command for databases with shared RU/s to redistribute throughput across physical partitions. In shared throughput databases, the Ids of the physical partitions are represented by a GUID string.
 
 ```azurepowershell-interactive
-$SourcePhysicalPartitionObjects =  @()
-$SourcePhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "0" -Throughput 1000
-$SourcePhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "2" -Throughput 1000
-
 $TargetPhysicalPartitionObjects =  @()
+$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "0" -Throughput 2000
 $TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "1" -Throughput 4000
+$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "2" -Throughput 1000
 
 // Container with dedicated RU/s
 Update-AzCosmosDBSqlContainerPerPartitionThroughput `
@@ -278,15 +279,6 @@ Update-AzCosmosDBSqlContainerPerPartitionThroughput `
     -AccountName "<cosmos-account-name>" `
     -DatabaseName "<cosmos-database-name>" `
     -Name "<cosmos-container-name>" `
-    -SourcePhysicalPartitionThroughputObject $SourcePhysicalPartitionObjects `
-    -TargetPhysicalPartitionThroughputObject $TargetPhysicalPartitionObjects
-
-// Database with shared RU/s
-Update-AzCosmosDBSqlDatabasePerPartitionThroughput `
-    -ResourceGroupName "<resource-group-name>" `
-    -AccountName "<cosmos-account-name>" `
-    -DatabaseName "<cosmos-database-name>" `
-    -SourcePhysicalPartitionThroughputObject $SourcePhysicalPartitionObjects `
     -TargetPhysicalPartitionThroughputObject $TargetPhysicalPartitionObjects
 ```
 
@@ -300,7 +292,6 @@ az cosmosdb sql container redistribute-partition-throughput \
     --account-name '<cosmos-account-name>' \
     --database-name '<cosmos-database-name>' \
     --name '<cosmos-container-name>' \
-    --source-partition-info '<PartitionId1=Throughput PartitionId2=Throughput...>' \
     --target-partition-info '<PartitionId3=Throughput PartitionId4=Throughput...>' \
 ```
 
@@ -309,12 +300,12 @@ az cosmosdb sql container redistribute-partition-throughput \
 Use the `Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput` for collections with dedicated RU/s or the `Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput` command for databases with shared RU/s to redistribute throughput across physical partitions. In shared throughput databases, the Ids of the physical partitions are represented by a GUID string.
 
 ```azurepowershell-interactive
-$SourcePhysicalPartitionObjects =  @()
-$SourcePhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "0" -Throughput 1000
-$SourcePhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "2" -Throughput 1000
 
 $TargetPhysicalPartitionObjects =  @()
+$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "0" -Throughput 2000
 $TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "1" -Throughput 4000
+$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "2" -Throughput 1000
+
 
 // Collection with dedicated RU/s
 Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput `
@@ -322,15 +313,6 @@ Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput `
     -AccountName "<cosmos-account-name>" `
     -DatabaseName "<cosmos-database-name>" `
     -Name "<cosmos-collection-name>" `
-    -SourcePhysicalPartitionThroughputObject $SourcePhysicalPartitionObjects `
-    -TargetPhysicalPartitionThroughputObject $TargetPhysicalPartitionObjects
-
-// Database with shared RU/s
-Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput `
-    -ResourceGroupName "<resource-group-name>" `
-    -AccountName "<cosmos-account-name>" `
-    -DatabaseName "<cosmos-database-name>" `
-    -SourcePhysicalPartitionThroughputObject $SourcePhysicalPartitionObjects `
     -TargetPhysicalPartitionThroughputObject $TargetPhysicalPartitionObjects
 ```
 
@@ -344,7 +326,6 @@ az cosmosdb mongodb collection redistribute-partition-throughput \
     --account-name '<cosmos-account-name>' \
     --database-name '<cosmos-database-name>' \
     --name '<cosmos-collection-name>' \
-    --source-partition-info '<PartitionId1=Throughput PartitionId2=Throughput...>' \
     --target-partition-info '<PartitionId3=Throughput PartitionId4=Throughput...>' \
 ```
 
@@ -438,8 +419,10 @@ After the changes, assuming your overall workload hasn't changed, you'll likely 
 
 ### Preview eligibility criteria
 To use the preview, your Azure Cosmos DB account must meet all the following criteria:
-  - Your Azure Cosmos DB account is using API for NoSQL or API for MongoDB.
-      - If you're using API for MongoDB, the version must be >= 3.6.
+Support for shared throughput databases is coming soon. 
+
+- Your Azure Cosmos DB account is using API for NoSQL or API for MongoDB.
+  - If you're using API for MongoDB, the version must be >= 3.6.
   - Your Azure Cosmos DB account is using provisioned throughput (manual or autoscale). Distribution of throughput across partitions doesn't apply to serverless accounts.
 
 You don't need to sign up to use the preview. To use the feature, use the PowerShell or Azure CLI commands to redistribute throughput across your resources' physical partitions.
