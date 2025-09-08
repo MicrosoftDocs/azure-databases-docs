@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 06/20/2025
+  ms.date: 09/05/2025
 ---
 
 # $group
@@ -16,15 +16,12 @@ The `$group` aggregation stage groups documents by specified identifier expressi
 
 ## Syntax
 
-The syntax for the `$group` stage is as follows:
-
 ```javascript
 {
   $group: {
     _id: <expression>,
     <field1>: { <accumulator1>: <expression1> },
-    <field2>: { <accumulator2>: <expression2> },
-    ...
+    <field2>: { <accumulator2>: <expression2> }
   }
 }
 ```
@@ -95,7 +92,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Group staffing analysis by city
 
-To group stores by city and analyzes the staffing patterns across different locations.
+This query groups stores by city and analyzes the staffing patterns across different locations.
 
 ```javascript
 db.stores.aggregate([
@@ -127,9 +124,10 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns staffing analysis by city location.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "New Ellsworth",
     "totalFullTimeStaff": 11,
@@ -148,6 +146,7 @@ The query returns staffing analysis by city location.
     "city": "Jalonborough",
     "fullTimeRatio": 0.8
   }
+]
 ```
 
 ## Related content
