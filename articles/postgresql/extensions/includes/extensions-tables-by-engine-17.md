@@ -4,7 +4,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 09/08/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: include
 ms.custom:
   - automatically generated
@@ -36,7 +36,7 @@ ms.custom:
 | [intarray](https://www.postgresql.org/docs/current/intarray.html) provides functions, operators, and index support for 1-D arrays of integers. | 1.5 | |
 | [isn](https://www.postgresql.org/docs/current/isn.html) provides data types for international product numbering standards. | 1.2 | |
 | [lo](https://www.postgresql.org/docs/current/lo.html) provides support for managing Large Objects (also called LOs or BLOBs). This includes a data type lo and a trigger lo_manage. | 1.1 | |
-| [login_hook](https://github.com/splendiddata/login_hook) (Preview) is a hook to execute `login_hook.login()` at login time. | 1.5 | |
+| [login_hook](https://github.com/splendiddata/login_is a hook to execute `login_hook.login()` at login time. | 1.5 | |
 | [ltree](https://www.postgresql.org/docs/current/ltree.html) is a data type for hierarchical tree-like structures. | 1.3 | |
 | [oracle_fdw](https://github.com/laurenz/oracle_fdw) is a foreign data wrapper for Oracle databases. | 1.2 | |
 | [orafce](https://github.com/orafce/orafce) provides functions and operators that emulate a subset of functions and packages from the Oracle RDBMS. | 4.9 | |
@@ -46,7 +46,7 @@ ms.custom:
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server. |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
 | [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | 0.6.3 | |
-| [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | Not supported <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server. |
+| [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | Not supported | |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.7.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server. |
 | [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication. | 2.4.5 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |

@@ -4,7 +4,7 @@ ms.author: akashrao
 ms.reviewer: maghan, randolphwest
 ms.date: 09/08/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: include
 ms.custom:
   - automatically generated
@@ -411,7 +411,7 @@ ms.custom:
 
 ## login_hook
 
-[login_hook](https://github.com/splendiddata/login_hook) (Preview) is a hook to execute `login_hook.login()` at login time.
+[login_hook](https://github.com/splendiddata/login_is a hook to execute `login_hook.login()` at login time.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -576,7 +576,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 17 | Not supported <sup>*</sup> |
+| 17 | Not supported |
 | 16 | 1.0.1 <sup>*</sup> |
 | 15 | 1.0.1 <sup>*</sup> |
 | 14 | 1.0.1 <sup>*</sup> |
