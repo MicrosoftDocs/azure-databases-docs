@@ -7,7 +7,7 @@ ms.author: pattychow
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 06/24/2025
+ms.date: 09/08/2025
 ---
 
 # $dateSubtract
@@ -137,6 +137,5 @@ This query returns the following result.
 ```
 
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]
-
-

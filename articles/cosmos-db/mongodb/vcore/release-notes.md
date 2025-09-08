@@ -16,9 +16,26 @@ ms.date: 07/30/2025
 
 This article contains release notes for the API for MongoDB vCore. These release notes are composed of feature release dates, and feature updates.
 
-## Latest release: July 15, 2025
+## Latest release: Aug 29, 2025
 
-### Engine Enhancements_0715
+### Engine Enhancements_0829
+
+- Introduced support for index hints, giving developers the option to explicitly specify an index during query execution.
+- Enabled index-only scans on ordered indexes for count queries where filters can be pushed down to the index and no projections are applied.
+- Improved parallel index build performance, enable using config `enable_parallel_index_build`. [Default: off]
+- Added support to prefer new ordered index over existing non-ordered indexes.
+- Improvised the point lookup queries with better cost estimates to ensure that we use primary key index.
+- Enhanced `usersInfo` and `connectionStatus` commands to return all supported roles (ReadWrite, UserAdmin, Root) and privilege sets (dbAdmin, userAdmin, clusterMonitor, clusterManager, hostManager).
+- Improved query planning performance by introducing a custom execution plan for insert operations.
+- Fix bug in $lastN and $bottomN.
+- Fixed Response type of update to add compatibility to C++ drivers requiring response in 32 bit .
+- Enhanced error messages for output stages `$merge` and `$out`.
+
+## Previous releases
+
+### July 15, 2025
+
+#### Engine Enhancements_0715
 
 - [Preview] Enabled index pushdown optimization for $sort on any field.
 - Enabled index pushdown optimization for $limit.
@@ -27,15 +44,13 @@ This article contains release notes for the API for MongoDB vCore. These release
 - Enhanced TTL index behavior to continue processing even if the cluster becomes read-only due to disk full.
 - Improvements to parallel build for faster index creation on sharded and unsharded collection.
 
-#### Infrastructure Enhancements_0715
+#### Infrastructure Enhancements_0730
 
 - [Preview] Added support for CMK, allowed only during provisioning phase.
 
-## Previous releases
-
 ### May 05, 2025
 
-### Engine Enhancements_0505
+#### Engine Enhancements_0505
 
 - [MongoDB vCore v8 released](quickstart-portal.md).
   - Support $convert on binData to binData, string to binData and binData to string (except with format: auto).

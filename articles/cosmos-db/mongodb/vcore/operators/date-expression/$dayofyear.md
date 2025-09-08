@@ -7,7 +7,7 @@ ms.author: pattychow
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 09/04/2025
+ms.date: 09/08/2025
 ---
 
 # $dayOfYear
@@ -113,6 +113,10 @@ db.stores.aggregate([
 ```
 
 The result shows the calendar day number on which `lastUpdated` occurred. In current example, 339 for December 4 in a nonleap year.
+
+```json
+{ "dayOfYear": 339 }
+```
 
 ## Related content
 
