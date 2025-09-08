@@ -18,7 +18,7 @@
   href: $facet.md
 - name: $fill
   href: $fill.md
-- name: $geonear
+- name: $geoNear
   href: $geonear.md
 - name: $group
   href: $group.md
