@@ -12,7 +12,7 @@ ms.date: 09/05/2025
 
 # $densify
 
-The `$densify` stage in an aggregation pipeline is used to fill in missing data points within a sequence of values. It helps in creating a more complete dataset by generating missing values based on a specified field, range, and step. This is particularly useful in scenarios like time-series data analysis, where gaps in data points need to be filled to ensure accurate analysis.
+The `$densify` stage in an aggregation pipeline is used to fill in missing data points within a sequence of values. It helps in creating a more complete dataset by generating missing values based on a specified field, range, and step. This is useful in scenarios like time-series data analysis, where gaps in data points need to be filled to ensure accurate analysis.
 
 ## Syntax
 
@@ -179,7 +179,7 @@ db.aggregate([
   ]);
 ```
 
-This query return the following results:
+This query returns the following results:
 
 ```json
 [
