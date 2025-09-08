@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/04/2025
+  ms.date: 09/05/2025
 ---
 
 # $lastN
@@ -323,7 +323,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the last two events from `promotionEvents` array.
+This query returns the following result.
 
 ```json
 [
