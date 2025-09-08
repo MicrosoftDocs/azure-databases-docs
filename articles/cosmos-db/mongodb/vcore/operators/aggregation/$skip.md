@@ -1,20 +1,19 @@
 ---
 title: $skip
-titleSuffix: Overview of the $skip operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $skip operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $skip stage in the aggregation pipeline is used to skip a specified number of documents from the input and pass the remaining documents to the next stage in the pipeline.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/27/2024
+ms.date: 09/05/2025
 ---
 
 # $skip
 The $skip stage in the aggregation pipeline is used to skip a specified number of documents from the input and pass the remaining documents to the next stage in the pipeline. The stage is useful for implementing pagination in queries and for controlling the subset of documents that subsequent stages in the pipeline operate on.
 
 ## Syntax
-The syntax for the $skip stage is straightforward. It accepts a single parameter, which is the number of documents to skip.
 
 ```javascript
 {
@@ -29,6 +28,7 @@ The syntax for the $skip stage is straightforward. It accepts a single parameter
 | **`number`** | The number of documents to skip before passing the remaining documents to the next stage. |
 
 ## Examples
+
 Consider this sample document from the stores collection.
 
 ```json
@@ -92,7 +92,7 @@ Consider this sample document from the stores collection.
   }
 ```
 
-### Example 1: Skipping Documents in a Collection
+### Example 1: Skipping documents in a collection
 
 To skip the first 2 documents and return the rest, you can use the following aggregation pipeline:
 
@@ -100,8 +100,10 @@ To skip the first 2 documents and return the rest, you can use the following agg
 db.stores.aggregate([
   { $skip: 2 }
 ])
-``` 
-Sample output
+```
+
+The first two results returned by this query are:
+
 ```json
 [
   {
@@ -121,7 +123,8 @@ Sample output
 ]
 ```
 
-### Example 2: Skipping Documents and Then Limiting the Result
+### Example 2: Skipping documents and then limiting the result
+
 To skip the first 2 documents and then limit the result to the next 3 documents, you can combine $skip with $limit:
 
 ```javascript
@@ -131,7 +134,150 @@ db.stores.aggregate([
 ])
 ```
 
-### Example 3: Skipping Documents in a More Complex Pipeline
+The first two results returned by this query are:
+
+```json
+[
+    {
+        "_id": "728c068a-638c-40af-9172-8ccfa7dddb49",
+        "name": "Contoso, Ltd. | Book Store - Lake Myron",
+        "location": {
+            "lat": 29.416,
+            "lon": 21.5231
+        },
+        "staff": {
+            "employeeCount": {
+                "fullTime": 7,
+                "partTime": 16
+            }
+        },
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "Science Fiction",
+                    "totalSales": 34879
+                }
+            ],
+            "revenue": 34879
+        },
+        "promotionEvents": [
+            {
+                "eventName": "Blowout Bonanza",
+                "promotionalDates": {
+                    "startDate": {
+                        "Year": 2024,
+                        "Month": 9,
+                        "Day": 21
+                    },
+                    "endDate": {
+                        "Year": 2024,
+                        "Month": 9,
+                        "Day": 30
+                    }
+                },
+                "discounts": [
+                    {
+                        "categoryName": "Children's Books",
+                        "discountPercentage": 11
+                    },
+                    {
+                        "categoryName": "Fiction",
+                        "discountPercentage": 21
+                    }
+                ]
+            }
+        ],
+        "company": "Contoso, Ltd.",
+        "city": "Lake Myron",
+        "storeOpeningDate": "ISODate('2024-09-28T18:23:21.591Z')",
+        "lastUpdated": "Timestamp({ t: 1730139801, i: 1 })",
+        "storeFeatures": 239
+    },
+    {
+        "_id": "44fdb9b9-df83-4492-8f71-b6ef648aa312",
+        "name": "Fourth Coffee | Storage Solution Gallery - Port Camilla",
+        "location": {
+            "lat": 78.3889,
+            "lon": 0.6784
+        },
+        "staff": {
+            "employeeCount": {
+                "fullTime": 17,
+                "partTime": 15
+            }
+        },
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "Storage Boxes",
+                    "totalSales": 2236
+                }
+            ],
+            "revenue": 2236
+        },
+        "promotionEvents": [
+            {
+                "eventName": "Major Discount Mania",
+                "promotionalDates": {
+                    "startDate": {
+                        "Year": 2024,
+                        "Month": 6,
+                        "Day": 23
+                    },
+                    "endDate": {
+                        "Year": 2024,
+                        "Month": 7,
+                        "Day": 3
+                    }
+                },
+                "discounts": [
+                    {
+                        "categoryName": "Bathroom Storage",
+                        "discountPercentage": 19
+                    },
+                    {
+                        "categoryName": "Kitchen Storage",
+                        "discountPercentage": 10
+                    }
+                ]
+            },
+            {
+                "eventName": "Flash Deal Frenzy",
+                "promotionalDates": {
+                    "startDate": {
+                        "Year": 2024,
+                        "Month": 9,
+                        "Day": 21
+                    },
+                    "endDate": {
+                        "Year": 2024,
+                        "Month": 9,
+                        "Day": 30
+                    }
+                },
+                "discounts": [
+                    {
+                        "categoryName": "Under-Bed Storage",
+                        "discountPercentage": 20
+                    },
+                    {
+                        "categoryName": "Closet Organizers",
+                        "discountPercentage": 21
+                    }
+                ]
+            }
+        ],
+        "company": "Fourth Coffee",
+        "city": "Port Camilla",
+        "storeOpeningDate": "ISODate('2024-09-23T06:02:53.844Z')",
+        "lastUpdated": "Timestamp({ t: 1729663373, i: 1 })",
+        "storeFeatures": 222
+    }
+]
+```
+
+### Example 3: Skipping documents in a complex pipeline
+
 To skip the first promotion event and then project the remaining events for a specific store:
 
 ```javascript 
@@ -143,41 +289,75 @@ db.stores.aggregate([
 ])
 ``` 
 
-Sample output:
+The first two results returned by this query are:
 
 ```json
 [
-  {
-    promotionEvents: {
-      eventName: 'Steal of a Deal Days',
-      promotionalDates: {
-        startDate: { Year: 2024, Month: 9, Day: 21 },
-        endDate: { Year: 2024, Month: 9, Day: 29 }
-      },
-      discounts: [
-        { categoryName: 'Organic Wine', discountPercentage: 19 },
-        { categoryName: 'White Wine', discountPercentage: 20 },
-        { categoryName: 'Sparkling Wine', discountPercentage: 19 },
-        { categoryName: 'Whiskey', discountPercentage: 17 },
-        { categoryName: 'Vodka', discountPercentage: 23 }
-      ]
+    {
+        "promotionEvents": {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    },
+    {
+        "promotionEvents": {
+            "eventName": "Summer Sale",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 1
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 15
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "DJ Speakers",
+                    "discountPercentage": 20
+                }
+            ]
+        }
     }
-  },
-  {
-    promotionEvents: {
-      eventName: 'Summer Sale',
-      promotionalDates: {
-        startDate: { Year: 2024, Month: 6, Day: 1 },
-        endDate: { Year: 2024, Month: 6, Day: 15 }
-      },
-      discounts: [ { categoryName: 'DJ Speakers', discountPercentage: 20 } ]
-    }
-  }
 ]
 ```
 
-
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
-- Get started by [creating an account](../../quickstart-portal.md).
+[!INCLUDE[Related content](../includes/related-content.md)]
