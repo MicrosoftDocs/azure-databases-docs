@@ -202,5 +202,4 @@ This returns the following result:
 ```
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [update with vCore based Azure Cosmos DB for MongoDB](../../commands/query-and-write/update.md)
+[!INCLUDE[Related content](../includes/related-content.md)]
