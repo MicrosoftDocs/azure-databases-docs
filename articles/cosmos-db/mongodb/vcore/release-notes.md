@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: release-notes
-ms.date: 07/30/2025
+ms.date: 09/09/2025
 
 #Customer intent: As a database administrator, I want to review the release notes, so I can understand what new features are released for the service.
 ---
@@ -21,15 +21,20 @@ This article contains release notes for the API for MongoDB vCore. These release
 ### Engine Enhancements_0829
 
 - Introduced support for index hints, giving developers the option to explicitly specify an index during query execution.
-- Enabled index-only scans on ordered indexes for count queries where filters can be pushed down to the index and no projections are applied.
-- Improved parallel index build performance, enable using config `enable_parallel_index_build`. [Default: off]
+- [Preview] Enabled index-only scans on ordered indexes for count queries where filters can be pushed down to the index and no projections are applied.
+- [Preview] Improved parallel index build performance.
 - Added support to prefer new ordered index over existing non-ordered indexes.
-- Improvised the point lookup queries with better cost estimates to ensure that we use primary key index.
+- Improved point lookup queries for more efficient execution.
 - Enhanced `usersInfo` and `connectionStatus` commands to return all supported roles (ReadWrite, UserAdmin, Root) and privilege sets (dbAdmin, userAdmin, clusterMonitor, clusterManager, hostManager).
-- Improved query planning performance by introducing a custom execution plan for insert operations.
+- Improved query planning performance by introducing a custom planner for insert operations.
 - Fix bug in $lastN and $bottomN.
 - Fixed Response type of update to add compatibility to C++ drivers requiring response in 32 bit .
 - Enhanced error messages for output stages `$merge` and `$out`.
+
+### Infrastructure Enhancements_0909
+
+- [CMK] (data-encryption-at-rest.md) support (GA).
+- [EntraID](entra-authentication.md) support (GA).
 
 ## Previous releases
 
