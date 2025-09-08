@@ -169,5 +169,4 @@ This query returns the following results:
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [count with vCore based Azure Cosmos DB for MongoDB](../../commands/aggregation/count.md)
+[!INCLUDE[Related content](../includes/related-content.md)]
