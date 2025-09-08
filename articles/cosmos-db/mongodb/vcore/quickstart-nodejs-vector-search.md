@@ -41,8 +41,6 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
     - vector search enabled
     - firewall configured to allow your IP address
 
-[!INCLUDE[Prerequisites - Azure Developer CLI](../includes/prereq-dev-quickstart.md)]
-
 ## Create a Node.js project
 
 1. Create a new directory for your project, and open it in Visual Studio Code:
