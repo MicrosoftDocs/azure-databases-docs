@@ -148,7 +148,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Adding a new field
 
-To add a new field totalDiscountEvents that counts the number of promotion events
+This query adds a new field totalDiscountEvents that counts the number of promotion events
 
 ```javascript
 db.stores.aggregate([
@@ -177,7 +177,7 @@ This query returns the following result:
 
 ### Example 2: Modifying an Existing Field
 
-To add a field totalStaffCount that sums up the full-time and part-time staff.
+This query adds a field totalStaffCount that sums up the full-time and part-time staff.
 
 ```javascript
 db.stores.aggregate([
@@ -214,7 +214,7 @@ This query returns the following result:
 
 ### Example 3: Adding Nested Fields
 
-To add a nested field location.coordinates that combines latitude and longitude into an array.
+This query adds a nested field location.coordinates that combines latitude and longitude into an array.
 
 ```javascript
 db.stores.aggregate([
