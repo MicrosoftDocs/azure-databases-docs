@@ -183,9 +183,17 @@ This query return the following results:
 
 ```json
 [
-  { date: ISODate("2024-01-01T00:00:00.000Z"), value: 10 },
-  { date: ISODate("2024-01-02T00:00:00.000Z") },
-  { date: ISODate("2024-01-03T00:00:00.000Z"), value: 15 }
+    {
+        "date": "ISODate('2024-01-01T00:00:00.000Z')",
+        "value": 10
+    },
+    {
+        "date": "ISODate('2024-01-02T00:00:00.000Z')"
+    },
+    {
+        "date": "ISODate('2024-01-03T00:00:00.000Z')",
+        "value": 15
+    }
 ]
 
 ```
@@ -218,10 +226,20 @@ This query returns the following results:
 
 ```json
 [
-  { level: 1, score: 10 },
-  { level: 2 },
-  { level: 3, score: 30 },
-  { level: 4 }
+    {
+        "level": 1,
+        "score": 10
+    },
+    {
+        "level": 2
+    },
+    {
+        "level": 3,
+        "score": 30
+    },
+    {
+        "level": 4
+    }
 ]
 ```
 
