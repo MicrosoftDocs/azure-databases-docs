@@ -183,7 +183,7 @@ When a store document is updated, the change stream returns the change event wit
       "revenue": 42500
     },
     "company": "Trey Research",
-    "lastUpdated": ISODate('2024-06-16T10:30:00.000Z')
+    "lastUpdated": "ISODate('2024-06-16T10:30:00.000Z')"
   },
   "ns": {
     "db": "StoreData",
