@@ -15,7 +15,7 @@ The $addFields stage in the aggregation pipeline is used to add new fields to do
 
 ## Syntax
 
-```json
+```javascript
 {
   $addFields: {
     <newField1>: <expression1>,
