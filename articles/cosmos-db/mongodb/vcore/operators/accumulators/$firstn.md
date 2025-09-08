@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/04/2025
+  ms.date: 09/05/2025
 ---
 
 # $firstN
@@ -39,7 +39,7 @@ The `$firstN` operator returns the first N values in a group according to the gr
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -307,7 +307,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns first three elements from `sales.salesByCategory` array.
+This query returns the following result:
 
 ```json
 [
