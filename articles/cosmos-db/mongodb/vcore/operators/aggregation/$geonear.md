@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 09/05/2025
 ---
 
 # $geoNear
@@ -15,8 +15,6 @@ ms.date: 02/12/2025
 The `$geoNear` aggregation stage calculates distances between a specified point and the location field in each document, sorts the documents by distance, and can optionally limit results by distance.
 
 ## Syntax
-
-The syntax for the `$geoNear` operator is as follows:
 
 ```javascript
 {
@@ -110,7 +108,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Basic distance calculation
 
-Find all stores near the "VanArsdel Picture Frame Store" location, sorted by distance:
+This query retrieves all stores near the "VanArsdel Picture Frame Store" location, sorted by distance:
 
 ```javascript
 db.stores.aggregate([
@@ -132,29 +130,32 @@ db.stores.aggregate([
   }
 ])
 ```
-This produces the following output:
 
-```JSON
-{
-    _id: '643b2756-c22d-4063-9777-0945b9926346',
-    name: 'Contoso, Ltd. | Outdoor Furniture Corner - Pagacfort',
-    distance: 5458613.2813355485
-  },
-  {
-    _id: 'daa71e60-75d4-4e03-8b45-9df59af0811f',
-    name: 'First Up Consultants | Handbag Corner - South Salvatore',
-    distance: 5469362.958855379
-  },
-  {
-    _id: '02a78a15-b1fc-4bbd-ae1d-641b7428dc78',
-    name: 'VanArsdel, Ltd. | Kitchen Appliance Corner - Llewellynberg',
-    distance: 5472684.4628977
-  }..
+The first three results returned by this query are:
+
+```json
+[
+    {
+        "_id": "643b2756-c22d-4063-9777-0945b9926346",
+        "name": "Contoso, Ltd. | Outdoor Furniture Corner - Pagacfort",
+        "distance": 5458613.2813355485
+    },
+    {
+        "_id": "daa71e60-75d4-4e03-8b45-9df59af0811f",
+        "name": "First Up Consultants | Handbag Corner - South Salvatore",
+        "distance": 5469362.958855379
+    },
+    {
+        "_id": "02a78a15-b1fc-4bbd-ae1d-641b7428dc78",
+        "name": "VanArsdel, Ltd. | Kitchen Appliance Corner - Llewellynberg",
+        "distance": 5472684.4628977
+    }
+]
 ```
 
 ### Example 2: With distance limits and optional query
 
-Find stores within 30 KM of "Proseware Home Entertainment Hub" that have more than 10 full-time staff:
+This query retrieves all stores within 30 KM of "Proseware Home Entertainment Hub" that have more than 10 full-time staff:
 
 ```javascript
 db.stores.aggregate([
@@ -179,20 +180,27 @@ db.stores.aggregate([
   }
 ])
 ```
-This produces the following output:
+
+The first result returned by this query is:
 
 ```javascript
-  {
-    _id: 'bbec6d3e-1666-45b4-8803-8b7ef8544845',
-    name: 'First Up Consultants | Baby Products Bargains - South Keenan',
-    staff: { totalStaff: { fullTime: 19 } },
-    distance: 29934.71888123174
-  }
+[
+    {
+        "_id": "bbec6d3e-1666-45b4-8803-8b7ef8544845",
+        "name": "First Up Consultants | Baby Products Bargains - South Keenan",
+        "staff": {
+            "totalStaff": {
+                "fullTime": 19
+            }
+        },
+        "distance": 29934.71888123174
+    }
+]
 ```
 
 ### Example 3: Including location data and distance multiplier
 
-Find nearby stores with distance in kilometers and included location data:
+This query retrieves stores with distance in kilometers and included location data:
 
 ```javascript
 db.stores.aggregate([
@@ -217,27 +225,39 @@ db.stores.aggregate([
   }
 ])
 ```
-This produces the following output:
+
+The first three results returned by this query are:
 
 ```javascript
-  {
-    _id: 'b677846e-bb73-46ec-9cba-7d94afee382c',
-    name: 'Northwind Traders | Health Food Shoppe - Brooklynmouth',
-    storeLocation: { lat: -38.3032, lon: -132.7866 },
-    distanceInKm: 9.095634270192285
-  },
-  {
-    _id: '27c64b44-2382-4477-b3ce-c08e74882156',
-    name: 'Relecloud | VR Headset Gallery - West Jonasbury',
-    storeLocation: { lat: -37.9628, lon: -132.6637 },
-    distanceInKm: 34.7104536140246
-  },
-  {
-    _id: '505e83eb-09bc-46a4-ba85-16135611b9de',
-    name: 'Fabrikam, Inc. | Pharmacy Hub - Elijahville',
-    storeLocation: { lat: -38.0349, lon: -47.9571 },
-    distanceInKm: 82.92766541748313
-  }
+[
+    {
+        "_id": "b677846e-bb73-46ec-9cba-7d94afee382c",
+        "name": "Northwind Traders | Health Food Shoppe - Brooklynmouth",
+        "storeLocation": {
+            "lat": -38.3032,
+            "lon": -132.7866
+        },
+        "distanceInKm": 9.095634270192285
+    },
+    {
+        "_id": "27c64b44-2382-4477-b3ce-c08e74882156",
+        "name": "Relecloud | VR Headset Gallery - West Jonasbury",
+        "storeLocation": {
+            "lat": -37.9628,
+            "lon": -132.6637
+        },
+        "distanceInKm": 34.7104536140246
+    },
+    {
+        "_id": "505e83eb-09bc-46a4-ba85-16135611b9de",
+        "name": "Fabrikam, Inc. | Pharmacy Hub - Elijahville",
+        "storeLocation": {
+            "lat": -38.0349,
+            "lon": -47.9571
+        },
+        "distanceInKm": 82.92766541748313
+    }
+]
 ```
 
 ## Limitations
@@ -250,3 +270,4 @@ This produces the following output:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
