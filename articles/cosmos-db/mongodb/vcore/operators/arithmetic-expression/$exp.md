@@ -147,28 +147,35 @@ Consider this sample document from the stores collection.
 To calculate the exponential growth rate of total sales volume of a store by 10% and 20% respectively, use the $exp operator to multiple the value of the totalSales field by e^0.1 and e^0.2.
 
 ```javascript
-db.stores.aggregate([
-  { $match: { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
-  {
-    $project: {
-      name: 1,
-      currentSales: "$sales.totalSales",
-      projectedGrowth: {
-        oneYear: {
-          $multiply: [
-            "$sales.totalSales",
-            { $exp: 0.1 } // 10% growth rate
-          ]
-        },
-        twoYears: {
-          $multiply: [
-            "$sales.totalSales",
-            { $exp: 0.2 } // 20% growth rate
-          ]
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
         }
-      }
+    },
+    {
+        $project: {
+            name: 1,
+            currentSales: "$sales.totalSales",
+            projectedGrowth: {
+                oneYear: {
+                    $multiply: [
+                        "$sales.totalSales",
+                        {
+                            $exp: 0.1
+                        } // 10% growth rate
+                    ]
+                },
+                twoYears: {
+                    $multiply: [
+                        "$sales.totalSales",
+                        {
+                            $exp: 0.2
+                        } // 20% growth rate
+                    ]
+                }
+            }
+        }
     }
-  }
 ])
 ```
 
@@ -191,3 +198,4 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
