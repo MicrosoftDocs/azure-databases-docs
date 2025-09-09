@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 09/05/2025
 ---
 
 # $add
@@ -180,4 +180,5 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
 
