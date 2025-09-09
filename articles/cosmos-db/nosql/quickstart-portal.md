@@ -181,7 +181,7 @@ After creating and querying your data, the **Overview** tab in the Azure portal 
 The **Overview Hub** brings together the tools, guidance, and insights you need in one place, including:
 
 - **Quickstarts** to help you build and test your application.
-- **Setup & Optimization guidance** to support every stage of your journey—from learning to production. Topics include partitioning, indexing, modeling, cost control, backup configuration, and performance tuning.
+- **Setup & Optimization guidance** to support every stage of your journey from learning to production. Topics include partitioning, indexing, modeling, cost control, backup configuration, and performance tuning.
 - **Containers & Data access** for querying your data, adjusting throughput, and opening containers in Data Explorer or VS Code.
 - **Monitoring tools** such as Insights, Metrics, Alerts, and Diagnostic settings, plus a scorecard that surfaces availability, alerts, and Azure Advisor recommendations.
 - **Learning resources** like video tutorials, sample apps, and documentation.
