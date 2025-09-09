@@ -148,17 +148,17 @@ To calculate the square root of the sales volumes of each store under the "First
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$project": {
-        "name": 1,
+    $project: {
+        name: 1,
         "sales.revenue": 1,
-        "categoryName": "$promotionEvents.discounts.categoryName",
-        "sqrtFullSales": {
+        categoryName: "$promotionEvents.discounts.categoryName",
+        sqrtFullSales: {
             $sqrt: "$sales.revenue"
         }
     }
