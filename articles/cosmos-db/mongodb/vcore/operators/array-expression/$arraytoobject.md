@@ -113,12 +113,12 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Convert the array to a key: value document
 
-The example aggregation query converts the `salesByCategory` array into an object where each `categoryName` is a key and `totalSales` is the corresponding value. This transformation simplifies access to sales data by category directly from an object structure.
+This query converts the `salesByCategory` array into an object where each `categoryName` is a key and `totalSales` is the corresponding value. This transformation simplifies access to sales data by category directly from an object structure.
 
 ```javascript
 db.stores.aggregate([{
         $match: {
-            _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5'
+            _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
         }
     },
     {
