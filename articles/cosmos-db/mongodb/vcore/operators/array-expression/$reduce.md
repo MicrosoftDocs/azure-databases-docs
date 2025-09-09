@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/28/2025
+  ms.date: 09/05/2025
 ---
 
 # $reduce
@@ -38,61 +38,136 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-    "_id": "d3c9df51-41bd-4b4e-a26b-b038d9cf8b45",
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
     "location": {
-        "lat": -67.7571,
-        "lon": 97.2505
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
     },
     "sales": {
-        "totalSales": 149849,
+        "totalSales": 75670,
         "salesByCategory": [
             {
-                "categoryName": "DJ Speakers",
-                "totalSales": 36972
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
             },
             {
-                "categoryName": "DJ Headphones",
-                "totalSales": 12877
+                "categoryName": "Bitters",
+                "totalSales": 39496
             },
             {
-                "categoryName": "Music Accessories",
-                "totalSales": 40000
-            },
-            {
-                "categoryName": "DJ Accessories",
-                "totalSales": 60000
+                "categoryName": "Rum",
+                "totalSales": 1734
             }
         ]
     },
-    "tag": [
-        "#ShopLocal",
-        "#FashionStore",
-        "#SeasonalSale",
-        "#FreeShipping",
-        "#MembershipDeals"
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
 }
 ```
 
 ### Example 1: Aggregates the array values
 
-The example demonstrates how to use `$reduce` to sum the total sales across different categories in the `salesByCategory` array.
+This query demonstrates how to use `$reduce` to sum the total sales across different categories in the `salesByCategory` array.
 
 ```javascript
-db.stores.aggregate([
-  { $match: { "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60"} }
-, {
-    $project: {
-      totalSalesByCategory: {
-        $reduce: {
-          input: "$sales.salesByCategory.totalSales",
-          initialValue: 0,
-          in: { $add: ["$$value", "$$this"] }
-        }
-      }
+db.stores.aggregate([{
+    $match: {
+        _id: "988d2dd1-2faa-4072-b420-b91b95cbfd60"
     }
-  }
-])
+}, {
+    $project: {
+        totalSalesByCategory: {
+            $reduce: {
+                input: "$sales.salesByCategory.totalSales",
+                initialValue: 0,
+                in: {
+                    $add: ["$$value", "$$this"]
+                }
+            }
+        }
+    }
+}])
 ```
 
 The query returns the following result.

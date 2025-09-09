@@ -113,12 +113,12 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Concatenating Arrays in a document
 
-The example pipeline merges the `categoryName` field from the `promotionEvents.discounts` array with the `tag` array into a single combinedTags array.
+This query merges the `categoryName` field from the `promotionEvents.discounts` array with the `tag` array into a single combinedTags array.
 
 ```javascript
 db.stores.aggregate([{
     $match: {
-        _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5'
+        _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
     }
 }, {
     $project: {
@@ -129,13 +129,15 @@ db.stores.aggregate([{
 }])
 ```
 
-The query returns the following result.
+This query returns the following result.
 
 ```json
-{
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-    "combinedTags": [ '#ShopLocal', '#NewArrival', '#NewArrival', '#FreeShipping' ]
+[
+  {
+      "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+      "combinedTags": [ '#ShopLocal', '#NewArrival', '#NewArrival', '#FreeShipping' ]
   }
+]
 ```
 
 ## Related content
