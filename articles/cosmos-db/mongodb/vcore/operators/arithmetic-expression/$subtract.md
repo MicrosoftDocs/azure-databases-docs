@@ -149,18 +149,18 @@ To calculate the absolute difference in part time and full time staff for stores
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$project": {
-        "name": 1,
-        "staff": 1,
-        "staffCountDiff": {
+    $project: {
+        name: 1,
+        staff: 1,
+        staffCountDiff: {
             $abs: {
-                "$subtract": ["$staff.employeeCount.fullTime", "$staff.employeeCount.partTime"]
+                $subtract: ["$staff.employeeCount.fullTime", "$staff.employeeCount.partTime"]
             }
         }
     }
