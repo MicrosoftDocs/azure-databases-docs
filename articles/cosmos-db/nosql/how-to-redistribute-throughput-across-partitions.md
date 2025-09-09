@@ -1,16 +1,16 @@
 ---
 title: Redistribute throughput across partitions
-titleSuffix: Azure Cosmos DB
-description: Learn how to redistribute throughput across partitions in Azure Cosmos DB to optimize performance. Discover steps and best practices.
+titleSuffix: Azure Cosmos DB for NoSQL
+description: Learn how to redistribute throughput across partitions in Azure Cosmos DB for NoSQL to optimize performance. Discover steps and best practices.
 author: tarabhatiamsft
 ms.author: tarabhatia
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
+ms.subservice: nosql
 ms.topic: how-to
 ms.date: 09/09/2025
 zone_pivot_groups: azure-interface-cli-powershell
 applies-to:
   - ✅ NoSQL
-  - ✅ MongoDB
 ---
 
 # Redistribute throughput across partitions
@@ -233,3 +233,5 @@ $allPartitionsSharedThroughputDatabase = Get-AzCosmosDBMongoDBDatabasePerPartiti
 
 > [!NOTE]
 > For more information on finding the number of partitions, see [best practices for scaling provisioned throughput (RU/s)](../scaling-provisioned-throughput-best-practices.md#step-1-find-the-current-number-of-physical-partitions).
+
+::: zone-end
