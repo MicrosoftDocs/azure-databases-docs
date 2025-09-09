@@ -7,7 +7,7 @@ ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/27/2024
+ms.date: 09/05/2025
 ---
 
 # $subtract
@@ -149,18 +149,18 @@ To calculate the absolute difference in part time and full time staff for stores
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$project": {
-        "name": 1,
-        "staff": 1,
-        "staffCountDiff": {
+    $project: {
+        name: 1,
+        staff: 1,
+        staffCountDiff: {
             $abs: {
-                "$subtract": ["$staff.employeeCount.fullTime", "$staff.employeeCount.partTime"]
+                $subtract: ["$staff.employeeCount.fullTime", "$staff.employeeCount.partTime"]
             }
         }
     }
