@@ -21,4 +21,4 @@
 - name: $slice
   href: ../array-expression/$slice.md
 - name: $sort
-  href: $sort.md
+  href: ../aggregation/$sort.md
