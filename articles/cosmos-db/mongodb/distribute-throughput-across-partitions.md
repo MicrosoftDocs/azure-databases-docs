@@ -1,5 +1,5 @@
 ---
-title: Redistribute throughput across partitions
+title: Update throughput distribution across partitions
 titleSuffix: Azure Cosmos DB for MongoDB
 description: Learn how to redistribute throughput across partitions in Azure Cosmos DB for MongoDB to optimize performance. Discover steps and best practices.
 author: avijitgupta
