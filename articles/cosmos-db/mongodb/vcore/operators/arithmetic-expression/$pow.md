@@ -149,16 +149,16 @@ To calculate the square of the sales volume of all stores under the "First Up Co
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$project": {
-        "company": 1,
+    $project: {
+        company: 1,
         "sales.revenue": 1,
-        "fullSalesSquare": {
+        fullSalesSquare: {
             $pow: ["$sales.revenue", 2]
         }
     }
