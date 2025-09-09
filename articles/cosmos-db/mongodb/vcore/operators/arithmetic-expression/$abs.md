@@ -147,32 +147,32 @@ Consider this sample document from the stores collection.
 To calculate the absolute difference in sales volume of each category and the average sales across all categories for a store, first run a query to filter on the specific store. Then, calculate the difference in sales between each category and the average across all categories. Lastly, project the absolute difference using the $abs operator.
 
 ```javascript
-db.stores.aggregate([
-  { $match: { _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
-  {
-    $project: {
-      name: 1,
-      "salesByCategory": {
-        $map: {
-          input: "$sales.salesByCategory",
-          as: "category",
-          in: {
-            categoryName: "$$category.categoryName",
-            totalSales: "$$category.totalSales",
-            differenceFromAverage: {
-              $abs: { 
-                $subtract: [
-                  "$$category.totalSales",
-                  { $avg: "$sales.salesByCategory.totalSales" }
-                ]
-              }
-            }
-          }
-        }
-      }
+db.stores.aggregate([{
+    $match: {
+        _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
     }
-  }
-])
+}, {
+    $project: {
+        name: 1,
+        salesByCategory: {
+            $map: {
+                input: "$sales.salesByCategory",
+                as: "category",
+                in: {
+                    categoryName: "$$category.categoryName",
+                    totalSales: "$$category.totalSales",
+                    differenceFromAverage: {
+                        $abs: {
+                            $subtract: ["$$category.totalSales", {
+                                $avg: "$sales.salesByCategory.totalSales"
+                            }]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}])
 ```
 
 This query returns the following result:
@@ -216,4 +216,5 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
 
