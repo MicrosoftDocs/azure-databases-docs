@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: how-to
-  ms.date: 06/25/2025
+  ms.date: 09/07/2025
   appliesto:
   - ✅ MongoDB (vCore)
 ---
