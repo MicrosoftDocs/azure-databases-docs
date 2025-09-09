@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/04/2025
+ms.date: 09/05/2025
 ---
 
 # $in
@@ -24,100 +24,136 @@ The `$in` operator matches values of a field against an array of possible values
 }
 ```
 
-## Parameters
-
-| Parameter | Description |
-| --- | --- |
-| **`field`** | The field to match|
-| **`[listOfValues]`** | An array of values to match against the specified field|
-
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ],
-  "company": "Lakeshore Retail",
-  "city": "Port Cecile",
-  "lastUpdated": {
-    "$date": "2024-12-11T10:21:58.274Z"
-  }
+    ]
 }
 ```
 
 ### Example 1 - Use $in operator as comparison-query to find a store with specific categories of promotions
 
-The query finds stores that offer discounts in either "Smoked Salmon" or "Anklets" categories via promotion events.
+This query finds stores that offer discounts in either "Smoked Salmon" or "Anklets" categories via promotion events.
 
 ```javascript
-db.stores.find(
-  {
+db.stores.find({
     "promotionEvents.discounts.categoryName": {
-      "$in": ["Smoked Salmon", "Anklets"]
+        $in: ["Smoked Salmon", "Anklets"]
     }
-  },
-  {
-    "name": 1,
+}, {
+    name: 1,
     "promotionEvents.discounts.categoryName": 1
-  }
-).limit(1)
+}).limit(1)
 ```
 
-This query returns the following result:
+The first result returned by this query is:
 
 ```json
 [
@@ -162,23 +198,22 @@ This query returns the following result:
 
 ### Example 2 - Use $in operator as array-expression in an array for a specified value or set of values
 
-The query searches for the specified store and filters documents where at least one `discountPercentage` within any `promotionEvents.discounts` is either 15 or 20. It uses a dot notation path and the $in operator to match nested discount values across the array hierarchy.
+This query searches for the specified store and filters documents where at least one `discountPercentage` within any `promotionEvents.discounts` is either 15 or 20. It uses a dot notation path and the $in operator to match nested discount values across the array hierarchy.
 
 ```javascript
-db.stores.find(
-  {
-    "_id": "48fcdab8-b961-480e-87a9-19ad880e9a0a",
-    "promotionEvents.discounts.discountPercentage": { $in: [15, 20] }
-  },
-  {
-    "_id": 1,
-    "name": 1,
+db.stores.find({
+    _id: "48fcdab8-b961-480e-87a9-19ad880e9a0a",
+    "promotionEvents.discounts.discountPercentage": {
+        $in: [15, 20]
+    }
+}, {
+    _id: 1,
+    name: 1,
     "promotionEvents.discounts": 1
-  }
-)
+})
 ```
 
-The query returns document where the `discounts` array contains any element with a `discountPercentage` of either `15` or `20`, and only shows the `complete discounts array` for those documents.
+This query returns the following result:
 
 ```json
 [
