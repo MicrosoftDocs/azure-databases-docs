@@ -155,10 +155,16 @@ Consider this sample document from the stores collection.
 To add a new sales category to the salesByCategory array, run a query using the $push operator on the field with a new Sales object with the name of the category and its sales volume.
 
 ```javascript
-db.stores.update(
-   { _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4" },
-   { $push: { "sales.salesByCategory": { "categoryName": "Wine Accessories", "totalSales": 1000.00 } } }
-)
+db.stores.update({
+    _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
+}, {
+    $push: {
+        "sales.salesByCategory": {
+            "categoryName": "Wine Accessories",
+            "totalSales": 1000.00
+        }
+    }
+})
 ```
 
 This query returns the following result:

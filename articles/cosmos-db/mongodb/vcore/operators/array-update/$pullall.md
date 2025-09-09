@@ -19,13 +19,12 @@ Both `$pull` and `$pullAll` are used to remove elements from an array, but they 
 
 ## Syntax
 
-The syntax for the `$pullAll` operator is as follows:
-
 ```javascript
 {
   $pullAll: { <field1>: [ <value1>, <value2>, ... ], ... }
 }
 ```
+
 ## Parameters
 
 | Parameter | Description |
@@ -97,7 +96,7 @@ Consider this sample document from the stores collection.
 ```
 ### Example 1: Remove multiple elements from an array
 
-To remove the discounts for "#MembershipDeals" and "#SeasonalSale" from the 'tag' array.
+To remove the discounts for "#MembershipDeals" and "#SeasonalSale" from the 'tag' array, run a query using the $pulAll operator on the tag field with the values to remove.
 
 ```javascript
 db.stores.updateMany(
@@ -110,17 +109,18 @@ db.stores.updateMany(
     }
 )
 ```
-This query would return the following document.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": 1,
-  "modifiedCount": 1,
-  "upsertedCount": 0
-}
-
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": 1,
+    "modifiedCount": 1,
+    "upsertedCount": 0
+  }
+]
 ```
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]

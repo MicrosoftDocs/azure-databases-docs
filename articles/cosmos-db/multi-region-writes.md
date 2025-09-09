@@ -6,18 +6,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 08/15/2025
+ms.date: 09/03/2025
 ms.custom:
   - ai-gen-docs-bap
   - ai-gen-title
   - ai-seo-date:08/15/2025
   - ai-gen-description
 applies-to:
-  - NoSQL
-  - MongoDB
-  - Apache Cassandra
-  - Apache Gremlin
-  - Table
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Multi-region writes in Azure Cosmos DB

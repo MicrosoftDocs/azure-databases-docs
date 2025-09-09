@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/03/2025
+ms.date: 09/04/2025
 ---
 
 # $bitAnd
@@ -28,9 +28,9 @@ The `$bitAnd` operator performs a `bitwise AND` operation on integer values. It 
 | --- | --- |
 | **`expression1, expression2, ...`** | Expressions that evaluate to integers. The `$bitAnd` operator performs a bitwise AND operation on all provided expressions. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -121,17 +121,18 @@ db.stores.aggregate([
 ])
 ```
 
-The output helps derive a `combined flag` value from the two staff numbers, often used in permission or feature toggles.
-The bitwise AND of 19 (10011 in binary) and 20 (10100 in binary) equals 16 (10000 in binary).
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "fullTimeStaff": 19,
-  "partTimeStaff": 20,
-  "staffPermissionFlag": 16
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "fullTimeStaff": 19,
+    "partTimeStaff": 20,
+    "staffPermissionFlag": 16
+  }
+]
 ```
 
 ### Example 2: Multiple value `$bitAnd`
@@ -156,15 +157,16 @@ db.stores.aggregate([
 ])
 ```
 
-The query calculates a combined flag based on full-time and part-time staff counts, constrained to a maximum of 255.
-The operation performs bitwise AND on 19, 20, and 255, resulting in 16.
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "combinedFlag": 16
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "combinedFlag": 16
+  }
+]
 ```
 
 ## Related content

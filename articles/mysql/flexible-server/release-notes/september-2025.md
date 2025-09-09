@@ -51,6 +51,7 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 - Data migration service can now detect data corruption during external data migration, with both rest API and mysql import CLI support
 - Improve capacity related server creation error messages, make them more descriptive and to include the link to the customer-facing troubleshooting guide. 
 - Improve the error message related to private endpoint operations.
+- Introduced a new built-in store procedure `mysql.az_drop_broken_table` to fix table corruption issue. [Learn more](../concepts-built-in-store-procedure.md#drop-problematic-table)
 
 ## Known issues fix
 

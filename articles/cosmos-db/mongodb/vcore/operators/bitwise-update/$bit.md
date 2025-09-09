@@ -1,6 +1,6 @@
 --- 
 title: $bit
-titleSuffix: Overview of the $bit operation in Azure Cosmos DB for MongoDB (vCore)
+titleSuffix: Overview of the $bit operator in Azure Cosmos DB for MongoDB (vCore)
 description: The `$bit` operator is used to perform bitwise operations on integer values.
 author: sandeepsnairms
 ms.author: sandnair
@@ -10,13 +10,19 @@ ms.topic: language-reference
 ms.date: 10/15/2024
 ---
 
-
 # $bit
 The `$bit` operator is used to perform bitwise operations on integer values. It can be used to update integer fields in documents by applying bitwise AND, OR, and XOR operations. Bitwise operators like $bit aren't designed for incrementing values, but for manipulating bits directly (like checking, setting, or clearing specific bits).
 
 ## Syntax
-```
-{ $bit: { <field>: { <operator>: <number> } } }
+
+```javascript
+{
+    $bit: {
+        < field >: {
+            < operator >: < number >
+        }
+    }
+}
 ```
 
 ## Parameters  
@@ -89,68 +95,89 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Perform a bitwise AND operation on the `partTime` field in `totalStaff`.
+### Example 1: Perform a bitwise AND operation on the `partTime` field in `totalStaff`
 
-```shell
-db.stores.updateOne(
-  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $bit: { "staff.totalStaff.partTime": { and: 1 } } }
-)
+```javascript
+db.stores.updateOne({
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+}, {
+    $bit: {
+        "staff.totalStaff.partTime": {
+            and: 1
+        }
+    }
+})
 ```
 
-This query would return the following document. The AND of 0 and 1 is 0 hence the new value of the field is 0.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
 
+### Example 2:  Perform a bitwise OR operation on the `partTime` field in `totalStaff`
 
-### Example 2:  Perform a bitwise OR operation on the `partTime` field in `totalStaff`.
-
-```shell
-db.stores.updateOne(
-  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $bit: { "staff.totalStaff.partTime": { "or" : 1 } } }
-)
+```javascript
+db.stores.updateOne({
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+}, {
+    $bit: {
+        "staff.totalStaff.partTime": {
+            "or": 1
+        }
+    }
+})
 ```
 
-This query would return the following document. The OR of 0 and 1 is 1 hence the new value of the field is 1.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
 
-### Example 3: Perform a bitwise XOR operation on the `partTime` field in `totalStaff`.
-```shell
-db.stores.updateOne(
-  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $bit: { "staff.totalStaff.partTime": { "xor" : 1 } } }
-)
+### Example 3: Perform a bitwise XOR operation on the `partTime` field in `totalStaff`
+
+```javascript
+db.stores.updateOne({
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+}, {
+    $bit: {
+        "staff.totalStaff.partTime": {
+            "xor": 1
+        }
+    }
+})
 ```
-This query would return the following document. The XOR of 1 and 1 is 0 hence the new value of the field is 0.
+
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
-
 
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]

@@ -190,6 +190,20 @@
         href: how-to-upgrade-cluster.md
       - name: Restore cluster
         href: how-to-restore-cluster.md
+    - name: Security and data access
+      items:
+      - name: Manage private access
+        href: how-to-private-link.md
+      - name: Manage public access
+        href: how-to-public-access.md
+      - name: Configure Microsoft Entra ID authentication
+        href: how-to-configure-entra-authentication.md
+      - name: Create secondary users
+        href: secondary-users.md
+      - name: Configure customer-managed key (CMK) encryption
+        href: how-to-data-encryption.md
+      - name: Troubleshoot CMK data encryption
+        href: how-to-database-encryption-troubleshoot.md
     - name: Replication
       items:
       - name: Manage replication
@@ -206,18 +220,6 @@
         href: how-to-manage-alerts.md
       - name: Monitor diagnostics logs
         href: how-to-monitor-diagnostics-logs.md
-    - name: Security and data access
-      items:
-      - name: Manage private access
-        href: how-to-private-link.md
-      - name: Manage public access
-        href: how-to-public-access.md
-      - name: Configure Microsoft Entra ID authentication
-        href: how-to-configure-entra-authentication.md
-      - name: Create secondary users
-        href: secondary-users.md
-      - name: Configure customer-managed key (CMK) encryption
-        href: how-to-data-encryption.md
 - name: Reference
   items:
     - name: Azure CLI

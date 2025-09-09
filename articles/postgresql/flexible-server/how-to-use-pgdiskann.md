@@ -104,8 +104,10 @@ WITH(
     );    
 ```
 
-### Improve accuracy when using PQ with reranking
-To balance speed and precision in vector similarity search, a two-step reranking strategy can be implemented when querying with DiskANN and product quantization.
+### Improve accuracy when using PQ with vector reranking
+Reranking with full vectors is a technique used in approximate nearest neighbor (ANN) search systems like DiskANN with Product Quantization (PQ) to improve result accuracy by reordering the top-N retrieved candidates using the original, uncompressed (full-precision) vectors. This reranking technique is based purely on exact vector similarity metrics (e.g., cosine similarity or Euclidean distance). This technique is **not** the same as [reranking using a ranking model](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-the-semantic-ranking-solution-for-azure-database-for-postgresql/4298781).
+
+To balance speed and precision in vector similarity search, a two-step reranking strategy can be implemented when querying with DiskANN and product quantization to improve accuracy.
 
 1. **Initial Approximate Search**: The inner query uses DiskANN to retrieve the top 50 approximate nearest neighbors based on cosine distance between the stored embeddings and the query vector. This step is fast and efficient, leveraging DiskANN’s indexing capabilities.
 
@@ -126,7 +128,7 @@ LIMIT 10;
 > [!NOTE]
 > **%s** should be replace by the query vector. You can use [azure_ai](generative-ai-azure-openai.md) to create a query vector directly in Postgres.
 
-This approach balances speed (via approximate search) and accuracy (via reranking), ensuring high-quality results without scanning the entire dataset. 
+This approach balances speed (via approximate search) and accuracy (via full vector reranking), ensuring high-quality results without scanning the entire dataset. 
 
 ### Support for high dimension embeddings
 Advanced Generative AI applications often rely on high-dimensional embedding models such as *text-embedding-3-large* to achieve superior accuracy. However, traditional indexing methods like [HNSW in pgvector](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) are limited to vectors with up to 2,000 dimensions, which restricts the use of these powerful models.

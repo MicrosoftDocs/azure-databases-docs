@@ -28,9 +28,9 @@ The `$bitNot` operator performs a bitwise NOT operation on integer values. It in
 | --- | --- |
 | **`expression`** | An expression that evaluates to an integer. The `$bitNot` operator performs a bitwise NOT operation on this value. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -91,7 +91,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Basic bitwise NOT operation
 
-The example aggregation query performs a bitwise inversion on the staff count fields for a specific store document.
+The example aggregation query performs a bitwise inversion on the staff count fields for a specific store document. The inverted values can be used for special permission flags, feature toggles, or bitmask operations. The bitwise NOT of 14 results are -15, and the bitwise NOT of 8 results in -9. The observed result is due to two's complement representation where ~n = -(n+1).
 
 ```javascript
 db.stores.aggregate([
@@ -112,22 +112,24 @@ db.stores.aggregate([
 ])
 ```
 
-The inverted values can be used for special permission flags, feature toggles, or bitmask operations. The bitwise NOT of 14 results are -15, and the bitwise NOT of 8 results in -9. The observed result is due to two's complement representation where ~n = -(n+1).
+This query returns the following result.
 
 ```json
-{
-  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
-  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
-  "fullTimeStaff": 14,
-  "partTimeStaff": 8,
-  "invertedFullTime": -15,
-  "invertedPartTime": -9
-}
+[
+  {
+    "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+    "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+    "fullTimeStaff": 14,
+    "partTimeStaff": 8,
+    "invertedFullTime": -15,
+    "invertedPartTime": -9
+  }
+]
 ```
 
 ### Example 2: Using $bitNot with discount percentages
 
-The example aggregation query extracts and processes discount information for a specific store and applies a bitwise NOT operation on each discount percentage.
+The example aggregation query extracts and processes discount information for a specific store and applies a bitwise NOT operation on each discount percentage. The bitwise NOT operation inverts all bits: 20 becomes -21 and 17 becomes -18.
 
 ```javascript
 db.stores.aggregate([
@@ -149,26 +151,27 @@ db.stores.aggregate([
 ])
 ```
 
-Applies $bitNot to produce bitwise-inverted discount values for potential flag checks or encoded logic. 
-The bitwise NOT operation inverts all bits: 20 becomes -21 and 17 becomes -18.
+This query returns the following results:
 
 ```json
-{
-  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
-  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
-  "eventName": "Incredible Savings Showcase",
-  "categoryName": "Microphone Stands",
-  "discountPercentage": 17,
-  "invertedDiscount": -18
-},
-{
-  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
-  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
-  "eventName": "Incredible Savings Showcase",
-  "categoryName": "Condenser Microphones",
-  "discountPercentage": 20,
-  "invertedDiscount": -21
-}
+[
+  {
+    "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+    "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+    "eventName": "Incredible Savings Showcase",
+    "categoryName": "Microphone Stands",
+    "discountPercentage": 17,
+    "invertedDiscount": -18
+  },
+  {
+    "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+    "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+    "eventName": "Incredible Savings Showcase",
+    "categoryName": "Condenser Microphones",
+    "discountPercentage": 20,
+    "invertedDiscount": -21
+  }
+]
 ```
 
 ## Related content

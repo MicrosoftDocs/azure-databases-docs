@@ -1,5 +1,5 @@
 ---
-title: $[] usage in Azure Cosmos DB for MongoDB vCore
+title: $[]
 titleSuffix: Overview of the $[] positional operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $[] operator is used to update all elements in an array that match the query condition.
 author: avijitgupta
@@ -14,7 +14,6 @@ ms.date: 10/14/2024
 The $[] operator in Azure Cosmos DB for MongoDB vCore is used to update all elements in an array that match a specified condition. This operator allows you to perform updates on multiple elements in an array without specifying their positions. It is particularly useful when you need to apply the same update to all items in an array.
 
 ## Syntax
-The syntax for using the $[] array update operator is as follows:
 
 ```javascript
 db.collection.update(
@@ -80,7 +79,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Updating Discount Percentages
 
-To update to all elements in the discounts array inside each promotion event.:
+To update to all elements in the discounts array inside each promotion event:
 
 ```javascript
 db.stores.updateOne(
@@ -96,7 +95,7 @@ db.stores.updateOne(
 
 ### Example 2: Updating Sales by Category
 
-To increase the total sales for all categories by 10%, you can use the $[] operator as follows:
+To increase the total sales for all categories by 10%, use the $[] operator as follows:
 
 ```javascript
 db.stores.update(

@@ -1,13 +1,13 @@
 ---
   title: $sampleRate
-  titleSuffix: Overview of the $sampleRate operation in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $sampleRate operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $sampleRate operator randomly samples documents from a collection based on a specified probability rate, useful for statistical analysis and testing.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 02/12/2025
+  ms.date: 09/04/2025
 ---
 
 # $sampleRate
@@ -16,10 +16,12 @@ The `$sampleRate` operator randomly samples documents from a collection based on
 
 ## Syntax
 
-The syntax for the `$sampleRate` operator is as follows:
-
 ```javascript
-{ $match: { $sampleRate: <number> } }
+{
+  $match: {
+    $sampleRate: <number>
+  }
+}
 ```
 
 ## Parameters
@@ -34,72 +36,129 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 19,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      }
-    ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Massive Markdown Mania",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 6,
-          "Day": 29
-        },
-        "endDate": {
-          "Year": 2023,
-          "Month": 7,
-          "Day": 9
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DVD Players",
-          "discountPercentage": 14
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
 ```
 
 ### Example 1: Basic random sampling
 
-To randomly sample approximately 33% of all stores:
+This query returns one-third of all documents in the stores collection, selected randomly.
 
 ```javascript
-db.stores.aggregate([
-  { $match: { $sampleRate: 0.33 } }
-])
+db.stores.aggregate([{
+    $match: {
+        $sampleRate: 0.33
+    }
+}])
 ```
-
-This query returns one-third of all documents in the stores collection, selected randomly.
 
 ### Example 2: Sampling with more filters
 
-To sample 50% of stores that have total sales greater than 50,000:
+This query first filters stores with sales above 50,000, then randomly samples 50% of those matching documents.
 
 ```javascript
 db.stores.aggregate([
@@ -110,11 +169,9 @@ db.stores.aggregate([
 ])
 ```
 
-This query first filters stores with sales above 50,000, then randomly samples 50% of those matching documents.
-
 ### Example 3: Sampling for statistical analysis
 
-To get a 25% sample of stores and calculate average sales:
+This query samples 25% of stores and calculates statistical measures on the sampled data.
 
 ```javascript
 db.stores.aggregate([
@@ -128,8 +185,6 @@ db.stores.aggregate([
   }}
 ])
 ```
-
-This query samples 25% of stores and calculates statistical measures on the sampled data.
 
 The $sampleRate operator is valuable for statistical analysis and data exploration when working with large datasets where processing all documents would be computationally expensive. It efficiently creates representative samples for performance testing, quality assurance validation, and machine learning dataset generation. The operator is ideal for approximate reporting scenarios where statistical accuracy is acceptable and processing speed is prioritized over exact precision.
 

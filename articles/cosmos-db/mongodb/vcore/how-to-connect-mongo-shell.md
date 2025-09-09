@@ -2,8 +2,8 @@
 title: Use MongoDB Shell to connect
 titleSuffix: Azure Cosmos DB for MongoDB in vCore architecture
 description: Connect to an Azure Cosmos DB for MongoDB (vCore architecture) account by using the MongoDB Shell community tool to query data.
-author: kruti-m
-ms.author: krmeht
+author: gahl-levy
+ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
