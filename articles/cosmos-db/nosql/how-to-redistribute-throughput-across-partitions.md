@@ -23,7 +23,7 @@ For example, if you partition data by `StoreId` in a retail application, some st
 
 - An existing Azure Cosmos DB account
 
-::: zone pivot="azure-interface-cli"
+::: zone pivot="azure-cli"
 
 - Latest version of Azure CLI
 
@@ -35,7 +35,7 @@ For example, if you partition data by `StoreId` in a retail application, some st
 
 ::: zone-end
 
-::: zone pivot="azure-interface-shell"
+::: zone pivot="azure-powershell"
 
 - Latest version of Azure PowerShell
 
@@ -108,7 +108,7 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
 
 To check the current RU/s for each physical partition, use the Azure Monitor metric **PhysicalPartitionThroughput** and split by **PhysicalPartitionId**. If throughput per partition was never changed, estimate the RU/s per partition by dividing the total RU/s by the number of physical partitions.
 
-::: zone pivot="azure-interface-cli"
+::: zone pivot="azure-cli"
 
 #### [API for NoSQL](#tab/nosql)
 
@@ -158,7 +158,7 @@ az cosmosdb mongodb collection retrieve-partition-throughput \
 
 ::: zone-end
 
-::: zone pivot="azure-interface-shell"
+::: zone pivot="azure-powershell"
 
 #### [API for NoSQL](#tab/nosql)
 
