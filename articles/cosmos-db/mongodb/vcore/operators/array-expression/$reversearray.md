@@ -109,29 +109,38 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Reversing the order of an array
 
-The aggregation pipeline demonstrates the usage of operator for performing reversal on the order of the `promotionEvents` array.
+This query demonstrates the usage of operator for performing reversal on the order of the `promotionEvents` array.
 
 ```javascript
 db.stores.aggregate([
     //filtering to one document
     {
-      $match: {
-        "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
-      }
+        $match: {
+            _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+        }
     },
     {
-      $project: {
-        _id: 1,
-        name: 1,
-        promotionEventsReversed: { $reverseArray: "$promotionEvents" }
-      }
+        $project: {
+            _id: 1,
+            name: 1,
+            promotionEventsReversed: {
+                $reverseArray: "$promotionEvents"
+            }
+        }
     },
     // Include only _id, name, promotionalDates and eventName fields in the output 
-    { $project: { _id: 1, name: 1 , "promotionEventsReversed.promotionalDates":1, "promotionEventsReversed.eventName":1  } } 
+    {
+        $project: {
+            _id: 1,
+            name: 1,
+            "promotionEventsReversed.promotionalDates": 1,
+            "promotionEventsReversed.eventName": 1
+        }
+    }
 ])
 ```
 
-The query returns the following result.
+This query returns the following result.
 
 ```json
 [
