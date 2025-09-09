@@ -34,7 +34,7 @@ The following high-level diagram summarizes how authentication works when you us
 1. Your application requests a token from the Azure Instance Metadata Service identity endpoint.
 1. When you use the client ID and certificate, your application calls Microsoft Entra ID to request an access token.
 1. Microsoft Entra ID returns a JSON Web Token (JWT) access token. Your application sends the access token on a call to your server.
-1. Validates the token with Microsoft Entra ID.
+1. The server validates the token with Microsoft Entra ID.
 
 For the steps to configure Microsoft Entra ID with Azure Database for PostgreSQL, see [Configure and sign in with Microsoft Entra ID for Azure Database for PostgreSQL ](how-to-configure-sign-in-azure-ad-authentication.md).
 
