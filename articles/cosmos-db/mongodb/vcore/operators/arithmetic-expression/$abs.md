@@ -148,7 +148,7 @@ To calculate the absolute difference in sales volume of each category and the av
 
 ```javascript
 db.stores.aggregate([
-  { $match: { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
+  { $match: { _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
   {
     $project: {
       name: 1,
@@ -216,3 +216,4 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
