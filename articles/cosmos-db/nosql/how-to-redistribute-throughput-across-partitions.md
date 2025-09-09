@@ -13,7 +13,7 @@ applies-to:
   - ✅ NoSQL
 ---
 
-# Redistribute throughput across partitions
+# Redistribute throughput across partitions in Azure Cosmos DB for NoSQL
 
 By default, Azure Cosmos DB spreads provisioned throughput evenly across all physical partitions. However, if your workload is skewed—such as when certain partitions consistently need more throughput due to hot keys or uneven traffic—you can redistribute throughput to optimize performance. This feature is available for databases and containers using provisioned throughput (manual or autoscale), and can be managed using Azure Cosmos DB PowerShell or Azure CLI commands.
 
