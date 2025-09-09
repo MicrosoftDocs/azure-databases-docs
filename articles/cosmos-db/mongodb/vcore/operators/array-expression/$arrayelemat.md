@@ -139,7 +139,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Return the first element from an array field
 
-The example retrieves the first event details from `promotionEvents` array for the searched store.
+This query retrieves the first event details from `promotionEvents` array for the searched store.
 
 ```javascript
 db.stores.aggregate([
@@ -152,7 +152,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the following result.
+This query returns the following result.
 
 ```json
 [
