@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
 # $toDouble
@@ -147,18 +147,16 @@ Consider this sample document from the stores collection.
 To convert the string representation of 72 ("72") into a double value, run a query using the $toDouble operator on the string to make the conversion.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsDouble": {
-            "$toDouble": {
-                "$toString": "72"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsDouble: {
+            $toDouble: {
+                $toString: "72"
             }
         }
     }
