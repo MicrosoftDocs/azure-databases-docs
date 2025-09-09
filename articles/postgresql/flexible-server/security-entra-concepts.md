@@ -29,7 +29,7 @@ Benefits of using Microsoft Entra ID include:
 
 The following high-level diagram summarizes how authentication works when you use Microsoft Entra authentication with Azure Database for PostgreSQL. The arrows indicate communication pathways.
 
-:::image type="content" source="media/concepts-azure-ad-authentication/authentication-flow.png" alt-text="Diagram of authentication flow between Microsoft Entra ID, the user's computer, and the server." lightbox="media/concepts-azure-ad-authentication/authentication-flow.png":::
+:::image type="content" source="media/security-entra-concepts/authentication-flow.png" alt-text="Diagram of authentication flow between Microsoft Entra ID, the user's computer, and the server." lightbox="media/security-entra-concepts/authentication-flow.png":::
 
 1. Your application requests a token from the Azure Instance Metadata Service identity endpoint.
 1. When you use the client ID and certificate, your application calls Microsoft Entra ID to request an access token.
@@ -51,7 +51,7 @@ The Microsoft Entra administrator can be a Microsoft Entra user, Microsoft Entra
 
 You can configure multiple Microsoft Entra administrators concurrently. You can deactivate password authentication to an Azure Database for PostgreSQL instance for enhanced auditing and compliance requirements.
 
-:::image type="content" source="media/concepts-azure-ad-authentication/admin-structure.png" alt-text="Diagram of admin structure of Microsoft Entra users compared to local users on. " lightbox="media/concepts-azure-ad-authentication/admin-structure.png":::
+:::image type="content" source="media/security-entra-concepts/admin-structure.png" alt-text="Diagram of admin structure of Microsoft Entra users compared to local users on. " lightbox="media/security-entra-concepts/admin-structure.png":::
 
 Microsoft Entra administrators that you create through the Azure portal, an API, or SQL have the same permissions as the regular admin user that you created during server provisioning. You manage database permissions for nonadmin Microsoft Entra roles the same way you manage regular roles.
 
