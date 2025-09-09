@@ -7,7 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: quickstart
-ms.date: 06/11/2025
+ms.date: 09/09/2025
 ms.custom: sfi-image-nochange
 # CustomerIntent: As a cloud user, I want to create a new Azure Cosmos DB account, so that I can manage resources and data.
 ---
@@ -173,6 +173,26 @@ Finally, use the Data Explorer to create a sample item and then issue a basic qu
     ```
 
     :::image source="media/quickstart-portal/data-explorer-query-results.png" alt-text="Screenshot of the results of the previous NoSQL query's execution in the Data Explorer.":::
+
+### Explore more setup and optimization guidance
+
+After creating and querying your data, the **Overview** tab in the Azure portal makes it easy to continue your journey with Azure Cosmos DB.
+
+The **Overview Hub** brings together the tools, guidance, and insights you need in one place, including:
+
+- **Quickstarts** to help you build and test your application.
+- **Setup & Optimization guidance** to support every stage of your journey—from learning to production. Topics include partitioning, indexing, modeling, cost control, backup configuration, and performance tuning.
+- **Containers & Data access** for querying your data, adjusting throughput, and opening containers in Data Explorer or VS Code.
+- **Monitoring tools** such as Insights, Metrics, Alerts, and Diagnostic settings, plus a scorecard that surfaces availability, alerts, and Azure Advisor recommendations.
+- **Learning resources** like video tutorials, sample apps, and documentation.
+- **Actionable recommendations** personalized to your account for reliability, security, and cost efficiency.
+
+:::image source="https://devblogs.microsoft.com/cosmosdb/wp-content/uploads/sites/52/2025/07/overview-setup.jpg" alt-text="Screenshot of the Setup & Optimization tab in Overview.":::
+
+> [!TIP]
+> The content shown adapts to your activity and workload type to make it easier to find what’s most relevant to you.
+
+To see this in action, go to your Cosmos DB account in the Azure portal and explore the **Overview** tab.
 
 ## Related content
 
