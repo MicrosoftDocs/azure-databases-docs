@@ -7,8 +7,9 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/11/2024
+  ms.date: 09/05/2025
 ---
+
 # $each
 
 The `$each` operator is used within an `$addToSet` or `$push` operation to add multiple elements to an array field in a single update operation. This operator is useful when you need to insert multiple items into an array without having to perform multiple update operations. The `$each` operator ensures that each item in the specified array is added to the target array.
@@ -19,10 +20,9 @@ The `$each` operator is used within an `$addToSet` or `$push` operation to add m
 {
   $push: {
     <field>: {
-      $each: [ <value1>, <value2>, ... ],
+      $each: [ <value1>, <value2>],
       <modifier1>: <value1>,
-      <modifier2>: <value2>,
-      ...
+      <modifier2>: <value2>
     }
   }
 }
@@ -42,104 +42,150 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
+    ]
 }
 ```
+
 ### Example 1: Add multiple elements to an array
 
-To add multiple new promotion events to the `promotionEvents` array.
+This query adds multiple new promotion events to the `promotionEvents` array.
 
 ```javascript
-db.stores.updateOne(
-  { "name": "Lenore's New DJ Equipment Store" },
-  {
+db.stores.updateOne({
+    name: "Lenore's New DJ Equipment Store"
+}, {
     $push: {
-      promotionEvents: {
-        $each: [
-          {
-            eventName: "Grand Savings",
-            promotionalDates: {
-              startDate: "2024-08-01",
-              endDate: "2024-08-31"
-            },
-            discounts: [             
-              {
-                categoryName: "DJ Headphones",
-                discountPercentage: 5
-              }
+        promotionEvents: {
+            $each: [{
+                    eventName: "Grand Savings",
+                    promotionalDates: {
+                        startDate: "2024-08-01",
+                        endDate: "2024-08-31"
+                    },
+                    discounts: [{
+                        categoryName: "DJ Headphones",
+                        discountPercentage: 5
+                    }]
+                },
+                {
+                    eventName: "Big Bargain",
+                    promotionalDates: {
+                        startDate: "2024-11-25",
+                        endDate: "2024-11-30"
+                    },
+                    discounts: [{
+                        categoryName: "DJ Headphones",
+                        discountPercentage: 20
+                    }]
+                }
             ]
-          },
-          {
-            eventName: "Big Bargain",
-            promotionalDates: {
-              startDate: "2024-11-25",
-              endDate: "2024-11-30"
-            },
-            discounts: [
-              {
-                categoryName: "DJ Headphones",
-                discountPercentage: 20
-              }
-            ]
-          }
-        ]
-      }
+        }
     }
-  }
-)
+})
 ```
 
 This query returns the following result.
