@@ -110,7 +110,7 @@ To check the current RU/s for each physical partition, use the Azure Monitor met
 
 ::: zone pivot="azure-cli"
 
-#### [API for NoSQL](#tab/nosql)
+### [API for NoSQL](#tab/nosql)
 
 Read the current RU/s on each physical partition by using [`az cosmosdb sql container retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-retrieve-partition-throughput).
 
@@ -132,7 +132,7 @@ az cosmosdb sql container retrieve-partition-throughput \
     --all-partitions
 ```
 
-#### [API for MongoDB](#tab/mongodb/azure-powershell)
+### [API for MongoDB](#tab/mongodb)
 
 Read the current RU/s on each physical partition by using [`az cosmosdb mongodb collection retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-mongodb-collection-retrieve-partition-throughput).
 
@@ -160,7 +160,7 @@ az cosmosdb mongodb collection retrieve-partition-throughput \
 
 ::: zone pivot="azure-powershell"
 
-#### [API for NoSQL](#tab/nosql)
+### [API for NoSQL](#tab/nosql)
 
 Use the `Get-AzCosmosDBSqlContainerPerPartitionThroughput` or `Get-AzCosmosDBSqlDatabasePerPartitionThroughput` command to read the current RU/s on each physical partition.
 
@@ -194,7 +194,7 @@ $allPartitionsSharedThroughputDatabase = Get-AzCosmosDBSqlDatabasePerPartitionTh
                     -AllPartitions
 ```
 
-#### [API for MongoDB](#tab/mongodb/azure-powershell)
+### [API for MongoDB](#tab/mongodb)
 
 Use the `Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput` command to read the current RU/s on each physical partition.
 
