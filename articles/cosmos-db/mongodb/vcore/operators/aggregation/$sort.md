@@ -284,6 +284,26 @@ The first two results returned by this query are:
 ]
 ```
 
+### Example 3: Sorting an array of objects
+
+The example sorts the `salesByCategory` array in place based on the `totalSales` field in ascending order.
+
+```javascript
+db.stores.updateOne({
+            _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+        }, {
+            $push: {
+                "sales.salesByCategory": {
+                    $each: [],
+                    $sort: {
+                        totalSales: 1
+                    }
+                }
+            }
+        }
+)
+```
+
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]

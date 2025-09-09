@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 10/14/2024
+ms.date: 09/05/2025
 ---
 
 # $[identifier]
@@ -18,13 +18,13 @@ The $[identifier] array update operator is used to update specific elements in a
 
 ```javascript
 {
-  "<update operator>": {
-    "<array field>.$[<identifier>]": <value>
+  <update operator>: {
+    <array field>.$[<identifier>]: <value>
   }
 },
 {
-  "arrayFilters": [
-    { "<identifier>.<field>": <condition> }
+  arrayFilters: [
+    { <identifier>.<field>: <condition> }
   ]
 }
 ```
@@ -208,7 +208,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Update the discount percentage for the chosen category in the specified promotion event. 
 
-Update the discount percentage for the 'Desk Lamps' category by modifying the specific elements in the promotion event array where the event name is 'Blowout Bonanza'.
+This query updates the discount percentage for the 'Desk Lamps' category by modifying the specific elements in the promotion event array where the event name is 'Blowout Bonanza'.
 
 ```javascript
 db.stores.updateOne(
