@@ -27,20 +27,20 @@ Benefits of using Microsoft Entra ID include:
 
 ## How Microsoft Entra ID works in Azure Database for PostgreSQL
 
-The following high-level diagram summarizes how authentication works when you use Microsoft Entra authentication with Azure Database for PostgreSQL . The arrows indicate communication pathways.
+The following high-level diagram summarizes how authentication works when you use Microsoft Entra authentication with Azure Database for PostgreSQL. The arrows indicate communication pathways.
 
 :::image type="content" source="media/concepts-azure-ad-authentication/authentication-flow.png" alt-text="Diagram of authentication flow between Microsoft Entra ID, the user's computer, and the server." lightbox="media/concepts-azure-ad-authentication/authentication-flow.png":::
 
 1. Your application requests a token from the Azure Instance Metadata Service identity endpoint.
 1. When you use the client ID and certificate, your application calls Microsoft Entra ID to request an access token.
-1. Microsoft Entra ID returns a JSON Web Token (JWT) access token. Your application sends the access token on a call to your .
-1. The validates the token with Microsoft Entra ID.
+1. Microsoft Entra ID returns a JSON Web Token (JWT) access token. Your application sends the access token on a call to your server.
+1. Validates the token with Microsoft Entra ID.
 
-For the steps to configure Microsoft Entra ID with Azure Database for PostgreSQL , see [Configure and sign in with Microsoft Entra ID for Azure Database for PostgreSQL ](how-to-configure-sign-in-azure-ad-authentication.md).
+For the steps to configure Microsoft Entra ID with Azure Database for PostgreSQL, see [Configure and sign in with Microsoft Entra ID for Azure Database for PostgreSQL ](how-to-configure-sign-in-azure-ad-authentication.md).
 
 ## Differences between a PostgreSQL administrator and a Microsoft Entra administrator
 
-When you turn on Microsoft Entra authentication for your and add a Microsoft Entra principal as a Microsoft Entra administrator, the account:
+When you turn on Microsoft Entra authentication for your Azure Database for PostgreSQL instance add a Microsoft Entra principal as a Microsoft Entra administrator, the account:
 
 - Gets the same privileges as the original PostgreSQL administrator.
 - Can manage other Microsoft Entra roles on the server.
@@ -51,7 +51,7 @@ The Microsoft Entra administrator can be a Microsoft Entra user, Microsoft Entra
 
 You can configure multiple Microsoft Entra administrators concurrently. You can deactivate password authentication to an Azure Database for PostgreSQL instance for enhanced auditing and compliance requirements.
 
-:::image type="content" source="media/concepts-azure-ad-authentication/admin-structure.png" alt-text="Diagram of admin structure of Microsoft Entra users compared to local users on ." lightbox="media/concepts-azure-ad-authentication/admin-structure.png":::
+:::image type="content" source="media/concepts-azure-ad-authentication/admin-structure.png" alt-text="Diagram of admin structure of Microsoft Entra users compared to local users on. " lightbox="media/concepts-azure-ad-authentication/admin-structure.png":::
 
 Microsoft Entra administrators that you create through the Azure portal, an API, or SQL have the same permissions as the regular admin user that you created during server provisioning. You manage database permissions for nonadmin Microsoft Entra roles the same way you manage regular roles.
 
@@ -97,9 +97,9 @@ When you use Microsoft Entra authentication with Azure Database for PostgreSQL, 
 
   Azure Database for PostgreSQL supports three authentication modes: PostgreSQL authentication only, Microsoft Entra authentication only, and both PostgreSQL and Microsoft Entra authentication.
 
-- **Can I configure multiple Microsoft Entra administrators on my?**
+- **Can I configure multiple Microsoft Entra administrators on my server?**
 
-  Yes. You can configure multiple Microsoft Entra administrators on your . During provisioning, you can set only a single Microsoft Entra administrator. But after the server is created, you can set as many Microsoft Entra administrators as you want by going to the **Authentication** pane.
+  Yes. You can configure multiple Microsoft Entra administrators on your server. During provisioning, you can set only a single Microsoft Entra administrator. But after the server is created, you can set as many Microsoft Entra administrators as you want by going to the **Authentication** pane.
 
 - **Is a Microsoft Entra administrator just a Microsoft Entra user?**
 
@@ -109,13 +109,13 @@ When you use Microsoft Entra authentication with Azure Database for PostgreSQL, 
 
   Yes. A Microsoft Entra administrator can manage both Microsoft Entra users and local password-based users.
 
-- **What happens when I enable Microsoft Entra authentication on my?**
+- **What happens when I enable Microsoft Entra authentication on my server?**
 
   When you set Microsoft Entra authentication at the server level, the PGAadAuth extension is enabled and the server restarts.
 
 - **How do I sign in by using Microsoft Entra authentication?**
 
-  You can use client tools like psql or pgAdmin to sign in to your . Use your Microsoft Entra user ID as the username and your Microsoft Entra token as your password.
+  You can use client tools like psql or pgAdmin to sign in to your server. Use your Microsoft Entra user ID as the username and your Microsoft Entra token as your password.
 
 - **How do I generate my token?**
 
