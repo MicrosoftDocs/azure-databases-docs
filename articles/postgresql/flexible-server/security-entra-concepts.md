@@ -40,7 +40,7 @@ For the steps to configure Microsoft Entra ID with Azure Database for PostgreSQL
 
 ## Differences between a PostgreSQL administrator and a Microsoft Entra administrator
 
-When you turn on Microsoft Entra authentication for your Azure Database for PostgreSQL instance add a Microsoft Entra principal as a Microsoft Entra administrator, the account:
+When you turn on Microsoft Entra authentication for your flexible server instance and add a Microsoft Entra principal as a Microsoft Entra administrator, the account:
 
 - Gets the same privileges as the original PostgreSQL administrator.
 - Can manage other Microsoft Entra roles on the server.
@@ -67,7 +67,7 @@ Microsoft Entra authentication supports the following methods for connecting to 
 
 After you authenticate against Active Directory, you retrieve a token. This token is your password for sign-in.
 
-To configure Microsoft Entra ID with Azure Database for PostgreSQL, follow the steps in [Configure and sign in with Microsoft Entra ID for Azure Database for PostgreSQL ](how-to-configure-sign-in-azure-ad-authentication.md).
+To configure Microsoft Entra ID with Azure Database for PostgreSQL, follow the steps in [Configure and sign in with Microsoft Entra ID for Azure Database for PostgreSQL](how-to-configure-sign-in-azure-ad-authentication.md).
 
 ## Other considerations
 
@@ -99,7 +99,7 @@ When you use Microsoft Entra authentication with Azure Database for PostgreSQL, 
 
 - **Can I configure multiple Microsoft Entra administrators on my server?**
 
-  Yes. You can configure multiple Microsoft Entra administrators on your server. During provisioning, you can set only a single Microsoft Entra administrator. But after the server is created, you can set as many Microsoft Entra administrators as you want by going to the **Authentication** pane.
+  Yes. You can configure multiple Microsoft Entra administrators on your server. During provisioning, you can set only a single Microsoft Entra administrator. However, after the server is created, you can set as many Microsoft Entra administrators as you want by going to the **Authentication** pane.
 
 - **Is a Microsoft Entra administrator just a Microsoft Entra user?**
 
