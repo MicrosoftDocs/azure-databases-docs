@@ -1,5 +1,5 @@
 ---
-title: $[] usage in Azure Cosmos DB for MongoDB vCore
+title: $[]
 titleSuffix: Overview of the $[] positional operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $[] operator is used to update all elements in an array that match the query condition.
 author: avijitgupta
@@ -7,21 +7,20 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 10/14/2024
+ms.date: 09/05/2025
 ---
 
 # $[]
 The $[] operator in Azure Cosmos DB for MongoDB vCore is used to update all elements in an array that match a specified condition. This operator allows you to perform updates on multiple elements in an array without specifying their positions. It is particularly useful when you need to apply the same update to all items in an array.
 
 ## Syntax
-The syntax for using the $[] array update operator is as follows:
 
 ```javascript
 db.collection.update(
    <query>,
    {
      $set: {
-       "<arrayField>.$[]": <value>
+       <arrayField>.$[]: <value>
      }
    }
 )
@@ -35,52 +34,123 @@ db.collection.update(
 | **`<arrayField>`** | The field containing the array to update. |
 | **`<value>`** | The value to set for each matching element in the array. |
 
-
 ## Examples
 
 Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
-  "name": "Trey Research | Home Office Depot - Lake Freeda",
-  "location": { "lat": -48.9752, "lon": -141.6816 },
-  "staff": { "employeeCount": { "fullTime": 12, "partTime": 19 } },
-  "sales": {
-    "salesByCategory": [ { "categoryName": "Desk Lamps", "totalSales": 37978 } ],
-    "revenue": 37978
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Crazy Deal Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
-        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
-      },
-      "discounts": [
-        { "categoryName": "Desks", "discountPercentage": 22 },
-        { "categoryName": "Filing Cabinets", "discountPercentage": 23 }
-      ]
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
     },
-    {
-      "eventName": "Incredible Markdown Mania",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
-        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
-      },
-      "discounts": [
-        { "categoryName": "Monitor Stands", "discountPercentage": 20 },
-        { "categoryName": "Desks", "discountPercentage": 24 }
-      ]
-    }
-  ]
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
 
-
 ### Example 1: Updating Discount Percentages
 
-To update to all elements in the discounts array inside each promotion event.:
+This query updates all elements in the discounts array inside each promotion event.
 
 ```javascript
 db.stores.updateOne(
@@ -91,12 +161,11 @@ db.stores.updateOne(
     }
   }
 )
-
 ```
 
 ### Example 2: Updating Sales by Category
 
-To increase the total sales for all categories by 10%, you can use the $[] operator as follows:
+This query increase the total sales for all categories by 10% by using the $[] operator.
 
 ```javascript
 db.stores.update(

@@ -1,6 +1,6 @@
 - name: $dateAdd
   href: $dateadd.md
-- name: $datediff
+- name: $dateDiff
   href: $datediff.md
 - name: $dateFromParts
   href: $datefromparts.md

@@ -1,13 +1,13 @@
 ---
   title: $comment
-  titleSuffix: Overview of the $comment operation in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $comment operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $comment operator adds a comment to a query to help identify the query in logs and profiler output.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/04/2025
 ---
 
 # $comment
@@ -16,10 +16,10 @@ The `$comment` operator adds comments to queries to help identify them in logs a
 
 ## Syntax
 
-The syntax for the `$comment` operator is as follows:
-
 ```javascript
-{ $comment: <string> }
+{
+  $comment: <string>
+}
 ```
 
 ## Parameters
@@ -86,7 +86,7 @@ Consider this sample document from the stores collection.
 ```
 ### Example 1: Find stores with total sales over 100,000 and add a log comment for reference
 
-To find stores with total sales greater than 100,000 and includes a comment for easy identification in logs. 
+This query retrieves stores with total sales greater than 100,000 and includes a comment for easy identification in logs. 
 
 ```javascript
 db.stores.find(
@@ -95,18 +95,22 @@ db.stores.find(
 ).comment("Query to find high-performing stores")
 ```
 
-Sample Output
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "sales": {
-    "totalSales": 151864
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "sales": {
+      "totalSales": 151864
+    }
   }
-}
+]
 ```
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
+

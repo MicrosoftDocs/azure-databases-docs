@@ -1,7 +1,7 @@
 ---
   title: $bitsAnySet
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: Overview of the $bitsAnySet operator in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $bitsAnySet operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $bitsAnySet operator returns documents where any of the specified bit positions are set to 1.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -151,21 +151,34 @@ Find stores that offer either home delivery OR free Wi-Fi (bits 5 and 7)
 
 ```javascript
 db.stores.find({
-  storeFeatures: { $bitsAnySet: [5, 7] }},
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+    storeFeatures: {
+        $bitsAnySet: [5, 7]
+    }
+}, {
+    _id: 1,
+    name: 1,
+    storeFeatures: 1
+}).limit(5)
 ```
 
 Equivalent:
 
 ```javascript
 db.stores.find({
-  storeFeatures: { $bitsAnySet: 160  }},  // 32 + 128
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+        storeFeatures: {
+            $bitsAnySet: 160
+        }
+    }, // 32 + 128
+    {
+        _id: 1,
+        name: 1,
+        storeFeatures: 1
+    }).limit(5)
 ```
 
-Sample output:
+This query returns the following results:
 
-```JSON
+```json
 [
   {
     "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",

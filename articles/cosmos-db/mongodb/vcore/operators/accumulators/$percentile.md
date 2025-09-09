@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 06/28/2025
+ms.date: 09/05/2025
 ---
 
 # $percentile
@@ -32,7 +32,7 @@ $percentile: {
 | **`p`** | An array of percentile values (between 0 and 1) to calculate. |
 | **`method`** | Specifies the interpolation method to use. Valid values are `"approximate"` and `"continuous"`. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -148,7 +148,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Calculate the 50th percentile of sales volume
 
-The following example calculates the 50th percentile (median) of total sales volume within each sales category across all stores.
+This query calculates the 50th percentile (median) of total sales volume within each sales category across all stores.
 
 ```javascript
 db.stores.aggregate([{
@@ -169,7 +169,7 @@ db.stores.aggregate([{
 ])
 ```
 
-This query returns the following results:
+This query returns the following result:
 
 ```json
 [
@@ -184,7 +184,7 @@ This query returns the following results:
 
 ### Example 2: Calculate multiple percentiles
 
-This example calculates the 25th, 50th, and 75th percentiles of the total sales across all stores.
+This query calculates the 25th, 50th, and 75th percentiles of the total sales across all stores.
 
 ```javascript
 db.stores.aggregate([{
@@ -201,7 +201,7 @@ db.stores.aggregate([{
 }])
 ```
 
-This query returns the following results:
+This query returns the following result:
 
 ```json
 [

@@ -1,20 +1,19 @@
 ---
 title: $sortByCount
-titleSuffix: Overview of the $sort operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $sort operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $sortByCount stage in the aggregation pipeline is used to group documents by a specified expression and then sort the count of documents in each group in descending order.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/27/2024
+ms.date: 09/05/2025
 ---
 
 # $sortByCount
 The $sortByCount stage in the aggregation pipeline is used to group documents by a specified expression and then sort the count of documents in each group in descending order. The `$sortByCount` stage is useful for quickly identifying the most common values within a dataset.
 
 ## Syntax
-The syntax for the $sortByCount stage is:
 
 ```javascript
 {
@@ -29,6 +28,7 @@ The syntax for the $sortByCount stage is:
 | **`expression`** | This is the field or computed expression on which to group and count the documents. |
 
 ## Examples
+
 Consider this sample document from the stores collection.
 
 ```json
@@ -151,7 +151,8 @@ db.stores.aggregate([
   { $sortByCount: "$promotionEvents.eventName" }
 ])
 ```
-Sample output:
+
+This query returns the following results:
 
 ```json
 [
@@ -176,7 +177,6 @@ Sample output:
   { "_id": "Fantastic Deal Days", "count": 1511 },
   { "_id": "Flash Bargain Frenzy", "count": 1504 }
 ]
-
 ```
 
 This pipeline will: 
@@ -186,5 +186,4 @@ This pipeline will:
 
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
-- Get started by [creating an account](../../quickstart-portal.md).
+[!INCLUDE[Related content](../includes/related-content.md)]

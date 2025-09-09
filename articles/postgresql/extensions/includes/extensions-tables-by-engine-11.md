@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/04/2025
+ms.date: 09/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include

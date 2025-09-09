@@ -25,7 +25,7 @@
 - name: Conditional expression
   href: conditional-expression/toc.yml
 - name: Date expression
-  href: data-expression/TOC.yml
+  href: date-expression/TOC.yml
 - name: Data size
   href: data-size/TOC.yml
 - name: Element query

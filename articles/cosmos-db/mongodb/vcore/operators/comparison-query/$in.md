@@ -117,45 +117,47 @@ db.stores.find(
 ).limit(1)
 ```
 
-This returns the following result:
+This query returns the following result:
 
 ```json
-{
-  "_id": "48fcdab8-b961-480e-87a9-19ad880e9a0a",
-  "name": "Lakeshore Retail | Jewelry Collection - South Nicholas",
-  "promotionEvents": [
+[
     {
-      "discounts": [
-        {"categoryName": "Anklets"},
-        {"categoryName": "Cufflinks"}
-      ]
-    },
-    {
-      "discounts": [
-        {"categoryName": "Anklets"},
-        {"categoryName": "Brooches"}
-      ]
-    },
-    {
-      "discounts": [
-        {"categoryName": "Rings"},
-        {"categoryName": "Bracelets"}
-      ]
-    },
-    {
-      "discounts": [
-        {"categoryName": "Charms"},
-        {"categoryName": "Bracelets"}
-      ]
-    },
-    {
-      "discounts": [
-        {"categoryName": "Watches"},
-        {"categoryName": "Pendants"}
+      "_id": "48fcdab8-b961-480e-87a9-19ad880e9a0a",
+      "name": "Lakeshore Retail | Jewelry Collection - South Nicholas",
+      "promotionEvents": [
+        {
+          "discounts": [
+            {"categoryName": "Anklets"},
+            {"categoryName": "Cufflinks"}
+          ]
+        },
+        {
+          "discounts": [
+            {"categoryName": "Anklets"},
+            {"categoryName": "Brooches"}
+          ]
+        },
+        {
+          "discounts": [
+            {"categoryName": "Rings"},
+            {"categoryName": "Bracelets"}
+          ]
+        },
+        {
+          "discounts": [
+            {"categoryName": "Charms"},
+            {"categoryName": "Bracelets"}
+          ]
+        },
+        {
+          "discounts": [
+            {"categoryName": "Watches"},
+            {"categoryName": "Pendants"}
+          ]
+        }
       ]
     }
-  ]
-}
+]
 ```
 
 ### Example 2 - Use $in operator as array-expression in an array for a specified value or set of values
@@ -179,42 +181,44 @@ db.stores.find(
 The query returns document where the `discounts` array contains any element with a `discountPercentage` of either `15` or `20`, and only shows the `complete discounts array` for those documents.
 
 ```json
-{
-  "_id": "48fcdab8-b961-480e-87a9-19ad880e9a0a",
-  "name": "Lakeshore Retail | Jewelry Collection - South Nicholas",
-  "promotionEvents": [
+[
     {
-      "discounts": [
-        { "categoryName": "Anklets", "discountPercentage": 12 },
-        { "categoryName": "Cufflinks", "discountPercentage": 9 }
-      ]
-    },
-    {
-      "discounts": [
-        { "categoryName": "Anklets", "discountPercentage": 23 },
-        { "categoryName": "Brooches", "discountPercentage": 12 }
-      ]
-    },
-    {
-      "discounts": [
-        { "categoryName": "Rings", "discountPercentage": 10 },
-        { "categoryName": "Bracelets", "discountPercentage": 21 }
-      ]
-    },
-    {
-      "discounts": [
-        { "categoryName": "Charms", "discountPercentage": 9 },
-        { "categoryName": "Bracelets", "discountPercentage": 13 }
-      ]
-    },
-    {
-      "discounts": [
-        { "categoryName": "Watches", "discountPercentage": 20 },
-        { "categoryName": "Pendants", "discountPercentage": 7 }
+      "_id": "48fcdab8-b961-480e-87a9-19ad880e9a0a",
+      "name": "Lakeshore Retail | Jewelry Collection - South Nicholas",
+      "promotionEvents": [
+        {
+          "discounts": [
+            { "categoryName": "Anklets", "discountPercentage": 12 },
+            { "categoryName": "Cufflinks", "discountPercentage": 9 }
+          ]
+        },
+        {
+          "discounts": [
+            { "categoryName": "Anklets", "discountPercentage": 23 },
+            { "categoryName": "Brooches", "discountPercentage": 12 }
+          ]
+        },
+        {
+          "discounts": [
+            { "categoryName": "Rings", "discountPercentage": 10 },
+            { "categoryName": "Bracelets", "discountPercentage": 21 }
+          ]
+        },
+        {
+          "discounts": [
+            { "categoryName": "Charms", "discountPercentage": 9 },
+            { "categoryName": "Bracelets", "discountPercentage": 13 }
+          ]
+        },
+        {
+          "discounts": [
+            { "categoryName": "Watches", "discountPercentage": 20 },
+            { "categoryName": "Pendants", "discountPercentage": 7 }
+          ]
+        }
       ]
     }
-  ]
-}
+]
 ```
 
 ## Related content

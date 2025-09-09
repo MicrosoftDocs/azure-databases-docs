@@ -7,7 +7,7 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 05/04/2025
+ms.date: 09/05/2025
 ---
 
 # $addToSet
@@ -18,7 +18,7 @@ The `$addToSet` operator adds elements to an array if they don't already exist, 
 
 ```javascript
 {
-  $addToSet: { <field1>: <value1>, ... }
+  $addToSet: { <field1>: <value1> }
 }
 ```
 
@@ -145,15 +145,14 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Add a new tag to the `tag` array
 
-To add a new tag to the array of tags, run a query using the $addToSet operator to add the new value.
+This query adds a new tag to the array of tags, run a query using the $addToSet operator to add the new value.
 
 ```javascript
-db.stores.update({
+db.stores.updateOne({
     _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
-    },
-    {
+}, {
     $addToSet: {
-        "tag": "#ShopLocal"
+        tag: "#ShopLocal"
     }
 })
 ```
@@ -174,30 +173,30 @@ This query returns the following result:
 
 ### Example 2: Adding a new promotional event to the `promotionEvents` array
 
-To add a new event to the `promotionEvents` array, run a query using the $addToSet operator with the new promotion object to be added.
+This query adds a new event to the `promotionEvents` array, run a query using the $addToSet operator with the new promotion object to be added.
 
 ```javascript
-db.stores.update({
+db.stores.updateOne({
     _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
 }, {
     $addToSet: {
-        "promotionEvents": {
-            "eventName": "Summer Sale",
-            "promotionalDates": {
-                "startDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 1
+        promotionEvents: {
+            eventName: "Summer Sale",
+            promotionalDates: {
+                startDate: {
+                    Year: 2024,
+                    Month: 6,
+                    Day: 1
                 },
-                "endDate": {
-                    "Year": 2024,
-                    "Month": 6,
-                    "Day": 15
+                endDate: {
+                    Year: 2024,
+                    Month: 6,
+                    Day: 15
                 }
             },
-            "discounts": [{
-                "categoryName": "DJ Speakers",
-                "discountPercentage": 20
+            discounts: [{
+                categoryName: "DJ Speakers",
+                discountPercentage: 20
             }]
         }
     }
@@ -224,31 +223,31 @@ To retrieve the list of cities for each store within the "First Up Consultants" 
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$setWindowFields": {
-        "partitionBy": "$company",
-        "sortBy": {
+    $setWindowFields: {
+        partitionBy: "$company",
+        sortBy: {
             "sales.totalSales": -1
         },
-        "output": {
-            "citiesForCompany": {
-                "$push": "$city",
-                "window": {
-                    "documents": ["unbounded", "current"]
+        output: {
+            citiesForCompany: {
+                $push: "$city",
+                window: {
+                    documents: ["unbounded", "current"]
                 }
             }
         }
     }
 }, {
-    "$project": {
-        "company": 1,
-        "name": 1,
-        "citiesForCompany": 1
+    $project: {
+        company: 1,
+        name: 1,
+        citiesForCompany: 1
     }
 }])
 ```

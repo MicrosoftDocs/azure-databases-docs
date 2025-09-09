@@ -1,13 +1,13 @@
 ---
 title: $dateToParts
-titleSuffix: Overview of the $dateToParts operator in Azure Cosmos DB for MongoDB vCore
-description: The $dateToParts operator in Azure Cosmos DB for MongoDB vCore decomposes a date into its individual parts such as year, month, day, and more.
+titleSuffix: Overview of the $dateToParts operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $dateToParts operator decomposes a date into its individual parts such as year, month, day, and more.
 author: patty-chow
 ms.author: pattychow
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 06/24/2025
+ms.date: 09/04/2025
 ---
 
 # $dateToParts
@@ -34,7 +34,7 @@ $dateToParts: {
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -100,7 +100,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Extracting date parts from a field
 
-The query uses `$dateToParts` to break down the `lastUpdated` date into components like year, month, day, and time. It helps in analyzing or transforming individual parts of a date for further processing.
+This query uses `$dateToParts` to break down the `lastUpdated` date into components like year, month, day, and time. It helps in analyzing or transforming individual parts of a date for further processing.
 
 ```javascript
 db.stores.aggregate([
@@ -120,25 +120,27 @@ db.stores.aggregate([
 ])
 ```
 
-The example extracts the constituent parts of the `lastUpdated` field.
+This query returns the following result.
 
 ```json
-{
-  "dateParts": {
-    "year": 2024,
-    "month": 12,
-    "day": 4,
-    "hour": 11,
-    "minute": 50,
-    "second": 6,
-    "millisecond": 0
+[
+  {
+    "dateParts": {
+      "year": 2024,
+      "month": 12,
+      "day": 4,
+      "hour": 11,
+      "minute": 50,
+      "second": 6,
+      "millisecond": 0
+    }
   }
-}
+]
 ```
 
 ### Example 2: Using timezone
 
-The query extracts the `lastUpdated` timestamp of a specific document and breaks it into date parts like year, month, day, and hour using $dateToParts. Including the "America/New_York" timezone permits the breakdown, reflects the local time instead of UTC.
+This query extracts the `lastUpdated` timestamp of a specific document and breaks it into date parts like year, month, day, and hour using $dateToParts. Including the "America/New_York" timezone permits the breakdown, reflects the local time instead of UTC.
 
 ```javascript
 db.stores.aggregate([
@@ -159,20 +161,22 @@ db.stores.aggregate([
 ])
 ```
 
-The example extracts the date parts while considering the timezone `America/New_York`.
+This query returns the following result.
 
 ```json
-{
-  "datePartsWithTimezone": {
-    "year": 2024,
-    "month": 12,
-    "day": 4,
-    "hour": 6,
-    "minute": 50,
-    "second": 6,
-    "millisecond": 0
+[
+  {
+    "datePartsWithTimezone": {
+      "year": 2024,
+      "month": 12,
+      "day": 4,
+      "hour": 6,
+      "minute": 50,
+      "second": 6,
+      "millisecond": 0
+    }
   }
-}
+]
 ```
 
 ## Related content

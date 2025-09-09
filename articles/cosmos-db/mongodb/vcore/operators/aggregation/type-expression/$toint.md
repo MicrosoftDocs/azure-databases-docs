@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
 # $toInt 
@@ -149,17 +149,15 @@ Consider this sample document from the stores collection.
 To convert the value of the latitude field from a double to an int, run a query using the $toInt operator on the field to make the conversion.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsInt": {
-            "$toInt": "$location.lat"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsInt: {
+            $toInt: "$location.lat"
         }
     }
 }])
@@ -182,23 +180,20 @@ This query returns the following result:
 To convert the string representation of 72 ("72") to an integer value, run a query using the $toInt operator on the value to make the conversion.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsInt": {
-            "$toInt": {
-                "$toString": "72"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsInt: {
+            $toInt: {
+                $toString: "72"
             }
         }
     }
-}
-])
+}])
 ```
 
 This query returns the following result:
@@ -216,23 +211,20 @@ This query returns the following result:
 However, the following query returns an error since the string "72.0" isn't the string representation of an integer value.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsInt": {
-            "$toInt": {
-                "$toString": "72.0"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsInt: {
+            $toInt: {
+                $toString: "72.0"
             }
         }
     }
-}
-])
+}])
 ```
 
 This query returns the following error message - "Failed to parse number '72.0' in $convert"

@@ -36,7 +36,7 @@ The `$or` operator performs a logical OR operation on an array of expressions an
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -150,7 +150,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Use OR operation as logical-query
 
-The example helps to find stores with more than 15 full-time staff or more than 20 part-time staff, run a query using the $or operator on both the conditions. Then, project only the name and staff fields from the stores in the result set.
+This query retrieves stores with more than 15 full-time staff or more than 20 part-time staff, run a query using the $or operator on both the conditions. Then, project only the name and staff fields from the stores in the result set.
 
 ```javascript
 db.stores.find(
@@ -167,9 +167,10 @@ db.stores.find(
 ).limit(2)
 ```
 
-The query returns up to two store documents showing only their name and staff details, filtered by employee count criteria.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "dda2a7d2-6984-40cc-bbea-4cbfbc06d8a3",
     "name": "Contoso, Ltd. | Home Improvement Closet - Jaskolskiview",
@@ -190,11 +191,12 @@ The query returns up to two store documents showing only their name and staff de
       }
     }
   }
+]
 ```
 
 ### Example 2: Use OR operator as boolean-expression to identify stores with either high sales or large staff
 
-The example finds stores that have either total sales greater than 50,000 or more than 25 total staff members.
+This query retrieves stores that have either total sales greater than 50,000 or more than 25 total staff members.
 
 ```javascript
 db.stores.aggregate([
@@ -217,9 +219,10 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns stores that meet either the sales or staffing criteria.
+The first four results returned by this query are:
 
 ```json
+[
   {
     "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
     "name": "Trey Research | Home Office Depot - Lake Freeda",
@@ -244,6 +247,7 @@ The query returns stores that meet either the sales or staffing criteria.
     "totalStaff": 2,
     "qualifiesForProgram": false
   }
+]
 ```
 
 ## Performance Considerations
@@ -258,3 +262,4 @@ The query returns stores that meet either the sales or staffing criteria.
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
