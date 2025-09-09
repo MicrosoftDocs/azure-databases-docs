@@ -119,12 +119,12 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Retrieve an element filtered on condition
 
-The example demonstrates how to filter sales category based on `totalSales`.
+This query demonstrates how to filter sales category based on `totalSales`.
 
 ```javascript
 db.stores.aggregate([{
         $match: {
-            _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5'
+            _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
         }
     },
     {
@@ -143,7 +143,7 @@ db.stores.aggregate([{
 ])
 ```
 
-The query returns the following result.
+This query returns the following result.
 
 ```json
 [
