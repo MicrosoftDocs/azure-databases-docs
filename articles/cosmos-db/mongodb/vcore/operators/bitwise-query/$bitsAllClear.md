@@ -30,8 +30,6 @@ The `$bitsAllClear` operator is used to match documents where all the bit positi
 
 ## Examples
 
-## Examples
-
 Consider this sample document from the stores collection.
 
 ```json
