@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
 # $toObjectId 
@@ -147,24 +147,21 @@ Consider this sample document from the stores collection.
 To remove all occurrences of the "-" character and convert the first twenty four characters in the _id field into an ObjectId, run a query using the $toObjectId on a substring of the modified _id field to make the conversion.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "idAsObjectId": {
-            "$toObjectId": {
-                "$substr": [
-                    {
-                        "$replaceAll": {
-                            "input": "$_id",
-                            "find": "-",
-                            "replacement": ""
-                        }
-                    }, 0, 24]
+}, {
+    $project: {
+        idAsObjectId: {
+            $toObjectId: {
+                $substr: [{
+                    $replaceAll: {
+                        input: "$_id",
+                        find: "-",
+                        replacement: ""
+                    }
+                }, 0, 24]
             }
         }
     }

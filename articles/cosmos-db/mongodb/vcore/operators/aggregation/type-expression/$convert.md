@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
 # $convert
@@ -156,19 +156,17 @@ Consider this sample document from the stores collection.
 To convert the fullTime field from an integer to a string, run a query using the $convert operator to make the conversion.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "fulltimeStaff": "$staff.totalStaff.fullTime",
-        "fulltimeStaffAsString": {
-            "$convert": {
-                "input": "$staff.totalStaff.fullTime",
-                "to": "string"
+}, {
+    $project: {
+        fulltimeStaff: "$staff.totalStaff.fullTime",
+        fulltimeStaffAsString: {
+            $convert: {
+                input: "$staff.totalStaff.fullTime",
+                to: "string"
             }
         }
     }
@@ -178,11 +176,13 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "fulltimeStaff": 3,
-    "fulltimeStaffAsString": "3"
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "fulltimeStaff": 3,
+        "fulltimeStaffAsString": "3"
+    }
+]
 ```
 
 ### Example 2: Convert an Int value into a Boolean value
@@ -190,19 +190,17 @@ This query returns the following result:
 To convert the fullTime field from an integer to a boolean, run a query using the $convert operator to make the conversion. Any positive value for the fullTime field will be converted to true.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "fulltimeStaff": "$staff.totalStaff.fullTime",
-        "fulltimeStaffAsBool": {
-            "$convert": {
-                "input": "$staff.totalStaff.fullTime",
-                "to": "bool"
+}, {
+    $project: {
+        fulltimeStaff: "$staff.totalStaff.fullTime",
+        fulltimeStaffAsBool: {
+            $convert: {
+                input: "$staff.totalStaff.fullTime",
+                to: "bool"
             }
         }
     }
@@ -212,11 +210,13 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "fulltimeStaff": 3,
-    "fulltimeStaffAsBool": true
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "fulltimeStaff": 3,
+        "fulltimeStaffAsBool": true
+    }
+]
 ```
 
 ### Example 3: Convert an Int value into a Decimal value
@@ -224,19 +224,17 @@ This query returns the following result:
 To convert the fullTime staff field from an integer to a decimal value, run a query using the $convert operator to make the conversion. 
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "fulltimeStaff": "$staff.totalStaff.fullTime",
-        "fulltimeStaffAsDecimal": {
-            "$convert": {
-                "input": "$staff.totalStaff.fullTime",
-                "to": "decimal"
+}, {
+    $project: {
+        fulltimeStaff: "$staff.totalStaff.fullTime",
+        fulltimeStaffAsDecimal: {
+            $convert: {
+                input: "$staff.totalStaff.fullTime",
+                to: "decimal"
             }
         }
     }
@@ -246,11 +244,13 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "fulltimeStaff": 3,
-    "fulltimeStaffAsDecimal": "Decimal128('3')"
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "fulltimeStaff": 3,
+        "fulltimeStaffAsDecimal": "Decimal128('3')"
+    }
+]
 ```
 
 ## Related content
