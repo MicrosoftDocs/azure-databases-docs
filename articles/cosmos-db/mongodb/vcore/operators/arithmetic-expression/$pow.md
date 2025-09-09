@@ -7,7 +7,7 @@ ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/27/2024
+ms.date: 09/05/2025
 ---
 
 # $pow
