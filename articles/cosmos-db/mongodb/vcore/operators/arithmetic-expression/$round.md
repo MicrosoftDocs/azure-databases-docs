@@ -149,20 +149,22 @@ To round the latitude and longitude of all stores within the "First Up Consultan
 
 ```javascript
 db.stores.aggregate([{
-        "$match": {
-            "company": {
-                "$in": [
-                    "First Up Consultants"
-                ]
-            }
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
-    }, {
-    "$project": {
-        "company": 1,
+    }
+}, {
+    $project: {
+        company: 1,
         "location.lat": 1,
-		"location.lon": 1,
-		"roundedLat": { $round: ["$location.lat", 1] },
-		"roundedLon": { $round: ["$location.lon", 1] }
+        "location.lon": 1,
+        roundedLat: {
+            $round: ["$location.lat", 1]
+        },
+        roundedLon: {
+            $round: ["$location.lon", 1]
+        }
     }
 }])
 ```
@@ -210,16 +212,16 @@ To round the total sales volume of stores within the "First Up Consultants" comp
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$project": {
-        "company": 1,
+    $project: {
+        company: 1,
         "sales.totalSales": 1,
-        "roundedSales": {
+        roundedSales: {
             $round: ["$sales.totalSales", -3]
         }
     }
