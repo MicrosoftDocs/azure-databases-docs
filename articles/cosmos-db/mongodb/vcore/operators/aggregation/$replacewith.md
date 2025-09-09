@@ -1,16 +1,16 @@
 ---
-title: $replaceWith (aggregation)
-titleSuffix: Overview of the $replaceWith operator in Azure Cosmos DB for MongoDB vCore
+title: $replaceWith
+titleSuffix: Overview of the $replaceWith operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $replaceWith operator in Azure Cosmos DB for MongoDB vCore returns a document after replacing a document with the specified document
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
-# $replaceWith (aggregation)
+# $replaceWith
 
 The `$replaceWith` aggregation stage operator is used to replace the input document with the specified document. The `$replaceWith` operator transforms documents from one structure to another or replaces them entirely with new fields and values.
 
@@ -30,7 +30,7 @@ The `$replaceWith` aggregation stage operator is used to replace the input docum
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -146,34 +146,60 @@ Consider this sample document from the stores collection in the StoreData databa
 
 First, match a specific document to replace by the _id field and replace the contents of the document with the specified fields.
 
-```mongodb
-db.stores.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "sales": "$sales.totalSales" } }])
+```javascript
+db.stores.aggregate([{
+    $match: {
+        _id: "bda56164-954d-4f47-a230-ecf64b317b43"
+    }
+}, {
+    $replaceWith: {
+        _id: "$_id",
+        name: "$name",
+        sales: "$sales.totalSales"
+    }
+}])
 ```
 
-This returns the following result:
+This query returns the following result:
 ```json
-{
-    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
-    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
-    "sales": 37015
-}
+[
+  {
+      "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
+      "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
+      "sales": 37015
+  }
+]
 ```
 
 ### Example 2 - Return a document that replaces the contents of the original document after aggregating specified fields
 
-```mongodb
-db.stores.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "totalStaff": {"$add": ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]}}}])
+```javascript
+db.stores.aggregate([{
+    $match: {
+        _id: "bda56164-954d-4f47-a230-ecf64b317b43"
+    }
+}, {
+    $replaceWith: {
+        _id: "$_id",
+        name: "$name",
+        totalStaff: {
+            $add: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
+        }
+    }
+}])
 ```
 
 This returns the following result:
+
 ```json
-{
-    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
-    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
-    "totalStaff": 29
-}
+[
+  {
+      "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
+      "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
+      "totalStaff": 29
+  }
+]
 ```
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [update with vCore based Azure Cosmos DB for MongoDB](../../commands/query-and-write/update.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

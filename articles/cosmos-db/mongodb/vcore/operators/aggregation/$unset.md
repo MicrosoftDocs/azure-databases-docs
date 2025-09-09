@@ -1,24 +1,23 @@
 ---
 title: $unset
-titleSuffix: Overview of the $unset operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $unset operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $unset stage in the aggregation pipeline is used to remove specified fields from documents.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/27/2024
+ms.date: 09/05/2025
 ---
 
 # $unset
 The $unset stage the aggregation pipeline is used to remove specified fields from documents. This can be particularly useful when you need to exclude certain fields from the results of an aggregation query for reasons such as privacy, reducing payload size, or simply cleaning up the output.
 
 ## Syntax
-The syntax for the $unset stage is straightforward. It accepts a single argument which can be a field name or an array of field names to be removed from the documents.
 
 ```javascript
 {
-  $unset: "<field1>" | ["<field1>", "<field2>", ...]
+    $unset: "<field1>" | ["<field1>", "<field2>", ...]
 }
 ```
 
@@ -154,7 +153,7 @@ db.stores.aggregate([
 ])
 ```
 
-Sample output:
+The first result returned by this query is:
 
 ```json
 [
@@ -180,7 +179,7 @@ Sample output:
 ]
 ```
 
-### Example 2: Remove Multiple Fields
+### Example 2: Remove multiple fields
 
 To remove the location and sales.totalSales fields from the documents.
 
@@ -191,7 +190,9 @@ db.stores.aggregate([
   }
 ])
 ```
-Sample output
+
+The first result returned by this query is:
+
 ```json
 [
   {
@@ -215,7 +216,7 @@ Sample output
 ]
 ```
 
-### Example 3: Remove Nested Fields
+### Example 3: Remove nested fields
 
 To remove the staff.totalStaff.fullTime and promotionEvents.discounts fields from the documents.
 
@@ -227,7 +228,7 @@ db.stores.aggregate([
 ])
 ```
 
-Sample output:
+The first result returned by this query is:
 
 ```json
 [
@@ -248,5 +249,4 @@ Sample output:
 
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
-- Get started by [creating an account](../../quickstart-portal.md).
+[!INCLUDE[Related content](../includes/related-content.md)]
