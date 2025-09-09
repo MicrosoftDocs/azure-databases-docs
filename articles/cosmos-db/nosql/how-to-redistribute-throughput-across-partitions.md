@@ -343,13 +343,15 @@ $TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObje
 $TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "1" -Throughput 4000
 $TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "2" -Throughput 1000
 
-// Container with dedicated RU/s
-Update-AzCosmosDBSqlContainerPerPartitionThroughput `
-    -ResourceGroupName "<resource-group-name>" `
-    -AccountName "<cosmos-account-name>" `
-    -DatabaseName "<cosmos-database-name>" `
-    -Name "<cosmos-container-name>" `
-    -TargetPhysicalPartitionThroughputObject $TargetPhysicalPartitionObjects
+# Container with dedicated RU/s
+$containerParams = @{
+    ResourceGroupName = "<resource-group-name>"
+    AccountName = "<cosmos-account-name>"
+    DatabaseName = "<cosmos-database-name>"
+    Name = "<cosmos-container-name>"
+    TargetPhysicalPartitionThroughputObject = $TargetPhysicalPartitionObjects
+}
+Update-AzCosmosDBSqlContainerPerPartitionThroughput @containerParams
 ```
 
 ### [API for MongoDB](#tab/mongodb)
