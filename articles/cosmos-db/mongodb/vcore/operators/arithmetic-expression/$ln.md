@@ -147,24 +147,29 @@ Consider this sample document from the stores collection.
 To calculate the natural logarithm of sales volume by category to analyze growth rates, run a query using the $ln operator on the totalSales field to return the desired result.
 
 ```javascript
-db.stores.aggregate([
-  { $match: { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
-  {
-    $project: {
-      name: 1,
-      salesGrowthMetrics: {
-        $map: {
-          input: "$sales.salesByCategory",
-          as: "category",
-          in: {
-            categoryName: "$$category.categoryName",
-            salesValue: "$$category.totalSales",
-            naturalLog: { $ln: "$$category.totalSales" }
-          }
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
         }
-      }
+    },
+    {
+        $project: {
+            name: 1,
+            salesGrowthMetrics: {
+                $map: {
+                    input: "$sales.salesByCategory",
+                    as: "category",
+                    in: {
+                        categoryName: "$$category.categoryName",
+                        salesValue: "$$category.totalSales",
+                        naturalLog: {
+                            $ln: "$$category.totalSales"
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
 ])
 ```
 
@@ -209,3 +214,4 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
