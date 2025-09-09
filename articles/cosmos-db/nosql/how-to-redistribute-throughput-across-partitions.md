@@ -269,9 +269,9 @@ Keep in mind the following points before setting throughput on your target parti
 
   - Setting the partition to a throughput value greater than 10,000 RU/s results in the partition splitting, which could take some time.
 
-- If you set a partition's RU/s above 10,000, it first receives 10,000 RU/s. Then, Cosmos DB automatically splits the partition and evenly distributes the specified throughput across the new partitions.
+- If you set a partition's RU/s above 10,000, it first receives 10,000 RU/s. Then, Azure Cosmos DB automatically splits the partition and evenly distributes the specified throughput across the new partitions.
 
-  - If a physical partition is using 5,000 RU/s and you set its throughput to 15,000 RU/s, Cosmos DB first assigns 10,000 RU/s to the original partition. Then, it automatically splits the partition into two, each with up to 7,500 RU/s.
+  - If a physical partition is using 5,000 RU/s and you set its throughput to 15,000 RU/s, Azure Cosmos DB first assigns 10,000 RU/s to the original partition. Then, it automatically splits the partition into two, each with up to 7,500 RU/s.
 
 - If the final sum of throughput across all partitions isn't equal to the current total offer throughput, then this operation updates the offer throughput accordingly.
 
