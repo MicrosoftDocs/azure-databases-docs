@@ -148,27 +148,34 @@ Consider this sample document from the stores collection.
 To calculate the average sales volume per employee, first run a query using the $divide operator to divide the total sales by the staff count. To calculate the percentage of full time staff, use the $divide operator to dive the number of full time staff by the total staff count and project the result as a percentage. 
 
 ```javascript
-db.stores.aggregate([
-  { $match: { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
-  {
-    $project: {
-      name: 1,
-      averageSalesPerStaff: {
-        $divide: [
-          "$sales.totalSales",
-          { $add: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"] }
-        ]
-      },
-      fullTimeStaffPercentage: {
-        $multiply: [{
-          $divide: [
-            "$staff.totalStaff.fullTime",
-            { $add: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"] }
-          ]
-        }, 100]
-      }
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
+        }
+    },
+    {
+        $project: {
+            name: 1,
+            averageSalesPerStaff: {
+                $divide: [
+                    "$sales.totalSales",
+                    {
+                        $add: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
+                    }
+                ]
+            },
+            fullTimeStaffPercentage: {
+                $multiply: [{
+                    $divide: [
+                        "$staff.totalStaff.fullTime",
+                        {
+                            $add: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
+                        }
+                    ]
+                }, 100]
+            }
+        }
     }
-  }
 ])
 ```
 
@@ -188,4 +195,5 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
 
