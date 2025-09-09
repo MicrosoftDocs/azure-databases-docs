@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 09/09/2025
-zone_pivot_groups: azure-interface-cli-powershell
+zone_pivot_groups: azure-scripting-languages
 applies-to:
   - ✅ NoSQL
 ---
