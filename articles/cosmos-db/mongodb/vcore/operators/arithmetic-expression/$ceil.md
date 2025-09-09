@@ -147,25 +147,30 @@ Consider this sample document from the stores collection.
 To calculate the ceiling of the sales volume per employee, first run a query to divide the total sales for the store by the number of staff. Then, use the $ceil operator to return the ceiling of the calculated value. 
 
 ```javascript
-db.stores.aggregate([
-  { $match: { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
-  {
-    $project: {
-      name: 1,
-      totalSales: "$sales.totalSales",
-      totalStaff: {
-        $add: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
-      },
-      ceiledAverageSalesPerStaff: {
-        $ceil: {
-          $divide: [
-            "$sales.totalSales",
-            { $add: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"] }
-          ]
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
         }
-      }
+    },
+    {
+        $project: {
+            name: 1,
+            totalSales: "$sales.totalSales",
+            totalStaff: {
+                $add: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
+            },
+            ceiledAverageSalesPerStaff: {
+                $ceil: {
+                    $divide: [
+                        "$sales.totalSales",
+                        {
+                            $add: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
+                        }
+                    ]
+                }
+            }
+        }
     }
-  }
 ])
 ```
 
@@ -186,3 +191,4 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
