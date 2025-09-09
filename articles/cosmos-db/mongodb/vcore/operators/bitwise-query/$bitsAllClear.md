@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 11/01/2024
+ms.date: 09/05/2025
 ---
 
 # $bitsAllClear
