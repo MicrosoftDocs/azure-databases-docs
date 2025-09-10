@@ -22,12 +22,13 @@ In this quickstart, you learn how to use vector search in Azure Cosmos DB for Mo
 
 The data for this quickstart is provided for you in a JSON file that includes pre-computed vectors using `text-embedding-ada-002` model. This hotel dataset is a sample dataset provided by Microsoft for learning purposes. It includes various attributes of hotels, such as their names, locations, descriptions, and vector embeddings.
 
-The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/typescript-mongo-vcore) is available on GitHub.
+The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-typescript) is available on GitHub.
 
 ## Prerequisites
 
 [!INCLUDE[Prerequisites - Azure subscription](includes/prereq-azure-subscription.md)]
-- [Visual Studio Code](https://code.visualstudio.com/download).
+- [Visual Studio Code](https://code.visualstudio.com/download)
+    - [DocumentDB extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb)
 - [Azure CLI](/cli/azure/install-azure-cli)
 - [Node.js LTS](https://nodejs.org/download/)
 - [TypeScript](https://www.typescriptlang.org/download): You can globally install TypeScript using npm:
@@ -35,11 +36,14 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
    ```bash
    npm install -g typescript
    ```
+
 - [Azure OpenAI resource](/azure/ai-foundry/openai)
-    - With deployment of `text-embedding-ada-002` model
+    - Authentication enabled for Role Based Access Control (RBAC).
+    - With deployment of `text-embedding-ada-002` model.
 - [MongoDB vCore resource](quickstart-portal.md) with:
-    - vector search enabled
-    - firewall configured to allow your IP address
+    - Authentication enabled for Role Based Access Control (RBAC).
+    - Vector search enabled.
+    - Firewall configured to allow your IP address.
 
 ## Create a Node.js project
 
@@ -63,38 +67,34 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
     npm install mongodb @azure/identity openai uuid dotenv
     ```
 
-    - mongodb - MongoDB Node.js driver
-    - @azure/identity - Azure Identity library for authentication
-    - openai - OpenAI client library
-    - uuid - Library to generate unique identifiers
-    - dotenv - Library to manage environment variables
+    - `mongodb`: MongoDB Node.js driver.
+    - `@azure/identity`: Azure Identity library for passwordless authentication.
+    - `openai`: OpenAI client library to create vectors of the query.
+    - `dotenv`: Library to manage environment variables.
 
-1. Create a `.env` file in the root of your project to store environment variables:
+1. Create a `.env` file in the root of your project to store environment variables for password authentication used in this article:
 
     ```ini
-    # OpenAI configuration
+    # Azure OpenAI Embedding Settings
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
     AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
-    AZURE_OPENAI_EMBEDDING_KEY=
     AZURE_OPENAI_EMBEDDING_ENDPOINT=
+    EMBEDDING_SIZE_BATCH=16
 
     # MongoDB configuration
-    MONGO_CONNECTION_STRING=
-    MONGO_DB_NAME=HotelSet
-    MONGO_COLLECTION_NAME=hotels
-    INDEX_NAME=vectorSearchIndex
+    MONGO_CLUSTER_NAME=
 
     # Data file
     DATA_FILE_WITH_VECTORS=.HotelsData_toCosmosDB_Vector.json
     EMBEDDED_FIELD=text_embedding_ada_002
     EMBEDDING_DIMENSIONS=1536
+    LOAD_SIZE_BATCH=100
     ```
 
     Update these values in the `.env` file with your own information:
 
-    - `AZURE_OPENAI_EMBEDDING_KEY`: The key for your Azure OpenAI resource.
-    - `AZURE_OPENAI_EMBEDDING_ENDPOINT`: The endpoint URL for your Azure OpenAI resource.
-    - `MONGO_CONNECTION_STRING`: The connection string for your MongoDB vCore resource.
+    - `AZURE_OPENAI_EMBEDDING_ENDPOINT`: The endpoint URL of your Azure OpenAI resource.
+    - `MONGO_CLUSTER_NAME`: The resource name of your MongoDB vCore resource.
 
 
 #### [IVF](#tab/tab-ivf)
@@ -134,7 +134,7 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
 
 1. Add a `tsconfig.json` file to configure TypeScript:
 
-    :::code language="json" source="~/cosmos-db-vector-samples/typescript-mongo-vcore/tsconfig.json" :::
+    :::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/tsconfig.json" :::
 
 1. Create a `src` directory for your TypeScript files:
 
@@ -177,21 +177,21 @@ Copy the following code into the code file you just created.
 
 #### [IVF](#tab/tab-ivf)
 
-:::code language="typescript" source="~/cosmos-db-vector-samples/typescript-mongo-vcore/src/ivf.ts" :::
+:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/ivf.ts" :::
 
 #### [HNSW](#tab/tab-hnsw)
 
-:::code language="typescript" source="~/cosmos-db-vector-samples/typescript-mongo-vcore/src/hnsw.ts" :::
+:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/hnsw.ts" :::
 
 ### [DiskANN](#tab/tab-diskann)
 
-:::code language="typescript" source="~/cosmos-db-vector-samples/typescript-mongo-vcore/src/diskann.ts" :::
+:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/diskann.ts" :::
 
 ----
 
 This code completes the following:
 
-- Includes utility functions to connect to the MongoDB database, create the vector index, load data with vectors, and perform vector searches. 
+- Includes utility functions to simplify tasks. 
 - Creates a configuration object to manage environment variables.
 - Creates clients for Azure OpenAI and Azure Cosmos DB for MongoDB in vCore architecture.
 - Connects to the MongoDB database, creates a database, collection, inserts data, and creates standard indexes.
@@ -209,17 +209,26 @@ This code completes the following:
 
 1. Copy the following code into `utils.ts`:
 
-    :::code language="typescript" source="~/cosmos-db-vector-samples/typescript-mongo-vcore/src/utils.ts" :::
+    :::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/utils.ts" :::
 
 This utility module exports the following functionality:
 
 - `JsonData`: Interface for the structure of the data being handled.
 - `scoreProperty`: The location of the score in the query results based on vector search method.
 - `getClients`: Function to create and return clients for Azure OpenAI and Azure Cosmos DB for MongoDB in vCore architecture.
+- `getClientsPasswordless`: Function to create and return clients for Azure OpenAI and Azure Cosmos DB for MongoDB in vCore architecture using passwordless authentication. You must have enabled RBAC authentication on both resources to use this function and have the Azure CLI installed and be logged in.
 - `readFileReturnJson`: Function to read a JSON file and return its contents as an array of `JsonData` objects.
 - `writeFileJson`: Function to write an array of `JsonData` objects to a JSON file.
 - `insertData`: Function to `insertMany` data in batches into a specified MongoDB collection. Create standard indexes on specified fields.
 - `printSearchResults`: Function to print the results of a vector search, including the score and Hotel name.
+
+## Authenticate with Azure CLI
+
+Before running the application, authenticate with Azure CLI to ensure that your application can access the Azure resources securely.
+
+```bash
+az login
+```
 
 ## Run the application
 
@@ -252,6 +261,12 @@ npm run start:diskann
 ----
 
 The output includes the top 5 hotels that match the vector search query, along with their similarity scores.
+
+## View and manage data in Visual Studio Code
+
+1. Open the `src` folder in Visual Studio Code.
+2. Use the DocumentDB extension for Visual Studio Code to connect to your Azure Cosmos DB account.
+3. Install the MongoDB extension for Visual Studio Code for enhanced functionality.
 
 ## Clean up resources
 
