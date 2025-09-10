@@ -165,6 +165,9 @@ fn main() {
 }
 ```
 
+> [!IMPORTANT]
+> This code samples uses the [`azure_data_cosmos`](https://crates.io/crates/azure_data_cosmos) crate from Cargo.
+
 ---
 
 ## Grant control plane role-based access
