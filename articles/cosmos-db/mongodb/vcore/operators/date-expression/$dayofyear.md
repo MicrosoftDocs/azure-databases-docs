@@ -160,7 +160,15 @@ db.stores.aggregate([
 ])
 ```
 
-The result shows the calendar day number on which `lastUpdated` occurred. In current example, 339 for December 4 in a nonleap year.
+This query returns the following result.
+
+```json
+[
+  {
+    "dayOfYear": 339
+  }
+]
+```
 
 ## Related content
 
