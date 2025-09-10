@@ -140,7 +140,7 @@ sections:
       - question: |
           Is it possible to disable the usage of the account primary/secondary keys when using role-based access control?
         answer: |
-          Yes. For more information, see [disable key-based authentication](security/how-to-connect-role-based-access-control.md#disable-key-based-authenticattion).
+          Yes. For more information, see [disable key-based authentication](how-to-connect-role-based-access-control.md#disable-key-based-authenticattion).
 additionalContent: |
   ## Related content
 

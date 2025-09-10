@@ -146,6 +146,25 @@ public class NoSQL{
 > [!IMPORTANT]
 > This code samples uses the [`com.azure/azure-cosmos`](https://mvnrepository.com/artifact/com.azure/azure-cosmos) package from Maven.
 
+### [Rust](#tab/rust)
+
+```rust
+use azure_data_cosmos::CosmosClient;
+
+fn main() {
+    let client = CosmosClient::new_with_access_key(
+        "<account-endpoint>",
+        "<account-key>",
+        None,
+    ).unwrap();
+
+    let container = client.database_client("<database-name>").container_client("<container-name>");
+
+    let response = container.read_item("<partition-key>", "<item-id>", None);
+    tokio::runtime::Runtime::new().unwrap().block_on(response).unwrap();
+}
+```
+
 ---
 
 ## Grant control plane role-based access

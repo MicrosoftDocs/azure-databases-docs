@@ -32,7 +32,7 @@ For more information about fleets, see [fleets overview](fleet.md).
 
     - If you aren't registered, [register for the preview](fleet.md#register-for-the-preview).
 
-:::zone pivot="azure-cli,azure-interface-bicep"
+:::zone pivot="azure-cli,azure-resource-manager-bicep"
 
 - Azure CLI
 

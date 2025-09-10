@@ -6996,11 +6996,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/table/security/index.md",
-      "redirect_url": "/azure/cosmos-db/table/security",
-      "redirect_document_id": false
-    },
-    {
       "source_path_from_root": "/articles/cosmos-db/table/security/glossary.md",
       "redirect_url": "/azure/cosmos-db/table/security",
       "redirect_document_id": false

@@ -82,7 +82,7 @@ The action can be assigned at any level in an Azure Cosmos DB account's hierarch
 > [!IMPORTANT]
 > You cannot manage throughput with the `Microsoft.DocumentDB/databaseAccounts/readMetadata` data action.
 
-## Built-in rroles
+## Built-in roles
 
 Azure Cosmos DB for Table defines data plane-specific role definitions. These roles are distinct from Azure role-based access control role definitions.
 
