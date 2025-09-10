@@ -6551,12 +6551,12 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/nosql/security/context/context.yml",
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/context/context.json.yml",
       "redirect_url": "/azure/cosmos-db/nosql/context/context.json",
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/table/security/context/context.yml",
+      "source_path_from_root": "/articles/cosmos-db/table/security/context/context.json.yml",
       "redirect_url": "/azure/cosmos-db/table/context/context.json",
       "redirect_document_id": false
     },
