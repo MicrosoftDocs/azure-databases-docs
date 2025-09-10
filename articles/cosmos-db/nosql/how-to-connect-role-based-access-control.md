@@ -20,7 +20,7 @@ appliesto:
 
 # Connect to Azure Cosmos DB for NoSQL using role-based access control and Microsoft Entra ID
 
-Role-based access control refers to a method to manage access to resources in Azure. This method is based on specific [identities](#identityprincipal) being assigned [roles](#role-definition) that manage what level of access they have to one or more resources. Role-based access control provides a flexible system of fine-grained access management that ensures identities only have the [least privileged](#least-privilege) level of access they need to perform their task.
+Role-based access control refers to a method to manage access to resources in Azure. This method is based on specific identities being assigned roles that manage what level of access they have to one or more resources. Role-based access control provides a flexible system of fine-grained access management that ensures identities only have the least privileged level of access they need to perform their task.
 
 For more information, see [role-based access control overview](/azure/role-based-access-control/overview).
 
