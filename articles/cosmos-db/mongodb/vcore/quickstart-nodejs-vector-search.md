@@ -2,7 +2,7 @@
 
 title: Quickstart - Vector Search with Node.js
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Learn how to use vector search in Azure Cosmos DB for MongoDB (vCore) using the Node.js client library. This quickstart demonstrates how to store and query vector data efficiently.
+description: Learn how to use vector search in Azure Cosmos DB for MongoDB vCore with Node.js. Store and query vector data efficiently in your applications. 
 author: diberry
 ms.author: diberry
 ms.service: azure-cosmos-db
