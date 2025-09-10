@@ -1,7 +1,7 @@
 ---
-title: Data plane actions reference
+title: Data plane security reference
 titleSuffix: Azure Cosmos DB for Table
-description: This article includes a list of all potential data plane actions for use with role-based access control (RBAC) in Azure Cosmos DB for Table.
+description: Learn about data plane actions and built-in roles for role-based access control in Azure Cosmos DB for Table. See which permissions are available and how to use them.
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: skhera
@@ -80,7 +80,7 @@ The action can be assigned at any level in an Azure Cosmos DB account's hierarch
   - Resolving the address of each physical partition
 
 > [!IMPORTANT]
-> You cannot manage throughput with the `Microsoft.DocumentDB/databaseAccounts/readMetadata` data action.
+> You can't manage throughput with the `Microsoft.DocumentDB/databaseAccounts/readMetadata` data action.
 
 ## Built-in roles
 
