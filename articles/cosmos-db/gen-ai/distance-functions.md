@@ -21,19 +21,19 @@ To learn more about vectors, see [vector search](vector-search-overview.md).
 
 ## Manhattan distance
 
-The measure of distance between two points by adding up the absolute differences of their coordinates. Imagine walking in a grid-like city, such as the many neighborhoods in Manhattan; it's the total number of blocks you walk north-south and east-west.
+*Manhattan distance* measures the distance between two points by adding up the absolute differences between their coordinates. Imagine walking in a grid-like city, such as the many neighborhoods in Manhattan; it's the total number of blocks you walk north-south and east-west.
 
 ## Euclidean distance
 
-Euclidean distance measures the straight-line distance between two points. It's named after the ancient mathematician Euclid, who is often referred to as the "father of geometry."
+*Euclidean distance* measures the straight-line distance between two points. It's named after the ancient mathematician Euclid, who is often referred to as the "father of geometry."
 
 ## Cosine similarity
 
-Cosine similarity measures the cosine of the angle between two vectors projected in a multidimensional space. Two documents might be far apart by Euclidean distance because of document sizes, but they could still have a smaller angle between them and therefore high cosine similarity.
+*Cosine similarity* measures the cosine of the angle between two vectors projected in a multidimensional space. Two documents might be far apart by Euclidean distance because of document sizes, but they could still have a smaller angle between them and therefore high cosine similarity.
 
 ## Dot product
 
-Two vectors are multiplied to return a single number. It combines the two vectors' magnitudes, and the cosine of the angle between them, showing how much one vector goes in the direction of another.
+*Dot product* is the result of two vectors that are multiplied to return a single number. It combines the two vectors' magnitudes, and the cosine of the angle between them, showing how much one vector goes in the direction of another.
 
 ## Related content
 
