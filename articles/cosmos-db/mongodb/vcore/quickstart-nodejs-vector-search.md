@@ -96,9 +96,21 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
     - `MONGO_CLUSTER_NAME`: The resource name of your MongoDB vCore resource.
 
 
+    
+1. Add a `tsconfig.json` file to configure TypeScript:
+
+    :::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/tsconfig.json" :::
+
+
+
+1. Copy the `HotelsData_toCosmosDB_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) to the root of your project.
+
+## Create npm scripts
+
+Edit the `package.json` file to add the following scripts:
+
 #### [IVF](#tab/tab-ivf)
 
-1. Edit the `package.json` file to add the following scripts:
 
     ```json
     "scripts": { 
@@ -109,7 +121,6 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
 
 #### [HNSW](#tab/tab-hnsw)
 
-1. Edit the `package.json` file to add the following scripts:
 
     ```json
     "scripts": { 
@@ -120,7 +131,6 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
 
 ### [DiskANN](#tab/tab-diskann)
 
-1. Edit the `package.json` file to add the following scripts:
 
     ```json
     "scripts": { 
@@ -128,61 +138,61 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
         "start:diskann": "node --env-file .env dist/diskann.js"
     }
     ```
+    
+    ----
 
-----
-
-1. Add a `tsconfig.json` file to configure TypeScript:
-
-    :::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/tsconfig.json" :::
-
-1. Create a `src` directory for your TypeScript files:
-
-   ```bash
-   mkdir src
-   ```
-
-1. Copy the `HotelsData_toCosmosDB_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) to the root of your project.
-
+## Create code files for vector search
 
 #### [IVF](#tab/tab-ivf)
 
-1. Create a new file named `ivf.ts` in the `src` directory for the IVF index implementation:
+Create a `src` directory for your TypeScript files then create 2 files named `ivf.ts` and `utils.ts` in the `src` directory for the IVF index implementation:
 
-   ```bash
-   touch src/ivf.ts
-   ```
+```bash
+mkdir src
+touch src/ivf.ts
+touch src/utils.ts
+```
 
 #### [HNSW](#tab/tab-hnsw)
 
-   Create a new file named `hnsw.ts` in the `src` directory for the HNSW index implementation:
+Create a `src` directory for your TypeScript files then create 2 files named `ivf.ts` and `utils.ts` in the `src` directory for the IVF index implementation:
 
-   ```bash
-   touch src/hnsw.ts
-   ```
+```bash
+mkdir src
+touch src/hnsw.ts
+touch src/utils.ts
+```
 
 ### [DiskANN](#tab/tab-diskann)
 
-   Create a new file named `diskann.ts` in the `src` directory for the DiskANN index implementation:
+Create a `src` directory for your TypeScript files then create 2 files named `ivf.ts` and `utils.ts` in the `src` directory for the IVF index implementation:
 
-   ```bash
-   touch src/diskann.ts
-   ```
+```bash
+mkdir src    
+touch src/diskann.ts
+touch src/utils.ts
+```
 
 ----
 
 ## Create code for vector search
 
-Copy the following code into the code file you just created.
 
 #### [IVF](#tab/tab-ivf)
+
+Copy the following code into the `ivf.ts` file you created.
 
 :::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/ivf.ts" :::
 
 #### [HNSW](#tab/tab-hnsw)
 
+Copy the following code into the `hnsw.ts` file you created.
+
 :::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/hnsw.ts" :::
 
 ### [DiskANN](#tab/tab-diskann)
+
+Copy the following code into the `diskann.ts` file you created.
 
 :::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/diskann.ts" :::
 
@@ -200,15 +210,9 @@ This code completes the following:
 
 ## Create utility functions
 
-1. Create a new file named `utils.ts` in the `src` directory for utility functions:
+Copy the following code into `utils.ts`:
 
-   ```bash
-   touch src/utils.ts
-   ```
-
-1. Copy the following code into `utils.ts`:
-
-    :::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/utils.ts" :::
+:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/utils.ts" :::
 
 This utility module exports the following functionality:
 
@@ -229,31 +233,28 @@ Before running the application, authenticate with Azure CLI to ensure that your 
 az login
 ```
 
-## Run the application
+## Build and run the application
 
-1. Build the TypeScript files:
-
-   ```bash
-   npm run build
-   ```
-
-1. Run the application:
+Build the TypeScript files and run the application:
 
 #### [IVF](#tab/tab-ivf)
 
 ```bash
+npm run build
 npm run start:ivf
 ```
 
 #### [HNSW](#tab/tab-hnsw)
 
 ```bash
+npm run build    
 npm run start:hnsw
 ```
 
 ### [DiskANN](#tab/tab-diskann)
 
 ```bash
+npm run build
 npm run start:diskann
 ```
 
