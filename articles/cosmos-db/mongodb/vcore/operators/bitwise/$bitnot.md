@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/03/2025
+ms.date: 09/05/2025
 ---
 
 # $bitNot
@@ -34,81 +34,137 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
-  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
-  "location": {
-    "lat": -29.1866,
-    "lon": -112.7858
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 14,
-      "partTime": 8
-    }
-  },
-  "sales": {
-    "totalSales": 83865,
-    "salesByCategory": [
-      {
-        "categoryName": "Lavalier Microphones",
-        "totalSales": 44174
-      },
-      {
-        "categoryName": "Wireless Microphones",
-        "totalSales": 39691
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Incredible Savings Showcase",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 21
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 29
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Condenser Microphones",
-          "discountPercentage": 20
-        },
-        {
-          "categoryName": "Microphone Stands",
-          "discountPercentage": 17
-        }
-      ]
-    }
-  ]
 }
 ```
 
 ### Example 1: Basic bitwise NOT operation
 
-The example aggregation query performs a bitwise inversion on the staff count fields for a specific store document. The inverted values can be used for special permission flags, feature toggles, or bitmask operations. The bitwise NOT of 14 results are -15, and the bitwise NOT of 8 results in -9. The observed result is due to two's complement representation where ~n = -(n+1).
+This query performs a bitwise inversion on the staff count fields for a specific store document. The inverted values can be used for special permission flags, feature toggles, or bitmask operations. The bitwise NOT of 14 results are -15, and the bitwise NOT of 8 results in -9. The observed result is due to two's complement representation where ~n = -(n+1).
 
 ```javascript
-db.stores.aggregate([
-  { $match: {"_id": "26afb024-53c7-4e94-988c-5eede72277d5"} },
-  {
-    $project: {
-      name: 1,
-      fullTimeStaff: "$staff.totalStaff.fullTime",
-      partTimeStaff: "$staff.totalStaff.partTime",
-      invertedFullTime: {
-        $bitNot: "$staff.totalStaff.fullTime"
-      },
-      invertedPartTime: {
-        $bitNot: "$staff.totalStaff.partTime"
-      }
+db.stores.aggregate([{
+        $match: {
+            _id: "26afb024-53c7-4e94-988c-5eede72277d5"
+        }
+    },
+    {
+        $project: {
+            name: 1,
+            fullTimeStaff: "$staff.totalStaff.fullTime",
+            partTimeStaff: "$staff.totalStaff.partTime",
+            invertedFullTime: {
+                $bitNot: "$staff.totalStaff.fullTime"
+            },
+            invertedPartTime: {
+                $bitNot: "$staff.totalStaff.partTime"
+            }
+        }
     }
-  }
 ])
 ```
 
@@ -129,25 +185,36 @@ This query returns the following result.
 
 ### Example 2: Using $bitNot with discount percentages
 
-The example aggregation query extracts and processes discount information for a specific store and applies a bitwise NOT operation on each discount percentage. The bitwise NOT operation inverts all bits: 20 becomes -21 and 17 becomes -18.
+This query extracts and processes discount information for a specific store and applies a bitwise NOT operation on each discount percentage. The bitwise NOT operation inverts all bits: 20 becomes -21 and 17 becomes -18.
 
 ```javascript
-db.stores.aggregate([
-  { $match: {"_id": "26afb024-53c7-4e94-988c-5eede72277d5"} },
-  { $unwind: "$promotionEvents" },
-  { $match: {"promotionEvents.eventName": "Incredible Savings Showcase"} },
-  { $unwind: "$promotionEvents.discounts" },
-  {
-    $project: {
-      name: 1,
-      eventName: "$promotionEvents.eventName",
-      categoryName: "$promotionEvents.discounts.categoryName",
-      discountPercentage: "$promotionEvents.discounts.discountPercentage",
-      invertedDiscount: {
-        $bitNot: "$promotionEvents.discounts.discountPercentage"
-      }
+db.stores.aggregate([{
+        $match: {
+            _id: "26afb024-53c7-4e94-988c-5eede72277d5"
+        }
+    },
+    {
+        $unwind: "$promotionEvents"
+    },
+    {
+        $match: {
+            "promotionEvents.eventName": "Incredible Savings Showcase"
+        }
+    },
+    {
+        $unwind: "$promotionEvents.discounts"
+    },
+    {
+        $project: {
+            name: 1,
+            eventName: "$promotionEvents.eventName",
+            categoryName: "$promotionEvents.discounts.categoryName",
+            discountPercentage: "$promotionEvents.discounts.discountPercentage",
+            invertedDiscount: {
+                $bitNot: "$promotionEvents.discounts.discountPercentage"
+            }
+        }
     }
-  }
 ])
 ```
 
