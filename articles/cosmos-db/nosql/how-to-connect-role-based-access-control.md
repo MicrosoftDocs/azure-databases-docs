@@ -8,11 +8,21 @@ ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
+ms.devlang: python
 ms.date: 09/10/2025
 ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+defaultDevLang: python
+dev_langs:
+  - python
+  - javascript
+  - typescript
+  - csharp
+  - go
+  - java
+  - rust
 appliesto:
   - ✅ NoSQL
 #Customer Intent: As a developer, I want to connect to Azure Cosmos DB for NoSQL using role-based access control, so that I can securely manage access to my database resources.
@@ -56,8 +66,6 @@ For more information, see [role-based access control](/azure/role-based-access-c
 
 To validate that key-based access is disabled, attempt to use the Azure SDK to connect to Azure Cosmos DB for NoSQL using a resource-owner password credential (ROPC). This attempt should fail. If necessary, code samples for common programming languages are provided here.
 
-### [C#](#tab/csharp)
-
 ```csharp
 using Microsoft.Azure.Cosmos;
 
@@ -65,11 +73,6 @@ string connectionString = "AccountEndpoint=<nosql-endpoint>;AccountKey=<key>;";
 
 CosmosClient client = new(connectionString);
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`Microsoft.Azure.Cosmos`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) library from NuGet.
-
-### [JavaScript](#tab/javascript)
 
 ```javascript
 const { CosmosClient } = require('@azure/cosmos');
@@ -79,11 +82,6 @@ const connectionString = 'AccountEndpoint=<nosql-endpoint>;AccountKey=<key>;';
 const client = new CosmosClient(connectionString);
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`@azure/cosmos`](https://www.npmjs.com/package/@azure/cosmos) package from npm.
-
-### [TypeScript](#tab/typescript)
-
 ```typescript
 import { CosmosClient } from '@azure/cosmos'
 
@@ -92,11 +90,6 @@ let connectionString: string = 'AccountEndpoint=<nosql-endpoint>;AccountKey=<key
 const client: CosmosClient = new CosmosClient(connectionString);
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`@azure/cosmos`](https://www.npmjs.com/package/@azure/cosmos) package from npm.
-
-### [Python](#tab/python)
-
 ```python
 from azure.cosmos import CosmosClient
 
@@ -104,11 +97,6 @@ connection_string = "AccountEndpoint=<nosql-endpoint>;AccountKey=<key>;"
 
 client = CosmosClient(connection_string)
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`azure-cosmos`](https://pypi.org/project/azure-cosmos/) package from PyPI.
-
-### [Go](#tab/go)
 
 ```go
 package main
@@ -124,11 +112,6 @@ func main() {
 }
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`azure/azure-sdk-for-go/sdk/data/azcosmos`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos) package from Go.
-
-### [Java](#tab/java)
-
 ```java
 import com.azure.cosmos.CosmosClient;
 import com.azure.cosmos.CosmosClientBuilder;
@@ -142,11 +125,6 @@ public class NoSQL{
     }
 }
 ```
-
-> [!IMPORTANT]
-> This code samples uses the [`com.azure/azure-cosmos`](https://mvnrepository.com/artifact/com.azure/azure-cosmos) package from Maven.
-
-### [Rust](#tab/rust)
 
 ```rust
 use azure_data_cosmos::CosmosClient;
@@ -164,11 +142,6 @@ fn main() {
     tokio::runtime::Runtime::new().unwrap().block_on(response).unwrap();
 }
 ```
-
-> [!IMPORTANT]
-> This code samples uses the [`azure_data_cosmos`](https://crates.io/crates/azure_data_cosmos) crate from Cargo.
-
----
 
 ## Grant control plane role-based access
 
@@ -781,8 +754,6 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 
 Validate that you correctly granted access using application code and the Azure SDK in your preferred programming language.
 
-### [C#](#tab/csharp)
-
 ```csharp
 using Azure.Core;
 using Azure.Identity;
@@ -799,11 +770,6 @@ Container container = client.GetContainer("<database-name>", "<container-name>")
 await container.ReadItemAsync<dynamic>("<item-id>", new PartitionKey("<partition-key>"));
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`Microsoft.Azure.Cosmos`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) and [`Azure.Identity`](https://www.nuget.org/packages/Azure.Identity) libraries from NuGet.
-
-### [JavaScript](#tab/javascript)
-
 ```javascript
 const { CosmosClient } = require('@azure/cosmos');
 const { DefaultAzureCredential } = require('@azure/identity');
@@ -818,11 +784,6 @@ const container = client.database('<database-name>').container('<container-name>
 
 await container.item('<item-id>', '<partition-key>').read<String>();
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`@azure/cosmos`](https://www.npmjs.com/package/@azure/cosmos) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
-
-### [TypeScript](#tab/typescript)
 
 ```typescript
 import { Container, CosmosClient, CosmosClientOptions } from '@azure/cosmos'
@@ -844,11 +805,6 @@ const container: Container = client.database('<database-name>').container('<cont
 await container.item('<item-id>', '<partition-key>').read<String>();
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`@azure/cosmos`](https://www.npmjs.com/package/@azure/cosmos) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
-
-### [Python](#tab/python)
-
 ```python
 from azure.cosmos import CosmosClient
 from azure.identity import DefaultAzureCredential
@@ -866,11 +822,6 @@ container.read_item(
     partition_key="<partition-key>",
 )
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`azure-cosmos`](https://pypi.org/project/azure-cosmos/) and [`azure-identity`](https://pypi.org/project/azure-identity/) packages from PyPI.
-
-### [Go](#tab/go)
 
 ```go
 import (
@@ -895,11 +846,6 @@ func main() {
     }
 }
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`azure/azure-sdk-for-go/sdk/data/azcosmos`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos) [`azure/azure-sdk-for-go/azidentity`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/azidentity) packages from Go.
-
-### [Java](#tab/java)
 
 ```java
 import com.azure.cosmos.CosmosClient;
@@ -926,11 +872,6 @@ public class NoSQL {
 }
 ```
 
-> [!IMPORTANT]
-> This code samples uses the [`com.azure/azure-cosmos`](https://mvnrepository.com/artifact/com.azure/azure-cosmos) and [`com.azure/azure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity) packages from Maven.
-
-### [Rust](#tab/rust)
-
 ```rust
 use azure_data_cosmos::CosmosClient;
 use azure_identity::DefaultAzureCredential;
@@ -945,11 +886,6 @@ fn main() {
     tokio::runtime::Runtime::new().unwrap().block_on(response).unwrap();
 }
 ```
-
-> [!IMPORTANT]
-> This code samples uses the [`azure_data_cosmos`](https://crates.io/crates/azure_data_cosmos) and [`azure_identity`](https://crates.io/crates/azure_identity) crates from Cargo.
-
----
 
 ## Related content
 

@@ -8,11 +8,20 @@ ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
+ms.devlang: csharp
 ms.date: 09/10/2025
 ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+defaultDevLang: csharp
+dev_langs:
+  - csharp
+  - javascript
+  - typescript
+  - python
+  - go
+  - java
 appliesto:
   - ✅ Table
 #Customer Intent: As a developer, I want to connect to Azure Cosmos DB for Table using role-based access control, so that I can securely manage access to my database resources.
@@ -56,8 +65,6 @@ For more information, see [role-based access control](/azure/role-based-access-c
 
 To validate that key-based access is disabled, attempt to use the Azure SDK to connect to Azure Cosmos DB for Table using a resource-owner password credential (ROPC). This attempt should fail. If necessary, code samples for common programming languages are provided here.
 
-### [C#](#tab/csharp)
-
 ```csharp
 using Azure.Data.Tables;
 using Azure.Core;
@@ -67,11 +74,6 @@ string connectionString = "AccountEndpoint=<table-endpoint>;AccountKey=<key>;";
 TableServiceClient client = new(connectionString);
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`Azure.Data.Tables`](https://www.nuget.org/packages/Azure.Data.Tables/) and [`Azure.Identity`](https://www.nuget.org/packages/Azure.Identity) libraries from NuGet.
-
-### [JavaScript](#tab/javascript)
-
 ```javascript
 const { TableServiceClient } = require('@azure/data-tables');
 
@@ -79,11 +81,6 @@ const connectionString = 'AccountEndpoint=<table-endpoint>;AccountKey=<key>;';
 
 const client = new TableServiceClient(connectionString);
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`@azure/data-tables`](https://www.npmjs.com/package/@azure/data-tables) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
-
-### [TypeScript](#tab/typescript)
 
 ```typescript
 import { TableServiceClient } from '@azure/data-tables';
@@ -93,11 +90,6 @@ let connectionString: string = 'AccountEndpoint=<table-endpoint>;AccountKey=<key
 const client: TableServiceClient = new TableServiceClient(connectionString);
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`@azure/data-tables`](https://www.npmjs.com/package/@azure/data-tables) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
-
-### [Python](#tab/python)
-
 ```python
 from azure.data.tables import TableServiceClient
 
@@ -105,11 +97,6 @@ connection_string = "AccountEndpoint=<table-endpoint>;AccountKey=<key>;"
 
 client = TableServiceClient(endpoint, connection_string)
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`azure-data-tables`](https://pypi.org/project/azure-data-tables/) and [`azure-identity`](https://pypi.org/project/azure-identity/) packages from PyPI.
-
-### [Go](#tab/go)
 
 ```go
 package main
@@ -125,11 +112,6 @@ func main() {
 }
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`azure/azure-sdk-for-go/sdk/data/aztables`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables) package from Go.
-
-### [Java](#tab/java)
-
 ```java
 import com.azure.data.tables.TableServiceClient;
 import com.azure.data.tables.TableServiceClientBuilder;
@@ -142,11 +124,6 @@ public class Table{
     }
 }
 ```
-
-> [!IMPORTANT]
-> This code samples uses the [`com.azure/azure-data-tables`](https://mvnrepository.com/artifact/com.azure/azure-data-tables) package from Maven.
-
----
 
 ## Grant control plane role-based access
 
@@ -836,8 +813,6 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 
 Validate that you correctly granted access using application code and the Azure SDK in your preferred programming language.
 
-### [C#](#tab/csharp)
-
 ```csharp
 using Azure.Identity;
 using Azure.Data.Tables;
@@ -861,11 +836,6 @@ await table.GetEntityAsync<TableEntity>(
 );
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`Azure.Data.Tables`](https://www.nuget.org/packages/Azure.Data.Tables/) and [`Azure.Identity`](https://www.nuget.org/packages/Azure.Identity) libraries from NuGet.
-
-### [JavaScript](#tab/javascript)
-
 ```javascript
 const { TableServiceClient, TableClient } = require('@azure/data-tables');
 const { DefaultAzureCredential } = require('@azure/identity');
@@ -881,11 +851,6 @@ let table = new TableClient(endpoint, "<table-name>", credential);
 await table.getEntity("<partition-key>", "<row-key>");
 ```
 
-> [!IMPORTANT]
-> This code sample uses the [`@azure/data-tables`](https://www.npmjs.com/package/@azure/data-tables) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
-
-### [TypeScript](#tab/typescript)
-
 ```typescript
 import { TableServiceClient, TableClient } from '@azure/data-tables';
 import { TokenCredential, DefaultAzureCredential } from '@azure/identity';
@@ -900,11 +865,6 @@ let table: TableClient = new TableClient(endpoint, "<table-name>", credential);
 
 await table.getEntity("<partition-key>", "<row-key>");
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`@azure/data-tables`](https://www.npmjs.com/package/@azure/data-tables) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
-
-### [Python](#tab/python)
 
 ```python
 from azure.data.tables import TableServiceClient
@@ -923,11 +883,6 @@ table.get_entity(
     partition_key="<partition-key>"
 )
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`azure-data-tables`](https://pypi.org/project/azure-data-tables/) and [`azure-identity`](https://pypi.org/project/azure-identity/) packages from PyPI.
-
-### [Go](#tab/go)
 
 ```go
 import (
@@ -950,11 +905,6 @@ func main() {
     }
 }
 ```
-
-> [!IMPORTANT]
-> This code sample uses the [`azure/azure-sdk-for-go/sdk/data/aztables`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables) and [`azure/azure-sdk-for-go/sdk/azidentity`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/azidentity) packages from Go.
-
-### [Java](#tab/java)
 
 ```java
 import com.azure.data.tables.TableClient;
@@ -980,11 +930,6 @@ public class Table{
     }
 }
 ```
-
-> [!IMPORTANT]
-> This code samples uses the [`com.azure/azure-data-tables`](https://mvnrepository.com/artifact/com.azure/azure-data-tables) and [`com.azure/azure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity) packages from Maven.
-
----
 
 ## Related content
 
