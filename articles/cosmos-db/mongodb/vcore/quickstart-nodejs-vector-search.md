@@ -11,7 +11,6 @@ ms.devlang: typescript
 ms.topic: quickstart-sdk
 ms.date: 09/08/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli
-zone_pivot_groups: azure-devlang-nodejs
 appliesto:
   - ✅ MongoDB (vCore)
 # CustomerIntent: As a developer, I want to learn how to use vector search in Node.js applications with Azure Cosmos DB for MongoDB (vCore).
