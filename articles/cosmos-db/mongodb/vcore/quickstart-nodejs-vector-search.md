@@ -36,10 +36,10 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
    npm install -g typescript
    ```
 
-- [Azure OpenAI resource](/azure/ai-foundry/openai)
+- [Azure OpenAI resource](/azure/ai-foundry/openai) resource with:
     - Authentication enabled for Role Based Access Control (RBAC).
     - With deployment of `text-embedding-ada-002` model.
-- [MongoDB vCore resource](quickstart-portal.md) with:
+- [MongoDB vCore resource](quickstart-portal.md) resource with:
     - Authentication enabled for Role Based Access Control (RBAC).
     - Vector search enabled.
     - Firewall configured to allow your IP address.
@@ -56,8 +56,8 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
 1. In the terminal, initialize a new Node.js project:
 
    ```bash
-   npm set init.type module
    npm init -y
+   npm pkg set type=commonjs
    ```
 
 1. Install the required packages:
@@ -84,7 +84,7 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
     MONGO_CLUSTER_NAME=
 
     # Data file
-    DATA_FILE_WITH_VECTORS=.HotelsData_toCosmosDB_Vector.json
+    DATA_FILE_WITH_VECTORS=HotelsData_toCosmosDB_Vector.json
     EMBEDDED_FIELD=text_embedding_ada_002
     EMBEDDING_DIMENSIONS=1536
     LOAD_SIZE_BATCH=100
@@ -267,9 +267,8 @@ The output includes the top 5 hotels that match the vector search query, along w
 
 ## View and manage data in Visual Studio Code
 
-1. Open the `src` folder in Visual Studio Code.
-2. Use the DocumentDB extension for Visual Studio Code to connect to your Azure Cosmos DB account.
-3. Install the MongoDB extension for Visual Studio Code for enhanced functionality.
+1. Use the [DocumentDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) for Visual Studio Code to connect to your Azure Cosmos DB account.
+1. View the data and indexes in the Hotels database.
 
 ## Clean up resources
 
