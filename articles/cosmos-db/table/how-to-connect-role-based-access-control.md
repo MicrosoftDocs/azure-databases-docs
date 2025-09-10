@@ -811,7 +811,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 
 ## Validate data plane role-based access in code
 
-Validate that you correctly granted access using application code and the Azure SDK in your preferred programming language.
+Validate that you correctly granted access using application code and the Azure SDK.
 
 ```csharp
 using Azure.Identity;
