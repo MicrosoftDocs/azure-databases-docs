@@ -40,9 +40,8 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 - [Azure OpenAI resource](/azure/ai-foundry/openai) with:
     - Role Based Access Control (RBAC) enabled
     - `text-embedding-ada-002` model deployed
-- [MongoDB vCore resource](quickstart-portal.md) with:
+- [ CosmosDB for MongoDB (vCore) resource](quickstart-portal.md) with:
     - Role Based Access Control (RBAC) enabled
-    - Vector search enabled
     - Firewall configured for your IP address
 
 ## Create a Node.js project
@@ -106,6 +105,17 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 Edit the `package.json` file and add these scripts:
 
+### [DiskANN](#tab/tab-diskann)
+
+Use these scripts to compile TypeScript files and run the DiskANN index implementation.
+
+```json
+"scripts": { 
+    "build": "tsc",
+    "start:diskann": "node --env-file .env dist/diskann.js"
+}
+```
+
 #### [IVF](#tab/tab-ivf)
 
 Use these scripts to compile TypeScript files and run the IVF index implementation.
@@ -128,20 +138,21 @@ Use these scripts to compile TypeScript files and run the HNSW index implementat
 }
 ```
 
-### [DiskANN](#tab/tab-diskann)
 
-Use these scripts to compile TypeScript files and run the DiskANN index implementation.
-
-```json
-"scripts": { 
-    "build": "tsc",
-    "start:diskann": "node --env-file .env dist/diskann.js"
-}
-```
     
 ----
 
 ## Create code files for vector search
+
+### [DiskANN](#tab/tab-diskann)
+
+Create a `src` directory for your TypeScript files. Add two files: `diskann.ts` and `utils.ts` for the DiskANN index implementation:
+
+```bash
+mkdir src    
+touch src/diskann.ts
+touch src/utils.ts
+```
 
 #### [IVF](#tab/tab-ivf)
 
@@ -163,19 +174,18 @@ touch src/hnsw.ts
 touch src/utils.ts
 ```
 
-### [DiskANN](#tab/tab-diskann)
 
-Create a `src` directory for your TypeScript files. Add two files: `diskann.ts` and `utils.ts` for the DiskANN index implementation:
-
-```bash
-mkdir src    
-touch src/diskann.ts
-touch src/utils.ts
-```
 
 ----
 
 ## Create code for vector search
+
+
+### [DiskANN](#tab/tab-diskann)
+
+Paste the following code into the `diskann.ts` file.
+
+:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/diskann.ts" :::
 
 
 #### [IVF](#tab/tab-ivf)
@@ -190,11 +200,6 @@ Paste the following code into the `hnsw.ts` file.
 
 :::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/hnsw.ts" :::
 
-### [DiskANN](#tab/tab-diskann)
-
-Paste the following code into the `diskann.ts` file.
-
-:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/diskann.ts" :::
 
 ----
 
@@ -239,6 +244,14 @@ az login
 
 Build the TypeScript files, then run the application:
 
+### [DiskANN](#tab/tab-diskann)
+
+```bash
+npm run build
+npm run start:diskann
+```
+
+
 #### [IVF](#tab/tab-ivf)
 
 ```bash
@@ -253,12 +266,6 @@ npm run build
 npm run start:hnsw
 ```
 
-### [DiskANN](#tab/tab-diskann)
-
-```bash
-npm run build
-npm run start:diskann
-```
 
 ----
 
