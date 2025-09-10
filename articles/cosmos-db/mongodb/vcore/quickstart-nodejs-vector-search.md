@@ -198,7 +198,7 @@ Paste the following code into the `diskann.ts` file.
 
 ----
 
-This code does the following:
+This main module provides these features:
 
 - Includes utility functions
 - Creates a configuration object for environment variables
