@@ -37,7 +37,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 
 ### [Built-in definition](#tab/built-in-definition)
 
-::: zone pivot="azure-interface-cli,azure-interface-bicep"
+::: zone pivot="azure-cli,azure-interface-bicep"
 
 First, get the resource identifier of the existing Azure Cosmos DB for Table account using [`az cosmsodb show`](/cli/azure/cosmosdb#az-cosmosdb-show) and store it in a variable. Then, list all of the role definitions associated with your Azure Cosmos DB for Table account using [`az rest`](/cli/azure/reference-index#az-rest). Finally, review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
 
@@ -89,7 +89,7 @@ az rest \
 
 ::: zone-end
 
-::: zone pivot="azure-interface-shell"
+::: zone pivot="azure-powershell"
 
 Use [`Get-AzCosmosDBAccount`](/powershell/module/az.cosmosdb/get-azcosmosdbaccount) to get the resource identifier of the existing Azure Cosmos DB for Table account and store it in a variable. Then, use [`Invoke-AzRestMethod`](/powershell/module/az.accounts/invoke-azrestmethod) to list all of the role definitions associated with your Azure Cosmos DB for Table account. Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `Id` property. Record this value as it is required to use in the assignment step later in this guide.
 
@@ -150,7 +150,7 @@ Content    : {
 
 ### [Custom definition](#tab/custom-definition)
 
-::: zone pivot="azure-interface-cli"
+::: zone pivot="azure-cli"
 
 1. Create a new JSON file named *role-definition.json*. In this file, create a resource definition specifying the data actions listed here:
 
@@ -227,7 +227,7 @@ Content    : {
 
 ::: zone-end
 
-::: zone pivot="azure-interface-bicep"
+::: zone pivot="azure-resource-manager-bicep"
 
 1. Create a new Bicep file to define your role definition. Name the file *data-plane-role-definition.bicep*. Add these `dataActions` to the definition:
 
@@ -311,7 +311,7 @@ Content    : {
 
 ::: zone-end
 
-::: zone pivot="azure-interface-shell"
+::: zone pivot="azure-powershell"
 
 1. Create or update your role definition using `Get-AzCosmosDBAccount` and `Invoke-AzRestMethod` together to issue an HTTP `PUT` request. Also, as part of this request, specify a unique GUID for your role definition. Finally, create a resource definition payload specifying the data actions listed here:
 
@@ -398,7 +398,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 > [!IMPORTANT]
 > This assignment task requires you to have the unique identifier of any identity you want to grant role-based access control permissions. If you do not have a unique identifier for an identity, follow the instructions in the [create managed identity](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities) or [get signed-in identity](/cli/azure/ad/signed-in-user) guides.
 
-::: zone pivot="azure-interface-cli"
+::: zone pivot="azure-cli"
 
 1. Use `az cosmosdb show` to get the unique identifier for your current account.
 
@@ -457,7 +457,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 
 ::: zone-end
 
-::: zone pivot="azure-interface-bicep"
+::: zone pivot="azure-resource-manager-bicep"
 
 1. Create another Bicep file to assign a role to an identity. Name this file *data-plane-role-assignment.bicep*.
 
@@ -516,7 +516,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 
 ::: zone-end
 
-::: zone pivot="azure-interface-shell"
+::: zone pivot="azure-powershell"
 
 1. Use `Get-AzCosmosDBAccount to get the unique identifier for your current account.
 

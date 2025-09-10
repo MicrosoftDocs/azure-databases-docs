@@ -1,13 +1,13 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 10/01/2024
+ms.date: 09/10/2025
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+ms.custom:
+  - sfi-ropc-nochange
 ---
 
-## Validate control plane access in code
-
-Finally, validate that you correctly granted access using application code and the Azure Management SDK in your preferred programming language.
+Validate that you correctly granted access using application code and the Azure Management SDK in your preferred programming language.
 
 ### [C#](#tab/csharp)
 

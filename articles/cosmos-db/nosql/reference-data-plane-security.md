@@ -103,5 +103,3 @@ The action can be assigned at any level in an Azure Cosmos DB account's hierarch
 ## Related content
 
 - [Security best practices](security.md)
-- [Grant data plane role-based access](how-to-grant-data-plane-access.md)
-- [Grant data plane control-plane access](how-to-grant-control-plane-access.md)
