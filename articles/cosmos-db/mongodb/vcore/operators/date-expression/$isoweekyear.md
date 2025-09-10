@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/04/2025
+  ms.date: 09/05/2025
 ---
 
 # $isoWeekYear
@@ -28,7 +28,7 @@ The `$isoWeekYear` operator returns the year number in ISO 8601 format. The ISO 
 | --- | --- |
 | **`dateExpression`** | An expression that resolves to a Date, Timestamp, or ObjectId. If the expression resolves to null or is missing, `$isoWeekYear` returns null. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -148,7 +148,7 @@ This query demonstrates the difference between calendar year and ISO week year, 
 
 ```javascript
 db.stores.aggregate([
-  { $match: {"_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
+  { $match: {_id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
   { $unwind: "$promotionEvents" },
   {
     $project: {
