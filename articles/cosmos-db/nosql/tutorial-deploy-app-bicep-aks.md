@@ -54,7 +54,7 @@ This tutorial uses the following best practices for Azure Cosmos DB security:
 
 - Implement access control by using [role-based access control (RBAC)](/azure/role-based-access-control/overview) and a [managed identity](/azure/active-directory/managed-identities-azure-resources/overview). These features eliminate the need for developers to manage secrets, credentials, certificates, and keys for secure communication between services.
 - Limit Azure Cosmos DB access to the AKS subnet by [configuring a virtual network service endpoint](../how-to-configure-vnet-service-endpoint.md).
-- Set `disableLocalAuth = true` in the `databaseAccount` resource to [enforce RBAC as the only authentication method](how-to-connect-role-based-access-control.md#disable-key-based-authenticattion).
+- Set `disableLocalAuth = true` in the `databaseAccount` resource to [enforce RBAC as the only authentication method](how-to-connect-role-based-access-control.md#disable-key-based-authentication).
 
 > [!TIP]
 > The steps in this tutorial use [Azure Cosmos DB for NoSQL](./quickstart-dotnet.md). However, you can apply the same concepts to [Azure Cosmos DB for MongoDB](../mongodb/introduction.md).

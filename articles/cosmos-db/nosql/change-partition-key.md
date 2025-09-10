@@ -50,7 +50,7 @@ Once the copy is complete, you can start using the new container with desired pa
 - By default, two server-side compute instances, each with 4 vCPUs and 16 GB of memory, are allocated to handle the data copy job per account. The performance of the copy job relies on various [factors](../container-copy.md#factors-that-affect-the-rate-of-a-copy-job). To allocate higher SKU server-side compute instances, please reach out to Microsoft support.
 - Partition key modification is supported for containers provisioned with less than 1,000,000 RU/s and containing less than 4 TB of data. For containers with over 1,000,000 provisioned throughput or more than 4 TB of data, please contact Microsoft support for assistance with changing the partition key.
 - Changing partition key isn't supported for accounts with following capabilities.
-  - [Disable local auth](how-to-connect-role-based-access-control.md#disable-key-based-authenticattion)
+  - [Disable local auth](how-to-connect-role-based-access-control.md#disable-key-based-authentication)
    * [Merge partition](../merge.md)
 - The feature is currently supported only in the documented [regions](../container-copy.md#supported-regions).
   
