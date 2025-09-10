@@ -135,7 +135,7 @@ public class Table{
 
 ## Grant data plane role-based access
 
-Data plane access refers to the ability to read and write data within an Azure service without the ability to manage resources in the account. For exmaple, Azure Cosmos DB data plane access could include the ability to:
+Data plane access refers to the ability to read and write data within an Azure service without the ability to manage resources in the account. For example, Azure Cosmos DB data plane access could include the ability to:
 
 - Read some account and resource metadata
 - Create, read, update, patch, and delete items

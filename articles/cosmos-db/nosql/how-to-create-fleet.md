@@ -140,7 +140,7 @@ Before adding accounts to the fleet, you must create a fleetspace. A fleetspace 
 
 > [!NOTE]
 > In this guide, throughput pooling is configured for the fleetspace. You can opt to not use throughput pooling. Throughput pooling is an optional configuration that allows account resources to share RU/s. This shared RU/s is on top of the dedicated RU/s that are already available for the resource.  
-The pool minimum and maximum RU/s can be changed at any time. The service tier and data regions cannot be changed after fleetpsace creation. 
+The pool minimum and maximum RU/s can be changed at any time. The service tier and data regions cannot be changed after fleetspace creation. 
 >
 > To configure throughput pooling for a fleetspace, specify the regions and the service tier that apply to all accounts within the fleetspace. If throughput pooling is configured, all accounts within the fleetspace must share the same regional and service tier configuration.  
 >
