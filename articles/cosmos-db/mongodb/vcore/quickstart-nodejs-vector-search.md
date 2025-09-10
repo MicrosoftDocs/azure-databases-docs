@@ -63,13 +63,13 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
 1. Install the required packages:
 
    ```bash
-    npm install mongodb @azure/identity openai uuid dotenv
+    npm install mongodb @azure/identity openai @types/node
     ```
 
     - `mongodb`: MongoDB Node.js driver.
     - `@azure/identity`: Azure Identity library for passwordless authentication.
     - `openai`: OpenAI client library to create vectors of the query.
-    - `dotenv`: Library to manage environment variables.
+    - `@types/node`: Type definitions for Node.js.
 
 1. Create a `.env` file in the root of your project to store environment variables for password authentication used in this article:
 
@@ -139,7 +139,7 @@ Edit the `package.json` file to add the following scripts:
     }
     ```
     
-    ----
+----
 
 ## Create code files for vector search
 
