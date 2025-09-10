@@ -522,7 +522,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee`. This example uses fictitious data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee`. This example uses fictitious data and your identifier would be distinct from this example. This example is a subset of the typical JSON outputted from the deployment for clarity.
 
 1. Create another Bicep file to assign a role to an identity. Name this file *data-plane-role-assignment.bicep*.
 
@@ -577,7 +577,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 1. Repeat these steps to grant access to the account from any other identities you would like to use.
 
     > [!TIP]
-    > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access using a managed identity.
+    > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access to data using a managed identity.
 
 ::: zone-end
 
