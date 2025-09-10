@@ -67,7 +67,7 @@ If you're comparing full-text search results in Azure Cosmos DB to results from 
 ## Best practices
 
 - Always define both a full-text policy and full-text index for optimal performance.
-- Use `FullTextContainsAll` or `FullTextContainsAny`
+- Use `FullTextContainsAll` or `FullTextContainsAny`.
 - Use `FullTextScore` only in `ORDER BY RANK` clauses.
 
 ## Known limitations
@@ -76,6 +76,6 @@ If you're comparing full-text search results in Azure Cosmos DB to results from 
 - Using `FullTextScore` on phrases (strings with multiple words with spaces) can be slower than searching on each word separately.
 - Multi-language support is in preview and might have inconsistent performance. Stopword removal is currently only available for English (en-US).
 - Fuzzy search is also in preview and limited to a maximum edit distance of 2 and 10 suggestions.
-- Queries using `FullTextScore` within a `JOIN` aren't currently supported
+- Queries using `FullTextScore` within a `JOIN` aren't currently supported.
 - Issue: Providing the incorrect syntax for `FullTextScore` might result in a 500 error instead of the expected 400 error. 
-- Issue: When executing queries using `ORDER BY RANK` and `FullTextScore`, the results might differ slightly on macOS or Linux clients from Windows clients. 
+- Issue: When executing queries using `ORDER BY RANK` and `FullTextScore`, the results might differ slightly on macOS or Linux clients from Windows clients.
