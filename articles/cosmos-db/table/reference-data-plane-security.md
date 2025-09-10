@@ -1,30 +1,26 @@
 ---
-title: Data plane actions reference (preview)
+title: Data plane actions reference
 titleSuffix: Azure Cosmos DB for Table
 description: This article includes a list of all potential data plane actions for use with role-based access control (RBAC) in Azure Cosmos DB for Table.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: stefarroyo
+ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: reference
-ms.date: 02/05/2025
+ms.date: 09/10/2025
 appliesto:
   - ✅ Table
 ---
 
-# Azure Cosmos DB for Table data plane actions reference (preview)
+# Azure Cosmos DB for Table data plane security reference
 
-:::image type="complex" source="media/reference-data-plane-actions/map.svg" border="false" alt-text="Diagram of the current location ('Reference') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Reference' location is currently highlighted.
-:::image-end:::
-
-Azure Cosmos DB for Table exposes a unique set of data actions within its native role-based access control implementation. This article includes a list of those actions and descriptions on what permissions are granted for each action.
+Azure Cosmos DB for Table exposes a unique set of data actions and roles within its native role-based access control implementation. This article includes a list of those actions and roles with descriptions on what permissions are granted for each resource.
 
 > [!WARNING]
-> Azure Cosmos DB for Table's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
+> Azure Cosmos DB for Table's native role-based access control doesn't support the `notDataActions` property. Any action that isn't specified as an allowed `dataAction` is excluded automatically.
 
-## Data actions
+## Built-in actions
 
 Here's a list of data actions that can be individually set in a role definition.
 
@@ -58,7 +54,7 @@ The wildcard (`*`) operator is supported at the `tables`, `containers`, and `ent
 | **`Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*`** | Perform all operations on entities (items) |
 | **`Microsoft.DocumentDB/databaseAccounts/throughputSettings/*`** | Perform all operations related to throughput |
 
-## Required metadata
+### Required metadata for actions
 
 The Azure Cosmos DB software development kits (SDKs) issue read-only metadata requests during initialization and to serve specific data requests. These requests fetch various configuration details such as:
 
@@ -86,6 +82,27 @@ The action can be assigned at any level in an Azure Cosmos DB account's hierarch
 > [!IMPORTANT]
 > You cannot manage throughput with the `Microsoft.DocumentDB/databaseAccounts/readMetadata` data action.
 
+## Built-in rroles
+
+Azure Cosmos DB for Table defines data plane-specific role definitions. These roles are distinct from Azure role-based access control role definitions.
+
+### Cosmos DB Built-in Data Reader
+
+**ID**: `00000000-0000-0000-0000-000000000001`
+
+- **Included actions**
+  - `Microsoft.DocumentDB/databaseAccounts/readMetadata`
+  - `Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/read`
+
+### Cosmos DB Built-in Data Contributor
+
+**ID**: `00000000-0000-0000-0000-000000000002`
+
+- **Included actions**
+  - `Microsoft.DocumentDB/databaseAccounts/readMetadata`
+  - `Microsoft.DocumentDB/databaseAccounts/tables/*`
+  - `Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*`
+
 ## Related content
 
-[Data plane roles](reference-data-plane-roles.md)
+- [Security best practices](security.md)

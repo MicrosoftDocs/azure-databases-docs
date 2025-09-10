@@ -186,11 +186,25 @@
       href: ../global-dist-under-the-hood.md
   - name: Security
     items:
-    - name: Security overview
-      href: ../security.yml
-    - name: Role-based access control guide
-      displayName: RBAC, Entra
-      href: security/index.md
+    - name: Security
+      href: security.md
+    - name: Use role-based access control
+      displayName: rbac, key, ropc, connection string
+      href: how-to-connect-role-based-access-control.md
+    - name: Reference
+      items:
+        - name: Control plane actions
+          displayName: example, permissions, rbac, role, definition
+          href: /azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/table/context/context#microsoftdocumentdb
+        - name: Control plane built-in roles
+          displayName: example, permissions, rbac, role, definition
+          href: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/table/context/context#databases
+        - name: Data plane actions
+          displayName: example, permissions, rbac, role, definition, dataActions
+          href: reference-data-plane-security.md#built-in-actions
+        - name: Data plane built-in roles
+          displayName: example, permissions, rbac, role, definition, dataActions
+          href: reference-data-plane-security.md#built-in-roles
     - name: Considerations and guidance
       href: ../security-considerations.md
     - name: Well Architected Framework security guidance

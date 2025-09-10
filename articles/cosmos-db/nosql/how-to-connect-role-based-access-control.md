@@ -28,7 +28,7 @@ For more information, see [role-based access control overview](/azure/role-based
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- An existing Azure Cosmos DB account.
+- An existing Azure Cosmos DB for NoSQL account.
 
 - One or more existing identities in Microsoft Entra ID.
 
@@ -376,7 +376,6 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     > /
     > ```
     >
-    
 
 1. Use [`az cosmosdb sql role assignment list`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-list) to list all role assignments for your Azure Cosmos DB for NoSQL account. Review the output to ensure your role assignment was created.
 
@@ -756,7 +755,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 
 ::: zone-end
 
-## Validate control plane role-based access in code
+## Validate data plane role-based access in code
 
 Validate that you correctly granted access using application code and the Azure SDK in your preferred programming language.
 

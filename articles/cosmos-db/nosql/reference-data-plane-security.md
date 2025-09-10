@@ -8,7 +8,7 @@ ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
-ms.date: 04/18/2025
+ms.date: 09/10/2025
 appliesto:
   - ✅ NoSQL
 ---
