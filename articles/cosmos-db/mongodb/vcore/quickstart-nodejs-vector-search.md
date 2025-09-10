@@ -111,33 +111,32 @@ Edit the `package.json` file to add the following scripts:
 
 #### [IVF](#tab/tab-ivf)
 
-
-    ```json
-    "scripts": { 
-        "build": "tsc",
-        "start:ivf": "node --env-file .env dist/ivf.js"
-    }
-    ```
+```json
+"scripts": { 
+    "build": "tsc",
+    "start:ivf": "node --env-file .env dist/ivf.js"
+}
+```
 
 #### [HNSW](#tab/tab-hnsw)
 
 
-    ```json
-    "scripts": { 
-        "build": "tsc",
-        "start:hnsw": "node --env-file .env dist/hnsw.js"
-    }
-    ```
+```json
+"scripts": { 
+    "build": "tsc",
+    "start:hnsw": "node --env-file .env dist/hnsw.js"
+}
+```
 
 ### [DiskANN](#tab/tab-diskann)
 
 
-    ```json
-    "scripts": { 
-        "build": "tsc",
-        "start:diskann": "node --env-file .env dist/diskann.js"
-    }
-    ```
+```json
+"scripts": { 
+    "build": "tsc",
+    "start:diskann": "node --env-file .env dist/diskann.js"
+}
+```
     
 ----
 
