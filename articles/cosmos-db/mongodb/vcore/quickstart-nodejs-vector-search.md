@@ -107,9 +107,11 @@ The [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree
 
 ## Create npm scripts
 
-Edit the `package.json` file to add the following scripts:
+Edit the `package.json` file to add the following scripts.
 
 #### [IVF](#tab/tab-ivf)
+
+These scripts compile the TypeScript files and run the IVF index implementation.
 
 ```json
 "scripts": { 
@@ -120,6 +122,7 @@ Edit the `package.json` file to add the following scripts:
 
 #### [HNSW](#tab/tab-hnsw)
 
+These scripts compile the TypeScript files and run the HNSW index implementation.
 
 ```json
 "scripts": { 
@@ -130,6 +133,7 @@ Edit the `package.json` file to add the following scripts:
 
 ### [DiskANN](#tab/tab-diskann)
 
+These scripts compile the TypeScript files and run the DiskANN index implementation.
 
 ```json
 "scripts": { 
