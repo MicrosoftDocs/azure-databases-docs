@@ -34,182 +34,111 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296,
-    "address": "123 Entertainment Blvd",
-    "city": "East Linwoodbury"
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Massive Markdown Mania",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 6,
-          "Day": 29
-        },
-        "endDate": {
-          "Year": 2023,
-          "Month": 7,
-          "Day": 9
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "DVD Players",
-          "discountPercentage": 14
-        },
-        {
-          "categoryName": "Projector Lamps",
-          "discountPercentage": 6
-        }
-      ]
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
     },
-    {
-      "eventName": "Fantastic Deal Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 9,
-          "Day": 27
-        },
-        "endDate": {
-          "Year": 2023,
-          "Month": 10,
-          "Day": 7
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
-        {
-          "categoryName": "TV Mounts",
-          "discountPercentage": 15
-        }
-      ]
     },
-    {
-      "eventName": "Discount Delight Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 12,
-          "Day": 26
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 1,
-          "Day": 5
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Game Controllers",
-          "discountPercentage": 22
-        },
-        {
-          "categoryName": "Home Theater Projectors",
-          "discountPercentage": 23
-        },
-        {
-          "categoryName": "Sound Bars",
-          "discountPercentage": 10
-        }
-      ]
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
     },
-    {
-      "eventName": "Super Sale Spectacular",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 25
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
-        "endDate": {
-          "Year": 2024,
-          "Month": 4,
-          "Day": 2
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      },
-      "discounts": [
-        {
-          "categoryName": "PlayStation Games",
-          "discountPercentage": 22
-        },
-        {
-          "categoryName": "TV Mounts",
-          "discountPercentage": 9
-        },
-        {
-          "categoryName": "Mobile Games",
-          "discountPercentage": 20
-        }
-      ]
-    },
-    {
-      "eventName": "Grand Deal Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 6,
-          "Day": 23
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 6,
-          "Day": 30
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Remote Controls",
-          "discountPercentage": 7
-        },
-        {
-          "categoryName": "Televisions",
-          "discountPercentage": 11
-        },
-        {
-          "categoryName": "Business Projectors",
-          "discountPercentage": 13
-        }
-      ]
-    },
-    {
-      "eventName": "Major Bargain Bash",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 21
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 30
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Sound Bars",
-          "discountPercentage": 9
-        },
-        {
-          "categoryName": "VR Games",
-          "discountPercentage": 7
-        }
-      ]
-    }
-  ],
-  "company": "Proseware, Inc.",
-  "city": "East Linwoodbury",
-  "storeOpeningDate": "2024-09-23T13:45:01.480Z",
-  "lastUpdated": "2025-06-11T11:06:57.922Z",
-  "status": "active",
-  "category": "high-volume",
-  "priority": 1,
-  "reviewDate": "2025-06-11T11:10:50.276Z"
+    ]
 }
 ```
 
@@ -264,7 +193,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query returns the following results.
+This query returns the following results:
 
 ```json
 [
