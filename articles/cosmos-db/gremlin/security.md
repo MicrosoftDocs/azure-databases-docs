@@ -2,7 +2,7 @@
 title: Secure Your Account
 description: Review the fundamentals of securing Azure Cosmos DB for Apache Gremlin from the perspective of data and networking security.
 ms.topic: best-practice
-ms.date: 07/23/2025
+ms.date: 09/11/2025
 ms.custom: security-horizontal-2025
 ai-usage: ai-generated
 ---
