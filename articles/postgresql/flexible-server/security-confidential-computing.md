@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Azure Confidential Computing for Azure Database for PostgreSQL (Preview)
+# Azure Confidential Computing for Azure Database for PostgreSQL
 
 [Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to securely process and collaborate on sensitive data, such as personal data or protected health information (PHI). ACC provides built-in protection against unauthorized access by securing data in use through Trusted Execution Environments (TEEs). This allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
 
@@ -82,10 +82,8 @@ Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential
 
 Be sure to evaluate the limitations carefully before deploying in a production environment.
 
-- Confidential Computing is only available in the UAE North.
-- High Availability isn't supported for Confidential Compute SKUs.
+- Confidential Computing is only available in the UAE North and West Europe regions
 - Point-in-time Restore (PITR) from nonconfidential compute SKUs to confidential ones isn't allowed.
-- Compute scaling operation between confidential and nonconfidential compute options.
 
 ## Related content
 
