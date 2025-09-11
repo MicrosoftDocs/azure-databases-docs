@@ -4,7 +4,7 @@ description: This article describes the confidential computing options in Azure 
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 09/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -31,6 +31,8 @@ ms.custom:
 - AMD SEV-SNP
 - Intel TDX
 
+:::image type="content" source="media/security-confidential-computing/processor.jpg" alt-text="Screenshot of processor.":::
+
 ## Virtual machine SKUs
 
 The SKUs supporting Azure Confidential Computing (ACC) for Azure Database for PostgreSQL are:
@@ -54,15 +56,15 @@ Follow the steps below to deploy an [Azure Database for PostgreSQL](https://ms.p
 
 1. Select **Configure Server** under **Compute + Storage**.
 
-    :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-1.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment basics page." lightbox="media/security-confidential-computing/confidential-compute-portal-1.jpg":::
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-1.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment basics page." lightbox="media/security-confidential-computing/confidential-compute-portal-1.jpg":::
 
 1. On the **Compute and Storage** tab, select your Compute Tier and Compute Processor.
 
-    :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-2.jpg" alt-text="Screenshot of the Azure Confidential Computing portal deployment compute and storage page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-2.jpg" alt-text="Screenshot of the Azure Confidential Computing portal deployment compute and storage page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
 
 1. Select Compute Size and **select a confidential compute SKU** and the size based on your needs.
 
-    :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-3.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-3.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
 
 1. Deploy your server.
 
