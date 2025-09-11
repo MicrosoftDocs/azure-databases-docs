@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/17/2025
+  ms.date: 09/05/2025
 ---
 
 # $toDate
@@ -149,7 +149,7 @@ To convert the value of the lastUpdated field from a Unix timestamp to a date fo
 ```javascript
 db.stores.aggregate([{
         $match: {
-            "_id": "905d1939-e03a-413e-a9c4-221f74055aac"
+            _id: "905d1939-e03a-413e-a9c4-221f74055aac"
         }
     },
     {

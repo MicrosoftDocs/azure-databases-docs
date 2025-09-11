@@ -148,7 +148,7 @@ This query extracts the seconds portion from the store opening date for precise 
 
 ```javascript
 db.stores.aggregate([
-  { $match: {"_id": "905d1939-e03a-413e-a9c4-221f74055aac"} },
+  { $match: {_id: "905d1939-e03a-413e-a9c4-221f74055aac"} },
   {
     $project: {
       name: 1,

@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 08/04/2025
+  ms.date: 09/05/2025
 ---
 
 # $week
@@ -162,7 +162,7 @@ This query extracts the week number from the store opening date.
 
 ```javascript
 db.stores.aggregate([
-  { $match: { "_id": "905d1939-e03a-413e-a9c4-221f74055aac" } },
+  { $match: { _id: "905d1939-e03a-413e-a9c4-221f74055aac" } },
   {
     $project: {
       name: 1,
@@ -210,7 +210,7 @@ db.stores.aggregate([
   { $limit : 3 } ])
 ```
 
-This query returns the following results.
+This query returns the following results:
 
 ```json
 [

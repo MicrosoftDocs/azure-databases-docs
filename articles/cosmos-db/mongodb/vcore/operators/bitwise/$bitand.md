@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/04/2025
+ms.date: 09/05/2025
 ---
 
 # $bitAnd
@@ -34,90 +34,134 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 19,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Discount Delight Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 12,
-          "Day": 26
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 1,
-          "Day": 5
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Game Controllers",
-          "discountPercentage": 22
-        },
-        {
-          "categoryName": "Home Theater Projectors",
-          "discountPercentage": 23
-        }
-      ]
-    }
-  ]
 }
 ```
 
 ### Example 1: Basic bitwise AND operation
 
-The example aggregation pipeline retrieves staff information for a specific store and computes a `bitwise AND` between the number of full-time and part-time staff to create permission flags.
+This query retrieves staff information for a specific store and computes a `bitwise AND` between the number of full-time and part-time staff to create permission flags.
 
 ```javascript
-db.stores.aggregate([
-  { $match: {"_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
-  {
-    $project: {
-      name: 1,
-      fullTimeStaff: "$staff.totalStaff.fullTime",
-      partTimeStaff: "$staff.totalStaff.partTime",
-      staffPermissionFlag: {
-        $bitAnd: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
-      }
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
+        }
+    },
+    {
+        $project: {
+            name: 1,
+            fullTimeStaff: "$staff.totalStaff.fullTime",
+            partTimeStaff: "$staff.totalStaff.partTime",
+            staffPermissionFlag: {
+                $bitAnd: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
+            }
+        }
     }
-  }
 ])
 ```
 
@@ -137,23 +181,26 @@ This query returns the following result.
 
 ### Example 2: Multiple value `$bitAnd`
 
-The example aggregation query checks bitwise permissions or combined flags based on multiple numeric fields for a single store.
+This query checks bitwise permissions or combined flags based on multiple numeric fields for a single store.
 
 ```javascript
-db.stores.aggregate([
-  { $match: {"_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
-  {
-    $project: {
-      name: 1,
-      combinedFlag: {
-        $bitAnd: [
-          "$staff.totalStaff.fullTime",
-          "$staff.totalStaff.partTime",
-          255
-        ]
-      }
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
+        }
+    },
+    {
+        $project: {
+            name: 1,
+            combinedFlag: {
+                $bitAnd: [
+                    "$staff.totalStaff.fullTime",
+                    "$staff.totalStaff.partTime",
+                    255
+                ]
+            }
+        }
     }
-  }
 ])
 ```
 

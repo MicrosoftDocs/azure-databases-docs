@@ -7,16 +7,15 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/27/2024
+ms.date: 09/05/2024
 ---
 
 # $addFields
 The $addFields stage in the aggregation pipeline is used to add new fields to documents. It can also be used to reset the values of existing fields. This stage is particularly useful when you need to create new fields based on existing data or modify existing fields within your documents.
 
 ## Syntax
-The basic syntax for the $addFields stage is as follows:
 
-```json
+```javascript
 {
   $addFields: {
     <newField1>: <expression1>,
@@ -36,6 +35,7 @@ The basic syntax for the $addFields stage is as follows:
 ## Examples
 
 Consider this sample document from the stores collection.
+
 ```json
 {
     "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
@@ -148,7 +148,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Adding a new field
 
-To add a new field totalDiscountEvents that counts the number of promotion events
+This query adds a new field totalDiscountEvents that counts the number of promotion events
 
 ```javascript
 db.stores.aggregate([
@@ -159,7 +159,9 @@ db.stores.aggregate([
   }
 ])
 ```
-Sample output
+
+This query returns the following result:
+
 ```json
 [
   {
@@ -175,7 +177,7 @@ Sample output
 
 ### Example 2: Modifying an Existing Field
 
-To add a field totalStaffCount that sums up the full-time and part-time staff.
+This query adds a field totalStaffCount that sums up the full-time and part-time staff.
 
 ```javascript
 db.stores.aggregate([
@@ -188,7 +190,9 @@ db.stores.aggregate([
   }
 ])
 ```
-Sample output
+
+This query returns the following result:
+
 ```json
 [
   {
@@ -210,7 +214,7 @@ Sample output
 
 ### Example 3: Adding Nested Fields
 
-To add a nested field location.coordinates that combines latitude and longitude into an array.
+This query adds a nested field location.coordinates that combines latitude and longitude into an array.
 
 ```javascript
 db.stores.aggregate([
@@ -221,7 +225,9 @@ db.stores.aggregate([
   }
 ])
 ```
-Sample output
+
+This query returns the following result:
+
 ```json
 [
   {
