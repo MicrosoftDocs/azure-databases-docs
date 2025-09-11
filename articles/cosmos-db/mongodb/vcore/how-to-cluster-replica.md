@@ -18,8 +18,6 @@ appliesto:
 
 # Manage cross-region and same region replication on your Azure Cosmos DB for MongoDB vCore cluster
 
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
 Azure Cosmos DB for MongoDB vCore allows continuous data streaming to a replica cluster in another or the same Azure region. That capability provides cross-region disaster recovery (DR) protection and read scalability across the regions and in the same region. This document serves as a quick guide for developers who want to learn how to manage replication for their clusters.
 
 ## Prerequisites
