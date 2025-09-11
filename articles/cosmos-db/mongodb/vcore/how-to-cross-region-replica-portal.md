@@ -15,17 +15,16 @@ appliesto:
 - ✅ MongoDB vCore
 ---
 
-# Create and use a cross-region replica cluster or same region replica cluster in Azure Cosmos DB for MongoDB vCore
+# Create and use a replica cluster in another or the same Azure region in Azure Cosmos DB for MongoDB vCore
 
-In this guide, you will create a **replica cluster** in either a different Azure region or the same region for an **Azure Cosmos DB for MongoDB vCore** cluster. A cross-region replica cluster can be used for **disaster recovery (DR)** and **read scalability**, while a replica cluster in the same region is primarily intended for **read scalability**.
+In this guide, you'll create a **replica cluster** in either a different Azure region or the same region for an **Azure Cosmos DB for MongoDB vCore** cluster. A cross-region replica cluster can be used for **disaster recovery (DR)** and **read scalability**, while a replica cluster in the same region is primarily intended for **read scalability**.
 
 The replica cluster stores a copy of all your MongoDB resources—**databases**, **collections**, and **documents**—in another or the same Azure region. The replica cluster provides a **unique endpoint** for various tools and SDKs to connect to. It can be **promoted to accept writes** if the primary region experiences an outage.
 
 ## Prerequisites
 
 [!INCLUDE[Prerequisite - Azure subscription](includes/prereq-azure-subscription.md)]
-
-[!INCLUDE[Prerequisite - Mongo shell](includes/prereq-shell.md)]
+[!INCLUDE[Prerequisite - Mongo shell](includes/prereq-shell-tool.md)]
 
 ## Create a new cluster and its replica in another or the same region
 
@@ -66,7 +65,7 @@ Create a MongoDB cluster with a cluster read replica by using Azure Cosmos DB fo
 
     :::image type="content" source="media/quickstart-portal/configure-scale.png" alt-text="Screenshot of cluster tier and scale options for a cluster.":::
 
-1. Back on the cluster page enter the following information:
+1. Back on the cluster page, enter the following information:
 
     | Setting | Value | Description |
     | --- | --- | --- |
@@ -94,9 +93,9 @@ You can also select `Add 0.0.0.0 - 255.255.255.255` firewall rule to allow not j
 
 1. Select **Next: Global distribution**.
 
-1. On the **Global distribution** tab, select **Enable** for **Cluster replica** to create a cluster read replica as a part of this new primary cluster provisioning.
+1. On the **Global distribution** tab, select **Enable** for **Cluster replica** to create a replica cluster as a part of this new primary cluster provisioning.
 
-1. In the **Read replica name** field, enter a name for the cluster read replica. It should be a globally unique cluster name.
+1. In the **Read replica name** field, enter a name for the replica cluster. It should be a globally unique cluster name.
 
 1. Select a value from the **Read replica region** drop-down list.
 
@@ -202,7 +201,7 @@ db.cats.find();
 
 1. On the **Networking** page, select **Add current client IP address** to create a firewall rule with the public IP address of your computer, as perceived by the Azure system.
 
-    :::image type="content" source="media/how-to-cross-region-replication-portal/cluster-networking-adding-firewall-rule.png" alt-text="Screenshot of the networking page on read replica cluster.":::
+    :::image type="content" source="media/how-to-cross-region-replication-portal/cluster-networking-adding-firewall-rule.png" alt-text="Screenshot of the networking page on replica cluster.":::
   
     Verify your IP address before saving this configuration. In some situations, the IP address observed by Azure portal differs from the IP address used when accessing the Internet and Azure services. You can also select `Add 0.0.0.0 - 255.255.255.255` firewall rule to allow not just your IP, but the whole Internet to access the cluster. In this situation, clients still must log in with the correct username and password to use the cluster.
 
@@ -217,9 +216,9 @@ Get the connection string for the replica cluster.
 1. Copy the value from the **Connection string** field.
 
     > [!IMPORTANT]
-    > The connection string of the read replica cluster contains unique *replica cluster name* that you selected during replica creation. The username and password values for the read replica cluster are always the same as the ones on its primary cluster.
+    > The connection string of the replica cluster contains unique *replica cluster name* that you selected during replica creation. The username and password values for the replica cluster are always the same as the ones on its primary cluster.
 
-1. In command line, use the MongDB shell to connect to the read replica cluster using its connection string.
+1. In command line, use the MongDB shell to connect to the replica cluster using its connection string.
 
     ```shell
     mongosh "mongodb+srv://<user>@<cluster_replica_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
@@ -236,25 +235,25 @@ db.cats.find();
 
 ## Promote replica cluster
 
-To promote a cluster read replica to a read-write cluster, follow these steps:
+To promote a replica cluster to a read-write cluster, follow these steps:
 
-1. Select the *read replica cluster* in the portal.
+1. Select the *replica cluster* in the portal.
 
 1. On the cluster sidebar, under **Cluster management**, select **Global distribution**.
 
-1. On the **Global distribution** page, select **Promote** on the toolbar to initiate read replica promotion to read-write cluster. 
+1. On the **Global distribution** page, select **Promote** on the toolbar to initiate replica cluster promotion to read-write cluster. 
 
-    :::image type="content" source="media/how-to-cross-region-replication-portal/replica-cluster-promotion.png" alt-text="Screenshot of the read replica cluster global distribution page with the promote button.":::
+    :::image type="content" source="media/how-to-cross-region-replication-portal/replica-cluster-promotion.png" alt-text="Screenshot of the  replica cluster's global distribution page with the promote button.":::
 
 1. In the **Promote cluster** pop-up window, confirm that you understand how replica promotion works, and select **Promote**. Replica promotion might take a few minutes to complete.
 
-    :::image type="content" source="media/how-to-cross-region-replication-portal/replica-cluster-promotion-confirmation.png" alt-text="Screenshot of the read replica cluster global distribution page with the promote confirmation pop-up window.":::
+    :::image type="content" source="media/how-to-cross-region-replication-portal/replica-cluster-promotion-confirmation.png" alt-text="Screenshot of the replica cluster's global distribution page with the promotion confirmation pop-up window.":::
 
 ### Write to promoted cluster replica
 
 Once replica promotion is completed, the promoted replica becomes available for writes and the former primary cluster is set to read-only.
 
-Use the MongDB shell in command line to connect to *the promoted replica cluster* using its connection string.
+To connect to *the promoted replica cluster* using its connection string, use the MongDB shell in command line.
 
 ```shell
 mongosh "mongodb+srv://<user>@<promoted_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
