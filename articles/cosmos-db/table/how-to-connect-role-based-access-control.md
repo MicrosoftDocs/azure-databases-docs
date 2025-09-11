@@ -119,7 +119,7 @@ import com.azure.data.tables.TableServiceClientBuilder;
 public class Table{
     public static void main(String[] args){
         TableServiceClient tableServiceClient = new TableServiceClientBuilder()
-            .connectionString("AccountEndpoint=<nosql-endpoint>;AccountKey=<key>;")
+            .connectionString("AccountEndpoint=<table-endpoint>;AccountKey=<key>;")
             .buildClient();
     }
 }
@@ -170,11 +170,11 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     [
       ...,
       {
-        "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
+        "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
         "name": "00000000-0000-0000-0000-000000000002",
         "properties": {
           "assignableScopes": [
-            "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+            "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table"
           ],
           "permissions": [
             {
@@ -196,7 +196,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
 
 1. Create a new JSON file named *role-definition.json*. In this file, create a resource definition specifying the data actions listed here:
 
@@ -284,12 +284,12 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 
     ```json
     {
-      "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+      "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table"
     }
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table`. This example uses fictitious data and your identifier would be distinct from this example.
 
 1. Create a new JSON file named *role-assignment.json*. In the JSON file, add the unique identifier for your identity and unique identifier for the account resource.
 
@@ -384,11 +384,11 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     [
       ...,
       {
-        "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
+        "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
         "name": "00000000-0000-0000-0000-000000000002",
         "properties": {
           "assignableScopes": [
-            "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+            "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table"
           ],
           "permissions": [
             {
@@ -410,7 +410,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
 
 1. Create a new Bicep file to define your role definition. Name the file *data-plane-role-definition.bicep*. Add these `dataActions` to the definition:
 
@@ -610,11 +610,11 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
         "value": [
           ...,
           {
-            "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
+            "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
             "name": "00000000-0000-0000-0000-000000000002",
             "properties": {
               "assignableScopes": [
-                "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+                "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table"
               ],
               "permissions": [
                 {
@@ -640,7 +640,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     ```
 
     > [!NOTE]
-    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
+    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
 
 1. Create or update your role definition using `Get-AzCosmosDBAccount` and `Invoke-AzRestMethod` together to issue an HTTP `PUT` request. Also, as part of this request, specify a unique GUID for your role definition. Finally, create a resource definition payload specifying the data actions listed here:
 
@@ -753,7 +753,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     ```azurepowershell-interactive
     $parameters = @{
         ResourceGroupName = "<name-of-existing-resource-group>"
-        Name = "<name-of-existing-nosql-account>"
+        Name = "<name-of-existing-table-account>"
     }
     Get-AzCosmosDBAccount @parameters | Select -Property Id
     ```
@@ -763,11 +763,11 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     ```output
     Id
     --    
-    /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql
+    /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table
     ```
 
     > [!NOTE]
-    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
+    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table`. This example uses fictitious data and your identifier would be distinct from this example.
 
 1. Now create or update a role assignment using `Get-AzCosmosDBAccount` and `Invoke-AzRestMethod` together to issue an HTTP `PUT` request. As part of this request, specify a unique GUID for your role assignment. Finally, create a resource assignment payload specifying the unique identifier for your identity.
 
@@ -919,7 +919,7 @@ public class Table{
             .build();
         
         TableServiceClient client = new TableServiceClientBuilder()
-            .endpoint("<nosql-endpoint>")
+            .endpoint("<table-endpoint>")
             .credential(credential)
             .buildClient();
 
@@ -933,5 +933,8 @@ public class Table{
 
 ## Related content
 
-- [Secure your Azure Cosmos DB for NoSQL account](security.md)
-- [Overview of Azure Cosmos DB for NoSQL](overview.md)
+- [Secure your Azure Cosmos DB for Table account](security.md)
+- [Azure Cosmos DB for Table control plane roles](/azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/context/context#databases)
+- [Azure Cosmos DB for Table control plane permissions](/azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/context/context#microsoftdocumentdb)
+- [Azure Cosmos DB for Table data plane roles](reference-data-plane-security.md#built-in-roles)
+- [Azure Cosmos DB for Table data plane permissions](reference-data-plane-security.md#built-in-actions)
