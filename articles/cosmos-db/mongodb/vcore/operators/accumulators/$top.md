@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/05/2025
 ---
 
 # $top
@@ -155,18 +155,18 @@ To find the highest-selling category within the First Up Consultants company, ru
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$group": {
-        "_id": "$company",
-        "topSales": {
-            "$top": {
-                "output": ["$company", "$sales"],
-                "sortBy": {
+    $group: {
+        _id: "$company",
+        topSales: {
+            $top: {
+                output: ["$company", "$sales"],
+                sortBy: {
                     "sales.totalSales": -1
                 }
             }

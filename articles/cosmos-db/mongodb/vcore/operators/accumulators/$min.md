@@ -7,7 +7,7 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 01/05/2025
+ms.date: 09/05/2025
 ---
 
 # $min
@@ -225,7 +225,7 @@ This query returns the following results.
 
 ### Example 2: Using `$min` in `$bucket`
 
-This example creates buckets based on sales values and calculates the minimum sales value for each bucket.
+This query creates buckets based on sales values and calculates the minimum sales value for each bucket.
 
 ```javascript
 db.stores.aggregate([{
@@ -267,7 +267,7 @@ This query returns the following results.
 
 ### Example 3: Using `$min` in `$setWindowFields`
 
-To get the minimum discount for the category "Laptops" by company, in the year 2023:
+This query retrieves the minimum discount for "Laptops" by company, in the year 2023:
 
 ```javascript
 db.stores.aggregate([{
@@ -377,7 +377,7 @@ To set a minimum staff requirement, update the full time stagg count only if the
 
 ```javascript
 db.stores.updateOne(
-  { "_id": "26afb024-53c7-4e94-988c-5eede72277d5" },
+  { _id: "26afb024-53c7-4e94-988c-5eede72277d5" },
   {
     $min: {
       "staff.totalStaff.fullTime": 10
@@ -392,7 +392,7 @@ To update multiple fields with minimum values simultaneously, use the $min opera
 
 ```javascript
 db.stores.updateOne(
-  { "_id": "26afb024-53c7-4e94-988c-5eede72277d5" },
+  { _id: "26afb024-53c7-4e94-988c-5eede72277d5" },
   {
     $min: {
       "staff.totalStaff.partTime": 12,
@@ -412,7 +412,7 @@ If a field doesn't exist, `$min` creates it with the specified value.
 
 ```javascript
 db.stores.updateOne(
-  { "_id": "26afb024-53c7-4e94-988c-5eede72277d5" },
+  { _id: "26afb024-53c7-4e94-988c-5eede72277d5" },
   {
     $min: {
       "staff.minStaffRequired": 15,
@@ -428,7 +428,7 @@ Set minimum dates for tracking earliest events.
 
 ```javascript
 db.stores.updateOne(
-  { "_id": "26afb024-53c7-4e94-988c-5eede72277d5" },
+  { _id: "26afb024-53c7-4e94-988c-5eede72277d5" },
   {
     $min: {
       "lastInventoryCheck": new Date("2024-01-15"),
@@ -445,7 +445,7 @@ Update minimum values within array elements using positional operators.
 ```javascript
 db.stores.updateOne(
   {
-    "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+    _id: "26afb024-53c7-4e94-988c-5eede72277d5",
     "sales.salesByCategory.categoryName": "Lavalier Microphones"
   },
   {

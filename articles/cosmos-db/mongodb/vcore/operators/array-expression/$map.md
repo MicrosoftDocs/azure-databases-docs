@@ -97,12 +97,12 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Extracting category names
 
-The aggregation pipeline filters the `stores` collection for `_id`, then projects a new field `categoryNames` where each element in the salesByCategory array has its totalSales increased by 500 using the $map operator.
+This query filters the `stores` collection for `_id`, then projects a new field `categoryNames` where each element in the salesByCategory array has its totalSales increased by 500 using the $map operator.
 
 ```javascript
 db.stores.aggregate([{
         $match: {
-            "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60"
+            _id: "988d2dd1-2faa-4072-b420-b91b95cbfd60"
         }
     },
     {
@@ -121,7 +121,7 @@ db.stores.aggregate([{
 ])
 ```
 
-The query returns the following result.
+This query returns the following result.
 
 ```json
 [

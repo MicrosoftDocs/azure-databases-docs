@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/05/2025
 ---
 
 # $cmp
@@ -149,17 +149,17 @@ To compare the total sales of stores within the Boulder Innovations Company to $
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["Boulder Innovations"]
+    $match: {
+        company: {
+            $in: ["Boulder Innovations"]
         }
     }
 }, {
-    "$project": {
-        "name": 1,
+    $project: {
+        name: 1,
         "sales.salesByCategory.totalSales": 1,
-        "greaterThan25000": {
-            "$cmp": ["$sales.revenue", 25000]
+        greaterThan25000: {
+            $cmp: ["$sales.revenue", 25000]
         }
     }
 }])

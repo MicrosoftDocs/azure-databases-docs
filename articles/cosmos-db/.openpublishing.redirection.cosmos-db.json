@@ -691,6 +691,16 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$count.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$count",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$sort.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/aggregation/$sort",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-dot-net-sdk-request-timeout.md",
       "redirect_url": "/azure/cosmos-db/nosql/troubleshoot-dotnet-sdk-request-timeout",
       "redirect_document_id": true
@@ -6958,6 +6968,61 @@
     {
       "source_path_from_root": "/articles/cosmos-db/ai-advantage.md",
       "redirect_url": "/azure/cosmos-db",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security-glossary.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/how-to-grant-data-plane-access.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-connect-role-based-access-control",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/how-to-grant-control-plane-access.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-connect-role-based-access-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/how-to-disable-key-based-authentication.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-connect-role-based-access-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/index.md",
+      "redirect_url": "/azure/cosmos-db/table/security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/glossary.md",
+      "redirect_url": "/azure/cosmos-db/table/security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/how-to-disable-key-based-authentication.md",
+      "redirect_url": "/azure/cosmos-db/table/how-to-connect-role-based-access-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/how-to-grant-control-plane-role-based-access.md",
+      "redirect_url": "/azure/cosmos-db/table/how-to-connect-role-based-access-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/how-to-grant-data-plane-role-based-access.md",
+      "redirect_url": "/azure/cosmos-db/table/how-to-connect-role-based-access-control",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/reference-data-plane-actions.md",
+      "redirect_url": "/azure/cosmos-db/table/reference-data-plane-security#built-in-actions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/reference-data-plane-roles.md",
+      "redirect_url": "/azure/cosmos-db/table/reference-data-plane-security#built-in-roles",
       "redirect_document_id": false
     }
   ]

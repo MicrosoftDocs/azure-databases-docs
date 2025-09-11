@@ -7,7 +7,7 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 01/05/2025
+ms.date: 09/05/2025
 ---
 
 # $max
@@ -226,7 +226,7 @@ db.stores.aggregate([{
 }])
 ```
 
-This query would return the following document.
+This query returns the following results:
 
 ```json
 [
@@ -318,7 +318,7 @@ To update the full time staff to 10 only if the current full time staff count is
 
 ```javascript
 db.stores.updateOne(
-  { "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
+  { _id: "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
   {
     $max: {
       "staff.totalStaff.fullTime": 10
@@ -333,7 +333,7 @@ To update multiple fields with maximum values, use the $max operator with multip
 
 ```javascript
 db.stores.updateOne(
-  { "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
+  { _id: "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
   {
     $max: {
       "staff.totalStaff.partTime": 1,
@@ -353,7 +353,7 @@ If a field doesn't exist, `$max` creates it with the specified value.
 
 ```javascript
 db.stores.updateOne(
-  { "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
+  { _id: "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
   {
     $max: {
       "staff.maxStaffCapacity": 25,
@@ -370,7 +370,7 @@ Update maximum values within array elements using positional operators.
 ```javascript
 db.stores.updateOne(
   {
-    "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
+    _id: "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
     "sales.salesByCategory.categoryName": "Phone Mounts"
   },
   {
@@ -387,7 +387,7 @@ Set peak performance metrics that only update when exceeded.
 
 ```javascript
 db.stores.updateOne(
-  { "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
+  { _id: "f2a8c190-28e4-4e14-9d8b-0256e53dca66" },
   {
     $max: {
       "performance.peakDailySales": 5000,

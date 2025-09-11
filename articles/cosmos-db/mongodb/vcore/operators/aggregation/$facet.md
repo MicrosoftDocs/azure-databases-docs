@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 10/14/2024
+  ms.date: 09/05/2025
 ---
 
 # $facet
@@ -15,8 +15,6 @@
 The `$facet` stage aggregation pipelines allow for multiple parallel aggregations to be executed within a single pipeline stage. It's useful for performing multiple analyses on the same dataset in a single query.
 
 ## Syntax
-
-The syntax for the `$facet` stage is as follows:
 
 ```javascript
 {
@@ -37,6 +35,7 @@ The syntax for the `$facet` stage is as follows:
 ## Examples
 
 Consider this sample document from the stores collection.
+
 ```json
 {
     "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
@@ -168,26 +167,28 @@ db.stores.aggregate([
       ]
     }
   }
-]).pretty();
+]).pretty()
 ```
 
-The returned output from query displays the aggregated insights.
+This query returns the following result:
 
 ```json
-{
-  "salesAnalysis": [
-    { "_id": "Smartphones", "totalSales": 440815 },
-    { "_id": "Laptops", "totalSales": 679453 },
-    { "_id": "Cameras", "totalSales": 481171 },
-    { "_id": "Watches", "totalSales": 492299 }
-  ],
-  "promotionAnalysis": [
-    { "_id": "Smartphones", "avgDiscount": 14.32 },
-    { "_id": "Laptops", "avgDiscount": 14.780645161290323 },
-    { "_id": "Cameras", "avgDiscount": 15.512195121951219 },
-    { "_id": "Watches", "avgDiscount": 15.174418604651162 }
-  ]
-}
+[
+  {
+    "salesAnalysis": [
+      { "_id": "Smartphones", "totalSales": 440815 },
+      { "_id": "Laptops", "totalSales": 679453 },
+      { "_id": "Cameras", "totalSales": 481171 },
+      { "_id": "Watches", "totalSales": 492299 }
+    ],
+    "promotionAnalysis": [
+      { "_id": "Smartphones", "avgDiscount": 14.32 },
+      { "_id": "Laptops", "avgDiscount": 14.780645161290323 },
+      { "_id": "Cameras", "avgDiscount": 15.512195121951219 },
+      { "_id": "Watches", "avgDiscount": 15.174418604651162 }
+    ]
+  }
+]
 ```
 
 ## Related content

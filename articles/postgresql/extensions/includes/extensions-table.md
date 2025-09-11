@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 06/04/2025
+ms.date: 09/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -111,12 +111,12 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 17 | 1.3.0 |
-| 16 | 1.3.0 |
-| 15 | 1.3.0 |
-| 14 | 1.3.0 |
-| 13 | 1.3.0 |
-| 12 | 1.3.0 |
+| 17 | 1.3.1 |
+| 16 | 1.3.1 |
+| 15 | 1.3.1 |
+| 14 | 1.3.1 |
+| 13 | 1.3.1 |
+| 12 | 1.3.1 |
 | 11 | Not supported |
 
 
@@ -423,7 +423,6 @@ ms.custom:
 | 12 | 1.4 |
 | 11 | 1.4 |
 
-<sup>*</sup> Enable corresponding libraries in the `session_preload_libraries` server parameter.
 
 
 ## ltree

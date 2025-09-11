@@ -108,7 +108,7 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 
 
 > [!IMPORTANT]  
-> The selected compute size determines the minimum and maximum IOPS.
+> Your server’s performance depends on both the compute and storage tier. The maximum IOPS will be capped by whichever tier supports less.
 
 Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 

@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/05/2025
 ---
 
 # $first
@@ -148,37 +148,34 @@ To retrieve the least recently updated store under the First Up Consultants comp
 
 ```javascript
 db.stores.aggregate([{
-        "$match": {
-            "company": {
-                "$in": [
-                    "First Up Consultants"
-                ]
-            }
-        }
-    },
-    {
-        "$sort": {
-            "lastUpdated": 1
-        }
-    },
-    {
-        "$group": {
-            "_id": "$company",
-            "firstUpdated": {
-                "$first": "$lastUpdated"
-            }
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
-])
+}, {
+    $sort: {
+        lastUpdated: 1
+    }
+}, {
+    $group: {
+        _id: "$company",
+        firstUpdated: {
+            $first: "$lastUpdated"
+        }
+    }
+}])
 ```
 
 This query returns the following result:
 
 ```json
-{
-    "_id": "First Up Consultants",
-    "firstUpdated": "ISODate('2025-06-11T10:48:01.291Z')"
-}
+[
+  {
+      "_id": "First Up Consultants",
+      "firstUpdated": "ISODate('2025-06-11T10:48:01.291Z')"
+  }
+]
 ```
 
 ### Example 2: Get first category by sales amount per store
