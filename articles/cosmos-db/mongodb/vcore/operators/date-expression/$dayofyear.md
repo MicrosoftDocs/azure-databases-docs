@@ -7,7 +7,7 @@ ms.author: pattychow
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 09/04/2025
+ms.date: 09/08/2025
 ---
 
 # $dayOfYear
@@ -168,6 +168,10 @@ This query returns the following result.
     "dayOfYear": 339
   }
 ]
+```
+
+```json
+{ "dayOfYear": 339 }
 ```
 
 ## Related content

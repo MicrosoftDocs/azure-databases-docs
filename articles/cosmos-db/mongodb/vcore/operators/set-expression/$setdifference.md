@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/04/2025
+  ms.date: 09/08/2025
 ---
 
 # $setDifference
@@ -142,6 +142,7 @@ Consider this sample document from the stores collection.
     ]
 }
 ```
+
 ### Example 1: Find categories of products for sale but not discounted
 
 This query retrieves product categories that include sales data but no discounts.

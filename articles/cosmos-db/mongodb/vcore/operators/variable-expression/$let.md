@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/04/2025
+  ms.date: 09/08/2025
 ---
 
 # $let 
@@ -184,12 +184,12 @@ This query returns the following result.
 ```json
 [
   {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    staffMetrics: {
-      totalStaff: 39,
-      salesPerEmployee: 3893.948717948718,
-      fullTimeRatio: 0.5128205128205128
+    "_id": '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
+    "name": 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
+    "staffMetrics": {
+      "totalStaff": 39,
+      "salesPerEmployee": 3893.948717948718,
+      "fullTimeRatio": 0.5128205128205128
     }
   }
 ]
@@ -241,17 +241,17 @@ This query returns the following result.
 ```json
 [
   {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    locationInsights: {
-      coordinates: { lat: 70.1272, lon: 69.7296 },
-      hemisphere: {
-        latitudeHemisphere: 'North',
-        longitudeHemisphere: 'East',
-        quadrant: 'North East'
+    "_id": '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
+    "name": 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
+    "locationInsights": {
+      "coordinates": { "lat": 70.1272, "lon": 69.7296 },
+      "hemisphere": {
+        "latitudeHemisphere": 'North',
+        "longitudeHemisphere": 'East',
+        "quadrant": 'North East'
       },
-      distanceFromEquator: 70.1272,
-      distanceFromPrimeMeridian: 69.7296
+      "distanceFromEquator": 70.1272,
+      "distanceFromPrimeMeridian": 69.7296
     }
   }
 ]
