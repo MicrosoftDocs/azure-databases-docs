@@ -57,7 +57,7 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
     ```bash
     npm init -y
-    npm pkg set type=commonjs
+    npm pkg set type="module"
     ```
 
 1. Install the required packages:
