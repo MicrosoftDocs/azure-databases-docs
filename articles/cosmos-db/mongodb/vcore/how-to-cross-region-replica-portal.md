@@ -1,7 +1,7 @@
 ---
-title: Create and use a cross-region replica
+title: Create and use a cross-region or same region replica cluster 
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Create a new Azure Cosmos DB for MongoDB vCore cluster replica in another region for disaster recovery (DR) and read scaling purposes in the Azure portal.
+description: Create a new Azure Cosmos DB for MongoDB vCore replica cluster in another or same region for disaster recovery (DR) and read scaling purposes.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
@@ -10,12 +10,12 @@ ms.custom:
 - ignite-2024
 - sfi-image-nochange
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 08/09/2025
 appliesto:
 - ✅ MongoDB vCore
 ---
 
-# Create and use a cross-region cluster replica in Azure Cosmos DB for MongoDB vCore
+# Create and use a cross-region replica cluster or same region replica cluster in Azure Cosmos DB for MongoDB vCore
 
 In this guide, you create a cluster replica in another region for an Azure Cosmos DB for MongoDB vCore cluster for disaster recovery (DR) purposes. This replica cluster stores a copy of all of your MongoDB resources - databases, collections, and documents - in another Azure region. The replica cluster provides a unique endpoint for various tools and SDKs to connect to and could be promoted to become available for writes if there's a primary region outage.
 
