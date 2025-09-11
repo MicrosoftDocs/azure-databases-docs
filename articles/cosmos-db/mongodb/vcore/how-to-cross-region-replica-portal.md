@@ -17,16 +17,19 @@ appliesto:
 
 # Create and use a cross-region replica cluster or same region replica cluster in Azure Cosmos DB for MongoDB vCore
 
-In this guide, you create a cluster replica in another region for an Azure Cosmos DB for MongoDB vCore cluster for disaster recovery (DR) purposes. This replica cluster stores a copy of all of your MongoDB resources - databases, collections, and documents - in another Azure region. The replica cluster provides a unique endpoint for various tools and SDKs to connect to and could be promoted to become available for writes if there's a primary region outage.
+In this guide, you will create a **replica cluster** in either a different Azure region or the same region for an **Azure Cosmos DB for MongoDB vCore** cluster. A cross-region replica cluster can be used for **disaster recovery (DR)** and **read scalability**, while a replica cluster in the same region is primarily intended for **read scalability**.
+
+The replica cluster stores a copy of all your MongoDB resources—**databases**, **collections**, and **documents**—in another or the same Azure region. The replica cluster provides a **unique endpoint** for various tools and SDKs to connect to. It can be **promoted to accept writes** if the primary region experiences an outage.
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free).
-- [MongoDB shell](https://www.mongodb.com/try/download/shell)
+[!INCLUDE[Prerequisite - Azure subscription](includes/prereq-azure-subscription.md)]
 
-## Create a new cluster and its replica in another region
+[!INCLUDE[Prerequisite - Mongo shell](includes/prereq-shell.md)]
 
-Create a MongoDB cluster with a cluster read replica in another region by using Azure Cosmos DB for MongoDB vCore.
+## Create a new cluster and its replica in another or the same region
+
+Create a MongoDB cluster with a cluster read replica by using Azure Cosmos DB for MongoDB vCore.
 
 > [!TIP]
 > For this guide, we recommend using the resource group name ``msdocs-cosmos-quickstart-rg``.
@@ -63,7 +66,7 @@ Create a MongoDB cluster with a cluster read replica in another region by using 
 
     :::image type="content" source="media/quickstart-portal/configure-scale.png" alt-text="Screenshot of cluster tier and scale options for a cluster.":::
 
-1. Back on the cluster page, enter the following information:
+1. Back on the cluster page enter the following information:
 
     | Setting | Value | Description |
     | --- | --- | --- |
@@ -77,16 +80,6 @@ Create a MongoDB cluster with a cluster read replica in another region by using 
 
     :::image type="content" source="media/how-to-cross-region-replication-portal/configure-cluster.png" alt-text="Screenshot of various configuration options for a cluster.":::
 
-1. Select **Next: Global distribution**.
-
-1. On the **Global distribution** tab, select **Enable** for **Read replica in another region** to create a cluster read replica as a part of this new primary cluster provisioning.
-
-1. In the **Read replica name** field, enter a name for the cluster read replica. It should be a globally unique cluster name.
-
-1. Select a value from the **Read replica region** drop-down list.
-
-    :::image type="content" source="media/how-to-cross-region-replication-portal/global-distribution-tab.png" alt-text="Screenshot of the global distribution tab in cluster provisioning.":::
-
 1. Select **Next: Networking**.
 
 1. On the **Networking** tab, select **Add current client IP address** to create a firewall rule with the public IP address of your computer, as perceived by the Azure system.
@@ -97,7 +90,17 @@ Verify your IP address before saving this configuration. In some situations, the
 
    :::image type="content" source="media/how-to-cross-region-replication-portal/what-is-my-ip.png" alt-text="Screenshot of a web search result for the current host's public IP address.":::
 
-You can also select add 0.0.0.0 - 255.255.255.255 firewall rule to allow not just your IP, but the whole Internet to access the cluster. In this situation, clients still must log in with the correct username and password to use the cluster. Nevertheless, it's best to allow worldwide access for only short periods of time and for only non-production databases.
+You can also select `Add 0.0.0.0 - 255.255.255.255` firewall rule to allow not just your IP, but the whole Internet to access the cluster. In this situation, clients still must log in with the correct username and password to use the cluster. Nevertheless, it's best to allow worldwide access for only short periods of time and for only non-production databases.
+
+1. Select **Next: Global distribution**.
+
+1. On the **Global distribution** tab, select **Enable** for **Cluster replica** to create a cluster read replica as a part of this new primary cluster provisioning.
+
+1. In the **Read replica name** field, enter a name for the cluster read replica. It should be a globally unique cluster name.
+
+1. Select a value from the **Read replica region** drop-down list.
+
+    :::image type="content" source="media/how-to-cross-region-replication-portal/global-distribution-tab.png" alt-text="Screenshot of the global distribution tab in cluster provisioning.":::
 
 1. Select **Review + create**.
 
@@ -187,13 +190,13 @@ db.cats.find();
 ## Enable access to replica cluster
 
 > [!IMPORTANT]
-> Replica clusters are always created with networking access disabled. You should add firewall rules or create private endpoints on the replica cluster after it is created to enable read operations.
+> Replica clusters are always created with networking access disabled. You should add firewall rules or create private endpoints on the replica cluster after it's created to enable read operations.
 
 1. From the Azure Cosmos DB for MongoDB vCore *primary* cluster page, select the **Global distribution** page under **Settings**.
 
     :::image type="content" source="media/how-to-cross-region-replication-portal/global-distribution-page-on-primary-cluster.png" alt-text="Screenshot of the global distribution page in the primary cluster properties.":::
 
-1. Select *cluster replica name* in the **Read replica** field to open the read cluster replica properties in the Azure portal.
+1. Select *replica cluster name* in the **Read replica** field to open the replica cluster properties in the Azure portal.
 
 1. On the MongoDB vCore replica cluster page, under **Settings**, select **Networking**.
 
@@ -201,13 +204,13 @@ db.cats.find();
 
     :::image type="content" source="media/how-to-cross-region-replication-portal/cluster-networking-adding-firewall-rule.png" alt-text="Screenshot of the networking page on read replica cluster.":::
   
-    Verify your IP address before saving this configuration. In some situations, the IP address observed by Azure portal differs from the IP address used when accessing the Internet and Azure services. You can also select add 0.0.0.0 - 255.255.255.255 firewall rule to allow not just your IP, but the whole Internet to access the cluster. In this situation, clients still must log in with the correct username and password to use the cluster.
+    Verify your IP address before saving this configuration. In some situations, the IP address observed by Azure portal differs from the IP address used when accessing the Internet and Azure services. You can also select `Add 0.0.0.0 - 255.255.255.255` firewall rule to allow not just your IP, but the whole Internet to access the cluster. In this situation, clients still must log in with the correct username and password to use the cluster.
 
 1. Select **Save** on the toolbar to save the settings. It might take a few minutes for the updated networking settings to become effective.
 
-## Connect to read replica cluster in another region and read data
+## Connect to read replica cluster in another region or the same region and read data
 
-Get the connection string for the read cluster replica in another region.
+Get the connection string for the replica cluster.
 
 1. On the replica cluster sidebar, under **Cluster management**, select **Connection strings**.
 
@@ -277,5 +280,5 @@ db.createCollection('bears')
 
 ## Related content
 
-- [Learn about cross-region replication in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
+- [Learn about cross-region and same region replication in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
 - [Migrate data to Azure Cosmos DB for MongoDB vCore](./migration-options.md)
