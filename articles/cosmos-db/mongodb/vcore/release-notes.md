@@ -27,7 +27,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 - Enhanced `usersInfo` and `connectionStatus` commands to return all supported roles (ReadWrite, UserAdmin, Root) and privilege sets (dbAdmin, userAdmin, clusterMonitor, clusterManager, hostManager).
 - Improved query planning performance by introducing a custom planner for insert operations.
 - Fix bug in $lastN and $bottomN.
-- Fixed Response type of update to add compatibility to C++ drivers requiring response in 32 bit .
+- Fixed Response type of update to add compatibility to C++ drivers requiring response in 32 bit.
 - Enhanced error messages for output stages `$merge` and `$out`.
 
 ### Infrastructure Enhancements_0909
