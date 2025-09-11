@@ -1,23 +1,23 @@
 ---
-title: Troubleshoot common issues in Azure Cosmos DB for MongoDB Azure Cosmos DB for MongoDB vCore cross-region replication
-description: This doc discusses the ways to troubleshoot common issues encountered in Azure Cosmos DB for MongoDB Azure Cosmos DB for MongoDB vCore cross-region replication.
+title: Troubleshoot common issues in Azure Cosmos DB for MongoDB Azure Cosmos DB for MongoDB vCore replication
+description: This guide discusses the ways to troubleshoot common issues encountered in Azure Cosmos DB for MongoDB Azure Cosmos DB for MongoDB vCore replication.
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: troubleshooting
-ms.date: 01/08/2025
+ms.date: 09/09/2025
 author: niklarin
 ms.author: nlarin
+appliesto:
+- ✅ MongoDB vCore
 ---
 
-# Troubleshooting guide: Cross-region replication in Azure Cosmos DB for MongoDB vCore
+# Troubleshooting guide: Cross-region and same region replication in Azure Cosmos DB for MongoDB vCore
 
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-This guide is designed to help you troubleshoot common issues when using [cross-region replication](./cross-region-replication.md) with Azure Cosmos DB for MongoDB vCore. It offers practical solutions for connectivity problems and optimization challenges to improve your experience.
+This guide is designed to help you troubleshoot common issues when using [cluster replication](./cross-region-replication.md) with Azure Cosmos DB for MongoDB vCore. It offers practical solutions for connectivity problems and optimization challenges to improve your experience.
 
 ## Common issues and solutions
-### My data doesn't seem to replicate to another region.
-Ensure your vCore cluster has a cross-region replica created. A replica cluster can be created during initial cluster provisioning or added later. You can [verify the existence of a replica on the 'Overview' page](./how-to-cluster-replica.md#check-cluster-replication-role-and-replication-region) or [create a new one on the 'Global distribution' page](./how-to-cluster-replica.md#enable-cross-region-replication) of your vCore cluster in the Azure portal.
+### My data doesn't seem to replicate to replica cluster.
+Ensure your vCore cluster has a replica created. A replica cluster can be created during initial cluster provisioning or added later. You can [verify the existence of a replica on the 'Overview' page](./how-to-cluster-replica.md#check-cluster-replication-role-and-replication-region) or [create a new one on the 'Global distribution' page](./how-to-cluster-replica.md#enable-cross-region-or-same-region-replication) of your vCore cluster in the Azure portal.
 
 :::image type="content" source="media/troubleshoot-replication/no-replication.png" alt-text="Screenshot of the cluster replication status on the Overview page and Global distribution page in Azure portal.":::
 
