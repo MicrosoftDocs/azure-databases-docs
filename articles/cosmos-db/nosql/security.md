@@ -8,7 +8,7 @@ ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: best-practice
-ms.date: 04/18/2025
+ms.date: 09/10/2025
 ms.custom: security-horizontal-2025
 ai-usage: ai-generated
 appliesto:
@@ -31,9 +31,9 @@ This article provides guidance on how to best secure your Azure Cosmos DB for No
 
 - **Use managed identities to access your account from other Azure services**: Managed identities eliminate the need to manage credentials by providing an automatically managed identity in Microsoft Entra ID. Use managed identities to securely access Azure Cosmos DB from other Azure services without embedding credentials in your code. For more information, see [Managed identities for Azure resources](/entra/identity/managed-identities-azure-resources/overview).
 
-- **Use Azure control plane role-based access control to manage account databases and containers**: Apply Azure role-based access control to define fine-grained permissions for managing Azure Cosmos DB accounts, databases, and containers. This control ensures that only authorized users or services can perform administrative operations. For more information, see [Grant control plane access](how-to-grant-control-plane-access.md).
+- **Use Azure control plane role-based access control to manage account databases and containers**: Apply Azure role-based access control to define fine-grained permissions for managing Azure Cosmos DB accounts, databases, and containers. This control ensures that only authorized users or services can perform administrative operations. For more information, see [Grant control plane access](how-to-connect-role-based-access-control.md#grant-control-plane-role-based-access).
 
-- **Use native data plane role-based access control to query, create, and access items within a container**: Implement data plane role-based access control to enforce least privilege access for querying, creating, and accessing items within Azure Cosmos DB containers. This control helps secure your data operations. For more information, see [Grant data plane access](how-to-grant-data-plane-access.md).
+- **Use native data plane role-based access control to query, create, and access items within a container**: Implement data plane role-based access control to enforce least privilege access for querying, creating, and accessing items within Azure Cosmos DB containers. This control helps secure your data operations. For more information, see [Grant data plane access](how-to-connect-role-based-access-control.md#grant-data-plane-role-based-access).
 
 - **Separate the Azure identities used for data and control plane access**: Use distinct Azure identities for control plane and data plane operations to reduce the risk of privilege escalation and ensure better access control. This separation enhances security by limiting the scope of each identity.
 
@@ -52,9 +52,3 @@ This article provides guidance on how to best secure your Azure Cosmos DB for No
 - **Enable native continuous backup and restore**: Protect your data by enabling continuous backup, which allows you to restore your Azure Cosmos DB account to any point in time within the retention period. For more information, see [Continuous backup and restore](../online-backup-and-restore.md).
 
 - **Test backup and recovery procedures**: To verify the effectiveness of backup processes, regularly test the restoration of databases, containers, and items. For more information, see [restore a container or database](../how-to-restore-in-account-continuous-backup.md).
-
-## Related content
-
-- [Disable key-based authentication](how-to-disable-key-based-authentication.md)
-- [Grant data plane role-based access](how-to-grant-data-plane-access.md)
-- [Glossary](security-glossary.md)
