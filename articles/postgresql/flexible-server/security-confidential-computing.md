@@ -31,7 +31,7 @@ ms.custom:
 - AMD SEV-SNP
 - Intel TDX
 
-:::image type="content" source="media/security-confidential-computing/processor.jpg" alt-text="Screenshot of processor.":::
+:::image type="content" source="media/security-confidential-computing/processor.jpg" alt-text="Screenshot of processor." lightbox="media/security-confidential-computing/processor.jpg":::
 
 ## Virtual machine SKUs
 
