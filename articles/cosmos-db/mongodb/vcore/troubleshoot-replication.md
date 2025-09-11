@@ -17,7 +17,7 @@ This guide is designed to help you troubleshoot common issues when using [cluste
 
 ## Common issues and solutions
 ### My data doesn't seem to replicate to replica cluster.
-Ensure your vCore cluster has a replica created. A replica cluster can be created during initial cluster provisioning or added later. You can [verify the existence of a replica on the 'Overview' page](./how-to-cluster-replica.md#check-cluster-replication-role-and-replication-region) or [create a new one on the 'Global distribution' page](./how-to-cluster-replica.md#enable-cross-region-replication) of your vCore cluster in the Azure portal.
+Ensure your vCore cluster has a replica created. A replica cluster can be created during initial cluster provisioning or added later. You can [verify the existence of a replica on the 'Overview' page](./how-to-cluster-replica.md#check-cluster-replication-role-and-replication-region) or [create a new one on the 'Global distribution' page](./how-to-cluster-replica.md#enable-cross-region-or-same-region-replication) of your vCore cluster in the Azure portal.
 
 :::image type="content" source="media/troubleshoot-replication/no-replication.png" alt-text="Screenshot of the cluster replication status on the Overview page and Global distribution page in Azure portal.":::
 

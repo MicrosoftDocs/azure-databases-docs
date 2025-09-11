@@ -24,7 +24,7 @@ The replica cluster stores a copy of all your MongoDB resources—**databases**,
 ## Prerequisites
 
 [!INCLUDE[Prerequisite - Azure subscription](includes/prereq-azure-subscription.md)]
-[!INCLUDE[Prerequisite - Mongo shell](includes/prereq-database-tool.md)]
+[!INCLUDE[Prerequisite - Mongo shell](includes/prereq-mongo-shell.md)]
 
 ## Create a new cluster and its replica in another or the same region
 
