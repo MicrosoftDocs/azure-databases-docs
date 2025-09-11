@@ -9,8 +9,8 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 09/08/2025
-ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli
+ms.date: 09/11/2025
+ms.custom: devx-track-ts, devx-track-ts-ai
 appliesto:
   - ✅ MongoDB (vCore)
 # CustomerIntent: As a developer, I want to learn how to use vector search in Node.js applications with Azure Cosmos DB for MongoDB (vCore).
@@ -276,6 +276,8 @@ You see the top five hotels that match the vector search query and their similar
 
 1. Select the [DocumentDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) in Visual Studio Code to connect to your Azure Cosmos DB account.
 1. View the data and indexes in the Hotels database.
+
+    :::image type="content" source="./media/quickstart-nodejs-vector-search/visual-studio-code-documentdb.png" lightbox="./media/quickstart-nodejs-vector-search/visual-studio-code-documentdb.png" alt-text="Screenshot of DocumentDB extension showing the Cosmos DB Mongo (vCore) collection.":::
 
 ## Clean up resources
 
