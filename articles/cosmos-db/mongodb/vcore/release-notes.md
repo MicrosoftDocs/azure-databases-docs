@@ -21,9 +21,8 @@ This article contains release notes for the API for MongoDB vCore. These release
 ### Engine Enhancements_0829
 
 - Introduced support for index hints, giving developers the option to explicitly specify an index during query execution.
-- [Preview] Enabled index-only scans on ordered indexes for count queries where filters can be pushed down to the index and no projections are applied.
-- [Preview] Improved parallel index build performance.
-- Added support to prefer new ordered index over existing non-ordered indexes.
+- [Preview] Enabled index-only scans on ordered indexes for count queries where filters can be pushed down to the index and no projections are applied. Please raise a support request to enable.
+- [Preview] Improved parallel index build performance. Please raise a support request to enable.
 - Improved point lookup queries for more efficient execution.
 - Enhanced `usersInfo` and `connectionStatus` commands to return all supported roles (ReadWrite, UserAdmin, Root) and privilege sets (dbAdmin, userAdmin, clusterMonitor, clusterManager, hostManager).
 - Improved query planning performance by introducing a custom planner for insert operations.
