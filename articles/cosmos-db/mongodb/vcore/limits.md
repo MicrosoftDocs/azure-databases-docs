@@ -118,14 +118,14 @@ The following are the current limitations for configuring [the customer-managed 
 
 ## Replication and in-region HA (high availability) limits
 
-### Cross-region replication
+### Cross-region and same region replication
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
   - Storage and physical shard count
   - User accounts
 - The following features aren't available on replica clusters:
   - Point-in-time restore (PITR)
   - In-region high availability (HA)
-- Cross-region replication isn't available on clusters with [burstable compute](./burstable-tier.md) or [Free tier](./free-tier.md) clusters.
+- Replication isn't available on clusters with [burstable compute](./burstable-tier.md) or [Free tier](./free-tier.md) clusters.
 
 ## Authentication and access control (RBAC)
 
