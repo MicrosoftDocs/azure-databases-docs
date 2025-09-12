@@ -106,7 +106,7 @@ select * from pg_catalog.pgaadauth_create_principal(roleName text, isAdmin boole
 
 There are three ways to drop a role which corresponds to a Microsoft Entra ID principal:
 1. Via the Azure portal
-2. Via the Azure Resource Manager (ARM) API
+2. The Azure Resource Manager (ARM) API
 3. By executing the following SQL statement:
 
 ```sql
