@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 09/07/2025
+ms.date: 09/10/2025
 ms.custom:
   - devx-track-rust
   - build-2025
@@ -562,6 +562,82 @@ internal sealed class AzureIdentityTokenHandler(
 }
 ```
 ---
+
+## Authenticate to the cluster using Entra ID in MongoDB shell and Compass
+
+You can use Entra ID authentication in MongoDB shell and MongoDB Compass tools. One of the common tasks performed in the tools with Entra ID authentication is management of the secondary Entra ID users on the cluster. [Administrative Entra ID user](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) needs to be authenticated in MongoDB shell, Compass, or other MongoDB management tool in order to manage secondary Entra ID users on the cluster.
+
+You need to generate Entra ID token and use proper patameters in the connection string to use Entra ID authentication in MongoDB shell or Compass.  
+
+### Generate Entra ID token
+
+To generate Entra ID token for your account follow these steps:
+
+1. Login to your Azure account in [Azure CLI](#prerequisites).
+1. Execute the following command 
+
+    ```azurecli-interactive
+    az account get-access-token --resource-type arm --scope "https://ossrdbms-aad.database.windows.net/.default"
+    ```
+
+    > [!TIP]
+    > Make sure your current subscription in Azure CLI is the one where your cluster is located. Otherwise specify subscription using [`--subscription parameter` parameter](/cli/azure/account?view=azure-cli-latest#az-account-get-access-token).
+
+1. The command outputs a JSON response containing various fields.
+
+    ```json
+    {
+      "accessToken": "[TOKEN]",
+      "expiresOn": "[expiration_date_and_time]",
+      "subscription": "[subscription_id]",
+      "tenant": "[tenant_id]",
+      "tokenType": "Bearer"
+    }
+    ```
+
+    The `[TOKEN]` is a Base64 string. It encodes all the information about the authenticated Entra ID user. The token is valid for at least 5 minutes with the maximum of 90 minutes. The **expiresOn** defines actual token expiration time.
+    
+### Prepare connection string
+
+Put access token generated in the previous step in an environment variable and use it in a connection string in MongoDB tools.The reason is that the access token exceeds the password length that some tools can accept directly.
+
+Here's a Windows example:
+
+```cmd
+set ACCESSTOKEN=<TOKEN value from the previous step>
+```
+
+```powerShell
+$env:ACCESSTOKEN='<TOKEN value from the previous step>'
+```
+
+Here's a Linux/macOS example:
+
+```bash
+export ACCESSTOKEN=<TOKEN value from the previous step>
+```
+
+You can also combine the previous two steps together using command substitution. The token retrieval can be encapsulated into a variable and passed directly as a value for `ACCESSTOKEN` environment variable:
+
+```bash
+export ACCESSTOKEN=$(az account get-access-token --resource https://token.postgres.cosmos.azure.com --query "[accessToken]" -o tsv)
+```
+
+
+
+### Use MongoDB shell with Entra ID authentication
+
+Run the following command to authenticate to cluster using an Entra ID user:
+
+```cmd
+mongosh "mongodb+srv://EntraidToken:%ACCESSTOKEN%@[cluster-name].global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=PLAIN&retrywrites=false&maxIdleTimeMS=120000" 
+```
+
+### Use MongoDB Compass with Entra ID authentication
+
+
+
+
 
 ## Related content
 
