@@ -7,13 +7,14 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 06/23/2025
+ms.date: 09/05/2025
 ---
 
 # $merge
 The `$merge` stage in an aggregation pipeline is used to write the results of the aggregation query into a specified collection. This stage is particularly useful for tasks like updating or inserting documents into a target collection based on the output of an aggregation operation. It helps streamline workflows by combining data transformation and data persistence in a single operation.
 
 ## Syntax
+
 ```javascript
 {
   $merge: {
@@ -35,8 +36,69 @@ The `$merge` stage in an aggregation pipeline is used to write the results of th
 
 ## Examples
 
+Consider this sample document from the stores collection.
+
+```json
+{
+  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+  "location": {
+    "lat": 60.1441,
+    "lon": -141.5012
+  },
+  "staff": {
+    "totalStaff": {
+      "fullTime": 2,
+      "partTime": 0
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      {
+        "categoryName": "DJ Headphones",
+        "totalSales": 35921
+      }
+    ],
+    "fullSales": 3700
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Bargain Blitz Days",
+      "promotionalDates": {
+        "startDate": {
+          "Year": 2024,
+          "Month": 3,
+          "Day": 11
+        },
+        "endDate": {
+          "Year": 2024,
+          "Month": 2,
+          "Day": 18
+        }
+      },
+      "discounts": [
+        {
+          "categoryName": "DJ Turntables",
+          "discountPercentage": 18
+        },
+        {
+          "categoryName": "DJ Mixers",
+          "discountPercentage": 15
+        }
+      ]
+    }
+  ],
+  "tag": [
+    "#ShopLocal",
+    "#SeasonalSale",
+    "#FreeShipping",
+    "#MembershipDeals"
+  ]
+}
+```
+
 ### Example 1: Merge data into a collection
-This example aggregates documents and writes the results to a collection named `salesSummary`, updating existing documents where the `_id` matches and inserting new documents otherwise.
+This query aggregates documents and writes the results to a collection named `salesSummary`, updating existing documents where the `_id` matches and inserting new documents otherwise.
 
 ```javascript
 db.sales.aggregate([

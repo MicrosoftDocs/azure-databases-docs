@@ -36,21 +36,34 @@ specify your storage requirements, and you're all set. Rest assured, your data, 
 
 :::image type="content" source="media/how-to-scale-cluster/upgrade-free-tier.jpg" alt-text="Screenshot of the free tier scaling.":::
 
+## Supported Regions
+Free Tier is now available in an expanded list of regions, making it easier for developers worldwide to get started with their projects.
+
+### Why this matters:
+
+* **Proximity**: Deploy closer to your users or applications for better performance.
+* **Compliance**: Choose regions that match your data regulatory needs.
+
+You can now create Free Tier vCore clusters in the following Azure regions:
+
+* **Americas**: Brazil South, Canada Central, Central US, East US, West US, West US 2
+* **Europe**: France Central, Germany North, North Europe, Norway East, Switzerland North
+* **Asia Pacific**: Australia Central 2, Australia East, Central India, South India, East Asia, Japan East, Japan West
 
 ## Benefits
 
 * Zero cost
 * Effortless onboarding
 * Generous storage (32-GB)
+* Dedicated resources for consistent performance
 * Seamless upgrade path
 
 
 ## Restrictions
 
 * For a given subscription, only one free tier account is permissible.
-* Free tier is currently available in the limited regions only.
 * High availability, Microsoft Entra ID (formerly known as Azure Active Directory), Backup / Restore, HNSW & DiskANN vector indexes, and Diagnostic Logging aren't supported.
-* Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
+* Free tier clusters are paused after 60 days of inactivity.
 * Transition from a paid tier account to a free tier accounts isn't supported.
 
 ## Next steps

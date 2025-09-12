@@ -1,6 +1,6 @@
 ---
 title: $unwind
-titleSuffix: Overview of the $unset operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $unset operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $unwind stage in the aggregation framework is used to deconstruct an array field from the input documents to output a document for each element.
 author: gahl-levy
 ms.author: gahllevy
@@ -14,7 +14,8 @@ ms.date: 08/27/2024
 The $unwind stage in the aggregation framework is used to deconstruct an array field from the input documents to output a document for each element. Each output document is a copy of the original but with the value of the array field replaced by a single element. This is particularly useful for normalizing data stored in arrays and for performing operations on each element of an array separately.
 
 ## Syntax
-```json
+
+```javascript
 {
   $unwind: {
     path: <field path>,
@@ -23,6 +24,7 @@ The $unwind stage in the aggregation framework is used to deconstruct an array f
   }
 }
 ```
+
 ## Parameters
 
 | Parameter | Description |
@@ -32,6 +34,7 @@ The $unwind stage in the aggregation framework is used to deconstruct an array f
 | **`preserveNullAndEmptyArrays`** | Optional. If true, if the path is null, missing, or an empty array, `$unwind` outputs the document unchanged. |
 
 ## Examples
+
 Consider this sample document from the stores collection.
 
 ```json
@@ -144,17 +147,20 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Unwind Sales by Category
+### Example 1: Unwind sales by category
+
 To deconstruct the salesByCategory array in the store document:
 
-```json
+```javascript
 db.stores.aggregate([
   {
     $unwind: "$sales.salesByCategory"
   }
 ])
 ```
-Sample output 
+
+The first two results returned by this query are:
+
 ```json
 [
   {
@@ -186,12 +192,11 @@ Sample output
 ]
 ```
 
-This will output documents where each document represents a single category's sales information.
+### Example 2: Unwind promotion events with array index
 
-### Example 2: Unwind Promotion Events with Array Index
 To deconstruct the promotionEvents array and include the array index in the output:
 
-```json
+```javascript
 db.stores.aggregate([
   {
     $unwind: {
@@ -201,7 +206,9 @@ db.stores.aggregate([
   }
 ])
 ```
-Sample output
+
+The first two results returned by this query are:
+
 ```json
 [
   {
@@ -229,12 +236,11 @@ Sample output
 ]
 ```
 
+### Example 3: Unwind discounts within pomotion events
 
-This will output documents where each document represents a single promotion event, and the eventIndex field will contain the original index of the event in the array.
-
-### Example 3: Unwind Discounts within Promotion Events
 To deconstruct the discounts array within each promotion event and preserve documents with no discounts:
-```json
+
+```javascript
 db.stores.aggregate([
   {
     $unwind: {
@@ -244,7 +250,9 @@ db.stores.aggregate([
   }
 ])
 ```
-Sample output
+
+The first two results returned by this query are:
+
 ```json
 [
   {
@@ -272,9 +280,6 @@ Sample output
 ]
 ```
 
-This will output documents where each document represents a single discount within a promotion event, and documents with no discounts will be preserved.
-
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
-- Get started by [creating an account](../../quickstart-portal.md).
+[!INCLUDE[Related content](../includes/related-content.md)]

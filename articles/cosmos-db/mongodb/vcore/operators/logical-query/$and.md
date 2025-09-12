@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/04/2025
+ms.date: 09/04/2025
 ---
 
 # $and
@@ -36,7 +36,7 @@ The `$and` operator performs a logical AND operation on an array of expressions 
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -150,7 +150,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Use AND operator as logical-query
 
-The query filters for stores where the number of full-time employees is greater than 10 and part-time employees is less than 15 using the `$and` operator. It projects only the `name` and `staff` fields and limits the result to three records.
+This query filters for stores where the number of full-time employees is greater than 10 and part-time employees is less than 15 using the `$and` operator. It projects only the `name` and `staff` fields and limits the result to three records.
 
 ```javascript
 db.stores.find({
@@ -169,7 +169,7 @@ db.stores.find({
 }).limit(3)
 ```
 
-The query returns up to three stores with high full-time but limited part-time staffing.
+The first three results returned by this query are:
 
 ```json
 [
@@ -208,7 +208,7 @@ The query returns up to three stores with high full-time but limited part-time s
 
 ### Example 2: Use AND operator as boolean-expression to find stores with high sales and sufficient staff
 
-The example finds stores that have both total sales greater than 100,000 and more than 30 total staff members.
+This query finds stores that have both total sales greater than 100,000 and more than 30 total staff members.
 
 ```javascript
 db.stores.aggregate([
@@ -231,9 +231,10 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns stores that meet both high sales and staffing criteria.
+The first two results returned by this query are:
 
 ```json
+[
  {
     "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
     "name": "Trey Research | Home Office Depot - Lake Freeda",
@@ -246,6 +247,7 @@ The query returns stores that meet both high sales and staffing criteria.
     "totalStaff": 27,
     "meetsHighPerformanceCriteria": false
   }
+]
 ```
 
 ## Related content

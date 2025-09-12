@@ -1,5 +1,5 @@
 ---
-title: $out usage on Azure Cosmos DB for MongoDB vCore
+title: $out
 titleSuffix: Overview of the $out operation in Azure Cosmos DB for MongoDB (vCore)
 description: The `$out` stage in an aggregation pipeline writes the resulting documents to a specified collection.
 author: gahl-levy
@@ -7,7 +7,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 06/23/2025
+ms.date: 09/05/2025
 ---
 
 # $out
@@ -28,9 +28,10 @@ The `$out` stage in an aggregation pipeline allows you to write the resulting do
 | --- | --- |
 | **`<outputCollection>`** | The name of the collection where the aggregation result will be stored. |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
+
 ```json
 {
     "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
@@ -141,12 +142,12 @@ Consider this sample document from the stores collection.
 }
 ```
 
-### Example 1: Writing Aggregation Results to a New Collection
+### Example 1:Writing aggregation results to a new collection
 
-The following aggregation pipeline writes the documents with total sales greater than 30,000 into a new collection called `highSales`.
+This query writes stores with total sales greater than 30,000 into a new collection called `highSales`.
 
 ```javascript
-db.sales.aggregate([
+db.stores.aggregate([
   {
     $match: {
       "sales.salesByCategory.totalSales": { $gt: 30000 }
@@ -155,15 +156,15 @@ db.sales.aggregate([
   {
     $out: "highSales"
   }
-]);
+])
 ```
 
-### Example 2: Writing Processed Data to Another Collection
+### Example 2: Writing processed data to another collection
 
-The below example extracts promotion events and writes them into a collection named `promotionEventsSummary`.
+This query extracts promotion events and writes them into a collection named `promotionEventsSummary`.
 
 ```javascript
-db.promotionEvents.aggregate([
+db.stores.aggregate([
   {
     $project: {
       eventName: 1,
@@ -175,7 +176,7 @@ db.promotionEvents.aggregate([
   {
     $out: "promotionEventsSummary"
   }
-]);
+])
 ```
 
 

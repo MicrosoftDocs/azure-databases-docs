@@ -46,7 +46,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 
 ### Unsupported Server Configurations
 
-- Read replicas are not supported during in-place upgrades. You must delete the read replica before upgrading the primary server. After the upgrade, you can re-create the replica.
+- [Read replicas](./concepts-read-replicas-geo.md) are not supported during in-place upgrades. You must delete the read replica (including any cascading read replica) before upgrading the primary server. After the upgrade, you can re-create the replica.
 - Network traffic rules may block upgrade operations. 
     - Ensure your flexible server can send/receive traffic on ports 5432 and 6432 within its virtual network and to Azure Storage (for log archiving).
     - If Network Security Groups (NSGs) restrict this traffic, HA will not re-enable automatically post-upgrade. You may need to manually update NSG rules and re-enable HA.

@@ -1,18 +1,18 @@
 ---
   title: $setIsSubset
   titleSuffix: Overview of the $setIsSubset operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $setIsSubset operator determines if the first array is a subset of the second array.
+  description: The $setIsSubset operator determines if one array is a subset of a second array.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 09/04/2025
 ---
 
 # $setIsSubset
 
-The `$setIsSubset` operator returns a boolean value indicating whether the first array is a subset of the second array. It treats arrays as sets, meaning it ignores duplicates and element order. Returns `true` if all elements in the first array exist in the second array, otherwise `false`.
+The `$setIsSubset` operator returns a Boolean value that indicates if one array is a subset of a second array. It treats arrays as sets, which means it ignores duplicates and element order. It returns `true` if all the elements in the first array exist in the second array. Otherwise, it returns `false`.
 
 ## Syntax
 
@@ -26,12 +26,12 @@ The `$setIsSubset` operator returns a boolean value indicating whether the first
 
 | Parameter | Description |
 | --- | --- |
-| **`<array1>`** | The array to check if it's a subset of array2. |
-| **`<array2>`** | The array to check against. |
+| `<array1>` | The array to check to see if it's a subset of `<array2>`. |
+| `<array2>` | The array to check against. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -118,9 +118,9 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Check if sales categories are subset of promotion categories
+### Example 1: Determine if sales categories are a subset of promotion categories
 
-The example allows checking if all categories that the store sells are also included in their promotion discounts and vice versa.
+This query determines if all of a store's categories are included in their promotion discounts, and vice versa. This query returns categories included under both the sales and promotion brackets. It confirms that the `sales` value is a subset of a particular promotion category (but doesn't do the reverse).
 
 ```javascript
 db.stores.aggregate([
@@ -147,30 +147,32 @@ db.stores.aggregate([
 ])
 ```
 
-The query return categories covered under both Sales and promotion bracket and confirms that `sales` is subset of promotion category while same isn't true other way around.
+This query returns the following result.
 
 ```json
-{
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
-  "salesCategories": [
-    "Mattress Toppers"
-  ],
-  "promotionCategories": [
-    "Bath Accessories",
-    "Pillow Top Mattresses",
-    "Bathroom Scales",
-    "Towels",
-    "Bathrobes",
-    "Mattress Toppers",
-    "Hand Towels",
-    "Shower Heads",
-    "Bedspreads",
-    "Bath Mats"
-  ],
-  "salesAreSubsetOfPromotions": true,
-  "promotionsAreSubsetOfSales": false
-}
+[
+  {
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "salesCategories": [
+      "Mattress Toppers"
+    ],
+    "promotionCategories": [
+      "Bath Accessories",
+      "Pillow Top Mattresses",
+      "Bathroom Scales",
+      "Towels",
+      "Bathrobes",
+      "Mattress Toppers",
+      "Hand Towels",
+      "Shower Heads",
+      "Bedspreads",
+      "Bath Mats"
+    ],
+    "salesAreSubsetOfPromotions": true,
+    "promotionsAreSubsetOfSales": false
+  }
+]
 ```
 
 ## Related content

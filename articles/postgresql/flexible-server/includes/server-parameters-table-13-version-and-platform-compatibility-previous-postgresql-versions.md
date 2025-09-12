@@ -76,6 +76,23 @@ ms.custom: automatically generated
 
 
 
+### operator_precedence_warning
+
+| Attribute | Value |
+| --- | --- |
+| Category | Version and Platform Compatibility / Previous PostgreSQL Versions |
+| Description | Emits a warning for constructs that changed meaning since PostgreSQL 9.4. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [operator_precedence_warning](https://www.postgresql.org/docs/13/runtime-config-compatible.html#GUC-OPERATOR-PRECEDENCE-WARNING) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### quote_all_identifiers
 
 | Attribute | Value |

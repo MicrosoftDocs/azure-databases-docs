@@ -4,12 +4,12 @@
   href: $addfields.md
 - name: $bucket
   href: $bucket.md
-- name: $changestreams
-  href: $changestreams.md
+- name: $changeStream
+  href: $changestream.md
 - name: $collStats
   href: $collstats.md
 - name: $count
-  href: $count.md
+  href: ../accumulators/$count.md
 - name: $densify
   href: $densify.md
 - name: $documents
@@ -18,7 +18,7 @@
   href: $facet.md
 - name: $fill
   href: $fill.md
-- name: $geonear
+- name: $geoNear
   href: $geonear.md
 - name: $group
   href: $group.md

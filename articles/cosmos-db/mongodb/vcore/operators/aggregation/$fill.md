@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/05/2025
 ---
 
 # $fill
@@ -15,8 +15,6 @@
 The `$fill` stage is used to fill missing or null values in documents within the aggregation pipeline. It provides various methods to populate missing data, including using static values, linear interpolation, or values from previous/next documents.
 
 ## Syntax
-
-The syntax for the `$fill` stage is as follows:
 
 ```javascript
 {
@@ -26,8 +24,7 @@ The syntax for the `$fill` stage is as follows:
     partitionByFields: <array of partition field names>,
     output: {
       <field1>: { value: <expression> },
-      <field2>: { method: <string> },
-      ...
+      <field2>: { method: <string> }
     }
   }
 }
@@ -110,56 +107,127 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Fill missing values with static value
 
-To fill missing `totalSales` values in the `salesByCategory` array with a default value of 0.
+This query fills missing `totalSales` values in the `salesByCategory` array with a default value of 0.
 
 ```javascript
-db.stores.aggregate([
-  { $unwind: "$sales.salesByCategory" },
-  {
+db.stores.aggregate([{
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
+        }
+    }
+}, {
+    $unwind: "$sales.salesByCategory"
+}, {
     $fill: {
-      output: {
-        "sales.salesByCategory.totalSales": { value: 0 }
-      }
+        output: {
+            "sales.salesByCategory.totalSales": {
+                value: 0
+            }
+        }
     }
-  },
-  {
+}, {
     $group: {
-      _id: "$_id",
-      name: { $first: "$name" },
-      salesByCategory: { $push: "$sales.salesByCategory" }
+        _id: "$_id",
+        name: {
+            $first: "$name"
+        },
+        salesByCategory: {
+            $push: "$sales.salesByCategory"
+        }
     }
-  }
-])
+}])
 ```
 
-This will ensure all category entries have a `totalSales` value, replacing any missing values with 0.
+The first two results returned by this query are:
+
+```json
+[
+    {
+        "_id": "affdc09c-7356-4fff-a857-e8301f57159c",
+        "name": "First Up Consultants | Sports Gear Pantry - Wildermanhaven",
+        "salesByCategory": [
+            {
+                "categoryName": "Baseball Gear",
+                "totalSales": 33878
+            },
+            {
+                "categoryName": "Volleyball Gear",
+                "totalSales": 34031
+            }
+        ]
+    },
+    {
+        "_id": "1cf667b4-d8ce-4f1a-bad1-a1f0bbce26c2",
+        "name": "First Up Consultants | Picture Frame Variety - New Abrahamborough",
+        "salesByCategory": [
+            {
+                "categoryName": "Picture Hanging Supplies",
+                "totalSales": 7229
+            },
+            {
+                "categoryName": "Collage Frames",
+                "totalSales": 40014
+            }
+        ]
+    }
+]
+```
 
 ### Example 2: Fill missing staff data using last observation carried forward
 
-To fill missing part-time staff data using the last known value within each store group.
+This query fills missing part-time staff data using the last known value within each store group.
 
 ```javascript
-db.stores.aggregate([
-  {
+db.stores.aggregate([{
     $fill: {
-      sortBy: { "_id": 1 },
-      output: {
-        "staff.totalStaff.partTime": { method: "locf" }
-      }
+        sortBy: {
+            "_id": 1
+        },
+        output: {
+            "staff.totalStaff.partTime": {
+                method: "locf"
+            }
+        }
     }
-  },
-  {
+}, {
     $project: {
-      name: 1,
-      "staff.totalStaff": 1
+        name: 1,
+        "staff.totalStaff": 1
     }
-  }
-])
+}])
+```
+
+The first two results returned by this query are:
+
+```json
+[
+    {
+        "_id": "00003278-4226-4ca7-871d-e80d8f414431",
+        "name": "Wide World Importers | Camera Depot - Lake Luramouth",
+        "staff": {
+            "totalStaff": {
+                "fullTime": 20,
+                "partTime": 6
+            }
+        }
+    },
+    {
+        "_id": "00009bd0-c44e-4cc8-ab03-347076d74a1a",
+        "name": "Wide World Importers | Music Stop - Rebeccaside",
+        "staff": {
+            "totalStaff": {
+                "fullTime": 9,
+                "partTime": 0
+            }
+        }
+    }
+]
 ```
 
 ### Example 3: Fill missing discount percentages with average value
 
-To fill missing discount percentages with the average discount percentage across all stores.
+This query fills missing discount percentages with the average discount percentage across all stores.
 
 ```javascript
 db.stores.aggregate([
@@ -187,6 +255,48 @@ db.stores.aggregate([
 ])
 ```
 
+The first two results returned by this query are:
+
+```json
+[
+    {
+        "_id": {
+            "storeId": "70d4cc90-23b1-46e3-8f59-630648e311a4",
+            "eventName": "Price Slash Spectacular"
+        },
+        "storeName": "Wide World Importers | Music Bazaar - West Johnpaulhaven",
+        "eventName": "Price Slash Spectacular",
+        "discounts": [
+            {
+                "categoryName": "CDs",
+                "discountPercentage": 22
+            },
+            {
+                "categoryName": "Vinyl Records",
+                "discountPercentage": 21
+            }
+        ]
+    },
+    {
+        "_id": {
+            "storeId": "24873ac4-b2d1-4216-a425-3375a384b23d",
+            "eventName": "Massive Deal Mania"
+        },
+        "storeName": "Northwind Traders | Furniture Pantry - Farrellchester",
+        "eventName": "Massive Deal Mania",
+        "discounts": [
+            {
+                "categoryName": "Bookcases",
+                "discountPercentage": 22
+            },
+            {
+                "categoryName": "Cabinets",
+                "discountPercentage": 8
+            }
+        ]
+    }
+]
+```
 
 ## Use Cases
 

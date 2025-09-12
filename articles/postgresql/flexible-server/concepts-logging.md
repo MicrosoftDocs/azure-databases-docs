@@ -4,7 +4,7 @@ description: Describes logging configuration, storage and analysis in Azure Data
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 1/10/2025
+ms.date: 9/2/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -16,7 +16,7 @@ ms.topic: how-to
 
 Azure Database for PostgreSQL flexible server allows you to configure and access Postgres' standard logs. The logs can be used to identify, troubleshoot, and repair configuration errors and suboptimal performance. Logging information you can configure and access includes errors, query information, autovacuum records, connections, and checkpoints. (Access to transaction logs is not available).
 
-Audit logging is made available through a Postgres extension, `pgaudit`. To learn more, visit the [auditing concepts](concepts-audit.md) article.
+Audit logging is made available through a Postgres extension, `pgaudit`. To learn more, visit the [auditing concepts](security-audit.md) article.
 
 ## Configure logging
 
@@ -67,6 +67,12 @@ The following table describes the fields for the **PostgreSQLLogs** type. Depend
 | SchemaName | Name of the schema (if applicable) |
 | DatatypeName | Name of the datatype (if applicable) |
 | _ResourceId | Resource URI |
+
+## Known limitations
+
+- **Log Event Size**: Query plans or log messages larger than 65 KB will not be captured in Azure Monitor Logs. This is a platform-wide Azure Monitor limit. As a result, very complex queries (for example, those involving nested views) may generate incomplete or missing query plan output in server logs. 
+- **Other Constraints**: Additional platform-wide limits apply to Azure Monitor Logs, such as alert rule quotas and query result size. For the complete list, refer to the [Azure Monitor service limits](/azure/azure-monitor/fundamentals/service-limits) documentation for details.
+
 
 ## Related content
 

@@ -1,20 +1,19 @@
 ---
 title: $sortByCount
-titleSuffix: Overview of the $sort operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $sort operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $sortByCount stage in the aggregation pipeline is used to group documents by a specified expression and then sort the count of documents in each group in descending order.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 08/27/2024
+ms.date: 09/05/2025
 ---
 
 # $sortByCount
 The $sortByCount stage in the aggregation pipeline is used to group documents by a specified expression and then sort the count of documents in each group in descending order. The `$sortByCount` stage is useful for quickly identifying the most common values within a dataset.
 
 ## Syntax
-The syntax for the $sortByCount stage is:
 
 ```javascript
 {
@@ -28,7 +27,8 @@ The syntax for the $sortByCount stage is:
 | --- | --- |
 | **`expression`** | This is the field or computed expression on which to group and count the documents. |
 
-## Example
+## Examples
+
 Consider this sample document from the stores collection.
 
 ```json
@@ -140,6 +140,9 @@ Consider this sample document from the stores collection.
     ]
 }
 ```
+
+### Example 1: Group promotion events by name and count occurrences in descending order
+
 To group by the eventName field and count the number of occurrences of each event name, sorting the results in descending order of the count
 
 ```javascript
@@ -148,30 +151,31 @@ db.stores.aggregate([
   { $sortByCount: "$promotionEvents.eventName" }
 ])
 ```
-Sample output:
+
+This query returns the following results:
 
 ```json
 [
-  { _id: 'Crazy Deal Days', count: 4239 },
-  { _id: 'Markdown Madness', count: 2967 },
-  { _id: 'Bargain Bonanza', count: 2925 },
-  { _id: 'Crazy Discount Days', count: 2922 },
-  { _id: 'Price Smash Spectacular', count: 2915 },
-  { _id: 'Super Saver Spectacular', count: 2900 },
-  { _id: 'Crazy Markdown Madness', count: 2899 },
-  { _id: 'Price Cut Carnival', count: 2868 },
-  { _id: 'Grand Bargain Bash', count: 2849 },
-  { _id: 'Bargain Blitz Bash', count: 2843 },
-  { _id: 'Grand Savings Gala', count: 2826 },
-  { _id: 'Super Saver Fiesta', count: 1551 },
-  { _id: 'Major Deal Days', count: 1548 },
-  { _id: 'Price Slash Carnival', count: 1535 },
-  { _id: 'Super Discount Days', count: 1533 },
-  { _id: 'Big Deal Bonanza', count: 1533 },
-  { _id: 'Incredible Savings Showcase', count: 1531 },
-  { _id: 'Unbeatable Savings Spectacular', count: 1518 },
-  { _id: 'Fantastic Deal Days', count: 1511 },
-  { _id: 'Flash Bargain Frenzy', count: 1504 }
+  { "_id": "Crazy Deal Days", "count": 4239 },
+  { "_id": "Markdown Madness", "count": 2967 },
+  { "_id": "Bargain Bonanza", "count": 2925 },
+  { "_id": "Crazy Discount Days", "count": 2922 },
+  { "_id": "Price Smash Spectacular", "count": 2915 },
+  { "_id": "Super Saver Spectacular", "count": 2900 },
+  { "_id": "Crazy Markdown Madness", "count": 2899 },
+  { "_id": "Price Cut Carnival", "count": 2868 },
+  { "_id": "Grand Bargain Bash", "count": 2849 },
+  { "_id": "Bargain Blitz Bash", "count": 2843 },
+  { "_id": "Grand Savings Gala", "count": 2826 },
+  { "_id": "Super Saver Fiesta", "count": 1551 },
+  { "_id": "Major Deal Days", "count": 1548 },
+  { "_id": "Price Slash Carnival", "count": 1535 },
+  { "_id": "Super Discount Days", "count": 1533 },
+  { "_id": "Big Deal Bonanza", "count": 1533 },
+  { "_id": "Incredible Savings Showcase", "count": 1531 },
+  { "_id": "Unbeatable Savings Spectacular", "count": 1518 },
+  { "_id": "Fantastic Deal Days", "count": 1511 },
+  { "_id": "Flash Bargain Frenzy", "count": 1504 }
 ]
 ```
 
@@ -182,5 +186,4 @@ This pipeline will:
 
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
-- Get started by [creating an account](../../quickstart-portal.md).
+[!INCLUDE[Related content](../includes/related-content.md)]

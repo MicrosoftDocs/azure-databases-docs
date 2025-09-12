@@ -9,10 +9,6 @@
       href: faq.yml
     - name: Understand distributed NoSQL
       href: ../distributed-nosql.md?context=/azure/cosmos-db/nosql/context/context
-    - name: Try Azure Cosmos DB free
-      href: ../try-free.md?context=/azure/cosmos-db/nosql/context/context
-    - name: Azure AI Advantage free trial
-      href: ../ai-advantage.md?context=/azure/cosmos-db/nosql/context/context
 - name: Get started
   items:
     - name: Develop
@@ -70,6 +66,8 @@
           href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
         - name: Stopwords list
           href: ../gen-ai/stopwords.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Full text search FAQ
+          href: ../gen-ai/full-text-search-faq.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrate with AI tools
@@ -106,15 +104,9 @@
   items:
     - name: Security
       href: security.md
-    - name: Disable key-based authentication
-      displayName: key, ropc, connection string
-      href: how-to-disable-key-based-authentication.md
-    - name: Grant control plane role-based access
-      href: how-to-grant-control-plane-access.md
-    - name: Grant data plane role-based access
-      href: how-to-grant-data-plane-access.md
-    - name: Glossary
-      href: security-glossary.md
+    - name: Use role-based access control
+      displayName: rbac, key, ropc, connection string
+      href: how-to-connect-role-based-access-control.md
     - name: Network security
       items:
         - name: Configure IP firewall
@@ -487,6 +479,8 @@
           href: change-feed-functions.md
         - name: Change feed (pull model)
           href: change-feed-pull-model.md
+        - name: Change feed with Apache Spark
+          href: change-feed-spark.md
         - name: Azure Cosmos DB Trigger advanced configuration
           href: how-to-configure-cosmos-db-trigger.md
         - name: Multiple Azure Cosmos DB Triggers
@@ -1114,8 +1108,6 @@
       href: https://azure.microsoft.com/resources/videos/?services=cosmos-db
     - name: Azure Roadmap
       href: https://azure.microsoft.com/updates/?query=Cosmos%20DB
-    - name: Try Azure Cosmos DB for free
-      href: https://azure.microsoft.com/try/cosmosdb/
     - name: Pricing
       href: https://azure.microsoft.com/pricing/details/cosmos-db/
     - name: Use cases

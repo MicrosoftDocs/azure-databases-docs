@@ -76,6 +76,23 @@ ms.custom: automatically generated
 
 
 
+### icu_validation_level
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Locale and Formatting |
+| Description | Log level for reporting invalid ICU locale strings. |
+| Data type | enumeration |
+| Default value | `warning` |
+| Allowed values | `warning` |
+| Parameter type | read-only |
+| Documentation | [icu_validation_level](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-ICU-VALIDATION-LEVEL) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### IntervalStyle
 
 | Attribute | Value |

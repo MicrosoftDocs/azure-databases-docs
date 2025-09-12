@@ -1,18 +1,18 @@
 ---
   title: $setUnion
   titleSuffix: Overview of the $setUnion operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $setUnion operator returns an array containing all unique elements from the input arrays.
+  description: The $setUnion operator returns an array that contains all the unique elements from the input arrays.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.date: 09/04/2025
 ---
 
 # $setUnion
 
-The `$setUnion` operator returns an array containing all unique elements from the input arrays. It treats arrays as sets, removing duplicates and ignoring element order. The result contains each unique element only once, regardless of how many times it appears across the input arrays.
+The `$setUnion` operator returns an array that contains all the unique elements from the input arrays. It treats arrays as sets, removes duplicates, and ignores element order. The result contains each unique element only once, regardless of how many times it appears across the input arrays.
 
 ## Syntax
 
@@ -26,11 +26,11 @@ The `$setUnion` operator returns an array containing all unique elements from th
 
 | Parameter | Description |
 | --- | --- |
-| **`<array1>, <array2>, ...`** | Two or more arrays to be combined. Each array is treated as a set, and duplicates are removed from the final result. |
+| `<array1>, <array2>, ...` | Two or more arrays to combine. Each array is treated as a set, and duplicates are removed from the final result. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -141,7 +141,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Combine all product categories
 
-The example gets a complete list of all unique product categories that a store deals with, including both sales and promotion categories.
+This query retrieves a list of all of a store's unique product categories. The list includes sales and promotion categories.
 
 ```javascript
 db.stores.aggregate([
@@ -166,37 +166,39 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns all the unique categories across sales and promotions.
+This query returns the following result.
 
 ```json
-{
-  "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
-  "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
-  "salesCategories": [
-    "Lavalier Microphones",
-    "Wireless Microphones"
-  ],
-  "firstPromotionCategories": [
-    "Condenser Microphones",
-    "Dynamic Microphones"
-  ],
-  "secondPromotionCategories": [
-    "Streaming Microphones",
-    "Microphone Stands"
-  ],
-  "thirdPromotionCategories": [
-    "Condenser Microphones",
-    "Microphone Stands"
-  ],
-  "allUniqueCategories": [
-    "Lavalier Microphones",
-    "Wireless Microphones",
-    "Condenser Microphones",
-    "Dynamic Microphones",
-    "Streaming Microphones",
-    "Microphone Stands"
-  ]
-}
+[
+  {
+    "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
+    "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
+    "salesCategories": [
+      "Lavalier Microphones",
+      "Wireless Microphones"
+    ],
+    "firstPromotionCategories": [
+      "Condenser Microphones",
+      "Dynamic Microphones"
+    ],
+    "secondPromotionCategories": [
+      "Streaming Microphones",
+      "Microphone Stands"
+    ],
+    "thirdPromotionCategories": [
+      "Condenser Microphones",
+      "Microphone Stands"
+    ],
+    "allUniqueCategories": [
+      "Lavalier Microphones",
+      "Wireless Microphones",
+      "Condenser Microphones",
+      "Dynamic Microphones",
+      "Streaming Microphones",
+      "Microphone Stands"
+    ]
+  }
+]
 ```
 
 ## Related content

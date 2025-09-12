@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/05/2025
 ---
 
 # $bottomN
@@ -15,8 +15,6 @@
 The $bottomN operator sorts documents on one or more fields specified by the query and returns the last N documents matching the filtering criteria.
 
 ## Syntax
-
-The syntax for the `$bottomN` operator is as follows:
 
 ```javascript
 {
@@ -39,7 +37,7 @@ The syntax for the `$bottomN` operator is as follows:
 | **`sortOrder`** | 1 or -1. 1 implies sorting in ascending order of the value of the field while -1 implies sorting in descending order of the values of the field|
 | **`n`** | The number of documents to return from the bottom of the sorted result set |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -159,28 +157,28 @@ To determine the two stores in the First Up Consultants company with the lowest 
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$group": {
-        "_id": "$company",
-        "bottomSales": {
-            "$bottomN": {
-                "output": ["$company", "$sales"],
-                "sortBy": {
+    $group: {
+        _id: "$company",
+        bottomSales: {
+            $bottomN: {
+                output: ["$company", "$sales"],
+                sortBy: {
                     "sales.revenue": -1
                 },
-                "n": 2
+                n: 2
             }
         }
     }
 }])
 ```
 
-This query produces the following output:
+This query returns the following result:
 
 ```json
 [

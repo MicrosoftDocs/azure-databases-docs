@@ -1,20 +1,21 @@
 ---
-title: AI agents and solutions
+title: AI Agents and Solutions
 titleSuffix: Azure Cosmos DB
 description: Learn about key concepts for agents and step through the implementation of an AI agent memory system.
 author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.custom:
-- ignite-2024
-- sfi-ropc-blocked
+  - ignite-2024
+  - sfi-ropc-blocked
 ms.topic: concept-article
-ms.date: 12/03/2024
+ms.date: 09/03/2025
 ms.update-cycle: 180-days
 ms.collection:
-- ce-skilling-ai-copilot
+  - ce-skilling-ai-copilot
 appliesto:
-- ✅ NoSQL ✅ MongoDB vCore
+  - ✅ NoSQL
+  - ✅ MongoDB vCore
 ---
 
 # AI agents in Azure Cosmos DB
@@ -47,10 +48,10 @@ Autonomous agents can operate more independently. When you set up autonomous age
 
 - Consult existing emails, chats, files, and other internal and public information that's related to the subject matter.
 - Perform qualitative or quantitative analysis on the collected information, and draw conclusions that are relevant to the email.
-- Write the complete email based on the conclusions and incorporate supporting evidence.
+- Write the complete email based on the conclusions, and incorporate supporting evidence.
 - Attach relevant files to the email.
 - Review the email to ensure that all the incorporated information is factually accurate and that the assertions are valid.
-- Select the appropriate recipients for **To**, **Cc**, and **Bcc**, and look up their email addresses.
+- Select the appropriate recipients for **To**, **Cc**, and **Bcc** fields, and look up their email addresses.
 - Schedule an appropriate time to send the email.
 - Perform follow-ups if responses are expected but not received.
 
@@ -79,19 +80,19 @@ A multi-agent system provides the following advantages over a copilot or a singl
 
 Complex reasoning and planning are the hallmark of advanced autonomous agents. Popular frameworks for autonomous agents incorporate one or more of the following methodologies (with links to arXiv archive pages) for reasoning and planning:
 
-- [Self-Ask](https://arxiv.org/abs/2210.03350)
+- [Self-ask](https://arxiv.org/abs/2210.03350)
 
   Improve on chain of thought by having the model explicitly ask itself (and answer) follow-up questions before answering the initial question.
 
-- [Reason and Act (ReAct)](https://arxiv.org/abs/2210.03629)
+- [Reason and act (ReAct)](https://arxiv.org/abs/2210.03629)
 
   Use LLMs to generate both reasoning traces and task-specific actions in an interleaved manner. Reasoning traces help the model induce, track, and update action plans, along with handling exceptions. Actions allow the model to connect with external sources, such as knowledge bases or environments, to gather additional information.
 
-- [Plan and Solve](https://arxiv.org/abs/2305.04091)
+- [Plan and solve](https://arxiv.org/abs/2305.04091)
 
   Devise a plan to divide the entire task into smaller subtasks, and then carry out the subtasks according to the plan. This approach mitigates the calculation errors, missing-step errors, and semantic misunderstanding errors that are often present in zero-shot chain-of-thought prompting.
 
-- [Reflect/Self-critique](https://arxiv.org/abs/2303.11366)
+- [Reflect/self-critique](https://arxiv.org/abs/2303.11366)
 
   Use *reflexion* agents that verbally reflect on task feedback signals. These agents maintain their own reflective text in an episodic memory buffer to induce better decision-making in subsequent trials.
 
@@ -101,18 +102,18 @@ Various frameworks and tools can facilitate the development and deployment of AI
 
 For tool usage and perception that don't require sophisticated planning and memory, some popular LLM orchestrator frameworks are LangChain, LlamaIndex, Prompt Flow, and Semantic Kernel.
 
-For advanced and autonomous planning and execution workflows, [AutoGen](https://microsoft.github.io/autogen/) propelled the multi-agent wave that began in late 2022. OpenAI's [Assistants API](https://platform.openai.com/docs/assistants/overview) allows its users to create agents natively within the GPT ecosystem. [LangChain Agents](https://python.langchain.com/v0.1/docs/modules/agents/) and [LlamaIndex Agents](https://docs.llamaindex.ai/en/stable/use_cases/agents/) also emerged around the same time.
+For advanced and autonomous planning and execution workflows, [AutoGen](https://microsoft.github.io/autogen/) propelled the multi-agent wave that began in late 2022. OpenAI's [Responses API](https://platform.openai.com/docs/api-reference/responses) allows its users to create agents natively within the GPT ecosystem. [LangChain Agents](https://python.langchain.com/docs/how_to/#agents) and [LlamaIndex Agents](https://docs.llamaindex.ai/en/stable/use_cases/agents/) also emerged around the same time.
 
 > [!TIP]
 > The [implementation sample](#implementation-sample) later in this article shows how to build a simple multi-agent system by using one of the popular frameworks and a unified agent memory system.
 
 ### AI agent memory system
 
-The prevalent practice for experimenting with AI-enhanced applications from 2022 through 2024 has been using standalone database management systems for various data workflows or types. For example, you can use an in-memory database for caching, a relational database for operational data (including tracing/activity logs and LLM conversation history), and a [pure vector database](vector-database.md#integrated-vector-database-vs-pure-vector-database) for embedding management.
+The prevalent practice for experimenting with AI-enhanced applications from 2022 through 2025 has been using standalone database management systems for various data workflows or types. For example, you can use an in-memory database for caching, a relational database for operational data (including tracing/activity logs and LLM conversation history), and a [pure vector database](vector-database.md#integrated-vector-database-vs-pure-vector-database) for embedding management.
 
 However, this practice of using a complex web of standalone databases can hurt an AI agent's performance. Integrating all these disparate databases into a cohesive, interoperable, and resilient memory system for AI agents is its own challenge.
 
-Also, many of the frequently used database services are not optimal for the speed and scalability that AI agent systems need. These databases' individual weaknesses are exacerbated in multi-agent systems.
+Also, many of the frequently used database services aren't optimal for the speed and scalability that AI agent systems need. These databases' individual weaknesses are exacerbated in multi-agent systems.
 
 #### In-memory databases
 
@@ -120,7 +121,7 @@ In-memory databases are excellent for speed but might struggle with the large-sc
 
 #### Relational databases
 
-Relational databases are not ideal for the varied modalities and fluid schemas of data that agents handle. Relational databases require manual efforts and even downtime to manage provisioning, partitioning, and sharding.
+Relational databases aren't ideal for the varied modalities and fluid schemas of data that agents handle. Relational databases require manual efforts and even downtime to manage provisioning, partitioning, and sharding.
 
 #### Pure vector databases
 
@@ -142,7 +143,7 @@ Currently, LLM-powered applications often use [retrieval-augmented generation](v
 
 For example, if the task is to write code, vector search might not be able to retrieve the syntax tree, file system layout, code summaries, or API signatures that are important for generating coherent and correct code. Similarly, if the task is to work with tabular data, vector search might not be able to retrieve the schema, the foreign keys, the stored procedures, or the reports that are useful for querying or analyzing the data.
 
-Weaving together a web of standalone in-memory, relational, and vector databases (as described [earlier](#ai-agent-memory-system)) is not an optimal solution for the varied data types. This approach might work for prototypical agent systems. However, it adds complexity and performance bottlenecks that can hamper the performance of advanced autonomous agents.
+Weaving together a web of standalone in-memory, relational, and vector databases (as described [earlier](#ai-agent-memory-system)) isn't an optimal solution for the varied data types. This approach might work for prototypical agent systems. However, it adds complexity and performance bottlenecks that can hamper the performance of advanced autonomous agents.
 
 A robust memory system should have the following characteristics.
 
@@ -162,7 +163,7 @@ Memory systems should provide memory banks that store information that's relevan
 
 These memory banks can help the agents remember short-term and long-term information, avoid repeating or contradicting themselves, and maintain task coherence. These requirements must hold true even if the agents perform a multitude of unrelated tasks in succession. In advanced cases, agents might also test numerous branch plans that diverge or converge at different points.
 
-### Sharable but also separable
+### Shareable but also separable
 
 At the macro level, memory systems should enable multiple AI agents to collaborate on a problem or process different aspects of the problem by providing shared memory that's accessible to all the agents. Shared memory can facilitate the exchange of information and the coordination of actions among the agents.
 
@@ -176,13 +177,13 @@ In place of all the standalone databases, Azure Cosmos DB can serve as a unified
 
 ### Speed
 
-Azure Cosmos DB provides single-digit millisecond latency. This capability makes it suitable for processes that require rapid data access and management. These processes include caching (both traditional and semantic caching, transactions, and operational workloads.
+Azure Cosmos DB provides single-digit millisecond latency. This capability makes it suitable for processes that require rapid data access and management. These processes include caching (both traditional and semantic caching), transactions, and operational workloads.
 
 Low latency is crucial for AI agents that need to perform complex reasoning, make real-time decisions, and provide immediate responses. In addition, the service's [use of the DiskANN algorithm](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) provides accurate and fast vector search with minimal memory consumption.
 
 ### Scale
 
-Azure Cosmos DB is engineered for global distribution and horizontal scalability. It offers support for multiple-region I/O and multitenancy.
+Azure Cosmos DB is engineered for global distribution and horizontal scalability, with support for multi-region input-output and multitenancy.
 
 The service helps ensure that memory systems can expand seamlessly and keep up with rapidly growing agents and associated data. The [availability guarantee in its service-level agreement (SLA)](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) translates to less than 5 minutes of downtime per year. Pure vector database services, by contrast, come with 9 hours or more of downtime. This availability provides a solid foundation for mission-critical workloads. At the same time, the various service models in Azure Cosmos DB, like [Reserved Capacity](reserved-capacity.md) or Serverless, can help reduce financial costs.
 
@@ -224,9 +225,9 @@ The sample agent operates within a Python FastAPI back end. It supports user int
 
 ### Prerequisites
 
-- An Azure subscription. If you don't have one, you can [try Azure Cosmos DB for free](try-free.md) for 30 days without creating an Azure account. The free trial doesn't require a credit card, and no commitment follows the trial period.
+- An Azure subscription.
 - An account for the OpenAI API or Azure OpenAI Service.
-- A vCore cluster in Azure Cosmos DB for MongoDB. You can create one by following [this quickstart](mongodb/vcore/quickstart-portal.md).
+- A vCore cluster in Azure Cosmos DB for MongoDB. To create one, see [Quickstart: Create an Azure Cosmos DB for MongoDB](mongodb/vcore/quickstart-portal.md).
 - An integrated development environment, such as Visual Studio Code.
 - Python 3.11.4 installed in the development environment.
 
@@ -234,30 +235,30 @@ The sample agent operates within a Python FastAPI back end. It supports user int
 
 All of the code and sample datasets are available in [this GitHub repository](https://github.com/jonathanscholtes/Travel-AI-Agent-React-FastAPI-and-Cosmos-DB-Vector-Store). The repository includes these folders:
 
-- *loader*: This folder contains Python code for loading sample documents and vector embeddings in Azure Cosmos DB.
-- *api*: This folder contains the Python FastAPI project for hosting the AI travel agent.
-- *web*: This folder contains code for the React web interface.
+- `/loader`: This folder contains Python code for loading sample documents and vector embeddings in Azure Cosmos DB.
+- `/api`: This folder contains the Python FastAPI project for hosting the AI travel agent.
+- `/web`: This folder contains code for the React web interface.
 
 ### Load travel documents into Azure Cosmos DB
 
-The GitHub repository contains a Python project in the *loader* directory. It's intended for loading the sample travel documents into Azure Cosmos DB.
+The GitHub repository contains a Python project in the `/loader` directory. It's intended for loading the sample travel documents into Azure Cosmos DB.
 
 #### Set up the environment
 
-Set up your Python virtual environment in the *loader* directory by running the following command:
+Set up your Python virtual environment in the `/loader` directory by running the following command:
 
 ```shell
 python -m venv venv
 ```
 
-Activate your environment and install dependencies in the *loader* directory:
+Activate your environment and install dependencies in the `/loader` directory:
 
 ```shell
 venv\Scripts\activate
 python -m pip install -r requirements.txt
 ```
 
-Create a file named *.env* in the *loader* directory, to store the following environment variables:
+Create a file named *.env* in the `/loader` directory, to store the following environment variables:
 
 ```env
 OPENAI_API_KEY="<your OpenAI key>"
@@ -303,7 +304,7 @@ collection = cosmosdb_loader.load_vectors(ship_json['ships'],'ships')
 collection.create_index([('name', 'text')])
 ```
 
-Load the documents, load the vectors, and create indexes by running the following command from the *loader* directory:
+Load the documents, load the vectors, and create indexes by running the following command from the `/loader` directory:
 
 ```shell
 python main.py
@@ -320,7 +321,7 @@ Here's the output of *main.py*:
 
 ### Build the AI travel agent by using Python FastAPI
 
-The AI travel agent is hosted in a back end API through Python FastAPI, which facilitates integration with the front-end user interface. The API project processes agent requests by grounding the LLM prompts against the data layer, specifically the vectors and documents in Azure Cosmos DB.
+The AI travel agent is hosted in a backend API through Python FastAPI, which facilitates integration with the front-end user interface. The API project processes agent requests by grounding the LLM prompts against the data layer, specifically the vectors and documents in Azure Cosmos DB.
 
 The agent makes use of various tools, particularly the Python functions provided at the API service layer. This article focuses on the code necessary for AI agents within the API code.
 
@@ -335,27 +336,27 @@ The API project in the GitHub repository is structured as follows:
 
 We used Python version 3.11.4 for the development and testing of the API.
 
-Set up your Python virtual environment in the *api* directory:
+Set up your Python virtual environment in the `/api` directory:
 
 ```shell
 python -m venv venv
 ```
 
-Activate your environment and install dependencies by using the *requirements* file in the *api* directory:
+Activate your environment and install dependencies by using the *requirements* file in the `/api` directory:
 
 ```shell
 venv\Scripts\activate
 python -m pip install -r requirements.txt
 ```
 
-Create a file named *.env* in the *api* directory, to store your environment variables:
+Create a file named *.env* in the `/api` directory, to store your environment variables:
 
 ```env
 OPENAI_API_KEY="<your Open AI key>"
 MONGO_CONNECTION_STRING="mongodb+srv:<your connection string from Azure Cosmos DB>"
 ```
 
-Now that you've configured the environment and set up variables, run the following command from the *api* directory to initiate the server:
+Now that you've configured the environment and set up variables, run the following command from the `/api` directory to initiate the server:
 
 ```shell
 python app.py
@@ -417,7 +418,7 @@ The similarity search scores appear as output from the API for debugging purpose
 ```
 
 > [!TIP]
-> If documents are not being returned for vector search, modify the `similarity_search_with_score` limit or the score filter value as needed (`[doc for doc, score  in docs if score >=.78]`) in `data.mongodb.travel.similarity_search()`.
+> If documents aren't being returned for vector search, modify the `similarity_search_with_score` limit or the score filter value as needed (`[doc for doc, score  in docs if score >=.78]`) in `data.mongodb.travel.similarity_search()`.
 
 Calling `agent_chat` for the first time creates a new collection named `history` in Azure Cosmos DB to store the conversation by session. This call enables the agent to access the stored chat message history as needed. Subsequent executions of `agent_chat` with the same parameters produce varying results, because it draws from memory.
 
@@ -592,21 +593,23 @@ The *TravelAgent.py* file is straightforward, because `agent_with_chat_history` 
 
 With the successful loading of the data and accessibility of the AI agent through the API, you can now complete the solution by establishing a web user interface (by using React) for your travel website. Using the capabilities of React helps illustrate the seamless integration of the AI agent into a travel site. This integration enhances the user experience with a conversational travel assistant for inquiries and bookings.
 
+:::image type="content" source="media/gen-ai/ai-agent/react-site.png" lightbox="media/gen-ai/ai-agent/react-site.png" alt-text="Screenshot of the React JavaScript web site.":::
+
 ### Set up the environment for React
 
 Install Node.js and the dependencies before testing the React interface.
 
-Run the following command from the *web* directory to perform a clean installation of project dependencies. The installation might take some time.
+Run the following command from the `/web` directory to perform a clean installation of project dependencies. The installation might take some time.
 
 ```shell
 npm ci
 ```
 
-Next, create a file named *.env* within the *web* directory to facilitate the storage of environment variables. Include the following details in the newly created *.env* file:
+Next, create a file named *.env* within the `/web` directory to facilitate the storage of environment variables. Include the following details in the newly created *.env* file:
 
 `REACT_APP_API_HOST=http://127.0.0.1:8000`
 
-Now, run the following command from the *web* directory to initiate the React web user interface:
+Now, run the following command from the `/web` directory to initiate the React web user interface:
 
 ```shell
 npm start
@@ -618,7 +621,7 @@ Running the previous command opens the React web application.
 
 The web project of the GitHub repository is a straightforward application to facilitate user interaction with the AI agent. The primary components required to converse with the agent are *TravelAgent.js* and *ChatLayout.js*. The *Main.js* file serves as the central module or user landing page.
 
-:::image type="content" source="media/gen-ai/ai-agent/main.png" lightbox="media/gen-ai/ai-agent/main.png" alt-text="Screenshot of the React JavaScript web interface.":::
+:::image type="content" source="media/gen-ai/ai-agent/main.png" lightbox="media/gen-ai/ai-agent/main.png" alt-text="Screenshot of the React JavaScript interface components.":::
 
 #### Main
 
@@ -848,12 +851,10 @@ User prompts are on the right side and colored blue. Responses from the AI trave
 
 :::image type="content" source="media/gen-ai/ai-agent/chat-screenshot.png" lightbox="media/gen-ai/ai-agent/chat-screenshot.png" alt-text="Screenshot of a chat with an AI agent.":::
 
-When your AI agent is ready to go into production, you can use semantic caching to improve query performance by 80% and to reduce LLM inference and API call costs. To implement semantic caching, see [this post on the Stochastic Coder blog](https://stochasticcoder.com/2024/03/22/improve-llm-performance-using-semantic-cache-with-cosmos-db/).
+When your AI agent is ready to go into production, you can use semantic caching to improve query performance by 80% and to reduce LLM inference and API call costs. To implement semantic caching, see [Improving LLM Performance on the Stochastic Coder blog](https://stochasticcoder.com/2024/03/22/improve-llm-performance-using-semantic-cache-with-cosmos-db/).
 
 :::image type="content" source="media/gen-ai/ai-agent/semantic-caching.png" lightbox="media/gen-ai/ai-agent/semantic-caching.png" alt-text="Diagram of semantic caching for AI agents.":::
 
 ## Related content
 
-- [30-day free trial without an Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
-- [90-day free trial and up to $6,000 in throughput credits with Azure AI Advantage](ai-advantage.md)
 - [Azure Cosmos DB lifetime free tier](free-tier.md)

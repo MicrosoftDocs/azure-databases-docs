@@ -1,8 +1,8 @@
 ---
 title: PgBouncer server parameters
 description: PgBouncer server parameters for Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 05/05/2025
 ms.service: azure-database-postgresql

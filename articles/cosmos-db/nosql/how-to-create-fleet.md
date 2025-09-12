@@ -32,13 +32,13 @@ For more information about fleets, see [fleets overview](fleet.md).
 
     - If you aren't registered, [register for the preview](fleet.md#register-for-the-preview).
 
-:::zone pivot="azure-interface-cli,azure-interface-bicep"
+:::zone pivot="azure-cli,azure-resource-manager-bicep"
 
 - Azure CLI
 
 :::zone-end
 
-:::zone pivot="azure-interface-bicep"
+:::zone pivot="azure-resource-manager-bicep"
 
 - Bicep
 
@@ -51,7 +51,7 @@ Set up your fleet by creating the fleet that eventually contains your fleetspace
 > [!NOTE]
 > The region selected for your fleet resources doesn't affect or determine the locations/regions of any database accounts in the fleet.
 
-:::zone pivot="azure-interface-portal"
+:::zone pivot="azure-portal"
 
 1. Sign in to the Azure portal (<https://portal.azure.com>).
 
@@ -76,7 +76,7 @@ Set up your fleet by creating the fleet that eventually contains your fleetspace
 
 :::zone-end
 
-:::zone pivot="azure-interface-cli"
+:::zone pivot="azure-cli"
 
 1. Create a fleet using `az resource create` and an empty (`{}`) JSON properties object:
 
@@ -122,7 +122,7 @@ Set up your fleet by creating the fleet that eventually contains your fleetspace
 
 :::zone-end
 
-:::zone pivot="azure-interface-bicep"
+:::zone pivot="azure-resource-manager-bicep"
 
 ```bicep
 resource fleet 'Microsoft.DocumentDB/fleets@2025-05-01-preview' = {
@@ -140,14 +140,14 @@ Before adding accounts to the fleet, you must create a fleetspace. A fleetspace 
 
 > [!NOTE]
 > In this guide, throughput pooling is configured for the fleetspace. You can opt to not use throughput pooling. Throughput pooling is an optional configuration that allows account resources to share RU/s. This shared RU/s is on top of the dedicated RU/s that are already available for the resource.  
-The pool minimum and maximum RU/s can be changed at any time. The service tier and data regions cannot be changed after fleetpsace creation. 
+The pool minimum and maximum RU/s can be changed at any time. The service tier and data regions cannot be changed after fleetspace creation. 
 >
 > To configure throughput pooling for a fleetspace, specify the regions and the service tier that apply to all accounts within the fleetspace. If throughput pooling is configured, all accounts within the fleetspace must share the same regional and service tier configuration.  
 >
 > For more information, see [fleet pools](fleet-pools.md).
 >
 
-:::zone pivot="azure-interface-portal"
+:::zone pivot="azure-portal"
 
 1. Navigate to your existing fleet resource within the Azure portal.
 
@@ -168,7 +168,7 @@ The pool minimum and maximum RU/s can be changed at any time. The service tier a
 
 :::zone-end
 
-:::zone pivot="azure-interface-cli"
+:::zone pivot="azure-cli"
 
 1. Create a fleetspace within your fleet using the following properties:
 
@@ -236,7 +236,7 @@ The pool minimum and maximum RU/s can be changed at any time. The service tier a
 
 :::zone-end
 
-:::zone pivot="azure-interface-bicep"
+:::zone pivot="azure-resource-manager-bicep"
 
 | | Value |
 | --- | --- |
@@ -277,7 +277,7 @@ Once the fleetspace is created, add accounts either to the fleetspace itself. Ac
 > [!IMPORTANT]
 > You can't add accounts to your fleetspace that are already associated with an existing fleetspace.
 
-:::zone pivot="azure-interface-portal"
+:::zone pivot="azure-portal"
 
 1. Select the **Database accounts** option within the **Fleet resources** section of the resource menu.
 
@@ -293,7 +293,7 @@ Once the fleetspace is created, add accounts either to the fleetspace itself. Ac
 
 :::zone-end
 
-:::zone pivot="azure-interface-cli"
+:::zone pivot="azure-cli"
 
 1. Create a fleetspace account within your fleetspace using the following properties:
 
@@ -361,7 +361,7 @@ Once the fleetspace is created, add accounts either to the fleetspace itself. Ac
 
 :::zone-end
 
-:::zone pivot="azure-interface-bicep"
+:::zone pivot="azure-resource-manager-bicep"
 
 | | Value |
 | --- | --- |

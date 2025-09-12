@@ -7,7 +7,7 @@ ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/27/2024
+ms.date: 09/05/2025
 ---
 
 # $sqrt
@@ -148,17 +148,17 @@ To calculate the square root of the sales volumes of each store under the "First
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$project": {
-        "name": 1,
+    $project: {
+        name: 1,
         "sales.revenue": 1,
-        "categoryName": "$promotionEvents.discounts.categoryName",
-        "sqrtFullSales": {
+        categoryName: "$promotionEvents.discounts.categoryName",
+        sqrtFullSales: {
             $sqrt: "$sales.revenue"
         }
     }

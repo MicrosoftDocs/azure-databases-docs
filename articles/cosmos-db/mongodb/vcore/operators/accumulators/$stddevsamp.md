@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 05/20/2025
+ms.date: 09/05/2025
 ---
 
 # $stddevsamp
@@ -148,30 +148,32 @@ This query calculates the standard deviation of total sales across stores in the
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
+    $match: {
         "company": "Fourth Coffee"
     }
 }, {
-    "$sample": {
-        "size": 10
+    $sample: {
+        size: 10
     }
 }, {
-    "$group": {
-        "_id": "$company",
-        "stdDev": {
-            "$stdDevSamp": "$sales.totalSales"
+    $group: {
+        _id: "$company",
+        stdDev: {
+            $stdDevSamp: "$sales.totalSales"
         }
     }
 }])
 ```
 
-This query returns the following results:
+This query returns the following result:
 
 ```json
-{
-    "_id": "Fourth Coffee",
-    "stdDev": 22040.044055209048
-}
+[
+  {
+      "_id": "Fourth Coffee",
+      "stdDev": 22040.044055209048
+  }
+]
 ```
 
 ## Related content

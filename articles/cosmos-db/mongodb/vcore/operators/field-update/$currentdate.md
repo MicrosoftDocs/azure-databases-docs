@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/04/2025
 ---
 
 # $currentDate
@@ -15,8 +15,6 @@
 The `$currentDate` operator sets the value of a field to the current date, either as a Date or a timestamp. This operator is useful for tracking when documents were last modified or for setting creation timestamps.
 
 ## Syntax
-
-The syntax for the `$currentDate` operator is as follows:
 
 ```javascript
 {
@@ -35,7 +33,7 @@ The syntax for the `$currentDate` operator is as follows:
 | **`field`** | The name of the field to set to the current date. |
 | **`typeSpecification`** | Optional. Specifies the type of the date value. Can be `true` (for Date type) or `{ $type: "timestamp" }` for timestamp type. Default is `true` (Date). |
 
-## Example
+## Examples
 
 Consider this sample document from the stores collection.
 
@@ -105,7 +103,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Setting current date
 
-Add a `lastUpdated` field with the current date to a store document.
+To add a `lastUpdated` field with the current date to a store document, use the $currentDate operator to create the field with the current date as a Date object.
 
 ```javascript
 db.stores.updateOne(
@@ -118,7 +116,7 @@ db.stores.updateOne(
 )
 ```
 
-This will add a `lastUpdated` field with the current date as a Date object and produce the following result:
+This operation returns the following the result.
 
 ```json
 {
@@ -131,10 +129,9 @@ This will add a `lastUpdated` field with the current date as a Date object and p
 
 ```
 
-
 ### Example 2: Setting current timestamp
 
-Add both a date field and a timestamp field to track modifications.
+To add both a date field and a timestamp field to track modifications, use the $currentDate operator with a value of true and with a typestamp value.
 
 ```javascript
 db.stores.updateOne(
@@ -148,7 +145,7 @@ db.stores.updateOne(
 )
 ```
 
-This query will return  the following document 
+This operation returns  the following result 
 
 ```json
 {
@@ -159,7 +156,6 @@ This query will return  the following document
   upsertedCount: 0
 }
 ```
-
 
 ### Example 3: Updating nested fields
 
@@ -177,33 +173,35 @@ db.stores.updateOne(
 )
 ```
 
-After these operations, the document would include the new timestamp fields:
+This operation returns the following result.
 
 ```json
-{
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
-  "lastUpdated": ISODate("2025-02-12T10:30:45.123Z"),
-  "lastModified": ISODate("2025-02-12T10:30:45.123Z"),
-  "lastModifiedTimestamp": Timestamp(1739450445, 1),
-  "sales": {
-    "totalSales": 37701,
-    "lastSalesUpdate": ISODate("2025-02-12T10:30:45.123Z"),
-    "salesByCategory": [
-      {
-        "categoryName": "Mattress Toppers",
-        "totalSales": 37701
-      }
-    ]
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 18,
-      "partTime": 17
+[
+  {
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "lastUpdated": ISODate("2025-02-12T10:30:45.123Z"),
+    "lastModified": ISODate("2025-02-12T10:30:45.123Z"),
+    "lastModifiedTimestamp": Timestamp(1739450445, 1),
+    "sales": {
+      "totalSales": 37701,
+      "lastSalesUpdate": ISODate("2025-02-12T10:30:45.123Z"),
+      "salesByCategory": [
+        {
+          "categoryName": "Mattress Toppers",
+          "totalSales": 37701
+        }
+      ]
     },
-    "lastStaffUpdate": Timestamp(1739450445, 1)
+    "staff": {
+      "totalStaff": {
+        "fullTime": 18,
+        "partTime": 17
+      },
+      "lastStaffUpdate": Timestamp(1739450445, 1)
+    }
   }
-}
+]
 ```
 
 ## Related content

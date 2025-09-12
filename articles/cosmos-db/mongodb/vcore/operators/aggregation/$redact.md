@@ -14,6 +14,7 @@ ms.date: 06/23/2025
 The `$redact` stage in aggregation pipeline is used to filter fields of the documents in a collection dynamically based on access rights or other conditions. It processes each document in the pipeline and removes or retains fields based on the specified logic.
 
 ## Syntax
+
 ```javascript
 {
   $redact: <expression>
@@ -28,6 +29,7 @@ The `$redact` stage in aggregation pipeline is used to filter fields of the docu
 ## Examples
 
 Consider this sample document from the stores collection.
+
 ```json
 {
     "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
@@ -139,10 +141,10 @@ Consider this sample document from the stores collection.
 ```
 
 ### Example 1: Redacting sensitive information
-To filter out the `promotionEvents` field for documents where the `discountPercentage` in a promotion exceeds 15%.
+This query filters the `promotionEvents` field for documents where the `discountPercentage` in a promotion exceeds 15%.
 
 ```javascript
-db.collection.aggregate([
+db.stores.aggregate([
   {
     $redact: {
       $cond: {
@@ -157,11 +159,72 @@ db.collection.aggregate([
 ])
 ```
 
+The first two results returned by this query are:
+
+```json
+[
+    {
+        "_id": "new-store-001",
+        "name": "Adatum Corporation - Downtown Branch",
+        "sales": {
+            "totalSales": 5000
+        },
+        "createdDate": "2025-06-11T11:11:32.262Z",
+        "status": "new",
+        "staff": {
+            "totalStaff": {
+                "fullTime": 0,
+                "partTime": 0
+            }
+        },
+        "version": 1,
+        "storeOpeningDate": "2025-06-11T11:11:32.262Z",
+        "storeFeatures": 213
+    },
+    {
+        "_id": "gaming-store-mall-001",
+        "name": "Trey Research | Gaming Paradise - Mall Location",
+        "location": {
+            "lat": 35.6762,
+            "lon": 139.6503
+        },
+        "createdDate": "2025-06-11T11:13:27.180Z",
+        "status": "active",
+        "staff": {
+            "totalStaff": {
+                "fullTime": 8,
+                "partTime": 12
+            },
+            "manager": "Alex Johnson",
+            "departments": [
+                "gaming",
+                "accessories",
+                "repairs"
+            ]
+        },
+        "sales": {
+            "totalSales": 0,
+            "salesByCategory": []
+        },
+        "operatingHours": {
+            "weekdays": "10:00-22:00",
+            "weekends": "09:00-23:00"
+        },
+        "metadata": {
+            "version": 1,
+            "source": "store-management-system"
+        },
+        "storeOpeningDate": "2025-06-11T11:11:32.262Z",
+        "storeFeatures": 189
+    }
+]
+```
+
 ### Example 2: Restricting access based on tags
-To remove all documents that contain the tag `#MembershipDeals`.
+This query removes all documents that contain the tag `#MembershipDeals`.
 
 ```javascript
-db.collection.aggregate([
+db.stores.aggregate([
   {
     $redact: {
       $cond: {

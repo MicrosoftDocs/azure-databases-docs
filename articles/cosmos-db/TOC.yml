@@ -7,12 +7,8 @@
     href: introduction.md
   - name: FAQ
     href: faq.yml
-  - name: Try Azure Cosmos DB free
-    href: try-free.md
   - name: Choose an API
     href: choose-api.md
-  - name: Azure AI Advantage free trial
-    href: ai-advantage.md
 - name: NoSQL
   href: nosql/index.yml
 - name: MongoDB (RU)
@@ -24,6 +20,6 @@
 - name: Apache Cassandra
   href: cassandra/toc.yml
 - name: Apache Gremlin
-  href: gremlin/toc.yml
+  href: gremlin/index.yml
 - name: Table
   href: table/toc.yml

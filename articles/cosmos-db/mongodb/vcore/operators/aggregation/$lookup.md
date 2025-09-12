@@ -1,13 +1,13 @@
 ---
   title: $lookup
-  titleSuffix: Overview of the $lookup operation in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $lookup operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $lookup stage in the Aggregation Framework is used to perform left outer joins with other collections.
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/11/2024
+  ms.date: 09/05/2025
 ---
 
 # $lookup
@@ -15,8 +15,6 @@
 The `$lookup` stage in the Aggregation Framework is used to perform left outer joins with other collections. It allows you to combine documents from different collections based on a specified condition. This operator is useful for enriching documents with related data from other collections without having to perform multiple queries.
 
 ## Syntax
-
-The syntax for the `$lookup` stage is as follows:
 
 ```javascript
 {
@@ -38,9 +36,121 @@ The syntax for the `$lookup` stage is as follows:
 | **`foreignField`** | The field from the documents in the `from` collection that are matched with the `localField`.|
 | **`as`** | The name of the new array field to add to the input documents. This array contains the matched documents from the `from` collection.|
 
-## Example
+## Examples
 
-Let's say we have a `ratings` collection with two documents.
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+Let's say we have another `ratings` collection with two documents.
 
 ```json
 {
@@ -53,69 +163,9 @@ Let's say we have a `ratings` collection with two documents.
 }
 ```
 
-Consider this sample document from the stores collection.
+### Example 1: Combine two collections to list promotion events for stores with a rating of 5
 
-```json
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
-        },
-        {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
-        }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
-}
-```
-
-We want to join the `ratings` collection with the `stores` collection to list promotion events related to each store having a 5 rating.
-
+This query joins the `ratings` collection with the `stores` collection to list promotion events related to each store having a 5 rating.
 
 ```javascript
 db.ratings.aggregate([
@@ -144,7 +194,7 @@ db.ratings.aggregate([
 ])
 ```
 
-This query would return the following document.
+This query returns the following result:
 
 ```json
 [
@@ -155,7 +205,7 @@ This query would return the following document.
 ]
 ```
 
-Joining two collections (ratings and stores) using a variable from ratings.
+### Example 2: Joining two collections (ratings and stores) using a variable from ratings.
 
 ```javascript
 db.ratings.aggregate([
@@ -190,17 +240,19 @@ db.ratings.aggregate([
     }
   }
 ])
-
 ```
-This query would return the following document.
+
+This query returns the following result:
 
 ```json
 [
-  {
-    _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5',
-    rating: 5,
-    storeInfo: { name: 'Lakeshore Retail | DJ Equipment Stop - Port Cecile' }
-  }
+    {
+        "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+        "rating": 5,
+        "storeInfo": {
+            "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile"
+        }
+    }
 ]
 ```
 

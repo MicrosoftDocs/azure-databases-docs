@@ -1,7 +1,7 @@
 ---
-  title: $anyElementsTrue
-  titleSuffix: Overview of the $allElementsTrue operator in Azure Cosmos DB for MongoDB (vCore)
-  description: The $anyElementsTrue operator returns true if any element evaluates to true in an array.
+  title: $anyElementTrue
+  titleSuffix: Overview of the $anyElementTrue operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $anyElementTrue operator returns true if any element in an array evaluates to a value of true.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # $anyElementTrue
 
-The `$anyElementTrue` operator evaluates an array as a set and returns `true` if any element in the array is `true` or equivalent to `true`. If all elements evaluate to `false`, `null`, `0`, or `undefined`, the operator returns `false`.
+The `$anyElementTrue` operator evaluates an array as a set and returns `true` if any element in the array is `true` (or equivalent to `true`). If all the elements evaluate to a value of `false`, `null`, `0`, or `undefined`, the operator returns `false`.
 
 ## Syntax
 
@@ -26,57 +26,125 @@ The `$anyElementTrue` operator evaluates an array as a set and returns `true` if
 
 | Parameter | Description |
 | --- | --- |
-| **`array`** | An array of expressions to evaluate. If the array is empty, `$anyElementTrue` returns `false`. |
+| `array` | An array of expressions to evaluate. If the array is empty, `$anyElementTrue` returns `false`. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 19,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  }
 }
 ```
 
-### Example 1: Check if any sales category exceeds target
+### Example 1: Determine if any sales category exceeds a target
 
-This example allows checking if any sales category exceeds a target of 40,000 in sales.
+This query determines if any sales category exceeds a specified target. In this case, the target is 40,000 in sales.
 
 ```javascript
 db.stores.aggregate([
@@ -100,38 +168,40 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` for `hasHighPerformingCategory` field as sales for one of the categories is beyond 40,000.
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "salesByCategory": [
-    {
-      "categoryName": "Sound Bars",
-      "totalSales": 2120,
-      "lastUpdated": "2025-06-11T11:10:34.414Z"
-    },
-    null,
-    {
-      "categoryName": "Game Controllers",
-      "totalSales": 43522
-    },
-    {
-      "categoryName": "Remote Controls",
-      "totalSales": 28946
-    },
-    {
-      "categoryName": "VR Games",
-      "totalSales": 32272
-    }
-  ],
-  "hasHighPerformingCategory": true
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "salesByCategory": [
+      {
+        "categoryName": "Sound Bars",
+        "totalSales": 2120,
+        "lastUpdated": "2025-06-11T11:10:34.414Z"
+      },
+      null,
+      {
+        "categoryName": "Game Controllers",
+        "totalSales": 43522
+      },
+      {
+        "categoryName": "Remote Controls",
+        "totalSales": 28946
+      },
+      {
+        "categoryName": "VR Games",
+        "totalSales": 32272
+      }
+    ],
+    "hasHighPerformingCategory": true
+  }
+]
 ```
 
-### Example 2: Check if any promotion event has high discounts
+### Example 2: Determine if any promotion event has high discounts
 
-The example allows checking if any promotion event offers discounts above 20%.
+This query determines if any promotion event offers discounts over 20%.
 
 ```javascript
 db.stores.aggregate([
@@ -156,14 +226,15 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns `true` considering we have at least one promotion event with discounts above 20%.
+The first five results returned by this query are:
 
 ```json
+[
   {
     "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
     "eventName": "Massive Markdown Mania",
     "hasHighDiscount": true
-    },
+  },
   {
     "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
     "eventName": "Fantastic Deal Days",
@@ -183,12 +254,8 @@ The query returns `true` considering we have at least one promotion event with d
     "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
     "eventName": "Grand Deal Days",
     "hasHighDiscount": true
-  },
-  {
-    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-    "eventName": "Major Bargain Bash",
-    "hasHighDiscount": true
   }
+]
 ```
 
 ## Related content

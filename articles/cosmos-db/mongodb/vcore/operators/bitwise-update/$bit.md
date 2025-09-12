@@ -1,22 +1,28 @@
 --- 
 title: $bit
-titleSuffix: Overview of the $bit operation in Azure Cosmos DB for MongoDB (vCore)
+titleSuffix: Overview of the $bit operator in Azure Cosmos DB for MongoDB (vCore)
 description: The `$bit` operator is used to perform bitwise operations on integer values.
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 10/15/2024
+ms.date: 09/05/2025
 ---
-
 
 # $bit
 The `$bit` operator is used to perform bitwise operations on integer values. It can be used to update integer fields in documents by applying bitwise AND, OR, and XOR operations. Bitwise operators like $bit aren't designed for incrementing values, but for manipulating bits directly (like checking, setting, or clearing specific bits).
 
 ## Syntax
-```
-{ $bit: { <field>: { <operator>: <number> } } }
+
+```javascript
+{
+    $bit: {
+        < field >: {
+            < operator >: < number >
+        }
+    }
+}
 ```
 
 ## Parameters  
@@ -32,125 +38,197 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
+    ]
+}
+```
+
+### Example 1: Perform a bitwise AND operation on the `partTime` field in `totalStaff`
+
+```javascript
+db.stores.updateOne({
+    _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+}, {
+    $bit: {
+        "staff.totalStaff.partTime": {
+            and: 1
+        }
     }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
-}
+})
 ```
 
-### Example 1: Perform a bitwise AND operation on the `partTime` field in `totalStaff`.
-
-```shell
-db.stores.updateOne(
-  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $bit: { "staff.totalStaff.partTime": { and: 1 } } }
-)
-```
-
-This query would return the following document. The AND of 0 and 1 is 0 hence the new value of the field is 0.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
 
+### Example 2:  Perform a bitwise OR operation on the `partTime` field in `totalStaff`
 
-### Example 2:  Perform a bitwise OR operation on the `partTime` field in `totalStaff`.
-
-```shell
-db.stores.updateOne(
-  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $bit: { "staff.totalStaff.partTime": { "or" : 1 } } }
-)
+```javascript
+db.stores.updateOne({
+    _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+}, {
+    $bit: {
+        "staff.totalStaff.partTime": {
+            "or": 1
+        }
+    }
+})
 ```
 
-This query would return the following document. The OR of 0 and 1 is 1 hence the new value of the field is 1.
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
 
-### Example 3: Perform a bitwise XOR operation on the `partTime` field in `totalStaff`.
-```shell
-db.stores.updateOne(
-  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $bit: { "staff.totalStaff.partTime": { "xor" : 1 } } }
-)
+### Example 3: Perform a bitwise XOR operation on the `partTime` field in `totalStaff`
+
+```javascript
+db.stores.updateOne({
+    _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+}, {
+    $bit: {
+        "staff.totalStaff.partTime": {
+            "xor": 1
+        }
+    }
+})
 ```
-This query would return the following document. The XOR of 1 and 1 is 0 hence the new value of the field is 0.
+
+This query returns the following result.
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
 ```
-
 
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]

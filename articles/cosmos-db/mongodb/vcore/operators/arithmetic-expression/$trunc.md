@@ -7,7 +7,7 @@ ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/27/2024
+ms.date: 09/05/2025
 ---
 
 # $trunc
@@ -148,7 +148,7 @@ Consider this sample document from the stores collection.
 To retrieve the truncated coordinates of stores within the "First Up Consultants" company, first run a query to filter stores by the company name. Then, use the $trunc operator on the latitude and longitude fields to return the desired result.
 
 ```javascript
-db.collection.aggregate([
+db.stores.aggregate([
   {
     $project: {
       truncatedLat: { $trunc: ["$location.lat", 2] }

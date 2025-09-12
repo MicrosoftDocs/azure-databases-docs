@@ -7,12 +7,12 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 06/09/2025
+ms.date: 09/05/2025
 ---
 
 # $densify
 
-The `$densify` stage in an aggregation pipeline is used to fill in missing data points within a sequence of values. It helps in creating a more complete dataset by generating missing values based on a specified field, range, and step. This is particularly useful in scenarios like time-series data analysis, where gaps in data points need to be filled to ensure accurate analysis.
+The `$densify` stage in an aggregation pipeline is used to fill in missing data points within a sequence of values. It helps in creating a more complete dataset by generating missing values based on a specified field, range, and step. This is useful in scenarios like time-series data analysis, where gaps in data points need to be filled to ensure accurate analysis.
 
 ## Syntax
 
@@ -42,9 +42,121 @@ The `$densify` stage in an aggregation pipeline is used to fill in missing data 
 
 ## Examples
 
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
 ### Example 1: Densify a time-series dataset
 
-The following pipeline fills in missing days in the date field:
+This query fills in missing days in the date field.
 
 ```javascript
 db.aggregate([
@@ -66,19 +178,29 @@ db.aggregate([
     }
   ]);
 ```
-This query would return the following document.
+
+This query returns the following results:
+
 ```json
 [
-  { date: ISODate("2024-01-01T00:00:00.000Z"), value: 10 },
-  { date: ISODate("2024-01-02T00:00:00.000Z") },
-  { date: ISODate("2024-01-03T00:00:00.000Z"), value: 15 }
+    {
+        "date": "ISODate('2024-01-01T00:00:00.000Z')",
+        "value": 10
+    },
+    {
+        "date": "ISODate('2024-01-02T00:00:00.000Z')"
+    },
+    {
+        "date": "ISODate('2024-01-03T00:00:00.000Z')",
+        "value": 15
+    }
 ]
 
 ```
 
 ### Example 2: Densify numeric data
 
-The following pipeline fills in missing numeric values in the `sales.fullSales` field:
+This query fills in missing numeric values in the `sales.fullSales` field:
 
 ```javascript
 db.aggregate([
@@ -99,20 +221,31 @@ db.aggregate([
     }
   ]);
 ```
-This query would return the following document.
+
+This query returns the following results:
+
 ```json
 [
-  { level: 1, score: 10 },
-  { level: 2 },
-  { level: 3, score: 30 },
-  { level: 4 }
+    {
+        "level": 1,
+        "score": 10
+    },
+    {
+        "level": 2
+    },
+    {
+        "level": 3,
+        "score": 30
+    },
+    {
+        "level": 4
+    }
 ]
 ```
 
-
 ## Limitations
 
-The following table summarizes the key restrictions and behaviors associated with the $densify stage in MongoDB aggregation pipelines:
+The following table summarizes the key restrictions and behaviors associated with the $densify stage in aggregation pipelines:
 
 | Category| Condition / Behavior |
 | --- | --- |

@@ -109,12 +109,12 @@ To set TLS versions on your Azure Database for MySQL Flexible Server instance, y
 
 ### Download the public SSL certificate
 
-To use encrypted connections with your client applications,you need to download the [public SSL certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem), which is also available in Azure portal Networking pane as shown in the screenshot below.
-
-:::image type="content" source="media/how-to-connect-tls-ssl/download-ssl.png" alt-text="Screenshot showing how to download public SSL certificate from Azure portal." lightbox="media/how-to-connect-tls-ssl/download-ssl.png":::
+To establish encrypted connections with your client applications, download the [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and the [Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt). Combine both certificates before initiating a connection to the server. For detailed steps, refer to [How to update the root certificate store on your client](./concepts-root-certificate-rotation.md#how-to-update-the-root-certificate-store-on-your-client)
 
 > [!NOTE]  
-> You must download this [SSL certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) for your servers in Azure Government cloud.
+> You must download [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) for your servers in Azure Government cloud.
+> 
+> You must download [DigiCert Global Root certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) for your servers in Azure Mooncake.
 
 Save the certificate file to your preferred location. For example, this tutorial uses `c:\ssl` or `\var\www\html\bin` on your local environment or the client environment where your application is hosted. This allows applications to connect securely to the database over SSL.
 

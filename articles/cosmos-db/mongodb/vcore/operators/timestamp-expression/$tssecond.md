@@ -1,24 +1,20 @@
 ---
-  title: $tsSecond (variable expression)
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $tsSecond
+  titleSuffix: Overview of the $tsSecond operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $tsSecond operator extracts the seconds portion from a timestamp value.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 06/09/2025
+  ms.date: 09/04/2025
 ---
 
-# $tsSecond (variable expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $tsSecond
 
 The `$tsSecond` operator returns the seconds value from a timestamp. Timestamps consist of two parts: a time value (in seconds since epoch) and an increment value. This operator extracts the seconds portion, which represents the time since the Unix epoch (January 1, 1970, 00:00:00 UTC).
 
 ## Syntax
-
-The syntax for the `$tsSecond` operator is as follows:
 
 ```javascript
 {
@@ -28,75 +24,127 @@ The syntax for the `$tsSecond` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`expression`** | An expression that evaluates to a timestamp. If the expression does not evaluate to a timestamp, `$tsSecond` returns an error. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample JSON from the `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
-  "location": {
-    "lat": 60.7954,
-    "lon": -142.0012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 18,
-      "partTime": 17
-    }
-  },
-  "sales": {
-    "totalSales": 37701,
-    "salesByCategory": [
-      {
-        "categoryName": "Mattress Toppers",
-        "totalSales": 37701
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  },
-  "lastUpdated": Timestamp({ t: 1640995200, i: 5 }),
-  "promotionEvents": [
-    {
-      "eventName": "Price Drop Palooza",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 21
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 30
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Bath Accessories",
-          "discountPercentage": 18
-        },
-        {
-          "categoryName": "Pillow Top Mattresses",
-          "discountPercentage": 17
-        },
-        {
-          "categoryName": "Bathroom Scales",
-          "discountPercentage": 9
-        }
-      ]
-    }
-  ]
 }
 ```
 
 ### Example 1: Extract seconds from audit timestamp
 
-The example extracts the seconds value from the last updated timestamp in the audit log.
+This query extracts the seconds value from the last updated timestamp in the audit log.
 
 ```javascript
 db.stores.aggregate([
@@ -120,15 +168,17 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce an output showing the seconds value from the timestamp and its corresponding date:
+This query returns the following result.
 
 ```json
-{
-  "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-  "name": "First Up Consultants | Bed and Bath Center - South Amir",
-  "lastUpdatedSeconds": Long("1640995200"),
-  "lastUpdatedDate": ISODate("2022-01-01T00:00:00.000Z")
-}
+[
+  {
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "lastUpdatedSeconds": Long("1640995200"),
+    "lastUpdatedDate": ISODate("2022-01-01T00:00:00.000Z")
+  }
+]
 ```
 
 ## Related content
