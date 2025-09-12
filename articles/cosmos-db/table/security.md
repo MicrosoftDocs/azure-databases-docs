@@ -1,17 +1,25 @@
 ---
-title: Secure Your Account
-description: Review the fundamentals of securing Azure Cosmos DB for Apache Gremlin from the perspective of data and networking security.
+title: Secure your account
+titleSuffix: Azure Cosmos DB for Table
+description: Review the fundamentals of securing Azure Cosmos DB for Table from the perspective of data and networking security.
+author: seesharprun
+ms.author: sidandrews
+ms.reviewer: skhera
+ms.service: azure-cosmos-db
+ms.subservice: table
 ms.topic: best-practice
 ms.date: 09/11/2025
 ms.custom: security-horizontal-2025
 ai-usage: ai-generated
+appliesto:
+  - ✅ Table
 ---
 
-# Secure your Azure Cosmos DB for Apache Gremlin account
+# Secure your Azure Cosmos DB for Table account
 
-Azure Cosmos DB for Apache Gremlin is a fully managed graph database service that enables you to store, query, and traverse large-scale graph data using the Gremlin query language.
+Azure Cosmos DB for Table is a fully managed NoSQL database service that enables you to store, manage, and query large volumes of key-value data using the familiar Azure Table storage APIs. While Azure Cosmos DB provides built-in security features to protect your data, it's essential to follow best practices to further enhance the security of your account, data, and networking configurations.
 
-This article provides guidance on how to best secure your Azure Cosmos DB for Apache Gremlin deployment.
+This article provides guidance on how to best secure your Azure Cosmos DB for Table deployment.
 
 ## Network security
 
@@ -21,7 +29,13 @@ This article provides guidance on how to best secure your Azure Cosmos DB for Ap
 
 ## Identity management
 
-- **Use Azure control plane role-based access control to manage account databases and containers**: Apply Azure role-based access control to define fine-grained permissions for managing Azure Cosmos DB accounts, databases, and containers. This control ensures that only authorized users or services can perform administrative operations. For more information, see [Grant control plane access](../nosql/how-to-grant-control-plane-access.md).
+- **Use managed identities to access your account from other Azure services**: Managed identities eliminate the need to manage credentials by providing an automatically managed identity in Microsoft Entra ID. Use managed identities to securely access Azure Cosmos DB from other Azure services without embedding credentials in your code. For more information, see [Managed identities for Azure resources](/entra/identity/managed-identities-azure-resources/overview).
+
+- **Use Azure control plane role-based access control to manage account databases and containers**: Apply Azure role-based access control to define fine-grained permissions for managing Azure Cosmos DB accounts, databases, and containers. This control ensures that only authorized users or services can perform administrative operations. For more information, see [Grant control plane access](how-to-connect-role-based-access-control.md#grant-control-plane-role-based-access).
+
+- **Use native data plane role-based access control to query, create, and access items within a container**: Implement data plane role-based access control to enforce least privilege access for querying, creating, and accessing items within Azure Cosmos DB containers. This control helps secure your data operations. For more information, see [Grant data plane access](how-to-connect-role-based-access-control.md#grant-data-plane-role-based-access).
+
+- **Separate the Azure identities used for data and control plane access**: Use distinct Azure identities for control plane and data plane operations to reduce the risk of privilege escalation and ensure better access control. This separation enhances security by limiting the scope of each identity.
 
 ## Transport security
 
