@@ -87,15 +87,6 @@ When using Microsoft Entra authentication with Azure Database for PostgreSQL fle
 
 - Azure Database for PostgreSQL flexible server matches access tokens to the database role by using the user's unique Microsoft Entra user ID, as opposed to using the username. If a Microsoft Entra user is deleted and a new user is created with the same name, Azure Database for PostgreSQL flexible server considers that a different user. Therefore, if a user is deleted from Microsoft Entra ID and a new user is added with the same name, the new user can't connect with the existing role.
 
-- For new servers, you can enable automatic group synchronization by locating the `pgaadauth.enable_group_sync` server parameter in the portal and setting it to “ON.” 
-
-  > [!NOTE] 
-  > Users can log into the role which has the same name as the name of the group, or they can log into the role which has the same name as their email address. If you want to prevent the ability of group members to log into the group role, run the following command after adding the group: `ALTER ROLE "ROLENAME" NOLOGIN;` 
-This will enforce the users to log into the roles representing their individual accounts. Be carefull to not delete the role to ensure its members continue to sync. 
-
-  > [!NOTE]
-  > If your group includes service principals, roles will not be created for those members. To work around this, add service principals manually. 
-
 ## Frequently asked questions
 
 - **What are the available authentication modes in Azure Database for PostgreSQL flexible server?**
