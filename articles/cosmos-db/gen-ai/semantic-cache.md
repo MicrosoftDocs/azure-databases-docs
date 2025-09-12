@@ -21,11 +21,11 @@ appliesto:
 
 Large language models (LLM) have an amazing ability to generate completions, or text responses, based upon user prompts. As with any service, they have a compute cost to them. For an LLM, this is typically expressed in [tokens](tokens.md).
 
-A semantic cache provides a way for you to use prior user prompts and LLM completions to address similar user prompts using vector similarity search. A semantic cache can reduce latency and save costs in your generative AI applications since making calls to LLMs is often the most costly and highest-latency service in such applications.
+A semantic cache provides a way for you to use prior user prompts and LLM completions to address similar user prompts by using vector similarity search. A semantic cache can reduce latency and save costs in your generative AI applications since making calls to LLMs is often the most costly and highest-latency service in such applications.
 
 In a scenario where an LLM processes a simple prompt, this computational cost is low. However, LLMs don't retain any context between prompts and completions. It's necessary to send some portion of the chat history to the LLM when sending the latest prompt to be processed to give it context. This mechanism is often referred to as a *context window*, and is a sliding window of prompts and completions between a user and an LLM. This extra text increases the compute cost, or tokens, required to process the request. Additionally, as the amount of text increases, so too does the latency for generating the completion.
 
-In [retrieval-augmented generation (RAG)](rag.md), data from an external source such as a database is sent with the user prompt and context window to *augment* or ground the LLM. The data from external sources provides extra information to generate a completion. The size of the payloads for a RAG pattern to an LLM can often get rather large. It's not uncommon to consume thousands of tokens and wait for many seconds to generate a completion. In a world where milliseconds counts, waiting for many seconds is often an unacceptable user experience. The cost can also get expensive at high volumes.
+In the [retrieval-augmented generation (RAG)](rag.md) pattern, data from an external source such as a database is sent with the user prompt and context window to *augment* or ground the LLM. The data from external sources provides extra information to generate a completion. The size of the payloads for the RAG pattern to an LLM can often get rather large. It's not uncommon to consume thousands of tokens and wait for many seconds to generate a completion. In a world where milliseconds counts, waiting for many seconds is often an unacceptable user experience. The cost can also get expensive at high volumes.
 
 The solution typically used to deal with requests with high computational costs and latency is to employ a cache. This scenario isn't different, however, there are differences in how a semantic cache works, and how it's implemented.
 
@@ -51,13 +51,13 @@ For a semantic cache to be effective, it needs to have that context as well. In 
 
 Here's a simple mental exercise to explain why this is. If you first ask an LLM, "What is the largest lake in North America?", it responds with "Lake Superior" with some facts and figures, then caches the vectorized user prompt and text from the completion.
 
-If you then ask, "What is the second largest?", the LLM is passed the context window of the previous prompt and completion with the follow-up question and correctly responds, "Lake Huron." Then the second prompt and completion are cached.
+If you then ask, "What is the second largest?", the LLM is passed the context window of the previous prompt and completion with the follow-up question, and correctly responds, "Lake Huron." Then the second prompt and completion are cached.
 
-Later, another user in a different session asks, "What is the largest stadium in North America?". The LLM responds with "Michigan Stadium" with some facts and figures. If that user then asks, "What is the second largest?", the cache finds an exact match for that prompt and returns "Lake Huron," which is incorrect.
+Later, another user in a different session asks, "What is the largest stadium in North America?" The LLM responds with "Michigan Stadium" with some facts and figures. If that user then asks, "What is the second largest?", the cache finds an exact match for that prompt and returns "Lake Huron," which is incorrect.
 
 For this reason, a semantic cache should operate within a context window. The context window already provides the information necessary for an LLM to generate relevant completions. This makes it a logical choice for how the cache should work as well.
 
-Implementing this requires first vectorizing the array of prompts from the context window and the last prompt. The vectors are first then used in the WHERE clause in the vector query on the cache key. What is returned is the completion from the same sequence of questions asked previously by another user. As the context window continuously slides forward in the conversation, any sequence of prompts that have high similarity are returned by the cache versus being regenerated by the LLM.
+Implementing this requires first vectorizing the array of prompts from the context window and the last prompt. The vectors are then used in the WHERE clause in the vector query on the cache key. What is returned is the completion from the same sequence of questions asked previously by another user. As the context window continuously slides forward in the conversation, any sequence of prompts that have high similarity are returned by the cache versus being regenerated by the LLM.
 
 ## Maintenance
 
