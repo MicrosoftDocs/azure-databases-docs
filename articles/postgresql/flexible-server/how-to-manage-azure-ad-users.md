@@ -40,7 +40,7 @@ To learn about how to create and manage Azure subscription users and their privi
 
 ## Manage Microsoft Entra roles using SQL
 
-After you create the first Microsoft Entra administrator from the Azure portal or API, you can use that administrator role to manage Microsoft Entra roles in your Azure Database for PostgreSQL flexible server instance.
+After you create the first Microsoft Entra administrator from the Azure portal or API, you can use the administrator role to manage Microsoft Entra roles in your Azure Database for PostgreSQL flexible server instance.
 
 For the best experience with Microsoft Entra integration in Azure Database for PostgreSQL flexible server, we recommend getting familiar with [Microsoft identity platform](/azure/active-directory/develop/v2-overview).
 
