@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
-  title: Limitations of Elastic Clusters (preview)
-  description: "Learn about existing limitations of Elastic Clusters with Azure Database for PostgreSQL Flexible server during public preview."
+  title: Limitations of elastic clusters (preview)
+  description: "Learn about existing limitations of elastic clusters with Azure Database for PostgreSQL Flexible server during public preview."
   author: mulander
   ms.author: adamwolk
   ms.reviewer: maghan
@@ -10,19 +10,19 @@ metadata:
   ms.date: 07/06/2025
   ms.custom: references_regions
 
-title: "Frequently asked questions about Elastic Clusters (preview)"
+title: "Frequently asked questions about elastic clusters (preview)"
 summary: |
   [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-  The following section describes capacity and functional limits in Elastic Clusters with Azure Database for PostgreSQL.
+  The following section describes capacity and functional limits in elastic clusters with Azure Database for PostgreSQL.
 
-  Current [limitation of Azure Database for PostgreSQL Flexible](concepts-limits.md) server also apply to Elastic Clusters.
-  The rest of the document describes differences that apply only to Elastic Clusters.
+  Current [limitation of Azure Database for PostgreSQL Flexible](concepts-limits.md) server also apply to elastic clusters.
+  The rest of the document describes differences that apply only to elastic clusters.
 
 sections:
   - name: General
     questions:
-      - question: In what regions can I use Elastic Clusters?
+      - question: In what regions can I use elastic clusters?
         answer: |
           Elastic clusters are an Azure Database for PostgreSQL flexible server feature and as such are available in the [same regions](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/).
 
@@ -31,17 +31,17 @@ sections:
           The Azure portal provides credentials to connect to exactly one database per cluster. Currently, creating another database isn't allowed, and the `CREATE DATABASE` command fails with an error.
           This database is called `postgres` by default. After the public preview, custom database names at cluster provisioning time will be supported.
 
-      - question: What PostgreSQL version is supported with Elastic Clusters?
+      - question: What PostgreSQL version is supported with elastic clusters?
         answer: Elastic clusters support PostgreSQL version 16 during the public preview.
 
-      - question: Can I use Major Version Upgrades with Elastic Clusters?
+      - question: Can I use Major Version Upgrades with elastic clusters?
         answer: Currently, Major Version Upgrades aren't supported during the preview.
 
       - question: Can I download server logs?
         answer: Currently, downloading server logs isn't supported during the preview. You can use Azure Metrics, Log Analytic Workspaces and PostgreSQL views to analyze cluster behavior.
 
-      - question: Can I use terraform to deploy Elastic Clusters?
-        answer: Currently, terraform isn't supported during the preview. ARM templates are supported.
+      - question: Can I use Terraform to deploy elastic clusters?
+        answer: Currently, Terraform isn't supported during the preview. ARM templates are supported.
 
   - name: Backups
     questions:
@@ -53,33 +53,29 @@ sections:
 
   - name: Extensions
     questions:
-      - question: Which extensions are available for Elastic Clusters?
-        answer: Elastic Clusters are compatible with many other powerful extensions, however, it's important to review the list of supported extensions along with any specific release notes.  You can find the list of supported extensions under the [Citus GitHub repo](https://github.com/citusdata/citus/blob/main/EXTENSION_COMPATIBILITY.md).
+      - question: Which extensions are available for elastic clusters?
+        answer: Elastic clusters are compatible with the majority of PostgreSQL extensions.  For a comprehensive list, please refer to the [extension compatibility matrix](https://github.com/citusdata/citus/blob/main/EXTENSION_COMPATIBILITY.md) in the Citus GitHub repository.  Be sure to review the release notes and support details when using any of the available extensions alongside elastic clusters.
 
-      - question: Why isn't TimescaleDB available with Elastic Clusters?
-        answer: The Citus extension makes use of key low-level system hooks which conflict with the TimescaleDB extension.  Fortunately, Elastic Clusters provide similar time-series capabilities.  You can learn more about timeseries data in the [Citus documentation](https://docs.citusdata.com/en/stable/use_cases/timeseries.html).
+      - question: Why isn't TimescaleDB available with elastic clusters?
+        answer: Elastic clusters make use of key low-level system hooks which conflict with the TimescaleDB extension.  Fortunately, elastic clusters provide similar time-series capabilities.  You can learn more about timeseries data in the [Citus documentation](https://docs.citusdata.com/en/stable/use_cases/timeseries.html).
 
   - name: Migrations
     questions:
-      - question: How can I migrate to/from Elastic Clusters?
-        answer: Migrations to/from Elastic Clusters can be done with pg_dump, pg_restore, and pgcopydb. Any other tool working with standard PostgreSQL should work.
+      - question: How can I migrate to/from elastic clusters?
+        answer: Migrations to/from elastic clusters can be done with pg_dump, pg_restore, and pgcopydb. Any other tool working with standard PostgreSQL should work.
 
-      - question: Can I convert my existing Public Preview instance to General Availability (GA) Elastic Clusters?
-        answer: Public Preview clusters cannot be converted/promoted to GA clusters. Migration to GA Elastic Clusters can be made following the migration methods described above.
+      - question: Can I convert my existing Public Preview instance to General Availability (GA) elastic clusters?
+        answer: If you have created any elastic clusters during the Public Preview phase, you are required to re-create them once the feature becomes Generally Available.  If this raises concerns, or if you need help determining whether your server meets the necessary requirements, please contact us at [pgfscitus@microsoft.com](mailto:pgfscitus@microsoft.com).
 
   - name: Networking
     questions:
-      - question: Can I use PgBouncer for connection pooling with Elastic Clusters?
-        answer: Public Preview does not currently support PgBouncer with Elastic Clusters. 
+      - question: Can I use PgBouncer for connection pooling with elastic clusters?
+        answer: Yes, PgBouncer is supported with elastic clusters. Port 6432 should be used for schema and node management operations, while port 8432 is load-balanced to PgBouncer instances running across all nodes in the cluster.
         
-      - question: Which ports are used for Elastic Clusters?
-        answer: Port 7432 is used to balance incoming client connections across all nodes in the Citus cluster, including both coordinator and worker nodes.
-          A five-tuple hash (based on source IP, port, destination IP, port, and protocol) is used to route each connection to a specific node.
+      - question: Can I use virtual network (VNet) injection with elastic clusters?
+        answer: Currently, virtual network injection isn't supported during the preview.
 
-      - question: Can I use virtual network (VNet) with Elastic Clusters?
-        answer: Currently, virtual network isn't supported during the preview.
-
-      - question: Are Private Domain Name System (DNS) Zones supported with Elastic Clusters?
+      - question: Are Private Domain Name System (DNS) Zones supported with elastic clusters?
         answer: Currently, Private DNS Zones aren't supported during the preview.
 
   - name: Storage
@@ -92,16 +88,16 @@ sections:
 
   - name: Authentication
     questions:
-      - question: Can I use Microsoft Entra ID authentication with Elastic Clusters?
-        answer: Yes!  Microsoft Entra ID authentication is currently supported and follows the same principles found in Flexible Server.
+      - question: Can I use Microsoft Entra ID authentication with elastic clusters?
+        answer: Microsoft Entra ID authentication is supported for elastic clusters.
 
   - name: Performance
     questions:
-      - question: Can I use Query Performance Insights with Elastic Clusters?
+      - question: Can I use Query Performance Insights with elastic clusters?
         answer: Currently, Query Performance Insights isn't supported during the preview.
 
-      - question: Can I use Automatic Index Tuning with Elastic Clusters?
+      - question: Can I use Automatic Index Tuning with elastic clusters?
         answer: Currently, Automatic Index Tuning isn't supported during the preview.
 
-      - question: Can I use replicas with Elastic Clusters?
-        answer: Currently, replicas aren't supported during the preview.
+      - question: Can I use replicas with elastic clusters?
+        answer: Elastic clusters currently support a single read-replica during the preview.
