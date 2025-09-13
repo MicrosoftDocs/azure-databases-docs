@@ -26,7 +26,7 @@ sections:
         answer: |
           Elastic clusters are an Azure Database for PostgreSQL flexible server feature and as such are available in the [same regions](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/).
 
-      - question: Can I create more databases in an Elastic Cluster?
+      - question: Can I create more databases in an elastic cluster?
         answer: |
           The Azure portal provides credentials to connect to exactly one database per cluster. Currently, creating another database isn't allowed, and the `CREATE DATABASE` command fails with an error.
           This database is called `postgres` by default. After the public preview, custom database names at cluster provisioning time will be supported.
