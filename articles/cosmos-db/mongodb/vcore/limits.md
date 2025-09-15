@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 09/05/2025
+ms.date: 09/13/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -129,7 +129,7 @@ The following are the current limitations for configuring [the customer-managed 
 
 ## Authentication and access control (RBAC)
 
-- You can create up to 100 total users/roles per cluster. Open a support request to increase the default limit.
+- You can create up to 100 total users/roles per cluster. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) to increase the default limit on your cluster.
 
 ### Microsoft Entra ID authentication
 

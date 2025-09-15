@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 08/27/2025
+ms.date: 09/13/2025
 appliesto:
 - ✅ MongoDB (vCore)
 ms.custom:
@@ -222,7 +222,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
 
 ---
 
-If you need more than 10 physical shards on your cluster, open an [Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
+If you need more than 10 physical shards on your cluster, [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
 
 ### Rebalance data
 
