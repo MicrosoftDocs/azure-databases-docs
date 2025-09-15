@@ -266,8 +266,6 @@ In this tutorial, you load a single text file using [document loaders](https://p
 
 The following screenshot illustrates the outputs for various questions. A purely semantic-similarity search returns the raw text from the source documents, while the question-answering app using the RAG architecture generates precise and personalized answers by combining retrieved document contents with the language model.
 
-![Rag Comic App](./)
-
 :::image type="content" source="media/vector/rag-cosmic-screenshot.png" alt-text="Screenshot of sample outputs for the Cosmic Food app.":::
 
 ### Conclusion

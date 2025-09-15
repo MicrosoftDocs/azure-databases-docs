@@ -39,11 +39,11 @@ The integrated text search engine removes the need for external search services.
 | **Boolean operators** | Supported        | Use `+`, `-` to include/exclude terms  | `db.text_search.find({ "$text": { "$search": "cafe +con" } })`  |
 | **Multi-match**    | Partially supported | Multi-field query via combined index with weights   | `db.myColl.createIndex({ title: "text", genre: "text" }, { default_language: "english", weights: { title: 10, genre: 3 } })` |
 | **Faceted search** | Not available       | Filter search results by categories or tags (e.g., brand, color, price). Not supported natively in vCore text search. | _Not applicable_ |
-| **Autocomplete & boost** | Not available | Autocomplete (type-ahead suggestions) and query-time boosting of specific terms are not supported. Boosting can only be done at index level via field weights. | _Not applicable_ |
+| **Autocomplete & boost** | Not available | Autocomplete (type-ahead suggestions) and query-time boosting of specific terms aren't supported. Boosting can only be done at index level via field weights. | _Not applicable_ |
 | **Custom analyzers** | Not available     | Custom tokenization or filtering not supported  | _Not applicable_   |
 | **Synonym support** | Not available      | No native support for synonyms    | _Not applicable_     |
 | **Fuzzy search**   | Not available       | No typo-tolerant or fuzzy match support    | _Not applicable_  |
-| **Proximity search** | Not available     | Cannot search for terms within specific word distances  | _Not applicable_   |
+| **Proximity search** | Not available     | Can't search for terms within specific word distances  | _Not applicable_   |
 
 ## Next step
 

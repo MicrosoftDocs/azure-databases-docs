@@ -18,7 +18,11 @@ appliesto:
 
 # Vector embeddings in Azure Cosmos DB
 
-Vectors, also known as embeddings or vector embeddings, are mathematical representations of data in a high-dimensional space. They represent various types of information, such as text, images, and audio, in a format that machine learning models can process. When an AI model receives text input, it first tokenizes the text into tokens. Each token is then converted into its corresponding embedding. This conversion process can be done using an embedding generation model, such as [Azure OpenAI embeddings](/azure/ai-services/openai/how-to/embeddings) or [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure). The model processes these embeddings through multiple layers, capturing complex patterns and relationships within the text. The output embeddings can then be converted back into tokens if needed, generating readable text.
+Vectors, also known as embeddings or vector embeddings, are mathematical representations of data in a high-dimensional space. They represent various types of information, such as text, images, and audio, in a format that machine learning models can process.
+
+When an AI model receives text input, it first tokenizes the text into tokens. Each token is then converted into its corresponding embedding. This conversion process can be done using an embedding generation model, such as [Azure OpenAI embeddings](/azure/ai-services/openai/how-to/embeddings) or [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure).
+
+The model processes these embeddings through multiple layers, capturing complex patterns and relationships within the text. The output embeddings can then be converted back into tokens if needed, generating readable text.
 
 ## Vectors
 
