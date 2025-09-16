@@ -136,7 +136,7 @@ az postgres flexible-server create \
 
 ## Limitations and considerations
 
-- Autogrow activates when available space is less than 10% of total provisioned storage or 64 GiB, whichever is greater.
+- Autogrow activates when available space is less than 10% of total provisioned storage or 64 GiB, whichever is smaller.
 
 - The autogrow feature only supports scaling up. It doesn't reduce storage size automatically.
 
