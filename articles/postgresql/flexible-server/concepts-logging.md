@@ -29,7 +29,7 @@ To learn how to configure parameters in Azure Database for PostgreSQL flexible s
 
 ## Accessing logs
 
-Azure Database for PostgreSQL flexible server is integrated with Azure Monitor diagnostic settings. Diagnostic settings allows you to send your Azure Database for PostgreSQL flexible server logs in JSON format to Azure Monitor Logs for analytics and alerting, Event Hubs for streaming, and Azure Storage for archiving.
+Azure Database for PostgreSQL flexible server is integrated with Azure Monitor diagnostic settings. Diagnostic settings allow you to send PostgreSQL flexible server logs in JSON format to Azure Monitor Logs for analytics and alerting. You can also stream them to Event Hubs or archive them in Azure Storage.
 
 ### Access control for logs
 
@@ -45,12 +45,12 @@ Access to server logs is controlled through Azure Role-Based Access Control (RBA
 
 ## Data Retention Policy and Pricing
 
-For logs sent to Event Hubs or a Storage account, you can set up a retention policy to automatically delete data after a certain period. When it comes to logs sent to Log Analytics, the costs for Azure Monitor Log Analytics are primarily influenced by two factors:
+For logs sent to Event Hubs or a Storage account, you can set up a retention policy to automatically delete data after a certain period. Log Analytics costs depend on two factors:
 
 - **Data Ingestion:** Charges are based on the volume of data that is ingested into the workspace.
 - **Data Retention:** Logs stored in your Log Analytics workspace are kept free of charge for the first 31 days. Beyond this free retention period, there is a fee for storing data, calculated on a daily pro-rata basis, based on the amount of data (in GB) retained each month.
 
-For a comprehensive breakdown of the costs associated with data ingestion and retention, please visit the [Azure Monitor pricing page](https://azure.microsoft.com/pricing/details/monitor/).
+For a breakdown of the costs associated with data ingestion and retention, please visit the [Azure Monitor pricing page](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### Log format
 
@@ -83,7 +83,7 @@ The following table describes the fields for the **PostgreSQLLogs** type. Depend
 ## Known limitations
 
 - **Log Event Size**: Query plans or log messages larger than 65 KB will not be captured in Azure Monitor Logs. This is a platform-wide Azure Monitor limit. As a result, very complex queries (for example, those involving nested views) may generate incomplete or missing query plan output in server logs. 
-- **Other Constraints**: Additional platform-wide limits apply to Azure Monitor Logs, such as alert rule quotas and query result size. For the complete list, refer to the [Azure Monitor service limits](/azure/azure-monitor/fundamentals/service-limits) documentation for details.
+- **Other Constraints**: Other platform-wide limits apply to Azure Monitor Logs, such as alert rule quotas and query result size. For the complete list, refer to the [Azure Monitor service limits](/azure/azure-monitor/fundamentals/service-limits) documentation for details.
 
 
 ## Related content
