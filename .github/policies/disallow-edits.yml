@@ -35,7 +35,6 @@ configuration:
           - addReply:
               reply: >-
                 ${issueAuthor} - This content folder is not currently accepting contributions due to an information architecture rework. Please reach out directly to the mentionees if you have any questions.
-          - closePullRequest
           - mentionUsers:
               mentionees:
                 - seesharprun
@@ -44,3 +43,4 @@ configuration:
               assignMentionees: True
           - addLabel:
               label: content-freeze
+          - closePullRequest
