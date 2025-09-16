@@ -15,47 +15,23 @@ ai.usage: ai.assisted
 
 This article describes the Azure Database for PostgreSQL flexible server versioning policy.
 
-## Supported PostgreSQL versions
-
-Azure Database for PostgreSQL flexible server supports the following database versions.
-
-| Version | Supported | Policy information |
-| --- | --- | --- |
-| PostgreSQL 17 | Yes | N/A |
-| PostgreSQL 16 | Yes | N/A |
-| PostgreSQL 15 | Yes | N/A |
-| PostgreSQL 14 | Yes | N/A |
-| PostgreSQL 13 | Yes | N/A |
-| PostgreSQL 12 | No (retired) | [Policy](#postgresql-12-support) |
-| PostgreSQL 11 | Yes | N/A |
-| PostgreSQL 10 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql) |
-| PostgreSQL 9.6 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql) |
-| PostgreSQL 9.5 | No (retired) | [Policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql) |
-
 ## Major version
 
 A major version is a change in the first number of the version. For example, PostgreSQL 10 to PostgreSQL 11 is a major version upgrade. Major versions introduce new features and capabilities. They might include changes that require application code updates.
 
 ### Support
 
-Azure Database for PostgreSQL supports each major PostgreSQL version from the date Azure begins offering support until the version reaches end of life (end of support) as defined by the PostgreSQL community. For details, see [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
+Azure Database for PostgreSQL supports each major PostgreSQL version from the date Azure begins offering support until the version reaches end of life (end of support) as defined by the PostgreSQL community. For details, see [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/). The following table provides supported PostgreSQL major versions. The dates follow the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
 
-### Retirement policy
-
-The following table provides the retirement details for PostgreSQL major versions. The dates follow the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
-
-| PostgreSQL Version | What's New | Azure Support Start Date | Azure Retirement Date |
+| PostgreSQL Version | What's New | Azure Standard Support Start Date | Azure Standard Support End Date |
 | --- | --- | --- | --- |
 | [PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/) | [Release notes](https://www.postgresql.org/docs/17/release-17.html) | 30-Sep-2024 | 8-Nov-2029 |
 | [PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/) | [Release notes](https://www.postgresql.org/docs/16/release-16.html) | 15-Oct-2023 | 9-Nov-2028 |
 | [PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/) | [Release notes](https://www.postgresql.org/docs/15/release-15.html) | 15-May-2023 | 11-Nov-2027 |
 | [PostgreSQL 14](https://www.postgresql.org/about/news/postgresql-14-released-2318/) | [Release notes](https://www.postgresql.org/docs/14/release-14.html) | 29-Jun-2022 | 12-Nov-2026 |
-| [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) | [Release notes](https://www.postgresql.org/docs/13/release-13.html) | 25-May-2021 | 13-Nov-2025 |
-| [PostgreSQL 12 (retired)](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Release notes](https://www.postgresql.org/docs/12/release-12.html) | 22-Sep-2020 | 14-Nov-2024 |
-| [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Release notes](https://www.postgresql.org/docs/11/release-11.html) | 24-Jul-2019 | 9-Nov-2025 |
-| [PostgreSQL 10 (retired)](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [Release notes](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 4-Jun-2018 | 10-Nov-2022 |
-| [PostgreSQL 9.6 (retired)](https://www.postgresql.org/about/news/postgresql-96-released-1703/) | [Release notes](https://wiki.postgresql.org/wiki/NewIn96) | 18-Apr-2018 | 11-Nov-2021 |
-| [PostgreSQL 9.5 (retired)](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/) | [Release notes](https://www.postgresql.org/docs/9.5/release-9-5.html) | 18-Apr-2018 | 11-Feb-2021 |
+| [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) | [Release notes](https://www.postgresql.org/docs/13/release-13.html) | 25-May-2021 | 31-Mar-2026 |
+| [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Release notes](https://www.postgresql.org/docs/12/release-12.html) | 22-Sep-2020 | 31-Mar-2026 |
+| [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Release notes](https://www.postgresql.org/docs/11/release-11.html) | 24-Jul-2019 | 31-Mar-2026 |
 
 ## Minor version support
 
@@ -92,12 +68,12 @@ Extended Support is ideal for customers who...
 
 ### Eligible PostgreSQL versions
 
-| PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date (includes grace period) | Paid Extended Support End Date |
-| --- | --- | --- | --- | --- | --- |
-| 11 | July 24, 2019 |  November 9, 2025 |  March 31, 2026 |  April 1, 2026 | March 31, 2029 |
-| 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 |  April 1, 2026 | March 31, 2029 |
-| 13 | May 25, 2021 | November 13, 2025 | March 31, 2026 |  April 1, 2026 | March 31, 2029 |
-| 14 | June 29, 2022 | November 12, 2026 | December 11, 2026 | December 12, 2026 | December 11, 2029 |
+|PostgreSQL Version|Azure Standard Support Start Date|Community Retirement Date|Azure Standard Support End Date|Paid Extended Support Start Date (includes grace period)|Paid Extended Support End Date|
+|------------------|---------------------------------|-------------------------|-------------------------------|--------------------------------------------------------|------------------------------|
+|11                |July 24, 2019                    |November 9, 2023         |March 31, 2026                 |April 1, 2026                                           |March 31, 2029                |
+|12                |September 22, 2020               |November 21, 2024        |March 31, 2026                 |April 1, 2026                                           |March 31, 2029                |
+|13                |May 25, 2021                     |November 13, 2025        |March 31, 2026                 |April 1, 2026                                           |March 31, 2029                |
+|14                |June 29, 2022                    |November 12, 2026        |December 11, 2026              |December 12, 2026                                       |December 11, 2029             |
 
 ### Enrollment and price
 
