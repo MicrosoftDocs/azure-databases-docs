@@ -18,7 +18,7 @@ configuration:
           - addReply:
               reply: >-
                 @${issueAuthor} - You tried to add an index file to this repository; this is not permitted so your pull request will be closed automatically. 
-          - closePullRequest:
+          - closePullRequest
       - description: Close PRs to the "articles/cosmos-db/mongodb/vcore" folder where the author isn't a specific person.
         if:
           - payloadType: Pull_Request
@@ -35,7 +35,7 @@ configuration:
           - addReply:
               reply: >-
                 ${issueAuthor} - This content folder is not currently accepting contributions due to an information architecture rework. Please reach out directly to the mentionees if you have any questions.
-          - closePullRequest:
+          - closePullRequest
           - mentionUsers:
               mentionees:
                 - seesharprun
