@@ -43,3 +43,4 @@ configuration:
               assignMentionees: True
           - addLabel:
               label: content-freeze
+          - closePullRequest
