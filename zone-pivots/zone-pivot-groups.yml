@@ -170,3 +170,12 @@ groups:
     title: Microsoft Fabric
   - id: fleet-storage-data-lake
     title: Azure Data Lake Storage
+# Owner: sidandrews
+- id: azure-scripting-languages
+  title: Scripting languages
+  prompt: Choose a scripting language
+  pivots:
+  - id: azure-cli
+    title: Azure CLI
+  - id: azure-powershell
+    title: Azure PowerShell
