@@ -7024,6 +7024,11 @@
       "source_path_from_root": "/articles/cosmos-db/table/security/reference-data-plane-roles.md",
       "redirect_url": "/azure/cosmos-db/table/reference-data-plane-security#built-in-roles",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/distribute-throughput-across-partitions.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-redistribute-throughput-across-partitions",
+      "redirect_document_id": true
     }
   ]
 }
