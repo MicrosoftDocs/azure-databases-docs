@@ -4,7 +4,7 @@ description: Describes logging configuration, storage and analysis in Azure Data
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 9/2/2025
+ms.date: 9/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -29,7 +29,19 @@ To learn how to configure parameters in Azure Database for PostgreSQL flexible s
 
 ## Accessing logs
 
-Azure Database for PostgreSQL flexible server is integrated with Azure Monitor diagnostic settings. Diagnostic settings allows you to send your Azure Database for PostgreSQL flexible server logs in JSON format to Azure Monitor Logs for analytics and alerting, Event Hubs for streaming, and Azure Storage for archiving. 
+Azure Database for PostgreSQL flexible server is integrated with Azure Monitor diagnostic settings. Diagnostic settings allows you to send your Azure Database for PostgreSQL flexible server logs in JSON format to Azure Monitor Logs for analytics and alerting, Event Hubs for streaming, and Azure Storage for archiving.
+
+### Access control for logs
+
+Access to server logs is controlled through Azure Role-Based Access Control (RBAC). Any role that provides read access to the server will also allow downloading logs. This includes built-in roles such as:
+
+- Reader
+- Monitoring Reader
+- Log Analytics Reader
+- Or equivalent custom roles
+
+> [!WARNING]
+> Logs may contain sensitive information, such as credentials, depending on your logging configuration.
 
 ## Data Retention Policy and Pricing
 
