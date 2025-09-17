@@ -185,12 +185,6 @@ Here are examples of valid vector index policies:
     "excludedPaths": [
         {
             "path": "/_etag/?"
-        },
-        {
-            "path": "/vector1/*",
-        },
-        {
-            "path": "/vector2/*",
         }
     ],
     "vectorIndexes": [
@@ -207,10 +201,7 @@ Here are examples of valid vector index policies:
 ```
 
 > [!IMPORTANT]
-> The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
-
-> [!IMPORTANT]
-> Wild card characters (*, []) are not currently supported in the vector policy or vector index.
+> Wild card characters (*, []) and nested paths (`path/to/vector`) are not currently supported in the vector policy or vector index.
 
 ## Perform vector search with queries using VectorDistance()
 
