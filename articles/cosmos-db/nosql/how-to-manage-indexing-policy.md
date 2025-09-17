@@ -141,7 +141,7 @@ In addition to including or excluding paths for individual properties, you can a
 }
 ```
 > [!IMPORTANT]
-> Wild card characters (*, []) and nested paths `/path/to/vector` are not currently supported in the vector policy or vector index.
+> Wild card characters (*, []) and nested paths (`/path/to/vector`) are not currently supported in the vector policy or vector index.
 
 
 > [!IMPORTANT]
