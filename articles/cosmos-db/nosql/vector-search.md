@@ -201,7 +201,7 @@ Here are examples of valid vector index policies:
 ```
 
 > [!IMPORTANT]
-> Wild card characters (*, []) and nested paths `path1/vector` are not currently supported in the vector policy or vector index.
+> Wild card characters (*, []) and nested paths (`path/to/vector`) are not currently supported in the vector policy or vector index.
 
 ## Perform vector search with queries using VectorDistance()
 
