@@ -29,7 +29,6 @@ The following table lists commands not supported/restricted by the database. As 
 <tr><td>$accumulator</td><td rowspan="3">These commands require a JavaScript engine to be hosted on the database server, enabling users to run arbitrary commands. This can pose significant security risks, including the potential for injection attacks or execution of malicious code. Due to the associated security risks and low demand from customers, these commands are currently not supported. </td></tr>
 <tr><td>$function</td></tr>
 <tr><td>$where</td></tr>
-
 <tr><td>$listSearchIndexes</td><td rowspan="3">It's not prioritized at this time due to low demand.</td></tr>
 <tr><td>$listSampledQueries</td></tr>
 <tr><td>$shardedDataDistribution</td></tr>
