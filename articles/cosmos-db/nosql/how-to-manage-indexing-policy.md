@@ -130,9 +130,6 @@ In addition to including or excluding paths for individual properties, you can a
     "excludedPaths": [
         {
             "path": "/_etag/?"
-        },
-        {
-            "path": "/vector/*"
         }
     ],
     "vectorIndexes": [
@@ -143,9 +140,9 @@ In addition to including or excluding paths for individual properties, you can a
     ]
 }
 ```
-
 > [!IMPORTANT]
-> The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
+> Wild card characters (*, []) and nested paths `/path/to/vector` are not currently supported in the vector policy or vector index.
+
 
 > [!IMPORTANT]
 > Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
