@@ -31,6 +31,8 @@ configuration:
               or:
                 - isActivitySender:
                     user: seesharprun
+                - isActivitySender:
+                    user: learn-build-service-prod[bot]
         then:
           - addReply:
               reply: >-
