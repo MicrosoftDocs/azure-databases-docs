@@ -6,8 +6,8 @@ author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: product-comparison
-ms.date: 04/09/2024
+ms.topic: concept-article
+ms.date: 09/17/2025
 ---
 
 # Compatibility and feature support
