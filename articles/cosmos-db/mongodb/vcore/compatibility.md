@@ -6,8 +6,8 @@ author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 11/10/2024
+ms.topic: concept-article
+ms.date: 09/17/2025
 ---
 
 # MongoDB compatibility and feature support with Azure Cosmos DB for MongoDB vCore
