@@ -30,7 +30,6 @@ The following table lists commands not supported/restricted by the database. As 
 <tr><td>$function</td></tr>
 <tr><td>$where</td></tr>
 
-<tr><td>$searchMeta</td><td rowspan="4">It's not prioritized at this time due to low demand.</td></tr>
 <tr><td>$listSearchIndexes</td></tr>
 <tr><td>$listSampledQueries</td></tr>
 <tr><td>$shardedDataDistribution</td></tr>
