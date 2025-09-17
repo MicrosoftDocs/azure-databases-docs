@@ -71,7 +71,7 @@ sections:
     questions:
       - question: Can I use PgBouncer for connection pooling with elastic clusters?
         answer: Yes, PgBouncer is supported with elastic clusters. Port 6432 should be used for schema and node management operations, while port 8432 is load-balanced to PgBouncer instances running across all nodes in the cluster.
-        
+
       - question: Can I use virtual network (VNet) injection with elastic clusters?
         answer: Currently, virtual network injection isn't supported during the preview.
 
