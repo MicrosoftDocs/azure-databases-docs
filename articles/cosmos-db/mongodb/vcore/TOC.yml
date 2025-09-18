@@ -158,14 +158,18 @@
           href: how-to-build-go-console-app.md
         - name: Rust
           href: how-to-build-rust-console-app.md
-    - name: Use community tools
+    - name: Connect to the cluster
       items:
         - name: Connect using Studio 3T
           href: how-to-connect-studio-3t.md
-        - name: Connect using MongoDB Shell
+        - name: Connect using MongoDB shell
           href: how-to-connect-mongo-shell.md
+        - name: Connect using Azure Cloud shell
+          href: how-to-connect-cloud-shell.md
         - name: Connect using Visual Studio Code
           href: ../../visual-studio-code-extension.md?pivots=api-mongodb&context=/azure/cosmos-db/mongodb/vcore/context/context
+        - name: Configure firewall
+          href: how-to-configure-firewall.md
     - name: Develop applications
       items:
         - name: Create transactions
