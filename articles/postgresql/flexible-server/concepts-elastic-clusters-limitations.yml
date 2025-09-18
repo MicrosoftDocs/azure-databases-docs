@@ -65,7 +65,7 @@ sections:
         answer: Migrations to/from elastic clusters can be done with pg_dump, pg_restore, and pgcopydb. Any other tool working with standard PostgreSQL should work.
 
       - question: Can I convert my existing Public Preview instance to General Availability (GA) elastic clusters?
-        answer: If you have created any elastic clusters during the Public Preview phase, you are required to re-create them once the feature becomes Generally Available.  If this raises concerns, or if you need help determining whether your server meets the necessary requirements, please contact us at [pgfscitus@microsoft.com](mailto:pgfscitus@microsoft.com).
+        answer: If you have created any elastic clusters during the Public Preview phase, you are required to re-create them once the feature becomes Generally Available.  If this raises concerns, or if you need help determining whether your server meets the necessary requirements, please contact us by going to the Azure portal, selecting your Azure Postgres resource, and following the instructions in the banner.
 
   - name: Networking
     questions:
