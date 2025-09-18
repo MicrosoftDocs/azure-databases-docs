@@ -18,6 +18,9 @@ ai-usage: ai-generated
 
 Azure Cosmos DB for MongoDB (vCore) allows you to configure firewall settings to secure database access. This article explains how to grant access from specific IP addresses, Azure services, or IP ranges to ensure secure connectivity.
 
+> [!NOTE]
+> Firewall changes might take up to 15 minutes to propagate, and the firewall might behave inconsistently during this period. Ensure you plan accordingly when making updates to your firewall settings.
+
 ## Prerequisites
 
 - An existing Azure Cosmos DB for MongoDB (vCore) cluster.
