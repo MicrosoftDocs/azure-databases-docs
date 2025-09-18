@@ -2,8 +2,8 @@
 title: Connect Using Azure Cloud Shell
 titleSuffix: Azure Cosmos DB for MongoDB (vCore)
 description: Connect to an Azure Cosmos DB for MongoDB (vCore) cluster by using Azure Cloud Shell deployed to a virtual network to query data.
-author: gahl-levy
-ms.author: gahllevy
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
