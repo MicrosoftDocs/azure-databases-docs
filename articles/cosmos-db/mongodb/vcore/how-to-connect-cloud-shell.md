@@ -54,22 +54,10 @@ Install the MongoDB Shell (`mongosh`) client to your Azure Cloud Shell instance 
 
 1. Open the Azure Cloud Shell configured with a Bash scripting environment.
 
-1. Update the package lists for the Advanced Package Tool (APT).
-
-    ```azurecli-interactive
-    sudo apt-get update
-    ```
-    
-1. Install Node.js and the Node Package Manager.
-
-    ```azurecli-interactive
-    sudo apt-get install --yes nodejs npm
-    ```
-
 1. Install the MongoDB Shell as a global command-line interface (CLI).
 
     ```azurecli-interactive
-    sudo npm install --global mongosh
+    npm install --global mongosh
     ```
 
 1. Wait for the installation to complete.
