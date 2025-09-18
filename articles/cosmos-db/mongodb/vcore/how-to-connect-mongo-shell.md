@@ -117,7 +117,7 @@ Verify that you're successfully connected to your cluster by performing a series
 1. Find five items within a specific collection. Replace the `<collection-name>` placeholder with the name of any collection in your cluster.
 
     ```mongo
-    db.<collection-name>
+    db.<collection-name>.find().limit(5)
     ```
 
     > [!TIP]

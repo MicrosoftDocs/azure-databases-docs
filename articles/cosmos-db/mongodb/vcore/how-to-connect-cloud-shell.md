@@ -56,7 +56,7 @@ Install the MongoDB Shell (`mongosh`) client to your Azure Cloud Shell instance 
 
 1. Open the Azure Cloud Shell configured with a Bash scripting environment.
 
-1. Install the  MongoDB Shell as a global command-line interface (CLI).
+1. Install MongoDB Shell as a global command-line interface (CLI).
 
     ```azurecli-interactive
     npm install --global mongosh
@@ -123,7 +123,7 @@ Verify that you're successfully connected to your cluster by performing a series
 1. Find five items within a specific collection. Replace the `<collection-name>` placeholder with the name of any collection in your cluster.
 
     ```mongo
-    db.<collection-name>
+    db.<collection-name>.find().limit(5)
     ```
 
     > [!TIP]
