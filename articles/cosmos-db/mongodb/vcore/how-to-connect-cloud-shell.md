@@ -29,6 +29,8 @@ MongoDB Shell (`mongosh`) is a JavaScript and Node.js environment for interactin
 
 - Azure Cloud Shell deployed to the same or a peered virtual network with connectivity to the Azure Cosmos DB for MongoDB (vCore) private endpoint. For more information, see [deploy Cloud Shell to virtual network](/azure/cloud-shell/vnet/deployment).
 
+- Persistent storage for Azure Cloud Shell to install tools. For more information, see [install tools in Azure Cloud Shell](/azure/cloud-shell/features#installing-your-own-tools).
+
 - Firewall rules that allow clients within your networks to connect to the cluster. For more information, see [configure firewall](how-to-configure-firewall.md).
 
 ## Get cluster credentials
@@ -54,7 +56,7 @@ Install the MongoDB Shell (`mongosh`) client to your Azure Cloud Shell instance 
 
 1. Open the Azure Cloud Shell configured with a Bash scripting environment.
 
-1. Install the MongoDB Shell as a global command-line interface (CLI).
+1. Install the  MongoDB Shell as a global command-line interface (CLI).
 
     ```azurecli-interactive
     npm install --global mongosh
