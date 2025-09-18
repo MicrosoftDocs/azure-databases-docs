@@ -214,9 +214,6 @@ Here's an example of an indexing policy with a vector index:
 > [!IMPORTANT]
 > A vector indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](nosql/vector-search.md#container-vector-policies).
 
->[!IMPORTANT]
-> The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
-
 ## Spatial indexes
 
 When you define a spatial path in the indexing policy, you should define which index ```type``` should be applied to that path. Possible types for spatial indexes include:
