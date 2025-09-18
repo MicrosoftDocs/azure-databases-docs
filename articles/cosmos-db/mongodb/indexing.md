@@ -260,7 +260,8 @@ The following operations are common for accounts that use wire protocol version 
 Run the following command to create a unique index on the `student_id` field:
 
 ```mongodb
-db.coll.createIndex( { "student_id" : 1 }, {unique:true} )
+db.coll.createIndex( { "student_id" : 1 }, {unique:true} );
+
 {
   "_t" : "CreateIndexesResponse",
   "ok" : 1,
@@ -301,6 +302,13 @@ If you omit the `"university":1` clause in the preceding example, you see the fo
 #### Limitations
 
 Create unique indexes while the collection is empty.
+
+Azure Cosmos DB for MongoDB accounts with [continuous backup](../continuous-backup-restore-introduction.md#current-limitations) don't support creating a unique index for an existing collection. For such an account, unique indexes must be created along with their collection creation, which must and can only be done using the create collection [extension commands](./custom-commands.md#create-collection).
+```mongodb
+db.runCommand({customAction:"CreateCollection", collection:"coll", shardKey:"student_id", indexes:[
+{key: { "student_id" : 1}, name:"student_id_1", unique: true}
+]}); 
+```
 
 Unique indexes on nested fields aren't supported by default because of limitations with arrays. If your nested field doesn't have an array, the index works as intended. If your nested field has an array anywhere on the path, that value is ignored in the unique index, and uniqueness isn't preserved for that value.
 
