@@ -197,9 +197,6 @@ Here's an example of an indexing policy with a vector index:
     "excludedPaths": [
         {
             "path": "/_etag/?",
-        },
-        {
-            "path": "/vector/*"
         }
     ],
     "vectorIndexes": [
