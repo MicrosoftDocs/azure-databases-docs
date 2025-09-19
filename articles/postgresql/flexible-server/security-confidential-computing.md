@@ -53,15 +53,19 @@ Follow the steps below to deploy an [Azure Database for PostgreSQL](https://ms.p
 
 1. Select **UAE North** as the region.
 
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-1.png" alt-text="Screenshot of Azure Confidential Computing portal deployment basics page." lightbox="media/security-confidential-computing/confidential-compute-portal-1.png":::
+
 1. Select **Configure Server** under **Compute + Storage**.
 
-   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-1.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment basics page." lightbox="media/security-confidential-computing/confidential-compute-portal-1.jpg":::
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-2.png" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute and Storage page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.png":::
 
 1. On the **Compute and Storage** tab, select your Compute Tier and Compute Processor.
 
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-3.png" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-3.png":::
+
 1. Select Compute Size and **select a confidential compute SKU** and the size based on your needs.
 
-   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-3-4.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-4.png" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-4.png":::
 
 1. Deploy your server.
 
