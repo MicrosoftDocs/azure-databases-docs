@@ -99,6 +99,35 @@ When you need to get a friendly name using unique identifier, follow these steps
 
 1. Note the value of the `mail` and `displayName` properties.
 
+### Get unique identifier for Entra ID service principal
+
+To use a managed identity in your application or to login using Entra ID credentials in the tools like MongoDB shell or Compass, you need to retrieve `clientID` of the managed identity. 
+
+1. Get the details for the managed identity using a `GET` REST API call.
+
+    ```azurecli-interactive
+    az rest --method "GET" --url "https://management.azure.com/subscriptions/$subscription-id/resourcegroups/$resource-group-name/providers/microsoft.managedidentity/userassignedidentities/$managed-identity-name?api-version=2024-11-30" 
+    ```
+
+1. The command outputs a JSON response containing various fields.
+
+    ```json
+    {
+      "location": "eastus2",
+      "name": "nik-managed-identity01-east-us2",
+      "properties": {
+        "clientId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        "isolationScope": "None",
+        "principalId": "cccccccc-0000-1111-2222-bbbbbbbbbbbb",
+        "tenantId": "dddddddd-0000-1111-2222-bbbbbbbbbbbb"
+      },
+      "tags": {},
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+    }
+    ```
+
+1. Note `clientID` value in the output.
+
 ## Manage cluster authentication methods 
 Use the following steps to enable Microsoft Entra ID authentication method on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have *native DocumentDB authentication only* or *native DocumentDB and Microsoft Entra ID* authentication methods enabled on the cluster.  
 
@@ -567,77 +596,39 @@ internal sealed class AzureIdentityTokenHandler(
 
 You can use Entra ID authentication in MongoDB shell and MongoDB Compass tools. One of the common tasks performed in the tools with Entra ID authentication is management of the secondary Entra ID users on the cluster. [Administrative Entra ID user](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) needs to be authenticated in MongoDB shell, Compass, or other MongoDB management tool in order to manage secondary Entra ID users on the cluster.
 
-You need to generate Entra ID token and use proper patameters in the connection string to use Entra ID authentication in MongoDB shell or Compass.  
+An Azure managed identity is used to login using Entra ID to MonogDB shell and Compass. Assign managed identity to an Azure virtual machine (VM) and login to the cluster from that VM using MongoDB shell or Compass.
 
-### Generate Entra ID token
+### Connect to the cluster using Entra ID in MongoDB shell
 
-To generate Entra ID token for your account follow these steps:
+1. Create a user-assigned managed identity.
+1. Assign managed identity to a virtual machine.
+1. Add managed identity to the cluster as an Entra ID user.
+1. Use the following connection string in MongoDB shell on the VM:
 
-1. Login to your Azure account in [Azure CLI](#prerequisites).
-1. Execute the following command 
-
-    ```azurecli-interactive
-    az account get-access-token --resource-type arm --scope "https://ossrdbms-aad.database.windows.net/.default"
+    ```output
+    mongodb+srv://<clientID>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
     ```
+    where `clientID` is [the managed identity's client ID](#get-identity-metadata).
 
-    > [!TIP]
-    > Make sure your current subscription in Azure CLI is the one where your cluster is located. Otherwise specify subscription using [`--subscription parameter` parameter](/cli/azure/account?view=azure-cli-latest#az-account-get-access-token).
+### Connect to the cluster using Entra ID in MongoDB Compass
 
-1. The command outputs a JSON response containing various fields.
-
-    ```json
-    {
-      "accessToken": "[TOKEN]",
-      "expiresOn": "[expiration_date_and_time]",
-      "subscription": "[subscription_id]",
-      "tenant": "[tenant_id]",
-      "tokenType": "Bearer"
-    }
-    ```
-
-    The `[TOKEN]` is a Base64 string. It encodes all the information about the authenticated Entra ID user. The token is valid for at least 5 minutes with the maximum of 90 minutes. The **expiresOn** defines actual token expiration time.
-    
-### Prepare connection string
-
-Put access token generated in the previous step in an environment variable and use it in a connection string in MongoDB tools.The reason is that the access token exceeds the password length that some tools can accept directly.
-
-Here's a Windows example:
-
-```cmd
-set ACCESSTOKEN=<TOKEN value from the previous step>
-```
-
-```powerShell
-$env:ACCESSTOKEN='<TOKEN value from the previous step>'
-```
-
-Here's a Linux/macOS example:
-
-```bash
-export ACCESSTOKEN=<TOKEN value from the previous step>
-```
-
-You can also combine the previous two steps together using command substitution. The token retrieval can be encapsulated into a variable and passed directly as a value for `ACCESSTOKEN` environment variable:
-
-```bash
-export ACCESSTOKEN=$(az account get-access-token --resource https://token.postgres.cosmos.azure.com --query "[accessToken]" -o tsv)
-```
+Use the following steps to use Entra ID to authenticate to the cluster in MongoDB Compass.
 
 
-
-### Use MongoDB shell with Entra ID authentication
-
-Run the following command to authenticate to cluster using an Entra ID user:
-
-```cmd
-mongosh "mongodb+srv://EntraidToken:%ACCESSTOKEN%@[cluster-name].global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=PLAIN&retrywrites=false&maxIdleTimeMS=120000" 
-```
-
-### Use MongoDB Compass with Entra ID authentication
-
-
-
-
+1. Create a user-assigned managed identity.
+1. Assign managed identity to a virtual machine.
+1. Add managed identity to the cluster as an Entra ID user.
+1. Run MongoDB Compass on the VM.
+1. Select `+` sign on the left side next to **Connections** to add a new connection.
+1. Make sure **Edit Connection String** toggle is enabled in the **New Connection** window.
+1. Paste connection string into the **URI** input box.
+1. Open **Advanced Connectoin Options**.
+1. On the **General** tab make sure `mongodb+srv` is selected under **Connection String Scheme**.
+1. Go to the **Authentication** tab. 
+1. Make sure **OIDC** is selected.
+1. Open **OIDC Options**.
+1. Set **Consider Target Endpoint Trusted** option.
+1. Select **Save & Connect**.
 
 ## Related content
 
