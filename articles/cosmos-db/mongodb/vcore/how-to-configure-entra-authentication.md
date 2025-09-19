@@ -596,14 +596,14 @@ internal sealed class AzureIdentityTokenHandler(
 
 You can use Entra ID authentication in MongoDB shell and MongoDB Compass tools. One of the common tasks performed in the tools with Entra ID authentication is management of the secondary Entra ID users on the cluster. [Administrative Entra ID user](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) needs to be authenticated in MongoDB shell, Compass, or other MongoDB management tool in order to manage secondary Entra ID users on the cluster.
 
-An Azure managed identity is used to login using Entra ID to [MonogDB shell and Compass](https://www.mongodb.com/try/download/shell). Assign managed identity to an Azure virtual machine (VM) and login to the cluster from that VM using MongoDB shell or Compass.
+An Azure managed identity is used to login using Entra ID to [MonogDB shell and Compass](https://www.mongodb.com/try/download/shell). Assign managed identity to an Azure virtual machine (VM) and log in to the cluster from that VM using MongoDB shell or Compass.
 
 ### Connect to the cluster using Entra ID in MongoDB shell
 
 1. Create a [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/manage-user-assigned-managed-identities-azure-portal#create-a-user-assigned-managed-identity).
-1. [Assign managed identity to a virtual machine](.//entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities?pivots=qs-configure-portal-windows-vm#user-assigned-managed-identity).
+1. [Assign managed identity to a virtual machine](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities?pivots=qs-configure-portal-windows-vm#user-assigned-managed-identity).
 1. [Add managed identity to the cluster](#manage-entra-id-users-on-the-cluster) as an Entra ID user using [the managed identity metadata](#get-unique-identifier-for-an-entra-id-service-principal).
-1. Use the following connection string in MongoDB shell on the VM to connect to the cluster:
+1. To connect to the cluster, use the following connection string in MongoDB shell on the VM:
 
     ```output
     mongodb+srv://<clientID>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
@@ -615,14 +615,14 @@ An Azure managed identity is used to login using Entra ID to [MonogDB shell and 
 Use the following steps to use Entra ID to authenticate to the cluster in MongoDB Compass.
 
 1. Create a [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/manage-user-assigned-managed-identities-azure-portal#create-a-user-assigned-managed-identity).
-1. [Assign managed identity to a virtual machine](.//entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities?pivots=qs-configure-portal-windows-vm#user-assigned-managed-identity).
+1. [Assign managed identity to a virtual machine](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities?pivots=qs-configure-portal-windows-vm#user-assigned-managed-identity).
 1. [Add managed identity to the cluster](#manage-entra-id-users-on-the-cluster) as an Entra ID user using [the managed identity metadata](#get-unique-identifier-for-an-entra-id-service-principal).
 1. Run MongoDB Compass on the VM.
 1. Select `+` sign on the left side next to **Connections** to add a new connection.
 1. Make sure **Edit Connection String** toggle is enabled in the **New Connection** window.
 1. Paste connection string into the **URI** input box.
-1. Open **Advanced Connectoin Options**.
-1. On the **General** tab make sure `mongodb+srv` is selected under **Connection String Scheme**.
+1. Open **Advanced Connection Options**.
+1. On the **General** tab, make sure `mongodb+srv` is selected under **Connection String Scheme**.
 1. Go to the **Authentication** tab. 
 1. Make sure **OIDC** is selected.
 1. Open **OIDC Options**.
