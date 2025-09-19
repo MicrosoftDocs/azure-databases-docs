@@ -35,7 +35,7 @@ To allow access to your Azure Cosmos DB account from your current IP address, yo
 
 1. Select **Networking** from the navigation menu.
 
-1. On the **Networking** page, select the **Add current client IP address** option to automatically add your current IP address to the allowed list.
+1. On the **Networking** page, select the **+ Add current client IP address** option to automatically add your current IP address to the allowed list.
 
 1. Select **Save** to apply the changes.
 

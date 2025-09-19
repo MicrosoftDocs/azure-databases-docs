@@ -162,7 +162,7 @@
       items:
         - name: Connect using Studio 3T
           href: how-to-connect-studio-3t.md
-        - name: Connect using MongoDB shell
+        - name: Connect using MongoDB Shell
           href: how-to-connect-mongo-shell.md
         - name: Connect using Azure Cloud shell
           href: how-to-connect-cloud-shell.md

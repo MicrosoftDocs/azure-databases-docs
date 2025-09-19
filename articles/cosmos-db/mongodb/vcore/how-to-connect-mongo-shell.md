@@ -47,7 +47,7 @@ Connect to your cluster by using the MongoDB Shell with a connection string that
 
 1. Open a terminal.
 
-1. Connect by entering the password in the Mongo Shell prompt. For this step, use a connection string without the password.
+1. Connect by entering the password in the MongoDB Shell prompt. For this step, use a connection string without the password.
 
      ```shell
      mongosh "mongodb+srv://<username>@<cluster-name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
@@ -77,7 +77,10 @@ Now, connect to your cluster from the MongoDB Shell with a connection string and
 1. After you provide the password and are successfully authenticated, observe the warning that appears
 
     ```output
-    This server or service appears to be an emulation of MongoDB.
+    ------
+       Warning: Non-Genuine MongoDB Detected
+       This server or service appears to be an emulation of MongoDB rather than an official MongoDB product.
+    ------
     ```
 
     > [!TIP]
@@ -114,7 +117,7 @@ Verify that you're successfully connected to your cluster by performing a series
     show collections
     ```
 
-1. Find five items within a specific collection. Replace the `<collection-name>` placeholder with the name of any collection in your cluster.
+1. Find the first five items within a specific collection. Replace the `<collection-name>` placeholder with the name of any collection in your cluster.
 
     ```mongo
     db.<collection-name>.find().limit(5)
