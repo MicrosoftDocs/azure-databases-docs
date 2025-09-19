@@ -42,7 +42,6 @@ The SKUs supporting Azure Confidential Computing (ACC) for Azure Database for Po
 | **Dcadsv5** | AMD SEV-SNP | 2-96 | 8-384 | 3750-80000 | 48-1200 |
 | **Dcedsv5** | Intel TDX | 2-96 | 8-384 | 3750-80000 | 85-2600 |
 | **Ecadsv5** | AMD SEV-SNP | 2-96 | 16-672 | 3750-80000 | 48-1200 |
-| **Ecedsv5** | Intel TDX | 2-128 | 16-1024 | 3750-80000 | 48-1200 |
 
 ## Deployment
 
@@ -60,11 +59,9 @@ Follow the steps below to deploy an [Azure Database for PostgreSQL](https://ms.p
 
 1. On the **Compute and Storage** tab, select your Compute Tier and Compute Processor.
 
-   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-2.jpg" alt-text="Screenshot of the Azure Confidential Computing portal deployment compute and storage page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
-
 1. Select Compute Size and **select a confidential compute SKU** and the size based on your needs.
 
-   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-3.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-3-4.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
 
 1. Deploy your server.
 
@@ -84,7 +81,7 @@ Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential
 
 Be sure to evaluate the limitations carefully before deploying in a production environment.
 
-- Confidential Computing is only available in the UAE North region.
+- Confidential Computing is only available in the UAE North region and West Europe regions.
 - Point-in-time Restore (PITR) from nonconfidential compute SKUs to confidential ones isn't allowed.
 
 ## Related content
