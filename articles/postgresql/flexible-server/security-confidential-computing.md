@@ -29,9 +29,8 @@ ms.custom:
 **Azure Confidential Computing** is supported in **Azure Database for PostgreSQL** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. There are two processors to choose from:
 
 - AMD SEV-SNP
-- Intel TDX
 
-:::image type="content" source="media/security-confidential-computing/processor.jpg" alt-text="Screenshot of processor." lightbox="media/security-confidential-computing/processor.jpg":::
+   :::image type="content" source="media/security-confidential-computing/processor.jpg" alt-text="Screenshot of processor." lightbox="media/security-confidential-computing/processor.jpg":::
 
 ## Virtual machine SKUs
 
@@ -40,7 +39,6 @@ The SKUs supporting Azure Confidential Computing (ACC) for Azure Database for Po
 | SKU Name | Processor | vCores | Memory (GiB) | Max IOPS | Max I/O Bandwidth (MBps) |
 | --- | --- | --- | --- | --- | --- |
 | **Dcadsv5** | AMD SEV-SNP | 2-96 | 8-384 | 3750-80000 | 48-1200 |
-| **Dcedsv5** | Intel TDX | 2-96 | 8-384 | 3750-80000 | 85-2600 |
 | **Ecadsv5** | AMD SEV-SNP | 2-96 | 16-672 | 3750-80000 | 48-1200 |
 
 ## Deployment
