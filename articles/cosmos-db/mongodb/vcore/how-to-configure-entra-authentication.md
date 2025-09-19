@@ -592,11 +592,16 @@ internal sealed class AzureIdentityTokenHandler(
 ```
 ---
 
-## Authenticate to the cluster using Entra ID in MongoDB shell and Compass
+## User Entra ID with Visual Studio Code, MongoDB shell and Compass
 
-You can use Entra ID authentication in MongoDB shell and MongoDB Compass tools. One of the common tasks performed in the tools with Entra ID authentication is management of the secondary Entra ID users on the cluster. [Administrative Entra ID user](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) needs to be authenticated in MongoDB shell, Compass, or other MongoDB management tool in order to manage secondary Entra ID users on the cluster.
+You can use Entra ID authentication in various tools including [Visual Studio Code with DocumentDB extension](../../visual-studio-code-extension.md?pivots=api-mongodb), MongoDB shell and MongoDB Compass tools. In Visual Studio Code, you can authenticate to your cluster using the current user logged in to Visual Studio Code.
 
 An Azure managed identity is used to login using Entra ID to [MonogDB shell and Compass](https://www.mongodb.com/try/download/shell). Assign managed identity to an Azure virtual machine (VM) and log in to the cluster from that VM using MongoDB shell or Compass.
+One of the common tasks performed in the tools with Entra ID authentication is management of the secondary Entra ID users on the cluster. [Administrative Entra ID user](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) needs to be authenticated in MongoDB shell, Compass, or other MongoDB management tool in order to manage secondary Entra ID users on the cluster.
+
+### Connect to the cluster using Entra ID in Visual Studio Code
+
+To connect to an Azure Cosmos DB for MongoDB vCore cluster using Visual Studio Code with DocumentDB extension, follow [these steps](../../visual-studio-code-extension.md?pivots=api-mongodb#connecting-to-a-mongodb-workload).
 
 ### Connect to the cluster using Entra ID in MongoDB shell
 

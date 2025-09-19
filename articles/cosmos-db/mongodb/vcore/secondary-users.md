@@ -37,7 +37,7 @@ Users are created and granted privileges at the cluster level for all databases 
 
 You can use any of the MongoDB drivers or tools such as ```mongosh``` to perform these operations.
 
-### Authenticate and perform operations via Mongosh
+### Authenticate and perform operations via MongoDB shell
 
 Authenticate using built-in administrative account created during cluster provisioning. Only this built-in administrative account has user management privileges (userAdmin) on the cluster.
 
