@@ -131,6 +131,8 @@ To connect and manage data in Azure Cosmos DB, you need to install the **Azure D
 
 > [!NOTE]
 > In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, start by allowing access to all IP addresses by adding the `0.0.0.0` - `255.255.255.255` firewall rule for connection testing initially before refining the allowlist.
+>
+> :::image type="content" source="media/visual-studio-code-extension/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
 
 ## [Connecting to any MongoDB cluster](#tab/MongoDB)
 
