@@ -7,7 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 09/18/2025
+ms.date: 09/19/2025
 ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
