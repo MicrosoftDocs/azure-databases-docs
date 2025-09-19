@@ -4,7 +4,7 @@ description: Learn how to manage access permissions for Azure Database for Postg
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 19/09/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -127,7 +127,17 @@ In PostgreSQL, the database role can have many attributes that define its privil
 
 In PostgreSQL 16, users with the **CREATEROLE** attribute no longer have the ability to hand out membership in any role to anyone. Instead, like other users without this attribute, they can only hand out memberships in roles for which they possess `ADMIN OPTION`. Also, in PostgreSQL 16, the **CREATEROLE** attribute still allows a nonsuperuser the ability to provision new users. However, they can only drop users that they themselves created. Attempts to drop users result in an error when the user wasn't created by a user with the **CREATEROLE** attribute.
 
-PostgreSQL 16 also introduces new and improved built-in roles. The new *pg_use_reserved_connections* role in PostgreSQL 16 allows the use of connection slots reserved via reserved_connections. The *pg_create_subscription* role allows superusers to create subscriptions.
+PostgreSQL 16 also introduces new and improved built-in role. The *pg_create_subscription* role allows superusers to create subscriptions.
+
+In Azure Database for PostgreSQL Flexible server, the azure_pg_admin role is a system-managed, restricted role and cannot be modified by users. Attempts to alter it, such as granting another role to it , will result in an error like:
+
+ ```sql
+
+   GRANT <db_user> TO azure_pg_admin;
+ ERROR: permission denied to alter restricted role "azure_pg_admin"
+ ```
+
+This is a built-in safeguard to prevent changes to critical administrative roles. If you need to assign privileges or roles, consider creating a custom role instead and granting the necessary permissions to that role.
 
 ### Improved control for *azure_pg_admin*
 
