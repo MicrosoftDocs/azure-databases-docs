@@ -4,7 +4,7 @@ description: This article describes the confidential computing options in Azure 
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 09/16/2025
+ms.date: 09/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -84,7 +84,7 @@ Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential
 
 Be sure to evaluate the limitations carefully before deploying in a production environment.
 
-- Confidential Computing is only available in the UAE North and West Europe regions
+- Confidential Computing is only available in the UAE North region.
 - Point-in-time Restore (PITR) from nonconfidential compute SKUs to confidential ones isn't allowed.
 
 ## Related content
