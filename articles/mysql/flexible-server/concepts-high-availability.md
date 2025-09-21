@@ -144,9 +144,6 @@ Keep the following considerations in mind when you use high-availability:
 - The solution turns on GTID mode because it uses GTID. Check whether your workload has [restrictions or limitations on replication with GTIDs](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-restrictions.html).
 
 > [!NOTE]  
-> To enable same-zone HA after creating the server, make sure the server parameters `enforce_gtid_consistency` and ["gtid_mode"](./concepts-read-replicas.md#global-transaction-identifier-gtid) are set to `ON` before enabling HA.
-
-> [!NOTE]  
 > Storage autogrow is enabled by default for a high-availability configured server and can't be disabled.
 
 ## Health checks
