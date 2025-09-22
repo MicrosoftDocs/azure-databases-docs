@@ -1,6 +1,6 @@
 ---
 title: $jsonSchema
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+titleSuffix: Azure Cosmos DB for MongoDB (vCore)
 description: The $jsonSchema operator allows validating documents against a JSON Schema definition for data validation and structure enforcement. Learn what's supported and what limitations exist in vCore.
 author: suvishodcitus
 ms.author: suvishod
