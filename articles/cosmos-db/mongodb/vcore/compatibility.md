@@ -1,5 +1,5 @@
 ---
-title: Compatibility and feature support v1
+title: MongoDB Query Language Features and Compatibility
 titleSuffix: Azure Cosmos DB for MongoDB (vCore)
 description: Provide a version-wise overview of the operators, commands, and features supported in Azure Cosmos DB for MongoDB (vCore).
 author: suvishodcitus
@@ -8,17 +8,18 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
 ms.date: 09/22/2025
+ai-usage: ai-assisted
 ---
 
-# Features & Compatibility Overview
+# MongoDB Query Language (MQL) features and compatibility
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
+Azure Cosmos DB for MongoDB (vCore) combines MongoDB's familiar features with Azure Cosmos DB's enterprise capabilities. This article provides an overview of compatibility and feature support, including the MongoDB wire protocol and query language constructs.
 
+Applications can run without code changes, leveraging the same client drivers, SDKs, and tools. Users benefit from Azure's scalability, security, and integration with other Azure services.
 
 ## Network Protocol Support
-
-Azure Cosmos DB for MongoDB (vCore) combines MongoDB's familiar features with Azure Cosmos DB's enterprise capabilities.
 
 Azure Cosmos DB for MongoDB (vCore) service uses the MongoDB wire protocol, which provides seamless compatibility with existing tools and drivers. Any client driver that supports the MongoDB wire protocol can connect to Azure Cosmos DB for MongoDB (vCore), so applications can run without code changes.
 
@@ -34,12 +35,12 @@ Overall product compatibility is determined by evaluating the number of MongoDB 
 
 The overall product compatibility today stands at **99.02%**. The compatibility summary table below details support for each operator type:
 
-|Operator Type                     | Total | Supported | Percentage |
-|-----------------------------------|-------|-----------|------------|
-|Aggregation Stages                 | 60    | 58        | 96.67%     |
-|Aggregation Operators              | 181   | 181       | 100%       |
-|Query and Projection Operators     | 45    | 44        | 97.78%     |
-|Update Operators                   | 22    | 22        | 100%       |
+| | Total | Supported | Percentage |
+| --- | --- | --- | --- |
+| **Aggregation Stages** | 60 | 58 | 96.67% |
+| **Aggregation Operators** | 181 | 181 | 100% |
+| **Query and Projection Operators** | 45 | 44 | 97.78% |
+| **Update Operators** | 22 | 22 | 100% |
 
 
 The following section presents a comprehensive breakdown of supported database operators, commands, and more features, offering a clear view of the product’s compatibility and functionality across various scenarios.
