@@ -1,7 +1,7 @@
 ---
 title: Compatibility and feature support v1
-titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Provide a version-wise overview of the operators, commands, and features supported in vCore-based Azure Cosmos DB for MongoDB.
+titleSuffix: Azure Cosmos DB for MongoDB (vCore)
+description: Provide a version-wise overview of the operators, commands, and features supported in Azure Cosmos DB for MongoDB (vCore).
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
@@ -15,17 +15,22 @@ ms.date: 09/22/2025
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 
+
 ## Network Protocol Support
 
-The vCore-based Azure Cosmos DB for MongoDB combines the familiar strengths of MongoDB with the advanced enterprise capabilities of Azure Cosmos DB. Built on the MongoDB wire protocol, it ensures seamless compatibility with your existing ecosystem. Any client driver that supports the MongoDB wire protocol can connect to vCore-based Azure Cosmos DB for MongoDB, allowing applications to operate without modification. Users can continue leveraging the same client drivers, SDKs, and tools they are already familiar with, while benefiting from Azure’s scalability, security, and deep integration with the Azure ecosystem.
+Azure Cosmos DB for MongoDB (vCore) combines MongoDB's familiar features with Azure Cosmos DB's enterprise capabilities.
+
+Azure Cosmos DB for MongoDB (vCore) service uses the MongoDB wire protocol, which provides seamless compatibility with existing tools and drivers. Any client driver that supports the MongoDB wire protocol can connect to Azure Cosmos DB for MongoDB (vCore), so applications can run without code changes.
+
+Developers can keep the same client drivers, software development kits (SDKs), and tools. As a user, you also gain Azure's scalability, security, and deep integration with other services within the Azure platform.
 
 ## Query Language Support
 
-In addition to protocol support, vCore-based Azure Cosmos DB for MongoDB provides comprehensive support for MongoDB query language constructs as well. 
+In addition to protocol support, Azure Cosmos DB for MongoDB (vCore) provides comprehensive support for MongoDB query language constructs as well. 
 
 ### Compatibility Philosophy
 
-Overall product compatibility is determined by evaluating the number of MongoDB operators (Aggregation Stages, Aggregation Operators, Query and Projection Operators and Update Operators) supported by the service. MongoDB commands and admin operations are excluded from this calculation because Azure Cosmos DB for MongoDB (vCore), as a PaaS offering, supports the majority of these commands in-house, eliminating the need for user intervention. These commands are not exposed to users; however, based on usage patterns and customer feedback, a subset of commonly used commands is available to simplify the user experience.
+Overall product compatibility is determined by evaluating the number of MongoDB operators (Aggregation Stages, Aggregation Operators, Query, and Projection Operators and Update Operators) supported by the service. MongoDB commands and admin operations are excluded from this calculation because Azure Cosmos DB for MongoDB (vCore), as a PaaS offering, supports most these commands in-house, eliminating the need for user intervention. These commands aren't exposed to users; however, based on usage patterns and customer feedback, a subset of commonly used commands is available to simplify the user experience.
 
 The overall product compatibility today stands at **99.02%**. The compatibility summary table below details support for each operator type:
 
@@ -37,11 +42,11 @@ The overall product compatibility today stands at **99.02%**. The compatibility 
 |Update Operators                   | 22    | 22        | 100%       |
 
 
-The following section presents a comprehensive breakdown of supported database operators, commands, and additional features, offering a clear view of the product’s compatibility and functionality across various scenarios.
+The following section presents a comprehensive breakdown of supported database operators, commands, and more features, offering a clear view of the product’s compatibility and functionality across various scenarios.
 
 ## Operators
 
-The table below list the operators that are currently supported in vCore based Azure Cosmos DB for MongoDB:
+The table here lists the operators that are currently supported in vCore based Azure Cosmos DB for MongoDB:
 
 <table>
 <tr><td rowspan="2"><b>Category</b></td><td rowspan="2"><b>Operator</b></td><td colspan="4"><b>Supported</b></td></tr>
@@ -69,7 +74,7 @@ The table below list the operators that are currently supported in vCore based A
 <tr><td><code>$mod</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>$regex</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>$text</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>$where</code></td><td colspan="4">Deprecated in Mongo Ver 8.0</td></tr>
+<tr><td><code>$where</code></td><td colspan="4">Deprecated in Mongo version 8.0</td></tr>
 
 <tr><td rowspan="11">Geospatial Operators</td><td><code>$geoIntersects</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>$geoWithin</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
@@ -181,7 +186,7 @@ The table below list the operators that are currently supported in vCore based A
 <tr><td><code>$lte</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>$ne</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 
-<tr><td rowspan="2">Custom Aggregation Expression Operators</td><td><code>$accumulator</code></td><td colspan="4" rowspan="2">Deprecated in Mongo Ver 8.0</td></tr>
+<tr><td rowspan="2">Custom Aggregation Expression Operators</td><td><code>$accumulator</code></td><td colspan="4" rowspan="2">Deprecated in Mongo version 8.0</td></tr>
 <tr><td><code>$function</code></td></tr>
 
 <tr><td rowspan="2">Data Size Operators</td><td><code>$bsonSize</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
@@ -287,7 +292,7 @@ The table below list the operators that are currently supported in vCore based A
 <tr><td><code>$toString</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>$type</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 
-<tr><td rowspan="22">Accumulators ($group, $bucket, $bucketAuto, $setWindowFields)</td><td><code>$accumulator</code></td><td colspan="4">Deprecated in Mongo Ver 8.0</td></tr>
+<tr><td rowspan="22">Accumulators (`$group`, `$bucket`, `$bucketAuto`, `$setWindowFields`)</td><td><code>$accumulator</code></td><td colspan="4">Deprecated in Mongo version 8.0</td></tr>
 <tr><td><code>$addToSet</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>$avg</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>$bottom</code></td><td></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
@@ -415,14 +420,14 @@ The table below list the operators that are currently supported in vCore based A
 > [!NOTE]
 > AvgObjsize and size in "collStats" & "dbStats" works with document size less than 2 KB only.
 > 
-> *Schema validation supports: insert, update, findAndModify, and the $merge / $out stages in aggregation. Use bypassDocumentValidation to skip validation if needed.
+> *Schema validation supports: `insert`, `update`, `findAndModify`, and the `$merge` / `$out` stages in aggregation. Use `bypassDocumentValidation` to skip validation if needed.
 > 
-> This article lists only the supported server-side commands and does not include client-side wrapper functions. Client-side wrapper functions, such as `deleteMany()` and `updateMany()`, internally invoke the corresponding server commands (`delete()` and `update()`). Any function that relies on supported server commands is compatible with Azure Cosmos DB for MongoDB.
+> This article lists only the supported server-side commands and doesn't include client-side wrapper functions. Client-side wrapper functions, such as `deleteMany()` and `updateMany()`, internally invoke the corresponding server commands (`delete()` and `update()`). Any function that relies on supported server commands is compatible with Azure Cosmos DB for MongoDB.
 
 
 ## Database commands
 
-Azure Cosmos DB for MongoDB vCore supports the following database commands:
+Azure Cosmos DB for MongoDB (vCore) supports the following database commands:
 
 <table>
 <tr><td rowspan="2"><b>Category</b></td><td rowspan="2"><b>Command</b></td><td colspan="4"><b>Feature</b></td></tr>
@@ -453,7 +458,7 @@ Azure Cosmos DB for MongoDB vCore supports the following database commands:
 <tr><td><code>setParameter</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>setDefaultRWConcern</code></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td></tr>
 <tr><td><code>validateDBMetadata</code></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td></tr>
-<tr><td><code>dropConnections</code></td><td colspan="4" rowspan="9">Being a PaaS service, it is managed fully by Azure.</td></tr>
+<tr><td><code>dropConnections</code></td><td colspan="4" rowspan="9">Azure fully manages Azure Cosmos DB for MongoDB (vCore), a PaaS service.</td></tr>
 <tr><td><code>fsync</code></td><td colspan="4"></td></tr>
 <tr><td><code>fsyncUnlock</code></td><td colspan="4"></td></tr>
 <tr><td><code>logRotate</code></td><td colspan="4"></td></tr>
@@ -466,10 +471,10 @@ Azure Cosmos DB for MongoDB vCore supports the following database commands:
 <tr><td rowspan="4">Aggregation Commands</td><td><code>aggregate</td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>count</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>distinct</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>mapReduce</code></td><td colspan="4">Deprecated in Mongo Ver 5.0</td></tr>
+<tr><td><code>mapReduce</code></td><td colspan="4">Deprecated in Mongo version 5.0</td></tr>
 
 <tr><td rowspan="2">Authentication Commands</td><td><code>authenticate</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>logout</code></td><td colspan="4">Deprecated in Mongo Ver 5.0</td></tr>
+<tr><td><code>logout</code></td><td colspan="4">Deprecated in Mongo version 5.0</td></tr>
 
 <tr><td rowspan="21">Diagnostic Commands</td><td><code>buildInfo</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>collStats</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
@@ -486,43 +491,30 @@ Azure Cosmos DB for MongoDB vCore supports the following database commands:
 <tr><td><code>listCommands</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>lockInfo</code></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td></tr>
 <tr><td><code>ping</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>profile</code></td><td colspan="4">Being a PaaS service, it is managed fully by Azure.</td></tr>
+<tr><td><code>profile</code></td><td colspan="4">Azure fully manages Azure Cosmos DB for MongoDB (vCore), a PaaS service.</td></tr>
 <tr><td><code>serverStatus</code></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td></tr>
-<tr><td><code>shardConnPoolStats</code></td><td colspan="4">Deprecated in Mongo Ver 5.0. Alternative: connPoolStats</td></tr>
+<tr><td><code>shardConnPoolStats</code></td><td colspan="4">Deprecated in Mongo version 5.0. Alternative: connPoolStats</td></tr>
 <tr><td><code>top</code></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td></tr>
 <tr><td><code>validate</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>whatsmyuri</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 
-<tr><td rowspan="1">Geospatial Commands</td><td><code>geoSearch</code></td><td colspan="4">Deprecated in Mongo Ver 5.0</td></tr>
+<tr><td rowspan="1">Geospatial Commands</td><td><code>geoSearch</code></td><td colspan="4">Deprecated in Mongo version 5.0</td></tr>
 
 <tr><td rowspan="9">Query and Write Operation Commands</td><td><code>bulkWrite</code></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td><td><img src="media/compatibility/no-icon.svg" alt="No"></td></tr>
 <tr><td><code>delete</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>find</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>findAndModify</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>getLastError</code></td><td colspan="4">Deprecated in Mongo Ver 5.1</td></tr>
+<tr><td><code>getLastError</code></td><td colspan="4">Deprecated in Mongo version 5.1</td></tr>
 <tr><td><code>getMore</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>insert</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>resetError</code></td><td colspan="4">Deprecated in Mongo Ver 5.0</td></tr>
+<tr><td><code>resetError</code></td><td colspan="4">Deprecated in Mongo version 5.0</td></tr>
 <tr><td><code>update</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 
 <tr><td rowspan="1">Query Plan Cache Commands</td><td colspan="5">Being a PaaS service, the database engine manages query plan caching for you.</td></tr>
 
 <tr><td rowspan="1">Replication Commands</td><td colspan="5">Azure manages replication, removing the necessity for customers to replicate manually.</td></tr>
 
-<tr><td rowspan="1">Role Management Commands</td><td colspan="5">As a fully managed service, this capability is provided through Azure Entra ID.</td></tr>
-
-<!--
-<tr><td rowspan="10">Role Management Commands</td><td><code>createRole</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>dropRole</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>rolesInfo</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>updateRole</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>invalidateUserCache</code></td><td colspan="3">As a PaaS service, this will be managed by Azure.</td></tr>
-<tr><td><code>dropAllRolesFromDatabase</code></td><td rowspan="5" colspan="3">Not supported today, but will be made available through Azure Active Directory in the future.</td></tr>
-<tr><td><code>grantPrivilegesToRole</code></td></tr>
-<tr><td><code>grantRolesToRole</code></td></tr>
-<tr><td><code>revokePrivilegesFromRole</code></td></tr>
-<tr><td><code>revokeRolesFromRole</code></td></tr>
--->
+<tr><td rowspan="1">Role Management Commands</td><td colspan="5">As a fully managed service, this capability is provided through Microsoft Entra ID.</td></tr>
 
 <tr><td rowspan="8">Session Commands</td><td><code>abortTransaction</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>commitTransaction</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
@@ -537,7 +529,7 @@ Azure Cosmos DB for MongoDB vCore supports the following database commands:
 <tr><td><code>isdbgrid</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>reshardCollection</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>shardCollection</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>unsetSharding</code></td><td colspan="4">Deprecated in Mongo Ver 5.0</td></tr>
+<tr><td><code>unsetSharding</code></td><td colspan="4">Deprecated in Mongo version 5.0</td></tr>
 <tr><td><code>addShard</code></td><td rowspan="34" colspan="4">As a PaaS offering, Azure handles shard management and rebalancing. Users only need to shard their collections, and Azure takes care of the rest.</td></tr>
 <tr><td><code>addShardToZone</code></td></tr>
 <tr><td><code>clearJumboFlag</code></td></tr>
@@ -578,7 +570,7 @@ Azure Cosmos DB for MongoDB vCore supports the following database commands:
 <tr><td rowspan="7">User Management Commands</td><td><code>createUser</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>dropUser</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td><code>usersInfo</code></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
-<tr><td><code>dropAllUsersFromDatabase</code></td><td rowspan="4" colspan="4">As a fully managed service, this capability is provided through Azure Entra ID.</td></tr>
+<tr><td><code>dropAllUsersFromDatabase</code></td><td rowspan="4" colspan="4">As a fully managed service, this capability is provided through Microsoft Entra ID.</td></tr>
 <tr><td><code>grantRolesToUser</code></td></tr>
 <tr><td><code>revokeRolesFromUser</code></td></tr>
 <tr><td><code>updateUser</code></td></tr>
@@ -605,14 +597,14 @@ vCore based Azure Cosmos DB for MongoDB supports the following indexes and index
 </table>
 
 > [!NOTE]
-> Creating a **unique index** obtains an exclusive lock on the collection for the entire duration of the build process. This blocks read and write operations on the collection until the operation is completed.
+> Creating a **unique index** obtains an exclusive lock on the collection for the entire duration of the build process. These indexes block read and write operations on the collection until the operation is completed.
 
 
 ### Index properties
 
 <table>
 <tr><td>Command</td><td>Description</td><td>Supported</td></tr>
-<tr><td>TTL</td><td>Automatically deletes documents after a specified time-to-live period.</td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
+<tr><td>time-to-live (TTL)</td><td>Automatically deletes documents after a specified time-to-live period.</td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td>Unique</td><td>Ensures that all values in the indexed field are unique.</td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td>Partial</td><td>Indexes only documents that match a specified filter condition.</td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 <tr><td>Case Insensitive</td><td>Supports case-insensitive indexing for string fields.</td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
@@ -620,12 +612,7 @@ vCore based Azure Cosmos DB for MongoDB supports the following indexes and index
 <tr><td>Background</td><td>Allows the index to be created in the background without blocking operations.</td><td><img src="media/compatibility/yes-icon.svg" alt="Yes"></td></tr>
 </table>
 
-
-> [!NOTE]
-> Can't find what you were looking for? Please reach us at [mongodb-feedback@microsoft.com](mailto:mongodb-feedback@microsoft.com) with your queries or requests.
-
-
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Migration options for Azure Cosmos DB for MongoDB vCore](migration-options.md)
+> [Migration options for Azure Cosmos DB for MongoDB (vCore)](migration-options.md)
