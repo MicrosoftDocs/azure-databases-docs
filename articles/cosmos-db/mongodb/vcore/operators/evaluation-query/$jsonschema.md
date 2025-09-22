@@ -1,7 +1,7 @@
 ---
 title: $jsonSchema
 titleSuffix: Azure Cosmos DB for MongoDB (vCore)
-description: The $jsonSchema operator allows validating documents against a JSON Schema definition for data validation and structure enforcement. Learn what's supported and what limitations exist in vCore.
+description: The $jsonSchema operator validates documents against a JSON Schema definition for data validation and structure enforcement. Discover supported features and limitations.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
@@ -48,7 +48,7 @@ db.createCollection("collectionName", {
 
 | Parameter | Description |
 | --- | --- |
-| **`bsonType`** | Specifies the BSON type(s) that the field must match. Accepts string aliases used by the $type operator. |
+| **`bsonType`** | Specifies the Binary JSON (BSON) types that the field must match. Accepts string aliases used by the $type operator. |
 | **`properties`** | Object defining validation rules for specific fields. |
 | **`minimum/maximum`** | Numeric constraints for number fields. |
 | **`minLength/maxLength`** | String length constraints. |
@@ -60,11 +60,11 @@ db.createCollection("collectionName", {
 
 ## Supported Keywords
 
-Azure Cosmos DB for MongoDB vCore supports the following JSON Schema keywords:
+Azure Cosmos DB for MongoDB (vCore) supports the following JSON Schema keywords:
 
 | Keyword | Type | Description | Usage |
 |---------|------|-------------|--------|
-| `additionalItems` | arrays | Schema for additional array items | Extended array validation |
+| `additionalItems` | arrays | Schema for extra array items | Extended array validation |
 | `bsonType` | all types | MongoDB extension - accepts BSON type aliases | `"string"`, `"int"`, `"double"`, `"object"`, `"array"`, `"bool"`, `"date"` |
 | `exclusiveMinimum` | numbers | Exclusive minimum boundary | Advanced numeric validation |
 | `exclusiveMaximum` | numbers | Exclusive maximum boundary | Advanced numeric validation |
@@ -85,7 +85,7 @@ Azure Cosmos DB for MongoDB vCore supports the following JSON Schema keywords:
 
 ### Unsupported Keywords
 
-Below JSON Schema keywords are yet to be supported in Azure Cosmos DB for MongoDB vCore:
+These JSON Schema keywords are yet to be supported in Azure Cosmos DB for MongoDB (vCore):
 
 | Keyword | Type | Reason for Non-Support | Workaround |
 |---------|------|----------------------|------------|
@@ -93,7 +93,7 @@ Below JSON Schema keywords are yet to be supported in Azure Cosmos DB for MongoD
 | `allOf` | all types | Logical operator not supported | Use nested validation |
 | `anyOf` | all types | Logical operator not supported | Use separate queries |
 | `dependencies` | objects | Complex dependency validation not supported | Handle in application logic |
-| `description` | N/A | May not appear in error messages | Informational only |
+| `description` | N/A | Might not appear in error messages | Informational only |
 | `enum` | all types | Enumeration validation not supported | Use `$in` operator instead |
 | `maxProperties` | objects | Property count validation not supported | Handle in application logic |
 | `minProperties` | objects | Property count validation not supported | Handle in application logic |
@@ -212,7 +212,7 @@ db.stores.find({
 
 ```
 
-This query should return below output:
+This query should return this output:
 
 ```javascript
 [
@@ -232,7 +232,7 @@ This query should return below output:
 
 ### Example 3: Combining with Query Operators 
 
-This query retrieves all store documents where the staff field is a valid object that includes a totalStaff sub-object with at least one full-time staff member (fullTime ≥ 1) and sales.totalSales greater than 10,000.
+This query retrieves all store documents where the staff field is a valid object that includes a totalStaff subobject with at least one full-time staff member (fullTime ≥ 1) and sales.totalSales greater than 10,000.
 
 ```javascript
 db.stores.find({
@@ -288,7 +288,6 @@ This query returns the following result:
   }
 ]
 ```
-
 
 ## Related content
 
