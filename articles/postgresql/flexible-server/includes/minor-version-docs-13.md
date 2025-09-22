@@ -8,5 +8,5 @@ ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
-[PostgreSQL documentation](https://www.postgresql.org/docs/release/13.21/)
+[PostgreSQL documentation](https://www.postgresql.org/docs/release/13.22/)
 
