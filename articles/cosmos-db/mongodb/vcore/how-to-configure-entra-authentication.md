@@ -434,7 +434,7 @@ All management commands for non-administrative users are supported for `Security
     )
     ```
     > [!NOTE]
-    > All Entra ID and native DocumentDB administrative users are replicated to the database. Because of this, the list of users include all administrative and non-administrative Entra ID and native DocumentDB users on the cluster .
+    > All Entra ID and native DocumentDB administrative users are replicated to the database. Because of this replication, the list of users include all administrative and non-administrative Entra ID and native DocumentDB users on the cluster.
     
 ## View Entra ID users on the cluster
 
@@ -650,7 +650,7 @@ internal sealed class AzureIdentityTokenHandler(
 ```
 ---
 
-## User Entra ID with Visual Studio Code, MongoDB shell, and Compass
+## User Entra ID with Visual Studio Code, MongoDB shell, and MongoDB Compass
 
 You can use Entra ID authentication in various tools including [Visual Studio Code with DocumentDB extension](../../visual-studio-code-extension.md?pivots=api-mongodb), MongoDB shell, and MongoDB Compass tools. In Visual Studio Code, you can authenticate to your cluster using the current user logged in to Visual Studio Code.
 
