@@ -388,19 +388,19 @@ Azure Cosmos DB for MongoDB (vCore) supports the following database commands:
 
 | Category | Command | Feature (v5.0) | Feature (v6.0) | Feature (v7.0) | Feature (v8.0) |
 | --- | --- | --- | --- | --- | --- |
-| Administrative Commands | `cloneCollectionAsCapped` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Administrative Commands | `cloneCollectionAsCapped` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Administrative Commands | `collMod` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Administrative Commands | `compact` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
-| Administrative Commands | `convertToCapped` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Administrative Commands | `compact` | ❌ No | ❌ No | ❌ No | ❌ No |
+| Administrative Commands | `convertToCapped` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Administrative Commands | `create` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Administrative Commands | `createIndexes` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Administrative Commands | `currentOp` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Administrative Commands | `drop` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Administrative Commands | `dropDatabase` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Administrative Commands | `dropIndexes` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Administrative Commands | `filemd5` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Administrative Commands | `filemd5` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Administrative Commands | `getDefaultRWConcern` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Administrative Commands | `getClusterParameter` | *N/A*¹ | ✖️ No | ✖️ No | ✖️ No |
+| Administrative Commands | `getClusterParameter` | *N/A*¹ | ❌ No | ❌ No | ❌ No |
 | Administrative Commands | `getParameter` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Administrative Commands | `killCursors` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Administrative Commands | `killOp` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
@@ -409,10 +409,10 @@ Azure Cosmos DB for MongoDB (vCore) supports the following database commands:
 | Administrative Commands | `listIndexes` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Administrative Commands | `reIndex` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Administrative Commands | `renameCollection` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Administrative Commands | `setIndexCommitQuorum` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Administrative Commands | `setIndexCommitQuorum` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Administrative Commands | `setParameter` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Administrative Commands | `setDefaultRWConcern` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
-| Administrative Commands | `validateDBMetadata` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Administrative Commands | `setDefaultRWConcern` | ❌ No | ❌ No | ❌ No | ❌ No |
+| Administrative Commands | `validateDBMetadata` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Administrative Commands | `dropConnections` | *N/A*² | *N/A*² | *N/A*² | *N/A*² |
 | Administrative Commands | `fsync` | *N/A*² | *N/A*² | *N/A*² | *N/A*² |
 | Administrative Commands | `fsyncUnlock` | *N/A*² | *N/A*² | *N/A*² | *N/A*² |
@@ -430,10 +430,10 @@ Azure Cosmos DB for MongoDB (vCore) supports the following database commands:
 | Authentication Commands | `logout` | *N/A*³ | *N/A*³ | *N/A*³ | *N/A*³ |
 | Diagnostic Commands | `buildInfo` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Diagnostic Commands | `collStats` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Diagnostic Commands | `connPoolStats` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Diagnostic Commands | `connPoolStats` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Diagnostic Commands | `connectionStatus` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Diagnostic Commands | `dataSize` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
-| Diagnostic Commands | `dbHash` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Diagnostic Commands | `dataSize` | ❌ No | ❌ No | ❌ No | ❌ No |
+| Diagnostic Commands | `dbHash` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Diagnostic Commands | `dbStats` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Diagnostic Commands | `explain` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Diagnostic Commands | `getCmdLineOpts` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
@@ -441,16 +441,16 @@ Azure Cosmos DB for MongoDB (vCore) supports the following database commands:
 | Diagnostic Commands | `hello` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Diagnostic Commands | `hostInfo` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Diagnostic Commands | `listCommands` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Diagnostic Commands | `lockInfo` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Diagnostic Commands | `lockInfo` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Diagnostic Commands | `ping` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Diagnostic Commands | `profile` | *N/A*² | *N/A*² | *N/A*² | *N/A*² |
-| Diagnostic Commands | `serverStatus` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Diagnostic Commands | `serverStatus` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Diagnostic Commands | `shardConnPoolStats` | *N/A*³ | *N/A*³ | *N/A*³ | *N/A*³ |
-| Diagnostic Commands | `top` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Diagnostic Commands | `top` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Diagnostic Commands | `validate` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Diagnostic Commands | `whatsmyuri` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Geospatial Commands | `geoSearch` | *N/A*³ | *N/A*³ | *N/A*³ | *N/A*³ |
-| Query and Write Operation Commands | `bulkWrite` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Query and Write Operation Commands | `bulkWrite` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Query and Write Operation Commands | `delete` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Query and Write Operation Commands | `find` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Query and Write Operation Commands | `findAndModify` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
@@ -465,10 +465,10 @@ Azure Cosmos DB for MongoDB (vCore) supports the following database commands:
 | Session Commands | `abortTransaction` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Session Commands | `commitTransaction` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Session Commands | `endSessions` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Session Commands | `killAllSessions` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
-| Session Commands | `killAllSessionsByPattern` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Session Commands | `killAllSessions` | ❌ No | ❌ No | ❌ No | ❌ No |
+| Session Commands | `killAllSessionsByPattern` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Session Commands | `killSessions` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Session Commands | `refreshSessions` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| Session Commands | `refreshSessions` | ❌ No | ❌ No | ❌ No | ❌ No |
 | Session Commands | `startSession` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Sharding Commands | `enableSharding` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Sharding Commands | `isdbgrid` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
@@ -508,7 +508,7 @@ Azure Cosmos DB for MongoDB (vCore) supports the following database commands:
 | Sharding Commands | `transitionFromDedicatedConfigServer` | *N/A*⁸ | *N/A*⁸ | *N/A*⁸ | *N/A*⁸ |
 | Sharding Commands | `transitionToDedicatedConfigServer` | *N/A*⁸ | *N/A*⁸ | *N/A*⁸ | *N/A*⁸ |
 | Sharding Commands | `unshardCollection` | *N/A*⁸ | *N/A*⁸ | *N/A*⁸ | *N/A*⁸ |
-| System Events Auditing Commands | `logApplicationMessage` | ✖️ No | ✖️ No | ✖️ No | ✖️ No |
+| System Events Auditing Commands | `logApplicationMessage` | ❌ No | ❌ No | ❌ No | ❌ No |
 | User Management Commands | `createUser` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | User Management Commands | `dropUser` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | User Management Commands | `usersInfo` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
