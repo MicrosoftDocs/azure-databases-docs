@@ -277,7 +277,7 @@ Follow these steps to see authentication methods currently enabled on the cluste
 
 ---
 
-## Manage Entra ID users on the cluster
+## Manage administrative Entra ID users on the cluster
 
 Follow these steps to add or remove [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) to cluster. 
 
@@ -381,10 +381,63 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 ---
 
+## Manage non-administrative Entra ID users on the cluster
+
+To perform management operations for non-administrative Entra ID security principals such as users, you need to log in to the cluster with an [administrative Entra ID user](#manage-administrative-entra-id-users-on-the-cluster). You can do it from your application code or from the tools like MongoDB shell and Compass.
+
+1. Log in to the cluster using an administrative Entra ID user in [MongoDB shell](#connect-to-the-cluster-using-entra-id-in-mongodb-shell) or [MongoDB Compass](#connect-to-the-cluster-using-entra-id-in-mongodb-compass).
+1. To add a non-administrative Entra ID user with **read-write** permissions on the cluster, use the following `createUser` command:
+
+    ```powershell
+    db.runCommand(
+        {
+            createUser:"user's-Entra-ID-identifier",
+            roles : [
+                { role:"clusterAdmin",db:"admin" },
+                { role:"readWriteAnyDatabase", db:"admin" }
+            ],
+		    customData:{"IdentityProvider":{"type":"MicrosoftEntraID", "properties":{"principalType":"user"}}}
+        }
+    )
+    ```
+1. To add a non-administrative Entra ID user with **read-only** permissions on the cluster, use the following `createUser` command:
+
+    ```powershell
+    db.runCommand(
+        {
+            createUser:"user's-Entra-ID-identifier",
+            roles : [
+                { role:"readAnyDatabase", db:"admin" }
+            ],
+		    customData:{"IdentityProvider":{"type":"MicrosoftEntraID", "properties":{"principalType":"user"}}}
+        }
+    )
+    ```
+1. To remove a non-administrative Entra ID user from the cluster, use `createUser` command:
+
+    ```powershell
+    db.runCommand(
+        {
+            createUser:"user's-Entra-ID-identifier",
+            roles : [
+                { role:"readAnyDatabase", db:"admin" }
+            ],
+		    customData:{"IdentityProvider":{"type":"MicrosoftEntraID", "properties":{"principalType":"user"}}}
+        }
+    )
+    ```
+
+
+> [!NOTE]
+> `SecurityPrincipal` and `user` values are supported for `principalType`.
 
 ## View Entra ID users on the cluster
 
-When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there's always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed.
+When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there's always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed. All administrative Entra ID users are replicated to the database. 
+
+Non-administrative Entra ID users are created in the database. When you view non-administrative users in the database, the list contains all administrative and non-administrative Entra ID users and all [secondary (non-administrative) native DocumentDB users](./secondary-users.md).
+
+### View administrative Entra ID users on the cluster
 
 Follow these steps to see all [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) added to cluster. 
 
@@ -592,9 +645,9 @@ internal sealed class AzureIdentityTokenHandler(
 ```
 ---
 
-## User Entra ID with Visual Studio Code, MongoDB shell and Compass
+## User Entra ID with Visual Studio Code, MongoDB shell, and Compass
 
-You can use Entra ID authentication in various tools including [Visual Studio Code with DocumentDB extension](../../visual-studio-code-extension.md?pivots=api-mongodb), MongoDB shell and MongoDB Compass tools. In Visual Studio Code, you can authenticate to your cluster using the current user logged in to Visual Studio Code.
+You can use Entra ID authentication in various tools including [Visual Studio Code with DocumentDB extension](../../visual-studio-code-extension.md?pivots=api-mongodb), MongoDB shell, and MongoDB Compass tools. In Visual Studio Code, you can authenticate to your cluster using the current user logged in to Visual Studio Code.
 
 An Azure managed identity is used to login using Entra ID to [MonogDB shell and Compass](https://www.mongodb.com/try/download/shell). Assign managed identity to an Azure virtual machine (VM) and log in to the cluster from that VM using MongoDB shell or Compass.
 One of the common tasks performed in the tools with Entra ID authentication is management of the secondary Entra ID users on the cluster. [Administrative Entra ID user](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) needs to be authenticated in MongoDB shell, Compass, or other MongoDB management tool in order to manage secondary Entra ID users on the cluster.
