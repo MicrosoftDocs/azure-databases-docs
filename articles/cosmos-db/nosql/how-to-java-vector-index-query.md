@@ -18,14 +18,14 @@ appliesto:
 
 # Index and query vectors in Azure Cosmos DB for NoSQL in Java
 
-This article walks you through the process of how to create vector data, index the data, and then query the data in a container.
+This article explains how to create vector data, index the data, and then query the data in a container.
 
 Before you use vector indexing and search, you must first enable vector search in Azure Cosmos DB for NoSQL. After you set up the Azure Cosmos DB container for vector search, you create a vector embedding policy. Next, you add vector indexes to the container indexing policy. Then you create a container with vector indexes and a vector embedding policy. Finally, you perform a vector search on the stored data.
 
 ## Prerequisites
 
 - An existing Azure Cosmos DB for NoSQL account.
-  - If you don't have an Azure subscription, [try Azure Cosmos DB for NoSQL for free](https://cosmos.azure.com/try/).
+  - If you don't have an Azure subscription, you can [create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account).
   - If you have an existing Azure subscription, [create a new Azure Cosmos DB for NoSQL account](how-to-create-account.md).
 - The latest version of the Azure Cosmos DB [Java](sdk-java-v4.md) SDK.
 

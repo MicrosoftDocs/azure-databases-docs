@@ -27,7 +27,7 @@ Before you use vector indexing and search, you must first enable vector search i
 - An existing Azure Cosmos DB for NoSQL account.
   - If you don't have an Azure subscription, you can [create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account).
   - If you have an existing Azure subscription, [create a new Azure Cosmos DB for NoSQL account](how-to-create-account.md).
-- The latest version of the Azure Cosmos DB [JavaScript SDK](sdk-nodejs.md) (Version 4.1.0 or later).
+- The latest version of the Azure Cosmos DB [JavaScript SDK](sdk-nodejs.md) (4.1.0 or later).
 
 ## Enable the feature
 
