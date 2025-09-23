@@ -279,7 +279,7 @@ Follow these steps to see authentication methods currently enabled on the cluste
 
 ## Manage administrative Entra ID users on the cluster
 
-Follow these steps to add [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) to cluster or remove administrative Entra ID users from it. 
+Follow these steps to **add** [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) to cluster or **remove** administrative Entra ID users from it. 
 
 ### [Azure portal](#tab/portal)
 
@@ -381,6 +381,65 @@ Follow these steps to add [administrative Entra ID users](./entra-authentication
 
 ---
 
+### View administrative Entra ID users on the cluster
+
+When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there's always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed. All administrative Entra ID users are replicated to the database. 
+
+Non-administrative Entra ID users are created in the database. When you view non-administrative users in the database, the list contains all administrative and non-administrative Entra ID users and all [secondary (non-administrative) native DocumentDB users](./secondary-users.md).
+
+Follow these steps to see all [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) added to cluster. 
+
+### [Azure portal](#tab/portal)
+
+1. Select a cluster with [Microsoft Entra ID authentication method enabled](#manage-cluster-authentication-methods).
+
+1. On the cluster sidebar, under **Settings**, select **Authentication**.
+
+1. In the **Microsoft Entra ID authentication** section, find the list of object IDs (unique identifiers) for the administrative Entra ID users added to the cluster.
+
+    :::image type="content" source="media/how-to-configure-entra-authentication/view-entra-id-users-on-cluster.png" alt-text="Screenshot that shows how to view the list of administrative Microsoft Entra ID users on the cluster." lightbox="media/how-to-configure-entra-authentication/view-entra-id-users-on-cluster.png":::
+
+1. To get friendly names using a unique identifier, [follow these steps](#get-friendly-name-using-unique-identifier). 
+
+### [Azure CLI](#tab/cli)
+
+Use commands on the **REST APIs** tab to list administrative users on the cluster.
+
+### [REST APIs](#tab/rest-apis)
+
+1. Use this command to list all administrative users on the cluster:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "GET" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-07-01-preview" 
+     ```
+1. Observe the output. The output includes an array of administrative user accounts on the cluster. This array has one built-in native administrative users and all administrative Entra ID user and service principals added to the cluster.
+
+    ```output
+    {
+      "id": "/subscriptions/<subscription-id>>/resourceGroups/<resource-group-name>>/providers/Microsoft.DocumentDB/mongoClusters/<cluser-name>>/users/<user's-unique-id>",
+      "name": "user's-unique-id",
+      "properties": {
+        "identityProvider": {
+          "properties": {
+            "entraTenant": "entra-tenant-id",
+            "principalType": "User"
+          },
+          "type": "MicrosoftEntraID"
+        },
+        ...
+        "user": "user's-unique-id"
+      },
+        ...
+      "type": "Microsoft.DocumentDB/mongoClusters/users"
+    }
+    ```
+---
+
+> [!NOTE]
+> An Azure Cosmos DB for MongoDB vCore cluster is created with one built-in native DocumentDB user. You can [add more native DocumentDB users](./secondary-users.md) after cluster provisioning is completed. Microsoft Entra ID users added to the cluster are going to be in addition to native DocumentDB users defined on the same cluster.
+
 ## Manage non-administrative Entra ID users on the cluster
 
 To perform management operations for non-administrative Entra ID security principals such as users, you need to log in to the cluster with an [administrative Entra ID user](#manage-administrative-entra-id-users-on-the-cluster). You can do it from your application code or from the tools like MongoDB shell and Compass.
@@ -436,83 +495,6 @@ All management commands for non-administrative users are supported for `Security
     > [!NOTE]
     > All Entra ID and native DocumentDB administrative users are replicated to the database. Because of this replication, the list of users include all administrative and non-administrative Entra ID and native DocumentDB users on the cluster.
     
-## View Entra ID users on the cluster
-
-When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there's always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed. All administrative Entra ID users are replicated to the database. 
-
-Non-administrative Entra ID users are created in the database. When you view non-administrative users in the database, the list contains all administrative and non-administrative Entra ID users and all [secondary (non-administrative) native DocumentDB users](./secondary-users.md).
-
-### View administrative Entra ID users on the cluster
-
-Follow these steps to see all [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) added to cluster. 
-
-### [Azure portal](#tab/portal)
-
-1. Select a cluster with [Microsoft Entra ID authentication method enabled](#manage-cluster-authentication-methods).
-
-1. On the cluster sidebar, under **Settings**, select **Authentication**.
-
-1. In the **Microsoft Entra ID authentication** section, find the list of object IDs (unique identifiers) for the administrative Entra ID users added to the cluster.
-
-    :::image type="content" source="media/how-to-configure-entra-authentication/view-entra-id-users-on-cluster.png" alt-text="Screenshot that shows how to view the list of administrative Microsoft Entra ID users on the cluster." lightbox="media/how-to-configure-entra-authentication/view-entra-id-users-on-cluster.png":::
-
-1. To get friendly names using a unique identifier, [follow these steps](#get-friendly-name-using-unique-identifier). 
-
-### [Azure CLI](#tab/cli)
-
-Use commands on the **REST APIs** tab to list administrative users on the cluster.
-
-### [REST APIs](#tab/rest-apis)
-
-1. Use this command to list all administrative users on the cluster:
-    
-     ```azurecli-interactive
-     az rest \
-         --method "GET" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-07-01-preview" 
-     ```
-1. Observe the output. The output includes an array of administrative user accounts on the cluster. This array has one built-in native administrative users and all administrative Entra ID user and service principals added to the cluster.
-
-    ```output
-    {
-      "id": "/subscriptions/<subscription-id>>/resourceGroups/<resource-group-name>>/providers/Microsoft.DocumentDB/mongoClusters/<cluser-name>>/users/<user's-unique-id>",
-      "name": "user's-unique-id",
-      "properties": {
-        "identityProvider": {
-          "properties": {
-            "entraTenant": "entra-tenant-id",
-            "principalType": "User"
-          },
-          "type": "MicrosoftEntraID"
-        },
-        ...
-        "user": "user's-unique-id"
-      },
-        ...
-      "type": "Microsoft.DocumentDB/mongoClusters/users"
-    }
-    ```
-
-1. If Microsoft Entra ID authentication is enabled on the cluster, the output includes both the `NativeAuth` and `MicrosoftEntraID` values in the `allowedModes` array.
-
-    ```output
-    {
-      "authConfig": {
-        "allowedModes": [
-            "NativeAuth",
-            "MicrosotEntraID"
-              ] }
-        }
-    ```
-
-
----
-
-
-> [!NOTE]
-> An Azure Cosmos DB for MongoDB vCore cluster is created with one built-in native DocumentDB user. You can [add more native DocumentDB users](./secondary-users.md) after cluster provisioning is completed. Microsoft Entra ID users added to the cluster are going to be in addition to native DocumentDB users defined on the same cluster.
-
-
 ## Connect to the cluster
 
 You can connect to the cluster using either a connection URI or a custom settings object from the driver for your preferred language. In either option, the **scheme** must be set to `mongodb+srv` to connect to the cluster. The **host** is at either the `*.global.mongocluster.cosmos.azure.com` or `*.mongocluster.cosmos.azure.com` domain depending on whether you're using [the current cluster or global read-write endpoint](./how-to-cluster-replica.md#use-connection-strings). The `+srv` scheme and the `*.global.*` host ensures that your client is dynamically connected to the appropriate writable cluster in a multi-cluster configuration even if [a region swap operation occurs](./cross-region-replication.md#replica-cluster-promotion). In a single-cluster configuration, you can use either connection string indiscriminately.
