@@ -279,7 +279,7 @@ Follow these steps to see authentication methods currently enabled on the cluste
 
 ## Manage administrative Entra ID users on the cluster
 
-Follow these steps to add or remove [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) to cluster. 
+Follow these steps to add [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) to cluster or remove administrative Entra ID users from it. 
 
 ### [Azure portal](#tab/portal)
 
@@ -385,8 +385,10 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
 
 To perform management operations for non-administrative Entra ID security principals such as users, you need to log in to the cluster with an [administrative Entra ID user](#manage-administrative-entra-id-users-on-the-cluster). You can do it from your application code or from the tools like MongoDB shell and Compass.
 
+All management commands for non-administrative users are supported for `SecurityPrincipal` and `user` principal types. 
+
 1. Log in to the cluster using an administrative Entra ID user in [MongoDB shell](#connect-to-the-cluster-using-entra-id-in-mongodb-shell) or [MongoDB Compass](#connect-to-the-cluster-using-entra-id-in-mongodb-compass).
-1. To add a non-administrative Entra ID user with **read-write** permissions on the cluster, use the following `createUser` command:
+1. To **add** a non-administrative Entra ID user with **read-write** permissions on the cluster, use the following `createUser` command:
 
     ```powershell
     db.runCommand(
@@ -400,7 +402,7 @@ To perform management operations for non-administrative Entra ID security princi
         }
     )
     ```
-1. To add a non-administrative Entra ID user with **read-only** permissions on the cluster, use the following `createUser` command:
+1. To **add** a non-administrative Entra ID user with **read-only** permissions on the cluster, use the following `createUser` command:
 
     ```powershell
     db.runCommand(
@@ -413,24 +415,27 @@ To perform management operations for non-administrative Entra ID security princi
         }
     )
     ```
-1. To remove a non-administrative Entra ID user from the cluster, use `createUser` command:
+1. To remove a non-administrative Entra ID user from the cluster, use `dropUser` command:
 
     ```powershell
     db.runCommand(
         {
-            createUser:"user's-Entra-ID-identifier",
-            roles : [
-                { role:"readAnyDatabase", db:"admin" }
-            ],
-		    customData:{"IdentityProvider":{"type":"MicrosoftEntraID", "properties":{"principalType":"user"}}}
+            dropUser:"user's-Entra-ID-identifier"
         }
     )
     ```
+1. To list all Entra ID and native DocumentDB users on the cluster, use `userInfo` command:
 
-
-> [!NOTE]
-> `SecurityPrincipal` and `user` values are supported for `principalType`.
-
+    ```powershell
+    db.runCommand(
+        {
+            usersInfo:1
+        }
+    )
+    ```
+    > [!NOTE]
+    > All Entra ID and native DocumentDB administrative users are replicated to the database. Because of this, the list of users include all administrative and non-administrative Entra ID and native DocumentDB users on the cluster .
+    
 ## View Entra ID users on the cluster
 
 When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there's always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed. All administrative Entra ID users are replicated to the database. 
