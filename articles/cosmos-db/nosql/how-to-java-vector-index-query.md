@@ -7,7 +7,7 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 09/22/2025
 ms.update-cycle: 180-days
 ms.custom: query-reference, devx-track-java, build-2024, devx-track-extended-java, ignite-2024
 ms.collection:
@@ -35,7 +35,7 @@ To enable vector search for Azure Cosmos DB for NoSQL, follow these steps:
 
 1. Go to your Azure Cosmos DB for NoSQL resource page.
 1. On the left pane, under **Settings**, select **Features**.
-1. Select **Vector Search in Azure Cosmos DB for NoSQL**.
+1. Select **Vector Search for NoSQL API**.
 1. Read the description of the feature to confirm that you want to enable it.
 1. Select **Enable** to turn on vector search in Azure Cosmos DB for NoSQL.
 
@@ -57,7 +57,7 @@ The following steps assume that you know how to [set up an Azure Cosmos DB for N
 
 Let's take an example of how to create a database for an internet-based bookstore. You want to store title, author, ISBN, and description information for each book. You also need to define the following two properties to contain vector embeddings:
 
-- The `contentVector` property contains [text embeddings](/azure/ai-services/openai/concepts/models#embeddings ) that are generated from the text content of the book. For example, you concatenate the `title`, `author`, `isbn`, and `description` properties before you create the embedding.
+- The `contentVector` property contains [text embeddings](/azure/ai-services/openai/concepts/models#embeddings) that are generated from the text content of the book. For example, you concatenate the `title`, `author`, `isbn`, and `description` properties before you create the embedding.
 - The `coverImageVector` property is generated from [images of the book's cover](/azure/ai-services/computer-vision/concept-image-retrieval).
 
 To perform a vector search, you:
@@ -94,9 +94,9 @@ The following information is included in the container vector policy:
 | Parameter | Description |
 | --- | --- |
 | `path` | The property path that contains vectors. |
-| `datatype` | The type of the elements of the vector. (The default is `Float32`.) |
-| `dimensions` | The length of each vector in the path. (The default is `1536`.) |
-| `distanceFunction` | The metric used to compute distance/similarity. (The default is `Cosine`.) |
+| `datatype` | The type of the elements of the vector. The default is `Float32`. |
+| `dimensions` | The length of each vector in the path. The default is `1536`. |
+| `distanceFunction` | The metric used to compute distance/similarity. The default is `Cosine`. |
 
 For the example with book details, the vector policy might look like the following example:
 
@@ -191,5 +191,5 @@ ArrayList<SqlParameter> paramList = new ArrayList<SqlParameter>();
 ## Related content
 
 - [VectorDistance system function](query/vectordistance.md)
-- [Vector indexing](../index-policy.md)
-- [Set up Azure Cosmos DB for NoSQL for vector search](../vector-search.md)
+- [Indexing policies in Azure Cosmos DB](../index-policy.md)
+- [Vector database](../vector-database.md)
