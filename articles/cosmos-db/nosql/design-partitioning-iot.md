@@ -18,13 +18,13 @@ In this guide, we walk through a real-world scenario demonstrating how to select
 
 ## Scenario overview
 
-Imagine an IoT application that collects environmental data from thousands of IoT devices placed across various urban zones. Each device measures parameters like temperature, humidity, air quality, and noise levels every minute. The data collected is used for real-time monitoring and historical analysis to improve city planning and quality of life.
+Imagine an IoT application that collects environmental data from thousands of IoT devices placed across various urban zones. Each device measures parameters like temperature, humidity, air quality, and noise levels every second. The data collected: Each device logs data every second, generating around 4.32 billion records per day across 50,000 devices.
 
 
 **Workload Details:**
 
 -	**Devices**: 50,000 sensors across 10 districts
--	**Data collected**: Each device logs data every minute, generating around 72 million records per day.
+-	**Data collected**: Each device logs data every second, generating 4.32 billion records per day.
 -	**Typical queries**: 
      - Real-time readings for specific devices 
 
