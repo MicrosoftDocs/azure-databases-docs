@@ -385,7 +385,7 @@ Follow these steps to **add** [administrative Entra ID users](./entra-authentica
 
 When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there's always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed. All administrative Entra ID users are replicated to the database. 
 
-Non-administrative Entra ID users are created in the database. When you view non-administrative users in the database, the list contains all administrative and non-administrative Entra ID users and all [secondary (non-administrative) native DocumentDB users](./secondary-users.md).
+Non-administrative Entra ID users are created in the database. When you list non-administrative users in the database, the list contains all administrative and non-administrative Entra ID users and all [secondary (non-administrative) native DocumentDB users](./secondary-users.md).
 
 Follow these steps to see all [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) added to cluster. 
 
@@ -632,7 +632,7 @@ internal sealed class AzureIdentityTokenHandler(
 ```
 ---
 
-## User Entra ID with Visual Studio Code, MongoDB shell, and MongoDB Compass
+## Use Entra ID with Visual Studio Code, MongoDB shell, and MongoDB Compass
 
 You can use Entra ID authentication in various tools including [Visual Studio Code with DocumentDB extension](../../visual-studio-code-extension.md?pivots=api-mongodb), MongoDB shell, and MongoDB Compass tools. In Visual Studio Code, you can authenticate to your cluster using the current user logged in to Visual Studio Code.
 
@@ -641,7 +641,10 @@ One of the common tasks performed in the tools with Entra ID authentication is m
 
 ### Connect to the cluster using Entra ID in Visual Studio Code
 
-To connect to an Azure Cosmos DB for MongoDB vCore cluster using Visual Studio Code with DocumentDB extension, follow [these steps](../../visual-studio-code-extension.md?pivots=api-mongodb#connecting-to-a-mongodb-workload).
+To connect to an Azure Cosmos DB for MongoDB vCore cluster using Visual Studio Code with DocumentDB extension and Entra ID authentication, follow [this guidance](https://devblogs.microsoft.com/cosmosdb/secure-your-connections-with-entra-id-support-in-the-documentdb-vs-code-extension/).
+
+> [!NOTE]
+> When you authenticate to an Azure Cosmos DB for MongoDB vCore cluster using Entra ID in Visual Studio Code with DocumentDB extension, `shell` functionality is not supported. If you need to use MongoDB shell with Entra ID authentication, follow [these steps](#connect-to-the-cluster-using-entra-id-in-mongodb-shell). 
 
 ### Connect to the cluster using Entra ID in MongoDB shell
 
