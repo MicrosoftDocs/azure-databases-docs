@@ -35,7 +35,7 @@ Imagine an IoT application that collects environmental data from thousands of Io
     "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",      
     "districtId": "d12345",                           
     "deviceId": "s67890",
-    "day": "2024-01-01"                             
+    "day": "2024-01-01",
     "timestamp": "2024-01-01T08:30",              
     "temperature": 22.5,                              
     "humidity": 55.2,                                 
