@@ -1,6 +1,6 @@
 ---
 title: Connection libraries
-description: This article describes several libraries and drivers that you can use when coding applications to connect and query Azure Database for PostgreSQL flexible server.
+description: This article describes several libraries and drivers that you can use when coding applications to connect and query an Azure Database for PostgreSQL flexible server.
 author: olmoloce
 ms.author: olmoloce
 ms.reviewer: maghan
@@ -14,11 +14,11 @@ ms.topic: concept-article
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article lists libraries and drivers that developers can use to develop applications to connect to and query Azure Database for PostgreSQL flexible server.
+This article lists libraries and drivers that developers can use to develop applications to connect to and query an Azure Database for PostgreSQL flexible server.
 
 ## Client interfaces
 
-Most language client libraries used to connect to Azure Database for PostgreSQL flexible server are external projects and are distributed independently. The  libraries listed are supported on the Windows, Linux, and Mac platforms, for connecting to Azure Database for PostgreSQL flexible server. Several quickstart examples are listed in the Next steps section.
+Most language client libraries used to connect to an Azure Database for PostgreSQL flexible server are external projects and are distributed independently. The libraries listed are supported on the Windows, Linux, and Mac platforms, for connecting to Azure Database for PostgreSQL flexible server. Several quickstart examples are listed in the Next steps section.
 
 | **Language** | **Client interface** | **Additional information** | **Download** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
@@ -35,7 +35,7 @@ Most language client libraries used to connect to Azure Database for PostgreSQL 
 
 ## Related content
 
-- [Quickstart: Use Python to connect and query data from an Azure Database for PostgreSQL flexible server](connect-python.md).
+- [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL](connect-python.md).
 - [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL flexible server](connect-java.md).
 - [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL flexible server](connect-csharp.md).
 - [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL flexible server](connect-go.md).

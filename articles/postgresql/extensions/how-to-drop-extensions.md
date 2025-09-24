@@ -15,7 +15,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Before dropping extensions in Azure Database for PostgreSQL flexible server, you must [allowlist](how-to-allow-extensions.md) them.
+Before dropping extensions in an Azure Database for PostgreSQL flexible server, you must [allowlist](how-to-allow-extensions.md) them.
 
 ## Steps to drop extensions
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Advisor
-description: Learn about Azure Advisor recommendations for Azure Database for PostgreSQL flexible server.
+description: Learn about Azure Advisor recommendations for your Azure Database for PostgreSQL flexible server.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
@@ -15,7 +15,7 @@ ms.custom: sfi-image-nochange
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Learn about how Azure Advisor is applied to Azure Database for PostgreSQL flexible server and get answers to common questions.
+Learn about how Azure Advisor is applied to Azure Database for PostgreSQL flexible server instances and get answers to common questions.
 
 ## What is Azure Advisor for PostgreSQL?
 
@@ -31,7 +31,7 @@ Recommendations are available from the **Overview** navigation sidebar in the Az
 
 ## Recommendation types
 
-Azure Database for PostgreSQL flexible server prioritizes the following type of recommendation:
+Azure Database for PostgreSQL prioritizes the following type of recommendation:
 
 - **Performance**: To enhance the performance of your Azure Database for PostgreSQL flexible server instance, the recommendations proactively identify servers experiencing scenarios which can determine performance. These scenarios include high CPU utilization, frequent checkpoint initiations, performance-impacting log parameter settings, inactive logical replication slots, long-running transactions, orphaned prepared transactions, a high bloat ratio, and transaction wraparound risks. For more information, see [Advisor Performance recommendations](/azure/advisor/advisor-performance-recommendations).
 

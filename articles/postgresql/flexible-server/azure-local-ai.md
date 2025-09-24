@@ -1,6 +1,6 @@
 ---
 title: Create in-database embeddings with azure_local_ai extension
-description: Enable RAG patterns with in-database embeddings and vectors on Azure Database for PostgreSQL flexible server.
+description: Enable RAG patterns with in-database embeddings and vectors on an Azure Database for PostgreSQL flexible server.
 author: jojohnso-msft
 ms.author: jojohnso
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: overview
 ms.custom:
   - build-2024
-# customer intent: As a user, I want to understand the overview and use cases of the azure_local_ai extension for Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to understand the overview and use cases of the azure_local_ai extension for an Azure Database for PostgreSQL flexible server.
 ---
 
 # Azure Local AI extension for Azure Database for PostgreSQL (Preview)

@@ -1,6 +1,6 @@
 ---
 title: Connection pooling best practices
-description: This article describes the best practices for connection pooling in Azure Database for PostgreSQL flexible server.
+description: This article describes the best practices for connection pooling in Azure Database for PostgreSQL flexible server instances.
 author: rkniyer999
 ms.author: ramyerrabotu
 ms.reviewer: maghan
@@ -14,13 +14,13 @@ ms.topic: best-practice
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Strategic guidance for selecting connection pooling mechanism for Azure Database for PostgreSQL flexible server.
+Strategic guidance for selecting connection pooling mechanism for Azure Database for PostgreSQL flexible server instances.
 
 ## Introduction
 
-When using Azure Database for PostgreSQL flexible server, establishing a connection to the database involves creating a communication channel between the client application and the server. This channel is responsible for managing data, executing queries, and initiating transactions. Once the connection is established, the client application can send commands to the server and receive responses. However, creating a new connection for each operation can cause performance issues for mission-critical applications. Every time a new connection is created, Azure Database for PostgreSQL flexible server spawns a new process using the postmaster process, which consumes more resources.
+When using an Azure Database for PostgreSQL flexible server, establishing a connection to the database involves creating a communication channel between the client application and the server. This channel is responsible for managing data, executing queries, and initiating transactions. Once the connection is established, the client application can send commands to the server and receive responses. However, creating a new connection for each operation can cause performance issues for mission-critical applications. Every time a new connection is created, Azure Database for PostgreSQL flexible server spawns a new process using the postmaster process, which consumes more resources.
 
-To mitigate this issue, connection pooling is used to create a cache of connections that can be reused in Azure Database for PostgreSQL flexible server. When an application or client requests a connection, it's created from the connection pool. After the session or transaction is completed, the connection is returned to the pool for reuse. By reusing connections, resources usage is reduced, and performance is improved.
+To mitigate this issue, connection pooling is used to create a cache of connections that can be reused in Azure Database for PostgreSQL. When an application or client requests a connection, it's created from the connection pool. After the session or transaction is completed, the connection is returned to the pool for reuse. By reusing connections, resources usage is reduced, and performance is improved.
 
 :::image type="content" source="./media/concepts-connection-pooling-best-practices/connection-patterns.png" alt-text="Diagram for Connection Pooling Patterns.":::
 
@@ -49,7 +49,7 @@ When utilizing this approach, PgBouncer is deployed on the same server where you
 
 ### I. PgBouncer deployed in Application VM
 
-If your application runs on an Azure VM, you can set up PgBouncer on the same VM. To install and configure PgBouncer as a connection pooling proxy with Azure Database for PostgreSQL flexible server, follow the instructions provided in the following [link](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-proxy/ba-p/730555).
+If your application runs on an Azure VM, you can set up PgBouncer on the same VM. To install and configure PgBouncer as a connection pooling proxy with an Azure Database for PostgreSQL flexible server, follow the instructions provided in the following [link](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-proxy/ba-p/730555).
 
 :::image type="content" source="./media/concepts-connection-pooling-best-practices/co-location.png" alt-text="Diagram for App co-location on VM.":::
 
@@ -75,7 +75,7 @@ It's important to weigh these limitations against the benefits and evaluate whet
 
 It's possible to utilize **PgBouncer** as a sidecar container if your application is containerized and running on [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/), [Azure Container Instance (ACI)](https://azure.microsoft.com/products/container-instances), [Azure Container Apps (ACA)](https://azure.microsoft.com/products/container-apps/), or [Azure Red Hat OpenShift (ARO)](https://azure.microsoft.com/products/openshift/). The Sidecar pattern draws its inspiration from the concept of a sidecar that attached to a motorcycle, where an auxiliary container, known as the sidecar container, is attached to a parent application. This pattern enriches the parent application by extending its functionalities and delivering supplementary support.
 
-The sidecar pattern is typically used with containers being coscheduled as an atomic container group. deploying PgBouncer in an AKS sidecar tightly couples the application and sidecar lifecycles and shares resources such as hostname and networking to make efficient use of resources. The PgBouncer sidecar operates alongside the application container within the same pod in Azure Kubernetes Service (AKS) with 1:1 mapping, serving as a connection pooling proxy for Azure Database for PostgreSQL flexible server.
+The sidecar pattern is typically used with containers being coscheduled as an atomic container group. deploying PgBouncer in an AKS sidecar tightly couples the application and sidecar lifecycles and shares resources such as hostname and networking to make efficient use of resources. The PgBouncer sidecar operates alongside the application container within the same pod in Azure Kubernetes Service (AKS) with 1:1 mapping, serving as a connection pooling proxy for Azure Database for PostgreSQL.
 
 This sidecar pattern is typically used with containers being coscheduled as an atomic container group. sidecar pattern strongly binds the application and sidecar lifecycles and has shared resources such hostname and networking. By using this setup, PgBouncer optimizes connection management and facilitates efficient communication between the application and the Azure Database for PostgreSQL flexible server instance.
 
@@ -111,7 +111,7 @@ When utilizing this approach, PgBouncer is deployed as a centralized service, in
 
 **PgBouncer** connection proxy is set up between the application and database layer behind an Azure Load Balancer as shown in the image. In this pattern multiple PgBouncer instances are deployed behind a load balancer as a service to mitigate single point of failure. This pattern is also suitable in scenarios where the application is running on a managed service like Azure App Services or Azure Functions and connecting to **PgBouncer** service for easy integration with your existing infrastructure.
 
-Refer [link](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-proxy/ba-p/730555)  to install and set up PgBouncer connection pooling proxy with Azure Database for PostgreSQL flexible server.
+Refer [link](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-proxy/ba-p/730555)  to install and set up PgBouncer connection pooling proxy with Azure Database for PostgreSQL.
 
 :::image type="content" source="./media/concepts-connection-pooling-best-practices/deploying-vm.png" alt-text="Diagram for App co-location on Vm with Load Balancer.":::
 
@@ -122,7 +122,7 @@ Some of the key benefits & limitations of this deployment method are:
 - **Removing Single Point of Failure:** Application connectivity may not be affected by the failure of a single PgBouncer VM, as there are several PgBouncer instances behind Azure Load Balancer.
 - **Seamless Integration with Managed Services:** If your application is hosted on a managed service platform such as Azure App Services or Azure Functions, deploying PgBouncer on a VM allows for easy integration with your existing infrastructure.
 - **Simplified Setup on Azure VM:** If you're already running your application on an Azure VM, setting up PgBouncer on the same VM is straightforward. deploying the  PgBouncer in VM ensures that PgBouncer is deployed in close proximity to your application, minimizing network latency and maximizing performance.
-- **Non-Intrusive Configuration:** By deploying PgBouncer on a VM, you can avoid modifying server parameters on Azure Database for PostgreSQL flexible server. This is useful when you want to configure PgBouncer on an Azure Database for PostgreSQL flexible server instance. For example, changing the SSLMODE parameter to "required" on Azure Database for PostgreSQL flexible server might cause certain applications that rely on SSLMODE=FALSE to fail. Deploying PgBouncer on a separate VM allows you to maintain the default server configuration while still using PgBouncer's benefits.
+- **Non-Intrusive Configuration:** By deploying PgBouncer on a VM, you can avoid modifying server parameters on your Azure Database for PostgreSQL flexible server. This is useful when you want to configure PgBouncer on an Azure Database for PostgreSQL flexible server instance. For example, changing the SSLMODE parameter to "required" on Azure Database for PostgreSQL flexible server might cause certain applications that rely on SSLMODE=FALSE to fail. Deploying PgBouncer on a separate VM allows you to maintain the default server configuration while still using PgBouncer's benefits.
 
 
 By considering these benefits, deploying PgBouncer on a VM offers a convenient and efficient solution for enhancing the performance and compatibility of your application running on Azure infrastructure.
@@ -130,7 +130,7 @@ By considering these benefits, deploying PgBouncer on a VM offers a convenient a
 **Limitations:**
 
 - **Management overhead:** As **PgBouncer** is installed in VM, there might be management overhead to manage multiple configuration files. This makes it difficult to cope up with version upgrades, new releases, and product updates.
-- **Feature parity:** If you're migrating from traditional PostgreSQL to Azure Database for PostgreSQL flexible server and using **PgBouncer**, there might be some features gaps. For example, lack of md5 support in Azure Database for PostgreSQL flexible server.
+- **Feature parity:** If you're migrating from traditional PostgreSQL to an Azure Database for PostgreSQL flexible server and using **PgBouncer**, there might be some features gaps. For example, lack of md5 support in the Azure Database for PostgreSQL flexible server.
 
 ### II. Centralized PgBouncer deployed as a service within AKS
 
@@ -160,7 +160,7 @@ While **PgBouncer** running as a standalone service offers benefits such as cent
 
 ## 3. Built-in PgBouncer in Azure Database for PostgreSQL flexible server
 
-Azure Database for PostgreSQL flexible server offers [PgBouncer](https://github.com/pgbouncer/pgbouncer) as a built-in connection pooling solution. This is offered as an optional service that can be enabled on a per-database server basis. PgBouncer runs in the same virtual machine as the Azure Database for PostgreSQL flexible server instance. As the number of connections increases beyond a few hundreds or thousand, Azure Database for PostgreSQL flexible server may encounter resource limitations. In such cases, built-in PgBouncer can provide a significant advantage by improving the management of idle and short-lived connections at the database server.
+Azure Database for PostgreSQL offers [PgBouncer](https://github.com/pgbouncer/pgbouncer) as a built-in connection pooling solution. This is offered as an optional service that can be enabled on a per-database server basis. PgBouncer runs in the same virtual machine as the Azure Database for PostgreSQL flexible server instance. As the number of connections increases beyond a few hundreds or thousand, Azure Database for PostgreSQL may encounter resource limitations. In such cases, built-in PgBouncer can provide a significant advantage by improving the management of idle and short-lived connections at the database server.
 
 Refer link to enable and set up PgBouncer connection pooling in Azure Database for PostgreSQL flexible server.
 

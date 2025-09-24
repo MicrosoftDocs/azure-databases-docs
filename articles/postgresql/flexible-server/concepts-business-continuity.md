@@ -1,6 +1,6 @@
 ---
 title: Overview of business continuity
-description: Learn about the concepts of business continuity with Azure Database for PostgreSQL flexible server.
+description: Learn about the concepts of business continuity with Azure Database for PostgreSQL flexible server instances.
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
@@ -15,15 +15,15 @@ ms.custom: sfi-image-nochange
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-**Business continuity** in Azure Database for PostgreSQL flexible server refers to the mechanisms, policies, and procedures that enable your business to continue operating in the face of disruption, particularly to its computing infrastructure. In most of the cases, Azure Database for PostgreSQL flexible server handles disruptive events that might happen in the cloud environment and keep your applications and business processes running. However, there are some events that can't be handled automatically such as:
+**Business continuity** in Azure Database for PostgreSQL refers to the mechanisms, policies, and procedures that enable your business to continue operating in the face of disruption, particularly to its computing infrastructure. In most of the cases, your Azure Database for PostgreSQL flexible server handles disruptive events that might happen in the cloud environment and keep your applications and business processes running. However, there are some events that can't be handled automatically such as:
 
 - User accidentally deletes or updates a row in a table.
 - Earthquake causes a power outage and temporarily disables an availability zone or a region.
 - Database patching required to fix a bug or security issue.
 
-Azure Database for PostgreSQL flexible server provides features that protect data and mitigates downtime for your mission-critical databases during planned and unplanned downtime events. Built on top of the Azure infrastructure that offers robust resiliency and availability, Azure Database for PostgreSQL flexible server has business continuity features that provide another fault protection, address recovery time requirements, and reduce data loss exposure. As you architect your applications, you should consider the downtime tolerance - the recovery time objective (RTO), and data loss exposure - the recovery point objective (RPO). For example, your business-critical database requires stricter uptime than a test database.
+Azure Database for PostgreSQL provides features that protect data and mitigates downtime for your mission-critical databases during planned and unplanned downtime events. Built on top of the Azure infrastructure that offers robust resiliency and availability, Azure Database for PostgreSQL has business continuity features that provide another fault protection, address recovery time requirements, and reduce data loss exposure. As you architect your applications, you should consider the downtime tolerance - the recovery time objective (RTO), and data loss exposure - the recovery point objective (RPO). For example, your business-critical database requires stricter uptime than a test database.
 
-The table below illustrates the features that Azure Database for PostgreSQL flexible server offers.
+The table below illustrates the features that your Azure Database for PostgreSQL flexible server offers.
 
 | **Feature** | **Description** | **Considerations** |
 | ---------- | ----------- | ------------ |
@@ -63,9 +63,9 @@ When the Azure Database for PostgreSQL flexible server instance is configured wi
 
 ##  Unplanned downtime mitigation
 
-Unplanned downtimes can occur as a result of unforeseen disruptions such as underlying hardware fault, networking issues, and software bugs. If the database server configured with high availability goes down unexpectedly, then the standby replica is activated and the clients can resume their operations. If not configured with high availability (HA), then if the restart attempt fails, a new database server is automatically provisioned. While an unplanned downtime can't be avoided, Azure Database for PostgreSQL flexible server helps mitigate the downtime by automatically performing recovery operations without requiring human intervention. 
+Unplanned downtimes can occur as a result of unforeseen disruptions such as underlying hardware fault, networking issues, and software bugs. If the database server configured with high availability goes down unexpectedly, then the standby replica is activated and the clients can resume their operations. If not configured with high availability (HA), then if the restart attempt fails, a new database server is automatically provisioned. While an unplanned downtime can't be avoided, Azure Database for PostgreSQL helps mitigate the downtime by automatically performing recovery operations without requiring human intervention. 
 
-Though we continuously strive to provide high availability, there are times when Azure Database for PostgreSQL flexible server does incur outage causing unavailability of the databases and thus impacting your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.
+Though we continuously strive to provide high availability, there are times when Azure Database for PostgreSQL does incur outage causing unavailability of the databases and thus impacting your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.
 
 ### Service Outage
 
@@ -110,7 +110,7 @@ Below are some unplanned failure scenarios and the recovery process.
 * Setup telemetry alerts, you need to make sure your existing alert rule settings are updated to map to the new server. For more information about alert rules, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL flexible server](how-to-alert-on-metrics.md).
 
 > [!IMPORTANT]
-> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure database - Azure Database for PostgreSQL flexible server](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
+> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure Database for PostgreSQL](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
 
 ## Related content
 

@@ -1,6 +1,6 @@
 ---
 title: Compute options
-description: This article describes the compute options in Azure Database for PostgreSQL flexible server.
+description: This article describes the compute options in your Azure Database for PostgreSQL flexible server instances.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan

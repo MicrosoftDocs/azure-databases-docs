@@ -15,7 +15,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Before creating extensions in Azure Database for PostgreSQL flexible server, you must allowlist them.
+Before creating extensions in an Azure Database for PostgreSQL flexible server, you must allowlist them.
 
 ## Steps to allow extensions
 

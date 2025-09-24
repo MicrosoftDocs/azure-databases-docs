@@ -15,7 +15,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Before creating extensions in Azure Database for PostgreSQL flexible server, you must [allowlist](how-to-allow-extensions.md) them.
+Before creating extensions in an Azure Database for PostgreSQL flexible server, you must [allowlist](how-to-allow-extensions.md) them.
 
 ## Steps to create extensions
 
@@ -52,7 +52,7 @@ Your Azure Database for PostgreSQL flexible server supports a subset of all exis
 
 This information is also available by running `SHOW azure.extensions;`. 
 
-You can't bring your own extensions into Azure Database for PostgreSQL flexible server. Extensions not included in the lists referred before aren't supported on your Azure Database for PostgreSQL flexible server.
+You can't bring your own extensions into an Azure Database for PostgreSQL flexible server. Extensions not included in the lists referred before aren't supported on your Azure Database for PostgreSQL flexible server.
 
 ## Related content
 
