@@ -1,6 +1,6 @@
 ---
-title: Considerations with the use of extensions and modules in an Azure Database for PostgreSQL flexible server
-description: Learn about the extension considerations specific to an Azure Database for PostgreSQL flexible server.
+title: Considerations with the Use of Extensions and Modules in an Azure Database for PostgreSQL Flexible Server
+description: Learn about the extension considerations specific to an Azure Database for PostgreSQL flexible server instance.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -14,11 +14,11 @@ ms.custom:
 
 # Considerations with the use of extensions and modules
 
-This article describes some special considerations that you must be aware of, when using certain extensions or modules in an Azure Database for PostgreSQL flexible server.
+This article describes some special considerations that you must be aware of, when using certain extensions or modules in an Azure Database for PostgreSQL flexible server instance.
 
 ## Generic considerations with extensions
 
-To use an extension in your Azure Database for PostgreSQL flexible server, you have to:
+To use an extension in your Azure Database for PostgreSQL flexible server instance, you have to:
 
 - [Allow extension](how-to-allow-extensions.md). If the extension isn't allowed, any attempt to execute `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION`, or `COMMENT ON EXTENSION` fails with an error indicating that the referred extension isn't allowed.
 - If the extension deploys some shared binary library which requires allocating and accessing shared memory, and need to be loaded when the server starts, you should also follow the instructions provided in [load libraries](how-to-load-libraries.md).
@@ -27,17 +27,17 @@ To use an extension in your Azure Database for PostgreSQL flexible server, you h
 - [Update extensions](how-to-update-extensions.md), to update to its newest version all the SQL artifacts deployed by an extension that is already installed.
 - [View installed extensions](how-to-view-installed-extensions.md) and their corresponding versions.
 
-If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION` or `COMMENT ON EXTENSION` commands on your Azure Database for PostgreSQL flexible server, see the list of [possible errors](errors-extensions.md), and what could be the cause of each of those errors.
+If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION` or `COMMENT ON EXTENSION` commands on your Azure Database for PostgreSQL flexible server instance, see the list of [possible errors](errors-extensions.md), and what could be the cause of each of those errors.
 
 ## Generic considerations with modules
 
-To use a module in your Azure Database for PostgreSQL flexible server, you only have to add it to the `shared_preload_libraries` server parameter as described in [load libraries](how-to-load-libraries.md).
+To use a module in your Azure Database for PostgreSQL flexible server instance, you only have to add it to the `shared_preload_libraries` server parameter as described in [load libraries](how-to-load-libraries.md).
 
 Modules don't need to be [allowlisted](how-to-allow-extensions.md). That's an exclusive requirement for extensions.
 
 ## Extensions with specific considerations
 
-The following list enumerates all the supported extensions that require specific considerations when used in an Azure Database for PostgreSQL flexible server:
+The following list enumerates all the supported extensions that require specific considerations when used in an Azure Database for PostgreSQL flexible server instance:
 
 - `AGE`
 - `dblink`
@@ -119,7 +119,7 @@ To use `pg_cron`, make sure you [load its shared library upon server start](how-
 
 Starting with `pg_cron` version 1.4, you can use the `cron.schedule_in_database` and `cron.alter_job` functions to schedule your job in a specific database and update an existing schedule, respectively.
 
-The `cron_schedule_in_database` function allows for the user name as an optional parameter. Setting the username to a non-null value requires PostgreSQL superuser privilege and isn't supported for an Azure Database for PostgreSQL flexible server. Preceding examples show running this function with an optional user name parameter omitted or set to null, which runs the job in the context of the user scheduling the job, which should have `azure_pg_admin` role privileges.
+The `cron_schedule_in_database` function allows for the user name as an optional parameter. Setting the username to a non-null value requires PostgreSQL superuser privilege and isn't supported for an Azure Database for PostgreSQL flexible server instance. Preceding examples show running this function with an optional user name parameter omitted or set to null, which runs the job in the context of the user scheduling the job, which should have `azure_pg_admin` role privileges.
 
 1. To delete old data on Saturday at 3:30 am (GMT) on database DBName.
 
@@ -162,7 +162,7 @@ To use `pg_hint_plan` extension, make sure that you [allowlist](how-to-allow-ext
 
 ### pg_prewarm
 
-The `pg_prewarm` extension loads relational data into the cache. Prewarming your caches means your queries have better response times on their first run after a restart. The autoprewarm functionality for the PostgreSQL flexible server isn't currently available in the Azure Database.
+The `pg_prewarm` extension loads relational data into the cache. Prewarming your caches means your queries have better response times on their first run after a restart. The autoprewarm functionality for the PostgreSQL isn't currently available in the Azure Database.
 
 ### pg_repack
 
@@ -249,13 +249,13 @@ More details on these utilities can be found [here](https://github.com/timescale
 
 ## Extensions and major version upgrade
 
-Azure Database for PostgreSQL offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance, with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
+Azure Database for PostgreSQL offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance, with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
 
-The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
+The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server instance versions when using in-place major version update feature.
 
 ## Modules with specific considerations
 
-The following list enumerates all the supported modules that require specific considerations when used in an Azure Database for PostgreSQL flexible server:
+The following list enumerates all the supported modules that require specific considerations when used in an Azure Database for PostgreSQL flexible server instance:
 
 - `pg_failover_slots`
 

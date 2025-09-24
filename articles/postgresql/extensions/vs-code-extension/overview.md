@@ -11,7 +11,7 @@ ms.topic: overview
 ms.custom:
   - build-2025
 ai-usage: ai-assisted
-# customer intent: As a user, I want to understand what the PostgreSQL extension for VS Code is and how I can use it with an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to understand what the PostgreSQL extension for VS Code is and how I can use it with an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # What is the PostgreSQL extension for Visual Studio Code preview?

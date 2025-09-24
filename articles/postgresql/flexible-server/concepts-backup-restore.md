@@ -97,7 +97,7 @@ To restore your database server, see any of the following:
 - [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
 
 > [!IMPORTANT]
-> A restore operation for an Azure Database for PostgreSQL flexible server always creates a new database server with the name that you provide. It doesn't overwrite the existing database server.
+> A restore operation for an Azure Database for PostgreSQL flexible server instance always creates a new database server with the name that you provide. It doesn't overwrite the existing database server.
 
 PITR is useful in scenarios like these:
 
@@ -123,7 +123,7 @@ If you configure your server within a virtual network, you can restore to the sa
 
 ## Geo-redundant backup and restore
 
-To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md). 
+To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an Azure Database for PostgreSQL flexible server instance](quickstart-create-server.md). 
 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
@@ -192,7 +192,7 @@ On-demand backups can be taken in addition to scheduled automatic backups. These
 
 - On-demand backup feature is currently not supported with the Burstable server compute tier.
 - On-demand backup feature is currently not supported with the SSDv2 storage tier.
-- You can take a maximum of 7 on-demand backups per flexible server, which are retained based upon the backup retention window. 
+- You can take a maximum of 7 on-demand backups per flexible server instance, which are retained based upon the backup retention window. 
 
 
 ## Long-term retention
@@ -244,7 +244,7 @@ For more information about performing a long term backup, visit the [how-to guid
 
 * **Are my backups encrypted?**
   
-    Yes. All Azure Database for PostgreSQL flexible server data, backups, and temporary files that are created during query execution are encrypted through  AES (Advanced Encryption Standard) 256-bit encryption. Storage encryption is always on and can't be disabled. 
+    Yes. All Azure Database for PostgreSQL flexible server instance data, backups, and temporary files that are created during query execution are encrypted through  AES (Advanced Encryption Standard) 256-bit encryption. Storage encryption is always on and can't be disabled. 
 
 * **Can I restore a single database or a few databases in a server?**
   
@@ -282,7 +282,7 @@ For more information about performing a long term backup, visit the [how-to guid
 
 * **How are backups performed in a HA-enabled servers?**
   
-    Data volumes in an Azure Database for PostgreSQL flexible server are backed up through managed disk incremental snapshots from the primary server. The WAL backup is performed from either the primary server or the standby server.
+    Data volumes in an Azure Database for PostgreSQL flexible server instance are backed up through managed disk incremental snapshots from the primary server. The WAL backup is performed from either the primary server or the standby server.
 
 * **How can I validate that backups are performed on my server?**
 

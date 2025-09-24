@@ -1,6 +1,6 @@
 ---
 title: Allow extensions
-description: This article describes how to allow extensions in an Azure Database for PostgreSQL flexible server.
+description: This article describes how to allow extensions in an Azure Database for PostgreSQL flexible server instance.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -8,7 +8,7 @@ ms.date: 02/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to allow extensions in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to allow extensions in an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Allow extensions
@@ -23,7 +23,7 @@ Before creating extensions for an Azure Database for PostgreSQL flexible server 
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. From the resource menu, under **Settings** section, select **Server parameters**.
 
