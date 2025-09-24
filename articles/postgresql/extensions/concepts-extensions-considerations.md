@@ -210,7 +210,7 @@ When using the `pgstattuple` extension to try to obtain tuple statistics from ob
 
 #### Permission denied for schema pg_toast
 
-Customers using PostgreSQL versions 11 through 13 on Azure Database for flexible server can't use the `pgstattuple` extension on objects within the `pg_toast` schema.
+Customers using PostgreSQL versions 11 through 13 on Azure Database for PostgreSQL flexible server instance can't use the `pgstattuple` extension on objects within the `pg_toast` schema.
 
 In PostgreSQL 16 and 17, the `pg_read_all_data` role is automatically granted to `azure_pg_admin`, allowing `pgstattuple` to function correctly. In PostgreSQL 14 and 15, customers can manually grant the `pg_read_all_data` role to `azure_pg_admin` to achieve the same result. However, in PostgreSQL 11 through 13, the `pg_read_all_data` role doesn't exist.
 

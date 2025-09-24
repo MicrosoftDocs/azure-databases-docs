@@ -1,5 +1,5 @@
 ---
-title: Elastic clusters on PostgreSQL flexible server
+title: Elastic clusters on PostgreSQL Flexible Server
 description: Learn about sharding and horizontal scale-out with elastic clusters on Azure Database for PostgreSQL flexible server.
 author: mulander
 ms.author: adamwolk

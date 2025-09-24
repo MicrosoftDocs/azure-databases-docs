@@ -23,7 +23,7 @@ ms.custom: sfi-image-nochange
 
 Azure Database for PostgreSQL provides features that protect data and mitigates downtime for your mission-critical databases during planned and unplanned downtime events. Built on top of the Azure infrastructure that offers robust resiliency and availability, Azure Database for PostgreSQL has business continuity features that provide another fault protection, address recovery time requirements, and reduce data loss exposure. As you architect your applications, you should consider the downtime tolerance - the recovery time objective (RTO), and data loss exposure - the recovery point objective (RPO). For example, your business-critical database requires stricter uptime than a test database.
 
-The table below illustrates the features that your Azure Database for PostgreSQL flexible server offers.
+The table below illustrates the features that Azure Database for PostgreSQL flexible server offers.
 
 | **Feature** | **Description** | **Considerations** |
 | ---------- | ----------- | ------------ |
