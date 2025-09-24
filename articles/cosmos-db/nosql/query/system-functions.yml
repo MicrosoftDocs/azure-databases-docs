@@ -42,14 +42,14 @@ landingContent:
             url: array-avg.md
           - text: ARRAY_MEDIAN
             url: array-median.md
+  - title: Array functions (continued)
+    linklists:
+      -listListType: reference
+      -links:
           - text: CHOOSE
             url: choose.md
           - text: ObjectToArray
             url: objecttoarray.md
-  - title: Array set functions
-    linklists:
-      -listListType: reference
-      -links:
           - text: SetIntersect
             url: setintersect.md
           - text: SetUnion
@@ -102,28 +102,20 @@ landingContent:
             url: datetimetoticks.md
           - text: DateTimeToTimestamp
             url: datetimetotimestamp.md
-          - text: Day
-            url: day.md
-          - text: Month
-            url: month.md
           - text: TicksToDateTime
             url: tickstodatetime.md
           - text: TimestampToDateTime
             url: timestamptodatetime.md
-          - text: Year
-            url: year.md
   - title: Datetime components
     linkLists:
       - linkListType: reference
         links:
-          - text: SetIntersect
-            url: setintersect.md
-          - text: SetUnion
-            url: setunion.md
-          - text: SetDifference
-            url: setdifference.md
-          - text: SetEqual
-            url: setequal.md
+          - text: Day
+            url: day.md
+          - text: Month
+            url: month.md
+          - text: Year
+            url: year.md
   - title: Item functions
     linkLists:
       - linkListType: reference
