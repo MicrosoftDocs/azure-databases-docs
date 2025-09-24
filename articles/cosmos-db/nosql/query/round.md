@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
-ms.date: 08/22/2024
+ms.date: 08/21/2025
 ms.custom: query-reference
 ---
 
@@ -21,14 +21,15 @@ Returns a numeric value, rounded to the closest integer value.
 ## Syntax
 
 ```nosql
-ROUND(<numeric_expr>)  
+ROUND(<numeric_expr1> [, <numeric_expr2>])  
 ```
 
 ## Arguments
 
 | | Description |
 | --- | --- |
-| **`numeric_expr`** | A numeric expression. |
+| **`numeric_expr1`** | A numeric expression to be rounded. |
+| **`numeric_expr2` *(Optional)*** | Optional numeric expression to decide the precision to the round. |
 
 ## Return types
 
