@@ -32,7 +32,7 @@ sections:
           This database is called `postgres` by default. After the public preview, custom database names at cluster provisioning time will be supported.
 
       - question: What PostgreSQL version is supported with elastic clusters?
-        answer: Elastic clusters support PostgreSQL version 16 during the public preview.
+        answer: Elastic clusters support PostgreSQL version 16 during the public preview, and PostgreSQL version 17 will be available in the Generally Available (GA) release.
 
       - question: Can I use Major Version Upgrades with elastic clusters?
         answer: Currently, Major Version Upgrades aren't supported during the preview.
@@ -41,7 +41,7 @@ sections:
         answer: Currently, downloading server logs isn't supported during the preview. You can use Azure Metrics, Log Analytic Workspaces and PostgreSQL views to analyze cluster behavior.
 
       - question: Can I use Terraform to deploy elastic clusters?
-        answer: Currently, Terraform isn't supported during the preview. ARM templates are supported.
+        answer: Currently, Terraform isn't supported during the preview, however Terraform will be available in the Generally Available (GA) release.  ARM templates are supported.
 
   - name: Backups
     questions:
@@ -73,7 +73,7 @@ sections:
         answer: Yes, PgBouncer is supported with elastic clusters. Port 6432 should be used for schema and node management operations, while port 8432 is load-balanced to PgBouncer instances running across all nodes in the cluster.
 
       - question: Can I use virtual network (VNet) injection with elastic clusters?
-        answer: Currently, virtual network injection isn't supported during the preview.
+        answer: Virtual network injection is not planned for elastic clusters.  We recommend using Private Link Endpoints for any network isolation requirements.
 
       - question: Are Private Domain Name System (DNS) Zones supported with elastic clusters?
         answer: Currently, Private DNS Zones aren't supported during the preview.
@@ -81,10 +81,10 @@ sections:
   - name: Storage
     questions:
       - question: Can I use customer-managed keys (CMK) for storage encryption?
-        answer: Customer-managed keys are not currently supported during the preview.
+        answer: Customer-managed keys are not currently supported during the preview, however they will be available in the Generally Available (GA) release.
 
       - question: Is Storage Auto Scale available?
-        answer: Currently, Storage Auto Scale isn't supported during the preview.
+        answer: Storage Auto Scale is not available, however cluster storage size and throughput can be adjusted manually.
 
   - name: Authentication
     questions:
@@ -94,10 +94,10 @@ sections:
   - name: Performance
     questions:
       - question: Can I use Query Performance Insights with elastic clusters?
-        answer: Currently, Query Performance Insights isn't supported during the preview.
+        answer: Query Performance Insights is not currently supported at this time.
 
       - question: Can I use Automatic Index Tuning with elastic clusters?
-        answer: Currently, Automatic Index Tuning isn't supported during the preview.
+        answer: Automatic Index Tuning is not currently supported at this time.
 
       - question: Can I use replicas with elastic clusters?
-        answer: Elastic clusters currently support a single read-replica during the preview.
+        answer: Besides supporting High Availability (HA), elastic clusters currently support the configuration of a single read-replica.
