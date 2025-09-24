@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions in Az
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 09/16/2025
+ms.date: 09/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -25,6 +25,7 @@ Azure Database for PostgreSQL supports each major PostgreSQL version from the da
 
 | PostgreSQL Version | What's New | Azure Standard Support Start Date | Azure Standard Support End Date |
 | --- | --- | --- | --- |
+| [PostgreSQL 18(preview)*](https://www.postgresql.org/about/news/postgresql-18-released/) | [Release notes](https://www.postgresql.org/docs/18/release-18.html) | 25-Sep-2025 (Preview) | TBD |
 | [PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/) | [Release notes](https://www.postgresql.org/docs/17/release-17.html) | 30-Sep-2024 | 8-Nov-2029 |
 | [PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/) | [Release notes](https://www.postgresql.org/docs/16/release-16.html) | 15-Oct-2023 | 9-Nov-2028 |
 | [PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/) | [Release notes](https://www.postgresql.org/docs/15/release-15.html) | 15-May-2023 | 11-Nov-2027 |
@@ -32,6 +33,8 @@ Azure Database for PostgreSQL supports each major PostgreSQL version from the da
 | [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) | [Release notes](https://www.postgresql.org/docs/13/release-13.html) | 25-May-2021 | 31-Mar-2026 |
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Release notes](https://www.postgresql.org/docs/12/release-12.html) | 22-Sep-2020 | 31-Mar-2026 |
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Release notes](https://www.postgresql.org/docs/11/release-11.html) | 24-Jul-2019 | 31-Mar-2026 |
+
+* PostgreSQL 18 is currently available in **Preview** on Azure Database for PostgreSQL flexible server, with initial availability in the East Asia region.  
 
 ## Minor version support
 
