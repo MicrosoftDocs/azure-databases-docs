@@ -32,6 +32,18 @@ landingContent:
             url: array-length.md
           - text: ARRAY_SLICE
             url: array-slice.md
+          - text: SetIntersect
+            url: setintersect.md
+          - text: SetUnion
+            url: setunion.md
+          - text: SetDifference
+            url: setdifference.md
+          - text: SetEqual
+            url: setequal.md
+  - title: Array functions (continued)
+    linkLists:
+      - linkListType: reference
+        links:
           - text: ARRAY_MAX
             url: array-max.md
           - text: ARRAY_MIN
@@ -42,22 +54,10 @@ landingContent:
             url: array-avg.md
           - text: ARRAY_MEDIAN
             url: array-median.md
-  - title: Array functions (continued)
-    linklists:
-      -listListType: reference
-      -links:
           - text: CHOOSE
             url: choose.md
           - text: ObjectToArray
             url: objecttoarray.md
-          - text: SetIntersect
-            url: setintersect.md
-          - text: SetUnion
-            url: setunion.md
-          - text: SetDifference
-            url: setdifference.md
-          - text: SetEqual
-            url: setequal.md
   - title: Conditional functions
     linkLists:
       - linkListType: reference
