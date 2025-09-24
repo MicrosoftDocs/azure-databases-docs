@@ -46,6 +46,10 @@ landingContent:
             url: choose.md
           - text: ObjectToArray
             url: objecttoarray.md
+  - title: Array set functions
+    linklists:
+      -listListType: reference
+      -links:
           - text: SetIntersect
             url: setintersect.md
           - text: SetUnion
@@ -108,6 +112,18 @@ landingContent:
             url: timestamptodatetime.md
           - text: Year
             url: year.md
+  - title: Datetime components
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: SetIntersect
+            url: setintersect.md
+          - text: SetUnion
+            url: setunion.md
+          - text: SetDifference
+            url: setdifference.md
+          - text: SetEqual
+            url: setequal.md
   - title: Item functions
     linkLists:
       - linkListType: reference
@@ -218,16 +234,6 @@ landingContent:
         links:
           - text: CONCAT
             url: concat.md
-          - text: CONTAINS
-            url: contains.md
-          - text: CONTAINS_ALL_CI
-            url: contains-all-ci.md
-          - text: CONTAINS_ALL_CS
-            url: contains-all-cs.md
-          - text: CONTAINS_ANY_CI
-            url: contains-any-ci.md
-          - text: CONTAINS_ANY_CS
-            url: contains-any-cs.md
           - text: ENDSWITH
             url: endswith.md
           - text: INDEX_OF
@@ -246,6 +252,18 @@ landingContent:
             url: regexmatch.md
           - text: REPLACE
             url: replace.md
+      - linkListType: reference
+        links:
+          - text: CONTAINS
+            url: contains.md
+          - text: CONTAINS_ALL_CI
+            url: contains-all-ci.md
+          - text: CONTAINS_ALL_CS
+            url: contains-all-cs.md
+          - text: CONTAINS_ANY_CI
+            url: contains-any-ci.md
+          - text: CONTAINS_ANY_CS
+            url: contains-any-cs.md
       - linkListType: reference
         links:
           - text: REPLICATE
@@ -304,6 +322,8 @@ landingContent:
             url: is-null.md
           - text: IS_NUMBER
             url: is-number.md
+      - linkListType: reference
+        links:
           - text: IS_OBJECT
             url: is-object.md
           - text: IS_PRIMITIVE
