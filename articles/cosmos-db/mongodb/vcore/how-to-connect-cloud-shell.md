@@ -46,7 +46,114 @@ First, ensure that Azure Cloud Shell can access your Azure Cosmos DB for MongoDB
 1. On the **Networking** page within the **Public access** section, select the **+ Add Azure Cloud Shell IPs** option to automatically add your current IP address to the allowed list.
 
 1. Select **Save** to apply the changes.
-  
+
+> [!NOTE]
+> To ensure connectivity to Azure Cloud Shell, make sure the following IP addresses are allowed for your Cloud Shell region:
+
+<details>
+<summary>centralindia</summary>
+
+- 4.247.135.109
+- 74.225.207.63
+
+</details>
+
+<details>
+<summary>southeastasia</summary>
+
+- 4.194.56.6
+- 4.194.213.10
+- 4.194.144.127
+- 4.194.5.74
+
+</details>
+
+<details>
+<summary>centraluseuap</summary>
+
+- 52.158.186.182
+- 172.215.26.246
+- 134.138.154.177
+- 134.138.129.52
+- 172.215.31.177
+
+</details>
+
+<details>
+<summary>eastus2euap</summary>
+
+- 135.18.43.51
+- 20.252.175.33
+- 40.89.88.111
+- 135.18.17.187
+- 135.18.67.251
+
+</details>
+
+<details>
+<summary>eastus</summary>
+
+- 40.71.199.151
+- 20.42.18.188
+- 52.190.17.9
+- 20.120.96.152
+
+</details>
+
+<details>
+<summary>northeurope</summary>
+
+- 74.234.65.146
+- 52.169.70.113
+
+</details>
+
+<details>
+<summary>southcentralus</summary>
+
+- 4.151.247.81
+- 20.225.211.35
+- 4.151.48.133
+- 4.151.247.225
+
+</details>
+
+<details>
+<summary>westeurope</summary>
+
+- 52.166.126.216
+- 108.142.162.20
+- 52.178.13.125
+- 172.201.33.160
+
+</details>
+
+<details>
+<summary>westus</summary>
+
+- 20.245.161.131
+- 57.154.182.51
+- 40.118.133.244
+- 20.253.192.12
+- 20.43.245.209
+- 20.66.22.66
+
+</details>
+
+<details>
+<summary>usgovarizona</summary>
+
+- 62.10.232.179
+
+</details>
+
+<details>
+<summary>usgovvirginia</summary>
+
+- 62.10.26.85
+
+</details>
+
 ## Connect using Azure Cloud Shell from Quick Start
 
 Now, use the Quick Start experience in the resource's page on the Azure portal to connect directly to Azure Cosmos DB for MongoDB (vCore) using MongoDB Shell.
