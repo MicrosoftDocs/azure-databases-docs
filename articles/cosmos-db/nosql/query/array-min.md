@@ -38,9 +38,27 @@ Returns a numeric/boolean/string expression.
 
 The following example shows the results of using this function on arrays with different data types.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/array-min/query.sql" highlight="2-6":::
+```nosql
+SELECT VALUE {
+    "case1": ARRAY_MIN([1, 2, 3, 4]),
+    "case2": ARRAY_MIN(['abc', 'ABC', 'aBc', 'AbC']),
+    "case3": ARRAY_MIN([true, false]),
+    "case4": ARRAY_MIN([null, null]),
+    "case5": ARRAY_MIN([12, 'abc', true, false, null, undefined])
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/array-min/result.json":::
+```json
+[
+    {
+        "case1": 1,
+        "case2": "ABC",
+        "case3": false,
+        "case4": null,
+        "case5": null
+    }
+]
+```
 
 ## Remarks
 

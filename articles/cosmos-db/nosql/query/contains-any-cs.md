@@ -40,9 +40,27 @@ Returns a Boolean expression.
 
 The following example shows various uses of the CONTAINS_ANY_CS function with case-sensitive matching.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/contains-any-cs/query.sql" highlight="2-6":::
+```nosql
+SELECT VALUE {
+    "case1": CONTAINS_ANY_CS("Have a nice day!", "have", "nice", "day!"),
+    "case2": CONTAINS_ANY_CS("Have a nice day!", "HAVE", "NICE", "DAY!"),
+    "case3": CONTAINS_ANY_CS("Have a nice day!", "had", "nice", "day!"),
+    "case4": CONTAINS_ANY_CS("Have a nice day!", undefined, "nice", "day!"),
+    "case5": CONTAINS_ANY_CS("Have a nice day!", undefined, "had")
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/contains-any-cs/result.json":::
+```json
+[
+    {
+        "case1": true,
+        "case2": false,
+        "case3": true,
+        "case4": true,
+        "case5": undefined
+    }
+]
+```
 
 ## Remarks
 

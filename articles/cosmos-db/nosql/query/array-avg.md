@@ -38,9 +38,25 @@ Returns a numeric expression.
 
 The following example shows the results of using this function on arrays with numeric values.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/array-avg/query.sql" highlight="2-6":::
+```nosql
+SELECT VALUE {
+    "case1": ARRAY_AVG([1, 2, 3, 4]),
+    "case2": ARRAY_AVG([1.0, 2.0, 3.3, 4.7]),
+    "case3": ARRAY_AVG([1, -2.7, 3, -4, undefined]),
+    "case4": ARRAY_AVG(['abc', 'ABC', 'aBc', 'AbC']),
+    "case5": ARRAY_AVG([12, 'abc', true, false, null, undefined])
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/array-avg/result.json":::
+```json
+[
+    {
+        "case1": 2.5,
+        "case2": 2.75,
+        "case3": -0.675
+    }
+]
+```
 
 ## Remarks
 

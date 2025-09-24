@@ -38,9 +38,27 @@ Returns a numeric/boolean/string expression.
 
 The following example shows the results of using this function on arrays with different data types.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/array-max/query.sql" highlight="2-6":::
+```nosql
+SELECT VALUE {
+    "case1": ARRAY_MAX([1, 2, 3, 4]),
+    "case2": ARRAY_MAX(['abc', 'ABC', 'aBc', 'AbC']),
+    "case3": ARRAY_MAX([true, false]),
+    "case4": ARRAY_MAX([null, null]),
+    "case5": ARRAY_MAX([12, 'abc', true, false, null, undefined])
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/array-max/result.json":::
+```json
+[
+    {
+        "case1": 4,
+        "case2": "abc",
+        "case3": true,
+        "case4": null,
+        "case5": "abc"
+    }
+]
+```
 
 ## Remarks
 

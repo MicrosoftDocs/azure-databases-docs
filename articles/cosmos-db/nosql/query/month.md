@@ -38,9 +38,23 @@ Returns a numeric value that is a positive integer.
 
 The following example shows the results of using this function on different date values.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/month/query.sql" highlight="2-4":::
+```nosql
+SELECT VALUE {
+    "case1": MONTH("2024-01-10"),
+    "case2": MONTH("2000-12-12T10:00:00"),
+    "case3": MONTH("1989-03-03T12:12:12.1234567Z")
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/month/result.json":::
+```json
+[
+    {
+        "case1": 1,
+        "case2": 12,
+        "case3": 3
+    }
+]
+```
 
 ## Remarks
 

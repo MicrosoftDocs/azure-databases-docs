@@ -38,9 +38,25 @@ Returns a numeric expression.
 
 The following example shows the results of using this function on arrays with numeric values.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/array-median/query.sql" highlight="2-6":::
+```nosql
+SELECT VALUE {
+    "case1": ARRAY_MEDIAN([1, 2, 3, 4]),
+    "case2": ARRAY_MEDIAN([1.0, 2.0, 3.3, 4.7, 7.8]),
+    "case3": ARRAY_MEDIAN([1, -2.7, 3, -4, undefined]),
+    "case4": ARRAY_MEDIAN(['abc', 'ABC', 'aBc', 'AbC']),
+    "case5": ARRAY_MEDIAN([12, 'abc', true, false, null, undefined])
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/array-median/result.json":::
+```json
+[
+    {
+        "case1": 2.5,
+        "case2": 3.3,
+        "case3": -0.8500000000000001
+    }
+]
+```
 
 ## Remarks
 

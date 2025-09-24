@@ -1,7 +1,7 @@
 ---
 title: SETDIFFERENCE
 titleSuffix: Azure Cosmos DB for NoSQL
-description: An Azure Cosmos DB for NoSQL system function that returns a set containing only the elements from the first input set that are not in the second input set with no duplicates.
+description: An Azure Cosmos DB for NoSQL system function that returns a set containing only the elements from the first input set that aren't in the second input set with no duplicates.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
@@ -16,7 +16,7 @@ ms.custom: query-reference
 
 [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
-Returns a set containing only the elements from the first input set that are not in the second input set with no duplicates.
+Returns a set containing only the elements from the first input set that aren't in the second input set with no duplicates.
 
 ## Syntax
 
@@ -39,13 +39,33 @@ Returns an array expression.
 
 The following example shows the results of using this function to find set differences between arrays.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/setdifference/query.sql" highlight="2-7":::
+```nosql
+SELECT VALUE {
+    "case1": SETDIFFERENCE([1, 2, 3], [1, 2, 6, 7]),
+    "case2": SETDIFFERENCE([1, 2, 6, 7], [1, 2, 3]),
+    "case3": SETDIFFERENCE([1, 2, 3, 4], [1, 2, 3, 4, 5, 6]),
+    "case4": SETDIFFERENCE([], [1, 2, 3]),
+    "case5": SETDIFFERENCE([1, 2, 3], []),
+    "case6": SETDIFFERENCE([1, 1, 1, 1], [2, 3, 4])
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/setdifference/result.json":::
+```json
+[
+    {
+        "case1": [3],
+        "case2": [6, 7],
+        "case3": [],
+        "case4": [],
+        "case5": [1, 2, 3],
+        "case6": [1]
+    }
+]
+```
 
 ## Remarks
 
-- This system function will not utilize the index.
+- This system function won't utilize the index.
 
 ## Related content
 

@@ -39,9 +39,29 @@ Returns a boolean expression.
 
 The following example shows the results of using this function to compare sets for equality.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/setequal/query.sql" highlight="2-7":::
+```nosql
+SELECT VALUE {
+    "case1": SETEQUAL([1, 2, 3], [1, 2, 3]),
+    "case2": SETEQUAL([1, 2, 3], [3, 2, 1]),
+    "case3": SETEQUAL([1, 2, 3, 3], [1, 2, 2, 3, 1, 2]),
+    "case4": SETEQUAL([], [1, 2, 3]),
+    "case5": SETEQUAL([1, true, 'abc'], [true, 1, 'abc']),
+    "case6": SETEQUAL([1, 1, 1, 1], [2, 3, 4])
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/setequal/result.json":::
+```json
+[
+    {
+        "case1": true,
+        "case2": true,
+        "case3": true,
+        "case4": false,
+        "case5": true,
+        "case6": false
+    }
+]
+```
 
 ## Remarks
 

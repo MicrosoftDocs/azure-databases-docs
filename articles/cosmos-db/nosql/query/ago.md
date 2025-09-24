@@ -38,16 +38,30 @@ Returns a string expression.
 ## Examples
 
 The following example shows various uses of the AGO function with different time parts.
+Assume the current datetime is 2024-10-14T14:20:30.6668888Z.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/ago/query.sql" highlight="2-5":::
+```nosql
+SELECT VALUE {
+    "case1": AGO("yyyy", 1),
+    "case2": AGO("yyyy", -1), 
+    "case3": AGO("ss", 30),
+    "case4": AGO("ms", 4)
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/ago/result.json":::
+```json
+[
+    {
+        "case1": "2023-10-14T14:20:30.6668888Z",
+        "case2": "2025-10-14T14:20:30.6668888Z",
+        "case3": "2024-10-14T14:20:00.6668888Z",
+        "case4": "2024-10-14T14:20:30.6628888Z"
+    }
+]
+```
 
 ## Remarks
 
-- This function returns undefined for these reasons:
-  - The time part is invalid.
-  - The numeric expression isn't a valid integer.
 - The ISO 8601 date format specifies valid date and time parts to use with this function:
   - **Year**: year, yyyy, yy
   - **Month**: month, mm, m

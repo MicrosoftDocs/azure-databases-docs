@@ -39,9 +39,25 @@ Returns a string expression.
 
 The following example shows different formatting options for datetime values.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/datetimeformat/query.sql" highlight="2-5":::
+```nosql
+SELECT VALUE {
+    "case1": DATETIMEFORMAT("2024-10-10 14:40:20", "yyyyMMdd"),
+    "case2": DATETIMEFORMAT("2024-10-10 14:40:20", "yyyy-MM-dd [HH:mm:ss]"),
+    "case3": DATETIMEFORMAT("2024-10-10 14:40:20", "To\\da\\y i\\s: yyyy-MM-ddTHH:mm:ss.fff"),
+    "case4": DATETIMEFORMAT("2024-10-10 14:40:20", "To\\da\\y i\\s: yyyy-MM-ddTHH:mm:ss.FFF")
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/datetimeformat/result.json":::
+```json
+[
+    {
+        "case1": "20241010",
+        "case2": "2024-10-10 [14:40:20]",
+        "case3": "Today is: 2024-10-10T14:40:20.000",
+        "case4": "Today is: 2024-10-10T14:40:20."
+    }
+]
+```
 
 ## Remarks
 

@@ -39,10 +39,29 @@ Returns a string expression.
 ## Examples
 
 The following example shows various uses of the NOW function with and without time modifications.
+Assume the current datetime is 2024-10-14T14:20:30.6668888Z.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/now/query.sql" highlight="2-6":::
+```nosql
+SELECT VALUE {
+    "case1": NOW(),
+    "case2": NOW("yyyy", 1),
+    "case3": NOW("yyyy", -1),
+    "case4": NOW("ss", 30),
+    "case5": NOW("ms", 4)
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/now/result.json":::
+```json
+[
+    {
+        "case1": "2024-10-14T14:20:30.6668888Z",
+        "case2": "2025-10-14T14:20:30.6668888Z",
+        "case3": "2023-10-14T14:20:30.6668888Z",
+        "case4": "2024-10-14T14:21:00.6668888Z",
+        "case5": "2024-10-14T14:20:30.6708888Z"
+    }
+]
+```
 
 ## Remarks
 

@@ -38,9 +38,23 @@ Returns a numeric expression.
 
 The following example shows the results of using this function on arrays with numeric values.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/array-sum/query.sql" highlight="2-5":::
+```nosql
+SELECT VALUE {
+    "case1": ARRAY_SUM([1, 2, 3, 4]),
+    "case2": ARRAY_SUM([1, 2, 3, 4, undefined]),
+    "case3": ARRAY_SUM(['abc', 'ABC', 'aBc', 'AbC']),
+    "case4": ARRAY_SUM([12, 'abc', true, false, null, undefined])
+}
+```
 
-:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/array-sum/result.json":::
+```json
+[
+    {
+        "case1": 10,
+        "case2": 10
+    }
+]
+```
 
 ## Remarks
 
