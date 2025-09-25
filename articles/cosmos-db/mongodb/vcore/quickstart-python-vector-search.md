@@ -59,6 +59,8 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     source venv/bin/activate
     ```
 
+----
+
 1. Install the required packages:
 
     ```bash
@@ -105,8 +107,6 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 1. Copy the `HotelsData_toCosmosDB_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) into the `data` subdirectory.
 
-
-----
 
 ## Create code files for vector search
 
