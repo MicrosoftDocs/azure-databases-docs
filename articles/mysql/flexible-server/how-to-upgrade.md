@@ -108,6 +108,7 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
      :::image type="content" source="media/how-to-upgrade/how-to-validate.png" alt-text="Screenshot showing validate.":::
     
     > [!NOTE]  
+    > Online validation is currently not supported for 8.0 to 8.4 major version upgrade, customer are suggested to use [community tool](https://dev.mysql.com/doc/mysql-shell/8.4/en/mysql-shell-utilities-upgrade.html) to perform pre-upgrade validation. Online validation for 8.0 to 8.4 support will be delivered in the near future.  
     > When using the 'Validate' feature to assess your database schema for compatibility with the target MySQL version, please take note of the following considerations:
     > - Table Locking During Validation: The validation process involves locking tables to inspect the entire schema accurately. This can lead to query timeouts if the database is under heavy load.
     >  
