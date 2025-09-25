@@ -1,5 +1,5 @@
 ---
-title: List of the PostgreSQL Extensions and Modules, by Name, for an Azure Database for PostgreSQL Flexible Server
+title: List of the PostgreSQL Extensions and Modules, by Name
 description: The following extensions and modules are available in an Azure Database for the PostgreSQL flexible server instance.
 author: varun-dhawan
 ms.author: varundhawan
