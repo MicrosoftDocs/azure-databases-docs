@@ -85,10 +85,8 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     MONGO_CLUSTER_NAME=
 
     # Data Configuration (defaults should work)
-    DATA_FILE_WITHOUT_VECTORS=data/HotelsData_toCosmosDB_Vector.json
     DATA_FILE_WITH_VECTORS=data/HotelsData_with_vectors.json
-    FIELD_TO_EMBED=Description
-    EMBEDDED_FIELD=DescriptionVector
+    EMBEDDED_FIELD=text_embedding_ada_002
     EMBEDDING_DIMENSIONS=1536
     EMBEDDING_SIZE_BATCH=16
     LOAD_SIZE_BATCH=100
@@ -105,7 +103,7 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 1. Create a new subdirectory off the root named `data`.
 
-1. Copy the `HotelsData_toCosmosDB_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) into the `data` subdirectory.
+1. Copy the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) into a new `HotelsData_with_vectors.json` file in the `data` subdirectory.
 
 
 ## Create code files for vector search
