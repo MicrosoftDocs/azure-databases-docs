@@ -8,6 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
 ms.date: 09/25/2025
+ms.custom:
+  - references_regions
 ---
 
 # IP address ranges for Azure Cosmos DB for MongoDB (vCore)
