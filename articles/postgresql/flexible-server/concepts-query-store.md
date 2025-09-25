@@ -4,7 +4,7 @@ description: This article describes the query store feature in Azure Database fo
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/24/2024
+ms.date: 09/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -16,6 +16,9 @@ ms.topic: how-to
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 Query store is a feature in Azure Database for PostgreSQL flexible server that provides a way to track query performance over time. Query store simplifies the troubleshooting of performance issues by helping you quickly find the longest running and most resource-intensive queries. Query store automatically captures a history of queries and runtime statistics, and retains them for your review. It slices the data by time so that you can see temporal usage patterns. Data for all users, databases, and queries is stored in a database named `azure_sys` in the Azure Database for PostgreSQL flexible server instance.
+
+> [!NOTE]
+> Query store isn't supported in Azure Database for PostgreSQL flexible server version 18, while it's in Preview.
 
 ## Enable query store
 
