@@ -7,7 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 09/24/2025
+ms.date: 09/25/2025
 ---
 
 # IP address ranges for Azure Cosmos DB for MongoDB (vCore)

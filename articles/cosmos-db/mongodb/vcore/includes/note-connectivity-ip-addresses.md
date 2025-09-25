@@ -2,7 +2,7 @@
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: include
-ms.date: 09/24/2025
+ms.date: 09/25/2025
 ---
 
 > [!NOTE]
