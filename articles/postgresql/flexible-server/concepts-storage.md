@@ -85,8 +85,22 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 ### Disk full conditions
 
 When your disk becomes full, the server starts returning errors and prevents any further modifications. Reaching the limit might also cause problems with other operational activities, such as backups and write-ahead log (WAL) archiving. There are different ways with which this disk full condition can be avoided:
-- To avoid this situation, the server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. If you're using Premium SSD storage type, you can use the storage autogrow feature or scale up the storage of the server to avoid this issue from occurring.
-- If the server is marked as read only because of disk full condition, you can delete the data that is no longer required. To do this, you can execute the below command to change the mode to read-write, and once that is done, you can execute delete command.
+
+To safeguard against service interruptions caused by low disk space, the server automatically transitions to read-only mode when both of the following conditions are met:
+
+**Available free space is less than 5 GiB, and**
+**Available free space is less than 5% of the total disk capacity**
+
+This dual-threshold mechanism ensures that the server only enters read-only mode when storage is critically low, regardless of the total disk size. The trigger point varies depending on the disk size:
+
+For a 32 GiB disk, 5% equals 1.6 GiB, so read-only mode is triggered when free space drops below 1.6 GiB.
+For a 64 GiB disk, the threshold is 3.2 GiB (5%).
+For an 8 TiB disk (8192 GiB), 5% equals 409.6 GiB. Since 5 GiB is already well below this 5% threshold, the server switches to read-only mode when free space falls under 5 GiB.
+
+This approach prevents the server from entering read-only mode prematurely on larger disks while ensuring protection against data loss or performance degradation when space is genuinely low. If you're using Premium SSD storage, we recommend enabling the storage autogrow feature or manually scaling up the server’s storage to avoid hitting these thresholds.
+
+If the server is marked as read only because of disk full condition, you can delete the data that is no longer required. To do this, you can execute the below command to change the mode to read-write, and once that is done, you can execute delete command.
+
 ```sql
 	SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;
 ```
