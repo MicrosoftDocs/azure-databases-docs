@@ -35,11 +35,11 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 
 ## Features
 
-- General availability of custom port support in Azure Database for MySQL Flexible Server. [Learn more]()
+- General availability of custom port support in Azure Database for MySQL Flexible Server. [Learn more](../concepts-networking.md)
 - Public Preview of server rename capability in Azure Database for MySQL Flexible Server. 
 
 > [!NOTE]  
-> Server rename is currently in public preview, do not use in production environments, only a few region support this feature at this moment, and we can only rename server one time at this stage.
+> Server rename is currently in public preview, do not use in production environments, only a few region support this feature at this moment, and we can only rename server one time at this stage. If you have any feedback regarding this feature, please reach out via [Ask Azure Database For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
 
 ## Improvements
 
@@ -47,4 +47,4 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 
 ## Known issues fix
 
-- Fixed the issue where replicas of source servers with geo-backup enabled could experience worsening replication lag under certain conditions. Once lag began, replicas failed to catch up and the delay continued to grow, independent of workload. This fix ensures replication lag now stabilizes and recovery mechanisms behave as expected.
+- Fixed the issue where replicas of source servers with geo-backup enabled could experience worsening replication lag under certain conditions. Once lag began, replicas failed to catch up and the delay continued to grow, independent of workload. This fix ensures replication lag now stabilizes and recovery mechanisms behave as expected. 
