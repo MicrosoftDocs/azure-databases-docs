@@ -39,7 +39,7 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 - Public Preview of server rename capability in Azure Database for MySQL Flexible Server. 
 
 > [!NOTE]  
-> Server rename is currently in public preview, do not use in production environments, only a few region support this feature at this moment, and we can only rename server one time at this stage. If you have any feedback regarding this feature, please reach out via [Ask Azure Database For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
+> Server rename is currently in public preview, do not use in production environments, only a few regions support this feature at this moment, and we can only rename server one time at this stage. If you have any feedback regarding this feature, please reach out via [Ask Azure Database For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
 
 ## Improvements
 
