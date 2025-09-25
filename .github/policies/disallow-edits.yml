@@ -32,6 +32,12 @@ configuration:
                 - isActivitySender:
                     user: seesharprun
                 - isActivitySender:
+                    user: bobtabor-msft
+                - isActivitySender:
+                    user: diberry
+                - isActivitySender:
+                    user: alexwolfmsft
+                - isActivitySender:
                     user: learn-build-service-prod[bot]
         then:
           - addReply:
