@@ -1,5 +1,5 @@
 ---
-title: Considerations with the Use of Extensions and Modules in an Azure Database for PostgreSQL Flexible Server
+title: Considerations with the Use of Extensions and Modules
 description: Learn about the extension considerations specific to an Azure Database for PostgreSQL flexible server instance.
 author: varun-dhawan
 ms.author: varundhawan
