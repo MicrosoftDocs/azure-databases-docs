@@ -47,4 +47,4 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 
 ## Known issues fix
 
-- Fixed the issue where replica servers with geo-backup enabled could experience continuously increasing replication lag once it started, regardless of workload. With this fix, replication lag now stabilizes and recovers as expected under normal operating conditions.
+- Fixed the issue where replicas of source servers with geo-backup enabled could experience worsening replication lag under certain conditions. Once lag began, replicas failed to catch up and the delay continued to grow, independent of workload. This fix ensures replication lag now stabilizes and recovery mechanisms behave as expected.
