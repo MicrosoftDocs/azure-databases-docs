@@ -24,6 +24,7 @@ PostgreSQL 18 is now available in **Preview** on Azure Database for PostgreSQL f
 
 - Microsoft Entra ID authentication is not supported in this preview release.  
 - Extension availability is limited. Certain PostgreSQL extensions are not supported in the PG18 preview. Refer to the [list of supported extensions](./concepts-extensions.md) for details.  
+- Query store and index tuning aren’t supported in this preview release.
 - Regional availability is currently restricted to East Asia, with support in other regions planned over the next few weeks.  
 
 These limitations are specific to the preview and will be addressed with the General Availability release of PostgreSQL 18.
