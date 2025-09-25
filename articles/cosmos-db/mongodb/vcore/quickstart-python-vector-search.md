@@ -45,9 +45,18 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 1. In the terminal, create and activate a virtual environment:
 
+### [Windows](#tab/tab-windows)
+
     ```bash
     python -m venv venv
-    source /venv/Source/activate
+    venv\\Scripts\\activate
+    ```
+
+#### [macOS/Linux](#tab/tab-macos-linux)
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate
     ```
 
 1. Install the required packages:
