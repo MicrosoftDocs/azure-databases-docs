@@ -44,15 +44,13 @@ The following characteristics apply whether you choose to use the private access
 - The server has a fully qualified domain name (fqdn). We recommend using the fqdn instead of an IP address for the hostname property in connection strings.
 - Both options control access at the server-level, not at the database- or table-level. You would use MySQL's roles properties to control database, table, and other object access.
 
-The following additional characteristics apply when you choose to use the private access (VNet integration) option:
-
-- Ability to specify custom port between 250001 and 26000 during server creation to connect to the server. The default port to connect is 3306 (Public Preview).
+### Custom port support
+Azure MySQL now supports the ability to specify a custom port between 250001 and 26000 during server creation to connect to the server. The default port to connect is 3306.
   - Only one custom port per server is supported.
   - Supported scenarios for custom port: server creation, restore (cross-port restore supported), read replica creation, high availability enablement.
   - Current limitations:
     - Custom port can't be updated post server creation.
     - Geo-restore and geo-replica creation with custom port aren't supported.
-    - Custom port is supported for only VNet-injected servers.
 
 ### Unsupported virtual network scenarios
 
