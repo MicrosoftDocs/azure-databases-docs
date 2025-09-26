@@ -103,8 +103,32 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 1. Copy the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) into a new `HotelsData_with_vectors.json` file in the `data` subdirectory.
 
+1. The project structure should look like this:
+
+    ```plaintext
+    vector-search-quickstart
+    ├── data
+    │   └── HotelsData_with_vectors.json
+    ├── .env
+    └── venv (or your virtual environment folder)
+    ```
+
 
 ## Create code files for vector search
+
+Continue the project by creating code files for vector search. When you are done, the project structure should look like this:
+
+```plaintext
+vector-search-quickstart
+├── data
+│   └── HotelsData_with_vectors.json
+├── .env
+├── src
+│   ├── diskann.py
+│   ├── ivf.py
+│   └── hnsw.py
+└── venv (or your virtual environment folder)
+```
 
 ### [DiskANN](#tab/tab-diskann)
 
