@@ -4,7 +4,7 @@ description: This article describes the index tuning feature available in an Azu
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/07/2025
+ms.date: 09/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -26,6 +26,9 @@ It's a built-in offering in your Azure Database for PostgreSQL flexible server, 
 - [Identify which indexes are beneficial](#create-index-recommendations) to create because they could significantly improve the queries analyzed during an index tuning session.
 - [Identify indexes that are exact duplicates and can be eliminated](#drop-duplicate-indexes) to reduce the performance impact their existence and maintenance have on the system's overall performance.
 - [Identify indexes not used in a configurable period](#drop-unused-indexes) that could be candidates to eliminate.
+
+> [!NOTE]
+> Index tuning depends on query store, which isn't supported in Azure Database for PostgreSQL flexible server version 18, while it's in Preview.
 
 ## General description of the index tuning algorithm
 

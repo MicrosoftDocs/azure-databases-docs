@@ -83,6 +83,8 @@ groups:
   title: PostgreSQL Server Versions
   prompt: Choose a PostgreSQL version
   pivots:
+  - id: postgresql-18
+    title: PostgreSQL 18 (preview)
   - id: postgresql-17
     title: PostgreSQL 17
   - id: postgresql-16

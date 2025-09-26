@@ -29,6 +29,8 @@
       href: quickstart-bicep.md
     - name: Create resources - Terraform
       href: quickstart-terraform.md
+    - name: Vector search - Python
+      href: quickstart-python-vector-search.md
     - name: Vector search - Node.js
       href: quickstart-nodejs-vector-search.md
 - name: Tutorials
@@ -248,6 +250,8 @@
       href: release-notes.md
     - name: Troubleshoot common issues
       href: troubleshoot-common-issues.md
+    - name: IP addresses
+      href: reference-ip-addresses.md
 - name: Samples
   items:
     - name: Solution accelerators

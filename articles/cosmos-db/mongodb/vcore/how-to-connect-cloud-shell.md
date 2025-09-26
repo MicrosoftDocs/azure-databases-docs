@@ -7,7 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 09/19/2025
+ms.date: 09/25/2025
 ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
@@ -46,7 +46,9 @@ First, ensure that Azure Cloud Shell can access your Azure Cosmos DB for MongoDB
 1. On the **Networking** page within the **Public access** section, select the **+ Add Azure Cloud Shell IPs** option to automatically add your current IP address to the allowed list.
 
 1. Select **Save** to apply the changes.
-  
+
+[!INCLUDE[Note - Connectivity IP Addresses](includes/note-connectivity-ip-addresses.md)]
+
 ## Connect using Azure Cloud Shell from Quick Start
 
 Now, use the Quick Start experience in the resource's page on the Azure portal to connect directly to Azure Cosmos DB for MongoDB (vCore) using MongoDB Shell.
