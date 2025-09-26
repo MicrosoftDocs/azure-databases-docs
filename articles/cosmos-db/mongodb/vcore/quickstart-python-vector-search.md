@@ -265,9 +265,9 @@ You see the top five hotels that match the vector search query and their similar
 ## Clean up resources
 
 
-Delete the resource group, Cosmos DB for MongoDB (vCore) account, and Azure OpenAI resource when you don't need them to avoid extra costs.
+Delete the resource group, Cosmos DB for MongoDB account, and Azure OpenAI resource when you don't need them to avoid extra costs.
 
 ## Related content
 
-- [Vector store in Azure Cosmos DB for MongoDB vCore](vector-search.md)
+- [Vector store in Azure Cosmos DB for MongoDB (vCore)](vector-search.md)
 - [Support for geospatial queries](geospatial-support.md)
