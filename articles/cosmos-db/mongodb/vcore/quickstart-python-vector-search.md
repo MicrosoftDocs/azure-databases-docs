@@ -31,12 +31,12 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     - [DocumentDB extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb)
 - [Azure CLI](/cli/azure/install-azure-cli)
 - [Python](https://www.python.org/downloads/) 3.9 or greater
-- 
+
 - [Azure OpenAI resource](/azure/ai-foundry/openai) with:
-    - Role Based Access Control (RBAC) enabled
+    - [Role Based Access Control (RBAC) enabled](/azure/developer/ai/keyless-connections)
     - `text-embedding-ada-002` model deployed
 - [CosmosDB for MongoDB (vCore) resource](quickstart-portal.md) with:
-    - Role Based Access Control (RBAC) enabled
+    - [Role Based Access Control (RBAC) enabled](how-to-configure-entra-authentication?tabs=portal%2Cazure-portal)
     - Firewall configured for your IP address
 
 ## Create a Python project
@@ -79,9 +79,8 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
     ```ini
     # Azure OpenAI Configuration
-    AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
-    AZURE_OPENAI_EMBEDDING_ENDPOINT=
-    AZURE_OPENAI_EMBEDDING_KEY=your-azure-openai-api-key
+    AZURE_OPENAI_EMBEDDING_ENDPOINT= AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
+
     AZURE_OPENAI_EMBEDDING_API_VERSION=2024-02-01
 
     # MongoDB/Cosmos DB Configuration
@@ -95,12 +94,9 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     LOAD_SIZE_BATCH=100
     ```
 
-    Replace the placeholder values in the `.env` file with your own information:
+    For the passwordless authentication used in this article, replace the placeholder values in the `.env` file with your own information:
     - `AZURE_OPENAI_EMBEDDING_ENDPOINT`: Your Azure OpenAI resource endpoint URL
     - `MONGO_CLUSTER_NAME`: Your MongoDB vCore resource name
-
-    > [!Note]
-    > Some of the settings are not used in this quickstart, but there are examples of their use in the source code on GitHub.
 
     You should always prefer passwordless authentication, but it will require additional setup. For more information on setting up managed identity and the full range of your authentication options, see [Authenticate Python apps to Azure services by using the Azure SDK for Python](/azure/developer/python/sdk/authentication/overview).
 
