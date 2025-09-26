@@ -36,7 +36,7 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     - [Role Based Access Control (RBAC) enabled](/azure/developer/ai/keyless-connections)
     - `text-embedding-ada-002` model deployed
 - [CosmosDB for MongoDB (vCore) resource](quickstart-portal.md) with:
-    - [Role Based Access Control (RBAC) enabled](how-to-configure-entra-authentication?tabs=portal%2Cazure-portal)
+    - [Role Based Access Control (RBAC) enabled](how-to-configure-entra-authentication.md?tabs=portal%2Cazure-portal)
     - Firewall configured for your IP address
 
 ## Create a Python project
