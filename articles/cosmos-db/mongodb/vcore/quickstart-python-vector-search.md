@@ -79,8 +79,8 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
     ```ini
     # Azure OpenAI Configuration
-    AZURE_OPENAI_EMBEDDING_ENDPOINT= AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
-
+    AZURE_OPENAI_EMBEDDING_ENDPOINT= 
+    AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
     AZURE_OPENAI_EMBEDDING_API_VERSION=2024-02-01
 
     # MongoDB/Cosmos DB Configuration
