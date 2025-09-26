@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 09/17/2025
+ms.date: 09/22/2025
 ms.custom:
   - devx-track-rust
   - build-2025
@@ -644,7 +644,7 @@ One of the common tasks performed in the tools with Entra ID authentication is m
 To connect to an Azure Cosmos DB for MongoDB vCore cluster using Visual Studio Code with DocumentDB extension and Entra ID authentication, follow [this guidance](https://devblogs.microsoft.com/cosmosdb/secure-your-connections-with-entra-id-support-in-the-documentdb-vs-code-extension/).
 
 > [!NOTE]
-> When you authenticate to an Azure Cosmos DB for MongoDB vCore cluster using Entra ID in Visual Studio Code with DocumentDB extension, `shell` functionality is not supported. If you need to use MongoDB shell with Entra ID authentication, follow [these steps](#connect-to-the-cluster-using-entra-id-in-mongodb-shell). 
+> When you authenticate to an Azure Cosmos DB for MongoDB vCore cluster using Entra ID in Visual Studio Code with DocumentDB extension, `shell` functionality isn't supported. If you need to use MongoDB shell with Entra ID authentication, follow [these steps](#connect-to-the-cluster-using-entra-id-in-mongodb-shell). 
 
 ### Connect to the cluster using Entra ID in MongoDB shell
 
