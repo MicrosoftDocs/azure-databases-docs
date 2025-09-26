@@ -348,6 +348,23 @@ ms.custom: automatically generated
 
 
 
+### trace_connection_negotiation
+
+| Attribute | Value |
+| --- | --- |
+| Category | Developer Options |
+| Description | Logs details of pre-authentication connection handshake. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [trace_connection_negotiation](https://www.postgresql.org/docs/18/runtime-config-developer.html#GUC-TRACE-NOTIFY) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### trace_notify
 
 | Attribute | Value |

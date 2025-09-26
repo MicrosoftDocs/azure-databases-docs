@@ -76,6 +76,23 @@ ms.custom: automatically generated
 
 
 
+### oauth_validator_libraries
+
+| Attribute | Value |
+| --- | --- |
+| Category | Connections and Authentication / Connection Settings |
+| Description | Lists libraries that may be called to validate OAuth v2 bearer tokens. |
+| Data type | string |
+| Default value | |
+| Allowed values | `[A-Za-z0-9\\._,]*` |
+| Parameter type | dynamic |
+| Documentation | [oauth_validator_libraries](https://www.postgresql.org/docs/18/runtime-config-connection.html#GUC-OAUTH-VALIDATOR-LIBRARIES) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### port
 
 | Attribute | Value |

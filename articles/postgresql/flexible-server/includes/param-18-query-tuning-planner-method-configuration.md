@@ -42,6 +42,23 @@ ms.custom: automatically generated
 
 
 
+### enable_distinct_reordering
+
+| Attribute | Value |
+| --- | --- |
+| Category | Query Tuning / Planner Method Configuration |
+| Description | Enables reordering of DISTINCT keys. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [enable_distinct_reordering](https://www.postgresql.org/docs/18/runtime-config-query.html#GUC-ENABLE-DISTINCT-REORDERING) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### enable_gathermerge
 
 | Attribute | Value |
@@ -53,6 +70,23 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_gathermerge](https://www.postgresql.org/docs/18/runtime-config-query.html#GUC-ENABLE-GATHERMERGE) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### enable_group_by_reordering
+
+| Attribute | Value |
+| --- | --- |
+| Category | Query Tuning / Planner Method Configuration |
+| Description | Enables reordering of GROUP BY keys. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [enable_group_by_reordering](https://www.postgresql.org/docs/18/runtime-config-query.html#GUC-ENABLE-GROUPBY-REORDERING) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -308,6 +342,23 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_presorted_aggregate](https://www.postgresql.org/docs/18/runtime-config-query.html#GUC-ENABLE-PRESORTED-AGGREGATE) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### enable_self_join_elimination
+
+| Attribute | Value |
+| --- | --- |
+| Category | Query Tuning / Planner Method Configuration |
+| Description | Enables removal of unique self-joins. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [enable_self_join_elimination](https://www.postgresql.org/docs/18/runtime-config-query.html#GUC-ENABLE-SELF-JOIN-ELIMINATION) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

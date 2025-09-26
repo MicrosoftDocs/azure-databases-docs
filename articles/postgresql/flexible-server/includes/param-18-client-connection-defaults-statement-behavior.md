@@ -195,6 +195,23 @@ ms.custom: automatically generated
 
 
 
+### extension_control_path
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Statement Behavior |
+| Description | A path to search for extensions, specifically extension control files (name.control). |
+| Data type | string |
+| Default value | `$system` |
+| Allowed values | `$system` |
+| Parameter type | read-only |
+| Documentation | [extension_control_path](https://www.postgresql.org/docs/18/runtime-config-client.html#GUC-EXTENSION-CONTROL-PATH) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### gin_pending_list_limit
 
 | Attribute | Value |

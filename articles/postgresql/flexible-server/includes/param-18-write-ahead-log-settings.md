@@ -212,6 +212,23 @@ ms.custom: automatically generated
 
 
 
+### wal_summary_keep_time
+
+| Attribute | Value |
+| --- | --- |
+| Category | Write-Ahead Log / Settings |
+| Description | Time for which WAL summary files should be kept. |
+| Data type | integer |
+| Default value | `14400` |
+| Allowed values | `14400` |
+| Parameter type | read-only |
+| Documentation | [wal_summary_keep_time](https://www.postgresql.org/docs/18/runtime-config-wal.html#GUC-WAL-SUMMARY-KEEP-TIME) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### wal_sync_method
 
 | Attribute | Value |

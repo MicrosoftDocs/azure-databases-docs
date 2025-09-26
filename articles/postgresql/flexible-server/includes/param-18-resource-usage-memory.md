@@ -110,6 +110,91 @@ ms.custom: automatically generated
 
 
 
+### io_combine_limit
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Limit on the size of data reads and writes. |
+| Data type | integer |
+| Default value | `16` |
+| Allowed values | `1-128` |
+| Parameter type | dynamic |
+| Documentation | [io_combine_limit](https://www.postgresql.org/docs/18/runtime-config-resource.html#GUC-IO-COMBINE-LIMIT) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### io_max_combine_limit
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Server-wide limit that clamps io_combine_limit. |
+| Data type | integer |
+| Default value | `16` |
+| Allowed values | `1-128` |
+| Parameter type | dynamic |
+| Documentation | [io_max_combine_limit](https://www.postgresql.org/docs/18/runtime-config-resource.html#GUC-IO-MAX-COMBINE-LIMIT) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### io_max_concurrency
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Max number of IOs that one process can execute simultaneously. |
+| Data type | integer |
+| Default value | `64` |
+| Allowed values | `-1-1024` |
+| Parameter type | static |
+| Documentation | [io_max_concurrency](https://www.postgresql.org/docs/18/runtime-config-resource.html#GUC-IO-MAX-CONCURRENCY) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### io_method
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Selects the method for executing asynchronous I/O. |
+| Data type | enumeration |
+| Default value | `worker` |
+| Allowed values | `worker,sync` |
+| Parameter type | static |
+| Documentation | [io_method](https://www.postgresql.org/docs/18/runtime-config-resource.html#GUC-IO-METHOD) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### io_workers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Number of IO worker processes, for io_method=worker. |
+| Data type | integer |
+| Default value | `3` |
+| Allowed values | `1-32` |
+| Parameter type | dynamic |
+| Documentation | [io_workers](https://www.postgresql.org/docs/18/runtime-config-resource.html#GUC-IO-WORKERS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### logical_decoding_work_mem
 
 | Attribute | Value |

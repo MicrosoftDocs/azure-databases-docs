@@ -9,4 +9,4 @@ ms.topic: include
 ms.custom: automatically generated
 ---
 > [!NOTE]
-> Azure Database for PostgreSQL flexible server 18 does not have any server parameter in the 'Statistics / Query and Index Statistics Collector' category.
+> Azure Database for PostgreSQL Flexible Server 18 does not have any server parameter in the 'Statistics / Query and Index Statistics Collector' category.

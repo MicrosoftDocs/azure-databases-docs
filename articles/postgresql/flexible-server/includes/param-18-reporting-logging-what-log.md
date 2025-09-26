@@ -229,6 +229,23 @@ ms.custom: automatically generated
 
 
 
+### log_lock_failure
+
+| Attribute | Value |
+| --- | --- |
+| Category | Reporting and Logging / What to Log |
+| Description | Controls whether a detailed log message is produced when a lock acquisition fails. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [log_lock_failure](https://www.postgresql.org/docs/18/runtime-config-logging.html#GUC-LOG-LOCK-FAILURE) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### log_lock_waits
 
 | Attribute | Value |

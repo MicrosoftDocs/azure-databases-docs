@@ -195,6 +195,23 @@ ms.custom: automatically generated
 
 
 
+### autovacuum_vacuum_max_threshold
+
+| Attribute | Value |
+| --- | --- |
+| Category | Autovacuum |
+| Description | Maximum number of tuple updates or deletes prior to vacuum. -1 disables the maximum threshold. |
+| Data type | integer |
+| Default value | `100000000` |
+| Allowed values | `-1-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [autovacuum_vacuum_max_threshold](https://www.postgresql.org/docs/18/runtime-config-vacuum.html#GUC-AUTOVACUUM-VACUUM-MAX-THRESHOLD) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### autovacuum_vacuum_scale_factor
 
 | Attribute | Value |
@@ -223,6 +240,57 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [autovacuum_vacuum_threshold](https://www.postgresql.org/docs/18/runtime-config-vacuum.html#GUC-AUTOVACUUM-VACUUM-THRESHOLD) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### autovacuum_worker_slots
+
+| Attribute | Value |
+| --- | --- |
+| Category | Autovacuum |
+| Description | Sets the number of backend slots to allocate for autovacuum workers. |
+| Data type | integer |
+| Default value | `16` |
+| Allowed values | `1-262143` |
+| Parameter type | static |
+| Documentation | [autovacuum_worker_slots](https://www.postgresql.org/docs/18/runtime-config-vacuum.html#GUC-AUTOVACUUM-WORKER-SLOTS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### vacuum_max_eager_freeze_failure_rate
+
+| Attribute | Value |
+| --- | --- |
+| Category | Autovacuum |
+| Description | Fraction of pages in a relation vacuum can scan and fail to freeze before disabling eager scanning. A value of 0.0 disables eager scanning and a value of 1.0 will eagerly scan up to 100 percent of the all-visible pages in the relation. If vacuum successfully freezes these pages, the cap is lower than 100 percent, because the goal is to amortize page freezing across multiple vacuums. |
+| Data type | numeric |
+| Default value | `0.03` |
+| Allowed values | `0.0-1.0` |
+| Parameter type | dynamic |
+| Documentation | [vacuum_max_eager_freeze_failure_rate](https://www.postgresql.org/docs/18/runtime-config-vacuum.html#GUC-VACUUM-MAX-EAGER-FREEZE-FAILURE-RATE) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### vacuum_truncate
+
+| Attribute | Value |
+| --- | --- |
+| Category | Autovacuum |
+| Description | Enables vacuum to truncate empty pages at the end of the table. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [vacuum_truncate](https://www.postgresql.org/docs/18/runtime-config-vacuum.html#GUC-VACUUM-TRUNCATE) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

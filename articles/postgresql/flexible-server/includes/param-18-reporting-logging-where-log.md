@@ -161,6 +161,23 @@ ms.custom: automatically generated
 
 
 
+### md5_password_warnings
+
+| Attribute | Value |
+| --- | --- |
+| Category | Reporting and Logging / Where to Log |
+| Description | Enables deprecation warnings for MD5 passwords. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [md5_password_warnings](https://www.postgresql.org/docs/18/runtime-config-logging.html#GUC-MD5-PASSWORD-WARNINGS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### syslog_facility
 
 | Attribute | Value |
