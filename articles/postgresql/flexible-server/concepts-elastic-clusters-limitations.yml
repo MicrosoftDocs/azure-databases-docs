@@ -41,7 +41,7 @@ sections:
         answer: Currently, downloading server logs isn't supported during the preview. You can use Azure Metrics, Log Analytic Workspaces and PostgreSQL views to analyze cluster behavior.
 
       - question: Can I use Terraform to deploy elastic clusters?
-        answer: Currently, Terraform isn't supported during the preview, however Terraform will be available in the Generally Available (GA) release.  ARM templates are supported.
+        answer: Terraform isn't available during the preview, however it is expected to be available on or shortly after the GA release.
 
   - name: Backups
     questions:
@@ -57,7 +57,7 @@ sections:
         answer: Elastic clusters are compatible with the majority of PostgreSQL extensions.  For a comprehensive list, please refer to the [extension compatibility matrix](https://github.com/citusdata/citus/blob/main/EXTENSION_COMPATIBILITY.md) in the Citus GitHub repository.  Be sure to review the release notes and support details when using any of the available extensions alongside elastic clusters.
 
       - question: Why isn't TimescaleDB available with elastic clusters?
-        answer: Elastic clusters make use of key low-level system hooks which conflict with the TimescaleDB extension.  Fortunately, elastic clusters provide similar time-series capabilities.  You can learn more about timeseries data in the [Citus documentation](https://docs.citusdata.com/en/stable/use_cases/timeseries.html).
+        answer: Elastic clusters make use of key low-level system hooks which are incompatible with the TimescaleDB extension.
 
   - name: Migrations
     questions:
@@ -73,7 +73,7 @@ sections:
         answer: Yes, PgBouncer is supported with elastic clusters. Port 6432 should be used for schema and node management operations, while port 8432 is load-balanced to PgBouncer instances running across all nodes in the cluster.
 
       - question: Can I use virtual network (VNet) injection with elastic clusters?
-        answer: Virtual network injection is not planned for elastic clusters.  We recommend using Private Link Endpoints for any network isolation requirements.
+        answer: Virtual network injection is not currently supported for elastic clusters.  We recommend using Private Link Endpoints for any network isolation requirements.
 
       - question: Are Private Domain Name System (DNS) Zones supported with elastic clusters?
         answer: Currently, Private DNS Zones aren't supported during the preview.
@@ -84,7 +84,7 @@ sections:
         answer: Customer-managed keys are not currently supported during the preview, however they will be available in the Generally Available (GA) release.
 
       - question: Is Storage Auto Scale available?
-        answer: Storage Auto Scale is not available, however cluster storage size and throughput can be adjusted manually.
+        answer: Storage Auto Scale is not available, however you can manually scale cluster storage and I/O throughput as needed.
 
   - name: Authentication
     questions:
@@ -94,10 +94,10 @@ sections:
   - name: Performance
     questions:
       - question: Can I use Query Performance Insights with elastic clusters?
-        answer: Query Performance Insights is not currently supported at this time.
+        answer: Query Performance Insights is not currently supported.
 
       - question: Can I use Automatic Index Tuning with elastic clusters?
-        answer: Automatic Index Tuning is not currently supported at this time.
+        answer: Automatic Index Tuning is not currently supported.
 
       - question: Can I use replicas with elastic clusters?
-        answer: Besides supporting High Availability (HA), elastic clusters currently support the configuration of a single read-replica.
+        answer: Elastic clusters currently support the configuration of a single read-replica.  Elastic clusters can also be configured for high availability (HA) with automatic failover.
