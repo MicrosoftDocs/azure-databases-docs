@@ -7,7 +7,7 @@ ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/27/2024
+ms.date: 09/05/2025
 ---
 
 # $multiply
@@ -149,17 +149,17 @@ To double the total sales for all stores under the "First Up Consultants" compan
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$project": {
-        "company": 1,
+    $project: {
+        company: 1,
         "sales.revenue": 1,
-        "salesVolumeDoubled": {
-            "$multiply": ["$sales.revenue", 2]
+        salesVolumeDoubled: {
+            $multiply: ["$sales.revenue", 2]
         }
     }
 }])

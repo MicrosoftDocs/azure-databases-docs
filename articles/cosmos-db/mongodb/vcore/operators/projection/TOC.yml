@@ -1,8 +1,8 @@
 - name: $
-  href: $.md
+  href: ../array-update/$.md
 - name: $elemMatch
-  href: $elemmatch.md
+  href: ../array-query/$elemmatch.md
 - name: $meta
   href: $meta.md
 - name: $slice
-  href: $slice.md
+  href: ../array-expression/$slice.md

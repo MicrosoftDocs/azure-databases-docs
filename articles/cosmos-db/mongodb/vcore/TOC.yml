@@ -29,6 +29,8 @@
       href: quickstart-bicep.md
     - name: Create resources - Terraform
       href: quickstart-terraform.md
+    - name: Vector search - Node.js
+      href: quickstart-nodejs-vector-search.md
 - name: Tutorials
   items:
     - name: Build web applications
@@ -156,14 +158,18 @@
           href: how-to-build-go-console-app.md
         - name: Rust
           href: how-to-build-rust-console-app.md
-    - name: Use community tools
+    - name: Connect to the cluster
       items:
         - name: Connect using Studio 3T
           href: how-to-connect-studio-3t.md
         - name: Connect using MongoDB Shell
           href: how-to-connect-mongo-shell.md
+        - name: Connect using Azure Cloud Shell
+          href: how-to-connect-cloud-shell.md
         - name: Connect using Visual Studio Code
           href: ../../visual-studio-code-extension.md?pivots=api-mongodb&context=/azure/cosmos-db/mongodb/vcore/context/context
+        - name: Configure firewall
+          href: how-to-configure-firewall.md
     - name: Develop applications
       items:
         - name: Create transactions
@@ -190,6 +196,20 @@
         href: how-to-upgrade-cluster.md
       - name: Restore cluster
         href: how-to-restore-cluster.md
+    - name: Security and data access
+      items:
+      - name: Manage private access
+        href: how-to-private-link.md
+      - name: Manage public access
+        href: how-to-public-access.md
+      - name: Configure Microsoft Entra ID authentication
+        href: how-to-configure-entra-authentication.md
+      - name: Create secondary users
+        href: secondary-users.md
+      - name: Configure customer-managed key (CMK) encryption
+        href: how-to-data-encryption.md
+      - name: Troubleshoot CMK data encryption
+        href: how-to-database-encryption-troubleshoot.md
     - name: Replication
       items:
       - name: Manage replication
@@ -206,18 +226,6 @@
         href: how-to-manage-alerts.md
       - name: Monitor diagnostics logs
         href: how-to-monitor-diagnostics-logs.md
-    - name: Security and data access
-      items:
-      - name: Manage private access
-        href: how-to-private-link.md
-      - name: Manage public access
-        href: how-to-public-access.md
-      - name: Configure Microsoft Entra ID authentication
-        href: how-to-configure-entra-authentication.md
-      - name: Create secondary users
-        href: secondary-users.md
-      - name: Configure customer-managed key (CMK) encryption
-        href: how-to-data-encryption.md
 - name: Reference
   items:
     - name: Azure CLI
@@ -240,6 +248,8 @@
       href: release-notes.md
     - name: Troubleshoot common issues
       href: troubleshoot-common-issues.md
+    - name: IP addresses
+      href: reference-ip-addresses.md
 - name: Samples
   items:
     - name: Solution accelerators

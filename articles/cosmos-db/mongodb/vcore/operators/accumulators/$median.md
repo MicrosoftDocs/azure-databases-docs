@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 06/28/2025
+ms.date: 09/05/2025
 ---
 
 # $median usage on Azure Cosmos DB for MongoDB vCore

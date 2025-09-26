@@ -1,37 +1,15 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 04/11/2025
+ms.date: 09/10/2025
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 ---
 
-Disabling key-based authorization prevents your account from being used without the more secure Microsoft Entra authentication method. This procedure is a step that should be performed on new accounts in secure workloads. Alternatively, perform this procedure on existing accounts being migrated to a secure workload pattern.
+Disabling key-based authorization prevents your account from being used without the more secure Microsoft Entra ID authentication method. This procedure is a step that should be performed on new accounts in secure workloads. Alternatively, perform this procedure on existing accounts being migrated to a secure workload pattern.
 
-## Prerequisites
+::: zone pivot="azure-cli"
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-::: zone pivot="azure-interface-cli,azure-interface-bicep"
-
-[!INCLUDE [Azure CLI prerequisites](~/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
-
-::: zone-end
-
-::: zone pivot="azure-interface-portal"
-
-::: zone-end
-
-::: zone pivot="azure-interface-shell"
-
-[!INCLUDE [Azure PowerShell prerequisites](~/reusable-content/azure-powershell/azure-powershell-requirements-no-header.md)]
-
-::: zone-end
-
-## Disable key-based authentication
-
-::: zone pivot="azure-interface-cli"
-
-First, disable key-based authentication to your existing account so that applications are required to use Microsoft Entra authentication. Use [`az resource update`](/cli/azure/resource#az-resource-update) to modify `properties.disableLocalAuth` of the existing account.
+First, disable key-based authentication to your existing account so that applications are required to use Microsoft Entra ID authentication. Use [`az resource update`](/cli/azure/resource#az-resource-update) to modify `properties.disableLocalAuth` of the existing account.
 
 ```azurecli-interactive
 az resource update \
@@ -43,7 +21,7 @@ az resource update \
 
 ::: zone-end
 
-::: zone pivot="azure-interface-bicep"
+::: zone pivot="azure-resource-manager-bicep"
 
 First, create a new account with key-based authentication disabled so that applications are required to use Microsoft Entra authentication.
 
@@ -84,7 +62,7 @@ First, create a new account with key-based authentication disabled so that appli
 
 ::: zone-end
 
-::: zone pivot="azure-interface-shell"
+::: zone pivot="azure-powershell"
 
 First, disable key-based authentication to your existing account so that applications are required to use Microsoft Entra authentication. Use [`Get-AzResource`](/powershell/module/az.resources/get-azresource) and [`Set-AzResource`](/powershell/module/az.resources/set-azresource) to respectively read and update the existing account.
 
@@ -98,13 +76,12 @@ $resource = Get-AzResource @parameters
 
 $resource.Properties.DisableLocalAuth = $true
 
-
 $resource | Set-AzResource -Force
 ```
 
 ::: zone-end
 
-::: zone pivot="azure-interface-portal"
+::: zone pivot="azure-portal"
 
 Use these steps to create a new Azure Cosmos DB for NoSQL account with key-based authentication disabled so that applications are required to only use Microsoft Entra authentication.
 

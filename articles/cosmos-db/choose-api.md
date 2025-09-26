@@ -5,14 +5,20 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
-ms.date: 09/02/2025
+ms.date: 09/03/2025
 adobe-target: true
 ai-usage: ai-assisted
+applies-to:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ MongoDB (vCore)
+  - ✅ PostgreSQL
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Choose an API in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table, PostgreSQL](includes/appliesto-nosql-mongodb-cassandra-gremlin-table-postgresql.md)]
 
 Azure Cosmos DB is a fully managed NoSQL, relational, and vector database for modern app development. Azure Cosmos DB takes database administration off your hands with automatic management, updates, and patching. It also handles capacity management with cost-effective serverless and automatic scaling options that respond to application needs to match capacity with demand.
 

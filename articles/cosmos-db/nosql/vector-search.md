@@ -185,12 +185,6 @@ Here are examples of valid vector index policies:
     "excludedPaths": [
         {
             "path": "/_etag/?"
-        },
-        {
-            "path": "/vector1/*",
-        },
-        {
-            "path": "/vector2/*",
         }
     ],
     "vectorIndexes": [
@@ -207,10 +201,7 @@ Here are examples of valid vector index policies:
 ```
 
 > [!IMPORTANT]
-> The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
-
-> [!IMPORTANT]
-> Wild card characters (*, []) are not currently supported in the vector policy or vector index.
+> Wild card characters (*, []) and vector paths nested inside arrays are not currently supported in the vector policy or vector index.
 
 ## Perform vector search with queries using VectorDistance()
 
@@ -233,7 +224,7 @@ Vector indexing and search in Azure Cosmos DB for NoSQL has some limitations.
 - The rate of vector insertions should be limited. Very large ingestion (in excess of 5M vectors) may require additional index build time. 
 - The vector search feature is not currently supported on the existing containers. To use it, a new container must be created, and the container-level vector embedding policy must be specified.
 - Shared throughput databases are unsupported.
-- At this time, vector indexing and search is not supported on accounts with Analytical Store (and Synapse Link) and Shared Throughput.
+- At this time, vector indexing and search is not supported on accounts with Shared Throughput.
 - Once vector indexing and search is enabled on a container, it cannot be disabled.
 
 ## Related content

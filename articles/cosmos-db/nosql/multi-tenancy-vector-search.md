@@ -196,7 +196,6 @@ Azure Cosmos DB provides the tools necessary to build a robust, secure, and scal
 
 ## Related content
 
-- [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
 - [Multitenancy and Azure Cosmos DB](https://aka.ms/CosmosMultitenancy)
 
 ## Next step

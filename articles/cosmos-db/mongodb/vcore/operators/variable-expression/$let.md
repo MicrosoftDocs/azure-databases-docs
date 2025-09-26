@@ -1,24 +1,20 @@
 ---
-  title: $let (variable expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $let
+  titleSuffix: Overview of the $let operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $let operator allows defining variables for use in a specified expression, enabling complex calculations and reducing code repetition.
   author: suvishodcitus
   ms.author: suvishod
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 02/12/2025
+  ms.date: 09/08/2025
 ---
 
-# $let (variable expression)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $let 
 
 The `$let` operator is used to define variables for use in a specified expression. It allows you to create temporary variables that can be referenced within the expression, making complex calculations more readable and preventing redundant computations.
 
 ## Syntax
-
-The syntax for the `$let` operator is as follows:
 
 ```javascript
 {
@@ -35,81 +31,122 @@ The syntax for the `$let` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`vars`** | An object that defines the variables and their values. Each variable is assigned the result of an expression. |
 | **`in`** | The expression that uses the variables defined in the `vars` object. Variables are referenced using `$$<variable_name>`. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 5,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Discount Delight Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 12,
-          "Day": 26
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 1,
-          "Day": 5
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Game Controllers",
-          "discountPercentage": 22
-        },
-        {
-          "categoryName": "Home Theater Projectors",
-          "discountPercentage": 23
-        }
-      ]
-    }
-  ]
 }
 ```
 
@@ -142,17 +179,17 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce the following output:
+This query returns the following result.
 
 ```json
 [
   {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    staffMetrics: {
-      totalStaff: 39,
-      salesPerEmployee: 3893.948717948718,
-      fullTimeRatio: 0.5128205128205128
+    "_id": '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
+    "name": 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
+    "staffMetrics": {
+      "totalStaff": 39,
+      "salesPerEmployee": 3893.948717948718,
+      "fullTimeRatio": 0.5128205128205128
     }
   }
 ]
@@ -199,22 +236,22 @@ db.stores.aggregate([
 ])
 ```
 
-This will produce comprehensive location analysis with nested calculations.
+This query returns the following result.
 
 ```json
 [
   {
-    _id: '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
-    name: 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
-    locationInsights: {
-      coordinates: { lat: 70.1272, lon: 69.7296 },
-      hemisphere: {
-        latitudeHemisphere: 'North',
-        longitudeHemisphere: 'East',
-        quadrant: 'North East'
+    "_id": '40d6f4d7-50cd-4929-9a07-0a7a133c2e74',
+    "name": 'Proseware, Inc. | Home Entertainment Hub - East Linwoodbury',
+    "locationInsights": {
+      "coordinates": { "lat": 70.1272, "lon": 69.7296 },
+      "hemisphere": {
+        "latitudeHemisphere": 'North',
+        "longitudeHemisphere": 'East',
+        "quadrant": 'North East'
       },
-      distanceFromEquator: 70.1272,
-      distanceFromPrimeMeridian: 69.7296
+      "distanceFromEquator": 70.1272,
+      "distanceFromPrimeMeridian": 69.7296
     }
   }
 ]

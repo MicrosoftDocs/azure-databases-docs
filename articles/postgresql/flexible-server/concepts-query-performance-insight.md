@@ -4,7 +4,7 @@ description: This article describes the Query Performance Insight feature in  Az
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/29/2024
+ms.date: 09/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -23,6 +23,9 @@ Query Performance Insight provides intelligent query analysis for Azure Database
 > * Details on top database queries by Calls (execution count), by data-usage, by IOPS and by Temporary file usage (potential tuning candidates for performance improvements).
 > * The ability to drill down into details of a query, to view the Query ID and history of resource utilization.
 > * Deeper insight into overall databases resource consumption.
+
+> [!NOTE]
+> Query store isn't supported in Azure Database for PostgreSQL flexible server version 18, while it's in Preview.
 
 ## Prerequisites
 

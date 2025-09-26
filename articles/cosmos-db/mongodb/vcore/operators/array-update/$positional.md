@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 10/14/2024
+  ms.date: 09/05/2025
 ---
 
 # $position
@@ -16,14 +16,12 @@ The `$position` operator is used to specify the position in the array where a ne
 
 ## Syntax
 
-The basic syntax for using the `$position` operator in an update command is as follows:
-
-```json
+```javascript
 {
-  "$push": {
-    "<arrayField>": {
-      "$each": ["<value1>", "<value2>"],
-      "$position": <index>
+  $push: {
+    <arrayField>: {
+      $each: [<value1>, <value2>],
+      $position: <index>
     }
   }
 }
@@ -43,59 +41,132 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": { "lat": 60.1441, "lon": -141.5012 },
-  "staff": { "totalStaff": { "fullTime": 2, "partTime": 0 } },
-  "sales": {
-    "salesByCategory": [
-      { "categoryName": "DJ Headphones", "totalSales": 35921 },
-      { "categoryName": "DJ Cables", "totalSales": 1000 }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 3, "Day": 11 },
-        "endDate": { "Year": 2024, "Month": 2, "Day": 18 }
-      },
-      "discounts": [
-        { "categoryName": "DJ Turntables", "discountPercentage": 18 },
-        { "categoryName": "DJ Mixers", "discountPercentage": 15 }
-      ]
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
     },
-    {
-      "eventName": "Discount Delight Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 5, "Day": 11 },
-        "endDate": { "Year": 2024, "Month": 5, "Day": 18 }
-      }
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#FashionStore",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
 ```
 
 ### Example 1: Insert an element at specific index location in an array field
 
-The example inserts the tag `#NewArrival` at the second position (index 1) in the `tag` array of a specific document.
+This query inserts the tag `#NewArrival` at the second position (index 1) in the `tag` array of a specific document.
 
 ```javascript
-db.stores.update(
-  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $push: { "tag": { $each: ["#NewArrival"], $position: 1 } } }
-)
+db.stores.update({
+    _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
+}, {
+    $push: {
+        tag: {
+            $each: ["#NewArrival"],
+            $position: 1
+        }
+    }
+})
 ```
 
-The example document updated `tag` field has following values.
+The updated document has the following values in the tag array.
 
 ```json
 {

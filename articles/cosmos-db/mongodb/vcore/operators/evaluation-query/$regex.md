@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/25/2025
+  ms.date: 08/19/2025
 ---
 
 # $regex
@@ -40,9 +40,9 @@ Or the shorter form:
 | **`<pattern>`** | The regular expression pattern to match against. |
 | **`<options>`** | Optional. Regular expression options such as case-insensitive matching. Common options include 'i' (case insensitive), 'm' (multiline), 's' (dot all), and 'x' (extended). |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -160,18 +160,19 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Find stores by name pattern
 
-The example finds all the stores containing "Consultants" in their name (case-insensitive).
+This query retrieves all the stores containing "Consultants" in their name (case-insensitive).
 
 ```javascript
 db.stores.find(
-    { "name": { $regex: "Consultants", $options: "i" } },
-    { "_id": 1, "name": 1, "storeOpeningDate": 1 }
+  { name: { $regex: "Consultants", $options: "i" } },
+  { _id: 1, name: 1, storeOpeningDate: 1 }
 ).limit(3)
 ```
 
-The query returns matches with store names containing "Consultants" regardless of case, helping identify stores belonging to consulting companies.
+The first three results returned by this query are:
 
 ```json
+[
   {
     "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
     "name": "First Up Consultants | Bed and Bath Pantry - Port Antone",
@@ -187,24 +188,26 @@ The query returns matches with store names containing "Consultants" regardless o
     "name": "First Up Consultants | Plumbing Supply Shoppe - New Ubaldofort",
     "storeOpeningDate": "2024-09-19T08:27:44.268Z"
   }
+]
 ```
 
 ### Example 2: Advanced pattern matching for category names
 
-The example finds stores selling products with category name that starts with a vowel.
+This query retrieves stores selling products with a category name that starts with a vowel.
 
 ```javascript
 db.stores.find(
   {
-    "sales.salesByCategory.categoryName": { $regex: "^[AEIOUaeiou]", $options: "" }
+    "sales.salesByCategory.categoryName": { $regex: "^[AEIOUaeiou]" }
   },
-  { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1}
+  { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }
 ).limit(2)
 ```
 
-The query uses the caret (^) anchor and character class to match category names beginning with vowels.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
     "name": "Relecloud | Toy Collection - North Jaylan",
@@ -224,21 +227,23 @@ The query uses the caret (^) anchor and character class to match category names 
       ]
     }
   }
+]
 ```
 
 ### Example 3: Find stores with specific naming conventions
 
-The example finds stores with names containing a pipe character (|) separator.
+This query retrieves stores with names containing a pipe character (|) separator.
 
 ```javascript
 db.stores.find(
-{ "name": { $regex: "\\|" }},
-{ "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1}).limit(2)
+{ name: { $regex: "\\|" }},
+{ _id: 1, name: 1, "sales.salesByCategory.categoryName": 1}).limit(2)
 ```
 
-The query searches for stores with names containing the pipe character, which appears to be a naming convention in the dataset.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
     "name": "Trey Research | Home Office Depot - Lake Freeda",
@@ -257,11 +262,12 @@ The query searches for stores with names containing the pipe character, which ap
       ] 
     }
   }
+]
 ```
 
 ### Example 4: Complex pattern for discount categories
 
-The example finds stores with categories containing both "Bath" and ending with "s".
+This query retrieves stores with categories containing both "Bath" and ending with "s".
 
 ```javascript
 db.stores.aggregate([
@@ -271,10 +277,11 @@ db.stores.aggregate([
   { $limit: 2 }])
 ```
 
-The query combines multiple regex features: literal text matching, the dot-star quantifier (.*), and the end-of-string anchor ($).
+The first two results returned by this query are:
 
 ```json
-{
+[
+  {
     "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
     "name": "First Up Consultants | Bed and Bath Pantry - Port Antone",
     "promotionEvents": [
@@ -322,6 +329,7 @@ The query combines multiple regex features: literal text matching, the dot-star 
       }
     ]
   }
+]
 ```
 
 ## Related content

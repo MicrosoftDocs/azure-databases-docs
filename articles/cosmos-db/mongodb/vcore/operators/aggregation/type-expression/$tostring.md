@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
 # $toString
@@ -147,17 +147,15 @@ Consider this sample document from the stores collection.
 To convert the value of the latitude field from a Double to a String, run a query using the $toString operator on the field to make the conversion.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsString": {
-            "$toString": "$location.lat"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsString: {
+            $toString: "$location.lat"
         }
     }
 }])
@@ -180,17 +178,15 @@ This query returns the following result:
 To convert the value of the totalSales field from an Int to a String, run a query using the $toString operator on the field to make the conversion.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalTotalSales": "$sales.totalSales",
-        "totalSalesAsString": {
-            "$toString": "$sales.totalSales"
+}, {
+    $project: {
+        originalTotalSales: "$sales.totalSales",
+        totalSalesAsString: {
+            $toString: "$sales.totalSales"
         }
     }
 }])

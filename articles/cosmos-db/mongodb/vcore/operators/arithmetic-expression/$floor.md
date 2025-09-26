@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 09/05/2025
 ---
 
 # $floor
@@ -147,31 +147,38 @@ Consider this sample document from the stores collection.
 To calculate the floor of the average sales volume for a given store and the floor of sales per category, run a query using the $floor operator to return the desired results.
 
 ```javascript
-db.stores.aggregate([
-  { $match: { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
-  {
-    $project: {
-      name: 1,
-      averageSalesFloor: {
-        $floor: {
-          $divide: [
-            "$sales.totalSales",
-            { $size: "$sales.salesByCategory" }
-          ]
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
         }
-      },
-      categoriesWithFloorSales: {
-        $map: {
-          input: "$sales.salesByCategory",
-          as: "category",
-          in: {
-            categoryName: "$$category.categoryName",
-            floorSales: { $floor: "$$category.totalSales" }
-          }
+    },
+    {
+        $project: {
+            name: 1,
+            averageSalesFloor: {
+                $floor: {
+                    $divide: [
+                        "$sales.totalSales",
+                        {
+                            $size: "$sales.salesByCategory"
+                        }
+                    ]
+                }
+            },
+            categoriesWithFloorSales: {
+                $map: {
+                    input: "$sales.salesByCategory",
+                    as: "category",
+                    in: {
+                        categoryName: "$$category.categoryName",
+                        floorSales: {
+                            $floor: "$$category.totalSales"
+                        }
+                    }
+                }
+            }
         }
-      }
     }
-  }
 ])
 ```
 
@@ -212,3 +219,5 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
+

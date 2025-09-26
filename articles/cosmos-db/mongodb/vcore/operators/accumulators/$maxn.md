@@ -7,7 +7,7 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 08/04/2025
+ms.date: 09/05/2025
 ---
 
 # $maxN
@@ -32,7 +32,7 @@ $maxN: {
 
 ## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -100,7 +100,7 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Use `$maxN` as `accumulator` to retrieve top two sales categories
 
-The query retrieves the top two sales categories with the high-performing categories or aggregate top categories across stores.
+This query retrieves the top two sales categories with the high-performing categories or aggregate top categories across stores.
 
 ```javascript
 db.stores.aggregate([{
@@ -168,7 +168,7 @@ This query returns the following results:
 
 ### Example 2: Using `$maxN` in `$setWindowFields`
 
-The example helps to retrieve the top N discounts for "Laptops" in 2023 per city.
+This query retrieves the top N discounts for "Laptops" in 2023 per city. This query filters for "Laptops" discount entries in 2023 and then groups the resulting documents by city.
 
 ```javascript
 db.stores.aggregate([
@@ -201,8 +201,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query filters for "Laptops" discount entries with `startDate.Year` as 2023, then groups them by city.
-It collects and sorts all discount percentages, returning the top 3 discounts per city. The output is restricted to return 3 cities in response.
+The first three results returned by this query are:
 
 ```json
 [
@@ -229,7 +228,7 @@ It collects and sorts all discount percentages, returning the top 3 discounts pe
 
 ### Example 3: Using `$maxN` operator as array-expression to find top three sales categories
 
-The example demonstrates the use of operator to find the top three sales values from all sales categories.
+This query retrieves the top three sales values from all sales categories.
 
 ```javascript
 db.stores.aggregate([
@@ -248,14 +247,16 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns top three sales values for provided document.
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "topThreeSales": [43522, 32272, 28946]
-}
+[
+    {
+      "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+      "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+      "topThreeSales": [43522, 32272, 28946]
+    }
+]
 ```
 
 ## Related content

@@ -1,13 +1,13 @@
 ---
 title: $set
-titleSuffix: Overview of the $set operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $set operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $set operator in Azure Cosmos DB for MongoDB vCore updates or creates a new field with a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
 # $set
@@ -18,9 +18,8 @@ The `$set` operator updates an existing field or creates a new field with the sp
 
 ```javascript
 {
-  "$set": {
-    "newField": <expression>,
-    ...
+  $set: {
+    newField: <expression>
   }
 }
 ```
@@ -150,11 +149,11 @@ Consider this sample document from the stores collection.
 
 ```javascript
 db.stores.updateOne({
-		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+		_id: "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
 	},
 	{
-		"$set": {
-			"name": "Lakeshore Retail"
+		$set: {
+			name: "Lakeshore Retail"
 		}
 	})
 ```
@@ -163,10 +162,10 @@ db.stores.updateOne({
 
 ```javascript
 db.stores.updateOne({
-		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+		_id: "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
 	},
 	{
-		"$set": {
+		$set: {
 			"staff.totalStaff.partTime": 9
 		}
 	})
@@ -178,11 +177,11 @@ Create a new field called "formerName" with the old name of the store.
 
 ```javascript
 db.stores.updateOne({
-		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+		_id: "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
 	},
 	{
-		"$set": {
-			"formerName": "Tailwind Traders | Drone Shoppe - New Theodora"
+		$set: {
+			formerName: "Tailwind Traders | Drone Shoppe - New Theodora"
 		}
 	})
 ```
@@ -193,10 +192,10 @@ Create a new field within the nested totalStaff object to specify a count of tem
 
 ```javascript
 db.stores.updateOne({
-		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+		_id: "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
 	},
 	{
-		"$set": {
+		$set: {
 			"staff.totalStaff.temporary": 3
 		}
 	})
@@ -206,10 +205,10 @@ db.stores.updateOne({
 
 ```javascript
 db.stores.updateOne({
-		"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
+		_id: "8eefe8bd-5d6f-4038-90e8-05a8277637f0"
 	},
 	{
-		"$set": {
+		$set: {
 			"staff.totalStaff.partTime": 9,
 			"sales.totalSales": 3611
 		}
@@ -218,4 +217,4 @@ db.stores.updateOne({
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+[!INCLUDE[Related content](../includes/related-content.md)]

@@ -13,7 +13,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand what Semantic Operators are available in the azure_ai extension for Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to understand what Semantic Operators are available in the azure_ai extension for an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview
@@ -131,7 +131,7 @@ To connect to an Azure Database for PostgreSQL flexible server instance using Vi
 
 ### Connect with VS Code
 
-The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure Database for PostgreSQL flexible server. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
+The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure Database for PostgreSQL flexible server instance. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
 
 - Select the prominent **Connect with VS Code** button on the Overview page.
 - A side pane listing the requirements to connect using VS Code appears.

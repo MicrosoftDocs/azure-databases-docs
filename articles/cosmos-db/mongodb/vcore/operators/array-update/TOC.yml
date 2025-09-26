@@ -1,4 +1,4 @@
-- name: $addtoset
+- name: $addToSet
   href: $addtoset.md
 - name: $each
   href: $each.md
@@ -19,6 +19,6 @@
 - name: $push
   href: $push.md
 - name: $slice
-  href: $slice.md
+  href: ../array-expression/$slice.md
 - name: $sort
-  href: $sort.md
+  href: ../aggregation/$sort.md

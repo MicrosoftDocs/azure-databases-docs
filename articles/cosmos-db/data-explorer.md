@@ -6,14 +6,18 @@ author: meredithmooreux
 ms.author: merae
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 09/02/2025
+ms.date: 09/03/2025
 ai-usage: ai-assisted
+applies-to:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 # CustomerIntent: As a database developer, I want to access the Data Explorer so that I can observe my data and make queries against my data.
 ---
 
 # Use the Azure Cosmos DB Data Explorer to manage your data
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB Data Explorer is a web-based interface that allows you to view and manage the data stored in Azure Cosmos DB.
 

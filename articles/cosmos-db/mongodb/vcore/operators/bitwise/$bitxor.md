@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 08/03/2025
+  ms.date: 09/05/2025
 ---
 
 # $bitXor
@@ -28,162 +28,233 @@ The `$bitXor` operator performs a bitwise exclusive OR (XOR) operation on intege
 | --- | --- |
 | **`expression1, expression2, ...`** | Expressions that resolve to integer values. The operator performs XOR operations on these values in sequence. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "location": {
-    "lat": 70.1272,
-    "lon": 69.7296
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 19,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 151864,
-    "salesByCategory": [
-      {
-        "categoryName": "Sound Bars",
-        "totalSales": 2120
-      },
-      {
-        "categoryName": "Home Theater Projectors",
-        "totalSales": 45004
-      },
-      {
-        "categoryName": "Game Controllers",
-        "totalSales": 43522
-      },
-      {
-        "categoryName": "Remote Controls",
-        "totalSales": 28946
-      },
-      {
-        "categoryName": "VR Games",
-        "totalSales": 32272
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Discount Delight Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 12,
-          "Day": 26
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 1,
-          "Day": 5
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Game Controllers",
-          "discountPercentage": 22
-        },
-        {
-          "categoryName": "Home Theater Projectors",
-          "discountPercentage": 23
-        }
-      ]
-    }
-  ]
 }
 ```
 
 ### Example 1: Basic XOR operation
 
-The query uses an aggregation pipeline to calculate between full-time and part-time staff counts for a specific store.
+This query uses an aggregation pipeline to calculate between full-time and part-time staff counts for a specific store. The resulting document contains the store details along with a computed field. The XOR operation between 19 (binary: 10011) and 20 (binary: 10100) results in 7 (binary: 00111).
 
 ```javascript
-db.stores.aggregate([
-  { $match: {"_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"} },
-  {
-    $project: {
-      name: 1,
-      fullTimeStaff: "$staff.totalStaff.fullTime",
-      partTimeStaff: "$staff.totalStaff.partTime",
-      staffXor: {
-        $bitXor: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
-      }
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
+        }
+    },
+    {
+        $project: {
+            name: 1,
+            fullTimeStaff: "$staff.totalStaff.fullTime",
+            partTimeStaff: "$staff.totalStaff.partTime",
+            staffXor: {
+                $bitXor: ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]
+            }
+        }
     }
-  }
 ])
 ```
 
-The output document contains the store details along with a computed field. The XOR operation between 19 (binary: 10011) and 20 (binary: 10100) results in 7 (binary: 00111).
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "fullTimeStaff": 19,
-  "partTimeStaff": 20,
-  "staffXor": 7
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "fullTimeStaff": 19,
+    "partTimeStaff": 20,
+    "staffXor": 7
+  }
+]
 ```
 
 ### Example 2: XOR with Multiple Values
 
-The aggregation pipeline computes the bitwise XOR of all discount percentages for the `Discount Delight Days` event of a specific store.
+This query computes the bitwise XOR of all discount percentages for the `Discount Delight Days` event of a specific store. The resulting document represents the bitwise XOR calculation of all discount percentages for the `Discount Delight Days` event.
 
 ```javascript
-db.stores.aggregate([
-  { $match: { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
-  { $unwind: "$promotionEvents" },
-  { $match: { "promotionEvents.eventName": "Discount Delight Days" } },
-  { $unwind: "$promotionEvents.discounts" },
-  {
-    $group: {
-      _id: "$_id",
-      name: { $first: "$name" },
-      eventName: { $first: "$promotionEvents.eventName" },
-      discountPercentages: { $push: "$promotionEvents.discounts.discountPercentage" }
-    }
-  },
-  {
-    $project: {
-      name: 1,
-      eventName: 1,
-      discountPercentages: 1,
-      xorResult: {
-        $reduce: {
-          input: {
-            $map: {
-              input: "$discountPercentages",
-              as: "val",
-              in: { $toLong: "$$val" }
-            }
-          },
-          initialValue: { $toLong: 0 },
-          in: { $bitXor: ["$$value", "$$this"] }
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
         }
-      }
+    },
+    {
+        $unwind: "$promotionEvents"
+    },
+    {
+        $match: {
+            "promotionEvents.eventName": "Discount Delight Days"
+        }
+    },
+    {
+        $unwind: "$promotionEvents.discounts"
+    },
+    {
+        $group: {
+            _id: "$_id",
+            name: {
+                $first: "$name"
+            },
+            eventName: {
+                $first: "$promotionEvents.eventName"
+            },
+            discountPercentages: {
+                $push: "$promotionEvents.discounts.discountPercentage"
+            }
+        }
+    },
+    {
+        $project: {
+            name: 1,
+            eventName: 1,
+            discountPercentages: 1,
+            xorResult: {
+                $reduce: {
+                    input: {
+                        $map: {
+                            input: "$discountPercentages",
+                            as: "val",
+                            in: {
+                                $toLong: "$$val"
+                            }
+                        }
+                    },
+                    initialValue: {
+                        $toLong: 0
+                    },
+                    in: {
+                        $bitXor: ["$$value", "$$this"]
+                    }
+                }
+            }
+        }
     }
-  }
 ])
 ```
 
-The output represents the bitwise XOR calculation of all discount percentages for the `Discount Delight Days` event.
+This query returns the following result.
 
 ```json
-{
-  "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
-  "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
-  "eventName": "Discount Delight Days",
-  "discountPercentages": [22, 23, 10, 10, 9, 24],
-  "xorResult": { "$numberLong": "16" }
-}
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "eventName": "Discount Delight Days",
+    "discountPercentages": [22, 23, 10, 10, 9, 24],
+    "xorResult": { "$numberLong": "16" }
+  }
+]
 ```
 
 ## Related content

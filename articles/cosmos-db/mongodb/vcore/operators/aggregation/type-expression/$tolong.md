@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
 # $toLong
@@ -147,17 +147,15 @@ Consider this sample document from the stores collection.
 To convert the value of the latitude field from a Double to a Long value, run a query using the $toLong operator on the field to make the conversion. 
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsLong": {
-            "$toLong": "$location.lat"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsLong: {
+            $toLong: "$location.lat"
         }
     }
 }])
@@ -180,23 +178,20 @@ This query returns the following result:
 To convert the string representation of 72 ("72") into a Long value, run a query using the $toLong operator on the string to make the conversion. 
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsLong": {
-            "$toLong": {
-                "$toString": "72"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsLong: {
+            $toLong: {
+                $toString: "72"
             }
         }
     }
-}
-])
+}])
 ```
 
 This query returns the following result:

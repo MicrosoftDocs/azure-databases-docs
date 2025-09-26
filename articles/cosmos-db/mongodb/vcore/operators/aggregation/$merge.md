@@ -7,13 +7,14 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 06/23/2025
+ms.date: 09/05/2025
 ---
 
 # $merge
 The `$merge` stage in an aggregation pipeline is used to write the results of the aggregation query into a specified collection. This stage is particularly useful for tasks like updating or inserting documents into a target collection based on the output of an aggregation operation. It helps streamline workflows by combining data transformation and data persistence in a single operation.
 
 ## Syntax
+
 ```javascript
 {
   $merge: {
@@ -97,7 +98,7 @@ Consider this sample document from the stores collection.
 ```
 
 ### Example 1: Merge data into a collection
-This example aggregates documents and writes the results to a collection named `salesSummary`, updating existing documents where the `_id` matches and inserting new documents otherwise.
+This query aggregates documents and writes the results to a collection named `salesSummary`, updating existing documents where the `_id` matches and inserting new documents otherwise.
 
 ```javascript
 db.sales.aggregate([

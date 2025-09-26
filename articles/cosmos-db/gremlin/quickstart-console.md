@@ -24,7 +24,6 @@ In this quickstart, you use the Gremlin console to connect to a newly created Az
 
 - An Azure account with an active subscription.
   - No Azure subscription? [Sign up for a free Azure account](https://azure.microsoft.com/free/).
-  - Don't want an Azure subscription? You can [try Azure Cosmos DB free](../try-free.md) with no subscription required.
 - [Docker host](https://www.docker.com/)
   - Don't have Docker installed? Try this quickstart in [GitHub Codespaces](https://codespaces.new/github/codespaces-blank?quickstart=1).
 - [Azure Command-Line Interface (CLI)](/cli/azure/)
@@ -102,7 +101,7 @@ Now that the console is connected to the account, use the standard Gremlin synta
     ```
 
     > [!IMPORTANT]
-    > Don't foget the `:>` prefix. THis prefix is required to run the command remotely.
+    > Don't forget the `:>` prefix. THis prefix is required to run the command remotely.
 
 1. Add another **product** vertex with these properties:
 
