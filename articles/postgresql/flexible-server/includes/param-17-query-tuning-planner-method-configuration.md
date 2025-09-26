@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -53,6 +53,23 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_gathermerge](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-GATHERMERGE) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### enable_group_by_reordering
+
+| Attribute | Value |
+| --- | --- |
+| Category | Query Tuning / Planner Method Configuration |
+| Description | Enables reordering of GROUP BY keys. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [enable_group_by_reordering](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-GROUPBY-REORDERING) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

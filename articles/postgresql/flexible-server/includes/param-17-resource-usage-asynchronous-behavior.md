@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -53,6 +53,23 @@ ms.custom: automatically generated
 | Allowed values | `10` |
 | Parameter type | read-only |
 | Documentation | [maintenance_io_concurrency](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAINTENANCE-IO-CONCURRENCY) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### max_notify_queue_pages
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Asynchronous Behavior |
+| Description | Sets the maximum number of allocated pages for NOTIFY / LISTEN queue. |
+| Data type | integer |
+| Default value | `1048576` |
+| Allowed values | `1048576` |
+| Parameter type | read-only |
+| Documentation | [max_notify_queue_pages](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAX-NOTIFY-QUEUE-PAGES) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

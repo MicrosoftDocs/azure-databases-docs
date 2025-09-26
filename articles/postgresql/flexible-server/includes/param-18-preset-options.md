@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -70,6 +70,23 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### huge_pages_status
+
+| Attribute | Value |
+| --- | --- |
+| Category | Preset Options |
+| Description | Indicates the status of huge pages. |
+| Data type | enumeration |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [huge_pages_status](https://www.postgresql.org/docs/18/runtime-config-preset.html#GUC-HUGE-PAGES-STATUS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -155,6 +172,23 @@ ms.custom: automatically generated
 | Allowed values | `32` |
 | Parameter type | read-only |
 | Documentation | [max_index_keys](https://www.postgresql.org/docs/18/runtime-config-preset.html#GUC-MAX-INDEX-KEYS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### num_os_semaphores
+
+| Attribute | Value |
+| --- | --- |
+| Category | Preset Options |
+| Description | Shows the number of semaphores required for the server. |
+| Data type | integer |
+| Default value | `3511` |
+| Allowed values | `3511` |
+| Parameter type | read-only |
+| Documentation | [num_os_semaphores](https://www.postgresql.org/docs/18/runtime-config-preset.html#GUC-NUM-OS-SEMAPHORES) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

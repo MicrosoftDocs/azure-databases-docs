@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -36,6 +36,40 @@ ms.custom: automatically generated
 | Allowed values | `none,Storage-checkpoint_completion_target,Storage-min_wal_size,Storage-max_wal_size,Storage-bgwriter_delay,tuning-autovacuum,all` |
 | Parameter type | dynamic |
 | Documentation | [intelligent_tuning.metric_targets](https://go.microsoft.com/fwlink/?linkid=2274150) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### logfiles.download_enable
+
+| Attribute | Value |
+| --- | --- |
+| Category | Intelligent Tuning |
+| Description | Enables or disables server logs functionality. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [logfiles.download_enable](https://go.microsoft.com/fwlink/?linkid=2274270) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### logfiles.retention_days
+
+| Attribute | Value |
+| --- | --- |
+| Category | Intelligent Tuning |
+| Description | Sets the retention period window in days for server logs - after this time data will be deleted. |
+| Data type | integer |
+| Default value | `3` |
+| Allowed values | `1-7` |
+| Parameter type | dynamic |
+| Documentation | [logfiles.retention_days](https://go.microsoft.com/fwlink/?linkid=2274270) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

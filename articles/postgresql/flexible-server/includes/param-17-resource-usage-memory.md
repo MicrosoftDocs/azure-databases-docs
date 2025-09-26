@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -104,6 +104,23 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [huge_page_size](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-HUGE-PAGE-SIZE) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### io_combine_limit
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Limit on the size of data reads and writes. |
+| Data type | integer |
+| Default value | `16` |
+| Allowed values | `16` |
+| Parameter type | read-only |
+| Documentation | [io_combine_limit](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-IO-COMBINE-LIMIT) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

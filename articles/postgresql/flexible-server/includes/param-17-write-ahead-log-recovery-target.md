@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -138,6 +138,23 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [recovery_target_xid](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-TARGET-XID) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### summarize_wal
+
+| Attribute | Value |
+| --- | --- |
+| Category | Write-Ahead Log / Recovery Target |
+| Description | Starts the WAL summarizer process to enable incremental backup. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [summarize_wal](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-SUMMARIZE-WAL) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

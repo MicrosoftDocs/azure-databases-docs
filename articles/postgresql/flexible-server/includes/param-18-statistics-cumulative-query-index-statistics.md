@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -53,6 +53,23 @@ ms.custom: automatically generated
 | Allowed values | `100-102400` |
 | Parameter type | static |
 | Documentation | [track_activity_query_size](https://www.postgresql.org/docs/18/runtime-config-statistics.html#GUC-TRACK-ACTIVITY-QUERY-SIZE) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### track_cost_delay_timing
+
+| Attribute | Value |
+| --- | --- |
+| Category | Statistics / Cumulative Query and Index Statistics |
+| Description | Collects timing statistics for cost-based vacuum delay. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [track_cost_delay_timing](https://www.postgresql.org/docs/18/runtime-config-statistics.html#GUC-TRACK-COST-DELAY-TIMING) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

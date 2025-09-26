@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -223,6 +223,23 @@ ms.custom: automatically generated
 | Allowed values | `[^']*` |
 | Parameter type | dynamic |
 | Documentation | [log_line_prefix](https://www.postgresql.org/docs/18/runtime-config-logging.html#GUC-LOG-LINE-PREFIX) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### log_lock_failure
+
+| Attribute | Value |
+| --- | --- |
+| Category | Reporting and Logging / What to Log |
+| Description | Controls whether a detailed log message is produced when a lock acquisition fails. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [log_lock_failure](https://www.postgresql.org/docs/18/runtime-config-logging.html#GUC-LOG-LOCK-FAILURE) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

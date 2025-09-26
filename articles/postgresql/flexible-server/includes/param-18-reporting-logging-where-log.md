@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -155,6 +155,23 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [log_truncate_on_rotation](https://www.postgresql.org/docs/18/runtime-config-logging.html#GUC-LOG-TRUNCATE-ON-ROTATION) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### md5_password_warnings
+
+| Attribute | Value |
+| --- | --- |
+| Category | Reporting and Logging / Where to Log |
+| Description | Enables deprecation warnings for MD5 passwords. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [md5_password_warnings](https://www.postgresql.org/docs/18/runtime-config-logging.html#GUC-MD5-PASSWORD-WARNINGS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

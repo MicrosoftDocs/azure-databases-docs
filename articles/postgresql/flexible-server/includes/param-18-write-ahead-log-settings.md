@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -206,6 +206,23 @@ ms.custom: automatically generated
 | Allowed values | `2048` |
 | Parameter type | read-only |
 | Documentation | [wal_skip_threshold](https://www.postgresql.org/docs/18/runtime-config-wal.html#GUC-WAL-SKIP-THRESHOLD) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### wal_summary_keep_time
+
+| Attribute | Value |
+| --- | --- |
+| Category | Write-Ahead Log / Settings |
+| Description | Time for which WAL summary files should be kept. |
+| Data type | integer |
+| Default value | `14400` |
+| Allowed values | `14400` |
+| Parameter type | read-only |
+| Documentation | [wal_summary_keep_time](https://www.postgresql.org/docs/18/runtime-config-wal.html#GUC-WAL-SUMMARY-KEEP-TIME) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

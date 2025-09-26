@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -36,6 +36,40 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [hot_standby_feedback](https://www.postgresql.org/docs/18/runtime-config-replication.html#GUC-HOT-STANDBY-FEEDBACK) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### idle_replication_slot_timeout
+
+| Attribute | Value |
+| --- | --- |
+| Category | Replication / Standby Servers |
+| Description | Sets the duration a replication slot can remain idle before it is invalidated. |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-35791394` |
+| Parameter type | dynamic |
+| Documentation | [idle_replication_slot_timeout](https://www.postgresql.org/docs/18/runtime-config-replication.html#GUC-IDLE-REPLICATION-SLOT-TIMEOUT) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### max_active_replication_origins
+
+| Attribute | Value |
+| --- | --- |
+| Category | Replication / Standby Servers |
+| Description | Sets the maximum number of active replication origins. |
+| Data type | integer |
+| Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
+| Allowed values | `0-262143` |
+| Parameter type | static |
+| Documentation | [max_active_replication_origins](https://www.postgresql.org/docs/18/runtime-config-replication.html#GUC-MAX-ACTIVE-REPLICATION-ORIGINS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -121,6 +155,40 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [recovery_min_apply_delay](https://www.postgresql.org/docs/18/runtime-config-replication.html#GUC-RECOVERY-MIN-APPLY-DELAY) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### synchronized_standby_slots
+
+| Attribute | Value |
+| --- | --- |
+| Category | Replication / Standby Servers |
+| Description | Lists streaming replication standby server replication slot names that logical WAL sender processes will wait for. Logical WAL sender processes will send decoded changes to output plugins only after the specified replication slots have confirmed receiving WAL. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [synchronized_standby_slots](https://www.postgresql.org/docs/18/runtime-config-replication.html#GUC-SYNCHRONIZED-STANDBY-SLOTS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### sync_replication_slots
+
+| Attribute | Value |
+| --- | --- |
+| Category | Replication / Standby Servers |
+| Description | Enables a physical standby to synchronize logical failover replication slots from the primary server. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [sync_replication_slots](https://www.postgresql.org/docs/18/runtime-config-replication.html#GUC-SYNC-REPLICATION-SLOTS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

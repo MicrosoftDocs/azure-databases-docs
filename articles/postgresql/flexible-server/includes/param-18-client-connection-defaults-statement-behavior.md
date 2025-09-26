@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 09/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -189,6 +189,23 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [event_triggers](https://www.postgresql.org/docs/18/runtime-config-client.html#GUC-EVENT-TRIGGERS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### extension_control_path
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Statement Behavior |
+| Description | A path to search for extensions, specifically extension control files (name.control). |
+| Data type | string |
+| Default value | `$system` |
+| Allowed values | `$system` |
+| Parameter type | read-only |
+| Documentation | [extension_control_path](https://www.postgresql.org/docs/18/runtime-config-client.html#GUC-EXTENSION-CONTROL-PATH) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
