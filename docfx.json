@@ -299,7 +299,8 @@
           "articles/mysql/howto-create-users.md",
           "articles/mysql/howto-data-in-replication.md",
           "articles/mysql/howto-troubleshoot-replication-latency.md",
-          "articles/postgresql/migrate/migration-service/*.*"
+          "articles/postgresql/migrate/migration-service/*.*",
+          "articles/postgresql/flexible-server/includes/param-18-customized-options.md*"
         ]
       }
     }
