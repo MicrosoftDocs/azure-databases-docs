@@ -7,9 +7,6 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 9/24/2025
-ms.update-cycle: 180-days
-ms.collection:
-  - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
 ---
@@ -24,13 +21,11 @@ appliesto:
 
 Short-term memory holds recent context (for example, recent conversation turns, transient states) that's useful to the agent for threads or tasks. It may get deleted after some time (for example, using [TTL](../nosql/time-to-live.md)), summarized, or moved to long-term memory. For example:
 - In a conversational agent, the last 5–10 user/agent dialogue turns, including prompts, LLM responses, tool call results, etc. 
-- Intermediate states or partial task steps (for example “User asked to schedule meeting, so agent fetched availabilities”).
-- Temporary decisions or constraints (for example “User preferred meeting in afternoon”) that may only matter within the current thread.
+- Intermediate states or partial task steps (for example retrieval of information from an API/tool call used in a subsequent step).
 
 ### Long-Term Memory
 Long-term memory is more persistent and accumulates knowledge or patterns over multiple threads. It supports recall beyond immediate context. For example,
 - User preferences (e.g. “User prefers responses in bullet lists”, or “User is vegetarian”).
-- Facts or domain knowledge acquired during previous interactions.
 - Historical summaries or reflections of short-term memories, or long threads.
 
 ## Design patterns: Partition key selection
