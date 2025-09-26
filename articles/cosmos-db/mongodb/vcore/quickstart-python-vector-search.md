@@ -26,7 +26,12 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 ## Prerequisites
 
-
+[!INCLUDE[Prerequisites - Azure subscription](includes/prereq-azure-subscription.md)]
+- [Visual Studio Code](https://code.visualstudio.com/download)
+    - [DocumentDB extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb)
+- [Azure CLI](/cli/azure/install-azure-cli)
+- [Python](https://www.python.org/downloads/) 3.9 or greater
+- 
 - [Azure OpenAI resource](/azure/ai-foundry/openai) with:
     - Role Based Access Control (RBAC) enabled
     - `text-embedding-ada-002` model deployed
