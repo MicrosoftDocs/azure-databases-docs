@@ -83,7 +83,7 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
     AZURE_OPENAI_EMBEDDING_API_VERSION=2024-02-01
 
-    # MongoDB/Cosmos DB Configuration
+    # Cosmos DB for MongoDB (vCore)
     MONGO_CLUSTER_NAME=
 
     # Data Configuration (defaults should work)
@@ -96,7 +96,7 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
     For the passwordless authentication used in this article, replace the placeholder values in the `.env` file with your own information:
     - `AZURE_OPENAI_EMBEDDING_ENDPOINT`: Your Azure OpenAI resource endpoint URL
-    - `MONGO_CLUSTER_NAME`: Your MongoDB vCore resource name
+    - `MONGO_CLUSTER_NAME`: Your Cosmos DB for MongoDB resource name
 
     You should always prefer passwordless authentication, but it will require additional setup. For more information on setting up managed identity and the full range of your authentication options, see [Authenticate Python apps to Azure services by using the Azure SDK for Python](/azure/developer/python/sdk/authentication/overview).
 
@@ -257,7 +257,7 @@ You see the top five hotels that match the vector search query and their similar
 
 ## View and manage data in Visual Studio Code
 
-1. Select the [DocumentDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) in Visual Studio Code to connect to your Azure Cosmos DB account.
+1. Select the [DocumentDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) in Visual Studio Code to connect to your Azure Cosmos DB for MongoDB account.
 1. View the data and indexes in the Hotels database.
 
     :::image type="content" source="./media/quickstart-nodejs-vector-search/visual-studio-code-documentdb.png" lightbox="./media/quickstart-nodejs-vector-search/visual-studio-code-documentdb.png" alt-text="Screenshot of DocumentDB extension showing the Cosmos DB Mongo (vCore) collection.":::
@@ -265,7 +265,7 @@ You see the top five hotels that match the vector search query and their similar
 ## Clean up resources
 
 
-Delete the resource group, MongoDB vCore account, and Azure OpenAI resource when you don't need them to avoid extra costs.
+Delete the resource group, Cosmos DB for MongoDB (vCore) account, and Azure OpenAI resource when you don't need them to avoid extra costs.
 
 ## Related content
 
