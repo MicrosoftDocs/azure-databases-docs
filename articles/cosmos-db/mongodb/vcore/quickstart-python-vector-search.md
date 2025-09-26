@@ -107,9 +107,9 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
     ```plaintext
     vector-search-quickstart
+    ├── .env
     ├── data
     │   └── HotelsData_with_vectors.json
-    ├── .env
     └── venv (or your virtual environment folder)
     ```
 
@@ -120,13 +120,14 @@ Continue the project by creating code files for vector search. When you are done
 
 ```plaintext
 vector-search-quickstart
+├── .env
 ├── data
 │   └── HotelsData_with_vectors.json
-├── .env
 ├── src
 │   ├── diskann.py
 │   ├── ivf.py
 │   └── hnsw.py
+│   └── utils.py
 └── venv (or your virtual environment folder)
 ```
 
