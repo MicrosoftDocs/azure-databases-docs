@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Metrics
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-metrics](./includes/param-18-metrics.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-metrics](./includes/param-17-metrics.md)]

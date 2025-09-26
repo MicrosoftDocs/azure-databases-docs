@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Resource Usage / Kernel Resources
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-resource-usage-kernel-resources](./includes/param-18-resource-usage-kernel-resources.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-resource-usage-kernel-resources](./includes/param-17-resource-usage-kernel-resources.md)]

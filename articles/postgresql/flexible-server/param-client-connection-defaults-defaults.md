@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Client Connection Defaults / Other Defaults
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-client-connection-defaults-defaults](./includes/param-18-client-connection-defaults-defaults.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-client-connection-defaults-defaults](./includes/param-17-client-connection-defaults-defaults.md)]

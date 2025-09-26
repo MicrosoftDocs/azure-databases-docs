@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Developer Options
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-developer-options](./includes/param-18-developer-options.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-developer-options](./includes/param-17-developer-options.md)]

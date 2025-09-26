@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Statistics / Cumulative Query and Index Statistics
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-statistics-cumulative-query-index-statistics](./includes/param-18-statistics-cumulative-query-index-statistics.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-statistics-cumulative-query-index-statistics](./includes/param-17-statistics-cumulative-query-index-statistics.md)]

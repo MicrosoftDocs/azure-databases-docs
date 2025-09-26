@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Query Tuning / Planner Cost Constants
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-query-tuning-planner-cost-constants](./includes/param-18-query-tuning-planner-cost-constants.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-query-tuning-planner-cost-constants](./includes/param-17-query-tuning-planner-cost-constants.md)]

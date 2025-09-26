@@ -59,6 +59,23 @@ ms.custom: automatically generated
 
 
 
+### max_notify_queue_pages
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Asynchronous Behavior |
+| Description | Sets the maximum number of allocated pages for NOTIFY / LISTEN queue. |
+| Data type | integer |
+| Default value | `1048576` |
+| Allowed values | `1048576` |
+| Parameter type | read-only |
+| Documentation | [max_notify_queue_pages](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAX-NOTIFY-QUEUE-PAGES) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### max_parallel_maintenance_workers
 
 | Attribute | Value |
@@ -81,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Asynchronous Behavior |
-| Description | Sets the maximum number of workers than can be supported for parallel operations. |
+| Description | Sets the maximum number of workers that can be supported for parallel operations. |
 | Data type | integer |
 | Default value | `8` |
 | Allowed values | `0-1024` |

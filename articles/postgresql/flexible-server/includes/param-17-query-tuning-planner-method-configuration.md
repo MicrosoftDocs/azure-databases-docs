@@ -59,6 +59,23 @@ ms.custom: automatically generated
 
 
 
+### enable_group_by_reordering
+
+| Attribute | Value |
+| --- | --- |
+| Category | Query Tuning / Planner Method Configuration |
+| Description | Enables reordering of GROUP BY keys. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [enable_group_by_reordering](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-GROUPBY-REORDERING) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### enable_hashagg
 
 | Attribute | Value |
@@ -268,7 +285,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Method Configuration |
-| Description | Enables or disables the query planner's use of partitionwise grouping or aggregation, which allows grouping or aggregation on a partitioned tables performed separately for each partition. |
+| Description | Enables or disables the query planner's use of partitionwise grouping or aggregation, which allows grouping or aggregation on partitioned tables performed separately for each partition. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |

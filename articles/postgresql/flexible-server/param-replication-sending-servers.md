@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Replication / Sending Servers
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-replication-sending-servers](./includes/param-18-replication-sending-servers.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-replication-sending-servers](./includes/param-17-replication-sending-servers.md)]

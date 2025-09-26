@@ -76,6 +76,23 @@ ms.custom: automatically generated
 
 
 
+### huge_pages_status
+
+| Attribute | Value |
+| --- | --- |
+| Category | Preset Options |
+| Description | Indicates the status of huge pages. |
+| Data type | enumeration |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [huge_pages_status](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-HUGE-PAGES-STATUS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### in_hot_standby
 
 | Attribute | Value |
@@ -202,8 +219,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version. |
 | Data type | string |
-| Default value | `17.5` |
-| Allowed values | `17.5` |
+| Default value | `17.6` |
+| Allowed values | `17.6` |
 | Parameter type | read-only |
 | Documentation | [server_version](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-SERVER-VERSION) |
 
@@ -219,8 +236,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version as an integer. |
 | Data type | integer |
-| Default value | `170005` |
-| Allowed values | `170005` |
+| Default value | `170006` |
+| Allowed values | `170006` |
 | Parameter type | read-only |
 | Documentation | [server_version_num](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-SERVER-VERSION-NUM) |
 
@@ -236,8 +253,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the size of the server's main shared memory area (rounded up to the nearest MB). |
 | Data type | integer |
-| Default value | `8608` |
-| Allowed values | `8608` |
+| Default value | `8623` |
+| Allowed values | `8623` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_size](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE) |
 
@@ -253,8 +270,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the number of huge pages needed for the main shared memory area. |
 | Data type | integer |
-| Default value | `4304` |
-| Allowed values | `4304` |
+| Default value | `4312` |
+| Allowed values | `4312` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_size_in_huge_pages](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE-IN-HUGE-PAGES) |
 

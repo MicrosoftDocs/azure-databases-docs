@@ -127,6 +127,40 @@ ms.custom: automatically generated
 
 
 
+### synchronized_standby_slots
+
+| Attribute | Value |
+| --- | --- |
+| Category | Replication / Standby Servers |
+| Description | Lists streaming replication standby server replication slot names that logical WAL sender processes will wait for. Logical WAL sender processes will send decoded changes to output plugins only after the specified replication slots have confirmed receiving WAL. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [synchronized_standby_slots](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-SYNCHRONIZED-STANDBY-SLOTS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### sync_replication_slots
+
+| Attribute | Value |
+| --- | --- |
+| Category | Replication / Standby Servers |
+| Description | Enables physical standby to synchronize logical failover slots from the primary server. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [sync_replication_slots](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-SYNC-REPLICATION-SLOTS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### wal_receiver_create_temp_slot
 
 | Attribute | Value |

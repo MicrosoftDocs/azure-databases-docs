@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # PgBouncer
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-pgbouncer](./includes/param-18-pgbouncer.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-pgbouncer](./includes/param-17-pgbouncer.md)]

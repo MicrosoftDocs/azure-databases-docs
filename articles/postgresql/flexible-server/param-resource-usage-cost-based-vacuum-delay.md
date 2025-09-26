@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Resource Usage / Cost-Based Vacuum Delay
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-resource-usage-cost-based-vacuum-delay](./includes/param-18-resource-usage-cost-based-vacuum-delay.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-resource-usage-cost-based-vacuum-delay](./includes/param-17-resource-usage-cost-based-vacuum-delay.md)]

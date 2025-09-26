@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Client Connection Defaults / Shared Library Preloading
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-client-connection-defaults-shared-library-preloading](./includes/param-18-client-connection-defaults-shared-library-preloading.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-client-connection-defaults-shared-library-preloading](./includes/param-17-client-connection-defaults-shared-library-preloading.md)]
