@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # File Locations
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-file-locations](./includes/param-18-file-locations.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-file-locations](./includes/param-17-file-locations.md)]

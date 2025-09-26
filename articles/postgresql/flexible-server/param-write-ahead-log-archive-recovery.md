@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Write-Ahead Log / Archive Recovery
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-write-ahead-log-archive-recovery](./includes/param-18-write-ahead-log-archive-recovery.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-write-ahead-log-archive-recovery](./includes/param-17-write-ahead-log-archive-recovery.md)]

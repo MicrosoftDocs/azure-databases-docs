@@ -17,6 +17,12 @@ zone_pivot_groups: postgresql-server-version
 
 The following extensions and modules are available for the Azure Database for the PostgreSQL service.
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [extensions-tables-by-engine-18](./includes/extensions-tables-by-engine-18.md)]
+
+::: zone-end
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [extensions-tables-by-engine-17](./includes/extensions-tables-by-engine-17.md)]

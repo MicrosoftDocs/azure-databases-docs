@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Replication / Subscribers
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-replication-subscribers](./includes/param-18-replication-subscribers.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-replication-subscribers](./includes/param-17-replication-subscribers.md)]

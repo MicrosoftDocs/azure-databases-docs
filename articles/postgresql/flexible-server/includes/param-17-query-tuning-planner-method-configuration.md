@@ -268,7 +268,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Method Configuration |
-| Description | Enables or disables the query planner's use of partitionwise grouping or aggregation, which allows grouping or aggregation on a partitioned tables performed separately for each partition. |
+| Description | Enables or disables the query planner's use of partitionwise grouping or aggregation, which allows grouping or aggregation on partitioned tables performed separately for each partition. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |

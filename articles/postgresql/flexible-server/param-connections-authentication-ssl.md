@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Connections and Authentication / SSL
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-connections-authentication-ssl](./includes/param-18-connections-authentication-ssl.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-connections-authentication-ssl](./includes/param-17-connections-authentication-ssl.md)]

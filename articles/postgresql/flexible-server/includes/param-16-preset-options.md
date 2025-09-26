@@ -202,8 +202,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version. |
 | Data type | string |
-| Default value | `16.9` |
-| Allowed values | `16.9` |
+| Default value | `16.10` |
+| Allowed values | `16.10` |
 | Parameter type | read-only |
 | Documentation | [server_version](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SERVER-VERSION) |
 
@@ -219,8 +219,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version as an integer. |
 | Data type | integer |
-| Default value | `160009` |
-| Allowed values | `160009` |
+| Default value | `160010` |
+| Allowed values | `160010` |
 | Parameter type | read-only |
 | Documentation | [server_version_num](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SERVER-VERSION-NUM) |
 
@@ -236,8 +236,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the size of the server's main shared memory area (rounded up to the nearest MB). |
 | Data type | integer |
-| Default value | `8571` |
-| Allowed values | `8571` |
+| Default value | `8586` |
+| Allowed values | `8586` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_size](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE) |
 
@@ -253,8 +253,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the number of huge pages needed for the main shared memory area. |
 | Data type | integer |
-| Default value | `4286` |
-| Allowed values | `4286` |
+| Default value | `4293` |
+| Allowed values | `4293` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_size_in_huge_pages](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE-IN-HUGE-PAGES) |
 

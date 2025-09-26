@@ -1802,7 +1802,7 @@ ms.custom: automatically generated
 | Data type | integer |
 | Default value | `15` |
 | Allowed values | `1-30` |
-| Parameter type | static |
+| Parameter type | dynamic |
 | Documentation | [pg_qs.interval_length_minutes](https://go.microsoft.com/fwlink/?linkid=2274607) |
 
 

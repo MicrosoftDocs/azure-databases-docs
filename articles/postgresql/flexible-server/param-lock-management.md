@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Lock Management
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-lock-management](./includes/param-18-lock-management.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-lock-management](./includes/param-17-lock-management.md)]

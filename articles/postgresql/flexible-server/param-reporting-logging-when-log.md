@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Reporting and Logging / When to Log
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-reporting-logging-when-log](./includes/param-18-reporting-logging-when-log.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-reporting-logging-when-log](./includes/param-17-reporting-logging-when-log.md)]

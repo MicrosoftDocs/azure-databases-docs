@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Query Tuning / Genetic Query Optimizer
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-query-tuning-genetic-query-optimizer](./includes/param-18-query-tuning-genetic-query-optimizer.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-query-tuning-genetic-query-optimizer](./includes/param-17-query-tuning-genetic-query-optimizer.md)]

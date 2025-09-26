@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Version and Platform Compatibility / Previous PostgreSQL Versions
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-version-platform-compatibility-postgresql-versions](./includes/param-18-version-platform-compatibility-postgresql-versions.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-version-platform-compatibility-postgresql-versions](./includes/param-17-version-platform-compatibility-postgresql-versions.md)]

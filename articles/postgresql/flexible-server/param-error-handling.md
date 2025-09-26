@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Error Handling
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-error-handling](./includes/param-18-error-handling.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-error-handling](./includes/param-17-error-handling.md)]

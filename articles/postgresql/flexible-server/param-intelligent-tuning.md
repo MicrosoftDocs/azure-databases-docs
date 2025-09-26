@@ -14,6 +14,13 @@ zone_pivot_groups: postgresql-server-version
 # Intelligent Tuning
 
 
+::: zone pivot="postgresql-18"
+
+[!INCLUDE [param-18-intelligent-tuning](./includes/param-18-intelligent-tuning.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-17"
 
 [!INCLUDE [param-17-intelligent-tuning](./includes/param-17-intelligent-tuning.md)]

@@ -1188,8 +1188,8 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Disable specific file systems preventing access (e.g., LocalFileSystem). |
 | Data type | string |
-| Default value | `LocalFileSystem, S3FileSystem` |
-| Allowed values | `LocalFileSystem, S3FileSystem` |
+| Default value | `LocalFileSystem` |
+| Allowed values | `LocalFileSystem` |
 | Parameter type | read-only |
 | Documentation | [duckdb.disabled_filesystems](https://github.com/duckdb/pg_duckdb) |
 
@@ -2295,7 +2295,7 @@ ms.custom: automatically generated
 | Data type | integer |
 | Default value | `15` |
 | Allowed values | `1-30` |
-| Parameter type | static |
+| Parameter type | dynamic |
 | Documentation | [pg_qs.interval_length_minutes](https://go.microsoft.com/fwlink/?linkid=2274607) |
 
 
@@ -2314,6 +2314,23 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [pg_qs.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_qs.max_captured_queries
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Specifies the number of most relevant queries for which query store captures runtime statistics at each interval. |
+| Data type | integer |
+| Default value | `500` |
+| Allowed values | `100-500` |
+| Parameter type | dynamic |
+| Documentation | [pg_qs.max_captured_queries](https://go.microsoft.com/fwlink/?linkid=2274607) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
