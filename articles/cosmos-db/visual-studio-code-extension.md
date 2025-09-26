@@ -33,7 +33,7 @@ To connect and manage data in Azure Cosmos DB within Visual Studio, first instal
 
 1. Open Visual Studio Code.
 1. Access the **Extensions** pane by selecting **View > Extensions**  or using the shortcut **Ctrl + Shift + X** on Windows and **Command + Shift + X** on macOS.
-1. In the search bar, type [DocumentDB for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) and select the extension. Then, select **Install**.
+1. In the search bar, type [DocumentDB for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, select **Install**.
 1. After installation, reload Visual Studio Code if prompted.
 
 ### Connecting to an Azure Cosmos DB for NoSQL
