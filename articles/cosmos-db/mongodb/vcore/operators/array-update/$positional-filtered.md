@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 10/14/2024
+ms.date: 09/05/2025
 ---
 
 # $[identifier]
@@ -18,13 +18,13 @@ The $[identifier] array update operator is used to update specific elements in a
 
 ```javascript
 {
-  "<update operator>": {
-    "<array field>.$[<identifier>]": <value>
+  <update operator>: {
+    <array field>.$[<identifier>]: <value>
   }
 },
 {
-  "arrayFilters": [
-    { "<identifier>.<field>": <condition> }
+  arrayFilters: [
+    { <identifier>.<field>: <condition> }
   ]
 }
 ```
@@ -48,81 +48,167 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-    _id: '905d1939-e03a-413e-a9c4-221f74055aac',
-    name: 'Trey Research | Home Office Depot - Lake Freeda',
-    location: { lat: -48.9752, lon: -141.6816 },
-    staff: { employeeCount: { fullTime: 12, partTime: 19 } },
-    sales: {
-      salesByCategory: [ { categoryName: 'Desk Lamps', totalSales: 37978 } ],
-      revenue: 37978
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "location": {
+        "lat": -48.9752,
+        "lon": -141.6816
     },
-    promotionEvents: [
-      {
-        eventName: 'Crazy Deal Days',
-        promotionalDates: {
-          startDate: { Year: 2023, Month: 9, Day: 27 },
-          endDate: { Year: 2023, Month: 10, Day: 4 }
+    "staff": {
+        "employeeCount": {
+            "fullTime": 12,
+            "partTime": 19
+        }
+    },
+    "sales": {
+        "salesByCategory": [
+            {
+                "categoryName": "Desk Lamps",
+                "totalSales": 37978
+            }
+        ],
+        "revenue": 37978
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Crazy Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2023,
+                    "Month": 9,
+                    "Day": 27
+                },
+                "endDate": {
+                    "Year": 2023,
+                    "Month": 10,
+                    "Day": 4
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Desks",
+                    "discountPercentage": 25
+                },
+                {
+                    "categoryName": "Filing Cabinets",
+                    "discountPercentage": 23
+                }
+            ]
         },
-        discounts: [
-          { categoryName: 'Desks', discountPercentage: 25 },
-          { categoryName: 'Filing Cabinets', discountPercentage: 23 }
-        ]
-      },
-      {
-        eventName: 'Incredible Markdown Mania',
-        promotionalDates: {
-          startDate: { Year: 2023, Month: 12, Day: 26 },
-          endDate: { Year: 2024, Month: 1, Day: 2 }
+        {
+            "eventName": "Incredible Markdown Mania",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2023,
+                    "Month": 12,
+                    "Day": 26
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 1,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Monitor Stands",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Desks",
+                    "discountPercentage": 24
+                }
+            ]
         },
-        discounts: [
-          { categoryName: 'Monitor Stands', discountPercentage: 20 },
-          { categoryName: 'Desks', discountPercentage: 24 }
-        ]
-      },
-      {
-        eventName: 'Major Deal Days',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 3, Day: 25 },
-          endDate: { Year: 2024, Month: 4, Day: 2 }
+        {
+            "eventName": "Major Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 3,
+                    "Day": 25
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 4,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Office Accessories",
+                    "discountPercentage": 9
+                },
+                {
+                    "categoryName": "Desks",
+                    "discountPercentage": 13
+                }
+            ]
         },
-        discounts: [
-          { categoryName: 'Office Accessories', discountPercentage: 9 },
-          { categoryName: 'Desks', discountPercentage: 13 }
-        ]
-      },
-      {
-        eventName: 'Blowout Bonanza',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 6, Day: 23 },
-          endDate: { Year: 2024, Month: 7, Day: 2 }
+        {
+            "eventName": "Blowout Bonanza",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Office Chairs",
+                    "discountPercentage": 24
+                },
+                {
+                    "categoryName": "Desk Lamps",
+                    "discountPercentage": 19
+                }
+            ]
         },
-        discounts: [
-          { categoryName: 'Office Chairs', discountPercentage: 24 },
-          { categoryName: 'Desk Lamps', discountPercentage: 19 }
-        ]
-      },
-      {
-        eventName: 'Super Saver Fiesta',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 9, Day: 21 },
-          endDate: { Year: 2024, Month: 10, Day: 1 }
-        },
-        discounts: [
-          { categoryName: 'Desks', discountPercentage: 5 },
-          { categoryName: 'Monitor Stands', discountPercentage: 10 }
-        ]
-      }
+        {
+            "eventName": "Super Saver Fiesta",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 10,
+                    "Day": 1
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Desks",
+                    "discountPercentage": 5
+                },
+                {
+                    "categoryName": "Monitor Stands",
+                    "discountPercentage": 10
+                }
+            ]
+        }
     ],
-    company: 'Trey Research',
-    city: 'Lake Freeda',
-    storeOpeningDate: ISODate("2024-12-30T22:55:25.779Z"),
-    lastUpdated: Timestamp({ t: 1729983325, i: 1 })
-  }
+    "company": "Trey Research",
+    "city": "Lake Freeda",
+    "storeOpeningDate": "2024-12-30T22:55:25.779Z",
+    "lastUpdated": {
+        "t": 1729983325,
+        "i": 1
+    }
+}
 ```
 
 ### Example 1: Update the discount percentage for the chosen category in the specified promotion event. 
 
-Update the discount percentage for the 'Desk Lamps' category by modifying the specific elements in the promotion event array where the event name is 'Blowout Bonanza'.
+This query updates the discount percentage for the 'Desk Lamps' category by modifying the specific elements in the promotion event array where the event name is 'Blowout Bonanza'.
 
 ```javascript
 db.stores.updateOne(
@@ -142,7 +228,6 @@ db.stores.updateOne(
     ]
   }
 )
-
 ```
 
 

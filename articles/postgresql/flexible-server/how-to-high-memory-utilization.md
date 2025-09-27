@@ -54,9 +54,9 @@ Consider the following reasons and remedial actions for resolving high memory ut
 
 An inappropriate configuration of the following server parameters could have an impact in the amount of memory consumed by your workload. Therefore, their values should be reviewed and adjusted according to your needs:
 
-- [work_mem](server-parameters-table-resource-usage-memory.md#work_mem).
-- [maintenance_work_mem](server-parameters-table-resource-usage-memory.md#maintenance_work_mem). - [shared_buffers](server-parameters-table-resource-usage-memory.md#shared_buffers).
-- [max_connections](server-parameters-table-connections-and-authentication-connection-settings.md#max_connections).
+- [work_mem](param-resource-usage-memory.md#work_mem).
+- [maintenance_work_mem](param-resource-usage-memory.md#maintenance_work_mem). - [shared_buffers](param-resource-usage-memory.md#shared_buffers).
+- [max_connections](param-connections-authentication-connection-settings.md#max_connections).
 
 ### Use EXPLAIN ANALYZE
 

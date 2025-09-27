@@ -133,6 +133,21 @@
         - name: ARRAY_SLICE
           displayName: ARRAY_SLICE, slice, array slice, array functions
           href: array-slice.md
+        - name: ARRAY_MAX
+          displayName: ARRAY_MAX, max, maximum, array maximum, array functions
+          href: array-max.md
+        - name: ARRAY_MIN
+          displayName: ARRAY_MIN, min, minimum, array minimum, array functions
+          href: array-min.md
+        - name: ARRAY_SUM
+          displayName: ARRAY_SUM, sum, array sum, array functions
+          href: array-sum.md
+        - name: ARRAY_AVG
+          displayName: ARRAY_AVG, avg, average, array average, array functions
+          href: array-avg.md
+        - name: ARRAY_MEDIAN
+          displayName: ARRAY_MEDIAN, median, array median, array functions
+          href: array-median.md
         - name: CHOOSE
           displayName: CHOOSE, choose, choose index, select item, array functions
           href: choose.md
@@ -145,6 +160,12 @@
         - name: SetUnion
           displayName: SetUnion, array union, union, array functions
           href: setunion.md
+        - name: SetDifference
+          displayName: SetDifference, array difference, difference, set difference, array functions
+          href: setdifference.md
+        - name: SetEqual
+          displayName: SetEqual, array equal, equal, set equal, array functions
+          href: setequal.md
     - name: Conditional functions
       items:
         - name: Ternary conditional
@@ -152,6 +173,9 @@
           href: iif.md
     - name: Date and time functions
       items:
+        - name: Ago
+          displayName: Ago, ago, date time offset, date and time functions, datetime
+          href: ago.md
         - name: DateTimeAdd
           displayName: DateTimeAdd, date time add, timestamp, date and time functions, datetime
           href: datetimeadd.md
@@ -161,6 +185,9 @@
         - name: DateTimeDiff
           displayName: DateTimeDiff, date time diff, date and time functions, datetime
           href: datetimediff.md
+        - name: DateTimeFormat
+          displayName: DateTimeFormat, date time format, format, date and time functions, datetime
+          href: datetimeformat.md
         - name: DateTimeFromParts
           displayName: DateTimeFromParts, date time from parts, date and time functions, datetime
           href: datetimefromparts.md
@@ -173,6 +200,9 @@
         - name: DateTimeToTimestamp
           displayName: DateTimeToTimestamp, date time to timestamp, date and time functions, datetime, timestamp
           href: datetimetotimestamp.md
+        - name: Day
+          displayName: Day, day, date part, date and time functions, datetime
+          href: day.md
         - name: GetCurrentDateTime
           displayName: GetCurrentDateTime, get current date time, date and time functions, datetime
           href: getcurrentdatetime.md
@@ -191,12 +221,21 @@
         - name: GetCurrentTimestampStatic
           displayName: GetCurrentTimestampStatic, get current timestamp static, static, timestamp, date and time functions, datetime
           href: getcurrenttimestampstatic.md
+        - name: Month
+          displayName: Month, month, date part, date and time functions, datetime
+          href: month.md
+        - name: Now
+          displayName: Now, now, current time, date and time functions, datetime
+          href: now.md
         - name: TicksToDateTime
           displayName: TicksToDateTime, ticks to date time, date and time functions, datetime, ticks
           href: tickstodatetime.md
         - name: TimestampToDateTime
           displayName: TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp
           href: timestamptodatetime.md
+        - name: Year
+          displayName: Year, year, date part, date and time functions, datetime
+          href: year.md
     - name: Full Text Search functions
       items:
         - name: FullTextContains
@@ -354,12 +393,27 @@
         - name: CONTAINS
           displayName: CONTAINS, built-in functions
           href: contains.md
+        - name: CONTAINS_ALL_CI
+          displayName: CONTAINS_ALL_CI, contains all case insensitive, built-in functions
+          href: contains-all-ci.md
+        - name: CONTAINS_ALL_CS
+          displayName: CONTAINS_ALL_CS, contains all case sensitive, built-in functions
+          href: contains-all-cs.md
+        - name: CONTAINS_ANY_CI
+          displayName: CONTAINS_ANY_CI, contains any case insensitive, built-in functions
+          href: contains-any-ci.md
+        - name: CONTAINS_ANY_CS
+          displayName: CONTAINS_ANY_CS, contains any case sensitive, built-in functions
+          href: contains-any-cs.md
         - name: ENDSWITH
           displayName: ENDSWITH, built-in functions
           href: endswith.md
         - name: INDEX_OF
           displayName: INDEX_OF, index of, built-in functions
           href: index-of.md
+        - name: LASTINDEXOF
+          displayName: LASTINDEXOF, last index of, built-in functions
+          href: lastindexof.md
         - name: LEFT
           displayName: LEFT, built-in functions
           href: left.md
@@ -437,6 +491,9 @@
         - name: IS_BOOL
           displayName: IS_BOOL, IsBool, is bool, built-in functions
           href: is-bool.md
+        - name: IS_DATETIME
+          displayName: IS_DATETIME, IsDateTime, is datetime, built-in functions
+          href: is-datetime.md
         - name: IS_DEFINED
           displayName: IS_DEFINED, IsDefined, is defined, built-in functions
           href: is-defined.md

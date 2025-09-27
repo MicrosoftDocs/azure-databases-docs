@@ -7,7 +7,7 @@ ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 09/27/2024
+ms.date: 09/05/2025
 ---
 
 # $pow
@@ -149,16 +149,16 @@ To calculate the square of the sales volume of all stores under the "First Up Co
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": {
-            "$in": ["First Up Consultants"]
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
     }
 }, {
-    "$project": {
-        "company": 1,
+    $project: {
+        company: 1,
         "sales.revenue": 1,
-        "fullSalesSquare": {
+        fullSalesSquare: {
             $pow: ["$sales.revenue", 2]
         }
     }

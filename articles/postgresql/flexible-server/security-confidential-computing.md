@@ -4,7 +4,7 @@ description: This article describes the confidential computing options in Azure 
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 09/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Azure Confidential Computing for Azure Database for PostgreSQL (Preview)
+# Azure Confidential Computing for Azure Database for PostgreSQL
 
 [Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to securely process and collaborate on sensitive data, such as personal data or protected health information (PHI). ACC provides built-in protection against unauthorized access by securing data in use through Trusted Execution Environments (TEEs). This allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
 
@@ -29,7 +29,8 @@ ms.custom:
 **Azure Confidential Computing** is supported in **Azure Database for PostgreSQL** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. There are two processors to choose from:
 
 - AMD SEV-SNP
-- Intel TDX
+
+   :::image type="content" source="media/security-confidential-computing/processor.jpg" alt-text="Screenshot of processor." lightbox="media/security-confidential-computing/processor.jpg":::
 
 ## Virtual machine SKUs
 
@@ -38,9 +39,7 @@ The SKUs supporting Azure Confidential Computing (ACC) for Azure Database for Po
 | SKU Name | Processor | vCores | Memory (GiB) | Max IOPS | Max I/O Bandwidth (MBps) |
 | --- | --- | --- | --- | --- | --- |
 | **Dcadsv5** | AMD SEV-SNP | 2-96 | 8-384 | 3750-80000 | 48-1200 |
-| **Dcedsv5** | Intel TDX | 2-96 | 8-384 | 3750-80000 | 85-2600 |
 | **Ecadsv5** | AMD SEV-SNP | 2-96 | 16-672 | 3750-80000 | 48-1200 |
-| **Ecedsv5** | Intel TDX | 2-128 | 16-1024 | 3750-80000 | 48-1200 |
 
 ## Deployment
 
@@ -52,17 +51,19 @@ Follow the steps below to deploy an [Azure Database for PostgreSQL](https://ms.p
 
 1. Select **UAE North** as the region.
 
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-1.png" alt-text="Screenshot of Azure Confidential Computing portal deployment basics page." lightbox="media/security-confidential-computing/confidential-compute-portal-1.png":::
+
 1. Select **Configure Server** under **Compute + Storage**.
 
-    :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-1.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment basics page." lightbox="media/security-confidential-computing/confidential-compute-portal-1.jpg":::
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-2.png" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute and Storage page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.png":::
 
 1. On the **Compute and Storage** tab, select your Compute Tier and Compute Processor.
 
-    :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-2.jpg" alt-text="Screenshot of the Azure Confidential Computing portal deployment compute and storage page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-3.png" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Tier and Processor page." lightbox="media/security-confidential-computing/confidential-compute-portal-3.png":::
 
 1. Select Compute Size and **select a confidential compute SKU** and the size based on your needs.
 
-    :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-3.jpg" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.jpg":::
+   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-4.png" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Tier and Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-4.png":::
 
 1. Deploy your server.
 
@@ -82,10 +83,8 @@ Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential
 
 Be sure to evaluate the limitations carefully before deploying in a production environment.
 
-- Confidential Computing is only available in the UAE North.
-- High Availability isn't supported for Confidential Compute SKUs.
+- Confidential Computing is only available in the UAE North region and West Europe regions.
 - Point-in-time Restore (PITR) from nonconfidential compute SKUs to confidential ones isn't allowed.
-- Compute scaling operation between confidential and nonconfidential compute options.
 
 ## Related content
 

@@ -4,7 +4,7 @@ description: This article describes how to configure the index tuning feature in
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/26/2025
+ms.date: 09/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -23,6 +23,9 @@ Index tuning can be enabled, disabled, and configured through a [set of paramete
 Index tuning depends on [query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier, due to the performance implications it might have. For the same reason, index tuning isn't recommended for servers using compute from the Burstable tier.
 
 Index tuning is an opt-in feature that isn't enabled by default on a server. It can be enabled or disabled globally for all databases on a given server and can't be turned on or off per database.
+
+> [!NOTE]
+> Index tuning depends on query store, which isn't supported in Azure Database for PostgreSQL flexible server version 18, while it's in Preview.
 
 ### Steps to enable index tuning
 

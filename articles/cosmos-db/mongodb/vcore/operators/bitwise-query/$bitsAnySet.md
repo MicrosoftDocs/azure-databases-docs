@@ -1,13 +1,13 @@
 ---
   title: $bitsAnySet
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: Overview of the $bitsAnySet operator in Azure Cosmos DB for MongoDB (vCore)
+  titleSuffix: Overview of the $bitsAnySet operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $bitsAnySet operator returns documents where any of the specified bit positions are set to 1.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 11/01/2024
+  ms.date: 09/05/2025
 ---
 
 # $bitsAnySet
@@ -34,102 +34,112 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
-  "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
-  "location": {
-    "lat": -74.0427,
-    "lon": 160.8154
-  },
-  "staff": {
-    "employeeCount": {
-      "fullTime": 9,
-      "partTime": 18
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "Stockings",
-        "totalSales": 25731
-      }
-    ],
-    "revenue": 25731
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Mega Savings Extravaganza",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 6, "Day": 29 },
-        "endDate": { "Year": 2023, "Month": 7, "Day": 7 }
-      },
-      "discounts": [
-        { "categoryName": "Stockings", "discountPercentage": 16 },
-        { "categoryName": "Tree Ornaments", "discountPercentage": 8 }
-      ]
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
     },
-    {
-      "eventName": "Incredible Discount Days",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 9, "Day": 27 },
-        "endDate": { "Year": 2023, "Month": 10, "Day": 4 }
-      },
-      "discounts": [
-        { "categoryName": "Stockings", "discountPercentage": 11 },
-        { "categoryName": "Holiday Cards", "discountPercentage": 9 }
-      ]
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
     },
-    {
-      "eventName": "Massive Deal Mania",
-      "promotionalDates": {
-        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
-        "endDate": { "Year": 2024, "Month": 1, "Day": 2 }
-      },
-      "discounts": [
-        { "categoryName": "Gift Bags", "discountPercentage": 21 },
-        { "categoryName": "Bows", "discountPercentage": 19 }
-      ]
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
     },
-    {
-      "eventName": "Super Saver Soiree",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
-        "endDate": { "Year": 2024, "Month": 4, "Day": 1 }
-      },
-      "discounts": [
-        { "categoryName": "Tree Ornaments", "discountPercentage": 15 },
-        { "categoryName": "Stockings", "discountPercentage": 14 }
-      ]
-    },
-    {
-      "eventName": "Fantastic Savings Fiesta",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
-        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
-      },
-      "discounts": [
-        { "categoryName": "Stockings", "discountPercentage": 24 },
-        { "categoryName": "Gift Wrap", "discountPercentage": 16 }
-      ]
-    },
-    {
-      "eventName": "Price Plunge Party",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
-        "endDate": { "Year": 2024, "Month": 9, "Day": 28 }
-      },
-      "discounts": [
-        { "categoryName": "Holiday Tableware", "discountPercentage": 13 },
-        { "categoryName": "Holiday Cards", "discountPercentage": 11 }
-      ]
-    }
-  ],
-  "company": "Lakeshore Retail",
-  "city": "Marvinfort",
-  "storeOpeningDate": { "$date": "2024-10-01T18:24:02.586Z" },
-  "lastUpdated": { "$timestamp": { "t": 1730485442, "i": 1 } },
-  "storeFeatures": 38
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
-
 ```
 
 The `storeFeatures` field is a bitmask integer representing various store capabilities. Each bit corresponds to a feature:
@@ -145,27 +155,40 @@ The `storeFeatures` field is a bitmask integer representing various store capabi
 | 6   | 64    | Restrooms                |
 | 7   | 128   | Home Delivery            |
 
-Find stores that offer either home delivery OR free Wi-Fi (bits 5 and 7)
-
 ### Example 1: Find stores that have in-store pickup or drive-thru
+
+This query retrieves stores that offer either home delivery OR free Wi-Fi (bits 5 and 7)
 
 ```javascript
 db.stores.find({
-  storeFeatures: { $bitsAnySet: [5, 7] }},
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+    storeFeatures: {
+        $bitsAnySet: [5, 7]
+    }
+}, {
+    _id: 1,
+    name: 1,
+    storeFeatures: 1
+}).limit(5)
 ```
 
 Equivalent:
 
 ```javascript
 db.stores.find({
-  storeFeatures: { $bitsAnySet: 160  }},  // 32 + 128
-  { _id: 1, name: 1, storeFeatures: 1 }).limit(5)
+        storeFeatures: {
+            $bitsAnySet: 160
+        }
+    }, // 32 + 128
+    {
+        _id: 1,
+        name: 1,
+        storeFeatures: 1
+    }).limit(5)
 ```
 
-Sample output:
+The first five results returned by this query are:
 
-```JSON
+```json
 [
   {
     "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
@@ -193,7 +216,6 @@ Sample output:
     "storeFeatures": 108
   }
 ]
-
 ```
 
 ## Related content

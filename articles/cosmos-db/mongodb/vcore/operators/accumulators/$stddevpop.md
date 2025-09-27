@@ -148,17 +148,20 @@ To calculate the standard deviation of the total sales across all sales categori
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": "Fourth Coffee"
+    $match: {
+        company: "Fourth Coffee"
     }
 }, {
-    "$group": {
-        "_id": "$company",
-        "stdDev": {
-            "$stdDevPop": "$sales.totalSales"
+    $group: {
+        _id: "$company",
+        stdDev: {
+            $stdDevPop: "$sales.totalSales"
         }
     }
-}])
+}])[{
+    _id: 'Fourth Coffee',
+    stdDev: 0
+}]
 ```
 
 This query returns the following result:
@@ -178,20 +181,20 @@ To calculate the standard deviation of a field with only one distinct value, the
 
 ```javascript
 db.stores.aggregate([{
-    "$match": {
-        "company": "Fourth Coffee"
+    $match: {
+        company: "Fourth Coffee"
     }
 }, {
-    "$group": {
-        "_id": "$name",
-        "stdDev": {
-            "$stdDevPop": "$sales.totalSales"
+    $group: {
+        _id: "$name",
+        stdDev: {
+            $stdDevPop: "$sales.totalSales"
         }
     }
 }])
 ```
 
-This query returns the following results.
+This query returns the following results:
 
 ```json
 [
@@ -227,57 +230,45 @@ This query returns the following results.
 This query calculates the standard deviation of total sales for stores belonging to the "First Up Consultants" company from the first to the current document in the result set.
 
 ```javascript
-db.stores.aggregate(
-    [{
-            "$match": {
-                "company": {
-                    "$in": [
-                        "First Up Consultants"
-                    ]
-                },
-                "$and": [{
-                        "lastUpdated": {
-                            "$gt": ISODate("2024-09-01T03:06:24.180Z")
-                        }
-                    },
-                    {
-                        "lastUpdated": {
-                            "$lt": ISODate("2025-09-30T03:55:17.557Z")
-                        }
-                    }
-                ]
-            }
+db.stores.aggregate([{
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         },
-        {
-            "$setWindowFields": {
-                "partitionBy": "$company",
-                "sortBy": {
-                    "lastUpdated": 1
-                },
-                "output": {
-                    "stdDevPopTotalSales": {
-                        "$stdDevPop": "$sales.totalSales",
-                        "window": {
-                            "documents": [
-                                "unbounded",
-                                "current"
-                            ]
-                        }
-                    }
+        $and: [{
+            lastUpdated: {
+                $gt: ISODate("2024-09-01T03:06:24.180Z")
+            }
+        }, {
+            lastUpdated: {
+                "$lt": ISODate("2025-09-30T03:55:17.557Z")
+            }
+        }]
+    }
+}, {
+    $setWindowFields: {
+        partitionBy: "$company",
+        sortBy: {
+            lastUpdated: 1
+        },
+        output: {
+            stdDevPopTotalSales: {
+                $stdDevPop: "$sales.totalSales",
+                window: {
+                    documents: ["unbounded", "current"]
                 }
             }
-        },
-        {
-            "$project": {
-                "company": 1,
-                "name": 1,
-                "sales.totalSales": 1,
-                "lastUpdated": 1,
-                "stdDevPopTotalSales": 1
-            }
         }
-    ]
-)
+    }
+}, {
+    $project: {
+        company: 1,
+        name: 1,
+        "sales.totalSales": 1,
+        lastUpdated: 1,
+        stdDevPopTotalSales: 1
+    }
+}])
 ```
 
 This query returns the following result:

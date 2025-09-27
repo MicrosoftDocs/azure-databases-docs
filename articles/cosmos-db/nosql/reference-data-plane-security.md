@@ -1,14 +1,14 @@
 ---
-title: Data plane actions reference
+title: Data plane security reference
 titleSuffix: Azure Cosmos DB for NoSQL
-description: This article includes a list of all potential data plane actions for use with role-based access control (RBAC) in Azure Cosmos DB for NoSQL.
+description: Learn about data plane actions and built-in roles for role-based access control in Azure Cosmos DB for NoSQL. See which permissions are available and how to use them.
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
-ms.date: 04/18/2025
+ms.date: 09/10/2025
 appliesto:
   - ✅ NoSQL
 ---
@@ -103,5 +103,3 @@ The action can be assigned at any level in an Azure Cosmos DB account's hierarch
 ## Related content
 
 - [Security best practices](security.md)
-- [Grant data plane role-based access](how-to-grant-data-plane-access.md)
-- [Grant data plane control-plane access](how-to-grant-control-plane-access.md)

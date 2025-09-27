@@ -4,7 +4,7 @@ description: This article describes the query store feature in Azure Database fo
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/24/2024
+ms.date: 09/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -16,6 +16,9 @@ ms.topic: how-to
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 Query store is a feature in Azure Database for PostgreSQL flexible server that provides a way to track query performance over time. Query store simplifies the troubleshooting of performance issues by helping you quickly find the longest running and most resource-intensive queries. Query store automatically captures a history of queries and runtime statistics, and retains them for your review. It slices the data by time so that you can see temporal usage patterns. Data for all users, databases, and queries is stored in a database named `azure_sys` in the Azure Database for PostgreSQL flexible server instance.
+
+> [!NOTE]
+> Query store isn't supported in Azure Database for PostgreSQL flexible server version 18, while it's in Preview.
 
 ## Enable query store
 
@@ -80,7 +83,7 @@ Here are some examples of how you can gain more insights into your workload usin
 
 ## Configuration options
 
-When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](server-parameters-table-customized-options.md?pivots=postgresql-17#pg_qsinterval_length_minutes) server parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones which were executed the least number of times.
+When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](param-customized-options.md?pivots=postgresql-17#pg_qsinterval_length_minutes) server parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones which were executed the least number of times.
 
 The following options are available for configuring Query Store parameters:
 

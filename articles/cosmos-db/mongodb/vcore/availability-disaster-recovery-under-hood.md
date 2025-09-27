@@ -7,15 +7,15 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 12/03/2024
+ms.date: 09/09/2025
+appliesto:
+- ✅ MongoDB vCore
 #Customer Intent: As a database adminstrator, I want to configure availability and cross-region replication, so that I can have appropirtiate in-region and cross-region disaster recovery plans in the event of outages on different levels.
 ---
 
 # Availability (reliability) and disaster recovery (DR) in Azure Cosmos DB for MongoDB vCore: Behind the scenes
 
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-This article delves into the internals of [high availability (HA)](./high-availability.md) and [cross-region disaster recovery (DR)](./cross-region-replication.md#disaster-recovery-using-cluster-read-replicas) for Azure Cosmos DB for MongoDB vCore, outlining the design and capabilities of these features. It provides insights for effective in-region and cross-region strategy planning to ensure reliability and business continuity.
+This article delves into the internals of [high availability (HA)](./high-availability.md) and [cross-region disaster recovery (DR)](./cross-region-replication.md#disaster-recovery-using-replica-cluster) for Azure Cosmos DB for MongoDB vCore, outlining the design and capabilities of these features. It provides insights for effective in-region and cross-region strategy planning to ensure reliability and business continuity.
 
 ## Azure Cosmos DB for MongoDB vCore cluster anatomy
 An **Azure Cosmos DB for MongoDB vCore** cluster consists of one or more physical shards (nodes). Each physical shard includes a dedicated compute node and remote premium SSD storage. The [compute and storage resources](./compute-storage.md) of a physical shard are exclusive to a single database and not shared across clusters or databases.

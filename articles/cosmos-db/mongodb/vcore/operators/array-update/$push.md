@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 09/11/2024
+  ms.date: 09/05/2025
 ---
 
 # $push
@@ -155,10 +155,16 @@ Consider this sample document from the stores collection.
 To add a new sales category to the salesByCategory array, run a query using the $push operator on the field with a new Sales object with the name of the category and its sales volume.
 
 ```javascript
-db.stores.update(
-   { _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4" },
-   { $push: { "sales.salesByCategory": { "categoryName": "Wine Accessories", "totalSales": 1000.00 } } }
-)
+db.stores.update({
+    _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
+}, {
+    $push: {
+        "sales.salesByCategory": {
+            categoryName: "Wine Accessories",
+            totalSales: 1000.00
+        }
+    }
+})
 ```
 
 This query returns the following result:
@@ -181,34 +187,32 @@ To retrieve the distinct sales volumes across all stores under the "First Up Con
 
 ```javascript
 db.stores.aggregate([{
-        "$match": {
-            "company": {
-                "$in": ["First Up Consultants"]
-            }
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
         }
-    }, {
-        "$setWindowFields": {
-            "partitionBy": "$company",
-            "sortBy": {
-                "sales.totalSales": -1
-            },
-            "output": {
-                "salesByStore": {
-                    "$push": "$sales.totalSales",
-                    "window": {
-                        "documents": ["unbounded", "current"]
-                    }
+    }
+}, {
+    $setWindowFields: {
+        partitionBy: "$company",
+        sortBy: {
+            "sales.totalSales": -1
+        },
+        output: {
+            salesByStore: {
+                $push: "$sales.totalSales",
+                window: {
+                    documents: ["unbounded", "current"]
                 }
             }
         }
-    },
-    {
-        "$project": {
-            "company": 1,
-            "salesByStore": 1
-        }
     }
-])
+}, {
+    $project: {
+        company: 1,
+        salesByStore: 1
+    }
+}])
 ```
 
 The first three results returned by this query are:

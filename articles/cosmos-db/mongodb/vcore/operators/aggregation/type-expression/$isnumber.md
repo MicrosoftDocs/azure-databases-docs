@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
 # $isNumber
@@ -147,17 +147,15 @@ Consider this sample document from the stores collection.
 To verify if the value of the latitude field is numeric, run a query using the $isNumber operator to validate that the double value of the field is a number.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeIsNumber": {
-            "$isNumber": "$location.lat"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeIsNumber: {
+            $isNumber: "$location.lat"
         }
     }
 }])
@@ -166,11 +164,13 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "originalLatitude": 72.8377,
-    "latitudeIsNumber": true
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalLatitude": 72.8377,
+        "latitudeIsNumber": true
+    }
+]
 ```
 
 ### Example 2: Check if an Int value is a number
@@ -178,17 +178,15 @@ This query returns the following result:
 To verify if the value of the totalSales field is numeric, run a query using the $isNumber operator to validate that the double value of the field is a number.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalTotalSales": "$sales.totalSales",
-        "totalSalesIsNumber": {
-            "$isNumber": "$sales.totalSales"
+}, {
+    $project: {
+        originalTotalSales: "$sales.totalSales",
+        totalSalesIsNumber: {
+            $isNumber: "$sales.totalSales"
         }
     }
 }])
@@ -197,11 +195,13 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "originalTotalSales": 9366,
-    "totalSalesIsNumber": true
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalTotalSales": 9366,
+        "totalSalesIsNumber": true
+    }
+]
 ```
 
 ### Example 3: Check if a string is a number
@@ -209,16 +209,14 @@ This query returns the following result:
 To verify if the value of the _id field is numeric, run a query using the $isNumber operator to validate that the string value of the field is not a number.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "idIsNumber": {
-            "$isNumber": "$_id"
+}, {
+    $project: {
+        idIsNumber: {
+            $isNumber: "$_id"
         }
     }
 }])
@@ -227,10 +225,12 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "idIsNumber": false
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "idIsNumber": false
+    }
+]
 ```
 
 ## Related content

@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/28/2025
+  ms.date: 09/08/2025
 ---
 
 # $concatArrays
@@ -113,12 +113,12 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Concatenating Arrays in a document
 
-The example pipeline merges the `categoryName` field from the `promotionEvents.discounts` array with the `tag` array into a single combinedTags array.
+This query merges the `categoryName` field from the `promotionEvents.discounts` array with the `tag` array into a single combinedTags array.
 
 ```javascript
 db.stores.aggregate([{
     $match: {
-        _id: '7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5'
+        _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"
     }
 }, {
     $project: {
@@ -129,23 +129,13 @@ db.stores.aggregate([{
 }])
 ```
 
-The query returns the following result.
+This query returns the following result.
 
 ```json
 [
   {
       "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-      "combinedTags": [
-          [
-              "DJ Turntables",
-              "DJ Mixers"
-          ],
-          "#ShopLocal",
-          "#FashionStore",
-          "#SeasonalSale",
-          "#FreeShipping",
-          "#MembershipDeals"
-      ]
+      "combinedTags": [ '#ShopLocal', '#NewArrival', '#NewArrival', '#FreeShipping' ]
   }
 ]
 ```

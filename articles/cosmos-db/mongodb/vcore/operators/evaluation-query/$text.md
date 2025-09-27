@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: language-reference
-  ms.date: 07/25/2025
+  ms.date: 09/04/2025
 ---
 
 # $text
@@ -40,11 +40,127 @@ The `$text` operator performs text search on the content of indexed string field
 
 Before using the `$text` operator, you must create a text index on the fields you want to search.
 
-## Example
+## Examples
+
+Let's understand the usage with sample json from `stores` dataset.
+
+```json
+{
+  "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+  "name": "First Up Consultants | Bed and Bath Pantry - Port Antone",
+  "location": {
+    "lat": 87.2239,
+    "lon": -129.0506
+  },
+  "staff": {
+    "employeeCount": {
+      "fullTime": 8,
+      "partTime": 7
+    }
+  },
+  "sales": {
+    "salesByCategory": [
+      { "categoryName": "Towel Sets", "totalSales": 520 },
+      { "categoryName": "Bath Accessories", "totalSales": 41710 },
+      { "categoryName": "Drapes", "totalSales": 42893 },
+      { "categoryName": "Towel Racks", "totalSales": 30773 },
+      { "categoryName": "Hybrid Mattresses", "totalSales": 39491 },
+      { "categoryName": "Innerspring Mattresses", "totalSales": 6410 },
+      { "categoryName": "Bed Frames", "totalSales": 41917 },
+      { "categoryName": "Mattress Protectors", "totalSales": 44124 },
+      { "categoryName": "Bath Towels", "totalSales": 5671 },
+      { "categoryName": "Turkish Towels", "totalSales": 25674 }
+    ],
+    "revenue": 279183
+  },
+  "promotionEvents": [
+    {
+      "eventName": "Discount Derby",
+      "promotionalDates": {
+        "startDate": { "Year": 2023, "Month": 12, "Day": 26 },
+        "endDate": { "Year": 2024, "Month": 1, "Day": 5 }
+      },
+      "discounts": [
+        { "categoryName": "Microfiber Towels", "discountPercentage": 6 },
+        { "categoryName": "Bath Sheets", "discountPercentage": 16 },
+        { "categoryName": "Towels", "discountPercentage": 10 },
+        { "categoryName": "Hand Towels", "discountPercentage": 11 },
+        { "categoryName": "Kitchen Towels", "discountPercentage": 21 },
+        { "categoryName": "Placemat", "discountPercentage": 11 },
+        { "categoryName": "Bath Accessories", "discountPercentage": 11 },
+        { "categoryName": "Bedspreads", "discountPercentage": 21 },
+        { "categoryName": "Shower Curtains", "discountPercentage": 24 },
+        { "categoryName": "Pillow Top Mattresses", "discountPercentage": 10 }
+      ]
+    },
+    {
+      "eventName": "Big Bargain Blitz",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 3, "Day": 25 },
+        "endDate": { "Year": 2024, "Month": 4, "Day": 3 }
+      },
+      "discounts": [
+        { "categoryName": "Mattress Toppers", "discountPercentage": 24 },
+        { "categoryName": "Pillow Cases", "discountPercentage": 14 },
+        { "categoryName": "Soap Dispensers", "discountPercentage": 20 },
+        { "categoryName": "Beach Towels", "discountPercentage": 18 },
+        { "categoryName": "Bath Mats", "discountPercentage": 22 },
+        { "categoryName": "Blankets", "discountPercentage": 12 },
+        { "categoryName": "Kitchen Towels", "discountPercentage": 8 },
+        { "categoryName": "Memory Foam Mattresses", "discountPercentage": 14 },
+        { "categoryName": "Placemat", "discountPercentage": 17 },
+        { "categoryName": "Bed Frames", "discountPercentage": 23 }
+      ]
+    },
+    {
+      "eventName": "Massive Markdown Mania",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 6, "Day": 23 },
+        "endDate": { "Year": 2024, "Month": 6, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Bed Skirts", "discountPercentage": 17 },
+        { "categoryName": "Shower Curtains", "discountPercentage": 23 },
+        { "categoryName": "Bath Towels", "discountPercentage": 21 },
+        { "categoryName": "Memory Foam Mattresses", "discountPercentage": 11 },
+        { "categoryName": "Bathrobes", "discountPercentage": 19 },
+        { "categoryName": "Bath Accessories", "discountPercentage": 5 },
+        { "categoryName": "Box Springs", "discountPercentage": 21 },
+        { "categoryName": "Hand Towels", "discountPercentage": 13 },
+        { "categoryName": "Tablecloths", "discountPercentage": 19 },
+        { "categoryName": "Duvet Covers", "discountPercentage": 23 }
+      ]
+    },
+    {
+      "eventName": "Unbeatable Bargain Bash",
+      "promotionalDates": {
+        "startDate": { "Year": 2024, "Month": 9, "Day": 21 },
+        "endDate": { "Year": 2024, "Month": 9, "Day": 30 }
+      },
+      "discounts": [
+        { "categoryName": "Adjustable Beds", "discountPercentage": 19 },
+        { "categoryName": "Mattress Toppers", "discountPercentage": 23 },
+        { "categoryName": "Washcloths", "discountPercentage": 7 },
+        { "categoryName": "Comforters", "discountPercentage": 24 },
+        { "categoryName": "Kitchen Towels", "discountPercentage": 7 },
+        { "categoryName": "Pillows", "discountPercentage": 13 },
+        { "categoryName": "Bath Sheets", "discountPercentage": 25 },
+        { "categoryName": "Napkins", "discountPercentage": 25 },
+        { "categoryName": "Bath Towels", "discountPercentage": 15 },
+        { "categoryName": "Beach Towels", "discountPercentage": 15 }
+      ]
+    }
+  ],
+  "company": "First Up Consultants",
+  "city": "Port Antone",
+  "storeOpeningDate": { "$date": "2024-09-19T17:31:59.665Z" },
+  "lastUpdated": { "$timestamp": { "t": 1729359119, "i": 1 } }
+}
+```
 
 ### Example 1: Simple text search
 
-The example searches for stores containing the word "Microphone" in indexed text fields.
+This query retrieves stores containing the word "Microphone" in indexed text fields.
 
 ```javascript
 // First create a text index
@@ -53,12 +169,13 @@ db.stores.createIndex({ "name": "text", "sales.salesByCategory.categoryName": "t
 // Then perform the search
 db.stores.find(
 { $text: { $search: "Microphone" }},
-{ "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
+{ _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
-This query searches for documents containing the word "Microphone" in any of the text-indexed fields.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "26afb024-53c7-4e94-988c-5eede72277d5",
     "name": "First Up Consultants | Microphone Bazaar - South Lexusland",
@@ -79,11 +196,12 @@ This query searches for documents containing the word "Microphone" in any of the
       ]
     }
   }
+]
 ```
 
 ### Example 2: Multiple term search
 
-The example searches for stores related to "Home Decor" (multiple terms treated as `OR` by default).
+The query retrieves stores related to "Home Decor" (multiple terms treated as `OR` by default).
 
 ```javascript
 // First create a text index
@@ -92,12 +210,13 @@ db.stores.createIndex({ "name": "text", "sales.salesByCategory.categoryName": "t
 // Then perform the search
 db.stores.find(
 { $text: { $search: "Home Decor" }},
-{ "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(5)
+{ _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(5)
 ```
 
-The query finds documents containing either "Home" OR "Decor" in the indexed text fields.
+The first five results returned by this query are:
 
 ```json
+[
   {
     "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
     "name": "Trey Research | Home Office Depot - Lake Freeda",
@@ -147,21 +266,23 @@ The query finds documents containing either "Home" OR "Decor" in the indexed tex
       ]
     }
   }
+]
 ```
 
 ### Example 3: Phrase search
 
-The example searches for the exact phrase "Home Theater" using quotes.
+This query searches for the exact phrase "Home Theater" using quotes.
 
 ```javascript
 db.stores.find(
  { $text: { $search: "\"Home Theater\"" }},
- { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
+ { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
-The quoted search term ensures exact phrase matching rather than individual word matching.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "0bc4f653-e64e-4342-ae7f-9611dfd37800",
     "name": "Tailwind Traders | Speaker Bazaar - North Mireyamouth",
@@ -184,21 +305,23 @@ The quoted search term ensures exact phrase matching rather than individual word
       ]
     }
   }
+]
 ```
 
 ### Example 4: Exclude terms with negation
 
-The example searches for stores with "Audio" but exclude the ones with "Wireless".
+This query searches for stores with "Audio" but exclude the ones with "Wireless".
 
 ```javascript
 db.stores.find(
  { $text: { $search: "Audio -Wireless" }},
- { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
+ { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }).limit(2)
 ```
 
-The minus sign (-) before "Wireless" excludes documents containing that term from the results.
+The first two results returned by this query are:
 
 ```json
+[
   {
     "_id": "32afe6ec-dd3c-46b3-a681-ed041b032c39",
     "name": "Relecloud | Audio Equipment Gallery - Margretshire",
@@ -218,6 +341,7 @@ The minus sign (-) before "Wireless" excludes documents containing that term fro
       ] 
     }
   }
+]
 ```
 
 ### Example 5: Case-sensitive search
@@ -230,26 +354,14 @@ The example allows performing a case-sensitive search for "BAZAAR".
 ```javascript
 db.stores.find(
   { $text: { $search: "BAZAAR", $caseSensitive: true } },
-  { "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1 }
+  { _id: 1, name: 1, "sales.salesByCategory.categoryName": 1 }
 ).limit(2)
 ```
 
 The query will match documents where "BAZAAR" appears in exactly that case.
 
-### Example 6: Combined with other query operators
-
-The example allows search for stores with "Hub" in text and total sales greater than 50000.
-
-```javascript
-db.stores.find({
-  $text: { $search: "Hub" }, "sales.totalSales": { $gt: 20000 }},
-{ "_id": 1, "name": 1, "sales.salesByCategory.categoryName": 1,"sales.totalSales":1 }
-).limit(2)
-```
-
-The query combines text search with traditional field-based queries for more precise filtering.
-
 ```json
+[
  {
     "_id": "future-electronics-001",
     "name": "Future Electronics Hub",
@@ -268,11 +380,12 @@ The query combines text search with traditional field-based queries for more pre
       "totalSales": 160000
     }
   }
+]
 ```
 
-### Example 7: Get text search scores
+### Example 6: Get text search scores
 
-Retrieve text search results with relevance scores for ranking.
+This query retrieves text search results with relevance scores for ranking.
 
 ```javascript
 db.stores.find(
@@ -281,24 +394,26 @@ db.stores.find(
 ).sort({ score: { $meta: "textScore" } }).limit(5)
 ```
 
-This query returns documents sorted by text search relevance score, with the most relevant results first.
+The first five results returned by this query are:
 
 ```json
-  { "_id": '511c9932-d647-48dd-9bd8-baf47b593f88', "score": 2 },
-  { "_id": 'a0a2f05c-6085-4c99-9781-689af759662f', "score": 2 },
-  { "_id": 'fb5aa470-557c-43cb-8ca0-5915d6cae34b', "score": 2 },
-  { "_id": '1a2c387b-bb43-4b14-a6cd-cc05a5dbfbd5', "score": 1 },
-  { "_id": '40d6f4d7-50cd-4929-9a07-0a7a133c2e74', "score": 1 }
+[
+  { "_id": "511c9932-d647-48dd-9bd8-baf47b593f88", "score": 2 },
+  { "_id": "a0a2f05c-6085-4c99-9781-689af759662f", "score": 2 },
+  { "_id": "fb5aa470-557c-43cb-8ca0-5915d6cae34b", "score": 2 },
+  { "_id": "1a2c387b-bb43-4b14-a6cd-cc05a5dbfbd5", "score": 1 },
+  { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74", "score": 1 }
+]
 ```
 
-### Example 8: Search across multiple categories
+### Example 7: Search across multiple categories
 
-Create a comprehensive text index and search across all text fields.
+First, create a comprehensive text index to search across all text fields.
 
 ```javascript
 // Create comprehensive text index
 db.stores.createIndex({ 
-  "name": "text",
+  name: "text",
   "sales.salesByCategory.categoryName": "text",
   "promotionEvents.eventName": "text",
   "promotionEvents.discounts.categoryName": "text"
@@ -307,12 +422,13 @@ db.stores.createIndex({
 // Search across all indexed fields
 db.stores.find(
 { $text: { $search: "\"Home Theater\"" }},
-{ "name": 1, "sales.salesByCategory.categoryName": 1, "promotionEvents.eventName": 1, "promotionEvents.discounts.categoryName": 1}).limit(2)
+{ name: 1, "sales.salesByCategory.categoryName": 1, "promotionEvents.eventName": 1, "promotionEvents.discounts.categoryName": 1}).limit(2)
 ```
 
-The example demonstrates searching across multiple fields simultaneously for maximum coverage.
+The first two results returned by this query.
 
 ```json
+[
   {
     "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
     "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
@@ -418,6 +534,7 @@ The example demonstrates searching across multiple fields simultaneously for max
       }
     ]
   }
+]
 ```
 
 ## Related content

@@ -7,7 +7,9 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 01/14/2025
+ms.date: 09/09/2025
+appliesto:
+- ✅ MongoDB vCore
 #Customer Intent: As a database adminstrator, I want to understand what is the optimal use of high availability and cross-region replication in Azure Cosmos DB for MongoDB vCore in differenct cases.
 ---
 
@@ -55,11 +57,11 @@ Combine high availability (HA) for in-region availability with cross-region repl
 |------------------------------------------|-------------------------------------------------------|
 | Production clusters                      | [Enable high availability](./how-to-scale-cluster.md#enable-or-disable-high-availability)                              |
 | Clusters requiring 99.99% SLA            | [Enable high availability](./how-to-scale-cluster.md#enable-or-disable-high-availability)                              |
-| Clusters requiring 99.995% SLA           | [Enable high availability](./how-to-scale-cluster.md#enable-or-disable-high-availability) and [create a replica cluster](./how-to-cluster-replica.md#enable-cross-region-replication) |
+| Clusters requiring 99.995% SLA           | [Enable high availability](./how-to-scale-cluster.md#enable-or-disable-high-availability) and [create a replica cluster](./how-to-cluster-replica.md#enable-cross-region-or-same-region-replication) |
 | Non-production clusters                  | [Disable high availability](./how-to-scale-cluster.md#enable-or-disable-high-availability) to reduce costs             |
 | Automatic failover requirement           | [Enable high availability](./how-to-scale-cluster.md#enable-or-disable-high-availability)                              |
-| Cross-region disaster recovery (DR)      | [Create a replica cluster](./how-to-cluster-replica.md#enable-cross-region-replication)                              |
-| Read scalability across multiple regions | [Create a replica cluster](./how-to-cluster-replica.md#enable-cross-region-replication)                              |
+| Cross-region disaster recovery (DR)      | [Create a replica cluster](./how-to-cluster-replica.md#enable-cross-region-or-same-region-replication)                              |
+| Read scalability across multiple regions | [Create a replica cluster](./how-to-cluster-replica.md#enable-cross-region-or-same-region-replication)                              |
 
 By following these best practices, you can ensure that your Azure Cosmos DB for MongoDB vCore clusters remain highly available and resilient against failures and regional outages.
 

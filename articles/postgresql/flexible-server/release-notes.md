@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 08/11/2025
+ms.date: 09/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -19,6 +19,14 @@ ms.custom:
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL flexible server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
+## Release: September 2025
+- Public preview of [PostgreSQL 18](concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
+- Support for latest [minor versions](concepts-supported-versions.md) 17.6, 16.10, 15.14, 14.19 and 13.22. <sup>$</sup>
+
+## Release: August  2025
+- General availability
+    - [Austria East region](./overview.md#azure-regions)
+      
 ## Release: July 2025
 - General availability
     - [PostgreSQL 17](concepts-supported-versions.md#postgresql-version-17) is now supported, including in-place major version upgrades.
@@ -34,6 +42,7 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [TimescaleDB extension](../extensions/concepts-extensions-versions.md#postgis) version 2.15.3 for PG 13. 
     - [Postgis extension](../extensions/concepts-extensions-versions.md#timescaledb) version 3.5.2 for PG 13 and above.
 - Support for latest [minor versions](concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
+- Support for [Ansible collection](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) with GA REST API version.
 
 ## Release: May 2025
 
@@ -57,6 +66,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Automatic key version updates](./concepts-data-encryption.md#cmk-key-version-updates).
 - Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL flexible server.
 - General availability of [New Zealand North](./overview.md#azure-regions) region.
+- Support for [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) resource with GA REST API version.
 
 ## Release: March 2025
 
