@@ -36,10 +36,7 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 ## Features
 
 - General availability of custom port support in Azure Database for MySQL Flexible Server. [Learn more](../concepts-networking.md#custom-port-support)
-
-> [!NOTE]  
-> Server rename is currently in public preview, do not use in production environments, only a few regions support this feature at this moment, and we can only rename server one time at this stage. If you have any feedback regarding this feature, please reach out via [Ask Azure Database For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
-
+  
 ## Improvements
 
 - No improvements in this release.
