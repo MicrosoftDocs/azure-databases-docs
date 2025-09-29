@@ -35,8 +35,6 @@ When the instance of flexible server can't reach the target storage account. Thi
 - The storage account doesn't exist.
 - Networking configuration doesn't allow traffic originated from the instance of flexible server to reach the storage account. For example, when the instance of flexible server is deployed with public access networking, and the storage account is only accessible via private endpoints.
 
-It can also be raised when the System Assigned Managed Identity isn't enabled in the instance of flexible server.
-
 ### ERROR:  azure_storage: current user <user_or_role> isn't allowed to use storage account <account_name>
 
 When executing any of the functions that interact with Azure Storage (`azure_storage.blob_list`, `azure_storage.blob_get` or `azure_storage.blob_put`) with a user or role that isn't member of `azure_storage_admin` and isn't granted permissions, using `azure_storage.account_user_add`, to use the referred storage account.
