@@ -15,7 +15,7 @@ appliesto:
 
 ## What Are Agentic Memories?
 
-*Agentic memory* (also referred to as *agent memory* or *AI memory*) refers to an AI agent’s ability to persist and recall prior interactions, facts, and experiences to better reason, plan, or act over time. Agent memory is often divided into short-term (episodic / working) memory and long-term memory.  This article is designed to guide you through the most common patterns for storing and retrieving agentic memories in your applications. It explains how each pattern works, highlights its strengths and limitations, and offers practical tips so you can confidently choose the right approach for your use cases.
+*Agentic memory* (also referred to as *agent memory* or *AI memory*) refers to an AI agent’s ability to persist and recall prior interactions, facts, and experiences to better reason, plan, or act over time. Agent memory is often divided into short-term (episodic / working) memory and long-term memory. This article is designed to guide you through the most common patterns for storing and retrieving agentic memories in your applications. It explains how each pattern works, highlights its strengths and limitations, and offers practical tips so you can confidently choose the right approach for your use cases.
 
 ### Short-Term Memory
 
@@ -27,7 +27,7 @@ For example:
 
 ### Long-Term Memory
 Long-term memory is more persistent and accumulates knowledge or patterns over multiple threads or conversations. It supports recall beyond immediate context. For example,
-- User preferences (e.g. “User prefers responses in bullet lists”, or “User is vegetarian”).
+- User preferences (for example “User prefers responses in bullet lists”, or “User is vegetarian”).
 - Historical summaries or reflections of short-term memories, or long threads. For example, "In this thread, the customer discussed their preferences for cotton socks and dislike of synthetic materials".
 
 
@@ -56,27 +56,27 @@ Use a two-level hierarchical partition key where the leading level is the tenant
 
 
 ### Choosing a vector indexing type
-When you enable vector search in Azure Cosmos DB, you must choose not only whether to shard but also which index type to use. Cosmos supports multiple vector-index algorithms, including `quantizedFlat` and `DiskANN`. The `quantizedFlat` index type is suited for smaller workloads or when you expect the number of vectors to remain modest (e.g. tens of thousands of vectors total). It compresses (quantizes) each vector and performs an exact search over the compressed space, trading a slight accuracy loss for lower RU cost and faster scans. 
+When you enable vector search in Azure Cosmos DB, you must choose not only whether to shard but also which index type to use. Cosmos supports multiple vector-index algorithms, including `quantizedFlat` and `DiskANN`. The `quantizedFlat` index type is suited for smaller workloads or when you expect the number of vectors to remain modest (for example, tens of thousands of vectors total). It compresses (quantizes) each vector and performs an exact search over the compressed space, trading a slight accuracy loss for lower RU cost and faster scans. 
 
-However, once your vector data scales up (e.g. hundreds of thousands to billions of embeddings), `DiskANN` is the better choice. DiskANN implements approximate nearest-neighbor indexing and is optimized for high throughput, low latency, and cost efficiency at scale. It supports dynamic updates and achieves excellent recall across large datasets.
+However, once your vector data scales up (for example, hundreds of thousands to billions of embeddings), `DiskANN` is the better choice. DiskANN implements approximate nearest-neighbor indexing and is optimized for high throughput, low latency, and cost efficiency at scale. It supports dynamic updates and achieves excellent recall across large datasets.
 
 Learn more about [vector indexes in Azure Cosmos DB](../nosql/vector-search.md#vector-indexing-policies).
 
 
-If using DiskANN you then decide whether to shard the vector index via the  [vectorIndexShardKey](sharded-diskann.md). This lets you partition the DiskANN index based on a document property (e.g. session, user, tenant), reducing the candidate search space and making semantic queries more efficient and focused. For example, you can shard by a tenant and/or userid. In multi-tenant systems, isolating the vector index per tenant ensures that search on a particular tenant or user data is fast and efficient. Using the multi-enant example from the section on [partitioning](#choosing-a-partition-key), you can set the vectorIndexShardKey and the partition key to be the same, or just the first level of your heirarchical partition key. 
+If using DiskANN, you then decide whether to shard the vector index via the  [vectorIndexShardKey](sharded-diskann.md). This lets you partition the DiskANN index based on a document property (e.g. session, user, tenant), reducing the candidate search space and making semantic queries more efficient and focused. For example, you can shard by a tenant and/or userid. In multitenant systems, isolating the vector index per tenant ensures that search on a particular tenant or user data is fast and efficient. Using the multi-tenant example from the section on [partitioning](#choosing-a-partition-key), you can set the vectorIndexShardKey and the partition key to be the same, or just the first level of your hierarchical partition key. 
 
-On the other hand, using a global (non-sharded) index offers simplicity and the ability to search on the entire set of vectors. Both of these allow you to further refine the search using `WHERE` clause filters as with any other query. 
+On the other hand, using a global (nonsharded) index offers simplicity and the ability to search on the entire set of vectors. Both of these allow you to further refine the search using `WHERE` clause filters as with any other query. 
 
 ### Data models
 
 
 #### One turn per document
-In this model, each document captures a complete back-and-forth exchange, or turn, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response from the tool. and any intermediate tool calls. When grouping related messages together, the document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. 
+In this model, each document captures a complete back-and-forth exchange, or turn, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. 
 
 **Properties in a data item**
 | Property | Type | Required | Description | Example |
 | --------------- | ----------------- | -------: | ----------- | ----------- |
-| `id` | string | ✅ | Partition key. See above for [guidance on choosing a partition key](#partition-key-selection)| `"thread-1234#0007"` |
+| `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key)| `"thread-1234#0007"` |
 | `threadId` | string | ✅ | Thread / conversation identifier (commonly the partition key). | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic counter of the *exchange* (0-based or 1-based). | `7` |
 | `messages` | object | ✅ | Messages that make up this exchange (for example, user prompt, agent reply, optional tool call/response). | See table below |
@@ -127,7 +127,7 @@ In this design, every agent or user interaction (that is “turn”) is stored a
 **Properties in the data item**
 | Property  | Type  | Required | Description   | Example  |
 | ----------- | ----------------- | -------: | -----------  | -------- |
-| `id` | string | ✅ | Partition key. See above for [guidance on choosing a partition key](#partition-key-selection) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"`  |
+| `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"`  |
 | `threadId` | string | ✅ | Identifier for the conversation/thread. Often chosen as the **partition key** so all turns for a thread are colocated and efficiently queried. In multitenant apps, consider hierarchical PKs like `/tenantId`, `/threadId`. | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic turn counter (0,1,2…). Use with `threadId` to sort/fetch latest N turns. | `3` |
 | `role` | string | ✅ | Who produced the turn. Common values: `"user"`, `"agent"`, `"tool"` (or similar).  | `"agent"`   |
@@ -166,7 +166,7 @@ Here, all the turns of a conversation (user, agent, tools, etc.) for a given thr
 
 | Property  | Type | Required | Description | Example |
 | ------------------ | ---------------- | -------: | ------------ | -------------- |
-| `id` | string  | ✅ | Partition key. See above for [guidance on choosing a partition key](#partition-key-selection) | `"thread-1234"`  |
+| `id` | string  | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key)| `"thread-1234"`  |
 | `threadId` | string  | ✅ | Logical thread or thread identifier (often used as partition key). | `"thread-1234"`  |
 | `turns` | array of objects | ✅ | A list of individual turn records (user or agent). Each turn contains a small structure (for example, index, speaker, content, embedding). | `[ { "turnIndex": 0, "speaker": "user", "content": "Hello" }, { "turnIndex": 1, "speaker": "agent", "content": "Hi there!" } ]` |
 | `embedding` | number[] | optional | Embedding vector computed over a summary or aggregation of the thread. Useful for semantic search over key points of the conversation.  | `[0.101, -0.231, 0.553, …]` |
@@ -215,7 +215,7 @@ An example of a memory data item would look like:
 ### Querying for retrieval
 
 #### Most recent memories
-When you want to reconstruct a conversation context or show recent user/agent interactions, thiy query pattern is the simplest. It retrieves the last K messages in timestamp order, which is useful for feeding into chat context or displaying a conversation history. Use this when freshness and chronological order matter.
+When you want to reconstruct a conversation context or show recent user/agent interactions, this query pattern is the simplest. It retrieves the last K messages in timestamp order, which is useful for feeding into chat context or displaying a conversation history. Use this when freshness and chronological order matter.
 ```sql
 SELECT TOP @k c.content, c.timestamp
 FROM c
@@ -224,7 +224,7 @@ ORDER BY c.timestamp DESC
 ```
 
 #### Retrieve thread by semantic search
-Semantic queries let you find turns whose embeddings are most similar to a given query vector, even if they don’t share exact words. This pattern surfaces contextually relevant memories (answers, references, hints) beyond recent messages. This is useful when relevancy is important over recency, however you can use a simple `WHERE` clause to filter to most recent semantically similar results. 
+Semantic queries let you find turns whose embeddings are most similar to a given query vector, even if they don’t share exact words. This pattern surfaces contextually relevant memories (answers, references, hints) beyond recent messages. This is useful when relevancy is important over recency, however you can use a `WHERE` clause to filter to most recent semantically similar results. 
 
 ```sql
 SELECT TOP @k c.content, c.timestamp, VECTOR_DISTANCE(c.embedding, @queryVector) AS dist
@@ -234,7 +234,7 @@ ORDER BY VECTOR_DISTANCE(c.embedding, @queryVector)
 ```
 
 #### Memories that contain phrases or keywords
-Keyword or phrase search is useful for filtering memories that explicitly mention a term (e.g. “billing,” “refund,” “meeting”) regardless of semantic closeness. This is helpful when you want strict matching or fallback to lexical recall. This can be extended for use in combination with semantic or recency queries to improve recall. 
+Keyword or phrase search is useful for filtering memories that explicitly mention a term (for example “billing,” “refund,” “meeting”) regardless of semantic closeness. This is helpful when you want strict matching or fallback to lexical recall. This can be extended for use in combination with semantic or recency queries to improve recall. 
 
 ```sql
 SELECT TOP @k c.content, c.timestamp, 
