@@ -1,8 +1,8 @@
 ---
 title: Handle transient connectivity errors
 description: Learn how to handle transient connectivity errors for Azure Database for PostgreSQL flexible server instances.
-author: olmoloce
-ms.author: olmoloce
+author: markingmyname
+ms.author: maghan
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
