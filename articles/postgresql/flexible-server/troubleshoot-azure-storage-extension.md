@@ -49,11 +49,11 @@ When <extension> doesn't correspond to one of the blob extension from which Azur
 
 ### ERROR:  azure_storage: can only use text encoder with a single column
 
-When the tuples passed to `blob_put` consist of more than one column and the encoder is inferred or manually set to `text`.
+When the tuples passed to `blob_put` consist of more than one column and the encoder is inferred as `text`, or manually set to `text`.
 
 ### ERROR:  azure_storage: can only use text decoder with a single column
 
-When the tuples read from the blob by `blob_get` consist of more than one column and the encoder is inferred or manually set to `text`.
+When the tuples read from the blob by `blob_get` consist of more than one column and the encoder is inferred as `text`, or is manually set to `text`.
 
 ## Related content
 
