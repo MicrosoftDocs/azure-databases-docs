@@ -1,8 +1,8 @@
 ---
 title: Connection libraries
 description: This article describes several libraries and drivers that you can use when coding applications to connect and query an Azure Database for PostgreSQL flexible server instance.
-author: olmoloce
-ms.author: olmoloce
+author: markingmyname
+ms.author: maghan
 ms.reviewer: maghan
 ms.date: 05/17/2024
 ms.service: azure-database-postgresql
