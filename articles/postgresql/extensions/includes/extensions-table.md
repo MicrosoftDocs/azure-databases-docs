@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 09/29/2025
+ms.date: 09/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
