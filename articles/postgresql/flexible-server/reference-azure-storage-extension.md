@@ -366,11 +366,11 @@ The URI for a container is similar to:
 | **Format** | **Default** | **Description** |
 | --- | --- | --- |
 | `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.parquet`, it assumes `parquet`. If ends with `.csv` or `.csv.gz`, it assumes `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
-| `parquet` | | Parquet format. |
-| `csv` | | Comma-separated values format used by PostgreSQL COPY. |
-| `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 | `binary` | | Binary PostgreSQL COPY format. |
+| `csv` | | Comma-separated values format used by PostgreSQL COPY. |
+| `parquet` | | Parquet format. |
 | `text` \| `xml` \| `json` | | A file containing a single text value. |
+| `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 
 ##### compression
 
@@ -379,8 +379,12 @@ The URI for a container is similar to:
 | **Format** | **Default** | **Description**                                                                                                                                                                      |
 | --- | --- | --- |
 | `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes `gzip`. Otherwise, it assumes `none`. |
-| `gzip` | | Forces using gzip decoder to decompress the blob. |
-| `none` | | Forces to treat the blob as one which doesn't require decompression. |
+| `brotli` | | Forces using brotli compression algorithm to compress the blob. Only supported by `parquet` encoder.|
+| `gzip` | | Forces using gzip compression algorithm to compress the blob. |
+| `lz4` | | Forces using lz4 compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `none` | | Forces to not compress the blob. |
+| `snappy` | | Forces using snappy compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `zstd` | | Forces using zstd compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
 
 The extension doesn't support any other compression types.
 
@@ -460,10 +464,11 @@ The URI for a container is similar to:
 | **Format** | **Default** | **Description** |
 | --- | --- | --- |
 | `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes  `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
-| `csv` | | Comma-separated values format used by PostgreSQL COPY. |
-| `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 | `binary` | | Binary PostgreSQL COPY format. |
+| `csv` | | Comma-separated values format used by PostgreSQL COPY. |
+| `parquet` | | Parquet format. |
 | `text` \| `xml` \| `json` | | A file containing a single text value. |
+| `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 
 ##### compression
 
