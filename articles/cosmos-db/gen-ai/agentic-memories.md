@@ -95,6 +95,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
  | Property | Type | Required | Description | Example |
 | ----------- | ----------------- | -------: | --------- | --------- |
 | `role` | string | ✅ | Origin of the message. Typical: `"user"`, `"agent"`, `"tool"`. | `"agent"` |
+| `entityId` | string | ✅ | Name or ID of the user, agent, tool, etc. that this message is associated with. | `"agent-assistant-01"` |
 | `name` | string | ✅  | Tool/function name or agent persona label. | `"kb.search"` |
 | `content` | string | ✅ | Text payload (prompt, reply, tool result snippet). | `"Refund policy is 30 days for unopened items."` |
 | `timestamp` | string (ISO 8601) | optional | Message timestamp. | `"2025-09-24T10:14:27Z"` |
@@ -105,6 +106,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
   "id": "thread-1234#0007",
   "threadId": "thread-1234",
   "turnIndex": 7,
+  "entityId": "agent-assistant-01",
   "messages": [
     {
       "role": "user",
@@ -152,6 +154,7 @@ In this design, every agent or user interaction (that is “turn”) is stored a
 | `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"`  |
 | `threadId` | string | ✅ | Identifier for the conversation/thread. Often chosen as the **partition key** so all turns for a thread are colocated and efficiently queried. In multitenant apps, consider hierarchical PKs like `/tenantId`, `/threadId`. | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic turn counter (0,1,2…). Use with `threadId` to sort/fetch latest N turns. | `3` |
+| `entityId` | string | ✅ | Name or ID of the user, agent, tool, etc. that this response is associated with. | `"user-12345"` |
 | `role` | string | ✅ | Who produced the turn. Common values: `"user"`, `"agent"`, `"tool"` (or similar).  | `"agent"`   |
 | `content`  | string | ✅ | Main text content for this turn (prompt, reply, tool result, etc.).  | `"This is one response from an LLM"` |
 | `timestamp` | string (ISO 8601) | ✅ | Creation time for the turn (ISO 8601). Alternatively, you can sort by the system `_ts` (epoch seconds) without storing your own timestamp.  | `"2025-09-24T10:15:00Z"` |
@@ -164,6 +167,7 @@ An example of this memory data item would look like:
   "id": "b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91",  // unique guid for the document
   "threadId": "thread-1234", // unique id for the thread
   "turnIndex": 3, 
+  "entityId": "agent-assistant-01",
   "role": "agent",
   "content": "This is one response from an LLM",
   "embedding": [-1.12402894028, ... ],         // optional vector
@@ -195,7 +199,7 @@ Here, all the turns of a conversation (user, agent, tools, etc.) for a given thr
 | ------------------ | ---------------- | -------: | ------------ | -------------- |
 | `id` | string  | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key)| `"thread-1234"`  |
 | `threadId` | string  | ✅ | Logical thread or thread identifier (often used as partition key). | `"thread-1234"`  |
-| `turns` | array of objects | ✅ | A list of individual turn records (user or agent). Each turn contains a small structure (for example, index, speaker, content, embedding). | `[ { "turnIndex": 0, "speaker": "user", "content": "Hello" }, { "turnIndex": 1, "speaker": "agent", "content": "Hi there!" } ]` |
+| `turns` | array of objects | ✅ | A list of individual turn records (user or agent). Each turn contains a small structure (for example, index, role, content, embedding, entityId). | `[ { "turnIndex": 0, "role": "user", "entityId": "user-12345", "content": "Hello" }, { "turnIndex": 1, "role": "agent", "entityId": "agent-assistant-01", "content": "Hi there!" } ]` |
 | `embedding` | number[] | optional | Embedding vector computed over a summary or aggregation of the thread. Useful for semantic search over key points of the conversation.  | `[0.101, -0.231, 0.553, …]` |
 | `summary`  | string  | optional | A textual “roll-up” or summary of the key points in the thread. | `"User wanted to schedule a meeting; agent fetched available times and confirmed A.M. slots."` |
 | `metrics` | object  | optional | Key/value attributes or metrics about the thread. | `{ "startTime": "2025-09-24T09:05:00Z", "lastTurnTime": "2025-09-24T10:15:00Z", "turnCount": 7 }` |
@@ -205,16 +209,18 @@ An example of a memory data item would look like:
 {
   "id": "thread-1234",
   "threadId": "thread-1234",
-  "turns": [
+  "messages": [
     {
-      "turnIndex": 0,
-      "speaker": "user",
+      "messageIndex": 0,
+      "role": "user",
+      "entityId": "user-12345",
       "content": "...",
       "timestamp": "2025-09-24T10:15:00Z",
     },
     {
-      "turnIndex": 1,
-      "speaker": "agent",
+      "messageIndex": 1,
+      "role": "agent",
+      "entityId": "agent-assistant-01",
       "content": "...",
       "timestamp": "2025-09-24T10:15:00Z",
     },
