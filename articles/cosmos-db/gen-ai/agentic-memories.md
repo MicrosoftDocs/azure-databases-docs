@@ -32,6 +32,7 @@ Long-term memory is more persistent and accumulates knowledge or patterns over m
 
 
 ## Design patterns
+We flow into three parts. First, we start off with choosing a partition key based on your scenario. Partition key selection is an important step to ensure your data balances insert and read/query UR/s per partition for efficiency. Next, we explore different data models and the advantages and limitations of each. 
 
 ### Choosing a partition key
 As Azure Cosmos DB automatically partitions your data, choosing a partition key is one of the most important design choices for your data model. The partition key determines how data is distributed in logical partitions and across physical partitions, which directly affects query and insert performance, scalability, and cost. Each partition key value maps to a distinct logical partition. A good partition strategy balances locality (keeping related items together for efficient queries) with distribution. In this guide, we highlight three common approaches. You should read about [partitioning in Azure Cosmos DB for more detail.](../partitioning-overview.md)
@@ -39,7 +40,7 @@ As Azure Cosmos DB automatically partitions your data, choosing a partition key 
 Below are some common patterns and trade-offs when using Cosmos DB (or Cosmos-style NoSQL + vector features) to store agent memory.
 
 ### Use a GUID as the partition key
-Each item gets its own unique partition key value, typically a GUID. This strategy maximizes write distribution and avoids the hot partition problem, because every write lands in a different logical partition. It's simple to implement and works well for write heavy workloads without strong locality requirements. The tradeoff is that queries span logical and possibly physical partitions, which can be more expensive. This can be useful for storing ephemeral AI agent turns where you care more about logging and long-term analytics than revisiting specific conversations. F
+Each item gets its own unique partition key value, typically a GUID. This strategy maximizes write distribution and avoids the hot partition problem, because every write lands in a different logical partition. It's simple to implement and works well for write heavy workloads without strong locality requirements. The tradeoff is that queries span logical and possibly physical partitions, which can be more expensive. This can be useful for storing ephemeral AI agent turns where you care more about logging and long-term analytics than revisiting specific conversations.
 
 - Example: Partition Key: `/pk` that takes on values like: "b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"
 
@@ -71,8 +72,13 @@ On the other hand, using a global (nonsharded) index offers simplicity and the a
 
 
 #### One turn per document
-In this model, each document captures a complete back-and-forth exchange, or turn, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. 
+In this model, each document captures a complete back-and-forth exchange, or turn, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is ysefyk when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
 
+**Example scenarios**:
+    - An agentic chat application where each turn consists of the user’s question and the agent’s reply, and you frequently need to re-surface entire Q&A pairs for context injection.
+    - A planning agent that queries an external API (tool) and logs both the request and tool response as one memory unit, so downstream queries can recall the whole exchange. 
+    - Using the memories as part of a [semantic cache](semantic-cache.md), which can reduce user epxierence latency, token consumption, and LLM-based costs.
+    
 **Properties in a data item**
 | Property | Type | Required | Description | Example |
 | --------------- | ----------------- | -------: | ----------- | ----------- |
@@ -121,8 +127,24 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 }
 ```
 
+**Advantages**
+- Good for longer threads/conversations. 
+- Easy to get “latest N turns” by ordering on turnIndex or timestamp.
+- Supports embedding-per-turn for vector similarity queries within the thread and [semantic caching](semantic-cache.md).
+- Easy to TTL (expire) older memories if needed.
+- Smaller documents per turn don't require potentially expensive updates
+
+**Limitations**
+- When summarizing or consolidating, you might want to generate “summary turns”.
+- You may need to periodically prune or compact older turns.
+
 #### One response per document
-In this design, every agent or user interaction (that is “turn”) is stored as its own document in Azure Cosmos DB. All turn documents for a single thread or thread carry the same `threadId`, which acts as a logical link between other turns in the same thread.
+In this design, every agent or user interaction (that is “turn”) is stored as its own document in Azure Cosmos DB. All turn documents for a single thread or thread carry the same `threadId`, which acts as a logical link between other turns in the same thread. This pattern is sueful for fine-grained retrieval, analytics, or vector similarity search on every single utterance.
+
+**Example scenarios:**
+- A conversational agent where embeddings are created for every user and agent message, enabling per-utterance semantic search within a thread.
+- Analytics dashboards that measure agent vs. user token counts, sentiment, or latency at the per-message level.
+- RAG (retrieval-augmented generation) flows that need to embed and search every response independently (e.g. “find the most relevant past statement across all threads”).
 
 **Properties in the data item**
 | Property  | Type  | Required | Description   | Example  |
@@ -150,19 +172,24 @@ An example of this memory data item would look like:
 
 }
 ```
-**Pros**
-- Good for longer threads/conversations. 
-- Easy to get “latest N turns” by ordering on turnIndex or timestamp.
-- Supports embedding-per-turn for vector similarity queries within the thread.
-- Easy to TTL (expire) older memories if needed.
-- Smaller documents per turn don't require potentially expensive updates
 
-**Cons**
-- When summarizing or consolidating, you might want to generate “summary turns”.
-- You may need to periodically prune or compact older turns.
+**Advantages**
+- Each memory is kept at an atomic/granular level.
+- Easy to update/TTL inidivudal responses. 
+- Retreiving last N results is a simple query with filter on the thread ID.
+
+**Limitations**
+- Vector embeddings only capture one response at a time. 
+- Not keeping a complete turn in one data item (back-and-forth between agent and user or tool call) can limit utility of the memory without subsequent queries. 
+- Not ideal model for [semantic caching](semantic-cache.md).
 
 #### One thread per document
-Here, all the turns of a conversation (user, agent, tools, etc.) for a given thread or thread are aggregated into a single document. This document contains a list or array of turn entries (each with turnIndex, role, content, embedding, etc.), and optional summary fields, metadata, and a thread-level embedding. Because the entire thread is stored in one document, retrieving the full history (or a large window) becomes a single read. However, appending new turns requires updating (replacing) the document, which can become costly if the document grows large.
+Here, all the turns of a conversation (user, agent, tools, etc.) for a given thread or thread are aggregated into a single document. This document contains a list or array of turn entries (each with turnIndex, role, content, embedding, etc.), and optional summary fields, metadata, and a thread-level embedding. Because the entire thread is stored in one document, retrieving the full history (or a large window) becomes a single read. However, appending new turns requires updating (replacing) the document, which can become costly if the document grows large. This model can be useful when sessions are bounded in size or short-lived, and you prefer single-document reads to reconstruct context.
+
+**Example scenarios:**
+- Chatbots in customer onboarding or troubleshooting flows, where each thread is short (< 50 turns) and agents need to fetch the entire conversation quickly in one read.
+- Conversation summarization services, where you run periodic batch jobs over full sessions to generate embeddings or summaries.
+
 
 | Property  | Type | Required | Description | Example |
 | ------------------ | ---------------- | -------: | ------------ | -------------- |
@@ -198,11 +225,11 @@ An example of a memory data item would look like:
 }
 ```
 
-**Pros**
+**Advantages**
 - All memory for a thread is in one logical document; simple to load in one read.
 - Summary text of thread and keep thread information and vector embedding in one data item
 
-**Cons**
+**Limitations**
 - Requires client-side sorting after retrieval.
 - Document size could grow large (Cosmos DB has a size limit per item, currently 2 MB for some APIs, though in NoSQL it can be more but you must consider RU cost and latency).
 - Large document updates (writing appends) can incur higher RU charges.
