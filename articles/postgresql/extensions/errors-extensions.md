@@ -13,7 +13,6 @@ ms.topic: how-to
 
 # Possible errors when managing extensions
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 ## Extension "%s" is not allow-listed for "azure_pg_admin" users in Azure Database for PostgreSQL
 
