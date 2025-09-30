@@ -19,7 +19,7 @@ appliesto:
 
 ### Short-Term Memory
 
-Short-term memory holds recent context. For example, recent conversation turns, state information, results from tool or function calls. These are all useful to the agent the current task or thread. It may get deleted after some time (for example, using [TTL](../nosql/time-to-live.md)), aggregated or summarized by thread, and classified as "long-term" memory. 
+Short-term memory holds recent context. For example, recent conversation turns, state information, results from tool or function calls. These are all useful to the agent the current task or thread. It can get deleted after some time (for example, using [TTL](../nosql/time-to-live.md)), aggregated or summarized by thread, and classified as *long-term* memory. 
 
 For example:
 - In a conversational agent, the last 5–10 user/agent dialogue turns, including prompts, LLM responses, tool call results, etc. 
@@ -32,24 +32,24 @@ Long-term memory is more persistent and accumulates knowledge or patterns over m
 
 
 ## Design patterns
-We flow into three parts. First, we start off with choosing a partition key based on your scenario. Partition key selection is an important step to ensure your data balances insert and read/query UR/s per partition for efficiency. Next, we explore different data models and the advantages and limitations of each. 
+In the next section, we divide the discussion into three parts. First, we guide you through partition key selection, helping you pick a key that balances write and query throughput across partitions. Then, we explore data modeling patterns and various trade-offs. Finally, we cover basic query patterns that can be applied for different retrieval scenarios. 
 
-### Choosing a partition key
+## Choosing a partition key
 As Azure Cosmos DB automatically partitions your data, choosing a partition key is one of the most important design choices for your data model. The partition key determines how data is distributed in logical partitions and across physical partitions, which directly affects query and insert performance, scalability, and cost. Each partition key value maps to a distinct logical partition. A good partition strategy balances locality (keeping related items together for efficient queries) with distribution. In this guide, we highlight three common approaches. You should read about [partitioning in Azure Cosmos DB for more detail.](../partitioning-overview.md)
 
 Below are some common patterns and trade-offs when using Cosmos DB (or Cosmos-style NoSQL + vector features) to store agent memory.
 
-### Use a GUID as the partition key
+### Use a GUID 
 Each item gets its own unique partition key value, typically a GUID. This strategy maximizes write distribution and avoids the hot partition problem, because every write lands in a different logical partition. It's simple to implement and works well for write heavy workloads without strong locality requirements. The tradeoff is that queries span logical and possibly physical partitions, which can be more expensive. This can be useful for storing ephemeral AI agent turns where you care more about logging and long-term analytics than revisiting specific conversations.
 
 - Example: Partition Key: `/pk` that takes on values like: "b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"
 
-### Use a unique thread ID as the partition key
+### Use a unique thread ID
 All items for a conversation share the same partition key equal to the thread (or thread) ID. This colocates turns and summaries, which makes “latest N”, phrase filters, and other queries within a thread efficient. However, you must ensure there are enough workload distribution across threads to reduce likelihood of hot partitions. This is generally a good choice for conversational agents or RAG apps where most queries are scoped to a single conversation, such as retrieving the latest turns or doing vector search within one thread.
 
 - Example: Partition Key: /threadId that takes on values like: "thread-1234"
 
-### Multitenancy: Use a tenant ID and thread ID as a hierarchical partition key
+### Use a tenant ID and thread ID
 
 Use a two-level hierarchical partition key where the leading level is the tenant ID and the second is the thread ID. This preserves locality within a thread while grouping threads under a tenant for governance, quotas, and analytics. It also reduces cross-partition scans for tenant-level queries and enables safer multitenant isolation patterns. This is best for multitenant apps where each customer (tenant) runs many concurrent conversations and more isolation is needed.
 
@@ -64,18 +64,17 @@ However, once your vector data scales up (for example, hundreds of thousands to 
 Learn more about [vector indexes in Azure Cosmos DB](../nosql/vector-search.md#vector-indexing-policies).
 
 
-If using DiskANN, you then decide whether to shard the vector index via the  [vectorIndexShardKey](sharded-diskann.md). This lets you partition the DiskANN index based on a document property (e.g. session, user, tenant), reducing the candidate search space and making semantic queries more efficient and focused. For example, you can shard by a tenant and/or userid. In multitenant systems, isolating the vector index per tenant ensures that search on a particular tenant or user data is fast and efficient. Using the multi-tenant example from the section on [partitioning](#choosing-a-partition-key), you can set the vectorIndexShardKey and the partition key to be the same, or just the first level of your hierarchical partition key. 
+If using DiskANN, you then decide whether to shard the vector index via the  [vectorIndexShardKey](sharded-diskann.md). This lets you partition the DiskANN index based on a document property (for example, session, user, tenant), reducing the candidate search space and making semantic queries more efficient and focused. For example, you can shard by a tenant and/or userid. In multitenant systems, isolating the vector index per tenant ensures that search on a particular tenant or user data is fast and efficient. Using the multitenant example from the section on [partitioning](#choosing-a-partition-key), you can set the vectorIndexShardKey and the partition key to be the same, or just the first level of your hierarchical partition key. 
 
 On the other hand, using a global (nonsharded) index offers simplicity and the ability to search on the entire set of vectors. Both of these allow you to further refine the search using `WHERE` clause filters as with any other query. 
 
 ### Data models
 
-
-#### One turn per document
-In this model, each document captures a complete back-and-forth exchange, or turn, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is ysefyk when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
+### One turn per document
+In this model, each document captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is ysefyk when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
 
 **Example scenarios**:
-    - An agentic chat application where each turn consists of the user’s question and the agent’s reply, and you frequently need to re-surface entire Q&A pairs for context injection.
+    - An agentic chat application where each turn consists of the user’s question and the agent’s reply, and you frequently need to resurface entire Q&A pairs for context injection.
     - A planning agent that queries an external API (tool) and logs both the request and tool response as one memory unit, so downstream queries can recall the whole exchange. 
     - Using the memories as part of a [semantic cache](semantic-cache.md), which can reduce user epxierence latency, token consumption, and LLM-based costs.
     
@@ -140,17 +139,17 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 - When summarizing or consolidating, you might want to generate “summary turns”.
 - You may need to periodically prune or compact older turns.
 
-#### One response per document
-In this design, every agent or user interaction (that is “turn”) is stored as its own document in Azure Cosmos DB. All turn documents for a single thread or thread carry the same `threadId`, which acts as a logical link between other turns in the same thread. This pattern is sueful for fine-grained retrieval, analytics, or vector similarity search on every single utterance.
+### One response per document
+In this design, every agent or user interaction (that is “turn”) is stored as its own document in Azure Cosmos DB. All turn documents for a single thread or thread carry the same `threadId`, which acts as a logical link between other turns in the same thread. This pattern is useful for fine-grained retrieval, analytics, or vector similarity search on every single utterance.
 
 **Example scenarios:**
 - A conversational agent where embeddings are created for every user and agent message, enabling per-utterance semantic search within a thread.
 - Analytics dashboards that measure agent vs. user token counts, sentiment, or latency at the per-message level.
-- RAG (retrieval-augmented generation) flows that need to embed and search every response independently (e.g. “find the most relevant past statement across all threads”).
+- RAG (retrieval-augmented generation) flows that need to embed and search every response independently (for example “find the most relevant past statement across all threads”).
 
 **Properties in the data item**
 | Property  | Type  | Required | Description   | Example  |
-| ----------- | ----------------- | : -------: | -----------  | -------- |
+| ----------- | ----------------- | :-------: | -----------  | -------- |
 | `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"`  |
 | `threadId` | string | ✅ | Identifier for the conversation/thread. Often chosen as the **partition key** so all turns for a thread are colocated and efficiently queried. In multitenant apps, consider hierarchical PKs like `/tenantId`, `/threadId`. | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic turn counter (0,1,2…). Use with `threadId` to sort/fetch latest N turns. | `3` |
@@ -180,7 +179,7 @@ An example of this memory data item would look like:
 **Advantages**
 - Each memory is kept at an atomic/granular level.
 - Easy to update/TTL inidivudal responses. 
-- Retreiving last N results is a simple query with filter on the thread ID.
+- Retrieving last N results can be done with a query with filter on the thread ID.
 
 **Limitations**
 - Vector embeddings only capture one response at a time. 
