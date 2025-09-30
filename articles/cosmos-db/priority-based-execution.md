@@ -39,7 +39,7 @@ To get started using priority-based execution, navigate to the **Features** page
 
 ## SDK requirements 
 
-- .NET v3: [v3.38.0]((https://github.com/Azure/azure-cosmos-dotnet-v3/releases/tag/3.38.0) or later
+- .NET v3: [v3.38.0](https://github.com/Azure/azure-cosmos-dotnet-v3/releases/tag/3.38.0) or later
 - Java v4: [v4.45.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.45.0) or later
 - Spark 3.2: [v4.19.0](https://central.sonatype.com/artifact/com.azure.cosmos.spark/azure-cosmos-spark_3-2_2-12/4.19.0) or later
 - JavaScript v4: [v4.0.0](https://www.npmjs.com/package/@azure/cosmos) or later
