@@ -192,7 +192,7 @@ You're now authenticated to your Azure Database for PostgreSQL server through Mi
 
 <a id="create-azure-ad-groups-in-azure-database-for-postgresql---flexible-server"></a>
 
-### Create Microsoft Entra groups in Azure Database for PostgreSQL flexible server
+### Create Microsoft Entra groups in Azure Database for PostgreSQL 
 
 To enable a Microsoft Entra group to access your database, use the same mechanism you used for users, but specify the group name instead. For example:
 
@@ -200,14 +200,7 @@ To enable a Microsoft Entra group to access your database, use the same mechanis
 select * from  pgaadauth_create_principal('Prod DB Readonly', false, false).
 ```
 
-- If group sync is disabled, members can sign in using their access tokens and specify the group name as username.
-
-- If group sync is enabled (via pgaadauth.enable_group_sync server parameter set to “ON”), members should sign in with their individual Entra ID credentials, but can still sign in with the group name as the username.
-  - Group logins remain available for compatibility reasons but can be disabled with: ALTER ROLE "ROLE_NAME" NOLOGIN;
-  - The group role should not be deleted to maintain syncing. 
-  - Groups auto-sync every 30 minutes. 
-  - Manual sync can be triggered with: SELECT * FROM pgaadauth_sync_roles_for_group_members(); (`pgaadauth.enable_group_sync` param must be “ON”). 
-  - Changes to group metadata like group name are not synced
+When group members sign in, they use their access tokens but specify the group name as the username.
 
 > [!NOTE]  
 > Azure Database for PostgreSQL flexible server supports managed identities and service principals as group members.

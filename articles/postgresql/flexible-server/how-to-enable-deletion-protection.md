@@ -8,12 +8,10 @@ ms.date: 09/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to prevent accidental deletion of an Azure Database for PostgreSQL Flexible Server instance by enabling a CanNotDelete lock.
+# customer intent: As a user, I want to learn how to prevent accidental deletion of an Azure Database for PostgreSQL  instance by enabling a CanNotDelete lock.
 ---
 
-# Protect Azure Database for PostgreSQL Flexible Server with Resource Locks
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Protect Azure Database for PostgreSQL  with Resource Locks
 
 You can apply **management locks**—specifically **CanNotDelete** or **ReadOnly**—to Azure Database for PostgreSQL Flexible Server instances to safeguard them from accidental deletion or modifications. These locks operate at the control plane and override user permissions, offering an additional layer of resource protection.
 

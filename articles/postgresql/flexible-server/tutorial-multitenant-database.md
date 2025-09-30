@@ -12,8 +12,6 @@ ms.topic: tutorial
 
 # Tutorial: Design a multitenant database with elastic clusters (preview)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 In this tutorial, you use Azure Database for PostgreSQL with elastic clusters to learn how to design a multitenant application in order to benefit from horizontal scale-out.
 
 > [!div class="checklist"]

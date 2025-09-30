@@ -10,9 +10,7 @@ ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Manage Azure Database for PostgreSQL flexible server using automation tasks
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Quickstart: Manage Azure Database for PostgreSQL  using automation tasks
 
 > [!NOTE]
 > If a free trial is available, you can find more information about it [here](https://azure.microsoft.com/free/).

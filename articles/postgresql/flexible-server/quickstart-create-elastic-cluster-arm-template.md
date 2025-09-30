@@ -10,9 +10,7 @@ ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Use an ARM template to create an elastic cluster with Azure Database for PostgreSQL flexible server instance (preview)
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Quickstart: Use an ARM template to create an elastic cluster with Azure Database for PostgreSQL  instance (preview)
 
 Azure Database for PostgreSQL flexible server with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. You can use an Azure Resource Manager template (ARM template) to create an elastic clusters instance.
 
@@ -211,14 +209,10 @@ Follow these steps to verify if your server was created in Azure.
 
 # [Azure portal](#tab/portal)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 1. In the [Azure portal](https://portal.azure.com), search for and select **Azure Database for PostgreSQL flexible servers**.
 1. In the database list, select your new server to view the **Overview** page to manage the server.
 
 # [PowerShell](#tab/PowerShell)
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 You have to enter the name of the new server to view the details of your Azure Database for PostgreSQL flexible server instance.
 
@@ -229,8 +223,6 @@ Write-Host "Press [ENTER] to continue..."
 ```
 
 # [CLI](#tab/CLI)
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 You have to enter the name and the resource group of the new server to view details about your Azure Database for PostgreSQL flexible server instance.
 
@@ -252,8 +244,6 @@ To delete the resource group:
 
 # [Portal](#tab/azure-portal)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 In the [portal](https://portal.azure.com), select the resource group you want to delete.
 
 1. Select **Delete resource group**.
@@ -261,16 +251,12 @@ In the [portal](https://portal.azure.com), select the resource group you want to
 
 # [PowerShell](#tab/azure-powershell)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 ```azurepowershell-interactive
 $serverName = Read-Host -Prompt "Enter the resource group where the Azure Database for PostgreSQL flexible server exists:"
 Remove-AzResourceGroup -Name $serverName
 ```
 
 # [CLI](#tab/azure-cli)
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 ```azurecli-interactive
 echo "Enter the resource group where the Azure Database for PostgreSQL flexible server exists:" &&

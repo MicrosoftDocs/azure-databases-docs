@@ -1,6 +1,6 @@
 ---
 title: Mirroring in Microsoft Fabric
-description: Learn about Mirroring in Microsoft Fabric for Azure Database for PostgreSQL flexible server.
+description: Learn about Mirroring in Microsoft Fabric for Azure Database for PostgreSQL flexible server instances.
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
@@ -8,24 +8,22 @@ ms.date: 03/31/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
-# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure Database for PostgreSQL.
 ---
 
 # Azure Database for PostgreSQL Mirroring in Microsoft Fabric
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 [Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for PostgreSQL flexible server estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for PostgreSQL flexible server directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
 
 ## Architecture
 
-Fabric mirroring in Azure Database for PostgreSQL flexible server is built on concepts like [logical replication](concepts-logical.md) and Change Data Capture (CDC) design pattern.
+Fabric mirroring in Azure Database for PostgreSQL is built on concepts like [logical replication](concepts-logical.md) and Change Data Capture (CDC) design pattern.
 
-Once Fabric mirroring is established for a database in Azure Database for a PostgreSQL flexible server, a PostgreSQL background process creates an initial snapshot for selected tables to be mirrored, which is shipped to a Fabric OneLake landing zone in Parquet format. A Replicator process running in Fabric takes these initial snapshot files and creates Delta tables in the Mirrored database artifact.
+Once Fabric mirroring is established for a database in an Azure Database for a PostgreSQL flexible server instance, a PostgreSQL background process creates an initial snapshot for selected tables to be mirrored, which is shipped to a Fabric OneLake landing zone in Parquet format. A Replicator process running in Fabric takes these initial snapshot files and creates Delta tables in the Mirrored database artifact.
 
 Subsequent changes applied to selected tables are also captured in the source database and shipped to the OneLake landing zone in batches to be applied to the respective Delta tables in the Mirrored database artifact.
 
-:::image type="content" source="media/concepts-fabric-mirroring/architecture.png" alt-text="Diagram of end-to-end architecture for Fabric mirroring in Azure Database for PostgreSQL flexible server." lightbox="media/concepts-fabric-mirroring/architecture.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/architecture.png" alt-text="Diagram of end-to-end architecture for Fabric mirroring in an Azure Database for PostgreSQL flexible server instance." lightbox="media/concepts-fabric-mirroring/architecture.png":::
 
 ## What is Change Data Capture (CDC)?
 
@@ -37,7 +35,7 @@ Instead, it involves a continuous stream of change events published by the datab
 
 Clients can subscribe to this stream to monitor changes, focusing on specific databases, individual tables, or even subsets of columns within a table.
 
-For Fabric mirroring, the CDC pattern is implemented in a proprietary PostgreSQL extension called azure_cdc. The Azure Database for PostgreSQL flexible server control plane is installed and registered in source databases during the Fabric mirroring enablement workflow.
+For Fabric mirroring, the CDC pattern is implemented in a proprietary PostgreSQL extension called azure_cdc. The control plane for an Azure Database for PostgreSQL flexible server instance is installed and registered in source databases during the Fabric mirroring enablement workflow.
 
 ## Azure Change Data Capture (CDC) extension
 
@@ -53,11 +51,11 @@ Azure CDC exports table snapshots and modifications as Parquet files and copies 
 
 ## Enable Fabric mirroring in the Azure portal
 
-Fabric mirroring in the Azure portal for Azure Database for PostgreSQL flexible server allows you to replicate your PostgreSQL databases into Microsoft Fabric. This feature helps you integrate your data seamlessly with other services in Microsoft Fabric, enabling advanced analytics, business intelligence, and data science scenarios. By following a few simple steps in the Azure portal, you can configure the necessary prerequisites and start mirroring your databases to use the full potential of Microsoft Fabric.
+Fabric mirroring in the Azure portal for an Azure Database for PostgreSQL flexible server instance allows you to replicate your PostgreSQL databases into Microsoft Fabric. This feature helps you integrate your data seamlessly with other services in Microsoft Fabric, enabling advanced analytics, business intelligence, and data science scenarios. By following a few simple steps in the Azure portal, you can configure the necessary prerequisites and start mirroring your databases to use the full potential of Microsoft Fabric.
 
 ### Prerequisites
 
-Several prerequisites must be configured before using Fabric mirroring in Azure Database for the PostgreSQL flexible server.
+Several prerequisites must be configured before using Fabric mirroring in Azure Database for the PostgreSQL flexible server instance.
 
 - **System-assigned Managed Identity (SAMI)** must be enabled.\
     - This is the identity used by the Azure CDC to authenticate communications with Fabric OneLake, copy initial snapshots, and change batches to the landing zone.
@@ -116,15 +114,15 @@ The maximum size (in MB) of the initial snapshot buffer. Per the table, much dat
 
 ### Monitor
 
-Monitoring Fabric mirroring in Azure Database for PostgreSQL flexible server is essential to ensure that the mirroring process is running smoothly and efficiently. By monitoring the status of the mirrored databases, you can identify any potential issues and take corrective actions as needed.
+Monitoring Fabric mirroring in Azure Database for PostgreSQL flexible server instances is essential to ensure that the mirroring process is running smoothly and efficiently. By monitoring the status of the mirrored databases, you can identify any potential issues and take corrective actions as needed.
 
-You can use several User Defined Functions and tables to monitor important CDC metrics in the Azure Database for the PostgreSQL flexible server and troubleshoot the Mirroring process to Fabric.
+You can use several User Defined Functions and tables to monitor important CDC metrics in the Azure Database for the PostgreSQL flexible server instances and troubleshoot the Mirroring process to Fabric.
 
 ### Monitoring functions
 
 The mirroring function for Fabric mirroring in Azure Database for PostgreSQL allows you to replicate your PostgreSQL databases into Microsoft Fabric seamlessly, enabling advanced analytics and data integration scenarios.
 
-- **azure_cdc.list_tracked_publications()**: for each publication in the source flexible server, returns a comma-separated string containing the following information
+- **azure_cdc.list_tracked_publications()**: for each publication in the source flexible server instance, returns a comma-separated string containing the following information
     - publicationName (text)
     - includeData (bool)
     - includeChanges (bool)
@@ -132,7 +130,7 @@ The mirroring function for Fabric mirroring in Azure Database for PostgreSQL all
     - baseSnapshotDone (bool)
     - generationId (int)
 
-- **azure_cdc.publication_status('pub_name')**: for each publication in the source, the flexible server returns a comma-separated string with the following information
+- **azure_cdc.publication_status('pub_name')**: for each publication in the source, the flexible server instance returns a comma-separated string with the following information
     - <status, start_lsn, stop_lsn, flush_lsn>.
     - Status consists of ["Slot name," "Origin name," "CDC data destination path," "Active," "Snapshot Done," "Progress percentage," "Generation ID," "Completed Batch ID," "Uploaded Batch ID," "CDC start time"]
 
@@ -205,6 +203,6 @@ The mirroring function for Fabric mirroring in Azure Database for PostgreSQL all
 
 ## Related content
 
-- [Configure system or user-assigned managed identities in Azure Database for PostgreSQL flexible server](how-to-configure-managed-identities.md)
-- [Firewall rules in Azure Database for PostgreSQL flexible server](concepts-firewall-rules.md)
-- [Public access and private endpoints in Azure Database for PostgreSQL flexible server](concepts-networking-public.md)
+- [System assigned managed identity](how-to-configure-managed-identities.md)
+- [Firewall rules in Azure Database for PostgreSQL](concepts-firewall-rules.md)
+- [Networking overview for Azure Database for PostgreSQL flexible server instances with public access](concepts-networking-public.md)
