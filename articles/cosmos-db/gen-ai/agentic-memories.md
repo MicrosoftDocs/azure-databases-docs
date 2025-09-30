@@ -93,7 +93,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 
 **Properties in the `messages` object**
  | Property | Type | Required | Description | Example |
-| ----------- | ----------------- | -------: | --------- | --------- |
+| ----------- | ----------------- | :-------: | --------- | --------- |
 | `role` | string | ✅ | Origin of the message. Typical: `"user"`, `"agent"`, `"tool"`. | `"agent"` |
 | `entityId` | string | ✅ | Name or ID of the user, agent, tool, etc. that this message is associated with. | `"agent-assistant-01"` |
 | `name` | string | ✅  | Tool/function name or agent persona label. | `"kb.search"` |
@@ -150,7 +150,7 @@ In this design, every agent or user interaction (that is “turn”) is stored a
 
 **Properties in the data item**
 | Property  | Type  | Required | Description   | Example  |
-| ----------- | ----------------- | -------: | -----------  | -------- |
+| ----------- | ----------------- | : -------: | -----------  | -------- |
 | `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"`  |
 | `threadId` | string | ✅ | Identifier for the conversation/thread. Often chosen as the **partition key** so all turns for a thread are colocated and efficiently queried. In multitenant apps, consider hierarchical PKs like `/tenantId`, `/threadId`. | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic turn counter (0,1,2…). Use with `threadId` to sort/fetch latest N turns. | `3` |
@@ -196,7 +196,7 @@ Here, all the turns of a conversation (user, agent, tools, etc.) for a given thr
 
 
 | Property  | Type | Required | Description | Example |
-| ------------------ | ---------------- | -------: | ------------ | -------------- |
+| ------------------ | ---------------- | :-------: | ------------ | -------------- |
 | `id` | string  | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key)| `"thread-1234"`  |
 | `threadId` | string  | ✅ | Logical thread or thread identifier (often used as partition key). | `"thread-1234"`  |
 | `turns` | array of objects | ✅ | A list of individual turn records (user or agent). Each turn contains a small structure (for example, index, role, content, embedding, entityId). | `[ { "turnIndex": 0, "role": "user", "entityId": "user-12345", "content": "Hello" }, { "turnIndex": 1, "role": "agent", "entityId": "agent-assistant-01", "content": "Hi there!" } ]` |
