@@ -16,7 +16,7 @@ This article describes how to handle transient errors connecting to Azure Databa
 
 ## Transient errors
 
-A transient error, also known as a transient fault, is an error that resolves itself. Most typically these errors manifest as a connection to the database server being dropped. Also new connections to a server can't be opened. Transient errors can occur, for example, when hardware or network failure happens. Another reason could be a new version of a PaaS service that is being rolled out. The system automatically mitigates most of these events in less than 60 seconds. A best practice for designing and developing applications in the cloud is to expect transient errors. Assume they can happen in any component at any time and to have the appropriate logic in place to handle these situations.
+A transient error, also known as a transient fault, is an error that resolves itself. Most typically these errors manifest as a connection to the database server being dropped. Also new connections to a server can't be opened. Transient errors can occur, for example, when hardware or network failure happens. Another reason could be a new version of a PaaS service that's being rolled out. The system automatically mitigates most of these events in less than 60 seconds. A best practice for designing and developing applications in the cloud is to expect transient errors. Assume they can happen in any component at any time and to have the appropriate logic in place to handle these situations.
 
 ## Handling transient errors
 
@@ -34,7 +34,7 @@ The first and second cases are fairly straight forward to handle. Try to open th
 
 When a connection with an active transaction fails, it's more difficult to handle the recovery correctly. There are two cases: If the transaction was read-only in nature, it's safe to reopen the connection and to retry the transaction. If however if the transaction was also writing to the database, you must determine if the transaction was rolled back, or if it succeeded before the transient error happened. In that case, you might not have received the commit acknowledgment from the database server.
 
-One way of doing this, is to generate a unique ID on the client that is used for all the retries. You pass this unique ID as part of the transaction to the server and to store it in a column with a unique constraint. This way you can safely retry the transaction. It succeeds if the previous transaction was rolled back and the client generated unique ID doesn't yet exist in the system. It fails indicating a duplicate key violation if the unique ID was previously stored because the previous transaction completed successfully.
+One way of doing this, is to generate a unique ID on the client that is used for all the retries. You pass this unique ID as part of the transaction to the server and to store it in a column with a unique constraint. This way you can safely retry the transaction. It succeeds if the previous transaction was rolled back and the client generated unique ID doesn't yet exist in the system. It fails to indicate a duplicate key violation if the unique ID was previously stored because the previous transaction completed successfully.
 
 When your program communicates with an Azure Database for PostgreSQL flexible server instance through third-party middleware, ask the vendor whether the middleware contains retry logic for transient errors.
 
