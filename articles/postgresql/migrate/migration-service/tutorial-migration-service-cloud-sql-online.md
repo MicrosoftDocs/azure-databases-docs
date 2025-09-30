@@ -16,7 +16,6 @@ ms.custom:
 
 # Migrate online, from a Google Cloud SQL for PostgreSQL server to Azure Database for PostgreSQL, with the migration service
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server in online mode.
 
