@@ -1,10 +1,10 @@
 ---
 title: Usage scenarios for query store
-description: This article describes some usage scenarios for query store in an Azure Database for PostgreSQL flexible server.
+description: This article describes some usage scenarios for query store in an Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/25/2025
+ms.date: 02/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -14,15 +14,10 @@ ms.topic: concept-article
 
 # Usage scenarios for query store
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 You can use query store in a wide variety of scenarios in which tracking and maintaining predictable workload performance is critical. Consider the following examples:
 - Identify and tune expensive queries.
 - Perform A/B testing.
 - Identify and improve improvised workloads.
-
-> [!NOTE]
-> Query store isn't supported in Azure Database for PostgreSQL flexible server version 18, while it's in Preview.
 
 ## Identify and tune expensive queries
 

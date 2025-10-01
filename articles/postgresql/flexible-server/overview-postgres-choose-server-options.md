@@ -12,9 +12,7 @@ ms.custom:
   - mvc
 ---
 
-# Choose the right Azure Database for PostgreSQL flexible server hosting option in Azure
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Choose the right Azure Database for PostgreSQL  hosting option in Azure
 
 [!INCLUDE [azure-database-for-postgresql-single-server-deprecation](../includes/azure-database-for-postgresql-single-server-deprecation.md)]
 
@@ -88,7 +86,7 @@ Additionally, configuring high availability to another data center requires mini
 
 - With PostgreSQL on Azure VMs, you have full control over the operating system and the PostgreSQL server instance configuration. With a VM, you decide when to update or upgrade the operating system and database software and what patches to apply. You also decide when to install any other software such as an antivirus application. Some automated features are provided to greatly simplify patching, backup, and high availability. You can control the size of the VM, the number of disks, and their storage configurations. For more information, see [Virtual machine and cloud service sizes for Azure](/azure/virtual-machines/sizes).
 
-## Time to move to Azure Database for PostgreSQL flexible server (PaaS)
+## Time to move to Azure Database for PostgreSQL  (PaaS)
 
 - Azure Database for PostgreSQL flexible server is the right solution for cloud-designed applications when developer productivity and fast time to market for new solutions are critical. With programmatic functionality that is like DBA, the service is suitable for cloud architects and developers because it lowers the need for managing the underlying operating system and database.
 

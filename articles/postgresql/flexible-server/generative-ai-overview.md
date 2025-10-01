@@ -16,8 +16,6 @@ ms.custom:
 
 # Generative AI with Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 Generative AI refers to a class of AI algorithms that can learn from existing multimedia content and produce new content. The produced content can be customized through techniques such as prompts and fine-tuning. Generative AI algorithms apply specific machine learning models:
 
 - Transformers and recurrent neural networks (RNNs) for text generation

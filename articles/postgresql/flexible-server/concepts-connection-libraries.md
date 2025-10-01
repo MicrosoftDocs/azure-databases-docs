@@ -10,13 +10,13 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Connection libraries for Azure Database for PostgreSQL flexible server
+# Connection libraries for Azure Database for PostgreSQL 
 
 This article lists libraries and drivers that developers can use to develop applications to connect to and query an Azure Database for PostgreSQL flexible server instance.
 
 ## Client interfaces
 
-Most language client libraries used to connect to an Azure Database for PostgreSQL flexible server instance are external projects and are distributed independently. The libraries listed are supported on the Windows, Linux, and Mac platforms, for connecting to an Azure Database for PostgreSQL flexible server instance. Several quickstart examples are listed in the Next steps section.
+Most language client libraries used to connect to Azure Database for PostgreSQL flexible server are external projects and are distributed independently. The  libraries listed are supported on the Windows, Linux, and Mac platforms, for connecting to Azure Database for PostgreSQL flexible server. Several quickstart examples are listed in the Next steps section.
 
 | **Language** | **Client interface** | **Additional information** | **Download** |
 | --- | --- | --- | --- |

@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Show virtual endpoints
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article provides step-by-step instructions to show virtual endpoints associated to an Azure Database for PostgreSQL flexible server.
 
 ## Steps to show virtual endpoints

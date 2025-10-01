@@ -1651,6 +1651,21 @@
             "redirect_document_id": false
         },
         {
+            "source_path_from_root": "/articles/postgresql/migrate/automigration-single-to-flexible-postgresql.md",
+            "redirect_url": "/azure/postgresql/migrate/migration-service/overview-migration-service-postgresql",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/automigration-private-end-point.md",
+            "redirect_url": "/azure/postgresql/migrate/migration-service/overview-migration-service-postgresql",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/migration-service/tutorial-migration-service-single-to-flexible.md",
+            "redirect_url": "/azure/postgresql/migrate/migration-service/overview-migration-service-postgresql",
+            "redirect_document_id": false
+        },
+        {
             "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-query-tuning---genetic-query-optimizer.md",
             "redirect_url": "/azure/postgresql/flexible-server/server-parameters-table-query-tuning-genetic-query-optimizer",
             "redirect_document_id": false

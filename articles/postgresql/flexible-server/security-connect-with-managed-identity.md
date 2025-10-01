@@ -16,7 +16,7 @@ ms.custom:
   - horz-security
 ---
 
-# Connect with managed identity to Azure Database for PostgreSQL flexible server
+# Connect with managed identity to Azure Database for PostgreSQL 
 
 You can use both system-assigned and user-assigned managed identities to authenticate to Azure Database for PostgreSQL flexible server. This article shows you how to use a system-assigned managed identity for an Azure Virtual Machine (VM) to access an Azure Database for PostgreSQL flexible server instance. Managed Identities are automatically managed by Azure and enable you to authenticate to services that support Microsoft Entra authentication without needing to insert credentials into your code.
 
@@ -50,7 +50,7 @@ Retrieve the application ID for the system-assigned managed identity, which you 
 az ad sp list --display-name vm-name --query [*].appId --out tsv
 ```
 
-## Create an Azure Database for PostgreSQL flexible server user for your Managed Identity
+## Create an Azure Database for PostgreSQL  user for your Managed Identity
 
 Now, connect as the Microsoft Entra administrator user to your Azure Database for PostgreSQL flexible server database, and run the following SQL statements, replacing `<identity_name>` with the name of the resources for which you created a system-assigned managed identity:
 

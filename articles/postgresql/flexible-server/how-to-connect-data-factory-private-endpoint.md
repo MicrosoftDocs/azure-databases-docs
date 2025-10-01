@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Connect from Azure Data Factory with managed private endpoint
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 In this article, you create a linked service in Azure Data Factory to connect to an Azure Database for PostgreSQL flexible server using a private endpoint.
 
 [Azure Data Factory](/azure/data-factory/introduction) is a fully managed, serverless, data integration service built to orchestrate and operationalize complex hybrid extract-transform-load (ETL), extract-load-transform (ELT), and data integration projects. An Azure [integration runtime](/azure/data-factory/concepts-integration-runtime#azure-integration-runtime) supports connecting to data stores and compute services with public accessible endpoints. If you enable the managed virtual network feature of an Azure integration runtime, it supports connecting to data stores using Azure Private Link service in private network environments.
@@ -53,7 +51,7 @@ When the managed private endpoint is successfully deployed and approved, it show
 
 :::image type="content" source="./media/how-to-connect-data-factory-private-endpoint/managed-private-endpoints-screen-approved.png" alt-text="Screenshot that presents the Managed private endpoints page in Azure Data Factory Studio showing successfully deployed and approved private endpoint." lightbox="./media/how-to-connect-data-factory-private-endpoint/managed-private-endpoints-screen-approved.png":::
 
-## Add a linked service to connect to your Azure Database for PostgreSQL flexible server 
+## Add a linked service to connect to your Azure Database for PostgreSQL  
 
 With the private endpoint deployed and approved, you can finally use your data factory's Azure Database for PostgreSQL connector to create a linked service. You can connect to your instance of Azure Database for PostgreSQL flexible server through that linked service.
 
@@ -65,7 +63,7 @@ With the private endpoint deployed and approved, you can finally use your data f
 
     :::image type="content" source="./media/how-to-connect-data-factory-private-endpoint/linked-service-create-postgresql-integration-runtime.png" alt-text="Screenshot that shows where to select integration runtime with managed virtual network." lightbox="./media/how-to-connect-data-factory-private-endpoint/linked-service-create-postgresql-integration-runtime.png":::
 
-1. Select an **Encryption method**. If you select **No encryption**, the connection only succeeds if the server parameter [require_secure_transport](param-tls.md?#require_secure_transport) is set to `off`, which isn't a recommended practice since it relaxes security.
+1. Select an **Encryption method**. If you select **No encryption**, the connection only succeeds if the server parameter [require_secure_transport](server-parameters-table-tls.md?#require_secure_transport) is set to `off`, which isn't a recommended practice since it relaxes security.
 
     :::image type="content" source="./media/how-to-connect-data-factory-private-endpoint/linked-service-create-postgresql-encryption-method.png" alt-text="Screenshot that shows options available for the encryption method field." lightbox="./media/how-to-connect-data-factory-private-endpoint/linked-service-create-postgresql-encryption-method.png":::
 

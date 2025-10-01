@@ -13,9 +13,7 @@ ms.custom:
   - build-2023
 ---
 
-# API release notes - Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# API release notes - Azure Database for PostgreSQL 
 
 This page provides latest news and updates regarding the recommended API versions to be used. **The API versions that are not listed here might be supported, but will be retired soon.** The documentation for the latest Stable API version is available [here](/rest/api/postgresql/).
 
@@ -26,15 +24,15 @@ This page provides latest news and updates regarding the recommended API version
 
 | API Version | Stable/Preview | Comments |
 | --- | --- | --- |
-| [2025-06-01-preview](/rest/api/postgresql/operation-groups?view=rest-postgresql-2025-06-01-preview) | Preview | Renames files for better representation of their contents<br>Renames operations to improve organization, clarity and navigation<br>Adds example for CMK-based data encryption with automatic key version update<br>Adds example for creation of server in Microsoft owned virtual network<br>Adds support for table recommendations<br>Adds support for specifying default database name in an Elastic Cluster<br>Removes support for server parameter tuning feature<br>Improves descriptions<br>Improves metadata of local definitions<br>Corrects HTTP response codes to reflect what each API can return<br> |
+| [2025-06-01-preview](/rest/api/postgresql/operation-groups?view=rest-postgresql-2025-06-01-preview&preserve-view=true) | Preview | Renames files for better representation of their contents<br>Renames operations to improve organization, clarity and navigation<br>Adds example for CMK-based data encryption with automatic key version update<br>Adds example for creation of server in Microsoft owned virtual network<br>Adds support for table recommendations<br>Adds support for specifying default database name in an Elastic Cluster<br>Removes support for server parameter tuning feature<br>Improves descriptions<br>Improves metadata of local definitions<br>Corrects HTTP response codes to reflect what each API can return<br> |
 | 2025-01-01-preview | Preview | Adds support for server parameter tuning feature<br> |
 | 2024-11-01-preview | Preview | Index tuning<br>Added source types for migration<br>PG 17 support<br>UltraSSD_LRS storage type support<br>Elastic Clusters on flexible server<br> |
 | 2024-08-01 | Stable (GA) | Geo + CMK - Revive Dropped<br>Storage auto growth<br>IOPS scaling<br>New location capability api<br>Long Term Retention Backup<br>Server Logs<br>Migrations<br>Migration Pre-validation<br>Read replicas - Switchover (Site swap)<br>Read replicas - Virtual Endpoints<br>Private Endpoints<br>Azure Defender / Threat Protection APIs<br>PG 16 support<br>PremiumV2_LRS storage type support<br>Location capability changes for SSDv2<br>Migration Roles<br>Migration Instance Resource Id to support Private endpoint Migrations<br>On-demand backup<br>System assign identity<br> |
 | 2023-06-01-preview| Preview | Earlier GA features   +<br>Migration Prevalidation<br>Read replicas - Switchover (Site swap)<br>Read replicas - Virtual Endpoints<br>Private Endpoints<br>Azure Defender\Threat Protection APIs<br>PG 16 support<br>PremiumV2_LRS storage type support<br>Location capability changes for SSDv2<br>Quota Usage API<br> |
 | 2023-03-01-preview | Preview | New GA version features (2022-12-01) +<br>Geo + CMK<br>Storage auto growth<br>IOPS scaling<br>New location capability API<br>Azure Defender<br>Server Logs<br>Migrations<br> |
-| [2022-12-01](/rest/api/postgresql/operation-groups?view=rest-postgresql-2022-12-01) | Stable (GA) | Earlier GA features +<br>EntraID<br>CMK<br>Backups<br>Administrators<br>Replicas<br>GeoRestore<br>MVU<br> |
+| [2022-12-01](/rest/api/postgresql/operation-groups?view=rest-postgresql-2022-12-01&preserve-view=true) | Stable (GA) | Earlier GA features +<br>EntraID<br>CMK<br>Backups<br>Administrators<br>Replicas<br>GeoRestore<br>MVU<br> |
 | 2022-05-01-preview | Preview | CheckMigrationNameAvailability<br>Migrations<br> |
-| [2021-06-01](/rest/api/postgresql/operation-groups?view=rest-postgresql-2021-06-01) | Stable (GA) | Earlier GA features +<br>Server CRUD<br>CheckNameAvailability<br>Configurations (Server parameters)<br>Database<br>Firewall rules<br>Private<br>DNS zone suffix<br>PITR<br>Server Restart<br>Server Start<br>Server Stop<br>Maintenance window<br>Virtual network subnet usage<br> |
+| [2021-06-01](/rest/api/postgresql/operation-groups?view=rest-postgresql-2021-06-01&preserve-view=true) | Stable (GA) | Earlier GA features +<br>Server CRUD<br>CheckNameAvailability<br>Configurations (Server parameters)<br>Database<br>Firewall rules<br>Private<br>DNS zone suffix<br>PITR<br>Server Restart<br>Server Start<br>Server Stop<br>Maintenance window<br>Virtual network subnet usage<br> |
 
 ## Using preview versions of API from Terraform
 

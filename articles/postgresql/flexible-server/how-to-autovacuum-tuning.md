@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Autovacuum tuning in Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article provides an overview of the autovacuum feature for [Azure Database for PostgreSQL flexible server](overview.md) and the feature troubleshooting guides that are available to monitor the database bloat, autovacuum blockers. It also provides information around how far the database is from emergency or wraparound situation.
 
 ## What is autovacuum

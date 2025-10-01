@@ -150,13 +150,13 @@ basic_auth_connection_pool = AzurePGConnectionPool(
 from langchain_core.documents import Document
 from langchain_azure_postgresql.langchain import AzurePGVectorStore
 
-table_name = "my_docs"
+collection_name = "my_docs"
 
 # The connection is either using Entra ID or Basic Auth
 connection = entra_connection_pool if USE_ENTRA_AUTH else basic_auth_connection_pool
 
 vector_store = AzurePGVectorStore(
-    embedding=embeddings,
+    embeddings=embeddings,
     table_name=table_name,
     connection=connection,
 )
@@ -226,7 +226,7 @@ updated_docs = [
         id=uuids[-1],
     )
 ]
-vector_store.add_documents(updated_docs, ids=[uuids[-1]], on_conflict_update=True)
+vector_store.add_documents(docs, ids=[uuids[-1]], on_conflict_update=True)
 ```
 
 ### See items from the vector store
@@ -296,7 +296,7 @@ for doc in results:
     * the library hosts a weekly story time for kids [{'doc_id': 9, 'topic': 'reading', 'location': 'library'}]
 ```
 
-If you want to use logical `AND` filters, here is an example:
+If you provide a dictionary with multiple fields but no operators, the top level is interpreted as a logical `AND` filter:
 
 ``` python
 results = vector_store.similarity_search(
@@ -339,20 +339,6 @@ for doc, score in results:
 * [SIM=0.528338] there are cats in the pond [{'doc_id': 1, 'topic': 'animals', 'location': 'pond'}]
 ```
 
-
-### Transformation into a retriever
-
-You can also transform the vector store into a retriever for easier usage in your chains:
-
-``` python
-retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={"k": 1})
-retriever.invoke("kitty")
-```
-
-```shell
-[Document(id='9fe8bc1c-9a8e-4f83-b546-9b64527aa79d', metadata={'doc_id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
-```
-
 If you want to use max marginal relevance search on your vector store:
 
 ``` python
@@ -378,7 +364,21 @@ for doc in results:
     * the library hosts a weekly story time for kids [{'doc_id': 9, 'topic': 'reading', 'location': 'library'}]
 ```
 
-For a full list of the different searches you can execute on a `AzurePGVectorStore` vector store, please refer to the [documentation](https://github.com/langchain-ai/langchain-azure/tree/main/libs/azure-postgresql).
+
+For a full list of the searches that you can execute on a `PGVector` vector store, refer to the [API reference](https://python.langchain.com/api_reference/postgres/vectorstores/langchain_postgres.vectorstores.PGVector.html).
+
+### Transformation into a retriever
+
+You can also transform the vector store into a retriever for easier usage in your chains:
+
+``` python
+retriever = vector_store.as_retriever(search_type="mmr", search_kwargs={"k": 1})
+retriever.invoke("kitty")
+```
+
+```shell
+[Document(id='9fe8bc1c-9a8e-4f83-b546-9b64527aa79d', metadata={'doc_id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
+```
 
 ## Related content
 

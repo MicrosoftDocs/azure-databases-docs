@@ -12,7 +12,6 @@ ms.topic: concept-article
 
 # Best practices for seamless migration into Azure Database for PostgreSQL
 
-
 This article explains common pitfalls encountered and best practices to ensure a smooth and successful migration to Azure Database for PostgreSQL.
 
 ## Premigration validation

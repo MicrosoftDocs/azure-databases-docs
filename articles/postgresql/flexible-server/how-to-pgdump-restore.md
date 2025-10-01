@@ -12,7 +12,7 @@ ms.custom:
   - template-how-to
 ---
 
-# Best practices for pg_dump and pg_restore for Azure Database for PostgreSQL flexible server
+# Best practices for pg_dump and pg_restore for Azure Database for PostgreSQL 
 
 This article reviews options and best practices for speeding up pg_dump and pg_restore. It also explains the best server configurations for carrying out pg_restore.
 

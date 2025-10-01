@@ -1,5 +1,5 @@
 ---
-title: What Is Azure Database for PostgreSQL flexible server?
+title: What Is Azure Database for PostgreSQL?
 description: Provides an overview of Azure Database for PostgreSQL flexible server.
 author: gbowerman
 ms.author: guybo
@@ -12,12 +12,8 @@ ms.topic: overview
 
 # What is Azure Database for PostgreSQL?
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article provides an overview and introduction to the core concepts of Azure Database for PostgreSQL flexible server deployment model.
 Whether you're just starting out or looking to refresh your knowledge, this introductory video offers a comprehensive overview of Azure Database for PostgreSQL flexible server, helping you get acquainted with its key features and capabilities.
-
-> [!Video https://www.youtube.com/embed/NSEmJfUgNzE?si=8Ku9Z53PP455dICZ&amp;start=121]
 
 Azure Database for PostgreSQL flexible server is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings. The service generally provides more flexibility and server configuration customizations based on user requirements. The flexible server architecture allows users to collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure Database for PostgreSQL flexible server instances also provides better cost optimization controls with the ability to stop/start your server and a burstable compute tier ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. Please refer to the [Supported PostgreSQL versions in Azure Database for PostgreSQL flexible server](concepts-supported-versions.md) for details on the specific versions supported. The service is available in various [Azure regions](https://azure.microsoft.com/global-infrastructure/services/).
 

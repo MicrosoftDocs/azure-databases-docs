@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot the Azure Storage extension in Azure Database for PostgreSQL flexible server
+title: Troubleshoot the Azure Storage Extension
 description: Learn how to troubleshoot the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -13,9 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Troubleshoot the Azure Storage extension in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Troubleshoot the Azure Storage extension in Azure Database for PostgreSQL 
 
 Following is the list of errors that the Azure Storage extension can return, and the reasons why, or the circumstances in which, they can be raised. 
 

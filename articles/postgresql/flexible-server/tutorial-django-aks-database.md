@@ -13,9 +13,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Tutorial: Deploy Django app on AKS with Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Tutorial: Deploy Django app on AKS with Azure Database for PostgreSQL 
 
 In this quickstart, you deploy a Django application on Azure Kubernetes Service (AKS) cluster with Azure Database for PostgreSQL flexible server using the Azure CLI.
 
@@ -98,7 +96,8 @@ NAME                       STATUS   ROLES   AGE     VERSION
 aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
-## Create an Azure Database for PostgreSQL flexible server instance
+## Create a flexible server instance
+
 
 Create an Azure Database for PostgreSQL flexible server instance with the [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command. The following command creates a server using service defaults and values from your Azure CLI's local context:
 
