@@ -11,7 +11,6 @@ ms.topic: concept-article
 
 # Known issues and limitations for the migration service
 
-
 This article describes the known issues and limitations that are associated with the migration service in Azure Database for PostgreSQL.
 
 ## Common limitations
