@@ -1,6 +1,6 @@
 ---
 title: Create a read replica
-description: This article describes how to create a read replica of an Azure Database for PostgreSQL flexible server.
+description: This article describes how to create a read replica of an Azure Database for PostgreSQL flexible server instance.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -14,7 +14,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to create a read replica of an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to create a read replica of an Azure Database for PostgreSQL flexible server instance.
 
 > [!NOTE]  
 > When deploying read replicas for persistent heavy write-intensive primary workloads, the replication lag could continue to grow and might never catch up with the primary. It might also increase storage usage at the primary as the WAL files are only deleted once received at the replica.
@@ -24,7 +24,7 @@ This article provides step-by-step instructions to create a read replica of an A
 >  
 > Before changing the values of the following server parameters on the primary server, change them on the read replicas first. In doing so, you avoid issues during promotion of a read replica to primary: `max_connections`, `max_prepared_transactions`, `max_locks_per_transaction`, `max_wal_senders`, `max_worker_processes`.
 
-Before setting up a read replica for Azure Database for PostgreSQL flexible server, ensure the primary server is configured to meet the necessary prerequisites. Specific settings on the primary server can affect the ability to create replicas.
+Before setting up a read replica for your Azure Database for PostgreSQL flexible server instance, ensure the primary server is configured to meet the necessary prerequisites. Specific settings on the primary server can affect the ability to create replicas.
 
 **Storage autogrow**: Storage autogrow settings on the primary server and its read replicas must adhere to specific guidelines to ensure consistency and prevent replication disruptions. Refer to the [Storage autogrow](concepts-read-replicas.md#storage-autogrow) for detailed rules and settings.
 
@@ -36,7 +36,7 @@ Before setting up a read replica for Azure Database for PostgreSQL flexible serv
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the Azure Database for PostgreSQL flexible server that you want to use as the primary server.
+1. Select the Azure Database for PostgreSQL flexible server instance that you want to use as the primary server.
 
 2. In the resource menu, under the **Settings** section, select **Replication**.
 
@@ -46,9 +46,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/create-replica.png" alt-text="Screenshot showing the location of the Create replica button in the Replication page." lightbox="./media/how-to-read-replicas/create-replica.png":::
 
-4. You're redirected to the **Add read replica to Azure Database for PostgreSQL flexible server** wizard, from where you can configure some settings for the new read replica that is created.
+4. You're redirected to the **Add read replica to Azure Database for PostgreSQL** wizard, from where you can configure some settings for the new read replica that is created.
 
-    :::image type="content" source="./media/how-to-read-replicas/add-read-replica-wizard.png" alt-text="Screenshot showing the Add read replica to Azure Database for PostgreSQL flexible server wizard." lightbox="./media/how-to-read-replicas/add-read-replica-wizard.png":::
+    :::image type="content" source="./media/how-to-read-replicas/add-read-replica-wizard.png" alt-text="Screenshot showing the Add read replica to Azure Database for PostgreSQL wizard." lightbox="./media/how-to-read-replicas/add-read-replica-wizard.png":::
 
 5. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page.
 
@@ -78,13 +78,13 @@ Using the [Azure portal](https://portal.azure.com/):
     | Section | Setting | Suggested value | Description | Can be changed after read replica creation |
     | --- | --- | --- | --- | --- |
     | **Compute** | | | | |
-    | | **Compute tier** | By default, it's automatically set to the same tier assigned to the primary server. However, you can set it to any other compute tier on which read replicas are supported. | Possible values are **General Purpose** (typically used for production environments with most common workloads), and **Memory Optimized** (typically used for production environments running workloads that require a high memory to CPU ratio). For more information, see [Compute options in Azure Database for PostgreSQL flexible server](concepts-compute.md). | Can be changed after the read replica is created. However, if you're using some functionality which is only supported on certain tiers and change the current tier to one in which the feature isn't supported, the feature stops being available or gets disabled. |
-    | | **Compute size** | By default, it's automatically set to the same compute size assigned to the primary server. However, you can set it to any other compute size on, as long as it has the same or a higher number of vCores as the primary server. | Notice that the list of supported values might vary across regions, depending on the hardware available on each region. For more information, see [Compute options in Azure Database for PostgreSQL flexible server](concepts-compute.md). | Can be changed after read replica is created. |
+    | | **Compute tier** | By default, it's automatically set to the same tier assigned to the primary server. However, you can set it to any other compute tier on which read replicas are supported. | Possible values are **General Purpose** (typically used for production environments with most common workloads), and **Memory Optimized** (typically used for production environments running workloads that require a high memory to CPU ratio). For more information, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md). | Can be changed after the read replica is created. However, if you're using some functionality which is only supported on certain tiers and change the current tier to one in which the feature isn't supported, the feature stops being available or gets disabled. |
+    | | **Compute size** | By default, it's automatically set to the same compute size assigned to the primary server. However, you can set it to any other compute size on, as long as it has the same or a higher number of vCores as the primary server. | Notice that the list of supported values might vary across regions, depending on the hardware available on each region. For more information, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md). | Can be changed after read replica is created. |
     | **Storage** | | | | |
     | | **Storage type** | Leave it as is configured **Premium SSD**. | Setting the type of storage to a value different than that of the primary server isn't supported. The wizard automatically sets this property to match the type of storage assigned to the primary server. | Can't be changed after the read replica is created. |
     | | **Storage size** | By default, it's set to the same value as the storage size of the primary server. However, it can be set to any higher value. | | Can be changed after the read replica instance is created. It can only be increased. Manual or automatic shrinking of storage isn't supported. |
     | | **Performance tier** | By default, it's automatically set to the same value as the primary server. However, it can be changed to a different value. | Performance of Premium solid-state drives (SSD) is set when you create the disk, in the form of their performance tier. When setting the provisioned size of the disk, a performance tier is automatically selected. This performance tier determines the IOPS and throughput of your managed disk. For Premium SSD disks, this tier can be changed at deployment or afterwards, without changing the size of the disk, and without downtime. Changing the tier allows you to prepare for and meet higher demand without using your disk's bursting capability. It can be more cost-effective to change your performance tier rather than rely on bursting, depending on how long the extra performance is necessary. This is ideal for events that temporarily require a consistently higher level of performance. Events like holiday shopping, performance testing, or running a training environment. To handle these events, you can switch a disk to a higher performance tier without downtime, for as long as you need the extra performance. You can then return to the original tier without downtime when the extra performance is no longer necessary. | Can be changed after the instance is created. |
-    | | **Storage autogrow** | Can't be changed and is automatically set to the same value as the source server. | Notice that this option might not be supported for some storage types, and it might not be honored for certain storage sizes. For more information, see [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md). | Can be changed after the instance is created, as long as the storage type supports this feature. |
+    | | **Storage autogrow** | Can't be changed and is automatically set to the same value as the source server. | Notice that this option might not be supported for some storage types, and it might not be honored for certain storage sizes. For more information, see [Configure storage autogrow](how-to-auto-grow-storage.md). | Can be changed after the instance is created, as long as the storage type supports this feature. |
 
 
 5.  Continue to the **Networking**, **Security**, or **Tags** tabs, if you need to change any of the settings which are allowed to differ from the primary server. Once all the new replica is configured to your needs, select **Review + create**.
@@ -95,13 +95,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/create.png" alt-text="Screenshot showing the location of the Create button." lightbox="./media/how-to-read-replicas/create.png":::
 
-8.  A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and make it a read replica of the primary server.
+8.  A new deployment is launched to create your new Azure Database for PostgreSQL flexible server instance and make it a read replica of the primary server.
     
-    :::image type="content" source="./media/how-to-read-replicas/create-replica-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-read-replicas/create-replica-deployment-progress.png":::
+    :::image type="content" source="./media/how-to-read-replicas/create-replica-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL flexible server instance." lightbox="./media/how-to-read-replicas/create-replica-deployment-progress.png":::
 
-9. When the deployment completes, you can select **Go to resource**, to start using your new Azure Database for PostgreSQL flexible server.
+9. When the deployment completes, you can select **Go to resource**, to start using your new Azure Database for PostgreSQL flexible server instance.
 
-    :::image type="content" source="./media/how-to-read-replicas/create-replica-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-read-replicas/create-replica-deployment-completed.png":::
+    :::image type="content" source="./media/how-to-read-replicas/create-replica-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure Database for PostgreSQL flexible server instance." lightbox="./media/how-to-read-replicas/create-replica-deployment-completed.png":::
 
 10. It takes you to the **Overview** page of the replica server.
 
@@ -113,7 +113,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-create-read-replica)
 
-You can create a read replica for your Azure PostgreSQL flexible server via the [`az postgres flexible-server replica create`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-replica-create) command. 
+You can create a read replica for your Azure PostgreSQL flexible server instance via the [`az postgres flexible-server replica create`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-replica-create) command. 
 
 ```azurecli-interactive
 az postgres flexible-server replica create \

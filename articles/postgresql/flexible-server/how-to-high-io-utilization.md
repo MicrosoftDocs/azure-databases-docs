@@ -1,6 +1,6 @@
 ---
 title: High IOPS utilization
-description: This article is a troubleshooting guide for high IOPS utilization in Azure Database for PostgreSQL flexible server.
+description: This article is a troubleshooting guide for high IOPS utilization in an Azure Database for PostgreSQL flexible server instance.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article shows you how to quickly identify the root cause of high IOPS (input/output operations per second) utilization and provides remedial actions to control IOPS utilization when you're using [Azure Database for PostgreSQL flexible server](overview.md).
+This article shows you how to quickly identify the root cause of high IOPS (input/output operations per second) utilization and provides remedial actions to control IOPS utilization when you're using [Azure Database for PostgreSQL](overview.md).
 
 In this article, you learn how to:
 
@@ -27,7 +27,7 @@ In this article, you learn how to:
 
 ## Troubleshooting guides
 
-Using the feature troubleshooting guides which is available on the Azure Database for PostgreSQL flexible server portal the probable root cause and recommendations to the mitigate high IOPS utilization scenario can be found. How to setup the troubleshooting guides to use them please follow [setup troubleshooting guides](how-to-troubleshooting-guides.md).
+Using the feature troubleshooting guides which is available on the Azure Database for PostgreSQL portal the probable root cause and recommendations to the mitigate high IOPS utilization scenario can be found. How to setup the troubleshooting guides to use them please follow [setup troubleshooting guides](how-to-troubleshooting-guides.md).
 
 ## Tools to identify high I/O utilization
 
@@ -83,7 +83,7 @@ ORDER BY duration DESC;
 
 ### Checkpoint timings
 
-High I/O can also be seen in scenarios where a checkpoint is happening too frequently. One way to identify this is by checking the Azure Database for PostgreSQL flexible server log file for the following log text: "LOG: checkpoints are occurring too frequently."
+High I/O can also be seen in scenarios where a checkpoint is happening too frequently. One way to identify this is by checking the Azure Database for PostgreSQL flexible server instance log file for the following log text: "LOG: checkpoints are occurring too frequently."
 
 You could also investigate by using an approach where periodic snapshots of `pg_stat_bgwriter` with a time stamp are saved. By using the saved snapshots, you can calculate the average checkpoint interval, number of checkpoints requested, and number of checkpoints timed.
 
@@ -168,8 +168,8 @@ Increasing storage helps when you're adding more IOPS to the server. For more in
 
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
-- [Troubleshoot high memory utilization in Azure Database for PostgreSQL flexible server](how-to-high-memory-utilization.md).
-- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL flexible server](concepts-server-parameters.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
+- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

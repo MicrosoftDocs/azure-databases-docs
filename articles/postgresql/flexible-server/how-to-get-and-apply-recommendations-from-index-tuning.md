@@ -1,6 +1,6 @@
 ---
 title: How to query, interpret and apply index recommendations
-description: This article describes how to query, interpret, and apply the recommendations produced by index tuning feature in an Azure Database for PostgreSQL flexible server.
+description: This article describes how to query, interpret, and apply the recommendations produced by index tuning feature in an Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
 - ignite-2024
 - sfi-image-nochange
 ms.topic: how-to
-# customer intent: As a user, I want to learn about how to query, interpret and apply index recommendations produced by index tuning feature in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn about how to query, interpret and apply index recommendations produced by index tuning feature in an Azure Database for PostgreSQL flexible server instance.
 ---
 # Use index recommendations
 
@@ -28,7 +28,7 @@ Hence, if you need to read the text of the queries, you need to be granted permi
 > Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, index tuning must be enabled.
 
 > [!NOTE]
-> Index tuning depends on query store, which isn't supported in Azure Database for PostgreSQL flexible server version 18, while it's in Preview.
+> Index tuning depends on query store, which isn't supported in Azure Database for PostgreSQL version 18, while it's in Preview.
 
 ## Steps to list index recommendations
 
@@ -36,7 +36,7 @@ Hence, if you need to read the text of the queries, you need to be granted permi
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
 
@@ -310,7 +310,7 @@ Once you have the statement, you can use any PostgreSQL client of your preferenc
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
 

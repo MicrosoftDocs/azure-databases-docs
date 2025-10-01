@@ -1,6 +1,6 @@
 ---
 title: Delete a server
-description: This article describes the steps to delete an existing Azure Database for PostgreSQL flexible server.
+description: This article describes the steps to delete an existing Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -8,14 +8,14 @@ ms.date: 01/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to delete an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to delete an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Delete a server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to delete an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to delete an Azure Database for PostgreSQL flexible server instance.
 
 ## Delete a server
 
@@ -23,7 +23,7 @@ This article provides step-by-step instructions to delete an Azure Database for 
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, select **Overview**.
 
@@ -31,7 +31,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. Select the **Delete** button.
 
-    :::image type="content" source="./media/how-to-delete-server/delete-server.png" alt-text="Screenshot showing how to delete an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/delete-server.png":::
+    :::image type="content" source="./media/how-to-delete-server/delete-server.png" alt-text="Screenshot showing how to delete an Azure Database for PostgreSQL flexible server instance." lightbox="./media/how-to-delete-server/delete-server.png":::
 
 5. In the **Delete *\<server\>*** panel, make sure that the name of the resource you're willing to delete, matches the one displayed.
 
@@ -43,15 +43,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7. You must check the **I have read and understand that this server, as well as any databases it contains, will be deleted.** box, so that the **Delete** button is enabled. Optionally, check the **You can contact me about this feedback.** box, if we can contact you about the feedback provided.
 
-    :::image type="content" source="./media/how-to-delete-server/accept-conditions.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/accept-conditions.png":::
+    :::image type="content" source="./media/how-to-delete-server/accept-conditions.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server instance." lightbox="./media/how-to-delete-server/accept-conditions.png":::
 
 8. If the server has private endpoints configured, you also have to check the **I acknowledge that the deletion of the server doesn't delete any private endpoints associated with this server. After the server is deleted, make sure that you delete these private endpoints.** box, so that the **Delete** button is enabled.
 
-    :::image type="content" source="./media/how-to-delete-server/accept-conditions-private-endpoints.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server when there are private endpoints." lightbox="./media/how-to-delete-server/accept-conditions-private-endpoints.png":::
+    :::image type="content" source="./media/how-to-delete-server/accept-conditions-private-endpoints.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server instance when there are private endpoints." lightbox="./media/how-to-delete-server/accept-conditions-private-endpoints.png":::
 
 9. If the server is VNET integrated, you also have to check the **I acknowledge that the deletion of the server doesn't delete the virtual network in which the server is integrated. After the server is deleted, consider if you should also delete the virtual network.** box, so that the **Delete** button is enabled.
 
-    :::image type="content" source="./media/how-to-delete-server/accept-conditions-vnet-integration.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server when it's VNET integrated." lightbox="./media/how-to-delete-server/accept-conditions-vnet-integration.png":::
+    :::image type="content" source="./media/how-to-delete-server/accept-conditions-vnet-integration.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server instance when it's VNET integrated." lightbox="./media/how-to-delete-server/accept-conditions-vnet-integration.png":::
 
 10. Select **Delete** to proceed with the immediate deletion of the server.
 

@@ -1,6 +1,6 @@
 ---
 title: Delete a read replica
-description: This article describes how to delete a read replica of an Azure Database for PostgreSQL flexible server.
+description: This article describes how to delete a read replica of an Azure Database for PostgreSQL flexible server instance.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -14,7 +14,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to delete a read replica of an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to delete a read replica of an Azure Database for PostgreSQL flexible server instance.
 
 ## Steps to delete a read replica
 
@@ -22,7 +22,7 @@ This article provides step-by-step instructions to delete a read replica of an A
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the Azure Database for PostgreSQL flexible server for which you want to delete a read replica.
+1. Select the Azure Database for PostgreSQL flexible server instance for which you want to delete a read replica.
 
 2. In the resource menu, under the **Settings** section, select **Replication**.
 
@@ -46,7 +46,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-delete-read-replica)
 
-You can delete a read replica of your Azure PostgreSQL flexible server via the [`az postgres flexible-server delete`](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-delete) command. 
+You can delete a read replica of your Azure PostgreSQL flexible server instance via the [`az postgres flexible-server delete`](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-delete) command. 
 
 ```azurecli-interactive
 az postgres flexible-server delete \

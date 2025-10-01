@@ -15,9 +15,9 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-You can use PostgreSQL server logs to diagnose specific issues experienced in an Azure Database for PostgreSQL flexible server, and to gain detailed insights about the activities that run on your servers. You can use major version upgrade logs to troubleshoot errors that might occur during an attempt to upgrade your server to a higher major version of PostgreSQL.
+You can use PostgreSQL server logs to diagnose specific issues experienced in an Azure Database for PostgreSQL flexible server instance, and to gain detailed insights about the activities that run on your servers. You can use major version upgrade logs to troubleshoot errors that might occur during an attempt to upgrade your server to a higher major version of PostgreSQL.
 
-By default, capturing server logs for download in an Azure Database for PostgreSQL flexible server is disabled. However, after you enable the feature, your Azure Database for PostgreSQL flexible server starts capturing the server logs to files, which you can download for detailed inspection. You can use Azure portal or Azure CLI commands to list and  download these files that can assist you with any troubleshooting efforts.
+By default, capturing server logs for download in an Azure Database for PostgreSQL flexible server instance is disabled. However, after you enable the feature, your Azure Database for PostgreSQL flexible server instance starts capturing the server logs to files, which you can download for detailed inspection. You can use Azure portal or Azure CLI commands to list and  download these files that can assist you with any troubleshooting efforts.
 
 This article explains how to enable and disable the feature. It also describes how you can list all available server logs, and how can you download any of them.
 
@@ -27,7 +27,7 @@ This article explains how to enable and disable the feature. It also describes h
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
@@ -98,7 +98,7 @@ Message: The value: [<value>] of Server Parameter: [logfiles.retention_days] is 
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
@@ -142,7 +142,7 @@ az postgres flexible-server parameter \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
@@ -207,7 +207,7 @@ az postgres flexible-server server-logs list \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 

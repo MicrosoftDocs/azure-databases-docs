@@ -1,6 +1,6 @@
 ---
-title: Configure the Azure Storage extension in Azure Database for PostgreSQL flexible server
-description: Learn how to configure the Azure Storage extension in Azure Database for PostgreSQL flexible server to import and export data.
+title: Configure the Azure Storage Extension in Azure Database for PostgreSQL Flexible Server
+description: Learn how to configure the Azure Storage extension for an Azure Database for PostgreSQL flexible server instance to import and export data.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -43,7 +43,7 @@ To meet the prerequisites needed in each case, follow the instructions in the co
 
 ### To use authorization with Microsoft Entra ID
 
-1. Enable [System Assigned Managed Identity](concepts-identity.md) on your Azure Database for PostgreSQL flexible server.
+1. Enable [System Assigned Managed Identity](concepts-identity.md) on your Azure Database for PostgreSQL flexible server instance.
 1. [Restart the instance of Azure Database for PostgreSQL flexible server](how-to-restart-server.md), after enabling a system assigned managed identity on it.
 1. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure Database for PostgreSQL flexible server.
 
@@ -192,7 +192,7 @@ Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 ## Create the extension
 
-Using the client of your preference (for example, [PostgreSQL for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), psql, pgAdmin, etc.), in your Azure Database for PostgreSQL flexible server, connect to the database in which you want to use the Azure Storage extension.
+Using the client of your preference (for example, [PostgreSQL for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), psql, pgAdmin, etc.), in your Azure Database for PostgreSQL flexible server instance, connect to the database in which you want to use the Azure Storage extension.
 
  To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
 

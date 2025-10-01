@@ -21,7 +21,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server. To learn more, go to [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
 ## Create a script activity

@@ -1,6 +1,6 @@
 ---
 title: How to Connect from Azure Data Factory to Azure Database for PostgreSQL
-description: Guide on how to connect an Azure Database for PostgreSQL flexible server from Azure Data Factory using the Azure Database for PostgreSQL connector
+description: Guide on how to connect an Azure Database for PostgreSQL flexible server instance from Azure Data Factory using the Azure Database for PostgreSQL connector
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
@@ -31,7 +31,7 @@ You can create a linked service using the Azure Data Factory UI or programmatica
 
 ### Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 
 ### Create a linked service via the Azure portal
@@ -63,7 +63,7 @@ There are four supported methods for authentication: basic authentication, servi
 
 ##### Basic Authentication
 
-1. Select **Basic auth** as the Authentication type and make sure to enter your Azure PostgreSQL flexible server connection details, including **Server name**, **Username**, and **Password**.
+1. Select **Basic auth** as the Authentication type and make sure to enter your Azure PostgreSQL flexible server instance connection details, including **Server name**, **Username**, and **Password**.
 
     :::image type="content" source="media/how-to-connect-data-factory/authentication-basic-auth.png" alt-text="Screenshot of a new linked service window for Azure Database for PostgreSQL connector with basic authentication type." lightbox="media/how-to-connect-data-factory/authentication-basic-auth.png":::
 
@@ -257,14 +257,14 @@ Using User-assigned managed identity as the authentication type in the linked se
 
 ### Linked service JSON
 
-The following table describes the properties of the linked service for Azure Database for PostgreSQL flexible server. The properties are defined in JSON format, which is used to create the linked service programmatically.
+The following table describes the properties of the linked service for Azure Database for PostgreSQL. The properties are defined in JSON format, which is used to create the linked service programmatically.
 
 | Property | Description | Required |
 | --- | --- | --- |
 | name | Name of the linked service. See [Naming rules](/azure/data-factory/naming-rules) |  Yes |
 | type | Type of the linked service. It should be **AzurePostgreSql** | Yes |
-| server | Full qualified host name for Azure database for PostgreSQL flexible server | Yes |
-| port | The Azure database for PostgreSQL flexible server port number | Yes |
+| server | Full qualified host name for Azure database for PostgreSQL flexible server instance | Yes |
+| port | The Azure database for PostgreSQL flexible server instance port number | Yes |
 | database | Database name | Yes |
 | sslMode | A numeric value representing the SSL connection configuration. **0** for Disabled, **1** for Allow, **2** for Prefer, **3** for Require, **4** for VerifyCA and **5** for VerifyFull | Yes |
 | authenticationType | Specify the authentication to be used. **BasicAuth**, **ServicePrincipal**, **SystemAssignedManagedIdentity**, or **UserAssignedManagedIdentity** | Yes |
@@ -419,4 +419,4 @@ Activities are tasks within a pipeline that can execute specific tasks. With scr
 ## Related content
 
 - [How to connect to data factory private endpoint](how-to-connect-data-factory-private-endpoint.md)
-- [Networking with Private Link in Azure Database for PostgreSQL flexible server](concepts-networking-private-link.md)
+- [Azure Database for PostgreSQL networking with Private Link](concepts-networking-private-link.md)
