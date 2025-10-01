@@ -15,8 +15,6 @@ ms.devlang: azurecli
 
 # Create an Azure Database for PostgreSQL flexible server instance and configure a virtual network rule using the Azure CLI
 
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
-
 This sample CLI script creates an Azure Database for PostgreSQL flexible server instance and configures a virtual network rule.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
