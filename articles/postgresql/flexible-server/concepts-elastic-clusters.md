@@ -1,5 +1,5 @@
 ---
-title: Elastic clusters on PostgreSQL Flexible Server
+title: Elastic Clusters
 description: Learn about sharding and horizontal scale-out with elastic clusters on Azure Database for PostgreSQL flexible server.
 author: mulander
 ms.author: adamwolk
@@ -10,13 +10,11 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Elastic clusters in Azure Database for PostgreSQL flexible server (preview)
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Elastic clusters in Azure Database for PostgreSQL  (preview)
 
 Elastic clusters on Azure Database for PostgreSQL flexible server are a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
 
-While Citus is just an extension, it connects multiple PostgreSQL instances. When an Azure Database for PostgreSQL flexible server is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
+While Citus is just an extension, it connects multiple PostgreSQL instances. When Azure Database for PostgreSQL flexible server is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
 
 Elastic clusters on flexible server offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more.
 

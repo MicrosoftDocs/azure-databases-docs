@@ -13,8 +13,6 @@ ms.topic: how-to
 
 # Delete a server
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article provides step-by-step instructions to delete an Azure Database for PostgreSQL flexible server instance.
 
 ## Delete a server

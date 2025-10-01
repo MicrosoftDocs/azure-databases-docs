@@ -13,9 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Manage Microsoft Entra roles in Azure Database for PostgreSQL flexible server 
-
-[!INCLUDE [applies-to-postgresql-Flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Manage Microsoft Entra roles in Azure Database for PostgreSQL  
 
 This article describes how to create Microsoft Entra ID-enabled database roles within an Azure Database for PostgreSQL flexible server instance.
 
@@ -40,7 +38,7 @@ To learn about how to create and manage Azure subscription users and their privi
 
 ## Manage Microsoft Entra roles using SQL
 
-After you create the first Microsoft Entra administrator from the Azure portal or API, you can use the administrator role to manage Microsoft Entra roles in your Azure Database for PostgreSQL flexible server instance.
+After you create the first Microsoft Entra administrator from the Azure portal or API, use the administrator role to manage Microsoft Entra roles in your Azure Database for PostgreSQL flexible server instance.
 
 For the best experience with Microsoft Entra integration in Azure Database for PostgreSQL, we recommend getting familiar with [Microsoft identity platform](/azure/active-directory/develop/v2-overview).
 
@@ -104,19 +102,16 @@ select * from pg_catalog.pgaadauth_create_principal(roleName text, isAdmin boole
 
 ## Drop a role with a Microsoft Entra principal name
 
-There are three ways to drop a role which corresponds to a Microsoft Entra ID principal:
-1. The Azure portal
-2. The Azure Resource Manager (ARM) API
-3. By executing the following SQL statement:
+Remember that you must use a Microsoft Entra admin to drop any Microsoft Entra role that you created in PostgreSQL. If you use a regular PostgreSQL admin to drop a Microsoft Entra role, you get an error.
+
+> [!NOTE]  
+> This method works until PostgreSQL v15. After v16, DROP ROLE requires superadmin role. Contact Azure support for dropping roles.
 
 ```sql
 DROP ROLE rolename;
 ```
 
-> [!NOTE]  
-> Only admin roles are displayed on the Azure portal. To drop a non-admin role, use the either the Azure Resource Manager (ARM) API or the SQL statement.
-
-## Create a role using the Microsoft Entra ID object identifier
+## Create a role using Microsoft Entra object identifier
 
 ```sql
 select * from pg_catalog.pgaadauth_create_principal_with_oid(roleName text, objectId text, objectType text, isAdmin boolean, isMfa boolean)

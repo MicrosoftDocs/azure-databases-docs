@@ -10,9 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Configure intelligent tuning for Azure Database for PostgreSQL flexible server by using the Azure portal
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Configure intelligent tuning for Azure Database for PostgreSQL  by using the Azure portal
 
 This article provides a step-by-step procedure to configure intelligent tuning in an Azure Database for PostgreSQL flexible server instance by using the Azure portal.
 
@@ -21,7 +19,7 @@ To learn more about intelligent tuning, see the [overview](concepts-intelligent-
 > [!IMPORTANT]
 > Autovacuum tuning is currently supported for the General Purpose and Memory Optimized server compute tiers that have four or more vCores. The Burstable server compute tier isn't supported.
 
-## Steps to enable intelligent tuning on your flexible server
+## Steps to enable intelligent tuning on your 
 
 1. Visit the [Azure portal](https://portal.azure.com/) and select the Azure Database for PostgreSQL flexible server instance on which you want to enable intelligent tuning.
 

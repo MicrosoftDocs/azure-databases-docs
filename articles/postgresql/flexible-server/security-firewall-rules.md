@@ -13,7 +13,7 @@ ms.custom:
   - horz-security
 ---
 
-# Firewall rules in Azure Database for PostgreSQL flexible server
+# Firewall rules in Azure Database for PostgreSQL 
 
 When you're running Azure Database for PostgreSQL flexible server, you have two main networking options. The options are private access (virtual network integration) and public access (allowed IP addresses).
 

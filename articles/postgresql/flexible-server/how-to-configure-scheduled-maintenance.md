@@ -13,8 +13,6 @@ ms.topic: how-to
 
 # Schedule maintenance
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
- 
 You can specify scheduled maintenance options for each Azure Database for PostgreSQL flexible server instance in your Azure subscription. Options include the type of scheduled maintenance and notification settings for upcoming and finished maintenance events.
 
 ## Steps to schedule maintenance

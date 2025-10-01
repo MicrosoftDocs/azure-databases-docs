@@ -17,8 +17,6 @@ ms.topic: how-to
 
 # Integrate Azure Database for PostgreSQL with Azure Machine Learning Services
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 Azure AI extension gives the ability to invoke any machine learning models deployed on [Azure Machine Learning online endpoints](/azure/machine-learning/concept-endpoints-online) from within SQL. These models can be from the Azure Machine Learning catalog or custom models that are trained and deployed.
 
 ## Prerequisites

@@ -4,7 +4,7 @@ description: This article describes how to query, interpret, and apply the recom
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/25/2025
+ms.date: 02/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -26,9 +26,6 @@ Hence, if you need to read the text of the queries, you need to be granted permi
 
 > [!NOTE]
 > Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, index tuning must be enabled.
-
-> [!NOTE]
-> Index tuning depends on query store, which isn't supported in Azure Database for PostgreSQL version 18, while it's in Preview.
 
 ## Steps to list index recommendations
 

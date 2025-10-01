@@ -13,8 +13,6 @@ ms.topic: how-to
 
 # List all backups
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article provides step-by-step instructions to list all full backups of an Azure Database for PostgreSQL flexible server instance.
 
 ## Steps to list all backups

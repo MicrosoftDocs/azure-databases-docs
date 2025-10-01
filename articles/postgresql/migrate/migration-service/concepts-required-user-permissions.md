@@ -12,8 +12,6 @@ ms.topic: concept-article
 
 # Required permissions for migration creation and monitoring
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 To create and monitor migrations using the PostgreSQL Migration Service, users need specific permissions. Here's a guide on the permissions required and steps to configure them effectively.
 
 ## Minimum set of permissions

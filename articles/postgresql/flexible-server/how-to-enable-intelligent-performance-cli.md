@@ -13,9 +13,7 @@ ms.custom:
 ms.devlang: azurecli
 ---
 
-# Configure intelligent tuning for Azure Database for PostgreSQL flexible server by using the Azure CLI
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Configure intelligent tuning for Azure Database for PostgreSQL  by using the Azure CLI
 
 You can verify and update the intelligent tuning configuration for an Azure Database for PostgreSQL flexible server instance by using the Azure CLI.
 

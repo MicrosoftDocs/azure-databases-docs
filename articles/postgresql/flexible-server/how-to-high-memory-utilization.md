@@ -10,9 +10,7 @@ ms.subservice: flexible-server
 ms.topic: troubleshooting-general
 ---
 
-# Troubleshoot high memory utilization in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Troubleshoot high memory utilization in Azure Database for PostgreSQL 
 
 This article describes how to identify the root cause of high memory utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL](overview.md).
 
@@ -54,9 +52,9 @@ Consider the following reasons and remedial actions for resolving high memory ut
 
 An inappropriate configuration of the following server parameters could have an impact in the amount of memory consumed by your workload. Therefore, their values should be reviewed and adjusted according to your needs:
 
-- [work_mem](param-resource-usage-memory.md#work_mem).
-- [maintenance_work_mem](param-resource-usage-memory.md#maintenance_work_mem). - [shared_buffers](param-resource-usage-memory.md#shared_buffers).
-- [max_connections](param-connections-authentication-connection-settings.md#max_connections).
+- [work_mem](server-parameters-table-resource-usage-memory.md#work_mem).
+- [maintenance_work_mem](server-parameters-table-resource-usage-memory.md#maintenance_work_mem). - [shared_buffers](server-parameters-table-resource-usage-memory.md#shared_buffers).
+- [max_connections](server-parameters-table-connections-and-authentication-connection-settings.md#max_connections).
 
 ### Use EXPLAIN ANALYZE
 

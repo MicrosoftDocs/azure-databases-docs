@@ -1,6 +1,6 @@
 ---
 title: Premium SSD
-description: This article describes the Premium ssd storage option in Azure Database for PostgreSQL flexible server.
+description: This article describes the Premium ssd storage option in an Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,9 +12,7 @@ ms.topic: concept-article
 ---
 
 
-# Premium SSD  storage option in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Premium SSD  storage option in Azure Database for PostgreSQL 
 
 ## Premium SSD
 
@@ -24,7 +22,7 @@ The maximum supported storage size is 32 TiB with Premium SSD, allowing you to s
   
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
-Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.To learn more, see [compute options in Azure Database for PostgreSQL flexible server](concepts-compute.md).
+Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
 
 > [!NOTE]  
 > Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
@@ -62,7 +60,7 @@ The process of scaling storage is performed online, without causing any downtime
 
 ## IOPS scaling
 
-Azure Database for PostgreSQL flexible server supports provisioning of extra IOPS. This feature enables you to provision more IOPS beyond the complimentary IOPS limit. Using this feature, you can increase or decrease the number of IOPS provisioned, to adjust them to your workload requirements at any time.
+Azure Database for PostgreSQL supports provisioning of extra IOPS. This feature enables you to provision more IOPS beyond the complimentary IOPS limit. Using this feature, you can increase or decrease the number of IOPS provisioned, to adjust them to your workload requirements at any time.
 
 The compute size selected determines the minimum and maximum IOPS. To learn more about the minimum and maximum IOPS per compute size, see [compute size](concepts-compute.md).
 
@@ -73,5 +71,5 @@ Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).
-- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).
+- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md).
+- [Limits in Azure Database for PostgreSQL](concepts-limits.md).

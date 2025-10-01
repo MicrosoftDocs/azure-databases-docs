@@ -13,9 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Manage Azure Database for PostgreSQL flexible server using the Azure portal
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Manage Azure Database for PostgreSQL  using the Azure portal
 
 This article shows you how to manage your Azure Database for PostgreSQL flexible server instance. Management tasks include compute and storage scaling, admin password reset, and viewing server details.
 

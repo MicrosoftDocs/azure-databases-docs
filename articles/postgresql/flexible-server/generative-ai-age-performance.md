@@ -13,7 +13,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand how to improve performance of my graph queries in Azure Database for PostgreSQL flexible server instances.
+# customer intent: As a user, I want to understand how to improve performance of my graph queries in Azure Database for PostgreSQL.
 ---
 
 # Best practices: indexing, AGE EXPLAIN, and data load benchmarks

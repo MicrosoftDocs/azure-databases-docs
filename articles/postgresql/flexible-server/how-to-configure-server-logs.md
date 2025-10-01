@@ -13,8 +13,6 @@ ms.topic: how-to
 
 # Download PostgreSQL and upgrade logs
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 You can use PostgreSQL server logs to diagnose specific issues experienced in an Azure Database for PostgreSQL flexible server instance, and to gain detailed insights about the activities that run on your servers. You can use major version upgrade logs to troubleshoot errors that might occur during an attempt to upgrade your server to a higher major version of PostgreSQL.
 
 By default, capturing server logs for download in an Azure Database for PostgreSQL flexible server instance is disabled. However, after you enable the feature, your Azure Database for PostgreSQL flexible server instance starts capturing the server logs to files, which you can download for detailed inspection. You can use Azure portal or Azure CLI commands to list and  download these files that can assist you with any troubleshooting efforts.

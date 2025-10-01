@@ -36,7 +36,7 @@ The PostgreSQL engine uses privileges to control access to database objects, as 
 
 The server admin user account can be used to create more users and grant those users into the azure_pg_admin role. Also, the server admin account can be used to create less privileged users and roles that have access to individual databases and schemas.
 
-## How to create more admin users in Azure Database for PostgreSQL flexible server
+## How to create more admin users in Azure Database for PostgreSQL 
 
 1. Get the connection information and admin user name.
 You need the full server name and admin sign-in credentials to connect to your Azure Database for PostgreSQL flexible server instance. You can easily find the server name and sign-in information from the server **Overview** page or the **Properties** page in the Azure portal.
@@ -52,7 +52,7 @@ If you're unsure of how to connect, see [Create an Azure Database for PostgreSQL
     GRANT azure_pg_admin TO <new_user>;
     ```
     
-## How to create database users in Azure Database for PostgreSQL flexible server
+## How to create database users in Azure Database for PostgreSQL 
 
 1. Get the connection information and admin user name.
 You need the full server name and admin sign-in credentials to connect to your Azure Database for PostgreSQL flexible server instance. You can easily find the server name and sign-in information from the server **Overview** page or the **Properties** page in the Azure portal.

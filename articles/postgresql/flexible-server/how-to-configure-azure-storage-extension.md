@@ -1,6 +1,6 @@
 ---
-title: Configure the Azure Storage Extension in Azure Database for PostgreSQL Flexible Server
-description: Learn how to configure the Azure Storage extension for an Azure Database for PostgreSQL flexible server instance to import and export data.
+title: Configure the Azure Storage Extension
+description: Learn how to configure the Azure Storage extension in an Azure Database for PostgreSQL flexible server instance to import and export data.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -13,9 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Configure the Azure Storage extension in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Configure the Azure Storage extension in Azure Database for PostgreSQL 
 
 You must follow these steps to be able to use the Azure Storage extension:
 

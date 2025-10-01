@@ -1,18 +1,18 @@
 ---
-title: Identify slow running query
-description: Troubleshooting guide for identifying slow running queries in an Azure Database for PostgreSQL flexible server instance.
+title: Identify Slow Running Query
+description: Troubleshooting guide for identifying slow running queries in Azure Database for PostgreSQL flexible server instances.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
-ms.date: 12/10/2024
+ms.date: 09/30/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: troubleshooting-general
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
 ---
-# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL
 
 This article describes how to identify and diagnose the root cause of slow-running queries.
 
@@ -25,44 +25,44 @@ In this article, you can learn:
 
 1. Enable troubleshooting guides by following the steps described in [use troubleshooting guides](how-to-troubleshooting-guides.md).
 
-2. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-load-libraries.md) the extension.
+1. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-load-libraries.md) the extension.
 
-3. After the `auto_explain` extension is configured, change the following [server parameters](concepts-server-parameters.md), which control the behavior of the extension:
+1. After the `auto_explain` extension is configured, change the following [server parameters](concepts-server-parameters.md), which control the behavior of the extension:
 
-    - `auto_explain.log_analyze` to `ON`.
-    - `auto_explain.log_buffers` to `ON`.
-    - `auto_explain.log_min_duration` according to what's reasonable in your scenario.
-    - `auto_explain.log_timing` to `ON`.
-    - `auto_explain.log_verbose` to `ON`.
+   - `auto_explain.log_analyze` to `ON`.
+   - `auto_explain.log_buffers` to `ON`.
+   - `auto_explain.log_min_duration` according to what's reasonable in your scenario.
+   - `auto_explain.log_timing` to `ON`.
+   - `auto_explain.log_verbose` to `ON`.
 
    :::image type="content" source="./media/how-to-identify-slow-queries/auto-explain-parameters.png" alt-text="Screenshot of showing auto_explain server parameters that need to be configured." lightbox="./media/how-to-identify-slow-queries/auto-explain-parameters.png":::
 
 > [!NOTE]  
-> If you set `auto_explain.log_min_duration` to 0, the extension starts logging all queries being executed on the server. This may impact performance of the database. Proper due diligence must be made to come to a value which is considered slow on the server. For example, if all queries complete in less than 30 seconds, and that's acceptable for your application, then it is advised to update the parameter to 30000 milliseconds. This would then log any query which takes longer than 30 seconds to complete.
+> If you set `auto_explain.log_min_duration` to 0, the extension starts logging all queries being executed on the server. This might affect performance of the database. Proper due diligence must be made to come to a value, which is considered slow on the server. For example, if all queries complete in less than 30 seconds, and that's acceptable for your application, then it's advised to update the parameter to 30,000 milliseconds. This would then log any query, which takes longer than 30 seconds to complete.
 
 ## Identify slow query
 
 With troubleshooting guides and `auto_explain` extension in place, we describe the scenario with the help of an example.
 
-We have a scenario where CPU utilization spikes to 90% and want to determine the cause of the spike. To debug the scenario, follow theses steps:
+We have a scenario where CPU utilization spikes to 90% and want to determine the cause of the spike. To debug the scenario, follow these steps:
 
 1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure Database for PostgreSQL flexible server, under the **Monitoring** section, select **Troubleshooting guides**.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu option." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu option." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
 
-2. Select the **CPU** tab. The **Optimizing high CPU utilization** troubleshooting guide opens.
+1. Select the **CPU** tab. The **Optimizing high CPU utilization** troubleshooting guide opens.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides menu - tabs. " lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides menu - tabs. " lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
 
-3. From the **Analysis period (local time)** drop-down, select the time range on which you want to focus the analysis.
+1. From the **Analysis period (local time)** dropdown, select the time range on which you want to focus the analysis.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-timerange.png" alt-text="Screenshot of troubleshooting guides menu - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-timerange.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-timerange.png" alt-text="Screenshot of troubleshooting guides menu - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-timerange.png":::
 
-4. Select **Queries** tab. It shows details of all the queries that ran in the interval where 90% CPU utilization was seen. From the snapshot, it looks like the query with the slowest average execution time during the time interval was ~2.6 minutes, and the query ran 22 times during the interval. That query is most likely the cause of the CPU spikes.
+1. Select **Queries** tab. It shows details of all the queries that ran in the interval where 90% CPU utilization was seen. From the snapshot, it looks like the query with the slowest average execution time during the time interval was ~2.6 minutes, and the query ran 22 times during the interval. That query is most likely the cause of the CPU spikes.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-query.png" alt-text="Screenshot of troubleshooting guides menu - Top CPU consuming queries tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-query.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-query.png" alt-text="Screenshot of troubleshooting guides menu - Top CPU consuming queries tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-query.png":::
 
-5. To retrieve the actual query text, connect to the `azure_sys` database and execute the following query.
+1. To retrieve the actual query text, connect to the `azure_sys` database and execute the following query.
 
 ```sql
     psql -h <server>.postgres.database.azure.com -U <user> -d azure_sys
@@ -72,7 +72,7 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
      WHERE query_text_id = <query_id>;
 ```
 
-6. In the example considered, the query that was found slow was:
+1. In the example considered, the query that was found slow was:
 
 ```sql
 SELECT  c_id, SUM(c_balance) AS total_balance
@@ -81,15 +81,15 @@ GROUP BY c_w_id, c_id
 ORDER BY c_w_id;
 ```
 
-7. To understand what exact explain plan was generated, use Azure Database for PostgreSQL flexible server instance logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**.
+1. To understand what exact explain plan was generated, use Azure Database for PostgreSQL logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-tab.png" alt-text="Screenshot of troubleshooting guides menu - Logs." lightbox="./media/how-to-identify-slow-queries/log-analytics-tab.png":::
- 
-8. Select the time range where 90% CPU Utilization was found.
-   
-    :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot showing how to pick a time window in Troubleshooting guides." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-tab.png" alt-text="Screenshot of troubleshooting guides menu - Logs." lightbox="./media/how-to-identify-slow-queries/log-analytics-tab.png":::
 
-9. Execute the following query to retrieve the output of EXPLAIN ANALYZE for the query identified.
+1. Select the time range where 90% CPU Utilization was found.
+
+   :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot showing how to pick a time window in Troubleshooting guides." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
+
+1. Execute the following query to retrieve the output of EXPLAIN ANALYZE for the query identified.
 
 ```kusto
 AzureDiagnostics
@@ -129,25 +129,25 @@ The query ran for ~2.5 minutes, as shown in troubleshooting guide. The `duration
 
 With troubleshooting guides and auto_explain extension in place, we explain the scenario with the help of an example.
 
-We have a scenario where CPU utilization spikes to 90% and want to determine the cause of the spike. To debug the scenario, follow theses steps:
+We have a scenario where CPU utilization spikes to 90% and want to determine the cause of the spike. To debug the scenario, follow these steps:
 
 1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure Database for PostgreSQL flexible server, under the **Monitoring** section, select **Troubleshooting guides**.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
 
-2. Select the **CPU** tab. The **Optimizing high CPU utilization** troubleshooting guide opens.
+1. Select the **CPU** tab. The **Optimizing high CPU utilization** troubleshooting guide opens.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides tabs." lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides tabs." lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
 
-3. From the **Analysis period (local time)** drop-down, select the time range on which you want to focus the analysis.
+1. From the **Analysis period (local time)** dropdown, select the time range on which you want to focus the analysis.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png" alt-text="Screenshot of troubleshooting guides - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png" alt-text="Screenshot of troubleshooting guides - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png":::
 
-4. Select **Queries** tab. It shows details of all the queries that ran in the interval where 90% CPU utilization was seen. From the snapshot, it looks like the query with the slowest average execution time during the time interval was ~2.6 minutes, and the query ran 22 times during the interval. That query is most likely the cause of the CPU spikes.
+1. Select **Queries** tab. It shows details of all the queries that ran in the interval where 90% CPU utilization was seen. From the snapshot, it looks like the query with the slowest average execution time during the time interval was ~2.6 minutes, and the query ran 22 times during the interval. That query is most likely the cause of the CPU spikes.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure.png" alt-text="Screenshot of troubleshooting guides - CPU tab - queries." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure.png" alt-text="Screenshot of troubleshooting guides - CPU tab - queries." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure.png":::
 
-5.    Connect to azure_sys database and execute the query to retrieve actual query text using the below script. 
+1. Connect to azure_sys database and execute the query to retrieve actual query text using the below script.
 
 ```sql
     psql -h <server>.postgres.database.azure.com -U <user> -d azure_sys
@@ -157,17 +157,17 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
      WHERE query_text_id = <query_id>;
 ```
 
-6. In the example considered, the query that was found slow was a stored procedure:
+1. In the example considered, the query that was found slow was a stored procedure:
 
 ```sql
     call autoexplain_test ();
 ```
 
-7. To understand what exact explain plan was generated, use Azure Database for PostgreSQL logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**. Then, in **Time range:**, select the time window where you want to focus the analysis.
+1. To understand what exact explain plan was generated, use Azure Database for PostgreSQL logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**. Then, in **Time range:**, select the time window where you want to focus the analysis.
 
 :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot of troubleshooting guides menu - Logs Time range." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
 
-9. Execute the following query to retrieve the explain analyze output of the query identified.
+1. Execute the following query to retrieve the explain analyze output of the query identified.
 
 ```kusto
 AzureDiagnostics
@@ -196,7 +196,6 @@ Query Text: delete from customer_balance
 Delete on public.customer_balance (cost=0.00..799173.51 rows=0 width=0) (actual time=61939.525..61939.526 rows=0 loops=1) Buffers: shared hit=50027707 read=620942 dirtied=295462 written=71785 WAL: records=50026565 fpi=34 bytes=2711252160
     -> Seq Scan on public.customer_balance (cost=0.00..799173.51 rows=15052451 width=6) (actual time=3185.519..35234.061 rows=50000000 loops=1)
         Output: ctid Buffers: shared hit=27707 read=620942 dirtied=26565 written=71785 WAL: records=26565 fpi=34 bytes=11252160
-
 
 2024-11-10 17:51:05 UTC-6526d7f0.7f67-LOG: duration: 10387.322 ms plan:
 Query Text: select max(c_id) from customer

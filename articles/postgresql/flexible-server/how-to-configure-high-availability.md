@@ -13,8 +13,6 @@ ms.topic: how-to
 
 # Configure high availability for Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article describes how to enable or disable high availability (HA) on your Azure Database for PostgreSQL flexible server instance by using the Azure portal or the Azure CLI. The information applies whether you're using instances in the same zone or using a zone-redundant deployment model.
 
 The high-availability feature deploys physically separate primary and standby replicas. You can provision the replicas within the same availability zone or in different zones, depending on the deployment model that you choose. For more information, see the [article about high-availability concepts](/azure/reliability/reliability-postgresql-flexible-server). You can enable high availability during or after the creation of your Azure Database for PostgreSQL flexible server instance.

@@ -17,8 +17,6 @@ ms.custom:
 
 # Tutorial: Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This hands-on tutorial shows you how to build a recommender application by using Azure Database for PostgreSQL and Azure OpenAI. Recommendations have applications in different domains. Service providers tend to provide recommendations for products and services that they offer based on prior history and contextual information collected from the customer and environment.
 
 There are various ways to model recommendation systems. This tutorial explores the simplest form: a recommendation based on a product that corresponds to (for example) a prior purchase. This tutorial uses the recipe dataset that the [tutorial for semantic search](generative-ai-semantic-search.md) uses. The recommendation is for recipes based on a recipe that a customer liked or searched for in the past.
