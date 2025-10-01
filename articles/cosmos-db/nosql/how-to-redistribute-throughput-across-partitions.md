@@ -494,12 +494,9 @@ While this feature is in previe, your Azure Cosmos DB account must meet all the 
 
 - Your Azure Cosmos DB account uses API for NoSQL or API for MongoDB.
 
-    - If you're using API for MongoDB, the version must be greater than or equal to 3.6.
-
+  - If you're using API for MongoDB, the version must be greater than or equal to 3.6.
+    
 - Your Azure Cosmos DB account uses provisioned throughput (manual or autoscale). Distribution of throughput across partitions doesn't apply to serverless accounts.
-
-> [!IMPORTANT]
-> Shared throughput databases are currently not supported.
 
 ## Related content
 
