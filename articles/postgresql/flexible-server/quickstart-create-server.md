@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Create an Azure Database for PostgreSQL flexible server"
+title: "Quickstart: Create a Flexible Server Instance"
 description: Quickstart guide to creating and managing an Azure Database for PostgreSQL flexible server instance.
 author: gbowerman
 ms.author: guybo
@@ -13,15 +13,13 @@ ms.custom:
   - mode-ui
 ---
 
-# Quickstart: Create an Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Quickstart: Create an Azure Database for PostgreSQL 
 
 Azure Database for PostgreSQL flexible server is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud.
 
 This article shows you how to create an Azure Database for PostgreSQL flexible server using different mechanisms.
 
-## Create an Azure Database for PostgreSQL flexible server
+## Create an Azure Database for PostgreSQL 
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
@@ -461,7 +459,7 @@ These resources are defined in the [Microsoft.DBforPostgreSQL/flexibleServers](/
 
 ---
 
-## Databases available in an Azure Database for PostgreSQL flexible server instance
+## Databases available in an Azure Database for PostgreSQL  instance
 
 By default, a database called **postgres** is created in your instance. The [postgres](https://www.postgresql.org/docs/current/static/app-initdb.html) database is a default database that's meant for use by users, utilities, and third-party applications.
 

@@ -39,7 +39,7 @@ There are two types of managed identities:
 - Multiple resources can utilize user assigned identities.
 - You authorize the managed identity to have access to one or more services.
 
-## Uses of managed identities in Azure Database for PostgreSQL flexible server
+## Uses of managed identities in Azure Database for PostgreSQL 
 
 **System assigned managed identity** for an Azure Database for PostgreSQL flexible server is used by:
 

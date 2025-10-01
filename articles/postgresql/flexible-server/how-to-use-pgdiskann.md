@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure Database for PostgreSQL.
 ---
 
 # Enable and use DiskANN extension

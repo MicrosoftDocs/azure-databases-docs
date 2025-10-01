@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Create a script activity in Microsoft Fabric Data Factory
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 In this article, you learn how to create a script activity in Microsoft Fabric Data Factory to run custom PostgreSQL queries. A script activity allows you to run various types of PostgreSQL commands directly in your pipelines. These commands include:
 
 - Data Manipulation Language (DML) statements: `INSERT`, `UPDATE`, `DELETE`, and `SELECT`.

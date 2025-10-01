@@ -15,9 +15,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Optimize performance when using pgvector in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Optimize performance when using pgvector in Azure Database for PostgreSQL 
 
 The `pgvector` extension adds an open-source vector similarity search to Azure Database for PostgreSQL flexible server.
 

@@ -11,9 +11,7 @@ ms.topic: quickstart
 #Customer intent: As a system administrator, I want to deploy an elastic cluster using the portal.
 ---
 
-# Quickstart: Create an instance of elastic cluster in Azure Database for PostgreSQL flexible server (preview)
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Quickstart: Create an instance of elastic cluster in Azure Database for PostgreSQL  (preview)
 
 Azure Database for PostgreSQL flexible server with elastic cluster is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. This Quickstart covers how to create an elastic cluster instance using the Azure portal.
 
@@ -66,7 +64,7 @@ Open your server's **Overview** page. Make a note of the **Server name** and the
 
 <a name="connect-to-the-postgresql-database-using-psql"></a>
 
-## Connect to the Azure Database for PostgreSQL flexible server database using psql
+## Connect to the Azure Database for PostgreSQL  database using psql
 
 There are many applications you can use to connect to your Azure Database for PostgreSQL flexible server instance. If your client computer has PostgreSQL installed, you can use a local instance of [psql](https://www.postgresql.org/docs/current/static/app-psql.html) to connect to an Azure Database for PostgreSQL flexible server instance. Let's now use the psql command-line utility to connect to the Azure Database for PostgreSQL flexible server instance.
 

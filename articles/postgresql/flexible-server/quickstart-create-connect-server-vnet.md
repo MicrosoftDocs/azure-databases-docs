@@ -15,9 +15,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Connect Azure Database for PostgreSQL flexible server with the private access connectivity method
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Connect Azure Database for PostgreSQL  with the private access connectivity method
 
 Azure Database for PostgreSQL flexible server is a managed service that you can use to run, manage, and scale highly available PostgreSQL servers in the cloud. This quickstart shows you how to create an Azure Database for PostgreSQL flexible server instance in a virtual network by using the Azure portal.
 
@@ -29,7 +27,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 Sign in to the [Azure portal](https://portal.azure.com). Enter your credentials to sign in to the portal. The default view is your service dashboard.
 
-## Create an Azure Database for PostgreSQL flexible server
+## Create an Azure Database for PostgreSQL 
 
 You create an Azure Database for PostgreSQL flexible server instance with a defined set of [compute and storage resources](concepts-compute.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
