@@ -1,10 +1,10 @@
-..---
+---
 title: Azure Confidential Computing
 description: This article describes the confidential computing options in Azure Database for PostgreSQL flexible server.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 09/19/2025.
+ms.date: 09/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
