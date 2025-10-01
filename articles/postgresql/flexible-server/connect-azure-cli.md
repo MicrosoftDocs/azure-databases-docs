@@ -18,7 +18,6 @@ ms.custom:
 
 This quickstart demonstrates how to connect to an Azure Database for PostgreSQL flexible server instance using Azure CLI with `az postgres flexible-server connect` and execute single query or sql file with `az postgres flexible-server execute` command. This command allows you test connectivity to your database server and run queries. You can also run multiple queries using the interactive mode. 
 
-
 ## Prerequisites
 - An Azure account with an active subscription. If you don't have one, [get a free trial](https://azure.microsoft.com/free/).
 - Install [Azure CLI](/cli/azure/install-azure-cli) latest version.
