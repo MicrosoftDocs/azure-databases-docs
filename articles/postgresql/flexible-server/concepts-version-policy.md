@@ -17,7 +17,7 @@ This article describes the Azure Database for PostgreSQL versioning policy.
 
 ## Supported PostgreSQL versions
 
-Azure Database for PostgreSQL flexible server supports the following database versions.
+Azure Database for PostgreSQL supports the following database versions.
 
 | Version | Supported | Policy information |
 | --- | --- | --- |
