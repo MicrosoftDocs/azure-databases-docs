@@ -12,8 +12,6 @@ ms.devlang: azurecli
 
 # Restore an Azure Database for PostgreSQL flexible server instance using Azure CLI
 
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
-
 This sample CLI script restores a single Azure Database for PostgreSQL flexible server instance to a previous point in time.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
