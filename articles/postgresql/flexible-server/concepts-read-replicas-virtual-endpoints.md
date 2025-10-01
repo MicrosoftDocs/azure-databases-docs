@@ -1,6 +1,6 @@
 ---
 title: Virtual endpoints
-description: This article describes the virtual endpoints for read replica feature in Azure Database for PostgreSQL flexible server.
+description: This article describes the virtual endpoints for read replica feature in an Azure Database for PostgreSQL flexible server instance.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -10,9 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Virtual endpoints for read replicas in Azure Database for PostgreSQL 
 
 Virtual Endpoints are read-write and read-only listener endpoints, that remain consistent irrespective of the current role of the Azure Database for PostgreSQL flexible server instance. This means you don't have to update your application's connection string after performing the **promote to primary server** action, as the endpoints will automatically point to the correct instance following a role change.
 
@@ -54,7 +52,7 @@ The sections below delve into how these endpoints react to both [Promote to prim
 
 ### Using Virtual Endpoints for Consistent Hostname During Point-in-Time Recovery (PITR) or Snapshot Restore
 
-This section explains how to use Virtual Endpoints in Azure Database for PostgreSQL flexible server to maintain a consistent hostname during Point-in-Time Recovery (PITR) or Snapshot Restore, ensuring application connection strings remain unchanged. Follow below steps:
+This section explains how to use Virtual Endpoints in an Azure Database for PostgreSQL flexible server instance to maintain a consistent hostname during Point-in-Time Recovery (PITR) or Snapshot Restore, ensuring application connection strings remain unchanged. Follow below steps:
 
 1. **Add Virtual Endpoint to Primary Server:**
     - Browse to your primary server instance in the Azure Portal.
@@ -78,8 +76,8 @@ This section explains how to use Virtual Endpoints in Azure Database for Postgre
 ## Related content
 
 - [Create virtual endpoints for read replicas with Terraform](how-to-read-replicas-virtual-endpoints-terraform.md)
-- [Read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas.md).
-- [Geo-replication in Azure Database for PostgreSQL flexible server](concepts-read-replicas-geo.md).
-- [Promote read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-promote.md).
+- [Read replicas in Azure Database for PostgreSQL](concepts-read-replicas.md).
+- [Geo-replication in Azure Database for PostgreSQL](concepts-read-replicas-geo.md).
+- [Promote read replicas in Azure Database for PostgreSQL](concepts-read-replicas-promote.md).
 - [Create a read replica](how-to-create-read-replica.md).
 - [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

@@ -11,8 +11,6 @@ ms.topic: concept-article
 
 # Extension migration using the migration service
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 PostgreSQL extensions enhance the database functionality by adding new features such as advanced indexing, time-series management, spatial data processing, and foreign data wrappers. Extensions provide more capabilities beyond these, such as performance optimization, data transformation, and integration with external systems. Extensions can include new data types, functions, operators, index types, and more. They extend the capabilities of PostgreSQL without modifying the core database system.
 
 The Migration service for Azure Database for PostgreSQL supports the migration of all extensions that are available in Azure Database for PostgreSQL flexible Server. To ensure a successful migration using the migration service, it's recommended to verify the extensions used in your source PostgreSQL instance. Extensions provide essential functionality that may be required for your application, and verifying them before migration helps in ensuring a smooth transition.

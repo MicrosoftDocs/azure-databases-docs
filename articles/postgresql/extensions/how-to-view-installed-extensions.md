@@ -13,7 +13,6 @@ ms.topic: how-to
 
 # View installed extensions
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 You might want to view the extensions that are installed in an Azure Database for PostgreSQL flexible server instance, and their corresponding versions.
 

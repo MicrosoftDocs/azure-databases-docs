@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand the available Semantic Operators in the azure_ai extension for Azure Database for PostgreSQL flexible server, explore their use cases, and learn how to use them effectively.
+# customer intent: As a user, I want to understand the available Semantic Operators in the azure_ai extension for Azure Database for PostgreSQL , explore their use cases, and learn how to use them effectively.
 ---
 
 # Semantic operators in the Azure AI extension (Preview)

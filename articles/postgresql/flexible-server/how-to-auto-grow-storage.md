@@ -10,12 +10,10 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
   - sfi-image-nochange
-# customer intent: As a user, I want to learn how to configure storage autogrow in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to configure storage autogrow in an Azure Database for PostgreSQL.
 ---
 
 # Configure storage autogrow
-
-[!INCLUDE [applies-to-postgresql-Flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article describes how you can configure Azure Database for PostgreSQL server storage to grow without affecting the workload.
 
@@ -136,7 +134,7 @@ az postgres flexible-server create \
 
 ## Limitations and considerations
 
-- Autogrow activates when available space is less than 10% of total provisioned storage or 64 GiB, whichever is smaller.
+- Autogrow activates when available space is less than 10% of total provisioned storage or 64 GiB, whichever is greater.
 
 - The autogrow feature only supports scaling up. It doesn't reduce storage size automatically.
 

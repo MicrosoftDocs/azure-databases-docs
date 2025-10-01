@@ -9,9 +9,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Optimize query statistics collection on Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Optimize query statistics collection on Azure Database for PostgreSQL 
 
 This article describes how to optimize query statistics collection on an Azure Database for PostgreSQL flexible server using pg_stat_statements extension
 

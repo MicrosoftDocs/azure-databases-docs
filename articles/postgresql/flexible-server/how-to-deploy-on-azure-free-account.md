@@ -13,9 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Use an Azure free account to try Azure Database for PostgreSQL flexible server for free
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Use an Azure free account to try Azure Database for PostgreSQL  for free
 
 Azure Database for PostgreSQL flexible server is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud. With an Azure free account, you can use Azure Database for PostgreSQL flexible server for **free for 12 months** with **monthly limits** of up to:
 - **750 hours** of **Burstable B1MS** instance, enough hours to run a database instance continuously each month.
@@ -29,7 +27,8 @@ To complete this tutorial, you need:
 
 - An Azure free account. If you don't have one, [create a free account](https://azure.microsoft.com/free/) before you begin.
 
-## Create an Azure Database for PostgreSQL flexible server instance
+## Create a flexible server instance
+
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) with your Azure free account.
 

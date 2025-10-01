@@ -13,7 +13,6 @@ ms.topic: how-to
 
 # Load libraries
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 `shared_preload_libraries` is a server configuration parameter that determines which libraries have to be loaded when an Azure Database for PostgreSQL flexible server instance starts. Any libraries that use shared memory must be loaded via this parameter. If your extension needs to be added to the shared preload libraries, follow these steps:
 

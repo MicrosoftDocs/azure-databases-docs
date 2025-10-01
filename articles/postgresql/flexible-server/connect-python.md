@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Connect Using Python"
-description: This quickstart provides several Python code samples you can use to connect and query data from Azure Database for PostgreSQL flexible server.
+description: This quickstart provides several Python code samples you can use to connect and query data from an Azure Database for PostgreSQL flexible server instance.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -19,29 +19,27 @@ ms.devlang: python
 
 # Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 In this quickstart, you connect to an Azure Database for PostgreSQL flexible server instance by using Python. You then use SQL statements to query, insert, update, and delete data in the database from macOS, Ubuntu Linux, and Windows platforms.
 
 The steps in this article include two authentication methods: Microsoft Entra authentication and PostgreSQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the PostgreSQL authentication.
 
-Microsoft Entra authentication is a mechanism for connecting to Azure Database for PostgreSQL using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management. To learn more, see [Microsoft Entra authentication with Azure Database for PostgreSQL flexible server](concepts-azure-ad-authentication.md).
+Microsoft Entra authentication is a mechanism for connecting to Azure Database for PostgreSQL using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management. To learn more, see [Microsoft Entra authentication with Azure Database for PostgreSQL](concepts-azure-ad-authentication.md).
 
 PostgreSQL authentication uses accounts stored in PostgreSQL. If you choose to use passwords as credentials for the accounts, these credentials are stored in the `user` table. Because these passwords are stored in PostgreSQL, you need to manage the rotation of the passwords by yourself.
 
-This article assumes that you're familiar with developing using Python, but you're new to working with Azure Database for PostgreSQL flexible server.
+This article assumes that you're familiar with developing using Python, but you're new to working with Azure Database for PostgreSQL.
 
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- An Azure Database for PostgreSQL flexible server instance. To create Azure Database for PostgreSQL flexible server instance, refer to [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
+- An Azure Database for PostgreSQL flexible server instance. To create Azure Database for PostgreSQL flexible server instance, refer to [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
 - [Python](https://www.python.org/downloads/) 3.8+.
 - Latest [pip](https://pip.pypa.io/en/stable/installing/) package installer.
 
 ## Add firewall rules for your client workstation
 
-- If you created your Azure Database for PostgreSQL flexible server instance with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your Azure Database for PostgreSQL flexible server instance. Refer to [Create and manage Azure Database for PostgreSQL flexible server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
-- If you created your Azure Database for PostgreSQL flexible server instance with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Create and manage Azure Database for PostgreSQL flexible server firewall rules using the Azure CLI](how-to-manage-firewall-cli.md).
+- If you created your Azure Database for PostgreSQL flexible server instance with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your Azure Database for PostgreSQL flexible server instance. Refer to [Networking](how-to-manage-virtual-network-cli.md).
+- If you created your Azure Database for PostgreSQL flexible server instance with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Networking](how-to-manage-firewall-cli.md).
 
 ## Configure Microsoft Entra integration on the server (passwordless only)
 
@@ -68,7 +66,7 @@ source .venv/bin/activate
 ```
 
 > [!NOTE]
-> Ensure the virtual environment is activated before you run any `python -m pip install ...` commands; using `python -m pip` (not a bare `pip`) ensures packages install into the same interpreter/venv you use to run the examples.
+> Ensure the virtual environment is activated before you run any `python -m pip instalL...` commands; using `python -m pip` (not a bare `pip`) ensures packages install into the same interpreter/venv you use to run the examples.
 
 ---
 
@@ -154,7 +152,7 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
 1. Get database connection information.
 
-    1. In the [Azure portal](https://portal.azure.com/), search for and select your Azure Database for PostgreSQL flexible server name.
+    1. In the [Azure portal](https://portal.azure.com/), search for and select your Azure Database for PostgreSQL flexible server instance name.
     1. On the server's **Overview** page, copy the fully qualified **Server name**. The fully qualified **Server name** is always of the form *\<my-server-name>.postgres.database.azure.com*.
     1. On the left menu, under **Security**, select **Authentication**. Make sure your account is listed under **Microsoft Entra Admins**. If it isn't, complete the steps in [Configure Microsoft Entra integration on the server (passwordless only)](#configure-microsoft-entra-integration-on-the-server-passwordless-only).
 
@@ -397,9 +395,9 @@ conn.close()
 
 ## Related content
 
-- [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL flexible server](connect-java.md)
-- [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL flexible server](connect-csharp.md)
-- [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL flexible server](connect-go.md)
-- [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL flexible server](connect-php.md)
-- [Quickstart: Use Azure CLI to connect and query data from an Azure Database for PostgreSQL flexible server](connect-azure-cli.md)
-- [Quickstart: Import data from Azure Database for PostgreSQL flexible server in Power BI](connect-with-power-bi-desktop.md)
+- [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL](connect-java.md)
+- [Quickstart: Use .NET (C#) to connect and query data in Azure Database for PostgreSQL](connect-csharp.md)
+- [Quickstart: Use Go language to connect and query data in Azure Database for PostgreSQL](connect-go.md)
+- [Quickstart: Use PHP to connect and query data in Azure Database for PostgreSQL](connect-php.md)
+- [Quickstart: Connect and query with Azure CLI with Azure Database for PostgreSQL](connect-azure-cli.md)
+- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](connect-with-power-bi-desktop.md)

@@ -1,5 +1,5 @@
 ---
-title: Reference of functions provided by the Azure Storage extension in Azure Database for PostgreSQL flexible server
+title: Function Reference for Azure Storage Extension
 description: Learn everything about the functions provided by the Azure Storage extension in Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
@@ -13,9 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Reference of functions provided by the Azure Storage extension in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Reference of functions provided by the Azure Storage extension in Azure Database for PostgreSQL 
 
 Following is the list of functions provided by the Azure Storage extension:
 

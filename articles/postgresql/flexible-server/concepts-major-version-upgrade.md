@@ -1,5 +1,5 @@
 ---
-title: Major version upgrades in Azure Database for PostgreSQL flexible server
+title: Major Version Upgrades
 description: Learn how to use Azure Database for PostgreSQL flexible server to do in-place major version upgrades of PostgreSQL on a server.
 author: varun-dhawan
 ms.author: varundhawan
@@ -10,15 +10,13 @@ ms.subservice: flexible-server
 ms.topic: upgrade-and-migration-article
 ---
 
-# Major version upgrades in Azure Database for PostgreSQL flexible server
+# Major version upgrades in Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-Flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-Azure Database for PostgreSQL flexible server supports PostgreSQL versions [!INCLUDE [supported-versions](includes/major-versions-ascending.md)]. The Postgres community releases a new major version that contains new features about once a year. Additionally, each major version receives periodic bug fixes in the form of minor releases. Minor version upgrades include changes that are backward compatible with existing applications. Azure Database for PostgreSQL flexible server periodically updates the minor versions during a customer's maintenance window.
+Your Azure Database for PostgreSQL flexible server instance supports PostgreSQL versions [!INCLUDE [supported-versions](includes/major-versions-ascending.md)]. The Postgres community releases a new major version that contains new features about once a year. Additionally, each major version receives periodic bug fixes in the form of minor releases. Minor version upgrades include changes that are backward compatible with existing applications. An Azure Database for PostgreSQL flexible server instance periodically updates the minor versions during a customer's maintenance window.
 
 Major version upgrades are more complicated than minor version upgrades. They can include internal changes and new features that might not be backward compatible with existing applications.
 
-Azure Database for PostgreSQL flexible server has a feature that performs an in-place major version upgrade of the server with just a click. This feature simplifies the upgrade process by minimizing the disruption to users and applications that access the server.
+Your Azure Database for PostgreSQL flexible server instance has a feature that performs an in-place major version upgrade of the server with just a click. This feature simplifies the upgrade process by minimizing the disruption to users and applications that access the server.
 
 In-place upgrades retain the server name and other settings of the current server after the upgrade of a major version. They don't require data migration or changes to the application connection strings. In-place upgrades are faster and involve shorter downtime than data migration.
 
@@ -27,18 +25,18 @@ In-place upgrades retain the server name and other settings of the current serve
 Here are some of the important considerations with in-place major version upgrades:
 
 - Before starting the upgrade, ensure that your server has at least 10–20% free storage available. During the upgrade process, temporary log files and metadata operations may increase disk usage. Insufficient free space can result in upgrade failures or rollback issues.
-- During the process of an in-place major version upgrade, Azure Database for PostgreSQL flexible server runs a precheck procedure to identify any potential issues that might cause the upgrade to fail.
+- During the process of an in-place major version upgrade, your Azure Database for PostgreSQL flexible server instance runs a precheck procedure to identify any potential issues that might cause the upgrade to fail.
     - If the precheck finds any incompatibilities, it creates a log event that shows that the upgrade precheck failed, along with an error message.
-    - If the precheck is successful, Azure Database for PostgreSQL flexible server stops the service and takes an implicit backup just before starting the upgrade. The service can use this backup to restore the database instance to its previous version if there's an upgrade error.
-- Azure Database for PostgreSQL flexible server uses the [pg_upgrade](https://www.postgresql.org/docs/current/pgupgrade.html) tool to perform in-place major version upgrades. The service provides the flexibility to skip versions and upgrade directly to later versions.
+    - If the precheck is successful, the Azure Database for PostgreSQL flexible server instance stops the service and takes an implicit backup just before starting the upgrade. The service can use this backup to restore the database instance to its previous version if there's an upgrade error.
+- An Azure Database for PostgreSQL flexible server instance uses the [pg_upgrade](https://www.postgresql.org/docs/current/pgupgrade.html) tool to perform in-place major version upgrades. The service provides the flexibility to skip versions and upgrade directly to later versions.
 - During an in-place major version upgrade of a server which is enabled for high availability (HA), the service disables HA, performs the upgrade on the primary server, and then re-enables HA after the upgrade is complete.
 - Most extensions are automatically upgraded to later versions during an in-place major version upgrade, with [some exceptions](#upgrade-considerations-and-limitations).
-- The process of an in-place major version upgrade for Azure Database for PostgreSQL flexible server automatically deploys the latest supported minor version.
+- The process of an in-place major version upgrade for an Azure Database for PostgreSQL flexible server instance automatically deploys the latest supported minor version.
 - An in-place major version upgrade is an offline operation, meaning the server will be unavailable during the process. While most upgrades complete in under 15 minutes, the actual duration depends on the size and complexity of the database. Specifically, the time required is directly proportional to the number of objects (tables, indexes, schemas) in your PostgreSQL instance. Larger or more complex schemas may experience longer upgrade times.
 - Long-running transactions or high workload before the upgrade might increase the time taken to shut down the database and increase upgrade time.
 - After an in-place major version upgrade is successful, there are no automated ways to revert to the earlier version. However, you can perform a point-in-time recovery (PITR) to a time before the upgrade to restore the previous version of the database instance.
-- Azure Database for PostgreSQL flexible server takes snapshot of your database during an upgrade. The snapshot is taken before the upgrade starts. If the upgrade fails, the system automatically restores your database to its state from the snapshot.
-- [PostgreSQL 16 introduces role-based security](concepts-security.md#postgresql-16-changes-with-role-based-security) measures. After a major version upgrade on Azure Database for PostgreSQL flexible server, the first user created on the server—who is granted the ADMIN option—will now have administrative privileges over other roles for essential maintenance operations.
+- Your Azure Database for PostgreSQL flexible server instance takes a snapshot of your database during an upgrade. The snapshot is taken before the upgrade starts. If the upgrade fails, the system automatically restores your database to its state from the snapshot.
+- [PostgreSQL 16 introduces role-based security](concepts-security.md#postgresql-16-changes-with-role-based-security) measures. After a major version upgrade on an Azure Database for PostgreSQL flexible server instance, the first user created on the server—who is granted the ADMIN option—will now have administrative privileges over other roles for essential maintenance operations.
 
 ## Upgrade Considerations and Limitations
 
@@ -48,7 +46,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 
 - [Read replicas](./concepts-read-replicas-geo.md) are not supported during in-place upgrades. You must delete the read replica (including any cascading read replica) before upgrading the primary server. After the upgrade, you can re-create the replica.
 - Network traffic rules may block upgrade operations. 
-    - Ensure your flexible server can send/receive traffic on ports 5432 and 6432 within its virtual network and to Azure Storage (for log archiving).
+    - Ensure your flexible server instance can send/receive traffic on ports 5432 and 6432 within its virtual network and to Azure Storage (for log archiving).
     - If Network Security Groups (NSGs) restrict this traffic, HA will not re-enable automatically post-upgrade. You may need to manually update NSG rules and re-enable HA.
 - Logical replication slots are not supported during in-place major version upgrades.
 - Servers using SSDv2 storage are not eligible for major version upgrades.
@@ -112,6 +110,6 @@ To avoid authentication issues, carefully review and update all connection strin
 
 ## Related content
 
-- [Major version upgrade of Azure Database for PostgreSQL flexible server](how-to-perform-major-version-upgrade.md?tabs=portal).
-- [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).
+- [Major version upgrade](how-to-perform-major-version-upgrade.md?tabs=portal).
+- [High availability in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).
+- [Backup and restore in Azure Database for PostgreSQL](concepts-backup-restore.md).
