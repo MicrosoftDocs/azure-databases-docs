@@ -19,6 +19,9 @@ By default, Azure Cosmos DB spreads provisioned throughput evenly across all phy
 
 For example, if you partition data by `StoreId` in a retail application, some stores could have higher activity than others. If you notice frequent rate limiting (429 errors) for those busy stores, redistributing throughput allows you to allocate more resources to the hot partitions, improving performance without increasing overall throughput.
 
+> [!NOTE]
+> Currently, by default, throughput offer policies are set to "Equal". After redistributing throughput using this feature, the policy will now be set to "Custom" which only lets you change your throughput offer via this API. Changing throughput via Azure Portal will be blocked, but customers can change the policy back to "Equal" (see below) to avoid this. 
+
 ## Prerequisites
 
 - An existing Azure Cosmos DB account
@@ -382,6 +385,9 @@ Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput @collectionParams
 ## Check throughput after redistribution
 
 After you finish redistributing throughput, check the **PhysicalPartitionThroughput** metric in Azure Monitor. Split by the **PhysicalPartitionId** dimension to see how many RU/s each physical partition has. If needed, reset the RU/s per physical partition to evenly distribute throughput across all physical partitions.
+
+> [!IMPORTANT]
+> After throughput has been redistributed, offers can only be changed with the same redistribute command. To evenly distribute throughput across all partitions, use the command below.
 
 ::: zone pivot="azure-cli"
 
