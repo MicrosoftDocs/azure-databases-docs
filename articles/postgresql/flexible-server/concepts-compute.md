@@ -1,6 +1,6 @@
 ---
 title: Compute options
-description: This article describes the compute options in Azure Database for PostgreSQL flexible server.
+description: This article describes the compute options in an Azure Database for PostgreSQL flexible server instance.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
@@ -33,7 +33,7 @@ To choose a pricing tier, use the following table as a starting point:
 | General Purpose | D-series VMs provide a solid balance between CPU capabilities and memory size with scalable I/O throughput which makes them suitable for most production workloads. Examples include servers for hosting web and mobile apps and other enterprise applications. |
 | Memory Optimized | E- Series VMs that are suitable for high-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
 
-After you create a server for the compute tier, you can change the number of vCores (up or down) and the storage size (up) in seconds. You also can independently adjust the backup retention period up or down. For more information, see the [Scaling resources in Azure Database for PostgreSQL flexible server](concepts-scaling-resources.md) page.
+After you create a server for the compute tier, you can change the number of vCores (up or down) and the storage size (up) in seconds. You also can independently adjust the backup retention period up or down. For more information, see the [Scaling resources in Azure Database for PostgreSQL](concepts-scaling-resources.md) page.
 
 ## Compute tiers, vCores, and server types
 
@@ -92,5 +92,5 @@ The detailed specifications of the available server types are as follows:
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md)
-- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md)
+- [Manage Azure Database for PostgreSQL](how-to-manage-server-portal.md)
+- [Limits in Azure Database for PostgreSQL](concepts-limits.md)

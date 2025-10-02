@@ -1,6 +1,6 @@
 ---
 title: Upload Data in Bulk
-description: This article discusses best practices for uploading data in bulk in Azure Database for PostgreSQL flexible server.
+description: This article discusses best practices for uploading data in bulk to an Azure Database for PostgreSQL flexible server instance.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
@@ -13,7 +13,7 @@ ai.usage: ai-assisted
 
 # Best practices to bulk upload data to Azure Database for PostgreSQL 
 
-This article discusses various methods for loading data in bulk in Azure Database for PostgreSQL flexible server, along with best practices for both initial data loads in empty databases and incremental data loads.
+This article discusses various methods for loading data in bulk to an Azure Database for PostgreSQL flexible server instance, along with best practices for both initial data loads in empty databases and incremental data loads.
 
 ## Loading methods
 
@@ -28,7 +28,7 @@ The preferred method for loading data into a database is the `COPY` command. If 
 
 ## Steps to upload bulk data
 
-Here are steps to bulk upload data to Azure Database for PostgreSQL flexible server.
+Here are steps to bulk upload data to an Azure Database for PostgreSQL flexible server instance.
 
 ### Step 1: Prepare your data
 
@@ -236,8 +236,8 @@ SELECT round (pg_wal_lsn_diff('LSN value when running the second time','LSN valu
 
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
-- [Troubleshoot high memory utilization in Azure Database for PostgreSQL flexible server](how-to-high-memory-utilization.md).
-- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL flexible server](concepts-server-parameters.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
+- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

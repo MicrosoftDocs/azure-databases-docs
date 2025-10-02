@@ -21,7 +21,7 @@ The `azure_ai` extension adds the ability to use [large language models (LLMs)](
 
 Generative AI is a form of artificial intelligence in which LLMs are trained to generate original content based on natural language input. By using the `azure_ai` extension, you can use generative AI's capabilities for processing natural language queries directly from the database.
 
-This article showcases adding rich AI capabilities to an Azure Database for PostgreSQL flexible server by using the `azure_ai` extension. It shows how you can integrate both [Azure OpenAI](/azure/ai-services/openai/overview) and the [Azure AI Language service](/azure/ai-services/language-service/) into your database by using the extension.
+This article showcases adding rich AI capabilities to an Azure Database for PostgreSQL flexible server instance by using the `azure_ai` extension. It shows how you can integrate both [Azure OpenAI](/azure/ai-services/openai/overview) and the [Azure AI Language service](/azure/ai-services/language-service/) into your database by using the extension.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ This article showcases adding rich AI capabilities to an Azure Database for Post
 
 - An [Azure AI Language](/azure/ai-services/language-service/overview) resource. If you don't have a Language resource, you can [create one](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal by following the instructions provided in the [quickstart for summarization](/azure/ai-services/language-service/summarization/custom/quickstart#create-a-new-resource-from-the-azure-portal). You can use the free pricing tier (`Free F0`) to try the service and upgrade later to a paid tier for production.
 
-- An Azure Database for PostgreSQL flexible server in your Azure subscription. If you don't have this resource, see [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
+- An Azure Database for PostgreSQL flexible server instance in your Azure subscription. If you don't have this resource, see [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
 
 ## Connect to the database by using psql in Azure Cloud Shell
 
@@ -41,7 +41,7 @@ Open [Azure Cloud Shell](https://shell.azure.com/) in a web browser. Select **Ba
 
 To retrieve the database connection details:
 
-1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server.
+1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server instance.
 
 1. On the left menu, under **Settings**, select **Connect**. Copy the **Connection details** block.
 

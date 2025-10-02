@@ -329,7 +329,7 @@ SELECT * FROM pg_replication_slots;
 
 - **Logical replication** limitations apply as documented [here](https://www.postgresql.org/docs/current/logical-replication-restrictions.html).
 
-- **Slots and HA failover** - When using [high-availability (HA)](/azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json) enabled servers with Azure Database for PostgreSQL flexible server, be aware that logical replication slots aren't preserved during failover events. To maintain logical replication slots and ensure data consistency after a failover, it's recommended to use the PG Failover Slots extension. For more information on enabling this extension, please refer to the [documentation](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
+- **Slots and HA failover** - When using [high-availability (HA)](/azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json) enabled servers with Azure Database for PostgreSQL, be aware that logical replication slots aren't preserved during failover events. To maintain logical replication slots and ensure data consistency after a failover, it's recommended to use the PG Failover Slots extension. For more information on enabling this extension, please refer to the [documentation](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
 
 
 > [!IMPORTANT]  
