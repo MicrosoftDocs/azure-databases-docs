@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions for A
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 09/29/2025
+ms.date: 10/02/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -166,7 +166,7 @@ A: According to the [PostgreSQL community versioning policy](https://www.postgre
 
 ## PostgreSQL 12 support
 
-PostgreSQL 12 reaches end of life on **March 1, 2026**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, the community supports each major version until retirement. Unlike PostgreSQL 11, which has extended support until November 9, 2025, Azure doesn't provide extended support for PostgreSQL 12 beyond March 1, 2026. Upgrade to newer versions to ensure continued support and access to new features.
+Azure is extending support for PostgreSQL 11 on Azure Database for PostgreSQL flexible server instances. This extended support timeline gives you more time to upgrade to higher PostgreSQL versions. It facilitates a smooth transition for users currently relying on PostgreSQL 11.
 
 ## PostgreSQL 11 support
 
