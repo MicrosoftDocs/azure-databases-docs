@@ -4,7 +4,7 @@ description: This article describes how to query, interpret, and apply the recom
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/26/2025
+ms.date: 09/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -14,6 +14,7 @@ ms.custom:
 ms.topic: how-to
 # customer intent: As a user, I want to learn about how to query, interpret and apply index recommendations produced by index tuning feature in an Azure Database for PostgreSQL.
 ---
+
 # Use index recommendations
 
 Index tuning persists the recommendations that it produces in a set of tables located under the `intelligentperformance` schema in the `azure_sys` database.
@@ -26,6 +27,8 @@ Hence, if you need to read the text of the queries, you need to be granted permi
 
 > [!NOTE]
 > Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, index tuning must be enabled.
+
+[!INCLUDE [index-tuning](includes/index-tuning.md)]
 
 ## Steps to list index recommendations
 

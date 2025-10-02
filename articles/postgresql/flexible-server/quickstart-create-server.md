@@ -13,7 +13,7 @@ ms.custom:
   - mode-ui
 ---
 
-# Quickstart: Create an Azure Database for PostgreSQL 
+# Quickstart: Create an Azure Database for PostgreSQL
 
 Azure Database for PostgreSQL flexible server is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud.
 

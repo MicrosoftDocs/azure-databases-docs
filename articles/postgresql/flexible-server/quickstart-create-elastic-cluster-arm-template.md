@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Use an ARM template to create an elastic cluster with Azure Database for PostgreSQL  instance (preview)
+# Quickstart: Use an ARM template to create an elastic cluster with Azure Database for PostgreSQL (preview)
 
 Azure Database for PostgreSQL flexible server with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. You can use an Azure Resource Manager template (ARM template) to create an elastic clusters instance.
 

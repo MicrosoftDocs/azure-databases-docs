@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions for A
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 08/22/2025
+ms.date: 09/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -21,6 +21,7 @@ Azure Database for PostgreSQL flexible server supports the following database ve
 
 | Version | Supported | Policy information |
 | --- | --- | --- |
+| PostgreSQL 18 (preview) | Yes | N/A |
 | PostgreSQL 17 | Yes | N/A |
 | PostgreSQL 16 | Yes | N/A |
 | PostgreSQL 15 | Yes | N/A |
@@ -48,6 +49,7 @@ The following table provides the retirement details for PostgreSQL major version
 
 | PostgreSQL Version | What's New | Azure Support Start Date | Azure Retirement Date |
 | --- | --- | --- | --- |
+| [PostgreSQL 18 (preview)*](https://www.postgresql.org/about/press/) | [Release notes](https://www.postgresql.org/docs/18/release-18.html) | 25-Sep-2025 (Preview) | TBD |
 | [PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/) | [Release notes](https://www.postgresql.org/docs/17/release-17.html) | 30-Sep-2024 | 8-Nov-2029 |
 | [PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/) | [Release notes](https://www.postgresql.org/docs/16/release-16.html) | 15-Oct-2023 | 9-Nov-2028 |
 | [PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/) | [Release notes](https://www.postgresql.org/docs/15/release-15.html) | 15-May-2023 | 11-Nov-2027 |
@@ -58,6 +60,8 @@ The following table provides the retirement details for PostgreSQL major version
 | [PostgreSQL 10 (retired)](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [Release notes](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 4-Jun-2018 | 10-Nov-2022 |
 | [PostgreSQL 9.6 (retired)](https://www.postgresql.org/about/news/postgresql-96-released-1703/) | [Release notes](https://wiki.postgresql.org/wiki/NewIn96) | 18-Apr-2018 | 11-Nov-2021 |
 | [PostgreSQL 9.5 (retired)](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/) | [Release notes](https://www.postgresql.org/docs/9.5/release-9-5.html) | 18-Apr-2018 | 11-Feb-2021 |
+
+PostgreSQL 18 is currently available in **Preview** on Azure Database for PostgreSQL, with initial availability in the East Asia region.
 
 ## Minor version support
 
