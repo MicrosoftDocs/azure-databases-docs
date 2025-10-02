@@ -20,6 +20,8 @@ Your Azure Database for PostgreSQL flexible server instance has a feature that p
 
 In-place upgrades retain the server name and other settings of the current server after the upgrade of a major version. They don't require data migration or changes to the application connection strings. In-place upgrades are faster and involve shorter downtime than data migration.
 
+[!INCLUDE [supported-upgrades](includes/supported-upgrades.md)]
+
 ## Upgrade Process
 
 Here are some of the important considerations with in-place major version upgrades:
