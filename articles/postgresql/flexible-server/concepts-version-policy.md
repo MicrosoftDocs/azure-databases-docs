@@ -166,7 +166,7 @@ A: According to the [PostgreSQL community versioning policy](https://www.postgre
 
 ## PostgreSQL 12 support
 
-Azure is extending support for PostgreSQL 11 on Azure Database for PostgreSQL flexible server instances. This extended support timeline gives you more time to upgrade to higher PostgreSQL versions. It facilitates a smooth transition for users currently relying on PostgreSQL 11.
+Azure is extending support for PostgreSQL 12 on Azure Database for PostgreSQL flexible server instances. This extended support timeline gives you more time to upgrade to higher PostgreSQL versions. It facilitates a smooth transition for users currently relying on PostgreSQL 12.
 
 ## PostgreSQL 11 support
 
