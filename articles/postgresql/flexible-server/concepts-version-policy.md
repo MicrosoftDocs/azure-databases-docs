@@ -36,6 +36,8 @@ Azure Database for PostgreSQL flexible server supports the following database ve
 
 A major version is a change in the first number of the version. For example, PostgreSQL 10 to PostgreSQL 11 is a major version upgrade. Major versions introduce new features and capabilities. They might include changes that require application code updates.
 
+[!INCLUDE [supported-upgrades](includes/supported-upgrades.md)]
+
 ### Support
 
 Azure Database for PostgreSQL supports each major PostgreSQL version from the date Azure begins offering support until the version reaches end of life (end of support) as defined by the PostgreSQL community. For details, see [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
@@ -160,7 +162,7 @@ A: According to the [PostgreSQL community versioning policy](https://www.postgre
 
 ## PostgreSQL 12 support
 
-PostgreSQL 12 reaches end of life on **November 14, 2024**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, the community supports each major version until retirement. Unlike PostgreSQL 11, which has extended support until November 9, 2025, Azure doesn't provide extended support for PostgreSQL 12 beyond March 1, 2026. Upgrade to newer versions to ensure continued support and access to new features.
+PostgreSQL 12 reaches end of life on **March 1, 2026**, in line with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, the community supports each major version until retirement. Unlike PostgreSQL 11, which has extended support until November 9, 2025, Azure doesn't provide extended support for PostgreSQL 12 beyond March 1, 2026. Upgrade to newer versions to ensure continued support and access to new features.
 
 ## PostgreSQL 11 support
 
