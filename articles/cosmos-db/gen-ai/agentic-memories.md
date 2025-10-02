@@ -34,7 +34,7 @@ Long-term memory is more persistent and accumulates knowledge or patterns over m
 ## Design patterns
 In the next section, we divide the discussion into three parts. First, we guide you through partition key selection, helping you pick a key that balances write and query throughput across partitions. Then, we explore data modeling patterns and various trade-offs. Finally, we cover basic query patterns that can be applied for different retrieval scenarios. 
 
-## Choosing a partition key
+## Choose a partition key
 As Azure Cosmos DB automatically partitions your data, choosing a partition key is one of the most important design choices for your data model. The partition key determines how data is distributed in logical partitions and across physical partitions, which directly affects query and insert performance, scalability, and cost. Each partition key value maps to a distinct logical partition. A good partition strategy balances locality (keeping related items together for efficient queries) with distribution. In this guide, we highlight three common approaches. You should read about [partitioning in Azure Cosmos DB for more detail.](../partitioning-overview.md)
 
 Below are some common patterns and trade-offs when using Cosmos DB (or Cosmos-style NoSQL + vector features) to store agent memory.
@@ -56,7 +56,7 @@ Use a two-level hierarchical partition key where the leading level is the tenant
 - Example: ["/tenantId", "/threadId"] takes on values like tenantId = "contoso", threadId = "thread-1234"
 
 
-### Choosing a vector indexing type
+### Choose a vector indexing type
 When you enable vector search in Azure Cosmos DB, you must choose not only whether to shard but also which index type to use. Cosmos supports multiple vector-index algorithms, including `quantizedFlat` and `DiskANN`. The `quantizedFlat` index type is suited for smaller workloads or when you expect the number of vectors to remain modest (for example, tens of thousands of vectors total). It compresses (quantizes) each vector and performs an exact search over the compressed space, trading a slight accuracy loss for lower RU cost and faster scans. 
 
 However, once your vector data scales up (for example, hundreds of thousands to billions of embeddings), `DiskANN` is the better choice. DiskANN implements approximate nearest-neighbor indexing and is optimized for high throughput, low latency, and cost efficiency at scale. It supports dynamic updates and achieves excellent recall across large datasets.
@@ -80,7 +80,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
     
 **Properties in a data item**
 | Property | Type | Required | Description | Example |
-| --------------- | ----------------- | -------: | ----------- | ----------- |
+| --------------- | ----------------- | ------- | ----------- | ----------- |
 | `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key)| `"thread-1234#0007"` |
 | `threadId` | string | ✅ | Thread / conversation identifier (commonly the partition key). | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic counter of the *exchange* (0-based or 1-based). | `7` |
@@ -92,7 +92,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 
 **Properties in the `messages` object**
  | Property | Type | Required | Description | Example |
-| ----------- | ----------------- | :-------: | --------- | --------- |
+| ----------- | ----------------- | ------- | --------- | --------- |
 | `role` | string | ✅ | Origin of the message. Typical: `"user"`, `"agent"`, `"tool"`. | `"agent"` |
 | `entityId` | string | ✅ | Name or ID of the user, agent, tool, etc. that this message is associated with. | `"agent-assistant-01"` |
 | `name` | string | ✅  | Tool/function name or agent persona label. | `"kb.search"` |
@@ -149,7 +149,7 @@ In this design, every agent or user interaction (that is “turn”) is stored a
 
 **Properties in the data item**
 | Property  | Type  | Required | Description   | Example  |
-| ----------- | ----------------- | :-------: | -----------  | -------- |
+| ----------- | ----------------- | ------- | -----------  | -------- |
 | `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"`  |
 | `threadId` | string | ✅ | Identifier for the conversation/thread. Often chosen as the **partition key** so all turns for a thread are colocated and efficiently queried. In multitenant apps, consider hierarchical PKs like `/tenantId`, `/threadId`. | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic turn counter (0,1,2…). Use with `threadId` to sort/fetch latest N turns. | `3` |
@@ -195,7 +195,7 @@ Here, all the turns of a conversation (user, agent, tools, etc.) for a given thr
 
 
 | Property  | Type | Required | Description | Example |
-| ------------------ | ---------------- | :-------: | ------------ | -------------- |
+| ------------------ | ---------------- | ------- | ------------ | -------------- |
 | `id` | string  | ✅ | Partition key. See above for guidance on [choosing a partition key](#choosing-a-partition-key)| `"thread-1234"`  |
 | `threadId` | string  | ✅ | Logical thread or thread identifier (often used as partition key). | `"thread-1234"`  |
 | `turns` | array of objects | ✅ | A list of individual turn records (user or agent). Each turn contains a small structure (for example, index, role, content, embedding, entityId). | `[ { "turnIndex": 0, "role": "user", "entityId": "user-12345", "content": "Hello" }, { "turnIndex": 1, "role": "agent", "entityId": "agent-assistant-01", "content": "Hi there!" } ]` |
@@ -244,7 +244,7 @@ An example of a memory data item would look like:
 > [!IMPORTANT]
 > This model is typically not recommended unless the thread size has few turns, infrequent updates, and retrieval patterns are simple (for example, retrieve the entire document all at once). Azure Cosmos DB doesn't support sorting on nested objects/arrays, so sorting of last N messages would need to be implemented in application code. 
 
-### Querying for retrieval
+### Query for retrieval
 
 #### Most recent memories
 When you want to reconstruct a conversation context or show recent user/agent interactions, this query pattern is the simplest. It retrieves the last K messages in timestamp order, which is useful for feeding into chat context or displaying a conversation history. Use this when freshness and chronological order matter.
