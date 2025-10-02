@@ -35,7 +35,7 @@ az account set --subscription <subscription id>
 ```
 
 > [!Important]
-> If you haven't created Azure Database for PostgreSQL flexible server instance yet, you need to do so to follow this how-to guide.
+> If you haven't created an Azure Database for PostgreSQL flexible server instance yet, you need to do so to follow this how-to guide.
 
 ## Scale compute and storage
 
@@ -137,5 +137,5 @@ az postgres flexible-server delete --resource-group myresourcegroup --name mydem
 ```
 
 ## Related content
-- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).
-- [Monitor metrics in Azure Database for PostgreSQL flexible server](concepts-monitoring.md).
+- [Backup and restore in Azure Database for PostgreSQL](concepts-backup-restore.md).
+- [Monitor metrics in Azure Database for PostgreSQL](concepts-monitoring.md).

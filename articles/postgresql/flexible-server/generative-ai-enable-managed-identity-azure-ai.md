@@ -13,7 +13,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for Azure Database for PostgreSQL.
+# customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for my Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Enable Managed Identity for Azure AI services with the azure_ai extension preview

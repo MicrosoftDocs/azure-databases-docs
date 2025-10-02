@@ -1,6 +1,6 @@
 ---
 title: Identify Slow Running Query
-description: Troubleshooting guide for identifying slow running queries in Azure Database for PostgreSQL flexible server.
+description: Troubleshooting guide for identifying slow running queries in Azure Database for PostgreSQL flexible server instances.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
@@ -81,7 +81,7 @@ GROUP BY c_w_id, c_id
 ORDER BY c_w_id;
 ```
 
-1. To understand what exact explain plan was generated, use Azure Database for PostgreSQL flexible server logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**.
+1. To understand what exact explain plan was generated, use Azure Database for PostgreSQL logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**.
 
    :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-tab.png" alt-text="Screenshot of troubleshooting guides menu - Logs." lightbox="./media/how-to-identify-slow-queries/log-analytics-tab.png":::
 
@@ -163,7 +163,7 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
     call autoexplain_test ();
 ```
 
-1. To understand what exact explain plan was generated, use Azure Database for PostgreSQL flexible server logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**. Then, in **Time range:**, select the time window where you want to focus the analysis.
+1. To understand what exact explain plan was generated, use Azure Database for PostgreSQL logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**. Then, in **Time range:**, select the time window where you want to focus the analysis.
 
 :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot of troubleshooting guides menu - Logs Time range." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
 
@@ -212,8 +212,8 @@ Finalize Aggregate (cost=180185.84..180185.85 rows=1 width=4) (actual time=10387
 
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md)
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md)
-- [Troubleshoot high memory utilization in Azure Database for PostgreSQL flexible server](how-to-high-memory-utilization.md)
-- [Server parameters in Azure Database for PostgreSQL flexible server](concepts-server-parameters.md)
-- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md)
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
+- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).
