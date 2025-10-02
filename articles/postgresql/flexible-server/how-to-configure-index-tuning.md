@@ -4,7 +4,7 @@ description: This article describes how to configure the index tuning feature in
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/26/2025
+ms.date: 09/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -14,6 +14,7 @@ ms.custom:
 ms.topic: how-to
 # customer intent: As a user, I want to learn about how to enable, disable and configure the index tuning feature in an Azure Database for PostgreSQL.
 ---
+
 # Configure index tuning
 
 Index tuning can be enabled, disabled, and configured through a [set of parameters](concepts-index-tuning.md#configuring-index-tuning) that control its behavior, such as how often a tuning session can run.
@@ -23,6 +24,8 @@ Index tuning depends on [query store](concepts-query-store.md). We don't recomme
 Index tuning is an opt-in feature that isn't enabled by default on a server. It can be enabled or disabled globally for all databases on a given server and can't be turned on or off per database.
 
 ### Steps to enable index tuning
+
+[!INCLUDE [index-tuning](includes/index-tuning.md)]
 
 ### [Portal](#tab/portal-enable)
 
