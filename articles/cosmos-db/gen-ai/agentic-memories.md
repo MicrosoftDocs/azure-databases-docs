@@ -163,13 +163,13 @@ In this design, every agent or user interaction (that is “turn”) is stored a
 An example of this memory data item would look like: 
 ```json
 {
-  "id": "b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91",  // unique guid for the document
-  "threadId": "thread-1234", // unique id for the thread
+  "id": "b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91",
+  "threadId": "thread-1234", 
   "turnIndex": 3, 
   "entityId": "agent-assistant-01",
   "role": "agent",
   "content": "This is one response from an LLM",
-  "embedding": [-1.12402894028, ... ],         // optional vector
+  "embedding": [-1.12402894028, ... ],        
   "timestamp": "2025-09-24T10:15:00Z",
   "metrics": { "inputTokens": 12, "outputTokens": 8, "latencyMs": 177 },
 
@@ -225,8 +225,8 @@ An example of a memory data item would look like:
     },
   ],
   "LastUpdatedtimestamp": "2025-09-24T10:15:00Z",
-  "summary": "...", // optional summary of the turns in this thread
-  "embedding": [ … ],      // optional embedding of the summary / compressed memory
+  "summary": "...", 
+  "embedding": [ … ]
 }
 ```
 
