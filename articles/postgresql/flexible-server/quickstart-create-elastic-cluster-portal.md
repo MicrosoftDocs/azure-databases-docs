@@ -11,7 +11,7 @@ ms.topic: quickstart
 #Customer intent: As a system administrator, I want to deploy an elastic cluster using the portal.
 ---
 
-# Quickstart: Create an instance of elastic cluster in Azure Database for PostgreSQL  (preview)
+# Quickstart: Create an instance of elastic cluster in Azure Database for PostgreSQL (preview)
 
 Azure Database for PostgreSQL flexible server with elastic cluster is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. This Quickstart covers how to create an elastic cluster instance using the Azure portal.
 
