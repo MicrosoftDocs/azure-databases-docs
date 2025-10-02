@@ -16,7 +16,7 @@ This article lists libraries and drivers that developers can use to develop appl
 
 ## Client interfaces
 
-Most language client libraries used to connect to Azure Database for PostgreSQL flexible server are external projects and are distributed independently. The  libraries listed are supported on the Windows, Linux, and Mac platforms, for connecting to Azure Database for PostgreSQL flexible server. Several quickstart examples are listed in the Next steps section.
+Most language client libraries used to connect to Azure Database for PostgreSQL are external projects and are distributed independently. The  libraries listed are supported on the Windows, Linux, and Mac platforms, for connecting to an Azure Database for PostgreSQL flexible server instance. Several quickstart examples are listed in the Next steps section.
 
 | **Language** | **Client interface** | **Additional information** | **Download** |
 | --- | --- | --- | --- |
