@@ -47,7 +47,17 @@ SELECT * FROM c WHERE c.Location = 'Seattle`
 
 Each physical partition has its own index. Therefore, when you run a cross-partition query on a container, you're effectively running one query *per* physical partition. Azure Cosmos DB automatically aggregates results across different physical partitions.
 
-The indexes in different physical partitions are independent from one another. There's no global index in Azure Cosmos DB.
+The indexes in different physical partitions are independent from one another. There's no default global index in Azure Cosmos DB.
+
+### Optimize cross-partition queries with global secondary indexes
+
+[Global secondary indexes (preview)](global-secondary-indexes.md) provide an alternative approach to avoid cross-partition queries without changing your container's partition key. A global secondary index creates a separate, automatically synchronized container with a different partition key optimized for specific query patterns.
+
+For example, if your container is partitioned by `DeviceId` but you frequently query by `Location`, you could create a global secondary index partitioned by `Location`. The query that was previously a cross-partition query can now be executed as an in-partition query against the global secondary index:
+
+```sql
+SELECT * FROM c WHERE c.Location = 'Seattle'
+```
 
 ## Parallel cross-partition query
 
@@ -98,7 +108,10 @@ You should try to avoid cross-partition queries if your workload meets the follo
 - You plan to have over 30,000 RUs provisioned
 - You plan to store over 100 GB of data
 
+Consider using [global secondary indexes (preview)](global-secondary-indexes.md) to avoid cross-partition queries. Global secondary indexes allow you to create additional containers with different partition keys, automatically synchronized with your source container. This approach can eliminate cross-partition queries for specific query patterns without requiring changes to your existing application logic or partition key.
+
 ## Next steps
 
 - [Partitioning and horizontal scaling in Azure Cosmos DB](../partitioning-overview.md)
 - [Create a synthetic partition key](synthetic-partition-keys.md)
+- [Global secondary indexes in Azure Cosmos DB](global-secondary-indexes.md)
