@@ -1,6 +1,6 @@
 ---
 title: Firewall Rules
-description: This article describes how to use firewall rules to connect to Azure Database for PostgreSQL flexible server with the public networking deployment option.
+description: This article describes how to use firewall rules to connect to an Azure Database for PostgreSQL flexible server instance with the public networking deployment option.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -15,29 +15,29 @@ ms.custom:
 
 # Firewall rules in Azure Database for PostgreSQL 
 
-When you're running Azure Database for PostgreSQL flexible server, you have two main networking options. The options are private access (virtual network integration) and public access (allowed IP addresses).
+When you're running an Azure Database for PostgreSQL flexible server instance, you have two main networking options. The options are private access (virtual network integration) and public access (allowed IP addresses).
 
-With public access, the Azure Database for PostgreSQL flexible server instance is accessed through a public endpoint. By default, the firewall blocks all access to the server. To specify which IP hosts can access the server, you create server-level *firewall rules*. Firewall rules specify allowed public IP address ranges. The firewall grants access to the server based on the originating IP address of each request. With [private access](concepts-networking-private.md#private-access-virtual-network-integration) no public endpoint is available and only hosts located on the same network can access Azure Database for PostgreSQL flexible server.
+With public access, the Azure Database for PostgreSQL flexible server instance is accessed through a public endpoint. By default, the firewall blocks all access to the server. To specify which IP hosts can access the server, you create server-level *firewall rules*. Firewall rules specify allowed public IP address ranges. The firewall grants access to the server based on the originating IP address of each request. With [private access](concepts-networking-private.md#private-access-virtual-network-integration) no public endpoint is available and only hosts located on the same network can access your Azure Database for PostgreSQL flexible server instance.
 
 You can create firewall rules by using the Azure portal or by using Azure CLI commands. You must be the subscription owner or a subscription contributor.
 
 Server-level firewall rules apply to all databases on the same Azure Database for PostgreSQL flexible server instance. The rules don't affect access to the Azure portal website.
 
-The following diagram shows how connection attempts from the internet and Azure must pass through the firewall before they can reach Azure Database for PostgreSQL flexible server databases:
+The following diagram shows how connection attempts from the internet and Azure must pass through the firewall before they can reach Azure Database for PostgreSQL databases:
 
-:::image type="content" source="media/security-firewall-rules/firewall-diagram.png" alt-text="Diagram of firewall rules in Azure Database for PostgreSQL flexible server.":::
+:::image type="content" source="media/security-firewall-rules/firewall-diagram.png" alt-text="Diagram of firewall rules in Azure Database for PostgreSQL.":::
 
 ## Connect from the internet
 
 If the source IP address of the request is within one of the ranges specified in the server-level firewall rules, the connection is granted. Otherwise, it's rejected.
 
-For example, if your application connects with a Java Database Connectivity (JDBC) driver for Azure Database for PostgreSQL flexible server, you might encounter this error because the firewall is blocking the connection:
+For example, if your application connects with a Java Database Connectivity (JDBC) driver for Azure Database for PostgreSQL, you might encounter this error because the firewall is blocking the connection:
 
 - java.util.concurrent.ExecutionException: java.lang.RuntimeException:
 - org.postgresql.util.PSQLException: FATAL: no pg\_hba.conf entry for host "123.45.67.890", user "adminuser", database "postgresql", SSL
 
 > [!NOTE]  
-> To access Azure Database for PostgreSQL flexible server from your local computer, ensure that the firewall on your network and local computer allows outgoing communication on TCP port 5432.
+> To access the Azure Database for PostgreSQL flexible server instance from your local computer, ensure that the firewall on your network and local computer allows outgoing communication on TCP port 5432.
 
 ## Connect from Azure
 
@@ -82,4 +82,4 @@ For example, the following error might appear if authentication fails for a JDBC
 
 ## Related content
 
-- [Create and manage firewall rules for Azure Database for PostgreSQL flexible server](how-to-manage-firewall-portal.md)
+- [Create and manage firewall rules for Azure Database for PostgreSQL](how-to-manage-firewall-portal.md)
