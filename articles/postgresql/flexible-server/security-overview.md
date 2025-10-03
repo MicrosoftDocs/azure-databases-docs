@@ -1,6 +1,6 @@
 ---
 title: Secure Your PostgreSQL Database Server
-description: Learn how to secure Azure Database for PostgreSQL flexible server, with best practices for security and compliance.
+description: Learn how to secure an Azure Database for PostgreSQL flexible server instance, with best practices for security and compliance.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -118,10 +118,10 @@ Here are some possible security services, features, and best practices for the l
 
 - **Enable collection of diagnostic logs**: Ensure that diagnostic logging is enabled by selecting category Group "audit." Use Azure Policy to implement:
 
-- Policy [Enable logging by category group for PostgreSQL flexible server (microsoft.dbforpostgresql/flexibleservers) to Log Analytics](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetail.ReactView/id/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcdd1dbc6-0004-4fcd-afd7-b67550de37ff/version/1.0.0/scopes~/%5B%22%2Fsubscriptions%2F5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30%22%5D/contextRender~/false)
+- Policy [Enable logging by category group for PostgreSQL (microsoft.dbforpostgresql/flexibleservers) to Log Analytics](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetail.ReactView/id/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcdd1dbc6-0004-4fcd-afd7-b67550de37ff/version/1.0.0/scopes~/%5B%22%2Fsubscriptions%2F5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30%22%5D/contextRender~/false)
 
 - Initiative [Enable audit category group resource logging for supported resources to Log Analytics](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/InitiativeDetail.ReactView/id/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Ff5b29bc4-feca-4cc6-a58a-772dd5e290a5/version/1.1.0/scopes~/%5B%22%2Fsubscriptions%2F5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30%22%5D)
-- **Utilize Microsoft Defender for Open-Source Relational Databases**: Use Microsoft Defender for Open-Source Relational Databases to enhance the security posture of your PostgreSQL flexible server. This service provides advanced threat protection, vulnerability assessments, and security recommendations tailored for open-source databases. For more information, visit [Overview of Microsoft Defender for Open-Source Relational Databases](/azure/defender-for-cloud/defender-for-databases-introduction) for more details.
+- **Utilize Microsoft Defender for Open-Source Relational Databases**: Use Microsoft Defender for Open-Source Relational Databases to enhance the security posture of your PostgreSQL flexible server instance. This service provides advanced threat protection, vulnerability assessments, and security recommendations tailored for open-source databases. For more information, visit [Overview of Microsoft Defender for Open-Source Relational Databases](/azure/defender-for-cloud/defender-for-databases-introduction) for more details.
 
 - **Enable audit logging**: Configure audit logging for your PostgreSQL to track and log database activities by using the [pgaudit extension](https://www.pgaudit.org/). For more information, visit [Audit logging in Azure Database for PostgreSQL](concepts-audit.md) for more details.
 
@@ -131,9 +131,9 @@ The backup and recovery section focuses on ensuring that data and configurations
 
 Here are some possible security services, features, and best practices for the backup and recovery detection section:
 
-- **Utilize high availability**: Implement high availability (HA) configurations for your PostgreSQL flexible server to minimize downtime and ensure continuous access to your database. For more information, visit [High availability (Reliability) in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server) and [Configure high availability](how-to-configure-high-availability.md).
+- **Utilize high availability**: Implement high availability (HA) configurations for your PostgreSQL flexible server instance to minimize downtime and ensure continuous access to your database. For more information, visit [High availability (Reliability) in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server) and [Configure high availability](how-to-configure-high-availability.md).
 
-- **Configure automated backups**: Azure Database for PostgreSQL flexible server automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backup and restore in Azure Database for PostgreSQL](concepts-backup-restore.md).
+- **Configure automated backups**: Azure Database for PostgreSQL automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backup and restore in Azure Database for PostgreSQL](concepts-backup-restore.md).
 
 - **Configure read replicas**: Use the read replicas to offload read operations from the primary server, improving performance and availability. You can also use read replicas for disaster recovery scenarios, allowing you to quickly switch to a replica with a primary server failure. For more information, visit [Read replicas in Azure Database for PostgreSQL](concepts-read-replicas.md).
 
