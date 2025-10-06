@@ -19,6 +19,9 @@ ms.custom:
 
 [!INCLUDE[Preview](includes/notice-preview.md)]
 
+> [!NOTE]
+> Do you have any feedback about Azure Cosmos DB Fleets? We want to hear it! Feel free to share feedback directly with the Azure Cosmos DB engineering team: [azurecosmosdbfleetfeedback@microsoft.com](mailto:azurecosmosdbfleetfeedback@microsoft.com).
+
 Fleet Analytics is a centralized analytics solution designed to help organizations monitor and manage Azure Cosmos DB usage and costs at scale. This feature enables teams to gain deep insights across all Azure Cosmos DB accounts and subscriptions within their fleet. These fleet-level insights include; resource utilization, provisioning patterns, and cost trends. Data is consolidated into a single hub and delivered as **open-source Apache Delta Lake tables** in both **Azure Data Lake Storage Gen2 (ADLS Gen2)** and **Microsoft Fabric OneLake** at an hourly grain. This unified structure makes it easier to create customized views and enables ad-hoc querying for deeper trend and cost analysis.
 
 :::image source="media/fleet-analytics/components.png" alt-text="Diagram of all the components of an Azure Cosmos DB fleet including storage and Azure services.":::

@@ -16,6 +16,9 @@ ms.custom:
 
 # Fleet analytics schema reference (preview)
 
+> [!NOTE]
+> Do you have any feedback about Azure Cosmos DB Fleets? We want to hear it! Feel free to share feedback directly with the Azure Cosmos DB engineering team: [azurecosmosdbfleetfeedback@microsoft.com](mailto:azurecosmosdbfleetfeedback@microsoft.com).
+
 These tables document the entire schema of the data exposed by Azure Cosmos DB fleet analytics.
 
 ## Dimension tables

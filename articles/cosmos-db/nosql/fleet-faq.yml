@@ -14,6 +14,10 @@ metadata:
     - ✅ NoSQL
   ms.custom: build-2025
 title: Frequently asked questions about Azure Cosmos DB fleets
+
+> [!NOTE]
+> Do you have any feedback about Azure Cosmos DB Fleets? We want to hear it! Feel free to share feedback directly with the Azure Cosmos DB engineering team: [azurecosmosdbfleetfeedback@microsoft.com](mailto:azurecosmosdbfleetfeedback@microsoft.com).
+
 sections:
   - name: General
     questions:

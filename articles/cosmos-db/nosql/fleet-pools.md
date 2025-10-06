@@ -20,6 +20,10 @@ ms.custom:
 
 [!INCLUDE[Preview](includes/notice-preview.md)]
 
+> [!NOTE]
+> Do you have any feedback about Azure Cosmos DB Fleets? We want to hear it! Feel free to share feedback directly with the Azure Cosmos DB engineering team: [azurecosmosdbfleetfeedback@microsoft.com](mailto:azurecosmosdbfleetfeedback@microsoft.com).
+
+
 When using Azure Cosmos DB fleets, you can simplify your throughput management with **pools**. Pools allow you to create a shared pool of throughput request units per second (RU/s) at the fleetspace level that multiple resources can use RU/s from as needed. Because pools are a fleet feature, resources across different subscriptions and resource groups within the same fleetspace can share RU/s from a common pool. 
 
 Pools are designed for **customers building multi-tenant applications** where isolation requirements often dictate that each tenant's data is stored in a separate database account, database, or container. Instead of overprovisioning throughput to accommodate peak throughput needs, pools let you create each tenant based on their typical workload. When tenants require more capacity due to spikes, they can draw from the shared pool. This approach helps you right-size individual tenant resources while maintaining performance and cost efficiency across your fleet. 

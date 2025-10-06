@@ -19,6 +19,10 @@ ms.custom:
 
 [!INCLUDE[Preview](includes/notice-preview.md)]
 
+> [!NOTE]
+> Do you have any feedback about Azure Cosmos DB Fleets? We want to hear it! Feel free to share feedback directly with the Azure Cosmos DB engineering team: [azurecosmosdbfleetfeedback@microsoft.com](mailto:azurecosmosdbfleetfeedback@microsoft.com).
+
+
 Building multitenant applications often requires trade-offs between cost, performance, and security isolation. Customers who need strong performance and security isolation in B2B applications often isolate each tenant with a dedicated database account. However, as the application grows and more tenants onboard, capacity management and observability for these resources at scale becomes difficult.
 
 **Azure Cosmos DB fleets** is a new way to organize and manage multitenant workloads at scale. With fleets, you can model each of your B2B tenants as its own database account, ensuring strong performance and security isolation. At the same time, you can simplify management by sharing throughput (RU/s) and monitoring usage at the fleet level using two new capabilities: pools and fleet analytics.
