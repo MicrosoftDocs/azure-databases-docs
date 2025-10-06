@@ -92,8 +92,9 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 | `embedding` | number[] | optional | Vector for this specific turn (You can create embedding of user question for a [semantic cache](semantic-cache.md)). | `[0.11, 0.02, …]` |
 
 **Properties in the `messages` object**
+
  | Property | Type | Required | Description | Example |
-| ----------- | ----------------- | ------- | --------- | --------- |
+| --------------- | ----------------- | ------- | ----------- | ----------- |
 | `role` | string | ✅ | Origin of the message. Typical: `"user"`, `"agent"`, `"tool"`. | `"agent"` |
 | `entityId` | string | ✅ | Name or ID of the user, agent, tool, etc. that this message is associated with. | `"agent-assistant-01"` |
 | `name` | string | ✅  | Tool/function name or agent persona label. | `"kb.search"` |
