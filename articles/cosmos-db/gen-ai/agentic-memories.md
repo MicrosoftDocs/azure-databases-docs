@@ -196,6 +196,7 @@ Here, all the turns of a conversation (user, agent, tools, etc.) for a given thr
 - Chatbots in customer onboarding or troubleshooting flows, where each thread is short (< 50 turns) and agents need to fetch the entire conversation quickly in one read.
 - Conversation summarization services, where you run periodic batch jobs over full sessions to generate embeddings or summaries.
 
+**Properties in the data item**
 
 | Property  | Type | Required | Description | Example |
 | ------------------ | ---------------- | ------- | ------------ | -------------- |
