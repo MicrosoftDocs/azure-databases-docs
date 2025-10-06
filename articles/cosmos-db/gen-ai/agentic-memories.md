@@ -81,7 +81,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 
 | Property | Type | Required | Description | Example |
 | --------------- | ----------------- | ------- | ----------- | ----------- |
-| `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choose-a-partition-key)| `"thread-1234#0007"` |
+| `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choose-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"` or `tenant-001`  |
 | `threadId` | string | ✅ | Thread / conversation identifier (commonly the partition key). | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic counter of the *exchange* (0-based or 1-based). | `7` |
 | `messages` | object | ✅ | Messages that make up this exchange (for example, user prompt, agent reply, optional tool call/response). | See table below |
@@ -103,7 +103,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 
 ```json
 {
-  "id": "thread-1234#0007",
+  "id": "tenant-001",
   "threadId": "thread-1234",
   "turnIndex": 7,
   "entityId": "agent-assistant-01",
@@ -152,7 +152,7 @@ In this design, every agent or user interaction (that is “turn”) is stored a
 
 | Property | Type | Required | Description | Example |
 | --------------- | ----------------- | ------- | ----------- | ----------- |
-| `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choose-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"`  |
+| `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choose-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"` or `tenant-001`  |
 | `threadId` | string | ✅ | Identifier for the conversation/thread. Often chosen as the **partition key** so all turns for a thread are colocated and efficiently queried. In multitenant apps, consider hierarchical PKs like `/tenantId`, `/threadId`. | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic turn counter (0,1,2…). Use with `threadId` to sort/fetch latest N turns. | `3` |
 | `entityId` | string | ✅ | Name or ID of the user, agent, tool, etc. that this response is associated with. | `"user-12345"` |
@@ -165,7 +165,7 @@ In this design, every agent or user interaction (that is “turn”) is stored a
 An example of this memory data item would look like: 
 ```json
 {
-  "id": "b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91",
+  "id": "tenant-001",
   "threadId": "thread-1234", 
   "turnIndex": 3, 
   "entityId": "agent-assistant-01",
@@ -199,7 +199,7 @@ Here, all the turns of a conversation (user, agent, tools, etc.) for a given thr
 
 | Property  | Type | Required | Description | Example |
 | ------------------ | ---------------- | ------- | ------------ | -------------- |
-| `id` | string  | ✅ | Partition key. See above for guidance on [choosing a partition key](#choose-a-partition-key)| `"thread-1234"`  |
+| `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choose-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"` or `tenant-001`  |
 | `threadId` | string  | ✅ | Logical thread or thread identifier (often used as partition key). | `"thread-1234"`  |
 | `turns` | array of objects | ✅ | A list of individual turn records (user or agent). Each turn contains a small structure (for example, index, role, content, embedding, entityId). | `[ { "turnIndex": 0, "role": "user", "entityId": "user-12345", "content": "Hello" }, { "turnIndex": 1, "role": "agent", "entityId": "agent-assistant-01", "content": "Hi there!" } ]` |
 | `embedding` | number[] | optional | Embedding vector computed over a summary or aggregation of the thread. Useful for semantic search over key points of the conversation.  | `[0.101, -0.231, 0.553, …]` |
@@ -209,7 +209,7 @@ Here, all the turns of a conversation (user, agent, tools, etc.) for a given thr
 An example of a memory data item would look like: 
 ```json
 {
-  "id": "thread-1234",
+  "id": "tenant-001",
   "threadId": "thread-1234",
   "messages": [
     {
@@ -279,6 +279,13 @@ WHERE c.threadId = @threadId
 ORDER BY c.timestamp DESC
 ```
 
+In the examples above, the WHERE clause is scoped to a specific thread using its sessionId (or id). If instead you partition your data by tenantId, you can search across all threads for that tenant by querying on the tenant key. For example:
+
+```sql
+WHERE c.tenantId = "tenant-001"
+```
+
+This lets you fetch memory items across all conversations for a given tenant, rather than limiting to a single thread.
 
 ## Next steps
 - [Learn about vector indexing and search](vector-search-overview.md)
