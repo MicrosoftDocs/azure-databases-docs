@@ -56,7 +56,7 @@ Complete the following steps to configure the app with your own values and run s
 
 Update the `appsettings.json` with your own values:
 
-// code block
+    :::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/appsettings.json" :::
 
 ### Authenticate to Azure
 
@@ -184,12 +184,34 @@ Vector search results for query: 'quintessential lodging near running trails, ea
 
 ## Explore the search service
 
+The `VectorSearchService` orchestrates an end‑to‑end vector similarity search using IVF, HNSW, and DiskANN search techniques and Azure OpenAI embeddings.
 
+    :::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/vectorsearchservice.cs" :::
+
+In the preceding code, the `VectorSearchService` handles the following tasks:
+
+- Determines the collection and index names based on the requested algorithm
+- Creates or gets the Mongo collection and loads JSON data if empty
+- Builds the algorithm-specific index options (IVF / HNSW / DiskANN) and ensures the vector index
+- Generate an embedding for the configured query via Azure OpenAI
+- Constructs and runs the aggregation search pipeline
+- Deserializes and prints the results
 
 ## Explore the MongoDb for Cosmos DB database service
 
+The `MongoDbService` manages interactions with Cosmos DB for MongoDB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
 
+    :::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/MongoDbService.cs" :::
 
+In the preceding code, the `MongoDbService` handles the following tasks:
+
+- Reads configuration and builds a passwordless client with Azure credentials.
+- Gives callers a database or collection on demand
+- Creates a vector search index only if it doesn't already exist
+- Lists all non‑system databases, their collections, and each collection's indexes
+- Loads sample data only when a collection is empty
+- Converts raw embedding arrays to float arrays before insertion
+- Bulk inserts documents and then adds a few simple supporting indexes
 
 ## View and manage data in Visual Studio Code
 
