@@ -4,7 +4,7 @@ description: Learn how to manage access permissions for Azure Database for Postg
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 19/09/2025
+ms.date: 09/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
