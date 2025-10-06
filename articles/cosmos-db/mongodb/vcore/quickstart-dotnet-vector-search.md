@@ -112,31 +112,31 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
 
 1. Type `5` and press enter.
 
-After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
-
-The app logging and output show:
-- Collection creation and data insertion status
-- Vector index creation confirmation
-- Search results with hotel names, locations, and similarity scores
-
-Example output (shortened for brevity):
-
-```output
-MongoDB client initialized with passwordless authentication
-Starting DiskANN vector search workflow
-Collection is empty, loading data from file
-Successfully loaded 50 documents into collection
-Creating vector index 'vectorIndex_diskann'
-Vector index 'vectorIndex_diskann' is ready for DiskANN search
-Executing DiskANN vector search for top 5 results
-
-Search Results (5 found using DiskANN):
-1. Roach Motel (Similarity: 0.8399)
-2. Royal Cottage Resort (Similarity: 0.8385)
-3. Economy Universe Motel (Similarity: 0.8360)
-4. Foot Happy Suites (Similarity: 0.8354)
-5. Country Comfort Inn (Similarity: 0.8346)
-```
+    After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
+    
+    The app logging and output show:
+    - Collection creation and data insertion status
+    - Vector index creation confirmation
+    - Search results with hotel names, locations, and similarity scores
+    
+    Example output (shortened for brevity):
+    
+    ```output
+    MongoDB client initialized with passwordless authentication
+    Starting DiskANN vector search workflow
+    Collection is empty, loading data from file
+    Successfully loaded 50 documents into collection
+    Creating vector index 'vectorIndex_diskann'
+    Vector index 'vectorIndex_diskann' is ready for DiskANN search
+    Executing DiskANN vector search for top 5 results
+    
+    Search Results (5 found using DiskANN):
+    1. Roach Motel (Similarity: 0.8399)
+    2. Royal Cottage Resort (Similarity: 0.8385)
+    3. Economy Universe Motel (Similarity: 0.8360)
+    4. Foot Happy Suites (Similarity: 0.8354)
+    5. Country Comfort Inn (Similarity: 0.8346)
+    ```
 
 #### [IVF](#tab/tab-ivf)
 
@@ -161,31 +161,31 @@ Search Results (5 found using DiskANN):
 
 1. Type `3` and press enter.
 
-After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
-
-The app logging and output show:
-- Collection creation and data insertion status
-- Vector index creation confirmation
-- Search results with hotel names, locations, and similarity scores
-
-Example output (shortened for brevity):
-
-```output
-MongoDB client initialized with passwordless authentication
-Starting IVF vector search workflow
-Collection is empty, loading data from file
-Successfully loaded 50 documents into collection
-Creating vector index 'vectorIndex_ivf'
-Vector index 'vectorIndex_ivf' is ready for IVF search
-Executing IVF vector search for top 5 results
-
-Search Results (5 found using IVF):
-1. Roach Motel (Similarity: 0.8399)
-2. Royal Cottage Resort (Similarity: 0.8385)
-3. Economy Universe Motel (Similarity: 0.8360)
-4. Foot Happy Suites (Similarity: 0.8354)
-5. Country Comfort Inn (Similarity: 0.8346)
-```
+    After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
+    
+    The app logging and output show:
+    - Collection creation and data insertion status
+    - Vector index creation confirmation
+    - Search results with hotel names, locations, and similarity scores
+    
+    Example output (shortened for brevity):
+    
+    ```output
+    MongoDB client initialized with passwordless authentication
+    Starting IVF vector search workflow
+    Collection is empty, loading data from file
+    Successfully loaded 50 documents into collection
+    Creating vector index 'vectorIndex_ivf'
+    Vector index 'vectorIndex_ivf' is ready for IVF search
+    Executing IVF vector search for top 5 results
+    
+    Search Results (5 found using IVF):
+    1. Roach Motel (Similarity: 0.8399)
+    2. Royal Cottage Resort (Similarity: 0.8385)
+    3. Economy Universe Motel (Similarity: 0.8360)
+    4. Foot Happy Suites (Similarity: 0.8354)
+    5. Country Comfort Inn (Similarity: 0.8346)
+    ```
 
 #### [HNSW](#tab/tab-hnsw)
 
@@ -210,31 +210,31 @@ Search Results (5 found using IVF):
 
 1. Type `4` and press enter.
 
-After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
-
-The app logging and output show:
-- Collection creation and data insertion status
-- Vector index creation confirmation
-- Search results with hotel names, locations, and similarity scores
-
-Example output (shortened for brevity):
-
-```output
-MongoDB client initialized with passwordless authentication
-Starting HNSW vector search workflow
-Collection is empty, loading data from file
-Successfully loaded 50 documents into collection
-Creating vector index 'vectorIndex_hnsw'
-Vector index 'vectorIndex_hnsw' is ready for HNSW search
-Executing HNSW vector search for top 5 results
-
-Search Results (5 found using HNSW):
-1. Roach Motel (Similarity: 0.8399)
-2. Royal Cottage Resort (Similarity: 0.8385)
-3. Economy Universe Motel (Similarity: 0.8360)
-4. Foot Happy Suites (Similarity: 0.8354)
-5. Country Comfort Inn (Similarity: 0.8346)
-```
+    After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
+    
+    The app logging and output show:
+    - Collection creation and data insertion status
+    - Vector index creation confirmation
+    - Search results with hotel names, locations, and similarity scores
+    
+    Example output (shortened for brevity):
+    
+    ```output
+    MongoDB client initialized with passwordless authentication
+    Starting HNSW vector search workflow
+    Collection is empty, loading data from file
+    Successfully loaded 50 documents into collection
+    Creating vector index 'vectorIndex_hnsw'
+    Vector index 'vectorIndex_hnsw' is ready for HNSW search
+    Executing HNSW vector search for top 5 results
+    
+    Search Results (5 found using HNSW):
+    1. Roach Motel (Similarity: 0.8399)
+    2. Royal Cottage Resort (Similarity: 0.8385)
+    3. Economy Universe Motel (Similarity: 0.8360)
+    4. Foot Happy Suites (Similarity: 0.8354)
+    5. Country Comfort Inn (Similarity: 0.8346)
+    ```
 
 ----
 
