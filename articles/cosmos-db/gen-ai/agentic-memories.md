@@ -55,7 +55,7 @@ Use a two-level hierarchical partition key where the leading level is the tenant
 - Example: A partition key `["/tenantId", "/threadId"]` takes on values like `tenantId = "contoso"`, `threadId = "thread-1234"`
 
 
-### Choose a vector indexing type
+### Choose a vector index
 When you enable vector search in Azure Cosmos DB, you must choose not only whether to shard but also which index type to use. Cosmos supports multiple vector-index algorithms, including `quantizedFlat` and `DiskANN`. The `quantizedFlat` index type is suited for smaller workloads or when you expect the number of vectors to remain modest (for example, tens of thousands of vectors total). It compresses (quantizes) each vector and performs an exact search over the compressed space, trading a slight accuracy loss for lower RU cost and faster scans. 
 
 However, once your vector data scales up (for example, hundreds of thousands to billions of embeddings), `DiskANN` is the better choice. DiskANN implements approximate nearest-neighbor indexing and is optimized for high throughput, low latency, and cost efficiency at scale. It supports dynamic updates and achieves excellent recall across large datasets.
