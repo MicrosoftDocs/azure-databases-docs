@@ -122,13 +122,13 @@ The app logging and output show:
 Example output (shortened for brevity):
 
 ```output
- MongoDB client initialized with passwordless authentication
- Starting DiskANN vector search workflow
- Collection is empty, loading data from file
- Successfully loaded 50 documents into collection
- Creating vector index 'vectorIndex_diskann'
- Vector index 'vectorIndex_diskann' is ready for DiskANN search
- Executing DiskANN vector search for top 5 results
+MongoDB client initialized with passwordless authentication
+Starting DiskANN vector search workflow
+Collection is empty, loading data from file
+Successfully loaded 50 documents into collection
+Creating vector index 'vectorIndex_diskann'
+Vector index 'vectorIndex_diskann' is ready for DiskANN search
+Executing DiskANN vector search for top 5 results
 
 Search Results (5 found using DiskANN):
 1. Roach Motel (Similarity: 0.8399)
