@@ -29,7 +29,9 @@ ms.collection:
 - Provide an SMB network share, Azure storage account file share, or Azure storage account blob container that contains your full database backup files and subsequent transaction log backup files. Database Migration Service uses the backup location during database migration.
 
   > [!IMPORTANT]  
-  >  
+  >
+  > - Always use a dedicated  Storage Account for migration. Sharing it with other workloads can lead to conflicts and security risks.
+  > - Once migration is done, either rotate the Storage Account Key to keep backups secure, or Delete the Storage Account if it’s no longer needed.
   > - The Azure SQL Migration extension for Azure Data Studio doesn't take database backups, or neither initiate any database backups on your behalf. Instead, the service uses existing database backup files for the migration.
   > - If your database backup files are in an SMB network share, [create an Azure storage account](/azure/storage/common/storage-account-create) that Database Migration Service can use to upload database backup files to and to migrate databases. Make sure you create the Azure storage account in the same region where you create your instance of Database Migration Service.
   > - You can write each backup to either a separate backup file or to multiple backup files. Appending multiple backups such as full and transaction logs into a single backup media isn't supported.
