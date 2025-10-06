@@ -263,10 +263,10 @@ ORDER BY c.timestamp DESC
 Semantic queries let you find turns whose embeddings are most similar to a given query vector, even if they don’t share exact words. This pattern surfaces contextually relevant memories (answers, references, hints) beyond recent messages. This is useful when relevancy is important over recency, however you can use a `WHERE` clause to filter to most recent semantically similar results. 
 
 ```sql
-SELECT TOP @k c.content, c.timestamp, VECTOR_DISTANCE(c.embedding, @queryVector) AS dist
+SELECT TOP @k c.content, c.timestamp, VectorDistance(c.embedding, @queryVector) AS dist
 FROM c
     WHERE c.threadId = @threadId
-ORDER BY VECTOR_DISTANCE(c.embedding, @queryVector)
+ORDER BY VectorDistance(c.embedding, @queryVector)
 ```
 
 #### Memories that contain phrases or keywords
