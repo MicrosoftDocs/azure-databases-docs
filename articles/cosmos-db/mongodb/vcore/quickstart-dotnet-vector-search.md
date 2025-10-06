@@ -19,9 +19,9 @@ appliesto:
 
 Use vector search in Azure Cosmos DB for MongoDB (vCore) with the .NET MongoDB driver. Store and query vector data efficiently.
 
-This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) on GitHub. 
+This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) on GitHub.
 
-The app uses a sample hotel dataset in a JSON file with precalculated vectors from the `text-embedding-ada-002` model, thought you can also generate the vectors yourself. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
+The app uses a sample hotel dataset in a JSON file with pre-calculated vectors from the `text-embedding-ada-002` model, though you can also generate the vectors yourself. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ The app uses the following NuGet packages:
 
 ## Configure and run the app
 
-Complete the following steps to configure the app with your own values and run searches against your MongoDb for Cosmos DB service.
+Complete the following steps to configure the app with your own values and run searches against your Azure Cosmos DB for MongoDB (vCore) cluster.
 
 ### Configure the app
 
@@ -60,7 +60,7 @@ Update the `appsettings.json` with your own values:
 
 ### Authenticate to Azure
 
-The sample app uses passwordless authentication via `DefaultAzureCredential` and Microsoft Entra ID. [Sign in to Azure using a supported tool](/dotnet/azure/sdk/authentication/credential-chains?tabs=dac#defaultazurecredential-overview) such as the Azure CLI or Azure PowerShell before you run the application so it can access Azure resources securely using passwordless authentication.
+The sample app uses passwordless authentication via `DefaultAzureCredential` and Microsoft Entra ID. [Sign in to Azure using a supported tool](/dotnet/azure/sdk/authentication/credential-chains?tabs=dac#defaultazurecredential-overview) such as the Azure CLI or Azure PowerShell before you run the application so it can access Azure resources securely. Ensure your signed-in identity has the required data plane roles on both the Azure Cosmos DB for MongoDB (vCore) account and the Azure OpenAI resource.
 
 ### [Azure CLI](#tab/azure-cli)
 
@@ -85,9 +85,9 @@ Connect-AzAccount
 
 ### Build and run the project
 
-The sample app populates vectorized sample data in a Mongo DB database collection. It also lets you run different types of search queries against that data:
+The sample app populates vectorized sample data in a MongoDB collection. It also lets you run different types of search queries against that data:
 
-#### [diskAnn](#tab/diskann)
+#### [DiskANN](#tab/tab-diskann)
 
 1. Use the `dotnet run` command to start the app:
 
@@ -95,7 +95,7 @@ The sample app populates vectorized sample data in a Mongo DB database collectio
     dotnet run
     ```
     
-    The app prints out a menu for you to select database and search options:
+    The app prints a menu for you to select database and search options:
     
     ```output
     === Cosmos DB Vector Samples Menu ===
@@ -118,7 +118,7 @@ The sample app populates vectorized sample data in a Mongo DB database collectio
     dotnet run
     ```
     
-    The app prints out a menu for you to select database and search options:
+    The app prints a menu for you to select database and search options:
     
     ```output
     === Cosmos DB Vector Samples Menu ===
@@ -141,7 +141,7 @@ The sample app populates vectorized sample data in a Mongo DB database collectio
     dotnet run
     ```
     
-    The app prints out a menu for you to select database and search options:
+    The app prints a menu for you to select database and search options:
     
     ```output
     === Cosmos DB Vector Samples Menu ===
@@ -184,34 +184,34 @@ Vector search results for query: 'quintessential lodging near running trails, ea
 
 ## Explore the search service
 
-The `VectorSearchService` orchestrates an end‑to‑end vector similarity search using IVF, HNSW, and DiskANN search techniques and Azure OpenAI embeddings.
+The `VectorSearchService` orchestrates an end‑to‑end vector similarity search using IVF, HNSW, and DiskANN search techniques with Azure OpenAI embeddings.
 
 :::code language="csharp" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/vectorsearchservice.cs" :::
 
-In the preceding code, the `VectorSearchService` handles the following tasks:
+In the preceding code, the `VectorSearchService` performs the following tasks:
 
 - Determines the collection and index names based on the requested algorithm
-- Creates or gets the Mongo collection and loads JSON data if empty
-- Builds the algorithm-specific index options (IVF / HNSW / DiskANN) and ensures the vector index
-- Generate an embedding for the configured query via Azure OpenAI
+- Creates or gets the MongoDB collection and loads JSON data if it's empty
+- Builds the algorithm-specific index options (IVF / HNSW / DiskANN) and ensures the vector index exists
+- Generates an embedding for the configured query via Azure OpenAI
 - Constructs and runs the aggregation search pipeline
 - Deserializes and prints the results
 
-## Explore the MongoDb for Cosmos DB database service
+## Explore the Azure Cosmos DB for MongoDB (vCore) service
 
-The `MongoDbService` manages interactions with Cosmos DB for MongoDB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
+The `MongoDbService` manages interactions with Azure Cosmos DB for MongoDB (vCore) to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
 
 :::code language="csharp" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/MongoDbService.cs" :::
 
-In the preceding code, the `MongoDbService` handles the following tasks:
+In the preceding code, the `MongoDbService` performs the following tasks:
 
-- Reads configuration and builds a passwordless client with Azure credentials.
-- Gives callers a database or collection on demand
+- Reads configuration and builds a passwordless client with Azure credentials
+- Provides database or collection references on demand
 - Creates a vector search index only if it doesn't already exist
-- Lists all non‑system databases, their collections, and each collection's indexes
+- Lists all non-system databases, their collections, and each collection's indexes
 - Loads sample data only when a collection is empty
 - Converts raw embedding arrays to float arrays before insertion
-- Bulk inserts documents and then adds a few simple supporting indexes
+- Performs bulk inserts and then adds supporting indexes
 
 ## View and manage data in Visual Studio Code
 
@@ -223,7 +223,7 @@ In the preceding code, the `MongoDbService` handles the following tasks:
 
 ## Clean up resources
 
-Delete the resource group, MongoDB vCore cluster, and Azure OpenAI resource when you don't need them to avoid extra costs.
+Delete the resource group, Azure Cosmos DB for MongoDB (vCore) cluster, and Azure OpenAI resource when you no longer need them to avoid unnecessary costs.
 
 ## Related content
 
