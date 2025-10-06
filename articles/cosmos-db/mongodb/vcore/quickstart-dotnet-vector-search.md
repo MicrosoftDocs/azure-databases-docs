@@ -46,7 +46,7 @@ The app uses the following NuGet packages:
 - [`Azure.AI.OpenAI`](https://www.nuget.org/packages/Azure.AI.OpenAI): Azure OpenAI client library to communicate with AI models and create vector embeddings
 - [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration): Configuration management for app settings
 - [`MongoDB.Driver`](https://www.nuget.org/packages/MongoDB.Driver): Official MongoDB .NET driver for database connectivity and operations
-- [`System.Text.Json`](https://www.nuget.org/packages/System.Text.Json): High-performance JSON serialization and deserialization
+- [`Newtonsoft.Json`](https://www.nuget.org/packages/Newtonsoft.Json): Popular JSON serialization and deserialization library
 
 ## Configure and run the app
 
@@ -85,7 +85,6 @@ Connect-AzAccount
 
 ---
 
-
 ### Build and run the project
 
 The sample app populates vectorized sample data in a MongoDB collection and lets you run different types of search queries. 
@@ -113,6 +112,32 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
 
 1. Type `5` and press enter.
 
+After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
+
+The app logging and output show:
+- Collection creation and data insertion status
+- Vector index creation confirmation
+- Search results with hotel names, locations, and similarity scores
+
+Example output (shortened for brevity):
+
+```output
+ MongoDB client initialized with passwordless authentication
+ Starting DiskANN vector search workflow
+ Collection is empty, loading data from file
+ Successfully loaded 50 documents into collection
+ Creating vector index 'vectorIndex_diskann'
+ Vector index 'vectorIndex_diskann' is ready for DiskANN search
+ Executing DiskANN vector search for top 5 results
+
+Search Results (5 found using DiskANN):
+1. Roach Motel (Similarity: 0.8399)
+2. Royal Cottage Resort (Similarity: 0.8385)
+3. Economy Universe Motel (Similarity: 0.8360)
+4. Foot Happy Suites (Similarity: 0.8354)
+5. Country Comfort Inn (Similarity: 0.8346)
+```
+
 #### [IVF](#tab/tab-ivf)
 
 1. Use the `dotnet run` command to start the app:
@@ -135,6 +160,32 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     ```
 
 1. Type `3` and press enter.
+
+After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
+
+The app logging and output show:
+- Collection creation and data insertion status
+- Vector index creation confirmation
+- Search results with hotel names, locations, and similarity scores
+
+Example output (shortened for brevity):
+
+```output
+MongoDB client initialized with passwordless authentication
+Starting IVF vector search workflow
+Collection is empty, loading data from file
+Successfully loaded 50 documents into collection
+Creating vector index 'vectorIndex_ivf'
+Vector index 'vectorIndex_ivf' is ready for IVF search
+Executing IVF vector search for top 5 results
+
+Search Results (5 found using IVF):
+1. Roach Motel (Similarity: 0.8399)
+2. Royal Cottage Resort (Similarity: 0.8385)
+3. Economy Universe Motel (Similarity: 0.8360)
+4. Foot Happy Suites (Similarity: 0.8354)
+5. Country Comfort Inn (Similarity: 0.8346)
+```
 
 #### [HNSW](#tab/tab-hnsw)
 
@@ -159,8 +210,6 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
 
 1. Type `4` and press enter.
 
-----
-
 After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
 
 The app logging and output show:
@@ -168,22 +217,26 @@ The app logging and output show:
 - Vector index creation confirmation
 - Search results with hotel names, locations, and similarity scores
 
-Example output:
+Example output (shortened for brevity):
 
 ```output
-Created collection: hotels_hnsw
-Inserted 50 documents into collection
-Created standard indexes on name and location fields
-Created vector index: vectorIndex_hnsw
+MongoDB client initialized with passwordless authentication
+Starting HNSW vector search workflow
+Collection is empty, loading data from file
+Successfully loaded 50 documents into collection
+Creating vector index 'vectorIndex_hnsw'
+Vector index 'vectorIndex_hnsw' is ready for HNSW search
+Executing HNSW vector search for top 5 results
 
-Vector search results for query: 'quintessential lodging near running trails, eateries, retail':
-
-1. Historic Palace Hotel (Downtown) - Similarity Score: 0.8934
-2. Riverside Resort & Spa (Riverfront) - Similarity Score: 0.8621
-3. Mountain View Lodge (Hillside) - Similarity Score: 0.8456
-4. Urban Boutique Hotel (City Center) - Similarity Score: 0.8321
-5. Garden District Inn (Garden District) - Similarity Score: 0.8198
+Search Results (5 found using HNSW):
+1. Roach Motel (Similarity: 0.8399)
+2. Royal Cottage Resort (Similarity: 0.8385)
+3. Economy Universe Motel (Similarity: 0.8360)
+4. Foot Happy Suites (Similarity: 0.8354)
+5. Country Comfort Inn (Similarity: 0.8346)
 ```
+
+----
 
 ## Explore the app code
 
