@@ -186,7 +186,7 @@ Vector search results for query: 'quintessential lodging near running trails, ea
 
 The `VectorSearchService` orchestrates an end‑to‑end vector similarity search using IVF, HNSW, and DiskANN search techniques and Azure OpenAI embeddings.
 
-:::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/vectorsearchservice.cs" :::
+:::code language="csharp" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/vectorsearchservice.cs" :::
 
 In the preceding code, the `VectorSearchService` handles the following tasks:
 
@@ -201,7 +201,7 @@ In the preceding code, the `VectorSearchService` handles the following tasks:
 
 The `MongoDbService` manages interactions with Cosmos DB for MongoDB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
 
-:::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/MongoDbService.cs" :::
+:::code language="csharp" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/MongoDbService.cs" :::
 
 In the preceding code, the `MongoDbService` handles the following tasks:
 
