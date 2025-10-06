@@ -11,9 +11,6 @@ ms.topic: concept-article
 
 # Managing migration with server parameters
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-
 To provide customers with greater control over migration settings, we have introduced configurable migration parameters within the server parameters section. These parameters allow users to tailor their migration experience based on their data requirements, reducing the need for backend interventions and support requests.
 
 For example, customers can use the `azure.migration_skip_role_user` parameter to decide whether user roles should be migrated automatically or handled manually. Similarly, parameters such as `azure.migration_table_split_size allow` users to optimize data transfer efficiency. These options empower customers to manage their migration settings independently, improve flexibility, and reduce operational overhead.

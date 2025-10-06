@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand the available Semantic Operators in the azure_ai extension for Azure Database for PostgreSQL flexible server, explore their use cases, and learn how to use them effectively.
+# customer intent: As a user, I want to understand the available Semantic Operators in the azure_ai extension for Azure Database for PostgreSQL flexible server instances, explore their use cases, and learn how to use them effectively.
 ---
 
 # Semantic operators in the Azure AI extension (Preview)
@@ -189,7 +189,7 @@ To use Semantic Operators in your PostgreSQL database, follow these steps:
 
 These operators support chat completion models and default to [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series). 
 
-1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL flexible server. 
+1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL flexible server instance. 
 1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (for example, [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through the intuitive experiences provided by [Azure AI Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). 
 1. Note the Azure OpenAI **endpoint URL** and **API key**. 
 1. **Configure access**:
@@ -202,7 +202,7 @@ These operators support chat completion models and default to [`gpt-4.1`](/azure
     ```
 
     If you wish to use managed identities instead, refer [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
-      - Enable system-assigned managed identity for your Azure Database for PostgreSQL flexible server and restart the server.
+      - Enable system-assigned managed identity for your Azure Database for PostgreSQL flexible server instance and restart the server.
       - Assign the "Cognitive Services OpenAI User" role to the managed identity to interact with the Azure OpenAI resource.
       - Set the `azure_openai.auth_type` to 'managed-identity'.
       - Set the `azure_openai.endpoint` with the endpoint URL.
@@ -233,7 +233,7 @@ The `.rank()` operator supports both cross encoder and chat completion models, a
 
 Using `Cohere-rerank-v3.5` cross-encoder:
 
-1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)**  on your Azure Database for PostgreSQL flexible server. 
+1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)**  on your Azure Database for PostgreSQL instance. 
 1. Navigate to Azure AI Foundry and **[deploy the `Cohere-rerank-v3.5` model](https://ai.azure.com/explore/models?&selectedCollection=cohere)** using the Serverless API purchase option.
 1. Note the model's **endpoint key and the Reranker API route** which should look something like this: `https://<deployment name>.<region>.models.ai.azure.com/<v1 or v2>/rerank`.
 1. **Configure access**:
@@ -246,7 +246,7 @@ Using `Cohere-rerank-v3.5` cross-encoder:
     ```
 
     If you wish to use managed identities instead, refer [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
-    - Enable system-assigned managed identity for your Azure Database for PostgreSQL flexible server and restart the server.
+    - Enable system-assigned managed identity for your Azure Database for PostgreSQL flexible server instance and restart the server.
     - Assign the "Azure Machine Learning Data Scientist" role to the managed identity to interact with the Cohere model.
     - Set the `azure_ml.auth_type` to 'managed-identity'.
     - Set the `azure_ml.serverless_ranking_endpoint` with the Cohere reranker API.

@@ -14,7 +14,6 @@ ms.custom:
 ms.collection:
 - migration
 - gcp-to-azure
-# CustomerIntent: As a user, I want to learn how to perform offline migration from a Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL flexible server, using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
 ---
 
 # Migrate offline, from a Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL, with the migration service

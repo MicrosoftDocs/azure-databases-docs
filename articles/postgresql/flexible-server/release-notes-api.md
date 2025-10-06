@@ -1,6 +1,6 @@
 ---
 title: API release notes
-description: API release notes for Azure Database for PostgreSQL flexible server.
+description: API release notes for Azure Database for PostgreSQL.
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
@@ -13,9 +13,7 @@ ms.custom:
   - build-2023
 ---
 
-# API release notes - Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# API release notes - Azure Database for PostgreSQL 
 
 This page provides latest news and updates regarding the recommended API versions to be used. **The API versions that are not listed here might be supported, but will be retired soon.** The documentation for the latest Stable API version is available [here](/rest/api/postgresql/).
 
@@ -26,19 +24,19 @@ This page provides latest news and updates regarding the recommended API version
 
 | API Version | Stable/Preview | Comments |
 | --- | --- | --- |
-| [2025-06-01-preview](/rest/api/postgresql/operation-groups?view=rest-postgresql-2025-06-01-preview) | Preview | Renames files for better representation of their contents<br>Renames operations to improve organization, clarity and navigation<br>Adds example for CMK-based data encryption with automatic key version update<br>Adds example for creation of server in Microsoft owned virtual network<br>Adds support for table recommendations<br>Adds support for specifying default database name in an Elastic Cluster<br>Removes support for server parameter tuning feature<br>Improves descriptions<br>Improves metadata of local definitions<br>Corrects HTTP response codes to reflect what each API can return<br> |
+| [2025-06-01-preview](/rest/api/postgresql/operation-groups?view=rest-postgresql-2025-06-01-preview&preserve-view=true) | Preview | Renames files for better representation of their contents<br>Renames operations to improve organization, clarity and navigation<br>Adds example for CMK-based data encryption with automatic key version update<br>Adds example for creation of server in Microsoft owned virtual network<br>Adds support for table recommendations<br>Adds support for specifying default database name in an Elastic Cluster<br>Removes support for server parameter tuning feature<br>Improves descriptions<br>Improves metadata of local definitions<br>Corrects HTTP response codes to reflect what each API can return<br> |
 | 2025-01-01-preview | Preview | Adds support for server parameter tuning feature<br> |
-| 2024-11-01-preview | Preview | Index tuning<br>Added source types for migration<br>PG 17 support<br>UltraSSD_LRS storage type support<br>Elastic Clusters on flexible server<br> |
+| 2024-11-01-preview | Preview | Index tuning<br>Added source types for migration<br>PG 17 support<br>UltraSSD_LRS storage type support<br>Elastic Clusters on flexible server instances<br> |
 | 2024-08-01 | Stable (GA) | Geo + CMK - Revive Dropped<br>Storage auto growth<br>IOPS scaling<br>New location capability api<br>Long Term Retention Backup<br>Server Logs<br>Migrations<br>Migration Pre-validation<br>Read replicas - Switchover (Site swap)<br>Read replicas - Virtual Endpoints<br>Private Endpoints<br>Azure Defender / Threat Protection APIs<br>PG 16 support<br>PremiumV2_LRS storage type support<br>Location capability changes for SSDv2<br>Migration Roles<br>Migration Instance Resource Id to support Private endpoint Migrations<br>On-demand backup<br>System assign identity<br> |
 | 2023-06-01-preview| Preview | Earlier GA features   +<br>Migration Prevalidation<br>Read replicas - Switchover (Site swap)<br>Read replicas - Virtual Endpoints<br>Private Endpoints<br>Azure Defender\Threat Protection APIs<br>PG 16 support<br>PremiumV2_LRS storage type support<br>Location capability changes for SSDv2<br>Quota Usage API<br> |
 | 2023-03-01-preview | Preview | New GA version features (2022-12-01) +<br>Geo + CMK<br>Storage auto growth<br>IOPS scaling<br>New location capability API<br>Azure Defender<br>Server Logs<br>Migrations<br> |
-| [2022-12-01](/rest/api/postgresql/operation-groups?view=rest-postgresql-2022-12-01) | Stable (GA) | Earlier GA features +<br>EntraID<br>CMK<br>Backups<br>Administrators<br>Replicas<br>GeoRestore<br>MVU<br> |
+| [2022-12-01](/rest/api/postgresql/operation-groups?view=rest-postgresql-2022-12-01&preserve-view=true) | Stable (GA) | Earlier GA features +<br>EntraID<br>CMK<br>Backups<br>Administrators<br>Replicas<br>GeoRestore<br>MVU<br> |
 | 2022-05-01-preview | Preview | CheckMigrationNameAvailability<br>Migrations<br> |
-| [2021-06-01](/rest/api/postgresql/operation-groups?view=rest-postgresql-2021-06-01) | Stable (GA) | Earlier GA features +<br>Server CRUD<br>CheckNameAvailability<br>Configurations (Server parameters)<br>Database<br>Firewall rules<br>Private<br>DNS zone suffix<br>PITR<br>Server Restart<br>Server Start<br>Server Stop<br>Maintenance window<br>Virtual network subnet usage<br> |
+| [2021-06-01](/rest/api/postgresql/operation-groups?view=rest-postgresql-2021-06-01&preserve-view=true) | Stable (GA) | Earlier GA features +<br>Server CRUD<br>CheckNameAvailability<br>Configurations (Server parameters)<br>Database<br>Firewall rules<br>Private<br>DNS zone suffix<br>PITR<br>Server Restart<br>Server Start<br>Server Stop<br>Maintenance window<br>Virtual network subnet usage<br> |
 
 ## Using preview versions of API from Terraform
 
-**[Terraform](https://www.hashicorp.com/products/terraform)** is an infrastructure-as-code (IaC) software tool created by HashiCorp. Users define and provide data center infrastructure using a declarative configuration language known as HashiCorp Configuration Language (HCL), or optionally JSON. Terraform is a common way to perform IaC management for Azure Database for PostgreSQL flexible server based on GA Azure RM API, in addition to [Azure Resource Manager (ARM) Templates](/azure/azure-resource-manager/templates/overview)
+**[Terraform](https://www.hashicorp.com/products/terraform)** is an infrastructure-as-code (IaC) software tool created by HashiCorp. Users define and provide data center infrastructure using a declarative configuration language known as HashiCorp Configuration Language (HCL), or optionally JSON. Terraform is a common way to perform IaC management for Azure Database for PostgreSQL based on GA Azure RM API, in addition to [Azure Resource Manager (ARM) Templates](/azure/azure-resource-manager/templates/overview)
 Terraform community releases regular updates for **[Azure Resource Manager (AzureRM) Terraform provider](https://registry.terraform.io/providers/tfproviders/azurerm/latest/docs/resources/postgresql_flexible_server)** based on Azure Resource Manager API version in General Availability (GA). 
  If particular feature currently is in Preview API and hasn't been yet incorporated into GA API and AzureRM Terraform provider, you can use **AzAPI Terraform provider** to call Preview API directly from Terraform. **The AzAPI provider** is a thin layer on top of the  Azure Resource Manager REST APIs. The AzAPI provider enables you to manage any Azure resource type using any API version.
 The AzAPI provider is a thin layer on top of the Azure ARM REST APIs. The AzAPI provider enables you to manage any Azure resource type using any API version. This provider complements the AzureRM provider by enabling the management of new Azure resources and properties (including private preview).
@@ -58,7 +56,7 @@ The [AzAPI2AzureRM](https://github.com/Azure/azapi2azurerm/releases) is an open 
 
 ## Contacts
 
-For any questions or suggestions you might have on Azure Database for PostgreSQL flexible server, send an email to the Azure Database for PostgreSQL flexible server Team ([@Ask Azure Database for PostgreSQL flexible server](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Note that this email address isn't a technical support alias.
+For any questions or suggestions you might have on Azure Database for PostgreSQL, send an email to the Azure Database for PostgreSQL Team ([@Ask Azure Database for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Note that this email address isn't a technical support alias.
 
 In addition, consider the following points of contact as appropriate:
 
@@ -68,4 +66,4 @@ In addition, consider the following points of contact as appropriate:
 
 ## Related content
 
-- [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL](quickstart-create-server.md).

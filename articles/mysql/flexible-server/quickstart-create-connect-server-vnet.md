@@ -132,7 +132,7 @@ sudo apt-get install mysql-client
 Connections to the database are enforced with SSL; hence you need to download the public SSL certificate.
 
 ```bash
-wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem
 ```
 
 ## Connect to the server from Azure Linux virtual machine
@@ -140,7 +140,7 @@ wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA
 With the [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) client tool installed, we can now connect to the server from your local environment.
 
 ```bash
-mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootG2.crt.pem
 ```
 
 ## Clean up resources

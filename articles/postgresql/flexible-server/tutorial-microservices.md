@@ -7,12 +7,10 @@ ms.date: 02/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
-#customer intent: As a user, I want to learn how to use elastic clusters on Azure Database for PostgreSQL flexible server when deploying applications using the microservices architecture.
+#customer intent: As a user, I want to learn how to use elastic clusters on Azure Database for PostgreSQL  when deploying applications using the microservices architecture.
 ---
 
 # Tutorial: Design for microservices with elastic clusters (preview)
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 In this tutorial, you use Azure Database for PostgreSQL as the storage backend for multiple microservices, demonstrating a sample setup and basic operation of such a cluster. Learn how to:
 

@@ -11,8 +11,6 @@ ms.topic: concept-article
 
 # Premigration validation for the migrations service in Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 Premigration validation is a set of rules that involves assessing and verifying the readiness of a source database system for migration to Azure Database for PostgreSQL. This process identifies and addresses potential issues affecting the database's migration or post-migration operation.
 
 ## How do you use the premigration validation feature?

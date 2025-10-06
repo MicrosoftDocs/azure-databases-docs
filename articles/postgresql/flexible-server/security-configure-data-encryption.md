@@ -1,6 +1,6 @@
 ---
 title: Configure Data Encryption
-description: Learn how to configure data encryption in Azure Database for PostgreSQL flexible server.
+description: Learn how to configure data encryption in an Azure Database for PostgreSQL flexible server instance.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -14,7 +14,7 @@ ms.custom:
 
 # Configure data encryption in Azure Database for PostgreSQL
 
-This article provides step-by-step instructions to configure data encryption for an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to configure data encryption for an Azure Database for PostgreSQL flexible server instance.
 
 > [!IMPORTANT]
 > The only point at which you can decide if you want to use a system managed key or a customer managed key for data encryption, is at server creation. Once you make that decision and create the server, you can't switch between the two options.
@@ -23,7 +23,7 @@ In this article, you learn how to create a new server and configure its data enc
 - How to select a different user assigned managed identity with which the service accesses the encryption key.
 - How to specify a different encryption key or how to rotate the encryption key currently used for data encryption.
 
-To learn about data encryption in the context of Azure Database for PostgreSQL flexible server, see the [data encryption](concepts-data-encryption.md).
+To learn about data encryption in the context of Azure Database for PostgreSQL, see the [data encryption](concepts-data-encryption.md).
 
 ## Configure data encryption with system managed key during server provisioning
 
@@ -31,7 +31,7 @@ To learn about data encryption in the context of Azure Database for PostgreSQL f
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. During provisioning of a new Azure Database for PostgreSQL flexible Server, data encryption is configured in the **Security** tab. For **Data encryption key**, select the **Service-managed key** radio button.
+1. During provisioning of a new Azure Database for PostgreSQL flexible server instance, data encryption is configured in the **Security** tab. For **Data encryption key**, select the **Service-managed key** radio button.
 
     :::image type="content" source="media/security-configure-data-encryption/create-server-system-assigned.png" alt-text="Screenshot that shows how to select the system managed encryption key during server provisioning." lightbox="media/security-configure-data-encryption/create-server-system-assigned.png":::
 
@@ -73,7 +73,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. [Create one key in your key store](/azure/key-vault/keys/quick-create-portal). If your server has geo-redundant backups enabled, you need one key on each of the key stores. With one of these keys, we encrypt all your server's data (including all system and user databases, temporary files, server logs, write-ahead log segments, and backups). With the second key, we encrypt the copies of the backups which are asynchronously copied over the [paired region](/azure/reliability/cross-region-replication-azure) of your server.
 
-1. During provisioning of a new Azure Database for PostgreSQL flexible Server, data encryption is configured in the **Security** tab. For **Data encryption key**, select the **Customer-managed key** radio button.
+1. During provisioning of a new Azure Database for PostgreSQL flexible server instance, data encryption is configured in the **Security** tab. For **Data encryption key**, select the **Customer-managed key** radio button.
 
     :::image type="content" source="media/security-configure-data-encryption/create-server-customer-assigned.png" alt-text="Screenshot that shows how to select the customer managed encryption key during server provisioning." lightbox="media/security-configure-data-encryption/create-server-customer-assigned.png":::
 
@@ -174,17 +174,17 @@ The only point at which you can decide if you want to use a system managed key o
 
 For existing servers that were deployed with data encryption using a customer managed key, you're allowed to do several configuration changes. Things that can be changed are the references to the keys used for encryption, and references to the user assigned managed identities used by the service to access the keys kept in the key stores.
 
-You must update references that your Azure Database for PostgreSQL flexible server has to a key:
-- When the key stored in the key store is rotated, either manually or automatically, and your Azure Database for PostgreSQL flexible server is pointing to a specific version of the key. If you're pointing to a key, but not to a specific version of the key (that's when you have **Use automatic key version update** enabled), then the service will take care of automatically reference the most current version of the key, whenever they key is manually or automatically rotated.
+You must update references that your Azure Database for PostgreSQL flexible server instance has to a key:
+- When the key stored in the key store is rotated, either manually or automatically, and your Azure Database for PostgreSQL flexible server instance is pointing to a specific version of the key. If you're pointing to a key, but not to a specific version of the key (that's when you have **Use automatic key version update** enabled), then the service will take care of automatically reference the most current version of the key, whenever they key is manually or automatically rotated.
 - When you want to use the same or a different key stored in a different key store.
 
-You must update the user assigned managed identities which are used by your Azure Database for PostgreSQL flexible server to access the encryption keys whenever you want to use a different identity.
+You must update the user assigned managed identities which are used by your Azure Database for PostgreSQL flexible server instance to access the encryption keys whenever you want to use a different identity.
 
 ### [Portal](#tab/portal-customer-managed-server-existing)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 1. In the resource menu, under **Security**, select **Data encryption**.
 
@@ -195,24 +195,24 @@ Using the [Azure portal](https://portal.azure.com/):
     :::image type="content" source="media/security-configure-data-encryption/existing-server-select-managed-identity.png" alt-text="Screenshot that shows how to select one of the user assigned managed identities associated to the server." lightbox="media/security-configure-data-encryption/existing-server-select-managed-identity.png":::
 
     > [!NOTE]  
-    > Identities shown in the combo-box are only the ones that your Azure Database for PostgreSQL flexible server was assigned.
+    > Identities shown in the combo-box are only the ones that your Azure Database for PostgreSQL flexible server instance was assigned.
     > Although it isn't required, to maintain regional resiliency, we recommend that you select user managed identities in the same region as your server. And if your server has geo-backup redundancy enabled, we recommend that the second user managed identity, used to access the data encryption key for geo-redundant backups, exists in the [paired region](/azure/reliability/cross-region-replication-azure) of the server.
 
-1. If the user assigned managed identity that you want to use to access the data encryption key isn't assigned to your Azure Database for PostgreSQL flexible server, and it doesn't even exist as an Azure resource with its corresponding object in Microsoft Entra ID, you can create it by selecting **Create**.
+1. If the user assigned managed identity that you want to use to access the data encryption key isn't assigned to your Azure Database for PostgreSQL flexible server instance, and it doesn't even exist as an Azure resource with its corresponding object in Microsoft Entra ID, you can create it by selecting **Create**.
 
-    :::image type="content" source="media/security-configure-data-encryption/existing-server-create-new-managed-identity.png" alt-text="Screenshot that shows how to create a new user assigned managed identities in Azure and Microsoft Entra ID, automatically assign it to your Azure Database for PostgreSQL flexible server, and use it to access the data encryption key." lightbox="media/security-configure-data-encryption/existing-server-create-new-managed-identity.png":::
+    :::image type="content" source="media/security-configure-data-encryption/existing-server-create-new-managed-identity.png" alt-text="Screenshot that shows how to create a new user assigned managed identities in Azure and Microsoft Entra ID, automatically assign it to your Azure Database for PostgreSQL flexible server instance, and use it to access the data encryption key." lightbox="media/security-configure-data-encryption/existing-server-create-new-managed-identity.png":::
 
-1. In the **Create User Assigned Managed Identity** panel, complete the details of the user assigned managed identity that you want to create, and automatically assign to your Azure Database for PostgreSQL flexible server to access the data encryption key.
+1. In the **Create User Assigned Managed Identity** panel, complete the details of the user assigned managed identity that you want to create, and automatically assign to your Azure Database for PostgreSQL flexible server instance to access the data encryption key.
 
     :::image type="content" source="media/security-configure-data-encryption/existing-server-create-new-managed-identity-details.png" alt-text="Screenshot that shows how to provide the details for the new user assigned managed identity." lightbox="media/security-configure-data-encryption/existing-server-create-new-managed-identity-details.png":::
 
-1. If the user assigned managed identity that you want to use to access the data encryption key isn't assigned to your Azure Database for PostgreSQL flexible server, but it does exist as an Azure resource with its corresponding object in Microsoft Entra ID, you can assign it by selecting **Select**.
+1. If the user assigned managed identity that you want to use to access the data encryption key isn't assigned to your Azure Database for PostgreSQL flexible server instance, but it does exist as an Azure resource with its corresponding object in Microsoft Entra ID, you can assign it by selecting **Select**.
 
-    :::image type="content" source="media/security-configure-data-encryption/existing-server-select-existing-managed-identity.png" alt-text="Screenshot that shows how to select an existing user assigned managed identity in Azure and Microsoft Entra ID, automatically assign it to your Azure Database for PostgreSQL flexible server, and use it to access the data encryption key." lightbox="media/security-configure-data-encryption/existing-server-select-existing-managed-identity.png":::
+    :::image type="content" source="media/security-configure-data-encryption/existing-server-select-existing-managed-identity.png" alt-text="Screenshot that shows how to select an existing user assigned managed identity in Azure and Microsoft Entra ID, automatically assign it to your Azure Database for PostgreSQL flexible server instance, and use it to access the data encryption key." lightbox="media/security-configure-data-encryption/existing-server-select-existing-managed-identity.png":::
 
 1. Among the list of user assigned managed identities, select the one you want your server to use to access the data encryption key stored in an Azure Key Vault.
 
-    :::image type="content" source="media/security-configure-data-encryption/existing-server-select-existing-managed-identity-details.png" alt-text="Screenshot that shows how to select an existing user assigned managed identity to assign it to your Azure Database for PostgreSQL flexible server, and use it to access the data encryption key." lightbox="media/security-configure-data-encryption/existing-server-select-existing-managed-identity-details.png":::
+    :::image type="content" source="media/security-configure-data-encryption/existing-server-select-existing-managed-identity-details.png" alt-text="Screenshot that shows how to select an existing user assigned managed identity to assign it to your Azure Database for PostgreSQL flexible server instance, and use it to access the data encryption key." lightbox="media/security-configure-data-encryption/existing-server-select-existing-managed-identity-details.png":::
 
 1. Select **Add**.
 
@@ -222,7 +222,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/security-configure-data-encryption/existing-server-version-less.png" alt-text="Screenshot that shows how to enable automatic key version updates." lightbox="media/security-configure-data-encryption/existing-server-version-less.png":::
 
-1. If you rotate the key and don't have **Use automatic key version update** enabled. Or if you want to use a different key, you must update your Azure Database for PostgreSQL flexible server, so that it points to the new key version or new key. To do that, you can copy the resource identifier of the key, and paste it in the **Key identifier** box.
+1. If you rotate the key and don't have **Use automatic key version update** enabled. Or if you want to use a different key, you must update your Azure Database for PostgreSQL flexible server instance, so that it points to the new key version or new key. To do that, you can copy the resource identifier of the key, and paste it in the **Key identifier** box.
 
     :::image type="content" source="media/security-configure-data-encryption/existing-server-paste-key-identifier.png" alt-text="Screenshot that shows where to paste the resource identifier of the new key or new key version that the server must use for data encryption." lightbox="media/security-configure-data-encryption/existing-server-paste-key-identifier.png":::
 
@@ -313,7 +313,7 @@ If you pass the parameters `--backup-identity` and `--backup-key` to the `az pos
 Geo-redundant backup is not enabled. You cannot provide Geo-location user assigned identity and keyvault key.
 ```
 
-Identities passed to the `--identity` and `--backup-identity` parameters, if they exist and are valid, are automatically added to the list of user assigned managed identities associated to your Azure Database for PostgreSQL flexible server. This is the case even if the command later fails with some other error. In such cases, you might want to use the [az postgres flexible-server identity](/cli/azure/postgres/flexible-server/identity) commands to list, assign, or remove user assigned managed identities assigned to your Azure Database for PostgreSQL flexible server. To learn more about configuring user assigned managed identities in your Azure Database for PostgreSQL flexible server, refer to [associate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#associate-user-assigned-managed-identities-to-existing-servers), [dissociate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#dissociate-user-assigned-managed-identities-to-existing-servers), and [show the associated user assigned managed identities](how-to-configure-managed-identities.md#show-the-associated-user-assigned-managed-identities).
+Identities passed to the `--identity` and `--backup-identity` parameters, if they exist and are valid, are automatically added to the list of user assigned managed identities associated to your Azure Database for PostgreSQL flexible server instance. This is the case even if the command later fails with some other error. In such cases, you might want to use the [az postgres flexible-server identity](/cli/azure/postgres/flexible-server/identity) commands to list, assign, or remove user assigned managed identities assigned to your Azure Database for PostgreSQL flexible server instance. To learn more about configuring user assigned managed identities in your Azure Database for PostgreSQL flexible server instance, refer to [associate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#associate-user-assigned-managed-identities-to-existing-servers), [dissociate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#dissociate-user-assigned-managed-identities-to-existing-servers), and [show the associated user assigned managed identities](how-to-configure-managed-identities.md#show-the-associated-user-assigned-managed-identities).
 
 ---
 
