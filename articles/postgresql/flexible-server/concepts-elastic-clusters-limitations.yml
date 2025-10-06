@@ -26,17 +26,13 @@ sections:
         answer: |
           Elastic clusters are a feature of Azure Database for PostgreSQL flexible server instances and as such are available in the [same regions](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/).
           
-      - question: Elastic clusters aren't available in the region I need, what can I do?
-        answer: |
-          We're enabling other regions shortly, if you're interested in specific regions fill out [this form](https://aka.ms/preview-pg-citus).
-
       - question: Can I create more databases in an elastic cluster?
         answer: |
           The Azure portal provides credentials to connect to exactly one database per cluster. Currently, creating another database isn't allowed, and the `CREATE DATABASE` command fails with an error.
           This database is called `postgres` by default. After the public preview, custom database names at cluster provisioning time will be supported.
 
       - question: What PostgreSQL version is supported with elastic clusters?
-        answer: Elastic clusters support PostgreSQL version 16 during the public preview, and PostgreSQL version 17 will be available in the Generally Available (GA) release.
+        answer: Elastic clusters support PostgreSQL version 16 during the public preview.
 
       - question: Can I use Major Version Upgrades with elastic clusters?
         answer: Currently, Major Version Upgrades aren't supported during the preview.
@@ -45,7 +41,7 @@ sections:
         answer: Currently, downloading server logs isn't supported during the preview. You can use Azure Metrics, Log Analytic Workspaces and PostgreSQL views to analyze cluster behavior.
 
       - question: Can I use Terraform to deploy elastic clusters?
-        answer: Terraform isn't available during the preview, however it is expected to be available on or shortly after the GA release.
+        answer: Terraform isn't available during the preview period.
 
   - name: Backups
     questions:
@@ -74,7 +70,7 @@ sections:
   - name: Networking
     questions:
       - question: Can I use PgBouncer for connection pooling with elastic clusters?
-        answer: Yes, PgBouncer is supported with elastic clusters. Port 6432 should be used for schema and node management operations, while port 8432 is load-balanced to PgBouncer instances running across all nodes in the cluster.
+        answer: Yes, PgBouncer is supported with elastic clusters. Port 6432 should be used for schema and node management operations, while port 8432 is load-balanced to all PgBouncer instances running across your nodes in the cluster.
 
       - question: Can I use virtual network (VNet) injection with elastic clusters?
         answer: Virtual network injection is not currently supported for elastic clusters.  We recommend using Private Link Endpoints for any network isolation requirements.
@@ -85,7 +81,7 @@ sections:
   - name: Storage
     questions:
       - question: Can I use customer-managed keys (CMK) for storage encryption?
-        answer: Customer-managed keys are not currently supported during the preview, however they will be available in the Generally Available (GA) release.
+        answer: Customer-managed keys are not currently supported during the public preview.
 
       - question: Is Storage Auto Scale available?
         answer: Storage Auto Scale is not available, however you can manually scale cluster storage and I/O throughput as needed.
