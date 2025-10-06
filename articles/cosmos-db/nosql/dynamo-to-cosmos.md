@@ -507,7 +507,7 @@ In Azure Cosmos DB, you can use a SQL query and a single-line statement:
 
 ```csharp
 var result = moviesContainer.GetItemQueryIterator<MovieModel>(
-    "SELECT c.title, c.info.actors[0], c.info.directors,c.info.running_time_secs FROM c WHERE BETWEEN year 1960 AND 1969");
+    "SELECT c.title, c.info.actors[0], c.info.directors, c.info.running_time_secs FROM c WHERE c.year BETWEEN 1960 AND 1969");
 ```
 
 ### Delete a container
