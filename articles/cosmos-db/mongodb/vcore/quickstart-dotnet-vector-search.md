@@ -17,7 +17,7 @@ appliesto:
 ---
 # Quickstart: Vector search with .NET in Azure Cosmos DB for MongoDB (vCore)
 
-Use vector search in Azure Cosmos DB for MongoDB (vCore) with the .NET MongoDB driver. Store and query vector data efficiently.
+Learn to use vector search in Azure Cosmos DB for MongoDB (vCore) with the .NET MongoDB driver to store and query vector data efficiently.
 
 This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) on GitHub.
 
@@ -42,10 +42,10 @@ The app uses a sample hotel dataset in a JSON file with pre-calculated vectors f
 
 The app uses the following NuGet packages:
 
-- [`MongoDB.Driver`](https://www.nuget.org/packages/MongoDB.Driver): Official MongoDB .NET driver for database connectivity and operations
 - [`Azure.Identity`](https://www.nuget.org/packages/Azure.Identity): Azure Identity library for passwordless authentication with Microsoft Entra ID
 - [`Azure.AI.OpenAI`](https://www.nuget.org/packages/Azure.AI.OpenAI): Azure OpenAI client library to communicate with AI models and create vector embeddings
-- [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration): Configuration management for application settings
+- [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration): Configuration management for app settings
+- [`MongoDB.Driver`](https://www.nuget.org/packages/MongoDB.Driver): Official MongoDB .NET driver for database connectivity and operations
 - [`System.Text.Json`](https://www.nuget.org/packages/System.Text.Json): High-performance JSON serialization and deserialization
 
 ## Configure and run the app
@@ -54,13 +54,16 @@ Complete the following steps to configure the app with your own values and run s
 
 ### Configure the app
 
-Update the `appsettings.json` with your own values:
+Update the `appsettings.json` placeholder values with your own:
 
 :::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/appsettings.json" :::
 
 ### Authenticate to Azure
 
-The sample app uses passwordless authentication via `DefaultAzureCredential` and Microsoft Entra ID. [Sign in to Azure using a supported tool](/dotnet/azure/sdk/authentication/credential-chains?tabs=dac#defaultazurecredential-overview) such as the Azure CLI or Azure PowerShell before you run the application so it can access Azure resources securely. Ensure your signed-in identity has the required data plane roles on both the Azure Cosmos DB for MongoDB (vCore) account and the Azure OpenAI resource.
+The sample app uses passwordless authentication via `DefaultAzureCredential` and Microsoft Entra ID. [Sign in to Azure using a supported tool](/dotnet/azure/sdk/authentication/credential-chains?tabs=dac#defaultazurecredential-overview) such as the Azure CLI or Azure PowerShell before you run the application so it can access Azure resources securely.
+
+> [!NOTE]
+> Ensure your signed-in identity has the required data plane roles on both the Azure Cosmos DB for MongoDB (vCore) account and the Azure OpenAI resource.
 
 ### [Azure CLI](#tab/azure-cli)
 
@@ -85,7 +88,7 @@ Connect-AzAccount
 
 ### Build and run the project
 
-The sample app populates vectorized sample data in a MongoDB collection. It also lets you run different types of search queries against that data:
+The sample app populates vectorized sample data in a MongoDB collection and lets you run different types of search queries. 
 
 #### [DiskANN](#tab/tab-diskann)
 
@@ -158,9 +161,9 @@ The sample app populates vectorized sample data in a MongoDB collection. It also
 
 ----
 
-You see the top five hotels that match the vector search query and their similarity scores.
+After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
 
-The application output shows:
+The app logging and output show:
 - Collection creation and data insertion status
 - Vector index creation confirmation
 - Search results with hotel names, locations, and similarity scores
@@ -182,7 +185,11 @@ Vector search results for query: 'quintessential lodging near running trails, ea
 5. Garden District Inn (Garden District) - Similarity Score: 0.8198
 ```
 
-## Explore the search service
+## Explore the app code
+
+The following sections provide details about the most important services and code in the sample app. [Visit the GitHub repo](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) to explore the full app code.
+
+### Explore the search service
 
 The `VectorSearchService` orchestrates an end‑to‑end vector similarity search using IVF, HNSW, and DiskANN search techniques with Azure OpenAI embeddings.
 
@@ -197,7 +204,7 @@ In the preceding code, the `VectorSearchService` performs the following tasks:
 - Constructs and runs the aggregation search pipeline
 - Deserializes and prints the results
 
-## Explore the Azure Cosmos DB for MongoDB (vCore) service
+### Explore the Azure Cosmos DB for MongoDB (vCore) service
 
 The `MongoDbService` manages interactions with Azure Cosmos DB for MongoDB (vCore) to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
 
@@ -209,9 +216,7 @@ In the preceding code, the `MongoDbService` performs the following tasks:
 - Provides database or collection references on demand
 - Creates a vector search index only if it doesn't already exist
 - Lists all non-system databases, their collections, and each collection's indexes
-- Loads sample data only when a collection is empty
-- Converts raw embedding arrays to float arrays before insertion
-- Performs bulk inserts and then adds supporting indexes
+- Inserts sample data if the collection is empty and adds supporting indexes
 
 ## View and manage data in Visual Studio Code
 
