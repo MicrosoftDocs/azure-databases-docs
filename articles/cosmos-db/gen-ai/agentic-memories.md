@@ -68,7 +68,7 @@ If using DiskANN, you then decide whether to shard the vector index via the  [ve
 
 On the other hand, using a global (nonsharded) index offers simplicity and the ability to search on the entire set of vectors. Both of these allow you to further refine the search using `WHERE` clause filters as with any other query. 
 
-### Data models
+## Data models
 
 ### One turn per document
 In this model, each document captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is ysefyk when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
@@ -79,6 +79,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
     - Using the memories as part of a [semantic cache](semantic-cache.md), which can reduce user epxierence latency, token consumption, and LLM-based costs.
     
 **Properties in a data item**
+
 | Property | Type | Required | Description | Example |
 | --------------- | ----------------- | ------- | ----------- | ----------- |
 | `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choose-a-partition-key)| `"thread-1234#0007"` |
