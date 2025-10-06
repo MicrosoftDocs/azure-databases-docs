@@ -39,18 +39,17 @@ As Azure Cosmos DB automatically partitions your data, choosing a partition key 
 
 Below are some common patterns and trade-offs when using Cosmos DB (or Cosmos-style NoSQL + vector features) to store agent memory.
 
-### Use a GUID 
+### Use a GUID as the partition key
 Each item gets its own unique partition key value, typically a GUID. This strategy maximizes write distribution and avoids the hot partition problem, because every write lands in a different logical partition. It's simple to implement and works well for write heavy workloads without strong locality requirements. The tradeoff is that queries span logical and possibly physical partitions, which can be more expensive. This can be useful for storing ephemeral AI agent turns where you care more about logging and long-term analytics than revisiting specific conversations.
 
 - Example: A partition key `/pk` that takes on values like: "b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"
 
-### Use a unique thread ID
+### Use a unique thread ID as the partition key
 All items for a conversation share the same partition key equal to the thread (or thread) ID. This colocates turns and summaries, which makes “latest N”, phrase filters, and other queries within a thread efficient. However, you must ensure there are enough workload distribution across threads to reduce likelihood of hot partitions. This is generally a good choice for conversational agents or RAG apps where most queries are scoped to a single conversation, such as retrieving the latest turns or doing vector search within one thread.
 
 - Example: A partition key `/threadId` that takes on values like: "thread-1234"
 
-### Use a tenant ID and thread ID
-
+### Use a tenant ID and thread ID as the partition key
 Use a two-level hierarchical partition key where the leading level is the tenant ID and the second is the thread ID. This preserves locality within a thread while grouping threads under a tenant for governance, quotas, and analytics. It also reduces cross-partition scans for tenant-level queries and enables safer multitenant isolation patterns. This is best for multitenant apps where each customer (tenant) runs many concurrent conversations and more isolation is needed.
 
 - Example: A partition key `["/tenantId", "/threadId"]` takes on values like `tenantId = "contoso"`, `threadId = "thread-1234"`
