@@ -1,5 +1,5 @@
 ---
-title: PgBouncer in Azure Database for PostgreSQL flexible server
+title: PgBouncer
 description: This article provides an overview of the built-in PgBouncer feature.
 author: varun-dhawan
 ms.author: varundhawan
@@ -10,19 +10,17 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# PgBouncer in Azure Database for PostgreSQL flexible server
+# PgBouncer in Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+Azure Database for PostgreSQL flexible server instances offers [PgBouncer](https://github.com/pgbouncer/pgbouncer) as a built-in connection pooling solution. PgBouncer is an optional feature that you can enable on a per-database-server basis. It's supported on General Purpose and Memory Optimized compute tiers in both public access and private access networks.
 
-Azure Database for PostgreSQL flexible server offers [PgBouncer](https://github.com/pgbouncer/pgbouncer) as a built-in connection pooling solution. PgBouncer is an optional feature that you can enable on a per-database-server basis. It's supported on General Purpose and Memory Optimized compute tiers in both public access and private access networks.
-
-PgBouncer runs on the same virtual machine (VM) as the database server for Azure Database for PostgreSQL flexible server. Postgres uses a process-based model for connections, so maintaining many idle connections is expensive. Postgres runs into resource constraints when the server runs more than a few thousand connections. The primary benefit of PgBouncer is to improve idle connections and short-lived connections at the database server.
+PgBouncer runs on the same virtual machine (VM) as the database server for your Azure Database for PostgreSQL flexible server instance. Postgres uses a process-based model for connections, so maintaining many idle connections is expensive. Postgres runs into resource constraints when the server runs more than a few thousand connections. The primary benefit of PgBouncer is to improve idle connections and short-lived connections at the database server.
 
 PgBouncer uses a lightweight model that utilizes asynchronous I/O. It uses Postgres connections only when needed--that is, when inside an open transaction or when a query is active. This model allows scaling to up to 10,000 connections with low overhead.
 
 PgBouncer runs on port 6432 on your database server. You can change your application's database connection configuration to use the same host name, but change the port to 6432 to start using PgBouncer and benefit from improved scaling of idle connections.
 
-PgBouncer in Azure Database for PostgreSQL flexible server supports [Microsoft Entra authentication](concepts-azure-ad-authentication.md) (Azure AD).
+PgBouncer in Azure Database for PostgreSQL supports [Microsoft Entra authentication](concepts-azure-ad-authentication.md) (Azure AD).
 
 ## PgBouncer with elastic clusters (preview)
 
@@ -45,17 +43,17 @@ For more information about PgBouncer configurations, see the [pgbouncer.ini docu
 
 ## Version of PgBouncer
 
-Currently, the version of PgBouncer deployed on all supported major versions of the engine ([!INCLUDE [pgbouncer-table](includes/major-versions-ascending.md)]), in Azure Database for PostgreSQL flexible server, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**.
+Currently, the version of PgBouncer deployed on all supported major versions of the engine ([!INCLUDE [pgbouncer-table](includes/major-versions-ascending.md)]), in Azure Database for PostgreSQL, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**.
 
 ## Benefits
 
-By using the built-in PgBouncer feature with Azure Database for PostgreSQL flexible server, you can get these benefits:
+By using the built-in PgBouncer feature with your Azure Database for PostgreSQL flexible server instance, you can get these benefits:
 
-- **Convenience of simplified configuration**: Because PgBouncer is integrated with Azure Database for PostgreSQL flexible server, there's no need for a separate installation or complex setup. You can configure it directly from the server parameters.
+- **Convenience of simplified configuration**: Because PgBouncer is integrated with your Azure Database for PostgreSQL flexible server instance, there's no need for a separate installation or complex setup. You can configure it directly from the server parameters.
 
 - **Reliability of a managed service**: PgBouncer offers the advantages of Azure managed services. For example, Azure manages updates of PgBouncer. Automatic updates eliminate the need for manual maintenance and ensure that PgBouncer stays up to date with the latest features and security patches.
 
-- **Support for various connection types**: PgBouncer in Azure Database for PostgreSQL flexible server provides support for both public and private connections. You can use it to establish secure connections over private networks or connect externally, depending on your specific requirements.
+- **Support for various connection types**: PgBouncer in Azure Database for PostgreSQL provides support for both public and private connections. You can use it to establish secure connections over private networks or connect externally, depending on your specific requirements.
 
 - **High availability in failover scenarios**: If a standby server is promoted to the primary role during a failover, PgBouncer seamlessly restarts on the newly promoted standby. You don't need to make any changes to the application connection string. This ability helps ensure continuous availability and minimizes disruption to the application's connection pool.
 
@@ -132,9 +130,9 @@ Using an application-side pool together with PgBouncer on the database server ca
    - Consider alternative solutions, including multithreaded solutions like [PgCat](https://github.com/postgresml/pgcat), on Azure VMs.
    
 > [!IMPORTANT]  
-> The parameter `pgbouncer.client_tls_sslmode` for the built-in PgBouncer feature has been deprecated in Azure Database for PostgreSQL flexible server.
+> The parameter `pgbouncer.client_tls_sslmode` for the built-in PgBouncer feature has been deprecated in Azure Database for PostgreSQL.
 >  
-> When TLS/SSL for connections to Azure Database for PostgreSQL flexible server is enforced via setting the `require_secure_transport` server parameter to `ON`, TLS/SSL is automatically enforced for connections to the built-in PgBouncer feature. This setting is on by default when you create a new Azure Database for PostgreSQL flexible server instance and enable the built-in PgBouncer feature. For more information, see [Secure connectivity with TLS and SSL in Azure Database for PostgreSQL flexible server](concepts-networking-ssl-tls.md).
+> When TLS/SSL for connections to an Azure Database for PostgreSQL flexible server instance is enforced via setting the `require_secure_transport` server parameter to `ON`, TLS/SSL is automatically enforced for connections to the built-in PgBouncer feature. This setting is on by default when you create a new Azure Database for PostgreSQL flexible server instance and enable the built-in PgBouncer feature. For more information, see [Secure connectivity with TLS in Azure Database for PostgreSQL](concepts-networking-ssl-tls.md).
 
 For customers who want simplified management, built-in high availability, easy connectivity with containerized applications, and the ability to use the most popular configuration parameters, the built-in PgBouncer feature is a good choice. For customers who want multithreaded scalability, full control of all parameters, and a debugging experience, setting up PgBouncer on Azure VMs might be an alternative.
 
@@ -146,6 +144,6 @@ For customers who want simplified management, built-in high availability, easy c
 
 ## Related content
 
-- [Overview of Azure Database for PostgreSQL flexible server](overview.md)
-- [Public access and private endpoints in Azure Database for PostgreSQL flexible server](concepts-networking-public.md)
-- [Virtual network integration in Azure Database for PostgreSQL flexible server](concepts-networking-private.md)
+- [What is Azure Database for PostgreSQL?](overview.md)
+- [Networking overview for Azure Database for PostgreSQL with public access](concepts-networking-public.md)
+- [Network with private access for Azure Database for PostgreSQL](concepts-networking-private.md)

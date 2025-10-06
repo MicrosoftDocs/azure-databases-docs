@@ -1,6 +1,6 @@
 ---
 title: Networking Overview with SSL and TLS
-description: Learn about secure connectivity with Azure Database for PostgreSQL flexible server using SSL and TLS.
+description: Learn about secure connectivity with an Azure Database for PostgreSQL flexible server instance using SSL and TLS.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -15,7 +15,7 @@ ms.custom:
 
 # Secure connectivity with TLS in Azure Database for PostgreSQL
 
-Azure Database for PostgreSQL flexible server enforces connecting your client applications to Azure Database for PostgreSQL flexible server by using Transport Layer Security (TLS). TLS is an industry-standard protocol that ensures encrypted network connections between your database server and client applications. TLS is an updated protocol of Secure Sockets Layer (SSL). The terms SSL and TLS are still used interchangeably.
+Azure Database for PostgreSQL enforces connecting your client applications to an Azure Database for PostgreSQL flexible server instance by using Transport Layer Security (TLS). TLS is an industry-standard protocol that ensures encrypted network connections between your database server and client applications. TLS is an updated protocol of Secure Sockets Layer (SSL). The terms SSL and TLS are still used interchangeably.
 
 ## Certificate chains
 
@@ -38,21 +38,21 @@ All incoming connections that use earlier versions of the TLS protocol, such as 
 The IETF released the TLS 1.3 specification in RFC 8446 in August 2018, and TLS 1.3 is now the most common and recommended TLS version in use. TLS 1.3 is faster and more secure than TLS 1.2.
 
 > [!NOTE]  
-> SSL and TLS certificates certify that your connection is secured with state-of-the-art encryption protocols. By encrypting your connection on the wire, you prevent unauthorized access to your data while in transit. We strongly recommend that you use the latest versions of TLS to encrypt your connections to Azure Database for PostgreSQL flexible server.
+> SSL and TLS certificates certify that your connection is secured with state-of-the-art encryption protocols. By encrypting your connection on the wire, you prevent unauthorized access to your data while in transit. We strongly recommend that you use the latest versions of TLS to encrypt your connections to an Azure Database for PostgreSQL flexible server instance.
 >
-> Although we don't recommend it, if needed, you can disable TLS\SSL for connections to Azure Database for PostgreSQL flexible server. You can update the `require_secure_transport` server parameter to `OFF`. You can also set the TLS version by setting `ssl_min_protocol_version` and `ssl_max_protocol_version` server parameters.
+> Although we don't recommend it, if needed, you can disable TLS\SSL for connections to your Azure Database for PostgreSQL flexible server instance. You can update the `require_secure_transport` server parameter to `OFF`. You can also set the TLS version by setting `ssl_min_protocol_version` and `ssl_max_protocol_version` server parameters.
 
 [Certificate authentication](https://www.postgresql.org/docs/current/auth-cert.html) is performed by using SSL client certificates for authentication. In this scenario, the PostgreSQL server compares the common name (CN) attribute of the client certificate presented against the requested database user.
 
-At this time, Azure Database for PostgreSQL flexible server doesn't support:
+At this time, Azure Database for PostgreSQL doesn't support:
 
 - SSL certificate-based authentication.
 - [Custom SSL\TLS certificates](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION).
 
 > [!NOTE]  
-> Microsoft made root CA changes for various Azure services, including Azure Database for PostgreSQL flexible server. For more information, see [Azure TLS certificate changes](/azure/security/fundamentals/tls-certificate-changes) and the section [Configure SSL on the client](#configure-ssl-on-the-client).
+> Microsoft made root CA changes for various Azure services, including Azure Database for PostgreSQL. For more information, see [Azure TLS certificate changes](/azure/security/fundamentals/tls-certificate-changes) and the section [Configure SSL on the client](#configure-ssl-on-the-client).
 
-To determine your current TLS\SSL connection status, you can load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL flexible server's SSL usage by process, client, and application by using the following query:
+To determine your current TLS\SSL connection status, you can load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL flexible server instance's SSL usage by process, client, and application by using the following query:
 
 ```sql
 SELECT datname as "Database name", usename as "User name", ssl, client_addr, application_name, backend_type
@@ -70,7 +70,7 @@ openssl s_client -starttls postgres -showcerts -connect <your-postgresql-server-
 
 This command prints low-level protocol information, like the TLS version and cipher. You must use the option `-starttls postgres`. Otherwise, this command reports that no SSL is in use. Using this command requires at least OpenSSL 1.1.1.
 
-To enforce the latest, most secure TLS version for connectivity protection from the client to Azure Database for PostgreSQL flexible server, set `ssl_min_protocol_version` to `1.3`. That setting *requires* clients that connect to your Azure Database for PostgreSQL flexible server to use *this version of the protocol only* to securely communicate. Older clients might not be able to communicate with the server because they don't support this version.
+To enforce the latest, most secure TLS version for connectivity protection from the client to an Azure Database for PostgreSQL flexible server instance, set `ssl_min_protocol_version` to `1.3`. That setting *requires* clients that connect to your Azure Database for PostgreSQL flexible server instance to use *this version of the protocol only* to securely communicate. Older clients might not be able to communicate with the server because they don't support this version.
 
 ## Configure SSL on the client
 
@@ -136,7 +136,7 @@ With root CA migration to [Microsoft RSA Root CA 2017](https://www.microsoft.com
 - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
 - [Digicert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
 
-At this time, Azure Database for PostgreSQL flexible server doesn't support [certificate-based authentication](https://www.postgresql.org/docs/current/auth-cert.html).
+At this time, Azure Database for PostgreSQL doesn't support [certificate-based authentication](https://www.postgresql.org/docs/current/auth-cert.html).
 
 ### Test client certificates by connecting with psql in certificate pinning scenarios
 
@@ -172,11 +172,11 @@ A cipher suite is displayed as a long string of seemingly random information, bu
 
 Different versions of TLS/SSL support different cipher suites. TLS 1.2 cipher suites can't be negotiated with TLS 1.3 connections, and vice versa.
 
-At this time, Azure Database for PostgreSQL flexible server supports many cipher suites with the TLS 1.2 protocol version that fall into the [HIGH:!aNULL](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-SSL-CIPHERS) category.
+At this time, Azure Database for PostgreSQL supports many cipher suites with the TLS 1.2 protocol version that fall into the [HIGH:!aNULL](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-SSL-CIPHERS) category.
 
 ## Troubleshoot TLS/SSL connectivity errors
 
-1. The first step to troubleshoot TLS/SSL protocol version compatibility is to identify the error messages that you or your users are seeing when they try to access your Azure Database for PostgreSQL flexible server under TLS encryption from the client. Depending on the application and platform, the error messages might be different. In many cases, they point to the underlying issue.
+1. The first step to troubleshoot TLS/SSL protocol version compatibility is to identify the error messages that you or your users are seeing when they try to access your Azure Database for PostgreSQL flexible server instance under TLS encryption from the client. Depending on the application and platform, the error messages might be different. In many cases, they point to the underlying issue.
 1. To be certain of TLS/SSL protocol version compatibility, check the TLS/SSL configuration of the database server and the application client to make sure they support compatible versions and cipher suites.
 1. Analyze any discrepancies or gaps between the database server and the client's TLS/SSL versions and cipher suites. Try to resolve them by enabling or disabling certain options, upgrading or downgrading software, or changing certificates or keys. For example, you might need to enable or disable specific TLS/SSL versions on the server or the client, depending on security and compatibility requirements. For example, you might need to disable TLS 1.0 and TLS 1.1, which are considered nonsecure and deprecated, and enable TLS 1.2 and TLS 1.3, which are more secure and modern.
 1. The newest certificate issued with [Microsoft RSA Root CA 2017 has intermediate in the chain cross-signed by Digicert Global Root G2 CA](https://www.microsoft.com/pkiops/docs/repository.htm). Some of the Postgres client libraries, while using `sslmode=verify-full` or `sslmode=verify-ca` settings, might experience connection failures with root CA certificates that are cross-signed with intermediate certificates. The result is alternate trust paths.

@@ -1,6 +1,6 @@
 ---
 title: Compute options
-description: This article describes the compute options in your Azure Database for PostgreSQL flexible server instances.
+description: This article describes the compute options in an Azure Database for PostgreSQL flexible server instance.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
@@ -12,9 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Compute options in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Compute options in Azure Database for PostgreSQL 
 
 You can create an Azure Database for PostgreSQL flexible server instance in one of three pricing tiers: Burstable, General Purpose, and Memory Optimized. The pricing tier is calculated based on the compute, memory, and storage you provision. A server can have one or many databases.
 
@@ -94,5 +92,5 @@ The detailed specifications of the available server types are as follows:
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL flexible server instances](how-to-manage-server-portal.md)
-- [Limits in Azure Database for PostgreSQL flexible server instances](concepts-limits.md)
+- [Manage Azure Database for PostgreSQL](how-to-manage-server-portal.md)
+- [Limits in Azure Database for PostgreSQL](concepts-limits.md)

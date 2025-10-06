@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: Limitations of elastic clusters (preview)
-  description: "Learn about existing limitations of elastic clusters with Azure Database for PostgreSQL Flexible server during public preview."
+  description: "Learn about existing limitations of elastic clusters with Azure Database for PostgreSQL flexible server instances during public preview."
   author: mulander
   ms.author: adamwolk
   ms.reviewer: maghan
@@ -24,7 +24,11 @@ sections:
     questions:
       - question: In what regions can I use elastic clusters?
         answer: |
-          Elastic clusters are an Azure Database for PostgreSQL flexible server feature and as such are available in the [same regions](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/).
+          Elastic clusters are a feature of Azure Database for PostgreSQL flexible server instances and as such are available in the [same regions](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/).
+          
+      - question: Elastic clusters aren't available in the region I need, what can I do?
+        answer: |
+          We're enabling other regions shortly, if you're interested in specific regions fill out [this form](https://aka.ms/preview-pg-citus).
 
       - question: Can I create more databases in an elastic cluster?
         answer: |

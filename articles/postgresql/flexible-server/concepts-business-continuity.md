@@ -1,6 +1,6 @@
 ---
 title: Overview of business continuity
-description: Learn about the concepts of business continuity with Azure Database for PostgreSQL flexible server instances.
+description: Learn about the concepts of business continuity with an Azure Database for PostgreSQL flexible server instance.
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
@@ -11,11 +11,9 @@ ms.topic: concept-article
 ms.custom: sfi-image-nochange
 ---
 
-# Overview of business continuity with Azure Database for PostgreSQL flexible server
+# Overview of business continuity with Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-**Business continuity** in Azure Database for PostgreSQL refers to the mechanisms, policies, and procedures that enable your business to continue operating in the face of disruption, particularly to its computing infrastructure. In most of the cases, your Azure Database for PostgreSQL flexible server instance handles disruptive events that might happen in the cloud environment and keep your applications and business processes running. However, there are some events that can't be handled automatically such as:
+**Business continuity** in Azure Database for PostgreSQL refers to the mechanisms, policies, and procedures that enable your business to continue operating in the face of disruption, particularly to its computing infrastructure. In most of the cases, Azure Database for PostgreSQL handles disruptive events that might happen in the cloud environment and keep your applications and business processes running. However, there are some events that can't be handled automatically such as:
 
 - User accidentally deletes or updates a row in a table.
 - Earthquake causes a power outage and temporarily disables an availability zone or a region.
@@ -23,7 +21,7 @@ ms.custom: sfi-image-nochange
 
 Azure Database for PostgreSQL provides features that protect data and mitigates downtime for your mission-critical databases during planned and unplanned downtime events. Built on top of the Azure infrastructure that offers robust resiliency and availability, Azure Database for PostgreSQL has business continuity features that provide another fault protection, address recovery time requirements, and reduce data loss exposure. As you architect your applications, you should consider the downtime tolerance - the recovery time objective (RTO), and data loss exposure - the recovery point objective (RPO). For example, your business-critical database requires stricter uptime than a test database.
 
-The table below illustrates the features that Azure Database for PostgreSQL flexible server offers.
+The table below illustrates the features that Azure Database for PostgreSQL offers.
 
 | **Feature** | **Description** | **Considerations** |
 | ---------- | ----------- | ------------ |
@@ -31,8 +29,8 @@ The table below illustrates the features that Azure Database for PostgreSQL flex
 | **Zone redundant high availability** | An Azure Database for PostgreSQL flexible server instance can be deployed with zone redundant high availability (HA) configuration where primary and standby servers are deployed in two different availability zones within a region. This HA configuration protects your databases from zone-level failures and also helps with reducing application downtime during planned and unplanned downtime events. Data from the primary server is replicated to the standby replica in synchronous mode. In the event of any disruption to the primary server, the server is automatically failed over to the standby replica. RTO in most cases is expected to be less than 120s. RPO is expected to be zero (no data loss). For more information, see [Concepts - High availability]/azure/reliability/reliability-postgresql-flexible-server. | Supported in general purpose and memory optimized compute tiers. Available only in regions where multiple zones are available. |
 | **Same zone high availability** | An Azure Database for PostgreSQL flexible server instance can be deployed with same zone high availability (HA) configuration where primary and standby servers are deployed in the same availability zone in a region. This HA configuration protects your databases from node-level failures and also helps with reducing application downtime during planned and unplanned downtime events. Data from the primary server is replicated to the standby replica in synchronous mode. In the event of any disruption to the primary server, the server is automatically failed over to the standby replica. RTO in most cases is expected to be less than 120s. RPO is expected to be zero (no data loss). For more information, see [Concepts - High availability]/azure/reliability/reliability-postgresql-flexible-server. | Supported in general purpose and memory optimized compute tiers. |
 | **Premium-managed disks** | Database files are stored in a highly durable and reliable premium-managed storage. This provides data redundancy with three copies of replica stored within an availability zone with automatic data recovery capabilities. For more information, see [Managed disks documentation](/azure/virtual-machines/managed-disks-overview). | Data stored within an availability zone. |
-| **Zone redundant backup** | Azure Database for PostgreSQL flexible server backups are automatically and securely stored in a zone redundant storage within a region, if the region supports availability zones. During a zone-level failure where your server is provisioned, and if your server isn't configured with zone redundancy, you can still restore your database using the latest restore point in a different zone. For more information, see [Concepts - Backup and Restore](concepts-backup-restore.md).| Only applicable in regions where multiple zones are available.|
-| **Geo redundant backup** | Azure Database for PostgreSQL flexible server backups are copied to a remote region. that helps with disaster recovery situation in the event the primary server region is down. | This feature is currently enabled in selected regions. It takes a longer RTO and a higher RPO depending on the size of the data to restore and amount of recovery to perform.  |
+| **Zone redundant backup** | Azure Database for PostgreSQL flexible server instance backups are automatically and securely stored in a zone redundant storage within a region, if the region supports availability zones. During a zone-level failure where your server is provisioned, and if your server isn't configured with zone redundancy, you can still restore your database using the latest restore point in a different zone. For more information, see [Concepts - Backup and Restore](concepts-backup-restore.md).| Only applicable in regions where multiple zones are available.|
+| **Geo redundant backup** | Azure Database for PostgreSQL flexible server instance backups are copied to a remote region. that helps with disaster recovery situation in the event the primary server region is down. | This feature is currently enabled in selected regions. It takes a longer RTO and a higher RPO depending on the size of the data to restore and amount of recovery to perform.  |
 | **Read Replica** | Cross Region read replicas can be deployed to protect your databases from region-level failures. Read replicas are updated asynchronously using PostgreSQL's physical replication technology, and may lag the primary. For more information, see [Concepts - Read Replicas](concepts-read-replicas.md).| Supported in general purpose and memory optimized compute tiers. |
 
 
@@ -69,7 +67,7 @@ Though we continuously strive to provide high availability, there are times when
 
 ### Service Outage
 
-In the event of an Azure Database for PostgreSQL flexible server instance outage, you can see more details related to the outage in the following places:
+In the event of Azure Database for PostgreSQL flexible server instance outage, you can see more details related to the outage in the following places:
 
 * **Azure portal banner**: If your subscription is identified to be impacted, there will be an outage alert of a Service Issue in your Azure portal **Notifications**.
   
@@ -106,11 +104,11 @@ Below are some unplanned failure scenarios and the recovery process.
 ### Configure your database after recovery from regional failure
 
 * If you are using geo-restore or geo-replica to recover from an outage, you must make sure that the connectivity to the new server is properly configured so that the normal application function can be resumed. You can follow the [Post-restore tasks](concepts-backup-restore.md#geo-redundant-backup-and-restore).
-* If you've previously set up a diagnostic setting on the original server, make sure to do the same on the target server if necessary as explained in [Configure and Access Logs in an Azure Database for PostgreSQL flexible server instance](how-to-configure-and-access-logs.md).
-* Setup telemetry alerts, you need to make sure your existing alert rule settings are updated to map to the new server. For more information about alert rules, see [Use the Azure portal to set up alerts on metrics for an Azure Database for PostgreSQL flexible server instance](how-to-alert-on-metrics.md).
+* If you've previously set up a diagnostic setting on the original server, make sure to do the same on the target server if necessary as explained in [Configure and Access Logs in Azure Database for PostgreSQL](how-to-configure-and-access-logs.md).
+* Setup telemetry alerts, you need to make sure your existing alert rule settings are updated to map to the new server. For more information about alert rules, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](how-to-alert-on-metrics.md).
 
 > [!IMPORTANT]
-> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure Database for PostgreSQL](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
+> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure database](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
 
 ## Related content
 

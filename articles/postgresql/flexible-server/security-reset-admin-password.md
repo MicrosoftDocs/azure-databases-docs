@@ -1,6 +1,6 @@
 ---
 title: Reset administrator password
-description: This article describes how to reset the password of the administrator of an Azure Database for PostgreSQL flexible server.
+description: This article describes how to reset the password of the administrator of an Azure Database for PostgreSQL flexible server instance.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -13,7 +13,7 @@ ms.custom: horz-security
 
 # Reset administrator password
 
-This article provides step-by-step instructions to reset the administrator password of an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to reset the administrator password of an Azure Database for PostgreSQL flexible server instance.
 
 ## Steps to reset administrator password
 
@@ -21,11 +21,11 @@ This article provides step-by-step instructions to reset the administrator passw
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, select **Overview**.
 
-    :::image type="content" source="./media/security-reset-admin-password/overview.png" alt-text="Screenshot showing the Overview page of an Azure Database for PostgreSQL flexible server." lightbox="./media/security-reset-admin-password/overview.png":::
+    :::image type="content" source="./media/security-reset-admin-password/overview.png" alt-text="Screenshot showing the Overview page of an Azure Database for PostgreSQL flexible server instance." lightbox="./media/security-reset-admin-password/overview.png":::
 
 3. The status of the server must be **Ready** for the **Reset password** button to be enabled on the toolbar.
 
@@ -33,7 +33,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4. In the resource menu, under the **Security** section, select **Authentication**.
 
-    :::image type="content" source="./media/security-reset-admin-password/authentication.png" alt-text="Screenshot showing the Authentication page of an Azure Database for PostgreSQL flexible server." lightbox="./media/security-reset-admin-password/authentication.png":::
+    :::image type="content" source="./media/security-reset-admin-password/authentication.png" alt-text="Screenshot showing the Authentication page of an Azure Database for PostgreSQL flexible server instance." lightbox="./media/security-reset-admin-password/authentication.png":::
 
 5. **Authentication method** must be either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. When set to **Microsoft Entra authentication only**, the **Reset password** button is disabled.
 

@@ -18,7 +18,7 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: What is Azure Database for PostgreSQL flexible server?
+          - text: What is Azure Database for PostgreSQL?
             url: flexible-server/service-overview.md
       - linkListType: whats-new
         links:
@@ -28,11 +28,11 @@ landingContent:
             url: flexible-server/release-notes.md
       - linkListType: get-started
         links:
-          - text: Try Azure Database for PostgreSQL flexible server for free
+          - text: Try Azure Database for PostgreSQL for free
             url: flexible-server/how-to-deploy-on-azure-free-account.md
       - linkListType: quickstart
         links:
-          - text: Create an Azure Database for PostgreSQL flexible server
+          - text: Create an Azure Database for PostgreSQL
             url: flexible-server/quickstart-create-server.md
       - linkListType: how-to-guide
         links:

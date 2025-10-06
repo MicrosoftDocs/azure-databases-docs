@@ -1,6 +1,6 @@
 ---
 title: Scaling resources
-description: This article describes the resource scaling in Azure Database for PostgreSQL flexible server.
+description: This article describes the resource scaling in an Azure Database for PostgreSQL flexible server instance.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -10,11 +10,9 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Scaling resources in Azure Database for PostgreSQL flexible server
+# Scaling resources in Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-Azure Database for PostgreSQL flexible server supports both vertical and horizontal scaling options.
+an Azure Database for PostgreSQL flexible server instance supports both vertical and horizontal scaling options.
 
 ## Vertical scaling
 
@@ -49,7 +47,7 @@ The overall time it takes to restart your server depends on the crash recovery p
 
 If your application is sensitive to loss of in-flight transactions that might occur during compute scaling, we recommend implementing a transaction [retry pattern](../single-server/concepts-connectivity.md#handling-transient-errors).
 
-Scaling the storage doesn't require a server restart in most cases. For more information, see [storage options in Azure Database for PostgreSQL flexible server](concepts-scaling-resources.md).
+Scaling the storage doesn't require a server restart in most cases. For more information, see [storage options in Azure Database for PostgreSQL](concepts-scaling-resources.md).
 
 Backup retention period changes are an online operation.
 
@@ -63,9 +61,9 @@ Typically, this process could take anywhere between 2 to 10 minutes with regular
 
 ### How it works
 
-When you update your Azure Database for PostgreSQL flexible server instance in scaling scenarios, the service creates a new virtual machine for your server with the updated configuration. Then is synchronized with the virtual machine that's currently running your instance, and then switches to the new with a brief interruption. Then a background process eliminates the old virtual machine.
+When you update your Azure Database for PostgreSQL flexible server instance in scaling scenarios, the service creates a new virtual machine for your server with the updated configuration. Then is synchronized with the virtual machine that's currently running your instance, and then switches to the new with a brief interruption. Then a background process eliminates the old virtual machine. 
 
-This process allows for seamless updates, while minimizing downtime and ensuring cost-efficiency. This scaling process is triggered when changes are made to the storage and compute tiers. *No customer action is required* to use this capability.
+This process enables seamless updates with minimal downtime and is automatically triggered when changes are made to storage or compute tiers. No customer action is required to use this capability.
 
 For horizontally scaled configurations, consisting of a primary server and one or more read replicas, scaling operations must follow a specific sequence to ensure data consistency and minimize downtime. For details about that sequence, see [scaling with read replicas](concepts-read-replicas.md#scale).
 
@@ -90,4 +88,4 @@ For horizontally scaled configurations, consisting of a primary server and one o
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL](how-to-manage-server-portal.md).

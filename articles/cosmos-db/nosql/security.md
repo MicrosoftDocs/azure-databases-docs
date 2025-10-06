@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: best-practice
 ms.date: 09/10/2025
-ms.custom: security-horizontal-2025
+ms.custom: [security-horizontal-2025, horz-security]
 ai-usage: ai-generated
 appliesto:
   - ✅ NoSQL

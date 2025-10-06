@@ -1,6 +1,6 @@
 ---
-title: Elastic clusters on PostgreSQL Flexible Server
-description: Learn about sharding and horizontal scale-out with elastic clusters on Azure Database for PostgreSQL flexible server.
+title: Elastic Clusters
+description: Learn about sharding and horizontal scale-out with elastic clusters on your Azure Database for PostgreSQL flexible server instance.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
@@ -10,19 +10,17 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Elastic clusters in Azure Database for PostgreSQL flexible server (preview)
+# Elastic clusters in Azure Database for PostgreSQL (preview)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+Elastic clusters on the Azure Database for PostgreSQL service are a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
 
-Elastic clusters on Azure Database for PostgreSQL flexible server are a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
+While Citus is just an extension, it connects multiple PostgreSQL instances. When an Azure Database for PostgreSQL flexible server instance is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
 
-While Citus is just an extension, it connects multiple PostgreSQL instances. When an Azure Database for PostgreSQL flexible server is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
-
-Elastic clusters on flexible server offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more.
+Elastic clusters on the service offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more.
 
 ## Architecture
 
-An elastic cluster consists of one or more nodes of Azure Database for PostgreSQL flexible server. These instances are automatically made known to each other, and inter-connected to form a Citus cluster. The nodes are required to be of the same compute and storage tier, and can be uniformly scaled up or down to higher or lower tiers.
+An elastic cluster consists of one or more nodes of Azure Database for PostgreSQL flexible server instances. These instances are automatically made known to each other, and inter-connected to form a Citus cluster. The nodes are required to be of the same compute and storage tier, and can be uniformly scaled up or down to higher or lower tiers.
 
 Elastic clusters use instances of flexible servers (called nodes) to coordinate with one another in a "shared nothing" architecture. The architecture also allows the database to scale, by adding more nodes to the cluster.
 
@@ -108,6 +106,6 @@ WHERE shardid = 102027;
 
 ## Related content
 
-- [Sharding models on elastic clusters in Azure Database for PostgreSQL flexible server](concepts-elastic-clusters-sharding-models.md).
-- [Table types on elastic clusters in Azure Database for PostgreSQL flexible server](concepts-elastic-clusters-table-types.md).
+- [Sharding models on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-sharding-models.md).
+- [Table types on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-table-types.md).
 - [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).

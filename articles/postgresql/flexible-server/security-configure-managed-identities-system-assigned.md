@@ -1,6 +1,6 @@
 ---
 title: System Assigned Managed Identity
-description: This article describes how to configure system assigned managed identity of an Azure Database for PostgreSQL flexible server.
+description: This article describes how to configure system assigned managed identity of an Azure Database for PostgreSQL flexible server instance.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -14,7 +14,7 @@ ms.custom:
 
 # System assigned managed identity
 
-This article provides step-by-step instructions to enable or disable a system assigned managed identity for an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to enable or disable a system assigned managed identity for an Azure Database for PostgreSQL flexible server instance.
 
 ## Steps to enable for existing servers
 
@@ -28,15 +28,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, under **Security**, select **Identity**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-identity.png" alt-text="Screenshot that shows the Identity page, under Security, to enable the system assigned managed identity of an Azure Database for PostgreSQL flexible server." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-identity.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-identity.png" alt-text="Screenshot that shows the Identity page, under Security, to enable the system assigned managed identity of an Azure Database for PostgreSQL flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-identity.png":::
 
 1. In the **System assigned managed identity** section, select **On**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on.png" alt-text="Screenshot that shows the Identity page, to enable the system assigned managed identity of an Azure Database for PostgreSQL flexible server." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on.png" alt-text="Screenshot that shows the Identity page, to enable the system assigned managed identity of an Azure Database for PostgreSQL flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on.png":::
 
 1. Select **Save**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on-save.png" alt-text="Screenshot that shows the Save button after having enabled the system assigned managed identity of an Azure Database for PostgreSQL flexible server." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on-save.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on-save.png" alt-text="Screenshot that shows the Save button after having enabled the system assigned managed identity of an Azure Database for PostgreSQL flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on-save.png":::
 
 1. If the server has data encryption configured to use customer managed keys, it isn't supported to disable the system assigned managed identity of the server once you enable it. For that reason, if that condition is detected, you're requested to confirm that you want to enable the system assigned managed identity.
 
@@ -78,15 +78,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, under **Security**, select **Identity**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-identity.png" alt-text="Screenshot that shows the Identity page, under Security, to disable the system assigned managed identity of an Azure Database for PostgreSQL flexible server." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-identity.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-identity.png" alt-text="Screenshot that shows the Identity page, under Security, to disable the system assigned managed identity of an Azure Database for PostgreSQL flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-identity.png":::
 
 1. In the **System assigned managed identity** section, select **Off**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off.png" alt-text="Screenshot that shows the Identity page, to disable the system assigned managed identity of an Azure Database for PostgreSQL flexible server." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off.png" alt-text="Screenshot that shows the Identity page, to disable the system assigned managed identity of an Azure Database for PostgreSQL flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off.png":::
 
 1. Select **Save**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off-save.png" alt-text="Screenshot that shows the Save button after having disabled the system assigned managed identity of an Azure Database for PostgreSQL flexible server." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off-save.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off-save.png" alt-text="Screenshot that shows the Save button after having disabled the system assigned managed identity of an Azure Database for PostgreSQL flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off-save.png":::
 
 1. When the process completes, a notification informs you that the system assigned managed identity is disabled.
 
@@ -125,11 +125,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Overview**
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/overview.png" alt-text="Screenshot that shows the Overview page of an Azure Database for PostgreSQL flexible server." lightbox="media/security-configure-managed-identities-system-assigned/overview.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/overview.png" alt-text="Screenshot that shows the Overview page of an Azure Database for PostgreSQL flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/overview.png":::
 
 1. Select **JSON View**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/json-view.png" alt-text="Screenshot that shows how to select JSON View on an Azure Database for PostgreSQL flexible server." lightbox="media/security-configure-managed-identities-system-assigned/json-view.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/json-view.png" alt-text="Screenshot that shows how to select JSON View on an Azure Database for PostgreSQL flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/json-view.png":::
 
 1. In the **Resource JSON** panel that opens, find the **identity** property and, inside it, you can find the **principalId** and **tenantId** for the system assigned managed identity.
 
@@ -162,7 +162,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Choose **Application Type == Managed Identity**.
 
-1. Provide the name of your instance of Azure Database for PostgreSQL flexible server in the **Search by application name or object ID** text box.
+1. Provide the name of your instance of Azure Database for PostgreSQL flexible server instance in the **Search by application name or object ID** text box.
 
    :::image type="content" source="media/security-configure-managed-identities-system-assigned/search-managed-identity.png" alt-text="Screenshot that shows how to search for a managed identity using the Enterprise applications service interface in the Azure portal." lightbox="media/security-configure-managed-identities-system-assigned/search-managed-identity.png":::
 

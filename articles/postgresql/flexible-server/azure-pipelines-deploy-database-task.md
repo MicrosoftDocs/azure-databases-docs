@@ -1,6 +1,6 @@
 ---
 title: Azure Pipelines task
-description: Enable Azure Database for PostgreSQL CLI task for using with Azure Pipelines for flexible server instances.
+description: Enable Azure Database for PostgreSQL flexible server instance CLI task for using with Azure Pipelines.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,18 +12,16 @@ ms.custom:
   - mode-other
 ---
 
-# Azure Pipelines task - Azure Database for PostgreSQL flexible server
+# Azure Pipelines task - Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-You can automatically deploy your database updates to an Azure Database for PostgreSQL flexible server instance after every successful build with **Azure Pipelines**. You can use Azure CLI task to update the database either with a SQL file or an inline SQL script against the database. This task  can be run on cross-platform agents running on Linux, macOS, or Windows operating systems.
+You can automatically deploy your database updates to your Azure Database for PostgreSQL flexible server instance after every successful build with **Azure Pipelines**. You can use Azure CLI task to update the database either with a SQL file or an inline SQL script against the database. This task  can be run on cross-platform agents running on Linux, macOS, or Windows operating systems.
 
 ## Prerequisites
 
 - An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/free/).
 - [Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure) to your Azure account.
 - Microsoft hosted agents have Azure CLI preinstalled. However if you're using private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computers that run the build and release agent. If an agent is already running on the machine on which the Azure CLI is installed, restart the agent to ensure all the relevant stage variables are updated.
-- [Create an Azure Database for PostgreSQL flexible server instance](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
 
 ## Use SQL file
 

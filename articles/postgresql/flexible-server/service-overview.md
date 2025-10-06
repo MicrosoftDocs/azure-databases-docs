@@ -12,9 +12,7 @@ ms.custom:
   - mvc
 ---
 
-# What is Azure Database for PostgreSQL flexible server?
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# What is Azure Database for PostgreSQL ?
 
 [!INCLUDE [azure-database-for-postgresql-single-server-deprecation](../includes/azure-database-for-postgresql-single-server-deprecation.md)]
 
@@ -42,7 +40,7 @@ Azure Database for PostgreSQL flexible server powered by the PostgreSQL communit
 
 - Flexible server
 
-### Azure Database for PostgreSQL flexible server
+### Azure Database for PostgreSQL 
 
 Azure Database for PostgreSQL flexible server is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings. In general, the service provides more flexibility and customizations based on the user requirements. The flexible server architecture allows users to opt for high availability within single availability zone and across multiple availability zones. Azure Database for PostgreSQL flexible server provides better cost optimization controls with the ability to stop/start server and burstable compute tier, ideal for workloads that don’t need full-compute capacity continuously. Azure Database for PostgreSQL flexible server currently supports community version of PostgreSQL [!INCLUDE [major-versions-ascending](includes/major-versions-ascending.md)] with plans to add newer versions as they become available. Azure Database for PostgreSQL flexible server is generally available today in a wide variety of [Azure regions](overview.md#azure-regions).
 

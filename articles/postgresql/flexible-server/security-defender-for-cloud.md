@@ -41,7 +41,7 @@ To get alerts from the Microsoft Defender plan, you'll first need to **enable it
     :::image type="content" source="media/security-defender-for-cloud/defender-for-cloud-azure-portal-postgresql.png" alt-text="screenshot of enable page.":::
 
     > [!NOTE]  
-    > If you have the "open-source relational databases" feature enabled in your Microsoft Defender plan, you'll observe that Microsoft Defender is automatically enabled by default for your Azure Database for PostgreSQL flexible server resource.
+    > If you have the "open-source relational databases" feature enabled in your Microsoft Defender plan, you'll observe that Microsoft Defender is automatically enabled by default for your Azure Database for PostgreSQL  resource.
 
 ## Related content
 

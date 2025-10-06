@@ -11,8 +11,6 @@ ms.devlang: azurecli
 ---
 # Monitor and scale a single Azure Database for PostgreSQL flexible server instance using Azure CLI
 
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
-
 This sample CLI script scales compute and storage for a single Azure Database for PostgreSQL flexible server instance after querying the metrics. Compute can scale up or down. Storage can only scale up.
 
 > [!IMPORTANT]  

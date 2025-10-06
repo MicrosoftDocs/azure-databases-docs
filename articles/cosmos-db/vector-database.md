@@ -145,7 +145,7 @@ Use the natively [integrated vector database in Azure Cosmos DB for MongoDB](mon
 - [Python RAG pattern - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore)
 - [Python Notebook - Vector database integration through LangChain tutorial](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
 - [Python Notebook - LLM Caching integration through LangChain tutorial](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db_no_sql/)
-- [Python - LlamaIndex integration](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo.html)
+- [Python - LlamaIndex integration](https://developers.llamaindex.ai/python/examples/vector_stores/azurecosmosdbmongodbvcoredemo/)
 - [Python - Semantic Kernel memory integration](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory_stores/azure_cosmosdb)
 - [Python Notebook - Movie Chatbot](https://github.com/AzureCosmosDB/Fabric-Conf-2024-Build-AI-Apps/tree/main/AzureCosmosDBforMongoDB)
 
