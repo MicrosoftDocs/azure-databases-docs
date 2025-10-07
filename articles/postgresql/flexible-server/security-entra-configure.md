@@ -202,6 +202,7 @@ You're now authenticated to your Azure Database for PostgreSQL server through Mi
 To enable a Microsoft Entra group to access your database, use the same mechanism you used for users, but specify the group name instead.
 
 For example:
+
 ```sql
 select * from  pgaadauth_create_principal('Prod DB Readonly', false, false).
 ```
