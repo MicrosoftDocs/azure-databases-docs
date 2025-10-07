@@ -50,7 +50,7 @@ All items for a conversation share the same partition key equal to the thread (o
 - Example: A partition key `/threadId` that takes on values like: "thread-1234"
 
 ### Use a tenant ID and thread ID as the partition key
-Use a two-level hierarchical partition key where the leading level is the tenant ID and the second is the thread ID. This preserves locality within a thread while grouping threads under a tenant for governance, quotas, and analytics. It also reduces cross-partition scans for tenant-level queries and enables safer multitenant isolation patterns. This is best for multitenant apps where each customer (tenant) runs many concurrent conversations and more isolation is needed.
+You can use a two-level hierarchical partition key where the leading level is the tenant ID and the second is the thread ID. This preserves locality within a thread while grouping threads under a tenant for governance, quotas, and analytics. It also reduces cross-partition scans for tenant-level queries and enables safer multitenant isolation patterns. This is best for multitenant apps where each customer (tenant) runs many concurrent conversations and more isolation is needed.
 
 - Example: A partition key `["/tenantId", "/threadId"]` takes on values like `tenantId = "contoso"`, `threadId = "thread-1234"`
 
