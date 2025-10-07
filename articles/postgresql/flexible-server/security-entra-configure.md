@@ -208,7 +208,7 @@ If group sync is enabled (via pgaadauth.enable_group_sync server parameter set t
   - Group membership changes are synced
     
     > [!NOTE]
-> Managed identities and service principals are supported as group members.
+     > Managed identities and service principals are supported as group members.
 
 ### Sign in to Azure
 
