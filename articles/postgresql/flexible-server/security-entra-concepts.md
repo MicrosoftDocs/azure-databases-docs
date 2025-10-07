@@ -104,13 +104,13 @@ When you use Microsoft Entra authentication with Azure Database for PostgreSQL, 
 
   A Microsoft Entra administrator has the authority to manage both Microsoft Entra users and local password-based users.
 
-- **What happens when I enable Microsoft Entra authentication on my ?**
+- **What happens when I enable Microsoft Entra authentication on my Azure Database for PostgreSQL flexible server instance?**
 
   When you set Microsoft Entra authentication at the server level, the PGAadAuth extension is enabled and the server restarts.
 
 - **How do I sign in by using Microsoft Entra authentication?**
 
-  You can use client tools like psql or pgAdmin to sign in to your flexible server instance Use your Microsoft Entra user ID as the username and your Microsoft Entra token as your password.
+  You can use client tools like `psql` or `pgAdmin` to sign in to your flexible server instance. Use your Microsoft Entra user ID as the username and your Microsoft Entra token as your password.
 
 - **How do I generate my token?**
 

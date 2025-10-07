@@ -63,9 +63,7 @@ To set the Microsoft Entra administrator after server creation, follow these ste
 
 ## Connect to Azure Database for PostgreSQL by using Microsoft Entra ID
 
-The following high-level diagram summarizes the workflow of using Microsoft Entra authentication with Azure Database for PostgreSQL:
-
-Microsoft Entra integration works with standard PostgreSQL tools like psql, which aren't Microsoft Entra aware and support only specifying the username and password when you're connecting to PostgreSQL. As shown in the preceding diagram, the Microsoft Entra token is passed as the password.
+Microsoft Entra integration works with standard PostgreSQL tools like psql, which aren't Microsoft Entra aware and support only specifying the username and password when you're connecting to PostgreSQL.
 
 We tested the following clients:
 
@@ -210,7 +208,7 @@ If group sync is enabled (via pgaadauth.enable_group_sync server parameter set t
   - Group membership changes are synced
     
     > [!NOTE]
-    > Managed identities and service principals are supported as group members.
+> Managed identities and service principals are supported as group members.
 
 ### Sign in to Azure
 
