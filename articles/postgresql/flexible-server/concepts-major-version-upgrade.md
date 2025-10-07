@@ -53,6 +53,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 - Logical replication slots are not supported during in-place major version upgrades.
 - Servers using SSDv2 storage are not eligible for major version upgrades.
 - Views dependent on `pg_stat_activity` are not supported during major version upgrades.
+- If you are performing the upgrade from PG11 to a higher version, you must first configure your flexible server to use [SCRAM authentication ](./security-connect-scram.md#configure-scram-authentication) by enabling SCRAM and resetting all login-role passwords.
 
 ### Extension Limitations
 
