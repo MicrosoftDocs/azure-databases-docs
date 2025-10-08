@@ -58,7 +58,9 @@ After failover (offline region) – the service will operate as illustrated:
  
 [![Diagram that shows the architecture after failover (offline region) for Azure Cosmos DB with private endpoints.](media/failover-considerations-for-private-endpoints/scenario-1-azure-cosmos-db-failover.png)](media/failover-considerations-for-private-endpoints/scenario-1-azure-cosmos-db-failover.png#lightbox)
 
-Once the primary region becomes healthy again, the Azure Cosmos DB account is failed back, restoring the original write region without requiring any changes to the network configuration.### Scenario 2: Other services failover
+Once the primary region becomes healthy again, the Azure Cosmos DB account is failed back, restoring the original write region without requiring any changes to the network configuration.
+
+### Scenario 2: Other services failover
 
 In this scenario, the issue lies not with the Azure Cosmos DB account, but with the services that connect to it, such as application services, virtual machines, or containers. These services need to be failed over to a secondary region following their respective disaster recovery plans.
 
