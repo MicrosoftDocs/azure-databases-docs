@@ -1,154 +1,289 @@
 --- 
 title: $addToSet
-titleSuffix: Overview of the addToSet operation in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $addToSet operation in Azure Cosmos DB for MongoDB (vCore)
 description: The addToSet operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 05/04/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
-# $addToSet (array update)
+# $addToSet
 
 The `$addToSet` operator adds elements to an array if they don't already exist, while ensuring uniqueness of elements within the set.
 
 ## Syntax
 
-```mongodb
+```javascript
 {
-  "$addToSet": { <field1>: <value1>, ... }
+  $addToSet: { <field1>: <value1> }
 }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<field1>`** | The field to which you want to add elements. |
 | **`<value1>`** | The value to be added to the array. |
 
-## Example
+## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
-
-```json
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
-        },
-        {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
-        }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
-}
-
-```
-
-### Example 1: Adding a new tag to the `tag` array
-
-
-```mongodb
-db.stores.update(
-  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { "$addToSet": { "tag": "#ShopLocal" } }
-)
-```
-
-
-This query would return the following document as `#ShopLocal` already existed.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "0",
-  "upsertedCount": 0
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
 }
+```
 
+### Example 1: Add a new tag to the `tag` array
+
+This query adds a new tag to the array of tags, run a query using the $addToSet operator to add the new value.
+
+```javascript
+db.stores.updateOne({
+    _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
+}, {
+    $addToSet: {
+        tag: "#ShopLocal"
+    }
+})
+```
+
+This query returns the following result:
+
+```json
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "0",
+    "upsertedCount": 0
+  }
+]
 ```
 
 ### Example 2: Adding a new promotional event to the `promotionEvents` array
 
-Add a new promotional event to the `promotionEvents` array, only if it doesn't already exist.
+This query adds a new event to the `promotionEvents` array, run a query using the $addToSet operator with the new promotion object to be added.
 
-```json
-db.stores.update(
-  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { "$addToSet": { "promotionEvents": {
-      "eventName": "Summer Sale",
-      "promotionalDates": {
-        "startDate": { "Year": 2024, "Month": 6, "Day": 1 },
-        "endDate": { "Year": 2024, "Month": 6, "Day": 15 }
-      },
-      "discounts": [
-        { "categoryName": "DJ Speakers", "discountPercentage": 20 }
-      ]
+```javascript
+db.stores.updateOne({
+    _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
+}, {
+    $addToSet: {
+        promotionEvents: {
+            eventName: "Summer Sale",
+            promotionalDates: {
+                startDate: {
+                    Year: 2024,
+                    Month: 6,
+                    Day: 1
+                },
+                endDate: {
+                    Year: 2024,
+                    Month: 6,
+                    Day: 15
+                }
+            },
+            discounts: [{
+                categoryName: "DJ Speakers",
+                discountPercentage: 20
+            }]
+        }
     }
-  }}
-)
+})
 ```
 
-This query would return the following document as it was a unique entry.
+This query returns the following result:
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
+```
 
+### Example 3 - Using $addToSet with $setWindowOperators
+
+To retrieve the list of cities for each store within the "First Up Consultants" company, run a query to first partition stores by the company. Then, use the $addToSet operator to add the distinct cities for each store within the partition.
+
+```javascript
+db.stores.aggregate([{
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
+        }
+    }
+}, {
+    $setWindowFields: {
+        partitionBy: "$company",
+        sortBy: {
+            "sales.totalSales": -1
+        },
+        output: {
+            citiesForCompany: {
+                $push: "$city",
+                window: {
+                    documents: ["unbounded", "current"]
+                }
+            }
+        }
+    }
+}, {
+    $project: {
+        company: 1,
+        name: 1,
+        citiesForCompany: 1
+    }
+}])
+```
+
+The first two results returned by this query are:
+
+```json
+[
+    {
+        "_id": "a1713bed-4c8b-46e7-bb68-259045dffdb4",
+        "name": "First Up Consultants | Bed and Bath Collection - Jaskolskiside",
+        "company": "First Up Consultants",
+        "citiesForCompany": [
+            "South Thelma",
+            "South Carmenview",
+            "Port Antone",
+            "Charlotteville",
+            "South Lenorafort",
+            "Jaskolskiside"
+        ]
+    },
+    {
+        "_id": "6b8585ab-4357-4da7-8625-f6a1cd5796c5",
+        "name": "First Up Consultants | Computer Depot - West Zack",
+        "company": "First Up Consultants",
+        "citiesForCompany": [
+            "South Thelma",
+            "South Carmenview",
+            "Port Antone",
+            "Charlotteville",
+            "South Lenorafort",
+            "Jaskolskiside",
+            "West Zack"
+        ]
+    }
+]
 ```
 
 ## Related content

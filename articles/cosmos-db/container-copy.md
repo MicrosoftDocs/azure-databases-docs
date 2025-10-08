@@ -1,12 +1,12 @@
 ---
-title: Container copy jobs
+title: Container Copy Jobs
 titleSuffix: Azure Cosmos DB
 description: Learn how to copy data from one container to another in Azure Cosmos DB (preview).
 author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 11/30/2022
+ms.topic: how-to
+ms.date: 06/23/2025
 ms.custom: references_regions, build-2023, ignite-2023, ignite-2024
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra
 ---
@@ -23,7 +23,7 @@ You might need to copy data from your Azure Cosmos DB account if you want to ach
 * Update the [unique keys](unique-keys.md) for a container.
 * Rename a container or database.
 * Change capacity mode of an account from serverless to provisioned or vice-versa.
-* Adopt new features that are supported only for new containers, for example, [Hierarchical partition keys](hierarchical-partition-keys.md).
+* Adopt new features that are supported only for new containers, for example, [hierarchical partition keys](hierarchical-partition-keys.md).
 
 Copy jobs can be [created and managed by using Azure CLI commands](how-to-container-copy.md).
 
@@ -36,18 +36,19 @@ Copy jobs can be [created and managed by using Azure CLI commands](how-to-contai
 To get started with online container copy for Azure Cosmos DB for NoSQL API accounts, register for the **Online container copy (NoSQL)** preview feature flag in [Preview Features](access-previews.md) in the Azure portal. Once the registration is complete, the preview is effective for all NoSQL API accounts in the subscription.
 
 #### Prerequisites
-1.	Enable [continuous backup](continuous-backup-restore-introduction.md) on source Azure Cosmos DB account. 
-1.	Register for [All version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) preview feature on the source account’s subscription.
 
-> [!Important]
-> All write operations to the source container will be charged 10% additional RUs in order to preserve both the previous and current versions of changes to items in the container. This RU charge increase is subject to change in the future.
+1. Enable [continuous backup](continuous-backup-restore-introduction.md) on source Azure Cosmos DB account. 
+1. Register for [All version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) preview feature on the source account’s subscription.
+
+> [!IMPORTANT]
+> All write operations to the source container are charged 10% additional RUs in order to preserve both the previous and current versions of changes to items in the container. This RU charge increase is subject to change in the future.
 
 ## Copy a container's data
 
 1. Create the target Azure Cosmos DB container by using the settings that you want to use (partition key, throughput granularity, request units, unique key, and so on).
 1. [Create the container copy job](how-to-container-copy.md).
 1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job).
-1. Once all documents have been copied, stop the updates on source container and then call the completion API to mark job as completed.
+1. After all documents are copied, stop the updates on source container, and then call the completion API to mark job as completed.
 1. Resume the operations by appropriately pointing the application or client to the source or target container as intended.
 
 ## How does container copy work?
@@ -66,7 +67,7 @@ Start using offline copy by following [how to create, monitor, and manage copy j
 1. Create the target Azure Cosmos DB container by using the settings that you want to use (partition key, throughput granularity, request units, unique key, and so on).
 1. Stop the operations on the source container by pausing the application instances or any clients that connect to it.
 1. [Create the container copy job](how-to-container-copy.md).
-1. [Monitor the progress of the container copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it's completed.
+1. [Monitor the progress of the container copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it completes.
 1. Resume the operations by appropriately pointing the application or client to the source or target container as intended.
 
 > [!NOTE]
@@ -93,7 +94,7 @@ You can perform offline collection copy jobs to copy data within the same Azure 
 1. Create the target Azure Cosmos DB collection by using the settings that you want to use (partition key, throughput granularity, request units, unique key, and so on).
 1. Stop the operations on the source collection by pausing the application instances or any clients that connect to it.
 1. [Create the copy job](how-to-container-copy.md).
-1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it's completed.
+1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it completes.
 1. Resume the operations by appropriately pointing the application or client to the source or target collection as intended.
 
 > [!NOTE]
@@ -120,7 +121,7 @@ You can perform offline table copy to copy data of one table to another table wi
 1. Create the target Azure Cosmos DB table by using the settings that you want to use (partition key, throughput granularity, request units, and so on).
 1. Stop the operations on the source table by pausing the application instances or any clients that connect to it.
 1. [Create the copy job](how-to-container-copy.md).
-1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it's completed.
+1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it completes.
 1. Resume the operations by appropriately pointing the application or client to the source or target table as intended.
 
 > [!NOTE]
@@ -161,13 +162,12 @@ The rate of container copy job progress is determined by these factors:
 Container copy jobs don't work with accounts that have the following capabilities enabled. Disable these features before you run container copy jobs:
 
 * [Merge partition](merge.md)
-* [Disable local auth](nosql/security/how-to-disable-key-based-authentication.md)
 
 ### Account configurations
 
 The Time to Live (TTL) setting isn't adjusted in the destination container. As a result, if a document hasn't expired in the source container, it starts its countdown anew in the destination container.
 
-## FAQs
+## Frequently asked questions
 
 ### Is there a service-level agreement for container copy jobs?
 
@@ -181,7 +181,7 @@ Yes, you can create multiple jobs within the same account. The jobs run consecut
 
 You must create a job for each container in the database.
 
-### I have an Azure Cosmos DB account with multiple regions. In which region will the container copy job run?
+### I have a Cosmos DB account with multiple regions. In which region will the container copy job run?
 
 The container copy job runs in the write region. In an account that's configured with multi-region writes, the job runs in one of the regions in the list of write regions.
 
@@ -213,7 +213,7 @@ Currently, container copy is supported in the following regions:
 
 ## Known and common issues
 
-* While using the Online container copy feature, if the `id` field is modified in the source container, the destination container stores two separate documents, each corresponding to the distinct `id` values. 
+* While using the online container copy feature, if the `id` field is modified in the source container, the destination container stores two separate documents, each corresponding to the distinct `id` values. 
 
 * When changing partition keys during data copying to the destination container, ensure that the new partition key and `id` combinations are unique across the container. 
 
@@ -221,6 +221,7 @@ Currently, container copy is supported in the following regions:
 
     **Original Partition Key:** `/department`  
     **Source Documents:**
+
     ```json
     {
         "id": "101",
@@ -236,6 +237,7 @@ Currently, container copy is supported in the following regions:
 
     **New Partition Key:** `/employeeName`  
     **Resulting Documents in the Destination Container:**
+
     ```json
     {
         "id": "101",
@@ -253,17 +255,16 @@ Currently, container copy is supported in the following regions:
 
 * Error - Partition key reached maximum size of 20 GB
 
-    When modifying partition keys during data copy to the destination container, ensure that the new partition key remains within the logical partition key size limit of 20 GB. If this limit is exceeded, the job will fail with the following error:
+    When modifying partition keys during data copy to the destination container, ensure that the new partition key remains within the logical partition key size limit of 20 GB. If this limit is exceeded, the job fails with the following error:
 
     ```output
     "code": "403",
     "message": "Response status code does not indicate success: Forbidden (403); Substatus: 1014; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: (Message: {"Errors":["Partition key reached maximum size of 20 GB. Learn more: https://aka.ms/CosmosDB/sql/errors/full-pk"]"
     ```
 
+* Error - Owner resource doesn't exist
 
-* Error - Owner resource doesn't exist.
-
-    If the job creation fails and displays the error *Owner resource doesn't exist* (error code 404), either the target container hasn't been created yet or the container name that's used to create the job doesn't match an actual container name.
+    If the job creation fails and displays the error "Owner resource doesn't exist" (error code 404), either the target container hasn't been created yet or the container name that's used to create the job doesn't match an actual container name.
 
     Make sure that the target container is created before you run the job and ensure that the container name in the job matches an actual container name.
 
@@ -272,18 +273,7 @@ Currently, container copy is supported in the following regions:
     "message": "Response status code does not indicate success: NotFound (404); Substatus: 1003; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: (Message: {\"Errors\":[\"Owner resource does not exist\"]
     ```
 
-* Error - Request is unauthorized.
-
-    If the request fails and displays the error *Unauthorized* (error code 401), local authorization might be disabled.
-
-    Container copy jobs use primary keys to authenticate. If local authorization is disabled, the job creation fails. Local authorization must be enabled for container copy jobs to work.
-
-    ```output
-    "code": "401",
-    "message": " Response status code does not indicate success: Unauthorized (401); Substatus: 5202; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: Local Authorization is disabled. Use an AAD token to authorize all requests."
-    ```
-
-* Error - Error while getting resources for job.
+* Error - Error while getting resources for job
 
     This error might occur due to internal server issues. To resolve this issue, contact Microsoft Support by opening a **New Support Request** in the Azure portal. For **Problem Type**, select **Data Migration**. For **Problem subtype**, select **Intra-account container copy**.
 
@@ -292,6 +282,6 @@ Currently, container copy is supported in the following regions:
     "message": "Error while getting resources for job, StatusCode: 500, SubStatusCode: 0, OperationId:  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     ```
 
-## Next steps
+## Next step
 
-* Learn [how to create, monitor, and manage container copy jobs](how-to-container-copy.md) in Azure Cosmos DB account by using CLI commands.
+* [Create and manage container copy jobs in Azure Cosmos DB](how-to-container-copy.md)

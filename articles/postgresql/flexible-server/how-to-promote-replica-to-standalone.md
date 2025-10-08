@@ -1,8 +1,8 @@
 ---
 title: Promote read replica to standalone server
 description: This article describes how to promote a read replica so that it becomes an independent standalone server.
-author: kabharati
-ms.author: kabharati
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/13/2025
 ms.service: azure-database-postgresql
@@ -11,8 +11,6 @@ ms.topic: how-to
 ---
 
 # Promote read replica to standalone server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to switch over a read replica of an Azure Database for PostgreSQL flexible server so that it becomes the new primary server of the replication set.
 

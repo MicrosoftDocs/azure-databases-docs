@@ -1,13 +1,13 @@
 ---
 title: Data Encryption with Customer Managed Keys
 description: Learn how data encryption with customer-managed keys for Azure Database for MySQL - Flexible Server enables you to bring your own key (BYOK) for data protection at rest.
-author: SudheeshGH
-ms.author: sunaray
+author: techlake
+ms.author: hganten
 ms.reviewer: maghan
 ms.date: 04/22/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Data encryption with customer managed keys for Azure Database for MySQL
@@ -105,7 +105,9 @@ When you configure data encryption with a CMK in Key Vault, continuous access to
 
 - If you delete the key vault, the Azure Database for MySQL flexible server instance is unable to access the key and moves to _Inaccessible_ state. Recover the [key vault](/azure/key-vault/general/key-vault-recovery) and revalidate the data encryption to make the Azure Database for MySQL flexible server instance _Available_.
 - If you delete the key from the key vault, the Azure Database for MySQL flexible server instance is unable to access the key and moves to _Inaccessible_ state. Recover the [key](/azure/key-vault/general/key-vault-recovery) and revalidate the data encryption to make the Azure Database for MySQL flexible server instance _Available_.
-- If the key stored in Azure Key Vault expires, the key becomes invalid, and the Azure Database for MySQL flexible server instance transitions into _Inaccessible_ state. Extend the key expiry date using [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) and then revalidate the data encryption to make the Azure Database for MySQL flexible server instance _Available_.
+
+> [!NOTE]
+> If the key vault had expired, server will still be accessible.
 
 ## Accidental key access revocation from Key Vault
 

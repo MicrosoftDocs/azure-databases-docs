@@ -6,7 +6,7 @@ author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
+ms.topic: language-reference
 ms.date: 06/04/2025
 ai-usage: ai-assisted
 ---
@@ -56,7 +56,7 @@ This article contains details for various supported operators you can use with A
 | **[`$positional`](array-update/$positional.md)** | The `$position` is used to specify the position in the array where a new element should be inserted. |
 | **[`$pullAll`](array-update/$pullall.md)** | The `$pullAll` operator removes all instances of the specified values from an existing array. |
 | **[`$push`](array-update/$push.md)** | The `$push` operator appends a specified value to an array. |
-| **[`$slice`](array-update/$slice.md)** | The `$slice` operator limits the number of array elements that are returned or modified. |
+| **[`$slice`](array-expression/$slice.md)** | The `$slice` operator limits the number of array elements that are returned or modified. |
 | **[`$sort`](array-update/$sort.md)** | The `$sort` operator sorts the elements of an array. |
 
 ## Bitwise query
@@ -74,14 +74,14 @@ This article contains details for various supported operators you can use with A
 | --- | --- |
 | **[`$eq`](comparison-query/$eq.md)** | The `$eq` operator matches documents where the value of a field equals the specified value. |
 
-## Data expression
+## Date expression
 
 | | Description |
 | --- | --- |
-| **[`$dateadd`](data-expression/$dateadd.md)** | The `$dateAdd` operator adds a specified number of time units to a date value. |
-| **[`$datediff`](data-expression/$datediff.md)** | The `$dateDiff` operator returns the difference between two dates. |
-| **[`$datefromparts`](data-expression/$datefromparts.md)** | The `$dateFromParts` operator constructs a date from the specified parts. |
-| **[`$datefromstring`](data-expression/$datefromstring.md)** | The `$dateFromString` operator converts a date/time string to a date object. |
+| **[`$dateadd`](date-expression/$dateadd.md)** | The `$dateAdd` operator adds a specified number of time units to a date value. |
+| **[`$datediff`](date-expression/$datediff.md)** | The `$dateDiff` operator returns the difference between two dates. |
+| **[`$datefromparts`](date-expression/$datefromparts.md)** | The `$dateFromParts` operator constructs a date from the specified parts. |
+| **[`$datefromstring`](date-expression/$datefromstring.md)** | The `$dateFromString` operator converts a date/time string to a date object. |
 
 ## Evaluation query
 

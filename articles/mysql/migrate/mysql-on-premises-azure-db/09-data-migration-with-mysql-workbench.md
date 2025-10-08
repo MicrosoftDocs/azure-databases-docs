@@ -1,16 +1,17 @@
 ---
 title: "Migrate MySQL On-Premises to Azure Database for MySQL: Data Migration With MySQL Workbench"
 description: "Follow all the steps in the Setup guide to create an environment to support the following steps."
-author: SudheeshGH
-ms.author: sunaray
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.custom:
-  - devx-track-extended-java
-  - devx-track-azurepowershell
+- devx-track-extended-java
+- devx-track-azurepowershell
+- sfi-image-nochange
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Data Migration with MySQL Workbench

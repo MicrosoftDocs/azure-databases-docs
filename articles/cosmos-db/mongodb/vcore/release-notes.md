@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: release-notes
-ms.date: 05/20/2025
+ms.date: 09/09/2025
 
 #Customer intent: As a database administrator, I want to review the release notes, so I can understand what new features are released for the service.
 ---
@@ -16,9 +16,45 @@ ms.date: 05/20/2025
 
 This article contains release notes for the API for MongoDB vCore. These release notes are composed of feature release dates, and feature updates.
 
-## Latest release: May 05, 2025
+## Latest release: Aug 29, 2025
 
-### Engine Enhancements_0505
+### Engine Enhancements_0829
+
+- Introduced support for index hints, giving developers the option to explicitly specify an index during query execution.
+- [Preview] Enabled index-only scans on ordered indexes for count queries where filters can be pushed down to the index and no projections are applied. Please raise a support request to enable.
+- [Preview] Improved parallel index build performance. Please raise a support request to enable.
+- Improved point lookup queries for more efficient execution.
+- Enhanced `usersInfo` and `connectionStatus` commands to return all supported roles (ReadWrite, UserAdmin, Root) and privilege sets (dbAdmin, userAdmin, clusterMonitor, clusterManager, hostManager).
+- Improved query planning performance by introducing a custom planner for insert operations.
+- Fix bug in $lastN and $bottomN.
+- Fixed Response type of update to add compatibility to C++ drivers requiring response in 32 bit.
+- Enhanced error messages for output stages `$merge` and `$out`.
+
+### Infrastructure Enhancements_0909
+
+- [CMK] (data-encryption-at-rest.md) support (GA).
+- [EntraID](entra-authentication.md) support (GA).
+
+## Previous releases
+
+### July 15, 2025
+
+#### Engine Enhancements_0715
+
+- [Preview] Enabled index pushdown optimization for $sort on any field.
+- Enabled index pushdown optimization for $limit.
+- [Preview] Added support for composite indexes on filter conditions.
+- Added support for HNSW index for M30 cluster tier.
+- Enhanced TTL index behavior to continue processing even if the cluster becomes read-only due to disk full.
+- Improvements to parallel build for faster index creation on sharded and unsharded collection.
+
+#### Infrastructure Enhancements_0730
+
+- [Preview] Added support for CMK, allowed only during provisioning phase.
+
+### May 05, 2025
+
+#### Engine Enhancements_0505
 
 - [MongoDB vCore v8 released](quickstart-portal.md).
   - Support $convert on binData to binData, string to binData and binData to string (except with format: auto).
@@ -31,8 +67,6 @@ This article contains release notes for the API for MongoDB vCore. These release
 
 - [EntraID](entra-authentication.md) support (Preview).
 
-## Previous releases
-
 ### March 23, 2025
 
 #### Engine Enhancements_0323
@@ -44,7 +78,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 - Added support for the $dateFromString operator with full functionality.
 - Extended syntax for $getField aggregation operator. Now the value of 'field' could be an expression that resolves to a string.
 - Added support for top-level aggregate command let variables in the $geoNear stage.
-- Backend command support for statement time-out is now available.
+- Backend command support for statement time out is now available.
 - Introduced support for the $toUUID aggregation operator.
 - Implemented full functionality for the $dateFromString operator.
 - Extended $getField operator to accept expressions resolving to a string for the field parameter.

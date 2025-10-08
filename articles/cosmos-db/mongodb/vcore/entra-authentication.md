@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 05/27/2025
+ms.date: 08/23/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ms.custom:
@@ -41,6 +41,8 @@ Interoperability with MongoDB drivers is provided via [OpenID Connect (OIDC) sup
 
 When Microsoft Entra ID authentication is enabled on an Azure Cosmos DB for MongoDB vCore cluster, you can add one or more Microsoft Entra ID principals as *administrator users* to that cluster. The Microsoft Entra ID administrator can be a Microsoft Entra ID user, a service principal, or a managed identity. Multiple Microsoft Entra ID administrators can be configured at any time. 
 
+Administrative Entra ID users are created as Azure entities under Microsoft.DocumentDB/mongoClusters/users and are replicated to the database.
+
 Additionally, one or more nonadministrative Microsoft Entra ID users can be added to a cluster at any time once Microsoft Entra ID authentication is enabled. Nonadministrative users are often used for ongoing production tasks that don't require administrative privileges.
 
 ## Considerations
@@ -61,14 +63,11 @@ Additionally, one or more nonadministrative Microsoft Entra ID users can be adde
     > [!NOTE]  
     > Sign in with a deleted principal can still occur until the token expires (up to 90 minutes from the issuing of the token). If you also remove the user from the Azure Cosmos DB for MongoDB vCore cluster, this access is revoked immediately.
 
-## Limitations
-
-[!INCLUDE[Section - Entra ID authentication limitations](includes/section-entra-authentication-limitations.md)]
-
 ## Related content
 
 - Develop a [console app with Microsoft Entra ID authentication](how-to-build-dotnet-console-app.md)
 - Deploy a [Microsoft Entra-enabled web application template](quickstart-dotnet.md)
 - Lean [how to enable Microsoft Entra ID and manage Entra ID users on clusters](./how-to-configure-entra-authentication.md)
+- Check [limitations of Microsoft Entra ID](./limits.md#authentication-and-access-control-rbac) in Azure Cosmos DB for MongoDB vCore
 - Review [Microsoft Entra ID fundamentals](/entra/fundamentals/whatis)
 - Review [Open ID Connect (OIDC) support in Microsoft Entra ID](/entra/architecture/auth-oidc)

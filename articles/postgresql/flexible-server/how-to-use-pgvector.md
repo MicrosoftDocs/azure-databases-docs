@@ -5,6 +5,7 @@ author: AvijitkGupta
 ms.author: avijitgupta
 ms.reviewer: kabharati, maghan
 ms.date: 04/27/2024
+ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -14,9 +15,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Enable and use pgvector in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Enable and use pgvector in Azure Database for PostgreSQL 
 
 [!INCLUDE [Introduction to `pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-introduction.md)]
 

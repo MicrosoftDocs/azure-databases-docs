@@ -1,27 +1,26 @@
 ---
-title: $[] (positional-all update) usage in Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
+title: $[]
+titleSuffix: Overview of the $[] positional operator in Azure Cosmos DB for MongoDB (vCore)
 description: The $[] operator is used to update all elements in an array that match the query condition.
 author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 10/14/2024
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
-# $[] (as Array Update Operator)
+# $[]
 The $[] operator in Azure Cosmos DB for MongoDB vCore is used to update all elements in an array that match a specified condition. This operator allows you to perform updates on multiple elements in an array without specifying their positions. It is particularly useful when you need to apply the same update to all items in an array.
 
 ## Syntax
-The syntax for using the $[] array update operator is as follows:
 
 ```javascript
 db.collection.update(
    <query>,
    {
      $set: {
-       "<arrayField>.$[]": <value>
+       <arrayField>.$[]: <value>
      }
    }
 )
@@ -29,40 +28,151 @@ db.collection.update(
 
 ## Parameters
 
-| Parameter      | Description                                                  |
-|----------------|--------------------------------------------------------------|
-| `<query>`      | The selection criteria for the documents to update.          |
-| `<arrayField>` | The field containing the array to update.                    |
-| `<value>`      | The value to set for each matching element in the array.     |
+| Parameter | Description |
+| --- | --- |
+| **`<query>`** | The selection criteria for the documents to update. |
+| **`<arrayField>`** | The field containing the array to update. |
+| **`<value>`** | The value to set for each matching element in the array. |
 
+## Examples
 
-## Example(s)
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
 ### Example 1: Updating Discount Percentages
-Suppose you want to update the discount percentage for all categories in the "Summer Sale" promotion event. You can use the $[] operator to achieve this:
+
+This query updates all elements in the discounts array inside each promotion event.
 
 ```javascript
-db.stores.update(
-  { "store.storeId": "12345", "store.promotionEvents.eventName": "Summer Sale" },
+db.stores.updateOne(
+  { _id: "905d1939-e03a-413e-a9c4-221f74055aac" },
   {
-    $set: {
-      "store.promotionEvents.$[event].discounts.$[].discountPercentage": 5
+    $inc: {
+      "promotionEvents.$[].discounts.$[].discountPercentage": 5
     }
-  },
-  {
-    arrayFilters: [{ "event.eventName": "Summer Sale" }]
   }
 )
 ```
 
 ### Example 2: Updating Sales by Category
-If you want to increase the total sales for all categories by 10%, you can use the $[] operator as follows:
+
+This query increase the total sales for all categories by 10% by using the $[] operator.
 
 ```javascript
 db.stores.update(
-  { "store.storeId": "12345" },
+  { _id: "905d1939-e03a-413e-a9c4-221f74055aac" },
   {
     $mul: {
-      "store.sales.salesByCategory.$[].totalSales": 1.10
+      "sales.salesByCategory.$[].totalSales": 1.10
     }
   }
 )

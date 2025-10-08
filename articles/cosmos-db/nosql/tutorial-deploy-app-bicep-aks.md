@@ -3,7 +3,7 @@ title: 'Tutorial: Deploy an ASP.NET web application using Azure Cosmos DB for No
 description: Learn how to deploy an ASP.NET web application with Azure Cosmos DB for NoSQL, managed identity, and Azure Kubernetes Service by using Bicep.
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.custom: tutorial-develop, mvc, devx-track-azurecli, devx-track-bicep, build-2023, build-2023-dataai
+ms.custom: tutorial-develop, mvc, devx-track-azurecli, devx-track-bicep, build-2023, build-2023-dataai, sfi-image-nochange
 author: sandnair
 ms.author: sandnair
 ms.topic: tutorial
@@ -54,7 +54,7 @@ This tutorial uses the following best practices for Azure Cosmos DB security:
 
 - Implement access control by using [role-based access control (RBAC)](/azure/role-based-access-control/overview) and a [managed identity](/azure/active-directory/managed-identities-azure-resources/overview). These features eliminate the need for developers to manage secrets, credentials, certificates, and keys for secure communication between services.
 - Limit Azure Cosmos DB access to the AKS subnet by [configuring a virtual network service endpoint](../how-to-configure-vnet-service-endpoint.md).
-- Set `disableLocalAuth = true` in the `databaseAccount` resource to [enforce RBAC as the only authentication method](security/how-to-disable-key-based-authentication.md).
+- Set `disableLocalAuth = true` in the `databaseAccount` resource to [enforce RBAC as the only authentication method](how-to-connect-role-based-access-control.md#disable-key-based-authentication).
 
 > [!TIP]
 > The steps in this tutorial use [Azure Cosmos DB for NoSQL](./quickstart-dotnet.md). However, you can apply the same concepts to [Azure Cosmos DB for MongoDB](../mongodb/introduction.md).

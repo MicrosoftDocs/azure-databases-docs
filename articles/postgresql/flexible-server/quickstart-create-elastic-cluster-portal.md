@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Create elastic clusters with portal"
-description: Quickstart guide to creating an instance of elastic cluster in Azure Database for PostgreSQL / Flexible Server.
-author: mulander
-ms.author: adamwolk
+description: Quickstart guide to creating an instance of elastic cluster in Azure Database for PostgreSQL.
+author: jjfrost
+ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 02/28/2025
 ms.service: azure-database-postgresql
@@ -11,11 +11,9 @@ ms.topic: quickstart
 #Customer intent: As a system administrator, I want to deploy an elastic cluster using the portal.
 ---
 
-# Quickstart: Create an instance of elastic cluster in Azure Database for PostgreSQL flexible server (preview)
+# Quickstart: Create an instance of elastic cluster in Azure Database for PostgreSQL (preview)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-Azure Database for PostgreSQL flexible server with elastic cluster is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. This Quickstart covers how to create an elastic cluster instance using the Azure portal.
+Azure Database for PostgreSQL with elastic cluster is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. This Quickstart covers how to create an elastic cluster instance using the Azure portal.
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
@@ -25,7 +23,7 @@ Open your web browser and go to the [portal](https://portal.azure.com/). Enter y
 
 ## Create an Azure Database for PostgreSQL server
 
-An elastic cluster, like a flexible server instance are created with a configured set of [compute and storage resources](concepts-compute.md). The cluster is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md) equally apply to elastic clusters. This section outlines the changes in the process.
+An elastic cluster, like a flexible server instance are created with a configured set of [compute and storage resources](concepts-compute.md). The cluster is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [Create an Azure Database for PostgreSQL](quickstart-create-server.md) equally apply to elastic clusters. This section outlines the changes in the process.
 
 To create an Azure Database for PostgreSQL flexible server instance, take the following steps:
 
@@ -54,7 +52,7 @@ To create an Azure Database for PostgreSQL flexible server instance, take the fo
    By default, a **postgres** database is created under your server. The [postgres](https://www.postgresql.org/docs/current/static/app-initdb.html) database is a default database meant for users, utilities, and applications. (The other default database is **azure_maintenance**. Its function is to separate the managed service processes from user actions. You can't access this database.)
 
     > [!NOTE]
-    > Connections to your Azure Database for PostgreSQL flexible server instance communicate over port 5432. When you try to connect from within a corporate network, outbound traffic over port 5432 might not be allowed by your network's firewall. If so, you can't connect to your server unless your IT department opens port 5432. Elastic clusters also use port 7432 for load balanced connections across the cluster nodes and might need to be allow listed in a similar way by your IT department.
+    > Connections to your Azure Database for PostgreSQL flexible server instance communicate over port 5432 and 6432 (PgBouncer). When you try to connect from within a corporate network, outbound traffic over port 5432 and 6432 might not be allowed by your network's firewall. If so, you can't connect to your server unless your IT department opens port 5432 and 6432. Elastic clusters also use port 7432 and 8432 (PgBouncer) for load balanced connections across the cluster nodes and might need to be allow listed in a similar way by your IT department.
 
 ## Get the connection information
 
@@ -66,7 +64,7 @@ Open your server's **Overview** page. Make a note of the **Server name** and the
 
 <a name="connect-to-the-postgresql-database-using-psql"></a>
 
-## Connect to the Azure Database for PostgreSQL flexible server database using psql
+## Connect to the Azure Database for PostgreSQL  database using psql
 
 There are many applications you can use to connect to your Azure Database for PostgreSQL flexible server instance. If your client computer has PostgreSQL installed, you can use a local instance of [psql](https://www.postgresql.org/docs/current/static/app-psql.html) to connect to an Azure Database for PostgreSQL flexible server instance. Let's now use the psql command-line utility to connect to the Azure Database for PostgreSQL flexible server instance.
 
@@ -88,7 +86,7 @@ There are many applications you can use to connect to your Azure Database for Po
    psql --host=mydemoserver-pg.postgres.database.azure.com --port=7432 --username=myadmin --dbname=postgres
    ```
 
-   After you connect, the psql utility displays a postgres prompt where you type sql commands. In the initial connection output, a warning might appear because the psql you're using might be a different version than the Azure Database for PostgreSQL flexible server version.
+   After you connect, the psql utility displays a postgres prompt where you type sql commands. In the initial connection output, a warning might appear because the psql you're using might be a different version than the Azure Database for PostgreSQL flexible server instance version.
 
    Example psql output:
 
@@ -107,7 +105,7 @@ There are many applications you can use to connect to your Azure Database for Po
    >  
    > Confirm your client's IP is allowed in the firewall rules.
 
-1. Create a blank database called "mypgsqldb" at the prompt by typing the following command:
+1. Create a blank schema called "mypgsqlschema" at the prompt by typing the following command:
 
     ```bash
     CREATE SCHEMA mypgsqlschema;
@@ -132,7 +130,7 @@ You can clean up the resources that you created in the Quickstart in one of two 
 
 To delete the entire resource group, including the newly created server:
 
-1. Locate your resource group in the portal. On the menu on the left, select **Resource groups**. Then select the name of your resource group in which you created your Azure Database for PostgreSQL flexible server resource.
+1. Locate your resource group in the portal. On the menu on the left, select **Resource groups**. Then select the name of your resource group in which you created your Azure Database for PostgreSQL resource.
 
 1. On your resource group page, select **Delete**. To confirm deletion enter the name of your resource group in the text box. Select **Delete**.
 

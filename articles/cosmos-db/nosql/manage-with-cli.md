@@ -512,7 +512,7 @@ az cosmosdb sql container throughput show \
 
 ### Prevent a container from being deleted
 
-Put an Azure resource delete lock on a container to prevent it from being deleted. This feature requires locking the Azure Cosmos DB account from being changed by data plane SDKs. To learn more, see [preventing changes from SDKs](security/how-to-disable-key-based-authentication.md). Azure resource locks can also prevent a resource from being changed by specifying a `ReadOnly` lock type. For an Azure Cosmos DB container, locks can be used to prevent throughput or any other property from being changed.
+Put an Azure resource delete lock on a container to prevent it from being deleted. This feature requires locking the Azure Cosmos DB account from being changed by data plane SDKs. To learn more, see [preventing changes from SDKs](how-to-connect-role-based-access-control.md#disable-key-based-authentication). Azure resource locks can also prevent a resource from being changed by specifying a `ReadOnly` lock type. For an Azure Cosmos DB container, locks can be used to prevent throughput or any other property from being changed.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'

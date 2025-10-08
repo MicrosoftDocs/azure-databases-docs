@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 04/24/2025
+ms.date: 04/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -13,12 +13,14 @@ ms.topic: include
 | Australia Central 2 * | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :x: |
 | Australia East | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Australia Southeast | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
+| Austria East | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :x: |
 | Brazil South | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :x: |
 | Brazil Southeast * | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :x: |
 | Canada Central | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Canada East | :white_check_mark: (all SKUs) | :x: | :white_check_mark: | :white_check_mark: |
 | Central India | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: |
 | Central US | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Chile Central | :white_check_mark: (all SKUs) | :white_check_mark: | :white_check_mark: | :x: |
 | China East 2 | :white_check_mark: (v3/v4 only) | :x: | :white_check_mark: | :x: |
 | China East 3 | :white_check_mark: (v3/v4 only) | :x: | :white_check_mark: | :white_check_mark: |
 | China North 2 | :white_check_mark: (v3/v4 only) | :x: | :white_check_mark: | :x: |
@@ -30,6 +32,7 @@ ms.topic: include
 | France South | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
 | Germany North * | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
 | Germany West Central | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: |
+| Indonesia Central | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Israel Central | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Italy North | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Japan East | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
@@ -38,6 +41,7 @@ ms.topic: include
 | Jio India West | :white_check_mark: (v3 only) | :x: | :white_check_mark: | :white_check_mark: |
 | Korea Central | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: ** | :white_check_mark: | :white_check_mark: |
 | Korea South | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
+| Malaysia West | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :x: |
 | Mexico Central | :white_check_mark: (v3/v4 only) | :white_check_mark: $ | :white_check_mark: | :x: |
 | New Zealand North | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: | :white_check_mark: | :x: |
 | North Central US | :white_check_mark: (all SKUs) | :x: | :white_check_mark: | :white_check_mark: |

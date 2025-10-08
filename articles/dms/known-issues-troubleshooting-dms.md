@@ -10,7 +10,7 @@ ms.topic: troubleshooting
 ms.collection:
   - sql-migration-content
 ms.custom:
-  - has-azure-ad-ps-ref
+  - no-azure-ad-ps-ref
 ---
 
 # Troubleshoot common Azure Database Migration Service (classic) issues and errors
@@ -61,7 +61,7 @@ You receive following error when starting the Azure Database Migration Service i
 **Cause:** This error displays when the previous instance failed internally. This error occurs rarely, and the engineering team is aware of it.
 
 **Resolution:** Delete the instance of the service that you can't start, and then provision new one to replace it.
-
+<!--//REMOVING IT AS DMS(CLASSIC) FOR SQL IS ON DEPRICATION PATH//
 ## Error restoring database while migrating SQL to Azure SQL DB managed instance
 
 When you perform an online migration from SQL Server to Azure SQL Managed Instance, the cutover fails with following error:
@@ -75,7 +75,7 @@ When you perform an online migration from SQL Server to Azure SQL Managed Instan
 Validate the permissions to this application and ensure it has the [contributor role](/azure/role-based-access-control/built-in-roles#contributor) at the subscription level.
 
 The Azure Database Migration Service Engineering Team is working to restrict the required access from current contribute role on subscription. If you have a business requirement that doesn't allow use of contribute role, contact Azure support.
-
+-->
 ## Error when deleting NIC associated with Azure Database Migration Service
 
 When you try to delete a Network Interface Card associated with Azure Database Migration Service, the deletion attempt fails with this error:

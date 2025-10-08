@@ -7,14 +7,12 @@ ms.reviewer: maghan
 ms.date: 12/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ---
 
-# Troubleshoot high memory utilization in Azure Database for PostgreSQL flexible server
+# Troubleshoot high memory utilization in Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-This article describes how to identify the root cause of high memory utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL Flexible Server](overview.md).
+This article describes how to identify the root cause of high memory utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL](overview.md).
 
 In this article, you can learn:
 
@@ -66,8 +64,8 @@ For more information about the **EXPLAIN ANALYZE** command, review its [document
 
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md).
-- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL flexible server](concepts-server-parameters.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
+- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

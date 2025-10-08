@@ -1,8 +1,8 @@
 ---
 title: Delete virtual endpoints
-description: This article describes how to delete virtual endpoints for an Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+description: This article describes how to delete virtual endpoints for an Azure Database for PostgreSQL flexible server instance.
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/13/2025
 ms.service: azure-database-postgresql
@@ -12,9 +12,7 @@ ms.topic: how-to
 
 # Delete virtual endpoints
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-This article provides step-by-step instructions to delete virtual endpoints associated to an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to delete virtual endpoints associated to an Azure Database for PostgreSQL flexible server instance.
 
 ## Steps to delete virtual endpoints
 
@@ -22,7 +20,7 @@ This article provides step-by-step instructions to delete virtual endpoints asso
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the Azure Database for PostgreSQL flexible server for which you want to delete its associated virtual endpoints.
+1. Select the Azure Database for PostgreSQL flexible server instance for which you want to delete its associated virtual endpoints.
 
 2. In the resource menu, under the **Settings** section, select **Replication**.
 
@@ -46,7 +44,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-delete-virtual-endpoints)
 
-You can delete the existing virtual endpoints of your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint delete`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-delete) command. 
+You can delete the existing virtual endpoints of your Azure PostgreSQL flexible server instance via the [`az postgres flexible-server virtual-endpoint delete`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-delete) command. 
 
 ```azurecli-interactive
 az postgres flexible-server virtual-endpoint delete \

@@ -28,7 +28,7 @@ In this guide, you take an existing collection and migrate it from Azure Cosmos 
 
     - If you don't already have a cluster, [create a new Azure Cosmos DB for MongoDB (vCore) cluster](vcore/quickstart-portal.md).
     
-    - Ensure that you have the credentials required to connect to your vCore cluster. For more information, see [Azure Cosmos DB for MongoDB (vCore) cluster authentication](vcore/entra-authentication.md).
+    - Ensure that you have the **native authentication credentials** required to connect to your vCore cluster. 
 
 - An Azure Key Vault account
 
@@ -36,7 +36,7 @@ In this guide, you take an existing collection and migrate it from Azure Cosmos 
 
 ## Set up key vault
 
-First, you need to configure your source Azure Cosmos DB for MongoDB (RU) account to store the target Azure Cosmos DB for MongoDB (vCore) cluster's credentials in your existing key vault.
+First, you need to configure your source Azure Cosmos DB for MongoDB (RU) account to store the target Azure Cosmos DB for MongoDB (vCore) cluster's native authentication credentials in your existing key vault.
 
 1. Sign in to the Azure portal (<https://portal.azure.com>).
 
@@ -53,9 +53,7 @@ First, you need to configure your source Azure Cosmos DB for MongoDB (RU) accoun
 
 1. Navigate to your existing key vault.
 
-1. Select the **Access Control (IAM)** option in the resource menu.
-
-1. Assign the **Key Vault Secret User** role to the principal ID (object ID) of the managed identity that you're using for your source account.
+1. If the Key Vault uses the **Role-Based Access Control (RBAC)** permission model, select the **Access Control (IAM)** option in the resource menu and assign the **Key Vault Secret User** role to the principal ID (object ID) of the managed identity used for your source account. Otherwise, use the **Access policies** option in the resource menu to create an access policy with **Get** and **List Secret** permissions, then assign it to the principal ID (object ID).
 
 1. Run the command to update your source account to use the preferred identity mechanism as the default identity.
     
@@ -83,7 +81,7 @@ First, you need to configure your source Azure Cosmos DB for MongoDB (RU) accoun
     | | Description |
     | --- | --- |
     | **Name** | Secret names are used to identify the secret and can only contain alphanumeric characters and dashes. This value is eventually used in the migration job's **Secret Name** field. |
-    | **Secret value** | Paste the credentials for your Azure Cosmos DB for Mongo DB (vCore) target cluster here. |
+    | **Secret value** | Paste the native authentication credentials for your Azure Cosmos DB for Mongo DB (vCore) target cluster here. |
 
 1. In your newly created secret, gather the value of **Vault URI**. This value is eventually used in the migration job's **Vault URI** field.
 
@@ -124,7 +122,10 @@ The **Select Migration Mode** section is used to provide the migration mode that
 
 ## Configure target migration credentials
 
-The **Select Target Account** section is used to provide the connection details to the target Azure Cosmos DB for Mongo DB (vCore) cluster. As a security best practice, we recommend that you store your credentials in Azure Key Vault.
+The **Select Target Account** section is used to provide the connection details to the target Azure Cosmos DB for Mongo DB (vCore) cluster. As a security best practice, we recommend that you store your native authentication credentials in Azure Key Vault.
+
+> [!NOTE]
+> Connection strings that use Microsoft Entra ID authentication are currently not supported.
 
 1. Set the **Vault URI** and **Secret Name** fields to the values you recorded earlier in this guide.
 
@@ -150,6 +151,10 @@ The **Update Target Firewall** section is used to make sure that the target Azur
 
 1. Select **Next**.
 
+> [!NOTE]
+> If network security is enabled on your Azure Key Vault, ensure the same [IP is added to the Azure Key Vault Firewall](/azure/key-vault/general/network-security#key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips) as well.
+
+
 ## Configure and start job
 
 Use the **Select Collections** and **Confirm & Submit** sections to finalize your job's configuration.
@@ -163,7 +168,8 @@ Use the **Select Collections** and **Confirm & Submit** sections to finalize you
 1. Review the job configuration and provide a unique job name.
 
     > [!IMPORTANT]
-    > The migration job doesn't transfer the indexes to the target collections. Before proceeding, use this sample [migration script](https://aka.ms/mongoruschemamigrationscript) to create the indexes on the target collections. Once the indexes are ready, select the checkbox.
+    > 1. The migration job doesn't transfer the indexes to the target collections. Before proceeding, use this sample [migration script](https://aka.ms/mongoruschemamigrationscript) to create the indexes on the target collections. Once the indexes are ready, select the checkbox.
+    > 2. The migration job doesn't support changing the shard key. If you need a different shard key, migrate the data as an unsharded collection. Once the migration is complete, shard the collection on target using the desired shard key.
 
 1. Select **Submit** to create and start the job.
 

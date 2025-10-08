@@ -1,13 +1,13 @@
 ---
 title: Public Network Access Overview
 description: Learn about public access networking option in Azure Database for MySQL - Flexible Server.
-author: SudheeshGH
-ms.author: sunaray
+author: aditivgupta
+ms.author: adig
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 07/21/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Public Network Access for Azure Database for MySQL - Flexible Server

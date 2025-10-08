@@ -1,9 +1,9 @@
 ---
 title: "What's New in Azure Database for MySQL"
 description: Learn about recent updates to Azure Database for MySQL.
-author: SudheeshGH
-ms.author: sunaray
-ms.reviewer: vamehta, sisawant, maghan
+author: deepthiprasad
+ms.author: deprasa
+ms.reviewer: maghan
 ms.date: 05/19/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
@@ -23,7 +23,61 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 > [!NOTE]
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## September 2025
+
+### Azure MySQL 8.4 General Available
+
+We’re excited to announce that Azure Database for MySQL – Flexible Server now supports MySQL 8.4 in General Availability (GA). This means you can create new MySQL 8.4 servers on Azure fully supported for production workloads. MySQL 8.4 is a long-term supported release from the MySQL community, bringing the latest features and improvements while emphasizing stability. With Azure’s managed service, you get these new capabilities backed by Azure’s enterprise-grade reliability and support. In short, MySQL 8.4 GA opens the door for you to upgrade your databases and future-proof your MySQL environment on Azure. [Learn more](../concepts-version-policy.md#supported-mysql-versions)
+
+## Aug 2025
+
+### Cross subscription and cross resource-group placement in restore/replica provisioning workflow
+
+You can now restore a server or create a read replica in a different subscription and resource group in Azure Database for MySQL – Flexible Server. This enhancement offers greater flexibility for cross-environment restores, resource organization, and subscription-level separation, helping meet governance and operational requirements. To learn more, visit [Point-in-time restore](how-to-restore-server-portal.md).
+
+### Ability to delete on-demand backup
+
+You can now delete on-demand backups in Azure Database for MySQL – Flexible Server, giving you greater control over backup management and storage costs. This feature allows you to remove on-demand backups that are no longer needed, helping maintain a cleaner backup inventory and optimize resource usage. To learn more, visit [Backup and restore](how-to-trigger-on-demand-backup.md#trigger-on-demand-backup)
+
+## July 2025
+
+### General Availability in new Azure regions
+
+Azure Database for MySQL Flexible Server is now available in the following Azure regions:
+
+- Chile Central
+
+- Indonesia Central
+
+- Malaysia West
+
+### Self-Heal in Azure Database for MySQL (Public Preview)
+The Self-Heal feature in Azure Database for MySQL empowers customers to resolve common server issues independently, without needing to open a support case. It provides a one-click repair experience that helps restore service health quickly and safely. [Learn more](./how-to-self-heal.md).
+
+### Accelerated logs feature is now available in General Purpose service tier
+Accelerated logs are now supported in the General Purpose service tier of Azure Database for MySQL – Flexible Server. Previously available only in the Business Critical tier, this feature enhances performance and reduces transaction latency. Accelerated logs feature in General Purpose tier is available at an additional cost. [Learn more](./concepts-accelerated-logs.md).
+
+
+### Automate scheduling of on-demand backups
+
+Azure Database for MySQL now supports the ability to schedule on-demand backups using automation tasks. This feature gives you greater control and flexibility in managing on-demand backups for your Azure Database for MySQL Flexible Server instances. Learn more about the how to schedule an automation task [here](./create-automation-tasks.md#on-demand-backup-server-task).
+
+
+### Configure backup interval for the automated backups
+
+Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. This new feature optimizes the process by introducing more frequent snapshots, thereby reducing the number of binlogs that need to be replayed for point-in-time restore and minimizing overall restore time. Learn more about the feature [here](./concepts-backup-restore.md#backup-frequency).
+
+## June 2025
+
+### Auto Initialization of Time Zones
+
+Time zones are automatically loaded during server creation, removing the need for customers to manually execute the mysql.az_load_timezone stored procedure afterwards to load the time zone. For more information, refer to the server parameter details for [time_zone](concepts-server-parameters.md#time_zone)
+
 ## May 2025
+
+### Configure backup interval for the automated backups (Preview)
+
+Azure Database for MySQL now supports ability to configure backup interval for the automatic backup’s taken by the system to improve restore speed. The feature is currently available in limited regions, namely – West Central US and East Asia. Learn more about the feature [here](./concepts-backup-restore.md#backup-frequency).
 
 ### Enable Auto-Scale of IOPS for Faster Restore and Replica Provisions
 
@@ -33,7 +87,7 @@ To learn more, visit [Point-in-time restore](how-to-restore-server-portal.md).
 
 ### High Availability with Dedicated Azure Standard Load Balancer (SLB) (preview)
 
-A dedicated standard load balancer (SLB) in Azure Database for MySQL for High Availability (HA) enabled servers is now available for public preview. This feature adds a dedicated standard load balancer to the HA configuration, enabling low-latency, high-throughput distribution of front-end traffic across backend servers. This enhancement improves failover performance and ensures more efficient handling of MySQL data traffic. This feature is automatically applied to all newly created HA servers if you want to enable an SLB for an existing HA server, [file a support ticket with Azure Support.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+A dedicated standard load balancer (SLB) in Azure Database for MySQL for High Availability (HA) enabled servers is now available for public preview. This feature adds a dedicated standard load balancer to the HA configuration, enabling low-latency, high-throughput distribution of front-end traffic across backend servers. This enhancement improves failover performance and ensures more efficient handling of MySQL data traffic. If you want to enable an SLB for your HA server, [file a support ticket with Azure Support.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## March 2025
 
@@ -55,6 +109,9 @@ Refer to the [Built-in stored procedures in Azure Database for MySQL](./concepts
 
 The `caching_sha2_password` plugin is now exposed to customers by default. Customers can enable and configure it by setting the relevant **Server Parameters** in the Azure portal.
 
+### Default zone-resiliency for Business-Critical service tier (Rollback)
+In response to customer feedback requesting flexibility in choosing their deployment type, we’ve decided to reverse the change that made zone-resiliency the default for the Business-Critical service tier.
+
 ## February 2025
 
 ### Known Issues
@@ -70,6 +127,9 @@ The `caching_sha2_password` plugin is now exposed to customers by default. Custo
 ### Default zone-resiliency for Business-Critical service tier
 
 You now benefit from the highest level of availability against infrastructure failures within an availability zone at no extra cost for mission-critical workloads running on the Business-Critical service tier. Regardless of whether your flexible servers are enabled with High Availability (HA), your server data and log files are hosted in zone-redundant storage by default. While zone-redundant HA-enabled servers continue to benefit from a 99.99% uptime SLA from the built-in zonal redundancy and hot standby, non-HA servers can recover quickly from zonal outages using zone-redundant backups. This enhancement applies to all new servers provisioned in the Business-Critical service tier.
+
+> [!NOTE]
+> Based on customer feedback requesting the ability to choose their preferred deployment type, we’ve decided to roll back Default zone-resiliency for Business-Critical service tier. Now, for both Business Critical and General-Purpose servers, customers must select the High Availability (HA) mode either same-zone or zone-redundant at the time of server creation. This selection is final and cannot be modified later.
 
 ### Accelerated Logs enabled for all new Business Critical servers
 
@@ -124,7 +184,7 @@ Starting November 1, 2024, new B1 servers are limited to ensure performance and 
 
   Azure Database for MySQL now offers major version upgrades for Burstable SKU compute tiers. This support automatically upgrades the compute tier to General Purpose SKU before performing the upgrade, ensuring sufficient resources. Customers can choose to revert to Burstable SKU after the upgrade. Additional costs might apply.
 
-  To learn more, visit [Upgrade MySQL version](./how-to-upgrade.md#perform-a-planned-major-version-upgrade-from-mysql-57-to-mysql-80-using-the-azure-portal-for-burstable-sku-servers).
+  To learn more, visit [Upgrade MySQL version](./how-to-upgrade.md#perform-a-planned-major-version-upgrade-using-the-azure-portal-for-burstable-sku-servers).
 
 - **Deprecated Metrics Announcement**
 

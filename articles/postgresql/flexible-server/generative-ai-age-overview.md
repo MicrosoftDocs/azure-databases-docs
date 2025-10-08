@@ -5,6 +5,7 @@ author: jojohnso-msft
 ms.author: jojohnso
 ms.reviewer: maghan
 ms.date: 05/19/2025
+ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -12,7 +13,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand what the Apache AGE extension is and how to enable it in Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to understand what the Apache AGE extension is and how to enable it in Azure Database for PostgreSQL flexible server instances.
 ---
 
 # AGE extension with Azure Database for PostgreSQL
@@ -45,7 +46,7 @@ These steps help you to enable the extension in your flexible server instance:
 
 ### Access server parameters
 
-Within the Azure portal, navigate to the PostgreSQL Flexible Server instance and select the Server Parameters option.
+Within the Azure portal, navigate to the PostgreSQL flexible server instance and select the Server Parameters option.
 
 Adjust the following settings:
 

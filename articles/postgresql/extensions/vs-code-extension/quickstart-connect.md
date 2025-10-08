@@ -1,18 +1,19 @@
 ---
 title: "Quickstart: PostgreSQL Extension for VS Code"
 description: Quickstart guide for the PostgreSQL extension for VS Code.
-author: jojohnso-msft
-ms.author: jojohnso
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 05/19/2025
+ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: quickstart
 ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand what Semantic Operators are available in the azure_ai extension for Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to understand what Semantic Operators are available in the azure_ai extension for an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview
@@ -27,7 +28,7 @@ These tools and resources help you follow along with this article and make the m
 
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your machine.
 - PostgreSQL database installed locally or hosted in the [cloud](../../flexible-server/quickstart-create-server.md).
-- [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql) installed in Visual Studio Code.
+- [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) installed in Visual Studio Code.
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
 - [Azure account](../../flexible-server/how-to-deploy-on-azure-free-account.md) for connecting to cloud-hosted databases (optional).
@@ -121,7 +122,7 @@ Write prompts like the example below to receive detailed insights and suggestion
 
 To learn more, visit [Configure GitHub Copilot](quickstart-github-copilot.md)
 
-## Connect to an Azure Database for PostgreSQL Flexible Server instance with VS Code from the Azure portal
+## Connect to an Azure Database for PostgreSQL flexible server instance with VS Code from the Azure portal
 
 To connect to an Azure Database for PostgreSQL flexible server instance using Visual Studio Code, follow these steps:
 
@@ -130,7 +131,7 @@ To connect to an Azure Database for PostgreSQL flexible server instance using Vi
 
 ### Connect with VS Code
 
-The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure Database for PostgreSQL Flexible Server. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
+The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure Database for PostgreSQL flexible server instance. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
 
 - Select the prominent **Connect with VS Code** button on the Overview page.
 - A side pane listing the requirements to connect using VS Code appears.
@@ -197,4 +198,4 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 - [What is the PostgreSQL extension for Visual Studio Code preview?](overview.md)
 - [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview](quickstart-github-copilot.md)
-- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
+- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

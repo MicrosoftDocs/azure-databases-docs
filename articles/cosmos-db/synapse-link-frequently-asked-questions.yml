@@ -2,11 +2,11 @@
 metadata:
   title: Frequently asked questions about Azure Synapse Link for Azure Cosmos DB
   description: Get answers to frequently asked questions about Synapse Link for Azure Cosmos DB in areas such as billing, analytical store, security, time to live on analytical store.
-  author: Rodrigossz
-  ms.author: rosouz
+  author: markjbrown
+  ms.author: mjbrown
   ms.service: azure-cosmos-db
   ms.topic: faq
-  ms.date: 04/19/2023
+  ms.date: 06/11/2025
   ms.custom: synapse-cosmos-db
 title: Frequently asked questions about Azure Synapse Link for Azure Cosmos DB
 summary: |
@@ -212,10 +212,15 @@ sections:
   - name: Security
     questions:
       - question: |
-          What are the ways to authenticate with the analytical store?
+          What are the ways to authenticate with the analytical store when not using VNet features or Private Endpoints?
         answer: |
           Authentication with the analytical store is the same as a transactional store. For a given database, you can authenticate with the primary or read-only key. You can use linked services in Azure Synapse Studio to prevent pasting the Azure Cosmos DB keys in the Spark notebooks. Access to this Linked Service is available for everyone who has access to the workspace. When using Synapse serverless SQL pools, you can query the Azure Cosmos DB analytical store by pre-creating and referencing SQL credentials in the OPENROWSET function. To learn more, see [Query with a serverless SQL pool in Azure Synapse Link](/azure/synapse-analytics/sql/query-cosmos-db-analytical-store) article.
-          
+      
+      - question: |
+          What are the ways to authenticate with the analytical store when securing access over VNets or Private Endpoints?
+        answer: |
+          Authentication with the analytical store must be key-based authentication when using these networking access features. Settings `DisableLocalAccess` on the account will prevent access to the analytical store.
+
       - question: | 
           Is it possible to use customer-managed keys with Azure Synapse Link?
         answer: |

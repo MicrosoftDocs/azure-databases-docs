@@ -6,7 +6,7 @@ author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/23/2024
 ---
 
@@ -168,7 +168,6 @@ Once the text index is created, you can perform text searches using the "text" o
 ### Limitations
 
 - Only one text index can be defined on a collection.
-- Text indexes support simple text searches and don't yet provide advanced search capabilities like regular expressions.
 - Sort operations can't use the ordering of the text index in MongoDB.
 - Hint() isn't supported in combination with a query using $text expression.
 - Text indexes can be relatively large, consuming significant storage space compared to other index types.

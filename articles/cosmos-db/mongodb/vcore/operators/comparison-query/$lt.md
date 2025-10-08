@@ -1,27 +1,27 @@
 ---
 title: $lt
-titleSuffix: Overview of the $lt query operator in Azure Cosmos DB for MongoDB vCore
-description: The $lt query operator in Azure Cosmos DB for MongoDB vCore matches documents where the value of field is less than a specified value
+titleSuffix: Overview of the $lt operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $lt operator retrieves documents where the value of field is less than a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 02/24/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
 # $lt
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$lt` operator is used to match documents where the value of a field is strictly less than a specified value. The `$lt` operator filters documents based on numeric, date, or string values.
+The `$lt` operator retrieves documents where the value of a field is strictly less than a specified value. The `$lt` operator filters documents based on numeric, date, or string values.
 
 ## Syntax
 
-The syntax for using the `$lt` operator in a MongoDB query is:
-
-```mongodb
-{ "field": { "$lt": value } }
+```javascript
+{
+    field: {
+        $lt: value
+    }
+}
 ```
 
 ## Parameters
@@ -33,7 +33,7 @@ The syntax for using the `$lt` operator in a MongoDB query is:
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -145,23 +145,35 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1: Find stores with total sales less than $36000
+### Example 1: Find a store with sales below $36,000
+
+To find a store with less than $36,000 in sales, first run a query using $lt on the sales.totalSales field. Then project only the name and total sales of the resulting stores and limit the number of results to a single document.
 
 ```javascript
-db.stores.find({"sales.totalSales": { "$lt": 36000 }}, {"name": 1, "sales.totalSales": 1}, {"limit": 1})
+db.stores.find({
+    "sales.totalSales": {
+        $lt: 36000
+    }
+}, {
+    name: 1,
+    "sales.totalSales": 1
+}, {
+    limit: 1
+})
 ```
 
-This returns the following results:
+The first result returned by this query is:
+
 ```json
-{
-    "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
-    "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
-    "sales": { "totalSales": 17676 }
-}
+[
+    {
+        "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
+        "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
+        "sales": { "totalSales": 17676 }
+    }
+]
 ```
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$gt for greater than comparisons]($gt.md)
-- [$lte for less than or equal to comparisons]($lte.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

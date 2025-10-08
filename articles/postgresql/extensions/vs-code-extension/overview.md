@@ -1,16 +1,17 @@
 ---
 title: What Is the PostgreSQL Extension for Visual Studio Code?
 description: Overview of the PostgreSQL extension for Visual Studio Code.
-author: jojohnso-msft
-ms.author: jojohnso
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 05/19/2025
+ms.date: 06/24/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: overview
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand what the PostgreSQL extension for VS Code is and how I can use it with Azure Database for PostgreSQL flexible server.
+ai-usage: ai-assisted
+# customer intent: As a user, I want to understand what the PostgreSQL extension for VS Code is and how I can use it with an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # What is the PostgreSQL extension for Visual Studio Code preview?
@@ -77,6 +78,12 @@ The PostgreSQL extension is compatible with the following operating systems:
 
 Including support for various Linux distributions such as Ubuntu, Fedora, and Red Hat Enterprise Linux.
 
+## Limitations and considerations
+
+The PostgreSQL extension for Visual Studio Code is currently in preview, and there are some limitations and considerations to keep in mind:
+
+- ARM64 not currently supported
+
 ## Feedback and support
 
 For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this via the VS Code Help menu or the PGSQL command palette.
@@ -91,4 +98,4 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 - [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview](quickstart-connect.md)
 - [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview](quickstart-github-copilot.md)
-- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
+- [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

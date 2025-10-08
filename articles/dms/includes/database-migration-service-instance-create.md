@@ -6,7 +6,8 @@ ms.date: 09/18/2024
 ms.service: sql-database
 ms.topic: include
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 ## Create an Azure Database Migration Service instance
 

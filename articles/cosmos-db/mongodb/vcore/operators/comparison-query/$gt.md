@@ -1,23 +1,27 @@
 ---
 title: $gt
-titleSuffix: Overview of the $gt query operator in Azure Cosmos DB for MongoDB vCore
-description: The $gt query operator in Azure Cosmos DB for MongoDB vCore selects documents where the value of a field is greater than a specified value
+titleSuffix: Overview of the $gt operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $gt query operator retrieves documents where the value of a field is greater than a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 02/24/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
-# $gt (Comparison Query)
+# $gt
 
-The `$gt` operator is used to select documents where the value of a field is greater than a specified value. The `$gt` operator queries numerical and date values to filter records that exceed a specified threshold.
+The `$gt` operator retrieves documents where the value of a field is greater than a specified value. The `$gt` operator queries numerical and date values to filter records that exceed a specified threshold.
 
 ## Syntax
 
-```mongodb
-{ "field": { "$gt": value } }
+```javascript
+{
+    field: {
+        $gt: value
+    }
+}
 ```
 
 ## Parameters
@@ -28,7 +32,8 @@ The `$gt` operator is used to select documents where the value of a field is gre
 | **`value`** | The value that the field should be greater than|
 
 ## Examples
-Consider this sample document from the stores collection in the StoreData database.
+
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -140,52 +145,64 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1: Retrieve all stores where the total sales exceed $35,000
+### Example 1: Retrieve stores with sales exceeding $35,000
+
+To retrieve a store with over $35,000 in sales, first run a query with $gt operator on the sales.totalSales field. Then limit the query results to one store.
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$gt": 35000 } }, {"name": 1, "sales.totalSales": 1}, {"limit": 1})
+db.stores.find({
+    "sales.totalSales": {
+        $gt: 35000
+    }
+}, {
+    name: 1,
+    "sales.totalSales": 1
+}, {
+    limit: 1
+})
 ```
 
-This returns the following results:
+The first result returned by this query is:
+
 ```json
-{
-    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-    "name": "First Up Consultants | Bed and Bath Center - South Amir",
-    "sales": { "totalSales": 37701 }
-}
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "sales": { "totalSales": 37701 }
+    }
+]
 ```
 
-### Example 2: Find stores with more than 12 full-time staff
+### Example 2: Find a store with more than 12 full-time staff
+
+To find a store with more than 12 full time staff, first run a query with the $gt operator on the staff.totalStaff.fullTime field. Then project just the name and totalStaff fields and limit the result set to a single store from the list of matching results.
 
 ```javascript
-db.stores.find({ "staff.totalStaff.fullTime": { "$gt": 12 } }, {"name": 1, "staff.totalStaff": 1}, {"limit": 1})
+db.stores.find({
+    "staff.totalStaff.fullTime": {
+        $gt: 12
+    }
+}, {
+    name: 1,
+    "staff.totalStaff": 1
+}, {
+    limit: 1
+})
 ```
 
-This returns the following results:
+The first result returned by this query is:
+
 ```json
-{
-    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-    "name": "First Up Consultants | Bed and Bath Center - South Amir",
-    "staff": { "totalStaff": { "fullTime": 18, "partTime": 17 } }
-}
-```
-
-### Example 3: Find promotion events with a discount percentage greater than 10% for Art & Craft Kits
-
-```javascript
-db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Art & Craft Kits", "discountPercentage": { "$gt": 10 } } } }, {"name": 1, }, {"limit": 1})
-```
-
-This returns the following results:
-```json
-{
-    "_id": "64941495-5778-4e6a-9eb1-6d7f1fddae17",
-    "name": "Trey Research | Toy Haven - North Loren"
-}
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "staff": { "totalStaff": { "fullTime": 18, "partTime": 17 } }
+    }
+]
 ```
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$gte for greater than or equal to comparisons]($gte.md)
-- [$lte for less than or equal to comparisons]($lte.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

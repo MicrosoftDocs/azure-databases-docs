@@ -1,5 +1,5 @@
 ---
-title: Migration Service in Azure Database for PostgreSQL
+title: "Migration Service in Azure Database for PostgreSQL"
 description: Get an introduction to using the migration service to migrate to Azure Database for PostgreSQL flexible server, including advantages and migration options.
 author: hariramt
 ms.author: hariramt
@@ -11,8 +11,6 @@ ms.topic: overview
 ---
 
 # What is the migration service in Azure Database for PostgreSQL?
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 The migration service in Azure Database for PostgreSQL simplifies the process of moving your PostgreSQL databases to Azure. The migration service offers migration options from various PostgreSQL-supported sources, including migrating from a cloud service, from an on-premises environment, or from a virtual machine in Azure. The migration service is designed to help you move your PostgreSQL databases to Azure Database for PostgreSQL flexible server with ease and confidence.
 
@@ -30,7 +28,7 @@ The following figure shows the PostgreSQL sources you can migrate by using the m
 
 The next figure depicts the detailed steps that are involved in migrating from Azure Database for PostgreSQL - Single Server to Azure Database for PostgreSQL flexible server. The figure illustrates the migration workflow and key stages of the migration for a successful transition to Azure Database for PostgreSQL flexible server.
 
-:::image type="content" source="media/overview-migration-service-postgresql/concepts-flow-diagram.png" alt-text="Diagram that depicts the migration from Single Server to Flexible Server." lightbox="media/overview-migration-service-postgresql/concepts-flow-diagram.png":::
+:::image type="content" source="media/overview-migration-service-postgresql/concepts-flow-diagram.png" alt-text="Diagram that depicts the migration from Single Server to flexible server." lightbox="media/overview-migration-service-postgresql/concepts-flow-diagram.png":::
 
 ## Why use a flexible server?
 

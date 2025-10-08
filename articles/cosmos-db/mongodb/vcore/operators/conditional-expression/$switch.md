@@ -1,31 +1,27 @@
 --- 
-  title: $switch (conditional expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $switch
+  titleSuffix: Overview of the $switch operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $switch operator is used to evaluate a series of conditions and return a value based on the first condition that evaluates to true.  
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
-  ms.date: 09/27/2024
+  ms.topic: language-reference
+  ms.date: 09/05/2025
 ---
 
-
-# $switch (conditional expression)
+# $switch
 
 The `$switch` operator is used to evaluate a series of conditions and return a value based on the first condition that evaluates to true. This is useful when you need to implement complex conditional logic within aggregation pipelines.
 
 ## Syntax
 
-The syntax for the `$switch` operator is as follows:
-
-```JavaScript
+```javascript
 {
   $switch: {
     branches: [
       { case: <expression>, then: <expression> },
-      { case: <expression>, then: <expression> },
-      ...
+      { case: <expression>, then: <expression> }
     ],
     default: <expression>
   }
@@ -34,106 +30,163 @@ The syntax for the `$switch` operator is as follows:
 
 ### Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **branches**| An array of documents, each containing|
 | **case**| An expression that evaluates to either `true` or `false`|
 | **then**| The expression to return if the associated `case` expression evaluates to `true`|
 | **default**| The expression to return if none of the `case` expressions evaluate to `true`. This field is optional.|
 
-## Example
+## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
+    ]
 }
 ```
 
-To determine the type of staff based on their count.
+### Example 1: To determine staff type based on full-time and part-time counts
 
-```JavaScript
-db.stores.aggregate([
-  {
-    $project: {
-      name: 1,
-      staffType: {
-        $switch: {
-          branches: [
-            {
-              case: { $eq: ["$staff.totalStaff.partTime", 0] },
-              then: "Only Full time"
-            },
-            {
-              case: { $eq: ["$staff.totalStaff.fullTime", 0] },
-              then: "Only Part time"
+This query determines the type of staff based on their count.
+
+```javascript
+db.stores.aggregate([{
+        $project: {
+            name: 1,
+            staffType: {
+                $switch: {
+                    branches: [{
+                            case: {
+                                $eq: ["$staff.totalStaff.partTime", 0]
+                            },
+                            then: "Only Full time"
+                        },
+                        {
+                            case: {
+                                $eq: ["$staff.totalStaff.fullTime", 0]
+                            },
+                            then: "Only Part time"
+                        }
+                    ],
+                    default: "Both"
+                }
             }
-          ],
-          default: "Both"
         }
-      }
+    },
+    // Limit the result to the first 3 documents
+    {
+        $limit: 3
     }
-  },
-  // Limit the result to the first 3 documents
-  { $limit: 3 } 
 ])
 ```
 
-This query would return the following document.
+The first three results returned by this query are:
 
 ```json
 [

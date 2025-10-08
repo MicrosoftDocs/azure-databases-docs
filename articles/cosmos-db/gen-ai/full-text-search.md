@@ -6,6 +6,7 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/10/2025
+ms.update-cycle: 180-days
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
@@ -16,18 +17,11 @@ ms.custom:
 
 # Full-text search in Azure Cosmos DB for NoSQL
 
-[!INCLUDE [Ongoing Deployment](../nosql/includes/deployment-ongoing.md)]
-
 Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature as generally available. This is designed to enhance the native search capabilities of your apps without needing an external search service for basic full-text search. 
-
-## Prerequisites
-
-- Azure Cosmos DB for NoSQL account
-- [Vector search](vector-search-overview.md) feature enabled
 
 ## What is full text search?
 
-Azure Cosmos DB for NoSQL now offers full-text indexing and search, designed to enhance your data querying capabilities. This feature includes advanced text processing techniques such as stemming, stop word removal, and tokenization, enabling efficient and effective text searches through a specialized text index. Full text search also includes *full text scoring* with a function that evaluates the relevance of documents to a given search query. BM25, or Best Matching 25, considers factors like term frequency, inverse document frequency, and document length to score and rank documents. This helps ensure that the most relevant documents appear at the top of the search results, improving the accuracy and usefulness of text searches.
+Azure Cosmos DB for NoSQL now offers full-text indexing and search, designed to enhance your search and retrieval workloads. This feature includes advanced text processing techniques such as stemming, stop word removal, and tokenization, enabling efficient and effective text searches through a specialized text index. Full text search also includes *full text scoring* with a function that evaluates the relevance of documents to a given search query. BM25, or Best Matching 25, considers factors like term frequency, inverse document frequency, and document length to score and rank documents. This helps ensure that the most relevant documents appear at the top of the search results, improving the accuracy and usefulness of text searches.
 
 Full Text Search is ideal for a variety of scenarios, including:
 
@@ -42,13 +36,15 @@ Full Text Search is ideal for a variety of scenarios, including:
 
 1. Configure a container with a full text policy and full text index.
 2. Insert your data with text properties.
-3. Run hybrid queries against the data.
+3. Run queries against the data using full text search system functions.
 
 ### Configure container policies and indexes for hybrid search
 
-To use full text search capabilities, you'll first need to define two policies:
+To use full text search capabilities, you should first define two policies:
 - A container-level full text policy that defines what paths contain text for the new full text query system functions.
 - A full text index added to the indexing policy that enables efficient search.
+
+While it's possible to run full text search queries without these policies, they won't utilize the full-text index and can consume higher RUs and have longer execution times. It's strongly recommended to define full text container and index policies. 
 
 ### Full text policy
 
@@ -214,10 +210,11 @@ Fuzzy search can improve resilience to typos and text variations. You can specif
 > [!NOTE]
 > Fuzzy search is in early preview. Performance, quality, and functionality are subject to change through the evolution of the preview. To try it, you must enroll in the *Preview Capabilities for Full Text Search* feature via the "Features" section of your Azure Cosmos DB resource in the Azure portal. 
 
+The following example query retrieves documents where the text includes words similar to “red” (within 1 edit) and “bycycle” (within 2 edits):
 ```sql
 SELECT TOP 10 *
 FROM c
-WHERE FullTextContains(c.text, {"term": "red", "distance":1}, {"term": "bicycle", "distance":2})
+WHERE FullTextContains(c.text, {"term": "red", "distance":1}) AND FullTextContains(c.text, {"term": "bycycle", "distance":2})
 ```
 
 ## Related content

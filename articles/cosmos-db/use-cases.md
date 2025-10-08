@@ -6,7 +6,7 @@ ms.author: mjbrown
 ms.reviewer: maghan
 ms.date: 05/30/2025
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: solution-overview
 ms.custom:
   - cosmos-db-video
 ---
@@ -31,7 +31,7 @@ After reading this article, you'll be able to answer the following questions:
 
 [Azure Cosmos DB](../cosmos-db/introduction.md) is the Azure solution for a fast NoSQL database, with open APIs for any scale. The service is designed to allow customers to elastically (and independently) scale throughput and storage across any number of geographical regions. Azure Cosmos DB is the first globally distributed database service in the market today to offer comprehensive [service level agreements](https://azure.microsoft.com/support/legal/sla/cosmos-db/) encompassing throughput, latency, availability, and consistency.
 
-Azure Cosmos DB is a global distributed, multi-model database that is used in a wide range of applications and use cases. It's a good choice for any [serverless](https://azure.com/serverless) application that needs low order-of-millisecond response times, and needs to scale rapidly and globally. It supports multiple data models (key-value, documents, graphs and columnar) and many Azure Cosmos DB APIs for data access including [API for MongoDB](mongodb/introduction.md), [API for NoSQL](introduction.md), [API for Gremlin](gremlin/introduction.md), and [API for Table](table/introduction.md) natively, and in an extensible manner.
+Azure Cosmos DB is a global distributed, multi-model database that is used in a wide range of applications and use cases. It's a good choice for any [serverless](https://azure.com/serverless) application that needs low order-of-millisecond response times, and needs to scale rapidly and globally. It supports multiple data models (key-value, documents, graphs and columnar) and many Azure Cosmos DB APIs for data access including [API for MongoDB](mongodb/overview.md), [API for NoSQL](nosql/overview.md), [API for Gremlin](gremlin/overview.md), and [API for Table](table/overview.md) natively, and in an extensible manner.
 
 The following are some attributes of Azure Cosmos DB that make it well-suited for high-performance applications with global ambition.
 
@@ -54,7 +54,7 @@ Bursts of data can be ingested by Azure Event Hubs as it offers high throughput 
 
 For a sample IoT solution using Azure Cosmos DB, Event Hubs, and Apache Storm, see the [hdinsight-storm-examples repository on GitHub](https://github.com/hdinsight/hdinsight-storm-examples/).
 
-For more information on Azure offerings for IoT, see [Create the Internet of Your Things](https://www.microsoft.com/en-us/internet-of-things).
+For more information on Azure offerings for IoT, see [Create the Internet of Your Things](https://www.microsoft.com/internet-of-things).
 
 ## Retail and marketing
 

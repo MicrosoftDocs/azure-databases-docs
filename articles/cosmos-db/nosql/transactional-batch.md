@@ -1,29 +1,30 @@
 ---
-title: Transactional batch operations in Azure Cosmos DB using the .NET, Java or Python SDK 
-description: Learn how to use TransactionalBatch in the Azure Cosmos DB .NET, Java SDK or Python SDK to perform a group of point operations that either succeed or fail. 
+title: Transactional Batch Operations in Azure Cosmos DB 
+description: Learn how to use Transactional Batch in the Azure Cosmos DB .NET, Java, Python, or Go SDKs to perform a group of point operations that either succeed or fail. 
 author: stefArroyo
 ms.author: esarroyo
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-dotnet, devx-track-extended-java, devx-track-python
-ms.topic: conceptual
-ms.date: 10/27/2020
+ms.topic: how-to
+ms.date: 07/16/2025
 ---
 
 # Transactional batch operations in Azure Cosmos DB
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-Transactional batch describes a group of point operations that need to either succeed or fail together with the same partition key in a container. Operations are defined, added to the batch, and the batch is executed. If all operations succeed in the order they're described within the transactional batch operation, the transaction will be committed. However, if any operation fails, the entire transaction is rolled back.
+Transactional batch describes a group of point operations that need to either succeed or fail together with the same partition key in a container. Operations are defined, added to the batch, and the batch is executed. If all operations succeed in the order they're described within the transactional batch operation, the transaction is committed. However, if any operation fails, the entire transaction is rolled back.
 
 ## What's a transaction in Azure Cosmos DB
 
-A transaction in a typical database can be defined as a sequence of operations performed as a single logical unit of work. Each transaction provides ACID (Atomicity, Consistency, Isolation, Durability) property guarantees.
+A transaction in a typical database can be defined as a sequence of operations performed as a single logical unit of work. Each transaction provides ACID (atomicity, consistency, isolation, and durability) property guarantees.
 
 * **Atomicity** guarantees that all the operations done inside a transaction are treated as a single unit, and either all of them are committed or none of them are.
 * **Consistency** makes sure that the data is always in a valid state across transactions.
-* **Isolation** guarantees that no two transactions interfere with each other – many commercial systems provide multiple isolation levels that can be used based on the application needs.
-* **Durability** ensures that any change that is committed in a database will always be present.
-Azure Cosmos DB supports [full ACID compliant transactions with snapshot isolation](database-transactions-optimistic-concurrency.md) for operations within the same [logical partition key](../partitioning-overview.md).
+* **Isolation** guarantees that no two transactions interfere with each other. Many commercial systems provide multiple isolation levels that can be used based on the application needs.
+* **Durability** ensures that any change that's committed in a database is always present.
+
+Azure Cosmos DB supports full [ACID compliant transactions with snapshot isolation](database-transactions-optimistic-concurrency.md) for operations within the same [logical partition key](../partitioning-overview.md).
 
 ## Transactional batch operations and stored procedures
 
@@ -38,7 +39,7 @@ Azure Cosmos DB currently supports stored procedures, which also provide the tra
 
 ### [.NET](#tab/dotnet)
 
-When creating a transactional batch operation, start with a container instance and call [CreateTransactionalBatch](/dotnet/api/microsoft.azure.cosmos.container.createtransactionalbatch):
+Start with a container instance and call [CreateTransactionalBatch](/dotnet/api/microsoft.azure.cosmos.container.createtransactionalbatch):
 
 ```csharp
 PartitionKey partitionKey = new PartitionKey("road-bikes");
@@ -89,11 +90,11 @@ if (response.IsSuccessStatusCode)
 ```
 
 > [!IMPORTANT]
-> If there's a failure, the failed operation will have a status code of its corresponding error. All the other operations will have a 424 status code (failed dependency). If the operation fails because it tries to create an item that already exists, a status code of 409 (conflict) is returned. The status code enables one to identify the cause of transaction failure.
+> If there's a failure, the failed operation has the status code of its corresponding error. All the other operations have a 424 status code (failed dependency). If the operation fails because it tries to create an item that already exists, a status code of 409 (conflict) is returned. The status code lets you identify the cause of transaction failure.
 
 ### [Java](#tab/java)
 
-When creating a transactional batch operation, call [CosmosBatch.createCosmosBatch](/java/api/com.azure.cosmos.models.cosmosbatch.createcosmosbatch):
+Call [CosmosBatch.createCosmosBatch](/java/api/com.azure.cosmos.models.cosmosbatch.createcosmosbatch):
 
 ```java
 PartitionKey partitionKey = new PartitionKey("road-bikes");
@@ -136,7 +137,7 @@ if (response.isSuccessStatusCode())
 ```
 
 > [!IMPORTANT]
-> If there's a failure, the failed operation will have a status code of its corresponding error. All the other operations will have a 424 status code (failed dependency). If the operation fails because it tries to create an item that already exists, a status code of 409 (conflict) is returned. The status code enables one to identify the cause of transaction failure.
+> If there's a failure, the failed operation has the status code of its corresponding error. All the other operations have a 424 status code (failed dependency). If the operation fails because it tries to create an item that already exists, a status code of 409 (conflict) is returned. The status code lets you identify the cause of transaction failure.
 
 ### [Python](#tab/python)
 
@@ -146,7 +147,8 @@ Get or create a container instance:
 container = database.create_container_if_not_exists(id="batch_container",
                                                         partition_key=PartitionKey(path='/category'))
 ```
-In Python, Transactional Batch operations look very similar to the singular operations apis, and are tuples containing (operation_type_string, args_tuple, batch_operation_kwargs_dictionary). Below are sample items that will be used to demonstrate batch operations functionality:
+
+In Python, transactional batch operations look similar to the singular operations APIs, and are tuples containing operation_type_string, args_tuple, batch_operation_kwargs_dictionary. The following sample items demonstrate batch operations functionality:
 
 ```python
 
@@ -203,7 +205,7 @@ replace_demo_item = {
 # The use of etags and if-match/if-none-match options allows users to run conditional replace operations
 # based on the etag value passed. When using if-match, the request will only succeed if the item's latest etag
 # matches the passed in value. For more on optimistic concurrency control, see the link below:
-# https://learn.microsoft.com/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency
+# /azure/cosmos-db/nosql/database-transactions-optimistic-concurrency
 replace_demo_item_if_match_operation = {
     "id": "68719519887",
     "category": "road-bikes",
@@ -226,6 +228,7 @@ replace_item_if_match_operation = ("replace",
                                        ("68719519887", replace_demo_item_if_match_operation),
                                        {"if_match_etag": container.client_connection.last_response_headers.get("etag")})
 ```
+
 Add the operations to the batch:
 
 ```python
@@ -255,8 +258,10 @@ except exceptions.CosmosBatchOperationError as e:
         print("\nError operation: {}, error operation response: {}\n".format(error_operation, error_operation_response))
     # [END handle_batch_error]
 ```
-> **Note for using patch operation and replace_if_match_etag operation in the batch** <br>
-The batch operation kwargs dictionary is limited, and only takes a total of three different key values. In the case of wanting to use conditional patching within the batch, the use of filter_predicate key is available for the patch operation, or in case of wanting to use etags with any of the operations, the use of the if_match_etag/if_none_match_etag keys is available as well.<br>
+
+> [!NOTE]
+> If you use patch operation and replace_if_match_etag operation in the batch:
+> The batch operation kwargs dictionary is limited, and only takes a total of three different key values. In the case of wanting to use conditional patching within the batch, the use of filter_predicate key is available for the patch operation, or in case of wanting to use etags with any of the operations, the use of the if_match_etag/if_none_match_etag keys is available as well.<br>
 >```python
 > batch_operations = [
 >        ("replace", (item_id, item_body), {"if_match_etag": etag}),
@@ -266,12 +271,63 @@ The batch operation kwargs dictionary is limited, and only takes a total of thre
 
 
 > [!IMPORTANT]
-> If there's a failure, the failed operation will have a status code of its corresponding error. All the other operations will have a 424 status code (failed dependency). If the operation fails because it tries to create an item that already exists, a status code of 409 (conflict) is returned. The status code enables one to identify the cause of transaction failure.
+> If there's a failure, the failed operation has the status code of its corresponding error. All the other operations have a 424 status code (failed dependency). If the operation fails because it tries to create an item that already exists, a status code of 409 (conflict) is returned. The status code lets you identify the cause of transaction failure.
+
+### [Go](#tab/go)
+
+Call [NewTransactionalBatch](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ContainerClient.NewTransactionalBatch).
+
+```go
+pk := azcosmos.NewPartitionKeyString("road-bikes")
+
+batch := container.NewTransactionalBatch(pk)
+```
+
+Next, add multiple operations to the batch:
+
+```go
+type Bike struct {
+	ID       string `json:"id"`
+	Category string `json:"category"`
+	Name     string `json:"name"`
+}
+
+bike := Bike{ID: "68719520766", Category: "road-bikes", Name: "Chropen Road Bike"}
+bikeItem, _ := json.Marshal(bike)
+
+batch.CreateItem(bikeItem, nil)
+
+type BikePart struct {
+	ID        string `json:"id"`
+	Category  string `json:"category"`
+	Name      string `json:"name"`
+	ProductID string `json:"productID"`
+}
+
+part := BikePart{ID: "68719519885", Category: "road-bikes", Name: "Tronosuros Tire", ProductID: bike.ID}
+bikePartItem, _ := json.Marshal(part)
+
+batch.CreateItem(bikePartItem, nil)
+```
+
+Finally, use a container instance to call [ExecuteTransactionalBatch](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ContainerClient.ExecuteTransactionalBatch) with the batch:
+
+```go
+resp, _ := container.ExecuteTransactionalBatch(context.Background(), batch, nil)
+
+if resp.Success {
+	// execute conditional logic
+}
+```
+
+> [!IMPORTANT]
+> If there's a failure, the failed operation has the status code of its corresponding error. All the other operations have a 424 status code (failed dependency). If the operation fails because it tries to create an item that already exists, a status code of 409 (conflict) is returned. The status code lets you identify the cause of transaction failure.
+
 ---
 
-## How are transactional batch operations executed
+## How transactional batch operations are executed
 
-When the Transactional Batch is executed, all operations in the Transactional Batch are grouped, serialized into a single payload, and sent as a single request to the Azure Cosmos DB service.
+When the transactional batch is executed, all operations in the transactional batch are grouped, serialized into a single payload, and sent as a single request to the Azure Cosmos DB service.
 
 The service receives the request and executes all operations within a transactional scope, and returns a response using the same serialization protocol. This response is either a success, or a failure, and supplies individual operation responses per operation.
 
@@ -281,10 +337,10 @@ The SDK exposes the response for you to verify the result and, optionally, extra
 
 Currently, there are two known limits:
 
-* The Azure Cosmos DB request size limit constrains the size of the Transactional Batch payload to not exceed 2 MB, and the maximum execution time is 5 seconds.
-* There's a current limit of 100 operations per Transactional Batch to ensure the performance is as expected and within SLAs.
+* The Azure Cosmos DB request size limit constrains the size of the transactional batch payload to not exceed 2 MB, and the maximum execution time is 5 seconds.
+* There's a current limit of 100 operations per transactional batch to ensure the performance is as expected and within SLAs.
 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [`TransactionalBatch` usage](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/TransactionalBatch)
+> [TransactionalBatch usage](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/TransactionalBatch)

@@ -1,19 +1,18 @@
 ---
 title: Major version upgrade
 description: This article describes how to perform an in-place major version upgrade of an Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: varun-dhawan
+ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 02/04/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to perform an in-place major version upgrade of an Azure Database for PostgreSQL flexible server.
+ms.custom: sfi-image-nochange
+#customer intent: As a user, I want to learn how to perform an in-place major version upgrade of an Azure Database for PostgreSQL.
 ---
 
 # Major version upgrade
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to perform a major version upgrade of an Azure Database for PostgreSQL flexible server instance.
 

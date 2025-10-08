@@ -6,7 +6,7 @@ author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
 ms.custom: build-2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/15/2024
 ---
 

@@ -6,6 +6,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.author: mjbrown
 ms.custom: devx-track-csharp, build-2024, ignite-2024
 ms.collection:
@@ -129,9 +130,6 @@ In addition to including or excluding paths for individual properties, you can a
     "excludedPaths": [
         {
             "path": "/_etag/?"
-        },
-        {
-            "path": "/vector/*"
         }
     ],
     "vectorIndexes": [
@@ -142,9 +140,9 @@ In addition to including or excluding paths for individual properties, you can a
     ]
 }
 ```
-
 > [!IMPORTANT]
-> The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
+> Wild card characters (*, []) and vector paths nested inside arrays are not currently supported in the vector policy or vector index.
+
 
 > [!IMPORTANT]
 > Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
@@ -691,6 +689,52 @@ Add a composite index:
   const containerWithCompositeIndexes = (
     await database.containers.create(containerDefWithCompositeIndexes)
   ).container;
+```
+
+### Use the Go SDK
+
+The [IndexingPolicy](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#IndexingPolicy) struct defines the indexing policy for a container. It can be used with when [creating](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#DatabaseClient.CreateContainer) a new container or [reconfiguring](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ContainerClient.Replace) an existing one.
+
+```go
+db, _ := client.NewDatabase("demodb")
+
+pkDefinition := azcosmos.PartitionKeyDefinition{
+	Paths: []string{"/state"},
+		Kind:  azcosmos.PartitionKeyKindHash,
+}
+
+indexingPolicy := &azcosmos.IndexingPolicy{
+	IndexingMode: azcosmos.IndexingModeConsistent,
+
+    // add an included path
+	IncludedPaths: []azcosmos.IncludedPath{
+		{Path: "/*"},
+	},
+
+    // add an excluded path
+	ExcludedPaths: []azcosmos.ExcludedPath{
+		{Path: "/address/*"},
+	},
+
+    // add composite indices
+	CompositeIndexes: [][]azcosmos.CompositeIndex{
+		{
+			{
+				Path:  "/name",
+				Order: azcosmos.CompositeIndexAscending,
+			},
+			{
+				Path:  "/age",
+				Order: azcosmos.CompositeIndexDescending,
+			},
+		},
+	}
+
+	db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+		ID:                     "demo_container",
+		PartitionKeyDefinition: pkDefinition,
+		IndexingPolicy:         indexingPolicy,
+	}, nil)
 ```
 
 ### Use the Python SDK

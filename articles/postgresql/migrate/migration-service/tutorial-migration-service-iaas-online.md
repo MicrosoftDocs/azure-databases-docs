@@ -1,32 +1,28 @@
 ---
-title: "Migrate Online From On-Premises or an Azure VM to Azure Database for PostgreSQL"
-description: "Learn to migrate seamlessly from on-premises or an Azure VM to Azure Database for PostgreSQL flexible server using the new migration service in Azure."
+title: "Migrate Online, from an Azure VM or an On-Premises PostgreSQL to Azure Database for PostgreSQL, Using the Migration Service in Azure"
+description: "Learn to migrate, seamlessly and in online mode, from an Azure VM or an on-premises PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 07/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
+ms.collection:
+  - migration
+  - onprem-to-azure
 ms.custom:
-  - devx-track-azurecli
-# CustomerIntent: As a user, I want to learn how to perform offline migration from on-premises and Azure virtual machines to Azure Database for PostgreSQL flexible server using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
+- devx-track-azurecli
+- sfi-image-nochange
 ---
 
-# Tutorial: Migrate online from an Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL with the migration service Preview
+# Migrate online, from an Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL, with the migration service
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server using the Azure portal and Azure CLI.
+This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server in online mode.
 
 The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server.
 
-> [!div class="checklist"]
->  
-> - Configure your Azure Database for PostgreSQL Flexible Server
-> - Configure the migration task
-> - Monitor the migration
-> - Check the migration when completed
+[!INCLUDE [checklist-online](includes/checklist-online.md)]
 
 ## Prerequisites
 
@@ -36,7 +32,7 @@ To begin the migration, you need the following prerequisites:
 
 ## Perform the migration
 
-You can migrate by using the Azure portal or the Azure CLI.
+You can migrate by using Azure portal or Azure CLI.
 
 #### [Portal](#tab/portal)
 
@@ -44,170 +40,104 @@ This article guides you using the Azure portal to migrate your PostgreSQL databa
 
 ### Configure the migration task
 
-The migration service comes with a simple, wizard-based experience on the Azure portal. Here's how to start:
+The migration service comes with a simple, wizard-based experience on the Azure portal.
 
-1. Open your web browser and go to the [portal](https://portal.azure.com/). Enter your credentials to sign in. The default view is your service dashboard.
+Using the [Azure portal](https://portal.azure.com/):
 
-1. Go to your Azure Database for PostgreSQL Flexible Server target.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-1. In the Flexible Server's **Overview** tab, on the left menu, scroll down to Migration and select it.
+1. In the resource menu, select **Migration**.
 
-    :::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-select-migration-pane.png" alt-text="Screenshot of the Migration selection page in the Azure portal." lightbox="media/tutorial-migration-service-iaas-online/portal-online-select-migration-pane.png":::
+    :::image type="content" source="media/tutorial-migration-service/select-migration-page.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service/select-migration-page.png":::
 
-1. Select the **Create** button to migrate from an Azure virtual machine (VM) or an on-premises PostgreSQL server to the Flexible Server. If this is your first time using the migration service, an empty grid appears with a prompt to begin your first migration.
+1. Select **Create** to go through a wizard-based series of tabs to perform a migration to a flexible server from on-premises or Azure VM.
 
-    :::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-create-migration.png" alt-text="Screenshot of Create migration." lightbox="media/tutorial-migration-service-iaas-online/portal-online-create-migration.png":::
+    > [!NOTE]
+    > The first time you use the migration service, an empty grid appears with a prompt to begin your first migration.
 
-    If you've already created migrations to your Flexible Server target, the grid contains information about attempted migrations.
+    If migrations to your flexible server target have already been created, the grid now contains information about attempted migrations.
 
-1. Select the **Create** button. Then, you go through a wizard-based series of tabs to create a migration into this Flexible Server target from the PostgreSQL source Server.
+    :::image type="content" source="media/tutorial-migration-service-iaas-online/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-iaas-online/create-migration.png":::
 
 #### Setup
 
-The first tab is the setup tab, where the user initiates the migrations by providing migration details like migration name and source type.
+You need to provide multiple details related to the migration, like the migration name, source server type, option, and mode.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/01-portal-online-setup-iaas.png" alt-text="Screenshot of Setup migration.":::
+- **Migration name** is the unique identifier for each migration to this flexible server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same flexible server target can have the same name.
 
-- **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same Flexible Server target can have the same name.
+- **Source server type** - Depending on your PostgreSQL source, you can select **Azure Virtual Machine** or **On-premise server**.
 
-- **Source Server Type** — Depending on your PostgreSQL source, you can select *Azure VM* or *on-premises*.
+- **Migration option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
+    - **Validate** - Checks your server and database readiness for migration to the target.
+    - **Validate and migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is initiated.
 
-- **Migration Option** allows you to perform validations before triggering a migration. You can pick any of the following options:
-     - **Validate** - Checks your server and database readiness for migration to the target.
-     - **Migrate** - Skips validations and starts migrations.
-     - **Validate and Migrate**—Performs validation before triggering a migration. The migration is triggered only if there are no validation failures.
+Choosing the **Validate** or **Validate and migrate** option is always a good practice for performing premigration validations before running the migration.
 
-Choosing the **Validate** or **Validate and Migrate** option is always a good practice when performing premigration validations before running the migration. To learn more about the premigration validation, refer to this [documentation](concepts-premigration-migration-service.md).
+To learn more about the premigration validation, visit [premigration](concepts-premigration-migration-service.md).
 
-**Migration mode** allows you to choose the mode for the migration. **Offline** is the default option.
+- **Migration mode** allows you to pick the mode for the migration. **Offline** is the default option. In this case, we'll change it to **Online**.
 
-Select the **Next: Connect to source** button.
+Select **Next: Runtime server**.
 
-#### Runtime Server
+:::image type="content" source="media/tutorial-migration-service-iaas-online/setup-migration.png" alt-text="Screenshot of the Setup tab after providing necessary details." lightbox="media/tutorial-migration-service-iaas-online/setup-migration.png":::
 
-The Migration Runtime Server is a specialized feature within the [migration service in Azure Database for PostgreSQL](concepts-migration-service-postgresql.md), designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
+#### Runtime server
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/02-portal-online-runtime-server-iaas.png" alt-text="Screenshot of the migration Runtime Server page.":::
+The migration runtime server is a specialized feature within the [migration service in Azure Database for PostgreSQL](concepts-migration-service-postgresql.md), designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL flexible server instance that isn't the target server, but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
-For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
+:::image type="content" source="media/tutorial-migration-service/runtime-server-migration.png" alt-text="Screenshot of the Runtime server tab." lightbox="media/tutorial-migration-service/runtime-server-migration.png":::
 
-#### Connect to source
+For more information about the runtime server, visit [Migration runtime server](concepts-migration-service-runtime-server.md).
 
-The **Connect to Source** tab prompts you to give details related to the source selected in the **Setup Tab** that is the source of the databases.
+#### Source server
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/03-portal-online-connect-to-source-iaas.png" alt-text="Screenshot of Connectsourcemigration.":::
+The **Source server** tab prompts you to give details related to the source selected in the **Setup** tab, which is the source of the databases.
 
-- **Server Name** - Provide the Hostname or the IP address of the source PostgreSQL instance
-- **Port** - Port number of the Source server
-- **Server admin login name** - Username of the source PostgreSQL server
-- **Password** - Password of the source PostgreSQL server
-- **SSL Mode** - Supported values are preferred and required. When the SSL at the source PostgreSQL server is OFF, use the SSLMODE=prefer. If the SSL at the source server is ON, use the SSLMODE=require. SSL values can be determined in postgresql.conf file.
-- **Test Connection** - Performs the connectivity test between target and source. Once the connection is successful, users can proceed with the next step. Otherwise, you need to identify the networking issues between the target and source and verify the username/password for the source. Test connection takes a few minutes to establish a connection between the target and source
+- **Server name** - Provide the name of the host or the IP address of the source PostgreSQL server.
+- **Port** - Port number of the source server.
+- **Administrator login** - Name of the administrator user of the source PostgreSQL server.
+- **Password** - Password of the administrator login provided to connect to source PostgreSQL server.
+- **SSL mode** - Supported values are `preferred` and `required`. When the SSL at the source PostgreSQL server is `OFF`, use `prefer`. If the SSL at the source server is `ON`, use the `require`. SSL values can be determined in postgresql.conf file of the source server.
+- **Test connection** — Performs the connectivity test between the target and source. Once the connection is successful, you can proceed to the next tab. These test aims to identify any connectivity issues that might exist between the target and source servers, including verification of authentication using the credentials supplied. Establishing a test connection takes a few seconds.
 
-After the successful test connection, select the **Next: Select Migration target**
+After the successful test connection, select **Next: Target server**.
 
-#### Select migration target
+:::image type="content" source="media/tutorial-migration-service/source-server-migration.png" alt-text="Screenshot of Source server migration tab." lightbox="media/tutorial-migration-service/source-server-migration.png":::
 
-The **select migration target** tab displays metadata for the Flexible Server target, such as the subscription name, resource group, server name, location, and PostgreSQL version.
+#### Target server
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/04-portal-online-select-migration-target-iaas.png" alt-text="Screenshot of Connecttargetmigration.":::
+The **Target server** tab displays metadata for the flexible server target, such as the subscription name, resource group, server name, location, and PostgreSQL version.
 
-- **Admin username** - Admin username of the target PostgreSQL server
-- **Password** - Password of the target PostgreSQL server
-- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
-- **Test Connection** - Performs the connectivity test between target and source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the source and verify the username/password for the target. The test connection takes a few minutes to establish a connection between the target and the source.
+- **Administrator login** - Name of the administrator user of the target PostgreSQL server.
+- **Password** - Password of the administrator login provided to connect to target PostgreSQL server.
+- **Custom FQDN or IP address**: The custom FQDN or IP address field is optional, and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `production-flexible-server.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `production-flexible-server.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
+- **Test connection** — Performs the connectivity test between the source and target. Once the connection is successful, you can proceed to the next tab. These test aims to identify any connectivity issues that might exist between the source and target servers, including verification of authentication using the credentials supplied. Establishing a test connection takes a few seconds.
 
-After the successful test connection, select the **Next: Select Database(s) for Migration**
+After the successful test connection, select the **Next: Databases to validate or migrate**
 
-#### Select databases for migration
+:::image type="content" source="media/tutorial-migration-service/target-server-migration.png" alt-text="Screenshot of the Target server migration tab." lightbox="media/tutorial-migration-service/target-server-migration.png":::
 
-Under this tab, a list of user databases is inside the source server selected in the setup tab. You can select and migrate up to eight databases in a single migration attempt. If there are more than eight user databases, the migration process is repeated between the source and target servers for the next set of databases.
+#### Databases to validate or migrate
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/05-portal-online-select-database-for-migration-iaas.png" alt-text="Screenshot of FetchDBmigration.":::
+Under the **Databases to validate or migrate** tab, you can choose a list of user databases to migrate from your source PostgreSQL server.
 
-After selecting the databases, select the **Next: Summary**
+After selecting the databases, select **Next: Summary**.
+
+:::image type="content" source="media/tutorial-migration-service/databases-to-validate-or-migrate-migration.png" alt-text="Screenshot of the Databases to validate or migrate  migration tab." lightbox="media/tutorial-migration-service/databases-to-validate-or-migrate-migration.png":::
 
 #### Summary
 
-The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select the start button.
+The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select **Start validation and migration**.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/06-portal-online-summary-iaas.png" alt-text="Screenshot of Summary migration.":::
+:::image type="content" source="media/tutorial-migration-service-iaas-online/summary-migration.png" alt-text="Screenshot of the Summary migration tab." lightbox="media/tutorial-migration-service-iaas-online/summary-migration.png":::
 
-### Monitor the migration
+## Cancel the validation or migration
 
-After you select the start button, a notification appears in a few seconds, saying that the validation or migration creation is successful. You're redirected automatically to the **Migration** blade of Flexible Server, which has a new entry for the recently created validation or migration.
+You can cancel any ongoing validations or migrations. The workflow must be in the **In progress** status to be canceled. You can't cancel a validation or migration in the **Succeeded** or **Failed** status.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-monitor-migration.png" alt-text="Screenshot of monitor migration in the Azure portal." lightbox="media/tutorial-migration-service-iaas-online/portal-online-monitor-migration.png":::
+Canceling a validation stops any further validation activity and the validation moves to a **Canceled** status.
 
-The grid that displays the migrations has these columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration, and **Start time**. The entries are displayed in the descending order of the start time, with the most recent entry at the top. You can use the refresh button to refresh the status of the validation or migration.
-Select the migration name in the grid to see the associated details.
-
-When the validation or migration is created, it moves to the **InProgress** state and **PerformingPreRequisiteSteps** substate. The workflow takes 2 to 3 minutes to set up the migration infrastructure and network connections.
-
-### Migration details
-
-In the Setup tab, we have selected the migration option as **Migrate and Validate**. In this scenario, validations are performed first before migration starts. After the **PerformingPreRequisiteSteps** substate is completed, the workflow moves into the substate of **Validation in Progress**.
-- If validation has errors, the migration moves into a **Failed** state.
-- If validation completes without error, the migration starts, and the workflow moves into the substate of **Migrating Data**.
-
-The validation results are displayed under the **Validation** tab, and the migration is monitored under the **Migration** tab.
-
-:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-details-migration.png" alt-text="Screenshot of Details migration." lightbox="media/tutorial-migration-service-iaas-online/portal-online-details-migration.png":::
-
-Some possible migration states:
-
-### Migration states
-
-| State | Description |
-| --- | --- |
-| **InProgress** | The migration infrastructure setup is underway, or the actual data migration is in progress. |
-| **Canceled** | The migration is canceled or deleted. |
-| **Failed** | The migration has failed. |
-| **Validation Failed** | The validation has failed. |
-| **Succeeded** | The migration has succeeded and is complete. |
-| **WaitingForUserAction** | Applicable only for online migration. Waiting for user action to perform cutover. |
-
-### Migration substates
-
-| Substate | Description |
-| --- | --- |
-| **PerformingPreRequisiteSteps** | Infrastructure setup is underway for data migration. |
-| **Validation in Progress** | Validation is in progress. |
-| **MigratingData** | Data migration is in progress. |
-| **CompletingMigration** | Migration is in the final stages of completion. |
-| **Completed** | Migration has been completed. |
-| **Failed** | Migration has failed. |
-
-### Validation substates
-
-| Substate | Description |
-| --- | --- |
-| **Failed** | Validation has failed. |
-| **Succeeded** | Validation is successful. |
-| **Warning** | Validation is in warning. |
-
-### Cutover
-
-If there are both **Migrate** and **Validate and Migrate**, completing the online migration requires another step—the user must take a Cutover action. After the copy/clone of the base data is complete, the migration moves to the `WaitingForUserAction` state and the `WaitingForCutoverTrigger` substrate. In this state, the user can trigger the cutover from the portal by selecting the migration.
-
-Before initiating cutover, it's important to ensure that:
-
-- Writes to the source are stopped - `Latency` value is 0 or close to 0. The `Latency` information can be obtained from the migration details screen as shown below:
-- `latency` value decreases to 0 or close to 0
-- The `latency` value indicates when the target last synced with the source. Writing to the source can be stopped at this point, and a cutover can be initiated. In case there's heavy traffic at the source, it's recommended to stop writes first so that `Latency` can come close to 0, and then a cutover is initiated.
-
-The Cutover operation applies all pending changes from the Source to the Target and completes the migration. If you trigger a "Cutover" even with nonzero `Latency,` the replication stops until that point in time. All the data on the source until the cutover point is then applied to the target. If you experience a latency of 15 minutes at the cutover point, all the changed data in the last 15 minutes are applied to the target.
-The time depends on the backlog of changes occurring in the last 15 minutes. Hence, it's recommended that the latency go to zero or near zero before triggering the cutover.
-
-- The migration moves to the `Succeeded` state when the `Migrating Data` substate or the cutover (in Online migration) finishes successfully. If there's a problem at the `Migrating Data` substate, the migration moves into a `Failed` state.
-
-## Cancel the migration
-
-You can cancel any ongoing validations or migrations. The workflow must be in the **InProgress** state to be canceled. You can't cancel a validation or migration in the **Succeeded** or **Failed** state.
-
-Canceling a validation stops any further validation activity and the validation moves to a **Canceled** state.
-
-Canceling a migration stops further migration activity on your target server and moves to a **Canceled** state. It doesn't drop or roll back any changes on your target server. Be sure to drop the databases on your target server that is involved in a canceled migration.
+Canceling a migration stops further migration activity on your target server and moves to a **Canceled** status. It doesn't drop or roll back any changes on your target server. Be sure to drop the databases on your target server that is involved in a canceled migration.
 
 #### [CLI](#tab/cli)
 
@@ -225,20 +155,20 @@ az login
 
 To begin the migration, create a JSON file with the migration details. The JSON file contains the following information:
 
-- Edit the below placeholders `<< >>` in the JSON lines and store them in the local machine as `<<filename>>.json` where the CLI is being invoked. In this tutorial, we have saved the file in C:\migration-CLI\migration_body.json
+- Edit the below placeholders `<< >>` in the JSON lines and store them in the local machine as `<<filename>>.json` where the CLI is being invoked. In this tutorial, we have saved the file in `c:/migration-CLI/migration_body.json`
 
 ```bash
 {
 "properties": {
-"SourceDBServerResourceId": "<<source hostname or IP address>>:<<port>>@<<username>>",
+"SourceDBServerResourceId": "<<source-server-hostname-or-IP-address>>:<<port>>@<<username>>",
         "SecretParameters": {
             "AdminCredentials": {
-                "SourceServerPassword": "<<Source Password>>",
-                "TargetServerPassword": "<<Target Password>>"
+                "SourceServerPassword": "<<source-server-administrator-password>>",
+                "TargetServerPassword": "<<target-server-administrator-password>>"
             },
-            "targetServerUserName": "<<Target username>>"
+            "targetServerUserName": "<<target-server-administrator-login>>"
         },
-        "DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
+        "DBsToMigrate": "<<comma-separated-list-of-databases-in-array-like-["ticketdb","timedb","inventorydb"]>>",
         "OverwriteDBsInTarget": "true",
         "sourceType": "OnPremises",
         "sslMode": "Prefer"
@@ -247,64 +177,112 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 ```
 
 > [!NOTE]  
-> When configuring the JSON properties for the migration to Azure Database for PostgreSQL Flexible Server, if your source environment is an Azure Virtual Machine, you can specify the source type using the `"sourceType":"AzureVM"` property. This helps the migration service understand the environment from which the data is being migrated.
+> When configuring the JSON properties for the migration to Azure Database for PostgreSQL flexible server, if your source environment is an Azure Virtual Machine, you can specify the source type using the `"sourceType":"AzureVM"` property. This helps the migration service understand the environment from which the data is being migrated.
 
 - Run the following command to check if any migrations are running. The migration name is unique across the migrations within the Azure Database for PostgreSQL flexible server target.
 
     ```azurecli-interactive
-    az postgres flexible-server migration list --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --filter All
+    az postgres flexible-server migration list --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --filter all
     ```
 
-- In the above steps, there are no migrations performed so we start with the new migration by running the following command
+- In the above steps, there are no migrations performed so we start with the new migration by running the following command.
 
     ```azurecli-interactive
-    az postgres flexible-server migration create --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1 --migration-mode online --migration-option ValidateAndMigrate --properties "C:\migration-cli\migration_body.json"
+    az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-mode offline --migration-option ValidateAndMigrate --properties "c:/migration-cli/migration_body.json"
     ```
 
-- Run the following command to initiate the migration status in the previous step. You can check the status of the migration by providing the migration name
+- Run the following command to see the status of the migration initiated in the previous step. You can check the status of the migration by providing the migration name.
 
     ```azurecli-interactive
-    az postgres flexible-server migration show --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1
+    az postgres flexible-server migration show --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration>
     ```
 
-- The status of the migration progress is shown in the Azure CLI.
-- You can also see the status of the Azure Database for PostgreSQL flexible server in the Azure portal.
+- The progress and status of the migration is shown in Azure CLI.
 
-- You can cancel any ongoing migration attempts using the `cancel` command. This command stops the particular migration attempt and rolls back all changes on your target server. Here's the CLI command to delete a migration:
+- You can also see the progress and status in Azure portal.
 
-    ```azurecli-interactive
-    az postgres flexible-server migration update cancel --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1
-    ```
-
-#### Cutover
-
-- After the base data migration is complete in online migrations, the migration task moves to the `WaitingForCutoverTrigger` substate. In this state, the user can trigger the cutover through the CLI using the command below. The cutover can also be triggered from the portal by selecting the migration name in the migration grid.
-- You can also initiate the cutover from the Azure portal.
+- You can cancel any ongoing migration attempts using the `cancel` command. This command stops the particular migration attempt, and rolls back all changes that it could have made on your target server. Following is the CLI command to cancel migration that has an "In progress" status.
 
     ```azurecli-interactive
-    az postgres flexible-server migration update --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1 --cutover
+    az postgres flexible-server migration update cancel --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration>
     ```
 
 ---
 
-## Check the migration when complete
+## Monitor the migration
 
-After completing the databases, you need to manually validate the data between source and target and verify that all the objects in the target database are successfully created.
+After you select the **Start validation and migration** button, a notification appears, in a few seconds, to say that the validation or migration creation is successful. You're automatically redirected to the flexible server's **Migration** page. The entry shows **Status** as **In progress**. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
 
-After migration, you can perform the following tasks:
+:::image type="content" source="media/tutorial-migration-service-iaas-online/monitor-migration.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-iaas-online/monitor-migration.png":::
 
-- Verify the data on your flexible server and ensure it's an exact copy of the source instance.
-- Post verification, enable the high availability option on your flexible server as needed.
-- Change the SKU of the flexible server to match the application needs. This change needs a database server restart.
-- If you change any server parameters from their default values in the source instance, copy those server parameter values in the flexible server.
-Copy other server settings, such as tags, alerts, and firewall rules (if applicable), from the source instance to the flexible server.
-- Make changes to your application to point the connection strings to a flexible server.
-- Monitor the database performance closely to see if it requires performance tuning.
+The grid that displays the migrations has the following columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration**, and **Start time**. The entries are displayed sorted by **Start time** in descending order, with the most recent entry on the top. You can use the **Refresh** button in the toolbar, to refresh the status of the validation or migration run.
+
+### Migration details
+
+Select the migration name in the grid to see the associated details.
+
+Remember that in the previous steps, when you created this migration, you configured the migration option as **Validate and migrate**. In this scenario, validations are performed first, before migration starts. After the **Performing prerequisite steps** substate is completed, the workflow moves into the substate of **Validation in progress**.
+
+- If validation has errors, the migration moves into a **Failed** state.
+
+- If validation is complete without error, the migration starts, and the workflow moves into the substate of **Migrating Data**.
+
+Validation details are available at the instance and database level.
+
+- **Validation details for instance**
+    - Contains validation related to the connectivity check, source version, that is, PostgreSQL version >= 9.5, and server parameter check, whether the extensions are enabled in the server parameters of the Azure Database for PostgreSQL flexible server.
+- **Validation and migration details for databases**
+    - It contains validation of the individual databases related to extensions and collations support in Azure Database for PostgreSQL flexible server.
+
+You can see the **Validation status** and **Migration status** under the migration details page.
+
+:::image type="content" source="media/tutorial-migration-service-online/details-migration.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-online/details-migration.png":::
+
+Some possible migration statuses:
+
+### Migration status
+
+| Status | Description |
+| --- | --- |
+| **In progress** | The migration infrastructure setup is underway, or the actual data migration is in progress. |
+| **Canceled** | The migration is canceled or deleted. |
+| **Failed** | The migration has failed. |
+| **Validation failed** | The validation has failed. |
+| **Succeeded** | The migration has succeeded and is complete. |
+| **Waiting for user action** | Waiting for user action to perform cutover. |
+
+### Migration details
+
+| Substatus | Description |
+| --- | --- |
+| **Performing prerequisite steps** | Infrastructure setup is underway for data migration. |
+| **Validation in progress** | Validation is in progress. |
+| **Dropping database on target** | Dropping already existing database on target server. |
+| **Migrating data** | Data migration is in progress. |
+| **Completing migration** | Migration is in the final stages of completion. |
+| **Completed** | Migration has been completed. |
+| **Failed** | Migration has failed. |
+
+### Validation substatuses
+
+| Substatus | Description |
+| --- | --- |
+| **Failed** | Validation has failed. |
+| **Succeeded** | Validation is successful. |
+| **Warning** | Validation is in warning. |
+
+## Initiate the cutover
+
+[!INCLUDE [initiate-cut-over](includes/initiate-cut-over.md)]
+
+## Check the migration when completed
+
+[!INCLUDE [check-migration-completed](includes/check-migration-completed.md)]
 
 ## Related content
 
 - [Migration service](concepts-migration-service-postgresql.md)
 - [Best practices](best-practices-migration-service-postgresql.md)
-- [Known Issues and limitations](concepts-known-issues-migration-service.md)
+- [Known issues and limitations](concepts-known-issues-migration-service.md)
 - [Network setup](how-to-network-setup-migration-service.md)
 - [Premigration validations](concepts-premigration-migration-service.md)

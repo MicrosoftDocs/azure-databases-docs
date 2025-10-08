@@ -1,27 +1,25 @@
 ---
 title: $toDecimal
-titleSuffix: Overview of the $toDecimal operator in Azure Cosmos DB for MongoDB vCore
-description: The $toDecimal operator in Azure Cosmos DB for MongoDB vCore converts an expression into a Decimal type
+titleSuffix: Overview of the $toDecimal operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $toDecimal operator converts an expression into a Decimal type
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 02/24/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
 # $toDecimal
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$toDecimal` operator converts an expression into a Decimal value. Long, Double or Int values are simply converted to a Decimal data type, while Decimal values are returned as is. A boolean value of true is returned as 1, while false is returned as 0. Lastly, ISODates are returned as a Decimal value corresponding to the number of milliseconds since January 1st, 1970 represented by the ISODate value.
+The `$toDecimal` operator converts an input expression into a Decimal value. Long, Double or Int values are simply converted to a Decimal data type, while Decimal values are returned as is. A boolean value of true is converted to 1, while a boolean false is converted to 0. Lastly, ISODates are converted to a Decimal value corresponding to the number of milliseconds since January 1st, 1970 represented by the ISODate value.
 
 ## Syntax
 
-The syntax for the `$toDecimal` operator is:
-
-```mongodb
-{ "$toDecimal": <expression> }
+```javascript
+{
+    $toDecimal: < expression >
+}
 ```
 
 ## Parameters
@@ -32,7 +30,7 @@ The syntax for the `$toDecimal` operator is:
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -146,18 +144,18 @@ Consider this sample document from the stores collection in the StoreData databa
 
 ### Example 1: Convert a Double value into a Decimal value
 
+To convert the value of the latitude field from a double to a decimal value, run a query using the $toDecimal operator to make the conversion.
+
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsDecimal": {
-            "$toDecimal": "$location.lat"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsDecimal: {
+            $toDecimal: "$location.lat"
         }
     }
 }])
@@ -166,26 +164,28 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "originalLatitude": 72.8377,
-    "latitudeAsDecimal": "Decimal128('72.8377000000000')"
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalLatitude": 72.8377,
+        "latitudeAsDecimal": "Decimal128('72.8377000000000')"
+    }
+]
 ```
 
 ### Example 2: Convert an ISODate value into a Decimal value
 
+To convert an ISODate to a decimal value, run a query using the $toDecimal operator on the value to make the conversion. 
+
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "dateAsDecimal": {
-            "$toDecimal": ISODate("2025-01-06T00:00:00.000Z")
+}, {
+    $project: {
+        dateAsDecimal: {
+            $toDecimal: ISODate("2025-01-06T00:00:00.000Z")
         }
     }
 }])
@@ -194,16 +194,14 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "dateAsDecimal": "Decimal128('1736121600000')"
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "dateAsDecimal": "Decimal128('1736121600000')"
+    }
+]
 ```
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$type to determine the BSON type of a value]($type.md)
-- [$toInt to convert a value to an Integer type]($toint.md)
-- [$toLong to convert a value to a Long type]($tolong.md)
-- [$toDouble to convert a value to a Double type]($todouble.md)
+[!INCLUDE[Related content](../../includes/related-content.md)]

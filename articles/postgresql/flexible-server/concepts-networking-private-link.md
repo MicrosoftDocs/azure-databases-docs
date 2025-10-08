@@ -1,17 +1,17 @@
 ---
 title: Networking Overview with Private Link Connectivity
-description: Learn about connectivity and networking options for Azure Database for PostgreSQL flexible server with Private Link.
-author: gbowerman
-ms.author: guybo
+description: Learn about connectivity and networking options for an Azure Database for PostgreSQL flexible server instance with Azure Private Link.
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
-ms.date: 04/18/2025
+ms.date: 06/30/2025
 ms.service: azure-database-postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Azure Database for PostgreSQL networking with Private Link
 
-Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL flexible server to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
+Azure Private Link allows you to create private endpoints for your Azure Database for PostgreSQL flexible server instance to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
 
 With Private Link, traffic between your virtual network and the service traverses the Microsoft backbone network. Exposing your service to the public internet is no longer necessary. You can create your own private link service in your virtual network and deliver it to your customers. Setup and consumption by using Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
 
@@ -36,7 +36,7 @@ Private Link provides the following benefits:
 - **Protection against data leakage:** A private endpoint is mapped to an instance of a PaaS resource instead of the entire service. Consumers can only connect to the specific resource. Access to any other resource in the service is blocked. This mechanism provides protection against data leakage risks.
 - **Global reach: Connect privately to services running in other regions:** The consumer's virtual network could be in region A. It can connect to services behind Private Link in region B.
 
-## Use cases for Private Link with Azure Database for PostgreSQL flexible server
+## Use cases for Private Link with Azure Database for PostgreSQL 
 
 Clients can connect to the private endpoint from:
 
@@ -50,7 +50,7 @@ Clients can also connect from on-premises by using ExpressRoute, private peering
 
 ### Supported features for Private Link
 
-Here's a cross-feature availability matrix for private endpoints in Azure Database for PostgreSQL flexible server.
+Here's a cross-feature availability matrix for private endpoints in an Azure Database for PostgreSQL flexible server instance.
 
 | Feature | Availability | Notes |
 | --- | --- | --- |
@@ -65,22 +65,22 @@ Here's a cross-feature availability matrix for private endpoints in Azure Databa
 | Private endpoint DNS | Yes | Works as designed and [documented](/azure/private-link/private-endpoint-dns). |
 | Encryption with customer-managed keys | Yes | Works as designed. |
 
-Private endpoints can only be configured for servers that were created after Azure Database for PostgreSQL flexible server introduced the support for Private Link, and whose networking mode was configured to not use virtual network integration but Public access.
+Private endpoints can only be configured for servers that were created after Azure Database for PostgreSQL introduced the support for Private Link, and whose networking mode was configured to not use virtual network integration but Public access.
 
 Servers which were created before that date, and whose networking mode was configured to not use virtual network integration but Public access, don't yet support the creation of private endpoints.
 The use of private endpoints isn't currently supported on servers created with virtual network integration.
 
 ### Connect from an Azure VM in a peered virtual network
 
-Configure [virtual network peering](/azure/virtual-network/tutorial-connect-virtual-networks-powershell) to establish connectivity to Azure Database for PostgreSQL flexible server from an Azure virtual machine (VM) in a peered virtual network.
+Configure [virtual network peering](/azure/virtual-network/tutorial-connect-virtual-networks-powershell) to establish connectivity to an Azure Database for PostgreSQL flexible server instance from an Azure virtual machine (VM) in a peered virtual network.
 
 ### Connect from an Azure VM in a network-to-network environment
 
-Configure a [network-to-network VPN gateway](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) connection to establish connectivity to an Azure Database for PostgreSQL flexible server from an Azure VM in a different region or subscription.
+Configure a [network-to-network VPN gateway](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) connection to establish connectivity to an Azure Database for PostgreSQL flexible server instance from an Azure VM in a different region or subscription.
 
 ### Connect from an on-premises environment over VPN
 
-To establish connectivity from an on-premises environment to the Azure Database for PostgreSQL flexible server, choose and implement one of the options:
+To establish connectivity from an on-premises environment to the Azure Database for PostgreSQL flexible server instance, choose and implement one of the options:
 
 - [Point-to-site connection](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 - [Site-to-site VPN connection](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
@@ -129,7 +129,7 @@ In such architecture, the following components are configured:
 
 - On-premises DNS servers have conditional forwarders configured for each private endpoint public DNS zone, pointing to the Private DNS Resolver hosted in the hub virtual network.
 - The Private DNS Resolver hosted in the hub virtual network uses the Azure-provided DNS (168.63.129.16) as a forwarder.
-- The hub virtual network must be linked to the Private DNS zone names for Azure services (such as `privatelink.postgres.database.azure.com`, for Azure Database for PostgreSQL flexible server).
+- The hub virtual network must be linked to the Private DNS zone names for Azure services (such as `privatelink.postgres.database.azure.com`, for an Azure Database for PostgreSQL flexible server instance).
 - All Azure virtual networks use Private DNS Resolver hosted in the hub virtual network.
 - The Private DNS Resolver isn't authoritative for a customer's corporate domains because it's just a forwarder (for example, Microsoft Entra domain names), it should have outbound endpoint forwarders to the customer's corporate domains, pointing to the on-premises DNS servers, or DNS servers deployed in Azure that are authoritative for such zones.
 
@@ -148,15 +148,15 @@ Limitations to NSGs and private endpoints are listed in [What is a private endpo
 
 The following situations and outcomes are possible when you use Private Link in combination with firewall rules:
 
-- If you don't configure any firewall rules, by default, traffic can't access the Azure Database for PostgreSQL flexible server.
+- If you don't configure any firewall rules, by default, traffic can't access the Azure Database for PostgreSQL flexible server instance.
 
 - If you configure public traffic or a service endpoint and you create private endpoints, different types of incoming traffic are authorized by the corresponding type of firewall rule.
 
-- If you don't configure any public traffic or service endpoint and you create private endpoints, the Azure Database for PostgreSQL flexible server is accessible only through private endpoints. If you don't configure public traffic or a service endpoint, after all approved private endpoints are rejected or deleted, no traffic can access the Azure Database for PostgreSQL flexible server.
+- If you don't configure any public traffic or service endpoint and you create private endpoints, the Azure Database for PostgreSQL flexible server instance is accessible only through private endpoints. If you don't configure public traffic or a service endpoint, after all approved private endpoints are rejected or deleted, no traffic can access the Azure Database for PostgreSQL flexible server instance.
 
 ## Troubleshoot
 
-When you use Private Link endpoints with Azure Database for PostgreSQL flexible server, connectivity issues might occur due to misconfigurations or network constraints. To troubleshoot these issues, verify the setup of private endpoints, DNS configurations, network security groups (NSGs), and route tables. Systematically addressing these areas can help you identify and resolve common problems, ensuring seamless connectivity and secure access to your database.
+When you use Private Link endpoints with an Azure Database for PostgreSQL flexible server instance, connectivity issues might occur due to misconfigurations or network constraints. To troubleshoot these issues, verify the setup of private endpoints, DNS configurations, network security groups (NSGs), and route tables. Systematically addressing these areas can help you identify and resolve common problems, ensuring seamless connectivity and secure access to your database.
 
 ### Connectivity issues with private endpoint-based networking
 
@@ -176,6 +176,14 @@ If you have DNS resolution issues when you use private endpoint-based networking
 - **Validate DNS resolution:** Check if the DNS server or service used by the private endpoint and the connected resources is functioning correctly. Ensure that the private endpoint's DNS settings are accurate. For more information on private endpoints and DNS zone settings, see [Azure private endpoint Private DNS zone values](/azure/private-link/private-endpoint-dns).
 - **Clear the DNS cache:** Clear the DNS cache on the private endpoint or client machine to ensure the latest DNS information is retrieved and to avoid inconsistent errors.
 - **Analyze DNS logs:** Review DNS logs for error messages or unusual patterns, such as DNS query failures, server errors, or timeouts. For more on DNS metrics, see [Azure DNS metrics and alerts](/azure/dns/dns-alerts-metrics).
+
+## Limitations and connsiderations
+
+- Private endpoints can only be configured for servers created after the introduction of Private Link. Servers that use virtual network (VNet) integration are not eligible for private endpoint configuration.
+
+- The number of private endpoints is not limited by the database service itself but rather by Azure networking constraints—specifically, the number of private endpoints that can be injected into a given subnet within a VNet 3.
+
+- Virtual Machines can connect to the database through private endpoints, provided they are correctly configured within the same virtual network or have appropriate routing in place.
 
 ## Related content
 

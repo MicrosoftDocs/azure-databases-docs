@@ -10,7 +10,8 @@ ms.custom:
   - ignite-2023
 ms.topic: how-to
 ms.devlang: nosql
-ms.date: 12/03/2024
+ms.date: 06/11/2025
+ms.update-cycle: 180-days
 ms.collection:
   - ce-skilling-ai-copilot
 # CustomerIntent: As a developer, I want to use Copilot so that I can write queries faster and easier.

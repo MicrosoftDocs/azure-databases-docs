@@ -1,8 +1,8 @@
 ---
 title: Update virtual endpoints
 description: This article describes how to update virtual endpoints for an Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/13/2025
 ms.service: azure-database-postgresql
@@ -11,8 +11,6 @@ ms.topic: how-to
 ---
 
 # Update virtual endpoints
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to update virtual endpoints associated to an Azure Database for PostgreSQL flexible server.
 

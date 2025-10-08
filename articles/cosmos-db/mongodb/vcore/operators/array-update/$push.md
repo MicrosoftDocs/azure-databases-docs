@@ -1,122 +1,249 @@
 ---
-  title: $push (array update) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $push operator is used to append a specified value to an array within a document. 
+  title: $push
+  titleSuffix: Overview of the $push operator in Azure Cosmos DB for MongoDB (vCore)
+  description: The $push operator adds a specified value to an array within a document. 
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
-  ms.date: 09/11/2024
+  ms.topic: language-reference
+  ms.date: 09/05/2025
 ---
 
-# $push (array update)
+# $push
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$push` operator is used to append a specified value to an array within a document. This operator is useful when you need to add new elements to an existing array field without affecting the other elements in the array. It can be used in various scenarios such as adding new sales categories, promotional events, or staff members to a store's document.
+The `$push` operator is used to add a specified value to an array within a document. The $push operator adds new elements to an existing array without affecting other elements in the array.
 
 ## Syntax
 
-The basic syntax of the `$push` operator is as follows:
-
 ```javascript
-db.collection.update(
-   { <query> },
-   { $push: { <field>: <value> } },
-   { <options> }
-)
+db.collection.update({
+    < query >
+}, {
+    $push: {
+        < field >: < value >
+    }
+}, {
+    < options >
+})
 ```
 
 ## Parameters
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<query>`**| The selection criteria for the documents to update.|
 | **`<field>`**| The array field to which the value will be appended.|
 | **`<value>`**| The value to append to the array field.|
 | **`<options>`**| Optional. Additional options for the update operation.|
 
-## Example
+## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
+    ]
 }
 ```
 
-To add a new sales category "DJ Cables" with total sales of 1000.00 to the `salesByCategory` array.
+### Example 1 - Add a new sales category
+
+To add a new sales category to the salesByCategory array, run a query using the $push operator on the field with a new Sales object with the name of the category and its sales volume.
 
 ```javascript
-db.stores.update(
-   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-   { $push: { "sales.salesByCategory": { "categoryName": "DJ Cables", "totalSales": 1000.00 } } }
-)
+db.stores.update({
+    _id: "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
+}, {
+    $push: {
+        "sales.salesByCategory": {
+            categoryName: "Wine Accessories",
+            totalSales: 1000.00
+        }
+    }
+})
 ```
-This query would return the following document.
+
+This query returns the following result:
 
 ```json
-{
-  "acknowledged": true,
-  "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
-  "upsertedCount": 0
-}
+[
+  {
+    "acknowledged": true,
+    "insertedId": null,
+    "matchedCount": "1",
+    "modifiedCount": "1",
+    "upsertedCount": 0
+  }
+]
+```
+
+### Example 2 - Using $push with $setWindowFields
+
+To retrieve the distinct sales volumes across all stores under the "First Up Consultants" company, first run a query to partition stores within the company. Then, use the $push operator to create a list of sales from the first to the current store within the partition.
+
+```javascript
+db.stores.aggregate([{
+    $match: {
+        company: {
+            $in: ["First Up Consultants"]
+        }
+    }
+}, {
+    $setWindowFields: {
+        partitionBy: "$company",
+        sortBy: {
+            "sales.totalSales": -1
+        },
+        output: {
+            salesByStore: {
+                $push: "$sales.totalSales",
+                window: {
+                    documents: ["unbounded", "current"]
+                }
+            }
+        }
+    }
+}, {
+    $project: {
+        company: 1,
+        salesByStore: 1
+    }
+}])
+```
+
+The first three results returned by this query are:
+
+```json
+[
+    {
+        "_id": "a0386810-b6f8-4b05-9d60-e536fb2b0026",
+        "company": "First Up Consultants",
+        "salesByStore": [
+            327583
+        ]
+    },
+    {
+        "_id": "ad8af64a-d5bb-4162-9bb6-e5104126566d",
+        "company": "First Up Consultants",
+        "salesByStore": [
+            327583,
+            288582
+        ]
+    },
+    {
+        "_id": "39acb3aa-f350-41cb-9279-9e34c004415a",
+        "company": "First Up Consultants",
+        "salesByStore": [
+            327583,
+            288582,
+            279183
+        ]
+    }
+]
 ```
 
 ## Related content

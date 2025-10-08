@@ -10,8 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Request quota increases for Azure Database for PostgreSQL flexible server
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Request quota increases for Azure Database for PostgreSQL
 
 The resources in Azure Database for PostgreSQL flexible server have default quotas/limits. However, there may be a case where your workload needs more quota than the default value. In such case, you must reach out to the Azure Database for PostgreSQL flexible server team to request a quota increase. This article explains how to request a quota increase for Azure Database for PostgreSQL flexible server resources. 
 
@@ -28,7 +27,7 @@ To request a quota increase, you must create a new support request with your wor
    * For **Summary**, Provide a short description of your request such as your workload, why the default values aren’t sufficient along with any error messages you're observing.
    * For **Issue type**, select **Service and subscription limits (quotas)**
    * For **Subscription**, select the subscription for which you want to increase the quota.
-   * For **Quota type**, select **Azure Database for PostgreSQL Flexible Server**
+   * For **Quota type**, select **Azure Database for PostgreSQL flexible server**
 
    :::image type="content" source="./media/how-to-create-support-request-quota-increase/create-quota-increase-request.png" alt-text="Create a new Azure Database for PostgreSQL flexible server request for quota increase.":::
 

@@ -1,6 +1,6 @@
 ---
 title: Connect with private access in the Azure portal
-description: This article shows how to create and connect to Azure Database for PostgreSQL flexible server with private access or virtual network using the Azure portal.
+description: This article shows how to create and connect to an Azure Database for PostgreSQL flexible server instance with private access or virtual network using the Azure portal.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -9,16 +9,15 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - mode-ui
-  - linux-related-content
+- mvc
+- mode-ui
+- linux-related-content
+- sfi-image-nochange
 ---
 
-# Connect Azure Database for PostgreSQL flexible server with the private access connectivity method
+# Connect Azure Database for PostgreSQL  with the private access connectivity method
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-Azure Database for PostgreSQL flexible server is a managed service that you can use to run, manage, and scale highly available PostgreSQL servers in the cloud. This quickstart shows you how to create an Azure Database for PostgreSQL flexible server instance in a virtual network by using the Azure portal.
+Azure Database for PostgreSQL is a managed service that you can use to run, manage, and scale highly available PostgreSQL servers in the cloud. This quickstart shows you how to create an Azure Database for PostgreSQL flexible server instance in a virtual network by using the Azure portal.
 
 
 
@@ -28,7 +27,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 Sign in to the [Azure portal](https://portal.azure.com). Enter your credentials to sign in to the portal. The default view is your service dashboard.
 
-## Create an Azure Database for PostgreSQL flexible server
+## Create an Azure Database for PostgreSQL 
 
 You create an Azure Database for PostgreSQL flexible server instance with a defined set of [compute and storage resources](concepts-compute.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
@@ -46,7 +45,7 @@ Complete these steps to create an Azure Database for PostgreSQL flexible server 
 -->
 4. On the **Basics** tab, enter the **subscription**, **resource group**, **region**, and **server name**.  With the default values, this will provision an Azure Database for PostgreSQL flexible server instance of version 12 with General purpose pricing tier  using 2 vCores, 8 GiB RAM, and 28 GiB storage. The backup retention is **seven** days. You can use **Development** workload to default to a lower-cost pricing tier.
 
-    :::image type="content" source="./media/quickstart-create-connect-server-vnet/postgres-create-basics.png" alt-text="Screenshot that shows the Basics tab of the Azure Database for PostgreSQL flexible server page." lightbox="./media/quickstart-create-connect-server-vnet/postgres-create-basics.png":::
+    :::image type="content" source="./media/quickstart-create-connect-server-vnet/postgres-create-basics.png" alt-text="Screenshot that shows the Basics tab of the Azure Database for PostgreSQL page." lightbox="./media/quickstart-create-connect-server-vnet/postgres-create-basics.png":::
 
 5. In the **Basics** tab, enter  a unique **admin username** and **admin password**.
 
@@ -56,7 +55,7 @@ Complete these steps to create an Azure Database for PostgreSQL flexible server 
 
     :::image type="content" source="./media/quickstart-create-connect-server-vnet/create-new-vnet-for-postgres-server.png" alt-text="Screenshot that shows the Networking tab with new VNET." lightbox="./media/quickstart-create-connect-server-vnet/create-new-vnet-for-postgres-server.png":::
 
-7. Select **Review + create** to review your Azure Database for PostgreSQL flexible server configuration.
+7. Select **Review + create** to review your Azure Database for PostgreSQL flexible server instance configuration.
 
 8. Select **Create** to provision the server. Provisioning can take a few minutes.
 
@@ -161,11 +160,11 @@ You have now created an Azure Database for PostgreSQL flexible server instance i
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).
-- [Quickstart: Use Python to connect and query data from an Azure Database for PostgreSQL flexible server](connect-python.md).
-- [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL flexible server](connect-java.md).
-- [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL flexible server](connect-csharp.md).
-- [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL flexible server](connect-go.md).
-- [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL flexible server](connect-php.md).
-- [Quickstart: Use Azure CLI to connect and query data from an Azure Database for PostgreSQL flexible server](connect-azure-cli.md).
-- [Quickstart: Import data from Azure Database for PostgreSQL flexible server in Power BI](connect-with-power-bi-desktop.md).
+- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md).
+- [Quickstart: Use Python to connect and query data from an Azure Database for PostgreSQL](connect-python.md).
+- [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL](connect-java.md).
+- [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL](connect-csharp.md).
+- [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL](connect-go.md).
+- [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL](connect-php.md).
+- [Quickstart: Connect and query with Azure CLI with Azure Database for PostgreSQL](connect-azure-cli.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](connect-with-power-bi-desktop.md).

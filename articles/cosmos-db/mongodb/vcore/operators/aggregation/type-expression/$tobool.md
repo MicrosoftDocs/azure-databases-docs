@@ -1,26 +1,25 @@
 ---
 title: $toBool
-titleSuffix: Overview of the $toBool operator in Azure Cosmos DB for MongoDB vCore
-description: The $toBool operator in Azure Cosmos DB for MongoDB vCore converts an expression into a Boolean type
+titleSuffix: Overview of the $toBool operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $toBool operator converts an expression into a Boolean type
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 02/24/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
 # $toBool
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 The `$toBool` operator converts an expression into a Boolean value. Boolean values are returned as is without a conversion. Nonzero numeric values are converted to true while Decimal, Long, Double or Int values of 0 are converted to false. All other data types are converted to true. 
 
 ## Syntax
 
-The syntax for the `$toBool` operator is:
-
-```mongodb
-{ "$toBool": <expression> }
+```javascript
+{
+    $toBool: < expression >
+}
 ```
 
 ## Parameters
@@ -31,7 +30,7 @@ The syntax for the `$toBool` operator is:
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -145,18 +144,18 @@ Consider this sample document from the stores collection in the StoreData databa
 
 ### Example 1: Convert a Double value into a Boolean value
 
+To convert the value of the latitude field from a double to a boolean, run a query using the $toBool operator on the field to make the conversion. Positive numeric values are converted to true.
+
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsBool": {
-            "$toBool": "$location.lat"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsBool: {
+            $toBool: "$location.lat"
         }
     }
 }])
@@ -165,56 +164,60 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "originalLatitude": 72.8377,
-    "latitudeAsBool": true
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalLatitude": 72.8377,
+        "latitudeAsBool": true
+    }
+]
 ```
 
 ### Example 2: Convert a String value into a Boolean value
 
+To convert the value of the _id field from a string to a boolean, run a query using the $toBool value to make the conversion. String values are converted to true.
+
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
-    }
-},
-{
-    "$project": {
-        "originalId": "$_id",
-        "idAsBool": {
-            "$toBool": "$_id"
-        }
-    }
-}])
+ db.stores.aggregate([{
+     $match: {
+         _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
+     }
+ }, {
+     $project: {
+         originalId: "$_id",
+         idAsBool: {
+             $toBool: "$_id"
+         }
+     }
+ }])
 ```
 
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "originalId": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "idAsBool": true
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalId": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "idAsBool": true
+    }
+]
 ```
 
 ### Example 3: Convert an Int value into a Boolean value
 
+To convert the value of the sales.totalSales field from integer to boolean, run a query using the $toBool operator to make the conversion. Positive numeric values are converted to true.
+
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalTotalSales": "$sales.totalSales",
-        "totalSalesAsBool": {
-            "$toBool": "$sales.totalSales"
+}, {
+    $project: {
+        originalTotalSales: "$sales.totalSales",
+        totalSalesAsBool: {
+            $toBool: "$sales.totalSales"
         }
     }
 }])
@@ -223,15 +226,16 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "originalTotalSales": 9366,
-    "totalSalesAsBool": true
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalTotalSales": 9366,
+        "totalSalesAsBool": true
+    }
+]
 ```
 
-
-This table delineates the expected behavior of the $toBool operator based on the data type of the input value.
+This table delineates the expected behavior of the $toBool operator based on the data type of the input expression.
 
 | **Value Type**                                               | **Behavior/Output** |
 |--------------------------------------------------------------|---------------------|
@@ -243,6 +247,4 @@ This table delineates the expected behavior of the $toBool operator based on the
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$type to determine the BSON type of a value]($type.md)
-- [$toString to convert a value to a String]($tostring.md)
+[!INCLUDE[Related content](../../includes/related-content.md)]

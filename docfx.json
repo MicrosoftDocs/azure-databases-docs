@@ -111,7 +111,7 @@
       },
       "brand": "azure",
       "feedback_github_repo": "MicrosoftDocs/azure-docs",
-      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/133/azure",
+      "feedback_help_link_url": "/answers/tags/133/azure",
       "feedback_help_link_type": "get-help-at-qna",
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4",
       "feedback_system": "Standard",
@@ -145,12 +145,12 @@
         "articles/postgresql/**/*.md": "https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0"
       },
       "feedback_help_link_url": {
-        "articles/cosmos-db/**/*": "https://learn.microsoft.com/answers/tags/187/azure-cosmos-db/",
-        "articles/dms/**/*": "https://learn.microsoft.com/answers/tags/37/azure-database-migration/",
-        "articles/managed-instance-apache-cassandra/**/*": "https://learn.microsoft.com/answers/tags/187/azure-cosmos-db/",
-        "articles/mariadb/**/*": "https://learn.microsoft.com/answers/tags/56/azure-database-mariadb/",
-        "articles/mysql/**/*": "https://learn.microsoft.com/answers/tags/181/azure-database-mysql/",
-        "articles/postgresql/**/*": "https://learn.microsoft.com/answers/tags/214/azure-database-postgresql/"
+        "articles/cosmos-db/**/*": "/answers/tags/187/azure-cosmos-db/",
+        "articles/dms/**/*": "/answers/tags/37/azure-database-migration/",
+        "articles/managed-instance-apache-cassandra/**/*": "/answers/tags/187/azure-cosmos-db/",
+        "articles/mariadb/**/*": "/answers/tags/56/azure-database-mariadb/",
+        "articles/mysql/**/*": "/answers/tags/181/azure-database-mysql/",
+        "articles/postgresql/**/*": "/answers/tags/214/azure-database-postgresql/"
       },
       "feedback_help_link_type": {
         "**/*": "get-help-at-qna"
@@ -169,17 +169,22 @@
         "articles/cosmos-db/mongodb/vcore/**/*.md": "mongodb-vcore",
         "articles/cosmos-db/postgresql/**/*.md": "postgresql",
         "articles/cosmos-db/cassandra/**/*.md": "apache-cassandra",
-        "articles/cosmos-db/table/**/*.md": "table"
+        "articles/cosmos-db/table/**/*.md": "table",
+        "articles/cosmos-db/gremlin/**/*.md": "apache-gremlin"
       },
       "author": {
-        "articles/cosmos-db/**/includes/**/*.md": "markjbrown"
+        "articles/cosmos-db/**/includes/**/*.md": "seesharprun",
+        "articles/cosmos-db/gremlin/**/*.md": "seesharprun",
+        "articles/cosmos-db/gremlin/**/*.yml": "seesharprun"
       },
       "ms.author": {
-        "articles/cosmos-db/**/includes/**/*.md": "mjbrown"
+        "articles/cosmos-db/**/includes/**/*.md": "sidandrews",
+        "articles/cosmos-db/gremlin/**/*.md": "sidandrews",
+        "articles/cosmos-db/gremlin/**/*.yml": "sidandrews"
       },
       "ms.reviewer": {
-        "articles/cosmos-db/**/*.md": "mjbrown",
-        "articles/cosmos-db/**/*.yml": "mjbrown"
+        "articles/cosmos-db/gremlin/**/*.md": "mansha",
+        "articles/cosmos-db/gremlin/**/*.yml": "mansha"
       },
       "searchScope": {
         "articles/cosmos-db/**/*.md": [
@@ -224,14 +229,24 @@
         ]
       },
       "titleSuffix": {
-        "articles/mysql/flexible-server/**/*.md": "Azure Database for MySQL - Flexible Server",
-        "articles/postgresql/scripts/**/*.md": "Azure Database for PostgreSQL flexible server",
-        "articles/postgresql/flexible-server/**/*.md": "Azure Database for PostgreSQL flexible server",
-        "articles/postgresql/migrate/**/*.md": "Azure Database for PostgreSQL flexible server",
-        "articles/mysql/flexible-server/**/*.yml": "Azure Database for MySQL - Flexible Server",
-        "articles/postgresql/scripts/**/*.yml": "Azure Database for PostgreSQL flexible server",
-        "articles/postgresql/flexible-server/**/*.yml": "Azure Database for PostgreSQL flexible server",
-        "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL flexible server"
+        "articles/mysql/flexible-server/**/*.md": "Azure Database for MySQL",
+        "articles/postgresql/scripts/**/*.md": "Azure Database for PostgreSQL",
+        "articles/postgresql/flexible-server/**/*.md": "Azure Database for PostgreSQL",
+        "articles/postgresql/migrate/**/*.md": "Azure Database for PostgreSQL",
+        "articles/mysql/flexible-server/**/*.yml": "Azure Database for MySQL",
+        "articles/postgresql/scripts/**/*.yml": "Azure Database for PostgreSQL",
+        "articles/postgresql/flexible-server/**/*.yml": "Azure Database for PostgreSQL",
+        "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL",
+        "articles/cosmos-db/gremlin/**/*.md": "Azure Cosmos DB for Apache Gremlin",
+        "articles/cosmos-db/gremlin/**/*.yml": "Azure Cosmos DB for Apache Gremlin"
+      },      
+      "appliesto": {
+        "articles/cosmos-db/gremlin/**/*.{md,yml}": [
+          "✅ Apache Gremlin"
+        ]
+      },
+      "ms.update-cycle": {
+        "articles/cosmos-db/gremlin/**/*.{md,yml}": "1095-days"
       }
     },
     "overwrite": [],
@@ -284,7 +299,9 @@
           "articles/mysql/howto-create-users.md",
           "articles/mysql/howto-data-in-replication.md",
           "articles/mysql/howto-troubleshoot-replication-latency.md",
-          "articles/postgresql/migrate/migration-service/*.*"
+          "articles/postgresql/migrate/migration-service/*.*",
+          "articles/postgresql/flexible-server/includes/param-18-customized-options.md",
+          "articles/postgresql/flexible-server/includes/server-parameters-table.md"
         ]
       }
     }

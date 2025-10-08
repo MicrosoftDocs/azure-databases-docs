@@ -7,15 +7,17 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
-  - ignite-2023
-  - ignite-2024
-  - build-2025
+- ignite-2023
+- ignite-2024
+- build-2025
+- sfi-ropc-blocked
 ms.topic: concept-article
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.collection:
-  - ce-skilling-ai-copilot
+- ce-skilling-ai-copilot
 appliesto:
-  - ✅ MongoDB vCore
+- ✅ MongoDB vCore
 ---
 
 # Vector store in Azure Cosmos DB for MongoDB vCore
@@ -34,11 +36,14 @@ In the Integrated Vector Database in Azure Cosmos DB for MongoDB (vCore), embedd
 
 ## Perform Vector Similarity search
 
-Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. Cosmos DB currently supports three types of vector indexes:
+Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. While Azure Cosmos DB for MongoDB (vCore) offers multiple options, here are some general guidelines to help you get started based on the size of your dataset:
 
-- **DiskANN (Recommended)**: Ideal for large-scale datasets, leveraging SSDs for efficient memory usage while maintaining high recall in approximate nearest-neighbor (ANN) searches.
-- **HNSW**: Suited for moderate-sized datasets needing high recall, with a graph-based structure that balances accuracy and resource efficiency.
-- **IVF**: Uses clustering to optimize search speed in expansive datasets, focusing searches within targeted clusters to accelerate performance.
+| | **IVF** | **HNSW** | **DiskANN (recommended)** |
+| --- | --- | --- | --- |
+| **Description** | An IVFFlat index divides vectors into lists, then searches a subset closest to the query vector. | An HNSW index creates a multilayer graph. | DiskANN is an approximate nearest neighbor search algorithm designed for efficient vector search at any scale. |
+| **Key Trade-offs** | **Pros:** Faster build times, lower memory use. <br /> **Cons:** Lower query performance (in terms of speed-recall tradeoff). | **Pros:** Better query performance (in terms of speed-recall tradeoff), can be created on an empty table. <br />**Cons:** Slower build times, higher memory use. | **Pros:** Efficient at any scale, high recall, high throughput, low latency. |
+| **Vector Count** | Under 10,000 | Up to 50,000 | Up to 500,000+ |
+| **Recommended Cluster Tier** | M10 or M20 | M30 and higher | M30 and higher |
 
 ### [DiskANN](#tab/diskann)
 
@@ -632,9 +637,9 @@ db.exampleCollection.aggregate([
 
 ### Use as a vector database with Semantic Kernel
 
-Use Semantic Kernel to orchestrate your information retrieval from Azure Cosmos DB for MongoDB vCore and your LLM. Learn more [here](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory/azure_cosmosdb).
+Use Semantic Kernel to orchestrate your information retrieval from Azure Cosmos DB for MongoDB vCore and your LLM. Learn more [here](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory_stores/azure_cosmosdb).
 
-https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory/azure_cosmosdb
+https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory_stores/azure_cosmosdb
 
 ###  Use as a vector database with LangChain
 
@@ -666,8 +671,8 @@ This guide demonstrates how to create a vector index, add documents that have ve
 - [Python RAG pattern - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore)
 - [Python notebook tutorial - Vector database integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
 - [Python notebook tutorial - LLM Caching integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
-- [Python - LlamaIndex integration](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo.html)
-- [Python - Semantic Kernel memory integration](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory/azure_cosmosdb)
+- [Python - LlamaIndex integration](https://developers.llamaindex.ai/python/examples/vector_stores/azurecosmosdbmongodbvcoredemo/)
+- [Python - Semantic Kernel memory integration](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory_stores/azure_cosmosdb)
 
 ## Next step
 

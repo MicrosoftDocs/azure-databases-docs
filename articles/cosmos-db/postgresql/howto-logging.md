@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 9/21/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Logs in Azure Cosmos DB for PostgreSQL

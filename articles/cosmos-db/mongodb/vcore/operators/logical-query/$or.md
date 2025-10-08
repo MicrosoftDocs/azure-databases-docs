@@ -1,169 +1,265 @@
 ---
-title: $or (Logical Query) usage on Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: The $or operator joins query clauses with a logical OR, returning documents that match at least one specified condition.
+title: $or
+titleSuffix: Overview of the $or operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $or operator joins query clauses with a logical OR and returns documents that match at least one of the specified conditions.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 02/12/2025
+ms.topic: language-reference
+ms.date: 08/04/2025
 ---
 
-# $or (logical query)
+# $or
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$or` operator performs a logical OR operation on an array of expressions and selects documents that satisfy at least one of the expressions.
+The `$or` operator performs a logical OR operation on an array of expressions and retrieves documents that satisfy at least one of the specified conditions.
 
 ## Syntax
 
 ```javascript
-{ $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
+{
+    $or: [{
+        < expression1 >
+    }, {
+        < expression2 >
+    }, ..., {
+        < expressionN >
+    }]
+}
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `expression` | Array | An array of expressions, where at least one must be true for a document to be included |
+| Parameter | Description |
+|-----------|-------------|
+| `expression` | An array of expressions, where at least one must be true for a document to be included |
 
 ## Examples
 
-### Example 1: Basic OR operation
+Consider this sample document from the stores collection.
 
-Find stores that either have more than 15 full-time staff or more than 20 part-time staff:
-
-```javascript
-db.stores.find({
-  $or: [
-    { "staff.totalStaff.fullTime": { $gt: 15 } },
-    { "staff.totalStaff.partTime": { $gt: 20 } }
-  ]
-})
-```
-
-Output:
-
-```javascript
-  {
-    _id: 'd924d148-9e01-4ab1-91d6-9daccb12a4dd',
-    name: 'Fourth Coffee | Home Entertainment Gallery - East Adellahaven',
-    location: { lat: -86.4872, lon: 130.9398 },
-    staff: { totalStaff: { fullTime: 16, partTime: 14 } },
-    sales: {
-      totalSales: 179639,
-      salesByCategory: [
-        { categoryName: 'Home Theater Systems', totalSales: 18707 },
-        { categoryName: 'Xbox Games', totalSales: 48276 },
-        { categoryName: 'Sound Bars', totalSales: 43142 },
-        { categoryName: 'Projector Mounts', totalSales: 43358 },
-        { categoryName: 'Televisions', totalSales: 11325 },
-        { categoryName: 'Streaming Devices', totalSales: 14831 }
-      ]
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
     },
-    promotionEvents: [
-      {
-        eventName: 'Massive Deal Mania',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 9, Day: 21 },
-          endDate: { Year: 2024, Month: 9, Day: 29 }
-        },
-        discounts: [
-          {
-            categoryName: 'Home Theater Projectors',
-            discountPercentage: 16
-          },
-          { categoryName: 'TV Mounts', discountPercentage: 17 },
-          { categoryName: 'Projector Lamps', discountPercentage: 24 },
-          { categoryName: 'Sound Bars', discountPercentage: 8 },
-          { categoryName: 'Media Players', discountPercentage: 14 },
-          {
-            categoryName: 'Nintendo Switch Games',
-            discountPercentage: 22
-          }
-        ]
-      }
-    ]
-  }..
-```
-
-
-### Example 2: Complex OR operation
-
-Find stores that either have total sales over 100000 or have promotions with discounts greater than 20%:
-
-```javascript
-db.stores.find({
-  $or: [
-    { "sales.totalSales": { $gt: 100000 } },
-    { "promotionEvents.discounts.discountPercentage": { $gt: 20 } }
-  ]
-})
-```
-
-Output:
-
-```javascript
-      {
-        eventName: 'Bargain Blitz Bash',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 3, Day: 25 },
-          endDate: { Year: 2024, Month: 4, Day: 3 }
-        },
-        discounts: [
-          { categoryName: 'Pet Carriers', discountPercentage: 22 },
-          { categoryName: 'Pet Collars', discountPercentage: 11 }
-        ]
-      },
-      {
-        eventName: 'Clearance Carnival',
-        promotionalDates: {
-          startDate: { Year: 2024, Month: 6, Day: 23 },
-          endDate: { Year: 2024, Month: 6, Day: 30 }
-        },
-        discounts: [
-          { categoryName: 'Cat Litter', discountPercentage: 18 },
-          { categoryName: 'Pet Beds', discountPercentage: 8 }
-        ]
-      }..
-```
-
-### Example 3: OR with multiple conditions and arrays
-
-Find stores that match any of these criteria: sell electronics, have high staff count, or have specific promotional events:
-
-```javascript
-db.stores.find({
-  $or: [
-    { "sales.salesByCategory.categoryName": { $in: ["Game Controllers", "Sound Bars", "Home Theater Projectors"] } },
-    {
-      $and: [
-        { "staff.totalStaff.fullTime": { $gt: 10 } },
-        { "staff.totalStaff.partTime": { $gt: 15 } }
-      ]
-    },
-    {
-      "promotionEvents": {
-        $elemMatch: {
-          "eventName": "Super Sale Spectacular",
-          "discounts.discountPercentage": { $gt: 15 }
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1: Use OR operation as logical-query
+
+This query retrieves stores with more than 15 full-time staff or more than 20 part-time staff, run a query using the $or operator on both the conditions. Then, project only the name and staff fields from the stores in the result set.
+
+```javascript
+db.stores.find(
+  {
+    $or: [
+      { "staff.employeeCount.fullTime": { $gt: 15 } },
+      { "staff.employeeCount.partTime": { $gt: 20 } }
+    ]
+  },
+  {
+    "name": 1,
+    "staff": 1
+  }
+).limit(2)
+```
+
+The first two results returned by this query are:
+
+```json
+[
+  {
+    "_id": "dda2a7d2-6984-40cc-bbea-4cbfbc06d8a3",
+    "name": "Contoso, Ltd. | Home Improvement Closet - Jaskolskiview",
+    "staff": {
+      "employeeCount": {
+        "fullTime": 16,
+        "partTime": 8
       }
     }
-  ]
-})
+  },
+  {
+    "_id": "44fdb9b9-df83-4492-8f71-b6ef648aa312",
+    "name": "Fourth Coffee | Storage Solution Gallery - Port Camilla",
+    "staff": {
+      "employeeCount": {
+        "fullTime": 17,
+        "partTime": 15
+      }
+    }
+  }
+]
+```
+
+### Example 2: Use OR operator as boolean-expression to identify stores with either high sales or large staff
+
+This query retrieves stores that have either total sales greater than 50,000 or more than 25 total staff members.
+
+```javascript
+db.stores.aggregate([
+  {
+    $project: {
+      name: 1,
+      totalSales: "$sales.totalSales",
+      totalStaff: { 
+        $add: ["$staff.employeeCount.fullTime", "$staff.employeeCount.partTime"] 
+      },
+      qualifiesForProgram: {
+        $or: [
+          { $gt: ["$sales.totalSales", 50000] },
+          { $gt: [{ $add: ["$staff.employeeCount.fullTime", "$staff.employeeCount.partTime"] }, 25] }
+        ]
+      }
+    }
+  },
+  { $limit: 4 }
+])
+```
+
+The first four results returned by this query are:
+
+```json
+[
+  {
+    "_id": "905d1939-e03a-413e-a9c4-221f74055aac",
+    "name": "Trey Research | Home Office Depot - Lake Freeda",
+    "totalStaff": 31,
+    "qualifiesForProgram": true
+  },
+  {
+    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+    "totalStaff": 27,
+    "qualifiesForProgram": true
+  },
+  {
+    "_id": "923d2228-6a28-4856-ac9d-77c39eaf1800",
+    "name": "Lakeshore Retail | Home Decor Hub - Franciscoton",
+    "totalStaff": 13,
+    "qualifiesForProgram": false
+  },
+  {
+    "_id": "7e53ca0f-6e24-4177-966c-fe62a11e9af5",
+    "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
+    "totalStaff": 2,
+    "qualifiesForProgram": false
+  }
+]
 ```
 
 ## Performance Considerations
 
-   - Each condition in the `$or` array is evaluated independently
-   - Use indexes when possible for better performance
-   - Consider the order of conditions for optimal execution
-   - Use `$in` instead of `$or` for multiple equality checks on the same field
-   - Keep the number of `$or` conditions reasonable
-
+- Review the suggestions for finding better performance.
+  - Each condition in the `$or` array is evaluated independently
+  - Use indexes when possible for better performance
+  - Consider the order of conditions for optimal execution
+  - Use `$in` instead of `$or` for multiple equality checks on the same field
+  - Keep the number of `$or` conditions reasonable
 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+

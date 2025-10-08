@@ -5,6 +5,7 @@ author: jojohnso-msft
 ms.author: jojohnso
 ms.reviewer: maghan
 ms.date: 05/19/2025
+ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -12,7 +13,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for my Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Enable Managed Identity for Azure AI services with the azure_ai extension preview
@@ -45,6 +46,7 @@ To learn more about it, visit [Managed Identities](/azure/active-directory/manag
 1. In the **Members** section, select **Managed identity**.
 1. Choose the subscription and the managed identity of your PostgreSQL server.
 1. Select **Save** to assign the role.
+1. Return to the server's Overview page and click the Restart button to reboot the server.
 
 To learn more, visit  ['Managed Identity with Azure AI Services'](/azure/active-directory/managed-identities-azure-resources/overview)
 
@@ -103,7 +105,7 @@ You need to update the database authorization settings to configure the Azure AI
 - For Azure OpenAI, execute the following SQL command to set the endpoint:
 
  ```sql
-  SELECT azure_ai.set_setting('azure_openai.endpoint', '<Your_OpenAI_Endpoint>');
+  SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<Your_openai_account>.openai.azure.com'); 
  ```
 
 ### Verify settings
@@ -130,7 +132,7 @@ Ensure that the function executes successfully without any authorization errors.
 Testing OpenAI services ensures that the integration between the Azure AI extension for PostgreSQL and Azure OpenAI is functioning correctly. By executing sample function calls, you can validate that the managed identity or subscription key authentication is configured correctly and that the database can successfully interact with OpenAI models. Follow the example below to test the embedding creation functionality and confirm that the service works without authorization errors.
 
  ```sql
-  SELECT azure_openai.create_embedding('Your model deployment name', 'Your text here');
+  SELECT azure_openai.create_embeddings('Your model deployment name', 'Your text here');
  ```
 
 Ensure that the function executes successfully without any authorization errors.

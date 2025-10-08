@@ -1,24 +1,22 @@
 --- 
-  title: $binarySize (data size operator) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $binarySize
+  titleSuffix: Overview of the $binarySize operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $binarySize operator is used to return the size of a binary data field. 
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
-  ms.date: 09/27/2024
+  ms.topic: language-reference
+  ms.date: 09/05/2025
 ---
 
-# $binarySize (data size operator)
+# $binarySize
 
 The `$binarySize` operator is used to return the size of a binary data field. This can be useful when dealing with binary data stored, such as images, files, or any other binary content. The argument for `$binarySize` should be a string, or a binary value.
 
 ## Syntax
 
-The syntax for using the `$binarySize` operator is as follows:
-
-```json
+```javascript
 {
   $binarySize: "<field>"
 }
@@ -26,76 +24,129 @@ The syntax for using the `$binarySize` operator is as follows:
 
 ### Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<field>`**| The field for which you want to get the binary size.|
 
-## Example
+## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
+
 ```json
 {
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
-  "location": {
-    "lat": 60.1441,
-    "lon": -141.5012
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 2,
-      "partTime": 0
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "DJ Headphones",
-        "totalSales": 35921
-      }
-    ],
-    "fullSales": 3700
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "DJ Turntables",
-          "discountPercentage": 18
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "DJ Mixers",
-          "discountPercentage": 15
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
+    ]
 }
 ```
 
-To project the size of a binary field
+### Example 1: Calculate the size of a string or binary data in bytes using $binarySize
 
+This query calculates the binary size of the name field for each document in the stores collection.
 
-```JavaScript
+```javascript
 db.stores.aggregate([
   {
     $project: {
@@ -108,31 +159,30 @@ db.stores.aggregate([
   // Limit the result to the first 3 documents
   { $limit: 3 }  
 ])
-
-
 ```
 
-This query would return the following document.
+The first three results returned by this query are:
 
 ```json
 [
   {
-    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-    "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+    "_id": "7e53ca0f-6e24-4177-966c-fe62a11e9af5",
+    "name": "Contoso, Ltd. | Office Supply Deals - South Shana",
+    "dataSize": 49
+  },
+  {
+    "_id": "923d2228-6a28-4856-ac9d-77c39eaf1800",
+    "name": "Lakeshore Retail | Home Decor Hub - Franciscoton",
+    "dataSize": 48
+  },
+  {
+    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
     "dataSize": 50
-  },
-  {
-    "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41",
-    "name": "VanArsdel, Ltd. | Musical Instrument Outlet - East Cassie",
-    "dataSize": 57
-  },
-  {
-    "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34",
-    "name": "Northwind Traders | Bed and Bath Place - West Oraland",
-    "dataSize": 53
   }
 ]
 ```
 
 ## Related content
+
 [!INCLUDE[Related content](../includes/related-content.md)]

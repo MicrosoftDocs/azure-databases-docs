@@ -1,25 +1,27 @@
 ---
 title: $nin
-titleSuffix: Overview of the $nin query operator in Azure Cosmos DB for MongoDB vCore
-description: The $nin query operator in Azure Cosmos DB for MongoDB vCore returns documents where the value of a field doesn't match a list of values
+titleSuffix: Overview of the $nin operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $nin operator retrieves documents where the value of a field doesn't match a list of values
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 02/24/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
 # $nin
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$nin` operator is used to retrieve documents where the value of a specified field doesn't match a list of values.
+The `$nin` operator retrieves documents where the value of a specified field doesn't match a list of values.
 
 ## Syntax
 
-```mongodb
-{ field: { $nin: [<value1>, <value2>, ... <valueN>] } }
+```javascript
+{
+    field: {
+        $nin: [ < listOfValues > ]
+    }
+}
 ```
 
 ## Parameters
@@ -27,10 +29,11 @@ The `$nin` operator is used to retrieve documents where the value of a specified
 | Parameter | Description |
 | --- | --- |
 | **`field`** | The field to compare|
-| **`[<value1>, <value2>, ... <valueN>]`** | An array of values that shouldn't match the value of the field being compared|
+| **`[<listOfValues>]`** | An array of values that shouldn't match the value of the field being compared|
 
 ## Examples
-Consider this sample document from the stores collection in the StoreData database.
+
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -142,67 +145,94 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1 - Find documents with promotion events offering a discount percentage that isn't either of 10%, 15%, or 20%
+### Example 1 - Find a store with a discount that isn't 10%, 15%, or 20%
+
+To find a store with promotions offering discounts that are not 10%, 15%, or 20%, first run a query using $nin on the nested discountPercentage field. Then project only the name and discount offered by the result store and limit the result to a single document from the result set.
 
 ```javascript
-db.stores.find({ "promotionEvents.discounts.discountPercentage": { "$nin": [10, 15, 20] }}, {"name": 1, "promotionEvents.discounts.discountPercentage": 1}, {"limit": 1})
+db.stores.find({
+    "promotionEvents.discounts.discountPercentage": {
+        $nin: [10, 15, 20]
+    }
+}, {
+    name: 1,
+    "promotionEvents.discounts.discountPercentage": 1
+}, {
+    limit: 1
+})
 ```
 
-This returns the following results:
+The first result returned by this query is:
+
 ```json
-{
-    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-    "name": "First Up Consultants | Bed and Bath Center - South Amir",
-    "promotionEvents": [
-      {
-        "discounts": [
-          { "discountPercentage": 18 },
-          { "discountPercentage": 17 },
-          { "discountPercentage": 9 },
-          { "discountPercentage": 5 },
-          { "discountPercentage": 5 },
-          { "discountPercentage": 6 },
-          { "discountPercentage": 9 },
-          { "discountPercentage": 5 },
-          { "discountPercentage": 19 },
-          { "discountPercentage": 21 }
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "promotionEvents": [
+          {
+            "discounts": [
+              { "discountPercentage": 18 },
+              { "discountPercentage": 17 },
+              { "discountPercentage": 9 },
+              { "discountPercentage": 5 },
+              { "discountPercentage": 5 },
+              { "discountPercentage": 6 },
+              { "discountPercentage": 9 },
+              { "discountPercentage": 5 },
+              { "discountPercentage": 19 },
+              { "discountPercentage": 21 }
+            ]
+          }
         ]
-      }
-    ]
-}
+    }
+]
 ```
 
-### Example 2 - Find documents with discount offers that aren't on specific categories of promotions
+### Example 2 - Find a store with no discounts on specific categories of promotions
+
+To find a store without promotions on Smoked Salmon and Anklets, first run a query using $nin on the nested categoryName field. Then project the name and promotions offered by the store and limit the results to one document from the result set.
 
 ```javascript
-db.stores.find({ "promotionEvents.discounts.categoryName": { "$nin": ["Smoked Salmon", "Anklets"] }}, {"name": 1, "promotionEvents.discounts.categoryName": 1}, {"limit": 1})
+db.stores.find({
+    "promotionEvents.discounts.categoryName": {
+        $nin: ["Smoked Salmon", "Anklets"]
+    }
+}, {
+    name: 1,
+    "promotionEvents.discounts.categoryName": 1
+}, {
+    limit: 1
+})
 ```
 
-This returns the following results:
+The first result returned by this query is:
+
 ```json
-{
-    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-    "name": "First Up Consultants | Bed and Bath Center - South Amir",
-    "promotionEvents": [
-      {
-        "discounts": [
-          { "categoryName": "Bath Accessories" },
-          { "categoryName": "Pillow Top Mattresses" },
-          { "categoryName": "Bathroom Scales" },
-          { "categoryName": "Towels" },
-          { "categoryName": "Bathrobes" },
-          { "categoryName": "Mattress Toppers" },
-          { "categoryName": "Hand Towels" },
-          { "categoryName": "Shower Heads" },
-          { "categoryName": "Bedspreads" },
-          { "categoryName": "Bath Mats" }
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "promotionEvents": [
+          {
+            "discounts": [
+              { "categoryName": "Bath Accessories" },
+              { "categoryName": "Pillow Top Mattresses" },
+              { "categoryName": "Bathroom Scales" },
+              { "categoryName": "Towels" },
+              { "categoryName": "Bathrobes" },
+              { "categoryName": "Mattress Toppers" },
+              { "categoryName": "Hand Towels" },
+              { "categoryName": "Shower Heads" },
+              { "categoryName": "Bedspreads" },
+              { "categoryName": "Bath Mats" }
+            ]
+          }
         ]
-      }
-    ]
-}
+    }
+]
 ```
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$in for in comparisons]($in.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

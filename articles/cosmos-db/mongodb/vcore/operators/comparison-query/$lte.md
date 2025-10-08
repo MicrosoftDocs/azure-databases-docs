@@ -1,28 +1,26 @@
 ---
 title: $lte
-titleSuffix: Overview of the $lte query operator in Azure Cosmos DB for MongoDB vCore
-description: The $lte query operator in Azure Cosmos DB for MongoDB vCore matches documents where the value of a field is less than or equal to a specified value
+titleSuffix: Overview of the $lte operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $lte operator retrieves documents where the value of a field is less than or equal to a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 02/24/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
 # $lte
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$lte` operator is used to match documents where the value of a field is less than or equal to a specified value. The `$lte` operator filters documents based on numerical, date, or other comparable fields.
+The `$lte` operator retrieves documents where the value of a field is less than or equal to a specified value. The `$lte` operator filters documents based on numerical, date, or other comparable fields.
 
 ## Syntax
 
-The syntax for using the `$lte` operator is:
-
-```mongodb
+```javascript
 {
-  "field": { "$lte": value }
+    field: {
+        $lte: <value>
+    }
 }
 ```
 
@@ -34,7 +32,8 @@ The syntax for using the `$lte` operator is:
 | **`value`** | The value to compare against|
 
 ## Examples
-Consider this sample document from the stores collection in the StoreData database.
+
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -146,36 +145,61 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1: Retrieve all stores where the total sales is less than or equal to $35,000
+### Example 1: Find a store with sales <= $35,000
+
+To find a store with sales <= $35,000, run a query using $lte on the sales.totalSales field and limit the resulting documents to a single store.
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$lte": 35000 } }, {"_id": 1}, {"limit": 1})
+db.stores.find({
+    "sales.totalSales": {
+        $lte: 35000
+    }
+}, {
+    _id: 1
+}, {
+    limit: 1
+})
 ```
 
-This returns the following results:
+The first result returned by this query is:
+
 ```json
-{
-  "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6"
-}
+[
+  {
+    "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6"
+  }
+]
 ```
 
-### Example 2: Find stores with 12 or fewer full-time staff
+### Example 2: Find a store with 12 or fewer full-time staff
+
+To find a store with <= 12 full-time staff, run a query using $lte on the nested fullTime field. Then project only the name and full time staff count and limit the results to one store from the result set.
 
 ```javascript
-db.stores.find({ "staff.totalStaff.fullTime": { "$lte": 12 } }, {"name": 1, "staff.totalStaff.fullTime": 1}, {"limit": 1})
+db.stores.find({
+    "staff.totalStaff.fullTime": {
+        $lte: 12
+    }
+}, {
+    name: 1,
+    "staff.totalStaff.fullTime": 1
+}, {
+    limit: 1
+})
 ```
 
-This returns the following results:
+The first result returned by this query is:
+
 ```json
-{
-    "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
-    "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
-    "staff": { "totalStaff": { "fullTime": 6 } }
-}
+[
+  {
+      "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
+      "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
+      "staff": { "totalStaff": { "fullTime": 6 } }
+  }
+]
 ```
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$lt for less than comparisons]($lt.md)
-- [$gt for greater than comparisons]($gt.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

@@ -1,8 +1,8 @@
 ---
 title: "Migrate MySQL On-Premises to Azure Database for MySQL: Planning"
 description: "An Azure landing zone is the target environment defined as the final resting place of a cloud migration project."
-author: SudheeshGH
-ms.author: sunaray
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

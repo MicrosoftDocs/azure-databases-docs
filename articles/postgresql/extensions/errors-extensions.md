@@ -1,19 +1,18 @@
 ---
 title: Possible errors when managing extensions
-description: This article describes possible errors that can be seen when managing extensions in an Azure Database for PostgreSQL flexible server.
+description: This article describes possible errors that can be seen when managing extensions in an Azure Database for PostgreSQL flexible server instance.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 02/17/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to troubleshoot possible errors that might occur while managing extensions in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to troubleshoot possible errors that might occur while managing extensions in an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Possible errors when managing extensions
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 ## Extension "%s" is not allow-listed for "azure_pg_admin" users in Azure Database for PostgreSQL
 
@@ -29,7 +28,7 @@ This error occurs when the user that runs a `DROP EXTENSION` command isn't a mem
 
 ## SET SCHEMA clause for ALTER EXTENSION is not supported.
 
-This error occurs when the user tries to use the `SET SCHEMA` clause of the `ALTER EXTENSION` command. The use of this clause would move the referred extension's objects into another schema, as long as the extension is relocatable. However, the use of this clause for the `ALTER EXTENSION` command isn't supported in an Azure Database for PostgreSQL flexible server. The only supported way to move the objects created by an extension in an Azure Database for PostgreSQL flexible server to a specific schema is at creation time. Use the `WITH SCHEMA` clause of `CREATE EXTENSION`.
+This error occurs when the user tries to use the `SET SCHEMA` clause of the `ALTER EXTENSION` command. The use of this clause would move the referred extension's objects into another schema, as long as the extension is relocatable. However, the use of this clause for the `ALTER EXTENSION` command isn't supported in an Azure Database for PostgreSQL flexible server instance. The only supported way to move the objects created by an extension in an Azure Database for PostgreSQL flexible server instance to a specific schema is at creation time. Use the `WITH SCHEMA` clause of `CREATE EXTENSION`.
 
 ## Related content
 

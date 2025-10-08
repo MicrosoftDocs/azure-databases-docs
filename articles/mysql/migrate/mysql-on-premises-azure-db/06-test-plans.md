@@ -1,8 +1,8 @@
 ---
 title: "Migrate MySQL On-Premises to Azure Database for MySQL: Test Plans"
 description: "WWI created a test plan that included a set of IT and the Business tasks. Successful migrations require all the tests to be executed."
-author: SudheeshGH
-ms.author: sunaray
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

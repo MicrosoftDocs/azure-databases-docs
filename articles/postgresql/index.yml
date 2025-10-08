@@ -1,102 +1,48 @@
 ### YamlMime:Landing
 metadata:
   title: Azure Database for PostgreSQL documentation landing page
-  description: "Azure Database for PostgreSQL is a relational database service in the Microsoft cloud that is built for developers based on the open-source PostgreSQL database engine."
-  author: nachoalonsoportillo
-  ms.author: ialonso
-  ms.reviewer: maghan
-  ms.date: 01/04/2025
+  description: "Azure Database for PostgreSQL is a fully managed relational database service on Microsoft Azure, combining the open-source PostgreSQL engine with built-in AI, high performance, and enterprise-grade security."
+  author: gkasar
+  ms.author: gkasar
+  ms.reviewer: maghan, shaithal, hariram
+  ms.date: 05/27/2025
   ms.service: azure-database-postgresql
   ms.topic: landing-page
 
 title:  Azure Database for PostgreSQL documentation
-summary: "Azure Database for PostgreSQL is a relational database service based on the open-source Postgres database engine. It's a fully managed database-as-a-service that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability."
-# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | whats-new
+summary: "Azure Database for PostgreSQL is a fully managed, AI-ready Database-as-a-Service (DBaaS) offering built on the open-source PostgreSQL engine, designed to support mission-critical workloads with predictable performance, robust security, high availability, and seamless scalability. It empowers developers to build intelligent, AI-powered applications through native support for vector embeddings and integration with Azure AI services."
 
 landingContent:
-
-# Card 1
-  - title: Azure Database for PostgreSQL
+#Card 1
+  - title: Beginners guide to Azure Database for PostgreSQL
     linkLists:
       - linkListType: overview
         links:
-          - text: What is Azure Database for PostgreSQL flexible server?
+          - text: What is Azure Database for PostgreSQL?
             url: flexible-server/service-overview.md
       - linkListType: whats-new
         links:
           - text: Check out our blog
             url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
-
-# Card 2
-  - title: Azure Database for PostgreSQL flexible server
-    linkLists:
+          - text: Check out our release notes
+            url: flexible-server/release-notes.md
       - linkListType: get-started
         links:
-          - text: Try Azure Database for PostgreSQL flexible server for free
+          - text: Try Azure Database for PostgreSQL for free
             url: flexible-server/how-to-deploy-on-azure-free-account.md
-      - linkListType: concept
-        links:
-          - text: Server concepts
-            url: flexible-server/concepts-servers.md
-          - text: Understand compute and storage
-            url: flexible-server/concepts-compute-storage.md
-          - text: Limitations
-            url: flexible-server/concepts-limits.md
       - linkListType: quickstart
         links:
-          - text: Create an Azure Database for PostgreSQL flexible server
+          - text: Create an Azure Database for PostgreSQL
             url: flexible-server/quickstart-create-server.md
-      - linkListType: tutorial
-        links:
-          - text: Create App and database server in virtual network
-            url: flexible-server/tutorial-webapp-server-vnet.md
-
-# Card 3
-  - title: Manage Azure Database for PostgreSQL flexible server
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Compute and storage options
-            url: flexible-server/concepts-compute-storage.md
-          - text: Networking
-            url: flexible-server/concepts-networking.md
-          - text: Firewall rules
-            url: flexible-server/concepts-firewall-rules.md
-          - text: PostgreSQL versions
-            url: flexible-server/concepts-supported-versions.md
-          - text: Extensions
-            url: flexible-server/concepts-extensions.md
-          - text: Security
-            url: flexible-server/concepts-security.md
-          - text: Monitor
-            url: flexible-server/concepts-monitoring.md
-          - text: Logical replication
-            url: flexible-server/concepts-logical.md
-          - text: Intelligent tuning
-            url: flexible-server/concepts-intelligent-tuning.md
-          - text: Azure Advisor recommendations
-            url: flexible-server/concepts-azure-advisor-recommendations.md
       - linkListType: how-to-guide
         links:
           - text: Manage server
             url: flexible-server/how-to-manage-server-portal.md
-          - text: Stop/Start server
-            url: flexible-server/how-to-stop-start-server-portal.md
-          - text: Scale up
-            url: flexible-server/how-to-scale-compute-storage-portal.md
-          - text: Restart a server
-            url: flexible-server/how-to-restart-server-portal.md 
-          - text: Set up private networking 
-            url:  flexible-server/how-to-manage-virtual-network-portal.md
-          - text: Connect securely using TLS
-            url: flexible-server/how-to-connect-tls-ssl.md        
-          - text: Configure and access logs
-            url: flexible-server/how-to-configure-and-access-logs.md
-          - text: Schedule maintenance
-            url: flexible-server/how-to-maintenance-portal.md
+          - text: Connect and query using Visual Studio Code
+            url: extensions/vs-code-extension/overview.md
 
-# Card 4
-  - title: Business continuity
+  #Card 2        
+  - title: Enterprise ready features
     linkLists:
       - linkListType: concept
         links:
@@ -106,89 +52,140 @@ landingContent:
             url: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
           - text: Back up and restore
             url: flexible-server/concepts-backup-restore.md
+          - text: Networking with Private Endpoint
+            url: flexible-server/concepts-networking-private-link.md
+          - text: Storage concepts
+            url: flexible-server/concepts-storage.md
+          - text: Read replicas 
+            url: flexible-server/concepts-read-replicas.md
+          - text: Security concepts
+            url: flexible-server/concepts-security.md
       - linkListType: how-to-guide
         links:
           - text: Manage high availability
-            url: flexible-server/how-to-manage-high-availability-portal.md
-          - text: Restore to latest restore point
-            url: flexible-server/how-to-restore-latest-restore-point.md
-          - text: Restore to custom restore point
-            url: flexible-server/how-to-restore-custom-restore-point.md
-          - text: Restore to full backup (fast restore)
-            url: flexible-server/how-to-restore-full-backup.md
+            url: flexible-server/how-to-configure-high-availability.md
+          - text: Guide on scale compute
+            url: flexible-server/how-to-scale-compute.md
           - text: Restore to paired region (geo-restore)
             url: flexible-server/how-to-restore-paired-region.md
+          - text: Entra-id authentication guide
+            url: flexible-server/how-to-configure-sign-in-azure-ad-authentication.md
+                      
+# Card 3
+  - title: Build apps and AI agents
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Build a Python CRUD app (Entra and Password-based authentication)
+            url: flexible-server/connect-python.md
+          - text: Deploy a Python app on Azure App Service
+            url:  /azure/app-service/tutorial-python-postgresql-app-flask
+          - text: Deploy Django App with AKS
+            url: flexible-server/tutorial-django-aks-database.md
+          - text: Implement Semantic Search with pgvector and Azure OpenAI
+            url: flexible-server/generative-ai-semantic-search.md
+          - text: Integrate Azure AI capabilities
+            url: flexible-server/how-to-integrate-azure-ai.md
+          - text: Build an AI agent using Azure AI Agent Services
+            url: flexible-server/generative-ai-agents.md
+          - text: Develop with LangChain 
+            url: flexible-server/generative-ai-develop-with-langchain.md
+          - text: Graph database using Apache AGE
+            url: flexible-server/generative-ai-age-overview.md
+      - linkListType: concept
+        links:
+          - text: Generative AI overview
+            url: flexible-server/generative-ai-overview.md
+          - text: Vector Search with pgvector
+            url: flexible-server/how-to-use-pgvector.md
+          - text: Efficient web-scale vector search with DiskANN
+            url: flexible-server/how-to-use-pgdiskann.md
+          - text: GenAI Framework integrations (Semantic Kernel, LangChain, LlamaIndex and Microsoft GraphRAG)
+            url: flexible-server/generative-ai-frameworks.md
+
+  #Card 4       
+  - title: Advanced concepts and overview
+    linkLists:      
+      - linkListType: concept
+        links:
+          - text: Elastic Clusters 
+            url: flexible-server/quickstart-create-elastic-cluster-portal.md
+          - text: Server parameters
+            url: flexible-server/concepts-server-parameters.md
+          - text: Compute and storage
+            url: flexible-server/concepts-compute-storage.md
+          - text: Identity and access management
+            url: flexible-server/concepts-identity.md
+          - text: Extensions
+            url: flexible-server/concepts-extensions.md
+          - text: Monitor
+            url: flexible-server/concepts-monitoring.md
+          - text: Scheduled maintenance
+            url: flexible-server/concepts-maintenance.md
+          - text: Fabric mirroring
+            url: flexible-server/concepts-fabric-mirroring.md
+          - text: Data Encryption
+            url: flexible-server/concepts-data-encryption.md
+          - text: Overview of REST API
+            url: https://learn.microsoft.com/rest/api/postgresql/
             
 # Card 5
-  - title: Connect and query
+  - title: Migrate to Azure Database for PostgreSQL
     linkLists:
-      - linkListType: concept
+      - linkListType: overview
         links:
-          - text: Enable firewall rules to connect
-            url: flexible-server/concepts-firewall-rules.md
-      - linkListType: quickstart
-        links:
-          - text: Connect using Python
-            url: flexible-server/connect-python.md
-          - text: Connect using Java
-            url: flexible-server/connect-java.md
-          - text: Connect using PHP
-            url: flexible-server/connect-php.md
-          - text: Connect using .NET
-            url: flexible-server/connect-csharp.md
-          - text: Connect using Go
-            url: flexible-server/connect-go.md
-      - linkListType: tutorial
-        links:
-        - text: Connect Web App in virtual network
-          url: flexible-server/tutorial-webapp-server-vnet.md
-
-# Card 6
-  - title: Application development
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Connection resiliency
-            url: flexible-server/concepts-connectivity.md
-      - linkListType: tutorial
-        links:
-          - text: Deploy Django app on AKS
-            url: flexible-server\tutorial-django-aks-database.md
-
-# Card 7
-  - title: Migrate
-    linkLists:
+          - text: Migration Service overview
+            url: migrate/migration-service/overview-migration-service-postgresql.md
+          - text: Pre-Migration Validation
+            url: migrate/migration-service/concepts-premigration-migration-service.md
       - linkListType: how-to-guide
         links:
-          - text: Migrate a database using pg_dump and pg_restore
-            url: howto-migrate-using-dump-and-restore.md
-          - text: Migrate online
-            url: howto-migrate-online.md
+ 
+          - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
+            url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
+          - text: Migrate (Online) from an Azure VM or on-premises PostgreSQL server
+            url: migrate/migration-service/tutorial-migration-service-iaas-online.md            
+          - text: Migrate (Offline) from Amazon RDS
+            url: migrate/migration-service/tutorial-migration-service-aws-offline.md
+          - text: Migrate (Online) from Amazon RDS
+            url: migrate/migration-service/tutorial-migration-service-aws-online.md            
+          - text: Migrate (Offline) from Amazon Aurora
+            url: migrate/migration-service/tutorial-migration-service-aurora-offline.md
+          - text: Migrate (Online) from Amazon Aurora
+            url: migrate/migration-service/tutorial-migration-service-aurora-online.md            
+          - text: Migrate (Offline) from Google Cloud SQL for PostgreSQL
+            url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+          - text: Migrate (Online) from Google Cloud SQL for PostgreSQL
+            url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md            
+          - text: Migrate from Oracle
+            url: migrate/concepts-oracle-migration.md
 
-# Card 8
-  - title: Reference
-    linkLists:
-      - linkListType: learn
-        links:
-          - text: 'Learning module: Create an Azure Database for PostgreSQL flexible server instance'
-            url: /training/modules/create-azure-db-for-postgresql-server/
-      - linkListType: deploy
-        links:
-          - text: Azure Resource Manager templates
-            url: /azure/templates/microsoft.dbforpostgresql/allversions
-      - linkListType: reference
-        links:
-          - text: Azure CLI developer reference
-            url: /cli/azure/postgres
-          - text: REST API developer reference
-            url: /rest/api/postgresql/
-          - text: Azure Resource Manager templates
-            url: /azure/templates/microsoft.dbforpostgresql/allversions
       
-# Card 10
-  - title: Get training
+#Card 6
+  - title: Additional Resources
     linkLists:
-      - linkListType: learn
+      - linkListType: concept
         links:
-          - text: Azure Database for PostgreSQL flexible server
-            url: /training/paths/introduction-to-azure-postgres/
+          - text: Connect with Azure CLI
+            url: flexible-server/connect-azure-cli.md
+          - text: Connection libraries for App development
+            url: flexible-server/concepts-connection-libraries.md        
+          - text: Deploy with Terraform
+            url: /azure/developer/terraform/deploy-postgresql-flexible-server-database
+          - text: Troubleshooting guides overview
+            url: flexible-server/how-to-troubleshooting-guides.md
+          - text: Quickstart guide for Bicep
+            url: flexible-server/quickstart-create-server-bicep.md
+          - text: Quickstart guide for Python
+            url: flexible-server/quickstart-create-server-python-sdk.md
+          - text: Pricing 
+            url: https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server
+          - text: Region Availability
+            url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region
+          - text: Customer success stories
+            url: https://www.microsoft.com/customers/search?q=Azure+database+for+postgresql
+          - text: Build your skills with Microsoft Learn
+            url: https://learn.microsoft.com/training/browse/?terms=Azure%20database%20for%20postgresql
+            
+          
+

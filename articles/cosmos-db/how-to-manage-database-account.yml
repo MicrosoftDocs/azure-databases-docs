@@ -1,11 +1,11 @@
 ### YamlMime:HowTo
 
 metadata:
-  title: Manage an Azure Cosmos DB account by using the Azure portal
+  title: Manage Azure Cosmos DB by Using the Azure Portal
   description: Learn how to manage Azure Cosmos DB resources by using the Azure portal, PowerShell, CLI, and Azure Resource Manager templates.
   author: markjbrown
   ms.author: mjbrown
-  ms.date: 02/26/2024
+  ms.date: 06/26/2025
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: how-to
@@ -21,10 +21,10 @@ title: |
 introduction: |
   [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-  This article describes how to manage various tasks on an Azure Cosmos DB account by using the Azure portal. Azure Cosmos DB can also be managed with other Azure management clients including [Azure PowerShell](manage-with-powershell.md), [Azure CLI](nosql/manage-with-cli.md), [Azure Resource Manager templates](./manage-with-templates.md), [Bicep](nosql/manage-with-bicep.md), and [Terraform](nosql/samples-terraform.md).
+  This article describes how to manage various tasks on an Azure Cosmos DB account by using the Azure portal. Azure Cosmos DB can also be managed with other Azure management clients, including [Azure PowerShell](manage-with-powershell.md), [Azure CLI](nosql/manage-with-cli.md), [Azure Resource Manager templates](./manage-with-templates.md), [Bicep](nosql/manage-with-bicep.md), and [Terraform](nosql/samples-terraform.md).
 
   > [!TIP]
-  > The management API for Azure Cosmos DB or *control plane* is not designed for high request volumes like the rest of the service. To learn more see [Control Plane Service Limits](concepts-limits.md#control-plane)
+  > The management API for Azure Cosmos DB or *control plane* isn't designed for high-request volumes like the rest of the service. To learn more, see [Control Plane Service Limits](concepts-limits.md#control-plane)
 
 procedureSection:
   - title: |
@@ -56,8 +56,8 @@ procedureSection:
         |Setting|Value|Description |
         |---|---|---|
         |Subscription|Subscription name|Select the Azure subscription that you want to use for this Azure Cosmos DB account. |
-        |Resource Group|Resource group name|Select a resource group, or select **Create new**, then enter a unique name for the new resource group. |
-        |Account Name|A unique name|Enter a name to identify your Azure Cosmos DB account. Because *documents.azure.com* is appended to the name that you provide to create your URI, use a unique name. The name can contain only lowercase letters, numbers, and the hyphen (-) character. It must be 3-44 characters.|
+        |Resource group|Resource group name|Select a resource group, or select **Create new**, then enter a unique name for the new resource group. |
+        |Account name|A unique name|Enter a name to identify your Azure Cosmos DB account. Because *documents.azure.com* is appended to the name that you provide to create your URI, use a unique name. The name can contain only lowercase letters, numbers, and the hyphen (-) character. It must be 3-44 characters.|
         |Location|The region closest to your users|Select a geographic location to host your Azure Cosmos DB account. Use the location that is closest to your users to give them the fastest access to the data.|
         |Capacity mode|**Provisioned throughput** or **Serverless**|Select **Provisioned throughput** to create an account in [provisioned throughput](set-throughput.md) mode. Select **Serverless** to create an account in [serverless](serverless.md) mode.|
         |Apply Azure Cosmos DB free tier discount|**Apply** or **Do not apply**|With Azure Cosmos DB free tier, you get the first 1000 RU/s and 25 GB of storage for free in an account. Learn more about [free tier](https://azure.microsoft.com/pricing/details/cosmos-db/).|
@@ -68,7 +68,7 @@ procedureSection:
         :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/azure-cosmos-db-create-new-account-detail.png" alt-text="Screenshot shows the Create Azure Cosmos DB Account page." lightbox="~/reusable-content/ce-skilling/azure/media/cosmos-db/azure-cosmos-db-create-new-account-detail.png":::
 
         > [!NOTE]
-        > The following options are not available if you select **Serverless** as the **Capacity mode**:
+        > The following options aren't available if you select **Serverless** as the **Capacity mode**:
         >
         > - Apply Free Tier Discount
         > - Limit total account throughput
@@ -78,23 +78,23 @@ procedureSection:
 
         |Setting|Value|Description |
         |---|---|---|
-        |Geo-Redundancy|Disable|Enable or disable global distribution on your account by pairing your region with a pair region. You can add more regions to your account later.|
-        |Multi-region Writes|Disable|Multi-region writes capability allows you to take advantage of the provisioned throughput for your databases and containers across the globe.|
-        |Availability Zones|Disable|Availability Zones help you further improve availability and resiliency of your application.|
+        |Geo-redundancy|Disable|Enable or disable global distribution on your account by pairing your region with a pair region. You can add more regions to your account later.|
+        |Multi-region writes|Disable|Multi-region writes capability allows you to take advantage of the provisioned throughput for your databases and containers across the globe.|
+        |Availability zones|Disable|Availability zones help you further improve availability and resiliency of your application.|
     
         > [!NOTE]
-        > The following options are not available if you select **Serverless** as the **Capacity mode** in the previous **Basics** page:
+        > The following options aren't available if you select **Serverless** as the **Capacity mode** in the previous **Basics** page:
         >
         > - Geo-redundancy
-        > - Multi-region Writes
+        > - Multi-region writes
 
       - |
         Optionally, you can configure more details in the following tabs:
 
-          - **Networking**. Configure [access from a virtual network](how-to-configure-vnet-service-endpoint.md).
-          - **Backup Policy**. Configure either [periodic](periodic-backup-restore-introduction.md) or [continuous](provision-account-continuous-backup.md) backup policy.
-          - **Encryption**. Use either service-managed key or a [customer-managed key](how-to-setup-cmk.md#create-a-new-azure-cosmos-account).
-          - **Tags**. Tags are name/value pairs that enable you to categorize resources and view consolidated billing by applying the same tag to multiple resources and resource groups.
+          - **Networking**: Configure [access from a virtual network](how-to-configure-vnet-service-endpoint.md).
+          - **Backup Policy**: Configure either [periodic](periodic-backup-restore-introduction.md) or [continuous](provision-account-continuous-backup.md) backup policy.
+          - **Encryption**: Use either service-managed key or a [customer-managed key](how-to-setup-cmk.md#create-a-new-azure-cosmos-account).
+          - **Tags**: Tags are name/value pairs that enable you to categorize resources and view consolidated billing by applying the same tag to multiple resources and resource groups.
 
       - |
         Select **Review + create**.
@@ -112,16 +112,16 @@ procedureSection:
       Add/remove regions from your database account
     summary: |
       > [!TIP]
-      > When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes depends upon how much data is stored within the account. If an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation is paused and resumes automatically when the add/remove region operation is complete.
+      > When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes depends upon how much data is stored within the account. If an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation is paused and resumes automatically when the add/remove region operation is complete. Additionally, when removing an existing region, all replication across regions (within [partition sets](./global-dist-under-the-hood.md)) must complete before the region is marked as unavailable.
     steps:
       - |
         Sign in to [Azure portal](https://portal.azure.com).
       - |
         Go to your Azure Cosmos DB account and select **Replicate data globally** in the resource menu.
       - |
-        To add regions, select the hexagons on the map with the **+** label that corresponds to your desired region(s). Alternatively, to add a region, select the **+ Add region** option and choose a region from the drop-down menu.
+        To add regions, select the hexagons on the map with the **+** label that corresponds to your desired regions. Alternatively, to add a region, select the **+ Add region** option and choose a region from the drop-down menu.
       - |
-        To remove regions, clear one or more regions from the map by selecting the blue hexagons with check marks. You can also select the "wastebasket" (🗑) icon next to the region on the right side.
+        To remove regions, clear one or more regions from the map by selecting the blue hexagons with check marks. You can also select the *wastebasket* (🗑) icon next to the region on the right side.
 
       - |
         To save your changes, select **OK**.
@@ -140,7 +140,7 @@ procedureSection:
   - title: |
       Enable service-managed failover for your Azure Cosmos DB account
     summary: |
-      The Service-Managed failover option allows Azure Cosmos DB to fail over to the region with the highest failover priority with no user action should a region become unavailable. When service-managed failover is enabled, region priority can be modified. Your account must have two or more regions to enable service-managed failover.
+      The service-managed failover option allows Azure Cosmos DB to fail over to the region with the highest failover priority with no user action should a region become unavailable. When service-managed failover is enabled, region priority can be modified. Your account must have two or more regions to enable service-managed failover.
     steps:
       - |
         From your Azure Cosmos DB account, open the **Replicate data globally** pane.
@@ -166,10 +166,9 @@ procedureSection:
 
           :::image type="content" source="./media/how-to-manage-database-account/offline-region-failover.png" alt-text="Screenshot that shows the offline region portal menu.":::
       - |
-        > [!WARNING]
-        > Review the warning message indicating the possibility of data loss due to un-replicated writes not being available in the region that will be promoted to the new write region based on the failover priority.
+        Review the warning message indicating the possibility of data loss due to un-replicated writes not being available in the region that will be promoted to the new write region based on the failover priority.
       - |
-        Select the region to be marked offline, check the box titled “I understand and agree to offline the currently selected region.” and click the **Offline region** button. 
+        Select the region to be marked offline, check the box titled **I understand and agree to offline the currently selected region**, and click the **Offline region** button. 
 
           :::image type="content" source="./media/how-to-manage-database-account/offline-region-warning.png" alt-text="Screenshot that shows the offline region warning.":::
       - |
@@ -177,11 +176,11 @@ procedureSection:
 
           :::image type="content" source="./media/how-to-manage-database-account/offline-region-complete.png" alt-text="Screenshot that shows the offline region complete.":::
 
-        The Azure Cosmos DB service team handles bringing back the region online. If the region is offline during an outage, it may take more than three days to restore it online, depending on the impact's severity. For a disaster recovery drill where a region is taken offline, please create a support ticket request to bring the region back online.  
+        The Azure Cosmos DB service team handles bringing back the region online. If the region is offline during an outage, it might take more than three days to restore it online, depending on the impact's severity. For a disaster recovery drill where a region is taken offline, please create a support ticket request to bring the region back online.
 
-        In the case of a single-write region, if the write region is offline during the drill or an outage, bringing the region back online will restore it as a 'read region'. Afterward, you can perform the 'change write region' operation to promote the region back to a write region. 
+        In the case of a single-write region, if the write region is offline during the drill or an outage, bringing the region back online restores it as a 'read region'. Afterward, you can perform the 'change write region' operation to promote the region back to a write region. 
 
-        Azure Cosmos DB offers “Region Offline” and “Region Online” metrics for users who want to create automation based on these metrics. For instance, after the region is back online, you might want to trigger an automation job to change-write region. The list of supported database account metrics can be found [here](/azure/cosmos-db/monitor-reference).
+        Azure Cosmos DB offers **Region Offline** and **Region Online** metrics for users who want to create automation based on these metrics. For instance, after the region is back online, you might want to trigger an automation job to change-write region. The list of supported database account metrics can be found [here](/azure/cosmos-db/monitor-reference).
   - title: |
       Set failover priorities for your Azure Cosmos DB account
     summary: |
@@ -208,13 +207,13 @@ procedureSection:
       Change write region for your Azure Cosmos DB Account
     summary: |
       > [!IMPORTANT]
-      > The Azure Cosmos DB account must be configured with multiple regions for change write region operation.
+      > The Azure Cosmos DB account must be configured with multiple regions for change-write region operation.
 
       > [!NOTE]
-      > If you perform a manual change-write region operation while an asynchronous throughput scaling operation is in progress, the throughput scale-up operation will be paused. It resumes automatically when the failover operation is complete. For more information, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)
+      > If you perform a manual change-write region operation while an asynchronous throughput scaling operation is in progress, the throughput scale-up operation is paused. It resumes automatically when the failover operation is complete. For more information, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)
 
       > [!WARNING]
-      > In the event of a write region outage, please do not use change-write region. For outage scenarios, please refer to forced failover section. 
+      > In the event of a write region outage, don't use change-write region. For outage scenarios, refer to forced failover section. 
     steps:
       - |
         Go to your Azure Cosmos DB account and open the **Replicate data globally** menu.
@@ -223,7 +222,7 @@ procedureSection:
 
           :::image type="content" source="./media/how-to-manage-database-account/change-write-region.png" alt-text="Screenshot of the change write region menu.":::
       - |
-        Change write region panel provides details to ensure that this operation is not executed during outage scenarios. Select and acknowledge that this operation is not being performed during regional outages.
+        The **Change write region** panel provides details to ensure that this operation isn't executed during outage scenarios. Select and acknowledge that this operation is not being performed during regional outages.
 
           :::image type="content" source="./media/how-to-manage-database-account/change-write-region-details.png" alt-text="Screenshot of the change write region details.":::
       - |

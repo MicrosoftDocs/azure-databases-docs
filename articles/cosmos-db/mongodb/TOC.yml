@@ -1,7 +1,7 @@
 - name: MongoDB (RU) documentation
   href: index.yml
 - name: What is Azure Cosmos DB for MongoDB?
-  href: introduction.md
+  href: overview.md
 - name: Your MongoDB app reimagined
   href: reimagined.md
 - name: Choose your model
@@ -11,7 +11,7 @@
 - name: Overview
   items:
   - name: What is Azure Cosmos DB for MongoDB (RU)?
-    href: ru/introduction.md
+    href: overview.md
   - name: API versions
     items:
     - name: API version 7.0
@@ -281,6 +281,12 @@
     - name: Security controls by Azure Policy
       displayName: regulatory, compliance, standards, domains
       href: ../security-controls-policy.md
+    - name: Role-based access control
+      items:
+      - name: Overview of role-based access control
+        href: role-based-access-control.md
+      - name: Setup role-based access control
+        href: how-to-setup-role-based-access-control.md
   - name: Optimize your Azure Cosmos DB costs
     href: ../optimize-costs.yml
   - name: Enterprise readiness
@@ -571,11 +577,9 @@
   - name: Microsoft Questions and Answers
     href: /answers/topics/azure-cosmos-db.html
   - name: Videos
-    href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
+    href: https://azure.microsoft.com/resources/videos/?services=cosmos-db
   - name: Azure Roadmap
     href: https://azure.microsoft.com/updates/?query=Cosmos%20DB
-  - name: Try Azure Cosmos DB for free
-    href: https://azure.microsoft.com/try/cosmosdb/
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/cosmos-db/
   - name: Use cases

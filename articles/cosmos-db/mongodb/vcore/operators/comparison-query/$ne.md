@@ -1,27 +1,27 @@
 ---
 title: $ne
-titleSuffix: Overview of the $ne query operator in Azure Cosmos DB for MongoDB vCore
-description: The $ne query operator in Azure Cosmos DB for MongoDB vCore returns documents where the value of a field doesn't equal a specified value
+titleSuffix: Overview of the $ne operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $ne operator retrieves documents where the value of a field doesn't equal a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 02/24/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
 # $ne
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$ne` operator is used to select documents where the value of a field doesn't equal a specified value.
+The `$ne` operator retrieves documents where the value of a field doesn't equal a specified value.
 
 ## Syntax
 
-The syntax for the `$ne` operator is:
-
-```mongodb
-{ field: { $ne: value } }
+```javascript
+{
+    field: {
+        $ne: value
+    }
+}
 ```
 
 ## Parameters
@@ -32,7 +32,8 @@ The syntax for the `$ne` operator is:
 | **`value`** | The value that the field shouldn't be equal to|
 
 ## Examples
-Consider this sample document from the stores collection in the StoreData database.
+
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -144,40 +145,67 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1 - Find stores whose name isn't "Fourth Coffee"
+### Example 1 - Find a store whose name isn't "Fourth Coffee"
+
+To find a store with a name that isn't "Fourth Coffee", first run a query using $ne on the name field. Then project only the name of the resulting documents and limit the results to one store from the result set.
 
 ```javascript
-db.stores.find({ "name": {"$ne": "Fourth Coffee"}}, {"_id": 1, "name": 1}, {"limit": 1})
+db.stores.find({
+    name: {
+        $ne: "Fourth Coffee"
+    }
+}, {
+    _id: 1,
+    name: 1
+}, {
+    limit: 1
+})
 ```
 
-This returns the following results:
+The first result returned by this query is:
+
 ```json
-{
-    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-    "name": "First Up Consultants | Bed and Bath Center - South Amir"
-}
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir"
+    }
+]
 ```
 
-### Example 2 - Find stores with promotion events that aren't in 2024
+### Example 2 - Find a store with promotion events that aren't in 2024
+
+To find a store with promotions events that don't start in 2024, first run a query using $ne on the nested startDate field. Then project the name and promotions offered by the stores and limit the results to one document from the result set.
 
 ```javascript
-db.stores.find({ "promotionEvents.promotionalDates.startDate": {"$ne": "2024"}}, {"name": 1, "promotionEvents.promotionalDates.startDate": 1}, {"limit": 1})
+db.stores.find({
+    "promotionEvents.promotionalDates.startDate": {
+        $ne: "2024"
+    }
+}, {
+    name: 1,
+    "promotionEvents.promotionalDates.startDate": 1
+}, {
+    limit: 1
+})
 ```
 
-This returns the following results:
+The first result returned by this query is:
+
 ```json
-{
-    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
-    "name": "First Up Consultants | Bed and Bath Center - South Amir",
-    "promotionEvents": [
-      {
-        "promotionalDates": { "startDate": { "Year": 2024, "Month": 9, "Day": 21 } }
-      }
-    ]
-}
+[
+    {
+        "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+        "name": "First Up Consultants | Bed and Bath Center - South Amir",
+        "promotionEvents": [
+          {
+            "promotionalDates": { "startDate": { "Year": 2024, "Month": 9, "Day": 21 } }
+          }
+        ]
+    }
+]
 ```
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$eq for equality comparisons]($eq.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

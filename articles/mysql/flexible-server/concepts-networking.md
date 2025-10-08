@@ -1,13 +1,13 @@
 ---
 title: Networking Overview
 description: Connectivity and networking concepts for Azure Database for MySQL - Flexible Server.
-author: SudheeshGH
-ms.author: sunaray
+author: aditivgupta
+ms.author: adig
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 07/21/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Connectivity and networking concepts for Azure Database for MySQL - Flexible Server
@@ -23,7 +23,7 @@ Azure Database for MySQL Flexible Server supports three ways to configure connec
    - **[Private Network Access using virtual network integration for Azure Database for MySQL - Flexible Server](concepts-networking-vnet.md)** You can deploy your Flexible Server into your [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure virtual networks provide private and secure network communication. Resources in a virtual network can communicate through private IP addresses.
 
 > [!NOTE]  
-> After deploying a server with public or private access (via VNet integration), you cannot modify the connectivity mode. But in public access mode, you can enable or disable private endpoints as required and also disable public access if needed.
+> After deploying a server with public or private access (via VNet integration), you can't modify the connectivity mode. But in public access mode, you can enable or disable private endpoints as required and also disable public access if needed.
 
 ## Choose a networking option
 
@@ -44,6 +44,14 @@ The following characteristics apply whether you choose to use the private access
 - The server has a fully qualified domain name (fqdn). We recommend using the fqdn instead of an IP address for the hostname property in connection strings.
 - Both options control access at the server-level, not at the database- or table-level. You would use MySQL's roles properties to control database, table, and other object access.
 
+### Custom port support
+Azure MySQL now supports the ability to specify a custom port between 250001 and 26000 during server creation to connect to the server. The default port to connect is 3306.
+  - Only one custom port per server is supported.
+  - Supported scenarios for custom port: server creation, restore (cross-port restore supported), read replica creation, high availability enablement.
+  - Current limitations:
+    - Custom port can't be updated post server creation.
+    - Geo-restore and geo-replica creation with custom port aren't supported.
+
 ### Unsupported virtual network scenarios
 
 - Public endpoint (or public IP or DNS) - A Flexible Server deployed to a virtual network can't have a public endpoint.
@@ -53,13 +61,16 @@ The following characteristics apply whether you choose to use the private access
 - Change from Public to Private access isn't allowed after the server is created. The recommended way is to use point-in-time restore.
 
 > [!NOTE]  
-> If you are using the custom DNS server, you must use a DNS forwarder to resolve the FQDN of the Azure Database for MySQL Flexible Server instance. Refer to **[name resolution that uses your DNS server](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)** to learn more.
+> If you're using the custom DNS server, you must use a DNS forwarder to resolve the FQDN of the Azure Database for MySQL Flexible Server instance. Refer to **[name resolution that uses your DNS server](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)** to learn more.
 
 ## Hostname
 
-Regardless of your networking option, we recommend you use the fully qualified domain name (FQDN) `<servername>.mysql.database.azure.com` in connection strings when connecting to your Azure Database for MySQL Flexible Server instance. The server's IP address is not guaranteed to remain static. Using the FQDN will help you avoid making changes to your connection string.
+Regardless of your networking option, we recommend you use the fully qualified domain name (FQDN) `<servername>.mysql.database.azure.com` in connection strings when connecting to your Azure Database for MySQL Flexible Server instance. The server's IP address isn't guaranteed to remain static. Using the FQDN will help you avoid making changes to your connection string.
 
 An example that uses an FQDN as a host name is hostname = servername.mysql.database.azure.com. Where possible, avoid using hostname = 10.0.0.4 (a private address) or hostname = 40.2.45.67 (a public address).
+
+> [!NOTE]  
+> If your Azure Database for MySQL Flexible Server has both public access and Private Link enabled, public IPs for your instance will be updated as part of architectural change to make the networking experience better. If you have been using such public IPs in your connection string, you must replace with FQDN before Sept 9 2025 to avoid any disruption in server connection. (Note: Private Link IP or VNet Integration IP isn't be impacted). Required action - Run NSLookup from your public network to get the public IP that will change and you should update it's reference in the connection string to use FQDN instead.
 
 ## TLS and SSL
 
@@ -79,14 +90,14 @@ Following are the different configurations of SSL and TLS settings you can have 
 | Scenario | Server parameter settings | Description |
 | --- | --- | --- |
 | Disable SSL (encrypted connections) | require_secure_transport = OFF | If your legacy application doesn't support encrypted connections to the Azure Database for MySQL Flexible Server instance, you can disable enforcement of encrypted connections to your Flexible Server by setting require_secure_transport=OFF. |
-| Enforce SSL with TLS version < 1.2 (Will be deprecated in September 2024) | require_secure_transport = ON and tls_version = TLS 1.0 or TLS 1.1 | If your legacy application supports encrypted connections but requires TLS version < 1.2, you can enable encrypted connections, but configure your Flexible Server to allow connections with the TLS version (v1.0 or v1.1) supported by your application |
+| Enforce SSL with TLS version < 1.2 (Deprecated in September 2024) | require_secure_transport = ON and tls_version = TLS 1.0 or TLS 1.1 | If your legacy application supports encrypted connections but requires TLS version < 1.2, you can enable encrypted connections, but configure your Flexible Server to allow connections with the TLS version (v1.0 or v1.1) supported by your application |
 | Enforce SSL with TLS version = 1.2(Default configuration) | require_secure_transport = ON and tls_version = TLS 1.2 | This is the recommended and default configuration for a Flexible Server. |
 | Enforce SSL with TLS version = 1.3(Supported with MySQL v8.0 and above) | require_secure_transport = ON and tls_version = TLS 1.3 | This is useful and recommended for new applications development |
 
 > [!NOTE]  
-> Changes to SSL Cipher on the Flexible Server is not supported. FIPS cipher suites is enforced by default when tls_version is set to TLS version 1.2. For TLS versions other than version 1.2, SSL Cipher is set to default settings which comes with MySQL community installation.
+> Changes to SSL Cipher on the Flexible Server isn't supported. FIPS cipher suite is enforced by default when tls_version is set to TLS version 1.2. For TLS versions other than version 1.2, SSL Cipher is set to default settings which comes with MySQL community installation.
 
-Review [connect using SSL/TLS](how-to-connect-tls-ssl.md#verify-the-tlsssl-connection) to learn how to identify the TLS version you are using .
+Review [connect using SSL/TLS](how-to-connect-tls-ssl.md#verify-the-tlsssl-connection) to learn how to identify the TLS version you are using.
 
 ## Related content
 

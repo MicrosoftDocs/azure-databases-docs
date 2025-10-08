@@ -1,26 +1,22 @@
 ---
-  title: $setField object expression usage in Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $setField
+  titleSuffix: Overview of the $setField operator in Azure Cosmos DB for MongoDB (vCore)
   description: The setField command is used to add, update, or remove fields in embedded documents.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
-  ms.date: 1/01/2024
+  ms.topic: language-reference
+  ms.date: 09/04/2025
 ---
 
-# $setField as object expression operator
+# $setField
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$setField` operator is used to add, update, or remove fields in embedded documents. This operator allows for precise manipulation of document fields. This makes it useful for tasks such as updating nested fields, restructuring documents, or even removing fields entirely.
+The `$setField` operator is used to add, update, or remove fields in embedded documents. The operator allows for precise manipulation of document fields, which makes it useful for tasks such as updating nested fields, restructuring documents, or even removing fields entirely.
 
 ## Syntax
 
-The syntax for the `$setField` operator is as follows:
-
-```json
+```javascript
 {
   $setField: {
     field: <fieldName>,
@@ -30,41 +26,159 @@ The syntax for the `$setField` operator is as follows:
 }
 ```
 
-- `field`: The name of the field to add, update, or remove.
-- `input`: The document or field being processed.
-- `value`: The new value to assign to the field. If `value` is `null`, the field is removed.
+## Parameters
+
+| Parameter | Description |
+| --- | --- |
+| **`<field>`** | The document (object) to be transformed into an array of key-value pairs. |
+| **`<input>`** | The document or field being processed. |
+| **`<value>`** | The new value to assign to the field. If `value` is `null`, the field is removed.|
 
 ## Examples
 
-### Example 1: Updating a nested field
-
-Suppose you want to update the `discountPercentage` for the "Laptops" category in the "Summer Sale" promotion event.
+Consider this sample document from the stores collection.
 
 ```json
-db.collection.updateOne(
-  { "store.storeId": "12345" },
-  [{
-    $set: {
-      "store.promotionEvents": {
-        $map: {
-          input: "$store.promotionEvents",
-          as: "event",
-          in: {
-            $setField: {
-              field: "discounts",
-              input: "$$event",
-              value: {
-                $map: {
-                  input: "$$event.discounts",
-                  as: "discount",
-                  in: {
-                    $cond: {
-                      if: { $eq: ["$$discount.categoryName", "Laptops"] },
-                      then: { 
-                        categoryName: "$$discount.categoryName", 
-                        discountPercentage: 18 
-                      },
-                      else: "$$discount"
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1: Updating a nested field
+
+This query performs a conditional update on nested discount values inside promotion events for the document matching a specific `_id`.
+
+```javascript
+db.stores.updateOne(
+  { "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4" },
+  [
+    {
+      $set: {
+        "store.promotionEvents": {
+          $map: {
+            input: "$store.promotionEvents",
+            as: "event",
+            in: {
+              $setField: {
+                field: "discounts",
+                input: "$$event",
+                value: {
+                  $map: {
+                    input: "$$event.discounts",
+                    as: "discount",
+                    in: {
+                      $cond: {
+                        if: { $eq: ["$$discount.categoryName", "Laptops"] },
+                        then: {
+                          categoryName: "$$discount.categoryName",
+                          discountPercentage: 18
+                        },
+                        else: "$$discount"
+                      }
                     }
                   }
                 }
@@ -74,15 +188,15 @@ db.collection.updateOne(
         }
       }
     }
-  }]
+  ]
 )
 ```
 
 ### Example 2: Removing a field
 
-Suppose you want to remove the `totalStaff` field from the `staff` object.
+This query removes the `totalStaff` field from the `staff` object.
 
-```json
+```javascript
 db.collection.updateOne(
   { "store.storeId": "12345" },
   [{

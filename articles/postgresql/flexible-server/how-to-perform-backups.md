@@ -1,19 +1,17 @@
 ---
 title: Perform on-demand backups
 description: This article describes how to perform on-demand backups of an Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: danyal-bukhari
+ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn how can I performn on-demand backups of an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how can I performn on-demand backups of an Azure Database for PostgreSQL.
 ---
 
 # Perform on-demand backups
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to perform on-demand backups of an Azure Database for PostgreSQL flexible server.
 

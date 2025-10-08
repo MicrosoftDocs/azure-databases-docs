@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect Using Azure CLI"
 description: This quickstart provides several ways to connect with and query Azure Database for MySQL - Flexible Server by using Azure CLI.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
@@ -12,11 +12,12 @@ ms.custom:
   - mvc
   - mode-api
   - devx-track-azurecli
+  - ai-assistant-test
 ---
 
 # Quickstart: Connect with Azure Database for MySQL - Flexible Server by using Azure CLI
 
-This quickstart demonstrates how to connect to Azure Database for MySQL Flexible Server using Azure CLI with `az mysql flexible-server connect` and execute single query or sql file with the `az mysql flexible-server execute` command. This command allows you test connectivity to your database server and run queries. You can also run multiple queries using the interactive mode.
+This quickstart demonstrates how to connect to Azure Database for MySQL Flexible Server using Azure CLI with `az mysql flexible-server connect` and execute single query or sql file with the `az mysql flexible-server execute` command. This command allows you to test connectivity to your database server and run queries. You can also run multiple queries using the interactive mode.
 
 ## Prerequisites
 
@@ -30,7 +31,7 @@ This quickstart demonstrates how to connect to Azure Database for MySQL Flexible
 
 ## Create a MySQL Flexible Server
 
-The first thing to create is a managed Azure Database for MySQL Flexible Server instance. In [Azure Cloud Shell](https://portal.azure.com/#cloudshell), run the following script and make a note of the **server name**, **username** and **password** generated from this command.
+First, create a managed Azure Database for MySQL Flexible Server instance. In [Azure Cloud Shell](https://portal.azure.com/#cloudshell), run the following script and make a note of the **server name**, **username** and **password** generated from this command.
 
 ```azurecli-interactive
 az mysql flexible-server create --public-access <your-ip-address>
@@ -40,7 +41,7 @@ You can provide more arguments for this command to customize it. See all argumen
 
 ## Create a database
 
-Run the following command to create a database, `newdatabase` if you haven't already created one.
+Run the following command to create a database, `newdatabase`, if you don't already have one.
 
 ```azurecli-interactive
 az mysql flexible-server db create -d newdatabase
@@ -80,8 +81,8 @@ If the connection failed, try these solutions:
 
 - Check if port 3306 is open on your client machine.
 - If your server administrator user name and password are correct
-- If you have configured firewall rule for your client machine
-- If you have configured your server with private access in virtual networking, make sure your client machine is in the same virtual network.
+- If you configure a firewall rule for your client machine
+- If you configure your server with private access in virtual networking, make sure your client machine is in the same virtual network.
 
 ## Run multiple queries using interactive mode
 

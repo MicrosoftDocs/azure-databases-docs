@@ -1,6 +1,6 @@
 ---
 title: Index tuning
-description: This article describes the index tuning feature available in an Azure Database for PostgreSQL flexible server.
+description: This article describes the index tuning feature available in an Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,16 +12,14 @@ ms.custom:
   - references_regions
   - build-2024
   - ignite-2024
-# customer intent: As a user, I want to learn about the index tuning feature available in an Azure Database for PostgreSQL flexible server, how does it work and what benefits it provides.
+# customer intent: As a user, I want to learn about the index tuning feature available in an Azure Database for PostgreSQL, how does it work and what benefits it provides.
 ---
 
 # Index tuning
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+Index tuning is a feature in your Azure Database for PostgreSQL flexible server instance that automatically improves the performance of your workload by analyzing the tracked queries and providing index recommendations.
 
-Index tuning is a feature in your Azure Database for PostgreSQL flexible server that automatically improves the performance of your workload by analyzing the tracked queries and providing index recommendations.
-
-It's a built-in offering in your Azure Database for PostgreSQL flexible server, which builds on top of [Monitor performance with query store](concepts-query-store.md) functionality. Index tuning analyzes the workload tracked by query store, and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes.
+It's a built-in offering in your Azure Database for PostgreSQL flexible server instance, which builds on top of [Monitor performance with query store](concepts-query-store.md) functionality. Index tuning analyzes the workload tracked by query store, and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes.
 
 - [Identify which indexes are beneficial](#create-index-recommendations) to create because they could significantly improve the queries analyzed during an index tuning session.
 - [Identify indexes that are exact duplicates and can be eliminated](#drop-duplicate-indexes) to reduce the performance impact their existence and maintenance have on the system's overall performance.
@@ -189,7 +187,7 @@ Index tuning is supported on all [currently available tiers](concepts-compute.md
 
 ### Supported versions of PostgreSQL
 
-Index tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL Flexible Server.
+Index tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server instances.
 
 ### Use of search_path
 
@@ -214,6 +212,20 @@ If index tuning is enabled on a server, and you scale down that server's compute
 ### High availability and read replicas
 
 If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when implementing the recommended indexes. Be especially careful when creating indexes whose size is estimated to be large.
+
+### Reasons why index tuning might not produce create index recommendations for certain queries
+
+Following is a list of query types for which index tuning won't generate CREATE INDEX recommendations. Those which:
+
+- Encounter an error when index tuning engine tries to obtain its EXPLAIN output during the analysis phase.
+- Have the query text truncated in query store. That's the case when the length of query text exceeds the value configured in [pg_qs.max_query_text_length](concepts-query-store.md#configuration-options).
+- Reference objects that were dropped or renamed before the analysis occurs. These queries could still be syntactically valid, but not semantically valid.
+- Access temporary tables or indexes on temporary tables.
+- Access views or materialized views.
+- Access partitioned tables.
+- Are identified as utility statements. Utility statements or utility commands are, basically, any statement not considered SELECT, INSERT, UPDATE, DELETE, or MERGE, and certain commands containing one of these.
+- Are not among the top [index_tuning.max_queries_per_database](concepts-index-tuning.md#configuring-index-tuning) slowest, for the database and period analyzed.
+- Were run in the context of one specific database, when none of those queries were identified as the top slowest at the server level.
 
 ## Related content
 

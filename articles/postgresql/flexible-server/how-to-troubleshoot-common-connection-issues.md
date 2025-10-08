@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot connections
 description: Learn how to troubleshoot connection issues to Azure Database for PostgreSQL flexible server.
-author: assaff
-ms.author: assaff
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
@@ -10,9 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Troubleshoot connection issues to Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Troubleshoot connection issues to Azure Database for PostgreSQL 
 
 Connection problems may be caused by various things, including:
 

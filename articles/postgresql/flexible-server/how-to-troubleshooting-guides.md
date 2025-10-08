@@ -8,11 +8,10 @@ ms.date: 06/25/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
-# Use the troubleshooting guides in Azure Database for PostgreSQL flexible server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Use the troubleshooting guides in Azure Database for PostgreSQL 
 
 In this article, you learn how to use troubleshooting guides for Azure Database for PostgreSQL flexible server from the Azure portal. To learn more about troubleshooting guides, see the [overview](concepts-troubleshooting-guides.md).
 

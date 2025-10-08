@@ -1,48 +1,49 @@
 ---
-title: Modeling data in Azure Cosmos DB
-titleSuffix: Azure Cosmos DB
-description: Learn about data modeling in NoSQL databases, differences between modeling data in a relational database and a document database.
+title: Data Modeling
+titleSuffix: Azure Cosmos DB for NoSQL
+description: Discover how to model data in Azure Cosmos DB, compare relational and document databases, and optimize for performance and scalability.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 09/26/2024
+ms.date: 09/03/2025
 ms.custom: cosmos-db-video
+ai-usage: ai-assisted
+applies-to:
+  - ✅ NoSQL
 ---
 
-# Data modeling in Azure Cosmos DB
+# Data modeling in Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+While schema-free databases, like Azure Cosmos DB, make it easy to store and query unstructured and semi-structured data, think about your data model to optimize performance, scalability, and cost.
 
-While schema-free databases, like Azure Cosmos DB, make it super easy to store and query unstructured and semi-structured data, you should spend some time thinking about your data model to get the most of the service in terms of performance and scalability and lowest cost.
+How is data stored? How does your application retrieve and query data? Is your application read-heavy or write-heavy?
 
-How is data going to be stored? How is your application going to retrieve and query data? Is your application read-heavy, or write-heavy?
+> [!VIDEO 01973aa6-4cdf-402d-8721-d33477ec0dde]
 
->
-> [!VIDEO https://aka.ms/docs.modeling-data]
+After reading this article, you can answer the following questions:
 
-After reading this article, you'll be able to answer the following questions:
-
-* What is data modeling and why should I care?
-* How is modeling data in Azure Cosmos DB different to a relational database?
-* How do I express data relationships in a non-relational database?
-* When do I embed data and when do I link to data?
+- What is data modeling and why should I care?
+- How is modeling data in Azure Cosmos DB different from a relational database?
+- How do you express data relationships in a nonrelational database?
+- When do I embed data and when do I link to data?
 
 ## Numbers in JSON
-Azure Cosmos DB saves documents in JSON. Which means it's necessary to carefully determine whether it's necessary to convert numbers into strings before storing them in json or not. All numbers should ideally be converted into a `String`, if there's any chance that they are outside the boundaries of double precision numbers according to [IEEE 754 binary64](https://www.rfc-editor.org/rfc/rfc8259#ref-IEEE754). The [Json specification](https://www.rfc-editor.org/rfc/rfc8259#section-6) calls out the reasons why using numbers outside of this boundary in general is a bad practice in JSON due to likely interoperability problems. These concerns are especially relevant for the partition key column, because it's immutable and requires data migration  to change it later.  
+
+Azure Cosmos DB saves documents in JSON, so it's important to determine whether to convert numbers into strings before storing them in JSON. Convert all numbers to a `String` if they might exceed the boundaries of double-precision numbers as defined by [Institute of Electrical and Electronics Engineers (IEEE) 754 binary64](https://www.rfc-editor.org/rfc/rfc8259#ref-IEEE754). The [JSON specification](https://www.rfc-editor.org/rfc/rfc8259#section-6) explains why using numbers outside this boundary is a bad practice due to interoperability problems. These concerns are especially relevant for the partition key column because it's immutable and requires data migration to change later.  
 
 ## Embed data
 
-When you start modeling data in Azure Cosmos DB try to treat your entities as **self-contained items** represented as JSON documents.
+When you model data in Azure Cosmos DB, treat your entities as **self-contained items** represented as JSON documents.
 
 For comparison, let's first see how we might model data in a relational database. The following example shows how a person might be stored in a relational database.
 
-:::image type="content" source="./media/modeling-data/relational-data-model.png" alt-text="Relational database model" border="false":::
+:::image type="content" source="media/modeling-data/relational-data-model.png" alt-text="Screenshot of relational database model." border="false":::
 
-The strategy, when working with relational databases, is to normalize all your data. Normalizing your data typically involves taking an entity, such as a person, and breaking it down into discrete components. In the example, a person might have multiple contact detail records, and multiple address records. Contact details can be further broken down by further extracting common fields like a type. The same applies to address, each record can be of type *Home* or *Business*.
+The strategy, when working with relational databases, is to normalize all your data. Normalizing your data typically involves taking an entity, such as a person, and breaking it down into discrete components. In the example, a person might have multiple contact detail records, and multiple address records. You can further break down contact details by extracting common fields such as type. The same approach applies to addresses. Each record can be classified as *Home* or *Business*.
 
-The guiding premise when normalizing data is to **avoid storing redundant data** on each record and rather refer to data. In this example, to read a person, with all their contact details and addresses, you need to use JOINS to effectively compose back (or denormalize) your data at run time.
+The guiding premise when normalizing data is to **avoid storing redundant data** in each record and instead refer to data. In this example, to read a person, with all their contact details and addresses, you need to use JOINS to effectively compose back (or denormalize) your data at run time.
 
 ```sql
 SELECT p.FirstName, p.LastName, a.City, cd.Detail
@@ -52,7 +53,7 @@ JOIN ContactDetailType cdt ON cdt.Id = cd.TypeId
 JOIN Address a ON a.PersonId = p.Id
 ```
 
-Write operations across many individual tables are required to update a single person's contact details and addresses. 
+Updating a single person's contact details and addresses requires write operations across many individual tables. 
 
 Now let's take a look at how we would model the same data as a self-contained entity in Azure Cosmos DB.
 
@@ -77,29 +78,29 @@ Now let's take a look at how we would model the same data as a self-contained en
 }
 ```
 
-Using this approach we've **denormalized** the person record, by **embedding** all the information related to this person, such as their contact details and addresses, into a *single JSON* document.
+Using this approach, we've **denormalized** the person record by **embedding** all the information related to this person, such as their contact details and addresses, into a *single JSON* document.
 In addition, because we're not confined to a fixed schema we have the flexibility to do things like having contact details of different shapes entirely.
 
-Retrieving a complete person record from the database is now a **single read operation** against a single container and for a single item. Updating the contact details and addresses of a person record is also a **single write operation** against a single item.
+Retrieving a complete person record from the database is now a **single read operation** against a single container for a single item. Updating the contact details and addresses of a person record is also a **single write operation** against a single item.
 
-By denormalizing data, your application might need to issue fewer queries and updates to complete common operations.
+Denormalizing data might reduce the number of queries and updates your application needs to complete common operations.
 
 ### When to embed
 
 In general, use embedded data models when:
 
-* There are **contained** relationships between entities.
-* There are **one-to-few** relationships between entities.
-* There's embedded data that **changes infrequently**.
-* There's embedded data that won't grow **without bound**.
-* There's embedded data that is **queried frequently together**.
+- There are **contained** relationships between entities.
+- There are **one-to-few** relationships between entities.
+- The data **changes infrequently**.
+- The data does **not grow without bound**.
+- The data is **queried frequently together**.
 
 > [!NOTE]
 > Typically denormalized data models provide better **read** performance.
 
 ### When not to embed
 
-While the rule of thumb in Azure Cosmos DB is to denormalize everything and embed all data into a single item, this can lead to some situations that should be avoided.
+Although the rule of thumb in Azure Cosmos DB is to denormalize everything and embed all data into a single item, this approach can lead to situations to avoid.
 
 Take this JSON snippet.
 
@@ -121,9 +122,9 @@ Take this JSON snippet.
 }
 ```
 
-This might be what a post entity with embedded comments would look like if we were modeling a typical blog, or CMS, system. The problem with this example is that the comments array is **unbounded**, meaning that there's no (practical) limit to the number of comments any single post can have. This might become a problem as the size of the item could grow infinitely large so is a design you should avoid.
+This example might be what a post entity with embedded comments would look like if we were modeling a typical blog, or content management system (CMS). The problem with this example is that the comments array is **unbounded**, meaning that there's no (practical) limit to the number of comments any single post can have. This design might cause problems as the item's size can grow infinitely large, so avoid it.
 
-As the size of the item grows the ability to transmit the data over the wire and reading and updating the item, at scale, will be impacted.
+As the item size increases, transmitting, reading, and updating the data at scale becomes more challenging.
 
 In this case, it would be better to consider the following data model.
 
@@ -152,10 +153,10 @@ Comment items:
 ]
 ```
 
-This model has a document for each comment with a property that contains the post identifier. This allows posts to contain any number of comments and can grow efficiently. Users wanting to see more
+This model has an item for each comment with a property that contains the post identifier. This model lets posts contain any number of comments and grow efficiently. Users wanting to see more
 than the most recent comments would query this container passing the postId, which should be the partition key for the comments container.
 
-Another case where embedding data isn't a good idea is when the embedded data is used often across items and will change frequently.
+Another case where embedding data isn't a good idea is when the embedded data is used often across items and changes frequently.
 
 Take this JSON snippet.
 
@@ -177,17 +178,17 @@ Take this JSON snippet.
 }
 ```
 
-This could represent a person's stock portfolio. We have chosen to embed the stock information into each portfolio document. In an environment where related data is changing frequently, like a stock trading application, embedding data that changes frequently is going to mean that you're constantly updating each portfolio document every time a stock is traded.
+This example could represent a person's stock portfolio. We chose to embed the stock information into each portfolio document. In an environment where related data is changing frequently embedding data that changes frequently is going to mean that you're constantly updating each portfolio. Using an example of a stock trading application, you're updating each portfolio item every time a stock is traded.
 
-Stock *zbzb* might be traded many hundreds of times in a single day and thousands of users could have *zbzb* on their portfolio. With a data model like the example, we would have to update many thousands of portfolio documents many times every day leading to a system that won't scale well.
+Stock `zbzb` can be traded hundreds of times in a single day, and thousands of users could have `zbzb` in their portfolios. With a data model like the example, the system must update thousands of portfolio documents many times each day, which doesn't scale well.
 
 ## Reference data
 
-Embedding data works nicely for many cases but there are scenarios when denormalizing your data cause more problems than it's worth. So what do we do now?
+Embedding data works well in many cases, but there are scenarios where denormalizing your data causes more problems than it's worth. So, what can you do?
 
-Relational databases aren't the only place where you can create relationships between entities. In a document database, you might have information in one document that relates to data in other documents. We don't recommend building systems that would be better suited to a relational database in Azure Cosmos DB, or any other document database, but simple relationships are fine and might be useful.
+You can create relationships between entities in document databases, not just in relational databases. In a document database, one item can include information that connects to data in other documents. Azure Cosmos DB isn't designed for complex relationships like those in relational databases, but simple links between items are possible and can be helpful.
 
-In the JSON we chose to use the example of a stock portfolio from earlier but this time we refer to the stock item on the portfolio instead of embedding it. This way, when the stock item changes frequently throughout the day the only document that needs to be updated is the single stock document.
+In the JSON, we use the example of a stock portfolio from earlier, but this time we refer to the stock item in the portfolio instead of embedding it. This way, when the stock item changes frequently throughout the day the only item that needs to be updated is the single stock document.
 
 ```json
 Person document:
@@ -224,30 +225,30 @@ Stock documents:
 }
 ```
 
-An immediate downside to this approach though is if your application is required to show information about each stock that is held when displaying a person's portfolio; in this case you would need to make multiple trips to the database to load the information for each stock document. Here we've made a decision to improve the efficiency of write operations, which happen frequently throughout the day, but in turn compromised on the read operations that potentially have less impact on the performance of this particular system.
+One drawback of this approach is that your application must make several database requests to get information about each stock in a person's portfolio. This design makes writing data faster, since updates happen often. However, it makes reading or querying data slower, which is less important for this system.
 
 > [!NOTE]
 > Normalized data models **can require more round trips** to the server.
 
 ### What about foreign keys?
 
-Because there's currently no concept of a constraint, foreign-key or otherwise, any inter-document relationships that you have in documents are effectively "weak links" and won't be verified by the database itself. If you want to ensure that the data a document is referring to actually exists, then you need to do this in your application, or by using server-side triggers or stored procedures on Azure Cosmos DB.
+Because there's no concept of a constraint, such as a foreign key, the database doesn't verify any inter-document relationships in documents; these links are effectively "weak." If you want to ensure that the data an item is referring to actually exists, then you need to do this step in your application, or by using server-side triggers or stored procedures on Azure Cosmos DB.
 
 ### When to reference
 
 In general, use normalized data models when:
 
-* Representing **one-to-many** relationships.
-* Representing **many-to-many** relationships.
-* Related data **changes frequently**.
-* Referenced data could be **unbounded**.
+- Representing **one-to-many** relationships.
+- Representing **many-to-many** relationships.
+- Related data **changes frequently**.
+- Referenced data could be **unbounded**.
 
 > [!NOTE]
 > Typically normalizing provides better **write** performance.
 
 ### Where do I put the relationship?
 
-The growth of the relationship helps determine in which document to store the reference.
+The growth of the relationship helps determine in which item to store the reference.
 
 If we observe the JSON that models publishers and books.
 
@@ -269,9 +270,9 @@ Book documents:
 {"id": "1000", "name": "Deep Dive into Azure Cosmos DB" }
 ```
 
-If the number of the books per publisher is small with limited growth, then storing the book reference inside the publisher document might be useful. However, if the number of books per publisher is unbounded, then this data model would lead to mutable, growing arrays, as in the example publisher document.
+If the number of books per publisher is small and growth is limited, storing the book reference inside the publisher item might be useful. However, if the number of books per publisher is unbounded, then this data model would lead to mutable, growing arrays, as in the example publisher document.
 
-Switching things around a bit would result in a model that still represents the same data but now avoids these large mutable collections.
+Switching the structure results in a model that represents the same data but avoids large mutable collections.
 
 ```json
 Publisher document:
@@ -290,13 +291,13 @@ Book documents:
 {"id": "1000","name": "Deep Dive into Azure Cosmos DB", "pub-id": "mspress"}
 ```
 
-In this example, we've dropped the unbounded collection on the publisher document. Instead we just have a reference to the publisher on each book document.
+In this example, the publisher document no longer contains an unbounded collection. Instead, each book document includes a reference to its publisher.
 
 ### How do I model many-to-many relationships?
 
-In a relational database many-to-many relationships are often modeled with join tables, which just join records from other tables together.
+In a relational database, many-to-many relationships are often modeled with join tables. These relationships just join records from other tables together.
 
-:::image type="content" source="./media/modeling-data/join-table.png" alt-text="Join tables" border="false":::
+:::image type="content" source="media/modeling-data/join-table.png" alt-text="Screenshot showing how to join tables." border="false":::
 
 You might be tempted to replicate the same thing using documents and produce a data model that looks similar to the following.
 
@@ -319,7 +320,7 @@ Joining documents:
 {"authorId": "a1", "bookId": "b3" }
 ```
 
-This would work. However, loading either an author with their books, or loading a book with its author, would always require at least two extra queries against the database. One query to the joining document and then another query to fetch the actual document being joined.
+This approach works, but loading an author with their books or a book with its author always requires at least two extra database queries. One query to the joining item and then another query to fetch the actual item being joined.
 
 If this join is only gluing together two pieces of data, then why not drop it completely?
 Consider the following example.
@@ -336,15 +337,15 @@ Book documents:
 {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 ```
 
-Now, if I had an author, I immediately know which books they've written, and conversely if I had a book document loaded I would know the IDs of the authors. This saves that intermediary query against the join table reducing the number of server round trips your application has to make.
+With this model, you can easily see which books an author wrote by looking at their document. You can also see which authors wrote a book by checking the book document. You don't need to use a separate join table or make extra queries. This model makes it faster and simpler for your application to get the data it needs.
 
 ## Hybrid data models
 
-We've now looked at embedding (or denormalizing) and referencing (or normalizing) data. Each approach has upsides and compromises.
+We explore embedding (or denormalizing) and referencing (or normalizing) data. Each approach offers benefits and involves trade-offs.
 
-It doesn't always have to be either-or, don't be scared to mix things up a little.
+It doesn't always have to be either-or. Don't hesitate to mix things up a little.
 
-Based on your application's specific usage patterns and workloads there might be cases where mixing embedded and referenced data makes sense and could lead to simpler application logic with fewer server round trips while still maintaining a good level of performance.
+Based on your application's specific usage patterns and workloads, mixing embedded and referenced data might make sense. This approach could simplify application logic, reduce server round trips, and maintain good performance.
 
 Consider the following JSON.
 
@@ -391,19 +392,19 @@ Book documents:
 }
 ```
 
-Here we've (mostly) followed the embedded model, where data from other entities are embedded in the top-level document, but other data is referenced.
+Here we have (mostly) followed the embedded model, where data from other entities are embedded in the top-level document, but other data is referenced.
 
-If you look at the book document, we can see a few interesting fields when we look at the array of authors. There's an `id` field that is the field we use to refer back to an author document, standard practice in a normalized model, but then we also have `name` and `thumbnailUrl`. We could have stuck with `id` and left the application to get any additional information it needed from the respective author document using the "link", but because our application displays the author's name and a thumbnail picture with every book displayed we can save a round trip to the server per book in a list by denormalizing **some** data from the author.
+If you look at the book document, we can see a few interesting fields when we look at the array of authors. There's an `id` field that is the field we use to refer back to an author document, standard practice in a normalized model, but then we also have `name` and `thumbnailUrl`. We could use only the `id` and let the application retrieve any additional information it needs from the corresponding author item using the "link." However, since the application displays the author's name and a thumbnail picture with every book, denormalizing **some** data from the author reduces the number of server round trips per book in a list.
 
-Sure, if the author's name changed or they wanted to update their photo we'd have to update every book they ever published but for our application, based on the assumption that authors don't change their names often, this is an acceptable design decision.  
+If the author's name changes or they update their photo, you'd need to update every book they published. However, for this application, assuming authors rarely change their names, this compromise is an acceptable design decision.  
 
-In the example, there are **pre-calculated aggregates** values to save expensive processing on a read operation. In the example, some of the data embedded in the author document is data that is calculated at run-time. Every time a new book is published, a book document is created **and** the countOfBooks field is set to a calculated value based on the number of book documents that exist for a particular author. This optimization would be good in read heavy systems where we can afford to do computations on writes in order to optimize reads.
+In the example, there are **precalculated aggregate** values to save expensive processing during a read operation. In the example, some of the data embedded in the author item is data that is calculated at run-time. Every time a new book is published, a book item is created **and** the countOfBooks field is set to a calculated value based on the number of book documents that exist for a particular author. This optimization would be good in read heavy systems where we can afford to do computations on writes in order to optimize reads.
 
-The ability to have a model with precalculated fields is made possible because Azure Cosmos DB supports **multi-document transactions**. Many NoSQL stores can't do transactions across documents and therefore advocate design decisions, such as "always embed everything," due to this limitation. With Azure Cosmos DB, you can use server-side triggers, or stored procedures that insert books and update authors all within an ACID transaction. Now you don't **have** to embed everything into one document just to be sure that your data remains consistent.
+The ability to have a model with precalculated fields is made possible because Azure Cosmos DB supports **multi-document transactions**. Many NoSQL stores can't perform transactions across documents and therefore advocate design decisions like "always embed everything" because of this limitation. With Azure Cosmos DB, you can use server-side triggers, or stored procedures that insert books and update authors all within an ACID transaction. Now you don't **have** to embed everything into one item just to be sure that your data remains consistent.
 
-## Distinguish between different document types
+## Distinguish between different item types
 
-In some scenarios, you might want to mix different document types in the same collection; this is usually the case when you want multiple, related documents to sit in the same [partition](../partitioning-overview.md). For example, you could put both books and book reviews in the same collection and partition it by `bookId`. In such situation, you usually want to add to your documents with a field that identifies their type in order to differentiate them.
+In some scenarios, you might want to mix different item types in the same collection; this design choice is usually the case when you want multiple, related documents to sit in the same [partition](../partitioning-overview.md). For example, you could put both books and book reviews in the same collection and partition it by `bookId`. In such a situation, you usually want to add a field to your documents that identifies their type to differentiate them.
 
 ```json
 Book documents:
@@ -420,7 +421,7 @@ Review documents:
     "content": "This book is awesome",
     "bookId": "b1",
     "type": "review"
-},
+}
 {
     "id": "r2",
     "content": "Best book ever!",
@@ -431,33 +432,36 @@ Review documents:
 
 ## Data modeling for Azure Synapse Link and Azure Cosmos DB analytical store
 
-[Azure Synapse Link for Azure Cosmos DB](../synapse-link.md) is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables you to run near real-time analytics over operational data in Azure Cosmos DB. Azure Synapse Link creates a tight seamless integration between Azure Cosmos DB and Azure Synapse Analytics. 
+[Azure Synapse Link for Azure Cosmos DB](../synapse-link.md) is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables you to run near real-time analytics over operational data in Azure Cosmos DB. Azure Synapse Link creates a seamless integration between Azure Cosmos DB and Azure Synapse Analytics. 
 
-This integration happens through [Azure Cosmos DB analytical store](../analytical-store-introduction.md), a columnar representation of your transactional data that enables large-scale analytics without any impact to your transactional workloads. This analytical store is suitable for fast, cost-effective queries on large operational data sets, without copying data and impacting the performance of your transactional workloads. When you create a container with analytical store enabled, or when you enable analytical store on an existing container, all transactional inserts, updates, and deletes are synchronized with analytical store in near real time, no Change Feed or ETL jobs are required.
+This integration happens through [Azure Cosmos DB analytical store](../analytical-store-introduction.md), a columnar representation of your transactional data that enables large-scale analytics without any effect on your transactional workloads. The analytical store lets you run quick and affordable queries on large sets of data. You don't need to copy the data or worry about slowing down your main database. When you turn on analytical store for a container, every change you make to your data is copied to the analytical store almost right away. You don't need to set up Change Feed or run extract, transform, and load (ETL) jobs. The system keeps both stores in sync for you.
 
 With Azure Synapse Link, you can now directly connect to your Azure Cosmos DB containers from Azure Synapse Analytics and access the analytical store, at no Request Units (request units) costs. Azure Synapse Analytics currently supports Azure Synapse Link with Synapse Apache Spark and serverless SQL pools. If you have a globally distributed Azure Cosmos DB account, after you enable analytical store for a container, it will be available in all regions for that account. 
 
 ### Analytical store automatic schema inference
 
-While Azure Cosmos DB transactional store is considered row-oriented semi-structured data, analytical store has columnar and structured format. This conversion is automatically made for customers, using [the schema inference rules for the analytical store](../analytical-store-introduction.md). There are limits in the conversion process: maximum number of nested levels, maximum number of properties, unsupported data types, and more. 
+Azure Cosmos DB transactional store is row-oriented semi-structured data, while analytical store uses a columnar and structured format. This conversion is automatically made for customers, using [the schema inference rules for the analytical store](../analytical-store-introduction.md). There are limits in the conversion process: maximum number of nested levels, maximum number of properties, unsupported data types, and more. 
 
 > [!NOTE]
 > In the context of analytical store, we consider the following structures as property:
-> * JSON "elements" or "string-value pairs separated by a `:` ".
-> * JSON objects, delimited by `{` and `}`.
-> * JSON arrays, delimited by `[` and `]`.
+>
+> - JSON "elements" or "string-value pairs separated by a `:`"
+> - JSON objects, delimited by `{` and `}`
+> - JSON arrays, delimited by `[` and `]`
+>
 
-You can minimize the impact of the schema inference conversions, and maximize your analytical capabilities, by using following techniques.
+You can minimize the effect of the schema inference conversions, and maximize your analytical capabilities, by using following techniques.
 
 ### Normalization
 
-Normalization becomes meaningless since with Azure Synapse Link you can join between your containers, using T-SQL or Spark SQL. The expected benefits of normalization are:
- * Smaller data footprint in both transactional and analytical store.
- * Smaller transactions.
- * Fewer properties per document.
- * Data structures with fewer nested levels.
+Normalization becomes less relevant because Azure Synapse Link lets you join containers using T-SQL or Spark SQL. The expected benefits of normalization are:
 
-These last two factors, fewer properties and fewer levels, help in the performance of your analytical queries but also decrease the chances of parts of your data not being represented in the analytical store. As described in the article on automatic schema inference rules, there are limits to the number of levels and properties that are represented in analytical store.
+- Smaller data footprint in both transactional and analytical store.
+- Smaller transactions.
+- Fewer properties per document.
+- Data structures with fewer nested levels.
+
+Having fewer properties and fewer levels in your data makes analytical queries faster. It also helps make sure that all parts of your data are included in the analytical store. As described in the article on automatic schema inference rules, there are limits to the number of levels and properties that are represented in analytical store.
 
 Another important factor for normalization is that SQL serverless pools in Azure Synapse support result sets with up to 1,000 columns, and exposing nested columns also counts towards that limit. In other words, both analytical store and Synapse SQL serverless pools have a limit of 1,000 properties.
 
@@ -465,21 +469,21 @@ But what to do since denormalization is an important data modeling technique for
 
 ### Partition Key
 
-Your Azure Cosmos DB partition key (PK) isn't used in analytical store. And now you can use [analytical store custom partitioning](https://devblogs.microsoft.com/cosmosdb/custom-partitioning-azure-synapse-link/) to copies of analytical store using any PK that you want. Because of this isolation, you can choose a PK for your transactional data with focus on data ingestion and point reads, while cross-partition queries can be done with Azure Synapse Link. Let's see an example:
+The Azure Cosmos DB partition key (PK) isn't used in the analytical store. And now you can use [analytical store custom partitioning](https://devblogs.microsoft.com/cosmosdb/custom-partitioning-azure-synapse-link/) to copies of analytical store using any PK that you want. Because of this isolation, you can choose a PK for your transactional data with focus on data ingestion and point reads, while cross-partition queries can be done with Azure Synapse Link. Let's see an example:
 
-In a hypothetical global IoT scenario, `device id` is a good PK since all devices have a similar data volume and with that you won't have a hot partition problem. But if you want to analyze the data of more than one device, like "all data from yesterday" or "totals per city," you might have problems since those are cross-partition queries. Those queries can hurt your transactional performance since they use part of your throughput in request units to run. But with Azure Synapse Link, you can run these analytical queries at no request units costs. Analytical store columnar format is optimized for analytical queries and Azure Synapse Link applies this characteristic to allow great performance with Azure Synapse Analytics runtimes.
+In a hypothetical global IoT scenario, `device id` serves as a good partition key because all devices generate a similar volume of data, which prevents hot partition issues. But if you want to analyze the data of more than one device, like "all data from yesterday" or "totals per city," you might have problems since those queries are cross-partition queries. Those queries can hurt your transactional performance since they use part of your throughput in request units to run. But with Azure Synapse Link, you can run these analytical queries at no request units costs. Analytical store columnar format is optimized for analytical queries and Azure Synapse Link supports great performance with Azure Synapse Analytics runtimes.
 
 ### Data types and properties names
 
-The automatic schema inference rules article lists what are the supported data types. While unsupported data type blocks the representation in analytical store, supported datatypes might be processed differently by the Azure Synapse runtimes. One example is: When using DateTime strings that follow the ISO 8601 UTC standard, Spark pools in Azure Synapse will represent these columns as string and SQL serverless pools in Azure Synapse will represent these columns as varchar(8000).
+The automatic schema inference rules article lists what are the supported data types. While Azure Synapse runtimes might process supported datatypes differently, unsupported data types block the representation in analytical store. One example is: When using DateTime strings that follow the ISO 8601 UTC standard, Spark pools in Azure Synapse represents these columns as `string` and SQL serverless pools in Azure Synapse represents these columns as `varchar(8000)`.
 
-Another challenge is that not all characters are accepted by Azure Synapse Spark. While white spaces are accepted, characters like colon, grave accent, and comma aren't. Let's say that your document has a property named **"First Name, Last Name"**. This property is represented in analytical store and Synapse SQL serverless pool can read it without a problem. But since it is in analytical store, Azure Synapse Spark can't read any data from analytical store, including all other properties. At the end of the day, you can't use Azure Synapse Spark when you have one property using the unsupported characters in their names.
+Another challenge is that Azure Synapse Spark doesn't accept all characters. While white spaces are accepted, characters like colon, grave accent, and comma aren't. Let's say that your item has a property named **"First Name, Last Name"**. This property is represented in analytical store and Synapse SQL serverless pool can read it without a problem. But since it is in analytical store, Azure Synapse Spark can't read any data from analytical store, including all other properties. At the end of the day, you can't use Azure Synapse Spark when you have one property using the unsupported characters in their names.
 
 ### Data flattening
 
-All properties in the root level of your Azure Cosmos DB data will be represented in analytical store as a column and everything else that is in deeper levels of your document data model will be represented as JSON, also in nested structures. Nested structures demand extra processing from Azure Synapse runtimes to flatten the data in structured format, what might be a challenge in big data scenarios.
+Every property at the top level of your Azure Cosmos DB data becomes a column in the analytical store. Properties inside nested objects or arrays are stored as JSON in the analytical store, keeping their structure. Nested structures demand extra processing from Azure Synapse runtimes to flatten the data in structured format, what might be a challenge in big data scenarios.
 
-The document will have only two columns in analytical store, `id` and `contactDetails`. All other data, `email` and `phone`, will require extra processing through SQL functions to be individually read.
+The item has only two columns in analytical store, `id` and `contactDetails`. All other data, `email`, and `phone`, requires extra processing through SQL functions to be individually read.
 
 ```json
 
@@ -492,7 +496,7 @@ The document will have only two columns in analytical store, `id` and `contactDe
 }
 ```
 
-The document will have three columns in analytical store, `id`, `email`, and `phone`. All data is directly accessible as columns.
+The item has three columns in analytical store, `id`, `email`, and `phone`. All data is directly accessible as columns.
 
 ```json
 
@@ -507,40 +511,37 @@ The document will have three columns in analytical store, `id`, `email`, and `ph
 
 Azure Synapse Link allows you to reduce costs from the following perspectives:
 
- * Fewer queries running in your transactional database.
- * A PK optimized for data ingestion and point reads, reducing data footprint, hot partition scenarios, and partitions splits.
- * Data tiering since [analytical time-to-live (attl)](../analytical-store-introduction.md#analytical-ttl) is independent from transactional time-to-live (tttl). You can keep your transactional data in transactional store for a few days, weeks, months, and keep the data in analytical store for years or for ever. Analytical store columnar format brings a natural data compression, from 50% up to 90%. And its cost per GB is ~10% of transactional store actual price. For more information about the current backup limitations, see [analytical store overview](../analytical-store-introduction.md).
- * No ETL jobs running in your environment, meaning that you don't need to provision request units for them.
+- Fewer queries running in your transactional database.
+- A PK optimized for data ingestion and point reads, reducing data footprint, hot partition scenarios, and partitions splits.
+- Data tiering since [analytical time-to-live (attl)](../analytical-store-introduction.md#analytical-ttl) is independent from transactional time-to-live (tttl). You can keep your transactional data in transactional store for a few days, weeks, months, and keep the data in analytical store for years or for ever. Analytical store columnar format brings a natural data compression, from 50% up to 90%. And its cost per GB is ~10% of transactional store actual price. For more information about the current backup limitations, see [analytical store overview](../analytical-store-introduction.md).
+- No ETL jobs running in your environment, meaning that you don't need to allocate request units for them.
 
 ### Controlled redundancy
 
-This is a great alternative for situations when a data model already exists and can't be changed. And the existing data model doesn't fit well into analytical store due to automatic schema inference rules like the limit of nested levels or the maximum number of properties. If this is your case, you can use [Azure Cosmos DB Change Feed](../change-feed.md) to replicate your data into another container, applying the required transformations for an Azure Synapse Link friendly data model. Let's see an example:
+This technique is a great alternative for situations when a data model already exists and can't be changed. The current data model doesn't work well with analytical store. This advantage exists because analytical store has rules that limit how many levels you can nest data and how many properties you can have in each document. If your data is too complex or has too many fields, some important information might not be included in analytical store. If this scenario is your case, you can use [Azure Cosmos DB Change Feed](../change-feed.md) to replicate your data into another container, applying the required transformations for an Azure Synapse Link friendly data model. Let's see an example:
 
 #### Scenario
 
-Container `CustomersOrdersAndItems` is used to store on-line orders including customer and items details: billing address, delivery address, delivery method, delivery status, items price, etc. Only the first 1,000 properties are represented and key information isn't included in analytical store, blocking Azure Synapse Link usage. The container has PBs of records it's not possible to change the application and remodel the data. 
+Container `CustomersOrdersAndItems` is used to store on-line orders including customer and items details: billing address, delivery address, delivery method, delivery status, items price, etc. Only the first 1,000 properties are represented and key information isn't included in analytical store, blocking Azure Synapse Link usage. The container has petabytes of records it's not possible to change the application and remodel the data. 
 
-Another perspective of the problem is the big data volume. Billions of rows are constantly used by the Analytics Department, what prevents them to use tttl for old data deletion. Maintaining the entire data history in the transactional database because of analytical needs forces them to constantly increase request units provisioning, impacting costs. Transactional and analytical workloads compete for the same resources at the same time. 
+Another aspect of the problem is the large data volume. Billions of rows are constantly used by the Analytics Department, what prevents them to use tttl for old data deletion. Maintaining the entire data history in the transactional database because of analytical needs forces them to constantly increase request units provisioning, impacting costs. Transactional and analytical workloads compete for the same resources at the same time. 
 
-What to do?
+What can you do?
  
 #### Solution with Change Feed
 
-* The engineering team decided to use Change Feed to populate three new containers: `Customers`, `Orders`, and `Items`. With Change Feed they're normalizing and flattening the data. Unnecessary information is removed from the data model and each container has close to 100 properties, avoiding data loss due to automatic schema inference limits. 
-* These new containers have analytical store enabled and now the Analytics Department is using Synapse Analytics to read the data, reducing the request units usage since the analytical queries are happening in Synapse Apache Spark and serverless SQL pools.
-* Container `CustomersOrdersAndItems` now has tttl set to keep data for six months only, which allows for another request units usage reduction, since there's a minimum of one request unit per GB in Azure Cosmos DB. Less data, fewer request units.
-
+- The engineering team decided to use Change Feed to populate three new containers: `Customers`, `Orders`, and `Items`. With Change Feed, they're normalizing and flattening the data. Unnecessary information is removed from the data model and each container has close to 100 properties, avoiding data loss due to automatic schema inference limits. 
+- These new containers have analytical store enabled, and the Analytics Department uses Synapse Analytics to read the data. This reduces request unit usage because analytical queries run in Synapse Apache Spark and serverless SQL pools.
+- Container `CustomersOrdersAndItems` now has time-to-live (TTL) set to keep data for six months only, which allows for another request units usage reduction, since there's a minimum of one request unit per GB in Azure Cosmos DB. Less data, fewer request units.
 
 ## Takeaways
 
-The biggest takeaways from this article are to understand that data modeling in a world that's schema-free is as important as ever.
+The biggest takeaway from this article is that data modeling in a schema-free scenario is as important as ever.
 
-Just as there's no single way to represent a piece of data on a screen, there's no single way to model your data. You need to understand your application and how it produces, consume, and process the data. Then, by applying some of the guidelines presented here you can set about creating a model that addresses the immediate needs of your application. When your applications need to change, you can use the flexibility of a schema-free database to embrace that change and evolve your data model easily.
+Just as there's no single way to represent a piece of data on a screen, there's no single way to model your data. You need to understand your application and how it produces, consumes, and processes the data. By applying the guidelines presented here, you can create a model that addresses the immediate needs of your application. When your application changes, use the flexibility of a schema-free database to adapt and evolve your data model easily.
 
 ## Related content
 
-* [Partitioning Data in Azure Cosmos DB](../partitioning-overview.md)
-
-* [Data Modeling and Partitioning - a Real-World Example](model-partition-example.md)
-
-* [Model and partition your data in Azure Cosmos DB.](/training/modules/model-partition-data-azure-cosmos-db/)
+- [Partitioning data in Azure Cosmos DB](../partitioning-overview.md)
+- [Data modeling and partitioning - a real-world example](model-partition-example.md)
+- [Model and partition your data in Azure Cosmos DB](/training/modules/model-partition-data-azure-cosmos-db/)

@@ -1,13 +1,15 @@
 ---
 title: Encrypted Connectivity Using TLS/SSL
 description: Instructions and information on how to connect using TLS/SSL in Azure Database for MySQL - Flexible Server.
-author: SudheeshGH
-ms.author: sunaray
+author: aditivgupta
+ms.author: adig
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 07/21/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom:
+  - sfi-image-nochange
 ms.devlang: csharp
 ---
 
@@ -107,12 +109,12 @@ To set TLS versions on your Azure Database for MySQL Flexible Server instance, y
 
 ### Download the public SSL certificate
 
-To use encrypted connections with your client applications,you need to download the [public SSL certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem), which is also available in Azure portal Networking pane as shown in the screenshot below.
-
-:::image type="content" source="media/how-to-connect-tls-ssl/download-ssl.png" alt-text="Screenshot showing how to download public SSL certificate from Azure portal." lightbox="media/how-to-connect-tls-ssl/download-ssl.png":::
+To establish encrypted connections with your client applications, download the [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and the [Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt). Combine both certificates before initiating a connection to the server. For detailed steps, refer to [How to update the root certificate store on your client](./concepts-root-certificate-rotation.md#how-to-update-the-root-certificate-store-on-your-client)
 
 > [!NOTE]  
-> You must download this [SSL certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) for your servers in Azure Government cloud.
+> You must download [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) for your servers in Azure Government cloud.
+> 
+> You must download [DigiCert Global Root certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) for your servers in Azure Mooncake.
 
 Save the certificate file to your preferred location. For example, this tutorial uses `c:\ssl` or `\var\www\html\bin` on your local environment or the client environment where your application is hosted. This allows applications to connect securely to the database over SSL.
 
@@ -126,8 +128,8 @@ The following example shows how to connect to your server using the mysql comman
 
 ```bash
 sudo apt-get install mysql-client
-wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
-mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
+wget --no-check-certificate https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootG2.crt.pem
 ```
 
 > [!NOTE]  
@@ -179,20 +181,20 @@ To establish an encrypted connection to your Azure Database for MySQL Flexible S
 
 ### WordPress
 
-Download [SSL public certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) and add the following lines in wp-config.php after the line ```// **MySQL settings - You can get this info from your web host** //```.
+Download [SSL public certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and add the following lines in wp-config.php after the line ```// **MySQL settings - You can get this info from your web host** //```.
 
 ```php
 //** Connect with SSL ** //
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 //** SSL CERT **//
-define('MYSQL_SSL_CERT','/FULLPATH/on-client/to/DigiCertGlobalRootCA.crt.pem');
+define('MYSQL_SSL_CERT','/FULLPATH/on-client/to/DigiCertGlobalRootG2.crt.pem');
 ```
 
 ### PHP
 
 ```php
 $conn = mysqli_init();
-mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
+mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootG2.crt.pem", NULL, NULL);
 mysqli_real_connect($conn, 'mydemoserver.mysql.database.azure.com', 'myadmin', 'yourpassword', 'quickstartdb', 3306, MYSQLI_CLIENT_SSL);
 if (mysqli_connect_errno()) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
@@ -203,7 +205,7 @@ die('Failed to connect to MySQL: '.mysqli_connect_error());
 
 ```phppdo
 $options = array(
-    PDO::MYSQL_ATTR_SSL_CA => '/var/www/html/DigiCertGlobalRootCA.crt.pem'
+    PDO::MYSQL_ATTR_SSL_CA => '/var/www/html/DigiCertGlobalRootG2.crt.pem'
 );
 $db = new PDO('mysql:host=mydemoserver.mysql.database.azure.com;port=3306;dbname=databasename', 'myadmin', 'yourpassword', $options);
 ```
@@ -216,7 +218,7 @@ try:
                                    password='<password>',
                                    database='quickstartdb',
                                    host='mydemoserver.mysql.database.azure.com',
-                                   ssl_ca='/var/www/html/DigiCertGlobalRootCA.crt.pem')
+                                   ssl_ca='/var/www/html/DigiCertGlobalRootG2.crt.pem')
 except mysql.connector.Error as err:
     print(err)
 ```
@@ -228,7 +230,7 @@ conn = pymysql.connect(user='myadmin',
                        password='<password>',
                        database='quickstartdb',
                        host='mydemoserver.mysql.database.azure.com',
-                       ssl={'ca': '/var/www/html/DigiCertGlobalRootCA.crt.pem'})
+                       ssl={'ca': '/var/www/html/DigiCertGlobalRootG2.crt.pem'})
 ```
 
 ### Django (PyMySQL)
@@ -243,7 +245,7 @@ DATABASES = {
         'HOST': 'mydemoserver.mysql.database.azure.com',
         'PORT': '3306',
         'OPTIONS': {
-            'ssl': {'ca': '/var/www/html/DigiCertGlobalRootCA.crt.pem'}
+            'ssl': {'ca': '/var/www/html/DigiCertGlobalRootG2.crt.pem'}
         }
     }
 }
@@ -257,7 +259,7 @@ client = Mysql2::Client.new(
         :username => 'myadmin',
         :password => 'yourpassword',
         :database => 'quickstartdb',
-        :sslca => '/var/www/html/DigiCertGlobalRootCA.crt.pem'
+        :sslca => '/var/www/html/DigiCertGlobalRootG2.crt.pem'
     )
 ```
 
@@ -265,7 +267,7 @@ client = Mysql2::Client.new(
 
 ```go
 rootCertPool := x509.NewCertPool()
-pem, _ := ioutil.ReadFile("/var/www/html/DigiCertGlobalRootCA.crt.pem")
+pem, _ := ioutil.ReadFile("/var/www/html/DigiCertGlobalRootG2.crt.pem")
 if ok := rootCertPool.AppendCertsFromPEM(pem); !ok {
     log.Fatal("Failed to append PEM.")
 }
@@ -347,7 +349,7 @@ var builder = new MySqlConnectionStringBuilder
     Password = "yourpassword",
     Database = "quickstartdb",
     SslMode = MySqlSslMode.VerifyCA,
-    SslCa = "DigiCertGlobalRootCA.crt.pem",
+    SslCa = "DigiCertGlobalRootG2.crt.pem",
 };
 using (var connection = new MySqlConnection(builder.ConnectionString))
 {
@@ -360,7 +362,7 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 ```node
 var fs = require('fs');
 var mysql = require('mysql');
-const serverCa = [fs.readFileSync("/var/www/html/DigiCertGlobalRootCA.crt.pem", "utf8")];
+const serverCa = [fs.readFileSync("/var/www/html/DigiCertGlobalRootG2.crt.pem", "utf8")];
 var conn=mysql.createConnection({
     host:"mydemoserver.mysql.database.azure.com",
     user:"myadmin",

@@ -7,6 +7,7 @@ ms.reviewer: sidandrews
 ms.date: 06/06/2025
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: overview
+ms.custom: sfi-image-nochange
 #customer intent: As a database administrator, I want to understand the management operations and features provided by Azure Managed Instance for Apache Cassandra.
 ---
 
@@ -33,11 +34,11 @@ This article defines the management operations and features provided by the serv
 - The version in Apache Cassandra is in the format `X.Y.Z`. You can control the deployment of major (X) and minor (Y) versions manually by using service tools. The Cassandra patches (Z) that might be required for that major/minor version combination are done automatically.
 
 > [!NOTE]
-> The service currently supports Cassandra versions 3.11 and 4.0. Both versions are GA. To specify a Cassandra version when you deploy a cluster, see [Azure CLI Quickstart](create-cluster-cli.md).
+> The service currently supports Cassandra versions till v5.0. To specify a Cassandra version when you deploy a cluster, see [Azure CLI Quickstart](create-cluster-cli.md).
 
 ## Maintenance
 
-- The service runs [nodetool repair](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/tools/toolsRepair.html) using [reaper](http://cassandra-reaper.io/). This tool is run once every week. If you use your own service for a [hybrid deployment](configure-hybrid-cluster.md), you might want to disable reaper.
+- The service runs [nodetool repair](https://cassandra.apache.org/doc/latest/cassandra/managing/operating/repair.html) using [reaper](http://cassandra-reaper.io/). This tool is run once every week. If you use your own service for a [hybrid deployment](configure-hybrid-cluster.md), you might want to disable reaper.
 
 - Node health monitoring consists of:
 

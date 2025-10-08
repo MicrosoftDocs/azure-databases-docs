@@ -1,27 +1,25 @@
 ---
 title: $toString
-titleSuffix: Overview of the $toString operator in Azure Cosmos DB for MongoDB vCore
-description: The $toString operator in Azure Cosmos DB for MongoDB vCore converts an expression into a String
+titleSuffix: Overview of the $toString operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $toString operator converts an expression into a String
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 02/24/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
 # $toString
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$toString` operator simply returns the value of the expression as a String.
+The `$toString` operator simply returns the value of the specified expression as a String.
 
 ## Syntax
 
-The syntax for the `$toString` operator is:
-
-```mongodb
-{ "$toString": <expression> }
+```javascript
+{
+    $toString: < expression >
+}
 ```
 
 ## Parameters
@@ -32,7 +30,7 @@ The syntax for the `$toString` operator is:
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -146,18 +144,18 @@ Consider this sample document from the stores collection in the StoreData databa
 
 ### Example 1: Convert a Double value into a String value
 
+To convert the value of the latitude field from a Double to a String, run a query using the $toString operator on the field to make the conversion.
+
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsString": {
-            "$toString": "$location.lat"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsString: {
+            $toString: "$location.lat"
         }
     }
 }])
@@ -166,27 +164,29 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "originalLatitude": 72.8377,
-    "latitudeAsString": "72.8377"
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalLatitude": 72.8377,
+        "latitudeAsString": "72.8377"
+    }
+]
 ```
 
 ### Example 2: Convert an Int value into a String value
 
+To convert the value of the totalSales field from an Int to a String, run a query using the $toString operator on the field to make the conversion.
+
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalTotalSales": "$sales.totalSales",
-        "totalSalesAsString": {
-            "$toString": "$sales.totalSales"
+}, {
+    $project: {
+        originalTotalSales: "$sales.totalSales",
+        totalSalesAsString: {
+            $toString: "$sales.totalSales"
         }
     }
 }])
@@ -195,11 +195,13 @@ db.stores.aggregate([
 This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "originalTotalSales": 9366,
-    "totalSalesAsString": "9366"
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalTotalSales": 9366,
+        "totalSalesAsString": "9366"
+    }
+]
 ```
 
 This table delineates the expected behavior of the $toString operator based on the data type of the input value.
@@ -214,6 +216,4 @@ This table delineates the expected behavior of the $toString operator based on t
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$type to determine the BSON type of a value]($type.md)
-- [$toInt to convert a value to an ObjectId]($toobjectid.md)
+[!INCLUDE[Related content](../../includes/related-content.md)]

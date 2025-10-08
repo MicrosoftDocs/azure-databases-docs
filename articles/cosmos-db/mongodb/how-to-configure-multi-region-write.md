@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 10/27/2022
 ms.author: gahllevy
 ms.subservice: mongodb
+ms.custom: sfi-image-nochange
 ---
 
 # Configure multi-region writes in Azure Cosmos DB for MongoDB

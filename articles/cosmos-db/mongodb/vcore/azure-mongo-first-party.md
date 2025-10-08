@@ -5,7 +5,7 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: product-comparison
 ms.date: 06/03/2025
 ---
 
@@ -32,7 +32,7 @@ Azure includes both **first-party** services (built and operated by Microsoft) a
 
 ### 1. **Security and compliance**
 
-Mission-critical workloads demand full control over data and infrastructure. First-party services such as **Cosmos DB for MongoDB vCore** are built for [Microsoft’s extensive compliance portfolio](https://learn.microsoft.com/azure/compliance/), including:
+Mission-critical workloads demand full control over data and infrastructure. First-party services such as **Cosmos DB for MongoDB vCore** are built for [Microsoft’s extensive compliance portfolio](/azure/compliance/), including:
 
 - UAE DESC
 - FedRAMP

@@ -5,8 +5,6 @@
   items:
   - name: What is Azure Database for MySQL?
     href: flexible-server/overview.md
-  - name: Select the right deployment type
-    href: select-right-deployment-type.md
   - name: Try for free
     href: flexible-server/how-to-deploy-on-azure-free-account.md
   - name: Prepay for reserved capacity
@@ -24,6 +22,14 @@
         href: flexible-server/whats-new-archive.md
       - name: Release notes
         items:
+          - name: Release notes index
+            href: flexible-server/release-notes/release-notes-index.md
+          - name: October 2025
+            href: flexible-server/release-notes/october-2025.md
+          - name: September 2025
+            href: flexible-server/release-notes/september-2025.md
+          - name: July 2025
+            href: flexible-server/release-notes/july-2025.md
           - name: May 2025
             href: flexible-server/release-notes/may-2025.md
           - name: March 2025
@@ -140,20 +146,26 @@
         href: flexible-server/concepts-maintenance.md
       - name: Root certificate change
         href: flexible-server/concepts-root-certificate-rotation.md
+      - name: Root certificate change FAQ
+        href: flexible-server/concepts-root-certificate-rotation-faq.md
     - name: High availability
       items:
       - name: Business continuity overview
         href: flexible-server/concepts-business-continuity.md
       - name: High availability
         href: flexible-server/concepts-high-availability.md
+      - name: High availability FAQ
+        href: flexible-server/concepts-high-availability-faq.md
     - name: Monitoring
       items:
-      - name: Monitor Azure Database for MySQL - Flexible Server
+      - name: Monitor Azure Database for MySQL
         href: flexible-server/concepts-monitor-mysql.md
       - name: Monitoring data reference
         href: flexible-server/concepts-monitor-mysql-reference.md
       - name: Error logs
-        href: flexible-server/concepts-error-logs.md        
+        href: flexible-server/concepts-error-logs.md
+      - name: Azure Advisor and Azure Monitor
+        href: flexible-server/concepts-business-continuity-advisor-monitor.md    
     - name: Replication
       items:
       - name: Data-in replication
@@ -166,6 +178,8 @@
       items:
       - name: Backup & restore concepts
         href: flexible-server/concepts-backup-restore.md
+      - name: How to prevent and recover from an accidental deletion
+        href: flexible-server/how-to-prevent-recover-accidental-delete.md
     - name: Security
       items:
       - name: Microsoft Entra authentication
@@ -248,6 +262,8 @@
         href: flexible-server/how-to-move-regions.md
       - name: Major version upgrade
         href: flexible-server/how-to-upgrade.md
+      - name: Major version upgrade FAQ
+        href: flexible-server/how-to-upgrade-faq.md
       - name: Server maintenance
         href: flexible-server/how-to-maintenance-portal.md
     - name: Networking
@@ -390,8 +406,10 @@
     displayName: SUPER privilege, DBA role, Access is denied
 - name: Troubleshooting
   items:
+  - name: Server self heal
+    href: flexible-server/how-to-self-heal.md
   - name: Resolve capacity errors
-    href: ./flexible-server/resolve-capacity-errors-mysql-flex.md
+    href: ./flexible-server/resolve-capacity-errors.md
   - name: Request quota increase
     href: ./flexible-server/how-to-request-quota-increase.md
     displayName: SUPER privilege, DBA role, Access is denied
@@ -472,7 +490,7 @@
   - name: Support options
     href: https://azure.microsoft.com/support/options/
   - name: Customer stories
-    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"
+    href: https://customers.microsoft.com/search?sq="Azure%20Database%20for%20MySQL%20"
   - name: Partners
     href: flexible-server/partners-migration-mysql.md
   - name: Database Migration Guide

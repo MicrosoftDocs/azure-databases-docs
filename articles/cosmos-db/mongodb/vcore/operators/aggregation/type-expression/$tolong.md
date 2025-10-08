@@ -1,27 +1,25 @@
 ---
 title: $toLong
-titleSuffix: Overview of the $toLong operator in Azure Cosmos DB for MongoDB vCore
-description: The $toLong operator in Azure Cosmos DB for MongoDB vCore converts an expression into a Long
+titleSuffix: Overview of the $toLong operator in Azure Cosmos DB for MongoDB (vCore)
+description: The $toLong operator converts an expression into a Long value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 02/24/2025
+ms.topic: language-reference
+ms.date: 09/05/2025
 ---
 
 # $toLong
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 The `$toLong` operator converts a specified value into a Long value.
 
 ## Syntax
 
-The syntax for the `$toLong` operator is:
-
-```mongodb
-{ "$toLong": <expression> }
+```javascript
+{
+    $toLong: < expression >
+}
 ```
 
 ## Parameters
@@ -32,7 +30,7 @@ The syntax for the `$toLong` operator is:
 
 ## Examples
 
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the stores collection.
 
 ```json
 {
@@ -145,59 +143,67 @@ Consider this sample document from the stores collection in the StoreData databa
 ```
 
 ### Example 1: Convert a Double value into a Long value
-A Double value is truncated and returned as a Long value
+
+To convert the value of the latitude field from a Double to a Long value, run a query using the $toLong operator on the field to make the conversion. 
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsLong": {
-            "$toLong": "$location.lat"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsLong: {
+            $toLong: "$location.lat"
         }
     }
 }])
 ```
 
+This query returns the following result:
+
+```json
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalLatitude": 72.8377,
+        "latitudeAsLong": "Long('72')"
+    }
+]
+```
+
 ### Example 2: Convert a String value into a Long value
 
-A String can be converted into a Long value if it was already the string representation of a long value.
-
-In this query, the string "72" can be converted to a long value.
+To convert the string representation of 72 ("72") into a Long value, run a query using the $toLong operator on the string to make the conversion. 
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsLong": {
-            "$toLong": {
-                "$toString": "72"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsLong: {
+            $toLong: {
+                $toString: "72"
             }
         }
     }
-}
-])
+}])
 ```
 
-Both queries return the following result
+This query returns the following result:
 
 ```json
-{
-    "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "originalLatitude": 72.8377,
-    "latitudeAsLong": Long('72')
-}
+[
+    {
+        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
+        "originalLatitude": 72.8377,
+        "latitudeAsLong": Long('72')
+    }
+]
 ```
 
 This table delineates the expected behavior of the $toLong operator based on the data type of the input value.
@@ -214,7 +220,4 @@ This table delineates the expected behavior of the $toLong operator based on the
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$type to determine the BSON type of a value]($type.md)
-- [$toInt to convert a value to an Integer type]($toint.md)
-- [$toDouble to convert a value to an Double type]($todouble.md)
+[!INCLUDE[Related content](../../includes/related-content.md)]

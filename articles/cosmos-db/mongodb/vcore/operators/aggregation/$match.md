@@ -1,24 +1,20 @@
 ---
-  title: $match (aggregation) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $match
+  titleSuffix: Overview of the $match operation in Azure Cosmos DB for MongoDB (vCore)
   description: The $match stage in the aggregation pipeline is used to filter documents that match a specified condition.
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
-  ms.date: 09/11/2024
+  ms.topic: language-reference
+  ms.date: 09/05/2025
 ---
 
-# $match (aggregation)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $match
 
 The `$match` stage in the aggregation pipeline is used to filter documents that match a specified condition. It's similar to the `find` operation but is used within the aggregation pipeline to narrow down the documents that pass through to the next stage. This stage is highly useful for optimizing performance by reducing the number of documents that need to be processed in subsequent stages.
 
 ## Syntax
-
-The basic syntax for the `$match` stage is as follows:
 
 ```javascript
 {
@@ -28,13 +24,16 @@ The basic syntax for the `$match` stage is as follows:
 }
 ```
 
-| | Description |
+## Parameters
+
+| Parameter | Description |
 | --- | --- |
 | **`<query>`**| A standard MongoDB query document that specifies the conditions that the documents must meet.|
 
 ## Examples
 
-Let's understand the usage with the following sample json.
+Consider this sample document from the stores collection.
+
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
@@ -96,7 +95,7 @@ Let's understand the usage with the following sample json.
 
 ### Example 1: Match documents using string comparison
 
-To filter documents where the `_id` is "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5":
+This query retrieves documents where the `_id` is "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5":
 
 ```javascript
 db.stores.aggregate([
@@ -107,12 +106,55 @@ db.stores.aggregate([
     }
 ])
 ```
-This query would return the sample document.
 
+This query returns the following result:
 
-### Example 2: Match documents  using numeric comparison
+```json
+[
+    {
+        "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+        "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+        "location": {
+            "lat": 60.1441,
+            "lon": -141.5012
+        },
+        "staff": {
+            "employeeCount": {
+                "fullTime": 2,
+                "partTime": 0
+            }
+        },
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "DJ Headphones",
+                    "totalSales": 35921
+                },
+                {
+                    "categoryName": "DJ Cables",
+                    "totalSales": 1000
+                }
+            ],
+            "fullSales": 3700
+        },
+        "promotionEvents": [],
+        "tag": [
+            "#ShopLocal",
+            "#NewArrival",
+            "#NewArrival",
+            "#FreeShipping"
+        ],
+        "company": "Lakeshore Retail",
+        "city": "Port Cecile",
+        "lastUpdated": "2025-08-04T05:57:04.619Z",
+        "storeOpeningDate": "2024-09-12T10:21:58.274Z"
+    }
+]
+```
 
-To filter documents where the total sales are greater than $35,000:
+### Example 2: Match documents using numeric comparison
+
+This query retrieves all stores where the total sales are greater than $35,000:
 
 ```javascript
 db.stores.aggregate([
@@ -127,7 +169,8 @@ db.stores.aggregate([
     { $project: { _id: 1, name: 1 } } 
 ])
 ```
-This query would return the following document.
+
+The first three results returned by this query are:
 
 ```json
 [
@@ -148,7 +191,7 @@ This query would return the following document.
 
 ### Example 3: Match documents within sub documents
 
-To filter documents where there's a discount of 15% on DJ Mixers:
+This query retrieves all stores with a discount of 15% on DJ Mixers:
 
 ```javascript
 db.stores.aggregate([
@@ -169,7 +212,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query would return the following document.
+The first three results returned by this query are:
 
 ```json
 [

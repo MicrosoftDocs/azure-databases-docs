@@ -1,5 +1,5 @@
 ---
-title: Best Practices to Migrate Into Flexible Server
+title: Best Practices to Migrate into Flexible Server
 description: Best practices for migration into Azure Database for PostgreSQL, including premigration validation, target server configuration, migration timeline, and migration speed benchmarking.
 author: hariramt
 ms.author: hariramt
@@ -12,15 +12,13 @@ ms.topic: concept-article
 
 # Best practices for seamless migration into Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article explains common pitfalls encountered and best practices to ensure a smooth and successful migration to Azure Database for PostgreSQL.
 
 ## Premigration validation
 
-As a first step in the migration, run the premigration validation before you perform a migration. You can use the **Validate** and **Validate and Migrate** options on the migration **Setup** page. Premigration validation conducts thorough checks against a predefined rule set. The goal is to identify potential problems and provide actionable insights for remedial actions. Keep running premigration validation until it results in a **Succeeded** state. To learn more, see [Premigration validations](concepts-premigration-migration-service.md).
+As a first step in the migration, run the premigration validation before you perform a migration. You can use the **Validate** and **Validate and migrate** options on the migration **Setup** page. Premigration validation conducts thorough checks against a predefined rule set. The goal is to identify potential problems and provide actionable insights for remedial actions. Keep running premigration validation until it results in a **Succeeded** state. To learn more, see [Premigration validations](concepts-premigration-migration-service.md).
 
-## Target Flexible Server configuration
+## Target flexible server configuration
 
 During the initial base copy of data, multiple insert statements are executed on the target, which generates write-ahead logs (WALs). Until these WALs are archived, the logs consume storage at the target and the storage required by the database.
 
@@ -36,7 +34,7 @@ We recommend that you allocate sufficient storage on the flexible server, equiva
 The quickstart to [Create an Azure Database for PostgreSQL flexible server](../../flexible-server/quickstart-create-server.md) is an excellent place to begin. For more information about each server configuration, see [Compute and storage options in Azure Database for PostgreSQL flexible server](../../flexible-server/concepts-compute-storage.md).
 
 > [!IMPORTANT]  
-> Once flexible server is created, make sure to [change the **password_encryption** server parameter on your flexible server](../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initating the migration. This is essential for the existing credentials on single server to work on your flexible server
+> Once flexible server is created, make sure to [change the **password_encryption** server parameter on your flexible server](../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initiating the migration. This is essential for the existing credentials on single server to work on your flexible server
 
 ## Migration timeline
 

@@ -5,7 +5,7 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
-ms.custom: devx-track-python
+ms.custom: devx-track-python, sfi-ropc-blocked
 ms.topic: how-to
 ms.date: 08/26/2021
 ---

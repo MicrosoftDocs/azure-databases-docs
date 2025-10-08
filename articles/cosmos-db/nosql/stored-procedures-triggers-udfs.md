@@ -5,7 +5,7 @@ author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-js
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/26/2021
 ms.author: mjbrown
 ---

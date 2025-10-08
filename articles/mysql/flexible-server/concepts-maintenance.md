@@ -1,13 +1,13 @@
 ---
 title: Scheduled Maintenance
 description: This article describes the scheduled maintenance feature in Azure Database for MySQL.
-author: xboxeer
-ms.author: yuzheng1
+author: SudheeshGH 
+ms.author: sunaray
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Scheduled maintenance in Azure Database for MySQL
@@ -34,7 +34,7 @@ In certain scenarios, such as the need to deploy urgent security fixes or update
 
 <a id="locating-maintenance-details"></a>
 
-### Virtual Canary maintenance (preview)
+### Virtual Canary maintenance
 
 Virtual Canary is an experimental maintenance program that offers early access to updates. It enables customers to test workload compatibility with new Azure Database for MySQL versions and provide feedback on new features.
 
@@ -96,19 +96,15 @@ If a maintenance event is canceled or fails, the system sends you a notification
 
 <a id="near-zero-downtime-maintenance-public-preview"></a>
 
-## Near-zero-downtime maintenance (preview)
+## Near-zero-downtime maintenance
 
 The Azure Database for MySQL *near-zero-downtime maintenance* feature is a groundbreaking development for high-availability servers. This feature is designed to substantially reduce maintenance downtime. This capability is pivotal for businesses that demand high availability and minimal interruption in their database operations.
-
-### Precise downtime expectations
-
-- **Downtime duration**: In most cases, the downtime during maintenance ranges from 10 to 30 seconds.
-- **Additional considerations**: After a failover event, there's an inherent DNS time-to-live (TTL) period of approximately 30 seconds. This period isn't directly controlled by the maintenance process but is a standard part of DNS behavior. So, from a customer's perspective, the total downtime experienced during maintenance could be 40 to 60 seconds.
 
 ### Conditions and limitations
 
 To achieve the optimal performance that this feature offers, note these conditions and limitations:
 
+- **Downtime duration**: In most cases, the downtime during maintenance ranges from 10 to 30 seconds.
 - **Primary keys in all tables**: Ensuring that every table has a primary key is critical. A lack of primary keys can significantly increase replication lag and affect the downtime.
 - **Low workload during maintenance times**: Maintenance periods should coincide with times of low workload on the server to minimize downtime. We encourage you to use the [custom maintenance window](how-to-maintenance-portal.md#custom-managed-maintenance-window-cmw) to schedule maintenance during off-peak hours.
 - **Downtime guarantees**: Although we strive to keep the maintenance downtime as low as possible, we don't guarantee that it will be less than 60 seconds in all circumstances. Various factors, such as high workload or specific server configurations, can increase downtime. In the worst-case scenario, downtime might be similar to that of a standalone server.

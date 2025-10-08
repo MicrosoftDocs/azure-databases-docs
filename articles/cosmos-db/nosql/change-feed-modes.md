@@ -5,7 +5,7 @@ author: jcocchi
 ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.custom: build-2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 4/8/2025
 ---
 # Change feed modes in Azure Cosmos DB
@@ -117,11 +117,11 @@ The `_etag` format is internal and you shouldn't take dependency on it because i
 
 During the preview, the following methods to read the change feed are available for each client SDK:
 
-| **Method to read change feed** | **.NET** | **Java** | **Python** | **Node.js** |
-| --- | --- | --- | --- | --- |
-| [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) | [>= 4.9.1b1](https://pypi.org/project/azure-cosmos/4.9.1b1/) |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions) |
-| [Change feed processor](change-feed-processor.md) | [>= 3.40.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.40.0-preview.0) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No |
-| Azure Functions trigger | No | No | No | No |
+| **Method to read change feed** | **.NET** | **Java** | **Python** | **Node.js** | **Spark** |
+| --- | --- | --- | --- | --- | --- |
+| [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.63.3](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) | [>= 4.9.1b1](https://pypi.org/project/azure-cosmos/4.9.1b1/) |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions) | [>= 4.40.0 for all Spark Runtimes](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-3_2-12/README.md) |
+| [Change feed processor](change-feed-processor.md) | [>= 3.40.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.40.0-preview.0) | [>= 4.63.3](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No | No |
+| Azure Functions trigger | No | No | No | No | No |
 
 > [!NOTE]
 > Regardless of the [connection mode](sdk-connection-modes.md#available-connectivity-modes) that's configured in your application, all requests made with all versions and deletes change feed will use Gateway mode.
@@ -132,7 +132,7 @@ To get started using all versions and deletes change feed mode, navigate to the 
 
 :::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Features page in the Azure portal.":::
 
-Alternately, enable all versions and deletes mode with the REST API by adding `"enableAllVersionsAndDeletesChangeFeed" : true` to the `properties` of your account. This property is available in preview API version `2024-12-01-preview` or later. 
+Alternately, enable all versions and deletes mode on a pre-existing account with the REST API by adding `"enableAllVersionsAndDeletesChangeFeed" : true` to the `properties` of your account. This property is available in preview API version `2024-12-01-preview` or later. Enabling this feature during account creation isn't supported.
 
 ### Parse the response object
 

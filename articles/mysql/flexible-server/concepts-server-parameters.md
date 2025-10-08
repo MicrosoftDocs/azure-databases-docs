@@ -1,13 +1,13 @@
 ---
 title: Server Parameters in Azure Database for MySQL - Flexible Server
 description: This article provides guidelines for configuring server parameters in Azure Database for MySQL - Flexible Server.
-author: code-sidd
-ms.author: sisawant
+author: VandhanaMehta  
+ms.author: vamehta  
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Server parameters in Azure Database for MySQL - Flexible Server
 
@@ -208,7 +208,7 @@ You can set this parameter at the session level by using `init_connect`. For mor
 
 ### time_zone
 
-Upon initial deployment, an Azure Database for MySQL - Flexible Server instance includes system tables for time zone information, but these tables aren't populated. You can populate the time zone tables by calling the `mysql.az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench. You can also call the stored procedure and set the global or session-level time zones by using the [Azure portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or the [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter).
+You can populate the time zone tables with the latest time zone information by calling the `mysql.az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench and then set the global time zones by using the [Azure portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or the [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter). Time zones are automatically loaded during server creation, removing the need for customers to manually execute the `mysql.az_load_timezone` stored procedure afterwards to load the time zone.
 
 ### binlog_expire_logs_seconds
 
@@ -221,6 +221,9 @@ Usually, the binary logs are deleted as soon as the handle is free from the serv
 If you want to persist binary logs for a longer duration, you can configure the `binlog_expire_logs_seconds` parameter. If `binlog_expire_logs_seconds` is set to the default value of `0`, a binary log is deleted as soon as the handle to it's freed. If the value of `binlog_expire_logs_seconds` is greater than `0`, the binary log is deleted after the configured number of seconds.
 
 Azure Database for MySQL - Flexible Server handles managed features, like backup and read replica deletion of binary files, internally. When you replicate the data-out from Azure Database for MySQL - Flexible Server, this parameter needs to be set in the primary to avoid deletion of binary logs before the replica reads from the changes in the primary. If you set `binlog_expire_logs_seconds` to a higher value, the binary logs won't be deleted soon enough. That delay can lead to an increase in the storage billing.
+
+#### Limitations
+Once the accelerated logs feature is enabled, the binlog_expire_logs_seconds server parameter is disregarded entirely, and any configured value will no longer have any effect. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of binlog_expire_logs_seconds for binary log retention. This applies to replica servers as well. 
 
 ### event_scheduler
 

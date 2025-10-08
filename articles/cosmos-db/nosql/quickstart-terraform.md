@@ -8,7 +8,7 @@ ms.custom: devx-track-terraform
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: quickstart
-ms.date: 09/22/2022
+ms.date: 06/11/2025
 ---
 
 # Quickstart - Create an Azure Cosmos DB database and container using Terraform

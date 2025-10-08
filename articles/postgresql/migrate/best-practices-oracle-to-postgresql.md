@@ -8,11 +8,12 @@ ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: best-practice
+ms.collection:
+  - migration
+  - onprem-to-azure
 ---
 
 # Best Practices For Migrations From Oracle To Azure Database for PostgreSQL
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 The following scenarios outline some of the potential challenges which have been encountered during an Oracle to Azure Postgres migration. The recommended solutions can be helpful in overcoming these challenges when planning and executing your own migration(s).
 

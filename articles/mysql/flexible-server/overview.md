@@ -1,8 +1,8 @@
 ---
 title: Azure Database for MySQL - Flexible Server Overview
 description: Learn about the Flexible Server deployment model for Azure Database for MySQL.
-author: SudheeshGH
-ms.author: sunaray
+author: deepthiprasad
+ms.author: deprasa
 ms.reviewer: maghan
 ms.date: 02/20/2025
 ms.service: azure-database-mysql
@@ -222,6 +222,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Canada East | Yes | Yes | No | Yes |
 | Central India | Yes | Yes | Yes | Yes |
 | Central US | Yes | Yes | Yes | Yes |
+| Chile Central | Yes | Yes | Yes | Yes |
 | China East 2 | Yes | Yes | No | Yes |
 | China East 3 | Yes | Yes | No | Yes |
 | China North 2 | Yes | Yes | No | Yes |
@@ -233,6 +234,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | France South | Yes | Yes | No | Yes |
 | Germany West Central | Yes | Yes | Yes | Yes |
 | Germany North | Yes | Yes | No | Yes |
+| Indonesia Central | Yes | Yes | No | No |
 | Israel Central | Yes | Yes | Yes | No |
 | Italy North | Yes | Yes | Yes | No |
 | Japan East | Yes | Yes | Yes | Yes |
@@ -240,6 +242,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Jio India West | Yes | Yes | No | No |
 | Korea Central | Yes | Yes | Yes | Yes |
 | Korea South | Yes | Yes | No | Yes |
+| Malaysia West | Yes | Yes | Yes | Yes |
 | Mexico Central | Yes | Yes | Yes | No |
 | New Zealand North | Yes | Yes | Yes | No |
 | North Central US | Yes | Yes | No | Yes |
@@ -263,7 +266,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | UAE North | Yes | Yes | Yes | Yes |
 | UK South | Yes | Yes | Yes | Yes |
 | UK West | Yes | Yes | No | Yes |
-| USGov Virginia | Yes | Yes | No | No |
+| USGov Virginia | Yes | Yes |Yes| No |
 | USGov Arizona | Yes | Yes | No | Yes |
 | USGov Texas | Yes | Yes | No | Yes |
 | West Central US | Yes | Yes | No | Yes |

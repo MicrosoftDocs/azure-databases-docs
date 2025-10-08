@@ -29,6 +29,10 @@
       href: quickstart-bicep.md
     - name: Create resources - Terraform
       href: quickstart-terraform.md
+    - name: Vector search - Python
+      href: quickstart-python-vector-search.md
+    - name: Vector search - Node.js
+      href: quickstart-nodejs-vector-search.md
 - name: Tutorials
   items:
     - name: Build web applications
@@ -38,7 +42,7 @@
     - name: Build GenAI applications
       items:
         - name: Real-time custom content generation
-          href: ai-advertisement-generation.md
+          href: ai-advertisement-generation.md  
 - name: Concepts
   items:
     - name: Vector database
@@ -51,28 +55,34 @@
       href: oss.md
     - name: First-party MongoDB service
       href: azure-mongo-first-party.md
-    - name: Integrated vector database
+    - name: Generative AI
       items:
-        - name: Data Retrieval
-          items: 
-            - name: Vector Search
-              href: vector-search.md
-            - name: Full-text search
-              href: full-text-search.md
-            - name: Hybrid Search
-              href: hybrid-search.md
-            - name: Exact Nearest Neighbor (ENN) Vector Search
-              href: enn-vector-search.md
-            - name: RAG with Langchain & OpenAI
-              href: rag.md
-        - name: Vector Index Compression
-          items: 
-            - name: Product Quantization
-              href: product-quantization.md
-            - name: Half-Precision Vector Indexing
-              href: half-precision.md
-        - name: Open-source vector databases
-          href: vector-search-ai.md
+        - name: Integrated vector database
+          items:
+            - name: Data Retrieval
+              items: 
+                - name: Vector Search
+                  href: vector-search.md
+                - name: Full-text search
+                  href: full-text-search.md
+                - name: Hybrid Search
+                  href: hybrid-search.md
+                - name: Exact Nearest Neighbor (ENN) Vector Search
+                  href: enn-vector-search.md
+                - name: RAG with Langchain & OpenAI
+                  href: rag.md
+            - name: Vector Index Compression
+              items: 
+                - name: Product Quantization
+                  href: product-quantization.md
+                - name: Half-Precision Vector Indexing
+                  href: half-precision.md
+            - name: Open-source vector databases
+              href: vector-search-ai.md
+        - name: Integrate with AI Tools
+          items:
+            - name: AI Frameworks
+              href: ai-frameworks.md
     - name: MongoDB compatibility and feature support
       href: compatibility-and-feature-support.md
     - name: Managed service compatibility
@@ -150,14 +160,18 @@
           href: how-to-build-go-console-app.md
         - name: Rust
           href: how-to-build-rust-console-app.md
-    - name: Use community tools
+    - name: Connect to the cluster
       items:
         - name: Connect using Studio 3T
           href: how-to-connect-studio-3t.md
         - name: Connect using MongoDB Shell
           href: how-to-connect-mongo-shell.md
+        - name: Connect using Azure Cloud Shell
+          href: how-to-connect-cloud-shell.md
         - name: Connect using Visual Studio Code
           href: ../../visual-studio-code-extension.md?pivots=api-mongodb&context=/azure/cosmos-db/mongodb/vcore/context/context
+        - name: Configure firewall
+          href: how-to-configure-firewall.md
     - name: Develop applications
       items:
         - name: Create transactions
@@ -184,6 +198,20 @@
         href: how-to-upgrade-cluster.md
       - name: Restore cluster
         href: how-to-restore-cluster.md
+    - name: Security and data access
+      items:
+      - name: Manage private access
+        href: how-to-private-link.md
+      - name: Manage public access
+        href: how-to-public-access.md
+      - name: Configure Microsoft Entra ID authentication
+        href: how-to-configure-entra-authentication.md
+      - name: Create secondary users
+        href: secondary-users.md
+      - name: Configure customer-managed key (CMK) encryption
+        href: how-to-data-encryption.md
+      - name: Troubleshoot CMK data encryption
+        href: how-to-database-encryption-troubleshoot.md
     - name: Replication
       items:
       - name: Manage replication
@@ -200,16 +228,6 @@
         href: how-to-manage-alerts.md
       - name: Monitor diagnostics logs
         href: how-to-monitor-diagnostics-logs.md
-    - name: Security and data access
-      items:
-      - name: Configure Entra ID authentication
-        href: how-to-configure-entra-authentication.md
-      - name: Manage private access
-        href: how-to-private-link.md
-      - name: Manage public access
-        href: how-to-public-access.md
-      - name: Create secondary users
-        href: secondary-users.md
 - name: Reference
   items:
     - name: Azure CLI
@@ -217,7 +235,7 @@
     - name: Java
       href: /java/api/overview/azure/resourcemanager-mongocluster-readme
     - name: .NET
-      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster
+      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster.resourceversions
     - name: Node.js
       href: /javascript/api/overview/azure/mongo-cluster
     - name: Python
@@ -232,6 +250,8 @@
       href: release-notes.md
     - name: Troubleshoot common issues
       href: troubleshoot-common-issues.md
+    - name: IP addresses
+      href: reference-ip-addresses.md
 - name: Samples
   items:
     - name: Solution accelerators

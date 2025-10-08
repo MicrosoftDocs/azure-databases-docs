@@ -10,13 +10,11 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Sharding models on elastic clusters in Azure Database for PostgreSQL flexible server (preview)
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Sharding models on elastic clusters in Azure Database for PostgreSQL  (preview)
 
 Sharding is a technique used in database systems and distributed computing to horizontally partition data across multiple servers or nodes. It involves breaking up a large database or dataset into smaller, more manageable parts called Shards. A shard contains a subset of the data, and together, shards form the complete dataset.
 
-Elastic clusters on Azure Database for PostgreSQL Flexible Server offer two types of data sharding: row-based and schema-based. Each option comes with its own [tradeoffs](#sharding-tradeoffs), allowing you to choose the approach that best aligns with your application's requirements.
+Elastic clusters on Azure Database for PostgreSQL flexible server instances offer two types of data sharding: row-based and schema-based. Each option comes with its own [tradeoffs](#sharding-tradeoffs), allowing you to choose the approach that best aligns with your application's requirements.
 
 ## Row-based sharding
 
@@ -69,5 +67,5 @@ Drawbacks:
 ## Related content
 
 - [Overview of elastic clusters](concepts-elastic-clusters.md).
-- [Table types on elastic clusters in Azure Database for PostgreSQL flexible server](concepts-elastic-clusters-table-types.md).
+- [Table types on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-table-types.md).
 - [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).

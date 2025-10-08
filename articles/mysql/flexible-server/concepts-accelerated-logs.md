@@ -1,8 +1,8 @@
 ---
 title: Accelerated Logs Feature in Azure Database for MySQL - Flexible Server
 description: This article describes the accelerated logs feature in Azure Database for MySQL - Flexible Server and its benefits for high-performance workloads.
-author: code-sidd
-ms.author: sisawant
+author: VandhanaMehta  
+ms.author: vamehta  
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
@@ -18,7 +18,18 @@ ms.custom:
 
 # Accelerated logs in Azure Database for MySQL
 
-Azure Database for MySQL - Flexible Server includes a feature called *accelerated logs*, which is now generally available for servers that use the [Azure Database for MySQL - Flexible Server service tiers](concepts-service-tiers-storage.md). The feature boosts server performance by optimizing operations related to transactional logs. When you enable this feature, the server can automatically store transactional logs on faster storage to enhance server throughput without incurring any extra cost.
+The accelerated logs feature is a performance optimization feature designed to improve throughput and reduce transaction latency in [Azure Database for MySQL – Flexible Server](./concepts-service-tiers-storage.md).
+The feature boosts server performance by optimizing operations related to transactional logs. When you enable this feature, the server can automatically store transactional logs on faster storage to enhance server throughput.
+
+The following compute tiers support accelerated logs:
+
+| Service Tier       | Availability | Cost               |
+|:-------------------|:-------------|:-------------------|
+| Business Critical  | Available    | No additional cost |
+| General Purpose    | Available    | Additional cost applies. [See pricing details](https://azure.microsoft.com/pricing/details/mysql/)    |
+
+> [!NOTE]
+> Accelerated Logs now support the **General Purpose** service tier, so a broader range of workloads can benefit from enhanced performance capabilities.
 
 This article describes the benefits and limitations of accelerated logs. It also outlines the steps to enable and disable the feature.
 
@@ -34,20 +45,24 @@ Benefits of accelerated logs include:
 - **Cost efficiency**: Accelerated logs offer a cost-effective solution for mission-critical workloads by providing enhanced performance at no extra expense.
 - **Enhanced scalability**: Accelerated logs can accommodate growing workloads for applications that need to scale easily while maintaining high performance. Applications and services on the Business Critical service tier benefit from more responsive interactions and reduced query wait times.
 
-> [!NOTE]  
-> If [zone-redundant high availability](concepts-high-availability.md) is enabled for your server, expect additional latency due to the cross-zonal copy of data. We recommend that you conduct your own benchmark tests for an accurate performance assessment.
+> [!NOTE]
+>  - If you enable [zone-redundant high availability](concepts-high-availability.md) for your server, expect additional latency due to the cross-zonal copy of data. We recommend that you conduct your own benchmark tests for an accurate performance assessment.
+> 
+>  - You can't enable accelerated logs without an availability zone allocated to the server. To enable accelerated logs for such servers, please raise a support case. 
 
 ## Limitations
 
-- Once the accelerated logs feature is enabled, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value will no longer have any effect**. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of `binlog_expire_logs_seconds` for binary log retention.
+- When you enable the accelerated logs feature, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value no longer has any effect**. However, if you disable the accelerated logs feature, the server once again adheres to the configured value of `binlog_expire_logs_seconds` for binary log retention. This change also applies to replica servers. 
 
-- [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for a accelerated logs enabled server and can not be disabled.
+- [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for a server with accelerated logs and can't be disabled.
+
+- If you attempt to create a replica server in a region where **accelerated logs aren't supported**, and the **source server has accelerated logs enabled**, the replica provisioning **fails**. To proceed, disable accelerated logs on the source server and then retry provisioning the read replica.
 
 ## Availability of accelerated logs by region
 
 The accelerated logs feature is currently available only in the following regions:
 
-  - Australia East
+- Australia East
   - Brazil South
   - Canada Central
   - Central India
@@ -88,11 +103,11 @@ You can enable the feature during creation of a flexible server or on an existin
 
 1. In the [Azure portal](https://portal.azure.com/), select **Flexible Server**, and then select **Create**.
 
-1. Fill in values for **Subscription**, **Resource group**, **Server name**, **Region**, and other fields. For details, see the [quickstart for server creation](quickstart-create-server-portal.md).
+1. Enter values for **Subscription**, **Resource group**, **Server name**, **Region**, and other fields. For details, see the [quickstart for server creation](quickstart-create-server-portal.md).
 
-1. Select the **Configure server** option to change the default compute and storage.
+1. Select the **Configure server** option to change the default compute and storage settings.
 
-1. In the **Storage** section, select the **Accelerated logs** checkbox to enable the feature. The checkbox is visible only after you select the server from the **Business Critical** compute tier.
+1. In the **Storage** section, select the **Accelerated logs** checkbox to enable the feature. The checkbox is available for **Business Critical** and **General Purpose** compute tier.
 
     :::image type="content" source="media/concepts-accelerated-logs/accelerated-logs-mysql-portal-create.png" alt-text="Screenshot that shows the checkbox for enabling accelerated logs during server creation." lightbox="media/concepts-accelerated-logs/accelerated-logs-mysql-portal-create.png":::
 
@@ -101,7 +116,7 @@ You can enable the feature during creation of a flexible server or on an existin
 ### Enable accelerated logs on your existing server
 
 > [!NOTE]  
-> Your server will restart during the deployment process, so ensure that you either pause your workload or schedule it for a time that aligns with your application maintenance or that's off-hours.
+> Your server restarts during the deployment process, so ensure that you either pause your workload or schedule it for a time that aligns with your application maintenance or that's off-hours.
 
 1. Go to the [Azure portal](https://portal.azure.com/).
 
@@ -114,7 +129,7 @@ You can enable the feature during creation of a flexible server or on an existin
 ## Disable accelerated logs
 
 > [!NOTE]  
-> Your server will restart during the deployment process, so ensure that you either pause your workload or schedule it for a time that aligns with your application maintenance or that's off-hours.
+> Your server restarts during the deployment process, so make sure that you either pause your workload or schedule it for a time that aligns with your application maintenance or that's during off-hours.
 
 1. Go to the [Azure portal](https://portal.azure.com/).
 

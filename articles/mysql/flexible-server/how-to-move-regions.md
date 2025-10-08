@@ -9,7 +9,8 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
-  - subject-moving-resources
+- subject-moving-resources
+- sfi-image-nochange
 ---
 
 # Move an Azure Database for MySQL - Flexible Server instance to another region by using the Azure portal
