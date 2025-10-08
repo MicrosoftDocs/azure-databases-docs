@@ -19,7 +19,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: September 2025
 - General availability
-    - [Near zero downtime scaling](concepts-storage-premium-ssd.md#near-zero-downtime-scaling) for high availability (HA) enabled servers.
+    - [Near zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling) for high availability (HA) enabled servers.
 - Public preview of [PostgreSQL 18](concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
 - Support for latest [minor versions](concepts-supported-versions.md) 17.6, 16.10, 15.14, 14.19 and 13.22. <sup>$</sup>
 
