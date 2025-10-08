@@ -2,7 +2,7 @@
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 10/06/2025
+ms.date: 10/08/2025
 ms.service: azure-database-migration-service
 ms.topic: include
 ms.collection:
@@ -10,12 +10,31 @@ ms.collection:
 ---
 
 - [Download and install Azure Data Studio](/azure-data-studio/download-azure-data-studio).
+
 - [Install the Azure SQL Migration extension](/azure-data-studio/extensions/azure-sql-migration-extension) from Azure Data Studio Marketplace.
+
 - Have an Azure account that's assigned to one of the following built-in roles:
 
   - Contributor for the target instance of Azure SQL Managed Instance and for the storage account where you upload your database backup files from a Server Message Block (SMB) network share
+
   - Reader role for the Azure resource groups that contain the target instance of Azure SQL Managed Instance or your Azure Storage account
+
   - Owner or Contributor role for the Azure subscription (required if you create a new Database Migration Service instance)
+
+  - **Using Managed Identity**: Azure Database Migration Service supports the Managed identity for the Azure SQL Managed Instance migrations through the Azure portal only. Azure Database Migration Service uses this Managed identity to read the backups files from the storage blob container. To assign the permissions or role to the Managed identity, follow these steps:
+
+    1. Identify the target instance of Azure SQL Managed Instance's associated managed identity.
+
+       Once you start the migration to Azure SQL Managed instance using Azure Database Migration service, when you select the target instance of Azure SQL Managed Instance, its associated managed identity is shown. Otherwise, you can navigate to the Azure SQL Managed Instance pane, and select **Security** > **Identity**.
+
+       - If the user assigned managed identity is added, the associated managed identity used is the same as the primary identity you selected.
+
+       - If only the system assigned managed identity is enabled, the associated managed identity used is the same as Azure SQL Managed Instance.
+
+    1. In the Azure portal, go to **Storage account** (used for the migration for keeping backup files), and navigate to **IAM roles** > **Assign role**, and assign Storage Blob Data Reader to the associated managed identity.
+
+       > [!NOTE]  
+       > When migrating to SQL Managed Instance via **Azure portal** using **Managed Identity**, make sure the signed in user has **Storage Blob Data Reader** access on the storage account. This permission is needed to list folders and files in the blob container during migration setup via Azure portal. For more information, see [DMS - Support for Managed Identity for Azure SQL Managed Instance migration](https://techcommunity.microsoft.com/blog/microsoftdatamigration/dms---support-for-managed-identity-for-azure-sql-managed-instance-migration/4411274).
 
   As an alternative to using one of these built-in roles, you can [assign a custom role](/data-migration/sql-server/database/custom-roles).
 
