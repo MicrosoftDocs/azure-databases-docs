@@ -425,6 +425,14 @@ Note: This query should be run in context of master DB
  az extension update -n datamigration
 ```
 
+## Error code: Blob container selection error: Error listing the contents of the container: This request is not authorized to perform this operation using this permission.
+
+- **Message**: `Blob container selection error: Error listing the contents of the container: This request is not authorized to perform this operation using this permission.`
+
+- **Cause**: While migrating to SQL Managed Instance via **Azure portal** using **Managed Identity**, if the signed in user does not have **Storage Blob Data Reader** access on the storage account, it fails with the previous message.
+
+- **Recommendation**: To resolve this issue, make sure the signed in user has **Storage Blob Data Reader** access on the storage account. This permission is needed to list folders and files in the blob container during migration setup via Azure portal. For more information, see [DMS - Support for Managed Identity for Azure SQL Managed Instance migration](https://techcommunity.microsoft.com/blog/microsoftdatamigration/dms---support-for-managed-identity-for-azure-sql-managed-instance-migration/4411274).
+
 ## Azure Database Migration Service Naming Rules
 
 If your DMS service failed with "Error: Service name 'x_y_z' is not valid", then you need to follow the Azure Database Migration Service Naming Rules. As Azure Database Migration Service uses Azure Data factory for its compute, it follows the exact same naming rules as mentioned in the [naming rules](/azure/data-factory/naming-rules).
