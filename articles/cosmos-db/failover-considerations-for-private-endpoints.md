@@ -27,7 +27,7 @@ The two private endpoints cannot use the same Private DNS Zone for the same endp
 
 For DNS resolution, each data center would configure conditional forwarding to one of the two DNS resolver server sets, ensuring that it resolves to the nearest network location for optimal connectivity.
 
-## Architecture Concepts
+## Architecture concepts
 Azure Cosmos DB supports **multiple private endpoints per account**, enabling you to create regionally distributed endpoints across different virtual networks. For instance, you could have an Azure Cosmos DB private endpoint in both each region, each independently serving traffic from its respective virtual network.
 
 In traditional hub-and-spoke topologies, this setup is less common due to Private DNS Zone limitations—each zone can only contain one record per DNS name. Once you link a private endpoint to a Private DNS Zone, any additional endpoints in other regions must use **separate Private DNS Zones** to avoid DNS conflicts.
@@ -49,7 +49,7 @@ This topology supports the following scenarios, each with its own DNS failover c
 | [Scenario 3 - Whole Region Outage](#scenario-3-whole-region-outage) | A major service outage affects multiple services, requiring both Azure Cosmos DB and other services to fail over. | Conditional forwarders from on-premises DNS need to be updated to the secondary region. |
 | [Scenario 4 – Multi-write configuration](#scenario-4-multi-write-configuration) | Azure Cosmos DB and other services operate in an active/active configuration across multiple regions.| No changes required |
 
-### Scenario 1: Azure Cosmos DB Failover
+### Scenario 1: Azure Cosmos DB failover
 
 In this scenario, an issue with the Azure Cosmos DB account requires it to fail over to a secondary region. Since Azure Cosmos DB is designed for high availability, regional outages are uncommon, but they should still be planned for.
 
@@ -60,7 +60,7 @@ After failover (offline region) – the service will operate as illustrated:
 
 Once the primary region becomes healthy again, the Azure Cosmos DB account is failed back, restoring the original write region without requiring any changes to the network configuration.
 
-### Scenario 2: Other Services Failover
+### Scenario 2: Other services failover
 
 In this scenario, the issue lies not with the Azure Cosmos DB account, but with the services that connect to it, such as application services, virtual machines, or containers. These services need to be failed over to a secondary region following their respective disaster recovery plans.
 
@@ -76,7 +76,7 @@ After the failover, services in the secondary region will function as shown:
 
 Once the primary region is restored, services can be failed back, and any temporary DNS changes for on-premises systems can be reverted.
 
-### Scenario 3: Whole Region Outage
+### Scenario 3: Whole region outage
 
 In this scenario, there is a regional outage severe enough that both the Azure Cosmos DB account and the dependent application services must be failed over to a secondary region.
 
@@ -104,7 +104,7 @@ When the primary region is restored, application services can fail back if desir
 
 :::image type="content" source="media/failover-considerations-for-private-endpoints/scenario-4-multi-write-configuration.png" alt-text="Diagram that shows the architecture for multi-write configuration with Azure Cosmos DB private endpoints." lightbox="media/failover-considerations-for-private-endpoints/scenario-4-multi-write-configuration.png":::
 
-## Related Content
+## Related content
 - [Azure Cosmos DB private endpoints overview](how-to-configure-private-endpoints.md)
 - [How to manage Azure Cosmos DB account failover](how-to-manage-database-account.yml)
 - [Azure Cosmos DB private endpoint DNS integration](https://learn.microsoft.com/azure/private-link/private-endpoint-dns-integration)
