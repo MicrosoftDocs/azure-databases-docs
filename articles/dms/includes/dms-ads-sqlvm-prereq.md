@@ -2,7 +2,7 @@
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 10/06/2025
+ms.date: 10/09/2025
 ms.service: azure-database-migration-service
 ms.topic: include
 ms.collection:
@@ -15,14 +15,16 @@ ms.collection:
 
 - Have an Azure account that's assigned to one of the following built-in roles:
 
-  - Contributor for the target instance of SQL Server on Azure Virtual Machines and for the storage account where you upload your database backup files from a Server Message Block (SMB) network share
-  - Reader role for the Azure resource group that contains the target instance of SQL Server on Azure Virtual Machines or for your Azure Storage account
-  - Owner or Contributor role for the Azure subscription
-
-  As an alternative to using one of these built-in roles, you can [assign a custom role](/data-migration/sql-server/database/custom-roles).
-
   > [!IMPORTANT]  
   > An Azure account is required only when you configure the migration steps. An Azure account isn't required for the assessment or to view Azure recommendations in the migration wizard in Azure Data Studio.
+
+  - Contributor for the target instance of SQL Server on Azure Virtual Machines and for the storage account where you upload your database backup files from a Server Message Block (SMB) network share.
+  - Reader role for the Azure resource group that contains the target instance of SQL Server on Azure Virtual Machines or for your Azure Storage account.
+  - Owner or Contributor role for the Azure subscription.
+  - As an alternative to using one of these built-in roles, you can [assign a custom role](/data-migration/sql-server/virtual-machines/custom-roles).
+
+  > [!NOTE]  
+  > When migrating to Azure SQL Managed Instance or Azure SQL Virtual Machine via **Azure portal**, make sure the signed in user has **Storage Blob Data Reader** access on the storage account. This permission is needed to list folders and files in the blob container during migration setup via Azure portal only.
 
 - Create a target instance of [SQL Server on Azure Virtual Machines](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal).
 
