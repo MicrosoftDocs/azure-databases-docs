@@ -20,7 +20,7 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. To learn more, see [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server instance. To learn more, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 - An Azure Data Factory Linked Service [connected to Azure Database for PostgreSQL](how-to-connect-to-data-factory-private-endpoint.md).
 

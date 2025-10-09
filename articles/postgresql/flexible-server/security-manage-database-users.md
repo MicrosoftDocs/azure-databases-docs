@@ -20,7 +20,7 @@ Suppose you want to learn how to create and manage Azure subscription users and 
 
 ## The server admin account
 
-When you first created your Azure Database for PostgreSQL flexible server instance, you provided a server admin username and password. For more information, see [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md) to see the step-by-step approach. Since the server admin user name is a custom name, you can locate the chosen server admin user name from the Azure portal.
+When you first created your Azure Database for PostgreSQL flexible server instance, you provided a server admin username and password. For more information, see [Create an Azure Database for PostgreSQL](quickstart-create-server.md) to see the step-by-step approach. Since the server admin user name is a custom name, you can locate the chosen server admin user name from the Azure portal.
 
 The Azure Database for PostgreSQL flexible server instance is created with the three default roles defined. You can see these roles by running the command: `SELECT rolname FROM pg_roles;`
 
@@ -30,19 +30,19 @@ The Azure Database for PostgreSQL flexible server instance is created with the t
 
 Your server admin user is a member of the azure_pg_admin role. However, the server admin account isn't part of the azuresu role. Since this service is a managed PaaS service, only Microsoft is part of the super user role.
 
-The PostgreSQL engine uses privileges to control access to database objects, as discussed in the [PostgreSQL product documentation](https://www.postgresql.org/docs/current/static/sql-createrole.html). In Azure Database for PostgreSQL flexible server, the server admin user is granted these privileges:
+The PostgreSQL engine uses privileges to control access to database objects, as discussed in the [PostgreSQL product documentation](https://www.postgresql.org/docs/current/static/sql-createrole.html). In Azure Database for PostgreSQL, the server admin user is granted these privileges:
 
 - Sign in, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE
 
 The server admin user account can be used to create more users and grant those users into the azure_pg_admin role. Also, the server admin account can be used to create less privileged users and roles that have access to individual databases and schemas.
 
-## How to create more admin users in Azure Database for PostgreSQL flexible server
+## How to create more admin users in Azure Database for PostgreSQL 
 
 1. Get the connection information and admin user name.
 You need the full server name and admin sign-in credentials to connect to your Azure Database for PostgreSQL flexible server instance. You can easily find the server name and sign-in information from the server **Overview** page or the **Properties** page in the Azure portal.
 
 1. Use the admin account and password to connect to your Azure Database for PostgreSQL flexible server instance. Use your preferred client tool, such as pgAdmin or psql.
-If you're unsure of how to connect, see [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
+If you're unsure of how to connect, see [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
 
 1. Edit and run the following SQL code. Replace your new user name with the placeholder value <new_user>, and replace the placeholder password with your own strong password.
 
@@ -52,7 +52,7 @@ If you're unsure of how to connect, see [Create an Azure Database for PostgreSQL
     GRANT azure_pg_admin TO <new_user>;
     ```
     
-## How to create database users in Azure Database for PostgreSQL flexible server
+## How to create database users in Azure Database for PostgreSQL 
 
 1. Get the connection information and admin user name.
 You need the full server name and admin sign-in credentials to connect to your Azure Database for PostgreSQL flexible server instance. You can easily find the server name and sign-in information from the server **Overview** page or the **Properties** page in the Azure portal.
@@ -93,7 +93,7 @@ You need the full server name and admin sign-in credentials to connect to your A
 
 ## Related content
 
-- [Create and manage Azure Database for PostgreSQL flexible server firewall rules by using the Azure portal](how-to-manage-firewall-portal.md)
+- [Networking](how-to-manage-firewall-portal.md)
 - [Azure CLI](how-to-manage-firewall-cli.md)
 - [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html)
 - [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html)

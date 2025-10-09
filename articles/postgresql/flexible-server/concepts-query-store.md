@@ -1,6 +1,6 @@
 ---
 title: Query store
-description: This article describes the query store feature in Azure Database for PostgreSQL flexible server.
+description: This article describes the query store feature for Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -11,11 +11,10 @@ ms.custom:
   - ignite-2024
 ms.topic: how-to
 ---
+
 # Query store
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-Query store is a feature in Azure Database for PostgreSQL flexible server that provides a way to track query performance over time. Query store simplifies the troubleshooting of performance issues by helping you quickly find the longest running and most resource-intensive queries. Query store automatically captures a history of queries and runtime statistics, and retains them for your review. It slices the data by time so that you can see temporal usage patterns. Data for all users, databases, and queries is stored in a database named `azure_sys` in the Azure Database for PostgreSQL flexible server instance.
+Query store is a feature in an Azure Database for PostgreSQL flexible server instance that provides a way to track query performance over time. Query store simplifies the troubleshooting of performance issues by helping you quickly find the longest running and most resource-intensive queries. Query store automatically captures a history of queries and runtime statistics, and retains them for your review. It slices the data by time so that you can see temporal usage patterns. Data for all users, databases, and queries is stored in a database named `azure_sys` in the Azure Database for PostgreSQL flexible server instance.
 
 ## Enable query store
 
@@ -282,7 +281,7 @@ This function discards all statistics gathered so far by query store. It discard
 This function discards all statistics gathered in-memory by query store (that is, the data in memory that isn't flushed yet to the on disk tables supporting persistence of collected data for query store). Only members of the server admin role (`azure_pg_admin`) can execute this function.
 
 ### Read-only mode
-When an Azure Database for PostgreSQL flexible server is in read-only mode, such as when the `default_transaction_read_only` parameter is set to `on`, or if read-only mode is [automatically enabled due to reaching storage capacity](concepts-limits.md#storage), query store doesn't capture any data.
+When an Azure Database for PostgreSQL flexible server instance is in read-only mode, such as when the `default_transaction_read_only` parameter is set to `on`, or if read-only mode is [automatically enabled due to reaching storage capacity](concepts-limits.md#storage), query store doesn't capture any data.
 
 Enabling query store on a server that has [read replicas](concepts-read-replicas.md), doesn't automatically enable query store on any of the read replicas. Even if you enable it on any of the read replicas, query store doesn't record the queries executed on any read replicas, because they operate in read-only mode until you promote them to primary.
 

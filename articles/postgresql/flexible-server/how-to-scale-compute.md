@@ -8,12 +8,10 @@ ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to scale the compute of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to scale the compute of an Azure Database for PostgreSQL.
 ---
 
 # Scale compute
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to perform scaling operations for the compute of an Azure Database for PostgreSQL flexible server.
 

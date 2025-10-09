@@ -165,7 +165,7 @@ This sample creates a new instance of the `CosmosClient` type and authenticates 
 const credential = new DefaultAzureCredential();
 
 const client = new CosmosClient({
-    '<azure-cosmos-db-nosql-account-endpoint>',
+    endpoint: '<azure-cosmos-db-nosql-account-endpoint>',
     aadCredentials: credential
 });
 ```
@@ -178,7 +178,7 @@ const client = new CosmosClient({
 const credential: TokenCredential = new DefaultAzureCredential();
 
 const client = new CosmosClient({
-    '<azure-cosmos-db-nosql-account-endpoint>',
+    endpoint: '<azure-cosmos-db-nosql-account-endpoint>',
     aadCredentials: credential
 });
 ```

@@ -19,6 +19,9 @@ By default, Azure Cosmos DB spreads provisioned throughput evenly across all phy
 
 For example, if you partition data by `StoreId` in a retail application, some stores could have higher activity than others. If you notice frequent rate limiting (429 errors) for those busy stores, redistributing throughput allows you to allocate more resources to the hot partitions, improving performance without increasing overall throughput.
 
+> [!NOTE]
+> Currently, by default, throughput offer policies are set to "Equal". After redistributing throughput using this feature, the policy will now be set to "Custom" which only lets you change your throughput offer via this API. Changing throughput via Azure Portal will be blocked, but customers can change the policy back to "Equal" (see below) to avoid this. 
+
 ## Prerequisites
 
 - An existing Azure Cosmos DB account
@@ -383,6 +386,9 @@ Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput @collectionParams
 
 After you finish redistributing throughput, check the **PhysicalPartitionThroughput** metric in Azure Monitor. Split by the **PhysicalPartitionId** dimension to see how many RU/s each physical partition has. If needed, reset the RU/s per physical partition to evenly distribute throughput across all physical partitions.
 
+> [!IMPORTANT]
+> After throughput has been redistributed, offers can only be changed with the same redistribute command. To evenly distribute throughput across all partitions, use the command below.
+
 ::: zone pivot="azure-cli"
 
 ### [API for NoSQL](#tab/nosql)
@@ -494,12 +500,9 @@ While this feature is in previe, your Azure Cosmos DB account must meet all the 
 
 - Your Azure Cosmos DB account uses API for NoSQL or API for MongoDB.
 
-    - If you're using API for MongoDB, the version must be greater than or equal to 3.6.
-
+  - If you're using API for MongoDB, the version must be greater than or equal to 3.6.
+    
 - Your Azure Cosmos DB account uses provisioned throughput (manual or autoscale). Distribution of throughput across partitions doesn't apply to serverless accounts.
-
-> [!IMPORTANT]
-> Shared throughput databases are currently not supported.
 
 ## Related content
 

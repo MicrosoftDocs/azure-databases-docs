@@ -1,5 +1,7 @@
 - name: $expr
   href: $expr.md
+- name: $jsonSchema
+  href: $jsonschema.md
 - name: $mod
   href: $mod.md
 - name: $regex

@@ -666,7 +666,9 @@ This guide demonstrates how to create a vector index, add documents that have ve
 - [.NET RAG pattern retail reference solution](https://github.com/Azure/Vector-Search-AI-Assistant-MongoDBvCore)
 - [C# RAG pattern - Integrate OpenAI Services with Cosmos](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
 - [Python RAG pattern - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore)
-- [Python notebook tutorial - LangChain integrations](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
+- [Python notebook tutorial - Vector database integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
+- [Python notebook tutorial - LLM Caching integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
+- [Python - LlamaIndex integration](https://developers.llamaindex.ai/python/examples/vector_stores/azurecosmosdbmongodbvcoredemo/)
 - [Python - Semantic Kernel memory integration](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory_stores/azure_cosmosdb)
 
 ## Next step

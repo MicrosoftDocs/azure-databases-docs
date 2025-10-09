@@ -15,8 +15,6 @@ ms.collection:
 
 # Best Practices For Migrations From Oracle To Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 The following scenarios outline some of the potential challenges which have been encountered during an Oracle to Azure Postgres migration. The recommended solutions can be helpful in overcoming these challenges when planning and executing your own migration(s).
 
 **Scenario:** Two separate, low-latency, high-throughput, client applications were discovered independently operating upon the same database. Each application was inadvertently bumping the other's cached queries out of the buffers. The shared load and combined resource contention created a situation wherein the database's shared buffers were being flushed too frequently, resulting in degraded performance across both systems.

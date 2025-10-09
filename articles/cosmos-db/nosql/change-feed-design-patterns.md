@@ -72,7 +72,7 @@ For example, the change feed lets you perform the following tasks efficiently:
 
 - Implement application-level data tiering and archival. For example, store "hot data" in Azure Cosmos DB and age out "cold data" to other storage systems like [Azure Blob Storage](/azure/storage/common/storage-introduction).
 
-When you have to [denormalize data across partitions and containers](model-partition-example.md#v2-introducing-denormalization-to-optimize-read-queries), you can read from your container's change feed as a source for this data replication. Real-time data replication with the change feed guarantees only eventual consistency. You can [monitor how far the change feed processor lags behind](how-to-use-change-feed-estimator.md) in processing changes in your Azure Cosmos DB container.
+When you have to [denormalize data across partitions and containers](model-partition-example.md#v2-introduce-denormalization-to-optimize-read-queries), you can read from your container's change feed as a source for this data replication. Real-time data replication with the change feed guarantees only eventual consistency. You can [monitor how far the change feed processor lags behind](how-to-use-change-feed-estimator.md) in processing changes in your Azure Cosmos DB container.
 
 ## Event sourcing
 

@@ -1,6 +1,6 @@
 ---
 title: Configure intelligent tuning - Azure CLI
-description: This article describes how to configure intelligent tuning in Azure Database for PostgreSQL flexible server by using the Azure CLI.
+description: This article describes how to configure intelligent tuning in an Azure Database for PostgreSQL flexible server instance by using the Azure CLI.
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
@@ -13,9 +13,7 @@ ms.custom:
 ms.devlang: azurecli
 ---
 
-# Configure intelligent tuning for Azure Database for PostgreSQL flexible server by using the Azure CLI
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Configure intelligent tuning for Azure Database for PostgreSQL  by using the Azure CLI
 
 You can verify and update the intelligent tuning configuration for an Azure Database for PostgreSQL flexible server instance by using the Azure CLI.
 
@@ -121,4 +119,4 @@ When you're choosing values from the `intelligent_tuning.metric_targets` server 
 
 ## Related content
 
-- [Perform intelligent tuning in Azure Database for PostgreSQL flexible server](concepts-intelligent-tuning.md).
+- [Perform intelligent tuning in Azure Database for PostgreSQL](concepts-intelligent-tuning.md).

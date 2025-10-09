@@ -250,8 +250,6 @@ Looking at the performance issues we faced in the previous section, we can ident
 
 Let's resolve each of those problems, starting with the first one.
 
-<a id="v2-introducing-denormalization-to-optimize-read-queries">
-
 ## V2: Introduce denormalization to optimize read queries
 
 The reason why we have to issue more requests in some cases is because the results of the initial request don't contain all the data we need to return. Denormalizing data solves this kind of issue across our data set when working with a nonrelational data store like Azure Cosmos DB.

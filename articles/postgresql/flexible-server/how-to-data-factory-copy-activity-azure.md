@@ -20,7 +20,7 @@ The next section has a step-by-step guide on how to manually create a copy activ
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. For more information, see [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server instance. For more information, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 - An Azure Data Factory Linked Service [connected to Azure Database for PostgreSQL](how-to-connect-to-data-factory-private-endpoint.md).
 - An [Azure Data Factory Dataset](/azure/data-factory/concepts-datasets-linked-services?tabs=data-factory) with your Azure Database for PostgreSQL.

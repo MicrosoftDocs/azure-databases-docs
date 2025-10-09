@@ -1,6 +1,6 @@
 ---
 title: Enable deletion protection
-description: This article describes how to enable deletion protection in Azure Database for PostgreSQL Flexible Server using Azure Resource Manager locks.
+description: This article describes how to enable deletion protection in an Azure Database for PostgreSQL flexible server instance using Azure Resource Manager locks.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -8,14 +8,12 @@ ms.date: 09/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to prevent accidental deletion of an Azure Database for PostgreSQL Flexible Server instance by enabling a CanNotDelete lock.
+# customer intent: As a user, I want to learn how to prevent accidental deletion of an Azure Database for PostgreSQL flexible server instance by enabling a CanNotDelete lock.
 ---
 
-# Protect Azure Database for PostgreSQL Flexible Server with Resource Locks
+# Protect Azure Database for PostgreSQL with Resource Locks
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-You can apply **management locks**—specifically **CanNotDelete** or **ReadOnly**—to Azure Database for PostgreSQL Flexible Server instances to safeguard them from accidental deletion or modifications. These locks operate at the control plane and override user permissions, offering an additional layer of resource protection.
+You can apply **management locks**—specifically **CanNotDelete** or **ReadOnly**—to Azure Database for PostgreSQL flexible server instances to safeguard them from accidental deletion or modifications. These locks operate at the control plane and override user permissions, offering an additional layer of resource protection.
 
 ## Lock Types
 | Lock Type      | Description                                                                 |
@@ -24,7 +22,7 @@ You can apply **management locks**—specifically **CanNotDelete** or **ReadOnly
 | **ReadOnly**      | Users can only read; they cannot update or delete the server. Similar to the *Reader* role. |
 
 ## Prerequisites
-- An existing Azure Database for PostgreSQL Flexible Server instance within your subscription.
+- An existing Azure Database for PostgreSQL flexible server instance within your subscription.
 
 ## Lock Behavior & Inheritance
 - Locks can be applied at the **subscription**, **resource group**, or **server** level.  
@@ -85,7 +83,7 @@ Creating or deleting locks requires permissions for `Microsoft.Authorization/loc
 * While locks prevent server deletion, they do **not** restrict destructive SQL operations. Enforce SQL-level policies as needed.
 
 ## Conclusion
-Using ARM management locks helps protect your PostgreSQL Flexible Server from accidental deletions without impeding daily operations. Consider adding this to your automation scripts and deployment policies for safer production workflows.
+Using ARM management locks helps protect your PostgreSQL flexible server instance from accidental deletions without impeding daily operations. Consider adding this to your automation scripts and deployment policies for safer production workflows.
 
 ---
 

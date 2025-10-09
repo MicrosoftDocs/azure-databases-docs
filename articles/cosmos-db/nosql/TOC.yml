@@ -72,6 +72,8 @@
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrate with AI tools
       href: ../gen-ai/integrations.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Manage agentic memories
+      href: ../gen-ai/agentic-memories.md
     - name: Build a RAG chatbot
       href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
     - name: Index documents for search

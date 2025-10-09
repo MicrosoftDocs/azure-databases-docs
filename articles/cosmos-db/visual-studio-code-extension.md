@@ -33,7 +33,7 @@ To connect and manage data in Azure Cosmos DB within Visual Studio, first instal
 
 1. Open Visual Studio Code.
 1. Access the **Extensions** pane by selecting **View > Extensions**  or using the shortcut **Ctrl + Shift + X** on Windows and **Command + Shift + X** on macOS.
-1. In the search bar, type [DocumentDB for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) and select the extension. Then, select **Install**.
+1. In the search bar, type [DocumentDB for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, select **Install**.
 1. After installation, reload Visual Studio Code if prompted.
 
 ### Connecting to an Azure Cosmos DB for NoSQL
@@ -107,9 +107,7 @@ Within the query editor, view more query and index metrics to better help optimi
 
 ## Prerequisites
 
-- An Azure Cosmos DB for NoSQL account configured with a database and container. Use any of these quickstarts here to set up a resource:
-    - [Portal](./mongodb/vcore/quickstart-portal.md)
-    - [Azure CLI](./mongodb/vcore/quickstart-bicep.md)
+- An Azure Cosmos DB for NoSQL account configured with a database and container.
 - MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
 
 ## Install extension
@@ -132,9 +130,9 @@ To connect and manage data in Azure Cosmos DB, you need to install the **Azure D
 1. Choose your Azure Cosmos DB for MongoDB (vCore) cluster from the expanded list.
 
 > [!NOTE]
-> In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, start with [allowing access to all IP addresses](./mongodb/vcore/quickstart-portal.md) by adding the `0.0.0.0` - `255.255.255.255` firewall rule for connection testing initially before refining the allowlist.
+> In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, start by allowing access to all IP addresses by adding the `0.0.0.0` - `255.255.255.255` firewall rule for connection testing initially before refining the allowlist.
 >
-> :::image type="content" source="./mongodb/vcore/media/quickstart-portal/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
+> :::image type="content" source="media/visual-studio-code-extension/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
 
 ## [Connecting to any MongoDB cluster](#tab/MongoDB)
 
@@ -233,12 +231,4 @@ Stay on top of your resources:
 
 - **Manage Tags**: Organize your clusters with tags that sync with the Azure portal.
 
-## Next step
-
-> [!div class="nextstepaction"]
-> [Migrate your MongoDB workload to Azure Cosmos DB](./mongodb/vcore/migration-options.md)
-
 ::: zone-end
-
-
-

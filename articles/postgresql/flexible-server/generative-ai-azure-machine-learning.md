@@ -17,8 +17,6 @@ ms.topic: how-to
 
 # Integrate Azure Database for PostgreSQL with Azure Machine Learning Services
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 Azure AI extension gives the ability to invoke any machine learning models deployed on [Azure Machine Learning online endpoints](/azure/machine-learning/concept-endpoints-online) from within SQL. These models can be from the Azure Machine Learning catalog or custom models that are trained and deployed.
 
 ## Prerequisites
@@ -110,11 +108,11 @@ FROM azure_ml.invoke('
 
 ## Related content
 
-- [Integrate Azure Database for PostgreSQL flexible server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
-- [Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
-- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server](generative-ai-azure-openai.md).
-- [Azure AI extension in Azure Database for PostgreSQL flexible server](generative-ai-azure-overview.md).
-- [Generative AI with Azure Database for PostgreSQL flexible server](generative-ai-overview.md).
-- [Recommendation System with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-recommendation-system.md).
-- [Semantic Search with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).
+- [Integrate Azure Database for PostgreSQL with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+- [Generative AI with Azure Database for PostgreSQL](generative-ai-azure-local-ai.md).
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md).
+- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md).
+- [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
+- [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
+- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md).
