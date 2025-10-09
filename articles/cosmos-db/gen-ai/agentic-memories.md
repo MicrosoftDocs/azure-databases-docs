@@ -72,12 +72,12 @@ Full text indexes are particularly valuable for agentic memory workloads where y
 ## Data models
 
 ### One turn per document
-In this model, each document captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is ysefyk when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
+In this model, each document captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is useful when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
 
 **Example scenarios**:
     - An agentic chat application where each turn consists of the user’s question and the agent’s reply, and you frequently need to resurface entire Q&A pairs for context injection.
     - A planning agent that queries an external API (tool) and logs both the request and tool response as one memory unit, so downstream queries can recall the whole exchange. 
-    - Using the memories as part of a [semantic cache](semantic-cache.md), which can reduce user epxierence latency, token consumption, and LLM-based costs.
+    - Using the memories as part of a [semantic cache](semantic-cache.md), which can reduce latency, token consumption, and LLM-based costs.
     
 **Properties in a data item**
 
@@ -87,10 +87,10 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 | `threadId` | string | ✅ | Thread / conversation identifier (commonly the partition key). | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic counter of the *exchange* (0-based or 1-based). | `7` |
 | `messages` | object | ✅ | Messages that make up this exchange (for example, user prompt, agent reply, optional tool call/response). | See table below |
-| `turnEmbedding` | number[] | optional | Vector for the *whole* exchange (for example, embedding of a concatenated or summarized message pair). | `[0.013, -0.092, …]` |
+| `turnEmbedding` | number[] | optional | Vector for the *whole* exchange (for example, embedding of a concatenated or summarized message pair). | `[0.013, -0.092, ]` |
 | `startedAt` | string (ISO 8601) | optional | Timestamp when the exchange began. | `"2025-09-24T10:14:25Z"` |
 | `endedAt` | string (ISO 8601) | optional | Timestamp when the exchange completed. | `"2025-09-24T10:14:28Z"` |
-| `embedding` | number[] | optional | Vector for this specific turn (You can create embedding of user question for a [semantic cache](semantic-cache.md)). | `[0.11, 0.02, …]` |
+| `embedding` | number[] | optional | Vector for this specific turn (You can create embedding of user question for a [semantic cache](semantic-cache.md)). | `[0.11, 0.02, ]` |
 
 **Properties in the `messages` object**
 
@@ -124,7 +124,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
     },
   
   ],
-  "embedding": [0.013, -0.092, 0.551, ...],
+  "embedding": [0.013, -0.092, 0.551, ],
   "startedAt": "2025-09-24T10:14:25Z",
   "endedAt": "2025-09-24T10:14:55Z",
   "metrics": { "inputTokens": 12, "outputTokens": 17, "latencyMs": 300 }
@@ -161,7 +161,7 @@ In this design, every agent or user interaction (that is “turn”) is stored a
 | `role` | string | ✅ | Who produced the turn. Common values: `"user"`, `"agent"`, `"tool"` (or similar).  | `"agent"`   |
 | `content`  | string | ✅ | Main text content for this turn (prompt, reply, tool result, etc.).  | `"This is one response from an LLM"` |
 | `timestamp` | string (ISO 8601) | ✅ | Creation time for the turn (ISO 8601). Alternatively, you can sort by the system `_ts` (epoch seconds) without storing your own timestamp.  | `"2025-09-24T10:15:00Z"` |
-| `embedding` | number[]  | optional | Vector embedding for `content` (or a summary). Must be a **top-level** field that’s included in the container’s vector policy/index to enable vector search. | `[0.017, -0.234, 0.561, ...]`  |
+| `embedding` | number[]  | optional | Vector embedding for `content` (or a summary). Must be a **top-level** field that’s included in the container’s vector policy/index to enable vector search. | `[0.017, -0.234, 0.561, ]`  |
 | `metrics` | object | optional | Free-form metrics/attrs for the turn. Keep names machine-friendly (no spaces) for easier querying and indexing. | `{ "inputTokens": 25, "outputTokens": 8 }` |
 
 An example of this memory data item would look like: 
@@ -173,7 +173,7 @@ An example of this memory data item would look like:
   "entityId": "agent-assistant-01",
   "role": "agent",
   "content": "This is one response from an LLM",
-  "embedding": [-1.12402894028, ... ],        
+  "embedding": [-1.12402894028,  ],        
   "timestamp": "2025-09-24T10:15:00Z",
   "metrics": { "inputTokens": 12, "outputTokens": 8, "latencyMs": 177 },
 
@@ -231,7 +231,7 @@ An example of a memory data item would look like:
   ],
   "LastUpdatedtimestamp": "2025-09-24T10:15:00Z",
   "summary": "...", 
-  "embedding": [ … ]
+  "embedding": [  ]
 }
 ```
 
@@ -247,7 +247,7 @@ An example of a memory data item would look like:
 - Harder to TTL individual turns; TTL applies at the document (thread) granularity.
 
 > [!IMPORTANT]
-> This model is typically not recommended unless the thread size has few turns, infrequent updates, and retrieval patterns are simple (for example, retrieve the entire document all at once). Azure Cosmos DB doesn't support sorting on nested objects/arrays, so sorting of last N messages would need to be implemented in application code. 
+> This model is typically not recommended, as you risk unbounded or large thread sizes, which increase the RU charges for CRUD operations on the document. 
 
 ### Query patterns for retrieval
 This section demonstrates common retrieval query patterns used to fetch agent memories from Azure Cosmos DB. Each pattern illustrates a different strategy for grouding the agent with the appropriate historical context.
@@ -301,6 +301,7 @@ WHERE c.tenantId = "tenant-001"
 This lets you fetch memory items across all conversations for a given tenant, rather than limiting to a single thread.
 
 ## Next steps
+- [Python example of one turn per document memories](https://github.com/azurecosmosdb/agenticMemories/)
 - [Learn about vector indexing and search](vector-search-overview.md)
 - [Learn about full text search](full-text-search-faq.md)
 - [Learn about hybrid search](hybrid-search.md)
