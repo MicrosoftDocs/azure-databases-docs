@@ -171,7 +171,7 @@ Currently the point-in-time restore functionality has the following limitations:
 
 * While a restore is in progress, don't modify or delete the Identity and Access Management (IAM) policies. These policies grant the permissions for the account to change any virtual network, firewall configuration.
 
-* Azure Cosmos DB for MongoDB accounts with [continuous backup](../continuous-backup-restore-introduction.md#current-limitations) don't support creating a [unique index](./mongodb/indexing.md#unique-indexes) for an existing collection. For such an account, unique indexes must be created along with their collection creation, which must and can only be done using the create collection [extension commands](./custom-commands.md#create-collection).
+* Azure Cosmos DB for MongoDB accounts with continuous backup don't support creating a [unique index](./mongodb/indexing.md#unique-indexes) for an existing collection. For such an account, unique indexes must be created along with their collection creation, which must and can only be done using the create collection [extension commands](./mongodb/custom-commands.md#create-collection).
 
 * After restoring, it's possible that for certain collections the consistent index might be rebuilding. You can check the status of the rebuild operation via the [IndexTransformationProgress](how-to-manage-indexing-policy.md) property.
 
