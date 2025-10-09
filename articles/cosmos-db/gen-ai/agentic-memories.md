@@ -72,12 +72,12 @@ Full text indexes are particularly valuable for agentic memory workloads where y
 ## Data models
 
 ### One turn per document
-In this model, each document captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is ysefyk when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
+In this model, each document captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is useful when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
 
 **Example scenarios**:
     - An agentic chat application where each turn consists of the user’s question and the agent’s reply, and you frequently need to resurface entire Q&A pairs for context injection.
     - A planning agent that queries an external API (tool) and logs both the request and tool response as one memory unit, so downstream queries can recall the whole exchange. 
-    - Using the memories as part of a [semantic cache](semantic-cache.md), which can reduce user epxierence latency, token consumption, and LLM-based costs.
+    - Using the memories as part of a [semantic cache](semantic-cache.md), which can reduce latency, token consumption, and LLM-based costs.
     
 **Properties in a data item**
 
@@ -301,6 +301,7 @@ WHERE c.tenantId = "tenant-001"
 This lets you fetch memory items across all conversations for a given tenant, rather than limiting to a single thread.
 
 ## Next steps
+- [Python example of one turn per document memories](https://github.com/azurecosmosdb/agenticMemories/)
 - [Learn about vector indexing and search](vector-search-overview.md)
 - [Learn about full text search](full-text-search-faq.md)
 - [Learn about hybrid search](hybrid-search.md)
