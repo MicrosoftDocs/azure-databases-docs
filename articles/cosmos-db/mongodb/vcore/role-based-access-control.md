@@ -33,7 +33,7 @@ Benefits of using Microsoft Entra ID for authentication include:
 - Support of token-based authentication for applications connecting to Azure Cosmos DB for MongoDB vCore clusters
 
 
-## Database role-based access control (RBAC)
+## User management role-based access control (RBAC)
 
 When Microsoft Entra ID authentication is enabled on an Azure Cosmos DB for MongoDB vCore cluster, you can add one or more Microsoft Entra ID principals as *administrator users* to that cluster. The Microsoft Entra ID administrator can be a Microsoft Entra ID user, a service principal, or a managed identity. Multiple Microsoft Entra ID administrators can be configured at any time. 
 
@@ -41,23 +41,6 @@ Administrative Entra ID users are created as Azure entities under Microsoft.Docu
 
 Additionally, one or more nonadministrative Microsoft Entra ID users can be added to a cluster at any time once Microsoft Entra ID authentication is enabled. Nonadministrative users are often used for ongoing production tasks that don't require administrative privileges.
 
-## Considerations
-
-- The cluster must have native authentication enabled, or both native authentication and Microsoft Entra ID enabled. Microsoft Entra ID can't be the only authentication method enabled on a cluster.
-
-- Multiple Microsoft Entra ID principals can be configured as Microsoft Entra ID administrator for an Azure Cosmos DB for MongoDB vCore cluster at any time. For example, you can configure these types of identities to all be administrators in your cluster simultaneously:
-
-    - Human identities
-    - User-assigned managed identities
-    - System-assigned managed identities
-
-    > [!TIP]
-    > There are many other types of identities available in Microsoft Entra ID. For more information, see [identity fundamentals](/entra/fundamentals/identity-fundamental-concepts#identity).
-
-- Microsoft Entra ID principals are persistent. If a Microsoft Entra ID principal is deleted from Microsoft Entra ID service, it still remains as a user on the cluster, but it's no longer able to acquire new access token. In this case, although the matching role still exists on the cluster, it's unable to authenticate to the cluster nodes. Database administrators need to transfer ownership and drop such roles manually.
-
-    > [!NOTE]  
-    > Sign in with a deleted principal can still occur until the token expires (up to 90 minutes from the issuing of the token). If you also remove the user from the Azure Cosmos DB for MongoDB vCore cluster, this access is revoked immediately.
 
 ## Related content
 
