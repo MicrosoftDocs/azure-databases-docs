@@ -180,7 +180,7 @@ An example of this memory data item would look like:
 
 **Advantages**
 - Each memory is kept at an atomic/granular level.
-- Easy to update/TTL inidivudal responses. 
+- Easy to update/TTL individual responses. 
 - Retrieving last N results can be done with a query with filter on the thread ID.
 
 **Limitations**
@@ -201,7 +201,7 @@ Here, all the turns of a conversation (user, agent, tools, etc.) for a given thr
 | ------------------ | ---------------- | ------- | ------------ | -------------- |
 | `id` | string | ✅ | Partition key. See above for guidance on [choosing a partition key](#choose-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"` or `tenant-001`  |
 | `threadId` | string  | ✅ | Logical thread or thread identifier (often used as partition key). | `"thread-1234"`  |
-| `turns` | array of objects | ✅ | A list of individual turn records (user or agent). Each turn contains a small structure (for example, index, role, content, embedding, entityId). | `[ { "turnIndex": 0, "role": "user", "entityId": "user-12345", "content": "Hello" }, { "turnIndex": 1, "role": "agent", "entityId": "agent-assistant-01", "content": "Hi there!" } ]` |
+| `turns` | array of objects | ✅ | A list of individual turn records (user or agent). Each turn contains a small structure. Ffor example, index, role, content, etc. | `[ { "turnIndex": 0, "role": "user", "entityId": "user-12345", "content": "Hello" }, { "turnIndex": 1, "role": "agent", "entityId": "agent-assistant-01", "content": "Hi there!" } ]` |
 | `embedding` | number[] | optional | Embedding vector computed over a summary or aggregation of the thread. Useful for semantic search over key points of the conversation.  | `[0.101, -0.231, 0.553, …]` |
 | `summary`  | string  | optional | A textual “roll-up” or summary of the key points in the thread. | `"User wanted to schedule a meeting; agent fetched available times and confirmed A.M. slots."` |
 | `metrics` | object  | optional | Key/value attributes or metrics about the thread. | `{ "startTime": "2025-09-24T09:05:00Z", "lastTurnTime": "2025-09-24T10:15:00Z", "turnCount": 7 }` |
