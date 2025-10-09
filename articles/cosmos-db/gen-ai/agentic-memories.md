@@ -249,9 +249,10 @@ An example of a memory data item would look like:
 > [!IMPORTANT]
 > This model is typically not recommended unless the thread size has few turns, infrequent updates, and retrieval patterns are simple (for example, retrieve the entire document all at once). Azure Cosmos DB doesn't support sorting on nested objects/arrays, so sorting of last N messages would need to be implemented in application code. 
 
-### Query for retrieval
+### Query patterns for retrieval
+This section demonstrates common retrieval query patterns used to fetch agent memories from Azure Cosmos DB. Each pattern illustrates a different strategy for grouding the agent with the appropriate historical context.
 
-#### Most recent memories
+#### Retrive most recent memories
 When you want to reconstruct a conversation context or show recent user/agent interactions, this query pattern is the simplest. It retrieves the last K messages in timestamp order, which is useful for feeding into chat context or displaying a conversation history. Use this when freshness and chronological order matter.
 ```sql
 SELECT TOP @k c.content, c.timestamp
