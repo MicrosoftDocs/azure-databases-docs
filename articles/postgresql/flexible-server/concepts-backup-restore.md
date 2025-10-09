@@ -142,8 +142,9 @@ For more information, see the [Restore to paired region (geo-restore)](how-to-re
 > When the primary region is down, you can't create geo-redundant servers in the respective geo-paired region, because storage can't be provisioned in the primary region. Before you can provision geo-redundant servers in the geo-paired region, you must wait for the primary region to be up. 
 >
 > With the primary region down, you can still geo-restore the source server to the geo-paired region. For more information, see the [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
-> You should use Geo-replicas as your disaster recovery (DR) strategy if you need to configure DR to any region, or if the primary region doesn't support Geo-redundant backups 
-
+> You should use Geo-replicas as your disaster recovery (DR) strategy if you need to configure DR to any region, or if the primary region doesn't support Geo-redundant backups.
+> 
+> We recommend using Virtual Endpoints for your mission critical workloads, as it  provide a stable connection point for applications, ensuring minimal disruption. If you have a Virtual Endpoint mapped to your primary server, remove the virtual endpoint from the primary server, once removed add the same virtual endpoint to the newly created server. This ensures application connectivity remains consistent and minimizes downtime. For more information, see the [using virtual endpoints for consistent hostname during PITR](concepts-read-replicas-virtual-endpoints.md#using-virtual-endpoints-for-consistent-hostname-during-point-in-time-recovery-pitr-or-snapshot-restore)
 ## Restore and networking
 
 ### Point-in-time recovery
