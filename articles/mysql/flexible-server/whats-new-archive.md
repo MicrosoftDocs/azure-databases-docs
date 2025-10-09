@@ -548,7 +548,7 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Free 12-month offer**
 
-  As of June 15, 2021, the [Azure free account](https://azure.microsoft.com/free/) provides customers up to 12 months of free access to Azure Database for MySQL Flexible Server with 750 hours of usage and 32 GB of storage per month. Customers can use this offer to develop and deploy applications that use Azure Database for MySQL Flexible Server. [Use an Azure free account to try Azure Database for MySQL - Flexible Server for free](how-to-deploy-on-azure-free-account.md).
+  As of June 15, 2021, the [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) provides customers up to 12 months of free access to Azure Database for MySQL Flexible Server with 750 hours of usage and 32 GB of storage per month. Customers can use this offer to develop and deploy applications that use Azure Database for MySQL Flexible Server. [Use an Azure free account to try Azure Database for MySQL - Flexible Server for free](how-to-deploy-on-azure-free-account.md).
 
 - **Storage auto-grow**
 
