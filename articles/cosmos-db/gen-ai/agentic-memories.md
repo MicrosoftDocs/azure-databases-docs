@@ -301,7 +301,7 @@ WHERE c.tenantId = "tenant-001"
 This lets you fetch memory items across all conversations for a given tenant, rather than limiting to a single thread.
 
 ## Next steps
-- [Python example of one turn per document memories](http://github.com/azurecosmosdb/agenticMemories/)
+- [Python example of one turn per document memories](https://github.com/azurecosmosdb/agenticMemories/)
 - [Learn about vector indexing and search](vector-search-overview.md)
 - [Learn about full text search](full-text-search-faq.md)
 - [Learn about hybrid search](hybrid-search.md)
