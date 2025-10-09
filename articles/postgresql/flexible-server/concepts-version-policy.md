@@ -128,7 +128,7 @@ A: Yes, but after the grace period, you're automatically enrolled in paid Extend
 
 **Q: Can my applications break during a major version upgrade?**
 
-A. PostgreSQL major version upgrades can introduce changes that may impact your application — such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. We recommends validating upgrades in a non-production environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
+A. PostgreSQL major version upgrades can introduce changes that may impact your application — such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. We recommend validating upgrades in a non-production environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
 
 **Q: How do I know if my server is in Extended Support?**
 
