@@ -260,7 +260,7 @@ WHERE c.threadId = @threadId
 ORDER BY c.timestamp DESC
 ```
 
-#### Retrieve thread by semantic search
+#### Retrieve memories by semantic search
 Semantic queries let you find turns whose embeddings are most similar to a given query vector, even if they don’t share exact words. This pattern surfaces contextually relevant memories (answers, references, hints) beyond recent messages. This is useful when relevancy is important over recency, however you can use a `WHERE` clause to filter to most recent semantically similar results. 
 
 ```sql
@@ -270,8 +270,18 @@ FROM c
 ORDER BY VectorDistance(c.embedding, @queryVector)
 ```
 
-#### Memories that contain phrases or keywords
-Keyword or phrase search is useful for filtering memories that explicitly mention a term (for example “billing,” “refund,” “meeting”) regardless of semantic closeness. This is helpful when you want strict matching or fallback to lexical recall. This can be extended for use in combination with semantic or recency queries to improve recall. 
+### Retrieve memories by hybrid search
+Hybrid queries in Cosmos DB let you fuse vector similarity with keyword (full-text / BM25) scoring. This enables you to return contextually relevant memories even when the don’t share exact words, while still honoring textual precision via full-text terms.
+
+```sql
+SELECT TOP @k c.content, c.timestamp, VectorDistance(c.embedding, @queryVector) AS dist
+FROM c
+    WHERE c.threadId = @threadId
+ORDER BY RANK RRF(VectorDistance(c.embedding, @queryVector), FullTextScore(c.content, @searchString))
+```
+
+#### Retrieve memories that contain phrases or keywords
+Keyword or phrase search is useful for filtering memories that explicitly mention a term (for example, “billing,” “refund,” “meeting”) regardless of semantic closeness. This is helpful when you want strict matching or fallback to lexical recall. This can be extended for use in combination with semantic or recency queries to improve recall. 
 
 ```sql
 SELECT TOP @k c.content, c.timestamp, 
