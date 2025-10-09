@@ -58,14 +58,16 @@ You can use a two-level hierarchical partition key where the leading level is th
 ### Choose a vector index
 When you enable vector search in Azure Cosmos DB, you must choose not only whether to shard but also which index type to use. Cosmos supports multiple vector-index algorithms, including `quantizedFlat` and `DiskANN`. The `quantizedFlat` index type is suited for smaller workloads or when you expect the number of vectors to remain modest (for example, tens of thousands of vectors total). It compresses (quantizes) each vector and performs an exact search over the compressed space, trading a slight accuracy loss for lower RU cost and faster scans. 
 
-However, once your vector data scales up (for example, hundreds of thousands to billions of embeddings), `DiskANN` is the better choice. DiskANN implements approximate nearest-neighbor indexing and is optimized for high throughput, low latency, and cost efficiency at scale. It supports dynamic updates and achieves excellent recall across large datasets.
-
-Learn more about [vector indexes in Azure Cosmos DB](../nosql/vector-search.md#vector-indexing-policies).
-
+However, once your vector data scales up (for example, hundreds of thousands to billions of embeddings), `DiskANN` is the better choice. DiskANN implements approximate nearest-neighbor indexing and is optimized for high throughput, low latency, and cost efficiency at scale. It supports dynamic updates and achieves excellent recall across large datasets. Learn more about [vector indexes in Azure Cosmos DB](../nosql/vector-search.md#vector-indexing-policies).
 
 If using DiskANN, you then decide whether to shard the vector index via the  [vectorIndexShardKey](sharded-diskann.md). This lets you partition the DiskANN index based on a document property (for example, session, user, tenant), reducing the candidate search space and making semantic queries more efficient and focused. For example, you can shard by a tenant and/or userid. In multitenant systems, isolating the vector index per tenant ensures that search on a particular tenant or user data is fast and efficient. Using the multitenant example from the section on [partitioning](#choose-a-partition-key), you can set the vectorIndexShardKey and the partition key to be the same, or just the first level of your hierarchical partition key. 
 
 On the other hand, using a global (nonsharded) index offers simplicity and the ability to search on the entire set of vectors. Both of these allow you to further refine the search using `WHERE` clause filters as with any other query. 
+
+### Choose a full text index
+Azure Cosmos DB's full text search capability enables advanced text-based queries over your memory documents, making it ideal for keyword and phrase-based retrieval scenarios. When you enable full text indexing on specific paths in your container (such as `/content`), Azure Cosmos DB automatically applies linguistic processing including tokenization, stemming, and case normalization. This allows queries to match variations of words (for example, "running" matches "run", "runs", "ran") and improves recall for natural language searches.
+
+Full text indexes are particularly valuable for agentic memory workloads where you need to retrieve conversations based on specific topics, entities, or phrases mentioned by users or agents. For instance, you can quickly find all turns where "refund policy" or "billing issues" were discussed, regardless of the exact phrasing. Unlike vector search, which finds semantically similar content, full text search provides precise lexical matching with linguistic intelligence. Azure Cosmos DB uses BM25 (Best Match 25), a statistical ranking function that scores documents based on term frequency and document length normalization, ensuring that the most relevant results are surfaced first. You can combine full text search with vector search in hybrid queries to leverage both BM25 scoring for keyword relevance and vector similarity for semantic meaning. Learn more about [full text search in Azure Cosmos DB](full-text-search.md).
 
 ## Data models
 
@@ -258,7 +260,7 @@ WHERE c.threadId = @threadId
 ORDER BY c.timestamp DESC
 ```
 
-#### Retrieve thread by semantic search
+#### Retrieve memories by semantic search
 Semantic queries let you find turns whose embeddings are most similar to a given query vector, even if they don’t share exact words. This pattern surfaces contextually relevant memories (answers, references, hints) beyond recent messages. This is useful when relevancy is important over recency, however you can use a `WHERE` clause to filter to most recent semantically similar results. 
 
 ```sql
@@ -268,8 +270,18 @@ FROM c
 ORDER BY VectorDistance(c.embedding, @queryVector)
 ```
 
-#### Memories that contain phrases or keywords
-Keyword or phrase search is useful for filtering memories that explicitly mention a term (for example “billing,” “refund,” “meeting”) regardless of semantic closeness. This is helpful when you want strict matching or fallback to lexical recall. This can be extended for use in combination with semantic or recency queries to improve recall. 
+### Retrieve memories by hybrid search
+Hybrid queries in Cosmos DB let you fuse vector similarity with keyword (full-text / BM25) scoring. This enables you to return contextually relevant memories even when the don’t share exact words, while still honoring textual precision via full-text terms.
+
+```sql
+SELECT TOP @k c.content, c.timestamp, VectorDistance(c.embedding, @queryVector) AS dist
+FROM c
+    WHERE c.threadId = @threadId
+ORDER BY RANK RRF(VectorDistance(c.embedding, @queryVector), FullTextScore(c.content, @searchString))
+```
+
+#### Retrieve memories that contain phrases or keywords
+Keyword or phrase search is useful for filtering memories that explicitly mention a term (for example, “billing,” “refund,” “meeting”) regardless of semantic closeness. This is helpful when you want strict matching or fallback to lexical recall. This can be extended for use in combination with semantic or recency queries to improve recall. 
 
 ```sql
 SELECT TOP @k c.content, c.timestamp, 
