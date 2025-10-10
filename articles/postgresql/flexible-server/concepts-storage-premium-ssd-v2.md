@@ -72,7 +72,9 @@ High availability is an opt-in feature that can be enabled at the subscription l
 
 #### Premium SSD v2 - Limitations during preview
 
-- [Read replicas](concepts-read-replicas.md), [geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](concepts-backup-restore.md) or storage auto grow  features aren't supported for Premium SSD v2.
+- [Geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](concepts-backup-restore.md) or storage auto grow  features aren't supported for Premium SSD v2.
+  
+- Please wait until your first backup becomes available before configuring in-region replicas, as this process depends on disk snapshots. This limitation does not apply to cross-region replicas, which use pg_basebackups instead.
 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
