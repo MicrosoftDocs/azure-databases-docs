@@ -304,8 +304,6 @@ In the examples above, the WHERE clause is scoped to a specific thread using its
 WHERE c.tenantId = "tenant-001"
 ```
 
-This lets you fetch memory items across all conversations for a given tenant, rather than limiting to a single thread.
-
 ## Next steps
 - [Python example of one turn per document memories](https://github.com/azurecosmosdb/agentMemories/)
 - [Learn about vector indexing and search](vector-search-overview.md)
