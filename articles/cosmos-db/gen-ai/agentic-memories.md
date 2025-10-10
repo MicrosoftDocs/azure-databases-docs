@@ -34,7 +34,7 @@ Long-term memory is more persistent and accumulates knowledge or patterns over m
 ## Design patterns
 In the next section, we divide the discussion into four parts. In part 1, we guide you through partition key selection, helping you choose a key that balances write and query throughput across partitions. In part 2, we provide guidance on configuring a vector index for semantic search or a full-text index for text-based search, depending on your retrieval needs. Then, we explore data modeling patterns and their trade-offs. Finally, we cover query patterns that can be applied for different retrieval scenarios.
 
-## 1. Choose a partition key
+## Choose a partition key
 As Azure Cosmos DB automatically partitions your data, choosing a partition key is one of the most important design choices for your data model. The partition key determines how data is distributed in logical partitions and across physical partitions, which directly affects query and insert performance, scalability, and cost. Each partition key value maps to a distinct logical partition. A good partition strategy balances locality (keeping related items together for efficient queries) with distribution. In this guide, we highlight three common approaches. You should read about [partitioning in Azure Cosmos DB for more detail.](../partitioning-overview.md)
 
 Below are some common patterns and trade-offs when using Cosmos DB (or Cosmos-style NoSQL + vector features) to store agent memory.
@@ -54,7 +54,7 @@ You can use a two-level hierarchical partition key where the leading level is th
 
 - Example: A partition key `["/tenantId", "/threadId"]` takes on values like `tenantId = "contoso"`, `threadId = "thread-1234"`
 
-## 2. Indexes for semantic and full-text search
+## Indexes for semantic and full-text search
 
 ### Configure a vector index
 When you enable vector search in Azure Cosmos DB, you must choose not only whether to shard but also which index type to use. Cosmos supports multiple vector-index algorithms, including `quantizedFlat` and `DiskANN`. The `quantizedFlat` index type is suited for smaller workloads or when you expect the number of vectors to remain modest (for example, tens of thousands of vectors total). It compresses (quantizes) each vector and performs an exact search over the compressed space, trading a slight accuracy loss for lower RU cost and faster scans. 
@@ -70,7 +70,7 @@ Azure Cosmos DB's full text search capability enables advanced text-based querie
 
 Full text indexes are particularly valuable for agent memory workloads where you need to retrieve conversations based on specific topics, entities, or phrases mentioned by users or agents. For instance, you can quickly find all turns where "refund policy" or "billing issues" were discussed, regardless of the exact phrasing. Unlike vector search, which finds semantically similar content, full text search provides precise lexical matching with linguistic intelligence. Azure Cosmos DB uses BM25 (Best Match 25), a statistical ranking function that scores documents based on term frequency and document length normalization, ensuring that the most relevant results are surfaced first. You can combine full text search with vector search in hybrid queries to leverage both BM25 scoring for keyword relevance and vector similarity for semantic meaning. Learn more about [full text search in Azure Cosmos DB](full-text-search.md).
 
-## 3. Data models
+## Data models
 
 ### One turn per document
 In this model, each document captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is useful when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
@@ -255,7 +255,7 @@ An example of a memory data item would look like:
 - Harder to TTL individual turns; TTL applies at the document (thread) granularity.
 
 
-## 4. Query patterns for retrieval
+## Query patterns for retrieval
 This section demonstrates common retrieval query patterns used to fetch agent memories from Azure Cosmos DB. Each pattern illustrates a different strategy for grouding the agent with the appropriate historical context.
 
 ### Retrive most recent memories
