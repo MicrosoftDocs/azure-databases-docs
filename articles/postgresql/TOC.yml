@@ -89,6 +89,8 @@
               href: flexible-server/concepts-storage-premium-ssd.md  
             - name: Premium SSD v2
               href: flexible-server/concepts-storage-premium-ssd-v2.md  
+            - name: Migrate from Premium SSD to Premium SSD v2
+              href: flexible-server/concepts-storage-PITR-ssd-to-ssd-v2.md
         - name: Scaling resources
           href: flexible-server/concepts-scaling-resources.md
         - name: Elastic clusters (preview)
