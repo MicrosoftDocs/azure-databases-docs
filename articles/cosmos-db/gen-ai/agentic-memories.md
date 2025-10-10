@@ -1,5 +1,5 @@
 ---
-title: Agentic Memory in Azure Cosmos DB for NoSQL
+title: Agent Memory in Azure Cosmos DB for NoSQL
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn about implementing agentic memories in Azure Cosmos DB
 author: jcodella
@@ -11,11 +11,11 @@ appliesto:
   - ✅ NoSQL
 ---
 
-# Agentic Memories in Azure Cosmos DB for NoSQL
+# Agent Memories in Azure Cosmos DB for NoSQL
 
-## What Are Agentic Memories?
+## What Are Agent Memories?
 
-*Agentic memory* (also referred to as *agent memory* or *AI memory*) refers to an AI agent’s ability to persist and recall prior interactions, facts, and experiences to better reason, plan, or act over time. Agent memory is often divided into short-term (episodic / working) memory and long-term memory. This article is designed to guide you through the most common patterns for storing and retrieving agentic memories in your applications. It explains how each pattern works, highlights its strengths and limitations, and offers practical tips so you can confidently choose the right approach for your use cases.
+*Agent memory* (also referred to as *AI memory*) refers to an AI agent’s ability to persist and recall prior information, interactions, facts, and experiences to better reason, plan, or act over time. Agent memory is often divided into short-term (episodic / working) memory and long-term memory. This article is designed to guide you through the most common patterns for storing and retrieving agentic memories in your applications. It explains how each pattern works, highlights its strengths and limitations, and offers practical tips so you can confidently choose the right approach for your use cases.
 
 ### Short-Term Memory
 
@@ -73,6 +73,10 @@ Full text indexes are particularly valuable for agentic memory workloads where y
 
 ### One turn per document
 In this model, each document captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is useful when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
+
+> [!NOTE]
+> This model is the most common for both single and multi-agent apps as it provides good balance between small document size and utility or value of information included in a single memory document. 
+
 
 **Example scenarios**:
     - An agentic chat application where each turn consists of the user’s question and the agent’s reply, and you frequently need to resurface entire Q&A pairs for context injection.
@@ -193,8 +197,11 @@ An example of this memory data item would look like:
 #### One thread per document
 Here, all the turns of a conversation (user, agent, tools, etc.) for a given thread or thread are aggregated into a single document. This document contains a list or array of turn entries (each with turnIndex, role, content, embedding, etc.), and optional summary fields, metadata, and a thread-level embedding. Because the entire thread is stored in one document, retrieving the full history (or a large window) becomes a single read. However, appending new turns requires updating (replacing) the document, which can become costly if the document grows large. This model can be useful when sessions are bounded in size or short-lived, and you prefer single-document reads to reconstruct context.
 
+> [!IMPORTANT]
+> This model is typically not recommended, as there is a risk to have long or unboudned threads, which can have high RU charges for CRUD operations on the document. 
+
 **Example scenarios:**
-- Chatbots in customer onboarding or troubleshooting flows, where each thread is short (< 50 turns) and agents need to fetch the entire conversation quickly in one read.
+- Chatbots in customer onboarding or troubleshooting flows, where each thread is short (limited number of turns) and agents need to fetch the entire conversation quickly in one read.
 - Conversation summarization services, where you run periodic batch jobs over full sessions to generate embeddings or summaries.
 
 **Properties in the data item**
@@ -246,8 +253,6 @@ An example of a memory data item would look like:
 - Vector search becomes coarser. In this pattern, we recommend summarizing the thread and storing a vector embedding for the summary. However, this can be expensive if the thread is frequently updated. 
 - Harder to TTL individual turns; TTL applies at the document (thread) granularity.
 
-> [!IMPORTANT]
-> This model is typically not recommended, as you risk unbounded or large thread sizes, which increase the RU charges for CRUD operations on the document. 
 
 ### Query patterns for retrieval
 This section demonstrates common retrieval query patterns used to fetch agent memories from Azure Cosmos DB. Each pattern illustrates a different strategy for grouding the agent with the appropriate historical context.
