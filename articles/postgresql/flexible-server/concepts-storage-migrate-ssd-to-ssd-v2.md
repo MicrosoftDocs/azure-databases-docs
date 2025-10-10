@@ -17,7 +17,7 @@ ms.topic:  concept-article
 
 This article provides step-by-step instructions to perform a restore of an Azure Database for PostgreSQL flexible server to a custom restore point.
 
-## Steps to restore to custom restore point
+## Steps to migrate or restore from Premmium SSD to Premium SSDv2
 
 ### [Portal](#tab/portal-restore-custom-point)
 
@@ -76,7 +76,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL Flexible server, on which the most recent data available on the source server is restored." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-progress.png":::
 
-13. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure Database for PostgreSQL flexible server, and start using it:
+13. When the deployment completes, you can select **Go to resource**, to get you to the **Compute +Storage** page of your new Azure Database for PostgreSQL flexible server, and start validate your **Storage type**
 
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure Database for PostgreSQL Flexible server." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-completed.png":::
 
