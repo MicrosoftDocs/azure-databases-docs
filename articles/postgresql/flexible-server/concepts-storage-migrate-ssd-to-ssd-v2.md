@@ -1,5 +1,5 @@
 ---
-title: Migrate SSD server to SSDv2 using point-in-time-restore
+title: Migrate SSD Server to SSDv2 Using Point-in-Time-Restore
 description: This article describes how to migrate a Premium SSD server to Premium SSDv2 in Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
@@ -11,7 +11,7 @@ ms.topic:  concept-article
 #customer intent: As a user, I want to learn how to migrate from Premium SSD server to Premium SSDv2 in Azure Database for PostgreSQL flexible server.
 ---
 
-# Migrate or Restore from Premium SSD to Premium SSDv2
+# Migrate or restore from Premium SSD to Premium SSDv2
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
