@@ -44,7 +44,7 @@ Here are some key differences between the change feed processor and the change f
 | Process changes from only a single partition key | Not supported | Yes|
 
 > [!NOTE]
-> When you use the pull model, unlike when reading by using the change feed processor, you must explicitly handle cases where there are no new changes.
+> When you use the pull model, unlike when reading by using the change feed processor, you must explicitly handle cases where there are no new changes. This is indicated by an HTTP 304 `NotModified`. A change feed response returning 0 documents with an HTTP 200 `OK` status code does not mean you've reached the end of the change feed and you should continue polling.
 
 ## Work with the pull model
 
@@ -110,7 +110,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 }
 ```
 
-Because the change feed is effectively an infinite list of items that encompass all future writes and updates, the value of `HasMoreResults` is always `true`. When you try to read the change feed and there are no new changes available, you receive a response with `NotModified` status. In the preceding example, it's handled by waiting five seconds before rechecking for changes.
+Because the change feed is effectively an infinite list of items that encompass all future writes and updates, the value of `HasMoreResults` is always `true`. When you try to read the change feed and there are no new changes available, you receive a response with `NotModified` status. This is different than receiving a response with no changes and `OK` status. It is possible to get empty change feed responses while more changes are available and you should continue polling until receiving `NotModified`. In the preceding example, `NotModified` is handled by waiting five seconds before rechecking for changes.
 
 ### Consume the changes for a partition key
 
