@@ -14,7 +14,7 @@ ms.topic: concept-article
 
 To create and monitor migrations using the PostgreSQL Migration Service, users need specific permissions. Here's a guide on the permissions required and steps to configure them effectively.
 
-## RBAC: Minimum set of permissions
+##  Role-Based Access Control (RBAC): Minimum set of permissions
 
 The following permissions are the minimum required for a user to successfully create and monitor migrations:
 
@@ -55,7 +55,7 @@ By default, privileged administrator roles such as **Owner** or **Contributor** 
 
 ### Assigning a custom role for migration
 
-If you want to grant permissions specifically for creating and monitoring migrations, without additional database admin privileges, consider creating a custom role.
+If you want to grant permissions specifically for creating and monitoring migrations, without other database admin privileges, consider creating a custom role.
 
 - [Create a custom role](/azure/role-based-access-control/custom-roles-portal) with the permissions listed above.
 
@@ -63,7 +63,7 @@ If you want to grant permissions specifically for creating and monitoring migrat
 
 - [Assign this custom role to the user](/azure/role-based-access-control/role-assignments-portal) responsible for conducting the migration.
 
-### Additional requirements for migrations that include a runtime server
+### Other requirements for migrations that include a runtime server
 
 If a runtime server is part of your migration setup, ensure the permissions Microsoft.DBforPostgreSQL/flexibleServers/migrations/* are included in the scope of the runtime server.
 
@@ -77,25 +77,25 @@ You have to enable publication creation at the source through any **one** of the
 
 1. **Grant Create on Database + Use Inheritance Role**: In this option, you can provide the migration user required permissions without altering table ownership.
 
-For all the databases that you are planning to migrate – the migration user will have permissions to create a publication that streams changes.
+For all the databases that you are planning to migrate – `CREATE` gives the user permission to create a publication to streams changes.
 
 ```bash
 GRANT CREATE ON DATABASE your_db TO migration_user;
 ```
 
-Next, grant role membership to migration user so that **all** the tables can be included as part of the publication. These are user-defined roles that own tables or objects in the database. This has to be done for **all** the tables of the Database to be migrated.
+Next, grant role membership to migration user so that **all** the tables can be included as part of the publication. Select user-defined roles that own tables or objects in the database. This has to be done for **all** the tables of the Database to be migrated.
 
 ```bash
 GRANT role1,  role2...etc  TO migration_user;
 ```
 
-2. **Use Superuser credentials at the source for migration**: This helps source user create the desired publication without any permission issues.
+2. **Use Superuser credentials at the source for migration**: Superuser credential helps source user create the desired publication without any permission issues.
 
 ```bash
 CREATE ROLE migration_user WITH LOGIN SUPERUSER PASSWORD 'your_secure_password'; 
 ```
 
-This can also be achieved by granting superuser privileges to an existing role to be used for migration:  
+Elevated access can also be achieved by granting superuser privileges to an existing role to be used for migration:  
 
 ```bash
 ALTER ROLE existing_migration_user WITH SUPERUSER;
@@ -111,7 +111,7 @@ GRANT CREATE ON DATABASE your_db TO migration_user;
 ALTER TABLE table1, table2...etc OWNER TO migration_user; 
 ```
 
-Ownership of **all** tables of the Database to be migrated has to be changed to migration_user. Note that changing table ownership and reverting back may affect application permissions.
+Ownership of **all** tables of the Database to be migrated has to be changed to migration_user. Changing table ownership and reverting back may affect application permissions.
 
 ## Related content
 
