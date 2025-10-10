@@ -90,6 +90,7 @@ az postgres flexible-server restore \
   --name <server> \
   --source-server <source_server> \
   --restore-time 2025-04-26T02:10:00+00:00
+  --storage-type PremiumV2_LRS
 ```
 
 > [!NOTE]
