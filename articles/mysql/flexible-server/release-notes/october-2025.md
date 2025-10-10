@@ -39,7 +39,7 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
   
 ## Improvements
 
-- No improvements in this release.
+- Resource movement now support move resources that has private endpoints. 
 
 ## Known issues fix
 
