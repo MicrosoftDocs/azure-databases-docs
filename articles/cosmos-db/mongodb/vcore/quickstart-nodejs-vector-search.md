@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 09/11/2025
+ms.date: 10/10/2025
 ms.custom: devx-track-ts, devx-track-ts-ai
 appliesto:
   - ✅ MongoDB (vCore)
@@ -270,7 +270,64 @@ npm run start:hnsw
 ----
 
 
-You see the top five hotels that match the vector search query and their similarity scores.
+The app logging and output show:
+
+- Collection creation and data insertion status
+- Vector index creation 
+- Search results with hotel names and similarity scores
+
+### [DiskANN](#tab/tab-diskann)
+
+```console
+Created collection: hotels_diskann
+Reading JSON file from C:\Users\<username>\repos\samples\cosmos-db-vector-samples\data\HotelsData_toCosmosDB_Vector.json
+Processing in batches of 100...
+Batch 1 complete: 50 inserted
+Created vector index: vectorIndex_diskann
+1. HotelName: Roach Motel, Score: 0.8399
+2. HotelName: Royal Cottage Resort, Score: 0.8385
+3. HotelName: Economy Universe Motel, Score: 0.8360
+4. HotelName: Foot Happy Suites, Score: 0.8354
+5. HotelName: Country Comfort Inn, Score: 0.8346
+Closing database connection...
+Database connection closed
+```
+
+#### [IVF](#tab/tab-ivf)
+
+```console
+Created collection: hotels_ivf
+Reading JSON file from C:\Users\<username>\repos\samples\cosmos-db-vector-samples\data\HotelsData_toCosmosDB_Vector.json
+Processing in batches of 100...
+Batch 1 complete: 50 inserted
+Created vector index: vectorIndex_ivf
+1. HotelName: Roach Motel, Score: 0.8399
+2. HotelName: Royal Cottage Resort, Score: 0.8385
+3. HotelName: Economy Universe Motel, Score: 0.8360
+4. HotelName: Foot Happy Suites, Score: 0.8354
+5. HotelName: Country Comfort Inn, Score: 0.8346
+Closing database connection...
+Database connection closed
+```
+
+#### [HNSW](#tab/tab-hnsw)
+
+```console
+Created collection: hotels_hnsw
+Reading JSON file from C:\Users\<username>\repos\samples\cosmos-db-vector-samples\data\HotelsData_toCosmosDB_Vector.json
+Processing in batches of 100...
+Batch 1 complete: 50 inserted
+Created vector index: vectorIndex_hnsw
+1. HotelName: Roach Motel, Score: 0.8399
+2. HotelName: Royal Cottage Resort, Score: 0.8385
+3. HotelName: Economy Universe Motel, Score: 0.8360
+4. HotelName: Foot Happy Suites, Score: 0.8354
+5. HotelName: Country Comfort Inn, Score: 0.8346
+Closing database connection...
+Database connection closed
+```
+
+----
 
 ## View and manage data in Visual Studio Code
 
