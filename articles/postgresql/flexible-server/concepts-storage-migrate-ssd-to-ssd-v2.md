@@ -4,7 +4,7 @@ description: This article describes how to migrate a Premium SSD server to Premi
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 10/10/2025
+ms.date: 08/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic:  concept-article
