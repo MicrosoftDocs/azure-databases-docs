@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 09/22/2025
+ms.date: 10/10/2025
 ms.custom:
   - devx-track-rust
   - build-2025
@@ -176,7 +176,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
      ```azurecli-interactive
      az rest \
          --method "PUT" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
          --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\",\"NativeAuth\"]}}}"
      ```
 
@@ -185,7 +185,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
      ```azurecli-interactive
      az rest \
          --method "PUT" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
          --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":\"NativeAuth\"}}}"
      ```
 
@@ -250,7 +250,7 @@ Follow these steps to see authentication methods currently enabled on the cluste
      ```azurecli-interactive
      az rest \
          --method "GET" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" 
      ```
 1. Observe the output. If Microsoft Entra ID authentication isn't configured, the output includes only the `NativeAuth` value in the `allowedModes` array.
 
@@ -357,7 +357,7 @@ Follow these steps to **add** [administrative Entra ID users](./entra-authentica
      ```azurecli-interactive
      az rest \
          --method "PUT" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-07-01-preview" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-09-01" \
          --body "{\"location\":\"<cluster-region>\",\"properties\":{\"identityProvider\":{\"type\":\"MicrosoftEntraID\",\"properties\":{\"principalType\":\"User\"}},\"roles\":[{\"db\":\"admin\",\"role\":\"root\"}]}}"
      ```
 
@@ -375,7 +375,7 @@ Follow these steps to **add** [administrative Entra ID users](./entra-authentica
      ```azurecli-interactive
      az rest \
          --method "DELETE" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-07-01-preview" 
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-09-01" 
      ```
     
 
@@ -412,7 +412,7 @@ Use commands on the **REST APIs** tab to list administrative users on the cluste
      ```azurecli-interactive
      az rest \
          --method "GET" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-07-01-preview" 
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-09-01" 
      ```
 1. Observe the output. The output includes an array of administrative user accounts on the cluster. This array has one built-in native administrative users and all administrative Entra ID user and service principals added to the cluster.
 
