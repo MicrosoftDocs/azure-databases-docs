@@ -59,6 +59,16 @@ In some cases your undo log might grow large, and you might want to clean it up.
     call az_deactivate_undo_tablespace(1)
     ```
     Then wait for the state of innodb_undo_001 to be empty(It means undo log is truncated).
+
+   > Note
+   > 
+   > Before emptying an undo tablespace, confirm there are no active transactions:        
+   > select count(1) from information_schema.innodb_trx;     
+   > If the result is 0, there are no active transactions.      
+   > Only when this count is zero can the undo tablespace become empty.      
+   > After transactions reach zero, check the undo tablespaces:         
+   > SELECT NAME, FILE_SIZE, STATE FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE SPACE_TYPE = 'Undo'  ORDER BY NAME;
+   
 1. Execute the following command to activate the innodb_undo_001 (default one).
     ```sql
     call az_activate_undo_tablespace(1)
