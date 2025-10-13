@@ -34,11 +34,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-button.png" alt-text="Screenshot showing the location of the Restore button in the Overview page." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-button.png":::
 
-4. You're redirected to the **Create Azure Database for PostgreSQL flexible server - Restore server** wizard, from where you can configure some settings for the new server that is gretting created. In the **Point-in-time-restore (PITR)** section, select **Latest restore point**.
+4. You're redirected to the **Create Azure Database for PostgreSQL flexible server - Restore server** wizard, from where you can configure some settings for the new server that is getting created. In the **Point-in-time-restore (PITR)** section, select **Latest restore point**.
 
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/latest-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/latest-restore-point.png":::
 
-5. Select **Configure server** and choose **Premium SSD v2** for the **Storage type** Field
+5. Select **Configure server** and choose **Premium SSD v2** for the **Storage type** Field.
   
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png":::
 
@@ -52,7 +52,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL Flexible server, on which the most recent data available on the source server is restored." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-progress.png":::
 
-8. When the deployment completes, you can select **Go to resource**, to get you to the **Compute +Storage** page of your new Azure Database for PostgreSQL flexible server, and start validate your **Storage type**
+8. When the deployment completes, you can select **Go to resource**, to get you to the **Compute +Storage** page of your new Azure Database for PostgreSQL flexible server, and start validate your **Storage type**.
 
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure Database for PostgreSQL Flexible server." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-completed.png":::
 
