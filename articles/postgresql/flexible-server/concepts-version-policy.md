@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions for A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/10/2025
+ms.date: 10/13/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -17,15 +17,9 @@ This article describes the Azure Database for PostgreSQL versioning policy.
 
 ## Major version
 
-A major version is a change in the first number of the version. For example, PostgreSQL 10 to PostgreSQL 11 is a major version upgrade. Major versions introduce new features and capabilities. They might include changes that require application code updates.
+A major version is a change in the first number of the version. For example, PostgreSQL 16 to PostgreSQL 17 is a major version upgrade. Major versions introduce new features and capabilities. They might include changes that require application code updates. Azure Database for PostgreSQL supports each major PostgreSQL version from the date Azure begins offering support until the version reaches end of life (end of support) as defined by the PostgreSQL community. For details, see [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
 
-[!INCLUDE [supported-upgrades](includes/supported-upgrades.md)]
-
-### Support
-
-Azure Database for PostgreSQL supports each major PostgreSQL version from the date Azure begins offering support until the version reaches end of life (end of support) as defined by the PostgreSQL community. For details, see [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
-
-### Retirement policy
+### Support policy
 
 The following table provides the retirement details for PostgreSQL major versions. The dates follow the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
 
@@ -108,6 +102,8 @@ A: Yes, but after the grace period, you're automatically enrolled in paid Extend
 **Q: Can my applications break during a major version upgrade?**
 
 A. PostgreSQL major version upgrades can introduce changes that may impact your application — such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. We recommend validating upgrades in a non-production environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
+
+[!INCLUDE [supported-upgrades](includes/supported-upgrades.md)]
 
 **Q: How do I know if my server is in Extended Support?**
 
