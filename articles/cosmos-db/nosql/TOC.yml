@@ -180,6 +180,9 @@
         - name: Frequently asked questions
           displayName: faq, questions, answers
           href: faq.yml?context=/azure/cosmos-db/nosql/context/context#security
+        - name: Videos
+          displayName: playlist, YouTube
+          href: reference-videos.md
 - name: Model data for partitioning
   items:
     - name: Overview of resource model

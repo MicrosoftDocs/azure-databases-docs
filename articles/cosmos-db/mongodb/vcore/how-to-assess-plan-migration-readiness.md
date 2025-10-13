@@ -43,17 +43,17 @@ Use the **Azure Cosmos DB Migration extension** in VS Code to assess the [compat
 2. Open the **DocumentDB for VS Code** extension. 
 1. Add the MongoDB server you want to assess for migration to the **Document DB Connections** list.
 1. Expand the selected connection, then Right-click and choose **Data Migration...**.
-:::image source="media/how-to-migrate-vcore/documentdb-connections.png" alt-text="Screenshot of the Right Click menu in Document DB Connections.":::
+:::image type="content" source="media/how-to-migrate-vcore/documentdb-connections.png" alt-text="Screenshot of the Right Click menu in Document DB Connections.":::
 1. From the command palette, select **Pre-Migration Assessment for Azure Cosmos DB for MongoDB**.
- :::image source="media/how-to-migrate-vcore/command-palette.png" alt-text="Screenshot of the command palette in Visual Studio Code.":::
+ :::image type="content" source="media/how-to-migrate-vcore/command-palette.png" alt-text="Screenshot of the command palette in Visual Studio Code.":::
 1. The assessment wizard guides you through three steps. In the **Start Validation** step, select **Run Validation** to verify credentials, prerequisites, and connectivity before proceeding.
-:::image source="media/how-to-migrate-vcore/start-validation.png" alt-text="Screenshot of the Start Validation step in the assessment wizard.":::
+:::image type="content" source="media/how-to-migrate-vcore/start-validation.png" alt-text="Screenshot of the Start Validation step in the assessment wizard.":::
 
     > [!Important]
     > To perform an assessment, the connected MongoDB user must have the [readAnyDatabase](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-readAnyDatabase) and [clusterMonitor](https://www.mongodb.com/docs/manual/reference/built-in-roles/#mongodb-authrole-clusterMonitor) roles assigned on the source instance.
 
 6. In the **Fill in Assessment Details** step, provide the necessary inputs:
-    :::image source="media/how-to-migrate-vcore/fill-assessment-details.png" alt-text="Screenshot of the Fill in Assessment Details step in the assessment wizard.":::
+    :::image type="content" source="media/how-to-migrate-vcore/fill-assessment-details.png" alt-text="Screenshot of the Fill in Assessment Details step in the assessment wizard.":::
     - Enter a title in the **Assessment name** field.
     - Select **vCore** from the **Offering** dropdown.
     - Provide the path to MongoDB logs.
@@ -66,15 +66,15 @@ Use the **Azure Cosmos DB Migration extension** in VS Code to assess the [compat
 
 7. Select **Start Assessment** to begin the assessment process.
 8. In the **Get Your Report** step, wait for the assessment to complete. The duration depends on the size of your source server.
-:::image source="media/how-to-migrate-vcore/assessment-in-progress.png" alt-text="Screenshot of the Get Your Report step in the assessment wizard while assessment is in progress.":::
+:::image type="content" source="media/how-to-migrate-vcore/assessment-in-progress.png" alt-text="Screenshot of the Get Your Report step in the assessment wizard while assessment is in progress.":::
 9. Once the assessment is finished, select **Download Report** to retrieve the HTML report.
-:::image source="media/how-to-migrate-vcore/assessment-completed.png" alt-text="Screenshot of the Get Your Report step in the assessment wizard after assessment is completed.":::
+:::image type="content" source="media/how-to-migrate-vcore/assessment-completed.png" alt-text="Screenshot of the Get Your Report step in the assessment wizard after assessment is completed.":::
 
 ### View Past Assessments
 
 Reviewing previous assessments can be valuable. Use the **View Past Assessments** tab to access detailed historical reports. The assessment list includes all assessments initiated on the current machine for the selected connection.
 
-:::image source="media/how-to-migrate-vcore/view-all-assessments.png" alt-text="Screenshot of the View Past Assessment tab in the extension.":::
+:::image type="content" source="media/how-to-migrate-vcore/view-all-assessments.png" alt-text="Screenshot of the View Past Assessment tab in the extension.":::
 
 ### FAQ
 

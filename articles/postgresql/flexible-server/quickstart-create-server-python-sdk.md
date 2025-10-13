@@ -32,7 +32,7 @@ This guide helps you explore the basic functionalities of this SDK, including cr
 ## Prerequisites
 
 ### Account with active subscription
-An Azure account with an active subscription [Create one for free](https://azure.microsoft.com/free/).
+An Azure account with an active subscription [Create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ### Install the libraries
 Install the following Azure Python libraries.

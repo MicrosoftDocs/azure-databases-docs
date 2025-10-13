@@ -18,7 +18,7 @@ The Azure SDK for Java provides a set of libraries that allow you to interact wi
 
 ## Prerequisites
 
-- [An Azure account with an active subscription](https://azure.microsoft.com/free/)
+- [An Azure account with an active subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 - Java Development Kit (JDK) with the latest version
 - Download Maven for using the Azure Java SDK library
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine
