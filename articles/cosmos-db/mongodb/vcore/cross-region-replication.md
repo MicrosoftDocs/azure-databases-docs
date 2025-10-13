@@ -12,6 +12,8 @@ ms.custom:
 - sfi-image-nochange
 ms.topic: concept-article
 ms.date: 10/11/2025
+appliesto:
+  - ✅ MongoDB (vCore)
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
 ---
 
