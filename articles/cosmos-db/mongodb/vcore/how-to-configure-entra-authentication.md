@@ -129,7 +129,13 @@ To use a managed identity in your application or to log in using Entra ID creden
 1. Note `clientID` value in the output.
 
 ## Manage cluster authentication methods 
-Use the following steps to enable Microsoft Entra ID authentication method on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have *native DocumentDB authentication only* or *native DocumentDB and Microsoft Entra ID* authentication methods enabled on the cluster.  
+Use the following steps to change authentication methods on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have the following authentication methods enabled on your cluster:
+- Native DocumentDB authentication method only
+- Native DocumentDB and Microsoft Entra ID authentication methods
+- Microsoft Entra ID authentication method
+
+> [!IMPORTANT]
+> When cluster is created you have to have native DocumentDB authentication method enabled and specify native administrative user credentials. You can disable native DocumentDB authentication method disabled once new cluster finishes provisioning.  
 
 ### [Azure portal](#tab/portal)
 
@@ -142,6 +148,10 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
 1. Select **Save** to confirm the authentication method changes. 
 
     :::image type="content" source="media/how-to-configure-entra-authentication/save-authentication-method-change.png" alt-text="Screenshot that shows the location of Save button for confirmation of the authentication method changes on an existing cluster." lightbox="media/how-to-configure-entra-authentication/save-authentication-method-change.png":::
+
+> [!NOTE]
+> If you need to disable native DocumentDB authentication method on your cluster, use Azure CLI or REST API calls.  
+
 
 ### [Azure CLI](#tab/cli)
 
@@ -167,6 +177,17 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
         --latest-include-preview
     ```
 
+1. To disable native DocumentDB authentication method and enable Microsoft Entra ID on the cluster, update the existing cluster with an HTTP `PATCH` operation by adding only the `MicrosoftEntraID` value to `allowedModes` in the `authConfig` property.
+
+    ```azurecli-interactive
+    az resource patch \
+        --resource-group "<resource-group-name>" \
+        --name "<cluster-name>" \
+        --resource-type "Microsoft.DocumentDB/mongoClusters" \
+        --properties "{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\"]}}" \
+        --latest-include-preview
+    ```
+
 ### [REST APIs](#tab/rest-apis)
 
 You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
@@ -187,6 +208,15 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
          --method "PUT" \
          --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
          --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":\"NativeAuth\"}}}"
+     ```
+
+1.  Use this command to remove native DocumentDB authentication method and add Microsoft Entra ID authentication method to the cluster:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "PUT" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
+         --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\"]}}}"
      ```
 
     > [!TIP]
