@@ -20,7 +20,7 @@ Azure Database for MySQL is a managed service for running, managing, and scaling
 
 ## Prerequisites
 
-- [Azure subscription](https://azure.microsoft.com/free/)
+- [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 - Access to the Azure portal
 - Basic knowledge of Azure Database for MySQL Flexible Server deployment options and configurations
 

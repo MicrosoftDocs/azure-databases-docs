@@ -21,7 +21,7 @@ To learn more about intelligent tuning, see the [overview](concepts-intelligent-
 
 ## Prerequisites
 
-- If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/free/) account before you begin.
+- If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) account before you begin.
 - Install or upgrade the Azure CLI to the latest version. See [Install the Azure CLI](/cli/azure/install-azure-cli).
 - Sign in to your Azure account by using the [az login](/cli/azure/reference-index#az-login) command. Note the `id` property, which refers to the subscription ID for your Azure account.
 

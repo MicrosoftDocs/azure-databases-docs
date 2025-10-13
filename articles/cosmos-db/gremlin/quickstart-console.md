@@ -23,7 +23,7 @@ In this quickstart, you use the Gremlin console to connect to a newly created Az
 ## Prerequisites
 
 - An Azure account with an active subscription.
-  - No Azure subscription? [Sign up for a free Azure account](https://azure.microsoft.com/free/).
+  - No Azure subscription? [Sign up for a free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Docker host](https://www.docker.com/)
   - Don't have Docker installed? Try this quickstart in [GitHub Codespaces](https://codespaces.new/github/codespaces-blank?quickstart=1).
 - [Azure Command-Line Interface (CLI)](/cli/azure/)

@@ -18,7 +18,7 @@ This article describes moving an Azure Database for MySQL Flexible Server from P
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - An Azure Database for MySQL server started with private access (integrated virtual network).
 - An Azure Virtual Network with a subnet and a service endpoint to the Azure Database for MySQL server.
 - An Azure Database for MySQL server with a private endpoint.
