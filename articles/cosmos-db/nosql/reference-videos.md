@@ -16,13 +16,13 @@ appliesto:
 
 Find comprehensive Azure Cosmos DB for NoSQL learning resources organized by subject. These videos cover everything from conference sessions and AI integration to development tutorials and real-world customer examples, helping you use Azure Cosmos DB for NoSQL efficiently.
 
-## `Azure Cosmos DB Conf`
+## Azure Cosmos DB Conf
 
-- [2025](https://www.youtube.com/playlist?list=PLmamF3YkHLoLQhnFsKWhtKu_Tp0uXPFdn)
-- [2024](https://www.youtube.com/playlist?list=PLmamF3YkHLoKYkttA6OLkqtdf9_CmHDG0)
-- [2023](https://www.youtube.com/playlist?list=PLmamF3YkHLoLd5dQ0aji5QRhxQQAh0SIn)
-- [2022](https://www.youtube.com/playlist?list=PLmamF3YkHLoLa2ELTHUhoSMx89w329bOD)
-- [2021](https://www.youtube.com/playlist?list=PLmamF3YkHLoLN_24E41jSPVilv5B3GTBg)
+- [Azure Cosmos DB Conf 2025](https://www.youtube.com/playlist?list=PLmamF3YkHLoLQhnFsKWhtKu_Tp0uXPFdn)
+- [Azure Cosmos DB Conf 2024](https://www.youtube.com/playlist?list=PLmamF3YkHLoKYkttA6OLkqtdf9_CmHDG0)
+- [Azure Cosmos DB Conf 2023](https://www.youtube.com/playlist?list=PLmamF3YkHLoLd5dQ0aji5QRhxQQAh0SIn)
+- [Azure Cosmos DB Conf 2022](https://www.youtube.com/playlist?list=PLmamF3YkHLoLa2ELTHUhoSMx89w329bOD)
+- [Azure Cosmos DB Conf 2021](https://www.youtube.com/playlist?list=PLmamF3YkHLoLN_24E41jSPVilv5B3GTBg)
 
 ## General content
 
