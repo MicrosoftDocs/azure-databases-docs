@@ -54,8 +54,9 @@ If a region outage occurs, you can perform disaster recovery operation by promot
 
 ## Authentication methods on replica cluster
 
-[Authentication methods](./entra-authentication.md#considerations) are managed independently on the primary and replica clusters. Users and other security principals such as managed identities are always managed on the primary cluster and synchronized to the replica cluster.  
-If the primary cluster has native DocumentDB authentication method disabled *when replica cluster is created*, enabling native DocumentDB authentication is not allowed on the replica. To have native DocumentDB authentication enabled on such a replica, it would needs to be promoted first. 
+[Authentication methods](./entra-authentication.md#considerations) are managed independently on the primary and replica clusters. Users and other security principals, such as managed identities, are always managed on the primary cluster and synchronized to the replica cluster.  
+
+If the primary cluster has native DocumentDB authentication method disabled *at the time the replica cluster is created*, enabling native DocumentDB authentication on the replica is not allowed.  To enable native DocumentDB authentication on such a replica, it must first be promoted.
 
 ## Related content
 
