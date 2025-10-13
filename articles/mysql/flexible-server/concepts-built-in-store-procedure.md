@@ -58,21 +58,8 @@ In some cases your undo log might grow large, and you might want to clean it up.
     ```sql
     call az_deactivate_undo_tablespace(1)
     ```
-    Then wait for the state of innodb_undo_001 to be empty(It means undo log is truncated).
-   
-   > **_NOTE:_**
-   > 
-   > Before emptying an undo tablespace, confirm there are no active transactions:
-   >```sql        
-   > select count(1) from information_schema.innodb_trx;
-   >```  
-   > If the result is 0, there are no active transactions.      
-   > Only when this count is zero can the undo tablespace become empty.      
-   > After transactions reach zero, check the undo tablespaces:
-   >```sql 
-   > SELECT NAME, FILE_SIZE, STATE FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE SPACE_TYPE = 'Undo'  ORDER BY NAME;
-   >```
-   
+    Then wait for the state of innodb_undo_001 to be empty(It means undo log is truncated).     
+    You can verify undo log truncation by checking [Verifying and Checking Undo Tablespaces](./concepts-built-in-store-procedure.md#verifying-and-checking-undo-tablespaces)
 1. Execute the following command to activate the innodb_undo_001 (default one).
     ```sql
     call az_activate_undo_tablespace(1)
@@ -81,6 +68,22 @@ In some cases your undo log might grow large, and you might want to clean it up.
 1. Repeat the 1-4 steps for the innodb_undo_002.
 1. Execute ```call az_deactivate_undo_tablespace(3);``` to deactivate the newly created table space. Wait for the state to be empty. Then execute ```Call az_drop_undo_tablespace(3);``` to drop the newly created table space. 
    You can't drop the default ones (innodb_undo_001, innodb_undo_002). You can only drop the one you created, in this example it's x_undo_003.Before dropping, first deactivate x_undo_003 to empty state.
+#### Verifying and Checking Undo Tablespaces
+Before emptying an undo tablespace, ensure there are no active transactions:
+```sql
+SELECT COUNT(1) FROM information_schema.innodb_trx;
+```
+- If the result is 0, there are no active transactions.
+- The undo tablespace can only be emptied when this count is zero.
+
+After confirming that transactions have reached zero, check the status of the undo tablespaces:
+
+```sql
+SELECT NAME, FILE_SIZE, STATE
+FROM information_schema.innodb_tablespaces
+WHERE SPACE_TYPE = 'Undo'
+ORDER BY NAME;
+```
 
 ### Drop problematic table 
 
