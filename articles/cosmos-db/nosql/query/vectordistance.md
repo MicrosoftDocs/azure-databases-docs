@@ -43,7 +43,7 @@ Supported parameters for the optional `obj_expr`
 | --- | --- | 
 | **`distanceFunction`** | The metric used to compute distance/similarity. |
 | **`dataType`** | The data type of the vectors. `float32`, `int8`, `uint8` values. Default value is `float32`. |
-| **`searchListSizeMultiplier`** | An integer specifying the size of the search list when conducting a vector search on the DiskANN index.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=10, Max=100. |
+| **`searchListSizeMultiplier`** | An integer specifying the size of the search list when conducting a vector search on the DiskANN index.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=5, Max=100. |
 | **`quantizedVectorListMultiplier`** | An integer specifying the size of the search list when conducting a vector search on the quantizedFlat index.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=5, Max=100. |
 
 
