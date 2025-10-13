@@ -1,6 +1,6 @@
 ---
 title: Query Performance Insight
-description: This article describes the Query Performance Insight feature in  Azure Database for PostgreSQL flexible server.
+description: This article describes the Query Performance Insight feature in an Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -11,11 +11,9 @@ ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
 
-# Query Performance Insight in Azure Database for PostgreSQL flexible server
+# Query Performance Insight in Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-Query Performance Insight provides intelligent query analysis for Azure Database for PostgreSQL flexible server databases. It helps identify the top resource consuming and long-running queries in your workload. This helps you find the queries to optimize to improve overall workload performance and efficiently use the resource that you're paying for. Query Performance Insight helps you spend less time troubleshooting database performance by providing:
+Query Performance Insight provides intelligent query analysis for databases in an Azure Database for PostgreSQL flexible server instance. It helps identify the top resource consuming and long-running queries in your workload. This helps you find the queries to optimize to improve overall workload performance and efficiently use the resource that you're paying for. Query Performance Insight helps you spend less time troubleshooting database performance by providing:
 
 >[!div class="checklist"]
 > * Identify what your long running queries, and how they change over time.
@@ -36,14 +34,15 @@ Query Performance Insight provides intelligent query analysis for Azure Database
 > [!NOTE]
 > **Query Store Wait Sampling** is currently **disabled**. Query Performance Insight depends on Query Store wait sampling data. You need to enable it by setting the dynamic server parameter `pgms_wait_sampling.query_capture_mode` to **ALL**.
 
-3. **[Log analytics workspace](how-to-configure-and-access-logs.md)** is configured for storing 3 log categories including - Azure Database for PostgreSQL flexible server Sessions logs, Azure Database for PostgreSQL flexible server Query Store and Runtime, and Azure Database for PostgreSQL flexible server Query Store Wait Statistics. To configure log analytics, refer [Log analytics workspace](how-to-configure-and-access-logs.md#configure-diagnostic-settings).
+3. **[Log analytics workspace](how-to-configure-and-access-logs.md)** is configured for storing 3 log categories including - Azure Database for PostgreSQL flexible server instance Sessions logs, Azure Database for PostgreSQL flexible server instance Query Store and Runtime, and Azure Database for PostgreSQL flexible server instance Query Store Wait Statistics. To configure log analytics, refer [Log analytics workspace](how-to-configure-and-access-logs.md#configure-diagnostic-settings).
 
 > [!NOTE]
-> The **Query Store data isn't being transmitted to the log analytics workspace**. The Azure Database for PostgreSQL flexible server logs (Sessions data / Query Store Runtime / Query Store Wait Statistics) aren't being sent to the log analytics workspace, which is necessary to use Query Performance Insight. To configure the diagnostic settings for Azure Database for PostgreSQL flexible server and send the data to a log analytics workspace, please refer to [Configure and access logs in Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md).
+> The **Query Store data isn't being transmitted to the log analytics workspace**. The logs (Sessions data / Query Store Runtime / Query Store Wait Statistics) aren't being sent to the log analytics workspace, which is necessary to use Query Performance Insight. To configure the diagnostic settings for an Azure Database for PostgreSQL flexible server instance and send the data to a log analytics workspace, please refer to [Configure and access logs in Azure Database for PostgreSQL](how-to-configure-and-access-logs.md).
 
 ## Permissions
 
-You need the following [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) permissions assigned to Azure Database for PostgreSQL flexible server so that you can use Query Performance Insight:
+You need the following [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) permissions assigned to Azure Database for your PostgreSQL flexible server instance so that you can use Query Performance Insight:
+
   - Microsoft.DBforPostgreSQL/flexibleServers/configurations/read
   - Microsoft.DBforPostgreSQL/flexibleServers/providers/Microsoft.Insights/diagnosticSettings/read
   - Microsoft.DBforPostgreSQL/flexibleServers/read
@@ -67,7 +66,7 @@ The Query Performance Insight view in the Azure portal surfaces visualizations o
 6. Optionally, you can select the **custom** to specify a time range.
 
 > [!NOTE]
-> For Azure Database for PostgreSQL flexible server to render the information in Query Performance Insight, **Query Store needs to capture a couple hours of data**. If the database has no activity or if Query Store was not active during a certain period, the charts will be empty when Query Performance Insight displays that time range. You can enable Query Store at any time if it's not running. For more information, see [Best practices with Query Store](concepts-query-store-best-practices.md).
+> For an Azure Database for PostgreSQL flexible server instance to render the information in Query Performance Insight, **Query Store needs to capture a couple hours of data**. If the database has no activity or if Query Store was not active during a certain period, the charts will be empty when Query Performance Insight displays that time range. You can enable Query Store at any time if it's not running. For more information, see [Best practices with Query Store](concepts-query-store-best-practices.md).
 
 7. To **view details** of a specific query, click the `QueryId Snapshot` dropdown.
 :::image type="content" source="./media/concepts-query-performance-insight/2-individual-query-details.png" alt-text="Screenshot of viewing details of a specific query.":::
@@ -91,4 +90,4 @@ The Query Performance Insight view in the Azure portal surfaces visualizations o
 
 ## Related content
 
-- [Monitor metrics in Azure Database for PostgreSQL flexible server](concepts-monitoring.md).
+- [Monitor metrics in Azure Database for PostgreSQL](concepts-monitoring.md).

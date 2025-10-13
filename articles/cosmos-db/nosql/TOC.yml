@@ -72,6 +72,8 @@
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrate with AI tools
       href: ../gen-ai/integrations.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Manage agent memories
+      href: ../gen-ai/agentic-memories.md
     - name: Build a RAG chatbot
       href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
     - name: Index documents for search
@@ -104,15 +106,9 @@
   items:
     - name: Security
       href: security.md
-    - name: Disable key-based authentication
-      displayName: key, ropc, connection string
-      href: how-to-disable-key-based-authentication.md
-    - name: Grant control plane role-based access
-      href: how-to-grant-control-plane-access.md
-    - name: Grant data plane role-based access
-      href: how-to-grant-data-plane-access.md
-    - name: Glossary
-      href: security-glossary.md
+    - name: Use role-based access control
+      displayName: rbac, key, ropc, connection string
+      href: how-to-connect-role-based-access-control.md
     - name: Network security
       items:
         - name: Configure IP firewall

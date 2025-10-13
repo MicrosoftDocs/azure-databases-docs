@@ -1,6 +1,6 @@
 ---
-title: Limits in Azure Database for PostgreSQL flexible server
-description: This article describes limits in Azure Database for PostgreSQL flexible server, such as the number of connections and storage engine options.
+title: Limits in Flexible Server
+description: This article describes limits in Azure Database for PostgreSQL, such as the number of connections and storage engine options.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -12,15 +12,13 @@ ms.custom:
   - ai-assistant-test
 ---
 
-# Limits in Azure Database for PostgreSQL flexible server
+# Limits in Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-The following sections describe capacity and functional limits in Azure Database for PostgreSQL flexible server. If you'd like to learn about resource (compute, memory, storage) tiers, see the [compute ](concepts-compute.md) and [storage ](concepts-storage.md)  articles.
+The following sections describe capacity and functional limits for Azure Database for PostgreSQL flexible server instances. If you'd like to learn about resource (compute, memory, storage) tiers, see the [compute ](concepts-compute.md) and [storage ](concepts-storage.md)  articles.
 
 ## Maximum connections
 
-The following table shows the *default* maximum number of connections for each pricing tier and vCore configuration. Azure Database for PostgreSQL flexible server reserves 15 connections for physical replication and monitoring of the Azure Database for PostgreSQL flexible server instance. Consequently, the table reduces the value for maximum user connections by 15 from the total maximum connections.
+The following table shows the *default* maximum number of connections for each pricing tier and vCore configuration. An Azure Database for PostgreSQL flexible server instance reserves 15 connections for physical replication and monitoring of the Azure Database for PostgreSQL flexible server instance. Consequently, the table reduces the value for maximum user connections by 15 from the total maximum connections.
 
 |Product name                                 |vCores|Memory size|Maximum connections|Maximum user connections|
 |-----------------------------------------|------|-----------|---------------|--------------------|
@@ -55,7 +53,7 @@ The following table shows the *default* maximum number of connections for each p
 
 The reserved connection slots, presently at 15, can change. We advise regularly verifying the total reserved connections on the server. You calculate this number by summing the values of the `reserved_connections` and `superuser_reserved_connections` server parameters. The maximum number of available user connections is `max_connections` - (`reserved_connections` + `superuser_reserved_connections`).
 
-The system calculates the default value for the `max_connections` server parameter when you provision the instance of Azure Database for PostgreSQL flexible server, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `max_connections` server parameter of that instance. We recommend that whenever you change the product assigned to an instance, you also adjust the value for the `max_connections` parameter according to the values in the preceding table.
+The system calculates the default value for the `max_connections` server parameter when you provision the instance of Azure Database for PostgreSQL flexible server, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the instance won't have any effect on the default value for the `max_connections` server parameter of that instance. We recommend that whenever you change the product assigned to an instance, you also adjust the value for the `max_connections` parameter according to the values in the preceding table.
 
 ### Changing the max_connections value
 
@@ -68,19 +66,19 @@ However, you can use the `max_connections` setting to adjust how many connection
 >
 > Instances might encounter difficulties when the workload expands and demands more memory. As the number of connections increases, memory usage also rises. Instances with limited memory might face issues such as crashes or high latency. Although a higher value for `max_connections` might be acceptable when most connections are idle, it can lead to significant performance problems after they become active.
 >
-> If you need more connections, we suggest that you instead use PgBouncer, the built-in Azure solution for connection pool management. Use it in transaction mode. To start, we recommend that you use conservative values by multiplying the vCores within the range of 2 to 5. Afterward, carefully monitor resource utilization and application performance to ensure smooth operation. For detailed information on PgBouncer, see [PgBouncer in Azure Database for PostgreSQL flexible server](concepts-pgbouncer.md).
+> If you need more connections, we suggest that you instead use PgBouncer, the built-in Azure solution for connection pool management. Use it in transaction mode. To start, we recommend that you use conservative values by multiplying the vCores within the range of 2 to 5. Afterward, carefully monitor resource utilization and application performance to ensure smooth operation. For detailed information on PgBouncer, see [PgBouncer in Azure Database for PostgreSQL](concepts-pgbouncer.md).
 
 When connections exceed the limit, you might receive the following error:
 
 `FATAL:  sorry, too many clients already.`
 
-When you're using Azure Database for PostgreSQL flexible server for a busy database with a large number of concurrent connections, there might be a significant strain on resources. This strain can result in high CPU utilization, especially when many connections are established simultaneously and when connections have short durations (less than 60 seconds). These factors can negatively affect overall database performance by increasing the time spent on processing connections and disconnections.
+When you're using an Azure Database for PostgreSQL flexible server instance for a busy database with a large number of concurrent connections, there might be a significant strain on resources. This strain can result in high CPU utilization, especially when many connections are established simultaneously and when connections have short durations (less than 60 seconds). These factors can negatively affect overall database performance by increasing the time spent on processing connections and disconnections.
 
-Each connection in Azure Database for PostgreSQL flexible server, regardless of whether it's idle or active, consumes a significant amount of resources from your database. This consumption can lead to performance issues beyond high CPU utilization, such as disk and lock contention. The [Number of Database Connections](https://wiki.postgresql.org/wiki/Number_Of_Database_Connections) article on the PostgreSQL Wiki discusses this article in more detail. To learn more, see [Identify and solve connection performance in Azure Database for PostgreSQL flexible server](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/identify-and-solve-connection-performance-in-azure-postgres/ba-p/3698375).
+Each connection in an Azure Database for PostgreSQL flexible server instance, regardless of whether it's idle or active, consumes a significant amount of resources from your database. This consumption can lead to performance issues beyond high CPU utilization, such as disk and lock contention. The [Number of Database Connections](https://wiki.postgresql.org/wiki/Number_Of_Database_Connections) article on the PostgreSQL Wiki discusses this article in more detail. To learn more, see [Identify and solve connection performance in Azure Postgres](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/identify-and-solve-connection-performance-in-azure-postgres/ba-p/3698375).
 
 ## Functional limitations
 
-The following sections list considerations for what is and isn't supported in Azure Database for PostgreSQL flexible server.
+The following sections list considerations for what is and isn't supported for your Azure Database for PostgreSQL flexible server instances.
 
 ### Scale operations
 
@@ -93,8 +91,8 @@ The following sections list considerations for what is and isn't supported in Az
 - After you configure the storage size, you can't reduce it. You have to create a new server with the desired storage size, perform a  manual [dump and restore](../howto-migrate-using-dump-and-restore.md) operation, and migrate your databases to the new server.
 - When the storage usage reaches 95% or if the available capacity is less than 5 GiB (whichever is more), the system automatically switches the server to *read-only mode* to avoid errors associated with disk-full situations. In rare cases, if the rate of data growth outpaces the time it takes to switch to read-only mode, your server might still run out of storage. You can enable storage autogrow to avoid these issues and automatically scale your storage based on your workload demands.
 - We recommend setting alert rules for `storage used` or `storage percent` when they exceed certain thresholds so that you can proactively take action such as increasing the storage size. For example, you can set an alert if the storage percentage exceeds 80% usage.
-- If you're using logical replication, you must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the write-ahead logging (WAL) files accumulate in the primary and fill up the storage. If the storage exceeds a certain threshold and if the logical replication slot isn't in use (because of an unavailable subscriber), Azure Database for PostgreSQL flexible server automatically drops that unused logical replication slot. This action releases accumulated WAL files and prevents your server from becoming unavailable because the storage is filled.
-- We don't support the creation of tablespaces. If you're creating a database, don't provide a tablespace name. Azure Database for PostgreSQL flexible server uses the default tablespace that the template database inherits. It's unsafe to provide a tablespace like the temporary one, because we can't ensure that such objects will remain persistent after events like server restarts and high-availability (HA) failovers.
+- If you're using logical replication, you must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the write-ahead logging (WAL) files accumulate in the primary and fill up the storage. If the storage exceeds a certain threshold and if the logical replication slot isn't in use (because of an unavailable subscriber), an Azure Database for PostgreSQL flexible server instance automatically drops that unused logical replication slot. This action releases accumulated WAL files and prevents your server from becoming unavailable because the storage is filled.
+- We don't support the creation of tablespaces. If you're creating a database, don't provide a tablespace name. An Azure Database for PostgreSQL flexible server instance uses the default tablespace that the template database inherits. It's unsafe to provide a tablespace like the temporary one, because we can't ensure that such objects will remain persistent after events like server restarts and high-availability (HA) failovers.
 
 ### Networking
 
@@ -105,7 +103,7 @@ The following sections list considerations for what is and isn't supported in Az
 
 ### High availability
 
-- See [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server#high-availability-limitations).
+- See [High availability limitations](/azure/reliability/reliability-postgresql-flexible-server#high-availability-limitations).
 
 ### Availability zones
 
@@ -113,8 +111,8 @@ The following sections list considerations for what is and isn't supported in Az
 
 ### Postgres engine, extensions, and PgBouncer
 
-- Azure Database for PostgreSQL flexible server supports all the features of the PostgreSQL engine, including partitioning, logical replication, and foreign data wrappers.
-- Azure Database for PostgreSQL flexible server supports all `contrib` extensions and more. For more information, see [PostgreSQL extensions](/azure/postgresql/flexible-server/concepts-extensions).
+- An Azure Database for PostgreSQL flexible server instance supports all the features of the PostgreSQL engine, including partitioning, logical replication, and foreign data wrappers.
+- An Azure Database for PostgreSQL flexible server instance supports all `contrib` extensions and more. For more information, see [PostgreSQL extensions](/azure/postgresql/flexible-server/concepts-extensions).
 - Burstable servers currently don't have access to the built-in PgBouncer connection pooler.
 
 ### Stop/start operations
@@ -145,6 +143,6 @@ The following sections list considerations for what is and isn't supported in Az
 
 ## Related content
 
-- [Compute options in Azure Database for PostgreSQL flexible server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL flexible server](concepts-storage.md).
-- [Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server](concepts-supported-versions.md).
+- [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL](concepts-storage.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL](concepts-supported-versions.md).

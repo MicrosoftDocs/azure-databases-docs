@@ -1,6 +1,6 @@
 ---
 title: Integrate Azure AI Language Services with Azure Database for PostgreSQL
-description: Create AI applications with sentiment analysis, summarization, or key phrase extraction using Azure AI Language Services and Azure Database for PostgreSQL flexible server.
+description: Create AI applications with sentiment analysis, summarization, or key phrase extraction using Azure AI Language Services and Azure Database for PostgreSQL.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
@@ -15,8 +15,6 @@ ms.topic: how-to
 ---
 
 # Integrate Azure Database for PostgreSQL with Azure Cognitive Services
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 Azure AI extension gives the ability to invoke the [Azure AI Language Services](/azure/ai-services/language-service/overview#which-language-service-feature-should-i-use) such as sentiment analysis right from within the database.
 
@@ -597,11 +595,11 @@ select
 
 - [Learn more about Azure OpenAI Service integration](generative-ai-azure-openai.md)
 - [Learn more about Azure Machine Learning integration](generative-ai-azure-machine-learning.md)
-- [Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
+- [Generative AI with Azure Database for PostgreSQL](generative-ai-azure-local-ai.md).
 - [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
-- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server](generative-ai-azure-openai.md).
-- [Azure AI extension in Azure Database for PostgreSQL flexible server](generative-ai-azure-overview.md).
-- [Generative AI with Azure Database for PostgreSQL flexible server](generative-ai-overview.md).
-- [Recommendation System with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-recommendation-system.md).
-- [Semantic Search with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md).
+- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md).
+- [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
+- [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
+- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md).

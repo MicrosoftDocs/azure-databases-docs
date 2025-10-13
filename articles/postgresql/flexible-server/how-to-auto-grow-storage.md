@@ -1,6 +1,6 @@
 ---
 title: Configure Storage Autogrow
-description: This article describes how you can configure storage autogrow in an Azure Database for PostgreSQL flexible server.
+description: This article describes how you can configure storage autogrow in an Azure Database for PostgreSQL flexible server instance.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
@@ -10,12 +10,10 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
   - sfi-image-nochange
-# customer intent: As a user, I want to learn how to configure storage autogrow in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to configure storage autogrow in an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Configure storage autogrow
-
-[!INCLUDE [applies-to-postgresql-Flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article describes how you can configure Azure Database for PostgreSQL server storage to grow without affecting the workload.
 
@@ -36,7 +34,7 @@ As an illustration, take a server with a storage capacity of 2 TiB (greater than
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 1. In the resource menu, under the **Settings** section, select **Compute + storage**.
 
@@ -44,11 +42,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the **Storage** section, enable the **Storage autogrow** checkbox.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png" alt-text="Screenshot showing how to enable storage autogrow on an existing Azure Database for flexible server." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png":::
+    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png" alt-text="Screenshot showing how to enable storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png":::
 
 1. Select **Save** to apply the changes.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after enabling storage autogrow on an existing Azure Database for flexible server." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png":::
+    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after enabling storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png":::
 
 1. A deployment initiates and, when it completes, a notification shows that autogrow is successfully enabled.
 
@@ -73,7 +71,7 @@ az postgres flexible-server update \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 1. In the resource menu, under the **Settings** section, select **Compute + storage**.
 
@@ -81,11 +79,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the **Storage** section, enable the **Storage autogrow** checkbox.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/disable-autogrow-existing-server.png" alt-text="Screenshot showing how to disable storage autogrow on an existing Azure Database for flexible server." lightbox="media/how-to-auto-grow-storage/disable-autogrow-existing-server.png":::
+    :::image type="content" source="media/how-to-auto-grow-storage/disable-autogrow-existing-server.png" alt-text="Screenshot showing how to disable storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/disable-autogrow-existing-server.png":::
 
 1. Select **Save** to apply the changes.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after disabling storage autogrow on an existing Azure Database for flexible server." lightbox="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png":::
+    :::image type="content" source="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after disabling storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png":::
 
 1. A deployment initiates and, when it completes, a notification shows that autogrow is successfully enabled.
 
@@ -110,13 +108,13 @@ az postgres flexible-server update \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. During provisioning of a new Azure Database for PostgreSQL flexible server, in the **Compute + storage** section, select **Configure server**.
+1. During provisioning of a new Azure Database for PostgreSQL flexible server instance, in the **Compute + storage** section, select **Configure server**.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/create-server-storage-auto-grow.png" alt-text="Screenshot showing how to configure server compute and storage during provisioning of a new Azure Database for flexible server." lightbox="media/how-to-auto-grow-storage/create-server-storage-auto-grow.png":::
+    :::image type="content" source="media/how-to-auto-grow-storage/create-server-storage-auto-grow.png" alt-text="Screenshot showing how to configure server compute and storage during provisioning of a new Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/create-server-storage-auto-grow.png":::
 
 1. In the **Storage** section, enable the **Storage autogrow** checkbox.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/server-provisioning-storage-auto-grow.png" alt-text="Screenshot showing how to enable storage autogrow during provisioning of a new Azure Database for flexible server." lightbox="media/how-to-auto-grow-storage/server-provisioning-storage-auto-grow.png":::
+    :::image type="content" source="media/how-to-auto-grow-storage/server-provisioning-storage-auto-grow.png" alt-text="Screenshot showing how to enable storage autogrow during provisioning of a new Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/server-provisioning-storage-auto-grow.png":::
 
 ### [CLI](#tab/cli-enable-new-server)
 
@@ -153,4 +151,4 @@ A. No, it relies on online disk scaling.
 
 - [Scale storage performance](how-to-scale-storage-performance.md)
 - [Storage options](concepts-storage.md)
-- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md)
+- [Limits in Azure Database for PostgreSQL](concepts-limits.md)

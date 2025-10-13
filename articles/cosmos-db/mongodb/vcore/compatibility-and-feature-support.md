@@ -1,16 +1,16 @@
 ---
 title: Compatibility and feature support
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Offers an overview of the current compatibility status of Mongo vCore.
+description: Learn about the compatibility and feature support of Azure Cosmos DB for MongoDB vCore, including supported commands and features.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: product-comparison
-ms.date: 04/09/2024
+ms.topic: concept-article
+ms.date: 09/17/2025
 ---
 
-# Compatibility and feature support
+# Compatibility and feature support in Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
@@ -29,9 +29,7 @@ The following table lists commands not supported/restricted by the database. As 
 <tr><td>$accumulator</td><td rowspan="3">These commands require a JavaScript engine to be hosted on the database server, enabling users to run arbitrary commands. This can pose significant security risks, including the potential for injection attacks or execution of malicious code. Due to the associated security risks and low demand from customers, these commands are currently not supported. </td></tr>
 <tr><td>$function</td></tr>
 <tr><td>$where</td></tr>
-
-<tr><td>$searchMeta</td><td rowspan="4">It's not prioritized at this time due to low demand.</td></tr>
-<tr><td>$listSearchIndexes</td></tr>
+<tr><td>$listSearchIndexes</td><td rowspan="3">It's not prioritized at this time due to low demand.</td></tr>
 <tr><td>$listSampledQueries</td></tr>
 <tr><td>$shardedDataDistribution</td></tr>
 

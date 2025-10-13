@@ -93,7 +93,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Checking if a field is an array
 
-The aggregation query checks whether the `sales.salesByCategory` field in each store document is an array and returns that information for the first three documents.
+This query checks whether the `sales.salesByCategory` field in each store document is an array and returns that information for the first three documents.
 
 ```javascript
 db.stores.aggregate([
@@ -108,9 +108,7 @@ db.stores.aggregate([
 ])
 ```
 
-
-The query returns the array categorization for first three documents.
-
+The first three results returned by this query are:
 
 ```json
 [
@@ -131,7 +129,7 @@ The query returns the array categorization for first three documents.
 
 ### Example 2: Filtering documents based on array fields
 
-The example demonstrates use of `$isArray` to filter documents where the `promotionEvents` field is an array.
+This query demonstrates use of `$isArray` to filter documents where the `promotionEvents` field is an array.
 
 ```javascript
 db.stores.aggregate([
@@ -147,7 +145,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query returns the following results.
+The first three results returned by this query are:
 
 ```json
 [

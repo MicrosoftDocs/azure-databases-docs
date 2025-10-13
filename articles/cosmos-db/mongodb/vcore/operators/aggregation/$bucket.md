@@ -7,7 +7,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 06/23/2025
+ms.date: 09/05/2025
 ---
 
 # $bucket
@@ -42,6 +42,7 @@ The `$bucket` stage in an aggregation pipeline groups input documents into bucke
 ## Examples
 
 Consider this sample document from the stores collection.
+
 ```json
 {
     "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
@@ -154,7 +155,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Categorizing `fullSales` into ranges
 
-The following example categorizes the `fullSales` field into three buckets: `[0, 1000)`, `[1000, 5000)`, and `[5000, 10000)`. Documents that do not fall into these ranges are grouped into a default bucket.
+This query categorizes the `fullSales` field into three buckets: `[0, 1000)`, `[1000, 5000)`, and `[5000, 10000)`. Documents that do not fall into these ranges are grouped into a default bucket.
 
 ```javascript
 db.stores.aggregate([
@@ -172,7 +173,7 @@ db.stores.aggregate([
 ])
 ```
 
-Sample Output 
+This query returns the following results:
 
 ```json
 [

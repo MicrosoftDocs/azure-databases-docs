@@ -96,7 +96,7 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Finding the index of the first occurrence
 
-The aggregation query finds the position (index) of a specific category name ("DJ Headphones") inside the `salesByCategory` array across the collection.
+This query finds the position (index) of a specific category name ("DJ Headphones") inside the `salesByCategory` array across the collection.
 
 ```javascript
 db.stores.aggregate([
@@ -115,7 +115,7 @@ db.stores.aggregate([
 ])
 ```
 
-The query would return the following document.
+This query returns the following results:
 
 ```json
 [
@@ -136,7 +136,7 @@ The query would return the following document.
 
 ### Example 2: Finding the index in a range
 
-The aggregation query finds the position of the "Bargain Blitz Days" promotion event inside the `promotionEvents` array within a specific range of indexes (3 to 5) and filters results along with returning the first three matching documents
+This query finds the position of the "Bargain Blitz Days" promotion event inside the `promotionEvents` array within a specific range of indexes (3 to 5) and filters results along with returning the first three matching documents
 
 ```javascript
 db.stores.aggregate([
@@ -164,7 +164,7 @@ db.stores.aggregate([
 ])
 ```
 
-This query returns the following results.
+This query returns the following results:
 
 ```json
  [

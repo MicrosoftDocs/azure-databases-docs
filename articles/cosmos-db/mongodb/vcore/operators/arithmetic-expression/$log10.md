@@ -7,7 +7,7 @@ ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/12/2025
+ms.date: 09/05/2025
 ---
 
 # $log10 
@@ -147,34 +147,59 @@ Consider this sample document from the stores collection.
 To bucket the distribution of sales per category within a store, run a query using the $log10 operator on the totalSales field. Then, bucket the categories into "Low", "Medium" and "High" based on the result.
 
 ```javascript
-db.stores.aggregate([
-  { $match: { "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74" } },
-  {
-    $project: {
-      name: 1,
-      salesAnalysis: {
-        $map: {
-          input: "$sales.salesByCategory",
-          as: "category",
-          in: {
-            categoryName: "$$category.categoryName",
-            originalSales: "$$category.totalSales",
-            logScale: { $log10: "$$category.totalSales" },
-            magnitudeClass: {
-              $switch: {
-                branches: [
-                  { case: { $lt: [{ $log10: "$$category.totalSales" }, 3] }, then: "Low" },
-                  { case: { $lt: [{ $log10: "$$category.totalSales" }, 4] }, then: "Medium" },
-                  { case: { $lt: [{ $log10: "$$category.totalSales" }, 5] }, then: "High" }
-                ],
-                default: "Very High"
-              }
-            }
-          }
+db.stores.aggregate([{
+        $match: {
+            _id: "40d6f4d7-50cd-4929-9a07-0a7a133c2e74"
         }
-      }
+    },
+    {
+        $project: {
+            name: 1,
+            salesAnalysis: {
+                $map: {
+                    input: "$sales.salesByCategory",
+                    as: "category",
+                    in: {
+                        categoryName: "$$category.categoryName",
+                        originalSales: "$$category.totalSales",
+                        logScale: {
+                            $log10: "$$category.totalSales"
+                        },
+                        magnitudeClass: {
+                            $switch: {
+                                branches: [{
+                                        case: {
+                                            $lt: [{
+                                                $log10: "$$category.totalSales"
+                                            }, 3]
+                                        },
+                                        then: "Low"
+                                    },
+                                    {
+                                        case: {
+                                            $lt: [{
+                                                $log10: "$$category.totalSales"
+                                            }, 4]
+                                        },
+                                        then: "Medium"
+                                    },
+                                    {
+                                        case: {
+                                            $lt: [{
+                                                $log10: "$$category.totalSales"
+                                            }, 5]
+                                        },
+                                        then: "High"
+                                    }
+                                ],
+                                default: "Very High"
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
 ])
 ```
 
@@ -224,3 +249,5 @@ This query returns the following result:
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
+
+

@@ -1,6 +1,6 @@
 ---
 title: List all backups
-description: This article describes how to list all backups of an Azure Database for PostgreSQL flexible server.
+description: This article describes how to list all backups of an Azure Database for PostgreSQL flexible server instance.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
@@ -8,14 +8,12 @@ ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn how can I list all full backups of an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how can I list all full backups of an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # List all backups
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-This article provides step-by-step instructions to list all full backups of an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to list all full backups of an Azure Database for PostgreSQL flexible server instance.
 
 ## Steps to list all backups
 
@@ -23,7 +21,7 @@ This article provides step-by-step instructions to list all full backups of an A
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Settings** section, select **Backup and restore**.
 

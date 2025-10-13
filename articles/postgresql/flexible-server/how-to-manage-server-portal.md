@@ -13,9 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Manage Azure Database for PostgreSQL flexible server using the Azure portal
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Manage Azure Database for PostgreSQL  using the Azure portal
 
 This article shows you how to manage your Azure Database for PostgreSQL flexible server instance. Management tasks include compute and storage scaling, admin password reset, and viewing server details.
 
@@ -34,7 +32,7 @@ After server creation you can scale between the various [pricing tiers](https://
 2. You can change the **Compute Tier** , **vCore**, **Storage** to scale up the server using higher compute tier or scale up within the same tier by increasing storage or vCores to your desired value.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/how-to-manage-server-portal/scale-server.png" alt-text="Scaling storage for Azure Database for PostgreSQL flexible server.":::
+> :::image type="content" source="./media/how-to-manage-server-portal/scale-server.png" alt-text="Scaling storage for an Azure Database for PostgreSQL flexible server instance.":::
 
 > [!Important]
 > - Storage can't be scaled down.
@@ -50,7 +48,7 @@ You can change the administrator role's password using the Azure portal.
 2. Enter a new password and confirm the password. The textbox will prompt you about password complexity requirements.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/how-to-manage-server-portal/reset-password.png" alt-text="Reset your password for Azure Database for PostgreSQL flexible server.":::
+> :::image type="content" source="./media/how-to-manage-server-portal/reset-password.png" alt-text="Reset your password for your Azure Database for PostgreSQL flexible server instance.":::
 
 3. Select **Save** to save the new password.
 
@@ -71,5 +69,5 @@ You can delete your server if you no longer need it.
 
 ## Related content
 
-- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).
-- [Monitor metrics in Azure Database for PostgreSQL flexible server](concepts-monitoring.md).
+- [Backup and restore in Azure Database for PostgreSQL](concepts-backup-restore.md).
+- [Monitor metrics in Azure Database for PostgreSQL](concepts-monitoring.md).

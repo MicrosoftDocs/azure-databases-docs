@@ -13,7 +13,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand what the Apache AGE extension is and how to enable it in Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to understand what the Apache AGE extension is and how to enable it in Azure Database for PostgreSQL flexible server instances.
 ---
 
 # AGE extension with Azure Database for PostgreSQL

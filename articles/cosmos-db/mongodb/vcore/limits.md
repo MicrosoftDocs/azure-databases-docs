@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 09/05/2025
+ms.date: 09/13/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -118,18 +118,18 @@ The following are the current limitations for configuring [the customer-managed 
 
 ## Replication and in-region HA (high availability) limits
 
-### Cross-region replication
+### Cross-region and same region replication
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
   - Storage and physical shard count
   - User accounts
 - The following features aren't available on replica clusters:
   - Point-in-time restore (PITR)
   - In-region high availability (HA)
-- Cross-region replication isn't available on clusters with [burstable compute](./burstable-tier.md) or [Free tier](./free-tier.md) clusters.
+- Replication isn't available on clusters with [burstable compute](./burstable-tier.md) or [Free tier](./free-tier.md) clusters.
 
 ## Authentication and access control (RBAC)
 
-- You can create up to 100 total users/roles per cluster. Open a support request to increase the default limit.
+- You can create up to 100 total users/roles per cluster. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) to increase the default limit on your cluster.
 
 ### Microsoft Entra ID authentication
 

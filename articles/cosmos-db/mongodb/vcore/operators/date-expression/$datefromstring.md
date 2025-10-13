@@ -44,69 +44,117 @@ Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "e6410bb3-843d-4fa6-8c70-7472925f6d0a",
-  "name": "Relecloud | Toy Collection - North Jaylan",
-  "location": {
-    "lat": 2.0797,
-    "lon": -94.4134
-  },
-  "staff": {
-    "employeeCount": {
-      "fullTime": 7,
-      "partTime": 4
-    }
-  },
-  "sales": {
-    "salesByCategory": [
-      {
-        "categoryName": "Educational Toys",
-        "totalSales": 3299
-      }
-    ],
-    "revenue": 3299
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Massive Markdown Mania",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 21
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 9,
-          "Day": 29
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
         }
-      },
-      "discounts": [
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
         {
-          "categoryName": "Remote Control Toys",
-          "discountPercentage": 6
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
         },
         {
-          "categoryName": "Building Sets",
-          "discountPercentage": 21
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "company": "Relecloud",
-  "city": "North Jaylan",
-  "lastUpdated": {
-    "$timestamp": {
-      "t": 1733313006,
-      "i": 1
-    }
-  },
-  "storeOpeningDate": "2024-09-05T11:50:06.549Z"
+    ]
 }
 ```
 
 ### Example 1: Convert promotional event dates to ISO dates
 
-The example constructs full ISO date strings from individual year, month, and day fields using `$concat` and converts them to startDate and endDate using `$dateFromString`. It’s useful when date components are stored separately in documents.
+This query constructs full ISO date strings from individual year, month, and day fields using `$concat` and converts them to startDate and endDate using `$dateFromString`. It’s useful when date components are stored separately in documents.
 
 ```javascript
 db.stores.aggregate([

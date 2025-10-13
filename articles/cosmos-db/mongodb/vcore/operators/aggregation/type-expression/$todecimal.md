@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: language-reference
-ms.date: 02/24/2025
+ms.date: 09/05/2025
 ---
 
 # $toDecimal
@@ -147,17 +147,15 @@ Consider this sample document from the stores collection.
 To convert the value of the latitude field from a double to a decimal value, run a query using the $toDecimal operator to make the conversion.
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "originalLatitude": "$location.lat",
-        "latitudeAsDecimal": {
-            "$toDecimal": "$location.lat"
+}, {
+    $project: {
+        originalLatitude: "$location.lat",
+        latitudeAsDecimal: {
+            $toDecimal: "$location.lat"
         }
     }
 }])
@@ -180,16 +178,14 @@ This query returns the following result:
 To convert an ISODate to a decimal value, run a query using the $toDecimal operator on the value to make the conversion. 
 
 ```javascript
-db.stores.aggregate([
-{
-    "$match": {
-        "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
+db.stores.aggregate([{
+    $match: {
+        _id: "b0107631-9370-4acd-aafa-8ac3511e623d"
     }
-},
-{
-    "$project": {
-        "dateAsDecimal": {
-            "$toDecimal": ISODate("2025-01-06T00:00:00.000Z")
+}, {
+    $project: {
+        dateAsDecimal: {
+            $toDecimal: ISODate("2025-01-06T00:00:00.000Z")
         }
     }
 }])

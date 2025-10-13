@@ -1,10 +1,10 @@
 ---
 title: Use Microsoft Entra ID Authentication
-description: Learn how to set up Microsoft Entra ID for authentication with Azure Database for PostgreSQL flexible server.
+description: Learn how to set up Microsoft Entra ID for authentication for your Azure Database for PostgreSQL flexible server instance.
 author: milenak
 ms.author: mpopovic
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 10/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
@@ -16,11 +16,11 @@ ms.custom:
 
 # Use Microsoft Entra ID for authentication with Azure Database for PostgreSQL
 
-In this article, you configure Microsoft Entra ID access for authentication with Azure Database for PostgreSQL flexible server. You'll also learn how to use a Microsoft Entra token with Azure Database for PostgreSQL flexible server.
+In this article, you configure Microsoft Entra ID access for authentication with Azure Database for PostgreSQL. You also learn how to use a Microsoft Entra token with an Azure Database for PostgreSQL flexible server instance.
 
-You can configure Microsoft Entra authentication for Azure Database for PostgreSQL flexible server either during server provisioning or later. Only Microsoft Entra administrator users can create or enable users for Microsoft Entra ID-based authentication. We recommend not using the Microsoft Entra administrator for regular database operations because that role has elevated user permissions (for example, CREATEDB).
+You can configure Microsoft Entra authentication for an Azure Database for PostgreSQL flexible server instance either during server provisioning or later. Only Microsoft Entra administrator users can create or enable users for Microsoft Entra ID-based authentication. Don't use the Microsoft Entra administrator for regular database operations because that role has elevated user permissions (for example, CREATEDB).
 
-You can have multiple Microsoft Entra admin users with Azure Database for PostgreSQL flexible server. Microsoft Entra admin users can be a user, a group, or service principal.
+You can have multiple Microsoft Entra admin users with Azure Database for PostgreSQL. Microsoft Entra admin users can be a user, a group, or service principal.
 
 ## Prerequisites
 
@@ -28,17 +28,18 @@ You can have multiple Microsoft Entra admin users with Azure Database for Postgr
 
 ### Configure network requirements
 
-Microsoft Entra ID is a multitenant application. It requires outbound connectivity to perform certain operations, like adding Microsoft Entra admin groups. Additionally, you need network rules for Microsoft Entra connectivity to work, depending on your network topology:
+Microsoft Entra ID is a multitenant application. It needs outbound connectivity for operations like adding Microsoft Entra admin groups.
 
-- **Public access (allowed IP addresses)**: No extra network rules are required.
+Networking requirements vary by topology:
+
+- **Public access (allowed IP addresses)**: No extra outbound rules required.
 - **Private access (virtual network integration)**:
-- You need an outbound network security group (NSG) rule to allow virtual network traffic to only reach the `AzureActiveDirectory` service tag.
-- If you're using a route table, you need to create a rule with the destination service tag `AzureActiveDirectory` and next hop `Internet`.
-- Optionally, if you're using a proxy, you can add a new firewall rule to allow `HTTP`/S traffic to reach only the `AzureActiveDirectory` service tag.
+  - Add an outbound NSG rule allowing traffic to the `AzureActiveDirectory` service tag only.
+  - If you use a route table, add a route with destination `AzureActiveDirectory` and next hop `Internet`.
+  - If you use a proxy, allow only HTTPS traffic to the `AzureActiveDirectory` service tag.
 - **Custom DNS**:
-There are additional considerations if you are using custom DNS in your Virtual Network (VNET). In such cases, it is crucial to ensure that the following **endpoints** resolve to their corresponding IP addresses:
-**login.microsoftonline.com**: This endpoint is used for authentication purposes. Verify that your custom DNS setup enables resolving login.microsoftonline.com to its correct IP addresses
-**graph.microsoft.com**: This endpoint is used to access the Microsoft Graph API. Ensure your custom DNS setup allows the resolution of graph.microsoft.com to the correct IP addresses.
+  - Ensure these hostnames resolve publicly: `login.microsoftonline.com` (authentication) and `graph.microsoft.com` (Microsoft Graph API).
+  - If resolution fails, admin assignment and token acquisition operations fail.
 
 To set the Microsoft Entra admin during server provisioning, follow these steps:
 
@@ -47,8 +48,8 @@ To set the Microsoft Entra admin during server provisioning, follow these steps:
 
 You can optionally add a local PostgreSQL admin account if you prefer using the **PostgreSQL and Microsoft Entra authentication** method.
 
-> [!NOTE]  
-> You can add only one Azure admin user during server provisioning. You can add multiple Microsoft Entra admin users after the Server is created.
+> [!NOTE]
+> You can add only one Microsoft Entra admin during server provisioning. You can add multiple Microsoft Entra admin users after the server is created.
 
 To set the Microsoft Entra administrator after server creation, follow these steps:
 
@@ -58,208 +59,212 @@ To set the Microsoft Entra administrator after server creation, follow these ste
 1. Select **Save**.
 
 > [!IMPORTANT]  
-> When setting the administrator, a new user is added to Azure Database for PostgreSQL flexible server with full administrator permissions.
-
-<a id="connect-to-azure-database-for-postgresql-by-using-azure-ad"></a>
+> When setting the administrator, a new user is added to your Azure Database for PostgreSQL flexible server instance with full administrator permissions.
 
 ## Connect to Azure Database for PostgreSQL by using Microsoft Entra ID
 
-The following high-level diagram summarizes the workflow of using Microsoft Entra authentication with Azure Database for PostgreSQL:
+Microsoft Entra integration works with standard PostgreSQL tools like psql, which aren't Microsoft Entra aware and support only specifying the username and password when you're connecting to PostgreSQL.
 
-Microsoft Entra integration works with standard PostgreSQL tools like psql, which aren't Microsoft Entra aware and support only specifying the username and password when you're connecting to PostgreSQL. As shown in the preceding diagram, the Microsoft Entra token is passed as the password.
-
-We've tested the following clients:
+We tested the following clients:
 
 - **psql command line**: Use the `PGPASSWORD` variable to pass the token.
 - **Azure Data Studio**: Use the PostgreSQL extension.
 - **Other libpq-based clients**: Examples include common application frameworks and object-relational mappers (ORMs).
 - **PgAdmin**: Clear **Connect now** at server creation.
 
-<a id="authenticate-with-azure-ad"></a>
-
 ## Authenticate with Microsoft Entra ID
 
-Use the following procedures to authenticate with Microsoft Entra ID as an Azure Database for PostgreSQL flexible server user. You can follow along in Azure Cloud Shell, on an Azure virtual machine, or on your local machine.
+Use the following procedures to authenticate with Microsoft Entra ID as an Azure Database for PostgreSQL flexible server instance user.
 
-### Sign in to the user's Azure subscription
+You can follow along by using:
+
+- Azure Cloud Shell
+- Azure virtual machine
+- Your local machine
+
+### Sign in to Azure
 
 Start by authenticating with Microsoft Entra ID by using the Azure CLI. This step isn't required in Azure Cloud Shell.
 
-```azurecli-interactive
-az login
-```
+  ```azurecli-interactive
+  az login
+  ```
 
 The command opens a browser window to the Microsoft Entra authentication page. It requires you to give your Microsoft Entra user ID and password.
 
-<a id="retrieve-the-azure-ad-access-token"></a>
+### Retrieve a Microsoft Entra access token
 
-### Retrieve the Microsoft Entra access token
+Use the Azure CLI to get an access token for the Microsoft Entra authenticated user to access Azure Database for PostgreSQL. Here's an example of the public cloud:
 
-Use the Azure CLI to acquire an access token for the Microsoft Entra authenticated user to access Azure Database for PostgreSQL. Here's an example of the public cloud:
-
-```azurecli-interactive
-az account get-access-token --resource https://ossrdbms-aad.database.windows.net
-```
-
+  ```azurecli-interactive
+  az account get-access-token --resource https://ossrdbms-aad.database.windows.net
+  ```
+  
 The preceding resource value must be specified as shown. For other clouds, you can look up the resource value by using the following command:
 
-```azurecli-interactive
-az cloud show
-```
-
+  ```azurecli-interactive
+  az cloud show
+  ```
+  
 For Azure CLI version 2.0.71 and later, you can specify the command in the following convenient version for all clouds:
 
-```azurecli-interactive
-az account get-access-token --resource-type oss-rdbms
-```
+  ```azurecli-interactive
+  az account get-access-token --resource-type oss-rdbms
+  ```
 
 After authentication is successful, Microsoft Entra ID returns an access token:
 
-```json
-{
-  "accessToken": "TOKEN",
-  "expiresOn": "...",
-  "subscription": "...",
-  "tenant": "...",
-  "tokenType": "Bearer"
-}
-```
+  ```json
+  {
+    "accessToken": "TOKEN",
+    "expiresOn": "...",
+    "subscription": "...",
+    "tenant": "...",
+    "tokenType": "Bearer"
+  }
+  ```
 
 The token is a Base64 string. It encodes all the information about the authenticated user and is targeted to the Azure Database for PostgreSQL service.
 
 ### Use a token as a password for signing in with client psql
 
-When connecting, it's best to use the access token as the PostgreSQL user password.
+When connecting, use the access token as the PostgreSQL user password.
 
-While using the psql command-line client, the access token needs to be passed through the `PGPASSWORD` environment variable. The reason is that the access token exceeds the password length that psql can accept directly.
+When you use the psql command-line client, you need to pass the access token through the `PGPASSWORD` environment variable. The access token is longer than the password length that psql can accept directly.
 
 Here's a Windows example:
 
-```cmd
-set PGPASSWORD=<copy/pasted TOKEN value from step 2>
-```
+  ```cmd
+  set PGPASSWORD=<copy/pasted TOKEN value from step 2>
+  ```
+  
+  ```powershell
+  $env:PGPASSWORD='<copy/pasted TOKEN value from step 2>'
+  ```
 
-```powerShell
-$env:PGPASSWORD='<copy/pasted TOKEN value from step 2>'
-```
+Here's a Linux or macOS example:
 
-Here's a Linux/macOS example:
+  ```bash
+  export PGPASSWORD=<copy/pasted TOKEN value from step 2>
+  ```
 
-```bash
-export PGPASSWORD=<copy/pasted TOKEN value from step 2>
-```
+You can also combine step 2 and step 3 together by using command substitution. You can put the token retrieval into a variable and pass it directly as the value for the `PGPASSWORD` environment variable:
 
-You can also combine step 2 and step 3 together using command substitution. The token retrieval can be encapsulated into a variable and passed directly as a value for `PGPASSWORD` environment variable:
+  ```bash
+  export PGPASSWORD=$(az account get-access-token --resource-type oss-rdbms --query "[accessToken]" -o tsv)
+  ```
+  
+Now connect to Azure Database for PostgreSQL:
 
-```bash
-export PGPASSWORD=$(az account get-access-token --resource-type oss-rdbms --query "[accessToken]" -o tsv)
-```
-
-Now you can initiate a connection with Azure Database for PostgreSQL as you usually would:
-
-```sql
-psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com dbname=postgres sslmode=require"
-```
+  ```sql
+  psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com dbname=postgres sslmode=require"
+  ```
 
 ### Use a token as a password for signing in with PgAdmin
 
 To connect by using a Microsoft Entra token with PgAdmin, follow these steps:
 
-1. Open Pgadmin and select **Register** from left hand menu and select **Server**
-1. In **General** Tab provide a connection name and clear the **Connect now** option.
-1. Select the **Connection** tab and provide your Azure Database for PostgreSQL flexible server instance details for **Hostname/address** and **username** and save.
-**username is your Microsoft Entra ID or email**
-1. From the browser menu, select your Azure Database for PostgreSQL flexible server connection and select **Connect Server**
-1. Enter your Active Directory token password when prompted.
+1. Open PgAdmin and select **Register** > **Server**.
+1. On the **General** tab, enter a connection name and clear **Connect now**.
+1. On the **Connection** tab, enter host details. Set **Username** to your Microsoft Entra UPN (for example, `user@tenant.onmicrosoft.com`). Save.
+1. In the tree, select the server and choose **Connect Server**.
+1. When prompted, paste the access token as the password.
 
 Here are some essential considerations when you're connecting:
 
 - `user@tenant.onmicrosoft.com` is the userPrincipalName of the Microsoft Entra user.
 - Be sure to use the exact way the Azure user is spelled. Microsoft Entra user and group names are case-sensitive.
 - If the name contains spaces, use a backslash (`\`) before each space to escape it.
-You can use the Azure CLI to get the signed in user and set the value for `PGUGSER` environment variable:
+  You can use the Azure CLI to get the signed in user and set the value for `PGUSER` environment variable:
 
   ```bash
   export PGUSER=$(az ad signed-in-user show --query "[userPrincipalName]" -o tsv | sed 's/ /\\ /g')
   ```
+
 - The access token's validity is 5 minutes to 60 minutes. You should get the access token before initiating the sign-in to Azure Database for PostgreSQL.
 
 You're now authenticated to your Azure Database for PostgreSQL server through Microsoft Entra authentication.
 
-<a id="authenticate-with-azure-ad-as-a-group-member"></a>
-
 ## Authenticate with Microsoft Entra ID as a group member
 
-<a id="create-azure-ad-groups-in-azure-database-for-postgresql---flexible-server"></a>
+This section shows how to connect by using a Microsoft Entra group. You must be a member of the group and the group must be created (mapped) in the database.
 
-### Create Microsoft Entra groups in Azure Database for PostgreSQL flexible server
+### Create a group principal
 
-To enable a Microsoft Entra group to access your database, use the same mechanism you used for users, but specify the group name instead. For example:
+Create the group principal (role) in the database (replace the display name as needed):
 
-```sql
-select * from  pgaadauth_create_principal('Prod DB Readonly', false, false).
-```
+  ```sql
+  select * from  pgaadauth_create_principal('Prod DB Readonly', false, false).
+  ```
 
-When group members sign in, they use their access tokens but specify the group name as the username.
+If group sync is disabled, members can sign in by using their access tokens and specify the group name as username.
 
-> [!NOTE]  
-> Azure Database for PostgreSQL flexible server supports managed identities and service principals as group members.
+If group sync is enabled (via pgaadauth.enable_group_sync server parameter set to "ON"), members should sign in with their individual Entra ID credentials, but can still sign in with the group name as the username.
+  - Group logins remain available for compatibility reasons but can be disabled with: `ALTER ROLE "ROLE_NAME" NOLOGIN;`
+  - The group role shouldn't be deleted to maintain syncing.
+  - Groups autosync every 30 minutes.
+  - Manual sync can be triggered with: `SELECT * FROM pgaadauth_sync_roles_for_group_members();` (`pgaadauth.enable_group_sync` param must be "ON").
+  - Changes to group metadata like group name aren't synced
+  - Group membership changes are synced
+    
+    > [!NOTE]
+     > Managed identities and service principals are supported as group members.
 
-### Sign in to the user's Azure subscription
+### Sign in to Azure
 
 Authenticate with Microsoft Entra ID by using the Azure CLI. This step isn't required in Azure Cloud Shell. The user needs to be a member of the Microsoft Entra group.
 
-```azurecli-interactive
-az login
-```
+  ```azurecli-interactive
+  az login
+  ```
+  
+### Retrieve a Microsoft Entra access token
 
-<a id="retrieve-the-azure-ad-access-token"></a>
+Use the Azure CLI to get an access token for the Microsoft Entra authenticated user to access Azure Database for PostgreSQL. Here's an example of the public cloud:
 
-### Retrieve the Microsoft Entra access token
-
-Use the Azure CLI to acquire an access token for the Microsoft Entra authenticated user to access Azure Database for PostgreSQL. Here's an example of the public cloud:
-
-```azurecli-interactive
-az account get-access-token --resource https://ossrdbms-aad.database.windows.net
-```
+  ```azurecli-interactive
+  az account get-access-token --resource https://ossrdbms-aad.database.windows.net
+  ```
 
 You must specify the initial resource value exactly as shown. For other clouds, you can look up the resource value by using the following command:
 
-```azurecli-interactive
-az cloud show
-```
+  ```azurecli-interactive
+  az cloud show
+  ```
 
 For Azure CLI version 2.0.71 and later, you can specify the command in the following convenient version for all clouds:
 
-```azurecli-interactive
-az account get-access-token --resource-type oss-rdbms
-```
-
+  ```azurecli-interactive
+  az account get-access-token --resource-type oss-rdbms
+  ```
+    
 After authentication is successful, Microsoft Entra ID returns an access token:
 
-```json
-{
-  "accessToken": "TOKEN",
-  "expiresOn": "...",
-  "subscription": "...",
-  "tenant": "...",
-  "tokenType": "Bearer"
-}
-```
+  ```json
+  {
+    "accessToken": "TOKEN",
+    "expiresOn": "...",
+    "subscription": "...",
+    "tenant": "...",
+    "tokenType": "Bearer"
+  }
+  ```
 
 ### Use a token as a password for signing in with psql or PgAdmin
 
 These considerations are essential when you're connecting as a group member:
 
-- The group name is the name of the Microsoft Entra group that you're trying to connect.
-- Be sure to use the exact way the Microsoft Entra group name is spelled. Microsoft Entra user and group names are case-sensitive.
-- When you're connecting as a group, use only the group name and not the alias of a group member.
-- If the name contains spaces, use a backslash (`\`) before each space to escape it.
-- The access token's validity is 5 minutes to 60 minutes. We recommend you get the access token before initiating the sign-in to Azure Database for PostgreSQL.
+- The group name must exactly match the Microsoft Entra group display name (case-sensitive).
+- Use only the group name, not a member alias.
+- Escape spaces where required (for example, `Prod\ DB\ Readonly`).
+- Token validity is 5–60 minutes. Acquire it just before connecting; don't store tokens in scripts.
+
+> [!TIP]
+> If authentication fails, verify the database role exists (for example, with `\du`) and confirm the `pgaadauth.enable_group_sync` setting.
 
 You're now authenticated to your PostgreSQL server through Microsoft Entra authentication.
 
 ## Related content
 
-- [Microsoft Entra authentication with Azure Database for PostgreSQL flexible server](concepts-azure-ad-authentication.md)
-- [Manage Microsoft Entra roles in Azure Database for PostgreSQL flexible server](how-to-manage-azure-ad-users.md)
+- [Microsoft Entra authentication with Azure Database for PostgreSQL](concepts-azure-ad-authentication.md)
+- [Manage Microsoft Entra roles in Azure Database for PostgreSQL](how-to-manage-azure-ad-users.md)

@@ -12,8 +12,6 @@ ms.topic: tutorial
 
 # Tutorial: Design a real-time analytics dashboard with elastic clusters (preview)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 In this tutorial, you use elastic clusters on Azure Database for PostgreSQL to learn how to design a real-time dashboard and parallelize queries.
 
 > [!div class="checklist"]

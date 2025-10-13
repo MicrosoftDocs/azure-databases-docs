@@ -13,7 +13,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand how to improve performance of my graph queries in Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to understand how to improve performance of my graph queries in Azure Database for PostgreSQL.
 ---
 
 # Best practices: indexing, AGE EXPLAIN, and data load benchmarks
@@ -152,7 +152,7 @@ AGEFreighter is a Python library designed to facilitate the loading of data into
 
 #### Environment setup
 
-- Created an Azure Database for PostgreSQL flexible server with AGE enabled.
+- Created an Azure Database for PostgreSQL flexible server instance with AGE enabled.
 - Python dependency management tool such as Poetry is recommended. Python 3.9 or later must be installed.
 - The AGEFreighter library (AGEFreighter PyPi) must be installed as a dependency:
 

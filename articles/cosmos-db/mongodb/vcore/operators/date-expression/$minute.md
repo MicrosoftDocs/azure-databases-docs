@@ -144,11 +144,11 @@ Consider this sample document from the stores collection.
 
 ### Example 1: Extract minutes from store opening date
 
-The example extracts the minute portion from the store opening date to analyze opening time patterns.
+This query extracts the minute portion from the store opening date to analyze opening time patterns.
 
 ```javascript
 db.stores.aggregate([
-  { $match: {"_id": "905d1939-e03a-413e-a9c4-221f74055aac"} },
+  { $match: {_id: "905d1939-e03a-413e-a9c4-221f74055aac"} },
   {
     $project: {
       name: 1,
