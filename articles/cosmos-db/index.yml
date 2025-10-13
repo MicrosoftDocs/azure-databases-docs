@@ -11,7 +11,7 @@ metadata:
   ms.author: sidandrews
   ms.service: azure-cosmos-db
   ms.topic: landing-page
-  ms.date: 09/03/2025
+  ms.date: 10/13/2025
 highlightedContent:
   items:
     - title: Introduction to Azure Cosmos DB
@@ -35,7 +35,27 @@ highlightedContent:
     - title: Create an Azure Cosmos DB for PostgreSQL account
       itemType: how-to-guide
       url: postgresql/quickstart-create-portal.md
-
+conceptualContent:
+  sections:
+    - title: Resources
+      items:
+        - title: Videos
+          links:
+            - text: Azure Cosmos DB Conf 2025
+              itemType: video
+              url: https://www.youtube.com/playlist?list=PLmamF3YkHLoLQhnFsKWhtKu_Tp0uXPFdn
+            - text: Azure Cosmos DB TV
+              itemType: video
+              url: https://www.youtube.com/playlist?list=PLmamF3YkHLoKMzT3gP4oqHiJbjMaiiLEh
+            - text: Azure Cosmos DB & AI Integration
+              itemType: video
+              url: https://youtube.com/playlist?list=PLmamF3YkHLoJyuoikrskPzpttybXiuFFL&si=ljM012JQu0ReuYEo
+            - text: "Customer Stories: Azure Cosmos DB real-world examples"
+              itemType: video
+              url: https://youtube.com/playlist?list=PLmamF3YkHLoJtcbM2-_e5U3R6tL2LLbig&si=f-jDPhcUvEmvjpoj
+            - text: Azure Cosmos DB Design Patterns
+              itemType: video
+              url: https://youtube.com/playlist?list=PLmamF3YkHLoI69DIwplhBqk-KYoOLEqOs&si=E6Q1NYfKgGDw279m
 additionalContent:
   sections:
     - title: APIs

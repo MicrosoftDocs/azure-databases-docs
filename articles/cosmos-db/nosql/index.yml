@@ -11,28 +11,28 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: landing-page
-  ms.date: 06/11/2025
+  ms.date: 10/13/2025
 landingContent:
-  - title: About API for NoSQL 
+  - title: About API for NoSQL
     linkLists:
       - linkListType: concept
         links:
           - text: Frequently asked questions
             url: faq.yml
           - text: Model document data
-            url: modeling-data.md   
+            url: modeling-data.md
           - text: Change feed
-            url: ../change-feed.md  
+            url: ../change-feed.md
           - text: Integrated cache
             url: ../integrated-cache.md
   - title: Get started
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Manage your data using a .NET console app 
+          - text: Manage your data using a .NET console app
             url: quickstart-dotnet.md
           - text: Manage your data using a JavaScript app
-            url: quickstart-nodejs.md   
+            url: quickstart-nodejs.md
           - text: Manage your data using a Go app
             url: quickstart-go.md
           - text: Create resources using a Bicep template
@@ -84,23 +84,23 @@ landingContent:
   - title: Query items from a container
     linkLists:
       - linkListType: concept
-        links:   
+        links:
           - text: Getting started with SQL queries
             url: query/getting-started.md
           - text: Optimize request costs
             url: ../optimize-cost-reads-writes.md
       - linkListType: how-to-guide
-        links:   
+        links:
           - text: Working with JSON
             url: query/working-with-json.md
           - text: Joins
             url: query/join.md
           - text: Parameterized queries
             url: query/parameterized-queries.md
-          - text: Tune query performance 
+          - text: Tune query performance
             url: query-metrics.md
       - linkListType: tutorial
-        links: 
+        links:
           - text: Query using the Data Explorer
             url: tutorial-query.md
   - title: Secure your account
@@ -108,19 +108,33 @@ landingContent:
       - linkListType: concept
         links:
           - text: Store keys in Azure Key Vault
-            url: ../store-credentials-key-vault.md 
+            url: ../store-credentials-key-vault.md
           - text: Configure cross-origin resource sharing (CORS)
-            url: how-to-configure-cross-origin-resource-sharing.md 
+            url: how-to-configure-cross-origin-resource-sharing.md
       - linkListType: how-to-guide
         links:
           - text: Configure customer-managed keys
             url: ../how-to-setup-customer-managed-keys.md
   - title: Samples
-    linkLists:    
-    - linkListType: sample
-      links:
-        - text: Solution accelerators
-          url: ../solutions.md?pivots=api-nosql
+    linkLists:
+      - linkListType: sample
+        links:
+          - text: Solution accelerators
+            url: ../solutions.md?pivots=api-nosql
+  - title: Videos
+    linkLists:
+      - linkListType: video
+        links:
+          - text: Azure Cosmos DB Conf 2025
+            url: https://www.youtube.com/playlist?list=PLmamF3YkHLoLQhnFsKWhtKu_Tp0uXPFdn
+          - text: Azure Cosmos DB TV
+            url: https://www.youtube.com/playlist?list=PLmamF3YkHLoKMzT3gP4oqHiJbjMaiiLEh
+          - text: Azure Cosmos DB & AI Integration
+            url: https://youtube.com/playlist?list=PLmamF3YkHLoJyuoikrskPzpttybXiuFFL&si=ljM012JQu0ReuYEo
+          - text: "Customer Stories: Azure Cosmos DB real-world examples"
+            url: https://youtube.com/playlist?list=PLmamF3YkHLoJtcbM2-_e5U3R6tL2LLbig&si=f-jDPhcUvEmvjpoj
+          - text: Azure Cosmos DB Design Patterns
+            url: https://youtube.com/playlist?list=PLmamF3YkHLoI69DIwplhBqk-KYoOLEqOs&si=E6Q1NYfKgGDw279m
   - title: Get training
     linkLists:
       - linkListType: learn
@@ -130,7 +144,7 @@ landingContent:
           - text: Build a Node.js app
             url: /training/modules/build-node-cosmos-app-vscode/
           - text: Build a Java app
-            url: /training/modules/build-cosmos-db-java-app/      
+            url: /training/modules/build-cosmos-db-java-app/
       - linkListType: video
         links:
           - text: Azure Friday - Extension for Azure Functions update with Microsoft Entra support
