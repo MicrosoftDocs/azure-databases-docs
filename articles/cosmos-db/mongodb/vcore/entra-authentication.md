@@ -47,7 +47,12 @@ Additionally, one or more nonadministrative Microsoft Entra ID users can be adde
 
 ## Considerations
 
-- The cluster must have an authentication enabled enabled. It can be both native authentication and Microsoft Entra ID or one of those methods.
+- The cluster must have an authentication method enabled. It can be both native authentication and Microsoft Entra ID or one of those methods.
+
+> [!IMPORTANT]
+> When cluster is created you have to have native DocumentDB authentication method enabled and specify native administrative user credentials. You can disable native DocumentDB authentication method disabled once new cluster finishes provisioning.  
+
+- Authentication methods on the primary cluster and on the replica cluster are [managed independently](./cross-region-replication.md#authentication-methods-on-replica-cluster).
 
 - Multiple Microsoft Entra ID principals can be configured as Microsoft Entra ID administrator for an Azure Cosmos DB for MongoDB vCore cluster at any time. For example, you can configure these types of identities to all be administrators in your cluster simultaneously:
 
