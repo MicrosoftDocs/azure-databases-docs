@@ -50,7 +50,7 @@ Additionally, one or more nonadministrative Microsoft Entra ID users can be adde
 - The cluster must have an authentication method enabled. It can be both native authentication and Microsoft Entra ID or one of those methods.
 
 > [!IMPORTANT]
-> When cluster is created you have to have native DocumentDB authentication method enabled and specify native administrative user credentials. You can disable native DocumentDB authentication method disabled once new cluster finishes provisioning.  
+> When cluster is created, you have to have native DocumentDB authentication method enabled and specify native administrative user credentials. You can disable native DocumentDB authentication method disabled once new cluster finishes provisioning.  
 
 - Authentication methods on the primary cluster and on the replica cluster are [managed independently](./cross-region-replication.md#authentication-methods-on-replica-cluster).
 
