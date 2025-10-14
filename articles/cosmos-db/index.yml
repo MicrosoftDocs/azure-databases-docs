@@ -44,21 +44,36 @@ tools:
     - title: .NET (NoSQL)
       imageSrc: media/index/lang-dotnet.svg
       url: nosql/quickstart-dotnet.md
-    - title: Java (NoSQL)
-      imageSrc: media/index/lang-java.svg
-      url: nosql/quickstart-java.md
-    - title: Node.js (NoSQL)
-      imageSrc: media/index/lang-javascript.svg
-      url: nosql/quickstart-nodejs.md
     - title: Python (NoSQL)
       imageSrc: media/index/lang-python.svg
       url: nosql/quickstart-python.md
-    - title: Python (PostgreSQL)
-      imageSrc: media/index/lang-python.svg
-      url: postgresql/quickstart-app-stacks-python.md
+    - title: Node.js (NoSQL)
+      imageSrc: media/index/lang-javascript.svg
+      url: nosql/quickstart-nodejs.md
+    - title: Java (NoSQL)
+      imageSrc: media/index/lang-java.svg
+      url: nosql/quickstart-java.md
     - title: Go (NoSQL)
       imageSrc: media/index/lang-go.svg
       url: nosql/quickstart-go.md
+    - title: Rust (NoSQL)
+      imageSrc: media/index/lang-rust.svg
+      url: nosql/quickstart-rust.md
+    - title: Python (PostgreSQL)
+      imageSrc: media/index/lang-python.svg
+      url: postgresql/quickstart-app-stacks-python.md
+    - title: Node.js (PostgreSQL)
+      imageSrc: media/index/lang-javascript.svg
+      url: postgresql/quickstart-app-stacks-nodejs.md
+    - title: C# (PostgreSQL)
+      imageSrc: media/index/lang-dotnet.svg
+      url: postgresql/quickstart-app-stacks-csharp.md
+    - title: Java (PostgreSQL)
+      imageSrc: media/index/lang-java.svg
+      url: postgresql/quickstart-app-stacks-java.md
+    - title: Ruby (PostgreSQL)
+      imageSrc: media/index/lang-ruby.svg
+      url: postgresql/quickstart-app-stacks-ruby.md
 conceptualContent:
   sections:
     - title: APIs
