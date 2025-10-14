@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 10/10/2025
+ms.date: 10/12/2025
 ms.custom:
   - devx-track-rust
   - build-2025
@@ -684,7 +684,7 @@ To connect to an Azure Cosmos DB for MongoDB vCore cluster using Visual Studio C
 1. To connect to the cluster, use the following connection string in MongoDB shell on the VM:
 
     ```output
-    mongodb+srv://<clientID>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
+    mongosh "mongodb+srv://<client-id>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&authMechanismProperties=ENVIRONMENT:azure,TOKEN_RESOURCE:https://ossrdbms-aad.database.windows.net" --oidcTrustedEndpoint    
     ```
     where `clientID` is [the managed identity's client ID](#get-identity-metadata).
 
@@ -698,7 +698,13 @@ Use the following steps to use Entra ID to authenticate to the cluster in MongoD
 1. Run MongoDB Compass on the VM.
 1. Select `+` sign on the left side next to **Connections** to add a new connection.
 1. Make sure **Edit Connection String** toggle is enabled in the **New Connection** window.
-1. Paste connection string into the **URI** input box.
+1. Paste the following connection string into the **URI** input box.
+
+    ```output
+    mongodb+srv://<client-id>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&authMechanismProperties=ENVIRONMENT:azure,TOKEN_RESOURCE:https://ossrdbms-aad.database.windows.net
+    ```
+    where `clientID` is [the managed identity's client ID](#get-identity-metadata).
+
 1. Open **Advanced Connection Options**.
 1. On the **General** tab, make sure `mongodb+srv` is selected under **Connection String Scheme**.
 1. Go to the **Authentication** tab. 
