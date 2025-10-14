@@ -12,22 +12,22 @@ ms.topic: how-to
 
 # Logs in Azure Database for PostgreSQL
 
-Azure Database for PostgreSQL flexible server allows you to configure and access Postgres' standard logs. The logs can be used to identify, troubleshoot, and repair configuration errors and suboptimal performance. Logging information you can configure and access includes errors, query information, autovacuum records, connections, and checkpoints. (Access to transaction logs isn't available).
+Azure Database for PostgreSQL allows you to configure and access Postgres' standard logs. The logs can be used to identify, troubleshoot, and repair configuration errors and suboptimal performance. Logging information you can configure and access includes errors, query information, autovacuum records, connections, and checkpoints. (Access to transaction logs isn't available).
 
 Audit logging is made available through a Postgres extension, `pgaudit`. To learn more, visit the [auditing concepts](security-audit.md) article.
 
 ## Configure logging
 
-You can configure Postgres standard logging on your server using the logging server parameters. To learn more about Postgres log parameters, visit the [When To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) and [What To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) sections of the Postgres documentation. Most, but not all, Postgres logging parameters are available to configure in Azure Database for PostgreSQL flexible server.
+You can configure Postgres standard logging on your server using the logging server parameters. To learn more about Postgres log parameters, visit the [When To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) and [What To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) sections of the Postgres documentation. Most, but not all, Postgres logging parameters are available to configure in Azure Database for PostgreSQL.
 
-To learn how to configure parameters in Azure Database for PostgreSQL flexible server, see the [portal documentation](how-to-configure-server-parameters.md) or the [CLI documentation](how-to-configure-server-parameters.md).
+To learn how to configure parameters in Azure Database for PostgreSQL, see the [portal documentation](how-to-configure-server-parameters.md) or the [CLI documentation](how-to-configure-server-parameters.md).
 
 > [!NOTE]
 > To configure a high volume of logs, you can add significant performance overhead. For example, statement logging can impact performance.
 
 ## Access logs
 
-Azure Database for PostgreSQL flexible server is integrated with Azure Monitor diagnostic settings. Diagnostic settings allow you to send PostgreSQL flexible server logs in JSON format to Azure Monitor Logs for analytics and alerting. You can also stream them to Event Hubs or archive them in Azure Storage.
+Azure Database for PostgreSQL is integrated with Azure Monitor diagnostic settings. Diagnostic settings allow you to send PostgreSQL logs in JSON format to Azure Monitor Logs for analytics and alerting. You can also stream them to Event Hubs or archive them in Azure Storage.
 
 ### Access control for logs
 
@@ -86,6 +86,6 @@ The following table describes the fields for the **PostgreSQLLogs** type. Depend
 
 ## Related content
 
-- [Configure and access logs in Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md).
+- [Configure and access logs in Azure Database for PostgreSQL](how-to-configure-and-access-logs.md).
 - [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- [Audit logging in Azure Database for PostgreSQL flexible server](concepts-audit.md).
+- [Audit logging in Azure Database for PostgreSQL](concepts-audit.md).
