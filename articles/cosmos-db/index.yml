@@ -66,10 +66,10 @@ tools:
       imageSrc: media/index/lang-python.svg
       url: mongodb/vcore/quickstart-python.md
     - title: JavaScript - MongoDB (vCore)
-      imageSrc: media/index/lang-javascript.svg?pivots=programming-language-js
+      imageSrc: media/index/lang-javascript.svg
       url: mongodb/vcore/quickstart-nodejs.md?pivots=programming-language-js
     - title: TypeScript - MongoDB (vCore)
-      imageSrc: media/index/lang-typescript.svg?pivots=programming-language-ts
+      imageSrc: media/index/lang-typescript.svg
       url: mongodb/vcore/quickstart-nodejs.md?pivots=programming-language-ts
     - title: .NET - MongoDB (vCore)
       imageSrc: media/index/lang-dotnet.svg
