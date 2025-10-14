@@ -3,8 +3,8 @@ metadata:
   title: Frequently asked questions on materialized views (preview)
   titleSuffix: Azure Cosmos DB for Apache Cassandra
   description: Frequently asked questions on materialized views in Azure Cosmos DB for Apache Cassandra (preview)
-  author: dileepraotv-github
-  ms.author: turao
+  author: TheovanKraay
+  ms.author: thvankra
   ms.service: azure-cosmos-db
   ms.subservice: apache-cassandra
   ms.topic: faq

@@ -1,5 +1,5 @@
 ---
-title: Migrate data using the desktop data migration tool
+title: Migrate Data Using the Desktop Data Migration Tool
 titleSuffix: Azure Cosmos DB
 description: Use the desktop data migration tool to migrate data from JSON, MongoDB, SQL Server, or Azure Table storage to Azure Cosmos DB.
 author: sandeepsnairms
@@ -7,11 +7,12 @@ ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 05/01/2023
+ms.date: 06/26/2025
+ms.custom: sfi-ropc-blocked
 # CustomerIntent: As a database owner, I want to use a tool to perform migration to Azure Cosmos DB so that I can streamline large and complex migrations.
 ---
 
-# Migrate data to Azure Cosmos DB using the desktop data migration tool
+# Migrate data using the desktop data migration tool
 
 [!INCLUDE[NoSQL, MongoDB, Table](includes/appliesto-nosql-mongodb-table.md)]
 
@@ -26,14 +27,13 @@ The [Azure Cosmos DB desktop data migration tool](https://github.com/azurecosmos
 - SQL Server
 
 > [!IMPORTANT]
-> For this guide, you will perform a data migration from JSON to Azure Cosmos DB for NoSQL.
+> For this guide, you perform a data migration from JSON to Azure Cosmos DB for NoSQL.
 
 ## Prerequisites
 
 - An existing Azure Cosmos DB for NoSQL account.
   - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
-  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-  - Alternatively, you can [try Azure Cosmos DB free](try-free.md) before you commit.
+  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - Latest version of [Azure CLI](/cli/azure/install-azure-cli).
 - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0) or later.
 
@@ -44,7 +44,7 @@ First, install the latest version of the desktop data migration tool from the Gi
 > [!NOTE]
 > The desktop data migration tool requires [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0) or later on your local machine.
 
-1. In your browser, navigate to the **Releases** section of the repository: [azurecosmosdb/data-migration-desktop-tool/releases](https://github.com/azurecosmosdb/data-migration-desktop-tool/releases).
+1. In your browser, navigate to the [**Releases** section of the repository](https://github.com/azurecosmosdb/data-migration-desktop-tool/releases).
 
 1. Download the latest compressed folder for your platform. There are compressed folders for the **win-x64**, **mac-x64**, and **linux-x64** platforms.
 
@@ -161,7 +161,7 @@ Next, create a target database and container on the Azure Cosmos DB for NoSQL ac
 
 Now, migrate data from a JSON array to the newly created Azure Cosmos DB for NoSQL container.
 
-1. Navigate to an empty directory on your local machine. Within that directory, create a new file named **migrationsettings.json**.
+1. Navigate to an empty directory on your local machine. Within that directory, create a new file named *migrationsettings.json*.
 
 1. Within the JSON file, create a new empty JSON object:
 
@@ -236,9 +236,9 @@ Now, migrate data from a JSON array to the newly created Azure Cosmos DB for NoS
     }
     ```
 
-1. **Save** the **migrationsettings.json** file.
+1. **Save** the *migrationsettings.json* file.
 
-1. Open a new terminal and navigate to the directory containing your **migrationsettings.json** file.
+1. Open a new terminal and navigate to the directory containing your *migrationsettings.json* file.
 
 1. Run the desktop data migration tool using the `dmt` command.
 
@@ -247,7 +247,7 @@ Now, migrate data from a JSON array to the newly created Azure Cosmos DB for NoS
     ```
 
     > [!NOTE]
-    > If you did not add the installation path to your `PATH` environment variable, you may need to specify the full path to the `dmt` executable.
+    > If you didn't add the installation path to your `PATH` environment variable, you might need to specify the full path to the `dmt` executable.
 
 1. The tool now outputs the sources and sinks used by the migration.
 

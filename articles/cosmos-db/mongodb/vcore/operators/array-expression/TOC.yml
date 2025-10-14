@@ -6,16 +6,20 @@
   href: $concatarrays.md
 - name: $filter
   href: $filter.md
-- name: $in
-  href: $in.md
+- name: $indexOfArray
+  href: $indexofarray.md  
+- name: $isArray
+  href: $isarray.md
+- name: $reverseArray
+  href: $reversearray.md
 - name: $map
   href: $map.md
 - name: $range
   href: $range.md
 - name: $reduce
   href: $reduce.md
-- name: $size
-  href: $size.md
+- name: $slice
+  href: $slice.md
 - name: $sortArray
   href: $sortarray.md
 - name: $zip

@@ -4,7 +4,7 @@ description: This article introduces the concepts for JavaScript language-integr
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mjbrown
 ms.devlang: javascript

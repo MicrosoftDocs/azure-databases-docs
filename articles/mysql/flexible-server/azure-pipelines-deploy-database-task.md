@@ -12,14 +12,14 @@ ms.topic: how-to
 
 # Azure Pipelines for Azure Database for MySQL - Flexible Server
 
-You can automatically deploy your database updates to Azure Database for MySQL Flexible Server after every successful build with **Azure Pipelines**. You can use Azure CLI task to update the database either with a SQL file or an inline SQL script against the database. This task can be run on cross-platform agents running on Linux, macOS, or Windows operating systems.
+You can automatically deploy your database updates to Azure Database for MySQL Flexible Server after every successful build with **Azure Pipelines**. You can use the Azure CLI task to update the database with either a SQL file or an inline SQL script. You can run this task on cross-platform agents running on Linux, macOS, or Windows operating systems.
 
 ## Prerequisites
 
-- An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/free/).
+- An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 - [Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure) to your Azure account
-- Microsoft hosted agents have Azure CLI pre-installed. However if you are using private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computer(s) that run the build and release agent. If an agent is already running on the machine on which the Azure CLI is installed, restart the agent to ensure all the relevant stage variables are updated.
+- Microsoft hosted agents have Azure CLI preinstalled. However, if you use private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computers that run the build and release agent. If an agent is already running on the machine where you install Azure CLI, restart the agent to update all relevant stage variables.
 
 This quickstart uses the resources created in either of these guides as a starting point:
 
@@ -27,7 +27,7 @@ This quickstart uses the resources created in either of these guides as a starti
 
 ## Use SQL file
 
-The following example illustrates how to pass database arguments and run ```execute``` command
+The following example shows how to pass database arguments and run the ```execute``` command.
 
 ```azurecli
 - task: AzureCLI@2
@@ -50,7 +50,7 @@ The following example illustrates how to pass database arguments and run ```exec
 
 ## Use inline SQL script
 
-The following example illustrates how to run an inline SQL script using ```execute``` command .
+The following example shows how to run an inline SQL script using the ```execute``` command.
 
 ```azurecli
 - task: AzureCLI@2
@@ -88,9 +88,9 @@ You can see the full list of all the task inputs when using Azure CLI task with 
 | addSpnToEnvironment | (Optional) Adds service principal ID and key of the Azure endpoint you chose to the script's execution environment. You can use these variables: <b>$env:servicePrincipalId, $env:servicePrincipalKey and $env:tenantId</b> in your script. This is honored only when the Azure endpoint has Service Principal authentication scheme. The default value is false. |
 | useGlobalConfig | (Optional) If this is false, this task will use its own separate [Azure CLI configuration directory](/cli/azure/azure-cli-configuration#cli-configuration-file)Azure CLI configuration directory</a>. This can be used to run Azure CLI tasks in <b>parallel</b> releases"<br />Default value: false</td> |
 | workingDirectory | (Optional) Current working directory where the script is run. Empty is the root of the repo (build) or artifacts (release), which is $(System.DefaultWorkingDirectory). |
-| failOnStandardError | (Optional) If this is true, this task will fail when any errors are written to the StandardError stream. Unselect the checkbox to ignore standard errors and rely on exit codes to determine the status. The default value is false. |
-| powerShellIgnoreLASTEXITCODE | (Optional) If this is false, the line <code>if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }</code> is appended to the end of your script. This will cause the last exit code from an external command to be propagated as the exit code of PowerShell. Otherwise the line is not appended to the end of your script. The default value is false. |
-| Having issues with CLI Task, see [how to troubleshoot Build and Release](/azure/devops/pipelines/troubleshooting/troubleshooting). |
+| failOnStandardError | (Optional) If this is true, this task fails when any errors are written to the StandardError stream. Unselect the checkbox to ignore standard errors and rely on exit codes to determine the status. The default value is false. |
+| powerShellIgnoreLASTEXITCODE | (Optional) If this is false, the line <code>if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }</code> is appended to the end of your script. This value causes the last exit code from an external command to be propagated as the exit code of PowerShell. Otherwise the line isn't appended to the end of your script. The default value is false. |
+| If you're having issues with CLI Task, see [how to troubleshoot Build and Release](/azure/devops/pipelines/troubleshooting/troubleshooting). |
 
 ## Related content
 

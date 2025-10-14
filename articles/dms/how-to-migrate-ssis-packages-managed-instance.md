@@ -9,10 +9,13 @@ ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: how-to
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 
 # Migrate SQL Server Integration Services packages to an Azure SQL Managed Instance
+
+[!INCLUDE [deprecation-announcement-dms-classic-sql](includes/deprecation-announcement-dms-classic-sql.md)]
 
 If you use SQL Server Integration Services (SSIS) and want to migrate your SSIS projects/packages from the source SSISDB hosted by SQL Server to the destination SSISDB hosted by an Azure SQL Managed Instance, you can use Azure Database Migration Service.
 
@@ -50,7 +53,7 @@ To complete these steps, you need:
 
 ## Assess source SSIS projects/packages
 
-While assessment of source SSISDB isn't yet integrated into the Database Migration Assistant (DMA), your SSIS projects/packages will be assessed/validated as they're redeployed to the destination SSISDB hosted on a Azure SQL Managed Instance.
+Your SSIS projects/packages are assessed/validated as they're redeployed to the destination SSISDB hosted on an Azure SQL Managed Instance.
 
 ## Register the Microsoft.DataMigration resource provider
 

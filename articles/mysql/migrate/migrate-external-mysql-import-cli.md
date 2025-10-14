@@ -1,17 +1,21 @@
 ---
 title: "Migrate MySQL On-Premises or Virtual Machine (VM) Workload to Azure Database for MySQL - Flexible Server Using Azure Database for MySQL Import CLI"
 description: This tutorial describes how to use the Azure Database for MySQL Import CLI to migrate MySQL on-premises or VM workload to Azure Database for MySQL - Flexible Server.
-author: adig
-ms.author: adig
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
+ms.collection:
+  - migration
+  - onprem-to-azure
 ms.custom:
-  - mvc
-  - devx-track-azurecli
-  - mode-api
+- mvc
+- devx-track-azurecli
+- mode-api
+- sfi-ropc-blocked
 ms.devlang: azurecli
 ---
 

@@ -1,24 +1,20 @@
 ---
-  title: $zip (array expression) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $zip
+  titleSuffix: Overview of the $zip operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $zip operator allows merging two or more arrays element-wise into a single array or arrays.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
-  ms.date: 09/16/2024
+  ms.topic: language-reference
+  ms.date: 09/08/2025
 ---
 
-# $zip (array expression)
+# $zip
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$zip` operator is used to merge two or more arrays element-wise into a single array of arrays. It is useful when you want to combine related elements from multiple arrays into a single array structure.
+The `$zip` operator is used to merge two or more arrays element-wise into a single array of arrays. It's useful when you want to combine related elements from multiple arrays into a single array structure.
 
 ## Syntax
-
-The syntax for the `$zip` operator is as follows:
 
 ```javascript
 {
@@ -32,118 +28,164 @@ The syntax for the `$zip` operator is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`inputs`** | An array of arrays to be merged element-wise. |
 | **`useLongestLength`** | A boolean value that, if set to true, uses the longest length of the input arrays. If false or not specified, it uses the shortest length. |
 | **`defaults`** | An array of default values to use if `useLongestLength` is true and any input array is shorter than the longest array. |
 
-## Example
+## Examples
 
-Let's understand the usage with sample json from `stores` dataset.
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Lakeshore Retail",
-  "location": {
-    "lat": -51.3041,
-    "lon": -166.0838
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 5,
-      "partTime": 20
-    }
-  },
-  "sales": {
-    "totalSales": 266491,
-    "salesByCategory": [
-      {
-        "categoryName": "Towel Racks",
-        "totalSales": 13237
-      },
-      {
-        "categoryName": "Washcloths",
-        "totalSales": 44315
-      },
-      {
-        "categoryName": "Face Towels",
-        "totalSales": 42095
-      },
-      {
-        "categoryName": "Toothbrush Holders",
-        "totalSales": 47912
-      },
-      {
-        "categoryName": "Hybrid Mattresses",
-        "totalSales": 48660
-      },
-      {
-        "categoryName": "Napkins"
-      },
-      {
-        "categoryName": "Pillow Cases",
-        "totalSales": 38833
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  }
 }
 ```
 
 ### Example 1: Basic Usage
 
-Suppose you want to merge the `categoryName` and `totalSales` fields from the `salesByCategory` array.
+Suppose you want to merge the `categoryName` and `totalSales` fields from the `salesByCategory` array. This query returns individual array of arrays under `categoryWithSales` field. `useLongestLength` set to `true` would return the following output, while a value of `false` removes the `Napkins` array from the output.
 
 ```javascript
-db.stores.aggregate([
-  { $match: {"_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60"} },
-  {
-    $project: {
-      name:1,
-      categoryNames: "$sales.salesByCategory.categoryName",
-      totalSales: "$sales.salesByCategory.totalSales",
-      categoryWithSales: {
-        $zip: {
-          inputs: ["$sales.salesByCategory.categoryName", "$sales.salesByCategory.totalSales"],
-          useLongestLength: false
+db.stores.aggregate([{
+        $match: {
+            _id: "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6"
         }
-      }
+    },
+    {
+        $project: {
+            name: 1,
+            categoryNames: "$sales.salesByCategory.categoryName",
+            totalSales: "$sales.salesByCategory.totalSales",
+            categoryWithSales: {
+                $zip: {
+                    inputs: ["$sales.salesByCategory.categoryName", "$sales.salesByCategory.totalSales"],
+                    useLongestLength: false
+                }
+            }
+        }
     }
-  }
 ])
 ```
 
-This will produce an output for individual array of arrays under `categoryWithSales` field. `useLongestLength` set to `true` would return the following output, while a value of `false` will remove the `Napkins` array from the output.
+This query returns the following result.
 
 ```json
-{
-  "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Lakeshore Retail",
-  "categoryNames": [
-    "Towel Racks",
-    "Washcloths",
-    "Face Towels",
-    "Toothbrush Holders",
-    "Hybrid Mattresses",
-    "Napkins",
-    "Pillow Cases"
-  ],
-  "totalSales": [
-    13237, 44315,
-    42095, 47912,
-    48660, 38833
-  ],
-  "categoryWithSales": [
-    ["Towel Racks", 13237],
-    ["Washcloths", 44315],
-    ["Face Towels", 42095],
-    ["Toothbrush Holders", 47912],
-    ["Hybrid Mattresses", 48660],
-    ["Napkins", null],
-    ["Pillow Cases", 38833]
-  ]
-}
+[
+  {
+    "_id": "a715ab0f-4c6e-4e9d-a812-f2fab11ce0b6",
+    "name": "Lakeshore Retail | Holiday Supply Hub - Marvinfort",
+    "categoryNames": ["Stockings"],
+    "totalSales": [25731],
+    "categoryWithSales": [["Stockings", 25731]]
+  }
+]
 ```
 
 ## Related content

@@ -18,7 +18,7 @@ The following guide describes how to use PowerShell to script and automate manag
 > [!NOTE]
 > Samples in this article use [Az.CosmosDB](/powershell/module/az.cosmosdb) management cmdlets. See the [Az.CosmosDB](/powershell/module/az.cosmosdb) API reference page for the latest changes.
 
-For cross-platform management of Azure Cosmos DB, you can use the `Az` and `Az.CosmosDB` cmdlets with [cross-platform PowerShell](/powershell/scripting/install/installing-powershell), as well as the [Azure CLI](manage-with-cli.md), the [REST API][rp-rest-api], or the [Azure portal](how-to-create-account.md).
+For cross-platform management of Azure Cosmos DB, you can use the `Az` and `Az.CosmosDB` cmdlets with [cross-platform PowerShell](/powershell/scripting/install/installing-powershell), and the [Azure CLI](manage-with-cli.md), the [REST API][rp-rest-api], or the [Azure portal](how-to-create-account.md).
 
 [!INCLUDE [updated-for-az](~/reusable-content/ce-skilling/azure/includes/updated-for-az.md)]
 
@@ -27,7 +27,7 @@ For cross-platform management of Azure Cosmos DB, you can use the `Az` and `Az.C
 Follow the instructions in [How to install and configure Azure PowerShell][powershell-install-configure] to install and sign in to your Azure account in PowerShell.
 
 > [!IMPORTANT]
-> Azure Cosmos DB resources cannot be renamed as this violates how Azure Resource Manager works with resource URIs.
+> Azure Cosmos DB resources can't be renamed as this violates how Azure Resource Manager works with resource URIs.
 
 ## Azure Cosmos DB accounts
 
@@ -75,7 +75,7 @@ New-AzCosmosDBAccount `
 * `$apiKind` The type of Azure Cosmos DB account to create. For more information, see [APIs in Azure Cosmos DB](../introduction.md#simplified-application-development).
 * `$consistencyPolicy`, `$maxStalenessInterval`, and `$maxStalenessPrefix` The default consistency level and settings of the Azure Cosmos DB account. For more information, see [Consistency Levels in Azure Cosmos DB](../consistency-levels.md).
 
-Azure Cosmos DB accounts can be configured with IP Firewall, Virtual Network service endpoints, and private endpoints. For information on how to configure the IP Firewall for Azure Cosmos DB, see [Configure IP Firewall](../how-to-configure-firewall.md). For information on how to enable service endpoints for Azure Cosmos DB, see [Configure access from virtual Networks](../how-to-configure-vnet-service-endpoint.md). For information on how to enable private endpoints for Azure Cosmos DB, see [Configure access from private endpoints](../how-to-configure-private-endpoints.md).
+Azure Cosmos DB accounts can be configured with IP Firewall, Virtual Network service endpoints, and private endpoints. For information on how to configure the IP Firewall for Azure Cosmos DB, see [Configure IP Firewall](../how-to-configure-firewall.md). For information on how to enable service endpoints for Azure Cosmos DB, see [Configure access from virtual networks](../how-to-configure-vnet-service-endpoint.md). For information on how to enable private endpoints for Azure Cosmos DB, see [Configure access from private endpoints](../how-to-configure-private-endpoints.md).
 
 ### <a id="list-accounts"></a> List all Azure Cosmos DB accounts in a Resource Group
 
@@ -109,7 +109,7 @@ This command allows you to update your Azure Cosmos DB database account properti
 * Enabling multi-region writes
 
 > [!NOTE]
-> You cannot simultaneously add or remove regions (`locations`) and change other properties for an Azure Cosmos DB account. Modifying regions must be performed as a separate operation from any other change to the account.
+> You can't simultaneously add or remove regions (`locations`) and change other properties for an Azure Cosmos DB account. Modifying regions must be performed as a separate operation from any other change to the account.
 > [!NOTE]
 > This command allows you to add and remove regions but does not allow you to modify failover priorities or trigger a manual failover. See [Modify failover priority](#modify-failover-priority) and [Trigger manual failover](#trigger-manual-failover).
 > [!TIP]
@@ -204,7 +204,7 @@ Remove-AzCosmosDBAccount `
 
 ### <a id="update-tags"></a> Update Tags of an Azure Cosmos DB account
 
-This command sets the [Azure resource tags][azure-resource-tags] for an Azure Cosmos DB account. Tags can be set both at account creation using `New-AzCosmosDBAccount` as well as on account update using `Update-AzCosmosDBAccount`.
+This command sets the [Azure resource tags][azure-resource-tags] for an Azure Cosmos DB account. Tags can be set both at account creation using `New-AzCosmosDBAccount` and on account update using `Update-AzCosmosDBAccount`.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -776,7 +776,6 @@ Remove-AzResourceLock `
 
 ## Next steps
 
-* [All PowerShell Samples](powershell-samples.md)
 * [How to manage Azure Cosmos DB account](../how-to-manage-database-account.yml)
 * [Create an Azure Cosmos DB container](how-to-create-container.md)
 * [Configure time-to-live in Azure Cosmos DB](how-to-time-to-live.md)

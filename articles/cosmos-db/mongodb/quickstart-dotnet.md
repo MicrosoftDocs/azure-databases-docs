@@ -8,10 +8,10 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 01/29/2025
-ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
+ms.date: 04/08/2025
+ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli, sfi-image-nochange
 appliesto:
-  - ✅ MongoDB (RU)
+- ✅ MongoDB (RU)
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB (RU).
 ---
 
@@ -29,7 +29,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application u
 - Docker Desktop
 - .NET SDK 9.0
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 
@@ -91,6 +91,14 @@ The client library is available through NuGet, as the `MongoDB.Driver` package.
     ```
 
 1. Open and review the **src/web/Microsoft.Samples.Cosmos.MongoDB.Quickstart.Web.csproj** file to validate that the `MongoDB.Driver` entry exists.
+
+### Import libraries
+
+Import the `MongoDB.Driver` namespace into your application code.
+
+```csharp
+using MongoDB.Driver;
+```
 
 ## Object model
 
@@ -212,7 +220,7 @@ For more information, see [How-to use Visual Studio Code extension to explore Az
 When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
 
 ```azurecli
-azd down
+azd down --force --purge
 ```
 
 ## Related content

@@ -6,18 +6,19 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
-ms.date: 12/03/2024
+ms.date: 09/03/2025
+ms.update-cycle: 180-days
 adobe-target: true
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ MongoDB vCore
-  - ✅ Cassanda
-  - ✅ Gremlin
-  - ✅ Table
+  - ✅ MongoDB (vCore)
   - ✅ PostgreSQL
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB - Database for the AI Era
@@ -50,13 +51,11 @@ As a fully managed service, Azure Cosmos DB takes database administration off yo
 The following free options are available:
 
 - [Azure Cosmos DB lifetime free tier](free-tier.md) provides 1000 [RU/s](request-units.md) of throughput and 25 GB of storage free.
-- [Azure AI Advantage](ai-advantage.md) offers 40,000 [RU/s](request-units.md) of throughput for 90 days (equivalent of up to $6,000) to Azure AI or GitHub Copilot customers.
-- [Try Azure Cosmos DB free](https://azure.microsoft.com/try/cosmosdb/) for 30 days without creating an Azure account; no commitment follows when the trial period ends.
 
 When you decide that Azure Cosmos DB is right for you, you can receive up to 63% discount on [Azure Cosmos DB prices through Reserved Capacity](reserved-capacity.md).
 
 > [!div class="nextstepaction"]
-> [Try Azure Cosmos DB free](https://azure.microsoft.com/try/cosmosdb/)
+> [Try Azure Cosmos DB free](free-tier.md)
 
 > [!TIP]
 > To learn more about Azure Cosmos DB, join us every Thursday at 1PM Pacific on Azure Cosmos DB Live TV. See the [Upcoming session schedule and past episodes](https://www.youtube.com/@AzureCosmosDB/streams).

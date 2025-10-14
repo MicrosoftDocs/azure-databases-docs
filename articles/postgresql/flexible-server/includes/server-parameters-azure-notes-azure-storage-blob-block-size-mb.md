@@ -1,6 +1,6 @@
 ---
 title: azure_storage.blob_block_size_mb server parameter
-description: azure_storage.blob_block_size_mb server parameter for Azure Database for PostgreSQL - Flexible Server.
+description: azure_storage.blob_block_size_mb server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include

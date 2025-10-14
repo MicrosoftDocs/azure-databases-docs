@@ -1,6 +1,6 @@
 ---
 title: max_connections server parameter
-description: max_connections server parameter for Azure Database for PostgreSQL - Flexible Server.
+description: max_connections server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -38,4 +38,4 @@ Based on the previous formula, the following table lists the values this server 
 |     432 GiB |            5000 |
 |     672 GiB |            5000 |
 
-Refer to [Maximum connections](../concepts-limits.md#maximum-connections) for more information about this parameter in Azure Database for Flexible Server.
+Refer to [Maximum connections](../concepts-limits.md#maximum-connections) for more information about this parameter in Azure Database for PostgreSQL flexible server.

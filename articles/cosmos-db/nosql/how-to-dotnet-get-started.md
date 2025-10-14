@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 06/11/2025
 ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track-azurepowershell, devx-track-dotnet, devx-track-azurecli
 ---
 
@@ -17,7 +17,7 @@ ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track
 
 This article shows you how to connect to Azure Cosmos DB for NoSQL using the .NET SDK. Once connected, you can perform operations on databases, containers, and items.
 
-[Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) | [Samples](samples-dotnet.md) | [API reference](/dotnet/api/microsoft.azure.cosmos) | [Library source code](https://github.com/Azure/azure-cosmos-dotnet-v3) | [Give Feedback](https://github.com/Azure/azure-cosmos-dotnet-v3/issues)
+[Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) | [API reference](/dotnet/api/microsoft.azure.cosmos) | [Library source code](https://github.com/Azure/azure-cosmos-dotnet-v3) | [Give Feedback](https://github.com/Azure/azure-cosmos-dotnet-v3/issues)
 
 ## Prerequisites
 
@@ -128,7 +128,6 @@ The following guides show you how to use each of these classes to build your app
 ## See also
 
 - [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
-- [Samples](samples-dotnet.md)
 - [API reference](/dotnet/api/microsoft.azure.cosmos)
 - [Library source code](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Give Feedback](https://github.com/Azure/azure-cosmos-dotnet-v3/issues)

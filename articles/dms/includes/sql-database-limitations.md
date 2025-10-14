@@ -21,3 +21,4 @@ Azure SQL Database offline migration utilizes Azure Data Factory (ADF) pipelines
 - Database names with SQL Server reserved are currently not supported.
 - Database names that include semicolons are currently not supported.
 - Computed columns don't get migrated.
+- Columns in the source database that have default constraints and contain NULL values are migrated with their defined default values on the target Azure SQL DB, rather than retaining  the NULLs.

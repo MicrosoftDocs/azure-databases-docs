@@ -6,7 +6,7 @@ ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: thvankra
-ms.custom: devx-track-azurecli, seo-azure-cli, devx-track-arm-template
+ms.custom: devx-track-azurecli, seo-azure-cli, devx-track-arm-template, sfi-ropc-blocked
 keywords: azure resource manager cli
 ---
 
@@ -291,7 +291,7 @@ az managed-cassandra datacenter update \
 ```
 
 > [!IMPORTANT]
-> Ensure that the Cassandra YAML settings that you provide are appropriate for your version of Cassandra. See the [Cassandra v3.11 settings](https://github.com/apache/cassandra/blob/cassandra-3.11/conf/cassandra.yaml) and the [Cassandra v4.0 settings](https://github.com/apache/cassandra/blob/cassandra-4.0/conf/cassandra.yaml). You're *not* allowed to update the following YAML settings:
+> Ensure that the Cassandra YAML settings that you provide are appropriate for your version of Cassandra. See the [Cassandra v5.0 settings](https://github.com/apache/cassandra/blob/cassandra-5.0/conf/cassandra.yaml) and the [Cassandra v4.0 settings](https://github.com/apache/cassandra/blob/cassandra-4.0/conf/cassandra.yaml) and [Cassandra v3.11 settings](https://github.com/apache/cassandra/blob/cassandra-3.11/conf/cassandra.yaml). You're *not* allowed to update the following YAML settings:
 >
 > * `cluster_name`
 > * `seed_provider`

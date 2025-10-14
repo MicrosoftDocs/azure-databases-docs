@@ -2,10 +2,10 @@
 title: Change data capture in analytical store
 titleSuffix: Azure Cosmos DB
 description: Change data capture (CDC) in Azure Cosmos DB analytical store allows you to efficiently consume a continuous and incremental feed of changed data.
-author: Rodrigossz
-ms.author: rosouz
+author: jilmal
+ms.author: jmaldonado
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/28/2023
 ---
 
@@ -33,11 +33,11 @@ In addition to providing incremental data feed from analytical store to diverse 
 
 ## Efficient incremental data capture with internally managed checkpoints
 
-Each change in Cosmos DB container appears exactly once in the CDC feed, and the checkpoints are managed internally for you. This helps to address the below disadvantages of the common pattern of using custom checkpoints based on the “_ts” value:  
+Each change in Cosmos DB container appears exactly once in the CDC feed, and the checkpoints are managed internally for you, addressing the below disadvantages of the common pattern of using custom checkpoints based on the “_ts” value:  
 
- * The “_ts” filter is applied against the data files which does not always guarantee minimal data scan. The internally managed GLSN based checkpoints in the new CDC capability ensure that the incremental data identification is done, just based on the metadata and so guarantees minimal data scanning in each stream.  
+ * The “_ts” filter is applied against the data files which does not always guarantee minimal data scan. The internally managed GLSN based checkpoints, in the new CDC capability, ensure that the incremental data identification is done. Just based on the metadata and so guarantees minimal data search in each stream.  
 
-* The analytical store sync process does not guarantee “_ts” based ordering which means that there could be cases where an incremental record’s “_ts” is lesser than the last checkpointed “_ts” and could be missed out in the incremental stream. The new CDC does not consider “_ts” to identify the incremental records and thus guarantees that none of the incremental records are missed. 
+* The analytical store sync process does not guarantee “_ts” based ordering. There could be cases where an incremental record’s “_ts” is lesser than the last checkpointed “_ts” and are missed out in the incremental stream. The new CDC does not consider “_ts” to identify the incremental records and thus guarantees that none of the incremental records are missed. 
 
 ## Features
 
@@ -56,15 +56,15 @@ When the `Start from timestamp` option is selected, the initial load processes t
 When the `Start from timestamp` option is selected, all past operations of the container are not captured. 
 
 
-### Capturing deletes, intermediate updates, and TTLs
+### Capturing deletes, intermediate updates, and Time to Live
 
 The change data capture feature for the analytical store captures deletes, intermediate updates, and TTL operations. The captured deletes and updates can be applied on Sinks that support delete and update operations. The {_rid} value uniquely identifies the records and so by specifying {_rid} as key column on the Sink side, the update and delete operations would be reflected on the Sink. 
 
-Note that TTL operations are considered deletes. Check the [source settings](get-started-change-data-capture.md) section to check mode details and the support for intermediate updates and deletes in sinks.
+Time To Live (TTL) operations are considered deletes. Check the [source settings](get-started-change-data-capture.md) section to check mode details and the support for intermediate updates and deletes in sinks.
 
 ### Filter the change feed for a specific type of operation
 
-You can filter the change data capture feed for a specific type of operation. For example, you can selectively capture the insert and update operations only, thereby ignoring the user-delete and TTL-delete operations.
+You can filter the change data capture feed for a specific type of operation. For example, you can selectively capture the insert and update operations only, ignoring the user-delete and TTL-delete operations.
 
 ### Applying filters, projections, and transformations on the Change feed via source query
 
@@ -82,9 +82,9 @@ WHERE Category = 'Urban'
 You can create multiple processes to consume CDC in analytical store. This approach brings flexibility to support different scenarios and requirements. While one process may have no data transformations and multiple sinks, another one can have data flattening and one sink. And they can run in parallel.
 
 
-### Throughput isolation, lower latency and lower TCO
+### Throughput isolation, lower latency and lower Total Cost of Ownership
 
-Operations on Cosmos DB analytical store don't consume the provisioned RUs and so don't affect your transactional workloads. Change data capture with analytical store also has lower latency and lower TCO. The lower latency is attributed to analytical store enabling better parallelism for data processing and reduces the overall TCO enabling you to drive cost efficiencies in these rapidly shifting economic conditions.
+Operations on Cosmos DB analytical store don't consume the provisioned resource units and so don't affect your transactional workloads. Change data capture with analytical store also has lower latency and lower TCO. The lower latency is attributed to analytical store enabling better parallelism for data processing and reduces the overall TCO enabling you to drive cost efficiencies in these rapidly shifting economic conditions.
 
 ## Scenarios
 
@@ -110,7 +110,7 @@ Change data capture capability enables an end-to-end analytical solution providi
 
 The linked service interface for the API for MongoDB isn't available within Azure Data Factory data flows yet. You can use your API for MongoDB's account endpoint with the **Azure Cosmos DB for NoSQL** linked service interface as a work around until the Mongo linked service is directly supported.
 
-In the interface for a new NoSQL linked service, select **Enter Manually** to provide the Azure Cosmos DB account information. Here, use the account's NoSQL document endpoint (Example: `https://<account-name>.documents.azure.com:443/`) instead of the Mongo DB endpoint (Example: `mongodb://<account-name>.mongo.cosmos.azure.com:10255/`)
+In the interface for a new NoSQL linked service, select **Enter Manually** to provide the Azure Cosmos DB account information. Here, use the account's NoSQL document endpoint (Example: `https://<account-name>.documents.azure.com:443/`) instead of the MongoDB endpoint (Example: `mongodb://<account-name>.mongo.cosmos.azure.com:10255/`)
 
 ## Next steps
 

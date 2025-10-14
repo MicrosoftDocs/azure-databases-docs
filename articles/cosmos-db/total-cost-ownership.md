@@ -4,7 +4,7 @@ description: This article compares the total cost of ownership of Azure Cosmos D
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/26/2021
 ---
 
@@ -19,7 +19,7 @@ Unlike a cloud-native database service Azure Cosmos DB, OSS NoSQL database engin
 
 ## Total cost of ownership of Azure Cosmos DB
 
-The serverless provisioning model of Azure Cosmos DB eliminates the need to over-provision the database infrastructure. Azure Cosmos DB resources are provided without any need for specialized configurations or licensing. As a result, the Azure Cosmos DB-backed applications can run with as much as a 70 percent Total cost of ownership savings when compared to OSS NoSQL databases. For some real-time examples, see [customer use-cases](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). Other benefits of the Azure Cosmos DB pricing model include:
+The serverless provisioning model of Azure Cosmos DB eliminates the need to over-provision the database infrastructure. Azure Cosmos DB resources are provided without any need for specialized configurations or licensing. As a result, the Azure Cosmos DB-backed applications can run with as much as a 70 percent Total cost of ownership savings when compared to OSS NoSQL databases. For some real-time examples, see [customer use-cases](https://customers.microsoft.com/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc). Other benefits of the Azure Cosmos DB pricing model include:
 
 * **Great value for the price:** Market analysts, customers, and partners have confirmed a greater value of all the features that Azure Cosmos DB offers for a much lower price compared to what customers can get when implementing these solutions on their own or through other vendors. The database features such global distribution, multi-region writes, well-defined and intuitive consistency models, automatic indexing are greatly simplified with Azure Cosmos DB without any complexity, overhead, or downtime.
 

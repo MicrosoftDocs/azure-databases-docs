@@ -1,6 +1,6 @@
 ---
-title: How to Set up Azure CLI for Migration Service in Azure Database for PostgreSQL - Flexible Server
-description: Learn how to set up Azure CLI for migration service in Azure Database for PostgreSQL - Flexible Server and begin migrating your data.
+title: "How to Set Up Azure CLI for Migration Service in Azure Database for PostgreSQL flexible server"
+description: Learn how to set up Azure CLI for migration service in Azure Database for PostgreSQL flexible server and begin migrating your data.
 author: markingmyname
 ms.author: maghan
 ms.date: 02/07/2025
@@ -11,7 +11,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# How to set up Azure CLI for migration service in Azure Database for PostgreSQL - Flexible Server
+# How to set up Azure CLI for migration service in Azure Database for PostgreSQL flexible server
 
 The Azure CLI is a set of commands used across Azure services to create and manage resources. It provides the same capabilities as the Azure portal but is optimized for users who prefer to work within a command-line environment. To begin migrating using Azure CLI, you need to install the Azure CLI on your local machine.
 
@@ -47,7 +47,7 @@ az login
 
 ## Migrate commands
 
-The migration service provides the following commands to help you migrate your PostgreSQL instances to Azure Database for PostgreSQL - Flexible Server.
+The migration service provides the following commands to help you migrate your PostgreSQL instances to Azure Database for PostgreSQL flexible server.
 
 ### Help command
 
@@ -61,7 +61,7 @@ The output guides you through the necessary steps and parameters required to man
 
 ### Create command
 
-The `az postgres flexible-server migration create` command in Azure CLI is used to initiate a new migration workflow. It facilitates the migration of databases from a source PostgreSQL instance to a target Azure Database for PostgreSQL - Flexible Server instance. This command sets up the necessary parameters and configurations to ensure a smooth and efficient migration process.
+The `az postgres flexible-server migration create` command in Azure CLI is used to initiate a new migration workflow. It facilitates the migration of databases from a source PostgreSQL instance to a target Azure Database for PostgreSQL flexible server instance. This command sets up the necessary parameters and configurations to ensure a smooth and efficient migration process.
 
 For more information, see [az postgres flexible-server migration create](/cli/azure/postgres/flexible-server/migration#az-postgres-flexible-server-migration-create)
 
@@ -111,9 +111,9 @@ Some possible migration states:
 
 ### Update command
 
-The `az postgres flexible-server migration update` command is used to manage the migration process to an Azure Database for PostgreSQL Flexible Server. Specifically, it can be used to:
+The `az postgres flexible-server migration update` command is used to manage the migration process to an Azure Database for PostgreSQL flexible server. Specifically, it can be used to:
 
-- **Perform a cutover**: This finalizes the migration process by switching the database traffic from the source server to the target Flexible Server.
+- **Perform a cutover**: This finalizes the migration process by switching the database traffic from the source server to the target flexible server.
 
   - After the base data migration is complete, the migration task moves to the `WaitingForCutoverTrigger` substate. In this state, users can trigger the cutover from the portal by selecting the migration name in the migration grid or through the CLI.
   - Before initiating cutover, it's important to ensure that:
@@ -124,7 +124,7 @@ The `az postgres flexible-server migration update` command is used to manage the
 
 - **Cancel the migration**: If needed, this option allows you to stop the migration process.
 
-- **Setup logical replication at the source**: This is useful when the source server is an Azure Database for PostgreSQL - Single Server, as it prepares the server for data replication to the Flexible Server.
+- **Setup logical replication at the source**: This is useful when the source server is an Azure Database for PostgreSQL - Single Server, as it prepares the server for data replication to the flexible server.
 
 For more information, see [az postgres flexible-server migration update](/cli/azure/postgres/flexible-server/migration#az-postgres-flexible-server-migration-update)
 
@@ -137,7 +137,7 @@ The following table summarizes the parameters used by the migration commands:
 | `subscription` | create, list, show, update | Subscription ID of PostgreSQL Flexible server |
 | `resource-group` | create, list, show, update | Resource group of PostgreSQL Flexible server |
 | `name` | create, list, show | Name of the PostgreSQL Flexible server |
-| `migration-name` | create, show, update | Unique identifier to migrations attempted to Flexible Server. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with -, and no two migrations to a Flexible Server target can have the same name. |
+| `migration-name` | create, show, update | Unique identifier to migrations attempted to flexible server. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with -, and no two migrations to a flexible server target can have the same name. |
 | `filter` | list | To filter migrations, two values are supported – Active and All |
 | `help` | create, list, show, update | Provides information about each command. |
 | `migration-mode` | create | This is an optional parameter. Allowed Values are - offline, online. Default value: Offline. |
@@ -153,9 +153,9 @@ The `az postgres flexible-server migration create` command requires a JSON file 
 | `sourceDbServerResourceId` | Source server details in the format for on-premises, virtual machines (VMs), cloud-based PostgreSQL service - `<<hostname or IP address>>:<<port>>@<<username>>`. If the source server is Azure Database for PostgreSQL - Single server then the resource ID is in the format - `/subscriptions/<<Subscription ID>>/resourceGroups/<<Resource Group Name>>/providers/Microsoft.DBforPostgreSQL/servers/<<PostgreSQL Single Server name>>` |
 | `adminCredentials` | This parameter lists passwords for admin users for both the source server and the target PostgreSQL flexible server. These passwords help to authenticate against the source and target servers. It includes two subproperties, `sourceServerPassword` and `targetServerPassword` |
 | `targetServerUserName` | The default value is the admin user created during the creation of the PostgreSQL target flexible server, and the password provided is used for authentication against this user. |
-| `dbsToMigrate` | Specify the list of databases that you want to migrate to Flexible Server. You can include a maximum of eight database names at a time. Providing the list of databases in array format. |
+| `dbsToMigrate` | Specify the list of databases that you want to migrate to flexible server. You can include a maximum of eight database names at a time. Providing the list of databases in array format. |
 | `overwriteDBsInTarget` | When set to true (default), if the target server happens to have an existing database with the same name as the one you're trying to migrate, the migration service automatically overwrites the database |
-| `migrationRuntimeResourceId` | Required if a runtime server needs to be used for migration. The format is - `/subscriptions/<<Subscription ID>>/resourceGroups/<<Resource Group Name>>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<<PostgreSQL Flexible Server name>>` |
+| `migrationRuntimeResourceId` | Required if a runtime server needs to be used for migration. The format is - `/subscriptions/<<Subscription ID>>/resourceGroups/<<Resource Group Name>>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<<PostgreSQL flexible server name>>` |
 | `sourceDBServerFullyQualifiedDomainName` | Required only if the source is a Single server and is behind a custom DNS server, custom DNS namespaces, custom FQDN, or needs to be accessible via IP. |
 | `targetDBServerFullyQualifiedDomainName` | Required only if the target is behind a custom DNS server, custom DNS namespaces, custom FQDN, or needs to be accessible via IP. |
 | `sourceType` | Required parameter. Values can be - on-premises, AWS_RDS, AWS_AURORA, GCP_CloudSQL, AzureVM, PostgreSQLSingleServer |
@@ -164,5 +164,5 @@ The `az postgres flexible-server migration create` command requires a JSON file 
 ## Related content
 
 - [What is the migration service in Azure Database for PostgreSQL?](overview-migration-service-postgresql.md)
-- [Tutorial: Migrate from Azure Database for PostgreSQL - Single Server to Flexible Server with the migration service](tutorial-migration-service-single-to-flexible.md)
+- [Tutorial: Migrate from Azure Database for PostgreSQL - Single Server to flexible server with the migration service](tutorial-migration-service-single-to-flexible.md)
 - [Tutorial: Migrate offline from an Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL with the migration service](tutorial-migration-service-iaas-offline.md)

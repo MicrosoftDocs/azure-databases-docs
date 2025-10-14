@@ -6,7 +6,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/20/2024
 ---
 

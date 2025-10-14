@@ -4,16 +4,16 @@ description: This article describes how to add private endpoint connections to a
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/29/2025
+ms.date: 03/30/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to add private endpoint connections to an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to add private endpoint connections to an Azure Database for PostgreSQL.
 ---
 
 # Add private endpoint connections
 
-Azure Database for PostgreSQL - Flexible Server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
+Azure Database for PostgreSQL flexible server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
 A private endpoint to your Azure Database for PostgreSQL flexible server is a network interface that you can inject in a subnet of an Azure virtual network. Any host or service that can route network traffic to that subnet, are able to communicate with your flexible server so that the network traffic doesn't have to traverse the internet. All traffic is sent privately using Microsoft backbone.
 
@@ -25,37 +25,22 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, select **Overview**.
-
-    :::image type="content" source="./media/how-to-networking/networking-overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-networking/networking-overview.png":::
-
-3. The status of the server must be **Available**, for the **Networking** menu option to be enabled.
-
-    :::image type="content" source="./media/how-to-networking/networking-server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-networking/networking-server-status.png":::
-
-4. If the status of the server isn't **Available**, the **Networking** option is disabled.
-
-    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Available." lightbox="./media/how-to-networking/networking-disabled.png":::
-
-> [!NOTE]
-> Any attempt to configure the networking settings of a server whose status is other than available, would fail with an error.
-
-5. In the resource menu, select **Networking**.
+2. In the resource menu, select **Networking**.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled.png":::
 
-6. If you have the required permissions to deploy a private endpoint, you can create it by selecting **Add private endpoint**.
+3. If you have the required permissions to deploy a private endpoint, you can create it by selecting **Create private endpoint**.
 
     :::image type="content" source="./media/how-to-networking/add-private-endpoint-connection.png" alt-text="Screenshot showing how to begin adding a new private endpoint." lightbox="./media/how-to-networking/add-private-endpoint-connection.png":::
 
 > [!NOTE]
 > To learn about the necessary permissions to deploy a private endpoint, see [Azure RBAC permissions for Azure Private Link](/azure/private-link/rbac-permissions).
 
-7. In the **Basics** page, fill all the details required. Then, select **Next: Resource**.
+4. In the **Basics** page, fill all the details required. Then, select **Next: Resource**.
 
     :::image type="content" source="./media/how-to-networking/create-private-endpoint-basics.png" alt-text="Screenshot showing the Basics page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-basics.png":::
 
-8. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
+5. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
 
     | Setting | Suggested value | Description |
     | --- | --- | --- |
@@ -63,14 +48,14 @@ Using the [Azure portal](https://portal.azure.com/):
     | **Resource group** | The [resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group) in the selected subscription, in which you want to create the private endpoint. It can be an existing resource group, or you can select **Create new**, and provide a name in that subscription which is unique among the existing resource group names. It automatically selects the resource group in which your server is deployed. | A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization. Generally, add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group. |
     | **Name** | The name that you want to assign to the private endpoint. | A unique name that identifies the private endpoint through which you could connect to your Azure Database for PostgreSQL flexible server. |
     | **Network Interface Name** | The name that you want to assign to the network interface associated to the private endpoint. | A unique name that identifies the network interface associated to the private endpoint. |
-    | **Region** | The name of one of the [regions in which you can create private endpoints for Azure Database for PostgreSQL - Flexible Server](/azure/private-link/availability#databases). | The region you select must match that of the virtual network in which you plan to deploy the private endpoint. |
+    | **Region** | The name of one of the [regions in which you can create private endpoints for Azure Database for PostgreSQL flexible server](/azure/private-link/availability#databases). | The region you select must match that of the virtual network in which you plan to deploy the private endpoint. |
 
 
-9. In the **Resource** page, fill all the details required. Then, select **Next: Virtual Network**.
+6. In the **Resource** page, fill all the details required. Then, select **Next: Virtual Network**.
 
     :::image type="content" source="./media/how-to-networking/create-private-endpoint-resource.png" alt-text="Screenshot showing the Resource page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-resource.png":::
 
-10. Use the following table to understand the meaning of the different fields available in the **Resource** page, and as guidance to fill the page:
+7. Use the following table to understand the meaning of the different fields available in the **Resource** page, and as guidance to fill the page:
 
     | Setting | Suggested value | Description |
     | --- | --- | --- |
@@ -78,11 +63,11 @@ Using the [Azure portal](https://portal.azure.com/):
     | **Resource** | Automatically set to the name of the Azure Database for PostgreSQL flexible server for which you're creating the private endpoint. | The name of the resource to which the private endpoint connects to. |
     | **Target sub-resource** | Automatically set to `postgresqlServer`. | The type of subresource for the resource selected, that your private endpoint is able to access. |
 
-11. In the **Virtual Network** page, fill all the details required. Then, select **Next: DNS**.
+8. In the **Virtual Network** page, fill all the details required. Then, select **Next: DNS**.
 
     :::image type="content" source="./media/how-to-networking/create-private-endpoint-virtual-network.png" alt-text="Screenshot showing the Virtual Network page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-virtual-network.png":::
 
-12. Use the following table to understand the meaning of the different fields available in the **Virtual Network** page, and as guidance to fill the page:
+9. Use the following table to understand the meaning of the different fields available in the **Virtual Network** page, and as guidance to fill the page:
 
     | Setting | Suggested value | Description |
     | --- | --- | --- |
@@ -92,11 +77,11 @@ Using the [Azure portal](https://portal.azure.com/):
     | **Private IP configuration** | Automatically set to dynamically allocate one of the available IP addresses in the range assigned to the selected subnet. | This IP address is the one assigned to the network interface associated to the private endpoint. It can be dynamically allocated from the range assigned to the selected subnet, or you can decide which specific address you want to assign to it. After the private endpoint is created, you can't change its IP address, regardless of which of the two allocation modes you select during creation. |
     | **Application security group** | No application security group is assigned by default. You can choose an existing one, or you can create one and assign it. | Application security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. You can reuse your security policy at scale without manual maintenance of explicit IP addresses. The platform handles the complexity of explicit IP addresses and multiple rule sets, allowing you to focus on your business logic. For more information, see [Application security groups](/azure/virtual-network/application-security-groups). |
 
-13. In the **DNS** page, fill all the details required. Then, select **Next: Tags**.
+10. In the **DNS** page, fill all the details required. Then, select **Next: Tags**.
 
     :::image type="content" source="./media/how-to-networking/create-private-endpoint-dns.png" alt-text="Screenshot showing the DNS page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-dns.png":::
 
-14. Use the following table to understand the meaning of the different fields available in the **DNS** page, and as guidance to fill the page:
+11. Use the following table to understand the meaning of the different fields available in the **DNS** page, and as guidance to fill the page:
 
     | Setting | Suggested value | Description |
     | --- | --- | --- |
@@ -106,11 +91,11 @@ Using the [Azure portal](https://portal.azure.com/):
     | **Resource group** | The [resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group) in the selected subscription, in which you want to create the private DNS zone. It must be an existing resource group. It automatically selects the resource group in which your server is deployed. | A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization. Generally, add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group. |
     | **Private DNS zone** | Automatically set for you to `privatelink.postgres.database.azure.com`. | This name is the one assigned to the private DNS zone resource. |
 
-15. In the **Tags** page, fill all the details required. Then, select **Next: Review + create**.
+12. In the **Tags** page, fill all the details required. Then, select **Next: Review + create**.
 
     :::image type="content" source="./media/how-to-networking/create-private-endpoint-tags.png" alt-text="Screenshot showing the Tags page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-tags.png":::
 
-16. Use the following table to understand the meaning of the different fields available in the **Tags** page, and as guidance to fill the page:
+13. Use the following table to understand the meaning of the different fields available in the **Tags** page, and as guidance to fill the page:
 
     | Setting | Suggested value | Description |
     | --- | --- | --- |
@@ -118,11 +103,11 @@ Using the [Azure portal](https://portal.azure.com/):
     | **Value** | Leave empty. | Value that you want to assign to the tag with the given name, and that you want to assign to your private endpoint and private DNS zone (if you selected private DNS zone integration in the **DNS** page). |
     | **Resource** | Leave by default. | You can select to which resources you want the given tag assigned. It can be the private endpoint, the private DNS zone (if you selected private DNS zone integration in the **DNS** page), or both. |
 
-17. In the **Review + create** page, make sure that everything is configured as you wanted to. Then, select **Create**.
+14. In the **Review + create** page, make sure that everything is configured as you wanted to. Then, select **Create**.
 
     :::image type="content" source="./media/how-to-networking/create-private-endpoint-review-create.png" alt-text="Screenshot showing the Review + create page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-review-create.png":::
 
-18. A deployment is initiated, and you see a notification when the deployment completes. 
+15. A deployment is initiated, and you see a notification when the deployment completes. 
 
     :::image type="content" source="./media/how-to-networking/create-private-endpoint-deployment-succeeded.png" alt-text="Screenshot showing the successful deployment of the private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-deployment-succeeded.png":::
 

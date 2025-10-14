@@ -7,14 +7,12 @@ ms.reviewer: maghan
 ms.date: 12/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: troubleshooting-general
 ---
 
-# Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server
+# Troubleshoot high CPU utilization in Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-This article describes how to identify the root cause of high CPU utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL Flexible Server](overview.md).
+This article describes how to identify the root cause of high CPU utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL](overview.md).
 
 In this article, you can learn:
 
@@ -151,7 +149,7 @@ In situations where there are many short-lived connections, or many connections 
 
 For more information about PgBouncer, see [connection pooler](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717) and [connection handling best practices with PostgreSQL](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/connection-handling-best-practice-with-postgresql/ba-p/790883)
 
-Azure Database for PostgreSQL flexible server offers PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer](concepts-pgbouncer.md).
+Azure Database for PostgreSQL offers PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer](concepts-pgbouncer.md).
 
 ### Terminate long running transactions
 
@@ -198,8 +196,8 @@ VACUUM ANALYZE <table>;
 
 ## Related content
 
-- [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
-- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL - Flexible Server](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
+- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

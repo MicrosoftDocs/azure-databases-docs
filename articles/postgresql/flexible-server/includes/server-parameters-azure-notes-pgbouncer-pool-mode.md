@@ -1,6 +1,6 @@
 ---
 title: pgbouncer.pool_mode server parameter
-description: pgbouncer.pool_mode server parameter for Azure Database for PostgreSQL - Flexible Server.
+description: pgbouncer.pool_mode server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include

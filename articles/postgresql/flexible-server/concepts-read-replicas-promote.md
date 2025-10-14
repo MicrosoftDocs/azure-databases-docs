@@ -1,18 +1,16 @@
 ---
 title: Promote read replicas
-description: This article describes the promote action for read replica feature in Azure Database for PostgreSQL - Flexible Server.
-author: kabharati
-ms.author: kabharati
+description: This article describes the promote action for read replica feature in an Azure Database for PostgreSQL flexible server instance.
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
-# Promote read replicas in Azure Database for PostgreSQL - Flexible Server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Promote read replicas in Azure Database for PostgreSQL 
 
 Promote refers to the process where a replica is commanded to end its replica mode and transition into full read-write operations.
 
@@ -53,7 +51,7 @@ For both promotion methods, there are more options to consider:
 > The **Forced** promotion option is designed to address regional outages and, in such cases, it skips all checks - including the server symmetry requirement - and proceeds with promotion. This is because it prioritizes immediate server availability to handle disaster scenarios. However, using the Forced option outside of region down scenarios isn't allowed if the requirements for read replicas specified in the documentation, especially server symmetry requirement, aren't met, as it could lead to issues such as broken replication.
  
 
-Learn how to [promote replica to primary](how-to-read-replicas-portal.md#promote-replicas) and [promote to independent server and remove from replication](how-to-read-replicas-portal.md#promote-replica-to-independent-server).
+Learn how to [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md) and [promote to independent server and remove from replication](how-to-read-replicas-portal.md#promote-replica-to-independent-server).
 
 ## Configuration management
 
@@ -71,7 +69,7 @@ The promote operation doesn't carry over specific configurations and parameters.
 ## Considerations
 ### Server states during promotion
 
-In both the Planned and Forced promotion scenarios, it's required that servers (both primary and replica) be in an "Available" state. If a server's status is anything other than "Available" (such as "Updating" or "Restarting"), the promotion typically can't proceed without issues. However, an exception is made in the case of regional outages.
+In both the Planned and Forced promotion scenarios, it's required that servers (both primary and replica) be in an "Ready" state. If a server's status is anything other than "Ready" (such as "Updating" or "Restarting"), the promotion typically can't proceed without issues. However, an exception is made in the case of regional outages.
 
 During such regional outages, the Forced promotion method can be implemented regardless of the primary server's current status. This approach allows for swift action in response to potential regional disasters, bypassing normal checks on server availability. 
 
@@ -98,8 +96,8 @@ In both the Planned and Forced promotion scenarios, it's required that the lates
 
 ## Related content
 
-- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).
-- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
-- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
-- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Read replicas in Azure Database for PostgreSQL](concepts-read-replicas.md).
+- [Geo-replication in Azure Database for PostgreSQL](concepts-read-replicas-geo.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL](concepts-read-replicas-virtual-endpoints.md).
+- [Create a read replica](how-to-read-replicas-portal.md).
 - [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

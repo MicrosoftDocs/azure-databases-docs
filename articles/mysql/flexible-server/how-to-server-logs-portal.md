@@ -1,13 +1,13 @@
 ---
 title: Enable and Download Server Logs
 description: This article describes how to enable and download server logs for Azure Database for MySQL - Flexible Server by using the Azure portal.
-author: code-sidd
-ms.author: sisawant
+author: VandhanaMehta  
+ms.author: vamehta  
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: how-to
 ---
 # Enable and download server logs for Azure Database for MySQL - Flexible Server
 You can use server logs to help monitor and troubleshoot an instance of Azure Database for MySQL Flexible Server, and to gain detailed insights into the activities that have run on your servers.

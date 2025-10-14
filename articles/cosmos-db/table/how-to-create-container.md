@@ -37,14 +37,6 @@ This article explains the different ways to create a container in Azure Cosmos D
 > [!Note]
 > For API for Table, the partition key is specified each time you add a new row.
 
-## <a id="cli-mongodb"></a>Create using Azure CLI
-
-[Create a API for Table table with Azure CLI](../scripts/cli/table/create.md). For a listing of all Azure CLI samples across all Azure Cosmos DB APIs see, [Azure CLI samples for Azure Cosmos DB](cli-samples.md).
-
-## Create using PowerShell
-
-[Create a API for Table table with PowerShell](../scripts/powershell/table/create.md). For a listing of all PowerShell samples across all Azure Cosmos DB APIs see, [PowerShell Samples](powershell-samples.md)
-
 ## Next steps
 
 * [Partitioning in Azure Cosmos DB](../partitioning-overview.md)

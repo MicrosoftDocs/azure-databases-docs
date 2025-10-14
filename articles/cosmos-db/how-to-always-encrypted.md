@@ -1,18 +1,21 @@
 ---
-title: Use client-side encryption with Always Encrypted for Azure Cosmos DB
+title: Use client-side encryption with Always Encrypted
+titleSuffix: Azure Cosmos DB
 description: Learn how to use client-side encryption with Always Encrypted for Azure Cosmos DB
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 04/04/2022
+ms.date: 05/08/2025
 author: iriaosara
 ms.author: iriaosara
+ms.custom:
+  - build-2025
 ---
 
 # Use client-side encryption with Always Encrypted for Azure Cosmos DB
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
-> A breaking change has been introduced with the 1.0 release of our encryption packages. If you created data encryption keys and encryption-enabled containers with prior versions, you will need to re-create your databases and containers after migrating your client code to 1.0 packages.
+> A breaking change has been introduced with the 1.0 release of our encryption packages. If you created data encryption keys and encryption-enabled containers with prior versions, you'll need to re-create your databases and containers after migrating your client code to 1.0 packages.
 
 Always Encrypted is a feature designed to protect sensitive data, such as credit card numbers or national/regional identification numbers (for example, U.S. social security numbers), stored in Azure Cosmos DB. Always Encrypted allows clients to encrypt sensitive data inside client applications and never reveal the encryption keys to the database.
 
@@ -41,20 +44,20 @@ You can:
 
 #### Customer-managed keys
 
-Before DEKs get stored in Azure Cosmos DB, they are wrapped by a customer-managed key (CMK). By controlling the wrapping and unwrapping of DEKs, CMKs effectively control the access to the data that's encrypted with their corresponding DEKs. CMK storage is designed as an extensible, with a default implementation that expects them to be stored in Azure Key Vault.
+Before DEKs get stored in Azure Cosmos DB, they're wrapped by a customer-managed key (CMK). By controlling the wrapping and unwrapping of DEKs, CMKs effectively control the access to the data that's encrypted with their corresponding DEKs. CMK storage is designed as an extensible, with a default implementation that expects them to be stored in Azure Key Vault.
 
 :::image type="content" source="./media/how-to-always-encrypted/encryption-keys.png" alt-text="Encryption keys" border="true":::
 
 ### Encryption policy
 
-Similar to an [indexing policy](index-policy.md), an encryption policy is a container-level specification describing how JSON properties should be encrypted. This policy must be provided when the container is created and it is immutable. In the current release, you can't update the encryption policy.
+Similar to an [indexing policy](index-policy.md), an encryption policy is a container-level specification describing how JSON properties should be encrypted. This policy must be provided when the container is created and it's immutable. In the current release, you can't update the encryption policy.
 
 For each property that you want to encrypt, the encryption policy defines:
 
 - The path of the property in the form of `/property`. Only top-level paths are currently supported, nested paths such as `/path/to/property` are not supported.
 - The ID of the [DEK](#data-encryption-keys) to use when encrypting and decrypting the property.
 - An encryption type. It can be either randomized or deterministic.
-- The encryption algorithm to use when encrypting the property. The specified algorithm can override the algorithm defined when creating the key if they are compatible.
+- The encryption algorithm to use when encrypting the property. The specified algorithm can override the algorithm defined when creating the key if they're compatible.
 
 #### Randomized vs. deterministic encryption
 
@@ -83,7 +86,7 @@ Next, you need to configure how the Azure Cosmos DB SDK will access your Azure K
 
 ### Protect your CMK from accidental deletion
 
-To make sure you don't lose access to your encrypted data after accidental deletion of your CMK, it is recommended to set two properties on your Azure Key Vault instance: **Soft Delete** and **Purge Protection**.
+To make sure you don't lose access to your encrypted data after accidental deletion of your CMK, it's recommended to set two properties on your Azure Key Vault instance: **Soft Delete** and **Purge Protection**.
 
 If you create a new Azure Key Vault instance, enable these properties during creation:
 
@@ -108,7 +111,7 @@ To use Always Encrypted, an instance of a `KeyResolver` must be attached to your
 The following snippets use the `DefaultAzureCredential` class to retrieve the Microsoft Entra identity to use when accessing your Azure Key Vault instance. You can find examples of creating different kinds of `TokenCredential` classes [here](/dotnet/api/overview/azure/identity-readme#credential-classes).
 
 > [!NOTE]
-> You will need the additional [Azure.Identity package](https://www.nuget.org/packages/Azure.Identity/) to access the `TokenCredential` classes.
+> You'll need the additional [Azure.Identity package](https://www.nuget.org/packages/Azure.Identity/) to access the `TokenCredential` classes.
 
 ```csharp
 var tokenCredential = new DefaultAzureCredential();
@@ -136,6 +139,27 @@ CosmosEncryptionAsyncClient cosmosEncryptionAsyncClient =
     new CosmosEncryptionClientBuilder().cosmosAsyncClient(client).keyEncryptionKeyResolver(keyEncryptionKeyClientBuilder)
         .keyEncryptionKeyResolverName(CosmosEncryptionClientBuilder.KEY_RESOLVER_NAME_AZURE_KEY_VAULT).buildAsyncClient();
 ```
+
+# [NodeJS](#tab/nodejs)
+> [!NOTE]
+> Unlike .NET and Java SDK, there's no separate package for Encryption in JS. Same package can be used to encrypted and non-encrypted operations.
+
+> [!IMPORTANT]
+> These code samples use v3 of the JavaScript SDK.
+
+To use Always Encrypted in JS SDK, an instance of `EncryptionKeyResolver` must be passed in `ClientEncryptionOptions` during Azure Cosmos DB SDK instance initialization. This class is used to interact with the key store hosting your CMKs.
+
+The following snippets use the `DefaultAzureCredential` class to retrieve the Microsoft Entra identity to use when accessing your Azure Key Vault instance. You can find examples of creating different kinds of `TokenCredential` classes [here](/dotnet/api/overview/azure/identity-readme#credential-classes).
+
+> [!NOTE]
+> You'll need the additional [@azure/identity](https://www.npmjs.com/package/@azure/identity) package to access the `TokenCredential` classes.
+
+```ts
+const credentials = new DefaultAzureCredential();
+const keyResolver = new AzureKeyVaultEncryptionKeyResolver(credentials);
+const cosmosClient = new CosmosClient({connectionString: "<ConnectionString>", clientEncryptionOptions: { keyEncryptionKeyResolver: keyResolver }});
+```
+
 ---
 
 ## Create a data encryption key
@@ -195,6 +219,34 @@ database.createClientEncryptionKey(
     CosmosEncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256.getName(),
     metadata);
 ```
+
+# [NodeJS](#tab/nodejs)
+
+Creating a new data encryption key is done by calling the `createClientEncryptionKey` method and passing:
+
+- A string identifier that will uniquely identify the key in the database.
+- The encryption algorithm intended to be used with the key. Only one algorithm is currently supported.
+- The key identifier of the [CMK](#customer-managed-keys) stored in Azure Key Vault. This parameter is passed in a generic `EncryptionKeyWrapMetadata` object where:
+  - The `type` defines the type of key resolver (for example, Azure Key Vault).
+  - The `name` can be any friendly name you want.
+  - The `value` must be the key identifier.
+  > [!IMPORTANT]
+  > Once the key is created, browse to its current version, and copy its full key identifier: `https://<my-key-vault>.vault.azure.net/keys/<key>/<version>`. If you omit the key version at the end of the key identifier, an error will be thrown.
+  - The `algorithm` defines which algorithm shall be used to wrap the key encryption key with the customer-managed key.
+
+```ts
+const database = cosmosClient.database("my-database");
+const metadata = new EncryptionKeyWrapMetadata(
+    EncryptionKeyResolverName.AzureKeyVault, 
+    "akvKey", 
+    "https://<my-key-vault>.vault.azure.net/keys/<key>/<version>",
+    KeyEncryptionAlgorithm.RSA_OAEP);
+
+await database.createClientEncryptionKey(
+    "my-key",
+    EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
+    metadata);
+```
 ---
 
 ## Create a container with encryption policy
@@ -250,6 +302,36 @@ CosmosContainerProperties containerProperties =
 containerProperties.setClientEncryptionPolicy(new ClientEncryptionPolicy(paths));
 database.createEncryptionContainerAsync(containerProperties);
 ```
+
+# [NodeJS](#tab/nodejs)
+
+```ts
+const path1 : ClientEncryptionIncludedPath = {
+   path: "/property1",
+   clientEncryptionKeyId: "my-key",
+   encryptionType: EncryptionType.DETERMINISTIC,
+   encryptionAlgorithm: EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
+};
+const path2 : ClientEncryptionIncludedPath = {
+   path: "/property2",
+   clientEncryptionKeyId: "my-key",
+   encryptionType: EncryptionType.RANDOMIZED,
+   encryptionAlgorithm: EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
+};
+const paths = [path1, path2];
+const clientEncryptionPolicy : ClientEncryptionPolicy = {
+   includedPaths: paths,
+   policyFormatVersion: 2
+};
+const containerDefinition = {
+    id: "my-container",
+    partitionKey: {
+      paths: ["/id"],
+    },
+    clientEncryptionPolicy: clientEncryptionPolicy,
+};
+await database.containers.createIfNotExists(containerDefinition);
+```
 ---
 
 ## Read and write encrypted data
@@ -303,15 +385,29 @@ SqlQuerySpecWithEncryption sqlQuerySpecWithEncryption = new SqlQuerySpecWithEncr
 sqlQuerySpecWithEncryption.addEncryptionParameter(
     "/property1", new SqlParameter("@Property1", 1234))
 ```
+
+# [NodeJS](#tab/nodejs)
+
+```ts
+const queryBuilder = new EncryptionQueryBuilder("SELECT * FROM c where c.property1 = @Property1 and c.property2 = @Property2");
+const numberParam : CosmosEncryptedNumber = {
+   value: 1234,
+   numberType: CosmosEncryptedNumberType.Integer
+}
+queryBuilder.addParameter(@Property1, numberParam, "/property1");
+queryBuilder.addParameter(@Property2, "someStringValue", "/property2");
+
+const queryIterator = await container.items.getEncryptionQueryIterator(queryBuilder);
+```
 ---
 
 ### Reading documents when only a subset of properties can be decrypted
 
-In situations where the client does not have access to all the CMK used to encrypt properties, only a subset of properties can be decrypted when data is read back. For example, if `property1` was encrypted with key1 and `property2` was encrypted with key2, a client application that only has access to key1 can still read data, but not `property2`. In such a case, you must read your data through SQL queries and project away the properties that the client can't decrypt: `SELECT c.property1, c.property3 FROM c`.
+In situations where the client doesn't have access to all the CMK used to encrypt properties, only a subset of properties can be decrypted when data is read back. For example, if `property1` was encrypted with key1 and `property2` was encrypted with key2, a client application that only has access to key1 can still read data, but not `property2`. In such a case, you must read your data through SQL queries and project away the properties that the client can't decrypt: `SELECT c.property1, c.property3 FROM c`.
 
 ## CMK rotation
 
-You may want to "rotate" your CMK (that is, use a new CMK instead of the current one) if you suspect that the current CMK has been compromised. It is also a common security practice to rotate the CMK regularly. To perform this rotation, you only have to provide the key identifier of the new CMK that should be used to wrap a specific DEK. Note that this operation doesn't affect the encryption of your data, but the protection of the DEK. Access to the previous CMK should not be revoked until the rotation is completed.
+You may want to "rotate" your CMK (that is, use a new CMK instead of the current one) if you suspect that the current CMK has been compromised. It's also a common security practice to rotate the CMK regularly. To perform this rotation, you only have to provide the key identifier of the new CMK that should be used to wrap a specific DEK. Note that this operation doesn't affect the encryption of your data, but the protection of the DEK. Access to the previous CMK shouldn't be revoked until the rotation is completed.
 
 # [.NET](#tab/dotnet)
 
@@ -337,11 +433,26 @@ database.rewrapClientEncryptionKey(
     "my-key",
     metadata);
 ```
+
+# [NodeJS](#tab/nodejs)
+
+```ts
+const newMetadata : EncryptionKeyWrapMetadata = {
+    type: EncryptionKeyResolverName.AzureKeyVault, 
+    name: "akvKey", 
+    value: "https://<my-key-vault>.vault.azure.net/keys/<new-key>/<version>",
+    algorithm: KeyEncryptionAlgorithm.RSA_OAEP
+};
+
+await database.rewrapClientEncryptionKey(
+    "my-key",
+    newMetadata);
+```
 ---
 
 ## DEK rotation
 
-Performing a rotation of a data encryption key isn't offered as a turnkey capability. This is because updating a DEK requires a scan of all containers where this key is used and a re-encryption of all properties encrypted with this key. This operation can only happen client-side as the Azure Cosmos DB service does not store or ever accesses the plain text value of the DEK.
+Performing a rotation of a data encryption key isn't offered as a turnkey capability. This is because updating a DEK requires a scan of all containers where this key is used and a re-encryption of all properties encrypted with this key. This operation can only happen client-side as the Azure Cosmos DB service doesn't store or ever accesses the plain text value of the DEK.
 
 In practice, a DEK rotation can be done by performing a data migration from the impacted containers to new ones. The new containers can be created the exact same way as the original ones. To help you with such a data migration, you can find [a standalone migration tool on GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ReEncryption).
 

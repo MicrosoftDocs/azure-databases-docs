@@ -1,24 +1,22 @@
 ---
 title: Monitoring and metrics
-description: Review the monitoring and metrics features in Azure Database for PostgreSQL - Flexible Server.
+description: Review the monitoring and metrics features in an Azure Database for PostgreSQL flexible server instance.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 2/12/2025
+ms.date: 4/21/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
-# Monitor metrics in Azure Database for PostgreSQL - Flexible Server
+# Monitor metrics in Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-Monitoring data about your servers helps you troubleshoot and optimize for your workload. Azure Database for PostgreSQL flexible server provides various monitoring options to provide insight into how your server is performing.
+Monitoring data about your servers helps you troubleshoot and optimize for your workload. Your Azure Database for PostgreSQL flexible server instance provides various monitoring options to provide insight into how your server is performing.
 
 ## Metrics
 
-Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. Each metric is emitted at a 1-minute interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
+Azure Database for PostgreSQL provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. Each metric is emitted at a 1-minute interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 
 > [!NOTE]
 > While metrics are stored for 93 days, you can only query (in the Metrics tile) for a maximum of 30 days' worth of data on any single chart. If you see a blank chart or your chart displays only part of metric data, verify that the difference between start and end dates in the time picker doesn't exceed the 30-day interval. After you've selected a 30-day interval, you can pan the chart to view the full retention window. 
@@ -33,29 +31,31 @@ The following metrics are available for an Azure Database for PostgreSQL flexibl
 |**Backup Storage Used**         |`backup_storage_used`        |Bytes     |Amount of backup storage used. This metric represents the sum of storage that's consumed by all the full backups, differential backups, and log backups that are retained based on the backup retention period that's set for the server. The frequency of the backups is service managed. For geo-redundant storage, backup storage usage is twice the usage for locally redundant storage.|Yes            |
 |**Failed Connections**          |`connections_failed`         |Count     |Number of failed connections.                                                                                                                                                                                                                                                                                                                                                               |Yes            |
 |**Succeeded Connections**       |`connections_succeeded`      |Count     |Number of succeeded connections.                                                                                                                                                                                                                                                                                                                                                            |Yes            |
-|**CPU Credits Consumed**        |`cpu_credits_consumed`       |Count     |Number of credits used by the flexible server. Applies to the Burstable tier.                                                                                                                                                                                                                                                                                                               |Yes            |
-|**CPU Credits Remaining**       |`cpu_credits_remaining`      |Count     |Number of credits available to burst. Applies to the Burstable tier.                                                                                                                                                                                                                                                                                                                        |Yes            |
+|**CPU Credits Consumed ^**        |`cpu_credits_consumed`       |Count     |Number of credits used by the flexible server. Applies to the Burstable tier.                                                                                                                                                                                                                                                                                                               |Yes            |
+|**CPU Credits Remaining ^**       |`cpu_credits_remaining`      |Count     |Number of credits available to burst. Applies to the Burstable tier.                                                                                                                                                                                                                                                                                                                        |Yes            |
 |**CPU percent**                 |`cpu_percent`                |Percent   |Percentage of CPU in use.                                                                                                                                                                                                                                                                                                                                                                   |Yes            |
 |**Database Size**               |`database_size_bytes`        |Bytes     |Database size in bytes.                                                                                                                                                                                                                                                                                                                                                                     |Yes            |
-|**Disk Queue Depth**            |`disk_queue_depth`           |Count     |Number of outstanding I/O operations to the data disk.                                                                                                                                                                                                                                                                                                                                      |Yes            |
+|**Disk Queue Depth ^**            |`disk_queue_depth`           |Count     |Number of outstanding I/O operations to the data disk.                                                                                                                                                                                                                                                                                                                                      |Yes            |
 |**IOPS**                        |`iops`                       |Count     |Number of I/O operations to disk per second.                                                                                                                                                                                                                                                                                                                                                |Yes            |
 |**Maximum Used Transaction IDs**|`maximum_used_transactionIDs`|Count     |Maximum number of transaction IDs in use.                                                                                                                                                                                                                                                                                                                                                   |Yes            |
 |**Memory percent**              |`memory_percent`             |Percent   |Percentage of memory in use.                                                                                                                                                                                                                                                                                                                                                                |Yes            |
-|**Network Out**                 |`network_bytes_egress`       |Bytes     |Total sum of outgoing network traffic on the server for a selected period. This metric includes outgoing traffic from your database and from Azure Database for Postgres flexible server, including features like monitoring, logs, WAL archive, replication etc.															       |Yes            |
-|**Network In**                  |`network_bytes_ingress`      |Bytes     |Total sum of incoming network traffic on the server for a selected period. This metric includes incoming traffic to your database and to Azure Database for Postgres flexible server, including features like monitoring, logs, WAL archive, replication etc.                                                                                                                               |Yes            |
-|**Read IOPS**                   |`read_iops`                  |Count     |Number of data disk I/O read operations per second.                                                                                                                                                                                                                                                                                                                                         |Yes            |
-|**Read Throughput**             |`read_throughput`            |Bytes     |Bytes read per second from disk.                                                                                                                                                                                                                                                                                                                                                            |Yes            |
+|**Network Out**                 |`network_bytes_egress`       |Bytes     |Total sum of outgoing network traffic on the server for a selected period. This metric includes outgoing traffic from your database and from an Azure Database for Postgres flexible server instance, including features like monitoring, logs, WAL archive, replication etc.															       |Yes            |
+|**Network In**                  |`network_bytes_ingress`      |Bytes     |Total sum of incoming network traffic on the server for a selected period. This metric includes incoming traffic to your database and to an Azure Database for Postgres flexible server instance, including features like monitoring, logs, WAL archive, replication etc.                                                                                                                               |Yes            |
+|**Read IOPS ^**                   |`read_iops`                  |Count     |Number of data disk I/O read operations per second.                                                                                                                                                                                                                                                                                                                                         |Yes            |
+|**Read Throughput ^**             |`read_throughput`            |Bytes     |Bytes read per second from disk.                                                                                                                                                                                                                                                                                                                                                            |Yes            |
 |**Storage Free**                |`storage_free`               |Bytes     |Amount of storage space that's available.                                                                                                                                                                                                                                                                                                                                                   |Yes            |
 |**Storage percent**             |`storage_percent`            |Percentage|Percent of storage space that's used. The storage that's used by the service can include database files, transaction logs, and server logs.                                                                                                                                                                                                                                                 |Yes            |
 |**Storage Used**                |`storage_used`               |Bytes     |Amount of storage space that's used. The storage that's used by the service can include the database files, transaction logs, and the server logs.                                                                                                                                                                                                                                          |Yes            |
 |**Transaction Log Storage Used**|`txlogs_storage_used`        |Bytes     |Amount of storage space that's used by the transaction logs.                                                                                                                                                                                                                                                                                                                                |Yes            |
-|**Write Throughput**            |`write_throughput`           |Bytes     |Bytes written to disk per second.                                                                                                                                                                                                                                                                                                                                                           |Yes            |
-|**Write IOPS**                  |`write_iops`                 |Count     |Number of data disk I/O write operations per second.                                                                                                                                                                                                                                                                                                                                        |Yes            |
+|**Write Throughput ^**            |`write_throughput`           |Bytes     |Bytes written to disk per second.                                                                                                                                                                                                                                                                                                                                                           |Yes            |
+|**Write IOPS ^**                  |`write_iops`                 |Count     |Number of data disk I/O write operations per second.                                                                                                                                                                                                                                                                                                                                        |Yes            |
 
+> [!Note]
+> Metrics marked with `^` are emitted every one minute but are processed and displayed in 5-minute batches. This results in up to a 5-minute delay in metric visibility. When creating alerts on these metrics, please account for this latency to ensure accurate and timely alerting.
 
 ### Enhanced metrics
 
-You can use enhanced metrics for Azure Database for PostgreSQL flexible server to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
+You can use enhanced metrics for your Azure Database for PostgreSQL flexible server instance to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
 
 #### Enabling enhanced metrics
 
@@ -120,20 +120,23 @@ You can choose from the following categories of enhanced metrics:
 
 ##### Saturation
 
-|Display name|Metric ID|Unit|Description|Dimension|Default enabled|
-|---|---|---|---|---|---|
-|**Disk Bandwidth Consumed Percentage**|`disk_bandwidth_consumed_percentage`|Percent|Percentage of data disk bandwidth consumed per minute.|Doesn't apply|Yes |
-|**Disk IOPS Consumed Percentage** |`disk_iops_consumed_percentage` |Percent|Percentage of data disk I/Os consumed per minute. |Doesn't apply|Yes |
-|**Postmaster Process cpu usage (preview)**|`postmaster_process_cpu_usage_percent`|Percent|CPU utilization of Postmaster process. Not applicable for Burstable SKU.                                      |Doesn't apply|No             |
+| Display name                               | Metric ID                              | Unit    | Description                                                              | Dimension     | Default enabled |
+| ------------------------------------------ | -------------------------------------- | ------- | ------------------------------------------------------------------------ | ------------- | --------------- |
+| **Disk Bandwidth Consumed Percentage ^**   | `disk_bandwidth_consumed_percentage`   | Percent | Percentage of data disk bandwidth consumed per minute.                   | Doesn't apply | Yes             |
+| **Disk IOPS Consumed Percentage ^**        | `disk_iops_consumed_percentage`        | Percent | Percentage of data disk I/Os consumed per minute.                        | Doesn't apply | Yes             |
+| **Postmaster Process cpu usage (preview)** | `postmaster_process_cpu_usage_percent` | Percent | CPU utilization of Postmaster process. Not applicable for Burstable SKU. | Doesn't apply | No              |
+
+> [!Note]
+> Metrics marked with `^` are emitted every one minute but are processed and displayed in 5-minute batches. This results in up to a 5-minute delay in metric visibility. When creating alerts on these metrics, please account for this latency to ensure accurate and timely alerting.
 
 ##### Traffic
 
 |Display name                              |Metric ID                             |Unit   |Description                                                                                                   |Dimension    |Default enabled|
 |------------------------------------------|--------------------------------------|-------|--------------------------------------------------------------------------------------------------------------|-------------|---------------|
-|**Max Connections** ^                     |`max_connections`                     |Count  |Number of maximum connections.                                                                                |Doesn't apply|Yes            |
+|**Max Connections** **                    |`max_connections`                     |Count  |Number of maximum connections.                                                                                |Doesn't apply|Yes            |
 |**TCP Connection Backlog (preview)**      |`tcp_connection_backlog`              |Count  |Number of pending TCP connections waiting to be processed by the server.                                      |Doesn't apply|No             |
 
-^ **Max Connections** represents the configured value for the `max_connections` server parameter. This metric is polled every 30 minutes.
+** **Max Connections** represents the configured value for the `max_connections` server parameter. This metric is polled every 30 minutes.
 
 ##### Considerations for using enhanced metrics
 
@@ -144,7 +147,7 @@ You can choose from the following categories of enhanced metrics:
 
 ### Autovacuum metrics
 
-Autovacuum metrics can be used to monitor and tune autovacuum performance for Azure Database for PostgreSQL - Flexible Server. Each metric is emitted at a *30-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
+Autovacuum metrics can be used to monitor and tune autovacuum performance for your Azure Database for PostgreSQL flexible server instance. Each metric is emitted at a *30-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
 
 #### How to enable autovacuum metrics
 
@@ -190,10 +193,10 @@ You can use PgBouncer metrics to monitor the performance of the PgBouncer proces
 
 |Display name|Metric ID|Unit|Description|Dimension|Default enabled|
 |---|---|---|---|---|---|
-|**Active client connections** |`client_connections_active` |Count|Connections from clients that are associated with an Azure Database for PostgreSQL - Flexible Server connection. |DatabaseName|No |
-|**Waiting client connections** |`client_connections_waiting`|Count|Connections from clients that are waiting for an Azure Database for PostgreSQL - Flexible Server connection to service them.|DatabaseName|No |
-|**Active server connections** |`server_connections_active` |Count|Connections to Azure Database for PostgreSQL - Flexible Server that are in use by a client connection. |DatabaseName|No |
-|**Idle server connections** |`server_connections_idle` |Count|Connections to Azure Database for PostgreSQL - Flexible Server that are idle and ready to service a new client connection. |DatabaseName|No |
+|**Active client connections** |`client_connections_active` |Count|Connections from clients that are associated with an Azure Database for PostgreSQL flexible server instance connection. |DatabaseName|No |
+|**Waiting client connections** |`client_connections_waiting`|Count|Connections from clients that are waiting for an Azure Database for PostgreSQL flexible server instance connection to service them.|DatabaseName|No |
+|**Active server connections** |`server_connections_active` |Count|Connections to an Azure Database for PostgreSQL flexible server instance that are in use by a client connection. |DatabaseName|No |
+|**Idle server connections** |`server_connections_idle` |Count|Connections to an Azure Database for PostgreSQL flexible server instance that are idle and ready to service a new client connection. |DatabaseName|No |
 |**Total pooled connections** |`total_pooled_connections`|Count|Current number of pooled connections. |DatabaseName|No |
 |**Number of connection pools** |`num_pools` |Count|Total number of connection pools. |DatabaseName|No |
 
@@ -205,7 +208,7 @@ You can use PgBouncer metrics to monitor the performance of the PgBouncer proces
 
 ### Database availability metric
 
-Is-db-alive is a database server availability metric for Azure Database for PostgreSQL flexible server that returns `[1 for available]` and `[0 for not-available]`. Each metric is emitted at a *1 minute* frequency, and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). Customers can configure alerts on the metric.
+Is-db-alive is a database server availability metric for an Azure Database for PostgreSQL flexible server instance that returns `[1 for available]` and `[0 for not-available]`. Each metric is emitted at a *1 minute* frequency, and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). Customers can configure alerts on the metric.
 
 |Display Name                                     |Metric ID                      |Unit   |Description                                                                                             |Dimension   |Default enabled|
 |-------------------------------------------------|-------------------------------|-------|--------------------------------------------------------------------------------------------------------|------------|---------------|
@@ -238,12 +241,12 @@ There are several options to visualize Azure Monitor metrics.
 |---------|---------|--------|
 |Overview page|Most Azure services have an **Overview** page in the Azure portal that includes a **Monitor** section with charts that show recent critical metrics. This information is intended for owners of individual services to quickly assess the performance of the resource. |This page is based on platform metrics that are collected automatically. No configuration is required.         |
 |[Metrics Explorer](/azure/azure-monitor/essentials/metrics-getting-started)|You can use Metrics Explorer to interactively work with metric data and create metric alerts. You need minimal training to use Metrics Explorer, but you must be familiar with the metrics you want to analyze. |- Once data collection is configured, no other configuration is required.<br>- Platform metrics for Azure resources are automatically available.<br>- Guest metrics for virtual machines are available after an Azure Monitor agent is deployed to the virtual machine.<br>- Application metrics are available after Application Insights is configured.         |
-| [Grafana](https://grafana.com/grafana/dashboards/19556-azure-azure-postgresql-flexible-server-monitoring/) | You can use Grafana for visualizing and alerting on metrics. All versions of Grafana include the [Azure Monitor datasource plug-in](/azure/azure-monitor/visualize/grafana-plugin) to visualize your Azure Monitor metrics and logs.                                                     | To become familiar with Grafana dashboards, some training is required. However, you can simplify the process by downloading a prebuilt [Azure Database for PostgreSQL flexible server grafana monitoring dashboard](https://grafana.com/grafana/dashboards/19556-azure-azure-postgresql-flexible-server-monitoring/), which allows for easy monitoring of all Azure Database for PostgreSQL flexible server instances within your organization.                                                                                                                                              |
+| [Grafana](https://grafana.com/grafana/dashboards/21177-azure-azure-postgresql-flexible-server-monitoring/) | You can use Grafana for visualizing and alerting on metrics. All versions of Grafana include the [Azure Monitor datasource plug-in](/azure/azure-monitor/visualize/grafana-plugin) to visualize your Azure Monitor metrics and logs.                                                     | To become familiar with Grafana dashboards, some training is required. However, you can simplify the process by downloading a prebuilt [Azure PostgreSQL Monitoring](https://grafana.com/grafana/dashboards/21177-azure-azure-postgresql-flexible-server-monitoring/), which allows for easy monitoring of all Azure Database for PostgreSQL flexible server instances within your organization.                                                                                                                                              |
 
 
 ## Logs
 
-In addition to the metrics, you can use Azure Database for PostgreSQL flexible server to configure and access Azure Database for PostgreSQL standard logs. For more information, see [Logging concepts](concepts-logging.md).
+In addition to the metrics, you can use Azure Database for PostgreSQL to configure and access Azure Database for PostgreSQL standard logs. For more information, see [Logging concepts](concepts-logging.md).
 
 ### Logs visualization
 
@@ -253,7 +256,7 @@ In addition to the metrics, you can use Azure Database for PostgreSQL flexible s
 
 ## Server Logs
 
-The Server Logs feature in Azure Database for PostgreSQL Flexible Server allows users to enable, configure, and **download server logs**, which are essential for troubleshooting and performing historical analyses of server activity. By default, the server logs feature in Azure Database for PostgreSQL flexible server is disabled. However, after you enable the feature, Azure Database for PostgreSQL flexible server starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal or the Azure CLI to download the files to assist with your troubleshooting efforts.
+The Server Logs feature in your Azure Database for PostgreSQL flexible server instance allows users to enable, configure, and **download server logs**, which are essential for troubleshooting and performing historical analyses of server activity. By default, the server logs feature is disabled. However, after you enable the feature, your Azure Database for PostgreSQL flexible server instance starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal or the Azure CLI to download the files to assist with your troubleshooting efforts.
 
 ### Server logs retention
 
@@ -261,6 +264,6 @@ Server logs have minimum retention 1 days and maximum retention is 7 days. If th
 
 ## Related content
 
-- [Configure logging and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+- [Configure logging and access logs in Azure Database for PostgreSQL](how-to-configure-and-access-logs.md).
 - [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- [Audit logging in Azure Database for PostgreSQL - Flexible Server](concepts-audit.md).
+- [Audit logging in Azure Database for PostgreSQL](concepts-audit.md).

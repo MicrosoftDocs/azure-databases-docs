@@ -4,7 +4,7 @@ description: Learn how to deploy an Azure Cosmos DB account, Azure App Service W
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.custom: devx-track-arm-template
+ms.custom: devx-track-arm-template, sfi-image-nochange
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown

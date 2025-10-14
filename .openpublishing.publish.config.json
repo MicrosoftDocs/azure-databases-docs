@@ -148,6 +148,12 @@
       "branch_mapping": {}
     },
     {
+      "path_to_root": "cosmos-db-vector-samples",
+      "url": "https://github.com/Azure-Samples/cosmos-db-vector-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
       "path_to_root": "azure-cosmos-mongodb-dotnet",
       "url": "https://github.com/Azure-Samples/cosmos-db-mongodb-api-dotnet-samples",
       "branch": "main",
@@ -192,7 +198,7 @@
     {
       "path_to_root": "cosmos-db-nosql-query-samples",
       "url": "https://github.com/Azure-Samples/cosmos-db-nosql-query-samples",
-      "branch": "main",
+      "branch": "v1",
       "branch_mapping": {}
     },
     {
@@ -236,6 +242,12 @@
       "url": "https://github.com/MicrosoftDocs/azure-docs-pr",
       "branch": "main",
       "branch_mapping": {}
+    },
+    {
+        "path_to_root": "azure-policy-autogen-docs",
+        "url": "https://github.com/MicrosoftDocs/azure-policy-autogen-docs",
+        "branch": "main",
+        "branch_mapping": {}
     }
   ],
   "branch_target_mapping": {},

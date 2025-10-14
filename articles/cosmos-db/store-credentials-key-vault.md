@@ -9,6 +9,7 @@ ms.service: azure-cosmos-db
 ms.devlang: csharp
 ms.topic: how-to
 ms.date: 02/03/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Store and use Azure Cosmos DB credentials with Azure Key Vault
@@ -16,7 +17,7 @@ ms.date: 02/03/2025
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 > [!IMPORTANT]
-> It's recommended to access Azure Cosmos DB is to use a system-assigned managed identity. If both the managed identity solution and cert based solution do not meet your needs, please use the Azure Key vault solution in this article.
+> We recommend that you access Azure Cosmos DB by using a system-assigned managed identity. If both the managed identity solution and cert based solution do not meet your needs, please use the Azure Key vault solution in this article.
 
 If you're using Azure Cosmos DB as your database, you connect to databases, container, and items by using an SDK, the API endpoint, and either the primary or secondary key.
 
@@ -24,7 +25,7 @@ It's not a good practice to store the endpoint URI and sensitive read-write keys
 
 Azure Key Vault iterates on this best practice further by allowing you to store these credentials securely while giving services like Azure App Service managed access to the credentials. Azure App Service will securely read your credentials from Azure Key Vault and inject those credentials into your running application.
 
-With this best practice, developers can store the credentials for tools like the [Azure Cosmos DB emulator](emulator.md) or [Try Azure Cosmos DB free](try-free.md) during development. Then, the operations team can ensure that the correct production settings are injected at runtime.
+With this best practice, developers can store the credentials for tools like the [Azure Cosmos DB emulator](emulator.md) during development. Then, the operations team can ensure that the correct production settings are injected at runtime.
 
 In this tutorial, you learn how to:
 
@@ -43,8 +44,7 @@ In this tutorial, you learn how to:
 
 - An existing Azure Cosmos DB for NoSQL account.
   - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
-  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-  - Alternatively, you can [try Azure Cosmos DB free](try-free.md) before you commit.
+  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - GitHub account.
 
 ## Before you begin: Get Azure Cosmos DB credentials

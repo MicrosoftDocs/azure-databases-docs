@@ -9,7 +9,8 @@ ms.date: 09/13/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 # Tutorial: Migrate RDS PostgreSQL to Azure Database for PostgreSQL online using DMS
 
@@ -43,7 +44,7 @@ To complete this tutorial, you need to:
 
   The target Azure Database for PostgreSQL version must be equal to or later than the RDS PostgreSQL version. For example, RDS PostgreSQL 9.6 can only migrate to Azure Database for PostgreSQL 9.6, 10, or 11, but not to Azure Database for PostgreSQL 9.5.
 
-- Create an instance of Azure Database for PostgreSQL - Flexible Server.
+- Create an instance of Azure Database for PostgreSQL flexible server.
 
 - Create a Microsoft Azure Virtual Network for Azure Database Migration Service by using the Azure Resource Manager deployment model, which provides site-to-site connectivity to your on-premises source servers by using either [ExpressRoute](/azure/expressroute/expressroute-introduction) or [VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways). For more information about creating a virtual network, see the [Virtual Network Documentation](/azure/virtual-network/), and especially the quickstart articles with step-by-step details.
 

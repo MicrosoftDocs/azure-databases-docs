@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 04/08/2025
 ms.custom: devx-track-go, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -30,7 +30,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 - Docker Desktop
 - `Go` 1.21 or newer
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 
@@ -92,6 +92,17 @@ The client library is available through Go, as the `aztables` package.
     ```
 
 1. Open and review the **src/go.mod** file to validate that the `github.com/Azure/azure-sdk-for-go/sdk/data/aztables` entry exists.
+
+### Import libraries
+
+Import the `github.com/Azure/azure-sdk-for-go/sdk/azidentity` and `github.com/Azure/azure-sdk-for-go/sdk/data/aztables` packages into your application code.
+
+```go
+import (
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
+)
+```
 
 ## Object model
 

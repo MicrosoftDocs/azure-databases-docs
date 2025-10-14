@@ -6,6 +6,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.author: mjbrown
 ms.custom: devx-track-csharp, build-2024, ignite-2024
 ms.collection:
@@ -45,6 +46,13 @@ Here are some examples of indexing policies shown in [their JSON format](../inde
     ]
 }
 ```
+
+
+> [!NOTE]
+>  - The partition key (unless it is also "/id") is not indexed and should be included in the index.
+- The system properties id and _ts will always be indexed when the cosmos account indexing mode is Consistent
+- The system properties id and _ts are not included in the container policy’s indexed paths description. This is by design because these system properties are indexed by default and this behavior cannot be disabled.
+
 
 ### Opt-in policy to selectively include some property paths
 
@@ -122,9 +130,6 @@ In addition to including or excluding paths for individual properties, you can a
     "excludedPaths": [
         {
             "path": "/_etag/?"
-        },
-        {
-            "path": "/vector/*"
         }
     ],
     "vectorIndexes": [
@@ -135,9 +140,9 @@ In addition to including or excluding paths for individual properties, you can a
     ]
 }
 ```
-
 > [!IMPORTANT]
-> The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
+> Wild card characters (*, []) and vector paths nested inside arrays are not currently supported in the vector policy or vector index.
+
 
 > [!IMPORTANT]
 > Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
@@ -160,6 +165,23 @@ The `diskANN` and `quantizedFlat` indexes can take optional index build paramete
 
 - `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
 - `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
+
+### Using Sharded DiskANN
+Sharded DiskANN helps you optimize large-scale vector search by splitting a DiskANN index into smaller, more manageable pieces. By specifying a VectorIndexShardKey in your container’s indexing policy, you can create multiple DiskANN indexes—one for each unique value of a chosen document property.
+
+This approach can lead to faster query performance, improved recall, and lower RU costs, especially when working with high-cardinality data. Whether you're building recommendation engines, semantic search, or intelligent agents, Sharded DiskANN gives you more control over how vector indexing is structured and executed.
+
+Here, we can see an example of defining the shard key based on a tenantID property. This can be any property of the data item, even the partition key. Note that the single string needs to be enclosed in an array. [Learn more about Sharded DiskANN](../gen-ai/sharded-diskann.md).
+
+```json
+"vectorIndexes": [
+    {
+        "path": "/vector2",
+        "type": "DiskANN",
+        "vectorIndexShardKey": ["/tenantID"]
+    }
+]
+```
 
 ### Tuple indexing policy examples
 
@@ -667,6 +689,52 @@ Add a composite index:
   const containerWithCompositeIndexes = (
     await database.containers.create(containerDefWithCompositeIndexes)
   ).container;
+```
+
+### Use the Go SDK
+
+The [IndexingPolicy](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#IndexingPolicy) struct defines the indexing policy for a container. It can be used with when [creating](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#DatabaseClient.CreateContainer) a new container or [reconfiguring](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ContainerClient.Replace) an existing one.
+
+```go
+db, _ := client.NewDatabase("demodb")
+
+pkDefinition := azcosmos.PartitionKeyDefinition{
+	Paths: []string{"/state"},
+		Kind:  azcosmos.PartitionKeyKindHash,
+}
+
+indexingPolicy := &azcosmos.IndexingPolicy{
+	IndexingMode: azcosmos.IndexingModeConsistent,
+
+    // add an included path
+	IncludedPaths: []azcosmos.IncludedPath{
+		{Path: "/*"},
+	},
+
+    // add an excluded path
+	ExcludedPaths: []azcosmos.ExcludedPath{
+		{Path: "/address/*"},
+	},
+
+    // add composite indices
+	CompositeIndexes: [][]azcosmos.CompositeIndex{
+		{
+			{
+				Path:  "/name",
+				Order: azcosmos.CompositeIndexAscending,
+			},
+			{
+				Path:  "/age",
+				Order: azcosmos.CompositeIndexDescending,
+			},
+		},
+	}
+
+	db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+		ID:                     "demo_container",
+		PartitionKeyDefinition: pkDefinition,
+		IndexingPolicy:         indexingPolicy,
+	}, nil)
 ```
 
 ### Use the Python SDK

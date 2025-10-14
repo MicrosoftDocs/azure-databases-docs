@@ -1,20 +1,20 @@
 ---
 title: Performance Benchmarking
 description: This article describes some considerations and best practices to apply when conducting performance benchmarks on Azure Database for MySQL - Flexible Server.
-author: code-sidd
-ms.author: sisawant
+author: SudheeshGH  
+ms.author: sunaray  
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: best-practice
 ---
 
 # Best practices for benchmarking performance of Azure Database for MySQL - Flexible Server
 
 Performance is a hallmark of any application, and it's vital to define a clear strategy for analyzing and assessing how a database performs when handling an application's variable workload requirements.
 
-This article provides considerations and best practices for running performance benchmarks against Azure Database for MySQL flexible server.
+This article provides considerations and best practices for running performance benchmarks against Azure Database for MySQL Flexible Server.
 
 ## Performance testing
 
@@ -81,12 +81,12 @@ For guidelines on preparing and running synthetic and real-world benchmarks, see
 
 #### Server sizing
 
-When launching Azure Database for MySQL flexible server instances to perform benchmarking, use an Azure Database for MySQL flexible server instance tier, SKU, and instance count that matches your current database environment.
+When launching Azure Database for MySQL Flexible Server instances to perform benchmarking, use an Azure Database for MySQL Flexible Server instance tier, SKU, and instance count that matches your current database environment.
 
 For example:
 
 - If your current server has eight CPU cores and 64 GB of memory, it's best to choose an instance based on the Standard_E8ds_v4 SKU.
-- If your current database environment uses Read Replicas, use Azure Database for MySQL flexible server read replicas.
+- If your current database environment uses Read Replicas, use Azure Database for MySQL Flexible Server read replicas.
 
 Depending on the results of your benchmark testing, you might decide to use different instance sizes and counts in production. However, it's still a good practice to ensure that the initial specifications of test instances are close to your current server specifications to provide a more accurate, "apples-to-apples" comparison.
 
@@ -96,22 +96,22 @@ If the application/benchmark requires that certain database features be enabled,
 
 - Set a nondefault server time zone.
 - Set a custom "max_connections" parameter if the default value isn't sufficient.
-- Configure the thread pool if your Azure Database for MySQL flexible server instance is running version 8.0.
+- Configure the thread pool if your Azure Database for MySQL Flexible Server instance is running version 8.0.
 - Enable Slow Query Logs if you expect to use them in production so you can analyze any bottleneck queries.
 
-Other parameters, such as those related to the size of various database buffers and caches, are already pretuned in Azure Database for MySQL flexible server, and you can initially leave them set at their default values. While you can modify them, it's best to avoid making server parameter changes unless your performance benchmarks show that a given change does in fact improve performance.
+Other parameters, such as those related to the size of various database buffers and caches, are already pretuned in Azure Database for MySQL Flexible Server, and you can initially leave them set at their default values. While you can modify them, it's best to avoid making server parameter changes unless your performance benchmarks show that a given change does in fact improve performance.
 
-When performing tests comparing Azure Database for MySQL flexible server to other database products, be sure to enable all features that you expect to use in production on your test databases. For example, if you don't enable zone redundant HA, backups, and Read Replicas in your test environment, then your results might not accurately reflect real-world performance.
+When performing tests comparing Azure Database for MySQL Flexible Server to other database products, be sure to enable all features that you expect to use in production on your test databases. For example, if you don't enable zone redundant HA, backups, and Read Replicas in your test environment, then your results might not accurately reflect real-world performance.
 
 ### Client-specific recommendations
 
 All performance benchmarks involve the use of a client, so regardless of your chosen benchmarking methodology, be sure to consider the following client-side recommendations.
 
-- Make sure client instances exist in the same Azure Virtual Network (VNet) as the Azure Database for MySQL flexible server instance you're testing. For latency-sensitive applications, it's a good practice to place client instances in the same Availability Zone (AZ) as the database server.
+- Make sure client instances exist in the same Azure Virtual Network (VNet) as the Azure Database for MySQL Flexible Server instance you're testing. For latency-sensitive applications, it's a good practice to place client instances in the same Availability Zone (AZ) as the database server.
 - If a production application is expected to run on multiple instances (for example, an app server fleet behind a Load Balancer), it's a good practice to use multiple client instances when performing the benchmark.
 - Ensure that all client instances have adequate compute, memory, I/O, and network capacity to handle the benchmark. In other words, the clients must be able to produce requests faster than the database engine can handle them. All operating systems provide diagnostic tools (such as "top", "htop", "dstat" or "iostat" on Linux) that can help you diagnose resource utilization on client instances. It's recommended that you use these tools and ensure that all client instances always have spare CPU, memory, network, and IO capacity while the benchmark is running.
 
-Even with a large SKU, a single client instance might not always be able to generate requests quickly enough to saturate the database. Depending on the test configuration, Azure Database for MySQL flexible server can be capable of handling hundreds of thousands of read/write requests per second, which might be more than a single client can accommodate. To avoid client-side contention during heavy performance tests, it's therefore a common practice to run a benchmark from multiple client instances in parallel.
+Even with a large SKU, a single client instance might not always be able to generate requests quickly enough to saturate the database. Depending on the test configuration, Azure Database for MySQL Flexible Server can be capable of handling hundreds of thousands of read/write requests per second, which might be more than a single client can accommodate. To avoid client-side contention during heavy performance tests, it's therefore a common practice to run a benchmark from multiple client instances in parallel.
 
 > [!IMPORTANT]  
 > If you're benchmarking your application using a traffic generator script or third-party tool (such as Apache Benchmark, Apache JMeter, or Siege), you should also evaluate the instance on which the tool is running using the recommendations called out previously.
@@ -160,7 +160,7 @@ The ideas presented in this section are intended to make performance testing pro
 
 ### Prepare test data
 
-Before conducting performance benchmarks against Azure Database for MySQL flexible server, be sure that the server is populated with a representative sample of your production data set.
+Before conducting performance benchmarks against Azure Database for MySQL Flexible Server, be sure that the server is populated with a representative sample of your production data set.
 
 Whenever possible, use a full copy of the production set. When this isn't possible, use the following suggestions to help you determine which portions of data you should always include and which data you can leave out.
 
@@ -174,9 +174,9 @@ Whenever possible, use a full copy of the production set. When this isn't possib
 
 The high-level process for performing application benchmarks is as follows:
 
-1. Create an Azure Database for MySQL flexible server instance and populate it with a copy of your production data.
+1. Create an Azure Database for MySQL Flexible Server instance and populate it with a copy of your production data.
 1. Deploy a copy of the application in Azure.
-1. Configure the application to use the Azure Database for MySQL flexible server instance.
+1. Configure the application to use the Azure Database for MySQL Flexible Server instance.
 1. Run load tests against the application and assess the results.
 
 This approach is primarily useful when you can easily deploy a copy of your application in Azure. It allows you to conduct performance assessment in the most thorough and accurate way, but there are still certain recommendations to keep in mind.
@@ -193,13 +193,13 @@ If you can't easily deploy a copy of your application in Azure, you need to perf
 
 1. Identify the SQL statements that most commonly appear in your production workload.
 1. Based on the information gathered in the first step, prepare a large sample of SQL statements to test.
-1. Create an Azure Database for MySQL flexible server node and populate it with a copy of your production data.
+1. Create an Azure Database for MySQL Flexible Server node and populate it with a copy of your production data.
 1. Launch Azure virtual machine (VM) client instance(s) in Azure.
-1. From the VMs, run the SQL workload sample against your Azure Database for MySQL flexible server instance and assess the results.
+1. From the VMs, run the SQL workload sample against your Azure Database for MySQL Flexible Server instance and assess the results.
 
 There are two main approaches to generating the test payload (SQL statement samples):
 
-- Observe/record the SQL traffic occurring in your current database, then generate SQL samples based on those observations. For details on how to record query traffic by using a combination of audit logs and slow query logging in Azure Database for MySQL flexible server.
+- Observe/record the SQL traffic occurring in your current database, then generate SQL samples based on those observations. For details on how to record query traffic by using a combination of audit logs and slow query logging in Azure Database for MySQL Flexible Server.
 - Use actual query logs as the payload. Third party tools such as "Percona Playback" can generate multi-threaded workloads based on MySQL Slow Query Logs.
 
 If you decide to generate SQL sample manually, be sure that the sample contains:
@@ -253,8 +253,8 @@ Sustained server performance is an important metric, likely to become the main p
 
 Consider including the following scenarios in your tests.
 
-- "Blackout" tests, which are designed to determine how the database behaves during a reboot or a crash. Azure Database for MySQL flexible server introduces significant improvements around crash recovery times, and reboot/crash tests are instrumental in understanding how Azure Database for MySQL flexible server contributes to reducing your application downtime in such scenarios.
-- "Brownout" tests, which are designed to gauge how quickly a database achieves nominal performance levels after a reboot or crash. Databases often need time to achieve optimal performance, and Azure Database for MySQL flexible server introduces improvements in this area as well.
+- "Blackout" tests, which are designed to determine how the database behaves during a reboot or a crash. Azure Database for MySQL Flexible Server introduces significant improvements around crash recovery times, and reboot/crash tests are instrumental in understanding how Azure Database for MySQL Flexible Server contributes to reducing your application downtime in such scenarios.
+- "Brownout" tests, which are designed to gauge how quickly a database achieves nominal performance levels after a reboot or crash. Databases often need time to achieve optimal performance, and Azure Database for MySQL Flexible Server introduces improvements in this area as well.
 
 In the event of stability issues affecting your database, any information gathered during the performance benchmarks help identify bottlenecks or further tune the application to cater to the workload needs.
 
@@ -263,4 +263,4 @@ In the event of stability issues affecting your database, any information gather
 - [Best practices for optimal performance of Azure Database for MySQL - Flexible Server](concept-performance-best-practices.md)
 - [Best practices for server operations on Azure Database for MySQL - Flexible Server](concept-operation-excellence-best-practices.md)
 - [Best practices for monitoring Azure Database for MySQL - Flexible Server](concept-monitoring-best-practices.md)
-- [Get started with Azure Database for MySQL flexible server](../single-server/quickstart-create-mysql-server-database-using-azure-portal.md)
+- [Get started with Azure Database for MySQL Flexible Server](../single-server/quickstart-create-mysql-server-database-using-azure-portal.md)

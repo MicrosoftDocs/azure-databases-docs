@@ -1,25 +1,25 @@
 ---
-title: Migrate databases at scale using Azure PowerShell / CLI (Preview)
+title: Migrate databases at scale using Azure PowerShell / CLI
 description: Learn how to use Azure PowerShell or CLI to migrate databases at scale with the Azure SQL migration extension in Azure Data Studio
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolph.west, randolphwest
-ms.date: 09/18/2024
+ms.date: 10/14/2025
 ms.service: azure-database-migration-service
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.collection:
   - sql-migration-content
 ms.custom:
   - devx-track-azurepowershell
 ---
 
-# Migrate databases at scale using automation (Preview)
+# Migrate databases at scale using automation
 
 The [Azure SQL Migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension) brings together a simplified assessment, recommendation, and migration experience that delivers the following capabilities:
 
 - An enhanced assessment mechanism can evaluate SQL Server instances, identifying databases ready for migration to the different Azure SQL targets.
 
-- An SKU recommendation engine (Preview) that collects performance data from the source SQL Server instance on-premises, generating right-sized SKU recommendations based on your Azure SQL target.
+- An SKU recommendation engine that collects performance data from the source SQL Server instance on-premises, generating right-sized SKU recommendations based on your Azure SQL target.
 
 - A reliable Azure service powered by Azure Database Migration Service that orchestrates data movement activities to deliver a seamless migration experience.
 
@@ -39,7 +39,7 @@ The following sample scripts can be referenced to suit your migration scenario u
 | SQL Server to SQL Server on Azure Virtual Machines (using file share) | [PowerShell](https://github.com/Azure-Samples/data-migration-sql/blob/main//PowerShell/sql-server-to-sql-vm-fileshare.md) / [Azure CLI](https://github.com/Azure-Samples/data-migration-sql/blob/main/CLI/sql-server-to-sql-vm-fileshare.md) |
 | SQL Server to SQL Server on Azure Virtual Machines (using Azure Storage) | [PowerShell](https://github.com/Azure-Samples/data-migration-sql/blob/main//PowerShell/sql-server-to-sql-vm-blob.md) / [Azure CLI](https://github.com/Azure-Samples/data-migration-sql/blob/main/CLI/sql-server-to-sql-vm-blob.md) |
 | SQL Server to Azure SQL Database | [PowerShell](https://github.com/Azure-Samples/data-migration-sql/blob/main//PowerShell/sql-server-to-sql-db.md) / [Azure CLI](https://github.com/Azure-Samples/data-migration-sql/blob/main/CLI/sql-server-to-sql-db.md) |
-| SKU recommendations (Preview) | [PowerShell](https://github.com/Azure-Samples/data-migration-sql/blob/main//PowerShell/sql-server-sku-recommendation.md) / [Azure CLI](https://github.com/Azure-Samples/data-migration-sql/blob/main/CLI/sql-server-sku-recommendation.md) |
+| SKU recommendations | [PowerShell](https://github.com/Azure-Samples/data-migration-sql/blob/main//PowerShell/sql-server-sku-recommendation.md) / [Azure CLI](https://github.com/Azure-Samples/data-migration-sql/blob/main/CLI/sql-server-sku-recommendation.md) |
 | End-to-End migration automation | [PowerShell](https://github.com/Azure-Samples/data-migration-sql/blob/main//PowerShell/scripts/) / [Azure CLI](https://github.com/Azure-Samples/data-migration-sql/blob/main/CLI/scripts/) |
 | End-to-End migration automation for multiple databases|[PowerShell](https://github.com/Azure-Samples/data-migration-sql/blob/main//PowerShell/scripts/multiple%20databases/) / [Azure CLI](https://github.com/Azure-Samples/data-migration-sql/blob/main/CLI/scripts/multiple%20databases/) |
 

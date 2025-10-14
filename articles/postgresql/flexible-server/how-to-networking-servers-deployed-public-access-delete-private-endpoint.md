@@ -8,12 +8,12 @@ ms.date: 01/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to delete private endpoint connections to an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to delete private endpoint connections to an Azure Database for PostgreSQL.
 ---
 
 # Delete private endpoint connections
 
-Azure Database for PostgreSQL - Flexible Server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
+Azure Database for PostgreSQL flexible server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
 A private endpoint to your Azure Database for PostgreSQL flexible server is a network interface that you can inject in a subnet of an Azure virtual network. Any host or service that can route network traffic to that subnet, are able to communicate with your flexible server so that the network traffic doesn't have to traverse the internet. All traffic is sent privately using Microsoft backbone.
 
@@ -25,38 +25,19 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, select **Overview**.
-
-    :::image type="content" source="./media/how-to-networking/networking-overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-networking/networking-overview.png":::
-
-3. The status of the server must be **Available**, for the **Networking** menu option to be enabled.
-
-    :::image type="content" source="./media/how-to-networking/networking-server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-networking/networking-server-status.png":::
-
-4. If the status of the server isn't **Available**, the **Networking** option is disabled.
-
-    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Available." lightbox="./media/how-to-networking/networking-disabled.png":::
-
-> [!NOTE]
-> Any attempt to configure the networking settings of a server whose status is other than available, would fail with an error.
-
-5. In the resource menu, select **Networking**.
+2. In the resource menu, select **Networking**.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint.png":::
 
-6. Select the private endpoint connection that you want to delete.
-
-    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-select.png" alt-text="Screenshot showing how to begin deleting an existing private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-select.png":::
-
-7. Select **Delete** to trigger the deletion of the private endpoint connection.
+3. Select the private endpoint connection that you want to delete, and select **Delete** to trigger the deletion of the private endpoint connection.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-delete.png" alt-text="Screenshot showing the Delete button to trigger the deletion of an existing private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-delete.png":::
 
-8. A notification informs you that the private endpoint connection is being deleted.
+4. A notification informs you that the private endpoint connection is being deleted.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-deleting-notification.png" alt-text="Screenshot showing the notification informing that it-s deleting the private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-deleting-notification.png":::
 
-8. When the operation completes, a notification informs you that the private endpoint connection was successfully deleted.
+5. When the operation completes, a notification informs you that the private endpoint connection was successfully deleted.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-deleted-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is deleted." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-deleted-notification.png":::
 

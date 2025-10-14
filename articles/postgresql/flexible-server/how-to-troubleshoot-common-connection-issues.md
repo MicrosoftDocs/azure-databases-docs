@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot connections
-description: Learn how to troubleshoot connection issues to Azure Database for PostgreSQL - Flexible Server.
-author: assaff
-ms.author: assaff
+description: Learn how to troubleshoot connection issues to Azure Database for PostgreSQL flexible server.
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
@@ -10,9 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Troubleshoot connection issues to Azure Database for PostgreSQL - Flexible Server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Troubleshoot connection issues to Azure Database for PostgreSQL 
 
 Connection problems may be caused by various things, including:
 
@@ -36,8 +34,8 @@ Transient errors occur when maintenance is performed, the system encounters an e
 ### Steps to resolve transient connectivity issues
 
 1. Check the [Microsoft Azure Service Dashboard](https://azure.microsoft.com/status) for any known outages that occurred during the time in which the errors were reported by the application.
-2. Applications that connect to a cloud service such as Azure Database for PostgreSQL flexible server should expect transient errors and implement retry logic to handle these errors instead of surfacing these as application errors to users. Review [Handling of transient connectivity errors - Azure Database for PostgreSQL - Flexible Server](concepts-connectivity.md) for best practices and design guidelines for handling transient errors.
-3. As a server approaches its resource limits, errors can seem to be transient connectivity issue. See [Limitations - Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+2. Applications that connect to a cloud service such as Azure Database for PostgreSQL flexible server should expect transient errors and implement retry logic to handle these errors instead of surfacing these as application errors to users. Review [Handling of transient connectivity errors - Azure Database for PostgreSQL flexible server](concepts-connectivity.md) for best practices and design guidelines for handling transient errors.
+3. As a server approaches its resource limits, errors can seem to be transient connectivity issue. See [Limitations - Azure Database for PostgreSQL flexible server](concepts-limits.md).
 4. If connectivity problems continue, or if the duration for which your application encounters the error exceeds 60 seconds or if you see multiple occurrences of the error in a given day, file an Azure support request by selecting **Get Support** on the [Azure Support](https://azure.microsoft.com/support/options) site.
 
 ## Troubleshoot persistent errors
@@ -54,8 +52,8 @@ If the application persistently fails to connect to Azure Database for PostgreSQ
 1. Set up [firewall rules](concepts-firewall-rules.md) to allow the client IP address. For temporary testing purposes only, set up a firewall rule using 0.0.0.0 as the starting IP address and using 255.255.255.255 as the ending IP address. This will open the server to all IP addresses. If this resolves your connectivity issue, remove this rule and create a firewall rule for an appropriately limited IP address or address range.
 2. On all firewalls between the client and the internet, make sure that port 5432 is open for outbound connections.
 3. Verify your connection string and other connection settings.
-4. Check the service health in the dashboard. If you think there’s a regional outage, see [Overview of business continuity - Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md) for steps to recover to a new region.
+4. Check the service health in the dashboard. If you think there’s a regional outage, see [Overview of business continuity - Azure Database for PostgreSQL flexible server](concepts-business-continuity.md) for steps to recover to a new region.
 
 ## Related content
 
-- [Handling transient connectivity errors in Azure Database for PostgreSQL - Flexible Server](concepts-connectivity.md).
+- [Handling transient connectivity errors in Azure Database for PostgreSQL flexible server](concepts-connectivity.md).

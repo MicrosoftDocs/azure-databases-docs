@@ -51,7 +51,7 @@ If you configured logs in your trace provider, you can automatically get [diagno
 
 ### [.NET](#tab/dotnet)
 
-In addition to getting diagnostic logs for failed requests, you can configure different latency thresholds for when to collect diagnostics from successful requests. The default values are 100 ms for point operations and 500 ms for non point operations. These thresholds can be adjusted through client options.
+In addition to getting diagnostic logs for failed requests, you can configure different latency thresholds for when to collect diagnostics from successful requests. The default values are 1 second for point operations and 3 seconds for non point operations. These thresholds can be adjusted through client options.
 
 ```csharp
 CosmosClientOptions options = new CosmosClientOptions()

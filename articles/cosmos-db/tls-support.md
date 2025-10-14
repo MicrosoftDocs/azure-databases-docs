@@ -1,19 +1,29 @@
 ---
-title: Prepare for upcoming Transport Layer Security (TLS) 1.3 support for Azure Cosmos DB
+title: Prepare for upcoming Transport Layer Security (TLS) 1.3 support
 titleSuffix: Azure Cosmos DB
 description: Learn how to enable TLS 1.3 for your Azure Cosmos DB account to improve your security posture.
 author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 9/23/2024
+ms.topic: upgrade-and-migration-article
+ms.date: 09/03/2025
+applies-to:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Prepare for upcoming TLS 1.3 support for Azure Cosmos DB
 
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
+> [!IMPORTANT]
+> Effective **March 31, 2025 support for TLS 1.3** will be enabled for Azure Cosmos DB.
+>
+>  [**Starting August 31, 2025, we are officially deprecating TLS 1.0/1.1.**](https://azure.microsoft.com/updates?id=update-retirement-tls1-0-tls1-1-versions-azure-services). Only TLS 1.2 or higher is supported. 
 
-Azure Cosmos DB will enable TLS 1.3 support on public endpoints across its platform globally to align with security best practices. [**Starting August 31, 2025, we are officially deprecating TLS 1.0/1.1.**](https://azure.microsoft.com/updates?id=update-retirement-tls1-0-tls1-1-versions-azure-services). Only TLS 1.2 or higher is supported. This article provides extra guidance on how to prepare for the upcoming support of TLS 1.3 for Azure Cosmos DB. 
+Azure Cosmos DB enables TLS 1.3 support on public endpoints across its platform globally to align with security best practices.
+This article provides extra guidance on how to prepare for the upcoming support of TLS 1.3 for Azure Cosmos DB.
 
 TLS 1.3 introduces substantial enhancements compared to its predecessors. TLS 1.3 improvements focus on both performance and security, featuring faster handshakes and a streamlined set of more secure cipher suites, namely TLS_AES_256_GCM_SHA384 and TLS_AES_128_GCM_SHA256. Notably, TLS 1.3 prioritizes Perfect Forward Secrecy (PFS) by eliminating key exchange algorithms that don't support it.  
 
@@ -38,3 +48,7 @@ These issues are some of the known issues with TLS 1.3 enablement, potential eff
 
 > [!NOTE]
 > Enabling client to use TLS 1.3 requires Java runtime to support TLS 1.3
+
+## Related content
+- [How to set minimum TLS version](./self-serve-minimum-tls-enforcement.md#how-to-set-the-minimum-tls-version-for-my-cosmos-db-database-account)
+- [Moving to TLS 1.2 for Azure Cosmos DB](https://aka.ms/tls12)

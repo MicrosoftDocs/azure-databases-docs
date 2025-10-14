@@ -6,6 +6,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.author: jacodel
 ms.collection:
   - ce-skilling-ai-copilot
@@ -62,8 +63,6 @@ CosmosAIGraph applies Azure Cosmos DB to create AI-powered graphs and knowledge 
 - [Tokens](tokens.md)
 - [Vector Embeddings](vector-embeddings.md)
 - [Retrieval Augmented Generated (RAG)](rag.md)
-- [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
-- [90-day Free Trial and up to $6,000 in throughput credits with Azure AI Advantage](../ai-advantage.md)
 
 ## Next step
 

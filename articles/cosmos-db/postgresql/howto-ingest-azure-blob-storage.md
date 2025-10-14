@@ -1,12 +1,13 @@
 ---
 title: Data ingestion with Azure Blob Storage - Azure Cosmos DB for PostgreSQL
-description: How to ingest data using Azure Blob Storage as a staging area 
+description: How to ingest data using Azure Blob Storage as a staging area
 ms.author: adamwolk
 author: mulander
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 06/16/2023
+ms.custom: sfi-image-nochange
 ---
 
 # How to ingest data using pg_azure_storage in Azure Cosmos DB for PostgreSQL

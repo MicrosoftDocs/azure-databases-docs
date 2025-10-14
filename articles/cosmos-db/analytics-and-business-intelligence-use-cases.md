@@ -1,8 +1,8 @@
 ---
 title: Near real-time analytics use cases for Azure Cosmos DB
 description: Learn how real-time analytics is used in Supply chain analytics, forecasting, reporting, real-time personalization, and IOT predictive maintenance.
-author: Rodrigossz
-ms.author: rosouz
+author: jilmal
+ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 06/25/2024

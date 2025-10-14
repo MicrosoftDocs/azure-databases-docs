@@ -6,14 +6,14 @@ author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 11/18/2024
 ms.custom: references_regions
 # CustomerIntent: As a PM, we wanted to offer our customers a feature that allows database adapts immediately to changing workloads, eliminating performance bottlenecks 
 ---
 
 
-# Autoscale for vCore-based Azure Cosmos DB for MongoDB (public preview)
+# Autoscale for vCore-based Azure Cosmos DB for MongoDB
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
@@ -27,7 +27,7 @@ immediately to changing workloads, eliminating performance bottlenecks and avoid
 
 ## Get started
 
-Follow this document to [create a new Azure Cosmos DB for MongoDB (vCore)](quickstart-portal.md) cluster and select the 'M200-Autoscale tier (Preview)' checkbox. 
+Follow this document to [create a new Azure Cosmos DB for MongoDB (vCore)](quickstart-portal.md) cluster and select the 'M200-Autoscale tier' from the list of SKUs. 
 Alternatively, you can also use [Bicep template](quickstart-bicep.md) to provision the resource.
 
 :::image type="content" source="media/how-to-scale-cluster/provision-autoscale-tier.jpg" alt-text="Screenshot of the free tier provisioning.":::
@@ -51,7 +51,7 @@ Alternatively, you can also use [Bicep template](quickstart-bicep.md) to provisi
 
 ## Pricing Model
 
-For simplicity it uses a core-based pricing model, where charges are based on the higher of CPU or committed memory usage 
+For simplicity it uses a core-based pricing model, where charges are based on the higher of CPU or memory usage 
 in the last hour, compared to a 35% utilization threshold.
 
 * Upto 35% Utilization: Minimum price applies.
@@ -63,7 +63,7 @@ in the last hour, compared to a 35% utilization threshold.
 In a scenario where an application experiences usage spikes for 10% of its runtime:
 
 * Without Autoscale: An overprovisioned M200 cluster would cost $1,185.24.
-* With Autoscale: An M200-Autoscale cluster would cost $968.41, offering a savings of 18.29%.
+* With Autoscale: An M200-Autoscale cluster would cost only $968.41, offering a saving of 18.29%.
 
 This flexible pricing model helps reduce costs while maintaining optimal performance during peak demand.
 
@@ -71,37 +71,36 @@ This flexible pricing model helps reduce costs while maintaining optimal perform
 
 - Currently, only the M200 Autoscale tier is supported, allowing scaling within the range of M80 to M200 tiers.
 - Autoscale applies only to compute resources. Storage capacity must still be scaled manually.
-- Upgrades or downgrades between the General Tier and Autoscale Tier are not supported at this time.
+- Upgrades or downgrades between the General Tier and Autoscale Tier aren't supported at this time.
 
 ## Frequently Asked Questions (FAQs)
 
-- Which clusters support Autoscale?
+### Which clusters support Autoscale?  
+Currently, Autoscale is only available for the M200 tier, with scaling capabilities from **M80 to M200**.  
 
-Currently, Autoscale is only available for the M200 tier, with scaling capabilities from M80 to M200.
+### Does Autoscale manage both compute and storage scaling?  
+No, Autoscale only manages compute resources. Storage must be scaled manually.  
 
-- Does Autoscale manage both compute and storage scaling?
+### Can I switch between the General Tier and Autoscale Tier?  
+Yes, upgrades and downgrades between the General Tier and Autoscale Tier are supported. However, downscaling from M200-Autoscale to M200 isn't available at this time. 
 
-No, Autoscale only manages compute resources. Storage must be scaled manually.
+### Is there any downtime when Autoscale adjusts capacity?  
+No, Autoscale adjusts capacity instantly and seamlessly, without any downtime or performance impact.  
 
-- Can I switch between the General Tier and Autoscale Tier?
+### What happens if my workload exceeds the M200 tier limits?  
+If your workload consistently exceeds M200 limits, consider a higher tier or alternative scaling strategies, as Autoscale currently supports up to M200.  
 
-No, upgrades or downgrades between the General Tier and Autoscale Tier are not supported at this time.
+### Is Autoscale available in all Azure regions?  
+Autoscale availability varies by region. Check the Azure portal for support in your preferred region.  
 
-- Is there any downtime when Autoscale adjusts capacity?
+### How can I verify the charges incurred with Autoscale?  
+To ensure cost transparency, we’ve introduced a new metric called 'Autoscale Utilization Percentage'. 
+This metric shows the maximum of CPU or memory usage over time, helping you compare it against the charges incurred.  
 
-No, Autoscale adjusts capacity instantly and seamlessly, without any downtime or impact on performance.
+<a href="media/how-to-scale-cluster/autoscale-metric.jpg" target="_blank">
+  <img src="media/how-to-scale-cluster/autoscale-metric.jpg" alt="Screenshot for autoscale usage metric." width="600">
+</a>
 
-- What happens if my workload exceeds the M200 tier limits?
-
-If your workload consistently exceeds the M200 limits, you may need to consider a higher tier or alternative scaling strategies, as Autoscale currently only supports up to M200.
-
-- Is Autoscale available in all Azure regions?
-
-Autoscale support may vary by region. Please check the Azure portal for availability in your preferred region.
-
-- How can I verify the charges incurred with Autoscale?
-
-To provide cost transparency, we’ve introduced a new metric called “Autoscale Utilization Percentage.” This metric shows the maximum of CPU or committed memory usage over time, allowing you to compare it against the charges incurred.
 
 ## Next steps
 

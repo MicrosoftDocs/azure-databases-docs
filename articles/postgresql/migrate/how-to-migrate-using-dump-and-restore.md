@@ -1,6 +1,6 @@
 ---
-title: Dump and Restore - Azure Database for PostgreSQL - Flexible Server
-description: You can extract a PostgreSQL database into a dump file. Then, you can restore from a file created by pg_dump in Azure Database for PostgreSQL Single Server or Flexible Server.
+title: Dump and Restore - Azure Database for PostgreSQL flexible server
+description: You can extract a PostgreSQL database into a dump file. Then, you can restore from a file created by pg_dump in Azure Database for PostgreSQL Single Server or flexible server.
 author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: maghan
@@ -8,6 +8,9 @@ ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
+ms.collection:
+  - migration
+  - onprem-to-azure
 ---
 
 # Migrate your PostgreSQL database by using dump and restore
@@ -21,7 +24,7 @@ You can use [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.
 
 In this article, we focus on the plain (default) and directory formats. The directory format is useful as it allows you to use multiple cores for processing, which can significantly enhance efficiency, especially for large databases.
 
-The Azure portal streamlines this process via the Connect blade by offering preconfigured commands that are tailored to your server, with values substituted with your user data. It's important to note that the Connect blade is only available for Azure Database for PostgreSQL - Flexible Server and not for Single Server. Here's how you can use this feature:
+The Azure portal streamlines this process via the Connect blade by offering preconfigured commands that are tailored to your server, with values substituted with your user data. It's important to note that the Connect blade is only available for Azure Database for PostgreSQL flexible server and not for Single Server. Here's how you can use this feature:
 
 1. **Access Azure portal**: First, go to the Azure portal and choose the Connect blade.
 
@@ -41,7 +44,7 @@ The Azure portal streamlines this process via the Connect blade by offering prec
 
 ## Prerequisites
 
-If you're using a Single Server, or don't have access to the Flexible Server portal, read through this documentation page. It contains information that is similar to what is presented in the Connect blade for Flexible Server on the portal.
+If you're using a Single Server, or don't have access to the flexible server portal, read through this documentation page. It contains information that is similar to what is presented in the Connect blade for flexible server on the portal.
 
 > [!NOTE]  
 > Because `pg_dump`, `psql`, `pg_restore` and `pg_dumpall` utilities all rely on libpq, you can use any of the supported [environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) it offers, or you can use the [password file](https://www.postgresql.org/docs/current/libpq-pgpass.html) to avoid being prompted for the password every time you run any of these commands.
@@ -74,13 +77,13 @@ pg_dumpall -r -h mydemoserver.postgres.database.azure.com -U myuser > roles.sql
 
 If you're using a Single Server, your username includes the server name component. Therefore, instead of `myuser`, use `myuser@mydemoserver`.
 
-### Dumping Roles from a Flexible Server
+### Dumping Roles from a flexible server
 
-In a Flexible Server environment, enhanced security measures mean users don't have access to the pg_authid table, which is where role passwords are stored. This restriction affects how you perform a roles dump, as the standard `pg_dumpall -r` command attempts to access this table for passwords and fail due to lack of permission.
+In a flexible server environment, enhanced security measures mean users don't have access to the pg_authid table, which is where role passwords are stored. This restriction affects how you perform a roles dump, as the standard `pg_dumpall -r` command attempts to access this table for passwords and fail due to lack of permission.
 
-When dumping roles from a Flexible Server, it's crucial to include the `--no-role-passwords` option in your `pg_dumpall` command. This option prevents `pg_dumpall` from attempting to access the `pg_authid` table, which it cannot read due to security restrictions.
+When dumping roles from a flexible server, it's crucial to include the `--no-role-passwords` option in your `pg_dumpall` command. This option prevents `pg_dumpall` from attempting to access the `pg_authid` table, which it cannot read due to security restrictions.
 
-To successfully dump roles from a Flexible Server, use the following command:
+To successfully dump roles from a flexible server, use the following command:
 
 ```bash
 pg_dumpall -r --no-role-passwords -h <server name> -U <user name> > roles.sql
@@ -165,7 +168,7 @@ psql -f roles.sql -h mydemoserver.postgres.database.azure.com -U myuser
 If you're using a Single Server, your username includes the server name component. Therefore, instead of `myuser`, use `myuser@mydemoserver`.
 
 > [!NOTE]  
-> If you already have users with the same names on your Single Server or on-premises server from which you are migrating, and your target server, be aware that this restoration process might change the passwords for these roles. Consequently, any subsequent commands you need to execute might require the updated passwords. This does not apply if your source server is a Flexible Server, as Flexible Server does not allow dumping passwords for users due to enhanced security measures.
+> If you already have users with the same names on your Single Server or on-premises server from which you are migrating, and your target server, be aware that this restoration process might change the passwords for these roles. Consequently, any subsequent commands you need to execute might require the updated passwords. This does not apply if your source server is a flexible server, as flexible server does not allow dumping passwords for users due to enhanced security measures.
 
 ### Create a new database
 

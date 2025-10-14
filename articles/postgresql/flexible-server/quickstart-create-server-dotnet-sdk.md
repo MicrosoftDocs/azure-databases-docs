@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Create With Azure Libraries (SDK) For.NET"
-description: This document is a QuickStart guide for Azure SDK library for .NET to create, update, and delete an Azure PostgreSQL Flexible Server Instance.
+description: This document is a QuickStart guide for Azure SDK library for .NET to create, update, and delete an Azure PostgreSQL flexible server instance.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -10,32 +10,32 @@ ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Use Azure (SDK) libraries in .NET to create, update, and delete an Azure Database for PostgreSQL instance
+# Quickstart: Use Azure (SDK) libraries in .NET to create, update, and delete an Azure Database for PostgreSQL
 
-In this quickstart, you learn how to use the Azure SDK libraries in .NET to create, update, and delete an Azure PostgreSQL Flexible Server instance. Azure Database for PostgreSQL flexible server is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the .NET SDK, you can provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server.
+In this quickstart, you learn how to use the Azure SDK libraries in .NET to create, update, and delete an Azure PostgreSQL flexible server instance. Azure Database for PostgreSQL is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the .NET SDK, you can provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server.
 
 ## Prerequisites
 
-- [An Azure account with an active subscription](https://azure.microsoft.com/free/).
-- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
+- [An Azure account with an active subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+- [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
 - [.NET framework](https://dotnet.microsoft.com/download) installed on your local machine.
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
 
 ## Azure.ResourceManager.PostgreSql library
 
-The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET and provides functionality for managing PostgreSQL flexible servers in Azure. With this library, you can perform various operations related to PostgreSQL flexible servers, including but not limited to:
+The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET and provides functionality for managing PostgreSQL flexible server instances in Azure. With this library, you can perform various operations related to PostgreSQL flexible server instances, including but not limited to:
 
-1. **Creating Azure PostgreSQL Flexible Servers**:\
-You can create new Flexible Servers instances with specified configurations such as location, SKU, storage, and version.
+1. **Creating Azure PostgreSQL flexible server instances**:\
+You can create new flexible server instances with specified configurations such as location, SKU, storage, and version.
 
-2. **Updating Azure PostgreSQL Flexible Servers**:\
-You can update existing PostgreSQL flexible servers, including changing configurations like administrator login, password, SKU, storage, and version.
+2. **Updating Azure PostgreSQL flexible server instances**:\
+You can update existing PostgreSQL flexible server instances, including changing configurations like administrator login, password, SKU, storage, and version.
 
-3. **Deleting Azure PostgreSQL Flexible Servers**:\
+3. **Deleting Azure PostgreSQL flexible server instances**:\
 You can delete existing Azure PostgreSQL flexible server instances.
 
-4. **Retrieving Azure PostgreSQL Flexible Server Information**:\
-You can retrieve details about existing PostgreSQL flexible servers, including their configurations, status, and other metadata.
+4. **Retrieving Azure PostgreSQL Information**:\
+You can retrieve details about existing PostgreSQL flexible server instances, including their configurations, status, and other metadata.
 
 5. **Managing Databases**:\
 You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
@@ -126,7 +126,7 @@ namespace CreatePostgreSqlFlexibleServer
             {
                ArmOperation<PostgreSqlFlexibleServerResource> operation = await resourceGroup.GetPostgreSqlFlexibleServers().CreateOrUpdateAsync(Azure.WaitUntil.Completed, serverName, serverData);
               PostgreSqlFlexibleServerResource serverResource = operation.Value;
-              Console.WriteLine($"PostgreSQL Flexible Server '{serverResource.Data.Name}' created successfully.");
+              Console.WriteLine($"PostgreSQL flexible server '{serverResource.Data.Name}' created successfully.");
            }
             catch (Exception ex)
             {
@@ -137,7 +137,7 @@ namespace CreatePostgreSqlFlexibleServer
 }
 ```
 
-This example demonstrates creating a PostgreSQL flexible server using the Azure Resource Manager. PostgreSql library. You can similarly use other methods provided by the library to manage your PostgreSQL flexible servers and related resources.
+This example demonstrates creating a PostgreSQL flexible server instance using the Azure Resource Manager. PostgreSql library. You can similarly use other methods provided by the library to manage your PostgreSQL flexible server instances and related resources.
 
 Replace the following parameters in the code with your data:
 
@@ -177,7 +177,7 @@ You can review the deployed flexible server instance through Azure portal, Azure
 
 Create a `UpdateServerData.cs` file.
 
-You can also update server data using the Azure PostgreSQL Flexible server .NET SDK.
+You can also update server data using the Azure PostgreSQL .NET SDK.
 
 For example, you can update the version, admin username, password, etc., using the `CreateOrUpdateAsync` method.
 
@@ -222,7 +222,7 @@ namespace UpdateServerData
              {
                ArmOperation<PostgreSqlFlexibleServerResource> operation = await resourceGroup.GetPostgreSqlFlexibleServers().CreateOrUpdateAsync(Azure.WaitUntil.Completed, serverName, serverData);
                PostgreSqlFlexibleServerResource serverResource = operation.Value;
-               Console.WriteLine($"PostgreSQL Flexible Server '{serverResource.Data.Name}' updated successfully.");
+               Console.WriteLine($"PostgreSQL flexible server '{serverResource.Data.Name}' updated successfully.");
             }
             catch (Exception ex)
             {
@@ -268,12 +268,12 @@ namespace DeleteServer
             var armClient = new ArmClient(credential);
             try
             {
-                // Get the PostgreSQL Flexible Server resource
+                // Get the PostgreSQL flexible server resource
                 var postgresServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
                 var postgresServer = armClient.GetPostgreSqlFlexibleServerResource(postgresServerResourceId);
                 // Delete the server
                 await postgresServer.DeleteAsync(Azure.WaitUntil.Completed);
-                Console.WriteLine($"PostgreSQL Flexible Server '{serverName}' deleted successfully.");
+                Console.WriteLine($"PostgreSQL flexible server '{serverName}' deleted successfully.");
             }
             catch (Exception ex)
             {
@@ -301,4 +301,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Quickstart: Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md)
+- [Quickstart: Create an Azure Database for PostgreSQL](quickstart-create-server.md)

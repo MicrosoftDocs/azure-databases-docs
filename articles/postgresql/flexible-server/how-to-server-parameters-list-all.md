@@ -1,19 +1,17 @@
 ---
 title: List all server parameters
 description: This article describes how to list all server parameters of an Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to list all server parameters of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to list all server parameters of an Azure Database for PostgreSQL.
 ---
 
 # List all server parameters
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to list all server parameters of an Azure Database for PostgreSQL flexible server.
 
@@ -64,7 +62,9 @@ The **Parameter type** column can show any of the following values for each para
 You can list all server parameters in a server via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
-az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server>
+az postgres flexible-server parameter list \
+  --resource-group <resource_group> \
+  --server-name <server>
 ```
 
 Each parameter has the following attributes:

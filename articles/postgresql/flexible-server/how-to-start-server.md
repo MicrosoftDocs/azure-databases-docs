@@ -1,23 +1,21 @@
 ---
-title: Start a server
-description: This article describes how to start an Azure Database for PostgreSQL flexible server.
+title: Start compute of a server
+description: This article describes how to start the compute of an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 04/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to start an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to start the compute of an Azure Database for PostgreSQL.
 ---
 
-# Start a server
+# Start compute of a server
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+This article provides step-by-step instructions to start the compute of an Azure Database for PostgreSQL flexible server.
 
-This article provides step-by-step instructions to start an Azure Database for PostgreSQL flexible server.
-
-## Steps to start a server
+## Steps to start compute of a server
 
 ### [Portal](#tab/portal-start-server)
 
@@ -55,13 +53,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-start-server)
 
-You can start a stopped server via the [az postgres flexible-server start](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-start) command.
+You can start the compute of a stopped server via the [az postgres flexible-server start](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-start) command.
 
 ```azurecli-interactive
-az postgres flexible-server start --resource-group <resource_group> --name <server>
+az postgres flexible-server start \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
-If you attempt to start a server which isn't in `Stopped` state, you receive an error like this:
+If you attempt to start the compute of a server which isn't in `Stopped` state, you receive an error like this:
 
 ```output
 (ServerIsNotStopped) Start Server can only be performed on Stopped servers. Seever Name = <server>, Current Server State = Updating
@@ -72,10 +72,10 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 ---
 
 > [!NOTE]
-> Once the server is started, all management operations are available for the Azure Database for PostgreSQL flexible server.
+> Starting a server depends on the available capacity in the region. During capacity outages, the server start operation is not guaranteed to succeed. Once the server is started, all management operations are available for the Azure Database for PostgreSQL flexible server.
 
 ## Related content
 
-- [Stop a server](how-to-stop-server.md).
-- [Restart a server](how-to-restart-server.md).
+- [Stop compute of a server](how-to-stop-server.md).
+- [Restart PostgreSQL engine](how-to-restart-server.md).
 - [Configure high availability](how-to-configure-high-availability.md).

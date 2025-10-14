@@ -5,8 +5,9 @@ ms.author: jonels
 author: jonels-msft
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/05/2023
+ms.custom: sfi-ropc-blocked
 ---
 # Configure TLS in Azure Cosmos DB for PostgreSQL
 

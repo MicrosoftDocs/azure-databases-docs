@@ -2,34 +2,34 @@
 
 ---
 metadata:
-  title: Connect a MongoDB application to Azure Cosmos DB
-  description: Learn how to connect a MongoDB app to Azure Cosmos DB by getting the connection string from Azure portal.
+  title: Connect a MongoDB Application
+  titleSuffix: Azure Cosmos DB for MongoDB
+  description: Learn how to connect a MongoDB app to Azure Cosmos DB by retrieving the connection string from the Azure portal. Discover two methods and start integrating your app today.
   author: gahl-levy
   ms.author: gahllevy
-  ms.date: 03/14/2023
   ms.service: azure-cosmos-db
   ms.subservice: mongodb
   ms.topic: how-to
+  ms.date: 08/20/2025
   ms.custom:
     - ge-structured-content-pilot
+  appliesto:
+    - ✅ MongoDB
 title: |
-  Connect a MongoDB application to Azure Cosmos DB
+  Connect a MongoDB application to Azure Cosmos DB for MongoDB
 introduction: |
-  [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
-
   Learn how to connect your MongoDB app to an Azure Cosmos DB by using a MongoDB connection string. You can then use an Azure Cosmos DB database as the data store for your MongoDB app.
 
   This tutorial provides two ways to retrieve connection string information:
 
   * [The quickstart method](#get-the-mongodb-connection-string-by-using-the-quick-start), for use with .NET, Node.js, MongoDB Shell, Java, and Python drivers.
   * [The custom connection string method](#get-the-mongodb-connection-string-to-customize), for use with other drivers.
-
 prerequisites:
   summary: |
     There are two items required
   dependencies:
     - |
-      An Azure account. If you don't have an Azure account, create a [free Azure account](https://azure.microsoft.com/free/) now.
+      An Azure account. If you don't have an Azure account, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) now.
     - |
       An Azure Cosmos DB account. For instructions, see [Quickstart: Azure Cosmos DB for MongoDB driver for Node.js](create-mongodb-dotnet.md).
 procedureSection:

@@ -6,7 +6,7 @@ author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 7/30/2024
 ---
 

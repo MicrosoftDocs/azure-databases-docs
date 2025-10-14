@@ -1,0 +1,23 @@
+- name: $shift
+  href: $shift.md
+- name: $covariancePop
+  href: $covariancepop.md
+- name: $covarianceSamp
+  href: $covariancesamp.md
+- name: $denseRank
+  href: $denserank.md
+- name: $derivative
+  href: $derivative.md
+- name: $documentNumber
+  href: $documentnumber.md
+- name: $expMovingAvg
+  href: $expmovingavg.md
+- name: $integral
+  href: $integral.md
+- name: $linearFill
+  href: $linearfill.md
+- name: $locf
+  href: $locf.md
+- name: $rank
+  href: $rank.md
+

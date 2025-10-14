@@ -1,140 +1,196 @@
 ---
-  title: $all (array query) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $all
+  titleSuffix: Overview of the $all operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $all operator helps finding array documents matching all the elements.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
-  ms.date: 09/12/2024
+  ms.topic: language-reference
+  ms.date: 09/05/2025
 ---
 
-# $all (array query)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $all
 
 The `$all` operator is used to select documents where the value of a field is an array that contains all the specified elements. This operator is useful when you need to ensure that an array field contains multiple specified elements, regardless of their order in the array.
 
 ## Syntax
 
 ```javascript
-db.collection.find({ <field>: { $all: [ <value1> , <value2> ... ] } })
+db.collection.find({
+    field : {
+        $all: [ < value1 > , < value2 > ]
+    }
+})
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field to be queried. |
 | **`<value1> , <value2>`** | The values that must all be present in the array field. |
 
-## Example
+## Examples
+
+Consider this sample document from the stores collection.
 
 ```json
 {
-  "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
-  "name": "Wide World Importers",
-  "location": {
-    "lat": 68.6378,
-    "lon": -145.2852
-  },
-  "staff": {
-    "totalStaff": {
-      "fullTime": 1,
-      "partTime": 5
-    }
-  },
-  "sales": {
-    "totalSales": 23399,
-    "salesByCategory": [
-      {
-        "categoryName": "Smartphones",
-        "totalSales": 5231
-      },
-      {
-        "categoryName": "Laptops",
-        "totalSales": 18168
-      }
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
     ]
-  },
-  "promotionEvents": [
-    {
-      "eventName": "Unbeatable Bargain Bash",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2023,
-          "Month": 5,
-          "Day": 17
-        },
-        "endDate": {
-          "Year": 2023,
-          "Month": 5,
-          "Day": 25
-        }
-      },
-      "discounts": [
-        {
-          "categoryName": "Video Games",
-          "discountPercentage": 20
-        },
-        {
-          "categoryName": "Tablets",
-          "discountPercentage": 18
-        }
-      ]
-    }
-  ],
-  "tag": [
-    "#ShopLocal",
-    "#FashionStore",
-    "#SeasonalSale",
-    "#FreeShipping",
-    "#MembershipDeals"
-  ]
 }
 ```
 
 ### Example 1: Find documents containing all the specified elements in an array
 
-The example allows querying the `stores` collection to find documents containing both elements `Laptops` and `Smartphones` within `salesByCategory.categoryName` array.
+This query retrieves documents containing both elements `Laptops` and `Smartphones` within `salesByCategory.categoryName` array.
 
 ```javascript
-db.stores.find(
-    { "sales.salesByCategory.categoryName": { $all: ["Laptops", "Smartphones"]} },
-    { _id: 1, "sales.salesByCategory.categoryName": 1 }
-).limit(2)
+db.stores.find({
+    "sales.salesByCategory.categoryName": {
+        $all: ["Laptops", "Smartphones"]
+    }
+}, {
+    _id: 1,
+    "sales.salesByCategory.categoryName": 1
+}).limit(2)
 ```
 
-The query returns the two documents containing both `Laptops` and `Smartphones` within `salesCategory` array.
+The first two results returned by this query are:
 
 ```json
-  {
-    "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
-    "sales": {
-      "salesByCategory": [
-        {
-          "categoryName": "Smartphones"
-        },
-        {
-          "categoryName": "Laptops"
+[
+    {
+        "_id": "a57511bb-1ea3-4b26-bf0d-8bf928f2bfa8",
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "Smartphones"
+                },
+                {
+                    "categoryName": "Laptops"
+                }
+            ]
         }
-      ]
-    }
-  },
-  {
-    "_id": "ca56d696-5208-40c3-aa04-d4e245df44dd",
-    "sales": {
-      "salesByCategory": [
-        {
-          "categoryName": "Laptops"
-        },
-        {
-          "categoryName": "Smartphones"
+    },
+    {
+        "_id": "ca56d696-5208-40c3-aa04-d4e245df44dd",
+        "sales": {
+            "salesByCategory": [
+                {
+                    "categoryName": "Laptops"
+                },
+                {
+                    "categoryName": "Smartphones"
+                }
+            ]
         }
-      ]
     }
-  }
+]
 ```
 
 ## Related content

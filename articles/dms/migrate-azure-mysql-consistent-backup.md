@@ -6,7 +6,7 @@ ms.author: karlaescobar
 ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
-ms.topic: conceptual
+ms.topic: article
 ms.collection:
   - sql-migration-content
 ms.custom:
@@ -19,7 +19,7 @@ MySQL Consistent Snapshot is a new feature that allows users to take a Consisten
 
 :::image type="content" source="media/migrate-azure-mysql-consistent-backup/consistent-snapshot-options.png" alt-text="Screenshot of MySQL to Azure Database for MySQL Data Migration Wizard - Enable Transactional Consistency." lightbox="media/migrate-azure-mysql-consistent-backup/consistent-snapshot-options.png":::
 
-## Enable Consistent Snapshot without locks (Preview)
+## Enable Consistent Snapshot without locks (GA)
 
 When you enable this option, a reconciliation phase will occur after the initial load. This is to ensure that the data written to your target is transactionally consistent with the source server from a specific position in the binary log.
 

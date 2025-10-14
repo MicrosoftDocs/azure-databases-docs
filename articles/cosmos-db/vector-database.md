@@ -9,6 +9,7 @@ ms.custom:
   - build-2024
 ms.topic: concept-article
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
@@ -99,7 +100,7 @@ Retrieval-augmentated generation (RAG) is an architecture that augments the capa
 A simple RAG pattern using Azure Cosmos DB for NoSQL could be:
 
 1. Enable [Azure Cosmos DB NoSQL Vector Index](nosql/vector-search.md).
-1. Setup a database and container with a container vector policy and vector index.
+1. Set up a database and container with a container vector policy and vector index.
 1. Insert data into an Azure Cosmos DB for NoSQL database and container
 1. Create embeddings from a data property using Azure OpenAI Embeddings
 1. Link the Azure Cosmos DB for NoSQL.
@@ -126,7 +127,7 @@ DiskANN enables you to perform highly accurate, low latency queriers at any scal
 - [What is the database behind ChatGPT? - Microsoft Mechanics](https://www.youtube.com/watch?v=6IIUtEFKJec)
 - [Vector indexing in Azure Cosmos DB for NoSQL](index-policy.md#vector-indexes)
 - [VectorDistance system function NoSQL queries](nosql/query/vectordistance.md)
-- [How to setup vector database capabilities in Azure Cosmos DB NoSQL](nosql/vector-search.md)
+- [How to set up vector database capabilities in Azure Cosmos DB NoSQL](nosql/vector-search.md)
 - [Python - Notebook tutorial](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
 - [C# - Build Your Own Copilot Complete Solution Accelerator with AKS and Semantic Kernel](https://aka.ms/cdbcopilot)
 - [C# - Build Your Own Copilot Sample App and Hands-on-Lab](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot)
@@ -144,8 +145,8 @@ Use the natively [integrated vector database in Azure Cosmos DB for MongoDB](mon
 - [Python RAG pattern - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore)
 - [Python Notebook - Vector database integration through LangChain tutorial](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
 - [Python Notebook - LLM Caching integration through LangChain tutorial](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db_no_sql/)
-- [Python - LlamaIndex integration](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo.html)
-- [Python - Semantic Kernel memory integration](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory/azure_cosmosdb)
+- [Python - LlamaIndex integration](https://developers.llamaindex.ai/python/examples/vector_stores/azurecosmosdbmongodbvcoredemo/)
+- [Python - Semantic Kernel memory integration](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory_stores/azure_cosmosdb)
 - [Python Notebook - Movie Chatbot](https://github.com/AzureCosmosDB/Fabric-Conf-2024-Build-AI-Apps/tree/main/AzureCosmosDBforMongoDB)
 
 > [!div class="nextstepaction"]
@@ -158,17 +159,6 @@ Use the natively integrated vector database in [Azure Cosmos DB for PostgreSQL](
 #### Code sample
 
 - Python: [Python notebook tutorial - food review chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-PostgreSQL_CognitiveSearch)
-
-## Vector database solutions
-
-- [Azure PostgreSQL Server pgvector Extension](../postgresql/flexible-server/how-to-use-pgvector.md)
-
-:::image type="content" source="media/vector-search/azure-databases-and-ai-search.png" lightbox="media/vector-search/azure-databases-and-ai-search.png" alt-text="Diagram of Vector indexing services for Azure Cosmos DB.":::
-
-## Related content
-
-- [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
-- [90-day Free Trial and up to $6,000 in throughput credits with Azure AI Advantage](ai-advantage.md)
 
 ## Next step
 

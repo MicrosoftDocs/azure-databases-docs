@@ -1,20 +1,22 @@
 ---
-title: Configure Private Link By Using the Azure Portal
+title: Configure Private Link by Using the Azure Portal
 description: Learn how to use the Azure portal to configure Private Link for Azure Database for MySQL - Flexible Server.
-author: SudheeshGH
-ms.author: sunaray
+author: aditivgupta
+ms.author: adig
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 07/21/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Create and manage Private Link for Azure Database for MySQL - Flexible Server using the portal
 
 This tutorial provides step-by-step instructions on configuring a connection to an Azure Database for MySQL Flexible Server instance through a private endpoint and establishing a connection from a VM located within a VNet.
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ### Sign in to Azure
 

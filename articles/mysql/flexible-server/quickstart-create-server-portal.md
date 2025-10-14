@@ -1,25 +1,26 @@
 ---
-title: "Quickstart: Create a Flexible Server Using the Azure Portal"
+title: "Quickstart: Create a Flexible Server Using the Azure portal"
 description: In this quickstart, learn how to deploy a database in an instance of Azure Database for MySQL - Flexible Server by using the Azure portal.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 08/15/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
   - mvc
   - mode-ui
+  - sfi-image-nochange
 ---
 
 # Quickstart: Create an instance of Azure Database for MySQL with the Azure portal
 
-Azure Database for MySQL is a managed service for running, managing, and scaling highly available MySQL servers in the cloud. This article shows you how to use the Azure portal to create an Azure Database for MySQL Flexible Server instance. You create an instance of Azure Database for MySQL Flexible Server using a defined set of [compute and storage resources](./concepts-compute-storage.md).
+Azure Database for MySQL is a managed service for running, managing, and scaling highly available MySQL servers in the cloud. This article shows you how to use the Azure portal to create an Azure Database for MySQL Flexible Server instance. You create an instance of Azure Database for MySQL Flexible Server by using a defined set of [compute and storage resources](./concepts-compute-storage.md).
 
 ## Prerequisites
 
-- [Azure subscription](https://azure.microsoft.com/free/)
+- [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 - Access to the Azure portal
 - Basic knowledge of Azure Database for MySQL Flexible Server deployment options and configurations
 
@@ -35,13 +36,13 @@ Complete these steps to create an Azure Database for MySQL Flexible Server:
 
 1. In the Azure portal, search for and then select **Azure Database for MySQL Flexible Servers**.
 
-    :::image type="content" source="media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="Screenshot that shows a search for Azure Database for MySQL servers.":::
+   :::image type="content" source="media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="Screenshot that shows a search for Azure Database for MySQL servers.":::
 
 1. Select **Create**.
 
 1. On the **Select Azure Database for MySQL deployment option** pane, select **Flexible server** as the deployment option:
 
-    :::image type="content" source="media/quickstart-create-server-portal/azure-mysql-deployment-option.png" alt-text="Screenshot that shows the Flexible server option." lightbox="media/quickstart-create-server-portal/azure-mysql-deployment-option.png":::
+   :::image type="content" source="media/quickstart-create-server-portal/azure-mysql-deployment-option.png" alt-text="Screenshot that shows the Flexible server option." lightbox="media/quickstart-create-server-portal/azure-mysql-deployment-option.png":::
 
 1. On the **Basics** tab, enter or select the following information:
 
@@ -55,8 +56,8 @@ Complete these steps to create an Azure Database for MySQL Flexible Server:
    | **Workload type** | Development | For production workload, you can select **Small/Medium-size** or **Large-size** depending on [max_connections](concepts-server-parameters.md#max_connections) requirements |
    | **Compute + storage** | **Burstable**, **Standard_B1ms**, **10 GiB**, **100 iops**, **7 days** | The compute, storage, input/output operations per second (IOPS), and backup configurations for your new server. On the **Configure server** pane, the default values for **Compute tier**, **Compute size**, **Storage size**, **iops**, and **Retention period** (for backup) are **Burstable**, **Standard_B1ms**, **10 GiB**, **100 iops**, and **7 days**. You can keep the default values or modify these values. For faster data loads during migration, we recommend increasing IOPS to the maximum size supported for the compute size you selected. Later, scale it back to minimize cost. To save the compute and storage selection, select **Save** to continue with the configuration. |
    | **Availability zone** | No preference | If your application client is provisioned in a specific availability zone, you can set your Azure Database for MySQL Flexible Server to the same availability zone to colocate the application and reduce network latency. |
-   | **High availability** | Cleared | For production servers, choose between [zone-redundant high availability](concepts-high-availability.md#zone-redundant-ha-architecture) and [same-zone high availability](concepts-high-availability.md#same-zone-ha-architecture). We recommend high availability for business continuity and protection against virtual machine (VM) failure. |
-   | **Authentication method** | **MySQL and Microsoft Entra authentication** | Select the authentication methods you would like to support for accessing this MySQL server. |
+   | **High availability** | Cleared | For production servers, choose between [zone-redundant high availability](concepts-high-availability.md#zone-redundant-high-availability-ha-architecture) and [same-zone high availability](concepts-high-availability.md#same-zone-high-availability-ha-architecture). We recommend high availability for business continuity and protection against virtual machine (VM) failure. |
+   | **Authentication method** | **MySQL and Microsoft Entra authentication** | Select the authentication methods you want to support for accessing this MySQL server. |
    | **Admin username** | **mydemouser** | Your sign-in account is to be used when you connect to the server. The admin username can't be **azure_superuser**, **admin**, **administrator**, **root**, **guest**, **sa**, or **public**. The maximum number of characters that are allowed is 32. |
    | **Password** | Your password | A new password for the server admin account. It must contain between 8 and 128 characters. It also must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (`!`, `$`, `#`, `%`, and so on). |
 
@@ -67,19 +68,19 @@ Complete these steps to create an Azure Database for MySQL Flexible Server:
    - Public access (allowed IP addresses)
    - Private access (virtual network integration)
 
-   When you use public access, access to your server is limited to the allowed IP addresses you add to a firewall rule. This method prevents external applications and tools from connecting to the server and any databases on the server unless you create a rule to open the firewall for a specific IP address or range of IP addresses. When you select **Create an azuredeploy.json file**, access to your server is limited to your virtual network. For more information about private access, see the [concepts](concepts-networking.md) article.
+   When you use public access, you limit access to your server to the allowed IP addresses you add to a firewall rule. This method prevents external applications and tools from connecting to the server and any databases on the server unless you create a rule to open the firewall for a specific IP address or range of IP addresses. When you select **Create an azuredeploy.json file**, you limit access to your server to your virtual network. For more information about private access, see the [concepts](concepts-networking.md) article.
 
    In this quickstart, you learn how to set public access to connect to the server. On the **Networking tab**, for **Connectivity method**, select **Public access**. To set firewall rules, select **Add current client IP address**.
 
-    You can't change the connectivity method after you create the server. For example, if you select **Public access (allowed IP addresses)** when you create the server, you can't change the setting to **Private access (VNet Integration)** after the server is deployed. We highly recommend that you create your server to use private access to help secure access to your server via virtual network integration. For more information about private access, see the [concepts](concepts-networking.md) article.
+   You can't change the connectivity method after you create the server. For example, if you select **Public access (allowed IP addresses)** when you create the server, you can't change the setting to **Private access (VNet Integration)** after the server is deployed. We highly recommend that you create your server to use private access to help secure access to your server via virtual network integration. For more information about private access, see the [concepts](concepts-networking.md) article.
 
-    :::image type="content" source="media/quickstart-create-server-portal/networking.png" alt-text="Screenshot that shows the Networking tab.":::
+   :::image type="content" source="media/quickstart-create-server-portal/networking.png" alt-text="Screenshot that shows the Networking tab.":::
 
 1. Select **Review + create** to review your Azure Database for MySQL Flexible Server configuration.
 
 1. Select **Create** to provision the server. Provisioning might take a few minutes.
 
-1. select **Notifications** (the bell icon) on the toolbar to monitor the deployment process. After deployment, you can select **Pin to dashboard** to create a tile for the Azure Database for MySQL Flexible Server on your Azure portal dashboard. This tile is a shortcut to the server's **Overview** pane. When you select **Go to resource**, the **Overview** pane for the flexible server opens.
+1. Select **Notifications** (the bell icon) on the toolbar to monitor the deployment process. After deployment, you can select **Pin to dashboard** to create a tile for the Azure Database for MySQL Flexible Server on your Azure portal dashboard. This tile is a shortcut to the server's **Overview** pane. When you select **Go to resource**, the **Overview** pane for the flexible server opens.
 
 These databases are created by default under your server: **information_schema**, **mysql**, **performance_schema**, and **sys**.
 
@@ -90,23 +91,23 @@ These databases are created by default under your server: **information_schema**
 
 Before you start, download the [public SSL certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) for certificate authority verification.
 
-If you deploy Azure Database for MySQL using the public access connectivity method, you can get started quickly by using the built-in MySQL command-line client tool or Azure Cloud Shell. To use the command-line tool, on the menu bar in the Overview pane, select Connect.
+If you deploy Azure Database for MySQL with the public access connectivity method, you can get started quickly by using the built-in MySQL command-line client tool or Azure Cloud Shell. To use the command-line tool, on the menu bar in the **Overview** pane, select **Connect**.
 
 > [!NOTE]  
 > You can also use the [MySQL extension](/azure-data-studio/extensions/mysql-extension) in Azure Data Studio to connect to your Azure Database for MySQL Flexible Server.
 
 :::image type="content" source="media/quickstart-create-server-portal/connect-on-overview.png" alt-text="Screenshot that shows how to connect with Azure Cloud Shell.":::
 
-After you select **Connect**, you can see details about connecting locally using the Azure Database for MySQL - Flexible Server client tool and how to initiate data import and export operations.
+After you select **Connect**, you can see details about connecting locally by using the Azure Database for MySQL - Flexible Server client tool and how to initiate data import and export operations.
 
 > [!IMPORTANT]  
-> If you see the following error message when you connect to your Azure Database for MySQL Flexible Server, either you didn't select the **Allow public access from any Azure service within Azure to this server** checkbox when you set up your firewall rules, or the option isn't saved. Set the firewall rules, and then try again.
->  
+> If you see the following error message when you connect to your Azure Database for MySQL flexible server, either you didn't select the **Allow public access from any Azure service within Azure to this server** checkbox when you set up your firewall rules, or the option isn't saved. Set the firewall rules, then try again.
+>
 > `ERROR 2002 (HY000): Can't connect to MySQL server on <servername> (115)`
 
 ## Clean up resources
 
-When you no longer need the resources you created for this quickstart, you can delete the resource group that contains the Azure Database for MySQL Flexible Server instance. Select the resource group for the Azure Database for MySQL resource, and then select **Delete**. Enter the name of the resource group that you want to delete.
+When you no longer need the resources you created for this quickstart, delete the resource group that contains the Azure Database for MySQL flexible server instance. Select the resource group for the Azure Database for MySQL resource, then select **Delete**. Enter the name of the resource group that you want to delete.
 
 ## Related content
 

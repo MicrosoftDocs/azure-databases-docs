@@ -1,8 +1,8 @@
 ---
 title: Configure intelligent tuning - portal
-description: This article describes how to configure intelligent tuning in Azure Database for PostgreSQL - Flexible Server through the Azure portal.
-author: akashraokm
-ms.author: akashrao
+description: This article describes how to configure intelligent tuning in an Azure Database for PostgreSQL flexible server instance through the Azure portal.
+author: jjfrost
+ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
@@ -10,18 +10,16 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server by using the Azure portal
+# Configure intelligent tuning for Azure Database for PostgreSQL  by using the Azure portal
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-This article provides a step-by-step procedure to configure intelligent tuning in Azure Database for PostgreSQL flexible server by using the Azure portal.
+This article provides a step-by-step procedure to configure intelligent tuning in an Azure Database for PostgreSQL flexible server instance by using the Azure portal.
 
 To learn more about intelligent tuning, see the [overview](concepts-intelligent-tuning.md).
 
 > [!IMPORTANT]
 > Autovacuum tuning is currently supported for the General Purpose and Memory Optimized server compute tiers that have four or more vCores. The Burstable server compute tier isn't supported.
 
-## Steps to enable intelligent tuning on your flexible server
+## Steps to enable intelligent tuning on your 
 
 1. Visit the [Azure portal](https://portal.azure.com/) and select the Azure Database for PostgreSQL flexible server instance on which you want to enable intelligent tuning.
 
@@ -48,4 +46,4 @@ When you're choosing values from the `intelligent_tuning.metric_targets` server 
 
 ## Related content
 
-- [Perform intelligent tuning in Azure Database for PostgreSQL - Flexible Server](concepts-intelligent-tuning.md).
+- [Perform intelligent tuning in Azure Database for PostgreSQL](concepts-intelligent-tuning.md).

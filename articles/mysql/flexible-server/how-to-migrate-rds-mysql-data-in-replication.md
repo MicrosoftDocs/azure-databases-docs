@@ -1,8 +1,8 @@
 ---
 title: Migrate Amazon RDS for MySQL Using Data-In Replication
 description: This article describes how to migrate Amazon RDS for MySQL to Azure Database for MySQL - Flexible Server by using data-in replication.
-author: SudheeshGH
-ms.author: sunaray
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

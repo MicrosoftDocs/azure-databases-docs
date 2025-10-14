@@ -8,12 +8,10 @@ ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to scale the storage performance of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to scale the storage performance of an Azure Database for PostgreSQL.
 ---
 
 # Scale storage performance
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to perform scaling operations of the performance related aspects of the storage attached to an Azure Database for PostgreSQL flexible server.
 
@@ -64,7 +62,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to increase the performance tier of your Premium SSD disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --performance-tier <performance_tier>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --performance-tier <performance_tier>
 ```
 
 > [!NOTE]
@@ -81,7 +82,10 @@ Incorrect value for --performance-tier for storage-size: <storage_size>. Allowed
 You can determine the performance tier currently set for the storage of your server via the [az postgres flexible-server show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-show) command.
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query storage.tier
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query storage.tier
 ```
 
 ---
@@ -98,7 +102,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd-v2.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd-v2.png":::
 
-3. If you want to change the IOPS assigned to the disk allocated to your server, type the desired value in the **IOPS (operations/sec)** text box. Range of IOPS that can be assigned to a disk, depends on the allocated size of the disk. To learn more about it, see [Premium SSD v2 - IOPS](concepts-storage.md#premium-ssd-v2---iops).
+3. If you want to change the IOPS assigned to the disk allocated to your server, type the desired value in the **IOPS (operations/sec)** text box. Range of IOPS that can be assigned to a disk, depends on the allocated size of the disk. To learn more about it, see [Premium SSD v2 - IOPS](concepts-storage-premium-ssd-v2.md#premium-ssd-v2---iops).
 
     :::image type="content" source="./media/how-to-scale-storage/storage-iops-ssd-v2.png" alt-text="Screenshot showing where to specify a different number of IOPS for Premium SSD v2 disks." lightbox="./media/how-to-scale-storage/storage-iops-ssd-v2.png":::
 
@@ -122,7 +126,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to change the IOPS of your Premium SSD v2 disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --iops <iops>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --iops <iops>
 ```
 
 > [!NOTE]
@@ -157,7 +164,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd-v2.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd-v2.png":::
 
-3. If you want to change the throughput assigned to the disk allocated to your server, type the desired value in the **Throughput (MB/sec)** text box. Range of throughput that can be assigned to a disk, depends on the size of the disk and the IOPS assigned. To learn more about it, see [Premium SSD v2 - Throughput](concepts-storage.md#premium-ssd-v2---throughput).
+3. If you want to change the throughput assigned to the disk allocated to your server, type the desired value in the **Throughput (MB/sec)** text box. Range of throughput that can be assigned to a disk, depends on the size of the disk and the IOPS assigned. To learn more about it, see [Premium SSD v2 - Throughput](concepts-storage-premium-ssd-v2.md#premium-ssd-v2---throughput).
 
     :::image type="content" source="./media/how-to-scale-storage/storage-throughput-ssd-v2.png" alt-text="Screenshot showing where to specify a different number of throughput for Premium SSD v2 disks." lightbox="./media/how-to-scale-storage/storage-throughput-ssd-v2.png":::
 
@@ -181,7 +188,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to change the throughput of your Premium SSD v2 disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --throughput <throughput>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --throughput <throughput>
 ```
 
 > [!NOTE]
@@ -198,7 +208,10 @@ The requested value for throughput does not fall between 125 and <maximum_allowe
 You can determine the throughput currently set for the storage of your server via the [az postgres flexible-server show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-show) command.
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query '{"storageType":storage.type,"throughput":storage.throughput}'
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query '{"storageType":storage.type,"throughput":storage.throughput}'
 
 ```
 
@@ -208,4 +221,4 @@ az postgres flexible-server show --resource-group <resource_group> --name <serve
 
 - [Scale storage size](how-to-scale-storage-size.md).
 - [Storage options](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).

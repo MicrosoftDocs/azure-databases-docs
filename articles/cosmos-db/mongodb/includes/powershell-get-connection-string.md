@@ -3,6 +3,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: include
 ms.date: 08/23/2024
+ms.custom: sfi-ropc-blocked
 ---
 1. Find the *CONNECTION STRING* from the list of keys and connection strings for the account with the [``Get-AzCosmosDBAccountKey``](/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) cmdlet.
 

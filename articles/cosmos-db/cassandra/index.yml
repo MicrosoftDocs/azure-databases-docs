@@ -11,14 +11,14 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: apache-cassandra
   ms.topic: landing-page
-  ms.date: 02/21/2024
+  ms.date: 06/11/2025
 landingContent:
   - title: About API for Cassandra
     linkLists:
       - linkListType: overview
         links:
           - text: What is Azure Cosmos DB for Apache Cassandra?
-            url: introduction.md
+            url: overview.md
       - linkListType: concept
         links:
           - text: Wire protocol compatibility with Apache Cassandra

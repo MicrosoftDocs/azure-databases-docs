@@ -1,20 +1,18 @@
 ---
-title: Query store scenarios
-description: This article describes some scenarios for Query store in Azure Database for PostgreSQL - Flexible Server.
+title: Usage scenarios for query store
+description: This article describes some usage scenarios for query store in an Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/05/2024
+ms.date: 02/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
   - ignite-2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
-# Usage scenarios for query store in Azure Database for PostgreSQL - Flexible Server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Usage scenarios for query store
 
 You can use query store in a wide variety of scenarios in which tracking and maintaining predictable workload performance is critical. Consider the following examples:
 - Identify and tune expensive queries.
@@ -45,7 +43,6 @@ Use query store to compare workload performance before and after an application 
 - Modifying the amount of resources granted to the server.
 - Changing any of the server parameters that affect the behavior of the server.
 - Creating missing indexes on tables referenced by expensive queries.
-- Migrating from Azure Database for PostgreSQL single server to Azure Database for PostgreSQL flexible server.
 
 In any of these scenarios, apply the following workflow:
 1. Run your workload with query store before the planned change, to generate a performance baseline.
@@ -62,6 +59,6 @@ If you are in control of the application code, you might consider rewriting the 
 
 ## Related content
 
-- [monitor performance with query store](concepts-query-store.md)
-- [best practices for using query store](concepts-query-store-best-practices.md)
-- [visualizing data from query store via Query Performance Insight](concepts-query-performance-insight.md)
+- [Query store](concepts-query-store.md)
+- [Best practices for query store](concepts-query-store-best-practices.md)
+- [Query Performance Insight](concepts-query-performance-insight.md)

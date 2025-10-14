@@ -4,7 +4,7 @@ description: Overview of Azure Database Migration Service, which provides seamle
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 05/05/2025
 ms.service: azure-database-migration-service
 ms.topic: overview
 ms.collection:
@@ -20,7 +20,10 @@ With Azure Database Migration Service currently we offer two versions:
 
 1. Database Migration Service (classic) - via Azure portal, PowerShell and Azure CLI.
 
-**Database Migration Service** powers the "Azure SQL Migration" extension for Azure Data Studio, and provides more features. Azure portal, PowerShell and Azure CLI can also be used to access DMS. Currently, it supports SQL Database modernization to Azure. For improved functionality and supportability, consider migrating to Azure SQL Database by using the DMS.
+**Database Migration Service** powers the "Azure SQL Migration" extension for Azure Data Studio, and provides more features. Azure portal, PowerShell and Azure CLI can also be used to access DMS. Currently, it supports SQL Database modernization to Azure. For improved functionality and supportability, consider migrating to Azure SQL Database by using the DMS. 
+
+> [!NOTE] 
+> Azure DMS now provides a new capability to create a free and optional SQL Server Instance Azure resource to improve your migration tracking experience. Specify the SQL Server Instance name and Subscription, Resource group and location where you want to create the tracking resource. Registering your subscription to Microsoft.AzureArcData resource provider is a prerequisite to create the Azure resource and we will attempt to register your subscription to the resource provider if your subscription is not already registered to it.
 
 **Database Migration Service (classic)** via Azure portal, PowerShell and Azure CLI is an older version of the Azure Database Migration Service. It offers database modernization to Azure and support scenarios like – SQL Server, PostgreSQL, MySQL, and MongoDB.
 
@@ -34,7 +37,7 @@ Newer version of the Azure Database Migration Service is available as an extensi
 
 The following table compares the functionality of the versions of the Database Migration Service:
 
-| Feature | DMS(classic) | DMS - via Azure SQL extension for ADS | DMS - via Azure portal | Notes |
+| Feature | DMS (classic) | DMS (Azure SQL extension for ADS) | DMS (Azure portal) | Notes |
 | --- | --- | --- | --- | --- |
 | Assessment | No | Yes | No | Assess compatibility of the source. |
 | SKU recommendation | No | Yes | No | SKU recommendations for the target based on the assessment of the source. |

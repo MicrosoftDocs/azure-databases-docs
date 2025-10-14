@@ -1,21 +1,19 @@
 ---
 title: Drop extensions
-description: This article describes how to drop extensions in an Azure Database for PostgreSQL flexible server.
+description: This article describes how to drop extensions in an Azure Database for PostgreSQL flexible server instance.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 02/17/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to drop extensions in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to drop extensions in an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Drop extensions
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-Before dropping extensions in Azure Database for PostgreSQL flexible server, you must [allowlist](how-to-allow-extensions.md) them.
+Before dropping extensions in an Azure Database for PostgreSQL flexible server instance, you must [allowlist](how-to-allow-extensions.md) them.
 
 ## Steps to drop extensions
 

@@ -5,8 +5,8 @@ author: jcocchi
 ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.custom: build-2023
-ms.topic: conceptual
-ms.date: 11/11/2024
+ms.topic: concept-article
+ms.date: 4/8/2025
 ---
 # Change feed modes in Azure Cosmos DB
 
@@ -117,24 +117,22 @@ The `_etag` format is internal and you shouldn't take dependency on it because i
 
 During the preview, the following methods to read the change feed are available for each client SDK:
 
-| **Method to read change feed** | **.NET** | **Java** | **Python** | **Node.js** |
-| --- | --- | --- | --- | --- |
-| [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) |  No  |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions)  |
-| [Change feed processor](change-feed-processor.md) | [>= 3.40.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.40.0-preview.0) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No |
-| Azure Functions trigger | No | No | No | No |
+| **Method to read change feed** | **.NET** | **Java** | **Python** | **Node.js** | **Spark** |
+| --- | --- | --- | --- | --- | --- |
+| [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.63.3](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) | [>= 4.9.1b1](https://pypi.org/project/azure-cosmos/4.9.1b1/) |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions) | [>= 4.40.0 for all Spark Runtimes](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-3_2-12/README.md) |
+| [Change feed processor](change-feed-processor.md) | [>= 3.40.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.40.0-preview.0) | [>= 4.63.3](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No | No |
+| Azure Functions trigger | No | No | No | No | No |
 
 > [!NOTE]
 > Regardless of the [connection mode](sdk-connection-modes.md#available-connectivity-modes) that's configured in your application, all requests made with all versions and deletes change feed will use Gateway mode.
 
 ### Get started
 
-To get started using all versions and deletes change feed mode, enroll in the preview via the [Preview Features page](/azure/azure-resource-manager/management/preview-features) in your Azure Subscription overview page. Search for the **AllVersionsAndDeletesChangeFeed** feature and select **Register**.
+To get started using all versions and deletes change feed mode, navigate to the **Features** page in your Azure Cosmos DB account. Select and enable the **All versions and deletes change feed mode (preview)** feature. You must have [continuous backups](../continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account before enabling the feature. The enablement process can take up to 30 minutes to be complete and no other changes can be made to the account during this time. 
 
-:::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Preview Features page in Subscriptions overview in Azure portal.":::
+:::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Features page in the Azure portal.":::
 
-Before you submit your request, ensure that you have at least one Azure Cosmos DB account in the subscription. This account can be an existing account or a new account that you created to try out the preview feature. If you have no accounts in the subscription when your request is received, the request is declined because there are no accounts to apply the feature to.
-
-The Azure Cosmos DB team reviews your request and contacts you via email to confirm which Azure Cosmos DB accounts in the subscription you want to enroll in the preview. To use the preview, you must have [continuous backups](../continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account. Continuous backups can be enabled either before or after being admitted to the preview, but continuous backups must be enabled before you attempt to read from the change feed in all versions and deletes mode.
+Alternately, enable all versions and deletes mode on a pre-existing account with the REST API by adding `"enableAllVersionsAndDeletesChangeFeed" : true` to the `properties` of your account. This property is available in preview API version `2024-12-01-preview` or later. Enabling this feature during account creation isn't supported.
 
 ### Parse the response object
 
@@ -177,6 +175,7 @@ The response object is an array of items that represent each change. Different p
         "lsn": <A number that represents the batch ID. Many items can have the same lsn.>,
         "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.>,
         "previousImageLSN" : <A number that represents the batch ID of the change prior to this one.>,
+        "timeToLiveExpired" : <'true' if it was deleted due to a TTL expiration.>,
         "id": "<Id of the deleted item.>",
         "partitionKey": {
           "<Partition key property name>": "<Partition key property value>"
@@ -189,7 +188,7 @@ The response object is an array of items that represent each change. Different p
 
 * Supported for Azure Cosmos DB for NoSQL accounts. Other Azure Cosmos DB account types aren't supported.
 
-* Continuous backups are required to use this change feed mode. The [limitations](../continuous-backup-restore-introduction.md#current-limitations) of using continuous backup can be found in the documentation.
+* Continuous backups are required to use this change feed mode. Refer to the [limitations of using continuous backups](../continuous-backup-restore-introduction.md#current-limitations).
 
 * Reading changes on a container that existed before continuous backups were enabled on the account isn't supported.
 

@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: best-practice
 ms.date: 12/03/2024
+ms.update-cycle: 180-days
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ms.collection:
   - ce-skilling-ai-copilot
@@ -75,7 +76,7 @@ Automate the deployment of AI-powered solutions using tools like the new Azure D
 | | Link |
 | --- | --- |
 | **Sample chat application** | <https://github.com/Azure-Samples/cosmosdb-chatgpt> |
-| **Training module** | [https://learn.microsoft.com/training/modules/build-chat-bot-azure-cosmos-db-openai-blazor](/training/modules/build-chat-bot-azure-cosmos-db-openai-blazor) |
+| **Training module** | [/training/modules/build-chat-bot-azure-cosmos-db-openai-blazor](/training/modules/build-chat-bot-azure-cosmos-db-openai-blazor) |
 
 ::: zone-end
 

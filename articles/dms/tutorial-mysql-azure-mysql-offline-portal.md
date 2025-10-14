@@ -2,14 +2,15 @@
 title: "Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS"
 titleSuffix: "Azure Database Migration Service"
 description: "Learn to perform an offline migration from MySQL on-premises to Azure Database for MySQL by using Azure Database Migration Service."
-author: karlaescobar
-ms.author: karlaescobar
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: arthiaga, randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
+ms.custom: sfi-image-nochange
 ---
 
 # Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS
@@ -98,33 +99,18 @@ To prepare the target Azure Database for MySQL server for faster data loads usin
 - innodb_write_io_threads & innodb_write_io_threads - Change to 4 from the Server parameters in Azure portal to improve the speed of migration.
 
 - Scale up Storage tier – The IOPs for Azure Database for MySQL server increases progressively with the increase in storage tier.
-  - In the Single Server deployment option, for faster loads, we recommend increasing the storage tier to increase the IOPs provisioned.
   - In the Flexible Server deployment option, we recommend you can scale (increase or decrease) IOPS irrespective of the storage size.
   - Storage size can only be scaled up, not down.
 
-- Select the compute size and compute tier for the target flexible server based on the source single server's pricing tier and VCores based on the detail in the following table.
+- Select the compute size and compute tier for the target flexible server based on the source MySQL server's configuration.
 
-  | Single Server Pricing Tier | Single Server VCores | Flexible Server Compute Size | Flexible Server Compute Tier |
-  | --- | --- | :---: | :---: |
-  | Basic <sup>1</sup> | 1 | General Purpose | Standard_D16ds_v4 |
-  | Basic <sup>1</sup> | 2 | General Purpose | Standard_D16ds_v4 |
-  | General Purpose <sup>1</sup> | 4 | General Purpose | Standard_D16ds_v4 |
-  | General Purpose <sup>1</sup> | 8 | General Purpose | Standard_D16ds_v4 |
-  | General Purpose | 16 | General Purpose | Standard_D16ds_v4 |
-  | General Purpose | 32 | General Purpose | Standard_D32ds_v4 |
-  | General Purpose | 64 | General Purpose | Standard_D64ds_v4 |
-  | Memory Optimized | 4 | Business Critical | Standard_E4ds_v4 |
-  | Memory Optimized | 8 | Business Critical | Standard_E8ds_v4 |
-  | Memory Optimized | 16 | Business Critical | Standard_E16ds_v4 |
-  | Memory Optimized | 32 | Business Critical | Standard_E32ds_v4 |
-
-  <sup>1</sup> For the migration, select General Purpose 16 vCores compute for the target flexible server for faster migrations. Scale back to the desired compute size for the target server after migration is complete by following the compute size recommendation in the Performing post-migration activities section later in this article.
+  <sup>1</sup> For the migration, as a best practice select General Purpose 16 vCores compute or higher for the target flexible server for faster migrations. Scale back to the desired compute size for the target server after migration is complete.
 
 Once the migration is complete, you can revert back the server parameters and configuration to values required by your workload.
 
 ## Set up DMS
 
-With your target flexible server deployed and configured, you next need to set up DMS to migrate your single server to a flexible server.
+With your target flexible server deployed and configured, you next need to set up DMS to migrate your MySQL server to a flexible server.
 
 ### Register the resource provider
 

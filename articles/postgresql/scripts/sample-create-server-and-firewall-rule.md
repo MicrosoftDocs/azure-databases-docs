@@ -1,6 +1,6 @@
 ---
 title: Azure CLI Script - Create
-description: Azure CLI Script Sample - Creates an Azure Database for PostgreSQL - Flexible Server instance and configures a server-level firewall rule.
+description: Azure CLI Script Sample - Creates an Azure Database for PostgreSQL flexible server instance and configures a server-level firewall rule.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -10,9 +10,7 @@ ms.topic: how-to
 ms.devlang: azurecli
 ---
 
-# Create an Azure Database for PostgreSQL - Flexible Server instance and configure a firewall rule using the Azure CLI
-
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
+# Create an Azure Database for PostgreSQL flexible server instance and configure a firewall rule using the Azure CLI
 
 This sample CLI script creates an Azure Database for PostgreSQL flexible server instance and configures a server-level firewall rule. Once the script has been successfully run, the Azure Database for PostgreSQL flexible server instance can be accessed from all Azure services and the configured IP address.
 
@@ -50,4 +48,4 @@ This script uses the commands outlined in the following table:
 ## Related content
 
 - [Azure CLI documentation](/cli/azure)
-- [Azure CLI samples for Azure Database for PostgreSQL - Flexible Server](../sample-scripts-azure-cli.md)
+- [Azure CLI samples for Azure Database for PostgreSQL flexible server](../sample-scripts-azure-cli.md)

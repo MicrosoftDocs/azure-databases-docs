@@ -1,12 +1,12 @@
 ---
 title: Analytics with Azure Synapse Link
 titleSuffix: Azure Cosmos DB
-description: Azure Synapse Link for Azure Cosmos DB lets you run near real time analytics (HTAP) using Azure Synapse Analytics over operational data in Azure Cosmos DB.
-author: Rodrigossz
-ms.author: rosouz
+description: Learn how Azure Synapse Link for Azure Cosmos DB lets you run near real-time analytics (HTAP) using Azure Synapse Analytics over operational data in Azure Cosmos DB.
+author: jilmal
+ms.author: jmaldonado
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 05/08/2024
+ms.topic: concept-article
+ms.date: 07/25/2025
 ms.custom: synapse-cosmos-db
 ---
 
@@ -14,20 +14,21 @@ ms.custom: synapse-cosmos-db
 
 [!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
 
-Azure Synapse Link for Azure Cosmos DB is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables near real time analytics over operational data in Azure Cosmos DB. Azure Synapse Link creates a tight seamless integration between Azure Cosmos DB and Azure Synapse Analytics.
+Azure Synapse Link for Azure Cosmos DB is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables near real-time analytics over operational data in Azure Cosmos DB. Azure Synapse Link creates a tight seamless integration between Azure Cosmos DB and Azure Synapse Analytics.
 
 > [!IMPORTANT]
-> Mirroring Azure Cosmos DB in Microsoft Fabric is now available for NoSql API. This feature provides all the capabilities of Azure Synapse Link with better analytical performance, ability to unify your data estate with Fabric OneLake and open access to your data in Delta Parquet format. If you are considering Azure Synapse Link, we recommend that you try mirroring to assess overall fit for your organization.
-> [Get started with mirroring in Microsoft Fabric](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context).
+> Mirroring Azure Cosmos DB in Microsoft Fabric is now available for NoSql API. This feature provides all the capabilities of Azure Synapse Link with better analytical performance, ability to unify your data estate with Fabric OneLake, and open access to your data in Delta Parquet format. If you're considering Azure Synapse Link, we recommend that you try mirroring to assess overall fit for your organization.
+> Get started with [mirroring in Microsoft Fabric](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context).
 
-[Azure Cosmos DB analytical store](analytical-store-introduction.md), a fully isolated column store, can be used with Azure Synapse Link to enable Extract-Transform-Load (ETL) analytics in [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) against your operational data at scale. Business analysts, data engineers, and data scientists can now use Synapse Spark or Synapse SQL interchangeably to run near real time business intelligence, analytics, and machine learning pipelines. You can analyze real time data without affecting the performance of your transactional workloads on Azure Cosmos DB.
+[Azure Cosmos DB analytical store](analytical-store-introduction.md), a fully isolated column store, can be used with Azure Synapse Link to enable extract-transform-load (ETL) analytics in [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) against your operational data at scale. Business analysts, data engineers, and data scientists can now use Synapse Spark or Synapse SQL interchangeably to run near real-time business intelligence, analytics, and machine learning pipelines. You can analyze real-time data without affecting the performance of your transactional workloads on Azure Cosmos DB.
 
 The following image shows the Azure Synapse Link integration with Azure Cosmos DB and Azure Synapse Analytics:
 
-:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Architecture diagram for Azure Synapse Analytics integration with Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Diagram showing the architecture for Azure Synapse Analytics integration with Azure Cosmos DB." lightbox="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png":::
 
 ## <a id="synapse-link-benefits"></a> Benefits
-To analyze large operational datasets while minimizing any effects on the performance of mission-critical transactional workloads, Azure Cosmos DB customers traditionally export the operational data. These operations are performed by Extract-Transform-Load (ETL) pipelines, which require many layers of data and jobs management, resulting in operational complexity and performance effects on your transactional workloads. It also increases the latency to analyze the operational data from the time of origin.
+
+To analyze large operational datasets while minimizing any effects on the performance of mission-critical transactional workloads, Azure Cosmos DB customers traditionally export the operational data. These operations are performed by ETL pipelines, which require many layers of data and jobs management, resulting in operational complexity and performance effects on your transactional workloads. It also increases the latency to analyze the operational data from the time of origin.
 
 When compared to traditional ETL-based solutions, Azure Synapse Link for Azure Cosmos DB offers several advantages such as:  
 
@@ -59,15 +60,15 @@ You can run analytical queries effectively against the nearest regional copy of 
 
 ## Enable HTAP scenarios for your operational data
 
-Azure Synapse Link brings together Azure Cosmos DB analytical store with Azure Synapse Analytics runtime support. This integration enables you to build cloud native HTAP solutions that generate insights based on real-time updates to your operational data over large datasets. It unlocks new business scenarios to raise alerts based on live trends, build near real-time dashboards, and business experiences based on user behavior.
+Azure Synapse Link brings together Azure Cosmos DB analytical store with Azure Synapse Analytics runtime support. This integration enables you to build cloud-native HTAP solutions that generate insights based on real-time updates to your operational data over large datasets. It unlocks new business scenarios to raise alerts based on live trends, build near real-time dashboards, and business experiences based on user behavior.
 
 ### Azure Cosmos DB analytical store
 
 Azure Cosmos DB analytical store is a column-oriented representation of your operational data in Azure Cosmos DB. This analytical store is suitable for fast, cost-effective queries on large operational data sets. This store can query data without copying data and impacting the performance of your transactional workloads.
 
-Analytical store automatically picks up high frequency inserts, updates, deletes in your transactional workloads in near real-time, as a fully managed capability (“auto-sync”) of Azure Cosmos DB. No change feed or ETL is required.
+Analytical store automatically picks up high frequency inserts, updates, deletes in your transactional workloads in near real-time, as a fully managed capability (*autosync*) of Azure Cosmos DB. No change feed or ETL is required.
 
-If you have a globally distributed Azure Cosmos DB account, after you enable analytical store for a container, it will be available in all regions for that account. For more information on the analytical store, see [Azure Cosmos DB Analytical store overview](analytical-store-introduction.md) article.
+If you have a globally distributed Azure Cosmos DB account, after you enable analytical store for a container, it will be available in all regions for that account. For more information, see [Azure Cosmos DB Analytical store overview](analytical-store-introduction.md).
 
 ### <a id="synapse-link-integration"></a>Integration with Azure Synapse Analytics
 
@@ -80,38 +81,38 @@ You can query the data from Azure Cosmos DB analytical store simultaneously, wit
 * Serverless SQL pool with T-SQL language and support for familiar BI tools (for example, Power BI Premium, etc.)
 
 > [!NOTE]
-> From Azure Synapse Analytics, you can access both analytical and transactional stores in your Azure Cosmos DB container. However, if you want to run large-scale analytics or scans on your operational data, we recommend that you use analytical store to avoid performance impact on transactional workloads.
+> From Azure Synapse Analytics, you can access both analytical and transactional stores in your Azure Cosmos DB container. However, if you want to run large-scale analytics or scans on your operational data, we recommend that you use analytical store to avoid performance effect on transactional workloads.
 
 > [!NOTE]
 > You can run analytics with low latency in an Azure region by connecting your Azure Cosmos DB container to Synapse runtime in that region.
 
 This integration enables the following HTAP scenarios for different users:
 
-* A BI Engineer, who wants to model and publish a Power BI report to access the live operational data in Azure Cosmos DB directly through Synapse SQL.
+* A *BI engineer* who wants to model and publish a Power BI report to access the live operational data in Azure Cosmos DB directly through Synapse SQL.
 
-* A Data Analyst, who wants to derive insights from the operational data in an Azure Cosmos DB container by querying it with Synapse SQL, read the data at scale and combine those findings with other data sources.
+* A *data analyst* who wants to derive insights from the operational data in an Azure Cosmos DB container by querying it with Synapse SQL, read the data at scale and combine those findings with other data sources.
 
-* A Data Scientist, who wants to use Synapse Spark to find a feature to improve their model and train that model without doing complex data engineering. They can also write the results of the model post inference into Azure Cosmos DB for real-time scoring on the data through Spark Synapse.
+* A *data scientist* who wants to use Synapse Spark to find a feature to improve their model and train that model without doing complex data engineering. They can also write the results of the model post inference into Azure Cosmos DB for real-time scoring on the data through Spark Synapse.
 
-* A Data Engineer, who wants to make data accessible for consumers, by creating SQL or Spark tables over Azure Cosmos DB containers, without manual ETL processes.
+* A *data engineer* who wants to make data accessible for consumers, by creating SQL or Spark tables over Azure Cosmos DB containers, without manual ETL processes.
 
-For more information on Azure Synapse Analytics runtime support for Azure Cosmos DB, see [Azure Synapse Analytics for Azure Cosmos DB support](/azure/synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support).
+For more information on Azure Synapse Analytics runtime support for Azure Cosmos DB, see [Azure Synapse Link for Azure Cosmos DB supported features](/azure/synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support).
 
-## When to use Azure Synapse Link for Azure Cosmos DB?
+## When to use Azure Synapse Link for Azure Cosmos DB
 
 Azure Synapse Link is recommended if you're an Azure Cosmos DB customer and you want to run analytics, BI, and machine learning over your operational data. For example:
 
-* If you're running analytics or BI on your Azure Cosmos DB operational data directly using separate connectors today, or
+* If you're running analytics or BI on your Azure Cosmos DB operational data directly using separate connectors today
 
-* If you're running ETL processes to extract operational data into a separate analytics system.
+* If you're running ETL processes to extract operational data into a separate analytics system
 
 In such cases, Azure Synapse Link provides a more integrated analytics experience without impacting your transactional store’s provisioned throughput.
 
-Azure Synapse Link isn't recommended if you're looking for traditional data warehouse requirements. These requirements may include high concurrency, workload management, and persistence of aggregates across multiple data sources. For more information, see [common scenarios that can be powered with Azure Synapse Link for Azure Cosmos DB](synapse-link-use-cases.md).
+Azure Synapse Link isn't recommended if you're looking for traditional data warehouse requirements. These requirements might include high concurrency, workload management, and persistence of aggregates across multiple data sources. For more information, see [Azure Cosmos DB: No-ETL analytics use cases](synapse-link-use-cases.md).
 
 ## Limitations
 
-* Azure Synapse Link for Azure Cosmos DB is supported for NoSQL, Gremlin and MongoDB APIs. It is not supported for Cassandra or Table APIs.
+* Azure Synapse Link for Azure Cosmos DB is supported for NoSQL, Gremlin, and MongoDB APIs. It's not supported for Cassandra or Table APIs.
 
 * Data Explorer in Synapse Workspaces doesn't list Gremlin graphs in the tree view. But you can still run queries.
 
@@ -119,29 +120,27 @@ Azure Synapse Link isn't recommended if you're looking for traditional data ware
 
 * Although analytical store data isn't backed up, and therefore can't be restored, you can rebuild your analytical store by reenabling Azure Synapse Link in the restored container. Check the [analytical store documentation](analytical-store-introduction.md) for more information.
 
-* Currently, customers that disabled Synapse Link from containers can't migrate to continuous backup. If this is your case, please contact us: cosmosdbsynapselink@microsoft.com .
+* Currently, customers that disabled Azure Synapse Link from containers can't migrate to continuous backup. If this is your case, contact us: [cosmosdbsynapselink@microsoft.com](mailto:cosmosdbsynapselink@microsoft.com).
 
 * Granular role-based access control isn't supported when querying from Synapse. Users that have access to your Synapse workspace and have access to the Azure Cosmos DB account can access all containers within that account. We currently don't support more granular access to the containers.
 
-* Currently Azure Synapse Workspaces don't support linked services using `Managed Identity`. Always use the `MasterKey` option.
+* Currently Azure Synapse workspaces don't support linked services using `Managed Identity`. Always use the `MasterKey` option.
 
-* Currently Multi-regions write accounts aren't recommended for production environments. 
-
-
+* Currently multi-region write accounts aren't recommended for production environments. 
 
 ## Security
 
-Azure Synapse Link enables you to run near real-time analytics over your mission-critical data in Azure Cosmos DB. It's vital to make sure that critical business data is stored securely across both transactional and analytical stores. Azure Synapse Link for Azure Cosmos DB is designed to help meet these security requirements through the following features:
+Azure Synapse Link lets you run near real-time analytics over your mission-critical data in Azure Cosmos DB. It's vital to make sure that critical business data is stored securely across both transactional and analytical stores. Azure Synapse Link for Azure Cosmos DB is designed to help meet these security requirements through the following features:
 
-* **Network isolation using private endpoints** - You can control network access to the data in the transactional and analytical stores independently. Network isolation is done using separate managed private endpoints for each store, within managed virtual networks in Azure Synapse workspaces. To learn more, see how to [Configure private endpoints for analytical store](analytical-store-private-endpoints.md) article.
+* **Network isolation using private endpoints** - You can control network access to the data in the transactional and analytical stores independently. Network isolation is done using separate managed private endpoints for each store, within managed virtual networks in Azure Synapse workspaces. To learn more, see [Configure Azure Private Link for Azure Cosmos DB analytical store](analytical-store-private-endpoints.md).
 
-* **Data encryption with customer-managed keys** - You can seamlessly encrypt the data across transactional and analytical stores using the same customer-managed keys in an automatic and transparent manner. Azure Synapse Link only supports configuring customer-managed keys using your Azure Cosmos DB account's managed identity. You must configure your account's managed identity in your Azure Key Vault access policy before [enabling Azure Synapse Link](configure-synapse-link.md#enable-synapse-link) on your account. To learn more, see how to [Configure customer-managed keys using Azure Cosmos DB accounts' managed identities](how-to-setup-cmk.md#using-managed-identity) article.
+* **Data encryption with customer-managed keys** - You can seamlessly encrypt the data across transactional and analytical stores using the same customer-managed keys in an automatic and transparent manner. Azure Synapse Link only supports configuring customer-managed keys using your Azure Cosmos DB account's managed identity. You must configure your account's managed identity in your Azure Key Vault access policy before [enabling Azure Synapse Link](configure-synapse-link.md#enable-synapse-link) on your account. To learn more, see [Configure customer-managed keys for your Azure Cosmos DB account with Azure Key Vault](how-to-setup-cmk.md#using-managed-identity).
 
 * **Secure key management** - Accessing the data in analytical store from Synapse Spark and Synapse serverless SQL pools requires managing Azure Cosmos DB keys within Synapse Analytics workspaces. Instead of using the Azure Cosmos DB account keys inline in Spark jobs or SQL scripts, Azure Synapse Link provides more secure capabilities:
 
-  * When using Synapse serverless SQL pools, you can query the Azure Cosmos DB analytical store by pre-creating SQL credentials storing the account keys and referencing these keys in the `OPENROWSET` function. To learn more, see [Query with a serverless SQL pool in Azure Synapse Link](/azure/synapse-analytics/sql/query-cosmos-db-analytical-store) article.
+  * When using Synapse serverless SQL pools, you can query the Azure Cosmos DB analytical store by precreating SQL credentials storing the account keys and referencing these keys in the `OPENROWSET` function. To learn more, see [Query Azure Cosmos DB data using a serverless SQL pool](/azure/synapse-analytics/sql/query-cosmos-db-analytical-store).
 
-  * When using Synapse Spark, you can store the account keys in linked service objects pointing to an Azure Cosmos DB database and reference the keys in the Spark configuration at runtime. To learn more, see [Copy data into a dedicated SQL pool using Apache Spark](/azure/synapse-analytics/synapse-link/how-to-copy-to-sql-pool) article.
+  * When using Synapse Spark, you can store the account keys in linked service objects pointing to an Azure Cosmos DB database and reference the keys in the Spark configuration at runtime. To learn more, see [Copy data from Azure Cosmos DB into a dedicated SQL pool using Apache Spark](/azure/synapse-analytics/synapse-link/how-to-copy-to-sql-pool).
 
 ## Pricing
 
@@ -149,8 +148,6 @@ The billing model of Azure Synapse Link includes the costs incurred by using the
 
 ## Next steps
 
-To learn more, see the following docs:
-
 * [Azure Cosmos DB analytical store overview](analytical-store-introduction.md)
-* Check the training module on how to [Design hybrid transactional and analytical processing using Azure Synapse Analytics](/training/modules/design-hybrid-transactional-analytical-processing-using-azure-synapse-analytics/)
-* [Get started with Azure Synapse Link for Azure Cosmos DB](configure-synapse-link.md)
+* [Plan hybrid transactional and analytical processing using Azure Synapse Analytics](/training/modules/design-hybrid-transactional-analytical-processing-using-azure-synapse-analytics/)
+* [Configure and use Azure Synapse Link for Azure Cosmos DB](configure-synapse-link.md)

@@ -1,19 +1,18 @@
 ---
 title: Scaling resources
-description: This article describes the resource scaling in Azure Database for PostgreSQL - Flexible Server.
-author: varun-dhawan
-ms.author: varundhawan
-ms.date: 02/14/2025
+description: This article describes the resource scaling in an Azure Database for PostgreSQL flexible server instance.
+author: akashraokm
+ms.author: akashrao
+ms.reviewer: maghan
+ms.date: 10/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
-# Scaling resources in Azure Database for PostgreSQL - Flexible Server
+# Scaling resources in Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-Azure Database for PostgreSQL - Flexible Server supports both vertical and horizontal scaling options.
+an Azure Database for PostgreSQL flexible server instance supports both vertical and horizontal scaling options.
 
 ## Vertical scaling
 
@@ -48,7 +47,7 @@ The overall time it takes to restart your server depends on the crash recovery p
 
 If your application is sensitive to loss of in-flight transactions that might occur during compute scaling, we recommend implementing a transaction [retry pattern](../single-server/concepts-connectivity.md#handling-transient-errors).
 
-Scaling the storage doesn't require a server restart in most cases. For more information, see [storage options in Azure Database for PostgreSQL - Flexible Server](concepts-scaling-resources.md).
+Scaling the storage doesn't require a server restart in most cases. For more information, see [storage options in Azure Database for PostgreSQL](concepts-scaling-resources.md).
 
 Backup retention period changes are an online operation.
 
@@ -58,13 +57,13 @@ To improve the restart time, we recommend that you perform scale operations duri
 
 Near-zero downtime scaling is a feature designed to minimize downtime when you modify storage and compute tiers. If you modify the number of vCores or change the compute tier, the server undergoes a restart to apply the new configuration. During this transition to the new server, no new connections can be established.
 
-Typically, this process could take anywhere between 2 to 10 minutes with regular scaling. With the near-zero downtime scaling feature, this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
+Typically, this process could take anywhere between 2 to 10 minutes with regular scaling. With the near-zero downtime scaling feature, this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance. 
 
 ### How it works
 
-When you update your Azure Database for PostgreSQL flexible server instance in scaling scenarios, the service creates a new virtual machine for your server with the updated configuration. Then is synchronized with the virtual machine that's currently running your instance, and then switches to the new with a brief interruption. Then a background process eliminates the old virtual machine. All this process occurs at no extra cost to you.
+When you update your Azure Database for PostgreSQL flexible server instance in scaling scenarios, the service creates a new virtual machine for your server with the updated configuration. Then is synchronized with the virtual machine that's currently running your instance, and then switches to the new with a brief interruption. Then a background process eliminates the old virtual machine. 
 
-This process allows for seamless updates, while minimizing downtime and ensuring cost-efficiency. This scaling process is triggered when changes are made to the storage and compute tiers. *No customer action is required* to use this capability.
+This process enables seamless updates with minimal downtime and is automatically triggered when changes are made to storage or compute tiers. No customer action is required to use this capability. This capability is supported for both HA and non-HA Azure Database for PostgreSQL flexible server instances.
 
 For horizontally scaled configurations, consisting of a primary server and one or more read replicas, scaling operations must follow a specific sequence to ensure data consistency and minimize downtime. For details about that sequence, see [scaling with read replicas](concepts-read-replicas.md#scale).
 
@@ -84,8 +83,8 @@ For horizontally scaled configurations, consisting of a primary server and one o
 - Near-zero downtime scaling doesn't work if a [virtual network-injected server](concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses in the delegated subnet. If you have a standalone server, one extra IP address is necessary. For an instance with high-availability enabled, two extra IP addresses are required.
 - Logical replication slots aren't preserved during a near-zero downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling the pg_failover_slots extension in an instance of flexible server](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
 - Near-zero downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you're using unlogged tables for any of your data will lose all the data in those tables after the near-zero downtime scaling.
-- Near-zero downtime scaling is currently not supported for High Availability (HA) enabled servers.
+- Near-zero doesn't work if you're scaling the compute of your server from or to a compute size of 1 or 2 vCores of the Burstable tier. 
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL](how-to-manage-server-portal.md).
