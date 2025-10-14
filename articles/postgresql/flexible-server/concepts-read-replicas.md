@@ -1,26 +1,24 @@
 ---
 title: Read replicas
-description: This article describes the read replica feature in Azure Database for PostgreSQL - Flexible Server.
-author: kabharati
-ms.author: kabharati
+description: This article describes the read replica feature usage for an Azure Database for PostgreSQL flexible server instance.
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 05/02/2024
+ms.date: 07/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
   - ignite-2023
 ---
 
-# Read replicas in Azure Database for PostgreSQL - Flexible Server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Read replicas in Azure Database for PostgreSQL 
 
 The read replica feature allows you to replicate data from an Azure Database for PostgreSQL flexible server instance to a read-only replica. Replicas are updated **asynchronously** with the PostgreSQL engine's native physical replication technology. Streaming replication by using replication slots is the default operation mode. When necessary, file-based log shipping is used to catch up. You can replicate from the primary server to up to five replicas.
 
 Replicas are new servers you manage similar to regular Azure Database for PostgreSQL flexible server instances. For each read replica, you're billed for the provisioned compute in vCores and storage in GB/ month.
 
-Learn how to [create and manage replicas](how-to-read-replicas-portal.md).
+Learn how to [create a read replica](how-to-create-read-replica.md).
 
 ## When to use a read replica
 
@@ -40,13 +38,13 @@ Read replicas are primarily designed for scenarios where offloading queries is b
 
 ## Create a replica
 
-A primary server for Azure Database for PostgreSQL flexible server can be deployed in [any region that supports the service](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=postgresql&regions=all). You can create replicas of the primary server within the same region or across different global Azure regions where Azure Database for PostgreSQL flexible server is available. The capability to create replicas now extends to some special Azure regions. See the [Geo-replication](concepts-read-replicas-geo.md) article for a list of special regions where you can create replicas.
+A primary server for an Azure Database for PostgreSQL flexible server instance can be deployed in [any region that supports the service](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=postgresql&regions=all). You can create replicas of the primary server within the same region or across different global Azure regions where Azure Database for PostgreSQL is available. The capability to create replicas now extends to some special Azure regions. See the [Geo-replication](concepts-read-replicas-geo.md) article for a list of special regions where you can create replicas.
 
 When you start the create replica workflow, a blank Azure Database for PostgreSQL flexible server instance is created. The new server is filled with the data on the primary server. For the creation of replicas in the same region, a snapshot approach is used. Therefore, the time of creation is independent of the size of the data. Geo-replicas are created using the base backup of the primary instance, which is then transmitted over the network; therefore, the creation time might range from minutes to several hours, depending on the primary size.
 
 Replica is only considered successfully created when two conditions are met: the entire backup of the primary instance must be copied to the replica, and the transaction logs must synchronize with no more than a 1-GB lag.
 
-To achieve a successful create operation, avoid making replicas during times of high transactional load. For example, you should avoid creating replicas when migrating from other sources to Azure Database for PostgreSQL flexible server or during heavy bulk load operations. If you're migrating data or loading large amounts of data right now, it's best to finish this task first. After completing it, you can then start setting up the replicas. Once the migration or bulk load operation has finished, check whether the transaction log size has returned to its normal size. Typically, the transaction log size should be close to the value defined in the max_wal_size server parameter for your instance. You can track the transaction log storage footprint using the [Transaction Log Storage Used](concepts-monitoring.md#default-metrics) metric, which provides insights into the amount of storage used by the transaction log. By monitoring this metric, you can ensure that the transaction log size is within the expected range and that the replica creation process might be started.
+To achieve a successful create operation, avoid making replicas during times of high transactional load. For example, you should avoid creating replicas when migrating from other sources to an Azure Database for PostgreSQL flexible server instance or during heavy bulk load operations. If you're migrating data or loading large amounts of data right now, it's best to finish this task first. After completing it, you can then start setting up the replicas. Once the migration or bulk load operation has finished, check whether the transaction log size has returned to its normal size. Typically, the transaction log size should be close to the value defined in the max_wal_size server parameter for your instance. You can track the transaction log storage footprint using the [Transaction Log Storage Used](concepts-monitoring.md#default-metrics) metric, which provides insights into the amount of storage used by the transaction log. By monitoring this metric, you can ensure that the transaction log size is within the expected range and that the replica creation process might be started.
 
 > [!IMPORTANT]  
 > Read Replicas are currently supported for the General Purpose and Memory Optimized server compute tiers. The Burstable server compute tier is not supported.
@@ -54,11 +52,11 @@ To achieve a successful create operation, avoid making replicas during times of 
 > [!IMPORTANT]  
 > When performing replica creation, deletion, and promotion operations, the primary server will enter an **updating state**. During this time, server management operations such as modifying server parameters, changing high availability options, or adding or removing firewalls will be unavailable. It's important to note that the updating state only affects server management operations and does not affect [data plane](/azure/azure-resource-manager/management/control-plane-and-data-plane#data-plane) operations. This means that your database server will remain fully functional and able to accept connections, as well as serve read and write traffic.
 
-Learn how to [create a read replica in the Azure portal](how-to-read-replicas-portal.md).
+Learn how to [Create a read replica](how-to-create-read-replica.md).
 
 ### Configuration management
 
-When setting up read replicas for Azure Database for PostgreSQL flexible server, it's essential to understand the server configurations that can be adjusted, the ones inherited from the primary, and any related limitations.
+When setting up read replicas for an Azure Database for PostgreSQL flexible server instance, it's essential to understand the server configurations that can be adjusted, the ones inherited from the primary, and any related limitations.
 
 **Inherited configurations**
 
@@ -87,6 +85,21 @@ Certain functionalities are restricted to primary servers and can't be set up on
 
 If your source Azure Database for PostgreSQL flexible server instance is encrypted with customer-managed keys, see the [documentation](concepts-data-encryption.md) for other considerations.
 
+## Create cascading read replicas (Preview)
+
+Cascading read replicas can help distribute read workloads, reducing the load on the primary server. Deploying read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies. You can add cascading read replicas to Azure Database for PostgreSQL flexible server instance, this feature is supported in public preview capacity. This allows you to create new read replicas on top of an existing read replica, with the existing read replica acting as the source for the next level. 
+
+The first-level read replica asynchronously replicates data from the primary server. A second-level read replica can then be created using the first-level replica as its source, forming a two-tier replication hierarchy. This architecture increases scalability, supporting up to 30 read replica servers with the primary server allowing up to 5 read replicas, and each of those replicas supporting 5 additional replicas. To add a cascading read replica to Azure Database for PostgreSQL flexible server instance, select the existing read replica (created from the primary server), and navigate to the 'Replication' tab and click 'Create replica'.
+
+For example, your primary server can have up to 5 read replicas (level 1). One of these, say read-replica-1, can act as the source for another replica read-replica-2 which becomes part of (level 2).
+
+#### Preview considerations:
+1. Up to 5 read replicas can be created per source read replica, with support for 2 levels of replication.
+2. Promote operation is not supported for intermediate read replicas with cascading read replicas.
+3. Virtual endpoints are not supported for cascading replicas.
+4. Cascading read replicas are supported on intermediate replicas with PostgreSQL version 14 and above.
+5. This feature is supported in: West US, Spain Central, Australia East, South Central US, UK West, Poland Central, Italy North, West US 2, East US 2, East Asia and Canada Central.
+   
 ## Connect to a replica
 
 When you create a replica, it does inherit the firewall rules or virtual network service endpoint of the primary server. These rules might be changed during replica creation and at any later point in time.
@@ -110,14 +123,14 @@ Furthermore, to ease the connection process, the Azure portal provides ready-to-
 
 ## Monitor replication
 
-Read replica feature in Azure Database for PostgreSQL flexible server relies on replication slots mechanism. The main advantage of replication slots is that they automatically adjust the number of transaction logs (WAL segments) required by all replica servers. This helps prevent replicas from going out of sync because it avoids deleting WAL segments on the primary before they are sent to the replicas. The disadvantage of the approach is the risk of going out of space on the primary in case the replication slot remains inactive for an extended time. In such situations, primary accumulates WAL files causing incremental growth of the storage usage. When the storage usage reaches 95% or if the available capacity is less than 5 GiB, the server is automatically switched to read-only mode to avoid errors associated with disk-full situations.  
+Read replica feature in Azure Database for PostgreSQL relies on replication slots mechanism. The main advantage of replication slots is that they automatically adjust the number of transaction logs (WAL segments) required by all replica servers. This helps prevent replicas from going out of sync because it avoids deleting WAL segments on the primary before they are sent to the replicas. The disadvantage of the approach is the risk of going out of space on the primary in case the replication slot remains inactive for an extended time. In such situations, primary accumulates WAL files causing incremental growth of the storage usage. When the storage usage reaches 95% or if the available capacity is less than 5 GiB, the server is automatically switched to read-only mode to avoid errors associated with disk-full situations.  
 Therefore, monitoring the replication lag and replication slots status is crucial for read replicas.
 
 We recommend setting alert rules for storage used or storage percentage, and for replication lags, when they exceed certain thresholds so that you can proactively act, increase the storage size, and delete lagging read replicas. For example, you can set an alert if the storage percentage exceeds 80% usage, and if the replica lag is higher than 5 minutes. The [Transaction Log Storage Used](concepts-monitoring.md#default-metrics) metric shows you if the WAL files accumulation is the main reason of the excessive storage usage.
 
-#### Moniotring metrics
+#### Monitoring metrics
 
-Azure Database for PostgreSQL flexible server provides following metrics for monitoring replication. 
+Azure Database for PostgreSQL service provides following metrics for monitoring replication. 
 
 [!INCLUDE [Read-Replica Metrics](includes/read-replica-metrics-table.md)]
 
@@ -158,9 +171,8 @@ This section summarizes considerations about the read replica feature. The follo
 
 - **Power operations**: Power operations, including [start](how-to-start-server.md) and [stop](how-to-stop-server.md) actions, can be applied to both the primary and replica servers. However, to preserve system integrity, a specific sequence should be followed. Before stopping the read replicas, ensure the primary server is stopped first. When commencing operations, initiate the start action on the replica servers before starting the primary server.
 - If server has read replicas, then read replicas should be deleted first before deleting the primary server.
-- [In-place major version upgrade](concepts-major-version-upgrade.md) in Azure Database for PostgreSQL flexible server requires removing any read replicas currently enabled on the server. Once the replicas have been deleted, the primary server can be upgraded to the desired major version. After the upgrade is complete, you can recreate the replicas to resume the replication process.
-- **Premium SSD v2**: As of the current release, if the primary server uses Premium SSD v2 for storage, the creation of read replicas isn't supported.
-- **Resetting admin password**: Resetting the admin password on the replica server is currently not supported. Additionally, updating the admin password along with [promoting](concepts-read-replicas-promote.md) replica operation in the same request is also not supported. If you wish to do this you must first promote the replica server, and then update the password on the newly promoted server separately.
+- [In-place major version upgrade](concepts-major-version-upgrade.md) for an Azure Database for PostgreSQL flexible server instance requires removing any read replicas and cascading read replicas that are enabled on the server. Once the replicas have been deleted, the primary server can be upgraded to the desired major version. After the upgrade is complete, you can recreate the replicas to resume the replication process.
+  - **Resetting admin password**: Resetting the admin password on the replica server is currently not supported. Additionally, updating the admin password along with [promoting](concepts-read-replicas-promote.md) replica operation in the same request is also not supported. If you wish to do this you must first promote the replica server, and then update the password on the newly promoted server separately.
 
 ### New replicas
 
@@ -205,10 +217,10 @@ While the server is a read replica, no backups are taken. However, once it's pro
 
 ### Networking
 
-Read replicas support all the networking options supported by Azure Database for PostgreSQL Flexible Server.
+Read replicas support all the networking options supported by Azure Database for PostgreSQL flexible server instances.
 
 > [!IMPORTANT]  
-> Bi-directional communication between the primary server and read replicas is crucial for the Azure Database for PostgreSQL flexible server setup. There must be a provision to send and receive traffic on destination port 5432 within the Azure virtual network subnet.
+> Bi-directional communication between the primary server and read replicas is crucial for the Azure Database for PostgreSQL setup. There must be a provision to send and receive traffic on destination port 5432 within the Azure virtual network subnet.
 
 The above requirement not only facilitates the synchronization process but also ensures proper functioning of the promote mechanism where replicas might need to communicate in reverse order - from replica to primary - especially during promote to primary operations. Moreover, connections to the Azure storage account that stores Write-Ahead Logging (WAL) archives must be permitted to uphold data durability and enable efficient recovery processes.
 
@@ -234,7 +246,7 @@ You're free to scale up and down compute (vCores), changing the service tier fro
 
 For compute scaling:
 
-- Azure Database for PostgreSQL flexible server requires several parameters on replicas to be [greater than or equal to the setting on the primary](https://www.postgresql.org/docs/current/hot-standby.html#HOT-STANDBY-ADMIN) to ensure that the replica doesn't run out of shared memory during recovery. The parameters affected are: `max_connections`, `max_prepared_transactions`, `max_locks_per_transaction`, `max_wal_senders`, `max_worker_processes`.
+- Azure Database for PostgreSQL service requires several parameters on replicas to be [greater than or equal to the setting on the primary](https://www.postgresql.org/docs/current/hot-standby.html#HOT-STANDBY-ADMIN) to ensure that the replica doesn't run out of shared memory during recovery. The parameters affected are: `max_connections`, `max_prepared_transactions`, `max_locks_per_transaction`, `max_wal_senders`, `max_worker_processes`.
 
 - **Scaling up**: First scale up a replica's compute, then scale up the primary.
 
@@ -250,8 +262,8 @@ For storage scaling:
 
 ## Related content
 
-- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
-- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md).
-- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
-- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Geo-replication in Azure Database for PostgreSQL](concepts-read-replicas-geo.md).
+- [Promote read replicas in Azure Database for PostgreSQL](concepts-read-replicas-promote.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL](concepts-read-replicas-virtual-endpoints.md).
+- [Creata read replica](how-to-create-read-replica.md).
 - [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

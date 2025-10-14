@@ -4,7 +4,7 @@ description: Learn about database security best practices and key features offer
 author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-managed-instance-apache-cassandra
-ms.topic: conceptual
+ms.topic: best-practice
 ms.date: 10/29/2021
 ms.custom: references_regions
 ---

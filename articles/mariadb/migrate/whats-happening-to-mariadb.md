@@ -1,8 +1,8 @@
 ---
 title: What's happening to Azure Database for MariaDB?
 description: The Azure Database for MariaDB service is being deprecated.
-author: karla-escobar
-ms.author: karlaescobar
+author: andtapia
+ms.author: andreatapia
 ms.reviewer: maghan
 ms.date: 1/24/2024
 ms.service: azure-database-mariadb
@@ -75,6 +75,18 @@ A. Azure Database for MySQL - Flexible server zone-redundant deployment provides
 A. To migrate your Azure Database for MariaDB workloads to Azure Database for MySQL – Flexible Server, set up replication between your MariaDB instance and a MySQL - Flexible Server instance so that you can perform a near-zero downtime online migration. To minimize the effort required for application refactoring, it is highly recommended to migrate your Azure MariaDB v10.3 workloads to Azure MySQL v5.7, which is closely compatible, and then subsequently plan for a [major version upgrade to Azure MySQL v8.0](/azure/mysql/flexible-server/how-to-upgrade).
 
 For more information about how you can migrate your Azure Database for MariaDB server to Azure Database for MySQL - Flexible Server, see the blog post [Migrating from Azure Database for MariaDB to Azure Database for MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/migrating-from-azure-database-for-mariadb-to-azure-database-for/ba-p/3838455).
+
+In addition you can leverage third-party marketplace offerings like the one from **Quadrant Technologies** for specialized or large-scale migrations.
+
+**Q. What is the Quadrant offering for MariaDB to MySQL Flexible Server migration?**
+
+A. Quadrant Technologies offers a comprehensive migration solution on the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/quadranttechnologies1724273152029.mariatomysql?tab=Overview) to help you migrate from MariaDB to Azure Database for MySQL - Flexible Server. This offering includes: 
+- Automated schema and data migration
+- Support for large datasets
+- Minimal downtime strategies
+- Migrates from any version of Azure MariaDB to any Version of Azure MySQL
+- Migrates multiple databases at the same time
+- Expert guidance and support throughout the migration process
 
 **Q. I have further questions on retirement. How can I get assistance with it?**
 

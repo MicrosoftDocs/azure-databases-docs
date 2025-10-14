@@ -1,6 +1,6 @@
 ---
 title: work_mem server parameter
-description: work_mem server parameter for Azure Database for PostgreSQL - Flexible Server.
+description: work_mem server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include

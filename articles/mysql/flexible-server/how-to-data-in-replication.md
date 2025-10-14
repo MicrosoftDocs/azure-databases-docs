@@ -8,6 +8,7 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # How to configure Azure Database for MySQL - Flexible Server data-in replication
@@ -113,8 +114,8 @@ The following steps prepare and configure the MySQL server hosted on-premises, i
    To require SSL for all user connections, use the following command to create a user:
 
    ```sql
-   CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
-   GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%' REQUIRE SSL;
+   CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword' REQUIRE SSL;
+   GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
    ```
 
    **Replication without SSL**

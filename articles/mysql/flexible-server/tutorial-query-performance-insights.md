@@ -1,29 +1,31 @@
 ---
 title: "Tutorial: Query Performance Insight"
 description: This article shows you the tools to help visualize Query Performance Insight for Azure Database for MySQL - Flexible Server.
-author: code-sidd
-ms.author: sisawant
+author: SudheeshGH  
+ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 06/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurecli
+  - sfi-image-nochange
 ---
 
-# Tutorial: Query Performance Insight for Azure Database for MySQL - Flexible Server
+# Tutorial: Query Performance Insight for Azure Database for MySQL
 
 Query Performance Insight proposes to provide intelligent query analysis for databases. The most preferred insights are the workload patterns and the longer-running queries. Understanding these insights can help you find which queries to optimize to improve overall performance and to use your available resources efficiently.
 
 Query Performance Insight is designed to help you spend less time troubleshooting database performance by providing such information as:
+
 - Top *N* long-running queries and their trends.
 - The query details: view the history of execution with minimum, maximum, average, and standard deviation query time.
 - The resource utilizations (CPU, memory, and storage).
 
 This article discusses how to use Azure Database for MySQL Flexible Server slow query logs, the Log Analytics tool, and workbooks templates to visualize Query Performance Insight for Azure Database for MySQL Flexible Server.
 
-In this tutorial, you'll learn how to:
+In this tutorial, you learn how to:
 > [!div class="checklist"]
 > * Configure slow query logs by using the Azure portal or the Azure CLI
 > * Set up diagnostics
@@ -32,8 +34,8 @@ In this tutorial, you'll learn how to:
 
 ## Prerequisites
 
-- [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md).
-- [Create a Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace).
+- [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md)
+- [Create a Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace)
 
 ## Configure slow query logs by using the Azure portal
 
@@ -57,14 +59,14 @@ In this tutorial, you'll learn how to:
 
    :::image type="content" source="media/tutorial-query-performance-insights/save-parameters.png" alt-text="Screenshot of the 'Save' button for saving changes in the parameter values." lightbox="media/tutorial-query-performance-insights/save-parameters.png":::
 
-You can return to the list of logs by closing the **Server parameters** page.
+   You can return to the list of logs by closing the **Server parameters** page.
 
 ## Configure slow query logs by using the Azure CLI
 
 Alternatively, you can enable and configure slow query logs for your Azure Database for MySQL Flexible Server instance from the Azure CLI by running the following command:
 
 > [!IMPORTANT]  
-> To ensure that your Azure Database for MySQL Flexible Server instance's performance is not heavily affected, we recommend that you log only the event types and users that are required for your auditing purposes.
+> To ensure that your Azure Database for MySQL Flexible Server instance's performance isn't heavily affected, we recommend that you log only the event types and users that are required for your auditing purposes.
 
 - Enable slow query logs.
 
@@ -76,7 +78,7 @@ az mysql flexible-server parameter set \
 --value ON
 ```
 
-- Set long_query_time time to 10 seconds. This setting will log all queries that execute for more than 10 seconds. Adjust this threshold based on your definition for slow queries.
+- Set long_query_time time to 10 seconds. This setting logs all queries that execute for more than 10 seconds. Adjust this threshold based on your definition for slow queries.
 
 ```azurecli
 az mysql server configuration set \
@@ -107,7 +109,7 @@ Slow query logs are integrated with Azure Monitor diagnostic settings to allow y
 1. Specify which destinations (Log Analytics workspace, an event hub, or a storage account) to send the slow query logs to by selecting their corresponding checkboxes.
 
     > [!NOTE]  
-    > For this tutorial, you'll send the slow query logs to a Log Analytics workspace.
+    > For this tutorial, you send the slow query logs to a Log Analytics workspace.
 
 1. Under **Log**, for the log type, select the **MySqlSlowLogs** checkbox.
 
@@ -115,7 +117,7 @@ Slow query logs are integrated with Azure Monitor diagnostic settings to allow y
 
 1. After you've configured the data sinks to pipe the slow query logs to, select **Save**.
 
-    :::image type="content" source="media/tutorial-query-performance-insights/save-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options, with Save highlighted.":::
+   :::image type="content" source="media/tutorial-query-performance-insights/save-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options, with Save highlighted.":::
 
 ## View query insights by using Log Analytics
 
@@ -146,21 +148,21 @@ Slow query logs are integrated with Azure Monitor diagnostic settings to allow y
 
     :::image type="content" source="media/tutorial-query-performance-insights/monitor-workbooks.png" alt-text="Screenshot showing all workbooks in the workbook gallery." lightbox="media/tutorial-query-performance-insights/monitor-workbooks.png":::
 
-In the workbook, you can view the following visualizations:  
+In the workbook, you can view the following visualizations:
 > [!div class="checklist"]
-> * Query Load
-> * Total Active Connections
-> * Slow Query Trend (>10 Sec Query Time)
-> * Slow Query Details
-> * List top 5 longest queries
-> * Summarize slow queries by minimum, maximum, average, and standard deviation query time
+> - Query Load
+> - Total Active Connections
+> - Slow Query Trend (>10 Sec Query Time)
+> - Slow Query Details
+> - List top 5 longest queries
+> - Summarize slow queries by minimum, maximum, average, and standard deviation query time
 
 :::image type="content" source="media/tutorial-query-performance-insights/long-query.png" alt-text="Screenshot showing two long queries." lightbox="media/tutorial-query-performance-insights/long-query.png":::
 
 > [!NOTE]  
-> * To view resource utilization, you can use the Overview template.
-> * You can also edit these templates and customize them according to your requirements. For more information, see [Azure Workbooks](/azure/azure-monitor/visualize/workbooks-overview).
-> * For a quick view, you can also pin the workbooks or Log Analytics query to your Dashboard. For more information, see [Create a dashboard in the Azure portal](/azure/azure-portal/azure-portal-dashboards).
+> - To view resource utilization, you can use the Overview template.
+> - You can also edit these templates and customize them according to your requirements. For more information, see [Azure Workbooks](/azure/azure-monitor/visualize/workbooks-overview).
+> - For a quick view, you can also pin the workbooks or Log Analytics query to your Dashboard. For more information, see [Create a dashboard in the Azure portal](/azure/azure-portal/azure-portal-dashboards).
 
 In Query Performance Insight, two metrics that can help you find potential bottlenecks are *duration* and *execution count*. Long-running queries have the greatest potential for locking resources longer, blocking other users, and limiting scalability.
 

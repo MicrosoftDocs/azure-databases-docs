@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 11/25/2024
+ms.date: 04/08/2025
 ms.custom: devx-track-java, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -30,7 +30,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 - Docker Desktop
 - Java 21
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 
@@ -93,6 +93,20 @@ The client library is available through Maven, as the `azure-data-tables` packag
         <artifactId>azure-data-tables</artifactId>
     </dependency>
     ```
+
+### Import libraries
+
+Import all of the required namespaces into your application code.
+
+```java
+import com.azure.core.http.rest.PagedFlux;
+import com.azure.data.tables.TableAsyncClient;
+import com.azure.data.tables.TableClientBuilder;
+import com.azure.data.tables.models.ListEntitiesOptions;
+import com.azure.data.tables.models.TableEntity;
+import com.azure.identity.DefaultAzureCredential;
+import com.azure.identity.DefaultAzureCredentialBuilder;
+```
 
 ## Object model
 

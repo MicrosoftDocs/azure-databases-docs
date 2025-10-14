@@ -1,11 +1,11 @@
 ---
 title: Azure Cosmos DB pricing & discounts with Reserved Capacity
 description: Azure Cosmos DB pricing allows for various forms of optimization. You may receive discounts of up to 63% savings with Reserved Capacity.
-author: rodrigossz
+author: aliuy
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 11/14/2024
-ms.author: rosouz
+ms.topic: concept-article
+ms.date: 07/02/2025
+ms.author: andrl
 ---
 
 # Azure Cosmos DB pricing & discounts with Reserved Capacity
@@ -38,7 +38,7 @@ When you shut down a resource, the reservation discount automatically applies to
 
 Stopped resources are billed and continue to use reservation hours. To use your available reservation hours with other workloads, deallocate or delete resources or scale-in other resources.
 
-Customers can use a self-service process to exchange reservations, migrating existing ones for bigger or smaller options. There is no penalty for an exchanges, that are processed as a refund and a repurchase. Different transactions are created for the cancellation and the new reservation purchase. The prorated reservation amount is refunded for the reservations that's traded-in. You're charged fully for the new purchase. The prorated reservation amount is the daily prorated residual value of the reservation being returned. For more information about reservations exchanges, click [here](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Customers can use a self-service process to exchange reservations, migrating existing ones for bigger or smaller options. There is no penalty for exchanges that are processed as a refund and a repurchase. Different transactions are created for the cancellation and the new reservation purchase. The prorated reservation amount is refunded for the reservations that's traded-in. You're charged fully for the new purchase. The prorated reservation amount is the daily prorated residual value of the reservation being returned. For more information about reservations exchanges, check the [exchanges and refunds](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) documentation.
 
 
 ## Required permissions
@@ -120,7 +120,15 @@ This option, using multiples of our bigger reservation sizes, allows you to rese
 
 You can maximize savings with the biggest reservation for your scenario. Example: You need 2 million RU/s, one year term. If you purchase two units of the 1,000,000 RU/s reservation, your discount is 27.0%. If you purchase one unit of the 2,000,000 RU/s reservation, you have exactly the same Reserved Capacity, but a 28.5% discount.
 
-Create a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) to purchase any quantity of the reservations bigger than 1,000,000 RU/s.
+Reservations larger than 1 million RU/sec are hidden by default. You can access large reservations in the Azure Portal through this [link](https://portal.azure.com/?allCosmosDbSkus=true#view/Microsoft_Azure_Reservations/CreateBlade/referrer/PurchaseNowButton/productType/Reservation).
+
+## Azure Pricing Calculator
+
+The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator) uses multiples of 100 RU/s minimum reservation to predict the price. If you check the price for 100 RU/s in autoscale mode, due to the 1.5 multiplication factor, you will need 150 RU/s. And for 150 RU/s, the calculator will use 2 units of 100 RU/s reservation. And 2 units of 100 RU/s reservation are more expensive than 100 RU/s. But this is a calculator specific behavior. For the same situation, you can purchase only 1 unit of the 100 RU/s minimum reservation and pay as you go the other 50 RU/s required RU/s. 
+
+Also, when you use the calculator for autoscale scenarios with less than 100% utilization, you may see that a reservation could be more expensive. This issue happens because of the fact that reservations always use 100% utilization. The Reservations system has a recommendation engine so that you can choose the best reservation size for your scenario.
+ 
+
 
 ## Reservations consumption
 
@@ -238,7 +246,7 @@ For a 30,000 RU/s reservation, in standard provisioned throughput, you should bu
 
 ## How to buy Reserved Capacity
 
-1. Divide the reservation size you want by 100 to calculate the number of units of the 100 RU/s option you need. The maximum quantity is 9,999 units, or 999,900 RU/s. For one million RU/s or more, create a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) for up to 63% discounts.
+1. Divide the reservation size you want by 100 to calculate the number of units of the 100 RU/s option you need. The maximum quantity is 9,999 units, or 999,900 RU/s. Large reservations for >= 1 million RU/s can be found using the following [link](https://portal.azure.com/?allCosmosDbSkus=true#view/Microsoft_Azure_Reservations/CreateBlade/referrer/PurchaseNowButton/productType/Reservation).
 
 2. Sign in to the [Azure portal](https://portal.azure.com).
 

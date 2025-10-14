@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 02/06/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: release-notes
 ---
 
 # Azure Database For MySQL Flexible Server February 2025 Version Release Notes
@@ -39,7 +39,8 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 - Support enrollment of Virtual Canary Program through Azure CLI.
 
 ## Improvement
-- Export backup destination folder name is changed from timestamp to backupName
+- Enhancements to online schema changes now prevent data loss and duplicate key issues, ensuring better data integrity. These improvements is applied to all new and existing servers. DDL operations on tables are now more reliable, reducing the risk of inconsistencies. For more details on the bug, [check the blog](https://techcommunity.microsoft.com/blog/adformysql/best-practices-for-safely-performing-schema-changes-in-azure-database-for-mysql/4356830).
+- Export backup destination folder name is changed from timestamp to backupName.
 
 ## Known Issues Fix
 - Fixed the issue where changing the customer maintenance window failed in certain scenarios.

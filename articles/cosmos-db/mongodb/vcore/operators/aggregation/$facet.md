@@ -1,26 +1,22 @@
 ---
-  title: $facet (aggregation) usage on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: $facet
+  titleSuffix: Overview of the $facet operator in Azure Cosmos DB for MongoDB (vCore)
   description: The $facet allows for multiple parallel aggregations to be executed within a single pipeline stage.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: reference
-  ms.date: 10/14/2024
+  ms.topic: language-reference
+  ms.date: 09/05/2025
 ---
 
-# $facet (aggregation)
-
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# $facet
 
 The `$facet` stage aggregation pipelines allow for multiple parallel aggregations to be executed within a single pipeline stage. It's useful for performing multiple analyses on the same dataset in a single query.
 
 ## Syntax
 
-The syntax for the `$facet` stage is as follows:
-
-```json
+```javascript
 {
   "$facet": {
     "outputField1": [ { "stage1": {} }, { "stage2": {} } ],
@@ -31,18 +27,128 @@ The syntax for the `$facet` stage is as follows:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`outputFieldN`**| The name of the output field.|
 | **`stageN`**| The aggregation stage to be executed.|
 
-## Example
+## Examples
 
-The example accesses all the associated records to product categories like `Laptops`, `Smartphones`, `Cameras` & `Watches` from `stores` collection.
+Consider this sample document from the stores collection.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
 
 ### Example 1: Faceted search on sales and promotions
 
-The example uses the `$facet` stage to perform simultaneous analyses on sales and promotions, for specified product categories. The `salesAnalysis` pipeline unwinds the `salesByCategory`, filters for certain categories, and groups them to sum `totalSales`. The promotion analysis pipeline unwinds promotional events and their discounts, filters for specific categories like `Laptops`, `Smartphones` etc., and groups them to calculate the average discount percentage. The input documents from `stores` collection are fetched from the database only once, at the beginning of this operation.
+To perform simultaneous analyses on sales and promotions, for specified product categories. The `salesAnalysis` pipeline unwinds the `salesByCategory`, filters for certain categories, and groups them to sum `totalSales`. The promotion analysis pipeline unwinds promotional events and their discounts, filters for specific categories like `Laptops`, `Smartphones` etc., and groups them to calculate the average discount percentage. The input documents from `stores` collection are fetched from the database only once, at the beginning of this operation.
 
 ```javascript
 db.stores.aggregate([
@@ -61,26 +167,28 @@ db.stores.aggregate([
       ]
     }
   }
-]).pretty();
+]).pretty()
 ```
 
-The returned output from query displays the aggregated insights.
+This query returns the following result:
 
 ```json
-{
-  "salesAnalysis": [
-    { "_id": "Smartphones", "totalSales": 440815 },
-    { "_id": "Laptops", "totalSales": 679453 },
-    { "_id": "Cameras", "totalSales": 481171 },
-    { "_id": "Watches", "totalSales": 492299 }
-  ],
-  "promotionAnalysis": [
-    { "_id": "Smartphones", "avgDiscount": 14.32 },
-    { "_id": "Laptops", "avgDiscount": 14.780645161290323 },
-    { "_id": "Cameras", "avgDiscount": 15.512195121951219 },
-    { "_id": "Watches", "avgDiscount": 15.174418604651162 }
-  ]
-}
+[
+  {
+    "salesAnalysis": [
+      { "_id": "Smartphones", "totalSales": 440815 },
+      { "_id": "Laptops", "totalSales": 679453 },
+      { "_id": "Cameras", "totalSales": 481171 },
+      { "_id": "Watches", "totalSales": 492299 }
+    ],
+    "promotionAnalysis": [
+      { "_id": "Smartphones", "avgDiscount": 14.32 },
+      { "_id": "Laptops", "avgDiscount": 14.780645161290323 },
+      { "_id": "Cameras", "avgDiscount": 15.512195121951219 },
+      { "_id": "Watches", "avgDiscount": 15.174418604651162 }
+    ]
+  }
+]
 ```
 
 ## Related content

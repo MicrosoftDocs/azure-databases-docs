@@ -9,10 +9,11 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
 ms.custom:
-  - vc
-  - devx-track-azurecli
-  - innovation-engine
-  - linux-related-content
+- vc
+- devx-track-azurecli
+- innovation-engine
+- linux-related-content
+- sfi-ropc-nochange
 ---
 
 # Tutorial: Deploy WordPress app on AKS with Azure Database for MySQL - Flexible Server

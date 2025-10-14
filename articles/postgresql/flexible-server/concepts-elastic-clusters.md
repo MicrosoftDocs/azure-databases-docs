@@ -1,32 +1,30 @@
 ---
-title: Elastic Clusters on PostgreSQL Flexible server
-description: Learn about sharding and horizontal scale-out with Elastic Clusters on Azure Database for PostgreSQL Flexible Server.
+title: Elastic Clusters
+description: Learn about sharding and horizontal scale-out with elastic clusters on your Azure Database for PostgreSQL flexible server instance.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 12/10/2024
+ms.date: 07/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Elastic Clusters in Azure Database for PostgreSQL - Flexible Server
+# Elastic clusters in Azure Database for PostgreSQL (preview)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+Elastic clusters on the Azure Database for PostgreSQL service are a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
 
-Elastic Cluster on Azure Database for PostgreSQL Flexible Server is a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
+While Citus is just an extension, it connects multiple PostgreSQL instances. When an Azure Database for PostgreSQL flexible server instance is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
 
-While Citus is just an extension, it connects multiple PostgreSQL instances. When Azure Database for PostgreSQL Flexible Server is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
-
-Elastic Clusters on Flexible Server offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more.
+Elastic clusters on the service offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more.
 
 ## Architecture
 
-An Elastic Cluster consists of one or more nodes of Azure Database for PostgreSQL Flexible Server. These instances are automatically made known to each other, and inter-connected to form a Citus cluster. The nodes are required to be of the same compute and storage tier, and can be uniformly scaled up or down to higher or lower tiers.
+An elastic cluster consists of one or more nodes of Azure Database for PostgreSQL flexible server instances. These instances are automatically made known to each other, and inter-connected to form a Citus cluster. The nodes are required to be of the same compute and storage tier, and can be uniformly scaled up or down to higher or lower tiers.
 
-Elastic Cluster uses instances of Flexible Servers (called nodes) to coordinate with one another in a "shared nothing" architecture. The nodes in a cluster collectively hold more data and use more CPU cores than would be possible on a single server. The architecture also allows the database to scale, by adding more nodes to the cluster.
+Elastic clusters use instances of flexible servers (called nodes) to coordinate with one another in a "shared nothing" architecture. The architecture also allows the database to scale, by adding more nodes to the cluster.
 
-Connecting to your cluster using port 5432 lands you on the designated coordinator node. Elastic Clusters also allow you to load balance connections across the cluster, using a five-tuple hash method, if you connect using port 7432. Using 7432 you can still land at the node currently designated as coordinator. For certain cluster-wide operations, like distributing tables, you might be required to connect over port 5432. We strongly recommend you to always connect on port 5432, when you plan to perform application schema upgrades and similar changes.
+Connecting to your cluster using port 5432 lands you on the designated coordinator node. Elastic clusters also allow you to load balance connections across the cluster, using a five-tuple hash method, if you connect using port 7432. Using 7432 you can still land at the node currently designated as coordinator. For certain cluster-wide operations, like distributing tables, you might be required to connect over port 5432. We strongly recommend you to always connect on port 5432, when you plan to perform application schema upgrades and similar changes. If you [enable PgBouncer](concepts-pgbouncer.md) on elastic clusters, you can use port 8432 to load balance connections across PgBouncer instances on every node (or use port 6432 for the designated coordinator).
 
 Unlike Cosmos DB for PostgreSQL, node addresses aren't externally exposed. If you look at Citus metadata tables like `pg_dist_node`, then you might notice all nodes having the same IP address as in the example `10.7.0.254` but different port numbers.
 
@@ -55,7 +53,7 @@ Once data is distributed using one of the sharding models, you can connect to an
 
 DDL (Data Definition Language) operations and cluster wide operations are currently limited to the node holding the coordinator role. Make sure you perform DDL and cluster-wide operations by connecting to port 5432, instead of using port 7432.
 
-You can scale out an Elastic Cluster by adding new nodes and rebalancing the data on it. Rebalancing is an online operation and doesn't block running workloads.
+You can scale out an elastic cluster by adding new nodes and rebalancing the data on it. Rebalancing is an online operation and doesn't block running workloads.
 
 ## Shards
 
@@ -78,7 +76,7 @@ logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue
  (4 rows)
 ```
 
-If the node wants to determine which shard holds a row of `github_events`, it hashes the value of the distribution column in the row. Then the node checks which shard's range contains the hashed value. The ranges are defined so that the image of the hash function is their disjoint union.
+If the node wants to determine which shard holds a row of `github_events`, it hashes the value of the distribution column in the row. Then the node checks, which shard's range contains the hashed value. The ranges are defined so that the image of the hash function is their disjoint union.
 
 ### Shard placements
 
@@ -108,6 +106,6 @@ WHERE shardid = 102027;
 
 ## Related content
 
-- [Sharding models on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server](concepts-elastic-clusters-sharding-models.md).
-- [Table types on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server](concepts-elastic-clusters-table-types.md).
-- [Frequently asked questions about Elastic Clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).
+- [Sharding models on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-sharding-models.md).
+- [Table types on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-table-types.md).
+- [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).

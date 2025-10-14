@@ -4,7 +4,7 @@ description: Kafka Connect for Azure Cosmos DB is a connector to read from and w
 author: kushagrathapar
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2021
 ms.author: kuthapar
 ---

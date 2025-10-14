@@ -1,8 +1,8 @@
 ---
 title: "Migrate MySQL On-Premises to Azure Database for MySQL: Data Migration"
 description: "As a prudent step before upgrade or migrate data, export the database before the upgrade using MySQL Workbench or manually via the mysqldump command."
-author: SudheeshGH
-ms.author: sunaray
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
@@ -295,7 +295,7 @@ tRoot.crt.cer --skip-column-names -A -e"$line"
 }
 ```
 
-You can also create users in Azure Database for MySQL using PowerShell: /en-us/azure/mysql/howto-create-users
+You can also create users in Azure Database for MySQL using PowerShell: /azure/mysql/howto-create-users
 
 ## Execute migration
 

@@ -15,7 +15,7 @@ ms.date: 02/26/2019
 This article shows how to globally distribute read operations with [MongoDB Read Preference](https://docs.mongodb.com/manual/core/read-preference/) settings using Azure Cosmos DB's API for MongoDB.
 
 ## Prerequisites 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin. 
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../includes/cosmos-db-emulator-mongodb.md)]
 
 Refer to this [Quickstart](tutorial-global-distribution.md) article for instructions on using the Azure portal to set up an Azure Cosmos DB account with global distribution and then connect to it.
@@ -70,11 +70,11 @@ readFromSecondaryfunc query completed!
 
 MongoDB protocol provides the following Read Preference modes for clients to use:
 
-1. PRIMARY
-2. PRIMARY_PREFERRED
-3. SECONDARY
-4. SECONDARY_PREFERRED
-5. NEAREST
+1. primary
+2. primaryPreferred
+3. secondary
+4. secondaryPreferred
+5. nearest
 
 Refer to the detailed [MongoDB Read Preference behavior](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) documentation for details on the behavior of each of these read preference modes. In Azure Cosmos DB, primary maps to WRITE region and secondary maps to READ region.
 

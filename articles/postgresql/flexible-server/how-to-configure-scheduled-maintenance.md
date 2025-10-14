@@ -1,6 +1,6 @@
 ---
 title: Schedule maintenance
-description: This article describes how to schedule maintenance of an Azure Database for PostgreSQL flexible server.
+description: This article describes how to schedule maintenance of an Azure Database for PostgreSQL flexible server instance.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -8,14 +8,12 @@ ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to schedule maintenance of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to schedule maintenance of an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Schedule maintenance
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
- 
-You can specify scheduled maintenance options for each Azure Database for PostgreSQL flexible server in your Azure subscription. Options include the type of scheduled maintenance and notification settings for upcoming and finished maintenance events.
+You can specify scheduled maintenance options for each Azure Database for PostgreSQL flexible server instance in your Azure subscription. Options include the type of scheduled maintenance and notification settings for upcoming and finished maintenance events.
 
 ## Steps to schedule maintenance
 
@@ -23,7 +21,7 @@ You can specify scheduled maintenance options for each Azure Database for Postgr
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Settings** section, select **Maintenance**.
 
@@ -60,19 +58,28 @@ You can configure the maintenance schedule settings via the [az postgres flexibl
 To configure system managed schedule, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --maintenance-window Disabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --maintenance-window Disabled
 ```
 
 To configure custom schedule, for a one hour window starting on Wednesdays at 2:29PM (UTC), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --maintenance-window Wed:14:29
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --maintenance-window Wed:14:29
 ```
 
 To configure custom schedule, for a one hour window starting on Saturdays at midnight (UTC), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --maintenance-window Wed
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --maintenance-window Wed
 ```
 
 ---

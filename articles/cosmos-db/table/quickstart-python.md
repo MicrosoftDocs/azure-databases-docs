@@ -9,10 +9,10 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
-ms.custom: devx-track-python, devx-track-extended-azdevcli
+ms.date: 04/08/2025
+ms.custom: devx-track-python, devx-track-extended-azdevcli, sfi-image-nochange
 appliesto:
-  - ✅ Table
+- ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
@@ -30,7 +30,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 - Docker Desktop
 - Python 3.12
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 
@@ -92,6 +92,15 @@ The client library is available through PyPi, as the `azure-data-tables` package
     ```
 
 1. Open and review the **src/requirements.txt** file to validate that the `azure-data-tables` entry exists.
+
+### Import libraries
+
+Import the `DefaultAzureCredential` and `TableServiceClient` types into your application code.
+
+```python
+from azure.data.tables import TableServiceClient
+from azure.identity import DefaultAzureCredential
+```
 
 ## Object model
 

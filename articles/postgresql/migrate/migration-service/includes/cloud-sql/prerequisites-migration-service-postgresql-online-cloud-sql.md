@@ -39,15 +39,15 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 - Before migrating, Azure Database for PostgreSQL – Flexible server must be created.
 - SKU provisioned for Azure Database for PostgreSQL – Flexible server should match with the source.
-- To create a new Azure Database for PostgreSQL, visit [Create an instance of Azure Database for PostgreSQL - Flexible Server](../../../../flexible-server/quickstart-create-server.md)
+- To create a new Azure Database for PostgreSQL, visit [Create an Azure Database for PostgreSQL flexible server](../../../../flexible-server/quickstart-create-server.md)
 
 ### Enable CDC as a source
 
 - `test_decoding` logical decoding plugin captures the changed records from the source.
 - To ensure the migration user has the necessary replication privileges, execute the following SQL command:
 
-```bash
-Alter user <<username>> with REPLICATION;
+```sql
+ALTER USER <user> WITH REPLICATION;
 ```
 - Go to the Google Cloud SQL PostgreSQL instance in the Google Cloud Console, select the instance name to open its details page, select the Edit button, and in the Flags section, modify the following flags:
 
@@ -56,7 +56,7 @@ Alter user <<username>> with REPLICATION;
     - Set flag `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
     - The flag `wal_sender_timeout` ends inactive replication connections longer than the specified number of milliseconds. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
 
-- In the target Flexible Server, to prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` for the duration of the migration, and restore it to the original state after the migration.
+- In the target flexible server, to prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` for the duration of the migration, and restore it to the original state after the migration.
 
 ### Configure network setup
 
@@ -80,13 +80,13 @@ These parameters aren't automatically migrated to the target environment and mus
 
 When migrating to Azure Database for PostgreSQL, it's essential to address the migration of users and roles separately, as they require manual intervention:
 
-- **Manual Migration of Users and Roles**: Users and their associated roles must be manually migrated to the Azure   Database for PostgreSQL. To facilitate this process, you can use the `pg_dumpall` utility with the `--globals-only` flag to export global objects such as roles and user accounts. Execute the following command, replacing `<<username>>` with the actual username and `<<filename>>` with your desired output file name:
+- **Manual migration of users and roles**: Users and their associated roles must be manually migrated to the Azure   Database for PostgreSQL. To facilitate this process, you can use the `pg_dumpall` utility with the `--globals-only` flag to export global objects such as roles and user accounts. Execute the following command, replacing `<<username>>` with the actual username and `<<filename>>` with your desired output file name:
 
   ```sql
   pg_dumpall --globals-only -U <<username>> -f <<filename>>.sql
   ```
 
-- **Restriction on Superuser Roles**: Azure Database for PostgreSQL doesn't support superuser roles. Therefore, users with superuser privileges must have those privileges removed before migration. Ensure that you adjust the permissions and roles accordingly.
+- **Restriction on superuser roles**: Azure Database for PostgreSQL doesn't support superuser roles. Therefore, users with superuser privileges must have those privileges removed before migration. Ensure that you adjust the permissions and roles accordingly.
 
 By following these steps, you can ensure that user accounts and roles are correctly migrated to the Azure Database for PostgreSQL without encountering issues related to superuser restrictions.
 

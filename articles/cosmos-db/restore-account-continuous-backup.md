@@ -1,12 +1,12 @@
 ---
-title: Restore an Azure Cosmos DB account that uses continuous backup mode.
-description: Learn how to identify the restore time and restore a live or deleted Azure Cosmos DB account. It shows how to use the event feed to identify the restore time and restore the account using Azure portal, PowerShell, CLI, or an Azure Resource Manager template.
+title: Restore an Account That Uses Continuous Backup Mode
+description: Learn how to identify the restore time and restore a live or deleted Azure Cosmos DB account.
 author: kanshiG
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 03/21/2024
+ms.date: 07/22/2025
 ms.author: govindk
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, devx-track-arm-template
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, devx-track-arm-template, sfi-image-nochange
 ---
 
 # Restore an Azure Cosmos DB account that uses continuous backup mode
@@ -16,6 +16,8 @@ Azure Cosmos DB's point-in-time restore feature helps you to recover from an acc
 
 This article describes how to identify the restore time and restore a live or deleted Azure Cosmos DB account. It shows how to restore the account using the [Azure portal](#restore-account-portal), [PowerShell](#restore-account-powershell), [CLI](#restore-account-cli), or an [Azure Resource Manager template](#restore-arm-template).
 
+ > [!NOTE]
+ > Restoring from satellite region is slower compared to restore in hub region for multi-region account to resolve local [tentative writes](multi-region-writes.md#hub-region) as confirmed or take an action to roll them back.
 
 
 ## <a id="restore-account-portal"></a>Restore an account using Azure portal
@@ -25,12 +27,13 @@ This article describes how to identify the restore time and restore a live or de
 You can use Azure portal to restore an entire live account or selected databases and containers under it. Use the following steps to restore your data:
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
-1. Navigate to your Azure Cosmos DB account and open the **Point In Time Restore** blade.
+
+1. Navigate to your Azure Cosmos DB account and open the **Point In Time Restore** section.
 
    > [!NOTE]
-   > The restore blade in Azure portal is only populated if you have the `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` permission. To learn more about how to set this permission, see the [Backup and restore permissions](continuous-backup-restore-permissions.md) article.
+   > The restore section in Azure portal is only populated if you have the `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` permission. To learn more about how to set this permission, see the [Backup and restore permissions](continuous-backup-restore-permissions.md) article.
 
-1. Fill the following details to restore:
+1. Enter the following details:
 
    * **Restore Point (UTC)** – A timestamp within the last 30 days. The account should exist at that timestamp. You can specify the restore point in UTC. It can be as close to the second when you want to restore it. Select the **Click here** link to get help on [identifying the restore point](#event-feed).
 
@@ -40,7 +43,7 @@ You can use Azure portal to restore an entire live account or selected databases
 
    * **Resource group** - Resource group under which the target account will be created and restored. The resource group must already exist.
 
-   * **Restore Target Account** – The target account name. The target account name needs to follow same guidelines as when you are creating a new account. This account will be created by the restore process in the same region where your source account exists.
+   * **Restore Target Account** – The target account name. The target account name needs to follow same guidelines as when you create a new account. This account is created by the restore process in the same region where your source account exists.
  
    :::image type="content" source="./media/restore-account-continuous-backup/restore-live-account-portal.png" alt-text="Restore a live account from accidental modification Azure portal." border="true" lightbox="./media/restore-account-continuous-backup/restore-live-account-portal.png":::
 
@@ -50,18 +53,18 @@ Deleting source account while a restore is in-progress could result in failure o
 
 ### Restorable timestamp for live accounts
 
-To restore Azure Cosmos DB live accounts that are not deleted, it is a best practice to always identify the [latest restorable timestamp](get-latest-restore-timestamp.md) for the container. You can then use this timestamp to restore the account to its latest version.
+To restore Azure Cosmos DB live accounts that aren't deleted, it's a best practice to always identify the [latest restorable timestamp](get-latest-restore-timestamp.md) for the container. You can then use this timestamp to restore the account to its latest version.
 
 ### <a id="event-feed"></a>Use event feed to identify the restore time
 
-When filling out the restore point time in the Azure portal, if you need help with identifying restore point, select the **Click here** link, it takes you to the event feed blade. The event feed provides a full fidelity list of create, replace, delete events on databases and containers of the source account. 
+When filling out the restore point time in the Azure portal, if you need help with identifying restore point, select the **Click here** link, it takes you to the event feed page. The event feed provides a full fidelity list of create, replace, delete events on databases and containers of the source account. 
 
 For example, if you want to restore to the point before a certain container was deleted or updated, check this event feed. Events are displayed in chronologically descending order of time when they occurred, with recent events at the top. You can browse through the results and select the time before or after the event to further narrow your time.
 
 :::image type="content" source="./media/restore-account-continuous-backup/event-feed-portal.png" alt-text="Use event feed to identify the restore point time." border="true" lightbox="./media/restore-account-continuous-backup/event-feed-portal.png":::
 
 > [!NOTE]
-> The event feed does not display the changes to the item resources. You can always manually specify any timestamp in the last 30 days (as long as account exists at that time) for restore.
+> The event feed doesn't display the changes to the item resources. You can always manually specify any timestamp in the last 30 days (as long as account exists at that time) for restore.
 
 ### <a id="restore-deleted-account"></a>Restore a deleted account
 
@@ -69,13 +72,13 @@ You can use Azure portal to completely restore a deleted account within 30 days 
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Search for *Azure Cosmos DB* resources in the global search bar. It lists all your existing accounts.
-1. Next select the **Restore** button. The Restore blade displays a list of deleted accounts that can be restored within the retention period, which is 30 days from deletion time.
+1. Next select the **Restore** button. The Restore section displays a list of deleted accounts that can be restored within the retention period, which is 30 days from deletion time.
 1. Choose the account that you want to restore.
 
    :::image type="content" source="./media/restore-account-continuous-backup/restore-deleted-account-portal.png" alt-text="Restore a deleted account from Azure portal." border="true" lightbox="./media/restore-account-continuous-backup/restore-deleted-account-portal.png":::
 
    > [!NOTE]
-   > The restore blade in Azure portal is only populated if you have the `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` permission. To learn more about how to set this permission, see the [Backup and restore permissions](continuous-backup-restore-permissions.md) article.
+   > The restore section in Azure portal is only populated if you have the `Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` permission. To learn more about how to set this permission, see the [Backup and restore permissions](continuous-backup-restore-permissions.md) article.
 
 1. Select an account to restore and input the following details to restore a deleted account:
 
@@ -85,7 +88,7 @@ You can use Azure portal to completely restore a deleted account within 30 days 
 
    * **Resource group** - Resource group under which the target account will be created and restored. The resource group must already exist.
 
-   * **Restore Target Account** – The target account name needs to follow same guidelines as when you are creating a new account. This account will be created by the restore process in the same region where your source account exists.
+   * **Restore Target Account** – The target account name needs to follow same guidelines as when you create a new account. This account is created by the restore process in the same region where your source account exists.
 
 ### <a id="track-restore-status"></a>Track the status of restore operation
 
@@ -95,7 +98,7 @@ After initiating a restore operation, select the **Notification** bell icon at t
 
 ### <a id="get-the-restore-details-portal"></a>Get the restore details from the restored account
 
-After the restore operation completes, you may want to know the source account details from which you restored or the restore time.
+After the restore operation completes, you might want to know the source account details from which you restored or the restore time.
 
 Use the following steps to get the restore details from Azure portal:
 
@@ -122,8 +125,6 @@ Before restoring the account, install the [latest version of Azure PowerShell](/
 ### <a id="trigger-restore-ps"></a>Trigger a restore operation for API for NoSQL account
 
 The following cmdlet is an example to trigger a restore operation with the restore command by using the target account, source account, location, resource group, PublicNetworkAccess, DisableTtl, and timestamp:
-
-
 
 ```azurepowershell
 
@@ -153,7 +154,8 @@ Restore-AzCosmosDBAccount `
 
 
 ```
-If `PublicNetworkAccess` is not set, restored account is accessible from public network, please ensure to pass `Disabled` to the `PublicNetworkAccess` option to disable public network access for restored account. Setting DisableTtl to $true ensures TTL is disabled on restored account, not providing parameter restores the account with TTL enabled if it was set earlier. 
+
+If `PublicNetworkAccess` isn't set, restored account is accessible from public network, please ensure to pass `Disabled` to the `PublicNetworkAccess` option to disable public network access for restored account. Setting DisableTtl to $true ensures TTL is disabled on restored account, not providing parameter restores the account with TTL enabled if it was set earlier. 
 
 > [!NOTE]
 > For restoring with public network access disabled, the minimum stable version of Az.CosmosDB required is 1.12.0.
@@ -429,7 +431,7 @@ az cosmosdb restore \
 
 ```
 
-If `--public-network-access` is not set, restored account is accessible from public network. Please ensure to pass `Disabled` to the `--public-network-access` option to prevent public network access for restored account. Setting disable-ttl to  to $true ensures TTL is disabled on restored account,  and not providing this parameter restores the account with TTL enabled if it was set earlier. 
+If `--public-network-access` is not set, restored account is accessible from public network. Please ensure to pass `Disabled` to the `--public-network-access` option to prevent public network access for restored account. Setting disable-ttl to  $true ensures TTL is disabled on restored account,  and not providing this parameter restores the account with TTL enabled if it was set earlier. 
 
  > [!NOTE]
  > For restoring with public network access disabled, the minimum stable version of azure-cli is 2.52.0.
@@ -780,7 +782,7 @@ az cosmosdb table restorable-table list \
 ] 
 ```
 
-### List all the resources of a API for Table account that are available to restore at a given timestamp and region 
+### List all the resources of an API for Table account that are available to restore at a given timestamp and region 
 
 ```azurecli-interactive
 az cosmosdb table restorable-resource list \ 

@@ -6,8 +6,12 @@ author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 7/28/2024
+ms.topic: concept-article
+ms.date: 5/13/2025
+appliesto:
+  - ✅ MongoDB (vCore)
+ms.custom:
+  - build-2025
 ---
 
 # Sharding for horizontal scalability in Azure Cosmos DB for MongoDB vCore
@@ -40,9 +44,9 @@ This table shows a mapping of shard key values to logical partitions.
 - In addition, the service doesn't limit transactions to the scope of a logical shard. The vCore based service for Azure Cosmos DB for MongoDB supports read and write transactions that are applicable across multiple logical shards and across multiple physical shards in the cluster.
 
 ## Physical shards
-Physical shards are the underlying machines and disks responsible for persisting the data and fulfilling database transactions. Unlike logical shards, the service manages physical shards under the covers.
+Physical shards are the underlying [machines and disks](./compute-storage.md) responsible for persisting the data and fulfilling database transactions. Unlike logical shards, the service manages physical shards under the covers.
 
-The number of physical shards are defined when a cluster is created. Single shard clusters have one physical shard that is entirely responsible for the cluster's storage and database transactions. Multi shard clusters distribute the data and transaction volume across the physical shards in the cluster. 
+The number of physical shards is defined when a cluster is created and can be increased if database size grows over time. Single shard clusters have one physical shard (node) that is entirely responsible for the cluster's storage and database transactions. Multishard clusters distribute the data and transaction volume across the physical shards in the cluster. 
 
 ### Mapping logical shards to physical shards
 When new logical shards are added, the cluster seamlessly updates the mapping of logical to physical shards. Similarly, the assignment of the address space to each physical shard is changed as new physical shards are added to the cluster after which, logical shards are rebalanced across the cluster.  
@@ -63,7 +67,7 @@ Building on the prior example using a cluster with two physical shards, this tab
 ### Capacity of physical shards 
 The cluster tier that is selected when the cluster is provisioned determines the CPU and memory capacity of a physical shard. Similarly the storage SKU determines the storage and IOPS capacity of a physical shard. Larger cluster tiers provide more compute power and larger memory while larger storage disks provide more storage and IOPS. Read heavy workloads benefit from a larger cluster tier while write heavy workloads benefit from a larger storage SKU. The cluster tier can be scaled up and down after the cluster is created based on the changing needs of the application.
 
-In a multi-shard cluster, the capacity of each physical shard is the same. Scaling up the cluster tier or the storage SKU doesn't change the placement of logical shards on the physical shards. After a scale up operation, the number of physical shards remains the same thus avoiding the need to rebalance the data in the cluster.
+In a multishard cluster, the capacity of each physical shard is the same. Scaling up the cluster tier or the storage SKU doesn't change the placement of logical shards on the physical shards. After a scale up operation, the number of physical shards remains the same thus avoiding the need to rebalance the data in the cluster.
 
 The compute, memory, storage, and IOPS capacity of the physical shard determine the resources available for the logical shards. Shard keys that don't have an even distribution of storage and request volumes can cause uneven storage and throughput consumption within the cluster. Hot partitions can cause physical shards to be unevenly utilized leading to unpredictable throughput and performance. Thus sharded clusters require careful planning upfront to ensure performance remains consistent as the requirements of the application change over time.
 
@@ -114,7 +118,7 @@ db.adminCommand({
 })
 ```
 
-While it is not ideal to change the shard key after the collection has grown significantly in storage volume, the reshardCollection command can be used to alter the shard key.
+While it isn't ideal to change the shard key after the collection has grown significantly in storage volume, the reshardCollection command can be used to alter the shard key.
 ```javascript
 use cosmicworks;
 sh.reshardCollection("cosmicworks.employee", {"lastName": "hashed"})

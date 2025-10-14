@@ -1,13 +1,13 @@
 ---
-title: Change feed pull model in Azure Cosmos DB
+title: Change Feed Pull Model
 description: Learn how to use the Azure Cosmos DB change feed pull model to read the change feed. Understand the differences between the change feed pull model and the change feed processor.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
-ms.topic: conceptual
-ms.date: 05/10/2023
+ms.topic: how-to
+ms.date: 07/03/2025
 ms.custom: devx-track-java, build-2023
 ---
 
@@ -28,9 +28,9 @@ However, you can't convert continuation tokens to a lease or vice versa.
 
 You should consider using the pull model in these scenarios:
 
-- To read changes from a specific partition key.
-- To control the pace at which your client receives changes for processing.
-- To perform a one-time read of the existing data in the change feed (for example, to do a data migration).
+- To read changes from a specific partition key
+- To control the pace at which your client receives changes for processing
+- To perform a one-time read of the existing data in the change feed (for example, to do a data migration)
 
 Here are some key differences between the change feed processor and the change feed pull model:
 
@@ -39,7 +39,7 @@ Here are some key differences between the change feed processor and the change f
 | Keeping track of the current point in processing the change feed | Lease (stored in an Azure Cosmos DB container) | Continuation token (stored in memory or manually persisted) |
 | Ability to replay past changes | Yes, with push model | Yes, with pull model|
 | Polling for future changes | Automatically checks for changes based on user-specified `WithPollInterval` value | Manual |
-| Behavior where there are no new changes | Automatically wait the value for `WithPollInterval` and then recheck | Must check status and manually recheck |
+| Behavior when there are no new changes | Automatically wait the value for `WithPollInterval` and then recheck | Must check status and manually recheck |
 | Process changes from an entire container | Yes, and automatically parallelized across multiple threads and machines that consume from the same container| Yes, and manually parallelized by using `FeedRange` |
 | Process changes from only a single partition key | Not supported | Yes|
 
@@ -61,7 +61,7 @@ FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(Ch
 ```
 
 > [!TIP]
-> Prior to version `3.34.0`, latest version mode can be used by setting `ChangeFeedMode.Incremental`. Both `Incremental` and `LatestVersion` refer to latest version mode of the change feed and applications that use either mode will see the same behavior.
+> For versions earlier than `3.34.0`, latest version mode can be used by setting `ChangeFeedMode.Incremental`. Both `Incremental` and `LatestVersion` refer to latest version mode of the change feed, and applications that use either mode see the same behavior.
 
 All versions and deletes mode is in preview and can be used with preview .NET SDK versions >= `3.32.0-preview`. Here's an example for obtaining `FeedIterator` in all versions and deletes mode that returns `User` objects:
 
@@ -70,7 +70,7 @@ FeedIterator<ChangeFeedItem<User>> InteratorWithPOCOS = container.GetChangeFeedI
 ```
 
 > [!NOTE]
-> In latest version mode, you receive objects that represent the item that changed, with some [extra metadata](change-feed-modes.md#parse-the-response-object). All versions and deletes mode returns a different data model. For more information, see [Parse the response object](change-feed-modes.md#parse-the-response-object-1).
+> In latest version mode, you receive objects that represent the item that changed, with some [extra metadata](change-feed-modes.md#parse-the-response-object). All versions and deletes mode returns a different data model.
 >
 > You can get the complete sample for [latest version mode](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/CFPullModelLatestVersionMode) or [all versions and deletes mode](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/CFPullModelAllVersionsAndDeletesMode).
 
@@ -208,7 +208,7 @@ while (iteratorB.HasMoreResults)
 
 ### Save continuation tokens
 
-You can save the position of your `FeedIterator` by obtaining the continuation token. A continuation token is a string value that keeps of track of your FeedIterator's last processed changes and allows the `FeedIterator` to resume at this point later. The continuation token, if specified, takes precedence over the start time and start from beginning values. The following code reads through the change feed since container creation. After no more changes are available, it will persist a continuation token so that change feed consumption can be later resumed.
+You can save the position of your `FeedIterator` by obtaining the continuation token. A continuation token is a string value that keeps of track of your FeedIterator's last processed changes and allows the `FeedIterator` to resume at this point later. The continuation token, if specified, takes precedence over the start time and start from beginning values. The following code reads through the change feed since container creation. After no more changes are available, it persists a continuation token so that change feed consumption can be later resumed.
 
 ```csharp
 FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(), ChangeFeedMode.LatestVersion);
@@ -252,7 +252,7 @@ If you want to read the change feed in [all versions and deletes mode](change-fe
 If you specify `FeedRange.forFullRange()`, you can process the change feed for an entire container at your own pace. You can optionally specify a value in `byPage()`. When set, this property sets the maximum number of items received per page.
 
 >[!NOTE]
-> All of the following code snippets are taken from a samples in GitHub. You can use the [latest version mode sample](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/changefeedpull/SampleChangeFeedPullModel.java) and the [all versions and deletes mode sample](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/changefeedpull/SampleChangeFeedPullModelForAllVersionsAndDeletesMode.java).
+> All of the following code snippets are taken from samples in GitHub. You can use the [latest version mode sample](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/changefeedpull/SampleChangeFeedPullModel.java) and the [all versions and deletes mode sample](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/changefeedpull/SampleChangeFeedPullModelForAllVersionsAndDeletesMode.java).
 
 Here's an example of how to obtain a `responseIterator` value in latest version mode:
 
@@ -299,12 +299,129 @@ Machine 2:
 
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeedpull/SampleChangeFeedPullModel.java?name=Machine2)]
 
+### [Python](#tab/python)
+
+To process the change feed by using the pull model, create an instance of responseIterator with the type `ItemPaged[Dict[str, Any]]`. 
+When you call change feed API, you must specify where to start reading the change feed from and pass the `feed_range` parameter that you want to use.
+The `feed_range` is a range of partition key values that specifies the items that can be read from the change feed.
+
+You can also specify `mode` parameter for the change feed mode in which you want to process changes: [LatestVersion](change-feed-modes.md#latest-version-change-feed-mode) or [AllVersionsAndDeletes](change-feed-modes.md#all-versions-and-deletes-change-feed-mode-preview). The default value is `LatestVersion`.
+Use either `LatestVersion` or `AllVersionsAndDeletes` to indicate which mode you want to use to read the change feed.
+When you use `AllVersionsAndDeletes` mode, you can either start processing changes from now or from a `continuation` token.
+Reading the change feed from the beginning or from a point in time using `start_time` isn't supported.
+
+> [!NOTE]
+> 
+> `AllVersionsAndDeletes` mode is in preview and is available in [Python SDK version 4.9.1b1](https://pypi.org/project/azure-cosmos/4.9.1b1/) or later.
+
+### Consume the changes for an entire container
+
+If you don't supply a `feed_range` parameter, you can process an entire container's change feed at your own pace.
+
+>[!NOTE]
+> All the following code snippets are taken from [samples in GitHub](https://github.com/allenkim0129/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py).
+
+Here's an example of how to obtain `responseIterator` in `LatestVersion` mode from `Beginning`. Since `LatestVersion` is a default mode, `mode` parameter doesn't need to be passed:
+```python
+responseIterator = container.query_items_change_feed(start_time="Beginning")
+```
+
+Here's an example of how to obtain  `responseIterator` in `AllVersionsAndDeletes` mode from `Now`, Since `Now` is a default value of `start_time` parameter, it doesn't need to be passed:
+
+```python
+responseIterator = container.query_items_change_feed(mode="AllVersionsAndDeletes")
+```
+
+We can then iterate over the results. Because the change feed is effectively an infinite list of items that encompasses all future writes and updates, `responseIterator` can loop infinitely. 
+Here's an example in latest version mode, which reads all changes, starting from the beginning.
+Each iteration print change feeds for documents.
+
+```python
+responseIterator = container.query_items_change_feed(start_time="Beginning")
+for doc in responseIterator:
+    print(doc)
+```
+
+### Consume a partition key's changes
+
+In some cases, you might want to process only the changes for a specific partition key.
+You can process the changes the same way that you can for an entire container with the `partition_key` parameter. 
+Here's an example that uses `LatestVersion` mode:
+
+```python
+pk = "partition_key_value"
+responseIterator = container.query_items_change_feed(start_time="Beginning", partition_key=pk)
+for doc in responseIterator:
+    print(doc)
+```
+
+### Use FeedRange for parallelization
+
+In the change feed pull model, you can use the `feed_range` to parallelize the processing of the change feed.
+A `feed_range` represents a range of partition key values.
+
+Here's an example that shows how to get a list of ranges for your container. `list` command converts iterator to a list:
+
+```python
+rangesIterator = container.read_feed_ranges(force_refresh=False)
+ranges = list(rangesIterator)
+```
+
+When you get a list of `feed_range` values for your container, you get one `feed_range` per [physical partition](../partitioning-overview.md#physical-partitions).
+
+By using a `feed_range`, you can create iterator to parallelize the processing of the change feed across multiple machines or threads.
+Unlike the previous example that showed how to obtain a `responseIterator` for the entire container or a single partition key, you can use `feed_range` to obtain multiple iterators, which can process the change feed in parallel.
+
+Here's a sample that shows how to read from the beginning of the container's change feed by using two hypothetical separate machines that read in parallel:
+
+Machine 1:
+```python
+responseIterator = container.query_items_change_feed(start_time="Beginning", feed_range=ranges[0])
+for doc in responseIterator:
+    print(doc)
+```
+
+Machine 2:
+```python
+responseIterator = container.query_items_change_feed(start_time="Beginning", feed_range=ranges[1])
+for doc in responseIterator:
+    print(doc)
+```
+
+### Save continuation tokens
+
+You can save the position of your iterator by obtaining the continuation token.
+A continuation token is a string value that keeps of track of your `responseIterator` last processed changes and allows the iterator to resume at this point later.
+The continuation token, if specified, takes precedence over the start time and start from beginning values. 
+The following code reads through the change feed since container creation. 
+After no more changes are available, it persists a continuation token so that change feed consumption can be later resumed.
+
+```python
+responseIterator = container.query_items_change_feed(start_time="Beginning")
+for doc in responseIterator:
+    print(doc)
+continuation_token = container.client_connection.last_response_headers['etag']
+```
+
+> [!NOTE]
+> 
+> Since `continuation` token contains previously used `mode` parameter, if `continuation` was used, `mode` parameter is ignored and uses the `mode` from `continuation` token instead.
+
+Here's a sample that shows how to read from the container's change feed by using a `continuation` token:
+
+
+```python
+responseIterator = container.query_items_change_feed(continuation=continuation_token)
+for doc in responseIterator:
+    print(doc)
+```
 ### [JavaScript](#tab/JavaScript)
 
-To process the change feed by using the pull model, create an instance of `ChangeFeedPullModelIterator`. When you initially create `ChangeFeedPullModelIterator`, you must specify a required `changeFeedStartFrom` value inside the `ChangeFeedIteratorOptions` which consists of both the starting position for reading changes and the resource(a partition key or a FeedRange) for which changes are to be fetched.
+To process the change feed by using the pull model, create an instance of `ChangeFeedPullModelIterator`. When you initially create `ChangeFeedPullModelIterator`, you must specify a required `changeFeedStartFrom` value inside the `ChangeFeedIteratorOptions`, which consists of both the starting position for reading changes and the resource (a partition key or a FeedRange) for which changes are to be fetched.
+
 > [!NOTE]
-> If no `changeFeedStartFrom` value is specified, then changefeed will be fetched for an entire container from Now().
-> Currently, only [latest version](change-feed-modes.md#latest-version-change-feed-mode) is supported by JS SDK and is selected by default.
+> If no `changeFeedStartFrom` value is specified, then the change feed is fetched for an entire container from `Now()`.
+> Currently, only [latest version](change-feed-modes.md#latest-version-change-feed-mode) is supported by the JavaScript SDK and is selected by default.
 
 You can optionally use `maxItemCount` in `ChangeFeedIteratorOptions` to set the maximum number of items received per page.
 Here's an example of how to obtain the iterator in latest version mode that returns entity objects:
@@ -391,7 +508,7 @@ const ranges = await container.getFeedRanges();
 
 When you get a list of `FeedRange` values for your container, you get one `FeedRange` per [physical partition](../partitioning-overview.md#physical-partitions).
 
-By using a `FeedRange`, you can create iterator to parallelize the processing of the change feed across multiple machines or threads. Unlike the previous example that showed how to obtain a changefeed iterator for the entire container or a single partition key, you can use FeedRanges to obtain multiple iterators, which can process the change feed in parallel.
+By using a `FeedRange`, you can create iterator to parallelize the processing of the change feed across multiple machines or threads. Unlike the previous example that showed how to obtain a change feed iterator for the entire container or a single partition key, you can use FeedRanges to obtain multiple iterators, which can process the change feed in parallel.
 
 Here's a sample that shows how to read from the beginning of the container's change feed by using two hypothetical separate machines that read in parallel:
 
@@ -453,7 +570,7 @@ while(iterator.hasMoreResults) {
 
 ### Save continuation tokens
 
-You can save the position of your iterator by obtaining the continuation token. A continuation token is a string value that keeps of track of your changefeed iterator last processed changes and allows the iterator to resume at this point later. The continuation token, if specified, takes precedence over the start time and start from beginning values. The following code reads through the change feed since container creation. After no more changes are available, it will persist a continuation token so that change feed consumption can be later resumed.
+You can save the position of your iterator by obtaining a continuation token. A continuation token is a string value that keeps of track of your change feed iterator's last processed changes and allows the iterator to resume at this point later. The continuation token, if specified, takes precedence over the start time and start from beginning values. The following code reads through the change feed since container creation. After no more changes are available, it persists a continuation token so that change feed consumption can be later resumed.
 
 ```js
 const options = {
@@ -481,11 +598,12 @@ const continuationOptions = {
 }
 const newIterator = container.items.getChangeFeedIterator(continuationOptions);
 ```
-Continuation token never expires as long as the Azure Cosmos DB container still exists.
+
+The continuation token never expires as long as the Azure Cosmos DB container still exists.
 
 ### Use AsyncIterator 
 
-You can use the JavaScript Async Iterator to fetch the changefeed. Here is an example to use Async Iterator.
+You can use the JavaScript `AsyncIterator` to fetch the change feed. Here's an example of `AsyncIterator`.
 
 ```js
 async function waitFor(milliseconds: number): Promise<void> {
@@ -512,5 +630,5 @@ for await(const result of container.items.getChangeFeedIterator(options).getAsyn
 ## Next steps
 
 - [Overview of change feed](../change-feed.md)
-- [Using the change feed processor](change-feed-processor.md)
-- [Trigger Azure Functions](change-feed-functions.md)
+- [Change feed processor in Azure Cosmos DB](change-feed-processor.md)
+- [Serverless event-based architectures with Azure Cosmos DB and Azure Functions](change-feed-functions.md)

@@ -1,20 +1,18 @@
 ---
-title: 'Tutorial: Design a real-time dashboard with Elastic Cluster'
-description: This tutorial shows how to parallelize real-time dashboard queries with Elastic Cluster on Azure Database for PostgreSQL.
+title: 'Tutorial: Real-time dashboard with elastic clusters'
+description: This tutorial shows how to parallelize real-time dashboard queries with elastic clusters on Azure Database for PostgreSQL.
 author: mulander
 ms.author: adamwolk
-ms.date: 11/07/2024
+ms.date: 02/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
 #Customer intent: As a developer, I want to parallelize queries so that I can make a real-time dashboard application.
 ---
 
-# Tutorial: Design a real-time analytics dashboard with Elastic Cluster
+# Tutorial: Design a real-time analytics dashboard with elastic clusters (preview)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-In this tutorial, you use Elastic Cluster on Azure Database for PostgreSQL to learn how to design a real-time dashboard and parallelize queries.
+In this tutorial, you use elastic clusters on Azure Database for PostgreSQL to learn how to design a real-time dashboard and parallelize queries.
 
 > [!div class="checklist"]
 > * Prerequisites
@@ -27,14 +25,14 @@ In this tutorial, you use Elastic Cluster on Azure Database for PostgreSQL to le
 
 ## Prerequisites
 
-Create an Elastic Cluster in one of the following ways:
-- [Create an Elastic Cluster with ARM template]()
-- [Create an Elastic Cluster using CLI]()
-- [Create an Elastic Cluster using the Portal]()
+Create an elastic cluster in one of the following ways:
+- [Create an elastic cluster with ARM template]()
+- [Create an elastic cluster using CLI]()
+- [Create an elastic cluster using the Portal]()
 
 ## Use psql utility to create a schema
 
-Once connected to the Elastic Cluster using psql, you can complete some basic tasks. This tutorial walks you through ingesting traffic data from web analytics, then rolling up the data to provide real-time dashboards based on that data.
+Once connected to the elastic cluster using psql, you can complete some basic tasks. This tutorial walks you through ingesting traffic data from web analytics, then rolling up the data to provide real-time dashboards based on that data.
 
 Let's create a table that consumes all of our raw web traffic data. Run the following commands in the psql terminal:
 
@@ -84,7 +82,7 @@ You can see the newly created tables in the list of tables now with this psql co
 
 ## Shard tables across nodes
 
-An Elastic Cluster deployment stores table rows on different nodes based on the value of a user-designated column. This "distribution column" marks how data is sharded across nodes.
+An elastic cluster deployment stores table rows on different nodes based on the value of a user-designated column. This "distribution column" marks how data is sharded across nodes.
 
 Let's set the distribution column to be site\_id, the shard
 key. In psql, run these functions:
@@ -96,7 +94,7 @@ SELECT create_distributed_table('http_request_1min', 'site_id');
 
 > [!NOTE]
 >
-> Distributing tables or using schema-based sharding is necessary to take advantage of Elastic Clusters with Azure Database for PostgreSQL performance features. If you don't distribute tables or schemas then nodes can't help run queries involving their data.
+> Distributing tables or using schema-based sharding is necessary to take advantage of elastic clusters with Azure Database for PostgreSQL performance features. If you don't distribute tables or schemas, then nodes can't help run queries involving their data.
 
 ## Generate sample data
 
@@ -137,7 +135,7 @@ The query inserts approximately eight rows every second. The rows are stored on 
 
 ## Query
 
-Azure Database for PostgreSQL with Elastic Cluster allows multiple nodes to process queries in
+Azure Database for PostgreSQL with elastic cluster allows multiple nodes to process queries in
 parallel for speed. For instance, the database calculates aggregates like SUM
 and COUNT on worker nodes, and combines the results into a final answer.
 
@@ -230,7 +228,7 @@ In production, you could wrap these queries in a function and call it every minu
 
 ## Next step
 
-In this tutorial, you learned how to create an Elastic Cluster. You connected to it with psql, created a schema, and distributed data. You learned to query data in the raw form, regularly aggregate that data, query the aggregated tables, and expire old data.
+In this tutorial, you learned how to create an elastic cluster. You connected to it with psql, created a schema, and distributed data. You learned to query data in the raw form, regularly aggregate that data, query the aggregated tables, and expire old data.
 
 > [!div class="nextstepaction"]
-> [Learn more about Elastic Clusters](concepts-elastic-clusters.md)
+> [Learn more about elastic clusters](concepts-elastic-clusters.md)

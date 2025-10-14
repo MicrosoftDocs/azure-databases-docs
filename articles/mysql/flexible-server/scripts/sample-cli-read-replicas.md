@@ -1,8 +1,8 @@
 ---
 title: CLI Script - Create and Manage Read Replicas
 description: This Azure CLI sample script shows how to create and manage read replicas in Azure Database for MySQL - Flexible Server.
-author: shreyaaithal
-ms.author: shaithal
+author: VandhanaMehta
+ms.author: vamehta
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql

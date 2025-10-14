@@ -10,6 +10,8 @@ ms.service: azure-database-migration-service
 ms.topic: troubleshooting
 ms.collection:
   - sql-migration-content
+ms.custom:
+  - build-2025
 ---
 
 # Known issues, limitations, and troubleshooting
@@ -102,8 +104,15 @@ This article provides a list of known issues and troubleshooting steps associate
   RECONFIGURE;
   ```
 
+- **Message**: `Migration for Database <Database Name> failed with error 'Managed identity is not set up properly. Please verify and try again.'`
+
+- **Cause**: The managed identity associated with the target SQL Managed Instance does not have the required permissions/role to access the Azure Blob storage containing the backup files needed for migration.
+
+- **Recommendation**: Assign the '**Storage Blob Data Reader**' role on the Azure Blob Storage account to the managed identity associated with the target SQL Managed Instance. For more information, refer [blog](https://techcommunity.microsoft.com/blog/microsoftdatamigration/dms---support-for-managed-identity-for-azure-sql-managed-instance-migration/4411274).
+
+  
   > [!NOTE]  
-  > For more information on general troubleshooting steps for Azure SQL Managed Instance errors, see [Known issues with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/doc-changes-updates-known-issues)
+  > For more information on general troubleshooting steps for Azure SQL Managed Instance errors, see [Known issues with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/doc-changes-updates-known-issues).
 
 ## Error code: 2012 - TestConnectionFailed
 
@@ -416,6 +425,14 @@ Note: This query should be run in context of master DB
  az extension update -n datamigration
 ```
 
+## Error code: Blob container selection error: Error listing the contents of the container: This request is not authorized to perform this operation using this permission.
+
+- **Message**: `Blob container selection error: Error listing the contents of the container: This request is not authorized to perform this operation using this permission.`
+
+- **Cause**: While migrating to SQL Managed Instance via **Azure portal** using **Managed Identity**, if the signed in user does not have **Storage Blob Data Reader** access on the storage account, it fails with the previous message.
+
+- **Recommendation**: To resolve this issue, make sure the signed in user has **Storage Blob Data Reader** access on the storage account. This permission is needed to list folders and files in the blob container during migration setup via Azure portal. For more information, see [DMS - Support for Managed Identity for Azure SQL Managed Instance migration](https://techcommunity.microsoft.com/blog/microsoftdatamigration/dms---support-for-managed-identity-for-azure-sql-managed-instance-migration/4411274).
+
 ## Azure Database Migration Service Naming Rules
 
 If your DMS service failed with "Error: Service name 'x_y_z' is not valid", then you need to follow the Azure Database Migration Service Naming Rules. As Azure Database Migration Service uses Azure Data factory for its compute, it follows the exact same naming rules as mentioned in the [naming rules](/azure/data-factory/naming-rules).
@@ -427,6 +444,9 @@ Migrating to Azure SQL Database by using the Azure SQL extension for Azure Data 
 [!INCLUDE [sql-db-limitations](includes/sql-database-limitations.md)]
 
 ## Azure SQL Managed Instance limitations
+
+> [!IMPORTANT]  
+> Online migrations with the Azure SQL extension use the same technology as the Log Replay Service (LRS), and have the same limitations. Before you migrate databases to the **Business Critical** service tier, consider [these limitations](/azure/azure-sql/managed-instance/log-replay-service-migrate#limitations-when-migrating-to-the-business-critical-service-tier), which don't apply to the **General Purpose** service tier.
 
 Migrating to Azure SQL Managed Instance by using the Azure SQL extension for Azure Data Studio has the following limitations:
 

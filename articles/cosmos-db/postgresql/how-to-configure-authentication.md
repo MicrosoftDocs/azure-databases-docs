@@ -6,7 +6,8 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
-ms.date: 08/21/2024
+ms.date: 04/12/2025
+ms.custom: sfi-ropc-blocked
 ---
 
 # Use Microsoft Entra ID and native PostgreSQL roles for authentication with Azure Cosmos DB for PostgreSQL
@@ -57,7 +58,7 @@ az ad sp update --id b4fa09d8-5da5-4352-83d9-05c2a44cf431 --set accountEnabled=t
 ---
 
 > [!NOTE]
-> Editing enterprise application's properties such as "Enabled for users to sign-in" requires permissions granted to a role with privileges to update enterprise application properties. Roles, such as **Enterprise application owner**, must have the *"update enterprise application properties"* permisssion. For more information, see [Microsoft Entra least privileged roles by task - Enterprise applications](/entra/identity/role-based-access-control/delegate-by-task#enterprise-applications).
+> Editing enterprise application's properties such as "Enabled for users to sign-in" requires permissions granted to a role with privileges to update enterprise application properties. Roles, such as **Enterprise application owner**, must have the *"update enterprise application properties"* permission. For more information, see [Microsoft Entra least privileged roles by task - Enterprise applications](/entra/identity/role-based-access-control/delegate-by-task#enterprise-applications).
 
 ### Add Microsoft Entra ID admins to Azure Cosmos DB for PostgreSQL cluster
 
@@ -183,7 +184,7 @@ To connect by using a Microsoft Entra ID token with PgAdmin, follow these steps:
 Here are some essential considerations when you're connecting:
 
 - `user@tenant.onmicrosoft.com` is the name of the Microsoft Entra ID user.
-- Be sure to use the exact way the Azure user is spelled. Microsoft Entra ID user and group names are case-sensitive.
+- Be sure to use the exact way the Azure user is spelled. Microsoft Entra ID user names are case-sensitive.
 - If the name contains spaces, use a backslash (`\`) before each space to escape it.
 - The access token's validity is 5 minutes to 90 minutes. You should get the access token before initiating the sign-in to Azure Cosmos for PostgreSQL.
 

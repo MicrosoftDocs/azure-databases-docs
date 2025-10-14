@@ -11,8 +11,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: postgresql
   ms.topic: landing-page
-
-  ms.date: 02/28/2023
+  ms.date: 06/11/2025
 landingContent:
   - title: About Azure Cosmos DB for PostgreSQL
     linkLists:

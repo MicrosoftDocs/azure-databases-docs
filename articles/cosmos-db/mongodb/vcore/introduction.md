@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2023
 ms.topic: overview
-ms.date: 06/20/2024
+ms.date: 06/11/2025
 ---
 
 # What is Azure Cosmos DB for MongoDB (vCore architecture)?
@@ -33,18 +33,21 @@ Azure Cosmos DB for MongoDB's scalable architecture is designed to deliver the b
 
 Here are the current tiers for the service:
 
-| Cluster tier | Base storage | RAM | vCPUs |
+| Cluster tier | vCPUs | RAM | Base storage |
 | --- | --- | --- | --- |
-| M25 | 32 GB | 8 GB | 2 burstable |
-| M30 | 128 GB | 8 GB | 2 |
-| M40 | 128 GB | 16 GB | 4 |
-| M50 | 128 GB | 32 GB | 8 |
-| M60 | 128 GB | 64 GB | 16 |
-| M80 | 128 GB | 128 GB | 32 |
-| M200 | 128 GB | 256 GB | 64 |
-| M300 | 128 GB | 324 GB | 48 |
-| M400 | 128 GB | 432 GB | 64 |
-| M600 | 128 GB | 640 GB | 80 |
+| M10  | 1  | 2 GiB   | 32 GB  |  
+| M20  | 2  | 4 GiB   | 32 GB  |  
+| M25  | 2 burstable | 8 GB   | 32 GB  |  
+| M30  | 2  | 8 GB   | 128 GB |  
+| M40  | 4  | 16 GB  | 128 GB |  
+| M50  | 8  | 32 GB  | 128 GB |  
+| M60  | 16 | 64 GB  | 128 GB |  
+| M80  | 32 | 128 GB | 128 GB |  
+| M200 | 64 | 256 GB | 128 GB |  
+| M200 Autoscale | Up to 64 | Up to 256 GB | 128 GB | 
+| M300 | 48 | 324 GB | 128 GB |  
+| M400 | 64 | 432 GB | 128 GB |  
+| M600 | 80 | 640 GB | 128 GB |  
 
 Azure Cosmos DB for MongoDB (vCore) is organized into easy to understand cluster tiers based on vCPUs, RAM, and attached storage. These tiers make it easy to lift and shift your existing workloads or build new applications.
 

@@ -5,7 +5,7 @@ ms.author: nlarin
 author: niklarin
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: references_regions
 ms.date: 04/02/2024
 ---

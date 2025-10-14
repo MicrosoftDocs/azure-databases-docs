@@ -1,19 +1,17 @@
 ---
 title: Scale compute
 description: This article describes how to scale the compute of an Azure Database for PostgreSQL flexible server.
-author: akashraokm
-ms.author: akashrao
+author: danyal-bukhari
+ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to scale the compute of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to scale the compute of an Azure Database for PostgreSQL.
 ---
 
 # Scale compute
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to perform scaling operations for the compute of an Azure Database for PostgreSQL flexible server.
 
@@ -65,7 +63,11 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your compute via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --tier <tier> --sku-name <sku_name>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --tier <tier> \
+  --sku-name <sku_name>
 ```
 
 > [!NOTE]
@@ -84,5 +86,5 @@ Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify
 ## Related content
 
 - [Compute options](concepts-compute.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).
 - [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)

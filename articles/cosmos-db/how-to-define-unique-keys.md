@@ -146,6 +146,34 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 })
 ```
 
+## Use the Go SDK
+
+When creating a new container using the Go SDK, a [UniqueKeyPolicy](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#UniqueKeyPolicy) can be used to define unique key constraints.
+
+```go
+db, _ := c.NewDatabase("demodb")
+
+pkDef := azcosmos.PartitionKeyDefinition{
+	Paths: []string{"/state"},
+	Kind:  azcosmos.PartitionKeyKindHash,
+}
+
+uniqueKeyPolicy := azcosmos.UniqueKeyPolicy{
+	UniqueKeys: []azcosmos.UniqueKey{
+		{
+			Paths: []string{"/firstName", "/lastName", "/emailAddress"},
+		},
+	},
+}
+
+_, err = db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
+	ID:                     "demo_container",
+	PartitionKeyDefinition: pkDef,
+	UniqueKeyPolicy:        &uniqueKeyPolicy,
+}, nil)
+```
+
+
 ## Next steps
 
 - Learn more about [partitioning](partitioning-overview.md)

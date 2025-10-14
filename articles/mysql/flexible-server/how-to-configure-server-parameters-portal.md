@@ -1,13 +1,14 @@
 ---
 title: Configure Server Parameters - Azure Portal
 description: This article describes how to configure MySQL server parameters in Azure Database for MySQL - Flexible Server by using the Azure portal.
-author: code-sidd
-ms.author: sisawant
+author: VandhanaMehta  
+ms.author: vamehta  
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # Configure server parameters in Azure Database for MySQL - Flexible Server using the Azure portal

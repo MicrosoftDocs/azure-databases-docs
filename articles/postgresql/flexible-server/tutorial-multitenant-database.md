@@ -1,20 +1,18 @@
 ---
-title: 'Tutorial: Design multitenant database with Elastic Cluster'
-description: Learn how to design a scalable multitenant application with Elastic Cluster on Azure Database for PostgreSQL.
+title: 'Tutorial: Design multitenant database with elastic clusters'
+description: Learn how to design a scalable multitenant application with elastic cluster on Azure Database for PostgreSQL.
 author: mulander
 ms.author: adamwolk
-ms.date: 11/07/2024
+ms.date: 02/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
-#Customer intent: As an developer, I want to design a PostgreSQL database and scale it out on an Elastic Cluster so that my multi-tenant application runs efficiently for all tenants.
+#Customer intent: As an developer, I want to design a PostgreSQL database and scale it out using elastic clusters so that my multi-tenant application runs efficiently for all tenants.
 ---
 
-# Design a multitenant database with Elastic Cluster
+# Tutorial: Design a multitenant database with elastic clusters (preview)
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-In this tutorial, you use Azure Database for PostgreSQL with Elastic Cluster to learn how to design a multitenant application in order to benefit from horizontal scale-out.
+In this tutorial, you use Azure Database for PostgreSQL with elastic clusters to learn how to design a multitenant application in order to benefit from horizontal scale-out.
 
 > [!div class="checklist"]
 > * Prerequisites
@@ -27,14 +25,14 @@ In this tutorial, you use Azure Database for PostgreSQL with Elastic Cluster to 
 
 ## Prerequisites
 
-Create an Elastic Cluster in one of the following ways:
-- [Create an Elastic Cluster with ARM template]()
-- [Create an Elastic Cluster using CLI]()
-- [Create an Elastic Cluster using the Portal]()
+Create an elastic cluster in one of the following ways:
+- [Create an elastic cluster with ARM template]()
+- [Create an elastic cluster using CLI]()
+- [Create an elastic cluster using the Portal]()
 
 ## Use psql utility to create a schema
 
-Once connected to the Elastic Cluster using psql, you can complete some basic tasks. This tutorial walks you through creating a web app that allows advertisers to track their campaigns.
+Once connected to the elastic cluster using psql, you can complete some basic tasks. This tutorial walks you through creating a web app that allows advertisers to track their campaigns.
 
 Multiple companies can use the app, so let's create a table to hold companies and another for their campaigns. In the psql console, run these commands:
 
@@ -128,7 +126,7 @@ which is why all primary and foreign keys include the company ID.
 
 ## Shard tables across nodes
 
-An Elastic Cluster deployment stores table rows on different nodes based on the value of a user-designated column. This "distribution column" marks which tenant owns which rows.
+An elastic cluster deployment stores table rows on different nodes based on the value of a user-designated column. This "distribution column" marks which tenant owns which rows.
 
 Let's set the distribution column to be company\_id, the tenant
 identifier. In psql, run these functions:
@@ -143,7 +141,7 @@ SELECT create_distributed_table('impressions', 'company_id');
 
 > [!NOTE]
 >
-> Distributing tables or using schema-based sharding is necessary to take advantage of Elastic Clusters with Azure Database for PostgreSQL performance features. If you don't distribute tables or schemas then nodes can't help run queries involving their data.
+> Distributing tables or using schema-based sharding is necessary to take advantage of elastic clusters with Azure Database for PostgreSQL performance features. If you don't distribute tables or schemas, then nodes can't help run queries involving their data.
 
 ## Ingest sample data
 
@@ -290,7 +288,7 @@ SELECT id
 
 ## Next step
 
-In this tutorial, you learned how to create an Elastic Cluster. You connected to it with psql, created a schema, and distributed data. You learned to query data both within and between tenants, and to customize the schema per tenant.
+In this tutorial, you learned how to create an elastic cluster. You connected to it with psql, created a schema, and distributed data. You learned to query data both within and between tenants, and to customize the schema per tenant.
 
 > [!div class="nextstepaction"]
-> [Learn more about Elastic Clusters](concepts-elastic-clusters.md)
+> [Learn more about elastic clusters](concepts-elastic-clusters.md)

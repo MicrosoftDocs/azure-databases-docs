@@ -1,6 +1,6 @@
 ---
 title: Configure alerts - Azure portal
-description: This article describes how to configure and access metric alerts for Azure Database for PostgreSQL - Flexible Server from the Azure portal.
+description: This article describes how to configure and access metric alerts for your Azure Database for PostgreSQL flexible server instance from the Azure portal.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -10,11 +10,9 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL - Flexible Server
+# Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL 
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-This article shows you how to set up Azure Database for PostgreSQL flexible server alerts using the Azure portal. You can receive an alert based on monitoring metrics for your Azure services.
+This article shows you how to set up alerts for your Azure Database for PostgreSQL flexible server instance using the Azure portal. You can receive an alert based on monitoring metrics for your Azure services.
 
 The alert triggers when the value of a specified metric crosses a threshold you assign. The alert triggers both when the condition is first met, and then afterwards when that condition is no longer being met. Metric alerts are stateful, that is, they only send out notifications when the state changes.
 
@@ -68,14 +66,14 @@ You can configure and get information about alert rules using:
 
 ## Monitor multiple resources
 
-Azure Database for PostgreSQL flexible server also supports multi-resource metric alert rule. You can monitor at scale by applying the same metric alert rule to multiple Azure Database for PostgreSQL flexible server instances in the same Azure region. Individual notifications are sent for each monitored resource.
+Azure Database for PostgreSQL also supports multi-resource metric alert rule. You can monitor at scale by applying the same metric alert rule to multiple Azure Database for PostgreSQL flexible server instances in the same Azure region. Individual notifications are sent for each monitored resource.
 
 To [set up a new metric alert rule](/azure/azure-monitor/alerts/alerts-create-new-alert-rule), in the alert rule creation experience, in Scope definition (step 5.)  from the previous section use the checkboxes to select all the Azure Database for PostgreSQL flexible server instances you want the rule to be applied to. 
 
 > [!IMPORTANT]
 > The resources you select must be within the same resource type, location, and subscription. Resources that do not fit these criteria are not selectable.
 
-You can also use [Azure Resource Manager templates](/azure/azure-monitor/alerts/alerts-create-new-alert-rule#create-a-new-alert-rule-using-an-arm-template) to deploy multi-resource metric alerts. To learn more about multi-resource alerts, refer our blog [Scale Monitoring with Azure Database for PostgreSQL - Flexible Server Multi-Resource Alert](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/scale-monitoring-with-azure-postgresql-multi-resource-alerts/ba-p/3866526).
+You can also use [Azure Resource Manager templates](/azure/azure-monitor/alerts/alerts-create-new-alert-rule#create-a-new-alert-rule-using-an-arm-template) to deploy multi-resource metric alerts. To learn more about multi-resource alerts, refer our blog [Scale Monitoring with Azure PostgreSQL Multi-Resource Alerts](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/scale-monitoring-with-azure-postgresql-multi-resource-alerts/ba-p/3866526).
 
 ## Manage your alerts
 

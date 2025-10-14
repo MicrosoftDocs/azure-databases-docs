@@ -1,18 +1,16 @@
 ---
-title: 'Tutorial: Design for microservices with Elastic Cluster'
-description: This tutorial shows how to design for microservices with Elastic Cluster on Azure Database for PostgreSQL.
+title: 'Tutorial: Design for microservices with elastic clusters'
+description: This tutorial shows how to design for microservices with elastic clusters on Azure Database for PostgreSQL.
 author: mulander
 ms.author: adamwolk
-ms.date: 11/07/2024
+ms.date: 02/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
-#customer intent: As a user, I want to learn how to user Elastic Clusters on Azure Database for PostgreSQL flexible server when deploying applications using the microservices architecture.
+#customer intent: As a user, I want to learn how to use elastic clusters on Azure Database for PostgreSQL  when deploying applications using the microservices architecture.
 ---
 
-# Tutorial: Design for microservices with Elastic Cluster
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Tutorial: Design for microservices with elastic clusters (preview)
 
 In this tutorial, you use Azure Database for PostgreSQL as the storage backend for multiple microservices, demonstrating a sample setup and basic operation of such a cluster. Learn how to:
 
@@ -28,14 +26,14 @@ In this tutorial, you use Azure Database for PostgreSQL as the storage backend f
 
 ## Prerequisites
 
-Create an Elastic Cluster in one of the following ways:
-- [Create an Elastic Cluster with ARM template]()
-- [Create an Elastic Cluster using CLI]()
-- [Create an Elastic Cluster using the Portal]()
+Create an elastic cluster in one of the following ways:
+- [Create an elastic cluster with ARM template]()
+- [Create an elastic cluster using CLI]()
+- [Create an elastic cluster using the Portal]()
 
 ## Create roles for your microservices
 
-Distributed schemas are relocatable within an Elastic Cluster. The system can rebalance them as a whole unit across the available nodes, allowing to efficiently share resources without manual allocation.
+Distributed schemas are relocatable within an elastic cluster. The system can rebalance them as a whole unit across the available nodes, allowing to efficiently share resources without manual allocation.
 
 By design, microservices own their storage layer, we don’t make any assumptions on the type of tables and data that they create and store. We provide a schema for every service and assume that they use a distinct ROLE to connect to the database. When a user connects, their role name is put at the beginning of the search_path, so if the role matches with the schema name you don’t need any application changes to set the correct search_path.
 
@@ -55,7 +53,7 @@ CREATE USER ping_service;
 
 ## Use psql utility to create distributed schemas
 
-Once connected to the Elastic Cluster using psql, you can complete some basic tasks.
+Once connected to the elastic cluster using psql, you can complete some basic tasks.
 
 There are two ways in which a schema can be distributed:
 
@@ -75,7 +73,7 @@ This method also allows you to convert existing regular schemas into distributed
 
 > [!NOTE]
 >
-> You can only distribute schemas that do not contain distributed and reference tables.
+> You can only distribute schemas that don't contain distributed and reference tables.
 
 Alternative approach is to enable citus.enable_schema_based_sharding configuration variable:
 
@@ -106,7 +104,7 @@ select * from citus_schemas;
 
 ## Create tables for the sample services
 
-You now need to connect to the Elastic Cluster for every microservice. You can use the \c command to swap the user within an existing psql instance.
+You now need to connect to the elastic cluster for every microservice. You can use the \c command to swap the user within an existing psql instance.
 
 ```plaintext
 \c citus userservice
@@ -171,7 +169,7 @@ $ tree
     └── user.sql
 ```
 
-Before you run the services however, edit `user/app.py`, `ping/app.py`, and `time/app.py` files providing the [connection configuration](https://www.psycopg.org/docs/module.html#psycopg2.connect) for your Elastic Cluster:
+Before you run the services however, edit `user/app.py`, `ping/app.py`, and `time/app.py` files providing the [connection configuration](https://www.psycopg.org/docs/module.html#psycopg2.connect) for your elastic cluster:
 
 ```python
 # Database configuration
@@ -310,7 +308,7 @@ According to expectations, the schemas are moved and we have a more balanced clu
 
 ## Next step
 
-In this tutorial, you learned how to create distributed schemas, ran microservices using them as storage. You also learned how to explore and manage schema-based sharded Elastic Cluster on Azure Database for PostgreSQL.
+In this tutorial, you learned how to create distributed schemas, ran microservices using them as storage. You also learned how to explore and manage schema-based sharded elastic clusters on Azure Database for PostgreSQL.
 
 > [!div class="nextstepaction"]
-> [Learn more about Elastic Clusters](concepts-elastic-clusters.md)
+> [Learn more about elastic clusters](concepts-elastic-clusters.md)

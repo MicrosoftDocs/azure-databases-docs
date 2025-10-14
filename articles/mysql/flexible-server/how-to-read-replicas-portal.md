@@ -8,6 +8,7 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.custom: sfi-image-nochange
 ---
 
 # How to create and manage read replicas in Azure Database for MySQL - Flexible Server by using the Azure portal
@@ -43,6 +44,11 @@ A read replica server can be created using the following steps:
 1. Enter location based on your need to create an in-region or universal cross-region read-replica.
 
    :::image type="content" source="media/how-to-read-replicas-portal/select-cross-region.png" alt-text="Screenshot of selecting a cross region":::
+
+1. You now have the capability to enable auto-scaling of IOPS for both the source and target servers during replica creation. This option is available only if the source server does not already have auto-scaling of IOPS enabled. Temporarily boosting IOPS helps accelerate the replica provisioning process. Once provisioning is complete, you may choose to disable auto-scaling if it is no longer needed. In the replica creation workflow, you see a checkbox option labeled Faster Provisioning. Select this option to leverage auto-scaling of IOPS for a faster and more reliable replica provisioning.
+
+   :::image type="content" source="media/how-to-read-replicas-portal/faster-provisioning.png" alt-text="Screenshot of faster provisioning":::
+
 
 1. Select **OK** to confirm the creation of the replica.
 

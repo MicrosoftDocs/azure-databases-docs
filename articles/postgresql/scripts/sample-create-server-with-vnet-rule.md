@@ -1,6 +1,6 @@
 ---
 title: CLI Script - Create a Virtual Network Rule
-description: This sample CLI script creates an Azure Database for PostgreSQL - Flexible Server instance with a service endpoint on a virtual network and configures a virtual network rule.
+description: This sample CLI script creates an Azure Database for PostgreSQL flexible server instance with a service endpoint on a virtual network and configures a virtual network rule.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -13,9 +13,7 @@ ms.custom:
 ms.devlang: azurecli
 ---
 
-# Create an Azure Database for PostgreSQL - Flexible Server instance and configure a virtual network rule using the Azure CLI
-
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
+# Create an Azure Database for PostgreSQL flexible server instance and configure a virtual network rule using the Azure CLI
 
 This sample CLI script creates an Azure Database for PostgreSQL flexible server instance and configures a virtual network rule.
 
@@ -57,4 +55,4 @@ This script uses the commands outlined in the following table:
 ## Related content
 
 - [Azure CLI documentation](/cli/azure)
-- [Azure CLI samples for Azure Database for PostgreSQL - Flexible Server](../sample-scripts-azure-cli.md)
+- [Azure CLI samples for Azure Database for PostgreSQL flexible server](../sample-scripts-azure-cli.md)

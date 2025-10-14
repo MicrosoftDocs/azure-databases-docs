@@ -5,7 +5,7 @@ author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-bicep
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 09/13/2021
 ms.author: mjbrown
 ---

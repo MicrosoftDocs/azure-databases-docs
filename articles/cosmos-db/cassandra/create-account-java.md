@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Build Java app to create Azure Cosmos DB for Apache Cassandra account'
-description: This tutorial shows how to create a API for Cassandra account, add a database (also called a keyspace), and add a table to that account by using a Java application.
+title: 'Tutorial: Build a Java App to Create an Azure Cosmos DB for Apache Cassandra Account'
+description: This tutorial shows how to create an API for Cassandra account, add a database (also called a keyspace), and add a table to that account by using a Java application.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-cosmos-db
@@ -8,50 +8,47 @@ ms.subservice: apache-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.devlang: java
-ms.custom: devx-track-java, devx-track-extended-java
-#Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-region writes, and other capabilities offered by Azure Cosmos DB.
+ms.custom: devx-track-java, devx-track-extended-java, sfi-ropc-blocked
+#Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources. Customers want to store key/value data and use the global distribution, elastic scaling, multiregion writes, and other capabilities that are offered by Azure Cosmos DB.
 ---
 
-# Tutorial: Create a API for Cassandra account in Azure Cosmos DB by using a Java application to store key/value data
+# Tutorial: Create an API for Cassandra account in Azure Cosmos DB by using a Java application to store key/value data
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
-As a developer, you might have applications that use key/value pairs. You can use a API for Cassandra account in Azure Cosmos DB to store the key/value data. This tutorial describes how to use a Java application to create a API for Cassandra account in Azure Cosmos DB, add a database (also called a keyspace), and add a table. The Java application uses the [Java driver](https://github.com/datastax/java-driver) to create a user database that contains details such as user ID, user name, and user city.  
+As a developer, you might have applications that use key/value pairs. You can use an API for Cassandra account in Azure Cosmos DB to store the key/value data. This tutorial describes how to use a Java application to create an API for Cassandra account in Azure Cosmos DB, add a database (also called a keyspace), and add a table. The Java application uses the [Java driver](https://github.com/datastax/java-driver) to create a user database that contains details such as the user ID, username, and user city.
 
 This tutorial covers the following tasks:
 
 > [!div class="checklist"]
-> * Create a Cassandra database account
-> * Get the account connection string
-> * Create a Maven project and dependencies
-> * Add a database and a table
-> * Run the app
+> * Create a Cassandra database account.
+> * Get the account connection string.
+> * Create a Maven project and dependencies.
+> * Add a database and a table.
+> * Run the app.
 
-## Prerequisites 
+## Prerequisites
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) before you begin. 
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
+* Get the latest version of [Java Development Kit (JDK)](/java/azure/jdk/).
+* [Download](https://maven.apache.org/download.cgi) and [install](https://maven.apache.org/install.html) the [Maven](https://maven.apache.org/) binary archive. On Ubuntu, you can run `apt-get install maven` to install Maven.
 
-* Get the latest version of [Java Development Kit (JDK)](/java/azure/jdk/). 
-
-* [Download](https://maven.apache.org/download.cgi) and [install](https://maven.apache.org/install.html) the [Maven](https://maven.apache.org/) binary archive. 
-  - On Ubuntu, you can run `apt-get install maven` to install Maven. 
-
-## Create a database account 
+## Create a database account
 
 [!INCLUDE [cosmos-db-create-dbaccount-cassandra](../includes/cosmos-db-create-dbaccount-cassandra.md)]
 
-## Get the connection details of your account  
+## Get the connection details of your account
 
-Get the connection string information from the Azure portal, and copy it into the Java configuration file. The connection string enables your app to communicate with your hosted database. 
+Get the connection string information from the Azure portal, and copy it into the Java configuration file. The connection string enables your app to communicate with your hosted database.
 
-1. From the [Azure portal](https://portal.azure.com/), go to your Azure Cosmos DB account. 
+1. From the [Azure portal](https://portal.azure.com/), go to your Azure Cosmos DB account.
 
-2. Open the **Connection String** pane.  
+1. Open the **Connection String** pane.
 
-3. Copy the **CONTACT POINT**, **PORT**, **USERNAME**, and **PRIMARY PASSWORD** values to use in the next steps.
+1. Copy the **CONTACT POINT**, **PORT**, **USERNAME**, and **PRIMARY PASSWORD** values to use in the next steps.
 
-## Create the project and the dependencies 
+## Create the project and the dependencies
 
-The Java sample project that you use in this article is hosted in GitHub. You can run the steps in this doc or download the sample from the [azure-cosmos-db-cassandra-java-getting-started](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started) repository. 
+The Java sample project that you use in this article is hosted in GitHub. You can run the steps in this article or download the sample from the [azure-cosmos-db-cassandra-java-getting-started](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started) repository.
 
 After you download the files, update the connection string information within the `java-examples\src\main\resources\config.properties` file and run it.  
 
@@ -62,39 +59,38 @@ cassandra_username=<FILLME_with_USERNAME>
 cassandra_password=<FILLME_with_PRIMARY PASSWORD> 
 ```
 
-Use the following steps to build the sample from scratch: 
+To build the sample from scratch, follow these steps:
 
-1. From the terminal or command prompt, create a new Maven project called Cassandra-demo. 
+1. From the terminal or command prompt, create a new Maven project called `cassandra-demo`.
 
    ```bash
    mvn archetype:generate -DgroupId=com.azure.cosmosdb.cassandra -DartifactId=cassandra-demo -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false 
    ```
- 
-2. Locate the `cassandra-demo` folder. Using a text editor, open the `pom.xml` file that was generated. 
 
-   Add the Cassandra dependencies and build plugins required by your project, as shown in the [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/pom.xml) file.  
+1. Locate the `cassandra-demo` folder. By using a text editor, open the `pom.xml` file that was generated.
 
-3. Under the `cassandra-demo\src\main` folder, create a new folder named `resources`.  Under the resources folder, add the config.properties and log4j.properties files:
+   Add the Cassandra dependencies and build plugins that your project requires, as shown in the [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/pom.xml) file.
 
-   - The [config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/config.properties) file stores the connection endpoint and key values of the API for Cassandra account. 
-   
-   - The [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/log4j.properties) file defines the level of logging required for interacting with the API for Cassandra.  
+1. Under the `cassandra-demo\src\main` folder, create a new folder named `resources`. Under the `resources` folder, add the `config.properties` and `log4j.properties` files:
 
-4. Browse to the `src/main/java/com/azure/cosmosdb/cassandra/` folder. Within the cassandra folder, create another folder named `utils`. The new folder stores the utility classes required to connect to the API for Cassandra account. 
+   - The [config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/config.properties) file stores the connection endpoint and key values of the API for Cassandra account.
+   - The [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/log4j.properties) file defines the level of logging required for interacting with the API for Cassandra.
 
-   Add the [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) class to create the cluster and to open and close Cassandra sessions. The cluster connects to the API for Cassandra account in Azure Cosmos DB and returns a session to access. Use the [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) class to read connection string information from the config.properties file. 
+1. Browse to the `src/main/java/com/azure/cosmosdb/cassandra/` folder. Within the `cassandra` folder, create another folder named `utils`. The new folder stores the utility classes that are required to connect to the API for Cassandra account.
 
-5. The Java sample creates a database with user information such as user name, user ID, and user city. You need to define get and set methods to access user details in the main function.
- 
-   Create a [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) class under the `src/main/java/com/azure/cosmosdb/cassandra/` folder with get and set methods. 
+   Add the [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) class to create the cluster and to open and close Cassandra sessions. The cluster connects to the API for Cassandra account in Azure Cosmos DB and returns a session to access. Use the [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) class to read connection string information from the `config.properties` file.
 
-## Add a database and a table  
+1. The Java sample creates a database with user information such as the username, user ID, and user city. You need to define `get` and `set` methods to access user details in the main function.
 
-This section describes how to add a database (keyspace) and a table, by using CQL.
+   Create a [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) class under the `src/main/java/com/azure/cosmosdb/cassandra/` folder with `get` and `set` methods.
 
-1. Under the `src\main\java\com\azure\cosmosdb\cassandra` folder, create a new folder named `repository`. 
+## Add a database and a table
 
-2. Create the `UserRepository` Java class and add the following code to it: 
+This section describes how to add a database (keyspace) and a table by using the Cassandra Query Language (CQL).
+
+1. Under the `src\main\java\com\azure\cosmosdb\cassandra` folder, create a new folder named `repository`.
+
+1. Create the `UserRepository` Java class and add the following code to it:
 
    ```java
    package com.azure.cosmosdb.cassandra.repository; 
@@ -139,9 +135,9 @@ This section describes how to add a database (keyspace) and a table, by using CQ
    } 
    ```
 
-3. Locate the `src\main\java\com\azure\cosmosdb\cassandra` folder, and create a new subfolder named `examples`.
+1. Locate the `src\main\java\com\azure\cosmosdb\cassandra` folder, and create a new subfolder named `examples`.
 
-4. Create the `UserProfile` Java class. This class contains the main method that calls the createKeyspace and createTable methods you defined earlier: 
+1. Create the `UserProfile` Java class. This class contains the main method that calls the `createKeyspace` and `createTable` methods that you defined earlier.
 
    ```java
    package com.azure.cosmosdb.cassandra.examples; 
@@ -183,12 +179,12 @@ This section describes how to add a database (keyspace) and a table, by using CQ
        } 
    } 
    ```
- 
-## Run the app 
 
-1. Open a command prompt or terminal window. Paste the following code block. 
+## Run the app
 
-   This code changes the directory (cd) to the folder path where you created the project. Then, it runs the `mvn clean install` command to generate the `cosmosdb-cassandra-examples.jar` file within the target folder. Finally, it runs the Java application.
+1. Open a command prompt or terminal window. Paste the following code block.
+
+   This code changes the directory (`cd`) to the folder path where you created the project. Then, it runs the `mvn clean install` command to generate the `cosmosdb-cassandra-examples.jar` file within the target folder. Finally, it runs the Java application.
 
    ```bash
    cd cassandra-demo
@@ -198,13 +194,13 @@ This section describes how to add a database (keyspace) and a table, by using CQ
    java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile 
    ```
 
-   The terminal window displays notifications that the keyspace and table are created. 
-   
-2. Now, in the Azure portal, open **Data Explorer** to confirm that the keyspace and table were created.
+   The terminal window displays notifications that the keyspace and table are created.
 
-## Next steps
+1. In the Azure portal, open **Data Explorer** to confirm that the keyspace and table were created.
 
-In this tutorial, you've learned how to create a API for Cassandra account in Azure Cosmos DB, a database, and a table by using a Java application. You can now proceed to the next article:
+## Next step
+
+In this tutorial, you learned how to create an API for Cassandra account in Azure Cosmos DB, a database, and a table by using a Java application. You can now proceed to the next article:
 
 > [!div class="nextstepaction"]
-> [load sample data to the API for Cassandra table](load-data-table.md).
+> [Load sample data to the API for Cassandra table](load-data-table.md)

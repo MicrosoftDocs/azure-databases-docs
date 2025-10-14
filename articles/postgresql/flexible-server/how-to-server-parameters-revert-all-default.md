@@ -1,19 +1,17 @@
 ---
 title: Revert all server parameters to their defaults
 description: This article describes how to revert all server parameters to their defaults of an Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to revert all server parameters to their defaults of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to revert all server parameters to their defaults of an Azure Database for PostgreSQL.
 ---
 
 # Revert all server parameters to their defaults
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to revert all server parameters to their defaults of an Azure Database for PostgreSQL flexible server.
 
@@ -53,19 +51,36 @@ Using the [Azure portal](https://portal.azure.com):
 You can revert the value of all read-write server parameters to their defaults via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli-interactive
-parameters_to_reset=$(az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?value!=defaultValue && isReadOnly==\`false\`].name" -o tsv)
+parameters_to_reset=$(az postgres flexible-server parameter list \
+                        --resource-group <resource_group> \
+                        --server-name <server> \
+                        --query "[?value!=defaultValue && isReadOnly==\`false\`].name" \
+                        -output tsv)
 for parameter_to_reset in $parameters_to_reset; do
-  az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name $parameter_to_reset --value $(az postgres flexible-server parameter show --resource-group <resource_group> --server-name <server> --name $parameter_to_reset --output tsv)
+  az postgres flexible-server parameter set \
+    --resource-group <resource_group> \
+    --server-name <server> \
+    --name $parameter_to_reset \
+    --value $(az postgres flexible-server parameter show \
+                --resource-group <resource_group> \
+                --server-name <server> \
+                --name $parameter_to_reset \
+                --output tsv)
 done
 ```
 
 And you can use the following script to conditionally restart the server, if any of the parameters changed require a restart for their change to take effect:
 
 ```azurecli-interactive
-parameters_requiring_restart=$(az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isConfigPendingRestart==\`true\`] | length(@)")
+parameters_requiring_restart=$(az postgres flexible-server parameter list \
+                                 --resource-group <resource_group> \
+                                 --server-name <server> \
+                                --query "[?isConfigPendingRestart==\`true\`] | length(@)")
 
 if [ "$parameters_requiring_restart" -gt 0 ]; then
-  az postgres flexible-server restart --resource-group <resource_group> --name <server>
+  az postgres flexible-server restart \
+    --resource-group <resource_group> \
+    --name <server>
 fi
 ```
 

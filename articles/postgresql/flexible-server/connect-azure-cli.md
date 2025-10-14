@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect using Azure CLI"
-description: This quickstart provides several ways to connect with Azure CLI with Azure Database for PostgreSQL - Flexible Server.
-author: gkasar
-ms.author: gkasar
+description: This quickstart provides several ways to connect with Azure CLI with an Azure Database for PostgreSQL flexible server instance.
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 05/10/2024
 ms.service: azure-database-postgresql
@@ -14,20 +14,17 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Quickstart: Connect and query with Azure CLI  with Azure Database for PostgreSQL - Flexible Server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Quickstart: Connect and query with Azure CLI  with Azure Database for PostgreSQL 
 
 This quickstart demonstrates how to connect to an Azure Database for PostgreSQL flexible server instance using Azure CLI with `az postgres flexible-server connect` and execute single query or sql file with `az postgres flexible-server execute` command. This command allows you test connectivity to your database server and run queries. You can also run multiple queries using the interactive mode. 
 
-
 ## Prerequisites
-- An Azure account with an active subscription. If you don't have one, [get a free trial](https://azure.microsoft.com/free/).
+- An Azure account with an active subscription. If you don't have one, [get a free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - Install [Azure CLI](/cli/azure/install-azure-cli) latest version.
 - Sign in using Azure CLI with `az login` command.
 - (optional) Turn on an experimental parameter persistence with `az config param-persist on`. Parameter persistence helps you use local context without having to repeat numerous arguments like resource group or location.
 
-## Create Azure Database for PostgreSQL flexible server instance
+## Create Azure Database for PostgreSQL  instance
 
 The first thing to create is a managed Azure Database for PostgreSQL flexible server instance. In [Azure Cloud Shell](https://shell.azure.com/), run the following script and make a note of the **server name**, **username, and  **password** generated from this command.
 
@@ -166,10 +163,10 @@ Closed the connection to server372060240
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
-- [Quickstart: Use Python to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-python.md).
-- [Quickstart: Use Java to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-java.md).
-- [Quickstart: Use .NET (C#) to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-csharp.md).
-- [Quickstart: Use Go language to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-go.md).
-- [Quickstart: Use PHP to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-php.md).
-- [Quickstart: Import data from Azure Database for PostgreSQL - Flexible Server in Power BI](connect-with-power-bi-desktop.md).
+- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md).
+- [Quickstart: Use Python to connect and query data from an Azure Database for PostgreSQL](connect-python.md).
+- [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL](connect-java.md).
+- [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL](connect-csharp.md).
+- [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL](connect-go.md).
+- [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL](connect-php.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](connect-with-power-bi-desktop.md).

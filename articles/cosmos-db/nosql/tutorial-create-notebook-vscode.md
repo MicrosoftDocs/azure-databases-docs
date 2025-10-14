@@ -22,13 +22,11 @@ This tutorial walks through how to use the Visual Studio Code Jupyter notebooks 
 ### [Python](#tab/python)
 - An existing Azure Cosmos DB for NoSQL account.
   - If you have an existing Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
-  - No Azure subscription? You can [try Azure Cosmos DB free](../try-free.md) with no credit card required.
 - [Install Visual Studio Code](https://code.visualstudio.com/download) and [setup your environment](https://code.visualstudio.com/docs/datascience/jupyter-notebooks) to use notebooks.
 
 ### [C#](#tab/csharp)
 - An existing Azure Cosmos DB for NoSQL account.
   - If you have an existing Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
-  - No Azure subscription? You can [try Azure Cosmos DB free](../try-free.md) with no credit card required.
 - [Install Visual Studio Code](https://code.visualstudio.com/download) and [setup your environment](https://code.visualstudio.com/docs/datascience/jupyter-notebooks) to use notebooks.
 - Install the [Polyglot notebooks extension](https://code.visualstudio.com/docs/languages/polyglot) for Visual Studio Code.
 ---

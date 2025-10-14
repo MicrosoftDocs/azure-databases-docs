@@ -46,9 +46,11 @@ All of these communications are taken care of automatically once Network Securit
 In cases where you have existing Azure Cosmos DB account and looking to add security perimeter:
 * Select **Networking** from the **Settings** 
 
-:::image type="content" source="./media/network-service-perimeter/add-nsp.png" alt-text="Screenshot showing how to add NSP to an Azure resource.":::
-
 * Then select **Associate NSP** to associate this resource with your network security perimeter to enable communication with other Azure resources in the same perimeter while restricting public access to only allow the connections you specify.
+
+> [!NOTE]
+> If you are making requests to your account using the REST API, ensure that the x-ms-date header is present and in [the correct RFC 1123 date format](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers).
+> Requests can start being blocked if the header is incorrect when an account is associated to a Network Security Perimeter.
 
 ## Next steps
 

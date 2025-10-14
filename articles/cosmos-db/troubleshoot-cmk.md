@@ -1,15 +1,15 @@
 ---
 title: Cross Tenant CMK Troubleshooting Guide
 description: Cross Tenant CMK Troubleshooting Guide
-author: dileepraotv-github
+author: sudhanshukhera
+ms.author: skhera
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/25/2022
-ms.author: turao
 ms.devlang: azurecli
 ---
 
-# Cross Tenant CMK Troubleshooting Guide
+# Cross Tenant Customer-Managed Key (CMK) Troubleshooting Guide
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
@@ -18,7 +18,7 @@ ms.devlang: azurecli
 **Public documentation links**
 
 - [Cosmos DB Customer Managed Key Documentation:](./how-to-setup-customer-managed-keys.md)
-- [Cosmos DB MSI Documentation:](./how-to-setup-managed-identity.md)
+- [Cosmos DB Managed Identity (MSI) Documentation:](./how-to-setup-managed-identity.md)
 
 **Cosmos DB account is in revoke state**
 
@@ -26,10 +26,10 @@ ms.devlang: azurecli
   - if YES, recover the key vault from recycle bin.
 - Is the Key Vault Key Disabled?
   - if YES, re-enable the key.
-- Check Key Vault -\> Networking -\> Firewalls and virtual networks are set to either "Allow public access from all networks" or "Allow public access from specific virtual networks and IP addresses". If later is selected, check if Firewall allow-lists are configured correctly, and "Allow trusted Microsoft services to bypass this firewall" is selected.
+- Check Key Vault -\> Networking -\> Firewalls and virtual networks are set to either "Allow public access from all networks" or "Allow public access from specific virtual networks and IP addresses". If later is selected, check if Firewall allowlists are configured correctly, and "Allow trusted Microsoft services to bypass this firewall" is selected.
 - Check if Key Vault missing any of the Wrap/Unwrap/Get permission in the access policy following [Cosmos DB Customer Managed Key Documentation:](./how-to-setup-customer-managed-keys.md#add-an-access-policy)
   - If YES, regrant the access
-- In case the Multi-Tenant App used in the default identity has been mistakenly deleted
+- In case the multitenant App used in the default identity has been mistakenly deleted
   - If YES, follow [restore application documentation](/azure/active-directory/manage-apps/restore-application) to restore the Application.
 - In case UserAssigned identity used in the default identity has been mistakenly deleted
   - If YES, since UserAssigned identity isn't recoverable once deleted. The customer needs to create new UserAssigned Identity to the db account, and then follow the exact same configuration steps during provision like set FedereatedCrdential with Multi-Tenant App. Finally, customer need to update the db account's default identity with the new UserAssigned identity.
@@ -49,7 +49,7 @@ Customer creates a CMK db account via Azure CLI/ARM Template with Key Vault's Fi
 
 **Error Message**
 
-``Database account creation failed. Operation Id: 00000000-0000-0000-0000-000000000000, Error: {\"error\":{\"code\":\"Forbidden\",\"message\":\"Client address is not authorized and caller was ignored **because bypass is set to None** \\r\\nClient address: xx.xx.xx.xx\\r\\nCaller: name=Unknown/unknown;appid=00001111-aaaa-2222-bbbb-3333cccc4444;oid=ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0\\r\\nVault: mykeyvault;location=eastus\",\"innererror\":{\"code\":\" **ForbiddenByFirewall** \"}}}\r\nActivityId: 00000000-0000-0000-0000-000000000000, ``
+``Database account creation failed. Operation Id: 00000000-0000-0000-0000-000000000000, Error: {\"error\":{\"code\":\"Forbidden\",\"message\":\"Client address is not authorized and caller was ignored **because bypass is set to None** \\r\\nClient address: xx.xx.xx.xx\\r\\nCaller: name=Unknown/unknown;appid=00001111-aaaa-2222-bbbb-3333cccc4444;oid=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb\\r\\nVault: mykeyvault;location=eastus\",\"innererror\":{\"code\":\" **ForbiddenByFirewall** \"}}}\r\nActivityId: 00000000-0000-0000-0000-000000000000, ``
 
 **Status Code**
 
@@ -72,7 +72,7 @@ ___________________________________
 1. A customer attempts to create CMK account with a Key Vault Key Uri that doesn't exist in the tenant. 
 2. A customer tries to create a Cross Tenant CMK account with db account and key vault in different tenant, however the customer forgot to include the "&FederatedClientId=\<00000000-0000-0000-0000-000000000000\>" in the default identity.
 
-For example: *``az cosmosdb create -n mydb -g myresourcegroup --key-uri "https://myvault.vault.azure.net/keys/mykey" --assign-identity "/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity" --default-identity "UserAssignedIdentity=/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity"``*
+For example: *``az cosmosdb create -n mydb -g myresourcegroup --key-uri "https://myvault.vault.azure.net/keys/mykey" --assign-identity "/subscriptions/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity" --default-identity "UserAssignedIdentity=/subscriptions/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity"``*
 
 The "&FederatedClientId=\<00000000-0000-0000-0000-000000000000\>" is missing in the default identity. 
 
@@ -94,7 +94,7 @@ In Scenario 1:  Expected
 
 In Scenario 2: the missing of “&FederatedClientId=<00000000-0000-0000-0000-000000000000>” make the system think the key vault is in the same tenant as the db account, however customer might not have such key vault with same name in the same tenant, which results in this error.
 
-In Scenario 3: Expected as the Multi-tenant App is not there or deleted.
+In Scenario 3: Expected as the Multi-tenant App isn't there or deleted.
 
 
 **Mitigation**
@@ -325,7 +325,7 @@ Forbidden (403)
 
 **Root Cause** 
 
-There could be multi reason that the db account go revoke state, refer to the “6 checks” of the “Key Vault Revoke State Troubleshooting guide”.
+There could be multi reason that the db account go revoke state, refer to the “six checks” of the “Key Vault Revoke State Troubleshooting guide”.
 
 **Mitigation**
 
@@ -349,7 +349,7 @@ Unauthorized (401)
 
 **Root Cause** 
 
-There could be multi reason that the db account go revoke state, refer to the “6 checks” of the “Key Vault Revoke State Troubleshooting guide”.
+There could be multi reason that the db account go revoke state, refer to the “six checks” of the “Key Vault Revoke State Troubleshooting guide”.
 
 **Mitigation**
 
@@ -431,7 +431,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup mode and multiple write locations cannot be enabled together
+Continuous backup mode and multiple write locations can't be enabled together
 
 **Mitigation**
 
@@ -467,7 +467,7 @@ The Continuous backup / Azure Synapse Link / Full fidelity change feed / Materia
 If customer wants to create CMK account with **Continuous backup/ Synapse link / Full fidelity change feed / Materialized view enabled**, then UserAssigned identity is the only supported default identity right now. Notice the SystemAssignedIdentity as default identity is only supported in scenario when customer update the default identity to SystemAssigned identity & and the key vault and the db account must be in the same tenant. 
 
 Sample Command for creation db account using UserAssigned identity.
-``az cosmosdb create -n mydb -g myresourcegroup --key-uri "https://myvault.vault.azure.net/keys/mykey" --assign-identity "/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity" --default-identity "UserAssignedIdentity=/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity&FederatedClientId=00000000-0000-0000-0000-000000000000"``
+``az cosmosdb create -n mydb -g myresourcegroup --key-uri "https://myvault.vault.azure.net/keys/mykey" --assign-identity "/subscriptions/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity" --default-identity "UserAssignedIdentity=/subscriptions/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserassignedidentity&FederatedClientId=00000000-0000-0000-0000-000000000000"``
 
 
 ___________________________________
@@ -512,7 +512,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Today, Azure Synapse Link once turned on, cannot be turned off.
+Today, Azure Synapse Link once turned on, can't be turned off.
 
 **Mitigation**
 
@@ -524,7 +524,7 @@ ___________________________________
 
 **Scenario**
 
-Customer tries turn off Continuous backup mode (Also called PITR) on existing db accounts that has Continuous backup mode already enabled.
+Customer tries turn off Continuous backup mode, also called point-in-time-restore(PITR), on existing db accounts that has Continuous backup mode already enabled.
 
 **Error Message**
 
@@ -536,7 +536,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Today, Continuous backup mode once turned on, cannot be turned off.
+Today, Continuous backup mode once turned on, can't be turned off.
 
 **Mitigation**
 
@@ -560,7 +560,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Today, Materialized View once turned on, cannot be turned off.
+Today, Materialized View once turned on, can't be turned off.
 
 **Mitigation**
 
@@ -589,7 +589,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Enable continuous backup mode with any other properties on existing account is not supported. 
+Enable continuous backup mode with any other properties on existing account isn't supported. 
 
 
 **Mitigation**
@@ -614,7 +614,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup (also called PITR) and Azure Synapse Link (also called analytical storage) cannot be enabled during creation at the same time. However, customer can enable Azure Synapse Link on an existing db account with Continuous backup enabled.
+Continuous backup (also called PITR) and Azure Synapse Link (also called analytical storage) can't be enabled during creation at the same time. However, customer can enable Azure Synapse Link on an existing db account with Continuous backup enabled.
 
 **Mitigation**
 
@@ -638,7 +638,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Customer Managed Key and Full Fidelity Change Feed cannot be enabled together for a global database account today.
+Customer Managed Key and Full Fidelity Change Feed can't be enabled together for a global database account today.
 
 **Mitigation**
 
@@ -662,7 +662,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-enable Materialized View when continuous backup mode is already enabled is not supported.
+enable Materialized View when continuous backup mode is already enabled isn't supported.
 
 **Mitigation**
 
@@ -769,7 +769,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup mode cannot be enabled together with Cassandra database
+Continuous backup mode can't be enabled together with Cassandra database
 
 **Mitigation**
 
@@ -795,7 +795,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup mode cannot be enabled together with Gremlin V1 account right now.
+Continuous backup mode can't be enabled together with Gremlin V1 account right now.
 
 
 **Mitigation**
@@ -822,7 +822,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup mode cannot be enabled together with table enabled database account.
+Continuous backup mode can't be enabled together with table enabled database account.
 
 **Mitigation**
 
@@ -898,7 +898,7 @@ BadRequest(400)
 **Root Cause** 
 
 As customer has removed the current default identity’s “GET/WRAP/Unwrap” permission from the Key Vault access policy for a while, both Cosmos DB account and the dedicated storage account no longer able to access the key vault and will go to revoke state. The Azure Synapse Link will query data from the dedicated storage account, which is in revoke state: 
-“Caused by: com.microsoft.azure.storage.StorageException: The key vault key is not found to unwrap the encryption key.”
+“Caused by: com.microsoft.azure.storage.StorageException: The key vault key isn't found to unwrap the encryption key.”
 
 
 **Mitigation**

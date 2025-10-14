@@ -8,6 +8,7 @@ ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: how-to
 ms.date: 06/08/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Create an Azure Cosmos DB for NoSQL account
@@ -135,12 +136,3 @@ Create a single Azure Cosmos DB account using the API for NoSQL.
 1. Select **Go to resource** to go to the Azure Cosmos DB account page. 
 
    :::image type="content" source="media/create-account-portal/cosmos-deployment-complete.png" lightbox="media/create-account-portal/cosmos-deployment-complete.png" alt-text="Screenshot of deployment page for Azure Cosmos DB DB SQL API resource.":::
-
----
-
-## Next steps
-
-In this guide, you learned how to create an Azure Cosmos DB for NoSQL account. You can now create an application with your Azure Cosmos DB account.
-
-> [!div class="nextstepaction"]
-> [Create a .NET console application with Azure Cosmos DB for NoSQL](tutorial-dotnet-console-app.md)

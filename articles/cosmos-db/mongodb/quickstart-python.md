@@ -8,10 +8,10 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 01/29/2025
-ms.custom: devx-track-python, devx-track-extended-azdevcli
+ms.date: 04/08/2025
+ms.custom: devx-track-python, devx-track-extended-azdevcli, sfi-image-nochange
 appliesto:
-  - ✅ MongoDB (RU)
+- ✅ MongoDB (RU)
 # CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for MongoDB (RU).
 ---
 
@@ -29,7 +29,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application u
 - Docker Desktop
 - Python 3.12
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 
@@ -91,6 +91,14 @@ The client library is available through PyPi, as the `pymongo` package.
     ```
 
 1. Open and review the **src/requirements.txt** file to validate that the `pymongo` entry exists.
+
+### Import libraries
+
+Import the `MongoClient` type into your application code.
+
+```python
+from pymongo import MongoClient
+```
 
 ## Object model
 
@@ -203,7 +211,7 @@ For more information, see [How-to use Visual Studio Code extension to explore Az
 When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
 
 ```azurecli
-azd down
+azd down --force --purge
 ```
 
 ## Related content

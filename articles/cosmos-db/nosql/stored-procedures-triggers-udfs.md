@@ -5,7 +5,7 @@ author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-js
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/26/2021
 ms.author: mjbrown
 ---
@@ -34,10 +34,12 @@ Writing stored procedures, triggers, and user-defined functions (UDFs) in JavaSc
 * **Encapsulation:** Stored procedures can be used to group logic in one place. Encapsulation adds an abstraction layer on top of the data, which enables you to evolve your applications independently from the data. This layer of abstraction is helpful when the data is schema-less and you don't have to manage adding additional logic directly into your application. The abstraction lets you keep the data secure by streamlining the access from the scripts.
 
 > [!TIP]
-> Stored procedures are best suited for operations that are write-heavy and require a transaction across a partition key value. When deciding whether to use stored procedures, optimize around encapsulating the maximum amount of writes possible. Generally speaking, stored procedures are not the most efficient means for doing large numbers of read or query operations, so using stored procedures to batch large numbers of reads to return to the client will not yield the desired benefit. For best performance, these read-heavy operations should be done on the client side, using the Azure Cosmos DB SDK. 
+> Stored procedures are best suited for operations that are write-heavy and require a transaction across a partition key value. When deciding whether to use stored procedures, optimize around encapsulating the maximum amount of writes possible. Generally speaking, stored procedures aren't the most efficient means for doing large numbers of read or query operations, so using stored procedures to batch large numbers of reads to return to the client won't yield the desired benefit. For best performance, these read-heavy operations should be done on the client side, using the Azure Cosmos DB SDK. 
+> 
+> Using stored procedures with strong consistency isn't suggested as mutations are local. 
 
 > [!NOTE]
-> Server-side JavaScript features including stored procedures, triggers, and user-defined functions do not support importing modules.
+> Server-side JavaScript features including stored procedures, triggers, and user-defined functions don't support importing modules.
 
 ## Transactions
 
@@ -66,18 +68,18 @@ Transactions are natively integrated into the Azure Cosmos DB JavaScript program
 
 ### Data consistency
 
-Stored procedures and triggers are always executed on the primary replica of an Azure Cosmos DB container. This feature ensures that reads from stored procedures offer [strong consistency](../consistency-levels.md). Queries using user-defined functions can be executed on the primary or any secondary replica. Stored procedures and triggers are intended to support transactional writes. Meanwhile, read-only logic is best implemented as application-side logic and queries using the [Azure Cosmos DB for NoSQL SDKs](samples-dotnet.md), which will help you saturate the database throughput. 
+Stored procedures and triggers are always executed on the primary replica of an Azure Cosmos DB container. This feature ensures that reads from stored procedures offer [strong consistency](../consistency-levels.md). Queries using user-defined functions can be executed on the primary or any secondary replica. Stored procedures and triggers are intended to support transactional writes. Meanwhile, read-only logic is best implemented as application-side logic and queries using the [Azure Cosmos DB for NoSQL SDKs](/dotnet/api/microsoft.azure.cosmos), which will help you saturate the database throughput. 
 
 > [!TIP]
 > The queries executed within a stored procedure or trigger may not see changes to items made by the same script transaction. This statement applies both to SQL queries, such as `getContent().getCollection().queryDocuments()`, as well as integrated language queries, such as `getContext().getCollection().filter()`.
 
 ## Bounded execution
 
-All Azure Cosmos DB operations must finish within the specified timeout duration. Stored procedures have a timeout limit of 5 seconds. This constraint applies to JavaScript functions – stored procedures, triggers, and user-defined functions. If an operation is not completed within that time limit, the transaction is rolled back.
+All Azure Cosmos DB operations must finish within the specified timeout duration. Stored procedures have a timeout limit of 5 seconds. This constraint applies to JavaScript functions – stored procedures, triggers, and user-defined functions. If an operation isn't completed within that time limit, the transaction is rolled back.
 
-You can either ensure that your JavaScript functions finish within the time limit or implement a continuation-based model to batch/resume execution. In order to simplify the development of stored procedures and triggers to handle time limits, all functions under the Azure Cosmos DB container (for example, create, read, update, and delete items) return a boolean value that represents whether that operation will complete. If this value is false, it is an indication that the procedure must wrap up execution because the script is consuming more time or provisioned throughput than the configured value. Operations queued prior to the first unaccepted store operation are guaranteed to finish if the stored procedure completes in time and does not queue any more requests. Thus, operations should be queued one at a time by using JavaScript's callback convention to manage the script's control flow. Because scripts are executed in a server-side environment, they are strictly governed. Scripts that repeatedly violate execution boundaries may be marked inactive and can't be executed, and they should be recreated to honor the execution boundaries.
+You can either ensure that your JavaScript functions finish within the time limit or implement a continuation-based model to batch/resume execution. In order to simplify the development of stored procedures and triggers to handle time limits, all functions under the Azure Cosmos DB container (for example, create, read, update, and delete items) return a boolean value that represents whether that operation will complete. If this value is false, it's an indication that the procedure must wrap up execution because the script is consuming more time or provisioned throughput than the configured value. Operations queued prior to the first unaccepted store operation are guaranteed to finish if the stored procedure completes in time and doesn't queue any more requests. Thus, operations should be queued one at a time by using JavaScript's callback convention to manage the script's control flow. Because scripts are executed in a server-side environment, they're strictly governed. Scripts that repeatedly violate execution boundaries may be marked inactive and can't be executed, and they should be recreated to honor the execution boundaries.
 
-JavaScript functions are also subject to [provisioned throughput capacity](../request-units.md). JavaScript functions could potentially end up using a large number of request units within a short time and may be rate-limited if the provisioned throughput capacity limit is reached. It is important to note that scripts consume additional throughput in addition to the throughput spent executing database operations, although these database operations are slightly less expensive than the same operations executed from the client.
+JavaScript functions are also subject to [provisioned throughput capacity](../request-units.md). JavaScript functions could potentially end up using a large number of request units within a short time and may be rate-limited if the provisioned throughput capacity limit is reached. It's important to note that scripts consume additional throughput in addition to the throughput spent executing database operations, although these database operations are slightly less expensive than the same operations executed from the client.
 
 ## Triggers
 
@@ -85,7 +87,7 @@ Azure Cosmos DB supports two types of triggers:
 
 ### Pre-triggers
 
-Azure Cosmos DB provides triggers that can be invoked by performing an operation on an Azure Cosmos DB item. For example, you can specify a pre-trigger when you are creating an item. In this case, the pre-trigger will run before the item is created. Pre-triggers cannot have any input parameters. If necessary, the request object can be used to update the document body from the original request. When triggers are registered, users can specify the operations that it can run with. If a trigger was created with `TriggerOperation.Create`, this means using the trigger in a replace operation will not be permitted. For examples, see [How to write triggers](how-to-write-stored-procedures-triggers-udfs.md#triggers) article.
+Azure Cosmos DB provides triggers that can be invoked by performing an operation on an Azure Cosmos DB item. For example, you can specify a pre-trigger when you're creating an item. In this case, the pre-trigger will run before the item is created. Pre-triggers can't have any input parameters. If necessary, the request object can be used to update the document body from the original request. When triggers are registered, users can specify the operations that it can run with. If a trigger was created with `TriggerOperation.Create`, this means using the trigger in a replace operation won't be permitted. For examples, see [How to write triggers](how-to-write-stored-procedures-triggers-udfs.md#triggers) article.
 
 ### Post-triggers
 
@@ -96,7 +98,7 @@ Similar to pre-triggers, post-triggers, are also associated with an operation on
 
 ## <a id="udfs"></a>User-defined functions
 
-User-defined functions (UDFs) are used to extend the API for NoSQL query language syntax and implement custom business logic easily. They can be called only within queries. UDFs do not have access to the context object and are meant to be used as compute-only JavaScript. Therefore, UDFs can be run on secondary replicas.
+User-defined functions (UDFs) are used to extend the API for NoSQL query language syntax and implement custom business logic easily. They can be called only within queries. UDFs don't have access to the context object and are meant to be used as compute-only JavaScript. Therefore, UDFs can be run on secondary replicas.
 
 ## <a id="jsqueryapi"></a>JavaScript language-integrated query API
 

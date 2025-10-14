@@ -1,5 +1,5 @@
 ---
-title: Password authentication failed for user - Azure Database for PostgreSQL - Flexible Server
+title: Password authentication failed for user
 description: Provides resolutions for a connection error - password authentication failed for user `<user-name>`.
 author: akashraokm
 ms.author: akashrao
@@ -11,11 +11,11 @@ ms.topic: troubleshooting-error-codes
 ---
 
 # Password authentication failed for user `<user-name>`
-This article helps you solve a problem that might occur when connecting to Azure Database for PostgreSQL - Flexible Server.
+This article helps you solve a problem that might occur when connecting to Azure Database for PostgreSQL flexible server.
 
 
 ## Symptoms
-When attempting to connect to Azure Database for PostgreSQL - Flexible Server, you may encounter the following error message:
+When attempting to connect to Azure Database for PostgreSQL flexible server, you may encounter the following error message:
 
 > psql: error: connection to server at "\<server-name\>.postgres.database.azure.com" (x.x.x.x), port 5432 failed: FATAL:  password authentication failed for user "\<user-name\>"
 
@@ -43,7 +43,7 @@ export PGSSLMODE=require
 
 
 ## Cause
-The error encountered when connecting to Azure Database for PostgreSQL - Flexible Server primarily stems from issues related to password authentication:
+The error encountered when connecting to Azure Database for PostgreSQL flexible server primarily stems from issues related to password authentication:
 
 * **Incorrect password**
 The password authentication failed for user `<user-name>` error occurs when the password for the user is incorrect. This could happen due to a mistyped password, a recent password change that hasn't been updated in the connection settings, or other similar issues.
@@ -80,11 +80,11 @@ If you're encountering the "password authentication failed for user `<user-name>
   
 * **If you suspect a potential security breach**
 
-  If you suspect a potential security breach is causing unauthorized access to your Azure Database for PostgreSQL - Flexible Server, follow these steps to address the issue:
+  If you suspect a potential security breach is causing unauthorized access to your Azure Database for PostgreSQL flexible server, follow these steps to address the issue:
 
     1. **Enable log capturing**
     If log capturing isn't already on, get it set up now. Log capturing key for keeping an eye on database activities and catching any odd access patterns. There are several ways to do this, including Azure Monitor Log Analytics and server logs, which help store and analyze database event logs.
-       * **Log Analytics**, check out the setup instructions for Azure Monitor Log Analytics here: [Configure and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+       * **Log Analytics**, check out the setup instructions for Azure Monitor Log Analytics here: [Configure and access logs in Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md).
        * **Server logs**, for hands-on log management, see [Configure capture of PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
 
     2. **Identify the attacker's IP address**
@@ -120,7 +120,7 @@ If you're encountering the "password authentication failed for user `<user-name>
   
 
 
-By following these steps, you should be able to resolve the authentication issues and successfully connect to your Azure Database for PostgreSQL - Flexible Server. If you're still facing issues after following the guidance provided, please don't hesitate to [file a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request).
+By following these steps, you should be able to resolve the authentication issues and successfully connect to your Azure Database for PostgreSQL flexible server. If you're still facing issues after following the guidance provided, please don't hesitate to [file a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 
 

@@ -1,19 +1,17 @@
 ---
 title: List server parameters with modified defaults
 description: This article describes how to list all server parameters with modified defaults of an Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to list all server parameters with modified defaults of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to list all server parameters with modified defaults of an Azure Database for PostgreSQL.
 ---
 
 # List server parameters with modified defaults
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to list all server parameters with modified defaults of an Azure Database for PostgreSQL flexible server.
 
@@ -38,7 +36,10 @@ Using the [Azure portal](https://portal.azure.com):
 You can list all server parameters whose values are modified from defaults, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
-az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?value!=defaultValue && isReadOnly==\`false\` && name!='temp_tablespaces' && name!='vacuum_cost_page_miss'] | [].name"
+az postgres flexible-server parameter list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --query "[?value!=defaultValue && isReadOnly==\`false\` && name!='temp_tablespaces' && name!='vacuum_cost_page_miss'] | [].name"
 ```
 
 > [!NOTE]  

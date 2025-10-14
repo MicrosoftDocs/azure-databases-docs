@@ -8,7 +8,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: mongodb
   ms.topic: faq
-  ms.date: 02/23/2024
+  ms.date: 08/20/2025
 title: Frequently asked questions on Azure Cosmos DB for MongoDB in RU architecture
 summary: |
   [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
@@ -52,7 +52,7 @@ sections:
         answer: |
           The quickest way to connect to an Azure Cosmos DB for MongoDB (RU) database is to use the **Quick Start** feature within the resource's page in the [Azure portal](https://portal.azure.com). The Quick Start includes code snippets preconfigured to connect to your database.
 
-          Azure Cosmos DB enforces strict security requirements and standards. Azure Cosmos DB accounts require authentication and secure communication via transport layer security (TLS/SSL). In any examples you build, use TLS/SSL version 1.2.
+          Azure Cosmos DB enforces strict security requirements and standards. Azure Cosmos DB accounts require authentication and secure communication via transport layer security (TLS). In any examples you build, use TLS version 1.2.
 
           For more information, see [Connect to your API for MongoDB RU database](connect-account.yml).
       - question: |
@@ -63,6 +63,30 @@ sections:
           Are non-Microsoft drivers for MongoDB supported for use with Azure Cosmos DB for MongoDB (RU)?
         answer: |
           Yes, you can use non-Microsoft MongoDB Open Database Connectivity (ODBC) drivers with Azure Cosmos DB for MongoDB (RU).
+  - name: Role-based access control
+    questions:
+      - question: |
+          Is it possible to manage role definitions and role assignments from the Azure portal?
+        answer: |
+          Azure portal support for role management isn't available. However, role-based access control can be enabled via the features tab in the Azure portal.
+      - question: |
+          How do I change a user's password?
+        answer: |
+          Update the user definition with the new password.
+      - question: |
+          What Cosmos DB for MongoDB versions support role-based access control?
+        answer: |
+          Versions 3.6 and higher support role-based access control.
+      - question: |
+          What are some of the limitations of role-based access control?
+        answer: |
+          - The number of users and roles you can create must equal less than 10,000. 
+          - The commands listCollections, listDatabases, killCursors, and currentOp are excluded from role-based access control.
+          - Users and Roles across databases aren't supported.
+          - You can only set or reset a user's password through the Azure CLI or Azure PowerShell.
+          - Configuring Users and Roles is only supported through Azure CLI / PowerShell. 
+          - Disabling primary/secondary key authentication isn't supported. We recommend rotating your keys to prevent access when you enable role-based access control.
+          - Role-based access control policies for Azure Cosmos DB for MongoDB aren't automatically reinstated after a restore operation. You need to reconfigure these policies after the restoration process completes.
 additionalContent: |
   ## Related content
 

@@ -6,11 +6,12 @@ ms.author: abhishekum
 ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
-ms.topic: conceptual
+ms.topic: upgrade-and-migration-article
 ms.collection:
-  - sql-migration-content
+- sql-migration-content
 ms.custom:
-  - references_regions
+- references_regions
+- sfi-image-nochange
 ---
 
 # Migrate databases by using the Azure SQL Migration extension for Azure Data Studio

@@ -4,7 +4,7 @@ description: This article provides technical details relating to global distribu
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/02/2020
 ---
 
@@ -41,7 +41,7 @@ A replica uniquely belongs to an Azure Cosmos DB tenant. Each replica hosts an i
 
 The Azure Cosmos DB database engine consists of components including implementation of several coordination primitives, language runtimes, the query processor, and the storage and indexing subsystems responsible for transactional storage and indexing of data, respectively. To provide durability and high availability, the database engine persists its data and index on SSDs and replicates it among the database engine instances within the replica-set(s) respectively. Larger tenants correspond to higher scale of throughput and storage and have either bigger or more replicas or both. Every component of the system is fully asynchronous – no thread ever blocks, and each thread does short-lived work without incurring any unnecessary thread switches. Rate-limiting and back-pressure are plumbed across the entire stack from the admission control to all I/O paths. Azure Cosmos DB database engine is designed to exploit fine-grained concurrency and to deliver high throughput while operating within frugal amounts of system resources.
 
-Azure Cosmos DB’s global distribution relies on two key abstractions – *replica-sets* and *partition-sets*. A replica-set is a modular Lego block for coordination, and a partition-set is a dynamic overlay of one or more geographically distributed physical partitions. To understand how global distribution works, we need to understand these two key abstractions. 
+Azure Cosmos DB’s global distribution relies on two key abstractions – *replica-sets* and *partition-sets*. A replica-set is a modular building block for coordination, and a partition-set is a dynamic overlay of one or more geographically distributed physical partitions. To understand how global distribution works, we need to understand these two key abstractions. 
 
 ## Replica-sets
 

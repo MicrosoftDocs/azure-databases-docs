@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Create Azure App Service Web App in same virtual network"
-description: Quickstart guide to create an Azure Database for PostgreSQL - Flexible Server instance with a web app in the same virtual network.
+description: Quickstart guide to create an Azure Database for PostgreSQL flexible server instance with a web app in the same virtual network.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
@@ -9,14 +9,14 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
 ms.custom:
-  - mvc
-  - devx-track-azurecli
+- mvc
+- devx-track-azurecli
+- sfi-ropc-blocked
 ms.devlang: azurecli
 ---
 
-# Tutorial: Create an Azure Database for PostgreSQL - Flexible Server instance with App Services Web App in virtual network
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Tutorial: Create a flexible server instance
+ with App Services Web App in virtual network
 
 This tutorial shows you how to create a Azure App Service Web app with Azure Database for PostgreSQL flexible server inside a [Virtual network](/azure/virtual-network/virtual-networks-overview).
 
@@ -29,7 +29,7 @@ In this tutorial you'll learn how to:
 
 ## Prerequisites
 
-- If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/free/) account before you begin.
+- If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) account before you begin.
 - [Install Azure CLI](/cli/azure/install-azure-cli) version 2.0 or later locally (or use [Azure Cloud Shell](https://azure.microsoft.com/get-started/azure-portal/cloud-shell/) which has CLI preinstalled). To see the version installed, run the `az --version` command. 
 - Log in to your account using the [az login](/cli/azure/authenticate-azure-cli) command. Note the **id** property from the command output for the corresponding subscription name.
 
@@ -42,7 +42,8 @@ In this tutorial you'll learn how to:
   az account set --subscription <subscription ID>
   ```
 
-## Create an Azure Database for PostgreSQL flexible server instance in a new virtual network
+## Create a flexible server instance
+ in a new virtual network
 
 Create a private Azure Database for PostgreSQL flexible server instance inside a virtual network (VNET) using the following command:
 

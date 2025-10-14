@@ -1,18 +1,16 @@
 ---
-title: Table types - Elastic Clusters
-description: Learn about the different types of tables available in an Elastic Cluster on Azure Database for PostgreSQL.
+title: Table types - elastic clusters
+description: Learn about the different types of tables available in an elastic cluster on Azure Database for PostgreSQL.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 12/10/2024
+ms.date: 06/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Table types on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Table types on elastic clusters in Azure Database for PostgreSQL  (preview)
 
 There are five types of tables in a cluster, each stored differently on nodes and used for different purposes.
 
@@ -20,11 +18,11 @@ There are five types of tables in a cluster, each stored differently on nodes an
 
 The first type, and most common, is distributed tables. They appear to be normal tables to SQL statements, but they're horizontally partitioned across worker nodes. What this means is that the rows of the tables are stored on different nodes, in fragment tables called shards.
 
-Elastic Clusters run not only SQL but DDL (Data Definition Language) statements throughout a cluster. Changing the schema of a distributed table cascades to update all the table's shards across workers. Such operations need to be done through a connection over port 5432.
+Elastic clusters run not only SQL but DDL (Data Definition Language) statements throughout a cluster. Changing the schema of a distributed table cascades to update all the table's shards across workers. Such operations need to be done through a connection over port 5432.
 
 ### Distributed column
 
-Elastic Clusters use algorithmic sharding to assign rows to shards. The assignment is made deterministically based on the value of a table column called the distribution column. The cluster administrator must designate this column when distributing a table. Making the right choice is important for performance and functionality.
+Elastic clusters use algorithmic sharding to assign rows to shards. The assignment is made deterministically based on the value of a table column called the distribution column. The cluster administrator must designate this column when distributing a table. Making the right choice is important for performance and functionality.
 
 ## Reference tables
 
@@ -34,13 +32,13 @@ Reference tables are typically small and are used to store data that's relevant 
 
 ## Local tables
 
-When you use Elastic Cluster, each node is a regular PostgreSQL database. You can create ordinary tables on them and choose not to shard them.
+When you use elastic cluster, each node is a regular PostgreSQL database. You can create ordinary tables on them and choose not to shard them.
 
-A good candidate for local tables would be small administrative tables that don't participate in join queries. An example is a `users` table for application sign-in and authentication. This type of table is only useful when you don't plan to load balance your connection among an Elastic Cluster using port 7432.
+A good candidate for local tables would be small administrative tables that don't participate in join queries. An example is a `users` table for application sign-in and authentication. This type of table is only useful when you don't plan to load balance your connection among an elastic cluster using port 7432 or 8432.
 
 ## Local managed tables
 
-Elastic Clusters might automatically add local tables to metadata if a foreign key reference exists between a local table and a reference table. In addition, locally managed tables can be manually created by executing citus_add_local_table_to_metadata function on regular local tables. Tables present in metadata are considered managed tables and can be queried from any node. Citus knows to route to the node to obtain data from the local managed table. Such tables are displayed as local in `citus_tables` view.
+Elastic clusters might automatically add local tables to metadata if a foreign key reference exists between a local table and a reference table. In addition, locally managed tables can be manually created by executing citus_add_local_table_to_metadata function on regular local tables. Tables present in metadata are considered managed tables and can be queried from any node. Citus knows to route to the node to obtain data from the local managed table. Such tables are displayed as local in `citus_tables` view.
 
 ## Schema tables
 
@@ -48,6 +46,6 @@ With [schema-based sharding](concepts-elastic-clusters-sharding-models.md#schema
 
 ## Related content
 
-- [Overview of Elastic Clusters](concepts-elastic-clusters.md).
-- [Sharding models on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server](concepts-elastic-clusters-sharding-models.md).
-- [Frequently asked questions about Elastic Clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).
+- [Overview of elastic clusters](concepts-elastic-clusters.md).
+- [Sharding models on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-sharding-models.md).
+- [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).

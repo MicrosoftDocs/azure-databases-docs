@@ -1,19 +1,17 @@
 ---
 title: Scale storage size
 description: This article describes how to scale the storage size of an Azure Database for PostgreSQL flexible server.
-author: kabharati
-ms.author: kabharati
+author: varun-dhawan
+ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to scale the storage size of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to scale the storage size of an Azure Database for PostgreSQL.
 ---
 
 # Scale storage size
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to increase the size allocated to the storage of an Azure Database for PostgreSQL flexible server.
 
@@ -47,7 +45,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-storage/save-size-ssd.png" alt-text="Screenshot showing the Save button enabled after changing disk size for a Premium SSD disk." lightbox="./media/how-to-scale-storage/save-size-ssd.png":::
 
-5. If you grow the disk from any size between 32 GiB and 4 TiB, to any other size in the same range, the operation is performed without causing any server downtime. It's also the case if you grow the disk from any size between 8 TiB and 32 TiB. In all those cases, the operation is performed while the server is online. However, if you increase the size of disk from any value lower or equal to 4096 GiB, to any size higher than 4096 GiB, a server restart is required. In that case, you're required to confirm that you understand the consequences of performing the operation then.
+5. If you grow the disk from any size between 32 GiB and 4 TiB, to any other size in the same range, the operation is performed without causing any server downtime. It's also the case if you grow the disk from any size between 8 TiB and 32 TiB. In all those cases, the operation is performed while the server is online. However, if you increase the size of disk from any value lower or equal to 4096 GiB, to any size higher than 4096 GiB, a server restart is required. In that case, you're required to confirm that you understand the consequences of performing the operation.
 
     :::image type="content" source="./media/how-to-scale-storage/confirmation-ssd.png" alt-text="Screenshot showing the confirmation dialog displayed when a Premium SSD disk is grown from a size smaller to 4 TiB to a size larger than 4 TiB." lightbox="./media/how-to-scale-storage/confirmation-ssd.png":::
 
@@ -67,7 +65,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to increase the size of your Premium SSD disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-size <storage_size>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-size <storage_size>
 ```
 
 > [!NOTE]
@@ -90,7 +91,10 @@ Updating storage cannot be smaller than the original storage size <current_stora
 You can determine the current storage size of your server via the [az postgres flexible-server show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-show) command.
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query storage.storageSizeGb
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query storage.storageSizeGb
 ```
 
 > [!IMPORTANT]
@@ -137,7 +141,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to increase the size of your Premium SSD disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-size <storage_size>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-size <storage_size>
 ```
 
 > [!NOTE]
@@ -160,7 +167,10 @@ Updating storage cannot be smaller than the original storage size <current_stora
 You can determine the current storage size of your server via the [az postgres flexible-server show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-show) command.
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query storage.storageSizeGb
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query storage.storageSizeGb
 ```
 
 ---
@@ -169,4 +179,4 @@ az postgres flexible-server show --resource-group <resource_group> --name <serve
 
 - [Scale storage performance](how-to-scale-storage-performance.md).
 - [Storage options](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).

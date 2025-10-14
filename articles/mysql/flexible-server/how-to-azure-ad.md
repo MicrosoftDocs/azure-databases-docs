@@ -1,16 +1,18 @@
 ---
 title: Set up Microsoft Entra Authentication
 description: Learn how to set up Microsoft Entra authentication for Azure Database for MySQL - Flexible Server.
-author: SudheeshGH
-ms.author: sunaray
+author: avnishrastogi
+ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
-  - devx-track-azurecli
-  - has-azure-ad-ps-ref
+- devx-track-azurecli
+- has-azure-ad-ps-ref
+- sfi-image-nochange
+- sfi-ropc-nochange
 ---
 
 # Set up Microsoft Entra authentication for Azure Database for MySQL - Flexible Server
@@ -77,10 +79,11 @@ The script grants the `User.Read.All`, `GroupMember.Read.All`, and `Application.
 ```powershell
 # Script to assign permissions to the UMI "umiservertest"
 
-import-module AzureAD
+import-module Az.Resources
+import-module Microsoft.Entra
 $tenantId = '<tenantId>' # Your Azure AD tenant ID
 
-Connect-AzureAD -TenantID $tenantId
+Connect-Entra -TenantID $tenantId
 # Log in as a user with a "Global Administrator" or "Privileged Role Administrator" role
 # Script to assign permissions to an existing UMI
 # The following Microsoft Graph permissions are required:
@@ -89,7 +92,7 @@ Connect-AzureAD -TenantID $tenantId
 #   Application.Read.ALL
 
 # Search for Microsoft Graph
-$AAD_SP = Get-AzureADServicePrincipal -SearchString "Microsoft Graph";
+$AAD_SP = Get-AzADServicePrincipal -DisplayNameStartsWith "Microsoft Graph"
 $AAD_SP
 # Use Microsoft Graph; in this example, this is the first element $AAD_SP[0]
 
@@ -101,7 +104,7 @@ $AAD_SP
 #44e2d3f6-97c3-4bc7-9ccd-e26746638b6d 0bf30f3b-4a52-48df-9a82-234910c4a086 Microsoft Graph #Change
 
 $MSIName = "<managedIdentity>";  # Name of your user-assigned
-$MSI = Get-AzureADServicePrincipal -SearchString $MSIName
+$MSI = Get-AzADServicePrincipal -DisplayNameStartsWith $MSIName
 if($MSI.Count -gt 1)
 {
 Write-Output "More than 1 principal found, please find your principal and copy the right object ID. Now use the syntax $MSI = Get-AzureADServicePrincipal -ObjectId <your_object_id>"
@@ -115,12 +118,12 @@ Exit
 
 # Assign the app roles
 
-$AAD_AppRole = $AAD_SP.AppRoles | Where-Object {$_.Value -eq "User.Read.All"}
-New-AzureADServiceAppRoleAssignment -ObjectId $MSI.ObjectId -PrincipalId $MSI.ObjectId -ResourceId $AAD_SP.ObjectId -Id $AAD_AppRole.Id
-$AAD_AppRole = $AAD_SP.AppRoles | Where-Object {$_.Value -eq "GroupMember.Read.All"}
-New-AzureADServiceAppRoleAssignment -ObjectId $MSI.ObjectId -PrincipalId $MSI.ObjectId -ResourceId $AAD_SP.ObjectId -Id $AAD_AppRole.Id
-$AAD_AppRole = $AAD_SP.AppRoles | Where-Object {$_.Value -eq "Application.Read.All"}
-New-AzureADServiceAppRoleAssignment -ObjectId $MSI.ObjectId -PrincipalId $MSI.ObjectId -ResourceId $AAD_SP.ObjectId -Id $AAD_AppRole.Id
+$AAD_AppRole = $AAD_SP.AppRole | Where-Object {$_.Value -eq "User.Read.All"}
+New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId $MSI.Id -ResourceId $AAD_SP.Id -AppRoleId $AAD_AppRole.Id
+$AAD_AppRole = $AAD_SP.AppRole | Where-Object {$_.Value -eq "GroupMember.Read.All"}
+New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId $MSI.Id -ResourceId $AAD_SP.Id -AppRoleId $AAD_AppRole.Id
+$AAD_AppRole = $AAD_SP.AppRole | Where-Object {$_.Value -eq "Application.Read.All"}
+New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId $MSI.Id -ResourceId $AAD_SP.Id -AppRoleId $AAD_AppRole.Id
 ```
 
 In the final steps of the script, if you have more UMIs with similar names, you have to use the proper `$MSI[ ]array` number. An example is `$AAD_SP.ObjectId[0]`.

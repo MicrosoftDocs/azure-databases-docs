@@ -1,19 +1,17 @@
 ---
 title: List read-only dynamic server parameters
 description: This article describes how to list read-only dynamic server parameters of an Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to list read-only dynamic server parameters of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to list read-only dynamic server parameters of an Azure Database for PostgreSQL.
 ---
 
 # List read-only server parameters
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to list read-only dynamic server parameters of an Azure Database for PostgreSQL flexible server.
 
@@ -38,7 +36,10 @@ Using the [Azure portal](https://portal.azure.com):
 You can list all server parameters that are designated as read-only, the ones the user can't change, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
-az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isReadOnly==\`true\`] | [].name"
+az postgres flexible-server parameter list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --query "[?isReadOnly==\`true\`] | [].name"
 ```
 
 ---

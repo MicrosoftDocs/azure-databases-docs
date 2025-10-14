@@ -8,6 +8,7 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
+ms.custom: sfi-image-nochange
 ---
 
 # Manage Azure Database for MySQL - Flexible Server using automation tasks (preview)
@@ -49,6 +50,7 @@ Creating an automation task doesn't immediately incur charges. The automation ta
    | **Stop server** | Allows you to stop a server based on a given schedule, for example you want to stop it on a weekend to optimize cost. |
    | **Start server** | Allows you to start a server based on a given schedule, for example you want to start a server if it is stopped during the weekend. |
    | **Scale server** | Allows you to scale up or down a server on a given schedule. For example, to scale down during weekends or scale up during an event you can use this task. |
+   | **Take on-demand backup of the server** | Allows you to trigger on-demand backup of MySQL Flexible Server at a scheduled time of the day. For example, you can schedule triggering on-demand backup every weekend for better disaster recovery readiness |
 
 ## Stop server task
 
@@ -101,6 +103,24 @@ You can scale a server up or down based on a recurring time schedule. You need t
 
 Here's a screenshot of the Scale automation task:
 :::image type="content" source="media/create-automation-tasks/scale-server-on-schedule.png" alt-text="Screenshot that shows scale automation task." lightbox="media/create-automation-tasks/scale-server-on-schedule.png":::
+
+## On-demand backup server task
+
+You can schedule triggering of [on-demand backup](./concepts-backup-restore.md#on-demand-backup) of the server based on desired time schedule, providing enhanced flexibility for maintaining backups of business-critical data.You need to provide the following information when creating a task for initiating on-demand backup of Azure Database for MySQL Flexible Server. 
+
+You need to provide the following information when creating as task for backup:
+
+
+| Field | Description |
+| --- | --- |
+| Task Name | Unique name of the task |
+| Backup time | Date and time to initiate on-demand backup of the server |
+| Timezone | Choose a timezone from the drop down list|
+| Interval | How frequently to run this task. Enter a numeric value. If you enter 1, the task will run 1 time based on the frequency. |
+| Frequency | You can run this task once a month/week/day/hour/minute/second. |
+| Notify Me | Turn on or off to receive notifications. |
+| Enter email | Provide email to receive notifications. |
+
 
 ## Review task history
 

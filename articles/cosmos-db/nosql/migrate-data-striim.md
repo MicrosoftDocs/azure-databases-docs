@@ -7,6 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 12/09/2021
+ms.custom: sfi-image-nochange
 ---
 
 # Migrate data to Azure Cosmos DB for NoSQL account using Striim
@@ -18,7 +19,7 @@ This article shows how to use Striim to migrate data from an **Oracle database**
 
 ## Prerequisites
 
-* If you don't have an [Azure subscription](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), create a [free account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) before you begin.
+* If you don't have an [Azure subscription](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 * An Oracle database running on-premises with some data in it.
 

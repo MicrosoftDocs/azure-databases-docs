@@ -1,13 +1,13 @@
 ---
 title: Microsoft Entra Authentication
 description: Learn about the concepts of Microsoft Entra ID for authentication with Azure Database for MySQL - Flexible Server.
-author: SudheeshGH
-ms.author: sunaray
+author: avnishrastogi
+ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Microsoft Entra authentication for Azure Database for MySQL - Flexible Server
@@ -127,6 +127,8 @@ Once you authenticate against the Active Directory, you retrieve a token. This t
 - If the Microsoft Entra admin is removed from the server, the server is no longer associated with a Microsoft Entra tenant, and therefore all Microsoft Entra logins are disabled for the server. Adding a new Microsoft Entra admin from the same tenant re-enables Microsoft Entra logins.
 
 - A Flexible Server matches access tokens to the Azure Database for MySQL Flexible Server users using the user's unique Microsoft Entra user ID instead of the username. This means that if a Microsoft Entra user is deleted in Microsoft Entra ID and a new user is created with the same name, the Flexible Server considers that a different user. Therefore, if a user is deleted from Microsoft Entra ID and then a new user with the same name is added, the new user isn't able to connect with the existing user.
+
+- To enable Entra authentication on a replica server, you need to apply the same configuration steps used on the primary server across all replica partners.
 
 > [!NOTE]  
 > The subscriptions of a Flexible Server with Microsoft Entra authentication enabled can't be transferred to another tenant or directory.

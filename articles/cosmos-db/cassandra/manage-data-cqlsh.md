@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: quickstart
 ms.date: 01/24/2022
-ms.custom: template-quickstart
+ms.custom: template-quickstart, sfi-image-nochange
 ---
 
 
@@ -27,7 +27,7 @@ In this quickstart, you create an Azure Cosmos DB for Apache Cassandra account, 
 
 
 ## Prerequisites
-- An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Or [try Azure Cosmos DB for free](../try-free.md) without an Azure subscription.
+- An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ## Create a database account
 

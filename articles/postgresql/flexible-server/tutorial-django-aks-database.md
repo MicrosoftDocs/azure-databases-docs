@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Deploy Django on AKS cluster by using Azure CLI"
-description: Learn how to quickly build and deploy Django  on AKS with Azure Database for PostgreSQL - Flexible Server.
+description: Learn how to quickly build and deploy Django  on AKS with Azure Database for PostgreSQL flexible server.
 author: agapovm
 ms.author: maximagapov
 ms.reviewer: maghan
@@ -13,9 +13,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Tutorial: Deploy Django app on AKS with Azure Database for PostgreSQL - Flexible Server
-
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+# Tutorial: Deploy Django app on AKS with Azure Database for PostgreSQL 
 
 In this quickstart, you deploy a Django application on Azure Kubernetes Service (AKS) cluster with Azure Database for PostgreSQL flexible server using the Azure CLI.
 
@@ -98,7 +96,8 @@ NAME                       STATUS   ROLES   AGE     VERSION
 aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
-## Create an Azure Database for PostgreSQL flexible server instance
+## Create a flexible server instance
+
 
 Create an Azure Database for PostgreSQL flexible server instance with the [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command. The following command creates a server using service defaults and values from your Azure CLI's local context:
 
@@ -388,5 +387,5 @@ az group delete --name django-project --yes --no-wait
 - [Access Kubernetes resources using the Azure portal](/azure/aks/kubernetes-portal) for your AKS cluster.
 - [Automated deployments for Azure Kubernetes Service](/azure/aks/automated-deployments).
 - [Scale applications in Azure Kubernetes Service](/azure/aks/tutorial-kubernetes-scale).
-- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
-- [Configure server parameters in Azure Database for PostgreSQL - Flexible Server](how-to-configure-server-parameters.md).
+- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).
+- [Configure server parameters in Azure Database for PostgreSQL flexible server](how-to-configure-server-parameters.md).

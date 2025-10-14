@@ -1,5 +1,5 @@
 ---
-title: "Prerequisites for the Migration Service in Azure Database for PostgreSQL (Offline)"
+title: "Prerequisites For The Migration Service In Azure Database For Postgresql (Offline)"
 description: Providing the prerequisites of the migration service in Azure Database for PostgreSQL
 author: apduvuri
 ms.author: adityaduvuri
@@ -46,7 +46,7 @@ These parameters aren't automatically migrated to the target environment and mus
 - Save the parameter changes and, if necessary, restart the Azure Database for PostgreSQL flexible server to apply the new configuration.
 
 > [!IMPORTANT]  
-> [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initating the migration. This is essential for the existing credentials on single server to work on your flexible server.
+> [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initiating the migration. This is essential for the existing credentials on single server to work on your flexible server.
 
 ### Disable high availability (reliability) and read replicas in the target
 

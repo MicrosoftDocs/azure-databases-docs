@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 02/24/2025
+ms.date: 06/11/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
@@ -20,7 +20,7 @@ appliesto:
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Node.js. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Node.js.
+In this quickstart, you deploy a basic Azure Cosmos DB for NoSQL application using the Azure SDK for Node.js. Azure Cosmos DB for NoSQL is a schemaless data store allowing applications to store unstructured data in the cloud. Query data in your containers and perform common operations on individual items using the Azure SDK for Node.js.
 
 [API reference documentation](/javascript/api/overview/azure/cosmos-readme) | [Library source code](https://github.com/azure/azure-sdk-for-js/tree/main/sdk/cosmosdb/cosmos) | [Package (npm)](https://www.npmjs.com/package/@azure/cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -30,11 +30,11 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 - Docker Desktop
 - Node.js 22 or newer
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 
-Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for NoSQL account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
 1. Open a terminal in an empty directory.
 
@@ -109,6 +109,31 @@ The client library is available through the Node Package Manager, as the `@azure
 
 1. Open and review the **src/package.json** file to validate that the `azure-cosmos` and `azure-identity` entries both exist.
 
+### Import libraries
+
+::: zone pivot="programming-language-js"
+
+Import the `DefaultAzureCredential` and `CosmosClient` types into your application code.
+
+```javascript
+import { DefaultAzureCredential } from '@azure/identity';
+import { CosmosClient } from '@azure/cosmos';
+```
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
+
+Import all required types into your application code.
+
+```typescript
+import { PagedAsyncIterableIterator } from '@azure/core-paging';
+import { DefaultAzureCredential, TokenCredential } from '@azure/identity';
+import { Container, CosmosClient, Database, FeedResponse, ItemResponse, SqlQuerySpec } from '@azure/cosmos';
+```
+
+:::zone-end
+
 ## Object model
 
 | Name | Description |
@@ -140,20 +165,20 @@ This sample creates a new instance of the `CosmosClient` type and authenticates 
 const credential = new DefaultAzureCredential();
 
 const client = new CosmosClient({
-    '<azure-cosmos-db-nosql-account-endpoint>',
+    endpoint: '<azure-cosmos-db-nosql-account-endpoint>',
     aadCredentials: credential
 });
 ```
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const credential: TokenCredential = new DefaultAzureCredential();
 
 const client = new CosmosClient({
-    '<azure-cosmos-db-nosql-account-endpoint>',
+    endpoint: '<azure-cosmos-db-nosql-account-endpoint>',
     aadCredentials: credential
 });
 ```
@@ -172,7 +197,7 @@ const database = client.database('cosmicworks');
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const database: Database = client.database('cosmicworks');
@@ -192,7 +217,7 @@ const container = database.container('products');
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const container: Container = database.container('products');
@@ -221,7 +246,7 @@ let response = await container.items.upsert(item);
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const item: Product = {
@@ -254,7 +279,7 @@ let read_item = response.resource;
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const id = 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb';
@@ -297,7 +322,7 @@ for (let item of response.resources) {
 
 :::zone-end
 
-::: zone pivot="programming-language-js"
+::: zone pivot="programming-language-ts"
 
 ```typescript
 const querySpec: SqlQuerySpec = {

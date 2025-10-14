@@ -1,7 +1,7 @@
 ---
-title: Enable and work with cross-region replication
+title: Enable and work with cross-region and same region replication
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Enable and disable cross-region replication and promote cluster replica in another region for disaster recovery (DR) in Azure Cosmos DB for MongoDB vCore.
+description: Enable and disable replication and promote replica cluster for disaster recovery (DR) in Azure Cosmos DB for MongoDB vCore.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
@@ -10,35 +10,41 @@ ms.custom:
   - build-2024
   - ignite-2024
 ms.topic: how-to
-ms.date: 01/08/2025
+ms.date: 09/09/2025
+appliesto:
+- ✅ MongoDB vCore
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
 ---
 
-# Manage cross-region replication on your Azure Cosmos DB for MongoDB vCore cluster
+# Manage cross-region and same region replication on your Azure Cosmos DB for MongoDB vCore cluster
 
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-Azure Cosmos DB for MongoDB vCore allows continuous data streaming to a replica cluster in another Azure region. That capability provides cross-region disaster recovery (DR) protection and read scalability across the regions. This document serves as a quick guide for developers who want to learn how to manage cross-region replication for their clusters.
+Azure Cosmos DB for MongoDB vCore allows continuous data streaming to a replica cluster in another or the same Azure region. That capability provides cross-region disaster recovery (DR) protection and read scalability across the regions and in the same region. This document serves as a quick guide for developers who want to learn how to manage replication for their clusters.
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free).
+[!INCLUDE[Prerequisite - Azure subscription](includes/prereq-azure-subscription.md)]
 
-## Enable cross-region replication
+## Enable cross-region or same region replication
 
-To enable cross-region replication on a new cluster *during cluster creation*, follow these steps:
+You can create a replica cluster during new cluster provisioning or at any time on an existing cluster.
+
+### Replica cluster creation during new cluster provisioning
+
+To enable replication on a new cluster *during cluster creation*, follow these steps:
 
 1. Follow the steps to [start cluster creation and complete the **Basics** tab for a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
-1. On the **Global distribution** tab, select **Enable** for the **Read replica in another region**.
+1. (optionally) Select desired network access settings for the cluster on the **Networking** tab.
+1. On the **Global distribution** tab, select **Enable** for the **Cluster replica**.
 1. Provide a replica cluster name in the **Read replica name** field. 
 1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
-1. (optionally) Select desired network access settings for the cluster on the **Networking** tab.
 1. On the **Review + create** tab, review cluster configuration details, and then select **Create**. 
 
 > [!NOTE]
 > The replica cluster is created in the same Azure subscription and resource group as its primary cluster.
 
-To enable cross-region replication on a new cluster *at any time after cluster creation*, follow these steps:
+### Replica cluster creation for existing cluster
+
+To enable replication on a new cluster *at any time after cluster creation*, follow these steps:
 
 1. Follow the steps to [create a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
 1. Skip **Global distribution** tab. This tab is used to create a cluster replica during primary cluster provisioning.
@@ -46,6 +52,7 @@ To enable cross-region replication on a new cluster *at any time after cluster c
 1. Select **Add new read replica**.
 1. Provide a replica cluster name in the **Read replica name** field. 
 1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
+1. (optionally) Select **Customer-manageed key** in **Data encryption** section to enable data encryption with a customer-managed key (CMK) on replica cluster. Then follow [the steps to enable CMK](./how-to-data-encryption.md#change-data-encryption-mode-on-existing-clusters).
 1. Verify your selection and select the **Save** button to confirm replica creation.
 
 To make the replica cluster accessible for read operations, adjust its networking settings by configuring firewall rules for public access or by adding private endpoints for secure, private access.
@@ -68,11 +75,11 @@ To check replication role of a cluster, follow these steps:
 1. Select **Overview** page.
 1. Check **Read region** (on the primary cluster) or **Write region** (on the replica cluster) value.
 
-If **Read region** value is *Not enabled*, this cluster has cross-region replication disabled.
+If **Read region** value is *Not enabled*, this cluster has replication disabled.
 
-## Disable cross-region replication
+## Disable cross-region or same region replication
 
-To disable cross-region replication, follow these steps:
+To disable replication, follow these steps:
 
 1. Select the Azure Cosmos DB for MongoDB vCore *replica* cluster.
 1. Select **Overview**.
@@ -99,7 +106,7 @@ Self connection strings are preserved after [the cluster replica promotion](./cr
 
 ## Related content
 
-- [Learn more about cross-region replication in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
-- [See cross-region replication limits and limitations](./limits.md#cross-region-replication)
-- To resolve an issue with cross-region replication, see [this troubleshooting guide](./troubleshoot-replication.md).
+- [Learn more about cross-region and same region replication in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
+- [See replication limits and limitations](./limits.md#cross-region-and-same-region-replication)
+- To resolve an issue with replication, see [this troubleshooting guide](./troubleshoot-replication.md).
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)

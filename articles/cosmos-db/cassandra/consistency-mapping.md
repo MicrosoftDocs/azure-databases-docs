@@ -5,7 +5,7 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
-ms.topic: conceptual
+ms.topic: product-comparison
 ms.date: 09/26/2024
 ---
 

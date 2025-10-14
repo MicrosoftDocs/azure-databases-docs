@@ -6,6 +6,7 @@ ms.author: dech
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 02/08/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Create alerts to monitor if storage for a logical partition key is approaching 20 GB

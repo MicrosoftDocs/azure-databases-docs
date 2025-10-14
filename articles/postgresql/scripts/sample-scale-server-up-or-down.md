@@ -1,6 +1,6 @@
 ---
 title: Azure CLI Script - Scale and Monitor
-description: Azure CLI Script Sample - Scale an Azure Database for PostgreSQL - Flexible Server instance to a different performance level after querying the metrics.
+description: Azure CLI Script Sample - Scale an Azure Database for PostgreSQL flexible server instance to a different performance level after querying the metrics.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -9,9 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: how-to
 ms.devlang: azurecli
 ---
-# Monitor and scale a single Azure Database for PostgreSQL - Flexible Server instance using Azure CLI
-
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
+# Monitor and scale a single Azure Database for PostgreSQL flexible server instance using Azure CLI
 
 This sample CLI script scales compute and storage for a single Azure Database for PostgreSQL flexible server instance after querying the metrics. Compute can scale up or down. Storage can only scale up.
 
@@ -52,6 +50,6 @@ This script uses the commands outlined in the following table:
 
 ## Related content
 
-- [Azure Database for PostgreSQL - Flexible Server compute and storage](../concepts-pricing-tiers.md)
-- [Azure CLI samples for Azure Database for PostgreSQL - Flexible Server](../sample-scripts-azure-cli.md)
+- [Azure Database for PostgreSQL flexible server compute and storage](../concepts-pricing-tiers.md)
+- [Azure CLI samples for Azure Database for PostgreSQL flexible server](../sample-scripts-azure-cli.md)
 - [Azure CLI](/cli/azure)

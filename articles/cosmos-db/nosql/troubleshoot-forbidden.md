@@ -7,7 +7,7 @@ ms.author: maquaran
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
-ms.date: 09/27/2024
+ms.date: 08/28/2025
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB forbidden exceptions

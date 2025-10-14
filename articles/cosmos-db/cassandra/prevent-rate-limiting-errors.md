@@ -1,13 +1,13 @@
 ---
 title: Prevent rate-limiting errors for Azure Cosmos DB for Apache Cassandra.
 description: Prevent your Azure Cosmos DB for Apache Cassandra operations from hitting rate limiting errors with the SSR (server-side retry) feature
-author: dileepraotv-github
+author: TheovanKraay
+ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, sfi-image-nochange
 ms.topic: how-to
 ms.date: 10/11/2021
-ms.author: turao
 ---
 
 # Prevent rate-limiting errors for Azure Cosmos DB for Apache Cassandra operations
@@ -27,7 +27,7 @@ Azure Cosmos DB for Apache Cassandra operations may fail with rate-limiting (Ove
 
 4. Select **Server-Side Retry**.
 
-5. Click **Enable** to enable this feature for all collections in your account.
+5. Select **Enable** to enable this feature for all collections in your account.
 
 :::image type="content" source="./media/prevent-rate-limiting-errors/prevent-rate-limiting-errors.png" alt-text="Screenshot of the server-side retry feature for Azure Cosmos DB for Apache Cassandra":::
 
@@ -55,15 +55,15 @@ Azure Cosmos DB for Apache Cassandra operations may fail with rate-limiting (Ove
 
 ### How are requests retried?
 
-Requests are retried continuously (over and over again) until a 60-second timeout is reached. If the timeout is reached, the client will receive read or write timeout error accordingly
+Requests are retried continuously (over and over again) until a 60-second time-out is reached. If the time-out is reached, the client receives read or write time-out error accordingly
 
 ### When is SSR most beneficial?
 
-Server-side retry (SSR) is most beneficial when there is a sudden spike for a short duration of less than 1 minute where in throttling errors can be avoided. If the work load has increased and would stay constantly above the specified RU, then SSR will not help much. The suggestion is to increase the RU appropriately.
+Server-side retry (SSR) is most beneficial when there's a sudden spike for a short duration of less than 1 minute where in throttling errors can be avoided. If the work load has increased and would stay constantly above the specified RU, then SSR won't help much. The suggestion is to increase the RU appropriately.
 
 ### Suggested client-side settings?
 
-After SSR is enabled, the client app should increase read timeout beyond the server retry 60-second setting. We recommend 90 seconds to be on the safer side.
+After SSR is enabled, the client app should increase read time-out beyond the server retry 60-second setting. We recommend 90 seconds to be on the safer side.
 
 Code Sample Driver3
 ```java
@@ -78,17 +78,17 @@ ProgrammaticDriverConfigLoaderBuilder configBuilder = DriverConfigLoader.program
 
 ### How can I monitor the effects of a server-side retry?
 
-You can view the rate limiting errors (429) that are retried server-side in the Azure Cosmos DB Metrics pane. These errors don't go to the client when SSR is enabled, since they are handled and retried server-side.
+You can view the rate limiting errors (429) that are retried server-side in the Azure Cosmos DB Metrics pane. These errors don't go to the client when SSR is enabled, since they're handled and retried server-side.
 
 You can search for log entries containing *estimatedDelayFromRateLimitingInMilliseconds* in your [Azure Cosmos DB resource logs](../monitor-resource-logs.md).
 
 ### Will server-side retry affect my consistency level?
 
-Server-side retry does not affect a consistency levels. Requests are retried server-side if they are rate limited (Error 429).
+Server-side retry doesn't affect a consistency levels. Requests are retried server-side if they're rate limited (Error 429).
 
 ### Does server-side retry affect any type of error that my client might receive?
 
-No, server-side retry only affects rate limiting errors (429) by retrying them server-side. This feature prevents you from having to handle rate-limiting errors in the client application. All [other errors](troubleshoot-common-issues.md) will go to the client.
+No, server-side retry only affects rate limiting errors (429) by retrying them server-side. This feature prevents you from having to handle rate-limiting errors in the client application. All [other errors](troubleshoot-common-issues.md) go to the client.
 
 ## Next steps
 

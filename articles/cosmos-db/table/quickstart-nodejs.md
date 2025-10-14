@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 04/08/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
@@ -31,7 +31,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 - Docker Desktop
 - Node.js 22 or newer
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 
@@ -125,6 +125,30 @@ The client library is available through npm, as the `@azure/data-tables` package
 1. Open and review the **src/js/package.json** file to validate that the `@azure/data-tables` entry exists.
 
 ::: zone-end
+
+### Import libraries
+
+::: zone pivot="programming-language-js"
+
+Import the `DefaultAzureCredential`, `TableServiceClient`, and `TableClient` types into your application code.
+
+```javascript
+import { DefaultAzureCredential } from '@azure/identity';
+import { TableServiceClient, TableClient } from '@azure/data-tables';
+```
+
+:::zone-end
+
+::: zone pivot="programming-language-js"
+
+Import all required types into your application code.
+
+```typescript
+import { DefaultAzureCredential, TokenCredential } from '@azure/identity';
+import { TableServiceClient, TableClient, TableEntityResult, GetTableEntityResponse, TableEntityResultPage, TableEntityQueryOptions } from '@azure/data-tables';
+```
+
+:::zone-end
 
 ## Object model
 

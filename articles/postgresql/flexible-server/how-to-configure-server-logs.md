@@ -13,11 +13,9 @@ ms.topic: how-to
 
 # Download PostgreSQL and upgrade logs
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+You can use PostgreSQL server logs to diagnose specific issues experienced in an Azure Database for PostgreSQL flexible server instance, and to gain detailed insights about the activities that run on your servers. You can use major version upgrade logs to troubleshoot errors that might occur during an attempt to upgrade your server to a higher major version of PostgreSQL.
 
-You can use PostgreSQL server logs to diagnose specific issues experienced in an Azure Database for PostgreSQL flexible server, and to gain detailed insights about the activities that run on your servers. You can use major version upgrade logs to troubleshoot errors that might occur during an attempt to upgrade your server to a higher major version of PostgreSQL.
-
-By default, capturing server logs for download in an Azure Database for PostgreSQL flexible server is disabled. However, after you enable the feature, your Azure Database for PostgreSQL flexible server starts capturing the server logs to files, which you can download for detailed inspection. You can use Azure portal or Azure CLI commands to list and  download these files that can assist you with any troubleshooting efforts.
+By default, capturing server logs for download in an Azure Database for PostgreSQL flexible server instance is disabled. However, after you enable the feature, your Azure Database for PostgreSQL flexible server instance starts capturing the server logs to files, which you can download for detailed inspection. You can use Azure portal or Azure CLI commands to list and  download these files that can assist you with any troubleshooting efforts.
 
 This article explains how to enable and disable the feature. It also describes how you can list all available server logs, and how can you download any of them.
 
@@ -27,17 +25,17 @@ This article explains how to enable and disable the feature. It also describes h
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-disabled.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-disabled.png":::
 
-3. Under **Download server logs**, mark the **Enable** checkbox.
+3. Mark the **Capture logs for download** checkbox.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/enable-server-logs.png" alt-text="Screenshot showing how to configure the server for PostgreSQL server logs and major version upgrade logs to be captured. You can download captured log files  for inspection." lightbox="./media/how-to-configure-server-logs/enable-server-logs.png":::
+    :::image type="content" source="./media/how-to-configure-server-logs/enable-server-logs.png" alt-text="Screenshot showing how to configure the server for PostgreSQL server logs and major version upgrade logs to be captured. You can download captured log files for inspection." lightbox="./media/how-to-configure-server-logs/enable-server-logs.png":::
 
-4. By default, log files are retained for three days, but you can adjust the retention period from 1 to 7 days. Use the **Retention period (in days)** slicer to adjust to your desired configuration.
+4. By default, log files are retained for three days, but you can adjust the retention period from 1 to 7 days. Use the **Log retention period (in days)** slicer to adjust to your desired configuration.
 
     :::image type="content" source="./media/how-to-configure-server-logs/adjust-retention.png" alt-text="Screenshot showing how to adjust the retention period for PostgreSQL server logs and major version upgrade logs captured." lightbox="./media/how-to-configure-server-logs/adjust-retention.png":::
 
@@ -60,13 +58,21 @@ You can enable the capture of PostgreSQL server logs and major version upgrade l
 To enable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value on
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name logfiles.download_enable \
+  --value on
 ```
 
 To adjust the retention period for the logs that are captured for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name logfiles.retention_days --value <retention_period_in_days>
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name logfiles.retention_days \
+  --value <retention_period_in_days>
 ```
 
 Allowed values for server parameter `logfiles.retention_days` can be between 1 and 7 days. If you try to set it to a different value, you get this error:
@@ -90,13 +96,13 @@ Message: The value: [<value>] of Server Parameter: [logfiles.retention_days] is 
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
-3. Under **Download server logs**, clear the **Enable** checkbox.
+3. Clear the **Capture logs for download** checkbox.
 
     :::image type="content" source="./media/how-to-configure-server-logs/disable-server-logs.png" alt-text="Screenshot showing how to configure the server so that PostgreSQL server logs and major version upgrade logs stop being captured for download." lightbox="./media/how-to-configure-server-logs/disable-server-logs.png":::
 
@@ -119,7 +125,11 @@ You can disable the capture of PostgreSQL server logs and major version upgrade 
 To disable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value off
+az postgres flexible-server parameter \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name logfiles.download_enable \
+  --value off
 ```
 
 ---
@@ -130,17 +140,17 @@ az postgres flexible-server parameter --resource-group <resource_group> --server
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page with some logs captured." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
-3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for a log file**, **Log time range**, and **Log Type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Under each available column, you can see the different attributes of each file:
+3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for files with names that contain**, **Time range**, and **Log type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Under each available column, you can see the different attributes of each file:
     - **Name**: Name of the log file. The service assigns each log file a name with this pattern `postgresql_yyyy_mm_dd_hh_00_00.log`.
     - **Last update time**: Timestamp of the last time each log file was uploaded. Log files are uploaded, approximately, every 10 minutes.
     - **Size**: Size in bytes occupied by the log file.
-    - **Log Type**: **Server Log** indicates the file corresponds to a PostgreSQL server log. **Upgrade Log** indicates the file corresponds to a major version upgrade log.
+    - **Log type**: **Server log** indicates the file corresponds to a PostgreSQL server log. **Upgrade log** indicates the file corresponds to a major version upgrade log.
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-filter-sort.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting column headers." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-filter-sort.png":::
 
@@ -155,25 +165,36 @@ You can list the captured PostgreSQL server logs and major version upgrade logs 
 To list all captured logs available for download, which were updated in the last 72 hours (default value), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server>
+az postgres flexible-server server-logs list \
+  --resource-group <resource_group> \
+  --server-name <server>
 ```
 
 To list all captured logs available for download, which were updated in the last 10 hours, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server> --file-last-written 10
+az postgres flexible-server server-logs list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --file-last-written 10
 ```
 
 To list all captured logs available for download, whose size is under 30 KiB, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server> --max-file-size 30
+az postgres flexible-server server-logs list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --max-file-size 30
 ```
 
 To list all captured logs available for download, whose name contains `01_07`, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server> --filename-contains 01_07
+az postgres flexible-server server-logs list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --filename-contains 01_07
 ```
 
 ---
@@ -184,13 +205,13 @@ az postgres flexible-server server-logs list --resource-group <resource_group> -
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page with some logs captured." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
-3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for a log file**, **Log time range**, and **Log Type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Identify the log that you want to download and, under the **Actions** column, select **Download**.
+3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for files with names that contain**, **Time range**, and **Log type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Identify the log that you want to download and, under the **Actions** column, select **Download**.
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting how to download one of them." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download.png":::
 
@@ -209,13 +230,19 @@ You can download the captured PostgreSQL server logs and major version upgrade l
 To download one specific log, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs download --resource-group <resource_group> --server-name <server> --name <log_name>
+az postgres flexible-server server-logs download \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name <log_name>
 ```
 
 To download one specific log, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs download --resource-group <resource_group> --server-name <server> --name <log1_name log2_name ...logn_name>
+az postgres flexible-server server-logs download \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name <log1_name log2_name ...logn_name>
 ```
 
 > [!NOTE]

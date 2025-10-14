@@ -7,7 +7,7 @@
   - name: Overview
     items:
     - name: What is Azure Cosmos DB for Apache Cassandra?
-      href: introduction.md
+      href: overview.md
     - name: Wire protocol support
       href: support.md
     - name: Tokens and the Token function
@@ -16,22 +16,16 @@
       href: faq.yml
   - name: Quickstarts
     items:
-    - name: Java v4
-      href: manage-data-java-v4-sdk.md
-    - name: Java v3
-      href: manage-data-java.md
     - name: Python
-      href: manage-data-python.md
-    - name: Golang
-      href: manage-data-go.md
-    - name: CQLSH
-      href: manage-data-cqlsh.md
+      href: quickstart-python.md
     - name: Node.js
-      href: manage-data-nodejs.md
-    - name: .NET Core
-      href: manage-data-dotnet-core.md
+      href: quickstart-nodejs.md
     - name: .NET
-      href: manage-data-dotnet.md
+      href: quickstart-dotnet.md
+    - name: Java
+      href: quickstart-java.md
+    - name: Go
+      href: quickstart-go.md
   - name: Tutorials
     items:
     - name: Create and manage data
@@ -46,62 +40,54 @@
     - name: Kusto Query Language (KQL) transformations
       displayName: KQL, workspace, data
       href: ../tutorial-log-transformation.md
-  - name: Samples
+  - name: Automate account management
     items:
     - name: Azure CLI
+      expanded: true
       items:
-      - name: Overview
-        href: cli-samples.md
       - name: Create account, keyspace, and table
-        href: ../scripts/cli/cassandra/create.md
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/create.sh
       - name: Create serverless
-        href: ../scripts/cli/cassandra/serverless.md
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/serverless.sh
       - name: Create with autoscale
-        href: ../scripts/cli/cassandra/autoscale.md
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/autoscale.sh
       - name: Perform throughput operations
-        href: ../scripts/cli/cassandra/throughput.md
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/throughput.sh
       - name: Lock resources from deletion
-        href: ../scripts/cli/cassandra/lock.md
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/lock.sh
       - name: Add or fail over regions
-        href: ../scripts/cli/common/regions.md
-      - name: Perform account key operations
-        href: ../scripts/cli/common/keys.md
-      - name: Secure with IP firewall
-        href: ../scripts/cli/common/ipfirewall.md
-      - name: Bulk add or remove IP firewall rules
-        href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md
-      - name: Secure new account with service endpoints
-        href: ../scripts/cli/common/service-endpoints.md
-      - name: Secure existing account with service endpoints
-        href: ../scripts/cli/common/service-endpoints-ignore-missing-vnet.md
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/regions.sh
+      - name: Manage IP firewall rules
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/ipfirewall.sh
+      - name: Secure account with service endpoints
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/service-endpoints.sh
       - name: Find existing free-tier accounts
-        href: ../scripts/cli/common/free-tier.md
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/find-free-tier-account.sh
       - name: Migrate all resources to autoscale
-        href: ../scripts/cli/common/convert-to-autoscale.md
+        href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/convert-to-autoscale.sh
     - name: Azure PowerShell
+      expanded: true
       items:
-      - name: Overview
-        href: powershell-samples.md
       - name: Create account, keyspace, and table
-        href: ../scripts/powershell/cassandra/create.md
+        href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-create.ps1
       - name: Create with autoscale
-        href: ../scripts/powershell/cassandra/autoscale.md
+        href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-autoscale.ps1
       - name: Perform throughput operations
-        href: ../scripts/powershell/cassandra/throughput.md
+        href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-ru-get.ps1
       - name: Lock resources from deletion
-        href: ../scripts/powershell/cassandra/lock.md
+        href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-lock.ps1
       - name: List and get keyspaces and table
-        href: ../scripts/powershell/cassandra/list-get.md
-      - name: Account keys or connection strings
-        href: ../scripts/powershell/common/keys-connection-strings.md
+        href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-list-get.ps1
       - name: Change failover priority or trigger failover
-        href: ../scripts/powershell/common/failover-priority-update.md
+        href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-failover-priority-update.ps1
       - name: Create an account with IP Firewall
-        href: ../scripts/powershell/common/firewall-create.md
+        href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-firewall-create.ps1
       - name: Update account
-        href: ../scripts/powershell/common/account-update.md
+        href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-update.ps1
       - name: Update an account's regions
-        href: ../scripts/powershell/common/update-region.md
+        href: https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-update-region.ps1
+  - name: Samples
+    items:
     - name: Templates
       items:
       - name: JSON syntax templates
@@ -226,6 +212,8 @@
       href: ../network-bandwidth.md
   - name: How to
     items:
+    - name: Manage data using CQLSH
+      href: manage-data-cqlsh.md
     - name: Develop applications
       items:
       - name: API for Apache Cassandra extensions overview
@@ -289,8 +277,6 @@
         href: adoption.md
       - name: Migrate to API for Apache Cassandra using Kafka Connect
         href: kafka-connect.md
-      - name: Migrate - Apache Cassandra to API for Apache Cassandra using Arcion
-        href: migrate-data-arcion.md
       - name: Migrate - Apache Cassandra to API for Apache Cassandra using dual-write proxy
         href: migrate-data-dual-write-proxy.md
       - name: Migrate - Apache Cassandra to API for Apache Cassandra using Databricks
@@ -439,11 +425,9 @@
     - name: Microsoft Questions and Answers
       href: /answers/topics/azure-cosmos-db.html
     - name: Videos
-      href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
+      href: https://azure.microsoft.com/resources/videos/?services=cosmos-db
     - name: Azure Roadmap
       href: https://azure.microsoft.com/updates/?query=Cosmos%20DB
-    - name: Try Azure Cosmos DB for free
-      href: https://azure.microsoft.com/try/cosmosdb/
     - name: Pricing
       href: https://azure.microsoft.com/pricing/details/cosmos-db/
     - name: Use cases

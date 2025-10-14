@@ -1,8 +1,8 @@
 ---
 title: Azure Database for MySQL - Flexible Server Overview
 description: Learn about the Flexible Server deployment model for Azure Database for MySQL.
-author: SudheeshGH
-ms.author: sunaray
+author: deepthiprasad
+ms.author: deprasa
 ms.reviewer: maghan
 ms.date: 02/20/2025
 ms.service: azure-database-mysql
@@ -60,7 +60,7 @@ When you use a Flexible Server architecture, you can opt for high availability w
 
 ## Free 12-month offer
 
-With an [Azure free account](https://azure.microsoft.com/free/), you can use Azure Database for MySQL - Flexible Server for free for 12 months. The offer includes monthly limits of up to:
+With an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn), you can use Azure Database for MySQL - Flexible Server for free for 12 months. The offer includes monthly limits of up to:
 
 - 750 hours of use for a Burstable Standard_B1ms virtual machine. That's enough hours to run a database instance continuously each month.
 - 32 GB of storage and 32 GB of backup storage.
@@ -222,6 +222,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Canada East | Yes | Yes | No | Yes |
 | Central India | Yes | Yes | Yes | Yes |
 | Central US | Yes | Yes | Yes | Yes |
+| Chile Central | Yes | Yes | Yes | Yes |
 | China East 2 | Yes | Yes | No | Yes |
 | China East 3 | Yes | Yes | No | Yes |
 | China North 2 | Yes | Yes | No | Yes |
@@ -233,6 +234,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | France South | Yes | Yes | No | Yes |
 | Germany West Central | Yes | Yes | Yes | Yes |
 | Germany North | Yes | Yes | No | Yes |
+| Indonesia Central | Yes | Yes | No | No |
 | Israel Central | Yes | Yes | Yes | No |
 | Italy North | Yes | Yes | Yes | No |
 | Japan East | Yes | Yes | Yes | Yes |
@@ -240,8 +242,9 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Jio India West | Yes | Yes | No | No |
 | Korea Central | Yes | Yes | Yes | Yes |
 | Korea South | Yes | Yes | No | Yes |
-| Mexico Central | Yes | Yes | Yes | Yes |
-| New Zealand North | Yes | Yes | Yes | Yes |
+| Malaysia West | Yes | Yes | Yes | Yes |
+| Mexico Central | Yes | Yes | Yes | No |
+| New Zealand North | Yes | Yes | Yes | No |
 | North Central US | Yes | Yes | No | Yes |
 | North Europe | Yes | Yes | Yes | Yes |
 | Norway East | Yes | Yes | Yes | Yes |
@@ -253,7 +256,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | South Central US | Yes | Yes | Yes | Yes |
 | South India | Yes | Yes | No | Yes |
 | Southeast Asia | Yes | Yes | Yes | Yes |
-| Spain Central | Yes | Yes | No | Yes |
+| Spain Central | Yes | Yes | No | No |
 | Sweden Central | Yes | Yes | Yes | No |
 | Switzerland North | Yes | Yes | Yes | Yes |
 | Switzerland West | Yes | Yes | No | Yes |
@@ -263,7 +266,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | UAE North | Yes | Yes | Yes | Yes |
 | UK South | Yes | Yes | Yes | Yes |
 | UK West | Yes | Yes | No | Yes |
-| USGov Virginia | Yes | Yes | No | No |
+| USGov Virginia | Yes | Yes |Yes| No |
 | USGov Arizona | Yes | Yes | No | Yes |
 | USGov Texas | Yes | Yes | No | Yes |
 | West Central US | Yes | Yes | No | Yes |

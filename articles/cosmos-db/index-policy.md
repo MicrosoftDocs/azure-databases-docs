@@ -1,18 +1,22 @@
 ---
-title: Azure Cosmos DB indexing policies
+title: Indexing policies
+titleSuffix: Azure Cosmos DB
 description:  Learn how to configure and change the default indexing policy for automatic indexing and greater performance in Azure Cosmos DB.
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 09/26/2024
-ms.custom: build-2024, ignite-2024
+ms.date: 05/08/2025
+ms.custom:
+  - build-2024
+  - ignite-2024
+  - build-2025
+appliesto:
+  - NoSQL
 ---
 
 # Indexing policies in Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In Azure Cosmos DB, every container has an indexing policy that dictates how the container's items should be indexed. The default indexing policy for newly created containers indexes every property of every item and enforces range indexes for any string or number. This allows you to get good query performance without having to think about indexing and index management upfront.
 
@@ -40,6 +44,11 @@ In Azure Cosmos DB, the total consumed storage is the combination of both the Da
 * The index size depends on the indexing policy. If all the properties are indexed, then the index size can be larger than the data size.
 * When data is deleted, indexes are compacted on a near continuous basis. However, for small data deletions, you might not immediately observe a decrease in index size.
 * The Index size can temporarily grow when physical partitions split. The index space is released after the partition split is completed.
+
+> [!NOTE]
+>  - The partition key (unless it is also "/id") is not indexed and should be included in the index.
+- The system properties id and _ts will always be indexed when the cosmos account indexing mode is Consistent
+- The system properties id and _ts are not included in the container policy’s indexed paths description. This is by design because these system properties are indexed by default and this behavior cannot be disabled.
 
 ## Including and excluding property paths
 
@@ -72,6 +81,8 @@ Taking the same example again:
 - the path to anything under `headquarters` is `/headquarters/*`
 
 For example, we could include the `/headquarters/employees/?` path. This path would ensure that we index the `employees` property but wouldn't index extra nested JSON within this property.
+
+ 
 
 ## Include/exclude strategy
 
@@ -113,11 +124,11 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 
 - The path `/*` must be either an included path or excluded path.
 
-## Full text indexes
+## Full-text indexes
 > [!NOTE]
->  You must enable the [Full Text  & Hybrid Search for NoSQL API](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) preview feature to specify a full text index.
+>  You must enable the [Full Text & Hybrid Search for NoSQL API](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) feature to specify a full text index.
 
-**Full text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the text paths to be indexed. For example:
+**Full-text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the text paths to be indexed. For example:
 
 ```json
 {
@@ -186,9 +197,6 @@ Here's an example of an indexing policy with a vector index:
     "excludedPaths": [
         {
             "path": "/_etag/?",
-        },
-        {
-            "path": "/vector/*"
         }
     ],
     "vectorIndexes": [
@@ -202,9 +210,6 @@ Here's an example of an indexing policy with a vector index:
 
 > [!IMPORTANT]
 > A vector indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](nosql/vector-search.md#container-vector-policies).
-
->[!IMPORTANT]
-> The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
 
 ## Spatial indexes
 

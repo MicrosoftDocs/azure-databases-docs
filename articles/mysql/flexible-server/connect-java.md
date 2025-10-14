@@ -9,11 +9,12 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-  - mvc
-  - devcenter
-  - devx-track-azurecli
-  - mode-api
-  - devx-track-extended-java
+- mvc
+- devcenter
+- devx-track-azurecli
+- mode-api
+- devx-track-extended-java
+- sfi-ropc-nochange
 ms.devlang: java
 ---
 
@@ -310,12 +311,12 @@ Using your favorite IDE, create a new Java project, and add a *pom.xml* file in 
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.30</version>
+            <version>8.0.33</version>
         </dependency>
         <dependency>
             <groupId>com.azure</groupId>
             <artifactId>azure-identity-extensions</artifactId>
-            <version>1.0.0</version>
+            <version>1.2.0</version>
         </dependency>
     </dependencies>
 </project>

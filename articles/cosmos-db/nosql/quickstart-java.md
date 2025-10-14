@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 02/24/2025
+ms.date: 06/11/2025
 ms.custom: devx-track-extended-java, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -19,7 +19,7 @@ appliesto:
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Java. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Java.
+In this quickstart, you deploy a basic Azure Cosmos DB for NoSQL application using the Azure SDK for Java. Azure Cosmos DB for NoSQL is a schemaless data store allowing applications to store unstructured data in the cloud. Query data in your containers and perform common operations on individual items using the Azure SDK for Java.
 
 [API reference documentation](/java/api/overview/azure/cosmos-readme) | [Library source code](https://github.com/azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos) | [Package (Maven)](https://mvnrepository.com/artifact/com.azure/azure-cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -29,11 +29,11 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 - Docker Desktop
 - Java 21
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 
-Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for NoSQL account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
 1. Open a terminal in an empty directory.
 
@@ -97,6 +97,24 @@ The client library is available through Maven, as the `azure-spring-data-cosmos`
         <artifactId>azure-identity</artifactId>
     </dependency>
     ```
+
+### Import libraries
+
+Import all of the required namespaces into your application code.
+
+```java
+import com.azure.cosmos.CosmosClientBuilder;
+import com.azure.cosmos.models.PartitionKey;
+import com.azure.identity.DefaultAzureCredential;
+import com.azure.identity.DefaultAzureCredentialBuilder;
+import com.azure.spring.data.cosmos.config.AbstractCosmosConfiguration;
+import com.azure.spring.data.cosmos.config.CosmosConfig;
+import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
+import com.azure.spring.data.cosmos.repository.CosmosRepository;
+import com.azure.spring.data.cosmos.repository.Query;
+import com.azure.spring.data.cosmos.repository.config.EnableCosmosRepositories;
+```
 
 ## Object model
 

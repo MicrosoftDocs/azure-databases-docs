@@ -1,8 +1,8 @@
 ---
 title: "MySQL On-Premises to Azure Database for MySQL Sample Applications"
 description: "Download extra documentation we created for this Migration Guide and learn how to configure."
-author: SudheeshGH
-ms.author: sunaray
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan
 ms.date: 11/27/2024
 ms.service: azure-database-mysql
