@@ -26,13 +26,13 @@ highlightedContent:
       itemType: reference
       url: https://azure.microsoft.com/pricing/details/cosmos-db/
     - title: Certification - Azure Cosmos DB Developer Specialty
-      itemType: learn
+      itemType: training
       url: /certifications/azure-cosmos-db-developer-specialty/
     - title: Certification - Azure Developer Associate
-      itemType: learn
+      itemType: training
       url: /certifications/azure-developer/
     - title: AI agents with Azure Cosmos DB
-      itemType: concept
+      itemType: tutorial
       url: ai-agents.md
     - title: Azure Cosmos DB Emulator
       itemType: get-started
@@ -92,7 +92,7 @@ conceptualContent:
               itemType: concept
               url: nosql/modeling-data.md
           footerLink:
-            text: See more >
+            text: See more
             url: nosql/index.yml
         - title: MongoDB
           summary: Migrate existing MongoDB applications seamlessly with full wire protocol compatibility and familiar MongoDB tools.
@@ -107,7 +107,7 @@ conceptualContent:
               itemType: concept
               url: mongodb/custom-commands.md
           footerLink:
-            text: See more >
+            text: See more
             url: mongodb/index.yml
         - title: Apache Cassandra
           summary: Build highly scalable applications using the Cassandra Query Language (CQL) with automatic global distribution.
@@ -122,7 +122,7 @@ conceptualContent:
               itemType: concept
               url: cassandra/secondary-indexing.md
           footerLink:
-            text: See more >
+            text: See more
             url: cassandra/index.yml
         - title: Apache Gremlin
           summary: Create graph-based applications using the Gremlin graph traversal language for complex relationship queries.
@@ -137,7 +137,7 @@ conceptualContent:
               itemType: how-to-guide
               url: gremlin/bulk-executor-dotnet.md
           footerLink:
-            text: See more >
+            text: See more
             url: graph/index.yml
         - title: Table
           summary: Modernize Azure Table Storage applications with premium capabilities and global distribution.
@@ -152,7 +152,7 @@ conceptualContent:
               itemType: reference
               url: table/faq.yml
           footerLink:
-            text: See more >
+            text: See more
             url: table/index.yml
         - title: PostgreSQL
           summary: Build distributed relational applications using the familiar PostgreSQL wire protocol with horizontal scaling.
@@ -167,7 +167,7 @@ conceptualContent:
               itemType: how-to-guide
               url: postgresql/howto-modify-distributed-tables.md
           footerLink:
-            text: See more >
+            text: See more
             url: postgresql/index.yml
     - title: Developer and DevOps guides
       summary: Advance your development and DevOps workflows with practical guides, tools, and best practices for building scalable applications on Azure Cosmos DB.
