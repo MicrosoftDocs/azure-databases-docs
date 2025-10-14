@@ -3,7 +3,6 @@
 title: Azure Cosmos DB documentation
 summary: Fully managed, distributed NoSQL, relational, and vector database for modern app development. High performance, high availability, and support for open-source PostgreSQL, MongoDB, and Apache Cassandra. Build cloud-native apps effortlessly.
 brand: azure
-
 metadata:
   title: Azure Cosmos DB
   description: Fully managed, distributed NoSQL and vector database for cloud-scale and AI apps. High performance, availability and low latency from Serverless to massive scale in one database.  Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery/AI)** for the latest Vector Database and AI Samples.
@@ -11,7 +10,7 @@ metadata:
   ms.author: sidandrews
   ms.service: azure-cosmos-db
   ms.topic: landing-page
-  ms.date: 10/13/2025
+  ms.date: 10/14/2025
 highlightedContent:
   items:
     - title: Introduction to Azure Cosmos DB
@@ -56,6 +55,21 @@ conceptualContent:
             - text: Azure Cosmos DB Design Patterns
               itemType: video
               url: https://youtube.com/playlist?list=PLmamF3YkHLoI69DIwplhBqk-KYoOLEqOs&si=E6Q1NYfKgGDw279m
+    - title: Samples
+      items:
+        - title: Gallery
+          links:
+            - text: Azure Cosmos DB samples gallery
+              itemType: reference
+              url: https://azurecosmosdb.github.io/gallery/
+        - title: GitHub
+          links:
+            - text: Azure Cosmos DB GitHub organization
+              itemType: reference
+              url: https://github.com/azurecosmosdb/
+            - text: Published GitHub samples
+              itemType: reference
+              url: https://github.com/search?q=org%3Aazure-samples+cosmos&type=repositories
 additionalContent:
   sections:
     - title: APIs
