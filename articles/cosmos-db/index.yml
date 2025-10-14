@@ -48,11 +48,11 @@ tools:
       imageSrc: media/index/lang-python.svg
       url: nosql/quickstart-python.md
     - title: JavaScript (NoSQL)
-      imageSrc: media/index/lang-javascript.svg?pivots=programming-language-js
-      url: nosql/quickstart-nodejs.md
+      imageSrc: media/index/lang-javascript.svg
+      url: nosql/quickstart-nodejs.md?pivots=programming-language-js
     - title: TypeScript (NoSQL)
-      imageSrc: media/index/lang-typescript.svg?pivots=programming-language-ts
-      url: nosql/quickstart-nodejs.md
+      imageSrc: media/index/lang-typescript.svg
+      url: nosql/quickstart-nodejs.md?pivots=programming-language-ts
     - title: Java (NoSQL)
       imageSrc: media/index/lang-java.svg
       url: nosql/quickstart-java.md
@@ -62,21 +62,18 @@ tools:
     - title: Rust (NoSQL)
       imageSrc: media/index/lang-rust.svg
       url: nosql/quickstart-rust.md
-    - title: Python (PostgreSQL)
+    - title: Python - MongoDB (vCore)
       imageSrc: media/index/lang-python.svg
-      url: postgresql/quickstart-app-stacks-python.md
-    - title: Node.js (PostgreSQL)
-      imageSrc: media/index/lang-javascript.svg
-      url: postgresql/quickstart-app-stacks-nodejs.md
-    - title: C# (PostgreSQL)
+      url: mongodb/vcore/quickstart-python.md
+    - title: JavaScript - MongoDB (vCore)
+      imageSrc: media/index/lang-javascript.svg?pivots=programming-language-js
+      url: mongodb/vcore/quickstart-nodejs.md?pivots=programming-language-js
+    - title: TypeScript - MongoDB (vCore)
+      imageSrc: media/index/lang-typescript.svg?pivots=programming-language-ts
+      url: mongodb/vcore/quickstart-nodejs.md?pivots=programming-language-ts
+    - title: .NET - MongoDB (vCore)
       imageSrc: media/index/lang-dotnet.svg
-      url: postgresql/quickstart-app-stacks-csharp.md
-    - title: Java (PostgreSQL)
-      imageSrc: media/index/lang-java.svg
-      url: postgresql/quickstart-app-stacks-java.md
-    - title: Ruby (PostgreSQL)
-      imageSrc: media/index/lang-ruby.svg
-      url: postgresql/quickstart-app-stacks-ruby.md
+      url: mongodb/vcore/quickstart-dotnet.md
 conceptualContent:
   sections:
     - title: APIs
