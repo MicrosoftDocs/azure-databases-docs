@@ -47,8 +47,11 @@ tools:
     - title: Python (NoSQL)
       imageSrc: media/index/lang-python.svg
       url: nosql/quickstart-python.md
-    - title: Node.js (NoSQL)
-      imageSrc: media/index/lang-javascript.svg
+    - title: JavaScript (NoSQL)
+      imageSrc: media/index/lang-javascript.svg?pivots=programming-language-js
+      url: nosql/quickstart-nodejs.md
+    - title: TypeScript (NoSQL)
+      imageSrc: media/index/lang-typescript.svg?pivots=programming-language-ts
       url: nosql/quickstart-nodejs.md
     - title: Java (NoSQL)
       imageSrc: media/index/lang-java.svg
