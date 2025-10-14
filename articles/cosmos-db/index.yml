@@ -189,13 +189,13 @@ conceptualContent:
           links:
             - text: Azure Resource Manager templates
               itemType: quickstart
-              url: nosql/quickstart-template.md
+              url: nosql/quickstart-template-json.md
             - text: Bicep templates
               itemType: how-to-guide
-              url: nosql/how-to-use-bicep.md
+              url: nosql/quickstart-template-bicep.md
             - text: Terraform provider
               itemType: how-to-guide
-              url: nosql/how-to-use-terraform.md
+              url: nosql/quickstart-terraform.md
         - title: Connect to your database
           summary: Learn how to connect to your Azure Cosmos DB using various tools, drivers, and popular programming languages across different APIs.
           links:
@@ -207,7 +207,7 @@ conceptualContent:
               url: postgresql/quickstart-create-portal.md
             - text: Create an Azure Cosmos DB for MongoDB account
               itemType: quickstart
-              url: mongodb/quickstart-portal.md
+              url: mongodb/quickstart-nodejs.md
         - title: Performance optimization
           summary: Discover techniques to improve the speed, efficiency, and scalability of your Azure Cosmos DB applications across different workload patterns.
           links:
