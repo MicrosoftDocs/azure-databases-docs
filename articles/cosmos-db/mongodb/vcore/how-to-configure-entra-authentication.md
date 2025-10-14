@@ -126,7 +126,9 @@ To use a managed identity in your application or to log in using Entra ID creden
     }
     ```
 
-1. Note `clientID` value in the output.
+1. Note `clientID` and `principalId` values in the output.
+    1. Use `principalId` to add managed identity to your cluster as an Entra ID entity.
+    1. Use `clientID` to connect to the cluster via MongoDB Shell or Compass with Entra ID authentication.
 
 ## Manage cluster authentication methods 
 Use the following steps to change authentication methods on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have the following authentication methods enabled on your cluster:
