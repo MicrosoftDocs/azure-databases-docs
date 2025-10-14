@@ -36,6 +36,21 @@ highlightedContent:
       url: postgresql/quickstart-create-portal.md
 conceptualContent:
   sections:
+    - title: Samples
+      items:
+        - title: Microsoft
+          links:
+            - text: Azure Cosmos DB samples gallery
+              itemType: reference
+              url: https://azurecosmosdb.github.io/gallery/
+        - title: Open-source
+          links:
+            - text: Azure Cosmos DB GitHub organization
+              itemType: reference
+              url: https://github.com/azurecosmosdb/
+            - text: Published GitHub samples
+              itemType: reference
+              url: https://github.com/search?q=org%3Aazure-samples+cosmos&type=repositories
     - title: Resources
       items:
         - title: Videos
@@ -55,21 +70,6 @@ conceptualContent:
             - text: Azure Cosmos DB Design Patterns
               itemType: video
               url: https://youtube.com/playlist?list=PLmamF3YkHLoI69DIwplhBqk-KYoOLEqOs&si=E6Q1NYfKgGDw279m
-    - title: Samples
-      items:
-        - title: Gallery
-          links:
-            - text: Azure Cosmos DB samples gallery
-              itemType: reference
-              url: https://azurecosmosdb.github.io/gallery/
-        - title: GitHub
-          links:
-            - text: Azure Cosmos DB GitHub organization
-              itemType: reference
-              url: https://github.com/azurecosmosdb/
-            - text: Published GitHub samples
-              itemType: reference
-              url: https://github.com/search?q=org%3Aazure-samples+cosmos&type=repositories
 additionalContent:
   sections:
     - title: APIs
