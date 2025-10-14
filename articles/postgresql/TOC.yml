@@ -33,6 +33,10 @@
     href: flexible-server/overview.md
   - name: Release notes
     href: flexible-server/release-notes.md
+  - name: Maintenance release notes
+    items:
+  - name: October 2025
+    href: release-notes-maintenance/2025-october.md
   - name: API release notes
     href: flexible-server/release-notes-api.md
   - name: CLI release notes
