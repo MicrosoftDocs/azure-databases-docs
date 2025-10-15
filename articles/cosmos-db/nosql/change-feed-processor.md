@@ -73,7 +73,7 @@ Afterward, you define the compute instance name or unique identifier by using `W
 
 Calling `Build` gives you the processor instance that you can start by calling `StartAsync`.
 
-> [!WARNING]
+> [!IMPORTANT]
 > **Avoid asynchronous processing in delegate methods**: When using asynchronous APIs within your `handleChanges()` delegate method, be aware that the change feed processor may checkpoint the lease before all asynchronous operations complete. This can lead to missed events if the application experiences issues during recovery. Consider using synchronous processing or implement proper completion tracking before allowing the delegate to return.
 
 >[!NOTE]
@@ -179,7 +179,7 @@ In either change feed mode, you can assign it to `changeFeedProcessorInstance` a
 
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java?name=StartChangeFeedProcessor)]
 
-> [!WARNING]
+> [!IMPORTANT]
 > **Avoid asynchronous processing in delegate methods**: When using asynchronous APIs within your `handleChanges()` delegate method, be aware that the change feed processor may checkpoint the lease before all asynchronous operations complete. This can lead to missed events if the application experiences issues during recovery. Consider using synchronous processing or implement proper completion tracking before allowing the delegate to return.
 
 >[!NOTE]
