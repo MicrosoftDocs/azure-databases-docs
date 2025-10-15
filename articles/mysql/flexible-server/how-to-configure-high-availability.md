@@ -29,7 +29,9 @@ This section provides details specifically for HA-related fields. You can follow
 
 1. In the [Azure portal](https://portal.azure.com/), choose flexible Server and select **Create**. For information about how to fill in details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see the how-to documentation for Azure Database for MySQL Flexible Server instance creation.
 
-1. Select the checkbox for **Zone redundant high availability** in the Availability option.
+1. Select the radio button for **Zone-redundant** in the High availability option.
+    
+    :::image type="content" source="media/how-to-configure-high-availability\flexible-server-ha-configure.png" alt-text="Configure high-availability." lightbox="media/how-to-configure-high-availability\flexible-server-ha-configure.png":::
 
 1. Select **Configure server** if you want to change the default compute and storage settings.
 
