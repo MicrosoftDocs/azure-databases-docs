@@ -22,6 +22,10 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 > [!NOTE]
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
+## October 2025
+
+### Enhanced Portal Experience for High Availability
+We’ve updated the portal experience for High Availability (HA) options to make it more intuitive and aligned with Azure standards. To help customers run mission-critical workloads with zone-aware HA, the portal now prioritizes Zone-Redundant HA wherever available and displays SLA details alongside the selection for better clarity. If Zone-Redundant HA is not available, customers can enable Local Redundant HA. Additionally, we are rebranding “Same Zone” to Local Redundant to ensure consistency with Azure naming conventions.  [Learn More](../how-to-configure-high-availability)
 
 ## September 2025
 
