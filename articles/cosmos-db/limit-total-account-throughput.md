@@ -4,7 +4,7 @@ description: Learn how to limit the total throughput provisioned on your Azure C
 author: deborahc
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 03/31/2022
+ms.date: 10/15/2025
 ms.author: dech
 ---
 
@@ -49,7 +49,7 @@ Checking this option will limit your account's total throughput to 1,000 RU/s fo
 
 ### Existing account
 
-From the Azure portal, navigate to your Azure Cosmos DB account and select **Cost management** from the left menu.
+From the Azure portal, navigate to your Azure Cosmos DB account and select **Account Throughput**, formerly Cost Management, from settings within the left menu.
 
 :::image type="content" source="./media/limit-total-account-throughput/existing-account.png" alt-text="Screenshot of the Azure portal showing how to update total account throughput on an existing account" border="true":::
 
