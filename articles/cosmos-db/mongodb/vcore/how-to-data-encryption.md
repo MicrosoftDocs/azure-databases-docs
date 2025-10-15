@@ -5,7 +5,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 09/05/2025
+ms.date: 10/13/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -133,7 +133,7 @@ You can enable data encryption with user-assigned encryption key, while provisio
     $mongoClustersName="msdocscr$randomIdentifier"
         
     # Execute the az rest command to make REST API call
-    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
+    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-09-01 --body  @jsonFileFromThePreviousStep.json
     ```
     
 ---
@@ -213,7 +213,7 @@ You can change user-assigned managed identity and encryption key for data encryp
     $mongoClustersName="clusterName"
         
     # Execute the az rest command to make REST API call
-    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
+    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-09-01 --body  @jsonFileFromThePreviousStep.json
     ```
 ---
 
@@ -322,7 +322,7 @@ To create a replica cluster with CMK enabled in the same region, follow these st
     $mongoClustersName="clusterName"
         
     # Execute the az rest command to make REST API call
-    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
+    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-09-01 --body  @jsonFileFromThePreviousStep.json
     ```
 ---
 
@@ -422,7 +422,7 @@ To restore a cluster with CMK enabled, follow these steps.
     $mongoClustersName="clusterName"
         
     # Execute the az rest command to make REST API call
-    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-07-01-preview --body  @jsonFileFromThePreviousStep.json
+    az rest --method "PUT" --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DocumentDB/mongoClusters/${mongoClustersName}?api-version=2025-09-01 --body  @jsonFileFromThePreviousStep.json
     ```
 
 ---
