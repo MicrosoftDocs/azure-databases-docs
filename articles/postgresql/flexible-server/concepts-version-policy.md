@@ -71,7 +71,7 @@ Extended Support is ideal for customers who...
 
 ### Eligible PostgreSQL versions
 
-| PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date (includes grace period) | Paid Extended Support End Date |
+| PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date | Paid Extended Support End Date |
 | --- | --- | --- | --- | --- | --- |
 | 11 | July 24, 2019 |  November 9, 2025 |  March 31, 2026 |  April 1, 2026 | March 31, 2029 |
 | 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 |  April 1, 2026 | March 31, 2029 |
