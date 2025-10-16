@@ -31,7 +31,7 @@ This section provides details specifically for HA-related fields. You can follow
 
 1. Select the radio button for **Zone-redundant** in the High availability option.
     
-    :::image type="content" source="media/how-to-configure-high-availability\flexible-server-ha-configure.png" alt-text="Configure high-availability." lightbox="media/how-to-configure-high-availability\flexible-server-ha-configure.png":::
+    :::image type="content" source="media/how-to-configure-high-availability\flexible-server-ha-configure.png" alt-text="Screenshot that shows how to configure high-availability." lightbox="media/how-to-configure-high-availability\flexible-server-ha-configure.png":::
 
 1. Select **Configure server** if you want to change the default compute and storage settings.
 
@@ -39,7 +39,7 @@ This section provides details specifically for HA-related fields. You can follow
    **General purpose** or **Business Critical** compute tiers.
 
    > [!IMPORTANT]  
-   We only support zone-redundant high availability for the **General purpose** and **Business Critical** pricing tiers.
+   > We only support zone-redundant high availability for the **General purpose** and **Business Critical** pricing tiers.
 
 1. Select the **Compute size** for your choice from the dropdown list.
 

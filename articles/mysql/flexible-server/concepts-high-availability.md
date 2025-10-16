@@ -68,7 +68,7 @@ The database server name connects applications to the primary server. Standby re
 Automatic backups, both snapshots and log backups, are performed on locally redundant storage from the primary database server.
 
 > [!NOTE]  
-> For both zone-redundant and Local-redundant HA:
+> For both Zone-redundant and Local-redundant HA:
 > - If a failure occurs, the time needed for the standby replica to take over the role of primary depends on the time it takes to replay the binary log from the primary storage account to the standby. To reduce failover time, use primary keys on all tables. Failover times typically take between 60 and 120 seconds.
 > - The standby server isn't available for read or write operations. It's a passive standby to enable fast failover.
 > - Always use a fully qualified domain name (FQDN) to connect to your primary server. Avoid using an IP address to connect. If a failover occurs, after the primary and standby server roles are switched, a DNS A record might change. That change prevents the application from connecting to the new primary server if an IP address is used in the connection string.
