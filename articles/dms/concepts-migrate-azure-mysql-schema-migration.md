@@ -1,10 +1,10 @@
 ---
 title: MySQL to Azure Database for MySQL Data Migration - MySQL Schema Migration
 description: Learn how to use the Azure Database for MySQL Data Migration - MySQL Schema Migration
-author: adig
-ms.author: adig
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
 ms.topic: article
 ms.collection:

@@ -1,17 +1,17 @@
 ---
 title: MySQL to Azure Database for MySQL Data Migration - MySQL Replicate Changes
 description: Learn how to use the Azure Database for MySQL Data Migration - MySQL Replicate Changes
-author: adig
-ms.author: adig
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan, randolphwest
-ms.date: 09/18/2024
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
 ms.topic: article
 ms.collection:
-- sql-migration-content
+  - sql-migration-content
 ms.custom:
-- references_regions
-- sfi-image-nochange
+  - references_regions
+  - sfi-image-nochange
 ---
 
 # MySQL to Azure Database for MySQL Data Migration - MySQL Replicate Changes
