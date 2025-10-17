@@ -71,7 +71,7 @@ Diagram Illustrating an external system ingesting claims using Azure Event Hubs.
 
 ## Automate AI solutions
 
-Automate the deployment of AI-powered solutionsby using tools like the new Azure Developer CLI. Use this automation to create a modern developer and operations workflow.
+Automate the deployment of AI-powered solutions by using tools like the new Azure Developer CLI. Use this automation to create a modern developer and operations workflow.
 
 | Example | Link |
 | --- | --- |
