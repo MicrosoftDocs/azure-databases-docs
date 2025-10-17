@@ -4,7 +4,7 @@ description: Learn about the concepts of business continuity with an Azure Datab
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 10/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
