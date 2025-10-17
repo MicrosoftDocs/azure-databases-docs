@@ -27,6 +27,10 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 ### Enhanced portal experience for high availability
 We’ve updated the portal experience for High Availability (HA) options to make it more intuitive and aligned with Azure standards. To help customers run mission-critical workloads with zone-aware HA, the portal now prioritizes Zone-Redundant HA wherever available and displays SLA details alongside the selection for better clarity. If Zone-Redundant HA is not available, customers can enable Local Redundant HA. Additionally, we are rebranding “Same Zone” to Local Redundant to ensure consistency with Azure naming conventions.[Learn More](how-to-configure-high-availability.md)
 
+### General Availability of Server Parameters support for `lower_case_table_names` in  Azure Database for MySQL- Flexible Server
+For [MySQL version 8.0+](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html) you can configure `lower_case_table_names` only when you're initializing the server. For restore operations or replica server creation, the parameter will automatically be copied from the source server and cannot be changed. [Learn More](concepts-server-parameters.md#lower_case_table_names)
+
+
 ## September 2025
 
 ### Azure MySQL 8.4 General Available
