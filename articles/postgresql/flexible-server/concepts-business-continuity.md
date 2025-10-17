@@ -43,7 +43,6 @@ The following table compares RTO and RPO in a **typical workload** scenario:
 | Read replicas | Not Applicable | RTO - Minutes* <br/>RPO - Typically ranging from 30 secs to 5 Minutes* |
 | High Availability | Not Applicable | RTO < 120 secs <br/> RPO = 0 |
 
-Production SKUs include General Purpose and Memory Optimized options.
 
 ## Planned downtime events
 
