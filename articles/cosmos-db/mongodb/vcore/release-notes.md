@@ -7,7 +7,7 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: release-notes
-ms.date: 09/09/2025
+ms.date: 10/17/2025
 
 #Customer intent: As a database administrator, I want to review the release notes, so I can understand what new features are released for the service.
 ---
@@ -16,13 +16,34 @@ ms.date: 09/09/2025
 
 This article contains release notes for the API for MongoDB vCore. These release notes are composed of feature release dates, and feature updates.
 
-## Latest release: Aug 29, 2025
+>> [!IMPORTANT]
+>> Items tagged as [Preview] requires support request for enabling them on your cluster.
 
-### Engine Enhancements_0829
+## Latest release: Oct 10, 2025
+
+### Engine Enhancements_1010
+
+- [Preview] Added support for index pushdown for sort queries filtering on `_id` field.
+- [Preview] Added schema validation support for [$jsonSchema](./operators/evaluation-query/$jsonschema.md) during rule creation or modification.
+- [Preview] Added schema enforcement with CSFLE (Client Side Field level Encryption) integration.
+- [Preview] TTL index uses ordered index scan via index hints. TTL index performs batch deletions continuously for up to 60 seconds, instead of once every 60 seconds
+
+### Infrastructure Enhancements_1017
+
+- Added API version `2025-09-01`, to include additional features:
+  - Data API
+  - Entra auth for enabling users and disable native auth.
+  - CMK
+
+## Previous releases
+
+### Aug 29, 2025
+
+#### Engine Enhancements_0829
 
 - Introduced support for index hints, giving developers the option to explicitly specify an index during query execution.
-- [Preview] Enabled index-only scans on ordered indexes for count queries where filters can be pushed down to the index and no projections are applied. Please raise a support request to enable.
-- [Preview] Improved parallel index build performance. Please raise a support request to enable.
+- [Preview] Enabled index-only scans on ordered indexes for count queries where filters can be pushed down to the index and no projections are applied.
+- [Preview] Improved parallel index build performance.
 - Improved point lookup queries for more efficient execution.
 - Enhanced `usersInfo` and `connectionStatus` commands to return all supported roles (ReadWrite, UserAdmin, Root) and privilege sets (dbAdmin, userAdmin, clusterMonitor, clusterManager, hostManager).
 - Improved query planning performance by introducing a custom planner for insert operations.
@@ -30,12 +51,10 @@ This article contains release notes for the API for MongoDB vCore. These release
 - Fixed Response type of update to add compatibility to C++ drivers requiring response in 32 bit.
 - Enhanced error messages for output stages `$merge` and `$out`.
 
-### Infrastructure Enhancements_0909
+#### Infrastructure Enhancements_0909
 
-- [CMK] (data-encryption-at-rest.md) support (GA).
+- [CMK](database-encryption-at-rest.md) support (GA).
 - [EntraID](entra-authentication.md) support (GA).
-
-## Previous releases
 
 ### July 15, 2025
 
@@ -58,8 +77,8 @@ This article contains release notes for the API for MongoDB vCore. These release
 
 - [MongoDB vCore v8 released](quickstart-portal.md).
   - Support $convert on binData to binData, string to binData and binData to string (except with format: auto).
-  - Added support for `$toUUID` to simplify string-to-UUID conversion.
-  - `$rank` and `$denseRank` now treat `null` and missing values the same while calculating rankings, aligning behavior with $sort.
+  - Added support for $toUUID to simplify string-to-UUID conversion.
+  - $rank and $denseRank now treat `null` and missing values the same while calculating rankings, aligning behavior with $sort.
   - Pipeline Size Enforcement- Aggregation throws an error if the pipeline stage limit is exceeded.
   - $getField now accepts any valid expression that resolves to a string, not just string constants.
 
