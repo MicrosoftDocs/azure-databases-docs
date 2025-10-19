@@ -29,7 +29,7 @@ prerequisites:
     There are two items required
   dependencies:
     - |
-      An Azure account. If you don't have an Azure account, create a [free Azure account](https://azure.microsoft.com/free/) now.
+      An Azure account. If you don't have an Azure account, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) now.
     - |
       An Azure Cosmos DB account. For instructions, see [Quickstart: Azure Cosmos DB for MongoDB driver for Node.js](create-mongodb-dotnet.md).
 procedureSection:

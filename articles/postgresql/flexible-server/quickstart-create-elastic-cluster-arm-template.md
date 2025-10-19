@@ -20,7 +20,7 @@ Azure Resource Manager is the deployment and management service for Azure. It pr
 
 ## Prerequisites
 
-An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/).
+An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ## Review the template
 

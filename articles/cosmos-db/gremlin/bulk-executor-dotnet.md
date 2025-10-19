@@ -30,7 +30,7 @@ Before you begin, make sure that you have the following:
 
 * Visual Studio 2019 with the Azure development workload. You can get started with the [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) for free.
 
-* An Azure subscription. If you don't already have a subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). 
+* An Azure subscription. If you don't already have a subscription, you can [create a free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). 
 
 * An Azure Cosmos DB for Gremlin database with an *unlimited collection*. To get started, go to [Azure Cosmos DB for Gremlin in .NET](./quickstart-dotnet.md).
 

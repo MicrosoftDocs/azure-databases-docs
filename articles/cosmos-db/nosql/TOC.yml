@@ -72,7 +72,7 @@
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrate with AI tools
       href: ../gen-ai/integrations.md?context=/azure/cosmos-db/nosql/context/context
-    - name: Manage agentic memories
+    - name: Manage agent memories
       href: ../gen-ai/agentic-memories.md
     - name: Build a RAG chatbot
       href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
@@ -88,7 +88,7 @@
           href: ../vector-database.md?context=/azure/cosmos-db/nosql/context/context
         - name: Vector search
           href: ../gen-ai/vector-search-overview.md?context=/azure/cosmos-db/nosql/context/context
-        - name: Retrieval Augmented Generation (RAG)
+        - name: Retrieval-augmented generation (RAG)
           href: ../gen-ai/rag.md?context=/azure/cosmos-db/nosql/context/context
         - name: Tokens
           href: ../gen-ai/tokens.md?context=/azure/cosmos-db/nosql/context/context
@@ -180,6 +180,9 @@
         - name: Frequently asked questions
           displayName: faq, questions, answers
           href: faq.yml?context=/azure/cosmos-db/nosql/context/context#security
+        - name: Videos
+          displayName: playlist, YouTube
+          href: reference-videos.md
 - name: Model data for partitioning
   items:
     - name: Overview of resource model

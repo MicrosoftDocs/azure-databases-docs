@@ -25,7 +25,7 @@ This article showcases adding rich AI capabilities to an Azure Database for Post
 
 ## Prerequisites
 
-- An Azure subscription. [Create one for free](https://azure.microsoft.com/free/cognitive-services?azure-portal=true).
+- An Azure subscription. [Create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 - Access granted to Azure OpenAI in the desired Azure subscription. Currently, the application grants access to this service. You can apply for access to Azure OpenAI by completing the form in [Limited access for Azure OpenAI Service](https://aka.ms/oai/access).
 

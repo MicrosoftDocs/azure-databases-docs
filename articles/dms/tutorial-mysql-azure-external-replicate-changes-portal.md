@@ -1,16 +1,17 @@
 ---
-title: "Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server using DMS Replicate Changes via the Azure portal"
-titleSuffix: "Azure Database Migration Service"
-description: "Learn to perform an online migration from MySQL to Azure Database for MySQL - Flexible Server by using Azure Database Migration Service Replicate Changes Scenario"
-author: adig
-ms.author: adig
+title: "Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server Using DMS Replicate Changes via the Azure Portal"
+titleSuffix: Azure Database Migration Service
+description: Learn to perform an online migration from MySQL to Azure Database for MySQL - Flexible Server by using Azure Database Migration Service Replicate Changes Scenario
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan, randolphwest
-ms.date: 09/18/2024
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-- sql-migration-content
-ms.custom: sfi-image-nochange
+  - sql-migration-content
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS Replicate Changes scenario
@@ -95,7 +96,8 @@ To configure your DMS migration project, perform the following steps.
    :::image type="content" source="media/tutorial-mysql-to-azure-replicate-changes/05-replicate-changes-select-db.png" alt-text="Screenshot of a Select database." lightbox="media/tutorial-mysql-to-azure-replicate-changes/05-replicate-changes-select-db.png":::
 
 1. Select **Next : Select tables>>** to navigate to the **Select tables** tab. Select all tables to be migrated.
-    :::image type="content" source="media/tutorial-mysql-to-azure-replicate-changes/06-replicate-changes-select-table.png" alt-text="Screenshot of a Select table." lightbox="media/tutorial-mysql-to-azure-replicate-changes/06-replicate-changes-select-table.png":::
+
+   :::image type="content" source="media/tutorial-mysql-to-azure-replicate-changes/06-replicate-changes-select-table.png" alt-text="Screenshot of a Select table." lightbox="media/tutorial-mysql-to-azure-replicate-changes/06-replicate-changes-select-table.png":::
 
 1. After configuring for schema migration, select **Review and start migration**.
 

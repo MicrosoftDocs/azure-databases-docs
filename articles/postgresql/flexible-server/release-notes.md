@@ -17,6 +17,11 @@ ms.custom:
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
+## Release: October 2025
+
+- Preview
+    - [Read Replica support for Premium SSDv2 in Azure Database for PostgreSQL](concepts-read-replicas.md)
+
 ## Release: September 2025
 - General availability
     - [Near zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling) for high availability (HA) enabled servers.

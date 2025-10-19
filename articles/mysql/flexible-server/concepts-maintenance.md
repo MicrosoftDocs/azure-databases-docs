@@ -96,6 +96,26 @@ If a maintenance event is canceled or fails, the system sends you a notification
 
 <a id="near-zero-downtime-maintenance-public-preview"></a>
 
+## Maintenance status
+
+For individual servers, you can view the maintenance status in Azure MySQL maintenance blade in the Azure portal. The maintenance status indicates whether maintenance is scheduled, in progress, completed, or canceled.
+
+For customers managing multiple Azure Database for MySQL flexible servers, you can use Azure Resource Graph to perform bulk queries across subscriptions and resource groups. This is especially useful for auditing maintenance history, identifying impacted resources, and tracking maintenance events over time. Below is the Kusto query that retrieves the maintenance status, start and end times, and tracking ID for all MySQL flexible servers under the customer's subscription. This allows customers to monitor maintenance activities over the past three months in a scalable and automated way:
+
+```sql
+
+ServiceHealthResources
+| where type == "microsoft.resourcehealth/events/impactedresources"
+| extend TrackingId = split(split(id, "/events/", 1)[0], "/impactedResources", 0)[0]
+| extend p = parse_json(properties)
+| project subscriptionId, TrackingId, resourceName= p.resourceName, resourceGroup=p.resourceGroup, resourceType=p.targetResourceType, status= p.status, maintenanceStartTime=todatetime(p.maintenanceStartTime),  maintenanceEndTime=todatetime( p.maintenanceEndTime), details = p, id
+| where resourceType == "Microsoft.DBforMySQL/flexibleServers" 
+| order by maintenanceEndTime
+
+```
+
+You can also go to Azure Service Health's Impacted Resources tab to view the maintenance status for all your Azure resources, including Azure Database for MySQL flexible servers. Please note that the maintenance status that appears in Azure Service Health represents the overall status of the maintenance event at region level and might not reflect the status of individual servers.
+
 ## Near-zero-downtime maintenance
 
 The Azure Database for MySQL *near-zero-downtime maintenance* feature is a groundbreaking development for high-availability servers. This feature is designed to substantially reduce maintenance downtime. This capability is pivotal for businesses that demand high availability and minimal interruption in their database operations.

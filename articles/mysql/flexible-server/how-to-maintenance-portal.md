@@ -108,7 +108,7 @@ You can access the tracking ID view at any time, whether the maintenance is pend
 ### Using Azure Resource Graph to Audit Maintenance History
 
 Customers who manage multiple Azure Database for MySQL flexible servers can use Azure Resource Graph to perform bulk queries across subscriptions and resource groups. This is especially useful for auditing maintenance history, identifying impacted resources, and tracking maintenance events over time.
-For example, the following Kusto query retrieves the maintenance status, start and end times, and tracking ID for all MySQL flexible servers whose names start with "demo" under the customer's subscription. This allows customers to monitor maintenance activities over the past three months in a scalable and automated way:
+For example, the following Kusto query retrieves the maintenance status, start and end times, and tracking ID for all MySQL flexible servers under the customer's subscription. This allows customers to monitor maintenance activities over the past three months in a scalable and automated way:
 
 ```sql
 
@@ -116,8 +116,8 @@ ServiceHealthResources
 | where type == "microsoft.resourcehealth/events/impactedresources"
 | extend TrackingId = split(split(id, "/events/", 1)[0], "/impactedResources", 0)[0]
 | extend p = parse_json(properties)
-| project subscriptionId, TrackingId, resourceName= p.resourceName, resourceGroup=p.resourceGroup, resourceType=p.targetResourceType, status= p.status, maintenanceStartTime=p.maintenanceStartTime,  maintenanceEndTime=todatetime( p.maintenanceEndTime), details = p, id
-| where resourceType == "Microsoft.DBforMySQL/flexibleServers" and resourceName startswith "demo" 
+| project subscriptionId, TrackingId, resourceName= p.resourceName, resourceGroup=p.resourceGroup, resourceType=p.targetResourceType, status= p.status, maintenanceStartTime=todatetime(p.maintenanceStartTime),  maintenanceEndTime=todatetime( p.maintenanceEndTime), details = p, id
+| where resourceType == "Microsoft.DBforMySQL/flexibleServers" 
 | order by maintenanceEndTime
 
 ```

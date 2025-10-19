@@ -1,11 +1,11 @@
 ---
-title: Manage indexing policies in Azure Cosmos DB
+title: Manage Indexing Policies in Azure Cosmos DB
 description: Learn how to manage indexing policies, include or exclude a property from indexing, how to define indexing using different Azure Cosmos DB SDKs.
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 09/22/2025
 ms.update-cycle: 180-days
 ms.author: mjbrown
 ms.custom: devx-track-csharp, build-2024, ignite-2024
@@ -24,7 +24,7 @@ In Azure Cosmos DB, data is indexed following [indexing policies](../index-polic
 
 ## Indexing policy examples
 
-Here are some examples of indexing policies shown in [their JSON format](../index-policy.md). They're exposed on the Azure portal in JSON format. The same parameters can be set through the Azure CLI or any SDK.
+Here are some examples of indexing policies shown in [their JSON format](../index-policy.md). They're exposed on the Azure portal in JSON format. The same parameters can be set by using the Azure CLI or any SDK.
 
 ### Opt-out policy to selectively exclude some property paths
 
@@ -49,10 +49,9 @@ Here are some examples of indexing policies shown in [their JSON format](../inde
 
 
 > [!NOTE]
->  - The partition key (unless it is also "/id") is not indexed and should be included in the index.
-- The system properties id and _ts will always be indexed when the cosmos account indexing mode is Consistent
-- The system properties id and _ts are not included in the container policy’s indexed paths description. This is by design because these system properties are indexed by default and this behavior cannot be disabled.
-
+> - The partition key (unless it's also `/id`) isn't indexed and should be included in the index.
+> - The system properties `id` and `_ts` are always indexed when the cosmos account indexing mode is `consistent`.
+> - The system properties `id` and `_ts` aren't included in the container policy’s indexed paths description. This is by design because these system properties are indexed by default and this behavior can't be disabled.
 
 ### Opt-in policy to selectively include some property paths
 
@@ -78,7 +77,7 @@ Here are some examples of indexing policies shown in [their JSON format](../inde
 > [!NOTE]
 > We generally recommend that you use an *opt-out* indexing policy. Azure Cosmos DB proactively indexes any new property that might be added to your data model.
 
-### Using a spatial index on a specific property path only
+### Use a spatial index on a specific property path only
 
 ```json
 {
@@ -113,10 +112,10 @@ Here are some examples of indexing policies shown in [their JSON format](../inde
 In addition to including or excluding paths for individual properties, you can also specify a [vector index](../index-policy.md#vector-indexes). In general, vector indexes should be specified whenever the `VectorDistance` system function is used to measure similarity between a query vector and a vector property.
 
 > [!NOTE]
-> Before proceeding, you must enable the [Azure Cosmos DB NoSQL Vector Indexing and Search](vector-search.md#enable-the-vector-indexing-and-search-feature).
+> Before proceeding, you must enable [Azure Cosmos DB NoSQL vector indexing and search](vector-search.md#enable-the-vector-indexing-and-search-feature).
 
->[!IMPORTANT]
-> A vector indexing policy must be on the same path defined in the container's vector policy. [Learn more about container vector policies](vector-search.md#container-vector-policies).
+> [!IMPORTANT]
+> A vector indexing policy must be on the same path defined in the container's vector policy. To learn more, see [Container vector policies](vector-search.md#container-vector-policies).
 
 ```json
 {
@@ -140,12 +139,12 @@ In addition to including or excluding paths for individual properties, you can a
     ]
 }
 ```
-> [!IMPORTANT]
-> Wild card characters (*, []) and vector paths nested inside arrays are not currently supported in the vector policy or vector index.
-
 
 > [!IMPORTANT]
-> Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
+> Wild card characters (`*`, `[]`) and vector paths nested inside arrays aren't currently supported in the vector policy or vector index.
+
+> [!IMPORTANT]
+> Currently, vector policies and vector indexes are immutable after creation. To make changes, create a new collection.
 
 You can define the following types of vector index policies:
 
@@ -155,23 +154,24 @@ You can define the following types of vector index policies:
 | **`quantizedFlat`** | Quantizes (compresses) vectors before storing on the index. This can improve latency and throughput at the cost of a small amount of accuracy. | 4096 |
 | **`diskANN`** | Creates an index based on DiskANN for fast and efficient approximate search. | 4096 |
 
-The `flat` and `quantizedFlat` index types leverage Azure Cosmos DB's index to store and read each vector when performing a vector search. Vector searches with a `flat` index are brute-force searches and produce 100% accuracy. However, there is a limitation of `505` dimensions for vectors on a flat index.
+The `flat` and `quantizedFlat` index types use Azure Cosmos DB's index to store and read each vector when performing a vector search. Vector searches with a `flat` index are brute-force searches and produce 100% accuracy. However, there's a limitation of *505* dimensions for vectors on a flat index.
 
-The `quantizedFlat` index stores quantized or compressed vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you are using query filters to narrow down the vector search to a relatively small set of vectors. 
+The `quantizedFlat` index stores quantized or compressed vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you're using query filters to narrow down the vector search to a relatively small set of vectors. 
 
-The `diskANN` index is a separate index defined specifically for vectors leveraging [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of highly performant vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest query-per-second (QPS), and lowest RU cost queries at high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy may be lower than `quantizedFlat` or `flat`.
+The `diskANN` index is a separate index defined specifically for vectors using [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of highly performant vector-indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest-latency, highest query-per-second (QPS), and lowest RU cost queries at high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy might be lower than `quantizedFlat` or `flat`.
 
-The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy vs latency trade-off that applies to every Approximate Nearest Neighbors vector index.
+The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy versus latency trade-off that applies to every ANN vector index.
 
-- `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
-- `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
+- `quantizationByteSize`: Sets the size (in bytes) for product quantization: Min=1, Default=dynamic (system decides), Max=512. Setting this larger could result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
+- `indexingSearchListSize`: Sets how many vectors to search over during index build construction: Min=10, Default=100, Max=500. Setting this larger could result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
 
-### Using Sharded DiskANN
+### Using sharded DiskANN
+
 Sharded DiskANN helps you optimize large-scale vector search by splitting a DiskANN index into smaller, more manageable pieces. By specifying a VectorIndexShardKey in your container’s indexing policy, you can create multiple DiskANN indexes—one for each unique value of a chosen document property.
 
-This approach can lead to faster query performance, improved recall, and lower RU costs, especially when working with high-cardinality data. Whether you're building recommendation engines, semantic search, or intelligent agents, Sharded DiskANN gives you more control over how vector indexing is structured and executed.
+This approach can lead to faster query performance, improved recall, and lower RU costs, especially when working with high-cardinality data. Whether you're building recommendation engines, semantic search, or intelligent agents, sharded DiskANN gives you more control over how vector indexing is structured and executed.
 
-Here, we can see an example of defining the shard key based on a tenantID property. This can be any property of the data item, even the partition key. Note that the single string needs to be enclosed in an array. [Learn more about Sharded DiskANN](../gen-ai/sharded-diskann.md).
+Here, we can see an example of defining the shard key based on a tenantID property. This can be any property of the data item, even the partition key. The single string needs to be enclosed in an array. To learn more, see [Sharded DiskANN: Focused vector search](../gen-ai/sharded-diskann.md).
 
 ```json
 "vectorIndexes": [
@@ -185,7 +185,7 @@ Here, we can see an example of defining the shard key based on a tenantID proper
 
 ### Tuple indexing policy examples
 
-This example indexing policy defines a tuple index on events.name and events.category
+This example indexing policy defines a tuple index on `events.name` and `events.category`.
 
 ```json
 {  
@@ -200,24 +200,24 @@ This example indexing policy defines a tuple index on events.name and events.cat
 }
 ```
 
-The above index is used for the below query.
+The preceding index is used for the following query.
 
 ```sql
 SELECT * 
 FROM root r 
 WHERE 
    EXISTS (SELECT VALUE 1 FROM ev IN r.events 
-           WHERE ev.name = ‘M&M’ AND ev.category = ‘Candy’) 
+           WHERE ev.name = 'M&M' AND ev.category = 'Candy') 
 ```
 
 ## Composite indexing policy examples
 
-In addition to including or excluding paths for individual properties, you can also specify a composite index. To perform a query that has an `ORDER BY` clause for multiple properties, a [composite index](../index-policy.md#composite-indexes) is required on those properties. If the query includes filters along with sorting on multiple properties, you may need more than one composite index.
+In addition to including or excluding paths for individual properties, you can also specify a composite index. To perform a query that has an `ORDER BY` clause for multiple properties, a [composite index](../index-policy.md#composite-indexes) is required on those properties. If the query includes filters along with sorting on multiple properties, you might need more than one composite index.
 
 Composite indexes also have a performance benefit for queries that have multiple filters or both a filter and an ORDER BY clause.
 
 > [!NOTE]
-> Composite paths have an implicit `/?` since only the scalar value at that path is indexed. The `/*` wildcard is not supported in composite paths. You shouldn't specify `/?` or `/*` in a composite path. Composite paths are also case-sensitive.
+> Composite paths have an implicit `/?` since only the scalar value at that path is indexed. The `/*` wildcard isn't supported in composite paths. You shouldn't specify `/?` or `/*` in a composite path. Composite paths are also case-sensitive.
 
 ### Composite index defined for (name asc, age desc)
 
@@ -248,7 +248,7 @@ Composite indexes also have a performance benefit for queries that have multiple
 
 The composite index on name and age is required for the following queries:
 
-Query #1:
+**Query #1:**
 
 ```sql
 SELECT *
@@ -256,7 +256,7 @@ FROM c
 ORDER BY c.name ASC, c.age DESC
 ```
 
-Query #2:
+**Query #2:**
 
 ```sql
 SELECT *
@@ -266,7 +266,7 @@ ORDER BY c.name DESC, c.age ASC
 
 This composite index benefits the following queries and optimizes the filters:
 
-Query #3:
+**Query #3:**
 
 ```sql
 SELECT *
@@ -275,7 +275,7 @@ WHERE c.name = "Tim"
 ORDER BY c.name DESC, c.age ASC
 ```
 
-Query #4:
+**Query #4:**
 
 ```sql
 SELECT *
@@ -349,9 +349,9 @@ It's optional to specify the order. If not specified, the order is ascending.
 }
 ```
 
-### Exclude all property paths but keeping indexing active
+### Exclude all property paths but keep indexing active
 
-You can use this policy where the [Time-to-Live (TTL) feature](time-to-live.md) is active but no other indexes are necessary to use Azure Cosmos DB as a pure key-value store.
+You can use this policy where the [time-to-live (TTL)](time-to-live.md) feature is active but no other indexes are necessary to use Azure Cosmos DB as a pure key-value store.
 
 ```json
 {
@@ -382,31 +382,31 @@ In Azure Cosmos DB, the indexing policy can be updated using any of the followin
 - Using PowerShell
 - Using one of the SDKs
 
-An [indexing policy update](../index-policy.md#modifying-the-indexing-policy) triggers an index transformation. The progress of this transformation can also be tracked from the SDKs.
+An [indexing policy update](../index-policy.md#modifying-the-indexing-policy) triggers an index transformation. The progress of this transformation can also be tracked by using the SDKs.
 
 > [!NOTE]
 > When you update indexing policy, writes to Azure Cosmos DB are uninterrupted. Learn more about [indexing transformations](../index-policy.md#modifying-the-indexing-policy).
 
 > [!IMPORTANT]
-> Removing an index takes effect immediately, whereas adding a new index takes some time as it requires an indexing transformation. When replacing one index with another (for example, replacing a single property index with a composite-index) make sure to add the new index first and then wait for the index transformation to complete **before** you remove the previous index from the indexing policy. Otherwise this will negatively affect your ability to query the previous index and may break any active workloads that reference the previous index.
+> Removing an index takes effect immediately, whereas adding a new index takes some time since it requires an indexing transformation. When you replace one index with another (for example, replacing a single property index with a composite-index), make sure to add the new index first and then wait for the index transformation to complete *before* you remove the previous index from the indexing policy. Otherwise this negatively affects your ability to query the previous index and might break any active workloads that reference the previous index.
 
 ### Use the Azure portal
 
 Azure Cosmos DB containers store their indexing policy as a JSON document that the Azure portal lets you directly edit.
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
 1. Create a new Azure Cosmos DB account or select an existing account.
 
 1. Open the **Data Explorer** pane and select the container that you want to work on.
 
-1. Select **Scale & Settings**.
+1. Select **Settings**, then choose **Indexing Policy**.
 
 1. Modify the indexing policy JSON document, as shown in these [examples](#indexing-policy-examples).
 
 1. Select **Save** when you're done.
 
-:::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Manage Indexing using Azure portal":::
+:::image type="content" source="media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Screenshot that shows how to manage the indexing using the Azure portal." lightbox="media/how-to-manage-indexing-policy/indexing-policy-portal.png":::
 
 ### Use the Azure CLI
 
@@ -420,7 +420,7 @@ To create a container with a custom indexing policy, see [Create a container wit
 
 #### [.NET SDK V3](#tab/dotnetv3)
 
-The `ContainerProperties` object from the [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) exposes an `IndexingPolicy` property that lets you change the `IndexingMode` and add or remove `IncludedPaths` and `ExcludedPaths`. For more information, see [Quickstart: Azure Cosmos DB for NoSQL client library for .NET](quickstart-dotnet.md).
+The `ContainerProperties` object from the [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) exposes an `IndexingPolicy` property that lets you change the `IndexingMode` and add or remove `IncludedPaths` and `ExcludedPaths`. For more information, see [Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for .NET](quickstart-dotnet.md).
 
 ```csharp
 // Retrieve the container's details
@@ -509,7 +509,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 ### Use the Java SDK
 
-The `DocumentCollection` object from the [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) exposes the `getIndexingPolicy()` and `setIndexingPolicy()` methods. The `IndexingPolicy` object they manipulate lets you change the indexing mode and add or remove included and excluded paths. For more information, see [Quickstart: Build a Java app to manage Azure Cosmos DB for NoSQL data](quickstart-java.md).
+The `DocumentCollection` object from the [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) exposes the `getIndexingPolicy()` and `setIndexingPolicy()` methods. The `IndexingPolicy` object they manipulate lets you change the indexing mode and add or remove included and excluded paths. For more information, see [Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for Java](quickstart-java.md).
 
 ```java
 // Retrieve the container's details
@@ -591,7 +591,7 @@ containerResponse.subscribe(result -> {
 
 ### Use the Node.js SDK
 
-The `ContainerDefinition` interface from [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) exposes an `indexingPolicy` property that lets you change the `indexingMode` and add or remove `includedPaths` and `excludedPaths`. For more information, see [Quickstart - Azure Cosmos DB for NoSQL client library for Node.js](quickstart-nodejs.md).
+The `ContainerDefinition` interface from [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) exposes an `indexingPolicy` property that lets you change the `indexingMode` and add or remove `includedPaths` and `excludedPaths`. For more information, see [Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for Node.js](quickstart-nodejs.md).
 
 Retrieve the container's details:
 
@@ -693,7 +693,7 @@ Add a composite index:
 
 ### Use the Go SDK
 
-The [IndexingPolicy](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#IndexingPolicy) struct defines the indexing policy for a container. It can be used with when [creating](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#DatabaseClient.CreateContainer) a new container or [reconfiguring](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ContainerClient.Replace) an existing one.
+The [IndexingPolicy struct](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#IndexingPolicy) defines the indexing policy for a container. It can be used when you [create a new container](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#DatabaseClient.CreateContainer) or [reconfigure an existing one](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ContainerClient.Replace).
 
 ```go
 db, _ := client.NewDatabase("demodb")
@@ -741,7 +741,7 @@ indexingPolicy := &azcosmos.IndexingPolicy{
 
 #### [Python SDK V3](#tab/pythonv3)
 
-When you use the [Python SDK V3](https://pypi.org/project/azure-cosmos/), the container configuration is managed as a dictionary. From this dictionary, you can access the indexing policy and all its attributes. For more information, see [Quickstart: Azure Cosmos DB for NoSQL client library for Python](quickstart-python.md).
+When you use the [Python SDK V3](https://pypi.org/project/azure-cosmos/), the container configuration is managed as a dictionary. From this dictionary, you can access the indexing policy and all its attributes. For more information, see [Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for Python](quickstart-python.md).
 
 Retrieve the container's details:
 
@@ -880,5 +880,5 @@ container_client.read(populate_quota_info = True,
 
 ## Related content
 
-- [Indexing overview](../index-overview.md)
-- [Indexing policy](../index-policy.md)
+- [Overview of indexing in Azure Cosmos DB](../index-overview.md)
+- [Indexing policies in Azure Cosmos DB](../index-policy.md)
