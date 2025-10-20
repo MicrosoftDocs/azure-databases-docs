@@ -6,7 +6,7 @@ author: TheovanKraay
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 09/11/2025
+ms.date: 10/20/2025
 ms.update-cycle: 180-days
 ms.author: thvankra
 ms.collection:
