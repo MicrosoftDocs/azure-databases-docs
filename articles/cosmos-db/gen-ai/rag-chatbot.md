@@ -26,7 +26,14 @@ At the end, we create a simple user interface to allow users to type in question
 ## Prerequisites
 
 - Azure Cosmos DB for NoSQL account
+
+  - [Enabled `EnableNoSQLVectorSearch` capability](../nosql/vector-search.md#enable-the-vector-indexing-and-search-feature)
+
 - Azure OpenAI account
+
+  - Deployment for embeddings using a model like `text-embedding-3-large`
+
+  - Deployment for completions using a model like `gpt-35-turbo`
 
 ## Configure project and directory
 
@@ -57,22 +64,22 @@ Start by configuring your Python project with the required packages and environm
 1. Enter the following information into the file. Use the credentials and resource names for your existing Azure OpenAI and Azure Cosmos DB resources.
 
     ```env
-    cosmos_uri = "https://<replace with cosmos db account name>.documents.azure.com:443/"
-    cosmos_key = "<replace with cosmos db account key>"
-    cosmos_database_name = "database"
-    cosmos_collection_name = "vectorstore"
+    cosmos_uri = "https://<azure-cosmos-db-nosql-account-name>.documents.azure.com:443/"
+    cosmos_key = "<azure-cosmos-db-nosql-account-key>"
+    cosmos_database_name = "ragdatabase"
+    cosmos_container_name = "vectorstorecontainer"
     cosmos_vector_property_name = "vector"
-    cosmos_cache_database_name = "database"
-    cosmos_cache_collection_name = "vectorcache"
-    openai_endpoint = "<replace with azure openai endpoint>"
-    openai_key = "<replace with azure openai key>"
+    cosmos_cache_database_name = "ragdatabase"
+    cosmos_cache_container_name = "vectorcachecontainer"
+    openai_endpoint = "<azure-openai-account-endpoint>"
+    openai_key = "<azure-openai-account-key>"
     openai_type = "azure"
     openai_api_version = "2023-05-15"
-    openai_embeddings_deployment = "<replace with azure openai embeddings deployment name>"
-    openai_embeddings_model = "<replace with azure openai embeddings model - e.g. text-embedding-3-large"
+    openai_embeddings_deployment = "<azure-openai-embeddings-deployment-name>"
+    openai_embeddings_model = "<azure-openai-embeddings-model>"
     openai_embeddings_dimensions = "1536"
-    openai_completions_deployment = "<replace with azure openai completions deployment name>"
-    openai_completions_model = "<replace with azure openai completions model - e.g. gpt-35-turbo>"
+    openai_completions_deployment = "<azure-openai-completions-deployment-name>"
+    openai_completions_model = "<azure-openai-completions-model>"
     storage_file_url = "https://cosmosdbcosmicworks.blob.core.windows.net/fabcondata/movielens_dataset.json"
     ```
 
@@ -100,17 +107,16 @@ import gradio as gr
 # Cosmos DB imports
 from azure.cosmos import CosmosClient
 
-# Load configuration
-env_name = "sample_env_file.env"
-config = dotenv_values(env_name)
+# Load configuration from .env file
+config = dotenv_values()
 
 cosmos_conn = config['cosmos_uri']
 cosmos_key = config['cosmos_key']
 cosmos_database = config['cosmos_database_name']
-cosmos_collection = config['cosmos_collection_name']
+cosmos_collection = config['cosmos_container_name']
 cosmos_vector_property = config['cosmos_vector_property_name']
 comsos_cache_db = config['cosmos_cache_database_name']
-cosmos_cache = config['cosmos_cache_collection_name']
+cosmos_cache = config['cosmos_cache_container_name']
 
 # Create the Azure Cosmos DB for NoSQL async client for faster data loading
 cosmos_client = CosmosClient(url=cosmos_conn, credential=cosmos_key)
@@ -315,7 +321,7 @@ async def insert_data(vectorize=False):
     print(f"Time taken: {duration:.2f} seconds ({duration:.3f} milliseconds)")
 
 # Run the async function with the vectorize flag set to True or False as needed
-await insert_data(vectorizeFlag)  # or await insert_data() for default
+asyncio.run(insert_data(vectorizeFlag))  # or asyncio.run(insert_data()) for default
 ```
 
 ## Perform vector search
@@ -477,8 +483,7 @@ with gr.Blocks() as demo:
         start_time = time.time()
         response_payload, cached = chat_completion(cache_container, movies_container, user_message)
         end_time = time.time()
-        elapsed_time = round((end
-        time - start_time) * 1000, 2)
+        elapsed_time = round((end_time - start_time) * 1000, 2)
         details = f"\n (Time: {elapsed_time}ms)"
         if cached:
             details += " (Cached)"
