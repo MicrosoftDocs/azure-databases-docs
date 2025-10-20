@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Sharding models on elastic clusters in Azure Database for PostgreSQL  (preview)
+# Sharding models on elastic clusters in Azure Database for PostgreSQL
 
 Sharding is a technique used in database systems and distributed computing to horizontally partition data across multiple servers or nodes. It involves breaking up a large database or dataset into smaller, more manageable parts called Shards. A shard contains a subset of the data, and together, shards form the complete dataset.
 

@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Elastic clusters in Azure Database for PostgreSQL (preview)
+# Elastic clusters in Azure Database for PostgreSQL
 
 Elastic clusters on the Azure Database for PostgreSQL service are a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
 

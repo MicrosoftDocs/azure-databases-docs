@@ -10,7 +10,7 @@ ms.topic: tutorial
 #Customer intent: As an developer, I want to design a PostgreSQL database and scale it out using elastic clusters so that my multi-tenant application runs efficiently for all tenants.
 ---
 
-# Tutorial: Design a multitenant database with elastic clusters (preview)
+# Tutorial: Design a multitenant database with elastic clusters
 
 In this tutorial, you use Azure Database for PostgreSQL with elastic clusters to learn how to design a multitenant application in order to benefit from horizontal scale-out.
 

@@ -10,7 +10,7 @@ ms.topic: tutorial
 #customer intent: As a user, I want to learn how to use elastic clusters on Azure Database for PostgreSQL  when deploying applications using the microservices architecture.
 ---
 
-# Tutorial: Design for microservices with elastic clusters (preview)
+# Tutorial: Design for microservices with elastic clusters
 
 In this tutorial, you use Azure Database for PostgreSQL as the storage backend for multiple microservices, demonstrating a sample setup and basic operation of such a cluster. Learn how to:
 

@@ -10,7 +10,7 @@ ms.topic: tutorial
 #Customer intent: As a developer, I want to parallelize queries so that I can make a real-time dashboard application.
 ---
 
-# Tutorial: Design a real-time analytics dashboard with elastic clusters (preview)
+# Tutorial: Design a real-time analytics dashboard with elastic clusters
 
 In this tutorial, you use elastic clusters on Azure Database for PostgreSQL to learn how to design a real-time dashboard and parallelize queries.
 

@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Limitations of elastic clusters (preview)
+  title: Limitations of elastic clusters
   description: "Learn about existing limitations of elastic clusters with Azure Database for PostgreSQL flexible server instances during public preview."
   author: mulander
   ms.author: adamwolk
@@ -10,7 +10,7 @@ metadata:
   ms.date: 07/06/2025
   ms.custom: references_regions
 
-title: "Frequently asked questions about elastic clusters (preview)"
+title: "Frequently asked questions about elastic clusters"
 summary: |
   [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
