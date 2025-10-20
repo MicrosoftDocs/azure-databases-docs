@@ -154,8 +154,8 @@ async with CosmosClient(host, credential) as client:
 You can use [ThroughputProperties](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ThroughputProperties) on database and container resources.
 
 ```go
-// manual throughput properties
-db_throughput := azcosmos.NewManualThroughputProperties(400)
+// autoscale throughput properties
+db_throughput := azcosmos.NewAutoscaleThroughputProperties(4000)
 
 _, err = client.CreateDatabase(context.Background(), azcosmos.DatabaseProperties{
 	ID: "demo_db",
@@ -307,7 +307,7 @@ ThroughputProperties autoscaleContainerThroughput = container.readThroughput().b
 int autoscaleMaxThroughput = autoscaleContainerThroughput.getAutoscaleMaxThroughput();
 
 // The throughput (RU/s) the resource is currently scaled to
-int currentThroughput = autoscaleContainerThroughput.Throughput;
+int currentThroughput = autoscaleContainerThroughput.getThroughput();
 ```
 
 **Sync**
@@ -323,7 +323,7 @@ ThroughputProperties autoscaleContainerThroughput = container.readThroughput().g
 int autoscaleMaxThroughput = autoscaleContainerThroughput.getAutoscaleMaxThroughput();
 
 // The throughput (RU/s) the resource is currently scaled to
-int currentThroughput = autoscaleContainerThroughput.Throughput;
+int currentThroughput = autoscaleContainerThroughput.getThroughput();
 ```
 
 # [Python](#tab/python)
