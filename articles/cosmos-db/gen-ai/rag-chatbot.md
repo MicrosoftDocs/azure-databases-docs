@@ -35,13 +35,32 @@ At the end, we create a simple user interface to allow users to type in question
 
   - Deployment for completions using a model like `gpt-35-turbo`
 
+## Get prerequisite files
+
+1. Start in an empty directory.
+
+1. Navigate to the sample compressed folder on GitHub: (<https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/blob/main/DataSet/Movies/MovieLens-4489-256D.zip>)
+
+1. In the menu, select **Download**.
+
+1. Save the file to your local project folder using the file name *MovieLens-4489-256D.zip*.
+
+1. Navigate to the sample prevectorized JSON data on GitHub: (<https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/blob/main/DataSet/Movies/MovieLens-4489-256D.json>)
+
+1. In the menu, select **Download**.
+
+1. Save the file to your local project folder using the file name *MovieLens-4489-256D.json*.
+
+1. In the project directory, create a new folder or path named *Data/*.
+
+    > [!IMPORTANT]
+    > The name is case-sensistive.
+
 ## Configure project and directory
 
 Start by configuring your Python project with the required packages and environment variables.
 
-1. Start in an empty directory.
-
-1. Open a terminal in the current directory.
+1. Open a terminal in the project directory.
 
 1. Install the required Python packages using these shell commands.
 
@@ -80,7 +99,6 @@ Start by configuring your Python project with the required packages and environm
     openai_embeddings_dimensions = "1536"
     openai_completions_deployment = "<azure-openai-completions-deployment-name>"
     openai_completions_model = "<azure-openai-completions-model>"
-    storage_file_url = "https://cosmosdbcosmicworks.blob.core.windows.net/fabcondata/movielens_dataset.json"
     ```
 
 1. Create an *app.py* file.
@@ -100,7 +118,7 @@ import zipfile
 from dotenv import dotenv_values
 from openai import AzureOpenAI
 from azure.core.exceptions import AzureError
-from azure.cosmos import PartitionKey, exceptions
+from azure.cosmos import ThroughputProperties, PartitionKey, exceptions
 from time import sleep
 import gradio as gr
 
@@ -127,9 +145,6 @@ openai_api_version = config['openai_api_version']
 openai_embeddings_deployment = config['openai_embeddings_deployment']
 openai_embeddings_dimensions = int(config['openai_embeddings_dimensions'])
 openai_completions_deployment = config['openai_completions_deployment']
-
-# Movies file url
-storage_file_url = config['storage_file_url']
 
 # Create the OpenAI client
 openai_client = AzureOpenAI(azure_endpoint=openai_endpoint, api_key=openai_key, api_version=openai_api_version)
@@ -175,13 +190,13 @@ indexing_policy = {
     ]
 } 
 
-# Create the data collection with vector index (note: this creates a container with 10000 RUs to allow fast data load)
+# Create the data collection with vector index (note: this creates a container with an autoscale limit of 20,000 RUs to allow fast data load)
 try:
     movies_container = db.create_container_if_not_exists(id=cosmos_collection, 
                                                   partition_key=PartitionKey(path='/id'),
                                                   indexing_policy=indexing_policy, 
                                                   vector_embedding_policy=vector_embedding_policy,
-                                                  offer_throughput=10000) 
+                                                  offer_throughput=ThroughputProperties(auto_scale_max_throughput=20000)) 
     print('Container with id \'{0}\' created'.format(movies_container.id)) 
 
 except exceptions.CosmosHttpResponseError: 
@@ -193,7 +208,7 @@ try:
                                                   partition_key=PartitionKey(path='/id'), 
                                                   indexing_policy=indexing_policy,
                                                   vector_embedding_policy=vector_embedding_policy,
-                                                  offer_throughput=1000) 
+                                                  offer_throughput=ThroughputProperties(auto_scale_max_throughput=2000)) 
     print('Container with id \'{0}\' created'.format(cache_container.id)) 
 
 except exceptions.CosmosHttpResponseError: 
@@ -202,11 +217,12 @@ except exceptions.CosmosHttpResponseError:
 
 ## Generate embeddings from Azure OpenAI
 
-This function vectorizes the user input for vector search. Ensure the dimensionality and model used match the sample data provided, or else regenerate vectors with your desired model.
+This function upserts the user input for vector search. Ensure the dimensionality and model used match the sample data provided, or else regenerate vectors with your desired model.
 
 ```python
 from tenacity import retry, stop_after_attempt, wait_random_exponential 
 import logging
+
 @retry(wait=wait_random_exponential(min=2, max=300), stop=stop_after_attempt(20))
 def generate_embeddings(text):
     try:        
@@ -225,17 +241,17 @@ def generate_embeddings(text):
 
 ## Load data from the JSON file
 
-Extract the prevectorized MovieLens dataset from the zip file. You can see its location in the [notebook repo](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/DataSet/Movies).
+Extract the prevectorized MovieLens dataset from the compressed folder and JSON data file.
 
 ```python
 # Unzip the data file
-with zipfile.ZipFile("../../DataSet/Movies/MovieLens-4489-256D.zip", 'r') as zip_ref:
-    zip_ref.extractall("/Data")
+with zipfile.ZipFile("MovieLens-4489-256D.zip", 'r') as zip_ref:
+    zip_ref.extractall("Data")
 zip_ref.close()
 
 # Load the data file
 data = []
-with open('/Data/MovieLens-4489-256D.json', 'r') as d:
+with open('MovieLens-4489-256D.json', 'r') as d:
     data = json.load(d)
 
 # View the number of documents in the data (4489)
@@ -247,53 +263,16 @@ len(data)
 Upsert data into Azure Cosmos DB for NoSQL. Records are written asynchronously.
 
 ```python
-#The following code to get raw movies data is commented out in favour of
-#getting prevectorized data. If you want to vectorize the raw data from
-#storage_file_url, uncomment the below, and set vectorizeFlag=True
-
-#data = urllib.request.urlopen(storage_file_url)
-#data = json.load(data)
-
-vectorizeFlag=False
-
 import asyncio
 import time
 from concurrent.futures import ThreadPoolExecutor
 
-async def generate_vectors(items, vector_property):
-    # Create a thread pool executor for the synchronous generate_embeddings
-    loop = asyncio.get_event_loop()
-    
-    # Define a function to call generate_embeddings using run_in_executor
-    async def generate_embedding_for_item(item):
-        try:
-            # Offload the sync generate_embeddings to a thread
-            vectorArray = await loop.run_in_executor(None, generate_embeddings, item['overview'])
-            item[vector_property] = vectorArray
-        except Exception as e:
-            # Log or handle exceptions if needed
-            logging.error(f"Error generating embedding for item: {item['overview'][:50]}...", exc_info=True)
-    
-    # Create tasks for all the items to generate embeddings concurrently
-    tasks = [generate_embedding_for_item(item) for item in items]
-    
-    # Run all the tasks concurrently and wait for their completion
-    await asyncio.gather(*tasks)
-    
-    return items
-
-async def insert_data(vectorize=False):
+async def insert_data():
     start_time = time.time()  # Record the start time
     
-    # If vectorize flag is True, generate vectors for the data
-    if vectorize:
-        print("Vectorizing data, please wait...")
-        global data
-        data = await generate_vectors(data, "vector")
-
     counter = 0
     tasks = []
-    max_concurrency = 5  # Adjust this value to control the level of concurrency
+    max_concurrency = 4  # Adjust this value to control the level of concurrency
     semaphore = asyncio.Semaphore(max_concurrency)
     print("Starting doc load, please wait...")
     
@@ -320,8 +299,9 @@ async def insert_data(vectorize=False):
     print(f"All {counter} documents inserted!")
     print(f"Time taken: {duration:.2f} seconds ({duration:.3f} milliseconds)")
 
-# Run the async function with the vectorize flag set to True or False as needed
-asyncio.run(insert_data(vectorizeFlag))  # or asyncio.run(insert_data()) for default
+
+# Run the async function
+asyncio.run(insert_data())
 ```
 
 ## Perform vector search
@@ -475,7 +455,7 @@ Build a user interface for interacting with the AI application.
 chat_history = []
 
 with gr.Blocks() as demo:
-    chatbot = gr.Chatbot(label="Cosmic Movie Assistant")
+    chatbot = gr.Chatbot(label="Cosmic Movie Assistant", type="tuples")
     msg = gr.Textbox(label="Ask me about movies in the Cosmic Movie Database!")
     clear = gr.Button("Clear")
 
@@ -495,11 +475,64 @@ with gr.Blocks() as demo:
     clear.click(lambda: None, None, chatbot, queue=False)
 
 # Launch the Gradio interface
-demo.launch(debug=True)
+demo.launch(debug=True, share=False)
 
 # Be sure to run this cell to close or restart the Gradio demo
 demo.close()
 ```
+
+## Run the application
+
+Run the application to start the web interface and interact with the dataset.
+
+1. Run the project by executing the following command in your terminal from the project directory.
+
+    ```bash
+    python app.py
+    ```
+
+1. Observe the console output.
+
+    ```output
+    Container with id 'vectorstorecontainer' created
+    Container with id 'vectorcachecontainer' created
+    Starting doc load, please wait...
+    Sent 100 documents for insertion into collection.
+    Sent 200 documents for insertion into collection.
+    Sent 300 documents for insertion into collection.
+    Sent 400 documents for insertion into collection.
+    Sent 500 documents for insertion into collection.
+    ...
+    Sent 4300 documents for insertion into collection.
+    Sent 4400 documents for insertion into collection.
+    All 4489 documents inserted!
+    Time taken: 24.66 seconds (24.659 milliseconds)
+    ...
+    * Running on local URL:  http://127.0.0.1:7860
+    ...
+    ```
+
+1. Navigate to the web interface using your browser.
+
+1. Run any test prompt using the web interface.
+
+    :::image type="content" source="media/rag-chatbot/web-prompt-interface.png" alt-text="Screenshot of the Cosmic Movie Assistant web interface with chat conversation and text input field.":::
+
+1. Observe the extra console output.
+
+    ```output
+    ...
+    New result
+    
+    Getting Chat History
+    
+    Generating completions 
+    
+    Caching response
+    ...
+    ```
+
+1. Close the web interface and application.
 
 ## Related content
 
