@@ -307,7 +307,7 @@ WHERE c.tenantId = "tenant-001"
 ## Next steps
 - [Python example of one turn per document memories](https://github.com/azurecosmosdb/agentMemories/)
 - [Learn about vector indexing and search](vector-search-overview.md)
-- [Learn about full text search](full-text-search-faq.md)
+- [Learn about full text search](full-text-search-faq.yml)
 - [Learn about hybrid search](hybrid-search.md)
 - [Learn about semantic caching](semantic-cache.md)
 - [Build a multi-agent app with Azure Cosmos DB](https://aka.ms/CosmosDB/BankingAgentWorkshop)

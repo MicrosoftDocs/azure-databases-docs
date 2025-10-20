@@ -14,14 +14,14 @@ metadata:
     - ✅ NoSQL
 title: Azure Cosmos DB Full text search frequently asked questions
 summary: |
-  Full Text Search (sometimes called lexical search) in Azure Cosmos DB for NoSQL enables efficient querying of textual data using a specialized index and scoring system. It also features a text-relevancy method to order search results by the BM25 (Best Matching 25) algorithm. This ranks the returned documents based on relevancy, considering term frequency, inverse document frequency, and document length, and helps to enable applications to search for and retrieve the most relevant text documents from your Azure Cosmos DB data without relying on external search services like Lucene or Elasticsearch.
+  Full Text Search (sometimes called lexical search) is a feature in Azure Cosmos DB for NoSQL that enables efficient querying of textual data. It uses a specialized index and scoring system to deliver relevant results. The feature includes a text-relevancy method that orders search results using the BM25 (Best Matching 25) algorithm. This ranking system considers three key factors: term frequency, inverse document frequency, and document length. This approach helps applications search for and retrieves the most relevant text documents from your Azure Cosmos DB data without requiring external search services like Lucene or Elasticsearch.
 sections:
   - name: General
     questions:
       - question: |
           What are the processing steps involved in full text search in Azure Cosmos DB?
         answer: |
-          Full text search in Azure Cosmos DB applies several text processing techniques to improve search relevance and efficiency. It uses stemming to reduce words to their root forms, [stopword removal](./stopwords.md) to eliminate common words like "the" and "and" that don't add value to search results, and tokenization to break text into searchable units. These steps help ensure that queries return the most meaningful and relevant documents.
+          Full text search in Azure Cosmos DB applies several text processing techniques that improve search relevance and efficiency. The system uses stemming, which reduces words to their root forms. It also performs [stopword removal](./stopwords.md) that eliminates common words like "the" and "and" since these don't add value to search results. Additionally, it uses tokenization to break text into searchable units. These processing steps help ensure that queries return the most meaningful and relevant documents.
       - question: |
           Does the full text index in Azure Cosmos DB support wildcard paths?
         answer: |
@@ -42,14 +42,14 @@ sections:
         answer: |
           Using ORDER BY RANK FullTextScore(...) can be costly if the query includes long phrases. We recommend splitting phrases into individual keywords to improve performance. For example, instead of:
 
-          ```sql
-          ORDER BY RANK FullTextScore(c.text, "mountian bicycle thats have high performance shocks")
+          ```nosql
+          ORDER BY RANK FullTextScore(c.text, "mountain bicycle with performance shocks")
           ```
 
           You should alternatively use:
 
-          ```sql
-          ORDER BY RANK FullTextScore(c.text, "mountian", "bicycle", "thats" "have", "high", "performance", "shocks")
+          ```nosql
+          ORDER BY RANK FullTextScore(c.text, "mountain bicycle", "with", "performance shocks")
           ```
       - question: |
           Can I see the score returned by FullTextscore?
@@ -58,14 +58,14 @@ sections:
       - question: |
           Why are my search results different than I expect?
         answer: |
-          If you're comparing Full Text Search results in Azure Cosmos DB to results from a search engine that indexes your Cosmos DB data, the results can be slightly different. This is usually because of one of the following reasons:
+          If you're comparing Full Text Search results in Azure Cosmos DB to results from a search engine that indexes your Cosmos DB data, the results can be slightly different. This difference is usually because of one of the following reasons:
 
           - **Stopword filtering**: Cosmos DB automatically removes common words like "the" and "and," which your search engine might include.
-          - **Stemming differences**: Cosmos DB reduces words to their root forms using language-specific rules, which may differ from your search engine's approach.
-          - **Scoring algorithm**: Cosmos DB uses standard BM25 scoring, which may be tuned differently than your engine's ranking logic.
-          - **Tokenization rules**: The way Cosmos DB breaks text into searchable units may differ from your engine's tokenizer.
-          - **Language support**: Cosmos DB's multi-language support is in preview and may behave differently than engines with mature analyzers for nonenglish languages.
-          - **Fuzzy search behavior**: Cosmos DB's fuzzy search is limited to a maximum of 2 edits and 10 suggestions and its implementation is still in preview, so the results from a fuzzy search may differ compared to other search engines.
+          - **Stemming differences**: Cosmos DB reduces words to their root forms using language-specific rules, which might differ from your search engine's approach.
+          - **Scoring algorithm**: Cosmos DB uses standard BM25 scoring, which might be tuned differently than your engine's ranking logic.
+          - **Tokenization rules**: The way Cosmos DB breaks text into searchable units might differ from your engine's tokenizer.
+          - **Language support**: Cosmos DB's multi-language support is in preview and might behave differently than engines with mature analyzers for nonenglish languages.
+          - **Fuzzy search behavior**: Cosmos DB's fuzzy search is limited to a maximum of 2 edits and 10 suggestions and its implementation is still in preview, so the results from a fuzzy search might differ compared to other search engines.
   - name: Best practices
     questions:
       - question: |
@@ -85,7 +85,7 @@ sections:
 
           - Wildcard paths (*, []) for arrays aren't supported in full text policies or indexes.
           - Using `FullTextScore` on phrases (strings with multiple words with spaces) can be slower than searching on each word separately.
-          - Multi-language support is in preview and may have inconsistent performance. Stopword removal is currently only available for English (en-US).
+          - Multi-language support is in preview and might have inconsistent performance. Stopword removal is currently only available for English (en-US).
           - Fuzzy search is also in preview and limited to a maximum edit distance of 2 and 10 suggestions.
           - Queries using `FullTextScore` within a `JOIN` aren't currently supported
       - question: |
@@ -93,5 +93,5 @@ sections:
         answer: |
           Here are some known issues with full text search in Azure Cosmos DB:
 
-          - Providing the incorrect syntax for `FullTextScore` may result in a 500 error instead of the expected 400 error. 
-          - When executing queries using `ORDER BY RANK` and `FullTextScore`, the results may differ slightly on macOS or Linux clients from Windows clients.
+          - Providing the incorrect syntax for `FullTextScore` might result in a 500 error instead of the expected 400 error. 
+          - When executing queries using `ORDER BY RANK` and `FullTextScore`, the results might differ slightly on macOS or Linux clients from Windows clients.
