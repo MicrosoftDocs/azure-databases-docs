@@ -621,6 +621,10 @@
                       href: flexible-server/how-to-enable-intelligent-performance-cli.md
         - name: Networking
           items:
+            - name: Elastic clusters
+              items:
+                - name: Configuring Maximum Connections
+                  href: flexible-server/how-to-networking-elastic-clusters-default-max-connections.md
             - name: Public access (allowed IP addresses)
               items:
                 - name: Enable public access
@@ -651,6 +655,8 @@
                   href: flexible-server/how-to-update-client-certificates-java.md
         - name: Scaling
           items:
+            - name: Scale out
+              href: flexible-server/how-to-scale-out.md          
             - name: Scale compute
               href: flexible-server/how-to-scale-compute.md
             - name: Scale storage size

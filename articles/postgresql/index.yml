@@ -66,6 +66,8 @@ landingContent:
             url: flexible-server/how-to-configure-high-availability.md
           - text: Guide on scale compute
             url: flexible-server/how-to-scale-compute.md
+          - text: Elastic clusters scaling
+            url: flexible-server/how-to-scale-out.md            
           - text: Restore to paired region (geo-restore)
             url: flexible-server/how-to-restore-paired-region.md
           - text: Entra-id authentication guide
