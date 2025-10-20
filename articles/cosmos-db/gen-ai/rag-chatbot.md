@@ -1,12 +1,12 @@
 ---
-title: Build a RAG Chatbot
+title: 'Tutorial: Build a RAG Chatbot'
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Build a retrieval augmented generation (RAG) chatbot in Python using Azure Cosmos DB for NoSQL's vector search capabilities.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 10/20/2025
 ms.update-cycle: 180-days
 ms.collection:
@@ -17,7 +17,7 @@ ms.custom:
   - sfi-ropc-nochange
 ---
 
-# Build a RAG chatbot with Azure Cosmos DB NoSQL API
+# Tutorial: Build a RAG chatbot with Azure Cosmos DB NoSQL API
 
 In this guide, we demonstrate how to build a [retrieval-augmented generation (RAG)](../gen-ai/rag.md) application using a subset of the Movie Lens dataset. This sample uses the Azure Cosmos DB Python SDK for NoSQL to perform vector search for RAG, store and retrieve chat history, and store vectors of the chat history to use as a semantic cache. Azure OpenAI is used to generate embeddings and large language model (LLM) completions.
 
