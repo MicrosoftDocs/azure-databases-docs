@@ -14,17 +14,17 @@ ai-usage: ai-assisted
 
 # Agent Memories in Azure Cosmos DB for NoSQL
 
-*Agent memory* (also referred to as *AI memory*) refers to an AI agent’s ability to persist and recall prior information, interactions, facts, and experiences to better reason, plan, or act over time. This article guides you through the most common patterns for storing and retrieving agent memories in your applications. It explains how each pattern works, highlights its strengths and limitations, and offers practical tips so you can confidently choose the right approach for your use cases.
+*Agent memory* refers to an AI agent's ability to persist and recall information from previous interactions. This capability is also called *AI memory*. Agent memory includes prior facts, interactions, and experiences. AI agents use this stored information to better reason, plan, and act over time. This article guides you through the most common patterns for storing and retrieving agent memories in your applications. It explains how each pattern works, highlights its strengths and limitations, and offers practical tips so you can confidently choose the right approach for your use cases.
 
 ## What Are Agent Memories?
  Agent memory is often divided into short-term (episodic or working) memory and long-term memory. This section explains the differences between each type.
 
 ### Short-Term Memory
 
-Short-term memory holds recent context. For example, recent conversation turns, state information, results from tool or function calls. These are all useful to the agent for the current task or thread. It can get deleted after some time (for example, using [time-to-live (TTL)](../nosql/time-to-live.md)), aggregated or summarized by thread, and classified as long-term memory. 
+Short-term memory holds recent context. For example, recent conversation turns, state information, results from tool or function calls. These values are all useful to the agent for the current task or thread. It can get deleted after some time (for example, using [time-to-live (TTL)](../nosql/time-to-live.md)), aggregated or summarized by thread, and classified as long-term memory. 
 
 For example:
-- In a conversational agent, the last 5–10 user or agent dialogue turns, including prompts, LLM responses, tool call results, etc. 
+- In a conversational agent, the last 5–10 user or agent dialogue turns, including prompts, large language model (LLM) responses, tool call results, etc. 
 - Intermediate states or partial task steps (for example retrieval of information from an API or tool call used in a subsequent step).
 
 ### Long-Term Memory
@@ -39,25 +39,25 @@ In the next section, we divide the discussion into four parts: In part one, we g
 
 ## Choose a partition key
 
-Because Azure Cosmos DB automatically partitions your data, choosing a partition key is one of the most important design choices for your data model. The partition key determines how data is distributed in logical partitions and across physical partitions, which directly affects query and insert performance, scalability, and cost. Each partition key value maps to a distinct logical partition. A good partition strategy balances locality (keeping related items together for efficient queries) with distribution. In this guide, we highlight three common approaches. Read about [partitioning in Azure Cosmos DB for more detail.](../partitioning-overview.md)
+Because Azure Cosmos DB automatically partitions your data, choosing a partition key is one of the most important design choices for your data model. The partition key determines how data distributes across logical and physical partitions. This distribution directly affects query performance, insert performance, scalability, and cost. Each partition key value maps to a distinct logical partition. A good partition strategy balances locality (keeping related items together for efficient queries) with distribution. In this guide, we highlight three common approaches. Read about [partitioning in Azure Cosmos DB for more detail.](../partitioning-overview.md)
 
 Here are some common patterns and trade-offs when using Cosmos DB (or Cosmos-style NoSQL + vector features) to store agent memory.
 
 ### Use a GUID as the partition key
 
-Each item gets its own unique partition key value, typically a GUID. This strategy maximizes write distribution and avoids the hot partition problem, because every write lands in a different logical partition. It's simple to implement and works well for write-heavy workloads without strong locality requirements. The tradeoff is that queries span logical and possibly physical partitions, which can be more expensive. This can be useful for storing ephemeral AI agent turns where you care more about logging and long-term analytics than revisiting specific conversations.
+Each item gets its own unique partition key value, typically a GUID. This strategy maximizes write distribution and avoids the hot partition problem, because every write lands in a different logical partition. It's simple to implement and works well for write-heavy workloads without strong locality requirements. The tradeoff is that queries span logical and possibly physical partitions, which can be more expensive. This strategy can be useful for storing ephemeral AI agent turns where you care more about logging and long-term analytics than revisiting specific conversations.
 
 - Example: A partition key `/pk` that takes on values like: "b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"
 
 ### Use a unique thread ID as the partition key
 
-All items for a conversation share the same partition key equal to the thread (or thread) ID. This colocates turns and summaries, which makes "latest N," phrase filters, and other queries within a thread efficient. However, you must ensure there's enough workload distribution across threads to reduce likelihood of hot partitions. This approach is generally a good choice for conversational agents or RAG apps where most queries are scoped to a single conversation, such as retrieving the latest turns or doing vector search within one thread.
+All items for a conversation share the same partition key equal to the thread (or thread) ID. This technique colocates turns and summaries, which makes "latest N," phrase filters, and other queries within a thread efficient. However, you must ensure there's enough workload distribution across threads to reduce likelihood of hot partitions. This approach works well for conversational agents and RAG applications. Most queries target a single conversation. Common queries include retrieving recent turns or performing vector search within one thread.
 
 - Example: A partition key `/threadId` that takes on values like: "thread-1234"
 
 ### Use a tenant ID and thread ID as the partition key
 
-You can use a two-level hierarchical partition key where the leading level is the tenant ID and the second is the thread ID. This preserves locality within a thread while grouping threads under a tenant for governance, quotas, and analytics. It also reduces cross-partition scans for tenant-level queries and enables safer multitenant isolation patterns. This is best for multitenant apps where each customer (tenant) runs many concurrent conversations and more isolation is needed.
+You can use a two-level hierarchical partition key where the leading level is the tenant ID and the second is the thread ID. This technique preserves locality within a thread while grouping threads under a tenant for governance, quotas, and analytics. It also reduces cross-partition scans for tenant-level queries and enables safer multitenant isolation patterns. This technique is best for multitenant apps where each customer (tenant) runs many concurrent conversations and more isolation is needed.
 
 - Example: A partition key `["/tenantId", "/threadId"]` takes on values like `tenantId = "contoso"`, `threadId = "thread-1234"`
 
@@ -71,32 +71,32 @@ When you enable vector search in Azure Cosmos DB, you choose not only whether to
 
 When your vector data scales up (for example, hundreds of thousands to billions of embeddings), `DiskANN` is the better choice. DiskANN implements approximate nearest-neighbor indexing and is optimized for high throughput, low latency, and cost efficiency at scale. It supports dynamic updates and achieves excellent recall across large datasets. Learn more about [vector indexes in Azure Cosmos DB](../nosql/vector-search.md#vector-indexing-policies).
 
-If using DiskANN, you decide whether to shard the vector index via the [vectorIndexShardKey](sharded-diskann.md). This lets you partition the DiskANN index based on a document property (for example, session, user, tenant), reducing the candidate search space and making semantic queries more efficient and focused. For example, you can shard by a tenant, userid, or both. In multitenant systems, isolating the vector index per tenant ensures that search on a particular tenant or user data is fast and efficient. Using the multitenant example from the section on [partitioning](#choose-a-partition-key), you can set the vectorIndexShardKey and the partition key to be the same, or just the first level of your hierarchical partition key. 
+If you're using DiskANN, you can decide whether to shard the vector index via the [vectorIndexShardKey](sharded-diskann.md). This decision lets you partition the DiskANN index based on an item property (for example, session, user, tenant), reducing the candidate search space and making semantic queries more efficient and focused. For example, you can shard by a tenant, userid, or both. In multitenant systems, isolating the vector index per tenant ensures that search on a particular tenant or user data is fast and efficient. Using the multitenant example from the section on [partitioning](#choose-a-partition-key), you can set the vectorIndexShardKey and the partition key to be the same, or just the first level of your hierarchical partition key. 
 
-Using a global (nonsharded) index offers simplicity and the ability to search on the entire set of vectors. Both of these allow you to further refine the search using `WHERE` clause filters as with any other query. 
+Using a global (nonsharded) index offers simplicity and the ability to search on the entire set of vectors. Both of these options allow you to further refine the search using `WHERE` clause filters as with any other query. 
 
 ### Configure a full text index
 
-Azure Cosmos DB's full text search capability enables advanced text-based queries over your memory documents, making it ideal for keyword and phrase-based retrieval scenarios. When you enable full text indexing on specific paths in your container (such as `/content`), Azure Cosmos DB automatically applies linguistic processing including tokenization, stemming, and case normalization. This allows queries to match variations of words (for example, "running" matches "run," "runs," "ran") and improves recall for natural language searches.
+Azure Cosmos DB's full text search capability enables advanced text-based queries over your memory items, making it ideal for keyword and phrase-based retrieval scenarios. When you enable full text indexing on specific paths in your container (such as `/content`), Azure Cosmos DB automatically applies linguistic processing including tokenization, stemming, and case normalization. This feature allows queries to match variations of words (for example, "running" matches "run," "runs," "ran") and improves recall for natural language searches.
 
-Full text indexes are valuable for agent memory workloads where you need to retrieve conversations based on specific subjects, entities, or phrases mentioned by users or agents. For instance, you can quickly find all turns where "refund policy" or "billing issues" are discussed, regardless of the exact phrasing. Unlike vector search, which finds semantically similar content, full text search provides precise lexical matching with linguistic intelligence. Azure Cosmos DB uses BM25 (Best Match 25), a statistical ranking function that scores documents based on term frequency and document length normalization, ensuring that the most relevant results are surfaced first. You can combine full text search with vector search in hybrid queries to apply both BM25 scoring for keyword relevance and vector similarity for semantic meaning. Learn more about [full text search in Azure Cosmos DB](full-text-search.md).
+Full text indexes are valuable for agent memory workloads where you need to retrieve conversations based on specific subjects, entities, or phrases mentioned by users or agents. For instance, you can quickly find all turns where "refund policy" or "billing issues" are discussed, regardless of the exact phrasing. Unlike vector search, which finds semantically similar content, full text search provides precise lexical matching with linguistic intelligence. Azure Cosmos DB uses BM25 (Best Match 25), a statistical ranking function that scores items based on term frequency and item length normalization, ensuring that the most relevant results are surfaced first. You can combine full text search with vector search in hybrid queries to apply both BM25 scoring for keyword relevance and vector similarity for semantic meaning. Learn more about [full text search in Azure Cosmos DB](full-text-search.md).
 
 ## Data modeling patterns for agent memories
 
-This section explores three fundamental patterns for structuring agent memory data in Azure Cosmos DB, each offering different trade-offs between granularity, performance, and complexity depending on your application's specific requirements.
+This section explores three fundamental patterns for structuring agent memory data in Azure Cosmos DB. Each pattern offers different trade-offs between granularity, performance, and complexity. The best choice depends on your application's specific requirements.
 
-### One turn per document
+### One turn per item
 
-In this model, each document captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, this could be a user's prompt and the agent’s response, or the agent's call to a tool and the response. The document becomes a natural unit of memory that can be stored, queried, and expired as a whole. This makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is useful when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
+In this model, each item captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, an item could be a user's prompt and the agent's response, or the agent's call to a tool and the response. The item becomes a natural unit of memory that can be stored, queried, and expired as a whole. This structure makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is useful when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
 
 > [!NOTE]
-> This model is the most common for both single and multi-agent apps as it provides good balance between small document size and utility or value of information included in a single memory document. 
+> This model is the most common for both single and multi-agent apps. It provides a good balance between small item size and the utility or value of information included in a single memory item.
 
 #### Example scenarios
 
-- An agent chat application where each turn consists of the user’s question and the agent’s reply, and you frequently need to resurface entire Q&A pairs for context injection.
-- A planning agent that queries an external API (tool) and logs both the request and tool response as one memory unit, so downstream queries can recall the whole exchange. 
-- Using the memories as part of a [semantic cache](semantic-cache.md), which can reduce latency, token consumption, and LLM-based costs.
+- An agent chat application where each turn consists of the user's question and the agent's reply, and you frequently need to resurface entire question and answer pairs for context injection.
+- A planning agent that queries an external API (tool) and logs both the request and tool response as one memory unit. This scenario allows downstream queries to recall the whole exchange.
+- Applications that use the memories as part of a [semantic cache](semantic-cache.md). This approach can reduce latency, token consumption, and LLM-based costs.
     
 #### Data item properties
 
@@ -120,7 +120,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 | `name` | string | ✅  | Tool/function name or agent persona label. | `"kb.search"` |
 | `content` | string | ✅ | Text payload (prompt, reply, tool result snippet). | `"Refund policy is 30 days for unopened items."` |
 | `timestamp` | string (ISO 8601) | optional | Message timestamp. | `"2025-09-24T10:14:27Z"` |
-| `metadata` | object | optional | Per-message extras (for example, tokens, tool args/results IDs). | `{ "tokens": 17 }` |
+| `metadata` | object | optional | Per-message extras (for example, tokens, tool args/results identifiers). | `{ "tokens": 17 }` |
 
 ```json
 {
@@ -131,7 +131,7 @@ In this model, each document captures a complete back-and-forth exchange, or tur
   "messages": [
     {
       "role": "user",
-      "content": "What’s our refund policy for accessories?",
+      "content": "What's our refund policy for accessories?",
       "timestamp": "2025-09-24T10:14:25Z",
       "metadata": { "tokens": 12 }
     },
@@ -156,16 +156,16 @@ In this model, each document captures a complete back-and-forth exchange, or tur
 - Easy to get "latest N turns" by ordering on turnIndex or timestamp.
 - Supports embedding-per-turn for vector similarity queries within the thread and [semantic caching](semantic-cache.md).
 - Easy to TTL (expire) older memories if needed.
-- Smaller documents per turn don't require potentially expensive updates
+- Smaller items per turn don't require potentially expensive updates
 
 #### Limitations
 
 - When summarizing or consolidating, you might want to generate "summary turns."
 - You might need to periodically prune or compact older turns.
 
-### One response per document
+### One response per item
 
-In this design, every agent or user interaction (that is "turn") is stored as its own document in Azure Cosmos DB. All turn documents for a single thread or thread carry the same `threadId`, which acts as a logical link between other turns in the same thread. This pattern is useful for fine-grained retrieval, analytics, or vector similarity search on every single utterance.
+In this design, every agent or user interaction (that is "turn") is stored as its own item in Azure Cosmos DB. All turn items for a single thread or thread carry the same `threadId`, which acts as a logical link between other turns in the same thread. This pattern is useful for fine-grained retrieval, analytics, or vector similarity search on every single utterance.
 
 #### Example scenarios
 
@@ -178,13 +178,13 @@ In this design, every agent or user interaction (that is "turn") is stored as it
 | Property | Type | Required | Description | Example |
 | --------------- | ----------------- | ------- | ----------- | ----------- |
 | `id` | string | ✅ | Partition key. For more information, see [choosing a partition key](#choose-a-partition-key) | `"b9c5b6ce-2d9a-4a2b-9d76-0f5f9b2a9a91"` or `tenant-001`  |
-| `threadId` | string | ✅ | Identifier for the conversation/thread. Often chosen as the **partition key** so all turns for a thread are colocated and efficiently queried. In multitenant apps, consider hierarchical PKs like `/tenantId`, `/threadId`. | `"thread-1234"` |
+| `threadId` | string | ✅ | Identifier for the conversation/thread. Often chosen as the **partition key** so all turns for a thread are colocated and efficiently queried. In multitenant apps, consider hierarchical primary keys like `/tenantId`, `/threadId`. | `"thread-1234"` |
 | `turnIndex` | number (int) | ✅ | Monotonic turn counter (0,1,2…). Use with `threadId` to sort/fetch latest N turns. | `3` |
 | `entityId` | string | ✅ | Name or ID of the user, agent, tool, etc. that this response is associated with. | `"user-12345"` |
 | `role` | string | ✅ | The role that produced the turn. Common values: `"user"`, `"agent"`, `"tool"` (or similar).  | `"agent"`   |
-| `content`  | string | ✅ | Main text content for this turn (prompt, reply, tool result, etc.).  | `"This is one response from an LLM"` |
+| `content`  | string | ✅ | Main text content for the turn (prompt, reply, tool result, etc.).  | `"This is one response from an LLM"` |
 | `timestamp` | string (ISO 8601) | ✅ | Creation time for the turn (ISO 8601). Alternatively, you can sort by the system `_ts` (epoch seconds) without storing your own timestamp.  | `"2025-09-24T10:15:00Z"` |
-| `embedding` | number[]  | optional | Vector embedding for `content` (or a summary). Must be a **top-level** field that’s included in the container’s vector policy/index to enable vector search. | `[0.017, -0.234, 0.561, ]`  |
+| `embedding` | number[]  | optional | Vector embedding for `content` (or a summary). Must be a **top-level** field included in the container's vector policy/index to enable vector search. | `[0.017, -0.234, 0.561, ]`  |
 | `metrics` | object | optional | Free-form metrics/attrs for the turn. Keep names machine-friendly (no spaces) for easier querying and indexing. | `{ "inputTokens": 25, "outputTokens": 8 }` |
 
 An example of this memory data item would look like: 
@@ -215,12 +215,12 @@ An example of this memory data item would look like:
 - Not keeping a complete turn in one data item (back-and-forth between agent and user or tool call) can limit utility of the memory without subsequent queries. 
 - Not ideal model for [semantic caching](semantic-cache.md).
 
-### One thread per document
+### One thread per item
 
-Here, all the turns of a conversation (user, agent, tools, etc.) for a given thread or thread are aggregated into a single document. This document contains a list or array of turn entries (each with turnIndex, role, content, embedding, etc.), and optional summary fields, metadata, and a thread-level embedding. Because the entire thread is stored in one document, retrieving the full history (or a large window) becomes a single read. However, appending new turns requires updating (replacing) the document, which can become costly if the document grows large. This model can be useful when sessions are bounded in size or short-lived, and you prefer single-document reads to reconstruct context.
+Here, all the turns of a conversation (user, agent, tools, etc.) for a given thread or thread are aggregated into a single item. This item contains a list or array of turn entries (each with turnIndex, role, content, embedding, etc.), and optional summary fields, metadata, and a thread-level embedding. Because the entire thread is stored in one item, retrieving the full history (or a large window) becomes a single read. However, appending new turns requires updating (replacing) the item, which can become costly if the item grows large. This model can be useful when sessions are bounded in size or short-lived, and you prefer single-item reads to reconstruct context.
 
 > [!IMPORTANT]
-> This model is typically not recommended, as there's a risk to have long or unbounded threads, which can have high RU charges for CRUD operations on the document. 
+> This model is typically not recommended, as there's a risk to have long or unbounded threads, which can have high RU charges for CRUD operations on the item. 
 
 #### Example scenarios
 
@@ -267,16 +267,16 @@ An example of a memory data item would look like:
 
 #### Advantages
 
-- All memory for a thread is in one logical document; simple to load in one read.
+- All memory for a thread is in one logical item; simple to load in one read.
 - Summary text of thread and keep thread information and vector embedding in one data item
 
 #### Limitations
 
 - Requires client-side sorting after retrieval.
-- Document size could grow large (Cosmos DB has a size limit per item, currently 2 MB for some APIs, though in NoSQL it can be more but you must consider RU cost and latency).
-- Large document updates (writing appends) can incur higher RU charges.
-- Vector search becomes coarser. In this pattern, we recommend summarizing the thread and storing a vector embedding for the summary. However, this can be expensive if the thread is frequently updated. 
-- Harder to TTL individual turns; TTL applies at the document (thread) granularity.
+- item size could grow large (Cosmos DB has a size limit per item, currently 2 MB for some APIs, though in NoSQL it can be more but you must consider RU cost and latency).
+- Large item updates (writing appends) can incur higher RU charges.
+- Vector search becomes coarser. In this pattern, we recommend summarizing the thread and storing a vector embedding for the summary. However, this implementation can be expensive if the thread is frequently updated. 
+- Harder to TTL individual turns; TTL applies at the item (thread) granularity.
 
 ## Query patterns for memory retrieval
 
@@ -294,7 +294,7 @@ ORDER BY c.timestamp DESC
 
 ### Retrieve memories by semantic search
 
-Semantic queries let you find turns whose embeddings are most similar to a given query vector, even if they don’t share exact words. This pattern surfaces contextually relevant memories (answers, references, and hints) beyond recent messages. This pattern is useful when relevancy is important over recency. However, you can use a `WHERE` clause to filter to the most recent semantically similar results. 
+Semantic queries let you find turns whose embeddings are most similar to a given query vector, even if they don't share exact words. This pattern surfaces contextually relevant memories (answers, references, and hints) beyond recent messages. This pattern is useful when relevancy is important over recency. However, you can use a `WHERE` clause to filter to the most recent semantically similar results. 
 
 ```sql
 SELECT TOP @k c.content, c.timestamp, VectorDistance(c.embedding, @queryVector) AS dist
@@ -305,7 +305,7 @@ ORDER BY VectorDistance(c.embedding, @queryVector)
 
 ### Retrieve memories by hybrid search
 
-Hybrid queries in Cosmos DB let you fuse vector similarity with keyword (full-text / BM25) scoring. This enables you to return contextually relevant memories even when they don’t share exact words, while still honoring textual precision via full-text terms.
+Hybrid queries in Cosmos DB let you fuse vector similarity with keyword (full-text / BM25) scoring. This hybrid functionality enables you to return contextually relevant memories even when they don't share exact words, while still honoring textual precision via full-text terms.
 
 ```sql
 SELECT TOP @k c.content, c.timestamp, VectorDistance(c.embedding, @queryVector) AS dist
@@ -334,7 +334,7 @@ WHERE c.tenantId = "tenant-001"
 
 ## Related content
 
-- [Python example of one turn per document memories](https://github.com/azurecosmosdb/agentMemories/)
+- [Python example of one turn per item memories](https://github.com/azurecosmosdb/agentMemories/)
 - [Learn about vector indexing and search](vector-search-overview.md)
 - [Learn about full text search](full-text-search-faq.yml)
 - [Learn about hybrid search](hybrid-search.md)
