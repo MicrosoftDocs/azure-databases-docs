@@ -147,9 +147,15 @@ SELECT create_distributed_table('impressions', 'company_id');
 
 Outside of psql now, in the normal command line, download sample data sets:
 
+```powershell
+foreach ($dataset in @("companies", "campaigns", "ads", "clicks", "impressions", "geo_ips") ) {
+    Invoke-WebRequest -Uri "https://learn.microsoft.com/azure/postgresql/flexible-server/examples/elastic-clusters/$dataset.csv" -OutFile "$dataset.csv"
+}
+```
+
 ```bash
 for dataset in companies campaigns ads clicks impressions geo_ips; do
-  curl -O https://examples.citusdata.com/mt_ref_arch/${dataset}.csv
+  curl -O https://learn.microsoft.com/azure/postgresql/flexible-server/examples/elastic-clusters/${dataset}.csv
 done
 ```
 
