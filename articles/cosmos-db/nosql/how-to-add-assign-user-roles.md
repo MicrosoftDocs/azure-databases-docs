@@ -22,7 +22,7 @@ applies-to:
 
 # Add and assign user roles for Azure Cosmos DB for NoSQL
 
-[!INCLUDE[Note - ROPC and Entra ID authentication](includes/note-ropc-entra-authentication.md)]
+[!INCLUDE[Note - ROPC and Entra ID authentication](includes/note-credentials-entra-authentication.md)]
 
 Azure Cosmos DB for NoSQL allows you to assign roles to control access to your database resources. This article explains how to grant account reader access to users, groups, or service principals to ensure secure resource management.
 

@@ -22,7 +22,7 @@ applies-to:
 
 # Rotate keys for Azure Cosmos DB for NoSQL
 
-[!INCLUDE[Note - ROPC and Entra ID authentication](includes/note-ropc-entra-authentication.md)]
+[!INCLUDE[Note - ROPC and Entra ID authentication](includes/note-credentials-entra-authentication.md)]
 
 Azure Cosmos DB for NoSQL allows you to rotate primary and secondary keys to maintain security. This article explains how to regenerate keys while ensuring continuous application access to your database.
 
