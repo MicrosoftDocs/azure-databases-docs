@@ -6,12 +6,11 @@ author: jcodella
 ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 03/10/2025
+ms.date: 10/20/2025
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
-ms.custom:
 ---
 
 
