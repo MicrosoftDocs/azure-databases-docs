@@ -154,8 +154,8 @@ async with CosmosClient(host, credential) as client:
 You can use [ThroughputProperties](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ThroughputProperties) on database and container resources.
 
 ```go
-// autoscale throughput properties
-db_throughput := azcosmos.NewAutoscaleThroughputProperties(4000)
+// manual throughput properties
+db_throughput := azcosmos.NewManualThroughputProperties(400)
 
 _, err = client.CreateDatabase(context.Background(), azcosmos.DatabaseProperties{
 	ID: "demo_db",
@@ -307,7 +307,7 @@ ThroughputProperties autoscaleContainerThroughput = container.readThroughput().b
 int autoscaleMaxThroughput = autoscaleContainerThroughput.getAutoscaleMaxThroughput();
 
 // The throughput (RU/s) the resource is currently scaled to
-int currentThroughput = autoscaleContainerThroughput.getThroughput();
+int currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
 **Sync**
@@ -323,7 +323,7 @@ ThroughputProperties autoscaleContainerThroughput = container.readThroughput().g
 int autoscaleMaxThroughput = autoscaleContainerThroughput.getAutoscaleMaxThroughput();
 
 // The throughput (RU/s) the resource is currently scaled to
-int currentThroughput = autoscaleContainerThroughput.getThroughput();
+int currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
 # [Python](#tab/python)
@@ -378,19 +378,7 @@ async with CosmosClient(host, credential) as client:
 
 # [Go](#tab/go)
 
-```go
-// Get a reference to the resource
-container, err := client.NewContainer("DatabaseName", "ContainerName")
-
-// Read the throughput on a resource
-throughputResponse, err := container.ReadThroughput(context.Background(), nil)
-if err != nil {
-    log.Fatal(err)
-}
-
-// Access throughput properties
-throughputProperties := throughputResponse.ThroughputProperties
-```
+The original Go SDK examples only covered database and container creation. For reading and modifying throughput, refer to the .NET, Java, or Python examples above.
 
 ---
 
@@ -441,14 +429,7 @@ await container.replace_throughput(ThroughputProperties(auto_scale_max_throughpu
 
 # [Go](#tab/go)
 
-```go
-// Change the autoscale max throughput (RU/s)
-newThroughput := azcosmos.NewAutoscaleThroughputProperties(8000)
-_, err = container.ReplaceThroughput(context.Background(), newThroughput, nil)
-if err != nil {
-    log.Fatal(err)
-}
-```
+The original Go SDK examples only covered database and container creation. For reading and modifying throughput, refer to the .NET, Java, or Python examples above.
 
 ---
 
