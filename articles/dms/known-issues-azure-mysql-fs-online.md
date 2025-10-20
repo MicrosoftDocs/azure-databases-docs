@@ -1,10 +1,10 @@
 ---
-title: Known issues with migrations to Azure MySQL Database
+title: Known Issues with Migrations to Azure MySQL Database
 description: Learn about known migration issues associated with migrations to Azure MySQL Database
-author: karlaescobar
-ms.author: karlaescobar
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: sanjaymi, randolphwest
-ms.date: 09/18/2024
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
 ms.collection:
@@ -149,6 +149,6 @@ One or more incompatible SQL modes can cause many different errors. Following is
 
 ## Related content
 
-- [Tutorial: Migrate MySQL to Azure Database for MySQL online using DMS](tutorial-mysql-azure-external-to-flex-online-portal.md)
+- [Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS via the Azure portal](tutorial-mysql-azure-external-to-flex-online-portal.md)
 - [Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS](tutorial-mysql-azure-mysql-offline-portal.md)
-- [Tutorial: Migrate MySQL to Azure Database for MySQL online by copying physical files](tutorial-mysql-azure-external-online-portal-physical.md)
+- [Tutorial: Migrate from MySQL to Azure Database for MySQL using DMS physical migration with the Azure portal (Preview)](tutorial-mysql-azure-external-online-portal-physical.md)

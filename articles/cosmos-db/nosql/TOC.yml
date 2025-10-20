@@ -88,7 +88,7 @@
           href: ../vector-database.md?context=/azure/cosmos-db/nosql/context/context
         - name: Vector search
           href: ../gen-ai/vector-search-overview.md?context=/azure/cosmos-db/nosql/context/context
-        - name: Retrieval Augmented Generation (RAG)
+        - name: Retrieval-augmented generation (RAG)
           href: ../gen-ai/rag.md?context=/azure/cosmos-db/nosql/context/context
         - name: Tokens
           href: ../gen-ai/tokens.md?context=/azure/cosmos-db/nosql/context/context
