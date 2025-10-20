@@ -13,6 +13,8 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
+ms.custom:
+  - sfi-ropc-nochange
 ---
 
 # Build a RAG chatbot with Azure Cosmos DB NoSQL API
@@ -26,13 +28,10 @@ At the end, we create a simple user interface to allow users to type in question
 >
 > For more RAG samples, visit [Samples for Retrieval-Augmented LLMs](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
 
-> [!IMPORTANT]
-> This sample requires you to set up accounts for Azure Cosmos DB for NoSQL and Azure OpenAI. To get started, visit:
->
-> - [Azure Cosmos DB for NoSQL Python Quickstart](../nosql/quickstart-python.md)
-> - [Azure Cosmos DB for NoSQL Vector Search](../nosql/vector-search.md)
-> - [Azure OpenAI](/azure/ai-foundry)
->
+## Prerequisites
+
+- Azure Cosmos DB for NoSQL account
+- Azure OpenAI account
 
 ## 1. Install required packages
 
@@ -491,4 +490,4 @@ demo.close()
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Use the Azure Cosmos DB lifetime free tier](../free-tier.md)
+> [Azure Cosmos DB free tier](../free-tier.md)
