@@ -42,7 +42,7 @@ Azure Database for PostgreSQL offers a baseline throughput of 125 MB/s for disks
 
 High availability is now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. This capability is initially available in the following regions.
 
-*Canada Central, Central US, East Asia,  East US 2*
+*Central US, East Asia,  East US 2*
 
 
 #### Enable premium SSD v2 high availability preview
@@ -78,7 +78,7 @@ High availability is an opt-in feature that can be enabled at the subscription l
 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
-- Premium SSD v2 High availability can only be configured for servers created on or after July 1, 2025. Currently, SSD v2 High availability is supported in Canada Central, Central US,  East Asia, and East US 2 regions.
+- Premium SSD v2 High availability can only be configured for servers created on or after July 1, 2025. Currently, SSD v2 High availability is supported in Central US,  East Asia, and East US 2 regions.
   
 -  Premium SSD v2 High availability can only be configured for servers created with PG version 16.
   
