@@ -92,6 +92,9 @@ You can use [version 4.0 or higher](https://mvnrepository.com/artifact/com.azure
 > [!IMPORTANT]
 > You can use the Java SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
 
+> [!NOTE]
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
+
 **Async**
 
 ```java
@@ -131,6 +134,9 @@ CosmosDatabase database = client.createDatabase(databaseName, autoscaleThroughpu
 > [!IMPORTANT]
 > You can use the Python SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
 
+> [!NOTE]
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
+
 **Sync**
 
 ```python
@@ -167,6 +173,9 @@ You can use [ThroughputProperties](https://pkg.go.dev/github.com/Azure/azure-sdk
 
 > [!IMPORTANT]
 > You can use the Go SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
+
+> [!NOTE]
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 ```go
 // autoscale throughput properties  
