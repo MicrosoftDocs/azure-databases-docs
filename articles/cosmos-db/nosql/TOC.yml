@@ -67,7 +67,7 @@
         - name: Stopwords list
           href: ../gen-ai/stopwords.md?context=/azure/cosmos-db/nosql/context/context
         - name: Full text search FAQ
-          href: ../gen-ai/full-text-search-faq.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../gen-ai/full-text-search-faq.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrate with AI tools
