@@ -31,19 +31,19 @@ The high-availability feature deploys physically separate primary and standby re
 The **Zonal Resiliency** option controls whether your server is protected across availability zones. You have two choices:
 
 - Enabled – When you select this, Azure will try to create the standby server in a different availability zone than the primary. This gives you the best protection against zone-level failures.
-- Disabled – High availability will not be configured.
+- Disabled – High availability won't be configured.
 
-If you enable zonal resiliency but your region doesn’t have enough capacity for a zone-redundant setup, you will see a checkbox under the Enabled option. Selecting this checkbox allows to create the standby in the same zone as the primary. This ensures you still get node-level protection even when zone capacity is limited. Later, when zonal capacity becomes available, Azure automatically migrates your standby to a different zone during a maintenance window to minimize downtime.
+If you enable zonal resiliency but your region doesn’t have enough capacity for a zone-redundant setup, you'll see a checkbox under the Enabled option. Selecting this checkbox allows you to create the standby in the same zone as the primary. This ensures you still get node-level protection even when zone capacity is limited. Later, when zonal capacity becomes available, Azure automatically migrates your standby to a different zone during a maintenance window to minimize downtime.
 
 1. If Zonal Resiliency isn't enabled, click on the **Enabled** radio button. 
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-disabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="./media/how-to-configure-high-availability/high-availability-disabled.png":::
 
-1. On selecting the **Enabled** radio button, the **Zone redundant** option can be applied by default for regions that have support for [availability zones](/azure/postgresql/flexible-server/overview#azure-regions), as it is the recommended configuration to protect against zonal failures.
+1. On selecting the **Enabled** radio button, the **Zone redundant** option can be applied by default for regions that have support for [availability zones](/azure/postgresql/flexible-server/overview#azure-regions), as it's is the recommended configuration to protect against zonal failures.
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable.png" alt-text="Screenshot that shows the checkbox selected to enable high availability." lightbox="./media/how-to-configure-high-availability/high-availability-enable.png":::
 
-1. If the region does not have zonal capacity, to make sure that high availability(HA) gets enabled in your preferred region, you have to select the checkbox below the enabled option to allow creating HA with Same-Zone mode if the region. It will automatically migrate your workloads to Zone-Redundant HA once zonal capacity becomes available:
+1. If the region does't have zonal capacity, to make sure that high availability(HA) gets enabled in your preferred region, you have to select the checkbox below the enabled option to allow creating HA with Same-Zone mode of the region. It will automatically migrate your workloads to Zone-Redundant HA once zonal capacity becomes available:
 
       :::image type="content" source="./media/how-to-configure-high-availability/high-availability-same-zone.png" alt-text="Screenshot that shows selection of the same-zone option for high availability." lightbox="./media/how-to-configure-high-availability/high-availability-same-zone.png":::
 
@@ -162,7 +162,7 @@ az postgres flexible-server update \
 
 1. In the [Azure portal](https://portal.azure.com/), during provisioning of a new Azure Database for PostgreSQL flexible server instance, go to the **Business Critical (High availability)** section. Click on **Enabled** radio button in the Zonal Resiliency section.
      - By default, it will attempt to create the standby server in a different availability zone with **Zone-Redundant** HA mode for maximum zonal resiliency.
-     - If zonal capacity is unavailable, you can select the Allow standby in same zone if zonal resiliency fails checkbox as a fallback. This ensures HA is still enabled, and we will automatically migrate to zone-redundant HA when capacity becomes available.
+     - If zonal capacity is unavailable, you can select the Allow standby in same zone if zonal resiliency fails checkbox as a fallback. This ensures HA is still enabled, and we'll automatically migrate to zone-redundant HA when capacity becomes available.
 
         :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png" alt-text="Screenshot that shows high-availability options during provisioning of a new flexible server instance." lightbox="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png":::
 
