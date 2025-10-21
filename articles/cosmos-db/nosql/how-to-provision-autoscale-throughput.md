@@ -35,7 +35,10 @@ If you're using a different API, see [API for MongoDB](../mongodb/how-to-provisi
 
 1. Select **OK**.
 
-To provision autoscale on shared throughput database, select the **Provision database throughput** option when creating a new database. 
+To provision autoscale on shared throughput database, select the **Provision database throughput** option when creating a new database.
+
+> [!NOTE]
+> Setting throughput at the database level is only recommended for development/test or when workload across all containers in the shared throughput database is uniform. For best performance for large production workloads, it is recommended to set dedicated throughput (autoscale or manual) at the container level and not at the database level.
 
 ### Enable autoscale on existing database or container
 
@@ -58,12 +61,18 @@ Use the following SDKs to manage autoscale resources:
 
 ### Create database with shared throughput
 
+> [!NOTE]
+> Setting throughput at the database level is only recommended for development/test or when workload across all containers in the shared throughput database is uniform. For best performance for large production workloads, it is recommended to set dedicated throughput (autoscale or manual) at the container level and not at the database level.
+
 # [.NET](#tab/dotnet)
 
 Use [version 3.9 or higher](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) of the Azure Cosmos DB .NET SDK for API for NoSQL to manage autoscale resources.
 
 > [!IMPORTANT]
 > You can use the .NET SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
+
+> [!NOTE]
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 ```csharp
 // Create instance of CosmosClient
@@ -119,6 +128,9 @@ CosmosDatabase database = client.createDatabase(databaseName, autoscaleThroughpu
 
 # [Python](#tab/python)
 
+> [!IMPORTANT]
+> You can use the Python SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
+
 **Sync**
 
 ```python
@@ -153,9 +165,12 @@ async with CosmosClient(host, credential) as client:
 
 You can use [ThroughputProperties](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#ThroughputProperties) on database and container resources.
 
+> [!IMPORTANT]
+> You can use the Go SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
+
 ```go
-// manual throughput properties
-db_throughput := azcosmos.NewManualThroughputProperties(400)
+// autoscale throughput properties  
+db_throughput := azcosmos.NewAutoscaleThroughputProperties(4000)
 
 _, err = client.CreateDatabase(context.Background(), azcosmos.DatabaseProperties{
 	ID: "demo_db",
