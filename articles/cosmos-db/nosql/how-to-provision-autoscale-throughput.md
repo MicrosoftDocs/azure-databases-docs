@@ -276,7 +276,7 @@ db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
 
 ### Read the current throughput (RU/s)
 
-# [.NET](#tab/dotnet)
+# [.NET](#tab/dotnet-read)
 
 ```csharp
 // Get a reference to the resource
@@ -292,7 +292,7 @@ int? autoscaleMaxThroughput = autoscaleContainerThroughput.AutoscaleMaxThroughpu
 int? currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
-# [Java](#tab/java)
+# [Java](#tab/java-read)
 
 **Async**
 
@@ -326,7 +326,7 @@ int autoscaleMaxThroughput = autoscaleContainerThroughput.getAutoscaleMaxThrough
 int currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
-# [Python](#tab/python)
+# [Python](#tab/python-read)
 
 **Sync**
 
@@ -380,14 +380,14 @@ async with CosmosClient(host, credential) as client:
 
 ### Change the autoscale max throughput (RU/s)
 
-# [.NET](#tab/dotnet)
+# [.NET](#tab/dotnet-change)
 
 ```csharp
 // Change the autoscale max throughput (RU/s)
 await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThroughput(newAutoscaleMaxThroughput));
 ```
 
-# [Java](#tab/java)
+# [Java](#tab/java-change)
 
 **Async**
 
@@ -403,7 +403,7 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput));
 ```
 
-# [Python](#tab/python)
+# [Python](#tab/python-change)
 
 **Sync**
 
