@@ -157,6 +157,10 @@
       href: ../security-controls-policy.md?context=/azure/cosmos-db/nosql/context/context
     - name: Threat protection with Microsoft Defender for Cloud
       href: defender-for-cosmos-db.md
+    - name: Rotate keys
+      href: how-to-rotate-keys.md
+    - name: Assign users and roles
+      href: how-to-add-assign-user-roles.md
     - name: Reference
       items:
         - name: Control plane actions
