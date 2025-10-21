@@ -36,6 +36,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/gen-ai/full-text-search-faq.md",
+      "redirect_url": "/azure/cosmos-db/gen-ai/full-text-search-faq",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/gremlin/find-request-unit-charge.md",
       "redirect_url": "/azure/cosmos-db/gremlin/faq#how-do-i-find-the-request-unit-charge-for-a-query",
       "redirect_document_id": false

@@ -12,7 +12,7 @@ appliesto:
 ai-usage: ai-assisted
 ---
 
-# Agent Memories in Azure Cosmos DB for NoSQL
+# Agent memories in Azure Cosmos DB for NoSQL
 
 *Agent memory* refers to an AI agent's ability to persist and recall information from previous interactions. This capability is also called *AI memory*. Agent memory includes prior facts, interactions, and experiences. AI agents use this stored information to better reason, plan, and act over time. This article guides you through the most common patterns for storing and retrieving agent memories in your applications. It explains how each pattern works, highlights its strengths and limitations, and offers practical tips so you can confidently choose the right approach for your use cases.
 
@@ -156,7 +156,7 @@ In this model, each item captures a complete back-and-forth exchange, or turns, 
 - Easy to get "latest N turns" by ordering on turnIndex or timestamp.
 - Supports embedding-per-turn for vector similarity queries within the thread and [semantic caching](semantic-cache.md).
 - Easy to TTL (expire) older memories if needed.
-- Smaller items per turn don't require potentially expensive updates
+- Smaller items per turn don't require potentially expensive updates.
 
 #### Limitations
 
@@ -273,7 +273,7 @@ An example of a memory data item would look like:
 #### Limitations
 
 - Requires client-side sorting after retrieval.
-- item size could grow large (Cosmos DB has a size limit per item, currently 2 MB for some APIs, though in NoSQL it can be more but you must consider RU cost and latency).
+- Item size could grow large (Cosmos DB has a size limit per item, currently 2 MB for some APIs, though in NoSQL it can be more but you must consider RU cost and latency).
 - Large item updates (writing appends) can incur higher RU charges.
 - Vector search becomes coarser. In this pattern, we recommend summarizing the thread and storing a vector embedding for the summary. However, this implementation can be expensive if the thread is frequently updated. 
 - Harder to TTL individual turns; TTL applies at the item (thread) granularity.

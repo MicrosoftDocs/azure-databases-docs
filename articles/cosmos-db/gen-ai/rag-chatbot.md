@@ -54,7 +54,7 @@ At the end, we create a simple user interface to allow users to type in question
 1. In the project directory, create a new folder or path named *Data/*.
 
     > [!IMPORTANT]
-    > The name is case-sensistive.
+    > The name is case-sensitive.
 
 ## Configure project and directory
 
@@ -516,7 +516,7 @@ Run the application to start the web interface and interact with the dataset.
 
 1. Run any test prompt using the web interface.
 
-    :::image type="content" source="media/rag-chatbot/web-prompt-interface.png" alt-text="Screenshot of the Cosmic Movie Assistant web interface with chat conversation and text input field.":::
+    :::image type="content" source="media/rag-chatbot/web-prompt-interface.png" lightbox="media/rag-chatbot/web-prompt-interface.png" alt-text="Screenshot of the Cosmic Movie Assistant web interface with chat conversation and text input field.":::
 
 1. Observe the extra console output.
 
