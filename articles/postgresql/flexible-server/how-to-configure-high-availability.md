@@ -39,7 +39,7 @@ If you enable zonal resiliency but your region doesn’t have enough capacity fo
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-disabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="./media/how-to-configure-high-availability/high-availability-disabled.png":::
 
-1. On selecting the **Enabled** radio button, the **Zone redundant** option can be applied by default for regions that have support for [availability zones](/azure/postgresql/flexible-server/overview#azure-regions), as it's is the recommended configuration to protect against zonal failures.
+1. On selecting the **Enabled** radio button, the **Zone redundant** option can be applied by default for regions that have support for [availability zones](/azure/postgresql/flexible-server/overview#azure-regions), as it's the recommended configuration to protect against zonal failures.
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable.png" alt-text="Screenshot that shows the checkbox selected to enable high availability." lightbox="./media/how-to-configure-high-availability/high-availability-enable.png":::
 
