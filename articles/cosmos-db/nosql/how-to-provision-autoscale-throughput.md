@@ -376,10 +376,6 @@ async with CosmosClient(host, credential) as client:
     current_throughput = throughput.offer_throughput
 ```
 
-# [Go](#tab/go)
-
-The original Go SDK examples only covered database and container creation. For reading and modifying throughput, refer to the .NET, Java, or Python examples above.
-
 ---
 
 ### Change the autoscale max throughput (RU/s)
@@ -426,10 +422,6 @@ from azure.cosmos import ThroughputProperties
 # Change the autoscale max throughput (RU/s)
 await container.replace_throughput(ThroughputProperties(auto_scale_max_throughput=8000))
 ```
-
-# [Go](#tab/go)
-
-The original Go SDK examples only covered database and container creation. For reading and modifying throughput, refer to the .NET, Java, or Python examples above.
 
 ---
 
