@@ -342,7 +342,7 @@ This failover operation provides the least downtime, because it performs a grace
 
 1. After the failover to the standby server is complete, a notification informs you of the completion.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/notification-forced-failover-completed.png" alt-text="Screenshot that shows the notification displayed when a planned failover finishes." lightbox="./media/how-to-configure-high-availability/notification-forced-planned-completed.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/notification-forced-failover-completed.png" alt-text="Screenshot that shows the notification displayed when a planned failover finishes." lightbox="./media/how-to-configure-high-availability/notification-planned-failover-completed.png":::
 
 1. If the high-availability mode is configured as **Zone redundant**, confirm that the values of **Primary availability zone** and **Standby availability zone** are now reversed.
 
