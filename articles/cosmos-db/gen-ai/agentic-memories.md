@@ -81,13 +81,9 @@ Azure Cosmos DB's full text search capability enables advanced text-based querie
 
 Full text indexes are valuable for agent memory workloads where you need to retrieve conversations based on specific subjects, entities, or phrases mentioned by users or agents. For instance, you can quickly find all turns where "refund policy" or "billing issues" are discussed, regardless of the exact phrasing. Unlike vector search, which finds semantically similar content, full text search provides precise lexical matching with linguistic intelligence. Azure Cosmos DB uses BM25 (Best Match 25), a statistical ranking function that scores items based on term frequency and item length normalization, ensuring that the most relevant results are surfaced first. You can combine full text search with vector search in hybrid queries to apply both BM25 scoring for keyword relevance and vector similarity for semantic meaning. Learn more about [full text search in Azure Cosmos DB](full-text-search.md).
 
-## Data modeling patterns for agent memories
+## Recommended data model: One document per turn
 
-This section explores three fundamental patterns for structuring agent memory data in Azure Cosmos DB. Each pattern offers different trade-offs between granularity, performance, and complexity. The best choice depends on your application's specific requirements.
-
-### One turn per item
-
-In this model, each item captures a complete back-and-forth exchange, or turns, between two entities in a thread. For example, an item could be a user's prompt and the agent's response, or the agent's call to a tool and the response. The item becomes a natural unit of memory that can be stored, queried, and expired as a whole. This structure makes it efficient to retrieve context for a single exchange, while still supporting vector search and keyword search at the exchange or per-message level. This model is useful when the natural unit of memory is a complete exchange (prompt + response, or agent + tool back-and-forth). 
+This is the recommended data model for storing chat histories and agent memories in Azure Cosmos DB. Each item represents a complete back-and-forth exchange (or turn) between two entities in a conversation thread, for example, a user prompt and the agent’s response, or an agent’s call to a tool and the resulting output. Each item serves as a natural unit of memory that can be stored, queried, vectorized, and expired as a single entity. This structure makes it efficient to retrieve context for a single exchange or recent history, perform vector or keyword search at either the exchange or per-message level, and maintain balanced item size with manageable storage costs.
 
 > [!NOTE]
 > This model is the most common for both single and multi-agent apps. It provides a good balance between small item size and the utility or value of information included in a single memory item.
@@ -162,6 +158,9 @@ In this model, each item captures a complete back-and-forth exchange, or turns, 
 
 - When summarizing or consolidating, you might want to generate "summary turns."
 - You might need to periodically prune or compact older turns.
+
+## Alternative data models
+These alternative data models can also be used for storing chat histories and agent memories, depending on your application’s requirements. However, each comes with trade-offs in storage efficiency, retrieval complexity, and overall cost. While the turn-based model is generally preferred, the following options are provided for completeness and to help you evaluate different design choices based on your scenario.
 
 ### One response per item
 
