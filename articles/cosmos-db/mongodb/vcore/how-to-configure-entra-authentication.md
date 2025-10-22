@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 10/12/2025
+ms.date: 10/21/2025
 ms.custom:
   - devx-track-rust
   - build-2025
@@ -101,7 +101,7 @@ When you need to get a friendly name using unique identifier, follow these steps
 
 ### Get unique identifier for an Entra ID service principal
 
-To use a managed identity in your application or to log in using Entra ID credentials in tools like the MongoDB shell or Compass, you need to retrieve the `clientID` of the managed identity.
+To use a managed identity in your application or to log in using Entra ID credentials in tools like the MongoDB shell or Compass, you need to retrieve the `principalID` and the `clientID` of the managed identity.
 
 1. Get the details for the managed identity using a `GET` REST API call. Replace variables that start with `$` sign with the actual values.
 
@@ -128,7 +128,7 @@ To use a managed identity in your application or to log in using Entra ID creden
 
 1. Note the `clientID` and `principalId` values in the output.
     1. Use `principalId` to add the managed identity to your cluster as an Entra ID entity.
-    1. Use `clientID` to connect to the cluster via MongoDB Shell or Compass using Entra ID authentication.
+    1. Use `clientID` to connect to the cluster via MongoDB Shell or Compass or in your application code using Entra ID authentication.
 
 ## Manage cluster authentication methods 
 Use the following steps to change authentication methods on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have the following authentication methods enabled on your cluster:
