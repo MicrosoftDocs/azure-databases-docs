@@ -126,7 +126,6 @@ If you see the IOPS elevated for only a few nodes, you might have a hot partitio
 
 If your IOPSs are lower than what your product tier supports, but higher or equal to the disk IOPS, take the following actions:
 
-- Add more disks to increase performance. You need to raise a support case to increase disks.
 - Add more nodes to [scale up the datacenters](create-cluster-portal.md#scale-a-datacenter).
 
 If your IOPS reach the upper limit that your product tier supports, you can:
@@ -175,7 +174,6 @@ If the CPU hovers below 70% and the garbage collection can't reclaim memory, you
 
 If you need more memory, you can:
 
-- File a ticket to increase your JVM memory settings.
 - Scale vertically to a product tier that has more memory available.
 
 ### Tombstones
