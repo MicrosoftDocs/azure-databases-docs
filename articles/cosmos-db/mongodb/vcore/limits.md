@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 09/13/2025
+ms.date: 10/21/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -133,8 +133,7 @@ The following are the current limitations for configuring [the customer-managed 
 
 ### Microsoft Entra ID authentication
 
-The Microsoft Entra ID authentication feature has these current limitations:
-- This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
+The [Microsoft Entra ID authentication](./entra-authentication.md) feature has these current limitations:
 - This feature doesn't support Entra ID groups.
 
 ### Native DocumentDB secondary users
