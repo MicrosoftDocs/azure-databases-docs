@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/02/2025
+ms.date: 10/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -19,14 +19,17 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: October 2025
 
+- General availability
+    - Support for new [PgBouncer versions](concepts-pgbouncer.md) 1.23.1. <sup>$</sup>
 - Preview
     - [Read Replica support for Premium SSDv2 in Azure Database for PostgreSQL](concepts-read-replicas.md)
 
 ## Release: September 2025
 - General availability
+    - Support for latest [minor versions](concepts-supported-versions.md) 17.6, 16.10, 15.14, 14.19 and 13.22. <sup>$</sup>
     - [Near zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling) for high availability (HA) enabled servers.
-- Public preview of [PostgreSQL 18](concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
-- Support for latest [minor versions](concepts-supported-versions.md) 17.6, 16.10, 15.14, 14.19 and 13.22. <sup>$</sup>
+- Preview
+    - [PostgreSQL 18](concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: July 2025
 - General availability
@@ -53,7 +56,7 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [DiskANN Vector Indexing extension](how-to-use-pgdiskann.md)
     - [Pgvector 0.8.0 extension](../extensions/concepts-extensions-versions.md#vector)
     - [Automatic key version updates](./concepts-data-encryption.md#cmk-key-version-updates)
-    - [Resiliency solution accelerator](https://github.com/Azure-Samples/Azure-PostgreSQL-Resilience-Architecture) for Azure Databade for PostgreSQL
+    - [Resiliency solution accelerator](https://github.com/Azure-Samples/Azure-PostgreSQL-Resilience-Architecture) for Azure Database for PostgreSQL
 - Preview
     - [Confidential Computing](concepts-confidential-computing.md)
     - [Apache Age extension](generative-ai-age-overview.md)
