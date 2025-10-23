@@ -24,6 +24,9 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 ## October 2025
 
+###  General Availability of Custom Port Support
+We are excited to announce that custom port support for Azure Database for MySQL – Flexible Server is now generally available (GA). This long-requested feature gives you greater flexibility to align MySQL server deployments with your network and security requirements. By default, MySQL uses TCP port 3306; with this GA release, you can configure a custom port (between 25001 and 26000) when creating a new Azure Database for MySQL flexible server. [Learn more](concepts-networking.md#custom-port-support)
+
 ### Enhanced portal experience for high availability
 We’ve updated the portal experience for High Availability (HA) options to make it more intuitive and aligned with Azure standards. To help customers run mission-critical workloads with zone-aware HA, the portal now prioritizes Zone-Redundant HA wherever available and displays SLA details alongside the selection for better clarity. If Zone-Redundant HA is not available, customers can enable Local Redundant HA. Additionally, we are rebranding “Same Zone” to Local Redundant to ensure consistency with Azure naming conventions.[Learn More](how-to-configure-high-availability.md)
 
