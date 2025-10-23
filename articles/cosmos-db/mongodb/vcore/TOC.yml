@@ -123,6 +123,8 @@
           href: entra-authentication.md
         - name: Data encryption
           href: database-encryption-at-rest.md
+        - name: Role-based access control (RBAC)
+          href: role-based-access-control.md
     - name: Indexing
       href: indexing.md
     - name: Change Stream
