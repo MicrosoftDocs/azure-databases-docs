@@ -52,11 +52,11 @@ The following JSON object represents the data format in DynamoDB:
   "KeySchema": [
     { 
       "AttributeName": "Artist",
-      "KeyType": "HASH", //Partition key
+      "KeyType": "HASH",
     },
     { 
       "AttributeName": "SongTitle",
-      "KeyType": "RANGE" //Sort key
+      "KeyType": "RANGE"
     }
     ],
     "AttributeDefinitions": [
@@ -74,7 +74,9 @@ The following JSON object represents the data format in DynamoDB:
     "WriteCapacityUnits": 1
   }
 }
- ```
+```
+
+With `Artist` as partition key and `SongTitle` as sort key.
 
 ### Azure Cosmos DB
 
