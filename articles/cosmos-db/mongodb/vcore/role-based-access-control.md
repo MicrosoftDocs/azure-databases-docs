@@ -16,9 +16,14 @@ appliesto:
 
 Access control is a critical part of securing Azure Cosmos DB for MongoDB vCore clusters. Azure role-based access control (RBAC) provides a centralized mechanism to assign and enforce permissions through Microsoft Entra ID, ensuring that only authorized identities can perform operations on your clusters. Instead of relying on manual credential management, RBAC enables fine-grained, role-based assignments that scale with your environment. This approach simplifies governance, supports least-privilege principles, and makes auditing straightforward—helping organizations maintain operational integrity and compliance as deployments grow.
 
-## Azure role-based access control (RBAC)
+When working with Azure Cosmos DB for MongoDB vCore, access control spans two distinct layers:
 
-[Azure role-based access control (RBAC)](/azure/role-based-access-control/overview) is essential for managing access to Azure Cosmos DB for MongoDB vCore clusters because it provides a unified, secure, and scalable way to govern who can perform operations on your clusters. By integrating with Microsoft Entra ID, RBAC enables centralized identity and access management across your Azure resources, ensuring compliance with enterprise security standards. This approach eliminates the risks of unmanaged credentials and manual user provisioning, while offering fine-grained permissions for administrative, read-write, and read-only roles. For organizations running mission-critical workloads, RBAC delivers key benefits: enhanced security through least-privilege access, operational consistency across environments, and simplified governance for large-scale deployments. As your data estate grows, RBAC ensures that access policies remain consistent, auditable, and aligned with regulatory requirements—helping teams collaborate confidently without compromising data integrity.
+- [Managing permissions for the cluster as an Azure resource](#azure-role-based-access-control-rbac).
+- [Managing permissions for databases and operations within the cluster](#role-based-access-control-rbac-for-the-database).
+
+## Azure role-based access control (RBAC) for clusters as Azure resources
+
+[Azure role-based access control (RBAC)](/azure/role-based-access-control/overview) is essential for managing access to Azure Cosmos DB for MongoDB vCore clusters. It provides a unified, secure, and scalable way to govern who can perform operations on your clusters. By integrating with Microsoft Entra ID, RBAC enables centralized identity and access management across your Azure resources, ensuring compliance with enterprise security standards. This approach eliminates the risks of unmanaged credentials and manual user provisioning, while offering fine-grained permissions for administrative, read-write, and read-only roles. For organizations running mission-critical workloads, RBAC delivers key benefits: enhanced security through least-privilege access, operational consistency across environments, and simplified governance for large-scale deployments. As your data estate grows, RBAC ensures that access policies remain consistent, auditable, and aligned with regulatory requirements—helping teams collaborate confidently without compromising data integrity.
 
 Azure Cosmos DB for MongoDB vCore supports Azure RBAC for `mongoCluster` resource type. The following [actions](/azure/role-based-access-control/role-definitions#actions) for `mongoCluster` resource type are available in Azure RBAC for individual assignments and [custom RBAC role creation](/azure/role-based-access-control/custom-roles).
 
@@ -48,9 +53,9 @@ Azure service: [Azure Cosmos DB](/azure/cosmos-db/)
 > | Microsoft.DocumentDB/mongoClusters/users/write | Create or Update a user on a specified `mongoCluster` resource. |
 > | Microsoft.DocumentDB/mongoClusters/users/delete | Deletes an existing user for the specified `mongoCluster` resource. |
 
-## User management role-based access control (RBAC)
+## Role-based access control (RBAC) for the database
 
-Native DocumentDB and Entra ID administrative users on the cluster have full read-write permissions on the cluster including full user management privileges. 
+Native DocumentDB administative built-in user and [Entra ID administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on the cluster have full read-write permissions on the cluster including full user management privileges. 
  
 [Native DocumentDB](./secondary-users.md) and [Entra ID](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) non-administrative users and security principals are created and granted privileges at the cluster level for all databases on that cluster. The **readWriteAnyDatabase** and **clusterAdmin** roles together grant full read-write permissions on the cluster, including privileges for database management and database operations. The **readAnyDatabase** role is used to grant read-only permissions on the cluster.
 
