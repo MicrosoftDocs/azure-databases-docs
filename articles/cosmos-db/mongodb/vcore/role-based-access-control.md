@@ -7,42 +7,66 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 09/23/2025
+ms.date: 10/21/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
 
 # Role-based access control (RBAC) in Azure Cosmos DB for MongoDB vCore
 
-Azure Cosmos DB for MongoDB vCore supports integration with Microsoft Entra ID and native DocumentDB authentication. Each Azure Cosmos DB for MongoDB vCore cluster is created with native DocumentDB authentication enabled and one built-in administrative user.
-
-You can enable Microsoft Entra ID authentication on a cluster in addition to the native DocumentDB authentication method or instead of it. You can configure authentication methods on each Azure Cosmos DB for MongoDB vCore cluster independently. If you need to change authentication method, you can do it at any time after cluster provisioning is completed. Changing authentication methods doesn't require cluster restart.
+Access control is a critical part of securing Azure Cosmos DB for MongoDB vCore clusters. Azure role-based access control (RBAC) provides a centralized mechanism to assign and enforce permissions through Microsoft Entra ID, ensuring that only authorized identities can perform operations on your clusters. Instead of relying on manual credential management, RBAC enables fine-grained, role-based assignments that scale with your environment. This approach simplifies governance, supports least-privilege principles, and makes auditing straightforward—helping organizations maintain operational integrity and compliance as deployments grow.
 
 ## Azure role-based access control (RBAC)
 
-[Microsoft Entra ID](/entra/fundamentals/whatis) authentication is a mechanism of connecting to Azure Cosmos DB  for MongoDB vCore using identities defined in Microsoft Entra ID. With Microsoft Entra ID authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management and identity services compliance enforcement.
+[Azure role-based access control (RBAC)](/azure/role-based-access-control/overview) is essential for managing access to Azure Cosmos DB for MongoDB vCore clusters because it provides a unified, secure, and scalable way to govern who can perform operations on your clusters. By integrating with Microsoft Entra ID, RBAC enables centralized identity and access management across your Azure resources, ensuring compliance with enterprise security standards. This approach eliminates the risks of unmanaged credentials and manual user provisioning, while offering fine-grained permissions for administrative, read-write, and read-only roles. For organizations running mission-critical workloads, RBAC delivers key benefits: enhanced security through least-privilege access, operational consistency across environments, and simplified governance for large-scale deployments. As your data estate grows, RBAC ensures that access policies remain consistent, auditable, and aligned with regulatory requirements—helping teams collaborate confidently without compromising data integrity.
 
-Benefits of using Microsoft Entra ID for authentication include:
+Azure Cosmos DB for MongoDB vCore supports Azure RBAC for `mongoCluster` resource type. The following [actions](/azure/role-based-access-control/role-definitions#actions) for `mongoCluster` resource type are available in Azure RBAC for individual assignments and [custom RBAC role creation](/azure/role-based-access-control/custom-roles).
 
-- Authentication of users across Azure services in a uniform way
 
-- Management of password policies and password rotation in a single place
+Azure service: [Azure Cosmos DB](/azure/cosmos-db/)
 
-- Multiple forms of authentication supported by Microsoft Entra ID, which can eliminate the need to store passwords
-
-- Support of token-based authentication for applications connecting to Azure Cosmos DB for MongoDB vCore clusters
-
+> [!div class="mx-tableFixed"]
+> | Action | Description |
+> | --- | --- |
+> | Microsoft.DocumentDB/mongoClusters/read | Reads a `mongoCluster` resource or list all `mongoCluster` resources. |
+> | Microsoft.DocumentDB/mongoClusters/write | Create or Update the properties or tags of the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/delete | Deletes the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/PrivateEndpointConnectionsApproval/action | Manage a private endpoint connection of `mongoCluster` resource |
+> | Microsoft.DocumentDB/mongoClusters/listConnectionStrings/action | List connection strings for a given `mongoCluster` resource |
+> | Microsoft.DocumentDB/mongoClusters/firewallRules/read | Reads a firewall rule or lists all firewall rules for the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/firewallRules/write | Create or Update a firewall rule on a specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/firewallRules/delete | Deletes an existing firewall rule for the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/privateEndpointConnectionProxies/read | Reads a private endpoint connection proxy for the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/privateEndpointConnectionProxies/write | Create or Update a private endpoint connection proxy on a specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/privateEndpointConnectionProxies/delete | Deletes an existing private endpoint connection proxy for the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/privateEndpointConnectionProxies/validate/action | Validates private endpoint connection proxy for the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/read | Reads a private endpoint connection or lists all private endpoint connection for the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/write | Create or Update a private endpoint connection on a specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/delete | Deletes an existing private endpoint connection for the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/privateLinkResources/read | Reads a private link resource or lists all private link resource for the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/users/read | Reads a user or lists all users for the specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/users/write | Create or Update a user on a specified `mongoCluster` resource. |
+> | Microsoft.DocumentDB/mongoClusters/users/delete | Deletes an existing user for the specified `mongoCluster` resource. |
 
 ## User management role-based access control (RBAC)
 
-When Microsoft Entra ID authentication is enabled on an Azure Cosmos DB for MongoDB vCore cluster, you can add one or more Microsoft Entra ID principals as *administrator users* to that cluster. The Microsoft Entra ID administrator can be a Microsoft Entra ID user, a service principal, or a managed identity. Multiple Microsoft Entra ID administrators can be configured at any time. 
+Native DocumentDB and Entra ID administrative users on the cluster have full read-write permissions on the cluster including full user management privileges. 
+ 
+[Native DocumentDB](./secondary-users.md) and [Entra ID](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) non-administrative users and security principals are created and granted privileges at the cluster level for all databases on that cluster. The **readWriteAnyDatabase** and **clusterAdmin** roles together grant full read-write permissions on the cluster, including privileges for database management and database operations. The **readAnyDatabase** role is used to grant read-only permissions on the cluster.
 
-Administrative Entra ID users are created as Azure entities under Microsoft.DocumentDB/mongoClusters/users and are replicated to the database.
+ > [!NOTE]
+>  Only full read-write users with database management and database operations privileges are supported. You can't assign **readWriteAnyDatabase** and **clusterAdmin** roles separately.
 
-Additionally, one or more nonadministrative Microsoft Entra ID users can be added to a cluster at any time once Microsoft Entra ID authentication is enabled. Nonadministrative users are often used for ongoing production tasks that don't require administrative privileges.
+Non-administrative (secondary) users and security principals are granted the following limited *user management* permissions on the cluster:
 
+| Security provider | Role | CreateUser | DeleteUser | UpdateUser | ListUser |
+| --- | --- | --- | --- | --- | --- | 
+| Entra ID | Read-write (readWriteAnyDatabase, clusterAdmin) | :x: | :x: | :x: | :heavy_check_mark: | 
+| Entra ID | Read-only (readAnyDatabase) | :x: | :x: | :x: | :heavy_check_mark: | 
+| Native DocumentDB | Read-write (readWriteAnyDatabase, clusterAdmin) | :x: | :x: | Only to change their own password | :heavy_check_mark: |
+| Native DocumentDB | Read-only (readAnyDatabase) | :x: | :x: | Only to change their own password | :heavy_check_mark: |
 
 ## Related content
 
-- Lean [how to enable Microsoft Entra ID and manage Entra ID users on clusters](./how-to-configure-entra-authentication.md)
+- Learn [how to enable Microsoft Entra ID and manage Entra ID users on clusters](./how-to-configure-entra-authentication.md)
 - Learn [how to manage secondary native DocumentDB users on clusters](./secondary-users.md)

@@ -137,7 +137,7 @@ Use the following steps to change authentication methods on your existing cluste
 - Microsoft Entra ID authentication method
 
 > [!IMPORTANT]
-> When cluster is created, you have to have native DocumentDB authentication method enabled and specify native administrative user credentials. You can disable native DocumentDB authentication method disabled once new cluster finishes provisioning.  
+> When cluster is created, you have to have native DocumentDB authentication method enabled and specify native administrative user credentials. You can disable native DocumentDB authentication method once new cluster finishes provisioning.  
 
 ### [Azure portal](#tab/portal)
 
