@@ -18,7 +18,7 @@ Access control is a critical part of securing Azure Cosmos DB for MongoDB vCore 
 
 When working with Azure Cosmos DB for MongoDB vCore, access control spans two distinct layers:
 
-- [Managing permissions for the cluster as an Azure resource](#azure-role-based-access-control-rbac).
+- [Managing permissions for the cluster as an Azure resource](#azure-role-based-access-control-rbac-for-clusters-as-azure-resources).
 - [Managing permissions for databases and operations within the cluster](#role-based-access-control-rbac-for-the-database).
 
 ## Azure role-based access control (RBAC) for clusters as Azure resources
@@ -26,9 +26,6 @@ When working with Azure Cosmos DB for MongoDB vCore, access control spans two di
 [Azure role-based access control (RBAC)](/azure/role-based-access-control/overview) is essential for managing access to Azure Cosmos DB for MongoDB vCore clusters. It provides a unified, secure, and scalable way to govern who can perform operations on your clusters. By integrating with Microsoft Entra ID, RBAC enables centralized identity and access management across your Azure resources, ensuring compliance with enterprise security standards. This approach eliminates the risks of unmanaged credentials and manual user provisioning, while offering fine-grained permissions for administrative, read-write, and read-only roles. For organizations running mission-critical workloads, RBAC delivers key benefits: enhanced security through least-privilege access, operational consistency across environments, and simplified governance for large-scale deployments. As your data estate grows, RBAC ensures that access policies remain consistent, auditable, and aligned with regulatory requirements—helping teams collaborate confidently without compromising data integrity.
 
 Azure Cosmos DB for MongoDB vCore supports Azure RBAC for `mongoCluster` resource type. The following [actions](/azure/role-based-access-control/role-definitions#actions) for `mongoCluster` resource type are available in Azure RBAC for individual assignments and [custom RBAC role creation](/azure/role-based-access-control/custom-roles).
-
-
-Azure service: [Azure Cosmos DB](/azure/cosmos-db/)
 
 > [!div class="mx-tableFixed"]
 > | Action | Description |
@@ -55,9 +52,9 @@ Azure service: [Azure Cosmos DB](/azure/cosmos-db/)
 
 ## Role-based access control (RBAC) for the database
 
-Native DocumentDB administative built-in user and [Entra ID administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on the cluster have full read-write permissions on the cluster including full user management privileges. 
- 
-[Native DocumentDB](./secondary-users.md) and [Entra ID](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) non-administrative users and security principals are created and granted privileges at the cluster level for all databases on that cluster. The **readWriteAnyDatabase** and **clusterAdmin** roles together grant full read-write permissions on the cluster, including privileges for database management and database operations. The **readAnyDatabase** role is used to grant read-only permissions on the cluster.
+Native DocumentDB administrative built-in user and [Entra ID administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on the cluster have full read-write permissions on the cluster including full user management privileges. 
+
+[Native DocumentDB non-administrative users](./secondary-users.md) and [Entra ID non-administrative users and security principals](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) are created and granted privileges at the cluster level for all databases on that cluster. The **readWriteAnyDatabase** and **clusterAdmin** roles together grant full read-write permissions on the cluster, including privileges for database management and database operations. The **readAnyDatabase** role is used to grant read-only permissions on the cluster.
 
  > [!NOTE]
 >  Only full read-write users with database management and database operations privileges are supported. You can't assign **readWriteAnyDatabase** and **clusterAdmin** roles separately.
@@ -74,4 +71,4 @@ Non-administrative (secondary) users and security principals are granted the fol
 ## Related content
 
 - Learn [how to enable Microsoft Entra ID and manage Entra ID users on clusters](./how-to-configure-entra-authentication.md)
-- Learn [how to manage secondary native DocumentDB users on clusters](./secondary-users.md)
+- Learn [how to manage non-administrative (secondary) native DocumentDB users on clusters](./secondary-users.md)

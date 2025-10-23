@@ -28,7 +28,7 @@ If the cluster has [a replica](./cross-region-replication.md), all secondary nat
 
 One administrative user with all privileges is created on the Azure Cosmos DB for MonogDB vCore cluster during cluster provisioning. This administrative user can perform all operations on the cluster and can't be deleted.
 
-In addition, Azure Cosmos DB for MongoDB vCore supports [role-based access control (RBAC) for secondary users with read-only or read-write privileges](./role-based-access-control.md#user-management-role-based-access-control-rbac). This capability allows administrators to assign roles that grant access to secondary users for essential read operations while protecting primary data integrity.
+In addition, Azure Cosmos DB for MongoDB vCore supports [role-based access control (RBAC) for secondary users with read-only or read-write privileges](./role-based-access-control.md#role-based-access-control-rbac-for-the-database). This capability allows administrators to assign roles that grant access to secondary users for essential read operations while protecting primary data integrity.
 
 You can use any of the MongoDB drivers or tools such as ```mongosh``` to perform these operations.
 
