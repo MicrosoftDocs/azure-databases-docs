@@ -56,7 +56,7 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [DiskANN Vector Indexing extension](how-to-use-pgdiskann.md)
     - [Pgvector 0.8.0 extension](../extensions/concepts-extensions-versions.md#vector)
     - [Automatic key version updates](./concepts-data-encryption.md#cmk-key-version-updates)
-    - [Resiliency solution accelerator](https://github.com/Azure-Samples/Azure-PostgreSQL-Resilience-Architecture) for Azure Databade for PostgreSQL
+    - [Resiliency solution accelerator](https://github.com/Azure-Samples/Azure-PostgreSQL-Resilience-Architecture) for Azure Database for PostgreSQL
 - Preview
     - [Confidential Computing](concepts-confidential-computing.md)
     - [Apache Age extension](generative-ai-age-overview.md)
