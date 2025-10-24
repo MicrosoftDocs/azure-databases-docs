@@ -103,8 +103,6 @@ This is the recommended data model for storing chat histories and agent memories
 | `turnIndex` | number (int) | ✅ | Monotonic counter of the *exchange* (0-based or 1-based). | `7` |
 | `messages` | object | ✅ | Messages that make up this exchange (for example, user prompt, agent reply, optional tool call/response). | For more information, see [`messages` properties](#properties-of-messages-object). |
 | `turnEmbedding` | number[] | optional | Vector for the *whole* exchange (for example, embedding of a concatenated or summarized message pair). | `[0.013, -0.092, ]` |
-| `startedAt` | string (ISO 8601) | optional | Timestamp when the exchange began. | `"2025-09-24T10:14:25Z"` |
-| `endedAt` | string (ISO 8601) | optional | Timestamp when the exchange completed. | `"2025-09-24T10:14:28Z"` |
 | `embedding` | number[] | optional | Vector for this specific turn (You can create embedding of user question for a [semantic cache](semantic-cache.md)). | `[0.11, 0.02, ]` |
 
 #### Properties of `messages` object
@@ -140,9 +138,7 @@ This is the recommended data model for storing chat histories and agent memories
   
   ],
   "embedding": [0.013, -0.092, 0.551, ],
-  "startedAt": "2025-09-24T10:14:25Z",
-  "endedAt": "2025-09-24T10:14:55Z",
-  "metrics": { "inputTokens": 12, "outputTokens": 17, "latencyMs": 300 }
+  "metrics": { "latencyMs": 300 }
 }
 ```
 
