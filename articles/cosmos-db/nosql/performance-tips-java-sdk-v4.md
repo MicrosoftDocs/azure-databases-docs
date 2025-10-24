@@ -261,6 +261,52 @@ Below is the retained size (size of the object and whatever it depends on) of th
 > [!IMPORTANT]
 > You must be using version 4.60.0 of the Java SDK or higher in order to activate region-scoped session consistency. 
 
+### Excluded regions
+
+The excluded regions feature enables fine-grained control over request routing by allowing you to exclude specific regions from your preferred locations on a per-request basis. This feature is available in Azure Cosmos DB Java SDK version 4.47.0 and higher.
+
+**Key benefits:**
+- **Handle rate limiting**: When encountering 429 (Too Many Requests) responses, automatically route requests to alternate regions with available throughput
+- **Targeted routing**: Ensure requests are served from specific regions by excluding all others
+- **Bypass preferred order**: Override the default preferred regions list for individual requests without creating separate clients
+
+**Configuration:**
+
+Excluded regions can be configured at both the client level and request level:
+
+```java
+CosmosExcludedRegions excludedRegions = new CosmosExcludedRegions(Set.of("East US"));
+// Using AtomicReference to simulate dynamic changes to excluded regions. Excluded regions can be set at the
+// client level
+AtomicReference<CosmosExcludedRegions> excludedRegionsAtomicReference = new AtomicReference<>(excludedRegions);
+CosmosAsyncClient client = new CosmosClientBuilder()
+    .endpoint("")
+    .key("")
+    .preferredRegions(List.of(new String[]{"West US", "East US"}))
+    .excludedRegionsSupplier(excludedRegionsAtomicReference::get)
+    .buildAsyncClient();
+CosmosAsyncDatabase cosmosAsyncDatabase = client.getDatabase("Test");
+CosmosAsyncContainer cosmosAsyncContainer = cosmosAsyncDatabase.getContainer("TestItems");
+// Excluded regions can also be set at the request level
+CosmosItemRequestOptions cosmosItemRequestOptions = new CosmosItemRequestOptions().setExcludedRegions(List.of("East US"));
+TestObject testItem = TestObject.create("mypkValue");
+cosmosAsyncContainer.createItem(testItem, cosmosItemRequestOptions).block();
+```
+
+#### Fine-tuning consistency vs availability
+
+The excluded regions feature provides an additional mechanism for balancing consistency and availability trade-offs in your application. This capability is particularly valuable in dynamic scenarios where requirements may shift based on operational conditions:
+
+**Dynamic outage handling**: When a primary region experiences an outage and partition-level circuit breaker thresholds prove insufficient, excluded regions enables immediate failover without code changes or application restarts. This provides faster response to regional issues compared to waiting for automatic circuit breaker activation.
+
+**Conditional consistency preferences**: Applications can implement different consistency strategies based on operational state:
+- **Steady state**: Prioritize consistent reads by excluding all regions except the primary, ensuring data consistency at the potential cost of availability
+- **Outage scenarios**: Favor availability over strict consistency by allowing cross-region routing, accepting potential data lag in exchange for continued service availability
+
+This approach allows external mechanisms (such as traffic managers or load balancers) to orchestrate failover decisions while the application maintains control over consistency requirements through region exclusion patterns.
+
+When all regions are excluded, requests will be routed to the primary/hub region. This feature works with all request types including queries and is particularly useful for maintaining singleton client instances while achieving flexible routing behavior.
+
 ## Tuning direct and gateway connection configuration
 
 For optimizing direct and gateway mode connection configurations, see how to [tune connection configurations for Java SDK v4](tune-connection-configurations-java-sdk-v4.md).
