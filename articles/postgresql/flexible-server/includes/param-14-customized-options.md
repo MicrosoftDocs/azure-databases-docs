@@ -577,7 +577,7 @@ ms.custom: automatically generated
 | Description | Specifies which extensions are allowed to be created in the server. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
 
@@ -678,13 +678,13 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Size of blob block, in megabytes, for PUT blob operations. |
 | Data type | integer |
-| Default value | `1024` |
+| Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `1024` |
 | Parameter type | read-only |
 | Documentation | [azure_storage.blob_block_size_mb](https://go.microsoft.com/fwlink/?linkid=2323791) |
 
 
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+[!INCLUDE [server-parameters-azure-notes-azure-storage-blob-block-size-mb](./server-parameters-azure-notes-azure-storage-blob-block-size-mb.md)]
 
 
 
