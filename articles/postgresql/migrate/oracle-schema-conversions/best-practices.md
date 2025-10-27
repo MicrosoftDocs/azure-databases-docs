@@ -6,13 +6,7 @@ ms.author: adityaduvuri
 ms.reviewer: maghan
 ms.date: 10/25/2025
 ms.service: azure-database-postgresql
-ms.subservice: schema-conversion
-ms.topic: conceptual
-ms.custom:
-  - devx-track-vscode
-  - schema-conversion
-  - oracle-to-postgresql
-  - best-practices
+ms.topic: concept-article
 ---
 
 # Schema conversion: Best practices
