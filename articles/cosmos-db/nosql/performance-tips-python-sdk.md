@@ -95,7 +95,7 @@ You can control the PPCB behavior using these environment variables:
 
 ### Excluded regions
 
-The excluded regions feature enables fine-grained control over request routing by allowing you to exclude specific regions from your preferred locations on a per-request basis. This feature is available in Azure Cosmos DB Python SDK version 4.3.0 and higher.
+The excluded regions feature enables fine-grained control over request routing by allowing you to exclude specific regions from your preferred locations on a per-request basis. This feature is available in Azure Cosmos DB Python SDK version 4.14.0 and higher.
 
 **Key benefits:**
 - **Handle rate limiting**: When encountering 429 (Too Many Requests) responses, automatically route requests to alternate regions with available throughput
