@@ -24,7 +24,7 @@ ms.custom: devx-track-java, devx-track-extended-java
 > 
 
 > [!IMPORTANT]  
-> The performance tips in this article are for Azure Cosmos DB Java SDK v4 only. View the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and Azure Cosmos DB Java SDK v4 [troubleshooting guide](troubleshoot-java-sdk-v4.md) for more information. If you are currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help with upgrading to v4.
+> The performance tips in this article are for Azure Cosmos DB Java SDK v4 only. View the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and Azure Cosmos DB Java SDK v4 [troubleshooting guide](troubleshoot-java-sdk-v4.md) for more information. If you're currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help with upgrading to v4.
 
 Azure Cosmos DB is a fast and flexible distributed database that scales seamlessly with guaranteed latency and throughput. You don't have to make major architecture changes or write complex code to scale your database with Azure Cosmos DB. Scaling up and down is as easy as making a single API call or SDK method call. However, because Azure Cosmos DB is accessed via network calls there are client-side optimizations you can make to achieve peak performance when using Azure Cosmos DB Java SDK v4.
 
@@ -110,7 +110,7 @@ container.createItem("id", new PartitionKey("pk"), options, JsonNode.class).bloc
   
 2. **Second Request:** If there's no response from the primary region within 500 milliseconds, a parallel request is sent to the next preferred region (for example, East US 2).
   
-3. **Third Request:** If neither the primary nor the secondary region responds within 600 milliseconds (500ms + 100ms, the `thresholdStep` value), the SDK sends another parallel request to the third preferred region (for example, West US).
+3. **Third Request:** If neither the primary nor the secondary region responds within 600 milliseconds (500ms + 100 ms, the `thresholdStep` value), the SDK sends another parallel request to the third preferred region (for example, West US).
 
 4. **Fastest Response Wins:** Whichever region responds first, that response is accepted, and the other parallel requests are ignored.
 
@@ -119,7 +119,7 @@ Proactive connection management helps by warming up connections and caches for c
 This strategy can significantly improve latency in scenarios where a particular region is slow or temporarily unavailable, but it may incur more cost in terms of request units when parallel cross-region requests are required.
 
 > [!NOTE]
-> If the first preferred region returns a non-transient error status code (e.g., document not found, authorization error, conflict, etc.), the operation itself will fail fast, as availability strategy would not have any benefit in this scenario.
+> If the first preferred region returns a non-transient error status code (e.g., document not found, authorization error, conflict, etc.), the operation itself will fail fast, as availability strategy wouldn't have any benefit in this scenario.
 
 ### Partition level circuit breaker
 
@@ -150,9 +150,9 @@ System.setProperty("COSMOS.ALLOWED_PARTITION_UNAVAILABILITY_DURATION_IN_SECONDS"
 
 **How it works:**
 
-1. **Tracking Failures:** The SDK tracks terminal failures (for example, 503s, 500s, time-outs) for individual partitions in specific regions.
+1. **Tracking Failures:** The SDK tracks terminal failures (for example, 503s, 500s, timeouts) for individual partitions in specific regions.
   
-2. **Marking as Unavailable:** If a partition in a region exceeds a configured threshold of failures, it is marked as "Unavailable." Subsequent requests to this partition are short-circuited and redirected to other healthier regions.
+2. **Marking as Unavailable:** If a partition in a region exceeds a configured threshold of failures, it's marked as "Unavailable." Subsequent requests to this partition are short-circuited and redirected to other healthier regions.
 
 3. **Automated Recovery:** A background thread periodically checks unavailable partitions. After a certain duration, these partitions are tentatively marked as "HealthyTentative" and subjected to test requests to validate recovery.
 
@@ -169,13 +169,13 @@ This mechanism helps to continuously monitor partition health and ensures that r
 ### Comparing availability optimizations
 
 - **Threshold-based availability strategy**: 
-  - **Benefit**: Reduces tail latency by sending parallel read requests to secondary regions, and improves availability by preempting requests that result in network time-outs.
+  - **Benefit**: Reduces tail latency by sending parallel read requests to secondary regions, and improves availability by preempting requests that result in network timeouts.
   - **Trade-off**: Incurs extra RU (Request Units) costs compared to circuit breaker, due to other parallel cross-region requests (though only during periods when thresholds are breached).
   - **Use Case**: Optimal for read-heavy workloads where reducing latency is critical and some additional cost (both in terms of RU charge and client CPU pressure) is acceptable. Write operations can also benefit, if opted into non-idempotent write retry policy and the account has multi-region writes.
 
 - **Partition level circuit breaker**: 
   - **Benefit**: Improves availability and latency by avoiding unhealthy partitions, ensuring requests are routed to healthier regions.
-  - **Trade-off**: Does not incur more RU costs, but can still allow some initial availability loss for requests that will result in network time-outs. 
+  - **Trade-off**: Doesn't incur more RU costs, but can still allow some initial availability loss for requests that will result in network timeouts. 
   - **Use Case**: Ideal for write-heavy or mixed workloads where consistent performance is essential, especially when dealing with partitions that may intermittently become unhealthy.
 
 Both strategies can be used together to enhance read and write availability and reduce tail latency. Partition Level Circuit Breaker can handle a various transient failure scenarios, including those that may result in slow performing replicas, without the need to perform parallel requests. Additionally, adding Threshold-based Availability Strategy will further minimize tail latency and eliminate availability loss, if additional RU cost is acceptable. 
@@ -199,7 +199,7 @@ For more information about consistency settings in general, see [Consistency lev
 ### Trade-Offs
 - **Increased Memory Usage:** The bloom filter and region-specific session token storage require more memory, which may be a consideration for applications with limited resources.
 - **Configuration Complexity:** Fine-tuning the expected insertion count and false-positive rate for the bloom filter adds a layer of complexity to the configuration process.
-- **Potential for False Positives:** While the bloom filter minimizes cross-regional retries, there is still a slight chance of false positives impacting the session token validation, although the rate can be controlled. A false positive means the global session token is resolved, thereby increasing the chance of cross-regional retries if the local region has not caught up to this global session. Session guarantees are met even in the presence of false positives.
+- **Potential for False Positives:** While the bloom filter minimizes cross-regional retries, there's still a slight chance of false positives impacting the session token validation, although the rate can be controlled. A false positive means the global session token is resolved, thereby increasing the chance of cross-regional retries if the local region has not caught up to this global session. Session guarantees are met even in the presence of false positives.
 - **Applicability:** This feature is most beneficial for applications with a high cardinality of logical partitions and regular restarts. Applications with fewer logical partitions or infrequent restarts might not see significant benefits.
 
 
@@ -212,7 +212,7 @@ For more information about consistency settings in general, see [Consistency lev
 #### Resolve the session token
 1. **Request Initialization:** Before a request is sent, the SDK attempts to resolve the session token for the appropriate region.
 2. **Token Check:** The token is checked against the region-specific data to ensure the request is routed to the most up-to-date replica.
-3. **Retry Logic:** If the session token is not validated within the current region, the SDK retries with other regions, but given the localized storage, this is less frequent.
+3. **Retry Logic:** If the session token isn't validated within the current region, the SDK retries with other regions, but given the localized storage, this is less frequent.
 
 
 ### Use the SDK
