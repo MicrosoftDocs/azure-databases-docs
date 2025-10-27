@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 10/27/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -457,13 +457,13 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Size of blob block, in megabytes, for PUT blob operations. |
 | Data type | integer |
-| Default value | `1024` |
+| Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `1024` |
 | Parameter type | read-only |
 | Documentation | [azure_storage.blob_block_size_mb](https://go.microsoft.com/fwlink/?linkid=2323791) |
 
 
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+[!INCLUDE [server-parameters-azure-notes-azure-storage-blob-block-size-mb](./server-parameters-azure-notes-azure-storage-blob-block-size-mb.md)]
 
 
 

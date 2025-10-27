@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 10/27/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -270,8 +270,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the size of the server's main shared memory area (rounded up to the nearest MB). |
 | Data type | integer |
-| Default value | `8586` |
-| Allowed values | `8586` |
+| Default value | `8590` |
+| Allowed values | `8590` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_size](https://www.postgresql.org/docs/15/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE) |
 
@@ -287,8 +287,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the number of huge pages needed for the main shared memory area. |
 | Data type | integer |
-| Default value | `4293` |
-| Allowed values | `4293` |
+| Default value | `4295` |
+| Allowed values | `4295` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_size_in_huge_pages](https://www.postgresql.org/docs/15/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE-IN-HUGE-PAGES) |
 
