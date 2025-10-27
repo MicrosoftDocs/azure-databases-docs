@@ -24,7 +24,7 @@ ms.custom: devx-track-java, devx-track-extended-java
 > 
 
 > [!IMPORTANT]  
-> The performance tips in this article are for Azure Cosmos DB Java SDK v4 only. Please view the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and Azure Cosmos DB Java SDK v4 [troubleshooting guide](troubleshoot-java-sdk-v4.md) for more information. If you are currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help with upgrading to v4.
+> The performance tips in this article are for Azure Cosmos DB Java SDK v4 only. View the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and Azure Cosmos DB Java SDK v4 [troubleshooting guide](troubleshoot-java-sdk-v4.md) for more information. If you are currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help with upgrading to v4.
 
 Azure Cosmos DB is a fast and flexible distributed database that scales seamlessly with guaranteed latency and throughput. You don't have to make major architecture changes or write complex code to scale your database with Azure Cosmos DB. Scaling up and down is as easy as making a single API call or SDK method call. However, because Azure Cosmos DB is accessed via network calls there are client-side optimizations you can make to achieve peak performance when using Azure Cosmos DB Java SDK v4.
 
@@ -150,7 +150,7 @@ System.setProperty("COSMOS.ALLOWED_PARTITION_UNAVAILABILITY_DURATION_IN_SECONDS"
 
 **How it works:**
 
-1. **Tracking Failures:** The SDK tracks terminal failures (e.g., 503s, 500s, time-outs) for individual partitions in specific regions.
+1. **Tracking Failures:** The SDK tracks terminal failures (for example, 503s, 500s, time-outs) for individual partitions in specific regions.
   
 2. **Marking as Unavailable:** If a partition in a region exceeds a configured threshold of failures, it is marked as "Unavailable." Subsequent requests to this partition are short-circuited and redirected to other healthier regions.
 
@@ -169,8 +169,8 @@ This mechanism helps to continuously monitor partition health and ensures that r
 ### Comparing availability optimizations
 
 - **Threshold-based availability strategy**: 
-  - **Benefit**: Reduces tail latency by sending parallel read requests to secondary regions, and improves availability by preempting requests that will result in network time-outs.
-  - **Trade-off**: Incurs extra RU (Request Units) costs compared to circuit breaker, due to additional parallel cross-region requests (though only during periods when thresholds are breached).
+  - **Benefit**: Reduces tail latency by sending parallel read requests to secondary regions, and improves availability by preempting requests that result in network time-outs.
+  - **Trade-off**: Incurs extra RU (Request Units) costs compared to circuit breaker, due to other parallel cross-region requests (though only during periods when thresholds are breached).
   - **Use Case**: Optimal for read-heavy workloads where reducing latency is critical and some additional cost (both in terms of RU charge and client CPU pressure) is acceptable. Write operations can also benefit, if opted into non-idempotent write retry policy and the account has multi-region writes.
 
 - **Partition level circuit breaker**: 
@@ -178,14 +178,14 @@ This mechanism helps to continuously monitor partition health and ensures that r
   - **Trade-off**: Does not incur more RU costs, but can still allow some initial availability loss for requests that will result in network time-outs. 
   - **Use Case**: Ideal for write-heavy or mixed workloads where consistent performance is essential, especially when dealing with partitions that may intermittently become unhealthy.
 
-Both strategies can be used together to enhance read and write availability and reduce tail latency. Partition Level Circuit Breaker can handle a variety of transient failure scenarios, including those that may result in slow performing replicas, without the need to perform parallel requests. Additionally, adding Threshold-based Availability Strategy will further minimize tail latency and eliminate availability loss, if additional RU cost is acceptable. 
+Both strategies can be used together to enhance read and write availability and reduce tail latency. Partition Level Circuit Breaker can handle a various transient failure scenarios, including those that may result in slow performing replicas, without the need to perform parallel requests. Additionally, adding Threshold-based Availability Strategy will further minimize tail latency and eliminate availability loss, if additional RU cost is acceptable. 
 
 By implementing these strategies, developers can ensure their applications remain resilient, maintain high performance, and provide a better user experience even during regional outages or high-latency conditions.
 
 ## Region scoped session consistency
 
 ### Overview
-For more information about consistency settings in general, see [Consistency levels in Azure Cosmos DB](../consistency-levels.md). The Java SDK provides an optimization for [session consistency](../consistency-levels.md#session-consistency) for multi-region write accounts, by allowing it to be region-scoped. This enhances performance by mitigating cross-regional replication latency through minimizing client-side retries. This is achieved by managing session tokens at the region level instead of globally. If consistency in your application can be scoped to a smaller number of regions, by implementing region-scoped session consistency, you can achieve better performance and reliability for read and write operations in multi-write accounts by minimizing cross-regional replication delays and retries. 
+For more information about consistency settings in general, see [Consistency levels in Azure Cosmos DB](../consistency-levels.md). The Java SDK provides an optimization for [session consistency](../consistency-levels.md#session-consistency) for multi-region write accounts, by allowing it to be region-scoped. This enhances performance by mitigating cross-regional replication latency through minimizing client-side retries. This is achieved by managing session tokens at the region level instead of globally. If your application only needs consistency across a few regions, using region-scoped session consistency can improve performance and reliability for reads and writes in multi-write accounts by reducing cross-region replication delays and retries.
 
 ### Benefits
 - **Reduced Latency:** By localizing session token validation to the region level, the chances of costly cross-regional retries are reduced.
@@ -295,7 +295,7 @@ cosmosAsyncContainer.createItem(testItem, cosmosItemRequestOptions).block();
 
 #### Fine-tuning consistency vs availability
 
-The excluded regions feature provides an additional mechanism for balancing consistency and availability trade-offs in your application. This capability is particularly valuable in dynamic scenarios where requirements may shift based on operational conditions:
+The excluded regions feature provides an extra mechanism for balancing consistency and availability trade-offs in your application. This capability is valuable in dynamic scenarios where requirements may shift based on operational conditions:
 
 **Dynamic outage handling**: When a primary region experiences an outage and partition-level circuit breaker thresholds prove insufficient, excluded regions enables immediate failover without code changes or application restarts. This provides faster response to regional issues compared to waiting for automatic circuit breaker activation.
 
@@ -305,7 +305,7 @@ The excluded regions feature provides an additional mechanism for balancing cons
 
 This approach allows external mechanisms (such as traffic managers or load balancers) to orchestrate failover decisions while the application maintains control over consistency requirements through region exclusion patterns.
 
-When all regions are excluded, requests will be routed to the primary/hub region. This feature works with all request types including queries and is particularly useful for maintaining singleton client instances while achieving flexible routing behavior.
+When all regions are excluded, requests are routed to the primary/hub region. This feature works with all request types including queries and is useful for maintaining singleton client instances while achieving flexible routing behavior.
 
 ## Tuning direct and gateway connection configuration
 
