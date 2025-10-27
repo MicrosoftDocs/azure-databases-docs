@@ -20,7 +20,7 @@ This article provides best practices and recommendations to ensure optimal resul
 - **Minimum token limit**: Ensure your Azure OpenAI deployment has a token limit greater than **500K** tokens for optimal performance.
 - **Token usage**: Complex schema objects require significant token capacity for accurate conversion.
 
-:::image type="content" source="media/bestpractices/token-per-minute.png" alt-text="Screenshot of token per minute settings.":::
+:::image type="content" source="media/best-practices/token-per-minute.png" alt-text="Screenshot of token per minute settings.":::
 
 ### Project execution strategy
 
