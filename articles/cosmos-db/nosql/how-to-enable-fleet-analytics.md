@@ -83,7 +83,7 @@ First, configure the resources required for fleet analytics.
     :::image source="media/how-to-enable-fleet-analytics/fabric-access-control-configuration.png" alt-text="Screenshot of the workspace role-based access control configuration in the Fabric portal.":::
 
     > [!IMPORTANT]
-    > Failure to complete this step results in data not being written to your destination Fabric workspace.
+    > Failure to complete this step results in data not being written to your destination Fabric workspace. Because the service principal requires permissions at the workspace level, it is recommended to create a dedicated Fabric workspace for the Fleet Analytics feature in order to isolate access.
 
 1. **Save** your changes.
 
