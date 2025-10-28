@@ -8,6 +8,8 @@ ai-usage: ai-generated
 
 # Azure Cosmos DB for Apache Gremlin partner tools and services
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for Apache Gremlin is a fully managed graph database service that enables you to store, query, and traverse large-scale graph data using the Gremlin query language.
 
 This article lists partners who have solutions or services that use Azure Cosmos DB for Apache Gremlin.
