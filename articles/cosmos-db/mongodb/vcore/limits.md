@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 10/21/2025
+ms.date: 10/27/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -135,6 +135,8 @@ The following are the current limitations for configuring [the customer-managed 
 
 The [Microsoft Entra ID authentication](./entra-authentication.md) feature has these current limitations:
 - This feature doesn't support Entra ID groups.
+- When native DocumentDB authentication method is disabled, MongoDB Shell isn't supported in the Azure portal's **Quick start**.
+    - You can [use MongoDB Shell with Entra ID authentication](./how-to-configure-entra-authentication.md?#connect-to-the-cluster-using-entra-id-in-mongodb-shell) outside of the Azure portal. 
 
 ### Native DocumentDB secondary users
 
