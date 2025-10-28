@@ -16,6 +16,8 @@ appliesto:
 
 # What is Azure Cosmos DB for Table?
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it's ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
 
 Azure Cosmos DB for Table is a fully managed NoSQL database service that enables you to store, manage, and query large volumes of key-value data using the familiar Azure Table storage APIs. This API is designed for applications that need scalable, high-performance storage for structured/nonrelational data. This API is also compatible with existing Azure Table Storage software development kits (SDKs) and tools.
