@@ -11,6 +11,8 @@ ms.author: mansha
 
 # Azure Cosmos DB for Gremlin graph support and compatibility with TinkerPop features
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB supports [Apache Tinkerpop's](https://tinkerpop.apache.org) graph traversal language, known as [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps). You can use the Gremlin language to create graph entities (vertices and edges), modify properties within those entities, perform queries and traversals, and delete entities.
 
 Azure Cosmos DB Graph engine closely follows [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) traversal steps specification but there are differences in the implementation that are specific for Azure Cosmos DB. In this article, we provide a quick walkthrough of Gremlin and enumerate the Gremlin features that are supported by the API for Gremlin.

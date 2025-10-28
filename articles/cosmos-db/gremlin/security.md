@@ -9,6 +9,8 @@ ai-usage: ai-generated
 
 # Secure your Azure Cosmos DB for Apache Gremlin account
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for Apache Gremlin is a fully managed graph database service that enables you to store, query, and traverse large-scale graph data using the Gremlin query language.
 
 This article provides guidance on how to best secure your Azure Cosmos DB for Apache Gremlin deployment.

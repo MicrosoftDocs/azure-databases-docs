@@ -8,6 +8,8 @@ ai-usage: ai-assisted
 
 # Azure Cosmos DB for Apache Gremlin execution profile reference
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article provides a reference for the execution profile feature in Azure Cosmos DB for Apache Gremlin. It explains the structure and properties of the response returned by the `executionProfile()` function.
 
 ## Response
