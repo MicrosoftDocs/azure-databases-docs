@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Migrate PostgreSQL to Azure Database for PostgreSQL Online via the Azure Portal"
+title: "Tutorial: Migrate PostgreSQL to Azure Database for PostgreSQL Online via the Azure portal"
 author: markingmyname
 ms.author: maghan
 ms.reviewer: randolphwest, adityaduvuri
