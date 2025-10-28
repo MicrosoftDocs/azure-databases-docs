@@ -5,4 +5,7 @@ ms.topic: include
 ms.date: 10/28/2025
 ---
 
-[!INCLUDE[Note - Azure Cosmos DB recommendation](../../includes/note-recommendation.md)]
+> [!IMPORTANT]
+>
+> [!INCLUDE[Note - Azure Cosmos DB recommendation](../../includes/note-recommendation.md)]
+>
