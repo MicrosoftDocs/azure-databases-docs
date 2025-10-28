@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 10/21/2025
+ms.date: 10/27/2025
 ms.custom:
   - devx-track-rust
   - build-2025
@@ -368,7 +368,7 @@ Follow these steps to **add** [administrative Entra ID users](./entra-authentica
     > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
     > ```
     >
-    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
+    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `servicePrincipal`.
      
 1. To remove administrative Entra ID users, use `az resource delete`. This command deletes resource of type `Microsoft.DocumentDB/mongoClusters/users`. Compose the name of the resource by concatenating the **name of the parent cluster** and the **principal ID** of your identity.
  
@@ -400,7 +400,7 @@ Follow these steps to **add** [administrative Entra ID users](./entra-authentica
     > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
     > ```
     >
-    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
+    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `servicePrincipal`.
  
 1.  To remove administrative Entra ID users from the cluster, use DELETE Azure REST API call with this `az rest` command:
     
@@ -476,7 +476,7 @@ Use commands on the **REST APIs** tab to list administrative users on the cluste
 
 To perform management operations for non-administrative Entra ID security principals such as users, you need to log in to the cluster with an [administrative Entra ID user](#manage-administrative-entra-id-users-on-the-cluster). You can do it from your application code or from the tools like MongoDB shell and Compass.
 
-All management commands for non-administrative users are supported for `SecurityPrincipal` and `user` principal types. 
+All management commands for non-administrative users are supported for `servicePrincipal` and `user` principal types. 
 
 1. Log in to the cluster using an administrative Entra ID user in [MongoDB shell](#connect-to-the-cluster-using-entra-id-in-mongodb-shell) or [MongoDB Compass](#connect-to-the-cluster-using-entra-id-in-mongodb-compass).
 1. To **add** a non-administrative Entra ID user with **read-write** permissions on the cluster, use the following `createUser` command:
