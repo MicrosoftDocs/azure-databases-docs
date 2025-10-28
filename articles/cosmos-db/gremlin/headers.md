@@ -11,6 +11,8 @@ ms.author: mansha
 
 # Azure Cosmos DB for Gremlin server response headers
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article covers headers that Azure Cosmos DB for Gremlin server returns to the caller upon request execution. These headers are useful for troubleshooting request performance, building application that integrates natively with Azure Cosmos DB service and simplifying customer support.
 
 Keep in mind that taking dependency on these headers you are limiting portability of your application to other Gremlin implementations. In return, you are gaining tighter integration with Azure Cosmos DB for Gremlin. These headers are not a TinkerPop standard.
