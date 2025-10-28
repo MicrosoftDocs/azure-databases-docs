@@ -16,7 +16,7 @@ ai-usage: ai-generated
 
 Azure Cosmos DB for NoSQL is a fully managed and serverless NoSQL and vector database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL and vector data.
 
-This service is tailored for NoSQL workloads. It supports querying JSON data using a SQL-like query language, making it approachable for developers familiar with the SQL syntax while using the flexibility of a NoSQL unstructured data store.
+This service is tailored for NoSQL workloads for scale out scenarios. It supports querying JSON data using a SQL-like query language, making it approachable for developers familiar with the SQL syntax while using the flexibility of a NoSQL unstructured data store.
 
 ## Global Distribution and Scalability
 
@@ -40,7 +40,7 @@ To use Azure Cosmos DB for NoSQL, you need an Azure subscription. The service in
 
 ## Limitations and Considerations
 
-While Azure Cosmos DB for NoSQL is highly versatile, it's optimized for JSON-based NoSQL workloads.  Additionally, the service's cost model is based on provisioned throughput (RU/s), so careful planning is required to optimize costs for your workload.
+While Azure Cosmos DB for NoSQL is highly versatile, it's optimized for JSON-based NoSQL workloads for scale out scenarios.  If your application requires support for other database models, such as MongoDB, Cassandra, or Gremlin, you might need to explore [Azure Cosmos DB for MongoDB(vCore)](https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/), [Azure Managed Instance for Apache Cassandra](https://learn.microsoft.com/azure/managed-instance-apache-cassandra/), or [Graph in Microsoft Fabric](https://learn.microsoft.com/fabric/graph/overview).  Additionally, the service's cost model is based on provisioned throughput (RU/s), so careful planning is required to optimize costs for your workload.
 
 ## Related content
 
