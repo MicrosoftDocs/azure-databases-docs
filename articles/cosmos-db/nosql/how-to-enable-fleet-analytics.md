@@ -48,6 +48,9 @@ In this guide, you enable Azure Cosmos DB fleet analytics for your Azure Data La
     
     - The workspace must be backed by a **licensed or trial** Fabric capacity.
 
+> [!NOTE]
+> It is recommended to create a dedicated Fabric workspace for Fleet Analytics because the service principal associated with the feature requires Contributor access to the entire workspace.
+
 :::zone-end
 
 :::zone pivot="fleet-storage-data-lake"
