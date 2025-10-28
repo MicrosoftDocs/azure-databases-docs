@@ -11,6 +11,8 @@ ms.author: mansha
 
 # Azure Cosmos DB for Gremlin limits
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article talks about the limits of Azure Cosmos DB for Gremlin engine and explains how they may impact customer traversals.
 
 Azure Cosmos DB for Gremlin is built on top of Azure Cosmos DB infrastructure. Due to this, all limits explained in [Azure Cosmos DB service limits](../concepts-limits.md) still apply.
