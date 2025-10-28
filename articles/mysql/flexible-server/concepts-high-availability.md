@@ -77,6 +77,11 @@ Automatic backups, both snapshots and log backups, are performed on locally redu
 
 During the failover process in Azure Database for MySQL, the system automatically switches from the primary server to the standby replica. This switch ensures continuity and minimizes downtime. When the system detects a failure, it promotes the standby replica to become the new primary server. The system applies the binary log files from the original primary server to the standby replica. This process synchronizes the standby replica with the last committed transaction and ensures no data loss. This seamless transition helps maintain high-availability and reliability of the database service.
 
+> [!NOTE]  
+> To reduce failover time dependency on DNS caching, starting October 2025, all new HA servers created with public access or private link will adopt the new architecture featuring a dedicated SLB for each HA server. By managing the MySQL data traffic path, SLB eliminates the need for DNS changes during failover and significantly improves failover performance. It redirects traffic to the current primary instance during failover using load-balancing rules.
+> Existing servers with public access or private link will be migrated gradually to minimize impact. Customers who prefer early migration can disable and re-enable HA.
+> This feature is not supported for servers using private access with VNet integration.
+
 ### Planned: Forced failover
 
 Azure Database for MySQL Flexible Server forced failover enables you to manually force a failover. This capability allows you to test the functionality with your application scenarios and helps you prepare for outages.
