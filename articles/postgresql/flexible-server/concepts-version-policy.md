@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions for A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/13/2025
+ms.date: 10/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -34,7 +34,7 @@ The following table provides the retirement details for PostgreSQL major version
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Release notes](https://www.postgresql.org/docs/12/release-12.html) | 22-Sep-2020 | 31-Mar-2026 |
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Release notes](https://www.postgresql.org/docs/11/release-11.html) | 24-Jul-2019 | 31-Mar-2026 |
 
-PostgreSQL 18 is currently available in **Preview** on Azure Database for PostgreSQL, with initial availability in the East Asia region.
+PostgreSQL 18 is currently available in **Preview** on Azure Database for PostgreSQL with initial availability in the East Asia region.
 
 ## Minor version support
 
