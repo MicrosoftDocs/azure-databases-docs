@@ -134,9 +134,9 @@ The following are the current limitations for configuring [the customer-managed 
 ### Microsoft Entra ID authentication
 
 The [Microsoft Entra ID authentication](./entra-authentication.md) feature has these current limitations:
-- This feature doesn't support Entra ID groups.
+- This feature doesn't support Microsoft Entra ID groups.
 - When native DocumentDB authentication method is disabled, MongoDB Shell isn't supported in the Azure portal's **Quick start**.
-    - You can [use MongoDB Shell with Entra ID authentication](./how-to-configure-entra-authentication.md?#connect-to-the-cluster-using-entra-id-in-mongodb-shell) outside of the Azure portal. 
+    - You can [use MongoDB Shell with Microsoft Entra ID authentication](./how-to-configure-entra-authentication.md?#connect-to-the-cluster-using-entra-id-in-mongodb-shell) outside of the Azure portal. 
 
 ### Native DocumentDB secondary users
 
