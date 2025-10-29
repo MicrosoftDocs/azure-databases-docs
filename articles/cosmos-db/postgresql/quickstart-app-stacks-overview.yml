@@ -12,6 +12,8 @@ metadata:
   author: jonels-msft
   ms.author: jonels
   ms.date: 10/04/2022
+  appliesto:
+    - ✅ PostgreSQL
 landingContent:
   - title: Connect and run SQL commands
     linkLists:
