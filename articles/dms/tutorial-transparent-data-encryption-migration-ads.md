@@ -1,16 +1,17 @@
 ---
-title: "Tutorial: Migrate TDE-enabled databases (preview) to Azure SQL in Azure Data Studio"
+title: "Tutorial: Migrate TDE-Enabled Databases (Preview) to Azure SQL in Azure Data Studio"
 titleSuffix: Azure Database Migration Service
 description: Learn how to migrate on-premises SQL Server TDE-enabled databases (preview) to Azure SQL by using Azure Data Studio and Azure Database Migration Service.
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-- sql-migration-content
-ms.custom: sfi-image-nochange
+  - sql-migration-content
+ms.custom:
+  - sfi-image-nochange
 ---
 # Tutorial: Migrate TDE-enabled databases (preview) to Azure SQL in Azure Data Studio
 
@@ -95,7 +96,7 @@ To open the Migrate to Azure SQL wizard:
 
       :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/assessment.png" alt-text="Screenshot that shows view/select assessment results." lightbox="media/tutorial-transparent-data-encryption-migration-ads/assessment.png":::
 
-   1. In the assessment results, select the database, and then review the assessment findings. In this example, you can see the `AdventureWorksTDE` database is protected with transparent data encryption (TDE). The assessment is recommending to migrate the TDE certificate before migrating the source database to the managed instance target.
+   1. In the assessment results, select the database, and then review the assessment findings. In this example, you can see the `AdventureWorksTDE` database is protected with transparent data encryption (TDE). The assessment recommends that you migrate the TDE certificate before migrating the source database to the managed instance target.
 
       :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/assessment-findings-details.png" alt-text="Screenshot that shows assessment findings report." lightbox="media/tutorial-transparent-data-encryption-migration-ads/assessment-findings-details.png":::
 
@@ -109,7 +110,7 @@ To open the Migrate to Azure SQL wizard:
 
    The **Info box** section describes the required permissions to export the DEK certificates.
 
-   You must ensure the SQL Server service account has write access to network share path you use to backup the DEK certificates. Also, the current user should have administrator privileges on the computer where this network path exists.
+   You must ensure the SQL Server service account has write access to network share path you use to back up the DEK certificates. Also, the current user should have administrator privileges on the computer where this network path exists.
 
 1. Enter the **network path**.
 
@@ -122,13 +123,13 @@ To open the Migrate to Azure SQL wizard:
    :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-configuration-stop.png" alt-text="Screenshot that shows how to decline the TDE migration." lightbox="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-configuration-stop.png":::
 
    > [!IMPORTANT]  
-   > You must migrate the certificates before proceeding with the migration otherwise the migration will fail. For more information about migrating TDE certificates manually, see [Move a TDE Protected Database to Another SQL Server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
+   > You must migrate the certificates before proceeding with the migration otherwise the migration fails. For more information about migrating TDE certificates manually, see [Move a TDE Protected Database to Another SQL Server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
 
 1. If you want to proceed with the TDE certification migration, select **Apply**.
 
    :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-configuration-apply.png" alt-text="Screenshot that shows how to apply the TDE migration configuration." lightbox="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-configuration-apply.png":::
 
-   The TDE migration configuration panel will close, but you can select **Edit** to modify your network share configuration at any time. Select **Next** to continue the migration process.
+   The TDE migration configuration panel closes, but you can select **Edit** to modify your network share configuration at any time. Select **Next** to continue the migration process.
 
    :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-configuration-edit.png" alt-text="Screenshot that shows how to edit the TDE migration configuration." lightbox="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-configuration-edit.png":::
 
@@ -144,7 +145,7 @@ In **Step 3: Azure SQL target** in the Migrate to Azure SQL wizard, complete the
 
 ## Start and monitor the TDE certificate migration
 
-1. In **Step 3: Migration Status**, the **Certificates Migration** panel will open. The TDE certificates migration progress details are shown on the screen.
+1. In **Step 3: Migration Status**, the **Certificates Migration** panel opens. The TDE certificates migration progress details are shown on the screen.
 
    :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-start.png" alt-text="Screenshot that shows how the TDE migration process starts." lightbox="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-start.png":::
 
@@ -189,7 +190,7 @@ WHERE database_id = DB_ID('Your database name');
 GO
 ```
 
-The query returns the information about the database, the encryption status and the pending percent complete. In this case, it's zero because the TDE certificate has been already completed.
+The query returns the information about the database, the encryption status, and the pending percent complete. In this case, it's zero because the TDE certificate is already completed.
 
 :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/tde-query.png" alt-text="Screenshot that shows the results returned by the TDE query provided in this section." lightbox="media/tutorial-transparent-data-encryption-migration-ads/tde-query.png":::
 

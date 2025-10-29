@@ -1,16 +1,17 @@
 ---
-title: Redeploy SSIS packages to SQL single database
+title: Redeploy SSIS Packages to SQL Single Database
 titleSuffix: Azure Database Migration Service
 description: Learn how to migrate or redeploy SQL Server Integration Services packages and projects to Azure SQL Database single database using the Azure Database Migration Service and Data Migration Assistant.
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: how-to
 ms.collection:
-- sql-migration-content
-ms.custom: sfi-image-nochange
+  - sql-migration-content
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Redeploy SSIS packages to Azure SQL Database with Azure Database Migration Service
@@ -25,6 +26,7 @@ If the version of SSIS you use is earlier than 2012, before redeploying your SSI
 > The Azure Database Migration Service (DMS) currently doesn't support the migration of a source SSISDB to Azure SQL Database, but you can redeploy your SSIS projects/packages using the following process.
 
 In this article, you learn how to:
+
 > [!div class="checklist"]
 > - Assess source SSIS projects/packages.
 > - Migrate SSIS projects/packages to Azure.
@@ -41,7 +43,7 @@ To complete these steps, you need:
 
 ## Assess source SSIS projects/packages
 
-Your SSIS projects/packages are assessed/validated as they are redeployed to the destination SSISDB hosted by Azure SQL Database.
+Your SSIS projects/packages are assessed/validated as they're redeployed to the destination SSISDB hosted by Azure SQL Database.
 
 ## Migrate SSIS projects/packages
 
@@ -88,7 +90,7 @@ To migrate SSIS projects/packages to Azure SQL Database, perform the following s
    1. Select **Browse** to specify the destination folder in SSISDB, and then select **Next**.
 
    > [!NOTE]  
-   > The **Next** button is enabled only after you've selected **Connect**.
+   > The **Next** button is enabled only after you select **Connect**.
 
 1. On the **Validate** page, view any errors/warnings, and then if necessary, modify your packages accordingly.
 
