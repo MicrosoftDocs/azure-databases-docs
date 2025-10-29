@@ -83,7 +83,7 @@ In addition to the [common features across all change feed modes](../change-feed
 
 * Metadata is provided to determine the change type, including whether a delete was due to a TTL expiration.
 
-* Change feed items come in the order of their modification time. Deletes from TTL expirations aren't guaranteed to appear in the feed immediately after the item expires. They appear when the item is purged from the container.
+* Change feed items come in the order of their modification time. Items written in the scope of a transactional batch, stored procedure, or bulk mode request have the same modification time, and changes within that scope may be delivered in any order. Deletes from TTL expirations aren't guaranteed to appear in the feed immediately after the item expires. They appear when the item is purged from the container.
 
 * All changes that occurred within the retention window for continuous backups on the account can be read. Attempting to read changes that occurred outside of the retention window results in an error. For example, if your container was created eight days ago and your continuous backup period retention period is seven days, then you can only read changes from the last seven days.
 

@@ -65,7 +65,7 @@ Change feed is available for partition key ranges of an Azure Cosmos DB containe
 
 ### Sort order of items in change feed
 
-Change feed items come in the order of their modification time. This sort order is guaranteed per partition key, and there's no guaranteed order across the partition key values. Items written in the scope of a transactional batch or stored procedure have the same modification time, and changes within that scope may be delivered in any order.
+Change feed items come in the order of their modification time. This sort order is guaranteed per partition key, and there's no guaranteed order across the partition key values. Items written in the scope of a transactional batch, stored procedure, or bulk mode request have the same modification time, and changes within that scope may be delivered in any order.
 
 > [!NOTE]
 > For [multi-region write](multi-region-writes.md) accounts, there are two timestamps:
