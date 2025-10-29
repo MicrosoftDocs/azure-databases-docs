@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 11/28/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Availability zone outage resiliency in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Many Azure regions have availability zones. Availability zones (AZs) are separated groups of datacenters within a region. Availability zones are close enough to have low-latency connections to other availability zones within their region. They're connected by a high-performance network with a round-trip latency of less than 2 milliseconds.
 

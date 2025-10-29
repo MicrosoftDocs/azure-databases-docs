@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 06/04/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Node DNS names in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 When an Azure Cosmos DB for PostgreSQL [cluster](./concepts-cluster.md) is provisioned, every node is assigned its own [fully qualified domain name (FQDN)](https://wikipedia.org/wiki/Fully_qualified_domain_name). This FQDN is used to connect to each node provided proper [network security](./concepts-security-overview.md) was set up to grant access. The FQDN is used in the Postgres connection string whether private or public access is used. 
 
