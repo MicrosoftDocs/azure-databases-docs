@@ -18,9 +18,6 @@ ms.custom:
 
 Running a Replicate changes Migration, with our offline scenario with "Enable Transactional Consistency" enables businesses to migrate their databases to Azure while the databases remain operational. In other words, migrations can be completed with minimum downtime for critical applications, limiting the impact on service level availability and inconvenience to their end customers.
 
-> [!NOTE]  
-> This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
-
 ## Current implementation
 
 You must run an offline migration scenario with "Enable Transactional Consistency" to get the bin log file and position to replicate the incoming changes. The DMS portal UI shows the binary log filename and position aligned to the time the locks were obtained on the source for the consistent snapshot. You can use this value in our replicate changes migration to stream the incoming changes.
@@ -41,11 +38,16 @@ The data changes are sent as "row" events, which contain data for individual row
 
 To complete the replicate changes migration successfully, ensure that the following prerequisites are in place:
 
-- Use the MySQL command line tool of your choice to determine whether **log_bin** is enabled on the source server. The Binlog isn't always turned on by default, so verify that it's enabled before starting the migration. To determine whether log_bin is enabled on the source server, run the command: **SHOW VARIABLES LIKE 'log_bin'**
-- Ensure that the user has **"REPLICATION_APPLIER"** or **"BINLOG_ADMIN"** permission on target server for applying the bin log.
-- Ensure that the user has **"REPLICATION SLAVE"** permission on the target server.
-- Ensure that the user has **"REPLICATION CLIENT"** and **"REPLICATION SLAVE"** permission on the source server for reading and applying the bin log.
-- Run an offline migration scenario with "**Enable Transactional Consistency"** to get the bin log file and position.
+- Use the MySQL command line tool of your choice to determine whether `log_bin` is enabled on the source server. The Binlog isn't always turned on by default, so verify that it's enabled before starting the migration. To determine whether log_bin is enabled on the source server, run the command: `SHOW VARIABLES LIKE 'log_bin'`
+
+- Ensure that the user has `REPLICATION_APPLIER` or `BINLOG_ADMIN` permission on target server for applying the bin log.
+
+- Ensure that the user has `REPLICATION REPLICA` permission on the target server.
+
+- Ensure that the user has `REPLICATION CLIENT` and `REPLICATION REPLICA` permission on the source server for reading and applying the bin log.
+
+- Run an offline migration scenario with **Enable Transactional Consistency** to get the bin log file and position.
+
 - If you're targeting a replicate changes migration, configure the [binlog_expire_logs_seconds](/azure/mysql/flexible-server/concepts-server-parameters#binlog_expire_logs_seconds) parameter on the source server to ensure that binlog files aren't purged before the replica commits the changes. We recommend at least two days, to begin with. After a successful cutover, the value can be reset.
 
 ## Limitations

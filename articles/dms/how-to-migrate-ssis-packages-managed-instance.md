@@ -1,16 +1,17 @@
 ---
-title: Migrate SSIS packages to SQL Managed Instance
+title: Migrate SSIS Packages to SQL Managed Instance
 titleSuffix: Azure Database Migration Service
 description: Learn how to migrate SQL Server Integration Services (SSIS) packages and projects to an Azure SQL Managed Instance using the Azure Database Migration Service or the Data Migration Assistant.
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: how-to
 ms.collection:
-- sql-migration-content
-ms.custom: sfi-image-nochange
+  - sql-migration-content
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Migrate SQL Server Integration Services packages to an Azure SQL Managed Instance
@@ -19,12 +20,13 @@ ms.custom: sfi-image-nochange
 
 If you use SQL Server Integration Services (SSIS) and want to migrate your SSIS projects/packages from the source SSISDB hosted by SQL Server to the destination SSISDB hosted by an Azure SQL Managed Instance, you can use Azure Database Migration Service.
 
-If the version of SSIS you use is earlier than 2012 or you use non-SSISDB package store types, before migrating your SSIS projects/packages, you need to convert them by using the Integration Services Project Conversion Wizard, which can also be launched from SSMS. For more information, see the article [Converting projects to the project deployment model](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert).
+If the version of SSIS you use is earlier than 2012 or you use non-SSISDB package store types, before migrating your SSIS projects/packages, you need to convert them by using the Integration Services Project Conversion Wizard, which can also be launched from SQL Server Management Studio (SSMS). For more information, see the article [Converting projects to the project deployment model](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#convert).
 
 > [!NOTE]  
 > Azure Database Migration Service (DMS) currently doesn't support Azure SQL Database as a target migration destination. To redeploy SSIS projects/packages to Azure SQL Database, see the article [Redeploy SSIS packages to Azure SQL Database with Azure Database Migration Service](how-to-migrate-ssis-packages.md).
 
 In this article, you learn how to:
+
 > [!div class="checklist"]
 > - Assess source SSIS projects/packages.
 > - Migrate SSIS projects/packages to Azure.
@@ -35,7 +37,7 @@ To complete these steps, you need:
 
 - To create a Microsoft Azure Virtual Network for the Azure Database Migration Service by using the Azure Resource Manager deployment model, which provides site-to-site connectivity to your on-premises source servers by using either [ExpressRoute](/azure/expressroute/expressroute-introduction) or [VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways). For more information, see the article [Network topologies for SQL Managed Instance migrations using Azure Database Migration Service]( https://aka.ms/dmsnetworkformi). For more information about creating a virtual network, see the [Virtual Network Documentation](/azure/virtual-network/), and especially the quickstart articles with step-by-step details.
 
-- To ensure that your virtual network Network Security Group rules don't block the outbound port 443 of ServiceTag for ServiceBus, Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+- To ensure that your virtual network Network Security Group (NSG) rules don't block the outbound port 443 of ServiceTag for ServiceBus, Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 
 - To configure your [Windows Firewall for source database engine access](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 
@@ -43,7 +45,7 @@ To complete these steps, you need:
 
 - If you're running multiple named SQL Server instances using dynamic ports, you might wish to enable the SQL Browser Service and allow access to UDP port 1434 through your firewalls so that the Azure Database Migration Service can connect to a named instance on your source server.
 
-- If you're using a firewall appliance in front of your source databases, you might need to add firewall rules to allow the Azure Database Migration Service to access the source database(s) for migration, as well as files via SMB port 445.
+- If you're using a firewall appliance in front of your source databases, you might need to add firewall rules to allow the Azure Database Migration Service to access the source databases for migration, and files via SMB port 445.
 
 - A SQL Managed Instance to host SSISDB. If you need to create one, follow the detail in the article [Create a Azure SQL Managed Instance](/azure/azure-sql/managed-instance/instance-create-quickstart).
 
@@ -89,8 +91,6 @@ Your SSIS projects/packages are assessed/validated as they're redeployed to the 
 
    For more information on how to create a virtual network in Azure portal, see the article [Create a virtual network using the Azure portal](/azure/virtual-network/quick-create-portal).
 
-   For additional detail, see the article [Network topologies for Azure SQL Managed Instance migrations using the Azure Database Migration Service](./resource-network-topologies.md).
-
 1. Select a pricing tier.
 
    For more information on costs and pricing tiers, see the [pricing page](https://aka.ms/dms-pricing).
@@ -126,7 +126,7 @@ After an instance of the service is created, locate it within the Azure portal, 
    When a trusted certificate isn't installed, SQL Server generates a self-signed certificate when the instance is started. This certificate is used to encrypt the credentials for client connections.
 
    > [!CAUTION]  
-   > TLS connections that are encrypted using a self-signed certificate doesn't provide strong security. They are susceptible to man-in-the-middle attacks. You shouldn't rely on TLS using self-signed certificates in a production environment or on servers that are connected to the internet.
+   > TLS connections that are encrypted using a self-signed certificate doesn't provide strong security. They're susceptible to man-in-the-middle attacks. You shouldn't rely on TLS using self-signed certificates in a production environment or on servers that are connected to the internet.
 
    :::image type="content" source="media/how-to-migrate-ssis-packages-mi/dms-source-details1.png" alt-text="Screenshot of Source Details." lightbox="media/how-to-migrate-ssis-packages-mi/dms-source-details1.png":::
 
@@ -144,7 +144,7 @@ After an instance of the service is created, locate it within the Azure portal, 
 
 1. On the **Migration summary** screen, in the **Activity name** text box, specify a name for the migration activity.
 
-1. For the **SSIS project(s) and environment(s) overwrite option**, specify whether to overwrite or ignore existing SSIS projects and environments.
+1. For the **SSIS projects and environments overwrite** option, specify whether to overwrite or ignore existing SSIS projects and environments.
 
    :::image type="content" source="media/how-to-migrate-ssis-packages-mi/dms-project-summary2.png" alt-text="Screenshot of Migration project summary." lightbox="media/how-to-migrate-ssis-packages-mi/dms-project-summary2.png":::
 
