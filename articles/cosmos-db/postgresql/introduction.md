@@ -16,6 +16,8 @@ recommendations: false
 
 [!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for PostgreSQL is a managed service for PostgreSQL extended
 with the [Citus open source](https://github.com/citusdata/citus) superpower of
 *distributed tables*. This superpower enables you to build highly scalable
