@@ -190,8 +190,6 @@ The response object is an array of items that represent each change. Different p
 
 * Continuous backups are required to use this change feed mode. Refer to the [limitations of using continuous backups](../continuous-backup-restore-introduction.md#current-limitations).
 
-* Reading changes on a container that existed before continuous backups were enabled on the account isn't supported.
-
 * The ability to start reading the change feed from the beginning or to select a start time based on a past time stamp isn't currently supported. You can either start from "now" or from a previous [lease](change-feed-processor.md#components-of-the-change-feed-processor) or [continuation token](change-feed-pull-model.md#save-continuation-tokens).
 
 * Receiving the previous version of items that were deleted or updated isn't currently available.
