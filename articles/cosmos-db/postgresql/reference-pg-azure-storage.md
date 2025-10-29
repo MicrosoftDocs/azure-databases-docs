@@ -6,7 +6,7 @@ author: AvijitkGupta
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: reference
-ms.date: 06/16/2023
+ms.date: 10/29/2025
 ---
 
 # pg_azure_storage extension
@@ -31,10 +31,10 @@ azure_storage.account_add
 ```
 ### Arguments
 #### account_name_p
-An Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
+An Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that's accessible from anywhere in the world over HTTPS.
 
 #### account_key_p
-Your Azure blob storage (ABS) access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible by the postgres superuser, azure_storage_admin and all roles granted those admin permissions. To see which storage accounts exist, use the function account_list.
+Your Azure blob storage (ABS) access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that's accessible by the postgres superuser, azure_storage_admin and all roles granted those admin permissions. To see which storage accounts exist, use the function account_list.
 
 ## azure_storage.account_remove
 Function allows revoking account access to storage account.
@@ -46,7 +46,7 @@ azure_storage.account_remove
 
 ### Arguments
 #### account_name_p
-Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
+Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that's accessible from anywhere in the world over HTTPS.
 
 ## azure_storage.account_user_add
 The function allows adding access for a role to a storage account.
@@ -59,7 +59,7 @@ azure_storage.account_user_add
 
 ### Arguments
 #### account_name_p
-An Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
+An Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that's accessible from anywhere in the world over HTTPS.
 
 #### user_p
 Role created by user visible on the cluster.
@@ -78,7 +78,7 @@ azure_storage.account_user_remove
 
 ### Arguments
 #### account_name_p
-An Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
+An Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that's accessible from anywhere in the world over HTTPS.
 
 #### user_p
 Role created by user visible on the cluster.
@@ -96,7 +96,7 @@ Returns TABLE;
 
 ### Arguments
 #### account_name
-Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
+Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that's accessible from anywhere in the world over HTTPS.
 
 #### allowed_users
 Lists the users having access to the Azure blob storage.
