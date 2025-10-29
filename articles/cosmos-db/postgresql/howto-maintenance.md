@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 04/07/2021
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Manage scheduled maintenance settings for Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 You can specify maintenance options for each cluster in your Azure subscription. Options include the maintenance schedule and notification settings for upcoming and finished maintenance events.
 
