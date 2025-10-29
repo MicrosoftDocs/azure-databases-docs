@@ -10,11 +10,13 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/24/2022
 #Customer intent: As an developer, I want to design a Azure Cosmos DB for PostgreSQL database so that my multi-tenant application runs efficiently for all tenants.
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Design a multi-tenant database using Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 In this tutorial, you use Azure Cosmos DB for PostgreSQL to learn how to:
 
