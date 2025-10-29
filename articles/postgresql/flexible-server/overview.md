@@ -12,8 +12,7 @@ ms.topic: overview
 
 # What is Azure Database for PostgreSQL?
 
-This article provides an overview and introduction to the core concepts of the Azure Database for PostgreSQL deployment model.
-Whether you're just starting out or looking to refresh your knowledge, this introductory video offers a comprehensive overview of Azure Database for PostgreSQL, helping you get acquainted with its key features and capabilities.
+This article provides an offers a comprehensive overview of Azure Database for PostgreSQL, helping you get acquainted with its key features and core concepts.
 
 Azure Database for PostgreSQL is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings. The service generally provides more flexibility and server configuration customizations based on user requirements. The architecture allows users to collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure Database for PostgreSQL flexible server instances also provides better cost optimization controls with the ability to stop/start your server and a burstable compute tier ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. Please refer to the [Supported versions of PostgreSQL in Azure Database for PostgreSQL](concepts-supported-versions.md) for details on the specific versions supported. The service is available in various [Azure regions](https://azure.microsoft.com/global-infrastructure/services/).
 
