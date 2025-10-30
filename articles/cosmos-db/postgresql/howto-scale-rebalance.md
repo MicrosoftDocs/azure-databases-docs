@@ -8,11 +8,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 01/30/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Rebalance shards in cluster in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 To take advantage of newly added nodes, rebalance distributed table
 [shards](concepts-nodes.md#shards). Rebalancing moves shards from existing nodes to the new ones. Azure Cosmos DB for PostgreSQL offers

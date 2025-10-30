@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: reference
 ms.date: 10/29/2025
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # How to review tenant statistics using multi-tenant monitoring in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 > [!IMPORTANT]
 > Applicable to Citus 11.3 & newer versions

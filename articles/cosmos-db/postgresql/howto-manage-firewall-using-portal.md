@@ -8,10 +8,13 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 09/24/2022
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ PostgreSQL
 ---
+
 # Manage public access for Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Server-level firewall rules can be used to manage [public
 access](concepts-firewall-rules.md) to a

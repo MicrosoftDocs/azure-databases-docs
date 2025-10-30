@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 09/24/2022
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Enable private access in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 [Private access](concepts-private-access.md) allows resources in an Azure
 virtual network to connect securely and privately to nodes in a
