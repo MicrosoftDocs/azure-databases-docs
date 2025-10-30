@@ -8,7 +8,7 @@ ms.reviewer: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 08/23/2025
+ms.date: 10/27/2025
 ms.custom:
   - devx-track-rust
   - build-2025
@@ -21,7 +21,7 @@ appliesto:
 
 In this article, you learn how to configure [Microsoft Entra ID authentication](./entra-authentication.md) for an Azure Cosmos DB for MongoDB vCore. The steps in this guide configure an existing Azure Cosmos DB for MongoDB vCore cluster to use Microsoft Entra ID authentication with your human identity (currently signed-in account) or a Microsoft Entra ID security principal such as managed identity. Microsoft Entra ID authentication enables secure and seamless access to your database by using your organization's existing identities. This guide goes through the steps to set up authentication, register users or service principals, and validate the configuration.
 
-When you create an Azure Cosmos DB for MongoDB vCore cluster, cluster is configured to use native authentication by default. To enable authentication using Entra ID, [turn on the Entra ID authentication method](#manage-cluster-authentication-methods) and [add Entra ID users](#manage-entra-id-users-on-the-cluster) to the cluster.
+When you create an Azure Cosmos DB for MongoDB vCore cluster, cluster is configured to use native authentication by default. To enable authentication using Entra ID, [turn on the Entra ID authentication method](#manage-cluster-authentication-methods) and [add Entra ID users](#manage-administrative-entra-id-users-on-the-cluster) to the cluster.
 
 ## Prerequisites
 
@@ -99,8 +99,45 @@ When you need to get a friendly name using unique identifier, follow these steps
 
 1. Note the value of the `mail` and `displayName` properties.
 
+### Get unique identifier for an Entra ID service principal
+
+To use a managed identity in your application or to log in using Entra ID credentials in tools like the MongoDB shell or Compass, you need to retrieve the `principalID` and the `clientID` of the managed identity.
+
+1. Get the details for the managed identity using a `GET` REST API call. Replace variables that start with `$` sign with the actual values.
+
+    ```azurecli-interactive
+    az rest --method "GET" --url "https://management.azure.com/subscriptions/$subscription-id/resourcegroups/$resource-group-name/providers/microsoft.managedidentity/userassignedidentities/$managed-identity-name?api-version=2024-11-30" 
+    ```
+
+1. The command outputs a JSON response containing various fields.
+
+    ```json
+    {
+      "location": "eastus",
+      "name": "managed-identity-name",
+      "properties": {
+        "clientId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        "isolationScope": "None",
+        "principalId": "cccccccc-0000-1111-2222-bbbbbbbbbbbb",
+        "tenantId": "dddddddd-0000-1111-2222-bbbbbbbbbbbb"
+      },
+      "tags": {},
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+    }
+    ```
+
+1. Note the `clientID` and `principalId` values in the output.
+    1. Use `principalId` to add the managed identity to your cluster as an Entra ID entity.
+    1. Use `clientID` to connect to the cluster via MongoDB Shell or Compass or in your application code using Entra ID authentication.
+
 ## Manage cluster authentication methods 
-Use the following steps to enable Microsoft Entra ID authentication method on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have *native DocumentDB authentication only* or *native DocumentDB and Microsoft Entra ID* authentication methods enabled on the cluster.  
+Use the following steps to change authentication methods on your existing cluster. Then, add an Entra ID user mapped to your signed-in identity to the cluster. You can have the following authentication methods enabled on your cluster:
+- Native DocumentDB authentication method only
+- Native DocumentDB and Microsoft Entra ID authentication methods
+- Microsoft Entra ID authentication method
+
+> [!IMPORTANT]
+> When cluster is created, you have to have native DocumentDB authentication method enabled and specify native administrative user credentials. You can disable native DocumentDB authentication method once new cluster finishes provisioning.  
 
 ### [Azure portal](#tab/portal)
 
@@ -113,6 +150,10 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
 1. Select **Save** to confirm the authentication method changes. 
 
     :::image type="content" source="media/how-to-configure-entra-authentication/save-authentication-method-change.png" alt-text="Screenshot that shows the location of Save button for confirmation of the authentication method changes on an existing cluster." lightbox="media/how-to-configure-entra-authentication/save-authentication-method-change.png":::
+
+> [!NOTE]
+> If you need to *disable* native DocumentDB authentication method on your cluster, use Azure CLI or REST API calls.  
+
 
 ### [Azure CLI](#tab/cli)
 
@@ -138,6 +179,17 @@ Use the following steps to enable Microsoft Entra ID authentication method on yo
         --latest-include-preview
     ```
 
+1. To disable native DocumentDB authentication method and enable Microsoft Entra ID on the cluster, update the existing cluster with an HTTP `PATCH` operation by adding only the `MicrosoftEntraID` value to `allowedModes` in the `authConfig` property.
+
+    ```azurecli-interactive
+    az resource patch \
+        --resource-group "<resource-group-name>" \
+        --name "<cluster-name>" \
+        --resource-type "Microsoft.DocumentDB/mongoClusters" \
+        --properties "{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\"]}}" \
+        --latest-include-preview
+    ```
+
 ### [REST APIs](#tab/rest-apis)
 
 You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI environment.
@@ -147,7 +199,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
      ```azurecli-interactive
      az rest \
          --method "PUT" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
          --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\",\"NativeAuth\"]}}}"
      ```
 
@@ -156,8 +208,17 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
      ```azurecli-interactive
      az rest \
          --method "PUT" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
          --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":\"NativeAuth\"}}}"
+     ```
+
+1.  Use this command to remove native DocumentDB authentication method and add Microsoft Entra ID authentication method to the cluster:
+    
+     ```azurecli-interactive
+     az rest \
+         --method "PUT" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
+         --body "{\"location\":\"<cluster-region>\",\"properties\":{\"authConfig\":{\"allowedModes\":[\"MicrosoftEntraID\"]}}}"
      ```
 
     > [!TIP]
@@ -221,7 +282,7 @@ Follow these steps to see authentication methods currently enabled on the cluste
      ```azurecli-interactive
      az rest \
          --method "GET" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" 
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" 
      ```
 1. Observe the output. If Microsoft Entra ID authentication isn't configured, the output includes only the `NativeAuth` value in the `allowedModes` array.
 
@@ -248,9 +309,9 @@ Follow these steps to see authentication methods currently enabled on the cluste
 
 ---
 
-## Manage Entra ID users on the cluster
+## Manage administrative Entra ID users on the cluster
 
-Follow these steps to add or remove [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) to cluster. 
+Follow these steps to **add** [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) to cluster or **remove** administrative Entra ID users from it. 
 
 ### [Azure portal](#tab/portal)
 
@@ -307,7 +368,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
     > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
     > ```
     >
-    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
+    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `servicePrincipal`.
      
 1. To remove administrative Entra ID users, use `az resource delete`. This command deletes resource of type `Microsoft.DocumentDB/mongoClusters/users`. Compose the name of the resource by concatenating the **name of the parent cluster** and the **principal ID** of your identity.
  
@@ -328,7 +389,7 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
      ```azurecli-interactive
      az rest \
          --method "PUT" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-07-01-preview" \
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-09-01" \
          --body "{\"location\":\"<cluster-region>\",\"properties\":{\"identityProvider\":{\"type\":\"MicrosoftEntraID\",\"properties\":{\"principalType\":\"User\"}},\"roles\":[{\"db\":\"admin\",\"role\":\"root\"}]}}"
      ```
 
@@ -339,23 +400,24 @@ Follow these steps to add or remove [administrative Entra ID users](./entra-auth
     > "example-cluster/users/aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
     > ```
     >
-    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `ServicePrincipal`.
+    > Also, if you're registering a service principal, like a managed identity, you would replace the `identityProvider.properties.principalType` property's value with `servicePrincipal`.
  
 1.  To remove administrative Entra ID users from the cluster, use DELETE Azure REST API call with this `az rest` command:
     
      ```azurecli-interactive
      az rest \
          --method "DELETE" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-07-01-preview" 
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users/<principal-id>?api-version=2025-09-01" 
      ```
     
 
 ---
 
+### View administrative Entra ID users on the cluster
 
-## View Entra ID users on the cluster
+When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there's always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed. All administrative Entra ID users are replicated to the database. 
 
-When you view [administrative users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) on a cluster, there's always one native built-in administrative user created during cluster provisioning and all administrative Entra ID users added to the cluster listed.
+Non-administrative Entra ID users are created in the database. When you list non-administrative users in the database, the list contains all administrative and non-administrative Entra ID users and all [secondary (non-administrative) native DocumentDB users](./secondary-users.md).
 
 Follow these steps to see all [administrative Entra ID users](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) added to cluster. 
 
@@ -382,7 +444,7 @@ Use commands on the **REST APIs** tab to list administrative users on the cluste
      ```azurecli-interactive
      az rest \
          --method "GET" \
-         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-07-01-preview" 
+         --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-09-01" 
      ```
 1. Observe the output. The output includes an array of administrative user accounts on the cluster. This array has one built-in native administrative users and all administrative Entra ID user and service principals added to the cluster.
 
@@ -405,27 +467,66 @@ Use commands on the **REST APIs** tab to list administrative users on the cluste
       "type": "Microsoft.DocumentDB/mongoClusters/users"
     }
     ```
-
-1. If Microsoft Entra ID authentication is enabled on the cluster, the output includes both the `NativeAuth` and `MicrosoftEntraID` values in the `allowedModes` array.
-
-    ```output
-    {
-      "authConfig": {
-        "allowedModes": [
-            "NativeAuth",
-            "MicrosotEntraID"
-              ] }
-        }
-    ```
-
-
 ---
-
 
 > [!NOTE]
 > An Azure Cosmos DB for MongoDB vCore cluster is created with one built-in native DocumentDB user. You can [add more native DocumentDB users](./secondary-users.md) after cluster provisioning is completed. Microsoft Entra ID users added to the cluster are going to be in addition to native DocumentDB users defined on the same cluster.
 
+## Manage non-administrative Entra ID users on the cluster
 
+To perform management operations for non-administrative Entra ID security principals such as users, you need to log in to the cluster with an [administrative Entra ID user](#manage-administrative-entra-id-users-on-the-cluster). You can do it from your application code or from the tools like MongoDB shell and Compass.
+
+All management commands for non-administrative users are supported for `servicePrincipal` and `user` principal types. 
+
+1. Log in to the cluster using an administrative Entra ID user in [MongoDB shell](#connect-to-the-cluster-using-entra-id-in-mongodb-shell) or [MongoDB Compass](#connect-to-the-cluster-using-entra-id-in-mongodb-compass).
+1. To **add** a non-administrative Entra ID user with **read-write** permissions on the cluster, use the following `createUser` command:
+
+    ```powershell
+    db.runCommand(
+        {
+            createUser:"user's-Entra-ID-identifier",
+            roles : [
+                { role:"clusterAdmin",db:"admin" },
+                { role:"readWriteAnyDatabase", db:"admin" }
+            ],
+		    customData:{"IdentityProvider":{"type":"MicrosoftEntraID", "properties":{"principalType":"user"}}}
+        }
+    )
+    ```
+1. To **add** a non-administrative Entra ID user with **read-only** permissions on the cluster, use the following `createUser` command:
+
+    ```powershell
+    db.runCommand(
+        {
+            createUser:"user's-Entra-ID-identifier",
+            roles : [
+                { role:"readAnyDatabase", db:"admin" }
+            ],
+		    customData:{"IdentityProvider":{"type":"MicrosoftEntraID", "properties":{"principalType":"user"}}}
+        }
+    )
+    ```
+1. To remove a non-administrative Entra ID user from the cluster, use `dropUser` command:
+
+    ```powershell
+    db.runCommand(
+        {
+            dropUser:"user's-Entra-ID-identifier"
+        }
+    )
+    ```
+1. To list all Entra ID and native DocumentDB users on the cluster, use `userInfo` command:
+
+    ```powershell
+    db.runCommand(
+        {
+            usersInfo:1
+        }
+    )
+    ```
+    > [!NOTE]
+    > All Entra ID and native DocumentDB administrative users are replicated to the database. Because of this replication, the list of users include all administrative and non-administrative Entra ID and native DocumentDB users on the cluster.
+    
 ## Connect to the cluster
 
 You can connect to the cluster using either a connection URI or a custom settings object from the driver for your preferred language. In either option, the **scheme** must be set to `mongodb+srv` to connect to the cluster. The **host** is at either the `*.global.mongocluster.cosmos.azure.com` or `*.mongocluster.cosmos.azure.com` domain depending on whether you're using [the current cluster or global read-write endpoint](./how-to-cluster-replica.md#use-connection-strings). The `+srv` scheme and the `*.global.*` host ensures that your client is dynamically connected to the appropriate writable cluster in a multi-cluster configuration even if [a region swap operation occurs](./cross-region-replication.md#replica-cluster-promotion). In a single-cluster configuration, you can use either connection string indiscriminately.
@@ -562,6 +663,57 @@ internal sealed class AzureIdentityTokenHandler(
 }
 ```
 ---
+
+## Use Entra ID with Visual Studio Code, MongoDB shell, and MongoDB Compass
+
+You can use Entra ID authentication in various tools including [Visual Studio Code with DocumentDB extension](../../visual-studio-code-extension.md?pivots=api-mongodb), MongoDB shell, and MongoDB Compass tools. In Visual Studio Code, you can authenticate to your cluster using the current user logged in to Visual Studio Code.
+
+An Azure managed identity is used to login using Entra ID to [MonogDB shell and Compass](https://www.mongodb.com/try/download/shell). Assign managed identity to an Azure virtual machine (VM) and log in to the cluster from that VM using MongoDB shell or Compass.
+One of the common tasks performed in the tools with Entra ID authentication is management of the secondary Entra ID users on the cluster. [Administrative Entra ID user](./entra-authentication.md#administrative-and-nonadministrative-access-for-microsoft-entra-id-principals) needs to be authenticated in MongoDB shell, Compass, or other MongoDB management tool in order to manage secondary Entra ID users on the cluster.
+
+### Connect to the cluster using Entra ID in Visual Studio Code
+
+To connect to an Azure Cosmos DB for MongoDB vCore cluster using Visual Studio Code with DocumentDB extension and Entra ID authentication, follow [this guidance](https://devblogs.microsoft.com/cosmosdb/secure-your-connections-with-entra-id-support-in-the-documentdb-vs-code-extension/).
+
+> [!NOTE]
+> When you authenticate to an Azure Cosmos DB for MongoDB vCore cluster using Entra ID in Visual Studio Code with DocumentDB extension, `shell` functionality isn't supported. If you need to use MongoDB shell with Entra ID authentication, follow [these steps](#connect-to-the-cluster-using-entra-id-in-mongodb-shell). 
+
+### Connect to the cluster using Entra ID in MongoDB shell
+
+1. Create a [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/manage-user-assigned-managed-identities-azure-portal#create-a-user-assigned-managed-identity).
+1. [Assign managed identity to a virtual machine](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities?pivots=qs-configure-portal-windows-vm#user-assigned-managed-identity).
+1. [Add managed identity to the cluster](#manage-administrative-entra-id-users-on-the-cluster) as an Entra ID user using [the managed identity metadata](#get-unique-identifier-for-an-entra-id-service-principal).
+1. To connect to the cluster, use the following connection string in MongoDB shell on the VM:
+
+    ```output
+    mongosh "mongodb+srv://<client-id>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&authMechanismProperties=ENVIRONMENT:azure,TOKEN_RESOURCE:https://ossrdbms-aad.database.windows.net" --oidcTrustedEndpoint    
+    ```
+    where `clientID` is [the managed identity's client ID](#get-unique-identifier-for-an-entra-id-service-principal).
+
+### Connect to the cluster using Entra ID in MongoDB Compass
+
+Use the following steps to use Entra ID to authenticate to the cluster in MongoDB Compass.
+
+1. Create a [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/manage-user-assigned-managed-identities-azure-portal#create-a-user-assigned-managed-identity).
+1. [Assign managed identity to a virtual machine](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities?pivots=qs-configure-portal-windows-vm#user-assigned-managed-identity).
+1. [Add managed identity to the cluster](#manage-administrative-entra-id-users-on-the-cluster) as an Entra ID user using [the managed identity metadata](#get-unique-identifier-for-an-entra-id-service-principal).
+1. Run [MongoDB Compass](https://www.mongodb.com/try/download/compass) on the VM.
+1. Select `+` sign on the left side next to **Connections** to add a new connection.
+1. Make sure **Edit Connection String** toggle is enabled in the **New Connection** window.
+1. Paste the following connection string into the **URI** input box.
+
+    ```output
+    mongodb+srv://<client-id>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&authMechanismProperties=ENVIRONMENT:azure,TOKEN_RESOURCE:https://ossrdbms-aad.database.windows.net
+    ```
+    where `clientID` is [the managed identity's client ID](#get-unique-identifier-for-an-entra-id-service-principal).
+
+1. Open **Advanced Connection Options**.
+1. On the **General** tab, make sure `mongodb+srv` is selected under **Connection String Scheme**.
+1. Go to the **Authentication** tab. 
+1. Make sure **OIDC** is selected.
+1. Open **OIDC Options**.
+1. Set **Consider Target Endpoint Trusted** option.
+1. Select **Save & Connect**.
 
 ## Related content
 

@@ -73,6 +73,9 @@ Afterward, you define the compute instance name or unique identifier by using `W
 
 Calling `Build` gives you the processor instance that you can start by calling `StartAsync`.
 
+> [!IMPORTANT]
+> **Avoid asynchronous processing in delegate methods**: When using asynchronous APIs within your `handleChanges()` delegate method, be aware that the change feed processor may checkpoint the lease before all asynchronous operations complete. This can lead to missed events if the application experiences issues during recovery. Consider using synchronous processing or implement proper completion tracking before allowing the delegate to return.
+
 >[!NOTE]
 > The preceding code snippets are taken from samples in GitHub. You can get the sample for [latest version mode](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed) or [all versions and deletes mode](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeedAllVersionsAndDeletes).
 
@@ -95,6 +98,8 @@ The change feed processor is resilient to user code errors. If your delegate imp
 To prevent your change feed processor from getting *stuck* continuously retrying the same batch of changes, you should add logic in your delegate code to write documents, upon exception, to an errored-message queue. This design ensures that you can keep track of unprocessed changes while still being able to continue to process future changes. The errored-message queue might be another Azure Cosmos DB container. The exact data store doesn't matter. You simply want the unprocessed changes to be persisted.
 
 You also can use the [change feed estimator](how-to-use-change-feed-estimator.md) to monitor the progress of your change feed processor instances as they read the change feed, or you can use [life cycle notifications](#life-cycle-notifications) to detect underlying failures.
+
+Ensure your client network request timeout is longer than the server-side timeout to prevent timeout mismatches that can lead to processing stalls. The default server-side timeout is 5 seconds. Monitor for timeout-related errors and adjust configurations accordingly.
 
 ## Life cycle notifications
 
@@ -174,6 +179,9 @@ In either change feed mode, you can assign it to `changeFeedProcessorInstance` a
 
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java?name=StartChangeFeedProcessor)]
 
+> [!IMPORTANT]
+> **Avoid asynchronous processing in delegate methods**: When using asynchronous APIs within your `handleChanges()` delegate method, be aware that the change feed processor may checkpoint the lease before all asynchronous operations complete. This can lead to missed events if the application experiences issues during recovery. Consider using synchronous processing or implement proper completion tracking before allowing the delegate to return.
+
 >[!NOTE]
 > The preceding code snippets are taken from samples in GitHub. You can get the sample for [latest version mode](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java) or [all versions and deletes mode](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessorForAllVersionsAndDeletesMode.java).
 
@@ -196,6 +204,8 @@ The change feed processor is resilient to user code errors. If your delegate imp
 To prevent your change feed processor from getting "stuck" continuously retrying the same batch of changes, you should add logic in your delegate code to write documents, upon exception, to an errored-message. This design ensures that you can keep track of unprocessed changes while still being able to continue to process future changes. The errored-message might be another Azure Cosmos DB container. The exact data store doesn't matter. You simply want the unprocessed changes to be persisted.
 
 You also can use the [change feed estimator](how-to-use-change-feed-estimator.md) to monitor the progress of your change feed processor instances as they read the change feed.
+
+Ensure your client network request timeout is longer than the server-side timeout to prevent timeout mismatches that can lead to processing stalls. The default server-side timeout is 5 seconds. Monitor for timeout-related errors and adjust configurations accordingly.
 
 ## Deployment unit
 

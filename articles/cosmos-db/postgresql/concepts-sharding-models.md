@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 09/08/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Sharding models
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Sharding is a technique used in database systems and distributed computing to horizontally partition data across multiple servers or nodes. It involves breaking up a large database or dataset into smaller, more manageable parts called Shards. A shard contains a subset of the data, and together shards form the complete dataset.
 

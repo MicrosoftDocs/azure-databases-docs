@@ -42,7 +42,7 @@ Azure Database for PostgreSQL offers a baseline throughput of 125 MB/s for disks
 
 High availability is now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. This capability is initially available in the following regions.
 
-*Canada Central, Central US, East Asia,  East US 2*
+*Central US, East Asia,  East US 2*
 
 
 #### Enable premium SSD v2 high availability preview
@@ -72,11 +72,13 @@ High availability is an opt-in feature that can be enabled at the subscription l
 
 #### Premium SSD v2 - Limitations during preview
 
-- [Read replicas](concepts-read-replicas.md), [geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](concepts-backup-restore.md) or storage auto grow  features aren't supported for Premium SSD v2.
+- [Geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](concepts-backup-restore.md) or storage auto grow  features aren't supported for Premium SSD v2.
+  
+- Please wait until your first backup becomes available before configuring in-region replicas, as this process depends on disk snapshots. This limitation does not apply to cross-region replicas, which use pg_basebackups instead.
 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
-- Premium SSD v2 High availability can only be configured for servers created on or after July 1, 2025. Currently, SSD v2 High availability is supported in Canada Central, Central US,  East Asia, and East US 2 regions.
+- Premium SSD v2 High availability can only be configured for servers created on or after July 1, 2025. Currently, SSD v2 High availability is supported in Central US,  East Asia, and East US 2 regions.
   
 -  Premium SSD v2 High availability can only be configured for servers created with PG version 16.
   

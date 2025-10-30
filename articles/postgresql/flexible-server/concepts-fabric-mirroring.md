@@ -13,7 +13,7 @@ ms.topic: concept-article
 
 # Azure Database for PostgreSQL Mirroring in Microsoft Fabric
 
-[Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for PostgreSQL flexible server estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for PostgreSQL flexible server directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
+[Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for PostgreSQL flexible server estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for PostgreSQL directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
 
 ## Architecture
 
@@ -205,4 +205,4 @@ The mirroring function for Fabric mirroring in Azure Database for PostgreSQL all
 
 - [System assigned managed identity](how-to-configure-managed-identities.md)
 - [Firewall rules in Azure Database for PostgreSQL](concepts-firewall-rules.md)
-- [Networking overview for Azure Database for PostgreSQL flexible server instances with public access](concepts-networking-public.md)
+- [Networking overview for Azure Database for PostgreSQL instances with public access](concepts-networking-public.md)

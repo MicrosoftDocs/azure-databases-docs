@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 01/30/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Burstable compute in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Burstable compute on a single node cluster is ideal for workloads like
 development environments or small databases that don't need the full

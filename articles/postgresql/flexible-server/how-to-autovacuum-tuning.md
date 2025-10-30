@@ -1,6 +1,6 @@
 ---
 title: Autovacuum Tuning
-description: Troubleshooting guide for autovacuum in Azure Database for PostgreSQL flexible server.
+description: Troubleshooting guide for autovacuum in an Azure Database for PostgreSQL flexible server instance.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Autovacuum tuning in Azure Database for PostgreSQL
 
-This article provides an overview of the autovacuum feature for [Azure Database for PostgreSQL flexible server](overview.md) and the feature troubleshooting guides that are available to monitor the database bloat, autovacuum blockers. It also provides information around how far the database is from emergency or wraparound situation.
+This article provides an overview of the autovacuum feature for [Azure Database for PostgreSQL](overview.md) and the feature troubleshooting guides that are available to monitor the database bloat, autovacuum blockers. It also provides information around how far the database is from emergency or wraparound situation.
 
 ## What is autovacuum
 
@@ -54,7 +54,7 @@ That means in one-second autovacuum can do:
 
 ## Monitor autovacuum
 
-Azure Database for PostgreSQL flexible server provides following metrics for monitoring autovacuum.
+Azure Database for PostgreSQL provides following metrics for monitoring autovacuum.
 
 [!INCLUDE [Autovacuum Metrics](includes/autovacuum-metrics-table.md)]
 
@@ -179,7 +179,7 @@ Continuously running autovacuum might affect CPU and `IO` utilization on the ser
 
 Autovacuum daemon uses `autovacuum_work_mem` that is by default set to `-1` meaning `autovacuum_work_mem` would have the same value as the parameter `maintenance_work_mem`. This document assumes `autovacuum_work_mem` is set to `-1` and `maintenance_work_mem` is used by the autovacuum daemon.
 
-If `maintenance_work_mem` is low, it might be increased to up to 2 GB on Azure Database for PostgreSQL flexible server. A general rule of thumb is to allocate 50 MB to `maintenance_work_mem` for every 1 GB of RAM.
+If `maintenance_work_mem` is low, it might be increased to up to 2 GB on an Azure Database for PostgreSQL flexible server instance. A general rule of thumb is to allocate 50 MB to `maintenance_work_mem` for every 1 GB of RAM.
 
 #### Large number of databases
 
@@ -312,7 +312,7 @@ In versions of PostgreSQL <= 13, autovacuum doesn't run on tables with an insert
 
 Using the **pg_cron** extension, a cron job can be set up to schedule a periodic vacuum analyze on the table. The frequency of the cron job depends on the workload.
 
-For guidance, see [special considerations about using pg_cron in Azure Database for PostgreSQL flexible server](../extensions/concepts-extensions-considerations.md#pg_cron).
+For guidance, see [special considerations about using pg_cron in Azure Database for PostgreSQL](../extensions/concepts-extensions-considerations.md#pg_cron).
 
 ##### Postgres 13 and higher versions
 
@@ -320,13 +320,13 @@ Autovacuum runs on tables with an insert-only workload. Two new server parameter
 
 ## Troubleshooting guides
 
-Using the feature troubleshooting guides that is available on the Azure Database for PostgreSQL flexible server portal it's possible to monitor bloat at database or individual schema level along with identifying potential blockers to autovacuum process. Two troubleshooting guides are available first one is autovacuum monitoring that can be used to monitor bloat at database or individual schema level. The second troubleshooting guide is autovacuum blockers and wraparound, which helps to identify potential autovacuum blockers. It also provides information on how far the databases on the server are from wraparound or emergency situation. The troubleshooting guides also share recommendations to mitigate potential issues. How to set up the troubleshooting guides to use them follow [setup troubleshooting guides](how-to-troubleshooting-guides.md).
+Using the feature troubleshooting guides that is available on the Azure Database for PostgreSQL flexible server instance portal it's possible to monitor bloat at database or individual schema level along with identifying potential blockers to autovacuum process. Two troubleshooting guides are available first one is autovacuum monitoring that can be used to monitor bloat at database or individual schema level. The second troubleshooting guide is autovacuum blockers and wraparound, which helps to identify potential autovacuum blockers. It also provides information on how far the databases on the server are from wraparound or emergency situation. The troubleshooting guides also share recommendations to mitigate potential issues. How to set up the troubleshooting guides to use them follow [setup troubleshooting guides](how-to-troubleshooting-guides.md).
 
 ### Terminating autovacuum process - pg_signal_autovacuum_worker role
 
 Autovacuum is an important background process as it helps with efficient storage and performance maintenance in the database. In the normal autovacuum process, it cancels itself after the `deadlock_timeout`. If a user is executing DDL statement on a table, a user might have to wait until the `deadlock_timeout` interval. Autovacuum doesn't allow executing reads/writes on the table requested by different connection requests, adding to latency in the transaction.
 
-We introduced a new role `pg_signal_autovacuum_worker` from PostgreSQL, which allows nonsuperuser members to terminate an ongoing autovacuum task. The new role helps users to get secure and controlled access to the autovacuum process. Nonsuper users can cancel the autovacuum process once they're granted as the `pg_signal_autovacuum_worker` role by using `pg_terminate_backend` command. The role `pg_signal_autovacuum_worker` is backported to Azure Database for PostgreSQL flexible Server in PostgreSQL versions 15 and higher.
+We introduced a new role `pg_signal_autovacuum_worker` from PostgreSQL, which allows nonsuperuser members to terminate an ongoing autovacuum task. The new role helps users to get secure and controlled access to the autovacuum process. Nonsuper users can cancel the autovacuum process once they're granted as the `pg_signal_autovacuum_worker` role by using `pg_terminate_backend` command. The role `pg_signal_autovacuum_worker` is backported to Azure Database for PostgreSQL in PostgreSQL versions 15 and higher.
 
 > [!NOTE]  
 > We don't recommend killing any ongoing autovacuum process because terminating autovacuum process might lead to table and databases bloat, which can further lead to performances regressions. However, in cases where there's a business-critical requirement involving the scheduled execution of a DDL statement that coincides with the autovacuum process, we can allow non-superusers to terminate the autovacuum in a controlled and secure manner using `pg_signal_autovacuum_worker role`.
@@ -343,9 +343,9 @@ The recommendations are:
 
 ## Related content
 
-- [Full vacuum using pg_repack in Azure Database for PostgreSQL flexible server](how-to-perform-fullvacuum-pg-repack.md)
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md)
-- [Troubleshoot high memory utilization in Azure Database for PostgreSQL flexible server](how-to-high-memory-utilization.md)
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md)
-- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server](how-to-identify-slow-queries.md)
-- [Server parameters in Azure Database for PostgreSQL flexible server](concepts-server-parameters.md)
+- [Full vacuum using pg_repack in Azure Database for PostgreSQL](how-to-perform-fullvacuum-pg-repack.md)
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md)
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md)
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md)
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md)
+- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md)

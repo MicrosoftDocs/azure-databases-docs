@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 10/01/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Table colocation in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Colocation means storing related information together on the same nodes. Queries can go fast when all the necessary data is available without any network traffic. Colocating related data on different nodes allows queries to run efficiently in parallel on each node.
 

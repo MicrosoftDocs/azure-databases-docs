@@ -23,7 +23,7 @@ In this tutorial, you set up and deploy a Spring Boot application that exposes R
 
 ## Prerequisites
 
-- An Azure account with an active subscription. Create a [free account](https://azure.microsoft.com/free/) if you don't have an Azure subscription.
+- An Azure account with an active subscription. Create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) if you don't have an Azure subscription.
 - [Java Development Kit (JDK) 8](/java/openjdk/download#openjdk-8). Point your `JAVA_HOME` environment variable to the path where the JDK is installed.
 - [Azure CLI](/cli/azure/install-azure-cli) to create Azure services.
 - [Docker](https://docs.docker.com/engine/install/) to manage images and containers.

@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Create a copy activity in Microsoft Fabric Data Factory
 
-The copy activity in Microsoft Fabric Data Factory can help you connect to your Azure Database for PostgreSQL flexible server to perform data movement and transformation activities.
+The copy activity in Microsoft Fabric Data Factory can help you connect to your Azure Database for PostgreSQL flexible server instance to perform data movement and transformation activities.
 
 The copy activity supports *copy command*, *bulk insert*, and *upsert* as write methods. To learn more, see [Configure Azure Database for PostgreSQL in a copy activity](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity).
 
@@ -20,7 +20,7 @@ This article has step-by-step instructions on how to create a copy activity.
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server. To learn more, go to [Create an Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
 ## Create a copy activity

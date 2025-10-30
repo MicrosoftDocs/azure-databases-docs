@@ -20,7 +20,7 @@ Azure Database for MySQL is a managed service for running, managing, and scaling
 
 ## Prerequisites
 
-- [Azure subscription](https://azure.microsoft.com/free/)
+- [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 - Access to the Azure portal
 - Basic knowledge of Azure Database for MySQL Flexible Server deployment options and configurations
 
@@ -56,7 +56,7 @@ Complete these steps to create an Azure Database for MySQL Flexible Server:
    | **Workload type** | Development | For production workload, you can select **Small/Medium-size** or **Large-size** depending on [max_connections](concepts-server-parameters.md#max_connections) requirements |
    | **Compute + storage** | **Burstable**, **Standard_B1ms**, **10 GiB**, **100 iops**, **7 days** | The compute, storage, input/output operations per second (IOPS), and backup configurations for your new server. On the **Configure server** pane, the default values for **Compute tier**, **Compute size**, **Storage size**, **iops**, and **Retention period** (for backup) are **Burstable**, **Standard_B1ms**, **10 GiB**, **100 iops**, and **7 days**. You can keep the default values or modify these values. For faster data loads during migration, we recommend increasing IOPS to the maximum size supported for the compute size you selected. Later, scale it back to minimize cost. To save the compute and storage selection, select **Save** to continue with the configuration. |
    | **Availability zone** | No preference | If your application client is provisioned in a specific availability zone, you can set your Azure Database for MySQL Flexible Server to the same availability zone to colocate the application and reduce network latency. |
-   | **High availability** | Cleared | For production servers, choose between [zone-redundant high availability](concepts-high-availability.md#zone-redundant-high-availability-ha-architecture) and [same-zone high availability](concepts-high-availability.md#same-zone-high-availability-ha-architecture). We recommend high availability for business continuity and protection against virtual machine (VM) failure. |
+   | **High availability** | Cleared | For production servers, choose between [zone-redundant high availability](concepts-high-availability.md#zone-redundant-high-availability-ha-architecture) and [Local-redundant high availability](concepts-high-availability.md#local-redundant-high-availability-ha-architecture). We recommend high availability for business continuity and protection against virtual machine (VM) failure. |
    | **Authentication method** | **MySQL and Microsoft Entra authentication** | Select the authentication methods you want to support for accessing this MySQL server. |
    | **Admin username** | **mydemouser** | Your sign-in account is to be used when you connect to the server. The admin username can't be **azure_superuser**, **admin**, **administrator**, **root**, **guest**, **sa**, or **public**. The maximum number of characters that are allowed is 32. |
    | **Password** | Your password | A new password for the server admin account. It must contain between 8 and 128 characters. It also must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (`!`, `$`, `#`, `%`, and so on). |

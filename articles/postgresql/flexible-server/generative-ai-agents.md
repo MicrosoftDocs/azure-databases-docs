@@ -116,7 +116,7 @@ AZURE_PG_CONNECTION=""
 
 #### Load documents and vectors
 
-The Python file [load_data/main.py](https://github.com/Azure-Samples/postgres-agents/blob/main/load_data/main.py) serves as the central entry point for loading data into Azure Database for PostgreSQL. The code processes the [data for sample cases](https://github.com/Azure-Samples/postgres-agents/blob/main/load_data/cases.csv), including information about cases in Washington.
+The Python file [load_data/main.py](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/load_data/main.py) serves as the central entry point for loading data into Azure Database for PostgreSQL. The code processes the [data for sample cases](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/load_data/cases.csv), including information about cases in Washington.
 
 The `main.py` file:
 
@@ -149,7 +149,7 @@ Next, configure AI agent tools to retrieve data from Postgres. Then use the Azur
 
 #### Define a function for your agent to call
 
-Start with defining a function for your agent to call by describing its structure and any required parameters in a docstring. Include all your function definitions in a single file, [legal_agent_tools.py](https://github.com/Azure-Samples/postgres-agents/blob/main/src/legal_agent_tools.py). You can then import the file into your main script.
+Start with defining a function for your agent to call by describing its structure and any required parameters in a docstring. Include all your function definitions in a single file, [legal_agent_tools.py](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/legal_agent_tools.py). You can then import the file into your main script.
 
 ```python
 def vector_search_cases(vector_search_query: str, start_date: datetime ="1911-01-01", end_date: datetime ="2025-12-31", limit: int = 10) -> str:
@@ -190,7 +190,7 @@ def vector_search_cases(vector_search_query: str, start_date: datetime ="1911-01
 
 ### Step 3: Create and configure the AI agent with Postgres
 
-Now, set up the AI agent and integrate it with the Postgres tool. The Python file [src/simple_postgres_and_ai_agent.py](https://github.com/Azure-Samples/postgres-agents/blob/main/src/simple_postgres_and_ai_agent.py) serves as the central entry point for creating and using your agent.
+Now, set up the AI agent and integrate it with the Postgres tool. The Python file [src/simple_postgres_and_ai_agent.py](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/simple_postgres_and_ai_agent.py) serves as the central entry point for creating and using your agent.
 
 The `simple_postgres_and_ai_agent.py` file:
 
@@ -218,7 +218,7 @@ AZURE_TRACING_GEN_AI_CONTENT_RECORDING_ENABLED="true"
 
 ```python
 ### Create the agent with tool access
-We created the agent in the Azure AI Foundry project and added the Postgres tools needed to query the database. The code snippet below is an excerpt from the file [simple_postgres_and_ai_agent.py](https://github.com/Azure-Samples/postgres-agents/blob/main/src/simple_postgres_and_ai_agent.py).
+We created the agent in the Azure AI Foundry project and added the Postgres tools needed to query the database. The code snippet below is an excerpt from the file [simple_postgres_and_ai_agent.py](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/simple_postgres_and_ai_agent.py).
 
 # Create an Azure AI Foundry client
 project_client = AIProjectClient.from_connection_string(
@@ -311,7 +311,7 @@ After you run your agent by using the Azure AI Foundry Agent Service SDK, the ag
 
    ![Screenshot that shows selections for finding the agent playground.](./media/generative-ai-agents/find-playground.png)
 
-1. Test the query "Water leaking into the apartment from the floor above, What are the prominent legal precedents in Washington?" The agent picks the right tool to use and asks for the expected output for that query. Use [sample_vector_search_cases_output.json](https://github.com/Azure-Samples/postgres-agents/blob/main/src/sample_outputs_for_playground/sample_vector_search_cases_output.json) as the sample output.
+1. Test the query "Water leaking into the apartment from the floor above, What are the prominent legal precedents in Washington?" The agent picks the right tool to use and asks for the expected output for that query. Use [sample_vector_search_cases_output.json](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/sample_outputs_for_playground/sample_vector_search_cases_output.json) as the sample output.
 
    ![Screenshot that shows the results of a query in the agent playground.](./media/generative-ai-agents/using-playground-ai-foundry.png)
 
@@ -329,7 +329,7 @@ When you're developing the agent by using the Azure AI Foundry Agent Service SDK
 
    ![Screenshot that the result of tracing in AI Foundry.](./media/generative-ai-agents/tracing-ai-foundry.png)
 
-Learn more about how to set up tracing with the AI agent and Postgres in the [advanced_postgres_and_ai_agent_with_tracing.py file on GitHub](https://github.com/Azure-Samples/postgres-agents/blob/main/src/advanced_postgres_and_ai_agent_with_tracing.py).
+Learn more about how to set up tracing with the AI agent and Postgres in the [advanced_postgres_and_ai_agent_with_tracing.py file on GitHub](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/advanced_postgres_and_ai_agent_with_tracing.py).
 
 ## Related content
 

@@ -60,7 +60,7 @@ When you use a Flexible Server architecture, you can opt for high availability w
 
 ## Free 12-month offer
 
-With an [Azure free account](https://azure.microsoft.com/free/), you can use Azure Database for MySQL - Flexible Server for free for 12 months. The offer includes monthly limits of up to:
+With an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn), you can use Azure Database for MySQL - Flexible Server for free for 12 months. The offer includes monthly limits of up to:
 
 - 750 hours of use for a Burstable Standard_B1ms virtual machine. That's enough hours to run a database instance continuously each month.
 - 32 GB of storage and 32 GB of backup storage.

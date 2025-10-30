@@ -1,10 +1,10 @@
 ---
-title: What is Azure Database Migration Service?
+title: What Is Azure Database Migration Service?
 description: Overview of Azure Database Migration Service, which provides seamless migrations from many database sources to Azure Data platforms.
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 05/05/2025
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: overview
 ms.collection:
@@ -16,16 +16,16 @@ Azure Database Migration Service is a fully managed service designed to enable s
 
 With Azure Database Migration Service currently we offer two versions:
 
-1. Database Migration Service - via [Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md), [Azure portal](https://portal.azure.com/#create/Microsoft.AzureDMS), PowerShell and Azure CLI.
+1. Database Migration Service - via [Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md), [Azure portal](https://portal.azure.com/#create/Microsoft.AzureDMS), PowerShell, and Azure CLI.
 
-1. Database Migration Service (classic) - via Azure portal, PowerShell and Azure CLI.
+1. Database Migration Service (classic) - via Azure portal, PowerShell, and Azure CLI.
 
-**Database Migration Service** powers the "Azure SQL Migration" extension for Azure Data Studio, and provides more features. Azure portal, PowerShell and Azure CLI can also be used to access DMS. Currently, it supports SQL Database modernization to Azure. For improved functionality and supportability, consider migrating to Azure SQL Database by using the DMS. 
+**Database Migration Service** powers the Azure SQL Migration extension for Azure Data Studio, and provides more features. Azure portal, PowerShell, and Azure CLI can also be used to access Database Migration Service (DMS). Currently, it supports SQL Database modernization to Azure. For improved functionality and supportability, consider migrating to Azure SQL Database by using the DMS.
 
-> [!NOTE] 
-> Azure DMS now provides a new capability to create a free and optional SQL Server Instance Azure resource to improve your migration tracking experience. Specify the SQL Server Instance name and Subscription, Resource group and location where you want to create the tracking resource. Registering your subscription to Microsoft.AzureArcData resource provider is a prerequisite to create the Azure resource and we will attempt to register your subscription to the resource provider if your subscription is not already registered to it.
+> [!NOTE]  
+> Azure DMS now provides a new capability to create a free and optional SQL Server Instance Azure resource to improve your migration tracking experience. Specify the SQL Server Instance name and Subscription, Resource group, and location where you want to create the tracking resource. Registering your subscription to the `Microsoft.AzureArcData` resource provider is a prerequisite to create the Azure resource, and we attempt to register your subscription to the resource provider if your subscription isn't already registered to it.
 
-**Database Migration Service (classic)** via Azure portal, PowerShell and Azure CLI is an older version of the Azure Database Migration Service. It offers database modernization to Azure and support scenarios like – SQL Server, PostgreSQL, MySQL, and MongoDB.
+**Database Migration Service (classic)** via Azure portal, PowerShell, and Azure CLI is an older version of the Azure Database Migration Service. It offers database modernization to Azure and support scenarios like – SQL Server, PostgreSQL, MySQL, and MongoDB.
 
 [!INCLUDE [Azure Database Migration Service (classic) - SQL scenarios retirement announcement](./includes/deprecation-announcement-dms-classic-sql.md)]
 
@@ -33,7 +33,7 @@ With Azure Database Migration Service currently we offer two versions:
 
 ## Compare versions
 
-Newer version of the Azure Database Migration Service is available as an extension for Azure Data Studio and can be accesses from Azure portal, which improved the functionality, user experience and supportability of the migration service. Consider using the [Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md) and DMS Azure portal whenever possible.
+A newer version of the Azure Database Migration Service is available as an extension for Azure Data Studio and can be accessed from Azure portal, with improved functionality, user experience and supportability of the migration service. Consider using the [Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md) and DMS Azure portal whenever possible.
 
 The following table compares the functionality of the versions of the Database Migration Service:
 
@@ -44,8 +44,8 @@ The following table compares the functionality of the versions of the Database M
 | Azure SQL Database - Offline migration | Yes | Yes | Yes | Migrate to Azure SQL Database offline. |
 | Azure SQL Managed Instance - Online migration | Yes | Yes | Yes | Migrate to Azure SQL Managed Instance online with minimal downtime. |
 | Azure SQL Managed Instance - Offline migration | Yes | Yes | Yes | Migrate to Azure SQL Managed Instance offline. |
-| SQL Server on Azure SQL VM - Online migration | No | Yes | Yes | Migrate to SQL Server on Azure VMs online with minimal downtime. |
-| SQL Server on Azure SQL VM - Offline migration | Yes | Yes | Yes | Migrate to SQL Server on Azure VMs offline. |
+| SQL Server on Azure SQL Virtual Machine - Online migration | No | Yes | Yes | Migrate to SQL Server on Azure VMs online with minimal downtime. |
+| SQL Server on Azure SQL Virtual Machine - Offline migration | Yes | Yes | Yes | Migrate to SQL Server on Azure VMs offline. |
 | Migrate logins | Yes | Yes | No | Migrate logins from your source to your target. |
 | Migrate schemas | Yes | No | Yes | Migrate schemas from your source to your target. |
 | Azure portal support | Yes | Partial | Yes | Create and Monitor your migration by using the Azure portal. |

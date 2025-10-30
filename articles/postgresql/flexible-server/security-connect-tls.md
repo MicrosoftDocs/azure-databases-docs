@@ -1,6 +1,6 @@
 ---
 title: Encrypted Connectivity with TLS/SSL
-description: This article describes how to connect using TLS/SSL in an Azure Database for PostgreSQL flexible server.
+description: This article describes how to connect using TLS/SSL in an Azure Database for PostgreSQL flexible server instance.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -14,9 +14,9 @@ ms.custom:
 
 # Encrypted connectivity using TLS/SSL
 
-You can connect your client applications to an Azure Database for PostgreSQL flexible server using Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL). TLS is an industry standard protocol that ensures encrypted network connections between your database server and client applications, allowing you to adhere to compliance requirements.
+You can connect your client applications to an Azure Database for PostgreSQL flexible server instance using Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL). TLS is an industry standard protocol that ensures encrypted network connections between your database server and client applications, allowing you to adhere to compliance requirements.
 
-Azure Database for PostgreSQL flexible server supports encrypted connections using Transport Layer Security (TLS 1.2+). All incoming connections which try to encrypt the traffic using TLS 1.0 and TLS 1.1 are denied.
+Azure Database for PostgreSQL supports encrypted connections using Transport Layer Security (TLS 1.2+). All incoming connections which try to encrypt the traffic using TLS 1.0 and TLS 1.1 are denied.
 
 For all Azure Database for PostgreSQL flexible server instances, enforcement of TLS connections is enabled.
 
@@ -30,11 +30,11 @@ In some cases, applications require a local certificate file generated from a tr
 **Detailed information on updating client applications certificate stores with new Root CA certificates has been documented in this [how-to document](../flexible-server/how-to-update-client-certificates-java.md)**.
 
 > [!NOTE]  
-> Azure Database for PostgreSQL flexible server doesn't support [custom SSL\TLS certificates](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION).
+> Azure Database for PostgreSQL doesn't support [custom SSL\TLS certificates](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION).
 
 ### Connect using psql
 
-If you created your Azure Database for PostgreSQL flexible server with **Private access (VNet Integration)** networking mode, you must connect to your server from a resource within the same virtual network as your server, or from one that can route traffic to the virtual network in which your server is integrated.
+If you created your Azure Database for PostgreSQL flexible server instance with **Private access (VNet Integration)** networking mode, you must connect to your server from a resource within the same virtual network as your server, or from one that can route traffic to the virtual network in which your server is integrated.
 
 If you created your Azure Database for PostgreSQL flexible server instance with **Public access (allowed IP addresses)**, you can add a firewall rule with your public IP address, so that you're allowed to connect to your server. Alternatively, you can create a private endpoint to your instance, and connect through that private endpoint.
 
@@ -49,10 +49,10 @@ The following example shows how to connect to your server using the psql command
 
 ## Ensure your application or framework supports TLS connections
 
-Some application frameworks that use PostgreSQL for their database services don't enable TLS by default during installation. Your Azure Database for PostgreSQL flexible server enforces TLS connections, but if the application isn't configured for TLS, the application might fail to connect to your database server. Consult your application's documentation to learn how to enable TLS connections.
+Some application frameworks that use PostgreSQL for their database services don't enable TLS by default during installation. Your Azure Database for PostgreSQL flexible server instance enforces TLS connections, but if the application isn't configured for TLS, the application might fail to connect to your database server. Consult your application's documentation to learn how to enable TLS connections.
 
 ## Related content
 
-- [Create and manage Azure Database for PostgreSQL flexible server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md)
-- [networking in Azure Database for PostgreSQL flexible server](concepts-networking-private.md)
-- [Azure Database for PostgreSQL flexible server firewall rules](concepts-networking-public.md#firewall-rules)
+- [Networking](how-to-manage-virtual-network-cli.md)
+- [Network with private access for Azure Database for PostgreSQL](concepts-networking-private.md)
+- [Firewall rules](concepts-networking-public.md#firewall-rules)

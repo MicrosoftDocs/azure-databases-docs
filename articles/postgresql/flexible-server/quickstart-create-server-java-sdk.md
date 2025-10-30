@@ -12,31 +12,31 @@ ms.topic: quickstart
 
 # Quickstart: Use Azure (SDK) libraries in Java to create, update, and delete an Azure Database for PostgreSQL 
 
-In this quickstart, you learn how to create, update, and delete an Azure Database for PostgreSQL flexible server instance using the Azure SDK for Java. The code examples are written in Java and use the Azure SDK libraries to interact with the Azure Database for PostgreSQL flexible server service.
+In this quickstart, you learn how to create, update, and delete an Azure Database for PostgreSQL flexible server instance using the Azure SDK for Java. The code examples are written in Java and use the Azure SDK libraries to interact with the Azure Database for PostgreSQL service.
 
-The Azure SDK for Java provides a set of libraries that allow you to interact with Azure services using Java. The SDK provides a consistent programming model and simplifies working with Azure services, including Azure Database for PostgreSQL flexible server.
+The Azure SDK for Java provides a set of libraries that allow you to interact with Azure services using Java. The SDK provides a consistent programming model and simplifies working with Azure services, including Azure Database for PostgreSQL.
 
 ## Prerequisites
 
-- [An Azure account with an active subscription](https://azure.microsoft.com/free/)
+- [An Azure account with an active subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 - Java Development Kit (JDK) with the latest version
 - Download Maven for using the Azure Java SDK library
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine
 
 ## Operations supported by Azure Java SDK
 
-Azure SDK for Java provides `azure-resourcemanager-postgresqlflexibleserver` dependency that supports these operations for Azure Databases for PostgreSQL flexible server.
+Azure SDK for Java provides `azure-resourcemanager-postgresqlflexibleserver` dependency that supports these operations for Azure Databases for PostgreSQL.
 
-- **Creating Azure Database for PostgreSQL flexible servers**\
+- **Creating Azure Database for PostgreSQL flexible server instances**\
 You can create a new Azure PostgreSQL flexible server instance with specified configurations such as location, SKU, storage, and version.
 
-- **Updating Azure Database for PostgreSQL flexible servers**\
-You can update existing Azure PostgreSQL flexible servers, including changing configurations like administrator sign-in, password, SKU, storage, and version.
+- **Updating Azure Database for PostgreSQL flexible server instances**\
+You can update existing Azure PostgreSQL flexible server instances, including changing configurations like administrator sign-in, password, SKU, storage, and version.
 
-- **Deleting Azure Database for PostgreSQL flexible servers**
+- **Deleting Azure Database for PostgreSQL flexible server instances**
 
-- **Retrieving Azure Database for PostgreSQL flexible server information**\
-You can retrieve details about existing Azure PostgreSQL flexible servers, including their configurations, status, and other metadata.
+- **Retrieving Azure Database for PostgreSQL information**\
+You can retrieve details about existing Azure PostgreSQL flexible server instances, including their configurations, status, and other metadata.
 
 - **Managing databases**\
 You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
@@ -65,7 +65,7 @@ az account show --query tenantId --output tsv
 
 ### Create project
 
-Create a new Maven project in your preferred IDE and add the dependencies for the Azure Database for PostgreSQL flexible server library.
+Create a new Maven project in your preferred IDE and add the dependencies for the Azure Database for PostgreSQL library.
 
 Once you create a Maven project, a pom.xml file that is created. Ensure all dependencies are added under this file's `<dependencies>` tag.
 
@@ -349,4 +349,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Quickstart: Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md)
+- [Quickstart: Create an Azure Database for PostgreSQL](quickstart-create-server.md)

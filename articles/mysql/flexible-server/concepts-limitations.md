@@ -55,6 +55,9 @@ MySQL supports many storage engines. The following lists show which storage engi
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
 - [MEMORY](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
 
+> [!NOTE]  
+> - The maximum supported size for a single MySQL file is 8 TB in Azure Database for MySQL -Flexible server.
+
 ### Unsupported engines
 
 - [MyISAM](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)

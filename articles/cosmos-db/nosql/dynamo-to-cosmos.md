@@ -48,33 +48,35 @@ The following JSON object represents the data format in DynamoDB:
 
 ```json
 {
-TableName: "Music",
-KeySchema: [
-{ 
-  AttributeName: "Artist",
-  KeyType: "HASH", //Partition key
-},
-{ 
-  AttributeName: "SongTitle",
-  KeyType: "RANGE" //Sort key
+  "TableName": "Music",
+  "KeySchema": [
+    { 
+      "AttributeName": "Artist",
+      "KeyType": "HASH",
+    },
+    { 
+      "AttributeName": "SongTitle",
+      "KeyType": "RANGE"
+    }
+    ],
+    "AttributeDefinitions": [
+    { 
+      "AttributeName": "Artist",
+      "AttributeType": "S"
+    },
+    { 
+      "AttributeName": "SongTitle",
+      "AttributeType": "S"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 1,
+    "WriteCapacityUnits": 1
+  }
 }
-],
-AttributeDefinitions: [
-{ 
-  AttributeName: "Artist",
-  AttributeType: "S"
-},
-{ 
-  AttributeName: "SongTitle",
-  AttributeType: "S"
-}
-],
-ProvisionedThroughput: {
-  ReadCapacityUnits: 1,
-  WriteCapacityUnits: 1
- }
-}
- ```
+```
+
+With `Artist` as partition key and `SongTitle` as sort key.
 
 ### Azure Cosmos DB
 
@@ -82,13 +84,13 @@ The following JSON object represents the data format in Azure Cosmos DB:
 
 ```json
 {
-"Artist": "",
-"SongTitle": "",
-"AlbumTitle": "",
-"Year": 9999,
-"Price": 0.0,
-"Genre": "",
-"Tags": ""
+  "Artist": "",
+  "SongTitle": "",
+  "AlbumTitle": "",
+  "Year": 9999,
+  "Price": 0.0,
+  "Genre": "",
+  "Tags": ""
 }
 ```
 
@@ -115,7 +117,7 @@ git clone https://github.com/Azure-Samples/DynamoDB-to-CosmosDB
 
 Add the following NuGet package to your project:
 
-```bash
+```pwsh
 Install-Package Microsoft.Azure.Cosmos
 ```
 
@@ -126,9 +128,13 @@ Install-Package Microsoft.Azure.Cosmos
 In Amazon DynamoDB, you use the following code to connect:
 
 ```csharp
-    AmazonDynamoDBConfig addbConfig = new AmazonDynamoDBConfig() ;
-        addbConfig.ServiceURL = "endpoint";
-        try { aws_dynamodbclient = new AmazonDynamoDBClient( addbConfig ); }
+AmazonDynamoDBConfig addbConfig = new AmazonDynamoDBConfig();
+addbConfig.ServiceURL = "endpoint";
+try
+{
+    aws_dynamodbclient = new AmazonDynamoDBClient(addbConfig);
+}
+catch { }
 ```
 
 #### Azure Cosmos DB
@@ -155,13 +161,13 @@ With Azure Cosmos DB, you can use the following options to optimize your connect
 - `BulkExecutionMode`: Use this option to execute bulk operations by setting the `AllowBulkExecution` property to `true`. For more information, see [Bulk import data to an Azure Cosmos DB for NoSQL account by using the .NET SDK](tutorial-dotnet-bulk-import.md).
 
    ```csharp
-   client_cosmosDB = new CosmosClient(" Your connection string ",new CosmosClientOptions()
-   { 
-    ConnectionMode=ConnectionMode.Direct,
-    ApplicationRegion=Regions.EastUS2,
-    ConsistencyLevel=ConsistencyLevel.Session,
-    AllowBulkExecution=true  
-   });
+   client_cosmosDB = new CosmosClient("Your connection string", new CosmosClientOptions()
+       {
+           ConnectionMode = ConnectionMode.Direct,
+           ApplicationRegion = Regions.EastUS2,
+           ConsistencyLevel = ConsistencyLevel.Session,
+           AllowBulkExecution = true,
+       });
    ```
 
 ### Create the container
@@ -172,53 +178,54 @@ To store the data in Amazon DynamoDB, you need to create the table first. Define
 
 ```csharp
 // movies_key_schema
-public static List<KeySchemaElement> movies_key_schema
-  = new List<KeySchemaElement>
-{
-  new KeySchemaElement
-  {
-    AttributeName = partition_key_name,
-    KeyType = "HASH"
-  },
-  new KeySchemaElement
-  {
-    AttributeName = sort_key_name,
-    KeyType = "RANGE"
-  }
-};
+public static List<KeySchemaElement> moviesKeySchema =
+    new List<KeySchemaElement>
+    {
+        new KeySchemaElement
+        {
+            AttributeName = partitionKeyName,
+            KeyType = "HASH"
+        },
+        new KeySchemaElement
+        {
+            AttributeName = sortKeyName,
+            KeyType = "RANGE"
+        },
+    };
 
 // key names for the Movies table
-public const string partition_key_name = "year";
-public const string sort_key_name      = "title";
-  public const int readUnits=1, writeUnits=1; 
+public const string partitionKeyName = "year";
+public const string sortKeyName = "title";
+public const int readUnits = 1, writeUnits = 1;
 
-    // movie_items_attributes
-    public static List<AttributeDefinition> movie_items_attributes
-  = new List<AttributeDefinition>
-{
-  new AttributeDefinition
-  {
-    AttributeName = partition_key_name,
-    AttributeType = "N"
-  },
-  new AttributeDefinition
-  {
-    AttributeName = sort_key_name,
-    AttributeType = "S"
-  }
+// movie_items_attributes
+public static List<AttributeDefinition> movieItemsAttributes =
+    new List<AttributeDefinition>
+    {
+        new AttributeDefinition
+        {
+            AttributeName = partitionKeyName,
+            AttributeType = "N"
+        },
+        new AttributeDefinition
+        {
+            AttributeName = sortKeyName,
+            AttributeType = "S"
+        }
+    };
 
-CreateTableRequest  request;
+CreateTableRequest request;
 CreateTableResponse response;
 
 // Build the 'CreateTableRequest' structure for the new table
 request = new CreateTableRequest
 {
-  TableName             = table_name,
-  AttributeDefinitions  = table_attributes,
-  KeySchema             = table_key_schema,
-  // Provisioned-throughput settings are always required,
-  // although the local test version of DynamoDB ignores them.
-  ProvisionedThroughput = new ProvisionedThroughput( readUnits, writeUnits );
+    TableName             = tableName,
+    AttributeDefinitions  = tableAttributes,
+    KeySchema             = tableKeySchema,
+    // Provisioned-throughput settings are always required,
+    // although the local test version of DynamoDB ignores them.
+    ProvisionedThroughput = new ProvisionedThroughput(readUnits, writeUnits)
 };
 ```
 
@@ -235,7 +242,12 @@ await client_cosmosDB.CreateDatabaseIfNotExistsAsync(movies_table_name);
 To create a container:
 
 ```csharp
-await cosmosDatabase.CreateContainerIfNotExistsAsync(new ContainerProperties() { PartitionKeyPath = "/" + partitionKey, Id = new_collection_name }, provisionedThroughput);
+await cosmosDatabase.CreateContainerIfNotExistsAsync(new ContainerProperties()
+    {
+        PartitionKeyPath = "/" + partitionKey,
+        Id = newCollectionName
+    },
+    provisionedThroughput);
 ```
 
 ### Load the data
@@ -246,22 +258,25 @@ The following code shows how to load the data in Amazon DynamoDB. The `moviesArr
 
 ```csharp
 int n = moviesArray.Count;
-for( int i = 0, j = 99; i < n; i++ )
+for (int i = 0, j = 99; i < n; i++)
+{
+    try
     {
-  try
-  {
-    string itemJson = moviesArray[i].ToString();
-    Document doc = Document.FromJson(itemJson);
-    Task putItem = moviesTable.PutItemAsync(doc);
-    if( i >= j )
-    {
-      j++;
-      Console.Write( "{0,5:#,##0}, ", j );
-      if( j % 1000 == 0 )
-        Console.Write( "\n " );
-      j += 99;
+        string itemJson = moviesArray[i].ToString();
+        Document doc = Document.FromJson(itemJson);
+        Task putItem = moviesTable.PutItemAsync(doc);
+        if (i >= j)
+        {
+          j++;
+          Console.Write("{0,5:#,##0}, ", j);
+          if (j % 1000 == 0)
+              Console.Write("\n ");
+          j += 99;
+        }
+        await putItem;
     }
-    await putItem;
+    catch { }
+}
 ```
 
 #### Azure Cosmos DB
@@ -274,9 +289,10 @@ for (int i = 0, j = 99; i < n; i++)
 {
   try
   {
-      MovieModel doc= JsonConvert.DeserializeObject<MovieModel>(moviesArray[i].ToString());
+      MovieModel doc = JsonConvert.DeserializeObject<MovieModel>(moviesArray[i].ToString());
       doc.Id = Guid.NewGuid().ToString();
       concurrentTasks.Add(moviesContainer.CreateItemAsync(doc,new PartitionKey(doc.Year)));
+      if (i >= j)
       {
           j++;
           Console.Write("{0,5:#,##0}, ", j);
@@ -284,7 +300,6 @@ for (int i = 0, j = 99; i < n; i++)
               Console.Write("\n               ");
           j += 99;
       }
-      
   }
   catch (Exception ex)
   {
@@ -304,8 +319,7 @@ await Task.WhenAll(concurrentTasks);
 Writing a new document in Amazon DynamoDB isn't type safe. The following example uses `newItem` as the document type:
 
 ```csharp
-Task<Document> writeNew = moviesTable.PutItemAsync(newItem, token);
-await writeNew;
+Document writeNew = await moviesTable.PutItemAsync(newItem, token);
 ```
 
 #### Azure Cosmos DB
@@ -321,24 +335,32 @@ public class MovieModel
     public string Title{ get; set; }
     [JsonProperty("year")]
     public int Year { get; set; }
+    [JsonProperty("info")]
+    public MovieInfo MovieInfo { get; set; }
+
     public MovieModel(string title, int year)
     {
         this.Title = title;
         this.Year = year;
     }
-    public MovieModel()
-    {
-
-    }
-    [JsonProperty("info")]
-    public   MovieInfo MovieInfo { get; set; }
+    public MovieModel() { }
 
     internal string PrintInfo()
     {
-        if(this.MovieInfo!=null)
-        return            string.Format("\nMovie with title:{1}\n Year: {2}, Actors: {3}\n Directors:{4}\n Rating:{5}\n", this.Id, this.Title, this.Year, String.Join(",",this.MovieInfo.Actors), this.MovieInfo, this.MovieInfo.Rating);
+        if (this.MovieInfo != null)
+            return string.Format(
+                "\nMovie with title:{1}\n Year: {2}, Actors: {3}\n Directors:{4}\n Rating:{5}\n",
+                this.Id,
+                this.Title,
+                this.Year,
+                String.Join(",",this.MovieInfo.Actors),
+                this.MovieInfo,
+                this.MovieInfo.Rating);
         else
-            return string.Format("\nMovie with  title:{0}\n Year: {1}\n",  this.Title, this.Year);
+            return string.Format(
+                "\nMovie with  title:{0}\n Year: {1}\n",
+                this.Title,
+                this.Year);
     }
 }
 ```
@@ -346,15 +368,14 @@ public class MovieModel
 In Azure Cosmos DB, `newItem` is `MovieModel`:
 
 ```csharp
- MovieModel movieModel = new MovieModel()
-            {
-                Id = Guid.NewGuid().ToString(),
-                Title = "The Big New Movie",
-                Year = 2018,
-                MovieInfo = new MovieInfo() { Plot = "Nothing happens at all.", Rating = 0 }
-            };
-    var writeNew= moviesContainer.CreateItemAsync(movieModel, new Microsoft.Azure.Cosmos.PartitionKey(movieModel.Year));
-    await writeNew;
+MovieModel movieModel = new MovieModel
+{
+    Id = Guid.NewGuid().ToString(),
+    Title = "The Big New Movie",
+    Year = 2018,
+    MovieInfo = new MovieInfo() { Plot = "Nothing happens at all.", Rating = 0 }
+};
+await moviesContainer.CreateItemAsync(movieModel, new Microsoft.Azure.Cosmos.PartitionKey(movieModel.Year));
 ```
 
 ### Read a document
@@ -368,8 +389,7 @@ To read in Amazon DynamoDB, you need to define primitives:
 Primitive hash = new Primitive(year.ToString(), true);
 Primitive range = new Primitive(title, false);
 
-  Task<Document> readMovie = moviesTable.GetItemAsync(hash, range, token);
-  movie_record = await readMovie;
+Document movieRecord = await moviesTable.GetItemAsync(hash, range, token);
 ```
 
 #### Azure Cosmos DB
@@ -380,10 +400,10 @@ With Azure Cosmos DB, the query is natural (LINQ):
 IQueryable<MovieModel> movieQuery = moviesContainer.GetItemLinqQueryable<MovieModel>(true)
                         .Where(f => f.Year == year && f.Title == title);
 // The query is executed synchronously here, but can also be executed asynchronously via the IDocumentQuery<T> interface
-    foreach (MovieModel movie in movieQuery)
-    {
-      movie_record_cosmosdb = movie;
-    }
+foreach (MovieModel movie in movieQuery)
+{
+    movie_record_cosmosdb = movie;
+}
 ```
 
 The document collection in the preceding example is type safe and provides a natural query option.
@@ -395,7 +415,7 @@ The document collection in the preceding example is type safe and provides a nat
 To update an item in Amazon DynamoDB:
 
 ```csharp
-updateResponse = await client.UpdateItemAsync( updateRequest );
+updateResponse = await client.UpdateItemAsync(updateRequest);
 ```
 
 #### Azure Cosmos DB
@@ -414,13 +434,12 @@ To delete an item in Amazon DynamoDB, you again need to fall on primitives:
 
 ```csharp
 Primitive hash = new Primitive(year.ToString(), true);
-      Primitive range = new Primitive(title, false);
-      DeleteItemOperationConfig deleteConfig = new DeleteItemOperationConfig( );
-      deleteConfig.ConditionalExpression = condition;
-      deleteConfig.ReturnValues = ReturnValues.AllOldAttributes;
-      
-  Task<Document> delItem = table.DeleteItemAsync( hash, range, deleteConfig );
-        deletedItem = await delItem;
+Primitive range = new Primitive(title, false);
+DeleteItemOperationConfig deleteConfig = new DeleteItemOperationConfig();
+deleteConfig.ConditionalExpression = condition;
+deleteConfig.ReturnValues = ReturnValues.AllOldAttributes;
+  
+Document deletedItem = await table.DeleteItemAsync(hash, range, deleteConfig);
 ```
 
 #### Azure Cosmos DB
@@ -428,15 +447,15 @@ Primitive hash = new Primitive(year.ToString(), true);
 In Azure Cosmos DB, you can get the document and delete it asynchronously:
 
 ```csharp
-var result= ReadingMovieItem_async_List_CosmosDB("select * from c where c.info.rating>7 AND c.year=2018 AND c.title='The Big New Movie'");
+var result = ReadingMovieItem_async_List_CosmosDB("SELECT * FROM c WHERE c.info.rating > 7 AND c.year = 2018 AND c.title = 'The Big New Movie'");
 while (result.HasMoreResults)
 {
-  var resultModel = await result.ReadNextAsync();
-  foreach (var movie in resultModel.ToList<MovieModel>())
-  {
-    await moviesContainer.DeleteItemAsync<MovieModel>(movie.Id, new PartitionKey(movie.Year));
-  }
-  }
+    var resultModel = await result.ReadNextAsync();
+    foreach (var movie in resultModel.ToList<MovieModel>())
+    {
+        await moviesContainer.DeleteItemAsync<MovieModel>(movie.Id, new PartitionKey(movie.Year));
+    }
+}
 ```
 
 ### Query documents
@@ -446,13 +465,13 @@ while (result.HasMoreResults)
 In Amazon DynamoDB, API functions are required to query the data:
 
 ```csharp
-QueryOperationConfig config = new QueryOperationConfig( );
-  config.Filter = new QueryFilter( );
-  config.Filter.AddCondition( "year", QueryOperator.Equal, new DynamoDBEntry[ ] { 1992 } );
-  config.Filter.AddCondition( "title", QueryOperator.Between, new DynamoDBEntry[ ] { "B", "Hzz" } );
-  config.AttributesToGet = new List<string> { "year", "title", "info" };
-  config.Select = SelectValues.SpecificAttributes;
-  search = moviesTable.Query( config ); 
+QueryOperationConfig config = new QueryOperationConfig();
+config.Filter = new QueryFilter();
+config.Filter.AddCondition("year", QueryOperator.Equal, new DynamoDBEntry[ ] { 1992 });
+config.Filter.AddCondition("title", QueryOperator.Between, new DynamoDBEntry[ ] { "B", "Hzz" });
+config.AttributesToGet = new List<string> { "year", "title", "info" };
+config.Select = SelectValues.SpecificAttributes;
+search = moviesTable.Query(config);
 ```
 
 #### Azure Cosmos DB
@@ -461,7 +480,7 @@ In Azure Cosmos DB, you can do projection and filter inside a simple SQL query:
 
 ```csharp
 var result = moviesContainer.GetItemQueryIterator<MovieModel>( 
-  "select c.Year, c.Title, c.info from c where Year=1998 AND (CONTAINS(Title,'B') OR CONTAINS(Title,'Hzz'))");
+  "SELECT c.Year, c.Title, c.info FROM c WHERE Year = 1998 AND (CONTAINS(Title, 'B') OR CONTAINS(Title, 'Hzz'))");
 ```
 
 For range operations (for example, `between`), you need to do a scan in Amazon DynamoDB:
@@ -469,28 +488,28 @@ For range operations (for example, `between`), you need to do a scan in Amazon D
 ```csharp
 ScanRequest sRequest = new ScanRequest
 {
-  TableName = "Movies",
-  ExpressionAttributeNames = new Dictionary<string, string>
-  {
-    { "#yr", "year" }
-  },
-  ExpressionAttributeValues = new Dictionary<string, AttributeValue>
-  {
-      { ":y_a", new AttributeValue { N = "1960" } },
-      { ":y_z", new AttributeValue { N = "1969" } },
-  },
-  FilterExpression = "#yr between :y_a and :y_z",
-  ProjectionExpression = "#yr, title, info.actors[0], info.directors, info.running_time_secs"
+    TableName = "Movies",
+    ExpressionAttributeNames = new Dictionary<string, string>
+    {
+        { "#yr", "year" }
+    },
+    ExpressionAttributeValues = new Dictionary<string, AttributeValue>
+    {
+        { ":y_a", new AttributeValue { N = "1960" } },
+        { ":y_z", new AttributeValue { N = "1969" } },
+    },
+    FilterExpression = "#yr between :y_a and :y_z",
+    ProjectionExpression = "#yr, title, info.actors[0], info.directors, info.running_time_secs"
 };
 
-ClientScanning_async( sRequest ).Wait( );
+ClientScanning_async(sRequest).Wait();
 ```
 
 In Azure Cosmos DB, you can use a SQL query and a single-line statement:
 
 ```csharp
-var result = moviesContainer.GetItemQueryIterator<MovieModel>( 
-  "select c.title, c.info.actors[0], c.info.directors,c.info.running_time_secs from c where BETWEEN year 1960 AND 1969");
+var result = moviesContainer.GetItemQueryIterator<MovieModel>(
+    "SELECT c.title, c.info.actors[0], c.info.directors, c.info.running_time_secs FROM c WHERE c.year BETWEEN 1960 AND 1969");
 ```
 
 ### Delete a container
@@ -500,7 +519,7 @@ var result = moviesContainer.GetItemQueryIterator<MovieModel>(
 To delete the table in Amazon DynamoDB, you can specify:
 
 ```csharp
-client.DeleteTableAsync( tableName );
+await client.DeleteTableAsync(tableName);
 ```
 
 #### Azure Cosmos DB

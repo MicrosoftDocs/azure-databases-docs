@@ -2211,6 +2211,11 @@
             "redirect_document_id": true
         },
         {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-azure-ad-users.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-manage-entra-users",
+            "redirect_document_id": true
+        },
+        {
             "source_path_from_root": "/articles/postgresql/migrate/migration-service/tutorial-migration-service-aws-offline.md",
             "redirect_url": "/azure/postgresql/migrate/migration-service/tutorial-migration-service-rds-offline",
             "redirect_document_id": false

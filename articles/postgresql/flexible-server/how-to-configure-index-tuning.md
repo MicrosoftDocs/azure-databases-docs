@@ -1,6 +1,6 @@
 ---
 title: Configure index tuning
-description: This article describes how to configure the index tuning feature in your Azure Database for PostgreSQL flexible server.
+description: This article describes how to configure the index tuning feature in your Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
 - ignite-2024
 - sfi-image-nochange
 ms.topic: how-to
-# customer intent: As a user, I want to learn about how to enable, disable and configure the index tuning feature in an Azure Database for PostgreSQL.
+# customer intent: As a user, I want to learn about how to enable, disable and configure the index tuning feature in an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Configure index tuning
@@ -31,7 +31,7 @@ Index tuning is an opt-in feature that isn't enabled by default on a server. It 
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
 
@@ -78,7 +78,7 @@ WARNING: Index tuning is enabled for the server.
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
 
@@ -130,7 +130,7 @@ Assess whether you want to continue using [Monitor performance with query store]
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
 
@@ -176,7 +176,7 @@ WARNING: Index tuning is disabled for the server.
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
 
@@ -463,7 +463,7 @@ The command returns all server parameters that control the different settings of
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
 

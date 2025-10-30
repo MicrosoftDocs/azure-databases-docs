@@ -19,13 +19,13 @@ Azure Database for MySQL Flexible Server is a managed service that you use to ru
 - **750 hours** of **Burstable B1MS** instance, enough hours to run a database instance continuously each month.
 - **32 GB storage and 32 GB backup storage.**
 
-This article shows you how to create and use an Azure Database for MySQL Flexible Server instance for free using an [Azure free account](https://azure.microsoft.com/free/).
+This article shows you how to create and use an Azure Database for MySQL Flexible Server instance for free using an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ## Prerequisites
 
 To complete this tutorial, you need:
 
-- An Azure free account. If you don't have one, [create a free account](https://azure.microsoft.com/free/) before you begin.
+- An Azure free account. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Create an Azure Database for MySQL Flexible Server instance
 
