@@ -14,13 +14,13 @@ ms.topic: overview
 
 This article provides an overview of Azure Database for PostgreSQL, helping you get acquainted with its key features and core concepts.
 
-Azure Database for PostgreSQL is a fully managed database service designed to give more granular control and flexibility over database management functions and configuration settings. The service generally provides more flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure Database for PostgreSQL flexible server instances also provides better cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. For details on the specific versions supported, see [Supported versions of PostgreSQL in Azure Database for PostgreSQL](concepts-supported-versions.md). The service is available in various [Azure regions](https://azure.microsoft.com/global-infrastructure/services/).
+Azure Database for PostgreSQL is a fully managed database service designed to give you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure Database for PostgreSQL flexible server instances also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. For details on the specific versions supported, see [Supported versions of PostgreSQL in Azure Database for PostgreSQL](concepts-supported-versions.md). The service is available in various [Azure regions](https://azure.microsoft.com/global-infrastructure/services/).
 
 :::image type="content" source="./media/overview/overview-flexible-server.png" alt-text="Diagram of Azure Database for PostgreSQL - Overview." lightbox="./media/overview/overview-flexible-server.png":::
 
-Azure Database for PostgreSQL flexible server instances are best suited for:
+Azure Database for PostgreSQL flexible server instances is best suited for:
 
-- Application developments requiring better control and customizations.
+- Application developments requiring control and customizations.
 - Zone redundant high availability.
 - Managed maintenance windows.
 
@@ -32,7 +32,7 @@ If you configure zone redundant high availability, the service provisions and ma
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png" alt-text="Diagram of Zone redundant high availability." lightbox="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png":::
 
-See [High availability]/azure/reliability/reliability-postgresql-flexible-server for more details.
+See [High availability](/azure/reliability/reliability-postgresql-flexible-server) for more details.
 
 ## Automated patching with a managed maintenance window
 
@@ -46,7 +46,7 @@ Azure Database for PostgreSQL automatically creates server backups and stores th
 
 Azure Database for PostgreSQL is available in three compute tiers: Burstable, General Purpose, and Memory Optimized. The Burstable tier is best for low-cost development and low concurrency workloads without continuous compute capacity. The General Purpose and Memory Optimized tiers are better for production workloads that require high concurrency, scale, and predictable performance. You can build your first application on a small database for a few dollars a month, then seamlessly adjust the scale to meet the needs of your solution.
 
-## Stop/start server to lower TCO
+## Stop and start server to lower TCO
 
 Azure Database for PostgreSQL allows you to stop and start the server on demand to lower your TCO. The compute tier billing stops immediately when you stop the server. This feature can provide significant cost savings during development, testing, and time-bound predictable production workloads. The server remains stopped for seven days unless you restart it sooner.
 
@@ -54,7 +54,7 @@ Azure Database for PostgreSQL allows you to stop and start the server on demand 
 
 Azure Database for PostgreSQL uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. The service encrypts data, including backups and temporary files created while running queries. It uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system-managed (default). Azure Database for PostgreSQL encrypts data in motion with default transport layer security (SSL/TLS) enforced by default. The service enforces and supports TLS version 1.2 and later.
 
-Azure Database for PostgreSQL flexible server instances allows full private access to the servers using Azure virtual network. Servers in the Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied, and servers can't be reached using public endpoints.
+Azure Database for PostgreSQL flexible server instances allows full private access to the servers by using Azure virtual network. Servers in the Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied, and servers can't be reached by using public endpoints.
 
 ## Monitor and alerting
 
@@ -68,25 +68,17 @@ An Azure Database for PostgreSQL flexible server instance has a [built-in PgBoun
 
 One advantage of running your workload in Azure is global reach. Azure Database for PostgreSQL is currently available in the following Azure regions:
 
-[!INCLUDE [regions-table](includes/regions-table.md)]
-
-$ New zone-redundant high availability deployments are temporarily blocked in these regions. Already provisioned HA servers are fully supported.
-
-$$ New server deployments are temporarily blocked in these regions. Already provisioned servers are fully supported.
-
-** Zone-redundant high availability can now be deployed when you provision new servers in these regions. Any existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, read these [special considerations](how-to-configure-high-availability.md#special-considerations).
-
-(*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. You can access these regions only upon request by creating a new support request.
+See the [regions table](includes/regions-table.md) for the list of available Azure regions.
 
 > [!NOTE]  
-> If your application requires zone-redundant HA and it's unavailable in your preferred Azure region, consider using other regions within the same geography where zone-redundant HA is available, such as US East for US East 2, Central US for North Central US, and so on.
+> If your application requires zone-redundant high availabilityA and it's unavailable in your preferred Azure region, consider using other regions within the same geography where zone-redundant HA is available, such as US East for US East 2, Central US for North Central US, and so on.
 
 ## Migration
 
 Azure Database for PostgreSQL runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure Database for PostgreSQL.
 
 - **Azure Database Migration Service** – For seamless and simplified migrations to Azure Database for PostgreSQL with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure Database for PostgreSQL?](../migrate/migration-service/overview-migration-service-postgresql.md)
-- **Dump and Restore** – For offline migrations where you can afford some downtime, dump and restore using community tools like pg_dump and pg_restore provides the fastest way to migrate. See [Migrate using dump and restore](../howto-migrate-using-dump-and-restore.md) for details.
+- **Dump and Restore** – For offline migrations where you can afford some downtime, dump, and restore using community tools like pg_dump and pg_restore provides the fastest way to migrate. See [Migrate using dump and restore](../howto-migrate-using-dump-and-restore.md) for details.
 
 ## Frequently asked questions (FAQ)
 
