@@ -29,15 +29,24 @@ To choose a pricing tier, use the following table as a starting point:
 
 | Pricing tier | Target workloads |
 | :--- | :--- |
-| Burstable | Workloads that don't need the full CPU continuously. B-series VMs utilize a CPU credit model to track how much CPU is consumed. The virtual machine accumulates CPU credits when a workload is operating below the base CPU performance threshold and uses credits when running above the base CPU performance threshold until all of its credits are consumed. Upon consuming all the CPU credits, a B-series virtual machine is throttled back to its base CPU performance until it accumulates the credits to burst again. B series VMs are ideal for web servers, proof of concepts, small databases, and development build environments. Burstable SKU is usually not recommended for production use.
-| General Purpose | D-series VMs provide a solid balance between CPU capabilities and memory size with scalable I/O throughput which makes them suitable for most production workloads. Examples include servers for hosting web and mobile apps and other enterprise applications. |
-| Memory Optimized | E- Series VMs that are suitable for high-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
+| **Burstable**     | Designed for workloads that do not require full CPU performance continuously. Uses a CPU credit model: credits accumulate when usage is below baseline and are consumed when usage exceeds it. When credits are exhausted, the VM is restricted to baseline CPU, which under sustained load can cause severe performance degradation, connection timeouts, and delays or transient failures in management operations until credits rebuild. Best suited for web servers, proof-of-concept environments, small databases, and development builds. Not recommended for production workloads. |
+| **General Purpose** | Provides a balance between CPU and memory with scalable I/O throughput, making it suitable for most production workloads. Examples include servers for hosting web and mobile apps and other enterprise applications. |
+| **Memory Optimized** | Suitable for high-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
+
 
 After you create a server for the compute tier, you can change the number of vCores (up or down) and the storage size (up) in seconds. You also can independently adjust the backup retention period up or down. For more information, see the [Scaling resources in Azure Database for PostgreSQL](concepts-scaling-resources.md) page.
 
 ## Compute tiers, vCores, and server types
 
 You can select compute resources based on the tier, vCores, and memory size. vCores represent the logical CPU of the underlying hardware.
+
+> [!IMPORTANT]
+> Burstable compute is for workloads that stay idle or below baseline most of the time. If CPU runs near or above baseline for long periods, credits deplete and the server might become unreachable.  
+>  
+> For these workloads, it's recommended to:  
+> - Monitor **CPU Credits Remaining** in Azure Monitor and set alerts for low credits.  
+> - Avoid restarts or scaling when credits are near zero; allow time to rebuild.  
+> - If credits deplete often, move to a larger Burstable size or switch tiers.
 
 The detailed specifications of the available server types are as follows:
 
@@ -86,7 +95,7 @@ The detailed specifications of the available server types are as follows:
 | E64ds_v5 / E64ads_v4 | 64 | 512 GiB | 80,000 | 1200 MiB/sec |
 | E96ds_v5 /E96ads_v5 | 96 | 672 GiB | 80,000 | 1200 MiB/sec |
 > [!IMPORTANT]  
-> Minimum and maximum IOPS are also determined by the storage tier so please choose a storage tier and instance type that can scale as per your workload requirements.
+> Minimum and maximum IOPS are also determined by the storage tier so choose a storage tier and instance type that can scale as per your workload requirements.
 
 [!INCLUDE [pricing](includes/compute-storage-pricing.md)]
 
