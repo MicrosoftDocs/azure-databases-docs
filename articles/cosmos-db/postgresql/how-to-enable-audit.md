@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 10/01/2023
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Audit logging in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Audit logging of database activities in Azure Cosmos DB for PostgreSQL is available through the PostgreSQL Audit extension: [pgAudit](https://www.pgaudit.org/). pgAudit provides detailed session or object audit logging.
 

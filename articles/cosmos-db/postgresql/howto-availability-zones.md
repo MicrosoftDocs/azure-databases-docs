@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 11/29/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Use availability zones in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL provisions all nodes of a cluster in a single [availability zone](./concepts-availability-zones.md) (AZ) for better performance and availability. If cluster has [high availability](./concepts-high-availability.md) enabled, all standby nodes are provisioned into another availability zone to make sure all nodes in cluster continue to be available, with a possible failover, if there is an AZ outage.
 

@@ -6,12 +6,14 @@ author: jonels-msft
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: reference
-ms.date: 10/01/2023
+ms.date: 10/29/2025
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Azure Cosmos DB for PostgreSQL system tables and views
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL creates and maintains special tables that contain
 information about distributed data in the cluster. The coordinator node
@@ -29,9 +31,7 @@ You can view and query these tables using SQL after logging into the
 coordinator node.
 
 > [!NOTE]
->
-> clusters running older versions of the Citus Engine may not
-> offer all the tables listed below.
+> Clusters running older versions of the Citus Engine may not offer all the tables listed here.
 
 ### Partition table
 
@@ -100,7 +100,7 @@ and their representation is below.
 
 ### Shard information view
 
-In addition to the low-level shard metadata table described above, Azure Cosmos
+In addition to the low-level shard metadata table described previously, Azure Cosmos
 DB for PostgreSQL provides a `citus_shards` view to easily check:
 
 * Where each shard is (node, and port),

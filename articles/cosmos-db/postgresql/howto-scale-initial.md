@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 07/04/2024
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Pick initial size for cluster in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 The size of a cluster, both number of nodes and their hardware capacity,
 is [easy to change](howto-scale-grow.md). However you still need to
