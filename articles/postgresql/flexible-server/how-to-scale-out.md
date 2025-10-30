@@ -4,7 +4,7 @@ description: This article describes how to scale out an Azure Database for Postg
 author: jaredmeade
 ms.author: jaredmeade
 ms.reviewer: maghan
-ms.date: 11/17/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
