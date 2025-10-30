@@ -15,4 +15,13 @@ ms.topic: how-to
 
 This article provides step-by-step instructions to perform horizontal scaling operations (scale out) for an Azure Database for PostgreSQL flexible server elastic cluster.
 
+# Rebalancing
+
+How and when to do it.
+
+# Read Replicas
+
+Documenting how add node with replica behaves for elastic clusters.
+
+
 
