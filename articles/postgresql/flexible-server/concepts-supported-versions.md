@@ -30,11 +30,11 @@ PostgreSQL 18 is now available in **Preview** on Azure Database for PostgreSQL f
 
 ## PostgreSQL version 17
 
-The current minor release is **[!INCLUDE [minor-versions-17](includes/minor-version-17.md)]**. Refer to the [!INCLUDE [minor-versions-docs-17](includes/minor-versions-docs-17.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version.
+The current minor release is **[!INCLUDE [minor-versions-17](includes/minor-version-17.md)]**. Refer to the [!INCLUDE [minor-versions-docs-17](includes/minor-version-docs-17.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version.
 
 ## PostgreSQL version 16
 
-The current minor release is **[!INCLUDE [minor-versions-16](includes/minor-version-16.md)]**. Refer to the [!INCLUDE [minor-versions-docs-16](includes/minor-versions-docs-16.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version.
+The current minor release is **[!INCLUDE [minor-versions-16](includes/minor-version-16.md)]**. Refer to the [!INCLUDE [minor-versions-docs-16](includes/minor-version-docs-16.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version.
 
 ## PostgreSQL version 15
 
