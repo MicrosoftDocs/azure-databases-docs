@@ -100,10 +100,10 @@ Extended Support is ideal for customers who...
 
 | PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date | Paid Extended Support End Date |
 | --- | --- | --- | --- | --- | --- |
-| 11 | July 24, 2019 |  November 9, 2025 |  March 31, 2026 |  April 1, 2026 | March 31, 2029 |
-| 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 |  April 1, 2026 | March 31, 2029 |
-| 13 | May 25, 2021 | November 13, 2025 | March 31, 2026 |  April 1, 2026 | March 31, 2029 |
-| 14 | June 29, 2022 | November 12, 2026 | December 11, 2026 | December 12, 2026 | December 11, 2029 |
+| 11 | July 24, 2019 |  November 9, 2025 |  March 31, 2026 |  April 1, 2026 | Noevember 8, 2028 |
+| 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 |  April 1, 2026 | November 13, 2027 |
+| 13 | May 25, 2021 | November 13, 2025 | March 31, 2026 |  April 1, 2026 | November 12, 2028 |
+| 14 | June 29, 2022 | November 12, 2026 | December 11, 2026 | December 12, 2026 | December 10, 2029 |
 
 ### Enrollment and price
 
