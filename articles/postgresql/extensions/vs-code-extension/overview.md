@@ -1,22 +1,22 @@
 ---
 title: What Is the PostgreSQL Extension for Visual Studio Code?
 description: Overview of the PostgreSQL extension for Visual Studio Code.
-author: akashraokm
-ms.author: akashrao
+author: swarathmika
+ms.author: skakivaya
 ms.reviewer: maghan
-ms.date: 06/24/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: overview
 ms.custom:
-  - build-2025
+  - ignite-2025
 ai-usage: ai-assisted
 # customer intent: As a user, I want to understand what the PostgreSQL extension for VS Code is and how I can use it with an Azure Database for PostgreSQL flexible server instance.
 ---
 
-# What is the PostgreSQL extension for Visual Studio Code preview?
+# What is the PostgreSQL extension for Visual Studio Code?
 
-Currently in public preview, the PostgreSQL extension for Visual Studio Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
+The PostgreSQL extension for Visual Studio Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
 
 ## How to install the extension
 
@@ -28,9 +28,9 @@ You can install the PostgreSQL extension directly from the Extensions Marketplac
 
 Once installed, an elephant icon appears to represent the PostgreSQL page in the Visual Studio Code sidebar.
 
-## New features in preview
+## Features
 
-The PostgreSQL extension for Visual Studio Code brings an array of powerful new features to enhance productivity and streamline development workflows. These preview features include:
+The PostgreSQL extension for Visual Studio Code brings an array of powerful new features to enhance productivity and streamline development workflows.
 
 ### Connection Manager
 
@@ -78,12 +78,6 @@ The PostgreSQL extension is compatible with the following operating systems:
 
 Including support for various Linux distributions such as Ubuntu, Fedora, and Red Hat Enterprise Linux.
 
-## Limitations and considerations
-
-The PostgreSQL extension for Visual Studio Code is currently in preview, and there are some limitations and considerations to keep in mind:
-
-- ARM64 not currently supported
-
 ## Feedback and support
 
 For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this via the VS Code Help menu or the PGSQL command palette.
@@ -96,6 +90,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview](quickstart-connect.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview](quickstart-github-copilot.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](quickstart-connect.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](quickstart-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
