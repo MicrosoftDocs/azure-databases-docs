@@ -38,7 +38,7 @@ When credits run out, the VM is limited to its baseline CPU. Under sustained loa
 
 **Best for**: web servers, proof-of-concept environments, small databases, and development builds.
 Not recommended for: production workloads or scenarios with steady, high CPU demand. |
-| General Purpose | D-series VMs provide a solid balance between CPU capabilities and memory size with scalable I/O throughput, which makes them suitable for most production workloads. Examples include servers for hosting web and mobile apps and other enterprise applications. |
+| General Purpose | D-series VMs provide a solid balance between CPU capabilities and memory size with scalable I/O throughput, which makes them suitable for most production workloads. Examples include servers for hosting web and mobile apps and other enterprise applications. 
 | Memory Optimized | E- Series VMs that are suitable for high-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
 
 After you create a server for the compute tier, you can change the number of vCores (up or down) and the storage size (up) in seconds. You also can independently adjust the backup retention period up or down. For more information, see the [Scaling resources in Azure Database for PostgreSQL](concepts-scaling-resources.md) page.
