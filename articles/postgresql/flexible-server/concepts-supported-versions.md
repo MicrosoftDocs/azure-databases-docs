@@ -4,7 +4,7 @@ description: Describes the supported major and minor versions of PostgreSQL in A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 09/29/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -16,15 +16,15 @@ ms.custom:
 
 Azure Database for PostgreSQL currently supports the following major versions.
 
-## PostgreSQL version 18 (Preview)
+## PostgreSQL version 18
 
-PostgreSQL 18 is now available in **Preview** on Azure Database for PostgreSQL flexible server. The preview is initially limited to the **East Asia** region, with additional regions coming in the following weeks. For a list of new features and improvements, refer to the [PostgreSQL 18 release notes](https://www.postgresql.org/docs/18/release-18.html).
+PostgreSQL 18 is now available on Azure Database for PostgreSQL flexible server. For a list of new features and improvements, refer to the [PostgreSQL 18 release notes](https://www.postgresql.org/docs/18/release-18.html).
 
-### PostgreSQL 18 Preview Limitations
+### PostgreSQL 18 limitations
 
-- Microsoft Entra ID authentication is not supported in this preview release.  
-- Extension availability is limited. Certain PostgreSQL extensions are not supported in the PG18 preview. Refer to the [list of supported extensions](./concepts-extensions.md) for details.  
-- Query store and index tuning aren’t supported in this preview release.
+- Microsoft Entra ID authentication is not supported in this release.  
+- Extension availability is limited. Certain PostgreSQL extensions are not supported in the PG18 release. Refer to the [list of supported extensions](./concepts-extensions.md) for details.  
+- Query store and index tuning aren’t supported in this release.
 - Regional availability is currently restricted to East Asia.
 
 ## PostgreSQL version 17
