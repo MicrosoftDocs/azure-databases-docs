@@ -43,6 +43,8 @@ Create a MongoDB cluster by using Azure Cosmos DB for MongoDB vCore.
 
 1. On the **Which type of resource?** page, select the **Create** option within the **vCore cluster** section. For more information, see [API for MongoDB vCore overview](introduction.md).
 
+    :::image type="content" source="media/quickstart-portal/select-tier-option.png" alt-text="Screenshot of the 'resource type' option for a new Azure Cosmos DB for MongoDB cluster.":::
+
 1. On the **Create Azure Cosmos DB for MongoDB cluster** page, select the **Configure** option within the **Cluster tier** section.
 
     :::image type="content" source="media/quickstart-portal/select-cluster-option.png" alt-text="Screenshot of the 'configure cluster' option for a new Azure Cosmos DB for MongoDB cluster.":::
@@ -78,7 +80,7 @@ Create a MongoDB cluster by using Azure Cosmos DB for MongoDB vCore.
 
     :::image type="content" source="media/quickstart-portal/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
 
-1. If you want to configure a private endpoint for connectivity, select **Private access** and follow the [steps](how-to-configure-private-endpoints.md) provided here. This is optional and can also be performed after the server has been provisioned.
+1. If you want to configure a private endpoint for connectivity, select **Private access** and follow the [steps](../how-to-configure-private-endpoints.md) provided here. This is optional and can also be performed after the server has been provisioned.
 
     :::image type="content" source="media/quickstart-portal/networking-settings-pe-at-provisioning.png" alt-text="Screenshot of PE setup on cluster.":::
 
