@@ -68,7 +68,7 @@ An Azure Database for PostgreSQL flexible server instance has a [built-in PgBoun
 
 One advantage of running your workload in Azure is global reach. Azure Database for PostgreSQL is currently available in the following Azure regions:
 
-See the [regions table](includes/regions-table.md) for the list of available Azure regions.
+[!INCLUDE [regions-table](includes/regions-table.md)]
 
 > [!NOTE]  
 > If your application requires zone-redundant high availabilityA and it's unavailable in your preferred Azure region, consider using other regions within the same geography where zone-redundant HA is available, such as US East for US East 2, Central US for North Central US, and so on.
