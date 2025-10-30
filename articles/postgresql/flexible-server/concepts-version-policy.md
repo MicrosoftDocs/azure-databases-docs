@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions for A
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 10/30/2025
+ms.date: 10/30/2025 
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
