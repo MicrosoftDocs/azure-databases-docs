@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: quickstart
 recommendations: false
 ms.date: 01/30/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Model real-time analytics apps in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 ## Colocate large tables with shard key
 

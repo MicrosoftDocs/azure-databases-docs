@@ -7,10 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 3/22/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
+
 # Start and stop compute on cluster nodes
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL allows you to stop compute on all nodes in a cluster. Compute billing is paused when cluster is stopped and continues when computer is started again.
 

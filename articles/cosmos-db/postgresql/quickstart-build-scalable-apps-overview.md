@@ -9,11 +9,13 @@ ms.custom: build-2023, build-2023-dataai
 ms.topic: quickstart
 recommendations: false
 ms.date: 10/01/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Build scalable apps in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 There are three steps involved in building scalable apps with Azure Cosmos DB for PostgreSQL:
 
