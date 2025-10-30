@@ -75,4 +75,4 @@ Once this feature is enabled, standard billing applies for the storage consumed 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Enable fleet analtyics](how-to-enable-fleet-analytics.md)
+> [Enable fleet analytics](how-to-enable-fleet-analytics.md)

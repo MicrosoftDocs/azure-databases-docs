@@ -1,6 +1,6 @@
 ---
 title: Connect and query
-description: Links to quickstarts showing how to connect to your Azure Database for PostgreSQL flexible server and run queries.
+description: Links to quickstarts showing how to connect to your Azure Database for PostgreSQL flexible server instance and run queries.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Connect and query overview for Azure Database for PostgreSQL 
 
-The following document includes links to examples showing how to connect and query with Azure Database for PostgreSQL flexible server. This guide also includes TLS recommendations and extension that you can use to connect to the server in supported languages below.
+The following document includes links to examples showing how to connect and query with Azure Database for PostgreSQL. This guide also includes TLS recommendations and extension that you can use to connect to the server in supported languages below.
 
 ## Quickstarts
 
@@ -25,11 +25,11 @@ The following document includes links to examples showing how to connect and que
 
 ## TLS considerations for database connectivity
 
-Transport Layer Security (TLS) is used by all drivers that Microsoft supplies or supports for connecting to databases in Azure Database for PostgreSQL flexible server. No special configuration is necessary but do enforce TLS 1.2 for newly created servers. We recommend if you are using TLS 1.0 and 1.1, then you update the TLS version for your servers. See [How to configure TLS](how-to-connect-tls-ssl.md)
+Transport Layer Security (TLS) is used by all drivers that Microsoft supplies or supports for connecting to databases in your Azure Database for PostgreSQL flexible server instances. No special configuration is necessary but do enforce TLS 1.2 for newly created servers. We recommend if you are using TLS 1.0 and 1.1, then you update the TLS version for your servers. See [How to configure TLS](how-to-connect-tls-ssl.md)
 
 ## PostgreSQL extensions
 
-Azure Database for PostgreSQL flexible server provides the ability to extend the functionality of your database using extensions. Extensions bundle multiple related SQL objects together in a single package that can be loaded or removed from your database with a single command. After being loaded in the database, extensions function like built-in features.
+Azure Database for PostgreSQL provides the ability to extend the functionality of your database using extensions. Extensions bundle multiple related SQL objects together in a single package that can be loaded or removed from your database with a single command. After being loaded in the database, extensions function like built-in features.
 
 ## Related content
 

@@ -6,12 +6,14 @@ author: jonels-msft
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
-ms.date: 01/30/2023
+ms.date: 10/29/2025
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Distribute and modify tables in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 ## Distributing tables
 
@@ -59,16 +61,16 @@ distributed table, and shard ID is the unique ID assigned. You can connect to
 the worker postgres instances to view or run commands on individual shards.
 
 You're now ready to insert data into the distributed table and run queries on
-it. You can also learn more about the UDF used in this section in the [table
+it. You can also learn more about the user defined function (UDF) used in this section in the [table
 and shard DDL](reference-functions.md#table-and-shard-ddl)
 reference.
 
 ### Reference Tables
 
-The above method distributes tables into multiple horizontal shards.  Another
+The previous method distributes tables into multiple horizontal shards.  Another
 possibility is distributing tables into a single shard and replicating the
 shard to every worker node. Tables distributed this way are called *reference
-tables.* They are used to store data that needs to be frequently accessed by
+tables.* They're used to store data that needs to be frequently accessed by
 multiple nodes in a cluster.
 
 Common candidates for reference tables include:
@@ -121,8 +123,8 @@ cluster, the data in its tables can be distributed
 efficiently and with minimal interruption to an application.
 
 The `create_distributed_table` function described earlier works on both empty
-and non-empty tables, and for the latter it automatically distributes table
-rows throughout the cluster. You will know if it copies data by the presence of
+and nonempty tables, and for the latter it automatically distributes table
+rows throughout the cluster. You know if it copies data by the presence of
 the message, \"NOTICE: Copying data from local table\...\" For example:
 
 ```postgresql
@@ -141,7 +143,7 @@ fails then the queries become local again.) Reads can continue as normal and
 will become distributed queries once the function commits.
 
 When distributing tables A and B, where A has a foreign key to B, distribute
-the key destination table B first. Doing it in the wrong order will cause an
+the key destination table B first. Doing it in the wrong order causes an
 error:
 
 ```
@@ -183,7 +185,7 @@ SELECT create_distributed_table('A', 'some_int_col');
 SELECT create_distributed_table('B', 'other_int_col');
 ```
 
-When a new table is not related to others in its would-be implicit
+When a new table isn't related to others in its would-be implicit
 colocation group, specify `colocated_with => 'none'`.
 
 ```postgresql
@@ -192,11 +194,11 @@ colocation group, specify `colocated_with => 'none'`.
 SELECT create_distributed_table('A', 'foo', colocate_with => 'none');
 ```
 
-Splitting unrelated tables into their own colocation groups will improve [shard
+Splitting unrelated tables into their own colocation groups improve [shard
 rebalancing](howto-scale-rebalance.md) performance, because
 shards in the same group have to be moved together.
 
-When tables are indeed related (for instance when they will be joined), it can
+When tables are indeed related (for instance when they are joined), it can
 make sense to explicitly colocate them. The gains of appropriate colocation are
 more important than any rebalancing overhead.
 
@@ -232,13 +234,13 @@ DROP TABLE github_events;
 ## Modifying tables
 
 Azure Cosmos DB for PostgreSQL automatically propagates many kinds of DDL statements.
-Modifying a distributed table on the coordinator node will update shards on the
+Modifying a distributed table on the coordinator node updates shards on the
 workers too. Other DDL statements require manual propagation, and certain
 others are prohibited such as any which would modify a distribution column.
-Attempting to run DDL that is ineligible for automatic propagation will raise
+Attempting to run DDL that's ineligible for automatic propagation raises
 an error and leave tables on the coordinator node unchanged.
 
-Here is a reference of the categories of DDL statements that propagate.
+Here's a reference of the categories of DDL statements that propagate.
 
 ### Adding/Modifying Columns
 
@@ -259,7 +261,7 @@ ALTER TABLE products ALTER COLUMN price SET DEFAULT 7.77;
 
 Significant changes to an existing column like renaming it or changing its data
 type are fine too. However the data type of the [distribution
-column](concepts-nodes.md#distribution-column) cannot be altered.
+column](concepts-nodes.md#distribution-column) can't be altered.
 This column determines how table data distributes through the cluster,
 and modifying its data type would require moving the data.
 
@@ -283,7 +285,7 @@ LOCATION:  ErrorIfUnsupportedAlterTableStmt, multi_utility.c:2150
 Using Azure Cosmos DB for PostgreSQL allows you to continue to enjoy the safety of a
 relational database, including database constraints (see the PostgreSQL
 [docs](https://www.postgresql.org/docs/current/static/ddl-constraints.html)).
-Due to the nature of distributed systems, Azure Cosmos DB for PostgreSQL will not
+Due to the nature of distributed systems, Azure Cosmos DB for PostgreSQL won't
 cross-reference uniqueness constraints or referential integrity between worker
 nodes.
 
@@ -463,7 +465,7 @@ Azure Cosmos DB for PostgreSQL parallelizes operations such as `create_distribut
 across shards using multiple connections per worker. Whereas, when creating a
 database object, Azure Cosmos DB for PostgreSQL propagates it to worker nodes using a single connection
 per worker. Combining the two operations in a single transaction may cause
-issues, because the parallel connections will not be able to see the object
+issues, because the parallel connections won't be able to see the object
 that was created over a single connection but not yet committed.
 
 Consider a transaction block that creates a type, a table, loads data, and

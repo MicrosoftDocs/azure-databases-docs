@@ -16,7 +16,7 @@ You can automatically deploy your database updates to Azure Database for MySQL F
 
 ## Prerequisites
 
-- An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/free/).
+- An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 - [Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure) to your Azure account
 - Microsoft hosted agents have Azure CLI preinstalled. However, if you use private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computers that run the build and release agent. If an agent is already running on the machine where you install Azure CLI, restart the agent to update all relevant stage variables.

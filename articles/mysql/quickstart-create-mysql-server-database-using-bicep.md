@@ -22,7 +22,7 @@ Azure Database for MySQL is a managed service that you use to run, manage, and s
 
 ## Prerequisites
 
-You need an Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/).
+You need an Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 # [PowerShell](#tab/PowerShell)
 

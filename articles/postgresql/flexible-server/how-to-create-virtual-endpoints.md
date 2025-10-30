@@ -1,6 +1,6 @@
 ---
 title: Create virtual endpoints
-description: This article describes how to create virtual endpoints for an Azure Database for PostgreSQL flexible server.
+description: This article describes how to create virtual endpoints for an Azure Database for PostgreSQL flexible server instance.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Create virtual endpoints
 
-This article provides step-by-step instructions to create virtual endpoints for an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to create virtual endpoints for an Azure Database for PostgreSQL flexible server instance.
 
 ## Steps to create virtual endpoints
 
@@ -20,7 +20,7 @@ This article provides step-by-step instructions to create virtual endpoints for 
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the Azure Database for PostgreSQL flexible server for which you want to create virtual endpoints.
+1. Select the Azure Database for PostgreSQL flexible server instance for which you want to create virtual endpoints.
 
 2. In the resource menu, under the **Settings** section, select **Replication**.
 
@@ -53,7 +53,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-create-virtual-endpoints)
 
-You can create virtual endpoints for your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint create`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-create) command. 
+You can create virtual endpoints for your Azure PostgreSQL flexible server instance via the [`az postgres flexible-server virtual-endpoint create`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-create) command. 
 
 ```azurecli-interactive
 az postgres flexible-server virtual-endpoint create \

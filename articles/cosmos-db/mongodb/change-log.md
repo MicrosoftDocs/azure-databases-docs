@@ -46,16 +46,6 @@ The 16-MB document limit in Azure Cosmos DB for MongoDB provides developers the 
 
 [Learn more](./feature-support-42.md#data-types)
 
-### Azure Data Studio MongoDB extension for Azure Cosmos DB (Preview)
-
-You can now use the free and lightweight tool feature to manage and query your MongoDB resources using mongo shell. Azure Data Studio MongoDB extension for Azure Cosmos DB allows you to manage multiple accounts all in one view by:
-
-1. Connecting your Mongo resources
-1. Configuring the database settings
-1. Performing create, read, update, and delete (CRUD) across Windows, macOS, and Linux
-
-[Learn more](https://aka.ms/cosmosdb-ads)
-
 ### Linux emulator with Azure Cosmos DB for MongoDB
 
 The Azure Cosmos DB Linux emulator with API for MongoDB support provides a local environment that emulates the Azure Cosmos DB service for development purposes on Linux and macOS. Using the emulator, you can develop and test your MongoDB applications locally, without creating an Azure subscription or incurring any costs.

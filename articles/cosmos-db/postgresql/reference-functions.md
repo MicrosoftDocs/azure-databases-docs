@@ -6,19 +6,19 @@ author: jonels-msft
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: reference
-ms.date: 09/29/2023
+ms.date: 10/29/2025
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Azure Cosmos DB for PostgreSQL functions
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 This section contains reference information for the user-defined functions provided by Azure Cosmos DB for PostgreSQL. These functions help in providing distributed functionality to Azure Cosmos DB for PostgreSQL.
 
 > [!NOTE]
->
-> clusters running older versions of the Citus Engine may not
-> offer all the functions listed on this page.
+> Clusters running older versions of the Citus Engine might not offer all the functions listed on this page.
 
 ## Table and Shard DDL
 
@@ -82,7 +82,7 @@ This function replaces usage of master\_create\_distributed\_table() followed by
 
 **colocate\_with:** (Optional) include current table in the colocation group of another table. By default tables are colocated when they're distributed by columns of the same type, have the same shard count, and have the same replication factor. Possible values for `colocate_with` are `default`, `none` to start a new colocation group, or the name of another table to colocate with that table.  (See [table colocation](concepts-colocation.md).)
 
-Keep in mind that the default value of `colocate_with` does implicit colocation. [Colocation](concepts-colocation.md) can be a great thing when tables are related or will be joined.  However when two tables are unrelated but happen to use the same datatype for their distribution columns, accidentally colocating them can decrease performance during [shard rebalancing](howto-scale-rebalance.md).  The table shards will be moved together unnecessarily in a \"cascade.\"
+Keep in mind that the default value of `colocate_with` does implicit colocation. [Colocation](concepts-colocation.md) can be a great thing when tables are related or will be joined.  However when two tables are unrelated but happen to use the same datatype for their distribution columns, accidentally colocating them can decrease performance during [shard rebalancing](howto-scale-rebalance.md).  The table shards are moved together unnecessarily in a \"cascade.\"
 
 If a new distributed table isn't related to other tables, it's best to specify `colocate_with => 'none'`.
 
@@ -202,8 +202,8 @@ The alter_distributed_table() function can be used to change the distribution co
 
 **colocate\_with:** (Optional) The table that the current distributed table will be colocated with. Possible values are `default`, `none` to start a new colocation group, or the name of another table with which to colocate. (See [table colocation](concepts-colocation.md).)
 
-**cascade_to_colocated:** (Optional) When this argument is set to "true",
-`shard_count` and `colocate_with` changes will also be applied to all of the tables that were previously colocated with the table, and the colocation will be preserved. If it is "false", the current colocation of this table will be broken.
+**cascade_to_colocated:** (Optional) When this argument is set to "true,"
+`shard_count` and `colocate_with` changes will also be applied to all of the tables that were previously colocated with the table, and the colocation will be preserved. If it is "false," the current colocation of this table will be broken.
 
 #### Return value
 
@@ -224,7 +224,7 @@ SELECT alter_distributed_table('github_events', colocate_with:='another_table');
 
 ### update_distributed_table_colocation
 
-The update_distributed_table_colocation() function is used to update colocation of a distributed table. This function can also be used to break colocation of a distributed table. Azure Cosmos DB for PostgreSQL will implicitly colocate two tables if the distribution column is the same type, this can be useful if the tables are related and will do some joins. If tables A and B are colocated, and table A gets rebalanced, table B will also be rebalanced. If table B doesn't have a replica identity, the rebalance will fail. Therefore, this function can be useful breaking the implicit colocation in that case.
+The update_distributed_table_colocation() function is used to update colocation of a distributed table. This function can also be used to break colocation of a distributed table. Azure Cosmos DB for PostgreSQL will implicitly colocate two tables if the distribution column is the same type, this can be useful if the tables are related and will do some joins. If tables A and B are colocated, and table A gets rebalanced, table B will also be rebalanced. If table B doesn't have a replica identity, the rebalance fails. Therefore, this function can be useful breaking the implicit colocation in that case.
 
 This function doesn't move any data around physically.
 
@@ -414,7 +414,7 @@ The create_time_partitions() function creates partitions of a given interval to 
 **partition_interval:** an interval of time, such as `'2 hours'`, or `'1
 month'`, to use when setting ranges on new partitions.
 
-**end_at:** (timestamptz) create partitions up to this time. The last partition will contain the point end_at, and no later partitions will be created.
+**end_at:** (timestamptz) create partitions up to this time. The last partition contains the point end_at, and no later partitions are created.
 
 **start_from:** (timestamptz, optional) pick the first partition so that it contains the point start_from. The default value is `now()`.
 
@@ -460,7 +460,7 @@ CALL drop_old_time_partitions('foo', now() - interval '12 months');
 
 ### alter_old_partitions_set_access_method
 
-In a timeseries use case, tables are often partitioned by time, and old partitions are compressed into read-only columnar storage.
+In a time series use case, tables are often partitioned by time, and old partitions are compressed into read-only columnar storage.
 
 #### Arguments
 
@@ -690,9 +690,9 @@ N/A
 
 #### Example
 
-The example below will repair an inactive shard placement of shard
+The example here repairs an inactive shard placement of shard
 12345, which is present on the database server running on 'bad\_host'
-on port 5432. To repair it, it will use data from a healthy shard placement present on the server running on 'good\_host' on port
+on port 5432. To repair it, it uses data from a healthy shard placement present on the server running on 'good\_host' on port
 5432.
 
 ```postgresql
@@ -758,7 +758,7 @@ The "by\_shard\_count" strategy is appropriate under these circumstances:
 
 If any of these assumptions don’t hold, then rebalancing “by_shard_count” can result in a bad plan.
 
-The default rebalancing strategy is “by_disk_size”. You can always customize the strategy, using the `rebalance_strategy` parameter.
+The default rebalancing strategy is "by_disk_size." You can always customize the strategy, using the `rebalance_strategy` parameter.
 
 It's advisable to call
 [get_rebalance_table_shards_plan](#get_rebalance_table_shards_plan) before running rebalance\_table\_shards, to see and verify the actions to be performed.
@@ -950,7 +950,7 @@ This function creates a new shard to hold rows with a specific single value in t
 
 **table\_name:** The name of the table to get a new shard.
 
-**tenant\_id:** The value of the distribution column that will be assigned to the new shard.
+**tenant\_id:** The value of the distribution column that is assigned to the new shard.
 
 **cascade\_option:** (Optional) When set to \"CASCADE,\" also isolates a shard from all tables in the current table's [colocation group](concepts-colocation.md).
 

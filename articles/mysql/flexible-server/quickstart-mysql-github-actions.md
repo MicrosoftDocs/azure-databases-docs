@@ -22,7 +22,7 @@ Get started with [GitHub Actions](https://docs.github.com/en/actions) by using a
 
 You'll need:
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A GitHub account. If you don't have a GitHub account, [sign up for free](https://github.com/join).
 - A GitHub repository with sample data (`data.sql`).
 

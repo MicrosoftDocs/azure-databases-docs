@@ -18,6 +18,8 @@ zone_pivot_groups: azure-devlang-nodejs
 
 [!INCLUDE[Quickstart developer selector](includes/selector-quickstart-developer.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Get started with the Azure Cosmos DB for Apache Gremlin client library for Node.js to store, manage, and query unstructured data. Follow the steps in this guide to create a new account, install a Node.js client library, connect to the account, perform common operations, and query your final sample data.
 
 [Library source code](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript/src/main/javascript/gremlin-javascript) | [Package (npm)](https://www.npmjs.com/package/gremlin)

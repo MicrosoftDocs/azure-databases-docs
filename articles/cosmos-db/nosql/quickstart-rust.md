@@ -34,7 +34,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for NoSQL application usi
 - Docker Desktop
 - Rust 1.80 or later
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ### Install the client library
 

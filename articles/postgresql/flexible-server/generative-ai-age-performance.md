@@ -1,8 +1,8 @@
 ---
 title: Apache AGE Performance Best Practices
 description: Best practices for improving queries in Apache Age with Azure Database for PostgreSQL.
-author: jojohnso-msft
-ms.author: jojohnso
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 05/19/2025
 ms.update-cycle: 180-days
@@ -152,7 +152,7 @@ AGEFreighter is a Python library designed to facilitate the loading of data into
 
 #### Environment setup
 
-- Created an Azure Database for PostgreSQL flexible server with AGE enabled.
+- Created an Azure Database for PostgreSQL flexible server instance with AGE enabled.
 - Python dependency management tool such as Poetry is recommended. Python 3.9 or later must be installed.
 - The AGEFreighter library (AGEFreighter PyPi) must be installed as a dependency:
 

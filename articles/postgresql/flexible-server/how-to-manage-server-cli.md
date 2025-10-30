@@ -18,7 +18,7 @@ This article shows you how to manage your Azure Database for PostgreSQL flexible
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/free/) account before you begin. 
+If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) account before you begin. 
 
 You'll need to be running the Azure CLI version 2.0, or later, locally. To see the version installed, run the `az --version` command. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
 
@@ -35,7 +35,7 @@ az account set --subscription <subscription id>
 ```
 
 > [!Important]
-> If you haven't created Azure Database for PostgreSQL flexible server instance yet, you need to do so to follow this how-to guide.
+> If you haven't created an Azure Database for PostgreSQL flexible server instance yet, you need to do so to follow this how-to guide.
 
 ## Scale compute and storage
 
@@ -137,5 +137,5 @@ az postgres flexible-server delete --resource-group myresourcegroup --name mydem
 ```
 
 ## Related content
-- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).
-- [Monitor metrics in Azure Database for PostgreSQL flexible server](concepts-monitoring.md).
+- [Backup and restore in Azure Database for PostgreSQL](concepts-backup-restore.md).
+- [Monitor metrics in Azure Database for PostgreSQL](concepts-monitoring.md).

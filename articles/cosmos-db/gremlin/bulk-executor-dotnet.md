@@ -13,6 +13,8 @@ ms.custom: devx-track-dotnet, devx-track-extended-java, sfi-ropc-blocked
 
 # Ingest data in bulk in the Azure Cosmos DB for Gremlin by using a bulk executor library
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Graph databases often need to ingest data in bulk to refresh an entire graph or update a portion of it. Azure Cosmos DB, a distributed database and the backbone of the Azure Cosmos DB for Gremlin, is meant to perform best when the loads are well distributed. Bulk executor libraries in Azure Cosmos DB are designed to exploit this unique capability of Azure Cosmos DB and provide optimal performance. For more information, see [Introducing bulk support in the .NET SDK](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk).
 
 In this tutorial, you learn how to use the Azure Cosmos DB bulk executor library to import and update *graph* objects into an Azure Cosmos DB for Gremlin container. During this process, you use the library to create *vertex* and *edge* objects programmatically and then insert multiple objects per network request.
@@ -30,7 +32,7 @@ Before you begin, make sure that you have the following:
 
 * Visual Studio 2019 with the Azure development workload. You can get started with the [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) for free.
 
-* An Azure subscription. If you don't already have a subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). 
+* An Azure subscription. If you don't already have a subscription, you can [create a free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). 
 
 * An Azure Cosmos DB for Gremlin database with an *unlimited collection*. To get started, go to [Azure Cosmos DB for Gremlin in .NET](./quickstart-dotnet.md).
 

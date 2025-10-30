@@ -67,11 +67,13 @@
         - name: Stopwords list
           href: ../gen-ai/stopwords.md?context=/azure/cosmos-db/nosql/context/context
         - name: Full text search FAQ
-          href: ../gen-ai/full-text-search-faq.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../gen-ai/full-text-search-faq.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
       href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrate with AI tools
       href: ../gen-ai/integrations.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Manage agent memories
+      href: ../gen-ai/agentic-memories.md
     - name: Build a RAG chatbot
       href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
     - name: Index documents for search
@@ -86,7 +88,7 @@
           href: ../vector-database.md?context=/azure/cosmos-db/nosql/context/context
         - name: Vector search
           href: ../gen-ai/vector-search-overview.md?context=/azure/cosmos-db/nosql/context/context
-        - name: Retrieval Augmented Generation (RAG)
+        - name: Retrieval-augmented generation (RAG)
           href: ../gen-ai/rag.md?context=/azure/cosmos-db/nosql/context/context
         - name: Tokens
           href: ../gen-ai/tokens.md?context=/azure/cosmos-db/nosql/context/context
@@ -155,6 +157,10 @@
       href: ../security-controls-policy.md?context=/azure/cosmos-db/nosql/context/context
     - name: Threat protection with Microsoft Defender for Cloud
       href: defender-for-cosmos-db.md
+    - name: Rotate keys
+      href: how-to-rotate-keys.md
+    - name: Assign users and roles
+      href: how-to-add-assign-user-roles.md
     - name: Reference
       items:
         - name: Control plane actions
@@ -178,6 +184,9 @@
         - name: Frequently asked questions
           displayName: faq, questions, answers
           href: faq.yml?context=/azure/cosmos-db/nosql/context/context#security
+        - name: Videos
+          displayName: playlist, YouTube
+          href: reference-videos.md
 - name: Model data for partitioning
   items:
     - name: Overview of resource model

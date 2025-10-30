@@ -15,17 +15,17 @@ ms.custom:
 
 # Use an Azure free account to try Azure Database for PostgreSQL  for free
 
-Azure Database for PostgreSQL flexible server is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud. With an Azure free account, you can use Azure Database for PostgreSQL flexible server for **free for 12 months** with **monthly limits** of up to:
+Azure Database for PostgreSQL is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud. With an Azure free account, you can use an Azure Database for PostgreSQL flexible server instance for **free for 12 months** with **monthly limits** of up to:
 - **750 hours** of **Burstable B1MS** instance, enough hours to run a database instance continuously each month.
 - **32 GB storage and 32 GB backup storage**.
 
-This article shows you how to create and use an Azure Database for PostgreSQL flexible server instance for free using an [Azure free account](https://azure.microsoft.com/free/).
+This article shows you how to create and use an Azure Database for PostgreSQL flexible server instance for free using an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ## Prerequisites
 
 To complete this tutorial, you need:
 
-- An Azure free account. If you don't have one, [create a free account](https://azure.microsoft.com/free/) before you begin.
+- An Azure free account. If you don't have one, [create a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Create a flexible server instance
 
@@ -36,7 +36,7 @@ To complete this tutorial, you need:
 
 1. To create an Azure Database for PostgreSQL flexible server instance, search for and select **Azure Database for PostgreSQL servers**:
 
-    :::image type="content" source="media/how-to-deploy-on-azure-free-account/select-postgresql.png" alt-text="Screenshot that shows how to search and select Azure Database for PostgreSQL flexible server.":::
+    :::image type="content" source="media/how-to-deploy-on-azure-free-account/select-postgresql.png" alt-text="Screenshot that shows how to search and select Azure Database for PostgreSQL flexible server instance.":::
 
     Alternatively, you can search for and navigate to **Free Services**, and then select **Azure Database for PostgreSQL** tile from the list:
 
@@ -50,12 +50,12 @@ To complete this tutorial, you need:
     | --- | --- | --- |
     | Subscription | Your subscription name | Select the Free Trial Azure subscription. |
     | Resource group | Your resource group | Enter a new resource group or an existing one from your subscription. |
-    | Server name | mydemoserver-pgsql | Specify a unique name to identify your flexible server. The domain name *postgres.database.azure.com* is appended to the server name you provide. The server name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain between 3 and 63 characters. |
+    | Server name | mydemoserver-pgsql | Specify a unique name to identify your flexible server instance. The domain name *postgres.database.azure.com* is appended to the server name you provide. The server name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain between 3 and 63 characters. |
     | Region | The region closest to your users | Select a location from the list, preferably the location that's closest to your users. |
     | PostgreSQL version | The latest major version | Use the latest PostgreSQL major version unless you have specific requirements otherwise. |
     | Workload type | Development | For a free trial, select **Development** workload. For a production workload, choose Small/Medium-size or Large-size depending on your requirements. |
     | Compute + storage | Default | Select the SKU of the compute and storage that better accommodates your performance and cost needs. |
-    | Availability zone | No preference | If your application (hosted on Azure VMs, virtual machine scale sets or AKS instance) is provisioned in a specific availability zone, create your flexible server in the same availability zone. Collocating the application and database improves performance by reducing network latency across zones. If you choose **No preference**, a default AZ is selected for you. |
+    | Availability zone | No preference | If your application (hosted on Azure VMs, virtual machine scale sets or AKS instance) is provisioned in a specific availability zone, create your flexible server instance in the same availability zone. Collocating the application and database improves performance by reducing network latency across zones. If you choose **No preference**, a default AZ is selected for you. |
     | High availability | Default | Leave the High Availability option unchecked. |
     | Authentication method | PostgreSQL authentication only | Select the authentication method that suits your authentication needs for this instance of PostgreSQL. |
     | Admin username | myadmin | Create a sign-in account to use when you connect to the server. The admin username must contain between 1 and 63 characters, must only contain numbers and letters, can't start with **pg_** and can't be **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest**, or **public**. |
@@ -75,7 +75,7 @@ To complete this tutorial, you need:
 
 1. Select **Networking** tab to configure how to reach your server.
 
-    Azure Database for PostgreSQL flexible server provides two ways to connect:
+    Azure Database for PostgreSQL provides two ways to connect:
     - Public access (allowed IP addresses) and Private endpoint
     - Private access (VNet Integration)
 
@@ -86,7 +86,7 @@ To complete this tutorial, you need:
     For the purposes of this tutorial, enable public access to connect to the server.
 
     > [!NOTE]  
-    > Azure Database for PostgreSQL flexible server support for Private Endpoints in Preview requires enablement of **Enable Private Endpoints for PostgreSQL flexible servers** [preview feature in your subscription](/azure/azure-resource-manager/management/preview-features).
+    > Azure Database for PostgreSQL support for Private Endpoints in Preview requires enablement of **Enable Private Endpoints for PostgreSQL** [preview feature in your subscription](/azure/azure-resource-manager/management/preview-features).
     > Only **after preview feature is enabled** you can create servers which are PE capable, i.e. can be networked using Private Link.
 
 1. On the **Networking** tab, for **Connectivity method** select **Public access (allowed IP addresses) and Private endpoint**.
@@ -97,7 +97,7 @@ To complete this tutorial, you need:
 
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/networking-postgresql.png" alt-text="Screenshot that shows the networking options to be chosen, and highlights the add current client IP address button.":::
 
-1. To review your Azure Database for PostgreSQL flexible server configuration, select **Review + create**.
+1. To review your Azure Database for PostgreSQL configuration, select **Review + create**.
 
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/review-create-postgresql.png" alt-text="Screenshot that shows the Review + create blade." lightbox="media/how-to-deploy-on-azure-free-account/review-create-postgresql.png":::
 
@@ -126,14 +126,14 @@ Now that you've created an Azure Database for PostgreSQL flexible server instanc
 
 ## Monitor and track free services usage
 
-You're not charged for Azure Database for PostgreSQL flexible server services that are included for free with your Azure free account unless you exceed the free service limits. To remain within the limits, use the Azure portal to track and monitor your free services usage.
+You're not charged for Azure Database for PostgreSQL services that are included for free with your Azure free account unless you exceed the free service limits. To remain within the limits, use the Azure portal to track and monitor your free services usage.
 
 1. In the Azure portal, search for **Subscriptions** and select the Azure free account - **Free Trial** subscription.
 1. On the **Overview** page, scroll down to show the tile **Top free services by usage**, and then select **View all free services**.
 
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/free-services-usage-overview.png" alt-text="Screenshot that shows the Free Trial subscription overview page and highlights View all free services." lightbox="media/how-to-deploy-on-azure-free-account/free-services-usage-overview.png":::
 
-1. Locate the below meters related to **Azure Database for PostgreSQL flexible server** to track usage:
+1. Locate the below meters related to **Azure Database for PostgreSQL** to track usage:
 
     | Meter | Description | Monthly Limit |
     | --- | --- | --- |

@@ -1,6 +1,6 @@
 ---
 title: Update Application Client Certificates
-description: Learn about updating Java clients with flexible server using  TLS.
+description: Learn about updating Java clients with Azure Database for PostgreSQL flexible server instances using TLS.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -16,12 +16,12 @@ ms.custom:
 
 # Update application client certificates
 
-When connecting applications to Azure Database for PostgreSQL, the application client must install trusted root certificates. The following sections guide you through updating the trusted root certificates for applications, which is a common scenario for applications connecting to Azure Database for PostgreSQL flexible server.
+When connecting applications to Azure Database for PostgreSQL, the application client must install trusted root certificates. The following sections guide you through updating the trusted root certificates for applications, which is a common scenario for applications connecting to an Azure Database for PostgreSQL flexible server instance.
 
 ## Import Root CA Certificates in Java Key Store on the client, for certificate pinning scenarios
 
 Custom-written Java applications use a default keystore, called `cacerts`, which contains trusted certificate authority (CA) certificates. It's also often known as Java trust store. A certificates file named `cacerts` resides in the security properties directory, java.home\lib\security, where java.home is the runtime environment directory (the `jre` directory in the SDK or the top-level directory of the Java™ 2 Runtime Environment).
-You can use following directions to update client root CA certificates for client certificate pinning scenarios with PostgreSQL Flexible Server:
+You can use following directions to update client root CA certificates for client certificate pinning scenarios with PostgreSQL:
 
 1. Check `cacerts` java keystore to see if it already contains required certificates. You can list certificates in Java keystore by using following command:
 
@@ -95,9 +95,9 @@ public void whenLoadingCacertsKeyStore_thenCertificatesArePresent() {
 
 ## Update Root CA certificates when using clients in Azure App Services, for certificate pinning scenarios
 
-For Azure App services, connecting to an Azure Database for PostgreSQL flexible server, we can have two possible scenarios on updating client certificates and it depends on how on you're using SSL with your application deployed to Azure App Services.
+For Azure App services, connecting to an Azure Database for PostgreSQL flexible server instance, we can have two possible scenarios on updating client certificates and it depends on how on you're using SSL with your application deployed to Azure App Services.
 
-- New certificates are added to App Service at platform level before changes occur in your Azure Database for PostgreSQL flexible server. If you're using the SSL certificates included on App Service platform in your application, no action is needed. For more information, see [Add and manage TLS/SSL certificates in Azure App Service](/azure/app-service/configure-ssl-certificate), in the Azure App Service documentation.
+- New certificates are added to App Service at platform level before changes occur in your Azure Database for PostgreSQL flexible server instance. If you're using the SSL certificates included on App Service platform in your application, no action is needed. For more information, see [Add and manage TLS/SSL certificates in Azure App Service](/azure/app-service/configure-ssl-certificate), in the Azure App Service documentation.
 - If you're explicitly including the path to SSL certificate file in your code, you would need to download the new certificate, and update the code to use it. A good example of this scenario is when you use custom containers in App Service as described in the [Tutorial: Configure a sidecar container for custom container in Azure App Service](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress), in the Azure App Service documentation.
 
 ## Update Root CA certificates when using clients in Azure Kubernetes Service (AKS), for certificate pinning scenarios
@@ -106,7 +106,7 @@ If you're trying to connect to the Azure Database for PostgreSQL using applicati
 
 ## Update Root CA certificates for .NET (Npgsql) users on Windows, for certificate pinning scenarios
 
-For .NET (Npgsql) users on Windows, connecting to Azure Database for PostgreSQL flexible servers, make sure **all three** Microsoft RSA Root Certificate Authority 2017, DigiCert Global Root G2, and Digicert Global Root CA all exist in Windows Certificate Store, Trusted Root Certification Authorities. If any certificates don't exist, import the missing certificate.
+For .NET (Npgsql) users on Windows, connecting to Azure Database for PostgreSQL flexible server instances, make sure **all three** Microsoft RSA Root Certificate Authority 2017, DigiCert Global Root G2, and Digicert Global Root CA all exist in Windows Certificate Store, Trusted Root Certification Authorities. If any certificates don't exist, import the missing certificate.
 
 ## Update Root CA certificates for other clients, for certificate pinning scenarios
 
@@ -123,4 +123,4 @@ For other PostgreSQL client users, you can merge two CA certificate files using 
 
 ## Related content
 
-- [Security in Azure Database for PostgreSQL flexible server](concepts-security.md)
+- [Security in Azure Database for PostgreSQL](concepts-security.md)

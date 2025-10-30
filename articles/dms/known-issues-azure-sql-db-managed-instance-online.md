@@ -1,10 +1,10 @@
 ---
-title: Known issues and limitations with online migrations to Azure SQL Managed Instance
+title: Known Issues and Limitations with Online Migrations to Azure SQL Managed Instance
 description: Learn about known issues/migration limitations associated with online migrations to Azure SQL Managed Instance.
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
 ms.collection:
@@ -15,16 +15,16 @@ ms.custom:
 
 # Known issues/migration limitations with online migrations to Azure SQL Managed Instance
 
-Known issues and limitations that are associated with online migrations from SQL Server to Azure SQL Managed Instance are described below.
+Known issues and limitations that are associated with online migrations from SQL Server to Azure SQL Managed Instance are described as follows.
 
 > [!IMPORTANT]  
-> With online migrations of SQL Server to Azure SQL Managed Instance, migration of SQL_variant data types isn't supported.
+> With online migrations of SQL Server to Azure SQL Managed Instance, migration of **sql_variant** data types isn't supported.
 
 ## Backup requirements
 
 - **Backup media**
 
-  Make sure to take every backup on a separate backup media (backup files). Azure Database Migration Service doesn't support backups that are appended to a single backup file. Take full, differential and log backups to separate backup files.
+  Make sure to take every backup on a separate backup media (backup files). Azure Database Migration Service doesn't support backups that are appended to a single backup file. Take full, differential, and log backups to separate backup files.
 
 ## Data and log file layout
 
@@ -36,7 +36,7 @@ Known issues and limitations that are associated with online migrations from SQL
 
 - **FileStream/FileTables**
 
-  SQL Managed Instance currently doesn't support FileStream and FileTables. For workloads dependent on these features, we recommend that you opt for SQL Servers running on Azure VMs as your Azure target.
+  SQL Managed Instance currently doesn't support FileStream and FileTables. For workloads dependent on these features, we recommend that you opt for SQL Server running on Azure Virtual Machines as your Azure target.
 
 - **In-memory tables**
 
@@ -50,11 +50,11 @@ Known issues and limitations that are associated with online migrations from SQL
 
   Migration cutover can only be called after the full backup is restored and catches up with all log backups. If your production migration cutovers are affected by unexpected issues, [open a support ticket to get assistance](https://azure.microsoft.com/support/create-ticket/).
 
-  You can submit ideas/suggestions for improvement, and other feedback, including bugs in the [Azure Community forum — Azure Database Migration Service](https://feedback.azure.com/d365community/forum/2dd7eb75-ef24-ec11-b6e6-000d3a4f0da0).
+  You can submit ideas/suggestions for improvement, and other feedback, including bugs in the [Azure Community forum - Azure Database Migration Service](https://feedback.azure.com/d365community/forum/2dd7eb75-ef24-ec11-b6e6-000d3a4f0da0).
 
 ## SMB file share connectivity
 
-Issues connecting to the SMB file share are likely caused by a permissions issue.
+Issues connecting to the SMB file share are likely the result of a permissions issue.
 
 To test SMB file share connectivity, follow these steps:
 
@@ -81,4 +81,4 @@ If you're unable to connect to the file share, configure permissions with these 
 
 1. Add the SQL Server service account, and assign it full control access. Check the **SQL Server Configuration Manager** for the SQL Server service account if you're not sure which account is being used.
 
-   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="Screenshot showing Give full control access to the Windows accounts used for migration and for the SQL Server service account. ":::
+   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="Screenshot showing how to give full control access to the Windows accounts used for migration and for the SQL Server service account.":::

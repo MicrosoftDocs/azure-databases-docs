@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 11/28/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Configure high availability in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL provides high availability
 (HA) to avoid database downtime. With HA enabled, every node in a cluster

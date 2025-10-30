@@ -9,11 +9,13 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/01/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Tutorial: Shard data on worker nodes in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 In this tutorial, you use Azure Cosmos DB for PostgreSQL to learn how to:
 

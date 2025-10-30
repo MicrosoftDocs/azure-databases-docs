@@ -1,6 +1,6 @@
 ---
 title: Managed Identities
-description: Learn about Managed identities in Azure Database for PostgreSQL flexible server.
+description: Learn about Managed identities in Azure Database for PostgreSQL.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -28,7 +28,7 @@ Here are some of the benefits of using managed identities:
 
 There are two types of managed identities:
 
-- **System assigned**: Some Azure resource types, such as Azure Database for PostgreSQL flexible server, allow you to enable a managed identity directly on the resource. They're referred to as system assigned managed identities. When you enable a system assigned managed identity:
+- **System assigned**: Some Azure resource types, such as Azure Database for PostgreSQL, allow you to enable a managed identity directly on the resource. They're referred to as system assigned managed identities. When you enable a system assigned managed identity:
 - A service principal of a special type is created in Microsoft Entra ID for the identity. The service principal is tied to the lifecycle of that Azure resource. When the Azure resource is deleted, Azure automatically deletes the service principal for you.
 - By design, only that Azure resource can use this identity to request tokens from Microsoft Entra ID.
 - You can authorize the service principal associated to the managed identity to have access to one or more services.
@@ -41,18 +41,18 @@ There are two types of managed identities:
 
 ## Uses of managed identities in Azure Database for PostgreSQL 
 
-**System assigned managed identity** for an Azure Database for PostgreSQL flexible server is used by:
+**System assigned managed identity** for an Azure Database for PostgreSQL is used by:
 
 - [azure_storage extension](concepts-storage-extension.md), when configured to access a storage account using the `managed-identity` authentication type. For more information, see how to [configure the azure_storage extension to use authorization with Microsoft Entra ID](./how-to-configure-azure-storage-extension.md#to-use-authorization-with-microsoft-entra-id).
-- [Microsoft Fabric mirrored databases from Azure Database for PostgreSQL flexible server (preview)](https://techcommunity.microsoft.com/blog/adforpostgresql/mirroring-azure-database-for-postgresql-flexible-server-in-microsoft-fabric---pr/4251876) uses the credentials of the system assigned managed identity to sign the requests that your instance of flexible server sends to the Azure DataLake service in Microsoft Fabric to mirror your designated databases.
+- [Microsoft Fabric mirrored databases from Azure Database for PostgreSQL (preview)](https://techcommunity.microsoft.com/blog/adforpostgresql/mirroring-azure-database-for-postgresql-flexible-server-in-microsoft-fabric---pr/4251876) uses the credentials of the system assigned managed identity to sign the requests that your instance of flexible server sends to the Azure DataLake service in Microsoft Fabric to mirror your designated databases.
 
-**User assigned managed identities** configured for an Azure Database for PostgreSQL flexible server can be used for:
+**User assigned managed identities** configured for an Azure Database for PostgreSQL flexible server instance can be used for:
 
 - [Data encryption with customer managed keys](concepts-data-encryption.md).
 
 ## Related content
 
-- [Configure system or user assigned managed identities in Azure Database for PostgreSQL flexible server](how-to-configure-managed-identities.md)
-- [Firewall rules in Azure Database for PostgreSQL flexible server](concepts-firewall-rules.md)
-- [Public access and private endpoints in Azure Database for PostgreSQL flexible server](concepts-networking-public.md)
-- [Virtual network integration in Azure Database for PostgreSQL flexible server](concepts-networking-private.md)
+- [System assigned managed identity](how-to-configure-managed-identities.md)
+- [Firewall rules in Azure Database for PostgreSQL](concepts-firewall-rules.md)
+- [Networking overview for Azure Database for PostgreSQL with public access ](concepts-networking-public.md)
+- [Network with private access for Azure Database for PostgreSQL](concepts-networking-private.md)

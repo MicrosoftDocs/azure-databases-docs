@@ -8,6 +8,8 @@ metadata:
   ms.topic: faq
   ms.date: 08/18/2025
 title: Frequently asked questions about Azure Cosmos DB for Apache Gremlin
+summary: |
+  [!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 sections:
   - name: Gremlin queries
     questions:

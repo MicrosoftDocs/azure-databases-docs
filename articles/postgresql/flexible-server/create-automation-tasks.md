@@ -13,11 +13,11 @@ ms.topic: quickstart
 # Quickstart: Manage Azure Database for PostgreSQL  using automation tasks
 
 > [!NOTE]
-> If a free trial is available, you can find more information about it [here](https://azure.microsoft.com/free/).
+> If a free trial is available, you can find more information about it [here](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 You can create automation tasks for your Azure Database for PostgreSQL flexible server instance to start or stop the server on a predefined schedule. Set the Interval and Frequency values on the task's Configure tab to automatically start or stop the server a specific number of times every day, week, or month. The automation task continues to work until you delete or disable the task.
 
-You can also set up automation tasks for other routine tasks such as 'Send monthly cost for resource' and 'Scale Azure Database for PostgreSQL flexible server'.
+You can also set up automation tasks for other routine tasks such as 'Send monthly cost for resource' and 'Scale Azure Database for PostgreSQL'.
 
 ## How do automation tasks differ from Azure Automation?
 

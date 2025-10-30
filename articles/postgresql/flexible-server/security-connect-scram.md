@@ -1,6 +1,6 @@
 ---
 title: Connectivity with SCRAM
-description: Instructions and information on how to configure and connect using SCRAM in Azure Database for PostgreSQL flexible server.
+description: Instructions and information on how to configure and connect using SCRAM in an Azure Database for PostgreSQL flexible server instance.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -23,7 +23,7 @@ SCRAM authentication imposes extra computational load on your application server
 
 ## Configure SCRAM authentication
 
-1. Change password_encryption to SCRAM-SHA-256. Currently Azure Database for PostgreSQL flexible server only supports SCRAM using SHA-256.
+1. Change password_encryption to SCRAM-SHA-256. Currently Azure Database for PostgreSQL only supports SCRAM using SHA-256.
 
     :::image type="content" source="media/security-connect-scram/1-password-encryption.png" alt-text="Screenshot of encryption page for SCRAM.":::
 
@@ -94,6 +94,6 @@ SCRAM authentication imposes extra computational load on your application server
 
 ## Related content
 
-- [Create and manage Azure Database for PostgreSQL flexible server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md)
-- [Networking in Azure Database for PostgreSQL flexible server](concepts-networking-private.md)
-- [Firewall rules in Azure Database for PostgreSQL flexible server](concepts-networking-public.md#firewall-rules)
+- [Networking](how-to-manage-virtual-network-cli.md)
+- [Network with private access for Azure Database for PostgreSQL](concepts-networking-private.md)
+- [Firewall rules](concepts-networking-public.md#firewall-rules)
