@@ -26,17 +26,16 @@ This tutorial guides you through converting Oracle database schemas to PostgreSQ
 1. Search for *PostgreSQL* and install the **PostgreSQL** extension.
     1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
 
-### Step 2: Create PostgreSQL Connection
+### Step 2: Create PostgreSQL connection
 
-1. In the PostgreSQL extension panel, create a connection to your **Azure Database for PostgreSQL
-1. **.
+1. In the PostgreSQL extension panel, create a connection to your **Azure Database for PostgreSQL**.
 1. Enter the necessary connection details (host, database, username, password).
 1. Test and save the connection.
 
-### Step 3: Open New Workspace
+### Step 3: Open new workspace
 
-1. Open a **new workspace** in Visual Studio.
-1. Ensure you have a clean workspace for your migration project.
+1. Create a new folder on your local machine for the migration project.
+1. Open a **new workspace** in Visual Studio Code.
 
 ### Step 4: Initialize Migration Project
 
@@ -56,9 +55,6 @@ This tutorial guides you through converting Oracle database schemas to PostgreSQ
    - Database or service name
    - Username and password
 1. Select **Load Schemas**.
-
-### Step 7: Select Oracle Schemas
-
 1. The system **tests the Oracle connection**.
 1. If successful, it **lists all user-defined schemas** available in Oracle.
 1. **Choose one or multiple schemas** that you want to convert to PostgreSQL.
@@ -66,7 +62,7 @@ This tutorial guides you through converting Oracle database schemas to PostgreSQ
 
 ### Step 8: Configure PostgreSQL Target
 
-1. **Select the Azure Database for PostgreSQL flexible server connection** that you defined in the PostgreSQL extension
+1. **Select the Azure Database for PostgreSQL connection** that you defined in the PostgreSQL extension
 1. **Select the target database** from the dropdown list
 1. Select **Next** to proceed
 
