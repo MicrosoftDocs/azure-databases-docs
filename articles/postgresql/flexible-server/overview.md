@@ -80,22 +80,9 @@ Azure Database for PostgreSQL runs the community version of PostgreSQL. This ver
 - **Azure Database Migration Service** – For seamless and simplified migrations to Azure Database for PostgreSQL with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure Database for PostgreSQL?](../migrate/migration-service/overview-migration-service-postgresql.md)
 - **Dump and Restore** – For offline migrations where you can afford some downtime, dump, and restore using community tools like pg_dump and pg_restore provides the fastest way to migrate. See [Migrate using dump and restore](../howto-migrate-using-dump-and-restore.md) for details.
 
-## Frequently asked questions (FAQ)
+## Feedback and support
 
-This section addresses common questions about Azure Database for PostgreSQL, including its features, configurations, and best practices. Whether you're new to the service or looking for specific details, these FAQs provide quick answers to help you get started and optimize your experience.
-
-### What is Microsoft's policy to address PostgreSQL engine defects?
-
-Refer to Microsoft's current policy [here](../../postgresql/flexible-server/concepts-supported-versions.md#managing-postgresql-engine-defects).
-
-## Contacts
-
-If you have questions or suggestions about Azure Database for PostgreSQL, send an email to the [Azure Database for PostgreSQL team](mailto:AskAzurePostgreSQL@microsoft.com).
-
-> [!NOTE]  
-> This email address is for general inquiries and suggestions only. It isn't a technical support alias.
-
-In addition, consider the following points of contact as appropriate:
+If you have questions or suggestions about Azure Database for PostgreSQL, you can get help and support through the following channels:
 
 - To contact Azure Support, [file a ticket from the Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - To fix an issue with your account, file a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) in the Azure portal.
