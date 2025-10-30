@@ -17,6 +17,11 @@ ms.custom:
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
+## Release: November 2025
+
+- General availability
+    - Version 18
+
 ## Release: October 2025
 
 - General availability
