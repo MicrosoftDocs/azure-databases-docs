@@ -19,6 +19,8 @@ Securing your PostgreSQL database deployments is crucial to protect sensitive da
 
 This article guides you on how to secure your Azure Database for PostgreSQL Server deployment.
 
+[!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
+
 ## Network security
 
 The Network Security section guides you through preventing public access and using the networking features to integrate your PostgreSQL into a secure, segmented cloud network architecture.
