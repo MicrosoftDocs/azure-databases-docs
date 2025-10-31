@@ -17,6 +17,8 @@ ms.custom:
 
 Azure Database for PostgreSQL enforces connecting your client applications to an Azure Database for PostgreSQL flexible server instance by using Transport Layer Security (TLS). TLS is an industry-standard protocol that ensures encrypted network connections between your database server and client applications. TLS is an updated protocol of Secure Sockets Layer (SSL). The terms SSL and TLS are still used interchangeably.
 
+[!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
+
 ## Certificate chains
 
 A *certificate chain* is an ordered list of certificates that contain an TLS/SSL certificate and CA certificates. They enable the receiver to verify that the sender and all CAs are trustworthy. The chain or path begins with the TLS/SSL certificate. Each certificate in the chain is signed by the entity identified by the next certificate in the chain.
@@ -128,6 +130,10 @@ Information on updating client applications certificate stores with new root CA 
 > [!IMPORTANT]  
 > Some of the Postgres client libraries, while using the `sslmode=verify-full` setting, might experience connection failures with root CA certificates that are cross-signed with intermediate certificates. The result is alternate trust paths. In this case, we recommend that you explicitly specify the `sslrootcert` parameter. Or, set the `PGSSLROOTCERT` environment variable to a local path where the Microsoft RSA Root CA 2017 root CA certificate is placed, from the default value of `%APPDATA%\postgresql\root.crt`.
 
+1. Experience loss of connectivity from the client application to the Azure Database for PostgreSQL flexible server instance - support ticket opened.
+1. If your intermediate certificate got rotated, you might need to update your client certificate store with the new intermediate certificate.
+1. how to check to see if you are pinning your intermediate certificate - see [Certificate pinning and Azure services](/azure/security/fundamentals/certificate-pinning#how-to-address-certificate-pinning-in-your-application).
+
 ### Read replicas with certificate pinning scenarios
 
 With root CA migration to [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/docs/repository.htm), it's feasible for newly created replicas to be on a newer root CA certificate than the primary server that was created earlier. For clients that use `verify-ca` and `verify-full` `sslmode` configuration settings (that is, certificate pinning), it's imperative for interrupted connectivity to accept three root CA certificates:
@@ -174,7 +180,11 @@ Different versions of TLS/SSL support different cipher suites. TLS 1.2 cipher su
 
 At this time, Azure Database for PostgreSQL supports many cipher suites with the TLS 1.2 protocol version that fall into the [HIGH:!aNULL](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-SSL-CIPHERS) category.
 
-## Troubleshoot TLS/SSL connectivity errors
+## Troubleshoot
+
+Use the guidance in this Troubleshoot section to quickly identify and resolve common TLS/SSL issues. Start by reproducing the problem and collecting diagnostic data (client-side error messages, psql output, OpenSSL s_client output, and server logs), then verify server parameters (require_secure_transport, ssl_min_protocol_version, ssl_max_protocol_version), the certificate chain, and client sslmode/sslrootcert settings to pinpoint mismatches in protocol versions, cipher suites, or missing/rotated certificates.
+
+### TLS/SSL connectivity errors
 
 1. The first step to troubleshoot TLS/SSL protocol version compatibility is to identify the error messages that you or your users are seeing when they try to access your Azure Database for PostgreSQL flexible server instance under TLS encryption from the client. Depending on the application and platform, the error messages might be different. In many cases, they point to the underlying issue.
 1. To be certain of TLS/SSL protocol version compatibility, check the TLS/SSL configuration of the database server and the application client to make sure they support compatible versions and cipher suites.
@@ -182,6 +192,24 @@ At this time, Azure Database for PostgreSQL supports many cipher suites with the
 1. The newest certificate issued with [Microsoft RSA Root CA 2017 has intermediate in the chain cross-signed by Digicert Global Root G2 CA](https://www.microsoft.com/pkiops/docs/repository.htm). Some of the Postgres client libraries, while using `sslmode=verify-full` or `sslmode=verify-ca` settings, might experience connection failures with root CA certificates that are cross-signed with intermediate certificates. The result is alternate trust paths.
 
 To work around these issues, add all three necessary certificates to the client certificate store or explicitly specify the `sslrootcert` parameter. Or, set the `PGSSLROOTCERT` environment variable to the local path where the Microsoft RSA Root CA 2017 root CA certificate is placed, from the default value of `%APPDATA%\postgresql\root.crt`.
+
+### Certificate pinning issues
+
+You can skip this section, if you are not using `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string.
+
+1. Verify if you are using [certificate pinning](/azure/security/fundamentals/certificate-pinning) in your application.
+1. Produce your list of certificates that are in your trusted root store
+    1. For example, you can [get a list of trusted certificates in Java Key Store programmatically](security-update-trusted-root-java.md).
+    1. For example, you can [check cacerts java keystore to see if it already contains required certificates](security-update-trusted-root-java.md). 
+1. You are using certificate pinning, if you have individual intermediate certificates or individual PostgreSQL server certificates.
+1. To remove certificate pinning, remove all your certificates from your trusted root store except the root CA certificates:
+   - [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
+   - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
+   - [Digicert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
+1. If these certificates are not in your trusted root store then add these root CA certificates:
+   - [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
+   - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
+   - [Digicert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
 
 ## Related content
 
