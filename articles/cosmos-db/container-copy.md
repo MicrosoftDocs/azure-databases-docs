@@ -40,7 +40,7 @@ Copy jobs can be [created and managed by using Azure CLI commands](how-to-contai
 
 #### Enable Online copy
 
-To enable online copy on your source account, use Azure CLI and execute below steps.
+To enable online copy on your source account, execute following steps using [Azure CLI](/cli/azure/install-azure-cli).
 
 ```azurecli
 # Set shell variables.
