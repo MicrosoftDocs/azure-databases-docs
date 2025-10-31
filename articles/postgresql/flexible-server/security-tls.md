@@ -4,7 +4,7 @@ description: Learn about secure connectivity with an Azure Database for PostgreS
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 10/31/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
@@ -195,7 +195,9 @@ To work around these issues, add all three necessary certificates to the client 
 
 ### Certificate pinning issues
 
-You can skip this section, if you are not using `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string.
+> [!NOTE]
+> If you are not using `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string, then certificate rotations don't affect you.
+> Therefore, you don't need to follow the steps in this section.
 
 1. Verify if you are using [certificate pinning](/azure/security/fundamentals/certificate-pinning) in your application.
 1. Produce your list of certificates that are in your trusted root store
@@ -210,6 +212,8 @@ You can skip this section, if you are not using `sslmode=verify-full` or `sslmod
    - [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
    - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
    - [Digicert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
+
+If you are experiencing issues even after following these steps, contact [Microsoft support](https://support.microsoft.com). Include in the title "ICA Rotation 2026".
 
 ## Related content
 
