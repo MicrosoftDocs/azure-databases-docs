@@ -36,7 +36,7 @@ Copy jobs can be [created and managed by using Azure CLI commands](how-to-contai
 #### Prerequisites
 
 1. Enable [continuous backup](continuous-backup-restore-introduction.md) on source Azure Cosmos DB account. 
-1. Enable [All version and delete change feed mode (preview)](nosql/change-feed-modes?tabs=all-versions-and-deletes#get-started) preview feature on the source account.
+1. Enable [All version and delete change feed mode (preview)](nosql/change-feed-modes.md?tabs=all-versions-and-deletes#get-started) preview feature on the source account.
 
 #### Enable Online copy
 
