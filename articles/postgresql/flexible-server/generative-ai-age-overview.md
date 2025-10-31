@@ -1,8 +1,8 @@
 ---
 title: Apache AGE Extension
 description: Overview of Apache AGE and its capabilities in Azure Database for PostgreSQL.
-author: jojohnso-msft
-ms.author: jojohnso
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 05/19/2025
 ms.update-cycle: 180-days

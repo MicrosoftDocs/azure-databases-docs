@@ -13,6 +13,8 @@ ms.custom: devx-track-csharp, sfi-image-nochange
 
 # Regional endpoints for Azure Cosmos DB Graph account
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB Graph database is [globally distributed](../distribute-data-globally.md) so applications can use multiple read endpoints. Applications that need write access in multiple locations should enable [multi-region writes](../how-to-multi-master.md) capability.
 
 Reasons to choose more than one region:

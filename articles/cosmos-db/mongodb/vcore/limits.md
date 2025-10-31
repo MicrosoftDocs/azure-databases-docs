@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 10/21/2025
+ms.date: 10/27/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -95,7 +95,7 @@ The following limitations can be overridden by upgrading to a paid tier
 - Backup / Restore not supported (available in M25+)
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
-- Diagnostic logging not supported (available in M40+)
+- Diagnostic logging not supported (available only in paid tiers)
 - Microsoft Entra ID not supported
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
@@ -134,7 +134,9 @@ The following are the current limitations for configuring [the customer-managed 
 ### Microsoft Entra ID authentication
 
 The [Microsoft Entra ID authentication](./entra-authentication.md) feature has these current limitations:
-- This feature doesn't support Entra ID groups.
+- This feature doesn't support Microsoft Entra ID groups.
+- When native DocumentDB authentication method is disabled, MongoDB Shell isn't supported in the Azure portal's **Quick start**.
+    - You can [use MongoDB Shell with Microsoft Entra ID authentication](./how-to-configure-entra-authentication.md?#connect-to-the-cluster-using-entra-id-in-mongodb-shell) outside of the Azure portal. 
 
 ### Native DocumentDB secondary users
 

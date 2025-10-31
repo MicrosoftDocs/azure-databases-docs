@@ -191,6 +191,94 @@ Both strategies can be used together to enhance read and write availability and 
 
 By implementing these strategies, developers can ensure their applications remain resilient, maintain high performance, and provide a better user experience even during regional outages or high-latency conditions.
 
+### Excluded regions
+
+The excluded regions feature enables fine-grained control over request routing by allowing you to exclude specific regions from your preferred locations on a per-request basis. This feature is available in Azure Cosmos DB .NET SDK version 3.37.0 and higher.
+
+**Key benefits:**
+- **Handle rate limiting**: When encountering 429 (Too Many Requests) responses, automatically route requests to alternate regions with available throughput
+- **Targeted routing**: Ensure requests are served from specific regions by excluding all others
+- **Bypass preferred order**: Override the default preferred regions list for individual requests without creating separate clients
+
+**Configuration:**
+
+Excluded regions can be configured at the request level using the `ExcludeRegions` property:
+
+```csharp
+CosmosClientOptions clientOptions = new CosmosClientOptions()
+{
+    ApplicationPreferredRegions = new List<string> {"West US", "Central US", "East US"}
+};
+
+CosmosClient client = new CosmosClient(connectionString, clientOptions);
+
+Database db = client.GetDatabase("myDb");
+Container container = db.GetContainer("myContainer");
+
+//Request will be served out of the West US region
+await container.ReadItemAsync<dynamic>("item", new PartitionKey("pk"));
+
+//By using ExcludeRegions, we are able to bypass the ApplicationPreferredRegions list
+// and route a request directly to the East US region
+await container.ReadItemAsync<dynamic>(
+  "item", 
+  new PartitionKey("pk"),
+  new ItemRequestOptions()
+  {
+    ExcludeRegions = new List<string>() { "West US", "Central US" }
+  });
+```
+
+**Use case example - handling rate limiting:**
+
+```csharp
+ItemResponse<CosmosItem> item;
+item = await container.ReadItemAsync<CosmosItem>("id", partitionKey);
+
+if (item.StatusCode == HttpStatusCode.TooManyRequests)
+{
+    ItemRequestOptions requestOptions = new ItemRequestOptions()
+    {
+        ExcludeRegions = new List<string>() { "East US" }
+    };
+
+    item = await container.ReadItemAsync<CosmosItem>("id", partitionKey, requestOptions);
+}
+```
+
+The feature also works with queries and other operations:
+
+```csharp
+QueryRequestOptions queryRequestOptions = new QueryRequestOptions()
+{
+    ExcludeRegions = new List<string>() { "East US" }
+};
+
+using (FeedIterator<CosmosItem> queryFeedIterator = container.GetItemQueryIterator<CosmosItem>(
+    queryDefinition, 
+    requestOptions: queryRequestOptions))
+{
+    while(queryFeedIterator.HasMoreResults)
+    {
+        var item = await queryFeedIterator.ReadNextAsync();
+    }
+}
+```
+
+#### Fine-tuning consistency vs availability
+
+The excluded regions feature provides an additional mechanism for balancing consistency and availability trade-offs in your application. This capability is particularly valuable in dynamic scenarios where requirements may shift based on operational conditions:
+
+**Dynamic outage handling**: When a primary region experiences an outage and partition-level circuit breaker thresholds prove insufficient, excluded regions enables immediate failover without code changes or application restarts. This provides faster response to regional issues compared to waiting for automatic circuit breaker activation.
+
+**Conditional consistency preferences**: Applications can implement different consistency strategies based on operational state:
+- **Steady state**: Prioritize consistent reads by excluding all regions except the primary, ensuring data consistency at the potential cost of availability
+- **Outage scenarios**: Favor availability over strict consistency by allowing cross-region routing, accepting potential data lag in exchange for continued service availability
+
+This approach allows external mechanisms (such as traffic managers or load balancers) to orchestrate failover decisions while the application maintains control over consistency requirements through region exclusion patterns.
+
+When all regions are excluded, requests will be routed to the primary/hub region. This feature works with all request types including queries and is particularly useful for maintaining singleton client instances while achieving flexible routing behavior.
+
 ## Networking
 <a id="direct-connection"></a>
 

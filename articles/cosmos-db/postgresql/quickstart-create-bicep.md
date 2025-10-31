@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.custom: devx-track-bicep
 ms.topic: reference
 ms.date: 09/07/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Use a Bicep file to provision an Azure Cosmos DB for PostgreSQL cluster
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL is a managed service that allows you to run horizontally scalable PostgreSQL databases in the cloud. In this article you learn, using Bicep to provision and manage an Azure Cosmos DB for PostgreSQL cluster.
 

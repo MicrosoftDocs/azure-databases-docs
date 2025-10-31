@@ -16,6 +16,8 @@ appliesto:
 
 # What is Azure Cosmos DB for MongoDB?
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it's ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
 
 Azure Cosmos DB for MongoDB is a fully managed NoSQL database service that enables you to run MongoDB workloads in the cloud with minimal changes to your application code. This API supports the MongoDB wire protocol, so you can use your existing MongoDB drivers, software development kits (SDKs), and tools. You can connect to the API for MongoDB to interact with your data just as you would with a native MongoDB database.

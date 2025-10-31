@@ -8,6 +8,8 @@ ai-usage: ai-generated
 
 # Sample supply chain traceability solution using Azure Cosmos DB for Gremlin
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article provides an overview of the [traceability graph solution implemented by Infosys](https://azuremarketplace.microsoft.com/marketplace/apps/infosysltd.infosys-traceability-knowledge-graph?tab=Overview) in Azure Marketplace.
 
 This solution implements end-to-end supply chain traceability using Azure Cosmos DB for Gremlin and other Azure services. The solution enables organizations to track and trace finished goods, raw materials, and their relationships throughout the supply chain. This solution supports food safety, regulatory compliance, and rapid incident response.

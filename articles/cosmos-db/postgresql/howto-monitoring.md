@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 09/24/2022
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # How to view metrics in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Resource metrics are available for every node of a cluster, and in aggregate across the nodes.
 

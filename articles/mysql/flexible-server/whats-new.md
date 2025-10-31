@@ -24,6 +24,9 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 ## October 2025
 
+###  General Availability of Dedicated SLB for HA enabled servers
+We’re excited to announce the General Availability of Dedicated SLB in Azure Database for MySQL – Flexible Server for HA-enabled servers. This feature adds a dedicated Standard Load Balancer (SLB) to High Availability (HA) configurations for servers created with public access or private link. By managing the MySQL data traffic path, SLB removes the need for DNS changes during failover, significantly reducing failover time. Please note, this feature is not supported for servers using private access with VNet integration.[Learn More](concepts-high-availability.md#failover-process)
+
 ###  General Availability of Custom Port Support
 We are excited to announce that custom port support for Azure Database for MySQL – Flexible Server is now generally available (GA). This long-requested feature gives you greater flexibility to align MySQL server deployments with your network and security requirements. By default, MySQL uses TCP port 3306; with this GA release, you can configure a custom port (between 25001 and 26000) when creating a new Azure Database for MySQL flexible server. [Learn more](concepts-networking.md#custom-port-support)
 

@@ -97,7 +97,7 @@ One or more incompatible SQL modes can cause many different errors. Following is
 
 - **Error**: Enum column has a null value in one or more rows and the target SQL mode is set to strict.
 
-  **Potential error message**: A batch couldn't be written to the table '{table}' due to a data truncation error. Please ensure that the data isn't too large for the data type of the MySQL table column. If the column type is an enum, make sure SQL Mode isn't set as TRADITIONAL, STRICT_TRANS_TABLES, or STRICT_ALL_TABLES and is the same on source and target.
+  **Potential error message**: A batch couldn't be written to the table '{table}' due to a data truncation error. Ensure that the data isn't too large for the data type of the MySQL table column. If the column type is an enum, make sure SQL Mode isn't set as TRADITIONAL, STRICT_TRANS_TABLES, or STRICT_ALL_TABLES and is the same on source and target.
 
   **Limitation**: The error occurs when historical data was written to the source server when they had certain setting, but when it's changed, data can't move.
 

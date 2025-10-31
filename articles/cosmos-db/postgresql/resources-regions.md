@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: concept-article
 ms.custom: references_regions
 ms.date: 04/02/2024
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Regional availability for Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL is available in the following Azure regions:
 

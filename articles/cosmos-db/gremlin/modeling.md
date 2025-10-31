@@ -14,6 +14,8 @@ appliesto:
 
 # Graph data modeling with Azure Cosmos DB for Apache Gremlin
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article provides recommendations for the use of graph data models. These best practices are vital for ensuring the scalability and performance of a graph database system as the data evolves. An efficient data model is especially important for large-scale graphs.
 
 ## Requirements

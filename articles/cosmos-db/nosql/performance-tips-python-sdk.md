@@ -93,6 +93,94 @@ You can control the PPCB behavior using these environment variables:
 > [!TIP]
 > Additional configuration options may be exposed in future releases for fine-tuning timeout durations and recovery backoff behavior.
 
+### Excluded regions
+
+The excluded regions feature enables fine-grained control over request routing by allowing you to exclude specific regions from your preferred locations on a per-request basis. This feature is available in Azure Cosmos DB Python SDK version 4.14.0 and higher.
+
+**Key benefits:**
+- **Handle rate limiting**: When encountering 429 (Too Many Requests) responses, automatically route requests to alternate regions with available throughput
+- **Targeted routing**: Ensure requests are served from specific regions by excluding all others
+- **Bypass preferred order**: Override the default preferred regions list for individual requests without creating separate clients
+
+**Configuration:**
+
+Excluded regions can be configured at both the client level and request level:
+
+```python
+from azure.cosmos import CosmosClient
+from azure.cosmos.partition_key import PartitionKey
+
+# Configure preferred locations and excluded locations at client level
+preferred_locations = ['West US 3', 'West US', 'East US 2']
+excluded_locations_on_client = ['West US 3', 'West US']
+
+client = CosmosClient(
+    url=HOST,
+    credential=MASTER_KEY,
+    preferred_locations=preferred_locations,
+    excluded_locations=excluded_locations_on_client
+)
+
+database = client.create_database('TestDB')
+container = database.create_container(
+    id='TestContainer',
+    partition_key=PartitionKey(path="/pk")
+)
+
+# Create an item (writes ignore excluded_locations in single-region write accounts)
+test_item = {
+    'id': 'Item_1',
+    'pk': 'PartitionKey_1',
+    'test_object': True,
+    'lastName': 'Smith'
+}
+created_item = container.create_item(test_item)
+
+# Read operations will use preferred_locations minus excluded_locations
+# In this example: ['West US 3', 'West US', 'East US 2'] - ['West US 3', 'West US'] = ['East US 2']
+item = container.read_item(
+    item=created_item['id'],
+    partition_key=created_item['pk']
+)
+```
+
+**Request-level excluded regions:**
+
+Request-level excluded regions take highest priority and override client-level settings:
+
+```python
+# Excluded locations can be specified per request, overriding client settings
+excluded_locations_on_request = ['West US 3']
+
+# Create item with request-level excluded regions
+created_item = container.create_item(
+    test_item,
+    excluded_locations=excluded_locations_on_request
+)
+
+# Read with request-level excluded regions
+# This will use: ['West US 3', 'West US', 'East US 2'] - ['West US 3'] = ['West US', 'East US 2']
+item = container.read_item(
+    item=created_item['id'],
+    partition_key=created_item['pk'],
+    excluded_locations=excluded_locations_on_request
+)
+```
+
+#### Fine-tuning consistency vs availability
+
+The excluded regions feature provides an additional mechanism for balancing consistency and availability trade-offs in your application. This capability is particularly valuable in dynamic scenarios where requirements may shift based on operational conditions:
+
+**Dynamic outage handling**: When a primary region experiences an outage and partition-level circuit breaker thresholds prove insufficient, excluded regions enables immediate failover without code changes or application restarts. This provides faster response to regional issues compared to waiting for automatic circuit breaker activation.
+
+**Conditional consistency preferences**: Applications can implement different consistency strategies based on operational state:
+- **Steady state**: Prioritize consistent reads by excluding all regions except the primary, ensuring data consistency at the potential cost of availability
+- **Outage scenarios**: Favor availability over strict consistency by allowing cross-region routing, accepting potential data lag in exchange for continued service availability
+
+This approach allows external mechanisms (such as traffic managers or load balancers) to orchestrate failover decisions while the application maintains control over consistency requirements through region exclusion patterns.
+
+When all regions are excluded, requests will be routed to the primary/hub region. This feature works with all request types including queries and is particularly useful for maintaining singleton client instances while achieving flexible routing behavior.
+
 ## SDK usage
 * **Install the most recent SDK**
 

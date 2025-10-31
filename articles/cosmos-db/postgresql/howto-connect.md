@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 06/05/2023
 ms.custom: sfi-image-nochange, sfi-ropc-blocked
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Connect to a cluster in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Choose one of the following database clients to see how to configure it to connect to
 an Azure Cosmos DB for PostgreSQL cluster.

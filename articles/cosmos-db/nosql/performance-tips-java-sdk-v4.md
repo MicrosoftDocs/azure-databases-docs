@@ -24,7 +24,7 @@ ms.custom: devx-track-java, devx-track-extended-java
 > 
 
 > [!IMPORTANT]  
-> The performance tips in this article are for Azure Cosmos DB Java SDK v4 only. Please view the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and Azure Cosmos DB Java SDK v4 [troubleshooting guide](troubleshoot-java-sdk-v4.md) for more information. If you are currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help with upgrading to v4.
+> The performance tips in this article are for Azure Cosmos DB Java SDK v4 only. View the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and Azure Cosmos DB Java SDK v4 [troubleshooting guide](troubleshoot-java-sdk-v4.md) for more information. If you're currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help with upgrading to v4.
 
 Azure Cosmos DB is a fast and flexible distributed database that scales seamlessly with guaranteed latency and throughput. You don't have to make major architecture changes or write complex code to scale your database with Azure Cosmos DB. Scaling up and down is as easy as making a single API call or SDK method call. However, because Azure Cosmos DB is accessed via network calls there are client-side optimizations you can make to achieve peak performance when using Azure Cosmos DB Java SDK v4.
 
@@ -110,7 +110,7 @@ container.createItem("id", new PartitionKey("pk"), options, JsonNode.class).bloc
   
 2. **Second Request:** If there's no response from the primary region within 500 milliseconds, a parallel request is sent to the next preferred region (for example, East US 2).
   
-3. **Third Request:** If neither the primary nor the secondary region responds within 600 milliseconds (500ms + 100ms, the `thresholdStep` value), the SDK sends another parallel request to the third preferred region (for example, West US).
+3. **Third Request:** If neither the primary nor the secondary region responds within 600 milliseconds (500ms + 100 ms, the `thresholdStep` value), the SDK sends another parallel request to the third preferred region (for example, West US).
 
 4. **Fastest Response Wins:** Whichever region responds first, that response is accepted, and the other parallel requests are ignored.
 
@@ -119,7 +119,7 @@ Proactive connection management helps by warming up connections and caches for c
 This strategy can significantly improve latency in scenarios where a particular region is slow or temporarily unavailable, but it may incur more cost in terms of request units when parallel cross-region requests are required.
 
 > [!NOTE]
-> If the first preferred region returns a non-transient error status code (e.g., document not found, authorization error, conflict, etc.), the operation itself will fail fast, as availability strategy would not have any benefit in this scenario.
+> If the first preferred region returns a non-transient error status code (e.g., document not found, authorization error, conflict, etc.), the operation itself will fail fast, as availability strategy wouldn't have any benefit in this scenario.
 
 ### Partition level circuit breaker
 
@@ -150,9 +150,9 @@ System.setProperty("COSMOS.ALLOWED_PARTITION_UNAVAILABILITY_DURATION_IN_SECONDS"
 
 **How it works:**
 
-1. **Tracking Failures:** The SDK tracks terminal failures (e.g., 503s, 500s, time-outs) for individual partitions in specific regions.
+1. **Tracking Failures:** The SDK tracks terminal failures (for example, 503s, 500s, timeouts) for individual partitions in specific regions.
   
-2. **Marking as Unavailable:** If a partition in a region exceeds a configured threshold of failures, it is marked as "Unavailable." Subsequent requests to this partition are short-circuited and redirected to other healthier regions.
+2. **Marking as Unavailable:** If a partition in a region exceeds a configured threshold of failures, it's marked as "Unavailable." Subsequent requests to this partition are short-circuited and redirected to other healthier regions.
 
 3. **Automated Recovery:** A background thread periodically checks unavailable partitions. After a certain duration, these partitions are tentatively marked as "HealthyTentative" and subjected to test requests to validate recovery.
 
@@ -169,23 +169,23 @@ This mechanism helps to continuously monitor partition health and ensures that r
 ### Comparing availability optimizations
 
 - **Threshold-based availability strategy**: 
-  - **Benefit**: Reduces tail latency by sending parallel read requests to secondary regions, and improves availability by preempting requests that will result in network time-outs.
-  - **Trade-off**: Incurs extra RU (Request Units) costs compared to circuit breaker, due to additional parallel cross-region requests (though only during periods when thresholds are breached).
+  - **Benefit**: Reduces tail latency by sending parallel read requests to secondary regions, and improves availability by preempting requests that result in network timeouts.
+  - **Trade-off**: Incurs extra RU (Request Units) costs compared to circuit breaker, due to other parallel cross-region requests (though only during periods when thresholds are breached).
   - **Use Case**: Optimal for read-heavy workloads where reducing latency is critical and some additional cost (both in terms of RU charge and client CPU pressure) is acceptable. Write operations can also benefit, if opted into non-idempotent write retry policy and the account has multi-region writes.
 
 - **Partition level circuit breaker**: 
   - **Benefit**: Improves availability and latency by avoiding unhealthy partitions, ensuring requests are routed to healthier regions.
-  - **Trade-off**: Does not incur more RU costs, but can still allow some initial availability loss for requests that will result in network time-outs. 
+  - **Trade-off**: Doesn't incur more RU costs, but can still allow some initial availability loss for requests that will result in network timeouts. 
   - **Use Case**: Ideal for write-heavy or mixed workloads where consistent performance is essential, especially when dealing with partitions that may intermittently become unhealthy.
 
-Both strategies can be used together to enhance read and write availability and reduce tail latency. Partition Level Circuit Breaker can handle a variety of transient failure scenarios, including those that may result in slow performing replicas, without the need to perform parallel requests. Additionally, adding Threshold-based Availability Strategy will further minimize tail latency and eliminate availability loss, if additional RU cost is acceptable. 
+Both strategies can be used together to enhance read and write availability and reduce tail latency. Partition Level Circuit Breaker can handle a various transient failure scenarios, including those that may result in slow performing replicas, without the need to perform parallel requests. Additionally, adding Threshold-based Availability Strategy will further minimize tail latency and eliminate availability loss, if additional RU cost is acceptable. 
 
 By implementing these strategies, developers can ensure their applications remain resilient, maintain high performance, and provide a better user experience even during regional outages or high-latency conditions.
 
 ## Region scoped session consistency
 
 ### Overview
-For more information about consistency settings in general, see [Consistency levels in Azure Cosmos DB](../consistency-levels.md). The Java SDK provides an optimization for [session consistency](../consistency-levels.md#session-consistency) for multi-region write accounts, by allowing it to be region-scoped. This enhances performance by mitigating cross-regional replication latency through minimizing client-side retries. This is achieved by managing session tokens at the region level instead of globally. If consistency in your application can be scoped to a smaller number of regions, by implementing region-scoped session consistency, you can achieve better performance and reliability for read and write operations in multi-write accounts by minimizing cross-regional replication delays and retries. 
+For more information about consistency settings in general, see [Consistency levels in Azure Cosmos DB](../consistency-levels.md). The Java SDK provides an optimization for [session consistency](../consistency-levels.md#session-consistency) for multi-region write accounts, by allowing it to be region-scoped. This enhances performance by mitigating cross-regional replication latency through minimizing client-side retries. This is achieved by managing session tokens at the region level instead of globally. If your application only needs consistency across a few regions, using region-scoped session consistency can improve performance and reliability for reads and writes in multi-write accounts by reducing cross-region replication delays and retries.
 
 ### Benefits
 - **Reduced Latency:** By localizing session token validation to the region level, the chances of costly cross-regional retries are reduced.
@@ -199,7 +199,7 @@ For more information about consistency settings in general, see [Consistency lev
 ### Trade-Offs
 - **Increased Memory Usage:** The bloom filter and region-specific session token storage require more memory, which may be a consideration for applications with limited resources.
 - **Configuration Complexity:** Fine-tuning the expected insertion count and false-positive rate for the bloom filter adds a layer of complexity to the configuration process.
-- **Potential for False Positives:** While the bloom filter minimizes cross-regional retries, there is still a slight chance of false positives impacting the session token validation, although the rate can be controlled. A false positive means the global session token is resolved, thereby increasing the chance of cross-regional retries if the local region has not caught up to this global session. Session guarantees are met even in the presence of false positives.
+- **Potential for False Positives:** While the bloom filter minimizes cross-regional retries, there's still a slight chance of false positives impacting the session token validation, although the rate can be controlled. A false positive means the global session token is resolved, thereby increasing the chance of cross-regional retries if the local region has not caught up to this global session. Session guarantees are met even in the presence of false positives.
 - **Applicability:** This feature is most beneficial for applications with a high cardinality of logical partitions and regular restarts. Applications with fewer logical partitions or infrequent restarts might not see significant benefits.
 
 
@@ -212,7 +212,7 @@ For more information about consistency settings in general, see [Consistency lev
 #### Resolve the session token
 1. **Request Initialization:** Before a request is sent, the SDK attempts to resolve the session token for the appropriate region.
 2. **Token Check:** The token is checked against the region-specific data to ensure the request is routed to the most up-to-date replica.
-3. **Retry Logic:** If the session token is not validated within the current region, the SDK retries with other regions, but given the localized storage, this is less frequent.
+3. **Retry Logic:** If the session token isn't validated within the current region, the SDK retries with other regions, but given the localized storage, this is less frequent.
 
 
 ### Use the SDK
@@ -260,6 +260,52 @@ Below is the retained size (size of the object and whatever it depends on) of th
 
 > [!IMPORTANT]
 > You must be using version 4.60.0 of the Java SDK or higher in order to activate region-scoped session consistency. 
+
+### Excluded regions
+
+The excluded regions feature enables fine-grained control over request routing by allowing you to exclude specific regions from your preferred locations on a per-request basis. This feature is available in Azure Cosmos DB Java SDK version 4.47.0 and higher.
+
+**Key benefits:**
+- **Handle rate limiting**: When encountering 429 (Too Many Requests) responses, automatically route requests to alternate regions with available throughput
+- **Targeted routing**: Ensure requests are served from specific regions by excluding all others
+- **Bypass preferred order**: Override the default preferred regions list for individual requests without creating separate clients
+
+**Configuration:**
+
+Excluded regions can be configured at both the client level and request level:
+
+```java
+CosmosExcludedRegions excludedRegions = new CosmosExcludedRegions(Set.of("East US"));
+// Using AtomicReference to simulate dynamic changes to excluded regions. Excluded regions can be set at the
+// client level
+AtomicReference<CosmosExcludedRegions> excludedRegionsAtomicReference = new AtomicReference<>(excludedRegions);
+CosmosAsyncClient client = new CosmosClientBuilder()
+    .endpoint("")
+    .key("")
+    .preferredRegions(List.of(new String[]{"West US", "East US"}))
+    .excludedRegionsSupplier(excludedRegionsAtomicReference::get)
+    .buildAsyncClient();
+CosmosAsyncDatabase cosmosAsyncDatabase = client.getDatabase("Test");
+CosmosAsyncContainer cosmosAsyncContainer = cosmosAsyncDatabase.getContainer("TestItems");
+// Excluded regions can also be set at the request level
+CosmosItemRequestOptions cosmosItemRequestOptions = new CosmosItemRequestOptions().setExcludedRegions(List.of("East US"));
+TestObject testItem = TestObject.create("mypkValue");
+cosmosAsyncContainer.createItem(testItem, cosmosItemRequestOptions).block();
+```
+
+#### Fine-tuning consistency vs availability
+
+The excluded regions feature provides an extra mechanism for balancing consistency and availability trade-offs in your application. This capability is valuable in dynamic scenarios where requirements may shift based on operational conditions:
+
+**Dynamic outage handling**: When a primary region experiences an outage and partition-level circuit breaker thresholds prove insufficient, excluded regions enables immediate failover without code changes or application restarts. This provides faster response to regional issues compared to waiting for automatic circuit breaker activation.
+
+**Conditional consistency preferences**: Applications can implement different consistency strategies based on operational state:
+- **Steady state**: Prioritize consistent reads by excluding all regions except the primary, ensuring data consistency at the potential cost of availability
+- **Outage scenarios**: Favor availability over strict consistency by allowing cross-region routing, accepting potential data lag in exchange for continued service availability
+
+This approach allows external mechanisms (such as traffic managers or load balancers) to orchestrate failover decisions while the application maintains control over consistency requirements through region exclusion patterns.
+
+When all regions are excluded, requests are routed to the primary/hub region. This feature works with all request types including queries and is useful for maintaining singleton client instances while achieving flexible routing behavior.
 
 ## Tuning direct and gateway connection configuration
 
