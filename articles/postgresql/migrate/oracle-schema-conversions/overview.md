@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
-# What is Oracle to PostgreSQL Schema Conversion?
+# What is Oracle to PostgreSQL schema conversion?
 
 The Oracle to PostgreSQL Schema Conversion feature in the Visual Studio Code PostgreSQL extension helps you convert your existing Oracle database schema objects into PostgreSQL-compatible schema. This functionality is designed for relational schemas and ensures that the converted schema works seamlessly with Azure Database for PostgreSQL flexible server.
 
