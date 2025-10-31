@@ -76,7 +76,7 @@ Extended Support is ideal for customers who...
 | 11 | July 24, 2019 |  November 9, 2023 |  March 31, 2026 |  April 1, 2026 | November 8, 2026|
 | 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 |  April 1, 2026 | November 13, 2027 |
 | 13 | May 25, 2021 | November 13, 2025 | March 31, 2026 |  April 1, 2026 | November 12, 2028 |
-| 14 | June 29, 2022 | November 12, 2026 | December 11, 2026 | December 12, 2026 | December 10, 2029 |
+| 14 | June 29, 2022 | November 12, 2026 | December 11, 2026 | December 12, 2026 | November 11, 2029 |
 
 ### Enrollment and price
 
