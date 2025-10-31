@@ -29,19 +29,46 @@ Copy jobs can be [created and managed by using Azure CLI commands](how-to-contai
 
 ::: zone pivot="api-nosql"
 
-## Get started
+## Getting started
 
 ### [Online copy](#tab/online-copy)
-
-To get started with online container copy for Azure Cosmos DB for NoSQL API accounts, register for the **Online container copy (NoSQL)** preview feature flag in [Preview Features](access-previews.md) in the Azure portal. Once the registration is complete, the preview is effective for all NoSQL API accounts in the subscription.
 
 #### Prerequisites
 
 1. Enable [continuous backup](continuous-backup-restore-introduction.md) on source Azure Cosmos DB account. 
-1. Register for [All version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) preview feature on the source account’s subscription.
+1. Enable [All version and delete change feed mode (preview)](nosql/change-feed-modes?tabs=all-versions-and-deletes#get-started) preview feature on the source account.
+
+#### Enable Online copy
+
+To enable online copy on your source account, use Azure CLI and execute below steps.
+
+```azurecli
+# Set shell variables.
+ $resourceGroupName = <azure_resource_group>
+ $accountName = <azure_cosmos_db_account_name>
+ $EnableOnlineContainerCopy = "EnableOnlineContainerCopy"
+
+# List down existing capabilities of your account.
+ $cosmosdb = az cosmosdb show \
+    --resource-group $resourceGroupName \
+    --name $accountName
+
+$capabilities = (($cosmosdb | ConvertFrom-Json).capabilities)
+
+# Append EnableOnlineContainerCopy capability in the list of capabilities.
+ $capabilitiesToAdd = @()
+ foreach ($item in $capabilities) {
+    $capabilitiesToAdd += $item.name
+ }
+ $capabilitiesToAdd += $EnableOnlineContainerCopy
+
+ # Update Cosmos DB account
+ az cosmosdb update --capabilities $capabilitiesToAdd \
+    -n $accountName -g $resourceGroupName
+```
 
 > [!IMPORTANT]
-> All write operations to the source container are charged 10% additional RUs in order to preserve both the previous and current versions of changes to items in the container. This RU charge increase is subject to change in the future.
+> All write operations on the source account are charged double RUs in order to preserve both the previous and current versions of changes to items in the container. This RU charge increase is subject to change in the future.
 
 ## Copy a container's data
 
