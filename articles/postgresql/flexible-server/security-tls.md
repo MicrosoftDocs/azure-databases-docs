@@ -213,7 +213,7 @@ To work around these issues, add all three necessary certificates to the client 
    - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
    - [Digicert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
 
-If you are experiencing issues even after following these steps, contact [Microsoft support](https://support.microsoft.com). Include in the title "ICA Rotation 2026".
+If you are experiencing issues even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title "ICA Rotation 2026".
 
 ## Related content
 
