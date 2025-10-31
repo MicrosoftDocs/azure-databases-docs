@@ -4,7 +4,7 @@ description: "System requirements, supported versions, and prerequisites for Ora
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 10/25/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---

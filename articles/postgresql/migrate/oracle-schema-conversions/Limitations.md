@@ -4,7 +4,7 @@ description: "Known limitations, unsupported objects, and constraints when using
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 10/25/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
@@ -33,7 +33,7 @@ The following Oracle database objects aren't automatically converted and are fla
 - Oracle Text domain index
 - Oracle Spatial domain index
 - Sequence order
-- Sequence noorder
+- Sequence no order
 - DDL triggers with FOLLOWS, PRECEDES, or WHEN
 - Autonomous transaction triggers
 - System event triggers
@@ -63,4 +63,7 @@ When you encounter limitations:
 1. **Review best practices** for Oracle to PostgreSQL migration patterns.
 1. **Test in scratch environment** before deploying to production.
 
----
+# Related content
+
+- [Oracle to PostgreSQL Migration Overview](overview.md)
+- [Oracle to PostgreSQL Migration Best Practices](best-practices.md)
