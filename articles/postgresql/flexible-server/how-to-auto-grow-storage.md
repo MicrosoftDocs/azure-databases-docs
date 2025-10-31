@@ -17,7 +17,7 @@ ms.custom:
 
 This article describes how you can configure Azure Database for PostgreSQL server storage to grow without affecting the workload.
 
-For servers with more than 1 TiB of provisioned storage, the storage autogrow mechanism activates when the available space is less than 10% of the total capacity or when the available space is less than 64 GiB. The smaller of the two is the value that determines when autogrow activates. Conversely, for servers with storage under 1 TiB, this threshold is adjusted to 20% of the available free space or 64 GiB. Again, picking the smaller of the two values.
+For servers with more than 1 TiB of provisioned storage, the storage autogrow mechanism activates when the available space is less than 10% of the total capacity or when the available space is less than 64 GiB. The smaller of the two is the value that determines when autogrow activates. Conversely, for servers with storage under 1 TiB, this threshold is adjusted to 20% of the total capacity or when the available space is less than 64 GiB. Again, picking the smaller of the two values.
 
 As an illustration, take a server with a storage capacity of 2 TiB (greater than 1 TiB). In this case, the autogrow limit is set at 64 GiB. This choice is made because 64 GiB is the smaller value when compared to 10% of 2 TiB, which is roughly 204.8 GiB. In contrast, for a server with a storage size of 128 GiB (less than 1 TiB), the autogrow feature activates when there's only 25.8 GiB of space left. This activation is based on the 20% threshold of the total allocated storage (128 GiB), which is smaller than 64 GiB.
 
