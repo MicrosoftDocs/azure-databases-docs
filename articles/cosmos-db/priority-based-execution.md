@@ -156,9 +156,6 @@ When Priority-based execution is enabled for a Cosmos DB account, all requests i
 - Priority-based execution is currently not supported for 
 **serverless** database accounts.
 - The behavior of priority-based execution feature is non-deterministic for shared throughput database containers.
-
-## Known issues
-
 - For strong and bounded staleness consistency levels, read request prioritization may not work effectively allowing low priority write requests to execute irrespective of high priority read traffic.
 
 ## Next steps
