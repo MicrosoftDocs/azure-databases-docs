@@ -63,7 +63,7 @@ When you encounter limitations:
 1. **Review best practices** for Oracle to PostgreSQL migration patterns.
 1. **Test in scratch environment** before deploying to production.
 
-# Related content
+## Related content
 
 - [Oracle to PostgreSQL Migration Overview](overview.md)
 - [Oracle to PostgreSQL Migration Best Practices](best-practices.md)
