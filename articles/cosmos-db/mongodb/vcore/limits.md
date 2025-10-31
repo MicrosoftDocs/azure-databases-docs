@@ -95,7 +95,7 @@ The following limitations can be overridden by upgrading to a paid tier
 - Backup / Restore not supported (available in M25+)
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
-- Diagnostic logging not supported (available in M40+)
+- Diagnostic logging not supported (available only in paid tiers)
 - Microsoft Entra ID not supported
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
