@@ -4,7 +4,7 @@ description: Quickstart guide for the PostgreSQL extension for Visual Studio Cod
 author: swarathmika
 ms.author: skakivaya
 ms.reviewer: maghan
-ms.date: 11/02/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: quickstart
