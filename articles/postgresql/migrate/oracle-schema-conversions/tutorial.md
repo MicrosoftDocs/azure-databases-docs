@@ -4,7 +4,7 @@ description: "Step-by-step tutorial for converting Oracle database schemas to Po
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 10/27/2025
+ms.date: 11/02/2025
 ms.service: azure-database-postgresql
 ms.topic: tutorial
 ---
@@ -24,7 +24,7 @@ This tutorial guides you through converting Oracle database schemas to PostgreSQ
 1. Open Visual Studio.
 1. Go to the **Extensions** view (Ctrl+Shift+X).
 1. Search for *PostgreSQL* and install the **PostgreSQL** extension.
-    1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
+   1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
 
 ### Step 2: Create PostgreSQL connection
 
@@ -88,7 +88,6 @@ This tutorial guides you through converting Oracle database schemas to PostgreSQ
 - **Validation**: Converted objects are validated in the Scratch DB
 - **Review Tasks**: Objects requiring manual attention are flagged
 - **Output Generation**: Successfully converted objects are saved as PostgreSQL files
-
 
 ## Related content
 

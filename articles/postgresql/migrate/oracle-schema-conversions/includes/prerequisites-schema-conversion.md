@@ -4,7 +4,7 @@ description: "System requirements, supported versions, and prerequisites for Ora
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 11/02/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -112,7 +112,7 @@ The following minimum privileges are required on the source Oracle database:
 | **CONNECT** | Basic database connection |
 | **SELECT_CATALOG_ROLE** | Access to data dictionary views |
 | **SELECT ANY DICTIONARY** | Read system metadata and dictionary objects |
-| **SELECT ON `SYS.ARGUMENT$`** | Access to procedure and function argument information |
+| **SELECT `SYS.ARGUMENT$`** | Access to procedure and function argument information |
 
 #### Scratch Database privileges
 

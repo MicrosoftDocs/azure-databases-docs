@@ -4,7 +4,7 @@ description: "Understanding the extraction and migration summary reports generat
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 10/24/2025
+ms.date: 11/02/2025
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
@@ -49,11 +49,12 @@ Use the Extraction Report to validate migration scope and verify Oracle connecti
 
 **Best Practices**
 - Review extraction results to ensure all expected objects are captured
-- Validate object mappings align with application requirements  
+- Validate object mappings align with application requirements
 - Check data type conversions for compatibility
 - Implement performance recommendations for optimal PostgreSQL results
 
 ## Related content
+
 - [Oracle to PostgreSQL Migration Overview](overview.md)
 - [Oracle to PostgreSQL Migration Tutorial](tutorial.md)
 - [Oracle to PostgreSQL Migration Limitations](limitations.md)
