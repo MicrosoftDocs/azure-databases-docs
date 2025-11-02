@@ -1,22 +1,20 @@
 ---
 title: "Quickstart: PostgreSQL Extension for VS Code"
 description: Quickstart guide for the PostgreSQL extension for VS Code.
-author: akashraokm
-ms.author: akashrao
+author: swarathmika
+ms.author: skakivaya
 ms.reviewer: maghan
-ms.date: 05/19/2025
+ms.date: 11/18/2025
 ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: quickstart
-ms.collection:
-  - ce-skilling-ai-copilot
 ms.custom:
-  - build-2025
+  - ignite-2025
 # customer intent: As a user, I want to understand what Semantic Operators are available in the azure_ai extension for an Azure Database for PostgreSQL flexible server instance.
 ---
 
-# Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview
+# Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code
 
 The PostgreSQL extension for Visual Studio Code is a powerful tool designed to streamline the development and management of PostgreSQL databases. This guide walks you through connecting to a PostgreSQL database and executing queries within the Visual Studio Code environment.
 
@@ -196,6 +194,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code preview?](overview.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview](quickstart-github-copilot.md)
+- [What is the PostgreSQL extension for Visual Studio Code?](overview.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](quickstart-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
