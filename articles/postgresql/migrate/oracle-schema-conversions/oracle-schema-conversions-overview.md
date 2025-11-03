@@ -49,11 +49,11 @@ The Oracle to PostgreSQL Schema Conversion functionality is built into the **Pos
 1. **Install the Extension**: Locate the PostgreSQL extension in the search results and select **Install**.
 1. **Access Schema Conversion**: When the extension is installed, you see an elephant icon in the Visual Studio Code sidebar representing the PostgreSQL extension. You can access the Schema Conversion feature through this extension interface.
 
-## Key Concepts
+## Key concepts
 
 This section explains the core concepts used throughout the Oracle to PostgreSQL schema conversion workflow — including conversion units (schemas, tables, indexes, views, and procedures), Review Tasks for human oversight, Scratch Database validation, AI-powered Schema Conversion Agents, and the resulting PostgreSQL SQL artifacts. Understanding these concepts will help you interpret conversion results, prioritize and resolve flagged items, and prepare converted files for deployment to Azure Database for PostgreSQL flexible server.
 
-### Scratch Database
+### Scratch database
 
 An Azure Database for PostgreSQL flexible server that you use during conversion for validation purposes to ensure compatibility. This approach ensures that:
 - Converted objects are syntactically correct
@@ -86,6 +86,45 @@ Converting Oracle schemas to PostgreSQL streamlines migration and modernization:
 - **Integrated workflow**: Works seamlessly within Visual Studio Code development environment
 - **Review and refinement**: Provides clear guidance for manual review tasks
 - **Azure optimization**: Designed for Azure Database for PostgreSQL flexible server
+
+## Supported schema objects
+
+The conversion tool supports a broad range of Oracle schema and code objects, including data definition elements, schema-level components, and procedural code. While you can convert many common objects automatically, you might need to manually review or customize the mapping for certain Oracle-specific features or proprietary extensions. For detailed lists of supported objects and known limitations, see the sections below.
+
+#### Database schema objects
+
+The conversion tool supports the following Oracle database objects:
+
+- **Tables** - Table definitions, column specifications, and table-level constraints
+- **Constraints** - Primary keys, foreign keys, unique constraints, check constraints
+- **Indexes** - B-tree indexes, unique indexes, composite indexes
+- **Sequences** - Oracle sequence objects for autoincrementing values
+- **Triggers** - Row-level and statement-level triggers
+- **Views** - Standard database views
+- **Materialized Views** - Oracle materialized views and refresh logic
+- **Schemas** - Schema-level objects and organization
+- **Synonyms** - Public and private synonyms (with limitations)
+
+#### Oracle code objects
+
+Advanced Oracle code constructs supported for conversion:
+
+- **Triggers** - Complex trigger logic and event handling
+- **Packages** - Oracle package specifications and bodies
+- **Functions** - User-defined functions with complex logic
+- **Stored Procedures** - Oracle stored procedures and parameter handling
+
+## Supported Oracle versions
+
+This section summarizes the database engine versions that support automated schema conversion and highlights compatibility considerations. Use the listed supported Oracle and PostgreSQL releases for the best results. Validate conversions in a nonproduction test environment, and use the latest minor patch of each supported major release. If your environment uses an unsupported version or includes Oracle proprietary features, you might need to perform extra manual mapping or review before deployment.
+
+The following Oracle database versions support schema conversion:
+
+- Oracle 21c
+- Oracle 18c
+- Oracle 19c
+- Oracle 12.2
+- Oracle 12.1
 
 ## Feedback and support
 

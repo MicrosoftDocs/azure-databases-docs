@@ -15,7 +15,7 @@ This tutorial guides you through converting Oracle database schemas to PostgreSQ
 
 It covers connecting to your Oracle source and Azure Database for PostgreSQL target, configuring Azure OpenAI, running the Migration Wizard, and reviewing generated PostgreSQL artifacts. Before you begin, ensure you have network access and credentials for both servers and an Azure OpenAI deployment.
 
-[!INCLUDE [prerequisites-schema-conversion](includes/prerequisites-schema-conversion.md)]
+[!INCLUDE [prerequisites-schema-conversions](includes/prerequisites-schema-conversions.md)]
 
 ## Migration
 

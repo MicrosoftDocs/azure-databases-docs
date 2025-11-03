@@ -6,10 +6,10 @@ ms.author: adityaduvuri
 ms.reviewer: maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
-ms.topic: concept-article
+ms.topic: include
 ---
 
-# Schema conversion prerequisites
+## Prerequisites
 
 This article outlines the system requirements, supported versions, and prerequisites for using the Oracle to PostgreSQL Schema Conversion feature in Visual Studio Code.
 
@@ -32,53 +32,12 @@ The Visual Studio Code extension and conversion tooling support common desktop o
 | **Linux** | x64 architecture |
 | **macOS** | macOS 13+ |
 
-### Supported versions
-
-This section summarizes the database engine versions that support automated schema conversion and highlights compatibility considerations. Use the listed supported Oracle and PostgreSQL releases for the best results. Validate conversions in a nonproduction test environment, and use the latest minor patch of each supported major release. If your environment uses an unsupported version or includes Oracle proprietary features, you might need to perform extra manual mapping or review before deployment.
-
-#### Oracle supported versions
-
-The following Oracle database versions support schema conversion:
-
-- Oracle 21c
-- Oracle 18c
-- Oracle 19c
-- Oracle 12.2
-- Oracle 12.1
-
 #### PostgreSQL version support
 
 | Component | Version Requirement |
 | --- | --- |
 | **Azure Database for PostgreSQL** | PostgreSQL version 15 or higher |
 | **Scratch Database** | Azure Database for PostgreSQL |
-
-### Supported schema objects
-
-The conversion tool supports a broad range of Oracle schema and code objects, including data definition elements, schema-level components, and procedural code. While you can convert many common objects automatically, you might need to manually review or customize the mapping for certain Oracle-specific features or proprietary extensions. For detailed lists of supported objects and known limitations, see the sections below.
-
-#### Database schema objects
-
-The conversion tool supports the following Oracle database objects:
-
-- **Tables** - Table definitions, column specifications, and table-level constraints
-- **Constraints** - Primary keys, foreign keys, unique constraints, check constraints
-- **Indexes** - B-tree indexes, unique indexes, composite indexes
-- **Sequences** - Oracle sequence objects for autoincrementing values
-- **Triggers** - Row-level and statement-level triggers
-- **Views** - Standard database views
-- **Materialized Views** - Oracle materialized views and refresh logic
-- **Schemas** - Schema-level objects and organization
-- **Synonyms** - Public and private synonyms (with limitations)
-
-#### Oracle code objects
-
-Advanced Oracle code constructs supported for conversion:
-
-- **Triggers** - Complex trigger logic and event handling
-- **Packages** - Oracle package specifications and bodies
-- **Functions** - User-defined functions with complex logic
-- **Stored Procedures** - Oracle stored procedures and parameter handling
 
 ### AI model requirements
 

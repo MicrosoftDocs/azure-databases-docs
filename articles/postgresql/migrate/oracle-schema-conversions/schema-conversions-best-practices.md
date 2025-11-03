@@ -9,11 +9,13 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Schema conversion: Best practices
+# Best practices for converting Oracle schemas to PostgreSQL
 
 This article provides best practices and recommendations to ensure optimal results when using the Oracle to PostgreSQL Schema Conversion feature in Visual Studio Code.
 
 ## Azure OpenAI token management
+
+Proper management of Azure OpenAI tokens is critical to ensure reliable, performant schema conversions, especially for large, or complex Oracle schemas. Provision sufficient token capacity, monitor usage, and apply rate controls to prevent interruptions and unexpected costs.
 
 ### Token limit requirements
 
@@ -29,6 +31,8 @@ This article provides best practices and recommendations to ensure optimal resul
 
 ## Database configuration requirements
 
+Before running conversions, ensure both the source (Oracle) and target (PostgreSQL) databases are configured and tuned to support the converted schema and expected workload. Check settings such as memory allocation, connection limits, character sets, timezone, and required extensions to prevent runtime issues and semantic mismatches during migration.
+
 ### Oracle database sessions
 
 - **Sessions parameter**: Ensure the Oracle database sessions parameter value is **greater than 10**.
@@ -42,6 +46,8 @@ WHERE name = 'sessions'
 
 ## Manual validation requirements
 
+Although automated conversion accelerates migration, manual validation is essential to catch semantic differences, platform-specific behaviors, and edge cases that AI or tooling might miss. Perform focused reviews and testing of converted objects to verify correctness, performance, and maintainability in the PostgreSQL environment.
+
 ### Complex code objects
 
 Manually validate the following complex Oracle code objects:
@@ -53,7 +59,10 @@ Manually validate the following complex Oracle code objects:
 ### Validation process
 
 1. **Review AI-generated code**: Carefully examine all converted complex objects
-1. **Test functionality**: Execute converted procedures and functions in your scratch DB environment
+1. **Test functionality**: Execute converted procedures and functions in your scratch database environment
 1. **Logic verification**: Ensure business logic remains intact after conversion
 
----
+## Related content
+
+- [Oracle to PostgreSQL Migration Overview](overview.md)
+- [Oracle to PostgreSQL Migration Tutorial](tutorial.md)
