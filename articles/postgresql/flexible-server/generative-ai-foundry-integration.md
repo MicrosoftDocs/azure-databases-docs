@@ -37,19 +37,19 @@ This architecture ensures proper security isolation with separate managed identi
 
 The Azure MCP PostgreSQL Server provides comprehensive database integration capabilities:
 
-- **SQL Operations** - Execute queries, manage data, perform analytics through natural language
-- **Schema Discovery** - Automatic table and column analysis with relationship mapping
-- **Enterprise Security** - Azure managed identity and Entra ID authentication
-- **Production Ready** - Containerized deployment to Azure Container Apps
-- **Natural Language** - Query databases using conversational AI without SQL knowledge
-- **Easy Deployment** - One-click Azure deployment with complete infrastructure setup
+- **SQL Operations** - Execute queries and manage data. Perform analytics through natural language.
+- **Schema Discovery** - Automatic table and column analysis with relationship mapping.
+- **Enterprise Security** - Azure managed identity and Entra ID authentication.
+- **Production Ready** - Containerized deployment to Azure Container Apps.
+- **Natural Language** - Query databases using conversational AI without SQL knowledge.
+- **Easy Deployment** - One-click Azure deployment with complete infrastructure setup.
 
 ### Example use cases
 
 With the MCP integration, your AI agents can handle queries like:
 
 - "List all customers who placed orders in the last 30 days"
-- "Show me the top 5 best-selling products by quantity"
+- "Show me the top five best-selling products by quantity"
 - "What's the schema of the orders table?"
 - "Calculate average order value by customer segment"
 - "Find tables that contain customer information"
@@ -82,7 +82,7 @@ git clone https://github.com/Azure-Samples/azure-mcp-postgresql-server
 cd azure-mcp-postgresql-server
 ```
 
-Deploy the complete infrastructure with a single script. Before running the `azd up` command, set the [environment](/azure/developer/azure-developer-cli/manage-environment-variables?tabs=bash#set-environment-variables) variable to connect to the Postgres server you want to access from AI Foundry and the AI Foundry resource you want to connect to.
+Deploy the complete infrastructure with a single script. Before running the `azd up` command, set the [environment](/azure/developer/azure-developer-cli/manage-environment-variables?tabs=bash#set-environment-variables) variable to connect to the Postgres server you want to access from AI Foundry, and the AI Foundry resource you want to connect to.
 
 ```bash
 # Set environment variables for your existing PostgreSQL server
@@ -245,7 +245,7 @@ mcp_tool_resources = {
 }
 ```
 
-[Full SDK sample](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/main/client/agents_mcp_sample.py) in the the `client` folder in GitHub Repo.
+[Full SDK sample](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/main/client/agents_mcp_sample.py) in the `client` folder in GitHub Repo.
 
 ## Security
 
@@ -272,7 +272,7 @@ You can use the following [security features](security-overview.md#access-contro
 - Use principle of least privilege - don't grant broad database access
 - Regularly review and audit permissions granted to the MCP server's managed identity
 - Consider using dedicated databases or schemas for AI agent access
-- Start with a test database containing only non-sensitive sample data
+- Start with a test database containing only nonsensitive sample data
 
 ## Troubleshoot
 
