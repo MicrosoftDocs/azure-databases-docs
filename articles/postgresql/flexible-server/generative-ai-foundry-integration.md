@@ -37,12 +37,12 @@ This architecture ensures proper security isolation with separate managed identi
 
 The Azure MCP PostgreSQL Server provides comprehensive database integration capabilities:
 
-- 🔍 **SQL Operations** - Execute queries, manage data, perform analytics through natural language
-- 📊 **Schema Discovery** - Automatic table and column analysis with relationship mapping
-- 🔐 **Enterprise Security** - Azure managed identity and Entra ID authentication
-- 🐳 **Production Ready** - Containerized deployment to Azure Container Apps
-- 🎯 **Natural Language** - Query databases using conversational AI without SQL knowledge
-- 🚀 **Easy Deployment** - One-click Azure deployment with complete infrastructure setup
+- **SQL Operations** - Execute queries, manage data, perform analytics through natural language
+- **Schema Discovery** - Automatic table and column analysis with relationship mapping
+- **Enterprise Security** - Azure managed identity and Entra ID authentication
+- **Production Ready** - Containerized deployment to Azure Container Apps
+- **Natural Language** - Query databases using conversational AI without SQL knowledge
+- **Easy Deployment** - One-click Azure deployment with complete infrastructure setup
 
 ### Example use cases
 
