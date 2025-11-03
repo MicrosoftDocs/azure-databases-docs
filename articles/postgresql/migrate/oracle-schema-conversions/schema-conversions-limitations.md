@@ -9,7 +9,9 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Schema conversion limitations Preview
+# Oracle to PostgreSQL schema conversion limitations Preview
+
+This preview summarizes known limitations, unsupported objects, and migration considerations when using the Oracle → PostgreSQL schema conversion feature in Visual Studio Code.
 
 This article outlines the known limitations and constraints when using the Oracle to PostgreSQL schema conversion feature in Visual Studio Code.
 
