@@ -765,6 +765,18 @@
               href: migrate/migration-service/troubleshoot-error-codes-premigration.md
     - name: Migrate from Oracle
       items:
+        - name: Schema conversions
+          items:
+            - name: What is Oracle to PostgreSQL schema conversion?
+              href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+            - name: Tutorial
+              href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
+            - name: Reports
+              href: migrate/oracle-schema-conversions/schema-conversions-reports.md
+            - name: Best Practices
+              href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
+            - name: Limitations
+              href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
         - name: Migration Concepts
           href: migrate/concepts-oracle-migration.md
         - name: Migration Stages
