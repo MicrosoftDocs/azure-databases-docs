@@ -95,5 +95,5 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Overview](overview.md)
-- [Oracle to PostgreSQL Migration Limitations](limitations.md)
+- [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
+- [Oracle to PostgreSQL Migration Limitations](schema-conversions-limitations.md)

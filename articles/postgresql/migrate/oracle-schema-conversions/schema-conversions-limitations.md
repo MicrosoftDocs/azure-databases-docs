@@ -65,5 +65,5 @@ When you encounter limitations:
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Overview](overview.md)
-- [Oracle to PostgreSQL Migration Best Practices](best-practices.md)
+- [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
+- [Oracle to PostgreSQL Migration Best Practices](schema-conversions-best-practices.md)

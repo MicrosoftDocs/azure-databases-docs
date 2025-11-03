@@ -50,6 +50,6 @@ Use the Extraction Report to validate migration scope and verify Oracle connecti
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Overview](overview.md)
-- [Oracle to PostgreSQL Migration Tutorial](tutorial.md)
-- [Oracle to PostgreSQL Migration Limitations](limitations.md)
+- [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
+- [Oracle to PostgreSQL Migration Tutorial](schema-conversions-tutorial.md)
+- [Oracle to PostgreSQL Migration Limitations](schema-conversions-limitations.md)

@@ -22,7 +22,7 @@ Proper management of Azure OpenAI tokens is critical to ensure reliable, perform
 - **Minimum token limit**: Ensure your Azure OpenAI deployment has a token limit greater than **500K** tokens for optimal performance.
 - **Token usage**: Complex schema objects require significant token capacity for accurate conversion.
 
-:::image type="content" source="media/best-practices/token-per-minute.png" alt-text="Screenshot of token per minute settings.":::
+:::image type="content" source="media/schema-conversions-best-practices/token-per-minute.png" alt-text="Screenshot of token per minute settings.":::
 
 ### Project execution strategy
 
@@ -64,5 +64,5 @@ Manually validate the following complex Oracle code objects:
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Overview](overview.md)
-- [Oracle to PostgreSQL Migration Tutorial](tutorial.md)
+- [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
+- [Oracle to PostgreSQL Migration Tutorial](schema-conversions-tutorial.md)

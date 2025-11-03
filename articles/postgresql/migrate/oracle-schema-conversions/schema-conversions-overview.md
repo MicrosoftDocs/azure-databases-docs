@@ -15,7 +15,7 @@ The Oracle to PostgreSQL Schema Conversion feature in the Visual Studio Code Pos
 
 The tool provides a project-based user interface to automate schema conversion. If certain objects can't be converted automatically, the tool flags them as Review Tasks, which you can resolve manually by using GitHub Copilot Agents.
 
-:::image type="content" source="media/overview/schema-conversion.png" alt-text="Diagram of schema conversion.":::
+:::image type="content" source="media/schema-conversions-overview/schema-conversion.png" alt-text="Diagram of schema conversion.":::
 
 ## Architecture
 
