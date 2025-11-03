@@ -1,7 +1,6 @@
 name: GitOps.PullRequestIssueManagement
 description: GitOps.PullRequestIssueManagement primitive
 resource: repository
-
 configuration:
   resourceManagementConfiguration:
     eventResponderTasks:
