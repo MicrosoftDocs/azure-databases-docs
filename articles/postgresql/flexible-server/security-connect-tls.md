@@ -23,6 +23,8 @@ For all Azure Database for PostgreSQL flexible server instances, enforcement of 
 > [!NOTE]  
 > By default, secured connectivity between the client and the server is enforced. If you want to disable the enforcement of TLS/SSL, allowing both encrypted and unencrypted client communications, you can change the server parameter `require_secure_transport` to `OFF`. You can also set TLS version by setting the `ssl_max_protocol_version` server parameter.
 
+[!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
+
 ## Applications that require certificate verification for TLS/SSL connectivity
 
 In some cases, applications require a local certificate file generated from a trusted Certificate Authority (CA) certificate file, so that they can connect securely. For more information on downloading root CA certificates, see [Configure SSL on the client](concepts-networking-ssl-tls.md#configure-ssl-on-the-client).
