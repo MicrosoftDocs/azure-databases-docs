@@ -17,7 +17,7 @@ It covers connecting to your Oracle source and Azure Database for PostgreSQL tar
 
 [!INCLUDE [prerequisites-schema-conversions](includes/prerequisites-schema-conversions.md)]
 
-## Migration
+## Migration process
 
 This section walks through the complete migration workflow: install the PostgreSQL extension, create and test connections to your Oracle source and Azure Database for PostgreSQL target, open and initialize a migration project, configure Azure OpenAI for schema translation, run the Migration Wizard to discover and convert schemas, validate converted objects in a scratch database, and review or fix any flagged items before applying the generated PostgreSQL artifacts to your target.
 
@@ -46,7 +46,7 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. **Right-click** on the blank workspace area.
 1. Select **Open Migration Project** from the context menu.
 
-### Step 5: Configure Project Settings
+### Step 5: Configure project settings
 
 1. In the **Migration Wizard**, enter your **project name**.
 1. Select **Next** to proceed to the next step.
@@ -79,13 +79,13 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. Select **Test Connection** to verify the configuration
 1. Once the connection is **successful**, select **Create Migration Project**
 
-### Step 10: Execute Schema Conversion
+### Step 10: Execute schema conversion
 
 1. The system navigates to the **main Migration Wizard**
 1. Select **Migrate** to initiate the **Schema Conversion** process
 1. Monitor the conversion progress in the Visual Studio interface
 
-## What Happens During Conversion
+## What happens during conversion?
 
 - **Schema Discovery**: The tool analyzes your Oracle schema objects
 - **AI Processing**: Azure OpenAI processes and converts compatible objects
