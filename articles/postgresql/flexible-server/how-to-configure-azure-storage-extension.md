@@ -214,7 +214,7 @@ Check out the list of quickstart examples:
 - [Export data using a COPY TO statement](quickstart-azure-storage-extension.md#export-data-using-a-copy-to-statement)
 - [Read content from a blob](quickstart-azure-storage-extension.md#read-content-from-a-blob)
 - [Read, filter, and modify content read from a blob](quickstart-azure-storage-extension.md#read-filter-and-modify-content-read-from-a-blob)
-md#read-content-from-file-with-custom-options-headers-column-delimiters-escape-characters)
+- [Read content from file with custom options (headers, column delimiters, escape characters)](quickstart-azure-storage-extension.md#read-content-from-file-with-custom-options-headers-column-delimiters-escape-characters)
 - [Use the decoder option](quickstart-azure-storage-extension.md#use-the-decoder-option)
 - [Compute aggregations over the content of a blob](quickstart-azure-storage-extension.md#compute-aggregations-over-the-content-of-a-blob)
 - [Write content to a blob](quickstart-azure-storage-extension.md#write-content-to-a-blob)

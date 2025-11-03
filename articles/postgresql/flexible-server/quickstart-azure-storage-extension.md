@@ -282,6 +282,24 @@ WHERE sample_integer=780
 LIMIT 5;
 ```
 
+## Read content from file with custom options (headers, column delimiters, escape characters)
+
+This example illustrates how you can use custom separators and escape characters, by passing the result of [options_copy](./reference-azure-storage-extension.md#azure_storageoptions_copy) to the `options` argument.
+
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+
+```sql
+SELECT * FROM azure_storage.blob_get
+        ('<account_name>'
+        ,'<container_name>'
+        ,'storage_extension_sample.csv'
+        ,NULL::sample_data
+        ,options := azure_storage.options_csv_get(header := 'true')
+        );
+```
+
 ## Use the decoder option
 
 This example illustrates the use of the `decoder` option. When the decoder option is not present, it's inferred from the extension of the file. But when the file name doesn't have an extension, or when that file name extension doesn't correspond to the one associated to the decoder that must be used to properly parse the contents of the file, you can explicitly pass the decoder argument.
@@ -299,18 +317,6 @@ SELECT * FROM azure_storage.blob_get
         , decoder := 'parquet')
 LIMIT 5;
 ```
-
-```sql
-SELECT * FROM azure_storage.blob_get
-        ('<account_name>'
-        ,'<container_name>'
-        ,'csv_without_extension'
-        , NULL::sample_data
-        ,options := azure_storage.options_csv_get(header := 'true')
-        , decoder := 'csv')
-LIMIT 5;
-```
-
 
 ## Compute aggregations over the content of a blob
 
