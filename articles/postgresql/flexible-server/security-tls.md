@@ -21,7 +21,7 @@ Azure Database for PostgreSQL enforces connecting your client applications to an
 
 ## Certificate chains
 
-A *certificate chain* is an ordered list of certificates that contain an TLS/SSL certificate and CA certificates. They enable the receiver to verify that the sender and all CAs are trustworthy. The chain or path begins with the TLS/SSL certificate. Each certificate in the chain is signed by the entity identified by the next certificate in the chain.
+A *certificate chain* is an ordered list of certificates that contain a TLS/SSL certificate and CA certificates. They enable the receiver to verify that the sender and all CAs are trustworthy. The chain or path begins with the TLS/SSL certificate. Each certificate in the chain is signed by the entity identified by the next certificate in the chain.
 
 The chain terminates with a *root CA certificate*. This certificate is always signed by the CA itself. The signatures of all certificates in the chain must be verified up to the root CA certificate.
 
@@ -132,7 +132,7 @@ Information on updating client applications certificate stores with new root CA 
 
 1. Experience loss of connectivity from the client application to the Azure Database for PostgreSQL flexible server instance - support ticket opened.
 1. If your intermediate certificate got rotated, you might need to update your client certificate store with the new intermediate certificate.
-1. how to check to see if you are pinning your intermediate certificate - see [Certificate pinning and Azure services](/azure/security/fundamentals/certificate-pinning#how-to-address-certificate-pinning-in-your-application).
+1. how to check to see if you're pinning your intermediate certificate - see [Certificate pinning and Azure services](/azure/security/fundamentals/certificate-pinning#how-to-address-certificate-pinning-in-your-application).
 
 ### Read replicas with certificate pinning scenarios
 
