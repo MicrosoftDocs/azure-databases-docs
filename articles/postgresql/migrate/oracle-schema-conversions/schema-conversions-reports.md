@@ -1,6 +1,6 @@
 ---
 title: "Oracle to PostgreSQL Schema Conversion: Reports"
-description: "Understanding the extraction and migration summary reports generated during Oracle to PostgreSQL schema conversion using VS Code PostgreSQL extension."
+description: "Understanding the extraction and migration summary reports generated during Oracle to PostgreSQL schema conversion using Visual Studio Code PostgreSQL extension."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
@@ -15,7 +15,7 @@ The Oracle to PostgreSQL Schema Conversion feature generates two comprehensive r
 
 ## Report types
 
-The two reports complement each other: the Extraction (Oracle DDL) report documents what was discovered and any issues encountered during schema extraction, while the Migration Summary report captures conversion results, object mappings, and recommended next steps. Review both reports together to validate migration scope, identify objects that need manual attention, and plan deployment to PostgreSQL.
+The two reports complement each other: the extraction report documents what was discovered and any issues encountered during schema extraction, while the Migration Summary report captures conversion results, object mappings, and recommended next steps. Review both reports together to validate migration scope, identify objects that need manual attention, and plan deployment to PostgreSQL.
 
 ### Oracle extraction report
 
