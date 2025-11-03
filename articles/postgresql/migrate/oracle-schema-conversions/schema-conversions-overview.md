@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
-# What is Oracle to PostgreSQL schema conversion?
+# What is Oracle to PostgreSQL schema conversion Preview?
 
 The Oracle to PostgreSQL Schema Conversion feature in the Visual Studio Code PostgreSQL extension helps you convert your existing Oracle database schema objects into PostgreSQL-compatible schema. This functionality is designed for relational schemas and ensures that the converted schema works seamlessly with Azure Database for PostgreSQL flexible server.
 
@@ -49,9 +49,9 @@ The Oracle to PostgreSQL Schema Conversion functionality is built into the **Pos
 1. **Install the Extension**: Locate the PostgreSQL extension in the search results and select **Install**.
 1. **Access Schema Conversion**: When the extension is installed, you see an elephant icon in the Visual Studio Code sidebar representing the PostgreSQL extension. You can access the Schema Conversion feature through this extension interface.
 
-## Key concepts
+## Schema conversion workflow
 
-This section explains the core concepts used throughout the Oracle to PostgreSQL schema conversion workflow — including conversion units (schemas, tables, indexes, views, and procedures), Review Tasks for human oversight, Scratch Database validation, AI-powered Schema Conversion Agents, and the resulting PostgreSQL SQL artifacts. Understanding these concepts will help you interpret conversion results, prioritize and resolve flagged items, and prepare converted files for deployment to Azure Database for PostgreSQL flexible server.
+This section explains the core concepts used throughout the Oracle to PostgreSQL schema conversion workflow - including conversion units (schemas, tables, indexes, views, and procedures), review tasks for human oversight, scratch database validation, AI-powered schema conversion agents, and the resulting PostgreSQL SQL artifacts. Understanding these concepts helps you interpret conversion results, prioritize and resolve flagged items, and prepare converted files for deployment to Azure Database for PostgreSQL flexible server.
 
 ### Scratch database
 
@@ -78,7 +78,7 @@ An integrated feature in Visual Studio Code that provides guided prompts to help
 
 ## Benefits
 
-Converting Oracle schemas to PostgreSQL streamlines migration and modernization: it reduces manual effort and risk by automating transformations, validating results in a Scratch Database, and providing AI-assisted review and Azure-optimized output ready for deployment.
+Converting Oracle schemas to PostgreSQL streamlines migration and modernization. It reduces manual effort and risk by automating transformations, validating results in a Scratch Database, and providing AI-assisted review and Azure-optimized output ready for deployment.
 
 - **Automated conversion**: Reduces manual effort by automatically converting compatible schema objects
 - **AI-powered intelligence**: Uses Azure OpenAI for smart transformation decisions
@@ -89,7 +89,7 @@ Converting Oracle schemas to PostgreSQL streamlines migration and modernization:
 
 ## Supported schema objects
 
-The conversion tool supports a broad range of Oracle schema and code objects, including data definition elements, schema-level components, and procedural code. While you can convert many common objects automatically, you might need to manually review or customize the mapping for certain Oracle-specific features or proprietary extensions. For detailed lists of supported objects and known limitations, see the sections below.
+The conversion tool supports a broad range of Oracle schema and code objects, including data definition elements, schema-level components, and procedural code. While you can convert many common objects automatically, you might need to manually review or customize the mapping for certain Oracle-specific features or proprietary extensions. For detailed lists of supported objects and known limitations, see the sections in this article.
 
 #### Database schema objects
 
@@ -143,5 +143,5 @@ When you create your issue or provide feedback, include `Schema Conversion:` as 
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Tutorial](tutorial.md)
-- [Oracle to PostgreSQL Migration Limitations](limitations.md)
+- [Best practices for converting Oracle schemas to PostgreSQL](schema-conversions-best-practices.md)
+- [Schema conversion limitations](schema-conversions-limitations.md)
