@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the Azure Storage extension in Azure Data
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 08/29/2025
+ms.date: 11/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: reference
@@ -15,13 +15,13 @@ ms.custom:
 
 # Troubleshoot the Azure Storage extension in Azure Database for PostgreSQL 
 
-Following is the list of errors that the Azure Storage extension can return, and the reasons why, or the circumstances in which, they can be raised. 
+Following is the list of errors that the Azure Storage extension can return. It also explains the reasons why or the circumstances in which they can be raised. 
 
 ### ERROR: azure_storage: Permission is not sufficient to perform requested operation
 
 When executing any of the functions that interact with Azure Storage (`azure_storage.blob_list`, `azure_storage.blob_get` or `azure_storage.blob_put`) and the System Assigned Managed Identity isn't granted the adequate data plane roles or permissions (typically a minimum of **Storage Blob Data Contributor** for azure_storage.blob_put, and a minimum of **Storage Blob Data Reader** for the other two functions).
 
-It may be the case that you already granted the minimum required permissions, but they aren't yet in effect. It can take a few minutes until those permissions propagate.
+It might be the case that you already granted the minimum required permissions, but they aren't yet in effect. It can take a few minutes until those permissions propagate.
 
 ### ERROR: azure_storage: missing storage credentials
 
@@ -43,7 +43,7 @@ When executing a COPY TO statement for which the source is a query. Azure Storag
 
 ### ERROR:  azure_storage: could not infer file encoding from extension: '<extension>', use a supported extension [csv, csv.gz, tsv, tsv.gz, json, json.gz, xml, xml.gz, txt, txt.gz, parquet], or specify the decoder argument if you are using blob_get or format if using COPY FROM/TO 
 
-When <extension> doesn't correspond to one of the blob extension from which Azure Storage extension supports inferring the encoder and compression algorithm (in case of `bob_put` or `COPY TO`) or decoder and decompression algorithm (in case of `blob_get` or `COPY FROM`) that must be used. Either specify one of the supported values for automatic inference, or don't use `auto` but force specific type of encoder + compression or decoder + decompression.
+When <extension> doesn't correspond to one of the extensions from which Azure Storage extension supports inferring the encoder and compression algorithm (for `bob_put` and `COPY TO`) or decoder and decompression algorithm (for `blob_get` and `COPY FROM`) that must be used. Either specify one of the supported values for automatic inference, or don't use `auto` but force specific type of encoder + compression or decoder + decompression.
 
 ### ERROR:  azure_storage: can only use text encoder with a single column
 
