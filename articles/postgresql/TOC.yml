@@ -723,6 +723,8 @@
                   href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
                 - name: From Google Cloud SQL for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+                - name: From Google AlloyDB for PostgreSQL
+                  href: migrate/migration-service/tutorial-migration-service-alloydb-offline.md                  
             - name: Migrate online
               items:
                 - name: From an Azure VM or an on-premises PostgreSQL server
@@ -733,6 +735,8 @@
                   href: migrate/migration-service/tutorial-migration-service-aurora-online.md
                 - name: From Google Cloud SQL for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
+                - name: From Google AlloyDB for PostgreSQL
+                  href: migrate/migration-service/tutorial-migration-service-alloydb-online.md                  
         - name: Concepts
           items:
             - name: Premigration validation

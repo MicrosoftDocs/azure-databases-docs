@@ -156,7 +156,11 @@ landingContent:
           - text: Migrate (Offline) from Google Cloud SQL for PostgreSQL
             url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
           - text: Migrate (Online) from Google Cloud SQL for PostgreSQL
-            url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md            
+            url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
+          - text: Migrate (Offline) from Google AlloyDB for PostgreSQL
+            url: migrate/migration-service/tutorial-migration-service-alloydb-offline.md
+          - text: Migrate (Online) from Google AlloyDB for PostgreSQL
+            url: migrate/migration-service/tutorial-migration-service-alloydb-online.md            
           - text: Migrate from Oracle
             url: migrate/concepts-oracle-migration.md
 
