@@ -331,7 +331,7 @@ SELECT sample_integer, COUNT(*) FROM azure_storage.blob_get
         ('<account_name>'
         ,'<container_name>'
         ,'storage_extension_sample.parquet'
-        , NULL::events)
+        , NULL::sample_data)
 GROUP BY sample_integer
 ORDER BY 2 DESC
 LIMIT 5;
