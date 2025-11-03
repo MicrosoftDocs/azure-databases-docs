@@ -212,7 +212,7 @@ The following examples show the export of data from a table called `sample_data`
 3. Use a `COPY` statement to copy data out of the target table. Specify that the encoding format must be parquet.
 
    ```sql
-   COPY events
+   COPY sample_data
    TO 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample_exported.parquet'
    WITH (FORMAT 'parquet');
    ```
@@ -220,7 +220,7 @@ The following examples show the export of data from a table called `sample_data`
 4. Use a `COPY` statement to copy data out of the target table. Specify that the encoding format must be CSV and the first row of the resulting file contains column headers.
 
    ```sql
-   COPY events
+   COPY sample_data
    TO 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample_exported.csv'
    WITH (FORMAT 'csv', HEADERS);
    ```
