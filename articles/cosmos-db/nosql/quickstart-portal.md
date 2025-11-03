@@ -7,7 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: quickstart
-ms.date: 09/16/2025
+ms.date: 11/03/2025
 ms.custom: sfi-image-nochange
 # CustomerIntent: As a cloud user, I want to create a new Azure Cosmos DB account, so that I can manage resources and data.
 ---
@@ -176,23 +176,28 @@ Finally, use the Data Explorer to create a sample item and then issue a basic qu
 
 ### Explore more setup and optimization guidance
 
-After you create and query your data, the **Overview** tab in the Azure portal makes it easy to continue your journey with Azure Cosmos DB.
+After you create and query your data, use the **Overview** section to try different features of Azure Cosmos DB.
 
-The **Overview Hub** brings together the tools, guidance, and insights you need in one place, including:
+1. In the account resource pane, select **Overview** in the service menu.
 
-- **Quickstarts** to help you build and test your application.
-- **Setup & Optimization guidance** to support every stage of your journey from learning to production. Sections include partitioning, indexing, modeling, cost control, backup configuration, and performance tuning.
-- **Containers & Data access** for querying your data, adjusting throughput, and opening containers in Data Explorer or Visual Studio Code.
-- **Monitoring tools** such as Insights, Metrics, Alerts, and Diagnostic settings, plus a scorecard that surfaces availability, alerts, and Azure Advisor recommendations.
-- **Learning resources** like video tutorials, sample apps, and documentation.
-- **Actionable recommendations** personalized to your account for reliability, security, and cost efficiency.
+1. Review the resources in the **Overview Hub** including, but not limited to:
 
-:::image source="media/quickstart-portal/overview-setup.png" alt-text="Screenshot of the Setup & Optimization tab in the 'Overview' section of the Data Explorer.":::
+    - **Quickstarts** to help you build and test your application.
+
+    - **Setup & Optimization guidance** to support every stage of your journey from learning to production. Sections include partitioning, indexing, modeling, cost control, backup configuration, and performance tuning.
+
+    - **Containers & Data access** for querying your data, adjusting throughput, and opening containers in Data Explorer or Visual Studio Code.
+
+    - **Monitoring tools** such as Insights, Metrics, Alerts, and Diagnostic settings, plus a scorecard that surfaces availability, alerts, and Azure Advisor recommendations.
+
+    - **Learning resources** like video tutorials, sample apps, and documentation.
+
+    - **Actionable recommendations** personalized to your account for reliability, security, and cost efficiency.
+
+    :::image source="media/quickstart-portal/overview-setup.png" lightbox="media/quickstart-portal/overview-setup.png" alt-text="Screenshot of the setup and optimization section of the Overview Hub in the Azure portal.":::
 
 > [!TIP]
-> The content shown adapts to your activity and workload type to make it easier to find what’s most relevant to you.
-
-To see this feature in action, go to your Azure Cosmos DB account in the Azure portal and then select the **Overview** section.
+> The content shown in the Overview Hub adapts to your activity and workload type to make it easier to find what's most relevant to you.
 
 ## Related content
 
