@@ -28,7 +28,7 @@ The migration service in Azure Database for PostgreSQL is a fully managed servic
 
 To complete the migration, you need the following prerequisites:
 
-[!INCLUDE [prerequisites-migration-service-postgresql-offline-alloydb](includes/alloydb/prerequisites-migration-service-postgresql-offline-alloydb.md)]
+[!INCLUDE [prerequisites-migration-service-postgresql-offline-alloy-db](includes/alloy-db/prerequisites-migration-service-postgresql-offline-alloy-db.md)]
 
 ## Perform the migration
 
@@ -57,7 +57,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     If migrations to your flexible server target have already been created, the grid now contains information about attempted migrations.
 
-    :::image type="content" source="media/tutorial-migration-service-alloydb-offline/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-alloydb-offline/create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-alloy-db-offline/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-alloy-db-offline/create-migration.png":::
 
 #### Setup
 
@@ -79,7 +79,7 @@ To learn more about the premigration validation, visit [premigration](concepts-p
 
 Select **Next: Runtime server**.
 
-:::image type="content" source="media/tutorial-migration-service-alloydb-offline/setup-migration.png" alt-text="Screenshot of the Setup tab after providing necessary details." lightbox="media/tutorial-migration-service-alloydb-offline/setup-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-alloy-db-offline/setup-migration.png" alt-text="Screenshot of the Setup tab after providing necessary details." lightbox="media/tutorial-migration-service-alloy-db-offline/setup-migration.png":::
 
 #### Runtime server
 
@@ -129,7 +129,7 @@ After selecting the databases, select **Next: Summary**.
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select **Start validation and migration**.
 
-:::image type="content" source="media/tutorial-migration-service-alloydb-offline/summary-migration.png" alt-text="Screenshot of the Summary migration tab." lightbox="media/tutorial-migration-service-alloydb-offline/summary-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-alloy-db-offline/summary-migration.png" alt-text="Screenshot of the Summary migration tab." lightbox="media/tutorial-migration-service-alloy-db-offline/summary-migration.png":::
 
 ## Cancel the validation or migration
 
@@ -209,7 +209,7 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 
 After you select the **Start validation and migration** button, a notification appears, in a few seconds, to say that the validation or migration creation is successful. You're automatically redirected to the flexible server's **Migration** page. The entry shows **Status** as **In progress**. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
 
-:::image type="content" source="media/tutorial-migration-service-alloydb-offline/monitor-migration.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-alloydb-offline/monitor-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-alloy-db-offline/monitor-migration.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-alloy-db-offline/monitor-migration.png":::
 
 The grid that displays the migrations has the following columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration**, and **Start time**. The entries are displayed sorted by **Start time** in descending order, with the most recent entry on the top. You can use the **Refresh** button in the toolbar, to refresh the status of the validation or migration run.
 
@@ -271,6 +271,6 @@ Some possible migration statuses:
 
 ## Related content
 
-- [Migrate online from Google AlloyDB for PostgreSQL](tutorial-migration-service-alloydb-online.md)
+- [Migrate online from Google AlloyDB for PostgreSQL](tutorial-migration-service-alloy-db-online.md)
 - [Migration service](concepts-migration-service-postgresql.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)
