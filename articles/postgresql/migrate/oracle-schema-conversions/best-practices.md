@@ -4,7 +4,7 @@ description: "Best practices and recommendations for optimal Oracle to PostgreSQ
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/02/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---

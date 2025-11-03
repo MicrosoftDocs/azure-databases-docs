@@ -4,7 +4,7 @@ description: Learn how to convert Oracle database schemas to PostgreSQL using th
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/02/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.topic: overview
 ---

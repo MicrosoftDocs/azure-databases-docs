@@ -4,7 +4,7 @@ description: "Understanding the extraction and migration summary reports generat
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/02/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
@@ -17,7 +17,7 @@ The Oracle to PostgreSQL Schema Conversion feature generates two comprehensive r
 
 The two reports complement each other: the Extraction (Oracle DDL) report documents what was discovered and any issues encountered during schema extraction, while the Migration Summary report captures conversion results, object mappings, and recommended next steps. Review both reports together to validate migration scope, identify objects that need manual attention, and plan deployment to PostgreSQL.
 
-### Oracle DDL Extraction report
+### Oracle extraction report
 
 Generated during the initial Oracle database connection and schema extraction phase.
 
@@ -31,17 +31,12 @@ Generated during the initial Oracle database connection and schema extraction ph
 
 Generated after schema conversion completion, providing detailed conversion results.
 
-**Key Information**
+**Key information**
 - Migration statistics and success rates
 - Object-by-object mapping from Oracle to PostgreSQL
 - Data type transformation details
 - Deployment instructions and file references
 - Performance recommendations and known limitations
-
-## Report locations
-
-- **Extraction Report**: Generated during Oracle schema discovery
-- **Migration Summary Report**: Saved in `/results/reports/migration_summary_report.md`
 
 ## Use the report
 

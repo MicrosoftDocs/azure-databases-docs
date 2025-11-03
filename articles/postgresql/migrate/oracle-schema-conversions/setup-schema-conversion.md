@@ -4,12 +4,12 @@ description: "System requirements, supported versions, and prerequisites for Ora
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/02/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
-ms.topic: include
+ms.topic: concept-article
 ---
 
-## Prerequisites
+# Schema conversion prerequisites
 
 This article outlines the system requirements, supported versions, and prerequisites for using the Oracle to PostgreSQL Schema Conversion feature in Visual Studio Code.
 
