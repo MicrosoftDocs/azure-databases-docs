@@ -204,14 +204,15 @@ To work around these issues, add all three necessary certificates to the client 
     1. For example, you can [get a list of trusted certificates in Java Key Store programmatically](security-update-trusted-root-java.md).
     1. For example, you can [check cacerts java keystore to see if it already contains required certificates](security-update-trusted-root-java.md). 
 1. You are using certificate pinning, if you have individual intermediate certificates or individual PostgreSQL server certificates.
-1. To remove certificate pinning, remove all the certificates from your trusted root store and add the new certificates. You can download the updated certificates from Microsoft's official repository: [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list).    
-    1. Current chain:
-        1. DigiCert Global Root G2
-        1. Microsoft Azure RSA TLS Issuing CA 03 / 04 / 07 / 08
-    1. New chain:
-        1. DigiCert Global Root G2
-        1. Microsoft TLS RSA Root G2
-        1. Microsoft TLS G2 RSA CA OCSP 02 / 04 / 06 / 08 / 10 / 12 / 14 / 16
+1. To remove certificate pinning, remove all the certificates from your trusted root store and add the new certificates. 
+   1. You can download the updated certificates from Microsoft's official repository: [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list).    
+       1. Current chain:
+          1. DigiCert Global Root G2
+          1. Microsoft Azure RSA TLS Issuing CA 03 / 04 / 07 / 08
+       1. New chain:
+          1. DigiCert Global Root G2
+          1. Microsoft TLS RSA Root G2
+          1. Microsoft TLS G2 RSA CA OCSP 02 / 04 / 06 / 08 / 10 / 12 / 14 / 16
 
 If you are experiencing issues even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title *ICA Rotation 2026*.
 
