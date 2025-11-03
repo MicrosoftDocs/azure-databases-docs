@@ -4,7 +4,7 @@ description: Describes the supported major and minor versions of PostgreSQL in A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 09/29/2025
+ms.date: 10/31/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -25,7 +25,6 @@ PostgreSQL 18 is now available in **Preview** on Azure Database for PostgreSQL f
 - Microsoft Entra ID authentication is not supported in this preview release.  
 - Extension availability is limited. Certain PostgreSQL extensions are not supported in the PG18 preview. Refer to the [list of supported extensions](./concepts-extensions.md) for details.  
 - Query store and index tuning aren’t supported in this preview release.
-- Regional availability is currently restricted to East Asia.
 - Can't configure server to use new Async I/O `io_method = io_uring`.
 
 ## PostgreSQL version 17
