@@ -1,7 +1,6 @@
 name: GitOps.PullRequestIssueManagement
 description: GitOps.PullRequestIssueManagement primitive
 resource: repository
-
 configuration:
   resourceManagementConfiguration:
     eventResponderTasks:
@@ -28,13 +27,11 @@ configuration:
               matchAny: true
               pattern: articles/cosmos-db/*
           - not:
-              - or:
-                  - isActivitySender:
-                      user: seesharprun
-                  - isActivitySender:
-                      user: diberry
-                  - isActivitySender:
-                      user: learn-build-service-prod[bot]
+              or:
+                - isActivitySender:
+                    user: seesharprun
+                - isActivitySender:
+                    user: learn-build-service-prod[bot]
         then:
           - addReply:
               reply: >-
