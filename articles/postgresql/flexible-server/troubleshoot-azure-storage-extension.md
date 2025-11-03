@@ -53,6 +53,14 @@ When the tuples passed to `blob_put` consist of more than one column and the enc
 
 When the tuples read from the blob by `blob_get` consist of more than one column and the encoder is inferred as `text`, or is manually set to `text`.
 
+### ERROR:  azure_storage: container with the given name does not exist
+
+The name of the container passed through the `container_name` parameter of the `blob_get` function doesn't exist in the referred storage account.
+
+### ERROR:  azure_storage: blob with the given name does not exist
+
+The name of the blob passed through the `path` parameter of the `blob_get` function doesn't exist in the referred container in the storage account.
+
 ## Related content
 
 - [Reference](reference-azure-storage-extension.md).
