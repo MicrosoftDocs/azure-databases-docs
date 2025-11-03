@@ -21,7 +21,7 @@ Azure Database for PostgreSQL enforces connecting your client applications to an
 
 ## Certificate chains
 
-A *certificate chain* is an ordered list of certificates that contain an TLS/SSL certificate and CA certificates. They enable the receiver to verify that the sender and all CAs are trustworthy. The chain or path begins with the TLS/SSL certificate. Each certificate in the chain is signed by the entity identified by the next certificate in the chain.
+A *certificate chain* is an ordered list of certificates that contain a TLS/SSL certificate and CA certificates. They enable the receiver to verify that the sender and all CAs are trustworthy. The chain or path begins with the TLS/SSL certificate. Each certificate in the chain is signed by the entity identified by the next certificate in the chain.
 
 The chain terminates with a *root CA certificate*. This certificate is always signed by the CA itself. The signatures of all certificates in the chain must be verified up to the root CA certificate.
 
@@ -96,7 +96,7 @@ There are many connection parameters for configuring the client for SSL. A few i
 
 The default `sslmode` mode used is different between libpq-based clients (such as psql) and JDBC. The libpq-based clients default to `prefer`. JDBC clients default to `verify-full`.
 
-- `sslcert`, `sslkey`, and `sslrootcert`: These parameters can override the default location of the client certificate, the PKCS-8 client key, and the root certificate. They default to `/defaultdir/postgresql.crt`, `/defaultdir/postgresql.pk8`, and `/defaultdir/root.crt`, respectively, where `defaultdir` is `${user.home}/.postgresql/` in nix systems and `%appdata%/postgresql/` on Windows.
+- `sslcert`, `sslkey`, and `sslrootcert`: These parameters can override the default location of the client certificate, the PKCS-8 client key, and the root certificate. They default to `/defaultdir/postgresql.crt`, `/defaultdir/postgresql.pk8`, and `/defaultdir/root.crt`, respectively, where `defaultdir` is `${user.home}/.postgresql/` in Linux systems and `%appdata%/postgresql/` on Windows.
 
 CAs are the institutions responsible for issuing certificates. A trusted certificate authority is an entity that's entitled to verify that someone is who they say they are. For this model to work, all participants must agree on a set of trusted CAs. All operating systems and most web browsers ship with a set of trusted CAs.
 
@@ -132,7 +132,7 @@ Information on updating client applications certificate stores with new root CA 
 
 1. Experience loss of connectivity from the client application to the Azure Database for PostgreSQL flexible server instance - support ticket opened.
 1. If your intermediate certificate got rotated, you might need to update your client certificate store with the new intermediate certificate.
-1. how to check to see if you are pinning your intermediate certificate - see [Certificate pinning and Azure services](/azure/security/fundamentals/certificate-pinning#how-to-address-certificate-pinning-in-your-application).
+1. how to check to see if you're pinning your intermediate certificate - see [Certificate pinning and Azure services](/azure/security/fundamentals/certificate-pinning#how-to-address-certificate-pinning-in-your-application).
 
 ### Read replicas with certificate pinning scenarios
 
@@ -204,16 +204,17 @@ To work around these issues, add all three necessary certificates to the client 
     1. For example, you can [get a list of trusted certificates in Java Key Store programmatically](security-update-trusted-root-java.md).
     1. For example, you can [check cacerts java keystore to see if it already contains required certificates](security-update-trusted-root-java.md). 
 1. You are using certificate pinning, if you have individual intermediate certificates or individual PostgreSQL server certificates.
-1. To remove certificate pinning, remove all your certificates from your trusted root store except the root CA certificates:
-   - [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
-   - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
-   - [Digicert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
-1. If these certificates are not in your trusted root store then add these root CA certificates:
-   - [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
-   - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
-   - [Digicert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
+1. To remove certificate pinning, remove all the certificates from your trusted root store and add the new certificates. 
+   1. You can download the updated certificates from Microsoft's official repository: [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list).    
+       1. Current chain:
+          1. DigiCert Global Root G2
+          1. Microsoft Azure RSA TLS Issuing CA 03 / 04 / 07 / 08
+       1. New chain:
+          1. DigiCert Global Root G2
+          1. Microsoft TLS RSA Root G2
+          1. Microsoft TLS G2 RSA CA OCSP 02 / 04 / 06 / 08 / 10 / 12 / 14 / 16
 
-If you are experiencing issues even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title "ICA Rotation 2026".
+If you are experiencing issues even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title *ICA Rotation 2026*.
 
 ## Related content
 
