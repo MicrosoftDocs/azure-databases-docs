@@ -58,11 +58,11 @@ With the MCP integration, your AI agents can handle queries like:
 
 Before you begin, make sure you have the required tools, accounts, and permissions in place to deploy and configure the MCP PostgreSQL Server. Having these prerequisites ready minimizes interruptions and helps ensure a smooth integration with Azure AI Foundry.
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (latest version)
+- [Azure CLI](/cli/azure/install-azure-cli) (latest version)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
-- [Azure Database for PostgreSQL Flexible Server](https://learn.microsoft.com/azure/postgresql/flexible-server/overview) with Entra ID authentication enabled
+- [Azure Database for PostgreSQL Flexible Server](/azure/postgresql/flexible-server/overview) with Entra ID authentication enabled
 - [Azure AI Foundry project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal)
-- [Microsoft .NET](https://dotnet.microsoft.com/en-us/download)
+- [Microsoft .NET](https://dotnet.microsoft.com/download)
 - An Azure subscription with appropriate permissions to create resources
 
 > [!NOTE]  
@@ -318,9 +318,9 @@ az containerapp show --name your-mcp-server --resource-group your-resource-group
 
 ## Related content
 
-- [Azure MCP Server documentation](https://learn.microsoft.com/azure/developer/azure-mcp-server/)
+- [Azure MCP Server documentation](/azure/developer/azure-mcp-server/)
 - [Model Context Protocol specification](https://spec.modelcontextprotocol.io/)
-- [Azure AI Foundry documentation](https://docs.microsoft.com/azure/ai-foundry/)
+- [Azure AI Foundry documentation](/azure/ai-foundry/)
 - [Azure Database for PostgreSQL integrations for AI applications](generative-ai-frameworks.md)
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
 - [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md)
