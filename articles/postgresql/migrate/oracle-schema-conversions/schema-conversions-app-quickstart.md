@@ -4,7 +4,7 @@ description: "Step-by-step tutorial for converting Oracle database schemas to Po
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 11/18/2025 
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ---
