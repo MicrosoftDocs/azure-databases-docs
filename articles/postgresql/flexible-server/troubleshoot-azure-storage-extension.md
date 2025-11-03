@@ -43,7 +43,7 @@ When executing a COPY TO statement for which the source is a query. Azure Storag
 
 ### ERROR:  azure_storage: could not infer file encoding from extension: '<extension>', use a supported extension [csv, csv.gz, tsv, tsv.gz, json, json.gz, xml, xml.gz, txt, txt.gz, parquet], or specify the decoder argument if you are using blob_get or format if using COPY FROM/TO 
 
-When <extension> doesn't correspond to one of the extensions from which Azure Storage extension supports inferring the encoder and compression algorithm (for `bob_put` and `COPY TO`) or decoder and decompression algorithm (for `blob_get` and `COPY FROM`) that must be used. Either specify one of the supported values for automatic inference, or don't use `auto` but force specific type of encoder + compression or decoder + decompression.
+When <extension> doesn't correspond to one of the extensions from which Azure Storage extension supports inferring the encoder and compression algorithm (for `blob_put` and `COPY TO`) or decoder and decompression algorithm (for `blob_get` and `COPY FROM`) that must be used. Either specify one of the supported values for automatic inference, or don't use `auto` but force specific type of encoder + compression or decoder + decompression.
 
 ### ERROR:  azure_storage: can only use text encoder with a single column
 
