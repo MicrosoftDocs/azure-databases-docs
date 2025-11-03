@@ -4,7 +4,7 @@ description: Troubleshooting guide for autovacuum in an Azure Database for Postg
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
-ms.date: 08/26/2025
+ms.date: 11/02/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -328,6 +328,36 @@ Autovacuum is an important background process as it helps with efficient storage
 
 We introduced a new role `pg_signal_autovacuum_worker` from PostgreSQL, which allows nonsuperuser members to terminate an ongoing autovacuum task. The new role helps users to get secure and controlled access to the autovacuum process. Nonsuper users can cancel the autovacuum process once they're granted as the `pg_signal_autovacuum_worker` role by using `pg_terminate_backend` command. The role `pg_signal_autovacuum_worker` is backported to Azure Database for PostgreSQL in PostgreSQL versions 15 and higher.
 
+#### Recommended approach for repetitive autovacuum workers 
+In rare scenarios, such as anti-wraparound autovacuum, workers may restart immediately after termination because they are critical for preventing transaction ID exhaustion. To minimize repeated conflicts, follow these steps:
+- Queue the DDL operation prior to termination: 
+  1. Session 1: Prepare and run the DDL statement. 
+  2. Session 2: Terminate the autovacuum process. 
+    > Important: These two steps must be executed back-to-back. If the DDL statement remains blocked for too long, it can hold locks and block other DML operations on the server. 
+- Terminate autovacuum and execute DDL:  If the DDL must run immediately: 
+  1. Terminate the autovacuum process using pg_terminate_backend(). 
+  2. Execute the DDL statement right after termination.
+
+Steps to avoid repeated conflicts:
+
+1. Grant role to user
+```sql
+GRANT pg_signal_autovacuum_worker TO app_user;
+```
+2. Identify autovacuum process id:
+```sql
+SELECT pid, query FROM pg_stat_activity WHERE query LIKE '%autovacuum%' and pid!=pg_backend_pid();
+```
+
+3. Terminate autovacuum
+```sql
+SELECT pg_terminate_backend(<pid>);
+```
+
+4. Execute DDL statement immediately
+```sql
+ALTER TABLE my_table ADD COLUMN new_col TEXT;
+```
 > [!NOTE]  
 > We don't recommend killing any ongoing autovacuum process because terminating autovacuum process might lead to table and databases bloat, which can further lead to performances regressions. However, in cases where there's a business-critical requirement involving the scheduled execution of a DDL statement that coincides with the autovacuum process, we can allow non-superusers to terminate the autovacuum in a controlled and secure manner using `pg_signal_autovacuum_worker role`.
 
@@ -349,3 +379,4 @@ The recommendations are:
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md)
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md)
 - [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md)
+

@@ -116,10 +116,10 @@ To use a managed identity in your application or to log in using Entra ID creden
       "location": "eastus",
       "name": "managed-identity-name",
       "properties": {
-        "clientId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+        "clientId": "00001111-aaaa-2222-bbbb-3333cccc4444",
         "isolationScope": "None",
-        "principalId": "cccccccc-0000-1111-2222-bbbbbbbbbbbb",
-        "tenantId": "dddddddd-0000-1111-2222-bbbbbbbbbbbb"
+        "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
+        "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee"
       },
       "tags": {},
       "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
