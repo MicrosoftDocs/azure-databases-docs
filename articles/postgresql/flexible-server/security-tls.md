@@ -96,7 +96,7 @@ There are many connection parameters for configuring the client for SSL. A few i
 
 The default `sslmode` mode used is different between libpq-based clients (such as psql) and JDBC. The libpq-based clients default to `prefer`. JDBC clients default to `verify-full`.
 
-- `sslcert`, `sslkey`, and `sslrootcert`: These parameters can override the default location of the client certificate, the PKCS-8 client key, and the root certificate. They default to `/defaultdir/postgresql.crt`, `/defaultdir/postgresql.pk8`, and `/defaultdir/root.crt`, respectively, where `defaultdir` is `${user.home}/.postgresql/` in nix systems and `%appdata%/postgresql/` on Windows.
+- `sslcert`, `sslkey`, and `sslrootcert`: These parameters can override the default location of the client certificate, the PKCS-8 client key, and the root certificate. They default to `/defaultdir/postgresql.crt`, `/defaultdir/postgresql.pk8`, and `/defaultdir/root.crt`, respectively, where `defaultdir` is `${user.home}/.postgresql/` in Linux systems and `%appdata%/postgresql/` on Windows.
 
 CAs are the institutions responsible for issuing certificates. A trusted certificate authority is an entity that's entitled to verify that someone is who they say they are. For this model to work, all participants must agree on a set of trusted CAs. All operating systems and most web browsers ship with a set of trusted CAs.
 
