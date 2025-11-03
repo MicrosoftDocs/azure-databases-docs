@@ -46,11 +46,14 @@
               href: flexible-server/quickstart-create-server-bicep.md
         - name: Create an elastic cluster
           items:
-            - name: ARM template
-              displayName: Resource Manager
-              href: flexible-server/quickstart-create-elastic-cluster-arm-template.md
             - name: Azure portal
               href: flexible-server/quickstart-create-elastic-cluster-portal.md
+            - name: Bicep
+              href: flexible-server/quickstart-create-elastic-cluster-bicep.md
+            - name: ARM template
+              displayName: Azure Resource Manager
+              href: flexible-server/quickstart-create-elastic-cluster-arm-template.md
+            
         - name: Connect and query
           items:
             - name: Connect to a server in virtual network
