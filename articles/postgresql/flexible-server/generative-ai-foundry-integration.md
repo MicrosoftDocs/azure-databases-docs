@@ -1,0 +1,314 @@
+---
+title: Connect Azure Database for PostgreSQL to Azure AI Foundry using MCP
+description: Learn how to integrate Azure Database for PostgreSQL with Azure AI Foundry using Model Context Protocol (MCP) to enable AI agents to interact with your database through natural language queries.
+author: abeomor
+ms.author: abeomorogbe
+ms.date: 11/04/2025
+ms.update-cycle: 180-days
+ms.service: azure-database-postgresql
+ms.subservice: flexible-server
+ms.collection: ce-skilling-ai-copilot
+ms.custom:
+  - ignite-2025
+ms.topic: how-to
+---
+# Connect Azure Database for PostgreSQL to Azure AI Foundry using MCP
+
+The Azure Database for PostgreSQL MCP (Model Context Protocol) server enables AI agents in Azure AI Foundry to interact with PostgreSQL databases through natural language queries. This integration supports SQL operations, schema discovery, and data analysis with enterprise-grade security.
+
+This article shows you how to set up and configure the Azure MCP PostgreSQL Server to connect your Azure Database for PostgreSQL with Azure AI Foundry agents for natural language database interactions.
+
+## What is MCP and how does it work?
+
+Model Context Protocol (MCP) is an open standard that enables AI applications to securely connect to external data sources and tools. The Azure MCP PostgreSQL Server acts as a bridge between Azure AI Foundry agents and your PostgreSQL database.
+
+The system uses three main components:
+
+1. **Azure AI Foundry Agent** (Client): Authenticates to the Azure MCP Server using its managed identity
+2. **Azure MCP PostgreSQL Server** (Server): Runs in Azure Container Apps, using managed identity for PostgreSQL access  
+3. **PostgreSQL Database** (Target): Azure Database for PostgreSQL Flexible Server with Entra ID authentication
+
+This architecture ensures proper security isolation with separate managed identities for client authentication and database access.
+
+## Features and capabilities
+
+The Azure MCP PostgreSQL Server provides comprehensive database integration capabilities:
+
+- 🔍 **SQL Operations** - Execute queries, manage data, perform analytics through natural language
+- 📊 **Schema Discovery** - Automatic table and column analysis with relationship mapping
+- 🔐 **Enterprise Security** - Azure managed identity and Entra ID authentication  
+- 🐳 **Production Ready** - Containerized deployment to Azure Container Apps
+- 🎯 **Natural Language** - Query databases using conversational AI without SQL knowledge
+- 🚀 **Easy Deployment** - One-click Azure deployment with complete infrastructure setup
+
+### Example use cases
+
+With the MCP integration, your AI agents can handle queries like:
+
+- "List all customers who placed orders in the last 30 days"
+- "Show me the top 5 best-selling products by quantity"
+- "What's the schema of the orders table?"
+- "Calculate average order value by customer segment"
+- "Find tables that contain customer information"
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (latest version)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- [Azure Database for PostgreSQL Flexible Server](https://learn.microsoft.com/azure/postgresql/flexible-server/overview) with Entra ID authentication enabled
+- [Azure AI Foundry project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal)
+- [Microsoft .NET](https://dotnet.microsoft.com/en-us/download)
+- An Azure subscription with appropriate permissions to create resources
+
+    > [!NOTE]
+    > The MCP integration is currently only available in the UAE North region for Azure AI Foundry projects.
+
+## Quick start deployment
+
+Deploy the complete Azure MCP PostgreSQL Server infrastructure using Azure Developer CLI (azd):
+
+### Step 1: Deploy with azd up
+
+The fastest way to get started is using the automated deployment script, first start by cloning [the repo](https://github.com/Azure-Samples/azure-postgres-mcp-demo):
+
+```bash
+# Clone the repository
+git clone https://github.com/Azure-Samples/azure-mcp-postgresql-server
+cd azure-mcp-postgresql-server
+```
+
+Deploy the complete infrastructure with a single script. Before running `azd up` command, we will need to [set the environment](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/manage-environment-variables?tabs=bash#set-environment-variables) variable to connect to the Postgres server you want to access from AI Foundry and the AI Foundry resource you want to connect to.
+
+```bash
+# Set environment variables for your existing PostgreSQL server
+azd env set POSTGRES_RESOURCE_ID "/subscriptions/<subscription-id>/resourceGroups/<postgres-resource-group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<postgres-server-name>"
+
+# Set environment variables for your AI Foundry project
+azd env set AIF_PROJECT_RESOURCE_ID "/subscriptions/<subscription-id>/resourceGroups/<aifoundry-resource-group>/providers/Microsoft.CognitiveServices/accounts/<aifoundry-resource-name>/projects/<aifoundry-project-name>"
+
+# Deploy the infrastructure
+azd up
+```
+
+This deployment creates:
+- Azure Container Apps instance for the MCP server
+- Managed Identity for secure authentication
+- Entra ID App Registration with proper RBAC configuration
+- All necessary networking and security configurations
+
+![Screenshot of Azure Portal components](./media/generative-ai-foundry-integration/azure_portal_resources.png)
+
+### Step 2: Configure database access
+
+After deployment completes, you need to grant the MCP server access to your PostgreSQL database:
+
+1. Connect to your PostgreSQL server using `psql` or your preferred PostgreSQL client:
+
+   Set the following environment variables by copying and pasting the lines below into your bash terminal (WSL, Azure Cloud Shell, etc.). 
+
+   ```bash
+   export PGHOST=<your-database-host-name>
+   export PGUSER=<your-admin-username>
+   export PGPORT=5432
+   export PGDATABASE=<your-database-name>
+   export PGPASSWORD="$(az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv)" 
+   ```
+
+   Then run:
+   ```bash
+   psql
+   ```
+
+   Alternatively, you can connect via the [PostgreSQL VSCode extension](https://learn.microsoft.com/en-us/azure/postgresql/extensions/vs-code-extension/quickstart-connect#add-a-connection-to-postgresql)
+
+2. Create the database principal for the MCP server's managed identity:
+
+   ```sql
+   SELECT * FROM pgaadauth_create_principal('<ACA_MI_DISPLAY_NAME>', false, false);
+   ```
+
+   Replace `<ACA_MI_DISPLAY_NAME>` with the managed identity name from your deployment output (typically `azure-mcp-postgres-server`).
+
+3. Grant appropriate permissions to the managed identity:
+
+   ```sql
+   -- Grant SELECT on a specific table
+   GRANT SELECT ON TABLE_NAME TO "<ACA_MI_DISPLAY_NAME>";
+
+   ```
+
+   > [!TIP]
+   > Use `azd env get-values` to find the exact `ACA_MI_DISPLAY_NAME` value from your deployment.
+
+## Configure Azure AI Foundry integration
+
+Once your MCP server is deployed, you can connect it to Azure AI Foundry:
+
+### Connect via Azure AI Foundry portal
+
+1. Navigate to your Azure AI Foundry project in the Azure portal.
+
+2. Go to **Build** → **Create agent**.
+
+3. In the tools section, select **+ Add**.
+
+4. Select the **Custom** tab and choose **Model Context Protocol**.
+
+   ![Screenshot showing how to add PostgreSQL tool in AI Foundry](./media/generative-ai-foundry-integration/use_in_ai_foundry_ui_mcp_connect.png)
+
+5. Select **Microsoft Entra** → **Project Managed Identity** as the authentication method.
+
+   ![Screenshot showing Entra ID authentication setup](./media/generative-ai-foundry-integration/AI_Foundry_Entra_Connect.png)
+
+6. Enter your `ENTRA_APP_CLIENT_ID` as the audience (from your deployment output).
+
+   > [!TIP]
+   > Use `azd env get-values` to find the `ENTRA_APP_CLIENT_ID` value.
+
+7. Add instructions to your agent:
+
+   ```text
+   You are a helpful agent that can use MCP tools to assist users. Use the available MCP tools to answer questions and perform tasks.
+   
+   Use these parameters when calling PostgreSQL MCP tools:
+   - database: <YOUR_DATABASE_NAME>
+   - resource-group: <YOUR_RESOURCE_GROUP>
+   - server: <YOUR_SERVER_NAME>
+   - subscription: <YOUR_SUBSCRIPTION_ID>
+   - user: <ACA_MI_DISPLAY_NAME>
+   ```
+
+### Test the integration
+
+Once connected, test your MCP integration with natural language queries:
+
+You can discover tables
+```text
+List all tables in my PostgreSQL database
+```
+
+You can retrieve records with natural language
+
+```text
+Show me the latest 10 records from the orders table
+```
+
+```text
+Find customers who placed orders in the last 30 days
+```
+
+You can do vector search and specify example queries to improve accuracy.
+```text
+Do a vector search for "product for customer that love to hike"
+
+this is a vector search example.
+SELECT id, name, price, embedding <=> azure_openai.create_embeddings(
+'text-embedding-3-small',
+'query example'
+)::vector AS similarity
+FROM public.products
+ORDER BY similarity
+LIMIT 10;
+```
+
+The AI agent will automatically translate these requests into appropriate database operations through the MCP server.
+
+### Connect via Azure AI Foundry SDK
+
+For programmatic access, use the following MCP configuration in your Python code:
+
+```python
+mcp_tool_config = {
+    "type": "mcp",
+    "server_url": "<MCP_SERVER_URL>",
+    "server_label": "<MCP_SERVER_LABEL>",
+    "server_authentication": {
+        "type": "connection",
+        "connection_name": "<CONNECTION_NAME>",
+    }
+}
+
+mcp_tool_resources = {
+    "mcp": [
+        {
+            "server_label": "<MCP_SERVER_LABEL>",
+            "require_approval": "never"
+        }
+    ]
+}
+```
+
+[Full SDK sample](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/main/client/agents_mcp_sample.py) in the the `client` folder in GitHub Repo.
+
+## Security
+
+When using the Azure MCP PostgreSQL Server, be aware of the following security considerations:
+
+### Data access and exposure
+- Any data accessible to the MCP server can potentially be exposed to connected AI agents
+- The server can execute SQL queries on accessible databases and tables, however the MCP server is restricted to read only operations.
+- Connected agents may request and receive data through natural language queries
+
+### Security features
+- ✅ **Managed Identity**: No credentials stored in container images
+- ✅ **Entra ID Authentication**: Secure [database authentication](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/security-overview#access-control)
+- ✅ **RBAC**: Role-based [access control](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/security-overview#access-control) for database operations
+- ✅ **Row Level Security**: Fine-grained [access control at the row level](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/security-access-control)
+
+### Best practices
+- **Grant database permissions ONLY to specific schemas and tables** needed for AI agents
+- Use principle of least privilege - don't grant broad database access
+- Regularly review and audit permissions granted to the MCP server's managed identity
+- Consider using dedicated databases or schemas for AI agent access
+- Start with a test database containing only non-sensitive sample data
+
+
+## Troubleshooting
+
+### Health check
+Verify your MCP server status:
+
+```bash
+curl https://your-mcp-server.azurecontainerapps.io/health
+```
+
+### Common issues
+
+**Authentication errors**
+- Error: `Unauthorized` or `Forbidden`
+- Solution: Verify managed identity configuration and PostgreSQL access permissions
+
+**Connection issues**
+- Error: `Connection timeout` or `Cannot connect to server`
+- Solution: Check PostgreSQL firewall rules and network configuration
+
+**Permission errors**
+- Error: `Permission denied for relation`
+- Solution: Grant appropriate permissions to the MCP server's managed identity:
+
+```sql
+GRANT SELECT ON my_table TO "<ACA_MI_DISPLAY_NAME>";
+```
+
+### Debug with logs
+
+View Container Apps logs for troubleshooting:
+
+```bash
+# Stream logs
+az containerapp logs tail --name your-mcp-server --resource-group your-resource-group
+
+# Check deployment status
+az containerapp show --name your-mcp-server --resource-group your-resource-group
+```
+
+## Related content
+
+- [Azure MCP Server documentation](https://learn.microsoft.com/azure/developer/azure-mcp-server/)
+- [Model Context Protocol specification](https://spec.modelcontextprotocol.io/)
+- [Azure AI Foundry documentation](https://docs.microsoft.com/azure/ai-foundry/)
+- [Azure Database for PostgreSQL integrations for AI applications](generative-ai-frameworks.md)
+- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md)
