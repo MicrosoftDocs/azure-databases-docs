@@ -17,9 +17,9 @@ Azure Cosmos DB for NoSQL now features Query Advisor, designed to help you write
 
 ## Why Query Optimization Matters
 
-Azure Cosmos DB's query language is flexible, allowing developers to query JSON data with familiar SQL-like syntax. But as applications grow in complexity, small differences in query structure can have a big impact on performance and Request Units (RUs).
+Azure Cosmos DB's query language is flexible, allowing developers to query JSON data with familiar SQL-like syntax. But as applications grow in complexity, small differences in query structure can have a significant impact on performance and Request Units (RUs), especially at large scale.
 
-For example, two queries that return the same result may differ dramatically in efficiency based on how predicates are written and how indexes are leveraged.
+For example, two queries that return the same result may differ dramatically in efficiency based on how predicates are written and how indexes are applied.
 
 Query Advisor analyzes your queries and offers targeted recommendations to help you:
 
@@ -71,7 +71,7 @@ Console.WriteLine(queryAdvice);
 
 ### Example Output
 
-In this example query, we observe that there is one single advice, called **QA1002**:
+In this example query, we observe that there's one single advice, called **QA1002**:
 
 ```
 QA1002: Instead of CONTAINS, consider using STARTSWITH or computed properties, which may improve performance. For more information, please visit https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/query/queryadvisor/QA1002
@@ -109,6 +109,5 @@ In this example, there are 2 pieces of advice returned by the Query Advisor, **Q
 
 ## Next Steps
 
-- Learn more about [query performance](query-metrics.md)
-- Understand [request units](../request-units.md)
-- Explore [indexing policies](../index-policy.md)
+- Learn more about [query metrics](../query-metrics.md)
+- Learn more about [idndex metrics](../index-metrics.md)
