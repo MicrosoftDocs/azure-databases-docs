@@ -8,15 +8,15 @@ ms.reviewer: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: overview
-ms.date: 06/17/2025
+ms.date: 11/03/2025
 ai-usage: ai-generated
 ---
 
 # What is Azure Cosmos DB for NoSQL?
 
-Azure Cosmos DB for NoSQL is a fully managed and serverless NoSQL and vector database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it is ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL and vector data.
+Azure Cosmos DB for NoSQL is a fully managed and serverless NoSQL and vector database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it's ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL and vector data.
 
-This service is part of the Azure Cosmos DB suite but is tailored for NoSQL workloads. It supports querying JSON data using a SQL-like query language, making it approachable for developers familiar with the SQL syntax while using the flexibility of a NoSQL unstructured data store.
+This service is tailored for NoSQL workloads for scale-out scenarios. It supports querying JSON data using a SQL-like query language, making it approachable for developers familiar with the SQL syntax while using the flexibility of a NoSQL unstructured data store.
 
 ## Global Distribution and Scalability
 
@@ -40,7 +40,15 @@ To use Azure Cosmos DB for NoSQL, you need an Azure subscription. The service in
 
 ## Limitations and Considerations
 
-While Azure Cosmos DB for NoSQL is highly versatile, it's optimized for JSON-based NoSQL workloads. If your application requires support for other database models, such as MongoDB, Cassandra, or Gremlin, you might need to explore other APIs within the Azure Cosmos DB suite. Additionally, the service's cost model is based on provisioned throughput (RU/s), so careful planning is required to optimize costs for your workload.
+While Azure Cosmos DB for NoSQL is highly versatile, it's optimized for JSON-based NoSQL workloads for scale-out scenarios.
+
+If your application requires support for other database models, such as MongoDB, Cassandra, or Gremlin, consider one of the following services:
+
+- [Azure Cosmos DB for MongoDB (vCore)](../mongodb/vcore/introduction.md)
+- [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md)
+- [Graph in Microsoft Fabric](/fabric/graph/overview)
+ 
+Additionally, the service's cost model is based on provisioned throughput (RU/s), so careful planning is required to optimize costs for your workload.
 
 ## Related content
 
