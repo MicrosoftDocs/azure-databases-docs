@@ -26,6 +26,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/programmatic-database-migration-assistant-legacy.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/pre-migration-steps",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/gremlin/how-to-provision-throughput.md",
       "redirect_url": "/azure/cosmos-db/nosql/how-to-provision-container-throughput",
       "redirect_document_id": false

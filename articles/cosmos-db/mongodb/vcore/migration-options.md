@@ -75,24 +75,6 @@ In certain special cases, you may need greater control and higher throughput dur
 
 [Sign up  for Azure Cosmos DB for MongoDB Spark Migration](https://forms.office.com/r/cLSRNugFSp) to gain access to the Spark Migration Tool GitHub repository. The repository offers detailed, step-by-step instructions for migrating your workloads from various Mongo sources to vCore-based Azure Cosmos DB for MongoDB.
 
-
-### Azure Data Studio (Deprecated)
-
-The [MongoDB migration extension for Azure Data Studio](/azure-data-studio/extensions/database-migration-for-mongo-extension) is a straightforward and zero cost tool designed to help you migrate your MongoDB workloads to the vCore-based Azure Cosmos DB for MongoDB. 
-
-> [!IMPORTANT]
-> This tool doesn't support the following scenarios:
-> - Migrations where either the source or target account is enabled with Private Endpoint.
-> - Migrations where the firewalls of the source or target account cannot accept a wide IP range. This tool requires you to allow connections from global Azure datacenters to both the source and target accounts. For more information, see the [global Azure IP address ranges](/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files).
-
-
-This tool has two phases:
-
-- **Premigration assessment** - An evaluation of your current MongoDB data estate to determine if there are any incompatibilities.
-- **Migration** - The migration operation using services managed by Azure.
-
-With the graphical user interface, you can oversee the entire premigration assessment and migration process from start to finish, or you can choose to perform just the premigration assessment. While the migration is initiated in Azure Data Studio, it actually runs in the cloud on Azure-managed resources.
-
 ## Related content
 
 - Migrate data to vCore-based Azure Cosmos DB for MongoDB using [native MongoDB tools](how-to-migrate-native-tools.md).

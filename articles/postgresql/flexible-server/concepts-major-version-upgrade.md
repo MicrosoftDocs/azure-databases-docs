@@ -4,7 +4,7 @@ description: Learn how to use Azure Database for PostgreSQL to do in-place major
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/15/2025
+ms.date: 10/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: upgrade-and-migration-article
@@ -58,11 +58,11 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 ### Extension Limitations
 
 In-place major version upgrades do not support all PostgreSQL extensions. The upgrade will fail during the precheck if unsupported extensions are found.
-- The following extensions are not supported across any PostgreSQL versions: `timescaledb`, `dblink`, `orafce`, `postgres_fdw`
-- The following extensions are not supported when upgrading to PostgreSQL 17: `pgrouting`, `age`, `azure_ai`, `hll`, `pg_diskann`
-- Extensions such as `pgrouting`, `pg_repack`, and `hypopg` are not supported for in-place upgrades and should be dropped before the upgrade and recreated after. These extensions are non-persistent and safe to reconfigure post-upgrade.
+- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `timescaledb`, `dblink`, `orafce`, `postgres_fdw`.
+- The following extensions are **non-persistent utility extensions** and will need to be dropped and re-created after the upgrade by design: `pg_repack`, `hypopg`.
+- When upgrading to PostgreSQL 17, the following extensions are **not supported** and must be removed before upgrade. You may re-enable them only if supported on the target version: `age`, `azure_ai`, `hll`, `pg_diskann`, `pgrouting`.
 
-These extensions must be removed from the **azure.extensions** server parameter prior to upgrade. If present, the upgrade will be blocked.
+**Note:** If any of these extensions appear in the `azure.extensions` server parameter, the upgrade will be blocked. Remove them from the parameter before starting the upgrade.
 
 ### PostGIS-Specific Considerations
 

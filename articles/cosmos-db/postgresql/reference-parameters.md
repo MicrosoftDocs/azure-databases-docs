@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: reference
 ms.date: 12/17/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Azure Cosmos DB for PostgreSQL server parameters
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 There are various server parameters that affect the behavior of Azure Cosmos DB for PostgreSQL,
 both from standard PostgreSQL, and specific to Azure Cosmos DB for PostgreSQL.

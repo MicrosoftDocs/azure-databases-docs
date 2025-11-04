@@ -11,7 +11,7 @@ ms.custom:
 - ignite-2024
 - sfi-image-nochange
 ms.topic: concept-article
-ms.date: 09/09/2025
+ms.date: 10/11/2025
 appliesto:
   - ✅ MongoDB (vCore)
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
@@ -51,6 +51,12 @@ If a region outage occurs, you can perform disaster recovery operation by promot
 
 > [!IMPORTANT]
 > Because replication is asynchronous, some data from cluster in region A might not be replicated to region B when cluster replica in region B is promoted. If so, promotion would result in the unreplicated data not present on both clusters.
+
+## Authentication methods on replica cluster
+
+[Authentication methods](./entra-authentication.md#considerations) are managed independently on the primary and replica clusters. Users and other security principals, such as managed identities, are always managed on the primary cluster and synchronized to the replica cluster.  
+
+If the primary cluster has native DocumentDB authentication method disabled *at the time the replica cluster is created*, enabling native DocumentDB authentication on the replica isn't allowed. To enable native DocumentDB authentication on such a replica, it must first be promoted.
 
 ## Related content
 

@@ -17,6 +17,8 @@ ai-usage: ai-generated
 
 [!INCLUDE[Quickstart developer selector](includes/selector-quickstart-developer.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Get started with the Azure Cosmos DB for Apache Gremlin client library for Python to store, manage, and query unstructured data. Follow the steps in this guide to create a new account, install a Python client library, connect to the account, perform common operations, and query your final sample data.
 
 [Library source code](https://github.com/apache/tinkerpop/tree/master/gremlin-python/src/main/python) | [Package (PyPi)](https://pypi.org/project/gremlinpython/)

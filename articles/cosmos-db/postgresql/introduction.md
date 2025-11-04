@@ -10,11 +10,13 @@ ms.topic: overview
 ms.date: 06/11/2025
 ms.custom: mvc, build-2023, build-2023-dataai
 recommendations: false
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # What is Azure Cosmos DB for PostgreSQL?
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL is a managed service for PostgreSQL extended
 with the [Citus open source](https://github.com/citusdata/citus) superpower of

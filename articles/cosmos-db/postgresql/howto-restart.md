@@ -8,11 +8,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 02/17/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Restart Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 You can restart your cluster for the Azure portal. Restarting the cluster applies to all nodes; you can't selectively restart
 individual nodes. The restart applies to all PostgreSQL server processes in the nodes. Any applications attempting to use the database will experience

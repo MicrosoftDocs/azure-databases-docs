@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 10/02/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Row-level security in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 PostgreSQL [row-level security
 policies](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)

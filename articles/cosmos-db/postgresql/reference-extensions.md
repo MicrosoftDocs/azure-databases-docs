@@ -8,10 +8,13 @@ ms.subservice: postgresql
 ms.custom: build-2023
 ms.topic: concept-article
 ms.date: 05/28/2024
+appliesto:
+  - ✅ PostgreSQL
 ---
+
 # PostgreSQL extensions in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 PostgreSQL extend the functionality of your database by using extensions. Extensions allow for bundling multiple related SQL objects together in a single package that can be loaded or removed from your database with a single command. After being loaded in the database, extensions can function like built-in features. For more information on PostgreSQL extensions, see [Package related objects into an extension](https://www.postgresql.org/docs/current/static/extend-extensions.html).
 

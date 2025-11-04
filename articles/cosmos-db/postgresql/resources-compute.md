@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 01/22/2024
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Azure Cosmos DB for PostgreSQL compute and storage
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Compute resources are provided as vCores, which represent the logical CPU of
 the underlying hardware. The storage size for provisioning refers to the

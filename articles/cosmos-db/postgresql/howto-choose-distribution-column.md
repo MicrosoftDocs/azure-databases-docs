@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 02/28/2022
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Choose distribution columns in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Choosing each table's distribution column is one of the most important modeling decisions you'll make. Azure Cosmos DB for PostgreSQL stores rows in shards based on the value of the rows' distribution column.
 

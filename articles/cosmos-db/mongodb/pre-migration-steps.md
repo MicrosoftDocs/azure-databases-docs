@@ -80,13 +80,6 @@ Here are some tools you can use for discovering resources:
 
 Go through the spreadsheet and verify each collection against the [supported features and syntax](./feature-support-42.md), and [Azure Cosmos DB limits and quotas](../concepts-limits.md#per-account-limits) in detail.
 
-### Database Migration Assistant utility (legacy) 
-
-> [!NOTE]
-> Database Migration Assistant is a legacy utility meant to assist you with the pre-migration steps. We recommend you to use the [Azure Cosmos DB Migration extension](#azure-cosmos-db-migration-extension) for all pre-migration steps.
-
-You may use the [Database Migration Assistant (DMA)](programmatic-database-migration-assistant-legacy.md) utility to assist you with pre-migration steps.
-
 ## Pre-migration mapping
 
 With the discovery and assessment steps complete, you're done with the MongoDB side of the equation. Now it's time to plan the Azure Cosmos DB side of the equation. How are you planning to set up and configure your production Azure Cosmos DB resources? Do your planning at a *per-resource* level – that means you should add the following columns to your planning spreadsheet:

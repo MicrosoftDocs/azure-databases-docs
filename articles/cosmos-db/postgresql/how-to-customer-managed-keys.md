@@ -8,10 +8,13 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 01/03/2024
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ PostgreSQL
 ---
+
 # Enable data encryption with customer-managed keys in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 ## Prerequisites
 

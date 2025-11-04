@@ -8,11 +8,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 12/17/2021
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Troubleshoot connection issues to Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Connection problems may be caused by several things, such as:
 

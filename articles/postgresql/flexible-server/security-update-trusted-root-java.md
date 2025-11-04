@@ -18,6 +18,8 @@ ms.custom:
 
 When connecting applications to Azure Database for PostgreSQL, the application client must install trusted root certificates. The following sections guide you through updating the trusted root certificates for applications, which is a common scenario for applications connecting to an Azure Database for PostgreSQL flexible server instance.
 
+[!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
+
 ## Import Root CA Certificates in Java Key Store on the client, for certificate pinning scenarios
 
 Custom-written Java applications use a default keystore, called `cacerts`, which contains trusted certificate authority (CA) certificates. It's also often known as Java trust store. A certificates file named `cacerts` resides in the security properties directory, java.home\lib\security, where java.home is the runtime environment directory (the `jre` directory in the SDK or the top-level directory of the Java™ 2 Runtime Environment).

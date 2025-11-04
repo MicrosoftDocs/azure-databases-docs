@@ -1,16 +1,17 @@
 ---
-title: "Tutorial: Migrate SQL Server logins (preview) to Azure SQL in Azure Data Studio"
+title: "Tutorial: Migrate SQL Server Logins (Preview) to Azure SQL in Azure Data Studio"
 titleSuffix: Azure Database Migration Service
 description: Learn how to migrate on-premises SQL Server logins (preview) to Azure SQL by using Azure Data Studio and Azure Database Migration Service.
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 11/26/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-- sql-migration-content
-ms.custom: sfi-image-nochange
+  - sql-migration-content
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Tutorial: Migrate SQL Server logins (preview) to Azure SQL in Azure Data Studio
@@ -19,7 +20,7 @@ You can use Azure Database Migration Service and the Azure SQL Migration extensi
 
 This login migration experience automates manual tasks such as the synchronization of logins with their corresponding user mappings and replicating server/securable permissions and server roles.
 
-Currently, only Azure SQL Managed Instance and SQL Server on Azure Virtual Machines targets are supported.  
+Currently, only Azure SQL Managed Instance and SQL Server on Azure Virtual Machines targets are supported.
 
 Completing the database migrations of your on-premises databases to Azure SQL before starting the login migration **is recommended**. It will ensure that the database-level users have already been migrated to the target; therefore the login migration process will perform the user-login mappings synchronization.
 
@@ -29,6 +30,7 @@ In this tutorial, learn how to migrate a set of different SQL Server logins from
 > You can use the Azure SQL Migration extension for Azure Data Studio, PowerShell or Azure CLI for starting the login migration process.
 
 In this tutorial, you learn how to:
+
 > [!div class="checklist"]
 > - Open the Migrate to Azure SQL wizard in Azure Data Studio
 > - Start the SQL Server login migration wizard
@@ -113,7 +115,7 @@ To open the Login Migration wizard:
 
       :::image type="content" source="media/tutorial-login-migration-ads/configuration-azure-target-database.png" alt-text="Screenshot that shows Azure SQL Managed Instance connectivity." lightbox="media/tutorial-login-migration-ads/configuration-azure-target-database.png":::
 
-1. In **Step 2: Select login(s) to migrate**, select the logins that you wish to migrate from the source SQL server to the Azure SQL target. For Windows accounts, you'll be prompted to enter the associated Microsoft Entra domain name. Then select **Migrate** to start the login migration process.
+1. In **Step 2: Select logins to migrate**, select the logins that you wish to migrate from the source SQL server to the Azure SQL target. For Windows accounts, you'll be prompted to enter the associated Microsoft Entra domain name. Then select **Migrate** to start the login migration process.
 
    :::image type="content" source="media/tutorial-login-migration-ads/logins-to-migrate.png" alt-text="Screenshot that shows the source logins details.":::
 
