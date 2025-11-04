@@ -9,9 +9,9 @@ ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
-# What is Oracle to PostgreSQL schema conversion Preview?
+# What is Oracle to Azure Database for PostgreSQL schema conversion Preview?
 
-The Oracle to PostgreSQL Schema Conversion feature in the Visual Studio Code PostgreSQL extension helps you convert your existing Oracle database schema objects into PostgreSQL-compatible schema. This functionality is designed for relational schemas and ensures that the converted schema works seamlessly with Azure Database for PostgreSQL flexible server.
+The Oracle to Azure Database for PostgreSQL schema conversion feature in the Visual Studio Code PostgreSQL extension helps you convert your existing Oracle database schema objects into PostgreSQL-compatible schema. This functionality is designed for relational schemas and ensures that the converted schema works seamlessly with Azure Database for PostgreSQL flexible server.
 
 The tool provides a project-based user interface to automate schema conversion. If certain objects can't be converted automatically, the tool flags them as Review Tasks, which you can resolve manually by using GitHub Copilot Agents.
 
@@ -75,6 +75,16 @@ An integrated feature in Visual Studio Code that provides guided prompts to help
 - Best practice recommendations for Azure Database for PostgreSQL
 - Code completion for complex transformations
 - Integration with your existing development workflow
+
+## Security and Networking
+
+When using the schema conversion feature, ensure that your Visual Studio Code environment can securely connect to both your source Oracle database and the Azure Database for PostgreSQL flexible server instance used as the Scratch Database.
+
+For more information on securing your Azure OpenAI connections, visit [Data, privacy, and security for Azure Direct Models in Azure AI Foundry](/azure/ai-foundry/responsible-ai/openai/data-privacy?tabs=azure-portal).
+
+You can also connect to an Azure OpenAI resource using a private endpoint. For more information, see [Create a private endpoint for Azure OpenAI](/azure/ai-services/cognitive-services-virtual-networks-private-endpoints?tabs=portal#create-a-private-endpoint).
+
+:::image type="content" source="media/schema-conversions-overview/azure-openai-networking.png" alt-text="Diagram of how Visual Studio Code connects to a private endpoint.":::
 
 ## Benefits
 

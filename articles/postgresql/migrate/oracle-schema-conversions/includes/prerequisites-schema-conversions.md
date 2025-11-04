@@ -46,7 +46,6 @@ You need one of the following AI components configured:
 | AI Component | Model Version |
 | --- | --- |
 | **Azure OpenAI** | GPT-4.1 deployment |
-| **GitHub Copilot** | GitHub Copilot with Agent Mode support |
 
 #### Azure OpenAI deployment configuration
 
@@ -73,7 +72,7 @@ The following minimum privileges are required on the source Oracle database:
 | **SELECT ANY DICTIONARY** | Read system metadata and dictionary objects |
 | **SELECT `SYS.ARGUMENT$`** | Access to procedure and function argument information |
 
-#### Scratch Database privileges
+#### Scratch database privileges
 
 The following privileges are required on the Azure Database for PostgreSQL Flexible Server (Scratch DB):
 
