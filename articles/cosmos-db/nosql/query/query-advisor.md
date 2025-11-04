@@ -83,7 +83,7 @@ QA1008: Instead of using GetCurrentTicks, consider using GetCurrentTicksStatic, 
 
 In this example, there are 2 pieces of advice returned by the Query Advisor, **QA1008** and **QA1009**. Each piece of advice is separated into a new line in the `QueryAdvice` string.
 
-## Relatec content
+## Related content
 
 - [Query metrics](../query-metrics.md)
 - [Index metrics](../index-metrics.md)
