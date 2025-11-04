@@ -383,7 +383,7 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 - If you deploy a server in a region that consists of a single availability zone, you can enable high availability in the same-zone mode only. If the region is enhanced in the future with multiple availability zones, you can deploy new Azure Database for PostgreSQL flexible server instances with high availability configured as same zone or zone redundant.
 
-  However, for any instances that you deployed in the region when the region consisted of a single availability zone, you can't directly enable high availability in zone-redundant mode. As a workaround, you can restore those instances on new servers with restore option or use read replica option, and then enable zone-redundant high availability on the restored servers:
+  However, for any instances that you deployed in the region when the region consisted of a single availability zone, you can't directly enable high availability in zone-redundant mode. As a workaround, you can use the restore option or read replica option:
 
 #### Restore option
   1. [Restore an existing instance on a new server by using the latest restore point](how-to-restore-latest-restore-point.md).
@@ -392,7 +392,7 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
   1. Make sure that the connection strings of your clients are modified to point to your newly restored server.
 
 #### Read replica option
-  1. Create a read replica in the same region as your primary server.
+  1. [Create a read replica in the same region as your primary server](concepts-read-replicas.md).
   2. Promote the read replica to become the new primary server.
   3. To preserve the original name, either use virtual endpoints or drop the old primary, then create and promote a new read replica.
   4. For Portal users, enable Zonal Resiliency. For developer tools, set High Availability with the Zone-Redundant option.
