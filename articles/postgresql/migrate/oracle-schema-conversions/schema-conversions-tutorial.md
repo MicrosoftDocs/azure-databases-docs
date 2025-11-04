@@ -51,6 +51,8 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. In the **Migration Wizard**, enter your **project name**.
 1. Select **Next** to proceed to the next step.
 
+    :::image type="content" source="media/schema-conversions-tutorial/new-migration-project.png" alt-text="Screenshot of project name.":::
+
 ### Step 6: Configure Oracle connection
 
 1. Enter your **Oracle connection details** including:
@@ -64,13 +66,17 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. **Choose one or multiple schemas** that you want to convert to PostgreSQL.
 1. Select **Next** to continue.
 
-### Step 8: Configure PostgreSQL target
+   :::image type="content" source="media/schema-conversions-tutorial/connect-oracle.png" alt-text="Screenshot of configuring an Oracle server.":::
+
+### Step 7: Configure a PostgreSQL scratch database
 
 1. **Select the Azure Database for PostgreSQL connection** that you defined in the PostgreSQL extension
 1. **Select the target database** from the dropdown list
 1. Select **Next** to proceed
 
-### Step 9: Configure Azure OpenAI
+    :::image type="content" source="media/schema-conversions-tutorial/scratch-database.png" alt-text="Screenshot of configuring a scratch database.":::
+
+### Step 8: Configure an Azure OpenAI language model
 
 1. Enter your **Azure OpenAI details** including:
    - Endpoint URL
@@ -79,11 +85,15 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. Select **Test Connection** to verify the configuration
 1. Once the connection is **successful**, select **Create Migration Project**
 
-### Step 10: Execute schema conversion
+    :::image type="content" source="media/schema-conversions-tutorial/language-model.png" alt-text="Screenshot of langauage model configuration.":::
+
+### Step 9: Execute schema conversion
 
 1. The system navigates to the **main Migration Wizard**
 1. Select **Migrate** to initiate the **Schema Conversion** process
 1. Monitor the conversion progress in the Visual Studio interface
+
+    :::image type="content" source="media/schema-conversions-tutorial/progress-bar.png" alt-text="Screenshot of Migration step progress.":::
 
 ## What happens during conversion?
 

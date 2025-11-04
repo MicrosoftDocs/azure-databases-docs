@@ -38,6 +38,8 @@ Generated after schema conversion completion, providing detailed conversion resu
 - Deployment instructions and file references
 - Performance recommendations and known limitations
 
+    :::image type="content" source="media/schema-conversion-reports/conversion-report.png" alt-text="Screenshot of conversion report.":::
+
 ## Use the report
 
 Use the Extraction Report to validate migration scope and verify Oracle connectivity and Migration Summary Report to validate conversion results, plan deployment, and identify manual tasks.
@@ -47,6 +49,8 @@ Use the Extraction Report to validate migration scope and verify Oracle connecti
 - Validate object mappings align with application requirements
 - Check data type conversions for compatibility
 - Implement performance recommendations for optimal PostgreSQL results
+
+    :::image type="content" source="media/schema-conversion-reports/extraction-report.png" alt-text="Screenshot of extraction report.":::
 
 ## Related content
 
