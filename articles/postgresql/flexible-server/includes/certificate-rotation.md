@@ -11,11 +11,11 @@ ms.topic: include
 ---
 
 > [!IMPORTANT]
-> Starting November 11, 2025, the following Azure regions are planned for a TLS/SSL certificate rotation using new intermediate CA certificates
+> Starting November 11, 2025, the Azure regions in the following list are planned for a TLS/SSL certificate rotation that uses new intermediate CA certificates.
 > - West Central US
 > - East Asia
 > - UK South
 > 
-> Beginning January 19, 2026, this rotation is planned to extend to all remaining Azure regions, including Azure Government and Azure China.
+> Beginning January 19, 2026, this rotation is planned to extend to all remaining Azure regions, including Azure Government and all other regions.
 >
 > For information about troubleshooting, see [Certificate pinning issues](../security-tls.md#certificate-pinning-issues).
