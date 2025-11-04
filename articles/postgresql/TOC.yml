@@ -105,7 +105,7 @@
             - name: Table types
               href: flexible-server/concepts-elastic-clusters-table-types.md
             - name: Limitations
-              href: flexible-server/concepts-elastic-clusters-limitations.yml
+              href: flexible-server/concepts-elastic-clusters-limitations.md
         - name: Prepay for reserved capacity
           href: flexible-server/concepts-reserved-pricing.md
         - name: Networking
