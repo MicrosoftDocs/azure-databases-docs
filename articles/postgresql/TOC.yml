@@ -765,27 +765,27 @@
               href: migrate/migration-service/troubleshoot-error-codes-premigration.md
     - name: Migrate from Oracle
       items:
-        - name: Schema conversions
-          items:
-            - name: What is Oracle to PostgreSQL schema conversion?
-              href: migrate/oracle-schema-conversions/schema-conversions-overview.md
-            - name: Tutorial
-              href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
-            - name: Reports
-              href: migrate/oracle-schema-conversions/schema-conversions-reports.md
-            - name: Best Practices
-              href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
-            - name: Limitations
-              href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
         - name: Migration Concepts
           href: migrate/concepts-oracle-migration.md
         - name: Migration Stages
-          href: migrate/concepts-oracle-migration-stages.md
+          href: migrate/concepts-oracle-migration-stages.md        
+        - name: Schema conversion
+          items:
+            - name: Schema conversion overview
+              href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+            - name: Schema conversion tutorial
+              href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
+            - name: Schema conversion reports
+              href: migrate/oracle-schema-conversions/schema-conversions-reports.md
+            - name: Schema conversion best practices
+              href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
+            - name: Schema conversion limitations
+              href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
         - name: Best Practices
           href: migrate/best-practices-oracle-to-postgresql.md
         - name: Pre-migration Checklist
           href: migrate/best-practices-oracle-to-postgresql-checklist.md
-        - name: Migrate using Ora2Pg
+        - name: Migrate with Ora2Pg
           href: migrate/how-to-migrate-oracle-ora2pg.md
 - name: Samples
   items:
