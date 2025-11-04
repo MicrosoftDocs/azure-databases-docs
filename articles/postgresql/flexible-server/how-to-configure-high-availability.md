@@ -35,19 +35,19 @@ The **Zonal Resiliency** option controls whether your server is protected across
 
 If you enable zonal resiliency but your region doesn't have enough capacity for a zone-redundant setup, you see a checkbox under the Enabled option. Selecting this checkbox allows you to create the standby server in the same zone as the primary. This option ensures you still get node-level protection even when zone capacity is limited. Later, when zonal capacity becomes available, Azure automatically migrates your standby server to a different zone during a maintenance window to minimize downtime.
 
-1. If Zonal Resiliency isn't enabled, select the **Enabled** radio button.
+1. If Zonal Resiliency isn't enabled, select the **Enabled** option.
 
    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-disabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="./media/how-to-configure-high-availability/high-availability-disabled.png":::
 
-1. On selecting the **Enabled** radio button, the **Zone redundant** option can be applied by default for regions that have support for [availability zones](/azure/postgresql/flexible-server/overview#azure-regions), as it's the recommended configuration to protect against zonal failures.
+1. When you select the **Enabled** option, the **Zone redundant** option is applied by default for regions that support [availability zones](/azure/postgresql/flexible-server/overview#azure-regions). This configuration protects against zonal failures.
 
    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable.png" alt-text="Screenshot that shows the checkbox selected to enable high availability." lightbox="./media/how-to-configure-high-availability/high-availability-enable.png":::
 
-1. If the region doesn't have zonal capacity, to make sure that high availability (HA) gets enabled in your preferred region, you have to select the checkbox under the enabled option to allow creating HA with Same-Zone mode of the region. It automatically migrates your workloads to Zone-Redundant HA once zonal capacity becomes available:
+1. If the region doesn't have zonal capacity, to make sure that high availability (HA) gets enabled in your preferred region, select the checkbox under the enabled option to allow creating HA with Same-Zone mode of the region. It automatically migrates your workloads to Zone-Redundant HA once zonal capacity becomes available:
 
    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-same-zone.png" alt-text="Screenshot that shows selection of the same-zone option for high availability." lightbox="./media/how-to-configure-high-availability/high-availability-same-zone.png":::
 
-1. When everything is configured according to your needs, select **Save** to apply the changes.
+1. When you're done configuring the settings, select **Save** to apply the changes.
 
 1. A dialog shows the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable high availability**.
 
@@ -373,11 +373,11 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 ---
 
-## Special considerations
+## Limitations and considerations
 
 - Enabling or disabling high availability on an Azure Database for PostgreSQL flexible server instance doesn't change other settings, including networking configuration, firewall settings, server parameters, or backup retention. Enabling or disabling high availability is an online operation. It doesn't affect your application connectivity and operations.
 
-- Azure Database for PostgreSQL flexible server instances support high availability with both replicas deployed in the same zone. This configuration is available in all supported regions. However, high availability with zone redundancy is [available only in certain regions](overview.md#azure-regions).
+- Azure Database for PostgreSQL support high availability with both replicas deployed in the same zone. This configuration is available in all supported regions. However, high availability with zone redundancy is [available only in certain regions](overview.md#azure-regions).
 
 - The **Burstable** tier doesn't support high availability. Only the **General purpose** and **Memory optimized** tiers support high availability.
 
@@ -393,9 +393,9 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 #### Read replica option
   1. [Create a read replica in the same region as your primary server](concepts-read-replicas.md).
-  2. Promote the read replica to become the new primary server.
-  3. To preserve the original name, either use virtual endpoints or drop the old primary, then create and promote a new read replica.
-  4. For Portal users, enable Zonal Resiliency. For developer tools, set High Availability with the Zone-Redundant option.
+  1. Promote the read replica to become the new primary server.
+  1. To preserve the original name, either use virtual endpoints or drop the old primary, then create and promote a new read replica.
+  1. For Portal users, enable Zonal Resiliency. For developer tools, set High Availability with the Zone-Redundant option.
 
 
 ## Related content
