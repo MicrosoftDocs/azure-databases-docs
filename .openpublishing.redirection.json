@@ -1,16 +1,6 @@
 {
   "redirections": [
     {
-      "source_path": "articles/cosmos-db/nosql/query/how-to-enable-use-copilot.md",
-      "redirect_url": "https://learn.microsoft.com/azure/cosmos-db/introduction",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "articles/cosmos-db/copilot-faq.yml",
-      "redirect_url": "https://learn.microsoft.com/azure/cosmos-db/introduction",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "articles/mariadb/scripts/sample-change-server-configuration.md",
       "redirect_url": "/previous-versions/azure/mariadb/scripts/sample-change-server-configuration",
       "redirect_document_id": false
