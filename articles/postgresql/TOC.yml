@@ -441,7 +441,7 @@
         - name: Oracle to Azure Database for PostgreSQL schema conversion
           href: migrate/oracle-schema-conversions/schema-conversions-overview.md
     - name: Graph database
-       items:
+      items:
         - name: Overview Apache AGE for PostgreSQL
           href: flexible-server/generative-ai-age-overview.md
         - name: Performance Best Practices for Apache AGE

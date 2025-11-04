@@ -82,7 +82,7 @@ When using the schema conversion feature, ensure that your Visual Studio Code en
 
 For more information on securing your Azure OpenAI connections, visit [Data, privacy, and security for Azure Direct Models in Azure AI Foundry](/azure/ai-foundry/responsible-ai/openai/data-privacy?tabs=azure-portal).
 
-You can also connect to an Azure OpenAI resource using a private endpoint. For more information, see [Create a private endpoint for Azure OpenAI](/azure/ai-services/cognitive-services-virtual-networks-private-endpoints?tabs=portal#create-a-private-endpoint).
+You can also connect to an Azure OpenAI resource using a private endpoint. For more information, see [Create a private endpoint for Azure OpenAI](/azure/ai-foundry/openai/how-to/network).
 
 :::image type="content" source="media/schema-conversions-overview/azure-openai-networking.png" alt-text="Diagram of how Visual Studio Code connects to a private endpoint.":::
 
