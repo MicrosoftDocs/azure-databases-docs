@@ -1,9 +1,9 @@
 ---
 title: 'Tutorial: Design multitenant database with elastic clusters'
-description: Learn how to design a scalable multitenant application with elastic cluster on Azure Database for PostgreSQL.
-author: mulander
+description: Learn how to design a scalable multitenant application with Azure Database for PostgreSQL elastic clusters.
+author: adamwolk
 ms.author: adamwolk
-ms.date: 02/28/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
@@ -26,13 +26,17 @@ In this tutorial, you use Azure Database for PostgreSQL with elastic clusters to
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster with ARM template]()
-- [Create an elastic cluster using CLI]()
-- [Create an elastic cluster using the Portal]()
+- [Create an elastic cluster using the Portal](quickstart-create-elastic-cluster-portal.md)
+- [Create an elastic cluster using Bicep](quickstart-create-elastic-cluster-bicep.md)
+- [Create an elastic cluster with ARM template](quickstart-create-elastic-cluster-arm-template.md)
 
 ## Use psql utility to create a schema
 
-Once connected to the elastic cluster using psql, you can complete some basic tasks. This tutorial walks you through creating a web app that allows advertisers to track their campaigns.
+Once connected to the elastic cluster using psql, you can configure your elastic cluster. This tutorial walks you through creating a web app that allows advertisers to track their campaigns.
+
+> [!NOTE]
+>
+> When distributing data across your cluster, any unique data contraints are scoped to the distribution key. In our multi-tenant example, the application uniqueness is enforced per tenant id (e.g. company ID).  Within our distributed table definitions, the primary and foreign key constraints include the company ID column.
 
 Multiple companies can use the app, so let's create a table to hold companies and another for their campaigns. In the psql console, run these commands:
 
@@ -81,7 +85,7 @@ CREATE TABLE ads (
 );
 ```
 
-Finally, we track statistics about clicks and impressions for each ad:
+Finally, we want to track statistics about clicks and impressions for each ad:
 
 ```sql
 CREATE TABLE clicks (
@@ -121,15 +125,11 @@ You can see the newly created tables in the list of tables now in psql by runnin
 \dt
 ```
 
-Multitenant applications can enforce uniqueness only per tenant,
-which is why all primary and foreign keys include the company ID.
-
 ## Shard tables across nodes
 
-An elastic cluster deployment stores table rows on different nodes based on the value of a user-designated column. This "distribution column" marks which tenant owns which rows.
+Distributed tables within an elastic cluster store data on different nodes based upon the value of the defined "distribution column". This column is used to determine where rows are placed across underlying worker nodes.
 
-Let's set the distribution column to be company\_id, the tenant
-identifier. In psql, run these functions:
+Let's set the distribution column to be company_id, which we are using as our multi-tenant identifier. In psql, run these functions:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -141,7 +141,7 @@ SELECT create_distributed_table('impressions', 'company_id');
 
 > [!NOTE]
 >
-> Distributing tables or using schema-based sharding is necessary to take advantage of elastic clusters with Azure Database for PostgreSQL performance features. If you don't distribute tables or schemas, then nodes can't help run queries involving their data.
+> Distributing tables or using schema-based sharding is necessary to take advantage of elastic clusters with Azure Database for PostgreSQL performance features. Until you distribute tables or schemas, your cluster nodes will not run distributed queries involving their data.
 
 ## Ingest sample data
 
