@@ -3,7 +3,7 @@ title: "Quickstart: Create elastic clusters with ARM template"
 description: In this Quickstart, learn how to create an Azure Database for PostgreSQL flexible server instance with elastic clusters by using an ARM template.
 author: jaredmeade
 ms.author: jaredmeade
-ms.reviewer: maghan
+ms.reviewer: adamwolk
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server

@@ -3,7 +3,7 @@ title: "Quickstart: Create elastic clusters with Bicep template"
 description: In this Quickstart, learn how to create an Azure Database for PostgreSQL flexible server instance with elastic clusters by using a Bicep template.
 author: jaredmeade
 ms.author: jaredmeade
-ms.reviewer: maghan
+ms.reviewer: adamwolk
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
@@ -12,19 +12,17 @@ ms.topic: quickstart
 
 # Quickstart: Use a Bicep template to create an elastic cluster with Azure Database for PostgreSQL
 
-Azure Database for PostgreSQL with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with a horizontal scale-out capability. You can use an Azure Resource Manager template (Bicep template) to create an elastic clusters instance.
+Azure Database for PostgreSQL with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with a horizontal scale-out capability. You can use a Bicep template to provision your Azure Database for PostgreSQL flexible server elastic clusters instance.
 
-Bicep is a domain-specific language that uses declarative syntax to deploy Azure resources. In a Bicep file, you define the infrastructure you want to deploy to Azure and then use that file throughout the development lifecycle to repeatedly deploy that infrastructure. Your resources are deployed in a consistent manner.
-
-Bicep provides concise syntax, reliable type safety, and support for reusing code. Bicep offers an optimal authoring experience for your infrastructure-as-code solutions in Azure. To learn about Azure Bicep templates, see [Template deployment overview](/azure/azure-resource-manager/bicep/overview?tabs=bicep).
+[!INCLUDE [About Bicep](~/reusable-content/ce-skilling/azure/includes/resource-manager-quickstart-bicep-introduction.md)]
 
 ## Prerequisites
 
 An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
-## Review the template
+## Review the Bicep template
 
-An Azure Database for PostgreSQL flexible server instance is the parent resource for a distributed database within a region. It provides the scope for management policies that apply to the cluster: firewall, users, roles, and configurations.
+An Azure Database for PostgreSQL flexible server elastic cluster instance is the parent resource for a distributed database within a region. It provides the scope for management policies that apply to the cluster: firewall, users, roles, and configurations.
 
 Create a _elastic-cluster-template.bicep_ file and copy the following script into it.
 
@@ -105,25 +103,33 @@ resource serverFirewallRules 'Microsoft.DBforPostgreSQL/flexibleServers/firewall
 ]
 ```
 
-These resources are defined in the template:
+These resources are defined in the Bicep file:
 
-- [Microsoft.DBforPostgreSQL/flexibleServers](/azure/templates/microsoft.dbforpostgresql/flexibleservers?tabs=json&pivots=deployment-language-bicep)
+- [Microsoft.DBforPostgreSQL/flexibleServers](/azure/templates/microsoft.dbforpostgresql/flexibleservers?tabs=bicep)
 
-## Deploy the template
+## Deploy the Bicep file
 
-Select **Try it** from the following PowerShell code block to open Azure Cloud Shell. 
+Use Azure CLI or Azure PowerShell to deploy the Bicep file.
+
+# [CLI](#tab/CLI)
 
 ```azurecli-interactive
 
 az login
 
-$resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group where the server will exist"
+$resourceGroupName = Read-Host -Prompt "Enter a name for the resource group where the server will exist"
 
 az deployment group create `
   --resource-group $resourceGroupName `
   --template-file ./elastic-cluster-template.bicep
 
 ```
+
+You're prompted to enter these values:
+
+- **clusterName**: enter a unique name that identifies your Azure Database for PostgreSQL flexible server elastic cluster instance. The domain name `postgres.database.azure.com` is appended to the cluster name you provide. The cluster name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain at least 3 through 63 characters.
+- **administratorLogin**: enter your own login account to use when you connect to the server. For example, `clusterAdmin`. The admin login name can't be `azure_superuser`, `azure_pg_admin`, `admin`, `administrator`, `root`, `guest`, or `public`. It can't start with `pg_`.
+- **administratorLoginPassword**: enter a new password for the server admin account. It must contain between 8 and 128 characters. Your password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 
 ## Review deployed resources
 
