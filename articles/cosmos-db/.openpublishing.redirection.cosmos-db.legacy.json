@@ -1,12 +1,12 @@
 {
   "redirections": [
     {
-      "source_path": "articles/cosmos-db/nosql/query/how-to-enable-use-copilot.md",
+      "source_path": "/articles/cosmos-db/nosql/query/how-to-enable-use-copilot.md",
       "redirect_url": "/azure/cosmos-db/nosql/query/query-advisor",
       "redirect_document_id": true
     },
     {
-      "source_path": "articles/cosmos-db/copilot-faq.yml",
+      "source_path": "/articles/cosmos-db/copilot-faq.yml",
       "redirect_url": "/azure/cosmos-db/nosql/query/query-advisor",
       "redirect_document_id": false
     },
