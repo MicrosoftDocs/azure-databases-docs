@@ -37,7 +37,7 @@ The Visual Studio Code extension and conversion tooling support common desktop o
 | Component | Version Requirement |
 | --- | --- |
 | **Azure Database for PostgreSQL** | PostgreSQL version 15 or higher |
-| **Scratch Database** | Azure Database for PostgreSQL |
+| **Scratch database** | Azure Database for PostgreSQL |
 
 ### AI model requirements
 

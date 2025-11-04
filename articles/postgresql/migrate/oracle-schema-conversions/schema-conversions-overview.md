@@ -23,7 +23,7 @@ The schema conversion process involves multiple components working together:
 
 - **Source Oracle Database**: Your existing Oracle database containing the schema to convert
 - **Visual Studio Code PostgreSQL Extension**: The primary interface for managing the conversion process
-- **Azure Database for PostgreSQL flexible server**: Used as the Scratch Database for validation and testing
+- **Azure Database for PostgreSQL flexible server**: Used as the scratch database for validation and testing
 - **Azure OpenAI**: Provides intelligent transformation capabilities for complex schema objects
 - **Schema Conversion Agents**: AI-powered agents that handle the automated conversion process
 
@@ -33,7 +33,7 @@ The schema conversion process uses an intelligent, multistage approach that comb
 
 - **Connection and Discovery**: The tool connects to your Oracle database and catalogs all schema objects. It analyzes their structure, dependencies, and complexity to create a conversion plan.
 - **AI-Powered Transformation**: Schema Conversion Agents use Azure OpenAI to intelligently transform Oracle-specific constructs into PostgreSQL-compatible equivalents. The AI understands context, relationships, and best practices for both database platforms.
-- **Validation in Scratch Environment**: The tool tests all converted objects in the Azure Database for PostgreSQL database (Scratch Database) environment. This step ensures syntax correctness and compatibility before final output generation.
+- **Validation in Scratch Environment**: The tool tests all converted objects in the Azure Database for PostgreSQL database (scratch database) environment. This step ensures syntax correctness and compatibility before final output generation.
 - **Review Task Generation**: The tool flags objects that can't be fully automated or require human judgment as Review Tasks. These objects might include complex business logic or Oracle-specific features that need manual attention.
 - **Guided Resolution**: GitHub Copilot Agent Mode provides intelligent assistance for completing Review Tasks. It offers context-aware suggestions and Azure Database for PostgreSQL flexible server best practices to help you make informed decisions.
 - **Output Generation**: The tool converts successfully validated objects into organized PostgreSQL `.sql` files, ready for deployment to your target environment.
@@ -78,7 +78,7 @@ An integrated feature in Visual Studio Code that provides guided prompts to help
 
 ## Security and Networking
 
-When using the schema conversion feature, ensure that your Visual Studio Code environment can securely connect to both your source Oracle database and the Azure Database for PostgreSQL flexible server instance used as the Scratch Database.
+When using the schema conversion feature, ensure that your Visual Studio Code environment can securely connect to both your source Oracle database and the Azure Database for PostgreSQL flexible server instance used as the scratch database.
 
 For more information on securing your Azure OpenAI connections, visit [Data, privacy, and security for Azure Direct Models in Azure AI Foundry](/azure/ai-foundry/responsible-ai/openai/data-privacy?tabs=azure-portal).
 
@@ -88,11 +88,11 @@ You can also connect to an Azure OpenAI resource using a private endpoint. For m
 
 ## Benefits
 
-Converting Oracle schemas to PostgreSQL streamlines migration and modernization. It reduces manual effort and risk by automating transformations, validating results in a Scratch Database, and providing AI-assisted review and Azure-optimized output ready for deployment.
+Converting Oracle schemas to PostgreSQL streamlines migration and modernization. It reduces manual effort and risk by automating transformations, validating results in a scratch database, and providing AI-assisted review and Azure-optimized output ready for deployment.
 
 - **Automated conversion**: Reduces manual effort by automatically converting compatible schema objects
 - **AI-powered intelligence**: Uses Azure OpenAI for smart transformation decisions
-- **Validation-first approach**: Uses Scratch Database to ensure converted objects work correctly
+- **Validation-first approach**: Uses the scratch database to ensure converted objects work correctly
 - **Integrated workflow**: Works seamlessly within Visual Studio Code development environment
 - **Review and refinement**: Provides clear guidance for manual review tasks
 - **Azure optimization**: Designed for Azure Database for PostgreSQL flexible server
