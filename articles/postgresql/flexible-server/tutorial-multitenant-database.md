@@ -139,7 +139,6 @@ SELECT create_distributed_table('impressions', 'company_id');
 ```
 
 > [!NOTE]  
->
 > To take advantage of elastic clusters with Azure Database for PostgreSQL performance features, you need to distribute tables. Unless you distribute your tables and schemas, your cluster nodes don't participate in any distributed queries or operations.
 
 ## Ingest sample data

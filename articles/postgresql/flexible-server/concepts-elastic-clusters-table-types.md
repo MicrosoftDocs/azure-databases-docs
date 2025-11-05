@@ -48,4 +48,4 @@ With [schema-based sharding](concepts-elastic-clusters-sharding-models.md#schema
 
 - [Overview of elastic clusters](concepts-elastic-clusters.md).
 - [Sharding models on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-sharding-models.md).
-- [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.md).
+- [Frequently asked questions about elastic clusters of Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.md).

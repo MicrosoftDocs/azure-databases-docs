@@ -108,4 +108,4 @@ WHERE shardid = 102027;
 
 - [Sharding models on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-sharding-models.md).
 - [Table types on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-table-types.md).
-- [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.md).
+- [Frequently asked questions about elastic clusters of Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.md).
