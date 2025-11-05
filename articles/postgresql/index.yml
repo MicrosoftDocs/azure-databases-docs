@@ -130,7 +130,7 @@ landingContent:
             url: https://learn.microsoft.com/rest/api/postgresql/
             
 # Card 5
-  - title: Migrate to Azure Database for PostgreSQL
+  - title: Migrate to Azure Database for PostgreSQL (offline)
     linkLists:
       - linkListType: overview
         links:
@@ -138,33 +138,44 @@ landingContent:
             url: migrate/migration-service/overview-migration-service-postgresql.md
           - text: Pre-Migration Validation
             url: migrate/migration-service/concepts-premigration-migration-service.md
-      - linkListType: how-to-guide
+      - linkListType: tutorial
+        links:
+          - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
+            url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
+          - text: Migrate (Offline) from Amazon RDS
+            url: migrate/migration-service/tutorial-migration-service-aws-offline.md
+          - text: Migrate (Offline) from Amazon Aurora
+            url: migrate/migration-service/tutorial-migration-service-aurora-offline.md
+          - text: Migrate (Offline) from Google Cloud SQL for PostgreSQL
+            url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+          - text: Migrate (Offline) from Google AlloyDB for PostgreSQL
+            url: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
+
+# Card 6
+  - title: Migrate to Azure Database for PostgreSQL (online)
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Migration Service overview
+            url: migrate/migration-service/overview-migration-service-postgresql.md
+          - text: Pre-Migration Validation
+            url: migrate/migration-service/concepts-premigration-migration-service.md
+      - linkListType: tutorial
         links:
           - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
             url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
           - text: Migrate (Online) from an Azure VM or on-premises PostgreSQL server
             url: migrate/migration-service/tutorial-migration-service-iaas-online.md
-          - text: Migrate (Offline) from Amazon RDS
-            url: migrate/migration-service/tutorial-migration-service-aws-offline.md
           - text: Migrate (Online) from Amazon RDS
             url: migrate/migration-service/tutorial-migration-service-aws-online.md
-          - text: Migrate (Offline) from Amazon Aurora
-            url: migrate/migration-service/tutorial-migration-service-aurora-offline.md
           - text: Migrate (Online) from Amazon Aurora
             url: migrate/migration-service/tutorial-migration-service-aurora-online.md
-          - text: Migrate (Offline) from Google Cloud SQL for PostgreSQL
-            url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
           - text: Migrate (Online) from Google Cloud SQL for PostgreSQL
             url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
-          - text: Migrate (Offline) from Google AlloyDB for PostgreSQL
-            url: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
           - text: Migrate (Online) from Google AlloyDB for PostgreSQL
             url: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
-          - text: Migrate from Oracle
-            url: migrate/concepts-oracle-migration.md
 
-      
-#Card 6
+#Card 7
   - title: Additional Resources
     linkLists:
       - linkListType: concept

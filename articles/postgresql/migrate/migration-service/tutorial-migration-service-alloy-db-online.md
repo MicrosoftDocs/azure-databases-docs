@@ -18,7 +18,7 @@ ms.custom:
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL in online mode.
 
-The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server.
+The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It simplifies your migration journey to the Azure Database for PostgreSQL flexible server.
 
 [!INCLUDE [checklist-online](includes/checklist-online.md)]
 
@@ -34,7 +34,7 @@ You can migrate by using Azure portal or Azure CLI.
 
 #### [Portal](#tab/portal)
 
-This article guides you using the Azure portal to migrate your PostgreSQL database from a Google AlloyDB for PostgreSQL server to an Azure Database for PostgreSQL. The Azure portal allows you to perform various tasks, including database migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
+This article guides you through using the Azure portal to migrate your PostgreSQL database from a Google AlloyDB for PostgreSQL server to an Azure Database for PostgreSQL. The Azure portal allows you to perform various tasks, including database migration. By following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
 
 ### Configure the migration task
 

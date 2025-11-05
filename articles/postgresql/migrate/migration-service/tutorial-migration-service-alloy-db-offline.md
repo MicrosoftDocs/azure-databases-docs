@@ -4,7 +4,7 @@ description: "Learn to migrate, seamlessly and in offline mode, from a Google Al
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
-ms.date: 11/03/2025
+ms.date: 11/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -20,7 +20,7 @@ ms.collection:
 
 This article guides you in migrating a Google AlloyDB for PostgreSQL instance to Azure Database for PostgreSQL flexible server in offline mode.
 
-The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server.
+The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It simplifies your migration journey to the Azure Database for PostgreSQL flexible server.
 
 [!INCLUDE [checklist-offline](includes/checklist-offline.md)]
 
@@ -36,7 +36,7 @@ You can migrate by using Azure portal or Azure CLI.
 
 #### [Portal](#tab/portal)
 
-This article guides you using the Azure portal to migrate your PostgreSQL database from a Google AlloyDB for PostgreSQL server to an Azure Database for PostgreSQL. The Azure portal allows you to perform various tasks, including database migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
+This article guides you through using the Azure portal to migrate your PostgreSQL database from a Google AlloyDB for PostgreSQL server to an Azure Database for PostgreSQL. The Azure portal allows you to perform various tasks, including database migration. By following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
 
 ### Configure the migration task
 
