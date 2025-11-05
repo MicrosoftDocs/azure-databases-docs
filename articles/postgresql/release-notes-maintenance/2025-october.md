@@ -18,22 +18,17 @@ This new version introduces a range of new features and enhancements, resolves k
 
 ## Engine version changes
 
-- No engine version upgrade in this maintenance.
+- No engine version upgrade in this maintenance release.
 
 ## Features
 
 - [PgBouncer](https://www.pgbouncer.org/usage.html#admin-console) updated from version 1.22 to 1.23. Admin console queries now include additional columns with this update.
-- [Citus 13.2](https://www.citusdata.com/updates/v13-2/) set as the default for PG16 & P17 for all new Elastic Cluster provisions
-- Enabled the query store extension for PG 18.
+- [Citus 13.2](https://www.citusdata.com/updates/v13-2/) set as the default for PG16 & PG17 for all new Elastic Cluster provisions
+- Enabled the query store extension for PG18.
 - [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) extension upgraded to version 1.9 resolving a critical bug in the squeeze.squeeze_table() function that could lead to data corruption.
 - [IP4R](https://github.com/RhodiumToad/ip4r) extension enabled.
-- timescaleDb upgraded to V2.22.0
-
-
-## Improvements
-
-- No major improvements are being introduced in this maintenance update.
+- TimescaleDB extension upgraded to V2.22.0
 
 ## Known issues fix
 
-- Fixed issue which left VM in a failed state after user attempts start operation multiple times in a region experiencing a capacity outage. VM will now be brought to a deallocated state in these situations, and a capacity-related error message will be returned to the user.
+- Fixed issue which could leave a server in a failed state after user attempts a Start operation multiple times in a region experiencing capacity constraints. Server will now be brought to a deallocated state in these situations, and a capacity-related error message will be returned to the user. This fix now enables users to re-attempt Start operations without the server entering a failed state.
