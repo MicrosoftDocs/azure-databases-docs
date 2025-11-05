@@ -12,7 +12,7 @@ ms.topic: concept-article
 
 # Azure Database For PostgreSQL October 2025 Maintenance Release Notes
 
-We're excited to announce the October 2025 version of Azure Database for PostgreSQL. Starting October 24th, 2025, all new servers will automatically be onboarded to this latest version. Existing servers are upgraded during their next scheduled maintenance.
+We're excited to announce the October 2025 version of Azure Database for PostgreSQL. Starting October 24, 2025, all new servers are automatically onboarded to this latest version. Existing servers are upgraded during their next scheduled maintenance.
 
 This new version introduces a range of new features and enhancements, resolves known issues, and includes essential security patches to ensure optimal performance and security.
 
@@ -31,4 +31,9 @@ This new version introduces a range of new features and enhancements, resolves k
 
 ## Known issues fix
 
-- Fixed issue which could leave a server in a failed state after user attempts a Start operation multiple times in a region experiencing capacity constraints. Server will now be brought to a deallocated state in these situations, and a capacity-related error message will be returned to the user. This fix now enables users to re-attempt Start operations without the server entering a failed state.
+- Fixed issue, which could leave a server in a failed state after user attempts a Start operation multiple times in a region experiencing capacity constraints. The server is now brought to a deallocated state in these situations, and a capacity-related error message is returned to the user. This fix now enables users to reattempt Start operations without the server entering a failed state.
+
+
+## Related content
+
+- [Release notes - Azure Database for PostgreSQL](../flexible-server/release-notes.md)
