@@ -17,32 +17,32 @@ ms.custom:
 
 # Connect Azure Database for PostgreSQL to Azure AI Foundry with MCP
 
-The Azure Database for PostgreSQL MCP (Model Context Protocol) server enables AI agents in Azure AI Foundry to interact with PostgreSQL databases through natural language queries. This integration supports SQL operations, schema discovery, and data analysis with enterprise-grade security.
+The Azure Database for PostgreSQL MCP (Model Context Protocol) server enables AI agents in Azure AI Foundry to interact with PostgreSQL databases through natural language queries. This integration supports SQL operations, vector search, schema discovery, and data analysis with enterprise-grade security.
 
-This article shows you how to set up and configure the Azure MCP PostgreSQL Server to connect your Azure Database for PostgreSQL with Azure AI Foundry agents for natural language database interactions.
+This article shows you how to set up and configure the Azure PostgreSQL Server MCP with Azure AI Foundry agents for natural language database interactions.
 
 ## What is MCP and how does it work?
 
-Model Context Protocol (MCP) is an open standard that enables AI applications to securely connect to external data sources and tools. The Azure MCP PostgreSQL Server acts as a bridge between Azure AI Foundry agents and your PostgreSQL database.
+Model Context Protocol (MCP) is an open standard that enables AI applications to securely connect to external data sources and tools. The Azure PostgreSQL MCP Server acts as a bridge between Azure AI Foundry agents and your PostgreSQL database.
 
 The system uses three main components:
 
-1. **Azure AI Foundry Agent** (Client): Authenticates to the Azure MCP Server by using its managed identity.
-1. **Azure MCP PostgreSQL Server** (Server): Runs in Azure Container Apps, using managed identity for PostgreSQL access.
-1. **PostgreSQL Database** (Target): Azure Database for PostgreSQL Flexible Server with Entra ID authentication.
+1. **Azure AI Foundry Agent** (Client): Authenticates to the Azure PostgreSQL MCP Server using its managed identity
+2. **Azure PostgreSQL MCP Server** (Server): Runs in Azure Container Apps, using managed identity for PostgreSQL access  
+3. **PostgreSQL Database** (Target): Azure Database for PostgreSQL Flexible Server with Entra ID authentication
 
 This architecture ensures proper security isolation with separate managed identities for client authentication and database access.
 
 ## Features and capabilities
 
-The Azure MCP PostgreSQL Server provides comprehensive database integration capabilities:
+The Azure PostgreSQL MCP Server provides comprehensive database integration capabilities:
 
-- **SQL Operations** - Execute queries and manage data. Perform analytics through natural language.
-- **Schema Discovery** - Automatic table and column analysis with relationship mapping.
-- **Enterprise Security** - Azure managed identity and Entra ID authentication.
-- **Production Ready** - Containerized deployment to Azure Container Apps.
-- **Natural Language** - Query databases using conversational AI without SQL knowledge.
-- **Easy Deployment** - One-click Azure deployment with complete infrastructure setup.
+- **SQL Operations** - Execute queries, manage data, perform analytics through natural language
+- **Vector Search** - Leverage AI-powered embeddings for similarity search.
+- **Schema Discovery** - Automatic table and column analysis with relationship mapping
+- **Enterprise Security** - Azure managed identity and Entra ID authentication  
+- **Natural Language** - Query databases using conversational AI without SQL knowledge
+- **Easy Deployment** - Easy Azure deployment with complete infrastructure setup
 
 ### Example use cases
 
@@ -65,9 +65,6 @@ Before you begin, make sure you have the required tools, accounts, and permissio
 - [Microsoft .NET](https://dotnet.microsoft.com/download)
 - An Azure subscription with appropriate permissions to create resources
 
-> [!NOTE]  
-> The MCP integration is currently only available in the UAE North region for Azure AI Foundry projects.
-
 ## Quick start deployment
 
 Deploy the complete Azure MCP PostgreSQL Server infrastructure by using Azure Developer CLI (azd):
@@ -84,12 +81,18 @@ cd azure-mcp-postgresql-server
 
 Deploy the complete infrastructure with a single script. Before running the `azd up` command, set the [environment](/azure/developer/azure-developer-cli/manage-environment-variables?tabs=bash#set-environment-variables) variable to connect to the Postgres server you want to access from AI Foundry, and the AI Foundry resource you want to connect to.
 
+Find your Azure Database for PostgreSQL subscription id, resource group and server name in your Azure Portal:
+:::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-details.png" alt-text="Screenshot of Azure Database for PostgreSQL details":::
+
+Find your Azure AI Foundry project name, subscription id and parent resource name in your Azure Portal:
+:::image type="content" source="media/generative-ai-foundry-integration/azure-foundry-details.png" alt-text="Screenshot of Azure AI Foundry details":::
+
 ```bash
 # Set environment variables for your existing PostgreSQL server
 azd env set POSTGRES_RESOURCE_ID "/subscriptions/<subscription-id>/resourceGroups/<postgres-resource-group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<postgres-server-name>"
 
 # Set environment variables for your AI Foundry project
-azd env set AIF_PROJECT_RESOURCE_ID "/subscriptions/<subscription-id>/resourceGroups/<aifoundry-resource-group>/providers/Microsoft.CognitiveServices/accounts/<aifoundry-resource-name>/projects/<aifoundry-project-name>"
+azd env set AIF_PROJECT_RESOURCE_ID "/subscriptions/<subscription-id>/resourceGroups/<aifoundry-resource-group>/providers/Microsoft.CognitiveServices/accounts/<parent-resource-name>/projects/<aifoundry-project-name>"
 
 # Deploy the infrastructure
 azd up
@@ -116,7 +119,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    export PGUSER=<your-admin-username>
    export PGPORT=5432
    export PGDATABASE=<your-database-name>
-   export PGPASSWORD="$(az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv)"
+   export PGPASSWORD="$(az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv)" 
    ```
 
    Then run:
