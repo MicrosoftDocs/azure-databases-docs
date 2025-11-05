@@ -141,7 +141,7 @@ SELECT create_distributed_table('impressions', 'company_id');
 
 > [!NOTE]
 >
-> Distributing tables is necessary to take advantage of elastic clusters with Azure Database for PostgreSQL performance features. Unless you distribute your tables and/or schemas, your cluster nodes will not participate in any distributed queries or operations.
+> Distributing tables is necessary to take advantage of elastic clusters of Azure Database for PostgreSQL performance features. Unless you distribute your tables and/or schemas, your cluster nodes will not participate in any distributed queries or operations.
 
 ## Ingest sample data
 

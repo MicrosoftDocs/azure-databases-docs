@@ -94,7 +94,7 @@ SELECT create_distributed_table('http_request_1min', 'site_id');
 
 > [!NOTE]
 >
-> Distributing tables or using schema-based sharding is necessary to take advantage of elastic clusters with Azure Database for PostgreSQL performance features. Until you distribute tables or schemas, your cluster nodes will not run distributed queries involving their data.
+> Distributing tables or using schema-based sharding is necessary to take advantage of elastic clusters of Azure Database for PostgreSQL performance features. Until you distribute tables or schemas, your cluster nodes will not run distributed queries involving their data.
 
 ## Generate sample data
 
