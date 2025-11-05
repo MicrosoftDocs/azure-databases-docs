@@ -47,7 +47,7 @@ az postgres flexible-server update `
   --node-count 4
 ```
 
-# Rebalancing
+## Rebalancing
 
 After adding nodes to your cluster, any new data modifications and/or newly added distributed tables will use all of available nodes. Existing data shards will stay where they are until redistributed. Online rebalancing ensures reads and writes from the application continue with minimal interruption while data is being moved.
 
@@ -73,7 +73,7 @@ Additionally, the **citus_rebalance_start** function is configurable to rebalanc
 ```psql
 SELECT citus_rebalance_start(parallel_transfer_colocated_shards := true, parallel_transfer_reference_tables := true);
 ```
-# Additional Considerations
+## Additional Considerations
 
 Monitor your cluster after scaling: Check CPU utilization, memory usage, and IO consumption on the Azure portal’s Monitoring charts for your elastic cluster. After a scale-out operation, verify that adding nodes reflects metric improvements for throughput and/or response times, depending on your workload. Adjust further if necessary.
 
