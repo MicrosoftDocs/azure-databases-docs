@@ -68,7 +68,7 @@ The tool flags items for manual review when the AI can't fully convert an object
 - Oracle-specific data types with multiple PostgreSQL alternatives
 - Custom functions with Oracle-specific logic
 
-### GitHub Copilot Agent mode
+### GitHub Copilot agent mode
 
 An integrated feature in Visual Studio Code that provides guided prompts to help you complete review tasks and align schema with your application requirements. The agent mode offers:
 - Context-aware suggestions for schema modifications
@@ -76,7 +76,7 @@ An integrated feature in Visual Studio Code that provides guided prompts to help
 - Code completion for complex transformations
 - Integration with your existing development workflow
 
-## Security and Networking
+## Security and networking
 
 When using the schema conversion feature, ensure that your Visual Studio Code environment can securely connect to both your source Oracle database and the Azure Database for PostgreSQL flexible server instance used as the scratch database.
 
@@ -86,9 +86,9 @@ You can also connect to an Azure OpenAI resource using a private endpoint. For m
 
 :::image type="content" source="media/schema-conversions-overview/azure-openai-networking.png" alt-text="Diagram of how Visual Studio Code connects to a private endpoint.":::
 
-## Benefits
+## Why use the schema conversion feature?
 
-Converting Oracle schemas to PostgreSQL streamlines migration and modernization. It reduces manual effort and risk by automating transformations, validating results in a scratch database, and providing AI-assisted review and Azure-optimized output ready for deployment.
+Converting Oracle schemas to Azure Database for PostgreSQL streamlines migration and modernization. It reduces manual effort and risk by automating transformations, validating results in a scratch database, and providing AI-assisted review and Azure-optimized output ready for deployment.
 
 - **Automated conversion**: Reduces manual effort by automatically converting compatible schema objects
 - **AI-powered intelligence**: Uses Azure OpenAI for smart transformation decisions
