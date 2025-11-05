@@ -27,9 +27,9 @@ Model Context Protocol (MCP) is an open standard that enables AI applications to
 
 The system uses three main components:
 
-1. **Azure AI Foundry Agent** (Client): Authenticates to the Azure PostgreSQL MCP Server using its managed identity
-2. **Azure PostgreSQL MCP Server** (Server): Runs in Azure Container Apps, using managed identity for PostgreSQL access  
-3. **PostgreSQL Database** (Target): Azure Database for PostgreSQL Flexible Server with Entra ID authentication
+- **Azure AI Foundry Agent** (Client): Authenticates to the Azure PostgreSQL MCP Server by using its managed identity
+- **Azure PostgreSQL MCP Server** (Server): Runs in Azure Container Apps, using managed identity for PostgreSQL access  
+- **PostgreSQL Database** (Target): Azure Database for PostgreSQL with Microsoft Entra ID authentication
 
 This architecture ensures proper security isolation with separate managed identities for client authentication and database access.
 
@@ -37,11 +37,11 @@ This architecture ensures proper security isolation with separate managed identi
 
 The Azure PostgreSQL MCP Server provides comprehensive database integration capabilities:
 
-- **SQL Operations** - Execute queries, manage data. Perform analytics through natural language
-- **Vector Search** - Use AI-powered embeddings for similarity search.
+- **SQL Operations** - Execute queries and manage data. Perform analytics through natural language
+- **Vector Search** - Use AI-powered embeddings for similarity search
 - **Schema Discovery** - Automatic table and column analysis with relationship mapping
-- **Enterprise Security** - Azure managed identity and Entra ID authentication  
-- **Natural Language** - Query databases using conversational AI without SQL knowledge
+- **Enterprise Security** - Azure managed identity and Microsoft Entra ID authentication  
+- **Natural Language** - Query databases by using conversational AI without SQL knowledge
 - **Easy Deployment** - Easy Azure deployment with complete infrastructure setup
 
 ### Example use cases
@@ -60,7 +60,7 @@ Before you begin, make sure you have the required tools, accounts, and permissio
 
 - [Azure CLI](/cli/azure/install-azure-cli) (latest version)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
-- [Azure Database for PostgreSQL Flexible Server](/azure/postgresql/flexible-server/overview) with Entra ID authentication enabled
+- [Azure Database for PostgreSQL Flexible Server](/azure/postgresql/flexible-server/overview) with Microsoft Entra ID authentication enabled
 - [Azure AI Foundry project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal)
 - [Microsoft .NET](https://dotnet.microsoft.com/download)
 - An Azure subscription with appropriate permissions to create resources
@@ -81,11 +81,13 @@ cd azure-mcp-postgresql-server
 
 Deploy the complete infrastructure with a single script. Before running the `azd up` command, set the [environment](/azure/developer/azure-developer-cli/manage-environment-variables?tabs=bash#set-environment-variables) variable to connect to the Postgres server you want to access from AI Foundry, and the AI Foundry resource you want to connect to.
 
-Find your Azure Database for PostgreSQL subscription id, resource group, and server name in your Azure portal:
-:::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-details.png" alt-text="Screenshot of Azure Database for PostgreSQL details":::
+Find your Azure Database for PostgreSQL subscription ID, resource group, and server name in your Azure portal:
 
-Find your Azure AI Foundry project name, subscription id, and parent resource name in your Azure portal:
-:::image type="content" source="media/generative-ai-foundry-integration/azure-foundry-details.png" alt-text="Screenshot of Azure AI Foundry details":::
+:::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-details.png" alt-text="Screenshot of Azure details page.":::
+
+Find your Azure AI Foundry project name, subscription ID, and parent resource name in your Azure portal:
+
+:::image type="content" source="media/generative-ai-foundry-integration/azure-foundry-details.png" alt-text="Screenshot of Azure AI Foundry details.":::
 
 ```bash
 # Set environment variables for your existing PostgreSQL server
@@ -101,7 +103,7 @@ azd up
 This deployment creates:
 - Azure Container Apps instance for the MCP server
 - Managed Identity for secure authentication
-- Entra ID App Registration with proper RBAC (Role-based access control) configuration
+- Microsoft Entra ID App Registration with proper Role-based access control (RBAC) configuration
 - All necessary networking and security configurations
 
 :::image type="content" source="media/generative-ai-foundry-integration/azure-portal-resources.png" alt-text="Screenshot of Azure resources.":::
@@ -188,15 +190,15 @@ After you deploy your MCP server, connect it to Azure AI Foundry:
 
 ### Test the integration
 
-Once connected, test your MCP integration with natural language queries:
+After you connect, test your MCP integration with natural language queries.
 
-You can discover tables
+You can discover tables.
 
 ```copilot-prompt
 List all tables in my PostgreSQL database
 ```
 
-You can retrieve records with natural language
+You can retrieve records with natural language.
 
 ```copilot-prompt
 Show me the latest 10 records from the orders table
@@ -210,9 +212,12 @@ You can do vector search and specify example queries to improve accuracy.
 
 ```copilot-prompt
 Do a vector search for "product for customer that love to hike"
+```
 
-this is a vector search example.
-SELECT id, name, price, embedding <=> azure_openai.create_embeddings(
+This is an example of a vector search.
+
+```sql
+- `SELECT id, name, price, embedding <=> azure_openai.create_embeddings(
 'text-embedding-3-small',
 'query example'
 )::vector AS similarity
@@ -264,18 +269,18 @@ When using the Azure MCP PostgreSQL Server, be aware of the following security c
 
 You can use the following [security features](security-overview.md#access-control) to protect your data:
 
-- **Managed Identity**: No credentials stored in container images
-- **Entra ID Authentication**: Secure database authentication
-- **RBAC**: Role-based access control for database operations
-- **Row Level Security**: Fine-grained access control at the row level
+- **Managed Identity**: No credentials stored in container images.
+- **Microsoft Entra ID Authentication**: Secure database authentication.
+- **RBAC**: Role-based access control for database operations.
+- **Row Level Security**: Fine-grained access control at the row level.
 
 ### Best practices
 
-- **Grant database permissions ONLY to specific schemas and tables** needed for AI agents
-- Use principle of least privilege - don't grant broad database access
-- Regularly review and audit permissions granted to the MCP server's managed identity
-- Consider using dedicated databases or schemas for AI agent access
-- Start with a test database containing only nonsensitive sample data
+- **Grant database permissions ONLY to specific schemas and tables** needed for AI agents.
+- Use principle of least privilege - don't grant broad database access.
+- Regularly review and audit permissions granted to the MCP server's managed identity.
+- Consider using dedicated databases or schemas for AI agent access.
+- Start with a test database containing only nonsensitive sample data.
 
 ## Troubleshoot
 
