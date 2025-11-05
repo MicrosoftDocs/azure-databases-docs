@@ -20,7 +20,9 @@ Azure Cosmos DB for MongoDB (vCore) offers region availability across 40+ Azure 
 
 Azure Cosmos DB for MongoDB (vCore) is available in the following clouds and their corresponding regions:
 
-- [Azure](#azure)
+| | Description |
+| --- | --- |
+| **[Azure](#azure)** | Global Azure public cloud offering with a wide range of Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS), and Software-as-a-Service (SaaS) services. |
 
 ## Azure
 
