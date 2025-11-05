@@ -15,11 +15,93 @@ This tutorial guides you through converting Oracle database schemas to PostgreSQ
 
 It covers connecting to your Oracle source and Azure Database for PostgreSQL target, configuring Azure OpenAI, running the Migration Wizard, and reviewing generated PostgreSQL artifacts. Before you begin, ensure you have network access and credentials for both servers and an Azure OpenAI deployment.
 
-[!INCLUDE [prerequisites-schema-conversions](includes/prerequisites-schema-conversions.md)]
+Here's what you can expect during the conversion:
+
+- **Schema Discovery**: The tool analyzes your Oracle schema objects
+- **AI Processing**: Azure OpenAI processes and converts compatible objects
+- **Validation**: Converted objects are validated in the scratch database
+- **Review Tasks**: Objects requiring manual attention are flagged
+- **Output Generation**: Successfully converted objects are saved as PostgreSQL files
+
+## Prerequisites
+
+This section describes the prerequisites for using the Oracle to Azure Database for PostgreSQL schema conversion feature in Visual Studio Code before starting a conversion.
+
+### System requirements
+
+| Category | Details |
+| --- | --- |
+| **Visual Studio Code** version | 1.95.2 or higher |
+| **GitHub Copilot** subscription | Pro+, Business, Enterprise |
+
+### Operating system support
+
+| Operating System | Support Details |
+| --- | --- |
+| **Windows** | x64 architecture only |
+| **Linux** | x64 architecture |
+| **macOS** | macOS 13+ |
+
+#### PostgreSQL version support
+
+| Component | Version Requirement |
+| --- | --- |
+| **Azure Database for PostgreSQL** | PostgreSQL version 15 or higher |
+| **Scratch database** | Azure Database for PostgreSQL |
+
+### AI model requirements
+
+You need one of the following AI components configured:
+
+| AI Component | Model Version |
+| --- | --- |
+| **Azure OpenAI** | GPT-4.1 deployment |
+
+#### Azure OpenAI deployment configuration
+
+You must configure the Azure OpenAI deployment with the model name **gpt-4.1**.
+
+Example endpoint format:
+
+```http
+https://{your-resource}.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-01-01-preview
+```
+
+### Required database privileges
+
+Before running the schema conversion, ensure the accounts, you use have the minimum privileges required on both the source Oracle database and the scratch Azure Database for PostgreSQL. The Oracle account needs read access to data and dictionary views so the tool can analyze schema and code. The PostgreSQL scratch account must be able to create schemas, tables, and other objects for validation. Use a dedicated service account where possible. Follow the principle of least privilege. Coordinate with your DBAs to grant any temporary elevated rights and to validate connectivity and access before starting the conversion.
+
+#### Source Oracle privileges
+
+The following minimum privileges are required on the source Oracle database:
+
+| Privilege | Purpose |
+| --- | --- |
+| **CONNECT** | Basic database connection |
+| **SELECT_CATALOG_ROLE** | Access to data dictionary views |
+| **SELECT ANY DICTIONARY** | Read system metadata and dictionary objects |
+| **SELECT `SYS.ARGUMENT$`** | Access to procedure and function argument information |
+
+#### Scratch database privileges
+
+The following privileges are required on the Azure Database for PostgreSQL Flexible Server (Scratch DB):
+
+| Privilege | Purpose |
+| --- | --- |
+| **CREATE SCHEMA** | Create validation schemas |
+| **CREATE ON DATABASE** | Create database objects for validation |
+| **GRANT CONNECT ON DATABASE** | Connection permissions for validation processes |
+
+### Network requirements
+
+- **Outbound connectivity** to Azure OpenAI endpoints
+- **Database connectivity** to both source Oracle and target PostgreSQL databases
+- **HTTPS access** for Visual Studio Code extension marketplace and GitHub Copilot services
+- **GitHub repository access** to https://github.com/microsoft/pgsql-tools/
 
 ## Migration process
 
-This section walks through the complete migration workflow: install the PostgreSQL extension, create and test connections to your Oracle source and Azure Database for PostgreSQL target, open and initialize a migration project, configure Azure OpenAI for schema translation, run the Migration Wizard to discover and convert schemas, validate converted objects in a scratch database, and review or fix any flagged items before applying the generated PostgreSQL artifacts to your target.
+This section walks through the complete migration workflow: install the PostgreSQL extension, create, and test connections to your Oracle source and Azure Database for PostgreSQL target, open and initialize a migration project, configure Azure OpenAI for schema translation, run the Migration Wizard to discover and convert schemas, validate converted objects in a scratch database, and review or fix any flagged items before applying the generated PostgreSQL artifacts to your target.
 
 ### Step 1: Install the PostgreSQL Visual Studio Code extension
 
@@ -85,7 +167,7 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. Select **Test Connection** to verify the configuration
 1. Once the connection is **successful**, select **Create Migration Project**
 
-    :::image type="content" source="media/schema-conversions-tutorial/language-model.png" alt-text="Screenshot of langauage model configuration.":::
+    :::image type="content" source="media/schema-conversions-tutorial/language-model.png" alt-text="Screenshot of language model configuration.":::
 
 ### Step 9: Execute schema conversion
 
@@ -94,14 +176,6 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. Monitor the conversion progress in the Visual Studio interface
 
     :::image type="content" source="media/schema-conversions-tutorial/progress-bar.png" alt-text="Screenshot of Migration step progress.":::
-
-## What happens during conversion?
-
-- **Schema Discovery**: The tool analyzes your Oracle schema objects
-- **AI Processing**: Azure OpenAI processes and converts compatible objects
-- **Validation**: Converted objects are validated in the Scratch DB
-- **Review Tasks**: Objects requiring manual attention are flagged
-- **Output Generation**: Successfully converted objects are saved as PostgreSQL files
 
 ## Related content
 
