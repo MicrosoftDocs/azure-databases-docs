@@ -1,28 +1,27 @@
 ---
-title: 'Tutorial: Design multitenant database with elastic clusters'
+title: "Tutorial: Design Multitenant Database with Elastic Clusters"
 description: Learn how to design a scalable multitenant application with Azure Database for PostgreSQL elastic clusters.
 author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 11/05/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
-#Customer intent: As an developer, I want to design a PostgreSQL database and scale it out using elastic clusters so that my multi-tenant application runs efficiently for all tenants.
 ---
 
 # Tutorial: Design a multitenant database with elastic clusters
 
-In this tutorial, we will use Azure Database for PostgreSQL with elastic clusters to learn how to design a multi-tenant application which benefits from horizontal scale-out.
+In this tutorial, you use Azure Database for PostgreSQL with elastic clusters to learn how to design a multitenant application that benefits from horizontal scale-out.
 
 > [!div class="checklist"]
-> * Prerequisites
-> * Use psql utility to create a schema
-> * Shard tables across nodes
-> * Ingest sample data
-> * Query tenant data
-> * Share data between tenants
-> * Customize the schema per-tenant
+> - Prerequisites
+> - Use psql utility to create a schema
+> - Shard tables across nodes
+> - Ingest sample data
+> - Query tenant data
+> - Share data between tenants
+> - Customize the schema per-tenant
 
 ## Prerequisites
 
@@ -33,13 +32,12 @@ Create an elastic cluster in one of the following ways:
 
 ## Use psql utility to create a schema
 
-Once connected to the elastic cluster using psql, you can configure your elastic cluster. This tutorial walks you through creating an application platform that allows companies to track their ad campaigns.
+After you connect to the elastic cluster by using psql, you can configure your elastic cluster. This tutorial walks you through creating an application platform that allows companies to track their ad campaigns.
 
 > [!NOTE]
->
-> When distributing data across your cluster, any unique data contraints are scoped to their distribution "shard". In our multi-tenant example,  application data uniqueness is enforced per tenant (e.g. company ID).  For this reason, our distributed table definitions for primary and foreign key constraints always include the company ID column.
+> When distributing data across your cluster, any unique data constraints are scoped to their distribution "shard". In our multitenant example, application data uniqueness is enforced per tenant (for example, company ID). For this reason, our distributed table definitions for primary and foreign key constraints always include the company ID column.
 
-Let's create a table to hold our multi-tenant company information, and another table for their campaigns. In the psql console, run these commands:
+Create a table to hold your multitenant company information, and another table for their campaigns. In the psql console, run these commands:
 
 ```sql
 CREATE TABLE companies (
@@ -65,7 +63,7 @@ CREATE TABLE campaigns (
 );
 ```
 
-Each campaign pays to run ads. Let's add our ads table in psql with the following code:
+Each campaign pays to run ads. Add your ads table in psql with the following code:
 
 ```sql
 CREATE TABLE ads (
@@ -86,7 +84,7 @@ CREATE TABLE ads (
 );
 ```
 
-Finally, we want to track statistics based upon ad clicks and impressions:
+Finally, you want to track statistics based upon ad selects and impressions:
 
 ```sql
 CREATE TABLE clicks (
@@ -127,9 +125,10 @@ You can now see the newly created tables from psql by running:
 ```
 
 ## Shard tables across nodes
-Up until this point, we have created standard Postgres tables, but we ultimately need to create distributed tables acroos our elastic cluster.  Distributed tables within an elastic cluster store data on different nodes based upon the values defined by our "distribution column". This column is used to determine row placement across the underlying worker nodes.
 
-Let's set up our distribution column to be company_id, which will act as our multi-tenant identifier. In psql, run these functions:
+Up until this point, you created standard Postgres tables, but you ultimately need to create distributed tables across your elastic cluster. Distributed tables within an elastic cluster store data on different nodes based upon the values defined by your distribution column. This column is used to determine row placement across the underlying worker nodes.
+
+Set up your distribution column to be company_id, which acts as your multitenant identifier. In psql, run these functions:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -139,13 +138,12 @@ SELECT create_distributed_table('clicks',      'company_id');
 SELECT create_distributed_table('impressions', 'company_id');
 ```
 
-> [!NOTE]
->
-> Distributing tables is necessary to take advantage of elastic clusters of Azure Database for PostgreSQL performance features. Unless you distribute your tables and/or schemas, your cluster nodes will not participate in any distributed queries or operations.
+> [!NOTE]  
+> To take advantage of elastic clusters with Azure Database for PostgreSQL performance features, you need to distribute tables. Unless you distribute your tables and schemas, your cluster nodes don't participate in any distributed queries or operations.
 
 ## Ingest sample data
 
-Outside of psql now, in the normal command line, download sample data sets:
+Outside of psql, in the normal command line, download sample data sets:
 
 ```bash
 for dataset in companies campaigns ads clicks impressions geo_ips; do
@@ -188,9 +186,9 @@ ORDER BY a.campaign_id, n_impressions DESC;
 
 ## Share data between tenants
 
-Until now, all our tables have been distributed across our cluster by `company_id`. However, some types of data naturally "belong" to all tenants, and can be placed alongside all tenant distributions. For instance, all companies in our ad platform might want to get geographical information for their audience based on the IP address details.
+Until now, you distributed all your tables across your cluster by `company_id`. However, some types of data naturally "belong" to all tenants and can be placed alongside all tenant distributions. For instance, all companies in your ad platform might want to get geographical information for their audience based on the IP address details.
 
-Let's create a reference table to hold this geographic IP information. Run the following commands in psql:
+Create a reference table to hold this geographic IP information. Run the following commands in psql:
 
 ```sql
 CREATE TABLE geo_ips (
@@ -202,19 +200,19 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Next, let's identify `geo_ips` as a "reference table", which our cluster will manage by storing a synchronized table on every clustered worker node.
+Next, identify `geo_ips` as a "reference table". Your cluster manages this table by storing a synchronized table on every clustered worker node.
 
 ```sql
 SELECT create_reference_table('geo_ips');
 ```
 
-Now, let's load our reference table with our sample data. Remember to run this command from the directory where you downloaded the dataset file.
+Now, load your reference table with your sample data. Remember to run this command from the directory where you downloaded the dataset file.
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-SQL statements which join the clicks table with geo_ips are now efficient on any and all nodes. Notice this join to find the locations of every IP that clicked on ad 290. Try running the query in psql:
+SQL statements that join the selected table with `geo_ips` are now efficient on all nodes. Notice this join to find the locations of every IP that selected on ad 290. Try running the query in psql:
 
 ```sql
 SELECT c.id, clicked_at, latlon
@@ -224,13 +222,13 @@ SELECT c.id, clicked_at, latlon
    AND c.ad_id = 290;
 ```
 
-## Customize the schema per-tenant
+## Customize the schema per tenant
 
-In some instances, your individual tenants might need to store special information not needed by others. However, all tenants share a common definition with an identical database schema. Where can the extra data go?
+In some instances, your individual tenants might need to store special information that other tenants don't need. However, all tenants share a common definition with an identical database schema. Where can you put the extra data?
 
-One solution is to use a flexible column type like PostgreSQL's JSONB. Our schema has a JSONB field in `clicks` called `user_data`. A company (say company 5), can use this column to track information about whether a user is on a mobile device.
+One solution is to use a flexible column type like PostgreSQL's JSONB. Our schema has a JSONB field in `clicks` called `user_data`. A company (say company 5) can use this column to track information about whether a user is on a mobile device.
 
-Here's a query company 5 can use to find who clicks more: mobile, or traditional visitors.
+Here's a query company 5 can use to find who selects more: mobile or traditional visitors.
 
 ```sql
 SELECT
@@ -242,7 +240,7 @@ GROUP BY user_data->>'is_mobile'
 ORDER BY count DESC;
 ```
 
-PostgreSQL includes a powerful feature which allows us to index a specific portion or subset of our data.  We can further optimize our query for company 5 by creating a [partial index](https://www.postgresql.org/docs/current/static/indexes-partial.html).
+PostgreSQL includes a powerful feature that allows you to index a specific portion or subset of your data. You can further optimize your query for company 5 by creating a [partial index](https://www.postgresql.org/docs/current/static/indexes-partial.html).
 
 ```sql
 CREATE INDEX click_user_data_is_mobile
@@ -250,7 +248,7 @@ ON clicks ((user_data->>'is_mobile'))
 WHERE company_id = 5;
 ```
 
-Additionally, another way to improve performance across queries including our JSONB column is to create a [GIN index](https://www.postgresql.org/docs/16/gin-intro.html) on every underling key and value within our JSONB column.
+Additionally, another way to improve performance across queries that include your JSONB column is to create a [GIN index](https://www.postgresql.org/docs/16/gin-intro.html) on every underlying key and value within your JSONB column.
 
 ```sql
 CREATE INDEX click_user_data
@@ -265,8 +263,6 @@ SELECT id
 ```
 
 ## Next step
-
-In this tutorial, we learned how to create an elastic cluster. We connected to our elastic cluster using psql, created a schema, and distributed our data. We learned to index and query data both within and between tenants, and to customize the schema per tenant.
 
 > [!div class="nextstepaction"]
 > [Learn more about elastic clusters](concepts-elastic-clusters.md)
