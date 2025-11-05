@@ -13,7 +13,7 @@ ms.topic: concept-article
 
 # Azure Database for PostgreSQL mirroring in Microsoft Fabric
 
-[Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for PostgreSQL flexible server estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for PostgreSQL directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
+[Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for PostgreSQL estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for PostgreSQL directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
 
 > [!IMPORTANT]  
 > Newly created servers after Ignite 2025 automatically include the latest general availability version of mirroring components. Existing servers upgrade progressively as part of the next maintenance cycles without requiring manual intervention. You don't need to disable and re-enable mirroring to receive updates.
@@ -62,12 +62,12 @@ Azure Database for PostgreSQL supports **PostgreSQL 14 and later** for Fabric mi
 
 ## Prerequisites
 
-Several prerequisites must be configured before using Fabric mirroring in Azure Database for the PostgreSQL flexible server instance.
+Before you can use Fabric mirroring in an Azure Database for PostgreSQL flexible server instance, you need to configure several prerequisites.
 
 - **System-assigned Managed Identity (SAMI)** must be [enabled](security-configure-managed-identities-system-assigned.md).
-  - This is the identity used by the Azure CDC to authenticate communications with Fabric OneLake, copy initial snapshots, and change batches to the landing zone.
+  - Azure CDC uses this identity to authenticate communications with Fabric OneLake, copy initial snapshots, and change batches to the landing zone.
 
-Additional prerequisites are configured through a dedicated enablement workflow described below, and they are:
+You configure additional prerequisites through a dedicated enablement workflow described in the following section. These prerequisites are:
 
 - **wal_level** server parameter must be set to "logical".
   - Enables logical replication for the source server.
@@ -86,9 +86,9 @@ Select **Get Started** to initiate the enablement workflow.
 
 This page shows the current status of the required prerequisites. If System Assigned Managed Identity (SAMI) isn't enabled for this server, select the link to be redirected to the page where you can enable this feature.
 
-Once done, you can select the databases to enable Fabric mirroring (up to 3 by default, but this can be increased by changing the **max_mirrored_databases** server parameter) and then select **Prepare**.
+When you're done, select the databases to enable Fabric mirroring (up to three by default, but you can increase this limit by changing the **max_mirrored_databases** server parameter) and then select **Prepare**.
 
-The workflow presents a Restart Server pop-up, and by selecting **Restart**, you can start the process, which automates all remaining configuration steps, and you can start creating your mirrored database from [Fabric user interface](/fabric/database/mirrored-database/azure-database-postgresql-tutorial)
+The workflow presents a Restart Server pop-up. By selecting **Restart**, you start the process. The workflow automates all remaining configuration steps. You can start creating your mirrored database from the [Fabric user interface](/fabric/database/mirrored-database/azure-database-postgresql-tutorial).
 
 :::image type="content" source="media/concepts-fabric-mirroring/server-ready.png" alt-text="Fabric mirroring page showing server ready for mirroring." lightbox="media/concepts-fabric-mirroring/server-ready.png":::
 
@@ -96,14 +96,14 @@ The workflow presents a Restart Server pop-up, and by selecting **Restart**, you
 
 Next, you need to provide or create a PostgreSQL role for the Fabric service to connect to your Azure Database for PostgreSQL flexible server.
 
-You can accomplish this by specifying a [database role](#use-a-database-role) for connecting to your source system.
+You can accomplish this task by specifying a [database role](#use-a-database-role) for connecting to your source system.
 
 > [!NOTE]  
 > Both Entra ID and local database roles are supported to connect Fabric mirroring to Azure Database for PostgreSQL, select the [authentication method](security-overview.md#access-control) that best fits your purposes.
 
 #### Use a database role
 
-1. Connect to your Azure Database for PostgreSQL flexible server using [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) or [pgAdmin](https://www.pgadmin.org/). You should connect with a principal that is a member of the role `azure_pg_admin`.
+1. Connect to your Azure Database for PostgreSQL using [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) or [pgAdmin](https://www.pgadmin.org/). Connect with a principal that is a member of the role `azure_pg_admin`.
 1. Create a PostgreSQL role named `fabric_user`. You can choose any name for this role. Provide your own strong password. Grant the permissions needed for Fabric mirroring in the database. Run the following SQL script to grant the `CREATEDB`, `CREATEROLE`, `LOGIN`, `REPLICATION`, and `azure_cdc_admin` permissions to the new role named `fabric_user`.
 
    ```sql
@@ -116,7 +116,7 @@ You can accomplish this by specifying a [database role](#use-a-database-role) fo
    GRANT CREATE ON DATABASE <database_to_mirror> TO fabric_user;
    ```
 
-1. The database user created also needs to be `owner` of the tables to replicate in the mirrored database. This means that tables have been created by that user, or that the ownership of those tables has been changed using `ALTER TABLE <table name here> OWNER TO fabric_user;`.
+1. The database user you create also needs to be `owner` of the tables to replicate in the mirrored database. This requirement means that the user creates the tables or changes the ownership of those tables by using `ALTER TABLE <table name here> OWNER TO fabric_user;`.
    - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure Database for PostgreSQL [user management](security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html).
 
 > [!IMPORTANT]  
@@ -155,15 +155,15 @@ These server parameters directly affect Fabric mirroring for Azure Database for 
 
 ## Monitor
 
-Monitoring Fabric mirroring in Azure Database for PostgreSQL flexible server instances is essential to ensure that the mirroring process is running smoothly and efficiently. By monitoring the status of the mirrored databases, you can identify any potential issues and take corrective actions as needed.
+Monitoring the Fabric mirroring in Azure Database for PostgreSQL flexible server instances is essential to ensure that the mirroring process runs smoothly and efficiently. By monitoring the status of the mirrored databases, you can identify any potential issues and take corrective actions.
 
-You can use several User Defined Functions and tables to monitor important CDC metrics in the Azure Database for the PostgreSQL flexible server instances and troubleshoot the Mirroring process to Fabric.
+You can use several user-defined functions and tables to monitor important CDC metrics in the Azure Database for PostgreSQL flexible server instances and troubleshoot the mirroring process to Fabric.
 
 ### Monitoring functions
 
-The mirroring function for Fabric mirroring in Azure Database for PostgreSQL allows you to replicate your PostgreSQL databases into Microsoft Fabric seamlessly, enabling advanced analytics and data integration scenarios.
+The mirroring function for fabric mirroring in Azure Database for PostgreSQL replicates your PostgreSQL databases into Microsoft Fabric seamlessly, so you can use advanced analytics and data integration scenarios.
 
-- **azure_cdc.list_tracked_publications()**: for each publication in the source flexible server instance, returns a comma-separated string containing the following information
+- **azure_cdc.list_tracked_publications()**: For each publication in the source flexible server instance, returns a comma-separated string containing the following information
   - publicationName (text)
   - includeData (bool)
   - includeChanges (bool)
@@ -171,13 +171,13 @@ The mirroring function for Fabric mirroring in Azure Database for PostgreSQL all
   - baseSnapshotDone (bool)
   - generationId (int)
 
-- **azure_cdc.publication_status('pub_name')**: for each publication in the source, the flexible server instance returns a comma-separated string with the following information
+- **azure_cdc.publication_status('pub_name')**: For each publication in the source, the flexible server instance returns a comma-separated string with the following information
   - <status, start_lsn, stop_lsn, flush_lsn>.
   - Status consists of ["Slot name," "Origin name," "CDC data destination path," "Active," "Snapshot Done," "Progress percentage," "Generation ID," "Completed Batch ID," "Uploaded Batch ID," "CDC start time"]
 
-- **azure_cdc.is_table_mirrorable('schema_name','table_name')**: Given schema and table name, it returns if the table is mirrorable. For a table to be mirrorable, it needs to satisfy the following:
+- **azure_cdc.is_table_mirrorable('schema_name','table_name')**: Given schema and table name, it returns if the table is mirrorable. For a table to be mirrorable, it needs to satisfy the following conditions:
   - The column names don't contain any of the following characters: `[ ;{}\n\t=()]`
-  - The column types are one of the following:
+  - The column types are one of the following types:
     - `bigint`
     - `bigserial`
     - `boolean`
@@ -205,7 +205,7 @@ The mirroring function for Fabric mirroring in Azure Database for PostgreSQL all
 
 ### Tracking tables
 
-- **azure_cdc.tracked_publications**: one row for each existing Mirrored database in Fabric. Query this table to understand the status of each publication.
+- **azure_cdc.tracked_publications**: one row for each existing mirrored database in Fabric. Query this table to understand the status of each publication.
 
 | Column Name | Postgres Type | Explanation |
 | --- | --- | --- |
@@ -225,7 +225,7 @@ The mirroring function for Fabric mirroring in Azure Database for PostgreSQL all
 | snapshot_size | bigint | Total size of the snapshot (in bytes) |
 | total_time | int | Total time(in seconds) taken for the publication |
 
-- **azure_cdc.tracked_batches**: one row for each change batch captured and shipped to Fabric OneLake. Query this table to understand which batch has already been captured and uploaded to Fabric OneLake. With the `last_written_lsn` column, you can understand if a given transaction in your source database has already been shipped to Fabric.
+- **azure_cdc.tracked_batches**: one row for each change batch captured and shipped to Fabric OneLake. Query this table to understand which batch is already captured and uploaded to Fabric OneLake. With the `last_written_lsn` column, you can understand if a given transaction in your source database is already shipped to Fabric.
 
 | Name | Postgres Type | Explanation |
 | --- | --- | --- |
