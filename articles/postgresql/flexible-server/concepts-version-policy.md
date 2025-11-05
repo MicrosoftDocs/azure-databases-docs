@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions for A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/13/2025
+ms.date: 10/30/2025 
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -34,7 +34,7 @@ The following table provides the retirement details for PostgreSQL major version
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Release notes](https://www.postgresql.org/docs/12/release-12.html) | 22-Sep-2020 | 31-Mar-2026 |
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Release notes](https://www.postgresql.org/docs/11/release-11.html) | 24-Jul-2019 | 31-Mar-2026 |
 
-PostgreSQL 18 is currently available in **Preview** on Azure Database for PostgreSQL, with initial availability in the East Asia region.
+PostgreSQL 18 is currently available in **Preview** on Azure Database for PostgreSQL with initial availability in the East Asia region.
 
 ## Minor version support
 
@@ -71,12 +71,12 @@ Extended Support is ideal for customers who...
 
 ### Eligible PostgreSQL versions
 
-| PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date (includes grace period) | Paid Extended Support End Date |
+| PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date | Paid Extended Support End Date |
 | --- | --- | --- | --- | --- | --- |
-| 11 | July 24, 2019 |  November 9, 2025 |  March 31, 2026 |  April 1, 2026 | March 31, 2029 |
-| 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 |  April 1, 2026 | March 31, 2029 |
-| 13 | May 25, 2021 | November 13, 2025 | March 31, 2026 |  April 1, 2026 | March 31, 2029 |
-| 14 | June 29, 2022 | November 12, 2026 | December 11, 2026 | December 12, 2026 | December 11, 2029 |
+| 11 | July 24, 2019 |  November 9, 2023 |  March 31, 2026 |  April 1, 2026 | November 8, 2026|
+| 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 |  April 1, 2026 | November 13, 2027 |
+| 13 | May 25, 2021 | November 13, 2025 | March 31, 2026 |  April 1, 2026 | November 12, 2028 |
+| 14 | June 29, 2022 | November 12, 2026 | December 11, 2026 | December 12, 2026 | November 11, 2029 |
 
 ### Enrollment and price
 

@@ -9,7 +9,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 ms.topic: limits-and-quotas
-ms.date: 09/13/2025
+ms.date: 10/27/2025
 appliesto:
   - ✅ MongoDB (vCore)
 ---
@@ -95,7 +95,7 @@ The following limitations can be overridden by upgrading to a paid tier
 - Backup / Restore not supported (available in M25+)
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
-- Diagnostic logging not supported (available in M40+)
+- Diagnostic logging not supported (available only in paid tiers)
 - Microsoft Entra ID not supported
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
@@ -133,9 +133,10 @@ The following are the current limitations for configuring [the customer-managed 
 
 ### Microsoft Entra ID authentication
 
-The Microsoft Entra ID authentication feature has these current limitations:
-- This feature isn't supported with Mongo shell (`mongosh`) or MongoDB Compass.
-- This feature doesn't support Entra ID groups.
+The [Microsoft Entra ID authentication](./entra-authentication.md) feature has these current limitations:
+- This feature doesn't support Microsoft Entra ID groups.
+- When native DocumentDB authentication method is disabled, MongoDB Shell isn't supported in the Azure portal's **Quick start**.
+    - You can [use MongoDB Shell with Microsoft Entra ID authentication](./how-to-configure-entra-authentication.md?#connect-to-the-cluster-using-entra-id-in-mongodb-shell) outside of the Azure portal. 
 
 ### Native DocumentDB secondary users
 
@@ -148,6 +149,19 @@ The Microsoft Entra ID authentication feature has these current limitations:
 
 ### Portal Mongo shell usage
 - The Portal Mongo shell can be used for 120 minutes within a 24-hour window.
+
+### Document size and depth
+- Maximum BSON document size: 16 MB per document.
+- No fixed maximum nesting depth limit is enforced.
+  - Deeply nested document structures may impact query and read performance, increase processing overhead, and reduce maintainability.
+
+### Batch limits
+
+- Both batch write and bulk operations are supported.
+  - A batch refers to a **single request** to the server.
+- Maximum writes per batch operation: **25,000 writes**.
+- Batch operations exceeding 25,000 writes will **fail**.
+- No limit on the total number of batch operations.
 
 ## Next steps
 

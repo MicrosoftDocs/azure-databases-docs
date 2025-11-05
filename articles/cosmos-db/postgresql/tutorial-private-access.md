@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.custom: devx-track-azurecli, sfi-ropc-blocked
 ms.topic: tutorial
 ms.date: 06/05/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Connect to a cluster with private access in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 This tutorial creates a virtual machine (VM) and an Azure Cosmos DB for PostgreSQL cluster,
 and establishes [private access](concepts-private-access.md) between

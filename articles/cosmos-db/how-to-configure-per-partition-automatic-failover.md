@@ -34,7 +34,7 @@ Before enabling PPAF, ensure your environment meets the following **prerequisite
 - **Azure Region:** The account should be in **Azure public cloud regions** (Global Azure). Accounts in sovereign clouds aren't eligible during preview.
 - **SDK Version:** Your application must use a **latest supported Azure Cosmos DB SDK** that implements PPAF logic. Currently, the preview supports:
   - **.NET SDK v3** : v 3.51.0 or later
-  - **Java SDK**: v 4.70.0 or later
+  - **Java SDK**: v 4.75.0 or later
 
 
 ## Register for Preview

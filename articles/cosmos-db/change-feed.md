@@ -35,6 +35,7 @@ You can work with the change feed by using the following options:
 
 * [Use change feed with Azure Functions](change-feed-functions.md)
 * [Use change feed with change feed processor](change-feed-processor.md) 
+* [Use change feed with the pull model](nosql/change-feed-pull-model.md)
 * [Use change feed with Apache Spark](nosql/change-feed-spark.md) 
 
 Change feed is available for partition key ranges of an Azure Cosmos DB container. This allows it to be distributed across one or more consumers for parallel processing as shown in the following image.  
@@ -58,13 +59,13 @@ Change feed is available for partition key ranges of an Azure Cosmos DB containe
 
 * Changes are available in parallel for partition key ranges of an Azure Cosmos DB container. This capability allows multiple consumers to process changes from large containers in parallel. 
 
-* Applications can request multiple change feeds on the same container simultaneously. 
+* Applications can request multiple change feeds using any mode on the same container simultaneously. 
 
 * The starting point for change feed can be customized and different options are available for each mode.
 
 ### Sort order of items in change feed
 
-Change feed items come in the order of their modification time. This sort order is guaranteed per partition key, and there's no guaranteed order across the partition key values.
+Change feed items come in the order of their modification time. This sort order is guaranteed per partition key, and there's no guaranteed order across the partition key values. Items written in the scope of a transactional batch, stored procedure, or bulk mode request have the same modification time, and changes within that scope may be delivered in any order.
 
 > [!NOTE]
 > For [multi-region write](multi-region-writes.md) accounts, there are two timestamps:

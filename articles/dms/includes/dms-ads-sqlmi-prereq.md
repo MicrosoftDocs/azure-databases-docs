@@ -41,7 +41,7 @@ ms.collection:
 - As an alternative to using one of these built-in roles, you can [assign a custom role](/data-migration/sql-server/managed-instance/custom-roles).
 
   > [!NOTE]  
-  > When migrating to Azure SQL Managed Instance or Azure SQL Virtual Machine via **Azure portal**, make sure the signed in user has **Storage Blob Data Reader** access on the blob container that contains the backup files. This permission is needed to list folders and files in the blob container during migration setup via Azure portal only. 
+  > When migrating to Azure SQL Managed Instance or Azure SQL Virtual Machine via **Azure portal**, make sure the signed in user has **Storage Blob Data Reader** access on the blob container that contains the backup files. This permission is needed to list folders and files in the blob container during migration setup via Azure portal only.
 
 - Create a target instance of [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/instance-create-quickstart).
 
@@ -59,7 +59,7 @@ ms.collection:
 
 - Ensure that the service account that's running the source SQL Server instance has read and write permissions on the SMB network share that contains database backup files.
 
-- If you're migrating a database that's protected by Transparent Data Encryption (TDE), the certificate from the source SQL Server instance must be migrated to your target managed instance before you restore the database. For more information about migrating TDE-enabled databases, see [Tutorial: Migrate TDE-enabled databases (preview) to Azure SQL in Azure Data Studio](../tutorial-transparent-data-encryption-migration-ads.md).
+- If you're migrating a database that's protected by transparent data encryption (TDE), the certificate from the source SQL Server instance must be migrated to your target managed instance before you restore the database. For more information about migrating TDE-enabled databases, see [Tutorial: Migrate TDE-enabled databases (preview) to Azure SQL in Azure Data Studio](../tutorial-transparent-data-encryption-migration-ads.md).
 
   > [!TIP]  
   > If your database contains sensitive data that's protected by [Always Encrypted](/sql/relational-databases/security/encryption/configure-always-encrypted-using-sql-server-management-studio), the migration process automatically migrates your Always Encrypted keys to your target managed instance.

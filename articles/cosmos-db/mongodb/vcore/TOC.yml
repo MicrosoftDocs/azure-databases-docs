@@ -33,6 +33,8 @@
       href: quickstart-python-vector-search.md
     - name: Vector search - Node.js
       href: quickstart-nodejs-vector-search.md
+    - name: Vector search - .NET
+      href: quickstart-dotnet-vector-search.md
 - name: Tutorials
   items:
     - name: Build web applications
@@ -91,6 +93,8 @@
       href: geospatial-support.md
     - name: Availability and disaster recovery (DR)
       items:
+        - name: Regional availability
+          href: regional-availability.md
         - name: High availability (HA)
           href: high-availability.md
         - name: Cross-region replication
@@ -121,6 +125,8 @@
           href: entra-authentication.md
         - name: Data encryption
           href: database-encryption-at-rest.md
+        - name: Role-based access control (RBAC)
+          href: role-based-access-control.md
     - name: Indexing
       href: indexing.md
     - name: Change Stream

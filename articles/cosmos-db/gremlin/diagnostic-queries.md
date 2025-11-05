@@ -10,6 +10,8 @@ ms.date: 11/08/2022
 
 # Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for Apache Gremlin
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 In this article, we'll cover how to write more advanced queries to help troubleshoot issues with your Azure Cosmos DB account by using diagnostics logs sent to **Azure Diagnostics (legacy)** and **resource-specific (preview)** tables.
 
 [!INCLUDE[Diagnostic tables](../includes/diagnostics-tables.md)]

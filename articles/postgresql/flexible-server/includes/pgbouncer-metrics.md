@@ -2,7 +2,7 @@
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 2/4/2025
+ms.date: 10/22/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include

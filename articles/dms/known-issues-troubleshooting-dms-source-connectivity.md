@@ -1,11 +1,11 @@
 ---
-title: "Issues connecting source databases"
+title: Issues Connecting Source Databases
 titleSuffix: Azure Database Migration Service
 description: Learn about how to troubleshoot known issues/errors associated with connecting Azure Database Migration Service to source databases.
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
 ms.collection:
@@ -14,7 +14,7 @@ ms.collection:
 
 # Troubleshoot DMS errors when connecting to source databases
 
-The following article provides detail about how to address potential issues you might encounter when connecting the Azure Database Migration Service (DMS) to your source database. Each section below relates to a specific type of source database, listing the error you might encounter together with detail and links to information about how to troubleshoot the connectivity.
+The following article provides detail about how to address potential issues you might encounter when connecting the Azure Database Migration Service (DMS) to your source database. Each section in this article relates to a specific type of source database, listing the error you might encounter together with detail and links to information about how to troubleshoot the connectivity.
 
 ## SQL Server
 

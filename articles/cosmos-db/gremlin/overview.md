@@ -14,6 +14,8 @@ ai-usage: ai-generated
 
 # What is Azure Cosmos DB for Apache Gremlin?
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it's ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
 
 Azure Cosmos DB for Apache Gremlin is a fully managed graph database service that enables you to store, query, and traverse large-scale graph data using the Gremlin query language. This API is built on the open-source Apache TinkerPop framework and is designed for applications that need to model and analyze complex relationships between data points. This API is designed for solutions such as social networks, recommendation engines, and connected devices.

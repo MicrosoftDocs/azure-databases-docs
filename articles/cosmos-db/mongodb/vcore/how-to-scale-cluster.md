@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 09/13/2025
+ms.date: 10/13/2025
 appliesto:
 - ✅ MongoDB (vCore)
 ms.custom:
@@ -60,7 +60,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
    ```azurecli-interactive
    az rest \
       --method "PATCH" \
-      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
       --body "{\"location\":\"<cluster-region>\",\"properties\":{\"compute\":{\"tier\":\"<compute-tier>\"}}}"
    ```
     > [!TIP]
@@ -104,7 +104,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
    ```azurecli-interactive
    az rest \
       --method "PATCH" \
-      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
       --body "{\"location\":\"<cluster-region>\",\"properties\":{\"storage\":{\"sizeGb\":\"<new-size-in-GiB>\"}}}"
    ```
     > [!TIP]
@@ -158,7 +158,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
    ```azurecli-interactive
    az rest \
       --method "PATCH" \
-      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
       --body "{\"location\":\"<cluster-region>\",\"properties\":{\"highAvailability\":{\"targetMode\":\"ZoneRedundantPreferred\"}}}"
    ```
 
@@ -167,7 +167,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
    ```azurecli-interactive
    az rest \
       --method "PATCH" \
-      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
       --body "{\"location\":\"<cluster-region>\",\"properties\":{\"highAvailability\":{\"targetMode\":\"Disabled\"}}}"
    ```
 
@@ -213,7 +213,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
    ```azurecli-interactive
    az rest \
       --method "PATCH" \
-      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-07-01-preview" \
+      --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>?api-version=2025-09-01" \
       --body "{\"location\":\"<cluster-region>\",\"properties\":{\"sharding\":{\"shardCount\":\"<current-shard-count-plus-one>\"}}}"
    ```
 
