@@ -767,9 +767,9 @@
               href: migrate/migration-service/troubleshoot-error-codes-premigration.md
     - name: Migrate from Oracle
       items:
-        - name: Migration Concepts
+        - name: Migrating Oracle To Azure Database for PostgreSQL
           href: migrate/concepts-oracle-migration.md
-        - name: Migration Stages
+        - name: Migration stages
           href: migrate/concepts-oracle-migration-stages.md        
         - name: Schema conversion
           items:
@@ -785,9 +785,9 @@
               href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
             - name: Application Conversion Quickstart
               href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
-        - name: Best Practices
+        - name: Best practices
           href: migrate/best-practices-oracle-to-postgresql.md
-        - name: Pre-migration Checklist
+        - name: Pre-migration checklist
           href: migrate/best-practices-oracle-to-postgresql-checklist.md
         - name: Migrate with Ora2Pg
           href: migrate/how-to-migrate-oracle-ora2pg.md

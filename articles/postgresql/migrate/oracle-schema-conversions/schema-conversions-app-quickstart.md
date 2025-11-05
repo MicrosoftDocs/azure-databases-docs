@@ -4,20 +4,20 @@ description: "Step-by-step quickstart for converting Oracle client application c
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
-ms.date: 11/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ---
 
 # Quickstart: Oracle to Azure Database for PostgreSQL application conversion Preview
 
-This quickstart walks you through converting **Oracle client application code** to PostgreSQL by using the **Application Conversion** feature in the Oracle to PostgreSQL Migration Tooling, available in the Visual Studio Code PostgreSQL extension.
+This quickstart walks you through converting **Oracle client application code** to Azure Database for PostgreSQL by using the **Application Conversion** feature in the Oracle to Azure Database for PostgreSQL migration tooling, available in the Visual Studio Code PostgreSQL extension.
 
 You learn how to:
-- Import your source application code into the migration workspace
-- Start the automated code conversion process
-- View the generated migration report
-- Review and compare converted files by using the built-in diff tools
+- Import your source application code into the migration workspace.
+- Start the automated code conversion process.
+- View the generated migration report.
+- Review and compare converted files by using the built-in diff tools.
 
 While it's **not required** to perform a database schema conversion beforehand, we **strongly recommend** completing a schema migration first.  
 If you already converted your Oracle schema to PostgreSQL, the application conversion process provides more accurate context and higher-quality code transformation results.
