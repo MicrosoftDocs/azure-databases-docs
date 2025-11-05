@@ -777,6 +777,8 @@
               href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
             - name: Limitations
               href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
+            - name: Application Conversion Quickstart
+              href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
         - name: Migration Concepts
           href: migrate/concepts-oracle-migration.md
         - name: Migration Stages

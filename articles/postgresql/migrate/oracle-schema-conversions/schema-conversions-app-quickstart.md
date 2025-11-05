@@ -11,89 +11,67 @@ ms.topic: quickstart
 
 # Quickstart: Oracle to PostgreSQL application conversion Preview
 
-This tutorial guides you through converting Oracle database schemas to PostgreSQL using the Visual Studio PostgreSQL extension with Azure OpenAI to automate and validate schema translation
+# Quickstart: Oracle to PostgreSQL Application Conversion (Preview)
 
-It covers connecting to your Oracle source and Azure Database for PostgreSQL target, configuring Azure OpenAI, running the Migration Wizard, and reviewing generated PostgreSQL artifacts. Before you begin, ensure you have network access and credentials for both servers and an Azure OpenAI deployment.
+This quickstart walks you through converting **Oracle client application code** to PostgreSQL using the **Application Conversion** feature in the Oracle to PostgreSQL Migration Tooling, available in the Visual Studio Code PostgreSQL extension.
 
-[!INCLUDE [prerequisites-schema-conversions](includes/prerequisites-schema-conversions.md)]
+You’ll learn how to:
+- Import your source application code into the migration workspace  
+- Start the automated code conversion process
+= View the generated migration report
+- Review and compare converted files using the built-in diff tools  
 
-## Migration
+While it’s **not required** to perform a database schema conversion beforehand, we **strongly recommend** completing a schema migration first.  
+Having your Oracle schema already converted to PostgreSQL ensures the application conversion can provide more accurate context and higher-quality code transformation results.
 
-This section walks through the complete migration workflow: install the PostgreSQL extension, create and test connections to your Oracle source and Azure Database for PostgreSQL target, open and initialize a migration project, configure Azure OpenAI for schema translation, run the Migration Wizard to discover and convert schemas, validate converted objects in a scratch database, and review or fix any flagged items before applying the generated PostgreSQL artifacts to your target.
 
-### Step 1: Install the PostgreSQL Visual Studio Code extension
+### Step 1: Setup your environment
 
-1. Open Visual Studio.
-1. Go to the **Extensions** view (Ctrl+Shift+X).
-1. Search for *PostgreSQL* and install the **PostgreSQL** extension.
-   1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
+1. Before you get started on Application Conversion, we highly recommend you set your GitHub Copilot Agent Mode Model to be “Claude Sonnet 4” or higher
+1. Open the GitHub Copilot chat interface and then for the model select “Claude Sonnet 4” or higher
 
-For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md).
+### Step 2: Copy your codebase into the migration project
 
-### Step 2: Create PostgreSQL connection
+1. Locate the "application_code" folder in your project under .github/postgres-migration/project_name/application_code
+1. Next, copy the codebase folder you wish to migrate into the “application_code” folder inside your project folder
 
-1. In the PostgreSQL extension panel, create a connection to your **Azure Database for PostgreSQL**.
-1. Enter the necessary connection details (host, database, username, password).
-1. Test and save the connection.
+### Step 3: Start Client Code Migration
 
-### Step 3: Open new workspace
+1. Next, click “Migrate Application” to start the application conversion wizard
+1. On the form that loads, select the folder you copied into the root of your workspace
+1. Choose the database which has the context for your application, for example, the database that represented where you will deploy your converted DDL or where you already have
+1. Click “Convert Application”
+    - This kicks off a custom composite prompt and Agent Mode Tool, you will see it get invoked
+    - This will also generate a TODO list of tasks which Agent Mode will proceed to work on for you
+    - Additional Agent Mode tools will also connect to, and read your database for enhanced context for the application conversion
 
-1. Create a new folder on your local machine for the migration project.
-1. Open a **new workspace** in Visual Studio Code.
+### Step 4: Code Conversion Report
 
-### Step 4: Initialize migration project
+1. When the application conversion finishes in Agent Mode, a comprehensive report will get generated and open automatically at the end
 
-1. **Right-click** on the blank workspace area.
-1. Select **Open Migration Project** from the context menu.
+### Step 5: Compare Code Changes using File Diff Feature
 
-### Step 5: Configure Project Settings
+1. Lastly, you can also do file diff reviews of you application code
+1. For example, you can right click on a .java file and select “Compare App Migration File Pairs”
+1. This will open a file diff view like this, with the original file on left and updated file on right.
 
-1. In the **Migration Wizard**, enter your **project name**.
-1. Select **Next** to proceed to the next step.
+## What Are "Coding Notes"?
 
-### Step 6: Configure Oracle connection
+**Coding Notes** are metadata artifacts automatically generated during the schema conversion phase.  
+They capture key transformation details and insights from your Oracle-to-PostgreSQL schema conversion that are later used to enhance the **application code conversion** process.
 
-1. Enter your **Oracle connection details** including:
-   - Host or server name
-   - Port number
-   - Database or service name
-   - Username and password
-1. Select **Load Schemas**.
-1. The system **tests the Oracle connection**.
-1. If successful, it **lists all user-defined schemas** available in Oracle.
-1. **Choose one or multiple schemas** that you want to convert to PostgreSQL.
-1. Select **Next** to continue.
+Coding Notes may include information such as:
+- Data type mappings and structural changes  
+- Conversion details for sequences, identities, and composite types  
+- Adjustments to date/time or interval implementations  
+- References to tables with referential integrity constraints  
+- Summaries of complex Oracle packages, including procedure and function signatures  
+- Additional AI-generated hints to improve code translation accuracy  
 
-### Step 8: Configure PostgreSQL target
-
-1. **Select the Azure Database for PostgreSQL connection** that you defined in the PostgreSQL extension
-1. **Select the target database** from the dropdown list
-1. Select **Next** to proceed
-
-### Step 9: Configure Azure OpenAI
-
-1. Enter your **Azure OpenAI details** including:
-   - Endpoint URL
-   - API key
-   - Deployment name (must be gpt-4.1)
-1. Select **Test Connection** to verify the configuration
-1. Once the connection is **successful**, select **Create Migration Project**
-
-### Step 10: Execute Schema Conversion
-
-1. The system navigates to the **main Migration Wizard**
-1. Select **Migrate** to initiate the **Schema Conversion** process
-1. Monitor the conversion progress in the Visual Studio interface
-
-## What Happens During Conversion
-
-- **Schema Discovery**: The tool analyzes your Oracle schema objects
-- **AI Processing**: Azure OpenAI processes and converts compatible objects
-- **Validation**: Converted objects are validated in the Scratch DB
-- **Review Tasks**: Objects requiring manual attention are flagged
-- **Output Generation**: Successfully converted objects are saved as PostgreSQL files
+During **application conversion**, these notes are used as contextual signals by the AI model to produce more precise and semantically aligned PostgreSQL-compatible code.
 
 ## Related content
 
 - [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
+- [Oracle to PostgreSQL Migration Schema Tutorial](schema-conversions-tutorial.md)
 - [Oracle to PostgreSQL Migration Limitations](schema-conversions-limitations.md)
