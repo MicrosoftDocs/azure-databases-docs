@@ -2,7 +2,7 @@
 title: Elastic cluster maximum client connections default behvaior
 description: This article describes how the maximum number of client connections are adjusted when scaling out nodes of an Azure Database for PostgreSQL flexible server elastic cluster.
 author: JaredMSFT
-ms.author: JaredMSFT
+ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql

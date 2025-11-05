@@ -2,7 +2,7 @@
 title: Sharding models - elastic clusters
 description: What is sharding, and what sharding models are available with elastic clusters on Azure Database for PostgreSQL
 author: JaredMSFT
-ms.author: JaredMSFT
+ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
