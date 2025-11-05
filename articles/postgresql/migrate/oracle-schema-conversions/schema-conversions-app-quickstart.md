@@ -1,6 +1,6 @@
 ---
 title: "Oracle to PostgreSQL Application Conversion: Quickstart"
-description: "Step-by-step tutorial for converting Oracle database schemas to PostgreSQL using the Visual Studio PostgreSQL extension with Azure OpenAI integration."
+description: "Step-by-step quickstart for converting Oracle client application code to PostgreSQL using the Visual Studio PostgreSQL extension with Azure OpenAI integration."
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
@@ -10,8 +10,6 @@ ms.topic: quickstart
 ---
 
 # Quickstart: Oracle to PostgreSQL application conversion Preview
-
-# Quickstart: Oracle to PostgreSQL Application Conversion (Preview)
 
 This quickstart walks you through converting **Oracle client application code** to PostgreSQL using the **Application Conversion** feature in the Oracle to PostgreSQL Migration Tooling, available in the Visual Studio Code PostgreSQL extension.
 
