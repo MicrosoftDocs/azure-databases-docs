@@ -10,11 +10,11 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Scaling resources in Azure Database for PostgreSQL 
+# Scaling Resources in Azure Database for PostgreSQL 
 
-an Azure Database for PostgreSQL flexible server instance supports both vertical and horizontal scaling options.
+An Azure Database for PostgreSQL flexible server instance supports both vertical and horizontal scaling options.
 
-## Vertical scaling
+## Vertical Scaling
 
 You can scale your instance vertically, by adding more resources to your Azure Database for PostgreSQL flexible server instance. You can increase or decrease the number of CPUs and memory assigned to it.
 
@@ -35,9 +35,14 @@ These resources can be scaled by using multiple interfaces. For instance, you ca
 > [!NOTE]
 > After you increase the size of the storage assigned to your instance, you can't shrink it to a smaller size.
 
-## Horizontal scaling
+## Horizontal Scaling
+Azure Database for PostgreSQL elastic clusters allow you to horizontally scale out your database to support data workloads that extend beyond the capabilites of a single database instance. Elastic clusters also enable the potential to execute parallel operations simultaneously across all nodes in a cluster, significantly increasing throughput and unlocking ultra-low latency. Elastic clusters offer two table sharding models: row-based sharding and schema-based sharding.
 
-You can scale your instance horizontally by creating [read replicas](concepts-read-replicas.md). Read replicas let you scale your read workloads onto separate Azure Database for PostgreSQL flexible server instances. They don't affect the performance and availability of the primary instance.
+:::image type="content" source="media/concepts-scaling-resources/elastic-clusters.png" alt-text="Diagram of Elastic cluster five-node configuration" lightbox="media/concepts-scaling-resources/elastic-clusters.png":::
+
+## Read Replica Scaling
+
+Another approach to scaling your instance horizontally is by creating [read replicas](concepts-read-replicas.md). Read replicas let you scale your read workloads onto separate Azure Database for PostgreSQL flexible server instances. They don't affect the performance and availability of the primary instance.
 
 In a horizontally scaled setup, the primary instance and the read replicas can also be scaled vertically.
 
