@@ -111,7 +111,7 @@ These resources are defined in the Bicep file:
 
 Use Azure CLI or Azure PowerShell to deploy the Bicep file.
 
-# [CLI](#tab/CLI)
+### [CLI](#tab/CLI)
 
 ```azurecli-interactive
 
@@ -135,12 +135,12 @@ You're prompted to enter these values:
 
 Follow these steps to verify if your Azure Database for PostgreSQL flexible server elastic cluster was created.
 
-# [Azure portal](#tab/portal)
+### [Azure portal](#tab/portal)
 
 1. In the [Azure portal](https://portal.azure.com), search for and select **Azure Database for PostgreSQL flexible servers**.
 1. In the database list, select your new server to view the **Overview** page to manage your elastic cluster.
 
-# [CLI](#tab/CLI)
+### [CLI](#tab/CLI)
 
 You have to enter the name and the resource group of the new elastic cluster to view details about your Azure Database for PostgreSQL flexible server elastic cluster.
 
@@ -162,7 +162,7 @@ When you are finished with your elastic cluster environment, you can delete your
 
 To delete the elastic cluster:
 
-# [Portal](#tab/azure-portal)
+### [Portal](#tab/azure-portal)
 
 In the [portal](https://portal.azure.com), select the elastic cluster you want to delete.
 
@@ -170,7 +170,7 @@ In the [portal](https://portal.azure.com), select the elastic cluster you want t
 2. Review your resource details, and acknowledge the delete request to confirm the deletion operation by checking the checkbox.
 3. Press "Delete".
 
-# [CLI](#tab/azure-cli)
+### [CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 
