@@ -9,9 +9,9 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Oracle to PostgreSQL schema conversion migration generated reports Preview
+# Oracle to Azure Database for PostgreSQL schema conversion migration generated reports Preview
 
-The Oracle to PostgreSQL Schema Conversion feature generates two comprehensive reports during the migration process to help you validate and understand your schema conversion.
+The Oracle to Azure Database for PostgreSQL Schema Conversion feature generates two comprehensive reports during the migration process to help you validate and understand your schema conversion.
 
 ## Report types
 

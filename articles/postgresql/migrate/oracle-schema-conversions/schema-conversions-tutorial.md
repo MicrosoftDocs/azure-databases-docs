@@ -9,9 +9,9 @@ ms.service: azure-database-postgresql
 ms.topic: tutorial
 ---
 
-# Tutorial: Oracle to PostgreSQL schema conversion Preview
+# Tutorial: Oracle to Azure Database for PostgreSQL schema conversion Preview
 
-This tutorial guides you through converting Oracle database schemas to PostgreSQL using the Visual Studio PostgreSQL extension with Azure OpenAI to automate and validate schema translation
+This tutorial guides you through converting Oracle database schemas to Azure Database for PostgreSQL using the Visual Studio PostgreSQL extension with Azure OpenAI to automate and validate schema translation
 
 It covers connecting to your Oracle source and Azure Database for PostgreSQL target, configuring Azure OpenAI, running the Migration Wizard, and reviewing generated PostgreSQL artifacts. Before you begin, ensure you have network access and credentials for both servers and an Azure OpenAI deployment.
 

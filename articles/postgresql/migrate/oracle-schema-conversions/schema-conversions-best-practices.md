@@ -9,9 +9,9 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Best practices for converting Oracle schemas to PostgreSQL Preview
+# Best practices for converting Oracle schemas to Azure Database for PostgreSQL Preview
 
-This article provides best practices and recommendations to ensure optimal results when using the Oracle to PostgreSQL Schema Conversion feature in Visual Studio Code.
+This article provides best practices and recommendations to ensure optimal results when using the Oracle to Azure Database for PostgreSQL schema conversion feature in Visual Studio Code.
 
 ## Azure OpenAI token management
 

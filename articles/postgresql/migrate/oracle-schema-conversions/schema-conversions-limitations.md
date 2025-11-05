@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Oracle to PostgreSQL schema conversion limitations Preview
+# Oracle to Azure Database PostgreSQL schema conversion limitations Preview
 
 This preview summarizes known limitations, unsupported objects, and migration considerations when using the Oracle → PostgreSQL schema conversion feature in Visual Studio Code.
 
@@ -49,12 +49,6 @@ The following Oracle database objects aren't automatically converted and are fla
 ### Data types
 
 - INVISIBLE data type
-
-## GitHub Copilot limitations
-
-- **Maximum objects**: GitHub Copilot supports up to **100 objects** per conversion session.
-- **Batch processing**: You might need to process large schemas in multiple batches.
-- **Complex objects**: You might need multiple review iterations for highly complex objects.
 
 ## Getting help
 
