@@ -233,7 +233,7 @@ The mirroring function for fabric mirroring in Azure Database for PostgreSQL rep
 | completed_batch_id | bigint | Sequence number(starting from 1) of the batch. Unique per publication |
 | last_written_lsn | pg_lsn | LSN of the last write of this batch |
 
-- **azure_cdc.tracked_tables**: one row for each table tracked across all publications. Has the following fields for all published tables, in all publications. If a table is part of two publication, it would be listed twice.
+- **azure_cdc.tracked_tables**: one row for each table tracked across all publications. Has the following fields for all published tables, in all publications. If a table is part of two publications, it would be listed twice.
 
 | Name | Postgres Type | Explanation |
 | --- | --- | --- |
