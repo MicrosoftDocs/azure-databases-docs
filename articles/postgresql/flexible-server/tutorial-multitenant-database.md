@@ -1,9 +1,9 @@
 ---
 title: 'Tutorial: Design multitenant database with elastic clusters'
 description: Learn how to design a scalable multitenant application with Azure Database for PostgreSQL elastic clusters.
-author: mulander
-ms.author: adamwolk
-ms.reviewer: maghan
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
