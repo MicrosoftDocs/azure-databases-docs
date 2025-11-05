@@ -1,76 +1,83 @@
 ---
-title: Regional availability
-titleSuffix: List of regions supported on Azure Cosmos DB for MongoDB (vCore)
-description: List of regions supported on vCore-based Azure Cosmos DB for MongoDB.
+title: Region Availability
+titleSuffix: Azure Cosmos DB for MongoDB (vCore)
+description: Discover Azure Cosmos DB for MongoDB (vCore) region availability across 40+ Azure regions worldwide. Deploy close to users to reduce latency and meet compliance requirements.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 11/02/2025
+ms.date: 11/05/2025
+ms.custom:
+  - references_regions
 appliesto:
   - ✅ MongoDB (vCore)
-ms.custom:
-  - build-2025
 ---
 
-# Region availability for vCore-based Azure Cosmos DB for MongoDB
+# Region availability for Azure Cosmos DB for MongoDB (vCore)
 
-vCore based Azure Cosmos DB for MongoDB is available in multiple Azure regions worldwide.This wide availability ensures that you can deploy your workloads close to your users to minimize latency, meet data residency requirements, and improve business continuity.
+Azure Cosmos DB for MongoDB (vCore) offers region availability across 40+ Azure regions worldwide. This global reach helps you deploy applications close to your users, reducing latency, meeting data residency requirements, and improving business continuity.
 
-## Available regions
+Azure Cosmos DB for MongoDB (vCore) is available in the following clouds and their corresponding regions:
 
-|Geography |Region |
-|------------|---------|
-| **Africa** | South Africa North |
-| **Africa** | South Africa West |
-| **Asia Pacific** | Australia Central |
-| **Asia Pacific** | Australia Central 2 |
-| **Asia Pacific** | Australia East |
-| **Asia Pacific** | Central India |
-| **Asia Pacific** | East Asia |
-| **Asia Pacific** | Japan East |
-| **Asia Pacific** | Japan West |
-| **Asia Pacific** | Korea Central |
-| **Asia Pacific** | Korea South |
-| **Asia Pacific** | South East Asia |
-| **Asia Pacific** | South India |
-| **Canada** | Canada Central |
-| **Canada** | Canada East |
-| **Europe** | France Central |
-| **Europe** | France South |
-| **Europe** | Germany North |
-| **Europe** | Germany West Central |
-| **Europe** | Italy North |
-| **Europe** | North Europe |
-| **Europe** | Norway East |
-| **Europe** | Norway West |
-| **Europe** | Poland Central |
-| **Europe** | Sweden Central |
-| **Europe** | Switzerland North |
-| **Europe** | Switzerland West |
-| **Europe** | West Europe |
-| **Mexico** | Mexico Central |
-| **Middle East** | Israel Central |
-| **Middle East** | UAE Central |
-| **Middle East** | UAE North |
-| **South America** | Brazil South |
-| **South America** | Brazil Southeast |
-| **United Kingdom** | UK South |
-| **United Kingdom** | UK West |
-| **United States** | Central US |
-| **United States** | East US |
-| **United States** | East US 2 |
-| **United States** | North Central US |
-| **United States** | South Central US |
-| **United States** | West Central US |
-| **United States** | West US |
-| **United States** | West US 2 |
-| **United States** | West US 3 |
+- [Azure](#azure)
 
-Some of these regions may not be activated on all Azure subscriptions. If you want to use a region from the list and don't see it in your subscription, or if you want to use a region not on this list, open a [support request](https://portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
+## Azure
 
-## Next steps
+Azure Cosmos DB for MongoDB (vCore) is available across the following Azure regions:
+
+| Geography | Region | Available |
+| --- | --- | --- |
+| **Africa** | South Africa North | ✅ Yes |
+| **Africa** | South Africa West | ✅ Yes |
+| **Asia Pacific** | Australia Central | ✅ Yes |
+| **Asia Pacific** | Australia Central 2 | ✅ Yes |
+| **Asia Pacific** | Australia East | ✅ Yes |
+| **Asia Pacific** | Central India | ✅ Yes |
+| **Asia Pacific** | East Asia | ✅ Yes |
+| **Asia Pacific** | Japan East | ✅ Yes |
+| **Asia Pacific** | Japan West | ✅ Yes |
+| **Asia Pacific** | Korea Central | ✅ Yes |
+| **Asia Pacific** | Korea South | ✅ Yes |
+| **Asia Pacific** | South East Asia | ✅ Yes |
+| **Asia Pacific** | South India | ✅ Yes |
+| **Canada** | Canada Central | ✅ Yes |
+| **Canada** | Canada East | ✅ Yes |
+| **Europe** | France Central | ✅ Yes |
+| **Europe** | France South | ✅ Yes |
+| **Europe** | Germany North | ✅ Yes |
+| **Europe** | Germany West Central | ✅ Yes |
+| **Europe** | Italy North | ✅ Yes |
+| **Europe** | North Europe | ✅ Yes |
+| **Europe** | Norway East | ✅ Yes |
+| **Europe** | Norway West | ✅ Yes |
+| **Europe** | Poland Central | ✅ Yes |
+| **Europe** | Sweden Central | ✅ Yes |
+| **Europe** | Switzerland North | ✅ Yes |
+| **Europe** | Switzerland West | ✅ Yes |
+| **Europe** | West Europe | ✅ Yes |
+| **Mexico** | Mexico Central | ✅ Yes |
+| **Middle East** | Israel Central | ✅ Yes |
+| **Middle East** | UAE Central | ✅ Yes |
+| **Middle East** | UAE North | ✅ Yes |
+| **South America** | Brazil South | ✅ Yes |
+| **South America** | Brazil Southeast | ✅ Yes |
+| **United Kingdom** | UK South | ✅ Yes |
+| **United Kingdom** | UK West | ✅ Yes |
+| **United States** | Central US | ✅ Yes |
+| **United States** | East US | ✅ Yes |
+| **United States** | East US 2 | ✅ Yes |
+| **United States** | North Central US | ✅ Yes |
+| **United States** | South Central US | ✅ Yes |
+| **United States** | West Central US | ✅ Yes |
+| **United States** | West US | ✅ Yes |
+| **United States** | West US 2 | ✅ Yes |
+| **United States** | West US 3 | ✅ Yes |
+
+> [!IMPORTANT]
+> Some of these regions might not be activated on all Azure subscriptions. If you want to use a region from the list and don't see it in your subscription, or if you want to use a region not on this list, open a [support request](https://portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
+
+## Next step
 
 > [!div class="nextstepaction"]
 > [Provision a vCore-based Azure Cosmos DB for MongoDB cluster](quickstart-portal.md)
