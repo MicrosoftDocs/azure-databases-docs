@@ -7,7 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: quickstart
-ms.date: 06/11/2025
+ms.date: 11/03/2025
 ms.custom: sfi-image-nochange
 # CustomerIntent: As a cloud user, I want to create a new Azure Cosmos DB account, so that I can manage resources and data.
 ---
@@ -104,7 +104,7 @@ Next, use the Data Explorer to create a database and container in-portal.
     :::image source="media/quickstart-portal/data-explorer-tree.png" alt-text="Screenshot of the Data Explorer hierarchy with a database container present.":::
 
     > [!TIP]
-    > Optionally, you can expand the container node to observe additional properties and configuration settings.
+    > Optionally, you can expand the container node to observe extra properties and configuration settings.
 
 ## Add and query sample data
 
@@ -112,7 +112,7 @@ Finally, use the Data Explorer to create a sample item and then issue a basic qu
 
 1. Expand the node for the **employees** container in the tree of the Data Explorer. Then, select the **Items** option.
 
-    :::image source="media/quickstart-portal/data-explorer-container-items.png" alt-text="Screenshot of the 'Items' option within a container in the Data Exploer hierarchy.":::
+    :::image source="media/quickstart-portal/data-explorer-container-items.png" alt-text="Screenshot of the 'Items' option within a container in the Data Explorer hierarchy.":::
 
 1. In the Data Explorer's menu, select **New Item**.
 
@@ -173,6 +173,31 @@ Finally, use the Data Explorer to create a sample item and then issue a basic qu
     ```
 
     :::image source="media/quickstart-portal/data-explorer-query-results.png" alt-text="Screenshot of the results of the previous NoSQL query's execution in the Data Explorer.":::
+
+### Explore more setup and optimization guidance
+
+After you create and query your data, use the **Overview** section to try different features of Azure Cosmos DB.
+
+1. In the account resource pane, select **Overview** in the service menu.
+
+1. Review the resources in the **Overview Hub** including, but not limited to:
+
+    - **Quickstarts** to help you build and test your application.
+
+    - **Setup & Optimization guidance** to support every stage of your journey from learning to production. Sections include partitioning, indexing, modeling, cost control, backup configuration, and performance tuning.
+
+    - **Containers & Data access** for querying your data, adjusting throughput, and opening containers in Data Explorer or Visual Studio Code.
+
+    - **Monitoring tools** such as Insights, Metrics, Alerts, and Diagnostic settings, plus a scorecard that surfaces availability, alerts, and Azure Advisor recommendations.
+
+    - **Learning resources** like video tutorials, sample apps, and documentation.
+
+    - **Actionable recommendations** personalized to your account for reliability, security, and cost efficiency.
+
+    :::image source="media/quickstart-portal/overview-setup.png" lightbox="media/quickstart-portal/overview-setup.png" alt-text="Screenshot of the setup and optimization section of the Overview Hub in the Azure portal.":::
+
+> [!TIP]
+> The content shown in the Overview Hub adapts to your activity and workload type to make it easier to find what's most relevant to you.
 
 ## Related content
 

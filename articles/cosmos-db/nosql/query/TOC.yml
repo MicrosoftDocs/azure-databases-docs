@@ -1,30 +1,6 @@
 - name: NoSQL query documentation
   displayName: sql query, query basics
   href: index.yml
-- name: Microsoft Copilot for Azure in Cosmos DB (preview)
-  items:
-    - name: Use Copilot (preview)
-      href: how-to-enable-use-copilot.md
-    - name: Copilot transparency FAQ
-      href: ../../copilot-faq.yml
-- name: Full text & hybrid search
-  items:
-    - name: Full text search overview
-      href: ../../gen-ai/full-text-search.md
-    - name: FullTextContains
-      href: fulltextcontains.md
-    - name: FullTextContainsAll
-      href: fulltextcontainsall.md
-    - name: FullTextContainsAny
-      href: fulltextcontainsany.md
-    - name: FullTextScore
-      href: fulltextscore.md
-    - name: ORDER BY RANK
-      href: order-by-rank.md  
-    - name: Hybrid search overview
-      href: ../../gen-ai/hybrid-search.md
-    - name: RRF
-      href: rrf.md
 - name: Clauses
   items:
     - name: SELECT
@@ -48,6 +24,29 @@
     - name: OFFSET LIMIT
       displayName: offset limit
       href: offset-limit.md
+- name: Vector functions
+  items:
+    - name: VectorDistance
+      displayName: vector, distance, AI
+      href: vectordistance.md
+- name: Full text & hybrid search
+  items:
+    - name: Full text search overview
+      href: ../../gen-ai/full-text-search.md
+    - name: FullTextContains
+      href: fulltextcontains.md
+    - name: FullTextContainsAll
+      href: fulltextcontainsall.md
+    - name: FullTextContainsAny
+      href: fulltextcontainsany.md
+    - name: FullTextScore
+      href: fulltextscore.md
+    - name: ORDER BY RANK
+      href: order-by-rank.md  
+    - name: Hybrid search overview
+      href: ../../gen-ai/hybrid-search.md
+    - name: RRF
+      href: rrf.md
 - name: Working with JSON
   displayName: alias, JSON, projection
   href: working-with-json.md
@@ -86,11 +85,6 @@
     - name: Bitwise operators
       displayName: bitwise, binary, operators
       href: bitwise-operators.md
-- name: Vector functions
-  items:
-    - name: VectorDistance
-      displayName: vector, distance, AI
-      href: vectordistance.md
 - name: Aggregate functions
   items:
     - name: AVG
@@ -533,3 +527,32 @@
 - name: Linq to NoSQL
   displayName: linq, .NET
   href: linq-to-sql.md
+- name: Query Advisor
+  items:
+    - name: Query Advisor overview
+      displayName: Improve queries with Query Advisor
+      href: query-advisor.md
+    - name: QA1000 - Array_CONTAINS
+      displayName: ARRAY_CONTAINS, partial match, performance
+      href: queryadvisor/QA1000.md
+    - name: QA1002 - Contains
+      displayName: CONTAINS, string search, performance
+      href: queryadvisor/QA1002.md
+    - name: QA1003 - Case insensitivity
+      displayName: STARTSWITH, StringEquals, case insensitive, performance
+      href: queryadvisor/QA1003.md
+    - name: QA1004 - EndsWith
+      displayName: ENDSWITH, string matching, performance
+      href: queryadvisor/QA1004.md
+    - name: QA1006 - UPPER or LOWER
+      displayName: UPPER, LOWER, case conversion, performance
+      href: queryadvisor/QA1006.md
+    - name: QA1007 - GetCurrentDateTime
+      displayName: GetCurrentDateTime, system function, performance
+      href: queryadvisor/QA1007.md
+    - name: QA1008 - GetCurrentTicks
+      displayName: GetCurrentTicks, system function, performance
+      href: queryadvisor/QA1008.md
+    - name: QA1009 - GetCurrentTimestamp
+      displayName: GetCurrentTimestamp, system function, performance
+      href: queryadvisor/QA1009.md

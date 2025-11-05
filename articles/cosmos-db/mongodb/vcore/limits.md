@@ -150,6 +150,19 @@ The [Microsoft Entra ID authentication](./entra-authentication.md) feature has t
 ### Portal Mongo shell usage
 - The Portal Mongo shell can be used for 120 minutes within a 24-hour window.
 
+### Document size and depth
+- Maximum BSON document size: 16 MB per document.
+- No fixed maximum nesting depth limit is enforced.
+  - Deeply nested document structures may impact query and read performance, increase processing overhead, and reduce maintainability.
+
+### Batch limits
+
+- Both batch write and bulk operations are supported.
+  - A batch refers to a **single request** to the server.
+- Maximum writes per batch operation: **25,000 writes**.
+- Batch operations exceeding 25,000 writes will **fail**.
+- No limit on the total number of batch operations.
+
 ## Next steps
 
 - Get started by [creating a cluster](quickstart-portal.md).

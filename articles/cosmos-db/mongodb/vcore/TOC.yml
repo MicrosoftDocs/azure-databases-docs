@@ -93,6 +93,8 @@
       href: geospatial-support.md
     - name: Availability and disaster recovery (DR)
       items:
+        - name: Regional availability
+          href: regional-availability.md
         - name: High availability (HA)
           href: high-availability.md
         - name: Cross-region replication
