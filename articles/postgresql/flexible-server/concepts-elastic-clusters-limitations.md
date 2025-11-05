@@ -3,7 +3,7 @@ metadata:
   title: Elastic Clusters Limitations FAQ
   description: "Learn about existing limitations of elastic clusters with Azure Database for PostgreSQL flexible server instances."
   author: JaredMSFT
-  ms.author: jaredmeade
+  ms.author: JaredMSFT
   ms.reviewer: adamwolk, maghan
   ms.service: azure-database-postgresql
   ms.topic: faq
