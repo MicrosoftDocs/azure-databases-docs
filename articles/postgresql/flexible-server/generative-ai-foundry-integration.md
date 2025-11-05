@@ -37,8 +37,8 @@ This architecture ensures proper security isolation with separate managed identi
 
 The Azure PostgreSQL MCP Server provides comprehensive database integration capabilities:
 
-- **SQL Operations** - Execute queries, manage data, perform analytics through natural language
-- **Vector Search** - Leverage AI-powered embeddings for similarity search.
+- **SQL Operations** - Execute queries, manage data. Perform analytics through natural language
+- **Vector Search** - Use AI-powered embeddings for similarity search.
 - **Schema Discovery** - Automatic table and column analysis with relationship mapping
 - **Enterprise Security** - Azure managed identity and Entra ID authentication  
 - **Natural Language** - Query databases using conversational AI without SQL knowledge
@@ -81,10 +81,10 @@ cd azure-mcp-postgresql-server
 
 Deploy the complete infrastructure with a single script. Before running the `azd up` command, set the [environment](/azure/developer/azure-developer-cli/manage-environment-variables?tabs=bash#set-environment-variables) variable to connect to the Postgres server you want to access from AI Foundry, and the AI Foundry resource you want to connect to.
 
-Find your Azure Database for PostgreSQL subscription id, resource group and server name in your Azure Portal:
+Find your Azure Database for PostgreSQL subscription id, resource group, and server name in your Azure portal:
 :::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-details.png" alt-text="Screenshot of Azure Database for PostgreSQL details":::
 
-Find your Azure AI Foundry project name, subscription id and parent resource name in your Azure Portal:
+Find your Azure AI Foundry project name, subscription id, and parent resource name in your Azure portal:
 :::image type="content" source="media/generative-ai-foundry-integration/azure-foundry-details.png" alt-text="Screenshot of Azure AI Foundry details":::
 
 ```bash
@@ -101,7 +101,7 @@ azd up
 This deployment creates:
 - Azure Container Apps instance for the MCP server
 - Managed Identity for secure authentication
-- Entra ID App Registration with proper RBAC configuration
+- Entra ID App Registration with proper RBAC (Role-based access control) configuration
 - All necessary networking and security configurations
 
 :::image type="content" source="media/generative-ai-foundry-integration/azure-portal-resources.png" alt-text="Screenshot of Azure resources.":::
@@ -279,7 +279,7 @@ You can use the following [security features](security-overview.md#access-contro
 
 ## Troubleshoot
 
-If you encounter problems with the MCP PostgreSQL Server integration, this troubleshooting section helps you quickly identify root causes and remediate common issues. Begin with the health check and logs, then verify managed identity authentication, network connectivity, and database permissions as described below.
+If you encounter problems with the MCP PostgreSQL Server integration, this troubleshooting section helps you quickly identify root causes and remediate common issues. Begin with the health check and logs, then verify managed identity authentication, network connectivity, and database permission.
 
 ### Health check
 
