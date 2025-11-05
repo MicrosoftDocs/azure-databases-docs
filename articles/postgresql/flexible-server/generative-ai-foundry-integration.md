@@ -106,7 +106,7 @@ This deployment creates:
 - Microsoft Entra ID App Registration with proper Role-based access control (RBAC) configuration
 - All necessary networking and security configurations
 
-:::image type="content" source="media/generative-ai-foundry-integration/azure-portal-resources.png" alt-text="Screenshot of Azure resources.":::
+:::image type="content" source="media/generative-ai-foundry-integration/azure-portal-resources.png" alt-text="Screenshot of Azure resources." lightbox="edia/generative-ai-foundry-integration/azure-portal-resources.png":::
 
 ### Step 2: Configure database access
 
