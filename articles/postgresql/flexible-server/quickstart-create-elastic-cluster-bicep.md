@@ -1,9 +1,9 @@
 ---
 title: "Quickstart: Create elastic clusters with Bicep template"
 description: In this Quickstart, learn how to create an Azure Database for PostgreSQL flexible server instance with elastic clusters by using a Bicep template.
-author: jaredmeade
+author: JaredMSFT
 ms.author: jaredmeade
-ms.reviewer: adamwolk
+ms.reviewer: adamwolk, maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server

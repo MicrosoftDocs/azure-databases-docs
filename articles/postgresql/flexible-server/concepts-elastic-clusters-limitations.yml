@@ -1,13 +1,13 @@
 ### YamlMime:FAQ
 metadata:
-  title: Limitations of elastic clusters
-  description: "Learn about existing limitations of elastic clusters with Azure Database for PostgreSQL flexible server instances during public preview."
-  author: mulander
-  ms.author: adamwolk
-  ms.reviewer: maghan
+  title: Elastic Clusters Limitations FAQ
+  description: "Learn about existing limitations of elastic clusters with Azure Database for PostgreSQL flexible server instances."
+  author: JaredMSFT
+  ms.author: jaredmeade
+  ms.reviewer: adamwolk, maghan
   ms.service: azure-database-postgresql
   ms.topic: faq
-  ms.date: 07/06/2025
+  ms.date: 11/18/2025
   ms.custom: references_regions
 
 title: "Frequently asked questions about elastic clusters"
@@ -34,28 +34,28 @@ sections:
         answer: |
           The Azure portal provides credentials to connect to exactly one database per cluster. Currently, creating another database isn't allowed, and the `CREATE DATABASE` command fails with an error.
 
-          This database is called `postgres` by default. After the public preview, custom database names at cluster provisioning time will be supported.
+          Custom database names at cluster provisioning time will be supported.
       - question: What PostgreSQL version is supported with elastic clusters?
-        answer: Elastic clusters support PostgreSQL version 16 during the public preview.
+        answer: Elastic clusters support PostgreSQL version 16.
       - question: Can I use Major Version Upgrades with elastic clusters?
-        answer: Currently, Major Version Upgrades aren't supported during the preview.
+        answer: Currently, Major Version Upgrades aren't supported.
       - question: Can I download server logs?
-        answer: Currently, downloading server logs isn't supported during the preview. You can use Azure Metrics, Log Analytic Workspaces and PostgreSQL views to analyze cluster behavior.
+        answer: Currently, downloading server logs aren't supported. You can use Azure Metrics, Log Analytic Workspaces and PostgreSQL views to analyze cluster behavior.
       - question: Can I use terraform to deploy elastic clusters?
-        answer: Currently, terraform isn't supported during the preview. ARM templates are supported.
+        answer: Currently, terraform isn't supported. ARM templates are supported.
   - name: Backups
     questions:
       - question: Can I use GEO backups & GEO restore?
-        answer: Currently, GEO backups & GEO restore aren't supported during the preview.
+        answer: Currently, GEO backups & GEO restore aren't supported.
       - question: Is Long Term Retention (LTR) supported?
-        answer: Currently, Long Term Retention isn't supported during the preview.
+        answer: Currently, Long Term Retention isn't supported.
   - name: Extensions
     questions:
       - question: Why is TimescaleDB not available with elastic clusters?
         answer: TimescaleDB extension isn't supported on elastic cluster due to low-level conflicts with the Citus extension.
-      - question: What extensions aren't supported during preview?
+      - question: What extensions aren't supported?
         answer: |
-          The following extensions aren't supported during the preview:
+          The following extensions aren't supported:
             - anon
             - pg_qs - Query Store
             - postgis_topology
@@ -71,28 +71,28 @@ sections:
         answer: Yes, you can use PgBouncer with elastic clusters. Port 6432 should be used for schema and node management operations, while port 8432 is load-balanced to PgBouncer instances running across all nodes in the cluster.
 
       - question: Can I use virtual network (VNet) with elastic clusters?
-        answer: Currently, virtual network isn't supported during the preview.
+        answer: Currently, virtual network isn't supported.
 
       - question: Are Private Domain Name System (DNS) Zones supported with elastic clusters?
-        answer: Currently, Private DNS Zones aren't supported during the preview.
+        answer: Currently, Private DNS Zones aren't supported.
 
   - name: Storage
     questions:
       - question: Can I use customer-managed keys (CMK) for storage encryption?
-        answer: Currently, customer-managed keys aren't supported during the preview.
+        answer: Currently, customer-managed keys aren't supported.
       - question: Is Storage Auto Scale available?
-        answer: Currently, Storage Auto Scale isn't supported during the preview.
+        answer: Currently, Storage Auto Scale isn't supported.
 
   - name: Authentication
     questions:
       - question: Can I use Microsoft Entra ID authentication with elastic clusters?
-        answer: Currently, Microsoft Entra ID authentication isn't supported during the preview.
+        answer: Currently, Microsoft Entra ID authentication isn't supported.
 
   - name: Performance
     questions:
       - question: Can I use Query Performance Insights with elastic clusters?
-        answer: Currently, Query Performance Insights isn't supported during the preview.
+        answer: Currently, Query Performance Insights isn't supported.
       - question: Can I use Automatic Index Tuning with elastic clusters?
-        answer: Currently, Automatic Index Tuning isn't supported during the preview.
+        answer: Currently, Automatic Index Tuning isn't supported.
       - question: Can I use replicas with elastic clusters?
-        answer: Currently, replicas aren't supported during the preview.
+        answer: Currently, replicas aren't supported.

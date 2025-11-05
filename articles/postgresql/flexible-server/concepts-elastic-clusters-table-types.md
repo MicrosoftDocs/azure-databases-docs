@@ -1,10 +1,10 @@
 ---
 title: Table types - elastic clusters
 description: Learn about the different types of tables available in an elastic cluster on Azure Database for PostgreSQL.
-author: mulander
-ms.author: adamwolk
-ms.reviewer: maghan
-ms.date: 06/07/2025
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article

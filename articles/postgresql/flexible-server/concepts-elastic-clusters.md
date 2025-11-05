@@ -1,10 +1,10 @@
 ---
 title: Elastic Clusters
 description: Learn about sharding and horizontal scale-out with elastic clusters on your Azure Database for PostgreSQL flexible server instance.
-author: mulander
-ms.author: adamwolk
-ms.reviewer: maghan
-ms.date: 07/06/2025
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
