@@ -1,9 +1,9 @@
 ---
 title: 'Tutorial: Design for microservices with elastic clusters'
 description: This tutorial shows how to design for microservices with elastic clusters on Azure Database for PostgreSQL.
-author: mulander
-ms.author: adamwolk
-ms.reviewer: maghan
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
