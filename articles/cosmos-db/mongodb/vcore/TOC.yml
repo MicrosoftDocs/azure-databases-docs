@@ -35,6 +35,8 @@
       href: quickstart-nodejs-vector-search.md
     - name: Vector search - .NET
       href: quickstart-dotnet-vector-search.md
+    - name: Vector search - Go
+      href: quickstart-go-vector-search.md
 - name: Tutorials
   items:
     - name: Build web applications

@@ -6,7 +6,7 @@ author: PatAltimore
 ms.author: patricka
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.devlang: go
+ms.devlang: golang
 ms.topic: quickstart-sdk
 ms.date: 11/05/2025
 ms.custom: devx-track-go, devx-track-go-ai
