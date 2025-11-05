@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 09/26/2025
+ms.date: 11/04/2025
 ms.custom: devx-track-python, devx-track-python-ai
 appliesto:
   - ✅ MongoDB (vCore)
