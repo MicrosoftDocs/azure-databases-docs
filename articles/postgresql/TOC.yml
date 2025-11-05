@@ -783,6 +783,8 @@
               href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
             - name: Schema conversion limitations
               href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
+            - name: Application Conversion Quickstart
+              href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
         - name: Best Practices
           href: migrate/best-practices-oracle-to-postgresql.md
         - name: Pre-migration Checklist
