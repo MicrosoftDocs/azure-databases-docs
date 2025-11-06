@@ -46,6 +46,8 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In the **Point-in-time-restore (PITR)** section, select **Latest restore point (Now)**, **Select a custom restore point** or **Select Fast restore point (Restore using full backup only)**, depending on what you want to restore to the new server.
 
+    :::image type="content" source="./media/how-to-restore-server/latest-restore-point.png" alt-text="Screenshot showing the Point-in-time-restore options with Latest restore point selected." lightbox="./media/how-to-restore-server/latest-restore-point.png":::
+
 6. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
