@@ -23,6 +23,8 @@
       href: flexible-server/overview.md
     - name: Release notes
       href: flexible-server/release-notes.md
+    - name: Maintenance release notes
+      href: release-notes-maintenance/2025-october.md
     - name: API release notes
       href: flexible-server/release-notes-api.md
     - name: CLI release notes
@@ -626,7 +628,7 @@
           items:
             - name: Elastic clusters
               items:
-                - name: Configuring Maximum Connections
+                - name: Configuring maximum connections
                   href: flexible-server/how-to-networking-elastic-clusters-default-max-connections.md
             - name: Public access (allowed IP addresses)
               items:

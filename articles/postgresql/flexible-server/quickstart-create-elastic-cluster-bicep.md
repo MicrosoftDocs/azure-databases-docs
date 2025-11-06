@@ -24,7 +24,7 @@ An Azure account with an active subscription. [Create one for free](https://azur
 
 An Azure Database for PostgreSQL flexible server elastic cluster instance is the parent resource for a distributed database within a region. It provides the scope for management policies that apply to the cluster: firewall, users, roles, and configurations.
 
-Create a _elastic-cluster-template.bicep_ file and copy the following script into it.
+Create an `elastic-cluster-template.bicep` file and copy the following script into it.
 
 ```bicep
 param administratorLogin string
@@ -124,7 +124,7 @@ az deployment group create `
 You're prompted to enter these values:
 
 - **clusterName**: enter a unique name that identifies your Azure Database for PostgreSQL flexible server elastic cluster instance. The domain name `postgres.database.azure.com` is appended to the cluster name you provide. The cluster name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain at least 3 through 63 characters.
-- **administratorLogin**: enter your own login account to use when you connect to the server. For example, `clusterAdmin`. The admin login name can't be `azure_superuser`, `azure_pg_admin`, `admin`, `administrator`, `root`, `guest`, or `public`. It can't start with `pg_`.
+- **administratorLogin**: enter your own authentication account to use when you connect to the server. For example, `clusterAdmin`. The admin authentication name can't be `azure_superuser`, `azure_pg_admin`, `admin`, `administrator`, `root`, `guest`, or `public`. It can't start with `pg_`.
 - **administratorLoginPassword**: enter a new password for the server admin account. It must contain between 8 and 128 characters. Your password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 
 ## Review deployed resources
@@ -153,17 +153,17 @@ az resource show --resource-group $resourcegroupName --name $clusterName --resou
 
 ## Clean up resources
 
-When you are finished with your elastic cluster environment, you can delete your elastic cluster resource: 
+When you're finished with your elastic cluster environment, delete your elastic cluster resource. 
 
-To delete the elastic cluster:
+To delete the elastic cluster, follow these steps:
 
 #### [Portal](#tab/azure-portal)
 
 In the [portal](https://portal.azure.com), select the elastic cluster you want to delete.
 
-1. From the Overview blade. select **Delete**.
-2. Review your resource details, and acknowledge the delete request to confirm the deletion operation by checking the checkbox.
-3. Press "Delete".
+1. From the **Overview** page, select **Delete**.
+1. Review your resource details, and acknowledge the delete request to confirm the deletion operation by checking the checkbox.
+1. Select **Delete**.
 
 #### [CLI](#tab/azure-cli)
 
