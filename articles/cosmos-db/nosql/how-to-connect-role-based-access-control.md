@@ -195,7 +195,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     ```
 
 
-1. Create a new JSON file named *role-definition.json*, which will be used for the creation of the custom role. In this file, create a resource definition specifying the data actions listed here:
+1. Create a new JSON file named *role-definition.json*, which is used for the creation of the custom role. In this file, create a resource definition specifying the data actions listed here:
 
     | | Description |
     | --- | --- |
@@ -259,7 +259,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     > [!NOTE]
     > In this example, the `--role-definition-id` value would be `bbbbbbbb-1111-2222-3333-cccccccccccc`. This example uses fictitious data and your identifier would be distinct from this example.
 
-1. Trim the `id` obtained in the previous step and determine the `--scope` by removing everything after the account name.
+1. Use the `id` obtained in the previous step and determine the `--scope` by removing everything after the account name.
 
     > [!NOTE]
     > In this example, the `--scope` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
