@@ -1,10 +1,10 @@
 ---
 title: Autovacuum Tuning
 description: Troubleshooting guide for autovacuum in an Azure Database for PostgreSQL flexible server instance.
-author: sarat0681
+author: sarat-balijepalli
 ms.author: sbalijepalli
 ms.reviewer: maghan
-ms.date: 11/02/2025
+ms.date: 11/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -31,7 +31,7 @@ Autovacuum reads pages looking for dead tuples, and if none are found, autovacuu
 | --- | --- |
 | `vacuum_cost_page_hit` | Cost of reading a page that is already in shared buffers and doesn't need a disk read. The default value is set to 1. |
 | `vacuum_cost_page_miss` | Cost of fetching a page that isn't in shared buffers. The default value is set to 10. |
-`vacuum_cost_page_dirty` | Cost of writing to a page when dead tuples are found in it. The default value is set to 20.
+| `vacuum_cost_page_dirty` | Cost of writing to a page when dead tuples are found in it. The default value is set to 20. |
 
 The amount of work autovacuum performs depend on two parameters:
 
@@ -40,13 +40,23 @@ The amount of work autovacuum performs depend on two parameters:
 | `autovacuum_vacuum_cost_limit` | The amount of work autovacuum does in one go. |
 | `autovacuum_vacuum_cost_delay` | Number of milliseconds that autovacuum is asleep after it reaches the cost limit specified by the `autovacuum_vacuum_cost_limit` parameter. |
 
-In all currently supported versions of Postgres, the default value for `autovacuum_vacuum_cost_limit` is 200 (actually, set to -1, which makes it equals to the value of the regular `vacuum_cost_limit`, which by default, is 200).
+In all currently supported versions of PostgreSQL, the default value for `autovacuum_vacuum_cost_limit` is 200 (actually, set to -1, which makes it equal to the value of the regular `vacuum_cost_limit`, which by default, is 200).
 
-As for `autovacuum_vacuum_cost_delay`, in Postgres version 11 it defaults to 20 milliseconds, while in Postgres versions 12 and above it defaults to 2 milliseconds.
+The default value for `autovacuum_vacuum_cost_delay` is 2 milliseconds in PostgreSQL versions 12 and later (it was 20 milliseconds in version 11).
+
+### Buffer usage limit (PostgreSQL 16+)
+
+Starting with PostgreSQL version 16, a new parameter `vacuum_buffer_usage_limit` is available to control memory usage during VACUUM, ANALYZE, and autovacuum operations.
+
+| Parameter                        | Description
+| --- | --- |
+| `vacuum_buffer_usage_limit` | Sets the buffer pool size for VACUUM, ANALYZE, and autovacuum operations. This parameter limits the amount of shared buffer cache that can be used by these operations, preventing them from consuming excessive memory resources. |
+
+This parameter helps prevent VACUUM and autovacuum from evicting too many useful pages from shared buffers, which can improve overall database performance during maintenance operations. The default value is typically set based on shared_buffers, and it can be configured to balance vacuum performance with the needs of regular database operations.
 
 Autovacuum wakes up 50 times (50*20 ms=1000 ms) every second. Every time it wakes up, autovacuum reads 200 pages.
 
-That means in one-second autovacuum can do:
+That means in one second autovacuum can do:
 
 - ~80 MB/Sec [ (200 pages/`vacuum_cost_page_hit`) * 50 * 8 KB per page] if all pages with dead tuples are found in shared buffers.
 - ~8 MB/Sec [ (200 pages/`vacuum_cost_page_miss`) * 50 * 8 KB per page] if all pages with dead tuples are read from disk.
@@ -72,17 +82,18 @@ The following columns help determine if autovacuum is catching up to table activ
 | --- | --- |
 | `dead_pct` | Percentage of dead tuples when compared to live tuples. |
 | `last_autovacuum` | The date of the last time the table was autovacuumed. |
-`last_autoanalyze` | The date of the last time the table was automatically analyzed.
+| `last_autoanalyze` | The date of the last time the table was automatically analyzed. |
 
 ## Triggering autovacuum
 
 An autovacuum action (either *ANALYZE* or *VACUUM*) triggers when the number of dead tuples exceeds a particular number that is dependent on two factors: the total count of rows in a table, plus a fixed threshold. *ANALYZE*, by default, triggers when 10% of the table plus 50 row changes, while *VACUUM* triggers when 20% of the table plus 50 row changes. Since the *VACUUM* threshold is twice as high as the *ANALYZE* threshold, *ANALYZE* gets triggered earlier than *VACUUM*.
-For PG versions >=13; *ANALYZE* by default, triggers when 20% of the table plus 1000 row inserts.
+
+For PostgreSQL versions 13 and later, *ANALYZE* by default triggers when 20% of the table plus 1,000 row inserts occur.
 
 The exact equations for each action are:
 
 - **Autoanalyze** = autovacuum_analyze_scale_factor * tuples + autovacuum_analyze_threshold or
-  autovacuum_vacuum_insert_scale_factor * tuples + autovacuum_vacuum_insert_threshold (For PG versions >= 13)
+  autovacuum_vacuum_insert_scale_factor * tuples + autovacuum_vacuum_insert_threshold (For PostgreSQL versions 13 and later)
 - **Autovacuum** = autovacuum_vacuum_scale_factor * tuples + autovacuum_vacuum_threshold
 
 For example, if we have a table with 100 rows. The following equation then provides the information on when the analyze and vacuum triggers:
@@ -104,9 +115,9 @@ Here's the description of the parameters used in the equation:
 | --- | --- |
 | `autovacuum_analyze_scale_factor` | Percentage of inserts/updates/deletes which triggers ANALYZE on the table. |
 | `autovacuum_analyze_threshold` | Specifies the minimum number of tuples inserted/updated/deleted to ANALYZE a table. |
-| `autovacuum_vacuum_insert_scale_factor` | Percentage of inserts that triggers ANLYZE on the table.
-| `autovacuum_vacuum_insert_threshold` | Specifies the minimum number of tuples inserted to ANALYZE a table.
-| `autovacuum_vacuum_scale_factor` | Percentage of updates/deletes which triggers VACUUM on the table.
+| `autovacuum_vacuum_insert_scale_factor` | Percentage of inserts that triggers ANALYZE on the table. |
+| `autovacuum_vacuum_insert_threshold` | Specifies the minimum number of tuples inserted to ANALYZE a table. |
+| `autovacuum_vacuum_scale_factor` | Percentage of updates/deletes which triggers VACUUM on the table. |
 
 Use the following query to list the tables in a database and identify the tables that qualify for the autovacuum process:
 
@@ -165,7 +176,8 @@ In case the autovacuum isn't keeping up, the following parameters might be chang
 | Parameter                        | Description
 | --- | --- |
 | `autovacuum_vacuum_cost_limit` | Default: `200`. Cost limit might be increased. CPU and I/O utilization on the database should be monitored before and after making changes. |
-| `autovacuum_vacuum_cost_delay` | **Postgres Version 11** - Default: `20 ms`. The parameter might be decreased to `2-10 ms`.<br />**Postgres Versions 12 and above** - Default: `2 ms`. |
+| `autovacuum_vacuum_cost_delay` | **PostgreSQL Version 12 and later** - Default: `2 ms`. Can be decreased for more aggressive autovacuum. |
+| `vacuum_buffer_usage_limit` | **PostgreSQL Versions 16 and later** - Sets the buffer pool size for VACUUM and autovacuum operations. Adjusting this parameter can help balance autovacuum performance with overall system performance by controlling how much shared buffer cache is used during vacuum operations. |
 
 > [!NOTE]  
 > - The `autovacuum_vacuum_cost_limit` value is distributed proportionally among the running autovacuum workers, so that if there's more than one, the sum of the limits for each worker doesn't exceed the value of the `autovacuum_vacuum_cost_limit` parameter.
@@ -296,6 +308,8 @@ To set autovacuum setting per table, change the server parameters as the followi
     ALTER TABLE <table name> SET (autovacuum_vacuum_threshold = xx);
     ALTER TABLE <table name> SET (autovacuum_vacuum_cost_delay = xx);
     ALTER TABLE <table name> SET (autovacuum_vacuum_cost_limit = xx);
+    -- For PostgreSQL 16 and above:
+    ALTER TABLE <table name> SET (vacuum_buffer_usage_limit = 'xx MB');
 ```
 
 ### Insert-only workloads
@@ -328,33 +342,38 @@ Autovacuum is an important background process as it helps with efficient storage
 
 We introduced a new role `pg_signal_autovacuum_worker` from PostgreSQL, which allows nonsuperuser members to terminate an ongoing autovacuum task. The new role helps users to get secure and controlled access to the autovacuum process. Nonsuper users can cancel the autovacuum process once they're granted as the `pg_signal_autovacuum_worker` role by using `pg_terminate_backend` command. The role `pg_signal_autovacuum_worker` is backported to Azure Database for PostgreSQL in PostgreSQL versions 15 and higher.
 
-#### Recommended approach for repetitive autovacuum workers 
-In rare scenarios, such as anti-wraparound autovacuum, workers may restart immediately after termination because they are critical for preventing transaction ID exhaustion. To minimize repeated conflicts, follow these steps:
-- Queue the DDL operation prior to termination: 
-  1. Session 1: Prepare and run the DDL statement. 
-  2. Session 2: Terminate the autovacuum process. 
-    > Important: These two steps must be executed back-to-back. If the DDL statement remains blocked for too long, it can hold locks and block other DML operations on the server. 
-- Terminate autovacuum and execute DDL:  If the DDL must run immediately: 
-  1. Terminate the autovacuum process using pg_terminate_backend(). 
-  2. Execute the DDL statement right after termination.
+#### Recommended approach for repetitive autovacuum workers
+
+In rare scenarios, such as anti-wraparound autovacuum, workers might restart immediately after termination because they are critical for preventing transaction ID exhaustion. To minimize repeated conflicts, follow these steps:
+- Queue the DDL operation prior to termination:
+  1. Session 1: Prepare and run the DDL statement.
+  1. Session 2: Terminate the autovacuum process.
+  > Important: These two steps must be executed back-to-back. If the DDL statement remains blocked for too long, it can hold locks and block other DML operations on the server.
+- Terminate autovacuum and execute DDL: If the DDL must run immediately:
+  1. Terminate the autovacuum process using pg_terminate_backend().
+  1. Execute the DDL statement right after termination.
 
 Steps to avoid repeated conflicts:
 
 1. Grant role to user
+
 ```sql
 GRANT pg_signal_autovacuum_worker TO app_user;
 ```
-2. Identify autovacuum process id:
+1. Identify autovacuum process id:
+
 ```sql
 SELECT pid, query FROM pg_stat_activity WHERE query LIKE '%autovacuum%' and pid!=pg_backend_pid();
 ```
 
-3. Terminate autovacuum
+1. Terminate autovacuum
+
 ```sql
 SELECT pg_terminate_backend(<pid>);
 ```
 
-4. Execute DDL statement immediately
+1. Execute DDL statement immediately
+
 ```sql
 ALTER TABLE my_table ADD COLUMN new_col TEXT;
 ```
@@ -369,7 +388,7 @@ The recommendations are:
 
 - **High Bloat Ratio**: A high bloat ratio can affect server performance in several ways. One significant issue is that the PostgreSQL Engine Optimizer might struggle to select the best execution plan, leading to degraded query performance. Therefore, a recommendation is triggered when the bloat percentage on a server reaches a certain threshold to avoid such performance issues.
 
-- **Transaction Wrap around**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state it might stop accepting any more transactions, causing the server to become read-only. Hence, a recommendation is triggered when we see the server crosses 1 billion transactions threshold.
+- **Transaction Wrap around**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state it might stop accepting anymore transactions, causing the server to become read-only. Hence, a recommendation is triggered when we see the server crosses 1 billion transactions threshold.
 
 ## Related content
 
@@ -379,4 +398,3 @@ The recommendations are:
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md)
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md)
 - [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md)
-
