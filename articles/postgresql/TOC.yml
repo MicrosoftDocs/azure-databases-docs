@@ -628,7 +628,7 @@
           items:
             - name: Elastic clusters
               items:
-                - name: Configuring Maximum Connections
+                - name: Configuring maximum connections
                   href: flexible-server/how-to-networking-elastic-clusters-default-max-connections.md
             - name: Public access (allowed IP addresses)
               items:
