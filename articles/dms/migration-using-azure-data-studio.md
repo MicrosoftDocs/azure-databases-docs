@@ -164,7 +164,7 @@ To monitor database migrations in the Azure portal:
 
 ## Pricing
 
-- Azure Database Migration Service is free to use with the Azure SQL Migration extension for Azure Data Studio. You can migrate multiple SQL Server databases by using Database Migration Service at no charge.
+- Azure Database Migration Service is free to use. You can migrate multiple SQL Server databases by using Database Migration Service at no charge.
 
 - No data movement or data ingress costs are assessed when you migrate your databases from an on-premises environment to Azure. If the source database is moved from another region or from an Azure virtual machine, you might incur [bandwidth charges](https://azure.microsoft.com/pricing/details/bandwidth/) depending on your bandwidth provider and routing scenario.
 
