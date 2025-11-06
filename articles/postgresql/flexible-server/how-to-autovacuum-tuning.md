@@ -17,7 +17,7 @@ This article provides an overview of the autovacuum feature for [Azure Database 
 > [!NOTE]
 > This article covers autovacuum tuning for all supported PostgreSQL versions in Azure Database for PostgreSQL flexible server. Some features mentioned are version-specific (such as `vacuum_buffer_usage_limit` for PostgreSQL 16 and later, and `autovacuum_vacuum_max_threshold` for PostgreSQL 18 and later).
 
-## What is autovacuum
+## What is autovacuum?
 
 Autovacuum is a PostgreSQL background process that automatically cleans up dead tuples and updates statistics. It helps maintain the database performance by automatically running two key maintenance tasks:
 
@@ -351,8 +351,8 @@ Azure Database for PostgreSQL flexible server provides troubleshooting guides in
 
 Two troubleshooting guides are available:
 
-1. **Autovacuum monitoring** - Use this guide to monitor bloat at the database or individual schema level.
-1. **Autovacuum blockers and wraparound** - This guide helps you identify potential autovacuum blockers and provides information on how far the databases on the server are from wraparound or emergency situations.
+- **Autovacuum monitoring** - Use this guide to monitor bloat at the database or individual schema level.
+- **Autovacuum blockers and wraparound** - This guide helps you identify potential autovacuum blockers and provides information on how far the databases on the server are from wraparound or emergency situations.
 
 The troubleshooting guides also share recommendations to mitigate potential issues. For information about how to set up and use the troubleshooting guides, see [setup troubleshooting guides](how-to-troubleshooting-guides.md).
 
@@ -365,39 +365,43 @@ We introduced a new role `pg_signal_autovacuum_worker` from PostgreSQL, which al
 #### Recommended approach for repetitive autovacuum workers
 
 In rare scenarios, such as anti-wraparound autovacuum, workers might restart immediately after termination because they're critical for preventing transaction ID exhaustion. To minimize repeated conflicts, follow these steps:
+
 - Queue the DDL operation prior to termination:
-  1. Session 1: Prepare and run the DDL statement.
-  1. Session 2: Terminate the autovacuum process.
-  > Important: These two steps must be executed back-to-back. If the DDL statement remains blocked for too long, it can hold locks and block other DML operations on the server.
+  - Session 1: Prepare and run the DDL statement.
+  - Session 2: Terminate the autovacuum process.
+  
+    > [!Important]
+    > These two steps must be executed back-to-back. If the DDL statement remains blocked for too long, it can hold locks and block other DML operations on the server.
+
 - Terminate autovacuum and execute DDL: If the DDL must run immediately:
-  1. Terminate the autovacuum process using pg_terminate_backend().
-  1. Execute the DDL statement right after termination.
+  - Terminate the autovacuum process using pg_terminate_backend().
+  - Execute the DDL statement right after termination.
 
 Steps to avoid repeated conflicts:
 
 1. Grant role to user
 
-```sql
-GRANT pg_signal_autovacuum_worker TO app_user;
-```
-1. Identify autovacuum process ID
-
-```sql
-SELECT pid, query FROM pg_stat_activity WHERE query LIKE '%autovacuum%' and pid!=pg_backend_pid();
-```
+    ```sql
+    GRANT pg_signal_autovacuum_worker TO app_user;
+    ```
+    1. Identify autovacuum process ID
+    
+    ```sql
+    SELECT pid, query FROM pg_stat_activity WHERE query LIKE '%autovacuum%' and pid!=pg_backend_pid();
+    ```
 
 1. Terminate autovacuum
 
-```sql
-SELECT pg_terminate_backend(<pid>);
-```
-
+    ```sql
+    SELECT pg_terminate_backend(<pid>);
+    ```
+    
 1. Execute DDL statement immediately
 
-```sql
-ALTER TABLE my_table ADD COLUMN new_col TEXT;
-```
-
+    ```sql
+    ALTER TABLE my_table ADD COLUMN new_col TEXT;
+    ```
+    
 > [!NOTE]  
 > We don't recommend terminating ongoing autovacuum processes because doing so might lead to table and database bloat, which can further lead to performance regressions. However, in cases where there's a business-critical requirement involving the scheduled execution of a DDL statement that coincides with the autovacuum process, non-superusers can terminate the autovacuum in a controlled and secure manner by using the `pg_signal_autovacuum_worker` role.
 

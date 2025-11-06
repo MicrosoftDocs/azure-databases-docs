@@ -103,19 +103,19 @@ When your Azure Database for PostgreSQL flexible server instance needs to make o
 
 To find the IP address currently assigned to your Azure Database for PostgreSQL flexible server instance:
 
-1. **Using DNS resolution**: You can resolve the server's FQDN (`servername.postgres.database.azure.com`) to get the current IP address. Use tools like `nslookup` or `dig`:
+- **Using DNS resolution**: You can resolve the server's FQDN (`servername.postgres.database.azure.com`) to get the current IP address. Use tools like `nslookup` or `dig`:
 
-  ```bash
-  nslookup servername.postgres.database.azure.com
-  ```
+    ```bash
+    nslookup servername.postgres.database.azure.com
+    ```
 
-1. **Using the Azure portal**: Navigate to your Azure Database for PostgreSQL flexible server instance in the Azure portal. The server's public IP address isn't directly displayed, but you can find it by resolving the server's FQDN.
+- **Using the Azure portal**: Navigate to your Azure Database for PostgreSQL flexible server instance in the Azure portal. The server's public IP address isn't directly displayed, but you can find it by resolving the server's FQDN.
 
-1. **Using Azure CLI**: You can use Azure CLI to get information about your server and then resolve the hostname:
+- **Using Azure CLI**: You can use Azure CLI to get information about your server and then resolve the hostname:
 
-  ```azurecli
-  az postgres flexible-server show --resource-group myResourceGroup --name myServerName
-  ```
+    ```azurecli
+    az postgres flexible-server show --resource-group myResourceGroup --name myServerName
+    ```
 
 ### Important considerations for outbound connections
 
