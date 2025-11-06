@@ -1,16 +1,16 @@
 ---
 title: Table types - elastic clusters
 description: Learn about the different types of tables available in an elastic cluster on Azure Database for PostgreSQL.
-author: mulander
-ms.author: adamwolk
-ms.reviewer: maghan
-ms.date: 06/07/2025
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Table types on elastic clusters in Azure Database for PostgreSQL  (preview)
+# Table types on elastic clusters in Azure Database for PostgreSQL
 
 There are five types of tables in a cluster, each stored differently on nodes and used for different purposes.
 
@@ -48,4 +48,4 @@ With [schema-based sharding](concepts-elastic-clusters-sharding-models.md#schema
 
 - [Overview of elastic clusters](concepts-elastic-clusters.md).
 - [Sharding models on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-sharding-models.md).
-- [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).
+- [Frequently asked questions about elastic clusters of Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.md).

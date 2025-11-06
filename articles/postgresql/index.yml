@@ -34,9 +34,11 @@ landingContent:
         links:
           - text: Create an Azure Database for PostgreSQL
             url: flexible-server/quickstart-create-server.md
+          - text: Create an elastic cluster 
+            url: flexible-server/quickstart-create-elastic-cluster-portal.md
       - linkListType: how-to-guide
         links:
-          - text: Manage server
+          - text: Manage your server
             url: flexible-server/how-to-manage-server-portal.md
           - text: Connect and query using Visual Studio Code
             url: extensions/vs-code-extension/overview.md
@@ -58,14 +60,18 @@ landingContent:
             url: flexible-server/concepts-storage.md
           - text: Read replicas 
             url: flexible-server/concepts-read-replicas.md
+          - text: Horizontal scale out
+            url: flexible-server/concepts-elastic-clusters.md        
           - text: Security concepts
             url: flexible-server/concepts-security.md
       - linkListType: how-to-guide
         links:
           - text: Manage high availability
             url: flexible-server/how-to-configure-high-availability.md
-          - text: Guide on scale compute
+          - text: Guide on scalable compute
             url: flexible-server/how-to-scale-compute.md
+          - text: Scale out with elastic clusters
+            url: flexible-server/how-to-scale-out.md            
           - text: Restore to paired region (geo-restore)
             url: flexible-server/how-to-restore-paired-region.md
           - text: Entra-id authentication guide
@@ -108,8 +114,6 @@ landingContent:
     linkLists:      
       - linkListType: concept
         links:
-          - text: Elastic Clusters 
-            url: flexible-server/quickstart-create-elastic-cluster-portal.md
           - text: Server parameters
             url: flexible-server/concepts-server-parameters.md
           - text: Compute and storage

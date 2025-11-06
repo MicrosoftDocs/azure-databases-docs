@@ -48,11 +48,14 @@
               href: flexible-server/quickstart-create-server-bicep.md
         - name: Create an elastic cluster
           items:
-            - name: ARM template
-              displayName: Resource Manager
-              href: flexible-server/quickstart-create-elastic-cluster-arm-template.md
             - name: Azure portal
               href: flexible-server/quickstart-create-elastic-cluster-portal.md
+            - name: Bicep
+              href: flexible-server/quickstart-create-elastic-cluster-bicep.md
+            - name: ARM template
+              displayName: Azure Resource Manager
+              href: flexible-server/quickstart-create-elastic-cluster-arm-template.md
+            
         - name: Connect and query
           items:
             - name: Connect to a server in virtual network
@@ -95,7 +98,7 @@
               href: flexible-server/concepts-storage-migrate-ssd-to-ssd-v2.md
         - name: Scaling resources
           href: flexible-server/concepts-scaling-resources.md
-        - name: Elastic clusters (preview)
+        - name: Elastic clusters
           items:
             - name: Overview
               href: flexible-server/concepts-elastic-clusters.md
@@ -104,7 +107,7 @@
             - name: Table types
               href: flexible-server/concepts-elastic-clusters-table-types.md
             - name: Limitations
-              href: flexible-server/concepts-elastic-clusters-limitations.yml
+              href: flexible-server/concepts-elastic-clusters-limitations.md
         - name: Prepay for reserved capacity
           href: flexible-server/concepts-reserved-pricing.md
         - name: Networking
@@ -623,6 +626,10 @@
                       href: flexible-server/how-to-enable-intelligent-performance-cli.md
         - name: Networking
           items:
+            - name: Elastic clusters
+              items:
+                - name: Configuring maximum connections
+                  href: flexible-server/how-to-network-elastic-clusters-default-maximum-connections.md
             - name: Public access (allowed IP addresses)
               items:
                 - name: Enable public access
@@ -653,6 +660,8 @@
                   href: flexible-server/how-to-update-client-certificates-java.md
         - name: Scaling
           items:
+            - name: Scale out
+              href: flexible-server/how-to-scale-out.md          
             - name: Scale compute
               href: flexible-server/how-to-scale-compute.md
             - name: Scale storage size
