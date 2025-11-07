@@ -988,6 +988,8 @@
           href: ../tutorial-log-transformation.md?context=/azure/cosmos-db/nosql/context/context
 - name: Reference
   items:
+    - name: Customer solutions
+      href: ../customer-solutions.md
     - name: .NET SDKs
       items:
         - name: .NET SDK v3
