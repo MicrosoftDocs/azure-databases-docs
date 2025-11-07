@@ -6,7 +6,7 @@ author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 09/12/2025
+ms.date: 11/07/2025
 ms.update-cycle: 180-days
 ms.collection:
   - ce-skilling-ai-copilot
@@ -23,6 +23,8 @@ Vectors, also known as embeddings or vector embeddings, are mathematical represe
 When an AI model receives text input, it first tokenizes the text into tokens. Each token is then converted into its corresponding embedding. This conversion process can be done using an embedding generation model, such as [Azure OpenAI embeddings](/azure/ai-services/openai/how-to/embeddings) or [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure).
 
 The model processes these embeddings through multiple layers, capturing complex patterns and relationships within the text. The output embeddings can then be converted back into tokens if needed, generating readable text.
+
+> [!VIDEO 3500398e-96fb-48a7-935a-7b778c9d9c7b]
 
 ## Vectors
 
