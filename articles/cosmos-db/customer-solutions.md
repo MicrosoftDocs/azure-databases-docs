@@ -19,6 +19,22 @@ This article showcases real-world customer stories, highlighting the diverse use
 
 ## Adobe - Adobe Experience Cloud and Adobe Experience Platform
 
-TODO
+Adobe built a unified customer profile and identity system using Azure Cosmos DB to power real-time personalization, identity stitching, and high-throughput graph workloads.
+
+Adobe selected Azure Cosmos DB because of these reasons:
+
+- Instant, elastic scalability to handle highly dynamic workloads (from near-zero to millions of requests per minute) during campaigns and bursts.
+- Multi-model/document-oriented storage that supports the flexible XDM (Experience Data Model) JSON-like schema Adobe uses for extensible customer data.
+- Low-latency, globally distributed reads and writes to meet strict activation SLAs (100–250 ms) for real-time personalization across devices and channels.
+- Fine-grained partitioning and throughput control to support very large datasets (hundreds of terabytes and thousands of partitions) and massive point-lookup and segmentation workloads.
+
+Adobe integrated Azure Cosmos DB into their solution by:
+
+- Ingesting streaming and batch data into a central platform where event data (web, mobile, transactional, CRM, third-party) is normalized into XDM. Streaming pipelines (Kafka, Apache Flink) and ETL jobs write profile fragments into Azure Cosmos DB in near real time.
+- Storing and evolving an identity graph in Azure Cosmos DB to stitch fragmented identifiers (cookies, mobile IDs, CRM IDs) into a unified view. The identity graph is used at query time to logically join fragments without physically duplicating data.
+- Using Azure Cosmos DB for high-frequency profile lookups, segmentation (both batch and streaming), and graph computations. The system runs millions of point lookups and thousands of segmentation queries with sub-250 ms activation latency.
+- Combining Azure Cosmos DB with edge and streaming services to activate profiles in real time—looking up profiles at event ingestion, applying business rules or ML model outputs, and returning personalized responses to applications and channels.
+
+As a result, Adobe's Experience Platform scales to handle billions of daily events and tens of billions of identities while providing real-time activation and governance (GDPR/CCPA) across customer journeys.
 
 > [!VIDEO eb2e18ed-eb0c-4d12-9c0c-172b795d3cb1]
