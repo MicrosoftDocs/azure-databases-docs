@@ -7,6 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.topic: solution-overview
 ms.date: 11/07/2025
+ai-usage: ai-generated
 ---
 
 # What are customers building with Azure Cosmos DB?
