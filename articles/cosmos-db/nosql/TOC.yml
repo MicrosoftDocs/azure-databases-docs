@@ -988,8 +988,6 @@
           href: ../tutorial-log-transformation.md?context=/azure/cosmos-db/nosql/context/context
 - name: Reference
   items:
-    - name: Customer solutions
-      href: ../customer-solutions.md
     - name: .NET SDKs
       items:
         - name: .NET SDK v3
@@ -1107,6 +1105,8 @@
           href: ../resource-graph-samples.md?context=/azure/cosmos-db/nosql/context/context
 - name: Resources
   items:
+    - name: Customer solutions
+      href: ../customer-solutions.md
     - name: Build your skills with Microsoft Learn training
       href: /training/browse/?products=azure-cosmos-db
     - name: Whitepapers
