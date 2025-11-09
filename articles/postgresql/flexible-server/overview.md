@@ -70,6 +70,14 @@ One advantage of running your workload in Azure is global reach. Azure Database 
 
 [!INCLUDE [regions-table](includes/regions-table.md)]
 
+$ New zone-redundant high availability deployments are temporarily blocked in these regions. Already provisioned HA servers are fully supported.
+
+$$ New server deployments are temporarily blocked in these regions. Already provisioned servers are fully supported.
+
+** Zone-redundant high availability can now be deployed when you provision new servers in these regions. Any existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, read these [special considerations](how-to-configure-high-availability.md#special-considerations).
+
+(*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. You can access these regions only upon request by creating a new support request.
+
 > [!NOTE]  
 > If your application requires zone-redundant high availabilityA and it's unavailable in your preferred Azure region, consider using other regions within the same geography where zone-redundant HA is available, such as US East for US East 2, Central US for North Central US, and so on.
 
