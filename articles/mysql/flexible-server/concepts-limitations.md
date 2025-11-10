@@ -42,9 +42,13 @@ If you want to disable a GIPK, you have two options:
 
 ### lower_case_table_names
 
-In Azure Database for MySQL - Flexible Server, the default value for `lower_case_table_names` is `1` for MySQL version 5.7. If you need to adjust this setting, we recommend that you [create a support ticket](https://azure.microsoft.com/support/create-ticket/). It's important to understand that after you change the parameter value to `2`, reverting it to `1` isn't allowed.
+For [MySQL version 8.0+](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html) you can configure `lower_case_table_names` only when you're initializing the server. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html). Changing the `lower_case_table_names` setting after the server is initialized is prohibited. Supported values for MySQL version 8.0 are `1` and `2` in Azure Database for MySQL - Flexible Server. The default value is `1`.
 
-For MySQL version 8.0, changing the `lower_case_table_names` setting after the server is initialized is prohibited. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html). In Azure Database for MySQL - Flexible Server, the default value for `lower_case_table_names` is `1` for MySQL version 8.0. If you want to change this parameter to `2`, we suggest that you create a MySQL 5.7 server and [create a support ticket](https://azure.microsoft.com/support/create-ticket/) for assistance with the change. Later, if necessary, you can upgrade the server to version 8.0.
+You can configure these settings in the portal during server creation by specifying the desired value under Server Parameters on the Additional Configuration page. For restore operations or replica server creation, the parameter will automatically be copied from the source server and cannot be changed. 
+
+:::image type="content" source="media/concepts-server-parameters\flexible-server-lower-case-configure.png" alt-text="Screenshot that shows how to configure lower case table name server parameter at the time of creation." lightbox="media/concepts-server-parameters\flexible-server-lower-case-configure.png":::
+
+For MySQL version 5.7, the default value of `lower_case_table_names` is `1` in Azure Database for MySQL - Flexible Server. Although it's possible to change the supported value to `2`, reverting from `2` back to `1` isn't allowed. For assistance in changing the default value, [create a support ticket](https://azure.microsoft.com/support/create-ticket/).
 
 ## Storage engines
 
