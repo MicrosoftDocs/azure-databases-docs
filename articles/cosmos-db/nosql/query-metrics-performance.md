@@ -217,7 +217,7 @@ FROM   c
 WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
 ```
 
-This query is now able to be served from the index. Alternatively, you can use [computed properties](/nosql/query/computed-properties) to index the results of system functions or complex calculations that would otherwise result in a full scan.
+This query is now able to be served from the index. Alternatively, you can use computed properties to index the results of system functions or complex calculations that would otherwise result in a full scan.
 
 To learn more about tuning query performance, see the [Tune Query Performance](./query-metrics.md) article.
 

@@ -133,7 +133,7 @@ FROM   c
 WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
 ```
 
-This query is now able to be served from the index. Alternatively, you can use [computed properties](/nosql/query/computed-properties) to index the results of system functions or complex calculations that would otherwise result in a full scan.
+This query is now able to be served from the index. Alternatively, you can use computed properties to index the results of system functions or complex calculations that would otherwise result in a full scan.
 
 To have a look at the potential index recommendations and to check which indexes have been utilized, you must set the ```populate_index_metrics``` parameter to ```True``` and then you can read the ```x-ms-documentdb-index-utilization``` header values from the container client. The following code snippet shows how to read the index utilization metrics:
 

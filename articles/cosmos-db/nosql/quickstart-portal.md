@@ -202,5 +202,5 @@ After you create and query your data, use the **Overview** section to try differ
 ## Related content
 
 - [Data Explorer](../data-explorer.md)
-- [NoSQL query syntax](/cosmos-db/query)
+- [NoSQL query syntax](/nosql/query)
 - [Resource model](../resource-model.md)
