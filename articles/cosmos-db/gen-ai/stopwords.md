@@ -27,5 +27,5 @@ When a text path is configured in both a [full text container and indexing polic
 - [``FullTextContainsAll`` system function](/nosql/query/fulltextcontainsall)
 - [``FullTextContainsAny`` system function](/nosql/query/fulltextcontainsany)
 - [``FullTextScore`` system function](/nosql/query/fulltextscore)
-- [``RRF`` system function](../nosql/query/rrf.md)
-- [``ORDER BY RANK`` clause](../nosql/query/order-by-rank.md)
+- [``RRF`` system function](/nosql/query/rrf)
+- [``ORDER BY RANK`` clause](/nosql/query/order-by-rank)
