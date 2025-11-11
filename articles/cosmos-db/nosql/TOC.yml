@@ -751,7 +751,7 @@
       items:
         - name: Getting started with SQL query
           displayName: sql query, query basics
-          href: query/overview
+          href: /nosql/query/overview
         - name: Indexing overview
           displayName: range, spatial
           href: ../index-overview.md?context=/azure/cosmos-db/nosql/context/context
