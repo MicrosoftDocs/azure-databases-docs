@@ -352,7 +352,7 @@ The types in the ``Microsoft.Azure.Cosmos.Spatial`` namespace can be used as inp
     ```
 
     > [!TIP]
-    > This query places the geospatial function within a [subquery](/nosql/query/subquery) to simplify the process of reusing the already calculated value multiple times in the [``SELECT``](query/select) and [``WHERE``](/nosql/query/where) clauses.
+    > This query places the geospatial function within a [subquery](/nosql/query/subquery) to simplify the process of reusing the already calculated value multiple times in the [``SELECT``](/nosql/query/select) and [``WHERE``](/nosql/query/where) clauses.
 
 1. Create a new [``QueryDefinition``](/dotnet/api/microsoft.azure.cosmos.querydefinition) variable named ``query`` using the ``nosqlString`` variable as a parameter. Then use the [``QueryDefinition.WithParameter``](/dotnet/api/microsoft.azure.cosmos.querydefinition.withparameter) fluent method multiple times to add these parameters to the query:
 
