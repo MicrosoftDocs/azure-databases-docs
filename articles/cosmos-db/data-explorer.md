@@ -220,4 +220,4 @@ Here are a few currently known issues:
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Getting started with queries](nosql/query/getting-started.md)
+> [Getting started with queries](/cosmos-db/query/overview)

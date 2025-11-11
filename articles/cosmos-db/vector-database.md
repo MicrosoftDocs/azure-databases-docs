@@ -128,7 +128,7 @@ DiskANN enables you to perform highly accurate, low-latency queriers at any scal
 
 - [What is the database behind ChatGPT? - Microsoft Mechanics](https://www.youtube.com/watch?v=6IIUtEFKJec)
 - [Vector indexing in Azure Cosmos DB for NoSQL](index-policy.md#vector-indexes)
-- [VectorDistance system function NoSQL queries](nosql/query/vectordistance.md)
+- [VectorDistance system function NoSQL queries](/cosmos-db/query/vectordistance)
 - [Vector Search in Azure Cosmos DB for NoSQL](nosql/vector-search.md)
 - [Python - Notebook tutorial](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
 - [C# - Build Your Own Copilot Complete Solution Accelerator with AKS and Semantic Kernel](https://aka.ms/cdbcopilot)

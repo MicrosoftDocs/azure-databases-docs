@@ -152,7 +152,7 @@ Range indexes can be used on scalar values (string or number). The default index
     SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
     ```
 
-Spatial indexes can be used on correctly formatted [GeoJSON](./nosql/query/geospatial.md) objects. Points, LineStrings, Polygons, and MultiPolygons are currently supported. To learn how to configure spatial indexes, see [Manage indexing policies in Azure Cosmos DB](how-to-manage-indexing-policy.md).
+Spatial indexes can be used on correctly formatted [GeoJSON](/cosmos-db/query/geospatial) objects. Points, LineStrings, Polygons, and MultiPolygons are currently supported. To learn how to configure spatial indexes, see [Manage indexing policies in Azure Cosmos DB](how-to-manage-indexing-policy.md).
 
 ### Composite indexes
 

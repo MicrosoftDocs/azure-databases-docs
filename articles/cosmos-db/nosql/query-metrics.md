@@ -13,7 +13,7 @@ ms.custom: devx-track-csharp
 # Tuning query performance with Azure Cosmos DB
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-Azure Cosmos DB provides a [API for NoSQL for querying data](query/getting-started.md), without requiring schema or secondary indexes. This article provides the following information for developers:
+Azure Cosmos DB provides a [API for NoSQL for querying data](/cosmos-db/query/overview), without requiring schema or secondary indexes. This article provides the following information for developers:
 
 * High-level details on how Azure Cosmos DB's SQL query execution works
 * Tips and best practices for query performance
@@ -148,6 +148,6 @@ Here are some sample queries, and how to interpret some of the metrics returned 
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Query is performed as a scan because it uses `LOWER`, and 500 out of 2491 retrieved documents are returned. |
 
 ## Next steps
-* To learn about the supported SQL query operators and keywords, see [SQL query](query/getting-started.md). 
+* To learn about the supported SQL query operators and keywords, see [SQL query](/cosmos-db/query/overview). 
 * To learn about request units, see [request units](../request-units.md).
 * To learn about indexing policy, see [indexing policy](../index-policy.md)
