@@ -46,16 +46,16 @@ items:
         href: /cosmos-db/query/between?context=/azure/cosmos-db/nosql/context/context
       - name: DISTINCT
         displayName: distinct, keyword
-        href: ../distinct.md
+        href: /cosmos-db/query/distinct?context=/azure/cosmos-db/nosql/context/context
       - name: LIKE
         displayName: like, keyword
-        href: ../like.md
+        href: /cosmos-db/query/like?context=/azure/cosmos-db/nosql/context/context
       - name: IN
         displayName: in, keyword
-        href: ../in.md
+        href: /cosmos-db/query/in?context=/azure/cosmos-db/nosql/context/context
       - name: TOP
         displayName: top, keyword
-        href: ../top.md
+        href: /cosmos-db/query/top?context=/azure/cosmos-db/nosql/context/context
   - name: Functions
     displayName: commands, operators
     expanded: true
