@@ -207,7 +207,7 @@ Here are examples of valid vector index policies:
 
 ## Perform vector search with queries using VectorDistance
 
-Once you created a container with the desired vector policy, and inserted vector data into the container, you can conduct a vector search using the [VectorDistance](/nosql/query/vectordistance) system function in a query. The following example shows a NoSQL query that projects the similarity score as the alias `SimilarityScore`, and sorts in order of most-similar to least-similar:
+Once you created a container with the desired vector policy, and inserted vector data into the container, you can conduct a vector search using the [VectorDistance](/cosmos-db/query/vectordistance) system function in a query. The following example shows a NoSQL query that projects the similarity score as the alias `SimilarityScore`, and sorts in order of most-similar to least-similar:
 
 ```sql
 SELECT TOP 10 c.title, VectorDistance(c.contentVector, [1,2,3]) AS SimilarityScore   
@@ -236,7 +236,7 @@ Vector indexing and search in Azure Cosmos DB for NoSQL has some limitations.
 - [.NET - How to index and query vector data](how-to-dotnet-vector-index-query.md)
 - [Python - How to index and query vector data](how-to-python-vector-index-query.md)
 - [Java - How to index and query vector data](how-to-java-vector-index-query.md)
-- [VectorDistance system function](/nosql/query/vectordistance)
+- [VectorDistance system function](/cosmos-db/query/vectordistance)
 - [Vector index overview](../index-overview.md#vector-indexes)
 - [Vector index policies](../index-policy.md#vector-indexes)
 - [Vector indexing policy examples](how-to-manage-indexing-policy.md#vector-indexing-policy-examples)

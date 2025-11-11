@@ -120,7 +120,7 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-The **Retrieved Document Count** (60,951) is higher than the **Output Document Count** (7), implying that this query resulted in a document scan. In this case, the system function [UPPER()](/nosql/query/upper) doesn't use an index.
+The **Retrieved Document Count** (60,951) is higher than the **Output Document Count** (7), implying that this query resulted in a document scan. In this case, the system function [UPPER()](/cosmos-db/query/upper) doesn't use an index.
 
 ### Include necessary paths in the indexing policy
 

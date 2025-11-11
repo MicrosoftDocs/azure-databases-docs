@@ -77,7 +77,7 @@ Within the query editor, view more query and index metrics to better help optimi
 1. Select the **Stats** tab next to the query **Results**.
     :::image type="content" source="media/visual-studio-code-extension/view-query-stats.png" lightbox="media/visual-studio-code-extension/view-query-stats.png" alt-text="Screenshot of the query stats in Visual Studio Code.":::
 
-1. For more information on the metric definitions, see the [query metrics documentation](./nosql/query-metrics.md).
+1. For more information on the metric definitions, see the [query metrics documentation](./cosmos-db/query-metrics.md).
 
 
 ## Insert, Edit, and Delete documents

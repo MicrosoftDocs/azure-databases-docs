@@ -152,7 +152,7 @@ To learn more about tuning query performance, see the [Tune Query Performance](.
 
 ## <a id="References"></a>References
 
-- [Azure Cosmos DB SQL specification](/nosql/query/overview)
+- [Azure Cosmos DB SQL specification](/cosmos-db/query/overview)
 
 
 ## Next steps
