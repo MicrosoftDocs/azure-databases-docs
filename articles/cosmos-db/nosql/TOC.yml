@@ -749,9 +749,6 @@
       href: how-to-change-capacity-mode.md
     - name: Containers and items
       items:
-        - name: Getting started with SQL query
-          displayName: sql query, query basics
-          href: /nosql/query/overview
         - name: Indexing overview
           displayName: range, spatial
           href: ../index-overview.md?context=/azure/cosmos-db/nosql/context/context
