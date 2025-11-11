@@ -330,7 +330,7 @@ The .NET SDK includes multiple types in the [``Microsoft.Azure.Cosmos.Spatial``]
 
 ## Query geospatial data using NoSQL query
 
-The types in the ``Microsoft.Azure.Cosmos.Spatial`` namespace can be used as inputs to a NoSQL parameterized query to use built-in functions like [``ST_DISTANCE``](query/st-distance.md).
+The types in the ``Microsoft.Azure.Cosmos.Spatial`` namespace can be used as inputs to a NoSQL parameterized query to use built-in functions like [``ST_DISTANCE``](/nosql/query/st-distance).
 
 1. Open the **Program.cs** file.
 
@@ -352,7 +352,7 @@ The types in the ``Microsoft.Azure.Cosmos.Spatial`` namespace can be used as inp
     ```
 
     > [!TIP]
-    > This query places the geospatial function within a [subquery](query/subquery.md) to simplify the process of reusing the already calculated value multiple times in the [``SELECT``](query/select.md) and [``WHERE``](query/where.md) clauses.
+    > This query places the geospatial function within a [subquery](/nosql/query/subquery) to simplify the process of reusing the already calculated value multiple times in the [``SELECT``](/nosql/query/select) and [``WHERE``](/nosql/query/where) clauses.
 
 1. Create a new [``QueryDefinition``](/dotnet/api/microsoft.azure.cosmos.querydefinition) variable named ``query`` using the ``nosqlString`` variable as a parameter. Then use the [``QueryDefinition.WithParameter``](/dotnet/api/microsoft.azure.cosmos.querydefinition.withparameter) fluent method multiple times to add these parameters to the query:
 
@@ -401,15 +401,15 @@ The types in the ``Microsoft.Azure.Cosmos.Spatial`` namespace can be used as inp
 
 ## Query geospatial data using LINQ
 
-The [LINQ to NoSQL](query/linq-to-sql.md) functionality in the .NET SDK supports including geospatial types in the query expressions. Even further, the SDK includes extension methods that map to equivalent built-in functions:
+The LINQ to NoSQL functionality in the .NET SDK supports including geospatial types in the query expressions. Even further, the SDK includes extension methods that map to equivalent built-in functions:
 
 | Extension method | Built-in function |
 | --- | --- |
-| [``Distance()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.distance) | [``ST_DISTANCE``](query/st-distance.md) |
-| [``Intersects()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.intersects) | [``ST_INTERSECTS``](query/st-intersects.md) |
-| [``IsValid()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.isvalid) | [``ST_ISVALID``](query/st-isvalid.md) |
-| [``IsValidDetailed()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.isvaliddetailed) | [``ST_ISVALIDDETAILED``](query/st-isvaliddetailed.md) |
-| [``Within()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.within) | [``ST_WITHIN``](query/st-within.md) |
+| [``Distance()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.distance) | [``ST_DISTANCE``](/nosql/query/st-distance) |
+| [``Intersects()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.intersects) | [``ST_INTERSECTS``](/nosql/query/st-intersects) |
+| [``IsValid()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.isvalid) | [``ST_ISVALID``](/nosql/query/st-isvalid) |
+| [``IsValidDetailed()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.isvaliddetailed) | [``ST_ISVALIDDETAILED``](/nosql/query/st-isvaliddetailed) |
+| [``Within()``](/dotnet/api/microsoft.azure.cosmos.spatial.geometry.within) | [``ST_WITHIN``](/nosql/query/st-within) |
 
 1. Open the **Program.cs** file.
 
@@ -488,4 +488,4 @@ Remove your database after you complete this guide.
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Geospatial and GeoJSON location data](query/geospatial.md)
+> [Geospatial and GeoJSON location data](/nosql/query/geospatial)
