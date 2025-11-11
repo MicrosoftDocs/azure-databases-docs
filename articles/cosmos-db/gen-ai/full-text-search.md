@@ -154,10 +154,10 @@ As with the full-text policies, full-text indexes can be defined on multiple pat
 
 Full-text search and scoring operations are performed using the following system functions in the Azure Cosmos DB for NoSQL query language:
 
-- [`FullTextContains`](../nosql/query/fulltextcontains.md): Returns `true` if a given string is contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure specific key words are included in the documents returned by your query.
-- [`FullTextContainsAll`](../nosql/query/fulltextcontainsall.md): Returns `true` if *all* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that multiple key words are included in the documents returned by your query.
-- [`FullTextContainsAny`](../nosql/query/fulltextcontainsany.md): Returns `true` if *any* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that at least one of the key words is included in the documents returned by your query.
-- [`FullTextScore`](../nosql/query/fulltextscore.md): Returns a score. This can only be used in an `ORDER BY RANK` clause, where the returned documents are ordered by the rank of the full text score, with most relevant (highest scoring) documents at the top, and least relevant (lowest scoring) documents at the bottom.
+- [`FullTextContains`](/nosql/query/fulltextcontains): Returns `true` if a given string is contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure specific key words are included in the documents returned by your query.
+- [`FullTextContainsAll`](/nosql/query/fulltextcontainsall): Returns `true` if *all* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that multiple key words are included in the documents returned by your query.
+- [`FullTextContainsAny`](/nosql/query/fulltextcontainsany): Returns `true` if *any* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that at least one of the key words is included in the documents returned by your query.
+- [`FullTextScore`](/nosql/query/fulltextscore): Returns a score. This can only be used in an `ORDER BY RANK` clause, where the returned documents are ordered by the rank of the full text score, with most relevant (highest scoring) documents at the top, and least relevant (lowest scoring) documents at the bottom.
 
 Here are a few examples of each function in use.
 
@@ -221,9 +221,9 @@ WHERE FullTextContains(c.text, {"term": "red", "distance":1}) AND FullTextContai
 
 ## Related content
 
-- [`FullTextContains` system function](../nosql/query/fulltextcontains.md)
-- [`FullTextContainsAll` system function](../nosql/query/fulltextcontainsall.md)
-- [`FullTextContainsAny` system function](../nosql/query/fulltextcontainsany.md)
-- [`FullTextScore` system function](../nosql/query/fulltextscore.md)
-- [`RRF` system function](../nosql/query/rrf.md)
-- [`ORDER BY RANK` clause](../nosql/query/order-by-rank.md)
+- [`FullTextContains` system function](/nosql/query/fulltextcontains)
+- [`FullTextContainsAll` system function](/nosql/query/fulltextcontainsall)
+- [`FullTextContainsAny` system function](/nosql/query/fulltextcontainsany)
+- [`FullTextScore` system function](/nosql/query/fulltextscore)
+- [`RRF` system function](/nosql/query/rrf)
+- [`ORDER BY RANK` clause](/nosql/query/order-by-rank)
