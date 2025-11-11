@@ -27,5 +27,5 @@ When a text path is configured in both a [full text container and indexing polic
 - [``FullTextContainsAll`` system function](/cosmos-db/query/fulltextcontainsall)
 - [``FullTextContainsAny`` system function](/cosmos-db/query/fulltextcontainsany)
 - [``FullTextScore`` system function](/cosmos-db/query/fulltextscore)
-- [``RRF`` system function](../cosmos-db/query/rrf.md)
-- [``ORDER BY RANK`` clause](../cosmos-db/query/order-by-rank.md)
+- [``RRF`` system function](/cosmos-db/query/rrf)
+- [``ORDER BY RANK`` clause](/cosmos-db/query/order-by-rank)
