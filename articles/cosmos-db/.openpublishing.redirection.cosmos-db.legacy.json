@@ -904,6 +904,16 @@
       "source_path_from_root": "/articles/cosmos-db/nosql/query/queryadvisor/QA1009.md",
       "redirect_url": "/nosql/query/advisor/QA1009",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/query/index.yml",
+      "redirect_url": "/nosql/query/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/query/system-functions.yml",
+      "redirect_url": "/nosql/query/functions",
+      "redirect_document_id": false
     }
   ]
 }
