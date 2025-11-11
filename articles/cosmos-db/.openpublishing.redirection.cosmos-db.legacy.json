@@ -662,7 +662,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/query/scalar-expressions.md",
-      "redirect_url": "/cosmos-db/query/scalar-expressions",
+      "redirect_url": "/cosmos-db/query/scalar",
       "redirect_document_id": false
     },
     {
