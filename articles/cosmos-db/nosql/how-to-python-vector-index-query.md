@@ -167,7 +167,7 @@ except exceptions.CosmosHttpResponseError:
 
 ## Run a vector similarity search query
 
-After you create a container with the vector policy that you want and insert vector data into the container, use the [VectorDistance](query/vectordistance.md) system function in a query to conduct a vector search.
+After you create a container with the vector policy that you want and insert vector data into the container, use the [VectorDistance](/cosmos-db/query/vectordistance) system function in a query to conduct a vector search.
 
 Suppose you want to search for books about food recipes by looking at the description. You first need to get the embeddings for your query text. In this case, you might want to generate embeddings for the query text `food recipe`. After you have the embedding for your search query, you can use it in the `VectorDistance` function in the vector search query to get all the items that are similar to your query:
 
@@ -193,6 +193,6 @@ for item in container.query_items(
 
 ## Related content
 
-- [VectorDistance system function](query/vectordistance.md)
+- [VectorDistance system function](/cosmos-db/query/vectordistance)
 - [Indexing policies in Azure Cosmos DB](../index-policy.md)
 - [Vector database](../vector-database.md)

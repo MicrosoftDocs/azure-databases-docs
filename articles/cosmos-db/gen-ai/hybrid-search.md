@@ -111,7 +111,7 @@ The results from vector search and full text search are then combined using the 
 
 ## Hybrid search queries
 
-Hybrid search queries can be executed by using the [`RRF`](../nosql/query/rrf.md) system function in an `ORDER BY RANK` clause that includes both a `VectorDistance` function and `FullTextScore`. For example, a parameterized query to find the top *k* most relevant results would look like:
+Hybrid search queries can be executed by using the [`RRF`](/cosmos-db/query/rrf) system function in an `ORDER BY RANK` clause that includes both a `VectorDistance` function and `FullTextScore`. For example, a parameterized query to find the top *k* most relevant results would look like:
 
 ```sql
 SELECT TOP @k *
@@ -140,7 +140,7 @@ ORDER BY RANK RRF(VectorDistance(c.vector, [1,2,3]), FullTextScore(c.text, "sear
 ## Related content
 
 - [Vector search in Azure Cosmos DB for NoSQL](../nosql/vector-search.md)
-- [`VectorDistance` system function](../nosql/query/vectordistance.md)
-- [`FullTextScore` system function](../nosql/query/fulltextscore.md)
-- [`RRF` system function](../nosql/query/rrf.md)
-- [`ORDER BY RANK` clause](../nosql/query/order-by-rank.md)
+- [`VectorDistance` system function](/cosmos-db/query/vectordistance)
+- [`FullTextScore` system function](/cosmos-db/query/fulltextscore)
+- [`RRF` system function](/cosmos-db/query/rrf)
+- [`ORDER BY RANK` clause](/cosmos-db/query/order-by-rank)
