@@ -1,8 +1,8 @@
 ---
 title: Premium SSD v2
 description: This article describes about Premium ssd v2 storage option for an Azure Database for PostgreSQL flexible server instance.
-author: nachoalonsoportillo
-ms.author: ialonso
+author: kabharati  
+ms.author: kabharati
 ms.reviewer: maghan
 ms.custom: references_regions
 ms.date: 01/16/2025
