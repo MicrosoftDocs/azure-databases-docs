@@ -208,7 +208,7 @@ sections:
 
 
           [azure-portal]: https://portal.azure.com
-          [query]: nosql/query/getting-started.md
+          [query]: /cosmos-db/query/overview
 
 additionalContent: |
   ## Related content
