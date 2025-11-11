@@ -44,7 +44,7 @@ App development is faster and more productive thanks to:
 - Open source APIs
 - SDKs for popular languages
 - AI database functionalities like integrated vector database or seamless integration with Azure AI Services to support Retrieval Augmented Generation
-- Query Copilot for generating NoSQL queries based on your natural language prompts ([preview](nosql/query/query-advisor.md))
+- Query Copilot for generating NoSQL queries based on your natural language prompts ([preview](/nosql/query/advisor))
 
 As a fully managed service, Azure Cosmos DB takes database administration off your hands with automatic management, updates, and patching. It also handles capacity management with cost-effective serverless and automatic scaling options that respond to application needs to match capacity with demand.
 
