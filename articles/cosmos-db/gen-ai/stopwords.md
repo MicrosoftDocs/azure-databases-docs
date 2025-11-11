@@ -23,8 +23,8 @@ When a text path is configured in both a [full text container and indexing polic
 
 ## Related content
 
-- [``FullTextContains`` system function](../nosql/query/fulltextcontains.md)
-- [``FullTextContainsAll`` system function](../nosql/query/fulltextcontainsall.md)
+- [``FullTextContains`` system function](/nosql/query/fulltextcontains)
+- [``FullTextContainsAll`` system function](/nosql/query/fulltextcontainsall)
 - [``FullTextContainsAny`` system function](/nosql/query/fulltextcontainsany)
 - [``FullTextScore`` system function](/nosql/query/fulltextscore)
 - [``RRF`` system function](../nosql/query/rrf.md)
