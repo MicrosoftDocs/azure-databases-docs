@@ -1,5 +1,5 @@
 ---
-title: Scale Out
+title: Scale Out With Elastic Clusters
 description: This article describes how to scale out an Azure Database for PostgreSQL flexible server elastic cluster.
 author: JaredMSFT
 ms.author: jaredmeade
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to scale out an Azure Database for PostgreSQL elastic cluster.
 ---
 
-# Scale out
+# Scale out with elastic clusters
 
 This article provides step-by-step instructions to perform horizontal scaling operations for your Azure Database for PostgreSQL flexible server elastic cluster.
 
