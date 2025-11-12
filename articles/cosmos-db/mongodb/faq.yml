@@ -90,8 +90,6 @@ sections:
 additionalContent: |
   ## Related content
 
-  - [Frequently asked questions about Azure Cosmos DB for MongoDB vCore](vcore/faq.yml)
-
   - [Get started with Azure Cosmos DB for MongoDB and Node.js](quickstart-nodejs.md)
   - [Get started with Azure Cosmos DB for MongoDB and Python](quickstart-python.md)
   - [Get started with Azure Cosmos DB for MongoDB and Java](quickstart-java.md)

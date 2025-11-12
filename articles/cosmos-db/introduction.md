@@ -14,7 +14,6 @@ ms.collection:
 appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ MongoDB (vCore)
   - ✅ PostgreSQL
   - ✅ Apache Cassandra
   - ✅ Apache Gremlin
@@ -127,6 +126,8 @@ End-to-end database management, with serverless and automatic scaling matching y
 - Cost effective.
 - Analytics for locally available, globally distributed, multi-region writes.
 - Native integration with Azure Synapse Analytics.
+
+[!INCLUDE[Section - Compare to Azure DocumentDB](includes/section-compare-to-documentdb.md)]
 
 ## Related content
 

@@ -9,6 +9,8 @@
       href: faq.yml
     - name: Understand distributed NoSQL
       href: ../distributed-nosql.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Compare to Azure DocumentDB
+      href: ../../documentdb/compare-cosmos-db.md?context=/azure/cosmos-db/nosql/context/context
 - name: Get started
   items:
     - name: Develop

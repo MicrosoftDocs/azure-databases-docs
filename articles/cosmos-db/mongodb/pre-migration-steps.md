@@ -15,8 +15,7 @@ ms.date: 04/20/2023
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
 > [!IMPORTANT]  
-> Please read this entire guide before carrying out your pre-migration steps. For migrations to Azure Cosmos DB for MongoDB vCore refer to  [vCore migration options](./vcore/migration-options.md)
->
+> Please read this entire guide before carrying out your pre-migration steps.
 
 This MongoDB pre-migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are pre-migration, migration, and [post-migration](post-migration-optimization.md), as shown in this guide.
 

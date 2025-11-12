@@ -1,0 +1,186 @@
+<svg viewBox="0 0 1280 720" width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      stroke: #000000;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    rect {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 2;
+    }
+    rect.background {
+      fill: #FFFFFF;
+      stroke: none;
+    }
+    rect.highlight {
+      fill: #2A446F;
+    }
+    text {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      fill: #000000;
+    }
+    text.size-lg {
+      font-size: 19px;
+    }
+    text.weight-bold {
+      font-weight: 600;
+    }
+    text.align-center {
+      text-anchor: middle;
+    }
+    text.color-inverse {
+      fill: #FFFFFF;
+    }
+  </style>
+  <!-- Background -->
+  <rect width="1280" height="720" class="background"/>
+  
+  <!-- Title -->
+  <text x="640" y="40" class="size-lg weight-bold align-center">Predictive Maintenance IoT Architecture</text>
+  
+  <!-- Equipment and Sensors Section -->
+  <text x="35" y="118" class="size-lg weight-bold">Industrial Equipment</text>
+  
+  <!-- Manufacturing Equipment -->
+  <rect x="50" y="140" width="140" height="80" rx="10"/>
+  <text x="120" y="165" class="align-center">CNC Machines</text>
+  <text x="120" y="185" class="align-center">Vibration Sensors</text>
+  
+  <!-- Turbines -->
+  <rect x="50" y="240" width="140" height="80" rx="10"/>
+  <text x="120" y="265" class="align-center">Wind Turbines</text>
+  <text x="120" y="285" class="align-center">Pressure Sensors</text>
+  
+  <!-- Pumps -->
+  <rect x="50" y="340" width="140" height="80" rx="10"/>
+  <text x="120" y="365" class="align-center">Industrial Pumps</text>
+  <text x="120" y="385" class="align-center">Temperature Sensors</text>
+  
+  <!-- HVAC Systems -->
+  <rect x="50" y="440" width="140" height="80" rx="10"/>
+  <text x="120" y="465" class="align-center">HVAC Systems</text>
+  <text x="120" y="485" class="align-center">Multi-sensors</text>
+  
+  <!-- Data Collection Section -->
+  <text x="280" y="118" class="size-lg weight-bold">Data Collection</text>
+  
+  <!-- Azure IoT Hub -->
+  <rect x="280" y="200" width="140" height="120" rx="10"/>
+  <text x="350" y="230" class="weight-bold align-center">Azure IoT Hub</text>
+  <text x="350" y="260" class="align-center">• Sensor Data</text>
+  <text x="350" y="280" class="align-center">• Equipment Status</text>
+  <text x="350" y="300" class="align-center">• Maintenance Logs</text>
+  
+  <!-- Data Storage Section -->
+  <text x="489" y="118" class="size-lg weight-bold">Historical Data Storage</text>
+  
+  <!-- Azure DocumentDB -->
+  <rect x="480" y="140" width="200" height="120" rx="10" class="highlight"/>
+  <text x="580" y="170" class="weight-bold align-center color-inverse">Azure DocumentDB</text>
+  <text x="580" y="200" class="align-center color-inverse">• Equipment History</text>
+  <text x="580" y="220" class="align-center color-inverse">• Failure Patterns</text>
+  <text x="580" y="240" class="align-center color-inverse">• Performance Metrics</text>
+  
+  <!-- Machine Learning Section -->
+  <text x="776" y="118" class="size-lg weight-bold">Predictive Analytics</text>
+  
+  <!-- Azure Machine Learning -->
+  <rect x="750" y="140" width="200" height="140" rx="10"/>
+  <text x="850" y="170" class="weight-bold align-center">Azure Machine Learning</text>
+  <text x="850" y="200" class="align-center">• Failure Prediction</text>
+  <text x="850" y="220" class="align-center">• Anomaly Detection</text>
+  <text x="850" y="240" class="align-center">• Remaining Useful Life</text>
+  <text x="850" y="260" class="align-center">• Risk Scoring</text>
+  
+  <!-- Workflow Automation Section -->
+  <text x="467" y="345" class="size-lg weight-bold">Workflow Automation</text>
+  
+  <!-- Azure Functions -->
+  <rect x="480" y="360" width="200" height="120" rx="10"/>
+  <text x="580" y="390" class="weight-bold align-center">Azure Functions</text>
+  <text x="580" y="420" class="align-center">• Work Order Creation</text>
+  <text x="580" y="440" class="align-center">• Notification Triggers</text>
+  <text x="580" y="460" class="align-center">• Scheduling Automation</text>
+  
+  <!-- Maintenance Operations Section -->
+  <text x="982" y="118" class="size-lg weight-bold">Maintenance Operations</text>
+  
+  <!-- Maintenance Dashboard -->
+  <rect x="980" y="160" width="140" height="80" rx="10"/>
+  <text x="1050" y="185" class="align-center">Maintenance</text>
+  <text x="1050" y="205" class="align-center">Dashboard</text>
+  
+  <!-- Work Order System -->
+  <rect x="980" y="260" width="140" height="80" rx="10"/>
+  <text x="1050" y="285" class="align-center">Work Order</text>
+  <text x="1050" y="305" class="align-center">Management</text>
+  
+  <!-- Technician Mobile App -->
+  <rect x="980" y="360" width="140" height="80" rx="10"/>
+  <text x="1050" y="385" class="align-center">Technician</text>
+  <text x="1050" y="405" class="align-center">Mobile App</text>
+  
+  <!-- Supply Chain Integration -->
+  <rect x="980" y="460" width="140" height="80" rx="10"/>
+  <text x="1050" y="485" class="align-center">Parts and Supply</text>
+  <text x="1050" y="505" class="align-center">Integration</text>
+  
+  <!-- Real-time Monitoring Section -->
+  <text x="252" y="546" class="size-lg weight-bold">Real-time Monitoring</text>
+  
+  <!-- Operations Center -->
+  <!--Alert System-->
+  <!--Business Intelligence Section-->
+  <text x="985" y="568" class="size-lg weight-bold">Business Intelligence</text>
+  
+  <!--Analytics Dashboard-->
+  <rect x="719" y="521" width="200" height="100" rx="10"/>
+  <text x="816" y="552" class="align-center">Analytics Dashboard</text>
+  <text x="816" y="572" class="align-center">• Cost Analysis</text>
+  <text x="816" y="592" class="align-center">• Performance Trends</text>
+  <!--Arrows-->
+  <!--Equipment to IoT Hub-->
+  <path d="M 190 180 L 280 230"/>
+  <path d="M 190 280 L 280 260"/>
+  <path d="M 190 380 L 280 290"/>
+  <path d="M 190 480 L 320 320"/>
+  <!--IoT Hub to DocumentDB-->
+  <path d="M 420 210 L 480 210"/>
+  <!--DocumentDB to ML-->
+  <path d="M 680 210 L 750 210"/>
+  <!--ML to Functions-->
+  <path d="M 820 280 L 680 380"/>
+  <!--Functions to Maintenance Operations-->
+  <path d="M 680 420 L 980 200"/>
+  <path d="M 680 430 L 980 300"/>
+  <path d="M 680 440 L 980 400"/>
+  <path d="M 680 450 L 980 500"/>
+  <!--IoT Hub to Real-time Monitoring-->
+  <path d="M 320 320 L 315 433"/>
+  <path d="M 361 320 L 429 432"/>
+  <!--DocumentDB to BI-->
+  <path d="M 680 250 L 799 517"/>
+  <!--Data flow labels-->
+  <text x="200" y="247">Sensor Data</text>
+  <text transform="matrix(0.8,-0.6,0.6,0.8,-52.5,494.1)" x="725.9" y="338.9">Predictions</text>
+  <text x="830" y="395">Work Orders</text>
+  <text x="330" y="393">Real-time</text>
+  <text x="697" y="280">Analytics</text>
+  <rect x="344" y="439" width="130" height="80" rx="10"/>
+  <text x="409" y="464" class="align-center">Alert System</text>
+  <text x="409" y="484" class="align-center">Critical Alerts</text>
+  <rect x="210" y="439" width="130" height="80" rx="10"/>
+  <text x="275" y="464" class="align-center">Operations</text>
+  <text x="275" y="484" class="align-center">Center</text>
+  <!--Arrow marker definition-->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon fill="black" points="0,0 10,3.5 0,7"/>
+    </marker>
+  </defs>
+</svg>
