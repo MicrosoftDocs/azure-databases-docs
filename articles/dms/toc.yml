@@ -94,12 +94,10 @@
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
   - name: Migrate MongoDB
     items:
-    - name: RU
-      items: 
-      - name: to Azure Cosmos DB for MongoDB RU (offline)
-        href: tutorial-mongodb-cosmos-db.md
-      - name: to Azure Cosmos DB for MongoDB RU (online)
-        href: tutorial-mongodb-cosmos-db-online.md  
+    - name: to Azure Cosmos DB for MongoDB (offline)
+      href: tutorial-mongodb-cosmos-db.md
+    - name: to Azure Cosmos DB for MongoDB (online)
+      href: tutorial-mongodb-cosmos-db-online.md  
     - name: vCore
       items:
       - name: to Azure Cosmos DB for MongoDB vCore

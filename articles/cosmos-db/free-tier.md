@@ -97,6 +97,6 @@ If the option to create a free-tier account is disabled or if you receive an err
 After you create a free tier account, you can start building apps with Azure Cosmos DB.
 
 * [Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for .NET](create-sql-api-dotnet-v4.md)
-* [Quickstart: Use Azure Cosmos DB for MongoDB (RU) with Node.js](mongodb/quickstart-nodejs.md)
+* [Quickstart: Use Azure Cosmos DB for MongoDB with Node.js](mongodb/quickstart-nodejs.md)
 * [Tutorial: Create a Jupyter Notebook to analyze data in your Azure Cosmos DB for NoSQL account](nosql/tutorial-create-notebook-vscode.md)
 * [Understand your Azure Cosmos DB bill](understand-your-bill.md)

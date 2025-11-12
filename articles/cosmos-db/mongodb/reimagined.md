@@ -67,4 +67,4 @@ You point your app to the connection string of this fully managed database, whic
 ## How to connect a MongoDB application
 
 - [Connect to vCore-based model](vcore/migration-options.md) and [FAQ](vcore/faq.yml)
-- [Get answers to frequently asked questions about Azure Cosmos DB for MongoDB RU](faq.yml)
+- [Get answers to frequently asked questions about Azure Cosmos DB for MongoDB](faq.yml)

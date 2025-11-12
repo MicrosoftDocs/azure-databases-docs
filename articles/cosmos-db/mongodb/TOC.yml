@@ -1,4 +1,4 @@
-- name: MongoDB (RU) documentation
+- name: MongoDB documentation
   href: index.yml
 - name: What is Azure Cosmos DB for MongoDB?
   href: overview.md
@@ -10,7 +10,7 @@
   href: cosmos-db-vs-mongodb-atlas.md
 - name: Overview
   items:
-  - name: What is Azure Cosmos DB for MongoDB (RU)?
+  - name: What is Azure Cosmos DB for MongoDB?
     href: overview.md
   - name: API versions
     items:

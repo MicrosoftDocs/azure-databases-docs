@@ -67,6 +67,12 @@ Vector databases are especially popular for enabling [retrieval-augmented genera
 
 This process involves extracting pertinent information from a custom data source and integrating it into the model request through prompt engineering. Before sending a request to the LLM, the user input/query/request is also transformed into an embedding, and vector search techniques are employed to locate the most similar embeddings within the database. This technique enables the identification of the most relevant data records in the database. These retrieved records are then supplied as input to the LLM request using [prompt engineering](#prompts-and-prompt-engineering).
 
+> [!Note]
+> **Interested in ultra-high throughput vector search capabilities?** 
+> Azure Cosmos DB is developing enhanced vector search features designed for large vector datasets paired with ultra-high throughput inserts and searches. It can accommodate millions of queries per second (QPS) with predictable, low latency and unmatched cost efficiency. Sign up to learn more about early access opportunities and get notified when these capabilities become available.
+> 
+> [*Sign up for the expanded Private Preview.*](https://aka.ms/cosmos-high-scale-vector-preview)
+
 ## Vector database related concepts
 
 ### Embeddings
