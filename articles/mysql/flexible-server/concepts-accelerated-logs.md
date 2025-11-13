@@ -56,8 +56,6 @@ Benefits of accelerated logs include:
 
 - [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for a server with accelerated logs and can't be disabled.
 
-- If you attempt to create a replica server in a region where **accelerated logs aren't supported**, and the **source server has accelerated logs enabled**, the replica provisioning **fails**. To proceed, disable accelerated logs on the source server and then retry provisioning the read replica.
-
 ## Availability of accelerated logs by region
 
 The accelerated logs feature is currently available only in the following regions:
