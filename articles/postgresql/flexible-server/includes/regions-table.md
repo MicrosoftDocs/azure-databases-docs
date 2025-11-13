@@ -67,7 +67,7 @@ ms.topic: include
 | US Gov Texas | :white_check_mark: (v3/v4 only) | :x: | :white_check_mark: | :x: |
 | US Gov Virginia | :white_check_mark: (v3/v4 only) | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | West Central US | :white_check_mark: (v3/v4/v5 only) | :x: | :white_check_mark: | :white_check_mark: |
-| West Europe | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: |
+| West Europe | :white_check_mark: (v3/v4/v5 only) | :white_check_mark: $ | :white_check_mark: *** | :white_check_mark: |
 | West US | :white_check_mark: (all SKUs) | :x: | :white_check_mark: | :white_check_mark: |
 | West US 2 | :white_check_mark: (v3/v4 only) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: |
 | West US 3 | :white_check_mark: (all SKUs) | :white_check_mark: ** | :white_check_mark: | :x: |
