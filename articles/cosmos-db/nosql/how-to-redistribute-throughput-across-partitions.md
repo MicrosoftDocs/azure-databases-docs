@@ -15,9 +15,11 @@ applies-to:
 
 # Redistribute throughput across partitions in Azure Cosmos DB for NoSQL
 
-By default, Azure Cosmos DB spreads provisioned throughput evenly across all physical partitions. However, if your workload is skewed—such as when certain partitions consistently need more throughput due to hot keys or uneven traffic—you can redistribute throughput to optimize performance. This feature is available for databases and containers using provisioned throughput (manual or autoscale), and can be managed using Azure Cosmos DB PowerShell or Azure CLI commands.
+By default, Azure Cosmos DB spreads provisioned throughput evenly across all physical partitions. However, if your workload is skewed—such as when certain partitions consistently need more throughput due to hot keys or uneven traffic—you can redistribute throughput or split the hot partition to optimize performance. This feature is available for databases and containers using provisioned throughput (manual or autoscale), and can be managed using Azure Cosmos DB PowerShell or Azure CLI commands.
 
-For example, if you partition data by `StoreId` in a retail application, some stores could have higher activity than others. If you notice frequent rate limiting (429 errors) for those busy stores, redistributing throughput allows you to allocate more resources to the hot partitions, improving performance without increasing overall throughput.
+For example, if you partition data by `StoreId` in a retail application, some stores could have higher activity than others. If you notice frequent rate limiting (429 errors) for those busy stores, redistributing throughput or splitting the partition allows you to allocate more resources to the hot partitions, improving performance. You can perform this with or without increasing overall throughput.
+
+Please note that splitting a hot partition that has a single hot partition key will not improve performance.
 
 > [!NOTE]
 > Currently, by default, throughput offer policies are set to "Equal". After redistributing throughput using this feature, the policy will now be set to "Custom" which only lets you change your throughput offer via this API. Changing throughput via Azure Portal will be blocked, but customers can change the policy back to "Equal" (see below) to avoid this. 
@@ -268,9 +270,9 @@ Keep in mind the following points before setting throughput on your target parti
 
 - Physical partitions can only contain up to 10,000 RU/s.
 
-- Users can set throughput of a target partition to a maximum value of 20,000 RU/s.
+- Users can set throughput of a target partition to a maximum value of **20,000** RU/s.
 
-  - Setting the partition to a throughput value greater than 10,000 RU/s results in the partition splitting, which could take some time.
+- Setting the partition to a throughput value greater than 10,000 RU/s results in the partition splitting, which could take some time.
 
 - If you set a partition's RU/s above 10,000, it first receives 10,000 RU/s. Then, Azure Cosmos DB automatically splits the partition and evenly distributes the specified throughput across the new partitions.
 
