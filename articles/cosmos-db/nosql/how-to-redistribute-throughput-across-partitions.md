@@ -23,7 +23,7 @@ For example, if you partition data by `StoreId` in a retail application, some st
 > Please note that splitting a hot partition that has a single partition key will not improve performance.
 
 > [!NOTE]
-> Currently, by default, throughput offer policies are set to "Equal". After redistributing throughput using this feature, the policy will now be set to "Custom" which only lets you change your throughput offer via this API. Changing throughput via Azure Portal will be blocked, but customers can change the policy back to "Equal" (see below) to avoid this. 
+> Currently, by default, throughput policies are set to "Equal." After redistributing throughput or assigning custom throughput to a physical partition using this feature, the policy will now be set to "Custom." This means you can only change your throughput (RU/s) settings using this API. Changing throughput at the container or shared throughput database level will be blocked. This is by design, to ensure that custom RU/s per partitions are preserved. To re-enable to ability to change container or shared throughput database level, change the throughput policy back to "Equal."
 
 ## Prerequisites
 
