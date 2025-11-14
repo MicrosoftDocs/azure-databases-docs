@@ -15,10 +15,11 @@ applies-to:
 
 # Redistribute throughput across partitions in Azure Cosmos DB for NoSQL
 
-By default, Azure Cosmos DB spreads provisioned throughput evenly across all physical partitions. However, if your workload is skewed—such as when certain partitions consistently need more throughput due to hot keys or uneven traffic—you can redistribute throughput to optimize performance. In scenarios where the hot partition has reached it's max RU/s limit you can also split the partition. This feature is available for databases and containers using provisioned throughput (manual or autoscale), and can be managed using Azure Cosmos DB PowerShell or Azure CLI commands.
+By default, Azure Cosmos DB spreads provisioned throughput evenly across all physical partitions. However, if your workload is skewed—such as when certain partitions consistently need more throughput due to hot keys or uneven traffic—you can redistribute throughput to optimize performance. You can increase RU/s on a partition to max of **10,000 RU/s**. In scenarios where the hot partition has reached it's max RU/s limit you can also split the partition. This feature is available for databases and containers using provisioned throughput (manual or autoscale), and can be managed using Azure Cosmos DB PowerShell or Azure CLI commands.
 
 For example, if you partition data by `StoreId` in a retail application, some stores could have higher activity than others. If you notice frequent rate limiting (429 errors) for those busy stores, redistributing throughput allows you to allocate more resources to the hot partitions, improving performance. You can perform this with or without increasing overall throughput.
 
+<a id="single-hot-partition-key-note"></a>
 > [!NOTE]
 > Please note that splitting a hot partition that has a single partition key will not improve performance.
 
