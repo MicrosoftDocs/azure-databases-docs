@@ -21,7 +21,7 @@ For example, if you partition data by `StoreId` in a retail application, some st
 
 <a id="single-hot-partition-key-note"></a>
 > [!NOTE]
-> Please note that splitting a hot partition that has a single partition key will not improve performance.
+> Please note that splitting a hot partition that has a single partition key will not improve performance. See query below to determine if there is only on partition key in the physical partition.
 
 > [!NOTE]
 > Currently, by default, throughput policies are set to "Equal." After redistributing throughput or assigning custom throughput to a physical partition using this feature, the policy will now be set to "Custom." This means you can only change your throughput (RU/s) settings using this API. Changing throughput at the container or shared throughput database level will be blocked. This is by design, to ensure that custom RU/s per partitions are preserved. To re-enable to ability to change container or shared throughput database level, change the throughput policy back to "Equal."
@@ -98,7 +98,7 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
 
 1. For a physical partition, find the top 10 logical partition keys that consume the most RU/s each hour using this query.
 
-    ```kusto
+       ```kusto
     CDBPartitionKeyRUConsumption 
     | where TimeGenerated >= ago(24hour)
     | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replace with database and collection name
