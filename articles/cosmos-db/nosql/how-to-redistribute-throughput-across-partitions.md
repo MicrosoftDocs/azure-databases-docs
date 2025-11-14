@@ -21,7 +21,7 @@ For example, if you partition data by `StoreId` in a retail application, some st
 
 <a id="single-hot-partition-key-note"></a>
 > [!NOTE]
-> Please note that splitting a hot partition that has a single partition key will not improve performance. See query below to determine if there is only on partition key in the physical partition.
+> Please note that splitting a hot partition that has a single partition key will not improve performance. See query below to determine if there is only one partition key in the physical partition.
 
 > [!NOTE]
 > Currently, by default, throughput policies are set to "Equal." After redistributing throughput or assigning custom throughput to a physical partition using this feature, the policy will now be set to "Custom." This means you can only change your throughput (RU/s) settings using this API. Changing throughput at the container or shared throughput database level will be blocked. This is by design, to ensure that custom RU/s per partitions are preserved. To re-enable to ability to change container or shared throughput database level, change the throughput policy back to "Equal."
@@ -98,7 +98,7 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
 
 1. For a physical partition, find the top 10 logical partition keys that consume the most RU/s each hour using this query.
 
-       ```kusto
+   ```kusto
     CDBPartitionKeyRUConsumption 
     | where TimeGenerated >= ago(24hour)
     | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replace with database and collection name
@@ -106,9 +106,15 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
     | where PartitionKeyRangeId == 0 // Replace with your PartitionKeyRangeId
     | summarize sum(RequestCharge) by bin(TimeGenerated, 1hour), PartitionKey
     | order by sum_RequestCharge desc | take 10
-    ```
+   ```
+   
+1. If there is only one single partition key in the hot partition, then splitting the partition will not improve performance. Use query below to determine number of partition keys in the physical partition.
 
-> [!TIP]
+   ```kusto
+   CDBPartitionKeyRUConsumption
+   | 
+   ```
+
 > These sample queries use 24 hours for illustration, but it's best to use at least seven days of history to see usage patterns.
 
 ## Determine current throughput for each physical partition
@@ -514,3 +520,4 @@ While this feature is in previe, your Azure Cosmos DB account must meet all the 
 - [Review request units](../request-units.md)
 - [Monitor request units](../monitor-normalized-request-units.md#how-to-monitor-for-hot-partitions)
 - [Explore best practices for scaling provisioned throughput](../scaling-provisioned-throughput-best-practices.md)
+
