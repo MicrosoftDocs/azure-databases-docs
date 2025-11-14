@@ -112,9 +112,13 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
 
    ```kusto
    CDBPartitionKeyRUConsumption
-   | 
+   | where TimeGenerated >= ago(24h)
+   | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replace with your DB and collection
+   | where isnotempty(PartitionKey) and isnotempty(PartitionKeyRangeId)
+   | where PartitionKeyRangeId == 0 // Replace with your target PartitionKeyRangeId
+   | summarize PartitionKeyCount = dcount(PartitionKey)
    ```
-
+   
 > These sample queries use 24 hours for illustration, but it's best to use at least seven days of history to see usage patterns.
 
 ## Determine current throughput for each physical partition
