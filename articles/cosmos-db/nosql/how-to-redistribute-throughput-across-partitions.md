@@ -269,9 +269,9 @@ Keep in mind the following points before setting throughput on your target parti
 
 - You can either decrease or increase the throughput on the partition.
 
-- Physical partitions can only contain up to 10,000 RU/s.
+- Physical partitions can only contain up to **10,000** **RU/s**.
 
-- Users can set throughput of a target partition to a maximum value of **20,000** RU/s.
+- Users can set throughput of a target partition to a maximum value of **20,000** **RU/s**.
 
 - Setting the partition to a throughput value greater than 10,000 RU/s results in the partition splitting, which could take some time.
 
@@ -279,7 +279,7 @@ Keep in mind the following points before setting throughput on your target parti
 
   - If a physical partition is using 5,000 RU/s and you set its throughput to 15,000 RU/s, Azure Cosmos DB first assigns 10,000 RU/s to the original partition. Then, it automatically splits the partition into two, each with up to 7,500 RU/s.
 
-- If the final sum of throughput across all partitions isn't equal to the current total offer throughput, then this operation updates the offer throughput accordingly.
+- If the final sum of throughput across all partitions isn't equal to the current sum of throughput across all partitions, then this operation updates the total throughput settings accordingly.
 
 The right approach depends on your workload requirements. General approaches include:
 
@@ -303,7 +303,7 @@ You can use the PowerShell command `Update-AzCosmosDBSqlContainerPerPartitionThr
 | 1 | 4,000 |
 | 2 | 1,000 |
 
-After the redistribution, the total offer throughput will be updated from 6,000 RU/s to 7,000 RU/s.
+After the redistribution, the total throughput across all partitions will be updated from 6,000 RU/s to 7,000 RU/s.
 
 ::: zone pivot="azure-cli"
 
@@ -390,7 +390,7 @@ Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput @collectionParams
 After you finish redistributing throughput, check the **PhysicalPartitionThroughput** metric in Azure Monitor. Split by the **PhysicalPartitionId** dimension to see how many RU/s each physical partition has. If needed, reset the RU/s per physical partition to evenly distribute throughput across all physical partitions.
 
 > [!IMPORTANT]
-> After throughput has been redistributed, offers can only be changed with the same redistribute command. To evenly distribute throughput across all partitions, use the command below.
+> After throughput has been redistributed, throughput settings can only be changed with the same redistribute command. To evenly distribute throughput across all partitions, use the command below.
 
 ::: zone pivot="azure-cli"
 
