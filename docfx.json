@@ -305,6 +305,10 @@
           "articles/mysql/howto-troubleshoot-replication-latency.md",
           "articles/postgresql/migrate/migration-service/*.*",
           "articles/postgresql/flexible-server/includes/param-13-customized-options.md",
+          "articles/postgresql/flexible-server/includes/param-14-customized-options.md",
+          "articles/postgresql/flexible-server/includes/param-15-customized-options.md",
+          "articles/postgresql/flexible-server/includes/param-16-customized-options.md",
+          "articles/postgresql/flexible-server/includes/param-17-customized-options.md",
           "articles/postgresql/flexible-server/includes/param-18-customized-options.md",
           "articles/postgresql/flexible-server/includes/server-parameters-table.md"
         ]
