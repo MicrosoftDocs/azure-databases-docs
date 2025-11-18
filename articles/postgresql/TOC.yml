@@ -164,7 +164,7 @@
               items:
                 - name: Overview
                   href: flexible-server/azure-local-ai.md
-            - name: Azure Storage (pg_azure_storage)
+            - name: Azure Storage (azure_storage)
               items:
                 - name: Overview
                   href: flexible-server/concepts-storage-extension.md
