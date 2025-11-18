@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Replication / Sending Servers |
-| Description | Specifies the maximum number of replication slots that the server can support. |
+| Description | Sets the maximum number of simultaneously defined replication slots. |
 | Data type | integer |
 | Default value | `10` |
 | Allowed values | `2-262143` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Replication / Sending Servers |
-| Description | Sets the maximum WAL size that can be reserved by replication slots. |
+| Description | Sets the maximum WAL size that can be reserved by replication slots. Replication slots will be marked as failed, and segments released for deletion or recycling, if this much space is occupied by WAL on disk. |
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1` |

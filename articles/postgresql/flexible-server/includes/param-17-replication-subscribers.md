@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Replication / Subscribers |
-| Description | Specifies maximum number of logical replication workers. This includes both apply workers and table synchronization workers. |
+| Description | Maximum number of logical replication worker processes. |
 | Data type | integer |
 | Default value | `4` |
 | Allowed values | `0-262143` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Replication / Subscribers |
-| Description | Sets the maximum number of parallel apply workers that can be used per subscription in logical replication. |
+| Description | Maximum number of parallel apply workers per subscription. |
 | Data type | integer |
 | Default value | `2` |
 | Allowed values | `0-1024` |

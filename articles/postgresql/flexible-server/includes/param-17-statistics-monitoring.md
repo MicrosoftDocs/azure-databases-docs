@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Statistics / Monitoring |
-| Description | For each query, writes cumulative performance statistics to the server log. |
+| Description | Writes cumulative performance statistics to the server log. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |

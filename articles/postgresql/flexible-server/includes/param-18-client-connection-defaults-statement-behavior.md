@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -117,8 +117,8 @@ ms.custom: automatically generated
 | Category | Client Connection Defaults / Statement Behavior |
 | Description | Sets the default compression method for compressible values. |
 | Data type | enumeration |
-| Default value | `pglz` |
-| Allowed values | `pglz` |
+| Default value | `lz4` |
+| Allowed values | `lz4` |
 | Parameter type | read-only |
 | Documentation | [default_toast_compression](https://www.postgresql.org/docs/18/runtime-config-client.html#GUC-DEFAULT-TOAST-COMPRESSION) |
 

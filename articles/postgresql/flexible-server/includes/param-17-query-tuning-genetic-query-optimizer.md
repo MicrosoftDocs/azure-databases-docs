@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Genetic Query Optimizer |
-| Description | Enables genetic query optimization. |
+| Description | Enables genetic query optimization. This algorithm attempts to do planning without exhaustive searching. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Genetic Query Optimizer |
-| Description | GEQO: number of iterations of the algorithm. |
+| Description | GEQO: number of iterations of the algorithm. Zero selects a suitable default value. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-2147483647` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Genetic Query Optimizer |
-| Description | GEQO: number of individuals in the population. |
+| Description | GEQO: number of individuals in the population. Zero selects a suitable default value. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-2147483647` |

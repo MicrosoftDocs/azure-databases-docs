@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -50,7 +50,7 @@ ms.custom: automatically generated
 | Description | Sets the duration a replication slot can remain idle before it is invalidated. |
 | Data type | integer |
 | Default value | `0` |
-| Allowed values | `0-35791394` |
+| Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [idle_replication_slot_timeout](https://www.postgresql.org/docs/18/runtime-config-replication.html#GUC-IDLE-REPLICATION-SLOT-TIMEOUT) |
 

@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -99,7 +99,7 @@ ms.custom: automatically generated
 | --- | --- |
 | Category | Developer Options |
 | Description | Forces immediate streaming or serialization of changes in large transactions. On the publisher, it allows streaming or serializing each change in logical decoding. On the subscriber, it allows serialization of all changes to files and notifies the parallel apply workers to read and apply them at the end of the transaction. |
-| Data type | set |
+| Data type | enumeration |
 | Default value | `buffered` |
 | Allowed values | `buffered` |
 | Parameter type | read-only |

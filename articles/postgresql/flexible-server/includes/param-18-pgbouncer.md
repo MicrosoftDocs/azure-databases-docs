@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -33,7 +33,7 @@ ms.custom: automatically generated
 | Description | Denotes if pgBouncer service is enabled. |
 | Data type | boolean |
 | Default value | `false` |
-| Allowed values | `true,false` |
+| Allowed values | `true, false` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.enabled](https://www.pgbouncer.org/config.html#enabled) |
 

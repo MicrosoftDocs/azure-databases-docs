@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -116,9 +116,9 @@ ms.custom: automatically generated
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
 | Description | Compresses full-page writes written in WAL file. |
-| Data type | boolean |
+| Data type | enumeration |
 | Default value | `on` |
-| Allowed values | `on,off` |
+| Allowed values | `pglz,lz4,on,off` |
 | Parameter type | dynamic |
 | Documentation | [wal_compression](https://www.postgresql.org/docs/16/runtime-config-wal.html#GUC-WAL-COMPRESSION) |
 

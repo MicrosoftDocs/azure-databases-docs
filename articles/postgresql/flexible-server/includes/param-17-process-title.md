@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Process Title |
-| Description | Updates the process title to show the active SQL command. |
+| Description | Updates the process title to show the active SQL command. Enables updating of the process title every time a new SQL command is received by the server. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
