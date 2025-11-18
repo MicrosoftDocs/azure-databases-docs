@@ -1,18 +1,19 @@
 ---
 title: 'Tutorial: Real-time dashboard with elastic clusters'
 description: This tutorial shows how to parallelize real-time dashboard queries with elastic clusters on Azure Database for PostgreSQL.
-author: mulander
-ms.author: adamwolk
-ms.date: 02/28/2025
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
 #Customer intent: As a developer, I want to parallelize queries so that I can make a real-time dashboard application.
 ---
 
-# Tutorial: Design a real-time analytics dashboard with elastic clusters (preview)
+# Tutorial: Design a real-time analytics dashboard with elastic clusters
 
-In this tutorial, you use elastic clusters on Azure Database for PostgreSQL to learn how to design a real-time dashboard and parallelize queries.
+In this tutorial, you use elastic clusters on Azure Database for PostgreSQL elastic clusters to learn how to design a real-time dashboard and parallelize queries.
 
 > [!div class="checklist"]
 > * Prerequisites
@@ -26,13 +27,13 @@ In this tutorial, you use elastic clusters on Azure Database for PostgreSQL to l
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster with ARM template]()
-- [Create an elastic cluster using CLI]()
-- [Create an elastic cluster using the Portal]()
+- [Create an elastic cluster using the Portal](quickstart-create-elastic-cluster-portal.md)
+- [Create an elastic cluster using Bicep](quickstart-create-elastic-cluster-bicep.md)
+- [Create an elastic cluster with ARM template](quickstart-create-elastic-cluster-arm-template.md)
 
 ## Use psql utility to create a schema
 
-Once connected to the elastic cluster using psql, you can complete some basic tasks. This tutorial walks you through ingesting traffic data from web analytics, then rolling up the data to provide real-time dashboards based on that data.
+Once connected to the elastic cluster using psql, you can configure your elastic cluster. This tutorial walks you through ingesting traffic data from web analytics, then rolling up the data to provide real-time dashboards based on that data.
 
 Let's create a table that consumes all of our raw web traffic data. Run the following commands in the psql terminal:
 
@@ -84,8 +85,7 @@ You can see the newly created tables in the list of tables now with this psql co
 
 An elastic cluster deployment stores table rows on different nodes based on the value of a user-designated column. This "distribution column" marks how data is sharded across nodes.
 
-Let's set the distribution column to be site\_id, the shard
-key. In psql, run these functions:
+Let's set the distribution column (shard key) to be site_id. In psql, run these functions:
 
   ```sql
 SELECT create_distributed_table('http_request',      'site_id');
@@ -94,12 +94,11 @@ SELECT create_distributed_table('http_request_1min', 'site_id');
 
 > [!NOTE]
 >
-> Distributing tables or using schema-based sharding is necessary to take advantage of elastic clusters with Azure Database for PostgreSQL performance features. If you don't distribute tables or schemas, then nodes can't help run queries involving their data.
+> Distributing tables or using schema-based sharding is necessary to take advantage of elastic clusters of Azure Database for PostgreSQL performance features. Until you distribute tables or schemas, your cluster nodes will not run distributed queries involving their data.
 
 ## Generate sample data
 
-Now our cluster should be ready to ingest some data. We can run the
-following locally from our `psql` connection to continuously insert data.
+Now our cluster should be ready to ingest some data. We can run the following locally from our `psql` connection to continuously insert data.
 
 ```sql
 DO $$
@@ -126,7 +125,7 @@ DO $$
 END $$;
 ```
 
-The query inserts approximately eight rows every second. The rows are stored on different worker nodes as directed by the distribution column, `site_id`.
+The query inserts approximately eight rows every second. The rows are stored on different worker nodes based upon their distribution column, `site_id`.
 
    > [!NOTE]
    > Leave the data generation query running, and open a second psql
@@ -135,20 +134,17 @@ The query inserts approximately eight rows every second. The rows are stored on 
 
 ## Query
 
-Azure Database for PostgreSQL with elastic cluster allows multiple nodes to process queries in
-parallel for speed. For instance, the database calculates aggregates like SUM
-and COUNT on worker nodes, and combines the results into a final answer.
+Azure Database for PostgreSQL  elastic clusters allows multiple nodes to process queries in parallel for speed. For instance, the database calculates aggregates like SUM and COUNT on worker nodes, and combines the results into a final answer.
 
-Here's a query to count web requests per minute along with a few statistics.
-Try running it in psql and observe the results.
+Here's a query to count web requests per minute along with a few statistics. Try running it in psql and observe the results.
 
 ```sql
 SELECT
   site_id,
-  date_trunc('minute', ingest_time) as minute,
+  date_trunc('minute', ingest_time) AS minute,
   COUNT(1) AS request_count,
-  SUM(CASE WHEN (status_code between 200 and 299) THEN 1 ELSE 0 END) as success_count,
-  SUM(CASE WHEN (status_code between 200 and 299) THEN 0 ELSE 1 END) as error_count,
+  SUM(CASE WHEN (status_code between 200 and 299) THEN 1 ELSE 0 END) AS success_count,
+  SUM(CASE WHEN (status_code between 200 and 299) THEN 0 ELSE 1 END) AS error_count,
   SUM(response_time_msec) / COUNT(1) AS average_response_time_msec
 FROM http_request
 WHERE date_trunc('minute', ingest_time) > now() - '5 minutes'::interval
@@ -158,11 +154,9 @@ ORDER BY minute ASC;
 
 ## Rolling up data
 
-The previous query works fine in the early stages, but its performance
-degrades as your data scales. Even with distributed processing, it's faster to precompute the data than to recalculate it repeatedly.
+The previous query works fine in the early stages, but its performance degrades as your data scales. Even with distributed processing, it's faster to precompute the data than to recalculate it repeatedly.
 
-We can ensure our dashboard stays fast by regularly rolling up the
-raw data into an aggregate table. You can experiment with the aggregation duration. We used a per-minute aggregation table, but you could break data into 5, 15, or 60 minutes instead.
+We can ensure our dashboard stays fast by regularly rolling up the raw data into an aggregate table. You can experiment with the aggregation duration. We used a per-minute aggregation table, but you could break data into 5, 15, or 60 minutes instead.
 
 To run this roll-up more easily, we're going to put it into a plpgsql function. Run these commands in psql to create the `rollup_http_request` function.
 
@@ -182,9 +176,9 @@ BEGIN
   ) SELECT
     site_id,
     date_trunc('minute', ingest_time),
-    COUNT(1) as request_count,
-    SUM(CASE WHEN (status_code between 200 and 299) THEN 1 ELSE 0 END) as success_count,
-    SUM(CASE WHEN (status_code between 200 and 299) THEN 0 ELSE 1 END) as error_count,
+    COUNT(1) AS request_count,
+    SUM(CASE WHEN (status_code between 200 and 299) THEN 1 ELSE 0 END) AS success_count,
+    SUM(CASE WHEN (status_code between 200 and 299) THEN 0 ELSE 1 END) AS error_count,
     SUM(response_time_msec) / COUNT(1) AS average_response_time_msec
   FROM http_request
   -- roll up only data new since last_rollup_time
@@ -205,14 +199,13 @@ With our function in place, execute it to roll up the data:
 SELECT rollup_http_request();
 ```
 
-And with our data in a preaggregated form we can query the rollup
-table to get the same report as earlier. Run the following query:
+And with our data in a preaggregated form we can query the rollup table to get the same report as earlier. Run the following query:
 
 ```sql
-SELECT site_id, ingest_time as minute, request_count,
+SELECT site_id, ingest_time AS minute, request_count,
        success_count, error_count, average_response_time_msec
-  FROM http_request_1min
- WHERE ingest_time > date_trunc('minute', now()) - '5 minutes'::interval;
+FROM http_request_1min
+WHERE ingest_time > date_trunc('minute', now()) - '5 minutes'::interval;
  ```
 
 ## Expiring old data

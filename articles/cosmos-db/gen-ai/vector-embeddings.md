@@ -2,8 +2,8 @@
 title: High-Dimensional Vector Embeddings
 titleSuffix: Azure Cosmos DB
 description: Learn about high-dimensional vector embeddings, or mathematical representations of data in Azure Cosmos DB.
-author: wmwxwa
-ms.author: wangwilliam
+author: jcodella
+ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 11/07/2025
@@ -12,7 +12,6 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
-  - ✅ MongoDB vCore
   - ✅ PostgreSQL
 ---
 
@@ -28,7 +27,7 @@ The model processes these embeddings through multiple layers, capturing complex 
 
 ## Vectors
 
-Each embedding is a vector of floating-point numbers, such that the distance between two embeddings in the vector space is correlated with semantic similarity between two inputs in the original format. For example, if two texts are similar, then their vector representations should also be similar. These high-dimensional representations capture semantic meaning, making it easier to perform tasks like searching, clustering, and classifying.
+Each embedding is a vector of floating-point numbers (for example, `float32` or `float16`), such that the distance between two embeddings in the vector space is correlated with semantic similarity between two inputs in the original format. For example, if two texts are similar, then their vector representations should also be similar. These high-dimensional representations capture semantic meaning, making it easier to perform tasks like searching, clustering, and classifying.
 
 Here are two examples of texts represented as vectors:
 

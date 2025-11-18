@@ -1,0 +1,172 @@
+<svg viewBox="0 0 1280 720" width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      stroke: #000000;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    rect {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 2;
+    }
+    rect.background {
+      fill: #FFFFFF;
+      stroke: none;
+    }
+    rect.highlight {
+      fill: #2A446F;
+    }
+    text {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      fill: #000000;
+    }
+    text.size-lg {
+      font-size: 19px;
+    }
+    text.weight-bold {
+      font-weight: 600;
+    }
+    text.align-center {
+      text-anchor: middle;
+    }
+    text.color-inverse {
+      fill: #FFFFFF;
+    }
+  </style>
+  <!-- Background -->
+  <rect x="0" y="0" width="1280" height="720" class="background"/>
+  
+  <!-- Title -->
+  <text x="640" y="40" class="size-lg weight-bold align-center">Electronic Health Record (EHR) Management Architecture</text>
+  
+  <!-- Healthcare Providers Section -->
+  <text x="33" y="120" class="size-lg weight-bold">Healthcare Providers</text>
+  
+  <!-- Hospitals -->
+  <rect x="50" y="140" width="140" height="80" rx="10"/>
+  <text x="120" y="165" class="align-center">Hospitals</text>
+  <text x="120" y="185" class="align-center">EHR Systems</text>
+  
+  <!-- Clinics -->
+  <rect x="50" y="240" width="140" height="80" rx="10"/>
+  <text x="120" y="265" class="align-center">Clinics</text>
+  <text x="120" y="285" class="align-center">Practice Management</text>
+  
+  <!-- Specialists -->
+  <rect x="50" y="340" width="140" height="80" rx="10"/>
+  <text x="120" y="365" class="align-center">Specialists</text>
+  <text x="120" y="385" class="align-center">and Labs</text>
+  
+  <!-- Pharmacies -->
+  <rect x="50" y="440" width="140" height="80" rx="10"/>
+  <text x="120" y="465" class="align-center">Pharmacies</text>
+  <text x="120" y="485" class="align-center">and Insurance</text>
+  
+  <!-- API Gateway Section -->
+  <text x="296" y="120" class="size-lg weight-bold">Secure API Gateway</text>
+  
+  <!-- Azure API Management -->
+  <rect x="280" y="200" width="200" height="120" rx="10"/>
+  <text x="380" y="230" class="weight-bold align-center">Azure API Management</text>
+  <text x="380" y="260" class="align-center">• FHIR API Endpoints</text>
+  <text x="380" y="280" class="align-center">• Authentication</text>
+  <text x="380" y="300" class="align-center">• Rate Limiting</text>
+  
+  <!-- Identity and Access Section -->
+  <text x="526" y="120" class="size-lg weight-bold">Identity and Access Control</text>
+  
+  <!-- Microsoft Entra ID -->
+  <rect x="540" y="140" width="200" height="100" rx="10"/>
+  <text x="640" y="170" class="weight-bold align-center">Microsoft Entra ID</text>
+  <text x="640" y="190" class="align-center">• Role-based Access</text>
+  <text x="640" y="210" class="align-center">• HIPAA Compliance</text>
+  
+  <!-- Data Storage Section -->
+  <text x="544" y="499" class="size-lg weight-bold">Secure EHR Storage</text>
+  
+  <!-- Azure DocumentDB -->
+  <rect x="540" y="320" width="200" height="140" rx="10" class="highlight"/>
+  <text x="640" y="350" class="weight-bold align-center color-inverse">Azure DocumentDB</text>
+  <text x="640" y="380" class="align-center color-inverse">• Patient Records</text>
+  <text x="640" y="400" class="align-center color-inverse">• Medical History</text>
+  <text x="640" y="420" class="align-center color-inverse">• Treatment Plans</text>
+  <text x="640" y="440" class="align-center color-inverse">• Imaging Data</text>
+  
+  <!-- Interoperability Section -->
+  <text x="883" y="120" class="size-lg weight-bold">Interoperability</text>
+  
+  <!-- FHIR Compliance -->
+  <rect x="850" y="160" width="200" height="80" rx="10"/>
+  <text x="950" y="185" class="align-center">FHIR Compliance</text>
+  <text x="950" y="205" class="align-center">and Standards</text>
+  
+  <!-- Health Information Exchange -->
+  <rect x="850" y="260" width="200" height="80" rx="10"/>
+  <text x="950" y="285" class="align-center">Health Information</text>
+  <text x="950" y="305" class="align-center">Exchange (HIE)</text>
+  
+  <!-- Analytics Section -->
+  <text x="860" y="549" class="size-lg weight-bold">Analytics and Insights</text>
+  
+  <!-- Clinical Analytics -->
+  <rect x="850" y="420" width="200" height="100" rx="10"/>
+  <text x="950" y="450" class="align-center">Clinical Analytics</text>
+  <text x="950" y="470" class="align-center">• Population Health</text>
+  <text x="950" y="490" class="align-center">• Quality Metrics</text>
+  
+  <!-- Security and Compliance Section -->
+  <text x="261" y="644" class="size-lg weight-bold">Security and Compliance</text>
+  
+  <!-- Encryption -->
+  <rect x="240" y="540" width="120" height="70" rx="10"/>
+  <text x="300" y="565" class="align-center">Data Encryption</text>
+  <text x="300" y="585" class="align-center">Rest and Transit</text>
+  
+  <!-- Audit -->
+  <rect x="380" y="540" width="120" height="70" rx="10"/>
+  <text x="440" y="565" class="align-center">Audit Logging</text>
+  <text x="440" y="585" class="align-center">and Monitoring</text>
+  
+  <!-- Patient Portal Section -->
+  <text x="65" y="639" class="size-lg weight-bold">Patient Access</text>
+  
+  <!-- Patient Portal -->
+  <rect x="50" y="660" width="140" height="50" rx="10"/>
+  <text x="120" y="680" class="align-center">Patient Portal</text>
+  <text x="120" y="695" class="align-center">and Mobile Apps</text>
+  
+  <!-- Arrows -->
+  <!-- Healthcare Providers to API Management -->
+  <path d="M 190 180 L 280 230"/>
+  <path d="M 190 280 L 280 260"/>
+  <path d="M 190 380 L 280 290"/>
+  <path d="M 190 480 L 282 317"/>
+  <!-- API Management to Entra ID -->
+  <path d="M 480 200 L 540 170"/>
+  <!-- API Management to DocumentDB -->
+  <path d="M 480 260 L 540 350"/>
+  <!-- DocumentDB to FHIR -->
+  <path d="M 740 350 L 850 200"/>
+  <!-- DocumentDB to HIE -->
+  <path d="M 740 380 L 850 300"/>
+  <!-- DocumentDB to Analytics -->
+  <path d="M 740 420 L 850 470"/>
+  <!-- Patient Portal to API Management -->
+  <path d="M 190 685 L 291.8 321.8"/>
+  <!-- Data flow labels -->
+  <text x="204" y="245">FHIR APIs</text>
+  <text x="472" y="176">Auth</text>
+  <text x="516" y="291">Secure Access</text>
+  <text x="741" y="260">Standards</text>
+  <text x="786" y="430">Analytics</text>
+  <!--Arrow marker definition-->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon fill="black" points="0,0 10,3.5 0,7"/>
+    </marker>
+  </defs>
+</svg>

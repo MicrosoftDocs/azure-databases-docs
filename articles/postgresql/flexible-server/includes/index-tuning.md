@@ -10,4 +10,4 @@ ms.topic: include
 ---
 
 > [!NOTE]
-> Index tuning depends on query store, which isn't supported in Azure Database for PostgreSQL flexible server version 18, while it's in Preview.
+> Index tuning depends on query store, which isn't supported in Azure Database for PostgreSQL version 18.

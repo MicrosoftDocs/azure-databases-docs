@@ -11,7 +11,6 @@ ai-usage: ai-assisted
 applies-to:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ MongoDB (vCore)
   - ✅ PostgreSQL
   - ✅ Apache Cassandra
   - ✅ Apache Gremlin

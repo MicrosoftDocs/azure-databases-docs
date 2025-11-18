@@ -1,16 +1,16 @@
 ---
-title: Priority-based execution (preview)
+title: Priority-based execution
 titleSuffix: Azure Cosmos DB
 description: Learn how to use Priority-based execution in Azure Cosmos DB.
 author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
-ms.custom: ignite-2023, sfi-image-nochange
+ms.custom: ignite-2023, sfi-image-nochange, ignite-2025
 ms.topic: how-to
 ms.date: 11/15/2023
 ---
 
-# Priority-based execution in Azure Cosmos DB (preview)
+# Priority-based execution in Azure Cosmos DB
 
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
@@ -33,7 +33,7 @@ You can use priority-based execution when your application has different priorit
 
 ## Getting started
 
-To get started using priority-based execution, navigate to the **Features** page in you're in Azure Cosmos DB account. Select and enable the **Priority-based execution (preview)** feature.
+To get started using priority-based execution, navigate to the **Features** page in you're in Azure Cosmos DB account. Select and enable the **Priority-based execution** feature.
 
 :::image type="content" source="media/priority-based-execution/priority-based-execution-enable-feature.png" alt-text="Screenshot of Priority-based execution feature in the Features page in an Azure Cosmos DB account.":::
 
@@ -115,7 +115,6 @@ query = list(container.query_items("Select * from c", partition_key="pk1", prior
 ```
 
 ---
-
 
 ## Monitor priority-based execution
 

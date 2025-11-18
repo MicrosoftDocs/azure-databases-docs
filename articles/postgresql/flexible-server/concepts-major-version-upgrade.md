@@ -4,10 +4,10 @@ description: Learn how to use Azure Database for PostgreSQL to do in-place major
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/28/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: upgrade-and-migration-article
+ms.topic: concept-article
 ---
 
 # Major version upgrades in Azure Database for PostgreSQL 
