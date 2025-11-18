@@ -1866,51 +1866,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/nosql/query/query-advisor.md",
-      "redirect_url": "/nosql/query/advisor",
-      "redirect_document_id": false
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/nosql/query/queryadvisor/QA1000.md",
-      "redirect_url": "/nosql/query/advisor/qa1000",
-      "redirect_document_id": false
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/nosql/query/queryadvisor/QA1002.md",
-      "redirect_url": "/nosql/query/advisor/qa1002",
-      "redirect_document_id": false
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/nosql/query/queryadvisor/QA1003.md",
-      "redirect_url": "/nosql/query/advisor/qa1003",
-      "redirect_document_id": false
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/nosql/query/queryadvisor/QA1004.md",
-      "redirect_url": "/nosql/query/advisor/qa1004",
-      "redirect_document_id": false
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/nosql/query/queryadvisor/QA1006.md",
-      "redirect_url": "/nosql/query/advisor/qa1006",
-      "redirect_document_id": false
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/nosql/query/queryadvisor/QA1007.md",
-      "redirect_url": "/nosql/query/advisor/qa1007",
-      "redirect_document_id": false
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/nosql/query/queryadvisor/QA1008.md",
-      "redirect_url": "/nosql/query/advisor/qa1008",
-      "redirect_document_id": false
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/nosql/query/queryadvisor/QA1009.md",
-      "redirect_url": "/nosql/query/advisor/qa1009",
-      "redirect_document_id": false
-    },
-    {
       "source_path_from_root": "/articles/cosmos-db/documentdb-cpp-get-started.md",
       "redirect_url": "/azure/cosmos-db/sql-api-cpp-get-started",
       "redirect_document_id": true
