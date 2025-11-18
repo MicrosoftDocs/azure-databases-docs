@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 04/26/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -13,6 +13,7 @@ ms.topic: include
 | Australia Central 2 * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :x: | 
 | Australia East | :white_check_mark: (v3/v4/v5/v6 | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | Australia Southeast | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
+| Austria East | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :x: | 
 | Brazil South | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: $ | :white_check_mark: | :x: | 
 | Brazil Southeast * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :x: | 
 | Canada Central | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
@@ -69,4 +70,4 @@ ms.topic: include
 | West Europe | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | West US | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
 | West US 2 | :white_check_mark: (v3/v4) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
-| West US 3 | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: ** | :white_check_mark: | :x: |
+| West US 3 | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: ** | :white_check_mark: | :x: | 
