@@ -16,7 +16,7 @@ ms.collection:
 - gcp-to-azure
 ---
 
-# Migrate offline, from a Google AlloyDB for PostgreSQL to Azure Database for PostgreSQL, with the migration service
+# (Preview) Migrate offline, from a Google AlloyDB for PostgreSQL to Azure Database for PostgreSQL, with the migration service
 
 This article guides you in migrating a Google AlloyDB for PostgreSQL instance to Azure Database for PostgreSQL flexible server in offline mode.
 
