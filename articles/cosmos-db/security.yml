@@ -53,7 +53,7 @@ landingContent:
             url: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/nosql/security/context/context#databases
           - text: Data plane `dataActions`
             url: nosql/security/reference-data-plane-actions.md
-  - title: Azure Cosmos DB for MongoDB (RU-based)
+  - title: Azure Cosmos DB for MongoDB
     linkLists:
       - linkListType: overview
         links:
@@ -63,7 +63,7 @@ landingContent:
         links:
           - text: Disable key-based authentication
             url: mongodb/security/how-to-disable-key-based-authentication.md
-  - title: Azure Cosmos DB for Apache Cassandra (RU-based)
+  - title: Azure Cosmos DB for Apache Cassandra
     linkLists:
       - linkListType: overview
         links:

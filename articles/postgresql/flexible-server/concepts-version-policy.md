@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions for A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/30/2025 
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -25,7 +25,7 @@ The following table provides the retirement details for PostgreSQL major version
 
 | PostgreSQL Version | What's New | Azure Standard Support Start Date | Azure Standard Support End Date |
 | --- | --- | --- | --- |
-| [PostgreSQL 18 (preview)*](https://www.postgresql.org/about/press/) | [Release notes](https://www.postgresql.org/docs/18/release-18.html) | 25-Sep-2025 (Preview) | 14-Nov-2030 |
+| [PostgreSQL 18](https://www.postgresql.org/about/press/) | [Release notes](https://www.postgresql.org/docs/18/release-18.html) | 25-Sep-2025 (Preview) | 14-Nov-2030 |
 | [PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/) | [Release notes](https://www.postgresql.org/docs/17/release-17.html) | 30-Sep-2024 | 8-Nov-2029  |
 | [PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/) | [Release notes](https://www.postgresql.org/docs/16/release-16.html) | 15-Oct-2023 | 9-Nov-2028  |
 | [PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/) | [Release notes](https://www.postgresql.org/docs/15/release-15.html) | 15-May-2023 | 11-Nov-2027 |

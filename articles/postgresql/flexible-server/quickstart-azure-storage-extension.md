@@ -1,15 +1,16 @@
 ---
 title: Quickstart Examples for Azure Storage Extension
 description: Learn how to use the Azure Storage extension in Azure Database for PostgreSQL to import and export data.
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/26/2025
+ms.date: 11/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: reference
 ms.custom:
 - ignite-2024
+- ignite-2025
 - sfi-image-nochange
 ---
 
@@ -51,13 +52,14 @@ Following is a list of examples to help you learn how to use the Azure Storage e
    ```azurecli-interactive   
    mkdir --parents azure_storage_examples
    cd azure_storage_examples
-   curl -O https://examples.citusdata.com/tutorial/events.csv
-   gzip -k events.csv
-   cp events.csv events_blob_without_extension
-   cp events.csv events_pipe.csv
-   cp events.csv.gz events_compressed
-   sed -i 's/,/|/g' events_pipe.csv
-   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern "events*" --account-key $access_key --overwrite --output none --only-show-errors
+   curl -L -O https://github.com/Azure-Samples/azure-postgresql-storage-extension/raw/main/storage_extension_sample.parquet
+   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern "storage_extension_sample.parquet" --account-key $access_key --overwrite --output none --only-show-errors
+   curl -L -O https://github.com/Azure-Samples/azure-postgresql-storage-extension/raw/main/parquet_without_extension
+   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern "parquet_without_extension" --account-key $access_key --overwrite --output none --only-show-errors
+   curl -L -O https://github.com/Azure-Samples/azure-postgresql-storage-extension/raw/main/storage_extension_sample.csv
+   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern "storage_extension_sample.csv" --account-key $access_key --overwrite --output none --only-show-errors
+   curl -L -O https://github.com/Azure-Samples/azure-postgresql-storage-extension/raw/main/csv_without_extension
+   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern "csv_without_extension" --account-key $access_key --overwrite --output none --only-show-errors
    ```
 
 > [!NOTE]  
@@ -65,21 +67,15 @@ Following is a list of examples to help you learn how to use the Azure Storage e
 
 ## Create a table in which data is loaded
 
-Let's create the table into which we import the contents of the CSV file that we uploaded to the storage account. To do so, connect to your instance of Azure Database for PostgreSQL flexible server using `PgAdmin`, `psql`, or the client of your preference, and execute the following statement:
+Let's create the table into which we import the contents of the files that we uploaded to the storage account. To do so, connect to your instance of Azure Database for PostgreSQL flexible server using [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), [PgAdmin](https://www.pgadmin.org/), or the client of your preference, and execute the following statement:
 
 ```sql
-CREATE TABLE IF NOT EXISTS events
-        (
-         event_id bigint
-        ,event_type text
-        ,event_public boolean
-        ,repo_id bigint
-        ,payload jsonb
-        ,repo jsonb
-        ,user_id bigint
-        ,org jsonb
-        ,created_at timestamp without time zone
-        );
+CREATE TABLE IF NOT EXISTS sample_data (
+    id BIGINT PRIMARY KEY,
+    sample_text TEXT,
+    sample_integer INTEGER,
+    sample_timestamp TIMESTAMP
+);
 ```
 
 ## Prepare the extension for usage
@@ -149,81 +145,95 @@ SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE
 
 ## Import data using a COPY FROM statement
 
-The following example shows the import of data from a blob called `events.csv`  that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
+The following example shows the import of data from a blob called `storage_extension_sample.parquet`  that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
 
 1. Create a table that matches the schema of the source file:
 
     ```sql
-    CREATE TABLE IF NOT EXISTS events
-            (
-             event_id bigint
-            ,event_type text
-            ,event_public boolean
-            ,repo_id bigint
-            ,payload jsonb
-            ,repo jsonb
-            ,user_id bigint
-            ,org jsonb
-            ,created_at timestamp without time zone
-            );
+    CREATE TABLE IF NOT EXISTS sample_data (
+        id BIGINT PRIMARY KEY,
+        sample_text TEXT,
+        sample_integer INTEGER,
+        sample_timestamp TIMESTAMP
+    );
     ```
 
-2. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
+2. Use a `COPY` statement to copy data into the target table. Format is inferred as Parquet from the extension of the file.
 
     ```sql
-    COPY events
-    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/events.csv'
-    WITH (FORMAT 'csv', header);
+    TRUNCATE TABLE sample_data;
+    COPY sample_data
+    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample.parquet';
+    ```
+
+2. Use a `COPY` statement to copy data into the target table. Because encoding format cannot be inferred from file extension, it's explicitly specified via the `FORMAT` option.
+
+    ```sql
+    TRUNCATE TABLE sample_data;
+    COPY sample_data
+    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/parquet_without_extension'
+    WITH (FORMAT 'parquet');
+    ```
+
+2. Use a `COPY` statement to copy data into the target table. Encoding format can be inferred from file extension. However, presence of column headers in first row needs to be explicitly configured via `HEADERS` option.
+
+    ```sql
+    TRUNCATE TABLE sample_data;
+    COPY sample_data
+    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample.csv'
+    WITH (HEADERS);
     ```
 
 3. Execute the following `SELECT` statement to confirm that the data is loaded into the table.
 
     ```sql
     SELECT *
-    FROM events
+    FROM sample_data
     LIMIT 100;
     ```
 
 ## Export data using a COPY TO statement
 
-The following example shows the export of data from a table called `events`, to a blob called `events_exported.csv` that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
+The following examples show the export of data from a table called `sample_data`, to multiple blobs with different names, and characteristics like their encoding format, all of which reside in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
 
 1. Create a table that matches the schema of the source file:
 
     ```sql
-    CREATE TABLE IF NOT EXISTS events
-            (
-             event_id bigint
-            ,event_type text
-            ,event_public boolean
-            ,repo_id bigint
-            ,payload jsonb
-            ,repo jsonb
-            ,user_id bigint
-            ,org jsonb
-            ,created_at timestamp without time zone
-            );
+    CREATE TABLE IF NOT EXISTS sample_data (
+        id BIGINT PRIMARY KEY,
+        sample_text TEXT,
+        sample_integer INTEGER,
+        sample_timestamp TIMESTAMP
+    );
     ```
 
 2. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY FROM statement](#import-data-using-a-copy-from-statement) example to populate it with the contents of the sample data set.
 
-3. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
+3. Use a `COPY` statement to copy data out of the target table. Specify that the encoding format must be parquet.
 
    ```sql
-   COPY events
-   TO 'https://<account_name>.blob.core.windows.net/<container_name>/events_exported.csv'
-   WITH (FORMAT 'csv', header);
+   COPY sample_data
+   TO 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample_exported.parquet'
+   WITH (FORMAT 'parquet');
    ```
 
-4. Execute the following `SELECT` statement to confirm that the blob exists in the storage account.
+4. Use a `COPY` statement to copy data out of the target table. Specify that the encoding format must be CSV and the first row of the resulting file contains column headers.
+
+   ```sql
+   COPY sample_data
+   TO 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample_exported.csv'
+   WITH (FORMAT 'csv', HEADERS);
+   ```
+
+5. Execute the following `SELECT` statement to confirm that the blob exists in the storage account.
 
     ```sql
-    SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE path = 'events_exported.csv';
+    SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE path LIKE 'storage_extension_sample_exported%';
     ```
-    
+
 ## Read content from a blob
 
-The `blob_get` function retrieves the contents of one specific blob (`events.csv` in this case), in the referred container `<container_name>` of the `<account_name>` storage. In order for `blob_get` to know how to parse the data you can pass a value in the form `NULL::table_name`, where `table_name` refers to a table whose schema matches that of the blob being read. In the example, it refers to the `events` table we created at the very beginning.
+The `blob_get` function retrieves the contents of one specific blob, in the referred container `<container_name>` of the `<account_name>` storage. In order for `blob_get` to know how to parse the data you can pass a value in the form `NULL::table_name`, where `table_name` refers to a table whose schema matches that of the blob being read. In the example, it refers to the `sample_data` table we created at the very beginning.
 
 `<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -231,29 +241,26 @@ The `blob_get` function retrieves the contents of one specific blob (`events.csv
 
 `<blob_name>` should be set to the full path of the blob whose contents you want to read.
 
+In this case, the decoder that must be used to parse the blob is inferred from the `.parquet` file extension.
+
 ```sql
 SELECT * FROM azure_storage.blob_get
         ('<account_name>'
         ,'<container_name>'
-        ,'events.csv'
-        , NULL::events)
+        ,'storage_extension_sample.parquet'
+        , NULL::sample_data)
 LIMIT 5;
 ```
 
 Alternatively, you can explicitly define the schema of the result using the `AS` clause after the [blob_get](./reference-azure-storage-extension.md#azure_storageblob_get) function.
 
 ```sql
-SELECT * FROM azure_storage.blob_get('<account_name>','<container_name>','events.csv.gz')
+SELECT * FROM azure_storage.blob_get('<account_name>','<container_name>','storage_extension_sample.parquet')
 AS res (
-         event_id BIGINT
-        ,event_type TEXT
-        ,event_public BOOLEAN
-        ,repo_id BIGINT
-        ,payload JSONB
-        ,repo JSONB
-        ,user_id BIGINT
-        ,org JSONB
-        ,created_at TIMESTAMP WITHOUT TIME ZONE)
+        id BIGINT PRIMARY KEY,
+        sample_text TEXT,
+        sample_integer INTEGER,
+        sample_timestamp TIMESTAMP)
 LIMIT 5;
 ```
 
@@ -266,12 +273,12 @@ This example illustrates the possibility to filter and modify the content import
 `<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
 ```sql
-SELECT concat('P-',event_id::text) FROM azure_storage.blob_get
+SELECT concat('P-',id::text) FROM azure_storage.blob_get
         ('<account_name>'
         ,'<container_name>'
-        ,'events.csv'
-        , NULL::events)
-WHERE event_type='PushEvent'
+        ,'storage_extension_sample.parquet'
+        , NULL::sample_data)
+WHERE sample_integer=780
 LIMIT 5;
 ```
 
@@ -287,15 +294,15 @@ This example illustrates how you can use custom separators and escape characters
 SELECT * FROM azure_storage.blob_get
         ('<account_name>'
         ,'<container_name>'
-        ,'events_pipe.csv'
-        ,NULL::events
-        ,options := azure_storage.options_csv_get(delimiter := '|' , header := 'true')
+        ,'storage_extension_sample.csv'
+        ,NULL::sample_data
+        ,options := azure_storage.options_csv_get(header := 'true')
         );
 ```
 
 ## Use the decoder option
 
-This example illustrates the use of the `decoder` option. Normally format is inferred from the extension of the file, but when the file content doesn't have a matching extension you can pass the decoder argument.
+This example illustrates the use of the `decoder` option. When the decoder option is not present, it's inferred from the extension of the file. But when the file name doesn't have an extension, or when that file name extension doesn't correspond to the one associated to the decoder that must be used to properly parse the contents of the file, you can explicitly pass the decoder argument.
 
 `<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -305,28 +312,9 @@ This example illustrates the use of the `decoder` option. Normally format is inf
 SELECT * FROM azure_storage.blob_get
         ('<account_name>'
         ,'<container_name>'
-        ,'events_blob_without_extension'
-        , NULL::events
-        , decoder := 'csv')
-LIMIT 5;
-```
-
-## Use compression with decoder option
-
-This example shows how to enforce using the gzip compression on a gzip compressed blob whose name doesn't end with a .gz extension.
-
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
-
-`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
-
-```sql
-SELECT * FROM azure_storage.blob_get
-        ('<account_name>'
-        ,'<container_name>'
-        ,'events_compressed'
-        , NULL::events
-        , decoder := 'csv'
-        , compression := 'gzip')
+        ,'parquet_without_extension'
+        , NULL::sample_data
+        , decoder := 'parquet')
 LIMIT 5;
 ```
 
@@ -339,32 +327,57 @@ This example illustrates how you can do aggregation operations over information 
 `<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
 ```sql
-SELECT event_type, COUNT(*) FROM azure_storage.blob_get
+SELECT sample_integer, COUNT(*) FROM azure_storage.blob_get
         ('<account_name>'
         ,'<container_name>'
-        ,'events.csv'
-        , NULL::events)
-GROUP BY event_type
+        ,'storage_extension_sample.parquet'
+        , NULL::sample_data)
+GROUP BY sample_integer
 ORDER BY 2 DESC
 LIMIT 5;
 ```
 
-
 ## Write content to a blob
 
-The `blob_put` function composes the contents of one specific blob (`eventscopy.csv` in this case), and uploads it to the referred container `<container_name>` of the `<account_name>` storage. This example uses `blob_get` to construct a set of five rows, which are then passed to the `blob_put` aggregate function which uploads them as a blob named `eventscopy.csv`.
+The `blob_put` function composes the contents of one specific blob (`sample_data_copy.parquet` in this case), and uploads it to the referred container `<container_name>` of the `<account_name>` storage. This example uses `blob_get` to construct a set of five rows, which are then passed to the `blob_put` aggregate function which uploads them as a blob named `sample_data_copy.parquet`.
 
 `<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
 `<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
+Encoding format is inferred as parquet, based on file extension `.parquet`.
+
 ```sql
 SELECT azure_storage.blob_put
         ('<account_name>'
         ,'<container_name>'
-        ,'eventscopy.csv'
-        , top_5_events)
-FROM (SELECT * FROM events) LIMIT 5) AS top_5_events;
+        ,'sample_data_copy.parquet'
+        , top_5_sample_data)
+FROM (SELECT * FROM sample_data LIMIT 5) AS top_5_sample_data;
+```
+
+Encoding format is inferred as CSV, based on file extension `.csv`.
+
+```sql
+SELECT azure_storage.blob_put
+        ('<account_name>'
+        ,'<container_name>'
+        ,'sample_data_copy.csv'
+        , top_5_sample_data)
+FROM (SELECT * FROM sample_data LIMIT 5) AS top_5_sample_data;
+```
+
+Encoding format cannot be inferred because the file doesn't have a file extension, so it's explicitly configured as `parquet`. Also, compression algorithm is set to `zstd`.
+
+```sql
+SELECT azure_storage.blob_put
+        ('<account_name>'
+        ,'<container_name>'
+        ,'sample_parquet_data_copy_without_extension_with_zstd_compression'
+        , top_5_sample_data
+        ,'parquet'
+        ,'zstd')
+FROM (SELECT * FROM sample_data LIMIT 5) AS top_5_sample_data;
 ```
 
 ## List all the references to Azure storage accounts

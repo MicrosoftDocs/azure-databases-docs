@@ -1,0 +1,187 @@
+<svg viewBox="0 0 1280 720" width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      stroke: #000000;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    rect {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 2;
+    }
+    rect.background {
+      fill: #FFFFFF;
+      stroke: none;
+    }
+    rect.highlight {
+      fill: #2A446F;
+    }
+    text {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      fill: #000000;
+    }
+    text.size-lg {
+      font-size: 19px;
+    }
+    text.weight-bold {
+      font-weight: 600;
+    }
+    text.align-center {
+      text-anchor: middle;
+    }
+    text.color-inverse {
+      fill: #FFFFFF;
+    }
+  </style>
+  <!-- Background -->
+  <rect x="1" y="-0.3" width="1280" height="720" class="background"/>
+  
+  <!-- Title -->
+  <text x="640" y="40" class="size-lg weight-bold align-center">Remote Patient Monitoring and IoT Device Architecture</text>
+  
+  <!-- IoT Devices Section -->
+  <text x="34" y="117" class="size-lg weight-bold">IoT Medical Devices</text>
+  
+  <!-- Wearable Devices -->
+  <rect x="50" y="140" width="140" height="80" rx="10"/>
+  <text x="120" y="165" class="align-center">Wearable Devices</text>
+  <text x="120" y="185" class="align-center">Heart Rate, Steps</text>
+  
+  <!-- Blood Pressure Monitors -->
+  <rect x="50" y="240" width="140" height="80" rx="10"/>
+  <text x="120" y="265" class="align-center">Blood Pressure</text>
+  <text x="120" y="285" class="align-center">Monitors</text>
+  
+  <!-- Glucose Meters -->
+  <rect x="50" y="340" width="140" height="80" rx="10"/>
+  <text x="120" y="365" class="align-center">Glucose Meters</text>
+  <text x="120" y="385" class="align-center">and Smart Inhalers</text>
+  
+  <!-- Home Monitoring -->
+  <rect x="50" y="440" width="140" height="80" rx="10"/>
+  <text x="120" y="465" class="align-center">Home Monitoring</text>
+  <text x="120" y="485" class="align-center">Devices</text>
+  
+  <!-- IoT Connectivity Section -->
+  <text x="280" y="117" class="size-lg weight-bold">IoT Connectivity</text>
+  
+  <!-- Azure IoT Hub -->
+  <rect x="280" y="200" width="140" height="120" rx="10"/>
+  <text x="350" y="230" class="weight-bold align-center">Azure IoT Hub</text>
+  <text x="350" y="260" class="align-center">• Device Management</text>
+  <text x="350" y="280" class="align-center">• Secure Connection</text>
+  <text x="350" y="300" class="align-center">• Telemetry Ingestion</text>
+  
+  <!-- Stream Processing Section -->
+  <text x="496" y="117" class="size-lg weight-bold">Real-time Processing</text>
+  
+  <!-- Azure Stream Analytics -->
+  <rect x="510" y="140" width="140" height="100" rx="10"/>
+  <text x="580" y="170" class="weight-bold align-center">Azure Stream</text>
+  <text x="580" y="190" class="weight-bold align-center">Analytics</text>
+  <text x="580" y="220" class="align-center">Real-time Analysis</text>
+  
+  <!-- Data Storage Section -->
+  <text x="540" y="468" class="size-lg weight-bold">Patient Data Storage</text>
+  
+  <!-- Azure DocumentDB -->
+  <rect x="510" y="320" width="140" height="100" rx="10" class="highlight"/>
+  <text x="580" y="350" class="weight-bold align-center color-inverse">Azure DocumentDB</text>
+  <text x="580" y="380" class="align-center color-inverse">• Patient Vitals</text>
+  <text x="580" y="400" class="align-center color-inverse">• Device Data</text>
+  
+  <!-- Healthcare Providers Section -->
+  <text x="758" y="117" class="size-lg weight-bold">Healthcare Providers</text>
+  
+  <!-- Clinical Dashboard -->
+  <rect x="747" y="200" width="200" height="80" rx="10"/>
+  <text x="847" y="225" class="align-center">Clinical Dashboard</text>
+  <text x="847" y="245" class="align-center">Real-time Monitoring</text>
+  
+  <!-- Mobile Clinical App -->
+  <rect x="747" y="300" width="200" height="80" rx="10"/>
+  <text x="847" y="325" class="align-center">Mobile Clinical App</text>
+  <text x="847" y="345" class="align-center">Provider Access</text>
+  
+  <!-- Alert System Section -->
+  <text x="980" y="117" class="size-lg weight-bold">Alert System</text>
+  
+  <!-- Alert Processing -->
+  <rect x="980" y="160" width="140" height="80" rx="10"/>
+  <text x="1050" y="185" class="align-center">Alert Processing</text>
+  <text x="1050" y="205" class="align-center">Critical Thresholds</text>
+  
+  <!-- Notification Service -->
+  <rect x="980" y="260" width="140" height="80" rx="10"/>
+  <text x="1050" y="285" class="align-center">Notification</text>
+  <text x="1050" y="305" class="align-center">Service</text>
+  
+  <!-- Analytics Section -->
+  <text x="785" y="401" class="size-lg weight-bold">Analytics and AI</text>
+  
+  <!-- Predictive Analytics -->
+  <rect x="750" y="420" width="200" height="100" rx="10"/>
+  <text x="850" y="450" class="align-center">Predictive Analytics</text>
+  <text x="850" y="470" class="align-center">• Health Trends</text>
+  <text x="850" y="490" class="align-center">• Risk Assessment</text>
+  
+  <!-- Patient Portal Section -->
+  <text x="290" y="530" class="size-lg weight-bold">Patient Engagement</text>
+  
+  <!-- Patient Mobile App -->
+  <rect x="250" y="420" width="130" height="80" rx="10"/>
+  <text x="315" y="445" class="align-center">Patient Mobile</text>
+  <text x="315" y="465" class="align-center">App</text>
+  
+  <!-- Web Portal -->
+  <rect x="400" y="420" width="130" height="80" rx="10"/>
+  <text x="465" y="445" class="align-center">Patient Web</text>
+  <text x="465" y="465" class="align-center">Portal</text>
+  
+  <!-- Arrows -->
+  <!-- IoT Devices to IoT Hub -->
+  <path d="M 190 180 L 280 230"/>
+  <path d="M 190 280 L 280 260"/>
+  <path d="M 190 380 L 280 290"/>
+  <path d="M 190 480 L 320 320"/>
+  
+  <!-- IoT Hub to Stream Analytics -->
+  <path d="M 420 230 L 510 190"/>
+  
+  <!-- Stream Analytics to DocumentDB -->
+  <path d="M 580 240 L 580 320"/>
+  
+  <!-- DocumentDB to Clinical Systems -->
+  <path d="M 650 350 L 744 244"/>
+  <path d="M 650 380 L 746 310"/>
+  
+  <!-- Stream Analytics to Alerts -->
+  <path d="M 650 168 L 980 188"/>
+  
+  <!-- Alerts to Notification -->
+  <path d="M 1050 240 L 1050 260"/>
+  
+  <!-- DocumentDB to Analytics -->
+  <path d="M 647.3 417.8 L 750 470"/>
+  
+  <!-- DocumentDB to Patient Portal -->
+  <path d="M 510 400 L 315 420"/>
+  <path d="M 512 406 L 465 420"/>
+  
+  <!-- Data flow labels -->
+  <text x="425" y="189">Telemetry</text>
+  <text x="590" y="290">Processed Data</text>
+  <text x="668" y="381">Clinical Data</text>
+  <text x="676" y="222">Alerts</text>
+  
+  <!--Arrow marker definition-->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon fill="black" points="0,0 10,3.5 0,7"/>
+    </marker>
+  </defs>
+</svg>
