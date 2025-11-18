@@ -13,26 +13,26 @@ ms.topic: include
 | Australia Central 2 * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :x: | 
 | Australia East | :white_check_mark: (v3/v4/v5/v6 | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | Australia Southeast | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
-| Austria East | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :x: | 
+| Austria East | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :x: | 
 | Brazil South | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: $ | :white_check_mark: | :x: | 
 | Brazil Southeast * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :x: | 
-| Canada Central | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
-| Canada East | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
+| Canada Central | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
+| Canada East | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
 | Central India | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | Central US | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
-| Chile Central | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :x: | 
+| Chile Central | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :x: | 
 | China East 2 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: | :x: | 
 | China East 3 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | China North 2 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: | :x: | 
 | China North 3 | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | East Asia | :white_check_mark: (v3/v4/v5/v6 | :x: | :white_check_mark: $ ** | :white_check_mark: | :white_check_mark: | 
-| East US | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
+| East US | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | East US 2 | :white_check_mark: (v3/v4) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | France Central | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | France South | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | Germany North * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | Germany West Central | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
-| Indonesia Central | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :x: | 
+| Indonesia Central | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :x: | 
 | Israel Central | :white_check_mark: (v3/v4) | :x: | :white_check_mark: | :white_check_mark: | :x: | 
 | Italy North | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :x: | 
 | Japan East | :white_check_mark: (v3/v4) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
@@ -41,12 +41,12 @@ ms.topic: include
 | Jio India West | :white_check_mark: (v3) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | Korea Central | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: ** | :white_check_mark: | :white_check_mark: | 
 | Korea South | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
-| Malaysia West | :white_check_mark: (v3/v4/v5/v6 | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :x: | 
+| Malaysia West | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :x: | 
 | Mexico Central | :white_check_mark: (v3/v4) | :x: | :white_check_mark: $ | :white_check_mark: | :x: | 
 | New Zealand North | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :x: | 
-| North Central US | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
+| North Central US | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
 | North Europe | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
-| Norway East * | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
+| Norway East * | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | Norway West | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | Poland Central | :white_check_mark: (v3/v4) | :x: | :white_check_mark: | :white_check_mark: | :x: | 
 | Qatar Central | :white_check_mark: (v3/v4) | :x: | :white_check_mark: $ | :white_check_mark: | :x: | 
@@ -61,13 +61,14 @@ ms.topic: include
 | Switzerland West * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | UAE Central * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | UAE North | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
-| UK South | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
-| UK West | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
+| UK South | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
+| UK West | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
 | US Gov Arizona | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: | :x: | 
 | US Gov Texas | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: | :x: | 
 | US Gov Virginia | :white_check_mark: (v3/v4) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | West Central US | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | West Europe | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
-| West US | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
+| West US | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
 | West US 2 | :white_check_mark: (v3/v4) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
-| West US 3 | :white_check_mark: (v3/v4/v5/) | :white_check_mark: (v5) | :white_check_mark: ** | :white_check_mark: | :x: | 
+| West US 3 | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: ** | :white_check_mark: | :x: | 
+
