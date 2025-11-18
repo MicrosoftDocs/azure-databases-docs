@@ -16,6 +16,8 @@ ms.custom:
 
 # Fleet analytics schema reference (preview)
 
+[!INCLUDE[Preview](includes/notice-preview.md)]
+
 These tables document the entire schema of the data exposed by Azure Cosmos DB fleet analytics.
 
 ## Dimension tables

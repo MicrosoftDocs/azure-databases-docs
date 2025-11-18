@@ -13,8 +13,6 @@ ms.date: 06/24/2025
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 > [!NOTE]
-> To learn about the free tier for **vCore cluster and/or vector database in Azure Cosmos DB for MongoDB**, see [Build applications for free with Azure Cosmos DB for MongoDB (vCore) Free Tier](mongodb/vcore/free-tier.md).
-> 
 > Free tier is currently not available for serverless accounts.
 
 Azure Cosmos DB free tier makes it easy to get started, develop, test your applications, or even run small production workloads for free. When free tier is enabled on an account, you get the first 1000 RU/s and 25 GB of storage in the account for free. The throughput and storage consumed beyond these limits are billed at regular price. Free tier is available for all API accounts with provisioned throughput, autoscale throughput, single, or multiple write regions.
@@ -97,6 +95,6 @@ If the option to create a free-tier account is disabled or if you receive an err
 After you create a free tier account, you can start building apps with Azure Cosmos DB.
 
 * [Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for .NET](create-sql-api-dotnet-v4.md)
-* [Quickstart: Use Azure Cosmos DB for MongoDB (RU) with Node.js](mongodb/quickstart-nodejs.md)
+* [Quickstart: Use Azure Cosmos DB for MongoDB with Node.js](mongodb/quickstart-nodejs.md)
 * [Tutorial: Create a Jupyter Notebook to analyze data in your Azure Cosmos DB for NoSQL account](nosql/tutorial-create-notebook-vscode.md)
 * [Understand your Azure Cosmos DB bill](understand-your-bill.md)

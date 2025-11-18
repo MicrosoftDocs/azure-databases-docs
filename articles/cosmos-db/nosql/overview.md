@@ -42,13 +42,16 @@ To use Azure Cosmos DB for NoSQL, you need an Azure subscription. The service in
 
 While Azure Cosmos DB for NoSQL is highly versatile, it's optimized for JSON-based NoSQL workloads for scale-out scenarios.
 
-If your application requires support for other database models, such as MongoDB, Cassandra, or Gremlin, consider one of the following services:
+If your application requires support for other database models, such as MongoDB, Cassandra, PostgreSQL, or Gremlin, consider one of the following services:
 
-- [Azure Cosmos DB for MongoDB (vCore)](../mongodb/vcore/introduction.md)
+- [Azure DocumentDB](../../documentdb/overview.md)
 - [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md)
 - [Graph in Microsoft Fabric](/fabric/graph/overview)
+- [Azure Database for PostgreSQL](../../postgresql/index.yml)
  
 Additionally, the service's cost model is based on provisioned throughput (RU/s), so careful planning is required to optimize costs for your workload.
+
+[!INCLUDE[Section - Compare to Azure DocumentDB](../includes/section-compare-to-documentdb.md)]
 
 ## Related content
 

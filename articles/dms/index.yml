@@ -99,9 +99,9 @@ landingContent:
             url: tutorial-mysql-azure-external-to-flex-online-portal.md
           - text: Migrate to Azure DB for MySQL - physical data files
             url: tutorial-mysql-azure-external-online-portal-physical.md
-          - text: Migrate to Azure Cosmos DB for MongoDB (RU) - online
+          - text: Migrate to Azure Cosmos DB for MongoDB - online
             url: tutorial-mongodb-cosmos-db-online.md
-          - text: Migrate to Azure Cosmos DB for MongoDB (vCore)
+          - text: Migrate to Azure DocumentDB
             url: /azure-data-studio/extensions/database-migration-for-mongo-extension
       - linkListType: reference
         links:

@@ -35,6 +35,28 @@ Azure Cosmos DB for NoSQL allows you to rotate primary and secondary keys to mai
 
 - Application currently using either primary or secondary key consistently
 
+## Rotate keys using account key usage metadata
+> [!IMPORTANT]
+> Account key usage metadata feature is in private preview. This feature is provided without a service-level agreement, and we don't recommend it for production workloads. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+
+Azure Cosmos DB now offers additional feature to ensure safe key rotation or disabling local authentication with Account Key Usage Metadata. This feature is designed to provide extra visibility into when an account key was last used, allowing teams to make informed decisions before rotating or migrating to Entra ID.
+
+![Screenshot showing account key usage metadata in a Azure Cosmos DB account.](media/how-to-rotate-keys/safe-key-rotation.png)
+
+### Why is it important?
+
+- **Helps with disabling local authentication**: Provides confidence that keys are no longer in use before turning off local auth. 
+- **Prevents Outages or disruption to your applications**: Avoids accidental rotation of actively used keys.
+- **Improve Security Hygiene**: Encourages safe and intentional key rotation.
+
+This is especially valuable for:
+- Customers currently using keys but planning to migrate fully to Entra ID.
+- Infrequently used keys: Monthly or yearly jobs that still depend on keys.
+- Shared Keys across teams: Where visibility is often limited.
+
+> [!NOTE]
+> Customers interested in early access using [sign up form](https://aka.ms/SafeKeyRotationSignUp) or reach out to us on cosmosdb-sec-feature@microsoft.com
+
 ## Rotate keys when using the primary key
 
 If your application is currently using the primary key, follow these steps to rotate to the secondary key and regenerate the primary key.
