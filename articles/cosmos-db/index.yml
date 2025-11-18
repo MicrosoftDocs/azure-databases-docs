@@ -72,7 +72,7 @@ conceptualContent:
           links:
             - text: SQL queries
               itemType: how-to-guide
-              url: /nosql/query/overview
+              url: /cosmos-db/query/overview
             - text: Model document data
               itemType: concept
               url: nosql/modeling-data.md
