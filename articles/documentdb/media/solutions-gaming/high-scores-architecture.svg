@@ -1,0 +1,146 @@
+<svg viewBox="0 0 1280 720" width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      stroke: #000000;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    rect {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 2;
+    }
+    rect.background {
+      fill: #FFFFFF;
+      stroke: none;
+    }
+    rect.highlight {
+      fill: #2A446F;
+    }
+    text {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      fill: #000000;
+    }
+    text.size-lg {
+      font-size: 19px;
+    }
+    text.weight-bold {
+      font-weight: 600;
+    }
+    text.align-center {
+      text-anchor: middle;
+    }
+    text.color-inverse {
+      fill: #FFFFFF;
+    }
+  </style>
+  <!-- Background -->
+  <rect x="-0.3" y="1" width="1280" height="720" class="background"/>
+  
+  <!-- Title -->
+  <text x="640" y="40" class="size-lg weight-bold align-center">Global Leaderboards and Social Features Architecture</text>
+  
+  <!-- Client Applications Section -->
+  <text x="44" y="118" class="size-lg weight-bold">Client Applications</text>
+  
+  <!-- Game Client -->
+  <rect x="50" y="140" width="140" height="100" rx="10"/>
+  <text x="120" y="170" class="align-center">Game Clients</text>
+  <text x="120" y="190" class="align-center">• Score Submission</text>
+  <text x="120" y="210" class="align-center">• Leaderboard View</text>
+  
+  <!-- Global Distribution Section -->
+  <text x="258" y="118" class="size-lg weight-bold">Global Distribution</text>
+  
+  <!-- Azure Front Door -->
+  <rect x="280" y="140" width="140" height="100" rx="10"/>
+  <text x="350" y="170" class="weight-bold align-center">Azure Front Door</text>
+  <text x="350" y="190" class="align-center">• Global Load Balancing</text>
+  <text x="350" y="210" class="align-center">• Low Latency Access</text>
+  
+  <!-- Event Processing Section -->
+  <text x="504" y="118" class="size-lg weight-bold">Event Processing</text>
+  
+  <!-- Azure Functions -->
+  <rect x="510" y="140" width="140" height="100" rx="10"/>
+  <text x="580" y="170" class="weight-bold align-center">Azure Functions</text>
+  <text x="580" y="190" class="align-center">• Score Processing</text>
+  <text x="580" y="210" class="align-center">• Leaderboard Updates</text>
+  
+  <!-- Data Storage Section -->
+  <text x="799" y="118" class="size-lg weight-bold">Data Storage</text>
+  
+  <!-- Azure DocumentDB -->
+  <rect x="750" y="140" width="200" height="120" rx="10" class="highlight"/>
+  <text x="850" y="170" class="weight-bold align-center color-inverse">Azure DocumentDB</text>
+  <text x="850" y="200" class="align-center color-inverse">• Leaderboard Data</text>
+  <text x="850" y="220" class="align-center color-inverse">• Player Scores</text>
+  <text x="850" y="240" class="align-center color-inverse">• Achievements</text>
+  
+  <!-- Social Features Section -->
+  <text x="773" y="502" class="size-lg weight-bold">Social Features</text>
+  
+  <!-- Friend Management -->
+  <rect x="580" y="392" width="140" height="80" rx="10"/>
+  <text x="650" y="417" class="align-center">Friend Management</text>
+  <text x="650" y="437" class="align-center">Service</text>
+  
+  <!-- Achievement System -->
+  <rect x="750" y="392" width="140" height="80" rx="10"/>
+  <text x="820" y="417" class="align-center">Achievement</text>
+  <text x="820" y="437" class="align-center">System</text>
+  
+  <!-- Notification Service -->
+  <rect x="920" y="392" width="140" height="80" rx="10"/>
+  <text x="990" y="417" class="align-center">Push Notifications</text>
+  <text x="990" y="437" class="align-center">Service</text>
+  
+  <!-- Regional Deployments -->
+  <text x="310" y="633" class="size-lg weight-bold">Regional Deployments</text>
+  
+  <!-- Region 1 -->
+  <rect x="200" y="520" width="120" height="80" rx="10"/>
+  <text x="260" y="545" class="align-center">North America</text>
+  <text x="260" y="565" class="align-center">Region</text>
+  
+  <!-- Region 2 -->
+  <rect x="360" y="520" width="120" height="80" rx="10"/>
+  <text x="420" y="545" class="align-center">Europe</text>
+  <text x="420" y="565" class="align-center">Region</text>
+  
+  <!-- Region 3 -->
+  <rect x="520" y="520" width="120" height="80" rx="10"/>
+  <text x="580" y="545" class="align-center">Asia Pacific</text>
+  <text x="580" y="565" class="align-center">Region</text>
+  
+  <!-- Arrows -->
+  <!-- Clients to Front Door -->
+  <path d="M 190 190 L 280 190"/>
+  <!-- Front Door to Functions -->
+  <path d="M 420 190 L 510 190"/>
+  <!-- Functions to DocumentDB -->
+  <path d="M 650 190 L 750 200"/>
+  <!-- Functions to Social Features -->
+  <path transform="matrix(0.1,-1,1,0.1,120.5,716.2)" d="M 514.9 398.5 L 375.2 462.5"/>
+  <path transform="matrix(0.5,-0.8,0.8,0.5,104.8,804.2)" d="M 825.4 165.8 L 825.4 504.4"/>
+  <path d="M 580 240 L 753.3 392.3"/>
+  <!-- Social Features to DocumentDB -->
+  <path transform="matrix(0.9,0.3,-0.3,0.9,153.4,-224.8)" d="M 841.9 404.2 L 841.9 260"/>
+  <!-- Front Door to Regions -->
+  <path d="M 320 240 L 260 520"/>
+  <path d="M 350 240 L 420 520"/>
+  <path d="M 380 240 L 580 520"/>
+  <!-- Data flow labels -->
+  <text x="207" y="180">Requests</text>
+  <text textLength="49.2" x="440" y="180">API Calls</text>
+  <text x="680" y="180">Data</text>
+  <!--Arrow marker definition-->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon fill="black" points="0,0 10,3.5 0,7"/>
+    </marker>
+  </defs>
+</svg>

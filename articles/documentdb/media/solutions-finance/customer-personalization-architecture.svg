@@ -1,0 +1,171 @@
+<svg viewBox="0 0 1280 720" width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      stroke: #000000;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    rect {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 2;
+    }
+    rect.background {
+      fill: #FFFFFF;
+      stroke: none;
+    }
+    rect.highlight {
+      fill: #2A446F;
+    }
+    text {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      fill: #000000;
+    }
+    text.size-lg {
+      font-size: 19px;
+    }
+    text.weight-bold {
+      font-weight: 600;
+    }
+    text.align-center {
+      text-anchor: middle;
+    }
+    text.color-inverse {
+      fill: #FFFFFF;
+    }
+  </style>
+  <!-- Background -->
+  <rect x="0" y="-1" width="1280" height="720" class="background"/>
+  
+  <!-- Title -->
+  <text x="640" y="40" class="size-lg weight-bold align-center">Customer 360 and Personalization Architecture</text>
+  
+  <!-- Data Sources Section -->
+  <text x="82" y="113" class="size-lg weight-bold">Data Sources</text>
+  
+  <!-- CRM System -->
+  <rect x="50" y="140" width="140" height="80" rx="10"/>
+  <text x="120" y="165" class="align-center">CRM System</text>
+  <text x="120" y="185" class="align-center">Customer Data</text>
+  
+  <!-- Transaction History -->
+  <rect x="50" y="240" width="140" height="80" rx="10"/>
+  <text x="120" y="265" class="align-center">Transaction</text>
+  <text x="120" y="285" class="align-center">History</text>
+  
+  <!-- Digital Channels -->
+  <rect x="50" y="340" width="140" height="80" rx="10"/>
+  <text x="120" y="365" class="align-center">Digital Channels</text>
+  <text x="120" y="385" class="align-center">Interactions</text>
+  
+  <!-- Branch Systems -->
+  <rect x="50" y="440" width="140" height="80" rx="10"/>
+  <text x="120" y="465" class="align-center">Branch Systems</text>
+  <text x="120" y="485" class="align-center">and Call Centers</text>
+  
+  <!-- Data Integration Section -->
+  <text x="301" y="113" class="size-lg weight-bold">Data Integration</text>
+  
+  <!-- Azure Logic Apps -->
+  <rect x="280" y="200" width="200" height="120" rx="10"/>
+  <text x="380" y="230" class="weight-bold align-center">Azure Logic Apps</text>
+  <text x="380" y="260" class="align-center">• Data Orchestration</text>
+  <text x="380" y="280" class="align-center">• Workflow Automation</text>
+  <text x="380" y="300" class="align-center">• Real-time Sync</text>
+  
+  <!-- Unified Data Platform Section -->
+  <text x="542" y="113" class="size-lg weight-bold">Unified Data Platform</text>
+  
+  <!-- Azure DocumentDB -->
+  <rect x="540" y="140" width="200" height="120" rx="10" class="highlight"/>
+  <text x="640" y="170" class="weight-bold align-center color-inverse">Azure DocumentDB</text>
+  <text x="640" y="200" class="align-center color-inverse">• Customer Profiles</text>
+  <text x="640" y="220" class="align-center color-inverse">• Transaction History</text>
+  <text x="640" y="240" class="align-center color-inverse">• Personalization Data</text>
+  
+  <!-- Analytics Section -->
+  <text x="825" y="113" class="size-lg weight-bold">Analytics and Insights</text>
+  
+  <!-- Azure Synapse Analytics -->
+  <rect x="820" y="140" width="200" height="120" rx="10"/>
+  <text x="920" y="170" class="weight-bold align-center">Azure Synapse</text>
+  <text x="920" y="190" class="weight-bold align-center">Analytics</text>
+  <text x="920" y="220" class="align-center">• Advanced Analytics</text>
+  <text x="920" y="240" class="align-center">• ML Pipelines</text>
+  
+  <!-- Personalization Engine Section -->
+  <text x="942" y="427" class="size-lg weight-bold">Personalization Engine</text>
+  
+  <!-- Recommendation Service -->
+  <rect x="470" y="370" width="140" height="100" rx="10"/>
+  <text x="540" y="400" class="align-center">Recommendation</text>
+  <text x="540" y="420" class="align-center">Service</text>
+  <text x="540" y="450" class="align-center">Product Suggestions</text>
+  
+  <!-- Campaign Management -->
+  <rect x="630" y="370" width="140" height="100" rx="10"/>
+  <text x="700" y="400" class="align-center">Campaign</text>
+  <text x="700" y="420" class="align-center">Management</text>
+  <text x="700" y="450" class="align-center">Targeted Marketing</text>
+  
+  <!-- Risk Assessment -->
+  <rect x="790" y="370" width="140" height="100" rx="10"/>
+  <text x="860" y="400" class="align-center">Risk Assessment</text>
+  <text x="860" y="420" class="align-center">and Credit Scoring</text>
+  <text x="860" y="450" class="align-center">Dynamic Pricing</text>
+  
+  <!-- Customer Touchpoints Section -->
+  <text x="226" y="507" class="size-lg weight-bold">Customer Touchpoints</text>
+  
+  <!-- Mobile App -->
+  <rect x="200" y="570" width="120" height="80" rx="10"/>
+  <text x="260" y="595" class="align-center">Mobile Banking</text>
+  <text x="260" y="615" class="align-center">App</text>
+  
+  <!-- Web Portal -->
+  <rect x="340" y="570" width="120" height="80" rx="10"/>
+  <text x="400" y="595" class="align-center">Web Portal</text>
+  
+  <!-- Branch System -->
+  <rect x="480" y="570" width="120" height="80" rx="10"/>
+  <text x="540" y="595" class="align-center">Branch Systems</text>
+  
+  <!-- Call Center -->
+  <rect x="620" y="570" width="120" height="80" rx="10"/>
+  <text x="680" y="595" class="align-center">Call Center</text>
+  
+  <!-- Arrows -->
+  <!-- Data Sources to Logic Apps -->
+  <path d="M 190 180 L 280 230"/>
+  <path d="M 190 280 L 280 260"/>
+  <path d="M 190 380 L 280 290"/>
+  <path d="M 190 480 L 320 320"/>
+  <!-- Logic Apps to DocumentDB -->
+  <path d="M 480 260 L 540 210"/>
+  <!-- DocumentDB to Synapse -->
+  <path d="M 740 200 L 820 200"/>
+  <!-- DocumentDB to Personalization -->
+  <path d="M 638 260 L 540 370"/>
+  <path d="M 638 261 L 700 370"/>
+  <path d="M 637.5 260.5 L 860 370"/>
+  <!-- Synapse to Personalization -->
+  <path d="M 900 260 L 860 370"/>
+  <!-- Personalization to Touchpoints -->
+  <path d="M 540 470 L 260 570"/>
+  <path d="M 636.3 469 L 400 570"/>
+  <path d="M 700 470 L 540 570"/>
+  <path d="M 795 469.3 L 680 570"/>
+  <!-- Data flow labels -->
+  <text x="212" y="173">Raw Data</text>
+  <text x="756" y="179">Analytics</text>
+  <text x="760" y="316">Customer Insights</text>
+  <!--Arrow marker definition-->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon fill="black" points="0,0 10,3.5 0,7"/>
+    </marker>
+  </defs>
+</svg>

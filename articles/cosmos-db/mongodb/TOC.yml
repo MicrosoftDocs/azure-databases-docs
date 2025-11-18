@@ -1,16 +1,14 @@
-- name: MongoDB (RU) documentation
+- name: MongoDB documentation
   href: index.yml
 - name: What is Azure Cosmos DB for MongoDB?
   href: overview.md
-- name: Your MongoDB app reimagined
-  href: reimagined.md
 - name: Choose your model
   href: choose-model.md
 - name: Comparing MongoDB Atlas
-  href: cosmos-db-vs-mongodb-atlas.md
+  href: compare-mongodb-atlas.md
 - name: Overview
   items:
-  - name: What is Azure Cosmos DB for MongoDB (RU)?
+  - name: What is Azure Cosmos DB for MongoDB?
     href: overview.md
   - name: API versions
     items:
@@ -305,6 +303,8 @@
     href: ../network-bandwidth.md
 - name: How to
   items:
+  - name: Migrate to Azure DocumentDB
+    href: how-to-migrate-documentdb.md
   - name: Visual Studio Code extension
     href: ../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB
   - name: Develop with the emulator
@@ -389,8 +389,6 @@
       href: ../vector-search.md#retrieval-augmented-generation
     - name: Vercel
       href: ../vercel-integration.md
-  - name: Migrate to Azure Cosmos DB for MongoDB (vCore)
-    href: how-to-migrate-vcore.md
   - name: Migrate data to Azure Cosmos DB
     items:
     - name: Desktop data migration tool

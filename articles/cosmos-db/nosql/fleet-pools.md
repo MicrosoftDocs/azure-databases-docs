@@ -16,9 +16,7 @@ ms.custom:
   - build-2025
 ---
 
-# Pools for Azure Cosmos DB fleets (preview)
-
-[!INCLUDE[Preview](includes/notice-preview.md)]
+# Pools for Azure Cosmos DB fleets 
 
 When using Azure Cosmos DB fleets, you can simplify your throughput management with **pools**. Pools allow you to create a shared pool of throughput request units per second (RU/s) at the fleetspace level that multiple resources can use RU/s from as needed. Because pools are a fleet feature, resources across different subscriptions and resource groups within the same fleetspace can share RU/s from a common pool. 
 
@@ -69,7 +67,7 @@ However, tenant activity is unpredictable:
 
 - Containers primarily use dedicated RU/s (for example, 100-1,000 RU/s)
 
-- The fleet has a separate throughput pool (for example, 100,000 – 500,000 RU/s) at the fleetspace level
+- The fleet has a separate throughput pool (for example, 100,000 – 500,000 RU/s) at the fleetspace level.
 
 - Tenants can temporarily draw from the pool instead of getting throttled when it exceeds its dedicated RU/s
 
@@ -103,7 +101,7 @@ Here are examples of allowed and unallowed configurations:
 
 In the preview, you can monitor the RU/s the pool scaled to via the `FleetspaceAutoscaledThroughput` metric available at the fleet level.
 
-You can also  monitor pooled RU/s consumption at the account level in Azure portal via Azure Monitor following these steps:
+You can also monitor pooled RU/s consumption at the account level in Azure portal via Azure Monitor following these steps:
 
 1. Navigate to your Azure Cosmos DB account's **Metrics** page in the Azure portal.
 
@@ -113,17 +111,17 @@ You can also  monitor pooled RU/s consumption at the account level in Azure port
 
 :::image source="media/fleet-pools/azure-monitor-visualization.png" alt-text="Screenshot of the request unit visualization in Azure Monitor using the Azure portal.":::
 
-## Limitations
+## Default limitations
 
 With the pooling feature, the total RU/s available for consumption to each physical partition is still subject to standard [physical partition limits](../partitioning-overview.md#physical-partitions). Each **physical partition** has limits on how much extra RU/s it can draw from the pool. 
 
 In the preview:
 
-- A physical partition uses up to 3,000 extra RU/s from the pool in addition to its dedicated throughput.
+- A physical partition uses up to 5,000 extra RU/s from the pool in addition to its dedicated throughput.
 
-- A physical partition’s total consumption of dedicated + pool RU/s can't exceed 8,000 RU/s total, even if more RU/s are available to use from the pool. 
+- A physical partition’s total consumption of dedicated + pool RU/s can't exceed 10,000 RU/s total, even if more RU/s are available to use from the pool. 
 
-- The maximum total RU/s a physical partition can consume while using pooling = $\min(3000+currentThroughput, 8000)$.
+- The maximum total RU/s a physical partition can consume while using pooling = $\min(5000+currentThroughput, 10000)$.
 
 > [!TIP]
 > You can use the metric `PhysicalPartitionThroughput` in Azure Monitor to determine how many dedicated RU/s are allocated to each physical partition.

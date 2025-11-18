@@ -1,0 +1,87 @@
+---
+title: Background indexing
+description: Background indexing to enable nonblocking operation during index creation
+author: avijitgupta
+ms.author: avijitgupta
+ms.topic: how-to
+ms.date: 09/18/2025
+---
+
+# Background indexing
+
+Background indexing is a technique that enables a database system to perform indexing operations on a collection without blocking other queries or updates. Azure DocumentDB accepts the background indexing request and asynchronously performs it in background.
+
+When using smaller tiers or workloads with high I/O, predefine indexes on empty collections and avoid relying on background indexing.
+
+> [!IMPORTANT]
+> Create unique indexes on an empty collection because unique indexes build in the foreground and block reads and writes. Define indexes based on query predicates before inserting data while the collection is still empty. Doing this reduces resource contention in large collections with heavy read-write traffic.
+
+## Monitor index build
+
+We can learn about the progress of index build using command `currentOp()`.
+
+```javascript
+db.currentOp("db_name":"<db_name>", "collection_name":"<collection_name>")
+```
+
+- `db_name` is an optional parameter.
+- `collection_name` is optional parameter.
+
+```javascript
+// Output for reviewing build status
+{
+inprog: [
+  {
+    shard: 'defaultShard',
+    active: true,
+    type: 'op',
+    opid: '10000003049:1701252500485346',
+    op_prefix: Long("10000003049"),
+    currentOpTime: ISODate("2024-06-24T10:08:20.000Z"),
+    secs_running: Long("2"),
+    command: {createIndexes: '' },
+    op: 'command',
+    waitingForLock: true
+  },
+  {
+    shard: 'defaultShard',
+    active: true,
+    type: 'op',
+    opid: '10000003050:1701252500499914',
+    op_prefix: Long("10000003050"),
+    currentOpTime: ISODate("2024-06-24T10:08:20.000Z"),
+    secs_running: Long("2"),
+    command: {
+      createIndexes: 'BRInventory', },
+      indexes: [
+        {
+          v:2,
+          key: {vendorItemId: 1, vendorId: 1, itemType: 1},
+          name: 'compound_idx'
+        }
+      ],
+      '$db': 'test'
+      op: 'command',
+      waitingForLock: false,
+      progress: {
+         blocks_done: Long("12616"),
+         blocks_done: Long("1276873"),
+         documents_d: Long("0"),
+         documents_to: Long("0")
+      },
+      msg: 'Building index.Progress 0.0098803875. Waiting on op_prefix: 10000000000.'
+    }
+  ],
+  ok: 1
+}
+```
+
+## Limitations
+
+- Unique indexes can't be created in the background. It's best to create them on an empty collection and then load the data.
+- Background indexing is performed sequentially within a single collection. However, the number of simultaneous index builds on different collections is configurable (default: 2).
+
+## Next Steps
+
+> [!div class="nextstepaction"]
+> [Best practices](how-to-create-indexes.md)

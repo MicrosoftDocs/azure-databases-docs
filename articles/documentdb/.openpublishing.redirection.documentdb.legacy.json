@@ -1,0 +1,1444 @@
+{
+  "redirections": [
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/ai-advertisement-generation.md",
+      "redirect_url": "/azure/documentdb/tutorial-ai-advertisement-generation",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/ai-frameworks.md",
+      "redirect_url": "/azure/documentdb/ai-frameworks",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/autoscale.md",
+      "redirect_url": "/azure/documentdb/autoscale",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/availability-disaster-recovery-under-hood.md",
+      "redirect_url": "/azure/documentdb/availability-disaster-recovery-under-hood",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/azure-mongo-first-party.md",
+      "redirect_url": "/azure/documentdb/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/background-indexing.md",
+      "redirect_url": "/azure/documentdb/background-indexing",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/burstable-tier.md",
+      "redirect_url": "/azure/documentdb/compute-storage#what-is-burstable-compute",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-configure-firewall.md",
+      "redirect_url": "/azure/documentdb/how-to-configure-firewall",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-connect-cloud-shell.md",
+      "redirect_url": "/azure/documentdb/how-to-connect-cloud-shell",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/change-streams.md",
+      "redirect_url": "/azure/documentdb/change-streams",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/compatibility-and-feature-support.md",
+      "redirect_url": "/azure/documentdb/compatibility-features",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/compatibility.md",
+      "redirect_url": "/azure/documentdb/compatibility-query-language",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/compute-storage.md",
+      "redirect_url": "/azure/documentdb/compute-storage",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/connect-from-databricks.md",
+      "redirect_url": "/azure/documentdb/how-to-connect-from-databricks",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/cross-region-replication.md",
+      "redirect_url": "/azure/documentdb/cross-region-replication",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/data-api.md",
+      "redirect_url": "/azure/documentdb/data-api",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/database-encryption-at-rest.md",
+      "redirect_url": "/azure/documentdb/database-encryption-at-rest",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/enn-vector-search.md",
+      "redirect_url": "/azure/documentdb/enn-vector-search",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/entra-authentication.md",
+      "redirect_url": "/azure/documentdb/how-to-connect-role-based-access-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/faq.yml",
+      "redirect_url": "/azure/documentdb/faq",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/free-tier.md",
+      "redirect_url": "/azure/documentdb/free-tier",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/full-text-search.md",
+      "redirect_url": "/azure/documentdb/full-text-search",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/geospatial-support.md",
+      "redirect_url": "/azure/documentdb/geospatial-support",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/half-precision.md",
+      "redirect_url": "/azure/documentdb/half-precision",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/high-availability-replication-best-practices.md",
+      "redirect_url": "/azure/documentdb/high-availability-replication-best-practices",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/high-availability.md",
+      "redirect_url": "/azure/documentdb/high-availability",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-assess-plan-migration-readiness.md",
+      "redirect_url": "/azure/documentdb/how-to-assess-plan-migration-readiness",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-build-dotnet-console-app.md",
+      "redirect_url": "/azure/documentdb/how-to-build-dotnet-console-app",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-build-go-console-app.md",
+      "redirect_url": "/azure/documentdb/how-to-build-go-console-app",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-build-java-console-app.md",
+      "redirect_url": "/azure/documentdb/how-to-build-java-console-app",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-build-nodejs-console-app.md",
+      "redirect_url": "/azure/documentdb/how-to-build-nodejs-console-app",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-build-python-console-app.md",
+      "redirect_url": "/azure/documentdb/how-to-build-python-console-app",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-build-rust-console-app.md",
+      "redirect_url": "/azure/documentdb/how-to-build-rust-console-app",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-cluster-replica.md",
+      "redirect_url": "/azure/documentdb/how-to-cluster-replica",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-configure-entra-authentication.md",
+      "redirect_url": "/azure/documentdb/how-to-connect-role-based-access-control",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-connect-mongo-shell.md",
+      "redirect_url": "/azure/documentdb/how-to-connect-mongo-shell",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-connect-studio-3t.md",
+      "redirect_url": "/azure/documentdb/how-to-connect-studio-3t",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-create-indexes.md",
+      "redirect_url": "/azure/documentdb/how-to-create-indexes",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-create-text-index.md",
+      "redirect_url": "/azure/documentdb/how-to-create-text-index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-create-wildcard-indexes.md",
+      "redirect_url": "/azure/documentdb/how-to-create-wildcard-indexes",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-cross-region-replica-portal.md",
+      "redirect_url": "/azure/documentdb/how-to-cross-region-replica-portal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-data-encryption.md",
+      "redirect_url": "/azure/documentdb/how-to-data-encryption",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-database-encryption-troubleshoot.md",
+      "redirect_url": "/azure/documentdb/how-to-database-encryption-troubleshoot",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-index.md",
+      "redirect_url": "/azure/documentdb/how-to-index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-manage-alerts.md",
+      "redirect_url": "/azure/documentdb/how-to-manage-alerts",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-migrate-native-tools.md",
+      "redirect_url": "/azure/documentdb/how-to-migrate-native-tools",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-monitor-diagnostics-logs.md",
+      "redirect_url": "/azure/documentdb/how-to-monitor-diagnostics-logs",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-private-link.md",
+      "redirect_url": "/azure/documentdb/how-to-private-link",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-public-access.md",
+      "redirect_url": "/azure/documentdb/how-to-public-access",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-restore-cluster.md",
+      "redirect_url": "/azure/documentdb/how-to-restore-cluster",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-scale-cluster.md",
+      "redirect_url": "/azure/documentdb/how-to-scale-cluster",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-transactions.md",
+      "redirect_url": "/azure/documentdb/how-to-transactions",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/how-to-upgrade-cluster.md",
+      "redirect_url": "/azure/documentdb/how-to-upgrade-cluster",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/hybrid-search.md",
+      "redirect_url": "/azure/documentdb/hybrid-search",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/index.yml",
+      "redirect_url": "/azure/documentdb/index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/indexing.md",
+      "redirect_url": "/azure/documentdb/indexing",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/introduction.md",
+      "redirect_url": "/azure/documentdb/overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/limits.md",
+      "redirect_url": "/azure/documentdb/limitations",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/managed-service-compatibility.md",
+      "redirect_url": "/azure/documentdb/managed-service-compatibility",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/migration-options.md",
+      "redirect_url": "/azure/documentdb/migration-options",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/monitor-metrics.md",
+      "redirect_url": "/azure/documentdb/monitor-metrics",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/multi-cloud.md",
+      "redirect_url": "/azure/documentdb/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/oss.md",
+      "redirect_url": "https://github.com/documentdb/documentdb",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/partitioning.md",
+      "redirect_url": "/azure/documentdb/partitioning",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/product-quantization.md",
+      "redirect_url": "/azure/documentdb/product-quantization",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/quickstart-bicep.md",
+      "redirect_url": "/azure/documentdb/quickstart-bicep",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/quickstart-dotnet.md",
+      "redirect_url": "/azure/documentdb/quickstart-dotnet",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/quickstart-nodejs.md",
+      "redirect_url": "/azure/documentdb/quickstart-nodejs",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/quickstart-portal.md",
+      "redirect_url": "/azure/documentdb/quickstart-portal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/quickstart-python.md",
+      "redirect_url": "/azure/documentdb/quickstart-python",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/quickstart-terraform.md",
+      "redirect_url": "/azure/documentdb/quickstart-terraform",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/rag.md",
+      "redirect_url": "/azure/documentdb/rag",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/release-notes.md",
+      "redirect_url": "/azure/documentdb/release-notes",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/scalability-overview.md",
+      "redirect_url": "/azure/documentdb/scalability-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/secondary-users.md",
+      "redirect_url": "/azure/documentdb/secondary-users",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/security.md",
+      "redirect_url": "/azure/documentdb/security",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/troubleshoot-common-issues.md",
+      "redirect_url": "/azure/documentdb/troubleshoot-common-issues",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/troubleshoot-replication.md",
+      "redirect_url": "/azure/documentdb/troubleshoot-replication",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/tutorial-nodejs-web-app.md",
+      "redirect_url": "/azure/documentdb/tutorial-nodejs-web-app",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/vector-search-ai.md",
+      "redirect_url": "/azure/documentdb/vector-search",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/vector-search.md",
+      "redirect_url": "/azure/documentdb/vector-search",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/role-based-access-control.md",
+      "redirect_url": "/azure/documentdb/how-to-connect-role-based-access-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/index.md",
+      "redirect_url": "/azure/documentdb/commands/index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/index.md",
+      "redirect_url": "/azure/documentdb/operators/index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/aggregate.md",
+      "redirect_url": "/azure/documentdb/commands/aggregation/aggregate",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/count.md",
+      "redirect_url": "/azure/documentdb/commands/aggregation/count",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/distinct.md",
+      "redirect_url": "/azure/documentdb/commands/aggregation/distinct",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/delete.md",
+      "redirect_url": "/azure/documentdb/commands/query-and-write/delete",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/find.md",
+      "redirect_url": "/azure/documentdb/commands/query-and-write/find",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/findandmodify.md",
+      "redirect_url": "/azure/documentdb/commands/query-and-write/findandmodify",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/getMore.md",
+      "redirect_url": "/azure/documentdb/commands/query-and-write/getMore",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/insert.md",
+      "redirect_url": "/azure/documentdb/commands/query-and-write/insert",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/update.md",
+      "redirect_url": "/azure/documentdb/commands/query-and-write/update",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$avg.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$avg",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$bottom.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$bottom",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$bottomn.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$bottomn",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$first.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$first",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$firstn.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$firstn",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$last.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$last",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$lastn.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$lastn",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$max.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$max",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$maxn.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$maxn",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$median.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$median",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$min.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$min",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$minn.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$minn",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$percentile.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$percentile",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$stddevpop.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$stddevpop",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$stddevsamp.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$stddevsamp",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$sum.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$sum",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$top.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$top",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$topn.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$topn",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$addfields.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$addfields",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$bucket.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$bucket",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$changestream.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$changestream",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$collstats.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$collstats",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/accumulators/$count.md",
+      "redirect_url": "/azure/documentdb/operators/accumulators/$count",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$densify.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$densify",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$documents.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$documents",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$facet.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$facet",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$fill.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$fill",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$geonear.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$geonear",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$group.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$group",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$indexstats.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$indexstats",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$lookup.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$lookup",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$match.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$match",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$merge.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$merge",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$out.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$out",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$redact.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$redact",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$replacewith.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$replacewith",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$sample.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$sample",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$set.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$set",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$skip.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$skip",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$sortbycount.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$sortbycount",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$unset.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$unset",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$unwind.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$unwind",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$abs.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$abs",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$add.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$add",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$ceil.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$ceil",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$divide.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$divide",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$exp.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$exp",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$floor.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$floor",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$ln.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$ln",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$log.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$log",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$log10.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$log10",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$multiply.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$multiply",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$pow.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$pow",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$round.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$round",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$sqrt.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$sqrt",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$subtract.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$subtract",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/arithmetic-expression/$trunc.md",
+      "redirect_url": "/azure/documentdb/operators/arithmetic-expression/$trunc",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$arrayelemat.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$arrayelemat",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$arraytoobject.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$arraytoobject",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$concatarrays.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$concatarrays",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$filter.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$filter",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$indexofarray.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$indexofarray",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$isarray.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$isarray",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$map.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$map",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$range.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$range",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$reduce.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$reduce",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$reversearray.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$reversearray",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$slice.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$slice",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$sortarray.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$sortarray",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-expression/$zip.md",
+      "redirect_url": "/azure/documentdb/operators/array-expression/$zip",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-query/$all.md",
+      "redirect_url": "/azure/documentdb/operators/array-query/$all",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-query/$elemmatch.md",
+      "redirect_url": "/azure/documentdb/operators/array-query/$elemmatch",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-query/$size.md",
+      "redirect_url": "/azure/documentdb/operators/array-query/$size",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$addtoset.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$addtoset",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$each.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$each",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$pop.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$pop",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$positional-all.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$positional-all",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$positional-filtered.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$positional-filtered",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$positional.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$positional",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$pull.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$pull",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$pullall.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$pullall",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$push.md",
+      "redirect_url": "/azure/documentdb/operators/array-update/$push",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$sort.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/$sort",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/bitwise/$bitand.md",
+      "redirect_url": "/azure/documentdb/operators/bitwise/$bitand",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/bitwise/$bitnot.md",
+      "redirect_url": "/azure/documentdb/operators/bitwise/$bitnot",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/bitwise/$bitor.md",
+      "redirect_url": "/azure/documentdb/operators/bitwise/$bitor",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/bitwise/$bitxor.md",
+      "redirect_url": "/azure/documentdb/operators/bitwise/$bitxor",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/bitwise-query/$bitsAllClear.md",
+      "redirect_url": "/azure/documentdb/operators/bitwise-query/$bitsAllClear",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/bitwise-query/$bitsAllSet.md",
+      "redirect_url": "/azure/documentdb/operators/bitwise-query/$bitsAllSet",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/bitwise-query/$bitsAnyClear.md",
+      "redirect_url": "/azure/documentdb/operators/bitwise-query/$bitsAnyClear",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/bitwise-query/$bitsAnySet.md",
+      "redirect_url": "/azure/documentdb/operators/bitwise-query/$bitsAnySet",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/bitwise-update/$bit.md",
+      "redirect_url": "/azure/documentdb/operators/bitwise-update/$bit",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/comparison-query/$cmp.md",
+      "redirect_url": "/azure/documentdb/operators/comparison-query/$cmp",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/comparison-query/$eq.md",
+      "redirect_url": "/azure/documentdb/operators/comparison-query/$eq",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/comparison-query/$gt.md",
+      "redirect_url": "/azure/documentdb/operators/comparison-query/$gt",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/comparison-query/$gte.md",
+      "redirect_url": "/azure/documentdb/operators/comparison-query/$gte",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/comparison-query/$in.md",
+      "redirect_url": "/azure/documentdb/operators/comparison-query/$in",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/comparison-query/$lt.md",
+      "redirect_url": "/azure/documentdb/operators/comparison-query/$lt",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/comparison-query/$lte.md",
+      "redirect_url": "/azure/documentdb/operators/comparison-query/$lte",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/comparison-query/$ne.md",
+      "redirect_url": "/azure/documentdb/operators/comparison-query/$ne",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/comparison-query/$nin.md",
+      "redirect_url": "/azure/documentdb/operators/comparison-query/$nin",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/conditional-expression/$cond.md",
+      "redirect_url": "/azure/documentdb/operators/conditional-expression/$cond",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/conditional-expression/$ifnull.md",
+      "redirect_url": "/azure/documentdb/operators/conditional-expression/$ifnull",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/conditional-expression/$switch.md",
+      "redirect_url": "/azure/documentdb/operators/conditional-expression/$switch",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-size/$binarysize.md",
+      "redirect_url": "/azure/documentdb/operators/data-size/$binarysize",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/data-size/$bsonsize.md",
+      "redirect_url": "/azure/documentdb/operators/data-size/$bsonsize",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$dateadd.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$dateadd",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$datediff.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$datediff",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$datefromparts.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$datefromparts",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$datefromstring.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$datefromstring",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$datesubtract.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$datesubtract",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$datetoparts.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$datetoparts",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$datetostring.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$datetostring",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$datetrunc.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$datetrunc",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$dayofmonth.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$dayofmonth",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$dayofweek.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$dayofweek",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$dayofyear.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$dayofyear",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$hour.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$hour",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$isodayofweek.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$isodayofweek",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$isoweek.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$isoweek",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$isoweekyear.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$isoweekyear",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$millisecond.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$millisecond",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$minute.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$minute",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$month.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$month",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$second.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$second",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$week.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$week",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/date-expression/$year.md",
+      "redirect_url": "/azure/documentdb/operators/date-expression/$year",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/element-query/$exists.md",
+      "redirect_url": "/azure/documentdb/operators/element-query/$exists",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/element-query/$type.md",
+      "redirect_url": "/azure/documentdb/operators/element-query/$type",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/evaluation-query/$expr.md",
+      "redirect_url": "/azure/documentdb/operators/evaluation-query/$expr",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/evaluation-query/$mod.md",
+      "redirect_url": "/azure/documentdb/operators/evaluation-query/$mod",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/evaluation-query/$regex.md",
+      "redirect_url": "/azure/documentdb/operators/evaluation-query/$regex",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/evaluation-query/$text.md",
+      "redirect_url": "/azure/documentdb/operators/evaluation-query/$text",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/field-update/$currentdate.md",
+      "redirect_url": "/azure/documentdb/operators/field-update/$currentdate",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/field-update/$inc.md",
+      "redirect_url": "/azure/documentdb/operators/field-update/$inc",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/field-update/$mul.md",
+      "redirect_url": "/azure/documentdb/operators/field-update/$mul",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/field-update/$rename.md",
+      "redirect_url": "/azure/documentdb/operators/field-update/$rename",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/field-update/$setoninsert.md",
+      "redirect_url": "/azure/documentdb/operators/field-update/$setoninsert",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$box.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$box",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$center.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$center",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$centersphere.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$centersphere",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$geointersects.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$geointersects",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$geometry.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$geometry",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$geowithin.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$geowithin",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$maxdistance.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$maxdistance",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$mindistance.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$mindistance",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$near.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$near",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$nearsphere.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$nearsphere",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/geospatial/$polygon.md",
+      "redirect_url": "/azure/documentdb/operators/geospatial/$polygon",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/literal-expression/$literal.md",
+      "redirect_url": "/azure/documentdb/operators/literal-expression/$literal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/logical-query/$and.md",
+      "redirect_url": "/azure/documentdb/operators/logical-query/$and",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/logical-query/$nor.md",
+      "redirect_url": "/azure/documentdb/operators/logical-query/$nor",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/logical-query/$not.md",
+      "redirect_url": "/azure/documentdb/operators/logical-query/$not",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/logical-query/$or.md",
+      "redirect_url": "/azure/documentdb/operators/logical-query/$or",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/miscellaneous/$getfield.md",
+      "redirect_url": "/azure/documentdb/operators/miscellaneous/$getfield",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/miscellaneous/$samplerate.md",
+      "redirect_url": "/azure/documentdb/operators/miscellaneous/$samplerate",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/miscellaneous-query/$comment.md",
+      "redirect_url": "/azure/documentdb/operators/miscellaneous-query/$comment",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/miscellaneous-query/$natural.md",
+      "redirect_url": "/azure/documentdb/operators/miscellaneous-query/$natural",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/miscellaneous-query/$rand.md",
+      "redirect_url": "/azure/documentdb/operators/miscellaneous-query/$rand",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/object-expression/$mergeobjects.md",
+      "redirect_url": "/azure/documentdb/operators/object-expression/$mergeobjects",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/object-expression/$objectToArray.md",
+      "redirect_url": "/azure/documentdb/operators/object-expression/$objectToArray",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/object-expression/$setField.md",
+      "redirect_url": "/azure/documentdb/operators/object-expression/$setField",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/projection/$meta.md",
+      "redirect_url": "/azure/documentdb/operators/projection/$meta",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/set-expression/$allelementstrue.md",
+      "redirect_url": "/azure/documentdb/operators/set-expression/$allelementstrue",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/set-expression/$anyelementtrue.md",
+      "redirect_url": "/azure/documentdb/operators/set-expression/$anyelementtrue",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/set-expression/$setdifference.md",
+      "redirect_url": "/azure/documentdb/operators/set-expression/$setdifference",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/set-expression/$setequals.md",
+      "redirect_url": "/azure/documentdb/operators/set-expression/$setequals",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/set-expression/$setintersection.md",
+      "redirect_url": "/azure/documentdb/operators/set-expression/$setintersection",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/set-expression/$setissubset.md",
+      "redirect_url": "/azure/documentdb/operators/set-expression/$setissubset",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/set-expression/$setunion.md",
+      "redirect_url": "/azure/documentdb/operators/set-expression/$setunion",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/timestamp-expression/$tsincrement.md",
+      "redirect_url": "/azure/documentdb/operators/timestamp-expression/$tsincrement",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/timestamp-expression/$tssecond.md",
+      "redirect_url": "/azure/documentdb/operators/timestamp-expression/$tssecond",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/variable-expression/$let.md",
+      "redirect_url": "/azure/documentdb/operators/variable-expression/$let",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$covariancepop.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$covariancepop",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$covariancesamp.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$covariancesamp",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$denserank.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$denserank",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$derivative.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$derivative",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$documentnumber.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$documentnumber",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$expmovingavg.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$expmovingavg",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$integral.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$integral",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$linearfill.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$linearfill",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$locf.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$locf",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$rank.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$rank",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/window-operators/$shift.md",
+      "redirect_url": "/azure/documentdb/operators/window-operators/$shift",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$convert.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$convert",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$isnumber.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$isnumber",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$tobool.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$tobool",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$todate.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$todate",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$todecimal.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$todecimal",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$todouble.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$todouble",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$toint.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$toint",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$tolong.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$tolong",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$toobjectid.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$toobjectid",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/type-expression/$tostring.md",
+      "redirect_url": "/azure/documentdb/operators/aggregation/type-expression/$tostring",
+      "redirect_document_id": true
+    }
+  ]
+}

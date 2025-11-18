@@ -14,7 +14,7 @@ ms.custom:
 # CustomerIntent: As a user, I want to learn how to perform online migration from a Google AlloyDB for PostgreSQL to Azure Database for PostgreSQL flexible server, using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
 ---
 
-# Migrate online, from a Google AlloyDB for PostgreSQL server to Azure Database for PostgreSQL, with the migration service
+# (Preview) Migrate online, from a Google AlloyDB for PostgreSQL server to Azure Database for PostgreSQL, with the migration service
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL in online mode.
 
