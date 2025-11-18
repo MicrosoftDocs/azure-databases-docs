@@ -73,6 +73,12 @@ One advantage of running your workload in Azure is global reach. Azure Database 
 > [!NOTE]  
 > If your application requires zone-redundant high availability and it's unavailable in your preferred Azure region, consider using other regions within the same geography where zone-redundant HA is available, such as US East for US East 2, Central US for North Central US, and so on.
 
+## V6 SKU Family limitations
+
+- Scaling from V6 SKU family to Burstable tier is not supported.
+- Scaling from Burstable to V6 SKU family is not supported.
+- Virtual Network integration is not supported.
+
 ## Migration
 
 Azure Database for PostgreSQL runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure Database for PostgreSQL.
