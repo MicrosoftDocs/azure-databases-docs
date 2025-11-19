@@ -34,7 +34,7 @@ This **November 18, 2025** release renames the service from **Azure Cosmos DB fo
 
 - **\[Preview\]** Premium SSD v2 support: Next-generation storage delivering better performance at no extra cost. For more information, see [high performance storage](high-performance-storage.md).
 
-- Reserved instances support: Save on costs over one-year or three-year terms. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/en-us/pricing/details/document-db/).
+- Reserved instances support: Save on costs over one-year or three-year terms. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/pricing/details/document-db/).
 
 - Advanced full-text search: fuzzy search and proximity matching supported. For more information, see [hybrid search](hybrid-search.md)
 
@@ -463,7 +463,7 @@ This release contains enhancements to the **Explain** plan and various vector fi
   | **`allShardsQueryPlan`** | This mode is a new explain mode to view the query plan for all shards involved in the query execution. This mode offers a comprehensive perspective for distributed queries. |
   | **`allShardsExecution`** | This mode presents an alternative explain mode to inspect the execution details across all shards involved in the query. This mode provides you with comprehensive information to use in performance optimization. |
 
-- Free tier support is available in more regions. These regions now include **East US 2**. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/en-us/pricing/details/document-db//).
+- Free tier support is available in more regions. These regions now include **East US 2**. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/pricing/details/document-db/).
 
 - The ability to build indexes in the background is now available in preview.
 
