@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Cost-Based Vacuum Delay |
-| Description | the amount of time (in milliseconds) that the vacuum process will sleep when the cost limit has been exceeded. |
+| Description | Vacuum cost delay in milliseconds. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-100` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Cost-Based Vacuum Delay |
-| Description | The accumulated cost that will cause the vacuuming process to sleep. |
+| Description | Vacuum cost amount available before napping. |
 | Data type | integer |
 | Default value | `200` |
 | Allowed values | `1-10000` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Cost-Based Vacuum Delay |
-| Description | The estimated cost charged when vacuum modifies a block that was previously clean. |
+| Description | Vacuum cost for a page dirtied by vacuum. |
 | Data type | integer |
 | Default value | `20` |
 | Allowed values | `0-10000` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Cost-Based Vacuum Delay |
-| Description | The estimated cost for vacuuming a buffer found in the shared buffer cache. |
+| Description | Vacuum cost for a page found in the buffer cache. |
 | Data type | integer |
 | Default value | `1` |
 | Allowed values | `0-10000` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Cost-Based Vacuum Delay |
-| Description | The estimated cost for vacuuming a buffer that must be read from disk. |
+| Description | Vacuum cost for a page not found in the buffer cache. |
 | Data type | integer |
 | Default value | `10` |
 | Allowed values | `0-10000` |

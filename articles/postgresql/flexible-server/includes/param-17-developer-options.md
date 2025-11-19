@@ -99,7 +99,7 @@ ms.custom: automatically generated
 | --- | --- |
 | Category | Developer Options |
 | Description | Forces immediate streaming or serialization of changes in large transactions. On the publisher, it allows streaming or serializing each change in logical decoding. On the subscriber, it allows serialization of all changes to files and notifies the parallel apply workers to read and apply them at the end of the transaction. |
-| Data type | set |
+| Data type | enumeration |
 | Default value | `buffered` |
 | Allowed values | `buffered` |
 | Parameter type | read-only |
@@ -115,7 +115,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Forces use of parallel query facilities. |
+| Description | Forces the planner's use parallel query nodes. This can be useful for testing the parallel query infrastructure by forcing the planner to generate plans that contain nodes that perform tuple communication between workers and the main process. |
 | Data type | enumeration |
 | Default value | `off` |
 | Allowed values | `off,on,regress` |
@@ -132,7 +132,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Continues processing after a checksum failure. |
+| Description | Continues processing after a checksum failure. Detection of a checksum failure normally causes PostgreSQL to report an error, aborting the current transaction. Setting ignore_checksum_failure to true causes the system to ignore the failure (but still report a warning), and continue processing. This behavior could cause crashes or other serious problems. Only has an effect if checksums are enabled. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |
@@ -149,7 +149,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Continues recovery after an invalid pages failure. |
+| Description | Continues recovery after an invalid pages failure. Detection of WAL records having references to invalid pages during recovery causes PostgreSQL to raise a PANIC-level error, aborting the recovery. Setting \"ignore_invalid_pages\" to true causes the system to ignore invalid page references in WAL records (but still report a warning), and continue recovery. This behavior may cause crashes, data loss, propagate or hide corruption, or other serious problems. Only has an effect during recovery or in standby mode. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |
@@ -166,7 +166,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Disables reading from system indexes. |
+| Description | Disables reading from system indexes. It does not prevent updating the indexes, so it is safe to use. The worst consequence is slowness. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |
@@ -268,7 +268,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Sets the amount of time to wait after authentication on connection startup. |
+| Description | Sets the amount of time to wait after authentication on connection startup. This allows attaching a debugger to the process. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0` |
@@ -285,7 +285,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Sets the amount of time to wait before authentication on connection startup. |
+| Description | Sets the amount of time to wait before authentication on connection startup. This allows attaching a debugger to the process. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0` |
@@ -404,7 +404,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Sets the WAL resource managers for which WAL consistency checks are done. |
+| Description | Sets the WAL resource managers for which WAL consistency checks are done. Full-page images will be logged for all data blocks and cross-checked against the results of WAL replay. |
 | Data type | string |
 | Default value | |
 | Allowed values | |
@@ -421,7 +421,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Continues processing past damaged page headers. |
+| Description | Continues processing past damaged page headers. Detection of a damaged page header normally causes PostgreSQL to report an error, aborting the current transaction. Setting \"zero_damaged_pages\" to true causes the system to instead report a warning, zero out the damaged page, and continue processing. This behavior will destroy data, namely all the rows on the damaged page. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |

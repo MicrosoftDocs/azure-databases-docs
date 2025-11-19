@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Specifies the amount of memory to use to cache the contents of pg_commit_ts. Unit is 8kb. |
+| Description | Sets the size of the dedicated buffer pool used for the commit timestamp cache. Specify 0 to have this value determined as a fraction of shared_buffers. |
 | Data type | integer |
 | Default value | `1024` |
 | Allowed values | `0-131072` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Multiple of work_mem to use for hash tables. |
+| Description | Multiple of \"work_mem\" to use for hash tables. |
 | Data type | numeric |
 | Default value | `2` |
 | Allowed values | `1-1000` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Enables/disables the use of huge memory pages. This setting is not applicable to servers having less than 4 vCores. |
+| Description | Use of huge pages on Linux or Windows. |
 | Data type | enumeration |
 | Default value | `try` |
 | Allowed values | `on,off,try` |
@@ -132,7 +132,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Sets the maximum memory to be used for logical decoding. |
+| Description | Sets the maximum memory to be used for logical decoding. This much memory can be used by each internal reorder buffer before spilling to disk. |
 | Data type | integer |
 | Default value | `65536` |
 | Allowed values | `64-2147483647` |
@@ -149,7 +149,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Sets the maximum memory to be used for maintenance operations such as VACUUM, Create Index. |
+| Description | Sets the maximum memory to be used for maintenance operations. This includes operations such as VACUUM and CREATE INDEX. |
 | Data type | integer |
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `1024-2097151` |
@@ -166,7 +166,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Sets the maximum number of simultaneously prepared transactions. When running a replica server, you must set this parameter to the same or higher value than on the primary server. |
+| Description | Sets the maximum number of simultaneously prepared transactions. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-262143` |
@@ -217,7 +217,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_multixact/members. Unit is 8kb. |
+| Description | Sets the size of the dedicated buffer pool used for the MultiXact member cache. |
 | Data type | integer |
 | Default value | `32` |
 | Allowed values | `16-131072` |
@@ -234,7 +234,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_multixact/offsets. Unit is 8kb. |
+| Description | Sets the size of the dedicated buffer pool used for the MultiXact offset cache. |
 | Data type | integer |
 | Default value | `16` |
 | Allowed values | `16-131072` |
@@ -251,7 +251,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_notify. Unit is 8kb. |
+| Description | Sets the size of the dedicated buffer pool used for the LISTEN/NOTIFY message cache. |
 | Data type | integer |
 | Default value | `16` |
 | Allowed values | `16-131072` |
@@ -268,7 +268,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_serial. Unit is 8kb. |
+| Description | Sets the size of the dedicated buffer pool used for the serializable transaction cache. |
 | Data type | integer |
 | Default value | `32` |
 | Allowed values | `16-131072` |
@@ -285,7 +285,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Sets the number of shared memory buffers used by the server. Unit is 8kb. Allowed values are inside the range of 10% - 75% of available memory. |
+| Description | Sets the number of shared memory buffers used by the server. |
 | Data type | integer |
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `16-1073741823` |
@@ -319,7 +319,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_subtrans. Unit is 8kb. |
+| Description | Sets the size of the dedicated buffer pool used for the subtransaction cache. Specify 0 to have this value determined as a fraction of shared_buffers. |
 | Data type | integer |
 | Default value | `1024` |
 | Allowed values | `0-131072` |
@@ -336,7 +336,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Sets the maximum number of temporary buffers used by each database session. |
+| Description | Sets the maximum number of temporary buffers used by each session. |
 | Data type | integer |
 | Default value | `1024` |
 | Allowed values | `100-1073741823` |
@@ -353,7 +353,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_xact. Unit is 8kb. |
+| Description | Sets the size of the dedicated buffer pool used for the transaction status cache. Specify 0 to have this value determined as a fraction of shared_buffers. |
 | Data type | integer |
 | Default value | `1024` |
 | Allowed values | `0-131072` |
@@ -387,7 +387,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Memory |
-| Description | Sets the amount of memory to be used by internal sort operations and hash tables before writing to temporary disk files. |
+| Description | Sets the maximum memory to be used for query workspaces. This much memory can be used by each internal sort operation and hash table before switching to temporary disk files. |
 | Data type | integer |
 | Default value | `4096` |
 | Allowed values | `4096-2097151` |

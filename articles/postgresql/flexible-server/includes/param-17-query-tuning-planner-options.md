@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Other Planner Options |
-| Description | Controls the query planner's use of table constraints to optimize queries. |
+| Description | Enables the planner to use constraints to optimize queries. Table scans will be skipped if their constraints guarantee that no rows match the query. |
 | Data type | enumeration |
 | Default value | `partition` |
 | Allowed values | `partition,on,off` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Other Planner Options |
-| Description | Sets the default statistics target for table columns without a column-specific target. |
+| Description | Sets the default statistics target. This applies to table columns that have not had a column-specific target set via ALTER TABLE SET STATISTICS. |
 | Data type | integer |
 | Default value | `100` |
 | Allowed values | `1-10000` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Other Planner Options |
-| Description | The planner will merge sub-queries into upper queries upto this limit in FROM clause. Smaller values reduce planning time but might yield inferior query plans. |
+| Description | Sets the FROM-list size beyond which subqueries are not collapsed. The planner will merge subqueries into upper queries if the resulting FROM list would have no more than this many items. |
 | Data type | integer |
 | Default value | `8` |
 | Allowed values | `1-2147483647` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Other Planner Options |
-| Description | Determines whether JIT compilation may be used by PostgreSQL. |
+| Description | Allow JIT compilation. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on, off` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Other Planner Options |
-| Description | Sets the FROM-list size beyond which JOIN constructs are not flattened. |
+| Description | Sets the FROM-list size beyond which JOIN constructs are not flattened. The planner will flatten explicit JOIN constructs into lists of FROM items whenever a list of no more than this many items would result. |
 | Data type | integer |
 | Default value | `8` |
 | Allowed values | `1-2147483647` |
@@ -115,7 +115,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Other Planner Options |
-| Description | Controls the planner's selection of custom or generic plan. |
+| Description | Controls the planner's selection of custom or generic plan. Prepared statements can have custom and generic plans, and the planner will attempt to choose which is better. This can be set to override the default behavior. |
 | Data type | enumeration |
 | Default value | `auto` |
 | Allowed values | `auto,force_generic_plan,force_custom_plan` |

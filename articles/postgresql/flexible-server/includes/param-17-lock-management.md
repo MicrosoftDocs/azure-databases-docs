@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Lock Management |
-| Description | Sets the amount of time, in milliseconds, to wait on a lock before checking for deadlock. |
+| Description | Sets the time to wait on a lock before checking for deadlock. |
 | Data type | integer |
 | Default value | `1000` |
 | Allowed values | `1-2147483647` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Lock Management |
-| Description | Sets the maximum number of locks can be taken per transaction. When running a replica server, you must set this parameter to the same or higher value than on the master server. |
+| Description | Sets the maximum number of locks per transaction. The shared lock table is sized on the assumption that at most \"max_locks_per_transaction\" objects per server process or prepared transaction will need to be locked at any one time. |
 | Data type | integer |
 | Default value | `64` |
 | Allowed values | `10-8388608` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Lock Management |
-| Description | Sets the maximum number of predicate-locked tuples per page. |
+| Description | Sets the maximum number of predicate-locked tuples per page. If more than this number of tuples on the same page are locked by a connection, those locks are replaced by a page-level lock. |
 | Data type | integer |
 | Default value | `2` |
 | Allowed values | `0-2147483647` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Lock Management |
-| Description | Sets the maximum number of predicate-locked pages and tuples per relation. |
+| Description | Sets the maximum number of predicate-locked pages and tuples per relation. If more than this total of pages and tuples in the same relation are locked by a connection, those locks are replaced by a relation-level lock. |
 | Data type | integer |
 | Default value | `-2` |
 | Allowed values | `-2147483648-2147483647` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Lock Management |
-| Description | Sets the maximum number of predicate locks per transaction. |
+| Description | Sets the maximum number of predicate locks per transaction. The shared predicate lock table is sized on the assumption that at most \"max_pred_locks_per_transaction\" objects per server process or prepared transaction will need to be locked at any one time. |
 | Data type | integer |
 | Default value | `64` |
 | Allowed values | `64` |

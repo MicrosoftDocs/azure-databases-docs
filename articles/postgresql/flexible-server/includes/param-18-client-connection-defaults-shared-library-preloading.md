@@ -67,7 +67,7 @@ ms.custom: automatically generated
 | Description | Lists shared libraries to preload into server. |
 | Data type | set |
 | Default value | `pg_cron,pg_stat_statements` |
-| Allowed values | `anon,auto_explain,azure_storage,pg_cron,pg_hint_plan,pg_partman_bgw,pg_prewarm,pg_squeeze,pg_stat_statements,pgaudit,pglogical,wal2json` |
+| Allowed values | `anon,auto_explain,azure_storage,credcheck,pg_cron,pg_duckdb,pg_hint_plan,pg_partman_bgw,pg_prewarm,pg_squeeze,pg_stat_statements,pgaudit,pglogical,wal2json` |
 | Parameter type | static |
 | Documentation | [shared_preload_libraries](https://www.postgresql.org/docs/18/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES) |
 

@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Version and Platform Compatibility / Other Platforms and Clients |
-| Description | Enable/Disable allow alter system command. |
+| Description | Allows running the ALTER SYSTEM command. Can be set to off for environments where global configuration changes should be made using a different method. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Version and Platform Compatibility / Other Platforms and Clients |
-| Description | When on, expressions of the form expr = NULL (or NULL = expr) are treated as expr IS NULL, that is, they return true if expr evaluates to the null value, and false otherwise. |
+| Description | Treats \"expr=NULL\" as \"expr IS NULL\". When turned on, expressions of the form expr = NULL (or NULL = expr) are treated as expr IS NULL, that is, they return true if expr evaluates to the null value, and false otherwise. The correct behavior of expr = NULL is to always return null (unknown). |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |

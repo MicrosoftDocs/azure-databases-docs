@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / Authentication |
-| Description | Determines the algorithm to use to encrypt the password. |
+| Description | Chooses the algorithm for encrypting passwords. |
 | Data type | enumeration |
 | Default value | `scram-sha-256` |
 | Allowed values | `md5,scram-sha-256` |

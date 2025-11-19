@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Recovery |
-| Description | Prefetch referenced blocks during recovery. |
+| Description | Prefetch referenced blocks during recovery. Look ahead in the WAL to find references to uncached data. |
 | Data type | enumeration |
 | Default value | `try` |
 | Allowed values | `try` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Recovery |
-| Description | Buffer size for reading ahead in the WAL during recovery. |
+| Description | Buffer size for reading ahead in the WAL during recovery. Maximum distance to read ahead in the WAL to prefetch referenced data blocks. |
 | Data type | integer |
 | Default value | `524288` |
 | Allowed values | `524288` |

@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Disk |
-| Description | Limits the total size of all temporary files used by each process. |
+| Description | Limits the total size of all temporary files used by each process. -1 means no limit. |
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1-2147483647` |

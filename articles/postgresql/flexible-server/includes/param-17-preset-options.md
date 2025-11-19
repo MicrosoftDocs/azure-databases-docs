@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Preset Options |
-| Description | Shows the mode of the data directory. |
+| Description | Shows the mode of the data directory. The parameter value is a numeric mode specification in the form accepted by the chmod and umask system calls. (To use the customary octal format the number must start with a 0 (zero).). |
 | Data type | integer |
 | Default value | `0700` |
 | Allowed values | `0700` |
@@ -268,7 +268,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Preset Options |
-| Description | Shows the number of huge pages needed for the main shared memory area. |
+| Description | Shows the number of huge pages needed for the main shared memory area. -1 indicates that the value could not be determined. |
 | Data type | integer |
 | Default value | `4314` |
 | Allowed values | `4314` |

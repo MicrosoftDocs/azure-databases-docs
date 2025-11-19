@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / Where to Log |
-| Description | Sets the destination for server log output. |
+| Description | Sets the destination for server log output. Valid values are combinations of \"stderr\", \"syslog\", \"csvlog\", \"jsonlog\", and \"eventlog\", depending on the platform. |
 | Data type | enumeration |
 | Default value | `stderr` |
 | Allowed values | `stderr,csvlog` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / Where to Log |
-| Description | Sets the destination directory for log files. |
+| Description | Sets the destination directory for log files. Can be specified as relative to the data directory or as absolute path. |
 | Data type | string |
 | Default value | `log` |
 | Allowed values | `log` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / Where to Log |
-| Description | Sets the file permissions for log files. |
+| Description | Sets the file permissions for log files. The parameter value is expected to be a numeric mode specification in the form accepted by the chmod and umask system calls. (To use the customary octal format the number must start with a 0 (zero).). |
 | Data type | integer |
 | Default value | `0600` |
 | Allowed values | `0600` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / Where to Log |
-| Description | Start a subprocess to capture stderr output and/or csvlogs into log files. |
+| Description | Start a subprocess to capture stderr, csvlog and/or jsonlog into log files. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |

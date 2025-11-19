@@ -217,7 +217,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / SSL |
-| Description | Controls whether ssl_passphrase_command is called during server reload. |
+| Description | Controls whether \"ssl_passphrase_command\" is called during server reload. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |

@@ -64,10 +64,10 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Shared Library Preloading |
-| Description | Sets which shared libraries are preloaded at server start. |
+| Description | Lists shared libraries to preload into server. |
 | Data type | set |
 | Default value | `pg_stat_statements` |
-| Allowed values | `anon,auto_explain,azure_storage,pg_cron,pg_hint_plan,pg_partman_bgw,pg_prewarm,pg_squeeze,pg_stat_statements,pgaudit,pglogical,timescaledb,wal2json` |
+| Allowed values | `anon,auto_explain,azure_storage,credcheck,pg_cron,pg_duckdb,pg_hint_plan,pg_partman_bgw,pg_prewarm,pg_squeeze,pg_stat_statements,pgaudit,pglogical,timescaledb,wal2json` |
 | Parameter type | static |
 | Documentation | [shared_preload_libraries](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES) |
 
