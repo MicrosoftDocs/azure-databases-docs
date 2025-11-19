@@ -80,7 +80,7 @@ The fastest way to get started is by using the automated deployment script.
     cd azure-postgres-mcp-demo
     ```
 
-2. Open [infra/main.parameters.json](/infra/main.parameters.json) and update these 2 values 
+2. Open [infra/main.parameters.json](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/1f94c56bdd8ab4b383fdfc8eac23b05db2c4b09f/infra/main.parameters.json) and update these 2 values 
    
     | Parameter              | Description                                                                             |
     | ---------------------- | --------------------------------------------------------------------------------------- |
@@ -96,7 +96,7 @@ The fastest way to get started is by using the automated deployment script.
     ```
     > [!Note]
     > Find your **Azure Database for PostgreSQL** Resource ID in your Azure portal.  **JSON View** → **Resource ID**:
-    > :::image type="content" source="media/generative-ai-foundry-integration/azure_json_view.png" alt-text="Screenshot of Azure details page.":::
+    > :::image type="content" source="media/generative-ai-foundry-integration/azure-details-view.png" alt-text="Screenshot of Azure details page.":::
 
 
     b. Update the [`aifProjectResourceId`](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/1f94c56bdd8ab4b383fdfc8eac23b05db2c4b09f/infra/main.parameters.json#L20) variable to match the Foundry project resource you want to use
@@ -108,7 +108,7 @@ The fastest way to get started is by using the automated deployment script.
 
     > [!Note]
     > Find your **Foundry project** Resource ID in your Azure portal.  **JSON View** → **Resource ID**:
-    > :::image type="content" source="media/generative-ai-foundry-integration/azure_json_view_aif.png" alt-text="Screenshot of Foundry details.":::
+    > :::image type="content" source="media/generative-ai-foundry-integration/azure-details-view-foundry.png" alt-text="Screenshot of Foundry details.":::
 
 3. Create a new azd environment and deploy. Make sure you are in the main directory (`azure-postgres-mcp-demo`):
 
