@@ -212,7 +212,7 @@ Here are limitations of the high performance storage feature:
 
 Consider these things when using high performance storage in your Azure DocumentDB cluster:
 
-- High performance storage can get the maximum performance for your selected compute/storage combination for the fixed price per 1 GiB of storage / month. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/mongodb).
+- High performance storage can get the maximum performance for your selected compute/storage combination for the fixed price per 1 GiB of storage / month. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/pricing/details/document-db/).
 
 ## Related content
 
