@@ -28,7 +28,7 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 We’re excited to announce that the Reader Endpoint feature for Azure Database for MySQL is now ready for private preview.   
 Reader Endpoint provides a dedicated read-only endpoint for read replicas, enabling automatic connection-based load balancing of read-only traffic across multiple replicas. This simplifies application architecture by offering a single endpoint for read operations, improving scalability and fault tolerance. Azure Database for MySQL supports up to 10 read replicas per primary server. By routing read-only traffic through the reader endpoint, application teams can efficiently manage connections and optimize performance without handling individual replica endpoints. Reader endpoints continuously monitor the health of replicas and automatically exclude any replica that exceeds the configured replication lag threshold or becomes unavailable. To enroll in the preview, please submit your details using this [form](https://aka.ms/mysqlearlyaccessenroll).  
 
-### Rename Server (Preview)
+### Rename Server (Private Preview)
 We are excited to share that Azure Database for MySQL – Flexible Server now supports server renaming. With this new capability, you no longer need to restore or migrate to a new server instance just to change the server name. The feature is currently available in preview, and we recommend avoiding production workloads while trying it out.To enroll in the preview, please submit your details using this [form](https://aka.ms/mysqlearlyaccessenroll).  
 
 ## October 2025
