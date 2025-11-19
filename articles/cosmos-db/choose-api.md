@@ -31,9 +31,10 @@ Azure Cosmos DB is a fully managed NoSQL, relational, and vector database for mo
 ## TL;DR – Start here
 
 > **In ~80–90% of new applications, choose the Azure Cosmos DB API for NoSQL.**  
-> Choose [**Azure DocumentDB**](articles\cosmos-db\mongodb\vcore\introduction.md) only when high MongoDB feature fidelity (aggregation pipelines, multi-document transactions, ecosystem tooling), developing apps on a multicloud environment, or a lift‑and‑shift Mongo migration is a hard requirement.
 
-### Why API for NoSQL is the default
+> Choose [**Azure DocumentDB**](https://learn.microsoft.com/en-us/documentdb/overview) only when high MongoDB feature fidelity (aggregation pipelines, multi-document transactions, ecosystem tooling), developing apps on a multicloud environment, or a lift‑and‑shift Mongo migration is a hard requirement.
+
+### Why Azure Cosmos DB API for NoSQL is the default
 - Fastest feature velocity.
 - SQL‑like querying over JSON (simple, expressive).
 - Turnkey global distribution & multi-region writes.
@@ -41,7 +42,7 @@ Azure Cosmos DB is a fully managed NoSQL, relational, and vector database for mo
 - Native vector search (similarity + embeddings).
 - Deep Azure integration (monitoring, security, governance).
 
-### Choosing between API for NoSQL and Azure DocumentDB
+### Choosing between Azure Cosmos DB API for NoSQL and Azure DocumentDB
 
 | If you… | Pick | Why |
 |---|---|---|
@@ -57,7 +58,7 @@ Azure Cosmos DB is a fully managed NoSQL, relational, and vector database for mo
 
 | Source workload | Recommended target | Notes |
 |---|---|---|
-| Existing MongoDB (replica sets / sharded) | [Azure DocumentDB](articles\cosmos-db\mongodb\vcore\introduction.md)  | Lowest friction; keep aggregation & multi‑document transaction semantics. |
+| Existing MongoDB (replica sets / sharded) | [Azure DocumentDB](https://learn.microsoft.com/en-us/documentdb/overview)  | Lowest friction; keep aggregation & multi‑document transaction semantics. |
 | Cassandra cluster needing unchanged CQL | [Azure Managed Instance for Apache Cassandra](https://learn.microsoft.com/azure/managed-instance-apache-cassandra/introduction) | Use Managed Instance for deeper operational parity. |
 | Cassandra (refactor acceptable) | API for NoSQL | More native features; simpler global distribution. |
 | Azure Table Storage | API for NoSQL (modernize) | Recommended long-term destination; if zero-code change is required temporarily, land on Table API first, then migrate to NoSQL. |
@@ -65,6 +66,7 @@ Azure Cosmos DB is a fully managed NoSQL, relational, and vector database for mo
 | Gremlin graph app (RAG & AI traversal) | [Cosmos AIGraph (OmniRAG)](https://github.com/AzureCosmosDB/CosmosAIGraph) | Optimized for RAG patterns with knowledge graphs, combining vector/hybrid search with intelligent query routing. |
 | Relational PostgreSQL needing scale-out | [Azure Database PostGreSQL](https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview)| True distributed relational model. |
 | Other relational (Oracle / SQL Server) modernizing to JSON / key-value | API for NoSQL | Document model + global distribution + vector search. |
+
 
 ## Considerations when choosing an API
 
@@ -90,5 +92,5 @@ Trying to do capacity planning for a migration to Azure Cosmos DB? You can use i
 ## Related content
 
 - [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-dotnet.md)
-- [Get started with Azure DocumentDB](mongodb/vcore/introduction.md)
+- [Get started with Azure DocumentDB](https://learn.microsoft.com/en-us/documentdb/overview)
 
