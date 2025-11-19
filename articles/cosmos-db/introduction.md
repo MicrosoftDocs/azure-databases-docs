@@ -31,11 +31,15 @@ Azure Cosmos DB is a fully managed NoSQL, relational, and vector database. It of
 
 App development is faster and more productive thanks to:
 
-- Turnkey multi-region data distribution anywhere in the world
-- Open source APIs
-- SDKs for popular languages
-- AI database functionalities like integrated vector database or seamless integration with Azure AI Services to support Retrieval Augmented Generation
-- Query Copilot for generating NoSQL queries based on your natural language prompts ([preview](nosql/query/how-to-enable-use-copilot.md))
+- Turnkey global distribution & multi-region writes (99.999% SLA) with automatic failover
+- Integrated vector + hybrid similarity search (DiskANN) storing embeddings with operational data for RAG, AI agents, and LLM caching
+- Hierarchical partition keys (subpartitioning) to scale multi-tenant & high-cardinality workloads beyond single logical partition limits
+- Change feed (latest & all versions + deletes modes) for event-driven architectures (Azure Functions, Spark) & streaming pipelines
+- No‑ETL HTAP via Synapse Link or Fabric mirroring: isolated analytical store for near real-time insights
+- Continuous backup & point‑in‑time restore (recover accidental deletes/corruption across regions)
+- Autoscale & serverless throughput models plus RU-based cost governance
+- Rich SDKs (.NET, Java, JavaScript/Node.js, Python) & automatic indexing (no manual index maintenance for most workloads)
+
 
 As a fully managed service, Azure Cosmos DB takes database administration off your hands with automatic management, updates, and patching. It also handles capacity management with cost-effective serverless and automatic scaling options that respond to application needs to match capacity with demand.
 
@@ -85,7 +89,6 @@ Gain unparalleled [SLA-backed](https://azure.microsoft.com/support/legal/sla/cos
 Build fast with open-source APIs, multiple SDKs, schemaless data, and no-ETL analytics over operational data.
 
 - Deeply integrated with key Azure services used in modern (cloud-native) app development including Azure Functions, IoT Hub, AKS (Azure Kubernetes Service), App Service, and more.
-- Choose from multiple database APIs including the native API for NoSQL, MongoDB, PostgreSQL, Apache Cassandra, Apache Gremlin, and Table.
 - Use Azure Cosmos DB as your unified AI database for data models like relational, document, vector, key-value, graph, and table.
 - Build apps on API for NoSQL using the languages of your choice with SDKs for .NET, Java, Node.js, and Python. Or your choice of drivers for any of the other database APIs.
 - Change feed makes it easy to track and manage changes to database containers and create triggered events with Azure Functions.
@@ -121,12 +124,31 @@ End-to-end database management, with serverless and automatic scaling matching y
 - Analytics for locally available, globally distributed, multi-region writes.
 - Native integration with Azure Synapse Analytics.
 
+### Azure Cosmos DB vs. Azure DocumentDB
+
+Azure Cosmos DB and Azure DocumentDB are both powerful NoSQL database services designed to help you build successful applications with flexible JSON data models. Azure Cosmos DB is optimized for scale-out scenarios that require global distribution, massive scale, and instantaneous scaling. It offers a 99.999% availability service level agreement (SLA) with automatic failover across multiple regions. This reliability makes it well-suited for high-traffic web apps, IoT data collection, real-time gaming, and global online stores that need reliable performance worldwide.
+
+Azure DocumentDB (vCore) is optimized for scale-up scenarios that prioritize rich query capabilities and familiar development experiences. Azure DocumentDB is powered by the open-source DocumentDB engine built on the PostgreSQL engine with full MongoDB wire protocol compatibility. Azure DocumentDB excels at complex aggregation pipelines, analytical queries, and advanced document database features. It's ideal for content management systems, analytics platforms, MongoDB migrations, and applications requiring sophisticated query operations with predictable vCore-based pricing.
+
+Azure DocumentDB is also a good fit for multi-cloud portability scenarios where sustaining existing MongoDB-compatible tooling, drivers, or operational patterns across multiple cloud environments is a priority and refactoring to the Cosmos DB native API isn't immediately feasible.
+
+| Characteristic | Azure Cosmos DB (RU/serverless) | Azure DocumentDB (vCore) |
+|----------------|---------------------------------|---------------------------|
+| Availability SLA | 99.999% (multi-region) | 99.995% |
+| Scaling model | Horizontal scale-out (per region RU/s + serverless) | Vertical scale-up (provisioned vCores) |
+| Global distribution | Turnkey multi-region writes & automatic failover | Regional deployments + optional geo-replicas |
+| Query focus | Optimized for point reads & distributed queries | Advanced aggregation pipelines & complex joins |
+| Cost model | Variable RU-based or serverless consumption | Predictable compute + storage |
+
+For more detailed decision guidance, see [Azure DocumentDB vs. Azure Cosmos DB decision guide](https://learn.microsoft.com/azure/documentdb/compare-cosmos-db?context=/azure/cosmos-db/nosql/context/context).
+
+> [!TIP]
+> In most new application scenarios where you're flexible on drivers and need global scale, prefer the native **API for NoSQL** on Azure Cosmos DB for fastest feature velocity and turnkey global distribution. Choose **Azure DocumentDB** only when you require: (1) deep MongoDB aggregation & multi-document transaction fidelity, (2) PostgreSQL ecosystem alignment, or (3) multi-cloud portability using MongoDB-compatible drivers and tooling without refactoring. You can later migrate to the API for NoSQL to unlock broader native capabilities.
+
+## Related content
+
 ## Related content
 
 - Learn [how to choose an API](choose-api.md) in Azure Cosmos DB
   - [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-dotnet.md)
-  - [Get started with Azure Cosmos DB for MongoDB](mongodb/create-mongodb-nodejs.md)
-  - [Get started with Azure Cosmos DB for Apache Cassandra](cassandra/manage-data-dotnet.md)
-  - [Get started with Azure Cosmos DB for Apache Gremlin](gremlin/quickstart-dotnet.md)
-  - [Get started with Azure Cosmos DB for Table](table/quickstart-dotnet.md)
-  - [Get started with Azure Cosmos DB for PostgreSQL](postgresql/quickstart-app-stacks-python.md)
+ 
