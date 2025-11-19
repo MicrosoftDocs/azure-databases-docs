@@ -43,7 +43,7 @@ The retirement details for MySQL major versions are listed in the following tabl
 | Version | What's New | Azure Support Start Date | Community Retirement Date | Azure Standard Support End Date | Azure Extended Support Start Date | Azure Extended Support End Date |
 | --- | --- | --- | --- | --- | --- | --- |
 | [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | March 20, 2018 | October 31, 2023 | March 31, 2026 | April 1, 2026 | March 31, 2029 |
-| [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | May 31, 2026 | June 1, 2026 | May 31, 2029 |
+| [MySQL 8.0](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | May 31, 2026 | June 1, 2026 | May 31, 2029 |
 
 ### What happens after standard support ends?
 
