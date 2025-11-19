@@ -577,7 +577,7 @@ ms.custom: automatically generated
 | Description | Specifies which extensions are allowed to be created in the server. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
 
@@ -835,6 +835,567 @@ ms.custom: automatically generated
 | Allowed values | `1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.auth_delay_ms
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Milliseconds to delay before reporting authentication failure. |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.auth_delay_ms](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.auth_failure_cache_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum of entries in the auth failure cache. |
+| Data type | integer |
+| Default value | `1024` |
+| Allowed values | `1-2097151` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.auth_failure_cache_size](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.encrypted_password_allowed
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Allow encrypted password to be used or throw an error. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.encrypted_password_allowed](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.history_max_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum of entries in the password history. |
+| Data type | integer |
+| Default value | `65535` |
+| Allowed values | `1-2097151` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.history_max_size](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.max_auth_failure
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of authentication failures before the user login account is invalidated. |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-64` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.max_auth_failure](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.no_password_logging
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Prevent exposing the password in error messages logged. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.no_password_logging](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_contain
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Password should contain these characters |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_contain_username
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Password contains username |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_contain_username](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_ignore_case
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Ignore case while password checking |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_ignore_case](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_digit
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password digits |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_digit](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_length
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password length |
+| Data type | integer |
+| Default value | `1` |
+| Allowed values | `1-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_length](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_lower
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password lowercase letters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_lower](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_repeat
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password characters repeat |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_repeat](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_special
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum special characters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_special](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_upper
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password uppercase letters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_upper](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_not_contain
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Password should not contain these characters |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_not_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_reuse_history
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum number of password changes before permitting reuse |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-100` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_reuse_history](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_reuse_interval
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum number of days elapsed before permitting reuse |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-730` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_reuse_interval](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_valid_max
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Force use of VALID UNTIL clause in CREATE ROLE statement with a maximum number of days |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_valid_max](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_valid_until
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Force use of VALID UNTIL clause in CREATE ROLE statement with a minimum number of days |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_valid_until](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.reset_superuser
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Restore superuser access when they have been banned. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [credcheck.reset_superuser](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_contain
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Username should contain these characters |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_contain_password
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Username contains password |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_contain_password](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_ignore_case
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Ignore case while username checking |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_ignore_case](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_digit
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username digits |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_digit](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_length
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username length |
+| Data type | integer |
+| Default value | `1` |
+| Allowed values | `1-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_length](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_lower
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username lowercase letters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_lower](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_repeat
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username characters repeat |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_repeat](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_special
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username special characters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_special](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_upper
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username uppercase letters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_upper](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_not_contain
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Username should not contain these characters |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_not_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.whitelist
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Comma separated list of usernames to exclude from password policy check. |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.whitelist](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.whitelist_auth_failure
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Comma separated list of usernames to exclude from max authentication failure check. |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.whitelist_auth_failure](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -1138,8 +1699,8 @@ ms.custom: automatically generated
 | Description | The maximum memory DuckDB can use (e.g., 1GB). |
 | Data type | integer |
 | Default value | `1024` |
-| Allowed values | `1024-688128` |
-| Parameter type | static |
+| Allowed values | `1024` |
+| Parameter type | read-only |
 | Documentation | [duckdb.max_memory](https://github.com/duckdb/pg_duckdb) |
 
 
@@ -1172,8 +1733,8 @@ ms.custom: automatically generated
 | Description | The maximum memory DuckDB can use (e.g., 1GB), alias for duckdb.max_memory |
 | Data type | integer |
 | Default value | `1024` |
-| Allowed values | `1024-688128` |
-| Parameter type | static |
+| Allowed values | `1024` |
+| Parameter type | read-only |
 | Documentation | [duckdb.memory_limit](https://github.com/duckdb/pg_duckdb) |
 
 
@@ -1359,8 +1920,8 @@ ms.custom: automatically generated
 | Description | Specifies whether logging will include the rows retrieved or affected by a statement. |
 | Data type | boolean |
 | Default value | `off` |
-| Allowed values | `off` |
-| Parameter type | read-only |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
 | Documentation | [pgaudit.log_rows](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
 
 

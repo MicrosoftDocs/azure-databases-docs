@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / When to Log |
-| Description | Sets the minimum execution time above which a sample of statements will be logged. Sampling is determined by log_statement_sample_rate. |
+| Description | Sets the minimum execution time above which a sample of statements will be logged. Sampling is determined by log_statement_sample_rate. Zero logs a sample of all queries. -1 turns this feature off. |
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1-2147483647` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / When to Log |
-| Description | Sets the minimum execution time (in milliseconds) above which statements will be logged. -1 disables logging statement durations. |
+| Description | Sets the minimum execution time above which all statements will be logged. Zero prints all queries. -1 turns this feature off. |
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1-2147483647` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / When to Log |
-| Description | Causes all statements generating error at or above this level to be logged. |
+| Description | Causes all statements generating error at or above this level to be logged. Each level includes all the levels that follow it. The later the level, the fewer messages are sent. |
 | Data type | enumeration |
 | Default value | `error` |
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,warning,error,log,fatal,panic` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / When to Log |
-| Description | Controls which message levels are written to the server log. |
+| Description | Sets the message levels that are logged. Each level includes all the levels that follow it. The later the level, the fewer messages are sent. |
 | Data type | enumeration |
 | Default value | `warning` |
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,warning,error,log,fatal,panic` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / When to Log |
-| Description | Time between progress updates for long-running startup operations. |
+| Description | Time between progress updates for long-running startup operations. 0 turns this feature off. |
 | Data type | integer |
 | Default value | `10000` |
 | Allowed values | `10000` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / When to Log |
-| Description | Fraction of statements exceeding log_min_duration_sample to be logged. |
+| Description | Fraction of statements exceeding \"log_min_duration_sample\" to be logged. Use a value between 0.0 (never log) and 1.0 (always log). |
 | Data type | numeric |
 | Default value | `1` |
 | Allowed values | `0-1` |
@@ -115,7 +115,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / When to Log |
-| Description | Sets the fraction of transactions from which to log all statements. |
+| Description | Sets the fraction of transactions from which to log all statements. Use a value between 0.0 (never log) and 1.0 (log all statements for all transactions). |
 | Data type | numeric |
 | Default value | `0` |
 | Allowed values | `0` |

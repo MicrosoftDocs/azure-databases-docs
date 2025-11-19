@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Statistics / Monitoring |
-| Description | For each query, writes cumulative performance statistics to the server log. |
+| Description | Writes cumulative performance statistics to the server log. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |

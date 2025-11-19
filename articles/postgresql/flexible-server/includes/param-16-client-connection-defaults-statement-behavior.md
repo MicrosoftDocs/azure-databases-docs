@@ -117,8 +117,8 @@ ms.custom: automatically generated
 | Category | Client Connection Defaults / Statement Behavior |
 | Description | Sets the default compression method for compressible values. |
 | Data type | enumeration |
-| Default value | `pglz` |
-| Allowed values | `pglz` |
+| Default value | `lz4` |
+| Allowed values | `lz4` |
 | Parameter type | read-only |
 | Documentation | [default_toast_compression](https://www.postgresql.org/docs/16/runtime-config-client.html#GUC-DEFAULT-TOAST-COMPRESSION) |
 

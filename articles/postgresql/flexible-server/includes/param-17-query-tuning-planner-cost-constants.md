@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Cost Constants |
-| Description | Sets the planner's estimate of the cost of processing each operator or function executed during a query. |
+| Description | Sets the planner's estimate of the cost of processing each operator or function call. |
 | Data type | numeric |
 | Default value | `0.0025` |
 | Allowed values | `0-1.79769e+308` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Cost Constants |
-| Description | Sets the planner's estimate of the cost of processing each row during a query. |
+| Description | Sets the planner's estimate of the cost of processing each tuple (row). |
 | Data type | numeric |
 | Default value | `0.01` |
 | Allowed values | `0-1.79769e+308` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Cost Constants |
-| Description | Sets the planner's assumption about the size of the disk cache. |
+| Description | Sets the planner's assumption about the total size of the data caches. That is, the total size of the caches (kernel cache and shared buffers) used for PostgreSQL data files. This is measured in disk pages, which are normally 8 kB each. |
 | Data type | integer |
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `1-2147483647` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Cost Constants |
-| Description | Sets the query cost above which JIT compilation is activated, if enabled. |
+| Description | Perform JIT compilation if query is more expensive. -1 disables JIT compilation. |
 | Data type | integer |
 | Default value | `100000` |
 | Allowed values | `-1-2147483647` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Cost Constants |
-| Description | Sets the query cost above which JIT compilation attempts to inline functions and operators. |
+| Description | Perform JIT inlining if query is more expensive. -1 disables inlining. |
 | Data type | integer |
 | Default value | `500000` |
 | Allowed values | `-1-2147483647` |
@@ -115,7 +115,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Cost Constants |
-| Description | Sets the query cost above which JIT compilation applies expensive optimizations. |
+| Description | Optimize JIT-compiled functions if query is more expensive. -1 disables optimization. |
 | Data type | integer |
 | Default value | `500000` |
 | Allowed values | `-1-2147483647` |
@@ -132,7 +132,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Cost Constants |
-| Description | Sets the minimum amount of index data for a parallel scan. |
+| Description | Sets the minimum amount of index data for a parallel scan. If the planner estimates that it will read a number of index pages too small to reach this limit, a parallel scan will not be considered. |
 | Data type | integer |
 | Default value | `64` |
 | Allowed values | `0-715827882` |
@@ -149,7 +149,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Cost Constants |
-| Description | Sets the minimum amount of table data that must be scanned for a parallel scan to be considered. |
+| Description | Sets the minimum amount of table data for a parallel scan. If the planner estimates that it will read a number of table pages too small to reach this limit, a parallel scan will not be considered. |
 | Data type | integer |
 | Default value | `1024` |
 | Allowed values | `0-715827882` |
@@ -183,7 +183,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Cost Constants |
-| Description | Sets the planner's estimate of the cost of passing each tuple (row) from worker to master backend. |
+| Description | Sets the planner's estimate of the cost of passing each tuple (row) from worker to leader backend. |
 | Data type | numeric |
 | Default value | `0.1` |
 | Allowed values | `0-1.79769e+308` |

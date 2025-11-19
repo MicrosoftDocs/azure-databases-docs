@@ -4,7 +4,7 @@ description: Explore Azure DocumentDB release notes with feature updates, engine
 author: avijitgupta
 ms.author: avijitgupta
 ms.topic: release-notes
-ms.date: 10/17/2025
+ms.date: 11/19/2025
 ai-usage: ai-assisted
 ms.custom:
   - references_regions 
@@ -14,10 +14,35 @@ ms.custom:
 
 Azure DocumentDB continuously evolves with new features, performance improvements, and infrastructure enhancements. This article provides a comprehensive history of feature releases, engine updates, and service improvements for Azure DocumentDB. Each release includes details about new capabilities, query operator enhancements, and infrastructure changes to help you stay current with the latest developments.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Items tagged as **\[Preview\]** require a support request to enable them on your cluster.
 
 ## Latest
+
+> [!IMPORTANT]
+> Azure Cosmos DB for MongoDB (vCore) is now **Azure DocumentDB**, powered by the open-source DocumentDB project.
+
+This **November 18, 2025** release renames the service from **Azure Cosmos DB for MongoDB (vCore)** to **Azure DocumentDB** along with other feature changes.
+
+### Enhancements
+
+- Open source Kubernetes operator: Run and manage DocumentDB clusters on-premises, hybrid, and across clouds
+
+- Index Advisor feature in Visual Studio Code: Built-in guidance for index tuning, performance insights, and query optimization. For more information, see [Index Advisor feature](index-advisor.md).
+
+- MongoDB Migration extension for Visual Studio Code: End-to-end online migration experience for various workloads. For more information, see [migrate using Visual Studio Code extension](how-to-migrate-vs-code-extension.md).
+
+- **\[Preview\]** Premium SSD v2 support: Next-generation storage delivering better performance at no extra cost. For more information, see [high performance storage](high-performance-storage.md).
+
+- Reserved instances support: Save on costs over one-year or three-year terms. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/pricing/details/document-db/).
+
+- Advanced full-text search: fuzzy search and proximity matching supported. For more information, see [hybrid search](hybrid-search.md)
+
+- **\[Preview\]** Advanced full-text search with BM25 ranking: Only supported in gated preview.
+
+- Azure Cosmos DB for MongoDB to Azure DocumentDB migration: Integrated path for users moving from Azure Cosmos DB for MongoDB to Azure DocumentDB.
+
+## October 10, 2025
 
 This **October 10, 2025** release introduces schema validation with `$jsonSchema`, enhanced TTL index performance, and general availability of customer-managed keys and Microsoft Entra ID authentication.
 
@@ -438,7 +463,7 @@ This release contains enhancements to the **Explain** plan and various vector fi
   | **`allShardsQueryPlan`** | This mode is a new explain mode to view the query plan for all shards involved in the query execution. This mode offers a comprehensive perspective for distributed queries. |
   | **`allShardsExecution`** | This mode presents an alternative explain mode to inspect the execution details across all shards involved in the query. This mode provides you with comprehensive information to use in performance optimization. |
 
-- Free tier support is available in more regions. These regions now include **East US 2**. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/mongodb/).
+- Free tier support is available in more regions. These regions now include **East US 2**. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/pricing/details/document-db/).
 
 - The ability to build indexes in the background is now available in preview.
 

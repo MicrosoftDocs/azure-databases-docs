@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Sets the minimum execution time above which autovacuum actions will be logged. |
+| Description | Sets the minimum execution time above which autovacuum actions will be logged. Zero prints all actions. -1 turns autovacuum logging off. |
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1-2147483647` |
@@ -132,7 +132,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Causes each attempted connection to the server to be logged, as well as successful completion of client authentication. |
+| Description | Logs each successful connection. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -183,7 +183,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Controls the amount of detail written in the server log for each message that is logged. |
+| Description | Sets the verbosity of logged messages. |
 | Data type | enumeration |
 | Default value | `default` |
 | Allowed values | `terse,default,verbose` |
@@ -200,7 +200,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Logs the host name in the connection logs. |
+| Description | Logs the host name in the connection logs. By default, connection logs only show the IP address of the connecting host. If you want them to show the host name you can turn this on, but depending on your host name resolution setup it might impose a non-negligible performance penalty. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -217,7 +217,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Sets the printf-style string that is output at the beginning of each log line. |
+| Description | Controls information prefixed to each log line. If blank, no prefix is used. |
 | Data type | string |
 | Default value | `%t-%c-` |
 | Allowed values | `[^']*` |
@@ -234,7 +234,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Controls whether a log message is produced when a session waits longer than deadlock_timeout to acquire a lock. |
+| Description | Logs long lock waits. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -251,7 +251,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Sets the maximum length in bytes of data logged for bind parameter values when logging statements. |
+| Description | Sets the maximum length in bytes of data logged for bind parameter values when logging statements. -1 to print values in full. |
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1-1073741823` |
@@ -268,7 +268,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Sets the maximum length in bytes of data logged for bind parameter values when logging statements, on error. |
+| Description | Sets the maximum length in bytes of data logged for bind parameter values when logging statements, on error. -1 to print values in full. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `-1-1073741823` |
@@ -285,7 +285,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Controls whether a log message is produced when the startup process waits longer than deadlock_timeout for recovery conflicts. |
+| Description | Logs standby recovery conflict waits. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -336,7 +336,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Reporting and Logging / What to Log |
-| Description | Logs the use of temporary files larger than this number of kilobytes. |
+| Description | Log the use of temporary files larger than this number of kilobytes. Zero logs all files. The default is -1 (turning this feature off). |
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1-2147483647` |

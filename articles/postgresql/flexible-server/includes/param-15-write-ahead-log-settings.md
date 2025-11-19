@@ -116,9 +116,9 @@ ms.custom: automatically generated
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
 | Description | Compresses full-page writes written in WAL file. |
-| Data type | boolean |
+| Data type | enumeration |
 | Default value | `on` |
-| Allowed values | `on,off` |
+| Allowed values | `pglz,lz4,on,off` |
 | Parameter type | dynamic |
 | Documentation | [wal_compression](https://www.postgresql.org/docs/15/runtime-config-wal.html#GUC-WAL-COMPRESSION) |
 

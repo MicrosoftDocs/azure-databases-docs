@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Version and Platform Compatibility / Previous PostgreSQL Versions |
-| Description | Enables input of NULL (case insensitive) to be considered as NULL value rather than the literal String 'NULL'. |
+| Description | Enable input of NULL elements in arrays. When turned on, unquoted NULL in an array input value means a null value; otherwise it is taken literally. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Version and Platform Compatibility / Previous PostgreSQL Versions |
-| Description | Warns about backslash escapes in ordinary string literals. |
+| Description | Warn about backslash escapes in ordinary string literals. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Version and Platform Compatibility / Previous PostgreSQL Versions |
-| Description | Enables backward compatibility mode for privilege checks on large objects. |
+| Description | Enables backward compatibility mode for privilege checks on large objects. Skips privilege checks when reading or modifying large objects, for compatibility with PostgreSQL releases prior to 9.0. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Version and Platform Compatibility / Previous PostgreSQL Versions |
-| Description | When generating SQL fragments, quotes all identifiers. |
+| Description | When generating SQL fragments, quote all identifiers. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -115,7 +115,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Version and Platform Compatibility / Previous PostgreSQL Versions |
-| Description | Enables synchronized sequential scans. |
+| Description | Enable synchronized sequential scans. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |

@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Process Title |
-| Description | Updates the process title to show the active SQL command. |
+| Description | Updates the process title to show the active SQL command. Enables updating of the process title every time a new SQL command is received by the server. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |

@@ -1,7 +1,7 @@
 ---
 title: Best practices in GitHub Copilot for Visual Studio Code
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Learn how to enable context-aware AI assistance with Azure Cosmos DB best practices in Visual Studio Code. Get optimized code suggestions and improve your NoSQL development workflow.
+description: Enable context-aware AI assistance with Azure Cosmos DB in GitHub Copilot for Visual Studio Code. Get optimized code suggestions, query patterns, and best practices to improve your NoSQL development workflow.
 author: sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
