@@ -152,17 +152,11 @@ For a complete example of using the MCP server with Azure AI Foundry agents, see
 
 ## How it Works
 
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────────┐
-│   AI Foundry    │────│  MCP Toolkit     │────│   Azure Cosmos DB   │
-│   (AI Agents)   │    │  (Container App) │    │   (Your Data)       │
-└─────────────────┘    └──────────────────┘    └─────────────────────┘
-         │                       │                        │
-         │              ┌────────────────┐               │
-         └──────────────│  Entra ID Auth │───────────────┘
-                        │  (Security)    │
-                        └────────────────┘
-```
+:::image type="complex" source="media/model-context-protocol-toolkit/architecture-diagram.svg" lightbox="media/model-context-protocol-toolkit/architecture-diagram.svg" alt-text="Diagram of AI Foundry connecting to Azure Cosmos DB through MCP Toolkit.":::
+  This architecture diagram illustrates a three-tier system for connecting AI agents to Azure Cosmos DB data. Three primary components are arranged horizontally and connected in sequence: AI Foundry (which hosts AI Agents), the MCP Toolkit (deployed as a Container App) in the center, and Azure Cosmos DB (containing your data). The MCP Toolkit serves as the intermediary layer, enabling AI Foundry to access and interact with data stored in Azure Cosmos DB.
+  
+  Microsoft Entra ID authentication (providing security) connects to all three primary components through diagonal lines, forming a hub-and-spoke pattern. This central authentication layer ensures that all communications between the AI agents, the MCP Toolkit, and the database are properly secured and authorized. The diagram demonstrates a secure, layered architecture where the MCP Toolkit acts as a bridge between AI workloads and data storage. This diagram demonstrates the user of Microsoft Entra ID providing unified identity and access management across the entire system.
+:::image-end:::
 
 **Key Components:**
 - **AI Foundry**: Hosts AI agents that need database access
