@@ -268,7 +268,7 @@
     - name: Questions
       href: /answers/questions/
     - name: Pricing
-      href: https://azure.microsoft.com/pricing/details/cosmos-db/mongodb
+      href: https://azure.microsoft.com/pricing/details/document-db/
     - name: Open source
       href: https://github.com/documentdb/documentdb
     - name: Industry solutions
