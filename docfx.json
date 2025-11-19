@@ -307,7 +307,7 @@
           "articles/postgresql/flexible-server/includes/param-13-customized-options.md",
           "articles/postgresql/flexible-server/includes/param-18-customized-options.md",
           "articles/postgresql/flexible-server/includes/server-parameters-table.md",
-          "articles/postgresql/flexible-server/**/"
+          "articles/postgresql/flexible-server/**/*.md"
         ]
       }
     }
