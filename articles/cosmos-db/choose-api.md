@@ -5,7 +5,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
-ms.date: 10/20/2025
+ms.date: 11/18/2025
 adobe-target: true
 ai-usage: ai-assisted
 applies-to:
@@ -31,7 +31,7 @@ Azure Cosmos DB is a fully managed NoSQL, relational, and vector database for mo
 ## TL;DR – Start here
 
 > **In ~80–90% of new applications, choose the Azure Cosmos DB API for NoSQL.**  
-
+>
 > Choose [**Azure DocumentDB**](https://learn.microsoft.com/en-us/documentdb/overview) only when high MongoDB feature fidelity (aggregation pipelines, multi-document transactions, ecosystem tooling), developing apps on a multicloud environment, or a lift‑and‑shift Mongo migration is a hard requirement.
 
 ### Why Azure Cosmos DB API for NoSQL is the default
