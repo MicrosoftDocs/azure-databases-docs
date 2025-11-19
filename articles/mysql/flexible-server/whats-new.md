@@ -263,7 +263,7 @@ To learn more, visit [Data encryption with customer managed keys](concepts-custo
 
   Azure Database for MySQL allows triggering an on-demand server backup and exporting it to an Azure storage account (Azure blob storage). The feature is currently in public preview and available only in public cloud regions.
 
-To learn more, visit [Backup and restore](concepts-backup-restore.md#on-demand-backup-and-export-preview).
+To learn more, visit [Backup and restore](concepts-backup-restore.md).
 
 - **Known Issues**
 
