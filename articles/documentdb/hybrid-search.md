@@ -104,7 +104,7 @@ Moving on to the text search phase, the `$unionWith` stage combines the results 
 Finally, the `$project` stage calculates the `finalScore` for each document by taking the maximum of its vector RRF score (`vs_score`) and its full-text RRF score (`fts_score`). `$ifNull` handles cases where a document might only be present in one of the search results.
 
 ## Limitations
-- Azure DocumentDB's full-text search currently does not support BM25 ranking.
+- Azure DocumentDB's full-text search currently only supports BM25 ranking in gated preview.
 - Currently, there is no single, dedicated command to perform a hybrid search directly. You need to construct the hybrid search query using the aggregation pipeline as demonstrated in the examples above.
 
 ## Next steps
