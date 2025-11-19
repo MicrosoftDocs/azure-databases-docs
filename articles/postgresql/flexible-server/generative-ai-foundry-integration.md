@@ -175,10 +175,10 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    To grant permissions to all future and existing tables
     ```sql
     -- Grant SELECT on all existing tables
-    GRANT SELECT ON ALL TABLES IN SCHEMA public TO "<CONTAINER_APP_NAME>";
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO "<CONTAINER_APP_IDENTITY_NAME>";
 
     -- Grant SELECT on all future tables
-    ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO "<CONTAINER_APP_NAME>";
+    ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO "<CONTAINER_APP_IDENTITY_NAME>";
     ```
 
 ## Configure Foundry integration
@@ -286,7 +286,7 @@ For programmatic access, use the following MCP configuration in your Python code
     | `POSTGRES_SERVER` | `your-postgres-server` | PostgreSQL server name |
     | `POSTGRES_DATABASE` | `your-postgres-database` | PostgreSQL database name |
     | `POSTGRES_TABLE` | `your-postgres-table` | Target PostgreSQL table |
-    | `POSTGRES_USER` | `your-postgres-user` | PostgreSQL user for authentication, use CONTAINER_APP_NAME here|
+    | `POSTGRES_USER` | `your-postgres-user` | PostgreSQL user for authentication, use CONTAINER_APP_IDENTITY_NAME here|
     | `AZURE_RESOURCE_GROUP` | `your-azure-resource-group` | Azure resource group name |
 
 3. Run the [Full SDK sample](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/main/client/agents_mcp_sample.py) in the `client` folder in GitHub Repo.
