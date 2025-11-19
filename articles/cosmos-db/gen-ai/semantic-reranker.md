@@ -50,7 +50,7 @@ When you use make a call to the Semantic Reranker, the response can contain mult
 
 ## How to sign up for the preview
 
-The Semantic Reranker is currently available in limited preview. To get access to this feature: [Sign up for the Semantic Reranker preview](https://aka.ms/AzureCosmosDB/RerankerPreview) and you are added to the waitlist
+The Semantic Reranker is currently available in gated preview. To get access to this feature: [Sign up for the Semantic Reranker preview](https://aka.ms/AzureCosmosDB/RerankerPreview) and you are added to the waitlist
 
 ## Related content
 
