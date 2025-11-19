@@ -25,7 +25,7 @@ ms.topic: include
 | China East 3 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | China North 2 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: | :x: | 
 | China North 3 | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
-| East Asia | :white_check_mark: (v3/v4/v5/v6) | :x: | :white_check_mark: $ ** | :white_check_mark: | :white_check_mark: | 
+| East Asia | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: $ ** | :white_check_mark: | :white_check_mark: | 
 | East US | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | East US 2 | :white_check_mark: (v3/v4) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | France Central | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
@@ -53,7 +53,7 @@ ms.topic: include
 | South Africa North | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | South Africa West * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | South Central US | :white_check_mark: (v3/v4) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
-| South India | :white_check_mark: (v3/v4/v5/v6) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
+| South India | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | Southeast Asia | :white_check_mark: (v3/v4) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | Spain Central | :white_check_mark: (v3/v4) | :x: | :white_check_mark: | :white_check_mark: | :x: | 
 | Sweden Central | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
@@ -71,4 +71,3 @@ ms.topic: include
 | West US | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | 
 | West US 2 | :white_check_mark: (v3/v4) | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | West US 3 | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :white_check_mark: ** | :white_check_mark: | :x: | 
-
