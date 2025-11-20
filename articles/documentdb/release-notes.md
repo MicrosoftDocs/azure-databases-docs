@@ -4,7 +4,7 @@ description: Explore Azure DocumentDB release notes with feature updates, engine
 author: avijitgupta
 ms.author: avijitgupta
 ms.topic: release-notes
-ms.date: 11/19/2025
+ms.date: 11/20/2025
 ai-usage: ai-assisted
 ms.custom:
   - references_regions 
@@ -20,13 +20,11 @@ Azure DocumentDB continuously evolves with new features, performance improvement
 ## Latest
 
 > [!IMPORTANT]
-> Azure Cosmos DB for MongoDB (vCore) is now **Azure DocumentDB**, powered by the open-source DocumentDB project.
+> Azure Cosmos DB for MongoDB (vCore) is now **Azure DocumentDB (with MongoDB compatibility)**, powered by the open-source DocumentDB project.
 
 This **November 18, 2025** release renames the service from **Azure Cosmos DB for MongoDB (vCore)** to **Azure DocumentDB** along with other feature changes.
 
 ### Enhancements
-
-- Open source Kubernetes operator: Run and manage DocumentDB clusters on-premises, hybrid, and across clouds
 
 - Index Advisor feature in Visual Studio Code: Built-in guidance for index tuning, performance insights, and query optimization. For more information, see [Index Advisor feature](index-advisor.md).
 
@@ -37,8 +35,6 @@ This **November 18, 2025** release renames the service from **Azure Cosmos DB fo
 - Reserved instances support: Save on costs over one-year or three-year terms. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/pricing/details/document-db/).
 
 - Advanced full-text search: fuzzy search and proximity matching supported. For more information, see [hybrid search](hybrid-search.md)
-
-- **\[Preview\]** Advanced full-text search with BM25 ranking: Only supported in gated preview.
 
 - Azure Cosmos DB for MongoDB to Azure DocumentDB migration: Integrated path for users moving from Azure Cosmos DB for MongoDB to Azure DocumentDB.
 
