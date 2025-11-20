@@ -15,8 +15,7 @@ To get started, you first need to create an Azure DocumentDB cluster, which serv
 
 1. On the **Create Azure DocumentDB cluster** page and within the **Basics** section, select the **Configure** option within the **Cluster tier** section.
 
-:::image type="content" source="media/quickstart-portal/select-configure-option.png
-" alt-text="Screenshot showing Configure cluster option.":::
+:::image type="content" source="media/quickstart-portal/select-configure-option.png" alt-text="Screenshot showing Configure cluster option.":::
 
 1. On the **Scale** page, configure these options and then select **Save** to persist your changes to the cluster tier.
 
@@ -40,8 +39,7 @@ To get started, you first need to create an Azure DocumentDB cluster, which serv
     | **Admin username** | Create a username to access the cluster as a user administrator |
     | **Password** | Use a unique password associated with the username |
 
-:::image type="content" source="media/quickstart-portal/enter-cluster-configurations.png
-" alt-text="Screenshot showing cluster parameters.":::
+:::image type="content" source="media/quickstart-portal/enter-cluster-configurations.png" alt-text="Screenshot showing cluster parameters.":::
 
     > [!TIP]
     > Record the values you use for **username** and **password**. These values are used later in this guide. For more information about valid values, see [cluster limitations](../limitations.md).
@@ -57,8 +55,7 @@ To get started, you first need to create an Azure DocumentDB cluster, which serv
 
 1. Add a firewall rule for your current client device to grant access to the cluster by selecting **+ Add current client IP address**.
 
-:::image type="content" source="media/quickstart-portal/select-networking.png
-" alt-text="Screenshot showing network configurations.":::
+:::image type="content" source="media/quickstart-portal/select-networking.png" alt-text="Screenshot showing network configurations.":::
 
     > [!TIP]
     > In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, you can temporarily allow access to all IP addresses by adding the `0.0.0.0` - `255.255.255.255` IP address range as a firewall rule. Use this firewall rule only temporarily as a part of connection testing and development.
@@ -69,5 +66,4 @@ To get started, you first need to create an Azure DocumentDB cluster, which serv
 
 1. Finally, select **Go to resource** to navigate to the Azure DocumentDB cluster in the portal.
 
-:::image type="content" source="media/quickstart-portal/go-to-resource.png
-" alt-text="Screenshot showing goto resource options.":::
+:::image type="content" source="media/quickstart-portal/go-to-resource.png" alt-text="Screenshot showing goto resource options.":::
