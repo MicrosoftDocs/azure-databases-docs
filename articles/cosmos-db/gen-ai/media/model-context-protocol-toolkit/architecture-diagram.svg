@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" overflow="hidden" width="2750" height="1375" viewBox="0 0 2750 1375">
+  <path fill="#fff" fill-rule="evenodd" d="M0 0h2750v1375H0Z"/>
+  <path fill="#054b16" stroke="#2f2f2f" stroke-miterlimit="8" stroke-width="6.9" d="M173 173h619v275H173z"/>
+  <text fill="#fff" font-family="Segoe UI Semibold,Segoe UI Semibold_MSFontService,sans-serif" font-size="55" font-weight="600" transform="translate(343 303)">AI Foundry</text>
+  <text fill="#fff" font-family="Segoe UI,Segoe UI_MSFontService,sans-serif" font-size="46" font-weight="400" transform="translate(370 360)">(AI Agents)</text>
+  <path fill="#3b2e58" stroke="#2f2f2f" stroke-miterlimit="8" stroke-width="6.9" d="M1067 173h618v275h-618z"/>
+  <text fill="#fff" font-family="Segoe UI Semibold,Segoe UI Semibold_MSFontService,sans-serif" font-size="55" font-weight="600" transform="translate(1225 303)">MCP Toolkit</text>
+  <text fill="#fff" font-family="Segoe UI,Segoe UI_MSFontService,sans-serif" font-size="46" font-weight="400" transform="translate(1215 360)">(Container App</text>
+  <text fill="#fff" font-family="Segoe UI,Segoe UI_MSFontService,sans-serif" font-size="46" font-weight="400" transform="translate(1522 360)">)</text>
+  <path fill="#243a5e" stroke="#2f2f2f" stroke-miterlimit="8" stroke-width="6.9" d="M1960 173h619v275h-619z"/>
+  <text fill="#fff" font-family="Segoe UI Semibold,Segoe UI Semibold_MSFontService,sans-serif" font-size="55" font-weight="600" transform="translate(2048 303)">Azure Cosmos DB</text>
+  <text fill="#fff" font-family="Segoe UI,Segoe UI_MSFontService,sans-serif" font-size="46" font-weight="400" transform="translate(2208 360)">(Data)</text>
+  <path fill="none" stroke="#2f2f2f" stroke-miterlimit="8" stroke-width="6.9" d="M792 310h274m619 0h275"/>
+  <path fill="#6b2929" stroke="#2f2f2f" stroke-miterlimit="8" stroke-width="6.9" d="M1067 860h618v275h-618z"/>
+  <text fill="#fff" font-family="Segoe UI Semibold,Segoe UI Semibold_MSFontService,sans-serif" font-size="55" font-weight="600" transform="translate(1148 990)">Microsoft Entra ID</text>
+  <text fill="#fff" font-family="Segoe UI,Segoe UI_MSFontService,sans-serif" font-size="46" font-weight="400" transform="translate(1124 1047)">(Authentication/Security)</text>
+  <path fill-rule="evenodd" stroke="#2f2f2f" stroke-miterlimit="8" stroke-width="6.9" d="M482 448v240m0 0 584 172m310-412v412m894-412v240m0 0-585 172"/>
+</svg>
