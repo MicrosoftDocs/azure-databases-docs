@@ -129,7 +129,7 @@ To check the current RU/s for each physical partition, use the Azure Monitor met
 
 ### [API for NoSQL](#tab/nosql)
 
-Read the current RU/s on each physical partition by using [`az cosmosdb sql container retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-retrieve-partition-throughput).
+Read the current RU/s on each physical partition by using [`az cosmosdb sql container retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-retrieve-partition-throughput). There is currently no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 // Container with dedicated RU/s - some partitions
@@ -151,7 +151,7 @@ az cosmosdb sql container retrieve-partition-throughput \
 
 ### [API for MongoDB](#tab/mongodb)
 
-Read the current RU/s on each physical partition by using [`az cosmosdb mongodb collection retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-mongodb-collection-retrieve-partition-throughput).
+Read the current RU/s on each physical partition by using [`az cosmosdb mongodb collection retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-mongodb-collection-retrieve-partition-throughput). There is currently no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 // Collection with dedicated RU/s - some partitions
@@ -320,7 +320,7 @@ After the redistribution, the total throughput across all partitions will be upd
 
 ### [API for NoSQL](#tab/nosql)
 
-Update the RU/s on each physical partition by using [`az cosmosdb sql container redistribute-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-redistribute-partition-throughput).
+Update the RU/s on each physical partition by using [`az cosmosdb sql container redistribute-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-redistribute-partition-throughput). There is currently no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 az cosmosdb sql container redistribute-partition-throughput \
@@ -333,7 +333,7 @@ az cosmosdb sql container redistribute-partition-throughput \
 
 ### [API for MongoDB](#tab/mongodb)
 
-Update the RU/s on each physical partition by using [`az cosmosdb mongodb collection redistribute-partition-throughput`](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-redistribute-partition-throughput).
+Update the RU/s on each physical partition by using [`az cosmosdb mongodb collection redistribute-partition-throughput`](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-redistribute-partition-throughput). There is currently no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 az cosmosdb mongodb collection redistribute-partition-throughput \
@@ -431,7 +431,7 @@ After you finish redistributing throughput, check the **PhysicalPartitionThrough
 
 ### [API for NoSQL](#tab/nosql)
 
-Update the RU/s on each physical partition by using [`az cosmosdb sql container redistribute-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-redistribute-partition-throughput) with the parameter `--evenly-distribute`.
+Update the RU/s on each physical partition by using [`az cosmosdb sql container redistribute-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-redistribute-partition-throughput) with the parameter `--evenly-distribute`. There is currently no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 az cosmosdb sql container redistribute-partition-throughput \
@@ -444,7 +444,7 @@ az cosmosdb sql container redistribute-partition-throughput \
 
 ### [API for MongoDB](#tab/mongodb)
 
-Update the RU/s on each physical partition by using [`az cosmosdb mongodb collection redistribute-partition-throughput`](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-redistribute-partition-throughput) with the parameter `--evenly-distribute`.
+Update the RU/s on each physical partition by using [`az cosmosdb mongodb collection redistribute-partition-throughput`](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-redistribute-partition-throughput) with the parameter `--evenly-distribute`. There is currently no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 az cosmosdb mongodb collection redistribute-partition-throughput \
