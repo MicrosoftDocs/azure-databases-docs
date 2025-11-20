@@ -71,4 +71,3 @@ ms.topic: include
 | West US | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | West US 2 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | West US 3 | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: ** | :white_check_mark: | :x: | 
- 
