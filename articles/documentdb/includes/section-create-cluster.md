@@ -25,8 +25,7 @@ To get started, you first need to create an Azure DocumentDB cluster, which serv
     | **Cluster tier** | `M30 tier, 2 vCore, 8-GiB RAM` |
     | **Storage per shard** | `128 GiB` |
 
-:::image type="content" source="media/quickstart-portal/configure-compute-and-storage.png
-" alt-text="Screenshot showing Configure options for compute and storage.":::
+:::image type="content" source="media/quickstart-portal/configure-compute-and-storage.png" alt-text="Screenshot of configuration options for compute and storage for a new Azure DocumentDB cluster.":::
 
 
 1. Back in the **Basics** section, configure the following options:
