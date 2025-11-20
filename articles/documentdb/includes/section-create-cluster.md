@@ -41,8 +41,9 @@ To get started, you first need to create an Azure DocumentDB cluster, which serv
 
 :::image type="content" source="media/quickstart-portal/enter-cluster-configurations.png" alt-text="Screenshot showing cluster parameters.":::
 
-    > [!TIP]
-    > Record the values you use for **username** and **password**. These values are used later in this guide. For more information about valid values, see [cluster limitations](../limitations.md).
+> [!TIP]
+> Record the values you use for **username** and **password**. These values are used later in this guide. For more information about valid values, see [cluster limitations](../limitations.md).
+
 
 1. Select **Next: Networking**.
 
@@ -57,8 +58,9 @@ To get started, you first need to create an Azure DocumentDB cluster, which serv
 
 :::image type="content" source="media/quickstart-portal/select-networking.png" alt-text="Screenshot showing network configurations.":::
 
-    > [!TIP]
-    > In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, you can temporarily allow access to all IP addresses by adding the `0.0.0.0` - `255.255.255.255` IP address range as a firewall rule. Use this firewall rule only temporarily as a part of connection testing and development.
+> [!TIP]
+> In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, you can temporarily allow access to all IP addresses by adding the `0.0.0.0` - `255.255.255.255` IP address range as a firewall rule. Use this firewall rule only temporarily as a part of connection testing and development.
+
 
 1. Select **Review + create**.
 
