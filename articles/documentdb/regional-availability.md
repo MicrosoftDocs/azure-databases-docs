@@ -3,10 +3,8 @@ title: Region Availability
 description: Discover Azure DocumentDB region availability across 40+ Azure regions worldwide. Deploy close to users to reduce latency and meet compliance requirements.
 author: suvishodcitus
 ms.author: suvishod
-ms.service: azure-cosmos-db
-ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 11/05/2025
+ms.date: 11/20/2025
 ms.custom:
   - references_regions
 ---
