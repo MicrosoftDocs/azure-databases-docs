@@ -28,8 +28,6 @@ To get started, you first need to create an Azure DocumentDB cluster, which serv
 :::image type="content" source="media/quickstart-portal/configure-compute-and-storage.png
 " alt-text="Screenshot showing Configure options for compute and storage.":::
 
-    > [!TIP]
-    > The settings recommended here are ideal for development workloads. For production workloads, consider selecting a higher tier and enabling features like **high availability**.
 
 1. Back in the **Basics** section, configure the following options:
 
