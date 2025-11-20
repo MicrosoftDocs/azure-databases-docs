@@ -72,10 +72,10 @@ ms.topic: include
 | West US 2 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | West US 3 | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: ** | :white_check_mark: | :x: |
 
-$ New zone-redundant high availability deployments are temporarily blocked in these regions. Already provisioned HA servers are fully supported.
+$ New zone-redundant high availability deployments are temporarily blocked in these regions. The service fully supports already provisioned HA servers.
 
-$$ New server deployments are temporarily blocked in these regions. Already provisioned servers are fully supported.
+$ New server deployments are temporarily blocked in these regions. The service fully supports already provisioned servers.
 
-** Zone-redundant high availability can now be deployed when you provision new servers in these regions. Any existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, read these [special considerations](../how-to-configure-high-availability.md#limitations-and-considerations).
+** You can now deploy zone-redundant high availability when you provision new servers in these regions. For existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, see these [special considerations](../how-to-configure-high-availability.md#limitations-and-considerations).
 
 (*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. You can access these regions only upon request by creating a new support request.
