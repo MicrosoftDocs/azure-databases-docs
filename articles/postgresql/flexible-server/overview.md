@@ -18,7 +18,7 @@ Azure Database for PostgreSQL is a fully managed database service designed to gi
 
 :::image type="content" source="./media/overview/overview-flexible-server.png" alt-text="Diagram of Azure Database for PostgreSQL - Overview." lightbox="./media/overview/overview-flexible-server.png":::
 
-Azure Database for PostgreSQL flexible server instance is best suited for:
+Azure Database for PostgreSQL is best suited for:
 
 - Application developments requiring control and customizations.
 - Zone redundant high availability.
