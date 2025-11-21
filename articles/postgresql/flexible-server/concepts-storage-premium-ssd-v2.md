@@ -47,25 +47,25 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 -  [Data encryption with customer managed keys](concepts-data-encryption.md), [Long Term Retention](concepts-backup-restore.md, On-demand backups and storage auto grow  features aren't supported for Premium SSD v2.
   
-- - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
+- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
 - Premium SSD v2 can be provisioned using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 is not supported.
 
 - You can adjust disk performance settings (IOPS or throughput) up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours.
 
--  During preview, restoring a deleted server (Tombstone recovery) may lead to up to 24 hours of data loss. To avoid accidental deletions, we recommend enabling Resource Lock.
+-  During preview, restoring a deleted server (Tombstone recovery) may lead to up to 24 hours of data loss. To avoid accidental deletions, we recommend enabling resource lock.
 
 -  If you create a new server using PITR and immediately start an operation that depends on a full back up, you may see below error. This occurs because Azure Storage cannot create a snapshot while the disk is still being hydrated. Please wait until hydration completes before retrying.  
 
-    _Error : Unable to create a snapshot from the disk because the disk is still hydrated. Please retry after some time._
+    _Error : Unable to create a snapshot from the disk because the disk is still being hydrated. Please retry after some time._
 
 -  If you run more than three operations that require full backups on large datasets within an hour, you may encounter an error. This is an Azure Storage limitation. After the instant snapshot expires (about one hour), you can resume these operations.If you encounter this error, space out your operations so they occur over more than one hour
-- 
-  Examples include:   • Compute scaling, enabling HA, and performing failover and failback within one hour.
+  
+    Examples include:
+                      • Compute scaling, enabling HA, and performing failover and failback within one hour.
                       • Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
   
-
-      _Error message: Snapshot Limit Reached. You have reached the snapshot limit for this disk. Please wait until the current background copy process completes before creating new snapshots._
+      _Error message : Snapshot Limit Reached. You have reached the snapshot limit for this disk. Please wait until the current background copy process completes before creating new snapshots_
 
 If you encounter this error, space out your operations so they occur over more than one hour
   
