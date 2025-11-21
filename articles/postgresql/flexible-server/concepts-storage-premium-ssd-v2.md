@@ -44,7 +44,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 #### Premium SSD v2 - Limitations
 
--  [Data encryption with customer managed keys](concepts-data-encryption.md),[Long Term Retention](concepts-backup-restore.md) On-demand backups, and storage auto grow  features aren't supported for Premium SSD v2.
+-  [Data encryption with customer managed keys](concepts-data-encryption.md),[Long Term Retention](concepts-backup-restore.md),On-demand backups, and storage auto grow  features aren't supported for Premium SSD v2.
   
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with SSDv2 storage type.
 
@@ -62,6 +62,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
   
   **Examples include**:  Compute scaling, enabling HA, and performing failover and failback within one hour.
                          Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
+                         
                         _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
        
 
