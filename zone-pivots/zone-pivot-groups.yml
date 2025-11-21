@@ -135,6 +135,17 @@ groups:
   - id: azure-powershell
     title: Azure PowerShell
 # Owner: sidandrews
+- id: azure-interface-portal-rest-bicep
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: rest-api
+    title: Azure REST API
+  - id: azure-portal
+    title: Azure portal
+  - id: azure-resource-manager-bicep
+    title: Bicep
+# Owner: sidandrews
 - id: azure-interface-portal-rest-bicep-terraform
   title: Azure interface
   prompt: Choose an Azure interface
