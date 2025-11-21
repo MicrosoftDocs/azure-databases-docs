@@ -152,10 +152,9 @@ LIMIT 1;
 ## Related content
 
 - [Integrate Azure Database for PostgreSQL with Azure Cognitive Services](generative-ai-azure-cognitive.md).
-- [Generative AI with Azure Database for PostgreSQL](generative-ai-azure-local-ai.md).
 - [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md).
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
 - [Recommendation System with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
 - [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL](../configure-maintain/how-to-use-pgvector.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/how-to-use-pgvector.md).

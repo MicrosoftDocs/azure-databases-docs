@@ -595,11 +595,10 @@ select
 
 - [Learn more about Azure OpenAI Service integration](generative-ai-azure-openai.md)
 - [Learn more about Azure Machine Learning integration](generative-ai-azure-machine-learning.md)
-- [Generative AI with Azure Database for PostgreSQL](generative-ai-azure-local-ai.md).
 - [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
 - [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md).
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md).
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
 - [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
 - [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL](../configure-maintain/how-to-use-pgvector.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/how-to-use-pgvector.md).

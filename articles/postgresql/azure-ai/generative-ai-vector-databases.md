@@ -33,11 +33,11 @@ Vector search is used to query the [vector embeddings](/azure/ai-services/openai
 
 Vector search measures the distance between the data vectors and your query vector. The data vectors that are closest to your query vector are the ones that are most similar semantically.
 
-When you're using [Azure Database for PostgreSQL as a vector store](../configure-maintain/how-to-use-pgvector.md), you can store, index, and query embeddings alongside the original data. This approach eliminates the extra cost of replicating data in a separate, pure vector database.
+When you're using [Azure Database for PostgreSQL as a vector store](../extension-module/how-to-use-pgvector.md), you can store, index, and query embeddings alongside the original data. This approach eliminates the extra cost of replicating data in a separate, pure vector database.
 
 This architecture also keeps the vector embeddings and original data together. Keeping the embeddings and the data together better facilitates multimodal data operations. It also enables greater data consistency, scale, and performance.
 
 ## Related content
 
-- [Enable the vector store and search feature](../configure-maintain/how-to-use-pgvector.md)
+- [Enable the vector store and search feature](../extension-module/how-to-use-pgvector.md)
 - [Optimize the performance of a vector store](how-to-optimize-performance-pgvector.md)
