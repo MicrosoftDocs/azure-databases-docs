@@ -27,7 +27,7 @@ Your virtual machine type also has IOPS limits. Although you can select any stor
 > [!NOTE]  
 > Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
-You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](concepts-monitoring.md).
+You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
 
 
 ## Storage autogrow (Premium SSD)

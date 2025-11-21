@@ -169,4 +169,4 @@ Closed the connection to server372060240
 - [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL](connect-csharp.md).
 - [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL](connect-go.md).
 - [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL](connect-php.md).
-- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](connect-with-power-bi-desktop.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](../integration/connect-with-power-bi-desktop.md).

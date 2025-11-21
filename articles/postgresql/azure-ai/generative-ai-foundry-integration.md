@@ -267,7 +267,7 @@ When using the Azure MCP PostgreSQL Server, be aware of the following security c
 
 ### Security features
 
-You can use the following [security features](security-overview.md#access-control) to protect your data:
+You can use the following [security features](../security/security-overview.md#access-control) to protect your data:
 
 - **Managed Identity**: No credentials stored in container images.
 - **Microsoft Entra ID Authentication**: Secure database authentication.
@@ -331,4 +331,4 @@ az containerapp show --name your-mcp-server --resource-group your-resource-group
 - [Azure AI Foundry documentation](/azure/ai-foundry/)
 - [Azure Database for PostgreSQL integrations for AI applications](generative-ai-frameworks.md)
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
-- [Enable and use pgvector in Azure Database for PostgreSQL](how-to-use-pgvector.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/how-to-use-pgvector.md)

@@ -109,7 +109,7 @@ The following sections describe how to create and configure your database instan
 The first thing you create is a managed Azure Database for PostgreSQL flexible server instance.
 
 > [!NOTE]
-> You can read more detailed information about creating Azure Database for PostgreSQL flexible server instances in [Create an Azure Database for PostgreSQL flexible server instance by using the Azure portal](quickstart-create-server.md).
+> You can read more detailed information about creating Azure Database for PostgreSQL flexible server instances in [Create an Azure Database for PostgreSQL flexible server instance by using the Azure portal](../configure-maintain/quickstart-create-server.md).
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
@@ -705,4 +705,4 @@ az group delete \
 - [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL](connect-go.md).
 - [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL](connect-php.md).
 - [Quickstart: Use Azure CLI to connect and query data from an Azure Database for PostgreSQL](connect-azure-cli.md).
-- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](connect-with-power-bi-desktop.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](../integration/connect-with-power-bi-desktop.md).

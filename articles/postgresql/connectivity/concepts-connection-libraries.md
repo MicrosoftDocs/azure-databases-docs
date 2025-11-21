@@ -39,4 +39,4 @@ Most language client libraries used to connect to Azure Database for PostgreSQL 
 - [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL](connect-go.md)
 - [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL](connect-php.md)
 - [Quickstart: Use Azure CLI to connect and query data from an Azure Database for PostgreSQL](connect-azure-cli.md)
-- [Quickstart: Import data from an Azure Database for PostgreSQL flexible server instance in Power BI](connect-with-power-bi-desktop.md)
+- [Quickstart: Import data from an Azure Database for PostgreSQL flexible server instance in Power BI](../integration/connect-with-power-bi-desktop.md)

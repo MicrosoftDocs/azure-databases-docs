@@ -167,4 +167,4 @@ You have now created an Azure Database for PostgreSQL flexible server instance i
 - [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL](connect-go.md).
 - [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL](connect-php.md).
 - [Quickstart: Connect and query with Azure CLI with Azure Database for PostgreSQL](connect-azure-cli.md).
-- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](connect-with-power-bi-desktop.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](../integration/connect-with-power-bi-desktop.md).

@@ -22,7 +22,7 @@ This quickstart demonstrates how to connect to an Azure Database for PostgreSQL 
 
 ## Prerequisites
 
-This quickstart uses the resources created in the [Create an Azure Database for PostgreSQL](quickstart-create-server.md) as a starting point.
+This quickstart uses the resources created in the [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md) as a starting point.
 
 > [!IMPORTANT]
 > We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that aren't covered.
@@ -383,4 +383,4 @@ az group delete \
 - [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL](connect-csharp.md).
 - [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL](connect-php.md).
 - [Quickstart: Use Azure CLI to connect and query data from an Azure Database for PostgreSQL](connect-azure-cli.md).
-- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](connect-with-power-bi-desktop.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](../integration/connect-with-power-bi-desktop.md).

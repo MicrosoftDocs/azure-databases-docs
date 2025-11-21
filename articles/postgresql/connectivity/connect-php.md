@@ -18,7 +18,7 @@ This quickstart demonstrates connecting to an Azure Database for PostgreSQL usin
 
 ## Prerequisites
 
-This quickstart uses the resources created in the [Create an Azure Database for PostgreSQL](quickstart-create-server.md) as a starting point.
+This quickstart uses the resources created in the [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md) as a starting point.
 
 ## Install PHP
 
@@ -239,4 +239,4 @@ az group delete \
 - [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL](connect-csharp.md).
 - [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL](connect-go.md).
 - [Quickstart: Use Azure CLI to connect and query data from an Azure Database for PostgreSQL](connect-azure-cli.md).
-- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](connect-with-power-bi-desktop.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](../integration/connect-with-power-bi-desktop.md).

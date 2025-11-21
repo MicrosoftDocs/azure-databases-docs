@@ -147,4 +147,4 @@ Remove-AzResourceGroup -Name exampleRG
 
 ## Related content
 
-- [Connect and query overview for Azure Database for PostgreSQL](how-to-connect-query-guide.md).
+- [Connect and query overview for Azure Database for PostgreSQL](../connectivity/how-to-connect-query-guide.md).

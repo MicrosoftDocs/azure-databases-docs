@@ -32,7 +32,7 @@ This article assumes that you're familiar with developing using Python, but you'
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- An Azure Database for PostgreSQL flexible server instance. To create Azure Database for PostgreSQL flexible server instance, refer to [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
+- An Azure Database for PostgreSQL flexible server instance. To create Azure Database for PostgreSQL flexible server instance, refer to [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md).
 - [Python](https://www.python.org/downloads/) 3.8+.
 - Latest [pip](https://pip.pypa.io/en/stable/installing/) package installer.
 
@@ -400,4 +400,4 @@ conn.close()
 - [Quickstart: Use Go language to connect and query data in Azure Database for PostgreSQL](connect-go.md)
 - [Quickstart: Use PHP to connect and query data in Azure Database for PostgreSQL](connect-php.md)
 - [Quickstart: Connect and query with Azure CLI with Azure Database for PostgreSQL](connect-azure-cli.md)
-- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](connect-with-power-bi-desktop.md)
+- [Quickstart: Import data from Azure Database for PostgreSQL in Power BI](../integration/connect-with-power-bi-desktop.md)

@@ -70,4 +70,4 @@ You can delete your server if you no longer need it.
 ## Related content
 
 - [Backup and restore in Azure Database for PostgreSQL](../backup-restore/concepts-backup-restore.md).
-- [Monitor metrics in Azure Database for PostgreSQL](concepts-monitoring.md).
+- [Monitor metrics in Azure Database for PostgreSQL](../monitor/concepts-monitoring.md).

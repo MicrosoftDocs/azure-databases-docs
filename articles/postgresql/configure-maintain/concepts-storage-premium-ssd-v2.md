@@ -45,7 +45,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 #### Premium SSD v2 - Limitations during preview
 
-- [Geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](../backup-restore/concepts-backup-restore.md) or storage auto grow  features aren't supported for Premium SSD v2.
+- [Geographically redundant backups](../backup-restore/concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](../backup-restore/concepts-backup-restore.md) or storage auto grow  features aren't supported for Premium SSD v2.
   
 - Please wait until your first backup becomes available before configuring in-region replicas, as this process depends on disk snapshots. This limitation does not apply to cross-region replicas, which use pg_basebackups instead.
 
@@ -70,7 +70,7 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 > [!NOTE]  
 > Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
-You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](concepts-monitoring.md).
+You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
 
 
 

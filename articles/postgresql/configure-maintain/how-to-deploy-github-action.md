@@ -219,4 +219,4 @@ When your Azure Database for PostgreSQL database and repository are no longer ne
 ## Related content
 
 - [Azure and GitHub integration](/azure/developer/github/).
-- [How to connect to the server](connect-csharp.md).
+- [How to connect to the server](../connectivity/connect-csharp.md).
