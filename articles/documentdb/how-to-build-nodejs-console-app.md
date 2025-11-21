@@ -112,7 +112,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. Set your cluster name variable to connect to your Azure DocumentDB cluster.
 
     ```javascript
-    const clusterName = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
+    const clusterName = '<azure-documentdb-cluster-name>';
     ```
 
 1. Create an instance of `DefaultAzureCredential`.
@@ -164,7 +164,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. Set your cluster name variable to connect to your Azure DocumentDB cluster.
 
     ```typescript
-    const clusterName: string = '<azure-cosmos-db-mongodb-vcore-cluster-name>';
+    const clusterName: string = '<azure-documentdb-cluster-name>';
     ```
 
 1. Create an instance of `DefaultAzureCredential`.
