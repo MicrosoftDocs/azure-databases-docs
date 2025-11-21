@@ -15,7 +15,7 @@ ms.topic: concept-article
 
 ## Premium SSD v2 (preview)
 
-Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and input/output operations per second, referred to as IOPS) of Premium SSD v2 at any time. The ability to do these adjustments allow workloads to be cost-efficient, while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. Hence, for most general-purpose workloads, Premium SSD v2 can provide the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
+Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and IOPS (input/output operations per second) of Premium SSD v2 at any time. The ability to do these adjustments allow workloads to be cost-efficient, while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. Hence, for most general-purpose workloads, Premium SSD v2 can provide the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
 
 > [!NOTE]  
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server instances.
@@ -54,11 +54,11 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 -  During preview, restoring a deleted server (Tombstone recovery) may lead to up to 24 hours of data loss. To avoid accidental deletions, we recommend enabling resource lock.
 
--  If you create a new server using PITR (Point-in-time-restore) and immediately start an operation that depends on a full backup, you will encounter below error. This happens as Azure Storage cannot create a snapshot while the disk is still being hydrated. You need to wait until hydration completes before retrying.  
+-  When you create a new server using point-in-time restore (PITR), wait until the disk hydration process is complete before starting any operation that requires a full backup on the newly restored server. If you start too soon, the operation will fail because Premium SSDv2 disks cannot create snapshots during hydration
 
     _Error : Unable to create a snapshot from the disk because the disk is still being hydrated. Please retry after some time._
 
--  If you run more than three operations that require full backups on large datasets within an hour, you may encounter below error due to an Azure Storage limitation which limits 3 instant snapshots per hour. After the instant snapshot expires (about one hour), you can resume the operation.If you encounter this error, space out your operations so they occur over more than one hour.
+-  Azure Storage allows only three instant snapshots per hour. If you run more than three full-backup operations on large datasets within an hour, the operation may fail. Wait an hour or stagger operations to avoid this error.
   
     Examples include:
                       • Compute scaling, enabling HA, and performing failover and failback within one hour.
