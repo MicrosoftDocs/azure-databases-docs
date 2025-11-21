@@ -46,7 +46,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 -  [Data encryption with customer managed keys](concepts-data-encryption.md) , On-demand backups, [Long Term Retention](concepts-backup-restore.md) ,  and storage auto grow  features aren't supported for Premium SSD v2.
   
-- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with SSDv2 storage type.
+- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with Premium SSD v2 storage type.
 
 - Premium SSD v2 can be provisioned using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
