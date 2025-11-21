@@ -191,6 +191,42 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 1. Add this resource configuration to the file's content. Replace the `<cluster-name>`, `<resource-group>`, and `<location>` placeholders with appropriate values.
 
     ```terraform    
+    variable "admin_username" {
+      type        = string
+      description = "Administrator username for the cluster."
+      sensitive   = true
+    }
+    
+    variable "admin_password" {
+      type        = string
+      description = "Administrator password for the cluster."
+      sensitive   = true
+    }
+    
+    terraform {
+      required_providers {
+        azurerm = {
+          source  = "hashicorp/azurerm"
+          version = "~> 4.0"
+        }
+        azapi = {
+          source = "azure/azapi"
+          version = "~> 2.0"
+        }
+      }
+    }
+    
+    provider "azapi" {
+    }
+    
+    provider "azurerm" {
+      features {}
+    }
+    
+    data "azurerm_resource_group" "existing" {
+        name = "<resource-group>"
+    }
+
     resource "azapi_resource" "cluster" {
       schema_validation_enabled = false
       type = "Microsoft.DocumentDB/mongoClusters@2025-08-01-preview"
