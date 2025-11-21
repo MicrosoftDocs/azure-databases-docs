@@ -77,7 +77,7 @@ For more information on tiers, see [compute and storage tiers](compute-storage.m
 
 [!INCLUDE[Prerequisite - Existing cluster](includes/prerequisite-existing-cluster.md)]
 
-::: zone pivot="rest-api,azure-resource-manager-bicep"
+::: zone pivot="portal,rest-api,azure-resource-manager-bicep"
 
 [!INCLUDE[External - Azure CLI prerequisites](~/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -86,6 +86,34 @@ For more information on tiers, see [compute and storage tiers](compute-storage.m
 ## Create a cluster with high performance storage
 
 Configure a cluster using **Premium SSD v2** (high performance) storage as part of the cluster creation step.
+
+::: zone pivot="portal"
+
+1. Sign in to the **Azure portal** (<https://portal.azure.com>).
+
+1. From the Azure portal menu or the **Home page**, select **Create a resource**.
+
+1. On the **New** page, search for and select **Azure DocumentDB**.
+
+    :::image type="content" source="includes/media/quickstart-portal/select-azure-documentdb.png" alt-text="Screenshot showing search for Azure DocumentDB.":::
+
+1. On the **Create Azure DocumentDB cluster** page and within the **Basics** section, select the **Configure** option within the **Cluster tier** section.
+
+    :::image type="content" source="includes/media/quickstart-portal/select-configure-option.png" alt-text="Screenshot showing Configure cluster option.":::
+
+1. On the **Configure** page, choose the cluster tier and storage size as required. Select the storage type as **Premium SSD v2** (preview) to enable high-performance storage, then select Save to apply the changes.
+
+    :::image type="content" source="includes/media/quickstart-portal/enable-premium-storage.png" alt-text="Screenshot of configuration option for premium SSD v2 disks.":::
+
+1. Fill in the remaining details and then select **Review + create**.
+
+1. Review the settings you provide, and then select **Create**. It takes a few minutes to create the cluster. Wait for the resource deployment is complete.
+
+1. Finally, select **Go to resource** to navigate to the Azure DocumentDB cluster in the portal.
+
+:::image type="content" source="includes/media/quickstart-portal/go-to-resource.png" alt-text="Screenshot showing goto resource options.":::
+
+::: zone-end
 
 ::: zone pivot="azure-resource-manager-bicep"
 
