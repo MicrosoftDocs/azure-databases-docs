@@ -3110,11 +3110,11 @@
             "redirect_url": "/azure/monitor-tune/how-to-monitor-high-availability",
             "redirect_document_id": true
         },
-
+        {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-network-elastic-clusters-default-maximum-connections.md",
             "redirect_url": "/azure/network/how-to-network-elastic-clusters-default-maximum-connections",
             "redirect_document_id": true
-
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-networking-private.md",
             "redirect_url": "/azure/network/concepts-networking-private",
@@ -3255,11 +3255,11 @@
             "redirect_url": "/azure/scale/how-to-scale-compute",
             "redirect_document_id": true
         },
-
+        {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-scale-out.md",
             "redirect_url": "/azure/scale/how-to-scale-out",
             "redirect_document_id": true
-
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-scale-storage-performance.md",
             "redirect_url": "/azure/scale/how-to-scale-storage-performance",
