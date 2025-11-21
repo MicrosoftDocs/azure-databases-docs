@@ -536,9 +536,9 @@ After you finish redistributing throughput, verify and monitor your RU/s consump
 
 While this feature is in preview, your Azure Cosmos DB account must meet all the following criteria:
 
-- Your Azure Cosmos DB account uses API for NoSQL or API for MongoDB.
+- You have an Azure Cosmos DB for NoSQL or Azure Cosmos DB for MongoDB account.
 
-  - If you're using API for MongoDB, the version must be greater than or equal to 3.6.
+- If you're using API for MongoDB, the version must be greater than or equal to 3.6.
     
 - Your Azure Cosmos DB account uses provisioned throughput (manual or autoscale). Distribution of throughput across partitions doesn't apply to serverless accounts.
 
