@@ -128,7 +128,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. Create variables for the name of the cluster and the entire host endpoint.
 
     ```java
-    String clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
+    String clusterName = "<azure-documentdb-cluster-name>";
     String host = clusterName + ".global.mongocluster.cosmos.azure.com";
     ```
 
