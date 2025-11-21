@@ -176,15 +176,113 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 
 ::: zone pivot="azure-terraform"
 
-1. TODO
+1. Open a new terminal.
 
-1. TODO
+1. Sign in to Azure CLI.
 
-    ```terraform
-    TODO
+1. Check your target Azure subscription.
+
+    ```azurecli-interactive
+    az account show
     ```
 
-1. TODO
+1. Define your cluster in a new Terraform file. Name the file *cluster.`tf`*.
+
+1. Add this resource configuration to the file's content. Replace the `<cluster-name>`, `<resource-group>`, and `<location>` placeholders with appropriate values.
+
+    ```terraform
+    variable "admin_username" {
+      type        = string
+      description = "Administrator username for the cluster."
+      sensitive   = true
+    }
+    
+    variable "admin_password" {
+      type        = string
+      description = "Administrator password for the cluster."
+      sensitive   = true
+    }
+    
+    terraform {
+      required_providers {
+        azurerm = {
+          source  = "hashicorp/azurerm"
+          version = "~> 4.0"
+        }
+        azapi = {
+          source = "azure/azapi"
+          version = "~> 2.0"
+        }
+      }
+    }
+    
+    provider "azapi" {
+    }
+    
+    provider "azurerm" {
+      features {}
+    }
+    
+    data "azurerm_resource_group" "existing" {
+        name = "<resource-group>"
+    }
+    
+    resource "azapi_resource" "cluster" {
+      schema_validation_enabled = false
+      type = "Microsoft.DocumentDB/mongoClusters@2025-08-01-preview"
+      name = "<cluster-name>"
+      parent_id = data.azurerm_resource_group.existing.id
+      location = "<location>"  
+      body = {
+        properties = {
+          administrator = {
+            userName = var.admin_username
+            password = var.admin_password
+          }
+          serverVersion = "8.0"
+          storage = {
+            sizeGb = 32
+            type = "PremiumSSDv2"
+          }
+          compute = {
+            tier = "M30"
+          }
+          sharding = {
+            shardCount = 1
+          }
+          highAvailability = {
+            targetMode = "Disabled"
+          }
+        }
+      }
+    }
+    ```
+
+    > [!TIP]
+    > For more information on options using the `azurerm_mongo_cluster` resource, see [`azurerm` provider documentation in Terraform Registry](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mongo_cluster#arguments-reference).
+
+1. Initialize the Terraform deployment.
+
+    ```azurecli-interactive
+    terraform init --upgrade
+    ```
+
+1. Create an execution plan and save it to a file named *cluster.tfplan*. Provide values when prompted for the `admin_username` and `admin_password` variables.
+
+    ```azurecli-interactive
+    ARM_SUBSCRIPTION_ID=$(az account show --query id --output tsv) terraform plan --out "cluster.tfplan"
+    ```
+
+    > [!NOTE]
+    > This command sets the `ARM_SUBSCRIPTION_ID` environment variable temporarily. This setting is required for the `azurerm` provider starting with version 4.0 For more information, see [subscription ID in `azurerm`](https://registry.terraform.io/providers/hashicorp/azurerm/4.0.0/docs/guides/4.0-upgrade-guide#specifying-subscription-id-is-now-mandatory).
+
+1. Apply the execution plan to deploy the cluster to Azure.
+
+    ```azurecli-interactive
+    ARM_SUBSCRIPTION_ID=$(az account show --query id --output tsv) terraform apply "cluster.tfplan"
+    ```
+
+1. Wait for the deployment to complete. Review the output from the deployment.
 
 ::: zone-end
 
