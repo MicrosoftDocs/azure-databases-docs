@@ -99,15 +99,15 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 
 1. On the **New** page, search for and select **Azure DocumentDB**.
 
-    :::image type="content" source="includes/media/quickstart-portal/select-azure-documentdb.png" alt-text="Screenshot showing search for Azure DocumentDB.":::
+    :::image type="content" source="media/high-performance-storage/select-azure-documentdb.png" alt-text="Screenshot of the Azure portal search feature to locate Azure DocumentDB.":::
 
 1. On the **Create Azure DocumentDB cluster** page and within the **Basics** section, select the **Configure** option within the **Cluster tier** section.
 
-    :::image type="content" source="includes/media/quickstart-portal/select-configure-option.png" alt-text="Screenshot showing Configure cluster option.":::
+    :::image type="content" source="media/high-performance-storage/select-configure-option.png" alt-text="Screenshot of the options available to configure an Azure DocumentDB cluster.":::
 
 1. On the **Configure** page, choose the cluster tier and storage size as required. Select the storage type as **Premium SSD v2** (preview) to enable high-performance storage, then select Save to apply the changes.
 
-    :::image type="content" source="includes/media/quickstart-portal/enable-premium-storage.png" alt-text="Screenshot of configuration option for premium SSD v2 disks.":::
+    :::image type="content" source="media/high-performance-storage/enable-premium-storage.png" alt-text="Screenshot of the configuration option specific to premium SSD v2 disks in Azure DocumentDB.":::
 
 1. Fill in the remaining details and then select **Review + create**.
 
@@ -115,7 +115,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 
 1. Finally, select **Go to resource** to navigate to the Azure DocumentDB cluster in the portal.
 
-:::image type="content" source="includes/media/quickstart-portal/go-to-resource.png" alt-text="Screenshot showing goto resource options.":::
+:::image type="content" source="media/high-performance-storage/go-to-resource.png" alt-text="Screenshot of the deployment completion step with an option to navigate to the new Azure DocumentDB cluster.":::
 
 ::: zone-end
 
