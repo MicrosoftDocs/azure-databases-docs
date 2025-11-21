@@ -132,7 +132,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. Define a uniform resource indicator (URI) from your cluster using its name, scheme, and the global endpoint.
 
     ```rust
-    let cluster_name = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
+    let cluster_name = "<azure-documentdb-cluster-name>";
 
     let uri = format!(
         "mongodb+srv://{}.global.mongocluster.cosmos.azure.com/",
