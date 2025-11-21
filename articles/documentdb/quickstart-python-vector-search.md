@@ -11,6 +11,7 @@ ms.date: 11/04/2025
 ms.custom:
   - devx-track-python
   - devx-track-python-ai
+  - devx-track-data-ai
 # CustomerIntent: As a developer, I want to learn how to use vector search in Python applications with Azure DocumentDB.
 ---
 
