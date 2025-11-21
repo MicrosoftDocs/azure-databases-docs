@@ -56,4 +56,4 @@ If the primary cluster has native DocumentDB authentication method disabled *at 
 - [Learn how to enable replication and promote replica cluster](./how-to-cluster-replica.md)
 - [See replication limits and limitations](./limitations.md#cross-region-and-same-region-replication)
 - To resolve an issue with cross-region replication, see [this troubleshooting guide](./troubleshoot-replication.md).
-- [Learn about reliability in Azure DocumentDB](/azure/reliability/reliability-cosmos-mongodb)
+- [Learn about reliability in Azure DocumentDB](/azure/reliability/reliability-documentdb?context=/azure/documentdb/context/context)

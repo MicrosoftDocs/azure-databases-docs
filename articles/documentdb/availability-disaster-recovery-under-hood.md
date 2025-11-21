@@ -73,4 +73,4 @@ The following table summarizes primary considerations for enabling and managing 
 
 - [Learn about in-region high availability in Azure DocumentDB](./high-availability.md)
 - [Learn about cross-region replication and cross-region disaster recovery](./cross-region-replication.md)
-- [Learn about reliability in Azure DocumentDB](/azure/reliability/reliability-cosmos-mongodb)
+- [Learn about reliability in Azure DocumentDB](/azure/reliability/reliability-documentdb?context=/azure/documentdb/context/context)
