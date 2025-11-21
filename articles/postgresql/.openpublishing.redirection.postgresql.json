@@ -3386,11 +3386,6 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-supported-versions.md",
-            "redirect_url": "/azure/postgresql/server-parameter/concepts-supported-versions",
-            "redirect_document_id": true
-        },
-        {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-server-parameters-list-modified.md",
             "redirect_url": "/azure/postgresql/server-parameter/how-to-server-parameters-list-modified",
             "redirect_document_id": true
