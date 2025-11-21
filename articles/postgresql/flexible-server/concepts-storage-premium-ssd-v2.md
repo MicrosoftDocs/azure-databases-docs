@@ -44,7 +44,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 #### Premium SSD v2 - Limitations
 
--  [Data encryption with customer managed keys](concepts-data-encryption.md),[Long Term Retention](concepts-backup-restore.md), On-demand backups, and storage auto grow  features aren't supported for Premium SSD v2.
+-  [Data encryption with customer managed keys](concepts-data-encryption.md), On-demand backups,[Long Term Retention](concepts-backup-restore.md),  and storage auto grow  features aren't supported for Premium SSD v2.
   
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with SSDv2 storage type.
 
@@ -54,7 +54,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 -  During preview, restoring a deleted server (Tombstone recovery) may lead to up to 24 hours of data loss. To avoid accidental deletions, we recommend enabling resource lock.
 
--  If you create a new server using point-in-time restore (PITR) and immediately perform an operation that requires a full backup, the following error may occur. This error occurs because Premium SSDv2 disks don't support creating a snapshot while the disk is still hydrating. Wait until hydration finishes before retrying the operation.
+-  If you create a new server using point-in-time restore (PITR) and immediately perform an operation that requires a full backup, the following error may occur. This error occurs because Premium SSD v2 disks don't support creating a snapshot while the disk is still hydrating. Wait until hydration finishes before retrying the operation.
 
     _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
