@@ -190,7 +190,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 
 1. Add this resource configuration to the file's content. Replace the `<cluster-name>`, `<resource-group>`, and `<location>` placeholders with appropriate values.
 
-    ```terraform    
+    ```terraform
     variable "admin_username" {
       type        = string
       description = "Administrator username for the cluster."
