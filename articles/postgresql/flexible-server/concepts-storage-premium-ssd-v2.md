@@ -54,7 +54,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 -  During preview, restoring a deleted server (Tombstone recovery) may lead to up to 24 hours of data loss. To avoid accidental deletions, we recommend enabling resource lock.
 
--  If you create a new server using point-in-time restore (PITR) and immediately start an operation that requires a full backup, you'll see below error. This error occurs because Premium SSDv2 disks does not support creating a snapshot while the disk is still hydrating. Wait until hydration finishes before retrying the operation.
+-  If you create a new server using point-in-time restore (PITR) and immediately start an operation that requires a full backup, you see below error. This error occurs because Premium SSDv2 disks do not support creating a snapshot while the disk is still hydrating. Wait until hydration finishes before retrying the operation.
 
     _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
@@ -64,7 +64,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
                       • Compute scaling, enabling HA, and performing failover and failback within one hour.
                       • Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
   
-      _Error message: Snapshot Limit Reached. You have reached the snapshot limit for this disk. Please wait until the current background copy process completes before creating new snapshots_
+      _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots_
 
 If you encounter this error, space out your operations so they occur over more than one hour
   
