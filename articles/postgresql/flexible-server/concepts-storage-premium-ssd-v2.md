@@ -43,7 +43,7 @@ In preview, the Following features are now supported for Azure Database for Post
 _High availability 
 Read Replica, 
 Geo Redundant Backups
-Geo Disaster Recovery (Geo DR)
+Geo DR (Disaster Recovery)
 Major Version Upgrade
 Virtual endpoints_
 
