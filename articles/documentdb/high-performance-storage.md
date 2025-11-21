@@ -7,7 +7,7 @@ ms.topic: feature-guide
 ms.date: 11/21/2025
 ms.custom:
   - references_regions
-zone_pivot_groups: azure-interface-portal-rest-bicep
+zone_pivot_groups: azure-interface-portal-rest-bicep-terraform
 ai-usage: ai-assisted
 ---
 
@@ -84,6 +84,12 @@ For more information on tiers, see [compute and storage tiers](compute-storage.m
 ::: zone-end
 
 ::: zone pivot="azure-portal"
+
+::: zone-end
+
+::: zone pivot="azure-terraform"
+
+- [Terraform 1.2.0](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/install-cli) or later.
 
 ::: zone-end
 
@@ -165,6 +171,20 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
     ```
 
 1. Wait for the deployment to complete. Review the output from the deployment.
+
+::: zone-end
+
+::: zone pivot="azure-terraform"
+
+1. TODO
+
+1. TODO
+
+    ```terraform
+    TODO
+    ```
+
+1. TODO
 
 ::: zone-end
 
