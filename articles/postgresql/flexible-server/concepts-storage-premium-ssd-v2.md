@@ -50,7 +50,7 @@ Virtual endpoints_
 
 #### Premium SSD v2 - Limitations
 
--  Customer Managed Keys, On-demand backups, Long Term Backups,  Online Disk scaling, and storage auto grow  features aren't supported for Premium SSD v2.
+-  Customer Managed Keys, On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
   
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with Premium SSD v2 storage type.
 
