@@ -42,11 +42,11 @@ Azure Database for PostgreSQL offers a baseline throughput of 125 MB/s for disks
 High availability is now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. 
 
 
-#### Premium SSD v2 - Limitations during preview
+#### Premium SSD v2 - Limitations
 
--  [Data encryption with customer managed keys](concepts-data-encryption.md), [Long Term Retention](concepts-backup-restore.md, On-demand backups, and storage auto grow  features aren't supported for Premium SSD v2.
+-  [Data encryption with customer managed keys](concepts-data-encryption.md), [Long Term Retention](concepts-backup-restore.md), On-demand backups, and storage auto grow  features aren't supported for Premium SSD v2.
   
-- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
+- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with SSDv2 storage type.
 
 - Premium SSD v2 can be provisioned using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
@@ -60,8 +60,9 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 -  Azure Storage allows only three instant snapshots per hour. If you run more than three full-backup operations on large datasets within an hour, the operation may fail. Wait an hour or stagger operations to avoid this error.
   
-    Examples include:
+ _   Examples include:_
                       • Compute scaling, enabling HA, and performing failover and failback within one hour.
+   
                       • Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
   
       _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots_
