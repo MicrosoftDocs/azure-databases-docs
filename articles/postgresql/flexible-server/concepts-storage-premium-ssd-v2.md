@@ -54,9 +54,9 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 -  During preview, restoring a deleted server (Tombstone recovery) may lead to up to 24 hours of data loss. To avoid accidental deletions, we recommend enabling resource lock.
 
--  When you create a new server using point-in-time restore (PITR), wait until the disk hydration process is complete before starting any operation that requires a full backup on the newly restored server. If you start too soon, the operation will fail because Premium SSDv2 disks cannot create snapshots during hydration
+-  If you create a new server using point-in-time restore (PITR) and immediately start an operation that requires a full backup, you will see below error. This happens because Premium SSDv2 disks cannot create a snapshot while the disk is still hydrating. Wait until hydration finishes before retrying the operation.
 
-    _Error : Unable to create a snapshot from the disk because the disk is still being hydrated. Please retry after some time._
+    _Error : Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
 -  Azure Storage allows only three instant snapshots per hour. If you run more than three full-backup operations on large datasets within an hour, the operation may fail. Wait an hour or stagger operations to avoid this error.
   
