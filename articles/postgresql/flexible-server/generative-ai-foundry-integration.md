@@ -134,9 +134,9 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
 
 1. Connect to your PostgreSQL server using `psql` or your preferred PostgreSQL client:
 
-   Set the following environment variables by copying and pasting the lines below into your bash terminal (WSL, Azure Cloud Shell, etc.).    Set the following environment variables by copying and pasting the lines below into your bash terminal (WSL, Azure Cloud Shell, etc.). Find details for your connection in the **Connect** Tab in your Postgres Resource in the Azure Portal:
+   Set the following environment variables by copying and pasting the lines below into your bash terminal (WSL, Azure Cloud Shell, etc.). Find details for your connection in the **Connect** Tab in your Postgres Resource in the Azure portal:
    
-   :::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-connect.png" alt-text="Connect Tab" lightbox="media/generative-ai-foundry-integration/azure-postgres-connect.png":::
+   :::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-connect.png" alt-text="Screenshot of Connect Tab" lightbox="media/generative-ai-foundry-integration/azure-postgres-connect.png":::
 
    ```bash
    export PGHOST=<your-database-host-name>
@@ -270,7 +270,7 @@ For programmatic access, use the following MCP configuration in your Python code
    cp .env.example .env
    ```
 
-2. Update all the value to run your agent. All values can be found in your Foundry Project.
+2. Update all the values to run your agent. All values can be found in your Foundry Project.
 
     | Variable Name | Example Value | Description |
     |---------------|---------------|-------------|
