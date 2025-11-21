@@ -39,7 +39,13 @@ Azure Database for PostgreSQL offers a baseline throughput of 125 MB/s for disks
 
 ## Premium SSD v2 - Features
 
-High availability, Read Replicas, Geo DR, Geo Redundant Backups, Major Version Upgrade, virtual endpoints features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2. 
+In preview, the Following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2.
+_High availability 
+Read Replica, 
+Geo Redundant Backups
+Geo Disaster Recovery (Geo DR)
+Major Version Upgrade
+Virtual endpoints_
 
 
 #### Premium SSD v2 - Limitations
