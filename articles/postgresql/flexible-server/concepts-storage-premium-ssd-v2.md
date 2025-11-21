@@ -64,7 +64,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
                       • Compute scaling, enabling HA, and performing failover and failback within one hour.
                       • Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
                       
-        _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots_
+       _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
 
 If you encounter this error, space out your operations so they occur over more than one hour
   
