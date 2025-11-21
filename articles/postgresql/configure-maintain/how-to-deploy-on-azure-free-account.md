@@ -81,7 +81,7 @@ To complete this tutorial, you need:
 
     With public access, access to your server is limited to allowed IP addresses that you include in a firewall rule or to applications which can reach the instance of Azure Database for PostgreSQL flexible server via private endpoints. This method prevents external applications and tools from connecting to the server and any databases on the server, unless you create a rule to open the firewall for a specific IP address or range, or create a private endpoint.
 
-    With private access, access to your server is limited to your virtual network. For more information about connectivity methods, [**see Networking overview**](concepts-networking-private.md).
+    With private access, access to your server is limited to your virtual network. For more information about connectivity methods, [**see Networking overview**](../network/concepts-networking-private.md).
 
     For the purposes of this tutorial, enable public access to connect to the server.
 

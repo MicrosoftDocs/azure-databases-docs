@@ -93,4 +93,4 @@ az postgres flexible-server upgrade \
 - [Overview of business continuity with Azure Database for PostgreSQL flexible server](concepts-business-continuity.md).
 - [Major version upgrades in Azure Database for PostgreSQL flexible server](concepts-major-version-upgrade.md).
 - [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).
+- [Backup and restore in Azure Database for PostgreSQL flexible server](../backup-restore/concepts-backup-restore.md).

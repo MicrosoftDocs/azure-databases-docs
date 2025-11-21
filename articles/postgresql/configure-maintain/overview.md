@@ -40,7 +40,7 @@ The service performs automated patching of the underlying hardware, OS, and data
 
 ## Automatic backups
 
-Azure Database for PostgreSQL automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. All backups are encrypted by using AES 256-bit encryption. For more information, see [Backups](concepts-backup-restore.md).
+Azure Database for PostgreSQL automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. All backups are encrypted by using AES 256-bit encryption. For more information, see [Backups](../backup-restore/concepts-backup-restore.md).
 
 ## Adjust performance and scale within seconds
 
@@ -62,7 +62,7 @@ Azure Database for PostgreSQL has built-in performance monitoring and alerting f
 
 ## Built-in PgBouncer
 
-An Azure Database for PostgreSQL flexible server instance has a [built-in PgBouncer](concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure Database for PostgreSQL flexible server instance through PgBouncer by using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
+An Azure Database for PostgreSQL flexible server instance has a [built-in PgBouncer](../connectivity/../connectivity/concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure Database for PostgreSQL flexible server instance through PgBouncer by using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
 
 ## Azure regions
 

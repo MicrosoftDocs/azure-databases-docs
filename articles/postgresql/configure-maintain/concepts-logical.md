@@ -338,7 +338,7 @@ SELECT * FROM pg_replication_slots;
 ## Related content
 
 - [Firewall rules in Azure Database for PostgreSQL](concepts-firewall-rules.md).
-- [Networking overview for Azure Database for PostgreSQL with public access](concepts-networking-public.md).
-- [Virtual network integration in Azure Database for PostgreSQL](concepts-networking-private.md).
+- [Networking overview for Azure Database for PostgreSQL with public access](../network/../network/concepts-networking-public.md).
+- [Virtual network integration in Azure Database for PostgreSQL](../network/concepts-networking-private.md).
 - [How to use extensions](../extensions/how-to-allow-extensions.md).
 - [High availability in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).

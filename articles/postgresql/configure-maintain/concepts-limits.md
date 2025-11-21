@@ -14,7 +14,7 @@ ms.custom:
 
 # Limits in Azure Database for PostgreSQL 
 
-The following sections describe capacity and functional limits for Azure Database for PostgreSQL flexible server instances. If you'd like to learn about resource (compute, memory, storage) tiers, see the [compute ](concepts-compute.md) and [storage ](concepts-storage.md)  articles.
+The following sections describe capacity and functional limits for Azure Database for PostgreSQL flexible server instances. If you'd like to learn about resource (compute, memory, storage) tiers, see the [compute ](concepts-compute.md) and [storage ](../extension-module/concepts-storage.md)  articles.
 
 ## Maximum connections
 
@@ -66,7 +66,7 @@ However, you can use the `max_connections` setting to adjust how many connection
 >
 > Instances might encounter difficulties when the workload expands and demands more memory. As the number of connections increases, memory usage also rises. Instances with limited memory might face issues such as crashes or high latency. Although a higher value for `max_connections` might be acceptable when most connections are idle, it can lead to significant performance problems after they become active.
 >
-> If you need more connections, we suggest that you instead use PgBouncer, the built-in Azure solution for connection pool management. Use it in transaction mode. To start, we recommend that you use conservative values by multiplying the vCores within the range of 2 to 5. Afterward, carefully monitor resource utilization and application performance to ensure smooth operation. For detailed information on PgBouncer, see [PgBouncer in Azure Database for PostgreSQL](concepts-pgbouncer.md).
+> If you need more connections, we suggest that you instead use PgBouncer, the built-in Azure solution for connection pool management. Use it in transaction mode. To start, we recommend that you use conservative values by multiplying the vCores within the range of 2 to 5. Afterward, carefully monitor resource utilization and application performance to ensure smooth operation. For detailed information on PgBouncer, see [PgBouncer in Azure Database for PostgreSQL](../connectivity/../connectivity/concepts-pgbouncer.md).
 
 When connections exceed the limit, you might receive the following error:
 
@@ -83,7 +83,7 @@ The following sections list considerations for what is and isn't supported for y
 ### Scale operations
 
 - At this time, scaling up the server storage requires a server restart.
-- Server storage can only be scaled in 2x increments. See [Storage](concepts-storage.md) for details.
+- Server storage can only be scaled in 2x increments. See [Storage](../extension-module/concepts-storage.md) for details.
 - We currently don't support decreasing server storage size. The only way to do this operation is to [dump and restore](../howto-migrate-using-dump-and-restore.md) it to a new Azure Database for PostgreSQL flexible server instance.
    
 ### Storage
@@ -152,5 +152,5 @@ The following sections list considerations for what is and isn't supported for y
 ## Related content
 
 - [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL](concepts-storage.md).
+- [Storage options in Azure Database for PostgreSQL](../extension-module/concepts-storage.md).
 - [Supported versions of PostgreSQL in Azure Database for PostgreSQL](concepts-supported-versions.md).

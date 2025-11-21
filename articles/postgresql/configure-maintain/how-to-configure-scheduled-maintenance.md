@@ -92,6 +92,6 @@ You can also [set up](/azure/service-health/resource-health-alert-monitor-guide)
 
 ## Related content
 
-- [Download PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
+- [Download PostgreSQL server logs and major version upgrade logs](../monitor/how-to-configure-server-logs.md).
 - [Create alerts on metrics using portal](how-to-alert-on-metrics.md).
 - [Configure and access logs](how-to-configure-and-access-logs.md)

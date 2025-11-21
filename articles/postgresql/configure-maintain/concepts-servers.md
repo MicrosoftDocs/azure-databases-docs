@@ -68,9 +68,9 @@ Your Azure Database for PostgreSQL flexible server instance is enabled with defa
 
 ## Related content
 
-- [What is Azure Database for PostgreSQL?](overview.md)
+- [What is Azure Database for PostgreSQL?](../configure-maintain/overview.md)
 - [Compute options in Azure Database for PostgreSQL](concepts-compute.md)
-- [Storage options in Azure Database for PostgreSQL](concepts-storage.md)
+- [Storage options in Azure Database for PostgreSQL](../extension-module/concepts-storage.md)
 - [Supported versions of PostgreSQL in Azure Database for PostgreSQL](concepts-supported-versions.md)
 - [Limits in Azure Database for PostgreSQL](concepts-limits.md)
-- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md)
+- [Server parameters in Azure Database for PostgreSQL](../server-parameter/concepts-server-parameters.md)

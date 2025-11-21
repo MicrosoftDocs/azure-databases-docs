@@ -17,7 +17,7 @@ ms.custom:
 
 In this quickstart, you deploy a Django application on Azure Kubernetes Service (AKS) cluster with Azure Database for PostgreSQL flexible server using the Azure CLI.
 
-[AKS](/azure/aks/intro-kubernetes) is a managed Kubernetes service that lets you quickly deploy and manage clusters. [Azure Database for PostgreSQL flexible server](overview.md) is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings.
+[AKS](/azure/aks/intro-kubernetes) is a managed Kubernetes service that lets you quickly deploy and manage clusters. [Azure Database for PostgreSQL flexible server](../configure-maintain/overview.md) is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings.
 
 > [!NOTE]
 > This quickstart assumes a basic understanding of Kubernetes concepts, Django, and PostgreSQL.

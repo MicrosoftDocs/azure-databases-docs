@@ -46,14 +46,14 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 
 ### Unsupported Server Configurations
 
-- [Read replicas](./concepts-read-replicas-geo.md) are not supported during in-place upgrades. You must delete the read replica (including any cascading read replica) before upgrading the primary server. After the upgrade, you can re-create the replica.
+- [Read replicas](../read-replica/concepts-read-replicas-geo.md) are not supported during in-place upgrades. You must delete the read replica (including any cascading read replica) before upgrading the primary server. After the upgrade, you can re-create the replica.
 - Network traffic rules may block upgrade operations. 
     - Ensure your flexible server instance can send/receive traffic on ports 5432 and 6432 within its virtual network and to Azure Storage (for log archiving).
     - If Network Security Groups (NSGs) restrict this traffic, HA will not re-enable automatically post-upgrade. You may need to manually update NSG rules and re-enable HA.
 - Logical replication slots are not supported during in-place major version upgrades.
 - Servers using SSDv2 storage are not eligible for major version upgrades.
 - Views dependent on `pg_stat_activity` are not supported during major version upgrades.
-- If you are performing the upgrade from PG11 to a higher version, you must first configure your flexible server to use [SCRAM authentication ](./security-connect-scram.md#configure-scram-authentication) by enabling SCRAM and resetting all login-role passwords.
+- If you are performing the upgrade from PG11 to a higher version, you must first configure your flexible server to use [SCRAM authentication ](../security/security-connect-scram.md#configure-scram-authentication) by enabling SCRAM and resetting all login-role passwords.
 
 ### Extension Limitations
 
@@ -89,7 +89,7 @@ ANALYZE
 ```
 ## View upgrade logs
 
-Major version upgrade logs (`PG_Upgrade_Logs`) provide direct access to detailed [server logs](how-to-configure-server-logs.md). Integrating `PG_Upgrade_Logs` into your upgrade process can help ensure a smoother and more transparent transition to new PostgreSQL versions.
+Major version upgrade logs (`PG_Upgrade_Logs`) provide direct access to detailed [server logs](../monitor/how-to-configure-server-logs.md). Integrating `PG_Upgrade_Logs` into your upgrade process can help ensure a smoother and more transparent transition to new PostgreSQL versions.
 
 You can configure your major version upgrade logs in the same way as server logs, by using the following server parameters:
 
@@ -98,7 +98,7 @@ You can configure your major version upgrade logs in the same way as server logs
 
 #### Setup upgrade logs
 
-To start using `PG_Upgrade_Logs`, you can [Configure capture of PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
+To start using `PG_Upgrade_Logs`, you can [Configure capture of PostgreSQL server logs and major version upgrade logs](../monitor/how-to-configure-server-logs.md).
 
 You can access the upgrade logs through the UI for server logs. There, you can monitor the progress and details of your PostgreSQL major version upgrades in real time. This UI provides a centralized location for viewing logs, so you can more easily track and troubleshoot the upgrade process.
 
@@ -115,4 +115,4 @@ To avoid authentication issues, carefully review and update all connection strin
 
 - [Major version upgrade](how-to-perform-major-version-upgrade.md?tabs=portal).
 - [High availability in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server).
-- [Backup and restore in Azure Database for PostgreSQL](concepts-backup-restore.md).
+- [Backup and restore in Azure Database for PostgreSQL](../backup-restore/concepts-backup-restore.md).

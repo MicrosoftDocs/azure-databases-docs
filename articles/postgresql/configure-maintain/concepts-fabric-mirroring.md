@@ -64,7 +64,7 @@ Azure Database for PostgreSQL supports **PostgreSQL 14 and later** for Fabric mi
 
 Before you can use Fabric mirroring in an Azure Database for PostgreSQL flexible server instance, you need to configure several prerequisites.
 
-- **System-assigned Managed Identity (SAMI)** must be [enabled](security-configure-managed-identities-system-assigned.md).
+- **System-assigned Managed Identity (SAMI)** must be [enabled](../security/security-configure-managed-identities-system-assigned.md).
   - Azure CDC uses this identity to authenticate communications with Fabric OneLake, copy initial snapshots, and change batches to the landing zone.
 
 You configure additional prerequisites through a dedicated enablement workflow described in the following section. These prerequisites are:
@@ -99,7 +99,7 @@ Next, you need to provide or create a PostgreSQL role for the Fabric service to 
 You can accomplish this task by specifying a [database role](#use-a-database-role) for connecting to your source system.
 
 > [!NOTE]  
-> Both Entra ID and local database roles are supported to connect Fabric mirroring to Azure Database for PostgreSQL, select the [authentication method](security-overview.md#access-control) that best fits your purposes.
+> Both Entra ID and local database roles are supported to connect Fabric mirroring to Azure Database for PostgreSQL, select the [authentication method](../security/security-overview.md#access-control) that best fits your purposes.
 
 #### Use a database role
 
@@ -117,7 +117,7 @@ You can accomplish this task by specifying a [database role](#use-a-database-rol
    ```
 
 1. The database user you create also needs to be `owner` of the tables to replicate in the mirrored database. This requirement means that the user creates the tables or changes the ownership of those tables by using `ALTER TABLE <table name here> OWNER TO fabric_user;`.
-   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure Database for PostgreSQL [user management](security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html).
+   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure Database for PostgreSQL [user management](../security/security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html).
 
 > [!IMPORTANT]  
 > Missing one of the previous security configuration steps cause subsequent mirrored operations in Fabric portal to fail with an `Internal error` message.
@@ -245,4 +245,4 @@ The mirroring function for fabric mirroring in Azure Database for PostgreSQL rep
 
 - [System assigned managed identity](how-to-configure-managed-identities.md)
 - [Firewall rules in Azure Database for PostgreSQL](concepts-firewall-rules.md)
-- [Networking overview for Azure Database for PostgreSQL instances with public access](concepts-networking-public.md)
+- [Networking overview for Azure Database for PostgreSQL instances with public access](../network/../network/concepts-networking-public.md)

@@ -79,7 +79,7 @@ az postgres flexible-server restore \
 
 ## Related content
 
-- [Restore to latest restore point](how-to-restore-latest-restore-point.md).
-- [Restore full backup (fast restore)](how-to-restore-full-backup.md).
-- [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
-- [Restore a dropped server](how-to-restore-dropped-server.md).
+- [Restore to latest restore point](../backup-restore/how-to-restore-latest-restore-point.md).
+- [Restore full backup (fast restore)](../backup-restore/how-to-restore-full-backup.md).
+- [Restore to paired region (geo-restore)](../backup-restore/how-to-restore-paired-region.md).
+- [Restore a dropped server](../backup-restore/how-to-restore-dropped-server.md).
