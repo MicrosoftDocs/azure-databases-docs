@@ -69,7 +69,7 @@ https://{your-resource}.openai.azure.com/openai/deployments/gpt-4.1/chat/complet
 
 ### Required database privileges
 
-Before running the schema conversion, ensure the accounts you use have the minimum privileges required on both the source Oracle database and the scratch Azure Database for PostgreSQL. The Oracle account needs read access to data and dictionary views so the tool can analyze schema and code. The PostgreSQL scratch account must be able to create schemas, tables, and other objects for validation. Use a dedicated service account where possible. Follow the principle of least privilege. Coordinate with your DBAs to grant any temporary elevated rights and to validate connectivity and access before starting the conversion.
+Before running the schema conversion, ensure the accounts, you use have the minimum privileges required on both the source Oracle database and the scratch Azure Database for PostgreSQL. The Oracle account needs read access to data and dictionary views so the tool can analyze schema and code. The PostgreSQL scratch account must be able to create schemas, tables, and other objects for validation. Use a dedicated service account where possible. Follow the principle of least privilege. Coordinate with your DBAs to grant any temporary elevated rights and to validate connectivity and access before starting the conversion.
 
 #### Source Oracle privileges
 
@@ -110,7 +110,7 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Search for *PostgreSQL* and install the **PostgreSQL** extension.
     1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
  
-    ::image type="content" source="media/schema-conversions-tutorial/pgextension-installation.png" alt-text="Screenshot of installing PostgreSQL extension in VS Code.":::
+    :::image type="content" source="media/schema-conversions-tutorial/pgextension-installation.png" alt-text="Screenshot of installing PostgreSQL extension in VS Code.":::
 
 ### Step 2: Create PostgreSQL connection
 
@@ -131,7 +131,7 @@ This section walks through the complete migration workflow: install the PostgreS
 
 1. Go to the **PostgreSQL extension**.
 1. Navigate to the **Migrations (preview)** panel.
-1. Click on **Create Migration Project**.
+1. Select on **Create Migration Project**.
     
     :::image type="content" source="media/schema-conversions-tutorial/create-migration.png" alt-text="Screenshot of creating a new migration project.":::
 
