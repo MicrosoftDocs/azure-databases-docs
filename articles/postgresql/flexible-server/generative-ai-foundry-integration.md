@@ -405,7 +405,7 @@ az containerapp show -n your-mcp-container-name -g your-resource-group
 ## Related content
 
 - [Azure MCP Server documentation](/azure/developer/azure-mcp-server/)
-- [Model Context Protocol specification](https://spec.modelcontextprotocol.io/)
+- [Model Context Protocol specification](https://modelcontextprotocol.io/specification/versioning)
 - [Microsoft Foundry documentation](/azure/ai-foundry/)
 - [Azure Database for PostgreSQL integrations for AI applications](generative-ai-frameworks.md)
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
