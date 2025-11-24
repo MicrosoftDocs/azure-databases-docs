@@ -189,7 +189,7 @@ CosmosClient client =
 
 ## Spark 3 Connector
 
-You can define the preferred regional list using the `spark.cosmos.preferredRegionsList` [configuration](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/configuration-reference.md), for example:
+You can define the preferred regional list using the `spark.cosmos.preferredRegionsList` [configuration](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3/docs/configuration-reference.md), for example:
 
 ```scala
 val sparkConnectorConfig = Map(
