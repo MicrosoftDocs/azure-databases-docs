@@ -2,11 +2,12 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 11/20/2025
+ms.date: 11/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ---
+row
 | Region | Intel Compute | AMD Compute | Confidential Compute | Zone-Redundant HA | Same-Zone HA | Geo-Redundant backup | 
 | ------ | ------------- | ----------- | -------------------- | ----------------- | ------------ | -------------------- | 
 | Australia Central | :white_check_mark: (v3/v4/v5) | :x: | :x: | :x: | :white_check_mark: | :white_check_mark: | 
@@ -14,6 +15,7 @@ ms.topic: include
 | Australia East | :white_check_mark: (v3/v4/v5/v6) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | Australia Southeast | :white_check_mark: (v3/v4/v5) | :x: | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | Austria East | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | :x: | 
+| Belgium Central | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | :x: | 
 | Brazil South | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: $ | :white_check_mark: | :x: | 
 | Brazil Southeast * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :x: | :white_check_mark: | :x: | 
 | Canada Central | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
@@ -70,7 +72,7 @@ ms.topic: include
 | West Europe | :white_check_mark: (v3/v4/v5) | :x: | :white_check_mark: (v5) | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | West US | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | West US 2 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
-| West US 3 | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: ** | :white_check_mark: | :x: |
+| West US 3 | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: ** | :white_check_mark: | :x: | 
 
 $ New zone-redundant high availability deployments are temporarily blocked in these regions. The service fully supports already provisioned HA servers.
 
