@@ -109,9 +109,7 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Go to the **Extensions** view (Ctrl+Shift+X).
 1. Search for *PostgreSQL* and install the **PostgreSQL** extension.
     1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
-
-For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md).
-    
+ 
     ::image type="content" source="media/schema-conversions-tutorial/pgextension-installation.png" alt-text="Screenshot of installing PostgreSQL extension in VS Code.":::
 
 ### Step 2: Create PostgreSQL connection
@@ -121,6 +119,7 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. Test and save the connection.
     
     ::image type="content" source="media/schema-conversions-tutorial/pgnew-connection.png" alt-text="Screenshot of adding new PostgreSQL connection.":::
+
 ### Step 3: Open new workspace
 
 1. Create a new folder on your local machine for the migration project.
@@ -196,6 +195,8 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. Once the schema conversion is completed, **Review tasks** are created for objects requiring attention.
 1. Use **GitHub Copilot agents** or manually convert schemas to PostgreSQL.
 1. Review and compare the **previous** and **new converted** schema conversion statements.
+
+For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md).
 
 ## Related content
 
