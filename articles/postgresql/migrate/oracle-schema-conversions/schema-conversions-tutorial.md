@@ -111,22 +111,31 @@ This section walks through the complete migration workflow: install the PostgreS
    1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
 
 For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md).
+    
+    :::image type="content" source="media/schema-conversions-tutorial/pgextension-installation.png" alt-text="Screenshot of installing PostgreSQL extension in VS Code.":::
 
 ### Step 2: Create PostgreSQL connection
 
 1. In the PostgreSQL extension panel, create a connection to your **Azure Database for PostgreSQL**.
 1. Enter the necessary connection details (host, database, username, password).
 1. Test and save the connection.
+    
+    :::image type="content" source="media/schema-conversions-tutorial/pgnew-connection.png" alt-text="Screenshot of adding new PostgreSQL connection.":::
 
 ### Step 3: Open new workspace
 
 1. Create a new folder on your local machine for the migration project.
 1. Open a **new workspace** in Visual Studio Code.
+    
+    :::image type="content" source="media/schema-conversions-tutorial/open-workspace.png" alt-text="Screenshot of adding new workspace in VS Code.":::
 
 ### Step 4: Initialize migration project
 
-1. **Right-click** on the blank workspace area.
-1. Select **Open Migration Project** from the context menu.
+1. Go to the **PostgreSQL extension**.
+1. Navigate to the **Migrations (preview)** panel.
+1. Click on **Create Migration Project**.
+    
+    :::image type="content" source="media/schema-conversions-tutorial/create-migration.png" alt-text="Screenshot of creating a new migration project.":::
 
 ### Step 5: Configure project settings
 
@@ -143,8 +152,8 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
    - Database or service name
    - Username and password
 1. Select **Load Schemas**.
-1. The system **tests the Oracle connection**.
-1. If successful, it **lists all user-defined schemas** available in Oracle.
+1. The system **Tests the Oracle connection**.
+1. If successful, it **Lists all user-defined schemas** available in Oracle.
 1. **Choose one or multiple schemas** that you want to convert to PostgreSQL.
 1. Select **Next** to continue.
 
@@ -176,6 +185,18 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. Monitor the conversion progress in the Visual Studio interface
 
     :::image type="content" source="media/schema-conversions-tutorial/progress-bar.png" alt-text="Screenshot of Migration step progress.":::
+
+### Step 10: Review schema conversion report
+
+1. Once the schema conversion is completed, a **schema conversion report** is generated.
+1. Review the objects that were **converted successfully** or **skipped**.
+1. The report displays the **success percentage** of the conversion.
+
+### Step 11: Review and refine conversion tasks
+
+1. Once the schema conversion is completed, **Review tasks** are created for objects requiring attention.
+1. Use **GitHub Copilot agents** or manually convert schemas to PostgreSQL.
+1. Review and compare the **previous** and **new converted** schema conversion statements.
 
 ## Related content
 
