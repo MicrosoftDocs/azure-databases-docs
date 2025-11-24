@@ -371,4 +371,4 @@ dfCosmos.select("id", "productname", "category", "recommendationscore").show()
 
 - [Reverse ETL](reverse-extract-transform-load.md)
 - [Azure Cosmos DB Spark Connector](/azure/cosmos-db/nosql/tutorial-spark-connector)
-- [Microsoft Entra authentication in Apache Spark](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/AAD-Auth.md)
+- [Microsoft Entra authentication in Apache Spark](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3/docs/AAD-Auth.md)
