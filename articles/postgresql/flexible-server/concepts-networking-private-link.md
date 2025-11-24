@@ -177,7 +177,7 @@ If you have DNS resolution issues when you use private endpoint-based networking
 - **Clear the DNS cache:** Clear the DNS cache on the private endpoint or client machine to ensure the latest DNS information is retrieved and to avoid inconsistent errors.
 - **Analyze DNS logs:** Review DNS logs for error messages or unusual patterns, such as DNS query failures, server errors, or timeouts. For more on DNS metrics, see [Azure DNS metrics and alerts](/azure/dns/dns-alerts-metrics).
 
-## Limitations and connsiderations
+## Limitations and considerations
 
 - Private endpoints can only be configured for servers created after the introduction of Private Link. Servers that use virtual network (VNet) integration are not eligible for private endpoint configuration.
 
