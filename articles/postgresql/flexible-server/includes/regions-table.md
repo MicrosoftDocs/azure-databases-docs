@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 11/20/2025
+ms.date: 11/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -14,6 +14,7 @@ ms.topic: include
 | Australia East | :white_check_mark: (v3/v4/v5/v6) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
 | Australia Southeast | :white_check_mark: (v3/v4/v5) | :x: | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | Austria East | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | :x: | 
+| Belgium Central | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | :x: | 
 | Brazil South | :white_check_mark: (v3/v4/v5) | :x: | :x: | :white_check_mark: $ | :white_check_mark: | :x: | 
 | Brazil Southeast * | :white_check_mark: (v3/v4/v5) | :x: | :x: | :x: | :white_check_mark: | :x: | 
 | Canada Central | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: | 
@@ -71,11 +72,3 @@ ms.topic: include
 | West US | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :x: | :white_check_mark: | :white_check_mark: | 
 | West US 2 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: | 
 | West US 3 | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: ** | :white_check_mark: | :x: |
-
-$ New zone-redundant high availability deployments are temporarily blocked in these regions. The service fully supports already provisioned HA servers.
-
-$ New server deployments are temporarily blocked in these regions. The service fully supports already provisioned servers.
-
-** You can now deploy zone-redundant high availability when you provision new servers in these regions. For existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, see these [special considerations](../how-to-configure-high-availability.md#limitations-and-considerations).
-
-(*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. You can access these regions only upon request by creating a new support request.
