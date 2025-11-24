@@ -81,3 +81,5 @@ error NU1109: Detected package downgrade: Newtonsoft.Json from 13.0.4 to central
 2. **Update together** - When upgrading the Cosmos DB SDK, check if `Newtonsoft.Json` requirements have changed
 3. **Monitor warnings** - Treat NuGet package downgrade warnings (NU1109) as errors in CI/CD pipelines
 4. **Test after updates** - Run your full test suite after updating either package
+
+---
