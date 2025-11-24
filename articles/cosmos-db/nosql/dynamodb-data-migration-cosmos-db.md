@@ -229,7 +229,7 @@ The third step reads DynamoDB data from Data Lake Storage Gen2 and stores it in 
 
 If necessary, you can run the next cell (the fourth step) to execute any data transformations or implement custom logic. For example, you could add an `id` field to your data before writing it to Azure Cosmos DB.
 
-Run the fifth step to create the Azure Cosmos DB database and container. Use the [Catalog API of the Azure Cosmos DB Spark connector](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/catalog-api.md). Replace the following information with the corresponding values in your setup:
+Run the fifth step to create the Azure Cosmos DB database and container. Use the [Catalog API of the Azure Cosmos DB Spark connector](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3/docs/catalog-api.md). Replace the following information with the corresponding values in your setup:
 
 | Variable            | Description                                                                                          |
 |---------------------|--------------------------------------------------------------------------------------------------|
