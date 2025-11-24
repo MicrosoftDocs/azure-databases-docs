@@ -7,7 +7,6 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ---
-row
 | Region | Intel Compute | AMD Compute | Confidential Compute | Zone-Redundant HA | Same-Zone HA | Geo-Redundant backup | 
 | ------ | ------------- | ----------- | -------------------- | ----------------- | ------------ | -------------------- | 
 | Australia Central | :white_check_mark: (v3/v4/v5) | :x: | :x: | :x: | :white_check_mark: | :white_check_mark: | 
