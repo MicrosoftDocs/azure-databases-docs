@@ -136,7 +136,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
 
    Set the following environment variables by copying and pasting the lines below into your bash terminal (WSL, Azure Cloud Shell, etc.). Find details for your connection in the **Connect** Tab in your Postgres Resource in the Azure portal:
    
-   :::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-connect.png" alt-text="Screenshot of Connect Tab" lightbox="media/generative-ai-foundry-integration/azure-postgres-connect.png":::
+   :::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-connect.png" alt-text="Screenshot of Connect Tab." lightbox="media/generative-ai-foundry-integration/azure-postgres-connect.png":::
 
    ```bash
    export PGHOST=<your-database-host-name>
