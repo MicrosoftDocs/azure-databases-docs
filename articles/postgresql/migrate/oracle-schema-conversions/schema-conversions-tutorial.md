@@ -110,7 +110,7 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Search for *PostgreSQL* and install the **PostgreSQL** extension.
     1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
  
-    :::image type="content" source="media/schema-conversions-tutorial/pg-extension-installation.png" alt-text="Screenshot of installing PostgreSQL extension in VS Code.":::
+    :::image type="content" source="media/schema-conversions-tutorial/postgres-extension-installation.png" alt-text="Screenshot of installing PostgreSQL extension in VS Code.":::
 
 ### Step 2: Create PostgreSQL connection
 
@@ -118,7 +118,7 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Enter the necessary connection details (host, database, username, password).
 1. Test and save the connection.
     
-    ::image type="content" source="media/schema-conversions-tutorial/pg-new-connection.png" alt-text="Screenshot of adding new PostgreSQL connection.":::
+    :::image type="content" source="media/schema-conversions-tutorial/postgres-new-connection.png" alt-text="Screenshot of adding new PostgreSQL connection.":::
 
 ### Step 3: Open new workspace
 
