@@ -11,7 +11,7 @@ The Azure Cosmos DB .NET SDK has a dependency on `Newtonsoft.Json` for JSON seri
 The SDK internally depends on version 10.x of Newtonsoft.Json, which has a known security vulnerability. However, the SDK has been verified to work with both 10.x and 13.x versions. The patched 13.x versions include breaking changes, but the SDK's usage patterns are compatible with these changes.
 
 > [!IMPORTANT]
-> This dependency is required even when using `System.Text.Json` for user-defined types via [CosmosClientOptions.UseSystemTextJsonSerializerWithOptions](https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.usesystemtextjsonserializerwithoptions?view=azure-dotnet), because the SDK's internal operations still use Newtonsoft.Json for system types.
+> This dependency is required even when using `System.Text.Json` for user-defined types via [CosmosClientOptions.UseSystemTextJsonSerializerWithOptions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.usesystemtextjsonserializerwithoptions?view=azure-dotnet&preserve-view=true), because the SDK's internal operations still use Newtonsoft.Json for system types.
 
 ### Recommended Configuration
 
