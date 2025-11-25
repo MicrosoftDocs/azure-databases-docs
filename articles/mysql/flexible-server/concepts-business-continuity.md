@@ -4,7 +4,7 @@ description: Learn about the concepts of business continuity with Azure Database
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article

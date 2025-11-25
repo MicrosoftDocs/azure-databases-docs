@@ -4,7 +4,7 @@ description: This article describes how to enable or disable zone redundant high
 author: aditivgupta
 ms.author: adig
 ms.reviewer: maghan
-ms.date: 08/15/2025
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to

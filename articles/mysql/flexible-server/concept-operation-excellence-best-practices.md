@@ -4,7 +4,7 @@ description: This article describes the best practices to operate your Azure Dat
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: best-practice

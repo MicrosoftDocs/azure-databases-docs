@@ -4,7 +4,7 @@ description: Prepay for Azure Database for MySQL - Flexible Server compute resou
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 08/04/2025
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to

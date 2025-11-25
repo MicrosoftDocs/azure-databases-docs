@@ -4,7 +4,7 @@ description: Learn about the Flexible Server deployment model for Azure Database
 author: deepthiprasad
 ms.author: deprasa
 ms.reviewer: maghan
-ms.date: 02/20/2025
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview

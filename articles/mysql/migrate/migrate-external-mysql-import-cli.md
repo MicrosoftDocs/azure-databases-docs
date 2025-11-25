@@ -4,7 +4,7 @@ description: This tutorial describes how to use the Azure Database for MySQL Imp
 author: saikondapalli11
 ms.author: skondapalli
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
