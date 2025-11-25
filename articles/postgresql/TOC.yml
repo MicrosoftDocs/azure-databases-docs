@@ -419,7 +419,7 @@
           href: flexible-server/generative-ai-overview.md
         - name: AI Agents
           href: flexible-server/generative-ai-agents.md
-        - name: AI Foundry Integration
+        - name: Microsoft Foundry Integration
           href: flexible-server/generative-ai-foundry-integration.md
         - name: Vector Databases
           items:
