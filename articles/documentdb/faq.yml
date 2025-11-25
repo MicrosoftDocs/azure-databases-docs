@@ -36,7 +36,7 @@ sections:
       - question: |
           How does Azure DocumentDB relate to Azure Cosmos DB?
         answer: |
-          Azure DocumentDB was previously known as Azure Cosmos DB for MongoDB (vCore). It [became it's own distinct offering]("https://devblogs.microsoft.com/cosmosdb/azure-documentdb-is-now-generally-available") to align with the open source [DocumentDB project]("https://documentdb.io/") that powers it. 
+          Azure DocumentDB was previously known as Azure Cosmos DB for MongoDB (vCore). It [became it's own distinct offering](https://devblogs.microsoft.com/cosmosdb/azure-documentdb-is-now-generally-available) to align with the open source [DocumentDB project](https://documentdb.io) that powers it. 
   - name: Security
     questions:
       - question: |
