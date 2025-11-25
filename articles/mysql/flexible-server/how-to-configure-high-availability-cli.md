@@ -44,7 +44,7 @@ The high-availability feature provisions physically separate primary and standby
 
 ## Enable high-availability during server creation
 
-You can only create an Azure Database for MySQL flexible server instance with high-availability by using the General Purpose or Business Critical pricing tiers. You can enable zone redundant high-availability for a server only during creation.
+You can only create an Azure Database for MySQL flexible server instance with high-availability by using the General Purpose or Memory-Optimized pricing tiers. You can enable zone redundant high-availability for a server only during creation.
 
 **Usage:**
 

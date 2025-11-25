@@ -22,7 +22,7 @@ The following are operational guidelines that should be followed when working wi
 
 - **Monitor your memory, CPU, and storage usage**: You can [set up alerts](how-to-alert-on-metric.md) to notify you when usage patterns change or when you approach the capacity of your deployment, so that you can maintain system performance and availability.
 
-- **Accelerated Logs for Enhanced Performance**: Enabling [accelerated logs](concepts-accelerated-logs.md) feature optimizes transactional log-related operations, boosting server throughput and performance. This feature, available at **no extra cost**, is a significant addition to operational best practices for users of the Business Critical service tier.
+- **Accelerated Logs for Enhanced Performance**: Enabling [accelerated logs](concepts-accelerated-logs.md) feature optimizes transactional log-related operations, boosting server throughput and performance. This feature, available at **no extra cost**, is a significant addition to operational best practices for users of the Memory-Optimized service tier.
 
 - **Scale up your DB instance**: You can [scale up](../single-server/how-to-create-manage-server-portal.md) when you're approaching storage capacity limits. You should have some buffer in storage and memory to accommodate unforeseen increases in demand from your applications. You can also [enable the storage autogrow](../single-server/how-to-auto-grow-storage-portal.md) feature 'ON' just to ensure that the service automatically scales the storage as it nears the storage limits.
 

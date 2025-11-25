@@ -88,7 +88,7 @@ You can define a system-managed schedule or a custom schedule for each flexible 
 >
 > Existing Burstable-tier instances with custom maintenance windows are unaffected. However, users can no longer modify these settings for custom maintenance windows.
 >
-> For customers who need custom maintenance windows, we recommend upgrading to the General Purpose or Business Critical tier.
+> For customers who need custom maintenance windows, we recommend upgrading to the General Purpose or Memory-Optimized tier.
 
 In rare cases, a maintenance event can be canceled by the system or might fail to finish successfully. If a maintenance event fails, the update is reverted, and the previous version of the binaries is restored. In scenarios of failed updates, you might still experience a restart of the server during the maintenance window.
 

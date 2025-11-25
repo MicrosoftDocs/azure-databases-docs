@@ -52,7 +52,7 @@ To modify the backup interval, navigate to the **Settings > Compute + Storage** 
 
 ## Backup redundancy options
 
-Azure Database for MySQL Flexible Server stores multiple copies of your backups so that your data is protected from planned and unplanned events, including transient hardware failures, network or power outages, and massive natural disasters. Azure Database for MySQL Flexible Server provides the flexibility to choose between locally redundant, zone-redundant or geo-redundant backup storage in Basic, General Purpose and Business Critical tiers. By default, Azure Database for MySQL Flexible Server backup storage is locally redundant for servers with same-zone high availability (HA) or no high availability configuration, and zone redundant for servers with zone-redundant HA configuration.
+Azure Database for MySQL Flexible Server stores multiple copies of your backups so that your data is protected from planned and unplanned events, including transient hardware failures, network or power outages, and massive natural disasters. Azure Database for MySQL Flexible Server provides the flexibility to choose between locally redundant, zone-redundant or geo-redundant backup storage in Basic, General Purpose and Memory-Optimized tiers. By default, Azure Database for MySQL Flexible Server backup storage is locally redundant for servers with same-zone high availability (HA) or no high availability configuration, and zone redundant for servers with zone-redundant HA configuration.
 
 Backup redundancy ensures that your database meets its availability and durability targets even in the face of failures and Azure Database for MySQL Flexible Server extends three options to users -
 

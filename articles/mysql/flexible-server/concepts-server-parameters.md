@@ -100,7 +100,7 @@ The [physical memory size](./concepts-service-tiers-storage.md#physical-memory-s
 | Standard_D48ds_v4 | 48 | 192 | 154618822656 | 134217728 | 154618822656 |
 | Standard_D64ads_v5 | 64 | 256 | 206158430208 | 134217728 | 206158430208 |
 | Standard_D64ds_v4| 64 | 256 | 206158430208 | 134217728 | 206158430208 |
-|**Business Critical**    |  |  |  |  |  |  
+|**Memory-Optimized**    |  |  |  |  |  |  
 | Standard_E2ds_v4 | 2 | 16 | 12884901888 | 134217728 | 12884901888 |
 | Standard_E2ads_v5, Standard_E2ds_v5| 2 | 16 | 12884901888 | 134217728 | 12884901888 |
 | Standard_E4ds_v4 | 4 | 32 | 25769803776 | 134217728 | 25769803776 |
@@ -170,7 +170,7 @@ The memory size of the server determines the value of `max_connections`. The [ph
 | Standard_D48ds_v4 | 48 | 192 | 16384 | 10 | 32768 |
 | Standard_D64ads_v5 | 64 | 256 | 21845 | 10 | 43691 |
 | Standard_D64ds_v4 | 64 | 256 | 21845 | 10 | 43691 |
-| **Business Critical** | | | | | |
+| **Memory-Optimized** | | | | | |
 | Standard_E2ds_v4 | 2 | 16 | 1365 | 10 | 2731 |
 | Standard_E2ads_v5, Standard_E2ds_v5 | 2 | 16 | 1365 | 10 | 2731 |
 | Standard_E4ds_v4 | 4 | 32 | 2731 | 10 | 5461 |

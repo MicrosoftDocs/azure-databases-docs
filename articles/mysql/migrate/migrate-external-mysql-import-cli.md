@@ -89,7 +89,7 @@ The following are the steps for using Percona XtraBackup to take a full backup:
 
 - Consider keeping the Azure Blob storage account and the target Flexible Server to be deployed in the same region for better import performance.
 - Recommended SKU configuration for target Azure Database for MySQL Flexible Server –
-  - Setting a Burstable SKU for the target isn't recommended to optimize migration time when running the Azure Database for MySQL Import operation. We recommend scaling to General Purpose/ Business Critical for the course of the import operation, post, which you can scale down to Burstable SKU.
+  - Setting a Burstable SKU for the target isn't recommended to optimize migration time when running the Azure Database for MySQL Import operation. We recommend scaling to General Purpose/ Memory-Optimized for the course of the import operation, post, which you can scale down to Burstable SKU.
 
 ## Trigger an Azure Database for MySQL Import operation to migrate from Azure Database for MySQL -Flexible Server
 
