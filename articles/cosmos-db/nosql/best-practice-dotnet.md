@@ -50,7 +50,7 @@ Watch the following video to learn more about using the .NET SDK from an Azure C
 
 ## Managing Newtonsoft.Json Dependencies
 
-[!INCLUDE [dotnet-newtonsoft-dependency](../nosql/includes/dotnet-newtonsoft-dependency.md)]
+[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
 
 ## Capture diagnostics
 

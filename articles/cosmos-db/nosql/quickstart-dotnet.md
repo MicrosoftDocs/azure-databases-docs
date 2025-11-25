@@ -110,7 +110,7 @@ using Microsoft.Azure.Cosmos;
 
 ## Managing Newtonsoft.Json Dependencies
 
-[!INCLUDE [dotnet-newtonsoft-dependency](../nosql/includes/dotnet-newtonsoft-dependency.md)]
+[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
 
 ## Object model
 

@@ -39,7 +39,7 @@ Different sub versions of .NET SDKs are available under the 3.x.x version. **The
 For a list of known issues with the recommended minimum version of the SDK, see [known issues section](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md#-known-issues).
 
 ## Managing Newtonsoft.Json Dependencies
-[!INCLUDE [dotnet-newtonsoft-dependency](../nosql/includes/dotnet-newtonsoft-dependency.md)]
+[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
 
 ## FAQ
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]

@@ -400,7 +400,7 @@ See [Increase the number of threads/tasks](#increase-threads) in the Networking 
 
 ## Managing Newtonsoft.Json Dependencies
 
-[!INCLUDE [dotnet-newtonsoft-dependency](../nosql/includes/dotnet-newtonsoft-dependency.md)]
+[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
 
 ## Query operations
 
