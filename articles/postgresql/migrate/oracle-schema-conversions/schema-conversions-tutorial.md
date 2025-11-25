@@ -69,7 +69,7 @@ https://{your-resource}.openai.azure.com/openai/deployments/gpt-4.1/chat/complet
 
 ### Required database privileges
 
-Before running the schema conversion, ensure the accounts you use have the minimum privileges required on both the source Oracle database and the scratch Azure Database for PostgreSQL. The Oracle account needs read access to data and dictionary views so the tool can analyze schema and code. The PostgreSQL scratch account must be able to create schemas, tables, and other objects for validation. Use a dedicated service account where possible. Follow the principle of least privilege. Coordinate with your DBAs to grant any temporary elevated rights and to validate connectivity and access before starting the conversion.
+Before running the schema conversion, ensure the accounts, you use have the minimum privileges required on both the source Oracle database and the scratch Azure Database for PostgreSQL. The Oracle account needs read access to data and dictionary views so the tool can analyze schema and code. The PostgreSQL scratch account must be able to create schemas, tables, and other objects for validation. Use a dedicated service account where possible. Follow the principle of least privilege. Coordinate with your DBAs to grant any temporary elevated rights and to validate connectivity and access before starting the conversion.
 
 #### Source Oracle privileges
 
@@ -108,10 +108,8 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Open Visual Studio.
 1. Go to the **Extensions** view (Ctrl+Shift+X).
 1. Search for *PostgreSQL* and install the **PostgreSQL** extension.
-   1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
-
-For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md).
-    
+    1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
+ 
     :::image type="content" source="media/schema-conversions-tutorial/pgextension-installation.png" alt-text="Screenshot of installing PostgreSQL extension in VS Code.":::
 
 ### Step 2: Create PostgreSQL connection
@@ -120,7 +118,7 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. Enter the necessary connection details (host, database, username, password).
 1. Test and save the connection.
     
-    :::image type="content" source="media/schema-conversions-tutorial/pgnew-connection.png" alt-text="Screenshot of adding new PostgreSQL connection.":::
+    ::image type="content" source="media/schema-conversions-tutorial/pgnew-connection.png" alt-text="Screenshot of adding new PostgreSQL connection.":::
 
 ### Step 3: Open new workspace
 
@@ -133,7 +131,7 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 
 1. Go to the **PostgreSQL extension**.
 1. Navigate to the **Migrations (preview)** panel.
-1. Click on **Create Migration Project**.
+1. Select on **Create Migration Project**.
     
     :::image type="content" source="media/schema-conversions-tutorial/create-migration.png" alt-text="Screenshot of creating a new migration project.":::
 
@@ -197,6 +195,8 @@ For more information about the Visual Studio Code extension, visit [PostgreSQL e
 1. Once the schema conversion is completed, **Review tasks** are created for objects requiring attention.
 1. Use **GitHub Copilot agents** or manually convert schemas to PostgreSQL.
 1. Review and compare the **previous** and **new converted** schema conversion statements.
+
+For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md).
 
 ## Related content
 
