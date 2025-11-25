@@ -33,6 +33,10 @@ sections:
           Does Azure DocumentDB offer a service level agreement (SLA)?
         answer: |
           Yes. Azure DocumentDB provides service-level agreements covering availability for the database, compute, storage, and networking components. SLA details vary by configuration and region.
+      - question: |
+          How does Azure DocumentDB relate to Azure Cosmos DB?
+        answer: |
+          Azure DocumentDB was previously known as vCore-based Azure Cosmos DB for MongoDB. It [became it's own distinct offering]("https://devblogs.microsoft.com/cosmosdb/azure-documentdb-is-now-generally-available") to align with the open source [DocumentDB project]("https://documentdb.io/") that powers it. 
   - name: Security
     questions:
       - question: |
