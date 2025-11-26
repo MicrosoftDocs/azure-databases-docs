@@ -74,6 +74,9 @@ Afterward, you define the compute instance name or unique identifier by using `W
 Calling `Build` gives you the processor instance that you can start by calling `StartAsync`.
 
 > [!IMPORTANT]
+> **Avoid using regional endpoints for CosmosClient backing the lease and feed container**: When building the `CosmosClient` for the `leaseContainer`, ensure a global endpoint is used (e.g. `contoso.azure.documents.com` and not `contoso-westus.azure.documents.com`). Rely on `ApplicationRegion` or `ApplicationPreferredRegions` or `preferredRegions` when switching change feed traffic from one region to another instead of tweaking the regional endpoint. Tweaking the regional endpoint creates new lease documents and can cause change feed to either miss changes or reprocess changes. 
+
+> [!IMPORTANT]
 > **Avoid asynchronous processing in delegate methods**: When using asynchronous APIs within your `handleChanges()` delegate method, be aware that the change feed processor may checkpoint the lease before all asynchronous operations complete. This can lead to missed events if the application experiences issues during recovery. Consider using synchronous processing or implement proper completion tracking before allowing the delegate to return.
 
 >[!NOTE]
@@ -178,6 +181,9 @@ Here's an example:
 In either change feed mode, you can assign it to `changeFeedProcessorInstance` and pass the parameters of the compute instance name (`hostName`), the monitored container (here called `feedContainer`), and the `leaseContainer`. Then start the change feed processor:
 
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java?name=StartChangeFeedProcessor)]
+
+> [!IMPORTANT]
+> **Avoid using regional endpoints for CosmosClient backing the lease and feed container**: When building the `CosmosClient` for the `leaseContainer`, ensure a global endpoint is used (e.g. `contoso.azure.documents.com` and not `contoso-westus.azure.documents.com`). Rely on `preferredRegions` when switching change feed traffic from one region to another instead of tweaking the regional endpoint. Tweaking the regional endpoint creates new lease documents and can cause change feed processor to either miss changes or reprocess changes. 
 
 > [!IMPORTANT]
 > **Avoid asynchronous processing in delegate methods**: When using asynchronous APIs within your `handleChanges()` delegate method, be aware that the change feed processor may checkpoint the lease before all asynchronous operations complete. This can lead to missed events if the application experiences issues during recovery. Consider using synchronous processing or implement proper completion tracking before allowing the delegate to return.
