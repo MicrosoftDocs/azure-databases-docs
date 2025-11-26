@@ -74,7 +74,46 @@ Afterward, you define the compute instance name or unique identifier by using `W
 Calling `Build` gives you the processor instance that you can start by calling `StartAsync`.
 
 > [!IMPORTANT]
-> **Avoid using regional endpoints for CosmosClient backing the feed and lease container**: When building the `CosmosClient` for the feed and lease container and also using a fresh change feed processor workload, ensure a global endpoint is used (e.g. `contoso.azure.documents.com` and not `contoso-westus.azure.documents.com`). Rely on `preferredRegions` when switching change feed traffic from one region to another. Changing the regional endpoint to switch regions could potentially create new lease documents which cause change feed processor to not use any previously stored state.
+> **Avoid using regional endpoints for CosmosClient backing the feed and lease container**: When building the `CosmosClient` for the feed and lease container and also using a fresh change feed processor workload, ensure a global endpoint is used (e.g. `contoso.documents.azure.com` and not `contoso-westus.documents.azure.com`). Rely on `ApplicationRegion` or `ApplicationPreferredRegions` when switching change feed traffic from one region to another. Changing the regional endpoint to switch regions could potentially create new lease documents which cause change feed processor to not use any previously stored state. This is because change feed processor creates lease documents which are scoped to the configured endpoint, hence changing the endpoints result in new independent lease documents.
+>
+> **✅ Do this - Use global endpoint with ApplicationRegion:**
+>
+> ```csharp
+> CosmosClient client = new CosmosClient(
+>     "https://contoso.documents.azure.com:443/",  // Global endpoint
+>     "<account-key>",
+>     new CosmosClientOptions()
+>     {
+>         ApplicationRegion = Regions.WestUS2  // Specify region here
+>     });
+>
+> Container monitoredContainer = client.GetContainer("myDatabase", "myContainer");
+> Container leaseContainer = client.GetContainer("myDatabase", "leases");
+> ```
+>
+> **✅ Do this - Use global endpoint with ApplicationPreferredRegions:**
+>
+> ```csharp
+> CosmosClient client = new CosmosClient(
+>     "https://contoso.documents.azure.com:443/",  // Global endpoint
+>     "<account-key>",
+>     new CosmosClientOptions()
+>     {
+>         ApplicationPreferredRegions = new List<string> { Regions.WestUS2, Regions.EastUS2 }
+>     });
+>
+> Container monitoredContainer = client.GetContainer("myDatabase", "myContainer");
+> Container leaseContainer = client.GetContainer("myDatabase", "leases");
+> ```
+>
+> **❌ Don't do this - Avoid regional endpoints:**
+>
+> ```csharp
+> // DON'T: Using regional endpoint will create region-scoped lease documents
+> CosmosClient client = new CosmosClient(
+>     "https://contoso-westus.documents.azure.com:443/",  // Regional endpoint - AVOID
+>     "<account-key>");
+> ```
 
 > [!IMPORTANT]
 > **Avoid asynchronous processing in delegate methods**: When using asynchronous APIs within your `handleChanges()` delegate method, be aware that the change feed processor may checkpoint the lease before all asynchronous operations complete. This can lead to missed events if the application experiences issues during recovery. Consider using synchronous processing or implement proper completion tracking before allowing the delegate to return.
@@ -183,7 +222,38 @@ In either change feed mode, you can assign it to `changeFeedProcessorInstance` a
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java?name=StartChangeFeedProcessor)]
 
 > [!IMPORTANT]
-> **Avoid using regional endpoints for CosmosAyncClient backing the feed and lease container**: When building the `CosmosAsyncClient` for the feed and lease container and also using a fresh change feed processor workload, ensure a global endpoint is used (e.g. `contoso.azure.documents.com` and not `contoso-westus.azure.documents.com`). Rely on `preferredRegions` when switching change feed traffic from one region to another. Changing the regional endpoint to switch regions could potentially create new lease documents which cause change feed processor to not use any previously stored state.
+> **Avoid using regional endpoints for CosmosAyncClient backing the feed and lease container**: When building the `CosmosAsyncClient` for the feed and lease container and also using a fresh change feed processor workload, ensure a global endpoint is used (e.g. `contoso.documents.azure.com` and not `contoso-westus.documents.azure.com`). Rely on `preferredRegions` when switching change feed traffic from one region to another. Changing the regional endpoint to switch regions could potentially create new lease documents which cause change feed processor to not use any previously stored state. This is because change feed processor creates lease documents which are scoped to the configured endpoint, hence changing the endpoints result in new independent lease documents.
+>
+> **✅ Do this - Use global endpoint with preferredRegions:**
+>
+> ```java
+> List<String> preferredRegions = new ArrayList<>();
+> preferredRegions.add("West US 2");
+> preferredRegions.add("East US 2");
+>
+> CosmosAsyncClient client = new CosmosClientBuilder()
+>     .endpoint("https://contoso.documents.azure.com:443/")  // Global endpoint
+>     .key("<account-key>")
+>     .preferredRegions(preferredRegions)  // Specify regions here
+>     .buildAsyncClient();
+>
+> CosmosAsyncContainer feedContainer = client
+>     .getDatabase("myDatabase")
+>     .getContainer("myContainer");
+> CosmosAsyncContainer leaseContainer = client
+>     .getDatabase("myDatabase")
+>     .getContainer("leases");
+> ```
+>
+> **❌ Don't do this - Avoid regional endpoints:**
+>
+> ```java
+> // DON'T: Using regional endpoint will create region-scoped lease documents
+> CosmosAsyncClient client = new CosmosClientBuilder()
+>     .endpoint("https://contoso-westus.documents.azure.com:443/")  // Regional endpoint - AVOID
+>     .key("<account-key>")
+>     .buildAsyncClient();
+> ```
 
 > [!IMPORTANT]
 > **Avoid asynchronous processing in delegate methods**: When using asynchronous APIs within your `handleChanges()` delegate method, be aware that the change feed processor may checkpoint the lease before all asynchronous operations complete. This can lead to missed events if the application experiences issues during recovery. Consider using synchronous processing or implement proper completion tracking before allowing the delegate to return.
