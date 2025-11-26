@@ -74,7 +74,16 @@ Afterward, you define the compute instance name or unique identifier by using `W
 Calling `Build` gives you the processor instance that you can start by calling `StartAsync`.
 
 > [!IMPORTANT]
-> **Avoid using regional endpoints for CosmosClient backing the feed and lease container**: When building the `CosmosClient` for the feed and lease container and also using a fresh change feed processor workload, ensure a global endpoint is used (e.g. `contoso.documents.azure.com` and not `contoso-westus.documents.azure.com`). Rely on `ApplicationRegion` or `ApplicationPreferredRegions` when switching change feed traffic from one region to another. Changing the regional endpoint to switch regions could potentially create new lease documents which cause change feed processor to not use any previously stored state. This is because change feed processor creates lease documents which are scoped to the configured endpoint, hence changing the endpoints result in new independent lease documents.
+> When creating the `CosmosClient` for both the feed and lease containers, and initializing a new change feed processor workload:
+>
+> **Use a global endpoint**
+>
+> - Always specify a global endpoint (for example, `contoso.documents.azure.com`) rather than a regional endpoint (for example, `contoso-westus.documents.azure.com`).
+>
+> **Switch regions using ApplicationRegion or ApplicationPreferredRegions**
+>
+> - To redirect change feed traffic between regions, rely on the `ApplicationRegion` or `ApplicationPreferredRegions` property.
+> - Change Feed Processor creates lease documents that are scoped to the configured endpoint, hence changing the endpoints results in the creation of new independent lease documents.
 >
 > **✅ Do this - Use global endpoint with ApplicationRegion:**
 >
@@ -222,7 +231,16 @@ In either change feed mode, you can assign it to `changeFeedProcessorInstance` a
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java?name=StartChangeFeedProcessor)]
 
 > [!IMPORTANT]
-> **Avoid using regional endpoints for CosmosAyncClient backing the feed and lease container**: When building the `CosmosAsyncClient` for the feed and lease container and also using a fresh change feed processor workload, ensure a global endpoint is used (e.g. `contoso.documents.azure.com` and not `contoso-westus.documents.azure.com`). Rely on `preferredRegions` when switching change feed traffic from one region to another. Changing the regional endpoint to switch regions could potentially create new lease documents which cause change feed processor to not use any previously stored state. This is because change feed processor creates lease documents which are scoped to the configured endpoint, hence changing the endpoints result in new independent lease documents.
+> When creating the `CosmosAsyncClient` for both the feed and lease containers, and initializing a new change feed processor workload:
+>
+> **Use a global endpoint**
+>
+> - Always specify a global endpoint (for example, `contoso.documents.azure.com`) rather than a regional endpoint (for example, `contoso-westus.documents.azure.com`).
+>
+> **Switch regions using preferredRegions**
+>
+> - To redirect change feed traffic between regions, rely on the `preferredRegions` property.
+> - Change Feed Processor creates lease documents that are scoped to the configured endpoint, hence changing the endpoints results in the creation of new independent lease documents.
 >
 > **✅ Do this - Use global endpoint with preferredRegions:**
 >
