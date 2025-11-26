@@ -4,7 +4,7 @@ description: Learn how to use the Azure Storage extension in Azure Database for 
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/03/2025
+ms.date: 11/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: reference
@@ -257,7 +257,7 @@ Alternatively, you can explicitly define the schema of the result using the `AS`
 ```sql
 SELECT * FROM azure_storage.blob_get('<account_name>','<container_name>','storage_extension_sample.parquet')
 AS res (
-        id BIGINT PRIMARY KEY,
+        id BIGINT,
         sample_text TEXT,
         sample_integer INTEGER,
         sample_timestamp TIMESTAMP)
