@@ -163,7 +163,7 @@ az postgres flexible-server update \
 1. In the [Azure portal](https://portal.azure.com/), during provisioning of a new Azure Database for PostgreSQL flexible server instance, go to the **Business Critical (High availability)** section. Select the **Enabled** radio button in the Zonal Resiliency section.
    - By default, the server attempts to create the standby server in a different availability zone with **Zone-Redundant** HA mode for maximum zonal resiliency.
 
-   :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-zonal-resiliency.png" alt-text="Screenshot that shows enabling HA with zone-redundant option" lightbox="./media/how-to-configure-high-availability/high-availability-enable-zonal-resiliency.png":::
+   :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-zonal-resiliency.png" alt-text="Screenshot that shows enabling HA with zone-redundant option." lightbox="./media/how-to-configure-high-availability/high-availability-enable-zonal-resiliency.png":::
 
    - If zonal capacity isn't available, you can select the **Allow standby in same zone if zonal resiliency fails** checkbox as a fallback. Without selecting this option, you cannot proceed to the next step in the create workflow. This ensures high availability remains enabled. When zonal capacity becomes available, Azure will notify you, and you can then use PITR or read replicas to migrate workloads to a zone-redundant HA configuration for maximum resiliency.
 
