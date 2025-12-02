@@ -163,7 +163,7 @@ You can identify unused indexes in two ways: by Query Store and an index usage q
 
 **Query Store**
 
-The Query Store feature helps identify indexes, which can be dropped based on query usage patterns on the database. For step-by-step guidance, see [Query Store](concepts-query-store.md).
+The Query Store feature helps identify indexes, which can be dropped based on query usage patterns on the database. For step-by-step guidance, see [Query Store](../monitor/concepts-query-store.md).
 
 After you've enabled Query Store on the server, you can use the following query to identify indexes that can be dropped by connecting to azure_sys database.
 
@@ -239,5 +239,5 @@ SELECT round (pg_wal_lsn_diff('LSN value when running the second time','LSN valu
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md).
+- [Server parameters in Azure Database for PostgreSQL](../server-parameter/concepts-server-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

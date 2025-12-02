@@ -22,7 +22,7 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
 - An Azure Database for PostgreSQL flexible server instance. To learn more, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
-- An Azure Data Factory Linked Service [connected to Azure Database for PostgreSQL](how-to-connect-to-data-factory-private-endpoint.md).
+- An Azure Data Factory Linked Service [connected to Azure Database for PostgreSQL](../integration/how-to-connect-data-factory-private-endpoint.md).
 
 ## Create a script activity
 
@@ -428,5 +428,5 @@ For activity output logging, expand the **Advanced** section and select **Enable
 
 - [Learn more about Script activity for Azure Data Factory or Synapse Analytics](/azure/data-factory/transform-data-using-script)
 - [Copy activity in Azure Database for PostgreSQL](how-to-data-factory-copy-activity-azure.md)
-- [How to connect to Data Factory private endpoint](how-to-connect-to-data-factory-private-endpoint.md)
-- [Networking with Private Link in Azure Database for PostgreSQL](concepts-networking-private-link.md)
+- [How to connect to Data Factory private endpoint](../integration/how-to-connect-data-factory-private-endpoint.md)
+- [Networking with Private Link in Azure Database for PostgreSQL](../network/concepts-networking-private-link.md)

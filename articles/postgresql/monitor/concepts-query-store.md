@@ -79,7 +79,7 @@ Here are some examples of how you can gain more insights into your workload usin
 
 ## Configuration options
 
-When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](server-parameters-table-customized-options.md?pivots=postgresql-17#pg_qsinterval_length_minutes) server parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones which were executed the least number of times.
+When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](server-parameter/param-customized-options#pg_qsinterval_length_minutes) server parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones which were executed the least number of times.
 
 The following options are available for configuring Query Store parameters:
 
@@ -112,7 +112,7 @@ The following options apply specifically to wait statistics:
 > [!NOTE]  
 > `pg_qs.query_capture_mode` supersedes `pgms_wait_sampling.query_capture_mode`. If `pg_qs.query_capture_mode` is `none`, the `pgms_wait_sampling.query_capture_mode` setting has no effect.
 
-Use the [Azure portal](how-to-configure-server-parameters.md) to get or set a different value for a parameter.
+Use the [Azure portal](../server-parameter/how-to-server-parameters-list-all.md) to get or set a different value for a parameter.
 
 ## Views and functions
 
@@ -281,9 +281,9 @@ This function discards all statistics gathered so far by query store. It discard
 This function discards all statistics gathered in-memory by query store (that is, the data in memory that isn't flushed yet to the on disk tables supporting persistence of collected data for query store). Only members of the server admin role (`azure_pg_admin`) can execute this function.
 
 ### Read-only mode
-When an Azure Database for PostgreSQL flexible server instance is in read-only mode, such as when the `default_transaction_read_only` parameter is set to `on`, or if read-only mode is [automatically enabled due to reaching storage capacity](concepts-limits.md#storage), query store doesn't capture any data.
+When an Azure Database for PostgreSQL flexible server instance is in read-only mode, such as when the `default_transaction_read_only` parameter is set to `on`, or if read-only mode is [automatically enabled due to reaching storage capacity](../configure-maintain/concepts-limits.md#storage), query store doesn't capture any data.
 
-Enabling query store on a server that has [read replicas](concepts-read-replicas.md), doesn't automatically enable query store on any of the read replicas. Even if you enable it on any of the read replicas, query store doesn't record the queries executed on any read replicas, because they operate in read-only mode until you promote them to primary.
+Enabling query store on a server that has [read replicas](../read-replica/concepts-read-replicas.md), doesn't automatically enable query store on any of the read replicas. Even if you enable it on any of the read replicas, query store doesn't record the queries executed on any read replicas, because they operate in read-only mode until you promote them to primary.
 
 ## Related content
 

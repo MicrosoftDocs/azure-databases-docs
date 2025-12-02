@@ -17,11 +17,11 @@ ms.custom:
 The article describes how you can resolve capacity errors when deploying or scaling Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
-> For the list of regions that support Zone redundant high availability, please review the supported regions [here](overview.md#azure-regions). 
+> For the list of regions that support Zone redundant high availability, please review the supported regions [here](../configure-maintain/overview.md#azure-regions). 
 
 ## Exceeded quota 
 
-If you encounter any of the following errors when attempting to deploy your Azure PostgreSQL flexible server resource, [submit a request to increase your quota](how-to-request-quota-increase.md).
+If you encounter any of the following errors when attempting to deploy your Azure PostgreSQL flexible server resource, [submit a request to increase your quota](../configure-maintain/how-to-request-quota-increase.md).
 
 - Operation could not be completed as it results in exceeding approved {0} Cores quota. Additional details - Current Limit: {1}, Current Usage: {2}, Additional Required: {3}, (Minimum) New Limit Required: {4}.Submit a request for Quota increase by specifying parameters listed in the ‘Details’ section for deployment to succeed.
 
@@ -39,7 +39,7 @@ If you see any of the following errors, [Register your subscription with the Pos
 
 ## Enable region 
 
-Your subscription may not have access to create a server in the selected region. To resolve this issue, file a  [request to access a region](how-to-request-quota-increase.md).
+Your subscription may not have access to create a server in the selected region. To resolve this issue, file a  [request to access a region](../configure-maintain/how-to-request-quota-increase.md).
 
 If you see the following errors, file a support ticket to enable the specific region:
 

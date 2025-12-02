@@ -233,7 +233,7 @@ az group delete \
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
 - [Quickstart: Use Python to connect and query data from an Azure Database for PostgreSQL](connect-python.md).
 - [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL](connect-java.md).
 - [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL](connect-csharp.md).

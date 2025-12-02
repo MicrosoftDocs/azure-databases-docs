@@ -417,4 +417,4 @@ Activities are tasks within a pipeline that can execute specific tasks. With scr
 ## Related content
 
 - [How to connect to data factory private endpoint](how-to-connect-data-factory-private-endpoint.md)
-- [Azure Database for PostgreSQL networking with Private Link](concepts-networking-private-link.md)
+- [Azure Database for PostgreSQL networking with Private Link](../network/concepts-networking-private-link.md)

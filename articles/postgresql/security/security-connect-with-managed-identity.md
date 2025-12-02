@@ -31,8 +31,8 @@ You learn how to:
 - If you're not familiar with the managed identities for Azure resources feature, see this [overview](/azure/active-directory/managed-identities-azure-resources/overview). If you don't have an Azure account, [sign up for a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you continue.
 - To do the required resource creation and role management, your account needs "Owner" permissions at the appropriate scope (your subscription or resource group). If you need assistance with a role assignment, see [Assign Azure roles to manage access to your Azure subscription resources](/azure/role-based-access-control/role-assignments-portal).
 - You need an Azure VM (for example, running Ubuntu Linux) that you'd like to use to access your database using Managed Identity
-- You need an Azure Database for PostgreSQL flexible server instance that has [Microsoft Entra authentication](how-to-configure-sign-in-azure-ad-authentication.md) configured
-- To follow the C# example, first, complete the guide on how to [Connect with C#](connect-csharp.md)
+- You need an Azure Database for PostgreSQL flexible server instance that has [Microsoft Entra authentication](../security/security-entra-configure.md) configured
+- To follow the C# example, first, complete the guide on how to [Connect with C#](../connectivity/connect-csharp.md)
 
 ## Create a system-assigned managed identity for your VM
 
@@ -69,7 +69,7 @@ Success looks like:
 (1 row)
 ```
 
-For more information on managing Microsoft Entra ID enabled database roles, see [Manage Microsoft Entra roles in Azure Database for PostgreSQL](how-to-manage-azure-ad-users.md).
+For more information on managing Microsoft Entra ID enabled database roles, see [Manage Microsoft Entra roles in Azure Database for PostgreSQL](../security/security-manage-entra-users.md).
 
 The managed identity now has access when authenticating with the identity name as a role name and the Microsoft Entra token as a password.
 
@@ -113,11 +113,11 @@ This section shows how to get an access token using the VM's user-assigned manag
 
 ## Connect using Managed Identity in Python
 
-For a Python code example, refer to the [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL](connect-python.md)
+For a Python code example, refer to the [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL](../connectivity/connect-python.md)
 
 ## Connect using Managed Identity in Java
 
-For a Java code example, refer to the [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL](connect-java.md)
+For a Java code example, refer to the [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL](../connectivity/connect-java.md)
 
 ## Connect using Managed Identity in C#
 
@@ -189,4 +189,4 @@ Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit
 
 ## Related content
 
-- [Microsoft Entra authentication in Azure Database for PostgreSQL](concepts-azure-ad-authentication.md)
+- [Microsoft Entra authentication in Azure Database for PostgreSQL](../security/security-entra-concepts.md)

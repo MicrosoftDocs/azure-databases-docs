@@ -20,7 +20,7 @@ PgBouncer uses a lightweight model that utilizes asynchronous I/O. It uses Postg
 
 PgBouncer runs on port 6432 on your database server. You can change your application's database connection configuration to use the same host name, but change the port to 6432 to start using PgBouncer and benefit from improved scaling of idle connections.
 
-PgBouncer in Azure Database for PostgreSQL supports [Microsoft Entra authentication](concepts-azure-ad-authentication.md) (Azure AD).
+PgBouncer in Azure Database for PostgreSQL supports [Microsoft Entra authentication](../security/security-entra-concepts.md) (Azure AD).
 
 ## PgBouncer with elastic clusters
 
@@ -125,7 +125,7 @@ Using an application-side pool together with PgBouncer on the database server ca
 > [!IMPORTANT]  
 > The parameter `pgbouncer.client_tls_sslmode` for the built-in PgBouncer feature has been deprecated in Azure Database for PostgreSQL.
 >  
-> When TLS/SSL for connections to an Azure Database for PostgreSQL flexible server instance is enforced via setting the `require_secure_transport` server parameter to `ON`, TLS/SSL is automatically enforced for connections to the built-in PgBouncer feature. This setting is on by default when you create a new Azure Database for PostgreSQL flexible server instance and enable the built-in PgBouncer feature. For more information, see [Secure connectivity with TLS in Azure Database for PostgreSQL](concepts-networking-ssl-tls.md).
+> When TLS/SSL for connections to an Azure Database for PostgreSQL flexible server instance is enforced via setting the `require_secure_transport` server parameter to `ON`, TLS/SSL is automatically enforced for connections to the built-in PgBouncer feature. This setting is on by default when you create a new Azure Database for PostgreSQL flexible server instance and enable the built-in PgBouncer feature. For more information, see [Secure connectivity with TLS in Azure Database for PostgreSQL](../security/security-tls.md).
 
 For customers who want simplified management, built-in high availability, easy connectivity with containerized applications, and the ability to use the most popular configuration parameters, the built-in PgBouncer feature is a good choice. For customers who want multithreaded scalability, full control of all parameters, and a debugging experience, setting up PgBouncer on Azure VMs might be an alternative.
 

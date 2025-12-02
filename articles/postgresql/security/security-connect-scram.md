@@ -90,10 +90,10 @@ SCRAM authentication imposes extra computational load on your application server
 
 1. You can then connect from the client that supports SCRAM authentication to your server.
 
-   SCRAM authentication is also supported when connected to the built-in managed [PgBouncer](concepts-pgbouncer.md).
+   SCRAM authentication is also supported when connected to the built-in managed [PgBouncer](../connectivity/concepts-pgbouncer.md).
 
 ## Related content
 
-- [Networking](how-to-manage-virtual-network-cli.md)
-- [Network with private access for Azure Database for PostgreSQL](concepts-networking-private.md)
-- [Firewall rules](concepts-networking-public.md#firewall-rules)
+- [Networking](../network/how-to-networking.md)
+- [Network with private access for Azure Database for PostgreSQL](../network/concepts-networking-private.md)
+- [Firewall rules](../network/concepts-networking-public.md#firewall-rules)

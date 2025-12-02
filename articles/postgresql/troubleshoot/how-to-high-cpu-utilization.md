@@ -12,7 +12,7 @@ ms.topic: troubleshooting-general
 
 # Troubleshoot high CPU utilization in Azure Database for PostgreSQL 
 
-This article describes how to identify the root cause of high CPU utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL](overview.md).
+This article describes how to identify the root cause of high CPU utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL](../configure-maintain/overview.md).
 
 In this article, you can learn:
 
@@ -35,7 +35,7 @@ Consider the use of the following list of tools to identify high CPU utilization
 
 Azure Metrics is a good starting point to check the CPU utilization for a specific period. Metrics provide information about the resources utilized during the period in which CPU utilization is high. Compare the graphs of **Write IOPs**, **Read IOPs**, **Read Throughput Bytes/Sec**, and **Write Throughput Bytes/Sec** with **CPU percent**, to find out times when the workload caused high CPU.
 
-For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Azure Metrics](how-to-alert-on-metrics.md).
+For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Azure Metrics](../monitor/how-to-alert-on-metrics.md).
 
 ### Query store
 
@@ -149,7 +149,7 @@ In situations where there are many short-lived connections, or many connections 
 
 For more information about PgBouncer, see [connection pooler](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717) and [connection handling best practices with PostgreSQL](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/connection-handling-best-practice-with-postgresql/ba-p/790883)
 
-Azure Database for PostgreSQL offers PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer](concepts-pgbouncer.md).
+Azure Database for PostgreSQL offers PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer](../connectivity/concepts-pgbouncer.md).
 
 ### Terminate long running transactions
 
@@ -199,5 +199,5 @@ VACUUM ANALYZE <table>;
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md).
+- [Server parameters in Azure Database for PostgreSQL](../server-parameter/concepts-server-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

@@ -38,4 +38,4 @@ Based on the previous formula, the following table lists the values this server 
 |     432 GiB |            5000 |
 |     672 GiB |            5000 |
 
-Refer to [Maximum connections](../concepts-limits.md#maximum-connections) for more information about this parameter in Azure Database for PostgreSQL flexible server.
+Refer to [Maximum connections](../configure-maintain/concepts-limits.md#maximum-connections) for more information about this parameter in Azure Database for PostgreSQL flexible server.

@@ -119,11 +119,11 @@ Once you've selected the advanced options you require, select **OK** in Power Qu
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
 - [Build visuals with Power BI Desktop](/power-bi/fundamentals/desktop-what-is-desktop).
-- [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL](connect-python.md).
-- [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL](connect-java.md).
-- [Quickstart: Use .NET (C#) to connect and query data in Azure Database for PostgreSQL](connect-csharp.md).
-- [Quickstart: Use Go language to connect and query data in Azure Database for PostgreSQL](connect-go.md).
-- [Quickstart: Use PHP to connect and query data in Azure Database for PostgreSQL](connect-php.md).
-- [Quickstart: Connect and query with Azure CLI with Azure Database for PostgreSQL](connect-azure-cli.md).
+- [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL](../connectivity/connect-python.md).
+- [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL](../connectivity/connect-java.md).
+- [Quickstart: Use .NET (C#) to connect and query data in Azure Database for PostgreSQL](../connectivity/connect-csharp.md).
+- [Quickstart: Use Go language to connect and query data in Azure Database for PostgreSQL](../connectivity/connect-go.md).
+- [Quickstart: Use PHP to connect and query data in Azure Database for PostgreSQL](../connectivity/connect-php.md).
+- [Quickstart: Connect and query with Azure CLI with Azure Database for PostgreSQL](../connectivity/connect-azure-cli.md).

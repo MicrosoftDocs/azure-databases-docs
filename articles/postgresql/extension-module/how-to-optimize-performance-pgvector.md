@@ -27,4 +27,4 @@ For more on the extension itself, see [basics of `pgvector`](how-to-use-pgvector
 
 ## Related content
 
-- [Generate vector embeddings with Azure OpenAI on Azure Database for PostgreSQL flexible server](generative-ai-azure-openai.md).
+- [Generate vector embeddings with Azure OpenAI on Azure Database for PostgreSQL flexible server](../azure-ai/generative-ai-azure-openai.md).

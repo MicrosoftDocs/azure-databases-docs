@@ -43,16 +43,16 @@ There are two types of managed identities:
 
 **System assigned managed identity** for an Azure Database for PostgreSQL is used by:
 
-- [azure_storage extension](concepts-storage-extension.md), when configured to access a storage account using the `managed-identity` authentication type. For more information, see how to [configure the azure_storage extension to use authorization with Microsoft Entra ID](./how-to-configure-azure-storage-extension.md#to-use-authorization-with-microsoft-entra-id).
+- [azure_storage extension](../extension-module/concepts-storage-extension.md), when configured to access a storage account using the `managed-identity` authentication type. For more information, see how to [configure the azure_storage extension to use authorization with Microsoft Entra ID](../extension-module/how-to-configure-azure-storage-extension.md#to-use-authorization-with-microsoft-entra-id).
 - [Microsoft Fabric mirrored databases from Azure Database for PostgreSQL (preview)](https://techcommunity.microsoft.com/blog/adforpostgresql/mirroring-azure-database-for-postgresql-flexible-server-in-microsoft-fabric---pr/4251876) uses the credentials of the system assigned managed identity to sign the requests that your instance of flexible server sends to the Azure DataLake service in Microsoft Fabric to mirror your designated databases.
 
 **User assigned managed identities** configured for an Azure Database for PostgreSQL flexible server instance can be used for:
 
-- [Data encryption with customer managed keys](concepts-data-encryption.md).
+- [Data encryption with customer managed keys](../security/security-data-encryption.md).
 
 ## Related content
 
-- [System assigned managed identity](how-to-configure-managed-identities.md)
-- [Firewall rules in Azure Database for PostgreSQL](concepts-firewall-rules.md)
-- [Networking overview for Azure Database for PostgreSQL with public access ](concepts-networking-public.md)
-- [Network with private access for Azure Database for PostgreSQL](concepts-networking-private.md)
+- [System assigned managed identity](../security/security-configure-managed-identities-system-assigned.md)
+- [Firewall rules in Azure Database for PostgreSQL](../security/security-firewall-rules.md)
+- [Networking overview for Azure Database for PostgreSQL with public access ](../network/concepts-networking-public.md)
+- [Network with private access for Azure Database for PostgreSQL](../network/concepts-networking-private.md)

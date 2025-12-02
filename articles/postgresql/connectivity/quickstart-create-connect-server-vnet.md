@@ -29,7 +29,7 @@ Sign in to the [Azure portal](https://portal.azure.com). Enter your credentials 
 
 ## Create an Azure Database for PostgreSQL 
 
-You create an Azure Database for PostgreSQL flexible server instance with a defined set of [compute and storage resources](concepts-compute.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
+You create an Azure Database for PostgreSQL flexible server instance with a defined set of [compute and storage resources](../configure-maintain/concepts-compute.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 Complete these steps to create an Azure Database for PostgreSQL flexible server instance:
 
@@ -160,7 +160,7 @@ You have now created an Azure Database for PostgreSQL flexible server instance i
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
 - [Quickstart: Use Python to connect and query data from an Azure Database for PostgreSQL](connect-python.md).
 - [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL](connect-java.md).
 - [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL](connect-csharp.md).

@@ -71,7 +71,7 @@ oid            | 24827
 >
 > Azure Database for PostgreSQL only supports CAST commands that use the `WITH FUNCTION` and `WITH INOUT` options. The `WITHOUT FUNCTION` option isn't supported.
 
-[Audit logging in Azure Database for PostgreSQL](concepts-audit.md) is also available with Azure Database for PostgreSQL to track activity in your databases.
+[Audit logging in Azure Database for PostgreSQL](../security/security-audit.md) is also available with Azure Database for PostgreSQL to track activity in your databases.
 
 ### Control schema access
 

@@ -243,6 +243,6 @@ The mirroring function for fabric mirroring in Azure Database for PostgreSQL rep
 
 ## Related content
 
-- [System assigned managed identity](how-to-configure-managed-identities.md)
-- [Firewall rules in Azure Database for PostgreSQL](concepts-firewall-rules.md)
+- [System assigned managed identity](../security/security-configure-managed-identities-system-assigned.md)
+- [Firewall rules in Azure Database for PostgreSQL](../security/security-firewall-rules.md)
 - [Networking overview for Azure Database for PostgreSQL instances with public access](../network/../network/concepts-networking-public.md)

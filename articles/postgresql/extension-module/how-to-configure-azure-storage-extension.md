@@ -42,8 +42,8 @@ To meet the prerequisites needed in each case, follow the instructions in the co
 
 ### To use authorization with Microsoft Entra ID
 
-1. Enable [System Assigned Managed Identity](concepts-identity.md) on your Azure Database for PostgreSQL flexible server instance.
-1. [Restart the instance of Azure Database for PostgreSQL flexible server](how-to-restart-server.md), after enabling a system assigned managed identity on it.
+1. Enable [System Assigned Managed Identity](../security/security-firewall-rules.md) on your Azure Database for PostgreSQL flexible server instance.
+1. [Restart the instance of Azure Database for PostgreSQL flexible server](../configure-maintain/how-to-restart-server.md), after enabling a system assigned managed identity on it.
 1. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure Database for PostgreSQL flexible server.
 
 #### Enable System Assigned Managed Identity 
@@ -241,7 +241,7 @@ In case you need to review all functions offered by the extension and all the de
 - [azure_storage.options_tsv](reference-azure-storage-extension.md#azure_storageoptions_tsv)
 - [azure_storage.options_binary](reference-azure-storage-extension.md#azure_storageoptions_binary)
 
-And, if you need to do some troubleshooting, review the [list of errors](troubleshoot-azure-storage-extension.md) that the extension can produce, and the context in which they can be raised.
+And, if you need to do some troubleshooting, review the [list of errors](../troubleshoot/troubleshoot-azure-storage-extension.md) that the extension can produce, and the context in which they can be raised.
 
 > [!IMPORTANT]
 > For authentication types for which you must provide an Azure Storage account access key, notice that your Azure Storage access keys are similar to a root password for your storage account. Always be careful to protect them. Use Azure Key Vault to manage and rotate your keys securely. `azure_storage` extension stores those keys in a table `azure_storage.accounts`, which is readable by members of the `pg_read_all_data` role.
@@ -249,7 +249,7 @@ And, if you need to do some troubleshooting, review the [list of errors](trouble
 ## Related content
 
 - [Quickstart examples](quickstart-azure-storage-extension.md).
-- [Troubleshoot errors](troubleshoot-azure-storage-extension.md).
+- [Troubleshoot errors](../troubleshoot/troubleshoot-azure-storage-extension.md).
 - [Reference](reference-azure-storage-extension.md).
 - [Azure Storage extension](concepts-storage-extension.md).
 - [Extensions and modules](../extensions/concepts-extensions.md).

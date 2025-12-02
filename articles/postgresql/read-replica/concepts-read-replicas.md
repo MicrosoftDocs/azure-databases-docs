@@ -44,7 +44,7 @@ When you start the create replica workflow, a blank Azure Database for PostgreSQ
 
 Replica is only considered successfully created when two conditions are met: the entire backup of the primary instance must be copied to the replica, and the transaction logs must synchronize with no more than a 1-GB lag.
 
-To achieve a successful create operation, avoid making replicas during times of high transactional load. For example, you should avoid creating replicas when migrating from other sources to an Azure Database for PostgreSQL flexible server instance or during heavy bulk load operations. If you're migrating data or loading large amounts of data right now, it's best to finish this task first. After completing it, you can then start setting up the replicas. Once the migration or bulk load operation has finished, check whether the transaction log size has returned to its normal size. Typically, the transaction log size should be close to the value defined in the max_wal_size server parameter for your instance. You can track the transaction log storage footprint using the [Transaction Log Storage Used](concepts-monitoring.md#default-metrics) metric, which provides insights into the amount of storage used by the transaction log. By monitoring this metric, you can ensure that the transaction log size is within the expected range and that the replica creation process might be started.
+To achieve a successful create operation, avoid making replicas during times of high transactional load. For example, you should avoid creating replicas when migrating from other sources to an Azure Database for PostgreSQL flexible server instance or during heavy bulk load operations. If you're migrating data or loading large amounts of data right now, it's best to finish this task first. After completing it, you can then start setting up the replicas. Once the migration or bulk load operation has finished, check whether the transaction log size has returned to its normal size. Typically, the transaction log size should be close to the value defined in the max_wal_size server parameter for your instance. You can track the transaction log storage footprint using the [Transaction Log Storage Used](../monitor/concepts-monitoring.md#default-metrics) metric, which provides insights into the amount of storage used by the transaction log. By monitoring this metric, you can ensure that the transaction log size is within the expected range and that the replica creation process might be started.
 
 > [!IMPORTANT]  
 > Read Replicas are currently supported for the General Purpose and Memory Optimized server compute tiers. The Burstable server compute tier is not supported.
@@ -83,7 +83,7 @@ Certain functionalities are restricted to primary servers and can't be set up on
 - Backups, including geo-backups.
 - High availability (HA)
 
-If your source Azure Database for PostgreSQL flexible server instance is encrypted with customer-managed keys, see the [documentation](concepts-data-encryption.md) for other considerations.
+If your source Azure Database for PostgreSQL flexible server instance is encrypted with customer-managed keys, see the [documentation](../security/security-data-encryption.md) for other considerations.
 
 ## Create cascading read replicas (Preview)
 
@@ -126,7 +126,7 @@ Furthermore, to ease the connection process, the Azure portal provides ready-to-
 Read replica feature in Azure Database for PostgreSQL relies on replication slots mechanism. The main advantage of replication slots is that they automatically adjust the number of transaction logs (WAL segments) required by all replica servers. This helps prevent replicas from going out of sync because it avoids deleting WAL segments on the primary before they are sent to the replicas. The disadvantage of the approach is the risk of going out of space on the primary in case the replication slot remains inactive for an extended time. In such situations, primary accumulates WAL files causing incremental growth of the storage usage. When the storage usage reaches 95% or if the available capacity is less than 5 GiB, the server is automatically switched to read-only mode to avoid errors associated with disk-full situations.  
 Therefore, monitoring the replication lag and replication slots status is crucial for read replicas.
 
-We recommend setting alert rules for storage used or storage percentage, and for replication lags, when they exceed certain thresholds so that you can proactively act, increase the storage size, and delete lagging read replicas. For example, you can set an alert if the storage percentage exceeds 80% usage, and if the replica lag is higher than 5 minutes. The [Transaction Log Storage Used](concepts-monitoring.md#default-metrics) metric shows you if the WAL files accumulation is the main reason of the excessive storage usage.
+We recommend setting alert rules for storage used or storage percentage, and for replication lags, when they exceed certain thresholds so that you can proactively act, increase the storage size, and delete lagging read replicas. For example, you can set an alert if the storage percentage exceeds 80% usage, and if the replica lag is higher than 5 minutes. The [Transaction Log Storage Used](../monitor/concepts-monitoring.md#default-metrics) metric shows you if the WAL files accumulation is the main reason of the excessive storage usage.
 
 #### Monitoring metrics
 
@@ -134,7 +134,7 @@ Azure Database for PostgreSQL service provides following metrics for monitoring 
 
 [!INCLUDE [Read-Replica Metrics](includes/read-replica-metrics-table.md)]
 
-To learn more, see [read replica how-to article](how-to-read-replicas-portal.md#monitor-a-replica).
+To learn more, see [read replica how-to article](../read-replica/how-to-create-read-replica#monitor-a-replica).
 
 The **Max Physical Replication Lag** metric shows the lag in bytes between the primary and the most-lagging replica. This metric is applicable and available on the primary server only, and will be available only if at least one of the read replicas is connected to the primary. The lag information is present also when the replica is in the process of catching up with the primary, during replica creation, or when replication becomes inactive.
 
@@ -162,16 +162,16 @@ Here are the possible values:
 | <b> Active | Healthy state, indicating that the read replica has been successfully connected to the primary. If the servers are stopped but were successfully connected prior, the status remains as active. | 4 | 4 |
 | <b> Broken | Unhealthy state, indicating the promote operation might have failed, or the replica is unable to connect to the primary for some reason. Please drop the replica and recreate the replica to resolve this." | N/A | N/A |
 
-Learn how to [monitor replication](how-to-read-replicas-portal.md#monitor-a-replica).
+Learn how to [monitor replication](../read-replica/how-to-create-read-replica#monitor-a-replica).
 
 
 ## Considerations
 
 This section summarizes considerations about the read replica feature. The following considerations do apply.
 
-- **Power operations**: Power operations, including [start](how-to-start-server.md) and [stop](how-to-stop-server.md) actions, can be applied to both the primary and replica servers. However, to preserve system integrity, a specific sequence should be followed. Before stopping the read replicas, ensure the primary server is stopped first. When commencing operations, initiate the start action on the replica servers before starting the primary server.
+- **Power operations**: Power operations, including [start](../configure-maintain/how-to-start-server.md) and [stop](../configure-maintain/how-to-stop-server.md) actions, can be applied to both the primary and replica servers. However, to preserve system integrity, a specific sequence should be followed. Before stopping the read replicas, ensure the primary server is stopped first. When commencing operations, initiate the start action on the replica servers before starting the primary server.
 - If server has read replicas, then read replicas should be deleted first before deleting the primary server.
-- [In-place major version upgrade](concepts-major-version-upgrade.md) for an Azure Database for PostgreSQL flexible server instance requires removing any read replicas and cascading read replicas that are enabled on the server. Once the replicas have been deleted, the primary server can be upgraded to the desired major version. After the upgrade is complete, you can recreate the replicas to resume the replication process.
+- [In-place major version upgrade](../configure-maintain/concepts-major-version-upgrade.md) for an Azure Database for PostgreSQL flexible server instance requires removing any read replicas and cascading read replicas that are enabled on the server. Once the replicas have been deleted, the primary server can be upgraded to the desired major version. After the upgrade is complete, you can recreate the replicas to resume the replication process.
   - **Resetting admin password**: Resetting the admin password on the replica server is currently not supported. Additionally, updating the admin password along with [promoting](concepts-read-replicas-promote.md) replica operation in the same request is also not supported. If you wish to do this you must first promote the replica server, and then update the password on the newly promoted server separately.
 
 ### New replicas
@@ -224,7 +224,7 @@ Read replicas support all the networking options supported by Azure Database for
 
 The above requirement not only facilitates the synchronization process but also ensures proper functioning of the promote mechanism where replicas might need to communicate in reverse order - from replica to primary - especially during promote to primary operations. Moreover, connections to the Azure storage account that stores Write-Ahead Logging (WAL) archives must be permitted to uphold data durability and enable efficient recovery processes.
 
-For more information about how to configure private access (virtual network integration) for your read replicas and understand the implications for replication across Azure regions and virtual networks within a private networking context, see the [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking) page.
+For more information about how to configure private access (virtual network integration) for your read replicas and understand the implications for replication across Azure regions and virtual networks within a private networking context, see the [Replication across Azure regions and virtual networks with private networking](../network/concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking) page.
 
 ### Replication slot issues mitigation
 
@@ -266,4 +266,4 @@ For storage scaling:
 - [Promote read replicas in Azure Database for PostgreSQL](concepts-read-replicas-promote.md).
 - [Virtual endpoints for read replicas in Azure Database for PostgreSQL](concepts-read-replicas-virtual-endpoints.md).
 - [Creata read replica](how-to-create-read-replica.md).
-- [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).
+- [Replication across Azure regions and virtual networks with private networking](../network/concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

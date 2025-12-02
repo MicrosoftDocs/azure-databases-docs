@@ -187,5 +187,5 @@ If you have DNS resolution issues when you use private endpoint-based networking
 
 ## Related content
 
-- [Azure portal](how-to-manage-virtual-network-portal.md)
-- [Azure CLI](how-to-manage-virtual-network-cli.md)
+- [Azure portal](../network/how-to-networking.md)
+- [Azure CLI](../network/how-to-networking.md)

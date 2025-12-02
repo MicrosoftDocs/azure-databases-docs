@@ -178,5 +178,5 @@ az postgres flexible-server show \
 ## Related content
 
 - [Scale storage performance](how-to-scale-storage-performance.md).
-- [Storage options](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).
+- [Storage options](../extension-module/concepts-storage.md).
+- [Limits in Azure Database for PostgreSQL flexible server](../configure-maintain/concepts-limits.md).

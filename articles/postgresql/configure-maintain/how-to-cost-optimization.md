@@ -36,7 +36,7 @@ Scaling up or down the resources of an Azure Database for PostgreSQL flexible se
 
 Configure Non-prod environments conservatively - Configure idle dev/test/stage environments to have cost-efficient SKUs. Choosing Burstable SKUs is ideal for workloads that don't need continuous full capacity.
 
-To learn more, see [Scale compute](how-to-scale-compute-storage-portal.md).
+To learn more, see [Scale compute](../scale/how-to-scale-compute.md).
 
 ## 3. Using Azure advisor recommendations
 

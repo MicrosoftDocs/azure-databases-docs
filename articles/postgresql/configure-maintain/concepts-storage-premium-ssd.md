@@ -67,7 +67,7 @@ The compute size selected determines the minimum and maximum IOPS. To learn more
 > [!IMPORTANT]  
 > The selected compute size determines the minimum and maximum IOPS.
 
-Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
+Learn how to [scale up or down IOPS](../scale/how-to-scale-compute.md).
 
 ## Related content
 

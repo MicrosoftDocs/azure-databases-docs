@@ -60,10 +60,10 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [Long-term backups](./../backup-restore/concepts-backup-restore.md#long-term-retention)
     - [DiskANN Vector Indexing extension](../extension-module/how-to-use-pgdiskann.md)
     - [Pgvector 0.8.0 extension](../extensions/concepts-extensions-versions.md#vector)
-    - [Automatic key version updates](./concepts-data-encryption.md#cmk-key-version-updates)
+    - [Automatic key version updates](../security/security-data-encryption.md#cmk-key-version-updates)
     - [Resiliency solution accelerator](https://github.com/Azure-Samples/Azure-PostgreSQL-Resilience-Architecture) for Azure Database for PostgreSQL
 - Preview
-    - [Confidential Computing](concepts-confidential-computing.md)
+    - [Confidential Computing](../security/security-confidential-computing.md)
     - [Apache Age extension](../azure-ai/generative-ai-age-overview.md)
     - [Semantic operators](../azure-ai/generative-ai-azure-ai-semantic-operators.md)
     - [New PostgreSQL VS Code extension](../extensions/vs-code-extension/overview.md)
@@ -73,7 +73,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: April 2025
 
 - Public preview of [Fabric Mirroring](https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-mirroring-for-azure-database-for-postgresql-in-microsoft-fabric-for-p/4396750) for Azure Database for PostgreSQL.
-- Public preview of [Automatic key version updates](./concepts-data-encryption.md#cmk-key-version-updates).
+- Public preview of [Automatic key version updates](../security/security-data-encryption.md#cmk-key-version-updates).
 - Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL.
 - General availability of [New Zealand North](./overview.md#azure-regions) region.
 - Support for [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) resource with GA REST API version.
@@ -132,15 +132,15 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability of [Major Version Upgrade Support for PostgreSQL 16](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL.
 - General availability of [Pgvector 0.7.0](../extensions/concepts-extensions-versions.md#vector) extension.
 - General availability support for [Storage-Autogrow with read replicas](../read-replica/concepts-read-replicas.md)
-- Support for [SCRAM authentication](how-to-connect-scram.md) authentication set as default for new PostgreSQL 14+ new server deployments.
-- General availability support for [System Assigned Managed Identity](concepts-Identity.md) for Azure Database for PostgreSQL.
+- Support for [SCRAM authentication](../security/security-connect-scram.md) authentication set as default for new PostgreSQL 14+ new server deployments.
+- General availability support for [System Assigned Managed Identity](../security/security-firewall-rules.md) for Azure Database for PostgreSQL.
 
 ## Release: June 2024
 
 - Support for latest [minor versions](concepts-supported-versions.md) 16.3, 15.7, 14.12, 13.15, and 12.19. <sup>$</sup>
 - General availability of [IOPS scaling](concepts-storage-premium-ssd.md#iops-scaling) on Azure Database for PostgreSQL.
 - CMK support for LTR is in Public preview [long-term backup retention](../backup-restore/concepts-backup-restore.md).
-- Support for [built-in Azure Policy definitions](../security/concepts-security.md#azure-policy-support)
+- Support for [built-in Azure Policy definitions](../security/security-overview.md#azure-policy-support)
 
 ## Release: May 2024
 
@@ -164,15 +164,15 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Major Version Upgrade Support for PostgreSQL 16](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL.
 - Public preview of [real-time language translations](../azure-ai/generative-ai-azure-cognitive.md#language-translation) with azure_ai extension on Azure Database for PostgreSQL.
 - Public preview of [real-time machine learning predictions](../azure-ai/generative-ai-azure-machine-learning.md) with azure_ai extension on Azure Database for PostgreSQL.
-- General availability of version 0.6.0 of [vector](how-to-use-pgvector.md) extension on Azure Database for PostgreSQL.
+- General availability of version 0.6.0 of [vector](../extension-module/how-to-use-pgvector.md) extension on Azure Database for PostgreSQL.
 - General availability of [Migration service](../../postgresql/migrate/migration-service/concepts-migration-service-postgresql.md) in Azure Database for PostgreSQL.
-- Support for PostgreSQL 16 changes with [BYPASSRLS](../security/concepts-security.md#bypassing-row-level-security)
+- Support for PostgreSQL 16 changes with [BYPASSRLS](../security/security-overview.md#bypassing-row-level-security)
 
 ## Release: February 2024
 
 - Support for latest [minor versions](concepts-supported-versions.md) 16.1, 15.5, 14.10, 13.13, 12.17, 11.22. <sup>$</sup>
 - General availability of [Major Version Upgrade logs](./concepts-major-version-upgrade.md#view-upgrade-logs)
-- General availability of [private endpoints](concepts-networking-private-link.md).
+- General availability of [private endpoints](../network/concepts-networking-private-link.md).
 
 ## Release: January 2024
 
@@ -184,8 +184,8 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: December 2023
 
 - Public preview of [Server logs](../monitor/how-to-configure-server-logs.md).
-- General availability of [TLS Version 1.3 support](concepts-networking-ssl-tls.md#tls-versions).
-- General availability of [Microsoft Defender support](../security/concepts-security.md)
+- General availability of [TLS Version 1.3 support](../security/security-tls.md#tls-versions).
+- General availability of [Microsoft Defender support](../security/security-overview.md)
 
 ## Release: November 2023
 
@@ -195,9 +195,9 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability of Italy North region.
 - Public preview of [premium SSD v2](../extension-module/concepts-storage.md).
 - Public preview of [decoupling storage and IOPS](../extension-module/concepts-storage.md).
-- Public preview of [private endpoints](concepts-networking-private-link.md).
+- Public preview of [private endpoints](../network/concepts-networking-private-link.md).
 - Public preview of [virtual endpoints and new promote to primary server](../read-replica/concepts-read-replicas.md) operation for read replica.
-- Public preview of Postgres [azure_ai](generative-ai-azure-overview.md) extension.
+- Public preview of Postgres [azure_ai](../azure-ai/generative-ai-azure-overview.md) extension.
 - Public preview of [pg_failover_slots](../extensions/concepts-extensions-versions.md#pg_failover_slots) extension.
 - Public preview of [long-term backup retention](../backup-restore/concepts-backup-restore.md).
 
@@ -224,7 +224,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: June 2023
 
 - Support for latest [minor versions](concepts-supported-versions.md) 15.2 (preview), 14.7, 13.10, 12.14, 11.19. <sup>$</sup>
-- General availability of [Query Performance Insight](concepts-query-performance-insight.md) for Azure Database for PostgreSQL.
+- General availability of [Query Performance Insight](../monitor/concepts-query-performance-insight.md) for Azure Database for PostgreSQL.
 - General availability of [Major Version Upgrade](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL.
 - General availability of [Restore a dropped server](../backup-restore/how-to-restore-dropped-server.md) for Azure Database for PostgreSQL.
 - Public preview of [Storage autogrow](../extension-module/concepts-storage.md) for Azure Database for PostgreSQLr.
@@ -233,40 +233,40 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - Public preview of [Database availability metric](../monitor/concepts-monitoring.md#database-availability-metric) for Azure Database for PostgreSQL.
 - PostgreSQL 15 is now available in public preview for Azure Database for PostgreSQL in limited regions (West Europe, East US, West US2, South East Asia, UK South, North Europe, Japan East).
-- General availability: [Pgvector extension](how-to-use-pgvector.md) for Azure Database for PostgreSQL.
-- General availability: [Azure Key Vault Managed HSM](concepts-data-encryption.md) with Azure Database for PostgreSQL.
+- General availability: [Pgvector extension](../extension-module/how-to-use-pgvector.md) for Azure Database for PostgreSQL.
+- General availability: [Azure Key Vault Managed HSM](../security/security-data-encryption.md) with Azure Database for PostgreSQL.
 - General availability [32 TB Storage](../extension-module/concepts-storage.md) with Azure Database for PostgreSQL.
 - Support for [Ddsv5 and Edsv5 SKUs](concepts-compute.md) with Azure Database for PostgreSQL.
 
 ## Release: April 2023
 
-- Public preview of [Query Performance Insight](concepts-query-performance-insight.md) for Azure Database for PostgreSQL.
-- Public preview of: [Power BI integration](connect-with-power-bi-desktop.md) for Azure Database for PostgreSQL.
-- Public preview of [Troubleshooting guides](concepts-troubleshooting-guides.md) for Azure Database for PostgreSQL.
+- Public preview of [Query Performance Insight](../monitor/concepts-query-performance-insight.md) for Azure Database for PostgreSQL.
+- Public preview of: [Power BI integration](../integration/connect-with-power-bi-desktop.md) for Azure Database for PostgreSQL.
+- Public preview of [Troubleshooting guides](../troubleshoot/concepts-troubleshooting-guides.md) for Azure Database for PostgreSQL.
 
 ## Release: March 2023
 
 - General availability of [Read Replica](../read-replica/concepts-read-replicas.md) for Azure Database for PostgreSQL.
 - Public preview of [PgBouncer Metrics](../monitor/concepts-monitoring.md#pgbouncer-metrics) for Azure Database for PostgreSQL.
-- General availability of [Azure Monitor workbooks](concepts-workbooks.md) for Azure Database for PostgreSQL.
+- General availability of [Azure Monitor workbooks](../monitor/concepts-workbooks.md) for Azure Database for PostgreSQL.
 
 ## Release: February 2023
 
 - Public preview of [Autovacuum Metrics](../monitor/concepts-monitoring.md#autovacuum-metrics) for Azure Database for PostgreSQL.
 - Support for [semver](../extensions/concepts-extensions-versions.md#semver) extension with new servers. <sup>$</sup>
 - Public Preview of [Major Version Upgrade](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL.
-- Support for [Geo-redundant backup feature](../backup-restore/concepts-backup-restore.md#geo-redundant-backup-and-restore) when using [Data encryption with customer managed key](concepts-data-encryption.md).
+- Support for [Geo-redundant backup feature](../backup-restore/concepts-backup-restore.md#geo-redundant-backup-and-restore) when using [Data encryption with customer managed key](../security/security-data-encryption.md).
 - Support for latest [minor versions](concepts-supported-versions.md) 14.6, 13.9, 12.13, 11.18. <sup>$</sup>
 
 ## Release: January 2023
 
-- General availability of [Microsoft Entra authentication support](concepts-azure-ad-authentication.md) for Azure Database for PostgreSQL in all Azure Public Regions.
-- General availability of [Customer Managed Key feature](concepts-data-encryption.md) with Azure Database for PostgreSQL in all Azure public regions.
+- General availability of [Microsoft Entra authentication support](../security/security-entra-concepts.md) for Azure Database for PostgreSQL in all Azure Public Regions.
+- General availability of [Customer Managed Key feature](../security/security-data-encryption.md) with Azure Database for PostgreSQL in all Azure public regions.
 
 ## Release: December 2022
 
 - Support for [pg_hint_plan](../extensions/concepts-extensions-versions.md#pg_hint_plan) extension with new servers. <sup>$</sup>
-- General availability of [Customer Managed Key feature](concepts-data-encryption.md) with Azure Database for PostgreSQL in Canada East, Canada Central, Southeast Asia, Switzerland North, Switzerland West, Brazil South, and East Asia Azure regions.
+- General availability of [Customer Managed Key feature](../security/security-data-encryption.md) with Azure Database for PostgreSQL in Canada East, Canada Central, Southeast Asia, Switzerland North, Switzerland West, Brazil South, and East Asia Azure regions.
 
 ## Release: November 2022
 
@@ -277,9 +277,9 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: October 2022
 
 - Support for [Read Replica](../read-replica/concepts-read-replicas.md) feature in public preview.
-- Support for [Microsoft Entra authentication](concepts-azure-ad-authentication.md) authentication in public preview.
-- Support for [Customer managed keys](concepts-data-encryption.md) in public preview.
-- Published [Security and compliance certifications](concepts-compliance.md) for Azure Database for PostgreSQL.
+- Support for [Microsoft Entra authentication](../security/security-entra-concepts.md) authentication in public preview.
+- Support for [Customer managed keys](../security/security-data-encryption.md) in public preview.
+- Published [Security and compliance certifications](../security/security-compliance.md) for Azure Database for PostgreSQL.
 - Postgres 14 is now the default PostgreSQL version.
 
 ## Release: September 2022
@@ -301,7 +301,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for [**PostgreSQL version 14**](concepts-supported-versions.md).
 - Support for [minor versions](concepts-supported-versions.md) 14.3, 13.7, 12.11, 11.16. <sup>$</sup>
 - Support for [Same-zone high availability]/azure/reliability/reliability-postgresql-flexible-server deployment option.
-- Support for choosing [standby availability zone](how-to-manage-high-availability-portal.md) when deploying zone-redundant high availability.
+- Support for choosing [standby availability zone](../reliability/how-to-configure-high-availability.md) when deploying zone-redundant high availability.
 - Support for [plv8](../extensions/concepts-extensions-versions.md#plv8) extension with new servers. <sup>$</sup>
 - Support for [pgrouting](../extensions/concepts-extensions-versions.md#pgrouting) extension with new servers. <sup>$</sup>
 - Version updates for [PostGIS](../extensions/concepts-extensions-versions.md#postgis) extension.
@@ -366,7 +366,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 - Support for [latest PostgreSQL minors](concepts-supported-versions.md) 13.3, 12.7 and 11.12 with new server creates. <sup>$</sup>
 - Support for [new regions](../configure-maintain/overview.md#azure-regions), including Australia Southeast, Brazil South, Korea Central, Norway East, South Africa North, Switzerland North, UAE North, and West US.
 - Support for [on-demand failover](/azure/reliability/reliability-postgresql-flexible-server#failover-support) capabilities including forced failover and planned failover for zone redundant high availability deployments.
-- Support for [SCRAM authentication](how-to-connect-scram.md) for all major versions with new server creates. <sup>$</sup>
+- Support for [SCRAM authentication](../security/security-connect-scram.md) for all major versions with new server creates. <sup>$</sup>
 - Support for [pg_prewarm](../extensions/concepts-extensions-versions.md#pg_prewarm) extension to be preloaded using `shared_preload_libraries` with new server creates.
 - Support for [lo](../extensions/concepts-extensions-versions.md#lo) extension.
 - Several bug fixes, stability, and performance improvements.
@@ -388,7 +388,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 - Support for new [regions](../configure-maintain/overview.md#azure-regions), including Australia East, Canada Central, and France Central.
 - Support for [built-in PgBouncer](../connectivity/../connectivity/concepts-pgbouncer.md) connection pooler.
 <!--- * Support for [pglogical](https://github.com/2ndQuadrant/pglogical) extension version 2.3.2. -->
-- [Intelligent performance](concepts-query-store.md) .
+- [Intelligent performance](../monitor/concepts-query-store.md) .
 - Several bug fixes, stability, and performance improvements.
 
 ## Release: October 2020 - March 2021

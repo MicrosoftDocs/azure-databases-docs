@@ -22,7 +22,7 @@ If you want Azure resource-level logs for operations like compute and storage sc
 
 By default, `pgaudit` logs statements and your regular log statements are emitted using Postgres's standard logging facility. In the Azure Database for PostgreSQL, you can configure all logs to be sent to the Azure Monitor Log store for later analysis in Log Analytics. If you enable Azure Monitor resource logging, your logs are automatically sent (in JSON format) to Azure Storage, Event Hubs, and/or Azure Monitor logs, depending on your choice.
 
-To learn how to set up logging to Azure Storage, Event Hubs, or Azure Monitor logs, visit the resource logs section of the [server logs article](concepts-logging.md).
+To learn how to set up logging to Azure Storage, Event Hubs, or Azure Monitor logs, visit the resource logs section of the [server logs article](../monitor/concepts-logging.md).
 
 ## Installing the extension
 
@@ -103,5 +103,5 @@ During a major version upgrade, the pgaudit extension is automatically dropped a
 
 ## Related content
 
-- [Logging in Azure Database for PostgreSQL](concepts-logging.md)
-- [Configure logging and access logs in Azure Database for PostgreSQL](how-to-configure-and-access-logs.md)
+- [Logging in Azure Database for PostgreSQL](../monitor/concepts-logging.md)
+- [Configure logging and access logs in Azure Database for PostgreSQL](../monitor/how-to-configure-and-access-logs.md)

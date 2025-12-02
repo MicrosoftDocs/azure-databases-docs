@@ -27,7 +27,7 @@ This quickstart uses the resources created in the [Create an Azure Database for 
 > [!IMPORTANT]
 > We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that aren't covered.
 >
-> Ensure the IP address you're connecting from has been added the server's firewall rules using the [Azure portal](how-to-manage-firewall-portal.md) or [Azure CLI](how-to-manage-firewall-cli.md).
+> Ensure the IP address you're connecting from has been added the server's firewall rules using the [Azure portal](../network/how-to-networking.md) or [Azure CLI](../network/how-to-networking.md).
 
 ## Install Go and pq connector
 
@@ -377,7 +377,7 @@ az group delete \
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
 - [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL](connect-python.md).
 - [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL](connect-java.md).
 - [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL](connect-csharp.md).

@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Autovacuum tuning in Azure Database for PostgreSQL
 
-This article provides an overview of the autovacuum feature for [Azure Database for PostgreSQL](overview.md) and the feature troubleshooting guides that are available to monitor the database bloat and autovacuum blockers. It also provides information about how far the database is from an emergency or wraparound situation.
+This article provides an overview of the autovacuum feature for [Azure Database for PostgreSQL](../configure-maintain/overview.md) and the feature troubleshooting guides that are available to monitor the database bloat and autovacuum blockers. It also provides information about how far the database is from an emergency or wraparound situation.
 
 > [!NOTE]
 > This article covers autovacuum tuning for all supported PostgreSQL versions in Azure Database for PostgreSQL flexible server. Some features mentioned are version-specific (such as `vacuum_buffer_usage_limit` for PostgreSQL 16 and later, and `autovacuum_vacuum_max_threshold` for PostgreSQL 18 and later).
@@ -81,7 +81,7 @@ Azure Database for PostgreSQL provides the following metrics for monitoring auto
 
 [!INCLUDE [Autovacuum Metrics](includes/autovacuum-metrics-table.md)]
 
-For more information, see [Autovacuum Metrics](./concepts-monitoring.md#autovacuum-metrics).
+For more information, see [Autovacuum Metrics](../monitor/concepts-monitoring.md#autovacuum-metrics).
 
 Use the following queries to monitor autovacuum:
 
@@ -422,4 +422,4 @@ The recommendations are:
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md)
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md)
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md)
-- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md)
+- [Server parameters in Azure Database for PostgreSQL](../server-parameter/concepts-server-parameters.md)

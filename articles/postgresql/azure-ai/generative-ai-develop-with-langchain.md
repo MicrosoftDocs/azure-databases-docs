@@ -30,7 +30,7 @@ You can use Azure Database for PostgreSQL to efficiently store and query million
 
 ## Authentication
 
-Azure Database for PostgreSQL supports password-based and [Microsoft Entra](concepts-azure-ad-authentication.md) (formerly Azure Active Directory) authentication.
+Azure Database for PostgreSQL supports password-based and [Microsoft Entra](../security/security-entra-concepts.md) (formerly Azure Active Directory) authentication.
 
 Microsoft Entra authentication allows you to use Microsoft Entra ID to authenticate to your PostgreSQL server. Microsoft Entra ID eliminates the need to manage separate usernames and passwords for your database users. It allows you to use the same security mechanisms that you use for other Azure services.
 
@@ -52,7 +52,7 @@ See [Enable and use pgvector in Azure Database for PostgreSQL](../extension-modu
 
 ### Set up credentials
 
-You need to get your Azure Database for PostgreSQL [connection details](quickstart-create-server-portal.md#get-the-connection-information) and add them as environment variables.
+You need to get your Azure Database for PostgreSQL [connection details](../configure-maintain/quickstart-create-server.md#get-the-connection-information) and add them as environment variables.
 
 Set the `USE_ENTRA_AUTH` flag to `True` if you want to use Microsoft Entra authentication. If you're using Microsoft Entra authentication, you need to supply the only host and database names. If you're using password authentication, you also need to set the username and password.
 

@@ -33,7 +33,7 @@ This article showcases adding rich AI capabilities to an Azure Database for Post
 
 - An [Azure AI Language](/azure/ai-services/language-service/overview) resource. If you don't have a Language resource, you can [create one](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal by following the instructions provided in the [quickstart for summarization](/azure/ai-services/language-service/summarization/custom/quickstart#create-a-new-resource-from-the-azure-portal). You can use the free pricing tier (`Free F0`) to try the service and upgrade later to a paid tier for production.
 
-- An Azure Database for PostgreSQL flexible server instance in your Azure subscription. If you don't have this resource, see [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
+- An Azure Database for PostgreSQL flexible server instance in your Azure subscription. If you don't have this resource, see [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md).
 
 ## Connect to the database by using psql in Azure Cloud Shell
 
@@ -63,7 +63,7 @@ To retrieve the database connection details:
 
 ## Install the azure_ai extension
 
-You can use the `azure_ai` extension to integrate Azure OpenAI and Azure Cognitive Services into your database. For more information, see [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md).
+You can use the `azure_ai` extension to integrate Azure OpenAI and Azure Cognitive Services into your database. For more information, see [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](../azure-ai/generative-ai-azure-openai.md).
 
 To enable the extension in your database:
 
@@ -249,7 +249,7 @@ The query uses the `<=>` [vector operator](https://github.com/pgvector/pgvector#
 
 The Azure AI services integrations included in the `azure_cognitive` schema of the `azure_ai` extension provide a rich set of AI language features that you can access directly from the database. The functionalities include sentiment analysis, language detection, key phrase extraction, entity recognition, and text summarization. Access to these capabilities is enabled through the [Azure AI Language service](/azure/ai-services/language-service/overview).
 
-To review the complete Azure AI capabilities that you can access through the extension, see [Integrate Azure Database for PostgreSQL with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+To review the complete Azure AI capabilities that you can access through the extension, see [Integrate Azure Database for PostgreSQL with Azure Cognitive Services](../azure-ai/generative-ai-azure-cognitive.md).
 
 ### Set the Azure AI Language service endpoint and key
 

@@ -45,7 +45,7 @@ High availability is now supported for Azure Database for PostgreSQL flexible se
 
 #### Premium SSD v2 - Limitations during preview
 
-- [Geographically redundant backups](../backup-restore/concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](../backup-restore/concepts-backup-restore.md) or storage auto grow  features aren't supported for Premium SSD v2.
+- [Geographically redundant backups](../backup-restore/concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](../security/security-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](../backup-restore/concepts-backup-restore.md) or storage auto grow  features aren't supported for Premium SSD v2.
   
 - Please wait until your first backup becomes available before configuring in-region replicas, as this process depends on disk snapshots. This limitation does not apply to cross-region replicas, which use pg_basebackups instead.
 
@@ -77,7 +77,7 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 > [!IMPORTANT]  
 > The selected compute size determines the minimum and maximum IOPS.
 
-Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
+Learn how to [scale up or down IOPS](../scale/how-to-scale-compute.md).
 
 
 ## Related content

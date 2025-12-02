@@ -24,14 +24,14 @@ If you want to start tracking the execution statistics of all SQL statements exe
 
 To set **pg_stat_statements.track** = `TOP`
 
-- In the Azure portal, go to the [Azure Database for PostgreSQL flexible server resource management page and select the server parameters blade](concepts-server-parameters.md).
-- Use the [Azure CLI](connect-azure-cli.md) az postgres server configuration set to `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value TOP`.
+- In the Azure portal, go to the [Azure Database for PostgreSQL flexible server resource management page and select the server parameters blade](../server-parameter/concepts-server-parameters.md).
+- Use the [Azure CLI](../connectivity/connect-azure-cli.md) az postgres server configuration set to `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value TOP`.
 
 ## Use the Query Store
 
-Using the [Query Store](concepts-query-store.md) feature in Azure Database for PostgreSQL flexible server offers a different way to monitor query execution statistics. To prevent performance overhead, it is recommended to utilize only one mechanism, either the pg_stat_statements extension or the Query Store.
+Using the [Query Store](../monitor/concepts-query-store.md) feature in Azure Database for PostgreSQL flexible server offers a different way to monitor query execution statistics. To prevent performance overhead, it is recommended to utilize only one mechanism, either the pg_stat_statements extension or the Query Store.
 
 ## Related content
 
-- [Query Store usage scenarios](concepts-query-store-scenarios.md).
-- [Query Store best practices](concepts-query-store-best-practices.md).
+- [Query Store usage scenarios](../monitor/concepts-query-store-scenarios.md).
+- [Query Store best practices](../monitor/concepts-query-store-best-practices.md).

@@ -85,6 +85,6 @@ Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify
 
 ## Related content
 
-- [Compute options](concepts-compute.md).
-- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).
+- [Compute options](../configure-maintain/concepts-compute.md).
+- [Limits in Azure Database for PostgreSQL flexible server](../configure-maintain/concepts-limits.md).
 - [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)

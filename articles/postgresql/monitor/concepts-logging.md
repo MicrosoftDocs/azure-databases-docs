@@ -14,13 +14,13 @@ ms.topic: how-to
 
 Azure Database for PostgreSQL allows you to configure and access Postgres' standard logs. The logs can be used to identify, troubleshoot, and repair configuration errors and suboptimal performance. Logging information you can configure and access includes errors, query information, autovacuum records, connections, and checkpoints. (Access to transaction logs isn't available).
 
-Audit logging is made available through a Postgres extension, `pgaudit`. To learn more, visit the [auditing concepts](security-audit.md) article.
+Audit logging is made available through a Postgres extension, `pgaudit`. To learn more, visit the [auditing concepts](../security/security-audit.md) article.
 
 ## Configure logging
 
 You can configure Postgres standard logging on your server using the logging server parameters. To learn more about Postgres log parameters, visit the [When To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) and [What To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) sections of the Postgres documentation. Most, but not all, Postgres logging parameters are available to configure in Azure Database for PostgreSQL.
 
-To learn how to configure parameters in Azure Database for PostgreSQL, see the [portal documentation](how-to-configure-server-parameters.md) or the [CLI documentation](how-to-configure-server-parameters.md).
+To learn how to configure parameters in Azure Database for PostgreSQL, see the [portal documentation](../server-parameter/how-to-server-parameters-list-all.md) or the [CLI documentation](../server-parameter/how-to-server-parameters-list-all.md).
 
 > [!NOTE]
 > To configure a high volume of logs, you can add significant performance overhead. For example, statement logging can impact performance.
@@ -88,4 +88,4 @@ The following table describes the fields for the **PostgreSQLLogs** type. Depend
 
 - [Configure and access logs in Azure Database for PostgreSQL](how-to-configure-and-access-logs.md).
 - [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- [Audit logging in Azure Database for PostgreSQL](concepts-audit.md).
+- [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md).

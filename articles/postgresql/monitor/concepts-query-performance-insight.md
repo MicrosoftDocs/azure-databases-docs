@@ -84,7 +84,7 @@ The Query Performance Insight view in the Azure portal surfaces visualizations o
 
 ## Considerations
 
-* Query Performance Insight isn't available for [read replicas](concepts-read-replicas.md).
+* Query Performance Insight isn't available for [read replicas](../read-replica/concepts-read-replicas.md).
 * For Query Performance Insight to function, data must exist in the Query Store. Query Store is an opt-in feature, so it isn't enabled by default on a server. Query store is enabled or disabled globally for all databases on a given server and can't be turned on or off per database.
 * Enabling Query Store on the Burstable pricing tier may negatively impact performance; therefore, we don't recommend enabling it on that tier.
 

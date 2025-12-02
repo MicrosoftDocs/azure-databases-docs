@@ -51,7 +51,7 @@ For both promotion methods, there are more options to consider:
 > The **Forced** promotion option is designed to address regional outages and, in such cases, it skips all checks - including the server symmetry requirement - and proceeds with promotion. This is because it prioritizes immediate server availability to handle disaster scenarios. However, using the Forced option outside of region down scenarios isn't allowed if the requirements for read replicas specified in the documentation, especially server symmetry requirement, aren't met, as it could lead to issues such as broken replication.
  
 
-Learn how to [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md) and [promote to independent server and remove from replication](how-to-read-replicas-portal.md#promote-replica-to-independent-server).
+Learn how to [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md) and [promote to independent server and remove from replication](../read-replica/how-to-create-read-replica#promote-replica-to-independent-server).
 
 ## Configuration management
 
@@ -59,10 +59,10 @@ Read replicas are treated as separate servers in terms of control plane configur
 
 The promote operation doesn't carry over specific configurations and parameters. Here are some of the notable ones:
 
-- **PgBouncer**: [The built-in PgBouncer](concepts-pgbouncer.md) connection pooler's settings and status aren't replicated during the promotion process. If PgBouncer was enabled on the primary but not on the replica, it will remain disabled on the replica after promotion. Should you want PgBouncer on the newly promoted server, you must enable it either before or following the promotion action.
+- **PgBouncer**: [The built-in PgBouncer](../connectivity/concepts-pgbouncer.md) connection pooler's settings and status aren't replicated during the promotion process. If PgBouncer was enabled on the primary but not on the replica, it will remain disabled on the replica after promotion. Should you want PgBouncer on the newly promoted server, you must enable it either before or following the promotion action.
 - **Geo-redundant backup storage**: Geo-backup settings aren't transferred. Since replicas can't have geo-backup enabled, the promoted primary (formerly the replica) doesn't have it after promotion. The feature can only be activated at the standard server's creation time (not a replica).
 - **Server Parameters**: If their values differ on the primary and read replica, they won't change during promotion. It's essential to note that parameters influencing shared memory size must have the same values on both the primary and replicas. This requirement is detailed in the [Server parameters](concepts-read-replicas.md#server-parameters) section.
-- **Microsoft Entra authentication**: If the primary had [Microsoft Entra authentication](concepts-azure-ad-authentication.md) configured, but the replica was set up with PostgreSQL authentication, then after promotion, the replica won't automatically switch to Microsoft Entra authentication. It retains the PostgreSQL authentication. Users need to manually configure Microsoft Entra authentication on the promoted replica either before or after the promotion process.
+- **Microsoft Entra authentication**: If the primary had [Microsoft Entra authentication](../security/security-entra-concepts.md) configured, but the replica was set up with PostgreSQL authentication, then after promotion, the replica won't automatically switch to Microsoft Entra authentication. It retains the PostgreSQL authentication. Users need to manually configure Microsoft Entra authentication on the promoted replica either before or after the promotion process.
 - **High Availability (HA)**: Should you require [HA]/azure/reliability/reliability-postgresql-flexible-server after the promotion, it must be configured on the freshly promoted primary server, following the role reversal.
 
 
@@ -99,5 +99,5 @@ In both the Planned and Forced promotion scenarios, it's required that the lates
 - [Read replicas in Azure Database for PostgreSQL](concepts-read-replicas.md).
 - [Geo-replication in Azure Database for PostgreSQL](concepts-read-replicas-geo.md).
 - [Virtual endpoints for read replicas in Azure Database for PostgreSQL](concepts-read-replicas-virtual-endpoints.md).
-- [Create a read replica](how-to-read-replicas-portal.md).
-- [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).
+- [Create a read replica](../read-replica/how-to-create-read-replica).
+- [Replication across Azure regions and virtual networks with private networking](../network/concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

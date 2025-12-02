@@ -183,11 +183,11 @@ Users who are members of the `azure_pg_admin` role can drop the hypopg extension
 
 ### Supported compute tiers and SKUs
 
-Index tuning is supported on all [currently available tiers](concepts-compute.md): Burstable, General Purpose, and Memory Optimized, and on any [currently supported compute SKU](concepts-compute.md) with at least 4 vCores.
+Index tuning is supported on all [currently available tiers](../configure-maintain/concepts-compute.md): Burstable, General Purpose, and Memory Optimized, and on any [currently supported compute SKU](../configure-maintain/concepts-compute.md) with at least 4 vCores.
 
 ### Supported versions of PostgreSQL
 
-Index tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server instances.
+Index tuning is supported on [major versions](../configure-maintain/concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server instances.
 
 ### Use of search_path
 
@@ -211,7 +211,7 @@ If index tuning is enabled on a server, and you scale down that server's compute
 
 ### High availability and read replicas
 
-If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when implementing the recommended indexes. Be especially careful when creating indexes whose size is estimated to be large.
+If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](../read-replica/concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when implementing the recommended indexes. Be especially careful when creating indexes whose size is estimated to be large.
 
 ### Reasons why index tuning might not produce create index recommendations for certain queries
 

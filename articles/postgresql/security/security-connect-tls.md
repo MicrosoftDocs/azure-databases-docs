@@ -27,7 +27,7 @@ For all Azure Database for PostgreSQL flexible server instances, enforcement of 
 
 ## Applications that require certificate verification for TLS/SSL connectivity
 
-In some cases, applications require a local certificate file generated from a trusted Certificate Authority (CA) certificate file, so that they can connect securely. For more information on downloading root CA certificates, see [Configure SSL on the client](concepts-networking-ssl-tls.md#configure-ssl-on-the-client).
+In some cases, applications require a local certificate file generated from a trusted Certificate Authority (CA) certificate file, so that they can connect securely. For more information on downloading root CA certificates, see [Configure SSL on the client](../security/security-tls.md#configure-ssl-on-the-client).
 
 **Detailed information on updating client applications certificate stores with new Root CA certificates has been documented in this [how-to document](../flexible-server/how-to-update-client-certificates-java.md)**.
 
@@ -55,6 +55,6 @@ Some application frameworks that use PostgreSQL for their database services don'
 
 ## Related content
 
-- [Networking](how-to-manage-virtual-network-cli.md)
-- [Network with private access for Azure Database for PostgreSQL](concepts-networking-private.md)
-- [Firewall rules](concepts-networking-public.md#firewall-rules)
+- [Networking](../network/how-to-networking.md)
+- [Network with private access for Azure Database for PostgreSQL](../network/concepts-networking-private.md)
+- [Firewall rules](../network/concepts-networking-public.md#firewall-rules)

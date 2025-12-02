@@ -18,12 +18,12 @@ In this article, you learn how to use troubleshooting guides for Azure Database 
 ## Prerequisites
 
 To effectively troubleshoot a specific issue, you need to make sure that you have all the necessary data in place. 
-Each troubleshooting guide requires a specific set of data, which is sourced from three separate features: [Diagnostic settings](how-to-configure-and-access-logs.md), [Query Store](concepts-query-store.md), and [Enhanced metrics](concepts-monitoring.md#enabling-enhanced-metrics).
+Each troubleshooting guide requires a specific set of data, which is sourced from three separate features: [Diagnostic settings](../monitor/how-to-configure-and-access-logs.md), [Query Store](../monitor/concepts-query-store.md), and [Enhanced metrics](../monitor/concepts-monitoring.md#enabling-enhanced-metrics).
 All troubleshooting guides require logs to be sent to a Log Analytics workspace, but the specific category of logs to be captured may vary depending on the particular guide. 
 
-Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
+Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL flexible server](../monitor/how-to-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
 
-Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](how-to-configure-server-parameters.md) or [Azure CLI](how-to-configure-server-parameters.md).
+Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](../server-parameter/how-to-server-parameters-list-all.md) or [Azure CLI](../server-parameter/how-to-server-parameters-list-all.md).
 
 The table below provides information on the required log categories for each troubleshooting guide, as well as the necessary Query Store, Enhanced metrics and Server parameters prerequisites.
 
@@ -86,10 +86,10 @@ SELECT '24776'::regrole;
 
 ## Related content
 
-- [Configure intelligent tuning for Azure Database for PostgreSQL flexible server](how-to-enable-intelligent-performance-portal.md).
+- [Configure intelligent tuning for Azure Database for PostgreSQL flexible server](../monitor/how-to-enable-intelligent-performance-portal.md).
 - [Troubleshooting guides for Azure Database for PostgreSQL flexible server](concepts-troubleshooting-guides.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md).
 - [Best practices for uploading data in bulk in Azure Database for PostgreSQL flexible server](how-to-bulk-load-data.md).
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
-- [Query Performance Insight in Azure Database for PostgreSQL flexible server](concepts-query-performance-insight.md).
+- [Query Performance Insight in Azure Database for PostgreSQL flexible server](../monitor/concepts-query-performance-insight.md).

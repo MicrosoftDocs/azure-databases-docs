@@ -63,7 +63,7 @@ Microsoft Entra authentication supports the following methods of connecting to a
 - Microsoft Entra integrated authentication
 - Microsoft Entra universal with multifactor authentication
 - Active Directory application certificates or client secrets
-- [Managed identity](how-to-connect-with-managed-identity.md)
+- [Managed identity](../security/security-connect-with-managed-identity.md)
 
 After you authenticate against Active Directory, you retrieve a token. This token is your password for signing in.
 
@@ -114,7 +114,7 @@ When you use Microsoft Entra authentication with Azure Database for PostgreSQL, 
 
 - **How do I generate my token?**
 
-  You generate the token by using `az login`. For more information, see [Retrieve the Microsoft Entra access token](how-to-configure-sign-in-azure-ad-authentication.md).
+  You generate the token by using `az login`. For more information, see [Retrieve the Microsoft Entra access token](../security/security-entra-configure.md).
 
 - **What's the difference between group login and individual login?**
 
@@ -129,5 +129,5 @@ When you use Microsoft Entra authentication with Azure Database for PostgreSQL, 
   User tokens are valid for up to 1 hour. Tokens for system-assigned managed identities are valid for up to 24 hours.
 
 ## Related content
-- [Use Microsoft Entra ID in Azure Database for PostgreSQL](how-to-configure-sign-in-azure-ad-authentication.md)
-- [Manage Microsoft Entra roles in Azure Database for PostgreSQL](how-to-manage-azure-ad-users.md)
+- [Use Microsoft Entra ID in Azure Database for PostgreSQL](../security/security-entra-configure.md)
+- [Manage Microsoft Entra roles in Azure Database for PostgreSQL](../security/security-manage-entra-users.md)

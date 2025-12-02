@@ -218,7 +218,7 @@ If you are experiencing issues even after following these steps, contact [Micros
 
 ## Related content
 
-- [Azure portal](how-to-manage-virtual-network-portal.md)
-- [Azure CLI](how-to-manage-virtual-network-cli.md)
-- [Azure portal](how-to-manage-firewall-portal.md)
-- [Azure CLI](how-to-manage-firewall-cli.md)
+- [Azure portal](../network/how-to-networking.md)
+- [Azure CLI](../network/how-to-networking.md)
+- [Azure portal](../network/how-to-networking.md)
+- [Azure CLI](../network/how-to-networking.md)

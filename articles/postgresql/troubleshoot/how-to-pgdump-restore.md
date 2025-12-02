@@ -166,9 +166,9 @@ pg_restore -h <server>.postgres.database.azure.com -U <username> -d <target_data
 
 ## Related content
 
-- [Configure intelligent tuning for Azure Database for PostgreSQL flexible server](how-to-enable-intelligent-performance-portal.md)
+- [Configure intelligent tuning for Azure Database for PostgreSQL flexible server](../monitor/how-to-enable-intelligent-performance-portal.md)
 - [Troubleshooting guides for Azure Database for PostgreSQL flexible server](concepts-troubleshooting-guides.md)
 - [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md)
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md)
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md)
-- [Query Performance Insight in Azure Database for PostgreSQL flexible server](concepts-query-performance-insight.md)
+- [Query Performance Insight in Azure Database for PostgreSQL flexible server](../monitor/concepts-query-performance-insight.md)

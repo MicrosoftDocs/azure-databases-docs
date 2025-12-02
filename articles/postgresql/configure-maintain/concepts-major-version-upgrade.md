@@ -38,7 +38,7 @@ Here are some of the important considerations with in-place major version upgrad
 - Long-running transactions or high workload before the upgrade might increase the time taken to shut down the database and increase upgrade time.
 - After an in-place major version upgrade is successful, there are no automated ways to revert to the earlier version. However, you can perform a point-in-time recovery (PITR) to a time before the upgrade to restore the previous version of the database instance.
 - Your Azure Database for PostgreSQL flexible server instance takes a snapshot of your database during an upgrade. The snapshot is taken before the upgrade starts. If the upgrade fails, the system automatically restores your database to its state from the snapshot.
-- [PostgreSQL 16 introduces role-based security](../security/concepts-security.md#postgresql-16-changes-with-role-based-security) measures. After a major version upgrade on an Azure Database for PostgreSQL flexible server instance, the first user created on the server—who is granted the ADMIN option—will now have administrative privileges over other roles for essential maintenance operations.
+- [PostgreSQL 16 introduces role-based security](../security/security-overview.md#postgresql-16-changes-with-role-based-security) measures. After a major version upgrade on an Azure Database for PostgreSQL flexible server instance, the first user created on the server—who is granted the ADMIN option—will now have administrative privileges over other roles for essential maintenance operations.
 
 ## Upgrade Considerations and Limitations
 

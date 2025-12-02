@@ -266,5 +266,5 @@ You're now authenticated to your PostgreSQL server through Microsoft Entra authe
 
 ## Related content
 
-- [Microsoft Entra authentication with Azure Database for PostgreSQL](concepts-azure-ad-authentication.md)
-- [Manage Microsoft Entra roles in Azure Database for PostgreSQL](how-to-manage-azure-ad-users.md)
+- [Microsoft Entra authentication with Azure Database for PostgreSQL](../security/security-entra-concepts.md)
+- [Manage Microsoft Entra roles in Azure Database for PostgreSQL](../security/security-manage-entra-users.md)

@@ -88,15 +88,15 @@ Before using any troubleshooting guide, it's essential to ensure that all prereq
 
 ### Limitations
 
-* Troubleshooting guides aren't available for [read replicas](concepts-read-replicas.md).
+* Troubleshooting guides aren't available for [read replicas](../read-replica/concepts-read-replicas.md).
 * Be aware that enabling Query Store on the Burstable pricing tier can lead to a negative impact on performance. As a result, it's not recommended to use Query Store with this particular pricing tier.
 
 ## Related content
 
-- [Configure intelligent tuning for Azure Database for PostgreSQL](how-to-enable-intelligent-performance-portal.md).
+- [Configure intelligent tuning for Azure Database for PostgreSQL](../monitor/how-to-enable-intelligent-performance-portal.md).
 - [Troubleshooting guides for Azure Database for PostgreSQL](concepts-troubleshooting-guides.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
 - [Best practices for uploading data in bulk in Azure Database for PostgreSQL](how-to-bulk-load-data.md).
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
-- [Query Performance Insight in Azure Database for PostgreSQL](concepts-query-performance-insight.md).
+- [Query Performance Insight in Azure Database for PostgreSQL](../monitor/concepts-query-performance-insight.md).

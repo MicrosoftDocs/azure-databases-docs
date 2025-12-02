@@ -254,7 +254,7 @@ az postgres flexible-server server-logs download \
 
 ## Related content
 
-- [Configure high availability](how-to-configure-high-availability.md).
-- [Configure scheduled maintenance](how-to-configure-scheduled-maintenance.md).
+- [Configure high availability](../reliability/how-to-configure-high-availability.md).
+- [Configure scheduled maintenance](../configure-maintain/how-to-configure-scheduled-maintenance.md).
 - [Create alerts on metrics using portal](how-to-alert-on-metrics.md).
 

@@ -102,7 +102,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd-v2.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd-v2.png":::
 
-3. If you want to change the IOPS assigned to the disk allocated to your server, type the desired value in the **IOPS (operations/sec)** text box. Range of IOPS that can be assigned to a disk, depends on the allocated size of the disk. To learn more about it, see [Premium SSD v2 - IOPS](concepts-storage-premium-ssd-v2.md#premium-ssd-v2---iops).
+3. If you want to change the IOPS assigned to the disk allocated to your server, type the desired value in the **IOPS (operations/sec)** text box. Range of IOPS that can be assigned to a disk, depends on the allocated size of the disk. To learn more about it, see [Premium SSD v2 - IOPS](../configure-maintain/concepts-storage-premium-ssd-v2.md#premium-ssd-v2---iops).
 
     :::image type="content" source="./media/how-to-scale-storage/storage-iops-ssd-v2.png" alt-text="Screenshot showing where to specify a different number of IOPS for Premium SSD v2 disks." lightbox="./media/how-to-scale-storage/storage-iops-ssd-v2.png":::
 
@@ -164,7 +164,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd-v2.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd-v2.png":::
 
-3. If you want to change the throughput assigned to the disk allocated to your server, type the desired value in the **Throughput (MB/sec)** text box. Range of throughput that can be assigned to a disk, depends on the size of the disk and the IOPS assigned. To learn more about it, see [Premium SSD v2 - Throughput](concepts-storage-premium-ssd-v2.md#premium-ssd-v2---throughput).
+3. If you want to change the throughput assigned to the disk allocated to your server, type the desired value in the **Throughput (MB/sec)** text box. Range of throughput that can be assigned to a disk, depends on the size of the disk and the IOPS assigned. To learn more about it, see [Premium SSD v2 - Throughput](../configure-maintain/concepts-storage-premium-ssd-v2.md#premium-ssd-v2---throughput).
 
     :::image type="content" source="./media/how-to-scale-storage/storage-throughput-ssd-v2.png" alt-text="Screenshot showing where to specify a different number of throughput for Premium SSD v2 disks." lightbox="./media/how-to-scale-storage/storage-throughput-ssd-v2.png":::
 
@@ -220,5 +220,5 @@ az postgres flexible-server show \
 ## Related content
 
 - [Scale storage size](how-to-scale-storage-size.md).
-- [Storage options](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).
+- [Storage options](../extension-module/concepts-storage.md).
+- [Limits in Azure Database for PostgreSQL flexible server](../configure-maintain/concepts-limits.md).

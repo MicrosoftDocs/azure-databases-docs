@@ -49,7 +49,7 @@ az postgres flexible-server identity assign \
 
 The service supports dissociating user assigned managed identities which are associated to an Azure Database for PostgreSQL flexible server instance.
 
-An exception to that rule is any of the user assigned managed identities that are designated as the ones that should be used to access the encryption keys. This case is only possible on servers that were deployed with [data encryption using customer managed keys](concepts-data-encryption.md).
+An exception to that rule is any of the user assigned managed identities that are designated as the ones that should be used to access the encryption keys. This case is only possible on servers that were deployed with [data encryption using customer managed keys](../security/security-data-encryption.md).
 
 ### [Portal](#tab/portal-dissociate-user-assigned-existing)
 

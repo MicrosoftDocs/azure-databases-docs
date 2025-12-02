@@ -58,7 +58,7 @@ Being proactive and preparing in advance for regional disasters ensure the resil
 
 ### When outages impact your SLA
 
-If a prolonged outage with an Azure Database for PostgreSQL flexible server instance in a specific region that threatens your application's service-level agreement (SLA), be aware that both the actions discussed below aren't service-driven. User intervention is required for both. It's a best practice to automate the entire process as much as possible and to have robust monitoring in place. For more information about what information is provided during an outage, see the [Service outage](concepts-business-continuity.md#service-outage) page. Only a **forced** promote is possible in a region down scenario, meaning the amount of data loss is roughly equal to the current lag between the replica and primary. Hence, it's crucial to [monitor the lag](concepts-read-replicas.md#monitor-replication). Consider the following steps:
+If a prolonged outage with an Azure Database for PostgreSQL flexible server instance in a specific region that threatens your application's service-level agreement (SLA), be aware that both the actions discussed below aren't service-driven. User intervention is required for both. It's a best practice to automate the entire process as much as possible and to have robust monitoring in place. For more information about what information is provided during an outage, see the [Service outage](../backup-restore/concepts-business-continuity.md#service-outage) page. Only a **forced** promote is possible in a region down scenario, meaning the amount of data loss is roughly equal to the current lag between the replica and primary. Hence, it's crucial to [monitor the lag](concepts-read-replicas.md#monitor-replication). Consider the following steps:
 
 **Promote to primary server**
 
@@ -74,4 +74,4 @@ In that case, this is the only viable option. After promoting the server, you'll
 - [Promote read replicas in Azure Database for PostgreSQL](concepts-read-replicas-promote.md).
 - [Virtual endpoints for read replicas in Azure Database for PostgreSQL](concepts-read-replicas-virtual-endpoints.md).
 - [Create a read replica](how-to-create-read-replica.md).
-- [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).
+- [Replication across Azure regions and virtual networks with private networking](../network/concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

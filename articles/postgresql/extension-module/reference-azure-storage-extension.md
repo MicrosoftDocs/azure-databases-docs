@@ -671,5 +671,5 @@ Any user or role can invoke this function.
 - [Azure Storage extension](concepts-storage-extension.md).
 - [Configure the Azure Storage extension](how-to-configure-azure-storage-extension.md).
 - [Quickstart examples](quickstart-azure-storage-extension.md).
-- [Troubleshoot errors](troubleshoot-azure-storage-extension.md).
+- [Troubleshoot errors](../troubleshoot/troubleshoot-azure-storage-extension.md).
 - [Extensions and modules](../extensions/concepts-extensions.md).

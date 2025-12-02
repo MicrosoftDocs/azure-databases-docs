@@ -181,4 +181,4 @@ SECURITY LABEL for "pgaadauth" on role "<roleName>" is 'aadauth,oid=<objectId>,t
 
 ## Related content
 
-- [Microsoft Entra authentication in Azure Database for PostgreSQL](concepts-azure-ad-authentication.md)
+- [Microsoft Entra authentication in Azure Database for PostgreSQL](../security/security-entra-concepts.md)

@@ -30,7 +30,7 @@ You can scale the compute tier up or down between Burstable, General Purpose, an
 
 You can scale the number of vCores and installed memory up or down. You can also configure the storage tier up or down to accommodate the throughput and IOPS requirements that your workload demands. You can only increase the storage size. Depending on your requirements, you can increase or decrease the backup retention period between 7 to 35 days.
 
-You can scale these resources by using multiple interfaces. For instance, you can use the [Azure portal](quickstart-create-server.md) or [Azure CLI](quickstart-create-server.md).
+You can scale these resources by using multiple interfaces. For instance, you can use the [Azure portal](../configure-maintain/quickstart-create-server.md) or [Azure CLI](../configure-maintain/quickstart-create-server.md).
 
 > [!NOTE]  
 > After you increase the size of the storage assigned to your instance, you can't shrink it to a smaller size.
@@ -43,7 +43,7 @@ Azure Database for PostgreSQL elastic clusters allows you to horizontally scale 
 
 ## Read replica scaling
 
-Another approach to scaling your instance horizontally is by creating [read replicas](concepts-read-replicas.md). Read replicas let you scale your read workloads onto separate Azure Database for PostgreSQL flexible server instances. They don't affect the performance and availability of the primary instance.
+Another approach to scaling your instance horizontally is by creating [read replicas](../read-replica/concepts-read-replicas.md). Read replicas let you scale your read workloads onto separate Azure Database for PostgreSQL flexible server instances. They don't affect the performance and availability of the primary instance.
 
 In a horizontally scaled setup, you can also scale the primary instance and the read replicas vertically.
 
@@ -71,7 +71,7 @@ When you update your Azure Database for PostgreSQL flexible server instance in s
 
 This process enables seamless updates with minimal downtime and is automatically triggered when you change storage or compute tiers. You don't need to take any action to use this capability. This capability is supported for both HA and non-HA Azure Database for PostgreSQL flexible server instances.
 
-For horizontally scaled configurations, consisting of a primary server and one or more read replicas, scaling operations must follow a specific sequence to ensure data consistency and minimize downtime. For details about that sequence, see [scaling with read replicas](concepts-read-replicas.md#scale).
+For horizontally scaled configurations, consisting of a primary server and one or more read replicas, scaling operations must follow a specific sequence to ensure data consistency and minimize downtime. For details about that sequence, see [scaling with read replicas](../read-replica/concepts-read-replicas.md#scale).
 
 > [!NOTE]  
 > Near-zero downtime scaling is the _default_ type of operation. When the following [limitations](#considerations-and-limitations) are encountered, the system switches to regular scaling, which involves more downtime compared to the near-zero downtime scaling.
@@ -83,14 +83,14 @@ For horizontally scaled configurations, consisting of a primary server and one o
 
 #### Considerations and limitations
 
-- For near-zero downtime scaling to work, allow all [inbound and outbound connections between the IP addresses in the delegated subnet, when you use virtual network integrated networking](concepts-networking-private.md#virtual-network-concepts). If you don't permit these connections, the near-zero downtime scaling process doesn't work, and scaling occurs through the standard scaling workflow.
+- For near-zero downtime scaling to work, allow all [inbound and outbound connections between the IP addresses in the delegated subnet, when you use virtual network integrated networking](../network/concepts-networking-private.md#virtual-network-concepts). If you don't permit these connections, the near-zero downtime scaling process doesn't work, and scaling occurs through the standard scaling workflow.
 - Near-zero downtime scaling doesn't work if there are regional capacity constraints or quota limits on your subscription.
 - Near-zero downtime scaling doesn't work for a replica server, because it's only supported on the primary server. For replica servers, the scaling operation automatically goes through the regular process.
-- Near-zero downtime scaling doesn't work if a [virtual network-injected server](concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses in the delegated subnet. If you have a standalone server, one extra IP address is necessary. For an instance with high-availability enabled, two extra IP addresses are required.
+- Near-zero downtime scaling doesn't work if a [virtual network-injected server](../network/concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses in the delegated subnet. If you have a standalone server, one extra IP address is necessary. For an instance with high-availability enabled, two extra IP addresses are required.
 - Logical replication slots aren't preserved during a near-zero downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling the pg_failover_slots extension in an instance of flexible server](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
 - Near-zero downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you use unlogged tables for any of your data, you lose all the data in those tables after the near-zero downtime scaling.
 - Near-zero doesn't work if you scale the compute of your server from or to a compute size of 1 or 2 vCores of the Burstable tier.
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL](how-to-manage-server-portal.md)
+- [Manage Azure Database for PostgreSQL](../configure-maintain/how-to-manage-server-portal.md)

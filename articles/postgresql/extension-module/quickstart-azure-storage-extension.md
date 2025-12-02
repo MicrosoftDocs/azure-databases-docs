@@ -412,7 +412,7 @@ SELECT azure_storage.account_remove('<account_name>');
 
 ## Related content
 
-- [Troubleshoot errors](troubleshoot-azure-storage-extension.md).
+- [Troubleshoot errors](../troubleshoot/troubleshoot-azure-storage-extension.md).
 - [Reference](reference-azure-storage-extension.md).
 - [Azure Storage extension](concepts-storage-extension.md).
 - [Configure the Azure Storage extension](how-to-configure-azure-storage-extension.md).

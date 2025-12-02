@@ -565,7 +565,7 @@
             - name: Server parameters
               items:
                 - name: List all server parameters
-                  href: flexible-server/how-to-server-parameters-list-all.md
+                  href: server-parameter/how-to-server-parameters-list-all.md
                 - name: List server parameters with modified values
                   href: flexible-server/how-to-server-parameters-list-modified.md
                 - name: List read-write static server parameters

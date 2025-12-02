@@ -72,12 +72,12 @@ The following table provides an overview of premium SSD v2 disk capacities and p
 | 1 GiB-64 TiBs | 3,000-80,000 (Increases by 500 IOPS per GiB) | 125-1,200 (increases by 0.25 MB/s per set IOPS) |
 
 Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.
-To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
+To learn more, see [Compute options in Azure Database for PostgreSQL](../configure-maintain/concepts-compute.md).
 
 > [!NOTE]  
 > Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
-You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](concepts-monitoring.md).
+You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
 
 ### Disk full conditions
 
@@ -87,12 +87,12 @@ When your disk becomes full, the server starts returning errors and prevents any
 ```sql
 	SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;
 ```
-We recommend that you actively monitor the disk space that's in use by using storage_percentage or storage_used metrics and increase the disk size before you run out of available space in your storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](how-to-alert-on-metrics.md).
+We recommend that you actively monitor the disk space that's in use by using storage_percentage or storage_used metrics and increase the disk size before you run out of available space in your storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](../monitor/how-to-alert-on-metrics.md).
 
 
 [!INCLUDE [pricing](includes/compute-storage-princing.md)]
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md).
-- [Limits in Azure Database for PostgreSQL](concepts-limits.md).
+- [Manage Azure Database for PostgreSQL using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
+- [Limits in Azure Database for PostgreSQL](../configure-maintain/concepts-limits.md).

@@ -126,7 +126,7 @@ ORDER BY t.distance
 LIMIT 10;
 ```
 > [!NOTE]
-> **%s** should be replace by the query vector. You can use [azure_ai](generative-ai-azure-openai.md) to create a query vector directly in Postgres.
+> **%s** should be replace by the query vector. You can use [azure_ai](../azure-ai/generative-ai-azure-openai.md) to create a query vector directly in Postgres.
 
 This approach balances speed (via approximate search) and accuracy (via full vector reranking), ensuring high-quality results without scanning the entire dataset. 
 
@@ -185,7 +185,7 @@ CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_
 > [!IMPORTANT]
 > The leader process cannot participate in parallel index builds.
 
-If you want to create the index by using parallel workers, you also need to set `max_parallel_workers`, `max_worker_processes`, and `max_parallel_maintenance_workers` parameters accordingly. For more information about these parameters, see [parameters that control resource usages and asynchronous behavior](concepts-server-parameters.md#resource-usage--asynchronous-behavior).
+If you want to create the index by using parallel workers, you also need to set `max_parallel_workers`, `max_worker_processes`, and `max_parallel_maintenance_workers` parameters accordingly. For more information about these parameters, see [parameters that control resource usages and asynchronous behavior](../server-parameter/concepts-server-parameters.md#resource-usage--asynchronous-behavior).
 
 
 You can set these parameters at different granularity levels. For example, to set them at session level, you can run the following statements:
@@ -197,7 +197,7 @@ SET max_worker_processes = 8; -- Note: Requires server restart
 SET max_parallel_maintenance_workers = 4;
 ```
 
-To learn about other options to configure these parameters in Azure Database for PostgreSQL flexible server, see [Configure server parameters](how-to-configure-server-parameters.md).
+To learn about other options to configure these parameters in Azure Database for PostgreSQL flexible server, see [Configure server parameters](../server-parameter/how-to-server-parameters-list-all.md).
 
 > [!NOTE] 
 > The max_worker_processes parameter requires a server restart to take effect.

@@ -40,7 +40,7 @@ If your PostgreSQL flexible server enters a read-only state, the *Degraded* stat
 
 When the HA service itself is experiencing degraded performance, possibly due to transient issues or system-level conditions, this status appears. Implementing retry logic can help mitigate the effects of these temporary connectivity disruptions.  It's important to note that the "degraded" status does not mean the server is unavailable. Instead, it indicates that the overall HA setup and health checks have not yet fully completed. Despite this status, the server may still be operational and accessible.
 
-To accurately monitor your database's availability during such periods, we recommend using the "is_db_alive" metric as part of [Database Availability Metrics](concepts-monitoring.md). This metric provides a reliable indicator of the database's availability, helping you distinguish between a temporary incomplete HA setup and actual downtime.
+To accurately monitor your database's availability during such periods, we recommend using the "is_db_alive" metric as part of [Database Availability Metrics](../monitor/concepts-monitoring.md). This metric provides a reliable indicator of the database's availability, helping you distinguish between a temporary incomplete HA setup and actual downtime.
 
 
 :::image type="content" source="media/how-to-monitor-high-availability/high-availability-status-degraded-performance.png" alt-text="Screenshot of showing HA Degraded status due to performance issues." lightbox="media/how-to-monitor-high-availability/high-availability-status-degraded-performance.png":::

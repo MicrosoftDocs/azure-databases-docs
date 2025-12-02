@@ -74,7 +74,7 @@ Following is the list of requirements to configure data encryption for Azure Dat
 
 CMK can be configured with manual key rotation and updates or with automatic key version updates after a manual or automatic key rotation in the Key Vault.
 
-For details see [Configure data encryption with customer managed key during server provisioning](how-to-data-encryption.md).
+For details see [Configure data encryption with customer managed key during server provisioning](../security/security-configure-data-encryption.md).
 
 > [!IMPORTANT]  
 > When you rotate the key to a new version, you must keep the old key available for the reencryption to succeed. While most reencryptions should happen within 30 minutes, we recommend that you wait at least 2 hours before disabling access to the old key version.
@@ -129,7 +129,7 @@ To monitor the database state, and to turn on alerts for the loss of access to t
 
 ### Restoring backups of a server configured with a customer managed key
 
-After your Azure Database for PostgreSQL flexible server instance is encrypted with a customer managed key stored in Key Vault, any newly created server copy is also encrypted. You can make this new copy through a [point-in-time restore (PITR)](concepts-backup-restore.md) operation or read replicas.
+After your Azure Database for PostgreSQL flexible server instance is encrypted with a customer managed key stored in Key Vault, any newly created server copy is also encrypted. You can make this new copy through a [point-in-time restore (PITR)](../backup-restore/concepts-backup-restore.md) operation or read replicas.
 
 When you're setting up data encryption with customer managed key, during operation like restore of a backup or creation of a read replica, you can avoid problems by following these steps on the primary and restored or replica servers:
 
@@ -179,7 +179,7 @@ If the user assigned managed identity used to access the encryption key stored i
 
 ### Using data encryption with customer managed keys and geo-redundant business continuity features
 
-Azure Database for PostgreSQL supports advanced [data recovery](../flexible-server/concepts-business-continuity.md) features, such as [replicas](../../postgresql/flexible-server/concepts-read-replicas.md) and [geo-redundant backup](../flexible-server/concepts-backup-restore.md). Following are requirements for setting up data encryption with CMKs and these features, in addition to [basic requirements for data encryption with CMKs](#cmk-requirements):
+Azure Database for PostgreSQL supports advanced [data recovery](../flexible-server/concepts-business-continuity.md) features, such as [replicas](../../postgresql/flexible-server/concepts-read-replicas.md) and [geo-redundant backup](../backup-restore/concepts-backup-restore.md). Following are requirements for setting up data encryption with CMKs and these features, in addition to [basic requirements for data encryption with CMKs](#cmk-requirements):
 - The geo-redundant backup encryption key needs to be created in a Key Vault instance that must exist in the region where the geo-redundant backup is stored.
 - The [Azure Resource Manager REST API](/azure/azure-resource-manager/management/overview) version for supporting geo-redundant backup-enabled CMK servers is 2022-11-01-preview. If you want to use [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview) to automate the creation of servers that use both encryption with CMKs and geo-redundant backup features, use this API version.
 - You can't use the same [user-managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to authenticate for the primary database's Key Vault instance and the Key Vault instance that holds the encryption key for geo-redundant backup. To maintain regional resiliency, we recommend that you create the user-managed identity in the same region as the geo-redundant backups.
@@ -189,10 +189,10 @@ Azure Database for PostgreSQL supports advanced [data recovery](../flexible-serv
 
 These are the current limitations for configuring the customer managed key in an Azure Database for PostgreSQL flexible server instance:
 
-- You can configure customer managed key encryption only during creation of a new server, not as an update to an existing Azure Database for PostgreSQL flexible server instance. You can [restore a PITR backup to a new server with CMK encryption](concepts-backup-restore.md#point-in-time-recovery) instead.
-- After you configure customer managed key encryption, you can't revert back to system managed key. If you want to revert, you must [restore the server to a new one with data encryption configured with system managed key](concepts-backup-restore.md#point-in-time-recovery).
+- You can configure customer managed key encryption only during creation of a new server, not as an update to an existing Azure Database for PostgreSQL flexible server instance. You can [restore a PITR backup to a new server with CMK encryption](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) instead.
+- After you configure customer managed key encryption, you can't revert back to system managed key. If you want to revert, you must [restore the server to a new one with data encryption configured with system managed key](../backup-restore/concepts-backup-restore.md#point-in-time-recovery).
 - The instance of Azure Key Vault Managed HSM or the instance of Azure Key Vault on which you plan to store the encryption key, must exist in the same region on which the instance of Azure Database for flexible server is being created.
 
 ## Related content
 
-- [Configure data encryption](how-to-data-encryption.md)
+- [Configure data encryption](../security/security-configure-data-encryption.md)

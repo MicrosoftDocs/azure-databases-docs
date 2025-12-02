@@ -101,8 +101,8 @@ Message: Server <server> is busy with other operations. Please try later
 ---
 
 > [!NOTE]
-> Resetting the password of the server administrator in [read replicas](concepts-read-replicas.md) isn't supported. You can reset the password of the server administrator in the primary server. That password change operation, which is recorded in the Write-Ahead Log of the primary server, is sent asynchronously to all read replicas. When a read replica receives and applies that change locally, any attempt to connect to those replicas with the server administrator user name, must be made using the new password.
+> Resetting the password of the server administrator in [read replicas](../read-replica/concepts-read-replicas.md) isn't supported. You can reset the password of the server administrator in the primary server. That password change operation, which is recorded in the Write-Ahead Log of the primary server, is sent asynchronously to all read replicas. When a read replica receives and applies that change locally, any attempt to connect to those replicas with the server administrator user name, must be made using the new password.
 
 ## Related content
 
-- [Security](concepts-security.md).
+- [Security](../security/security-overview.md).

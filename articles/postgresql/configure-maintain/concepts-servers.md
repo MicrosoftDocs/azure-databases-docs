@@ -41,7 +41,7 @@ The following elements help ensure safe access to your database:
 | Authentication and authorization | An Azure Database for PostgreSQL flexible server instance supports native PostgreSQL authentication. You can connect and authenticate to a server by using the server's admin login. |
 | Protocol | The service supports a message-based protocol that PostgreSQL uses. |
 | TCP/IP | The protocol is supported over TCP/IP and over Unix-domain sockets. |
-| Firewall | To help protect your data, a firewall rule prevents all access to your server and to its databases until you specify which computers have permission. See [Networking](how-to-manage-firewall-portal.md). |
+| Firewall | To help protect your data, a firewall rule prevents all access to your server and to its databases until you specify which computers have permission. See [Networking](../network/how-to-networking.md). |
 
 <a id="managing-your-server"></a>
 

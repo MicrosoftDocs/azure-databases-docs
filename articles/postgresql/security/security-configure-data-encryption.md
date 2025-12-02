@@ -23,7 +23,7 @@ In this article, you learn how to create a new server and configure its data enc
 - How to select a different user assigned managed identity with which the service accesses the encryption key.
 - How to specify a different encryption key or how to rotate the encryption key currently used for data encryption.
 
-To learn about data encryption in the context of Azure Database for PostgreSQL, see the [data encryption](concepts-data-encryption.md).
+To learn about data encryption in the context of Azure Database for PostgreSQL, see the [data encryption](../security/security-data-encryption.md).
 
 ## Configure data encryption with system managed key during server provisioning
 
@@ -66,7 +66,7 @@ Using the [Azure portal](https://portal.azure.com/):
 > [!NOTE]  
 > Although it isn't required, to maintain regional resiliency, we recommend that you create the user managed identity in the same region as your server. And if your server has geo-backup redundancy enabled, we recommend that the second user managed identity, used to access the data encryption key for geo-redundant backups, is created in the [paired region](/azure/reliability/cross-region-replication-azure) of the server.
 
-1. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal) or [create one Managed HSM](/azure/key-vault/managed-hsm/quick-create-cli), if you don't have one key store created yet. Make sure that you meet the [requirements](concepts-data-encryption.md#cmk-requirements). Also, follow the [recommendations](concepts-data-encryption.md#recommendations) before you configure the key store, and before you create the key and assign the required permissions to the user assigned managed identity. If your server has geo-redundant backups enabled, you need to create a second key store. That second key store is used to keep the data encryption key with which your backups copied to the [paired region](/azure/reliability/cross-region-replication-azure) of the server are encrypted.
+1. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal) or [create one Managed HSM](/azure/key-vault/managed-hsm/quick-create-cli), if you don't have one key store created yet. Make sure that you meet the [requirements](../security/security-data-encryption.md#cmk-requirements). Also, follow the [recommendations](../security/security-data-encryption.md#recommendations) before you configure the key store, and before you create the key and assign the required permissions to the user assigned managed identity. If your server has geo-redundant backups enabled, you need to create a second key store. That second key store is used to keep the data encryption key with which your backups copied to the [paired region](/azure/reliability/cross-region-replication-azure) of the server are encrypted.
 
 > [!NOTE]  
 > The key store used to keep the data encryption key must be deployed in the same region as your server. And if your server has geo-backup redundancy enabled, the key store that keeps the data encryption key for geo-redundant backups must be created in the [paired region](/azure/reliability/cross-region-replication-azure) of the server.
@@ -93,7 +93,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/security-configure-data-encryption/create-server-customer-assigned-add-identity.png" alt-text="Screenshot that shows the location of the Add button to assign the identity with which the server accesses the data encryption key." lightbox="media/security-configure-data-encryption/create-server-customer-assigned-add-identity.png":::
 
-1. Select **Use automatic key version update**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using automatic key version updates, see [automatic key version update](concepts-data-encryption.md#cmk-key-version-updates).
+1. Select **Use automatic key version update**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using automatic key version updates, see [automatic key version update](../security/security-data-encryption.md#cmk-key-version-updates).
 
     :::image type="content" source="media/security-configure-data-encryption/create-server-customer-assigned-version-less.png" alt-text="Screenshot that shows how to enable automatic key version updates." lightbox="media/security-configure-data-encryption/create-server-customer-assigned-version-less.png":::
 
@@ -170,7 +170,7 @@ az postgres flexible-server create \
 
 ## Configure data encryption with customer managed key on existing servers
 
-The only point at which you can decide if you want to use a system managed key or a customer managed key for data encryption, is at server creation. Once you make that decision and create the server, you can't switch between the two options. The only alternative, if you want to change from one to the other, requires [restoring any of the backups available of server onto a new server](how-to-restore-latest-restore-point.md). While configuring the restore, you're allowed to change the data encryption configuration of the new server.
+The only point at which you can decide if you want to use a system managed key or a customer managed key for data encryption, is at server creation. Once you make that decision and create the server, you can't switch between the two options. The only alternative, if you want to change from one to the other, requires [restoring any of the backups available of server onto a new server](../backup-restore/how-to-restore-latest-restore-point.md). While configuring the restore, you're allowed to change the data encryption configuration of the new server.
 
 For existing servers that were deployed with data encryption using a customer managed key, you're allowed to do several configuration changes. Things that can be changed are the references to the keys used for encryption, and references to the user assigned managed identities used by the service to access the keys kept in the key stores.
 
@@ -218,7 +218,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/security-configure-data-encryption/existing-server-select-existing-managed-identity-details-add.png" alt-text="Screenshot that shows how to add the selected user assigned managed identity." lightbox="media/security-configure-data-encryption/existing-server-select-existing-managed-identity-details-add.png":::
 
-1. Select **Use automatic key version update**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using automatic key version updates, see [automatic key version update](concepts-data-encryption.md##CMK key version updates).
+1. Select **Use automatic key version update**, if you prefer to let the service automatically update the reference to the most current version of the chosen key, whenever the current version is rotated manually or automatically. To understand the benefits of using automatic key version updates, see [automatic key version update](../security/security-data-encryption.md##CMK key version updates).
 
     :::image type="content" source="media/security-configure-data-encryption/existing-server-version-less.png" alt-text="Screenshot that shows how to enable automatic key version updates." lightbox="media/security-configure-data-encryption/existing-server-version-less.png":::
 
@@ -313,10 +313,10 @@ If you pass the parameters `--backup-identity` and `--backup-key` to the `az pos
 Geo-redundant backup is not enabled. You cannot provide Geo-location user assigned identity and keyvault key.
 ```
 
-Identities passed to the `--identity` and `--backup-identity` parameters, if they exist and are valid, are automatically added to the list of user assigned managed identities associated to your Azure Database for PostgreSQL flexible server instance. This is the case even if the command later fails with some other error. In such cases, you might want to use the [az postgres flexible-server identity](/cli/azure/postgres/flexible-server/identity) commands to list, assign, or remove user assigned managed identities assigned to your Azure Database for PostgreSQL flexible server instance. To learn more about configuring user assigned managed identities in your Azure Database for PostgreSQL flexible server instance, refer to [associate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#associate-user-assigned-managed-identities-to-existing-servers), [dissociate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#dissociate-user-assigned-managed-identities-to-existing-servers), and [show the associated user assigned managed identities](how-to-configure-managed-identities.md#show-the-associated-user-assigned-managed-identities).
+Identities passed to the `--identity` and `--backup-identity` parameters, if they exist and are valid, are automatically added to the list of user assigned managed identities associated to your Azure Database for PostgreSQL flexible server instance. This is the case even if the command later fails with some other error. In such cases, you might want to use the [az postgres flexible-server identity](/cli/azure/postgres/flexible-server/identity) commands to list, assign, or remove user assigned managed identities assigned to your Azure Database for PostgreSQL flexible server instance. To learn more about configuring user assigned managed identities in your Azure Database for PostgreSQL flexible server instance, refer to [associate user assigned managed identities to existing servers](../security/security-configure-managed-identities-system-assigned.md#associate-user-assigned-managed-identities-to-existing-servers), [dissociate user assigned managed identities to existing servers](../security/security-configure-managed-identities-system-assigned.md#dissociate-user-assigned-managed-identities-to-existing-servers), and [show the associated user assigned managed identities](../security/security-configure-managed-identities-system-assigned.md#show-the-associated-user-assigned-managed-identities).
 
 ---
 
 ## Related content
 
-- [Data encryption](concepts-data-encryption.md)
+- [Data encryption](../security/security-data-encryption.md)

@@ -119,9 +119,9 @@ performance is the reason why `checkpoint_completion_target` is a target metric 
 ## Related content
 
 - [Configure intelligent tuning by using the Azure portal](how-to-enable-intelligent-performance-portal.md).
-- [Troubleshooting for Azure Database for PostgreSQL](concepts-troubleshooting-guides.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
-- [Best practices to bulk upload data to Azure Database for PostgreSQL](how-to-bulk-load-data.md).
-- [Troubleshoot high CPU utilization in an Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
+- [Troubleshooting for Azure Database for PostgreSQL](../troubleshoot/concepts-troubleshooting-guides.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL](../troubleshoot/how-to-autovacuum-tuning.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](../troubleshoot/how-to-high-io-utilization.md).
+- [Best practices to bulk upload data to Azure Database for PostgreSQL](../troubleshoot/how-to-bulk-load-data.md).
+- [Troubleshoot high CPU utilization in an Azure Database for PostgreSQL](../troubleshoot/how-to-high-cpu-utilization.md).
 - [Query Performance Insight in Azure Database for PostgreSQL](concepts-query-performance-insight.md).

@@ -23,7 +23,7 @@ In this quickstart, you connect to an Azure Database for PostgreSQL flexible ser
 
 The steps in this article include two authentication methods: Microsoft Entra authentication and PostgreSQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the PostgreSQL authentication.
 
-Microsoft Entra authentication is a mechanism for connecting to Azure Database for PostgreSQL using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management. To learn more, see [Microsoft Entra authentication with Azure Database for PostgreSQL](concepts-azure-ad-authentication.md).
+Microsoft Entra authentication is a mechanism for connecting to Azure Database for PostgreSQL using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management. To learn more, see [Microsoft Entra authentication with Azure Database for PostgreSQL](../security/security-entra-concepts.md).
 
 PostgreSQL authentication uses accounts stored in PostgreSQL. If you choose to use passwords as credentials for the accounts, these credentials are stored in the `user` table. Because these passwords are stored in PostgreSQL, you need to manage the rotation of the passwords by yourself.
 
@@ -38,12 +38,12 @@ This article assumes that you're familiar with developing using Python, but you'
 
 ## Add firewall rules for your client workstation
 
-- If you created your Azure Database for PostgreSQL flexible server instance with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your Azure Database for PostgreSQL flexible server instance. Refer to [Networking](how-to-manage-virtual-network-cli.md).
-- If you created your Azure Database for PostgreSQL flexible server instance with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Networking](how-to-manage-firewall-cli.md).
+- If you created your Azure Database for PostgreSQL flexible server instance with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your Azure Database for PostgreSQL flexible server instance. Refer to [Networking](../network/how-to-networking.md).
+- If you created your Azure Database for PostgreSQL flexible server instance with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Networking](../network/how-to-networking.md).
 
 ## Configure Microsoft Entra integration on the server (passwordless only)
 
-If you're following the steps for passwordless authentication, Microsoft Entra authentication must be configured for your server instance, and you must be assigned as a Microsoft Entra administrator on the server instance. Follow the steps in [Configure Microsoft Entra integration](how-to-configure-sign-in-azure-ad-authentication.md) to ensure that Microsoft Entra authentication is configured and that you're assigned as a Microsoft Entra administrator on your server instance.
+If you're following the steps for passwordless authentication, Microsoft Entra authentication must be configured for your server instance, and you must be assigned as a Microsoft Entra administrator on the server instance. Follow the steps in [Configure Microsoft Entra integration](../security/security-entra-configure.md) to ensure that Microsoft Entra authentication is configured and that you're assigned as a Microsoft Entra administrator on your server instance.
 
 ## Prepare your development environment
 

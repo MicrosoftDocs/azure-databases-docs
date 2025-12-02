@@ -25,8 +25,8 @@ Unlike shared buffers, which are in the shared memory area, `work_mem` is alloca
 
 It's essential to continuously monitor your system's performance and adjust `work_mem` as necessary, primarily if query execution times related to sorting or hashing operations are slow. Here are ways to monitor performance by using tools available in the Azure portal:
 
-* [Query performance insight](../concepts-query-performance-insight.md): Check the **Top queries by temporary files** tab to identify queries that are generating temporary files. This situation suggests a potential need to increase `work_mem`.
-* [Troubleshooting guides](../concepts-troubleshooting-guides.md): Use the **High temporary files** tab in the troubleshooting guides to identify problematic queries.
+* [Query performance insight](../monitor/concepts-query-performance-insight.md): Check the **Top queries by temporary files** tab to identify queries that are generating temporary files. This situation suggests a potential need to increase `work_mem`.
+* [Troubleshooting guides](../troubleshoot/concepts-troubleshooting-guides.md): Use the **High temporary files** tab in the troubleshooting guides to identify problematic queries.
 
 ##### Granular adjustment
 

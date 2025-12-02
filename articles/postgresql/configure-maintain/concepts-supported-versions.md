@@ -22,7 +22,7 @@ PostgreSQL 18 is now available on Azure Database for PostgreSQL flexible server.
 
 ### Limitations
 
-- Certain PostgreSQL extensions are not supported in the PG18 release. Refer to the [list of supported extensions](./concepts-extensions.md) for details.
+- Certain PostgreSQL extensions are not supported in the PG18 release. Refer to the [list of supported extensions](../extensions/how-to-allow-extensions.md) for details.
 - Can't configure server to use new Async I/O `io_method = io_uring`.
 
 ## PostgreSQL version 17

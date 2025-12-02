@@ -185,7 +185,7 @@ You can use PgBouncer metrics to monitor the performance of the PgBouncer proces
 
 #### How to enable PgBouncer metrics
 
-- To monitor PgBouncer metrics, ensure that the [pgbouncer](concepts-pgbouncer.md) feature is enabled via the server parameter `pgbouncer.enabled` and metrics parameter `metrics.pgbouncer_diagnostics` is enabled.
+- To monitor PgBouncer metrics, ensure that the [pgbouncer](../connectivity/concepts-pgbouncer.md) feature is enabled via the server parameter `pgbouncer.enabled` and metrics parameter `metrics.pgbouncer_diagnostics` is enabled.
 - These parameters are dynamic and don't require an instance restart.
 - PgBouncer metrics are disabled by default.
 
@@ -266,4 +266,4 @@ Server logs have minimum retention 1 days and maximum retention is 7 days. If th
 
 - [Configure logging and access logs in Azure Database for PostgreSQL](how-to-configure-and-access-logs.md).
 - [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- [Audit logging in Azure Database for PostgreSQL](concepts-audit.md).
+- [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md).
