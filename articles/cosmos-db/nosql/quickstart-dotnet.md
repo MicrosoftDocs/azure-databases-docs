@@ -108,10 +108,6 @@ using Azure.Identity;
 using Microsoft.Azure.Cosmos;
 ```
 
-## Managing Newtonsoft.Json Dependencies
-
-[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
-
 ## Object model
 
 | Name | Description |
