@@ -40,7 +40,7 @@ To use Azure Cosmos DB for NoSQL, you need an Azure subscription. The service in
 
 ## Limitations and Considerations
 
-Azure Cosmos DB for NoSQL is optimized for JSON-based, scale-out workloads. When your scenario aligns with a different data model, follow the [Choose an API]((https://learn.microsoft.com/azure/cosmos-db/choose-api) migration guide to land on the right service:
+Azure Cosmos DB for NoSQL is optimized for JSON-based, scale-out workloads. When your scenario aligns with a different data model, follow the [Choose an API](https://learn.microsoft.com/azure/cosmos-db/choose-api) migration guide to land on the right service:
 
 - [Azure DocumentDB](https://learn.microsoft.com/azure/documentdb/overview) when you need MongoDB aggregation pipelines, multi-document transactions, or multicloud portability without refactoring drivers.
 - [Azure Managed Instance for Apache Cassandra](https://learn.microsoft.com/azure/managed-instance-apache-cassandra/introduction) when you require unchanged CQL workloads with full Cassandra node-level control.
