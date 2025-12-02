@@ -43,11 +43,7 @@ A: Currently, downloading server logs isn't supported. You can use Azure Metrics
 
 This section lists PostgreSQL extensions that elastic clusters support or don't support. It also notes any special considerations when enabling them. Use this information to determine compatibility and known conflicts (for example, between Citus and TimescaleDB).
  
-### Q: Why isn't TimescaleDB available with elastic clusters?
-
-A: The TimescaleDB extension isn't supported on elastic clusters because of low-level conflicts with the Citus extension.
- 
-### Q: What extensions aren't supported during preview?
+### Q: What extensions aren't supported?
 
 A: The following extensions aren't supported:
  
@@ -55,6 +51,10 @@ A: The following extensions aren't supported:
 - pg_qs - Query Store
 - postgis_topology
 - TimescaleDB
+
+### Q: Why isn't TimescaleDB available with elastic clusters?
+
+A: The TimescaleDB extension isn't supported on elastic clusters because of low-level conflicts with the Citus extension.
  
 ## Migrations
 
