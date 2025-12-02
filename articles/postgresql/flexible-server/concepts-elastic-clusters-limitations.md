@@ -74,7 +74,7 @@ A: Yes, you can use PgBouncer with elastic clusters. Use port 6432 for schema an
  
 ### Q: Can I use virtual network (VNet) with elastic clusters?
 
-A: Currently, virtual networks aren't supported. You can disable Public network access and use Private Link Endpoints to manage access to your elastic cluster.
+A: Yes, your elastic cluster Private Link Endpoints can be added to your VNet. Additionally, if you need to limit network traffic to use your VNet exclusively, you can disable Public network access. Virtual network injection is not supported.
  
 ## Storage
 
